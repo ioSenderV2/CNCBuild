@@ -28,8 +28,13 @@ board level. Their back faces slope away, so the usable length grows with height
 | board level | 64 mm |
 | **12 mm (the planned standoff)** | **67-68 mm** |
 
-Four jacks at 15 mm = 60 mm, leaving 7-8 mm of slack. Even at 15.8 mm each (63.2 mm) it fits, so a
-ganged 1x4 jack is a convenience rather than a necessity.
+**Four discrete jacks, 15.6 mm wide, on a 16 mm pitch = 64 mm** (ordered 2026-08-25). A ganged 1x4 in a
+single shielded housing was looked for and **not found**, so discrete it is. 64 mm against the 67-68 mm
+budget leaves ~1.7 mm of board edge at each end - comfortable for fab clearance.
+
+At 16 mm pitch the metal shells sit **0.4 mm apart**. Electrically that is a non-event: all four shields
+are the same net, so contact changes nothing. Mechanically, check the footprint's recommended spacing so
+the shells seat rather than fouling each other.
 
 | Stack | |
 |---|---|
@@ -115,4 +120,7 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
    power wire means removing this board first. Give back a few millimetres if so - there is slack now.
 3. **Measure the tallest component in the footprint yourself**, including the RTC battery header. 15 mm
    is from the terminal blocks; the standoff must clear whatever is actually highest.
-4. **Confirm the real jack width and depth** for the chosen part - 15 mm assumed, tabs may make it 15.8.
+4. 🔴 **Confirm the ordered jack has NO integrated magnetics.** Width is settled (15.6 mm); this is not.
+   The part was described as a "mag jack" when sourced, and if that is what arrived, **nothing on this
+   board works** - see the warning at the top. Check before layout, not after fabrication.
+5. **Confirm the jack's depth** against the board width - see check 1.
