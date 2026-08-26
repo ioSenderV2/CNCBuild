@@ -83,6 +83,38 @@ check 1, and it makes the facing direction a decision (check 5).
 There is **no manufacturer datasheet** for this part, only the marketplace listing, so dimensions and
 the footprint will have to be measured off the parts themselves.
 
+## Orientation
+
+**Jacks lie across the 20 mm width, openings facing out one long side. The module's terminal blocks
+face out the two ends.** So the two never conflict, and check 5 is closed.
+
+The consequence is that **jack depth is now spent against the 20 mm width**, not the length. The
+listing's 16 mm is the *width* (4 x 16 = 64 mm along the board); depth is unpublished and right-angle
+RJ45s commonly run ~21 mm - hence check 7. Cables also exit sideways now, so there must be room beyond
+the module's long edge for the plug, its boot and the cable's bend radius.
+
+## The header-versus-jack collision
+
+Four jacks at 16 mm pitch use 64 mm of the 67-68 mm length. That leaves **3-4 mm total**, nowhere near
+enough to place the 2x10 header beside them - so the header has to sit **underneath** the jacks: female
+header on the bottom, jacks on top. Fine in principle, except **both are through-hole**, so their pin
+fields must not overlap in X-Y.
+
+And the header's position is not a free choice: it must align with **P1, which sits in a corner** of the
+free area - exactly where jack 1 wants to be.
+
+Two ways out:
+
+- **Rotate the header across the width.** A 2x10 at 2.0 mm pitch is ~18 mm x 2 mm; 18 mm fits inside
+  20 mm, and a 2 mm-wide pin field can slot into the ~3-4 mm gap between two adjacent jacks' pin fields.
+  Only works if P1's real position lands in such a gap.
+- **Use the ribbon.** This is the argument that overturns the earlier lean toward the riser: with a
+  ribbon the daughter board's header **need not align with P1 at all**, so it can go wherever is
+  convenient and the collision stops existing. Panel-mounting comes free with it.
+
+**Establish P1's exact position before committing to the riser.** If its pin field cannot clear the
+jacks', the ribbon is not a fallback - it is the answer.
+
 ## Pin map
 
 12 signals - 4 sensors x (A, B, `MagDECn`) - against exactly the 12 free GPIOs, IO3-IO14. No spare,
@@ -143,6 +175,8 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
 4. **Count the pins when the jacks arrive.** Eight signal pins in two staggered rows plus two shield
    tabs = plain, which is what is wanted. More than eight signal pins, or a deep heavy body (~25 mm),
    means integrated magnetics and they are unusable here. See *The ordered part* below.
-5. **Which way the jack openings face.** They must point away from the terminal blocks' wire entries,
-   or plugging an encoder cable fights the field wiring. Mirror-image work to change after layout.
-6. **Confirm the jack's depth** against the board width - see check 1.
+5. ~~Which way the jack openings face~~ **Settled 2026-08-25** - see *Orientation* below.
+6. 🔴 **Where exactly does P1 sit along the 64 mm, and does its pin field clear the jacks'?** See
+   *The header-versus-jack collision* below. This one can change the interconnect decision.
+7. **Measure the jack depth** when the parts arrive - it now consumes the 20 mm width directly
+   (*Orientation*), and the listing gives only the 16 mm width. Right-angle RJ45s are commonly ~21 mm.
