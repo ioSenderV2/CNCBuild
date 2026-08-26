@@ -189,9 +189,9 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
 
 1. ~~Does the 20 mm width constraint relax at 12 mm?~~ **Moot - the board stays 20 mm** (decided
    2026-08-25, matching the module) and the 18.2 mm jack depth fits inside it. See *Board outline*.
-2. **Do the terminal blocks' screws or wire entries face up?** The extra 3-4 mm of length comes from
-   overhanging their sloped backs. If a full 67-68 mm board covers the screws, landing an RS485, CAN or
-   power wire means removing this board first. Give back a few millimetres if so - there is slack now.
+2. ~~Do the terminal blocks' screws face up?~~ **No - they are accessed from the ENDS of the module,
+   not the sides or top** (confirmed 2026-08-25). Overhanging their sloped backs blocks nothing, so the
+   board can take the full 67-68 mm without giving any length back.
 3. **Measure the tallest component in the footprint yourself**, including the RTC battery header. 15 mm
    is from the terminal blocks; the standoff must clear whatever is actually highest.
 4. **Count the pins when the jacks arrive.** Eight signal pins in two staggered rows plus two shield
