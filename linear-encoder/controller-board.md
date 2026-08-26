@@ -63,6 +63,26 @@ absence is the whole reason this is awkward.
 
 > ⚠️ **The header is 2.0 mm pitch, not 2.54 mm.** Easy to order wrong; the wrong part is unusable.
 
+## The ordered part
+
+**FMHXG `RJ45NMCCFC-90D-10`** (ASIN `B0BRQ2R8HW`), ordered 2026-08-25 as a 10-pack:
+*"Shielded RJ45 8P8C 90 Degree Angle Network Modular Connector for PCB, CAT5/5e/6"*. 16 mm listed
+length; 15.6 mm body on a 16 mm pitch (above).
+
+**Magnetics: almost certainly none, not yet confirmed.** The listing does not mention them, and four
+things point the same way - **"8P8C"** describes exactly eight contacts, where a MagJack brings out
+centre taps and usually LEDs (12-16 PCB pins); integrated magnetics is an expensive selling point that
+is never hidden; a 10-pack at this price is plain-jack territory; and `RJ45**NM**...` plausibly reads as
+*No Magnetics*. None of that is proof from a marketplace listing, hence open check 4.
+
+**90 degree = right-angle**, so the openings face sideways and cables exit horizontally out the long
+edge rather than upward. That suits a board recessed between two 15 mm terminal blocks - nothing needs
+to clear overhead - but it makes the ~21 mm typical depth of a right-angle jack collide with open
+check 1, and it makes the facing direction a decision (check 5).
+
+There is **no manufacturer datasheet** for this part, only the marketplace listing, so dimensions and
+the footprint will have to be measured off the parts themselves.
+
 ## Pin map
 
 12 signals - 4 sensors x (A, B, `MagDECn`) - against exactly the 12 free GPIOs, IO3-IO14. No spare,
@@ -120,7 +140,9 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
    power wire means removing this board first. Give back a few millimetres if so - there is slack now.
 3. **Measure the tallest component in the footprint yourself**, including the RTC battery header. 15 mm
    is from the terminal blocks; the standoff must clear whatever is actually highest.
-4. 🔴 **Confirm the ordered jack has NO integrated magnetics.** Width is settled (15.6 mm); this is not.
-   The part was described as a "mag jack" when sourced, and if that is what arrived, **nothing on this
-   board works** - see the warning at the top. Check before layout, not after fabrication.
-5. **Confirm the jack's depth** against the board width - see check 1.
+4. **Count the pins when the jacks arrive.** Eight signal pins in two staggered rows plus two shield
+   tabs = plain, which is what is wanted. More than eight signal pins, or a deep heavy body (~25 mm),
+   means integrated magnetics and they are unusable here. See *The ordered part* below.
+5. **Which way the jack openings face.** They must point away from the terminal blocks' wire entries,
+   or plugging an encoder cable fights the field wiring. Mirror-image work to change after layout.
+6. **Confirm the jack's depth** against the board width - see check 1.
