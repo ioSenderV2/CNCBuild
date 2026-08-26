@@ -103,17 +103,24 @@ fields must not overlap in X-Y.
 And the header's position is not a free choice: it must align with **P1, which sits in a corner** of the
 free area - exactly where jack 1 wants to be.
 
-Two ways out:
+### Resolved by measurement, 2026-08-25 - there is no collision
 
-- **Rotate the header across the width.** A 2x10 at 2.0 mm pitch is ~18 mm x 2 mm; 18 mm fits inside
-  20 mm, and a 2 mm-wide pin field can slot into the ~3-4 mm gap between two adjacent jacks' pin fields.
-  Only works if P1's real position lands in such a gap.
-- **Use the ribbon.** This is the argument that overturns the earlier lean toward the riser: with a
-  ribbon the daughter board's header **need not align with P1 at all**, so it can go wherever is
-  convenient and the collision stops existing. Panel-mounting comes free with it.
+Measured across the 20 mm width, from the back edge:
 
-**Establish P1's exact position before committing to the riser.** If its pin field cannot clear the
-jacks', the ribbon is not a fallback - it is the answer.
+| Feature | Distance from back edge |
+|---|---|
+| RJ45 eight signal pins | at the **back** of the jack, well clear |
+| RJ45 shield tabs - the nearest feature | **13 mm max** |
+| 2x10 header begins | **16 mm** |
+| **Clearance** | **3 mm** |
+
+The header sits in the front ~4 mm strip, flush with one corner, and every RJ45 through-hole feature
+stays behind 13 mm. The shield tabs were the only things that came close and they miss by 3 mm.
+
+**So the riser stands.** The collision was the one thing that would have forced the ribbon; with the
+header free to align with P1 as originally intended, the riser keeps everything inside the measured
+footprint. The ribbon remains the fallback, and keeps its own advantage - panel-mounted jacks - if that
+is ever wanted for service access.
 
 ## Pin map
 
@@ -176,7 +183,7 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
    tabs = plain, which is what is wanted. More than eight signal pins, or a deep heavy body (~25 mm),
    means integrated magnetics and they are unusable here. See *The ordered part* below.
 5. ~~Which way the jack openings face~~ **Settled 2026-08-25** - see *Orientation* below.
-6. 🔴 **Where exactly does P1 sit along the 64 mm, and does its pin field clear the jacks'?** See
-   *The header-versus-jack collision* below. This one can change the interconnect decision.
+6. ~~Where does P1 sit, and does its pin field clear the jacks'?~~ **Resolved 2026-08-25 by
+   measurement - 3 mm of clearance.** See *The header-versus-jack collision* below.
 7. **Measure the jack depth** when the parts arrive - it now consumes the 20 mm width directly
    (*Orientation*), and the listing gives only the 16 mm width. Right-angle RJ45s are commonly ~21 mm.
