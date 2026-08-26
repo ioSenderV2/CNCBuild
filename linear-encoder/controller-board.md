@@ -26,11 +26,11 @@ board level. Their back faces slope away, so the usable length grows with height
 | At height | Usable length |
 |---|---|
 | board level | 64 mm |
-| **12 mm** | **67-68 mm** |
+| 12 mm | 67-68 mm |
+| **14 mm (the chosen standoff)** | **>= 67-68 mm** |
 
-12 mm is where that budget was measured, **not a ceiling** - the sloped backs mean more height gives
-more length. Since the tallest component in the footprint also measures 12 mm (check 3), the standoff
-will likely need to be 13-14 mm, which only improves the length available.
+67-68 mm was measured at 12 mm and is a **floor, not a ceiling** - the terminal blocks' backs slope
+away, so the 14 mm standoff gives slightly more. Kept at 67-68 mm as the conservative figure.
 
 **Four discrete jacks, 15.6 mm wide, on a 16 mm pitch = 64 mm** (ordered 2026-08-25). A ganged 1x4 in a
 single shielded housing was looked for and **not found**, so discrete it is. 64 mm against the 67-68 mm
@@ -42,23 +42,24 @@ the shells seat rather than fouling each other.
 
 | Stack | |
 |---|---|
-| Daughter board underside | 12 mm |
+| Daughter board underside | **14 mm** |
 | PCB | 1.6 mm |
 | RJ45 jack | ~13.5 mm |
-| **Total above the module** | **~27 mm** |
+| **Total above the module** | **~29 mm** |
 
-The jacks stand ~12 mm proud of the terminal blocks, so cable access from above is clear.
+The board underside sits 1 mm below the top of the 15 mm terminal blocks, and the jacks stand ~14 mm
+proud of them, so cable access is clear.
 
-### The interconnect problem: 5 mm pins, 12 mm standoff
+### The interconnect problem: 5 mm pins, 14 mm standoff
 
-The male header stands only **5 mm** proud; the board must sit at **12 mm** to clear the terminal
+The male header stands only **5 mm** proud; the board must sit at **14 mm** to clear the tallest
 blocks. **A taller socket does not solve this** - a socket's contact springs are near its mating face,
-so a 12 mm socket still grips only in its first few millimetres and the pins fall 7 mm short of the
+so a tall socket still grips only in its first few millimetres and the pins fall **9 mm** short of the
 contacts. The height has to come from somewhere else:
 
 | Option | Verdict |
 |---|---|
-| **Riser PCB** - male 2.0 mm down, female up, 12 mm standoffs | **Preferred.** Keeps everything inside the measured footprint, which matters when recessed between two 15 mm walls. One more small board on an order already being placed. |
+| **Riser PCB** - male 2.0 mm down, female up, **14 mm** standoffs | **Preferred.** Keeps everything inside the measured footprint, which matters when recessed between two 15 mm walls. One more small board on an order already being placed. |
 | **Ribbon jumper** - 2x10 2.0 mm IDC each end, board on standoffs | Works, and frees the jacks to be **panel-mounted** so cables plug in from outside the enclosure. But the ribbon has to escape the slot between the terminal blocks and be anchored. |
 | Replace the module's header with taller pins | 20 pins of desoldering at 2.0 mm pitch on a board that is not easily replaced. Only if the stacked form factor is mandatory. |
 
@@ -197,11 +198,9 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
 2. ~~Do the terminal blocks' screws face up?~~ **No - they are accessed from the ENDS of the module,
    not the sides or top** (confirmed 2026-08-25). Overhanging their sloped backs blocks nothing, so the
    board can take the full 67-68 mm without giving any length back.
-3. 🔶 **Tallest component in the footprint measures 12 mm** (2026-08-25) - the 15 mm terminal blocks
-   sit outside it, at the ends. **Open: the standoff must therefore be MORE than 12 mm**, or the board
-   rests on that component. Suggest 13-14 mm. This costs nothing: the terminal blocks' backs slope away,
-   so raising the standoff only grows the length budget beyond 67-68 mm. Confirm whether the 12 mm
-   figure is the component height or a clearance already allowed.
+3. ~~Tallest component / standoff height~~ **Settled 2026-08-25.** Tallest component in the footprint
+   is **12 mm** (the 15 mm terminal blocks sit outside it, at the ends); **standoff set to 14 mm**, so
+   2 mm of clearance. Costs nothing - the sloped backs mean more height gives more length, not less.
 4. ~~Confirm no integrated magnetics~~ **Confirmed 2026-08-25: none.** The listing's photographs show
    **eight signal pins plus two shield tabs and nothing else**. Magnetics cannot hide - transformers
    need centre-tap pins - so a bare 8+2 pin field settles it.
