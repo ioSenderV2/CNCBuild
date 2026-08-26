@@ -69,11 +69,12 @@ absence is the whole reason this is awkward.
 *"Shielded RJ45 8P8C 90 Degree Angle Network Modular Connector for PCB, CAT5/5e/6"*. 16 mm listed
 length; 15.6 mm body on a 16 mm pitch (above).
 
-**Magnetics: almost certainly none, not yet confirmed.** The listing does not mention them, and four
-things point the same way - **"8P8C"** describes exactly eight contacts, where a MagJack brings out
-centre taps and usually LEDs (12-16 PCB pins); integrated magnetics is an expensive selling point that
-is never hidden; a 10-pack at this price is plain-jack territory; and `RJ45**NM**...` plausibly reads as
-*No Magnetics*. None of that is proof from a marketplace listing, hence open check 4.
+**Magnetics: none. Confirmed.** The listing's photographs show the PCB side carrying **eight signal
+pins plus two shield tabs, and nothing else**. That is decisive rather than suggestive: integrated
+magnetics cannot be hidden, because transformers need centre-tap pins brought out - a MagJack shows
+12-16 pins and usually LED pins too. The supporting signals all agree: **"8P8C"** describes exactly
+eight contacts, magnetics is an expensive selling point nobody omits from a title, a 10-pack at this
+price is plain-jack territory, and `RJ45**NM**...` plausibly reads as *No Magnetics*.
 
 **90 degree = right-angle**, so the openings face sideways and cables exit horizontally out the long
 edge rather than upward. That suits a board recessed between two 15 mm terminal blocks - nothing needs
@@ -194,9 +195,9 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
    board can take the full 67-68 mm without giving any length back.
 3. **Measure the tallest component in the footprint yourself**, including the RTC battery header. 15 mm
    is from the terminal blocks; the standoff must clear whatever is actually highest.
-4. **Count the pins when the jacks arrive.** Eight signal pins in two staggered rows plus two shield
-   tabs = plain, which is what is wanted. More than eight signal pins, or a deep heavy body (~25 mm),
-   means integrated magnetics and they are unusable here. See *The ordered part* below.
+4. ~~Confirm no integrated magnetics~~ **Confirmed 2026-08-25: none.** The listing's photographs show
+   **eight signal pins plus two shield tabs and nothing else**. Magnetics cannot hide - transformers
+   need centre-tap pins - so a bare 8+2 pin field settles it.
 5. ~~Which way the jack openings face~~ **Settled 2026-08-25** - see *Orientation* below.
 6. ~~Where does P1 sit, and does its pin field clear the jacks'?~~ **Resolved 2026-08-25 by
    measurement - 3 mm of clearance.** See *The header-versus-jack collision* below.
