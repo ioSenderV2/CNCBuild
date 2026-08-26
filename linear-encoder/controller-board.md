@@ -93,6 +93,22 @@ listing's 16 mm is the *width* (4 x 16 = 64 mm along the board); depth is unpubl
 RJ45s commonly run ~21 mm - hence check 7. Cables also exit sideways now, so there must be room beyond
 the module's long edge for the plug, its boot and the cable's bend radius.
 
+## Board outline
+
+**67-68 mm x 20 mm.** The width is fixed at 20 mm to match the module rather than chase extra room -
+and it does not need to grow, because the jack is **18.2 mm deep** and fits inside it with 1.8 mm to
+spare. No overhang, though up to ~1 mm would have been accepted if it had come to that.
+
+| | |
+|---|---|
+| Four jacks at 16 mm | 64 mm, against 67-68 mm of length |
+| Jack depth 18.2 mm | against 20 mm of width, **1.8 mm spare** |
+
+The jack body does sit over the header's area - the header starts 16 mm from the back edge, i.e. 4 mm
+from the front, and an 18.2 mm deep jack reaches to 1.8 mm from the back. That is harmless: the header
+is on the **bottom** face and the jacks on the **top**, so only the through-hole pin fields have to
+clear each other, and they do by 3 mm (below).
+
 ## The header-versus-jack collision
 
 Four jacks at 16 mm pitch use 64 mm of the 67-68 mm length. That leaves **3-4 mm total**, nowhere near
@@ -171,9 +187,8 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
 
 ## Open - check before layout
 
-1. **Does the 20 mm width constraint relax at 12 mm?** It was measured at board level. If everything in
-   the width direction is under 12 mm tall, the board can be wider - which removes the jack-depth
-   overhang question entirely and gives the passives room. Cheapest square millimetres available.
+1. ~~Does the 20 mm width constraint relax at 12 mm?~~ **Moot - the board stays 20 mm** (decided
+   2026-08-25, matching the module) and the 18.2 mm jack depth fits inside it. See *Board outline*.
 2. **Do the terminal blocks' screws or wire entries face up?** The extra 3-4 mm of length comes from
    overhanging their sloped backs. If a full 67-68 mm board covers the screws, landing an RS485, CAN or
    power wire means removing this board first. Give back a few millimetres if so - there is slack now.
@@ -185,5 +200,7 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
 5. ~~Which way the jack openings face~~ **Settled 2026-08-25** - see *Orientation* below.
 6. ~~Where does P1 sit, and does its pin field clear the jacks'?~~ **Resolved 2026-08-25 by
    measurement - 3 mm of clearance.** See *The header-versus-jack collision* below.
-7. **Measure the jack depth** when the parts arrive - it now consumes the 20 mm width directly
-   (*Orientation*), and the listing gives only the 16 mm width. Right-angle RJ45s are commonly ~21 mm.
+7. 🔶 **Reconcile the jack's two published dimensions with calipers on arrival.** The listing's spec
+   table calls 16 mm the "length" while its drawing labels 18.2 mm the "length" - one is mislabelled.
+   Working assumption is **16 mm wide x 18.2 mm deep**, which is what makes the design work; the other
+   reading (18.2 wide) needs 72.8 mm for four jacks against a 67-68 mm budget and only three would fit.
