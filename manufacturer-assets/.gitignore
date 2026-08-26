@@ -1,0 +1,6 @@
+# Third-party material lives here but is NOT tracked: these are other people's
+# copyrighted documents and this repo is public. index.html records where each one
+# came from, so anything lost can be fetched again.
+*
+!.gitignore
+!index.html

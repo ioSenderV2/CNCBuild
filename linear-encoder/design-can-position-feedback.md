@@ -51,7 +51,7 @@ writing down.
 ### 1.2 The module's pins
 
 **[`hardware-esp32-s3-rs485-can.md`](hardware-esp32-s3-rs485-can.md)** - the 20-pin header map, what the
-board already uses, and the schematic itself, committed beside it. Short version: the header exposes
+board already uses, and where the schematic is kept. Short version: the header exposes
 **IO3-IO14 free** (12 pins, and the encoders need 8), CAN sits on IO15/IO16 and RS485 on IO17/IO18/IO21,
 so an encoder harness cannot collide with the bus.
 
@@ -60,7 +60,7 @@ Worth knowing before going looking: **the wiki does not document the header's GP
 
 ### 1.3 The sensor: AS5311
 
-Identified 2026-08-25. Datasheet committed beside this note: [`AS5311-Datasheet.pdf`](AS5311-Datasheet.pdf)
+Identified 2026-08-25. Datasheet in [`manufacturer-assets/`](../manufacturer-assets/index.html) - `AS5311-Datasheet.pdf`
 (rev 1.12). Everything here is from it; wiring is §14.
 
 | | |
@@ -223,6 +223,25 @@ jack and passives on the other. Sliding the puck sets the 0.3 mm gap - close wit
 **confirm with the sensor itself**: `MagINCn` and `MagDECn` are both off only in the GREEN range (§1.3),
 which tests the thing that actually matters (field amplitude) rather than a proxy for it. Aluminium is
 required here; steel would distort the field.
+
+**Bore: 30 mm deep** (decided 2026-08-25). The board sits hard at the bottom of the puck - the AS5311 has
+to be within 0.3 mm of the tape - so the whole 30 mm is above the board's top face, and it is spent like
+this:
+
+| | |
+|---|---|
+| Jack above the PCB (`69255` DIM C) | 15.62 mm |
+| **Left for the plug tail + boot** | **14.38 mm** |
+
+**That makes the slim patch cable a requirement, not a preference.** A standard RJ45 boot stands roughly
+20 mm proud of the jack opening and **will not fit** - the plug would bottom out against the end of the
+bore before it latched, or hold the puck off its setting. The slim cables (§14, *Choosing the actual
+cable*) are far shorter and are what this budget assumes.
+
+Two things to check against a real cable before machining: that the plug **latches** with 14.38 mm of
+clearance, and that it can be **released** in situ - a latch tab needs finger or tool access, and a
+recessed one 15 mm down a 35 mm bore may not have it. If it does not, that is an argument for the
+13.62 mm variant of the jack, which buys back 2 mm.
 
 Open, and worth settling before machining:
 
@@ -685,6 +704,13 @@ being avoided. Choose the hardware so it cannot happen:
 - **Controller end: shielded (metal) PCB jack**, shell bonded to chassis. This is the intended ground.
 - **Sensor end: plastic, unshielded jack.** The plug's shield shell then has nothing to bond to, so the
   foil/drain floats at that end - correct by construction rather than by remembering.
+  **Part chosen: Amphenol ICC `69255-004LF`** - 8P8C, vertical, through-hole, unshielded, **no integrated
+  magnetics**. Its Cat3 rating is irrelevant here: that is an Ethernet bandwidth grade, and these are
+  DC-coupled signals at ~10 kHz. Drawing in [`manufacturer-assets/`](../manufacturer-assets/index.html).
+  **Height above PCB (drawing DIM C): 15.62 mm** - 13.62 mm on one variant of the series, worth
+  identifying before ordering if the puck's bore depth gets tight (§1.4). "Vertical" means the plug
+  inserts perpendicular to the board, i.e. along the puck axis, which is what suits the cable running
+  straight up the middle.
 
 **Buy jacks WITHOUT integrated magnetics - both ends.** A large fraction of PCB RJ45 jacks are MagJacks
 with transformers inside. They pass Ethernet perfectly and **block DC completely**, and every signal
@@ -697,7 +723,7 @@ Decided 2026-08-25: **a custom board with the AS5311 on it**, an RJ45 jack and t
 carrier that a breakout plugs into. The reason is mechanical, not electrical.
 
 What decides accuracy is where the **Hall array** sits relative to the magnetic strip, and Figure 14
-(p.21 of [`AS5311-Datasheet.pdf`](AS5311-Datasheet.pdf)) gives the datums: the array is **2.0 mm long,
+(p.21 of [`AS5311-Datasheet.pdf`](../manufacturer-assets/index.html)) gives the datums: the array is **2.0 mm long,
 centred on the die centreline**, which sits **3.035 ±0.235 mm** along the package and **2.576 / 3.200
 ±0.235 mm** across it, with **0.245 ±0.100** and **0.755 ±0.100 mm** around the die plane vertically.
 

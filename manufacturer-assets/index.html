@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manufacturer assets</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin:0; font:15px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+         background:#f4f5f7; color:#1c1e21; }
+  header { background:#24292f; color:#fff; padding:20px; }
+  header h1 { margin:0; font-size:20px; }
+  header p { margin:6px 0 0; font-size:13px; opacity:.85; max-width:70ch; }
+  main { max-width:1100px; margin:0 auto; padding:20px; }
+  .note { background:#fff8e1; border-left:4px solid #f0b429; padding:12px 16px; margin:0 0 20px;
+          border-radius:0 6px 6px 0; }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:8px; overflow:hidden; }
+  th,td { text-align:left; padding:10px 12px; border-bottom:1px solid #e4e6ea; vertical-align:top; }
+  th { background:#eef0f3; font-size:12px; text-transform:uppercase; letter-spacing:.03em; color:#57606a; }
+  code { background:#eef0f3; padding:1px 5px; border-radius:4px; font-size:13px; }
+  a { color:#0969da; } a:hover { text-decoration:underline; }
+  .warn { color:#a04100; font-weight:600; }
+  @media (prefers-color-scheme: dark) {
+    body { background:#0e0f11; color:#dbdce0; }
+    header { background:#161b22; }
+    table { background:#191b1f; }
+    th { background:#1c2128; color:#9198a1; }
+    th,td { border-color:#2a2d33; }
+    code { background:#2a2d33; }
+    .note { background:#2a2417; border-left-color:#bb8009; }
+    a { color:#4493f8; }
+    .warn { color:#e3a008; }
+  }
+</style></head><body>
+<header>
+  <h1>Manufacturer assets</h1>
+  <p>Third-party datasheets, schematics and documentation for parts used in this build.
+     The files themselves are <strong>deliberately untracked</strong> &mdash; they are other people's
+     copyrighted documents and this repository is public. This index is tracked, so the files can
+     always be fetched again.</p>
+</header>
+<main>
+
+<div class="note">
+  <strong>If the folder is empty</strong> (fresh clone, or a file went missing), download each asset
+  from the URL below into this folder, using the filename in the <em>File</em> column. Documents
+  referenced elsewhere in this repo expect those exact names.
+</div>
+
+<table>
+  <tr><th>Part</th><th>Vendor</th><th>What it is</th><th>File</th><th>Source</th><th>Captured</th></tr>
+
+  <tr>
+    <td><strong>AS5311</strong></td>
+    <td>ams-OSRAM</td>
+    <td>Datasheet, rev 1.12 &mdash; the magnetic linear encoder used on all axes.
+        Pin table, the Red/Yellow/Green field decode, and the Hall-array location in Figure&nbsp;14
+        that the sensor board's layout depends on.</td>
+    <td><code>AS5311-Datasheet.pdf</code></td>
+    <td><a href="https://download.mikroe.com/documents/datasheets/AS5311.pdf">download.mikroe.com/documents/datasheets/AS5311.pdf</a></td>
+    <td>2026-08-25</td>
+  </tr>
+
+  <tr>
+    <td><strong>ESP32-S3-RS485-CAN</strong></td>
+    <td>Waveshare</td>
+    <td>Board schematic &mdash; <span class="warn">the only place the 20-pin header's GPIO map is
+        published.</span> The vendor wiki documents just the 4-pin SH1.0 connector, which is why this
+        was hard to find the first time and is worth keeping.</td>
+    <td><code>ESP32-S3-RS485-CAN-Schematic.pdf</code></td>
+    <td><a href="https://files.waveshare.com/wiki/ESP32-S3-RS485-CAN/ESP32-S3-RS485-CAN-Schematic.pdf">files.waveshare.com/wiki/ESP32-S3-RS485-CAN/ESP32-S3-RS485-CAN-Schematic.pdf</a></td>
+    <td>2026-08-25</td>
+  </tr>
+
+  <tr>
+    <td><strong>69255-004LF</strong></td>
+    <td>Amphenol ICC (FCI)</td>
+    <td>RJ45 modular jack, 8P8C &mdash; <strong>vertical, unshielded, through-hole, no integrated
+        magnetics</strong>. The sensor-board connector: unshielded is what keeps the cable screen
+        grounded at the controller end only, and no magnetics is what lets DC-coupled signals through.</td>
+    <td><code>Amphenol-69255-RJ45-Vertical-Unshielded.pdf</code></td>
+    <td><a href="https://cdn.amphenol-cs.com/media/wysiwyg/files/drawing/69255.pdf">cdn.amphenol-cs.com/media/wysiwyg/files/drawing/69255.pdf</a>
+        <br><span class="warn">browser only</span> &mdash; reached via the
+        <a href="https://www.mouser.com/ProductDetail/Amphenol-FCI/69255-004LF">Mouser product page</a>.</td>
+    <td><span class="warn">not captured</span><br>dimensions read from the drawing by hand
+        2026-08-25 (DIM&nbsp;C = 15.62&nbsp;mm)</td>
+  </tr>
+</table>
+
+<h2>Fetching notes</h2>
+<ul>
+  <li><span class="warn">Both <code>waveshare.com</code> URLs return HTTP&nbsp;403 to a plain fetch</span>
+      &mdash; <code>curl</code> with no user agent, and most scripted downloaders. They serve normally
+      with a browser User-Agent:
+      <br><code>curl -L -A "Mozilla/5.0" -o FILE URL</code></li>
+  <li><span class="warn"><code>cdn.amphenol-cs.com</code> is behind a Cloudflare JavaScript
+      challenge</span> &mdash; curl and scripted fetches get an HTML challenge page with HTTP&nbsp;403,
+      <em>not</em> a PDF. Watch for a ~6&nbsp;KB "PDF": that is the challenge page, not the drawing.
+      Download it in a browser.</li>
+  <li><span class="warn"><code>mouser.com</code> blocks automated fetches too</span> ("Access Denied
+      ... automation tools"), and returns that page with HTTP&nbsp;200 and
+      <code>Content-Type: text/html</code> &mdash; so a naive download script saves a ~14&nbsp;KB
+      "PDF" and reports success. Always check <code>file</code> type or page count after fetching.</li>
+  <li>The vendor wiki page for the module is
+      <a href="https://www.waveshare.com/wiki/ESP32-S3-RS485-CAN">waveshare.com/wiki/ESP32-S3-RS485-CAN</a>
+      (same 403 behaviour); the schematic is linked from its <em>Resources</em> section.</li>
+  <li>ams-OSRAM's own product page has moved at least once. The mirror above is stable and is the
+      revision these documents were read against &mdash; prefer it over a search result, since figure
+      and table numbers cited in this repo are revision-specific.</li>
+</ul>
+
+<h2>Adding an asset</h2>
+<ol>
+  <li>Save the file into this folder.</li>
+  <li>Add a row above: part, vendor, what it is, exact filename, the URL it came from, today's date.</li>
+  <li>Commit <em>only</em> this <code>index.html</code>. The <code>.gitignore</code> here already
+      excludes everything else, so the file itself will not be staged by accident.</li>
+</ol>
+
+</main></body></html>

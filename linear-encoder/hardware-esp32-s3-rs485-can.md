@@ -6,14 +6,14 @@ decodes the Hall readers' A/B quadrature in PCNT and reports position to the Tee
 **Why this file exists:** the Waveshare wiki does **not** document the 20-pin header's GPIOs - it lists
 only the 4-pin SH1.0 connector. The header map exists solely in the schematic, as component `P1`, so it
 is easy to look for and conclude it was never published. It was extracted here once and lost; the
-schematic is now committed beside this file.
+schematic is kept in `manufacturer-assets/` (untracked; its `index.html` says where it came from).
 
 ## Sources
 
 | What | Where |
 |---|---|
 | Wiki | <https://www.waveshare.com/wiki/ESP32-S3-RS485-CAN> |
-| Schematic (the authority for everything below) | [`ESP32-S3-RS485-CAN-Schematic.pdf`](ESP32-S3-RS485-CAN-Schematic.pdf) - from <https://files.waveshare.com/wiki/ESP32-S3-RS485-CAN/ESP32-S3-RS485-CAN-Schematic.pdf> |
+| Schematic (the authority for everything below) | `ESP32-S3-RS485-CAN-Schematic.pdf` in [`manufacturer-assets/`](../manufacturer-assets/index.html) - untracked; source <https://files.waveshare.com/wiki/ESP32-S3-RS485-CAN/ESP32-S3-RS485-CAN-Schematic.pdf> |
 
 Both waveshare.com URLs return **HTTP 403 to a plain fetch**; they serve normally with a browser
 User-Agent. That is what makes this hard to re-find with a tool rather than a browser.

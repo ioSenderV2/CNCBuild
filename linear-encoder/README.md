@@ -8,11 +8,11 @@ built.**
 |---|---|
 | **[`design-can-position-feedback.md`](design-can-position-feedback.md)** | **Start here.** The whole design: scope, the sensors, the machine's layout, staleness, the CAN frame, grblHAL integration, failure modes, phasing, and the wiring (§14). |
 | [`hardware-esp32-s3-rs485-can.md`](hardware-esp32-s3-rs485-can.md) | The ESP32 module's 20-pin header map - **not documented on the Waveshare wiki**, only in the schematic. |
-| [`AS5311-Datasheet.pdf`](AS5311-Datasheet.pdf) | The sensor, rev 1.12. Committed rather than linked. |
-| [`ESP32-S3-RS485-CAN-Schematic.pdf`](ESP32-S3-RS485-CAN-Schematic.pdf) | The module. Also committed rather than linked - both waveshare.com URLs 403 a plain fetch. |
+| [`../manufacturer-assets/`](../manufacturer-assets/index.html) | The AS5311 datasheet (rev 1.12) and the module schematic. **Untracked** - third-party documents in a public repo. The tracked `index.html` there records where each came from, including the browser-User-Agent trick both waveshare.com URLs need. |
 
-Datasheets are **in the repo on purpose**: the header map was extracted once, lost, and had to be found
-again. A link is not a copy.
+The datasheets are **kept on disk on purpose**: the header map was extracted once, lost, and had to be
+found again. A link is not a copy - but nor is someone else's document ours to republish, so the files
+stay untracked and `../manufacturer-assets/index.html` records how to fetch each one.
 
 ## What is not here yet
 
