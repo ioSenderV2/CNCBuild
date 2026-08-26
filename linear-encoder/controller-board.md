@@ -26,7 +26,11 @@ board level. Their back faces slope away, so the usable length grows with height
 | At height | Usable length |
 |---|---|
 | board level | 64 mm |
-| **12 mm (the planned standoff)** | **67-68 mm** |
+| **12 mm** | **67-68 mm** |
+
+12 mm is where that budget was measured, **not a ceiling** - the sloped backs mean more height gives
+more length. Since the tallest component in the footprint also measures 12 mm (check 3), the standoff
+will likely need to be 13-14 mm, which only improves the length available.
 
 **Four discrete jacks, 15.6 mm wide, on a 16 mm pitch = 64 mm** (ordered 2026-08-25). A ganged 1x4 in a
 single shielded housing was looked for and **not found**, so discrete it is. 64 mm against the 67-68 mm
@@ -193,15 +197,17 @@ Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above 
 2. ~~Do the terminal blocks' screws face up?~~ **No - they are accessed from the ENDS of the module,
    not the sides or top** (confirmed 2026-08-25). Overhanging their sloped backs blocks nothing, so the
    board can take the full 67-68 mm without giving any length back.
-3. **Measure the tallest component in the footprint yourself**, including the RTC battery header. 15 mm
-   is from the terminal blocks; the standoff must clear whatever is actually highest.
+3. 🔶 **Tallest component in the footprint measures 12 mm** (2026-08-25) - the 15 mm terminal blocks
+   sit outside it, at the ends. **Open: the standoff must therefore be MORE than 12 mm**, or the board
+   rests on that component. Suggest 13-14 mm. This costs nothing: the terminal blocks' backs slope away,
+   so raising the standoff only grows the length budget beyond 67-68 mm. Confirm whether the 12 mm
+   figure is the component height or a clearance already allowed.
 4. ~~Confirm no integrated magnetics~~ **Confirmed 2026-08-25: none.** The listing's photographs show
    **eight signal pins plus two shield tabs and nothing else**. Magnetics cannot hide - transformers
    need centre-tap pins - so a bare 8+2 pin field settles it.
 5. ~~Which way the jack openings face~~ **Settled 2026-08-25** - see *Orientation* below.
 6. ~~Where does P1 sit, and does its pin field clear the jacks'?~~ **Resolved 2026-08-25 by
    measurement - 3 mm of clearance.** See *The header-versus-jack collision* below.
-7. 🔶 **Reconcile the jack's two published dimensions with calipers on arrival.** The listing's spec
-   table calls 16 mm the "length" while its drawing labels 18.2 mm the "length" - one is mislabelled.
-   Working assumption is **16 mm wide x 18.2 mm deep**, which is what makes the design work; the other
-   reading (18.2 wide) needs 72.8 mm for four jacks against a 67-68 mm budget and only three would fit.
+7. ~~Reconcile the jack's two published dimensions~~ **Settled 2026-08-25: 16 mm is the WIDTH,
+   18.2 mm is the LENGTH (depth).** The favourable reading was the right one - four jacks need 64 mm of
+   the 67-68 mm length, and 18.2 mm of depth clears the 20 mm width with 1.8 mm spare.
