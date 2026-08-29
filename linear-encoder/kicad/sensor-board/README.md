@@ -9,11 +9,16 @@ Schematic for the board described in [`../../sensor-board.md`](../../sensor-boar
 | `netlist.txt` | The connection list, generated from the same source as the schematic. |
 | `generate.py` | The seed that produced the first version. See the warning below. |
 
-> 🔴 **`generate.py` stops being the source of truth the moment KiCad saves this file.**
-> That is what happened to the controller board: Eeschema upgraded the format and re-running the
-> script would have overwritten the result. Until this schematic has been opened, the script is the
-> live source and editing it is fine. **After Eeschema has saved it, treat the `.kicad_sch` as the
-> document** and keep `generate.py` only as the record of how the netlist was derived.
+> 🔴 **`generate.py` is already a SEED, not the source of truth - as of 2026-08-29.**
+> It took one `kicad-cli sch erc` run: the tool **re-saves the schematic**, upgrading it from the
+> `version 20231120` header the script writes to KiCad 10's own format (and to CRLF, which
+> `.gitattributes` normalises back to LF on commit). Nobody opened Eeschema; running the checks was
+> enough. **Re-running `generate.py` now overwrites whatever KiCad wrote, including any layout or
+> hand edits.** Treat the `.kicad_sch` as the live document, keep the script as the record of how the
+> netlist was derived, and if the design changes, edit in Eeschema and update `netlist.txt` to match.
+>
+> Connectivity was re-checked **after** the upgrade: all 12 nets and every node still identical, and
+> all 9 `no_connect` markers intact. The format change carried the design across without loss.
 
 ## Status: verified against KiCad 10.0.5
 

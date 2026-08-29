@@ -6,3 +6,4 @@ kicad-export.net
 *.kicad_prl
 fp-info-cache
 _autosave-*
+~*.lck

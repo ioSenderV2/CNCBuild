@@ -189,9 +189,51 @@ it is the reason for this specific assignment rather than a tidier-looking one.
   with an alternative 1 nF ‖ 1 MΩ position, so the strategy can change without cutting traces.
 - **Ground pour** under the signal fan-out. The return path matters more than trace width here.
 
-Current draw is trivial: 4 x 21 mA ≈ 84 mA (§1.3), on a rail rated far above it.
+## Power - the board makes none of it
+
+This board is a **fan-out, not a supply**. `3V3` arrives on **P1 pin 1** from the module and goes
+straight out to the four jacks' pin 4 and the four pull-ups. Nothing is regulated here, and there is
+no local energy storage - see the open item below.
+
+The chain, read off `ESP32-S3-RS485-CAN-Schematic.pdf` in
+[`../manufacturer-assets/`](../manufacturer-assets/index.html):
+
+| | |
+|---|---|
+| Regulator | **U1, MP1605GTF-Z** synchronous buck (L1 = 1 µH) |
+| Input | 5 V - VIN range 2.3-5.5 V |
+| Feedback | 0.6 V, R4 200 kΩ ‖ R5 44.2 kΩ, both 1% |
+| **Output** | **0.6 x (1 + 200/44.2) = 3.314 V** |
+| **Rated** | **Iout max 2 A** |
+
+`U3` (`B0505LS-1W`) is the isolated 1 W DC-DC for the RS485 side only. It does not feed this rail.
+
+**The budget, with numbers rather than "far above it":**
+
+| | |
+|---|---|
+| 4 x AS5311 at 21 mA max (16 mA typ) | 84 mA (64 mA) |
+| 4 x 2.2 kΩ pull-ups, only while `MagDECn` is asserted | 6 mA |
+| **Total against a 2 A regulator** | **~90 mA, about 4%** |
+
+Cable drop is a non-issue: 2.4 m of 24 AWG is ~0.4 Ω out and back, so ~9 mV at 21 mA, against an
+AS5311 that accepts 3.0-3.6 V on a 3.314 V rail.
+
+**The constraint is upstream of the module, not here.** The MP1605 has room to spare; what feeds the
+module's 5 V does not necessarily. On USB-C at 500 mA the ESP32-S3 itself dominates and these sensors
+are a modest addition; off the terminal block it is whatever supply is fitted. Size that supply for
+the module *plus* ~90 mA, not for the module alone.
 
 ## Open - check before layout
+
+0. **There is no bulk decoupling on this board's `3V3`, and there probably should be.** The netlist's
+   twelve capacitors are all 330 pF-1 nF RC filters on *signal* lines; `+3V3` carries only
+   `J1.4 J2.4 J3.4 J4.4 J5.1` and the four pull-up tops - **not one capacitor**. Four cables fan out
+   from a single header pin with nothing local to supply a transient, and each sensor's own
+   `100 nF + 10 µF` sits 2.4 m away at the far end of its cable, which is exactly where it *cannot*
+   help this end. Proposed: **10 µF + 100 nF at P1 pin 1**, before the fan-out. Cheap, two parts, and
+   the alternative is finding out on a bench with four sensors hot-plugging one at a time.
+   Not yet in the schematic - decide, then add it there and to `netlist.txt` together.
 
 1. ~~Does the 20 mm width constraint relax at 12 mm?~~ **Moot - the board stays 20 mm** (decided
    2026-08-25, matching the module) and the 18.2 mm jack depth fits inside it. See *Board outline*.
