@@ -8,3 +8,8 @@
 .claude/settings.local.json
 .claude/worktrees/
 .claude/scheduled_tasks.lock
+
+# kicad-cli writes <name>-erc.rpt / <name>-drc.rpt into the working directory when
+# --output is omitted. Generated on demand - regenerate, do not track.
+*-erc.rpt
+*-drc.rpt

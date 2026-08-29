@@ -1,0 +1,22 @@
+Sensor board - net list
+generated from the same source as the schematic
+============================================================
+
+A         D1.1  J1.1  R1.2
+A_SRC     R1.1  U1.4
+B         D1.2  J1.3  R2.2
+B_SRC     R2.1  U1.5
+CLK       TP1.1  U1.13
+CSN       R4.1  U1.14
+DO        TP2.1  U1.12
+MAGD      D1.3  J1.7  R3.2
+MAGD_SRC  R3.1  U1.3
+MAGI      TP3.1  U1.2
++3V3      C1.1  C2.1  D1.4  J1.4  U1.18  U1.19
+GND       C1.2  C2.2  D1.5  J1.2  J1.5  J1.6  J1.8  R4.2  U1.8  U1.9
+
+Cable pinout (must match ../controller-board/netlist.txt):
+  1=A  2=GND  3=B  4=+3V3  5=GND  6=GND  7=MagDECn  8=GND
+
+Not connected on U1: 1, 6, 10, 11, 16, 17, 20 (datasheet: must be left
+unconnected), plus 7 (Index) and 15 (PWM), which this design does not use.
