@@ -1,0 +1,60 @@
+{
+  "_comment": [
+    "This project's inputs to the shared turn-loop hooks in claude-hub/hooks/.",
+    "The mechanism lives in the hub; every string specific to CNCBuild lives here.",
+    "Layered over hub defaults.json - `denies` merge by name and then FIELD BY FIELD, so the hub's",
+    "'push' rule applies here unchanged and is deliberately not restated.",
+    "Canonical docs: c:\\github\\claude-hub\\playbooks\\turn_workflow_loop.md (the loop)",
+    "                c:\\github\\claude-hub\\playbooks\\onboard_a_project.md (how this file got here)."
+  ],
+
+  "project": "CNCBuild",
+
+  "source": {
+    "_extensions": "The KiCad design files, plus the Python that can regenerate the schematic. Markdown is deliberately NOT source: this repo is mostly prose - build notes, commissioning measurements, design write-ups - and the only runnable check here is ERC/DRC, which has nothing to say about an edit to machine/README.md. Demanding it after a prose edit would only teach me to run it as a ritual, or to ignore the gate. Same call Simulator made about its own .md files.",
+    "extensions": ["kicad_sch", "kicad_pcb", "py"],
+
+    "_ignore": "Checked 2026-08-29, and empty on purpose. Nothing writes source into this repo during a turn except me: there is no .github/workflows directory at all, the repo ships no script that commits (grepped the tracked .py/.md/.html for `git add`/`git commit`/`subprocess` - zero hits; generate.py only writes the .kicad_sch), and no other project's tooling targets this repo - the conversation capture commits into claude-hub, not here. Add an entry when a writer appears whose paths intersect the list above, not before.",
+    "ignore": []
+  },
+
+  "verify": {
+    "_note": "A schematic that 'looks right' is not evidence - the whole point of committing the KiCad files is that a machine can check them. ERC catches the schematic errors (unconnected pins, conflicting drivers); DRC with --schematic-parity catches the board ones AND that the PCB still matches the schematic. Either command satisfies the gate, because the mechanism sets 'verified' on the first pattern match - the checklist asks for both, and an edit that touched only one of the two files honestly only needs its own. --exit-code-violations makes a violation a nonzero exit (5), so a failure cannot be mistaken for a pass. Known standing violation as of 2026-08-29: [invalid_outline] no edges on Edge.Cuts - the 67-68 x 20mm outline is settled in prose but not yet drawn. Expect it until it is; do not read it as your change breaking something.",
+    "pattern": "kicad-cli[^\\s]*\\s+(sch\\s+erc|pcb\\s+drc)",
+    "command": "& 'C:\\Program Files\\KiCad\\10.0\\bin\\kicad-cli.exe' sch erc --severity-error --exit-code-violations linear-encoder\\kicad\\controller-board\\controller-board.kicad_sch ; & 'C:\\Program Files\\KiCad\\10.0\\bin\\kicad-cli.exe' pcb drc --schematic-parity --severity-error --exit-code-violations linear-encoder\\kicad\\controller-board\\controller-board.kicad_pcb",
+    "label": "KiCad ERC + DRC"
+  },
+
+  "denies": [],
+
+  "checklist": [
+    "== TURN LOOP (c:\\github\\claude-hub\\playbooks\\turn_workflow_loop.md - canonical, follow all of it) ==",
+    "1. PLAN FIRST. Before the first Edit/Write, state in your visible response what you understood and",
+    "   how you intend to do it. A plain question (\"can we...\", \"is X possible...\") is a DISCUSSION -",
+    "   answer it and stop. Record it:",
+    "   c:\\github\\claude-hub\\tools\\turn.ps1 plan \"<restated ask + approach>\"",
+    "2. IMPLEMENT. One AskUserQuestion call at a time.",
+    "3. COMMIT AS YOU GO - each piece the moment it is verified. Never save commits up.",
+    "4. VERIFY, if the edit touched a KiCad file:",
+    "   & 'C:\\Program Files\\KiCad\\10.0\\bin\\kicad-cli.exe' sch erc --severity-error --exit-code-violations <sch>",
+    "   & 'C:\\Program Files\\KiCad\\10.0\\bin\\kicad-cli.exe' pcb drc --schematic-parity --severity-error --exit-code-violations <pcb>",
+    "5. HAND OFF - say plainly what is settled and what still needs a measurement off the machine.",
+    "",
+    "THIS REPO'S SHAPE (README.md is canonical):",
+    "- THE MACHINE IS THE AUTHORITY, NOT THE CONFIGURATION. Anything in commissioning/ was measured;",
+    "  anything quoted from a config file is labelled as such. $130 once read 889mm against a real",
+    "  860mm because a catalog preset overwrote a measured value - and quietly cost soft-limit",
+    "  protection until it was found by accident.",
+    "- DATASHEETS ARE COMMITTED, NOT LINKED. A link is not a copy: the ESP32 module's header pinout",
+    "  was extracted once, lost, and had to be recovered from a schematic - and both vendor URLs",
+    "  refuse a plain fetch.",
+    "- generate.py is a SEED, not live tooling. KiCad owns controller-board.kicad_sch now, and the",
+    "  script still writes that absolute path - running it would overwrite hand edits. Do not run it",
+    "  to 'refresh' anything without being asked.",
+    "- Ask before inventing a wiring or dimension detail. The user corrects iteratively and dislikes",
+    "  invented specs; an unknown stays unknown until it is measured.",
+    "- The firmware (stevenrwood/iMXRT1062, branch srw/local-build-config) and ioSender itself live in",
+    "  other repos. Work on either is a SEPARATE session there - one project per session, or the",
+    "  conversation log files under the wrong project."
+  ]
+}

@@ -1,2 +1,10 @@
 # VS Code Local History - an embedded git repo, never ours to track
 .history/
+
+# Claude Code - per-turn state is regenerated every turn; settings.json and
+# turn-config.json ARE tracked (see claude-hub/playbooks/onboard_a_project.md)
+.claude/turn-state.json
+**/.claude/turn-state.json
+.claude/settings.local.json
+.claude/worktrees/
+.claude/scheduled_tasks.lock
