@@ -11,6 +11,7 @@ folder was the wrong home for them.
 | [`machine/`](machine/) | The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons |
 | [`linear-encoder/`](linear-encoder/) | Magnetic linear scales + AS5311 + ESP32-S3 → CAN → grblHAL. The most developed subsystem; design complete, nothing built |
 | [`commissioning/`](commissioning/) | Measurements taken **from the machine** - travels, squaring, tape extents. The authority when the config disagrees |
+| [`wiring/`](wiring/) | How the boxes connect - the DB37 between the controller box and the remote axis breakout box |
 
 ## What lives elsewhere
 
