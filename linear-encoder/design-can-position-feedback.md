@@ -315,6 +315,19 @@ A normally-closed switch is fail-closed: every way it can break is a way it stop
 encoder is fail-open - every way it breaks looks like "all is well, the axis is parked". That is the
 wrong direction to fail in for the one device whose job is preventing a crash.
 
+> **The sensors actually fitted are NO, recorded 2026-09-10.** They are **SN04-N** - NPN, normally
+> open - so the left-hand column of that table does not describe this machine. A broken wire, a dead
+> sensor or a pulled connector all read *clear*, and the machine drives on.
+>
+> **This does not change the conclusion of §3.** The switches still stay: the three reasons below
+> are each independently sufficient, and none of them is about fail direction. What it changes is
+> that the fail-closed argument above is currently an argument for a part that is not installed. The
+> drop-in NC variant is **SN04-N2** - same body, bracket, cable and wire colours.
+>
+> Consequences for the wiring are in [`../wiring/breakout-box.md`](../wiring/breakout-box.md); the
+> connector that inherited this property, and then lost it, is in
+> [`../wiring/db37-axis-interconnect.md`](../wiring/db37-axis-interconnect.md).
+
 ### Three more reasons, each independently sufficient
 
 - **Latency.** A hard limit is wired into the driver and can stop motion inside the ISR. A CAN report

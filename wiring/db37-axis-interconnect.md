@@ -105,16 +105,39 @@ The cable decides whether this works. Ordering by pin count alone is how it goes
   earth, so a chassis-to-chassis bond over 1.5 m is what you want - not a single-ended shield.
 - Not ribbon.
 
-## The connector fails in the right direction
+## The two cables that run beside it
 
-The limit switches are **NC** - settled in
-[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md),
-§3, *Fail-closed versus fail-open*.
+The DB37 is not the only thing between the boxes. The breakout box holds the supplies, so it feeds
+the controller box rather than the other way round:
 
-So pulling the DB37 opens every limit at once and the machine faults. Concentrating all four axes
-into a single connector would be a real objection if the limits were NO; with NC it is the correct
-direction to fail, and the same argument that kept the switches applies to the connector carrying
-them.
+| Cable | Carries | For |
+|---|---|---|
+| **DB37** | The 30 axis signals above | |
+| **5 V + GND** | From the 5 V / 3 A buck | The controller box's logic supply |
+| **12 V + GND** | From the 12 V / 3 A buck | The relays in the controller box |
+
+**The boxes share a common ground.** That is what makes one GND per axis sufficient here - the DB37
+grounds are a reference, not the only return path.
+
+It also means the 5 V return runs in parallel with the five DB37 GND pins. That is fine: at
+plausible gauges it puts the two ground nodes tens of millivolts apart, against an opto threshold of
+about 1.2 V. The ground arrangement that *does* matter is in [`breakout-box.md`](breakout-box.md).
+
+## ⚠️ The connector no longer fails safe
+
+**This section previously claimed the opposite**, written while
+[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
+§3's **NC** decision was assumed to hold. The sensors actually fitted are **SN04-N: NPN, normally
+open** - see [`breakout-box.md`](breakout-box.md).
+
+With NC limits, pulling this connector opened every limit at once and faulted the machine, and
+concentrating five axes into one shell cost nothing. **With NO limits it does.** A DB37 that is
+unplugged, half-seated, or has a broken limit conductor reads *clear* on every axis at once, and the
+machine will drive into a stop.
+
+Nothing about the pinout changes. What changes is that this connector is now a single point whose
+failure is **silent** - so it wants screw locks at both ends, and a homing cycle treated as the test
+that it is seated.
 
 ## ⚠️ Open
 
@@ -124,10 +147,9 @@ Not guessed. Each needs an answer off the bench before the box is built.
    current, typically 8-16 mA per input. What buffers the Teensy's 3.3 V pins has not been checked.
    The failure signature is Step working at low feed and dropping pulses at high - meter it before
    trusting it.
-2. **What physically terminates in the breakout box per axis.** One connector carrying all six, or
-   the driver signals and the limit switch arriving on separate cables? Decides the box's front
-   panel.
-3. **Where the drivers sit.** The DB37 carries controller↔driver logic, which puts the drivers at
-   the machine end rather than in the controller box - stated here as the reading, not as a fact.
-4. **Spare pin allocation.** Seven pins (19, 32-37) are unassigned. Probe, spindle and E-stop have
+2. **Spare pin allocation.** Seven pins (19, 32-37) are unassigned. Probe, spindle and E-stop have
    not been considered against them.
+
+**Answered since first written:** what terminates in the breakout box, and where the drivers sit -
+both in [`breakout-box.md`](breakout-box.md). The drivers are **at the motors**; the steppers are
+integrated closed-loop units, so this cable carries logic and never motor phases.

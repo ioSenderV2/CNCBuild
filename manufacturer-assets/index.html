@@ -83,6 +83,22 @@
     <td><span class="warn">not captured</span><br>dimensions read from the drawing by hand
         2026-08-25 (DIM&nbsp;C = 15.62&nbsp;mm)</td>
   </tr>
+
+  <tr>
+    <td><strong>SN04-N</strong></td>
+    <td>Handson Technology<br>(sold as Haldzemo)</td>
+    <td>Inductive proximity sensor, 4&nbsp;mm, IP67 &mdash; the axis limit sensors.
+        <strong>NPN normally open, 6&ndash;36&nbsp;V, 300&nbsp;mA, 500&nbsp;Hz, 1.2&nbsp;m captive
+        cable.</strong> Page&nbsp;3 carries the terminal assignment (brown&nbsp;=&nbsp;+V,
+        black&nbsp;=&nbsp;output, blue&nbsp;=&nbsp;0&nbsp;V) and page&nbsp;4 the NPN/PNP drawing that
+        together prove the output is <em>open collector with no internal pull-up</em>.
+        <span class="warn">Page&nbsp;3's Arduino circuit yields 4.8&nbsp;V and must not be copied
+        onto a 3.3&nbsp;V controller</span> &mdash; see
+        <code>wiring/breakout-box.md</code>.</td>
+    <td><code>SN04-Proximity-Sensor-Datasheet.pdf</code></td>
+    <td><a href="https://www.handsontec.com/dataspecs/sensor/SN04-Metal%20Detector.pdf">handsontec.com/dataspecs/sensor/SN04-Metal&nbsp;Detector.pdf</a></td>
+    <td>2026-09-10</td>
+  </tr>
 </table>
 
 <h2>Fetching notes</h2>
