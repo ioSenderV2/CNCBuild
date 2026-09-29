@@ -160,8 +160,14 @@ magnetisation, and the result would look like a localised position error with no
 
 **Length budget: it fits, comfortably.** The tape is fixed to the extrusion and the sensor rides in the
 plate's bore, so what a tape must span is **the range that bore sweeps** - not the extrusion length, not
-the plate width. Every bit of end-of-travel dead zone is tape not bought. The machine (Mega V XL) has
-1080 mm extrusions on X, Y and A, but the plates stop well short of the ends.
+the plate width. Every bit of end-of-travel dead zone is tape not bought — the plates stop well short
+of the extrusion ends.
+
+> ⚠️ **Open: the numbers below are from the superseded Mega V XL geometry** (1080 mm extrusions on X,
+> Y and A; 150 mm plates). The design itself is for the current build and stands — but that build's
+> gantry beams are **1000 mm** (see [`../machine/gantry-beam-joint.md`](../machine/gantry-beam-joint.md)),
+> and its travels are not yet established. **Re-derive this table before cutting tape.** The method is
+> unaffected; only the inputs are stale. The 3000 mm of tape in stock is real.
 
 | Axis | Tape - **upper bound**, pending measurement |
 |---|---|

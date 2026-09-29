@@ -1,6 +1,7 @@
 # CNCBuild
 
-The machine: a **Mega V XL**, and everything about building, wiring, configuring and instrumenting it.
+The machine, and everything about building, wiring, configuring and instrumenting it. Gantry beams are
+**stacked pairs of 8020 `30-6060`** on HGR20 rails and 1605 ball screws.
 
 Written down because these facts kept getting re-derived in conversation - travels, plate dimensions,
 what shares a drag chain, which stored setting disagreed with the machine. A firmware fork's scratch

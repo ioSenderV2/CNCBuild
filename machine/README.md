@@ -1,44 +1,48 @@
 # The machine
 
-**Mega V XL.** Recorded as established; measured values belong in [`../commissioning/`](../commissioning/).
+The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons.
+Measured values belong in [`../commissioning/`](../commissioning/).
+
+| File | What is in it |
+|---|---|
+| [`gantry-beam-joint.md`](gantry-beam-joint.md) | Each gantry beam is two stacked 8020 `30-6060`. How they are tied together, and the four schemes that were killed getting there |
 
 ## Frame and motion
 
 | | |
 |---|---|
-| Extrusions | **1080 mm** on X, Y and A |
-| Rack gear | 1000 mm, centred in the 1080 mm ⚠️ *see the open question below* |
-| Rails | 1 m linear rails |
-| Ball screws | 1 m; **1605** on Z |
-| Plates | **150 mm (6")** on X and Y |
-| Ball nut block | **55 mm** along the screw |
-| Closest approach before the plate hits a stop | **76 mm** ⚠️ *reference edge not yet established* |
-| Z gantry plate | 1/2" (12.7 mm) aluminium |
-| Sensor bores | **35 mm** in each X-axis endplate and in the X gantry plate |
+| Gantry beams | **Two 8020 `30-6060` stacked** — 60 mm wide × 120 mm tall, **1000 mm** long |
+| Rails | **HGR20**, one per profile on the front face, 17 × M5 at 60 mm into T-nuts |
+| Ball screws | **1605**, with BK12 / BF12 supports bolted to the end plates |
+| Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
+| Y beams | **Do not move** — their end plates bolt to the torsion box |
+| Y axis assembly mass | **37 lb** each, before the joining plates |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
 firmware config, so the second Y motor is M3.
 
-### ⚠️ Open: rack gear *and* ball screws?
+### ⚠️ Open: end plates not yet designed
 
-Both are recorded above because both were stated, and they are normally alternatives. Either the machine
-is mid-conversion from rack-and-pinion to ball screw, or they apply to different axes. Resolve before
-either number is used for anything.
+They carry the ball screw supports (M5), bolt the Y beams to the torsion box, and are what ties both
+stacked profiles together at each end. Nothing is drawn yet.
 
-### ⚠️ Open: what the 76 mm is measured from
-
-It decides travel per long axis - roughly 778 mm if it is the plate's outer edge against the extrusion
-end, roughly 848 mm if it is clearance at each end of the screw. Both fit the tape budget, so nothing is
-blocked; it matters because the number will otherwise get quoted later as though it were measured. The
-marking procedure in [`../linear-encoder/`](../linear-encoder/) §14 produces the real figure.
+🔴 **This conflicts with the encoder design.**
+[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
+§ "The sensor mount" states that each endplate and the X gantry plate **already has a 35 mm hole** -
+written when those plates existed. On this build they do not exist yet. Either that 35 mm bore
+becomes a **requirement on the end plate design** rather than an existing feature, or the mount
+changes. Decide it before the end plates are cut; the puck mount depends on it.
 
 ## Cable routing
 
-The two gantry-end encoder cables run **inside the extrusion**, then through the **drag chain** - which
-also carries **the spindle cable** and the stepper cables.
+The two gantry-end encoder cables run **inside the extrusion**, then through the **drag chain** -
+which also carries **the spindle cable** and the stepper cables.
 
-**The spindle cable is the first thing to move if anything looks wrong.** A VFD lead is the worst emitter
-on the machine and in the chain it runs parallel to the encoder cables for their whole length. The route
-is already chosen: overhead, with the coolant and air lines. This is written down because the failure
-signature is counts drifting over hours, which reads exactly like lost steps and sends you to the
-mechanics instead of the cable.
+**The spindle cable is the first thing to move if anything looks wrong.** A VFD lead is the worst
+emitter on the machine and in the chain it runs parallel to the encoder cables for their whole
+length. The route is already chosen: overhead, with the coolant and air lines. This is written down
+because the failure signature is counts drifting over hours, which reads exactly like lost steps and
+sends you to the mechanics instead of the cable.
+
+Drag chain brackets bolt **through the back joining plate** into T-nuts in the outer slots - see
+[`gantry-beam-joint.md`](gantry-beam-joint.md).
