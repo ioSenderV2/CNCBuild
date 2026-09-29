@@ -133,6 +133,13 @@
       ... automation tools"), and returns that page with HTTP&nbsp;200 and
       <code>Content-Type: text/html</code> &mdash; so a naive download script saves a ~14&nbsp;KB
       "PDF" and reports success. Always check <code>file</code> type or page count after fetching.</li>
+  <li><span class="warn"><code>8020.net</code> is behind a Cloudflare JavaScript challenge</span>
+      &mdash; both a plain fetch and one with a browser User-Agent return HTTP&nbsp;403 with a
+      ~5.6&nbsp;KB <em>"Just a moment..."</em> page. Same trap as Amphenol above: it is HTML that
+      looks like a successful download. <strong>Browser only.</strong> The product description on
+      <a href="https://8020.net/30-6060.html">8020.net/30-6060.html</a> must also be
+      <strong>expanded</strong> before the drawing and the load/capacity data are visible &mdash;
+      they are not in the collapsed page.</li>
   <li>The vendor wiki page for the module is
       <a href="https://www.waveshare.com/wiki/ESP32-S3-RS485-CAN">waveshare.com/wiki/ESP32-S3-RS485-CAN</a>
       (same 403 behaviour); the schematic is linked from its <em>Resources</em> section.</li>
