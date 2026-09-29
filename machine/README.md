@@ -26,12 +26,14 @@ firmware config, so the second Y motor is M3.
 They carry the ball screw supports (M5), bolt the Y beams to the torsion box, and are what ties both
 stacked profiles together at each end. Nothing is drawn yet.
 
-🔴 **This conflicts with the encoder design.**
+**Deferred, not blocking: the 35 mm sensor bore.**
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
-§ "The sensor mount" states that each endplate and the X gantry plate **already has a 35 mm hole** -
-written when those plates existed. On this build they do not exist yet. Either that 35 mm bore
-becomes a **requirement on the end plate design** rather than an existing feature, or the mount
-changes. Decide it before the end plates are cut; the puck mount depends on it.
+§ "The sensor mount" reads as though each endplate and the X gantry plate **already has a 35 mm
+hole**. That was written against plates that existed; on this build **nothing has been drilled**.
+
+So it is not a conflict to resolve - it is simply a **feature to include when these plates are
+designed**, and the encoder design's wording will want a light touch once they are. Carry it as an
+input to the end plate design, not as an open question.
 
 ## Cable routing
 
