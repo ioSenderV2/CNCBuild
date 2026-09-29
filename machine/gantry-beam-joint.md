@@ -4,6 +4,9 @@
 120 mm tall, 1000 mm long. This file records how they are tied together, why the obvious methods do
 not work on this profile, and which numbers are measured versus estimated.
 
+Photographs of the parts are in [`photos/`](photos/); the 8020 cross-section drawing is in
+[`../manufacturer-assets/`](../manufacturer-assets/), untracked.
+
 The repo's standing rule applies throughout: anything below marked **measured** came off the parts on
 the bench. Anything marked **estimate** is arithmetic and is labelled as such, because it will
 otherwise get quoted later as though it had been measured.
@@ -49,6 +52,7 @@ Two reasons, and the second is the one that decided the design.
    reacted as a couple between the two rails — upper pulled one way, lower pushed the other.
    **That couple is carried straight across the interface as shear.** With nothing joining the
    profiles, each takes its half and bends independently in the direction the cutting load acts.
+   ([photo](photos/gantry-stack-rails-front.jpg))
 
 So the joint is in the primary load path, not a refinement.
 
@@ -97,7 +101,7 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | | |
 |---|---|
 | Profile | 8020 `30-6060`, two stacked, **1000 mm** |
-| Clear gap between bearing blocks, front face | **46.7 mm** |
+| Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
 | Clearance under the block overhang | **4.5 mm** |
 | M8 flange head | **17.3 mm** diameter, **5 mm** high |
@@ -117,6 +121,9 @@ the thickest section anywhere in the profile.
 This was checked by eye down the end of a real extrusion, and it **overrode a reading of the 8020
 drawing** that had inferred a solid rib there. It is the single fact that killed two otherwise
 plausible schemes below. The drawing does not make it obvious; the part does.
+
+See [`photos/gantry-stack-end-view-bk12.jpg`](photos/gantry-stack-end-view-bk12.jpg) - the clearest
+view of the voids, and of the corner bores running lengthwise.
 
 ### From the 8020 drawing — catalog, not measured
 
