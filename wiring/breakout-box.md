@@ -132,6 +132,60 @@ the encoder design doc uses for its own latency argument - 267 mm/s - the axis t
 Recorded because this repo cares about where travel numbers come from. It is not an objection: the
 sensor is the backstop, and 0.5 mm of it is the cost.
 
+## The drives are HBT57C - and three things follow
+
+Added 2026-09-29, from notes written in an ioSender session on 2026-09-26. **Not yet folded in
+properly** - the full HBT57C material (LED fault codes, the ENA-reset question, $744/$745) is
+scheduled to land in this folder and has not. Until it does, the memory note is the fuller source.
+
+**TOSEASTARS HBT57C**, 57 frame / NEMA 23, 24-55 V DC, 36 V recommended. The manual is not in
+[`../manufacturer-assets/`](../manufacturer-assets/) yet, which this repo's own rule says it should
+be.
+
+### ⚠️ AL has no pull-up today, which is why it has never asserted
+
+Pins 11/12 are **AL+ / AL-**, open collector, max pull-up 24 V / 100 mA. AL+ is the collector and
+AL- the emitter, so it is a **floating switch** - tying AL- to the shared GND at the connector is
+what makes the single-GND scheme on this page work for it.
+
+**An open collector with nothing pulling it up never shows a level.** There is no pull-up in the
+build today, and that alone accounts for the alarm never having been seen to work. It needs one,
+and — exactly as for the limit sensors above — **not the manual's 24 V / 2 kΩ near a Teensy pin.**
+
+### ⚠️ AL fails open, so it is not a guard on its own
+
+Fault means the transistor conducts and the line goes low. But **a drive with no power, or a broken
+AL wire, leaves the transistor off** - the pull-up wins, the line reads high, and that reads as
+*healthy*. A dead or unplugged drive looks fine.
+
+It becomes a real guard only when paired with a **driver-power-present** input: *power present AND
+no alarm* = healthy. Neither half is sufficient. **There is no pin allocated for that signal** -
+it is a candidate for the seven spares in
+[`db37-axis-interconnect.md`](db37-axis-interconnect.md).
+
+This is the same failure direction as the NO limit sensors above. Two of the three things that are
+supposed to stop this machine currently fail silent.
+
+### ⚠️ Do not daisy-chain the 48 V
+
+The manual is explicit: *"parallel connection should be adopted at the power supply, and chain
+connection from one driver to another is not allowed."* A chained rail makes both over- and
+under-voltage trips far likelier at the far end.
+
+So the star rule above is **not only about the returns** - the 48 V positive runs from the PSU to
+each drive as its own leg too. Never verified against how the machine is actually wired today.
+
+### Note on the five AL pins
+
+grblHAL has **$744 / $745** and raises **Alarm 17, motor fault**, and the core defines *per-axis*
+fault inputs. But the Teensy driver implements only a **single combined** motor-fault pin across
+every board map - so five separate AL conductors are ahead of the firmware, and today they would
+have to be wire-ORed into one input.
+
+Keeping them separate in the connector is still the right call: the wiring is nearly free during a
+build and impossible to retrofit cheaply, and per-axis needs only a board-map edit later. Recorded
+so the gap is not mistaken for a wiring error.
+
 ## ⚠️ Open
 
 1. **Controller draw on the 5 V rail.** The buck is rated 3 A; the actual draw, and the gauge of the
@@ -139,11 +193,25 @@ sensor is the backstop, and 0.5 mm of it is the cost.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V
    direct, or 5 V if its inputs are buffered. The breakout box has 5 V but not 3.3 V, so this also
    decides whether the resistor sits in the breakout box or at the controller.
-3. **Where the opto commons sit inside the integrated steppers.** This scheme ties each drive's
-   signal common to its own power ground at the connector. Whether they are already common inside
-   the unit is a datasheet question - and per this repo, that datasheet should be committed here.
+3. **48 V against a 55 V over-voltage trip.** The drives trip on over-voltage at a figure the manual
+   states three ways; the memory note says design to **55 V**. A 48 V rail leaves about **7 V** of
+   headroom for regeneration on decel. No regen fault has ever been observed - but it is not
+   recorded what supply voltage that history was accumulated at, and 48 V is a swap-in. Establish
+   the present rail voltage before treating the clean history as applying.
 4. **Peak current per axis on 18 AWG.** 18 AWG is about 21 mΩ/m; the drag-chain run length and the
    drive's peak draw are both unrecorded, so the drop is uncomputed.
-5. **The limit sensor junction.** See the 1.2 m cable above - needed per axis, not yet designed.
-6. **Target plates.** 4 mm non-shielded sensing means something ferrous has to come within 4 mm at
+5. **Where the drives' opto commons sit.** The HBT57C signal pins are **pairs** - PUL+/PUL-,
+   DIR+/DIR-, EN+/EN-, AL+/AL-. The six-wire scheme on this page ties all four minus legs to the
+   shared GND at the connector, which is standard common-cathode practice and is what the AL
+   wire-OR already does. **It is still an assumption**, and it is the one everything else here
+   rests on. Confirm against the manual once that is committed.
+6. **EN polarity.** Genuinely ambiguous in the manual - the FAQ says a low enable prevents motion
+   and that it should be "pulled high or not connected", but it is an opto input where floating
+   means no current. **Measure, do not reason.** The manual also recommends leaving EN
+   unconnected, so they are probably floating on the machine today.
+7. **The limit sensor junction.** See the 1.2 m cable above - needed per axis, not yet designed.
+8. **Target plates.** 4 mm non-shielded sensing means something ferrous has to come within 4 mm at
    each end of travel. Not yet specified.
+9. **The HBT57C manual is not committed.** Per this repo's datasheets-committed rule it belongs in
+   [`../manufacturer-assets/`](../manufacturer-assets/), and several items above cannot be closed
+   without it.
