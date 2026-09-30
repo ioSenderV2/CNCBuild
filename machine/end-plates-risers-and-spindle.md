@@ -308,14 +308,33 @@ honest trade: **spend travel, not stiffness.**
 
 #### The travel budget
 
-Rails are **400 mm**. Two ~77 mm blocks butted leaves roughly **246 mm** before end clearances, and
-**spreading the blocks costs travel one for one** - a millimetre apart is a millimetre of stroke, and
-buys a millimetre of supported plate.
+Rails are **400 mm**. ✅ **Measured travel with the blocks butted: 272 mm.** (An estimate of 246 mm
+assumed 77 mm blocks; working back from the measurement they are about **64 mm** each.)
 
-⚠️ **Measure the real figure rather than taking that arithmetic**: slide the carriage from the nut
-against BF12 up to the nut against BK12. From [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg)
-the nut bottoms on BF12, so **the screw may be the binding constraint rather than the rails** - in
-which case spreading the blocks is partly free.
+#### 🔴 Travel + clamp separation ≈ 336 mm
+
+Align **clamp centres over block centres** - then the load goes straight into the blocks and the
+plate does no bending at all. The block span is then clamp separation plus 64 mm, so:
+
+| Clamp separation | Z travel |
+|---|---|
+| 120 mm | 216 mm |
+| 150 mm | 186 mm |
+| 200 mm | 136 mm |
+| 250 mm | 86 mm |
+
+Call it ~330 mm after end clearances. **Every millimetre of clamp separation costs a millimetre of
+travel.** The spindle's usable body length says how far the clamps *can* spread; this line says what
+it costs.
+
+**Two things soften it:**
+
+- **Clamps need not sit exactly over the blocks.** Slightly outside buys travel back for a small
+  cantilever, and the cube law makes small overhangs genuinely cheap - 20 mm costs about an eighth of
+  what 40 mm does. A curve to slide along, not a hard constraint.
+- **Wider is not purely better.** Clamp couple force goes as one over the separation, so spreading
+  reduces load on plate and blocks - but that path is already stiff. **Plate bending is the softer
+  thing, so alignment matters more than spread.**
 
 **There is room to manoeuvre** - a router of this size wants perhaps 150-200 mm, against ~246 mm
 available. So work in this order rather than iterating:
