@@ -18,7 +18,21 @@ torsion box". Read that first; this file is everything below the top skin.
 | Grid | **19 mm strips, 100 mm high**, between the skins - **egg crate**, see below |
 | Depth overall | **138 mm** (19 + 100 + 19) |
 | Fill | **Sand in the cavities** - filled **last**, on site |
-| Outer left and right walls | **Two 19 mm laminations, 38 mm total** - see the Y beam interface |
+| Outer walls, **all four sides** | **Two 19 mm laminations, 38 mm total**, the outer one standing **61 mm proud** of the top skin - see the Y beam interface |
+
+✅ **Decided 2026-09-30: the doubled wall runs the whole perimeter, not just left and right.** It
+began as the left/right detail that captures the full-height outboard plates. The front and back now
+get it too, because the **front taper fins and the full-width back panel need the same backing face**
+- see "The lateral fix" in
+[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md). Three consequences, all good:
+
+- **One detail everywhere** instead of two. Inner web between the skins, outer lamination 180 mm tall
+  standing on the bottom skin and 61 mm proud, aluminium bolted through it.
+- **It resolves the ⚠️ under "Ledge depth"** below, which anticipated exactly this. Every ledge is
+  now 38 mm, the tenons shrink accordingly, and the **back post's single-sided shoulder roughly
+  doubles** - which fixes the one wart in that section rather than working around it.
+- **It is the deep back-edge member** the sag section asks for. The back wall becomes a composite
+  ~180 mm deep along the whole back edge, on the span that is supported only at its midpoint.
 
 ⚠️ **The grid spacing is not decided.** Every tenon rises into the cavity, so no rib may cross
 one - but that lands differently for the front and back posts. See "What the tenons ask of the
@@ -107,6 +121,12 @@ letting the box land on one destroys the three-point mount. Skin thickness is a 
 spanning problem; a **deep back-edge member**, running below the bottom skin if it has to, is the
 right spend.
 
+✅ **Partly answered 2026-09-30.** The doubled back wall is a 38 mm lamination ~180 mm deep running
+the full back edge, which is a considerably deeper member than the 138 mm box. It was adopted for the
+back panel's sake, not for this, so treat it as a windfall rather than a solved problem - if the back
+edge still wants more, it now wants it **below the bottom skin**, since the wall has taken the space
+above.
+
 ---
 
 ## The three load-bearing points
@@ -148,37 +168,50 @@ directly over the shoulder**. The load then runs wall, skin, shoulder, post in a
 no plate bending anywhere. Good intent, and it dictates the depth: **each ledge must be as deep as
 the wall standing on it.**
 
-The left and right outer walls are **two laminations, 38 mm**. A 19 mm ledge there would put the
-tenon directly under that wall, leaving the wall with a hole where it needs to bear.
+Every outer wall is **two laminations, 38 mm**. A 19 mm ledge under one would put the tenon directly
+under that wall, leaving the wall with a hole where it needs to bear.
+
+✅ **Since the perimeter was doubled on all four sides (2026-09-30), every ledge is 38 mm.** The
+earlier version of this table had 19 mm on the front and back faces and carried a ⚠️ saying the
+correction would apply if either were doubled. Both were.
 
 | Post | Face | Ledge depth | Wall above it |
 |---|---|---|---|
-| Front left / front right | The **side** face (left or right) | **38 mm** | Laminated outer wall, 38 mm |
-| Front left / front right | The **front** face | 19 mm | Single-thickness perimeter |
-| Back centre | The **back** face | 19 mm | Single-thickness perimeter |
+| Front left / front right | The **side** face (left or right) | **38 mm** | Laminated outer wall |
+| Front left / front right | The **front** face | **38 mm** | Laminated outer wall |
+| Back centre | The **back** face | **38 mm** | Laminated outer wall |
 
-So the **front corner tenons are 48 × 67**, and the holes in the bottom skin with them - *not* 67
-square. The back centre post is unaffected: tenon **86 × 67**, hole to match.
+So the **front corner tenons are 48 × 48**, and the holes in the bottom skin with them. The **back
+centre tenon is 86 × 48** - 19 mm thinner front-to-back than it was.
 
-Two side effects of the deeper corner ledge, both welcome: the corner shoulder area rises to about
-**4180 mm²**, and each corner tenon ends up snug against both perimeter walls, so it is **laterally
-located by the walls themselves**.
+| | Was (19 mm front/back ledges) | **Now (38 mm all round)** |
+|---|---|---|
+| Front corner tenon | 48 × 67 | **48 × 48** |
+| Back centre tenon | 86 × 67 | **86 × 48** |
 
-⚠️ This assumes the **front and back** perimeter members are single 19 mm. If either is doubled, the
-same correction applies there.
+Two side effects of the deeper ledges, both welcome: the corner shoulder area rises, and each corner
+tenon ends up snug against both perimeter walls, so it is **laterally located by the walls themselves**.
 
-### Bearing, and the one single-sided shoulder
+⚠️ **48 mm is where the corner tenons stop being generous.** They carry no vertical load - that is
+all on the shoulder - and they have 99 mm of engagement, so this is location duty only. But the rule
+below about cutting each hole to its own post matters more at 48 mm than it did at 67, and a 38 mm
+ledge on two adjacent faces of a stick that measures 88.9 rather than 86 leaves ~51 mm, not 48.
+
+### Bearing, and the shoulder that stopped being single-sided
 
 | Post | Shoulder area | Note |
 |---|---|---|
-| Front corners | ~4180 mm² | Wraps two faces |
-| Back centre | **~1634 mm²** (19 × 86) | **Single-sided**, centroid ~33 mm off the post axis |
+| Front corners | **~5090 mm²** (was ~4180) | Wraps two faces |
+| Back centre | **~3270 mm²** (was ~1634) | Still one face, but **double the area**, and the centroid moves in from ~33 mm off the post axis to ~24 mm |
 
 Both are far inside cedar loaded **parallel to the grain** - the ledge is a cross-cut, so the plywood
-bears on end grain in the post's strong direction. The back post carries a small permanent moment
-from its off-axis bearing. Harmless, but if the eccentricity is ever disliked, ledging the **front and
-back** faces instead gives symmetric bearing and double the area, at the cost of the
-wall-over-shoulder alignment on the front side.
+bears on end grain in the post's strong direction.
+
+✅ **The back post's eccentricity complaint is largely answered by the 38 mm perimeter.** This section
+used to note a small permanent moment from single-sided bearing and offer front-and-back ledging as a
+remedy, at the cost of wall-over-shoulder alignment. Doubling the back wall got most of the benefit
+without paying that price: twice the area, a third less eccentricity, and the wall still lands
+directly over the shoulder.
 
 ⚠️ **Cut each hole to its own post.** 86 mm is the working figure; S4S 4×4 is commonly 88.9 mm, and
 cedar varies between sticks. Measure the three you have.
