@@ -336,9 +336,21 @@ being wrong is balls on the floor. The load zone does start a few millimetres in
 behind the end seal and the recirculation turn, but "a few" varies by maker and series - confirm from
 the block drawing or by looking into one with the rail out.
 
-📌 **Set the stop to engage sooner than 7 mm.** That allowance buys nothing - it is just where the
-plate happens to sit. At 2 or 3 mm the margin against the 10 mm triples for free. Drop the plate as
-low as geometry permits.
+**The 7 mm is forced, not chosen:** the X carriage plate is 16" (407 mm), the rail is 400 mm mounted
+flush with the plate's bottom edge, and the stop sits on the top edge - leaving 7 mm. There is
+nowhere lower for the stop to go.
+
+📌 **But the rail position is still free, and only until the plate is drilled.** Mounting the rail
+**3 mm up from the bottom edge instead of flush** makes the top gap 4 mm. It costs nothing:
+
+- **Travel is unchanged** - 246 mm is rail length minus block span, wherever the rail sits.
+- **The bottom end does not care** - BF12 stops the nut before the lower blocks near the rail's lower
+  end, so nothing is given up; if anything it gains 3 mm.
+- The travel band shifts up 3 mm, absorbed by mounting the spindle 3 mm lower if it matters.
+
+**So: verify the ball-free length first.** At a true 10 mm the existing 7 mm works with 3 mm to spare
+and nothing changes. If it comes out at 6 or 8 mm, shift the rail - **and that has to happen before
+the carriage plate is drilled at the mill.**
 
 The block is hardened steel and the plate 1/4" aluminium, so **the plate is sacrificial** - correct
 for something that should fire once or twice in the machine's life. **Keep the overhang short** so
