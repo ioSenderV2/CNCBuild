@@ -27,6 +27,12 @@ conclusion was insensitive to the force - not because the force was right.
 
 ## Y beam support
 
+✅ **Both Y beams are built** as described here - stacked pairs, rails, screws, BK12/BF12, steppers
+and all four risers. See [`photos/y-beam-end-plate-outer.jpg`](photos/y-beam-end-plate-outer.jpg) and
+the three beside it. **The riser geometry below is as-built, not a proposal**, and the 8-bolt pattern
+into the corner bores is proven hardware rather than a first attempt - which is why the X end plates
+copy it.
+
 Each Y beam is carried at its two ends only. It cannot be supported along its length: **the ball
 screw runs underneath the beam**, which is also why the outboard plate below matters so much.
 
@@ -62,7 +68,19 @@ Going to 3/8" plates would make it 0.019 mm - a 3 micron difference. **The span 
 
 ## The full-height outboard plate
 
-⚠️ **Proposed 2026-09-29, not yet dimensioned. Nothing is ordered.**
+⚠️ **Proposed 2026-09-29. Still open, and easily confused with the gusset below.**
+
+📌 **There is already a gusset on each Y riser** - 12" × 6" × 1/4" on the outboard face - and the
+plan is to replace it with a **1000 mm** one. **That is a different part from this.**
+
+| | Height | What it does |
+|---|---|---|
+| **The 1 m gusset** | 6" (152 mm) | Ties the two profiles along the length - the 120 mm back plate's job, slightly wider |
+| **The full-height plate** | ~305 mm, down to the torsion box | Turns the riser's weak-axis bending into in-plane shear, and stops the span being a span |
+
+A 6" plate spans the beam plus about 32 mm and stops roughly 150 mm short of the torsion box, so it
+does **none** of what the section below describes. ⚠️ **Confirm which is being built** before either
+is cut.
 
 Instead of stopping the back joining plate at the beam's 120 mm, **run it all the way down to the
 torsion box** and bolt its bottom edge there. It then sits in the vertical plane containing the beam
@@ -108,18 +126,15 @@ plate. All of this added weight - roughly **14 lb per Y beam** at 1/4" - is ther
 | Part | Thickness | Notes |
 |---|---|---|
 | Beam joining plates, all three axes | **1/4"** | settled - see [`gantry-beam-joint.md`](gantry-beam-joint.md) |
-| Y end plates / Z risers | **1/2"** as designed | 3/8" is acceptable **only** if the full-height plate is built |
+| Y end plates / Z risers | **1/2"** | ✅ built |
 | **X gantry end plates** | **1/2"** | specified above - two identical 154 mm plates |
 
-### 🔴 The riser thickness is coupled to the full-height plate
+### The 3/8" question is closed - the Y risers are built at 1/2"
 
-3/8" risers lose **58 %** of their weak-axis stiffness and only 25 % of their strong-axis. That is
-acceptable **only because the full-height plate takes the fore-aft load in-plane**. Across the
-machine, where the riser still works, 3/8" gives about 0.025 mm at 250 N - so **0.10 mm at 1000 N**,
-which is now the dominant remaining compliance in the support structure.
-
-**If the full-height plate is not built, go back to 1/2".** Do not let these two decisions get
-separated in time.
+Recorded because the reasoning still applies to anything cut later. 3/8" loses **58 %** of the
+weak-axis stiffness against only 25 % of the strong-axis, which would have been acceptable **only
+if the full-height plate took the fore-aft load in-plane**. The Y risers went to 1/2" and are made,
+so the coupling never had to be managed.
 
 The saving is only about 0.44 lb per riser, 1.76 lb across all four, and it is static weight. Thin
 them for cost or machinability if you like; there is nothing to gain in weight.
@@ -479,8 +494,10 @@ Accurate holes are drilled on **a single visit to a friend's shop** - a Laguna m
 plate are drilled.**
 
 🔴 **Every plate needing accurate holes must be fully dimensioned before that trip**, including
-assemblies that will not be built for months: X carriage plate, Z plate, four Y end plates / risers,
-two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
+assemblies that will not be built for months: **X carriage plate, Z plate, two X end plates**. One
+more plate on the visit costs an hour; a second trip costs a weekend.
+
+✅ **The four Y risers are already made and in service** - they are not on this list.
 
 ✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
