@@ -532,10 +532,21 @@ Every face that produces nod points forward, and they all end up buried. Two can
    the design. Free if it fits.
 
    **The check, off the Z plate drawing:** a 120 mm clamp centred on a 154 mm plate covers **17 mm to
-   137 mm**. So - **is the outer column of M5 counterbores within 17 mm of the plate edge?** Clear of
-   that band and those positions stay reachable; inside it and every M5 is buried once the clamps go
-   on. (The 6 mm clearance hole through the spacer itself is not the question - that is the layer
-   underneath.)
+   137 mm**. So - **is the outer column of M5 counterbores within 17 mm of the plate edge?** (The
+   6 mm clearance hole through the spacer itself is not the question - that is the layer underneath.)
+
+   ✅ **Half the 16 is a pass.** Nod needs **one row adjustable and the other acting as the hinge
+   line** - torque the buried row, loosen the accessible row, jack it out, retighten. An ordinary
+   one-sided tram mechanism. Only if *neither* row comes out reachable is the sub-plate forced.
+
+   🔴 **If it lands that way, assembly order is permanent.** The buried row takes its final torque
+   before the clamps go on, because it will never be reached again - so the hinge line's standoff,
+   and any shim under it, has to be right the first time.
+
+   📌 **Test for reachable, not visible.** A counterbored M5 socket head needs a hex key entering
+   axially. In CAD, project a cylinder - say 10 mm diameter, 50 mm long - out from each bolt axis and
+   check interference against the clamps and spindle. Plenty of bolts are visible in a viewport and
+   still unreachable with a key in your hand.
 2. **A tram sub-plate** between the Z plate and the clamps, if it does not. Both clamps bolt to the
    sub-plate so they stay coaxial. Pivot low, jack screw high, accessible from the front. **Costs
    about 13 mm of moment arm** (109 → ~122) and inserts an extra joint directly in the spindle load
