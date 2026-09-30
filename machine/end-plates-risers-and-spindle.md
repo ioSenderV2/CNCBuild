@@ -38,16 +38,16 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 
 ### End plate / Z riser
 
-| | |
-|---|---|
-| Size | **3" W × 12" H × 1/2" thick** aluminium (76.2 × 304.8 × 12.7 mm) |
-| To the beam | **8 × M8 × 35 mm flange bolts** - four per profile |
-| To the torsion box | two M8, either into the plate's bottom edge **or** via L brackets - still open, see the open items |
+| | Rear (as built) | **Front (2026-09-30, to be remade)** |
+|---|---|---|
+| Size | 3" W × 12" H × 1/2" (76.2 × 304.8 × 12.7 mm) | **Tapered: 3" at the top, 9" at the base**, same 12" and 1/2" |
+| To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, unchanged |
+| To the torsion box | see the back panel under "The lateral fix" | **Two M8 through the front tongue at 50 and 200 mm**, plus bottom-edge bearing |
 
 The riser lands on the **same top skin** the full-height plate bears on, just inboard of it - see
-"How it lands on the torsion box" below. Whatever the L bracket question resolves to, the two
-fixings share that surface, and the riser is the one that sets the beam height and the two beams'
-coplanarity. So the riser is the datum of the pair and the plate follows it.
+"How it lands on the torsion box" below. Both fixings share that surface, and the riser is the one
+that sets the beam height and the two beams' coplanarity. So the riser is the datum of the pair and
+the plate follows it.
 
 **Those 8 bolts land in the ø6.65 lengthwise corner bores** - four per profile, which is exactly
 what those bores exist for and the only way they are reachable.
@@ -73,14 +73,111 @@ whether the two Y beams ended up **parallel and coplanar** - that is what the X 
 Measure that first; if it is within tolerance the holes did their job. Remaking calibrated hardware
 also spends mill time already committed to plates that do not exist yet.
 
-### 🔴 Use the L brackets, not bolts into the plate edge
+📌 **The two front plates are a deliberate exception**, and not on cosmetics - they change shape, see
+below. They cost no mill time either: the existing plates were drilled at home with a **mag drill**,
+and the 12 holes in a new plate are the same job. The **rear plates are not remade** - they carry the
+steppers, the 35 mm shaft bores and BK12, and they stay exactly as they are.
 
-Two M8 bolts into the bottom edge of a plate, in a line, give **essentially no moment restraint
-about the axis that matters** - the riser becomes a hinge at its base rather than a fixed
-cantilever, which roughly quadruples its sway. The L bracket turns it into a real moment joint.
+---
 
-⚠️ **Open: size the bracket so the bracket is not the soft part.** The spec given was "3 inch long
-15 × 1.5 L brackets", which has not been pinned down - if that is a 1.5 mm wall it is not enough.
+## The lateral fix: tapered front fins, a full-width back panel
+
+✅ **Decided 2026-09-30.** The full-height outboard plate took over the **fore-aft (Y)** support, and
+the section above records it at ~670 000 N/mm in-plane against the risers' ~1 500. What it did not
+touch is **across the machine (X)**, which is out-of-plane for that plate and therefore still carried
+by the four risers alone, 3" wide, at the two ends only.
+
+🔴 **Do not confuse this with the gusset recommendation the outboard plate superseded.** That one was
+a triangle in the **Y-Z plane**, doing the job the outboard plate now does far better. This is the
+**X-Z plane** - the riser's own face - and nothing covers it. Both are called "gussets" and they are
+not the same part.
+
+### Front: widen the riser in its own plane
+
+Material is **added inboard**, toward the machine centre, tapering from the existing 3" at the top to
+**9" at the base**. It is not a bolt-on outrigger; it is the plate's own outline, which is why the
+plates are remade rather than scabbed.
+
+Lateral stiffness goes as **width cubed**, and a taper puts the section where the moment is. Treating
+the riser as a cantilever over the ~185 mm between box top and beam underside:
+
+| Base width | Stiffness vs the 3" prismatic riser |
+|---|---|
+| 6" | ~4.9× |
+| 8" | ~9.6× |
+| **9" - chosen** | **~12.7×** |
+| 12" | ~25× |
+
+⚠️ **Calculated, not measured.** Tapered cantilever, width varying linearly, load at the top, fixed
+base. The fixed-base assumption is doing real work - see the bolt note below.
+
+Cost is about **+2 lb per front plate**, static. Two things it does *not* cost:
+
+- **No bed area.** The fin is a 12.7 mm slice in the riser's own plane, not a wedge intruding into the
+  work volume.
+- **No travel.** It lives in the plane of the end plate, which the gantry already cannot reach past.
+
+### The second gain is bolt spacing, and it is the bigger one
+
+The project note's rule is that moment capacity comes from **bolt spacing, not bolt count** - two M8
+200 mm apart beat six clustered in 50 mm. A 3" foot cannot give you that spacing at all, which is why
+this file previously had to reach for L brackets to avoid a hinge at the base. **A 9" base gives the
+spacing directly.**
+
+**Fixing: two M8 through the front tongue at 50 mm and 200 mm** from the outboard edge, plus the
+plate's bottom edge **bearing on the top skin** the way the outboard plate does.
+
+| Direction | What takes it |
+|---|---|
+| Vertical | **Bearing** - fin bottom edge on the top skin |
+| Lateral moment | The two through-bolts as a **150 mm couple** |
+
+🔴 **The bolts are now the soft part, not the plate.** A 12.7× stiffer fin only pays if the base is
+genuinely fixed, and the reaction at those bolts is vertical load bearing into plywood. The project
+note's standing warning is that **plywood creeps in compression** with nothing to tell you. Use a
+steel backing strip or large fender washers on both faces here, not plain washers.
+
+⚠️ **Blocking under the 229 mm base** has to be in the rib layout - the bottom-edge bearing is only
+worth having if it lands on structure rather than on skin spanning between grid members. The box is
+built last, so this is free, but it must be decided before the skins are cut.
+
+### Back: one full-width panel, added rather than remade
+
+The two rear risers are joined by a **panel spanning the full machine width**, in the same plane,
+turning the rear face from a portal frame with two bending legs into a shear panel.
+
+- **It costs no travel** - the gantry stops well forward of the rear plate plane, and the spindle sits
+  ~109 mm ahead of the carriage plate.
+- **Bonus: a rear chip fence** the width of the machine.
+- **It is an added panel, not a replacement for the rear plates.** Those carry the steppers, the 35 mm
+  shaft bores and BK12; a monolithic replacement would put two 8-bolt patterns, two bores, two stepper
+  patterns and two BK12 patterns on one 1.2 m part, cut on a 4' × 1' manual-XY mill on a one-shot
+  trip, and would become the coplanarity datum before that datum has been measured.
+
+⚠️ **The back panel does not cover the front.** The load path from a gantry parked at min-Y back to
+that panel runs sideways through the Y beams - their 60 mm dimension, not their 120 mm - and the
+outboard plates contribute nothing laterally, that being their out-of-plane direction. So the front
+fins are carrying a front-position gantry largely alone. That is why the front is taken to 9" rather
+than left minimal. *(Reasoning from the 60-vs-120 proportions; the 30-6060 section about the vertical
+axis has not been looked up.)*
+
+### The tongues that back both
+
+Both fixings need a bearing face, so **the box's doubled outer wall now runs all four sides** - the
+outer lamination standing **61 mm proud** front and back exactly as it does left and right. See
+[`torsion-box.md`](torsion-box.md), which carries the consequences: every ledge goes to 38 mm, front
+corner tenons become **48 × 48**, the back centre tenon **86 × 48**, and the back post's shoulder
+roughly doubles.
+
+⚠️ **Open: the front corner is a three-way convergence.** The full-height outboard plate runs the
+beam's full 1000 mm and drops into the side channel; the side curb sits outboard of it; the front
+tongue now wants the same corner. Something has to be notched, stopped short, or mitred. Resolve it on
+paper before the skins are cut - the curb's inner face is a hard bearing surface with no float, and
+the file's own rule is to bias the skin wide rather than narrow.
+
+⚠️ **Open: what sweeps near the riser plane at the Y limits.** The fin is thin but now occupies much
+more of the X-Z area, low down and inboard. Confirm nothing on the gantry end plate or Z carriage
+reaches into that region at full travel.
 
 ### Span deflection: not a problem
 
@@ -909,7 +1006,13 @@ slips.
 - **Where the three-point mount pads sit relative to the two outer walls.** The entire Y beam load now
   comes down those walls, so the pads want to be under them rather than under the field of the bottom
   skin. The three-point-plus-fifth-leg scheme is still only in the project notes, not in this repo.
-- **The L bracket specification** - "15 × 1.5" has not been resolved.
+- ✅ ~~**The L bracket specification** - "15 × 1.5" has not been resolved.~~ **Moot 2026-09-30** - the
+  9" tapered base gives the bolt spacing directly, so there are no L brackets. See "The lateral fix".
+- **Front corner three-way convergence** - outboard plate, side curb and front tongue all want the
+  same corner. Resolve before the box skins are cut.
+- **Clearance at the Y limits** against the widened front fins.
+- **Whether the front fins need the rib layout fixed first** - the bottom-edge bearing wants blocking
+  under the full 229 mm base.
 - 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
   footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
   machining trip, and now the only open question on that list.**
