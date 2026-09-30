@@ -42,7 +42,12 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 |---|---|
 | Size | **3" W × 12" H × 1/2" thick** aluminium (76.2 × 304.8 × 12.7 mm) |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile |
-| To the torsion box | two M8, either into the plate's bottom edge **or** via L brackets |
+| To the torsion box | two M8, either into the plate's bottom edge **or** via L brackets - still open, see the open items |
+
+The riser lands on the **same top skin** the full-height plate bears on, just inboard of it - see
+"How it lands on the torsion box" below. Whatever the L bracket question resolves to, the two
+fixings share that surface, and the riser is the one that sets the beam height and the two beams'
+coplanarity. So the riser is the datum of the pair and the plate follows it.
 
 **Those 8 bolts land in the ø6.65 lengthwise corner bores** - four per profile, which is exactly
 what those bores exist for and the only way they are reachable.
@@ -119,18 +124,129 @@ gusset is a discrete triangle, this is a continuous one a metre long.
    is the direction the risers are strong in, edge-on. Neither is soft in the same axis.
 4. **It is a chip barrier**, a metre of skirt on the outboard side of each Y beam.
 
-### Two things to get right
+### Two things to get right - both now resolved
 
-⚠️ **Thermal.** A metre of aluminium bolted rigidly along its length to a wooden box: aluminium
-moves ~23 µm/m/K, plywood barely moves. A 15 °C swing is roughly **0.35 mm of differential over the
-length**. **Fix solid at the centre and slot the holes progressively toward the ends** - friction
-still carries the shear and the plate can grow. Cheap now, miserable to retrofit.
+✅ **Thermal - closed 2026-09-30, no slotting needed.** A metre of aluminium bolted along its length
+to a wooden box: aluminium moves ~23 µm/m/K, plywood barely moves, so a 15 °C swing is roughly
+**0.35 mm of differential over the length**. An earlier draft called for fixing solid at the centre and
+slotting the holes progressively toward the ends. **That is unnecessary here.** The bolts are **9 mm
+clearance on M8**, which is 1 mm of float per hole - nearly three times the whole differential - and
+the shop is climate controlled with Baltic birch skins. The 9 mm hole *is* the slot. This follows the
+precedent set on the Y risers, reamed to 9 mm for the same reason.
 
-⚠️ **Bolt face-to-face if the torsion box has a vertical side face.** Landing only on the box's top
-surface through an angle reintroduces a bending element and gives back much of the gain.
+The figure is kept because it is the one that had to be beaten, not because it is still a worry. Note
+also that for plywood the larger term is **moisture, not temperature**; it is dismissed here on the
+climate-controlled shop, not on the thermal arithmetic.
+
+✅ **The box has a vertical face, because one is being built for it** - see the next section. The
+warning this bullet used to carry stands, and it is the reason the interface took the shape it did:
+landing only on the box's top surface through an angle would reintroduce a bending element and give
+back much of the gain.
 
 **Y beams only.** The X gantry moves and has nothing to bolt down to, so X keeps the 120 mm back
 plate. All of this added weight - roughly **14 lb per Y beam** at 1/4" - is therefore static.
+
+### How it lands on the torsion box
+
+✅ **Decided 2026-09-30.** This is the plate's bottom fixing, and it is what closes the "does the
+box have a vertical face" question above: **one is built into the box for the purpose.**
+
+The box is **19 mm Baltic birch skins top and bottom over a grid of 19 mm strips 100 mm high**, so
+138 mm deep overall. Two changes make it the plate's foundation:
+
+1. **The box is widened to the machine's width at the plates**, so its top skin reaches out far enough
+   that the plates stand on it rather than hanging alongside it.
+2. **Each outer wall is two 19 mm laminations instead of one.** The inner one is an ordinary 100 mm web
+   between the skins. The outer one is **180 mm tall, standing on the bottom skin's top face**, glued
+   to the inner web's outer face and to the edge of the top skin. It spans the 100 mm web plus the
+   19 mm top skin and so **stands 61 mm proud** of the top surface as a **curb, outboard of the plate.**
+
+The top skin's outer edge terminates at the inner web's outer face, which is also the curb's inner
+face. The plate drops into the channel between the two, and since the plate is 6.35 mm thick it
+occupies **the outer 6.35 mm of the 19 mm web** - so its bottom edge bears **directly over the wall**,
+never on skin spanning between grid members.
+
+#### Cross-section at the outer wall, inboard to outboard
+
+| Member | Thickness | Vertical extent |
+|---|---|---|
+| Inner web of the outer wall | 19 mm | Between the skins, 100 mm high |
+| *of which the outer 6.35 mm carries the plate's bottom edge* | | *bearing face is the top skin's top surface* |
+| The full-height plate | 6.35 mm (1/4") | Up to the Y beam - 12", 305 mm tall |
+| Outer lamination, the curb | 19 mm | 180 mm tall, **61 mm proud** of the top skin |
+
+#### The plate is captured on three sides
+
+| Direction | What takes it |
+|---|---|
+| Vertical | **Bearing** - plate bottom edge on the top skin, directly over the wall |
+| Outboard, across the machine | **Bearing** - plate outer face against the curb's inner face |
+| Inboard | **Bolt tension** |
+
+The consequence worth noticing: **the bolts are retention, not the load path.** Vertical and outboard
+loads both arrive in bearing on plywood faces, which plywood is good at. So the bolt row is sized by
+convenience rather than by strength - an estimated ~500 N of static vertical per Y beam shared across
+eleven M8 is orders of magnitude clear, and this joint's real limits are geometric, not structural.
+
+#### The bolt row
+
+| | |
+|---|---|
+| Fastener | **M8, one every 100 mm** - eleven per beam over the 1000 mm |
+| Direction | From **outboard**: washer, curb, plate, **M8 locknut** on the inboard face |
+| Holes | **9 mm clearance** in curb and plate both - see the thermal bullet above |
+| Why not tapped into the plate | M8 into 6.35 mm of aluminium is about **5 threads, 0.8 × D**, where aluminium wants 1.5-2 × D. It would strip before the bolt came near yield and could never be properly preloaded. The inboard face is open air - the beam is up on 12" risers - so a through-bolt costs nothing and was always available |
+
+Glue area is not a constraint: roughly **100 000 mm²** of face-to-face plywood per wall over the box
+depth, plus the top skin's edge.
+
+#### What this buys beyond a fixing: restraint along the whole metre
+
+Loads **along Y** lie in the plate's plane and were always handled. Loads **across the machine** -
+gantry acceleration, cutting force in X, the two Y beams wanting to spread - are out-of-plane for the
+plate, and the previous answer was that the risers take them edge-on, which means **at the two ends
+only.** The curb now takes that same load in plywood face bearing over the **full 1000 mm.**
+
+That is a structural gain rather than a side effect of the assembly method, and it is part of why the
+interface is shaped this way instead of bolted flat to the box's top surface.
+
+#### Two things to get right when cutting
+
+⚠️ **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
+curbs' inner faces, and a curb is a hard bearing face with no float - the 9 mm holes let the *bolt*
+move, not the bearing. A millimetre or two **too wide** leaves a gap a shim fixes in minutes. **Too
+narrow and the plates will not drop between the curbs at all**, and planing a glued-up skin edge in
+place is a miserable job. The same cost at cut time, wildly different cost if you are out.
+
+⚠️ **The plate-to-curb seam is a swarf trap** running the length of the machine - the plate is
+the chip barrier and the curb sits outboard of it. Either seal the top of the seam or leave it
+deliberately open at both ends so it can be blown through.
+
+#### 🔴 The machine is the datum, not the box - so the box is built last
+
+**The box will not be built until the whole CNC is assembled on a flat surface and the width measured
+exactly.** That is the standing rule of this repo applied to a structural part: the machine is the
+authority, not the drawing.
+
+It also means the machine **jigs itself** for that measurement, and nothing has to be computed:
+
+| What sets it | How |
+|---|---|
+| The two Y beams' spacing | The **X gantry** bridging them - its length, its end plates and the bearing block footprint |
+| Their coplanarity and parallelism | The **flat surface** they are assembled on, plus the risers' 9 mm reamed holes absorbing the error |
+| The box's top skin width | **Measured off that assembly**, once it is standing and square |
+
+So there is no box-width number to derive and no X-span figure to look up first. The sequence is
+**assemble, measure, then cut skins**, and the measured value belongs in
+[`../commissioning/`](../commissioning/) when it is taken.
+
+Two consequences worth holding on to:
+
+- **The bias-wide rule above still applies**, but as insurance against a transfer error rather than
+  against a design unknown.
+- **Do not let a nominal or catalog width substitute for the measurement.** That is exactly the failure
+  the `$130` story in the [root README](../README.md) records - 889 mm written where the real number
+  was 860 mm - and here the cost is a set of plywood skins cut to the wrong size.
 
 ### The magnetic encoder tape runs on the front plate
 
@@ -783,8 +899,16 @@ slips.
 
 ## ⚠️ Open items
 
-- **Height from the top of the beam to the torsion box fixing line**, and whether the box has a
-  **vertical face** to bolt against. These size the full-height plate; nothing else is missing.
+- ✅ ~~**Height from the top of the beam to the torsion box fixing line**, and whether the box has
+  a **vertical face** to bolt against.~~ **Both closed 2026-09-30** - the box gets a purpose-built
+  vertical face and the plate's bottom edge bears on the top skin. See "How it lands on the torsion
+  box" above.
+- **The exact box width**, which sets the top skin and therefore the spacing of the two curbs. Not a
+  design number: it is **measured off the fully assembled CNC standing on a flat surface**, and the box
+  is not built until then. Nothing else is blocked by it in the meantime.
+- **Where the three-point mount pads sit relative to the two outer walls.** The entire Y beam load now
+  comes down those walls, so the pads want to be under them rather than under the field of the bottom
+  skin. The three-point-plus-fifth-leg scheme is still only in the project notes, not in this repo.
 - **The L bracket specification** - "15 × 1.5" has not been resolved.
 - 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
   footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
