@@ -109,7 +109,7 @@ plate. All of this added weight - roughly **14 lb per Y beam** at 1/4" - is ther
 |---|---|---|
 | Beam joining plates, all three axes | **1/4"** | settled - see [`gantry-beam-joint.md`](gantry-beam-joint.md) |
 | Y end plates / Z risers | **1/2"** as designed | 3/8" is acceptable **only** if the full-height plate is built |
-| **X gantry end plates** | **1/2"** | |
+| **X gantry end plates** | **1/2"** | specified above - two identical 154 mm plates |
 
 ### 🔴 The riser thickness is coupled to the full-height plate
 
@@ -269,6 +269,142 @@ thread depth for 35 mm.
 
 ---
 
+## The X gantry end plates
+
+**Two identical plates, 1/2" aluminium, 154 mm wide.** They carry the X beam, ride the Y rails on
+four bearing blocks, and mount the X ball screw supports and stepper.
+
+**154 mm is set by the bearing blocks** - two HGH20 blocks end to end with 2-3 mm between. Anything
+wider eats usable Y travel at both ends.
+
+### Vertical stack-up, from the top of the Y beam
+
+| From the Y beam top | |
+|---|---|
+| Four M8 into the **top extrusion's** corner bores - start just above the Y beam top | 0 |
+| Top of the extrusion | **+60 mm** |
+| Top of the ball screw support block mount | **+80 mm** |
+| Top of the stepper mount, motor on the outside, shaft through a **35 mm hole** | **+140 mm** |
+
+**The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
+a shelf - see below. This is the half-overlap: only the top extrusion is above the Y beam, which is
+what keeps the whole machine low.
+
+### 🔴 Why the four bolts are above the Y beam top
+
+Their heads land on the plate's **outer** face - the same face the Y bearing blocks bolt to, where
+four blocks occupy a 2 × 2 grid across the full 154 mm. Putting the top extrusion entirely above the
+Y beam puts those heads in clear air.
+
+Raising the beam further to expose all eight would raise the whole Z assembly, meaning more Z
+extension for the same tool height - and Z extension is the softest direction in the machine. **Do
+not raise it for wrench access.**
+
+### Why four bolts is enough
+
+The joining plates tie the two profiles along the whole metre, with T-nuts to within 50 mm of each
+end, so the bottom extrusion's load reaches the end plate **through the top extrusion** rather than
+needing its own path.
+
+| | Worst bolt at 1000 N |
+|---|---|
+| All 8, over 60 × 120 | ~830 N |
+| **Top 4 only, over 60 × 60** | **~1640 N** |
+
+Against roughly 4800 N of friction capacity per M8 at full preload - about **3× margin**. The shelf
+takes the vertical load directly in bearing rather than through bolt shear, which is better anyway.
+
+### Position in Y: as far back as it will go
+
+Rear bolt pair **25 mm from the plate's back edge**, putting the beam's back face 10 mm in. The
+6.35 mm back joining plate takes most of that, leaving 3.65 mm, and the nearest joining-plate T-nut
+is 50 mm inboard so no bolt head comes near.
+
+Back-mounting matters because the forward-hanging mass acts at an arm from the **block group's
+centroid** at Y 77:
+
+| Beam position | Arm | Load per block pair |
+|---|---|---|
+| **Back (chosen)** | 102 mm | **1.32 × F** |
+| Centred | 139 mm | 1.8 × F |
+
+**Roughly a quarter less**, for free - the block travel sets the envelope either way.
+
+### The plate is tall, and the beam is what makes that safe
+
+A 12.7 mm plate cantilevering 80 mm with screw thrust on it would be a problem. It is not one,
+because the X beam is bolted across the bottom 60 mm, so the support block sits only **20 mm beyond
+the bracing**:
+
+| | At 1000 N |
+|---|---|
+| Unbraced over the full 80 mm | 0.094 mm |
+| **Braced by the beam, 20 mm effective** | **0.0015 mm** |
+
+A factor of 64. **Keep the support block tight down onto the extrusion** rather than floating it
+higher up the plate - that bracing is doing all the work. The stepper at 140 mm is hanging mass only,
+no thrust.
+
+### The shelf
+
+**A 3" length of 1" square aluminium bar** per plate - 25.4 × 25.4 × 76.2 mm - spanning the beam's
+60 mm depth plus the back plate, with room to spare.
+
+| Hole | Y from beam front | Purpose |
+|---|---|---|
+| Vertical, counterbored from below | **15** | M8 up into a T-nut in the bottom extrusion's underside slot |
+| Horizontal, into a tapped M8 in the end plate | **30** | shelf to plate |
+| Vertical, counterbored from below | **45** | M8 up into the second underside slot |
+| Horizontal, into a tapped M8 in the end plate | **60** | shelf to plate |
+
+The 15 and 45 are the `30-6060`'s bottom-face slot centrelines, so the T-nuts drop straight in. The
+even 15 mm spacing is forced, not chosen - 30 is exactly midway between 15 and 45 and moving it only
+trades clearance from one side to the other.
+
+**The holes clear in three dimensions**, which is the part that is not obvious in plan: the vertical
+counterbores reach about 9 mm up from the underside, the horizontal holes are centred at 12.7 mm.
+They never meet.
+
+⚠️ **Not 70 mm for the rear horizontal hole** - on a 76.2 mm bar that leaves 1.7 mm of edge. 60 mm
+gives 16 mm, comfortable.
+
+Two things to watch:
+
+- **M8 into 12.7 mm of plate** is 1.6 diameters, around 39 kN strip - far above what an M8 delivers.
+- **The back joining plate's bottom edge must be flush with the beam's underside, not proud.** The
+  bar passes under where that plate lands; if it hangs even a millimetre low the gantry sits on a
+  plate edge in line contact instead of on the extrusion.
+
+Assembly falls out of this nicely: **bolt both end plates on, slide the T-nuts in, drop the beam onto
+the two shelves, then bolt down.** That is a one-person job, which the alternative is not.
+
+### The two plates are identical
+
+**BF12 and BK12 share the same horizontal mounting pattern** - only the vertical holes differ (2
+against 4), and the horizontal ones are what get used here. So one support-block pattern serves both
+ends and there is no handedness.
+
+**Drill the stepper mount pilots and the 35 mm shaft hole on both**, even though only the Y1 end
+takes a motor. Tapping happens at home so the pilots are nearly free at the mill, and full
+interchangeability is cheap insurance on a one-visit machining trip. The unused holes sit above the
+beam, in the region carrying no load.
+
+### ⚠️ Open: is 35 mm enough for the coupler?
+
+A coupler for a 1605 screw is typically 25-30 mm outside diameter, leaving only a few millimetres of
+annulus - **and its clamp screws have to be reached through that gap.** If the coupler is at the
+larger end, 40 mm saves a lot of trouble. **Measure the actual coupler**; the hole size is fixed at
+the mill.
+
+### ⚠️ Two different 35 mm holes will exist in this plate
+
+The **stepper shaft clearance** here, and the **encoder sensor bore** called for in
+[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
+Same diameter, same plate, different position and purpose. **Name them distinctly on the drawing**,
+or "the 35 mm hole in the X end plate" becomes ambiguous later.
+
+---
+
 ## Tramming
 
 ⚠️ **Partly open - the nod adjustment is undecided and has a deadline** (see the machining section
@@ -342,6 +478,9 @@ plate are drilled.**
 🔴 **Every plate needing accurate holes must be fully dimensioned before that trip**, including
 assemblies that will not be built for months: X carriage plate, Z plate, four Y end plates / risers,
 two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
+
+✅ **The two X end plates are specified** - and identical, so one drawing and one setup. Drill both
+fully, including the stepper holes only one of them uses.
 
 **Triage - not everything needs the mill:**
 
