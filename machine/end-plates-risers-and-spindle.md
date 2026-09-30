@@ -628,79 +628,71 @@ height; plate, rails, screw and motor form the other. They are the two halves of
 Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
 [`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
 
-### ✅ The Z plate: 154 mm W × 205 mm H × 1/2", settled 2026-09-30
+### ✅ The Z plate: 154 mm W × 175 mm H × 1/2", settled 2026-09-30
 
-**Use the whole barrel.** The clamps are spread to the full **199 mm** of Ø80 body, giving **144 mm
-between clamp centres** on a **205 mm** plate:
+**The M5 pattern sets the clamp separation.** Not the barrel, not the block run - the four M5
+counterbores that hold the plate to the bearing blocks share the plate's front face with the M8 tapped
+holes, and dodging them is what fixes everything else.
 
 | | |
 |---|---|
-| Ø80 barrel available | **199 mm** |
-| Two clamps at 55 mm axial | **110 mm** of clamp |
-| Clamp extent, spread to the barrel | **199 mm**, i.e. centres **144 mm** apart |
-| Two HGH20 blocks, **butted** | **154 mm** supported span |
-| Clamp overhang beyond the spacer run | **22.5 mm** each end |
-| Plate height | **205 mm** - the 199 extent plus **3 mm of relief each end** |
+| Plate | **154 mm W × 175 mm H × 1/2"** |
+| **Clamp centres** | **116 mm** - clamp mid-height at **±58 mm** from plate centre |
+| Clamp extent | **171 mm**, on a 199 mm barrel |
+| M8 columns | **±50 mm** from plate centre |
+| **M8 rows, from plate centre** | **±45.5 and ±70.5 mm** |
+| **M8 rows, from the nearer plate end** | **17 and 42 mm** ← the drilling dimension |
+| Relief at each plate end | 2 mm |
+| Blocks | **butted**, full **246 mm** travel |
+| Spacers | **6 inch, unchanged** |
 
-#### Why 144 mm centres and not 99
+#### The measurements this rests on - all read off parts, 2026-09-30
 
-**Two clamps resist the tool's tipping couple on a lever equal to their separation, so angular
-stiffness goes as separation squared.** An earlier draft of this section proposed setting the clamp
-extent to exactly the 154 mm block run for zero overhang, on a 175 mm plate. Spreading to 144 mm
-centres instead is **2.1× the angular stiffness**, and drops the force in each clamp by 31%.
-
-🔴 **And the overhang costs almost nothing, for a reason worth understanding rather than memorising:
-the load enters the plate at the bolts, not at the clamp's outer face.** On a 205 mm plate centred on
-the assembly the spacer run ends at **±77 mm** from centre, while each clamp's **mid-height sits at
-±72 mm** - *inside* the supported span by 5 mm. What hangs past the spacer is clamp casting, which
-carries nothing. The cube-law warning below is about unsupported **plate under load**, and this is not
-that.
-
-#### ✅ Measured off the clamps, 2026-09-30 - and it lands fine
-
-**Two columns 100 mm apart, two rows 25 mm apart**, four M8 per clamp. Taking the 25 mm as centred in
-the 55 mm clamp height, the rows sit ±12.5 mm from clamp mid:
-
-| From plate centre | |
+| | |
 |---|---|
-| Clamp mid-height | **±72 mm** |
-| **Inner** bolt row | **±59.5 mm** - 17.5 mm *inside* the supported span |
-| **Outer** bolt row | **±84.5 mm** - **7.5 mm proud** |
-| Spacer / block run ends | **±77 mm** |
+| Bearing block hole pattern | **32 × 36 mm** |
+| M5 columns, from the rail centreline | **±16 mm** - ✅ this confirms the figure the file had carried as its one unverified number |
+| M5 columns, from plate centre | **41.5 and 73.5 mm** (rail centrelines at ±57.5) |
+| M5 rows, from the spacer bottom | **17, 53, 97, 133 mm** |
+| **M5 rows, from plate centre** | **−59.2, −23.2, +20.8, +56.8 mm** |
+| Clamp bolts | 4 × M8, **columns 100 mm apart**, **rows 25 mm apart** |
 
-As a drilling schedule, working from the plate ends rather than the centre - **two columns at
-±50 mm, four rows** in two pairs:
+📌 **The 36 in the 32 × 36 is self-checking:** 53 − 17 = 36 and 133 − 97 = 36, so the row measurements
+and the block pattern agree independently.
 
-| Row | From the nearer plate end | From plate centre |
-|---|---|---|
-| Outer (top and bottom) | **18 mm** | ±84.5 mm |
-| Inner | **43 mm** | ±59.5 mm |
+#### 🔴 Why 116 mm and not 144 - the columns are only 8.5 mm apart
 
+**The M8 column at 50 mm sits just 8.5 mm from the M5 column at 41.5 mm.** An M5 counterbore is ~Ø10
+and an M8 thread is Ø8, so **at the same height those two features physically overlap** - there is no
+web at all. The M8 rows therefore have to stand vertically clear of every M5 row.
 
-**7.5 mm of cantilever in 12.7 mm plate is effectively rigid** - the cube law that makes 2" bad makes
-7.5 mm nothing. The clamp also hands its moment to the plate as a couple across the 25 mm row spacing,
-and **the inner row of that couple is on fully supported metal.**
+🔴 **That kills 144 mm centres outright.** At 144 the inner M8 rows land at **±59.5 mm**, against M5
+rows at **−59.2 and +56.8**. A direct hit at both ends - it would have been found at the mill.
 
-📌 **The alternative was considered and rejected:** pulling the clamps in until *both* rows land inside
-±77 needs **129 mm** centres, which costs **20% of the angular stiffness** to remove an overhang that
-is not doing anything. **Keep 144 mm.**
+Holding **12 mm centre-to-centre in 2D**, and with 8.5 mm of that already spent on the column offset,
+each M8 row needs ~8.5 mm of *vertical* clearance from every M5 row. That confines the clamp
+mid-height to **55.2 to 60.8 mm** from plate centre. **±58 is the middle of that window**, and gives
+a worst case of **14.1 mm centre-to-centre - about 5 mm of solid web** at the tightest pair.
 
-📌 **The left-right columns are confirmed too** - the second dry-fit photo shows both columns landing
-squarely over the spacers, which is the ±50 versus ±57.5 result below holding in metal rather than in
-arithmetic.
+#### What 116 mm buys and costs
 
-#### What this does not cost
+- ❌ **Costs ~35% of the angular stiffness** against the unobtainable 144. Two clamps resist the tool's
+  tipping couple on a lever equal to their separation, so stiffness goes as separation *squared*.
+- ✅ **Still 37% better than the 99 mm** an earlier draft proposed, which set the clamp extent to the
+  154 mm block run.
+- ✅ **Zero overhang, and it costs nothing to get.** At ±70.5 **all four M8 rows are inside the ±76.2
+  of the existing 6" spacers.** Every bolt is over supported metal without spreading the blocks.
+- ✅ **Nothing gets re-cut and no travel is spent.** Blocks butted, full 246 mm, spacers as built.
 
-- **Zero travel.** The blocks stay **butted**, so the full **246 mm** budget survives. The alternative
-  - spreading the blocks to a 199 mm run for literal zero overhang - buys the same stiffness and costs
-  **45 mm of travel**, leaving 201 mm against the 150-200 mm this machine wants. Not worth it.
-- **The 6" spacers are unchanged.** 152.4 mm against a 154 mm run. Nothing gets re-cut.
+📌 **This is also why 205 mm spacers do not help.** The collision is between two features **in the
+plate**; spacer length has no bearing on it, and the M5 positions are set by the blocks and cannot
+move. See the rejection note below.
 
-📌 **The design degrades gracefully.** If the water fittings force the clamps closer than 144 mm
-centres, nothing breaks - the separation shortens, the stiffness drops toward the 99 mm case, and the
-plate, spacers and travel are all unaffected. **144 mm is a cap to aim at, not a dimension to force.**
+📌 **175 mm is where the first draft of this section landed too**, by a completely different route -
+that one sized the plate to the block run, this one to the M5 pattern. Coincidence, but a reassuring
+one.
 
-⚠️ **205 assumes nothing else lives on this plate** - no drag chain anchor, cable strain relief or
+⚠️ **175 assumes nothing else lives on this plate** - no drag chain anchor, cable strain relief or
 water line clamp. If one turns up, height is the cheap thing to change, but only before it is cut.
 
 **Still measure on arrival:**
@@ -827,11 +819,14 @@ Measured: **clamp bolt holes 100 mm apart**, **spacer centrelines 115 mm apart**
 sits at ±50 mm from the plate centre, **7.5 mm inboard of its spacer's centreline** - over the
 spacer, and therefore over the bearing block.
 
-If the block's M5 pattern is the usual ±16 mm from the rail centreline, those columns fall at about
-41.5 mm and 73.5 mm from the plate centre, so **the clamp bolt at 50 mm is bracketed between them**
-rather than cantilevered outside. Load goes bolt → plate → spacer → block with the plate barely
-working. ⚠️ Confirm that ±16 mm against the actual blocks - it is the one figure here not read off
-the parts.
+✅ **The ±16 mm is measured, 2026-09-30** - the block hole pattern is **32 × 36 mm**. So the M5 columns
+fall at **41.5 and 73.5 mm** from the plate centre, and **the clamp bolt at 50 mm is bracketed between
+them** rather than cantilevered outside. Load goes bolt → plate → spacer → block with the plate barely
+working.
+
+🔴 **But 8.5 mm of bracketing is also a clash.** The M8 at 50 and the M5 counterbore at 41.5 are close
+enough that at equal height the two features *overlap* - which is what drives the clamp separation. See
+the Z plate section above.
 
 📌 **This is the left-right axis only.** Vertical alignment - clamp centres against block centres up
 the rail - was the open one, and the only one that could cost travel.
@@ -864,7 +859,7 @@ the spoilboard". That is a machine measurement, not a design decision.
 | **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
 | HGR20 rails, mounted on it | 5/8" spacer blocks |
 | 1605 screw, BK12 + motor, BF12 | ball nut housing |
-| | **Z plate** - **154 W × 205 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
+| | **Z plate** - **154 W × 175 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
 
 The motor stays put and only the carriage travels. The Z plate picks up **two** interfaces - the
 spacer blocks and the ball nut housing - which is what makes the shim below matter.
@@ -917,16 +912,28 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
 
-### ❌ Do not lengthen the spacers to match the 205 mm plate
+### ❌ Do not lengthen the spacers - the question is closed twice over
 
-Considered and rejected 2026-09-30, when the plate went to 205 mm against a 154 mm block run.
+Raised repeatedly on 2026-09-30, while the plate was provisionally 205 mm and the clamps overhung the
+block run. **Both reasons to reject it still stand, and the second one ended the discussion:**
 
-**The spacers carry no fasteners of their own** - they are clamped only by the M5 that runs from the
-plate into the bearing block, and past the block ends there is nothing to bolt into and nothing behind
-them. A 205 mm spacer's extra **25.5 mm** per end would be **unclamped bar in face contact with the plate**:
-it can push but not pull, so it stiffens the overhang in **compression only**, and therefore in one
-load direction of the tipping couple and not the other. For that it adds mass, a rattle, and two
-unsupported bar ends sitting over the rails.
+**1. An unbolted spacer end is a one-way support, not a stiffener.** The spacers carry no fasteners of
+their own - they are clamped only by the M5 that runs from the plate into the bearing block, and past
+the block ends there is nothing to bolt into and nothing behind them. The extra length would be
+**unclamped bar in face contact with the plate**: it can push but not pull, so it stiffens in
+**compression only** - one direction of the tipping couple and not the other. An unpreloaded one-way
+contact opens and closes on every direction change, which is a hysteresis source, not a stiffener.
+
+**2. 🔴 It was aimed at a problem that no longer exists.** At the settled **116 mm** clamp centres,
+all four M8 rows sit at **±70.5 mm**, inside the **±76.2 mm** of the existing 6" spacers. **There is no
+overhang left to support.**
+
+📌 **And it never addressed the real constraint anyway.** The binding problem turned out to be the M8
+tapped holes clashing with the M5 counterbores - two features **in the plate**. Spacer length has no
+bearing on that, and the M5 positions are set by the blocks and cannot move.
+
+📌 **Keeping them also keeps the matched pair.** Both are halves of one 12" bar with the 5/8" as
+supplied - see below. A re-cut only preserves that if both new pieces come from a single bar.
 
 📌 **It is also solving a problem that is not there.** The clamp bolts land inside the spacer run - see
 the Z plate section above - so the overhanging plate is not carrying the load in the first place.
@@ -979,9 +986,9 @@ layout constraint, not just a depth one.
 📌 **Depth is in your favour and needs no separate check:** the M5 counterbore leaves ~7.7 mm of plate
 under the head while the M8 taps 10 mm into 12.7 mm, so if they clear on the face they never meet.
 
-⚠️ **🔴 This is the last thing gating the drilling.** The M8 rows land at **±59.5 and ±84.5** from
-plate centre at 144 mm clamp centres. Whether that collides depends on the **M5 row positions**, which
-are still unmeasured - see the open item below.
+✅ **Resolved 2026-09-30.** The M5 rows were measured and they *did* collide with the 144 mm layout, so
+the clamp centres came in to **116 mm** and the M8 rows to **±45.5 and ±70.5**. Worst-case clearance is
+**14.1 mm centre-to-centre**, about 5 mm of web. Full working in the Z plate section above.
 
 ---
 
@@ -1288,24 +1295,12 @@ slips.
   cut.** Four numbers listed under "The lateral fix".
 - **Whether the front fins need the rib layout fixed first** - the bottom-edge bearing wants blocking
   under the full 229 mm base.
-- 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
-  footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
-  machining trip, and now the only open question on that list.**
-  📌 **Everything but one number now exists.** The M8 clamp bolts are measured at **±50 mm** across
-  and **±59.5 / ±84.5 mm** up from plate centre, and the clearance rule is **12 mm centre-to-centre**
-  between an M8 tapped hole and an M5 counterbore. What is missing is the **M5 row positions**.
-
-  🔴 **The measurement, and it is on the bench:** on an assembled spacer, the distance from the
-  **spacer's midpoint to each of the four M5 hole rows**. No theory needed, and it answers both the
-  nod question and the drilling collision at once. The ±16 mm from the rail centreline quoted above is
-  the one figure in this file never read off a part.
-
-  ⚠️ **What it may force, as an estimate only.** If the HGH20 pitch is the common 50 mm, butted blocks
-  put M5 rows at roughly ±13.5 and ±63.5 from plate centre, and fitting both M8 rows into the gaps
-  drives the clamp mid-height to about ±63.5 - **127 mm between clamp centres** rather than 144. That
-  is ~22% of the angular stiffness, but it also puts **both** M8 rows inside the ±77 spacer run, so the
-  outer-row overhang disappears. **The 50 mm pitch is a guess and the whole paragraph stands or falls
-  with it.**
+- ✅ **How nod is adjusted - answered 2026-09-30.** The question was whether the spacer M5 counterbore
+  pattern clears the clamp footprint. **It does not clear it by position alone** - the M8 column at
+  50 mm and the M5 column at 41.5 mm are only 8.5 mm apart and overlap at equal height - so the
+  clearance is bought **vertically**, by bringing the clamp centres to **116 mm**. Worst case is
+  **14.1 mm centre-to-centre**, about 5 mm of web. **No tram sub-plate, no added moment arm.** Full
+  working in the Z plate section.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - **Z travel floor** - where the confirmed 246 mm sits relative to the spoilboard. A machine
   measurement, and the one item the travel budget still waits on.

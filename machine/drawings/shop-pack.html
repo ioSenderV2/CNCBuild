@@ -73,7 +73,7 @@ carrying two parallel rails.</li>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td>3/8" alu, from one 12" square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, 154 mm wide</td><td><b>Yes</b></td><td>Partly dimensioned</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
-<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 205 mm</td><td><b>Yes</b></td><td>Outline settled 2026-09-30; clamp holes gated by the M5 row positions</td></tr>
+<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 175 mm</td><td><b>Yes</b></td><td><b>Fully dimensioned 2026-09-30</b> — cut and drill schedule on Sheet 4</td></tr>
 </table>
 
 <div class="warn">
@@ -317,76 +317,71 @@ in the repo. This sheet is a frame to fill, not a drawing to work from.
 <!-- ============================================================ -->
 <div class="plate">
 <h2>Sheet 4 — Z plate</h2>
-<p class="sub">1 off · 1/2" aluminium · <b>154 mm W × 205 mm H</b></p>
+<p class="sub">1 off · 1/2" aluminium · <b>154 mm W × 175 mm H</b></p>
+
+<div class="info">
+<b>✅ Fully dimensioned 2026-09-30. This plate can be cut and drilled.</b> It was blocked on the
+spindle body; the constraint turned out to be neither the spindle nor the block run but the
+<b>M5 counterbores</b>, which share the plate's front face with the M8 tapped holes.
+</div>
+
+<h3>Cut and drill schedule — datum: plate centre, or the nearer plate end where stated</h3>
+<table>
+<tr><th>Feature</th><th>Value</th></tr>
+<tr><td>Plate</td><td><b>154 mm W × 175 mm H × 1/2"</b></td></tr>
+<tr><td>Clamp centres, up the plate</td><td><b>116 mm</b> — clamp mid-height at <b>±58 mm</b></td></tr>
+<tr><td>M8 columns</td><td><b>±50 mm</b> from plate centre (100 mm apart)</td></tr>
+<tr><td>M8 rows, from plate centre</td><td><b>±45.5 and ±70.5 mm</b></td></tr>
+<tr><td><b>M8 rows, from the nearer plate end</b></td><td><b>17 mm and 42 mm</b> ← type these</td></tr>
+<tr><td>M8 holes</td><td><b>Tapped M8</b>, 10 mm deep. 8 off. Torque ~15 N·m</td></tr>
+<tr><td>Relief at each plate end</td><td>2 mm — the clamp face sits 2 mm inside the plate edge</td></tr>
+<tr><td>Blocks</td><td><b>Butted.</b> Full 246 mm travel</td></tr>
+<tr><td>Spacers</td><td><b>6 inch, unchanged.</b> Nothing gets re-cut</td></tr>
+</table>
+
+<h3>The measurements this rests on — all read off parts 2026-09-30</h3>
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Bearing block hole pattern</td><td><b>32 × 36 mm</b></td></tr>
+<tr><td>M5 columns, from the rail centreline</td><td><b>±16 mm</b> → <b>41.5 and 73.5 mm</b> from plate centre</td></tr>
+<tr><td>M5 rows, from the spacer bottom</td><td><b>17, 53, 97, 133 mm</b></td></tr>
+<tr><td>M5 rows, from plate centre</td><td><b>−59.2, −23.2, +20.8, +56.8 mm</b></td></tr>
+<tr><td>Clamp bolts</td><td>4 × M8 — columns <b>100 mm</b> apart, rows <b>25 mm</b> apart</td></tr>
+<tr><td>Ø80 barrel available</td><td><b>199 mm</b> — 28 mm more than the 171 mm clamp extent uses</td></tr>
+</table>
 
 <div class="note">
-<b>✅ Unblocked 2026-09-30. The outline is settled and this plate can be cut.</b> It was blocked on the
-spindle body. The clamps are spread to the <b>full 199 mm Ø80 barrel</b> — <b>144 mm between clamp
-centres</b> — while the HGH20 blocks stay <b>butted</b>, so the <b>full 246 mm travel survives</b> and
-the 6" spacers are unchanged.
+<b>🔴 Why 116 mm centres and not 144.</b> The M8 column at 50 mm is only <b>8.5 mm</b> from the M5
+column at 41.5 mm. An M5 counterbore is ~Ø10 and an M8 thread is Ø8, so <b>at the same height those
+two features physically overlap</b> — there is no web at all. The clearance has to be bought
+vertically. At 144 mm centres the inner M8 rows would land at ±59.5 against M5 rows at −59.2 and
++56.8: <b>a direct hit at both ends, and it would have been found at the mill.</b> Holding 12 mm
+centre-to-centre in 2D confines the clamp mid-height to 55.2–60.8 mm; <b>±58 is the middle of that
+window</b> and gives a worst case of <b>14.1 mm centre-to-centre, about 5 mm of web</b>.
+</div>
+
+<div class="info">
+<b>What 116 mm buys.</b> It costs ~35% of the angular stiffness against the unobtainable 144, but it
+is still 37% better than clamping within the 154 mm block run. And at ±70.5 <b>all four M8 rows sit
+inside the ±76.2 mm of the existing 6" spacers</b> — every bolt over supported metal, with no block
+spreading, no travel spent and no spacer re-cut.
+<br><br>
+<b>Do not lengthen the spacers.</b> Raised repeatedly and rejected: an unbolted spacer end supports in
+compression only, and with zero overhang left there is nothing for it to support. The collision is
+between two features <i>in the plate</i>, which spacer length cannot affect.
 </div>
 
 <div class="warn">
-<b>The outline is cuttable; the hole pattern is not yet.</b> Two questions below still gate drilling.
-</div>
-
-<h3>Dimensions</h3>
-<table>
-<tr><th>Item</th><th>Value</th></tr>
-<tr><td>Ø80 barrel available</td><td><b>199 mm</b> (vendor drawing)</td></tr>
-<tr><td>Clamp centres, up the plate</td><td><b>144 mm apart</b> — a 199 mm clamp extent, the whole barrel</td></tr>
-<tr><td>Plate height</td><td><b>205 mm</b> — the 199 mm extent plus <b>3 mm of relief each end</b></td></tr>
-<tr><td>Two HGH20 blocks, butted</td><td><b>154 mm</b> supported span, ends at <b>±77 mm</b> from plate centre</td></tr>
-<tr><td>Clamp mid-height</td><td><b>±72 mm</b> from plate centre — <i>inside</i> the supported span</td></tr>
-<tr><td>Clamp casting overhanging the spacer run</td><td>22.5 mm each end — carries no load, see below</td></tr>
-</table>
-
-<div class="info">
-<b>Why the overhang is acceptable here.</b> Angular stiffness of a two-clamp mount goes as separation
-<i>squared</i>, so 144 mm centres is <b>2.1×</b> the stiffness of clamping only within the 154 mm block
-run, and drops the force in each clamp by 31%. The overhang costs almost nothing because <b>load
-enters the plate at the bolts, not at the clamp's outer face</b> — and the clamp mid-height at ±72 mm
-is inside the spacer ends at ±77 mm. What hangs past is clamp casting. The cube-law warning below is
-about unsupported <i>plate under load</i>, which this is not.
-<br><br>
-<b>144 mm is a cap to aim at, not a dimension to force.</b> If the water fittings push the clamps
-closer, the separation shortens and nothing else changes.
-</div>
-
-<h3>Clamp bolt pattern — measured off the clamps 2026-09-30</h3>
-<table>
-<tr><th>Item</th><th>Value</th></tr>
-<tr><td>Bolts per clamp</td><td>4 × M8 — <b>two columns, two rows</b></td></tr>
-<tr><td>Column spacing (across the plate)</td><td><b>100 mm</b>, i.e. <b>±50 mm</b> from plate centre</td></tr>
-<tr><td>Row spacing (up the plate)</td><td><b>25 mm</b>, i.e. ±12.5 mm from clamp mid-height</td></tr>
-<tr><td>Inner row, from plate centre</td><td><b>±59.5 mm</b> — 17.5 mm inside the supported span</td></tr>
-<tr><td>Outer row, from plate centre</td><td><b>±84.5 mm</b> — 7.5 mm proud of it</td></tr>
-<tr><td>Outer row, from the nearer plate end</td><td><b>18 mm</b> — the drilling dimension</td></tr>
-<tr><td>Inner row, from the nearer plate end</td><td><b>43 mm</b> — the drilling dimension</td></tr>
-</table>
-
-<div class="info">
-<b>✅ The 205 mm plate is confirmed by the real clamps.</b> 7.5 mm of cantilever in 12.7 mm plate is
-effectively rigid, and the clamp hands its moment to the plate as a couple across the 25 mm row
-spacing with the <i>inner</i> row on fully supported metal. Pulling the clamps in until both rows land
-inside ±77 mm would need 129 mm centres and cost 20% of the angular stiffness — <b>rejected</b>.
-<br><br>
-The columns at ±50 mm land over the spacers at ±57.5 mm, confirmed in the dry-fit photos.
-</div>
-
-<div class="info">
-<b>Do not lengthen the spacers to 205 mm.</b> Considered and rejected 2026-09-30. The spacers carry no
-fasteners of their own — they are clamped only by the M5 that runs into the bearing blocks, and past
-the block ends there is nothing to bolt into and nothing behind them. A 205 mm spacer's extra 25.5 mm
-per end would be unclamped bar in face contact with the plate, stiffening it in <i>compression only</i>
-and therefore in one load direction only. It adds mass and a rattle for a few percent in one direction.
-<b>Keep the 6" spacers as built.</b>
+<b>Check the row measurements against the real spacer before drilling.</b> The 17 and 133 are not
+quite symmetric about the spacer midpoint (59.2 versus 56.8), which is either measurement slop or a
+spacer that is not centred on its block pair. The 12 mm rule holds either way, but re-measure at the
+mill rather than trusting this sheet.
 </div>
 
 <h3>Still to confirm on the spindle — none of it blocks the outline</h3>
 <table>
 <tr><th>Measurement</th><th>Why</th></tr>
-<tr class="unk"><td><b>Where the water fittings and cable exit sit</b></td><td>Caps the clamp spread below 99 mm if they are in the way; sets the drag chain routing</td></tr>
+<tr class="unk"><td><b>Where the water fittings and cable exit sit</b></td><td>Clamp extent is only 171 mm of a 199 mm barrel, so there is 28 mm of slack — but confirm; sets the drag chain routing</td></tr>
 <tr class="unk"><td><b>Nose to collet nut face</b> — vendor drawing says 52 mm</td><td>The fixed part of the torsional arm</td></tr>
 <tr class="unk"><td><b>Body diameter over the whole clamping length</b></td><td>Confirms the 80 mm bore rather than taking it nominally</td></tr>
 <tr class="unk"><td><b>Weight</b></td><td>Moving mass</td></tr>
@@ -411,9 +406,9 @@ about Ø10 and the M8 thread major is 8, so bare non-overlap is 9 mm centre to c
 the M5 counterbore leaves ~7.7 mm under the head while the M8 taps 10 mm into 12.7, so if they clear
 on the face they never meet.
 <br><br>
-<b>The M8 rows are at ±59.5 and ±84.5 from plate centre at 144 mm clamp centres.</b> Whether that
-collides is the one thing still unmeasured. If it does, <b>walk the clamps closer</b> — 144 is a cap,
-not a requirement, and a few millimetres costs a fraction of a percent of stiffness.
+<b>✅ Resolved.</b> It did collide at 144 mm clamp centres, so the clamps came in to <b>116 mm</b> and
+the M8 rows to <b>±45.5 and ±70.5</b>. Worst case is 14.1 mm centre-to-centre. Working on the schedule
+above.
 </div>
 
 <h3>What is already settled for this plate</h3>
@@ -449,10 +444,10 @@ yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in th
 <table>
 <tr><th>#</th><th>Question</th><th>Blocks</th></tr>
 <tr><td>1</td><td>How far past the front riser plane does the spindle reach, and does it foul the widened fin at low Z?</td><td>Sheet 1 — the taper cut</td></tr>
-<tr><td>2</td><td>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</td><td>Sheet 4, and the tram scheme</td></tr>
-<tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the block run sets the clamps, not the spindle.</b> Plate is <b>154 × 205</b>, clamp centres <b>144 mm</b></td><td>—</td></tr>
+<tr><td>2</td><td><s>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</s> — <b>answered 2026-09-30: not by position, so the clearance is bought vertically at 116 mm clamp centres. No tram sub-plate</b></td><td>—</td></tr>
+<tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the M5 counterbore pattern sets the clamps, not the spindle.</b> Plate is <b>154 × 175</b>, clamp centres <b>116 mm</b></td><td>—</td></tr>
 <tr><td>7</td><td><s>Which way the 4 × M8 × 80 clamp bolts run</s> — <b>answered 2026-09-30: through the clamp into a TAPPED plate</b>, 10 mm engagement, torque ~15 N·m</td><td>—</td></tr>
-<tr><td>8</td><td>M5 row positions on an assembled spacer, so the M8 tapped holes clear the M5 counterbores by 12 mm</td><td>Sheet 4 — the clamp holes</td></tr>
+<tr><td>8</td><td><s>M5 row positions on an assembled spacer</s> — <b>measured 2026-09-30: 17, 53, 97, 133. Clamp centres come in to 116 mm to clear them</b></td><td>—</td></tr>
 <tr><td>4</td><td><s>Actual width of the X carriage plate</s> — <b>answered 2026-09-30: 154 mm</b>, same as the X end plates and the Z plate</td><td>—</td></tr>
 <tr><td>5</td><td><s>Y of the two tongue bolts within the 61 mm proud band</s> — <b>answered 2026-09-30: X 25 / 175, Y 31</b></td><td>—</td></tr>
 <tr><td>6</td><td>Mill model number, and whether the DRO is 2-axis or 3-axis</td><td>How every sheet should be dimensioned</td></tr>
