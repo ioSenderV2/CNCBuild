@@ -352,6 +352,21 @@ it costs.
   reduces load on plate and blocks - but that path is already stiff. **Plate bending is the softer
   thing, so alignment matters more than spread.**
 
+#### ✅ Left-right alignment is settled, and it lands well
+
+Measured: **clamp bolt holes 100 mm apart**, **spacer centrelines 115 mm apart**. So each clamp bolt
+sits at ±50 mm from the plate centre, **7.5 mm inboard of its spacer's centreline** - over the
+spacer, and therefore over the bearing block.
+
+If the block's M5 pattern is the usual ±16 mm from the rail centreline, those columns fall at about
+41.5 mm and 73.5 mm from the plate centre, so **the clamp bolt at 50 mm is bracketed between them**
+rather than cantilevered outside. Load goes bolt → plate → spacer → block with the plate barely
+working. ⚠️ Confirm that ±16 mm against the actual blocks - it is the one figure here not read off
+the parts.
+
+📌 **This is the left-right axis only.** Vertical alignment - clamp centres against block centres up
+the rail - is the open one, and the only one that costs travel.
+
 **There is room to manoeuvre** - a router of this size wants perhaps 150-200 mm, against ~246 mm
 available. So work in this order rather than iterating:
 
