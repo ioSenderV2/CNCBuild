@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CNCBuild — Shop Pack</title>
+<style>
+  @page { size: letter portrait; margin: 14mm; }
+  body { font: 11pt/1.45 "Segoe UI", system-ui, sans-serif; color: #111; max-width: 190mm; margin: 0 auto; }
+  h1 { font-size: 20pt; margin: 0 0 2mm; }
+  h2 { font-size: 15pt; margin: 0 0 1mm; border-bottom: 2px solid #111; padding-bottom: 1mm; }
+  h3 { font-size: 11.5pt; margin: 5mm 0 1.5mm; }
+  .sub { color: #555; margin: 0 0 4mm; font-size: 10pt; }
+  .plate { page-break-before: always; }
+  .plate:first-of-type { page-break-before: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 2mm 0 4mm; }
+  th, td { border: 1px solid #999; padding: 1.2mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .unk { background: #fff4d6; }
+  .unk td { color: #7a5200; }
+  figure { margin: 3mm 0; text-align: center; }
+  figcaption { font-size: 9pt; color: #555; margin-top: 1.5mm; }
+  .note { border-left: 3px solid #c00; background: #fdf0f0; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  .info { border-left: 3px solid #0a6; background: #eefaf5; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  .warn { border-left: 3px solid #d98b00; background: #fff8e8; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  svg { max-width: 100%; height: auto; }
+  .dim { font: 7px sans-serif; fill: #06c; }
+  .lbl { font: 8px sans-serif; fill: #111; }
+  .ttl { font: bold 10px sans-serif; fill: #111; }
+  .q   { font: bold 8px sans-serif; fill: #b06000; }
+  ul { margin: 2mm 0; padding-left: 6mm; }
+  li { margin: 1mm 0; }
+  code { background: #f2f2f2; padding: 0 2px; }
+</style>
+</head>
+<body>
+
+<h1>CNCBuild — Shop Pack</h1>
+<p class="sub">
+Plates for the one machining visit. Generated 2026-09-30 from <b>machine/*.md</b>, which remain the
+source of truth — if this sheet and a .md file disagree, the .md file wins and this sheet is stale.
+</p>
+
+<div class="note">
+<b>This pack is deliberately incomplete, and the gaps are the point.</b> Rows shaded amber are
+dimensions that <b>do not exist anywhere in the repo</b>. They have not been invented here. Every
+amber row is a thing to measure or decide before the trip, and the plate it sits on cannot be drilled
+until it is filled in.
+</div>
+
+<div class="info">
+<b>Standing rules for every plate in this pack</b>
+<ul>
+<li><b>One datum per plate, never chain dimensions.</b> Each drawing names a datum corner; every hole
+is an absolute X/Y from it. On a manual mill with a DRO the operator types absolute coordinates, and
+chained dimensions accumulate error.</li>
+<li><b>Take the mating hardware, not just the plates</b> — bearing blocks, ball nut housing, BK12,
+BF12, and an offcut of the 30-6060 with its corner bores. Every pattern gets checked against the real
+part while still standing next to the mill.</li>
+<li><b>Extrusion corner-bore patterns are transfer-punched, not dimensioned.</b> Those bores are
+extruded features whose position tolerance is looser than anything drilled in plate. A punch through
+the real profile beats a coordinate every time.</li>
+<li><b>9 mm clearance on M8 wherever a plate meets extrusion.</b> That is the repo's deliberate
+figure — the joint works by friction, not bearing, and the float is wanted.</li>
+<li><b>Close-fit holes for rail one, oversize for rail two</b> by about a millimetre, on any plate
+carrying two parallel rails.</li>
+</ul>
+</div>
+
+<h3>What is on the trip</h3>
+<table>
+<tr><th>Plate</th><th>Qty</th><th>Material</th><th>Mill needed?</th><th>Status</th></tr>
+<tr><td>Front Y end plate / Z riser</td><td>2</td><td>3/8" alu, from one 12" square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
+<tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, 154 mm wide</td><td><b>Yes</b></td><td>Partly dimensioned</td></tr>
+<tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
+<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 407 mm</td><td><b>Yes</b></td><td>Blocked on spindle body measurements</td></tr>
+</table>
+
+<div class="warn">
+<b>Not on the trip, and that is deliberate:</b> the four Y risers are made and in service; the
+full-height outboard plates (12" × 1 m × 1/4") and front plates (46 mm × 1 m × 1/4") are T-slot
+clearance work for a home drill press; the back panel is likewise clearance holes only.
+</div>
+
+<!-- ============================================================ -->
+<div class="plate">
+<h2>Sheet 1 — Front Y end plate / Z riser</h2>
+<p class="sub">2 off · 3/8" (9.525 mm) aluminium · both cut from one 12" square, zero waste</p>
+
+<figure>
+<svg viewBox="-40 -30 330 390" width="150mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- the 12in square stock -->
+  <rect x="0" y="0" width="304.8" height="304.8" fill="none" stroke="#bbb" stroke-dasharray="6 4"/>
+  <text class="lbl" x="120" y="-12" fill="#888">12" square stock, 304.8 mm</text>
+
+  <!-- left plate (as drawn = front-left, outboard edge at X=0) -->
+  <polygon points="0,0 76.2,0 228.6,304.8 0,304.8" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <!-- right plate, the complement -->
+  <polygon points="76.2,0 304.8,0 304.8,304.8 228.6,304.8" fill="#f4f4f4" stroke="#111" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text class="ttl" x="10" y="150">PLATE A</text>
+  <text class="ttl" x="240" y="150">PLATE B</text>
+  <text class="lbl" x="240" y="164">(rotate 180°</text>
+  <text class="lbl" x="240" y="176">and flip)</text>
+
+  <!-- the single cut -->
+  <line x1="76.2" y1="0" x2="228.6" y2="304.8" stroke="#c00" stroke-width="1.2"/>
+  <text class="q" x="120" y="200" transform="rotate(63 120 200)">THE ONE CUT</text>
+
+  <!-- beam envelope, top 120 mm -->
+  <rect x="8.1" y="0" width="60" height="120" fill="none" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="12" y="60" fill="#0a6">beam end</text>
+  <text class="lbl" x="12" y="72" fill="#0a6">60 × 120</text>
+
+  <!-- 8 bolt pattern, schematic only -->
+  <g fill="#fff" stroke="#111" stroke-width="0.8">
+    <circle cx="23" cy="15" r="4.5"/><circle cx="53" cy="15" r="4.5"/>
+    <circle cx="23" cy="45" r="4.5"/><circle cx="53" cy="45" r="4.5"/>
+    <circle cx="23" cy="75" r="4.5"/><circle cx="53" cy="75" r="4.5"/>
+    <circle cx="23" cy="105" r="4.5"/><circle cx="53" cy="105" r="4.5"/>
+  </g>
+  <text class="q" x="88" y="60">8 × ø9 — TRANSFER</text>
+  <text class="q" x="88" y="72">PUNCH, positions</text>
+  <text class="q" x="88" y="84">schematic only</text>
+
+  <!-- tongue bolts -->
+  <circle cx="50" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <circle cx="200" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <text class="q" x="60" y="292">2 × M8 to tongue — X settled, Y NOT</text>
+
+  <!-- datum -->
+  <circle cx="0" cy="304.8" r="3" fill="#c00"/>
+  <text class="dim" x="-36" y="318">DATUM A</text>
+  <text class="dim" x="-36" y="328">X→ inboard</text>
+  <text class="dim" x="-36" y="338">Y↑ up</text>
+
+  <!-- dims -->
+  <line x1="0" y1="-6" x2="76.2" y2="-6" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="26" y="-9">76.2 (3")</text>
+  <line x1="0" y1="312" x2="228.6" y2="312" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="90" y="322">228.6 (9")</text>
+  <line x1="-8" y1="0" x2="-8" y2="304.8" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-38" y="150">304.8 (12")</text>
+</svg>
+<figcaption>Both plates from one square. The halves are <b>rotations</b> of each other, not mirrors —
+left and right come from flipping one over. Bolt positions shown are schematic.</figcaption>
+</figure>
+
+<div class="note">
+<b>Lay both patterns out from the factory vertical edge and the factory top edge.</b> Each half keeps
+one uncut vertical edge, and that is the <b>outboard</b> edge with the taper facing inboard. Done
+that way the bandsaw kerf never enters the layout — it only shortens one piece's taper by about a
+millimetre. Laid out from the <b>cut</b> edge instead, the kerf becomes a ~1.5 mm offset built into a
+pattern that has to meet formed threads in the beam.
+</div>
+
+<h3>Hole schedule — datum: bottom outboard corner</h3>
+<table>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
+<tr><td>B1–B8</td><td>ø9 clearance, M8 × 35 into beam corner bores</td><td>8</td><td colspan="2"><b>Transfer punch</b></td><td>Four per profile. Existing plate is also a valid template — it was drilled at home with a mag drill</td></tr>
+<tr class="unk"><td>T1</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">50</td><td>UNKNOWN</td><td>X settled. Y must land in the tongue's 61 mm proud band — not yet fixed</td></tr>
+<tr class="unk"><td>T2</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">200</td><td>UNKNOWN</td><td>150 mm couple with T1 — that spacing is the moment restraint</td></tr>
+<tr class="unk"><td>F1–F4</td><td>BF12 support block pattern</td><td>4</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Pattern is shared with BK12; take the real block to the mill</td></tr>
+<tr class="unk"><td>—</td><td>Encoder sensor bore, if carried on this plate</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Confirm against the linear-encoder design doc before drilling</td></tr>
+</table>
+
+<div class="note">
+<b>🔴 Do not cut the taper line until the spindle clearance is settled.</b> The spindle is confirmed
+to pass the plane of this plate. The added material is a triangle whose top edge slopes from the top
+of the plate at 3" inboard to the bottom at 9" inboard, and interference is a corner-of-envelope case:
+low Z, minimum Y, X near the beam. Four numbers decide it and three are unmeasured — see
+<b>end-plates-risers-and-spindle.md</b>. The cut is one bandsaw pass and cannot be put back.
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="plate">
+<h2>Sheet 2 — X gantry end plate</h2>
+<p class="sub">2 off · 1/2" (12.7 mm) aluminium · 154 mm wide · identical, minus the stepper holes on the idle end</p>
+
+<figure>
+<svg viewBox="-70 -30 300 250" width="150mm" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="154" height="170" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <text class="q" x="164" y="90">HEIGHT AND</text>
+  <text class="q" x="164" y="102">OUTLINE NOT</text>
+  <text class="q" x="164" y="114">FIXED — 170</text>
+  <text class="q" x="164" y="126">SHOWN IS THE</text>
+  <text class="q" x="164" y="138">140 STACK-UP</text>
+  <text class="q" x="164" y="150">PLUS MARGIN</text>
+
+  <!-- stack-up levels, measured DOWN from Y beam top which is at y=170 here -->
+  <line x1="0" y1="170" x2="154" y2="170" stroke="#0a6" stroke-width="1"/>
+  <text class="lbl" x="-66" y="173" fill="#0a6">Y beam top = 0</text>
+  <line x1="0" y1="110" x2="154" y2="110" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="-66" y="113" fill="#0a6">+60 extrusion top</text>
+  <line x1="0" y1="90" x2="154" y2="90" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="-66" y="93" fill="#0a6">+80 support block</text>
+  <line x1="0" y1="30" x2="154" y2="30" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="-66" y="33" fill="#0a6">+140 stepper mount</text>
+
+  <!-- 4 M8 into top extrusion corner bores, above Y beam top -->
+  <g fill="#fff" stroke="#111" stroke-width="0.8">
+    <circle cx="40" cy="155" r="4"/><circle cx="100" cy="155" r="4"/>
+    <circle cx="40" cy="125" r="4"/><circle cx="100" cy="125" r="4"/>
+  </g>
+  <text class="q" x="10" y="186">4 × ø9 — transfer punch. Rear pair 25 from back edge</text>
+
+  <!-- 35 mm shaft bore -->
+  <circle cx="77" cy="55" r="17.5" fill="#fff" stroke="#111" stroke-width="1"/>
+  <text class="lbl" x="60" y="58">ø35</text>
+  <text class="q" x="100" y="48">SHAFT bore — not</text>
+  <text class="q" x="100" y="60">the encoder bore</text>
+
+  <!-- bearing block grid on the far face -->
+  <g fill="none" stroke="#c0c" stroke-width="0.8" stroke-dasharray="3 2">
+    <rect x="12" y="40" width="58" height="120"/>
+    <rect x="84" y="40" width="58" height="120"/>
+  </g>
+  <text class="lbl" x="6" y="200" fill="#c0c">4 × HGH20 blocks, 2 × 2 on the OUTER face — pattern unknown</text>
+
+  <!-- datum -->
+  <circle cx="0" cy="170" r="3" fill="#c00"/>
+  <text class="dim" x="-64" y="210">DATUM B = bottom back corner</text>
+  <line x1="0" y1="-8" x2="154" y2="-8" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="60" y="-11">154</text>
+</svg>
+<figcaption>Vertical positions are the settled stack-up, measured from the Y beam top. Horizontal
+positions are not settled. The 2 × 2 bearing-block grid is on the outer face.</figcaption>
+</figure>
+
+<h3>Hole schedule — datum: bottom back corner</h3>
+<table>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
+<tr><td>E1–E4</td><td>ø9 clearance into <b>top</b> extrusion corner bores</td><td>4</td><td colspan="2"><b>Transfer punch</b></td><td>Rear pair <b>25 mm from the plate's back edge</b>. Start just above the Y beam top so the heads land in clear air</td></tr>
+<tr class="unk"><td>S1–S4</td><td>Ball screw support block (BK12 / BF12)</td><td>4</td><td>UNKNOWN</td><td class="n">+80 top</td><td>Vertical settled by the stack-up. Keep the block <b>tight down onto the extrusion</b> — the bracing is doing all the work</td></tr>
+<tr class="unk"><td>M1–M4</td><td>Stepper mount — <b>driven end only</b></td><td>4</td><td>UNKNOWN</td><td class="n">+140 top</td><td>Omitted on the idle plate, along with the shaft bore</td></tr>
+<tr class="unk"><td>C1</td><td>ø35 stepper shaft clearance</td><td>1</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Coupler measured at 25 mm OD, so 35 leaves 5 mm annulus. <b>Driven end only</b></td></tr>
+<tr class="unk"><td>C2</td><td>ø35 <b>encoder sensor bore</b></td><td>1</td><td>UNKNOWN</td><td>UNKNOWN</td><td>⚠️ Same diameter as C1, different purpose. Lines up with the Y beam seam centreline, in the 45 mm gap between block rows — 5 mm each side, no room for a flange or clamp ring</td></tr>
+<tr class="unk"><td>P1–P16</td><td>4 × HGH20 bearing block, 2 × 2 on the outer face</td><td>16</td><td>UNKNOWN</td><td>UNKNOWN</td><td>154 mm width is set by two blocks end to end with 2–3 mm between</td></tr>
+<tr><td>H1, H2</td><td>Tapped M8, shelf to plate</td><td>2</td><td colspan="2">Y from beam front: <b>30</b> and <b>60</b></td><td>M8 into 12.7 mm is 1.6 D. <b>Not 70</b> for the rear hole — leaves 1.7 mm of edge on a 76.2 bar</td></tr>
+</table>
+
+<div class="warn">
+<b>Name the two ø35 holes distinctly on any working drawing.</b> "The 35 mm hole in the X end plate"
+is already ambiguous — one is stepper shaft clearance, one is the encoder sensor bore.
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="plate">
+<h2>Sheet 3 — X carriage plate</h2>
+<p class="sub">1 off · 1/2" aluminium · 407 mm (16") tall · <b>exists, sprayed with layout dye, 30 holes to drill</b></p>
+
+<figure>
+<svg viewBox="-70 -30 280 470" width="120mm" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="154" height="407" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <text class="q" x="164" y="200">WIDTH NOT</text>
+  <text class="q" x="164" y="212">STATED IN</text>
+  <text class="q" x="164" y="224">THE REPO —</text>
+  <text class="q" x="164" y="236">154 SHOWN</text>
+  <text class="q" x="164" y="248">IS A GUESS,</text>
+  <text class="q" x="164" y="260">MEASURE IT</text>
+
+  <!-- two rails, 400 long, flush with bottom edge -->
+  <rect x="26" y="7" width="20" height="400" fill="none" stroke="#c0c" stroke-width="1.2"/>
+  <rect x="108" y="7" width="20" height="400" fill="none" stroke="#c0c" stroke-width="1.2"/>
+  <text class="lbl" x="20" y="-6" fill="#c0c">HGR20 × 400, flush with the bottom edge</text>
+  <text class="lbl" x="52" y="200" fill="#c0c">RAIL 1</text>
+  <text class="lbl" x="52" y="212" fill="#c0c">close fit</text>
+  <text class="lbl" x="134" y="200" fill="#c0c">RAIL 2</text>
+  <text class="lbl" x="134" y="212" fill="#c0c">+1 mm</text>
+
+  <!-- top stop -->
+  <rect x="24" y="-14" width="106" height="14" fill="#fdd" stroke="#c00" stroke-width="1"/>
+  <text class="q" x="136" y="-4">TOP STOP 6" × 1" × 1/4"</text>
+
+  <!-- overrun callout -->
+  <line x1="0" y1="0" x2="0" y2="7" stroke="#c00" stroke-width="2"/>
+  <text class="q" x="-66" y="16">7 mm overrun</text>
+  <text class="q" x="-66" y="26">(10 mm ball-free,</text>
+  <text class="q" x="-66" y="36">so 3 mm spare)</text>
+
+  <circle cx="0" cy="407" r="3" fill="#c00"/>
+  <text class="dim" x="-64" y="425">DATUM C = bottom left</text>
+  <line x1="-8" y1="7" x2="-8" y2="407" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-60" y="240">400 rail</text>
+  <line x1="-24" y1="0" x2="-24" y2="407" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-66" y="300">407 plate</text>
+</svg>
+<figcaption>Rail flush with the bottom edge leaves exactly 7 mm at the top, which is the designed
+overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
+</figure>
+
+<div class="info">
+<b>✅ The 7 mm stands and the plate can be drilled as laid out.</b> Measured with calipers: 10 mm from
+the end of the block to the first exposed bearing. The option of moving the rail 3 mm up was kept as
+reasoning but is not needed — and it <b>expires the moment this plate is drilled</b>.
+</div>
+
+<h3>Hole schedule — datum: bottom left</h3>
+<table>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
+<tr class="unk"><td>R1…</td><td>HGR20 rail 1 mounting holes — <b>close fit</b></td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Rail 1 is the reference. 400 mm rail, bottom end flush with the plate's bottom edge</td></tr>
+<tr class="unk"><td>R2…</td><td>HGR20 rail 2 mounting holes — <b>+1 mm oversize</b></td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Swept parallel to rail 1 at assembly with an indicator. Fixed holes on both rails makes the mill's error permanent</td></tr>
+<tr class="unk"><td>X1…</td><td>To the X-axis bearing blocks</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>🔴 <b>Not adjustable</b> — these heads are buried under the Z rails at assembly. Tram is set here once, at build</td></tr>
+<tr class="unk"><td>K1–K4</td><td>BK12 + BF12 screw supports</td><td>8</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Both fixed to this plate — screw and motor are fixed relative to it</td></tr>
+<tr class="unk"><td>TS1…</td><td>Top stop plate fixing</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td><b>Keep the overhang short</b> so an impact loads the bolts in shear, not a cantilevered lip</td></tr>
+</table>
+
+<div class="warn">
+<b>30 holes, and the count is the only firm number.</b> No individual coordinate for this plate exists
+in the repo. This sheet is a frame to fill, not a drawing to work from.
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="plate">
+<h2>Sheet 4 — Z plate</h2>
+<p class="sub">1 off · 1/2" aluminium · 154 mm W × 407 mm H</p>
+
+<div class="note">
+<b>🔴 Blocked, and it should stay blocked.</b> The plate height and the clamp positions are set by the
+spindle body, and the spindle arrived 2026-09-30. Anything drawn before it is measured rests on a
+guessed body length. <b>Do not take a guessed Z plate to the mill.</b>
+</div>
+
+<h3>Measure on the spindle before this sheet can be finished</h3>
+<table>
+<tr><th>Measurement</th><th>Why it gates the plate</th></tr>
+<tr class="unk"><td><b>Usable parallel body length</b> — the clean 80 mm cylinder <i>between obstructions</i>, not the datasheet figure</td><td>This is what places the two clamps, and therefore the plate height</td></tr>
+<tr class="unk"><td><b>Body diameter over the whole clamping length</b></td><td>Confirms the 80 mm bore, rather than taking it nominally</td></tr>
+<tr class="unk"><td><b>Where the water fittings and cable exit sit</b></td><td>They constrain clamp placement and set the drag chain routing</td></tr>
+<tr class="unk"><td><b>Nose to collet nut face</b></td><td>The fixed part of the torsional arm</td></tr>
+<tr class="unk"><td><b>Weight</b></td><td>Moving mass</td></tr>
+<tr class="unk"><td><b>X beam centreline down to the spindle nose, Z retracted, plus Z travel</b></td><td>Two jobs: the torsional arm, and the front-riser clearance question on Sheet 1</td></tr>
+</table>
+
+<h3>What is already settled for this plate</h3>
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Rails</td><td>HGR20, 400 mm, down both sides</td></tr>
+<tr><td>Spacers</td><td>Two 6" lengths of 5/8" (15.875 mm) bar, cut from one 12" piece, each spanning two blocks</td></tr>
+<tr><td>Bolt count</td><td>16 × M5 × 35 — 8 per spacer, 4 per block. One M5 per hole does the whole stack, counterbored in the Z plate, 6 mm clearance in the spacer, into the block's tapped M5</td></tr>
+<tr><td>Clamps</td><td>Two 80 mm clamps, 120 × 55 × 100 mm, 4 × M8 × 80 socket head each</td></tr>
+<tr><td>Spindle centreline from the carriage plate face</td><td>109 mm</td></tr>
+</table>
+
+<div class="warn">
+<b>Keep the overhang below the spacer blocks short.</b> Anything below them is unsupported plate, and
+the lower clamp carries 1.5–1.8× the cutting force because the two clamps react the tool's overhang as
+a couple. 2" of overhang gives ~0.03–0.04 mm; <b>1" gives ~0.004–0.005 mm</b>. A factor of eight for
+one inch.
+</div>
+
+<div class="note">
+<b>⚠️ Open: nod.</b> Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? Free if
+yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in the repo as
+<b>needed before the machining trip</b>.
+</div>
+</div>
+
+<!-- ============================================================ -->
+<div class="plate">
+<h2>Before the trip — checklist</h2>
+
+<h3>Must be answered or nothing gets drilled</h3>
+<table>
+<tr><th>#</th><th>Question</th><th>Blocks</th></tr>
+<tr><td>1</td><td>How far past the front riser plane does the spindle reach, and does it foul the widened fin at low Z?</td><td>Sheet 1 — the taper cut</td></tr>
+<tr><td>2</td><td>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</td><td>Sheet 4, and the tram scheme</td></tr>
+<tr><td>3</td><td>Spindle body measurements, all six rows on Sheet 4</td><td>Sheet 4 entirely</td></tr>
+<tr><td>4</td><td>Actual width of the X carriage plate</td><td>Sheet 3</td></tr>
+<tr><td>5</td><td>Y of the two tongue bolts within the 61 mm proud band</td><td>Sheet 1</td></tr>
+<tr><td>6</td><td>Mill model number, and whether the DRO is 2-axis or 3-axis</td><td>How every sheet should be dimensioned</td></tr>
+</table>
+
+<h3>Pack list</h3>
+<ul>
+<li>All four plates, plus the 12" square uncut if the taper is still open</li>
+<li><b>Mating hardware:</b> HGH20 bearing blocks, ball nut housing, BK12, BF12</li>
+<li><b>An offcut of the 30-6060 with its corner bores</b> — this is the transfer-punch master for every
+8-bolt and 4-bolt extrusion pattern in the pack</li>
+<li>Transfer punches, M8 and M5</li>
+<li>The coupler (25 mm OD, checks every ø35 bore)</li>
+<li>A rail offcut, for checking the rail-hole pitch against the real part</li>
+</ul>
+
+<div class="info">
+<b>The marginal cost of one more plate on the visit is an hour; a second trip is a weekend across the
+state.</b> That is the whole reason this pack exists — so take anything plausible, drilled or not.
+</div>
+</div>
+
+</body>
+</html>
