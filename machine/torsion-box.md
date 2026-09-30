@@ -20,8 +20,9 @@ torsion box". Read that first; this file is everything below the top skin.
 | Fill | **Sand in the cavities** - filled **last**, on site |
 | Outer left and right walls | **Two 19 mm laminations, 38 mm total** - see the Y beam interface |
 
-⚠️ **The grid spacing is not decided.** One constraint on it is already fixed: each post's tenon
-rises into a cavity, so **a post must land mid-cell, between two ribs**, never under one.
+⚠️ **The grid spacing is not decided.** Every tenon rises into the cavity, so no rib may cross
+one - but that lands differently for the front and back posts. See "What the tenons ask of the
+grid" below.
 
 ### The ribs are egg crate - half-lapped both ways, not blocking
 
@@ -54,12 +55,21 @@ the errors accumulating.
    action lives. Screws through the skins into the ribs are the simplest way to get uniform
    pressure, and they can stay in.
 
-#### The grid is not a free choice
+#### What the tenons ask of the grid
 
-**Five positions are fixed before spacing is:** the three post tenons must each land mid-cell, and
-the two outer walls must fall on the Y beam planes. Set those, then let the spacing fall out.
-Conventional torsion-box spacing is 200-300 mm, but that is convention rather than calculation and
-it should bend to the five fixed positions, not the other way round.
+Less than it first appears, and the two cases are different:
+
+| Post | Where its tenon sits | What the grid must do |
+|---|---|---|
+| **Front left / front right** | **Hard in the box corner**, snug against both perimeter walls - the ledges put its outer faces exactly on the walls' inner faces | Only that the **first interior rib in from each perimeter clears it**. It is not a mid-cell case at all |
+| **Back centre** | Against the back wall, **mid-span along it** | The two front-to-back ribs either side must **clear the 86 mm width**. This is the only mid-cell case |
+
+So the corner tenons constrain nothing but the first rib offset, and they are **laterally located by
+the two walls** for free. Only the back-centre tenon has to be placed between ribs deliberately - and
+it is also the only one wanting blocking, since the corners already have walls on two sides.
+
+Conventional torsion-box spacing is 200-300 mm; that is convention rather than calculation, and it
+should bend to the back-centre tenon rather than the other way round.
 
 ### If more stiffness is wanted, rib height beats thicker skins
 
@@ -311,7 +321,8 @@ Same deadline as everything else on this page: before the box is closed.
 
 ## ⚠️ Open items
 
-- **The grid spacing**, subject to each post landing mid-cell between two ribs.
+- **The grid spacing**, subject to the first interior ribs clearing the two corner tenons and the
+  back-centre tenon falling between two ribs.
 - **The box's deflection between the three points** under full sand load. This sets the minimum 2x4
   clearance above, and it needs the grid spacing and the sand mass first. **The one number on this page
   that a wrong guess would quietly cost accuracy for.**
