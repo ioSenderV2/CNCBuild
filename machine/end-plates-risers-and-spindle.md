@@ -261,7 +261,7 @@ publish Ix and Iy for `30-6060` but not J, so any torsional number stays an esti
 | | |
 |---|---|
 | Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
-| Rails | **HGR20 down both sides, mounted on the plate** |
+| Rails | **HGR20, 400 mm, down both sides, mounted on the plate** |
 | Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
 | Spacers | **two 6" lengths of 5/8" (15.875 mm) aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks |
 | Bolt count | **16 × M5 × 35** - 8 per spacer, 4 per bearing block |
@@ -305,6 +305,21 @@ the two clamps react the tool's overhang as a couple - roughly 1.5 to 1.8×.
 offers, **spread the bearing blocks and lengthen the spacers** rather than hanging plate off the
 bottom - that widens the supported base with no cantilever at all. The cost is Z travel, which is the
 honest trade: **spend travel, not stiffness.**
+
+#### The travel budget
+
+Rails are **400 mm**. Two ~77 mm blocks butted leaves roughly **246 mm** before end clearances, and
+**spreading the blocks costs travel one for one** - a millimetre apart is a millimetre of stroke, and
+buys a millimetre of supported plate.
+
+⚠️ **Measure the real figure rather than taking that arithmetic**: slide the carriage from the nut
+against BF12 up to the nut against BK12. From [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg)
+the nut bottoms on BF12, so **the screw may be the binding constraint rather than the rails** - in
+which case spreading the blocks is partly free.
+
+Then decide how much Z travel is actually needed - material thickness plus tool length plus clearance
+over workholding. Anything above that is available to spend on a wider supported base, and needs
+longer spacers to suit (8" rather than 6").
 
 ### Which half moves - settled
 
