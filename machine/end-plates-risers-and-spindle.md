@@ -378,16 +378,19 @@ Two things to watch:
 Assembly falls out of this nicely: **bolt both end plates on, slide the T-nuts in, drop the beam onto
 the two shelves, then bolt down.** That is a one-person job, which the alternative is not.
 
-### The two plates are identical
+### Same pattern, minus the stepper holes on the idle end
 
 **BF12 and BK12 share the same horizontal mounting pattern** - only the vertical holes differ (2
 against 4), and the horizontal ones are what get used here. So one support-block pattern serves both
-ends and there is no handedness.
+ends and there is no handedness to worry about.
 
-**Drill the stepper mount pilots and the 35 mm shaft hole on both**, even though only the Y1 end
-takes a motor. Tapping happens at home so the pilots are nearly free at the mill, and full
-interchangeability is cheap insurance on a one-visit machining trip. The unused holes sit above the
-beam, in the region carrying no load.
+**The plate at the idle end gets no 35 mm hole and no stepper mount holes.** Everything else is
+common.
+
+This follows the precedent already set on the Y risers, where the steppers sit on the rear plates and
+the front ones were left clean. Drilling unused holes as interchangeability insurance was considered
+and rejected: **a plate that is built and calibrated does not get swapped**, and the cost is
+permanent holes in a visible part.
 
 ### ⚠️ Open: is 35 mm enough for the coupler?
 
@@ -479,8 +482,8 @@ plate are drilled.**
 assemblies that will not be built for months: X carriage plate, Z plate, four Y end plates / risers,
 two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
 
-✅ **The two X end plates are specified** - and identical, so one drawing and one setup. Drill both
-fully, including the stepper holes only one of them uses.
+✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
+on the idle end.
 
 **Triage - not everything needs the mill:**
 
