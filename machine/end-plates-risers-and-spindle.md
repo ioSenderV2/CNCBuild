@@ -317,9 +317,17 @@ against BF12 up to the nut against BK12. From [`photos/z-carriage-assembly-end.j
 the nut bottoms on BF12, so **the screw may be the binding constraint rather than the rails** - in
 which case spreading the blocks is partly free.
 
-Then decide how much Z travel is actually needed - material thickness plus tool length plus clearance
-over workholding. Anything above that is available to spend on a wider supported base, and needs
-longer spacers to suit (8" rather than 6").
+**There is room to manoeuvre** - a router of this size wants perhaps 150-200 mm, against ~246 mm
+available. So work in this order rather than iterating:
+
+1. **Set the Z travel floor first** and treat it as hard - material thickness plus tool length plus
+   clearance over workholding. 🔴 **This is the one that gets quietly eroded** while optimising the
+   other end, and it is the one noticed every day.
+2. **Measure the spindle's usable body length** → that sets clamp separation.
+3. **Spread the blocks until the supported span covers the clamps.** Aim for **zero overhang**, not
+   one inch - the cube law makes an inch cheap, not free.
+4. **Check the remaining travel against step 1.**
+5. **Cut spacers to suit** (8" rather than 6", if spread that far).
 
 ### Which half moves - settled
 
