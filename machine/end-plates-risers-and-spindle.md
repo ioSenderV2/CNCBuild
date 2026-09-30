@@ -273,6 +273,39 @@ height; plate, rails, screw and motor form the other. They are the two halves of
 Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
 [`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
 
+### 🔴 Open: the Z plate height waits on the spindle
+
+**The spindle arrives 2026-09-30 and its body sets the plate.** Clamp separation, and therefore plate
+height, cannot be settled until it is in hand - anything decided before then rests on a guessed body
+length.
+
+**Measure on arrival:**
+
+- 🔴 **Usable parallel body length** - not the overall figure, but the clean 80 mm cylinder available
+  *between obstructions*. A stepped nose at the bottom and a cable gland or connector boss at the top
+  usually leave considerably less than the datasheet length. **This is what places the clamps.**
+- **Body diameter**, confirmed over the whole clamping length rather than nominally
+- **Where the water fittings and cable exit sit** - they constrain clamp placement and set the drag
+  chain routing
+- **Nose to collet nut face** - the fixed part of the torsional arm
+- **Weight**, for the moving mass
+
+#### The overhang below the spacer blocks is cubed
+
+Anything below the spacers is unsupported plate, and putting the lower clamp there inserts a
+cantilever right where it hurts. The lower clamp also carries **more** than the cutting force, since
+the two clamps react the tool's overhang as a couple - roughly 1.5 to 1.8×.
+
+| Overhang | Deflection at the lower clamp, peak load |
+|---|---|
+| 2" (50.8 mm) | ~0.03-0.04 mm |
+| **1" (25.4 mm)** | **~0.004-0.005 mm** |
+
+**A factor of eight for one inch.** If the clamps need more separation than the supported region
+offers, **spread the bearing blocks and lengthen the spacers** rather than hanging plate off the
+bottom - that widens the supported base with no cantilever at all. The cost is Z travel, which is the
+honest trade: **spend travel, not stiffness.**
+
 ### Which half moves - settled
 
 | Fixed | Moving |
