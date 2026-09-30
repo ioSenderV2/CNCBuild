@@ -14,14 +14,88 @@ torsion box". Read that first; this file is everything below the top skin.
 
 | | |
 |---|---|
-| Skins | **19 mm Baltic birch**, top and bottom |
-| Grid | **19 mm strips, 100 mm high**, between the skins |
+| Skins | **19 mm Baltic birch**, top and bottom - 25 mm is available, see below |
+| Grid | **19 mm strips, 100 mm high**, between the skins - **egg crate**, see below |
 | Depth overall | **138 mm** (19 + 100 + 19) |
 | Fill | **Sand in the cavities** - filled **last**, on site |
 | Outer left and right walls | **Two 19 mm laminations, 38 mm total** - see the Y beam interface |
 
 ⚠️ **The grid spacing is not decided.** One constraint on it is already fixed: each post's tenon
 rises into a cavity, so **a post must land mid-cell, between two ribs**, never under one.
+
+### The ribs are egg crate - half-lapped both ways, not blocking
+
+✅ **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
+The alternative considered was full-length ribs one way with blocking between them the other.
+
+**Why, for this box specifically:** the three support points put the back-centre post half a machine
+width inboard of the back corners, so load has to travel **diagonally** to reach it. That needs
+two-way plate action, and only continuous ribs both ways give it. Blocking would make one axis a
+proper continuous web and the other a row of **butt joints** - plywood edge glued to face, at every
+junction - leaving a strong axis and a weak one.
+
+Two build reasons reinforce it: an egg crate **self-jigs**, assembling square and holding its own
+spacing with no clamps, so the whole grid can be checked flat on a reference before either skin goes
+on; and only the notch positions are critical, where blocking needs every piece cut to length with
+the errors accumulating.
+
+#### Four things to get right
+
+1. ⚠️ **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
+   is commonly 18.2-18.5 and varies between sheets. Test-cut on scrap **from the same sheet**. Too
+   tight splits the rib; too loose leaves no glue line.
+2. ⚠️ **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
+   contact with a skin **along its whole length** - which is the glue joint the whole sandwich
+   depends on.
+3. 🔴 **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
+   egg crate seals every cell, so without this the sand cannot migrate and you need a **drain port
+   per cell** instead of a few. Same cut, far fewer ports - see Transport.
+4. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
+   action lives. Screws through the skins into the ribs are the simplest way to get uniform
+   pressure, and they can stay in.
+
+#### The grid is not a free choice
+
+**Five positions are fixed before spacing is:** the three post tenons must each land mid-cell, and
+the two outer walls must fall on the Y beam planes. Set those, then let the spacing fall out.
+Conventional torsion-box spacing is 200-300 mm, but that is convention rather than calculation and
+it should bend to the five fixed positions, not the other way round.
+
+### If more stiffness is wanted, rib height beats thicker skins
+
+Stiffness goes with **skin separation squared**, so thickening the skins is the weaker lever.
+Relative bending stiffness, closed-form:
+
+| Build | Relative stiffness |
+|---|---|
+| 19 mm skins, 100 mm ribs (138 mm deep) | baseline |
+| 25 mm skins, 100 mm ribs (150 mm deep) | +46% |
+| 25 mm skins, 88 mm ribs (holding 138 mm deep) | +20% |
+| **19 mm skins, 150 mm ribs** (188 mm deep) | **+100%** |
+
+Much of that +46% is the box simply getting 12 mm deeper, not the skins working harder. **50 mm
+more rib height doubles it**, for roughly 22 lb of extra plywood against 35 lb for thicker skins -
+ribs are cheap because there is very little rib material next to two full sheets. The real cost of
+taller ribs is **sand volume**, which is a choice at fill time and the part that gets drained for a
+move anyway.
+
+**Where 25 mm does earn its place is the top skin**, and not for sag: it takes the riser feet, the
+Y plate bolt line and the plate bottom edges **in bearing**. Asymmetric skins are fine in a torsion
+box, so **25 mm top over 19 mm bottom** is the sensible split if anything is spent.
+
+✅ **And gross sag mostly does not matter.** Three points symmetric left-to-right means both Y beams
+sag together, so they stay **coplanar** - the property that counts. A uniformly dished table is
+irrelevant on a router; the spoilboard gets surfaced. Twist arises only from the X carriage sitting
+at one end of its travel. Along each Y edge the stiffness is dominated by the 12" × 1 m × 1/4"
+plate bolted to the 38 mm wall every 100 mm, which is far deeper than the box - **the skins are not
+the main load path there.**
+
+🔴 **What does deserve the material is the back edge.** With posts at the front corners and the
+middle of the back, the back edge is a beam supported at its **midpoint**, carrying both back
+corners - and those corners cannot be propped, because the rear carcases sit right under them and
+letting the box land on one destroys the three-point mount. Skin thickness is a weak lever on a
+spanning problem; a **deep back-edge member**, running below the bottom skin if it has to, is the
+right spend.
 
 ---
 
