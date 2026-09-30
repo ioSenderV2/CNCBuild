@@ -49,6 +49,25 @@ what those bores exist for and the only way they are reachable.
 
 At 1/2" plate, an M8 × 35 leaves 22.3 mm in the extrusion; at 3/8" it leaves 25.5 mm.
 
+### 🔴 The holes are 9 mm, and that is deliberate
+
+**As built the Y risers were laid out by hand, aimed at 8.2 mm, and reamed to 9 mm** to absorb
+position error. That is the right dimension and should be specified on purpose everywhere this
+pattern is used, including the X end plates:
+
+- **A close fit is impossible in principle.** The bolts land in *extruded* corner bores, whose
+  feature positions carry looser tolerance than anything drilled in plate. A perfect hole pattern
+  would still not line up across eight bores in two profiles.
+- **The joint does not want bearing.** M8 thread-forming into ø6.65 with ~22 mm of engagement in
+  6063-T6 strips near 34 kN, so roughly 15 kN of preload per bolt is available - about **36 kN of
+  friction across eight bolts**, against loads of one to two kN. The bolts never touch the hole walls.
+- **The float is wanted** if the shelves are to set roll. A close fit would fight the adjustment.
+
+⚠️ **Do not remake the Y risers on cosmetics.** The only question those holes had to answer is
+whether the two Y beams ended up **parallel and coplanar** - that is what the X gantry rides on.
+Measure that first; if it is within tolerance the holes did their job. Remaking calibrated hardware
+also spends mill time already committed to plates that do not exist yet.
+
 ### 🔴 Use the L brackets, not bolts into the plate edge
 
 Two M8 bolts into the bottom edge of a plate, in a line, give **essentially no moment restraint
@@ -296,7 +315,7 @@ wider eats usable Y travel at both ends.
 
 | From the Y beam top | |
 |---|---|
-| Four M8 into the **top extrusion's** corner bores - start just above the Y beam top | 0 |
+| Four M8 into the **top extrusion's** corner bores, **9 mm clearance** - start just above the Y beam top | 0 |
 | Top of the extrusion | **+60 mm** |
 | Top of the ball screw support block mount | **+80 mm** |
 | Top of the stepper mount, motor on the outside, shaft through a **35 mm hole** | **+140 mm** |
