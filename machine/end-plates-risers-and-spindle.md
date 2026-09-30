@@ -331,10 +331,18 @@ a rail end and the balls escape the recirculation path and the block is scrap. T
 block **7 mm past the rail end** before contact, against the **first 10 mm of the block carrying no
 balls**.
 
-⚠️ **Verify that 10 mm rather than trusting it.** The whole margin rests on it and the consequence of
-being wrong is balls on the floor. The load zone does start a few millimetres in on most blocks,
-behind the end seal and the recirculation turn, but "a few" varies by maker and series - confirm from
-the block drawing or by looking into one with the rail out.
+✅ **Measured with calipers: 10 mm** from the end of the block to the first exposed bearing. So the
+7 mm of overrun has **3 mm to spare** and the design stands - **no rail shift needed, the carriage
+plate can be drilled as laid out.**
+
+📌 That 3 mm is nominal. Rail length, plate height and the flush-mount datum each carry a little
+tolerance, so the real figure could land between roughly 1.5 and 4 mm. Positive in every case, and
+the stop only fires if the control has already failed - but it is why the nominal should not go any
+tighter.
+
+📌 **Worth checking: do the blocks have ball retainers?** Some HG-series blocks carry a wire or cage
+keeping the balls captive off the rail. If these do, an overrun is an annoyance rather than a
+scrapped block and the 10 mm stops being the sole protection.
 
 **The 7 mm is forced, not chosen:** the X carriage plate is 16" (407 mm), the rail is 400 mm mounted
 flush with the plate's bottom edge, and the stop sits on the top edge - leaving 7 mm. There is
@@ -348,9 +356,9 @@ nowhere lower for the stop to go.
   end, so nothing is given up; if anything it gains 3 mm.
 - The travel band shifts up 3 mm, absorbed by mounting the spindle 3 mm lower if it matters.
 
-**So: verify the ball-free length first.** At a true 10 mm the existing 7 mm works with 3 mm to spare
-and nothing changes. If it comes out at 6 or 8 mm, shift the rail - **and that has to happen before
-the carriage plate is drilled at the mill.**
+✅ **Measured at 10 mm, so this lever was not needed** - kept because the reasoning applies to any
+rail-and-plate pairing done later, and because the option genuinely expires when the plate is
+drilled.
 
 The block is hardened steel and the plate 1/4" aluminium, so **the plate is sacrificial** - correct
 for something that should fire once or twice in the machine's life. **Keep the overhang short** so
