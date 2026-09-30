@@ -73,7 +73,7 @@ carrying two parallel rails.</li>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td>3/8" alu, from one 12" square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, 154 mm wide</td><td><b>Yes</b></td><td>Partly dimensioned</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
-<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 210 mm</td><td><b>Yes</b></td><td>Outline settled 2026-09-30; clamp holes gated by the M8 bolt direction</td></tr>
+<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 205 mm</td><td><b>Yes</b></td><td>Outline settled 2026-09-30; clamp holes gated by the M8 bolt direction</td></tr>
 </table>
 
 <div class="warn">
@@ -317,7 +317,7 @@ in the repo. This sheet is a frame to fill, not a drawing to work from.
 <!-- ============================================================ -->
 <div class="plate">
 <h2>Sheet 4 — Z plate</h2>
-<p class="sub">1 off · 1/2" aluminium · <b>154 mm W × 210 mm H</b></p>
+<p class="sub">1 off · 1/2" aluminium · <b>154 mm W × 205 mm H</b></p>
 
 <div class="note">
 <b>✅ Unblocked 2026-09-30. The outline is settled and this plate can be cut.</b> It was blocked on the
@@ -335,7 +335,7 @@ the 6" spacers are unchanged.
 <tr><th>Item</th><th>Value</th></tr>
 <tr><td>Ø80 barrel available</td><td><b>199 mm</b> (vendor drawing)</td></tr>
 <tr><td>Clamp centres, up the plate</td><td><b>144 mm apart</b> — a 199 mm clamp extent, the whole barrel</td></tr>
-<tr><td>Plate height</td><td><b>210 mm</b> — the 199 mm extent plus ~5 mm each end</td></tr>
+<tr><td>Plate height</td><td><b>205 mm</b> — the 199 mm extent plus <b>3 mm of relief each end</b></td></tr>
 <tr><td>Two HGH20 blocks, butted</td><td><b>154 mm</b> supported span, ends at <b>±77 mm</b> from plate centre</td></tr>
 <tr><td>Clamp mid-height</td><td><b>±72 mm</b> from plate centre — <i>inside</i> the supported span</td></tr>
 <tr><td>Clamp casting overhanging the spacer run</td><td>22.5 mm each end — carries no load, see below</td></tr>
@@ -361,10 +361,12 @@ closer, the separation shortens and nothing else changes.
 <tr><td>Row spacing (up the plate)</td><td><b>25 mm</b>, i.e. ±12.5 mm from clamp mid-height</td></tr>
 <tr><td>Inner row, from plate centre</td><td><b>±59.5 mm</b> — 17.5 mm inside the supported span</td></tr>
 <tr><td>Outer row, from plate centre</td><td><b>±84.5 mm</b> — 7.5 mm proud of it</td></tr>
+<tr><td>Outer row, from the nearer plate end</td><td><b>18 mm</b> — the drilling dimension</td></tr>
+<tr><td>Inner row, from the nearer plate end</td><td><b>43 mm</b> — the drilling dimension</td></tr>
 </table>
 
 <div class="info">
-<b>✅ The 210 mm plate is confirmed by the real clamps.</b> 7.5 mm of cantilever in 12.7 mm plate is
+<b>✅ The 205 mm plate is confirmed by the real clamps.</b> 7.5 mm of cantilever in 12.7 mm plate is
 effectively rigid, and the clamp hands its moment to the plate as a couple across the 25 mm row
 spacing with the <i>inner</i> row on fully supported metal. Pulling the clamps in until both rows land
 inside ±77 mm would need 129 mm centres and cost 20% of the angular stiffness — <b>rejected</b>.
@@ -373,9 +375,9 @@ The columns at ±50 mm land over the spacers at ±57.5 mm, confirmed in the dry-
 </div>
 
 <div class="info">
-<b>Do not lengthen the spacers to 210 mm.</b> Considered and rejected 2026-09-30. The spacers carry no
+<b>Do not lengthen the spacers to 205 mm.</b> Considered and rejected 2026-09-30. The spacers carry no
 fasteners of their own — they are clamped only by the M5 that runs into the bearing blocks, and past
-the block ends there is nothing to bolt into and nothing behind them. A 210 mm spacer's extra 28 mm
+the block ends there is nothing to bolt into and nothing behind them. A 205 mm spacer's extra 25.5 mm
 per end would be unclamped bar in face contact with the plate, stiffening it in <i>compression only</i>
 and therefore in one load direction only. It adds mass and a rattle for a few percent in one direction.
 <b>Keep the 6" spacers as built.</b>
@@ -426,7 +428,7 @@ yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in th
 <tr><th>#</th><th>Question</th><th>Blocks</th></tr>
 <tr><td>1</td><td>How far past the front riser plane does the spindle reach, and does it foul the widened fin at low Z?</td><td>Sheet 1 — the taper cut</td></tr>
 <tr><td>2</td><td>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</td><td>Sheet 4, and the tram scheme</td></tr>
-<tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the block run sets the clamps, not the spindle.</b> Plate is <b>154 × 210</b>, clamp centres <b>144 mm</b></td><td>—</td></tr>
+<tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the block run sets the clamps, not the spindle.</b> Plate is <b>154 × 205</b>, clamp centres <b>144 mm</b></td><td>—</td></tr>
 <tr><td>7</td><td>Which way the 4 × M8 × 80 clamp bolts run, and therefore whether the 1/2" Z plate is tapped or through-bolted</td><td>Sheet 4 — the clamp holes</td></tr>
 <tr><td>4</td><td><s>Actual width of the X carriage plate</s> — <b>answered 2026-09-30: 154 mm</b>, same as the X end plates and the Z plate</td><td>—</td></tr>
 <tr><td>5</td><td><s>Y of the two tongue bolts within the 61 mm proud band</s> — <b>answered 2026-09-30: X 25 / 175, Y 31</b></td><td>—</td></tr>

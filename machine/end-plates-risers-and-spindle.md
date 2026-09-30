@@ -628,10 +628,10 @@ height; plate, rails, screw and motor form the other. They are the two halves of
 Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
 [`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
 
-### ✅ The Z plate: 154 mm W × 210 mm H × 1/2", settled 2026-09-30
+### ✅ The Z plate: 154 mm W × 205 mm H × 1/2", settled 2026-09-30
 
 **Use the whole barrel.** The clamps are spread to the full **199 mm** of Ø80 body, giving **144 mm
-between clamp centres** on a **210 mm** plate:
+between clamp centres** on a **205 mm** plate:
 
 | | |
 |---|---|
@@ -640,7 +640,7 @@ between clamp centres** on a **210 mm** plate:
 | Clamp extent, spread to the barrel | **199 mm**, i.e. centres **144 mm** apart |
 | Two HGH20 blocks, **butted** | **154 mm** supported span |
 | Clamp overhang beyond the spacer run | **22.5 mm** each end |
-| Plate height | **210 mm** - the 199 extent plus ~5 mm each end |
+| Plate height | **205 mm** - the 199 extent plus **3 mm of relief each end** |
 
 #### Why 144 mm centres and not 99
 
@@ -650,7 +650,7 @@ extent to exactly the 154 mm block run for zero overhang, on a 175 mm plate. Spr
 centres instead is **2.1× the angular stiffness**, and drops the force in each clamp by 31%.
 
 🔴 **And the overhang costs almost nothing, for a reason worth understanding rather than memorising:
-the load enters the plate at the bolts, not at the clamp's outer face.** On a 210 mm plate centred on
+the load enters the plate at the bolts, not at the clamp's outer face.** On a 205 mm plate centred on
 the assembly the spacer run ends at **±77 mm** from centre, while each clamp's **mid-height sits at
 ±72 mm** - *inside* the supported span by 5 mm. What hangs past the spacer is clamp casting, which
 carries nothing. The cube-law warning below is about unsupported **plate under load**, and this is not
@@ -667,6 +667,15 @@ the 55 mm clamp height, the rows sit ±12.5 mm from clamp mid:
 | **Inner** bolt row | **±59.5 mm** - 17.5 mm *inside* the supported span |
 | **Outer** bolt row | **±84.5 mm** - **7.5 mm proud** |
 | Spacer / block run ends | **±77 mm** |
+
+As a drilling schedule, working from the plate ends rather than the centre - **two columns at
+±50 mm, four rows** in two pairs:
+
+| Row | From the nearer plate end | From plate centre |
+|---|---|---|
+| Outer (top and bottom) | **18 mm** | ±84.5 mm |
+| Inner | **43 mm** | ±59.5 mm |
+
 
 **7.5 mm of cantilever in 12.7 mm plate is effectively rigid** - the cube law that makes 2" bad makes
 7.5 mm nothing. The clamp also hands its moment to the plate as a couple across the 25 mm row spacing,
@@ -691,7 +700,7 @@ arithmetic.
 centres, nothing breaks - the separation shortens, the stiffness drops toward the 99 mm case, and the
 plate, spacers and travel are all unaffected. **144 mm is a cap to aim at, not a dimension to force.**
 
-⚠️ **210 assumes nothing else lives on this plate** - no drag chain anchor, cable strain relief or
+⚠️ **205 assumes nothing else lives on this plate** - no drag chain anchor, cable strain relief or
 water line clamp. If one turns up, height is the cheap thing to change, but only before it is cut.
 
 **Still measure on arrival:**
@@ -855,7 +864,7 @@ the spoilboard". That is a machine measurement, not a design decision.
 | **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
 | HGR20 rails, mounted on it | 5/8" spacer blocks |
 | 1605 screw, BK12 + motor, BF12 | ball nut housing |
-| | **Z plate** - **154 W × 210 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
+| | **Z plate** - **154 W × 205 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
 
 The motor stays put and only the carriage travels. The Z plate picks up **two** interfaces - the
 spacer blocks and the ball nut housing - which is what makes the shim below matter.
@@ -908,13 +917,13 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
 
-### ❌ Do not lengthen the spacers to match the 210 mm plate
+### ❌ Do not lengthen the spacers to match the 205 mm plate
 
-Considered and rejected 2026-09-30, when the plate went to 210 mm against a 154 mm block run.
+Considered and rejected 2026-09-30, when the plate went to 205 mm against a 154 mm block run.
 
 **The spacers carry no fasteners of their own** - they are clamped only by the M5 that runs from the
 plate into the bearing block, and past the block ends there is nothing to bolt into and nothing behind
-them. A 210 mm spacer's extra ~28 mm per end would be **unclamped bar in face contact with the plate**:
+them. A 205 mm spacer's extra **25.5 mm** per end would be **unclamped bar in face contact with the plate**:
 it can push but not pull, so it stiffens the overhang in **compression only**, and therefore in one
 load direction of the tipping couple and not the other. For that it adds mass, a rattle, and two
 unsupported bar ends sitting over the rails.
