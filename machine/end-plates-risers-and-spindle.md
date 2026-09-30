@@ -527,10 +527,15 @@ drilled.
 
 Every face that produces nod points forward, and they all end up buried. Two candidates, in order:
 
-1. **The spacer bolts.** The M5 × 35 heads are already counterbored into the Z plate's *front* face.
-   **If that pattern clears the 120 mm spindle clamp footprint on the 154 mm plate**, they are
-   reachable and a jack screw beside each gives push-pull nod at an interface already in the design.
-   Free if it fits. **This is a layout question to settle from the drawing, before the trip.**
+1. **The spacer bolts.** The M5 × 35 heads are already counterbored into the Z plate's *front* face,
+   so if they are reachable a jack screw beside each gives push-pull nod at an interface already in
+   the design. Free if it fits.
+
+   **The check, off the Z plate drawing:** a 120 mm clamp centred on a 154 mm plate covers **17 mm to
+   137 mm**. So - **is the outer column of M5 counterbores within 17 mm of the plate edge?** Clear of
+   that band and those positions stay reachable; inside it and every M5 is buried once the clamps go
+   on. (The 6 mm clearance hole through the spacer itself is not the question - that is the layer
+   underneath.)
 2. **A tram sub-plate** between the Z plate and the clamps, if it does not. Both clamps bolt to the
    sub-plate so they stay coaxial. Pivot low, jack screw high, accessible from the front. **Costs
    about 13 mm of moment arm** (109 → ~122) and inserts an extra joint directly in the spindle load
