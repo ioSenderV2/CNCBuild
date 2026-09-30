@@ -194,25 +194,35 @@ side over the nut's 16 mm length.
 | Boss (E) | 7.80 | 8.14 mouth | 0.34 mm total |
 | Thickness (F) | **6.00** | 8.14 mouth | **2.14 mm spare** |
 
-### ⚠️ Open: can the nut be rolled in after assembly?
+### 🔴 It is a slide-in nut. Load them before the end plates go on
 
-That last row says **the nut is thinner than the slot mouth**, so geometrically it can pass through
-edgewise and be rotated into place — and the chamfered faces on the vendor drawing are the shape one
-would expect of a roll-in.
+The `13025` **slides in from the end of the slot**. It does not roll in, and that is a deliberate
+choice rather than a limitation - roll-in nuts cost more and are weaker.
 
-**This matters for assembly, not strength.** If it rolls in, the back plate's T-nuts can be placed
-after the beam is together, each one positioned where it is wanted. If it does not, all 28 must be
-threaded on from the ends beforehand and will drift while the profiles are mated.
+**So every T-nut has to be in the slot before anything closes the ends.** Once the end plates are
+bolted on, the only way to add one is to take the beam apart.
+
+| | Slots | Per slot | Per beam |
+|---|---|---|---|
+| Back plate | 4 (full section height) | 7 | 28 |
+| Front plate | 2 (flanking the seam) | 7 | **14** |
+| | | | **42 total** |
+
+Seven per slot is 150 mm spacing over 1000 mm - first at 50 mm, then every 150.
+
+⚠️ **The front plate is the one that gets forgotten.** Its two slots are easy to overlook while
+counting out the back, and they are just as closed once the end plates are on.
 
 **Test it with one nut before planning the build sequence.** Do not take the drawing's word for it —
 reading a drawing rather than the part is exactly what produced the two dead schemes below.
 
-### ⚠️ Open: no load rating is published
+### No load rating is published, and that is accepted
 
 **The `13025` product page carries no pull-out figure, no slip figure and no recommended torque.**
-The joint has large margin on every estimate made here, but its actual capacity is unquantified and
-that gap is the vendor's, not an oversight in this file. If a number is ever needed, it has to come
-from 8020 directly.
+The joint has large margin on every estimate made here, and the owner's call is that the T-nuts are
+not a concern - so this is recorded as a known gap rather than carried as an open question. If a
+number is ever actually needed it has to come from 8020 directly; the search has already been done
+and the page does not have it.
 
 ---
 
@@ -276,9 +286,6 @@ the M5s if insurance against creep is wanted.
 
 ## ⚠️ Open items
 
-- **T-nut pull-out and shear ratings**, which set the real joint capacity. ⚠️ **Not published on the
-  product page** - see above. Would have to come from 8020 directly.
-- **Whether the `13025` rolls in after assembly** - see above. One nut, two minutes.
 - **Are the Y beams also stacked pairs?** The ball screw mounting arrangement was confirmed common to
   all three axes, but whether the Y beams are doubled 60×60 like X was never stated outright. Most of
   this file assumes they are.
