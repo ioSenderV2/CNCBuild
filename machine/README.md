@@ -27,8 +27,7 @@ firmware config, so the second Y motor is M3.
 ### End plates
 
 Partly specified - see [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md). They
-carry the ball screw supports (M5), bolt the Y beams to the torsion box, and are what ties both
-stacked profiles together at each end.
+carry the ball screw supports (M5) and bolt the Y beams to the torsion box.
 
 **Deferred, not blocking: the 35 mm sensor bore.**
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)

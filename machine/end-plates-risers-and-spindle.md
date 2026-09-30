@@ -39,8 +39,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 | To the torsion box | two M8, either into the plate's bottom edge **or** via L brackets |
 
 **Those 8 bolts land in the ø6.65 lengthwise corner bores** - four per profile, which is exactly
-what those bores exist for and the only way they are reachable. They are also what ties the two
-stacked profiles together at each end, which the beam design assumes.
+what those bores exist for and the only way they are reachable.
 
 At 1/2" plate, an M8 × 35 leaves 22.3 mm in the extrusion; at 3/8" it leaves 25.5 mm.
 
