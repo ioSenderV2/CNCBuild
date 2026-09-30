@@ -147,12 +147,71 @@ warning in the project notes.
 already carried in the project notes for a round-body 3 kW. Eight M8 holding the spindle is not
 where this assembly will be soft.
 
-### ⚠️ Open: the mount geometry does not close
+### The offset from the X beam to the spindle centreline: 109 mm
 
-- **Which of 120 × 55 × 100 lies along the spindle axis?** Read as 55 mm axial - a collar 55 mm
-  long, 120 wide and 100 tall around an 80 mm bore, leaving 20 mm of wall each side and 10 mm top
-  and bottom. If 55 mm is instead the front-to-back dimension, an 80 mm spindle does not fit inside
-  it.
+🔴 **This is the moment arm.** It is the number that turns cutting force into gantry deflection, and
+it was a placeholder in every calculation in this repo until now.
+
+| From the X beam's front face | |
+|---|---|
+| Rails, bearing blocks and 5/8" spacers | 46.5 mm |
+| Z carriage plate, 1/2" | 12.7 mm |
+| Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
+| **To the spindle centreline** | **109 mm** |
+
+**For gantry bending, add about 35 mm** to reach the beam's neutral axis - the combined centroid of
+the stacked profiles plus their joining plates sits roughly that far behind the front face. So the
+bending arm is **~144 mm**, and at 1000 N that is **~144 N·m** into the gantry.
+
+⚠️ **Still missing: the vertical distance from the tool tip to the beam.** The 109 mm arm converts a
+*vertical* cutting force into gantry torsion; the *vertical* offset converts a fore-aft force into
+the same. Both are needed before the torsional case can be worked, and 8020 publish Ix and Iy for
+`30-6060` but not J.
+
+---
+
+## The Z carriage
+
+| | |
+|---|---|
+| Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
+| Rails | **HGR20 down both sides, mounted on the plate** |
+| Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
+| Spacers | **5/8" (15.875 mm) aluminium blocks on top of the bearing blocks** |
+| Fixing | M5 × 30 socket head, 6 mm clearance through the spacers, counterbored into the plate |
+
+Blocks, spacers and the ball nut housing form one assembly and present their faces at a common
+height; plate, rails, screw and motor form the other. They are the two halves of the axis.
+
+Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
+[`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
+
+### ⚠️ Open: which half moves?
+
+Not yet established, and it changes the whole stack-up:
+
+- **Plate fixed** to the X gantry, spindle carried on the spacer bars. Motor stays put, nut travels.
+  This is the conventional arrangement and what the assembled hardware looks like.
+- **Plate moves**, carrying rails, screw, motor and spindle, with the spacers bolted to the X
+  gantry. Simpler, but the motor travels and the moving mass goes up.
+
+The 109 mm offset above is unaffected either way.
+
+### Use M5 × 35, not M5 × 30
+
+Through a counterbore in a 12.7 mm plate - leaving about 7.7 mm of material under a 5 mm head - plus
+the 15.875 mm spacer is roughly 23.6 mm of grip. An M5 × 30 leaves only about **6.4 mm in the
+bearing block**, 1.3 diameters, with no margin if a counterbore runs deep. The blocks have the
+thread depth for 35 mm.
+
+---
+
+### ⚠️ Open: the clamp mount geometry
+
+- **Orientation - resolved.** The **100 mm dimension is front-to-back**, with the 80 mm bore centred
+  in it leaving 10 mm of wall front and back; 55 mm is axial (vertical) and 120 mm wide, giving
+  20 mm of wall either side of the bore. This follows from the "half of 100" term in the offset
+  chain above and is consistent throughout.
 - **Which way do the M8 × 80 bolts run?** Front-to-back through the clamp into the plate, or from
   behind through the plate into tapped holes in the clamp? With an 80 mm bolt against a 55 mm clamp
   dimension, one of those leaves 25 mm to land in the plate and the other does not fit at all.
@@ -166,9 +225,11 @@ where this assembly will be soft.
   **vertical face** to bolt against. These size the full-height plate; nothing else is missing.
 - **The L bracket specification** - "15 × 1.5" has not been resolved.
 - **The spindle clamp geometry**, three questions above.
-- 🔴 **Distance from the tool centreline back to the face of the Z rails.** This moment arm turns
-  cutting force into gantry deflection and has been a placeholder in every calculation in this repo.
-  With an 80 mm spindle in 120 mm clamps it should now be obtainable.
+- **Vertical distance from the tool tip to the beam**, the other half of the torsional case. The
+  horizontal arm is settled at 109 mm.
+- **Which half of the Z axis moves** - see above.
+- **A torsion constant J for `30-6060`.** 8020 publish Ix and Iy but not J, so the gantry's
+  torsional stiffness cannot yet be computed rather than estimated.
 - **Riser plate orientation** for the X end plates, which governs whether the weak-axis warning
   applies as written.
 

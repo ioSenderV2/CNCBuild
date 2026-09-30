@@ -35,6 +35,8 @@ is deliberately untracked because this repository is public.
 | `gantry-stack-ballscrew-front.jpg` | The 1605 screw with BK12 / BF12 supports, mounted above the stack on X |
 | `front-plate-trial-single-bolt.jpg` | Trial plate in the gap between bearing blocks, establishing that the two slots flanking the seam are reachable |
 | `front-plate-trial-flange-bolts.jpg` | **The clearance test that settled the front plate.** Four M8 flange bolts seated in the 46.7 mm gap, blocks clearing - after arithmetic had said they would not fit |
+| `z-carriage-assembly-end.jpg` | Z carriage dry-assembled: HGR20 rails **on the plate**, 5/8" spacer blocks **on top of the bearing blocks**, ball nut housing between them |
+| `z-carriage-assembly-oblique.jpg` | Same, oblique - shows BK12 with motor and BF12 both on the plate, so screw and motor are fixed relative to it |
 
-That last one is worth keeping for its own sake: the calculation said 47.3 mm against a 46.7 mm gap
-and the parts said otherwise. The parts were right.
+`front-plate-trial-flange-bolts.jpg` is worth keeping for its own sake: the calculation said
+47.3 mm against a 46.7 mm gap and the parts said otherwise. The parts were right.
