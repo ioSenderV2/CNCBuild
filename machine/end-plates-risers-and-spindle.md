@@ -42,7 +42,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 |---|---|---|
 | Size | 3" W × 12" H × 1/2" (76.2 × 304.8 × 12.7 mm) | **Tapered: 3" at the top, 9" at the base, 12" tall, 3/8" thick** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, unchanged |
-| To the torsion box | see the back panel under "The lateral fix" | **Two M8 through the front tongue at 50 and 200 mm**, plus bottom-edge bearing |
+| To the torsion box | see the back panel under "The lateral fix" | **Two M8 through the front tongue at X 25 and 175, Y 31**, plus bottom-edge bearing |
 
 The riser lands on the **same top skin** the full-height plate bears on, just inboard of it - see
 "How it lands on the torsion box" below. Both fixings share that surface, and the riser is the one
@@ -153,8 +153,22 @@ The project note's rule is that moment capacity comes from **bolt spacing, not b
 this file previously had to reach for L brackets to avoid a hinge at the base. **A 9" base gives the
 spacing directly.**
 
-**Fixing: two M8 through the front tongue at 50 mm and 200 mm** from the outboard edge, plus the
-plate's bottom edge **bearing on the top skin** the way the outboard plate does.
+✅ **Fixing, fully dimensioned 2026-09-30: two M8 at X = 25 and 175 mm** from the outboard edge,
+**Y = 31 mm** above the plate's bottom edge - which is **30 mm down from the top of the 61 mm proud
+tongue** - plus the plate's bottom edge **bearing on the top skin** the way the outboard plate does.
+
+🔴 **175, not 200, and the reason is edge distance at the taper.** The plate narrows as it rises. At
+Y 31 it is about **213 mm** wide, so a bolt at X 200 would leave only ~13 mm to the tapered edge, and
+measured **perpendicular** to that edge - which is what counts, since it runs at 26.6 deg from
+vertical - about **12 mm**. That is less than the 9 mm hole's own diameter plus any sensible margin,
+on the bolt carrying the larger share of the moment. **At X 175 the perpendicular edge distance is
+~34 mm.** The couple is unchanged at 150 mm either way, so this costs nothing.
+
+| | X | Y | Edge distance to the taper, perpendicular |
+|---|---|---|---|
+| T1 | **25** | **31** | n/a - outboard factory edge, 20.5 mm |
+| T2 | **175** | **31** | **~34 mm** |
+| ~~T2 as first drawn~~ | ~~200~~ | ~~31~~ | ~~~12 mm - rejected~~ |
 
 | Direction | What takes it |
 |---|---|

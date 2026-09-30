@@ -123,9 +123,13 @@ clearance work for a home drill press; the back panel is likewise clearance hole
   <text class="q" x="88" y="84">schematic only</text>
 
   <!-- tongue bolts -->
-  <circle cx="50" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
-  <circle cx="200" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
-  <text class="q" x="60" y="292">2 × M8 to tongue — X settled, Y NOT</text>
+  <circle cx="25" cy="273.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <circle cx="175" cy="273.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <line x1="25" y1="273.8" x2="175" y2="273.8" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
+  <text class="dim" x="72" y="270">150 couple</text>
+  <text class="lbl" x="14" y="296">T1 X25</text>
+  <text class="lbl" x="150" y="296">T2 X175</text>
+  <text class="dim" x="196" y="277">Y31</text>
 
   <!-- datum -->
   <circle cx="0" cy="304.8" r="3" fill="#c00"/>
@@ -157,8 +161,8 @@ pattern that has to meet formed threads in the beam.
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
 <tr><td>B1–B8</td><td>ø9 clearance, M8 × 35 into beam corner bores</td><td>8</td><td colspan="2"><b>Transfer punch</b></td><td>Four per profile. Existing plate is also a valid template — it was drilled at home with a mag drill</td></tr>
-<tr class="unk"><td>T1</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">50</td><td>UNKNOWN</td><td>X settled. Y must land in the tongue's 61 mm proud band — not yet fixed</td></tr>
-<tr class="unk"><td>T2</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">200</td><td>UNKNOWN</td><td>150 mm couple with T1 — that spacing is the moment restraint</td></tr>
+<tr><td>T1</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">25</td><td class="n">31</td><td>Y 31 above the plate bottom = <b>30 mm down from the top of the 61 mm proud tongue</b></td></tr>
+<tr><td>T2</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">175</td><td class="n">31</td><td>150 mm couple with T1 — that spacing is the moment restraint. <b>175 not 200:</b> at Y 31 the taper leaves only ~12 mm of perpendicular edge at 200, against ~34 mm at 175</td></tr>
 <tr class="unk"><td>F1–F4</td><td>BF12 support block pattern</td><td>4</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Pattern is shared with BK12; take the real block to the mill</td></tr>
 <tr class="unk"><td>—</td><td>Encoder sensor bore, if carried on this plate</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Confirm against the linear-encoder design doc before drilling</td></tr>
 </table>
@@ -367,7 +371,7 @@ yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in th
 <tr><td>2</td><td>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</td><td>Sheet 4, and the tram scheme</td></tr>
 <tr><td>3</td><td>Spindle body measurements, all six rows on Sheet 4</td><td>Sheet 4 entirely</td></tr>
 <tr><td>4</td><td><s>Actual width of the X carriage plate</s> — <b>answered 2026-09-30: 154 mm</b>, same as the X end plates and the Z plate</td><td>—</td></tr>
-<tr><td>5</td><td>Y of the two tongue bolts within the 61 mm proud band</td><td>Sheet 1</td></tr>
+<tr><td>5</td><td><s>Y of the two tongue bolts within the 61 mm proud band</s> — <b>answered 2026-09-30: X 25 / 175, Y 31</b></td><td>—</td></tr>
 <tr><td>6</td><td>Mill model number, and whether the DRO is 2-axis or 3-axis</td><td>How every sheet should be dimensioned</td></tr>
 </table>
 
