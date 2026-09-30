@@ -188,8 +188,8 @@ the same. Both are needed before the torsional case can be worked, and 8020 publ
 | Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
 | Rails | **HGR20 down both sides, mounted on the plate** |
 | Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
-| Spacers | **5/8" (15.875 mm) aluminium blocks on top of the bearing blocks** |
-| Fixing | M5 × 30 socket head, 6 mm clearance through the spacers, counterbored into the plate |
+| Spacers | **5/8" (15.875 mm) aluminium blocks**, sandwiched between the bearing blocks and the Z plate |
+| Fixing | **one M5 per hole does the whole stack** - counterbored in the Z plate, through a 6 mm clearance hole in the spacer, into the bearing block's tapped M5 |
 
 Blocks, spacers and the ball nut housing form one assembly and present their faces at a common
 height; plate, rails, screw and motor form the other. They are the two halves of the axis.
@@ -228,6 +228,19 @@ nut should follow the screw rather than be forced into position by its own bolts
 bolts finger-tight, run the carriage through full travel, then torque them.
 
 ⚠️ Measure the 1 mm rather than assuming it is exactly 1.00 - shim stock comes in 0.5, 0.8 and 1.0.
+
+### 🔴 Match the two spacers to each other before anything else
+
+The spacers carry **no fasteners of their own** - they are compression members, clamped by the same
+M5 that runs from the Z plate into the bearing block. Two consequences:
+
+- **Their faces set the Z plate's plane relative to the rails.** A few hundredths of difference
+  between the left and right spacer twists the plate and preloads all four bearing blocks against
+  each other permanently. **Mic both spacers at both ends** and match them before the nut housing
+  shim is even considered - the pair sets the geometry, the shim only has to avoid fighting it.
+- **They locate nothing.** A 6 mm hole on an M5 bolt is 0.5 mm of radial float per side, so the
+  spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
+  just do not expect the spacer to square anything up.
 
 ### Use M5 × 35, not M5 × 30
 
