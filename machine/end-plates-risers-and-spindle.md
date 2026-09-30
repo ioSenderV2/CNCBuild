@@ -941,18 +941,47 @@ thread depth for 35 mm.
 
 ---
 
-### ⚠️ Open: the clamp mount geometry
+### ✅ The clamp mount geometry - settled 2026-09-30
 
-- **Orientation - resolved.** The **100 mm dimension is front-to-back**, with the 80 mm bore centred
+- **Orientation.** The **100 mm dimension is front-to-back**, with the 80 mm bore centred
   in it leaving 10 mm of wall front and back; 55 mm is axial (vertical) and 120 mm wide, giving
   20 mm of wall either side of the bore. This follows from the "half of 100" term in the offset
   chain above and is consistent throughout.
-- **Which way do the M8 × 80 bolts run?** Front-to-back through the clamp into the plate, or from
-  behind through the plate into tapped holes in the clamp? With an 80 mm bolt against a 55 mm clamp
-  dimension, one of those leaves 25 mm to land in the plate and the other does not fit at all.
-- ✅ **Z plate thickness is 1/2" (12.7 mm)**, settled with the plate size on 2026-09-30. ⚠️ Whether it
-  is tapped or through-bolted with nuts is still open, and it is the same question as the bolt
-  direction above - answer them together.
+- ✅ **Z plate thickness is 1/2" (12.7 mm)**, settled with the plate size.
+- ✅ **The bolts run through the clamp into a TAPPED plate.** Measured: the **M8 × 80 stands 10 mm
+  proud of the clamp's mounting face** when fully seated, so 70 mm is swallowed by the clamp. A
+  12.7 mm plate cannot be through-bolted with that - the bolt never reaches the back face, so there
+  is no nut - and there is nowhere for a nut to go anyway: the inner row has the spacer directly
+  behind it and the outer row has open air.
+
+#### 🔴 Tap the plate, and torque to ~15 N·m - not 25
+
+**10 mm of engagement is 1.25 diameters.** In 6061 that develops roughly **60% of an M8 8.8's proof
+load** - call it 10 kN of preload per bolt, **40 kN per clamp**, against a clamp reaction on the order
+of 2-3 kN at peak cutting load. Ten times the margin, so **the engagement is fine.**
+
+⚠️ **What is not fine is torquing it like an M8 in steel.** The aluminium thread is the limit, not the
+bolt. **~15 N·m**, not the ~25 N·m an M8 8.8 would otherwise take. If you would rather not have to
+remember that, **four M8 helicoils per clamp position** takes it to full spec for the price of a tap.
+
+#### 🔴 The M8 tapped holes and the M5 counterbores share the plate's front face
+
+**Both features are entered from the clamp side, so they compete for the same surface** - this is a
+layout constraint, not just a depth one.
+
+| | |
+|---|---|
+| M5 socket head counterbore | ~**Ø10** |
+| M8 tapping drill / thread major | **6.8** / **8** |
+| Bare non-overlap | (10 + 8)/2 = **9 mm** centre to centre |
+| **Working minimum, with a web that survives the tap** | **12 mm centre to centre** |
+
+📌 **Depth is in your favour and needs no separate check:** the M5 counterbore leaves ~7.7 mm of plate
+under the head while the M8 taps 10 mm into 12.7 mm, so if they clear on the face they never meet.
+
+⚠️ **🔴 This is the last thing gating the drilling.** The M8 rows land at **±59.5 and ±84.5** from
+plate centre at 144 mm clamp centres. Whether that collides depends on the **M5 row positions**, which
+are still unmeasured - see the open item below.
 
 ---
 
@@ -1262,14 +1291,22 @@ slips.
 - 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
   footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
   machining trip, and now the only open question on that list.**
-  📌 **Half the inputs now exist:** the M8 clamp bolts are measured at **±50 mm** across and
-  **±59.5 / ±84.5 mm** up from plate centre. What is still missing is the **M5 counterbore positions**,
-  which come off the actual bearing blocks - the ±16 mm from the rail centreline quoted above is the
-  one figure in this file never read off a part.
+  📌 **Everything but one number now exists.** The M8 clamp bolts are measured at **±50 mm** across
+  and **±59.5 / ±84.5 mm** up from plate centre, and the clearance rule is **12 mm centre-to-centre**
+  between an M8 tapped hole and an M5 counterbore. What is missing is the **M5 row positions**.
+
+  🔴 **The measurement, and it is on the bench:** on an assembled spacer, the distance from the
+  **spacer's midpoint to each of the four M5 hole rows**. No theory needed, and it answers both the
+  nod question and the drilling collision at once. The ±16 mm from the rail centreline quoted above is
+  the one figure in this file never read off a part.
+
+  ⚠️ **What it may force, as an estimate only.** If the HGH20 pitch is the common 50 mm, butted blocks
+  put M5 rows at roughly ±13.5 and ±63.5 from plate centre, and fitting both M8 rows into the gaps
+  drives the clamp mid-height to about ±63.5 - **127 mm between clamp centres** rather than 144. That
+  is ~22% of the angular stiffness, but it also puts **both** M8 rows inside the ±77 spacer run, so the
+  outer-row overhang disappears. **The 50 mm pitch is a guess and the whole paragraph stands or falls
+  with it.**
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
-- **The spindle clamp geometry** - reduced to one question: **which way the M8 × 80 bolts run**, and
-  therefore whether the 1/2" plate is tapped or through-bolted. Orientation and plate thickness are
-  settled above. **Needed before the plate is drilled.**
 - **Z travel floor** - where the confirmed 246 mm sits relative to the spoilboard. A machine
   measurement, and the one item the travel budget still waits on.
 - **Vertical distance from the X beam centreline down to the spindle nose, Z fully retracted** - plus

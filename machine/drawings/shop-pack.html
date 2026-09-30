@@ -73,7 +73,7 @@ carrying two parallel rails.</li>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td>3/8" alu, from one 12" square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, 154 mm wide</td><td><b>Yes</b></td><td>Partly dimensioned</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
-<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 205 mm</td><td><b>Yes</b></td><td>Outline settled 2026-09-30; clamp holes gated by the M8 bolt direction</td></tr>
+<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 205 mm</td><td><b>Yes</b></td><td>Outline settled 2026-09-30; clamp holes gated by the M5 row positions</td></tr>
 </table>
 
 <div class="warn">
@@ -391,8 +391,30 @@ and therefore in one load direction only. It adds mass and a rattle for a few pe
 <tr class="unk"><td><b>Body diameter over the whole clamping length</b></td><td>Confirms the 80 mm bore rather than taking it nominally</td></tr>
 <tr class="unk"><td><b>Weight</b></td><td>Moving mass</td></tr>
 <tr class="unk"><td><b>X beam centreline down to the spindle nose, Z retracted, plus Z travel</b></td><td>Two jobs: the torsional arm, and the front-riser clearance question on Sheet 1</td></tr>
-<tr class="unk"><td><b>Which way the 4 × M8 × 80 run</b> — through the clamp into the plate, or from behind into a tapped clamp?</td><td><b>Gates drilling this plate.</b> Decides tapped vs clearance holes</td></tr>
+<tr class="unk"><td><b>Distance from an assembled spacer's midpoint to each of its four M5 hole rows</b></td><td><b>Gates drilling this plate.</b> The M8 tapped holes and the M5 counterbores share the plate's front face — see the clearance rule below</td></tr>
 </table>
+
+<h3>Clamp fixing — settled 2026-09-30</h3>
+<table>
+<tr><th>Item</th><th>Value</th></tr>
+<tr><td>Bolts</td><td>4 × <b>M8 × 80</b> socket head per clamp, <b>through the clamp into a TAPPED plate</b></td></tr>
+<tr><td>Why not through-bolted</td><td>The bolt stands only <b>10 mm proud</b> of the clamp face — it never reaches the back of a 12.7 mm plate, and there is nowhere for a nut anyway (spacer behind the inner row, air behind the outer)</td></tr>
+<tr><td>Thread engagement</td><td><b>10 mm</b> = 1.25 D. Develops ~60% of an M8 8.8 proof load — ~10 kN per bolt, 40 kN per clamp, against a 2–3 kN clamp reaction. Ample</td></tr>
+<tr><td><b>Torque</b></td><td>🔴 <b>~15 N·m, NOT 25.</b> The aluminium thread is the limit, not the bolt. Helicoils if you want full spec</td></tr>
+</table>
+
+<div class="note">
+<b>🔴 The M8 tapped holes and the M5 counterbores share the plate's front face.</b> Both are entered
+from the clamp side, so this is a layout constraint, not a depth one. An M5 socket head counterbore is
+about Ø10 and the M8 thread major is 8, so bare non-overlap is 9 mm centre to centre —
+<b>use 12 mm as the working minimum</b> so the web survives the tap. Depth needs no separate check:
+the M5 counterbore leaves ~7.7 mm under the head while the M8 taps 10 mm into 12.7, so if they clear
+on the face they never meet.
+<br><br>
+<b>The M8 rows are at ±59.5 and ±84.5 from plate centre at 144 mm clamp centres.</b> Whether that
+collides is the one thing still unmeasured. If it does, <b>walk the clamps closer</b> — 144 is a cap,
+not a requirement, and a few millimetres costs a fraction of a percent of stiffness.
+</div>
 
 <h3>What is already settled for this plate</h3>
 <table>
@@ -429,7 +451,8 @@ yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in th
 <tr><td>1</td><td>How far past the front riser plane does the spindle reach, and does it foul the widened fin at low Z?</td><td>Sheet 1 — the taper cut</td></tr>
 <tr><td>2</td><td>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</td><td>Sheet 4, and the tram scheme</td></tr>
 <tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the block run sets the clamps, not the spindle.</b> Plate is <b>154 × 205</b>, clamp centres <b>144 mm</b></td><td>—</td></tr>
-<tr><td>7</td><td>Which way the 4 × M8 × 80 clamp bolts run, and therefore whether the 1/2" Z plate is tapped or through-bolted</td><td>Sheet 4 — the clamp holes</td></tr>
+<tr><td>7</td><td><s>Which way the 4 × M8 × 80 clamp bolts run</s> — <b>answered 2026-09-30: through the clamp into a TAPPED plate</b>, 10 mm engagement, torque ~15 N·m</td><td>—</td></tr>
+<tr><td>8</td><td>M5 row positions on an assembled spacer, so the M8 tapped holes clear the M5 counterbores by 12 mm</td><td>Sheet 4 — the clamp holes</td></tr>
 <tr><td>4</td><td><s>Actual width of the X carriage plate</s> — <b>answered 2026-09-30: 154 mm</b>, same as the X end plates and the Z plate</td><td>—</td></tr>
 <tr><td>5</td><td><s>Y of the two tongue bolts within the 61 mm proud band</s> — <b>answered 2026-09-30: X 25 / 175, Y 31</b></td><td>—</td></tr>
 <tr><td>6</td><td>Mill model number, and whether the DRO is 2-axis or 3-axis</td><td>How every sheet should be dimensioned</td></tr>
