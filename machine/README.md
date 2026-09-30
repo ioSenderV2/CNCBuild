@@ -11,7 +11,7 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 
 | | |
 |---|---|
-| Gantry beams | **Two 8020 `30-6060` stacked** — 60 mm wide × 120 mm tall, **1000 mm** long |
+| Beams, all three axes | **Two 8020 `30-6060` stacked** — 60 mm wide × 120 mm tall, **1000 mm** long |
 | Rails | **HGR20**, one per profile on the front face, 17 × M5 at 60 mm into T-nuts |
 | Ball screws | **1605**, with BK12 / BF12 supports bolted to the end plates |
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |

@@ -1,7 +1,7 @@
 # The gantry beam, and how the two extrusions are joined
 
-**Settled 2026-09-29.** Each gantry beam is **two 8020 `30-6060` profiles stacked**, 60 mm wide by
-120 mm tall, 1000 mm long. This file records how they are tied together, why the obvious methods do
+**Settled 2026-09-29.** Every beam on the machine - X, Y1 and Y2 - is **two 8020 `30-6060` profiles
+stacked**, 60 mm wide by 120 mm tall, 1000 mm long. This file records how they are tied together, why the obvious methods do
 not work on this profile, and which numbers are measured versus estimated.
 
 Photographs of the parts are in [`photos/`](photos/); the 8020 cross-section drawing is in
@@ -210,6 +210,8 @@ bolted on, the only way to add one is to take the beam apart.
 
 Seven per slot is 150 mm spacing over 1000 mm - first at 50 mm, then every 150.
 
+**All three beams - X, Y1 and Y2 - are stacked pairs**, so that is **126 T-nuts for the machine**.
+
 ⚠️ **The front plate is the one that gets forgotten.** Its two slots are easy to overlook while
 counting out the back, and they are just as closed once the end plates are on.
 
@@ -286,8 +288,5 @@ the M5s if insurance against creep is wanted.
 
 ## ⚠️ Open items
 
-- **Are the Y beams also stacked pairs?** The ball screw mounting arrangement was confirmed common to
-  all three axes, but whether the Y beams are doubled 60×60 like X was never stated outright. Most of
-  this file assumes they are.
 - **Riser plate orientation**, which governs whether the 64× weak-axis concern applies as written.
   Unverified, and it decides whether the X plate thickness is worth revisiting.
