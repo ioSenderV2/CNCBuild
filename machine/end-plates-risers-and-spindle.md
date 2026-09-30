@@ -535,22 +535,36 @@ Every face that produces nod points forward, and they all end up buried. Two can
    137 mm**. So - **is the outer column of M5 counterbores within 17 mm of the plate edge?** (The
    6 mm clearance hole through the spacer itself is not the question - that is the layer underneath.)
 
-   ✅ **Half the 16 is a pass.** Nod needs **one row adjustable and the other acting as the hinge
-   line** - torque the buried row, loosen the accessible row, jack it out, retighten. An ordinary
-   one-sided tram mechanism. Only if *neither* row comes out reachable is the sub-plate forced.
+   🔴 **Superseded - see below. Permanent access turns out not to be worth having.**
+2. **A tram sub-plate** between the Z plate and the clamps. Both clamps bolt to the sub-plate so
+   they stay coaxial. Pivot low, jack screw high, accessible from the front. **Costs about 13 mm of
+   moment arm** (109 → ~122) and inserts an extra joint directly in the spindle load path.
 
-   🔴 **If it lands that way, assembly order is permanent.** The buried row takes its final torque
-   before the clamps go on, because it will never be reached again - so the hinge line's standoff,
-   and any shim under it, has to be right the first time.
+### 🔴 Decided: tram at assembly. No sub-plate.
 
-   📌 **Test for reachable, not visible.** A counterbored M5 socket head needs a hex key entering
-   axially. In CAD, project a cylinder - say 10 mm diameter, 50 mm long - out from each bolt axis and
-   check interference against the clamps and spindle. Plenty of bolts are visible in a viewport and
-   still unreachable with a key in your hand.
-2. **A tram sub-plate** between the Z plate and the clamps, if it does not. Both clamps bolt to the
-   sub-plate so they stay coaxial. Pivot low, jack screw high, accessible from the front. **Costs
-   about 13 mm of moment arm** (109 → ~122) and inserts an extra joint directly in the spindle load
-   path.
+**An accessible row is not sufficient, which was an error in an earlier version of this file.** To
+tilt the plate the gap must open *progressively* from the hinge - a little at the third row, more at
+the second, most at the first. **Every bolt above the hinge has to be free.** A torqued bolt three
+rows up does not permit the tilt; it just bends the plate. Permanent access would therefore need
+**12 of the 16 reachable**, not 4.
+
+Which reframes it: **at assembly all 16 are accessible, because the clamps are not on yet.** Tram
+gets set once, with everything open. What permanent access would buy is only the ability to re-tram
+*without pulling the spindle* - and that is eight M8 bolts and lifting the spindle out of two clamps,
+maybe twenty minutes, on a job done perhaps twice in the machine's life.
+
+**Paying 13 mm of permanent moment arm and an extra joint in the stiffest part of the machine to save
+that is a bad trade.** Tram at assembly; accept that the spindle comes out if it is ever redone.
+
+### Doing the tilt
+
+**A row, not a column.** A complete column adjusts one side against the other, rotating the plate
+about a vertical axis - yaw, which does nothing on a round spindle.
+
+**Use the two outermost rows:** one as the hinge, the other as the adjuster. Angular resolution is
+jack travel divided by row separation, so the widest pair gives the finest control. The two middle
+rows are simply torqued once the tilt is set. **One accessible bolt per side at a common height** is
+enough to jack the adjusting row evenly - all four are not needed.
 
 ### Never tram the two clamps against each other
 
