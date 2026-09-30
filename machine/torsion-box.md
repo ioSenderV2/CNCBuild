@@ -28,6 +28,11 @@ get it too, because the **front taper fins and the full-width back panel need th
 
 - **One detail everywhere** instead of two. Inner web between the skins, outer lamination 180 mm tall
   standing on the bottom skin and 61 mm proud, aluminium bolted through it.
+- **The front and back tongues are the continuous ones.** Each runs the full width and **19 mm past
+  the front post tenon**, covering the end grain of the side tongue in a butt joint - so the side
+  tongues die into them, not the other way round. That is what resolves the front-corner convergence
+  in the riser file. ⚠️ The butt joint itself is end grain onto face and is a weak glue joint; it is
+  not load path, so do not make it one.
 - **It resolves the ⚠️ under "Ledge depth"** below, which anticipated exactly this. Every ledge is
   now 38 mm, the tenons shrink accordingly, and the **back post's single-sided shoulder roughly
   doubles** - which fixes the one wart in that section rather than working around it.

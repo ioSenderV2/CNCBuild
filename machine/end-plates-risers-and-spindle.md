@@ -40,7 +40,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 
 | | Rear (as built) | **Front (2026-09-30, to be remade)** |
 |---|---|---|
-| Size | 3" W × 12" H × 1/2" (76.2 × 304.8 × 12.7 mm) | **Tapered: 3" at the top, 9" at the base**, same 12" and 1/2" |
+| Size | 3" W × 12" H × 1/2" (76.2 × 304.8 × 12.7 mm) | **Tapered: 3" at the top, 9" at the base, 12" tall, 3/8" thick** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, unchanged |
 | To the torsion box | see the back panel under "The lateral fix" | **Two M8 through the front tongue at 50 and 200 mm**, plus bottom-edge bearing |
 
@@ -101,17 +101,46 @@ plates are remade rather than scabbed.
 Lateral stiffness goes as **width cubed**, and a taper puts the section where the moment is. Treating
 the riser as a cantilever over the ~185 mm between box top and beam underside:
 
-| Base width | Stiffness vs the 3" prismatic riser |
+| Base width, at the same thickness | Stiffness vs the 3" prismatic riser |
 |---|---|
 | 6" | ~4.9× |
 | 8" | ~9.6× |
 | **9" - chosen** | **~12.7×** |
 | 12" | ~25× |
 
+📌 **At 3/8" the chosen figure is ~9.5×, not 12.7×.** Stiffness scales linearly with thickness, and
+the front plates are 3/8" while the as-built risers they are compared against are 1/2". Use **9.5×**
+as the real number; the table above is the shape-only effect.
+
 ⚠️ **Calculated, not measured.** Tapered cantilever, width varying linearly, load at the top, fixed
 base. The fixed-base assumption is doing real work - see the bolt note below.
 
-Cost is about **+2 lb per front plate**, static. Two things it does *not* cost:
+### Cut two from one 12" square, and reference off the factory edges
+
+✅ **Decided 2026-09-30.** One **12" square of 3/8" aluminium**, cut once on a line from **3" in at the
+top to 9" in at the bottom**, yields **both front plates with zero waste** - each half is 3" at the top,
+9" at the base, 12" tall.
+
+The two halves are **rotations of each other, not mirrors**: turn one 180° and the outline is
+identical. Left and right are obtained by flipping one plate over, which costs nothing on a
+through-drilled flat plate.
+
+🔴 **Lay both hole patterns out from the factory vertical edge and the factory top edge.** Each half
+keeps one uncut vertical edge, and that is the **outboard** edge, with the taper facing inboard. Done
+that way the bandsaw kerf never enters the layout - it only shortens one piece's taper by about a
+millimetre. Laid out from the **cut** edge instead, the kerf becomes a ~1.5 mm offset built into one
+plate's bolt pattern, and that pattern has to line up with formed threads in the beam.
+
+⚠️ **Flipping one plate over swaps which face is outboard.** Harmless for through holes; check it
+before spot-facing or counterboring anything on one face only.
+
+📌 **3/8" here is consistent with "The 3/8" question is closed" below, not a contradiction of it.**
+That section's condition was that 3/8" is acceptable **only if the full-height plate takes the
+fore-aft load in-plane** - which is exactly what was settled. Two consequences to keep: M8 × 35 leaves
+**25.5 mm** in the extrusion rather than 22.3 mm, and **front and rear plates now differ in thickness
+on purpose.**
+
+Cost is about **+1.5 lb per front plate**, static. Two things it does *not* cost:
 
 - **No bed area.** The fin is a 12.7 mm slice in the riser's own plane, not a wedge intruding into the
   work volume.
@@ -169,15 +198,56 @@ outer lamination standing **61 mm proud** front and back exactly as it does left
 corner tenons become **48 × 48**, the back centre tenon **86 × 48**, and the back post's shoulder
 roughly doubles.
 
-⚠️ **Open: the front corner is a three-way convergence.** The full-height outboard plate runs the
-beam's full 1000 mm and drops into the side channel; the side curb sits outboard of it; the front
-tongue now wants the same corner. Something has to be notched, stopped short, or mitred. Resolve it on
-paper before the skins are cut - the curb's inner face is a hard bearing surface with no float, and
-the file's own rule is to bias the skin wide rather than narrow.
+✅ **The front corner convergence is resolved: the front and back tongues run long and lap the side
+tongues' ends.** Each runs the full width and extends **19 mm past the front post tenon**, covering the
+end grain of the side tongue in a butt joint. That makes the front and back tongues the continuous
+members and the side tongues the ones that die into them.
 
-⚠️ **Open: what sweeps near the riser plane at the Y limits.** The fin is thin but now occupies much
-more of the X-Z area, low down and inboard. Confirm nothing on the gantry end plate or Z carriage
-reaches into that region at full travel.
+It also settles what was the awkward part. Everything at that corner ends in one plane - the **front
+wall's inner web front face** - and the front tongue simply runs across all of it:
+
+| Member | Where it stops |
+|---|---|
+| Full-height outboard plate | Ends at that plane; the front tongue sits in front of its end edge |
+| Side tongue (curb) | Ends at that plane; its end grain is covered by the front tongue |
+| Front riser | Bears against the **back face** of the front tongue, bolted through it |
+
+So **nothing needs notching or mitring.** The one thing to keep in mind is that the corner butt joint
+is plywood end grain onto face, which is a weak glue joint - it is not load path here (the fins' bolts
+land in the front tongue's face, and that tongue is glued to the inner web over its whole area), but
+do not let the corner carry anything on purpose.
+
+### 🔴 Open: how far past the riser plane the spindle reaches
+
+**Confirmed by the user, 2026-09-30: the spindle with its overhang does pass the plane of the front Z
+riser.** So this is a real interference case, not a hypothetical, and the widened fins make the region
+it passes through much larger.
+
+The mechanism: the spindle sits ~152 mm forward of the X beam's front face, so as the gantry runs to
+min-Y the spindle **crosses the riser plane and ends up in front of it.** The fin occupies that plane,
+and its added material is a triangle whose top edge slopes from the top of the plate at 3" inboard down
+to the bottom of the plate at 9" inboard. **Interference is therefore a corner-of-the-envelope case:
+low Z, minimum Y, and X near either beam.** The existing 3" risers barely reach inboard of the beam, so
+this problem is largely created by the widening.
+
+**To determine it, four numbers are needed and only one is in this file:**
+
+| Number | Status |
+|---|---|
+| Spindle centreline forward of the X beam face | ✅ ~152 mm, settled above |
+| **X beam centreline down to the spindle nose, Z fully retracted**, plus Z travel | ⚠️ already an open item below - this is now a second reason it is needed |
+| **The forward-most point of the moving assembly** - spindle body is ø80 so centreline +40 mm, but the clamps or drag chain may reach further | ⚠️ not measured |
+| **The gantry's forward hard stop** relative to the riser plane | ⚠️ not measured |
+
+Three ways out, in order of preference:
+
+1. **It clears with Z retracted** - then this is a soft-limit rule, not a geometry problem: no low Z in
+   the two front corners.
+2. **Shape the fin's top edge to clear** rather than cutting a straight taper. Costs stiffness where
+   the fin is already thinnest, so it is cheap.
+3. **Reduce the base below 9"** - the last resort, since the whole point was the base width.
+
+🔴 **Settle this before the plate is cut.** The taper line is one bandsaw pass and cannot be put back.
 
 ### Span deflection: not a problem
 
@@ -1008,9 +1078,11 @@ slips.
   skin. The three-point-plus-fifth-leg scheme is still only in the project notes, not in this repo.
 - ✅ ~~**The L bracket specification** - "15 × 1.5" has not been resolved.~~ **Moot 2026-09-30** - the
   9" tapered base gives the bolt spacing directly, so there are no L brackets. See "The lateral fix".
-- **Front corner three-way convergence** - outboard plate, side curb and front tongue all want the
-  same corner. Resolve before the box skins are cut.
-- **Clearance at the Y limits** against the widened front fins.
+- ✅ ~~**Front corner three-way convergence**~~ **Closed 2026-09-30** - the front and back tongues run
+  long and lap the side tongues' ends; nothing is notched. See "The lateral fix".
+- 🔴 **How far past the front riser plane the spindle reaches**, and whether it fouls the widened fin
+  at low Z. Confirmed to pass the plane; the amount is unmeasured. **Needed before the front plates are
+  cut.** Four numbers listed under "The lateral fix".
 - **Whether the front fins need the rib layout fixed first** - the bottom-edge bearing wants blocking
   under the full 229 mm base.
 - 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
