@@ -308,22 +308,38 @@ honest trade: **spend travel, not stiffness.**
 
 #### The travel budget
 
-Rails are **400 mm**. ✅ **Measured travel with the blocks butted: 272 mm.** (An estimate of 246 mm
-assumed 77 mm blocks; working back from the measurement they are about **64 mm** each.)
+Rails are **400 mm**, blocks **77 mm**, so with the blocks butted the usable travel is **246 mm**.
 
-#### 🔴 Travel + clamp separation ≈ 336 mm
+⚠️ **A measurement of 272 mm was taken and discarded** - it was the *ball nut's* travel, which
+overruns the rails. Recorded because the number is real and it matters: see the hazard below.
+
+#### 🔴 The screw outruns the rails by ~26 mm, upward, with no hard stop
+
+Going down, the nut bottoms on BF12 - a mechanical stop. **Going up, the blocks run off the rail end
+before the nut reaches BK12.** Nothing catches it.
+
+That is the failure this repo's standing rule exists for. A soft limit is a configured value, and if
+it is ever wrong, missing or bypassed - a homing move, a lost setting, a restored config - the
+machine drives the carriage off the rail and drops the Z assembly.
+
+**Fit a physical stop at the top** - a collar on the screw or a block at the rail end, positioned so
+the mechanics cannot reach the rail end whatever the controller believes. That makes the soft limit a
+convenience rather than the only protection. **Check which way Z homes**: homing upward means homing
+toward the unprotected end.
+
+#### 🔴 Travel + clamp separation ≈ 323 mm
 
 Align **clamp centres over block centres** - then the load goes straight into the blocks and the
-plate does no bending at all. The block span is then clamp separation plus 64 mm, so:
+plate does no bending at all. The block span is then clamp separation plus 77 mm, so:
 
 | Clamp separation | Z travel |
 |---|---|
-| 120 mm | 216 mm |
-| 150 mm | 186 mm |
-| 200 mm | 136 mm |
-| 250 mm | 86 mm |
+| 77 mm (blocks butted) | 246 mm |
+| 120 mm | 203 mm |
+| 150 mm | 173 mm |
+| 200 mm | 123 mm |
 
-Call it ~330 mm after end clearances. **Every millimetre of clamp separation costs a millimetre of
+Less end clearances. **Every millimetre of clamp separation costs a millimetre of
 travel.** The spindle's usable body length says how far the clamps *can* spread; this line says what
 it costs.
 
