@@ -725,6 +725,16 @@ spacer blocks and the ball nut housing - which is what makes the shim below matt
 **The blue is layout dye, not a finish.** The X carriage plate is plain 1/2" aluminium sprayed for
 scribing; **30 holes** to lay out on it.
 
+| X carriage plate | |
+|---|---|
+| Size | **154 mm W × 407 mm H × 1/2"** |
+| Width | ✅ **154 mm, confirmed 2026-09-30** - the same width as the X gantry end plates and the Z plate |
+
+📌 **154 mm recurs across three plates and it is not a coincidence.** The X end plate's 154 is set by
+two HGH20 blocks end to end with 2-3 mm between; the Z plate and this plate inherit it. Worth knowing
+before anyone "tidies" one of them to a different number - changing it here changes what rides the Y
+rails.
+
 ### 🔴 The ball nut sits 1 mm below the spacer blocks - shim it with a plate, not washers
 
 Measured: the spacer blocks stand **1 mm higher** than the ball nut housing, so the Z plate cannot
