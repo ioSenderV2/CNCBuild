@@ -467,12 +467,13 @@ the front ones were left clean. Drilling unused holes as interchangeability insu
 and rejected: **a plate that is built and calibrated does not get swapped**, and the cost is
 permanent holes in a visible part.
 
-### ⚠️ Open: is 35 mm enough for the coupler?
+### 35 mm is enough for the coupler
 
-A coupler for a 1605 screw is typically 25-30 mm outside diameter, leaving only a few millimetres of
-annulus - **and its clamp screws have to be reached through that gap.** If the coupler is at the
-larger end, 40 mm saves a lot of trouble. **Measure the actual coupler**; the hole size is fixed at
-the mill.
+✅ **Measured: the coupler is 25 mm outside diameter**, so a 35 mm hole leaves 5 mm of annulus all
+round and the coupler and screw shaft both pass comfortably.
+
+Not a prediction - **the Y axes already run this exact arrangement**, stepper outboard, shaft through
+the plate, coupler inside. See [`photos/y-beam-coupler-bk12.jpg`](photos/y-beam-coupler-bk12.jpg).
 
 ### ⚠️ Two different 35 mm holes will exist in this plate
 
@@ -602,7 +603,7 @@ slips.
 - **The L bracket specification** - "15 × 1.5" has not been resolved.
 - 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
   footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
-  machining trip.**
+  machining trip, and now the only open question on that list.**
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - **The spindle clamp geometry**, three questions above.
 - **Vertical distance from the tool tip to the beam**, the other half of the torsional case. The
