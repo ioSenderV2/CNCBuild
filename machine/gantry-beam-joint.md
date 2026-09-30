@@ -60,21 +60,29 @@ So the joint is in the primary load path, not a refinement.
 
 ## What the plates buy
 
-⚠️ **All percentages below are estimates**, computed assuming roughly 1200 mm² area and
-5.5 × 10⁵ mm⁴ per profile. **8020 publishes the real area and Ix/Iy — fetch them and redo this
-table.** The ratios between the rows are more trustworthy than the absolute figures.
+Computed from 8020's **published** section properties (below), not estimated. Plate and extrusion
+are both aluminium at ~68.9 GPa, so no transformed-section correction is needed.
 
-Fore-aft bending stiffness, against the bare stacked pair:
+Fore-aft bending stiffness — bending about the vertical axis, the direction the spindle deflects
+under cutting load — against the bare stacked pair:
 
-| Configuration | Fore-aft | Added weight per axis |
-|---|---|---|
-| Back 60 × 10 only | +54 % | — |
-| Back 120 × 10 only | +90 % | ~9 lb |
-| Back 120 + front 46, **1/4"** | **+99 %** | ~8.8 lb |
-| Back 120 + front 46, 3/8" | +161 % | ~11.9 lb |
-| Back 120 + front 46, 10 mm | +171 % | ~12.4 lb |
+| Configuration | Fore-aft | Vertical | Added weight per axis |
+|---|---|---|---|
+| Back 60 × 10 only | +77 % | | — |
+| Back 120 × 10 only | +124 % | | ~9 lb |
+| Back 120 + front 46, **1/4"** | **+149 %** | +40 % | ~8.8 lb |
+| Back 120 + front 46, 3/8" | +241 % | | ~11.9 lb |
+| Back 120 + front 46, 10 mm | +256 % | +63 % | ~12.4 lb |
 
-Fore-aft is the direction that matters: it is where the spindle deflects under cutting load.
+> **These replaced an earlier set of estimates, and every gain above is larger than was promised.**
+> The assumed section properties were too *generous* — 1200 mm² against a real 929.9, and
+> 5.5 × 10⁵ mm⁴ against a real 3.633 × 10⁵ — so the bare beam is **29 % smaller in area and 51 %
+> lower in I** than credited, and each plate therefore carries a larger share. The same table
+> previously read +54 / +90 / +99 / +161 / +171 %.
+>
+> **No decision changed.** The ordering of the options was unaffected, which is why deciding on the
+> estimates was safe — and why the superseded figures are recorded here rather than quietly
+> overwritten.
 
 Two things fall out of this that are easy to get backwards:
 
@@ -125,15 +133,86 @@ plausible schemes below. The drawing does not make it obvious; the part does.
 See [`photos/gantry-stack-end-view-bk12.jpg`](photos/gantry-stack-end-view-bk12.jpg) - the clearest
 view of the voids, and of the corner bores running lengthwise.
 
-### From the 8020 drawing — catalog, not measured
+### From 8020 — catalog, not measured
 
-`60.00` overall · `30.00` module · `15.00` slot centreline from each edge · **`8.14` slot opening** ·
-`16.51` slot channel · `4.20` lip · **`2.21` wall** · **ø`6.65` corner bores** · `27.62` central
-cavity diagonal.
+**Section, from the dimensioned drawing:** `60.00` overall · `30.00` module · `15.00` slot
+centreline from each edge · **`8.14` slot opening** · `16.51` slot channel · `4.20` lip ·
+**`2.21` wall** · **ø`6.65` corner bores** · `27.62` central cavity diagonal.
+
+**Published properties**, from the 8020 product page for `30-6060`:
+
+| | |
+|---|---|
+| Moment of inertia | **Ix = Iy = 36.3307 cm⁴** (3.633 × 10⁵ mm⁴) |
+| Cross-sectional area | **9.299 cm²** (929.9 mm²) — their page labels this "Surface Area" |
+| Alloy | **6063-T6**, clear anodised |
+| Yield strength | **172.37 N/mm²** |
+| Modulus of elasticity | **68 947.6 N/mm²** (68.9 GPa) |
+| Weight | **0.1441 lb per inch** (~5.67 lb per metre, per profile) |
+| Max stock length | 238.19 in (6050 mm) |
+
+The area and the weight-per-inch agree to about 2 % on aluminium density, which cross-checks both
+and confirms the mislabelled "Surface Area" field is really cross-sectional area.
+
+🔴 **The alloy is 6063-T6, not 6105-T5.** This repo carried 6105-T5 for a while as an unverified
+recollection. 6063-T6 yields at 172 MPa, **softer than what was assumed** while the tapping schemes
+below were being argued. It changes no decision — every scheme that depended on aluminium thread
+strength was already dead — but it makes those kills more firmly right, not less.
 
 The corner bores **run lengthwise**, parallel to the 1000 mm axis. They are reachable only from the
 ends. This is not obvious from an end-view photograph and is the reason a whole family of mid-span
 bolting schemes does not exist.
+
+---
+
+## The fasteners
+
+**8020 `13025` T-nut**, published spec:
+
+| | |
+|---|---|
+| Thread | **M8 × 1.25** |
+| Body | **16.00 × 16.00 mm** (A × B) |
+| Boss height | **7.80 mm** (E) |
+| Thickness | **6.00 mm** (F) |
+| Step | 1.80 mm (D) |
+| Material | **Steel, grade 1045**, bright zinc |
+| Fits | 15 / 30 / 40 Series |
+| Weight | 0.015 — *unit unstated on the page* |
+
+### Why the slot lips are the limit, not the thread
+
+M8 in 6 mm of 1045 steel will carry more than an M8 bolt can deliver. **The joint's capacity is set
+entirely by the 6063-T6 slot lips** bearing on the nut's shoulders — roughly 4.1 mm of shoulder each
+side over the nut's 16 mm length.
+
+### Fit against the slot
+
+| | T-nut | Slot | Clearance |
+|---|---|---|---|
+| Body width (A) | 16.00 | 16.51 channel | 0.51 mm total |
+| Boss (E) | 7.80 | 8.14 mouth | 0.34 mm total |
+| Thickness (F) | **6.00** | 8.14 mouth | **2.14 mm spare** |
+
+### ⚠️ Open: can the nut be rolled in after assembly?
+
+That last row says **the nut is thinner than the slot mouth**, so geometrically it can pass through
+edgewise and be rotated into place — and the chamfered faces on the vendor drawing are the shape one
+would expect of a roll-in.
+
+**This matters for assembly, not strength.** If it rolls in, the back plate's T-nuts can be placed
+after the beam is together, each one positioned where it is wanted. If it does not, all 28 must be
+threaded on from the ends beforehand and will drift while the profiles are mated.
+
+**Test it with one nut before planning the build sequence.** Do not take the drawing's word for it —
+reading a drawing rather than the part is exactly what produced the two dead schemes below.
+
+### ⚠️ Open: no load rating is published
+
+**The `13025` product page carries no pull-out figure, no slip figure and no recommended torque.**
+The joint has large margin on every estimate made here, but its actual capacity is unquantified and
+that gap is the vendor's, not an oversight in this file. If a number is ever needed, it has to come
+from 8020 directly.
 
 ---
 
@@ -197,10 +276,9 @@ the M5s if insurance against creep is wanted.
 
 ## ⚠️ Open items
 
-- **8020 published section properties** — area and Ix/Iy for `30-6060`, to replace the estimates in
-  the stiffness table. Also their **T-nut pull-out and shear ratings**, which set the real joint
-  capacity. Both are catalog facts and should be committed, not estimated.
-- **Alloy.** 6105-T5 is recalled, not verified. It sets the thread and lip strength figures.
+- **T-nut pull-out and shear ratings**, which set the real joint capacity. ⚠️ **Not published on the
+  product page** - see above. Would have to come from 8020 directly.
+- **Whether the `13025` rolls in after assembly** - see above. One nut, two minutes.
 - **Are the Y beams also stacked pairs?** The ball screw mounting arrangement was confirmed common to
   all three axes, but whether the Y beams are doubled 60×60 like X was never stated outright. Most of
   this file assumes they are.
