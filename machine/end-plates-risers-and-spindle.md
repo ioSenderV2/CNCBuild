@@ -656,10 +656,29 @@ the assembly the spacer run ends at **±77 mm** from centre, while each clamp's 
 carries nothing. The cube-law warning below is about unsupported **plate under load**, and this is not
 that.
 
-⚠️ **This is the one thing to verify before drilling: where the four M8 sit within the 55 mm clamp
-height.** A single row at mid-height gives the ±72 above. Two rows near the clamp's outer edges put
-the outer row about 10 mm proud of the spacer end - still small, but it is the number the whole
-argument rests on, so measure it off the actual clamps.
+#### ✅ Measured off the clamps, 2026-09-30 - and it lands fine
+
+**Two columns 100 mm apart, two rows 25 mm apart**, four M8 per clamp. Taking the 25 mm as centred in
+the 55 mm clamp height, the rows sit ±12.5 mm from clamp mid:
+
+| From plate centre | |
+|---|---|
+| Clamp mid-height | **±72 mm** |
+| **Inner** bolt row | **±59.5 mm** - 17.5 mm *inside* the supported span |
+| **Outer** bolt row | **±84.5 mm** - **7.5 mm proud** |
+| Spacer / block run ends | **±77 mm** |
+
+**7.5 mm of cantilever in 12.7 mm plate is effectively rigid** - the cube law that makes 2" bad makes
+7.5 mm nothing. The clamp also hands its moment to the plate as a couple across the 25 mm row spacing,
+and **the inner row of that couple is on fully supported metal.**
+
+📌 **The alternative was considered and rejected:** pulling the clamps in until *both* rows land inside
+±77 needs **129 mm** centres, which costs **20% of the angular stiffness** to remove an overhang that
+is not doing anything. **Keep 144 mm.**
+
+📌 **The left-right columns are confirmed too** - the second dry-fit photo shows both columns landing
+squarely over the spacers, which is the ±50 versus ±57.5 result below holding in metal rather than in
+arithmetic.
 
 #### What this does not cost
 
@@ -1234,6 +1253,10 @@ slips.
 - 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
   footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
   machining trip, and now the only open question on that list.**
+  📌 **Half the inputs now exist:** the M8 clamp bolts are measured at **±50 mm** across and
+  **±59.5 / ±84.5 mm** up from plate centre. What is still missing is the **M5 counterbore positions**,
+  which come off the actual bearing blocks - the ±16 mm from the rail centreline quoted above is the
+  one figure in this file never read off a part.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - **The spindle clamp geometry** - reduced to one question: **which way the M8 × 80 bolts run**, and
   therefore whether the 1/2" plate is tapped or through-bolted. Orientation and plate thickness are
