@@ -270,6 +270,70 @@ thread depth for 35 mm.
 
 ---
 
+## Tramming
+
+⚠️ **Partly open - the nod adjustment is undecided and has a deadline** (see the machining section
+below; hole sizes depend on it).
+
+### The rule that constrains every option
+
+**A bolted face can only tilt about axes lying in that face.** Shimming or jacking changes standoff
+along the face's *normal*, which produces rotations about the two axes *in* the face and never about
+the normal itself. So each interface corrects exactly two of the three rotations, fixed by which way
+it points:
+
+| Interface | Face normal | Gives |
+|---|---|---|
+| X carriage plate ↔ X bearing blocks | Y (fore-aft) | **nod** + yaw |
+| Spacers / spindle clamps ↔ Z plate | Y | **nod** + yaw |
+| **X end plates ↔ Y carriage blocks** | X (across) | **roll** + yaw |
+
+### 🔴 Do not make the carriage plate joint adjustable
+
+Set screws over each bearing block is the usual arrangement and it is wrong here, for two reasons:
+
+1. **The bolt heads are buried.** They sit on the carriage plate's front face, under the Z rails, the
+   screw and the travelling nut housing. There is no access once assembled.
+2. **That joint carries everything.** Replacing ~3400 mm² of face contact per block with four set
+   screw tips gives local yielding, brinelling under cyclic load, and a joint that keeps settling for
+   months. At 1000 N it undoes the stiffness the rest of the design is chasing.
+
+**Build it solid and treat it as a datum.** Get it right at the mill.
+
+### Roll: at the X end plates, and it is free
+
+The X end plate to Y carriage interface gives roll directly, and **its bolt heads are on the outer
+face at the ends of the machine, where nothing covers them**. Oversize those holes, add jack screws,
+and roll becomes a screw adjustment reachable with the machine assembled.
+
+**The X end plates are undesigned, so this costs nothing to build in** - decide it before they are
+drilled.
+
+### ⚠️ Open: nod
+
+Every face that produces nod points forward, and they all end up buried. Two candidates, in order:
+
+1. **The spacer bolts.** The M5 × 35 heads are already counterbored into the Z plate's *front* face.
+   **If that pattern clears the 120 mm spindle clamp footprint on the 154 mm plate**, they are
+   reachable and a jack screw beside each gives push-pull nod at an interface already in the design.
+   Free if it fits. **This is a layout question to settle from the drawing, before the trip.**
+2. **A tram sub-plate** between the Z plate and the clamps, if it does not. Both clamps bolt to the
+   sub-plate so they stay coaxial. Pivot low, jack screw high, accessible from the front. **Costs
+   about 13 mm of moment arm** (109 → ~122) and inserts an extra joint directly in the spindle load
+   path.
+
+### Never tram the two clamps against each other
+
+They bore a round body and **must stay coaxial**. Shim one relative to the other and the spindle is
+pinched in misaligned bores. A sub-plate carrying both is fine - they move together.
+
+### What tramming actually buys
+
+**Surfacing the spoilboard with the machine itself removes the table-to-spindle error in Z**, so tram
+governs wall squareness and scallop depth rather than whether a surfaced face comes out flat.
+
+---
+
 ## Machining: one trip, so design ahead of the build
 
 Accurate holes are drilled on **a single visit to a friend's shop** - a Laguna mill, 4' × 1' bed,
@@ -315,6 +379,9 @@ slips.
 - **Height from the top of the beam to the torsion box fixing line**, and whether the box has a
   **vertical face** to bolt against. These size the full-height plate; nothing else is missing.
 - **The L bracket specification** - "15 × 1.5" has not been resolved.
+- 🔴 **How nod is adjusted** - does the spacer M5 counterbore pattern clear the 120 mm clamp
+  footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
+  machining trip.**
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - **The spindle clamp geometry**, three questions above.
 - **Vertical distance from the tool tip to the beam**, the other half of the torsional case. The

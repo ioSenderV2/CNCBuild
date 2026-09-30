@@ -235,6 +235,60 @@ and the page does not have it.
 
 ---
 
+## Assembling the stack
+
+### The rails are aligned, not located
+
+HGR20 mounting holes are **ø6 through with a ø9.5 counterbore, taking an M5 socket head** - mounted
+here with **M5 × 16 into T-nuts**. An M6 shank would pass the 6 mm hole but its 10 mm head will not
+enter a 9.5 mm counterbore, so M5 is correct and matches the rail spec.
+
+**That 1 mm of float is deliberate.** The hole is a clearance hole so the rail can be *aligned*
+rather than located, and the T-slot adds more float still. Tighten 17 bolts with the rail floating
+freely and it is straight nowhere in particular - it snakes. **Every bolt must be biased the same
+way while it is tightened.**
+
+### 🔴 Bias both rails the same direction, not outward from each other
+
+The four bearing blocks are locked together by the carriage plate, so what the assembly actually
+cares about is that **rail-to-rail spacing stays constant** along the metre.
+
+| Bias | Consequence |
+|---|---|
+| **Common mode** - both rails pulled the same way | The carriage follows the wander. A small position error, no fight. **Do this.** |
+| **Differential** - rails pulled apart or together | The *spacing* varies, so the blocks are forced apart and together as the carriage travels. Preload variation and binding - the mode that shortens block life. |
+
+Hand pressure repeats to a tenth or two. Common-mode that is harmless; differential it is not.
+
+📌 **As built 2026-09-29:** the X beam rails were mounted with an **opposed** bias - lower rail pulled
+toward the lower edge, upper rail toward the upper edge - each bolt biased consistently, which is far
+better than random, but in the direction that varies spacing. Recorded as-built rather than as a
+fault: **verify by feel before redoing 34 bolts** (see below).
+
+### Rail parallelism is set twice, and the second time is at the joint
+
+The two rails sit on **two separate extrusions**. Nothing indexes one profile to the other - the
+T-slots let them shift, and the joining plates lock in whatever they are bolted at. So parallelism is
+not settled when the rails are mounted; it is settled again when the stack goes together.
+
+- **Both front faces must end up flush**, or the rails are not coplanar and the carriage plate twists
+  all four blocks.
+- **Assemble against a flat reference** - stack front-face-down on a known-flat surface, or clamp a
+  straightedge across both front faces, before the joining plate bolts come up tight.
+
+This is the moment the rail geometry is actually decided.
+
+### How to know whether any of it matters
+
+Do not redo bolts on suspicion. **Mount the four blocks to the carriage plate and slide the whole
+assembly the length of the beam by hand.** Tight spots are obvious by feel. For a number, put an
+indicator on the plate against a straightedge and sweep it.
+
+Smooth and even means done. A binding zone tells you roughly where, and only those bolts need
+revisiting.
+
+---
+
 ## Schemes that were tried and killed
 
 Recorded because each looked right for a while, and without the reasons written down the next
