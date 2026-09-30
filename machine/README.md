@@ -20,7 +20,7 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
-| Spindle | **80 mm, 3 kW water-cooled** with matching VFD, on two 80 mm clamps |
+| Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
 | Y beam support | Two **3" × 12" × 1/2"** end plates / Z risers per beam, ends only - the ball screw runs under the beam |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the

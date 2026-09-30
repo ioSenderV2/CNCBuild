@@ -102,7 +102,8 @@ that would remove the concern entirely - **proposed, not decided, nothing ordere
 
 🔴 **The percentages above are stiffness ratios and are force-independent, but any absolute
 deflection quoted in this repo at 250 N is two to four times optimistic** - that was a router
-figure, and this machine has a 3 kW spindle. The force table is in that same file.
+figure, and this machine takes 500-1000 N as its structural envelope. The force table is in
+that same file.
 
 **The X plate choice is settled but testable.** Once the Z assembly exists, push on the spindle nose
 with a known force and indicate it. The plate is bolt-on precisely so that swap stays cheap.

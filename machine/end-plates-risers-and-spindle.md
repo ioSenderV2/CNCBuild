@@ -12,16 +12,30 @@ off them. Several dimensions are still **⚠️ Open** and are marked as such ra
 2026-09-29 was done against an assumed **250 N** cutting force. That is a trim-router number and it
 is wrong for this machine.
 
-The spindle is **3 kW**. What that makes available:
+This table was built when the spindle was expected to be **3 kW**. What that would have made
+available:
 
 | | Torque | 12 mm cutter | 6 mm cutter |
 |---|---|---|---|
 | 18 000 rpm | 1.6 N·m | ~265 N | ~530 N |
 | 9 000 rpm | 3.2 N·m | ~530 N | ~1060 N |
 
-**Design to 500-1000 N.** Every deflection figure scales linearly, so anything quoted at 250 N is
-two to four times optimistic. Where the original estimate still stands, it is because the
-conclusion was insensitive to the force - not because the force was right.
+⚠️ **Two corrections, neither of which moves the design target - 2026-09-30:**
+
+1. **The spindle is 2.2 kW, not 3 kW.** Rated torque at 400 Hz is ~1.17 N·m rather than 1.6.
+2. **The 9 000 rpm row assumes constant power below base speed, and a VFD spindle does not do
+   that** - it is roughly constant *torque* down from 400 Hz, so the torque does not double, it stays
+   put while the power halves. The doubled row overstates what the spindle can deliver.
+
+**Design to 500-1000 N anyway.** The envelope is *not* being relaxed to match a smaller spindle, for
+two reasons: a crash or a plunge into workholding generates forces the spindle rating has nothing to
+do with, and relaxing a structural margin because a motor got smaller is the wrong direction of
+travel. **Treat 500-1000 N as the structural envelope and the table as a note on what the spindle can
+sustain in a cut** - they are different questions and were merged here.
+
+Every deflection figure scales linearly, so anything quoted at 250 N is two to four times optimistic.
+Where the original estimate still stands, it is because the conclusion was insensitive to the force -
+not because the force was right.
 
 ---
 
@@ -509,14 +523,58 @@ warning in the project notes.
 
 | | |
 |---|---|
-| Spindle | **80 mm, 3 kW, water-cooled**, with matching VFD |
+| Spindle | **Ø80 mm, 2.2 kW, water-cooled**, with matching VFD |
+| Nameplate | **Φ80×200, 2.2 kW, 220 V, 8.5 A, 400 Hz** (24,000 rpm at 400 Hz) |
+| Collet | **ER20**, supplied with Ø6 mm, range Ø1-12 mm |
+| Cooling | two **Ø8 mm** water fittings, exiting **radially at the rear** |
 | Clamps | **two 80 mm aluminium clamps**, one at each end of the spindle |
 | Clamp size | 120 mm × 55 mm × 100 mm |
 | Fixing | **4 × M8 × 80 mm socket head** per clamp, into the Z plate |
 
 **Two clamps at either end is the right arrangement** and matches the dual-clamp recommendation
-already carried in the project notes for a round-body 3 kW. Eight M8 holding the spindle is not
+already carried in the project notes for a round-body spindle. Eight M8 holding the spindle is not
 where this assembly will be soft.
+
+### The body dimensions, off the vendor drawing
+
+The three dimensions on the product drawing are **sequential, not overlapping** - confirmed by the
+user 2026-09-30:
+
+| Segment | |
+|---|---|
+| Collet nut face to the nose flange (nut + exposed shaft) | **52 mm** |
+| Nose flange / front bearing cap | **25 mm** |
+| **Nose flange to the rear end - the Ø80 body** | **199 mm** |
+| Overall, collet nut face to rear | **276 mm** |
+
+📌 **The full 199 mm is Ø80 and clampable.** The black bands at each end are finish, not steps - the
+Ø80 dimension line on the drawing is drawn across the rear band. Only the two Ø8 water fittings near
+the rear obstruct anything, and they sit above where the upper clamp goes.
+
+⚠️ **The 52 and 25 are read off a listing drawing, not measured.** The 199 is the one that carries the
+design and it has margin to spare (see the Z plate below), so this does not need confirming before the
+plate is cut - but mic the nose stack before anything depends on the *vertical* arm.
+
+### 📌 Why 2.2 kW and not 3 kW - the choice was made and reversed deliberately
+
+A Ø100 3 kW unit was considered on 2026-09-30 and **rejected**. It is recorded because the reasoning
+governs any future spindle change, not because the part is interesting:
+
+- **Power is not the limit on this machine.** Aluminium's specific cutting energy is ~0.7 J/mm³, so a
+  respectable adaptive cut for a router of this class - 6 mm three-flute, 18,000 rpm, 6 mm deep ×
+  1.5 mm wide, ~24 cm³/min - draws about **0.3 kW at the cutter**. Consuming 2.2 kW in aluminium would
+  need ~190 cm³/min, which is machining-centre territory. **Both spindles are five to seven times
+  more powerful than the cut this frame can take.**
+- **Rigidity is the limit, and Ø100 makes it worse.** The bigger clamp puts the bore centre ~75.5 mm
+  off the mounting face instead of 50, taking the gantry moment arm from **187 mm to ~212 mm**, while
+  roughly doubling the moving mass. More mass on a longer arm lowers the natural frequency and the
+  chatter threshold - it spends capability on the axis that binds to buy it on the axis that doesn't.
+- **It cost travel and plate width too:** a Ø100 clamp is 169 mm across the flanges, forcing a 180 mm
+  Z plate and **13 mm of X travel at each end**, and its blank flanges would have put the mounting
+  bolts *outboard* of the spacer centrelines rather than inboard.
+
+**The one honest argument for 3 kW is hardwood** - a large surfacing or profile cutter genuinely can
+pull 2 kW plus. If this machine's work shifts that way, that is the trigger to revisit, not aluminium.
 
 ### The offset from the X beam to the spindle centreline: 109 mm
 
@@ -570,22 +628,60 @@ height; plate, rails, screw and motor form the other. They are the two halves of
 Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
 [`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
 
-### 🔴 Open: the Z plate height waits on the spindle
+### ✅ The Z plate: 154 mm W × 210 mm H × 1/2", settled 2026-09-30
 
-**The spindle arrives 2026-09-30 and its body sets the plate.** Clamp separation, and therefore plate
-height, cannot be settled until it is in hand - anything decided before then rests on a guessed body
-length.
+**Use the whole barrel.** The clamps are spread to the full **199 mm** of Ø80 body, giving **144 mm
+between clamp centres** on a **210 mm** plate:
 
-**Measure on arrival:**
+| | |
+|---|---|
+| Ø80 barrel available | **199 mm** |
+| Two clamps at 55 mm axial | **110 mm** of clamp |
+| Clamp extent, spread to the barrel | **199 mm**, i.e. centres **144 mm** apart |
+| Two HGH20 blocks, **butted** | **154 mm** supported span |
+| Clamp overhang beyond the spacer run | **22.5 mm** each end |
+| Plate height | **210 mm** - the 199 extent plus ~5 mm each end |
 
-- 🔴 **Usable parallel body length** - not the overall figure, but the clean 80 mm cylinder available
-  *between obstructions*. A stepped nose at the bottom and a cable gland or connector boss at the top
-  usually leave considerably less than the datasheet length. **This is what places the clamps.**
-- **Body diameter**, confirmed over the whole clamping length rather than nominally
-- **Where the water fittings and cable exit sit** - they constrain clamp placement and set the drag
-  chain routing
-- **Nose to collet nut face** - the fixed part of the torsional arm
+#### Why 144 mm centres and not 99
+
+**Two clamps resist the tool's tipping couple on a lever equal to their separation, so angular
+stiffness goes as separation squared.** An earlier draft of this section proposed setting the clamp
+extent to exactly the 154 mm block run for zero overhang, on a 175 mm plate. Spreading to 144 mm
+centres instead is **2.1× the angular stiffness**, and drops the force in each clamp by 31%.
+
+🔴 **And the overhang costs almost nothing, for a reason worth understanding rather than memorising:
+the load enters the plate at the bolts, not at the clamp's outer face.** On a 210 mm plate centred on
+the assembly the spacer run ends at **±77 mm** from centre, while each clamp's **mid-height sits at
+±72 mm** - *inside* the supported span by 5 mm. What hangs past the spacer is clamp casting, which
+carries nothing. The cube-law warning below is about unsupported **plate under load**, and this is not
+that.
+
+⚠️ **This is the one thing to verify before drilling: where the four M8 sit within the 55 mm clamp
+height.** A single row at mid-height gives the ±72 above. Two rows near the clamp's outer edges put
+the outer row about 10 mm proud of the spacer end - still small, but it is the number the whole
+argument rests on, so measure it off the actual clamps.
+
+#### What this does not cost
+
+- **Zero travel.** The blocks stay **butted**, so the full **246 mm** budget survives. The alternative
+  - spreading the blocks to a 199 mm run for literal zero overhang - buys the same stiffness and costs
+  **45 mm of travel**, leaving 201 mm against the 150-200 mm this machine wants. Not worth it.
+- **The 6" spacers are unchanged.** 152.4 mm against a 154 mm run. Nothing gets re-cut.
+
+📌 **The design degrades gracefully.** If the water fittings force the clamps closer than 144 mm
+centres, nothing breaks - the separation shortens, the stiffness drops toward the 99 mm case, and the
+plate, spacers and travel are all unaffected. **144 mm is a cap to aim at, not a dimension to force.**
+
+⚠️ **210 assumes nothing else lives on this plate** - no drag chain anchor, cable strain relief or
+water line clamp. If one turns up, height is the cheap thing to change, but only before it is cut.
+
+**Still measure on arrival:**
+
+- **Where the water fittings and cable exit sit** - they cap the clamp spread and set the drag chain
+  routing
+- **Nose to collet nut face** - the fixed part of the torsional arm; the drawing says 52 mm, unverified
 - **Weight**, for the moving mass
+- **Body diameter** over the whole clamping length rather than nominally
 
 #### The overhang below the spacer blocks is cubed
 
@@ -710,10 +806,15 @@ working. ⚠️ Confirm that ±16 mm against the actual blocks - it is the one f
 the parts.
 
 📌 **This is the left-right axis only.** Vertical alignment - clamp centres against block centres up
-the rail - is the open one, and the only one that costs travel.
+the rail - was the open one, and the only one that could cost travel.
 
-**There is room to manoeuvre** - a router of this size wants perhaps 150-200 mm, against ~246 mm
-available. So work in this order rather than iterating:
+✅ **It closed on 2026-09-30 costing nothing.** The procedure below was written expecting a trade, and
+it resolved to the no-trade corner: the Ø80 body is 199 mm, two 55 mm clamps need only 154 mm of
+extent to match the **butted** block run, so step 3's spread is **zero** and step 5's re-cut does not
+happen. Full **246 mm** travel, zero overhang, 6" spacers as built. See the Z plate section above.
+
+**The ordering is kept because it is the method, not the answer** - a different spindle or a different
+clamp puts the trade back on the table:
 
 1. **Set the Z travel floor first** and treat it as hard - material thickness plus tool length plus
    clearance over workholding. 🔴 **This is the one that gets quietly eroded** while optimising the
@@ -724,6 +825,10 @@ available. So work in this order rather than iterating:
 4. **Check the remaining travel against step 1.**
 5. **Cut spacers to suit** (8" rather than 6", if spread that far).
 
+⚠️ **Step 1 is still open.** The travel floor was never set as a number, and 246 mm is now confirmed
+available - so the question is no longer "how much can we get" but "where does the 246 sit relative to
+the spoilboard". That is a machine measurement, not a design decision.
+
 ### Which half moves - settled
 
 | Fixed | Moving |
@@ -731,7 +836,7 @@ available. So work in this order rather than iterating:
 | **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
 | HGR20 rails, mounted on it | 5/8" spacer blocks |
 | 1605 screw, BK12 + motor, BF12 | ball nut housing |
-| | **Z plate**, bolted to both the spacers and the nut housing, carrying the spindle |
+| | **Z plate** - **154 W × 210 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
 
 The motor stays put and only the carriage travels. The Z plate picks up **two** interfaces - the
 spacer blocks and the ball nut housing - which is what makes the shim below matter.
@@ -784,6 +889,21 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
 
+### ❌ Do not lengthen the spacers to match the 210 mm plate
+
+Considered and rejected 2026-09-30, when the plate went to 210 mm against a 154 mm block run.
+
+**The spacers carry no fasteners of their own** - they are clamped only by the M5 that runs from the
+plate into the bearing block, and past the block ends there is nothing to bolt into and nothing behind
+them. A 210 mm spacer's extra ~28 mm per end would be **unclamped bar in face contact with the plate**:
+it can push but not pull, so it stiffens the overhang in **compression only**, and therefore in one
+load direction of the tipping couple and not the other. For that it adds mass, a rattle, and two
+unsupported bar ends sitting over the rails.
+
+📌 **It is also solving a problem that is not there.** The clamp bolts land inside the spacer run - see
+the Z plate section above - so the overhanging plate is not carrying the load in the first place.
+**Keep the 6" spacers as built.**
+
 ### Use M5 × 35, not M5 × 30
 
 Through a counterbore in a 12.7 mm plate - leaving about 7.7 mm of material under a 5 mm head - plus
@@ -802,7 +922,9 @@ thread depth for 35 mm.
 - **Which way do the M8 × 80 bolts run?** Front-to-back through the clamp into the plate, or from
   behind through the plate into tapped holes in the clamp? With an 80 mm bolt against a 55 mm clamp
   dimension, one of those leaves 25 mm to land in the plate and the other does not fit at all.
-- **Z plate thickness**, and whether it is tapped or through-bolted with nuts.
+- ✅ **Z plate thickness is 1/2" (12.7 mm)**, settled with the plate size on 2026-09-30. ⚠️ Whether it
+  is tapped or through-bolted with nuts is still open, and it is the same question as the bolt
+  direction above - answer them together.
 
 ---
 
@@ -1113,7 +1235,11 @@ slips.
   footprint? Free if yes, a tram sub-plate and 13 mm of moment arm if no. **Needed before the
   machining trip, and now the only open question on that list.**
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
-- **The spindle clamp geometry**, three questions above.
+- **The spindle clamp geometry** - reduced to one question: **which way the M8 × 80 bolts run**, and
+  therefore whether the 1/2" plate is tapped or through-bolted. Orientation and plate thickness are
+  settled above. **Needed before the plate is drilled.**
+- **Z travel floor** - where the confirmed 246 mm sits relative to the spoilboard. A machine
+  measurement, and the one item the travel budget still waits on.
 - **Vertical distance from the X beam centreline down to the spindle nose, Z fully retracted** - plus
   the **Z travel**. Together these give the torsional arm; worst case is the fixed distance plus full
   travel plus tool stickout. (Earlier drafts asked for "tool tip to beam", which is not a machine
