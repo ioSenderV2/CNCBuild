@@ -340,9 +340,17 @@ tolerance, so the real figure could land between roughly 1.5 and 4 mm. Positive 
 the stop only fires if the control has already failed - but it is why the nominal should not go any
 tighter.
 
-📌 **Worth checking: do the blocks have ball retainers?** Some HG-series blocks carry a wire or cage
-keeping the balls captive off the rail. If these do, an overrun is an annoyance rather than a
-scrapped block and the 10 mm stops being the sole protection.
+📌 **Not to be confused with the plastic arbor.** The plastic strips supplied with the blocks are a
+**transfer and storage tool** - slide a block off the rail onto the strip to store it, and it is
+pushed out again as the block goes back on. They do nothing during an overrun in service.
+
+An **integral retainer** - a wire or cage inside the block holding the balls captive off the rail -
+is a separate optional feature on some series, usually flagged in the part number rather than
+visible. Worth a glance if the part number is to hand, but it changes nothing: **the measured 10 mm
+is the protection either way.**
+
+Keep the arbors. Re-spacing blocks for clamp alignment needs no removal - unbolt the spacers, slide
+the blocks along the rail - but nothing else substitutes the day one is needed.
 
 **The 7 mm is forced, not chosen:** the X carriage plate is 16" (407 mm), the rail is 400 mm mounted
 flush with the plate's bottom edge, and the stop sits on the top edge - leaving 7 mm. There is
