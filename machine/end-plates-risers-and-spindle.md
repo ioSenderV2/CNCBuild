@@ -152,16 +152,27 @@ where this assembly will be soft.
 🔴 **This is the moment arm.** It is the number that turns cutting force into gantry deflection, and
 it was a placeholder in every calculation in this repo until now.
 
-| From the X beam's front face | |
+**From the X carriage plate's front face:**
+
+| | |
 |---|---|
-| Rails, bearing blocks and 5/8" spacers | 46.5 mm |
-| Z carriage plate, 1/2" | 12.7 mm |
+| Z rails, bearing blocks and 5/8" spacers | 46.5 mm |
+| Z plate, 1/2" | 12.7 mm |
 | Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
 | **To the spindle centreline** | **109 mm** |
 
-**For gantry bending, add about 35 mm** to reach the beam's neutral axis - the combined centroid of
-the stacked profiles plus their joining plates sits roughly that far behind the front face. So the
-bending arm is **~144 mm**, and at 1000 N that is **~144 N·m** into the gantry.
+⚠️ **That reference is the carriage plate, not the beam.** The X carriage plate is itself bolted to
+the X-axis bearing blocks, so from the **X beam's front face** add the X rail-and-block stack
+(30 mm, measured) and the carriage plate (12.7 mm):
+
+| | |
+|---|---|
+| X beam front face to spindle centreline | **~152 mm** |
+| X beam **neutral axis** to spindle centreline (add ~35 mm) | **~187 mm** |
+
+**~187 mm is the arm for gantry bending**, and at 1000 N that is **~187 N·m**. ⚠️ Confirm the
+reference before this is used for anything - the 109 mm and the 152 mm differ by a whole rail-block-
+plate stack and are easy to interchange.
 
 ⚠️ **Still missing: the vertical distance from the tool tip to the beam.** The 109 mm arm converts a
 *vertical* cutting force into gantry torsion; the *vertical* offset converts a fore-aft force into
@@ -186,16 +197,37 @@ height; plate, rails, screw and motor form the other. They are the two halves of
 Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
 [`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
 
-### ⚠️ Open: which half moves?
+### Which half moves - settled
 
-Not yet established, and it changes the whole stack-up:
+| Fixed | Moving |
+|---|---|
+| **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
+| HGR20 rails, mounted on it | 5/8" spacer blocks |
+| 1605 screw, BK12 + motor, BF12 | ball nut housing |
+| | **Z plate**, bolted to both the spacers and the nut housing, carrying the spindle |
 
-- **Plate fixed** to the X gantry, spindle carried on the spacer bars. Motor stays put, nut travels.
-  This is the conventional arrangement and what the assembled hardware looks like.
-- **Plate moves**, carrying rails, screw, motor and spindle, with the spacers bolted to the X
-  gantry. Simpler, but the motor travels and the moving mass goes up.
+The motor stays put and only the carriage travels. The Z plate picks up **two** interfaces - the
+spacer blocks and the ball nut housing - which is what makes the shim below matter.
 
-The 109 mm offset above is unaffected either way.
+**The blue is layout dye, not a finish.** The X carriage plate is plain 1/2" aluminium sprayed for
+scribing; **30 holes** to lay out on it.
+
+### 🔴 The ball nut sits 1 mm below the spacer blocks - shim it with a plate, not washers
+
+Measured: the spacer blocks stand **1 mm higher** than the ball nut housing, so the Z plate cannot
+bear on both without something in between.
+
+**Use a full-face shim cut to the housing footprint**, or skim 1 mm off the spacer blocks and have
+no shim at all. **Not washers.** The ball nut is the one joint here that must not be pulled out of
+alignment: washers bear at four points, and as the bolts come down the housing tilts to whatever
+those points dictate. That tilt becomes a side load on the screw - binding, uneven wear, and lost
+motion that reads like backlash.
+
+**Assembly order: rails and spacers first, nut housing last.** The rails define the geometry; the
+nut should follow the screw rather than be forced into position by its own bolts. Leave its four
+bolts finger-tight, run the carriage through full travel, then torque them.
+
+⚠️ Measure the 1 mm rather than assuming it is exactly 1.00 - shim stock comes in 0.5, 0.8 and 1.0.
 
 ### Use M5 × 35, not M5 × 30
 
@@ -227,7 +259,6 @@ thread depth for 35 mm.
 - **The spindle clamp geometry**, three questions above.
 - **Vertical distance from the tool tip to the beam**, the other half of the torsional case. The
   horizontal arm is settled at 109 mm.
-- **Which half of the Z axis moves** - see above.
 - **A torsion constant J for `30-6060`.** 8020 publish Ix and Iy but not J, so the gantry's
   torsional stiffness cannot yet be computed rather than estimated.
 - **Riser plate orientation** for the X end plates, which governs whether the weak-axis warning
