@@ -138,11 +138,19 @@ The **10 mm magnetic tape** for the AS5311 sensors runs on the face of the **46 
 centred in the gap between its two rows of seven M8 flange bolts. Two rows at ±15 mm with 17.3 mm
 flange heads leaves about **12.7 mm clear**, so a 10 mm tape sits with roughly 1 mm each side.
 
-🔴 **Use A2 or A4 stainless for those bolts.** That puts ferromagnetic material about 1 mm from the
-edge of a magnetic scale, repeating every 150 mm - and steel draws flux laterally. The failure mode
-is not a constant offset but a **periodic error at exactly the bolt spacing**, which would read as a
-scale or pitch fault while everything else about the axis looked healthy. Austenitic stainless is
-essentially non-magnetic and removes the question.
+🔴 **Those bolts must be austenitic stainless.** They put ferromagnetic material about 1 mm from
+the edge of a magnetic scale, repeating every 150 mm, and steel draws flux laterally. The failure
+mode is not a constant offset but a **periodic error at exactly the bolt spacing**, which would read
+as a scale or pitch fault while everything else about the axis looked healthy.
+
+📌 **The fasteners in hand are stainless - but "stainless" does not mean non-magnetic.** A2 (304) and
+A4 (316) are austenitic and effectively non-magnetic, around a hundred-fold less flux distortion than
+carbon steel. **410, 416 and 430 are martensitic or ferritic and are as bad as carbon steel**, and
+they are sold as "stainless" without qualification. Cold-forming a bolt head also raises permeability
+locally, right at the part nearest the tape - A4 holds up better than A2 under that.
+
+✅ **The check is a magnet on a bolt head.** Barely sticks or not at all: austenitic, concern gone.
+Grabs firmly: swap to A4 before the tape goes down.
 
 ⚠️ **This is reasoning from principle, not a measurement.** The AS5311's sensitivity to lateral
 disturbance is not established here, and
