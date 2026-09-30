@@ -7,6 +7,7 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 |---|---|
 | [`gantry-beam-joint.md`](gantry-beam-joint.md) | Each gantry beam is two stacked 8020 `30-6060`. How they are tied together, and the four schemes that were killed getting there |
 | [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) | What holds the beams up and what hangs off them. **Carries the cutting-force recalibration that every deflection figure in this repo depends on** |
+| [`torsion-box.md`](torsion-box.md) | What the machine stands on. The box, its three cedar posts, the base frame and shear walls, and the transport plan |
 
 ## Frame and motion
 
