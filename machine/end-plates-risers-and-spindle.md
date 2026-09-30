@@ -188,7 +188,8 @@ the same. Both are needed before the torsional case can be worked, and 8020 publ
 | Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
 | Rails | **HGR20 down both sides, mounted on the plate** |
 | Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
-| Spacers | **5/8" (15.875 mm) aluminium blocks**, sandwiched between the bearing blocks and the Z plate |
+| Spacers | **two 6" lengths of 5/8" (15.875 mm) aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks |
+| Bolt count | **16 × M5 × 35** - 8 per spacer, 4 per bearing block |
 | Fixing | **one M5 per hole does the whole stack** - counterbored in the Z plate, through a 6 mm clearance hole in the spacer, into the bearing block's tapped M5 |
 
 Blocks, spacers and the ball nut housing form one assembly and present their faces at a common
@@ -236,8 +237,13 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
 
 - **Their faces set the Z plate's plane relative to the rails.** A few hundredths of difference
   between the left and right spacer twists the plate and preloads all four bearing blocks against
-  each other permanently. **Mic both spacers at both ends** and match them before the nut housing
-  shim is even considered - the pair sets the geometry, the shim only has to avoid fighting it.
+  each other permanently.
+
+  ✅ **Largely handled by how they were made:** both are halves of a single 12" bar, so the 5/8" is
+  the as-supplied bar dimension on both, untouched - the cut sets length only. Still **mic both at
+  both ends** to confirm, since flat bar carries a thickness tolerance along its length, but this is
+  a check rather than a problem. The pair sets the geometry; the nut housing shim only has to avoid
+  fighting it.
 - **They locate nothing.** A 6 mm hole on an M5 bolt is 0.5 mm of radial float per side, so the
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
