@@ -248,10 +248,11 @@ the X-axis bearing blocks, so from the **X beam's front face** add the X rail-an
 reference before this is used for anything - the 109 mm and the 152 mm differ by a whole rail-block-
 plate stack and are easy to interchange.
 
-⚠️ **Still missing: the vertical distance from the tool tip to the beam.** The 109 mm arm converts a
-*vertical* cutting force into gantry torsion; the *vertical* offset converts a fore-aft force into
-the same. Both are needed before the torsional case can be worked, and 8020 publish Ix and Iy for
-`30-6060` but not J.
+⚠️ **Still missing: the vertical arm.** The 109 mm converts a *vertical* cutting force into gantry
+torsion; a *vertical* offset converts a fore-aft force into the same. That vertical figure is **the X
+beam centreline down to the spindle nose with Z retracted, plus Z travel** - not "tool tip", which
+moves with Z position, tool length and stickout and is not a machine dimension. Even with it, 8020
+publish Ix and Iy for `30-6060` but not J, so any torsional number stays an estimate.
 
 ---
 
@@ -636,8 +637,12 @@ slips.
   machining trip, and now the only open question on that list.**
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - **The spindle clamp geometry**, three questions above.
-- **Vertical distance from the tool tip to the beam**, the other half of the torsional case. The
-  horizontal arm is settled at 109 mm.
+- **Vertical distance from the X beam centreline down to the spindle nose, Z fully retracted** - plus
+  the **Z travel**. Together these give the torsional arm; worst case is the fixed distance plus full
+  travel plus tool stickout. (Earlier drafts asked for "tool tip to beam", which is not a machine
+  dimension - it moves with Z position, tool length and stickout. Use the **spindle nose**, a fixed
+  feature of the body, rather than the collet nut, which shifts with collet type.) The horizontal arm
+  is settled at 109 mm from the carriage plate, ~152 mm from the beam face.
 - **A torsion constant J for `30-6060`.** 8020 publish Ix and Iy but not J, so the gantry's
   torsional stiffness cannot yet be computed rather than estimated.
 - **Riser plate orientation** for the X end plates, which governs whether the weak-axis warning
