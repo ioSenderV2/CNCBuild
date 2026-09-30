@@ -270,11 +270,52 @@ thread depth for 35 mm.
 
 ---
 
+## Machining: one trip, so design ahead of the build
+
+Accurate holes are drilled on **a single visit to a friend's shop** - a Laguna mill, 4' × 1' bed,
+**manual X and Y**, DRO to be confirmed. **As of 2026-09-29 none of the 30 holes in the X carriage
+plate are drilled.**
+
+🔴 **Every plate needing accurate holes must be fully dimensioned before that trip**, including
+assemblies that will not be built for months: X carriage plate, Z plate, four Y end plates / risers,
+two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
+
+**Triage - not everything needs the mill:**
+
+| Home drill press | The mill |
+|---|---|
+| Beam joining plates - 9 mm clearance into T-slots at 150 mm, and the T-nut moves to meet the bolt | Rail mounting patterns |
+| | Bearing block and nut housing patterns, with counterbores |
+| | The 8-bolt end plate patterns that must match the extrusion corner bores |
+
+### Make one rail the reference, and give the second rail clearance
+
+Two rails parallel and coplanar over 407 mm is what decides whether the Z runs sweetly or binds.
+**Close-fit holes for rail one; oversize the holes for rail two** by about a millimetre. Then at
+assembly, mount rail one, put an indicator on its carriage and sweep rail two into parallel before
+tightening. Fixed holes on both rails makes whatever error the mill leaves permanent.
+
+### Take the mating hardware, not just the plates
+
+Bearing blocks, ball nut housing, BK12, BF12, and **an offcut of the `30-6060` with its corner
+bores**. Every pattern can then be checked against the real part while still standing next to a
+mill. The end plate pattern especially - a transfer punch through the real extrusion beats measuring
+from a drawing.
+
+### One datum per plate
+
+Pick a corner, dimension every hole from it, **never chain dimensions**. On a manual mill with a DRO
+the operator types absolute coordinates; chained dimensions accumulate error and invite arithmetic
+slips.
+
+---
+
 ## ⚠️ Open items
 
 - **Height from the top of the beam to the torsion box fixing line**, and whether the box has a
   **vertical face** to bolt against. These size the full-height plate; nothing else is missing.
 - **The L bracket specification** - "15 × 1.5" has not been resolved.
+- **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - **The spindle clamp geometry**, three questions above.
 - **Vertical distance from the tool tip to the beam**, the other half of the torsional case. The
   horizontal arm is settled at 109 mm.
