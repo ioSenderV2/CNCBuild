@@ -322,10 +322,30 @@ That is the failure this repo's standing rule exists for. A soft limit is a conf
 it is ever wrong, missing or bypassed - a homing move, a lost setting, a restored config - the
 machine drives the carriage off the rail and drops the Z assembly.
 
-**Fit a physical stop at the top** - a collar on the screw or a block at the rail end, positioned so
-the mechanics cannot reach the rail end whatever the controller believes. That makes the soft limit a
-convenience rather than the only protection. **Check which way Z homes**: homing upward means homing
-toward the unprotected end.
+✅ **A physical top stop is designed:** a **6" × 1" × 1/4" plate** bolted over the top of the X
+carriage plate, overhanging the rail ends. The **proximity sensor is at the top of Z**; if the axis
+runs past it, the rising bearing block meets that plate.
+
+**The failure being guarded against is not the crash - it is losing the ball train.** Run a block off
+a rail end and the balls escape the recirculation path and the block is scrap. The design allows the
+block **7 mm past the rail end** before contact, against the **first 10 mm of the block carrying no
+balls**.
+
+⚠️ **Verify that 10 mm rather than trusting it.** The whole margin rests on it and the consequence of
+being wrong is balls on the floor. The load zone does start a few millimetres in on most blocks,
+behind the end seal and the recirculation turn, but "a few" varies by maker and series - confirm from
+the block drawing or by looking into one with the rail out.
+
+📌 **Set the stop to engage sooner than 7 mm.** That allowance buys nothing - it is just where the
+plate happens to sit. At 2 or 3 mm the margin against the 10 mm triples for free. Drop the plate as
+low as geometry permits.
+
+The block is hardened steel and the plate 1/4" aluminium, so **the plate is sacrificial** - correct
+for something that should fire once or twice in the machine's life. **Keep the overhang short** so
+impact loads the bolts in shear rather than bending a cantilevered lip.
+
+The bottom end needs nothing: the nut bottoms on BF12 before the rails run out, so one stop at the
+top covers the whole ~26 mm of screw overrun.
 
 #### 🔴 Travel + clamp separation ≈ 323 mm
 
