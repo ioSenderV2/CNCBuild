@@ -93,12 +93,19 @@ Two things fall out of this that are easy to get backwards:
   height (measured), so any extra width would have to be rebated thin — about 14 % more area for a
   machining operation on a 1000 mm strip.
 
-### ⚠️ Open: is the beam even the bottleneck?
+### Is the beam even the bottleneck?
 
-The riser plates are flagged elsewhere as far weaker along Y and wanting gussets. **If they dominate
-the fore-aft compliance at the tool, the difference between these rows disappears into the noise.**
-Gusset the risers first, measure, and only then decide whether the X plate wants to go thicker. The
-plate is bolt-on precisely so that swap stays cheap.
+Probably not, and that is why 1/4" was chosen on X. The riser plates are the obvious suspect. On the
+X gantry the end plates are 1/2"; on the Y beams there is a **proposed** full-height outboard plate
+that would remove the concern entirely - **proposed, not decided, nothing ordered**. See
+[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md).
+
+🔴 **The percentages above are stiffness ratios and are force-independent, but any absolute
+deflection quoted in this repo at 250 N is two to four times optimistic** - that was a router
+figure, and this machine has a 3 kW spindle. The force table is in that same file.
+
+**The X plate choice is settled but testable.** Once the Z assembly exists, push on the spindle nose
+with a known force and indicate it. The plate is bolt-on precisely so that swap stays cheap.
 
 ---
 

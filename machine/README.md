@@ -6,6 +6,7 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 | File | What is in it |
 |---|---|
 | [`gantry-beam-joint.md`](gantry-beam-joint.md) | Each gantry beam is two stacked 8020 `30-6060`. How they are tied together, and the four schemes that were killed getting there |
+| [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) | What holds the beams up and what hangs off them. **Carries the cutting-force recalibration that every deflection figure in this repo depends on** |
 
 ## Frame and motion
 
@@ -17,14 +18,17 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
+| Spindle | **80 mm, 3 kW water-cooled** with matching VFD, on two 80 mm clamps |
+| Y beam support | Two **3" × 12" × 1/2"** end plates / Z risers per beam, ends only - the ball screw runs under the beam |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
 firmware config, so the second Y motor is M3.
 
-### ⚠️ Open: end plates not yet designed
+### End plates
 
-They carry the ball screw supports (M5), bolt the Y beams to the torsion box, and are what ties both
-stacked profiles together at each end. Nothing is drawn yet.
+Partly specified - see [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md). They
+carry the ball screw supports (M5), bolt the Y beams to the torsion box, and are what ties both
+stacked profiles together at each end.
 
 **Deferred, not blocking: the 35 mm sensor bore.**
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
