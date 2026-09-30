@@ -143,14 +143,22 @@ the edge of a magnetic scale, repeating every 150 mm, and steel draws flux later
 mode is not a constant offset but a **periodic error at exactly the bolt spacing**, which would read
 as a scale or pitch fault while everything else about the axis looked healthy.
 
-📌 **The fasteners in hand are stainless - but "stainless" does not mean non-magnetic.** A2 (304) and
-A4 (316) are austenitic and effectively non-magnetic, around a hundred-fold less flux distortion than
-carbon steel. **410, 416 and 430 are martensitic or ferritic and are as bad as carbon steel**, and
-they are sold as "stainless" without qualification. Cold-forming a bolt head also raises permeability
-locally, right at the part nearest the tape - A4 holds up better than A2 under that.
+🔴 **Checked 2026-09-29: the generic "stainless" bolts on hand ARE magnetic.** Sold as stainless,
+bought from Amazon, and a magnet grabs them. **Sourcing A4 / 316 from Tacoma Screw instead.**
 
-✅ **The check is a magnet on a bolt head.** Barely sticks or not at all: austenitic, concern gone.
-Grabs firmly: swap to A4 before the tape goes down.
+"Stainless" does not mean non-magnetic. A2 (304) and A4 (316) are austenitic and effectively
+non-magnetic - around a hundred-fold less flux distortion than carbon steel. **410, 416 and 430 are
+martensitic or ferritic, as bad as carbon steel here**, and are sold as "stainless" with no
+qualification. Cold-forming a bolt head also raises permeability locally, right at the part nearest
+the tape, so **ask for A4 rather than A2** and **put a magnet on them when they arrive** - the label
+has already been wrong once.
+
+**Only the front plates need this**, since that is where the tape runs: 14 per plate, so 28 for the
+two Y beams, plus 14 more if the X beam's front plate carries tape the same way.
+
+📌 **If A4 flange bolts are awkward to source, socket heads are fine and slightly better.** A 13 mm
+socket head leaves 17 mm between rows against the flange's 12.7 mm; with an M8 washer, about 14 mm.
+More room for the tape either way - do not fight the supplier over head style.
 
 ⚠️ **This is reasoning from principle, not a measurement.** The AS5311's sensitivity to lateral
 disturbance is not established here, and
@@ -162,10 +170,14 @@ read across a bolt head against between bolt heads. Worth doing before 3 m of on
 first as a guide channel - appealing, but then PSA has to be threaded into a 12 mm slot - or the tape
 goes down first against a straightedge and the bolts follow.
 
-⚠️ **The X end plate's sensor bore must line up with this tape**, which runs on the Y beam's seam
-centreline. That places the 35 mm bore in the gap between the upper and lower Y bearing block rows -
-roughly 56 mm by estimate, leaving about 10 mm each side. **Confirm against the actual Y rail spacing
-before the machining trip.**
+✅ **The X end plate's sensor bore lines up with this tape**, which runs on the Y beam's seam
+centreline, placing the 35 mm bore in the gap between the upper and lower Y bearing block rows.
+**Measured: that gap is 45 mm**, so the bore fits with 5 mm each side. (An earlier estimate of 56 mm
+was optimistic.)
+
+⚠️ 5 mm is clearance and not much else - **no room for a flanged puck or an external clamp ring.**
+Check that against the puck design in
+[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
 
 ---
 
