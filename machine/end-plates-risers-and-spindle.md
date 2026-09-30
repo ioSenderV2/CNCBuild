@@ -87,19 +87,13 @@ Going to 3/8" plates would make it 0.019 mm - a 3 micron difference. **The span 
 
 ## The full-height outboard plate
 
-⚠️ **Proposed 2026-09-29. Still open, and easily confused with the gusset below.**
+✅ **Decided 2026-09-29. One per Y beam, 12" × 1000 mm × 1/4" aluminium**, replacing the existing
+12" × 6" × 1/4" gusset - the dimensions rotate, from 12" along the beam to 12" tall and a metre long.
 
-📌 **There is already a gusset on each Y riser** - 12" × 6" × 1/4" on the outboard face - and the
-plan is to replace it with a **1000 mm** one. **That is a different part from this.**
-
-| | Height | What it does |
-|---|---|---|
-| **The 1 m gusset** | 6" (152 mm) | Ties the two profiles along the length - the 120 mm back plate's job, slightly wider |
-| **The full-height plate** | ~305 mm, down to the torsion box | Turns the riser's weak-axis bending into in-plane shear, and stops the span being a span |
-
-A 6" plate spans the beam plus about 32 mm and stops roughly 150 mm short of the torsion box, so it
-does **none** of what the section below describes. ⚠️ **Confirm which is being built** before either
-is cut.
+At 12" it reaches from the beam down to the torsion box on a 12" riser, which is what makes it the
+continuous shear web rather than just a longer gusset. **A 6" plate would have spanned the beam plus
+32 mm and stopped 150 mm short of the box, doing none of what follows.** Same face, same length, same
+thickness - the height is the whole difference.
 
 Instead of stopping the back joining plate at the beam's 120 mm, **run it all the way down to the
 torsion box** and bolt its bottom edge there. It then sits in the vertical plane containing the beam
@@ -137,6 +131,33 @@ surface through an angle reintroduces a bending element and gives back much of t
 
 **Y beams only.** The X gantry moves and has nothing to bolt down to, so X keeps the 120 mm back
 plate. All of this added weight - roughly **14 lb per Y beam** at 1/4" - is therefore static.
+
+### The magnetic encoder tape runs on the front plate
+
+The **10 mm magnetic tape** for the AS5311 sensors runs on the face of the **46 mm front plate**,
+centred in the gap between its two rows of seven M8 flange bolts. Two rows at ±15 mm with 17.3 mm
+flange heads leaves about **12.7 mm clear**, so a 10 mm tape sits with roughly 1 mm each side.
+
+🔴 **Use A2 or A4 stainless for those bolts.** That puts ferromagnetic material about 1 mm from the
+edge of a magnetic scale, repeating every 150 mm - and steel draws flux laterally. The failure mode
+is not a constant offset but a **periodic error at exactly the bolt spacing**, which would read as a
+scale or pitch fault while everything else about the axis looked healthy. Austenitic stainless is
+essentially non-magnetic and removes the question.
+
+⚠️ **This is reasoning from principle, not a measurement.** The AS5311's sensitivity to lateral
+disturbance is not established here, and
+[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
+is the authority on the sensing side. To know rather than assume: fit a tape offcut and a sensor, and
+read across a bolt head against between bolt heads. Worth doing before 3 m of one-shot PSA goes down.
+
+⚠️ **Decide the application order.** 1 mm of margin each side over a metre. Either the bolts go in
+first as a guide channel - appealing, but then PSA has to be threaded into a 12 mm slot - or the tape
+goes down first against a straightedge and the bolts follow.
+
+⚠️ **The X end plate's sensor bore must line up with this tape**, which runs on the Y beam's seam
+centreline. That places the 35 mm bore in the gap between the upper and lower Y bearing block rows -
+roughly 56 mm by estimate, leaving about 10 mm each side. **Confirm against the actual Y rail spacing
+before the machining trip.**
 
 ---
 
@@ -517,6 +538,9 @@ assemblies that will not be built for months: **X carriage plate, Z plate, two X
 more plate on the visit costs an hour; a second trip costs a weekend.
 
 ✅ **The four Y risers are already made and in service** - they are not on this list.
+
+Still to make, but **no mill needed** - T-slot clearance holes throughout: two **12" × 1 m × 1/4"**
+full-height plates and two **46 mm × 1 m × 1/4"** front plates, one of each per Y beam.
 
 ✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
