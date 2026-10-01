@@ -33,8 +33,29 @@ different thing and cannot be divided into the force.
 | **Pull, don't push** | A spring scale in tension holds a steadier value than a hand |
 | **Indicator base** | **A stand on the floor or bench. Never on the machine.** An indicator referenced to the gantry measures a difference, not a displacement |
 | **Contact tip** | Ball or radius. On the round spindle body, contact **on its horizontal centreline** - off-centre on a cylinder gives a cosine error and the tip skates under load |
-| **Z position** | Mid-travel, and **write down which**. The answer changes with Z extension |
+| **Z position** | **Two heights - see below.** Not one, and never at a hard stop |
 | **X position** | **Mid-span of the gantry** for the beam numbers. Repeat near one end later if you want the end-plate contribution separated |
+
+### 🔴 Z height: two positions, and neither at a stop
+
+**The whole moving assembly translates**, so the spindle's geometry relative to its own bearing blocks
+never changes with Z. What changes is **the vertical distance from the X beam down to the nose**. A
+fore-aft force at the nose twists the beam through that arm, so as Z extends the twist contribution
+grows while the force-driven bending does not. **Two heights separate those two terms. One height
+cannot.**
+
+| | Where | Why not further |
+|---|---|---|
+| **Low** | ~10 mm **clear** of where the ball nut contacts BF12 | 🔴 That contact is a **mechanical stop**. Resting on it loads metal-on-metal that is not there in a normal cut, and risks the nut and the support |
+| **High** | Far enough down that **all four bearing blocks are fully on the rails** - confirm by eye | 🔴 **The screw outruns the rails by ~26 mm upward with no hard stop.** Going up, the blocks leave the rail end before the nut reaches BK12 and **nothing catches it**. The top of travel is not a safe place to lean on this machine |
+
+**If you only do one, do the low one** - it is the worst case and it is where the machine cuts.
+Write the Z reading down either way; a deflection without its Z height is not a measurement.
+
+⚠️ **Move indicator 4 with the blocks.** The X carriage plate is 407 mm tall and the Z blocks travel
+most of it. If indicator 4 stays at a fixed spot while the blocks move away from it, the (3−4)
+difference quietly starts including carriage-plate bending and stops meaning "the Z assembly". Put it
+beside wherever the blocks are for that run.
 
 ### 🔴 Energise the drives, or the reading is nonsense
 
@@ -149,7 +170,9 @@ indicate the other instead - that is a different test.
 
 ## Results
 
-**Push 1 - fore-aft, 250 N, Z at ______ mm, X at mid-span. Date: ______**
+Run the whole of Push 1 twice, once at each Z height, and fill in a copy of the table for each.
+
+**Push 1 - fore-aft, 250 N, X at mid-span. Z at ______ mm (circle: LOW / HIGH). Date: ______**
 
 | # | Position | Out (µm) | Back (µm) | Residual (µm) |
 |---|---|---|---|---|
