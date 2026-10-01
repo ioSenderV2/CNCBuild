@@ -283,6 +283,13 @@ End support was queried and checked rather than assumed. With the 1/4" joining p
 **I = 3.37 × 10⁶ mm⁴**, and the gantry's share of load per beam gives about **0.022 mm** of sag.
 Going to 3/8" plates would make it 0.019 mm - a 3 micron difference. **The span is fine end-supported.**
 
+⚠️ **0.022 mm is DEAD LOAD - the gantry's own weight. It is not the deflection under cutting force**,
+and it has already been misread that way once. Under the 1000 N envelope the same beam moves roughly
+**0.065 mm vertically and 0.13 mm fore-aft** (indicative only). **Fore-aft is the soft axis, by about
+2×**, because the section is 120 tall and 60 deep and stiffness goes as (height/width)². The full
+working, and why a single 40×120 was compared and rejected on exactly this, is in
+[`gantry-beam-joint.md`](gantry-beam-joint.md).
+
 ---
 
 ## The full-height outboard plate

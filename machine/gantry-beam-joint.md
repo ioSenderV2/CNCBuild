@@ -93,6 +93,78 @@ Two things fall out of this that are easy to get backwards:
   height (measured), so any extra width would have to be rebated thin — about 14 % more area for a
   machining operation on a 1000 mm strip.
 
+### 🔴 Fore-aft is the soft axis, and it is pure aspect ratio
+
+**The section is 120 mm tall and 60 mm deep, so it is tall and narrow** - stiff in the direction
+gravity and the spindle's tipping couple load it, and comparatively soft fore-aft. That is not a flaw,
+it is the shape doing its job, but the asymmetry should be on the record because the percentages above
+do not show it.
+
+For a rectangle, I goes as width × depth³, so swapping axes swaps which dimension is cubed and the
+stiffness ratio is simply **(height / width)²**:
+
+| Configuration | Ix (vertical) | Iy (fore-aft) | Ratio |
+|---|---|---|---|
+| Two 6060s joined, no plates | 2.40 × 10⁶ | 7.27 × 10⁵ | **3.3×** |
+| **+ back 120 and front 46, 1/4"** | **3.37 × 10⁶** | **~1.71 × 10⁶** | **2.0×** |
+
+📌 **The plates halve the penalty, and that is their unadvertised second job.** They sit on the front
+and back faces - the extreme fibres for *fore-aft* bending, which is exactly the direction short of
+depth. They add ~40% to vertical and ~135% to fore-aft. (The section above gives +149% from the same
+starting point; an independent recompute here gives +135%. Same conclusion, and neither is a measured
+number.)
+
+#### Indicative deflections, and keep these apart from the dead-load figure
+
+⚠️ **A number already in this repo is a DEAD-LOAD sag and has been misread as a cutting deflection** -
+the **0.022 mm** quoted in `end-plates-risers-and-spindle.md` is the gantry's own share of weight, not
+a response to cutting force. Under the **1000 N structural envelope**, mid-span, ~900 mm free span,
+end-supported:
+
+| | Vertical | Fore-aft |
+|---|---|---|
+| At 1000 N | ~0.065 mm | **~0.13 mm** |
+| At a more realistic 300 N component | ~0.020 mm | ~0.039 mm |
+
+**Estimates, not measurements** - a point load at mid-span on a simply supported beam is a crude model
+of a gantry on four bearing blocks, and 900 mm is an assumed free span. They are recorded for *ratio*
+and *order of magnitude*, which is what they are good for. 0.13 mm sounds alarming until you note it is
+the full crash-case envelope; the steady-cutting number is four times smaller.
+
+### ❌ A single 40×120 (40 Series) was compared and rejected, 2026-10-01
+
+Raised because the stacked pair is a built-up section and a one-piece 40×120 looks like it should beat
+it. **It wins on two counts and loses decisively on the one that matters.**
+
+8020 published properties for the 40×120: **Ix 306.32 cm⁴, Iy 36.80 cm⁴**, area 21.927 cm²,
+0.3314 lb/in, 6063-T6, **4.32 mm wall**.
+
+| | 2 × 6060 + both plates | 40×120 + back plate |
+|---|---|---|
+| Ix vertical | 3.37 × 10⁶ | 3.98 × 10⁶ (**+18%**) |
+| **Iy fore-aft** | ~1.71 × 10⁶ | **~6.8 × 10⁵ (−60%)** |
+| Weight, lb/in | 0.447 | 0.446 |
+| J torsion, Bredt estimate | ~1.27 × 10⁶ ideal, ~9.6 × 10⁵ realistic | ~1.24 × 10⁶ |
+| Max rail spacing | **90 mm** | 80 mm |
+
+**What it would have bought:** 18% more vertical stiffness at identical weight, a 4.32 mm wall against
+2.21, a genuine one-piece closed section worth perhaps 30% in torsion over a bolted approximation of
+one, and it would have deleted the entire joint - 42 T-nuts per beam, the slide-in trap, the
+clamp-share problem and the two dead schemes below.
+
+🔴 **Why it lost: its aspect ratio is 3:1, so it starts at 8.3× (published, Ix/Iy = 306.3/36.8 - which
+independently confirms the (h/b)² reasoning above) and a single back plate on a 40 mm-deep core has
+too short a lever to pull it back.** Fore-aft deflection goes from ~0.13 mm to ~0.32 mm. Adding a front
+strip in its middle slot was checked too and still lands at 53% of the current section's fore-aft
+stiffness - **the 20 mm of extra core depth cannot be bought back with bolted plate.**
+
+📌 **Secondary:** its slot centrelines are at 20 / 60 / 100, so **80 mm** is the widest rail spacing
+available, against the **90 mm** actually used here. That is ~21% less carriage pitch stiffness and 12%
+more force per rail reacting the spindle's forward moment.
+
+📌 **The X beam was NOT built when this was raised** - only the rails were in the slots, loose. So the
+decision was made on the engineering, not on sunk cost. **Recorded so it is not re-litigated.**
+
 ### Is the beam even the bottleneck?
 
 Probably not, and that is why 1/4" was chosen on X. The riser plates are the obvious suspect. On the
@@ -117,6 +189,7 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | | |
 |---|---|
 | Profile | 8020 `30-6060`, two stacked, **1000 mm** |
+| **Rail spacing, X** | ✅ **90 mm** - confirmed by the user 2026-10-01. The outermost of the four front slots, at 15 and 105 mm up the section. This is the widest the profile offers and it is what was used |
 | Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
 | Clearance under the block overhang | **4.5 mm** |
