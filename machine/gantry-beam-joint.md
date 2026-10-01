@@ -180,6 +180,12 @@ that same file.
 **The X plate choice is settled but testable.** Once the Z assembly exists, push on the spindle nose
 with a known force and indicate it. The plate is bolt-on precisely so that swap stays cheap.
 
+📋 **The procedure is written up:
+[`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md)** - every indicator
+position, which way its stem points, and the subtraction that turns the readings into per-subassembly
+contributions. **Do not improvise this at the machine**; a single reading on the nose gives a total,
+and a total cannot say *where* the compliance is, which is the only thing being asked.
+
 ---
 
 ## Measured values

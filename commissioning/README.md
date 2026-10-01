@@ -38,6 +38,16 @@ shifts the tape's *start* as well as its length.
 Budget: 3 m in stock, three long axes plus Z. **No long run can be recut** - cut the long axes first and
 err long rather than short.
 
+## Stiffness and lost motion
+
+📋 **[`stiffness-test.md`](stiffness-test.md)** - the full procedure. Push the spindle nose with a
+known force and read six indicator positions, so the deflection can be attributed to a subassembly
+rather than lumped into one number.
+
+**It settles the 1/4" vs 3/8" X beam plate choice**, which was decided on the *claim* that the Z
+assembly is the largest compliance in the stack. It also gives the gantry's torsional stiffness, which
+cannot be computed - 8020 do not publish J - and the lost motion, which matters more than either.
+
 ## Squaring and backlash
 
 Y1/Y2 squaring is `Y_AUTO_SQUARE`, so it is set at homing; a loose Y pinion set screw has caused a real

@@ -1329,5 +1329,10 @@ largest compliance in the stack** and stiffening the beam past it buys nothing m
 claim, not a measurement.
 
 **Once the Z assembly is built: push on the spindle nose with a known force and put an indicator on
-it.** That single number settles whether the beam plate should be 1/4" or 3/8", and the plate is
-bolt-on precisely so the swap stays cheap.
+it.** That settles whether the beam plate should be 1/4" or 3/8", and the plate is bolt-on precisely
+so the swap stays cheap.
+
+📋 **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).**
+⚠️ **It is not a single number.** One reading on the nose is a *total*, and a total cannot say which
+part of the stack is moving - which is the entire question. The procedure uses six indicator
+positions and subtracts.
