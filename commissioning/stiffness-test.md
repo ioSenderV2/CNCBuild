@@ -36,7 +36,7 @@ different thing and cannot be divided into the force.
 | **Z position** | **Two heights - see below.** Not one, and never at a hard stop |
 | **X position** | **Mid-span of the gantry** for the beam numbers. Repeat near one end later if you want the end-plate contribution separated |
 
-### 🔴 Z height: two positions, and neither at a stop
+### Z height: two positions, and neither resting on a stop
 
 **The whole moving assembly translates**, so the spindle's geometry relative to its own bearing blocks
 never changes with Z. What changes is **the vertical distance from the X beam down to the nose**. A
@@ -46,8 +46,8 @@ cannot.**
 
 | | Where | Why not further |
 |---|---|---|
-| **Low** | ~10 mm **clear** of where the ball nut contacts BF12 | 🔴 That contact is a **mechanical stop**. Resting on it loads metal-on-metal that is not there in a normal cut, and risks the nut and the support |
-| **High** | Far enough down that **all four bearing blocks are fully on the rails** - confirm by eye | 🔴 **The screw outruns the rails by ~26 mm upward with no hard stop.** Going up, the blocks leave the rail end before the nut reaches BK12 and **nothing catches it**. The top of travel is not a safe place to lean on this machine |
+| **Low** | ~10 mm **clear** of where the ball nut contacts BF12 | That contact is a **mechanical stop**. Resting on it loads metal-on-metal that is not there in a normal cut, and risks the nut and the support |
+| **High** | ~10 mm **clear** of the top stop plate | The top is **protected** - a 6" × 1" × 1/4" plate over the X carriage plate catches the rising block, which is allowed 7 mm of overrun against a **measured** 10 mm to the block's first ball. Back off for the same reason as the bottom: a reading taken against a stop runs through metal-on-metal contact that is not there in a cut |
 
 **If you only do one, do the low one** - it is the worst case and it is where the machine cuts.
 Write the Z reading down either way; a deflection without its Z height is not a measurement.

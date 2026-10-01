@@ -733,18 +733,24 @@ Rails are **400 mm**, blocks **77 mm**, so with the blocks butted the usable tra
 ⚠️ **A measurement of 272 mm was taken and discarded** - it was the *ball nut's* travel, which
 overruns the rails. Recorded because the number is real and it matters: see the hazard below.
 
-#### 🔴 The screw outruns the rails by ~26 mm, upward, with no hard stop
+#### ✅ The screw outruns the rails by ~26 mm upward - and a physical stop catches it
 
-Going down, the nut bottoms on BF12 - a mechanical stop. **Going up, the blocks run off the rail end
-before the nut reaches BK12.** Nothing catches it.
+**Both ends of Z travel have a mechanical stop.** Going down, the nut bottoms on BF12. Going up, a
+**6" × 1" × 1/4" plate** bolted over the top of the X carriage plate overhangs the rail ends, and the
+rising bearing block meets it. The **proximity sensor is at the top of Z**; the plate is what catches
+the axis if the control runs past it.
 
-That is the failure this repo's standing rule exists for. A soft limit is a configured value, and if
-it is ever wrong, missing or bypassed - a homing move, a lost setting, a restored config - the
-machine drives the carriage off the rail and drops the Z assembly.
+⚠️ **This heading used to read "with no hard stop", and it was wrong** - the resolution was already
+written in the paragraphs below it while the alarm stayed in the title. Corrected 2026-10-01, after
+that stale heading was read at face value and propagated into
+[`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md) as a reason not to put the
+carriage near the top of travel. **A headline that contradicts its own body is worse than no note**,
+because skimming is how a long file gets read.
 
-✅ **A physical top stop is designed:** a **6" × 1" × 1/4" plate** bolted over the top of the X
-carriage plate, overhanging the rail ends. The **proximity sensor is at the top of Z**; if the axis
-runs past it, the rising bearing block meets that plate.
+**The hazard being guarded against was real and is worth keeping.** A soft limit is a configured
+value, and if it is ever wrong, missing or bypassed - a homing move, a lost setting, a restored config
+- nothing in software stops the carriage leaving the rail. That is the failure this repo's standing
+rule exists for, and it is why the stop is physical.
 
 **The failure being guarded against is not the crash - it is losing the ball train.** Run a block off
 a rail end and the balls escape the recirculation path and the block is scrap. The design allows the
