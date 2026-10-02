@@ -514,10 +514,23 @@ and the offset from the vertical edge to the M8 bolt column**, both in-plane. **
 term**, so the 10 mm stock does not disturb it and the curb condition carried to the box's list
 stands as written.
 
-⚠️ **A separate doubt about that same 1.8, raised 2026-10-02 and not yet resolved:** it sits in a
-bullet that also records the M8 columns as *"settled at 20 / 50"*, and this file elsewhere closes a
-different item by saying 20/50 was **wrong arithmetic**, corrected to **35 / 65**. If the 1.8 was
-computed off a column at 20, it is stale - see the open items.
+🔴 **But the 1.8 itself was stale, and is now corrected to ~16.6 - 2026-10-02.** It had been
+computed off a superseded M8 column at **20**. With the column at **35**, the corner bore 15 in from
+the beam's outboard face puts that face at X 20, so **20 mm of fin overhangs it**, and the side plate
+takes about 3.2-3.4 of that back:
+
+| | |
+|---|---|
+| M8 column from the fin's outboard edge | **35** |
+| Corner bore inset in the `30-6060` | − 15 |
+| **Fin overhanging the Y beam's outboard face** | **20 mm** |
+| Side plate thickness | − ~3.2 |
+| **Fin proud of the side plate's outer face** | **~16.6 mm** |
+
+⚠️ **The side plate term wants one caliper reading.** It has been quoted here as **3.36**, while
+this file carries 1/8" = **3.175** and 11 gauge = **3.04** - and the sheet's delivered thickness is
+already an open item for exactly this reason. The three readings spread the answer over 16.6 to 17.0,
+which does not matter for the curb but should be written down once rather than carried three ways.
 
 📌 **Second part this session to come back metric where the file assumed imperial** - the Z
 spacers read 16.41 against a nominal 5/8". **Caliper the stock, do not trust the fraction it was
@@ -2589,13 +2602,14 @@ slips.
   and 50, the beam spans X 20-80 and its centreline is X 50, so a 62 mm window centred on the screw
   runs **19 to 81** - exactly the 19 mm strip measured off the template. Nothing about the casting
   or the bar had to move.
-- ⚠️ **The M8 column position in this bullet reads 20 / 50, which this file corrects to 35 / 65
-  elsewhere** - see "The window's horizontal position" above, closed by exactly that correction.
-  ✅ The **1.8 mm proud** figure comes from the plate width and the edge-to-column offset, both
-  in-plane, so **the 10 mm stock does not touch it**. 🔴 **But if the 1.8 was derived with the
-  column at 20, it is stale**: 20 − 15 − 3.175 = 1.825, while the same chain at 35 gives **16.8 mm
-  proud**. **Confirm which column position the 1.8 came from before the box's side curbs are set
-  out** - it inverts nothing, but it changes the gap by 15 mm.
+- 🔴 ~~**The riser stands 1.8 mm proud of the side plate**~~ **WRONG, corrected 2026-10-02 to
+  ~16.6 mm.** The 1.8 was computed off a superseded M8 column at **20**; the column is **35**, which
+  this file had already corrected elsewhere while this bullet kept the old consequence. The chain:
+  **35 − 15 = 20 mm of fin overhanging the Y beam's outboard face**, less the side plate's
+  thickness. ✅ Thickness of the fin is not a term, so the 10 mm stock is irrelevant to it.
+  🔴 **The curb decision gets more important, not less** - a curb reaching the riser's station
+  would be held out by **~16.6 mm**, not 1.8, so terminating it short is now clearly required rather
+  than merely tidy.
 - ⚠️ **Terminate the side curb short of the front riser's station** so the curb bears on the side
   plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
 - ✅ ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
