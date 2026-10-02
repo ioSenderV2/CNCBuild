@@ -1148,7 +1148,7 @@ Current as of 2026-10-02.
 | Cast stepper frame interposer bar | 60 × 80 × **3/8"** | 6061 |
 | **X gantry end plates** | 154 mm wide × **1/2"** | 6061 - two identical plates, specified above |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
-| Z plate | 154 × 175 × **1/2"** | 6061 |
+| Z plate | **164** × 175 × **1/2"** | 6061 |
 
 ⚠️ **Y and X back plates are no longer the same part in a different length.** Y's is steel, 12"
 tall and carries the box fixing; X's stays 6061 at 120 mm. Do not let the old "all three axes, 1/4"
@@ -1282,7 +1282,31 @@ height; plate, rails, screw and motor form the other. They are the two halves of
 Dry-assembled in [`photos/z-carriage-assembly-end.jpg`](photos/z-carriage-assembly-end.jpg) and
 [`photos/z-carriage-assembly-oblique.jpg`](photos/z-carriage-assembly-oblique.jpg).
 
-### ✅ The Z plate: 154 mm W × 175 mm H × 1/2", settled 2026-09-30
+### ✅ The Z plate: 164 mm W × 175 mm H × 1/2"
+
+#### 🔴 164, not 154 - the width is set by the spacers, and 154 could not be drilled
+
+**Corrected 2026-10-02.** The plate inherited 154 from the X end plate, and that number does not
+work here:
+
+| | On 154 | **On 164** |
+|---|---|---|
+| Plate half-width | 77 | **82** |
+| Outer M5 column, from plate centre | 73.5 | 73.5 |
+| **Edge distance** | **3.5 mm** | **8.5 mm** |
+| Ø10 counterbore (5 mm radius) | **breaks through by 1.5 mm** | **clears by 3.5 mm** |
+
+**Two independent reasons land on the same number.** The plate has to **cover the spacers** - with
+the rails 10 mm in from each side of the carriage plate, that needs 164. And 164 is also what stops
+eight of the sixteen M5 counterbores breaking out of the plate edge.
+
+✅ **Nothing in the clamp working is disturbed.** The M8-to-M5 column offset is 8.5 mm measured
+*from plate centre* either way, so the 116 mm clamp separation, the ±45.5 / ±70.5 M8 rows and the
+14.1 mm worst-case clearance all survive unchanged. Only the outline moved.
+
+⚠️ **It may cost ~10 mm of X travel** - the Z plate is now 5 mm wider than the carriage plate on
+each side, so it reaches the X end plates sooner if it is the widest moving part. Not checked
+against the end-stop geometry; flagged rather than claimed.
 
 **The M5 pattern sets the clamp separation.** Not the barrel, not the block run - the four M5
 counterbores that hold the plate to the bearing blocks share the plate's front face with the M8 tapped
@@ -1290,7 +1314,7 @@ holes, and dodging them is what fixes everything else.
 
 | | |
 |---|---|
-| Plate | **154 mm W × 175 mm H × 1/2"** |
+| Plate | **164 mm W × 175 mm H × 1/2"** |
 | **Clamp centres** | **116 mm** - clamp mid-height at **±58 mm** from plate centre |
 | Clamp extent | **171 mm**, on a 199 mm barrel |
 | M8 columns | **±50 mm** from plate centre |
@@ -1534,11 +1558,15 @@ scribing; **30 holes** to lay out on it.
 | X carriage plate | |
 |---|---|
 | Size | **154 mm W × 407 mm H × 1/2"** |
-| Width | ✅ **154 mm, confirmed 2026-09-30** - the same width as the X gantry end plates and the Z plate |
+| Width | ✅ **154 mm, confirmed 2026-09-30** - the same width as the X gantry end plates. **The Z plate is 164** as of 2026-10-02 and no longer matches |
 
-📌 **154 mm recurs across three plates and it is not a coincidence.** The X end plate's 154 is set
-by **two HGH20 blocks butted - measured 154.18 on 2026-10-02**; the Z plate and this plate inherit
-it. Worth knowing
+📌 **154 mm recurs across the X end plate and this one, and it is not a coincidence.** The X end
+plate's 154 is set by **two HGH20 blocks butted - measured 154.18 on 2026-10-02**; this plate
+inherits it.
+
+🔴 **The Z plate broke away from 154 on 2026-10-02 and is now 164.** It had only ever inherited the
+number, and at 154 eight of its M5 counterbores broke out of the plate edge. **Do not "tidy" it
+back into line with these two** - see the Z plate section. Worth knowing
 before anyone "tidies" one of them to a different number - changing it here changes what rides the Y
 rails.
 
