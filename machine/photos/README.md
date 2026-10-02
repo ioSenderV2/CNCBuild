@@ -43,6 +43,7 @@ is deliberately untracked because this repository is public.
 | `y-beam-riser-and-gusset.jpg` | The riser with the existing **12" × 6" × 1/4" gusset** on the outboard face |
 | `y-bearing-blocks-butted-154.jpg` | **Calipers reading 154.18 mm across two HGH20 blocks butted** on the X/Y kit's rail. The measurement that confirmed the X end plate width and killed the "2-3 mm between the blocks" this repo had carried as its reason for it |
 | `y-bearing-blocks-machined-pads-128.jpg` | **128.24 mm across the two blocks' machined pads only.** The pair with the end caps excluded - which is what actually bears, and the number any carriage plate has to exceed. Pads are 51.15 each, end caps 12.97 |
+| `front-fin-template-tongue-bolts.jpg` | The 1/4" MDF front-fin template, bottom corner. **The Y 30 line with T1 and T2 marked at X 25 and 170** - the check that closed the fin's geometry, against an outline whose taper is not corner-to-corner. The 7 / 46 / 7 and 28 / 58 / 73 pencil marks are the cast stepper frame's bolt pattern, laid out separately |
 
 `front-plate-trial-flange-bolts.jpg` is worth keeping for its own sake: the calculation said
 47.3 mm against a 46.7 mm gap and the parts said otherwise. The parts were right.

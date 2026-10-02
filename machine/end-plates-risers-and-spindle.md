@@ -544,10 +544,14 @@ would lift any single horizontal plane from ~90% to ~95% net section. It is not 
 📌 **Where a stagger would be right**, recorded so this is not read as a blanket rule: a row close
 to a free edge and loaded *parallel* to itself, where group tear-out is the failure mode.
 
-🔴 **This is sensitive to where the taper actually starts, more than to the 5 mm.** The figures above
-assume a corner-to-corner taper. If the template keeps the top parallel and tapers more steeply over
-a shorter run, the edge at Y 30 comes further inboard: a taper confined to the lower 200 mm would
-leave 170 with about **15.6 mm**. **170 is the number; the template check is what confirms it.**
+⚠️ **The figures above assume a corner-to-corner taper**, and the clearance is more sensitive to
+where the taper starts than to the 5 mm the bolt moved - a taper confined to the lower 200 mm would
+leave 170 with about **15.6 mm** instead of 22.
+
+✅ **Checked on the template and settled, 2026-10-02.** Both bolts marked at **X 25 and 170 on the
+Y 30 line** land well, with no edge tight anywhere. See
+[`photos/front-fin-template-tongue-bolts.jpg`](photos/front-fin-template-tongue-bolts.jpg). **The
+plate geometry is closed** - nothing about the front fin now waits on a measurement.
 
 | Direction | What takes it |
 |---|---|
@@ -1993,10 +1997,9 @@ slips.
   below.
 - ⚠️ **Terminate the side curb short of the front riser's station** so the curb bears on the side
   plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
-- ⚠️ **T2's edge distance, on the template.** Re-picked at **X 170** for the 8" base, giving
-  **21.7 mm** on a nominal corner-to-corner taper. **Confirm against the template before drilling**
-  - the clearance is sensitive to where the taper starts, and a steeper taper over a shorter run
-  would cut it to around 15.6 mm.
+- ✅ ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
+  line both check out against the physical template - photo committed. **The front fin's geometry
+  is fully settled.**
 - 🔴 **Whether the Laguna can hold the HEIGHT datum across a 1200 mm part.** Bed size is not travel,
   and the question is not whether the part fits - it is whether the two 8-bolt patterns' relative
   height survives a reposition. **The budget is well inside 1 mm**, that being the float the 9 mm
