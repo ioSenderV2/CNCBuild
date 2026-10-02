@@ -80,7 +80,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 
 | | **Front (2026-10-02)** | **Rear (2026-10-02)** |
 |---|---|---|
-| Size | **Tapered: 4" at the top, 7.8" at the base, 12" tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
+| Size | **Tapered: 100 mm at the top, 200 mm at the base, 302 mm tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
 | To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 30**, plus bottom-edge bearing | **8 bolts through the back tongue at Y 30**, ~150 mm pitch, plus bottom-edge bearing over the full 1200 mm |
 | Also carries | the **62 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
@@ -357,8 +357,8 @@ not the same part.
 
 ### Front: widen the riser in its own plane
 
-Material is **added inboard**, toward the machine centre, tapering from **4" at the top to 7.8" at
-the base** (settled 2026-10-02; an earlier draft had 3" to 9"). It is not a bolt-on outrigger; it is the plate's own outline, which is why the
+Material is **added inboard**, toward the machine centre, tapering from **100 mm at the top to
+200 mm at the base** (settled 2026-10-02; earlier drafts had 3"/9" and 4"/7.8"). It is not a bolt-on outrigger; it is the plate's own outline, which is why the
 plates are remade rather than scabbed.
 
 Lateral stiffness goes as **width cubed**, and a taper puts the section where the moment is. Treating
@@ -368,7 +368,7 @@ the riser as a cantilever over the ~185 mm between box top and beam underside:
 |---|---|
 | 6" | ~4.9× |
 | 8" | ~9.6× |
-| **7.8" - chosen 2026-10-02** | **~9.2×** |
+| **200 mm - chosen 2026-10-02** | **~9.2×** |
 | 12" | ~25× |
 
 📌 **At 1/2" the chosen figure is the full ~9.2×.** Stiffness scales linearly with thickness, and
@@ -381,8 +381,8 @@ base. The fixed-base assumption is doing real work - see the bolt note below.
 ### Cut two from one 12" square, and reference off the factory edges
 
 ✅ **Decided 2026-09-30.** One **12" square of 3/8" aluminium**, cut once on a line from **3" in at the
-top to 7.8" in at the bottom**, yields **both front plates** - each half is 4" at the top, 7.8" at
-the base, 12" tall, with 0.2" left for the kerf.
+top to 200 mm in at the bottom**, yields **both front plates** - each half is 100 mm at the top,
+200 mm at the base, 302 mm tall. **100 + 200 + 2 = 302**, the 2 being the kerf.
 
 The two halves are **rotations of each other, not mirrors**: turn one 180° and the outline is
 identical. Left and right are obtained by flipping one plate over, which costs nothing on a
@@ -416,20 +416,21 @@ down.
 
 | | |
 |---|---|
-| Top width | **4" = 101.6 mm** |
-| Base width | **7.8" = 198.12 mm** |
-| Height | **12" = 304.8 mm** |
+| Top width | **100 mm** |
+| Base width | **200 mm** |
+| Height | **302 mm** |
 | Thickness | **1/2"** |
-| Taper | corner to corner, **17.57° from vertical** (rate 0.3167 mm per mm) |
+| Taper | corner to corner, **18.33° from vertical** (rate 0.3311 mm per mm) |
 
-📌 **7.8" rather than 8" is what makes the nesting real.** 4 + 7.8 = 11.8 in a 12" square, leaving
-**0.2" (5.08 mm)** for the saw kerf and cleanup instead of relying on the cut being free.
+📌 **The stock is a MEASURED 302 mm square, not a nominal 12".** That is what sets the numbers:
+**100 + 200 + 2 = 302**, the 2 mm being the kerf of the single diagonal cut. Both halves come out
+identical by rotation, with nothing left over and nothing assumed about the cut being free.
 
 **The 8 × M8, 9 mm clearance**, from the top-outboard corner:
 
 | | |
 |---|---|
-| Columns | **X = 20 and 50** |
+| Columns | **X = 35 and 65** |
 | Rows | **Y = 15, 45, 75 and 105** |
 
 📌 **Those rows are the corner bores and they self-check**: the fin's top edge is the beam's top, and
@@ -439,8 +440,15 @@ a `30-6060`'s bores sit 15 and 45 in from each face, so a stacked pair gives 15,
 
 | | |
 |---|---|
+| Outboard edge, from the fin's outboard edge | **X = 19** |
+| Inboard edge | **X = 81** |
 | Top edge, below the fin's top | **120 mm + the interposer thickness** = **132.7 mm** at 1/2" |
 | Bottom edge | **182.7 mm** |
+
+✅ **The horizontal position derives rather than being measured, and it agrees with the template.**
+The beam spans X 20-80, so its centreline - and the screw's - is **X 50**. A 62 mm window centred
+there runs **19 to 81**, giving the **19 mm outboard strip measured off the MDF**. Two independent
+routes to the same number.
 
 🔴 **Recorded as a formula, not just a number, because the interposer thickness is the one input
 still moving** - it was settled at 3/8" earlier the same day and this working uses 1/2". **At 3/8"
@@ -478,18 +486,19 @@ from the factory edges keeps the kerf out of the hole pattern entirely.
 back is the **bending stiffness** the window removes, which is a different question and a real gain.
 Both were in play here and they are easy to merge by accident.
 
-### ✅ The M8 columns sit at 20 and 50 mm from the factory edge
+### ✅ The M8 columns sit at 35 and 65 mm from the factory edge
 
 **Settled 2026-10-02, off the MDF template.** The `30-6060`'s corner bores sit 15 and 45 mm in from
-each face, so columns at **20 and 50** put the beam's outboard face **5 mm inboard** of the plate's
-outboard factory edge.
+each face, so columns at **35 and 65** put the beam's outboard face **20 mm inboard** of the
+plate's outboard factory edge - and the beam therefore spans **X 20 to 80**, centred in the fin's
+100 mm top width with 20 mm of overhang each side.
 
-**The outboard plate is 1/8" steel (3.175 mm), so the riser's edge stands 1.8 mm proud of it** -
+**The outboard plate is 1/8" steel (3.175 mm), so the riser's edge stands 16.8 mm proud of it** -
 and as of 2026-10-02 **that is wanted, not tolerated.** The end plate overhanging the side plate
 looks better, and the two never meet in any case: the side plate stops **1 mm shy of the beam's
 end**.
 
-✅ **20 and 50 are settled.** The condition that made this look like a problem belongs to the box,
+✅ **35 and 65 are settled.** The condition that made this look like a problem belongs to the box,
 not to this plate.
 
 ⚠️ **The coupling, stated properly, because an earlier version of this section had it wrong.** The
@@ -512,8 +521,8 @@ machine width - see "The length" under the rear plate.
 
 The project note's rule is that moment capacity comes from **bolt spacing, not bolt count** - two M8
 200 mm apart beat six clustered in 50 mm. A 3" foot cannot give you that spacing at all, which is why
-this file previously had to reach for L brackets to avoid a hinge at the base. **A 7.8" base gives
-the spacing directly.**
+this file previously had to reach for L brackets to avoid a hinge at the base. **A 200 mm base
+gives the spacing directly.**
 
 ✅ **Fixing, fully dimensioned: two M8 at X = 25 and 170 mm** from the outboard edge,
 **Y = 30 mm** above the plate's bottom edge - **31 mm down from the top of the 61 mm proud
@@ -534,7 +543,7 @@ number moved again when the base came in to 8" - see below.**
 | | X | Y | Edge distance to the taper, perpendicular |
 |---|---|---|---|
 | **T1** - outboard | **25** | **30** | n/a - straight factory edge, 20.5 mm |
-| **T2** - inboard | **170** | **30** | **17.7 mm** on the pinned 7.8" base |
+| **T2** - inboard | **170** | **30** | **19.1 mm** |
 | ~~T2 on the 9" base~~ | ~~175~~ | ~~31~~ | ~~34 mm - the old outline, at Y 31~~ |
 | ~~T2 as first drawn~~ | ~~200~~ | ~~31~~ | ~~~12 mm - rejected~~ |
 
@@ -543,8 +552,8 @@ both belong to the old outline.
 
 #### ✅ T2 at 170
 
-**At Y 30 on the pinned 7.8" base, T2's perpendicular edge distance is 17.7 mm** - about 2 × the
-9 mm hole diameter, and confirmed good on the template.
+**At Y 30, T2's perpendicular edge distance is 19.1 mm** - a little over 2 × the 9 mm hole
+diameter, and confirmed good on the template.
 
 ✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
 and the back plate's row all sit at 30 mm above the plate's bottom edge, 31 mm below the top of the
@@ -569,7 +578,8 @@ would lift any single horizontal plane from ~90% to ~95% net section. It is not 
 📌 **Where a stagger would be right**, recorded so this is not read as a blanket rule: a row close
 to a free edge and loaded *parallel* to itself, where group tear-out is the failure mode.
 
-✅ **The taper is pinned corner to corner at 4" / 7.8", so the figures above are determined** -
+✅ **The taper is pinned corner to corner at 100 / 200 over 302, so the figures above are
+determined** -
 earlier drafts of this section fussed over where the taper started, which stopped being a question
 once the outline was specified rather than measured.
 
@@ -589,7 +599,7 @@ genuinely fixed, and the reaction at those bolts is vertical load bearing into p
 note's standing warning is that **plywood creeps in compression** with nothing to tell you. Use a
 steel backing strip or large fender washers on both faces here, not plain washers.
 
-⚠️ **Blocking under the 198 mm base** has to be in the rib layout - the bottom-edge bearing is only
+⚠️ **Blocking under the 200 mm base** has to be in the rib layout - the bottom-edge bearing is only
 worth having if it lands on structure rather than on skin spanning between grid members. The box is
 built last, so this is free, but it must be decided before the skins are cut.
 
@@ -729,7 +739,7 @@ of things that must be decided before the skins are cut.
 ⚠️ **The back panel does not cover the front.** The load path from a gantry parked at min-Y back to
 that panel runs sideways through the Y beams - their 60 mm dimension, not their 120 mm - and the
 outboard plates contribute nothing laterally, that being their out-of-plane direction. So the front
-fins are carrying a front-position gantry largely alone. That is why the front is taken to 7.8" rather
+fins are carrying a front-position gantry largely alone. That is why the front is taken to 200 mm rather
 than left minimal. *(Reasoning from the 60-vs-120 proportions; the 30-6060 section about the vertical
 axis has not been looked up.)*
 
@@ -769,7 +779,7 @@ it passes through much larger.
 The mechanism: the spindle sits ~152 mm forward of the X beam's front face, so as the gantry runs to
 min-Y the spindle **crosses the riser plane and ends up in front of it.** The fin occupies that plane,
 and its added material is a triangle whose top edge slopes from the top of the plate at 3" inboard down
-to the bottom of the plate at 7.8" inboard. **Interference is therefore a corner-of-the-envelope case:
+to the bottom of the plate at 200 mm inboard. **Interference is therefore a corner-of-the-envelope case:
 low Z, minimum Y, and X near either beam.** The existing 3" risers barely reach inboard of the beam, so
 this problem is largely created by the widening.
 
@@ -788,8 +798,8 @@ Three ways out, in order of preference:
    the two front corners.
 2. **Shape the fin's top edge to clear** rather than cutting a straight taper. Costs stiffness where
    the fin is already thinnest, so it is cheap.
-3. **Reduce the base below 7.8"** - the last resort, since the whole point was the base width, and
-   it has already come down once from 9".
+3. **Reduce the base below 200 mm** - the last resort, since the whole point was the base width,
+   and it has already come down once from 9".
 
 🔴 **Settle this before the plate is cut.** The taper line is one bandsaw pass and cannot be put back.
 
@@ -1133,7 +1143,7 @@ Current as of 2026-10-02.
 | Front strip, **all three beams** | 46 mm × 1000 mm × **1/4"** | **6061** - connector across the seam and the magnetic tape surface |
 | X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
 | **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
-| **Y front plate / Z riser** | tapered 4"→7.8" × 12" × **1/2"** | 6061, with the 62 × 50 window |
+| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **1/2"** | 6061, with the 62 × 50 window |
 | **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × 80 × **3/8"** | 6061 |
 | **X gantry end plates** | 154 mm wide × **1/2"** | 6061 - two identical plates, specified above |
@@ -2015,15 +2025,14 @@ slips.
 - ✅ ~~**The casting's 6-hole pattern against the T-nut holes**~~ **Closed 2026-10-02.** Measured at
   columns 7 / 53 and rows 28 / 58 / 71. The columns clash with the T-slots at 8 mm, which is why
   the bar runs ~30 mm past the casting and the four T-nut bolts live in the overhang.
-- ✅ ~~**The two strip widths either side of the window**~~ **Measured 2026-10-02: 19 mm outboard.**
-  The fins go to **4" / 7.8"**, nesting in one 12" square with 0.2" for the kerf.
-- 🔴 **The window's horizontal position does not reconcile - the one thing still open on the fin.**
-  Measured off the template the outboard strip is **19 mm**, putting the window at X 19-81. But the
-  beam's outboard face is at X 5 (bores 15 in, columns at 20), so the beam spans X 5-65 and its
-  centreline is **X 35** - and a 62 mm window centred on the screw would run **X 4-66**, an
-  outboard strip of 4 mm. The two differ by 15 mm. **The casting cannot be offset that far**: its
-  own bolt columns sit at 7 and 53 on a 60 mm bar centred on the beam, so shifting it 15 mm inboard
-  would put a hole off the bar. **Resolve before the window is cut.**
+- ✅ ~~**The two strip widths either side of the window**~~ **Measured 2026-10-02: 19 mm outboard**,
+  and it now derives from the geometry too. The fins are **100 / 200 over 302**, both halves out of
+  the measured 302 mm square with 2 mm for the kerf.
+- ✅ ~~**The window's horizontal position does not reconcile**~~ **Closed 2026-10-02 - it was my
+  arithmetic, off a wrong column position.** With the M8 columns at **35 and 65** rather than 20
+  and 50, the beam spans X 20-80 and its centreline is X 50, so a 62 mm window centred on the screw
+  runs **19 to 81** - exactly the 19 mm strip measured off the template. Nothing about the casting
+  or the bar had to move.
 - ✅ ~~**The M8 column position**~~ **Settled 2026-10-02 at 20 / 50.** The riser standing 1.8 mm
   proud of the side plate is wanted, and they never touch. The curb condition moved to the box -
   below.
