@@ -50,11 +50,17 @@ The Y end design was reworked on 2026-10-02 and <b>every riser sheet in this pac
 Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers moved to the <b>front</b>,
 all four as-built Y risers are scrapped, and the two rear risers became one 1200&nbsp;mm steel plate.
 </p>
-<p style="margin:0">
+<p style="margin:0 0 .5rem">
 Three parts were added to the trip (two Y front plates with a 62&nbsp;×&nbsp;50&nbsp;mm window, the
 1200&nbsp;mm rear plate, two interposer bars), and four measurements still gate cuts that cannot be
 undone. Read <b>machine/end-plates-risers-and-spindle.md</b> and regenerate this pack before the
 visit.
+</p>
+<p style="margin:0">
+<b>Brought current 2026-10-02:</b> Sheet&nbsp;2 (X gantry end plate) was regenerated, and
+Sheet&nbsp;5 added for the two new bottom-joint parts. <b>Sheets 1, 3 and 4 have not been touched</b>
+and every riser sheet is still superseded. Sheet&nbsp;2 now carries a <b>red CONFLICT</b> on the
+shelf's rear bolt hole that has no chosen fix.
 </p>
 </div>
 
@@ -88,7 +94,9 @@ carrying two parallel rails.</li>
 <table>
 <tr><th>Plate</th><th>Qty</th><th>Material</th><th>Mill needed?</th><th>Status</th></tr>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td>3/8" alu, from one 12" square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
-<tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, 154 mm wide</td><td><b>Yes</b></td><td>Partly dimensioned</td></tr>
+<tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 242.5</b></td><td><b>Yes</b></td><td><b>Outline settled 2026-10-02.</b> 16 block holes + the encoder bore still UNKNOWN; one shelf hole in CONFLICT &mdash; Sheet 2</td></tr>
+<tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 60</td><td>Drill only, with the end plate</td><td><b>Added 2026-10-02.</b> Height gated on the block row &mdash; Sheet 5</td></tr>
+<tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; ~46</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Nut pattern settled; root holes TBD &mdash; Sheet 5</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
 <tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 175 mm</td><td><b>Yes</b></td><td><b>Fully dimensioned 2026-09-30</b> — cut and drill schedule on Sheet 4</td></tr>
 </table>
@@ -195,74 +203,110 @@ low Z, minimum Y, X near the beam. Four numbers decide it and three are unmeasur
 
 <!-- ============================================================ -->
 <div class="plate">
-<h2>Sheet 2 — X gantry end plate</h2>
-<p class="sub">2 off · 1/2" (12.7 mm) aluminium · 154 × 242.5 mm · genuinely identical — neither end has stepper holes any more</p>
+<h2>Sheet 2 &mdash; X gantry end plate</h2>
+<p class="sub">2 off &middot; 1/2" (12.7&nbsp;mm) 6061 &middot; <b>154 &times; 242.5&nbsp;mm</b> &middot; genuinely identical &mdash; the screw support and the stepper both left this plate on 2026-10-02</p>
+
+<div class="note">
+<b>Regenerated 2026-10-02.</b> Deleted from the old sheet, because none of it is on this plate any
+more: the <b>ball screw support block</b> (S1&ndash;S4, +80), the <b>stepper mount</b> (M1&ndash;M4,
++140) and the <b>&oslash;35 stepper shaft bore</b> (C1). The old sheet labelled its &oslash;35 circle
+"SHAFT bore &mdash; not the encoder bore", which was exactly backwards: the shaft bore is the one
+that is gone, and <b>only the encoder bore remains</b>, so the name is now unambiguous.
+</div>
+
+<div class="note">
+<b>&#128308; CONFLICT &mdash; the shelf's rear bolt has no plate left to land in.</b> The shelf's two
+horizontal holes are dimensioned <b>30 and 60&nbsp;mm from the beam front</b>. Moving the beam back
+to flush on 2026-10-02 put the beam front at <b>60&nbsp;mm from the plate's back edge</b>, so
+"60&nbsp;from the beam front" is now <b>0&nbsp;mm from the back edge</b> &mdash; off the plate
+entirely. It was 10&nbsp;mm before the change, already tight for a tapped M8. <b>The rear shelf hole
+must be repositioned and no fix has been chosen</b>, so it is shown amber below rather than guessed.
+</div>
 
 <figure>
-<svg viewBox="-70 -30 300 250" width="150mm" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0" y="0" width="154" height="170" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <text class="q" x="164" y="90">HEIGHT NOW</text>
-  <text class="q" x="164" y="102">SETTLED:</text>
-  <text class="q" x="164" y="114">242.5 — THE</text>
-  <text class="q" x="164" y="126">170 DRAWN</text>
-  <text class="q" x="164" y="138">HERE IS</text>
-  <text class="q" x="164" y="150">STALE</text>
+<svg viewBox="-80 -24 322 302" width="162mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- plate outline: 154 wide (Y, fore-aft) x 242.5 tall. SVG x = Y from back edge. -->
+  <rect x="0" y="0" width="154" height="242.5" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- stack-up levels, measured DOWN from Y beam top which is at y=170 here -->
-  <line x1="0" y1="170" x2="154" y2="170" stroke="#0a6" stroke-width="1"/>
-  <text class="lbl" x="-66" y="173" fill="#0a6">Y beam top = 0</text>
-  <line x1="0" y1="110" x2="154" y2="110" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="-66" y="113" fill="#0a6">+60 extrusion top</text>
-  <line x1="0" y1="90" x2="154" y2="90" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="-66" y="93" fill="#0a6">+80 support block</text>
-  <line x1="0" y1="30" x2="154" y2="30" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="-66" y="33" fill="#0a6">+140 stepper mount</text>
+  <!-- height references, measured from the Y beam top -->
+  <line x1="0" y1="60" x2="154" y2="60" stroke="#0a6" stroke-width="1"/>
+  <text class="lbl" x="-78" y="63" fill="#0a6">0 = Y beam top</text>
+  <line x1="0" y1="120" x2="154" y2="120" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="-78" y="123" fill="#0a6">-60 beam seam</text>
+  <line x1="0" y1="180" x2="154" y2="180" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="-78" y="183" fill="#0a6">-120 beam underside</text>
+  <text class="lbl" x="-78" y="12" fill="#0a6">+60 plate top</text>
+  <text class="lbl" x="-78" y="252" fill="#0a6">-182.5 plate bottom</text>
 
-  <!-- 4 M8 into top extrusion corner bores, above Y beam top -->
+  <!-- E1-E4: four oe9 into the top extrusion's corner bores -->
   <g fill="#fff" stroke="#111" stroke-width="0.8">
-    <circle cx="40" cy="155" r="4"/><circle cx="100" cy="155" r="4"/>
-    <circle cx="40" cy="125" r="4"/><circle cx="100" cy="125" r="4"/>
+    <circle cx="15" cy="15" r="4.5"/><circle cx="45" cy="15" r="4.5"/>
+    <circle cx="15" cy="45" r="4.5"/><circle cx="45" cy="45" r="4.5"/>
   </g>
-  <text class="q" x="10" y="186">4 × ø9 — transfer punch. Pairs at 15 and 45 from back edge</text>
+  <text class="q" x="62" y="18">E1-E4 &mdash; 4 &times; &oslash;9, TRANSFER PUNCH</text>
+  <text class="q" x="62" y="29">Y 15 and 45 from the back edge</text>
+  <text class="q" x="62" y="40">heights +15 and +45 above the beam top</text>
 
-  <!-- 35 mm shaft bore -->
-  <circle cx="77" cy="55" r="17.5" fill="#fff" stroke="#111" stroke-width="1"/>
-  <text class="lbl" x="60" y="58">ø35</text>
-  <text class="q" x="100" y="48">SHAFT bore — not</text>
-  <text class="q" x="100" y="60">the encoder bore</text>
+  <!-- X beam footprint: flush with the back edge, 60 deep -->
+  <line x1="60" y1="0" x2="60" y2="60" stroke="#888" stroke-dasharray="4 3"/>
+  <text class="lbl" x="63" y="56">beam front face, Y 60</text>
 
-  <!-- bearing block grid on the far face -->
-  <g fill="none" stroke="#c0c" stroke-width="0.8" stroke-dasharray="3 2">
-    <rect x="12" y="40" width="58" height="120"/>
-    <rect x="84" y="40" width="58" height="120"/>
-  </g>
-  <text class="lbl" x="6" y="200" fill="#c0c">4 × HGH20 blocks, 2 × 2 on the OUTER face — pattern unknown</text>
+  <!-- the 45 mm measured gap between bearing block rows -->
+  <line x1="0" y1="97.5" x2="154" y2="97.5" stroke="#c0c" stroke-dasharray="2 2"/>
+  <line x1="0" y1="142.5" x2="154" y2="142.5" stroke="#c0c" stroke-dasharray="2 2"/>
+  <text class="lbl" x="160" y="121" fill="#c0c">45 mm gap</text>
+  <text class="lbl" x="160" y="131" fill="#c0c">(measured)</text>
+
+  <!-- C2: the encoder sensor bore, height settled, Y position not -->
+  <circle cx="77" cy="120" r="17.5" fill="#fff" stroke="#111" stroke-width="1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="68" y="123">&oslash;35</text>
+  <text class="q" x="62" y="150">C2 encoder bore &mdash; height SETTLED</text>
+  <text class="q" x="62" y="161">on the seam. Y POSITION UNKNOWN,</text>
+  <text class="q" x="62" y="172">shown at the plate's mid only</text>
+
+  <!-- bearing block band, deliberately unbounded -->
+  <rect x="0" y="60" width="154" height="120" fill="none" stroke="#c0c" stroke-width="0.8" stroke-dasharray="3 2"/>
+  <text class="q" x="4" y="174" fill="#c0c">P1-P16: 4 &times; HGH20, 2 &times; 2 on the OUTER face</text>
+  <text class="q" x="4" y="164" fill="#c0c">PATTERN UNKNOWN &mdash; band is only where they live</text>
+
+  <!-- doubler footprint on the outer face -->
+  <rect x="0" y="182.5" width="154" height="60" fill="none" stroke="#b06000" stroke-width="1.2" stroke-dasharray="6 3"/>
+  <text class="q" x="4" y="222">DOUBLER 154 &times; 60 &times; 1/2" on the OUTER face</text>
+  <text class="q" x="4" y="233">bolt pattern TBD &middot; top edge gated on the lower block row</text>
 
   <!-- datum -->
-  <circle cx="0" cy="170" r="3" fill="#c00"/>
-  <text class="dim" x="-64" y="210">DATUM B = bottom back corner</text>
-  <line x1="0" y1="-8" x2="154" y2="-8" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="60" y="-11">154</text>
+  <circle cx="0" cy="242.5" r="3.2" fill="#c00"/>
+  <text class="dim" x="-78" y="272">DATUM B = bottom BACK corner</text>
+
+  <!-- dimensions -->
+  <line x1="0" y1="-10" x2="154" y2="-10" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="66" y="-13">154</text>
+  <line x1="200" y1="0" x2="200" y2="242.5" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="203" y="124">242.5</text>
 </svg>
-<figcaption>Vertical positions are the settled stack-up, measured from the Y beam top. Horizontal
-positions are not settled. The 2 × 2 bearing-block grid is on the outer face.</figcaption>
+<figcaption>Outer face, seen from outboard. SVG x is the plate's fore-aft (Y) dimension from the back
+edge; heights are measured from the Y beam top. The beam's back face is <b>flush with the plate's
+back edge</b> as of 2026-10-02. Dashed outlines are features on the far side or not yet
+dimensioned.</figcaption>
 </figure>
 
-<h3>Hole schedule — datum: bottom back corner</h3>
+<h3>Hole schedule &mdash; datum: bottom back corner</h3>
 <table>
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
-<tr><td>E1–E4</td><td>ø9 clearance into <b>top</b> extrusion corner bores</td><td>4</td><td colspan="2"><b>Transfer punch</b></td><td>Rear pair <b>15 mm from the plate's back edge</b>, front pair at <b>45</b> — beam back face flush with the plate edge (changed 2026-10-02). Start just above the Y beam top so the heads land in clear air</td></tr>
-<tr class="unk"><td>S1–S4</td><td>Ball screw support block (BK12 / BF12)</td><td>4</td><td>UNKNOWN</td><td class="n">+80 top</td><td>Vertical settled by the stack-up. Keep the block <b>tight down onto the extrusion</b> — the bracing is doing all the work</td></tr>
-<tr class="unk"><td>M1–M4</td><td>Stepper mount — <b>driven end only</b></td><td>4</td><td>UNKNOWN</td><td class="n">+140 top</td><td>Omitted on the idle plate, along with the shaft bore</td></tr>
-<tr class="unk"><td>C1</td><td>ø35 stepper shaft clearance</td><td>1</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Coupler measured at 25 mm OD, so 35 leaves 5 mm annulus. <b>Driven end only</b></td></tr>
-<tr class="unk"><td>C2</td><td>ø35 <b>encoder sensor bore</b></td><td>1</td><td>UNKNOWN</td><td>UNKNOWN</td><td>⚠️ Same diameter as C1, different purpose. Lines up with the Y beam seam centreline, in the 45 mm gap between block rows — 5 mm each side, no room for a flange or clamp ring</td></tr>
-<tr class="unk"><td>P1–P16</td><td>4 × HGH20 bearing block, 2 × 2 on the outer face</td><td>16</td><td>UNKNOWN</td><td>UNKNOWN</td><td>154 mm width is set by two blocks end to end with 2–3 mm between</td></tr>
-<tr><td>H1, H2</td><td>Tapped M8, shelf to plate</td><td>2</td><td colspan="2">Y from beam front: <b>30</b> and <b>60</b></td><td>M8 into 12.7 mm is 1.6 D. <b>Not 70</b> for the rear hole — leaves 1.7 mm of edge on a 76.2 bar</td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y from back edge</th><th>Height</th><th>Note</th></tr>
+<tr><td>E1&ndash;E4</td><td>&oslash;9 clearance into <b>top</b> extrusion corner bores</td><td>4</td><td><b>15</b> and <b>45</b></td><td class="n">+15, +45</td><td><b>Transfer punch.</b> Beam back face flush with the plate's back edge (changed 2026-10-02). The 15 is anchored; the 45 follows from the corner bores being symmetric in a 60&nbsp;&times;&nbsp;60. 15&nbsp;mm edge distance leaves 10.5&nbsp;mm of material beside a &oslash;9 &mdash; the plate's tightest, do not let it drift outboard</td></tr>
+<tr class="unk"><td>C2</td><td>&oslash;35 <b>encoder sensor bore</b></td><td>1</td><td><b>UNKNOWN</b></td><td class="n">&minus;60</td><td>Height settled: the Y beam's seam centreline, in the measured 45&nbsp;mm gap between block rows, 5&nbsp;mm each side. <b>No room for a flange or clamp ring.</b> Fore-aft position not established</td></tr>
+<tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, 2 &times; 2 on the <b>outer</b> face</td><td>16</td><td><b>UNKNOWN</b></td><td><b>UNKNOWN</b></td><td><b>Measure the X/Y kit, not the Z kit</b> &mdash; different suppliers. 154 is the <b>butted</b> dimension (154.18 for two blocks); the functional floor is 128.24 on the machined pads. A plate edge must land outside a pad, never partway across one</td></tr>
+<tr class="unk"><td>D1&ndash;Dn</td><td>Doubler block through-bolts, plate to doubler</td><td>TBD</td><td><b>UNKNOWN</b></td><td>within &minus;122 to &minus;182.5</td><td>Along X through the plate, in shear. <b>Drill the doubler and the plate together.</b> Doubler is 154&nbsp;&times;&nbsp;60&nbsp;&times;&nbsp;1/2" &mdash; its 60&nbsp;mm height is gated on the <b>lower block row's bottom edge</b>, not the Y beam underside</td></tr>
+<tr class="unk"><td>B1&ndash;Bn</td><td>Tapped, sole bracket up into the bottom edge</td><td>TBD</td><td><b>UNKNOWN</b></td><td class="n">&minus;182.5</td><td><b>Two rows across the 25.4&nbsp;mm seating</b>, not one row down the middle &mdash; a single row leaves nothing resisting roll about Y. M6: 9.7&nbsp;mm of wall each side at 25.4, against 3.35 on the bare 12.7 edge</td></tr>
+<tr class="unk"><td>H1, H2</td><td>Tapped M8, shelf to plate</td><td>2</td><td><b>CONFLICT &mdash; see above</b></td><td class="n">+12.7</td><td>&#128308; "30 and 60 from the beam front" now puts the rear hole at <b>Y 0</b>, off the plate. The front one is fine at Y 30. <b>Reposition the rear hole and re-reference both from the back edge.</b> M8 into 12.7&nbsp;mm is 1.6&nbsp;D, which is not the problem &mdash; edge distance is</td></tr>
 </table>
 
-<div class="warn">
-<b>Name the two ø35 holes distinctly on any working drawing.</b> "The 35 mm hole in the X end plate"
-is already ambiguous — one is stepper shaft clearance, one is the encoder sensor bore.
+<div class="info">
+<b>What this plate no longer has.</b> No stepper mount, no &oslash;35 shaft bore, no screw support
+pattern, and <b>no idle-end variant</b> &mdash; one drawing, one setup, two interchangeable parts.
+Both plates stop at <b>+60</b>, the top of the X beam; they are deliberately <i>not</i> raised to the
+top of the 3/8" interposer bar, because the casting overhangs the beam end at the stepper end and
+raising one end only would break the identical-plates property.
 </div>
 </div>
 
@@ -452,6 +496,111 @@ yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in th
 <b>needed before the machining trip</b>.
 </div>
 </div>
+<!-- ============================================================ -->
+<div class="plate">
+<h2>Sheet 5 &mdash; Y nut doubler block and sole bracket</h2>
+<p class="sub">Added 2026-10-02 &middot; two new parts per gantry end, both flat plate &middot; they
+carry the inverted Y ball nut into the bottom of the X end plate</p>
+
+<div class="info">
+<b>Why these exist.</b> The X end plate now runs down to <b>&minus;182.5</b>, level with the
+downward-facing mounting face of the Y ball nut. The <b>doubler</b> bolts to the plate's outer face
+to give a 25.4&nbsp;mm (1") wide seating at the bottom; the <b>sole bracket</b> bolts up into that
+seating and reaches outboard to the nut. The screw axis is <b>72.7&nbsp;mm</b> from the plate's inner
+face &mdash; 12.7 plate + 30 rail stack + 30 half beam &mdash; so the nut's flange never comes near
+the plate and this is a cantilever, not a strip.
+</div>
+
+<figure>
+<svg viewBox="-30 -40 205 228" width="155mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- PLAN VIEW looking down. x = X outboard from the plate's inner face. y = Y fore-aft. -->
+  <text class="ttl" x="-26" y="-28">PLAN, looking down</text>
+  <text class="lbl" x="-26" y="-18">x is outboard &middot; y is fore-aft</text>
+  <text class="lbl" x="-26" y="-8">blue = end plate &middot; tan = doubler &middot; 25.4 total</text>
+
+  <!-- end plate section, 12.7 thick, 154 in Y -->
+  <rect x="0" y="0" width="12.7" height="154" fill="#d9e2ee" stroke="#111" stroke-width="1.2"/>
+
+  <!-- doubler, outer face, 12.7 thick -->
+  <rect x="12.7" y="0" width="12.7" height="154" fill="#f3e2c8" stroke="#111" stroke-width="1.2"/>
+
+  <!-- sole bracket trapezoid: root 154 at x=25.4, tip 46 at x=98.7, centred on Y 77 -->
+  <polygon points="25.4,0 25.4,154 98.7,100 98.7,54" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <text class="lbl" x="30" y="140">sole bracket, 1/4"</text>
+
+  <!-- nut mounting face 52 (X) x 40 (Y), centred on the screw axis -->
+  <rect x="46.7" y="57" width="52" height="40" fill="none" stroke="#c00" stroke-width="1" stroke-dasharray="4 2"/>
+  <text class="q" x="46" y="112">nut face 52 &times; 40</text>
+
+  <!-- the four M5, +/-20 in X and +/-12 in Y about the axis -->
+  <g fill="#fff" stroke="#c00" stroke-width="0.8">
+    <circle cx="52.7" cy="65" r="2.8"/><circle cx="92.7" cy="65" r="2.8"/>
+    <circle cx="52.7" cy="89" r="2.8"/><circle cx="92.7" cy="89" r="2.8"/>
+  </g>
+
+  <!-- screw axis -->
+  <line x1="72.7" y1="30" x2="72.7" y2="124" stroke="#c00" stroke-dasharray="7 3 2 3"/>
+  <text class="q" x="75" y="28">screw axis, X 72.7</text>
+
+  <!-- X dimension chain from the inner face -->
+  <line x1="0" y1="168" x2="98.7" y2="168" stroke="#06c" stroke-width="0.7"/>
+  <g class="dim">
+    <text x="9" y="178">12.7</text>
+    <text x="22" y="166">25.4</text>
+    <text x="44" y="178">46.7</text>
+    <text x="68" y="166">72.7</text>
+    <text x="90" y="178">98.7</text>
+  </g>
+
+  <!-- Y dimensions -->
+  <line x1="-8" y1="0" x2="-8" y2="154" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-20" y="40">154</text>
+  <line x1="106" y1="54" x2="106" y2="100" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="109" y="79">~46</text>
+</svg>
+<figcaption>Plan view. The trapezoid's tip is drawn centred on the plate's fore-aft mid (Y&nbsp;77),
+which is a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y
+produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
+</figure>
+
+<h3>The two parts</h3>
+<table>
+<tr><th>Part</th><th>Qty</th><th>Size</th><th>Material</th><th>Mill needed?</th></tr>
+<tr><td><b>Doubler block</b></td><td>2</td><td>154 &times; 60 &times; <b>1/2"</b></td><td>6061</td><td>Drill only &mdash; <b>drill it clamped to the end plate</b></td></tr>
+<tr><td><b>Sole bracket</b></td><td>2</td><td>trapezoid <b>154 &rarr; ~46</b> over ~75, <b>1/4"</b></td><td>6061</td><td>Two angled cuts plus 4 &times; M5 clearance</td></tr>
+</table>
+
+<h3>Hole schedule &mdash; datum: the root edge at the back corner</h3>
+<table>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th>Note</th></tr>
+<tr><td>N1&ndash;N4</td><td>M5 clearance, bracket up into the nut</td><td>4</td><td><b>52.7</b> and <b>92.7</b></td><td><b>&plusmn;12</b> about the nut centre</td><td>The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern 24 &times; 40 centred on a 40 &times; 52 face: insets 8 across the 40, 6 across the 52</td></tr>
+<tr class="unk"><td>R1&ndash;Rn</td><td>Root holes, bracket into the bottom edge</td><td>TBD</td><td>within <b>0 to 25.4</b></td><td><b>UNKNOWN</b></td><td><b>Two rows across the 25.4</b>, spread as wide in Y as the 154 root allows &mdash; the 60&nbsp;mm arm is reacted as a shear couple across the group's spread <i>along Y</i></td></tr>
+<tr class="unk"><td>D1&ndash;Dn</td><td>Doubler to end plate, through-bolts</td><td>TBD</td><td>through the 12.7</td><td><b>UNKNOWN</b></td><td>In shear, full material around them. Matches D1&ndash;Dn on Sheet 2</td></tr>
+</table>
+
+<div class="warn">
+<b>Three parts whose holes must agree across an assembly.</b> Drill the <b>doubler's through-holes
+and the end plate's together</b>, and leave the <b>sole bracket's root holes</b> until those two are
+mated. Take the <b>ball nut housing itself</b> to the mill &mdash; the N1&ndash;N4 pattern gets
+checked against the real flange before anything is cut.
+</div>
+
+<div class="note">
+<b>&#9888; The tip's ~46 and the ~75 reach are shapes, not fits.</b> Nothing mates to either, so round
+them to whatever is convenient. <b>46 rather than 40</b> on purpose: 40 would match the nut face
+exactly but leaves only 8&nbsp;mm of edge beside an M5 at &plusmn;12, about 1.45&nbsp;D. The numbers
+that are <b>not</b> free are the four M5 at &plusmn;20 in X and &plusmn;12 in Y, and the root's 154.
+</div>
+
+<div class="note">
+<b>&#128308; Still unverified: the doubler's 60&nbsp;mm height.</b> It is gated on the bottom edge of
+the <b>lower Y bearing block row</b>, which shares the same face in the same X band and whose
+position is part of the unmeasured block pattern. It is <i>not</i> gated on the Y beam underside
+&mdash; the doubler sits ~17&nbsp;mm inboard of the beam's inside face, which an earlier draft had
+wrong.
+</div>
+</div>
+
 
 <!-- ============================================================ -->
 <div class="plate">
@@ -467,6 +616,9 @@ yes; a tram sub-plate and 13 mm of added moment arm if no. This is flagged in th
 <tr><td>8</td><td><s>M5 row positions on an assembled spacer</s> — <b>measured 2026-09-30: 17, 53, 97, 133. Clamp centres come in to 116 mm to clear them</b></td><td>—</td></tr>
 <tr><td>4</td><td><s>Actual width of the X carriage plate</s> — <b>answered 2026-09-30: 154 mm</b>, same as the X end plates and the Z plate</td><td>—</td></tr>
 <tr><td>5</td><td><s>Y of the two tongue bolts within the 61 mm proud band</s> — <b>answered 2026-09-30: X 25 / 175, Y 31</b></td><td>—</td></tr>
+<tr><td>10</td><td><b>The 4 &times; HGH20 block hole pattern, measured on the X/Y kit</b> &mdash; not the Z kit, different supplier</td><td>16 holes on each X end plate, and the doubler's height</td></tr>
+<tr><td>11</td><td><b>The &oslash;35 encoder bore's fore-aft position</b> on the X end plate</td><td>Its height is settled; the Y position is not</td></tr>
+<tr><td>12</td><td><b>A fix for the shelf's rear bolt hole</b>, now at Y&nbsp;0 after the beam moved to flush</td><td>Two tapped M8 per end plate</td></tr>
 <tr><td>6</td><td>Mill model number, and whether the DRO is 2-axis or 3-axis</td><td>How every sheet should be dimensioned</td></tr>
 </table>
 
