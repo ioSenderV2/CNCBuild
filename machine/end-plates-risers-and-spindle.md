@@ -541,26 +541,10 @@ number moved again when the base came in to 8" - see below.**
 ⚠️ **The 9" working's figures do not carry**: 213 mm of plate width at Y 31 and a 26.6 deg taper
 both belong to the old outline.
 
-#### ✅ T2 re-picked at 170 for the 4" / 8" plate
+#### ✅ T2 at 170
 
-**Recomputed on the pinned 7.8" base**, at Y 30:
-
-| T2 at X | Perpendicular edge distance | T1-T2 couple |
-|---|---|---|
-| 175 | 13.0 mm | 150 mm |
-| **170 - chosen** | **17.7 mm** | **145 mm** |
-| 160 | 27.3 mm | 135 mm |
-
-🔴 **On this outline 175 would have been 13.0 mm - essentially the ~12 that was rejected on the 9"
-plate.** The move to 170 turned out to be necessary rather than comfortable, which was not obvious
-when it was made against a wider nominal base.
-
-**The arithmetic, so it can be re-checked rather than re-measured:** at Y 30 the tapered edge is at
-X 188.6, so a bolt at 170 has **18.6 mm of horizontal gap**, and perpendicular to an edge running
-**17.57° from vertical** that is 18.6 × cos 17.57° = **17.7 mm**.
-
-✅ **17.7 is confirmed good on the template** - see below. It is ~2 × the 9 mm hole diameter from
-the edge, which is the usual working minimum.
+**At Y 30 on the pinned 7.8" base, T2's perpendicular edge distance is 17.7 mm** - about 2 × the
+9 mm hole diameter, and confirmed good on the template.
 
 ✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
 and the back plate's row all sit at 30 mm above the plate's bottom edge, 31 mm below the top of the
