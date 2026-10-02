@@ -82,7 +82,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 |---|---|---|
 | Size | **Tapered: 4" at the top, 8" at the base, 12" tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
-| To the torsion box | **Two M8 through the front tongue at X 25 and 175, Y 31**, plus bottom-edge bearing | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
+| To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 31**, plus bottom-edge bearing | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
 | Also carries | the **62 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
 ⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
@@ -476,45 +476,61 @@ The project note's rule is that moment capacity comes from **bolt spacing, not b
 this file previously had to reach for L brackets to avoid a hinge at the base. **An 8" base gives the
 spacing directly.**
 
-✅ **Fixing, fully dimensioned 2026-09-30: two M8 at X = 25 and 175 mm** from the outboard edge,
+✅ **Fixing, fully dimensioned: two M8 at X = 25 and 170 mm** from the outboard edge,
 **Y = 31 mm** above the plate's bottom edge - which is **30 mm down from the top of the 61 mm proud
 tongue** - plus the plate's bottom edge **bearing on the top skin** the way the outboard plate does.
+*(X 25 and Y 31 settled 2026-09-30; T2 moved 175 → 170 on 2026-10-02 when the base came to 8".)*
 
 📌 **T1 and T2 are those two bolts** - the labels are used below and were never defined. **T1 is
 the outboard one**, near the straight factory edge; **T2 is the inboard one**, near the tapered
 edge. T2 is the one that needs watching, because the taper is what takes its edge distance away.
 
-🔴 **175, not 200, and the reason is edge distance at the taper.** The plate narrows as it rises, so
-a bolt too far inboard runs out of material - and what counts is the distance measured
-**perpendicular** to the sloping edge, not horizontally. At X 200 that came out around **12 mm**,
-less than the 9 mm hole's own diameter plus any sensible margin, on the bolt carrying the larger
-share of the moment. X 175 cleared comfortably. **The couple is unchanged at 150 mm either way, so
-this costs nothing.**
+🔴 **Not 200, and the reason is edge distance at the taper.** The plate narrows as it rises, so a
+bolt too far inboard runs out of material - and what counts is the distance measured
+**perpendicular** to the sloping edge, not horizontally. On the original 9" outline X 200 came out
+around **12 mm**, less than the 9 mm hole's own diameter plus any sensible margin, on the bolt
+carrying the larger share of the moment. **That is the constraint that sets T2, and it is why the
+number moved again when the base came in to 8" - see below.**
 
 | | X | Y | Edge distance to the taper, perpendicular |
 |---|---|---|---|
 | **T1** - outboard | **25** | **31** | n/a - straight factory edge, 20.5 mm |
-| **T2** - inboard | **175** | **31** | ~34 mm *(9" base)* → **~17 mm at 8"**, see below |
+| **T2** - inboard | **170** | **31** | **21.7 mm** - re-picked for the 8" base, 2026-10-02 |
+| ~~T2 on the 9" base~~ | ~~175~~ | ~~31~~ | ~~34 mm - the old outline~~ |
 | ~~T2 as first drawn~~ | ~~200~~ | ~~31~~ | ~~~12 mm - rejected~~ |
 
-⚠️ **The figures in that working belong to the 9" base**: 213 mm of plate width at Y 31 and a
-26.6 deg taper. Both change at 4" / 8", which is why T2's margin is flagged below rather than
-carried.
+⚠️ **The 9" working's figures do not carry**: 213 mm of plate width at Y 31 and a 26.6 deg taper
+both belong to the old outline.
+
+#### ✅ T2 re-picked at 170 for the 4" / 8" plate
+
+Keeping 175 would have left **17.0 mm**. The trade across the useful range, on the nominal
+corner-to-corner outline:
+
+| T2 at X | Perpendicular edge distance | T1-T2 couple |
+|---|---|---|
+| 175 | 17.0 mm | 150 mm |
+| **170 - chosen** | **21.7 mm** | **145 mm** |
+| 160 | 31.2 mm | 135 mm |
+
+**175 → 170 buys 28% more edge distance for 3% less couple**, which is the knee. At 21.7 the hole
+centre sits **2.4 × the 9 mm hole diameter** from the edge and an M8 washer lands fully on material.
+Below 170 the couple is being spent on clearance that is not needed.
+
+**The arithmetic, so it can be re-checked rather than re-measured:** at Y 31 the tapered edge is at
+X 192.9, so a bolt at 170 has **22.9 mm of horizontal gap**, and perpendicular to an edge running
+**18.4° from vertical** that is 22.9 × cos 18.4° = **21.7 mm**.
+
+🔴 **This is sensitive to where the taper actually starts, more than to the 5 mm.** The figures above
+assume a corner-to-corner taper. If the template keeps the top parallel and tapers more steeply over
+a shorter run, the edge at Y 31 comes further inboard: a taper confined to the lower 200 mm would
+leave 170 with about **15.6 mm**. **170 is the number; the template check is what confirms it.**
 
 | Direction | What takes it |
 |---|---|
 | Vertical | **Bearing** - fin bottom edge on the top skin |
-| Lateral moment | The two through-bolts as a **150 mm couple** |
+| Lateral moment | The two through-bolts as a **145 mm couple** |
 
-🔴 **Those edge distances were worked against the 9" base and have NOT been redone for 8".** The
-25 / 175 positions and the 150 mm couple still fit a narrower plate, but the margin at T2 does not:
-on a corner-to-corner 4" / 8" outline the perpendicular distance at T2 comes out around **17 mm**
-rather than 34. Still well clear of the ~12 that was rejected, so **nothing here is broken** - but
-it is half the margin it was.
-
-⚠️ **17 is indicative** - the taper angle is not pinned, only 4" at the top and a base just under
-8". **Check T2's edge distance on the template before drilling.** If it is tighter than wanted,
-moving T2 to ~160 restores it for about 10% less couple.
 
 🔴 **The bolts are now the soft part, not the plate.** A 9.6× stiffer fin only pays if the base is
 genuinely fixed, and the reaction at those bolts is vertical load bearing into plywood. The project
@@ -1953,9 +1969,10 @@ slips.
   below.
 - ⚠️ **Terminate the side curb short of the front riser's station** so the curb bears on the side
   plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
-- ⚠️ **T2's edge distance on the 4" / 8" plate.** The 25 / 175 fixing positions were worked against
-  the 9" base; at 8" the T2 margin roughly halves. Still clear, but **check it on the template**
-  before drilling, and move T2 to ~160 if it is tight.
+- ⚠️ **T2's edge distance, on the template.** Re-picked at **X 170** for the 8" base, giving
+  **21.7 mm** on a nominal corner-to-corner taper. **Confirm against the template before drilling**
+  - the clearance is sensitive to where the taper starts, and a steeper taper over a shorter run
+  would cut it to around 15.6 mm.
 - 🔴 **Whether the Laguna can hold the HEIGHT datum across a 1200 mm part.** Bed size is not travel,
   and the question is not whether the part fits - it is whether the two 8-bolt patterns' relative
   height survives a reposition. **The budget is well inside 1 mm**, that being the float the 9 mm
