@@ -21,21 +21,53 @@ aluminium plates running the full 1000 mm, anchored with M8 T-nuts in the existi
 | | Back plate | Front plate |
 |---|---|---|
 | Width | **120 mm** — full section height, all four back slots | **46 mm** — the two slots flanking the seam |
-| Thickness | 3/8" (9.53 mm) or 10 mm on **Y**; **1/4" (6.35 mm) on X** | same as its back plate |
+| Thickness | **1/4" (6.35 mm) on X**; on **Y** see the reversal below | **1/4" (6.35 mm), all three beams** |
+| Material | **6061 on X**; **1/8" steel on Y** | **6061, all three beams** |
 | Fasteners | M8 T-nuts, **150 mm** spacing, four rows | M8 **flange** bolts, two rows, no counterbore |
-| Also carries | drag chain — bolts pass **through** the plate into T-nuts in the outer slots | — |
+| Also carries | drag chain — bolts pass **through** the plate into T-nuts in the outer slots | the **magnetic encoder tape**, all three beams |
 
-**Material is aluminium, not steel.** Steel would give roughly three times the modulus, but over
-1000 mm a shop temperature swing puts a couple of tenths of differential expansion into a joint held
-by preloaded T-nuts that cannot comfortably slip. Matched aluminium removes the question. The plates'
-job is shear connection and flange area, not modulus.
+The plates' job is **shear connection and flange area, not modulus.**
 
-**Buy 120 mm stock and rip the 46 mm front strips from it** — one thickness, one order.
+### 🔴 The steel rejection was reversed on 2026-10-02, for Y only
+
+This file used to read:
+
+> **Material is aluminium, not steel.** Steel would give roughly three times the modulus, but over
+> 1000 mm a shop temperature swing puts a couple of tenths of differential expansion into a joint
+> held by preloaded T-nuts that cannot comfortably slip. Matched aluminium removes the question.
+
+**It still holds on X, and X stays 6061.** On Y it has been overridden — and the override is not a
+refutation. **The cost is accepted instead of avoided.** The full reasoning sits with the part that
+took the decision over, in
+[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) under "The full-height
+outboard plate". In short:
+
+- On Y there **is no separate 120 mm back plate any more.** The full-height outboard plate, running
+  from the beam down to the torsion box, *is* the back joining plate — grown, not added alongside.
+- The differential is **0.17 mm over a metre at 15 K**. The paragraph above had the magnitude right
+  at "a couple of tenths"; none of its arithmetic was wrong.
+- **1/8" was chosen over 1/4" specifically to halve it**, the restraint force scaling with E·A.
+- At 1/8" steel presents **9.2 mm of equivalent aluminium** at the face — almost exactly the 3/8"
+  this file asked for on Y. The flange term is satisfied, not overshot.
+
+⚠️ **This is the one joint where the thermal question is live rather than dismissed.** The
+plate-to-box bolt row takes up its own differential in 9 mm clearance because those bolts are
+retention, not load path. **These T-nuts are a preloaded friction joint doing shear transfer** —
+a different duty, and the two must not be waved through together because their numbers happen to
+be similar.
+
+❌ ~~**Buy 120 mm stock and rip the 46 mm front strips from it** — one thickness, one order.~~
+**Retired 2026-10-02.** Y's back is steel, so there is no 120 mm aluminium order to rip from. The
+three 46 mm × 1/4" 6061 strips need their own buy.
 
 ### Why the thicknesses differ
 
 The Y beams **do not move** (measured: their end plates bolt to the torsion box), so weight there is
 static load and the stiffer plate is free. The X gantry moves, so its ~3 lb saving is real.
+
+📌 **The Y front strip came down to 1/4" on 2026-10-02**, breaking the old "same as its back plate"
+rule. All three beams now carry an identical **46 mm × 1/4" 6061** strip, which is also the magnetic
+tape surface — one part made three times, instead of two specifications.
 
 ---
 
@@ -62,6 +94,12 @@ So the joint is in the primary load path, not a refinement.
 
 Computed from 8020's **published** section properties (below), not estimated. Plate and extrusion
 are both aluminium at ~68.9 GPa, so no transformed-section correction is needed.
+
+⚠️ **That last sentence stopped being true for Y on 2026-10-02.** The Y back plate is steel, so the
+table below reads correctly for **X only** as written. For Y, use the transformed area: 3.175 mm of
+steel at the face behaves as **9.2 mm of aluminium**, so the **3/8" row is the Y row** — about
+**+241% fore-aft**. The flange band that counts is only the 120 mm alongside the section; the rest
+of the 12" plate is web carrying load down to the box and contributes nothing to composite bending.
 
 Fore-aft bending stiffness — bending about the vertical axis, the direction the spindle deflects
 under cutting load — against the bare stacked pair:
