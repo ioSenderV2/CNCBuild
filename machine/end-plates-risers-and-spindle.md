@@ -1296,7 +1296,7 @@ it was a placeholder in every calculation in this repo until now.
 | Z rails, bearing blocks and the spacers | 46.5 mm |
 | Z plate, 1/2" | 12.7 mm |
 | Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
-| **To the spindle centreline** | **109 mm** |
+| **To the spindle centreline** | **109 mm** - ⚠️ **~108 after the spacer skim**, see the Z carriage section |
 
 ⚠️ **That reference is the carriage plate, not the beam.** The X carriage plate is itself bolted to
 the X-axis bearing blocks, so from the **X beam's front face** add the X rail-and-block stack
@@ -1668,22 +1668,56 @@ back into line with these two** - see the Z plate section. Worth knowing
 before anyone "tidies" one of them to a different number - changing it here changes what rides the Y
 rails.
 
-### 🔴 The ball nut sits 1 mm below the spacer blocks - shim it with a plate, not washers
+### ✅ The ball nut sits 1 mm below the spacer blocks - SKIM THE SPACERS, decided 2026-10-02
 
 Measured: the spacer blocks stand **1 mm higher** than the ball nut housing, so the Z plate cannot
 bear on both without something in between.
 
-**Use a full-face shim cut to the housing footprint**, or skim 1 mm off the spacer blocks and have
-no shim at all. **Not washers.** The ball nut is the one joint here that must not be pulled out of
-alignment: washers bear at four points, and as the bolts come down the housing tilts to whatever
+✅ **Decided: skim 1 mm off the spacer blocks. No shim.** The alternative was a full-face shim cut
+to the housing footprint, and it is no longer needed.
+
+🔴 **Face BOTH spacers in the same setup.** That is the whole reason this route wins: they come
+out identical to whatever the machine holds, which is far better than their as-found **0.02 mm**
+difference, **and it costs nothing extra because they are on the cutter anyway.** Two parts, one
+setup, one depth.
+
+❌ **Not washers**, in either scheme. The ball nut is the one joint here that must not be pulled out
+of alignment: washers bear at four points, and as the bolts come down the housing tilts to whatever
 those points dictate. That tilt becomes a side load on the screw - binding, uneven wear, and lost
 motion that reads like backlash.
+
+#### ⚠️ The skim takes 1 mm out of the stack, and three recorded numbers move with it
+
+The spacer is part of the chain from the X carriage plate to the spindle, so removing 1 mm from it
+removes 1 mm from everything downstream:
+
+| | Before | After the skim |
+|---|---|---|
+| Spacer thickness | 16.41 / 16.43 measured | **~15.4, both identical** |
+| Z rails + blocks + spacers | 46.5 | **~45.5** |
+| Carriage plate face to spindle centreline | 109 | **~108** |
+| X beam front face to spindle centreline | ~152 | **~151** |
+| X beam neutral axis to spindle centreline | ~187 | **~186** |
+
+📌 **None of it changes a conclusion** - it is half a percent on the gantry arm, and every
+deflection figure in this repo is quoted to two significant figures at best. It is recorded so that
+nobody later finds 108 on the machine and 109 in the file and goes looking for the error.
+
+🔴 **Re-mic both spacers after facing and write the number here.** The ~15.4 above is
+arithmetic, not a measurement, and this repo's rule is that the machine is the authority.
+
+🔴 **This is a milling operation, so it belongs on the one trip.** Facing 1 mm off a 2" bar is
+not a drill-press job. **Take the ball nut housing with them** - the 1 mm is measured against that
+part, and the whole point is that the faced spacers finish level with it.
+
+⚠️ Measure the 1 mm again before cutting rather than assuming it is exactly 1.00. In the shim
+scheme that mattered because stock comes in 0.5, 0.8 and 1.0; in the skim scheme it matters more,
+because **the cut cannot be undone** and the spacers are a matched pair that would have to be
+replaced together.
 
 **Assembly order: rails and spacers first, nut housing last.** The rails define the geometry; the
 nut should follow the screw rather than be forced into position by its own bolts. Leave its four
 bolts finger-tight, run the carriage through full travel, then torque them.
-
-⚠️ Measure the 1 mm rather than assuming it is exactly 1.00 - shim stock comes in 0.5, 0.8 and 1.0.
 
 ### 🔴 Match the two spacers to each other before anything else
 
@@ -1697,8 +1731,9 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   ✅ **Checked 2026-10-02, and it passes: 16.41 and 16.43 - 0.02 mm apart.** Both are halves of a
   single bar, so the thickness is the as-supplied bar dimension on both, untouched; the cut set length
   only. 0.02 mm is at the scale this bullet warned about and also at the limit of caliper
-  repeatability, so **treat it as a matched pair and do not try to improve it.** The pair sets the
-  geometry; the nut housing shim only has to avoid fighting it.
+  repeatability. ✅ **And it is about to be settled outright:** the ball nut skim faces both spacers in
+  one setup, so they finish identical and this check becomes a before-the-cut record rather than a
+  live concern. The pair sets the geometry.
 - **They locate nothing.** A 6 mm hole on an M5 bolt is 0.5 mm of radial float per side, so the
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
