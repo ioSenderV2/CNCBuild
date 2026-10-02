@@ -1934,7 +1934,13 @@ the nut.
 |---|---|
 | Mounting surface | **40 × 52 mm** |
 | Fixing | **4 × M5, threaded into the nut body** - not through-holes |
-| Pattern | **24 × 40 mm** |
+| Pattern | **24 × 40 mm**, centred on the face |
+| Edge inset, across the **40** | **8 mm** - 8 + 24 + 8 |
+| Edge inset, across the **52** | **6 mm** - 6 + 40 + 6 |
+
+✅ **Both insets close exactly, so the pattern is centred and the sole plate's four holes are fully
+determined** once the face's orientation in Y is known. The pattern's 40 runs with the face's 52; its
+24 runs with the face's 40.
 
 🔴 **Threaded holes in the nut kill the "one bolt set does two jobs" idea**, which this section used
 to claim. A bolt that threads into the nut **terminates** in the nut; it cannot also tap into the end
@@ -1951,12 +1957,9 @@ nut lands in the end plate's edge, so those fixings can be **M6** per the wall r
 side of a 12.7 mm edge - rather than being forced to M8. The M8 wall problem this section warned
 about does not arise.
 
-⚠️ **The 7 mm inset does not reconcile, and it is the hole positions that depend on it.** A 24 × 40
-pattern centred on a 40 × 52 face gives **8 mm** across the 40 and **6 mm** across the 52, not 7 both
-ways. Three readings are possible and they are 1-2 mm apart: the 7 is a rounded recollection, the
-**nut body is larger than the 40 × 52 mounting face** so 7 is measured off the body, or the pattern
-is not centred. **Caliper the pattern off the flange itself when the sole plate is drawn** - do not
-work from the 7.
+📌 **The inset was first given as 7 mm and corrected to 8 the same day.** Recorded only because the
+8 is what makes the pattern close on both axes - if a 7 survives in any drawing it is the superseded
+number.
 
 ⚠️ **Open: which of 40 / 52 runs along Y.** The sole plate's own outline and the clearance to the
 bar's inboard end both key off it.
@@ -2349,8 +2352,8 @@ slips.
   mounting face, 4 × M5 threaded into the nut, 24 × 40 pattern.** The M5s terminate in the nut, so
   nothing from the nut reaches the end plate's edge and the edge-tap size is free - **M6**, and the
   M8 wall worry is moot.
-- ⚠️ **The nut pattern's edge inset** - "7 mm" does not reconcile with a 24 × 40 pattern centred on a
-  40 × 52 face, which gives 8 and 6. **Caliper it off the flange**; 1-2 mm of hole position.
+- ✅ ~~**The nut pattern's edge inset**~~ **Closed 2026-10-02: 8 mm**, corrected from a first-given 7.
+  The pattern is centred - 8 + 24 + 8 = 40 and 6 + 40 + 6 = 52, both closing exactly.
 - ⚠️ **Which of the nut face's 40 / 52 runs along Y.**
 - 🔴 **The X offset from the X end plate's inner face to the Y screw axis.** The last thing blocking
   the sole plate outline, and it decides whether Y thrust is in-plane shear or a twisting moment on
