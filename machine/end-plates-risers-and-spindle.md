@@ -509,12 +509,15 @@ decision - it is that decision's own escape clause being used as written.
 📌 **It also makes the 62 × 50 window easier to cut**, which is a live question - 10 mm of
 aluminium is a materially easier jigsaw or router job than 12.7.
 
-⚠️ **One thing to re-derive before this is finished: the 1.8 mm proud figure.** The open items
-carry *"the riser standing 1.8 mm proud of the side plate is wanted"*. I cannot tell from this file
-whether the fin's **thickness** is a term in that 1.8 or whether it comes entirely from in-plane
-geometry. **If thickness is a term, 1.8 becomes about -0.9 and the riser is recessed rather than
-proud**, which inverts the curb condition that was carried to the box's list. **Check it before the
-box's side curbs are set out.**
+✅ **The 1.8 mm proud figure is unaffected - confirmed 2026-10-02.** It comes from the **plate width
+and the offset from the vertical edge to the M8 bolt column**, both in-plane. **Thickness is not a
+term**, so the 10 mm stock does not disturb it and the curb condition carried to the box's list
+stands as written.
+
+⚠️ **A separate doubt about that same 1.8, raised 2026-10-02 and not yet resolved:** it sits in a
+bullet that also records the M8 columns as *"settled at 20 / 50"*, and this file elsewhere closes a
+different item by saying 20/50 was **wrong arithmetic**, corrected to **35 / 65**. If the 1.8 was
+computed off a column at 20, it is stale - see the open items.
 
 📌 **Second part this session to come back metric where the file assumed imperial** - the Z
 spacers read 16.41 against a nominal 5/8". **Caliper the stock, do not trust the fraction it was
@@ -2586,9 +2589,13 @@ slips.
   and 50, the beam spans X 20-80 and its centreline is X 50, so a 62 mm window centred on the screw
   runs **19 to 81** - exactly the 19 mm strip measured off the template. Nothing about the casting
   or the bar had to move.
-- ✅ ~~**The M8 column position**~~ **Settled 2026-10-02 at 20 / 50.** The riser standing 1.8 mm
-  proud of the side plate is wanted, and they never touch. The curb condition moved to the box -
-  below.
+- ⚠️ **The M8 column position in this bullet reads 20 / 50, which this file corrects to 35 / 65
+  elsewhere** - see "The window's horizontal position" above, closed by exactly that correction.
+  ✅ The **1.8 mm proud** figure comes from the plate width and the edge-to-column offset, both
+  in-plane, so **the 10 mm stock does not touch it**. 🔴 **But if the 1.8 was derived with the
+  column at 20, it is stale**: 20 − 15 − 3.175 = 1.825, while the same chain at 35 gives **16.8 mm
+  proud**. **Confirm which column position the 1.8 came from before the box's side curbs are set
+  out** - it inverts nothing, but it changes the gap by 15 mm.
 - ⚠️ **Terminate the side curb short of the front riser's station** so the curb bears on the side
   plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
 - ✅ ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
