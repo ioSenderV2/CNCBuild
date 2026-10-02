@@ -157,9 +157,19 @@ them:
 
 | | |
 |---|---|
-| Bar | **60 mm wide × ~110 mm long × 3/8" aluminium** - the casting's footprint is 80, and the bar runs **~30 mm past it, inboard** |
-| Bar to extrusion | **4 counterbored M5**, all in the 30 mm overhang, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
+| Bar | **60 mm wide × 120 mm long × 3/8" aluminium** - the casting's footprint is 80, so the bar runs **40 mm past it, inboard** |
+| Bar to extrusion | **4 × M5 flange bolts**, all in the 40 mm overhang, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
+| Counterbore | **none** - see below |
 | Casting to bar | its 6 through holes, tapped into 3/8" = **1.9 diameters**, which is a proper thread |
+
+✅ **Flange bolts, and the counterbore disappears.** Once the four bolts sit in the overhang nothing
+bears on their heads, so there is no reason to sink them - which deletes four counterbores in 3/8"
+aluminium from the job. A flange head also spreads its load on the bar's face, which is what you
+want on a T-slot clamp. **120 mm rather than 110 is to give the ~11.8 mm flanges room**: two bolts
+in a 40 mm overhang sit comfortably with edge distance, where 30 mm would be tight.
+
+📌 **They clear the casting easily at 120.** The nearest casting hole is at row 71, and the
+overhang starts at 80, so the closest pair is ~17 mm apart along the bar and ~19 mm in 2D.
 
 ✅ **The overhang is what makes this work, and it was the resolution to a real clash.** Both hole
 patterns are **centred on the beam** and so have no lateral freedom at all:
@@ -182,6 +192,11 @@ front edge, so there is no room that way.
 it flat. The load case that could argue otherwise is peel: thrust acts at the screw axis **34.5 mm**
 off the extrusion face, so ~700 N gives ~24 N·m, which over a ~110 mm bar is about **220 N of
 uplift** - against kilonewtons of clamp from four M5 in T-nuts.
+
+⚠️ **The bar's inboard end is now an input to a part that does not exist yet.** It ends 120 mm from
+the beam's end, under the beam, where the ball nut bracket has to reach up from the screw to the X
+end plate. **That bracket is undesigned and goes on the one-shot mill trip**, so it can be made to
+clear - but only if whoever draws it knows the bar is there.
 
 ⚠️ **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
 it either steps too or holds the casting off its intended bearing face.
