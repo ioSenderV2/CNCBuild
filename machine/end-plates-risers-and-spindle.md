@@ -51,7 +51,7 @@ this file were reversed on purpose. The short form:
 |---|---|---|
 | Stepper mount | NEMA 23 on four 18 mm M5 standoffs off the rear plate, BK12 beside it | **One cast frame** carrying motor face, bearing housing and coupler - see below |
 | Stepper end | Rear | **Front**, both Y beams |
-| Front plates | Tapered fins, 3/8" | Tapered fins, **1/2"**, with a **62 × 50 mm window** for the casting |
+| Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **62 × 50 mm window** for the casting |
 | Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1200 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
 | Outboard plates | 12" × 1000 × 1/4" **6061** | 12" × 1000 × **1/8" cold-rolled steel sheet** |
 | Front strips | 3/8" on Y, 1/4" on X | **46 mm × 1/4" 6061 on all three beams**, X included |
@@ -472,8 +472,53 @@ down.
 | Top width | **100 mm** |
 | Base width | **200 mm** |
 | Height | **302 mm** |
-| Thickness | **1/2"** |
+| Thickness | 🔴 **10 mm** - the measured stock, see below |
 | Taper | corner to corner, **18.33° from vertical** (rate 0.3311 mm per mm) |
+
+#### ✅ The stock is 10 mm, not 1/2" - and that is acceptable, by this file's own test
+
+**Measured 2026-10-02: the 302 mm square is 10 mm thick.** It is **not 3/8"** either - 3/8" is 9.525,
+so this is metric plate, 5% thicker than 3/8" and 21% thinner than the 1/2" this file had specified.
+✅ **Decision: stay with 10 mm.**
+
+✅ **The fin drawing is untouched.** Every dimension in the table above - 100 / 200 / 302, the taper
+angle, columns 35 and 65, rows 15 / 45 / 75 / 105, the window at X 19 and 81 - is **in-plane**, and
+none of it is a function of thickness. Nothing has to be redrawn.
+
+**What the thickness actually costs, and the two directions are not the same:**
+
+| | Scales as | 10 against 12.7 |
+|---|---|---|
+| **In-plane (X-Z), the fin's real job** | **t** | **21% less** |
+| Out-of-plane (fore-aft, Y) | t³ | 51% less |
+
+🔴 **The 51% is the frightening number and it is the one that does not apply.** This file records
+the fin's job as carrying **across the machine (X)**, which is *"the riser's own face"* - the X-Z
+plane. That is **in-plane** loading, where stiffness is linear in thickness. The out-of-plane
+direction is **fore-aft**, and that was handed to the full-height outboard plate at **~670 000 N/mm
+in-plane against the risers' ~1 500** - about 400 times stiffer, so the fin's contribution there was
+already noise.
+
+✅ **And this is exactly the condition the earlier 3/8" discussion named.** That section says a
+thinner riser *"would have been acceptable **only if** the full-height plate took the fore-aft load
+in-plane"*, and concluded 1/2" only because *"the Y risers went to 1/2" and are made, so the coupling
+never had to be managed."* **These fins are not made, and the full-height plate does take the
+fore-aft load in-plane.** The stated condition is satisfied, so this is not a reversal of that
+decision - it is that decision's own escape clause being used as written.
+
+📌 **It also makes the 62 × 50 window easier to cut**, which is a live question - 10 mm of
+aluminium is a materially easier jigsaw or router job than 12.7.
+
+⚠️ **One thing to re-derive before this is finished: the 1.8 mm proud figure.** The open items
+carry *"the riser standing 1.8 mm proud of the side plate is wanted"*. I cannot tell from this file
+whether the fin's **thickness** is a term in that 1.8 or whether it comes entirely from in-plane
+geometry. **If thickness is a term, 1.8 becomes about -0.9 and the riser is recessed rather than
+proud**, which inverts the curb condition that was carried to the box's list. **Check it before the
+box's side curbs are set out.**
+
+📌 **Second part this session to come back metric where the file assumed imperial** - the Z
+spacers read 16.41 against a nominal 5/8". **Caliper the stock, do not trust the fraction it was
+sold as.**
 
 📌 **The stock is a MEASURED 302 mm square, not a nominal 12".** That is what sets the numbers:
 **100 + 200 + 2 = 302**, the 2 mm being the kerf of the single diagonal cut. Both halves come out
@@ -1195,7 +1240,7 @@ Current as of 2026-10-02.
 | Front strip, **all three beams** | 46 mm × 1000 mm × **1/4"** | **6061** - connector across the seam and the magnetic tape surface |
 | X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
 | **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
-| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **1/2"** | 6061, with the 62 × 50 window |
+| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 62 × 50 window. 🔴 **Measured stock, not 1/2" and not 3/8"** |
 | **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, one per Y beam and per X end |
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061 - two identical plates, specified above |
