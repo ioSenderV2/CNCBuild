@@ -1198,7 +1198,9 @@ Current as of 2026-10-02.
 | **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **1/2"** | 6061, with the 62 × 50 window |
 | **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, one per Y beam and per X end |
-| **X gantry end plates** | 154 mm wide × **1/2"** | 6061 - two identical plates, specified above |
+| **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061 - two identical plates, specified above |
+| **Y nut doubler block** | 154 × 60 × **1/2"** | 6061, 2 off - on the end plate's outer face, giving a 25.4 mm seating |
+| **Y nut sole bracket** | trapezoid **154 → ~46** over ~75 × **1/4"** | 6061, 2 off - carries the inverted Y ball nut |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
 
@@ -2020,24 +2022,76 @@ pushed at a point 66 mm off its own plane, reacted by its blocks' lateral capaci
 form is still open - see below. A horizontal foot bolted only into a 12.7 mm edge is now carrying the
 full drive thrust with a 66 mm arm on it.
 
-#### ⚠️ Open: the bracket form - flat foot, or an L
+#### ✅ The bottom joint: a doubler block, not an L - decided 2026-10-02
 
-**Recommended: an L, not a flat foot.** A vertical leg bolted to the end plate's **outer face** below
-the Y beam, with the horizontal foot reaching outboard to the nut.
+**Two parts, both flat plate:**
 
-| | Flat foot on the bottom edge | **L with a leg on the outer face** |
+| Part | Size | Qty |
 |---|---|---|
-| Fixing into | **12.7 mm edge taps** | **face bolts, in shear** |
-| Takes the 66 mm arm | through the edge taps | through the face, as a couple up the leg |
-| Setups | one | two, or a piece of angle |
+| **Doubler block** | **154 × 60 × 1/2"** 6061, bolted to the end plate's **outer** face at the bottom | 2 |
+| **Sole bracket** | **1/4"** 6061 trapezoid - see below | 2 |
 
-✅ **There is room for the leg.** The Y beam's underside is at −120 and the plate runs to −182.5, so
-the outer face is **clear for ~62 mm** below the beam - free space, since the Y bearing blocks stop
-well above it and the screw is 60 mm further out.
+**The doubler gives the plate a 25.4 mm (1") wide seating surface at its bottom**, and the sole
+bracket bolts up into that.
 
-⚠️ **Not decided, and it is a part shape rather than a dimension** - a bent 1/4" L, a length of
-aluminium angle, or a flat foot plus gussets all do it. **Decide before the trip**, since the face
-holes would be drilled in the same setup as the rest of the plate.
+❌ ~~**An L with a vertical leg, or a length of angle.**~~ The doubler does the same job with none of
+the awkwardness: **everything stays flat plate** - no bending, no angle stock, and the doubler is a
+plain rectangle off the same sheet in the same setup.
+
+**Why it is the right fix, and it is a sharper reason than the one the L was proposed on.** The
+bracket's bolts are loaded in **shear**, not tension - thrust runs along Y, in the bracket's own
+plane - and the shear that matters bears **sideways on the thin wall beside the hole**:
+
+| Seating width | Wall each side of an M6 |
+|---|---|
+| 12.7 mm, bare plate edge | 3.35 mm |
+| **25.4 mm, with the doubler** | **9.7 mm** |
+
+✅ **And the doubler's own bolts pass through the end plate along X, in shear, with full material all
+round them** - which was the entire benefit the L leg was buying. It stiffens the plate's bottom
+locally too, now its most heavily loaded region.
+
+🔴 **Two rows of bolts across the 25.4, not one row down the middle.** A single row leaves the joint
+nothing to resist rolling about Y, and the second row is free once the doubler is there. **That,
+rather than the bolt size, is what the doubler actually buys.**
+
+##### 🔴 Correction: the doubler's limit is the lower block row, not the Y beam underside
+
+An earlier version of this section said the clear run was the **62.5 mm** between the Y beam
+underside at −120 and the plate bottom at −182.5. **That was wrong** - the doubler is nowhere near
+the Y beam. The beam's inside face is at **X 42.7** and the doubler occupies **X 12.7 to 25.4**,
+some 17 mm inboard of it, so the beam's underside is not a constraint at all.
+
+⚠️ **What does constrain it is the bottom edge of the lower Y bearing block row**, which sits on the
+same face in the same X band. **So the 60 mm height is not yet checkable** - it is gated on the
+bearing block pattern, the same measurement as the 16 holes. Likely fine with room to spare, but
+unverified.
+
+##### ✅ The sole bracket is a trapezoid
+
+**154 mm at the root, tapering to ~46 mm over the nut, across ~75 mm of reach.**
+
+| | |
+|---|---|
+| Root width | **154** - the full plate width |
+| Tip width | **~46** |
+| Reach | **~73 mm**, doubler outer face at X 25.4 to the nut face's outboard edge at 98.7 |
+
+**Why the root is full width:** the 60 mm arm is reacted as a shear couple across the bolt group's
+spread **along Y**, so width at the root is the thing that resists it, and 154 takes all there is.
+
+**Why it tapers:** the required section falls off toward the tip, it is **moving mass on the
+gantry** so the saving is real, and it matches the machine's own idiom - the front fin is already a
+100→200 taper.
+
+🔴 **The tip is ~46, not 40.** 40 would match the nut face exactly, but the nut's M5s sit at **±12 in
+Y**, so a 40 mm tip leaves only 8 mm of edge - about 1.45 D on an M5 clearance hole, too tight on the
+part taking drive thrust. **46 gives 11 mm**, and the nut's 40 mm face is then fully supported with a
+little either side rather than flush to the edge.
+
+⚠️ **The ~46 and ~75 carry tildes on purpose.** Both are shapes rather than fits - nothing mates to
+either - so they can be rounded to whatever is convenient when the bracket is drawn. The numbers that
+are **not** free are the four M5 at ±20 in X and ±12 in Y, and the root's 154.
 
 #### ✅ The tail does not reach the front riser - travel runs out first
 
@@ -2429,10 +2483,15 @@ slips.
 - ✅ ~~**The X offset from the X end plate's inner face to the Y screw axis**~~ **Closed 2026-10-02 at
   72.7 mm** - 12.7 plate + 30 rail stack + 30 half beam. It is the **cantilever case**: ~100 mm of
   reach, thrust 60 mm outboard of the plate's outer face.
-- ⚠️ **The sole bracket's form - flat foot or an L.** Recommended an L with a vertical leg on the
-  plate's outer face, where ~62 mm is clear below the Y beam, so the 66 mm arm is taken by face bolts
-  rather than by taps into a 12.7 mm edge. **A part shape, not a dimension - decide before the trip**,
-  as the face holes share a setup with the rest of the plate.
+- ✅ ~~**The sole bracket's form - flat foot or an L**~~ **Closed 2026-10-02: a doubler block.** A
+  154 × 60 × 1/2" block on the plate's outer face gives a 25.4 mm seating, and the sole bracket is a
+  1/4" trapezoid, 154 at the root to ~46 over the nut. **Two rows of bolts across the 25.4.**
+- ⚠️ **The doubler's 60 mm height** is gated on the **lower bearing block row's bottom edge** - the
+  same unmeasured pattern as the 16 holes. It is *not* gated on the Y beam underside, which an earlier
+  draft wrongly gave as the limit; the doubler sits ~17 mm inboard of the beam's inside face.
+- ⚠️ **Three plates now carry holes that must agree across an assembly** - end plate, doubler and
+  sole bracket. **Drill the doubler's through-holes and the end plate's together**, and leave the
+  sole bracket's root holes until the first two are mated.
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward
