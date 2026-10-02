@@ -1293,7 +1293,7 @@ it was a placeholder in every calculation in this repo until now.
 
 | | |
 |---|---|
-| Z rails, bearing blocks and 5/8" spacers | 46.5 mm |
+| Z rails, bearing blocks and the spacers | 46.5 mm |
 | Z plate, 1/2" | 12.7 mm |
 | Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
 | **To the spindle centreline** | **109 mm** |
@@ -1326,7 +1326,7 @@ publish Ix and Iy for `30-6060` but not J, so any torsional number stays an esti
 | Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
 | Rails | **HGR20, 400 mm, down both sides, mounted on the plate** |
 | Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
-| Spacers | **two 6" lengths of 5/8" (15.875 mm) aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks |
+| Spacers | **two lengths of 2" × nominally 5/8" aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks. 🔴 **Measured 2026-10-02: 150.5 and 151.6 long, 16.41 and 16.43 thick** - they are *not* 15.875; see "The spacers are not 5/8"" below |
 | Bolt count | **16 × M5 × 35** - 8 per spacer, 4 per bearing block |
 | Fixing | **one M5 per hole does the whole stack** - counterbored in the Z plate, through a 6 mm clearance hole in the spacer, into the bearing block's tapped M5 |
 
@@ -1643,7 +1643,7 @@ the spoilboard". That is a machine measurement, not a design decision.
 | Fixed | Moving |
 |---|---|
 | **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
-| HGR20 rails, mounted on it | 5/8" spacer blocks |
+| HGR20 rails, mounted on it | spacer blocks, **16.41 mm measured** |
 | 1605 screw, BK12 + motor, BF12 | ball nut housing |
 | | **Z plate** - **154 W × 175 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
 
@@ -1694,14 +1694,49 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   between the left and right spacer twists the plate and preloads all four bearing blocks against
   each other permanently.
 
-  ✅ **Largely handled by how they were made:** both are halves of a single 12" bar, so the 5/8" is
-  the as-supplied bar dimension on both, untouched - the cut sets length only. Still **mic both at
-  both ends** to confirm, since flat bar carries a thickness tolerance along its length, but this is
-  a check rather than a problem. The pair sets the geometry; the nut housing shim only has to avoid
-  fighting it.
+  ✅ **Checked 2026-10-02, and it passes: 16.41 and 16.43 - 0.02 mm apart.** Both are halves of a
+  single bar, so the thickness is the as-supplied bar dimension on both, untouched; the cut set length
+  only. 0.02 mm is at the scale this bullet warned about and also at the limit of caliper
+  repeatability, so **treat it as a matched pair and do not try to improve it.** The pair sets the
+  geometry; the nut housing shim only has to avoid fighting it.
 - **They locate nothing.** A 6 mm hole on an M5 bolt is 0.5 mm of radial float per side, so the
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
+
+### 🔴 The spacers are not 5/8" - measured 16.41 and 16.43 on 2026-10-02
+
+| | Left | Right |
+|---|---|---|
+| **Length** | **150.5** | **151.6** |
+| **Thickness** | **16.41** | **16.43** |
+
+**5/8" is 15.875.** The bar is **0.54 mm thicker than the nominal this file called it** in six
+places, which is far outside any normal rolling tolerance for 5/8" flat - so it is not a 5/8" bar
+that came in heavy, it is a different bar. **The nominal is now gone from this file; use the
+measured numbers.**
+
+✅ **And the file already contained the right number under the wrong label.** The moment-arm stack
+gives *"Z rails, bearing blocks and spacers = 46.5 mm"*, measured. The rail-and-block stack is 30, so
+the spacer in that measurement was **16.4** - not 15.875, which would have made the stack 45.9.
+**Two independent measurements agree; it is the 5/8" label that was wrong.** Nothing downstream of
+the 46.5 moves, including the **109 mm** offset and the **~187 mm** gantry arm.
+
+✅ **The 1 mm ball nut shim is unaffected** - it was measured on the real assembly ("the spacer
+blocks stand 1 mm higher than the ball nut housing"), so it already reflects 16.41 rather than a
+nominal.
+
+✅ **Leave the lengths alone - 150.5 and 151.6 both do the job, and the 1.1 mm difference does not
+matter.** The spacers carry no fasteners, locate nothing, and float 0.5 mm radially on their
+clearance holes. The only thing length has to do is cover the M8 rows at **±70.5 mm**:
+
+| | Half length | Covers ±70.5? |
+|---|---|---|
+| 150.5 | 75.25 | ✅ by 4.75 mm |
+| 151.6 | 75.8 | ✅ by 5.3 mm |
+
+❌ **Do not cut them to match each other.** Matching matters in **thickness**, which sets the Z
+plate's plane, and that already passes at 0.02 mm apart. Length matching buys nothing and a re-cut
+risks the one property that does matter.
 
 ### ❌ Do not lengthen the spacers - the question is closed twice over
 
@@ -1723,8 +1758,9 @@ overhang left to support.**
 tapped holes clashing with the M5 counterbores - two features **in the plate**. Spacer length has no
 bearing on that, and the M5 positions are set by the blocks and cannot move.
 
-📌 **Keeping them also keeps the matched pair.** Both are halves of one 12" bar with the 5/8" as
-supplied - see below. A re-cut only preserves that if both new pieces come from a single bar.
+📌 **Keeping them also keeps the matched pair.** Both are halves of one 12" bar with the thickness
+as supplied - **measured 16.41 and 16.43**, see above. A re-cut only preserves that if both new
+pieces come from a single bar.
 
 📌 **It is also solving a problem that is not there.** The clamp bolts land inside the spacer run - see
 the Z plate section above - so the overhanging plate is not carrying the load in the first place.
@@ -1733,9 +1769,13 @@ the Z plate section above - so the overhanging plate is not carrying the load in
 ### Use M5 × 35, not M5 × 30
 
 Through a counterbore in a 12.7 mm plate - leaving about 7.7 mm of material under a 5 mm head - plus
-the 15.875 mm spacer is roughly 23.6 mm of grip. An M5 × 30 leaves only about **6.4 mm in the
-bearing block**, 1.3 diameters, with no margin if a counterbore runs deep. The blocks have the
-thread depth for 35 mm.
+the spacer is roughly **24.1 mm of grip** at the measured 16.41. An M5 × 30 would leave only about
+**5.9 mm in the bearing block**, 1.2 diameters, with no margin if a counterbore runs deep. An
+M5 × 35 leaves about **10.9 mm**. The blocks have the thread depth for 35 mm.
+
+📌 **This paragraph used to read 23.6 mm of grip and 6.4 mm left in the block, computed off a
+nominal 15.875 spacer.** The real spacer is 16.41, so the margin was half a millimetre thinner than
+stated all along - which does not change the decision, it strengthens it.
 
 ---
 
