@@ -1438,13 +1438,36 @@ four bearing blocks, and mount the X ball screw supports and stepper.
 
 🔴 **The number was right and the reason this file gave for it was wrong.** It used to read "two
 HGH20 blocks end to end with **2-3 mm between**". There is no gap - 154 *is* the butted dimension.
-Two consequences the old wording hid:
 
-- **154 is the minimum, not a choice.** You cannot go narrower without the blocks overhanging the
-  plate more than they already do.
-- **The plate is 0.18 mm narrower than the butted pair**, so each block stands ~0.09 mm proud of
-  the plate edge. Harmless, but there is **no relief at the ends** - unlike the Z plate, which has
-  2 mm by design.
+#### The block is not one surface - 128.24 is the part that bears
+
+**Measured 2026-10-02** - see
+[`photos/y-bearing-blocks-machined-pads-128.jpg`](photos/y-bearing-blocks-machined-pads-128.jpg):
+
+| | mm |
+|---|---|
+| Two blocks butted, **full body** | **154.18** |
+| Two blocks butted, **machined pads only** | **128.24** |
+| → each end cap | **12.97** |
+| → each block's machined pad | **51.15** |
+
+📌 **That cross-checks against the HGH20CA standard**, whose body length without end seals is about
+50.5 mm - so the reading behaves like the real part rather than like a misread.
+
+✅ **The functional floor for any carriage plate is 128.24 mm**, not 154. The end caps are seals and
+scrapers; they carry nothing. A plate wider than 128.24 has full bearing on both pads.
+
+⚠️ **A plate edge must land outside a pad, never partway across one** - a partial edge loads the
+pad's corner instead of its face.
+
+🔴 **154 still stands, but for the other reason.** Its constraint was never bearing coverage, it was
+*"anything wider eats usable Y travel at both ends."* **Narrowing below 154 buys none of that back**,
+because the blocks themselves are 154.18 long and they are what reaches the rail end. So 128.24 is a
+floor already cleared by ~13 mm a side, not a new target.
+
+*(An earlier version of this section said 154 was "the minimum, not a choice" and that there was "no
+relief at the ends". Both were wrong - they came from treating the block as one surface. The 0.09 mm
+of block standing proud of a 154 plate is **end cap**.)*
 
 📌 **Recorded because of how it was nearly missed.** The 77 mm block length this file carried was
 measured on the **Z** kit, and the Z kit is a different supplier from the one X, Y1 and Y2 share.
