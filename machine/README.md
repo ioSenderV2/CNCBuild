@@ -16,12 +16,14 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 |---|---|
 | Beams, all three axes | **Two 8020 `30-6060` stacked** — 60 mm wide × 120 mm tall, **1000 mm** long |
 | Rails | **HGR20**, one per profile on the front face, 17 × M5 at 60 mm into T-nuts |
-| Ball screws | **1605**, with BK12 / BF12 supports bolted to the end plates |
+| Ball screws | **1605**. X on BK12 / BF12 bolted to the end plates; **Y on cast stepper frames at the front** and a 20 mm-bore block at the rear |
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
+| Y steppers | **At the FRONT of the machine** (2026-10-02) — one cast frame carries motor face, bearing housing and coupler |
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
-| Y beam support | Two **3" × 12" × 1/2"** end plates / Z risers per beam, ends only - the ball screw runs under the beam |
+| Y beam support | **Front:** a tapered 3"→9" × 12" × 1/2" plate per beam, with a 62 × 50 window for the stepper frame. **Rear:** one **1200 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
+| Plate materials | 6061 throughout **except** the two Y outboard plates (**1/8" steel**) and the Y rear plate (**1/4" A36**) — see [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
 firmware config, so the second Y motor is M3.
@@ -29,7 +31,12 @@ firmware config, so the second Y motor is M3.
 ### End plates
 
 Partly specified - see [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md). They
-carry the ball screw supports (M5) and bolt the Y beams to the torsion box.
+bolt the Y beams to the torsion box.
+
+🔴 **Reworked 2026-10-02 and all four as-built Y risers are scrapped.** Cast stepper frames replaced
+BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one
+1200 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be
+undone — see that file's open items before ordering or cutting anything for the Y ends.
 
 **Deferred, not blocking: the 35 mm sensor bore.**
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
