@@ -1902,19 +1902,55 @@ takes the vertical load directly in bearing rather than through bolt shear, whic
 
 ### Position in Y: as far back as it will go
 
-Rear bolt pair **25 mm from the plate's back edge**, putting the beam's back face 10 mm in. The
-6.35 mm back joining plate takes most of that, leaving 3.65 mm, and the nearest joining-plate T-nut
-is 50 mm inboard so no bolt head comes near.
+Rear bolt pair **15 mm from the plate's back edge**, which puts the top extrusion's back face
+**flush with the plate's back edge**. The bolt is still 15 mm in from the beam's back face, into the
+same corner bore - only the plate shifted under it. **Both pairs, from the back edge: 15 and 45.**
+(The 45 follows from the corner bores being symmetric in a 60 × 60 - four corners at 15 from each
+face. Only the 15 is anchored in a stated dimension; transfer-punch them anyway, per the drawings
+convention for extruded features.)
 
 Back-mounting matters because the forward-hanging mass acts at an arm from the **block group's
 centroid** at Y 77:
 
-| Beam position | Arm | Load per block pair |
-|---|---|---|
-| **Back (chosen)** | 102 mm | **1.32 × F** |
-| Centred | 139 mm | 1.8 × F |
+| Beam position | Beam centreline, from the back edge | Arm | Load per block pair |
+|---|---|---|---|
+| **Back, flush (chosen)** | **30 mm** | **92 mm** | **1.19 × F** |
+| ~~Back, 10 mm in~~ | ~~40 mm~~ | ~~102 mm~~ | ~~1.32 × F~~ |
+| Centred | 77 mm | 139 mm | 1.8 × F |
 
-**Roughly a quarter less**, for free - the block travel sets the envelope either way.
+**Roughly a third less than centred**, for free - the block travel sets the envelope either way, and
+the plate's 154 mm is set by the butted blocks, so none of this changes the outline. **This is a
+hole position, not a size.**
+
+#### 🔴 Changed 2026-10-02 - the 25 mm is dead, and why it was abandoned
+
+It used to read *"25 mm from the plate's back edge, putting the beam's back face 10 mm in"*, and the
+reason given was that **the 6.35 mm back joining plate takes most of that, leaving 3.65 mm.** That
+cover was the only justification the file ever offered for the 10 mm, and it does not survive
+examination:
+
+- **It is not structural.** The joining plate's end face is a 6.35 mm edge; the end plate standing
+  behind it is end-grain bearing and carries nothing. The joining plate's real fixing is the T-nut
+  run along its length.
+- **The design already tolerates overhang at that edge.** The shelf bar's holes are dimensioned from
+  the **beam front** on a 76.2 mm bar, so it overhung the plate's back edge by ~6 mm even at 25.
+  Flush makes that ~16 mm. Harmless, and it shows the edge was never a "nothing may project past
+  this" line.
+- **What it did buy was practical**, and it is what was given up: the plate edge was the rearmost
+  surface, and it registered the joining plate during assembly.
+
+**The exchange: 10 % off the worst block load for the loss of a 3.65 mm cover.** ⚠️ Those two halves
+are not the same kind of claim - the 10 % is arithmetic off this file's own proportional model, the
+"not structural" is reasoning from the joint geometry and has not been measured.
+
+📌 **One thing flush gains that the old layout could not have.** With the beam's back face in the
+plane of the plate's back edge, the joining plate now lies **directly over the plate's 12.7 mm back
+edge**, so it can be tied to the end plate with M8 tapped into that edge - see the question below.
+At 10 mm in, the joining plate stood clear of the edge and no such tie existed.
+
+⚠️ **Edge distance check**: 15 mm to the back edge with a 9 mm clearance hole leaves 10.5 mm of
+material. Fine, but it is now the plate's tightest edge distance - do not let the hole drift
+outboard.
 
 ### The plate is tall, and the beam is what makes that safe
 
