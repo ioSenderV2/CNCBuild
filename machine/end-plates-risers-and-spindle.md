@@ -41,22 +41,52 @@ not because the force was right.
 
 ## Y beam support
 
+### 🔴 Reworked 2026-10-02 - read this before anything below it
+
+**Cast stepper frames were bought, and they moved the steppers to the front of the machine.** That
+one part change cascaded through the whole Y end design, and several decisions recorded further down
+this file were reversed on purpose. The short form:
+
+| | Before (2026-09-30) | **Now (2026-10-02)** |
+|---|---|---|
+| Stepper mount | NEMA 23 on four 18 mm M5 standoffs off the rear plate, BK12 beside it | **One cast frame** carrying motor face, bearing housing and coupler - see below |
+| Stepper end | Rear | **Front**, both Y beams |
+| Front plates | Tapered fins, 3/8" | Tapered fins, **1/2"**, with a **62 × 50 mm window** for the casting |
+| Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1200 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
+| Outboard plates | 12" × 1000 × 1/4" **6061** | 12" × 1000 × **1/8" cold-rolled steel sheet** |
+| Front strips | 3/8" on Y, 1/4" on X | **46 mm × 1/4" 6061 on all three beams**, X included |
+
+Two reversals are deliberate and are recorded with their reasons where they occur: the
+**monolithic rear plate**, rejected on 2026-09-30 and adopted now because three of its four grounds
+lapsed; and **steel joining plates**, rejected in
+[`gantry-beam-joint.md`](gantry-beam-joint.md) and adopted now with the thermal cost accepted rather
+than avoided.
+
+---
+
 ✅ **Both Y beams are built** as described here - stacked pairs, rails, screws, BK12/BF12, steppers
 and all four risers. See [`photos/y-beam-end-plate-outer.jpg`](photos/y-beam-end-plate-outer.jpg) and
 the three beside it. **The riser geometry below is as-built, not a proposal**, and the 8-bolt pattern
 into the corner bores is proven hardware rather than a first attempt - which is why the X end plates
 copy it.
 
+⚠️ **As-built is no longer as-designed.** All four risers come off. The 8-bolt corner-bore pattern
+is the part that carries forward; the plates themselves do not.
+
 Each Y beam is carried at its two ends only. It cannot be supported along its length: **the ball
 screw runs underneath the beam**, which is also why the outboard plate below matters so much.
 
 ### End plate / Z riser
 
-| | Rear (as built) | **Front (2026-09-30, to be remade)** |
+| | **Front (2026-10-02)** | **Rear (2026-10-02)** |
 |---|---|---|
-| Size | 3" W × 12" H × 1/2" (76.2 × 304.8 × 12.7 mm) | **Tapered: 3" at the top, 9" at the base, 12" tall, 3/8" thick** |
-| To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, unchanged |
-| To the torsion box | see the back panel under "The lateral fix" | **Two M8 through the front tongue at X 25 and 175, Y 31**, plus bottom-edge bearing |
+| Size | **Tapered: 3" at the top, 9" at the base, 12" tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
+| To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
+| To the torsion box | **Two M8 through the front tongue at X 25 and 175, Y 31**, plus bottom-edge bearing | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
+| Also carries | the **62 × 50 window** for the cast stepper frame | a clearance bore per screw, and the BF12-replacement block |
+
+⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
+Nothing in the rear column above is as-built hardware.
 
 The riser lands on the **same top skin** the full-height plate bears on, just inboard of it - see
 "How it lands on the torsion box" below. Both fixings share that surface, and the riser is the one
@@ -82,15 +112,114 @@ pattern is used, including the X end plates:
   friction across eight bolts**, against loads of one to two kN. The bolts never touch the hole walls.
 - **The float is wanted** if the shelves are to set roll. A close fit would fight the adjustment.
 
-⚠️ **Do not remake the Y risers on cosmetics.** The only question those holes had to answer is
-whether the two Y beams ended up **parallel and coplanar** - that is what the X gantry rides on.
-Measure that first; if it is within tolerance the holes did their job. Remaking calibrated hardware
-also spends mill time already committed to plates that do not exist yet.
+⚠️ ~~**Do not remake the Y risers on cosmetics.**~~ **Overtaken 2026-10-02 - all four come off.**
+The rule was right and it is not being abandoned on cosmetics: the front plates change shape *and*
+gain a window, and the rear pair is replaced by a single member that does a job neither of them
+could. The sentiment behind the rule still applies to anything else that is built and calibrated.
 
-📌 **The two front plates are a deliberate exception**, and not on cosmetics - they change shape, see
-below. They cost no mill time either: the existing plates were drilled at home with a **mag drill**,
-and the 12 holes in a new plate are the same job. The **rear plates are not remade** - they carry the
-steppers, the 35 mm shaft bores and BK12, and they stay exactly as they are.
+📌 **What survives from the as-built risers is the 8-bolt pattern and the 9 mm hole**, both of which
+carry straight into the new plates. The existing plates were drilled at home with a **mag drill**, so
+the pattern itself costs no mill time; only the window and the 1200 mm plate's two patterns need the
+trip.
+
+---
+
+## The cast stepper frames
+
+✅ **Bought, in hand, and the reason the Y ends were reopened - 2026-10-02.** A one-piece cast
+aluminium frame carrying the **NEMA 23 mounting face, the ball screw bearing housing and the coupler
+window** in a single part. It replaces **both** the BK12 support block and the four 18 mm stainless
+M5 standoffs the motor currently stands on - see
+[`photos/y-beam-stepper-mounted.jpg`](photos/y-beam-stepper-mounted.jpg) for the arrangement it
+supersedes.
+
+### Why it was worth reopening a built axis
+
+Two complaints, and only one of them is a stiffness problem:
+
+1. **Stiffness.** Four thin standoffs in bending are the soft link in a path that runs stepper →
+   coupler → screw.
+2. 🔴 **Squareness, and this is the one that cannot be fixed by buying better standoffs.** Nothing in
+   the standoff stack holds the motor face square to the plate except four standoffs being identical
+   and four holes being true. Both are hand work. The casting makes motor face, bearing bore and
+   coupler alignment **features of one part machined in one setup** - the error source is removed
+   rather than reduced.
+
+### How it mounts, and why that needs a bar
+
+🔴 **The casting bolts to a face of the extrusion, not to the end plate.** This is the whole
+difference from BK12 and it drives everything else. Its foot is **stepped, not one flat plane** -
+there is a ledge where the stepper mount begins.
+
+**Six through-bolt holes**, and they cannot land directly in the extrusion: the wall at that face is
+**2.21 mm** (measured), which is 0.44 diameters for an M5 and not a thread. So an interposer carries
+them:
+
+| | |
+|---|---|
+| Bar | **60 mm wide × 80 mm long × 3/8" aluminium** |
+| Bar to extrusion | **2 rows of 3 M5 button head** into T-nuts - the rows land on the `30-6060`'s bottom-face slot centrelines at 15 and 45 mm |
+| **Counterbored** | yes - the casting's flat foot bears on the bar's surface, so those heads must sit below it |
+| Casting to bar | its 6 through holes, tapped into 3/8" = **1.9 diameters**, which is a proper thread |
+
+⚠️ **Twelve features in a 60 × 80 bar, and the layout is unchecked.** Six counterbored T-nut holes
+plus six tapped holes for the casting. Whether they clear each other needs the casting's hole
+pattern, which is not recorded here. **Measure it before cutting the bar.**
+
+⚠️ **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
+it either steps too or holds the casting off its intended bearing face.
+
+### 🔴 The thrust path changed direction, and a block fixes it
+
+**Observation:** BK12 bolts to the end plate with the screw axis **perpendicular** to its mounting
+face, so screw thrust is reacted in bolt tension one way and face bearing the other, into a plate
+M8'd to the extrusion's corner bores.
+
+**What changes:** bolted under the beam, the same thrust runs **parallel** to both new interfaces -
+casting on bar, bar on extrusion - so it is carried in **friction**, and the T-slot lip sets the
+usable preload rather than the bolt.
+
+**Interpretation, labelled as such:** the rough figure is several times the ~500-700 N per screw this
+axis sees, so this is not expected to need designing around. It is recorded because it is the one
+load path that genuinely changed character, and because friction is the kind of margin that is fine
+until it isn't.
+
+✅ **The insurance is a positive stop, not more bolts.** A block bolted to the plate in front of the
+casting with a **20 mm bore** for the ball screw to pass through. Cheap, unambiguous, and it does the
+BF12 job at the far end as well.
+
+### ✅ The steppers move to the front
+
+**Decided 2026-10-02, and it is the change with the widest reach.** Both Y steppers go to the front
+of the machine, with the plain 20 mm-bore block at the rear.
+
+- **~20 mm less encroachment** in front of the machine than the current standoff arrangement, because
+  the casting is shorter than motor-plus-standoffs-plus-BK12.
+- **Maintenance is far easier** - the motors are at the operator's end rather than reached over the
+  bed.
+
+⚠️ **Three consequences, all live:**
+
+1. The **62 × 50 window moves to the front plates**, which are the tapered fins about to be cut.
+   See "The lateral fix" below.
+2. **Nothing passes through the rear plane any more**, which is part of why one monolithic rear plate
+   became practical.
+3. 🔴 **A NEMA 23 permanent-magnet rotor now sits at the min-Y end of the magnetic tape.** That is a
+   far larger magnetic object than the bolt heads the austenitic-stainless section below exists for.
+   **Fit a tape offcut and a sensor and read at that end before 3 m of one-shot PSA goes down.**
+
+### ⚠️ Open: the screw axis height
+
+**Not measured, and it cascades.** The casting sets the screw axis at a fixed height off whichever
+extrusion face it bolts to, plus the bar. Whether that matches the existing BK12 axis height decides:
+
+| | |
+|---|---|
+| The rear block | its bore height is set by whatever the casting gives |
+| The ball nut bracket on the X end plate | undesigned, so it can follow - but only if the number is known first |
+
+**Measure the casting's bore height above its foot, add the bar, and compare against the as-built
+axis.** One caliper reading closes it.
 
 ---
 
@@ -122,9 +251,9 @@ the riser as a cantilever over the ~185 mm between box top and beam underside:
 | **9" - chosen** | **~12.7×** |
 | 12" | ~25× |
 
-📌 **At 3/8" the chosen figure is ~9.5×, not 12.7×.** Stiffness scales linearly with thickness, and
-the front plates are 3/8" while the as-built risers they are compared against are 1/2". Use **9.5×**
-as the real number; the table above is the shape-only effect.
+📌 **At 1/2" the chosen figure is the full ~12.7×.** Stiffness scales linearly with thickness, and
+as of 2026-10-02 the front plates are **1/2"**, the same as the as-built risers they are compared
+against. *(An earlier draft had them at 3/8" and derated this to ~9.5×; that no longer applies.)*
 
 ⚠️ **Calculated, not measured.** Tapered cantilever, width varying linearly, load at the top, fixed
 base. The fixed-base assumption is doing real work - see the bolt note below.
@@ -148,17 +277,64 @@ plate's bolt pattern, and that pattern has to line up with formed threads in the
 ⚠️ **Flipping one plate over swaps which face is outboard.** Harmless for through holes; check it
 before spot-facing or counterboring anything on one face only.
 
-📌 **3/8" here is consistent with "The 3/8" question is closed" below, not a contradiction of it.**
-That section's condition was that 3/8" is acceptable **only if the full-height plate takes the
-fore-aft load in-plane** - which is exactly what was settled. Two consequences to keep: M8 × 35 leaves
-**25.5 mm** in the extrusion rather than 22.3 mm, and **front and rear plates now differ in thickness
-on purpose.**
+📌 **The front plates went to 1/2" on 2026-10-02**, so the "is 3/8" acceptable" discussion below is
+now moot for these plates rather than resolved. The reason is the window: these plates stopped being
+pure fins when they took on the cast stepper frame, and the thickness went back up with the duty.
+M8 × 35 leaves **22.3 mm** in the extrusion, as on the as-built risers.
 
 Cost is about **+1.5 lb per front plate**, static. Two things it does *not* cost:
 
 - **No bed area.** The fin is a 12.7 mm slice in the riser's own plane, not a wedge intruding into the
   work volume.
 - **No travel.** It lives in the plane of the end plate, which the gantry already cannot reach past.
+
+### 🔴 The 62 × 50 window, and why the taper does not help it
+
+**Added 2026-10-02 when the steppers moved to the front.** The cast stepper frame passes through the
+front plate, so each fin needs a **62 mm wide × 50 mm tall** rectangular window below the beam.
+
+**The finding that matters, and it is assumption-free:** 62 mm of window in a 76.2 mm plate leaves
+**14.2 mm total**, split between the two sides. **The taper does not rescue this** - it adds material
+**inboard**, while the window's tight side is the **outboard factory edge**. Widening the top of the
+fin is the only thing that buys outboard material.
+
+⚠️ **And the nesting is what pays for it.** Two identical-by-rotation halves only come out of one 12"
+square when **top + base = 12**. So 3" / 9" works, and **4" / 8" works**, but 4" / 9" needs a 13"
+blank.
+
+⚠️ **Open: the two strip widths either side of the window on the MDF template.** A full-size 1/4"
+MDF mockup exists with the cut line, the 8-bolt pattern and the window laid out. **Measure the
+remaining strip each side off that template.** If both are comfortable the 3" / 9" nesting survives
+at 1/2" thick and nothing changes; if the outboard strip is thin, go to 4" / 8" rather than buying a
+bigger blank.
+
+📌 **Thickness cannot buy edge distance.** A 7 mm strip is 7 mm at 3/8" or at 1/2". What 1/2" buys
+back is the **bending stiffness** the window removes, which is a different question and a real gain.
+Both were in play here and they are easy to merge by accident.
+
+### ✅ The M8 columns sit at 20 and 50 mm from the factory edge
+
+**Settled 2026-10-02, off the MDF template.** The `30-6060`'s corner bores sit 15 and 45 mm in from
+each face, so columns at **20 and 50** put the beam's outboard face **5 mm inboard** of the plate's
+outboard factory edge.
+
+**The outboard plate is 1/8" steel (3.175 mm), so it stands recessed 1.8 mm from the riser's edge -
+and that is the wrong way round.**
+
+🔴 **The curb decides this.** The box's outer wall stands 61 mm proud as a curb, and the design has
+**the full-height plate's outer face bearing against the curb's inner face** - that is the
+full-metre lateral restraint, and "bias the top skin wide, never narrow" exists because it is a hard
+bearing face with no float. If the **riser's edge** is the proud member, the riser touches the curb
+first and holds the plate off its bearing face.
+
+⚠️ **This flipped when the outboard plate went from 1/4" aluminium to 1/8" steel.** At 6.35 mm the
+5 mm overhang left the plate 1.35 mm proud, which was the safe direction. At 3.175 mm the riser is
+1.8 mm proud instead, which is the direction the curb cannot tolerate. **Either take the columns to
+about 18.2 / 48.2, or relieve the riser's outboard edge locally where it meets the curb.** Decide
+before the plates are drilled.
+
+📌 **Nothing is proud at the rear** - the 1200 mm plate's own ends set that edge, so the same check
+applies there once its length is fixed against the measured machine width.
 
 ### The second gain is bolt spacing, and it is the bigger one
 
@@ -198,18 +374,72 @@ steel backing strip or large fender washers on both faces here, not plain washer
 worth having if it lands on structure rather than on skin spanning between grid members. The box is
 built last, so this is free, but it must be decided before the skins are cut.
 
-### Back: one full-width panel, added rather than remade
+### Back: one 1200 mm steel plate, replacing both risers and the panel
 
-The two rear risers are joined by a **panel spanning the full machine width**, in the same plane,
-turning the rear face from a portal frame with two bending legs into a shear panel.
+✅ **Decided 2026-10-02.** The two rear risers are **scrapped**. One plate spanning the full machine
+width does both jobs - carrying the two beam ends down to the box, and acting as the shear panel
+that turns the rear face from a portal frame with two bending legs into a diaphragm.
+
+| | |
+|---|---|
+| Plate | **1200 mm × 12" × 1/4" hot-rolled A36 steel** |
+| To the beams | **8 × M8 into each beam's corner bores** - the same proven pattern, 16 bolts total |
+| To the box | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
+| Also carries | a clearance bore per ball screw, and the **20 mm-bore BF12-replacement block** |
 
 - **It costs no travel** - the gantry stops well forward of the rear plate plane, and the spindle sits
   ~109 mm ahead of the carriage plate.
 - **Bonus: a rear chip fence** the width of the machine.
-- **It is an added panel, not a replacement for the rear plates.** Those carry the steppers, the 35 mm
-  shaft bores and BK12; a monolithic replacement would put two 8-bolt patterns, two bores, two stepper
-  patterns and two BK12 patterns on one 1.2 m part, cut on a 4' × 1' manual-XY mill on a one-shot
-  trip, and would become the coplanarity datum before that datum has been measured.
+
+#### 🔴 This reverses the 2026-09-30 rejection, and three of its four grounds lapsed
+
+The earlier text read: *"a monolithic replacement would put two 8-bolt patterns, two bores, two
+stepper patterns and two BK12 patterns on one 1.2 m part, cut on a 4' × 1' manual-XY mill on a
+one-shot trip, and would become the coplanarity datum before that datum has been measured."*
+
+| Ground | Status 2026-10-02 |
+|---|---|
+| Two stepper patterns | **Gone** - the steppers are at the front |
+| Two BK12 patterns | **Gone** - BK12 is inside the cast frame, at the front |
+| Two 35 mm shaft bores | **Gone** - same reason |
+| Becomes the coplanarity datum before that datum is measured | **Stands. Accepted deliberately.** |
+
+**What is left on the part is two 8-bolt patterns and a clearance bore per screw** - fewer accurate
+features than either rear riser carried before.
+
+#### ⚠️ On the datum, and a correction to how it was first described
+
+A one-piece plate **does** pre-commit geometry that was previously set by assembling on a flat
+surface with the 9 mm reamed holes absorbing error. That inverts this repo's loudest standing rule
+for one dimension, so it is a deliberate reversal rather than a side effect.
+
+**But the inversion is narrower than it first looked**, and the first version of this reasoning
+overstated it. The plate is **~2300× stiffer in-plane than out** (in-plane I ≈ 1.5 × 10⁷ mm⁴ against
+~6 500 mm⁴ out-of-plane for a 305 × 6.35 section):
+
+| What the plate sets | What still sets it |
+|---|---|
+| The two beam ends' **spacing** and **relative height** - in-plane, rigid | **The plate**, via its two bolt patterns |
+| Their **fore-aft tilt** - which is what coplanarity means - out-of-plane | **The flat assembly surface.** A 1/4" × 305 section over a metre flexes by hand; the plate follows rather than overrules |
+
+🔴 **So the datum lives in the accuracy of the two bolt patterns, not in the flatness of the
+material.** This matters for what to buy: **plain hot-rolled A36 is correct here.** An earlier draft
+of this section called for cold-rolled or ground stock on flatness grounds, which was wrong - and
+"cold-rolled A36" is not a product anyway, A36 being a hot-rolled structural spec while cold-rolled
+flat goes out as 1008/1018 to A1008. Ask for **P&O** if mill scale is unwelcome; same flatness, no
+scale, small premium.
+
+#### ⚠️ Open: can the mill hold a datum across 1200 mm
+
+Two bolt patterns a metre apart, both of which must match extruded corner bores, on a **4' × 1'
+manual-XY** mill. Bed size is not travel. If the part has to be repositioned mid-job the datum is
+lost exactly where it is most needed. **Gated on the mill model and DRO question already in the open
+items**, expected ~2026-10-04.
+
+#### ⚠️ The bottom-edge bearing now runs the full 1200 mm
+
+So the rib under it has to as well. The box is built last, so this is free - but it joins the list
+of things that must be decided before the skins are cut.
 
 ⚠️ **The back panel does not cover the front.** The load path from a gantry parked at min-Y back to
 that panel runs sideways through the Y beams - their 60 mm dimension, not their 120 mm - and the
