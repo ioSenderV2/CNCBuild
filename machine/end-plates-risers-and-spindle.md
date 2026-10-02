@@ -460,6 +460,40 @@ carrying it, because then the second pattern walks vertically by the camber amou
 scribed and indicated line, or indicate the first pattern back in before drilling the second.** Ask
 for **P&O** if mill scale is unwelcome; same flatness, no scale, small premium.
 
+#### The length: ~1205 mm nominal, and it is a window not a target
+
+⚠️ **This is a DERIVED NOMINAL, not a measurement.** The real number comes off the assembled machine
+standing on a flat surface, exactly as the box width does. It is written down because it gates a
+purchase - the stock has to be ordered before the machine is standing.
+
+| Term | mm |
+|---|---|
+| X beam | 1000 |
+| 2 × X end plate, 1/2" | 25.4 |
+| 2 × Y rail and bearing block stack, 30 mm | 60 |
+| **Y beam inboard face to inboard face** | **1085.4** |
+| 2 × Y beam width, 60 mm | 120 |
+| **Y beam outboard face to outboard face** | **1205.4** |
+| 2 × outboard plate, 1/8" | 6.4 |
+| **Outside of the machine** | **1211.8** |
+
+🔴 **The plate length has a lower and an upper bound, about 7 mm apart:**
+
+| Bound | mm | Set by |
+|---|---|---|
+| **Minimum** | **~1205** | Edge distance. The outermost M8 sits 15 mm in from the beam's outer face; a shorter plate eats into that |
+| **Maximum** | **~1212** | Past the outboard plates' outer faces the **rear plate** becomes the proud member at the corner - the direction curb bearing cannot take |
+
+📌 **"1200 mm" as used elsewhere in this file is a round number, not this calculation.** The figure
+to buy and cut against is **1205**.
+
+✅ **A 48" sheet (1219.2 mm) covers it** with 7 to 14 mm of trim - but that is the entire margin.
+**60" removes the question** and leaves an offcut, which is the better buy on a part cut once.
+
+⚠️ **Two terms above are assumed, not measured:** that the Y rail-and-block stack is the same 30 mm
+as the X one this file records as measured, and that the Y rails face inboard. Both are cheap to
+confirm with a tape and should be, before ordering.
+
 #### ⚠️ Open: can the mill hold a datum across 1200 mm
 
 Two bolt patterns a metre apart, both of which must match extruded corner bores, on a **4' × 1'
@@ -595,10 +629,27 @@ The one argument for 1/4" steel is bolt bearing and durability as a chip barrier
 halving the live objection, and 18.4 mm of equivalent aluminium is roughly double what anything here
 asks for.
 
-📌 **Spec it as cold-rolled steel sheet, not A36.** At 1/8" × 12" this is sheet, and the normal
-product is cold-rolled 1008/1018 - flatter and cleaner than A36 would be, at no premium worth
-naming. Flatness does not bind here regardless: eleven M8 along the bottom edge plus the curb
-channel pull 1/8" steel straight over a metre without argument.
+📌 **Cold-rolled sheet is the tidier product at this thickness, but hot-rolled A36 is acceptable and
+is what was found.** Flatness does not bind here regardless: eleven M8 along the bottom edge plus
+the curb channel pull 1/8" steel straight over a metre without argument, and the holes are 9 mm
+clearance into T-slots where the T-nut moves to meet the bolt.
+
+#### Sourcing, found 2026-10-02
+
+| | |
+|---|---|
+| Listing | 1/8" × 12" × 48" mild steel sheet, **A36 hot rolled, "11 gauge"**, uncoated |
+| Price | **$81.99 each** - and **two are needed**, one plate per sheet |
+| Yield | 48" = 1219 mm against a 1000 mm plate, so a 219 mm offcut each |
+
+⚠️ **"11 gauge" and "1/8" are not the same number** - 11 ga is 0.1196" (3.04 mm) against 0.125"
+(3.175). Harmless for the structure: transformed area goes 9.2 → 8.8 mm equivalent aluminium, still
+on the 3/8" target. **But measure what arrives and record it here**, because the curb channel width
+and the riser-proud check at the front plates both key off this thickness.
+
+📌 **~$4/lb is retail.** A steel service centre is typically around half that; at $164 for the pair
+it is a judgement call whether the errand is worth it. **Mill scale comes off before paint** - and
+paint is not optional here, see the galvanic note above.
 
 #### 🔴 Galvanic is the real cost of this change
 
@@ -1692,7 +1743,14 @@ slips.
 - ⚠️ **Which extrusion face the casting bolts to**, recorded here because this file says "a face"
   rather than naming it. The ball screws run underneath, so the underside is the expectation, not a
   measurement.
-- ⚠️ **The curb channel width** - dimensioned around 6.35 mm, now taking 3.175 mm.
+- ⚠️ **The curb channel width** - dimensioned around 6.35 mm, now taking 3.175 mm, or 3.04 mm if
+  the sheet arrives at a true 11 gauge.
+- ⚠️ **The delivered thickness of the 1/8" sheet.** The listing says both 1/8" and 11 gauge, which
+  differ by 0.135 mm. Harmless structurally, but the curb channel and the riser-proud check key off
+  it. **Caliper it on arrival and write the number here.**
+- ⚠️ **Two assumed terms in the rear plate length chain**: that the Y rail-and-block stack is the
+  same 30 mm as the measured X one, and that the Y rails face inboard. A tape closes both, and both
+  should be closed before stock is ordered.
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward
