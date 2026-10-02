@@ -83,7 +83,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 | Size | **Tapered: 3" at the top, 9" at the base, 12" tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
 | To the torsion box | **Two M8 through the front tongue at X 25 and 175, Y 31**, plus bottom-edge bearing | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
-| Also carries | the **62 × 50 window** for the cast stepper frame | a clearance bore per screw, and the BF12-replacement block |
+| Also carries | the **62 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
 ⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
 Nothing in the rear column above is as-built hardware.
@@ -193,10 +193,9 @@ it flat. The load case that could argue otherwise is peel: thrust acts at the sc
 off the extrusion face, so ~700 N gives ~24 N·m, which over a ~110 mm bar is about **220 N of
 uplift** - against kilonewtons of clamp from four M5 in T-nuts.
 
-⚠️ **The bar's inboard end is now an input to a part that does not exist yet.** It ends 120 mm from
-the beam's end, under the beam, where the ball nut bracket has to reach up from the screw to the X
-end plate. **That bracket is undesigned and goes on the one-shot mill trip**, so it can be made to
-clear - but only if whoever draws it knows the bar is there.
+📌 **The bar's inboard end is an input to the ball nut tongue**, which comes off the bottom of the X
+carriage plate - see below. The tongue is undesigned and goes on the one-shot mill trip, so it can
+be drawn clear, but whoever draws it needs to know the bar ends 120 mm in from the beam's end.
 
 ⚠️ **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
 it either steps too or holds the casting off its intended bearing face.
@@ -207,7 +206,14 @@ it either steps too or holds the casting off its intended bearing face.
 |---|---|
 | Columns, from the 60 mm bar's edge | **7 and 53 mm** |
 | Rows, from the bar's front edge | **28, 58 and 71 mm** |
-| **Screw axis above the casting's foot** | **25 mm** → **34.5 mm** below the extrusion face with the 3/8" bar |
+| **Screw axis above the casting's foot** | **25 mm** |
+| → **screw bottom above the casting's foot** | **17 mm** (25 − 8, the 1605 being ø16) |
+
+🔴 **Do not add the bar thickness to the 25 and call it a clearance.** An earlier version of this
+file recorded "34.5 mm below the extrusion face" as *the* screw axis figure. That number is real -
+it is where the axis sits relative to the face - but it decides nothing, because **the bar lifts
+screw, BF12 and casting as one unit.** Every clearance that matters is internal to the casting and
+is unchanged by how thick the bar is. **17 mm is the number to carry.**
 
 ### 🔴 The thrust path changed direction, and a block fixes it
 
@@ -224,14 +230,16 @@ axis sees, so this is not expected to need designing around. It is recorded beca
 load path that genuinely changed character, and because friction is the kind of margin that is fine
 until it isn't.
 
-✅ **The insurance is a positive stop, not more bolts.** A block bolted to the plate in front of the
-casting with a **20 mm bore** for the ball screw to pass through. Cheap, unambiguous, and it does the
-BF12 job at the far end as well.
+⚠️ **A positive stop at the casting end was discussed and is NOT currently in the design.** An
+earlier draft of this file recorded "a block bolted to the plate with a 20 mm bore" as settled
+insurance. It was neither settled nor, as written, in the right place - the block that *was* settled
+is **BF12 at the far end**, which is a floating support and not a thrust stop. If the friction path
+above ever needs backing up, a stop at the casting end is the cheap way; nothing has been drawn.
 
 ### ✅ The steppers move to the front
 
 **Decided 2026-10-02, and it is the change with the widest reach.** Both Y steppers go to the front
-of the machine, with the plain 20 mm-bore block at the rear.
+of the machine, with **BF12 bolted to the rear plate's inside face** at the other end.
 
 - **~20 mm less encroachment** in front of the machine than the current standoff arrangement, because
   the casting is shorter than motor-plus-standoffs-plus-BK12.
@@ -248,20 +256,51 @@ of the machine, with the plain 20 mm-bore block at the rear.
    far larger magnetic object than the bolt heads the austenitic-stainless section below exists for.
    **Fit a tape offcut and a sensor and read at that end before 3 m of one-shot PSA goes down.**
 
-### ⚠️ Open: does the screw axis land where the as-built one does
+### ✅ The screw height, and the clearance that actually matters - closed 2026-10-02
 
-✅ **Half of this closed 2026-10-02.** The casting puts the axis **25 mm above its foot**, so with
-the 3/8" bar it sits **34.5 mm below the extrusion face**.
-
-⚠️ **The other half is the as-built BK12 axis height, which this repo does not record.** The
-comparison is what decides:
+**The as-built reference**, for comparison:
 
 | | |
 |---|---|
-| The rear block | its bore height is set by whatever the casting gives |
-| The ball nut bracket on the X end plate | undesigned, so it can follow - but only if the number is known first |
+| BK12 / BF12 mounted | **5 mm above the extrusion** |
+| Beam underside to the top of the ball nut | **10 mm** |
 
-**Measure the as-built axis off a Y beam and compare against 34.5.**
+**That 10 mm is the live clearance** - the nut runs the length of the beam and must stay clear of
+its underside. It is the number any change to the screw height has to be checked against, not the
+axis position on its own.
+
+✅ **The new arrangement moves the screw down, so this clearance grows rather than shrinks** - the
+casting hangs below the beam on the bar, where the current supports sit on the end plates.
+
+### The ball nut is inverted, and it bolts to a tongue
+
+✅ **Decided 2026-10-02.** The ball nut housing runs **upside down on both Y beams**, bolting to a
+**tongue coming off the bottom of the X carriage plate**.
+
+📌 **The reason is assembly access, and it is the kind of thing that is free to decide now and
+expensive later** - inverted, the nut's mounting bolts are reachable while the gantry is being put
+together. Right way up they are trapped between the nut and the plate.
+
+✅ **This also answers what the 120 mm bar was an open input to.** The bracket is a tongue off the
+carriage plate, not a wrap-around, so the bar's inboard end is something to draw the tongue clear
+of rather than an unknown.
+
+### BF12 goes straight onto the rear plate - no bar at that end
+
+✅ **Decided 2026-10-02.** BF12 bolts to the **inside face of the 1200 mm rear plate**. The bar
+exists only because the casting lands on a 2.21 mm extrusion wall; BF12 lands on 1/4" steel and
+needs nothing.
+
+| | |
+|---|---|
+| Fixing | **4 × M5 tapped into the 1/4" plate** - not through-bolted, for maximum engagement |
+| Engagement | 6.35 mm = **1.27 × D** |
+
+✅ **1.27 D is enough in steel, which is worth stating because the same figure would not be in
+aluminium.** The internal thread shears at roughly **14 kN** against an M5 class 8.8 bolt breaking
+near **11 kN** - so the plate thread is stronger than the bolt it holds, and the joint fails at the
+fastener as it should. The repo's "aluminium wants 1.5-2 × D" rule is about aluminium; do not carry
+it across.
 
 ---
 
@@ -427,7 +466,7 @@ that turns the rear face from a portal frame with two bending legs into a diaphr
 | Plate | **1200 mm × 12" × 1/4" hot-rolled A36 steel** |
 | To the beams | **8 × M8 into each beam's corner bores** - the same proven pattern, 16 bolts total |
 | To the box | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
-| Also carries | a clearance bore per ball screw, and the **20 mm-bore BF12-replacement block** |
+| Also carries | **BF12 on its inside face**, 4 × M5 tapped into the plate, one per beam |
 
 - **It costs no travel** - the gantry stops well forward of the rear plate plane, and the spindle sits
   ~109 mm ahead of the carriage plate.
@@ -1830,9 +1869,9 @@ slips.
 
 ### From the 2026-10-02 stepper frame rework - all unmeasured
 
-- 🔴 **The as-built BK12 screw axis height**, to compare against the casting's **34.5 mm** below the
-  extrusion face. The casting side closed 2026-10-02; this side has never been recorded. It sets the
-  rear block's bore height and the ball nut bracket on the X end plate.
+- ✅ ~~**The as-built BK12 screw axis height**~~ **Closed 2026-10-02**, and reframed: the number
+  that matters is the **10 mm** between the beam underside and the nut top, with the supports
+  mounted 5 mm above the extrusion. The casting hangs below the beam, so that clearance grows.
 - ✅ ~~**The casting's 6-hole pattern against the T-nut holes**~~ **Closed 2026-10-02.** Measured at
   columns 7 / 53 and rows 28 / 58 / 71. The columns clash with the T-slots at 8 mm, which is why
   the bar runs ~30 mm past the casting and the four T-nut bolts live in the overhang.
