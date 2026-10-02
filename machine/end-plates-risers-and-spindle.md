@@ -159,10 +159,8 @@ screw axis sitting 3.2 mm lower, which increases nut-to-beam clearance rather th
 casting's own bearing is still **272 mm**, so 246 mm rail-limited and ~26 mm of screw overrun both
 stand, and with them the 7 mm / 10 mm hard-stop working.
 
-⚠️ **One Z item is still open, and it is a fit question rather than a travel one.** The casting is
-bulkier than the BK12 it replaces and sits at the **same top end** as the **6" × 1" × 1/4"
-hard-stop plate** bolted over the carriage plate, which the rising block meets. **Hold the two
-together before anything is cut.**
+✅ **And the casting-versus-hard-stop fit is resolved**: the single plate becomes **two blocks, one
+either side of the casting**, 47 mm wide each. See the Z travel section.
 
 ### Why it was worth reopening a built axis
 
@@ -1458,10 +1456,35 @@ not move the upper bearing relative to BF12, so **the whole travel budget below 
 
 #### ✅ The screw outruns the rails by ~26 mm upward - and a physical stop catches it
 
-**Both ends of Z travel have a mechanical stop.** Going down, the nut bottoms on BF12. Going up, a
-**6" × 1" × 1/4" plate** bolted over the top of the X carriage plate overhangs the rail ends, and the
-rising bearing block meets it. The **proximity sensor is at the top of Z**; the plate is what catches
-the axis if the control runs past it.
+**Both ends of Z travel have a mechanical stop.** Going down, the nut bottoms on BF12. Going up,
+blocks bolted to the top of the X carriage plate overhang the rail ends and the rising bearing
+block meets them. The **proximity sensor is at the top of Z**; the stop is what catches the axis if
+the control runs past it.
+
+#### ✅ The top stop is TWO blocks, not one plate - 2026-10-02
+
+The cast stepper frame now occupies the middle of that top edge, so a single 6" plate spanning both
+rails cannot go there. **One block per rail, either side of the 60 mm casting:**
+
+| | |
+|---|---|
+| Width, across the plate | **47 mm each** - 154 − 60 = 94, halved, less whatever relief is wanted at the casting |
+| Standing off the plate | **the linear rail's own height**, so the stop's face is flush with the rail top |
+| Extent along the rail | ⚠️ **not yet specified** - the superseded single plate was 1" in this direction |
+
+✅ **This is better than the plate it replaces, not just a way round the casting.** Each block sits
+**directly over its own rail** - centres at ~23.5 and ~130.5 against rail centrelines at 19.5 and
+134.5 - so the rising block meets metal immediately above itself instead of at the end of a lip
+spanning the gap. The old warning to "keep the overhang short so impact loads the bolts in shear
+rather than bending a cantilevered lip" is satisfied by the geometry rather than by discipline.
+
+📌 **Matching the rail's height is what makes the contact square.** The bearing block stands 30 mm
+off the plate and wraps the rail; a stop flush with the rail top gives it a full-width face to hit,
+where the old 1/4" plate presented a 6.35 mm lip.
+
+🔴 **Measure the rail height off the Z kit - do not take it from a catalogue.** HGR20 is nominally
+17.5 mm, but **Z is a different supplier from X / Y1 / Y2**, and this file already records one
+near-miss from quoting a dimension measured on the wrong kit. One caliper reading.
 
 ⚠️ **This heading used to read "with no hard stop", and it was wrong** - the resolution was already
 written in the paragraphs below it while the alarm stayed in the title. Corrected 2026-10-01, after
