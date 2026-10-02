@@ -41,6 +41,7 @@ is deliberately untracked because this repository is public.
 | `y-beam-stepper-mounted.jpg` | Stepper on the outside of the riser, shaft through the plate. The riser runs well below the beam |
 | `y-beam-coupler-bk12.jpg` | Coupler between motor and screw, BK12 inboard, screw running under the beam |
 | `y-beam-riser-and-gusset.jpg` | The riser with the existing **12" × 6" × 1/4" gusset** on the outboard face |
+| `y-bearing-blocks-butted-154.jpg` | **Calipers reading 154.18 mm across two HGH20 blocks butted** on the X/Y kit's rail. The measurement that confirmed the X end plate width and killed the "2-3 mm between the blocks" this repo had carried as its reason for it |
 
 `front-plate-trial-flange-bolts.jpg` is worth keeping for its own sake: the calculation said
 47.3 mm against a 46.7 mm gap and the parts said otherwise. The parts were right.

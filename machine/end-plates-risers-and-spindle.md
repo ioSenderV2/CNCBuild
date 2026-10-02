@@ -490,9 +490,10 @@ to buy and cut against is **1205**.
 ✅ **A 48" sheet (1219.2 mm) covers it** with 7 to 14 mm of trim - but that is the entire margin.
 **60" removes the question** and leaves an offcut, which is the better buy on a part cut once.
 
-⚠️ **Two terms above are assumed, not measured:** that the Y rail-and-block stack is the same 30 mm
-as the X one this file records as measured, and that the Y rails face inboard. Both are cheap to
-confirm with a tape and should be, before ordering.
+✅ **Both of this chain's assumed terms were confirmed 2026-10-02.** The Y rails are on the beams'
+**inside faces, facing each other**, and **X, Y1 and Y2 all run the same HGR20 kit**, so the 30 mm
+rail-and-block stack measured on X applies to both Y beams. The chain above is nominal only because
+the machine has not been assembled and measured - not because any of its terms are guesses.
 
 #### ⚠️ Open: can the mill hold a datum across 1200 mm
 
@@ -1145,6 +1146,10 @@ honest trade: **spend travel, not stiffness.**
 
 Rails are **400 mm**, blocks **77 mm**, so with the blocks butted the usable travel is **246 mm**.
 
+⚠️ **That 77 was measured on the Z kit.** The X/Y kit's blocks measure **77.09** and so the two
+agree - but they are different suppliers and the agreement is not guaranteed. See the kit note
+under the X gantry end plates.
+
 ⚠️ **A measurement of 272 mm was taken and discarded** - it was the *ball nut's* travel, which
 overruns the rails. Recorded because the number is real and it matters: see the hazard below.
 
@@ -1300,8 +1305,9 @@ scribing; **30 holes** to lay out on it.
 | Size | **154 mm W × 407 mm H × 1/2"** |
 | Width | ✅ **154 mm, confirmed 2026-09-30** - the same width as the X gantry end plates and the Z plate |
 
-📌 **154 mm recurs across three plates and it is not a coincidence.** The X end plate's 154 is set by
-two HGH20 blocks end to end with 2-3 mm between; the Z plate and this plate inherit it. Worth knowing
+📌 **154 mm recurs across three plates and it is not a coincidence.** The X end plate's 154 is set
+by **two HGH20 blocks butted - measured 154.18 on 2026-10-02**; the Z plate and this plate inherit
+it. Worth knowing
 before anyone "tidies" one of them to a different number - changing it here changes what rides the Y
 rails.
 
@@ -1425,8 +1431,46 @@ the clamp centres came in to **116 mm** and the M8 rows to **±45.5 and ±70.5**
 **Two identical plates, 1/2" aluminium, 154 mm wide.** They carry the X beam, ride the Y rails on
 four bearing blocks, and mount the X ball screw supports and stepper.
 
-**154 mm is set by the bearing blocks** - two HGH20 blocks end to end with 2-3 mm between. Anything
-wider eats usable Y travel at both ends.
+✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
+(2026-10-02, calipers - see
+[`photos/y-bearing-blocks-butted-154.jpg`](photos/y-bearing-blocks-butted-154.jpg)). Each block is
+**77.09 mm**. Anything wider eats usable Y travel at both ends.
+
+🔴 **The number was right and the reason this file gave for it was wrong.** It used to read "two
+HGH20 blocks end to end with **2-3 mm between**". There is no gap - 154 *is* the butted dimension.
+Two consequences the old wording hid:
+
+- **154 is the minimum, not a choice.** You cannot go narrower without the blocks overhanging the
+  plate more than they already do.
+- **The plate is 0.18 mm narrower than the butted pair**, so each block stands ~0.09 mm proud of
+  the plate edge. Harmless, but there is **no relief at the ends** - unlike the Z plate, which has
+  2 mm by design.
+
+📌 **Recorded because of how it was nearly missed.** The 77 mm block length this file carried was
+measured on the **Z** kit, and the Z kit is a different supplier from the one X, Y1 and Y2 share.
+The two numbers happened to agree. **They did not have to** - see the kit note below.
+
+### 🔴 The rails come from two different suppliers - do not quote one kit's dimension for the other
+
+**Recorded 2026-10-02.** It is not one rail order:
+
+| Axes | Kit |
+|---|---|
+| **X, Y1, Y2** | the same HGR20 kit, one supplier |
+| **Z** | a **400 mm HGR20 kit from a different supplier** |
+
+Both are HGH20-class and so far every dimension agrees - block length 77.09 against 77, the same
+32 × 36 hole pattern, the same 30 mm stack. **That is an observation, not a guarantee.** They are
+different parts from different makers and a clone's block length, height or hole pattern can differ
+while the designation does not.
+
+⚠️ **This nearly bit once already.** The 154 mm X end plate width - which the X carriage plate and
+the Z plate both inherit - rested on a 77 mm block length measured on the **Z** kit. The X/Y blocks
+turned out to measure 77.09, so nothing moved. Had the clones differed by a millimetre, three plates
+would have gone to a one-shot mill trip at the wrong width.
+
+**The rule: a dimension measured on the Z kit is a Z dimension.** Measure the X/Y kit separately for
+anything that sets a plate.
 
 ### Vertical stack-up, from the top of the Y beam
 
@@ -1748,9 +1792,12 @@ slips.
 - ⚠️ **The delivered thickness of the 1/8" sheet.** The listing says both 1/8" and 11 gauge, which
   differ by 0.135 mm. Harmless structurally, but the curb channel and the riser-proud check key off
   it. **Caliper it on arrival and write the number here.**
-- ⚠️ **Two assumed terms in the rear plate length chain**: that the Y rail-and-block stack is the
-  same 30 mm as the measured X one, and that the Y rails face inboard. A tape closes both, and both
-  should be closed before stock is ordered.
+- ✅ ~~**Two assumed terms in the rear plate length chain**~~ **Closed 2026-10-02.** The Y rails are
+  on the inside faces facing each other, and X / Y1 / Y2 share one HGR20 kit, so the measured 30 mm
+  stack applies to all three. The ~1205 chain rests on no guesses.
+- ✅ ~~**Is the X end plate really 154 wide**~~ **Measured 2026-10-02: 154.18 for two blocks
+  butted.** The number stands; the "2-3 mm between the blocks" that this file gave as its reason
+  never existed.
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward

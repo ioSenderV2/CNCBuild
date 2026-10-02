@@ -15,7 +15,8 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 | | |
 |---|---|
 | Beams, all three axes | **Two 8020 `30-6060` stacked** — 60 mm wide × 120 mm tall, **1000 mm** long |
-| Rails | **HGR20**, one per profile on the front face, 17 × M5 at 60 mm into T-nuts |
+| Rails | **HGR20**, one per profile, 17 × M5 at 60 mm into T-nuts. **Y rails are on the beams' inside faces, facing each other.** X, Y1 and Y2 share one kit; **Z is a 400 mm kit from a different supplier** - do not quote one kit's dimension for the other |
+| Bearing blocks | **77.09 mm** each, measured - two butted read **154.18 mm**, which is what sets the 154 mm plate width |
 | Ball screws | **1605**. X on BK12 / BF12 bolted to the end plates; **Y on cast stepper frames at the front** and a 20 mm-bore block at the rear |
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
 | Y steppers | **At the FRONT of the machine** (2026-10-02) — one cast frame carries motor face, bearing housing and coupler |
