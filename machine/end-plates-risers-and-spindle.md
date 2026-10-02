@@ -155,11 +155,14 @@ also takes a button-head counterbore with 6.5 mm left under it, which is what th
 casting's footprint need. **1/2" was available and buys only margin**; its one effect would be the
 screw axis sitting 3.2 mm lower, which increases nut-to-beam clearance rather than eating it.
 
-⚠️ **Z's knock-ons are not worked through.** The casting is bulkier than the BK12 it replaces, and
-Z has a carefully worked travel budget around it: 246 mm with the blocks butted, the screw
-outrunning the rails by ~26 mm, and a **6" × 1" × 1/4" hard-stop plate bolted over the top of the
-carriage plate** that the rising block meets. **The casting sits at that same top end.** Check the
-stop plate still fits, and re-check the travel, before anything is cut.
+✅ **Z's travel budget is untouched - confirmed 2026-10-02.** The span between BF12 and the
+casting's own bearing is still **272 mm**, so 246 mm rail-limited and ~26 mm of screw overrun both
+stand, and with them the 7 mm / 10 mm hard-stop working.
+
+⚠️ **One Z item is still open, and it is a fit question rather than a travel one.** The casting is
+bulkier than the BK12 it replaces and sits at the **same top end** as the **6" × 1" × 1/4"
+hard-stop plate** bolted over the carriage plate, which the rising block meets. **Hold the two
+together before anything is cut.**
 
 ### Why it was worth reopening a built axis
 
@@ -1444,8 +1447,14 @@ Rails are **400 mm**, blocks **77 mm**, so with the blocks butted the usable tra
 agree - but they are different suppliers and the agreement is not guaranteed. See the kit note
 under the X gantry end plates.
 
-⚠️ **A measurement of 272 mm was taken and discarded** - it was the *ball nut's* travel, which
-overruns the rails. Recorded because the number is real and it matters: see the hazard below.
+⚠️ **272 mm is the screw-side travel and it is NOT discarded** - it is the span the nut can run
+between its two supports, which overruns the rails. It is simply not the limit; the rails are.
+*(An earlier wording here said the measurement was "discarded", which was too strong and would
+invite the next reader to ignore a live figure.)*
+
+✅ **The casting leaves it at 272 - confirmed 2026-10-02.** Replacing BK12 with the cast frame does
+not move the upper bearing relative to BF12, so **the whole travel budget below is unchanged**:
+246 mm rail-limited, ~26 mm of screw overrun, and the 7 mm / 10 mm stop working still stands.
 
 #### ✅ The screw outruns the rails by ~26 mm upward - and a physical stop catches it
 
