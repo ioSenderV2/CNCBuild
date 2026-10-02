@@ -1983,11 +1983,61 @@ question that had been asked. The other candidate - the Y bearing block - cannot
 axis has to follow the rail, which runs along **Y**, so "parallel with the X beam" is impossible for
 it. **If "block" meant something else, these four holes are 90° out.**
 
-⚠️ 🔴 **Open, and the last thing blocking the sole plate: the X offset from the end plate's inner
-face to the Y screw axis.** The screw runs under the Y beam and the plate is on the beam's inside
-face, so the flange sits some distance **outboard** of the plate's plane. That distance sets how far
-the sole plate reaches, and whether Y thrust arrives as clean in-plane shear or as a twisting moment
-on the end plate. **A machine measurement, and it is not in this repo.**
+#### ✅ The X offset to the screw axis: 72.7 mm - closed 2026-10-02
+
+**From the end plate's inner face to the Y screw centreline**, assuming the screw runs under the
+beam's width centreline:
+
+| Term | mm |
+|---|---|
+| Plate thickness, inner face to **outer** face | 12.7 |
+| Rail and block stack, outer face to the beam's **inside** face | 30 |
+| Half the beam width, to the beam centreline | 30 |
+| **Inner face to the screw axis** | **72.7** |
+| *(From the plate's outer face)* | *60* |
+
+Carrying the 52 × 40 face and the ±20 / ±12 pattern through it, all measured in X from the plate's
+**inner** face:
+
+| | X, mm |
+|---|---|
+| Nut face, inboard edge | **46.7** |
+| First M5 column | **52.7** |
+| Screw axis | **72.7** |
+| Second M5 column | **92.7** |
+| Nut face, outboard edge | **98.7** |
+
+🔴 **So this is the cantilever case, not the strip case.** The sole plate reaches about **100 mm** in
+X, and the nut's inboard edge is still **34 mm clear of the plate's outer face** - the flange never
+comes near the end plate. Drive thrust therefore acts **60 mm outboard of the plate's outer face**,
+or 66 mm off its mid-thickness.
+
+📌 **It does not yaw the gantry.** The two screws are offset outboard in opposite senses, so their
+moments cancel globally and the X beam ties the pair. What remains is **local**: each end plate is
+pushed at a point 66 mm off its own plane, reacted by its blocks' lateral capacity and by the beam.
+
+⚠️ **This is what makes the joint at the plate's bottom edge the weak link**, and why the bracket
+form is still open - see below. A horizontal foot bolted only into a 12.7 mm edge is now carrying the
+full drive thrust with a 66 mm arm on it.
+
+#### ⚠️ Open: the bracket form - flat foot, or an L
+
+**Recommended: an L, not a flat foot.** A vertical leg bolted to the end plate's **outer face** below
+the Y beam, with the horizontal foot reaching outboard to the nut.
+
+| | Flat foot on the bottom edge | **L with a leg on the outer face** |
+|---|---|---|
+| Fixing into | **12.7 mm edge taps** | **face bolts, in shear** |
+| Takes the 66 mm arm | through the edge taps | through the face, as a couple up the leg |
+| Setups | one | two, or a piece of angle |
+
+✅ **There is room for the leg.** The Y beam's underside is at −120 and the plate runs to −182.5, so
+the outer face is **clear for ~62 mm** below the beam - free space, since the Y bearing blocks stop
+well above it and the screw is 60 mm further out.
+
+⚠️ **Not decided, and it is a part shape rather than a dimension** - a bent 1/4" L, a length of
+aluminium angle, or a flat foot plus gussets all do it. **Decide before the trip**, since the face
+holes would be drilled in the same setup as the rest of the plate.
 
 #### ✅ The tail does not reach the front riser - travel runs out first
 
@@ -2376,9 +2426,13 @@ slips.
 - ✅ ~~**Which of the nut face's 40 / 52 runs along Y**~~ **Closed 2026-10-02: the long dimension is
   parallel with the X beam**, so 52 along X and 40 along Y, putting the four M5 at ±20 in X and ±12
   in Y. ⚠️ Rests on reading "block" as the nut housing - see the note in that section.
-- 🔴 **The X offset from the X end plate's inner face to the Y screw axis.** The last thing blocking
-  the sole plate outline, and it decides whether Y thrust is in-plane shear or a twisting moment on
-  the end plate. **A machine measurement.**
+- ✅ ~~**The X offset from the X end plate's inner face to the Y screw axis**~~ **Closed 2026-10-02 at
+  72.7 mm** - 12.7 plate + 30 rail stack + 30 half beam. It is the **cantilever case**: ~100 mm of
+  reach, thrust 60 mm outboard of the plate's outer face.
+- ⚠️ **The sole bracket's form - flat foot or an L.** Recommended an L with a vertical leg on the
+  plate's outer face, where ~62 mm is clear below the Y beam, so the 66 mm arm is taken by face bolts
+  rather than by taps into a 12.7 mm edge. **A part shape, not a dimension - decide before the trip**,
+  as the face holes share a setup with the rest of the plate.
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward
