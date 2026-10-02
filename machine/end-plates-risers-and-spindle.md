@@ -157,17 +157,42 @@ them:
 
 | | |
 |---|---|
-| Bar | **60 mm wide × 80 mm long × 3/8" aluminium** |
-| Bar to extrusion | **2 rows of 3 M5 button head** into T-nuts - the rows land on the `30-6060`'s bottom-face slot centrelines at 15 and 45 mm |
-| **Counterbored** | yes - the casting's flat foot bears on the bar's surface, so those heads must sit below it |
+| Bar | **60 mm wide × ~110 mm long × 3/8" aluminium** - the casting's footprint is 80, and the bar runs **~30 mm past it, inboard** |
+| Bar to extrusion | **4 counterbored M5**, all in the 30 mm overhang, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
 | Casting to bar | its 6 through holes, tapped into 3/8" = **1.9 diameters**, which is a proper thread |
 
-⚠️ **Twelve features in a 60 × 80 bar, and the layout is unchecked.** Six counterbored T-nut holes
-plus six tapped holes for the casting. Whether they clear each other needs the casting's hole
-pattern, which is not recorded here. **Measure it before cutting the bar.**
+✅ **The overhang is what makes this work, and it was the resolution to a real clash.** Both hole
+patterns are **centred on the beam** and so have no lateral freedom at all:
+
+| | Column positions across the 60 mm bar |
+|---|---|
+| Casting | **7 and 53** (46 apart) |
+| T-nut slots | **15 and 45** (30 apart) |
+| Gap | **8 mm** |
+
+At 8 mm a Ø10 M5 counterbore and a tapped M5 leave **0.5 mm of wall** - the counterbore breaks into
+the top threads of a hole carrying the stepper frame. **Putting the T-nut bolts in the overhang
+removes the geometry rather than managing it**: they are no longer under the casting, so nothing
+has to clear anything.
+
+📌 **The overhang can only go inboard.** At the stepper-mount end the casting's ledge hooks over the
+front edge, so there is no room that way.
+
+✅ **Four M5 is enough, checked rather than assumed.** Their job is to stop the bar sliding and hold
+it flat. The load case that could argue otherwise is peel: thrust acts at the screw axis **34.5 mm**
+off the extrusion face, so ~700 N gives ~24 N·m, which over a ~110 mm bar is about **220 N of
+uplift** - against kilonewtons of clamp from four M5 in T-nuts.
 
 ⚠️ **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
 it either steps too or holds the casting off its intended bearing face.
+
+#### The casting's hole pattern, measured 2026-10-02
+
+| | |
+|---|---|
+| Columns, from the 60 mm bar's edge | **7 and 53 mm** |
+| Rows, from the bar's front edge | **28, 58 and 71 mm** |
+| **Screw axis above the casting's foot** | **25 mm** → **34.5 mm** below the extrusion face with the 3/8" bar |
 
 ### 🔴 The thrust path changed direction, and a block fixes it
 
@@ -208,18 +233,20 @@ of the machine, with the plain 20 mm-bore block at the rear.
    far larger magnetic object than the bolt heads the austenitic-stainless section below exists for.
    **Fit a tape offcut and a sensor and read at that end before 3 m of one-shot PSA goes down.**
 
-### ⚠️ Open: the screw axis height
+### ⚠️ Open: does the screw axis land where the as-built one does
 
-**Not measured, and it cascades.** The casting sets the screw axis at a fixed height off whichever
-extrusion face it bolts to, plus the bar. Whether that matches the existing BK12 axis height decides:
+✅ **Half of this closed 2026-10-02.** The casting puts the axis **25 mm above its foot**, so with
+the 3/8" bar it sits **34.5 mm below the extrusion face**.
+
+⚠️ **The other half is the as-built BK12 axis height, which this repo does not record.** The
+comparison is what decides:
 
 | | |
 |---|---|
 | The rear block | its bore height is set by whatever the casting gives |
 | The ball nut bracket on the X end plate | undesigned, so it can follow - but only if the number is known first |
 
-**Measure the casting's bore height above its foot, add the bar, and compare against the as-built
-axis.** One caliper reading closes it.
+**Measure the as-built axis off a Y beam and compare against 34.5.**
 
 ---
 
@@ -1788,12 +1815,12 @@ slips.
 
 ### From the 2026-10-02 stepper frame rework - all unmeasured
 
-- 🔴 **The screw axis height off the casting**, and whether it matches the as-built BK12 axis. One
-  caliper reading - bore height above the foot, plus the bar. It sets the rear block's bore height
-  and the ball nut bracket on the X end plate. **Nothing downstream of it can be drawn until it is
-  taken.**
-- 🔴 **The casting's 6-hole pattern**, against the 6 counterbored T-nut holes, in a 60 × 80 bar.
-  Twelve features, and whether they clear is unchecked. **Needed before the bar is cut.**
+- 🔴 **The as-built BK12 screw axis height**, to compare against the casting's **34.5 mm** below the
+  extrusion face. The casting side closed 2026-10-02; this side has never been recorded. It sets the
+  rear block's bore height and the ball nut bracket on the X end plate.
+- ✅ ~~**The casting's 6-hole pattern against the T-nut holes**~~ **Closed 2026-10-02.** Measured at
+  columns 7 / 53 and rows 28 / 58 / 71. The columns clash with the T-slots at 8 mm, which is why
+  the bar runs ~30 mm past the casting and the four T-nut bolts live in the overhang.
 - 🔴 **The two strip widths either side of the 62 × 50 window** on the MDF template. Decides whether
   the 3" / 9" fins still nest in one 12" square or go to 4" / 8". **Needed before the bandsaw pass,
   which cannot be put back.**
