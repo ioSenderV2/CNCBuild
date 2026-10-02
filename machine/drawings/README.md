@@ -34,6 +34,18 @@ make deliberately rather than drift into.
 
 ## Status
 
+🔴 **STALE as of 2026-10-02. The pack has not been regenerated and must not go to the mill.**
+
+The Y end design was reworked that day: cast stepper frames replaced BK12 and the M5 standoffs, the
+Y steppers moved to the **front**, all four as-built Y risers are scrapped, and the two rear risers
+became one 1200 mm × 12" × 1/4" A36 steel plate that is also the rear shear panel. **Every riser
+sheet here is superseded**, three parts were added to the trip, and the materials changed.
+
+This is the folder's own rule firing exactly as designed - derived, never authoritative, and the
+`.md` file wins. See [`../end-plates-risers-and-spindle.md`](../end-plates-risers-and-spindle.md),
+whose open items list the four measurements that gate cuts which cannot be undone. **Regenerate
+before the visit.**
+
 ⚠️ **No plate in this pack has a complete hole schedule yet**, and that is the pack's main finding.
 What it does have is every dimension the repo actually holds, with the gaps named - which turns
 "design ahead of the build" from an instruction into a list.
