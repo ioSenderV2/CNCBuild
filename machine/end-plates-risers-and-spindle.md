@@ -352,10 +352,21 @@ axis position on its own.
 ✅ **The new arrangement moves the screw down, so this clearance grows rather than shrinks** - the
 casting hangs below the beam on the bar, where the current supports sit on the end plates.
 
-### The ball nut is inverted, and it bolts to a tongue
+### The ball nut is inverted, and it lands on a sole plate - not a tongue
 
-✅ **Decided 2026-10-02.** The ball nut housing runs **upside down on both Y beams**, bolting to a
-**tongue coming off the bottom of the X carriage plate**.
+✅ **Decided 2026-10-02.** The ball nut housing runs **upside down on both Y beams**.
+
+🔴 **Superseded later the same day: there is no tongue.** The X end plate now runs down to
+**−182.5**, level with the nut's downward-facing mounting face, and a **1/4" sole plate** bolts
+across its bottom. The nut's own fixing ties the two together. **Full working in the X end plate
+section - "The plate height: 242.5 mm".**
+
+❌ ~~"bolting to a **tongue coming off the bottom of the X carriage plate**"~~ - dead twice over. The
+scheme is a sole plate, and the plate named was wrong or at best loose: the Y nut lands on the X
+**end** plate, which is the Y carriage. The 154 × 407 carriage plate rides the X beam and is nowhere
+near a Y screw. ⚠️ **Recorded rather than silently fixed**, because "carriage plate" may have meant
+"the plate that is the Y carriage" - the sentence is gone either way, but if a drawing anywhere
+inherited that reading it needs checking.
 
 📌 **The reason is assembly access, and it is the kind of thing that is free to decide now and
 expensive later** - inverted, the nut's mounting bolts are reachable while the gantry is being put
@@ -363,7 +374,8 @@ together. Right way up they are trapped between the nut and the plate.
 
 ✅ **This also answers what the 120 mm bar was an open input to.** The bracket is a tongue off the
 carriage plate, not a wrap-around, so the bar's inboard end is something to draw the tongue clear
-of rather than an unknown.
+of rather than an unknown. **Still true with the sole plate** - it is the sole plate rather than a
+tongue that has to be drawn clear of the bar's inboard end.
 
 ### BF12 goes straight onto the rear plate - no bar at that end
 
@@ -1871,10 +1883,82 @@ anything that sets a plate.
 | **Top of the extrusion, and the top of the plate** | **+60 mm** |
 | ~~Top of the ball screw support block mount~~ | ~~+80~~ - **on the beam's top face now, not the plate** |
 | ~~Top of the stepper mount, shaft through a 35 mm hole~~ | ~~+140~~ - **on the casting now** |
+| Y beam underside - the X beam's bottom extrusion ends here too | **−120** |
+| **Bottom of the plate, level with the Y ball nut's mounting face** | **−182.5** |
+
+**So the plate is 242.5 mm tall** - see the next section for where −182.5 comes from. It is ~70 mm
+taller than the 170 the shop pack carried as a placeholder.
 
 **The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
 a shelf - see below. This is the half-overlap: only the top extrusion is above the Y beam, which is
 what keeps the whole machine low.
+
+### ✅ The plate height: 242.5 mm, set by the Y ball nut - closed 2026-10-02
+
+**The bottom of the plate is level with the downward-facing mounting face of the Y ball nut**, so the
+nut's own fixing can tie the plate to a sole plate across its bottom. That is what sets the height;
+nothing else was asking for a particular number.
+
+| Term | mm |
+|---|---|
+| Beam underside to the nut's mounting face, **as built** with BK12 / BF12 **5 mm off the beam** | **58** |
+| The 3/8" interposer replaces that 5 mm standoff: 9.525 − 5 | **+4.525** |
+| **Beam underside to the nut's mounting face** | **62.5** |
+| Y beam height, two `30-6060` stacked | +120 |
+| **Below the Y beam top** | **182.5** |
+| Plus the plate above the Y beam top | +60 |
+| **PLATE HEIGHT** | **242.5 mm** |
+
+📌 **The 58 is an as-built measurement off the machine; the 4.525 is arithmetic off the settled 3/8"
+interposer.** The two halves are different kinds of number and the chain is only as good as the 58.
+
+⚠️ **This was briefly computed at 245.7 on a 1/2" interposer.** The interposer is **3/8"** - settled
+2026-10-02 and confirmed again when this section was written. **The 1/2" figure is dead; if 245.7
+appears anywhere it is stale.**
+
+#### The 1/4" sole plate, and one bolt set doing two jobs
+
+A **1/4" plate across the bottom of the end plate**, horizontal. The ball nut hangs under it, and
+**the nut's own mounting bolts pass up through the sole plate and into tapped holes in the end
+plate's bottom edge** - so one set of fasteners both mounts the nut and ties the sole plate to the
+end plate. No separate bracket.
+
+**Why the plate bottom had to be level with the nut face for this to work:** the sole plate needs one
+flat seating that takes the end plate's bottom edge and the nut's mounting face at the same height.
+Any step between them and the sole plate becomes a bent or shimmed part.
+
+⚠️ **Open: the sole plate's footprint.** It is 154 mm wide to match, but its depth in Y and its hole
+pattern both come off the **ball nut housing's flange**, which is not recorded in this repo. Measure
+the housing before drawing it.
+
+⚠️ **These are edge taps into 12.7 mm, so the M6 wall rule applies** - see the joining-plate tie
+below. **But the size here is not free**: it is set by the nut housing's bolt holes. If the housing
+wants M8, the 2.35 mm of wall each side is below the usual 1.5-2 D of material around a tapped hole,
+and the fix is a clearance hole through the sole plate into a **nut or an insert** rather than a tap
+into the plate's edge. **Resolve this with the housing in hand.**
+
+#### ✅ The tail does not reach the front riser - travel runs out first
+
+The plate now hangs ~62 mm below the Y beam and sweeps the full Y travel at that depth, which raises
+a clearance question that did not exist when the plate stopped near the blocks. **It is already
+closed by the travel limit:**
+
+> **Max Y travel is reached when the front face of the X end plate is even with the end of the beam,
+> which is where the riser starts.**
+
+So the plate's lower tail stops at the beam end and never enters the riser's plane. **The riser is
+not in the picture at all** - it is not a clearance to design around, and the 62 × 50 window has
+nothing to do with this plate.
+
+📌 **Noted as a travel fact, not a measurement I took.** It comes from the axis's own limit, so if
+the Y travel is ever extended - soft limits opened up, or the blocks repositioned - **this is the
+check that has to be redone.** It is also a separate question from the already-open "how far past the
+front riser plane does the spindle reach", which is about the spindle at low Z, not the end plate.
+
+✅ **The load path is in the right plane, which is why a 122 mm tail below the shelf is not a
+worry.** Screw thrust runs along **Y**, which lies **in** the plate's plane, so the tail below the
+bottom extrusion works in-plane shear rather than as a cantilever in bending. The Y bearing blocks
+pick it up ~90 to ~150 mm above the nut.
 
 ### 🔴 Why the four bolts are above the Y beam top
 
@@ -2224,6 +2308,17 @@ slips.
 - ✅ ~~**Is the X end plate really 154 wide**~~ **Measured 2026-10-02: 154.18 for two blocks
   butted.** The number stands; the "2-3 mm between the blocks" that this file gave as its reason
   never existed.
+- ✅ ~~**The X end plate's height and outline**~~ **Closed 2026-10-02 at 242.5 mm.** Set by putting
+  the plate's bottom level with the Y ball nut's downward mounting face: 58 mm as built, plus 4.525
+  for the 3/8" interposer, plus the 120 mm beam, plus 60 above the beam top. The shop pack's 170 was
+  a placeholder and is superseded.
+- ✅ ~~**Whether the plate's lower tail clears the front riser across Y travel**~~ **Closed
+  2026-10-02 - it never gets there.** Max Y travel is reached with the plate's front face level with
+  the beam end, where the riser starts. **Redo this check if Y travel is ever extended.**
+- ⚠️ **The Y ball nut housing's flange footprint and bolt pattern** - not recorded anywhere in this
+  repo, and it sets the 1/4" sole plate's depth, hole pattern **and the bolt size tapped into the end
+  plate's bottom edge**. At M8 the 12.7 mm edge gives only 2.35 mm of wall each side, so the housing
+  may force a nut or insert rather than a tap. **Measure the housing before the sole plate is drawn.**
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward
