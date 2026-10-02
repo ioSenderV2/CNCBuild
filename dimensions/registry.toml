@@ -1,0 +1,439 @@
+#  CNCBuild dimension registry
+#
+#  AUTHORITATIVE FOR VALUES. The machine/*.md files stay authoritative for REASONING -
+#  why a number is what it is, what was rejected, what it trades against. This file owns
+#  only what the numbers are. If a number here and a number in prose disagree, THIS FILE
+#  WINS and the prose is stale; run `tools/dims.py check` to find out.
+#
+#  Why it exists: on 2026-10-02 a single session found five wrong numbers in the prose.
+#  Three were bad primitives carried as labels (a "5/8"" spacer that measured 16.41, a
+#  "PHI80x200" spindle that reads 213, a "1/2"" plate that is 10 mm stock). Two were
+#  ORPHANED DERIVATIONS - a value computed from a source, written as a literal, with no
+#  link back, so when the source moved the derivative silently did not:
+#
+#    * the shelf's rear bolt, dimensioned from the beam front, which moved to flush
+#    * the "1.8 mm proud" figure, computed from an M8 column at 20 that became 35
+#
+#  Symbols alone would not have caught either. The `expr` field and the reverse index it
+#  generates are the point: change a primitive, and `tools/dims.py deps <SYM>` tells you
+#  every value that has to be re-derived.
+#
+#  FIELDS
+#    sym         identifier. Fusion-safe: letter first, then [A-Za-z0-9_]. Exported verbatim.
+#    value       a primitive's number. Mutually exclusive with `expr`.
+#    expr        a derived value, in terms of other syms. Mutually exclusive with `value`.
+#    unit        mm unless stated. Fusion needs this.
+#    provenance  measured | part | vendor | nominal | derived | OPEN   <- see below
+#    note        one line. The long reasoning lives in the prose, not here.
+#    source      where the number came from: a file, a photo, a person, a date.
+#
+#  PROVENANCE IS NOT DECORATION. It is the repo's standing rule made machine-readable:
+#    measured  off the real machine or the real part, with an instrument
+#    part      off a part's own geometry that is not in doubt (an extrusion's bore inset)
+#    vendor    off a datasheet or listing committed to manufacturer-assets/
+#    nominal   a catalogue figure NOT yet confirmed on the part - the dangerous class
+#    derived   computed here from other syms
+#    OPEN      not established. The value is a placeholder and MUST NOT be cut to.
+
+[meta]
+updated = "2026-10-02"
+units = "mm"
+
+# ---------------------------------------------------------------- the extrusion
+
+[[dim]]
+sym = "EXT_W"
+value = 60
+provenance = "part"
+note = "8020 30-6060 section, 60 x 60"
+source = "machine/gantry-beam-joint.md; manufacturer-assets/8020-30-6060-Profile-Drawing.jpg"
+
+[[dim]]
+sym = "EXT_BORE_INSET"
+value = 15
+provenance = "part"
+note = "Corner bores sit 15 in from each face. Four corners, so symmetric."
+source = "manufacturer-assets/8020-30-6060-Profile-Drawing.jpg"
+
+[[dim]]
+sym = "BEAM_H"
+expr = "EXT_W * 2"
+note = "Every beam is a stacked pair - X, Y1 and Y2 alike"
+source = "machine/gantry-beam-joint.md"
+
+# ---------------------------------------------------------------- linear motion
+
+[[dim]]
+sym = "RAIL_STACK"
+value = 30
+provenance = "measured"
+note = "HGR20 rail plus HGH20 block, plate face to rail mounting face"
+source = "measured 2026-10-02, X/Y kit"
+
+[[dim]]
+sym = "BLOCK_BUTTED"
+value = 154.18
+provenance = "measured"
+note = "Two HGH20 blocks butted, full body. Sets the X end plate width."
+source = "machine/photos/y-bearing-blocks-butted-154.jpg, calipers 2026-10-02"
+
+[[dim]]
+sym = "BLOCK_PADS"
+value = 128.24
+provenance = "measured"
+note = "Two blocks butted, MACHINED PADS ONLY. The functional bearing floor."
+source = "machine/photos/y-bearing-blocks-machined-pads-128.jpg, calipers 2026-10-02"
+
+[[dim]]
+sym = "BLOCK_ROW_GAP"
+value = 45
+provenance = "measured"
+note = "Facing edges of the upper and lower Y block rows. The ENC_BORE_D lives in it."
+source = "measured 2026-10-02"
+
+# ---------------------------------------------------------------- plate thicknesses
+
+[[dim]]
+sym = "T_X_ENDPLATE"
+value = 12.7
+provenance = "nominal"
+note = "1/2in 6061. CALIPER IT - two 'nominal' thicknesses were wrong this session."
+source = "machine/end-plates-risers-and-spindle.md"
+
+[[dim]]
+sym = "T_DOUBLER"
+value = 12.7
+provenance = "nominal"
+note = "1/2in 6061, same stock as the end plate"
+
+[[dim]]
+sym = "T_SOLE_BRACKET"
+value = 6.35
+provenance = "nominal"
+note = "1/4in 6061"
+
+[[dim]]
+sym = "T_INTERPOSER"
+value = 9.525
+provenance = "nominal"
+note = "3/8in 6061. One thickness across the machine."
+
+[[dim]]
+sym = "T_FIN"
+value = 10
+provenance = "measured"
+note = "The 302 square measured 10 - metric plate, NOT 3/8in (9.525) and not 1/2in"
+source = "measured 2026-10-02"
+
+[[dim]]
+sym = "T_SIDE_PLATE"
+value = 3.175
+provenance = "nominal"
+note = "1/8in steel sheet. OPEN: the listing also says 11 gauge (3.04). A 3.36 was floated 2026-10-02 and WITHDRAWN as a guess."
+source = "caliper on arrival"
+
+[[dim]]
+sym = "T_BACK_JOIN_PLATE"
+value = 6.35
+provenance = "nominal"
+note = "1/4in 6061, X back joining plate across the beam seam"
+
+# ---------------------------------------------------------------- X end plate
+
+[[dim]]
+sym = "XEP_W"
+value = 154
+provenance = "derived"
+note = "Set by BLOCK_BUTTED at 154.18, rounded down. Not re-derived: narrowing buys nothing back, the blocks reach the rail end regardless."
+source = "machine/end-plates-risers-and-spindle.md"
+
+[[dim]]
+sym = "XEP_TOP_ABOVE_BEAM"
+value = 60
+provenance = "derived"
+note = "The plate stops at the top of the X beam's upper extrusion = EXT_W above the Y beam top"
+
+[[dim]]
+sym = "XEP_BOLT_REAR"
+value = 15
+provenance = "derived"
+note = "Rear M8 pair from the plate's BACK EDGE. Beam back face flush with that edge, bolt EXT_BORE_INSET in."
+
+[[dim]]
+sym = "XEP_BOLT_FRONT"
+expr = "EXT_W - EXT_BORE_INSET"
+note = "Front M8 pair from the back edge. Follows from the bores being symmetric."
+
+[[dim]]
+sym = "BEAM_FRONT_FROM_BACK_EDGE"
+expr = "EXT_W"
+note = "The X beam's front face, from the plate's back edge. THE SHELF HOLES KEY OFF THIS - it moved on 2026-10-02 when the beam went flush, and that is what put the shelf's rear bolt at Y 0."
+
+[[dim]]
+sym = "BLOCK_CENTROID_Y"
+expr = "XEP_W / 2"
+note = "Y block group centroid, from the plate's back edge"
+
+[[dim]]
+sym = "BEAM_CENTRELINE_Y"
+expr = "EXT_W / 2"
+note = "X beam centreline from the plate's back edge, beam flush with it"
+
+[[dim]]
+sym = "HANG_ARM"
+expr = "139 - (BLOCK_CENTROID_Y - BEAM_CENTRELINE_Y)"
+note = "Arm from the block centroid to the forward-hanging mass. 139 is the centred case recorded in the prose."
+
+# ---------------------------------------------------------------- the Y ball nut chain
+
+[[dim]]
+sym = "BK12_STANDOFF_ASBUILT"
+value = 5
+provenance = "measured"
+note = "BK12/BF12 mounted 5 above the extrusion, as built"
+
+[[dim]]
+sym = "NUT_FACE_BELOW_BEAM_ASBUILT"
+value = 58
+provenance = "measured"
+note = "Beam underside to the ball nut's downward mounting face, as built with the 5 mm standoff"
+source = "measured 2026-10-02"
+
+[[dim]]
+sym = "NUT_FACE_BELOW_BEAM"
+expr = "NUT_FACE_BELOW_BEAM_ASBUILT + (T_INTERPOSER - BK12_STANDOFF_ASBUILT)"
+note = "The interposer replaces the 5 mm standoff, so the nut face drops by the difference"
+
+[[dim]]
+sym = "XEP_H"
+expr = "XEP_TOP_ABOVE_BEAM + BEAM_H + NUT_FACE_BELOW_BEAM"
+note = "X end plate height. Bottom level with the nut's mounting face."
+
+[[dim]]
+sym = "XEP_BOTTOM"
+expr = "0 - (BEAM_H + NUT_FACE_BELOW_BEAM)"
+note = "Plate bottom, measured from the Y beam top. Negative is down."
+
+[[dim]]
+sym = "SCREW_AXIS_X"
+expr = "T_X_ENDPLATE + RAIL_STACK + (EXT_W / 2)"
+note = "Y screw centreline, from the X end plate's INNER face"
+
+[[dim]]
+sym = "NUT_FACE_X"
+value = 52
+provenance = "vendor"
+note = "Ball nut mounting face, along X. The long dimension, parallel with the X beam."
+source = "given 2026-10-02"
+
+[[dim]]
+sym = "NUT_FACE_Y"
+value = 40
+provenance = "vendor"
+note = "Ball nut mounting face, along Y"
+source = "given 2026-10-02"
+
+[[dim]]
+sym = "NUT_PATTERN_X"
+value = 40
+provenance = "vendor"
+note = "4 x M5 THREADED INTO THE NUT - not through-holes. Pattern along X."
+
+[[dim]]
+sym = "NUT_PATTERN_Y"
+value = 24
+provenance = "vendor"
+note = "Pattern along Y"
+
+[[dim]]
+sym = "NUT_INSET_X"
+expr = "(NUT_FACE_X - NUT_PATTERN_X) / 2"
+note = "Closes exactly at 6, which is how the centred pattern was confirmed"
+
+[[dim]]
+sym = "NUT_INSET_Y"
+expr = "(NUT_FACE_Y - NUT_PATTERN_Y) / 2"
+note = "Closes exactly at 8. A 7 was given first and corrected."
+
+[[dim]]
+sym = "NUT_BOLT_X_NEAR"
+expr = "SCREW_AXIS_X - (NUT_PATTERN_X / 2)"
+note = "Inboard M5 column, from the end plate's inner face"
+
+[[dim]]
+sym = "NUT_BOLT_X_FAR"
+expr = "SCREW_AXIS_X + (NUT_PATTERN_X / 2)"
+note = "Outboard M5 column"
+
+[[dim]]
+sym = "SOLE_REACH"
+expr = "(SCREW_AXIS_X + (NUT_FACE_X / 2)) - (T_X_ENDPLATE + T_DOUBLER)"
+note = "Free span of the sole bracket, doubler's outer face to the nut face's outboard edge"
+
+[[dim]]
+sym = "THRUST_ARM"
+expr = "SCREW_AXIS_X - T_X_ENDPLATE"
+note = "Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for."
+
+[[dim]]
+sym = "DOUBLER_SEATING"
+expr = "T_X_ENDPLATE + T_DOUBLER"
+note = "Seating width at the plate's bottom with the doubler on"
+
+[[dim]]
+sym = "DOUBLER_H"
+value = 60
+provenance = "OPEN"
+note = "OPEN: gated on the LOWER BLOCK ROW's bottom edge, which shares this face. NOT gated on the Y beam underside - the doubler sits inboard of the beam's inside face."
+
+# ---------------------------------------------------------------- the front fin
+
+[[dim]]
+sym = "FIN_STOCK"
+value = 302
+provenance = "measured"
+note = "The square is a measured 302, not a nominal 12in"
+
+[[dim]]
+sym = "FIN_KERF"
+value = 2
+provenance = "nominal"
+note = "The single diagonal cut"
+
+[[dim]]
+sym = "FIN_TOP_W"
+value = 100
+provenance = "derived"
+note = "FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation"
+
+[[dim]]
+sym = "FIN_BASE_W"
+expr = "FIN_STOCK - FIN_TOP_W - FIN_KERF"
+
+[[dim]]
+sym = "FIN_COL_OUTB"
+value = 35
+provenance = "derived"
+note = "Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value."
+
+[[dim]]
+sym = "FIN_COL_INB"
+expr = "FIN_COL_OUTB + (EXT_W / 2)"
+note = "Inboard M8 column. 65."
+
+[[dim]]
+sym = "FIN_OVERHANG"
+expr = "FIN_COL_OUTB - EXT_BORE_INSET"
+note = "Fin overhanging the Y beam's outboard face"
+
+[[dim]]
+sym = "FIN_PROUD"
+expr = "FIN_OVERHANG - T_SIDE_PLATE"
+note = "Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The curb must terminate short of the riser's station."
+
+[[dim]]
+sym = "WINDOW_W"
+value = 62
+provenance = "derived"
+note = "Clearance for the cast stepper frame"
+
+[[dim]]
+sym = "WINDOW_H"
+value = 50
+provenance = "derived"
+
+[[dim]]
+sym = "WINDOW_OUTB"
+value = 19
+provenance = "measured"
+note = "Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7."
+
+# ---------------------------------------------------------------- Z carriage
+
+[[dim]]
+sym = "SPACER_T_ASFOUND_L"
+value = 16.41
+provenance = "measured"
+note = "NOT 5/8in (15.875). The repo carried the fraction as if it were the dimension."
+
+[[dim]]
+sym = "SPACER_T_ASFOUND_R"
+value = 16.43
+provenance = "measured"
+note = "0.02 from its pair - at caliper repeatability, and about to be made moot by the skim"
+
+[[dim]]
+sym = "SPACER_SKIM"
+value = 1
+provenance = "measured"
+note = "The ball nut housing sits this far below the spacers. Both spacers get faced by it, IN ONE SETUP."
+
+[[dim]]
+sym = "SPACER_T"
+expr = "SPACER_T_ASFOUND_L - SPACER_SKIM"
+note = "After facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once cut."
+
+[[dim]]
+sym = "T_Z_PLATE"
+value = 12.7
+provenance = "nominal"
+note = "1/2in 6061"
+
+[[dim]]
+sym = "CLAMP_BORE_OFFSET"
+value = 50
+provenance = "vendor"
+note = "Clamp mounting face to the 80 bore centre - half of the clamp's 100"
+
+[[dim]]
+sym = "SPINDLE_OFFSET"
+expr = "RAIL_STACK + SPACER_T + T_Z_PLATE + CLAMP_BORE_OFFSET"
+note = "X carriage plate face to the spindle centreline. Was recorded as 109 before the skim."
+
+[[dim]]
+sym = "T_X_CARRIAGE_PLATE"
+value = 12.7
+provenance = "nominal"
+
+[[dim]]
+sym = "GANTRY_ARM"
+expr = "SPINDLE_OFFSET + RAIL_STACK + T_X_CARRIAGE_PLATE + 35"
+note = "X beam NEUTRAL AXIS to the spindle centreline - the arm for gantry bending. The 35 is the beam face to neutral axis, recorded in the prose as approximate."
+
+# ---------------------------------------------------------------- spindle
+
+[[dim]]
+sym = "SPINDLE_D"
+value = 80
+provenance = "vendor"
+source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
+
+[[dim]]
+sym = "SPINDLE_BODY_L"
+value = 199
+provenance = "OPEN"
+note = "OPEN AND CONTESTED: the prose says 199 nose-flange-to-rear, the nameplate reads PHI80x213, and 199 + the 25 mm front cap would be 224. No reading reconciles. PUT A TAPE ON THE SPINDLE."
+source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
+
+[[dim]]
+sym = "SPINDLE_MASS_KG"
+value = 5.2
+unit = "kg"
+provenance = "vendor"
+
+[[dim]]
+sym = "CLAMP_CENTRES"
+value = 116
+provenance = "derived"
+note = "Set by bringing the clamp centres in so the M5 counterbores clear the M8 column"
+
+[[dim]]
+sym = "CLAMP_AXIAL"
+value = 55
+provenance = "vendor"
+note = "Clamp's axial dimension"
+
+[[dim]]
+sym = "CLAMP_PAIR_SPAN"
+expr = "CLAMP_CENTRES + CLAMP_AXIAL"
+note = "Fits inside SPINDLE_BODY_L on either the 199 or the 213 reading, which is why the body dispute does not block the clamps"

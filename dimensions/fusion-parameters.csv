@@ -1,0 +1,65 @@
+EXT_W,mm,60,"[part] 8020 30-6060 section, 60 x 60"
+EXT_BORE_INSET,mm,15,"[part] Corner bores sit 15 in from each face. Four corners, so symmetric."
+BEAM_H,mm,120,"[derived] Every beam is a stacked pair - X, Y1 and Y2 alike"
+RAIL_STACK,mm,30,"[measured] HGR20 rail plus HGH20 block, plate face to rail mounting face"
+BLOCK_BUTTED,mm,154.18,"[measured] Two HGH20 blocks butted, full body. Sets the X end plate width."
+BLOCK_PADS,mm,128.24,"[measured] Two blocks butted, MACHINED PADS ONLY. The functional bearing floor."
+BLOCK_ROW_GAP,mm,45,[measured] Facing edges of the upper and lower Y block rows. The ENC_BORE_D lives in it.
+T_X_ENDPLATE,mm,12.7,[nominal] 1/2in 6061. CALIPER IT - two 'nominal' thicknesses were wrong this session.
+T_DOUBLER,mm,12.7,"[nominal] 1/2in 6061, same stock as the end plate"
+T_SOLE_BRACKET,mm,6.35,[nominal] 1/4in 6061
+T_INTERPOSER,mm,9.525,[nominal] 3/8in 6061. One thickness across the machine.
+T_FIN,mm,10,"[measured] The 302 square measured 10 - metric plate, NOT 3/8in (9.525) and not 1/2in"
+T_SIDE_PLATE,mm,3.175,[nominal] 1/8in steel sheet. OPEN: the listing also says 11 gauge (3.04). A 3.36 was floated 2026-10-02 and WITHDRAWN as a guess.
+T_BACK_JOIN_PLATE,mm,6.35,"[nominal] 1/4in 6061, X back joining plate across the beam seam"
+XEP_W,mm,154,"[derived] Set by BLOCK_BUTTED at 154.18, rounded down. Not re-derived: narrowing buys nothing back, the blocks reach the rail end regardless."
+XEP_TOP_ABOVE_BEAM,mm,60,[derived] The plate stops at the top of the X beam's upper extrusion = EXT_W above the Y beam top
+XEP_BOLT_REAR,mm,15,"[derived] Rear M8 pair from the plate's BACK EDGE. Beam back face flush with that edge, bolt EXT_BORE_INSET in."
+XEP_BOLT_FRONT,mm,45,[derived] Front M8 pair from the back edge. Follows from the bores being symmetric.
+BEAM_FRONT_FROM_BACK_EDGE,mm,60,"[derived] The X beam's front face, from the plate's back edge. THE SHELF HOLES KEY OFF THIS - it moved on 2026-10-02 when the beam went flush, and that is what put the shelf's rear bolt at Y 0."
+BLOCK_CENTROID_Y,mm,77,"[derived] Y block group centroid, from the plate's back edge"
+BEAM_CENTRELINE_Y,mm,30,"[derived] X beam centreline from the plate's back edge, beam flush with it"
+HANG_ARM,mm,92,[derived] Arm from the block centroid to the forward-hanging mass. 139 is the centred case recorded in the prose.
+BK12_STANDOFF_ASBUILT,mm,5,"[measured] BK12/BF12 mounted 5 above the extrusion, as built"
+NUT_FACE_BELOW_BEAM_ASBUILT,mm,58,"[measured] Beam underside to the ball nut's downward mounting face, as built with the 5 mm standoff"
+NUT_FACE_BELOW_BEAM,mm,62.525,"[derived] The interposer replaces the 5 mm standoff, so the nut face drops by the difference"
+XEP_H,mm,242.525,[derived] X end plate height. Bottom level with the nut's mounting face.
+XEP_BOTTOM,mm,-182.525,"[derived] Plate bottom, measured from the Y beam top. Negative is down."
+SCREW_AXIS_X,mm,72.7,"[derived] Y screw centreline, from the X end plate's INNER face"
+NUT_FACE_X,mm,52,"[vendor] Ball nut mounting face, along X. The long dimension, parallel with the X beam."
+NUT_FACE_Y,mm,40,"[vendor] Ball nut mounting face, along Y"
+NUT_PATTERN_X,mm,40,[vendor] 4 x M5 THREADED INTO THE NUT - not through-holes. Pattern along X.
+NUT_PATTERN_Y,mm,24,[vendor] Pattern along Y
+NUT_INSET_X,mm,6,"[derived] Closes exactly at 6, which is how the centred pattern was confirmed"
+NUT_INSET_Y,mm,8,[derived] Closes exactly at 8. A 7 was given first and corrected.
+NUT_BOLT_X_NEAR,mm,52.7,"[derived] Inboard M5 column, from the end plate's inner face"
+NUT_BOLT_X_FAR,mm,92.7,[derived] Outboard M5 column
+SOLE_REACH,mm,73.3,"[derived] Free span of the sole bracket, doubler's outer face to the nut face's outboard edge"
+THRUST_ARM,mm,60,[derived] Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for.
+DOUBLER_SEATING,mm,25.4,[derived] Seating width at the plate's bottom with the doubler on
+DOUBLER_H,mm,60,"[OPEN] OPEN: gated on the LOWER BLOCK ROW's bottom edge, which shares this face. NOT gated on the Y beam underside - the doubler sits inboard of the beam's inside face."
+FIN_STOCK,mm,302,"[measured] The square is a measured 302, not a nominal 12in"
+FIN_KERF,mm,2,[nominal] The single diagonal cut
+FIN_TOP_W,mm,100,"[derived] FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation"
+FIN_BASE_W,mm,200,[derived]
+FIN_COL_OUTB,mm,35,[derived] Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value.
+FIN_COL_INB,mm,65,[derived] Inboard M8 column. 65.
+FIN_OVERHANG,mm,20,[derived] Fin overhanging the Y beam's outboard face
+FIN_PROUD,mm,16.825,[derived] Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The curb must terminate short of the riser's station.
+WINDOW_W,mm,62,[derived] Clearance for the cast stepper frame
+WINDOW_H,mm,50,[derived]
+WINDOW_OUTB,mm,19,[measured] Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7.
+SPACER_T_ASFOUND_L,mm,16.41,[measured] NOT 5/8in (15.875). The repo carried the fraction as if it were the dimension.
+SPACER_T_ASFOUND_R,mm,16.43,"[measured] 0.02 from its pair - at caliper repeatability, and about to be made moot by the skim"
+SPACER_SKIM,mm,1,"[measured] The ball nut housing sits this far below the spacers. Both spacers get faced by it, IN ONE SETUP."
+SPACER_T,mm,15.41,"[derived] After facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once cut."
+T_Z_PLATE,mm,12.7,[nominal] 1/2in 6061
+CLAMP_BORE_OFFSET,mm,50,[vendor] Clamp mounting face to the 80 bore centre - half of the clamp's 100
+SPINDLE_OFFSET,mm,108.11,[derived] X carriage plate face to the spindle centreline. Was recorded as 109 before the skim.
+T_X_CARRIAGE_PLATE,mm,12.7,[nominal]
+GANTRY_ARM,mm,185.81,"[derived] X beam NEUTRAL AXIS to the spindle centreline - the arm for gantry bending. The 35 is the beam face to neutral axis, recorded in the prose as approximate."
+SPINDLE_D,mm,80,[vendor]
+SPINDLE_BODY_L,mm,199,"[OPEN] OPEN AND CONTESTED: the prose says 199 nose-flange-to-rear, the nameplate reads PHI80x213, and 199 + the 25 mm front cap would be 224. No reading reconciles. PUT A TAPE ON THE SPINDLE."
+CLAMP_CENTRES,mm,116,[derived] Set by bringing the clamp centres in so the M5 counterbores clear the M8 column
+CLAMP_AXIAL,mm,55,[vendor] Clamp's axial dimension
+CLAMP_PAIR_SPAN,mm,171,"[derived] Fits inside SPINDLE_BODY_L on either the 199 or the 213 reading, which is why the body dispute does not block the clamps"
