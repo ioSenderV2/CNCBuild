@@ -158,49 +158,76 @@ them:
 | | |
 |---|---|
 | Bar | **60 mm wide × 120 mm long × 3/8" aluminium** - the casting's footprint is 80, so the bar runs **40 mm past it, inboard** |
-| Bar to extrusion | **4 × M5 flange bolts**, all in the 40 mm overhang, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
-| Counterbore | **none** - see below |
+| Bar to extrusion | **8 × M5 into T-nuts**, four per slot, in the `30-6060`'s bottom-face slots at 15 and 45 mm |
+| → in the 40 mm overhang | **4 × M5 flange**, no counterbore - nothing bears on them there |
+| → inside the casting footprint | **4 × M5 button head, counterbored** at **14 and 43 mm** along the bar |
 | Casting to bar | its 6 through holes, **tapped into 3/8"** = **1.9 × D** |
 
 ✅ **3/8" confirmed 2026-10-02, and it is now a thread-engagement decision only.** M5 into 9.525 mm
 of 6061 sits in the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN** against an
 M5 class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds.
 
-📌 **The depth budget that used to drive this thickness is gone.** 3/8" was the minimum that would
-take a counterbore, and only a **button** head at that - ~3 mm deep leaving 6.5, where a socket
-head's 5 mm would leave ~4. **With the T-nut bolts out in the overhang as flange heads, no head
-sits under the casting and there are no counterbores in the bar at all.**
+📌 **The depth budget still applies, and it is why the heads are BUTTON.** 3/8" is the minimum that
+takes a counterbore, and only a button head at that - ~3 mm deep leaving 6.5 mm under it, where a
+socket head's 5 mm would leave ~4. The four bolts inside the casting's footprint are counterbored;
+the four in the overhang are flange heads and are not.
 
-✅ **Flange bolts, and the counterbore disappears.** Once the four bolts sit in the overhang nothing
-bears on their heads, so there is no reason to sink them - which deletes four counterbores in 3/8"
-aluminium from the job. A flange head also spreads its load on the bar's face, which is what you
-want on a T-slot clamp. **120 mm rather than 110 is to give the ~11.8 mm flanges room**: two bolts
-in a 40 mm overhang sit comfortably with edge distance, where 30 mm would be tight.
+✅ **Flange heads in the overhang only.** Nothing bears on those four, so there is no reason to sink
+them, and a flange spreads its load on the bar's face - which is what you want on a T-slot clamp.
+**120 mm rather than 110 is to give the ~11.8 mm flanges room**: two bolts in a 40 mm overhang sit
+comfortably with edge distance, where 30 mm would be tight.
 
 📌 **They clear the casting easily at 120.** The nearest casting hole is at row 71, and the
 overhang starts at 80, so the closest pair is ~17 mm apart along the bar and ~19 mm in 2D.
 
-✅ **The overhang is what makes this work, and it was the resolution to a real clash.** Both hole
-patterns are **centred on the beam** and so have no lateral freedom at all:
+🔴 **The clash that shapes all of this.** Both hole patterns are **centred on the beam**, so there
+is no lateral freedom whatsoever to separate them:
 
 | | Column positions across the 60 mm bar |
 |---|---|
-| Casting | **7 and 53** (46 apart) |
+| Casting | **7 and 53** - **46 apart, which is the BK12 pattern** |
 | T-nut slots | **15 and 45** (30 apart) |
 | Gap | **8 mm** |
 
+📌 **The 46 is BK12's own bolt spacing**, which the casting inherits along with the bearing housing.
+So **the 8 mm offset is a property of the pattern pair, not of this part**: 46 against the
+`30-6060`'s 30 mm slot centres puts every BK12-family footprint 8 mm off the slots when it lands
+flat on an extrusion face. Worth knowing before mounting any BK12, BF12 or derivative this way -
+the stagger-along-the-length answer below is the general fix, not a one-off.
+
 At 8 mm a Ø10 M5 counterbore and a tapped M5 leave **0.5 mm of wall** - the counterbore breaks into
-the top threads of a hole carrying the stepper frame. **Putting the T-nut bolts in the overhang
-removes the geometry rather than managing it**: they are no longer under the casting, so nothing
-has to clear anything.
+the top threads of a hole carrying the stepper frame. **So the four bolts that do sit inside the
+footprint are staggered along the bar instead**, into the gaps between the casting's rows:
+
+| Button head at | Nearest casting row | 2D centre distance | Web |
+|---|---|---|---|
+| **14** | 28 | 16.1 mm | ~8.6 mm |
+| **43** | 28 and 58 | 17.0 mm | ~9.5 mm |
+
+With that stagger the 8 mm lateral gap never comes into play - the counterbore is never near enough
+to a tapped hole to break into it. Both clear the bar's front edge, and they are 29 mm apart from
+each other.
+
+#### 🔴 Why there are bolts under the casting at all - a correction
+
+**An earlier version of this file had all four T-nut bolts in the overhang and called four
+sufficient.** That was wrong, and the error was in the model rather than the arithmetic: it treated
+the clamp as **spread along the bar** when all of it was at one end.
+
+**With nothing under the casting, the 80 mm of bar beneath it is an unclamped cantilever.** The
+thrust couple then opens the joint at precisely the free end, and the overhang bolts do not resist
+it - they are the hinge it pivots about. User, 2026-10-02: *"the 77mm of plate under the casting is
+floating with the 4 flange bolts on overhang helping it lift up."*
+
+✅ **Eight M5 with clamp at both ends is the arrangement.** The couple is then reacted over ~100 mm
+of bar - at ~700 N of thrust on the 34.5 mm arm, about 240 N against kilonewtons of clamp.
 
 📌 **The overhang can only go inboard.** At the stepper-mount end the casting's ledge hooks over the
 front edge, so there is no room that way.
 
-✅ **Four M5 is enough, checked rather than assumed.** Their job is to stop the bar sliding and hold
-it flat. The load case that could argue otherwise is peel: thrust acts at the screw axis **34.5 mm**
-off the extrusion face, so ~700 N gives ~24 N·m, which over a ~110 mm bar is about **220 N of
-uplift** - against kilonewtons of clamp from four M5 in T-nuts.
+**What the eight bolts are for:** stopping the bar sliding, and holding it flat against the
+extrusion along its whole length. Peel is the load case that sizes where they go, which is the
+correction above.
 
 📌 **The bar's inboard end is an input to the ball nut tongue**, which comes off the bottom of the X
 carriage plate - see below. The tongue is undesigned and goes on the one-shot mill trip, so it can
