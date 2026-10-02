@@ -524,13 +524,13 @@ takes about 3.2-3.4 of that back:
 | M8 column from the fin's outboard edge | **35** |
 | Corner bore inset in the `30-6060` | − 15 |
 | **Fin overhanging the Y beam's outboard face** | **20 mm** |
-| Side plate thickness | − ~3.2 |
-| **Fin proud of the side plate's outer face** | **~16.6 mm** |
+| Side plate, **1/8" nominal** | − 3.175 |
+| **Fin proud of the side plate's outer face** | **16.825 mm** |
 
-⚠️ **The side plate term wants one caliper reading.** It has been quoted here as **3.36**, while
-this file carries 1/8" = **3.175** and 11 gauge = **3.04** - and the sheet's delivered thickness is
-already an open item for exactly this reason. The three readings spread the answer over 16.6 to 17.0,
-which does not matter for the curb but should be written down once rather than carried three ways.
+⚠️ **3.175 is the nominal, and the delivered sheet is still an open item.** A 3.36 was floated
+on 2026-10-02 and **withdrawn as a guess** - it is not a measurement and should not reappear. If the
+sheet arrives as **11 gauge (3.04)** rather than 1/8", the figure becomes **16.96**. Either way it is
+~17 mm, which is what the curb decision turns on; **caliper the sheet on arrival and settle it here.**
 
 📌 **Second part this session to come back metric where the file assumed imperial** - the Z
 spacers read 16.41 against a nominal 5/8". **Caliper the stock, do not trust the fraction it was
@@ -2603,12 +2603,12 @@ slips.
   runs **19 to 81** - exactly the 19 mm strip measured off the template. Nothing about the casting
   or the bar had to move.
 - 🔴 ~~**The riser stands 1.8 mm proud of the side plate**~~ **WRONG, corrected 2026-10-02 to
-  ~16.6 mm.** The 1.8 was computed off a superseded M8 column at **20**; the column is **35**, which
+  16.8 mm.** The 1.8 was computed off a superseded M8 column at **20**; the column is **35**, which
   this file had already corrected elsewhere while this bullet kept the old consequence. The chain:
   **35 − 15 = 20 mm of fin overhanging the Y beam's outboard face**, less the side plate's
   thickness. ✅ Thickness of the fin is not a term, so the 10 mm stock is irrelevant to it.
   🔴 **The curb decision gets more important, not less** - a curb reaching the riser's station
-  would be held out by **~16.6 mm**, not 1.8, so terminating it short is now clearly required rather
+  would be held out by **~16.8 mm**, not 1.8, so terminating it short is now clearly required rather
   than merely tidy.
 - ⚠️ **Terminate the side curb short of the front riser's station** so the curb bears on the side
   plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
