@@ -1232,7 +1232,11 @@ warning in the project notes.
 | | |
 |---|---|
 | Spindle | **Ø80 mm, 2.2 kW, water-cooled**, with matching VFD |
-| Nameplate | **Φ80×200, 2.2 kW, 220 V, 8.5 A, 400 Hz** (24,000 rpm at 400 Hz) |
+| Vendor | **RATTMMOTOR**, kit with VFD, 80 mm clamp, ER20 collet and pump |
+| Nameplate | 🔴 **Φ80×213, 2.2 kW, 220 V, 8 A, 400 Hz** (24,000 rpm at 400 Hz) - **corrected 2026-10-02 from Φ80×200 and 8.5 A** |
+| **Mass** | **5.2 kg** |
+| Body | **stainless steel**, 4 bearings, **P4 class**, grease lubricated |
+| Runout | **< 0.01 mm**; precision tapered bore **0.003-0.005 mm** |
 | Collet | **ER20**, supplied with Ø6 mm, range Ø1-12 mm |
 | Cooling | two **Ø8 mm** water fittings, exiting **radially at the rear** |
 | Clamps | **two 80 mm aluminium clamps**, one at each end of the spindle |
@@ -1243,7 +1247,34 @@ warning in the project notes.
 already carried in the project notes for a round-body spindle. Eight M8 holding the spindle is not
 where this assembly will be soft.
 
+### 🔴 Open: 213 against 199 - the listing and this file disagree by 14 mm
+
+**The vendor listing committed 2026-10-02** gives the nameplate designation as **Φ80×213**, and
+its drawing carries a **213 mm** dimension spanning the body to the rear end, plus a **27 mm** segment
+at the rear and a **33 mm** dimension across the collet nut. See
+[`../manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png`](../manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png).
+
+⚠️ **That does not reconcile with the 199 below, and 199 is the number this file says carries
+the design.** Neither does it reconcile as 199 + the 25 mm front cap, which would give 224. The three
+candidate readings are 14-25 mm apart:
+
+| Reading | Body length |
+|---|---|
+| This file, "nose flange to rear, the Ø80 body" | **199** |
+| Nameplate designation Φ80×213 and the listing's 213 dimension | **213** |
+| 199 + the 25 mm front cap | 224 |
+
+🔴 **Do not resolve this from either drawing - put a tape on the spindle.** It is a part in hand,
+the measurement takes a minute, and the number feeds the clamp positions and the still-open vertical
+arm from the X beam to the spindle nose. **Until it is measured, treat 199 as provisional rather than
+settled**, which is a change from how the section below reads.
+
+📌 **The clamps are not at risk either way.** At 116 mm centres with 55 mm axial clamps the pair
+spans 171 mm, which fits inside 199 as well as 213. It is the *vertical* chain that moves.
+
 ### The body dimensions, off the vendor drawing
+
+⚠️ **Superseded in part - read the 213-against-199 note above first.**
 
 The three dimensions on the product drawing are **sequential, not overlapping** - confirmed by the
 user 2026-09-30:
