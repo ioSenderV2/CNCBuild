@@ -75,3 +75,8 @@ SHELF_Z_COUPLE,mm,20,[derived] The lever resisting the bar's nose-down pitch abo
 SHELF_BAR_TOP,mm,-60,[derived] Z from the Y beam top - the underside of the X beam's bottom extrusion
 SHELF_BAR_BOTTOM,mm,-110.8,[derived]
 SHELF_BOLT_LOW_Z,mm,-95.8,[derived] Machine Z of the lower bolt. Near the lower bearing block row - hence the blind tap.
+SHELF_SHIM_W,mm,25.4,"[derived] The 1in shim strip on hand is exactly the bar's width, so a strip cut to SHELF_BAR_L is a full-face shim. Slot it open at Y 15 and Y 45 to clear the vertical M8."
+BEAM_BOLT_CLEARANCE,mm,9,"[derived] 9 mm clearance on M8 where a plate meets extrusion - the repo's deliberate figure, the joint working by friction"
+ROLL_RANGE,mm,0.5,"[derived] Vertical float of the beam in its own bolt holes, and therefore the CEILING on shim-based roll - about 0.5. Caps the adjustment; the shim stack does not."
+BEAM_LEN,mm,1000,"[part] Span between the two shelves, so the lever the roll shim works over"
+ROLL_RANGE_PER_100,mm,0.05,"[derived] Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on hand, is worth 0.003 at the same circle."

@@ -89,6 +89,11 @@ Registry updated: **2026-10-02**
 | **SHELF_BAR_TOP** | -60 mm | derived |  | Z from the Y beam top - the underside of the X beam's bottom extrusion |
 | **SHELF_BAR_BOTTOM** | -110.8 mm | derived | SHELF_BAR_TOP - SHELF_BAR_H |  |
 | **SHELF_BOLT_LOW_Z** | -95.8 mm | derived | SHELF_BAR_BOTTOM + SHELF_HORIZ_Z_LOW | Machine Z of the lower bolt. Near the lower bearing block row - hence the blind tap. |
+| **SHELF_SHIM_W** | 25.4 mm | derived | SHELF_BAR_W | The 1in shim strip on hand is exactly the bar's width, so a strip cut to SHELF_BAR_L is a full-face shim. Slot it open at Y 15 and Y 45 to clear the vertical M8. |
+| **BEAM_BOLT_CLEARANCE** | 9 mm | derived |  | 9 mm clearance on M8 where a plate meets extrusion - the repo's deliberate figure, the joint working by friction |
+| **ROLL_RANGE** | 0.5 mm | derived | (BEAM_BOLT_CLEARANCE - 8) / 2 | Vertical float of the beam in its own bolt holes, and therefore the CEILING on shim-based roll - about 0.5. Caps the adjustment; the shim stack does not. |
+| **BEAM_LEN** | 1000 mm | part |  | Span between the two shelves, so the lever the roll shim works over |
+| **ROLL_RANGE_PER_100** | 0.05 mm | derived | ROLL_RANGE / BEAM_LEN * 100 | Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on hand, is worth 0.003 at the same circle. |
 
 ## Not confirmed on the real part
 
@@ -107,4 +112,4 @@ numbers in one session on 2026-10-02.
 - **T_Z_PLATE** (nominal) = 12.7 mm - feeds 2: GANTRY_ARM, SPINDLE_OFFSET
 - **T_X_CARRIAGE_PLATE** (nominal) = 12.7 mm - feeds 1: GANTRY_ARM
 - **SPINDLE_BODY_L** (OPEN) = 199 mm - nothing depends on it
-- **SHELF_BAR_W** (nominal) = 25.4 mm - nothing depends on it
+- **SHELF_BAR_W** (nominal) = 25.4 mm - feeds 1: SHELF_SHIM_W
