@@ -1473,6 +1473,18 @@ Each block caps the plate's top edge and overhangs forward over the rail end:
 | Width, across the plate | **47 mm** - 154 − 60 = 94, halved, less whatever relief is wanted at the casting |
 | Front-to-back | **32.5 mm** = **12.5 of plate + 20 of rail**, so the overhang is flush with the rail top |
 | Vertical thickness | ⚠️ **not yet specified** - the superseded single plate was 1/4" |
+| Fixing | **2 × M4 socket head** per block, down through it into tapped holes in the plate's **12.7 mm top edge** |
+
+✅ **M4 rather than M5, and edge distance is why.** Tapping the plate's 12.7 mm edge leaves
+**4.35 mm of wall** each side of an M4 against 3.85 for an M5 - the smaller bolt is the better one
+into an edge that thin.
+
+📌 **Strength is not the constraint, and the governing case is not the impact.** A ~10 kg carriage
+at rapid carries well under a joule. What sizes the joint is a **stalled motor**: a 3 N·m NEMA 23
+on a 1605 screw makes roughly **3.4 kN** of thrust, which across two blocks and two bolts each is
+~**850 N per bolt** against an M4 class 8.8's ~5.1 kN proof load. The thread holds too - M4 into
+6061 at 2.5 × D shears near 15 kN - so the bolt stays the weak link, which is the right way round
+for something that should fire once in the machine's life.
 
 ✅ **This is better than the plate it replaces, not just a way round the casting.** Each block sits
 **directly over its own rail** - centres at ~23.5 and ~130.5 against rail centrelines at 19.5 and
