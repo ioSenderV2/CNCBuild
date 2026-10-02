@@ -189,11 +189,14 @@ is no lateral freedom whatsoever to separate them:
 | T-nut slots | **15 and 45** (30 apart) |
 | Gap | **8 mm** |
 
-📌 **The 46 is BK12's own bolt spacing**, which the casting inherits along with the bearing housing.
-So **the 8 mm offset is a property of the pattern pair, not of this part**: 46 against the
-`30-6060`'s 30 mm slot centres puts every BK12-family footprint 8 mm off the slots when it lands
-flat on an extrusion face. Worth knowing before mounting any BK12, BF12 or derivative this way -
-the stagger-along-the-length answer below is the general fix, not a one-off.
+📌 **The 46 is BK12's own bolt spacing**, which the casting inherits along with the bearing housing
+- 7 + 46 + 7 across a 60 mm face. So **the 8 mm offset is a property of the pattern pair, not of
+this part**, and it is just **half the difference of the two spacings: (46 − 30) / 2 = 8**, both
+patterns being centred on the beam.
+
+That makes it general: **any BK12-family footprint lands 8 mm off the slots** when bolted flat to a
+`30-6060` face. The stagger-along-the-length answer below is the fix for all of them, not a one-off
+here.
 
 At 8 mm a Ø10 M5 counterbore and a tapped M5 leave **0.5 mm of wall** - the counterbore breaks into
 the top threads of a hole carrying the stepper frame. **So the four bolts that do sit inside the
