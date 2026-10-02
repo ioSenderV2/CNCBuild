@@ -1961,8 +1961,27 @@ about does not arise.
 8 is what makes the pattern close on both axes - if a 7 survives in any drawing it is the superseded
 number.
 
-⚠️ **Open: which of 40 / 52 runs along Y.** The sole plate's own outline and the clearance to the
-bar's inboard end both key off it.
+#### ✅ The face's orientation: the long dimension runs along X - 2026-10-02
+
+**The nut block's long dimension is parallel with the X beam**, so the **52 runs along X** and the
+**40 along Y**. Carrying the pattern through - the pattern's 40 goes with the face's 52, its 24 with
+the face's 40:
+
+| About the nut face centre | |
+|---|---|
+| Four M5 at | **± 20 mm in X**, **± 12 mm in Y** |
+| Face extent | **52 along X**, **40 along Y** |
+
+📌 **The consequence for the sole plate is that it reaches outboard, not fore-aft.** It needs only
+40 mm of the plate's 154 mm Y extent to cover the flange, but 52 mm of span in X - all of it
+outboard of the end plate's plane if the face is centred on the screw axis, which would put the
+screw axis at least 26 mm out on its own. That is a **constraint on the still-open X offset**, not a
+measurement of it.
+
+⚠️ **One interpretation to confirm.** "Block" was read as the **ball nut housing**, which is the
+question that had been asked. The other candidate - the Y bearing block - cannot be meant: its long
+axis has to follow the rail, which runs along **Y**, so "parallel with the X beam" is impossible for
+it. **If "block" meant something else, these four holes are 90° out.**
 
 ⚠️ 🔴 **Open, and the last thing blocking the sole plate: the X offset from the end plate's inner
 face to the Y screw axis.** The screw runs under the Y beam and the plate is on the beam's inside
@@ -2354,7 +2373,9 @@ slips.
   M8 wall worry is moot.
 - ✅ ~~**The nut pattern's edge inset**~~ **Closed 2026-10-02: 8 mm**, corrected from a first-given 7.
   The pattern is centred - 8 + 24 + 8 = 40 and 6 + 40 + 6 = 52, both closing exactly.
-- ⚠️ **Which of the nut face's 40 / 52 runs along Y.**
+- ✅ ~~**Which of the nut face's 40 / 52 runs along Y**~~ **Closed 2026-10-02: the long dimension is
+  parallel with the X beam**, so 52 along X and 40 along Y, putting the four M5 at ±20 in X and ±12
+  in Y. ⚠️ Rests on reading "block" as the nut housing - see the note in that section.
 - 🔴 **The X offset from the X end plate's inner face to the Y screw axis.** The last thing blocking
   the sole plate outline, and it decides whether Y thrust is in-plane shear or a twisting moment on
   the end plate. **A machine measurement.**
