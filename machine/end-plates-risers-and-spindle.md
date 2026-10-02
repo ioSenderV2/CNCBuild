@@ -422,22 +422,18 @@ fin is the only thing that buys outboard material.
 square when **top + base = 12**. So 3" / 9" works, and **4" / 8" works**, but 4" / 9" needs a 13"
 blank.
 
-✅ **Measured off the MDF template, 2026-10-02 - and the strips are comfortable:**
+✅ **Measured off the MDF template, 2026-10-02: the outboard strip is 19 mm**, from the factory
+edge reference.
 
-| Side of the window | Width |
-|---|---|
-| **Outboard** (the straight factory edge) | **19 mm** |
-| **Inboard** (the tapered side) | **60 mm at the top of the window, 72 mm at the bottom** |
+**That is the only strip that matters, and it was the number in doubt** - the fear was 7, which
+would not have worked. At 19 the window sits in the plate with no thin edge, so **the 12" square
+still yields both plates** and no bigger blank is needed. (The inboard side runs 60-72 mm across
+the window's height; recorded only to show it is nowhere near a constraint.)
 
-**19 mm was the number in doubt** - the fear was 7, which would not have worked. At 19 the window
-sits in the plate without a thin strip anywhere, so **the 12" square still yields both plates** and
-no bigger blank is needed.
-
-📌 **Do not back out a taper formula from those two figures.** 60 → 72 over the window implies a
-rate that does not match a straight corner-to-corner line on a 4" / 8" plate, and the template -
-which is a physical part - is the authority. The taper evidently does not run from corner to
-corner; the earlier photo shows the top running parallel before the diagonal starts. **Take
-geometry off the template, not off the nominal outline.**
+📌 **The taper angle is free.** What is fixed is **4" at the top** and a base that comes out
+**slightly under 8"**, because the single diagonal cut takes half the saw kerf off each half. The
+exact base figure is not a number anything depends on - and per the layout rule above, working
+from the factory edges keeps the kerf out of the hole pattern entirely.
 
 📌 **Thickness cannot buy edge distance.** A 7 mm strip is 7 mm at 3/8" or at 1/2". What 1/2" buys
 back is the **bending stiffness** the window removes, which is a different question and a real gain.
@@ -508,10 +504,9 @@ on a corner-to-corner 4" / 8" outline the perpendicular distance at T2 comes out
 rather than 34. Still well clear of the ~12 that was rejected, so **nothing here is broken** - but
 it is half the margin it was.
 
-⚠️ **And that 17 is indicative only**, because it assumes a straight corner-to-corner taper, which
-the template's own 60 / 72 strip measurements contradict. **Check T2's edge distance on the
-template before drilling.** If it is tighter than wanted, moving T2 to ~160 restores it for about
-10% less couple.
+⚠️ **17 is indicative** - the taper angle is not pinned, only 4" at the top and a base just under
+8". **Check T2's edge distance on the template before drilling.** If it is tighter than wanted,
+moving T2 to ~160 restores it for about 10% less couple.
 
 🔴 **The bolts are now the soft part, not the plate.** A 9.6× stiffer fin only pays if the base is
 genuinely fixed, and the reaction at those bolts is vertical load bearing into plywood. The project
@@ -2006,7 +2001,8 @@ slips.
   clearance is bought **vertically**, by bringing the clamp centres to **116 mm**. Worst case is
   **14.1 mm centre-to-centre**, about 5 mm of web. **No tram sub-plate, no added moment arm.** Full
   working in the Z plate section.
-- **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently. 📌 **Ask the X travel directly** rather than deriving it from the model: travel is the number the 1200 mm plate actually waits on, and the model is only a proxy for it.
+- **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
+- 🔴 **Can Garen's mill traverse ~1200 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a 1200 mm plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height datum between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
 - **Z travel floor** - where the confirmed 246 mm sits relative to the spoilboard. A machine
   measurement, and the one item the travel budget still waits on.
 - **Vertical distance from the X beam centreline down to the spindle nose, Z fully retracted** - plus
