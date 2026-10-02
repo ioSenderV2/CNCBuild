@@ -133,6 +133,34 @@ M5 standoffs the motor currently stands on - see
 [`photos/y-beam-stepper-mounted.jpg`](photos/y-beam-stepper-mounted.jpg) for the arrangement it
 supersedes.
 
+### 🔴 Every axis gets one - X, Y1, Y2 and Z
+
+**Decided 2026-10-02, and for one reason on all four: get rid of the standoffs.** This started as a
+Y-axis change and is not one; it is now the machine's standard way of mounting a motor to a screw.
+
+| Axis | Where the casting goes | BF12 stays |
+|---|---|---|
+| **Y1, Y2** | Under the beam at the **front**, on a 60 × 120 × 3/8" interposer bar | On the rear plate's inside face |
+| **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | On a 3/8" interposer at the far end |
+| **Z** | On the **X carriage plate** - 1/2" aluminium, so **no interposer**, the casting taps straight in | At the bottom of the plate |
+
+📌 **Only Y and X need an interposer, and for the same reason**: the casting lands on an extrusion
+face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z lands on 1/2" plate -
+2.5 × D - so it bolts direct.**
+
+✅ **Every interposer is 3/8" 6061** - settled 2026-10-02, one thickness across the machine. M5 into
+9.525 mm is **1.9 × D**, inside the 1.5-2 band aluminium wants, and the thread shears near **18 kN**
+against an M5 class 8.8 bolt breaking near **11** - so the plate thread outlasts the fastener. It
+also takes a button-head counterbore with 6.5 mm left under it, which is what the bolts inside the
+casting's footprint need. **1/2" was available and buys only margin**; its one effect would be the
+screw axis sitting 3.2 mm lower, which increases nut-to-beam clearance rather than eating it.
+
+⚠️ **Z's knock-ons are not worked through.** The casting is bulkier than the BK12 it replaces, and
+Z has a carefully worked travel budget around it: 246 mm with the blocks butted, the screw
+outrunning the rails by ~26 mm, and a **6" × 1" × 1/4" hard-stop plate bolted over the top of the
+carriage plate** that the rising block meets. **The casting sits at that same top end.** Check the
+stop plate still fits, and re-check the travel, before anything is cut.
+
 ### Why it was worth reopening a built axis
 
 Two complaints, and only one of them is a stiffness problem:
@@ -442,18 +470,17 @@ a `30-6060`'s bores sit 15 and 45 in from each face, so a stacked pair gives 15,
 |---|---|
 | Outboard edge, from the fin's outboard edge | **X = 19** |
 | Inboard edge | **X = 81** |
-| Top edge, below the fin's top | **120 mm + the interposer thickness** = **132.7 mm** at 1/2" |
-| Bottom edge | **182.7 mm** |
+| Top edge, below the fin's top | **120 mm + the interposer thickness** = **129.5 mm** at 3/8" |
+| Bottom edge | **179.5 mm** |
 
 ✅ **The horizontal position derives rather than being measured, and it agrees with the template.**
 The beam spans X 20-80, so its centreline - and the screw's - is **X 50**. A 62 mm window centred
 there runs **19 to 81**, giving the **19 mm outboard strip measured off the MDF**. Two independent
 routes to the same number.
 
-🔴 **Recorded as a formula, not just a number, because the interposer thickness is the one input
-still moving** - it was settled at 3/8" earlier the same day and this working uses 1/2". **At 3/8"
-the window rises 3.2 mm**, to 129.5. The 120 is the beam's own height, so the window's top edge
-lands on the casting's mounting face either way.
+📌 **Recorded as a formula as well as a number**, because the 120 is the beam's own height and the
+rest is the interposer - so if the bar ever goes to 1/2" the window drops 3.2 mm to 132.7 and
+nothing else changes. **The interposer is 3/8", confirmed 2026-10-02.**
 
 ### 🔴 The 62 × 50 window, and why the taper does not help it
 
@@ -1687,8 +1714,33 @@ the clamp centres came in to **116 mm** and the M8 rows to **±45.5 and ±70.5**
 
 ## The X gantry end plates
 
-**Two identical plates, 1/2" aluminium, 154 mm wide.** They carry the X beam, ride the Y rails on
-four bearing blocks, and mount the X ball screw supports and stepper.
+**Two identical plates, 1/2" aluminium, 154 mm wide**, stopping at the **top of the X beam**. They
+carry the X beam and ride the Y rails on four bearing blocks.
+
+### 🔴 Reworked 2026-10-02 - the screw and stepper left this plate
+
+The X axis gets a cast stepper frame like the others, mounted on an interposer on **top** of the X
+beam and overhanging the end. **Three things therefore come off the X end plate:**
+
+| Gone | Why |
+|---|---|
+| The **35 mm stepper shaft bore** | the shaft is up on the casting now, above the beam, not through the plate |
+| The **stepper mount pattern** | the motor bolts to the casting's own flange |
+| Everything in the stack-up **above +60** | the screw support and stepper no longer land on this plate at all |
+
+✅ **Both plates stop at the top of the X beam, +60 from the Y beam top, and stay identical.** The
+alternative was raising the far end by the interposer thickness to cover its end face - cosmetic -
+while the stepper end could not be raised at all, the casting overhanging it. Letting the stepper
+assembly hang unsupported costs nothing worth having: roughly **2.5 kg at ~70 mm is under 2 N·m**,
+and the load that matters is screw thrust, which runs **along** the beam and is reacted by the
+interposer's own bolt run rather than by anything beneath the overhang. **One drawing, one setup**
+is worth more on a one-shot trip than covering an end face.
+
+📌 **The four M8 into the top extrusion's corner bores sit below +60**, so nothing is lost by
+stopping there.
+
+✅ **The X interposer is 3/8", the same as Y** - settled 2026-10-02. One thickness across the
+machine; see the casting section for why 3/8" is the right number and not merely an available one.
 
 ✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
 (2026-10-02, calipers - see
@@ -1759,9 +1811,9 @@ anything that sets a plate.
 | From the Y beam top | |
 |---|---|
 | Four M8 into the **top extrusion's** corner bores, **9 mm clearance** - start just above the Y beam top | 0 |
-| Top of the extrusion | **+60 mm** |
-| Top of the ball screw support block mount | **+80 mm** |
-| Top of the stepper mount, motor on the outside, shaft through a **35 mm hole** | **+140 mm** |
+| **Top of the extrusion, and the top of the plate** | **+60 mm** |
+| ~~Top of the ball screw support block mount~~ | ~~+80~~ - **on the beam's top face now, not the plate** |
+| ~~Top of the stepper mount, shaft through a 35 mm hole~~ | ~~+140~~ - **on the casting now** |
 
 **The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
 a shelf - see below. This is the half-overlap: only the top extrusion is above the Y beam, which is
@@ -1855,34 +1907,23 @@ Two things to watch:
 Assembly falls out of this nicely: **bolt both end plates on, slide the T-nuts in, drop the beam onto
 the two shelves, then bolt down.** That is a one-person job, which the alternative is not.
 
-### Same pattern, minus the stepper holes on the idle end
+### ✅ The two plates are now genuinely identical
 
-**BF12 and BK12 share the same horizontal mounting pattern** - only the vertical holes differ (2
-against 4), and the horizontal ones are what get used here. So one support-block pattern serves both
-ends and there is no handedness to worry about.
+**Reworked 2026-10-02.** With the screw support and the stepper both off this plate, the thing that
+used to differentiate the two ends is gone.
 
-**The plate at the idle end gets no 35 mm hole and no stepper mount holes.** Everything else is
-common.
+❌ ~~"The plate at the idle end gets no 35 mm hole and no stepper mount holes. Everything else is
+common."~~ **Neither end has either any more**, so there is no idle-end variant - one drawing, one
+setup, two identical parts.
 
-This follows the precedent already set on the Y risers, where the steppers sit on the rear plates and
-the front ones were left clean. Drilling unused holes as interchangeability insurance was considered
-and rejected: **a plate that is built and calibrated does not get swapped**, and the cost is
-permanent holes in a visible part.
+📌 **The BK12-and-BF12-share-a-pattern note is retired too**, along with the "35 mm is enough for
+the coupler" working: the coupler now lives inside the casting, not in a bore through this plate.
 
-### 35 mm is enough for the coupler
-
-✅ **Measured: the coupler is 25 mm outside diameter**, so a 35 mm hole leaves 5 mm of annulus all
-round and the coupler and screw shaft both pass comfortably.
-
-Not a prediction - **the Y axes already run this exact arrangement**, stepper outboard, shaft through
-the plate, coupler inside. See [`photos/y-beam-coupler-bk12.jpg`](photos/y-beam-coupler-bk12.jpg).
-
-### ⚠️ Two different 35 mm holes will exist in this plate
-
-The **stepper shaft clearance** here, and the **encoder sensor bore** called for in
+✅ **And the 35 mm ambiguity resolves itself.** This file used to warn that two different 35 mm
+holes would exist in the X end plate - a stepper shaft clearance and the **encoder sensor bore**
+from
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
-Same diameter, same plate, different position and purpose. **Name them distinctly on the drawing**,
-or "the 35 mm hole in the X end plate" becomes ambiguous later.
+**Only the encoder bore remains**, so "the 35 mm hole in the X end plate" is now unambiguous.
 
 ---
 
