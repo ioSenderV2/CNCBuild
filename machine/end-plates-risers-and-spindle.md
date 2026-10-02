@@ -480,18 +480,26 @@ spacing directly.**
 **Y = 31 mm** above the plate's bottom edge - which is **30 mm down from the top of the 61 mm proud
 tongue** - plus the plate's bottom edge **bearing on the top skin** the way the outboard plate does.
 
-🔴 **175, not 200, and the reason is edge distance at the taper.** The plate narrows as it rises. At
-Y 31 it is about **213 mm** wide, so a bolt at X 200 would leave only ~13 mm to the tapered edge, and
-measured **perpendicular** to that edge - which is what counts, since it runs at 26.6 deg from
-vertical - about **12 mm**. That is less than the 9 mm hole's own diameter plus any sensible margin,
-on the bolt carrying the larger share of the moment. **At X 175 the perpendicular edge distance is
-~34 mm.** The couple is unchanged at 150 mm either way, so this costs nothing.
+📌 **T1 and T2 are those two bolts** - the labels are used below and were never defined. **T1 is
+the outboard one**, near the straight factory edge; **T2 is the inboard one**, near the tapered
+edge. T2 is the one that needs watching, because the taper is what takes its edge distance away.
+
+🔴 **175, not 200, and the reason is edge distance at the taper.** The plate narrows as it rises, so
+a bolt too far inboard runs out of material - and what counts is the distance measured
+**perpendicular** to the sloping edge, not horizontally. At X 200 that came out around **12 mm**,
+less than the 9 mm hole's own diameter plus any sensible margin, on the bolt carrying the larger
+share of the moment. X 175 cleared comfortably. **The couple is unchanged at 150 mm either way, so
+this costs nothing.**
 
 | | X | Y | Edge distance to the taper, perpendicular |
 |---|---|---|---|
-| T1 | **25** | **31** | n/a - outboard factory edge, 20.5 mm |
-| T2 | **175** | **31** | **~34 mm** |
+| **T1** - outboard | **25** | **31** | n/a - straight factory edge, 20.5 mm |
+| **T2** - inboard | **175** | **31** | ~34 mm *(9" base)* → **~17 mm at 8"**, see below |
 | ~~T2 as first drawn~~ | ~~200~~ | ~~31~~ | ~~~12 mm - rejected~~ |
+
+⚠️ **The figures in that working belong to the 9" base**: 213 mm of plate width at Y 31 and a
+26.6 deg taper. Both change at 4" / 8", which is why T2's margin is flagged below rather than
+carried.
 
 | Direction | What takes it |
 |---|---|
