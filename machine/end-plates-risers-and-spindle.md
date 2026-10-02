@@ -160,7 +160,16 @@ them:
 | Bar | **60 mm wide × 120 mm long × 3/8" aluminium** - the casting's footprint is 80, so the bar runs **40 mm past it, inboard** |
 | Bar to extrusion | **4 × M5 flange bolts**, all in the 40 mm overhang, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
 | Counterbore | **none** - see below |
-| Casting to bar | its 6 through holes, tapped into 3/8" = **1.9 diameters**, which is a proper thread |
+| Casting to bar | its 6 through holes, **tapped into 3/8"** = **1.9 × D** |
+
+✅ **3/8" confirmed 2026-10-02, and it is now a thread-engagement decision only.** M5 into 9.525 mm
+of 6061 sits in the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN** against an
+M5 class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds.
+
+📌 **The depth budget that used to drive this thickness is gone.** 3/8" was the minimum that would
+take a counterbore, and only a **button** head at that - ~3 mm deep leaving 6.5, where a socket
+head's 5 mm would leave ~4. **With the T-nut bolts out in the overhang as flange heads, no head
+sits under the casting and there are no counterbores in the bar at all.**
 
 ✅ **Flange bolts, and the counterbore disappears.** Once the four bolts sit in the overhang nothing
 bears on their heads, so there is no reason to sink them - which deletes four counterbores in 3/8"
