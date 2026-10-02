@@ -140,7 +140,7 @@ Y-axis change and is not one; it is now the machine's standard way of mounting a
 
 | Axis | Where the casting goes | BF12 stays |
 |---|---|---|
-| **Y1, Y2** | Under the beam at the **front**, on a 60 × 120 × 3/8" interposer bar | On the rear plate's inside face |
+| **Y1, Y2** | Under the beam at the **front**, on a 60 × 150 × 3/8" interposer bar | On the rear plate's inside face |
 | **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | On a 3/8" interposer at the far end |
 | **Z** | On the **X carriage plate** - 1/2" aluminium, so **no interposer**, the casting taps straight in | At the bottom of the plate |
 
@@ -185,31 +185,69 @@ them:
 
 | | |
 |---|---|
-| Bar | **60 mm wide × 120 mm long × 3/8" aluminium** - the casting's footprint is 80, so the bar runs **40 mm past it, inboard** |
-| Bar to extrusion | **8 × M5 into T-nuts**, four per slot, in the `30-6060`'s bottom-face slots at 15 and 45 mm |
-| → in the 40 mm overhang | **4 × M5 flange**, no counterbore - nothing bears on them there |
-| → inside the casting footprint | **4 × M5 button head, counterbored** at **14 and 43 mm** along the bar |
+| Bar | **60 mm wide × 150 mm long × 3/8" aluminium** |
+| Position | its **outboard end 30 mm past the fin's outer face**, so the casting and bar protrude through the window together |
+| Bar to extrusion | **6 × M5 flange bolts** in **3 rows**, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
+| Rows, from the bar's outboard end | **82, 110 and 138** |
+| Counterbores | **none anywhere** |
 | Casting to bar | its 6 through holes, **tapped into 3/8"** = **1.9 × D** |
 
-✅ **3/8" confirmed 2026-10-02, and it is now a thread-engagement decision only.** M5 into 9.525 mm
-of 6061 sits in the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN** against an
-M5 class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds.
+✅ **3/8" confirmed 2026-10-02, and it is a thread-engagement decision.** M5 into 9.525 mm of 6061
+sits in the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN** against an M5
+class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds. Same thickness on X;
+Z needs none, landing on 1/2" plate.
 
-📌 **The depth budget still applies, and it is why the heads are BUTTON.** 3/8" is the minimum that
-takes a counterbore, and only a button head at that - ~3 mm deep leaving 6.5 mm under it, where a
-socket head's 5 mm would leave ~4. The four bolts inside the casting's footprint are counterbored;
-the four in the overhang are flange heads and are not.
+#### The 30 mm protrusion is what sets everything else
 
-✅ **Flange heads in the overhang only.** Nothing bears on those four, so there is no reason to sink
-them, and a flange spreads its load on the bar's face - which is what you want on a T-slot clamp.
-**120 mm rather than 110 is to give the ~11.8 mm flanges room**: two bolts in a 40 mm overhang sit
-comfortably with edge distance, where 30 mm would be tight.
+Measuring along the beam from its end face, with the fin occupying 0 to −12.7:
 
-📌 **They clear the casting easily at 120.** The nearest casting hole is at row 71, and the
-overhang starts at 80, so the closest pair is ~17 mm apart along the bar and ~19 mm in 2D.
+| | |
+|---|---|
+| Fin's outer face | **−12.7** |
+| Bar's outboard end, 30 mm proud of it | **−42.7** |
+| Bar's inboard end, at 150 long | **+107.3** |
+| **Bar length actually over the beam** | **107.3 mm** - the only part that can reach a T-nut |
 
-🔴 **The clash that shapes all of this.** Both hole patterns are **centred on the beam**, so there
-is no lateral freedom whatsoever to separate them:
+🔴 **That is why the bar went to 150 and why the counterbores disappeared.** At 120 the bolted
+length would have been 77 mm and **all four** counterbored bolts would have fallen off the beam -
+the rows at 14 and 43 landing at −28.7 and +0.3. The casting's own tapped holes occupy bar
+coordinates 28 to 71, which is mostly past the beam's end, so there is simply nowhere under the
+casting to put a T-nut bolt. **Three rows of flange bolts inboard of the casting is the only
+arrangement available**, and 150 is what makes room for the third.
+
+**Why 82 / 110 / 138**, which are the two checks that bind:
+
+- **82 clears the casting's last tapped row at 71** - 11 mm along, 13.6 mm in 2D against the 8 mm
+  lateral offset, leaving ~5 mm of web.
+- **138 leaves 12 mm to the bar's inboard end**, enough for an 11.8 mm flange head.
+
+✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
+over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M5 of clamp.
+
+⚠️ **The casting now cantilevers 42.7 mm past the beam's end**, carried by the bar alone. That is
+accepted, and it is the same call made on X: roughly 2.5 kg at that reach is under 2 N·m, and the
+thrust it carries runs **along** the beam rather than down.
+
+#### ✅ The ball nut clears the bar by 5 mm
+
+The bar hangs 9.525 mm below the beam's underside, directly in the screw's lane, so the nut has to
+pass beneath it for the whole 107 mm the bar is over the beam.
+
+| | |
+|---|---|
+| Beam underside to nut top | **3/8" + 5 mm = 14.5 mm** |
+| **Nut top to the bar's underside** | **5 mm** |
+
+**So the bar's length does not limit Y travel**, which is what the question was.
+
+❌ **And it is not the ball nut tongue that had to clear it.** An earlier note here said the bar's
+inboard end was an input to the tongue's design. **Wrong** - the tongue is vertical, on the nut's
+**outboard face**, so it never passes under the beam where the bar is. The two are in different
+planes. What had to clear was the nut housing itself, and it does, by 5 mm.
+
+#### 📌 The clash that shaped the earlier design, and why it is now moot
+
+Both hole patterns are **centred on the beam**, so there was never any lateral freedom:
 
 | | Column positions across the 60 mm bar |
 |---|---|
@@ -217,52 +255,26 @@ is no lateral freedom whatsoever to separate them:
 | T-nut slots | **15 and 45** (30 apart) |
 | Gap | **8 mm** |
 
-📌 **The 46 is BK12's own bolt spacing**, which the casting inherits along with the bearing housing
-- 7 + 46 + 7 across a 60 mm face. So **the 8 mm offset is a property of the pattern pair, not of
-this part**, and it is just **half the difference of the two spacings: (46 − 30) / 2 = 8**, both
-patterns being centred on the beam.
+**The 46 is BK12's own bolt spacing**, which the casting inherits along with the bearing housing -
+7 + 46 + 7 across a 60 mm face. So **the 8 mm offset is a property of the pattern pair, not of this
+part**: it is half the difference of the two spacings, **(46 − 30) / 2 = 8**. That makes it
+general - **any BK12-family footprint lands 8 mm off the slots** when bolted flat to a `30-6060`
+face.
 
-That makes it general: **any BK12-family footprint lands 8 mm off the slots** when bolted flat to a
-`30-6060` face. The stagger-along-the-length answer below is the fix for all of them, not a one-off
-here.
+At 8 mm a Ø10 M5 counterbore and a tapped M5 leave **0.5 mm of wall**, which is why an earlier
+design staggered four counterbored button heads along the bar to dodge the casting's rows.
 
-At 8 mm a Ø10 M5 counterbore and a tapped M5 leave **0.5 mm of wall** - the counterbore breaks into
-the top threads of a hole carrying the stepper frame. **So the four bolts that do sit inside the
-footprint are staggered along the bar instead**, into the gaps between the casting's rows:
+✅ **None of that survives, and the reason is worth keeping**: once the casting moved out to
+protrude through the window, there was no bar-over-beam left underneath it, so the counterbores
+went away entirely rather than being made to fit. **The clash was solved by the layout moving, not
+by the stagger.** Keep the 8 mm figure though - it will recur on any other BK12-family part bolted
+to an extrusion face.
 
-| Button head at | Nearest casting row | 2D centre distance | Web |
-|---|---|---|---|
-| **14** | 28 | 16.1 mm | ~8.6 mm |
-| **43** | 28 and 58 | 17.0 mm | ~9.5 mm |
+📌 **The bar can only extend inboard.** At the stepper-mount end the casting's ledge hooks over the
+front edge, so there is no room that way - which is why all six bolts are inboard of the casting
+rather than spread either side of it.
 
-With that stagger the 8 mm lateral gap never comes into play - the counterbore is never near enough
-to a tapped hole to break into it. Both clear the bar's front edge, and they are 29 mm apart from
-each other.
-
-#### 🔴 Why there are bolts under the casting at all - a correction
-
-**An earlier version of this file had all four T-nut bolts in the overhang and called four
-sufficient.** That was wrong, and the error was in the model rather than the arithmetic: it treated
-the clamp as **spread along the bar** when all of it was at one end.
-
-**With nothing under the casting, the 80 mm of bar beneath it is an unclamped cantilever.** The
-thrust couple then opens the joint at precisely the free end, and the overhang bolts do not resist
-it - they are the hinge it pivots about. User, 2026-10-02: *"the 77mm of plate under the casting is
-floating with the 4 flange bolts on overhang helping it lift up."*
-
-✅ **Eight M5 with clamp at both ends is the arrangement.** The couple is then reacted over ~100 mm
-of bar - at ~700 N of thrust on the 34.5 mm arm, about 240 N against kilonewtons of clamp.
-
-📌 **The overhang can only go inboard.** At the stepper-mount end the casting's ledge hooks over the
-front edge, so there is no room that way.
-
-**What the eight bolts are for:** stopping the bar sliding, and holding it flat against the
-extrusion along its whole length. Peel is the load case that sizes where they go, which is the
-correction above.
-
-📌 **The bar's inboard end is an input to the ball nut tongue**, which comes off the bottom of the X
-carriage plate - see below. The tongue is undesigned and goes on the one-shot mill trip, so it can
-be drawn clear, but whoever draws it needs to know the bar ends 120 mm in from the beam's end.
+**What the six bolts are for:** stopping the bar sliding, and holding it flat against the extrusion.
 
 ⚠️ **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
 it either steps too or holds the casting off its intended bearing face.
@@ -1172,7 +1184,7 @@ Current as of 2026-10-02.
 | **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
 | **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **1/2"** | 6061, with the 62 × 50 window |
 | **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
-| Cast stepper frame interposer bar | 60 × 80 × **3/8"** | 6061 |
+| Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, one per Y beam and per X end |
 | **X gantry end plates** | 154 mm wide × **1/2"** | 6061 - two identical plates, specified above |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
@@ -2038,7 +2050,7 @@ not any more:
 |---|---|
 | **Two Y front plates**, 1/2" | the 8-bolt corner-bore pattern *and* the 62 × 50 window |
 | **The 1200 mm rear plate**, 1/4" steel | two 8-bolt patterns a metre apart that must match extruded bores - and the part may exceed the machine's X travel |
-| **Two interposer bars**, 60 × 80 × 3/8" | twelve features in a small part, six of them tapped under a bearing face |
+| **Interposer bars**, 60 × 150 × 3/8" - two for Y, plus X | six tapped M5 under a bearing face and six flange clearance holes, all in a small part |
 
 ❌ ~~**The four Y risers are already made and in service** - they are not on this list.~~
 **Reversed 2026-10-02 - all four are scrapped.** The front pair is remade with the window; the rear
