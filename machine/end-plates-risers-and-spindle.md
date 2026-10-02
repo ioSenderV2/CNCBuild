@@ -82,7 +82,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 |---|---|---|
 | Size | **Tapered: 4" at the top, 8" at the base, 12" tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
-| To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 31**, plus bottom-edge bearing | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
+| To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 30**, plus bottom-edge bearing | **8 bolts through the back tongue at Y 30**, ~150 mm pitch, plus bottom-edge bearing over the full 1200 mm |
 | Also carries | the **62 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
 ⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
@@ -477,9 +477,9 @@ this file previously had to reach for L brackets to avoid a hinge at the base. *
 spacing directly.**
 
 ✅ **Fixing, fully dimensioned: two M8 at X = 25 and 170 mm** from the outboard edge,
-**Y = 31 mm** above the plate's bottom edge - which is **30 mm down from the top of the 61 mm proud
+**Y = 30 mm** above the plate's bottom edge - **31 mm down from the top of the 61 mm proud
 tongue** - plus the plate's bottom edge **bearing on the top skin** the way the outboard plate does.
-*(X 25 and Y 31 settled 2026-09-30; T2 moved 175 → 170 on 2026-10-02 when the base came to 8".)*
+*(X 25 settled 2026-09-30; T2 moved 175 → 170 and Y 31 → 30 on 2026-10-02.)*
 
 📌 **T1 and T2 are those two bolts** - the labels are used below and were never defined. **T1 is
 the outboard one**, near the straight factory edge; **T2 is the inboard one**, near the tapered
@@ -494,9 +494,9 @@ number moved again when the base came in to 8" - see below.**
 
 | | X | Y | Edge distance to the taper, perpendicular |
 |---|---|---|---|
-| **T1** - outboard | **25** | **31** | n/a - straight factory edge, 20.5 mm |
-| **T2** - inboard | **170** | **31** | **21.7 mm** - re-picked for the 8" base, 2026-10-02 |
-| ~~T2 on the 9" base~~ | ~~175~~ | ~~31~~ | ~~34 mm - the old outline~~ |
+| **T1** - outboard | **25** | **30** | n/a - straight factory edge, 20.5 mm |
+| **T2** - inboard | **170** | **30** | **22.0 mm** - re-picked for the 8" base, 2026-10-02 |
+| ~~T2 on the 9" base~~ | ~~175~~ | ~~31~~ | ~~34 mm - the old outline, at Y 31~~ |
 | ~~T2 as first drawn~~ | ~~200~~ | ~~31~~ | ~~~12 mm - rejected~~ |
 
 ⚠️ **The 9" working's figures do not carry**: 213 mm of plate width at Y 31 and a 26.6 deg taper
@@ -504,26 +504,49 @@ both belong to the old outline.
 
 #### ✅ T2 re-picked at 170 for the 4" / 8" plate
 
-Keeping 175 would have left **17.0 mm**. The trade across the useful range, on the nominal
+Keeping 175 would have left **17.3 mm**. The trade across the useful range, at Y 30 on the nominal
 corner-to-corner outline:
 
 | T2 at X | Perpendicular edge distance | T1-T2 couple |
 |---|---|---|
-| 175 | 17.0 mm | 150 mm |
-| **170 - chosen** | **21.7 mm** | **145 mm** |
-| 160 | 31.2 mm | 135 mm |
+| 175 | 17.3 mm | 150 mm |
+| **170 - chosen** | **22.0 mm** | **145 mm** |
+| 160 | 31.5 mm | 135 mm |
 
-**175 → 170 buys 28% more edge distance for 3% less couple**, which is the knee. At 21.7 the hole
+**175 → 170 buys 27% more edge distance for 3% less couple**, which is the knee. At 22.0 the hole
 centre sits **2.4 × the 9 mm hole diameter** from the edge and an M8 washer lands fully on material.
 Below 170 the couple is being spent on clearance that is not needed.
 
-**The arithmetic, so it can be re-checked rather than re-measured:** at Y 31 the tapered edge is at
-X 192.9, so a bolt at 170 has **22.9 mm of horizontal gap**, and perpendicular to an edge running
-**18.4° from vertical** that is 22.9 × cos 18.4° = **21.7 mm**.
+**The arithmetic, so it can be re-checked rather than re-measured:** at Y 30 the tapered edge is at
+X 193.2, so a bolt at 170 has **23.2 mm of horizontal gap**, and perpendicular to an edge running
+**18.4° from vertical** that is 23.2 × cos 18.4° = **22.0 mm**.
+
+✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
+and the back plate's row all sit at 30 mm above the plate's bottom edge, 31 mm below the top of the
+61 mm tongue. One number to transfer instead of three, which is worth more than the millimetre it
+moved. **The pitches differ because the plates do**: 100 mm on the side plates (eleven over
+1000 mm), ~150 mm on the back plate (eight over 1200 mm). Both are correct; neither is the other's
+typo.
+
+❌ **A zigzag row was considered and rejected, 2026-10-02.** Alternating ±10 mm about the 30 line
+would lift any single horizontal plane from ~90% to ~95% net section. It is not worth it here:
+
+- **Net section is not what governs a bolt in plywood** - bearing and edge tear-out are. The
+  staggering rule it comes from is a *sawn lumber* rule, there to stop a split running along the
+  grain, and Baltic birch is cross-laminated.
+- **±10 spends the margin that does govern.** On a 61 mm tongue the upper half would drop to 21 mm
+  from the free top edge.
+- **The row is not at the worst height anyway** - the tongue cantilevers up from the box, so peak
+  bending is at its base, not at mid-height.
+- On the side plates these bolts are **retention, not the load path**, so little is trying to tear
+  that line at all.
+
+📌 **Where a stagger would be right**, recorded so this is not read as a blanket rule: a row close
+to a free edge and loaded *parallel* to itself, where group tear-out is the failure mode.
 
 🔴 **This is sensitive to where the taper actually starts, more than to the 5 mm.** The figures above
 assume a corner-to-corner taper. If the template keeps the top parallel and tapers more steeply over
-a shorter run, the edge at Y 31 comes further inboard: a taper confined to the lower 200 mm would
+a shorter run, the edge at Y 30 comes further inboard: a taper confined to the lower 200 mm would
 leave 170 with about **15.6 mm**. **170 is the number; the template check is what confirms it.**
 
 | Direction | What takes it |
@@ -551,7 +574,7 @@ that turns the rear face from a portal frame with two bending legs into a diaphr
 |---|---|
 | Plate | **1200 mm × 12" × 1/4" hot-rolled A36 steel** |
 | To the beams | **8 × M8 into each beam's corner bores** - the same proven pattern, 16 bolts total |
-| To the box | **8 bolts through the back tongue**, plus bottom-edge bearing over the full 1200 mm |
+| To the box | **8 bolts through the back tongue at Y 30**, ~150 mm pitch, plus bottom-edge bearing over the full 1200 mm |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped into the plate, one per beam |
 
 - **It costs no travel** - the gantry stops well forward of the rear plate plane, and the spindle sits
@@ -957,6 +980,7 @@ eleven M8 is orders of magnitude clear, and this joint's real limits are geometr
 | | |
 |---|---|
 | Fastener | **M8, one every 100 mm** - eleven per beam over the 1000 mm |
+| Height | **Y 30** above the plate's bottom edge - the same row height as the front fin and the back plate |
 | Direction | From **outboard**: washer, curb, plate, **M8 locknut** on the inboard face |
 | Holes | **9 mm clearance** in curb and plate both - see the thermal bullet above |
 | Why not tapped into the plate | M8 into 6.35 mm of aluminium is about **5 threads, 0.8 × D**, where aluminium wants 1.5-2 × D. It would strip before the bolt came near yield and could never be properly preloaded. The inboard face is open air - the beam is up on 12" risers - so a through-bolt costs nothing and was always available |
