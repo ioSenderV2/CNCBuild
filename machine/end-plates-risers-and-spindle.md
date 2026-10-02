@@ -1466,11 +1466,13 @@ the control runs past it.
 The cast stepper frame now occupies the middle of that top edge, so a single 6" plate spanning both
 rails cannot go there. **One block per rail, either side of the 60 mm casting:**
 
+Each block caps the plate's top edge and overhangs forward over the rail end:
+
 | | |
 |---|---|
-| Width, across the plate | **47 mm each** - 154 − 60 = 94, halved, less whatever relief is wanted at the casting |
-| Standing off the plate | **the linear rail's own height**, so the stop's face is flush with the rail top |
-| Extent along the rail | ⚠️ **not yet specified** - the superseded single plate was 1" in this direction |
+| Width, across the plate | **47 mm** - 154 − 60 = 94, halved, less whatever relief is wanted at the casting |
+| Front-to-back | **32.5 mm** = **12.5 of plate + 20 of rail**, so the overhang is flush with the rail top |
+| Vertical thickness | ⚠️ **not yet specified** - the superseded single plate was 1/4" |
 
 ✅ **This is better than the plate it replaces, not just a way round the casting.** Each block sits
 **directly over its own rail** - centres at ~23.5 and ~130.5 against rail centrelines at 19.5 and
@@ -1482,9 +1484,10 @@ rather than bending a cantilevered lip" is satisfied by the geometry rather than
 off the plate and wraps the rail; a stop flush with the rail top gives it a full-width face to hit,
 where the old 1/4" plate presented a 6.35 mm lip.
 
-🔴 **Measure the rail height off the Z kit - do not take it from a catalogue.** HGR20 is nominally
-17.5 mm, but **Z is a different supplier from X / Y1 / Y2**, and this file already records one
-near-miss from quoting a dimension measured on the wrong kit. One caliper reading.
+✅ **Rail height taken off the part: 20 mm** - which is what the 32.5 is built from, and why the
+derivation is written out rather than just the total. This mattered because **Z is a different
+supplier from X / Y1 / Y2** and this file already carries one near-miss from quoting a dimension
+measured on the wrong kit.
 
 ⚠️ **This heading used to read "with no hard stop", and it was wrong** - the resolution was already
 written in the paragraphs below it while the alarm stayed in the title. Corrected 2026-10-01, after
