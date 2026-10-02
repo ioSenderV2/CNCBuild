@@ -1916,26 +1916,56 @@ interposer.** The two halves are different kinds of number and the chain is only
 2026-10-02 and confirmed again when this section was written. **The 1/2" figure is dead; if 245.7
 appears anywhere it is stale.**
 
-#### The 1/4" sole plate, and one bolt set doing two jobs
+#### The 1/4" sole plate - the plate is the tie, not a shared bolt
 
-A **1/4" plate across the bottom of the end plate**, horizontal. The ball nut hangs under it, and
-**the nut's own mounting bolts pass up through the sole plate and into tapped holes in the end
-plate's bottom edge** - so one set of fasteners both mounts the nut and ties the sole plate to the
-end plate. No separate bracket.
+A **1/4" plate across the bottom of the end plate**, horizontal, at Z −182.5. **Its top face is one
+flat seat** taking the end plate's 12.7 mm bottom edge and the nut's mounting face at the same
+height. That is what the level bottom buys: any step between them and the sole plate becomes a bent
+or shimmed part.
 
-**Why the plate bottom had to be level with the nut face for this to work:** the sole plate needs one
-flat seating that takes the end plate's bottom edge and the nut's mounting face at the same height.
-Any step between them and the sole plate becomes a bent or shimmed part.
+**The nut sits ON the sole plate, bolted up from underneath.** With the housing inverted its
+mounting face looks **down**, so the mating surface is below it, and the bolt heads are on the
+underside of the sole plate where a wrench can reach them - which was the whole reason for inverting
+the nut.
 
-⚠️ **Open: the sole plate's footprint.** It is 154 mm wide to match, but its depth in Y and its hole
-pattern both come off the **ball nut housing's flange**, which is not recorded in this repo. Measure
-the housing before drawing it.
+#### ✅ The nut's mounting interface, given 2026-10-02
 
-⚠️ **These are edge taps into 12.7 mm, so the M6 wall rule applies** - see the joining-plate tie
-below. **But the size here is not free**: it is set by the nut housing's bolt holes. If the housing
-wants M8, the 2.35 mm of wall each side is below the usual 1.5-2 D of material around a tapped hole,
-and the fix is a clearance hole through the sole plate into a **nut or an insert** rather than a tap
-into the plate's edge. **Resolve this with the housing in hand.**
+| | |
+|---|---|
+| Mounting surface | **40 × 52 mm** |
+| Fixing | **4 × M5, threaded into the nut body** - not through-holes |
+| Pattern | **24 × 40 mm** |
+
+🔴 **Threaded holes in the nut kill the "one bolt set does two jobs" idea**, which this section used
+to claim. A bolt that threads into the nut **terminates** in the nut; it cannot also tap into the end
+plate's bottom edge, and in any case the flange is laterally offset from that edge. ❌ ~~"the nut's
+own mounting bolts pass up through the sole plate and into tapped holes in the end plate's bottom
+edge - so one set of fasteners both mounts the nut and ties the sole plate to the end plate"~~.
+
+✅ **The sole plate still ties the two together - as a member, not through a shared fastener.** Four
+M5 up into the nut, and a **separate** set of fixings into the end plate's bottom edge. The scheme is
+unchanged; only the mechanism was wrong.
+
+✅ **And this frees the edge-tap size**, which was previously hostage to the nut. Nothing from the
+nut lands in the end plate's edge, so those fixings can be **M6** per the wall rule - 3.35 mm each
+side of a 12.7 mm edge - rather than being forced to M8. The M8 wall problem this section warned
+about does not arise.
+
+⚠️ **The 7 mm inset does not reconcile, and it is the hole positions that depend on it.** A 24 × 40
+pattern centred on a 40 × 52 face gives **8 mm** across the 40 and **6 mm** across the 52, not 7 both
+ways. Three readings are possible and they are 1-2 mm apart: the 7 is a rounded recollection, the
+**nut body is larger than the 40 × 52 mounting face** so 7 is measured off the body, or the pattern
+is not centred. **Caliper the pattern off the flange itself when the sole plate is drawn** - do not
+work from the 7.
+
+⚠️ **Open: which of 40 / 52 runs along Y.** The sole plate's own outline and the clearance to the
+bar's inboard end both key off it.
+
+⚠️ 🔴 **Open, and the last thing blocking the sole plate: the X offset from the end plate's inner
+face to the Y screw axis.** The screw runs under the Y beam and the plate is on the beam's inside
+face, so the flange sits some distance **outboard** of the plate's plane. That distance sets how far
+the sole plate reaches, and whether Y thrust arrives as clean in-plane shear or as a twisting moment
+on the end plate. **A machine measurement, and it is not in this repo.**
 
 #### ✅ The tail does not reach the front riser - travel runs out first
 
@@ -2315,10 +2345,16 @@ slips.
 - ✅ ~~**Whether the plate's lower tail clears the front riser across Y travel**~~ **Closed
   2026-10-02 - it never gets there.** Max Y travel is reached with the plate's front face level with
   the beam end, where the riser starts. **Redo this check if Y travel is ever extended.**
-- ⚠️ **The Y ball nut housing's flange footprint and bolt pattern** - not recorded anywhere in this
-  repo, and it sets the 1/4" sole plate's depth, hole pattern **and the bolt size tapped into the end
-  plate's bottom edge**. At M8 the 12.7 mm edge gives only 2.35 mm of wall each side, so the housing
-  may force a nut or insert rather than a tap. **Measure the housing before the sole plate is drawn.**
+- ✅ ~~**The Y ball nut housing's flange footprint and bolt pattern**~~ **Given 2026-10-02: 40 × 52
+  mounting face, 4 × M5 threaded into the nut, 24 × 40 pattern.** The M5s terminate in the nut, so
+  nothing from the nut reaches the end plate's edge and the edge-tap size is free - **M6**, and the
+  M8 wall worry is moot.
+- ⚠️ **The nut pattern's edge inset** - "7 mm" does not reconcile with a 24 × 40 pattern centred on a
+  40 × 52 face, which gives 8 and 6. **Caliper it off the flange**; 1-2 mm of hole position.
+- ⚠️ **Which of the nut face's 40 / 52 runs along Y.**
+- 🔴 **The X offset from the X end plate's inner face to the Y screw axis.** The last thing blocking
+  the sole plate outline, and it decides whether Y thrust is in-plane shear or a twisting moment on
+  the end plate. **A machine measurement.**
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward
