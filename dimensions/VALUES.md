@@ -77,6 +77,18 @@ Registry updated: **2026-10-02**
 | **CLAMP_CENTRES** | 116 mm | derived |  | Set by bringing the clamp centres in so the M5 counterbores clear the M8 column |
 | **CLAMP_AXIAL** | 55 mm | vendor |  | Clamp's axial dimension |
 | **CLAMP_PAIR_SPAN** | 171 mm | derived | CLAMP_CENTRES + CLAMP_AXIAL | Fits inside SPINDLE_BODY_L on either the 199 or the 213 reading, which is why the body dispute does not block the clamps |
+| **SHELF_BAR_W** ⚠️ | 25.4 mm | nominal |  | 1in, across the bar |
+| **SHELF_BAR_H** | 50.8 mm | derived |  | 2in. Was 1in. The height exists to separate the two horizontal bolts in Z. |
+| **SHELF_BAR_L** | 60 mm | derived | EXT_W | 60 - exactly the beam's footprint. Was 76.2 (3in), which reached back under the back joining plate; with the beam flush there is nothing back there, and the overhang carried the only route by which a proud joining plate could become the gantry's bearing point. |
+| **SHELF_VERT_REAR** | 15 mm | part |  | Vertical M8 into the extrusion's underside slot, Y from the PLATE'S BACK EDGE. Pinned by the 30-6060 slot centrelines. |
+| **SHELF_VERT_FRONT** | 45 mm | part |  | The second underside slot |
+| **SHELF_HORIZ_Y** | 30 mm | derived | (SHELF_VERT_REAR + SHELF_VERT_FRONT) / 2 | BOTH horizontal bolts. The only free Y station - two M8 need ~12 between centres and the verticals occupy 15 and 45, leaving Y 27-33. |
+| **SHELF_HORIZ_Z_LOW** | 15 mm | derived |  | Z from the bar's underside. BLIND-TAPPED: through-drilling would break out where the lower Y bearing block sits. |
+| **SHELF_HORIZ_Z_HIGH** | 35 mm | derived |  | 15.8 to the bar's top |
+| **SHELF_Z_COUPLE** | 20 mm | derived | SHELF_HORIZ_Z_HIGH - SHELF_HORIZ_Z_LOW | The lever resisting the bar's nose-down pitch about X. This is what the 2in bar buys. |
+| **SHELF_BAR_TOP** | -60 mm | derived |  | Z from the Y beam top - the underside of the X beam's bottom extrusion |
+| **SHELF_BAR_BOTTOM** | -110.8 mm | derived | SHELF_BAR_TOP - SHELF_BAR_H |  |
+| **SHELF_BOLT_LOW_Z** | -95.8 mm | derived | SHELF_BAR_BOTTOM + SHELF_HORIZ_Z_LOW | Machine Z of the lower bolt. Near the lower bearing block row - hence the blind tap. |
 
 ## Not confirmed on the real part
 
@@ -95,3 +107,4 @@ numbers in one session on 2026-10-02.
 - **T_Z_PLATE** (nominal) = 12.7 mm - feeds 2: GANTRY_ARM, SPINDLE_OFFSET
 - **T_X_CARRIAGE_PLATE** (nominal) = 12.7 mm - feeds 1: GANTRY_ARM
 - **SPINDLE_BODY_L** (OPEN) = 199 mm - nothing depends on it
+- **SHELF_BAR_W** (nominal) = 25.4 mm - nothing depends on it

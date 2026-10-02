@@ -2341,6 +2341,8 @@ examination:
   run along its length.
 - **The design already tolerates overhang at that edge.** The shelf bar's holes are dimensioned from
   the **beam front** on a 76.2 mm bar, so it overhung the plate's back edge by ~6 mm even at 25.
+  (📌 **The bar is 60 now and overhangs nothing** - see the shelf section. The argument stands as
+  the reason the edge was never a hard line.)
   Flush makes that ~16 mm. Harmless, and it shows the edge was never a "nothing may project past
   this" line.
 - **What it did buy was practical**, and it is what was given up: the plate edge was the rearmost
@@ -2378,8 +2380,24 @@ no thrust.
 
 🔴 **Reworked 2026-10-02 - a 2" bar, and all four holes re-referenced to the plate's back edge.**
 
-**A 3" length of 1" × 2" aluminium bar** per plate - **25.4 wide × 50.8 tall × 76.2 long** -
-spanning the beam's 60 mm depth plus the back plate.
+**A length of 1" × 2" aluminium bar** per plate - **25.4 wide × 50.8 tall × 60 long** - spanning
+exactly the beam's footprint, **Y 0 to 60**.
+
+✅ **60, not the old 76.2 - shortened 2026-10-02, and it deletes a hazard rather than trimming a
+part.** The 3" existed to span *"the beam's 60 mm depth plus the back plate"*. With the beam flush,
+its back face **is** the plate's back edge, so the 6.35 mm back joining plate now sits entirely
+behind the plate in air and there is nothing back there to reach.
+
+🔴 **And the overhang was carrying a documented trap.** This section used to warn: *"The back
+joining plate's bottom edge must be flush with the beam's underside, not proud. The bar passes under
+where that plate lands; if it hangs even a millimetre low the gantry sits on a plate edge in line
+contact instead of on the extrusion."* **That risk existed only because the bar reached under the
+joining plate.** Ending the bar at Y 0 removes the failure mode by construction rather than by being
+careful at assembly.
+
+⚠️ **Check the counterbore diameter before cutting to exactly 60.** The vertical at Y 15 leaves
+15 mm to the bar's end, which is only ~7.5 mm of wall outside a ø15 counterbore. If it reads tight
+on the real counterbore, **65 costs nothing and still stops short of the joining plate.**
 
 **Y is measured from the PLATE'S BACK EDGE, not the beam front. Z is from the bar's underside.**
 

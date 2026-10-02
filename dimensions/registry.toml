@@ -460,9 +460,8 @@ note = "2in. Was 1in. The height exists to separate the two horizontal bolts in 
 
 [[dim]]
 sym = "SHELF_BAR_L"
-value = 76.2
-provenance = "nominal"
-note = "3in, spanning the beam's depth plus the back plate"
+expr = "EXT_W"
+note = "60 - exactly the beam's footprint. Was 76.2 (3in), which reached back under the back joining plate; with the beam flush there is nothing back there, and the overhang carried the only route by which a proud joining plate could become the gantry's bearing point."
 
 [[dim]]
 sym = "SHELF_VERT_REAR"
