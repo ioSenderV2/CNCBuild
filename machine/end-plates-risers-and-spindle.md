@@ -524,8 +524,65 @@ working, and why a single 40×120 was compared and rejected on exactly this, is 
 
 ## The full-height outboard plate
 
-✅ **Decided 2026-09-29. One per Y beam, 12" × 1000 mm × 1/4" aluminium**, replacing the existing
-12" × 6" × 1/4" gusset - the dimensions rotate, from 12" along the beam to 12" tall and a metre long.
+✅ **Decided 2026-09-29, material changed 2026-10-02. One per Y beam, 12" × 1000 mm × 1/8"
+cold-rolled steel sheet**, replacing the existing 12" × 6" × 1/4" gusset - the dimensions rotate,
+from 12" along the beam to 12" tall and a metre long.
+
+### 🔴 It is steel now, and it is also the Y back joining plate
+
+**Both halves of that sentence matter, and the second is what makes the first a reversal.** On Y
+there is no separate 120 mm back joining plate - this plate *is* it, grown. So choosing steel here
+overturns the explicit decision in [`gantry-beam-joint.md`](gantry-beam-joint.md):
+
+> **Material is aluminium, not steel.** Steel would give roughly three times the modulus, but over
+> 1000 mm a shop temperature swing puts a couple of tenths of differential expansion into a joint
+> held by preloaded T-nuts that cannot comfortably slip. Matched aluminium removes the question.
+
+**That reasoning was not wrong and is not being dismissed - the cost is being accepted instead of
+avoided.** The differential is **0.17 mm over a metre at 15 K**, and the file had the magnitude
+right at "a couple of tenths".
+
+#### Why 1/8", and it is the thin one on purpose
+
+| | 1/8" steel | 1/4" 6061 (superseded) |
+|---|---|---|
+| In-plane shear and bending | **~1.5×** | 1.0× |
+| Out-of-plane bending | 0.36× | **2.8×** |
+| **Transformed area** - the flange term that drives composite bending | **9.2 mm equivalent aluminium** | 6.35 mm |
+| Weight each | ~17 lb | ~12 lb |
+
+Two things point the same way:
+
+1. ✅ **9.2 mm equivalent is almost exactly the 3/8" (9.53 mm)** that
+   [`gantry-beam-joint.md`](gantry-beam-joint.md) specifies for the Y back plate. So 1/8" steel is
+   **sized right for the job it is taking over**, not merely adequate.
+2. ✅ **Thermal restraint force scales with E·A**, so 1/8" generates **half** the load at the end
+   T-nuts that 1/4" steel would. Against an objection that is specifically thermal, the thinner plate
+   is the better answer.
+
+The one argument for 1/4" steel is bolt bearing and durability as a chip barrier. It does not beat
+halving the live objection, and 18.4 mm of equivalent aluminium is roughly double what anything here
+asks for.
+
+📌 **Spec it as cold-rolled steel sheet, not A36.** At 1/8" × 12" this is sheet, and the normal
+product is cold-rolled 1008/1018 - flatter and cleaner than A36 would be, at no premium worth
+naming. Flatness does not bind here regardless: eleven M8 along the bottom edge plus the curb
+channel pull 1/8" steel straight over a metre without argument.
+
+#### 🔴 Galvanic is the real cost of this change
+
+Steel against aluminium, with **a metre of face-to-face contact** against the beam plus eleven bolts
+- and this plate is the **chip barrier**, so it is the part that actually gets wet with swarf and
+coolant. Aluminium is the anode and the extrusion is the part that cannot be replaced.
+
+**Powder coat or paint both faces**, and isolate the mating face if anything wetter than mist is
+ever run. This is a bigger exposure than the rear plate's two bolt patterns and it is the one
+downside that does not have a number attached.
+
+⚠️ **The curb channel was dimensioned around a 6.35 mm plate** - see "How it lands on the torsion
+box" below, where the plate occupies the outer 6.35 mm of the 19 mm web. At 3.175 mm that channel
+needs resizing or the plate rattles in it. The box is not built, so this is free - but it is another
+item on the decide-before-the-skins list.
 
 At 12" it reaches from the beam down to the torsion box on a 12" riser, which is what makes it the
 continuous shear web rather than just a longer gusset. **A 6" plate would have spanned the beam plus
@@ -558,13 +615,31 @@ gusset is a discrete triangle, this is a continuous one a metre long.
 
 ### Two things to get right - both now resolved
 
-✅ **Thermal - closed 2026-09-30, no slotting needed.** A metre of aluminium bolted along its length
-to a wooden box: aluminium moves ~23 µm/m/K, plywood barely moves, so a 15 °C swing is roughly
-**0.35 mm of differential over the length**. An earlier draft called for fixing solid at the centre and
-slotting the holes progressively toward the ends. **That is unnecessary here.** The bolts are **9 mm
-clearance on M8**, which is 1 mm of float per hole - nearly three times the whole differential - and
-the shop is climate controlled with Baltic birch skins. The 9 mm hole *is* the slot. This follows the
-precedent set on the Y risers, reamed to 9 mm for the same reason.
+✅ **Thermal - closed 2026-09-30, no slotting needed, and steel improved it.** A metre of plate
+bolted along its length to a wooden box, against plywood that barely moves over a 15 °C swing:
+
+| Plate material | Differential over 1000 mm at 15 K |
+|---|---|
+| Aluminium, as originally specified | **0.35 mm** |
+| **Steel, as of 2026-10-02** | **0.18 mm** |
+
+An earlier draft called for fixing solid at the centre and slotting the holes progressively toward
+the ends. **That is unnecessary here.** The bolts are **9 mm clearance on M8**, which is 1 mm of
+float per hole - several times the whole differential - and the shop is climate controlled with
+Baltic birch skins. The 9 mm hole *is* the slot. This follows the precedent set on the Y risers,
+reamed to 9 mm for the same reason.
+
+🔴 **Do not transfer this conclusion to the T-nut row.** It is a different joint with a different
+duty, and conflating them is how the steel question gets waved through without being answered:
+
+| | Plate to box | Plate to extrusion |
+|---|---|---|
+| Differential at 15 K | 0.18 mm, steel to plywood | **0.17 mm, steel to aluminium** |
+| What the bolts do | **"retention, not the load path"** - vertical and outboard loads arrive in bearing on plywood faces | **Preloaded friction joint whose entire job is shear transfer** across the seam |
+| Can it take up the movement in the clearance? | Yes - nothing needs the bolts to grip | **This is the open question**, and it is what [`gantry-beam-joint.md`](gantry-beam-joint.md) rejected steel over |
+
+The two numbers being near-identical is a coincidence of the materials, not evidence that the second
+joint is as relaxed as the first.
 
 The figure is kept because it is the one that had to be beaten, not because it is still a worry. Note
 also that for plywood the larger term is **moisture, not temperature**; it is dismissed here on the
@@ -576,7 +651,13 @@ landing only on the box's top surface through an angle would reintroduce a bendi
 back much of the gain.
 
 **Y beams only.** The X gantry moves and has nothing to bolt down to, so X keeps the 120 mm back
-plate. All of this added weight - roughly **14 lb per Y beam** at 1/4" - is therefore static.
+plate, **in 6061**. All of this added weight - roughly **17 lb per Y beam** at 1/8" steel - is
+therefore static.
+
+📌 **The steel parts in absolute terms: ~17 lb per side plate and ~40 lb for the 1200 mm rear
+plate**, so roughly **75 lb of steel** on the fixed frame. A delta against the old scheme is not
+quoted because the shear panel it absorbs was never sized. All static, all low down, against a
+figure that was always offered as a design budget rather than a limit.
 
 ### How it lands on the torsion box
 
@@ -701,8 +782,17 @@ qualification. Cold-forming a bolt head also raises permeability locally, right 
 the tape, so **ask for A4 rather than A2** and **put a magnet on them when they arrive** - the label
 has already been wrong once.
 
-**Only the front plates need this**, since that is where the tape runs: 14 per plate, so 28 for the
-two Y beams, plus 14 more if the X beam's front plate carries tape the same way.
+**Only the front strips need this**, since that is where the tape runs: 14 per strip.
+
+✅ **Settled 2026-10-02: all three beams carry tape**, X included. This file previously left X
+conditional - "plus 14 more if the X beam's front plate carries tape the same way". It does. **So
+the count is 42 A4 / 316 flange bolts, not 28**, and the magnet-on-arrival check applies to all
+three sets.
+
+🔴 **A new magnetic object arrived with the stepper move.** A NEMA 23 permanent-magnet rotor now
+sits at the **min-Y end** of both Y tapes. That is a far larger disturbance than a bolt head, and it
+is *not* the periodic error this section was written about - it is a localised one at one end of
+travel. **Read a sensor at that end against mid-travel before laying the tape.**
 
 📌 **If A4 flange bolts are awkward to source, socket heads are fine and slightly better.** A 13 mm
 socket head leaves 17 mm between rows against the flange's 12.7 mm; with an M8 washer, about 14 mm.
@@ -731,11 +821,24 @@ Check that against the puck design in
 
 ## Plate and riser thicknesses
 
-| Part | Thickness | Notes |
+**Material matters as much as thickness now that steel is in the machine, so both are given.**
+Current as of 2026-10-02.
+
+| Part | Size | Material |
 |---|---|---|
-| Beam joining plates, all three axes | **1/4"** | settled - see [`gantry-beam-joint.md`](gantry-beam-joint.md) |
-| Y end plates / Z risers | **1/2"** | ✅ built |
-| **X gantry end plates** | **1/2"** | specified above - two identical 154 mm plates |
+| Front strip, **all three beams** | 46 mm × 1000 mm × **1/4"** | **6061** - connector across the seam and the magnetic tape surface |
+| X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
+| **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
+| **Y front plate / Z riser** | tapered 3"→9" × 12" × **1/2"** | 6061, with the 62 × 50 window |
+| **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
+| Cast stepper frame interposer bar | 60 × 80 × **3/8"** | 6061 |
+| **X gantry end plates** | 154 mm wide × **1/2"** | 6061 - two identical plates, specified above |
+| X carriage plate | 154 × 407 × **1/2"** | 6061 |
+| Z plate | 154 × 175 × **1/2"** | 6061 |
+
+⚠️ **Y and X back plates are no longer the same part in a different length.** Y's is steel, 12"
+tall and carries the box fixing; X's stays 6061 at 120 mm. Do not let the old "all three axes, 1/4"
+aluminium" line survive in anyone's head.
 
 ### The 3/8" question is closed - the Y risers are built at 1/2"
 
@@ -1479,10 +1582,25 @@ plate are drilled.**
 assemblies that will not be built for months: **X carriage plate, Z plate, two X end plates**. One
 more plate on the visit costs an hour; a second trip costs a weekend.
 
-✅ **The four Y risers are already made and in service** - they are not on this list.
+🔴 **The 2026-10-02 rework put three more parts on this trip.** The list had been shrinking; it is
+not any more:
 
-Still to make, but **no mill needed** - T-slot clearance holes throughout: two **12" × 1 m × 1/4"**
-full-height plates and two **46 mm × 1 m × 1/4"** front plates, one of each per Y beam.
+| Part | Why the mill |
+|---|---|
+| **Two Y front plates**, 1/2" | the 8-bolt corner-bore pattern *and* the 62 × 50 window |
+| **The 1200 mm rear plate**, 1/4" steel | two 8-bolt patterns a metre apart that must match extruded bores - and the part may exceed the machine's X travel |
+| **Two interposer bars**, 60 × 80 × 3/8" | twelve features in a small part, six of them tapped under a bearing face |
+
+❌ ~~**The four Y risers are already made and in service** - they are not on this list.~~
+**Reversed 2026-10-02 - all four are scrapped.** The front pair is remade with the window; the rear
+pair is replaced by the single 1200 mm plate.
+
+Still to make, but **no mill needed** - T-slot clearance holes throughout: two **12" × 1 m × 1/8"
+steel** outboard plates and three **46 mm × 1 m × 1/4" 6061** front strips, one per beam.
+
+⚠️ **The outboard plates are steel now**, so that "no mill needed" afternoon on roughly 25 holes
+per plate runs several times longer than it would have in aluminium. Still a drill press job, but
+budget for it.
 
 ✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
@@ -1519,6 +1637,32 @@ slips.
 
 ## ⚠️ Open items
 
+### From the 2026-10-02 stepper frame rework - all unmeasured
+
+- 🔴 **The screw axis height off the casting**, and whether it matches the as-built BK12 axis. One
+  caliper reading - bore height above the foot, plus the bar. It sets the rear block's bore height
+  and the ball nut bracket on the X end plate. **Nothing downstream of it can be drawn until it is
+  taken.**
+- 🔴 **The casting's 6-hole pattern**, against the 6 counterbored T-nut holes, in a 60 × 80 bar.
+  Twelve features, and whether they clear is unchecked. **Needed before the bar is cut.**
+- 🔴 **The two strip widths either side of the 62 × 50 window** on the MDF template. Decides whether
+  the 3" / 9" fins still nest in one 12" square or go to 4" / 8". **Needed before the bandsaw pass,
+  which cannot be put back.**
+- 🔴 **The M8 column position, 20/50 versus ~18.2/48.2.** At a 1/8" outboard plate the 5 mm overhang
+  leaves the *riser* 1.8 mm proud, which is the direction the curb cannot tolerate. **Needed before
+  the front plates are drilled.**
+- ⚠️ **Whether the Laguna can hold a datum across a 1200 mm part.** Bed size is not travel. Gated on
+  the mill model and DRO item below.
+- ⚠️ **A sensor reading at the min-Y end of the tape**, with the stepper in place, against
+  mid-travel. Before 3 m of one-shot PSA goes down.
+- ⚠️ **Which extrusion face the casting bolts to**, recorded here because this file says "a face"
+  rather than naming it. The ball screws run underneath, so the underside is the expectation, not a
+  measurement.
+- ⚠️ **The curb channel width** - dimensioned around 6.35 mm, now taking 3.175 mm.
+- ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
+
+### Carried forward
+
 - ✅ ~~**Height from the top of the beam to the torsion box fixing line**, and whether the box has
   a **vertical face** to bolt against.~~ **Both closed 2026-09-30** - the box gets a purpose-built
   vertical face and the plate's bottom edge bears on the top skin. See "How it lands on the torsion
@@ -1536,6 +1680,9 @@ slips.
 - 🔴 **How far past the front riser plane the spindle reaches**, and whether it fouls the widened fin
   at low Z. Confirmed to pass the plane; the amount is unmeasured. **Needed before the front plates are
   cut.** Four numbers listed under "The lateral fix".
+  **Worse as of 2026-10-02**: the cast stepper frame and a NEMA 23 now occupy that end too, so the
+  question is no longer only "does the spindle clear the fin" but "does it clear the fin, the
+  casting and the motor". Add the casting's envelope to the four numbers.
 - **Whether the front fins need the rib layout fixed first** - the bottom-edge bearing wants blocking
   under the full 229 mm base.
 - ✅ **How nod is adjusted - answered 2026-09-30.** The question was whether the spacer M5 counterbore
