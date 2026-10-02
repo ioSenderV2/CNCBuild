@@ -413,21 +413,52 @@ A one-piece plate **does** pre-commit geometry that was previously set by assemb
 surface with the 9 mm reamed holes absorbing error. That inverts this repo's loudest standing rule
 for one dimension, so it is a deliberate reversal rather than a side effect.
 
-**But the inversion is narrower than it first looked**, and the first version of this reasoning
-overstated it. The plate is **~2300× stiffer in-plane than out** (in-plane I ≈ 1.5 × 10⁷ mm⁴ against
-~6 500 mm⁴ out-of-plane for a 305 × 6.35 section):
+**But the inversion is narrower than it first looked** - and getting to that took two wrong turns,
+both recorded because the wrong versions are the ones that sound reasonable.
 
-| What the plate sets | What still sets it |
-|---|---|
-| The two beam ends' **spacing** and **relative height** - in-plane, rigid | **The plate**, via its two bolt patterns |
-| Their **fore-aft tilt** - which is what coplanarity means - out-of-plane | **The flat assembly surface.** A 1/4" × 305 section over a metre flexes by hand; the plate follows rather than overrules |
+⚠️ **Wrong turn one: "buy it flat."** An earlier draft made cold-rolled or ground stock a condition,
+on the grounds that a wavy plate would leave the beam ends non-coplanar. That treated surface
+flatness as the thing that matters, and it is not. It is also not a product - **A36 is a hot-rolled
+structural spec**, while cold-rolled flat goes out as 1008/1018 to A1008, so "cold-rolled A36" would
+get a substitution or a blank look.
 
-🔴 **So the datum lives in the accuracy of the two bolt patterns, not in the flatness of the
-material.** This matters for what to buy: **plain hot-rolled A36 is correct here.** An earlier draft
-of this section called for cold-rolled or ground stock on flatness grounds, which was wrong - and
-"cold-rolled A36" is not a product anyway, A36 being a hot-rolled structural spec while cold-rolled
-flat goes out as 1008/1018 to A1008. Ask for **P&O** if mill scale is unwelcome; same flatness, no
-scale, small premium.
+⚠️ **Wrong turn two: "the plate follows the table."** The correction to the first was that the plate
+is **~2300× stiffer in-plane than out**, so the flat assembly surface would overrule it. The ratio is
+right; the conclusion drawn from it was not. **A 1200 mm steel plate standing on edge is not a
+conforming object**, and the single ratio hides the fact that it is rigid in one of the modes that
+matters.
+
+#### What the plate actually controls, mode by mode
+
+Treating it as a beam 1200 mm long with a 305 × 6.35 section:
+
+| What you would have to do to it | Force needed | Who wins |
+|---|---|---|
+| Shift one beam-end pattern **0.1 mm vertically** relative to the other | **~8.3 kN** | **The plate.** Rigid - nothing argues with this |
+| **Twist** one end 1 mrad relative to the other | ~2 N·m, about **17 N** at the beam | The flat assembly surface |
+| Bow the middle **1 mm fore-aft** | **~36 N** | The flat assembly surface |
+
+🔴 **So "coplanarity" is not one quantity.** The plate rigidly sets the two beam ends' **spacing and
+relative height**; the table still sets their **roll and fore-aft tilt**. Collapsing those into a
+single claim is what produced both wrong turns above.
+
+📌 **And nothing conforms past 1 mm in any mode.** What absorbs error is the **9 mm clearance on
+M8** - 1 mm of float per hole. Inside that the joint slides and takes up what it finds. Outside it
+you are fighting the plate, and in the vertical direction you lose.
+
+#### 🔴 The tolerance this puts on the drilling
+
+**The two 8-bolt patterns' relative height must land well inside 1 mm across the metre**, or the
+plate cannot be bolted on without jacking a beam end. That is a sharper statement of the mill risk
+below: the question is not whether the part fits on the table, it is **whether the height datum
+survives a reposition.**
+
+✅ **Material: plain hot-rolled A36 is correct**, and the reason is the drilling setup rather than
+the stock. Out-of-plane bow is the soft mode and bolting pulls it out. What would hurt is **camber**
+- in-plane curvature along the length - and only if the part is datumed off a sawn or sheared edge
+carrying it, because then the second pattern walks vertically by the camber amount. **Datum off a
+scribed and indicated line, or indicate the first pattern back in before drilling the second.** Ask
+for **P&O** if mill scale is unwelcome; same flatness, no scale, small premium.
 
 #### ⚠️ Open: can the mill hold a datum across 1200 mm
 
@@ -1651,8 +1682,11 @@ slips.
 - 🔴 **The M8 column position, 20/50 versus ~18.2/48.2.** At a 1/8" outboard plate the 5 mm overhang
   leaves the *riser* 1.8 mm proud, which is the direction the curb cannot tolerate. **Needed before
   the front plates are drilled.**
-- ⚠️ **Whether the Laguna can hold a datum across a 1200 mm part.** Bed size is not travel. Gated on
-  the mill model and DRO item below.
+- 🔴 **Whether the Laguna can hold the HEIGHT datum across a 1200 mm part.** Bed size is not travel,
+  and the question is not whether the part fits - it is whether the two 8-bolt patterns' relative
+  height survives a reposition. **The budget is well inside 1 mm**, that being the float the 9 mm
+  holes give; past it the plate wins and a beam end has to be jacked. Gated on the mill model and
+  DRO item below.
 - ⚠️ **A sensor reading at the min-Y end of the tape**, with the stepper in place, against
   mid-travel. Before 3 m of one-shot PSA goes down.
 - ⚠️ **Which extrusion face the casting bolts to**, recorded here because this file says "a face"
