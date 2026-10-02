@@ -2376,30 +2376,89 @@ no thrust.
 
 ### The shelf
 
-**A 3" length of 1" square aluminium bar** per plate - 25.4 × 25.4 × 76.2 mm - spanning the beam's
-60 mm depth plus the back plate, with room to spare.
+🔴 **Reworked 2026-10-02 - a 2" bar, and all four holes re-referenced to the plate's back edge.**
 
-| Hole | Y from beam front | Purpose |
-|---|---|---|
-| Vertical, counterbored from below | **15** | M8 up into a T-nut in the bottom extrusion's underside slot |
-| Horizontal, into a tapped M8 in the end plate | **30** | shelf to plate |
-| Vertical, counterbored from below | **45** | M8 up into the second underside slot |
-| Horizontal, into a tapped M8 in the end plate | **60** | shelf to plate |
+**A 3" length of 1" × 2" aluminium bar** per plate - **25.4 wide × 50.8 tall × 76.2 long** -
+spanning the beam's 60 mm depth plus the back plate.
 
-The 15 and 45 are the `30-6060`'s bottom-face slot centrelines, so the T-nuts drop straight in. The
-even 15 mm spacing is forced, not chosen - 30 is exactly midway between 15 and 45 and moving it only
-trades clearance from one side to the other.
+**Y is measured from the PLATE'S BACK EDGE, not the beam front. Z is from the bar's underside.**
 
-**The holes clear in three dimensions**, which is the part that is not obvious in plan: the vertical
-counterbores reach about 9 mm up from the underside, the horizontal holes are centred at 12.7 mm.
-They never meet.
+| Hole | Y | Z | Purpose |
+|---|---|---|---|
+| Vertical, counterbored from below | **15** | - | M8 up into a T-nut in the bottom extrusion's underside slot |
+| Vertical, counterbored from below | **45** | - | M8 up into the second underside slot |
+| **Horizontal, blind-tapped M8 in the end plate** | **30** | **15** | shelf to plate |
+| **Horizontal, blind-tapped M8 in the end plate** | **30** | **35** | shelf to plate |
 
-⚠️ **Not 70 mm for the rear horizontal hole** - on a 76.2 mm bar that leaves 1.7 mm of edge. 60 mm
-gives 16 mm, comfortable.
+#### 🔴 Why the datum moved, and it is the whole lesson of this section
+
+The holes used to be dimensioned **from the beam front**. On 2026-10-02 the beam moved back to flush
+with the plate's back edge, which put the beam front at Y 60 - and so put the rear horizontal hole,
+specified as *"60 from the beam front"*, at **Y 0: off the edge of the plate.** It had been at Y 10
+before the move, already too tight for a tapped M8.
+
+**Nothing in the file connected the two.** The hole was a literal computed from a face that moved, with
+no link back - the same failure as the "1.8 mm proud" figure, and the reason
+[`../dimensions/`](../dimensions/) now exists. **Dimension from the plate's own datum; the beam is not
+a datum, it is a part that moves.**
+
+#### Why both horizontals sit at Y 30, stacked in Z
+
+❌ ~~Two horizontals spread along Y~~ - **there is only one free Y station.** The verticals are pinned
+at Y 15 and Y 45 by the `30-6060`'s bottom-face slot centrelines, they run the full height of the bar
+to reach those slots, and two M8 need about **12 mm between centres** for any web. That leaves
+**Y 27-33**, so Y 30 and nothing else. Y 30 is midway between the verticals, which is where the
+original single bolt already sat.
+
+✅ **So the second bolt goes up, not along - and that is the better axis anyway.** The shelf carries
+the beam's weight out in Y, so the bar wants to **pitch nose-down about X**. Resisting that needs the
+bolts separated in **Z**: top in tension, bottom bearing on the plate. A single row at one height has
+no such couple and leans on face friction. **The 2" bar is what buys the 20 mm of lever**, and the Z
+separation is what does the work - not a third bolt.
+
+| | |
+|---|---|
+| Z separation | **20 mm** |
+| Edge to the bar's underside | 15 |
+| Edge to the bar's top | 15.8 |
+| Y clearance to each vertical | 15 mm centres, ~6 mm of web |
+
+#### 🔴 Blind-tap them. Do NOT break through the plate.
+
+**This is the consequence of going to 2" and it was not obvious.** The taller bar drops the lower
+horizontal bolt to roughly **Z −96 below the Y beam top**, and the plate's **outer** face at that
+height is where the **lower Y bearing block row** sits. A bolt breaking through would hold a bearing
+block off its mounting face - which is the one surface on this plate that has to be flat.
+
+✅ **Blind-tapping removes the question instead of answering it.** M8 wants ~10 mm of engagement and
+the plate is 12.7, so a blind tap leaves 2-3 mm of skin. **Tap both the same depth** rather than
+treating them differently at the bench. The repo already does this where a face must stay clean -
+BF12's four M5 are *"tapped into the 1/4in plate - not through-bolted, for maximum engagement"*.
+
+⚠️ **The clash itself is unconfirmed**, because the block pattern is unmeasured - the −96 rests on
+the measured 45 mm row gap and not on absolute rail positions. **Blind-tapping makes it moot either
+way**, which is why it is the answer rather than a measurement.
+
+⚠️ **A 25.4 mm bar would not have had this problem** - its single bolt at Z −73 sat inside the block
+row gap. The 2" bar is still right; this is the price, and it is a drilling instruction rather than a
+design cost.
+
+#### What the bar clears
+
+| | Z from the Y beam top |
+|---|---|
+| Bar top, under the X beam's bottom extrusion | **−60** |
+| Bar underside | **−110.8** |
+| Y beam underside | −120 |
+| X end plate bottom | −182.5 |
+
+✅ **The bar's underside clears the Y beam's by ~9 mm** and sits well inside the plate.
 
 Two things to watch:
 
-- **M8 into 12.7 mm of plate** is 1.6 diameters, around 39 kN strip - far above what an M8 delivers.
+- **M8 into 12.7 mm of plate** is 1.6 diameters, around 39 kN strip - far above what an M8
+  delivers. **Blind-tapped at ~10 mm it is 1.25 D**, which is the same engagement the Z clamp
+  bolts run at and was shown there to be ~10× margin. Still not the weak link.
 - **The back joining plate's bottom edge must be flush with the beam's underside, not proud.** The
   bar passes under where that plate lands; if it hangs even a millimetre low the gantry sits on a
   plate edge in line contact instead of on the extrusion.
@@ -2664,6 +2723,12 @@ slips.
 - ⚠️ **Three plates now carry holes that must agree across an assembly** - end plate, doubler and
   sole bracket. **Drill the doubler's through-holes and the end plate's together**, and leave the
   sole bracket's root holes until the first two are mated.
+- ✅ ~~**The shelf's rear bolt is at Y 0, off the plate**~~ **Closed 2026-10-02.** The shelf becomes a
+  **2" bar** with **two M8 at Y 30, stacked at Z 15 and Z 35**, blind-tapped. All four holes are now
+  dimensioned from the **plate's back edge**, which is the actual fix - the beam front was never a
+  datum.
+- ⚠️ **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
+  make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1200 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
 ### Carried forward

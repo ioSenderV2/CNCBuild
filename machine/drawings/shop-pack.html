@@ -215,13 +215,12 @@ more: the <b>ball screw support block</b> (S1&ndash;S4, +80), the <b>stepper mou
 that is gone, and <b>only the encoder bore remains</b>, so the name is now unambiguous.
 </div>
 
-<div class="note">
-<b>&#128308; CONFLICT &mdash; the shelf's rear bolt has no plate left to land in.</b> The shelf's two
-horizontal holes are dimensioned <b>30 and 60&nbsp;mm from the beam front</b>. Moving the beam back
-to flush on 2026-10-02 put the beam front at <b>60&nbsp;mm from the plate's back edge</b>, so
-"60&nbsp;from the beam front" is now <b>0&nbsp;mm from the back edge</b> &mdash; off the plate
-entirely. It was 10&nbsp;mm before the change, already tight for a tapped M8. <b>The rear shelf hole
-must be repositioned and no fix has been chosen</b>, so it is shown amber below rather than guessed.
+<div class="info">
+<b>&#9989; The shelf conflict is closed &mdash; 2026-10-02.</b> The shelf's holes used to be
+dimensioned <b>from the beam front</b>, and when the beam moved back to flush that put the rear
+horizontal at <b>Y 0</b>, off the plate. Fixed two ways: the shelf becomes a <b>2" bar with two M8
+at Y 30 stacked at Z 15 and Z 35</b>, and <b>all four holes are now dimensioned from the plate's own
+back edge</b>. The datum change is the real fix &mdash; the beam was never a datum.
 </div>
 
 <figure>
@@ -299,7 +298,7 @@ dimensioned.</figcaption>
 <tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, 2 &times; 2 on the <b>outer</b> face</td><td>16</td><td><b>UNKNOWN</b></td><td><b>UNKNOWN</b></td><td><b>Measure the X/Y kit, not the Z kit</b> &mdash; different suppliers. 154 is the <b>butted</b> dimension (154.18 for two blocks); the functional floor is 128.24 on the machined pads. A plate edge must land outside a pad, never partway across one</td></tr>
 <tr class="unk"><td>D1&ndash;Dn</td><td>Doubler block through-bolts, plate to doubler</td><td>TBD</td><td><b>UNKNOWN</b></td><td>within &minus;122 to &minus;182.5</td><td>Along X through the plate, in shear. <b>Drill the doubler and the plate together.</b> Doubler is 154&nbsp;&times;&nbsp;60&nbsp;&times;&nbsp;1/2" &mdash; its 60&nbsp;mm height is gated on the <b>lower block row's bottom edge</b>, not the Y beam underside</td></tr>
 <tr class="unk"><td>B1&ndash;Bn</td><td>Tapped, sole bracket up into the bottom edge</td><td>TBD</td><td><b>UNKNOWN</b></td><td class="n">&minus;182.5</td><td><b>Two rows across the 25.4&nbsp;mm seating</b>, not one row down the middle &mdash; a single row leaves nothing resisting roll about Y. M6: 9.7&nbsp;mm of wall each side at 25.4, against 3.35 on the bare 12.7 edge</td></tr>
-<tr class="unk"><td>H1, H2</td><td>Tapped M8, shelf to plate</td><td>2</td><td><b>CONFLICT &mdash; see above</b></td><td class="n">+12.7</td><td>&#128308; "30 and 60 from the beam front" now puts the rear hole at <b>Y 0</b>, off the plate. The front one is fine at Y 30. <b>Reposition the rear hole and re-reference both from the back edge.</b> M8 into 12.7&nbsp;mm is 1.6&nbsp;D, which is not the problem &mdash; edge distance is</td></tr>
+<tr><td>H1, H2</td><td><b>Blind-tapped M8</b>, shelf to plate</td><td>2</td><td><b>30</b> (both)</td><td class="n">−75.8, −95.8</td><td><b>Both at Y 30 &mdash; the only free station</b>, since the vertical T-nut bolts hold Y 15 and Y 45 and two M8 need ~12 between centres. Separated <b>in Z instead</b>, 20 mm apart, which is the axis that resists the bar pitching nose-down. &#128308; <b>BLIND-TAP, do not break through</b> &mdash; the lower one lands where the bottom Y bearing block row sits, and a protruding bolt would hold a block off its face</td></tr>
 </table>
 
 <div class="info">
@@ -619,7 +618,6 @@ wrong.
 <tr><td>5</td><td><s>Y of the two tongue bolts within the 61 mm proud band</s> — <b>answered 2026-09-30: X 25 / 175, Y 31</b></td><td>—</td></tr>
 <tr><td>10</td><td><b>The 4 &times; HGH20 block hole pattern, measured on the X/Y kit</b> &mdash; not the Z kit, different supplier</td><td>16 holes on each X end plate, and the doubler's height</td></tr>
 <tr><td>11</td><td><b>The &oslash;35 encoder bore's fore-aft position</b> on the X end plate</td><td>Its height is settled; the Y position is not</td></tr>
-<tr><td>12</td><td><b>A fix for the shelf's rear bolt hole</b>, now at Y&nbsp;0 after the beam moved to flush</td><td>Two tapped M8 per end plate</td></tr>
 <tr><td>6</td><td>Mill model number, and whether the DRO is 2-axis or 3-axis</td><td>How every sheet should be dimensioned</td></tr>
 </table>
 

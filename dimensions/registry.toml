@@ -437,3 +437,78 @@ note = "Clamp's axial dimension"
 sym = "CLAMP_PAIR_SPAN"
 expr = "CLAMP_CENTRES + CLAMP_AXIAL"
 note = "Fits inside SPINDLE_BODY_L on either the 199 or the 213 reading, which is why the body dispute does not block the clamps"
+
+# ---------------------------------------------------------------- the shelf
+#
+#  THE CAUTIONARY TALE OF THIS REGISTRY. These four holes were dimensioned from the
+#  BEAM FRONT. The beam moved back to flush on 2026-10-02, and the rear horizontal -
+#  "60 from the beam front" - silently became Y 0, off the edge of the plate. Nothing
+#  linked the hole to the face it was measured from. They are keyed to the plate's own
+#  back edge now, and SHELF_* depends on nothing that can move.
+
+[[dim]]
+sym = "SHELF_BAR_W"
+value = 25.4
+provenance = "nominal"
+note = "1in, across the bar"
+
+[[dim]]
+sym = "SHELF_BAR_H"
+value = 50.8
+provenance = "derived"
+note = "2in. Was 1in. The height exists to separate the two horizontal bolts in Z."
+
+[[dim]]
+sym = "SHELF_BAR_L"
+value = 76.2
+provenance = "nominal"
+note = "3in, spanning the beam's depth plus the back plate"
+
+[[dim]]
+sym = "SHELF_VERT_REAR"
+value = 15
+provenance = "part"
+note = "Vertical M8 into the extrusion's underside slot, Y from the PLATE'S BACK EDGE. Pinned by the 30-6060 slot centrelines."
+
+[[dim]]
+sym = "SHELF_VERT_FRONT"
+value = 45
+provenance = "part"
+note = "The second underside slot"
+
+[[dim]]
+sym = "SHELF_HORIZ_Y"
+expr = "(SHELF_VERT_REAR + SHELF_VERT_FRONT) / 2"
+note = "BOTH horizontal bolts. The only free Y station - two M8 need ~12 between centres and the verticals occupy 15 and 45, leaving Y 27-33."
+
+[[dim]]
+sym = "SHELF_HORIZ_Z_LOW"
+value = 15
+provenance = "derived"
+note = "Z from the bar's underside. BLIND-TAPPED: through-drilling would break out where the lower Y bearing block sits."
+
+[[dim]]
+sym = "SHELF_HORIZ_Z_HIGH"
+value = 35
+provenance = "derived"
+note = "15.8 to the bar's top"
+
+[[dim]]
+sym = "SHELF_Z_COUPLE"
+expr = "SHELF_HORIZ_Z_HIGH - SHELF_HORIZ_Z_LOW"
+note = "The lever resisting the bar's nose-down pitch about X. This is what the 2in bar buys."
+
+[[dim]]
+sym = "SHELF_BAR_TOP"
+value = -60
+provenance = "derived"
+note = "Z from the Y beam top - the underside of the X beam's bottom extrusion"
+
+[[dim]]
+sym = "SHELF_BAR_BOTTOM"
+expr = "SHELF_BAR_TOP - SHELF_BAR_H"
+
+[[dim]]
+sym = "SHELF_BOLT_LOW_Z"
+expr = "SHELF_BAR_BOTTOM + SHELF_HORIZ_Z_LOW"
+note = "Machine Z of the lower bolt. Near the lower bearing block row - hence the blind tap."
