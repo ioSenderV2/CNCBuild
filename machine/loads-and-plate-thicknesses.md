@@ -51,8 +51,8 @@ Current as of 2026-10-02.
 | **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
 | **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 62 × 50 window. 🔴 **Measured stock, not 1/2" and not 3/8"** |
 | **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
-| Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, one per Y beam and per X end |
-| **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061 - two identical plates, specified above |
+| Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, **3 off** - Y1, Y2 and the X stepper end. One drawing; X's BF12 end takes none, using a tongue off the end plate |
+| **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, 2 off - identical below the top edge; the **right-hand one carries a 40 × 60 BF12 tongue** above it |
 | **Y nut doubler block** | 154 × 60 × **1/2"** | 6061, 2 off - on the end plate's outer face, giving a 25.4 mm seating |
 | **Y nut sole bracket** | trapezoid **154 → ~46** over ~75 × **1/4"** | 6061, 2 off - carries the inverted Y ball nut |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
@@ -95,3 +95,34 @@ so the swap stays cheap.
 ⚠️ **It is not a single number.** One reading on the nose is a *total*, and a total cannot say which
 part of the stack is moving - which is the entire question. The procedure uses six indicator
 positions and subtracts.
+
+### ⚠️ Open: the X carriage plate goes to 5/8" if the stiffness test says it is the compliance
+
+**Deferred on purpose 2026-10-02**, and recorded because "consider it in future if it is a problem"
+is the kind of intent that evaporates. The plate is **154 × 407 × 1/2"**, already cut and dyed, and
+nothing says yet that it needs to be thicker - that is the same measurement the 1/4" question above
+waits on. **Do not act on this before the test.**
+
+**The arithmetic, so it is not re-derived in six months** (6061 at 69 GPa, mild steel at 200 GPa,
+bending stiffness per unit width; this is a calculation, not a measurement):
+
+| | Bending stiffness | Mass per unit area |
+|---|---|---|
+| 1/2" aluminium, as cut | 1.00 | 1.00 |
+| Plus a 1/4" steel backer on **corner bolts only** | 1.36 | **2.45** |
+| **5/8" aluminium instead** | **1.95** | 1.25 |
+
+🔴 **A bolted-on steel backer is the wrong answer, and it is the one that looks obvious.** The gain
+depends entirely on whether the two plates transfer shear across the whole face: bolted on a grid
+they approach one section and ~5×, but **bolted at the corners they only share curvature and give
+1.36×** for 2.45× the mass. **Thicker aluminium beats it on both axes at once.**
+
+📌 **Where this came from, so the precedent is not misread later.** The Mega V's aftermarket 300 mm Z
+has a 154 × 310 × 12.7 mm carriage plate backed by 1/4" steel, which is why the idea came up at all.
+Its backer is held by **four M5 socket heads, one per corner**, so it cannot be acting compositely -
+whatever it is for, it is not buying bending stiffness. The owner's reading is that it provides the
+mounting for the **V-wheel axles**, which is a concentrated point load into a hole and a job steel
+genuinely does better than aluminium. ⚠️ **That does not explain why it covers the full plate** - the
+wheel axles are only 5" apart and would fit in the bottom 6" - and no explanation for the full
+coverage has been established. **None of it transfers to this build regardless**: HGR20 blocks spread
+their load over a bolt pattern, so there is no axle stub, no eccentric and no point load.

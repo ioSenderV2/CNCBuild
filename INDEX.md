@@ -78,6 +78,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The 3/8" question is closed - the Y risers are built at 1/2"](machine/loads-and-plate-thicknesses.md#the-38-question-is-closed---the-y-risers-are-built-at-12)
   - [Why the X end plates are different](machine/loads-and-plate-thicknesses.md#why-the-x-end-plates-are-different)
 - [The measurement that would settle the 1/4" question](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question)
+  - [Open: the X carriage plate goes to 5/8" if the stiffness test says it is the compliance](machine/loads-and-plate-thicknesses.md#open-the-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance)
 
 ## [machine/machining.md](machine/machining.md)
 

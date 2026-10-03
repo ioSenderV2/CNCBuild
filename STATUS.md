@@ -57,12 +57,13 @@ interface, not this file.
 - 🔴 [L526](machine/lateral-stiffness.md#open-how-far-past-the-riser-plane-the-spindle-reaches) — *The lateral fix: tapered front fins, a full-width back pane…*<br>Settle this before the plate is cut. The taper line is one bandsaw pass and cannot be put back.
 - ⚠️ [L534](machine/lateral-stiffness.md#span-deflection-not-a-problem) — *The lateral fix: tapered front fins, a full-width back pane…*<br>0.022 mm is DEAD LOAD - the gantry's own weight. It is not the deflection under cutting force, and it has already been misread that way once. Under the 1000 N envelope the same beam moves roughly 0.065 mm vertically and 0.13 mm fore-aft (indicative only). Fore-aft is the soft axis, by about 2×, because the section is 120 tall and 60 deep and stiffness goes as (height/width)². The full working, and why a single 40×120 was compared and rejected on exactly this, is in gantry-beam-joint.md.
 
-## [machine/loads-and-plate-thicknesses.md](machine/loads-and-plate-thicknesses.md)  (4)
+## [machine/loads-and-plate-thicknesses.md](machine/loads-and-plate-thicknesses.md)  (5)
 
 - 🔴 [L11](machine/loads-and-plate-thicknesses.md#cutting-forces-500-1000-n-not-250) — *Cutting loads and plate thicknesses / Cutting forces: 500-1…*<br>Read this before using any deflection figure in this repo. Much of the analysis on 2026-09-29 was done against an assumed 250 N cutting force. That is a trim-router number and it is wrong for this machine.
 - ⚠️ [L23](machine/loads-and-plate-thicknesses.md#cutting-forces-500-1000-n-not-250) — *Cutting loads and plate thicknesses / Cutting forces: 500-1…*<br>Two corrections, neither of which moves the design target - 2026-09-30:
 - ⚠️ [L61](machine/loads-and-plate-thicknesses.md#plate-and-riser-thicknesses) — *Cutting loads and plate thicknesses / Plate and riser thick…*<br>Y and X back plates are no longer the same part in a different length. Y's is steel, 12" tall and carries the box fixing; X's stays 6061 at 120 mm. Do not let the old "all three axes, 1/4" aluminium" line survive in anyone's head.
 - ⚠️ [L95](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question) — *Cutting loads and plate thicknesses / The measurement that…*<br>It is not a single number. One reading on the nose is a total, and a total cannot say which part of the stack is moving - which is the entire question. The procedure uses six indicator positions and subtracts.
+- 🔴 [L115](machine/loads-and-plate-thicknesses.md#open-the-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance) — *The measurement that would settle the 1/4" question / Open:…*<br>A bolted-on steel backer is the wrong answer, and it is the one that looks obvious. The gain depends entirely on whether the two plates transfer shear across the whole face: bolted on a grid they approach one section and ~5×, but bolted at the corners they only share curvature and give 1.36× for 2.45× the mass. Thicker aluminium beats it on both axes at once.
 
 ## [machine/machining.md](machine/machining.md)  (3)
 
@@ -198,4 +199,4 @@ interface, not this file.
 
 ---
 
-**134 open** across 27 files.
+**135 open** across 27 files.
