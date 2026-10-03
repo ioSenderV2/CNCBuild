@@ -189,6 +189,10 @@ Registry updated: **2026-10-02**
 | **STRIP_ROW_LOW** | 7.5 mm | derived | (FRONT_STRIP_W / 2) - RAIL_SLOT_INSET | Sheet 8's lower bolt row, 7.5 from the strip's edge. Forced, not chosen: the strip is centred on the beam's seam because the block gap it passes through is, and the two slots flanking the seam sit RAIL_SLOT_INSET either side of it. |
 | **STRIP_ROW_HIGH** | 37.5 mm | derived | (FRONT_STRIP_W / 2) + RAIL_SLOT_INSET | Sheet 8's upper bolt row, 37.5. Same derivation as STRIP_ROW_LOW, the other side of the seam. |
 | **BOX_FRONT_OVERHANG** | 140 mm | derived |  | How far the box's top skin runs PAST the front fins. His, 2026-10-03. The front is the one side with no tongue: rather than capture the fins, the box simply extends under and beyond them and FOUR L-BRACKETS BEHIND EACH FIN tie the fin down to the top skin. That is why BOX_FORE_AFT grew rather than shrank, and why Sheet 1's two tongue bolts need re-purposing or deleting. |
+| **SIDE_TONGUE_START** | 6.35 mm | derived | T_REAR_PLATE | Where the side tongue begins, from the box's BACK edge - 6.35, his 1/4in offset 2026-10-03. The back tongue laps the rear plate's outer face, so the rear plate occupies the first 6.35 of the box's fore-aft run and the side tongue starts just clear of it. |
+| **SIDE_TONGUE_L** | 1000 mm | derived | BEAM_LEN | Side tongue length, 1000 - his, 2026-10-03, and it is the Y beam's own length because the side plate it laps is too. |
+| **SIDE_TONGUE_END** | 1006.35 mm | derived | SIDE_TONGUE_START + SIDE_TONGUE_L | 1006.35 from the box's back edge. THIS IS THE NUMBER THAT CLOSES THE FIN CLASH: the Y beam runs 6.35 to 1006.35 and the front fin caps it from 1006.35 forward, so the tongue ends exactly where the fin begins. The fin stands FIN_PROUD = 16.825 outboard of the side plate, which is also the tongue's inner face, so a tongue running any further forward would be held off the plate by the fin along the plate's whole length. It does not run further forward. |
+| **BOX_FRONT_BARE** | 150 mm | derived | BOX_FORE_AFT - SIDE_TONGUE_END | Bare top skin ahead of the side tongue, 150. The front fin occupies the first T_FIN of it and the remaining BOX_FRONT_OVERHANG is clear deck, which is where the four L-brackets per fin land. |
 
 ## Not confirmed on the real part
 
@@ -207,4 +211,4 @@ numbers in one session on 2026-10-02.
 - **T_X_CARRIAGE_PLATE** (nominal) = 12.7 mm - feeds 1: GANTRY_ARM
 - **SHELF_BAR_W** (nominal) = 25.4 mm - feeds 1: SHELF_SHIM_W
 - **T_BB_SKIN** (nominal) = 19 mm - feeds 1: BOX_THK
-- **T_REAR_PLATE** (nominal) = 6.35 mm - feeds 1: BOX_FORE_AFT
+- **T_REAR_PLATE** (nominal) = 6.35 mm - feeds 4: BOX_FORE_AFT, BOX_FRONT_BARE, SIDE_TONGUE_END, SIDE_TONGUE_START

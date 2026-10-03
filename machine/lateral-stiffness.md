@@ -306,16 +306,20 @@ not to this plate.
 
 ⚠️ **The coupling, stated properly, because an earlier version of this section had it wrong.** The
 worry was never that riser and side plate touch each other - they do not, and the 1 mm gap settles
-that. It is that both want to bear against **the same curb inner face**. The box's outer wall
-stands 60 mm proud as a curb and the design has **the full-height plate's outer face bearing on
+that. It is that both want to bear against **the same tongue inner face**. The box's outer wall
+stands 60 mm proud as a tongue and the design has **the full-height plate's outer face bearing on
 it** - that is the full-metre lateral restraint, and "bias the top skin wide, never narrow" exists
 because it is a hard bearing face with no float. If the riser's edge is the proud member **and the
-curb reaches that far forward**, the curb is held out by the riser and leaves a 1.8 mm gap along
-the plate's whole length.
+tongue reaches that far forward**, the tongue is held out by the riser and leaves a gap along
+the plate's whole length. The riser stands FIN_PROUD = **16.825 mm** outboard of the side plate, so
+that gap is not small.
 
-✅ **So the fix goes in the part that is not built yet: terminate the side curb short of the
-riser's station.** Costs nothing, keeps the plate's bearing, and leaves the overhang free to be the
-deliberate choice it is. **Carried to the box's list, not the plate's.**
+✅ **CLOSED 2026-10-03, and by construction rather than by trimming.** The side tongue is
+**1000 mm long and starts 1/4" (6.35) from the box's back edge**, so it runs **6.35 to 1006.35** -
+exactly the span of the Y beam and the side plate it laps. The front fin caps the beam from 1006.35
+forward, which is to say **the tongue ends precisely where the fin begins**. There is nothing to
+terminate short because the length was never long enough to reach. This is the better kind of answer:
+the two parts cannot foul, rather than being trimmed until they do not.
 
 📌 **The rear needed the same thought and got it 2026-10-03** - the plate's length is now derived
 and fixed at **1211.75**, not a window. See "The length" under the rear plate.
@@ -583,9 +587,9 @@ wall's inner web front face** - and the front tongue simply runs across all of i
 
 | Member | Where it stops |
 |---|---|
-| Full-height outboard plate | Ends at that plane; the front tongue sits in front of its end edge |
-| Side tongue (curb) | Ends at that plane; its end grain is covered by the front tongue |
-| Front riser | Bears against the **back face** of the front tongue, bolted through it |
+| Full-height outboard plate | Ends at that plane, 1006.35 from the box's back edge |
+| Side tongue | Ends at the same plane. 🔴 **Its end grain is now EXPOSED** - the front tongue that used to cover it was deleted 2026-10-03 |
+| Front riser | 🔴 **No longer bears on a front tongue - there is none.** It sits on the box's top skin and is tied down by four L-brackets behind it |
 
 So **nothing needs notching or mitring.** The one thing to keep in mind is that the corner butt joint
 is plywood end grain onto face, which is a weak glue joint - it is not load path here (the fins' bolts
