@@ -813,3 +813,203 @@ note = "Box footprint across the machine, 1205.4 - the clear space inside the tw
 sym = "BOX_FORE_AFT"
 expr = "BEAM_LEN - T_REAR_PLATE - T_FIN"
 note = "Box footprint front to back, 983.65 - the Y beam's 1000 less the rear plate capping its back end face and the front fin capping its front. The fin is T_FIN at 10 MEASURED, not the 1/2in some prose still said before 2026-10-03."
+
+# ================================================================ drilled coordinates
+#
+#  Added 2026-10-03 after tools/audit-prose.py --uncaptured found 78 values in the
+#  shop pack's hole schedules with nothing in the registry behind them. They were
+#  not wrong - they were UNANCHORED, which is a different fault: when something
+#  upstream moves, an unanchored number does not move with it and nobody is told.
+#  That is exactly how Sheet 7's X values went stale when the rear plate's length
+#  changed. A row on a pitch is left as one fact: the first station plus the pitch,
+#  not a symbol per hole.
+
+# ---- Sheet 2a: the Y beam top in the end plate's own frame, and what hangs off it
+
+[[dim]]
+sym = "XEP_BEAM_TOP_X"
+expr = "XEP_H - XEP_TOP_ABOVE_BEAM"
+note = "The Y beam's TOP face in the end plate's machining frame, 182.525 from the plate's bottom end. The bridge between machine Z (measured from the beam top, negative downwards) and this sheet's X. Everything the shelf bar and the beam contribute to Sheet 2a comes through here."
+
+[[dim]]
+sym = "SHELF_BOLT_HIGH_Z"
+expr = "SHELF_BAR_BOTTOM + SHELF_HORIZ_Z_HIGH"
+note = "Machine Z of the UPPER horizontal shelf bolt, -75.8. Pairs with SHELF_BOLT_LOW_Z; the 20 between them is SHELF_Z_COUPLE, which is the whole reason the bar is 2in and not 1in."
+
+[[dim]]
+sym = "SHELF_BOLT_LOW_X"
+expr = "XEP_BEAM_TOP_X + SHELF_BOLT_LOW_Z"
+note = "Sheet 2a's H1, 86.725, drawn as 86.7. THIS WAS DRAWING-ONLY UNTIL 2026-10-03 - the audit found 86.7 and 106.7 nowhere else in the repo, not even in the prose. They do derive, and they check out, but nothing had ever said so."
+
+[[dim]]
+sym = "SHELF_BOLT_HIGH_X"
+expr = "XEP_BEAM_TOP_X + SHELF_BOLT_HIGH_Z"
+note = "Sheet 2a's H2, 106.725, drawn as 106.7. Same history as SHELF_BOLT_LOW_X."
+
+# ---- Sheet 2a: the sixteen bearing block holes
+
+[[dim]]
+sym = "BLOCK_BOLT_HALF_X"
+expr = "BLOCK_PITCH_X / 2"
+note = "Half the block's across-rail bolt pitch, 16 - the offset of each bolt column from its rail centreline."
+
+[[dim]]
+sym = "BLOCK_BOLT_HALF_Y"
+expr = "BLOCK_PITCH_Y / 2"
+note = "Half the block's along-rail bolt pitch, 18."
+
+[[dim]]
+sym = "BLOCK_CENTRE_OFFSET_Y"
+expr = "BLOCK_BUTTED / 4"
+note = "Each block's centre from the butted pair's centroid, 38.545. Two blocks butted span BLOCK_BUTTED, so each centre sits a quarter of that either side."
+
+[[dim]]
+sym = "BLOCK_LOW_COL_A"
+expr = "RAIL_LOW_XEP - BLOCK_BOLT_HALF_X"
+note = "Sheet 2a P-holes, lower rail, near column. 61.525, drawn 61.5."
+
+[[dim]]
+sym = "BLOCK_LOW_COL_B"
+expr = "RAIL_LOW_XEP + BLOCK_BOLT_HALF_X"
+note = "Lower rail, far column. 93.525, drawn 93.5."
+
+[[dim]]
+sym = "BLOCK_HIGH_COL_A"
+expr = "RAIL_HIGH_XEP - BLOCK_BOLT_HALF_X"
+note = "Upper rail, near column. 151.525, drawn 151.5."
+
+[[dim]]
+sym = "BLOCK_HIGH_COL_B"
+expr = "RAIL_HIGH_XEP + BLOCK_BOLT_HALF_X"
+note = "Upper rail, far column. 183.525, drawn 183.5."
+
+[[dim]]
+sym = "BLOCK_ROW_Y1"
+expr = "BLOCK_CENTROID_Y - BLOCK_CENTRE_OFFSET_Y - BLOCK_BOLT_HALF_Y"
+note = "First of the four P-hole rows across the plate, 20.455, drawn 20.5 - the rounding was settled deliberately, see the commit that moved it off 20.45. Rows 2 and 4 are this and BLOCK_ROW_Y3 plus BLOCK_PITCH_Y."
+
+[[dim]]
+sym = "BLOCK_ROW_Y3"
+expr = "BLOCK_CENTROID_Y + BLOCK_CENTRE_OFFSET_Y - BLOCK_BOLT_HALF_Y"
+note = "Third P-hole row, 97.545, drawn 97.5."
+
+[[dim]]
+sym = "DOUBLER_BOLT_X"
+value = 25
+provenance = "derived"
+note = "Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it; the doubler is 50 tall so 25 is its middle."
+
+[[dim]]
+sym = "FIN_TONGUE_BOLT_1"
+value = 25
+provenance = "derived"
+note = "Sheet 1's T1, the outboard of the fin's two tongue bolts. T2 is at 170. Shares a value with DOUBLER_BOLT_X by coincidence and nothing else."
+
+# ---- the BF12 columns, which three sheets share
+
+[[dim]]
+sym = "BF12_COL_INB"
+value = 7
+provenance = "measured"
+note = "BF12's inboard bolt column from the beam's outer face. Measured on the cast stepper frame, and the same 7 that Sheets 2b and 7 both use. Paired with BF12_COL_OUTB at 53, so the pattern is 46 wide and centres in a 60 beam."
+
+[[dim]]
+sym = "BF12_COL_OUTB"
+value = 53
+provenance = "measured"
+note = "BF12's outboard bolt column, same source as BF12_COL_INB."
+
+# ---- Sheet 7: every column, now hung off the two extrusion faces
+
+[[dim]]
+sym = "RP_A_COL_1"
+expr = "Y1_EXT_FACE_X + EXT_BORE_INSET"
+note = "Rear plate, Y1 station, near corner-bore column. 18.175. The far column is this plus EXT_BORE_PITCH-worth of the section, drawn 48.175."
+
+[[dim]]
+sym = "RP_A_COL_3"
+expr = "Y2_EXT_FACE_X - EXT_W + EXT_BORE_INSET"
+note = "Y2 station, near column. 1163.575."
+
+[[dim]]
+sym = "RP_A_COL_4"
+expr = "Y2_EXT_FACE_X - EXT_BORE_INSET"
+note = "Y2 station, far column. 1193.575."
+
+[[dim]]
+sym = "RP_F_COL_1"
+expr = "Y1_EXT_FACE_X + BF12_COL_INB"
+note = "Rear plate BF12, Y1 end, inboard column. 10.175."
+
+[[dim]]
+sym = "RP_F_COL_2"
+expr = "Y1_EXT_FACE_X + BF12_COL_OUTB"
+note = "Y1 end, outboard column. 56.175."
+
+[[dim]]
+sym = "RP_F_COL_3"
+expr = "Y2_EXT_FACE_X - BF12_COL_OUTB"
+note = "Y2 end, outboard column. 1155.575."
+
+[[dim]]
+sym = "RP_F_COL_4"
+expr = "Y2_EXT_FACE_X - BF12_COL_INB"
+note = "Y2 end, inboard column. 1201.575."
+
+# ---- Sheet 4: the Z plate's sixteen spacer-block holes
+
+[[dim]]
+sym = "Z_PLATE_L"
+value = 175
+provenance = "derived"
+note = "Z plate long dimension. See z-carriage.md for why it is 175 and why the width went 154 to 164."
+
+[[dim]]
+sym = "Z_PLATE_W"
+value = 164
+provenance = "derived"
+note = "Z plate width. 164, NOT the 154 it inherited from the X end plate - on 154 the outer M5 counterbore breaks through by 1.5."
+
+[[dim]]
+sym = "Z_M5_ROW_OFF_1"
+value = -59.2
+provenance = "measured"
+note = "First M5 row from the Z plate's centre. Measured on the X/Y kit 2026-09-30; the four rows are -59.2, -23.2, +20.8, +56.8, which is 36 / 44 / 36 - two blocks per spacer at a 36 pitch with 44 between them."
+
+[[dim]]
+sym = "Z_M5_ROW_OFF_3"
+value = 20.8
+provenance = "measured"
+note = "Third M5 row from the plate's centre, the first on the second block. Same measurement as Z_M5_ROW_OFF_1."
+
+[[dim]]
+sym = "Z_M5_X_1"
+expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_1"
+note = "Sheet 4's C-holes, first row in plate coordinates. 28.3. Row 2 is this plus BLOCK_PITCH_Y."
+
+[[dim]]
+sym = "Z_M5_X_3"
+expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_3"
+note = "Third C-hole row, 108.3. Row 4 is this plus BLOCK_PITCH_Y."
+
+[[dim]]
+sym = "Z_M5_COL_INB"
+value = 41.5
+provenance = "measured"
+note = "Inboard M5 column from the Z plate's centre. The rail centrelines sit at +/-57.5 and the columns at +/-16 from each, giving 41.5 and 73.5."
+
+[[dim]]
+sym = "Z_M5_COL_OUTB"
+value = 73.5
+provenance = "measured"
+note = "Outboard M5 column from the plate's centre. This is the one that forced the plate to 164: its counterbore is about dia 10, so on a 154 plate it broke through by 1.5."
+
+[[dim]]
+sym = "Z_M5_Y_1"
+expr = "(Z_PLATE_W / 2) - Z_M5_COL_OUTB"
+note = "Sheet 4's C-holes, first column in plate coordinates. 8.5. The next is this plus BLOCK_PITCH_X."
+
+[[dim]]
+sym = "Z_M5_Y_3"
+expr = "(Z_PLATE_W / 2) + Z_M5_COL_INB"
+note = "Third C-hole column, 123.5. The fourth is this plus BLOCK_PITCH_X."

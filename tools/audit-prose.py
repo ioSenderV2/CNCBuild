@@ -16,6 +16,7 @@ close together.
     python tools/audit-prose.py --tol 2       # widen it
     python tools/audit-prose.py --sym T_FIN   # one symbol
     python tools/audit-prose.py --loose       # drop the name gate, see everything
+    python tools/audit-prose.py --uncaptured  # the other direction, see below
 
 Exit code is always 0: this is a report, not a gate. Every line needs judgement,
 because a near miss is sometimes two real numbers and sometimes a stale one.
@@ -85,7 +86,29 @@ SCHED_CELL = re.compile(r'<td class="n"[^>]*>(.*?)</td>', re.S)
 SHEET_ID = re.compile(r'<h[23][^>]*>\s*(Sheet\s*[\w.]+)', re.I)
 
 
-def uncaptured(values: set[float], tol: float) -> int:
+def covered(lit: float, values: set[float], pitches: set[float], tol: float) -> bool:
+    """Is this literal backed by the registry, directly or as a grid station?
+
+    A row of holes on a pitch is ONE fact, not four. 32 / 62 / 92 / 122 is a
+    first station and a 30 pitch, both of which are symbols; minting four more
+    symbols for the stations would pad the registry without adding a thing that
+    could go stale independently. So a literal also counts as covered when it is
+    first + n x pitch for a small n.
+
+    Only symbols whose NAME carries PITCH are allowed as the step. Letting any
+    value act as a step makes almost everything 'covered' by coincidence.
+    """
+    if any(abs(lit - v) <= tol for v in values):
+        return True
+    for base in values:
+        for p in pitches:
+            for n in range(1, 8):
+                if abs(lit - (base + n * p)) <= tol:
+                    return True
+    return False
+
+
+def uncaptured(values: set[float], tol: float, pitches: set[float] | None = None) -> int:
     """The other direction: a number that gets DRILLED and has no symbol behind it.
 
     Scans the shop pack's hole schedules only - the numeric cells, which are the
@@ -108,7 +131,7 @@ def uncaptured(values: set[float], tol: float) -> int:
         for lit in {round(float(x), 4) for x in NUM.findall(plain)}:
             if lit < 10 or (sheet, lit) in seen:
                 continue
-            if any(abs(lit - v) <= tol for v in values):
+            if covered(lit, values, pitches or set(), tol):
                 continue
             seen.add((sheet, lit))
             hits += 1
@@ -151,7 +174,11 @@ def main() -> int:
 
     rows = load()
     if args.uncaptured:
-        uncaptured({v for _, v, _ in rows}, 0.01)
+        uncaptured(
+            {v for _, v, _ in rows},
+            0.05,                       # absorbs documented roundings: 20.5 for 20.545
+            {v for s_, v, _ in rows if "PITCH" in s_},
+        )
         return 0
     if args.sym:
         rows = [r for r in rows if args.sym.upper() in r[0]]
