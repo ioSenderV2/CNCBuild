@@ -74,15 +74,13 @@ is far more persuasive than a sheet.
 
 ⚠️ **No plate in this pack has a complete hole schedule yet**, and that is the pack's main finding.
 What it does have is every dimension the repo actually holds, with the gaps named - which turns
-"design ahead of the build" from an instruction into a list. Four questions gate cuts that cannot be
+"design ahead of the build" from an instruction into a list. Two questions gate cuts that cannot be
 undone, and each needs a part or the mill in front of you - see
 [`../open-items.md`](../open-items.md):
 
-1. The 4 × HGH20 block hole pattern, measured on the **X/Y** kit - not the Z kit, different supplier
-2. The ø35 encoder bore's fore-aft position on the X end plate
-3. How far past the front riser plane the spindle reaches, and whether it fouls the widened fin at
+1. How far past the front riser plane the spindle reaches, and whether it fouls the widened fin at
    low Z
-4. The mill's model, and whether its DRO is 2-axis or 3-axis
+2. The mill's model, and whether its DRO is 2-axis or 3-axis
 
 📌 **The merged build document exists now** - `tools\make-pdf.ps1` builds `build-document.pdf`, the
 twelve `machine/*.md` in reading order with every photograph embedded. It links to the sheets here by

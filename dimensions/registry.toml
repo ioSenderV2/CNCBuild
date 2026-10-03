@@ -91,6 +91,20 @@ provenance = "measured"
 note = "Facing edges of the upper and lower Y block rows. The ENC_BORE_D lives in it."
 source = "measured 2026-10-02"
 
+[[dim]]
+sym = "BLOCK_PITCH_X"
+value = 32
+provenance = "part"
+note = "HGH20 block mounting pattern, across the block. Was the oldest open item on the pre-trip checklist."
+source = "spec sheet supplied with the X/Y kit, read 2026-10-03"
+
+[[dim]]
+sym = "BLOCK_PITCH_Y"
+value = 36
+provenance = "part"
+note = "HGH20 block mounting pattern, along the rail. Pairs with BLOCK_PITCH_X."
+source = "spec sheet supplied with the X/Y kit, read 2026-10-03"
+
 # ---------------------------------------------------------------- plate thicknesses
 
 [[dim]]
@@ -282,9 +296,9 @@ note = "Seating width at the plate's bottom with the doubler on"
 
 [[dim]]
 sym = "DOUBLER_H"
-value = 60
-provenance = "OPEN"
-note = "OPEN: gated on the LOWER BLOCK ROW's bottom edge, which shares this face. NOT gated on the Y beam underside - the doubler sits inboard of the beam's inside face."
+value = 50
+provenance = "derived"
+note = "Closed 2026-10-03 at 50. Gated on the LOWER BLOCK ROW bottom edge, which shares this face and lands at X 56 once the block's measured 44 width is applied - so 50 clears by 6 and the earlier 60 overlapped by 4. NOT gated on the Y beam underside."
 
 # ---------------------------------------------------------------- the front fin
 
