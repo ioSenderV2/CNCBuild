@@ -507,10 +507,11 @@ negative into the material. All coordinates positive in X and Y, absolute, <b>ne
 <div class="stock">
 <b>407 long &times; 154 wide &times; 1/2" aluminium</b><br>
 <b>The plate already exists</b>, sprayed with layout dye.<br>
+<b>X 0 is the BOTTOM of the carriage as it hangs on the machine.</b> The bottom ~150 is over the X gantry; the rest stands above it.<sup class="f">3.6</sup><br>
 <span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
 <b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
 negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
-<b>Rails, BF12, the four X blocks and the sensor bore are dimensioned &mdash; 33 features.</b> BK12 and the top stop are not.<sup class="f">3.3</sup>
+<b>Everything but the top stop is dimensioned &mdash; 39 features.</b><sup class="f">3.3</sup>
 </div>
 
 <figure>
@@ -575,6 +576,15 @@ negative into the material. All coordinates positive in X and Y, absolute, <b>ne
   <circle cx="91.0" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <text class="lbl" x="82.0" y="79.0">&#248;35</text>
 
+  <!-- Z cast stepper frame (BK12 end): the same 6-hole casting pattern -->
+  <circle cx="360" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="360" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="373" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="373" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="403" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="403" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <text class="lbl" x="352" y="42.0" fill="#b06000">Z CASTING</text>
+
   <!-- BF12 at X 10, two holes 46 apart centred on Y 77 -->
   <circle cx="10" cy="100.0" r="3" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
   <circle cx="10" cy="54.0" r="3" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
@@ -599,7 +609,9 @@ negative into the material. All coordinates positive in X and Y, absolute, <b>ne
   <text class="q" x="424" y="136">four blocks, 32 &#215; 36 each</text>
   <text class="q" x="424" y="154">&#248;35 SENSOR BORE at X 91, Y 77 &#8212;</text>
   <text class="q" x="424" y="166">centred on that 16-hole pattern</text>
-  <text class="q" x="424" y="184" fill="#c00">BK12 and the top stop still UNKNOWN.</text>
+  <text class="q" x="424" y="184" fill="#b06000">Z CASTING &#8212; 6 &#215; &#248;4.2</text>
+  <text class="q" x="424" y="196">X 360, 373, 403 &#183; Y 54, 100</text>
+  <text class="q" x="424" y="214" fill="#c00">Only the top stop is still UNKNOWN.</text>
 </svg>
 <figcaption>Rail flush with the bottom edge leaves exactly 7 mm at the top, which is the designed
 overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
@@ -611,7 +623,7 @@ overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 <tr><td>R1a&ndash;g</td><td><b>HGR20 rail 1</b> &mdash; the reference rail</td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
 <tr><td>R2a&ndash;g</td><td><b>HGR20 rail 2</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
 <tr><td>F1, F2</td><td><b>BF12</b> screw support</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.5</sup></td></tr>
-<tr class="unk"><td>K1&ndash;K4</td><td><b>BK12</b> screw support</td><td>4</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Both supports fix to this plate</td></tr>
+<tr><td>K1&ndash;K6</td><td><b>Z cast stepper frame</b> (the BK12 end)</td><td>6</td><td class="n">360, 373, 403</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br>&#9888; <b>X 403 leaves 4 mm to the end</b><sup class="f">3.7</sup></td></tr>
 <tr><td><b>S1</b></td><td><b>Sensor bore</b> &mdash; centred on the block pattern</td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
 <tr><td>X1&ndash;X16</td><td><b>Four X-axis bearing blocks</b>, far face</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n">20, 56, 98, 134</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b><sup class="f">3.2</sup></td></tr>
 <tr class="unk"><td>TS1&hellip;</td><td>Top stop plate fixing</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Keep the overhang short<sup class="f">3.4</sup></td></tr>
