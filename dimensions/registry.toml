@@ -301,6 +301,28 @@ expr = "SCREW_AXIS_X + (NUT_FACE_X / 2)"
 note = "Sole bracket root to tip, from the plate's INNER face - the root covers the stacked plate and doubler end faces, so the 25.4 seating is INSIDE this length, not added to it. Comes out 98.7, flush with the nut's outboard edge. A 107.4 drawn 2026-10-02 added the seating twice."
 
 [[dim]]
+sym = "ROOT_BOLT_X_ENDPLATE"
+expr = "T_X_ENDPLATE / 2"
+note = "Sole bracket's R5-R8 row, from the plate's INNER face. Centred in the end plate's own thickness - FORCED, not chosen: a row off its plate's mid-thickness breaks out of it. Spotted at home through the bracket, so this is for drawing it, not for setting a mill."
+
+[[dim]]
+sym = "ROOT_BOLT_X_DOUBLER"
+expr = "T_X_ENDPLATE + (T_DOUBLER / 2)"
+note = "Sole bracket's R1-R4 row, from the plate's INNER face. Centred in the doubler's own thickness, same reasoning as ROOT_BOLT_X_ENDPLATE. These are the only edge holes that need the mill - Sheet 2 carries them as B1-B4."
+
+[[dim]]
+sym = "ROOT_BOLT_Y_FIRST"
+value = 32
+provenance = "derived"
+note = "First of four Y stations across the 154 root, settled 2026-10-03. D1-D4, R1-R4 and R5-R8 all sit on the same stations, so one spread serves the doubler bolts and both sole-bracket rows."
+
+[[dim]]
+sym = "ROOT_BOLT_Y_PITCH"
+value = 30
+provenance = "derived"
+note = "Pitch of those four stations: 32, 62, 92, 122. Leaves 32 of edge at each end of the 154."
+
+[[dim]]
 sym = "THRUST_ARM"
 expr = "SCREW_AXIS_X - T_X_ENDPLATE"
 note = "Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for."
