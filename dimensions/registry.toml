@@ -590,3 +590,45 @@ note = "Span between the two shelves, so the lever the roll shim works over"
 sym = "ROLL_RANGE_PER_100"
 expr = "ROLL_RANGE / BEAM_LEN * 100"
 note = "Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on hand, is worth 0.003 at the same circle."
+
+
+# ---------------------------------------------------------------- the 1200 rear plate
+
+[[dim]]
+sym = "BEAM_SPAN"
+value = 1200
+provenance = "derived"
+note = "Y1's outboard face to Y2's outboard face on the rear plate, settled 2026-10-03. Y1's lower-left corner is the plate's X 0, Y 0 datum and Y2's lower-right corner is X 1200. The plate itself is ~1205 - a window, not a target."
+
+[[dim]]
+sym = "BF12_ROW1_BARE"
+value = 127
+provenance = "derived"
+note = "First BF12 row on the rear plate BEFORE the interposer is accounted for, from the plate's installed TOP edge. His number, 2026-10-03."
+
+[[dim]]
+sym = "BF12_ROW_PITCH"
+value = 18
+provenance = "part"
+note = "BF12 face-mount row spacing. Columns are 7 and 53 - the same columns measured on the cast stepper frame, see open-items.md."
+
+[[dim]]
+sym = "BF12_ROW1_Y"
+expr = "BF12_ROW1_BARE + T_INTERPOSER"
+note = "The screw's far end is carried by the cast stepper frame sitting ON the interposer, which LOWERS that end, so BF12 drops by the same amount or the screw is not parallel to the beam. Sheet 7 is clamped inverted, so lower is a LARGER Y. NOTE: this applies the FULL interposer thickness; NUT_FACE_BELOW_BEAM applies (T_INTERPOSER - BK12_STANDOFF_ASBUILT) instead because there the interposer replaces a 5 mm standoff. If 127 already had that standoff in it the shift is 4.525, not 9.525 - UNRESOLVED 2026-10-03."
+
+[[dim]]
+sym = "BF12_ROW2_Y"
+expr = "BF12_ROW1_Y + BF12_ROW_PITCH"
+note = "Second BF12 row, same four columns."
+
+[[dim]]
+sym = "XBOX_PITCH"
+value = 150
+provenance = "derived"
+note = "Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The side plates use 100 over 1000 - different plates, both correct."
+
+[[dim]]
+sym = "XBOX_X_FIRST"
+expr = "(BEAM_SPAN - (7 * XBOX_PITCH)) / 2"
+note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050, centred on the 1200 beam span leaves 75 at each end. Stations: 75, 225, 375, 525, 675, 825, 975, 1125."
