@@ -2816,9 +2816,18 @@ slips.
 - **The exact box width**, which sets the top skin and therefore the spacing of the two curbs. Not a
   design number: it is **measured off the fully assembled CNC standing on a flat surface**, and the box
   is not built until then. Nothing else is blocked by it in the meantime.
-- **Where the three-point mount pads sit relative to the two outer walls.** The entire Y beam load now
-  comes down those walls, so the pads want to be under them rather than under the field of the bottom
-  skin. The three-point-plus-fifth-leg scheme is still only in the project notes, not in this repo.
+- ✅ ~~**Where the three-point mount pads sit relative to the two outer walls**~~ **Already answered,
+  and this item was stale - corrected 2026-10-02.** They are not pads. Each post is reduced over its
+  top 118 mm to a tenon, and the **38 mm ledge** left behind is cut on the **outward-facing** faces
+  **precisely so the perimeter wall lands on it** - which is exactly what this item was asking for.
+  Front posts carry a ledge on their outside *and* front edges, taking the side and front walls plus
+  their laminated tongues; the back-centre post has a single-sided ledge under the back wall and its
+  tongue. The two rear corner legs have no tenon and stand ~2 mm shy, so the box never touches them.
+  🔴 **The claim that the scheme was "only in the project notes, not in this repo" was simply
+  wrong** - [`torsion-box.md`](torsion-box.md) carries the mount, the tenons, the ledge depth, the
+  back post's single-sided shoulder and what the tenons ask of the rib grid. **It was repeated twice
+  in conversation on 2026-10-02 on the strength of this list rather than the file.** An open-items
+  entry is a pointer, not evidence; read the file it points at before believing it.
 - ✅ ~~**The L bracket specification** - "15 × 1.5" has not been resolved.~~ **Moot 2026-09-30** - the
   tapered base gives the bolt spacing directly, so there are no L brackets. See "The lateral fix".
 - ✅ ~~**Front corner three-way convergence**~~ **Closed 2026-09-30** - the front and back tongues run
