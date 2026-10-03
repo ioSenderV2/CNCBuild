@@ -363,7 +363,9 @@ both belong to the old outline.
 diameter, and confirmed good on the template.
 
 ✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
-and the back plate's row all sit at 30 mm above the plate's bottom edge, which since 2026-10-03 is
+and the back plate's row all sit at 30 mm above the plate's bottom edge. 📌 **The fin's two became
+L-BRACKET bolts on 2026-10-03** when the front tongue was deleted, and deliberately did not move: the
+part they fasten to changed, the height and the 145 mm couple did not. Which since 2026-10-03 is
 also 30 below the top of the 60 mm tongue - the tongue came off 61 for exactly that symmetry. One
 number to transfer instead of three, and now the same number read from either edge. 📌 **The pitches no longer differ, as of 2026-10-03.** The side plates were 100 mm, eleven
 over 1000; they are now **150 mm, first at 50, seven over 1000** - the same pattern as the front

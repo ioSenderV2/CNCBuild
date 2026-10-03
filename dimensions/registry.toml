@@ -1030,7 +1030,7 @@ note = "How far the box's laminated tongue stands proud of the top skin, on the 
 [[dim]]
 sym = "BOX_TONGUE_BOLT_Y"
 expr = "BOX_TONGUE_PROUD / 2"
-note = "The one bolt line through the plates into the box tongues. 30, and with BOX_TONGUE_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61. \u26a0 The front fin NO LONGER USES IT - the front has no tongue, so the fins are tied down by four L-brackets behind each instead; see BOX_FRONT_OVERHANG."
+note = "The one bolt line at 30 above each plate's bottom edge - side plates and back plate into the box tongues, front fin into its L-brackets. With BOX_TONGUE_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61. The fin keeps the SAME height even though the part it bolts to changed on 2026-10-03: Sheet 1's T1 and T2 were repurposed from tongue bolts to bracket bolts and did not move, which keeps their 145 mm couple intact. See BOX_FRONT_OVERHANG."
 
 # ------------------------------------------------ the bolt-on plates, settled 2026-10-03
 
@@ -1119,3 +1119,9 @@ note = "The box tongue is ONE 19 mm lamination, settled by him 2026-10-03 - not 
 sym = "FIN_COVERS_TONGUE_END"
 expr = "FIN_PROUD - T_BOX_TONGUE"
 note = "How much of the side tongue's front END GRAIN the fin covers, beyond its full thickness. His intent 2026-10-03 is that the fin covers it completely, which needs this at 0 or above. ⚠ IT IS NEGATIVE ON THE REPO'S OWN NUMBERS: FIN_PROUD derives to 16.825 (FIN_OVERHANG 20 less the 3.175 side plate) against a 19 tongue, so 2.175 of end grain stays exposed. He stated the fin runs past the side plate by 19. One of the two is wrong and it is UNRESOLVED - either FIN_OVERHANG is 22.175 rather than 20, or the end grain is 2.175 short of covered."
+
+[[dim]]
+sym = "FIN_BRACKETS"
+value = 2
+provenance = "derived"
+note = "L-brackets behind each front fin, tying it down to the box's top skin - four across the machine. His, 2026-10-03, replacing the deleted front tongue. They land on Sheet 1's T1 and T2, which were the tongue bolts and were repurposed rather than re-picked, so the 145 mm couple that provides the moment restraint survives the change."
