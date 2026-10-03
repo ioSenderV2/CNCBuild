@@ -180,12 +180,18 @@ outer face** so that *"the casting and bar protrude through the window together"
 **is** the beam underside, so the window top is the beam underside - **120** - and the interposer
 thickness does not enter it. **The window top does not move if the bar ever goes to 1/2".**
 
-📌 **Why they both pass through, from the part: the casting's foot is stepped.** The ledge where the
-stepper mount begins means the casting **hangs over the end of the interposer** rather than sitting
-wholly on top of it - so the bar has to continue through the window **underneath** the casting. The
-129.5 figure came from imagining the casting sitting on a bar that stops at the plate. It does not.
-**The stacking is: beam underside at 120, then the bar, then the casting hanging past the bar's end**
-- and the window has to pass the bar, which is the higher of the two.
+🔴 **Nothing rests on anything - the whole assembly HANGS, and that is the point.** The load path,
+top to bottom:
+
+1. **Six M8 into slide-in T-nuts** in the beam's bottom-face slots. Everything below is suspended
+   from these.
+2. **The interposer bar**, hanging from those bolts, its top face against the beam underside.
+3. **The casting**, bolted up into the bar with M5 and hanging from *its* bolts.
+
+📌 **So the bar is the higher of the two parts, and the window has to pass it.** The 129.5 figure came
+from imagining the casting resting on a bar that stops at the plate - it does not rest, and the bar
+does not stop. The bar continues through the window and the casting hangs off it, past its end, which
+is what the stepped foot is for.
 
 📌 **The 62 mm width is the same fact from the other side.** The bar is **60 mm** wide, so a 62 mm
 window clears it by **1 mm a side** - the same 1 mm the window leaves against the 60 mm extrusion end

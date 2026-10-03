@@ -111,6 +111,12 @@ Y-axis change and is not one; it is now the machine's standard way of mounting a
 | **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | **Face-mounted on a tongue off the right-hand X end plate** |
 | **Z** | On the **X carriage plate** - 1/2" aluminium, so **no interposer**, the casting taps straight in | At the bottom of the plate |
 
+🔴 **X and Y load that joint in opposite directions, and it is not a detail.** On **X** the bar sits
+**on top** of the beam and is bolted down into T-nuts - the parts are in **compression**, stacked.
+On **Y1 and Y2** the bar hangs **underneath**, and everything below the beam is in **tension**:
+six M8 into T-nuts hold the bar up against the beam's underside, and the casting is bolted up into
+the bar and hangs from its own M5. **Nothing rests on anything at the Y ends.**
+
 ✅ **Three interposers, and the count is now stated rather than left to be read off the table** -
 given 2026-10-02:
 
