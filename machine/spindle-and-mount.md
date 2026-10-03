@@ -24,34 +24,41 @@
 already carried in the project notes for a round-body spindle. Eight M8 holding the spindle is not
 where this assembly will be soft.
 
-## 🔴 Open: 213 against 199 - the listing and this file disagree by 14 mm
+## ✅ Closed: the body is 213, and the 199 is retired
 
-**The vendor listing committed 2026-10-02** gives the nameplate designation as **Φ80×213**, and
-its drawing carries a **213 mm** dimension spanning the body to the rear end, plus a **27 mm** segment
-at the rear and a **33 mm** dimension across the collet nut. See
+**Settled 2026-10-03.** He confirmed **213**, which is what the vendor listing said all along: the
+nameplate designation is **Φ80×213** and its drawing carries a **213 mm** dimension spanning the
+body to the rear end, plus a **27 mm** segment at the rear and a **33 mm** dimension across the
+collet nut. See
 [`../manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png`](../manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png).
 
-⚠️ **That does not reconcile with the 199 below, and 199 is the number this file says carries
-the design.** Neither does it reconcile as 199 + the 25 mm front cap, which would give 224. The three
-candidate readings are 14-25 mm apart:
+🔴 **The 199 that this file used to carry is wrong and must not be reused.** It never
+reconciled with anything - not with 213, and not as 199 + the 25 mm front cap, which gives 224. If
+199 turns up anywhere it is stale. The registry's SPINDLE_BODY_L is now simply another name for
+SPINDLE_BARREL_L.
 
-| Reading | Body length |
+⚠️ **Read the listing's two vertical dimensions as DIAMETERS.** The 33 and the 80 are both
+drawn vertically, so 33 is the ER20 nut's outside diameter and not a length. The drawing gives no
+axial figure for the nose or the nut at all, which is why the two numbers below had to come off a
+real spindle.
+
+✅ **Measured off the Mega V 2026-10-03** - the same part - both **from the end of the barrel**:
+
+| | mm |
 |---|---|
-| This file, "nose flange to rear, the Ø80 body" | **199** |
-| Nameplate designation Φ80×213 and the listing's 213 dimension | **213** |
-| 199 + the 25 mm front cap | 224 |
+| Barrel end to the nose shoulder | **17** |
+| Barrel end to the collet nut's outer end | **60** |
 
-🔴 **Do not resolve this from either drawing - put a tape on the spindle.** It is a part in hand,
-the measurement takes a minute, and the number feeds the clamp positions and the still-open vertical
-arm from the X beam to the spindle nose. **Until it is measured, treat 199 as provisional rather than
-settled**, which is a change from how the section below reads.
+**The 60 is what places the tool.** Everything above it is a stack from the X beam; everything below
+it is stickout.
 
-📌 **The clamps are not at risk either way.** At 116 mm centres with 55 mm axial clamps the pair
-spans 171 mm, which fits inside 199 as well as 213. It is the *vertical* chain that moves.
+📌 **The clamps were never at risk.** At 116 mm centres with 55 mm axial clamps the pair spans
+171 mm, which fitted inside 199 as well as 213 - which is why the dispute, while it lasted, moved the
+*vertical* chain and nothing else.
 
 ## The body dimensions, off the vendor drawing
 
-⚠️ **Superseded in part - read the 213-against-199 note above first.**
+⚠️ **Superseded - the body is 213, see the closed note above. Every 199 in this section is stale and kept only so the reasoning that used it can still be followed.**
 
 The three dimensions on the product drawing are **sequential, not overlapping** - confirmed by the
 user 2026-09-30:
@@ -60,14 +67,14 @@ user 2026-09-30:
 |---|---|
 | Collet nut face to the nose flange (nut + exposed shaft) | **52 mm** |
 | Nose flange / front bearing cap | **25 mm** |
-| **Nose flange to the rear end - the Ø80 body** | **199 mm** |
+| ~~Nose flange to the rear end - the Ø80 body~~ | ~~199 mm~~ → **213** |
 | Overall, collet nut face to rear | **276 mm** |
 
-📌 **The full 199 mm is Ø80 and clampable.** The black bands at each end are finish, not steps - the
+📌 **The full barrel is Ø80 and clampable** (213, not the 199 this line used to say). The black bands at each end are finish, not steps - the
 Ø80 dimension line on the drawing is drawn across the rear band. Only the two Ø8 water fittings near
 the rear obstruct anything, and they sit above where the upper clamp goes.
 
-⚠️ **The 52 and 25 are read off a listing drawing, not measured.** The 199 is the one that carries the
+⚠️ **The 52 and 25 are read off a listing drawing, not measured.** The body length is the one that carries the
 design and it has margin to spare (see the Z plate below), so this does not need confirming before the
 plate is cut - but mic the nose stack before anything depends on the *vertical* arm.
 

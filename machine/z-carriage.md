@@ -55,7 +55,7 @@ holes, and dodging them is what fixes everything else.
 |---|---|
 | Plate | **164 mm W × 175 mm H × 1/2"** |
 | **Clamp centres** | **116 mm** - clamp mid-height at **±58 mm** from plate centre |
-| Clamp extent | **171 mm**, on a 199 mm barrel |
+| Clamp extent | **171 mm**, on a **213 mm** barrel |
 | M8 columns | **±50 mm** from plate centre |
 | **M8 rows, from plate centre** | **±45.5 and ±70.5 mm** |
 | **M8 rows, from the nearer plate end** | **17 and 42 mm** ← the drilling dimension |
@@ -303,7 +303,7 @@ the Z plate section above.
 the rail - was the open one, and the only one that could cost travel.
 
 ✅ **It closed on 2026-09-30 costing nothing.** The procedure below was written expecting a trade, and
-it resolved to the no-trade corner: the Ø80 body is 199 mm, two 55 mm clamps need only 154 mm of
+it resolved to the no-trade corner: the Ø80 body is 213 mm, two 55 mm clamps need only 154 mm of
 extent to match the **butted** block run, so step 3's spread is **zero** and step 5's re-cut does not
 happen. Full **246 mm** travel, zero overhang, 6" spacers as built. See the Z plate section above.
 

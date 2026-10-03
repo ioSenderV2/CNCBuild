@@ -243,7 +243,7 @@ to shrink. ⚠️ **Mark the bar's underside on the plate** - 9.525 below the wi
 lower opening is the only part the casting can use. **A plywood mockup is being cut to find the real number** - see the plate list in
 [`drawings/README.md`](drawings/README.md). Nothing downstream depends on it: the window's tight
 dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
-from the 61 mm tongue at the plate's base.
+from the 60 mm tongue at the plate's base.
 
 ## 🔴 The 60.5 × 50 window, and why the taper does not help it
 
@@ -307,7 +307,7 @@ not to this plate.
 ⚠️ **The coupling, stated properly, because an earlier version of this section had it wrong.** The
 worry was never that riser and side plate touch each other - they do not, and the 1 mm gap settles
 that. It is that both want to bear against **the same curb inner face**. The box's outer wall
-stands 61 mm proud as a curb and the design has **the full-height plate's outer face bearing on
+stands 60 mm proud as a curb and the design has **the full-height plate's outer face bearing on
 it** - that is the full-metre lateral restraint, and "bias the top skin wide, never narrow" exists
 because it is a hard bearing face with no float. If the riser's edge is the proud member **and the
 curb reaches that far forward**, the curb is held out by the riser and leaves a 1.8 mm gap along
@@ -328,8 +328,8 @@ this file previously had to reach for L brackets to avoid a hinge at the base. *
 gives the spacing directly.**
 
 ✅ **Fixing, fully dimensioned: two M8 at X = 25 and 170 mm** from the outboard edge,
-**Y = 30 mm** above the plate's bottom edge - **31 mm down from the top of the 61 mm proud
-tongue** - plus the plate's bottom edge **bearing on the top skin** the way the outboard plate does.
+**Y = 30 mm** above the plate's bottom edge - and, with the tongue at 60, **exactly 30 down from
+its top as well** - plus the plate's bottom edge **bearing on the top skin** the way the outboard plate does.
 *(X 25 settled 2026-09-30; T2 moved 175 → 170 and Y 31 → 30 on 2026-10-02.)*
 
 📌 **T1 and T2 are those two bolts** - the labels are used below and were never defined. **T1 is
@@ -359,9 +359,9 @@ both belong to the old outline.
 diameter, and confirmed good on the template.
 
 ✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
-and the back plate's row all sit at 30 mm above the plate's bottom edge, 31 mm below the top of the
-61 mm tongue. One number to transfer instead of three, which is worth more than the millimetre it
-moved. **The pitches differ because the plates do**: 100 mm on the side plates (eleven over
+and the back plate's row all sit at 30 mm above the plate's bottom edge, which since 2026-10-03 is
+also 30 below the top of the 60 mm tongue - the tongue came off 61 for exactly that symmetry. One
+number to transfer instead of three, and now the same number read from either edge. **The pitches differ because the plates do**: 100 mm on the side plates (eleven over
 1000 mm), ~150 mm on the back plate (eight over 1211.75 mm). Both are correct; neither is the other's
 typo.
 
@@ -371,7 +371,7 @@ would lift any single horizontal plane from ~90% to ~95% net section. It is not 
 - **Net section is not what governs a bolt in plywood** - bearing and edge tear-out are. The
   staggering rule it comes from is a *sawn lumber* rule, there to stop a split running along the
   grain, and Baltic birch is cross-laminated.
-- **±10 spends the margin that does govern.** On a 61 mm tongue the upper half would drop to 21 mm
+- **±10 spends the margin that does govern.** On a 60 mm tongue the upper half would drop to 20 mm
   from the free top edge.
 - **The row is not at the worst height anyway** - the tongue cantilevers up from the box, so peak
   bending is at its base, not at mid-height.
@@ -566,7 +566,7 @@ axis has not been looked up.)*
 ## The tongues that back both
 
 Both fixings need a bearing face, so **the box's doubled outer wall now runs all four sides** - the
-outer lamination standing **61 mm proud** front and back exactly as it does left and right. See
+outer lamination standing **60 mm proud** front and back exactly as it does left and right. See
 [`torsion-box.md`](torsion-box.md), which carries the consequences: every ledge goes to 38 mm, front
 corner tenons become **48 × 48**, the back centre tenon **86 × 48**, and the back post's shoulder
 roughly doubles.

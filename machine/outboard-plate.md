@@ -171,7 +171,7 @@ The box is **19 mm Baltic birch skins top and bottom over a grid of 19 mm strips
 2. **Each outer wall is two 19 mm laminations instead of one.** The inner one is an ordinary 100 mm web
    between the skins. The outer one is **180 mm tall, standing on the bottom skin's top face**, glued
    to the inner web's outer face and to the edge of the top skin. It spans the 100 mm web plus the
-   19 mm top skin and so **stands 61 mm proud** of the top surface as a **curb, outboard of the plate.**
+   19 mm top skin and so **stands 60 mm proud** of the top surface as a **curb, outboard of the plate.**
 
 The top skin's outer edge terminates at the inner web's outer face, which is also the curb's inner
 face. The plate drops into the channel between the two, and since the plate is 6.35 mm thick it
@@ -185,7 +185,7 @@ never on skin spanning between grid members.
 | Inner web of the outer wall | 19 mm | Between the skins, 100 mm high |
 | *of which the outer 6.35 mm carries the plate's bottom edge* | | *bearing face is the top skin's top surface* |
 | The full-height plate | 6.35 mm (1/4") | Up to the Y beam - 12", 305 mm tall |
-| Outer lamination, the curb | 19 mm | 180 mm tall, **61 mm proud** of the top skin |
+| Outer lamination, the curb | 19 mm | 180 mm tall, **60 mm proud** of the top skin |
 
 ### The plate is captured on three sides
 
@@ -263,7 +263,7 @@ Two consequences worth holding on to:
 
 ## The magnetic encoder tape runs on the front plate
 
-The **10 mm magnetic tape** for the AS5311 sensors runs on the face of the **46 mm front plate**,
+The **10 mm magnetic tape** for the AS5311 sensors runs on the face of the **45 mm front plate**,
 centred in the gap between its two rows of seven M8 flange bolts. Two rows at ±15 mm with 17.3 mm
 flange heads leaves about **12.7 mm clear**, so a 10 mm tape sits with roughly 1 mm each side.
 

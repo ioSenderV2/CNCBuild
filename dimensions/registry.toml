@@ -511,16 +511,15 @@ source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 
 [[dim]]
 sym = "SPINDLE_BODY_L"
-value = 199
-provenance = "OPEN"
-note = "STILL OPEN 2026-10-03, and the spec page does not close it. The prose says 199 nose-flange-to-rear; the listing's dimensioned drawing says the barrel is 213 and the nameplate reads PHI80x213. 213 - 199 = 14, which would be a nose step ahead of the 80 cylinder - consistent with the photo but NOT established by it. For a render use SPINDLE_BARREL_L; for anything that gets cut, PUT A TAPE ON THE SPINDLE."
+expr = "SPINDLE_BARREL_L"
+note = "CLOSED 2026-10-03: he confirmed 213 is correct, so this is now just another name for SPINDLE_BARREL_L and carries no independent value. THE 199 IS RETIRED - it had been the prose's nose-flange-to-rear figure, it reconciled with nothing, and it sat OPEN for weeks while CLAMP_PAIR_SPAN hedged against both readings. If 199 appears anywhere it is stale."
 source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 
 [[dim]]
 sym = "SPINDLE_BARREL_L"
 value = 213
 provenance = "vendor"
-note = "Barrel length off the listing's dimensioned drawing, and the same figure as the nameplate's PHI80x213. This is the number to draw; SPINDLE_BODY_L's 199 is a different and unreconciled measurement."
+note = "Barrel length off the listing's dimensioned drawing, and the same figure as the nameplate's PHI80x213. Confirmed correct by him 2026-10-03, which closed SPINDLE_BODY_L - that symbol now just points here."
 source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 
 [[dim]]
@@ -541,14 +540,14 @@ source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 sym = "SPINDLE_SHOULDER_DROP"
 value = 17
 provenance = "measured"
-note = "Barrel front face to the nose shoulder, measured off the Mega V's spindle 2026-10-03 - it is the same part. The listing's dimensioned drawing gives no axial figure at all for the nose or the nut, so this could only come off a real one."
+note = "Barrel front face to the nose shoulder, measured off the Mega V's spindle 2026-10-03 - it is the same part. THE DATUM IS CONFIRMED: he stated it as measured from the END OF THE BARREL, which is what this and SPINDLE_COLLET_END both assume. The listing's dimensioned drawing gives no axial figure at all for the nose or the nut, so this could only come off a real one."
 source = "measured on the Mega V, 2026-10-03"
 
 [[dim]]
 sym = "SPINDLE_COLLET_END"
 value = 60
 provenance = "measured"
-note = "Barrel front face to the collet nut's outer end, measured off the Mega V 2026-10-03. THIS IS THE NUMBER THAT PLACES THE TOOL: everything above it is a stack from the X beam, and below it is stickout. Same source and caveat as SPINDLE_SHOULDER_DROP."
+note = "Barrel front face to the collet nut's outer end, measured off the Mega V 2026-10-03, datum confirmed by him as the end of the barrel. THIS IS THE NUMBER THAT PLACES THE TOOL: everything above it is a stack from the X beam, and below it is stickout."
 source = "measured on the Mega V, 2026-10-03"
 
 [[dim]]
@@ -577,7 +576,7 @@ note = "Clamp's axial dimension"
 [[dim]]
 sym = "CLAMP_PAIR_SPAN"
 expr = "CLAMP_CENTRES + CLAMP_AXIAL"
-note = "Fits inside SPINDLE_BODY_L on either the 199 or the 213 reading, which is why the body dispute does not block the clamps"
+note = "Fits inside SPINDLE_BODY_L, which closed at 213 on 2026-10-03. It used to be written as fitting on either the 199 or the 213 reading, because the body length was disputed; it is not any more."
 
 # ---------------------------------------------------------------- the shelf
 #
@@ -1013,3 +1012,22 @@ note = "Sheet 4's C-holes, first column in plate coordinates. 8.5. The next is t
 sym = "Z_M5_Y_3"
 expr = "(Z_PLATE_W / 2) + Z_M5_COL_INB"
 note = "Third C-hole column, 123.5. The fourth is this plus BLOCK_PITCH_X."
+
+# ---------------------------------------------------- consistency, settled 2026-10-03
+
+[[dim]]
+sym = "FRONT_STRIP_W"
+value = 45
+provenance = "derived"
+note = "The front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. WAS 46 until 2026-10-03, changed by him for consistency - and the consistency is real, not cosmetic: 45 is BLOCK_ROW_GAP, the conservative keep-out between the bearing block rows, so the strip is exactly the width that is known to fit. At 46 it matched the GEOMETRIC gap instead and had no clearance at all."
+
+[[dim]]
+sym = "CURB_PROUD"
+value = 60
+provenance = "derived"
+note = "How far the torsion box's outer wall lamination stands proud of the top skin - the curb the steel plates bear against, and the height of the plywood tongue they bolt to. WAS 61 until 2026-10-03, changed by him for consistency. It makes the bolt line exactly central: CURB_BOLT_Y is 30 above the plate's bottom edge and now also 30 below the tongue's top."
+
+[[dim]]
+sym = "CURB_BOLT_Y"
+expr = "CURB_PROUD / 2"
+note = "The one bolt line across all three plates - the front fin's two bolts, the side plates' row and the rear plate's row all sit here. 30, and with CURB_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61."

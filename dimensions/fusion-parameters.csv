@@ -1,10 +1,21 @@
 EXT_W,mm,60,"[part] 8020 30-6060 section, 60 x 60"
 EXT_BORE_INSET,mm,15,"[part] Corner bores sit 15 in from each face. Four corners, so symmetric."
 BEAM_H,mm,120,"[derived] Every beam is a stacked pair - X, Y1 and Y2 alike"
+RAIL_SLOT_INSET,mm,15,"[measured] The two rails on a beam go in the OUTSIDE T-slot of each stacked extrusion - X, Y1 and Y2 all the same, confirmed by him again 2026-10-03. On a 30-6060 that slot centre is 15 from the extrusion's outer face, the same 15 as EXT_BORE_INSET a"
+RAIL_LOW_Z,mm,15,"[derived] Lower rail centreline, from the beam's BOTTOM face. Beam-local, so it reads the same on X, Y1 and Y2."
+RAIL_HIGH_Z,mm,105,"[derived] Upper rail centreline, from the beam's bottom face. 105."
+RAIL_PITCH,mm,90,"[derived] 90, and it agrees exactly with the measured 90 in gantry-beam-joint.md. The outside slot is used because it is the widest the pair can be spread on a 120 beam; this is the couple that resists nod, so it is a stiffness number, not a convenie"
 RAIL_STACK,mm,30,"[measured] HGR20 rail plus HGH20 block, plate face to rail mounting face"
 BLOCK_BUTTED,mm,154.18,"[measured] Two HGH20 blocks butted, full body. Sets the X end plate width."
 BLOCK_PADS,mm,128.24,"[measured] Two blocks butted, MACHINED PADS ONLY. The functional bearing floor."
-BLOCK_ROW_GAP,mm,45,[measured] Facing edges of the upper and lower Y block rows. The ENC_BORE_D lives in it.
+BLOCK_ROW_GAP,mm,45,"[measured] Facing edges of the upper and lower Y block rows, measured. ⚠ IT DOES NOT LAY OUT THE 16 BOLT HOLES - settled by him 2026-10-03. The rows are set by the rails, which sit in the beams' OUTSIDE T-slots and are therefore RAIL_PITCH apart; the"
+BLOCK_W,mm,44,"[part] HGH20 block body width, measured. Only used for clearance - what is left between the rows, and where the lower row's bottom edge falls against the doubler."
+BLOCK_ROW_GAP_GEOM,mm,46,"[derived] The gap the geometry actually produces once the rails are in the outside T-slots: 46. One more than the measured 45, which is why 45 is kept as the conservative clearance number rather than corrected."
+BEAM_SEAM_XEP,mm,122.525,"[derived] The Y beam's seam - where the two stacked extrusions meet - in the X end plate's own frame, measured from the plate's bottom end. 122.525, and Sheet 2a's encoder bore was independently placed at 122.5, which is the cross-check that this who"
+RAIL_LOW_XEP,mm,77.525,"[derived] Lower Y rail centreline in the end plate's frame = the lower block row's centre. 77.525, drawn and scheduled at 77.5."
+RAIL_HIGH_XEP,mm,167.525,"[derived] Upper Y rail centreline in the end plate's frame = the upper block row's centre. 167.525, drawn and scheduled at 167.5."
+BLOCK_PITCH_X,mm,32,"[part] HGH20 block mounting pattern, across the block. Was the oldest open item on the pre-trip checklist."
+BLOCK_PITCH_Y,mm,36,"[part] HGH20 block mounting pattern, along the rail. Pairs with BLOCK_PITCH_X."
 T_X_ENDPLATE,mm,12.7,[nominal] 1/2in 6061. CALIPER IT - two 'nominal' thicknesses were wrong this session.
 T_DOUBLER,mm,12.7,"[nominal] 1/2in 6061, same stock as the end plate"
 T_SOLE_BRACKET,mm,6.35,[nominal] 1/4in 6061
@@ -20,12 +31,12 @@ BEAM_FRONT_FROM_BACK_EDGE,mm,60,"[derived] The X beam's front face, from the pla
 BLOCK_CENTROID_Y,mm,77,"[derived] Y block group centroid, from the plate's back edge"
 BEAM_CENTRELINE_Y,mm,30,"[derived] X beam centreline from the plate's back edge, beam flush with it"
 HANG_ARM,mm,92,[derived] Arm from the block centroid to the forward-hanging mass. 139 is the centred case recorded in the prose.
-BK12_STANDOFF_ASBUILT,mm,5,"[measured] BK12/BF12 mounted 5 above the extrusion, as built"
+BK12_STANDOFF_ASBUILT,mm,5,"[measured] BK12/BF12 mounted 5 above the extrusion, AS BUILT. 🔴 DO NOT DELETE because the standoff no longer exists in the design - that is exactly why this is here. NUT_FACE_BELOW_BEAM_ASBUILT was measured WITH the standoff, so converting that measu"
 NUT_FACE_BELOW_BEAM_ASBUILT,mm,58,"[measured] Beam underside to the ball nut's downward mounting face, as built with the 5 mm standoff"
 NUT_FACE_BELOW_BEAM,mm,62.525,"[derived] The interposer replaces the 5 mm standoff, so the nut face drops by the difference"
 XEP_H,mm,242.525,[derived] X end plate height. Bottom level with the nut's mounting face.
 XEP_BOTTOM,mm,-182.525,"[derived] Plate bottom, measured from the Y beam top. Negative is down."
-SCREW_AXIS_X,mm,72.7,"[derived] Y screw centreline, from the X end plate's INNER face"
+SCREW_AXIS_X,mm,72.7,"[derived] Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) term is BY CONSTRUCTION, not an assumption: the BK12 and BF12 support blocks are 60 wide and the BF12 tongue is cut 60 wide to match, so the screw is centred in 60 by th"
 NUT_FACE_X,mm,52,"[vendor] Ball nut mounting face, along X. The long dimension, parallel with the X beam."
 NUT_FACE_Y,mm,40,"[vendor] Ball nut mounting face, along Y"
 NUT_PATTERN_X,mm,40,[vendor] 4 x M5 THREADED INTO THE NUT - not through-holes. Pattern along X.
@@ -35,9 +46,16 @@ NUT_INSET_Y,mm,8,[derived] Closes exactly at 8. A 7 was given first and correcte
 NUT_BOLT_X_NEAR,mm,52.7,"[derived] Inboard M5 column, from the end plate's inner face"
 NUT_BOLT_X_FAR,mm,92.7,[derived] Outboard M5 column
 SOLE_REACH,mm,73.3,"[derived] Free span of the sole bracket, doubler's outer face to the nut face's outboard edge"
+NUT_AIR_MIN,mm,20,"[part] REQUIRED minimum clear air between the doubler's outer face and the ball nut's side. His number, 2026-10-03, off the Y beam build."
+NUT_AIR_CLEAR,mm,21.3,"[derived] Actual clear air, doubler's outer face to the nut's near edge. Comes out 21.3, so it clears NUT_AIR_MIN by 1.3. If this ever drops below NUT_AIR_MIN the stack has moved."
+SOLE_BRACKET_L,mm,98.7,"[derived] Sole bracket root to tip, from the plate's INNER face - the root covers the stacked plate and doubler end faces, so the 25.4 seating is INSIDE this length, not added to it. Comes out 98.7, flush with the nut's outboard edge. A 107.4 drawn 2"
+ROOT_BOLT_X_ENDPLATE,mm,6.35,"[derived] Sole bracket's R5-R8 row, from the plate's INNER face. Centred in the end plate's own thickness - FORCED, not chosen: a row off its plate's mid-thickness breaks out of it. Spotted at home through the bracket, so this is for drawing it, not "
+ROOT_BOLT_X_DOUBLER,mm,19.05,"[derived] Sole bracket's R1-R4 row, from the plate's INNER face. Centred in the doubler's own thickness, same reasoning as ROOT_BOLT_X_ENDPLATE. These are the only edge holes that need the mill - Sheet 2 carries them as B1-B4."
+ROOT_BOLT_Y_FIRST,mm,32,"[derived] First of four Y stations across the 154 root, settled 2026-10-03. D1-D4, R1-R4 and R5-R8 all sit on the same stations, so one spread serves the doubler bolts and both sole-bracket rows."
+ROOT_BOLT_Y_PITCH,mm,30,"[derived] Pitch of those four stations: 32, 62, 92, 122. Leaves 32 of edge at each end of the 154."
 THRUST_ARM,mm,60,[derived] Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for.
 DOUBLER_SEATING,mm,25.4,[derived] Seating width at the plate's bottom with the doubler on
-DOUBLER_H,mm,60,"[OPEN] OPEN: gated on the LOWER BLOCK ROW's bottom edge, which shares this face. NOT gated on the Y beam underside - the doubler sits inboard of the beam's inside face."
+DOUBLER_H,mm,50,"[derived] Closed 2026-10-03 at 50. Gated on the LOWER BLOCK ROW bottom edge, which shares this face and lands at X 56 once the block's measured 44 width is applied - so 50 clears by 6 and the earlier 60 overlapped by 4. NOT gated on the Y beam unders"
 FIN_STOCK,mm,302,"[measured] The square is a measured 302, not a nominal 12in"
 FIN_KERF,mm,2,[nominal] The single diagonal cut
 FIN_TOP_W,mm,100,"[derived] FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation"
@@ -46,8 +64,8 @@ FIN_COL_OUTB,mm,35,[derived] Outboard M8 column from the fin's outboard factory 
 FIN_COL_INB,mm,65,[derived] Inboard M8 column. 65.
 FIN_OVERHANG,mm,20,[derived] Fin overhanging the Y beam's outboard face
 FIN_PROUD,mm,16.825,[derived] Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The curb must terminate short of the riser's station.
-WINDOW_W,mm,62,[derived] Clearance for the cast stepper frame
-WINDOW_H,mm,50,[derived]
+WINDOW_W,mm,60.5,"[derived] Clearance window for the cast stepper frame, in each front fin. 60.5 OVER A 60 CASTING - half a millimetre total, a slip fit and deliberately little, because the window's loose axis is its HEIGHT, not its width. Corrected from 62 on 2026-10"
+WINDOW_H,mm,50,[derived] Window height. This is the loose axis - it is what the casting's clearance actually consumes - which is why the width is allowed to be a 0.5 slip fit.
 WINDOW_OUTB,mm,19,[measured] Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7.
 SPACER_T_ASFOUND_L,mm,16.41,[measured] NOT 5/8in (15.875). The repo carried the fraction as if it were the dimension.
 SPACER_T_ASFOUND_R,mm,16.43,"[measured] 0.02 from its pair - at caliper repeatability, and about to be made moot by the skim"
@@ -59,10 +77,16 @@ SPINDLE_OFFSET,mm,108.11,[derived] X carriage plate face to the spindle centreli
 T_X_CARRIAGE_PLATE,mm,12.7,[nominal]
 GANTRY_ARM,mm,185.81,"[derived] X beam NEUTRAL AXIS to the spindle centreline - the arm for gantry bending. The 35 is the beam face to neutral axis, recorded in the prose as approximate."
 SPINDLE_D,mm,80,[vendor]
-SPINDLE_BODY_L,mm,199,"[OPEN] OPEN AND CONTESTED: the prose says 199 nose-flange-to-rear, the nameplate reads PHI80x213, and 199 + the 25 mm front cap would be 224. No reading reconciles. PUT A TAPE ON THE SPINDLE."
+SPINDLE_BODY_L,mm,213,"[derived] CLOSED 2026-10-03: he confirmed 213 is correct, so this is now just another name for SPINDLE_BARREL_L and carries no independent value. THE 199 IS RETIRED - it had been the prose's nose-flange-to-rear figure, it reconciled with nothing, and"
+SPINDLE_BARREL_L,mm,213,"[vendor] Barrel length off the listing's dimensioned drawing, and the same figure as the nameplate's PHI80x213. Confirmed correct by him 2026-10-03, which closed SPINDLE_BODY_L - that symbol now just points here."
+SPINDLE_REAR_COLLAR_L,mm,27,"[vendor] The gold rear collar at the cable/water end, measured along the axis on the listing drawing. Inside the barrel's 213, not added to it."
+SPINDLE_NUT_D,mm,33,"[vendor] ER20 collet nut OUTSIDE DIAMETER. The listing draws it as a VERTICAL dimension, same as the 80 - both are diameters. It is not a length, and the drawing gives no axial figure for the nose or the nut, which is the one thing still missing to p"
+SPINDLE_SHOULDER_DROP,mm,17,"[measured] Barrel front face to the nose shoulder, measured off the Mega V's spindle 2026-10-03 - it is the same part. THE DATUM IS CONFIRMED: he stated it as measured from the END OF THE BARREL, which is what this and SPINDLE_COLLET_END both assume."
+SPINDLE_COLLET_END,mm,60,"[measured] Barrel front face to the collet nut's outer end, measured off the Mega V 2026-10-03, datum confirmed by him as the end of the barrel. THIS IS THE NUMBER THAT PLACES THE TOOL: everything above it is a stack from the X beam, and below it is "
+SPINDLE_NOSE_TO_COLLET,mm,43,"[derived] The collet nut's own axial extent past the shoulder, 43. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps."
 CLAMP_CENTRES,mm,116,[derived] Set by bringing the clamp centres in so the M5 counterbores clear the M8 column
 CLAMP_AXIAL,mm,55,[vendor] Clamp's axial dimension
-CLAMP_PAIR_SPAN,mm,171,"[derived] Fits inside SPINDLE_BODY_L on either the 199 or the 213 reading, which is why the body dispute does not block the clamps"
+CLAMP_PAIR_SPAN,mm,171,"[derived] Fits inside SPINDLE_BODY_L, which closed at 213 on 2026-10-03. It used to be written as fitting on either the 199 or the 213 reading, because the body length was disputed; it is not any more."
 SHELF_BAR_W,mm,25.4,"[nominal] 1in, across the bar"
 SHELF_BAR_H,mm,50.8,[derived] 2in. Was 1in. The height exists to separate the two horizontal bolts in Z.
 SHELF_BAR_L,mm,60,"[derived] 60 - exactly the beam's footprint. Was 76.2 (3in), which reached back under the back joining plate; with the beam flush there is nothing back there, and the overhang carried the only route by which a proud joining plate could become the gan"
@@ -80,3 +104,64 @@ BEAM_BOLT_CLEARANCE,mm,9,"[derived] 9 mm clearance on M8 where a plate meets ext
 ROLL_RANGE,mm,0.5,"[derived] Vertical float of the beam in its own bolt holes, and therefore the CEILING on shim-based roll - about 0.5. Caps the adjustment; the shim stack does not."
 BEAM_LEN,mm,1000,"[part] Span between the two shelves, so the lever the roll shim works over"
 ROLL_RANGE_PER_100,mm,0.05,"[derived] Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on hand, is worth 0.003 at the same circle."
+Y_BEAM_GAP,mm,1085.4,"[derived] Y beam INBOARD face to inboard face - the gap the X gantry spans. His chain, 2026-10-03: the X beam plus, each side, an end plate and a rail-and-block stack, which lands on the Y extrusion's inner face. Same 1085.4 that lateral-stiffness.md"
+Y_BEAM_ASSY_W,mm,63.175,"[derived] One Y beam as assembled, across the machine: the extrusion plus its outboard side plate. His number, 2026-10-03 - he gave it as 60 + 1/8in."
+REAR_PLATE_L,mm,1211.75,"[derived] Rear plate length, settled 2026-10-03 and NO LONGER A WINDOW. The plate runs FLUSH with the side plates' outer faces, which is exactly the ~1212 MAXIMUM lateral-stiffness.md names - past it the rear plate becomes the proud member at the cor"
+Y1_EXT_FACE_X,mm,3.175,"[derived] Y1 extrusion's outboard face, from the rear plate's left edge = Sheet 7's X 0. The side plate occupies that 3.175, so the beam no longer sits on the origin the way Sheet 7 was first drawn."
+Y2_EXT_FACE_X,mm,1208.58,"[derived] Y2 extrusion's outboard face, from the same origin. Sheet 7's Y2 station mirrors about REAR_PLATE_L / 2, so every Y2 coordinate is REAR_PLATE_L minus its Y1 twin."
+BEAM_SPAN,mm,1205.4,"[derived] Y1's outboard EXTRUSION face to Y2's, 1205.4 - the figure lateral-stiffness.md's table calls outboard face to outboard face. It was 1200 until 2026-10-03, when his stackup replaced the round number; the plate is 6.35 longer than this becaus"
+BF12_ROW1_BARE,mm,127,"[derived] First BF12 row on the rear plate BEFORE the interposer is accounted for, from the plate's installed TOP edge. His number, 2026-10-03."
+BF12_ROW_PITCH,mm,18,"[part] BF12 face-mount row spacing. Columns are 7 and 53 - the same columns measured on the cast stepper frame, see open-items.md."
+BF12_ROW1_Y,mm,136.525,"[derived] The screw's far end is carried by the cast stepper frame sitting ON the interposer, which LOWERS that end, so BF12 drops by the same amount or the screw is not parallel to the beam. Sheet 7 is clamped inverted, so lower is a LARGER Y. The F"
+BF12_ROW2_Y,mm,154.525,"[derived] Second BF12 row, same four columns."
+XBOX_PITCH,mm,150,"[derived] Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The side plates use 100 over 1000 - different plates, both correct."
+XBOX_X_FIRST,mm,80.875,"[derived] First of eight torsion-box bolts. Eight at 150 pitch span 1050; centred on the plate's own 1211.75 that leaves 80.875 at each end. Stations: 80.875, 230.875, 380.875, 530.875, 680.875, 830.875, 980.875, 1130.875 - and note 7.8 is why the fr"
+TONGUE_H,mm,50,"[derived] BF12 tongue height above the 2a outline, raised from 40 on 2026-10-03 when the interposer pushed the far BF12 row out to 277. At 40 it left 5.5 to the edge, which is not enough beside an M5; at 50 it leaves 15.5."
+TONGUE_TOP,mm,292.525,"[derived] Top of the tongue from the plate's bottom end. The RIGHT-HAND plate only - the left one stops at XEP_H, and that is the single thing making the pair non-interchangeable."
+TONGUE_BF12_ROW1_BARE,mm,249.5,"[derived] First tongue BF12 row BEFORE the interposer: 7 past the beam end at 242.5, matching Sheet 7's own pre-interposer offset."
+TONGUE_BF12_ROW1,mm,259.025,"[derived] The X stepper end sits on the interposer too - it is 3 off, Y1, Y2 and X. The X tongue is ABOVE its beam where the Y frames hang BELOW theirs, so the interposer lifts this end rather than dropping it; on each sheet's own frame that is still"
+TONGUE_BF12_ROW2,mm,277.025,"[derived] Second tongue row, same two columns at Y 7 and 53."
+TONGUE_EDGE_MARGIN,mm,15.5,[derived] Far BF12 row to the tongue's top edge. Must stay well clear of an M5 - this is why the tongue went from 40 to 50.
+T_BB_SKIN,mm,19,"[nominal] Baltic birch skin, top and bottom. NOMINAL ON PURPOSE - torsion-box.md warns that sheet sold as 19 commonly measures 18.2-18.5 and varies between sheets, and that the rib notches must be cut to the measured thickness of the sheet in hand, n"
+BOX_RIB_H,mm,100,"[derived] Egg-crate rib height between the skins. His, 2026-10-03."
+BOX_THK,mm,138,"[derived] The box's vertical thickness, 138 - his arithmetic 2026-10-03 and the figure torsion-box.md already carried as 'depth overall'. Named THK here because 'depth' was ambiguous against the fore-aft run."
+T_REAR_PLATE,mm,6.35,"[nominal] 1/4in A36 hot-rolled, the Sheet 7 plate. CALIPER IT with the side plate on arrival."
+BOX_W,mm,1205.4,"[derived] Box footprint across the machine, 1205.4 - the clear space inside the two side plates. His rule 2026-10-03: the box WITH its laminated tongues fills the space inside the side plates, the rear plate and the front fins exactly. This CLOSES th"
+BOX_FORE_AFT,mm,983.65,"[derived] Box footprint front to back, 983.65 - the Y beam's 1000 less the rear plate capping its back end face and the front fin capping its front. The fin is T_FIN at 10 MEASURED, not the 1/2in some prose still said before 2026-10-03."
+XEP_BEAM_TOP_X,mm,182.525,"[derived] The Y beam's TOP face in the end plate's machining frame, 182.525 from the plate's bottom end. The bridge between machine Z (measured from the beam top, negative downwards) and this sheet's X. Everything the shelf bar and the beam contribut"
+SHELF_BOLT_HIGH_Z,mm,-75.8,"[derived] Machine Z of the UPPER horizontal shelf bolt, -75.8. Pairs with SHELF_BOLT_LOW_Z; the 20 between them is SHELF_Z_COUPLE, which is the whole reason the bar is 2in and not 1in."
+SHELF_BOLT_LOW_X,mm,86.725,"[derived] Sheet 2a's H1, 86.725, drawn as 86.7. THIS WAS DRAWING-ONLY UNTIL 2026-10-03 - the audit found 86.7 and 106.7 nowhere else in the repo, not even in the prose. They do derive, and they check out, but nothing had ever said so."
+SHELF_BOLT_HIGH_X,mm,106.725,"[derived] Sheet 2a's H2, 106.725, drawn as 106.7. Same history as SHELF_BOLT_LOW_X."
+BLOCK_BOLT_HALF_X,mm,16,"[derived] Half the block's across-rail bolt pitch, 16 - the offset of each bolt column from its rail centreline."
+BLOCK_BOLT_HALF_Y,mm,18,"[derived] Half the block's along-rail bolt pitch, 18."
+BLOCK_CENTRE_OFFSET_Y,mm,38.545,"[derived] Each block's centre from the butted pair's centroid, 38.545. Two blocks butted span BLOCK_BUTTED, so each centre sits a quarter of that either side."
+BLOCK_LOW_COL_A,mm,61.525,"[derived] Sheet 2a P-holes, lower rail, near column. 61.525, drawn 61.5."
+BLOCK_LOW_COL_B,mm,93.525,"[derived] Lower rail, far column. 93.525, drawn 93.5."
+BLOCK_HIGH_COL_A,mm,151.525,"[derived] Upper rail, near column. 151.525, drawn 151.5."
+BLOCK_HIGH_COL_B,mm,183.525,"[derived] Upper rail, far column. 183.525, drawn 183.5."
+BLOCK_ROW_Y1,mm,20.455,"[derived] First of the four P-hole rows across the plate, 20.455, drawn 20.5 - the rounding was settled deliberately, see the commit that moved it off 20.45. Rows 2 and 4 are this and BLOCK_ROW_Y3 plus BLOCK_PITCH_Y."
+BLOCK_ROW_Y3,mm,97.545,"[derived] Third P-hole row, 97.545, drawn 97.5."
+DOUBLER_BOLT_X,mm,25,"[derived] Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it; the doubler is 50 tall so 25 is its middle."
+FIN_TONGUE_BOLT_1,mm,25,"[derived] Sheet 1's T1, the outboard of the fin's two tongue bolts. T2 is at 170. Shares a value with DOUBLER_BOLT_X by coincidence and nothing else."
+BF12_COL_INB,mm,7,"[measured] BF12's inboard bolt column from the beam's outer face. Measured on the cast stepper frame, and the same 7 that Sheets 2b and 7 both use. Paired with BF12_COL_OUTB at 53, so the pattern is 46 wide and centres in a 60 beam."
+BF12_COL_OUTB,mm,53,"[measured] BF12's outboard bolt column, same source as BF12_COL_INB."
+RP_A_COL_1,mm,18.175,"[derived] Rear plate, Y1 station, near corner-bore column. 18.175. The far column is this plus EXT_BORE_PITCH-worth of the section, drawn 48.175."
+RP_A_COL_3,mm,1163.58,"[derived] Y2 station, near column. 1163.575."
+RP_A_COL_4,mm,1193.58,"[derived] Y2 station, far column. 1193.575."
+RP_F_COL_1,mm,10.175,"[derived] Rear plate BF12, Y1 end, inboard column. 10.175."
+RP_F_COL_2,mm,56.175,"[derived] Y1 end, outboard column. 56.175."
+RP_F_COL_3,mm,1155.58,"[derived] Y2 end, outboard column. 1155.575."
+RP_F_COL_4,mm,1201.58,"[derived] Y2 end, inboard column. 1201.575."
+Z_PLATE_L,mm,175,[derived] Z plate long dimension. See z-carriage.md for why it is 175 and why the width went 154 to 164.
+Z_PLATE_W,mm,164,"[derived] Z plate width. 164, NOT the 154 it inherited from the X end plate - on 154 the outer M5 counterbore breaks through by 1.5."
+Z_M5_ROW_OFF_1,mm,-59.2,"[measured] First M5 row from the Z plate's centre. Measured on the X/Y kit 2026-09-30; the four rows are -59.2, -23.2, +20.8, +56.8, which is 36 / 44 / 36 - two blocks per spacer at a 36 pitch with 44 between them."
+Z_M5_ROW_OFF_3,mm,20.8,"[measured] Third M5 row from the plate's centre, the first on the second block. Same measurement as Z_M5_ROW_OFF_1."
+Z_M5_X_1,mm,28.3,"[derived] Sheet 4's C-holes, first row in plate coordinates. 28.3. Row 2 is this plus BLOCK_PITCH_Y."
+Z_M5_X_3,mm,108.3,"[derived] Third C-hole row, 108.3. Row 4 is this plus BLOCK_PITCH_Y."
+Z_M5_COL_INB,mm,41.5,"[measured] Inboard M5 column from the Z plate's centre. The rail centrelines sit at +/-57.5 and the columns at +/-16 from each, giving 41.5 and 73.5."
+Z_M5_COL_OUTB,mm,73.5,"[measured] Outboard M5 column from the plate's centre. This is the one that forced the plate to 164: its counterbore is about dia 10, so on a 154 plate it broke through by 1.5."
+Z_M5_Y_1,mm,8.5,"[derived] Sheet 4's C-holes, first column in plate coordinates. 8.5. The next is this plus BLOCK_PITCH_X."
+Z_M5_Y_3,mm,123.5,"[derived] Third C-hole column, 123.5. The fourth is this plus BLOCK_PITCH_X."
+FRONT_STRIP_W,mm,45,"[derived] The front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. WAS 46 until 2026-10-03, changed by him for consistency - and the consistency is real, not cosmetic: 45 is BLOCK_ROW_GAP, the conservati"
+CURB_PROUD,mm,60,"[derived] How far the torsion box's outer wall lamination stands proud of the top skin - the curb the steel plates bear against, and the height of the plywood tongue they bolt to. WAS 61 until 2026-10-03, changed by him for consistency. It makes the "
+CURB_BOLT_Y,mm,30,"[derived] The one bolt line across all three plates - the front fin's two bolts, the side plates' row and the rear plate's row all sit here. 30, and with CURB_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61."

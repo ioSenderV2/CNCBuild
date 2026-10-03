@@ -3,7 +3,7 @@
 What the machine stands on. The box carries the two Y beams; the base carries the box on **three
 points** and is also the pallet it travels on.
 
-The box's *interface* to the Y beams - the laminated outer wall, the 61 mm curb and the bolt row -
+The box's *interface* to the Y beams - the laminated outer wall, the 60 mm curb and the bolt row -
 is not here. It lives with the plate it belongs to, in
 [`outboard-plate.md`](outboard-plate.md) under "How it lands on the
 torsion box". Read that first; this file is everything below the top skin.
@@ -18,7 +18,7 @@ torsion box". Read that first; this file is everything below the top skin.
 | Grid | **19 mm strips, 100 mm high**, between the skins - **egg crate**, see below |
 | Depth overall | **138 mm** (19 + 100 + 19) |
 | Fill | **Sand in the cavities** - filled **last**, on site |
-| Outer walls, **all four sides** | **Two 19 mm laminations, 38 mm total**, the outer one standing **61 mm proud** of the top skin - see the Y beam interface |
+| Outer walls, **all four sides** | **Two 19 mm laminations, 38 mm total**, the outer one standing **60 mm proud** of the top skin - see the Y beam interface |
 
 ✅ **Decided 2026-09-30: the doubled wall runs the whole perimeter, not just left and right.** It
 began as the left/right detail that captures the full-height outboard plates. The front and back now
@@ -26,7 +26,7 @@ get it too, because the **front taper fins and the full-width back panel need th
 - see [`lateral-stiffness.md`](lateral-stiffness.md). Three consequences, all good:
 
 - **One detail everywhere** instead of two. Inner web between the skins, outer lamination 180 mm tall
-  standing on the bottom skin and 61 mm proud, aluminium bolted through it.
+  standing on the bottom skin and 60 mm proud, aluminium bolted through it.
 - **The front and back tongues are the continuous ones.** Each runs the full width and **19 mm past
   the front post tenon**, covering the end grain of the side tongue in a butt joint - so the side
   tongues die into them, not the other way round. That is what resolves the front-corner convergence

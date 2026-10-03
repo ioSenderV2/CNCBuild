@@ -28,7 +28,7 @@ not any more:
 pair is replaced by the single 1211.75 mm plate.
 
 Still to make, but **no mill needed** - T-slot clearance holes throughout: two **12" × 1 m × 1/8"
-steel** outboard plates and three **46 mm × 1 m × 1/4" 6061** front strips, one per beam.
+steel** outboard plates and three **45 mm × 1 m × 1/4" 6061** front strips, one per beam.
 
 ⚠️ **The outboard plates are steel now**, so that "no mill needed" afternoon on roughly 25 holes
 per plate runs several times longer than it would have in aluminium. Still a drill press job, but

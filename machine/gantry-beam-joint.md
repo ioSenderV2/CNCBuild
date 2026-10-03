@@ -20,7 +20,7 @@ aluminium plates running the full 1000 mm, anchored with M8 T-nuts in the existi
 
 | | Back plate | Front plate |
 |---|---|---|
-| Width | **120 mm** — full section height, all four back slots | **46 mm** — the two slots flanking the seam |
+| Width | **120 mm** — full section height, all four back slots | **45 mm** — the two slots flanking the seam |
 | Thickness | **1/4" (6.35 mm) on X**; on **Y** see the reversal below | **1/4" (6.35 mm), all three beams** |
 | Material | **6061 on X**; **1/8" steel on Y** | **6061, all three beams** |
 | Fasteners | M8 T-nuts, **150 mm** spacing, four rows | M8 **flange** bolts, two rows, no counterbore |
@@ -55,9 +55,9 @@ retention, not load path. **These T-nuts are a preloaded friction joint doing sh
 a different duty, and the two must not be waved through together because their numbers happen to
 be similar.
 
-❌ ~~**Buy 120 mm stock and rip the 46 mm front strips from it** — one thickness, one order.~~
+❌ ~~**Buy 120 mm stock and rip the 45 mm front strips from it** — one thickness, one order.~~
 **Retired 2026-10-02.** Y's back is steel, so there is no 120 mm aluminium order to rip from. The
-three 46 mm × 1/4" 6061 strips need their own buy.
+three 45 mm × 1/4" 6061 strips need their own buy.
 
 ### Why the thicknesses differ
 
@@ -65,7 +65,7 @@ The Y beams **do not move** (measured: their end plates bolt to the torsion box)
 static load and the stiffer plate is free. The X gantry moves, so its ~3 lb saving is real.
 
 📌 **The Y front strip came down to 1/4" on 2026-10-02**, breaking the old "same as its back plate"
-rule. All three beams now carry an identical **46 mm × 1/4" 6061** strip, which is also the magnetic
+rule. All three beams now carry an identical **45 mm × 1/4" 6061** strip, which is also the magnetic
 tape surface — one part made three times, instead of two specifications.
 
 ---
@@ -107,9 +107,9 @@ under cutting load — against the bare stacked pair:
 |---|---|---|---|
 | Back 60 × 10 only | +77 % | | — |
 | Back 120 × 10 only | +124 % | | ~9 lb |
-| Back 120 + front 46, **1/4"** | **+149 %** | +40 % | ~8.8 lb |
-| Back 120 + front 46, 3/8" | +241 % | | ~11.9 lb |
-| Back 120 + front 46, 10 mm | +256 % | +63 % | ~12.4 lb |
+| Back 120 + front 45, **1/4"** | **+149 %** | +40 % | ~8.8 lb |
+| Back 120 + front 45, 3/8" | +241 % | | ~11.9 lb |
+| Back 120 + front 45, 10 mm | +256 % | +63 % | ~12.4 lb |
 
 > **These replaced an earlier set of estimates, and every gain above is larger than was promised.**
 > The assumed section properties were too *generous* — 1200 mm² against a real 929.9, and
@@ -126,7 +126,9 @@ Two things fall out of this that are easy to get backwards:
 - **On the back, width beats thickness.** The flange contribution scales with plate *area at the
   face*, and extra width also spans the section depth for vertical bending and widens the bolt
   pattern. Do not trade 120 mm wide for something narrower and thicker.
-- **On the front, width beyond 46 mm buys nothing.** Past the block gap there is only 4.5 mm of
+- **On the front, width beyond 45 mm buys nothing.** The strip is now exactly BLOCK_ROW_GAP, the
+  conservative keep-out between the block rows, so it is the width that is known to fit; the 46 it
+  was until 2026-10-03 matched the *geometric* gap and left no clearance. Past the block gap there is only 4.5 mm of
   height (measured), so any extra width would have to be rebated thin — about 14 % more area for a
   machining operation on a 1000 mm strip.
 
@@ -143,7 +145,7 @@ stiffness ratio is simply **(height / width)²**:
 | Configuration | Ix (vertical) | Iy (fore-aft) | Ratio |
 |---|---|---|---|
 | Two 6060s joined, no plates | 2.40 × 10⁶ | 7.27 × 10⁵ | **3.3×** |
-| **+ back 120 and front 46, 1/4"** | **3.37 × 10⁶** | **~1.71 × 10⁶** | **2.0×** |
+| **+ back 120 and front 45, 1/4"** | **3.37 × 10⁶** | **~1.71 × 10⁶** | **2.0×** |
 
 📌 **The plates halve the penalty, and that is their unadvertised second job.** They sit on the front
 and back faces - the extreme fibres for *fore-aft* bending, which is exactly the direction short of
