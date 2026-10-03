@@ -1125,3 +1125,14 @@ sym = "FIN_BRACKETS"
 value = 2
 provenance = "derived"
 note = "L-brackets behind each front fin, tying it down to the box's top skin - four across the machine. His, 2026-10-03, replacing the deleted front tongue. They land on Sheet 1's T1 and T2, which were the tongue bolts and were repurposed rather than re-picked, so the 145 mm couple that provides the moment restraint survives the change."
+
+[[dim]]
+sym = "REAR_PLATE_W"
+value = 304.8
+provenance = "part"
+note = "12in stock, the rear plate's width - the same bought size as the side plates' SIDE_PLATE_H."
+
+[[dim]]
+sym = "XBOX_ROW_Y"
+expr = "REAR_PLATE_W - BOX_TONGUE_BOLT_Y"
+note = "Sheet 7's X1-X8 torsion-box row, 274.8 in the inverted frame the plate is clamped in. It DERIVES now: the plate is 304.8 and the row sits BOX_TONGUE_BOLT_Y = 30 up from the installed bottom edge, the one bolt line shared with the side plates and the front fin. It was a flat 270 until 2026-10-03, given as a round number when Sheet 7 was reframed upside down; that put it 34.8 up, 4.8 off every other plate, and a note had rationalised the gap as deliberate when nobody had decided it."
