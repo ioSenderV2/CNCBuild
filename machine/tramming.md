@@ -6,8 +6,8 @@
 
 ---
 
-⚠️ **Partly open - the nod adjustment is undecided and has a deadline** (see the machining section
-below; hole sizes depend on it).
+⚠️ **Partly open - the nod adjustment is undecided and has a deadline** (see [`machining.md`](machining.md);
+hole sizes depend on it).
 
 ## The rule that constrains every option
 

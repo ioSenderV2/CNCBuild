@@ -104,7 +104,7 @@ it was a placeholder in every calculation in this repo until now.
 | Z rails, bearing blocks and the spacers | 46.5 mm |
 | Z plate, 1/2" | 12.7 mm |
 | Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
-| **To the spindle centreline** | **109 mm** - ⚠️ **~108 after the spacer skim**, see the Z carriage section |
+| **To the spindle centreline** | **109 mm** - ⚠️ **~108 after the spacer skim**, see [`z-carriage.md`](z-carriage.md) |
 
 ⚠️ **That reference is the carriage plate, not the beam.** The X carriage plate is itself bolted to
 the X-axis bearing blocks, so from the **X beam's front face** add the X rail-and-block stack

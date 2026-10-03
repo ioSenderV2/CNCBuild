@@ -300,7 +300,8 @@ of the machine, with **BF12 bolted to the rear plate's inside face** at the othe
 2. **Nothing passes through the rear plane any more**, which is part of why one monolithic rear plate
    became practical.
 3. 🔴 **A NEMA 23 permanent-magnet rotor now sits at the min-Y end of the magnetic tape.** That is a
-   far larger magnetic object than the bolt heads the austenitic-stainless section below exists for.
+   far larger magnetic object than the bolt heads the austenitic-stainless rule in
+   [`outboard-plate.md`](outboard-plate.md) exists for.
    **Fit a tape offcut and a sensor and read at that end before 3 m of one-shot PSA goes down.**
 
 ### ✅ The screw height, and the clearance that actually matters - closed 2026-10-02

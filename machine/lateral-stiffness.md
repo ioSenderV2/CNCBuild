@@ -7,7 +7,8 @@
 ---
 
 ✅ **Decided 2026-09-30.** The full-height outboard plate took over the **fore-aft (Y)** support, and
-the section above records it at ~670 000 N/mm in-plane against the risers' ~1 500. What it did not
+[`outboard-plate.md`](outboard-plate.md) records it at ~670 000 N/mm in-plane against the
+risers' ~1 500. What it did not
 touch is **across the machine (X)**, which is out-of-plane for that plate and therefore still carried
 by the four risers alone, 3" wide, at the two ends only.
 
