@@ -361,9 +361,11 @@ diameter, and confirmed good on the template.
 ✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
 and the back plate's row all sit at 30 mm above the plate's bottom edge, which since 2026-10-03 is
 also 30 below the top of the 60 mm tongue - the tongue came off 61 for exactly that symmetry. One
-number to transfer instead of three, and now the same number read from either edge. **The pitches differ because the plates do**: 100 mm on the side plates (eleven over
-1000 mm), ~150 mm on the back plate (eight over 1211.75 mm). Both are correct; neither is the other's
-typo.
+number to transfer instead of three, and now the same number read from either edge. 📌 **The pitches no longer differ, as of 2026-10-03.** The side plates were 100 mm, eleven
+over 1000; they are now **150 mm, first at 50, seven over 1000** - the same pattern as the front
+strips and the X back plate, and the same number as the rear plate's eight over 1211.75. The old
+eleven-at-100 never closed arithmetically anyway: eleven at 100 spans exactly 1000, which puts a hole
+on each edge.
 
 ❌ **A zigzag row was considered and rejected, 2026-10-02.** Alternating ±10 mm about the 30 line
 would lift any single horizontal plane from ~90% to ~95% net section. It is not worth it here:

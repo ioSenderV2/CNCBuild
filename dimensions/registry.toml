@@ -1031,3 +1031,54 @@ note = "How far the torsion box's outer wall lamination stands proud of the top 
 sym = "CURB_BOLT_Y"
 expr = "CURB_PROUD / 2"
 note = "The one bolt line across all three plates - the front fin's two bolts, the side plates' row and the rear plate's row all sit here. 30, and with CURB_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61."
+
+# ------------------------------------------------ the bolt-on plates, settled 2026-10-03
+
+[[dim]]
+sym = "TSLOT_X_FIRST"
+value = 50
+provenance = "derived"
+note = "First bolt station along the 1000 on every bolt-on plate - Sheets 8, 9 and 10. His, 2026-10-03. With TSLOT_X_PITCH it gives seven per row at 50 to 950, symmetric with 50 clear at each end. The pitch had been written down for weeks; where the first one sat never had been."
+
+[[dim]]
+sym = "TSLOT_X_PITCH"
+value = 150
+provenance = "derived"
+note = "Bolt pitch along the 1000 on Sheets 8, 9 and 10. NOT the same number as XBOX_PITCH, which is also 150 but is the rear plate's torsion-box row on a different part - they agree by choice, not by derivation."
+
+[[dim]]
+sym = "TSLOT_X_COUNT"
+expr = "((1000 - (2 * TSLOT_X_FIRST)) / TSLOT_X_PITCH) + 1"
+note = "Seven per row. Written as an expr so that if the first station or the pitch is ever revisited, the count moves with it instead of being a stale 7 in the prose."
+
+[[dim]]
+sym = "SLOT_GRID"
+value = 30
+provenance = "part"
+note = "The 30 series' module. Corner bores and T-slot centres both sit on it, which is why EXT_BORE_INSET and RAIL_SLOT_INSET are both 15 and why a 120 beam has four rows at 15 / 45 / 75 / 105."
+
+[[dim]]
+sym = "SIDE_PLATE_H"
+value = 304.8
+provenance = "part"
+note = "12in stock, the full-height outboard plate's width. A BOUGHT size, not a derived one - which is exactly why Sheet 9 dimensions off the bottom edge."
+
+[[dim]]
+sym = "SIDE_TSLOT_ROW_1"
+expr = "SIDE_PLATE_H - BEAM_H + RAIL_SLOT_INSET"
+note = "Lowest of Sheet 9's four T-slot rows, measured from the plate's BOTTOM edge - 199.8. His call 2026-10-03, and it removes a real risk: the bottom edge is the reference because it bears on the box's top skin, so the rows stay correct even if the plate turns out slightly short of the Y beam's top face. Dimensioned from the top instead, a short plate would have moved all four. Rows 2-4 follow on SLOT_GRID."
+
+[[dim]]
+sym = "SIDE_TSLOT_ROW_4"
+expr = "SIDE_TSLOT_ROW_1 + (3 * SLOT_GRID)"
+note = "Highest of the four, 289.8 from the bottom edge. If the plate is cut exactly 304.8 this sits 15 below its top edge, which is the beam's own slot inset - the check that the chain is right."
+
+[[dim]]
+sym = "STRIP_ROW_LOW"
+expr = "(FRONT_STRIP_W / 2) - RAIL_SLOT_INSET"
+note = "Sheet 8's lower bolt row, 7.5 from the strip's edge. Forced, not chosen: the strip is centred on the beam's seam because the block gap it passes through is, and the two slots flanking the seam sit RAIL_SLOT_INSET either side of it."
+
+[[dim]]
+sym = "STRIP_ROW_HIGH"
+expr = "(FRONT_STRIP_W / 2) + RAIL_SLOT_INSET"
+note = "Sheet 8's upper bolt row, 37.5. Same derivation as STRIP_ROW_LOW, the other side of the seam."

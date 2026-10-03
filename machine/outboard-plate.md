@@ -47,7 +47,7 @@ halving the live objection, and 18.4 mm of equivalent aluminium is roughly doubl
 asks for.
 
 📌 **Cold-rolled sheet is the tidier product at this thickness, but hot-rolled A36 is acceptable and
-is what was found.** Flatness does not bind here regardless: eleven M8 along the bottom edge plus
+is what was found.** Flatness does not bind here regardless: seven M8 along the bottom edge plus
 the curb channel pull 1/8" steel straight over a metre without argument, and the holes are 9 mm
 clearance into T-slots where the T-nut moves to meet the bolt.
 
@@ -70,7 +70,7 @@ paint is not optional here, see the galvanic note above.
 
 ### 🔴 Galvanic is the real cost of this change
 
-Steel against aluminium, with **a metre of face-to-face contact** against the beam plus eleven bolts
+Steel against aluminium, with **a metre of face-to-face contact** against the beam plus seven bolts
 - and this plate is the **chip barrier**, so it is the part that actually gets wet with swarf and
 coolant. Aluminium is the anode and the extrusion is the part that cannot be replaced.
 
@@ -199,13 +199,13 @@ never on skin spanning between grid members.
 The consequence worth noticing: **the bolts are retention, not the load path.** Vertical and outboard
 loads both arrive in bearing on plywood faces, which plywood is good at. So the bolt row is sized by
 convenience rather than by strength - an estimated ~500 N of static vertical per Y beam shared across
-eleven M8 is orders of magnitude clear, and this joint's real limits are geometric, not structural.
+seven M8 is orders of magnitude clear, and this joint's real limits are geometric, not structural.
 
 ### The bolt row
 
 | | |
 |---|---|
-| Fastener | **M8, one every 100 mm** - eleven per beam over the 1000 mm |
+| Fastener | **M8 at 150 mm, first at 50** - seven per beam over the 1000 mm. 🔴 Was eleven at 100 until 2026-10-03; unified with the other bolt-on plates |
 | Height | **Y 30** above the plate's bottom edge - the same row height as the front fin and the back plate |
 | Direction | From **outboard**: washer, curb, plate, **M8 locknut** on the inboard face |
 | Holes | **9 mm clearance** in curb and plate both - see the thermal bullet above |
