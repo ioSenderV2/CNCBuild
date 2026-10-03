@@ -14,10 +14,10 @@
                     font: 8.5pt "Segoe UI", sans-serif; color: #333; }
   }
   @page s1 { @bottom-left { content: "Shop Pack — SHEET 1, front Y end plate / Z riser"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
-  @page s2 { @bottom-left { content: "Shop Pack — SHEET 2a, X gantry end plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s2 { @bottom-left { content: "Shop Pack — SHEET 2a-2d, X gantry end plate, tongue, shelf bar, doubler"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s3 { @bottom-left { content: "Shop Pack — SHEET 3, X carriage plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s4 { @bottom-left { content: "Shop Pack — SHEET 4, Z plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
-  @page s5 { @bottom-left { content: "Shop Pack — SHEET 5, Y nut doubler and sole bracket"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s5 { @bottom-left { content: "Shop Pack — SHEET 5, Y nut sole bracket"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page sck { @bottom-left { content: "Shop Pack — CHECKLIST and pack list"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page snt { @bottom-left { content: "Shop Pack — NOTES (reasoning, not dimensions)"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   .pg-s1 { page: s1 } .pg-s2 { page: s2 } .pg-s3 { page: s3 } .pg-s4 { page: s4 }
@@ -113,7 +113,7 @@ its own amber rows:</p>
 <tr><td>2b</td><td>Shelf bar</td><td>25.4 &times; 50.8 &times; 60</td><td>2</td></tr>
 <tr><td>3</td><td>X carriage plate</td><td>154 &times; 407 &times; 1/2"</td><td>1</td></tr>
 <tr><td>4</td><td>Z plate</td><td>164 &times; 175 &times; 1/2"</td><td>1</td></tr>
-<tr><td>5</td><td>Y nut doubler and sole bracket</td><td>154 &times; 50 &times; 1/2" &middot; trapezoid 154 &rarr; 46 over 98.7 &times; 1/4"</td><td>2 + 2</td></tr>
+<tr><td>5</td><td>Y nut sole bracket <span style="font-weight:400">&mdash; the doubler is now Sheet 2d</span></td><td>trapezoid 154 &rarr; 46 over 98.7 &times; 1/4"</td><td>2</td></tr>
 </table>
 <p style="margin:0 0 .7rem;font-size:9.5pt"><b>Only the right-hand X end plate carries the BF12
 tongue</b>, so the two are not interchangeable at assembly.</p>
@@ -182,8 +182,8 @@ carrying two parallel rails.</li>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td><b>10 mm</b> alu (measured), from one 302 mm square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 242.5</b></td><td><b>Yes</b></td><td><b>Outline settled 2026-10-02.</b> The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2a</td></tr>
 <tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only, with the end plate</td><td><b>Was missing from this list.</b> Four holes, all dimensioned &mdash; Sheet 2c</td></tr>
-<tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 50</td><td>Drill only, with the end plate</td><td><b>Added 2026-10-02.</b> Height gated on the block row &mdash; Sheet 5</td></tr>
-<tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; 46 over 98.7</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Nut pattern settled; root holes TBD &mdash; Sheet 5</td></tr>
+<tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 50</td><td>Drill only, with the end plate</td><td><b>Added 2026-10-02.</b> Drill it clamped to the end plate &mdash; <b>Sheet 2d</b></td></tr>
+<tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; 46 over 98.7</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Fully dimensioned &mdash; Sheet 5</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
 <tr><td><b>Z spacer blocks &mdash; face 1 mm</b></td><td>2</td><td>Existing 2" bar, 16.41/16.43 measured</td><td><b>Yes</b> &mdash; facing, not drilling</td><td><b>Added 2026-10-02.</b> Face both in <b>one setup</b>; drops the stack 1 mm and makes the pair identical</td></tr>
 <tr><td>Z plate</td><td>1</td><td>1/2" alu, <b>164 &times; 175 mm</b></td><td><b>Yes</b></td><td>Cut and drill schedule on Sheet 4</td></tr>
@@ -589,6 +589,31 @@ negative into the material. All coordinates positive in X and Y, absolute, <b>ne
 <tr><td>P2</td><td>Horizontal, bar to plate &mdash; mates H2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">9</td><td class="op">Through the bar</td></tr>
 </table>
 
+<h3 style="margin-top:7mm">Sheet 2d &mdash; the Y nut doubler block (quantity 2)
+<span style="font-weight:400;font-size:10pt">&mdash; mates with this plate, <b>drill it clamped to the plate</b></span></h3>
+<div class="stock">
+<b>154 long &times; 50 wide &times; 1/2" (12.7 mm) 6061</b><br>
+Bolts to the end plate's <b>OUTER face at the bottom</b>, the same face the bearing blocks are on,
+giving a <b>25.4 mm seating</b> across the stacked end faces for the sole bracket of Sheet 5.<br>
+<span class="datum">IT IS NOT DRILLED ON ITS OWN.</span> Clamp it to the end plate in position and
+drill D1&ndash;D4 <b>through both at once</b>; the schedule below is Sheet 2a's D row, repeated here
+only so this part has a page. <b>Sheet 2a owns those coordinates.</b><sup class="f">2.6</sup><br>
+<b>Height 50, not 60.</b> It is gated on the lower Y bearing block row's bottom edge, which shares
+this same face in the same X band and lands at <b>X 56</b> once the block's measured 44 width is
+applied &mdash; so 50 clears by 6 and a 60 would have overlapped by 4.
+</div>
+
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">from the plate's bottom end</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column, in shear with full material around them</td><td>4</td><td class="n"><b>25</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">5</td><td class="op">Through both parts &middot; <b>drill clamped together</b><sup class="f">2.6</sup></td></tr>
+<tr><td>R1&ndash;R4</td><td><b>Into this block's bottom end face</b> &mdash; Sheet 2a's B1&ndash;B4, the only edge holes that need the mill</td><td>4</td><td class="n">from <b>X 0</b>, <b>20 deep MAX</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &oslash;5 D-bolt wall by <b>2.5</b><br>tap M5 at home<sup class="f">2.7</sup></td></tr>
+</table>
+
+<div class="warn">
+<b>Three parts whose holes must agree across an assembly</b> &mdash; end plate (2a), this doubler
+(2d) and the sole bracket (Sheet&nbsp;5). <b>Drill the doubler's through-holes and the end plate's
+together</b>, and leave the sole bracket's root holes until those two are mated.
+</div>
 </div>
 
 <!-- ============================================================ -->
@@ -845,7 +870,7 @@ at each end of the plate</b>.</p>
 </div>
 
 <div class="plate pg-s5">
-<h2 id="sheet-5">Sheet 5 &mdash; Y nut doubler block and sole bracket (quantity 2 of each)</h2>
+<h2 id="sheet-5">Sheet 5 &mdash; the Y nut sole bracket (quantity 2)</h2>
 <p class="sub">Added 2026-10-02 &middot; two new parts per gantry end, both flat plate &middot; they
 carry the inverted Y ball nut into the bottom of the X end plate</p>
 
@@ -937,13 +962,12 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
   <text class="q" x="268" y="108" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
   <text class="q" x="268" y="126">21.3 of air clears the 20 minimum by 1.3</text>
 </svg>
-<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) drill and tap the four M5 into the <b>doubler's</b> end face at <b>Y 32, 62, 92, 122</b> &mdash; Sheet&nbsp;2's B1&ndash;B4; (2) bolt the doubler to the end plate; (3) bolt the sole bracket up into the doubler with that row; (4) use the bracket's <b>other</b> row as a <b>drill guide</b> to spot the four M5 into the <b>end plate's</b> end face. <b>So only the doubler's row needs the mill</b> &mdash; the end plate's is transferred at home and needs no coordinates at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The two bolt rows sit at <b>6.35</b> and <b>19.05</b>, each centred in its own 12.7 plate, and on <b>Y 32, 62, 92, 122</b> &mdash; D1&ndash;D4's stations, so one spread serves all three rows. None of those four numbers is a free choice. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
+<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) drill and tap the four M5 into the <b>doubler's</b> end face at <b>Y 32, 62, 92, 122</b> &mdash; Sheet&nbsp;2a's B1&ndash;B4; (2) bolt the doubler to the end plate; (3) bolt the sole bracket up into the doubler with that row; (4) use the bracket's <b>other</b> row as a <b>drill guide</b> to spot the four M5 into the <b>end plate's</b> end face. <b>So only the doubler's row needs the mill</b> &mdash; the end plate's is transferred at home and needs no coordinates at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The two bolt rows sit at <b>6.35</b> and <b>19.05</b>, each centred in its own 12.7 plate, and on <b>Y 32, 62, 92, 122</b> &mdash; D1&ndash;D4's stations, so one spread serves all three rows. None of those four numbers is a free choice. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
 </figure>
 
-<h3>The two parts</h3>
+<h3>The part</h3>
 <table>
 <tr><th>Part</th><th>Qty</th><th>Size</th><th>Material</th><th>Mill needed?</th></tr>
-<tr><td><b>Doubler block</b></td><td>2</td><td>154 &times; 50 &times; <b>1/2"</b></td><td>6061</td><td>Drill only &mdash; <b>drill it clamped to the end plate</b></td></tr>
 <tr><td><b>Sole bracket</b></td><td>2</td><td>trapezoid <b>154 &rarr; 46</b> over <b>98.7</b> overall, <b>1/4"</b></td><td>6061</td><td>Two angled cuts plus 4 &times; M5 clearance</td></tr>
 </table>
 
@@ -952,7 +976,7 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th>Note</th></tr>
 <tr><td>N1&ndash;N4</td><td>M5 clearance, bracket up into the nut</td><td>4</td><td><b>52.7</b> and <b>92.7</b></td><td><b>&plusmn;12</b> about the nut centre</td><td>The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern 24 &times; 40 centred on a 40 &times; 52 face: insets 8 across the 40, 6 across the 52</td></tr>
-<tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the only edge holes that need the mill. Same holes as Sheet 2's <b>B1&ndash;B4</b></td><td>4</td><td><b>19.05</b> &mdash; centred in the doubler's 12.7</td><td><b>32, 62, 92, 122</b></td><td>&oslash;5.5 clearance through the bracket; <b>M5 tapped into the doubler's edge, 20 deep MAX</b>, which clears the &oslash;5 D-bolt wall by 2.5. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations<sup class="f">2.7</sup></td></tr>
+<tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the only edge holes that need the mill. Same holes as Sheet 2a's <b>B1&ndash;B4</b>, drawn on <b>Sheet 2d</b></td><td>4</td><td><b>19.05</b> &mdash; centred in the doubler's 12.7</td><td><b>32, 62, 92, 122</b></td><td>&oslash;5.5 clearance through the bracket; <b>M5 tapped into the doubler's edge, 20 deep MAX</b>, which clears the &oslash;5 D-bolt wall by 2.5. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations<sup class="f">2.7</sup></td></tr>
 <tr><td>R5&ndash;R8</td><td><b>Into the END PLATE's end face</b> &mdash; <b>never drilled at the mill</b></td><td>4</td><td><b>6.35</b> &mdash; centred in the end plate's 12.7</td><td><b>32, 62, 92, 122</b></td><td>Spotted at home <b>through the bracket itself</b>, which is the drill guide, so these need no coordinate at all &mdash; the numbers are for drawing it, not for setting a mill<sup class="f">2.7</sup></td></tr>
 </table>
 
