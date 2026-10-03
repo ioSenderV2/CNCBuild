@@ -16,6 +16,10 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The rules this folder follows](machine/drawings/README.md#the-rules-this-folder-follows)
 - [Files](machine/drawings/README.md#files)
 - [Status](machine/drawings/README.md#status)
+  - [What is in the pack](machine/drawings/README.md#what-is-in-the-pack)
+  - [Not drawn yet - two trip parts have no sheet](machine/drawings/README.md#not-drawn-yet---two-trip-parts-have-no-sheet)
+  - [In progress: a 1/2" baltic birch mockup](machine/drawings/README.md#in-progress-a-12-baltic-birch-mockup)
+  - [What still gates drilling](machine/drawings/README.md#what-still-gates-drilling)
 
 ## [machine/gantry-beam-joint.md](machine/gantry-beam-joint.md)
 

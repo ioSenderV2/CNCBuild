@@ -395,11 +395,14 @@ every computed figure in this document.</strong></p>
 </div>
 
 <div class="warn">
-<p><strong>The shop pack is STALE as of 2026-10-02 and must not go to the mill.</strong> The Y
-end design was reworked that day &mdash; cast stepper frames replaced BK12 and the M5
-standoffs, the Y steppers moved to the front, all four as-built Y risers are scrapped, and the
-two rear risers became one 1200&nbsp;mm steel plate. Every riser sheet is superseded. See
-<a href="#open-items">Open items</a> before cutting anything.</p>
+<p><strong>Four questions still gate drilling</strong>, and each needs a part or the mill in
+front of you: the 4&nbsp;&times;&nbsp;HGH20 block hole pattern measured on the <strong>X/Y</strong>
+kit &mdash; not the Z kit, a different supplier; the &oslash;35 encoder bore's fore-aft position on
+the X end plate; how far past the front riser plane the spindle reaches, which gates the front
+fin's taper cut; and the mill's model and DRO axis count. <strong>Two trip parts also have no
+sheet yet</strong> &mdash; the cast stepper frame interposer (3 off, fully dimensioned in the
+prose) and the 1200&nbsp;mm rear plate. See <a href="#open-items">Open items</a> before cutting
+anything.</p>
 </div>
 
 <h2>Drawings &mdash; the shop pack</h2>

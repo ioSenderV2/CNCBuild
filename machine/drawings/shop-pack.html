@@ -37,65 +37,66 @@
 
 <h1>CNCBuild — Shop Pack</h1>
 <p class="sub">
-Plates for the one machining visit. Generated 2026-09-30 from <b>machine/*.md</b>, which remain the
-source of truth — if this sheet and a .md file disagree, the .md file wins and this sheet is stale.
+Plates for the one machining visit. Generated from <b>machine/*.md</b>, which remain the source of
+truth — <b>last regenerated 2026-10-02</b>. If a sheet here and a .md file disagree, the .md file
+wins and the sheet is the stale one.
 </p>
 
-<div style="border:3px solid #b00; background:#fff2f2; padding:1rem 1.2rem; margin:1rem 0; color:#000">
-<p style="margin:0 0 .5rem; font-weight:700; font-size:1.1em; color:#b00">
-🔴 STALE AS OF 2026-10-02 — DO NOT TAKE THIS PACK TO THE MILL
-</p>
-<p style="margin:0 0 .5rem">
-<b>What is wrong is now a short named list, not "every riser sheet".</b> The Y end design was
-reworked on 2026-10-02 — cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers
-moved to the <b>front</b>, all four as-built Y risers are scrapped, and the two rear risers became
-one 1200&nbsp;mm steel plate. Most of the pack was brought up with it during that day; the gaps
-below are what is left.
+<div style="border:1px solid #c9c9c9; border-left:5px solid #555; background:#fafafa; padding:1rem 1.2rem; margin:1rem 0; color:#000">
+<p style="margin:0 0 .6rem; font-weight:700; font-size:1.05em">
+Status &mdash; what is missing and what is in progress
 </p>
 
 <p style="margin:0 0 .5rem">
-<b>🔴 TWO SHEETS DO NOT EXIST YET, and both are parts for this trip:</b>
+Regenerated through 2026-10-02 after the Y end rework: cast stepper frames replaced BK12 and the M5
+standoffs, the Y steppers moved to the <b>front</b>, all four as-built Y risers are scrapped, and the
+two rear risers became one 1200&nbsp;mm steel plate. <b>Every sheet below has been brought up to that
+design.</b>
 </p>
-<ul style="margin:0 0 .6rem 1.2rem">
-<li><b>The cast stepper frame interposer</b> — 60 × 150 × 3/8" 6061, <b>3 off</b> (Y1, Y2 and the X
-stepper end), one drawing. Six M8 clearance into slide-in T-nuts at rows 82 / 110 / 138, six M5
-tapped for the casting at bar coords 28–71, no counterbores. <b>Fully dimensioned in the prose and
-simply not drawn here.</b></li>
-<li><b>The 1200&nbsp;mm rear plate</b> — 1200 × 12" × 1/4" A36 steel, one for both Y beams, carrying
-the 16-bolt beam pattern, the 8-bolt box row at Y 30 and <b>BF12 face-mounted on 4 × M5</b> per beam.</li>
+
+<p style="margin:0 0 .35rem"><b>Sheets that exist and are drawable</b> &mdash; each still subject to
+its own amber rows:</p>
+<table style="margin:0 0 .7rem">
+<tr><th>Sheet</th><th>Part</th><th>Note</th></tr>
+<tr><td>1</td><td>Front Y end plate / Z riser</td><td>Regenerated 2026-10-02 &mdash; 100&nbsp;&rarr;&nbsp;200 taper on the 302&nbsp;mm square, the 62&nbsp;&times;&nbsp;50 window, columns 35&nbsp;/&nbsp;65</td></tr>
+<tr><td>2</td><td>X gantry end plate</td><td>Regenerated. Only the <b>right-hand</b> plate carries the BF12 tongue, so the two are not interchangeable</td></tr>
+<tr><td>3</td><td>X carriage plate</td><td>154 &times; 407, untouched by the rework and still correct</td></tr>
+<tr><td>4</td><td>Z plate</td><td><b>164</b> &times; 175 &mdash; corrected from 154 on 2026-10-02; 154 could not have been drilled</td></tr>
+<tr><td>5</td><td>Y nut doubler and sole bracket</td><td>Added 2026-10-02</td></tr>
+</table>
+
+<p style="margin:0 0 .35rem"><b>Not drawn yet &mdash; two parts for this trip have no sheet:</b></p>
+<ul style="margin:0 0 .7rem 1.2rem">
+<li><b>The cast stepper frame interposer</b> &mdash; 60 &times; 150 &times; 3/8" 6061, <b>3 off</b>
+(Y1, Y2 and the X stepper end), one drawing. Six M8 clearance into slide-in T-nuts at rows
+82&nbsp;/&nbsp;110&nbsp;/&nbsp;138, six M5 tapped for the casting at bar coords 28&ndash;71, no
+counterbores. <b>Fully dimensioned in the prose and simply not drawn here.</b></li>
+<li><b>The 1200&nbsp;mm rear plate</b> &mdash; 1200 &times; 12" &times; 1/4" A36 steel, one for both
+Y beams: the 16-bolt beam pattern, the 8-bolt box row at Y&nbsp;30, and <b>BF12 face-mounted on
+4&nbsp;&times;&nbsp;M5</b> per beam.</li>
 </ul>
 
-<p style="margin:0 0 .5rem">
-<b>✅ Sheet 1 was regenerated 2026-10-02 and is now drawable.</b> It had been left at the pre-rework
-geometry — a 3"/9" taper on a 12" square, bolt columns at 23/53, and <b>no window at all</b>. It now
-carries the <b>100 → 200 taper on the 302 mm square</b>, columns <b>35 / 65</b>, and the
-<b>62 × 50 window at X 19–81, Y 120–170</b>. ⚠️ The window's <b>50 mm height is a budget, not a
-derived number</b>, and a <b>1/2" baltic birch mockup is being cut to settle it</b> — the casting
-projects about 20 mm below the bar, so it is expected to shrink.
-</p>
+<p style="margin:0 0 .35rem"><b>In progress &mdash; a 1/2" baltic birch mockup</b>, being cut while
+the mill visit is a couple of weeks out. Sheet&nbsp;1 first: it settles the window's height (the
+50&nbsp;mm is a budget, and the casting projects only about 20&nbsp;mm below the bar) and the spindle
+clearance that gates the taper cut. <b>Plywood is for fit, never for transfer</b> &mdash; its
+thickness runs under 12&nbsp;mm and M5 inserts need a far bigger bore than a 4.2&nbsp;mm tap drill,
+so insert positions are representative, not a clearance test.</p>
 
-<p style="margin:0 0 .5rem">
-<b>Corrected 2026-10-02, after the rework:</b> Sheet&nbsp;4's Z plate was <b>154 → 164 mm</b>, and
-154 could not have been drilled — eight M5 counterbores would have broken through the edge.
-Sheet&nbsp;1's T2 moved <b>X175 → X170</b> and both tongue bolts <b>Y31 → Y30</b>, checked against
-the physical template. Sheet&nbsp;1's BF12 hole row was <b>struck</b>: BF12 is on the rear plate now.
-Sheet&nbsp;2 notes that only the <b>right-hand</b> X end plate carries the BF12 tongue, so the two
-are no longer interchangeable.
-</p>
-
-<p style="margin:0 0 .5rem">
-<b>Current and believed drillable:</b> Sheet&nbsp;1 (front Y fin, regenerated above),
-Sheet&nbsp;2 (X gantry end plate, regenerated),
-Sheet&nbsp;3 (X carriage plate, 154 × 407, untouched and still correct), Sheet&nbsp;4 (Z plate, as
-corrected above), Sheet&nbsp;5 (Y nut doubler and sole bracket, added 2026-10-02) — each still
-subject to its own amber rows.
-</p>
+<p style="margin:0 0 .35rem"><b>Four questions still gate drilling</b>, and each needs a part or the
+mill in front of you:</p>
+<ol style="margin:0 0 .5rem 1.2rem">
+<li>The 4 &times; HGH20 block hole pattern, measured on the <b>X/Y</b> kit &mdash; not the Z kit,
+different supplier</li>
+<li>The &oslash;35 encoder bore's fore-aft position on the X end plate</li>
+<li>How far past the front riser plane the spindle reaches, and whether it fouls the widened fin at
+low Z &mdash; gates Sheet&nbsp;1's taper, which is one bandsaw pass and cannot be put back</li>
+<li>The mill's model, and whether its DRO is 2-axis or 3-axis</li>
+</ol>
 
 <p style="margin:0">
-<b>Four questions in the checklist still gate drilling</b>, and every one needs a part or the mill in
-front of you: the HGH20 block hole pattern measured on the <b>X/Y</b> kit, the &oslash;35 encoder bore's
-fore-aft position, how far past the front riser plane the spindle reaches, and the mill's model and
-DRO axis count. The source of truth is <b>machine/*.md</b> — start at <b>machine/README.md</b>.
+<b>Derived, never authoritative.</b> The source of truth is <b>machine/*.md</b> &mdash; start at
+<b>machine/README.md</b>. If a sheet here and a .md file disagree, <b>the .md file wins</b>.
 </p>
 </div>
 

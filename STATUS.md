@@ -19,8 +19,8 @@ interface, not this file.
 
 ## [machine/drawings/README.md](machine/drawings/README.md)  (2)
 
-- 🔴 [L37](machine/drawings/README.md#status) — *Drawings / Status*<br>STALE as of 2026-10-02. The pack has not been regenerated and must not go to the mill.
-- ⚠️ [L49](machine/drawings/README.md#status) — *Drawings / Status*<br>No plate in this pack has a complete hole schedule yet, and that is the pack's main finding. What it does have is every dimension the repo actually holds, with the gaps named - which turns "design ahead of the build" from an instruction into a list.
+- 🔴 [L67](machine/drawings/README.md#in-progress-a-12-baltic-birch-mockup) — *Status / In progress: a 1/2" baltic birch mockup*<br>Plywood is for fit, never for transfer. Its thickness runs under 12 mm and varies, and an M5 threaded insert needs a far larger bore than a 4.2 mm tap drill - so anywhere the design has fought for edge distance or web, an insert will not sit where the real hole does. A plywood plate must never go to the mill as a template: this folder is derived-never-authoritative, and a physical part is far more persuasive than a sheet.
+- ⚠️ [L75](machine/drawings/README.md#what-still-gates-drilling) — *Status / What still gates drilling*<br>No plate in this pack has a complete hole schedule yet, and that is the pack's main finding. What it does have is every dimension the repo actually holds, with the gaps named - which turns "design ahead of the build" from an instruction into a list. Four questions gate cuts that cannot be undone, and each needs a part or the mill in front of you - see ../open-items.md:
 
 ## [machine/gantry-beam-joint.md](machine/gantry-beam-joint.md)  (8)
 
