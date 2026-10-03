@@ -231,7 +231,7 @@ note = "Plate bottom, measured from the Y beam top. Negative is down."
 [[dim]]
 sym = "SCREW_AXIS_X"
 expr = "T_X_ENDPLATE + RAIL_STACK + (EXT_W / 2)"
-note = "Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) term ASSUMES the screw sits on the beam's mid-plane - that is an assumption, not a measurement, and it is the term to doubt if the as-built nut position disagrees. Reconciled against a measurement 2026-10-03: it leaves 21.3 of air past the doubler, which meets the 20 minimum."
+note = "Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) term is BY CONSTRUCTION, not an assumption: the BK12 and BF12 support blocks are 60 wide and the BF12 tongue is cut 60 wide to match, so the screw is centred in 60 by the parts themselves. Reconciled against a measurement 2026-10-03: it leaves 21.3 of air past the doubler, which meets the 20 minimum."
 
 [[dim]]
 sym = "NUT_FACE_X"

@@ -783,26 +783,39 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
 </div>
 
 <figure>
-<svg viewBox="-128 -26 700 164" width="190mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-128 -26 700 182" width="190mm" xmlns="http://www.w3.org/2000/svg">
   <!-- PLAN view of the sole bracket, looking at its face.
        WCS 0,0 is the ROOT's left corner, bottom-left of the frame - a real stock corner.
        SVG y runs 98.7 at the root (bottom) to 0 at the tip (top), so machine X grows UPWARD.
-       SVG x IS machine Y, 0 to 154 across the plate. -->
+       SVG x IS machine Y, 0 to 154 across the plate.
+       The root is PARALLEL-SIDED at 154 for the whole 25.4 of seating, so the full-width
+       plate and doubler ends are entirely covered; the taper starts only past them. -->
 
-  <!-- the bracket. Root edge 154 at the bottom, tip 46 at the top, 98.7 between them. -->
-  <polygon points="0,98.7 154,98.7 100,0 54,0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <polygon points="0,98.7 154,98.7 154,73.3 100,0 54,0 0,73.3"
+           fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the 25.4 seating IS the stacked end faces of the two plates, which the bracket covers.
-       Shaded inside the bracket, because it is bracket material bearing on plate material. -->
-  <polygon points="0,98.7 154,98.7 140.1,73.3 13.9,73.3" fill="#fde9c8" stroke="none"/>
-  <line x1="13.9" y1="73.3" x2="140.1" y2="73.3" stroke="#b06000" stroke-width="1.0" stroke-dasharray="4 3"/>
+  <!-- the 25.4 seating IS the stacked end faces of the two plates, which the bracket covers -->
+  <rect x="0" y="73.3" width="154" height="25.4" fill="#fde9c8" stroke="none"/>
+  <line x1="0" y1="73.3" x2="154" y2="73.3" stroke="#b06000" stroke-width="1.0" stroke-dasharray="4 3"/>
+  <polygon points="0,98.7 154,98.7 154,73.3 100,0 54,0 0,73.3"
+           fill="none" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the two plates behind it, dashed: hidden by the bracket, and drawn on other sheets.
-       Both are 154 across, so their corners stand proud of the bracket's taper. -->
+  <!-- the two plates behind it, dashed: hidden by the bracket, drawn on Sheet 2 -->
   <rect x="0" y="86.0" width="154" height="12.7" fill="none" stroke="#111" stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
   <rect x="0" y="73.3" width="154" height="12.7" fill="none" stroke="#b06000" stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="18" y="95.2">END PLATE end 12.7</text>
-  <text class="lbl" x="18" y="82.5" fill="#b06000">DOUBLER end 12.7</text>
+
+  <!-- R5-R8: into the END PLATE's end face, centred in its 12.7 -> X 6.35.
+       Transferred at home off the bracket itself, never drilled at the mill. -->
+  <circle cx="32"  cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="62"  cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="92"  cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="122" cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <!-- R1-R4: into the DOUBLER's end face, centred in its 12.7 -> X 19.05.
+       These are Sheet 2's B1-B4, the only edge holes that need the mill. -->
+  <circle cx="32"  cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="62"  cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="92"  cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="122" cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
 
   <text class="lbl" x="40" y="62">SOLE BRACKET 1/4&quot;</text>
 
@@ -823,25 +836,32 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
   <text class="dim" x="-78" y="65">21.3</text>
   <line x1="168" y1="0"    x2="168" y2="52.0" stroke="#06c" stroke-width="0.6"/>
   <text class="dim" x="172" y="28">52</text>
-  <line x1="0"   y1="112"  x2="154" y2="112" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="66"  y="120">154</text>
+  <line x1="0"   y1="124"  x2="154" y2="124" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="66"  y="132">154</text>
   <line x1="54"  y1="-12"  x2="100" y2="-12" stroke="#06c" stroke-width="0.6"/>
   <text class="dim" x="70"  y="-15">46</text>
+  <!-- the two bolt rows, X forced by each plate's own mid-thickness -->
+  <line x1="162" y1="92.35" x2="196" y2="92.35" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="199" y="94.5">6.35 END PLATE</text>
+  <line x1="162" y1="79.65" x2="196" y2="79.65" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="199" y="81.8" fill="#b06000">19.05 DOUBLER</text>
 
   <circle cx="0" cy="98.7" r="3.4" fill="#c00"/>
   <text class="dim" x="-34" y="107" fill="#c00">WCS 0,0</text>
 
   <text class="q" x="268" y="12">LENGTH 98.7, and it derives:</text>
   <text class="q" x="268" y="24">72.7 screw axis + 26 half the nut = 98.7</text>
-  <text class="q" x="268" y="42" fill="#b06000">THE 25.4 SEATING IS INSIDE THIS LENGTH.</text>
-  <text class="q" x="268" y="54" fill="#b06000">It is the stacked end faces of the end plate</text>
-  <text class="q" x="268" y="66" fill="#b06000">and the doubler, which the bracket COVERS.</text>
+  <text class="q" x="268" y="42" fill="#b06000">ROOT IS PARALLEL FOR THE WHOLE 25.4.</text>
+  <text class="q" x="268" y="54" fill="#b06000">154 wide until the plates end, then it tapers &#8212;</text>
+  <text class="q" x="268" y="66" fill="#b06000">so the sandwich is covered corner to corner.</text>
   <text class="q" x="268" y="84" fill="#c00">nut face 40 &#215; 52, pattern 24 &#215; 40</text>
   <text class="q" x="268" y="96" fill="#c00">nut 46.7 to 98.7 &#8212; tip flush with its far edge</text>
   <text class="q" x="268" y="108" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
   <text class="q" x="268" y="126">21.3 of air clears the 20 minimum by 1.3</text>
+  <text class="q" x="268" y="138" fill="#7a5200">&#9888; the rows' Y stations are still OPEN &#8212; drawn</text>
+  <text class="q" x="268" y="150" fill="#7a5200">on D1&ndash;D4's 32 / 62 / 92 / 122, not yet decided</text>
 </svg>
-<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) drill and tap the four M5 into the <b>doubler's</b> bottom edge; (2) bolt the doubler to the end plate; (3) bolt the sole bracket up into the doubler with the FIRST row; (4) use the sole bracket's SECOND row as a <b>drill guide</b> to spot the four M5 into the <b>end plate's</b> bottom edge. <b>So only the doubler's edge holes need the mill</b> &mdash; the end plate's are transferred at home and need no coordinates at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner, which the previous drawing's origin was not. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), which is a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
+<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) drill and tap the four M5 into the <b>doubler's</b> end face &mdash; the amber row, Sheet&nbsp;2's B1&ndash;B4; (2) bolt the doubler to the end plate; (3) bolt the sole bracket up into the doubler with that row; (4) use the bracket's <b>other</b> row as a <b>drill guide</b> to spot the four M5 into the <b>end plate's</b> end face. <b>So only the doubler's row needs the mill</b> &mdash; the end plate's is transferred at home and needs no coordinates at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The two bolt rows sit at <b>6.35</b> and <b>19.05</b>, each centred in its own 12.7 plate, which is forced rather than chosen; their <b>Y stations are not settled</b> and are drawn on D1&ndash;D4's. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
 </figure>
 
 <h3>The two parts</h3>
@@ -856,7 +876,8 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th>Note</th></tr>
 <tr><td>N1&ndash;N4</td><td>M5 clearance, bracket up into the nut</td><td>4</td><td><b>52.7</b> and <b>92.7</b></td><td><b>&plusmn;12</b> about the nut centre</td><td>The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern 24 &times; 40 centred on a 40 &times; 52 face: insets 8 across the 40, 6 across the 52</td></tr>
-<tr class="unk"><td>R1&ndash;Rn</td><td>Root holes, bracket into the bottom edge</td><td>TBD</td><td>within <b>0 to 25.4</b></td><td><b>UNKNOWN</b></td><td><b>Two rows across the 25.4</b>, spread as wide in Y as the 154 root allows &mdash; the 60&nbsp;mm arm is reacted as a shear couple across the group's spread <i>along Y</i></td></tr>
+<tr class="unk"><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the row that needs the mill. Same holes as Sheet 2's <b>B1&ndash;B4</b></td><td>4</td><td><b>19.05</b> &mdash; centred in the doubler's 12.7</td><td><b>UNKNOWN</b> &mdash; drawn on 32, 62, 92, 122</td><td>&oslash;5.5 clearance through the bracket; <b>M5 tapped into the doubler's edge, 20 deep MAX</b>, which clears the &oslash;5 D-bolt wall by 2.5. <b>The X is forced</b> &mdash; a row off its plate's mid-thickness breaks out. Only the Y spread is open</td></tr>
+<tr class="unk"><td>R5&ndash;R8</td><td><b>Into the END PLATE's end face</b> &mdash; <b>never drilled at the mill</b></td><td>4</td><td><b>6.35</b> &mdash; centred in the end plate's 12.7</td><td><b>UNKNOWN</b> &mdash; drawn on 32, 62, 92, 122</td><td>Spotted at home <b>through the bracket itself</b>, which is the drill guide, so these need no coordinate at all &mdash; the 6.35 is for drawing it, not for setting a mill<sup class="f">2.7</sup></td></tr>
 <tr><td>D1&ndash;D4</td><td><b>Doubler to end plate</b>, through-bolts &mdash; <b>dimensioned on Sheet 2</b>, not here</td><td>4</td><td>X <b>25</b> on the plate</td><td><b>32, 62, 92, 122</b></td><td>&oslash;5 through the 12.7, in shear with full material around them. <b>Drill the doubler clamped to the plate</b> &mdash; one operation, one schedule, and Sheet 2 owns it</td></tr>
 </table>
 
