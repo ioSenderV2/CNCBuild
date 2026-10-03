@@ -563,111 +563,93 @@ overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 <div class="plate pg-s4">
 <h2 id="sheet-4">Sheet 4 — Z plate (quantity 1)</h2>
 <div class="stock">
-<b>164 mm W &times; 175 mm H &times; 1/2" aluminium</b><br>
-<span class="datum">WCS ORIGIN: plate centre.</span> Every hole on this sheet is absolute X/Y
-from it, so the outline and the hole pattern are independent.<sup class="f">4.1</sup>
+<b>175 long &times; 164 wide &times; 1/2" aluminium</b><br>
+<span class="datum">WCS ORIGIN: the LOWER-LEFT corner as the part sits on the table.</span><br>
+<b>X</b> runs along the 175. <b>Y</b> runs across the 164. Both positive, both absolute &mdash;
+<b>never chained</b>.<sup class="f">4.1</sup>
 </div>
 
 <figure>
-<svg viewBox="-150 -118 470 300" width="185mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- Z PLATE. Plate coordinates, WCS origin at plate CENTRE; SVG y is negated so
-       +Y is up the plate. Every feature below is from this sheet's own schedule. -->
-  <rect x="-82" y="-87.5" width="164" height="175" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <line x1="-82" y1="0" x2="82" y2="0" stroke="#aaa" stroke-dasharray="6 3" stroke-width="0.6"/>
-  <line x1="0" y1="-87.5" x2="0" y2="87.5" stroke="#aaa" stroke-dasharray="6 3" stroke-width="0.6"/>
+<svg viewBox="-54 -40 460 260" width="186mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- Z PLATE in MACHINING COORDINATES, 2026-10-03. 175 along mill X, 164 across.
+       Origin is the LOWER-LEFT corner of the part as it sits on the table. -->
+  <rect x="0" y="0" width="175.0" height="164.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <rect x="118.0" y="21.0" width="55.0" height="122.0" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
+  <rect x="2.0" y="21.0" width="55.0" height="122.0" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
+  <text class="lbl" x="120.0" y="18.0" fill="#555">CLAMP 122 &#215; 55</text>
+  <text class="lbl" x="4.0" y="18.0" fill="#555">CLAMP 122 &#215; 55</text>
 
-  <!-- CLAMP FOOTPRINTS, 122 x 55, centred on +/-58 (given 2026-10-03). The M8 pattern is
-       100 x 25 centred in each footprint, which is why the rows land at 58-12.5 = 45.5 and
-       58+12.5 = 70.5. The footprint's outer edge reaches 58+27.5 = 85.5 against a half-height
-       of 87.5 - the 2 mm relief this sheet already records. Three numbers closing. -->
-  <rect x="-61" y="-85.5" width="122" height="55" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
-  <rect x="-61" y="30.5" width="122" height="55" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
-  <text class="lbl" x="-59" y="-74" fill="#555">CLAMP 122 &#215; 55</text>
-  <text class="lbl" x="-59" y="42" fill="#555">CLAMP 122 &#215; 55</text>
+  <!-- 16 x M5 clearance, counterbored ~o10 -->
+  <circle cx="28.299999999999997" cy="155.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="28.299999999999997" cy="155.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="28.299999999999997" cy="123.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="28.299999999999997" cy="123.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="28.299999999999997" cy="40.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="28.299999999999997" cy="40.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="28.299999999999997" cy="8.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="28.299999999999997" cy="8.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="64.3" cy="155.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="64.3" cy="155.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="64.3" cy="123.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="64.3" cy="123.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="64.3" cy="40.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="64.3" cy="40.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="64.3" cy="8.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="64.3" cy="8.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="108.3" cy="155.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="108.3" cy="155.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="108.3" cy="123.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="108.3" cy="123.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="108.3" cy="40.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="108.3" cy="40.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="108.3" cy="8.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="108.3" cy="8.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="144.3" cy="155.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="144.3" cy="155.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="144.3" cy="123.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="144.3" cy="123.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="144.3" cy="40.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="144.3" cy="40.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <circle cx="144.3" cy="8.5" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <circle cx="144.3" cy="8.5" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
 
-  <!-- clamp centres, +/-58 up the plate; the clamp face sits 2 mm inside each end -->
-  <line x1="-82" y1="-58" x2="82" y2="-58" stroke="#0a6" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <line x1="-82" y1="58" x2="82" y2="58" stroke="#0a6" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <text class="lbl" x="-147" y="-55" fill="#0a6">clamp +58</text>
-  <text class="lbl" x="-147" y="61" fill="#0a6">clamp &#8722;58</text>
+  <!-- 8 x M8 x 1.25 TAPPED, 10 deep -->
+  <circle cx="17.0" cy="132.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="17.0" cy="32.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="42.0" cy="132.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="42.0" cy="32.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="133.0" cy="132.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="133.0" cy="32.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="158.0" cy="132.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="158.0" cy="32.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
 
-  <!-- 16 x M5 COUNTERBORED, ~o10 over o5.5 -->
-  <circle cx="-73.5" cy="-56.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-73.5" cy="-56.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-73.5" cy="-20.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-73.5" cy="-20.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-73.5" cy="23.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-73.5" cy="23.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-73.5" cy="59.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-73.5" cy="59.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-41.5" cy="-56.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-41.5" cy="-56.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-41.5" cy="-20.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-41.5" cy="-20.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-41.5" cy="23.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-41.5" cy="23.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="-41.5" cy="59.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="-41.5" cy="59.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="41.5" cy="-56.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="41.5" cy="-56.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="41.5" cy="-20.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="41.5" cy="-20.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="41.5" cy="23.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="41.5" cy="23.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="41.5" cy="59.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="41.5" cy="59.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="73.5" cy="-56.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="73.5" cy="-56.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="73.5" cy="-20.8" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="73.5" cy="-20.8" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="73.5" cy="23.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="73.5" cy="23.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  <circle cx="73.5" cy="59.2" r="5" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <circle cx="73.5" cy="59.2" r="2.75" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
+  <line x1="0" y1="176.0" x2="175.0" y2="176.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="79.5" y="186.0">175</text>
+  <line x1="-12" y1="0" x2="-12" y2="164.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-38" y="82.0">164</text>
+  <circle cx="0" cy="164.0" r="3.4" fill="#c00"/>
+  <text class="dim" x="-30" y="174.0" fill="#c00">WCS 0,0</text>
 
-  <!-- 8 x M8 TAPPED, 10 deep -->
-  <circle cx="-50" cy="-70.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="-50" cy="-45.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="-50" cy="45.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="-50" cy="70.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="50" cy="-70.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="50" cy="-45.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="50" cy="45.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="50" cy="70.5" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <text class="q" x="196" y="14" fill="#06c">8 &#215; M8 &#215; 1.25 TAPPED, 10 deep</text>
+  <text class="q" x="196" y="26" fill="#06c">TAP DRILL &#248;6.8</text>
+  <text class="q" x="196" y="38">X 17, 42, 133, 158</text>
+  <text class="q" x="196" y="50">Y 32, 132</text>
+  <text class="q" x="196" y="62">bolts pass through the CLAMP and thread into</text>
+  <text class="q" x="196" y="74">THIS plate &#8212; the clearance is in the clamp</text>
+  <text class="q" x="196" y="86">~15 N&#183;m, 10 mm of engagement</text>
 
-  <!-- outline dimensions -->
-  <line x1="-82" y1="-96" x2="82" y2="-96" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="-12" y="-99">164</text>
-  <line x1="-90" y1="-87.5" x2="-90" y2="87.5" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="-110" y="2">175</text>
-  <circle cx="0" cy="0" r="2.6" fill="#c00"/>
-  <text class="dim" x="4" y="-4" fill="#c00">WCS ORIGIN</text>
+  <text class="q" x="196" y="96" fill="#b06000">16 &#215; M5 CLEARANCE, C&#8217;BORED ~&#248;10</text>
+  <text class="q" x="196" y="108">X 28.3, 64.3, 108.3, 144.3</text>
+  <text class="q" x="196" y="120">Y 8.5, 40.5, 123.5, 155.5</text>
 
-  <text class="q" x="96" y="-74" fill="#06c">8 &#215; M8 TAPPED, 10 deep</text>
-  <text class="q" x="96" y="-63">columns &#177;50 &#183; rows &#177;45.5 and &#177;70.5</text>
-  <text class="q" x="96" y="-52">= 17 and 42 from the nearer plate end</text>
-  <text class="q" x="96" y="-41">bolts pass through the CLAMP and thread into</text>
-  <text class="q" x="96" y="-30">THIS PLATE &#8212; clearance is in the clamp, not here</text>
-  <text class="q" x="96" y="-19">torque ~15 N&#183;m, 10 mm of engagement</text>
+  <text class="q" x="196" y="142" fill="#555">CLAMP FOOTPRINT 122 &#215; 55</text>
+  <text class="q" x="196" y="154" fill="#555">M8 pattern 100 &#215; 25 centred in it</text>
+  <text class="q" x="196" y="166" fill="#555">2 mm of relief at each end of the plate</text>
 
-  <text class="q" x="96" y="4" fill="#555">CLAMP FOOTPRINT 122 &#215; 55, centred &#177;58</text>
-  <text class="q" x="96" y="15" fill="#555">M8 pattern 100 &#215; 25 centred in it</text>
-  <text class="q" x="96" y="26" fill="#555">outer edge at 85.5 vs half-height 87.5</text>
-  <text class="q" x="96" y="37" fill="#555">= the 2 mm relief at each plate end</text>
-
-  <text class="q" x="96" y="60" fill="#b06000">16 &#215; M5 CLEARANCE, COUNTERBORED ~&#248;10</text>
-  <text class="q" x="96" y="71">columns &#177;41.5 and &#177;73.5</text>
-  <text class="q" x="96" y="82">rows &#8722;59.2, &#8722;23.2, +20.8, +56.8</text>
-
-  <text class="q" x="96" y="104" fill="#c00">The outer M5 at 73.5 reaches 78.5 with its</text>
-  <text class="q" x="96" y="115" fill="#c00">counterbore, against a half-width of 82</text>
-  <text class="q" x="96" y="126" fill="#c00">&#8212; 3.5 mm of edge. Do not narrow 164.</text>
-
-  <text class="q" x="96" y="148">M8 column 50 and M5 column 41.5 are only</text>
-  <text class="q" x="96" y="159">8.5 apart, so they are separated in HEIGHT:</text>
-  <text class="q" x="96" y="170">clamp centres 116, never 144</text>
+  <text class="q" x="196" y="188" fill="#c00">Outer M5 leaves 3.5 under its counterbore.</text>
+  <text class="q" x="196" y="200" fill="#c00">Do not narrow the 164.</text>
 </svg>
-<figcaption>Front face, the one the clamps and the spacer blocks share. <b>Every dimension is from the WCS origin at plate centre</b>, so the outline and the hole pattern are independent.</figcaption>
+<figcaption>Laid out as the part sits on the mill table: <b>the 175 runs along X</b>, origin at the lower-left corner. Front face &mdash; the one the clamps and the spacer blocks share.</figcaption>
 </figure>
 
 <div class="warn">
@@ -676,23 +658,21 @@ and its counterbore is ~&oslash;10, so it reaches <b>78.5</b>. At 164 the half-w
 the counterbores clear the edge by <b>3.5 mm</b>. The plate also has to cover the spacers, which needs
 164 on its own.<sup class="f">4.1</sup>
 <br><br>
-<b>Every dimension on this sheet is from the WCS origin at plate centre</b>, so the outline and the
-hole pattern are independent &mdash; changing the outline moves no hole.
+<b>Every dimension on this sheet is from the WCS origin at the lower-left corner</b>, and the hole
+pattern is symmetric about the plate, so the two are independent &mdash; changing the outline would
+move every hole with it.
 </div>
 
-<h3>Cut and drill schedule — datum: plate centre, or the nearer plate end where stated</h3>
-<table>
-<tr><th>Feature</th><th>Value</th></tr>
-<tr><td>Plate</td><td><b>164 mm W &times; 175 mm H &times; 1/2"</b><sup class="f">4.1</sup></td></tr>
-<tr><td>Clamp centres, up the plate</td><td><b>116 mm</b> — clamp mid-height at <b>±58 mm</b></td></tr>
-<tr><td>M8 columns</td><td><b>±50 mm</b> from plate centre (100 mm apart)</td></tr>
-<tr><td>M8 rows, from plate centre</td><td><b>±45.5 and ±70.5 mm</b></td></tr>
-<tr><td><b>M8 rows, from the nearer plate end</b></td><td><b>17 mm and 42 mm</b> ← type these</td></tr>
-<tr><td>M8 holes</td><td><b>Tapped M8</b>, 10 mm deep. 8 off. Torque ~15 N·m</td></tr>
-<tr><td>Relief at each plate end</td><td>2 mm — the clamp face sits 2 mm inside the plate edge</td></tr>
-<tr><td>Blocks</td><td><b>Butted.</b> Full 246 mm travel</td></tr>
-<tr><td>Spacers</td><td><b>6 inch, unchanged.</b> Nothing gets re-cut</td></tr>
+<h3>Hole schedule &mdash; machining coordinates</h3>
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 175</span></th><th>Y <span style="font-weight:400">across the 164</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>M1&ndash;M8</td><td><b>Clamp bolts</b> &mdash; M8 &times; 1.25</td><td>8</td><td class="n">17, 42, 133, 158</td><td class="n">32, 132</td><td class="d">6.8</td><td class="op"><b>TAP M8 &times; 1.25, 10 deep</b><br>drill &oslash;6.8 &middot; ~15 N&middot;m<sup class="f">4.2</sup></td></tr>
+<tr><td>C1&ndash;C16</td><td>To the spacer blocks</td><td>16</td><td class="n">28.3, 64.3, 108.3, 144.3</td><td class="n">8.5, 40.5, 123.5, 155.5</td><td class="d">5.5</td><td class="op">Through &middot; <b>C&rsquo;BORE ~&oslash;10</b><sup class="f">4.3</sup></td></tr>
 </table>
+
+<p style="font-size:9.5pt;margin:0 0 3mm"><b>Clamp footprint 122 &times; 55</b>, centred on X 29.5 and
+X 145.5, with the 100 &times; 25 bolt pattern centred in each &mdash; which leaves <b>2 mm of relief
+at each end of the plate</b>.</p>
 
 <h3>The measurements this rests on — all read off parts 2026-09-30</h3>
 <table>
