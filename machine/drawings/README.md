@@ -43,7 +43,7 @@ panel. Every sheet in the pack has been brought up to that design.
 
 | Sheet | Part | Note |
 |---|---|---|
-| 1 | Front Y end plate / Z riser | Regenerated 2026-10-02 — the 100 → 200 taper on the 302 mm square, the 62 × 50 window, columns 35 / 65 |
+| 1 | Front Y end plate / Z riser | Regenerated 2026-10-02 — the 100 → 200 taper on the 302 mm square, the 60.5 × 50 window, columns 35 / 65 |
 | 2 | X gantry end plate | Regenerated. Only the **right-hand** plate carries the BF12 tongue, so the two are not interchangeable |
 | 3 | X carriage plate | 154 × 407, untouched by the rework and still correct |
 | 4 | Z plate | **164** × 175 — corrected from 154; at 154 eight M5 counterbores break through the plate edge |

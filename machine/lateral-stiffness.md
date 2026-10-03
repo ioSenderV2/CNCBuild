@@ -159,19 +159,36 @@ identical by rotation, with nothing left over and nothing assumed about the cut 
 📌 **Those rows are the corner bores and they self-check**: the fin's top edge is the beam's top, and
 a `30-6060`'s bores sit 15 and 45 in from each face, so a stacked pair gives 15, 45, 75, 105.
 
-**The 62 × 50 window:**
+**The 60.5 × 50 window:**
 
 | | |
 |---|---|
-| Outboard edge, from the fin's outboard edge | **X = 19** |
-| Inboard edge | **X = 81** |
+| Outboard edge, from the fin's outboard edge | **X = 20** - on the beam's outboard face |
+| Inboard edge | **X = 80.5** |
 | Top edge, below the fin's top | **120 mm** - the beam's own height, i.e. the underside of the lower extrusion |
 | Bottom edge | **170 mm** - ⚠️ 50 mm height is a **guess**, see below |
 
-✅ **The horizontal position derives rather than being measured, and it agrees with the template.**
-The beam spans X 20-80, so its centreline - and the screw's - is **X 50**. A 62 mm window centred
-there runs **19 to 81**, giving the **19 mm outboard strip measured off the MDF**. Two independent
-routes to the same number.
+✅ **The window is ALIGNED on the beam's outboard face, not centred on the beam - decided
+2026-10-03.** The beam spans X 20-80. Putting the window's outboard edge on **X 20** rather than
+centring 62 mm about X 50 does three things at once:
+
+| | Centred, 62 wide | **Aligned, 60.5 wide** |
+|---|---|---|
+| Window | X 19 - 81 | **X 20 - 80.5** |
+| Outboard strip | 19 | **20** |
+| Clearance over the 60 mm casting | 1 each side | **0 outboard, 0.5 inboard** |
+
+🔴 **The point is that it puts the clearance where there is room for it.** The outboard side is the
+tight one - it is the factory edge, and the side plate's end lands on it - while inboard the fin's
+tapered edge is out past X 150 at the window's height. **All the rotation clearance now falls
+inboard.**
+
+✅ **And it closes the breakout.** The side plate's end occupies X 16.825 to 20, so a window edge at
+X 20 is **flush with that plate's inner face** instead of cutting 1 mm into its band.
+
+⚠️ **60.5 is a starting width, chosen to be opened.** The casting is **60 mm** wide and the extra is
+for clearance **while it is rotated through**. If the mockup says it binds, **open the window
+inboard** - there is nothing to lose there. Do not take it off the outboard side.
 
 🔴 **Corrected 2026-10-02: the top edge is 120, not 129.5.** It was recorded as *120 + the
 interposer thickness*, on the reading that only the **casting** passes through the window. It does
@@ -215,29 +232,31 @@ lower opening is the only part the casting can use. **A plywood mockup is being 
 dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
 from the 61 mm tongue at the plate's base.
 
-## 🔴 The 62 × 50 window, and why the taper does not help it
+## 🔴 The 60.5 × 50 window, and why the taper does not help it
 
 **Added 2026-10-02 when the steppers moved to the front.** The cast stepper frame passes through the
-front plate, so each fin needs a **62 mm wide × 50 mm tall** rectangular window below the beam.
+front plate, so each fin needs a **60.5 mm wide × 50 mm tall** rectangular window below the beam.
 
-**The finding that matters, and it is assumption-free:** 62 mm of window in a 76.2 mm plate leaves
-**14.2 mm total**, split between the two sides. **The taper does not rescue this** - it adds material
-**inboard**, while the window's tight side is the **outboard factory edge**. Widening the top of the
-fin is the only thing that buys outboard material.
+**The finding that matters, and it is assumption-free:** the window's tight side is the **outboard
+factory edge**, and **the taper does not rescue it** - the taper adds material *inboard*. Widening
+the top of the fin is the only thing that buys outboard material. That is why the window is aligned
+on the beam face rather than centred: it spends the clearance inboard, where the taper has already
+provided it.
 
 ⚠️ **And the nesting is what pays for it.** Two identical-by-rotation halves only come out of one 12"
 square when **top + base = 12**. So 3" / 9" works, and **4" / 8" works**, but 4" / 9" needs a 13"
 blank.
 
-⚠️ **The 19 mm strip is not 19 mm of free material - the side plate's end uses the outer part of
-it.** Drawn on Sheet 1 and recorded 2026-10-03. The 1/8" × 12" outboard plate lies against the beam's
-outboard face at **X 20** and is **3.175** thick, so its end occupies **X 16.825 to 20** - the outer
-**2.175 mm** of the strip. About **16.8 mm** of the strip is genuinely clear fin.
+⚠️ **The 20 mm strip is not 20 mm of free material - the side plate's end uses the outer part of
+it.** The 1/8" × 12" outboard plate lies against the beam's outboard face at **X 20** and is
+**3.175** thick, so its end occupies **X 16.825 to 20**. About **16.8 mm** of the strip is clear
+fin, and the rest is under the plate. ⚠️ **3.175 is nominal** - if the sheet arrives as 11 gauge the
+band moves.
 
-🔴 **And the window's outboard edge sits inside that band.** The window runs X 19 to 81 while the
-plate's end runs 16.825 to 20, so the window edge falls **1 mm inboard of the plate's inner face**.
-That is not a clash between two cuts - they are different parts - but it does mean **the window
-breaks out into the space the side plate's end occupies**, and it is worth an eye on the mockup
+✅ **Closed by the realignment, 2026-10-03.** When the window ran X 19 to 81 its outboard edge
+fell **inside** the plate's band and broke out into the space the plate's end occupies. At **X 20**
+the window edge is flush with the plate's inner face and the overlap is gone. The thing to watch on
+the mockup
 before the real plate is cut.
 
 ✅ **Measured off the MDF template, 2026-10-02: the outboard strip is 19 mm**, from the factory

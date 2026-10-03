@@ -59,7 +59,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Cut two from one 12" square, and reference off the factory edges](machine/lateral-stiffness.md#cut-two-from-one-12-square-and-reference-off-the-factory-edges)
 - [The fin, fully dimensioned - 2026-10-02](machine/lateral-stiffness.md#the-fin-fully-dimensioned---2026-10-02)
   - [The stock is 10 mm, not 1/2" - and that is acceptable, by this file's own test](machine/lateral-stiffness.md#the-stock-is-10-mm-not-12---and-that-is-acceptable-by-this-files-own-test)
-- [The 62 × 50 window, and why the taper does not help it](machine/lateral-stiffness.md#the-62-50-window-and-why-the-taper-does-not-help-it)
+- [The 60.5 × 50 window, and why the taper does not help it](machine/lateral-stiffness.md#the-605-50-window-and-why-the-taper-does-not-help-it)
 - [The M8 columns sit at 35 and 65 mm from the factory edge](machine/lateral-stiffness.md#the-m8-columns-sit-at-35-and-65-mm-from-the-factory-edge)
 - [The second gain is bolt spacing, and it is the bigger one](machine/lateral-stiffness.md#the-second-gain-is-bolt-spacing-and-it-is-the-bigger-one)
   - [T2 at 170](machine/lateral-stiffness.md#t2-at-170)

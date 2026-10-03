@@ -18,7 +18,7 @@ this file were reversed on purpose. The short form:
 |---|---|---|
 | Stepper mount | NEMA 23 on four 18 mm M5 standoffs off the rear plate, BK12 beside it | **One cast frame** carrying motor face, bearing housing and coupler - see below |
 | Stepper end | Rear | **Front**, both Y beams |
-| Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **62 × 50 mm window** for the casting |
+| Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **60.5 × 50 mm window** for the casting |
 | Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1200 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
 | Outboard plates | 12" × 1000 × 1/4" **6061** | 12" × 1000 × **1/8" cold-rolled steel sheet** |
 | Front strips | 3/8" on Y, 1/4" on X | **46 mm × 1/4" 6061 on all three beams**, X included |
@@ -50,7 +50,7 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 | Size | **Tapered: 100 mm at the top, 200 mm at the base, 302 mm tall, 1/2" thick** | **One plate for both beams: 1200 mm × 12" × 1/4" steel** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
 | To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 30**, plus bottom-edge bearing | **8 bolts through the back tongue at Y 30**, ~150 mm pitch, plus bottom-edge bearing over the full 1200 mm |
-| Also carries | the **62 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
+| Also carries | the **60.5 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
 ⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
 Nothing in the rear column above is as-built hardware.
@@ -148,7 +148,7 @@ exists rather than adding a fifth part and four more T-nut bolts.
 | Counterbores | **none anywhere** |
 
 🔴 **X's casting bar inherits Y's bolt rows, and that is an assumption worth naming.** 82 / 110 / 138
-were derived from *Y* geometry - the 30 mm protrusion past the fin, the 62 × 50 window, the casting's
+were derived from *Y* geometry - the 30 mm protrusion past the fin, the 60.5 × 50 window, the casting's
 own tapped rows. Making the parts identical means X's bar carries those same rows; **the check
 nobody has run is whether all three rows land over beam on X**, where the bar sits on top and
 overhangs the end rather than reaching back under a fin.
@@ -358,7 +358,7 @@ of the machine, with **BF12 bolted to the rear plate's inside face** at the othe
 
 ⚠️ **Three consequences, all live:**
 
-1. The **62 × 50 window moves to the front plates**, which are the tapered fins about to be cut.
+1. The **60.5 × 50 window moves to the front plates**, which are the tapered fins about to be cut.
    See "The lateral fix" below.
 2. **Nothing passes through the rear plane any more**, which is part of why one monolithic rear plate
    became practical.

@@ -53,7 +53,7 @@ It is derived and untracked: **if it disagrees with a file below, the file below
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
-| Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 62 × 50 window for the stepper frame. **Rear:** one **1200 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
+| Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 60.5 × 50 window for the stepper frame. **Rear:** one **1200 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
 | Plate materials | 6061 throughout **except** the two Y outboard plates (**1/8" steel**) and the Y rear plate (**1/4" A36**) — see [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), [`outboard-plate.md`](outboard-plate.md) and [`lateral-stiffness.md`](lateral-stiffness.md) |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the

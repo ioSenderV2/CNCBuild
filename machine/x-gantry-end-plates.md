@@ -365,7 +365,7 @@ closed by the travel limit:**
 > which is where the riser starts.**
 
 So the plate's lower tail stops at the beam end and never enters the riser's plane. **The riser is
-not in the picture at all** - it is not a clearance to design around, and the 62 × 50 window has
+not in the picture at all** - it is not a clearance to design around, and the 60.5 × 50 window has
 nothing to do with this plate.
 
 📌 **Noted as a travel fact, not a measurement I took.** It comes from the axis's own limit, so if

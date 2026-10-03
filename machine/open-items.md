@@ -14,14 +14,17 @@
 - ✅ ~~**The casting's 6-hole pattern against the T-nut holes**~~ **Closed 2026-10-02.** Measured at
   columns 7 / 53 and rows 28 / 58 / 71. The columns clash with the T-slots at 8 mm, which is why
   the bar runs ~30 mm past the casting and the four T-nut bolts live in the overhang.
-- ✅ ~~**The two strip widths either side of the window**~~ **Measured 2026-10-02: 19 mm outboard**,
-  and it now derives from the geometry too. The fins are **100 / 200 over 302**, both halves out of
+- ✅ ~~**The two strip widths either side of the window**~~ **Measured 2026-10-02 at 19 mm outboard
+  on the MDF template; the design moved to 20 on 2026-10-03** when the window was realigned onto the
+  beam face. The measurement confirmed the approach, not this number. The fins are **100 / 200 over 302**, both halves out of
   the measured 302 mm square with 2 mm for the kerf.
-- ✅ ~~**The window's horizontal position does not reconcile**~~ **Closed 2026-10-02 - it was my
-  arithmetic, off a wrong column position.** With the M8 columns at **35 and 65** rather than 20
-  and 50, the beam spans X 20-80 and its centreline is X 50, so a 62 mm window centred on the screw
-  runs **19 to 81** - exactly the 19 mm strip measured off the template. Nothing about the casting
-  or the bar had to move.
+- ✅ ~~**The window's horizontal position does not reconcile**~~ **Closed 2026-10-02, and the window
+  was then realigned on 2026-10-03.** The original non-reconciliation was arithmetic off a wrong
+  column position; with the M8 columns at **35 and 65** the beam spans X 20-80 and nothing about the
+  casting or the bar had to move. **The window is now X 20 to 80.5** - its outboard edge aligned on
+  the beam's outboard face rather than centred on the beam - which puts all the clearance over the
+  60 mm casting inboard, where the taper has already provided room, and makes the window edge flush
+  with the side plate's inner face.
 - 🔴 ~~**The riser stands 1.8 mm proud of the side plate**~~ **WRONG, corrected 2026-10-02 to
   16.8 mm.** The 1.8 was computed off a superseded M8 column at **20**; the column is **35**, which
   this file had already corrected elsewhere while this bullet kept the old consequence. The chain:
