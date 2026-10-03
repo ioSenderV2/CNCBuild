@@ -174,8 +174,9 @@ The box is **19 mm Baltic birch skins top and bottom over a grid of 19 mm strips
    19 mm top skin and so **stands 60 mm proud** of the top surface as a **curb, outboard of the plate.**
 
 The top skin's outer edge terminates at the inner web's outer face, which is also the curb's inner
-face. The plate drops into the channel between the two, and since the plate is 6.35 mm thick it
-occupies **the outer 6.35 mm of the 19 mm web** - so its bottom edge bears **directly over the wall**,
+face. The plate drops into the channel between the two, and since the plate is 3.175 mm thick it
+occupies **the outer 3.175 mm of the 19 mm web** (this paragraph said 6.35 until 2026-10-03, left
+behind when the plate went to 1/8" - the channel's own width is a separate and still-open question) - so its bottom edge bears **directly over the wall**,
 never on skin spanning between grid members.
 
 ### Cross-section at the outer wall, inboard to outboard
@@ -183,8 +184,8 @@ never on skin spanning between grid members.
 | Member | Thickness | Vertical extent |
 |---|---|---|
 | Inner web of the outer wall | 19 mm | Between the skins, 100 mm high |
-| *of which the outer 6.35 mm carries the plate's bottom edge* | | *bearing face is the top skin's top surface* |
-| The full-height plate | 6.35 mm (1/4") | Up to the Y beam - 12", 305 mm tall |
+| *of which the outer 3.175 mm carries the plate's bottom edge* | | *bearing face is the top skin's top surface* |
+| The full-height plate | **3.175 mm (1/8")** | Up to the Y beam - 12", 305 mm tall |
 | Outer lamination, the curb | 19 mm | 180 mm tall, **60 mm proud** of the top skin |
 
 ### The plate is captured on three sides
