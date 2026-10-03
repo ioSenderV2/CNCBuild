@@ -64,6 +64,27 @@ source = "machine/gantry-beam-joint.md"
 # ---------------------------------------------------------------- linear motion
 
 [[dim]]
+sym = "RAIL_SLOT_INSET"
+value = 15
+provenance = "part"
+note = "The two rails on a beam go in the OUTSIDE T-slot of each stacked extrusion, settled by him 2026-10-03 - X, Y1 and Y2 all the same. On a 30-6060 that slot centre is 15 from the extrusion's outer face, the same 15 as EXT_BORE_INSET and for the same reason: the 30 series puts both on the module grid."
+
+[[dim]]
+sym = "RAIL_LOW_Z"
+expr = "RAIL_SLOT_INSET"
+note = "Lower rail centreline, from the beam's BOTTOM face. Beam-local, so it reads the same on X, Y1 and Y2."
+
+[[dim]]
+sym = "RAIL_HIGH_Z"
+expr = "BEAM_H - RAIL_SLOT_INSET"
+note = "Upper rail centreline, from the beam's bottom face. 105."
+
+[[dim]]
+sym = "RAIL_PITCH"
+expr = "RAIL_HIGH_Z - RAIL_LOW_Z"
+note = "90 - his number, 2026-10-03, and the reason the outside slot is the one used: it is the widest the pair can be spread on a 120 beam. This is the couple that resists nod, so it is a stiffness number, not a convenience."
+
+[[dim]]
 sym = "RAIL_STACK"
 value = 30
 provenance = "measured"
