@@ -536,16 +536,23 @@ separation is what does the work - not a third bolt.
 | Edge to the bar's top | 15.8 |
 | Y clearance to each vertical | 15 mm centres, ~6 mm of web |
 
-### 🔴 Blind-tap them. Do NOT break through the plate.
+### 🔴 Through-drilled now, so BOLT LENGTH carries what blind-tapping used to
 
 **This is the consequence of going to 2" and it was not obvious.** The taller bar drops the lower
 horizontal bolt to roughly **Z −96 below the Y beam top**, and the plate's **outer** face at that
 height is where the **lower Y bearing block row** sits. A bolt breaking through would hold a bearing
 block off its mounting face - which is the one surface on this plate that has to be flat.
 
-✅ **Blind-tapping removes the question instead of answering it.** M8 wants ~10 mm of engagement and
-the plate is 12.7, so a blind tap leaves 2-3 mm of skin. **Tap both the same depth** rather than
-treating them differently at the bench. The repo already does this where a face must stay clean -
+🔴 **Changed 2026-10-03: these are through-drilled.** Tapping happens at home, not at the mill, and
+a plug tap wants a through hole. **That moves the safeguard from the geometry to the fastener.**
+Blind-tapping made a protruding bolt impossible by construction; now it is prevented by length
+alone - through **25.4 mm of shelf bar into 12.7 mm of plate**, so **M8 × 35 fits with ~9.6 mm of
+engagement and M8 × 40 protrudes ~1.6 mm** onto the block seat. ⚠️ **Specify M8 × 35 and check it at
+assembly.**
+
+❌ ~~**Blind-tapping removes the question instead of answering it.**~~ It did, and that was the better
+engineering - but it cost a bottoming tap on every hole at the bench, and the trade went the other
+way. The repo already does this where a face must stay clean -
 BF12's four M5 are *"tapped into the 1/4in plate - not through-bolted, for maximum engagement"*.
 
 ⚠️ **The clash itself is unconfirmed**, because the block pattern is unmeasured - the −96 rests on

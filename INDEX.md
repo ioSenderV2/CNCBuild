@@ -189,7 +189,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The shelf](machine/x-gantry-end-plates.md#the-shelf)
   - [Why the datum moved, and it is the whole lesson of this section](machine/x-gantry-end-plates.md#why-the-datum-moved-and-it-is-the-whole-lesson-of-this-section)
   - [Why both horizontals sit at Y 30, stacked in Z](machine/x-gantry-end-plates.md#why-both-horizontals-sit-at-y-30-stacked-in-z)
-  - [Blind-tap them. Do NOT break through the plate.](machine/x-gantry-end-plates.md#blind-tap-them-do-not-break-through-the-plate)
+  - [Through-drilled now, so BOLT LENGTH carries what blind-tapping used to](machine/x-gantry-end-plates.md#through-drilled-now-so-bolt-length-carries-what-blind-tapping-used-to)
   - [What the bar clears](machine/x-gantry-end-plates.md#what-the-bar-clears)
 - [The two plates are identical below the top edge, and differ above it](machine/x-gantry-end-plates.md#the-two-plates-are-identical-below-the-top-edge-and-differ-above-it)
 
