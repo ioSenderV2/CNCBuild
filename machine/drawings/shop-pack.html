@@ -21,7 +21,9 @@
   @page sck { @bottom-left { content: "Shop Pack — CHECKLIST and pack list"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page snt { @bottom-left { content: "Shop Pack — NOTES (reasoning, not dimensions)"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   .pg-s1 { page: s1 } .pg-s2 { page: s2 } .pg-s3 { page: s3 } .pg-s4 { page: s4 }
-  .pg-s5 { page: s5 } .pg-ck { page: sck } .pg-nt { page: snt }
+  @page s6 { @bottom-left { content: "Shop Pack — SHEET 6, interposer"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s7 { @bottom-left { content: "Shop Pack — SHEET 7, 1200 mm rear plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  .pg-s5 { page: s5 } .pg-s6 { page: s6 } .pg-s7 { page: s7 } .pg-ck { page: sck } .pg-nt { page: snt }
   body { font: 11pt/1.45 "Segoe UI", system-ui, sans-serif; color: #111; max-width: 190mm; margin: 0 auto; }
   h1 { font-size: 20pt; margin: 0 0 2mm; }
   h2 { font-size: 15pt; margin: 0 0 1mm; border-bottom: 2px solid #111; padding-bottom: 1mm; }
@@ -753,6 +755,126 @@ wrong.
 
 
 <!-- ============================================================ -->
+<div class="plate pg-s6">
+<h2 id="sheet-6">Sheet 6 &mdash; cast stepper frame interposer (quantity 3)</h2>
+<div class="stock">
+<b>150 long &times; 60 wide &times; 3/8" 6061</b><br>
+<b>One drawing, three off</b> &mdash; Y1, Y2 and the X stepper end are the same part.<br>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the 150, <b>X 0 at the bar's OUTBOARD end</b> &mdash; the end that protrudes through
+the front plate's window. <b>Y</b> across the 60. <b>Z = 0 at the top face</b>, negative into the
+material.<sup class="f">6.1</sup>
+</div>
+
+<figure>
+<svg viewBox="-44 -42 470 180" width="186mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- CAST STEPPER FRAME INTERPOSER, 3 off. 150 along mill X, 60 across.
+       X 0 is the bar&#8217;s OUTBOARD end - the one that protrudes through the window. -->
+  <rect x="0" y="0" width="150.0" height="60.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <line x1="42.7" y1="0" x2="42.7" y2="60.0" stroke="#0a6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text class="lbl" x="45.7" y="-6" fill="#0a6">beam end &#8212; 107.3 of bar over beam</text>
+  <text class="lbl" x="2" y="-6" fill="#b06000">30 proud</text>
+
+  <!-- 6 x o4.2 for the casting, tapped M5 at home -->
+  <circle cx="28.0" cy="53.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="28.0" cy="7.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="58.0" cy="53.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="58.0" cy="7.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="71.0" cy="53.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="71.0" cy="7.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+
+  <!-- 6 x o9 clearance into slide-in T-nuts -->
+  <circle cx="82.0" cy="45.0" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="82.0" cy="15.0" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="110.0" cy="45.0" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="110.0" cy="15.0" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="138.0" cy="45.0" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="138.0" cy="15.0" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+
+  <line x1="0" y1="72.0" x2="150.0" y2="72.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="68" y="82.0">150</text>
+  <line x1="-12" y1="0" x2="-12" y2="60.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-36" y="30.0">60</text>
+  <circle cx="0" cy="60.0" r="3.4" fill="#c00"/>
+  <text class="dim" x="-32" y="70.0" fill="#c00">WCS 0,0</text>
+
+  <text class="q" x="176" y="12" fill="#b06000">6 &#215; &#248;4.2 for the CASTING</text>
+  <text class="q" x="176" y="24">X 28, 58, 71 &#183; Y 7, 53 &#183; tap M5 at home</text>
+  <text class="q" x="176" y="42">6 &#215; &#248;9 CLEARANCE into slide-in T-nuts</text>
+  <text class="q" x="176" y="54">X 82, 110, 138 &#183; Y 15, 45</text>
+  <text class="q" x="176" y="66">the Y 15 / 45 are the 30-6060&#8217;s own slots</text>
+  <text class="q" x="176" y="84" fill="#c00">NO COUNTERBORES ANYWHERE</text>
+  <text class="q" x="176" y="102">Row 138 leaves 12 to the inboard end.</text>
+  <text class="q" x="176" y="114">Row 82 clears the casting&#8217;s last row by 13.6 in 2D.</text>
+</svg>
+<figcaption>The bar hangs <b>under</b> the Y beam, bolted up into slide-in T-nuts; the casting then
+bolts up into the bar. <b>Nothing rests on anything.</b> On X the same part sits on <i>top</i> of the
+beam instead.</figcaption>
+</figure>
+
+<h3>Hole schedule &mdash; machining coordinates</h3>
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 150</span></th><th>Y <span style="font-weight:400">across the 60</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>C1&ndash;C6</td><td><b>The casting</b> bolts up into these</td><td>6</td><td class="n">28, 58, 71</td><td class="n">7, 53</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">6.2</sup></td></tr>
+<tr><td>T1&ndash;T6</td><td>Clearance, M8 flange into <b>slide-in T-nuts</b></td><td>6</td><td class="n">82, 110, 138</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b><sup class="f">6.3</sup></td></tr>
+</table>
+
+<p style="font-size:9.5pt;margin:0 0 3mm">🔴 <b>X's bar inherits these rows from Y geometry.</b> On X
+the bar sits on top of the beam and overhangs its end &mdash; <b>check all three rows land over beam
+before drilling the third one.</b><sup class="f">6.4</sup></p>
+</div>
+
+<div class="plate pg-s7">
+<h2 id="sheet-7">Sheet 7 &mdash; the 1200 mm rear plate (quantity 1)</h2>
+<div class="stock">
+<b>~1205 long &times; 12" (304.8) wide &times; 1/4" hot-rolled A36 steel</b><br>
+<b>One plate carries both Y beams</b> and is also the rear shear panel.<br>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the ~1205, <b>Y</b> across the 304.8, <b>Z = 0 at the top face</b>.<br>
+🔴 <b>The length is a window, not a target</b> &mdash; it is set by the two beams' spacing plus
+their end plates, and it is forgiving.<sup class="f">7.1</sup>
+</div>
+
+<figure>
+<svg viewBox="-46 -34 682 180" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1200 mm REAR PLATE. One plate for both Y beams. Drawn to scale along X; the two
+       beam stations are NOT in the repo, so no bolt is plotted. -->
+  <rect x="0" y="0" width="432.0" height="109.7" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <line x1="0" y1="98.9" x2="432.0" y2="98.9" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="4" y="101.8" fill="#b06000">box bolt row, Y 30 &#8212; 8 off at ~150 pitch</text>
+  <rect x="43" y="14" width="72" height="43" fill="none" stroke="#c0c" stroke-width="1" stroke-dasharray="4 3"/>
+  <rect x="317" y="14" width="72" height="43" fill="none" stroke="#c0c" stroke-width="1" stroke-dasharray="4 3"/>
+  <text class="q" x="47" y="36" fill="#c0c">BEAM 1 &#8212; STATION UNKNOWN</text>
+  <text class="q" x="320" y="36" fill="#c0c">BEAM 2 &#8212; STATION UNKNOWN</text>
+  <line x1="0" y1="123.7" x2="432.0" y2="123.7" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="198" y="133.7">~1205 &#8212; a window, not a target</text>
+  <line x1="-12" y1="0" x2="-12" y2="109.7" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-42" y="55">304.8</text>
+  <circle cx="0" cy="109.7" r="3.4" fill="#c00"/>
+  <text class="dim" x="-32" y="120" fill="#c00">WCS 0,0</text>
+  <text class="q" x="444" y="16" fill="#c00">NOTHING ON THIS SHEET</text>
+  <text class="q" x="444" y="28" fill="#c00">IS DRILLABLE YET.</text>
+  <text class="q" x="444" y="46">The plate size is settled.</text>
+  <text class="q" x="444" y="58">Where the two beams sit</text>
+  <text class="q" x="444" y="70">along it is not in the repo.</text>
+</svg>
+<figcaption>Drawn to scale along X. <b>No bolt is plotted</b>: the plate's own size is settled but the
+two beam stations along it are not recorded anywhere in the repo, and this folder does not invent
+dimensions.</figcaption>
+</figure>
+
+<h3>Hole schedule &mdash; machining coordinates</h3>
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr class="unk"><td>A1&ndash;A16</td><td>Into each beam's <b>corner bores</b>, 8 per beam</td><td>16</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">7.2</sup></td></tr>
+<tr class="unk"><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n">~150 pitch</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">7.3</sup></td></tr>
+<tr class="unk"><td>F1&ndash;F8</td><td><b>BF12</b>, face-mounted &mdash; 4 per beam</td><td>8</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup></td></tr>
+</table>
+
+<p style="font-size:9.5pt;margin:0 0 3mm">🔴 <b>Whether the Laguna can hold the height datum across
+1200 mm is still open</b>, and it gates this plate more than any hole on it.<sup class="f">7.5</sup></p>
+</div>
+
 <div class="plate pg-ck">
 <h2 id="checklist">Before the trip — checklist</h2>
 
