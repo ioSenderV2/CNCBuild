@@ -239,17 +239,27 @@ Both from one <b>302 mm square</b>, one bandsaw cut, zero waste. Stock
 
   <!-- THE 62 x 50 WINDOW: X 19-81, top at 120 = the beam underside -->
   <rect x="19" y="120" width="62" height="50" fill="#fff" stroke="#b06000" stroke-width="1.6"/>
-  <text class="lbl" x="24" y="140" fill="#b06000">62 &#215; 50</text>
-  <text class="lbl" x="24" y="152" fill="#b06000">WINDOW</text>
+  <!-- The interposer bar passes through the TOP of the window; its underside sits 3/8"
+       (9.525) below the window top. Everything below that line is the opening the casting
+       drops into and is ROTATED into position in. -->
+  <line x1="19" y1="129.5" x2="81" y2="129.5" stroke="#111" stroke-width="0.8" stroke-dasharray="2.5 2"/>
+  <text class="lbl" x="21" y="127" fill="#333">bar 3/8"</text>
+  <text class="lbl" x="21" y="142" fill="#b06000">62 WIDE</text>
+  <text class="lbl" x="21" y="153" fill="#b06000">WINDOW</text>
+  <!-- the two vertical extents -->
+  <line x1="15" y1="120" x2="15" y2="129.5" stroke="#06c" stroke-width="0.6"/>
+  <line x1="15" y1="129.5" x2="15" y2="170" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="-16" y="127">9.525</text>
+  <text class="dim" x="-16" y="153">40.49</text>
   <line x1="81" y1="145" x2="312" y2="130" stroke="#b06000" stroke-width="0.5"/>
-  <text class="q" x="316" y="122" fill="#b06000">THE WINDOW &#8212; X 19&#8211;81, Y 120&#8211;170</text>
-  <text class="q" x="316" y="134">top 120 = the beam underside</text>
-  <text class="q" x="316" y="146">casting AND interposer bar pass through,</text>
-  <text class="q" x="316" y="158">the bar underneath &#8212; the foot is stepped</text>
-  <text class="q" x="316" y="170">bar is 60 wide, so 62 clears by 1 mm a side</text>
-  <text class="q" x="316" y="186">&#9888; 50 mm HEIGHT IS A GUESS. Casting</text>
-  <text class="q" x="316" y="198">projects ~20 mm below the bar, so this</text>
-  <text class="q" x="316" y="210">is expected to shrink. Not critical.</text>
+  <text class="q" x="316" y="110" fill="#b06000">THE WINDOW &#8212; X 19&#8211;81, Y 120&#8211;170</text>
+  <text class="q" x="316" y="122">top 120 = the beam underside</text>
+  <text class="q" x="316" y="134">bar is 60 wide, so 62 clears it 1 mm a side</text>
+  <text class="q" x="316" y="150">TWO STACKED CLEARANCES, NOT ONE OPENING:</text>
+  <text class="q" x="316" y="162">upper 9.525 &#8212; the INTERPOSER BAR passing</text>
+  <text class="q" x="316" y="174">lower 40.49 &#8212; the CASTING, 27 tall</text>
+  <text class="q" x="316" y="190">the 13.49 surplus is DELIBERATE: it is the</text>
+  <text class="q" x="316" y="202">room to ROTATE the casting into position</text>
 
   <!-- the 19 mm outboard strip, the dimension in doubt and now measured -->
   <line x1="0" y1="178" x2="19" y2="178" stroke="#06c" stroke-width="0.7"/>
@@ -277,7 +287,7 @@ Both from one <b>302 mm square</b>, one bandsaw cut, zero waste. Stock
   <line x1="0" y1="310" x2="200" y2="310" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="86" y="322">200 base</text>
   <line x1="-10" y1="0" x2="-10" y2="302" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-44" y="154">302 tall</text>
+  <text class="dim" x="-45" y="86">302 tall</text>
 
   <!-- datum -->
   <circle cx="0" cy="302" r="3" fill="#c00"/>
@@ -291,7 +301,7 @@ left and right come from flipping one over. Bolt positions shown are schematic.<
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">15, 45, 75, 105</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">1.2</sup></td></tr>
-<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">19 &rarr; 81</td><td class="n">120 &rarr; 170</td><td class="d">62&times;50</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
+<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">19 &rarr; 81</td><td class="n">120 &rarr; 170</td><td class="d">62&times;50</td><td class="op">Through cut-out &middot; <b>9.525 bar + 40.49</b><sup class="f">1.3</sup></td></tr>
 <tr><td>T1</td><td>Clearance, M8 through front tongue</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
 <tr><td>T2</td><td>Clearance, M8 through front tongue</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
 <tr class="unk"><td>E1</td><td>Encoder sensor bore, <b>if carried on this plate</b></td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">35?</td><td class="op">Through &middot; <b>do not drill</b><sup class="f">1.5</sup></td></tr>

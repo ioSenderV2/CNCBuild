@@ -191,9 +191,20 @@ wholly on top of it - so the bar has to continue through the window **underneath
 window clears it by **1 mm a side** - the same 1 mm the window leaves against the 60 mm extrusion end
 it is centred on. Two parts of the same width pass through it.
 
-⚠️ **The 50 mm height is a guess and is expected to shrink.** It was never derived from the casting;
-it is a budget. **The casting projects about 20 mm below the bar** (given 2026-10-02, *"not a critical
-number"*), so the window only has to pass that plus the 9.5 mm bar - and 50 is generous. **A plywood mockup is being cut to find the real number** - see the plate list in
+✅ **The 50 mm height is no longer a budget - it is two stacked clearances plus rotation room.**
+Given 2026-10-03:
+
+| | mm |
+|---|---|
+| Upper band: the **interposer bar** passing through, 3/8" | **9.525** |
+| Lower opening, the remainder | **40.49** |
+| → the **casting**, as it sits in the window | **27** |
+| → **surplus, and it is the point** | **13.49** |
+
+🔴 **The surplus is what the casting is rotated into.** It does not drop straight in. That is why the
+window is not simply 9.525 + 27 = 36.5, and it retires the earlier note that 50 was a guess expected
+to shrink. ⚠️ **Mark the bar's underside on the plate** - 9.525 below the window top - because the
+lower opening is the only part the casting can use. **A plywood mockup is being cut to find the real number** - see the plate list in
 [`drawings/README.md`](drawings/README.md). Nothing downstream depends on it: the window's tight
 dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
 from the 61 mm tongue at the plate's base.
