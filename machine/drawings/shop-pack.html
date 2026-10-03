@@ -46,21 +46,52 @@ source of truth — if this sheet and a .md file disagree, the .md file wins and
 🔴 STALE AS OF 2026-10-02 — DO NOT TAKE THIS PACK TO THE MILL
 </p>
 <p style="margin:0 0 .5rem">
-The Y end design was reworked on 2026-10-02 and <b>every riser sheet in this pack is superseded</b>.
-Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers moved to the <b>front</b>,
-all four as-built Y risers are scrapped, and the two rear risers became one 1200&nbsp;mm steel plate.
+<b>What is wrong is now a short named list, not "every riser sheet".</b> The Y end design was
+reworked on 2026-10-02 — cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers
+moved to the <b>front</b>, all four as-built Y risers are scrapped, and the two rear risers became
+one 1200&nbsp;mm steel plate. Most of the pack was brought up with it during that day; the gaps
+below are what is left.
 </p>
+
 <p style="margin:0 0 .5rem">
-Three parts were added to the trip (two Y front plates with a 62&nbsp;×&nbsp;50&nbsp;mm window, the
-1200&nbsp;mm rear plate, two interposer bars), and four measurements still gate cuts that cannot be
-undone. Read <b>machine/end-plates-risers-and-spindle.md</b> and regenerate this pack before the
-visit.
+<b>🔴 TWO SHEETS DO NOT EXIST YET, and both are parts for this trip:</b>
 </p>
+<ul style="margin:0 0 .6rem 1.2rem">
+<li><b>The cast stepper frame interposer</b> — 60 × 150 × 3/8" 6061, <b>3 off</b> (Y1, Y2 and the X
+stepper end), one drawing. Six M8 clearance into slide-in T-nuts at rows 82 / 110 / 138, six M5
+tapped for the casting at bar coords 28–71, no counterbores. <b>Fully dimensioned in the prose and
+simply not drawn here.</b></li>
+<li><b>The 1200&nbsp;mm rear plate</b> — 1200 × 12" × 1/4" A36 steel, one for both Y beams, carrying
+the 16-bolt beam pattern, the 8-bolt box row at Y 30 and <b>BF12 face-mounted on 4 × M5</b> per beam.</li>
+</ul>
+
+<p style="margin:0 0 .5rem">
+<b>🔴 SHEET 1 IS NOT SAFE TO DRILL FROM YET.</b> Its tongue bolts and stock are correct, but the
+<b>62 × 50 mm window</b> for the cast stepper frame — the defining feature of the reworked front
+plate — <b>is not drawn on it at all</b>. Do not cut this plate until the window is on the sheet.
+</p>
+
+<p style="margin:0 0 .5rem">
+<b>Corrected 2026-10-02, after the rework:</b> Sheet&nbsp;4's Z plate was <b>154 → 164 mm</b>, and
+154 could not have been drilled — eight M5 counterbores would have broken through the edge.
+Sheet&nbsp;1's T2 moved <b>X175 → X170</b> and both tongue bolts <b>Y31 → Y30</b>, checked against
+the physical template. Sheet&nbsp;1's BF12 hole row was <b>struck</b>: BF12 is on the rear plate now.
+Sheet&nbsp;2 notes that only the <b>right-hand</b> X end plate carries the BF12 tongue, so the two
+are no longer interchangeable.
+</p>
+
+<p style="margin:0 0 .5rem">
+<b>Current and believed drillable:</b> Sheet&nbsp;2 (X gantry end plate, regenerated),
+Sheet&nbsp;3 (X carriage plate, 154 × 407, untouched and still correct), Sheet&nbsp;4 (Z plate, as
+corrected above), Sheet&nbsp;5 (Y nut doubler and sole bracket, added 2026-10-02) — each still
+subject to its own amber rows.
+</p>
+
 <p style="margin:0">
-<b>Brought current 2026-10-02:</b> Sheet&nbsp;2 (X gantry end plate) was regenerated, and
-Sheet&nbsp;5 added for the two new bottom-joint parts. <b>Sheets 1, 3 and 4 have not been touched</b>
-and every riser sheet is still superseded. Sheet&nbsp;2 now carries a <b>red CONFLICT</b> on the
-shelf's rear bolt hole that has no chosen fix.
+<b>Four questions in the checklist still gate drilling</b>, and every one needs a part or the mill in
+front of you: the HGH20 block hole pattern measured on the <b>X/Y</b> kit, the &oslash;35 encoder bore's
+fore-aft position, how far past the front riser plane the spindle reaches, and the mill's model and
+DRO axis count. The source of truth is <b>machine/*.md</b> — start at <b>machine/README.md</b>.
 </p>
 </div>
 
@@ -99,7 +130,7 @@ carrying two parallel rails.</li>
 <tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; ~46</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Nut pattern settled; root holes TBD &mdash; Sheet 5</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
 <tr><td><b>Z spacer blocks &mdash; face 1 mm</b></td><td>2</td><td>Existing 2" bar, 16.41/16.43 measured</td><td><b>Yes</b> &mdash; facing, not drilling</td><td><b>Added 2026-10-02.</b> Face both in <b>one setup</b>; drops the stack 1 mm and makes the pair identical</td></tr>
-<tr><td>Z plate</td><td>1</td><td>1/2" alu, 154 × 175 mm</td><td><b>Yes</b></td><td><b>Fully dimensioned 2026-09-30</b> — cut and drill schedule on Sheet 4</td></tr>
+<tr><td>Z plate</td><td>1</td><td>1/2" alu, <b>164</b> × 175 mm</td><td><b>Yes</b></td><td><b>164, not 154 — corrected 2026-10-02.</b> Cut and drill schedule on Sheet 4</td></tr>
 </table>
 
 <div class="warn">
@@ -149,13 +180,13 @@ clearance work for a home drill press; the back panel is likewise clearance hole
   <text class="q" x="88" y="84">schematic only</text>
 
   <!-- tongue bolts -->
-  <circle cx="25" cy="273.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
-  <circle cx="175" cy="273.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
-  <line x1="25" y1="273.8" x2="175" y2="273.8" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
-  <text class="dim" x="72" y="270">150 couple</text>
+  <circle cx="25" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <circle cx="170" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <line x1="25" y1="274.8" x2="170" y2="274.8" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
+  <text class="dim" x="70" y="271">145 couple</text>
   <text class="lbl" x="14" y="296">T1 X25</text>
-  <text class="lbl" x="150" y="296">T2 X175</text>
-  <text class="dim" x="196" y="277">Y31</text>
+  <text class="lbl" x="146" y="296">T2 X170</text>
+  <text class="dim" x="192" y="278">Y30</text>
 
   <!-- datum -->
   <circle cx="0" cy="304.8" r="3" fill="#c00"/>
@@ -187,9 +218,9 @@ pattern that has to meet formed threads in the beam.
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
 <tr><td>B1–B8</td><td>ø9 clearance, M8 × 35 into beam corner bores</td><td>8</td><td colspan="2"><b>Transfer punch</b></td><td>Four per profile. Existing plate is also a valid template — it was drilled at home with a mag drill</td></tr>
-<tr><td>T1</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">25</td><td class="n">31</td><td>Y 31 above the plate bottom = <b>30 mm down from the top of the 61 mm proud tongue</b></td></tr>
-<tr><td>T2</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">175</td><td class="n">31</td><td>150 mm couple with T1 — that spacing is the moment restraint. <b>175 not 200:</b> at Y 31 the taper leaves only ~12 mm of perpendicular edge at 200, against ~34 mm at 175</td></tr>
-<tr class="unk"><td>F1–F4</td><td>BF12 support block pattern</td><td>4</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Pattern is shared with BK12; take the real block to the mill</td></tr>
+<tr><td>T1</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">25</td><td class="n">30</td><td><b>Y 30 corrected from 31, 2026-10-02.</b> Y 30 is now one datum across all three plates — front fin, side plates and back plate — 31 mm below the top of the 61 mm tongue</td></tr>
+<tr><td>T2</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">170</td><td class="n">30</td><td><b>170, corrected from 175 on 2026-10-02</b> — checked against the physical template, photo committed. Perpendicular edge distance at Y 30 is <b>19.1 mm</b>, a little over 2× the 9 mm hole. 145 mm couple with T1; that spacing is the moment restraint</td></tr>
+<tr class="unk"><td><s>F1–F4</s></td><td><s>BF12 support block pattern</s></td><td>—</td><td colspan="2"><b>NOT ON THIS PLATE</b></td><td>🔴 <b>Struck 2026-10-02. BF12 is on the REAR plate now</b>, 4 × M5 tapped into the 1200 mm steel plate's inside face. The front plate carries the cast stepper frame instead. The "pattern is shared with BK12" note is also retired</td></tr>
 <tr class="unk"><td>—</td><td>Encoder sensor bore, if carried on this plate</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Confirm against the linear-encoder design doc before drilling</td></tr>
 </table>
 
@@ -198,14 +229,15 @@ pattern that has to meet formed threads in the beam.
 to pass the plane of this plate. The added material is a triangle whose top edge slopes from the top
 of the plate at 3" inboard to the bottom at 9" inboard, and interference is a corner-of-envelope case:
 low Z, minimum Y, X near the beam. Four numbers decide it and three are unmeasured — see
-<b>end-plates-risers-and-spindle.md</b>. The cut is one bandsaw pass and cannot be put back.
+<b>machine/lateral-stiffness.md</b>, "Open: how far past the riser plane the spindle reaches". The cut
+is one bandsaw pass and cannot be put back.
 </div>
 </div>
 
 <!-- ============================================================ -->
 <div class="plate">
 <h2 id="sheet-2">Sheet 2 &mdash; X gantry end plate</h2>
-<p class="sub">2 off &middot; 1/2" (12.7&nbsp;mm) 6061 &middot; <b>154 &times; 242.5&nbsp;mm</b> &middot; genuinely identical &mdash; the screw support and the stepper both left this plate on 2026-10-02</p>
+<p class="sub">2 off &middot; 1/2" (12.7&nbsp;mm) 6061 &middot; <b>154 &times; 242.5&nbsp;mm</b> &middot; identical below the top edge &mdash; <b>the RIGHT-HAND plate also carries a 40 &times; 60&nbsp;mm BF12 tongue above it</b> (2026-10-02). The outline below that edge is one drawing</p>
 
 <div class="note">
 <b>Regenerated 2026-10-02.</b> Deleted from the old sheet, because none of it is on this plate any
@@ -378,7 +410,7 @@ in the repo. This sheet is a frame to fill, not a drawing to work from.
 <!-- ============================================================ -->
 <div class="plate">
 <h2 id="sheet-4">Sheet 4 — Z plate</h2>
-<p class="sub">1 off · 1/2" aluminium · <b>154 mm W × 175 mm H</b></p>
+<p class="sub">1 off · 1/2" aluminium · <b>164 mm W × 175 mm H</b> — 164, not 154, corrected 2026-10-02</p>
 
 <div class="info">
 <b>✅ Fully dimensioned 2026-09-30. This plate can be cut and drilled.</b> It was blocked on the
@@ -386,10 +418,26 @@ spindle body; the constraint turned out to be neither the spindle nor the block 
 <b>M5 counterbores</b>, which share the plate's front face with the M8 tapped holes.
 </div>
 
+<div class="warn">
+<b>🔴 164 mm wide, NOT 154 — corrected 2026-10-02. This sheet carried 154 and 154 cannot be
+drilled.</b> The outer M5 column sits <b>73.5 mm</b> from plate centre and its counterbore is ~&oslash;10,
+so it reaches <b>78.5 mm</b>. On a 154 plate the half-width is only <b>77</b>, so eight of the sixteen
+M5 counterbores <b>break through the plate edge by 1.5 mm</b>. On 164 the half-width is 82 and they
+clear by 3.5 mm.
+<br><br>
+<b>Two independent reasons land on the same number:</b> the plate also has to <b>cover the spacers</b>,
+and with the rails 10 mm in from each side of the carriage plate that needs 164 on its own.
+<br><br>
+<b>No hole moves.</b> Every dimension on this sheet is taken from <b>plate centre</b>, so widening the
+outline by 5 mm a side changes the outline and nothing else. The plate inherited 154 from the X end
+plate, where that number is set by the bearing blocks and is correct; it was never checked against
+this plate's own counterbores.
+</div>
+
 <h3>Cut and drill schedule — datum: plate centre, or the nearer plate end where stated</h3>
 <table>
 <tr><th>Feature</th><th>Value</th></tr>
-<tr><td>Plate</td><td><b>154 mm W × 175 mm H × 1/2"</b></td></tr>
+<tr><td>Plate</td><td><b>164 mm W × 175 mm H × 1/2"</b> — <b>not 154</b>, see the red note below</td></tr>
 <tr><td>Clamp centres, up the plate</td><td><b>116 mm</b> — clamp mid-height at <b>±58 mm</b></td></tr>
 <tr><td>M8 columns</td><td><b>±50 mm</b> from plate centre (100 mm apart)</td></tr>
 <tr><td>M8 rows, from plate centre</td><td><b>±45.5 and ±70.5 mm</b></td></tr>
@@ -611,7 +659,7 @@ wrong.
 <tr><th>#</th><th>Question</th><th>Blocks</th></tr>
 <tr><td>1</td><td>How far past the front riser plane does the spindle reach, and does it foul the widened fin at low Z?</td><td>Sheet 1 — the taper cut</td></tr>
 <tr><td>2</td><td><s>Does the spacer M5 counterbore pattern clear the 120 mm clamp footprint? (nod)</s> — <b>answered 2026-09-30: not by position, so the clearance is bought vertically at 116 mm clamp centres. No tram sub-plate</b></td><td>—</td></tr>
-<tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the M5 counterbore pattern sets the clamps, not the spindle.</b> Plate is <b>154 × 175</b>, clamp centres <b>116 mm</b></td><td>—</td></tr>
+<tr><td>3</td><td><s>Spindle body measurements, all six rows on Sheet 4</s> — <b>answered 2026-09-30: the M5 counterbore pattern sets the clamps, not the spindle.</b> Plate is <b>164 × 175</b> (<b>corrected from 154, 2026-10-02</b>), clamp centres <b>116 mm</b></td><td>—</td></tr>
 <tr><td>7</td><td><s>Which way the 4 × M8 × 80 clamp bolts run</s> — <b>answered 2026-09-30: through the clamp into a TAPPED plate</b>, 10 mm engagement, torque ~15 N·m</td><td>—</td></tr>
 <tr><td>8</td><td><s>M5 row positions on an assembled spacer</s> — <b>measured 2026-09-30: 17, 53, 97, 133. Clamp centres come in to 116 mm to clear them</b></td><td>—</td></tr>
 <tr><td>4</td><td><s>Actual width of the X carriage plate</s> — <b>answered 2026-09-30: 154 mm</b>, same as the X end plates and the Z plate</td><td>—</td></tr>
