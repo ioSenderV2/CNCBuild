@@ -595,10 +595,34 @@ note = "Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on ha
 # ---------------------------------------------------------------- the 1200 rear plate
 
 [[dim]]
+sym = "Y_BEAM_GAP"
+expr = "BEAM_LEN + (2 * (RAIL_STACK + T_X_ENDPLATE))"
+note = "Y beam INBOARD face to inboard face - the gap the X gantry spans. His chain, 2026-10-03: the X beam plus, each side, an end plate and a rail-and-block stack, which lands on the Y extrusion's inner face. Same 1085.4 that lateral-stiffness.md's length table already carried."
+
+[[dim]]
+sym = "Y_BEAM_ASSY_W"
+expr = "EXT_W + T_SIDE_PLATE"
+note = "One Y beam as assembled, across the machine: the extrusion plus its outboard side plate. His number, 2026-10-03 - he gave it as 60 + 1/8in."
+
+[[dim]]
+sym = "REAR_PLATE_L"
+expr = "Y_BEAM_GAP + (2 * Y_BEAM_ASSY_W)"
+note = "Rear plate length, settled 2026-10-03 and NO LONGER A WINDOW. The plate runs FLUSH with the side plates' outer faces, which is exactly the ~1212 MAXIMUM lateral-stiffness.md names - past it the rear plate becomes the proud member at the corner. Supersedes the round 1200 and the tilde'd 1205. It is load-bearing now because Sheet 7's A9-A16 are absolute from the plate's left edge: cut the plate long and the Y2 station is wrong by the excess."
+
+[[dim]]
+sym = "Y1_EXT_FACE_X"
+expr = "T_SIDE_PLATE"
+note = "Y1 extrusion's outboard face, from the rear plate's left edge = Sheet 7's X 0. The side plate occupies that 3.175, so the beam no longer sits on the origin the way Sheet 7 was first drawn."
+
+[[dim]]
+sym = "Y2_EXT_FACE_X"
+expr = "REAR_PLATE_L - T_SIDE_PLATE"
+note = "Y2 extrusion's outboard face, from the same origin. Sheet 7's Y2 station mirrors about REAR_PLATE_L / 2, so every Y2 coordinate is REAR_PLATE_L minus its Y1 twin."
+
+[[dim]]
 sym = "BEAM_SPAN"
-value = 1200
-provenance = "derived"
-note = "Y1's outboard face to Y2's outboard face on the rear plate, settled 2026-10-03. Y1's lower-left corner is the plate's X 0, Y 0 datum and Y2's lower-right corner is X 1200. The plate itself is ~1205 - a window, not a target."
+expr = "Y2_EXT_FACE_X - Y1_EXT_FACE_X"
+note = "Y1's outboard EXTRUSION face to Y2's, 1205.4 - the figure lateral-stiffness.md's table calls outboard face to outboard face. It was 1200 until 2026-10-03, when his stackup replaced the round number; the plate is 6.35 longer than this because it also covers the two side plates."
 
 [[dim]]
 sym = "BF12_ROW1_BARE"
@@ -630,8 +654,8 @@ note = "Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The sid
 
 [[dim]]
 sym = "XBOX_X_FIRST"
-expr = "(BEAM_SPAN - (7 * XBOX_PITCH)) / 2"
-note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050, centred on the 1200 beam span leaves 75 at each end. Stations: 75, 225, 375, 525, 675, 825, 975, 1125."
+expr = "(REAR_PLATE_L - (7 * XBOX_PITCH)) / 2"
+note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050; centred on the plate's own 1211.75 that leaves 80.875 at each end. Stations: 80.875, 230.875, 380.875, 530.875, 680.875, 830.875, 980.875, 1130.875 - and note 7.8 is why the fractions cost nothing, since these are drill-guide holes with no mating pattern to miss."
 
 # ---------------------------------------------------------------- the BF12 tongue, Sheet 2b
 
