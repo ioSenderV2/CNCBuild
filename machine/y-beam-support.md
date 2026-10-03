@@ -108,34 +108,38 @@ Y-axis change and is not one; it is now the machine's standard way of mounting a
 | Axis | Where the casting goes | BF12 stays |
 |---|---|---|
 | **Y1, Y2** | Under the beam at the **front**, on a 60 × 150 × 3/8" interposer bar | On the rear plate's inside face |
-| **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | On a 3/8" interposer at the far end |
+| **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | **Face-mounted on a tongue off the right-hand X end plate** |
 | **Z** | On the **X carriage plate** - 1/2" aluminium, so **no interposer**, the casting taps straight in | At the bottom of the plate |
 
-✅ **Four interposers, and the count is now stated rather than left to be read off the table** -
+✅ **Three interposers, and the count is now stated rather than left to be read off the table** -
 given 2026-10-02:
 
 | | Under the casting | Under BF12 | Total |
 |---|---|---|---|
 | **Y1** | 1 | — (BF12 lands on the rear plate's inside face) | **1** |
 | **Y2** | 1 | — (same) | **1** |
-| **X** | 1 | **1**, at the far end | **2** |
+| **X** | 1 | — (BF12 face-mounts on a tongue off the right-hand end plate) | **1** |
 | **Z** | — (straight onto the 1/2" X carriage plate) | — | **0** |
-| | | | **4** |
+| | | | **3** |
 
 📌 **Only Y and X need an interposer, and for the same reason**: the casting lands on an extrusion
 face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z lands on 1/2" plate -
-2.5 × D - so it bolts direct.** X needs a second one because its BF12 also lands on the beam, where
-Y's BF12 lands on a plate.
+2.5 × D - so it bolts direct.** **No axis needs a second one for BF12**: on Y it face-mounts on the
+1200 mm rear plate, and on X it face-mounts on a tongue off the right-hand end plate.
 
-✅ **Two parts, not four - decided 2026-10-02.** The three casting interposers are **identical**, X's
-included, so there is one drawing and one setup for three off:
+✅ **ONE part, three off - decided 2026-10-02.** All three interposers are **identical**, X's
+included, so there is one drawing and one setup:
 
-| | **Casting bar × 3** (Y1, Y2, X) | **BF12 bar × 1** (X far end) |
-|---|---|---|
-| Size | **60 × 150 × 3/8"** | **60 × 80 × 3/8"** - 20 mm for BF12, 60 mm for the bolts |
-| To the beam | **6 × M8** flange into slide-in T-nuts, rows at **82 / 110 / 138** | **4 × M8** flange into slide-in T-nuts |
-| Top face | **6 × M5 tapped** for the casting, at bar coords 28-71 | **2 × M5 tapped** for BF12, **offset 10 mm from the plate end** |
-| Counterbores | none anywhere | none |
+❌ ~~A fourth, 60 × 80, top-mounting BF12 on X.~~ **Dropped the same day it was specified**: X's BF12
+face-mounts on a **tongue off the right-hand X end plate** instead, which uses a plate that already
+exists rather than adding a fifth part and four more T-nut bolts.
+
+| | **The casting bar - one drawing, 3 off** (Y1, Y2, X) |
+|---|---|
+| Size | **60 × 150 × 3/8" 6061** |
+| To the beam | **6 × M8** flange bolts into slide-in T-nuts, rows at **82 / 110 / 138** |
+| Top face | **6 × M5 tapped** for the casting, at bar coords 28-71 |
+| Counterbores | **none anywhere** |
 
 🔴 **X's casting bar inherits Y's bolt rows, and that is an assumption worth naming.** 82 / 110 / 138
 were derived from *Y* geometry - the 30 mm protrusion past the fin, the 62 × 50 window, the casting's

@@ -163,6 +163,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/x-gantry-end-plates.md](machine/x-gantry-end-plates.md)
 
 - [Reworked 2026-10-02 - the screw and stepper left this plate](machine/x-gantry-end-plates.md#reworked-2026-10-02---the-screw-and-stepper-left-this-plate)
+  - [The BF12 tongue, and it is on ONE plate only](machine/x-gantry-end-plates.md#the-bf12-tongue-and-it-is-on-one-plate-only)
   - [The block is not one surface - 128.24 is the part that bears](machine/x-gantry-end-plates.md#the-block-is-not-one-surface---12824-is-the-part-that-bears)
 - [The rails come from two different suppliers - do not quote one kit's dimension for the other](machine/x-gantry-end-plates.md#the-rails-come-from-two-different-suppliers---do-not-quote-one-kits-dimension-for-the-other)
 - [Vertical stack-up, from the top of the Y beam](machine/x-gantry-end-plates.md#vertical-stack-up-from-the-top-of-the-y-beam)
@@ -185,7 +186,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Why both horizontals sit at Y 30, stacked in Z](machine/x-gantry-end-plates.md#why-both-horizontals-sit-at-y-30-stacked-in-z)
   - [Blind-tap them. Do NOT break through the plate.](machine/x-gantry-end-plates.md#blind-tap-them-do-not-break-through-the-plate)
   - [What the bar clears](machine/x-gantry-end-plates.md#what-the-bar-clears)
-- [The two plates are now genuinely identical](machine/x-gantry-end-plates.md#the-two-plates-are-now-genuinely-identical)
+- [The two plates are identical below the top edge, and differ above it](machine/x-gantry-end-plates.md#the-two-plates-are-identical-below-the-top-edge-and-differ-above-it)
 
 ## [machine/y-beam-support.md](machine/y-beam-support.md)
 

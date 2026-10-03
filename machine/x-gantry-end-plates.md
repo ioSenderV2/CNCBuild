@@ -6,8 +6,9 @@
 
 ---
 
-**Two identical plates, 1/2" aluminium, 154 mm wide**, stopping at the **top of the X beam**. They
-carry the X beam and ride the Y rails on four bearing blocks.
+**Two plates, 1/2" aluminium, 154 mm wide**, stopping at the **top of the X beam** - identical
+below that edge, and the right-hand one carrying a 40 mm **BF12 tongue** above it. They carry the X
+beam and ride the Y rails on four bearing blocks.
 
 ## 🔴 Reworked 2026-10-02 - the screw and stepper left this plate
 
@@ -20,7 +21,8 @@ beam and overhanging the end. **Three things therefore come off the X end plate:
 | The **stepper mount pattern** | the motor bolts to the casting's own flange |
 | Everything in the stack-up **above +60** | the screw support and stepper no longer land on this plate at all |
 
-✅ **Both plates stop at the top of the X beam, +60 from the Y beam top, and stay identical.** The
+✅ **Both plate bodies stop at the top of the X beam, +60 from the Y beam top** - only the
+right-hand plate's BF12 tongue goes above it. The
 alternative was raising the far end by the interposer thickness to cover its end face - cosmetic -
 while the stepper end could not be raised at all, the casting overhanging it. Letting the stepper
 assembly hang unsupported costs nothing worth having: roughly **2.5 kg at ~70 mm is under 2 N·m**,
@@ -39,20 +41,30 @@ joint on all three axes: **X on top of its beam, Y1 and Y2 under theirs.** The c
 touches the extrusion; it is tapped into the interposer with M5. Only Z skips the plate, landing
 straight on the 1/2" X carriage plate.
 
-✅ **X takes TWO interposers, not one** - given 2026-10-02: one under the casting at the stepper
-end, one under **BF12** at the far end. That is what makes four across the machine, Y1 and Y2 taking
-one each; Y needs no second one because its BF12 lands on the rear plate's inside face rather than
-on the beam. See the count table in [`y-beam-support.md`](y-beam-support.md).
+✅ **X takes ONE interposer, under the casting at the stepper end** - three across the machine, Y1
+and Y2 taking one each. ❌ ~~A second X interposer under BF12~~ was specified and dropped the same
+day; BF12 went to a tongue off the end plate instead. See the count table in
+[`y-beam-support.md`](y-beam-support.md).
 
 ✅ **X's casting interposer is the SAME PART as Y1's and Y2's** - decided 2026-10-02. 60 × 150 ×
 3/8", six M8 into T-nuts at rows 82 / 110 / 138, six M5 tapped for the casting. One drawing, three
 off. 🔴 **The rows came out of Y geometry**, so the open check is whether all three land over beam on
 X, where the bar sits on top and overhangs the end.
 
-✅ **The BF12 interposer is the one different part**: **60 × 80 × 3/8"** - 20 mm for BF12, 60 mm for
-its **four** M8 into T-nuts - with **2 × M5 tapped for BF12, offset 10 mm from the plate end**.
-📌 The 2 is not a disagreement with the 4 recorded elsewhere: **BF12 top-mounts on 2 and face-mounts
-on 4**, and the interposer is a top mount. See [`y-beam-support.md`](y-beam-support.md).
+❌ ~~**The BF12 interposer, 60 × 80 × 3/8", top-mounting BF12 on 2 × M5**~~ **Dropped 2026-10-02,
+hours after it was specified.** X's BF12 **face-mounts on a tongue off the end plate instead** - see
+below - which is a 4 × M5 mount into a plate that already exists, against a 5th part plus four more
+T-nut bolts. **That leaves THREE interposers, all identical casting bars.**
+
+### 🔴 The BF12 tongue, and it is on ONE plate only
+
+✅ **Given 2026-10-02.** The plate's top 60 mm already covers the end of the upper extrusion and
+carries four M8 into its corner bores. **The tongue is a 40 mm extension rising off the top edge
+above that 60 mm square**, 60 mm wide, carrying **4 × M5 tapped** for BF12 - **the same pattern used
+on the Y end plates / Z risers**, so it is a pattern this repo already has rather than a new one.
+
+🔴 **Only the right-hand plate gets it.** The left-hand plate is the stepper end: the casting and its
+interposer sit there, on top of the beam.
 
 ✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
 (2026-10-02, calipers - see
@@ -558,14 +570,23 @@ Two things to watch:
 Assembly falls out of this nicely: **bolt both end plates on, slide the T-nuts in, drop the beam onto
 the two shelves, then bolt down.** That is a one-person job, which the alternative is not.
 
-## ✅ The two plates are now genuinely identical
+## ⚠️ The two plates are identical below the top edge, and differ above it
+
+🔴 **This section said "genuinely identical" and that lapsed the same day, 2026-10-02**, when BF12
+moved onto a **tongue off the right-hand plate's top edge**. The body of the two plates - the 154 ×
+242.5 outline, the block holes, the encoder bore, the shelf, the sole plate and doubler - is still
+one drawing and still common. **What is no longer common is the tongue**, which only the right-hand
+plate has.
+
+**It is one drawing with a right-hand variant, not two drawings.** Cut both outlines together and
+leave the 40 mm tongue on one; nothing below the top edge moves. ⚠️ **But they are no longer
+interchangeable at assembly**, which is the thing the old wording promised and would now mislead.
 
 **Reworked 2026-10-02.** With the screw support and the stepper both off this plate, the thing that
-used to differentiate the two ends is gone.
+used to differentiate the two ends is gone - and then the tongue put a smaller difference back.
 
 ❌ ~~"The plate at the idle end gets no 35 mm hole and no stepper mount holes. Everything else is
-common."~~ **Neither end has either any more**, so there is no idle-end variant - one drawing, one
-setup, two identical parts.
+common."~~ **Neither end has either any more**, so that particular idle-end variant is gone.
 
 📌 **The BK12-and-BF12-share-a-pattern note is retired too**, along with the "35 mm is enough for
 the coupler" working: the coupler now lives inside the casting, not in a bore through this plate.
