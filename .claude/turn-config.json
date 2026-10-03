@@ -14,8 +14,14 @@
     "_extensions": "The KiCad design files, plus the Python that can regenerate the schematic. Markdown is deliberately NOT source: this repo is mostly prose - build notes, commissioning measurements, design write-ups - and the only runnable check here is ERC/DRC, which has nothing to say about an edit to machine/README.md. Demanding it after a prose edit would only teach me to run it as a ritual, or to ignore the gate. Same call Simulator made about its own .md files.",
     "extensions": ["kicad_sch", "kicad_pcb", "py"],
 
-    "_ignore": "Checked 2026-08-29, and empty on purpose. Nothing writes source into this repo during a turn except me: there is no .github/workflows directory at all, the repo ships no script that commits (grepped the tracked .py/.md/.html for `git add`/`git commit`/`subprocess` - zero hits; generate.py only writes the .kicad_sch), and no other project's tooling targets this repo - the conversation capture commits into claude-hub, not here. Add an entry when a writer appears whose paths intersect the list above, not before.",
-    "ignore": []
+    "_ignore": [
+      "Checked 2026-08-29 and empty then, on purpose. Nothing writes source into this repo during a turn except me: there is no .github/workflows directory at all, the repo ships no script that commits (grepped the tracked .py/.md/.html for `git add`/`git commit`/`subprocess` - zero hits; generate.py only writes the .kicad_sch), and no other project's tooling targets this repo - the conversation capture commits into claude-hub, not here.",
+      "ADDED tools/** on 2026-10-02. The only runnable check here is KiCad ERC + DRC, and it has nothing to say about a script that renders markdown. The gate fired twice in one turn after tools/md2html.py was added - a documentation renderer with no connection to the schematic - and demanded a full sweep of both boards to clear it.",
+      "That is the failure mode the `_extensions` note already names for markdown: a gate that fires on the wrong signal teaches you to run it as a ritual, or to ignore it. The hub's own `push` deny was DELETED on 2026-09-01 for exactly this, after refusing four consecutive legitimate pushes.",
+      "The split is clean and was checked before writing this: every tracked .py is either under linear-encoder/kicad (generate.py, which really can rewrite a .kicad_sch, so it must keep gating) or under tools/ (status.py, md2html.py - repo tooling that touches prose and nothing else). If a future tools/ script starts writing KiCad files, narrow this glob rather than deleting the gate.",
+      "The extensions list deliberately still carries py, so linear-encoder/kicad/**/generate.py keeps triggering ERC + DRC."
+    ],
+    "ignore": ["tools/**"]
   },
 
   "verify": {
