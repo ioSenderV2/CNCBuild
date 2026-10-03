@@ -66,8 +66,9 @@ source = "machine/gantry-beam-joint.md"
 [[dim]]
 sym = "RAIL_SLOT_INSET"
 value = 15
-provenance = "part"
-note = "The two rails on a beam go in the OUTSIDE T-slot of each stacked extrusion, settled by him 2026-10-03 - X, Y1 and Y2 all the same. On a 30-6060 that slot centre is 15 from the extrusion's outer face, the same 15 as EXT_BORE_INSET and for the same reason: the 30 series puts both on the module grid."
+provenance = "measured"
+note = "The two rails on a beam go in the OUTSIDE T-slot of each stacked extrusion - X, Y1 and Y2 all the same, confirmed by him again 2026-10-03. On a 30-6060 that slot centre is 15 from the extrusion's outer face, the same 15 as EXT_BORE_INSET and for the same reason: the 30 series puts both on the module grid. NOT NEW: gantry-beam-joint.md's measured table has carried 'rail spacing X 90 mm, the outermost of the four front slots, at 15 and 105 up the section' since 2026-10-01. It had simply never been lifted into the registry, which is how a question already closed on the bench came to be asked again."
+source = "machine/gantry-beam-joint.md, measured table, confirmed 2026-10-01"
 
 [[dim]]
 sym = "RAIL_LOW_Z"
@@ -82,7 +83,7 @@ note = "Upper rail centreline, from the beam's bottom face. 105."
 [[dim]]
 sym = "RAIL_PITCH"
 expr = "RAIL_HIGH_Z - RAIL_LOW_Z"
-note = "90 - his number, 2026-10-03, and the reason the outside slot is the one used: it is the widest the pair can be spread on a 120 beam. This is the couple that resists nod, so it is a stiffness number, not a convenience."
+note = "90, and it agrees exactly with the measured 90 in gantry-beam-joint.md. The outside slot is used because it is the widest the pair can be spread on a 120 beam; this is the couple that resists nod, so it is a stiffness number, not a convenience. It is also what lays out Sheet 2a's sixteen block holes - see BLOCK_ROW_GAP for what does not."
 
 [[dim]]
 sym = "RAIL_STACK"
@@ -109,7 +110,7 @@ source = "machine/photos/y-bearing-blocks-machined-pads-128.jpg, calipers 2026-1
 sym = "BLOCK_ROW_GAP"
 value = 45
 provenance = "measured"
-note = "Facing edges of the upper and lower Y block rows, measured. \u26a0 IT DOES NOT LAY OUT THE 16 BOLT HOLES - settled by him 2026-10-03. The rows are set by the rails, which sit in the beams' OUTSIDE T-slots and are therefore RAIL_PITCH apart; the geometric gap that follows is BLOCK_ROW_GAP_GEOM at 46. What it actually describes is a KEEP-OUT, his words 2026-10-03: the magnetic linear encoder tape runs down this gap and the 35 dia sensor rides over the tape, both centred on the beam's seam. Keep it at 45 - under-stating a keep-out is safe. Under-stating a clearance is safe; using it as a layout datum put all sixteen holes 0.5 out."
+note = "Facing edges of the upper and lower Y block rows, measured. \u26a0 IT DOES NOT LAY OUT THE 16 BOLT HOLES - settled by him 2026-10-03. The rows are set by the rails, which sit in the beams' OUTSIDE T-slots and are therefore RAIL_PITCH apart; the geometric gap that follows is BLOCK_ROW_GAP_GEOM at 46. What it actually describes is a KEEP-OUT, his words 2026-10-03: the magnetic linear encoder tape runs down this gap and the 35 dia sensor rides over the tape, both centred on the beam's seam. Keep it at 45 - under-stating a keep-out is safe. THREE NUMBERS EXIST FOR THIS GAP and they do not agree: 45 here, 46 from the geometry (BLOCK_ROW_GAP_GEOM = 90 rail pitch less a 44 block), and 46.7 measured at a trial fit on the X beam's front face with a photo behind it, in gantry-beam-joint.md. On a 90 pitch those imply block widths of 45, 44 and 43.3. HGH20 is 44 nominal, so the geometric 46 is the one to believe and both measurements are loose. It does not matter: nothing is laid out from this, and the smallest value is the safe one for a keep-out. Using it as a layout datum, which is what happened until 2026-10-03, put all sixteen holes 0.5 out."
 
 [[dim]]
 sym = "BLOCK_W"
@@ -431,14 +432,16 @@ note = "Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the de
 
 [[dim]]
 sym = "WINDOW_W"
-value = 62
+value = 60.5
 provenance = "derived"
-note = "Clearance for the cast stepper frame"
+note = "Clearance window for the cast stepper frame, in each front fin. 60.5 OVER A 60 CASTING - half a millimetre total, a slip fit and deliberately little, because the window's loose axis is its HEIGHT, not its width. Corrected from 62 on 2026-10-03 by tools/audit-prose.py: nine places in the prose said 60.5 and gave the reasoning, the registry said 62 with a one-line note and no source, and nothing had ever compared them."
+source = "machine/lateral-stiffness.md; machine/y-beam-support.md"
 
 [[dim]]
 sym = "WINDOW_H"
 value = 50
 provenance = "derived"
+note = "Window height. This is the loose axis - it is what the casting's clearance actually consumes - which is why the width is allowed to be a 0.5 slip fit."
 
 [[dim]]
 sym = "WINDOW_OUTB"

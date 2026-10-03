@@ -115,7 +115,7 @@ never had to be managed."* **These fins are not made, and the full-height plate 
 fore-aft load in-plane.** The stated condition is satisfied, so this is not a reversal of that
 decision - it is that decision's own escape clause being used as written.
 
-📌 **It also makes the 62 × 50 window easier to cut**, which is a live question - 10 mm of
+📌 **It also makes the 60.5 × 50 window easier to cut**, which is a live question - 10 mm of
 aluminium is a materially easier jigsaw or router job than 12.7.
 
 ✅ **The 1.8 mm proud figure is unaffected - confirmed 2026-10-02.** It comes from the **plate width
