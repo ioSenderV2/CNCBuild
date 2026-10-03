@@ -203,10 +203,9 @@ clearance work for a home drill press; the back panel is likewise clearance hole
 <b>302 long &times; tapered 200 &rarr; 100 &times; 10 mm aluminium</b><br>
 Both from one <b>302 mm square</b>, one bandsaw cut, zero waste. Stock
 <b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
-<span class="datum">WCS ORIGIN: the corner where the BOTTOM (tongue) edge meets the OUTBOARD
-FACTORY edge.</span><br>
-<b>X</b> runs along the 302, from that edge. <b>Y</b> runs across, from the factory edge. Both
-positive, both absolute &mdash; <b>never chained</b>.<sup class="f">1.6</sup>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
+negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 </div>
 
 <figure>
@@ -327,108 +326,88 @@ spindle clearance is unsettled and the cut is one bandsaw pass that cannot be pu
 <b>154 &times; 242.5 mm &times; 1/2" (12.7 mm) 6061</b><br>
 Identical below the top edge &mdash; <b>the RIGHT-HAND plate also carries a 40 &times; 60 mm BF12
 tongue above it.</b> Cut both outlines together; leave the tongue on one.<sup class="f">2.9</sup><br>
-<span class="datum">WCS ORIGIN: bottom back corner.</span> Y from the <b>plate's back edge</b>,
-never from the beam. Heights from the Y beam top.<br>
-<b>The &oslash;35 bore is at Y 77, height &minus;60</b> &mdash; centred in the 154 &times; 120 area
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
+negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.<br>
+<b>X 0 is the plate's bottom end</b> (the sole-bracket end); <b>Y 0 is its back edge</b>.<br>
+<b>The &oslash;35 bore is at X 122.5, Y 77</b> &mdash; centred in the 154 &times; 120 area
 over the Y beam. <b>The four blocks, and all 16 M5 holes, are positioned relative to it</b>, so bore
 it first; their own pitch still comes off the X/Y kit.<sup class="f">2.5</sup>
 </div>
 
 <figure>
-<svg viewBox="-80 -26 420 304" width="185mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- plate outline: 154 wide (Y, fore-aft) x 242.5 tall. SVG x = Y from back edge. -->
-  <rect x="0" y="0" width="154" height="242.5" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+<svg viewBox="-58 -40 520 230" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- X GANTRY END PLATE, machining coordinates 2026-10-03. 242.5 along mill X.
+       X 0 at the plate&apos;s bottom end; Y 0 at the plate&apos;s back edge. -->
+  <rect x="0" y="0" width="242.5" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- height references, measured from the Y beam top -->
-  <line x1="0" y1="60" x2="154" y2="60" stroke="#0a6" stroke-width="1"/>
-  <text class="lbl" x="-78" y="63" fill="#0a6">0 = Y beam top</text>
-  <line x1="0" y1="120" x2="154" y2="120" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="-78" y="123" fill="#0a6">-60 beam seam</text>
-  <line x1="0" y1="180" x2="154" y2="180" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="-78" y="183" fill="#0a6">-120 beam underside</text>
-  <text class="lbl" x="-78" y="12" fill="#0a6">+60 plate top</text>
-  <text class="lbl" x="-78" y="252" fill="#0a6">-182.5 plate bottom</text>
+  <!-- X beam: TOP extrusion X 182.5-242.5, LOWER X 122.5-182.5, both Y 0-60 -->
+  <rect x="182.5" y="94.0" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1"/>
+  <rect x="122.5" y="94.0" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="188" y="90.0" fill="#0a6">X TOP</text>
+  <text class="lbl" x="128" y="90.0" fill="#0a6">X LOWER</text>
 
-  <!-- E1-E4: four oe9 into the top extrusion's corner bores -->
-  <g fill="#fff" stroke="#111" stroke-width="0.8">
-    <circle cx="15" cy="15" r="4.5"/><circle cx="45" cy="15" r="4.5"/>
-    <circle cx="15" cy="45" r="4.5"/><circle cx="45" cy="45" r="4.5"/>
+  <!-- shelf bar X 71.7-122.5, Y 0-60 -->
+  <rect x="71.7" y="94.0" width="50.8" height="60" fill="#fdf3e3" stroke="#b06000" stroke-width="1.3"/>
+  <text class="lbl" x="78" y="90.0" fill="#b06000">SHELF</text>
+
+  <!-- doubler footprint, far face: X 0-60, full width -->
+  <rect x="0" y="0" width="60" height="154.0" fill="none" stroke="#b06000" stroke-width="1.2" stroke-dasharray="6 3"/>
+  <text class="lbl" x="4" y="84.0" fill="#b06000">DOUBLER (Sheet 5)</text>
+
+  <!-- four HGH20 blocks: upper row X 145-189, lower X 56-100; two butted in Y -->
+  <rect x="145.0" y="76.91" width="44.0" height="77.09" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="151.00" cy="133.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="151.00" cy="97.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.00" cy="133.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.00" cy="97.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <rect x="145.0" y="0.0" width="44.0" height="76.91" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="151.00" cy="56.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="151.00" cy="20.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.00" cy="56.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.00" cy="20.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <rect x="56.0" y="76.91" width="44.0" height="77.09" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="62.00" cy="133.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="62.00" cy="97.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="94.00" cy="133.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="94.00" cy="97.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <rect x="56.0" y="0.0" width="44.0" height="76.91" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="62.00" cy="56.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="62.00" cy="20.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="94.00" cy="56.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="94.00" cy="20.45" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+
+  <!-- E1-E4 into the top extrusion corner bores -->
+  <g fill="#fff" stroke="#111" stroke-width="0.9">
+    <circle cx="197.5" cy="139.0" r="4.5"/>
+    <circle cx="197.5" cy="109.0" r="4.5"/>
+    <circle cx="227.5" cy="139.0" r="4.5"/>
+    <circle cx="227.5" cy="109.0" r="4.5"/>
   </g>
-  <text class="q" x="64" y="22">E1&#8211;E4</text>
 
-  <!-- X BEAM, BOTH extrusions. SVG y = 60 - height. The pair is stacked 60 + 60 and only
-       the TOP one is above the Y beam top - the half-overlap. Flush with the back edge, 60
-       deep in Y. E1-E4 land in the TOP extrusion only; the LOWER one is carried by the shelf. -->
-  <rect x="0" y="0" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1"/>
-  <rect x="0" y="60" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1" stroke-dasharray="5 3"/>
+  <!-- H1, H2 shelf-to-plate, and C2 the encoder bore -->
+  <circle cx="106.7" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="86.7" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <text class="lbl" x="102.7" y="132.0">H2</text>
+  <text class="lbl" x="82.7" y="132.0">H1</text>
+  <circle cx="122.5" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <text class="lbl" x="110" y="54.0">&#248;35 C2</text>
 
-  <!-- the shelf bar, under the lower extrusion: 60 long x 50.8 tall, its top at height -60 -->
-  <rect x="0" y="120" width="60" height="50.8" fill="#fdf3e3" stroke="#b06000" stroke-width="1.3"/>
-  <text class="lbl" x="3" y="150" fill="#b06000">SHELF</text>
+  <line x1="0" y1="166.0" x2="242.5" y2="166.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="108" y="176.0">242.5</text>
+  <line x1="-12" y1="0" x2="-12" y2="154.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-40" y="77.0">154</text>
+  <circle cx="0" cy="154.0" r="3.4" fill="#c00"/>
+  <text class="dim" x="-34" y="164.0" fill="#c00">WCS 0,0</text>
 
-  <line x1="60" y1="0" x2="60" y2="170.8" stroke="#888" stroke-dasharray="4 3"/>
-  <text class="lbl" x="63" y="168">Y 60</text>
-
-  <!-- the 45 mm measured gap between bearing block rows -->
-  <line x1="0" y1="97.5" x2="154" y2="97.5" stroke="#c0c" stroke-dasharray="2 2"/>
-  <line x1="0" y1="142.5" x2="154" y2="142.5" stroke="#c0c" stroke-dasharray="2 2"/>
-  <text class="lbl" x="2" y="117" fill="#c0c">45 gap</text>
-  <text class="lbl" x="2" y="127" fill="#c0c">(measured)</text>
-
-  <!-- C2: the encoder sensor bore, height settled, Y position not -->
-  <circle cx="77" cy="120" r="17.5" fill="#fff" stroke="#111" stroke-width="1" stroke-dasharray="5 3"/>
-  <text class="lbl" x="68" y="123">&oslash;35</text>
-  <text class="q" x="92" y="128">C2</text>
-
-  <!-- FOUR HGH20 BLOCKS, 2 x 2 on the outer face. All four dimensions are real:
-       77.09 long (measured, butted pair = 154.18 = the plate width), 44 across the
-       rail (given 2026-10-03), inner edges on the measured 45 mm gap, quad 32 x 36. -->
-  <rect x="0.00" y="53.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
-    <circle cx="20.55" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="20.55" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="56.55" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="56.55" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <rect x="77.09" y="53.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
-    <circle cx="97.64" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="97.64" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="133.63" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="133.63" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <rect x="0.00" y="142.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
-    <circle cx="20.55" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="20.55" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="56.55" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="56.55" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <rect x="77.09" y="142.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
-    <circle cx="97.64" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="97.64" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="133.63" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="133.63" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-  <text class="q" x="162" y="22" fill="#0a6">X beam TOP extrusion 60&#215;60</text>
-  <text class="q" x="162" y="32" fill="#0a6">X beam LOWER extrusion 60&#215;60</text>
-  <text class="q" x="162" y="42" fill="#b06000">SHELF BAR 60 &#215; 50.8 (Sheet 2b)</text>
-  <text class="q" x="162" y="60" fill="#b06000">P1&#8211;P16 &#183; four quads</text>
-  <text class="q" x="162" y="70" fill="#b06000">&#248;5.2 COUNTERBORED</text>
-  <text class="q" x="162" y="80" fill="#b06000">quad = 32 across the rail</text>
-  <text class="q" x="162" y="90" fill="#b06000">&#215; 36 along it</text>
-  <text class="q" x="162" y="106" fill="#c0c">block 77.09 long &#215; 44 across</text>
-  <text class="q" x="162" y="116" fill="#c0c">butted pair = 154.18 = the plate</text>
-  <text class="q" x="162" y="132" fill="#b06000">&#9888; quad POSITION comes from</text>
-  <text class="q" x="162" y="142" fill="#b06000">the &oslash;35 bore &#8212; measure the X/Y</text>
-  <text class="q" x="162" y="152" fill="#b06000">kit, not the Z kit</text>
-
-  <!-- doubler footprint on the outer face -->
-  <rect x="0" y="182.5" width="154" height="60" fill="none" stroke="#b06000" stroke-width="1.2" stroke-dasharray="6 3"/>
-  <text class="q" x="92" y="222">DOUBLER (Sheet 5)</text>
-
-  <!-- datum -->
-  <circle cx="0" cy="242.5" r="3.2" fill="#c00"/>
-  <text class="dim" x="-78" y="272">WCS ORIGIN = bottom BACK corner</text>
-
-  <!-- dimensions -->
-  <line x1="0" y1="-10" x2="154" y2="-10" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="66" y="-13">154</text>
-  <line x1="300" y1="0" x2="300" y2="242.5" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="303" y="124">242.5</text>
+  <text class="q" x="262" y="14">X 0 at the plate&#8217;s BOTTOM end &#183; Y 0 at its BACK edge</text>
+  <text class="q" x="262" y="30" fill="#06c">E1&#8211;E4 &#248;9 &#183; X 197.5, 227.5 &#183; Y 15, 45</text>
+  <text class="q" x="262" y="42" fill="#06c">H1 X 86.7 &#183; H2 X 106.7 &#183; both Y 30</text>
+  <text class="q" x="262" y="54">C2 &#248;35 at X 122.5, Y 77 &#8212; bore it FIRST</text>
+  <text class="q" x="262" y="70" fill="#c0c">the four blocks and their 16 M5 are placed</text>
+  <text class="q" x="262" y="82" fill="#c0c">relative to C2; pitch from the X/Y kit</text>
+  <text class="q" x="262" y="98" fill="#b06000">amber = parts on other sheets</text>
+  <text class="q" x="262" y="110" fill="#0a6">green = the X beam extrusions</text>
 </svg>
 <figcaption>
 <b>Key:</b>
@@ -446,16 +425,16 @@ back edge</b> as of 2026-10-02. Dashed outlines are features on the far side or 
 dimensioned.</figcaption>
 </figure>
 
-<h3>Hole schedule</h3>
-<p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
+<h3>Hole schedule &mdash; machining coordinates</h3>
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y from back edge</th><th>Height</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into <b>top</b> extrusion corner bores</td><td>4</td><td class="n">15, 45</td><td class="n">+15, +45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
-<tr><td>H1, H2</td><td><b>Shelf to plate</b>, tapped M8</td><td>2</td><td class="n">30, 30</td><td class="n">&minus;75.8, &minus;95.8</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; sets the block pattern</td><td>1</td><td class="n">77</td><td class="n">&minus;60</td><td class="d">35</td><td class="op">Through &middot; <b>LOCATE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td colspan="2"><b>FROM the &oslash;35 bore</b> &mdash; the &oslash;35 centre</td><td class="d">5.2</td><td class="op"><b>C&rsquo;BORED</b> &middot; pitch from the X/Y kit<sup class="f">2.5</sup></td></tr>
-<tr class="unk"><td>D1&ndash;Dn</td><td>Doubler block through-bolts</td><td>TBD</td><td class="n">UNKNOWN</td><td class="n">&minus;122 &rarr; &minus;182.5</td><td class="d">?</td><td class="op">Through &middot; <b>drill with the doubler</b><sup class="f">2.6</sup></td></tr>
-<tr class="unk"><td>B1&ndash;Bn</td><td>Sole bracket, up into the bottom edge</td><td>TBD</td><td class="n">UNKNOWN</td><td class="n">&minus;182.5</td><td class="d">5.0</td><td class="op"><b>DRILL THROUGH</b> &middot; <b>two rows</b><br>tap M6 at home<sup class="f">2.7</sup></td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 242.5</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; sets the block pattern</td><td>1</td><td class="n">122.5</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
+<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">197.5, 227.5</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
+<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">86.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">106.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td colspan="2"><b>Relative to C2</b> &mdash; pitch from the X/Y kit</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
+<tr class="unk"><td>D1&ndash;Dn</td><td>Doubler block through-bolts</td><td>TBD</td><td class="n">0 &rarr; 60</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Through &middot; <b>drill with the doubler</b><sup class="f">2.6</sup></td></tr>
+<tr class="unk"><td>B1&ndash;Bn</td><td>Sole bracket, into the X 0 end face</td><td>TBD</td><td class="n">0</td><td class="n">UNKNOWN</td><td class="d">5.0</td><td class="op"><b>DRILL THROUGH</b> &middot; two rows<br>tap M6 at home<sup class="f">2.7</sup></td></tr>
 </table>
 
 <h3 style="margin-top:7mm">Sheet 2b &mdash; the shelf bar (quantity 2)
@@ -463,7 +442,9 @@ dimensioned.</figcaption>
 <div class="stock">
 <b>60 long &times; 25.4 W &times; 50.8 H &middot; 1" &times; 2" aluminium bar</b><br>
 Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><br>
-<span class="datum">WCS ORIGIN: Y from the PLATE'S BACK EDGE. Z from the bar's underside.</span>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
+negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 </div>
 
 <figure>
@@ -524,7 +505,9 @@ Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><b
 <div class="stock">
 <b>154 &times; 407 mm &times; 1/2" aluminium</b><br>
 <b>The plate already exists</b>, sprayed with layout dye, <b>30 holes to drill</b>.<br>
-<span class="datum">WCS ORIGIN: bottom left.</span>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
+negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 <b>&#9888; No individual hole coordinate for this plate exists in the repo</b> &mdash; this sheet is a
 frame to fill, not a drawing to work from.<sup class="f">3.3</sup>
 </div>
@@ -585,9 +568,9 @@ overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 <h2 id="sheet-4">Sheet 4 — Z plate (quantity 1)</h2>
 <div class="stock">
 <b>175 long &times; 164 wide &times; 1/2" aluminium</b><br>
-<span class="datum">WCS ORIGIN: the LOWER-LEFT corner as the part sits on the table.</span><br>
-<b>X</b> runs along the 175. <b>Y</b> runs across the 164. Both positive, both absolute &mdash;
-<b>never chained</b>.<sup class="f">4.1</sup>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
+negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 </div>
 
 <figure>
