@@ -143,10 +143,17 @@ own tapped rows. Making the parts identical means X's bar carries those same row
 nobody has run is whether all three rows land over beam on X**, where the bar sits on top and
 overhangs the end rather than reaching back under a fin.
 
-⚠️ **BF12 takes 2 × M5 here, and this file says 4 everywhere else.** Both Y beam plates and the
-1200 mm rear plate record *"BF12, 4 × M5 tapped into the plate"*. The 2 is what was given for the X
-interposer on 2026-10-02 and is written as given. **One of the two is wrong and it is a count off a
-real part** - settle it with the BF12 in hand before drilling anything.
+✅ **BF12's hole count depends on how it is mounted, and both numbers in this repo were right** -
+resolved 2026-10-02:
+
+| Orientation | Holes | Where it is used |
+|---|---|---|
+| **Top-mounted** - bolted down through its base onto a horizontal surface | **2 × M5** | The X interposer bar |
+| **Face-mounted** - bolted through its flange into a vertical plate | **4 × M5** | The Y rear plate, and anywhere BF12 lands on a plate face |
+
+📌 **This looked like a contradiction and was not.** The 2 and the 4 had been recorded in different
+sections describing different orientations, with neither saying which. Any BF12 figure in this repo
+now has to name the orientation it belongs to, or it means nothing.
 
 ✅ **Every interposer is 3/8" 6061** - settled 2026-10-02, one thickness across the machine. M5 into
 9.525 mm is **1.9 × D**, inside the 1.5-2 band aluminium wants, and the thread shears near **18 kN**

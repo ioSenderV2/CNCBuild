@@ -51,8 +51,8 @@ X, where the bar sits on top and overhangs the end.
 
 ✅ **The BF12 interposer is the one different part**: **60 × 80 × 3/8"** - 20 mm for BF12, 60 mm for
 its **four** M8 into T-nuts - with **2 × M5 tapped for BF12, offset 10 mm from the plate end**.
-⚠️ That 2 disagrees with the 4 × M5 this repo records for BF12 everywhere else; see
-[`y-beam-support.md`](y-beam-support.md).
+📌 The 2 is not a disagreement with the 4 recorded elsewhere: **BF12 top-mounts on 2 and face-mounts
+on 4**, and the interposer is a top mount. See [`y-beam-support.md`](y-beam-support.md).
 
 ✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
 (2026-10-02, calipers - see
