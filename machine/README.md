@@ -21,6 +21,12 @@ hangs off them. Several dimensions are still **⚠️ Open** and are marked as s
 They were one 2877-line file, `end-plates-risers-and-spindle.md`, until 2026-10-02. The split is
 verbatim — no decision was reopened in the move — and it is along the seams the prose already had.
 
+📋 **To carry all of this to the machine, run `tools\make-pdf.ps1`** from the repo root. It builds
+`build-document.pdf` — these ten files plus [`gantry-beam-joint.md`](gantry-beam-joint.md) and
+[`torsion-box.md`](torsion-box.md), in reading order, with a clickable contents, every photograph
+embedded beside the chapter that cites it, and links into [`drawings/shop-pack.html`](drawings/shop-pack.html).
+It is derived and untracked: **if it disagrees with a file below, the file below wins.**
+
 | File | What is in it |
 |---|---|
 | [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md) | **Read this first.** The cutting-force recalibration (500-1000 N, not 250) that **every deflection figure in this repo depends on**, the plate and riser thicknesses it sets, and the one measurement that would settle the 1/4" question |

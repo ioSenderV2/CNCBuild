@@ -19,3 +19,11 @@
 # --output is omitted. Generated on demand - regenerate, do not track.
 *-erc.rpt
 *-drc.rpt
+
+# The build document - DERIVED from machine/*.md by tools/make-pdf.ps1, and large
+# (~23 MB, because all fifteen photographs are embedded so the pack works on paper).
+# Regenerate it, do not track it: a tracked copy would be a second source of truth
+# that silently goes stale, which is the exact failure STATUS.md and INDEX.md are
+# generated to avoid - and it would add 23 MB to the history on every rebuild.
+build-document.html
+build-document.pdf

@@ -14,6 +14,21 @@ folder was the wrong home for them.
 | [`commissioning/`](commissioning/) | Measurements taken **from the machine** - travels, squaring, tape extents. The authority when the config disagrees |
 | [`wiring/`](wiring/) | How the boxes connect - the DB37 between the controller box and the remote axis breakout box |
 
+## Generated views - regenerate, never edit
+
+Three files are built from the prose rather than maintained beside it, because a
+hand-maintained summary drifts from what it summarises. That is not hypothetical here: on
+2026-10-02 two settled decisions were relitigated, both because a pointer had gone stale.
+
+| Build it with | What you get |
+|---|---|
+| `python tools/status.py all` | [`STATUS.md`](STATUS.md) - every open item, harvested from the ✅ ⚠️ 🔴 ❌ markers in the prose. [`INDEX.md`](INDEX.md) - every heading in the repo |
+| `tools\make-pdf.ps1` | **`build-document.pdf`** - the whole mechanical design as one printable file: the twelve `machine/*.md` files in reading order, a clickable contents, all fifteen photographs embedded with their captions, and links into the shop pack. ~23 MB, 97 pages. **Untracked** - rebuild it, do not commit it |
+
+**If a generated file and a `.md` file disagree, the `.md` file wins** and the generated copy
+is stale. The PDF needs the `markdown` package (`python -m pip install markdown`); `status.py`
+is stdlib-only on purpose, because it gates correctness and the PDF does not.
+
 ## What lives elsewhere
 
 | | Where | Why |

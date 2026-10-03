@@ -103,7 +103,7 @@ interface, not this file.
 
 ## [machine/README.md](machine/README.md)  (1)
 
-- 🔴 [L61](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one 1200 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
+- 🔴 [L67](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one 1200 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
 
 ## [machine/spindle-and-mount.md](machine/spindle-and-mount.md)  (7)
 
