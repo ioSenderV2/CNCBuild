@@ -44,9 +44,15 @@ end, one under **BF12** at the far end. That is what makes four across the machi
 one each; Y needs no second one because its BF12 lands on the rear plate's inside face rather than
 on the beam. See the count table in [`y-beam-support.md`](y-beam-support.md).
 
-⚠️ **Neither X interposer has a size, a bolt count or bolt positions.** The Y bar's 60 × 150 and its
-three rows at 82 / 110 / 138 were derived from Y geometry - the 30 mm protrusion, the window, the
-casting's own tapped rows - and do not transfer. **Both are undrawn parts for the trip.**
+✅ **X's casting interposer is the SAME PART as Y1's and Y2's** - decided 2026-10-02. 60 × 150 ×
+3/8", six M8 into T-nuts at rows 82 / 110 / 138, six M5 tapped for the casting. One drawing, three
+off. 🔴 **The rows came out of Y geometry**, so the open check is whether all three land over beam on
+X, where the bar sits on top and overhangs the end.
+
+✅ **The BF12 interposer is the one different part**: **60 × 80 × 3/8"** - 20 mm for BF12, 60 mm for
+its **four** M8 into T-nuts - with **2 × M5 tapped for BF12, offset 10 mm from the plate end**.
+⚠️ That 2 disagrees with the 4 × M5 this repo records for BF12 everywhere else; see
+[`y-beam-support.md`](y-beam-support.md).
 
 ✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
 (2026-10-02, calipers - see

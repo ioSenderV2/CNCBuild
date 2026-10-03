@@ -127,6 +127,27 @@ face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z l
 2.5 × D - so it bolts direct.** X needs a second one because its BF12 also lands on the beam, where
 Y's BF12 lands on a plate.
 
+✅ **Two parts, not four - decided 2026-10-02.** The three casting interposers are **identical**, X's
+included, so there is one drawing and one setup for three off:
+
+| | **Casting bar × 3** (Y1, Y2, X) | **BF12 bar × 1** (X far end) |
+|---|---|---|
+| Size | **60 × 150 × 3/8"** | **60 × 80 × 3/8"** - 20 mm for BF12, 60 mm for the bolts |
+| To the beam | **6 × M8** flange into slide-in T-nuts, rows at **82 / 110 / 138** | **4 × M8** flange into slide-in T-nuts |
+| Top face | **6 × M5 tapped** for the casting, at bar coords 28-71 | **2 × M5 tapped** for BF12, **offset 10 mm from the plate end** |
+| Counterbores | none anywhere | none |
+
+🔴 **X's casting bar inherits Y's bolt rows, and that is an assumption worth naming.** 82 / 110 / 138
+were derived from *Y* geometry - the 30 mm protrusion past the fin, the 62 × 50 window, the casting's
+own tapped rows. Making the parts identical means X's bar carries those same rows; **the check
+nobody has run is whether all three rows land over beam on X**, where the bar sits on top and
+overhangs the end rather than reaching back under a fin.
+
+⚠️ **BF12 takes 2 × M5 here, and this file says 4 everywhere else.** Both Y beam plates and the
+1200 mm rear plate record *"BF12, 4 × M5 tapped into the plate"*. The 2 is what was given for the X
+interposer on 2026-10-02 and is written as given. **One of the two is wrong and it is a count off a
+real part** - settle it with the BF12 in hand before drilling anything.
+
 ✅ **Every interposer is 3/8" 6061** - settled 2026-10-02, one thickness across the machine. M5 into
 9.525 mm is **1.9 × D**, inside the 1.5-2 band aluminium wants, and the thread shears near **18 kN**
 against an M5 class 8.8 bolt breaking near **11** - so the plate thread outlasts the fastener. It
