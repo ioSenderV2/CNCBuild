@@ -64,6 +64,11 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "build-document.html"
+PHOTO_CACHE = ROOT / "build-photos"   # print-sized copies; gitignored, rebuilt on demand
+
+# Long edge in pixels, and JPEG quality. See prepare_photos() for why these are enough.
+PHOTO_MAX_PX = 1100
+PHOTO_QUALITY = 82
 
 # Reading order, which is NOT the directory listing order. The load case is the premise every
 # deflection figure depends on, so it leads. The beams come before what holds them up.
@@ -219,6 +224,36 @@ def rebase(href: str, chapters: dict[str, str]) -> str:
 HREF_RE = re.compile(r'href="([^"]*)"')
 
 
+def prepare_photos(photo_dir: Path, out_dir: Path, rebuild: bool = False) -> tuple[int, int]:
+    """Write print-sized copies of the photographs into out_dir. Originals are never touched.
+
+    The source photographs are ~2576 px on the long edge and ~1.4 MB each, and Edge embeds
+    them essentially whole - the first PDF built this way came out at 22.9 MB. Printed two
+    across on A4 inside 14 mm margins each figure is about 88 mm wide, so PHOTO_MAX_PX is
+    still comfortably over 300 dpi at the size it is actually printed.
+
+    EXIF orientation is baked in rather than carried: the tag is dropped on save, so a
+    portrait photograph that relied on it would come out on its side. That is a silent
+    failure - the image is there, just wrong - which is why it is done explicitly.
+
+    Returns (source bytes, output bytes).
+    """
+    out_dir.mkdir(exist_ok=True)
+    src_bytes = out_bytes = 0
+    for src in sorted(photo_dir.glob("*.jpg")):
+        dst = out_dir / src.name
+        src_bytes += src.stat().st_size
+        if rebuild or not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
+            from PIL import Image, ImageOps
+
+            with Image.open(src) as im:
+                im = ImageOps.exif_transpose(im)
+                im.thumbnail((PHOTO_MAX_PX, PHOTO_MAX_PX), Image.LANCZOS)
+                im.convert("RGB").save(dst, "JPEG", quality=PHOTO_QUALITY, optimize=True)
+        out_bytes += dst.stat().st_size
+    return src_bytes, out_bytes
+
+
 def load_captions(photos: Path) -> dict[str, str]:
     """Read the caption table out of machine/photos/README.md, rendered to inline HTML."""
     readme = photos / "README.md"
@@ -239,7 +274,7 @@ def figures(names: list[str], captions: dict[str, str]) -> str:
         if n not in captions:
             sys.exit(f"ERROR: {n} has no row in machine/photos/README.md - add one, do not guess")
         cells.append(
-            f'<figure><img src="machine/photos/{n}" alt="{html.escape(n)}">'
+            f'<figure><img src="{PHOTO_CACHE.name}/{n}" alt="{html.escape(n)}">'
             f'<figcaption><span class="fn">{html.escape(n)}</span>{captions[n]}</figcaption>'
             f"</figure>"
         )
@@ -249,6 +284,8 @@ def figures(names: list[str], captions: dict[str, str]) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--check", action="store_true", help="render and report, write nothing")
+    ap.add_argument("--rebuild-photos", action="store_true",
+                    help="re-scale every photograph even if the cached copy looks current")
     args = ap.parse_args()
 
     md_dir = ROOT / "machine"
@@ -257,6 +294,10 @@ def main() -> int:
 
     captions = load_captions(photo_dir)
     on_disk = sorted(p.name for p in photo_dir.glob("*.jpg"))
+    if not args.check:
+        src_b, out_b = prepare_photos(photo_dir, PHOTO_CACHE, args.rebuild_photos)
+        print(f"photographs scaled to {PHOTO_MAX_PX}px: "
+              f"{src_b/1048576:.1f} MB -> {out_b/1048576:.1f} MB in {PHOTO_CACHE.name}/")
 
     # Which chapter cites which photograph. First citer wins, so a photo referenced twice is
     # printed once, with the chapter that leans on it hardest - the earlier one in reading
