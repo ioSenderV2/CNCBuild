@@ -229,6 +229,17 @@ fin is the only thing that buys outboard material.
 square when **top + base = 12**. So 3" / 9" works, and **4" / 8" works**, but 4" / 9" needs a 13"
 blank.
 
+⚠️ **The 19 mm strip is not 19 mm of free material - the side plate's end uses the outer part of
+it.** Drawn on Sheet 1 and recorded 2026-10-03. The 1/8" × 12" outboard plate lies against the beam's
+outboard face at **X 20** and is **3.175** thick, so its end occupies **X 16.825 to 20** - the outer
+**2.175 mm** of the strip. About **16.8 mm** of the strip is genuinely clear fin.
+
+🔴 **And the window's outboard edge sits inside that band.** The window runs X 19 to 81 while the
+plate's end runs 16.825 to 20, so the window edge falls **1 mm inboard of the plate's inner face**.
+That is not a clash between two cuts - they are different parts - but it does mean **the window
+breaks out into the space the side plate's end occupies**, and it is worth an eye on the mockup
+before the real plate is cut.
+
 ✅ **Measured off the MDF template, 2026-10-02: the outboard strip is 19 mm**, from the factory
 edge reference.
 
