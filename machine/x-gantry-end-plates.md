@@ -85,9 +85,18 @@ HGH20 blocks end to end with **2-3 mm between**". There is no gap - 154 *is* the
 | Two blocks butted, **machined pads only** | **128.24** |
 | → each end cap | **12.97** |
 | → each block's machined pad | **51.15** |
+| **Block width ACROSS the rail** | **44** - given 2026-10-03 |
+| **Bolt pattern per block** | **32 across the rail × 36 along it** |
 
 📌 **That cross-checks against the HGH20CA standard**, whose body length without end seals is about
 50.5 mm - so the reading behaves like the real part rather than like a misread.
+
+✅ **The four blocks now have a complete footprint** - 2026-10-03. With **44 mm across the rail**
+added to the measured 77.09 along it, each block is fully bounded, and the four of them sit **two
+butted in Y by two rows** separated by the measured **45 mm gap**. 📌 **One consequence follows and
+is not yet reflected in the doubler's drawing:** the lower block row's bottom edge lands at
+**−126.5** (60 + 22.5 + 44 below the Y beam top), and this file already says the doubler's height is
+gated on that edge rather than on the Y beam underside.
 
 ✅ **The functional floor for any carriage plate is 128.24 mm**, not 154. The end caps are seals and
 scrapers; they carry nothing. A plate wider than 128.24 has full bearing on both pads.

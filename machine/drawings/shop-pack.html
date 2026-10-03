@@ -315,7 +315,7 @@ edge.<sup class="f">2.5</sup>
 </div>
 
 <figure>
-<svg viewBox="-80 -24 322 302" width="162mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-80 -26 420 304" width="185mm" xmlns="http://www.w3.org/2000/svg">
   <!-- plate outline: 154 wide (Y, fore-aft) x 242.5 tall. SVG x = Y from back edge. -->
   <rect x="0" y="0" width="154" height="242.5" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
@@ -340,13 +340,11 @@ edge.<sup class="f">2.5</sup>
        the TOP one is above the Y beam top - the half-overlap. Flush with the back edge, 60
        deep in Y. E1-E4 land in the TOP extrusion only; the LOWER one is carried by the shelf. -->
   <rect x="0" y="0" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1"/>
-  <text class="lbl" x="3" y="54" fill="#0a6">X TOP 60&#215;60</text>
   <rect x="0" y="60" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1" stroke-dasharray="5 3"/>
-  <text class="lbl" x="3" y="114" fill="#0a6">X LOWER 60&#215;60</text>
 
   <!-- the shelf bar, under the lower extrusion: 60 long x 50.8 tall, its top at height -60 -->
   <rect x="0" y="120" width="60" height="50.8" fill="#fdf3e3" stroke="#b06000" stroke-width="1.3"/>
-  <text class="lbl" x="3" y="148" fill="#b06000">SHELF 2b</text>
+  <text class="lbl" x="3" y="150" fill="#b06000">SHELF</text>
 
   <line x1="60" y1="0" x2="60" y2="170.8" stroke="#888" stroke-dasharray="4 3"/>
   <text class="lbl" x="63" y="168">Y 60</text>
@@ -354,17 +352,49 @@ edge.<sup class="f">2.5</sup>
   <!-- the 45 mm measured gap between bearing block rows -->
   <line x1="0" y1="97.5" x2="154" y2="97.5" stroke="#c0c" stroke-dasharray="2 2"/>
   <line x1="0" y1="142.5" x2="154" y2="142.5" stroke="#c0c" stroke-dasharray="2 2"/>
-  <text class="lbl" x="160" y="121" fill="#c0c">45 mm gap</text>
-  <text class="lbl" x="160" y="131" fill="#c0c">(measured)</text>
+  <text class="lbl" x="2" y="117" fill="#c0c">45 gap</text>
+  <text class="lbl" x="2" y="127" fill="#c0c">(measured)</text>
 
   <!-- C2: the encoder sensor bore, height settled, Y position not -->
   <circle cx="77" cy="120" r="17.5" fill="#fff" stroke="#111" stroke-width="1" stroke-dasharray="5 3"/>
   <text class="lbl" x="68" y="123">&oslash;35</text>
   <text class="q" x="92" y="128">C2 &#8212; DATUM B</text>
 
-  <!-- bearing block band, deliberately unbounded -->
-  <rect x="0" y="60" width="154" height="120" fill="none" stroke="#c0c" stroke-width="0.8" stroke-dasharray="3 2"/>
-  <text class="q" x="92" y="174" fill="#c0c">P1&#8211;P16, from DATUM B</text>
+  <!-- FOUR HGH20 BLOCKS, 2 x 2 on the outer face. All four dimensions are real:
+       77.09 long (measured, butted pair = 154.18 = the plate width), 44 across the
+       rail (given 2026-10-03), inner edges on the measured 45 mm gap, quad 32 x 36. -->
+  <rect x="0.00" y="53.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="20.55" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="20.55" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="56.55" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="56.55" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <rect x="77.09" y="53.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="97.64" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="97.64" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="133.63" cy="59.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="133.63" cy="91.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <rect x="0.00" y="142.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="20.55" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="20.55" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="56.55" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="56.55" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <rect x="77.09" y="142.5" width="77.09" height="44.0" fill="#f7eef7" stroke="#c0c" stroke-width="1"/>
+    <circle cx="97.64" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="97.64" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="133.63" cy="148.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="133.63" cy="180.5" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <text class="q" x="162" y="22" fill="#0a6">X beam TOP extrusion 60&#215;60</text>
+  <text class="q" x="162" y="32" fill="#0a6">X beam LOWER extrusion 60&#215;60</text>
+  <text class="q" x="162" y="42" fill="#b06000">SHELF BAR 60 &#215; 50.8 (Sheet 2b)</text>
+  <text class="q" x="162" y="60" fill="#b06000">P1&#8211;P16 &#183; four quads</text>
+  <text class="q" x="162" y="70" fill="#b06000">&#248;5.2 COUNTERBORED</text>
+  <text class="q" x="162" y="80" fill="#b06000">quad = 32 across the rail</text>
+  <text class="q" x="162" y="90" fill="#b06000">&#215; 36 along it</text>
+  <text class="q" x="162" y="106" fill="#c0c">block 77.09 long &#215; 44 across</text>
+  <text class="q" x="162" y="116" fill="#c0c">butted pair = 154.18 = the plate</text>
+  <text class="q" x="162" y="132" fill="#b06000">&#9888; quad POSITION comes from</text>
+  <text class="q" x="162" y="142" fill="#b06000">DATUM B &#8212; measure the X/Y</text>
+  <text class="q" x="162" y="152" fill="#b06000">kit, not the Z kit</text>
 
   <!-- doubler footprint on the outer face -->
   <rect x="0" y="182.5" width="154" height="60" fill="none" stroke="#b06000" stroke-width="1.2" stroke-dasharray="6 3"/>
@@ -377,8 +407,8 @@ edge.<sup class="f">2.5</sup>
   <!-- dimensions -->
   <line x1="0" y1="-10" x2="154" y2="-10" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="66" y="-13">154</text>
-  <line x1="200" y1="0" x2="200" y2="242.5" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="203" y="124">242.5</text>
+  <line x1="300" y1="0" x2="300" y2="242.5" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="303" y="124">242.5</text>
 </svg>
 <figcaption>Outer face, seen from outboard. SVG x is the plate's fore-aft (Y) dimension from the back
 edge; heights are measured from the Y beam top. The beam's back face is <b>flush with the plate's
