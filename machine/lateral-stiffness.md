@@ -186,9 +186,22 @@ inboard.**
 ✅ **And it closes the breakout.** The side plate's end occupies X 16.825 to 20, so a window edge at
 X 20 is **flush with that plate's inner face** instead of cutting 1 mm into its band.
 
-⚠️ **60.5 is a starting width, chosen to be opened.** The casting is **60 mm** wide and the extra is
-for clearance **while it is rotated through**. If the mockup says it binds, **open the window
-inboard** - there is nothing to lose there. Do not take it off the outboard side.
+🔴 **The width is a slip fit, NOT the rotation clearance - corrected 2026-10-03.** The casting is
+**60 mm** wide in a **60.5** window, which is 0.5 mm total and deliberately little. That is all it
+needs, because **the casting does not rotate in the plane of the plate.** It rotates **fore and
+aft**, about an axis running across the window - so the clearance the rotation consumes is the
+window's **height**, which is the 40.49 under the bar against a 27 mm casting.
+
+📋 **The assembly sequence, and the plate is scrap if it will not go:**
+
+1. **Approach from BEHIND the fin** - from inboard, the beam side.
+2. **Hold the casting UPSIDE DOWN.**
+3. **Insert the top of the stepper motor bracket into the window first.**
+4. **Rotate CCW** until the **bottom of the casting lands flat on the interposer bar**.
+
+⚠️ **So if it binds, the remedy is HEIGHT, not width.** Opening the window sideways buys nothing -
+the casting is already only 0.5 mm narrower than the hole and the rotation never uses that axis.
+**This is the first thing the plywood mockup is for.**
 
 🔴 **Corrected 2026-10-02: the top edge is 120, not 129.5.** It was recorded as *120 + the
 interposer thickness*, on the reading that only the **casting** passes through the window. It does
