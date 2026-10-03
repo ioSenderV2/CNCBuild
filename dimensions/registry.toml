@@ -538,6 +538,25 @@ note = "ER20 collet nut OUTSIDE DIAMETER. The listing draws it as a VERTICAL dim
 source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 
 [[dim]]
+sym = "SPINDLE_SHOULDER_DROP"
+value = 17
+provenance = "measured"
+note = "Barrel front face to the nose shoulder, measured off the Mega V's spindle 2026-10-03 - it is the same part. The listing's dimensioned drawing gives no axial figure at all for the nose or the nut, so this could only come off a real one."
+source = "measured on the Mega V, 2026-10-03"
+
+[[dim]]
+sym = "SPINDLE_COLLET_END"
+value = 60
+provenance = "measured"
+note = "Barrel front face to the collet nut's outer end, measured off the Mega V 2026-10-03. THIS IS THE NUMBER THAT PLACES THE TOOL: everything above it is a stack from the X beam, and below it is stickout. Same source and caveat as SPINDLE_SHOULDER_DROP."
+source = "measured on the Mega V, 2026-10-03"
+
+[[dim]]
+sym = "SPINDLE_NOSE_TO_COLLET"
+expr = "SPINDLE_COLLET_END - SPINDLE_SHOULDER_DROP"
+note = "The collet nut's own axial extent past the shoulder, 43. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps."
+
+[[dim]]
 sym = "SPINDLE_MASS_KG"
 value = 5.2
 unit = "kg"
