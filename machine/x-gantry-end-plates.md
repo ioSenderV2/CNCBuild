@@ -59,7 +59,7 @@ T-nut bolts. **That leaves THREE interposers, all identical casting bars.**
 ### 🔴 The BF12 tongue, and it is on ONE plate only
 
 ✅ **Given 2026-10-02.** The plate's top 60 mm already covers the end of the upper extrusion and
-carries four M8 into its corner bores. **The tongue is a 40 mm extension rising off the top edge
+carries four M8 into its corner bores. **The tongue is a 50 mm extension rising off the top edge
 above that 60 mm square**, 60 mm wide, carrying **4 × M5 tapped** for BF12 - **the same pattern used
 on the Y end plates / Z risers**, so it is a pattern this repo already has rather than a new one.
 

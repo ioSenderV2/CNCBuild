@@ -632,3 +632,37 @@ note = "Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The sid
 sym = "XBOX_X_FIRST"
 expr = "(BEAM_SPAN - (7 * XBOX_PITCH)) / 2"
 note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050, centred on the 1200 beam span leaves 75 at each end. Stations: 75, 225, 375, 525, 675, 825, 975, 1125."
+
+# ---------------------------------------------------------------- the BF12 tongue, Sheet 2b
+
+[[dim]]
+sym = "TONGUE_H"
+value = 50
+provenance = "derived"
+note = "BF12 tongue height above the 2a outline, raised from 40 on 2026-10-03 when the interposer pushed the far BF12 row out to 277. At 40 it left 5.5 to the edge, which is not enough beside an M5; at 50 it leaves 15.5."
+
+[[dim]]
+sym = "TONGUE_TOP"
+expr = "XEP_H + TONGUE_H"
+note = "Top of the tongue from the plate's bottom end. The RIGHT-HAND plate only - the left one stops at XEP_H, and that is the single thing making the pair non-interchangeable."
+
+[[dim]]
+sym = "TONGUE_BF12_ROW1_BARE"
+value = 249.5
+provenance = "derived"
+note = "First tongue BF12 row BEFORE the interposer: 7 past the beam end at 242.5, matching Sheet 7's own pre-interposer offset."
+
+[[dim]]
+sym = "TONGUE_BF12_ROW1"
+expr = "TONGUE_BF12_ROW1_BARE + T_INTERPOSER"
+note = "The X stepper end sits on the interposer too - it is 3 off, Y1, Y2 and X. The X tongue is ABOVE its beam where the Y frames hang BELOW theirs, so the interposer lifts this end rather than dropping it; on each sheet's own frame that is still an addition. Same correction as BF12_ROW1_Y on Sheet 7."
+
+[[dim]]
+sym = "TONGUE_BF12_ROW2"
+expr = "TONGUE_BF12_ROW1 + BF12_ROW_PITCH"
+note = "Second tongue row, same two columns at Y 7 and 53."
+
+[[dim]]
+sym = "TONGUE_EDGE_MARGIN"
+expr = "TONGUE_TOP - TONGUE_BF12_ROW2"
+note = "Far BF12 row to the tongue's top edge. Must stay well clear of an M5 - this is why the tongue went from 40 to 50."
