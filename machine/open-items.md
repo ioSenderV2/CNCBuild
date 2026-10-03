@@ -107,9 +107,14 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   a **vertical face** to bolt against.~~ **Both closed 2026-09-30** - the box gets a purpose-built
   vertical face and the plate's bottom edge bears on the top skin. See "How it lands on the torsion
   box" above.
-- **The exact box width**, which sets the top skin and therefore the spacing of the two curbs. Not a
-  design number: it is **measured off the fully assembled CNC standing on a flat surface**, and the box
-  is not built until then. Nothing else is blocked by it in the meantime.
+- ✅ ~~**The exact box width**~~ **Closed 2026-10-03 - it turned into a design number after all.**
+  It was going to be measured off the assembled CNC, which could not happen until the machine stood up.
+  Then the rear plate's length stopped being a window and became **1211.75 derived**, and his rule
+  settles the rest: **the box with its laminated tongues fills the space inside the side plates, the
+  rear plate and the front fins exactly.** So **BOX_W = 1205.4** (inside the two 1/8" side plates) and
+  **BOX_FORE_AFT = 983.65** (the 1000 beam less the 6.35 rear plate and the 10 mm fin). 📌 **Still
+  check it against the standing machine before cutting the skins** - the chain is nominal in its plate
+  thicknesses, so this closes the *design* question, not the verification.
 - ✅ ~~**Where the three-point mount pads sit relative to the two outer walls**~~ **Already answered,
   and this item was stale - corrected 2026-10-02.** They are not pads. Each post is reduced over its
   top 118 mm to a tenon, and the **38 mm ledge** left behind is cut on the **outward-facing** faces

@@ -224,14 +224,14 @@ Z needs none, landing on 1/2" plate.
 
 #### The 30 mm protrusion is what sets everything else
 
-Measuring along the beam from its end face, with the fin occupying 0 to −12.7:
+Measuring along the beam from its end face, with the fin occupying 0 to −10 — **the stock measured 10, not the 1/2" an earlier draft assumed**, corrected 2026-10-03:
 
 | | |
 |---|---|
-| Fin's outer face | **−12.7** |
-| Bar's outboard end, 30 mm proud of it | **−42.7** |
-| Bar's inboard end, at 150 long | **+107.3** |
-| **Bar length actually over the beam** | **107.3 mm** - the only part that can reach a T-nut |
+| Fin's outer face | **−10** |
+| Bar's outboard end, 30 mm proud of it | **−40** |
+| Bar's inboard end, at 150 long | **+110** |
+| **Bar length actually over the beam** | **110 mm** - the only part that can reach a T-nut |
 
 🔴 **That is why the bar went to 150 and why the counterbores disappeared.** At 120 the bolted
 length would have been 77 mm and **all four** counterbored bolts would have fallen off the beam -

@@ -510,7 +510,28 @@ source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 sym = "SPINDLE_BODY_L"
 value = 199
 provenance = "OPEN"
-note = "OPEN AND CONTESTED: the prose says 199 nose-flange-to-rear, the nameplate reads PHI80x213, and 199 + the 25 mm front cap would be 224. No reading reconciles. PUT A TAPE ON THE SPINDLE."
+note = "STILL OPEN 2026-10-03, and the spec page does not close it. The prose says 199 nose-flange-to-rear; the listing's dimensioned drawing says the barrel is 213 and the nameplate reads PHI80x213. 213 - 199 = 14, which would be a nose step ahead of the 80 cylinder - consistent with the photo but NOT established by it. For a render use SPINDLE_BARREL_L; for anything that gets cut, PUT A TAPE ON THE SPINDLE."
+source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
+
+[[dim]]
+sym = "SPINDLE_BARREL_L"
+value = 213
+provenance = "vendor"
+note = "Barrel length off the listing's dimensioned drawing, and the same figure as the nameplate's PHI80x213. This is the number to draw; SPINDLE_BODY_L's 199 is a different and unreconciled measurement."
+source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
+
+[[dim]]
+sym = "SPINDLE_REAR_COLLAR_L"
+value = 27
+provenance = "vendor"
+note = "The gold rear collar at the cable/water end, measured along the axis on the listing drawing. Inside the barrel's 213, not added to it."
+source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
+
+[[dim]]
+sym = "SPINDLE_NUT_D"
+value = 33
+provenance = "vendor"
+note = "ER20 collet nut OUTSIDE DIAMETER. The listing draws it as a VERTICAL dimension, same as the 80 - both are diameters. It is not a length, and the drawing gives no axial figure for the nose or the nut, which is the one thing still missing to place the collet."
 source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 
 [[dim]]
@@ -736,3 +757,37 @@ note = "Second tongue row, same two columns at Y 7 and 53."
 sym = "TONGUE_EDGE_MARGIN"
 expr = "TONGUE_TOP - TONGUE_BF12_ROW2"
 note = "Far BF12 row to the tongue's top edge. Must stay well clear of an M5 - this is why the tongue went from 40 to 50."
+# ---------------------------------------------------------------- the torsion box
+
+[[dim]]
+sym = "T_BB_SKIN"
+value = 19
+provenance = "nominal"
+note = "Baltic birch skin, top and bottom. NOMINAL ON PURPOSE - torsion-box.md warns that sheet sold as 19 commonly measures 18.2-18.5 and varies between sheets, and that the rib notches must be cut to the measured thickness of the sheet in hand, not to this."
+
+[[dim]]
+sym = "BOX_RIB_H"
+value = 100
+provenance = "derived"
+note = "Egg-crate rib height between the skins. His, 2026-10-03."
+
+[[dim]]
+sym = "BOX_THK"
+expr = "BOX_RIB_H + (2 * T_BB_SKIN)"
+note = "The box's vertical thickness, 138 - his arithmetic 2026-10-03 and the figure torsion-box.md already carried as 'depth overall'. Named THK here because 'depth' was ambiguous against the fore-aft run."
+
+[[dim]]
+sym = "T_REAR_PLATE"
+value = 6.35
+provenance = "nominal"
+note = "1/4in A36 hot-rolled, the Sheet 7 plate. CALIPER IT with the side plate on arrival."
+
+[[dim]]
+sym = "BOX_W"
+expr = "REAR_PLATE_L - (2 * T_SIDE_PLATE)"
+note = "Box footprint across the machine, 1205.4 - the clear space inside the two side plates. His rule 2026-10-03: the box WITH its laminated tongues fills the space inside the side plates, the rear plate and the front fins exactly. This CLOSES the long-standing 'exact box width' open item, which was waiting on a measurement off the assembled machine; the rear plate's length became a derived number first, and the box's follows it."
+
+[[dim]]
+sym = "BOX_FORE_AFT"
+expr = "BEAM_LEN - T_REAR_PLATE - T_FIN"
+note = "Box footprint front to back, 983.65 - the Y beam's 1000 less the rear plate capping its back end face and the front fin capping its front. The fin is T_FIN at 10 MEASURED, not the 1/2in some prose still said before 2026-10-03."

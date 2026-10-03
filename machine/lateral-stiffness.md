@@ -66,7 +66,7 @@ M8 × 35 leaves **22.3 mm** in the extrusion, as on the as-built risers.
 
 Cost is about **+1.5 lb per front plate**, static. Two things it does *not* cost:
 
-- **No bed area.** The fin is a 12.7 mm slice in the riser's own plane, not a wedge intruding into the
+- **No bed area.** The fin is a 10 mm slice in the riser's own plane, not a wedge intruding into the
   work volume.
 - **No travel.** It lives in the plane of the end plate, which the gantry already cannot reach past.
 

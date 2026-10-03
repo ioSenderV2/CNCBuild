@@ -363,7 +363,10 @@ Same deadline as everything else on this page: before the box is closed.
 - **The box's deflection between the three points** under full sand load. This sets the minimum 2x4
   clearance above, and it needs the grid spacing and the sand mass first. **The one number on this page
   that a wrong guess would quietly cost accuracy for.**
-- **The exact box width** - measured off the fully assembled CNC on a flat surface, not designed. See
+- ✅ **The box width is now DESIGNED, not measured** - closed 2026-10-03. **1205.4 across** (inside
+  the side plates) by **983.65 front to back** (the 1000 beam less the rear plate and the front fin),
+  because the box plus its laminated tongues fills that envelope exactly. Verify against the standing
+  machine before the skins are cut, but it no longer blocks anything. Formerly: measured, not designed. See
   the Y beam interface.
 - **Where the stabiliser legs go.** The project notes carry "three points plus a fifth leg". With a
   post at the **middle** of the back, the support triangle has **zero width at the rear**; tipping is
