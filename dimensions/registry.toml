@@ -1118,7 +1118,7 @@ note = "The box tongue is ONE 19 mm lamination, settled by him 2026-10-03 - not 
 [[dim]]
 sym = "FIN_COVERS_TONGUE_END"
 expr = "FIN_PROUD - T_BOX_TONGUE"
-note = "How much of the side tongue's front END GRAIN the fin covers, beyond its full thickness. His intent 2026-10-03 is that the fin covers it completely, which needs this at 0 or above. ⚠ IT IS NEGATIVE ON THE REPO'S OWN NUMBERS: FIN_PROUD derives to 16.825 (FIN_OVERHANG 20 less the 3.175 side plate) against a 19 tongue, so 2.175 of end grain stays exposed. He stated the fin runs past the side plate by 19. One of the two is wrong and it is UNRESOLVED - either FIN_OVERHANG is 22.175 rather than 20, or the end grain is 2.175 short of covered."
+note = "Shortfall in the fin's cover of the side tongue's front END GRAIN, -2.175. ✅ RESOLVED 2026-10-03 and the answer is: leave it. He first said the fin runs 19 past the side plate, which would cover a 19 tongue exactly; the repo computes FIN_PROUD = 16.825 (FIN_OVERHANG 20 less the 3.175 side plate). Asked which was right he confirmed THE REPO IS CORRECT and that a partial overlap is fine - so the fin covers 16.825 of the 19 and 2.175 of end grain stays exposed, deliberately. NOTHING TO CHANGE. This symbol exists so the next person finds the answer instead of the discrepancy."
 
 [[dim]]
 sym = "FIN_BRACKETS"
