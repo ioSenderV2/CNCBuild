@@ -111,9 +111,21 @@ Y-axis change and is not one; it is now the machine's standard way of mounting a
 | **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | On a 3/8" interposer at the far end |
 | **Z** | On the **X carriage plate** - 1/2" aluminium, so **no interposer**, the casting taps straight in | At the bottom of the plate |
 
+✅ **Four interposers, and the count is now stated rather than left to be read off the table** -
+given 2026-10-02:
+
+| | Under the casting | Under BF12 | Total |
+|---|---|---|---|
+| **Y1** | 1 | — (BF12 lands on the rear plate's inside face) | **1** |
+| **Y2** | 1 | — (same) | **1** |
+| **X** | 1 | **1**, at the far end | **2** |
+| **Z** | — (straight onto the 1/2" X carriage plate) | — | **0** |
+| | | | **4** |
+
 📌 **Only Y and X need an interposer, and for the same reason**: the casting lands on an extrusion
 face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z lands on 1/2" plate -
-2.5 × D - so it bolts direct.**
+2.5 × D - so it bolts direct.** X needs a second one because its BF12 also lands on the beam, where
+Y's BF12 lands on a plate.
 
 ✅ **Every interposer is 3/8" 6061** - settled 2026-10-02, one thickness across the machine. M5 into
 9.525 mm is **1.9 × D**, inside the 1.5-2 band aluminium wants, and the thread shears near **18 kN**

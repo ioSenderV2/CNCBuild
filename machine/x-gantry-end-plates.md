@@ -37,9 +37,16 @@ machine; see the casting section for why 3/8" is the right number and not merely
 ✅ **It is held down by M8 flange bolts into slide-in T-nuts** - given 2026-10-02, and the same
 joint on all three axes: **X on top of its beam, Y1 and Y2 under theirs.** The casting itself never
 touches the extrusion; it is tapped into the interposer with M5. Only Z skips the plate, landing
-straight on the 1/2" X carriage plate. ⚠️ **How many bolts and where they sit along the X interposer
-is not recorded** - the Y bar's three rows at 82 / 110 / 138 were derived from the Y geometry and do
-not transfer.
+straight on the 1/2" X carriage plate.
+
+✅ **X takes TWO interposers, not one** - given 2026-10-02: one under the casting at the stepper
+end, one under **BF12** at the far end. That is what makes four across the machine, Y1 and Y2 taking
+one each; Y needs no second one because its BF12 lands on the rear plate's inside face rather than
+on the beam. See the count table in [`y-beam-support.md`](y-beam-support.md).
+
+⚠️ **Neither X interposer has a size, a bolt count or bolt positions.** The Y bar's 60 × 150 and its
+three rows at 82 / 110 / 138 were derived from Y geometry - the 30 mm protrusion, the window, the
+casting's own tapped rows - and do not transfer. **Both are undrawn parts for the trip.**
 
 ✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
 (2026-10-02, calipers - see
