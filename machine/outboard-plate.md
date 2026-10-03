@@ -153,7 +153,7 @@ back much of the gain.
 plate, **in 6061**. All of this added weight - roughly **17 lb per Y beam** at 1/8" steel - is
 therefore static.
 
-📌 **The steel parts in absolute terms: ~17 lb per side plate and ~40 lb for the 1200 mm rear
+📌 **The steel parts in absolute terms: ~17 lb per side plate and ~40 lb for the 1211.75 mm rear
 plate**, so roughly **75 lb of steel** on the fixed frame. A delta against the old scheme is not
 quoted because the shear panel it absorbs was never sized. All static, all low down, against a
 figure that was always offered as a design budget rather than a limit.

@@ -592,7 +592,7 @@ expr = "ROLL_RANGE / BEAM_LEN * 100"
 note = "Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on hand, is worth 0.003 at the same circle."
 
 
-# ---------------------------------------------------------------- the 1200 rear plate
+# ------------------------------------------------------------- the 1211.75 rear plate
 
 [[dim]]
 sym = "Y_BEAM_GAP"
