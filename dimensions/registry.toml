@@ -204,7 +204,7 @@ note = "Arm from the block centroid to the forward-hanging mass. 139 is the cent
 sym = "BK12_STANDOFF_ASBUILT"
 value = 5
 provenance = "measured"
-note = "BK12/BF12 mounted 5 above the extrusion, as built"
+note = "BK12/BF12 mounted 5 above the extrusion, AS BUILT. 🔴 DO NOT DELETE because the standoff no longer exists in the design - that is exactly why this is here. NUT_FACE_BELOW_BEAM_ASBUILT was measured WITH the standoff, so converting that measurement to the design has to take the 5 back off before adding the interposer. Removing this symbol would silently resize the X end plate: it feeds XEP_H, which is the 242.5."
 
 [[dim]]
 sym = "NUT_FACE_BELOW_BEAM_ASBUILT"
@@ -615,7 +615,7 @@ note = "BF12 face-mount row spacing. Columns are 7 and 53 - the same columns mea
 [[dim]]
 sym = "BF12_ROW1_Y"
 expr = "BF12_ROW1_BARE + T_INTERPOSER"
-note = "The screw's far end is carried by the cast stepper frame sitting ON the interposer, which LOWERS that end, so BF12 drops by the same amount or the screw is not parallel to the beam. Sheet 7 is clamped inverted, so lower is a LARGER Y. NOTE: this applies the FULL interposer thickness; NUT_FACE_BELOW_BEAM applies (T_INTERPOSER - BK12_STANDOFF_ASBUILT) instead because there the interposer replaces a 5 mm standoff. If 127 already had that standoff in it the shift is 4.525, not 9.525 - UNRESOLVED 2026-10-03."
+note = "The screw's far end is carried by the cast stepper frame sitting ON the interposer, which LOWERS that end, so BF12 drops by the same amount or the screw is not parallel to the beam. Sheet 7 is clamped inverted, so lower is a LARGER Y. The FULL interposer thickness applies, settled 2026-10-03: the 5 mm standoff no longer exists in the design, so BF12_ROW1_BARE is a bare-metal number with nothing to take back off. This is NOT the same as NUT_FACE_BELOW_BEAM, which subtracts the standoff because its base value was MEASURED with one."
 
 [[dim]]
 sym = "BF12_ROW2_Y"
