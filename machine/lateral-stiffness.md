@@ -192,7 +192,8 @@ window clears it by **1 mm a side** - the same 1 mm the window leaves against th
 it is centred on. Two parts of the same width pass through it.
 
 ⚠️ **The 50 mm height is a guess and is expected to shrink.** It was never derived from the casting;
-it is a budget. **A plywood mockup is being cut to find the real number** - see the plate list in
+it is a budget. **The casting projects about 20 mm below the bar** (given 2026-10-02, *"not a critical
+number"*), so the window only has to pass that plus the 9.5 mm bar - and 50 is generous. **A plywood mockup is being cut to find the real number** - see the plate list in
 [`drawings/README.md`](drawings/README.md). Nothing downstream depends on it: the window's tight
 dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
 from the 61 mm tongue at the plate's base.

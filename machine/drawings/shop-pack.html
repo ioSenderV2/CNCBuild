@@ -145,62 +145,90 @@ clearance work for a home drill press; the back panel is likewise clearance hole
 <p class="sub">2 off &middot; <b>10 mm</b> aluminium (measured 2026-10-02 &mdash; <b>not</b> 3/8" and not 1/2") &middot; both cut from one 302 mm square, zero waste</p>
 
 <figure>
-<svg viewBox="-40 -30 330 390" width="150mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- the 12in square stock -->
-  <rect x="0" y="0" width="304.8" height="304.8" fill="none" stroke="#bbb" stroke-dasharray="6 4"/>
-  <text class="lbl" x="120" y="-12" fill="#888">12" square stock, 304.8 mm</text>
+<svg viewBox="-48 -38 625 400" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- REGENERATED 2026-10-02. Stock is a 302 mm square, NOT a 12" square: the two plates
+       nest only when top + base + kerf = the blank, and 100 + 200 + 2 = 302. -->
+  <rect x="0" y="0" width="302" height="302" fill="none" stroke="#bbb" stroke-dasharray="6 4"/>
+  <text class="lbl" x="104" y="-14" fill="#888">302 mm square stock (NOT 12")</text>
 
-  <!-- left plate (as drawn = front-left, outboard edge at X=0) -->
-  <polygon points="0,0 76.2,0 228.6,304.8 0,304.8" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <!-- right plate, the complement -->
-  <polygon points="76.2,0 304.8,0 304.8,304.8 228.6,304.8" fill="#f4f4f4" stroke="#111" stroke-width="1.6" stroke-dasharray="4 3"/>
-  <text class="ttl" x="10" y="150">PLATE A</text>
-  <text class="ttl" x="240" y="150">PLATE B</text>
-  <text class="lbl" x="240" y="164">(rotate 180°</text>
-  <text class="lbl" x="240" y="176">and flip)</text>
+  <!-- PLATE A: outboard FACTORY EDGE at x=0. Top 100 wide, base 200 wide, 302 tall. -->
+  <polygon points="0,0 100,0 200,302 0,302" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <!-- PLATE B: the complement, identical by 180 degree rotation -->
+  <polygon points="102,0 302,0 302,302 202,302" fill="#f4f4f4" stroke="#111" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text class="ttl" x="8" y="186">PLATE A</text>
+  <text class="ttl" x="243" y="150">PLATE B</text>
+  <text class="lbl" x="243" y="164">(rotate 180&#176;</text>
+  <text class="lbl" x="243" y="176">and flip)</text>
 
-  <!-- the single cut -->
-  <line x1="76.2" y1="0" x2="228.6" y2="304.8" stroke="#c00" stroke-width="1.2"/>
-  <text class="q" x="120" y="200" transform="rotate(63 120 200)">THE ONE CUT</text>
+  <!-- the single cut, 2 mm kerf -->
+  <line x1="100" y1="0" x2="200" y2="302" stroke="#c00" stroke-width="1.2"/>
+  <line x1="102" y1="0" x2="202" y2="302" stroke="#c00" stroke-width="1.2"/>
+  <text class="q" x="130" y="212" transform="rotate(71.7 130 212)">THE ONE CUT &#8212; 2 mm kerf</text>
 
-  <!-- beam envelope, top 120 mm -->
-  <rect x="8.1" y="0" width="60" height="120" fill="none" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="12" y="60" fill="#0a6">beam end</text>
-  <text class="lbl" x="12" y="72" fill="#0a6">60 × 120</text>
+  <!-- beam envelope: the stacked pair ends, X 20-80, 60 wide x 120 tall -->
+  <rect x="20" y="0" width="60" height="120" fill="none" stroke="#0a6" stroke-dasharray="3 2"/>
+  <line x1="20" y1="60" x2="80" y2="60" stroke="#0a6" stroke-dasharray="2 2"/>
+  <text class="lbl" x="23" y="40" fill="#0a6">beam end</text>
+  <text class="lbl" x="23" y="52" fill="#0a6">60 &#215; 120</text>
+  <text class="lbl" x="23" y="100" fill="#0a6">X 20&#8211;80</text>
 
-  <!-- 8 bolt pattern, schematic only -->
+  <!-- 8 x o9 clearance, columns 35 / 65, rows 15 / 45 / 75 / 105 -->
   <g fill="#fff" stroke="#111" stroke-width="0.8">
-    <circle cx="23" cy="15" r="4.5"/><circle cx="53" cy="15" r="4.5"/>
-    <circle cx="23" cy="45" r="4.5"/><circle cx="53" cy="45" r="4.5"/>
-    <circle cx="23" cy="75" r="4.5"/><circle cx="53" cy="75" r="4.5"/>
-    <circle cx="23" cy="105" r="4.5"/><circle cx="53" cy="105" r="4.5"/>
+    <circle cx="35" cy="15" r="4.5"/><circle cx="65" cy="15" r="4.5"/>
+    <circle cx="35" cy="45" r="4.5"/><circle cx="65" cy="45" r="4.5"/>
+    <circle cx="35" cy="75" r="4.5"/><circle cx="65" cy="75" r="4.5"/>
+    <circle cx="35" cy="105" r="4.5"/><circle cx="65" cy="105" r="4.5"/>
   </g>
-  <text class="q" x="88" y="60">8 × ø9 — TRANSFER</text>
-  <text class="q" x="88" y="72">PUNCH, positions</text>
-  <text class="q" x="88" y="84">schematic only</text>
+  <line x1="80" y1="60" x2="312" y2="30" stroke="#888" stroke-width="0.5"/>
+  <text class="q" x="316" y="22">8 &#215; &#248;9 &#8212; TRANSFER PUNCH</text>
+  <text class="q" x="316" y="34">cols 35 / 65, rows 15 / 45 / 75 / 105</text>
+  <text class="q" x="316" y="46">drilled at home with a mag drill</text>
 
-  <!-- tongue bolts -->
-  <circle cx="25" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
-  <circle cx="170" cy="274.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
-  <line x1="25" y1="274.8" x2="170" y2="274.8" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
-  <text class="dim" x="70" y="271">145 couple</text>
-  <text class="lbl" x="14" y="296">T1 X25</text>
-  <text class="lbl" x="146" y="296">T2 X170</text>
-  <text class="dim" x="192" y="278">Y30</text>
+  <!-- THE 62 x 50 WINDOW: X 19-81, top at 120 = the beam underside -->
+  <rect x="19" y="120" width="62" height="50" fill="#fff" stroke="#b06000" stroke-width="1.6"/>
+  <text class="lbl" x="24" y="140" fill="#b06000">62 &#215; 50</text>
+  <text class="lbl" x="24" y="152" fill="#b06000">WINDOW</text>
+  <line x1="81" y1="145" x2="312" y2="130" stroke="#b06000" stroke-width="0.5"/>
+  <text class="q" x="316" y="122" fill="#b06000">THE WINDOW &#8212; X 19&#8211;81, Y 120&#8211;170</text>
+  <text class="q" x="316" y="134">top 120 = the beam underside, not 129.5</text>
+  <text class="q" x="316" y="146">casting AND interposer bar pass through,</text>
+  <text class="q" x="316" y="158">the bar underneath &#8212; the foot is stepped</text>
+  <text class="q" x="316" y="170">bar is 60 wide, so 62 clears by 1 mm a side</text>
+  <text class="q" x="316" y="186">&#9888; 50 mm HEIGHT IS A GUESS. Casting</text>
+  <text class="q" x="316" y="198">projects ~20 mm below the bar, so this</text>
+  <text class="q" x="316" y="210">is expected to shrink. Not critical.</text>
+
+  <!-- the 19 mm outboard strip, the dimension in doubt and now measured -->
+  <line x1="0" y1="178" x2="19" y2="178" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-2" y="192" fill="#06c">19 strip</text>
+
+  <!-- tongue bolts: T1 X25, T2 X170, both at Y 30 above the bottom -->
+  <circle cx="25" cy="272" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <circle cx="170" cy="272" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <line x1="25" y1="272" x2="170" y2="272" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
+  <text class="dim" x="60" y="266">145 couple, both at Y 30</text>
+  <text class="lbl" x="12" y="292">T1 X25</text>
+  <text class="lbl" x="146" y="292">T2 X170</text>
+
+  <line x1="178" y1="272" x2="312" y2="272" stroke="#888" stroke-width="0.5"/>
+  <text class="q" x="316" y="268">T2 perpendicular edge distance <tspan font-weight="700">19.1</tspan></text>
+  <text class="q" x="316" y="280">checked against the MDF template</text>
+
+  <!-- 61 mm proud tongue at the base -->
+  <line x1="0" y1="241" x2="195" y2="241" stroke="#888" stroke-dasharray="4 3"/>
+  <text class="lbl" x="4" y="253" fill="#888">61 mm proud tongue, below this line</text>
+
+  <!-- outline dims -->
+  <line x1="0" y1="-8" x2="100" y2="-8" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="40" y="-11">100 top</text>
+  <line x1="0" y1="310" x2="200" y2="310" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="86" y="322">200 base</text>
+  <line x1="-10" y1="0" x2="-10" y2="302" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-44" y="154">302 tall</text>
 
   <!-- datum -->
-  <circle cx="0" cy="304.8" r="3" fill="#c00"/>
-  <text class="dim" x="-36" y="318">DATUM A</text>
-  <text class="dim" x="-36" y="328">X→ inboard</text>
-  <text class="dim" x="-36" y="338">Y↑ up</text>
-
-  <!-- dims -->
-  <line x1="0" y1="-6" x2="76.2" y2="-6" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="26" y="-9">76.2 (3")</text>
-  <line x1="0" y1="312" x2="228.6" y2="312" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="90" y="322">228.6 (9")</text>
-  <line x1="-8" y1="0" x2="-8" y2="304.8" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-38" y="150">304.8 (12")</text>
+  <circle cx="0" cy="302" r="3" fill="#c00"/>
+  <text class="dim" x="-40" y="316">DATUM A</text>
 </svg>
 <figcaption>Both plates from one square. The halves are <b>rotations</b> of each other, not mirrors —
 left and right come from flipping one over. Bolt positions shown are schematic.</figcaption>
@@ -217,7 +245,8 @@ pattern that has to meet formed threads in the beam.
 <h3>Hole schedule — datum: bottom outboard corner</h3>
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
-<tr><td>B1–B8</td><td>ø9 clearance, M8 × 35 into beam corner bores</td><td>8</td><td colspan="2"><b>Transfer punch</b></td><td>Four per profile. Existing plate is also a valid template — it was drilled at home with a mag drill</td></tr>
+<tr><td>B1–B8</td><td>ø9 clearance, M8 × 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">15, 45, 75, 105</td><td><b>Transfer punch from a real extrusion offcut</b> — the positions are the nominal bore pattern (15 and 45 in from each face, so a stacked pair gives 15/45/75/105). Four per profile. ø9, not 8.2: extruded bore positions carry looser tolerance than anything drilled in plate, and the joint works by friction, not bearing</td></tr>
+<tr><td><b>W</b></td><td><b>62 × 50 window</b> for the cast stepper frame</td><td>1</td><td class="n">19 to 81</td><td class="n">120 to 170</td><td>🔴 <b>Top edge 120 = the beam underside</b>, not 129.5. <b>The interposer bar passes through this window too</b>, underneath the casting — the casting's foot is stepped and hangs over the bar's end. The bar is 60 wide, so 62 clears it by 1 mm a side, the same 1 mm it leaves against the 60 mm extrusion end it is centred on. ⚠️ <b>The 50 mm height is a GUESS</b> and may shrink — it was never derived from the casting. <b>The 19 mm outboard strip is the dimension that was in doubt</b>, and it is measured</td></tr>
 <tr><td>T1</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">25</td><td class="n">30</td><td><b>Y 30 corrected from 31, 2026-10-02.</b> Y 30 is now one datum across all three plates — front fin, side plates and back plate — 31 mm below the top of the 61 mm tongue</td></tr>
 <tr><td>T2</td><td>ø9 clearance, M8 through front tongue</td><td>1</td><td class="n">170</td><td class="n">30</td><td><b>170, corrected from 175 on 2026-10-02</b> — checked against the physical template, photo committed. Perpendicular edge distance at Y 30 is <b>19.1 mm</b>, a little over 2× the 9 mm hole. 145 mm couple with T1; that spacing is the moment restraint</td></tr>
 <tr class="unk"><td><s>F1–F4</s></td><td><s>BF12 support block pattern</s></td><td>—</td><td colspan="2"><b>NOT ON THIS PLATE</b></td><td>🔴 <b>Struck 2026-10-02. BF12 is on the REAR plate now</b>, 4 × M5 tapped into the 1200 mm steel plate's inside face. The front plate carries the cast stepper frame instead. The "pattern is shared with BK12" note is also retired</td></tr>
