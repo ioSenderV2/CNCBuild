@@ -510,46 +510,66 @@ negative into the material. All coordinates positive in X and Y, absolute, <b>ne
 <span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
 <b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
 negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
-<b>&#9888; No individual hole coordinate for this plate exists in the repo</b> &mdash; this sheet is a
-frame to fill, not a drawing to work from.<sup class="f">3.3</sup>
+<b>The rails and BF12 are dimensioned.</b> BK12, the X block bolts and the top stop are not.<sup class="f">3.3</sup>
 </div>
 
 <figure>
-<svg viewBox="-54 -34 630 206" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- X CARRIAGE PLATE, machining coordinates 2026-10-03. 407 along mill X, 154 across.
-       The plate EXISTS and is dyed; no hole on it has a coordinate yet. -->
-  <rect x="0" y="0" width="407" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <!-- the two HGR20 rails run the length of the plate -->
-  <rect x="7" y="108.0" width="400" height="20" fill="none" stroke="#c0c" stroke-width="1.2"/>
-  <rect x="7" y="26.0" width="400" height="20" fill="none" stroke="#c0c" stroke-width="1.2"/>
-  <text class="lbl" x="150" y="123.0" fill="#c0c">RAIL 1 &#8212; the reference rail</text>
-  <text class="lbl" x="150" y="41.0" fill="#c0c">RAIL 2 &#8212; holes +1 oversize</text>
-  <!-- 7 mm of overrun at the far end -->
-  <rect x="400" y="24.0" width="7" height="106" fill="#fdd" stroke="#c00" stroke-width="1"/>
-  <text class="q" x="360" y="14.0" fill="#c00">7 overrun</text>
-  <line x1="0" y1="166.0" x2="407" y2="166.0" stroke="#06c" stroke-width="0.7"/>
+<svg viewBox="-54 -34 640 212" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- X CARRIAGE PLATE, machining coordinates. 407 along mill X, 154 across. -->
+  <rect x="0" y="0" width="407.0" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <!-- the two HGR20 rails, inset 20 from each long edge -->
+  <line x1="0" y1="134.0" x2="400.0" y2="134.0" stroke="#c0c" stroke-width="10" opacity="0.18"/>
+  <line x1="0" y1="20.0" x2="400.0" y2="20.0" stroke="#c0c" stroke-width="10" opacity="0.18"/>
+  <text class="lbl" x="150" y="126.0" fill="#c0c">RAIL 1 &#8212; Y 20 &#8212; the reference rail</text>
+  <text class="lbl" x="150" y="12.0" fill="#c0c">RAIL 2 &#8212; Y 134</text>
+  <circle cx="20" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="20" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="80" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="80" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="140" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="140" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="200" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="200" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="260" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="260" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="320" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="320" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="380" cy="134.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="380" cy="20.0" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <!-- BF12 at X 10, two holes 46 apart centred on Y 77 -->
+  <circle cx="10" cy="100.0" r="3" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="10" cy="54.0" r="3" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <text class="lbl" x="16" y="74.0" fill="#06c">BF12</text>
+  <rect x="400.0" y="0" width="7" height="154.0" fill="#fdd" stroke="#c00" stroke-width="1"/>
+  <text class="q" x="352" y="-12.0" fill="#c00">7 overrun</text>
+  <line x1="0" y1="166.0" x2="407.0" y2="166.0" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="192" y="176.0">407</text>
   <line x1="-12" y1="0" x2="-12" y2="154.0" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="-40" y="77.0">154</text>
   <circle cx="0" cy="154.0" r="3.4" fill="#c00"/>
-  <text class="dim" x="-34" y="164.0" fill="#c00">WCS 0,0</text>
-  <text class="q" x="424" y="20">Rail 1 bottom end flush with X 0.</text>
-  <text class="q" x="424" y="32">Rail 2 swept parallel at assembly.</text>
-  <text class="q" x="424" y="52" fill="#c00">30 holes. No coordinate for any of</text>
-  <text class="q" x="424" y="64" fill="#c00">them exists in the repo yet.</text>
+  <text class="dim" x="-32" y="164.0" fill="#c00">WCS 0,0</text>
+  <text class="q" x="424" y="16" fill="#b06000">RAILS &#8212; 14 &#215; &#248;4.2</text>
+  <text class="q" x="424" y="28">X 20, 80, 140, 200, 260, 320, 380</text>
+  <text class="q" x="424" y="40">Y 20 and Y 134 &#183; tap M5 at home</text>
+  <text class="q" x="424" y="52">20 from each end of the 400 rail</text>
+  <text class="q" x="424" y="70" fill="#06c">BF12 &#8212; 2 &#215; &#248;4.2 at X 10</text>
+  <text class="q" x="424" y="82" fill="#06c">Y 54 and 100 &#8212; 46 apart on Y 77</text>
+  <text class="q" x="424" y="94" fill="#06c">X 10 puts it flush with the X 0 end</text>
+  <text class="q" x="424" y="112" fill="#c00">BK12, the X block bolts and the</text>
+  <text class="q" x="424" y="124" fill="#c00">top stop are still UNKNOWN.</text>
 </svg>
 <figcaption>Rail flush with the bottom edge leaves exactly 7 mm at the top, which is the designed
 overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 </figure>
 
-<h3>Hole schedule</h3>
-<p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
+<h3>Hole schedule &mdash; machining coordinates</h3>
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr class="unk"><td>R1&hellip;</td><td>HGR20 rail 1 &mdash; <b>the reference rail</b></td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">M5</td><td class="op"><b>CLOSE FIT</b><sup class="f">3.1</sup></td></tr>
-<tr class="unk"><td>R2&hellip;</td><td>HGR20 rail 2</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">M5</td><td class="op"><b>+1 mm OVERSIZE</b><sup class="f">3.1</sup></td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 407</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>R1a&ndash;g</td><td><b>HGR20 rail 1</b> &mdash; the reference rail</td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
+<tr><td>R2a&ndash;g</td><td><b>HGR20 rail 2</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
+<tr><td>F1, F2</td><td><b>BF12</b> screw support</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.5</sup></td></tr>
+<tr class="unk"><td>K1&ndash;K4</td><td><b>BK12</b> screw support</td><td>4</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Both supports fix to this plate</td></tr>
 <tr class="unk"><td>X1&hellip;</td><td>To the X-axis bearing blocks</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">&#128308; <b>NOT adjustable later</b><sup class="f">3.2</sup></td></tr>
-<tr class="unk"><td>K1&ndash;K4</td><td>BK12 + BF12 screw supports</td><td>8</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Both fixed to this plate</td></tr>
 <tr class="unk"><td>TS1&hellip;</td><td>Top stop plate fixing</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Keep the overhang short<sup class="f">3.4</sup></td></tr>
 </table>
 
