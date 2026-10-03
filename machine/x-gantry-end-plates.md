@@ -331,7 +331,7 @@ unverified.
 
 #### ✅ The sole bracket is a trapezoid
 
-**154 mm at the root, tapering to ~46 mm over the nut, across ~75 mm of reach.**
+**154 mm at the root, tapering to 46 mm over the nut, 98.7 mm overall - which is 73.3 of free reach past the doubler plus the 25.4 of seating it covers.**
 
 | | |
 |---|---|
@@ -351,9 +351,12 @@ Y**, so a 40 mm tip leaves only 8 mm of edge - about 1.45 D on an M5 clearance h
 part taking drive thrust. **46 gives 11 mm**, and the nut's 40 mm face is then fully supported with a
 little either side rather than flush to the edge.
 
-⚠️ **The ~46 and ~75 carry tildes on purpose.** Both are shapes rather than fits - nothing mates to
-either - so they can be rounded to whatever is convenient when the bracket is drawn. The numbers that
-are **not** free are the four M5 at ±20 in X and ±12 in Y, and the root's 154.
+⚠️ **Only the 46 is free.** Nothing mates to the narrow end, so it can be rounded to whatever is
+convenient - 46 rather than 40 on purpose, since 40 would match the nut face exactly but leave only
+8 mm of edge beside an M5 at ±12. The **98.7 is derived**, not chosen: 72.7 screw axis + 26 for half
+the nut, and it **includes the 25.4 of seating the root covers** rather than adding length beyond it.
+A 107.4 drawn on 2026-10-02 counted that seating twice. The other numbers that are **not** free are
+the four M5 at ±20 in X and ±12 in Y, and the root's 154.
 
 ### ✅ The tail does not reach the front riser - travel runs out first
 

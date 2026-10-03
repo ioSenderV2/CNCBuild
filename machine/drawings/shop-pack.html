@@ -113,7 +113,7 @@ its own amber rows:</p>
 <tr><td>2b</td><td>Shelf bar</td><td>25.4 &times; 50.8 &times; 60</td><td>2</td></tr>
 <tr><td>3</td><td>X carriage plate</td><td>154 &times; 407 &times; 1/2"</td><td>1</td></tr>
 <tr><td>4</td><td>Z plate</td><td>164 &times; 175 &times; 1/2"</td><td>1</td></tr>
-<tr><td>5</td><td>Y nut doubler and sole bracket</td><td>154 &times; 50 &times; 1/2" &middot; trapezoid 154 &rarr; 46 &times; 1/4"</td><td>2 + 2</td></tr>
+<tr><td>5</td><td>Y nut doubler and sole bracket</td><td>154 &times; 50 &times; 1/2" &middot; trapezoid 154 &rarr; 46 over 98.7 &times; 1/4"</td><td>2 + 2</td></tr>
 </table>
 <p style="margin:0 0 .7rem;font-size:9.5pt"><b>Only the right-hand X end plate carries the BF12
 tongue</b>, so the two are not interchangeable at assembly.</p>
@@ -183,7 +183,7 @@ carrying two parallel rails.</li>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 242.5</b></td><td><b>Yes</b></td><td><b>Outline settled 2026-10-02.</b> The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2</td></tr>
 <tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only, with the end plate</td><td><b>Was missing from this list.</b> Four holes, all dimensioned &mdash; Sheet 2b</td></tr>
 <tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 50</td><td>Drill only, with the end plate</td><td><b>Added 2026-10-02.</b> Height gated on the block row &mdash; Sheet 5</td></tr>
-<tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; 46</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Nut pattern settled; root holes TBD &mdash; Sheet 5</td></tr>
+<tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; 46 over 98.7</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Nut pattern settled; root holes TBD &mdash; Sheet 5</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
 <tr><td><b>Z spacer blocks &mdash; face 1 mm</b></td><td>2</td><td>Existing 2" bar, 16.41/16.43 measured</td><td><b>Yes</b> &mdash; facing, not drilling</td><td><b>Added 2026-10-02.</b> Face both in <b>one setup</b>; drops the stack 1 mm and makes the pair identical</td></tr>
 <tr><td>Z plate</td><td>1</td><td>1/2" alu, <b>164 &times; 175 mm</b></td><td><b>Yes</b></td><td>Cut and drill schedule on Sheet 4</td></tr>
@@ -777,62 +777,81 @@ downward-facing mounting face of the Y ball nut. The <b>doubler</b> bolts to the
 to give a 25.4&nbsp;mm (1") wide seating at the bottom; the <b>sole bracket</b> bolts up into that
 seating and reaches outboard to the nut. The screw axis is <b>72.7&nbsp;mm</b> from the plate's inner
 face &mdash; 12.7 plate + 30 rail stack + 30 half beam &mdash; so the nut's flange never comes near
-the plate and this is a cantilever, not a strip.
+the plate and this is a cantilever, not a strip. That leaves <b>21.3 of clear air</b> between the
+doubler's outer face and the nut's side, against a <b>20&nbsp;mm minimum measured off the built Y
+beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what keeps them agreeing.
 </div>
 
 <figure>
-<svg viewBox="-124 -36 690 180" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- SECTION through the bottom joint. WCS origin LOWER-LEFT, Y upward. -->
-  <rect x="0" y="0.0" width="154" height="12.7" fill="none" stroke="#111" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="-120" y="5.0">END PLATE 12.7</text>
-  <rect x="0" y="12.700000000000003" width="154" height="12.7" fill="none" stroke="#b06000" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="-120" y="20.400000000000006" fill="#b06000">DOUBLER 154 &#215; 50</text>
+<svg viewBox="-128 -26 700 164" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- PLAN view of the sole bracket, looking at its face.
+       WCS 0,0 is the ROOT's left corner, bottom-left of the frame - a real stock corner.
+       SVG y runs 98.7 at the root (bottom) to 0 at the tip (top), so machine X grows UPWARD.
+       SVG x IS machine Y, 0 to 154 across the plate. -->
 
-  <polygon points="0,25.400000000000006 154,25.400000000000006 100,132.8 54,132.8" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <text class="lbl" x="44" y="41.400000000000006">SOLE BRACKET 1/4"</text>
-  <line x1="0" y1="50.80000000000001" x2="154" y2="50.80000000000001" stroke="#555" stroke-width="0.7" stroke-dasharray="4 3"/>
-  <text class="lbl" x="4" y="56.80000000000001" fill="#555">25.4 seating ends</text>
+  <!-- the bracket. Root edge 154 at the bottom, tip 46 at the top, 98.7 between them. -->
+  <polygon points="0,98.7 154,98.7 100,0 54,0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <rect x="57" y="80.80000000000001" width="40" height="52" fill="none" stroke="#c00" stroke-width="1.1" stroke-dasharray="3 2"/>
-  <text class="lbl" x="100" y="88.80000000000001" fill="#c00">Y BALL NUT 40 &#215; 52</text>
-  <circle cx="65" cy="126.80000000000001" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
-  <circle cx="65" cy="86.80000000000001" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
-  <circle cx="89" cy="126.80000000000001" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
-  <circle cx="89" cy="86.80000000000001" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
+  <!-- the 25.4 seating IS the stacked end faces of the two plates, which the bracket covers.
+       Shaded inside the bracket, because it is bracket material bearing on plate material. -->
+  <polygon points="0,98.7 154,98.7 140.1,73.3 13.9,73.3" fill="#fde9c8" stroke="none"/>
+  <line x1="13.9" y1="73.3" x2="140.1" y2="73.3" stroke="#b06000" stroke-width="1.0" stroke-dasharray="4 3"/>
 
-  <line x1="-16" y1="132.8" x2="-16" y2="25.400000000000006" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-62" y="79.10000000000001">107.4</text>
-  <line x1="-32" y1="80.80000000000001" x2="-32" y2="50.80000000000001" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="-46" y="65.80000000000001">30</text>
-  <line x1="168" y1="132.8" x2="168" y2="80.80000000000001" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="172" y="106.80000000000001">52</text>
-  <line x1="0" y1="-10.0" x2="154" y2="-10.0" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="66" y="-13.0">154</text>
-  <circle cx="0" cy="132.8" r="3.4" fill="#c00"/>
-  <text class="dim" x="-36" y="140.8" fill="#c00">WCS 0,0</text>
+  <!-- the two plates behind it, dashed: hidden by the bracket, and drawn on other sheets.
+       Both are 154 across, so their corners stand proud of the bracket's taper. -->
+  <rect x="0" y="86.0" width="154" height="12.7" fill="none" stroke="#111" stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
+  <rect x="0" y="73.3" width="154" height="12.7" fill="none" stroke="#b06000" stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="18" y="95.2">END PLATE end 12.7</text>
+  <text class="lbl" x="18" y="82.5" fill="#b06000">DOUBLER end 12.7</text>
 
-  <text class="q" x="258" y="16">LENGTH 107.4, and it derives:</text>
-  <text class="q" x="258" y="28">25.4 seating + 30 to the nut + 52 nut = 107.4</text>
-  <text class="q" x="258" y="46" fill="#c00">nut face 40 &#215; 52, pattern 24 &#215; 40</text>
-  <text class="q" x="258" y="58" fill="#c00">insets 8 across the 40, 6 across the 52</text>
-  <text class="q" x="258" y="70" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
-  <text class="q" x="258" y="88" fill="#b06000">two rows of &#248;4.2 into the 25.4 seating,</text>
-  <text class="q" x="258" y="100" fill="#b06000">bored in from the end, 20 deep MAX</text>
-  <text class="q" x="258" y="118">narrow end 46</text>
+  <text class="lbl" x="40" y="62">SOLE BRACKET 1/4&quot;</text>
+
+  <!-- the ball nut, 46.7 to 98.7 from the plate's inner face -->
+  <rect x="57" y="0" width="40" height="52" fill="none" stroke="#c00" stroke-width="1.1" stroke-dasharray="3 2"/>
+  <text class="lbl" x="104" y="14" fill="#c00">Y BALL NUT</text>
+  <circle cx="65" cy="46.0" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
+  <circle cx="89" cy="46.0" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
+  <circle cx="65" cy="6.0"  r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
+  <circle cx="89" cy="6.0"  r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
+
+  <!-- dimensions, all on the left so nothing crosses the part -->
+  <line x1="-16" y1="0"    x2="-16" y2="98.7" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-54" y="51">98.7</text>
+  <line x1="-36" y1="73.3" x2="-36" y2="98.7" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="-78" y="88">25.4</text>
+  <line x1="-36" y1="52.0" x2="-36" y2="73.3" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="-78" y="65">21.3</text>
+  <line x1="168" y1="0"    x2="168" y2="52.0" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="172" y="28">52</text>
+  <line x1="0"   y1="112"  x2="154" y2="112" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="66"  y="120">154</text>
+  <line x1="54"  y1="-12"  x2="100" y2="-12" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="70"  y="-15">46</text>
+
+  <circle cx="0" cy="98.7" r="3.4" fill="#c00"/>
+  <text class="dim" x="-34" y="107" fill="#c00">WCS 0,0</text>
+
+  <text class="q" x="268" y="12">LENGTH 98.7, and it derives:</text>
+  <text class="q" x="268" y="24">72.7 screw axis + 26 half the nut = 98.7</text>
+  <text class="q" x="268" y="42" fill="#b06000">THE 25.4 SEATING IS INSIDE THIS LENGTH.</text>
+  <text class="q" x="268" y="54" fill="#b06000">It is the stacked end faces of the end plate</text>
+  <text class="q" x="268" y="66" fill="#b06000">and the doubler, which the bracket COVERS.</text>
+  <text class="q" x="268" y="84" fill="#c00">nut face 40 &#215; 52, pattern 24 &#215; 40</text>
+  <text class="q" x="268" y="96" fill="#c00">nut 46.7 to 98.7 &#8212; tip flush with its far edge</text>
+  <text class="q" x="268" y="108" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
+  <text class="q" x="268" y="126">21.3 of air clears the 20 minimum by 1.3</text>
 </svg>
-<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) drill and tap the four M5 into the <b>doubler's</b> bottom edge; (2) bolt the doubler to the end plate; (3) bolt the sole bracket up into the doubler with the FIRST row; (4) use the sole bracket's SECOND row as a <b>drill guide</b> to spot the four M5 into the <b>end plate's</b> bottom edge. <b>So only the doubler's edge holes need the mill</b> &mdash; the end plate's are transferred at home and need no coordinates at all.<br><br>Plan view. The trapezoid's tip is drawn centred on the plate's fore-aft mid (Y&nbsp;77),
-which is a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y
-produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
+<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) drill and tap the four M5 into the <b>doubler's</b> bottom edge; (2) bolt the doubler to the end plate; (3) bolt the sole bracket up into the doubler with the FIRST row; (4) use the sole bracket's SECOND row as a <b>drill guide</b> to spot the four M5 into the <b>end plate's</b> bottom edge. <b>So only the doubler's edge holes need the mill</b> &mdash; the end plate's are transferred at home and need no coordinates at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner, which the previous drawing's origin was not. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), which is a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
 </figure>
 
 <h3>The two parts</h3>
 <table>
 <tr><th>Part</th><th>Qty</th><th>Size</th><th>Material</th><th>Mill needed?</th></tr>
 <tr><td><b>Doubler block</b></td><td>2</td><td>154 &times; 50 &times; <b>1/2"</b></td><td>6061</td><td>Drill only &mdash; <b>drill it clamped to the end plate</b></td></tr>
-<tr><td><b>Sole bracket</b></td><td>2</td><td>trapezoid <b>154 &rarr; 46</b> over <b>107.4</b>, <b>1/4"</b></td><td>6061</td><td>Two angled cuts plus 4 &times; M5 clearance</td></tr>
+<tr><td><b>Sole bracket</b></td><td>2</td><td>trapezoid <b>154 &rarr; 46</b> over <b>98.7</b> overall, <b>1/4"</b></td><td>6061</td><td>Two angled cuts plus 4 &times; M5 clearance</td></tr>
 </table>
 
-<h3>Hole schedule &mdash; datum: the root edge at the back corner</h3>
+<h3>Hole schedule &mdash; datum: <b>the root's left corner</b>, X outboard from the plate's inner face</h3>
 <p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th>Note</th></tr>
@@ -849,10 +868,13 @@ checked against the real flange before anything is cut.
 </div>
 
 <div class="note">
-<b>&#9888; The tip's ~46 and the ~75 reach are shapes, not fits.</b> Nothing mates to either, so round
-them to whatever is convenient. <b>46 rather than 40</b> on purpose: 40 would match the nut face
-exactly but leaves only 8&nbsp;mm of edge beside an M5 at &plusmn;12, about 1.45&nbsp;D. The numbers
-that are <b>not</b> free are the four M5 at &plusmn;20 in X and &plusmn;12 in Y, and the root's 154.
+<b>&#9888; The tip's 46 is free. The 98.7 is not.</b> Nothing mates to the narrow end, so <b>46</b>
+is a round number chosen on purpose &mdash; 40 would match the nut face exactly but leaves only
+8&nbsp;mm of edge beside an M5 at &plusmn;12, about 1.45&nbsp;D. The <b>98.7 is derived</b> &mdash; 72.7 screw
+axis + 26 for half the nut &mdash; and it <b>includes the 25.4 seating</b>, which is the two plate end
+faces the bracket covers rather than length added beyond them. That is what a <b>107.4</b> drawn on
+2026-10-02 got wrong, counting the seating twice. The numbers that are <b>not</b> free are the
+four M5 at <b>&plusmn;20 in X</b> and <b>&plusmn;12 in Y</b>, and the root's <b>154</b>.
 </div>
 
 <div class="note">
