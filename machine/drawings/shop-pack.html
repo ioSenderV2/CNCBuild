@@ -569,12 +569,21 @@ from it, so the outline and the hole pattern are independent.<sup class="f">4.1<
 </div>
 
 <figure>
-<svg viewBox="-150 -118 470 236" width="185mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-150 -118 470 300" width="185mm" xmlns="http://www.w3.org/2000/svg">
   <!-- Z PLATE. Plate coordinates, WCS origin at plate CENTRE; SVG y is negated so
        +Y is up the plate. Every feature below is from this sheet's own schedule. -->
   <rect x="-82" y="-87.5" width="164" height="175" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
   <line x1="-82" y1="0" x2="82" y2="0" stroke="#aaa" stroke-dasharray="6 3" stroke-width="0.6"/>
   <line x1="0" y1="-87.5" x2="0" y2="87.5" stroke="#aaa" stroke-dasharray="6 3" stroke-width="0.6"/>
+
+  <!-- CLAMP FOOTPRINTS, 122 x 55, centred on +/-58 (given 2026-10-03). The M8 pattern is
+       100 x 25 centred in each footprint, which is why the rows land at 58-12.5 = 45.5 and
+       58+12.5 = 70.5. The footprint's outer edge reaches 58+27.5 = 85.5 against a half-height
+       of 87.5 - the 2 mm relief this sheet already records. Three numbers closing. -->
+  <rect x="-61" y="-85.5" width="122" height="55" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
+  <rect x="-61" y="30.5" width="122" height="55" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
+  <text class="lbl" x="-59" y="-74" fill="#555">CLAMP 122 &#215; 55</text>
+  <text class="lbl" x="-59" y="42" fill="#555">CLAMP 122 &#215; 55</text>
 
   <!-- clamp centres, +/-58 up the plate; the clamp face sits 2 mm inside each end -->
   <line x1="-82" y1="-58" x2="82" y2="-58" stroke="#0a6" stroke-width="0.9" stroke-dasharray="5 3"/>
@@ -637,19 +646,26 @@ from it, so the outline and the hole pattern are independent.<sup class="f">4.1<
   <text class="q" x="96" y="-74" fill="#06c">8 &#215; M8 TAPPED, 10 deep</text>
   <text class="q" x="96" y="-63">columns &#177;50 &#183; rows &#177;45.5 and &#177;70.5</text>
   <text class="q" x="96" y="-52">= 17 and 42 from the nearer plate end</text>
-  <text class="q" x="96" y="-41">torque ~15 N&#183;m into the tapped plate</text>
+  <text class="q" x="96" y="-41">bolts pass through the CLAMP and thread into</text>
+  <text class="q" x="96" y="-30">THIS PLATE &#8212; clearance is in the clamp, not here</text>
+  <text class="q" x="96" y="-19">torque ~15 N&#183;m, 10 mm of engagement</text>
 
-  <text class="q" x="96" y="-18" fill="#b06000">16 &#215; M5 CLEARANCE, COUNTERBORED ~&#248;10</text>
-  <text class="q" x="96" y="-7">columns &#177;41.5 and &#177;73.5</text>
-  <text class="q" x="96" y="4">rows &#8722;59.2, &#8722;23.2, +20.8, +56.8</text>
+  <text class="q" x="96" y="4" fill="#555">CLAMP FOOTPRINT 122 &#215; 55, centred &#177;58</text>
+  <text class="q" x="96" y="15" fill="#555">M8 pattern 100 &#215; 25 centred in it</text>
+  <text class="q" x="96" y="26" fill="#555">outer edge at 85.5 vs half-height 87.5</text>
+  <text class="q" x="96" y="37" fill="#555">= the 2 mm relief at each plate end</text>
 
-  <text class="q" x="96" y="28" fill="#c00">The outer M5 at 73.5 reaches 78.5 with its</text>
-  <text class="q" x="96" y="39" fill="#c00">counterbore, against a half-width of 82</text>
-  <text class="q" x="96" y="50" fill="#c00">&#8212; 3.5 mm of edge. Do not narrow 164.</text>
+  <text class="q" x="96" y="60" fill="#b06000">16 &#215; M5 CLEARANCE, COUNTERBORED ~&#248;10</text>
+  <text class="q" x="96" y="71">columns &#177;41.5 and &#177;73.5</text>
+  <text class="q" x="96" y="82">rows &#8722;59.2, &#8722;23.2, +20.8, +56.8</text>
 
-  <text class="q" x="96" y="74">M8 column 50 and M5 column 41.5 are only</text>
-  <text class="q" x="96" y="85">8.5 apart, so they are separated in HEIGHT:</text>
-  <text class="q" x="96" y="96">clamp centres 116, never 144</text>
+  <text class="q" x="96" y="104" fill="#c00">The outer M5 at 73.5 reaches 78.5 with its</text>
+  <text class="q" x="96" y="115" fill="#c00">counterbore, against a half-width of 82</text>
+  <text class="q" x="96" y="126" fill="#c00">&#8212; 3.5 mm of edge. Do not narrow 164.</text>
+
+  <text class="q" x="96" y="148">M8 column 50 and M5 column 41.5 are only</text>
+  <text class="q" x="96" y="159">8.5 apart, so they are separated in HEIGHT:</text>
+  <text class="q" x="96" y="170">clamp centres 116, never 144</text>
 </svg>
 <figcaption>Front face, the one the clamps and the spacer blocks share. <b>Every dimension is from the WCS origin at plate centre</b>, so the outline and the hole pattern are independent.</figcaption>
 </figure>
