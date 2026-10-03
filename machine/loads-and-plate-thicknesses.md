@@ -53,7 +53,7 @@ Current as of 2026-10-02.
 | **Y rear plate**, one for both beams | 1200 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, **3 off** - Y1, Y2 and the X stepper end. One drawing; X's BF12 end takes none, using a tongue off the end plate |
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, 2 off - identical below the top edge; the **right-hand one carries a 40 × 60 BF12 tongue** above it |
-| **Y nut doubler block** | 154 × 60 × **1/2"** | 6061, 2 off - on the end plate's outer face, giving a 25.4 mm seating |
+| **Y nut doubler block** | 154 × 50 × **1/2"** | 6061, 2 off - on the end plate's outer face, giving a 25.4 mm seating |
 | **Y nut sole bracket** | trapezoid **154 → ~46** over ~75 × **1/4"** | 6061, 2 off - carries the inverted Y ball nut |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
