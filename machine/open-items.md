@@ -51,8 +51,10 @@
   slide-in T-nuts** - on **top** of the X beam, **under** the Y beams. Z has no interposer and lands
   straight on the 1/2" X carriage plate. The face is therefore the top slot face on X and the bottom
   slot face on Y, which was the standing expectation; what was missing was the plate between.
-- ⚠️ **The curb channel width** - dimensioned around 6.35 mm, now taking 3.175 mm, or 3.04 mm if
-  the sheet arrives at a true 11 gauge.
+- ✅ ~~**The curb channel width**~~ **Dead 2026-10-03 - there is no channel.** It had been
+  dimensioned around 6.35 for a 1/4" plate and the plate went to 1/8", leaving a groove 3 mm wider
+  than the thing it located. The arrangement changed instead: the plates sit **flat on the box's top
+  skin** and the tongues lap them from **outboard**, a plain bolted lap with nothing to size.
 - ⚠️ **The delivered thickness of the 1/8" sheet.** The listing says both 1/8" and 11 gauge, which
   differ by 0.135 mm. Harmless structurally, but the curb channel and the riser-proud check key off
   it. **Caliper it on arrival and write the number here.**
@@ -111,8 +113,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   It was going to be measured off the assembled CNC, which could not happen until the machine stood up.
   Then the rear plate's length stopped being a window and became **1211.75 derived**, and his rule
   settles the rest: **the box with its laminated tongues fills the space inside the side plates, the
-  rear plate and the front fins exactly.** So **BOX_W = 1205.4** (inside the two 1/8" side plates) and
-  **BOX_FORE_AFT = 983.65** (the 1000 beam less the 6.35 rear plate and the 10 mm fin). 📌 **Still
+  rear plate and the front fins exactly.** 🔴 **That reading was WRONG and was corrected the same
+  day** - the box is the larger part. **BOX_W = 1211.75** (inside the two side tongues, the machine's
+  own outer envelope) and **BOX_FORE_AFT = 1156.35** (the 1000 beam *plus* the rear plate, the fin and
+  a 140 front overhang). 📌 **Still
   check it against the standing machine before cutting the skins** - the chain is nominal in its plate
   thicknesses, so this closes the *design* question, not the verification.
 - ✅ ~~**Where the three-point mount pads sit relative to the two outer walls**~~ **Already answered,

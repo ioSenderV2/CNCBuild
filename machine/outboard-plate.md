@@ -173,27 +173,35 @@ The box is **19 mm Baltic birch skins top and bottom over a grid of 19 mm strips
    to the inner web's outer face and to the edge of the top skin. It spans the 100 mm web plus the
    19 mm top skin and so **stands 60 mm proud** of the top surface as a **curb, outboard of the plate.**
 
-The top skin's outer edge terminates at the inner web's outer face, which is also the curb's inner
-face. The plate drops into the channel between the two, and since the plate is 3.175 mm thick it
-occupies **the outer 3.175 mm of the 19 mm web** (this paragraph said 6.35 until 2026-10-03, left
-behind when the plate went to 1/8" - the channel's own width is a separate and still-open question) - so its bottom edge bears **directly over the wall**,
-never on skin spanning between grid members.
+🔴 **THERE IS NO CHANNEL - corrected 2026-10-03.** An earlier version of this section had the
+top skin stopping short of the tongue's inner face and the plate dropping into the groove between
+them. **It does not.** The plate sits **flat on the top skin** and the tongue laps it from
+**outboard**: tongue inner face against plate outer face, a plain bolted lap. The bottom edge still
+bears **directly over the wall** and never on skin spanning between grid members, which was the point
+of the original arrangement and survives unchanged.
+
+✅ **What that kills:** the open question about the channel's width. It was dimensioned around
+6.35 when the plate was 1/4", the plate went to 1/8", and the groove was then 3 mm wider than the
+thing it was supposed to locate. With no groove there is nothing to size, and the plate is located
+by the tongue it is bolted through.
 
 ### Cross-section at the outer wall, inboard to outboard
 
 | Member | Thickness | Vertical extent |
 |---|---|---|
 | Inner web of the outer wall | 19 mm | Between the skins, 100 mm high |
-| *of which the outer 3.175 mm carries the plate's bottom edge* | | *bearing face is the top skin's top surface* |
+| The top skin | 19 mm | **Runs out to the tongue** - the plate stands on it |
 | The full-height plate | **3.175 mm (1/8")** | Up to the Y beam - 12", 305 mm tall |
-| Outer lamination, the curb | 19 mm | 180 mm tall, **60 mm proud** of the top skin |
+| Outer lamination, the tongue | 19 mm | 180 mm tall, **60 mm proud** of the top skin, **outboard of the plate** |
 
 ### The plate is captured on three sides
+
+📌 **Unchanged by the no-channel correction** - all three still hold. The groove only ever did the same job the tongue does, from the other side.
 
 | Direction | What takes it |
 |---|---|
 | Vertical | **Bearing** - plate bottom edge on the top skin, directly over the wall |
-| Outboard, across the machine | **Bearing** - plate outer face against the curb's inner face |
+| Outboard, across the machine | **Bearing** - plate outer face against the tongue's inner face |
 | Inboard | **Bolt tension** |
 
 The consequence worth noticing: **the bolts are retention, not the load path.** Vertical and outboard

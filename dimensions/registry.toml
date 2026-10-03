@@ -805,13 +805,13 @@ note = "1/4in A36 hot-rolled, the Sheet 7 plate. CALIPER IT with the side plate 
 
 [[dim]]
 sym = "BOX_W"
-expr = "REAR_PLATE_L - (2 * T_SIDE_PLATE)"
-note = "Box footprint across the machine, 1205.4 - the clear space inside the two side plates. His rule 2026-10-03: the box WITH its laminated tongues fills the space inside the side plates, the rear plate and the front fins exactly. This CLOSES the long-standing 'exact box width' open item, which was waiting on a measurement off the assembled machine; the rear plate's length became a derived number first, and the box's follows it."
+expr = "REAR_PLATE_L"
+note = "Box top skin across the machine, measured INSIDE the two side tongues - 1211.75, the same as the rear plate because both are the machine's outer envelope. \u26a0 THIS INVERTED on 2026-10-03 and the earlier reading is wrong: it was briefly recorded as 1205.4, the space INSIDE the side plates, on a reading that the box tucked between them. It does not. The side and back plates sit FLAT ON THE TOP SKIN and the tongues stand proud OUTBOARD of them, so the tongue's inside face is the plate's outer face. There is no channel and nothing is captured on two sides."
 
 [[dim]]
 sym = "BOX_FORE_AFT"
-expr = "BEAM_LEN - T_REAR_PLATE - T_FIN"
-note = "Box footprint front to back, 983.65 - the Y beam's 1000 less the rear plate capping its back end face and the front fin capping its front. The fin is T_FIN at 10 MEASURED, not the 1/2in some prose still said before 2026-10-03."
+expr = "BEAM_LEN + T_REAR_PLATE + T_FIN + BOX_FRONT_OVERHANG"
+note = "Box top skin front to back, from the back tongue's inside face to the front edge - 1156.35. \u26a0 ALSO INVERTED on 2026-10-03, same reason as BOX_W: it was 983.65 on the reading that the box tucked inside the plates. It does not; the machine stands ON it. So this ADDS the plate thicknesses the old one subtracted, and adds the front overhang on top. THE FRONT HAS NO TONGUE - the box simply runs past the fins and four L-brackets behind each fin tie it down."
 
 # ================================================================ drilled coordinates
 #
@@ -1022,15 +1022,15 @@ provenance = "derived"
 note = "The front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. WAS 46 until 2026-10-03, changed by him for consistency - and the consistency is real, not cosmetic: 45 is BLOCK_ROW_GAP, the conservative keep-out between the bearing block rows, so the strip is exactly the width that is known to fit. At 46 it matched the GEOMETRIC gap instead and had no clearance at all."
 
 [[dim]]
-sym = "CURB_PROUD"
+sym = "BOX_TONGUE_PROUD"
 value = 60
 provenance = "derived"
-note = "How far the torsion box's outer wall lamination stands proud of the top skin - the curb the steel plates bear against, and the height of the plywood tongue they bolt to. WAS 61 until 2026-10-03, changed by him for consistency. It makes the bolt line exactly central: CURB_BOLT_Y is 30 above the plate's bottom edge and now also 30 below the tongue's top."
+note = "How far the box's laminated tongue stands proud of the top skin, on the back and both sides. The plates sit FLAT ON THE SKIN and the tongue laps them from OUTBOARD, so this is a simple bolted lap - there is no channel and nothing is captured. WAS 61 until 2026-10-03, changed by him for consistency, which makes the bolt line exactly central: BOX_TONGUE_BOLT_Y is 30 above the plate's bottom edge and now also 30 below the tongue's top. Named BOX_TONGUE to keep it clear of TONGUE_H and friends, which are the X end plate's BF12 tongue and a different part entirely."
 
 [[dim]]
-sym = "CURB_BOLT_Y"
-expr = "CURB_PROUD / 2"
-note = "The one bolt line across all three plates - the front fin's two bolts, the side plates' row and the rear plate's row all sit here. 30, and with CURB_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61."
+sym = "BOX_TONGUE_BOLT_Y"
+expr = "BOX_TONGUE_PROUD / 2"
+note = "The one bolt line through the plates into the box tongues. 30, and with BOX_TONGUE_PROUD at 60 it is the tongue's mid-height rather than 31 down from a 61. \u26a0 The front fin NO LONGER USES IT - the front has no tongue, so the fins are tied down by four L-brackets behind each instead; see BOX_FRONT_OVERHANG."
 
 # ------------------------------------------------ the bolt-on plates, settled 2026-10-03
 
@@ -1082,3 +1082,9 @@ note = "Sheet 8's lower bolt row, 7.5 from the strip's edge. Forced, not chosen:
 sym = "STRIP_ROW_HIGH"
 expr = "(FRONT_STRIP_W / 2) + RAIL_SLOT_INSET"
 note = "Sheet 8's upper bolt row, 37.5. Same derivation as STRIP_ROW_LOW, the other side of the seam."
+
+[[dim]]
+sym = "BOX_FRONT_OVERHANG"
+value = 140
+provenance = "derived"
+note = "How far the box's top skin runs PAST the front fins. His, 2026-10-03. The front is the one side with no tongue: rather than capture the fins, the box simply extends under and beyond them and FOUR L-BRACKETS BEHIND EACH FIN tie the fin down to the top skin. That is why BOX_FORE_AFT grew rather than shrank, and why Sheet 1's two tongue bolts need re-purposing or deleting."
