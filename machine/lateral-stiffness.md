@@ -165,17 +165,37 @@ a `30-6060`'s bores sit 15 and 45 in from each face, so a stacked pair gives 15,
 |---|---|
 | Outboard edge, from the fin's outboard edge | **X = 19** |
 | Inboard edge | **X = 81** |
-| Top edge, below the fin's top | **120 mm + the interposer thickness** = **129.5 mm** at 3/8" |
-| Bottom edge | **179.5 mm** |
+| Top edge, below the fin's top | **120 mm** - the beam's own height, i.e. the underside of the lower extrusion |
+| Bottom edge | **170 mm** - ⚠️ 50 mm height is a **guess**, see below |
 
 ✅ **The horizontal position derives rather than being measured, and it agrees with the template.**
 The beam spans X 20-80, so its centreline - and the screw's - is **X 50**. A 62 mm window centred
 there runs **19 to 81**, giving the **19 mm outboard strip measured off the MDF**. Two independent
 routes to the same number.
 
-📌 **Recorded as a formula as well as a number**, because the 120 is the beam's own height and the
-rest is the interposer - so if the bar ever goes to 1/2" the window drops 3.2 mm to 132.7 and
-nothing else changes. **The interposer is 3/8", confirmed 2026-10-02.**
+🔴 **Corrected 2026-10-02: the top edge is 120, not 129.5.** It was recorded as *120 + the
+interposer thickness*, on the reading that only the **casting** passes through the window. It does
+not: [`y-beam-support.md`](y-beam-support.md) specifies the bar's outboard end **30 mm past the fin's
+outer face** so that *"the casting and bar protrude through the window together"*. The bar's top face
+**is** the beam underside, so the window top is the beam underside - **120** - and the interposer
+thickness does not enter it. **The window top does not move if the bar ever goes to 1/2".**
+
+📌 **Why they both pass through, from the part: the casting's foot is stepped.** The ledge where the
+stepper mount begins means the casting **hangs over the end of the interposer** rather than sitting
+wholly on top of it - so the bar has to continue through the window **underneath** the casting. The
+129.5 figure came from imagining the casting sitting on a bar that stops at the plate. It does not.
+**The stacking is: beam underside at 120, then the bar, then the casting hanging past the bar's end**
+- and the window has to pass the bar, which is the higher of the two.
+
+📌 **The 62 mm width is the same fact from the other side.** The bar is **60 mm** wide, so a 62 mm
+window clears it by **1 mm a side** - the same 1 mm the window leaves against the 60 mm extrusion end
+it is centred on. Two parts of the same width pass through it.
+
+⚠️ **The 50 mm height is a guess and is expected to shrink.** It was never derived from the casting;
+it is a budget. **A plywood mockup is being cut to find the real number** - see the plate list in
+[`drawings/README.md`](drawings/README.md). Nothing downstream depends on it: the window's tight
+dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
+from the 61 mm tongue at the plate's base.
 
 ## 🔴 The 62 × 50 window, and why the taper does not help it
 
