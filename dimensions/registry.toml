@@ -109,8 +109,33 @@ source = "machine/photos/y-bearing-blocks-machined-pads-128.jpg, calipers 2026-1
 sym = "BLOCK_ROW_GAP"
 value = 45
 provenance = "measured"
-note = "Facing edges of the upper and lower Y block rows. The ENC_BORE_D lives in it."
-source = "measured 2026-10-02"
+note = "Facing edges of the upper and lower Y block rows, measured. \u26a0 IT DOES NOT LAY OUT THE 16 BOLT HOLES - settled by him 2026-10-03. The rows are set by the rails, which sit in the beams' OUTSIDE T-slots and are therefore RAIL_PITCH apart; the geometric gap that follows is BLOCK_ROW_GAP_GEOM at 46. What it actually describes is a KEEP-OUT, his words 2026-10-03: the magnetic linear encoder tape runs down this gap and the 35 dia sensor rides over the tape, both centred on the beam's seam. Keep it at 45 - under-stating a keep-out is safe. Under-stating a clearance is safe; using it as a layout datum put all sixteen holes 0.5 out."
+
+[[dim]]
+sym = "BLOCK_W"
+value = 44
+provenance = "part"
+note = "HGH20 block body width, measured. Only used for clearance - what is left between the rows, and where the lower row's bottom edge falls against the doubler."
+
+[[dim]]
+sym = "BLOCK_ROW_GAP_GEOM"
+expr = "RAIL_PITCH - BLOCK_W"
+note = "The gap the geometry actually produces once the rails are in the outside T-slots: 46. One more than the measured 45, which is why 45 is kept as the conservative clearance number rather than corrected."
+
+[[dim]]
+sym = "BEAM_SEAM_XEP"
+expr = "NUT_FACE_BELOW_BEAM + EXT_W"
+note = "The Y beam's seam - where the two stacked extrusions meet - in the X end plate's own frame, measured from the plate's bottom end. 122.525, and Sheet 2a's encoder bore was independently placed at 122.5, which is the cross-check that this whole vertical chain closes."
+
+[[dim]]
+sym = "RAIL_LOW_XEP"
+expr = "NUT_FACE_BELOW_BEAM + RAIL_LOW_Z"
+note = "Lower Y rail centreline in the end plate's frame = the lower block row's centre. 77.525, drawn and scheduled at 77.5."
+
+[[dim]]
+sym = "RAIL_HIGH_XEP"
+expr = "NUT_FACE_BELOW_BEAM + RAIL_HIGH_Z"
+note = "Upper Y rail centreline in the end plate's frame = the upper block row's centre. 167.525, drawn and scheduled at 167.5."
 
 [[dim]]
 sym = "BLOCK_PITCH_X"

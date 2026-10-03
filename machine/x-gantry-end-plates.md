@@ -93,10 +93,16 @@ HGH20 blocks end to end with **2-3 mm between**". There is no gap - 154 *is* the
 
 ✅ **The four blocks now have a complete footprint** - 2026-10-03. With **44 mm across the rail**
 added to the measured 77.09 along it, each block is fully bounded, and the four of them sit **two
-butted in Y by two rows** separated by the measured **45 mm gap**. 📌 **One consequence follows and
-is not yet reflected in the doubler's drawing:** the lower block row's bottom edge lands at
-**−126.5** (60 + 22.5 + 44 below the Y beam top), and this file already says the doubler's height is
-gated on that edge rather than on the Y beam underside.
+butted in Y by two rows. 🔴 **What separates the rows is the RAILS, not the measured 45 mm gap** -
+corrected 2026-10-03. Both rails sit in their extrusion's **outside T-slot**, 15 in from each outer
+face of the 120 beam, so the rows are **90 apart** and the gap that falls out is **46**. The measured
+45 describes a **keep-out**: the magnetic encoder tape runs down it with the ø35 sensor riding over
+the tape, both centred on the beam's seam. It is kept at 45 because under-stating a keep-out is safe,
+but using it to lay out the sixteen M5 put every one of them 0.5 out.
+
+📌 **The consequence for the doubler:** the lower block row's bottom edge lands at **−127**
+(60 + 23 + 44 below the Y beam top), and this file already says the doubler's height is gated on that
+edge rather than on the Y beam underside.
 
 ✅ **The functional floor for any carriage plate is 128.24 mm**, not 154. The end caps are seals and
 scrapers; they carry nothing. A plate wider than 128.24 has full bearing on both pads.
