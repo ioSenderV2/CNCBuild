@@ -59,9 +59,23 @@ def main() -> int:
     P = []  # parts: name, group, colour, [x0,y0,z0], [x1,y1,z1]
 
     def box(name, group, colour, x0, y0, z0, x1, y1, z1):
-        P.append({"n": name, "g": group, "c": colour,
+        P.append({"n": name, "g": group, "c": colour, "t": "box",
                   "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
                   "q": [max(x0, x1), max(y0, y1), max(z0, z1)]})
+
+    def prism(name, group, colour, profile, ya, yb):
+        """An X-Z profile extruded along fore-aft. The fins are not boxes.
+
+        p/q stay the bounding box so the camera framing and the interference
+        check keep working; the check is then CONSERVATIVE on a prism, which is
+        the safe direction - it may flag a touch that the real taper clears.
+        """
+        xs = [pt[0] for pt in profile]
+        zs = [pt[1] for pt in profile]
+        P.append({"n": name, "g": group, "c": colour, "t": "prism",
+                  "profile": profile, "ya": min(ya, yb), "yb": max(ya, yb),
+                  "p": [min(xs), min(ya, yb), min(zs)],
+                  "q": [max(xs), max(ya, yb), max(zs)]})
 
     W = v["REAR_PLATE_L"]            # 1211.75, the machine's outer width
     D = v["BOX_FORE_AFT"]            # 1156.35
@@ -95,11 +109,16 @@ def main() -> int:
         box("Y beam", "ybeams", 0x4A7DB5, x0, y0, ybot, x0 + v["EXT_W"], y1, ytop)
 
     # ---- front fins ------------------------------------------------------
-    fin_front = y1 + v["T_FIN"]
-    fin_back = fin_front - v["FIN_BASE_W"]
-    for outer in (0 - v["FIN_PROUD"], W + v["FIN_PROUD"] - v["T_FIN"]):
-        box("Front fin", "plates", 0x6FA8DC,
-            outer, fin_back, 0, outer + v["T_FIN"], fin_front, v["FIN_STOCK"])
+    # They CAP THE Y BEAM'S FRONT END - plane normal to fore-aft, like the rear
+    # plate does at the back - and the taper faces INBOARD, so the outboard edge
+    # is square. Corrected 2026-10-03; the first model had them on the beams'
+    # sides, which is the wrong plane entirely.
+    fb, ft, h = v["FIN_BASE_W"], v["FIN_TOP_W"], v["FIN_STOCK"]
+    for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
+        prism("Front fin", "plates", 0x6FA8DC,
+              [[outer, 0], [outer + sgn * fb, 0],
+               [outer + sgn * ft, h], [outer, h]],
+              y1, y1 + v["T_FIN"])
 
     # ---- X gantry, at Y home ---------------------------------------------
     xep_t = v["T_X_ENDPLATE"]
@@ -172,6 +191,44 @@ def main() -> int:
     print(f"wrote {OUT.relative_to(ROOT)} - {len(P)} parts")
     for a, b in facts:
         print(f"  {a:22} {b:10.2f}")
+    return report_overlaps(P)
+
+
+# Pairs that SHOULD interpenetrate, with the reason. Everything else that
+# overlaps is a real interference and gets printed.
+ALLOWED = {
+    frozenset({"Torsion box", "Back tongue"}),      # laminated to the wall
+    frozenset({"Torsion box", "Side tongue"}),
+    frozenset({"Back tongue", "Side tongue"}),      # meet at the corner
+    frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
+    frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
+    frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers
+    frozenset({"Z plate", "Spindle barrel"}),       # clamps not modelled
+}
+
+
+def report_overlaps(P) -> int:
+    """Solid-body interference check - the one thing a box model can prove.
+
+    It cannot tell you a part is in the RIGHT place. It can tell you two parts
+    are in the SAME place, which is the failure a dimension change causes and
+    the eye misses on a shaded render.
+    """
+    bad = []
+    for i in range(len(P)):
+        for j in range(i + 1, len(P)):
+            a, b = P[i], P[j]
+            if frozenset({a["n"], b["n"]}) in ALLOWED:
+                continue
+            ov = [min(a["q"][k], b["q"][k]) - max(a["p"][k], b["p"][k]) for k in range(3)]
+            if all(o > 0.05 for o in ov):
+                bad.append((a["n"], b["n"], ov))
+    if not bad:
+        print("\ninterference check: clean - no two parts occupy the same space")
+        return 0
+    print(f"\ninterference check: {len(bad)} OVERLAP(S)")
+    for n1, n2, ov in bad:
+        print(f"  {n1} <-> {n2}   by {ov[0]:.2f} x {ov[1]:.2f} x {ov[2]:.2f} mm")
     return 0
 
 
@@ -183,7 +240,12 @@ HTML = r"""<!doctype html>
  #c{position:fixed;inset:0}
  .panel{position:fixed;background:#23272dEE;border:1px solid #3a4048;border-radius:6px;padding:10px 12px}
  #ui{top:12px;left:12px;max-width:280px}
- #info{bottom:12px;left:12px;max-width:420px;font-size:11.5px;color:#aab}
+ #info{bottom:12px;left:12px;max-width:430px;font-size:11.5px;color:#aab}
+ #info summary{cursor:pointer;color:#e8b64c;font-weight:600;list-style:none}
+ #info summary::-webkit-details-marker{display:none}
+ #info summary::before{content:'show  ';color:#8fd}
+ #info[open] summary::before{content:'hide  '}
+ #info .body{margin-top:8px}
  h1{font-size:14px;margin:0 0 8px}
  label{display:block;cursor:pointer;padding:1px 0}
  input{vertical-align:-2px;margin-right:6px}
@@ -196,7 +258,7 @@ HTML = r"""<!doctype html>
 </style>
 <canvas id="c"></canvas>
 <div class="panel" id="ui"><h1>CNC assembly</h1><div id="toggles"></div><table id="facts"></table></div>
-<div class="panel" id="info"></div>
+<details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
 <script src="vendor/three.min.js"></script>
 <script>
 const PARTS=__PARTS__, GROUPS=__GROUPS__, ASSUMPTIONS=__ASSUMPTIONS__, FACTS=__FACTS__;
@@ -213,13 +275,25 @@ PARTS.forEach(p=>{for(let i=0;i<3;i++){lo[i]=Math.min(lo[i],p.p[i]);hi[i]=Math.m
 const mid=[0,1,2].map(i=>(lo[i]+hi[i])/2);
 const span=Math.max(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]);
 
+// machine (x,y,z) -> three (x, z, -y); three's Y is up, and fore-aft runs to -Z
 const byGroup={};
 for(const p of PARTS){
-  const s=[0,1,2].map(i=>Math.max(p.q[i]-p.p[i],0.4));
-  const g=new THREE.Mesh(new THREE.BoxGeometry(s[0],s[2],s[1]),
-    new THREE.MeshLambertMaterial({color:p.c}));
-  // machine (x,y,z) -> three (x, z, y); three's Y is up, and +Y fore-aft runs to -Z
-  g.position.set((p.p[0]+p.q[0])/2-mid[0], (p.p[2]+p.q[2])/2-mid[2], -((p.p[1]+p.q[1])/2-mid[1]));
+  let geom, ctr;
+  if(p.t==='prism'){
+    // profile is machine X-Z, extruded along fore-aft. Extrude runs along three's
+    // +Z, so the mesh is built at the origin and then shifted to the right depth.
+    const sh=new THREE.Shape();
+    p.profile.forEach((pt,i)=>i?sh.lineTo(pt[0]-mid[0],pt[1]-mid[2]):sh.moveTo(pt[0]-mid[0],pt[1]-mid[2]));
+    sh.closePath();
+    geom=new THREE.ExtrudeGeometry(sh,{depth:p.yb-p.ya,bevelEnabled:false});
+    ctr=[0,0,-(p.yb-mid[1])];
+  }else{
+    const s=[0,1,2].map(i=>Math.max(p.q[i]-p.p[i],0.4));
+    geom=new THREE.BoxGeometry(s[0],s[2],s[1]);
+    ctr=[(p.p[0]+p.q[0])/2-mid[0],(p.p[2]+p.q[2])/2-mid[2],-((p.p[1]+p.q[1])/2-mid[1])];
+  }
+  const g=new THREE.Mesh(geom,new THREE.MeshLambertMaterial({color:p.c,side:THREE.DoubleSide}));
+  g.position.set(ctr[0],ctr[1],ctr[2]);
   const e=new THREE.LineSegments(new THREE.EdgesGeometry(g.geometry),
     new THREE.LineBasicMaterial({color:0x000000,opacity:0.35,transparent:true}));
   g.add(e); scene.add(g);
@@ -244,6 +318,17 @@ function resize(){const w=innerWidth,h=innerHeight;rend.setPixelRatio(devicePixe
 function draw(){rend.render(scene,cam);}
 addEventListener('resize',resize);
 
+const VIEWS={iso:[-0.72,0.42],front:[Math.PI,0.06],back:[0,0.06],
+             left:[-Math.PI/2,0.06],right:[Math.PI/2,0.06],top:[0,1.44]};
+const vb=document.createElement('div'); vb.style.margin='2px 0 8px';
+for(const k in VIEWS){
+  const b=document.createElement('button'); b.textContent=k;
+  b.style.cssText='margin:2px 4px 0 0;background:#2f353d;color:#cde;border:1px solid #454c55;'+
+                  'border-radius:4px;padding:2px 7px;cursor:pointer;font:11px inherit';
+  b.onclick=()=>{[az,el]=VIEWS[k];place();draw();};
+  vb.appendChild(b);
+}
+document.getElementById('ui').insertBefore(vb,document.getElementById('toggles'));
 const t=document.getElementById('toggles');
 for(const k in GROUPS){
   const l=document.createElement('label');
@@ -253,7 +338,7 @@ for(const k in GROUPS){
 }
 document.getElementById('facts').innerHTML=
   FACTS.map(f=>'<tr><td>'+f[0]+'</td><td class="n">'+f[1]+'</td></tr>').join('');
-document.getElementById('info').innerHTML=
+document.getElementById('infobody').innerHTML=
   '<b class="w">Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
   'Every box is placed from a registry value - drag to orbit, scroll to zoom. '+
   'Pose: X home left, Y home back, Z at max.<br><b class="w">Placements ASSUMED, not derived:</b>'+
