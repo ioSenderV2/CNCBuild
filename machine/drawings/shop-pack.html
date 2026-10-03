@@ -980,49 +980,120 @@ before drilling the third one.</b><sup class="f">6.4</sup></p>
 <div class="stock">
 <b>~1205 long &times; 12" (304.8) wide &times; 1/4" hot-rolled A36 steel</b><br>
 <b>One plate carries both Y beams</b> and is also the rear shear panel.<br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the ~1205, <b>Y</b> across the 304.8, <b>Z = 0 at the top face</b>.<br>
-🔴 <b>The length is a window, not a target</b> &mdash; it is set by the two beams' spacing plus
+<span class="datum">WCS ORIGIN: the lower-left corner with the plate clamped <b>UPSIDE DOWN</b>.</span><br>
+&#128308; <b>Clamp it inverted.</b> The plate's <b>installed TOP edge is Y&nbsp;0</b> and Y runs to
+<b>304.8</b> at the installed bottom edge. Every number below is in that frame, which is why both
+beams sit on Y&nbsp;0 to 120 instead of hanging off a far edge.<sup class="f">7.6</sup><br>
+<b>X</b> along the ~1205 from the left end, <b>Z = 0 at the top face</b>.<br>
+&#128308; <b>The length is a window, not a target</b> &mdash; it is set by the two beams' spacing plus
 their end plates, and it is forgiving.<sup class="f">7.1</sup>
 </div>
 
 <figure>
-<svg viewBox="-46 -34 682 180" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- 1200 mm REAR PLATE. One plate for both Y beams. Drawn to scale along X; the two
-       beam stations are NOT in the repo, so no bolt is plotted. -->
-  <rect x="0" y="0" width="432.0" height="109.7" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <line x1="0" y1="98.9" x2="432.0" y2="98.9" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
-  <text class="lbl" x="4" y="101.8" fill="#b06000">box bolt row, Y 30 &#8212; 8 off at ~150 pitch</text>
-  <rect x="43" y="14" width="72" height="43" fill="none" stroke="#c0c" stroke-width="1" stroke-dasharray="4 3"/>
-  <rect x="317" y="14" width="72" height="43" fill="none" stroke="#c0c" stroke-width="1" stroke-dasharray="4 3"/>
-  <text class="q" x="47" y="36" fill="#c0c">BEAM 1 &#8212; STATION UNKNOWN</text>
-  <text class="q" x="320" y="36" fill="#c0c">BEAM 2 &#8212; STATION UNKNOWN</text>
-  <line x1="0" y1="123.7" x2="432.0" y2="123.7" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="198" y="133.7">~1205 &#8212; a window, not a target</text>
+<svg viewBox="-46 -30 682 470" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1200 mm REAR PLATE, clamped UPSIDE DOWN: installed top edge is Y 0, at the BOTTOM of
+       this view, and Y runs UP the page to 304.8. Scale 0.36 along both axes.
+       SVG x = X * 0.36 ; SVG y = (304.8 - Y) * 0.36 -->
+
+  <rect x="0" y="0" width="433.8" height="109.7" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+
+  <!-- the two beam footprints, 60 wide x 120 tall, both sitting on Y 0 -->
+  <rect x="0" y="66.5" width="21.6" height="43.2" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+  <rect x="410.4" y="66.5" width="21.6" height="43.2" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+  <text class="lbl" x="2" y="63" fill="#c0c">Y1 BEAM</text>
+  <text class="lbl" x="398" y="63" fill="#c0c">Y2 BEAM</text>
+
+  <!-- X1-X8 row, Y 270 -> SVG y 12.5 -->
+  <line x1="0" y1="12.5" x2="433.8" y2="12.5" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="4" y="9.6" fill="#b06000">X1&ndash;X8 torsion-box row, Y 270 &#8212; X pitch still OPEN</text>
+
+  <!-- plate dimensions -->
+  <line x1="0" y1="123.7" x2="433.8" y2="123.7" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="196" y="133.7">~1205 &#8212; a window, not a target</text>
   <line x1="-12" y1="0" x2="-12" y2="109.7" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="-42" y="55">304.8</text>
   <circle cx="0" cy="109.7" r="3.4" fill="#c00"/>
   <text class="dim" x="-32" y="120" fill="#c00">WCS 0,0</text>
-  <text class="q" x="444" y="16" fill="#c00">NOTHING ON THIS SHEET</text>
-  <text class="q" x="444" y="28" fill="#c00">IS DRILLABLE YET.</text>
-  <text class="q" x="444" y="46">The plate size is settled.</text>
-  <text class="q" x="444" y="58">Where the two beams sit</text>
-  <text class="q" x="444" y="70">along it is not in the repo.</text>
+
+  <text class="q" x="448" y="14">PLATE CLAMPED UPSIDE DOWN.</text>
+  <text class="q" x="448" y="26">Installed TOP edge is Y 0, and both</text>
+  <text class="q" x="448" y="38">beams sit on it &#8212; Y 0 to 120.</text>
+  <text class="q" x="448" y="56" fill="#c0c">Beam stations are now FIXED:</text>
+  <text class="q" x="448" y="68" fill="#c0c">Y1 at X 0, Y2's far corner at X 1200.</text>
+  <text class="q" x="448" y="86" fill="#b06000">Still open on this sheet: the eight</text>
+  <text class="q" x="448" y="98" fill="#b06000">X1&ndash;X8 stations along the 1205.</text>
+
+  <!-- ================= DETAIL: LEFT STATION, scale 1.2 ================= -->
+  <text class="lbl" x="0" y="168">DETAIL &#8212; Y1 STATION, scale 1.2. The Y2 station is this MIRRORED about X 600: read X&prime; = 1200 &minus; X.</text>
+
+  <!-- detail origin: machine (0,0) at SVG (20, 420); SVG x = 20 + X*1.2, SVG y = 420 - Y*1.2 -->
+  <rect x="20" y="276" width="72" height="144" fill="#fff" stroke="#c0c" stroke-width="1.4"/>
+  <text class="lbl" x="96" y="350" fill="#c0c">Y1 BEAM 60 &#215; 120</text>
+
+  <!-- A1-A8 corner bores: X 15 / 45, Y 15 / 45 / 75 / 105 -->
+  <circle cx="38" cy="402" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="74" cy="402" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="38" cy="366" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="74" cy="366" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="38" cy="330" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="74" cy="330" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="38" cy="294" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <circle cx="74" cy="294" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
+  <text class="lbl" x="96" y="300">A1&ndash;A8 &#8212; &oslash;9, transfer-punched</text>
+  <text class="lbl" x="96" y="312">X 15 / 45, Y 15 / 45 / 75 / 105</text>
+
+  <!-- F holes: X 7 / 53, Y 127 and 145 -->
+  <circle cx="28.4" cy="267.6" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
+  <circle cx="83.6" cy="267.6" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
+  <circle cx="28.4" cy="246"   r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
+  <circle cx="83.6" cy="246"   r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
+  <text class="lbl" x="96" y="264" fill="#c00">F1, F2 &#8212; Y 127</text>
+  <text class="lbl" x="96" y="249" fill="#c00">F5, F6 &#8212; Y 145 &middot; both on X 7 and 53</text>
+
+  <!-- detail dimensions -->
+  <line x1="20" y1="432" x2="38" y2="432" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="22" y="441">15</text>
+  <line x1="20" y1="446" x2="74" y2="446" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="42" y="455">45</text>
+  <line x1="8" y1="420" x2="8" y2="402" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="-12" y="414">15</text>
+  <line x1="8" y1="420" x2="8" y2="276" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="-20" y="350">120</text>
+  <circle cx="20" cy="420" r="3.0" fill="#c00"/>
+  <text class="dim" x="-6" y="432" fill="#c00">0,0</text>
+
+  <text class="q" x="268" y="252" fill="#c0c">THE BEAM CORNER SITS ON THE ORIGIN.</text>
+  <text class="q" x="268" y="264" fill="#c0c">Y1's lower-left corner IS X 0, Y 0, so every</text>
+  <text class="q" x="268" y="276" fill="#c0c">number on this station is the extrusion's own</text>
+  <text class="q" x="268" y="288" fill="#c0c">pattern with nothing added.</text>
+  <text class="q" x="268" y="310">A-holes are &oslash;9 and TRANSFER-PUNCHED off a real</text>
+  <text class="q" x="268" y="322">extrusion offcut &#8212; the joint works by friction,</text>
+  <text class="q" x="268" y="334">not bearing, so the coordinates are for setting up,</text>
+  <text class="q" x="268" y="346">not for hitting.</text>
+  <text class="q" x="268" y="368" fill="#c00">F-holes are &oslash;4.2 DRILLED THROUGH, tapped M5 at</text>
+  <text class="q" x="268" y="380" fill="#c00">home. Face-mounted BF12 takes 4; top-mounted</text>
+  <text class="q" x="268" y="392" fill="#c00">takes 2 &#8212; this is the face-mounted count.</text>
 </svg>
-<figcaption>Drawn to scale along X. <b>No bolt is plotted</b>: the plate's own size is settled but the
-two beam stations along it are not recorded anywhere in the repo, and this folder does not invent
-dimensions.</figcaption>
+<figcaption>Main view to scale along both axes, <b>plate clamped upside down</b> so its installed top
+edge is the Y&nbsp;0 datum and both beams sit on it. At plate scale the two stations are a few
+millimetres wide, so the <b>Y1 station is drawn again at 1.2&times;</b> below; <b>the Y2 station is
+its mirror</b> about X&nbsp;600, so every Y2 coordinate is 1200&nbsp;&minus;&nbsp;X. The schedule
+carries all sixteen A-holes explicitly rather than making anyone do that subtraction at the
+mill.</figcaption>
 </figure>
 
-<h3>Hole schedule &mdash; machining coordinates</h3>
+<h3>Hole schedule &mdash; machining coordinates, plate clamped upside down</h3>
+<p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr class="unk"><td>A1&ndash;A16</td><td>Into each beam's <b>corner bores</b>, 8 per beam</td><td>16</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">7.2</sup></td></tr>
-<tr class="unk"><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n">~150 pitch</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">7.3</sup></td></tr>
-<tr class="unk"><td>F1&ndash;F8</td><td><b>BF12</b>, face-mounted &mdash; 4 per beam</td><td>8</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup></td></tr>
+<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner <b>is</b> X&nbsp;0, Y&nbsp;0</td><td>8</td><td class="n"><b>15, 45</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1200, Y&nbsp;0</td><td>8</td><td class="n"><b>1155, 1185</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">7.2</sup></td></tr>
+<tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; first row</td><td>4</td><td class="n"><b>7, 53, 1147, 1193</b></td><td class="n"><b>127</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup></td></tr>
+<tr><td>F5&ndash;F8</td><td><b>BF12</b>, face-mounted &mdash; second row</td><td>4</td><td class="n"><b>7, 53, 1147, 1193</b></td><td class="n"><b>145</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup></td></tr>
+<tr class="unk"><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>UNKNOWN</b> &mdash; ~150 pitch</td><td class="n"><b>270</b></td><td class="d">9</td><td class="op">Through &middot; <b>the Y is settled, the eight X stations are not</b><sup class="f">7.3</sup></td></tr>
 </table>
 
-<p style="font-size:9.5pt;margin:0 0 3mm">🔴 <b>Whether the Laguna can hold the height datum across
+<p style="font-size:9.5pt;margin:0 0 3mm">&#128308; <b>Whether the Laguna can hold the height datum across
 1200 mm is still open</b>, and it gates this plate more than any hole on it.<sup class="f">7.5</sup></p>
 </div>
 
@@ -1067,9 +1138,10 @@ dimensions.</figcaption>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 7</b></p>
 <p><b>7.1</b> &mdash; <b>The length is a window, not a target.</b> It is set by the two beams' spacing plus their end plates and is forgiving - which is why ~1205 is written with a tilde and nothing downstream depends on the exact figure.</p>
 <p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint</b>, transfer-punched from a real extrusion offcut. 16 bolts, 8 per beam.</p>
-<p><b>7.3</b> &mdash; <b>Y 30 is one datum across all three plates.</b> The pitch differs because the plates do - ~150 mm over 1200 here, 100 mm over 1000 on the side plates. Both are correct; neither is the other's typo.</p>
+<p><b>7.3</b> &mdash; <b>Y 270 here, and it is NOT the side plates' Y 30.</b> This plate is clamped upside down, so its Y is measured from the <i>installed top</i> edge: Y 270 puts the row <b>34.8 from the installed bottom edge</b>, where the side plates' row is 30 from theirs. The two were one datum before this sheet was reframed and they are 4.8 apart now &mdash; deliberate, and written here so nobody 'corrects' one to match the other. The pitch differs too, because the plates do: ~150 mm over 1200 here, 100 mm over 1000 on the side plates. <b>The eight X stations are still open</b>; ~150 is a spacing, not a coordinate list.
 <p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
 <p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1200 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
+<p><b>7.6</b> &mdash; <b>Clamp this plate upside down, and the coordinates get easy.</b> Installed, both Y beams sit near the plate's top edge and the torsion-box row near its bottom. Measured from the <i>bottom</i> edge every beam number would be a large subtraction off 304.8, and the two 8-bolt patterns &mdash; the ones that must agree in height across 1200 mm &mdash; would be the numbers most exposed to it. Inverted, <b>Y1's lower-left corner lands exactly on X 0, Y 0</b>, so its eight bores are the extrusion's own 15 / 45 / 75 / 105 pattern with nothing added, and Y2's are the same pattern mirrored off X 1200. The one cost is that this sheet's Y no longer reads the same way round as Sheet 7's own installed view - see 7.3.
 <p class="src">Full reasoning, and the decisions these summarise, live in <b>machine/*.md</b>. If a note here and a .md file disagree, <b>the .md file wins</b>.</p>
 </div>
 </div>
