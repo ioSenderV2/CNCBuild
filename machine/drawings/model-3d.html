@@ -1,0 +1,86 @@
+<!doctype html>
+<meta charset="utf-8"><title>CNC assembly - generated from the dimension registry</title>
+<style>
+ html,body{margin:0;height:100%;background:#1a1d21;color:#ddd;
+   font:13px/1.5 "Segoe UI",system-ui,sans-serif;overflow:hidden}
+ #c{position:fixed;inset:0}
+ .panel{position:fixed;background:#23272dEE;border:1px solid #3a4048;border-radius:6px;padding:10px 12px}
+ #ui{top:12px;left:12px;max-width:280px}
+ #info{bottom:12px;left:12px;max-width:420px;font-size:11.5px;color:#aab}
+ h1{font-size:14px;margin:0 0 8px}
+ label{display:block;cursor:pointer;padding:1px 0}
+ input{vertical-align:-2px;margin-right:6px}
+ table{border-collapse:collapse;font-size:11.5px;margin-top:8px}
+ td{padding:1px 10px 1px 0}
+ td.n{text-align:right;color:#8fd}
+ b.w{color:#e8b64c}
+ ul{margin:4px 0 0;padding-left:16px}
+ li{margin:3px 0}
+</style>
+<canvas id="c"></canvas>
+<div class="panel" id="ui"><h1>CNC assembly</h1><div id="toggles"></div><table id="facts"></table></div>
+<div class="panel" id="info"></div>
+<script src="vendor/three.min.js"></script>
+<script>
+const PARTS=[{"n": "Torsion box", "g": "box", "c": 13214247, "p": [0, 0, -138.0], "q": [1211.75, 1156.35, 0]}, {"n": "Back tongue", "g": "box", "c": 10517270, "p": [-19.0, -19.0, -119.0], "q": [1230.75, 0, 60.0]}, {"n": "Side tongue", "g": "box", "c": 10517270, "p": [-19.0, 6.35, -119.0], "q": [0.0, 1006.35, 60.0]}, {"n": "Side tongue", "g": "box", "c": 10517270, "p": [1211.75, 6.35, -119.0], "q": [1230.75, 1006.35, 60.0]}, {"n": "Rear plate", "g": "plates", "c": 8952234, "p": [0, 0, 0], "q": [1211.75, 6.35, 304.8]}, {"n": "Side plate", "g": "plates", "c": 8952234, "p": [0.0, 6.35, 0], "q": [3.175, 1006.35, 304.8]}, {"n": "Side plate", "g": "plates", "c": 8952234, "p": [1208.575, 6.35, 0], "q": [1211.75, 1006.35, 304.8]}, {"n": "Y beam", "g": "ybeams", "c": 4881845, "p": [3.175, 6.35, 184.8], "q": [63.175, 1006.35, 304.8]}, {"n": "Y beam", "g": "ybeams", "c": 4881845, "p": [1148.575, 6.35, 184.8], "q": [1208.575, 1006.35, 304.8]}, {"n": "Front fin", "g": "plates", "c": 7317724, "p": [-16.825, 816.35, 0], "q": [-6.824999999999999, 1016.35, 302.0]}, {"n": "Front fin", "g": "plates", "c": 7317724, "p": [1218.575, 816.35, 0], "q": [1228.575, 1016.35, 302.0]}, {"n": "X beam", "g": "gantry", "c": 4881845, "p": [105.875, 6.35, 244.8], "q": [1105.875, 66.35, 364.8]}, {"n": "X end plate", "g": "gantry", "c": 7317724, "p": [93.175, 6.35, 122.275], "q": [105.875, 160.35, 364.8]}, {"n": "Y nut doubler", "g": "gantry", "c": 11558912, "p": [80.475, 6.35, 122.275], "q": [93.175, 56.35, 172.275]}, {"n": "X end plate", "g": "gantry", "c": 7317724, "p": [1105.875, 6.35, 122.275], "q": [1118.575, 160.35, 364.8]}, {"n": "Y nut doubler", "g": "gantry", "c": 11558912, "p": [1118.575, 6.35, 122.275], "q": [1131.275, 56.35, 172.275]}, {"n": "X carriage plate", "g": "z", "c": 14257668, "p": [105.875, 66.35, 213.8], "q": [259.875, 79.05, 620.8]}, {"n": "Z plate", "g": "z", "c": 14257668, "p": [100.875, 124.46, 449.2099999999999], "q": [264.875, 137.16, 624.2099999999999]}, {"n": "Spindle barrel", "g": "z", "c": 10066329, "p": [142.875, 147.16, 430.2099999999999], "q": [222.875, 227.16, 643.2099999999999]}, {"n": "Collet nut", "g": "z", "c": 3355443, "p": [166.375, 170.66, 370.2099999999999], "q": [199.375, 203.66, 413.2099999999999]}], GROUPS={"box": "Torsion box and tongues", "plates": "Rear, side and fin plates", "ybeams": "Y beams", "gantry": "X gantry", "z": "Z carriage and spindle"}, ASSUMPTIONS=["Y HOME is taken as the X end plate's BACK edge level with the Y beam's back end, mirroring the documented Y MAX (front face level with the beam end). The rear hard stop is not dimensioned anywhere.", "X HOME is the carriage plate butted against the left end plate's inner face. No stop or soft-limit figure exists for it.", "Z AT MAX puts the butted block pair at the top of the 400 mm rail, and the Z plate is centred on that pair. The plate's exact offset along the spacers is not dimensioned.", "The front fin's taper is drawn with a VERTICAL FRONT EDGE and the 200-to-100 taper on its back. Sheet 1 gives the widths, not which edge is square.", "The box tongue is drawn from the bottom skin's top face up, 179 tall, to land at the 60 proud the registry gives. torsion-box.md says 180.", "NO BASE OR LEGS - deliberately out of scope. The box sits on the ground plane."], FACTS=[["Machine width", 1211.75], ["Box fore-aft", 1156.35], ["Box thickness", 138.0], ["Y beam underside", 184.8], ["Y beam top", 304.8], ["X beam top", 364.8], ["Collet nut tip", 370.21]];
+
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x1a1d21);
+const cam=new THREE.PerspectiveCamera(42,1,10,20000);
+const rend=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true});
+scene.add(new THREE.HemisphereLight(0xffffff,0x40454d,1.05));
+const key=new THREE.DirectionalLight(0xffffff,0.75); key.position.set(1,2,1.4); scene.add(key);
+
+// Centre everything on the machine so the orbit pivot is sensible.
+let lo=[1e9,1e9,1e9], hi=[-1e9,-1e9,-1e9];
+PARTS.forEach(p=>{for(let i=0;i<3;i++){lo[i]=Math.min(lo[i],p.p[i]);hi[i]=Math.max(hi[i],p.q[i]);}});
+const mid=[0,1,2].map(i=>(lo[i]+hi[i])/2);
+const span=Math.max(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]);
+
+const byGroup={};
+for(const p of PARTS){
+  const s=[0,1,2].map(i=>Math.max(p.q[i]-p.p[i],0.4));
+  const g=new THREE.Mesh(new THREE.BoxGeometry(s[0],s[2],s[1]),
+    new THREE.MeshLambertMaterial({color:p.c}));
+  // machine (x,y,z) -> three (x, z, y); three's Y is up, and +Y fore-aft runs to -Z
+  g.position.set((p.p[0]+p.q[0])/2-mid[0], (p.p[2]+p.q[2])/2-mid[2], -((p.p[1]+p.q[1])/2-mid[1]));
+  const e=new THREE.LineSegments(new THREE.EdgesGeometry(g.geometry),
+    new THREE.LineBasicMaterial({color:0x000000,opacity:0.35,transparent:true}));
+  g.add(e); scene.add(g);
+  (byGroup[p.g]=byGroup[p.g]||[]).push(g);
+}
+
+// ground plane at the box's underside
+const gy=lo[2]-mid[2];
+const grid=new THREE.GridHelper(span*2.2, 22, 0x44505c, 0x2b3139); grid.position.y=gy; scene.add(grid);
+
+// --- orbit: written out rather than pulled from a second CDN file ---------
+let az=-0.72, el=0.42, dist=span*1.75, down=null;
+function place(){cam.position.set(dist*Math.cos(el)*Math.sin(az),dist*Math.sin(el),dist*Math.cos(el)*Math.cos(az));cam.lookAt(0,0,0);}
+addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);
+addEventListener('pointerup',()=>down=null);
+addEventListener('pointermove',e=>{if(!down)return;
+  az-=(e.clientX-down[0])*0.006; el=Math.max(-1.45,Math.min(1.45,el+(e.clientY-down[1])*0.006));
+  down=[e.clientX,e.clientY]; place(); draw();});
+addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(span*0.25,Math.min(span*6,dist*(1+Math.sign(e.deltaY)*0.11)));place();draw();},{passive:false});
+
+function resize(){const w=innerWidth,h=innerHeight;rend.setPixelRatio(devicePixelRatio);rend.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();draw();}
+function draw(){rend.render(scene,cam);}
+addEventListener('resize',resize);
+
+const t=document.getElementById('toggles');
+for(const k in GROUPS){
+  const l=document.createElement('label');
+  l.innerHTML='<input type="checkbox" checked>'+GROUPS[k];
+  l.firstChild.onchange=e=>{(byGroup[k]||[]).forEach(m=>m.visible=e.target.checked);draw();};
+  t.appendChild(l);
+}
+document.getElementById('facts').innerHTML=
+  FACTS.map(f=>'<tr><td>'+f[0]+'</td><td class="n">'+f[1]+'</td></tr>').join('');
+document.getElementById('info').innerHTML=
+  '<b class="w">Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
+  'Every box is placed from a registry value - drag to orbit, scroll to zoom. '+
+  'Pose: X home left, Y home back, Z at max.<br><b class="w">Placements ASSUMED, not derived:</b>'+
+  '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
+
+place(); resize();
+</script>
