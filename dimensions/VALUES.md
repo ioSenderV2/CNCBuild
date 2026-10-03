@@ -193,6 +193,8 @@ Registry updated: **2026-10-02**
 | **SIDE_TONGUE_L** | 1000 mm | derived | BEAM_LEN | Side tongue length, 1000 - his, 2026-10-03, and it is the Y beam's own length because the side plate it laps is too. |
 | **SIDE_TONGUE_END** | 1006.35 mm | derived | SIDE_TONGUE_START + SIDE_TONGUE_L | 1006.35 from the box's back edge. THIS IS THE NUMBER THAT CLOSES THE FIN CLASH: the Y beam runs 6.35 to 1006.35 and the front fin caps it from 1006.35 forward, so the tongue ends exactly where the fin begins. The fin stands FIN_PROUD = 16.825 outboard of the side plate, which is also the tongue's inner face, so a tongue running any further forward would be held off the plate by the fin along the plate's whole length. It does not run further forward. |
 | **BOX_FRONT_BARE** | 150 mm | derived | BOX_FORE_AFT - SIDE_TONGUE_END | Bare top skin ahead of the side tongue, 150. The front fin occupies the first T_FIN of it and the remaining BOX_FRONT_OVERHANG is clear deck, which is where the four L-brackets per fin land. |
+| **T_BOX_TONGUE** | 19 mm | derived |  | The box tongue is ONE 19 mm lamination, settled by him 2026-10-03 - not the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. Same stock as the skins, so T_BB_SKIN's warning applies: sheet sold as 19 commonly measures 18.2-18.5. |
+| **FIN_COVERS_TONGUE_END** | -2.175 mm | derived | FIN_PROUD - T_BOX_TONGUE | How much of the side tongue's front END GRAIN the fin covers, beyond its full thickness. His intent 2026-10-03 is that the fin covers it completely, which needs this at 0 or above. ⚠ IT IS NEGATIVE ON THE REPO'S OWN NUMBERS: FIN_PROUD derives to 16.825 (FIN_OVERHANG 20 less the 3.175 side plate) against a 19 tongue, so 2.175 of end grain stays exposed. He stated the fin runs past the side plate by 19. One of the two is wrong and it is UNRESOLVED - either FIN_OVERHANG is 22.175 rather than 20, or the end grain is 2.175 short of covered. |
 
 ## Not confirmed on the real part
 
@@ -204,7 +206,7 @@ numbers in one session on 2026-10-02.
 - **T_DOUBLER** (nominal) = 12.7 mm - feeds 4: DOUBLER_SEATING, NUT_AIR_CLEAR, ROOT_BOLT_X_DOUBLER, SOLE_REACH
 - **T_SOLE_BRACKET** (nominal) = 6.35 mm - nothing depends on it
 - **T_INTERPOSER** (nominal) = 9.525 mm - feeds 19: BEAM_SEAM_XEP, BF12_ROW1_Y, BF12_ROW2_Y, BLOCK_HIGH_COL_A, BLOCK_HIGH_COL_B, BLOCK_LOW_COL_A, BLOCK_LOW_COL_B, NUT_FACE_BELOW_BEAM, RAIL_HIGH_XEP, RAIL_LOW_XEP, SHELF_BOLT_HIGH_X, SHELF_BOLT_LOW_X, TONGUE_BF12_ROW1, TONGUE_BF12_ROW2, TONGUE_EDGE_MARGIN, TONGUE_TOP, XEP_BEAM_TOP_X, XEP_BOTTOM, XEP_H
-- **T_SIDE_PLATE** (nominal) = 3.175 mm - feeds 15: BEAM_SPAN, BOX_W, FIN_PROUD, REAR_PLATE_L, RP_A_COL_1, RP_A_COL_3, RP_A_COL_4, RP_F_COL_1, RP_F_COL_2, RP_F_COL_3, RP_F_COL_4, XBOX_X_FIRST, Y1_EXT_FACE_X, Y2_EXT_FACE_X, Y_BEAM_ASSY_W
+- **T_SIDE_PLATE** (nominal) = 3.175 mm - feeds 16: BEAM_SPAN, BOX_W, FIN_COVERS_TONGUE_END, FIN_PROUD, REAR_PLATE_L, RP_A_COL_1, RP_A_COL_3, RP_A_COL_4, RP_F_COL_1, RP_F_COL_2, RP_F_COL_3, RP_F_COL_4, XBOX_X_FIRST, Y1_EXT_FACE_X, Y2_EXT_FACE_X, Y_BEAM_ASSY_W
 - **T_BACK_JOIN_PLATE** (nominal) = 6.35 mm - nothing depends on it
 - **FIN_KERF** (nominal) = 2 mm - feeds 1: FIN_BASE_W
 - **T_Z_PLATE** (nominal) = 12.7 mm - feeds 2: GANTRY_ARM, SPINDLE_OFFSET
