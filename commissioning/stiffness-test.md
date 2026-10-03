@@ -2,7 +2,7 @@
 
 **Not yet run.** This is the procedure for the test that
 [`../machine/gantry-beam-joint.md`](../machine/gantry-beam-joint.md) and
-[`../machine/end-plates-risers-and-spindle.md`](../machine/end-plates-risers-and-spindle.md) both call
+[`../machine/loads-and-plate-thicknesses.md`](../machine/loads-and-plate-thicknesses.md) both call
 for and neither specifies. Results go in the tables at the bottom and then **outrank every computed
 figure in this repo**.
 

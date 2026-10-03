@@ -39,8 +39,7 @@ This file used to read:
 **It still holds on X, and X stays 6061.** On Y it has been overridden — and the override is not a
 refutation. **The cost is accepted instead of avoided.** The full reasoning sits with the part that
 took the decision over, in
-[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) under "The full-height
-outboard plate". In short:
+[`outboard-plate.md`](outboard-plate.md). In short:
 
 - On Y there **is no separate 120 mm back plate any more.** The full-height outboard plate, running
   from the beam down to the torsion box, *is* the back joining plate — grown, not added alongside.
@@ -155,7 +154,7 @@ number.)
 #### Indicative deflections, and keep these apart from the dead-load figure
 
 ⚠️ **A number already in this repo is a DEAD-LOAD sag and has been misread as a cutting deflection** -
-the **0.022 mm** quoted in `end-plates-risers-and-spindle.md` is the gantry's own share of weight, not
+the **0.022 mm** quoted in [`lateral-stiffness.md`](lateral-stiffness.md) is the gantry's own share of weight, not
 a response to cutting force. Under the **1000 N structural envelope**, mid-span, ~900 mm free span,
 end-supported:
 
@@ -208,7 +207,7 @@ decision was made on the engineering, not on sunk cost. **Recorded so it is not 
 Probably not, and that is why 1/4" was chosen on X. The riser plates are the obvious suspect. On the
 X gantry the end plates are 1/2"; on the Y beams there is a **proposed** full-height outboard plate
 that would remove the concern entirely - **proposed, not decided, nothing ordered**. See
-[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md).
+[`outboard-plate.md`](outboard-plate.md).
 
 🔴 **The percentages above are stiffness ratios and are force-independent, but any absolute
 deflection quoted in this repo at 250 N is two to four times optimistic** - that was a router

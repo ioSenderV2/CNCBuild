@@ -78,7 +78,8 @@ re-import after any registry change, because Fusion holds a copy and a copy goes
 go and check; it does not check it for you. A prose checker — tagging quoted numbers so they can be
 verified mechanically — is the obvious next step and is **not built**.
 
-⚠️ **Only [`../machine/end-plates-risers-and-spindle.md`](../machine/end-plates-risers-and-spindle.md)
-has been mined for primitives.** The other `machine/*.md` files have numbers that are not in here.
+⚠️ **Only the ten plate files split out of `end-plates-risers-and-spindle.md` on 2026-10-02
+have been mined for primitives** - see [`../machine/README.md`](../machine/README.md) for the list.
+The other `machine/*.md` files have numbers that are not in here.
 Key them in as they get touched rather than attempting a sweep, which is the version of this job that
 gets abandoned half-done.

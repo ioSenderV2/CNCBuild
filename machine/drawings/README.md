@@ -42,8 +42,8 @@ became one 1200 mm × 12" × 1/4" A36 steel plate that is also the rear shear pa
 sheet here is superseded**, three parts were added to the trip, and the materials changed.
 
 This is the folder's own rule firing exactly as designed - derived, never authoritative, and the
-`.md` file wins. See [`../end-plates-risers-and-spindle.md`](../end-plates-risers-and-spindle.md),
-whose open items list the four measurements that gate cuts which cannot be undone. **Regenerate
+`.md` file wins. See [`../open-items.md`](../open-items.md),
+which lists the four measurements that gate cuts which cannot be undone. **Regenerate
 before the visit.**
 
 ⚠️ **No plate in this pack has a complete hole schedule yet**, and that is the pack's main finding.

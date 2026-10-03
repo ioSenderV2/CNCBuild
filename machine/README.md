@@ -6,9 +6,33 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 | File | What is in it |
 |---|---|
 | [`gantry-beam-joint.md`](gantry-beam-joint.md) | Each gantry beam is two stacked 8020 `30-6060`. How they are tied together, and the four schemes that were killed getting there |
-| [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) | What holds the beams up and what hangs off them. **Carries the cutting-force recalibration that every deflection figure in this repo depends on** |
 | [`torsion-box.md`](torsion-box.md) | What the machine stands on. The box, its three cedar posts, the base frame and shear walls, and the transport plan |
+| **The ten plate files** | What holds the beams up and what hangs off them — listed below |
 | [`drawings/`](drawings/) | **Derived, not authoritative.** The shop pack for the machining trip - one sheet per plate, printable to PDF. If a sheet and a file above disagree, **the file wins** |
+
+## The plates, risers and the spindle mount
+
+**Partly settled.** The beams themselves are finished — see
+[`gantry-beam-joint.md`](gantry-beam-joint.md). These ten files cover what holds them up and what
+hangs off them. Several dimensions are still **⚠️ Open** and are marked as such rather than guessed;
+[`open-items.md`](open-items.md) is the generated-adjacent list of them, and the repo-wide one is
+[`../STATUS.md`](../STATUS.md).
+
+They were one 2877-line file, `end-plates-risers-and-spindle.md`, until 2026-10-02. The split is
+verbatim — no decision was reopened in the move — and it is along the seams the prose already had.
+
+| File | What is in it |
+|---|---|
+| [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md) | **Read this first.** The cutting-force recalibration (500-1000 N, not 250) that **every deflection figure in this repo depends on**, the plate and riser thicknesses it sets, and the one measurement that would settle the 1/4" question |
+| [`y-beam-support.md`](y-beam-support.md) | How each Y beam is held at its ends: the end plate / Z riser, the **cast stepper frames** on all four axes, the thrust block, the inverted ball nut and its sole plate, and BF12 at the rear |
+| [`lateral-stiffness.md`](lateral-stiffness.md) | The lateral fix — tapered front fins per beam, the **one 1200 mm steel back plate** replacing both rear risers and the shear panel, and the tongues that back them |
+| [`outboard-plate.md`](outboard-plate.md) | The full-height outboard plate: **1/8" steel**, also the Y back joining plate, how it lands on the torsion box, the galvanic cost, and the encoder tape that runs on the front plate |
+| [`spindle-and-mount.md`](spindle-and-mount.md) | The Ø80 2.2 kW water-cooled spindle, its body dimensions, why not 3 kW, and the 109 mm offset from the X beam to its centreline |
+| [`z-carriage.md`](z-carriage.md) | The 164 × 175 × 1/2" Z plate, the spacer blocks and why they get skimmed, the clamp mount geometry, the travel budget and the top stop |
+| [`x-gantry-end-plates.md`](x-gantry-end-plates.md) | The two X gantry end plates: the vertical stack-up, the 242.5 mm height, the sole plate and doubler block, the four bolts above the Y beam top, and the shelf |
+| [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
+| [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One datum per plate, one reference rail, and what mating hardware to take |
+| [`open-items.md`](open-items.md) | Everything still unmeasured, grouped by where it came from |
 
 ## Frame and motion
 
@@ -24,20 +48,20 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
 | Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 62 × 50 window for the stepper frame. **Rear:** one **1200 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
-| Plate materials | 6061 throughout **except** the two Y outboard plates (**1/8" steel**) and the Y rear plate (**1/4" A36**) — see [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) |
+| Plate materials | 6061 throughout **except** the two Y outboard plates (**1/8" steel**) and the Y rear plate (**1/4" A36**) — see [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), [`outboard-plate.md`](outboard-plate.md) and [`lateral-stiffness.md`](lateral-stiffness.md) |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
 firmware config, so the second Y motor is M3.
 
 ### End plates
 
-Partly specified - see [`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md). They
-bolt the Y beams to the torsion box.
+Partly specified - see [`y-beam-support.md`](y-beam-support.md) and
+[`lateral-stiffness.md`](lateral-stiffness.md). They bolt the Y beams to the torsion box.
 
 🔴 **Reworked 2026-10-02 and all four as-built Y risers are scrapped.** Cast stepper frames replaced
 BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one
 1200 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be
-undone — see that file's open items before ordering or cutting anything for the Y ends.
+undone — see [`open-items.md`](open-items.md) before ordering or cutting anything for the Y ends.
 
 **Deferred, not blocking: the 35 mm sensor bore.**
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)

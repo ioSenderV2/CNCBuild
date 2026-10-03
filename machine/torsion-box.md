@@ -5,7 +5,7 @@ points** and is also the pallet it travels on.
 
 The box's *interface* to the Y beams - the laminated outer wall, the 61 mm curb and the bolt row -
 is not here. It lives with the plate it belongs to, in
-[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md) under "How it lands on the
+[`outboard-plate.md`](outboard-plate.md) under "How it lands on the
 torsion box". Read that first; this file is everything below the top skin.
 
 ---
@@ -23,8 +23,7 @@ torsion box". Read that first; this file is everything below the top skin.
 ✅ **Decided 2026-09-30: the doubled wall runs the whole perimeter, not just left and right.** It
 began as the left/right detail that captures the full-height outboard plates. The front and back now
 get it too, because the **front taper fins and the full-width back panel need the same backing face**
-- see "The lateral fix" in
-[`end-plates-risers-and-spindle.md`](end-plates-risers-and-spindle.md). Three consequences, all good:
+- see [`lateral-stiffness.md`](lateral-stiffness.md). Three consequences, all good:
 
 - **One detail everywhere** instead of two. Inner web between the skins, outer lamination 180 mm tall
   standing on the bottom skin and 61 mm proud, aluminium bolted through it.
