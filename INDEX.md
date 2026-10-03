@@ -192,6 +192,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Through-drilled now, so BOLT LENGTH carries what blind-tapping used to](machine/x-gantry-end-plates.md#through-drilled-now-so-bolt-length-carries-what-blind-tapping-used-to)
   - [What the bar clears](machine/x-gantry-end-plates.md#what-the-bar-clears)
 - [The two plates are identical below the top edge, and differ above it](machine/x-gantry-end-plates.md#the-two-plates-are-identical-below-the-top-edge-and-differ-above-it)
+- [The ø35 encoder bore is at Y 77, height −60](machine/x-gantry-end-plates.md#the-ø35-encoder-bore-is-at-y-77-height-60)
 
 ## [machine/y-beam-support.md](machine/y-beam-support.md)
 

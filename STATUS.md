@@ -140,7 +140,7 @@ interface, not this file.
 - 🔴 [L86](machine/tramming.md#two-practical-points) — *Roll: SHIM THE SHELF - decided 2026-10-02 / Two practical p…*<br>The shim needs clearance for the two vertical M8. They pass up through the bar at Y 15 and Y 45 into the extrusion's underside T-nuts, straight through the shim plane. Slot the shim open from one edge at both stations so it slides in with those bolts loosened rather than removed - a plain rectangle would mean pulling the beam off.
 - 🔴 [L116](machine/tramming.md#open-nod) — *Tramming / Open: nod*<br>Superseded - see below. Permanent access turns out not to be worth having.
 
-## [machine/x-gantry-end-plates.md](machine/x-gantry-end-plates.md)  (21)
+## [machine/x-gantry-end-plates.md](machine/x-gantry-end-plates.md)  (22)
 
 - 🔴 [L66](machine/x-gantry-end-plates.md#the-bf12-tongue-and-it-is-on-one-plate-only) — *Reworked 2026-10-02 - the screw and stepper left this plate…*<br>Only the right-hand plate gets it. The left-hand plate is the stepper end: the casting and its interposer sit there, on top of the beam.
 - 🔴 [L74](machine/x-gantry-end-plates.md#the-bf12-tongue-and-it-is-on-one-plate-only) — *Reworked 2026-10-02 - the screw and stepper left this plate…*<br>The number was right and the reason this file gave for it was wrong. It used to read "two HGH20 blocks end to end with 2-3 mm between". There is no gap - 154 is the butted dimension.
@@ -163,6 +163,7 @@ interface, not this file.
 - ⚠️ [L553](machine/x-gantry-end-plates.md#through-drilled-now-so-bolt-length-carries-what-blind-tapping-used-to) — *The shelf / Through-drilled now, so BOLT LENGTH carries wha…*<br>The clash itself is unconfirmed, because the block pattern is unmeasured - the −96 rests on the measured 45 mm row gap and not on absolute rail positions. Blind-tapping makes it moot either way, which is why it is the answer rather than a measurement.
 - ⚠️ [L557](machine/x-gantry-end-plates.md#through-drilled-now-so-bolt-length-carries-what-blind-tapping-used-to) — *The shelf / Through-drilled now, so BOLT LENGTH carries wha…*<br>A 25.4 mm bar would not have had this problem - its single bolt at Z −73 sat inside the block row gap. The 2" bar is still right; this is the price, and it is a drilling instruction rather than a design cost.
 - 🔴 [L586](machine/x-gantry-end-plates.md#the-two-plates-are-identical-below-the-top-edge-and-differ-above-it) — *The X gantry end plates / The two plates are identical belo…*<br>This section said "genuinely identical" and that lapsed the same day, 2026-10-02, when BF12 moved onto a tongue off the right-hand plate's top edge. The body of the two plates - the 154 × 242.5 outline, the block holes, the encoder bore, the shelf, the sole plate and doubler - is still one drawing and still common. What is no longer common is the tongue, which only the right-hand plate has.
+- 🔴 [L619](machine/x-gantry-end-plates.md#the-ø35-encoder-bore-is-at-y-77-height-60) — *The X gantry end plates / The ø35 encoder bore is at Y 77,…*<br>This closes one of the four questions that gated drilling, and it is the one with the most downstream: the four bearing blocks, and therefore all sixteen M5 holes, are positioned relative to this bore. Their own pitch still has to come off the X/Y kit, but the pattern now has an anchor.
 
 ## [machine/y-beam-support.md](machine/y-beam-support.md)  (12)
 
@@ -207,4 +208,4 @@ interface, not this file.
 
 ---
 
-**143 open** across 27 files.
+**144 open** across 27 files.

@@ -609,3 +609,17 @@ from
 **Only the encoder bore remains**, so "the 35 mm hole in the X end plate" is now unambiguous.
 
 ---
+
+
+## ✅ The ø35 encoder bore is at Y 77, height −60
+
+**Given 2026-10-03.** It is **centred in the 154 × 120 area of the plate that lies over the Y beam** -
+77 across the plate's fore-aft width, 60 below the Y beam top, which is the beam seam centreline.
+
+🔴 **This closes one of the four questions that gated drilling**, and it is the one with the most
+downstream: **the four bearing blocks, and therefore all sixteen M5 holes, are positioned relative to
+this bore.** Their own pitch still has to come off the X/Y kit, but the pattern now has an anchor.
+
+📌 **The drawing had been showing it at Y 77 while the schedule said UNKNOWN** - the drawing was
+right, but it was asserting a position the schedule did not claim, which is the wrong way round for
+a derived document. Both now say 77.

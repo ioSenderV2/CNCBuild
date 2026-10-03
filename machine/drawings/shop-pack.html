@@ -328,10 +328,9 @@ Identical below the top edge &mdash; <b>the RIGHT-HAND plate also carries a 40 &
 tongue above it.</b> Cut both outlines together; leave the tongue on one.<sup class="f">2.9</sup><br>
 <span class="datum">WCS ORIGIN: bottom back corner.</span> Y from the <b>plate's back edge</b>,
 never from the beam. Heights from the Y beam top.<br>
-<b>&#9888; The block pattern hangs off the &oslash;35 bore</b>: the four blocks, and therefore all 16 M5
-holes, are positioned relative to the bore centre. <b>Fix the bore first and the pattern follows</b>
-&mdash; but every hole is still dimensioned on this sheet as absolute X/Y from the WCS origin
-above.<sup class="f">2.5</sup>
+<b>The &oslash;35 bore is at Y 77, height &minus;60</b> &mdash; centred in the 154 &times; 120 area
+over the Y beam. <b>The four blocks, and all 16 M5 holes, are positioned relative to it</b>, so bore
+it first; their own pitch still comes off the X/Y kit.<sup class="f">2.5</sup>
 </div>
 
 <figure>
@@ -430,7 +429,17 @@ above.<sup class="f">2.5</sup>
   <line x1="300" y1="0" x2="300" y2="242.5" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="303" y="124">242.5</text>
 </svg>
-<figcaption>Outer face, seen from outboard. SVG x is the plate's fore-aft (Y) dimension from the back
+<figcaption>
+<b>Key:</b>
+<span style="color:#111">&#9679; solid black</span> = this plate &middot;
+<span style="color:#0a6">&#9679; green</span> = the X beam extrusions &middot;
+<span style="color:#c0c">&#9679; magenta</span> = the four HGH20 bearing blocks &middot;
+<span style="color:#b06000">&#9679; amber</span> = parts on other sheets (shelf bar, doubler) and
+the M5 holes that fix them &middot;
+<span style="color:#06c">&#9679; blue</span> = dimensions.
+<b>Dashed = not this plate</b>, or on its far face.
+<br><br>
+Outer face, seen from outboard. SVG x is the plate's fore-aft (Y) dimension from the back
 edge; heights are measured from the Y beam top. The beam's back face is <b>flush with the plate's
 back edge</b> as of 2026-10-02. Dashed outlines are features on the far side or not yet
 dimensioned.</figcaption>
@@ -441,7 +450,7 @@ dimensioned.</figcaption>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y from back edge</th><th>Height</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td>E1&ndash;E4</td><td>Clearance into <b>top</b> extrusion corner bores</td><td>4</td><td class="n">15, 45</td><td class="n">+15, +45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
 <tr><td>H1, H2</td><td><b>Shelf to plate</b>, tapped M8</td><td>2</td><td class="n">30, 30</td><td class="n">&minus;75.8, &minus;95.8</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr class="unk"><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; sets the block pattern</td><td>1</td><td class="n">UNKNOWN</td><td class="n">&minus;60</td><td class="d">35</td><td class="op"><b>LOCATE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
+<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; sets the block pattern</td><td>1</td><td class="n">77</td><td class="n">&minus;60</td><td class="d">35</td><td class="op">Through &middot; <b>LOCATE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
 <tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td colspan="2"><b>FROM the &oslash;35 bore</b> &mdash; the &oslash;35 centre</td><td class="d">5.2</td><td class="op"><b>C&rsquo;BORED</b> &middot; pitch from the X/Y kit<sup class="f">2.5</sup></td></tr>
 <tr class="unk"><td>D1&ndash;Dn</td><td>Doubler block through-bolts</td><td>TBD</td><td class="n">UNKNOWN</td><td class="n">&minus;122 &rarr; &minus;182.5</td><td class="d">?</td><td class="op">Through &middot; <b>drill with the doubler</b><sup class="f">2.6</sup></td></tr>
 <tr class="unk"><td>B1&ndash;Bn</td><td>Sole bracket, up into the bottom edge</td><td>TBD</td><td class="n">UNKNOWN</td><td class="n">&minus;182.5</td><td class="d">5.0</td><td class="op"><b>DRILL THROUGH</b> &middot; <b>two rows</b><br>tap M6 at home<sup class="f">2.7</sup></td></tr>
@@ -893,9 +902,9 @@ wrong.
 <table class="sched">
 <tr><th>#</th><th>Question</th><th>Blocks</th></tr>
 <tr class="unk"><td>1</td><td>The <b>4 &times; HGH20 block hole pattern</b>, measured on the <b>X/Y kit</b> &mdash; not the Z kit, a different supplier</td><td>16 holes on each X end plate, and the doubler's height</td></tr>
-<tr class="unk"><td>2</td><td>The <b>&oslash;35 encoder bore's fore-aft position</b> on the X end plate</td><td>The bore, and through it the whole block pattern</td></tr>
-<tr class="unk"><td>3</td><td><b>How far past the front riser plane the spindle reaches</b>, and whether it fouls the widened fin at low Z</td><td>Sheet 1's taper cut &mdash; one bandsaw pass, cannot be put back</td></tr>
-<tr class="unk"><td>4</td><td><b>The mill's model, and whether its DRO is 2-axis or 3-axis</b></td><td>How every sheet should be dimensioned</td></tr>
+
+<tr class="unk"><td>2</td><td><b>How far past the front riser plane the spindle reaches</b>, and whether it fouls the widened fin at low Z</td><td>Sheet 1's taper cut &mdash; one bandsaw pass, cannot be put back</td></tr>
+<tr class="unk"><td>3</td><td><b>The mill's model, and whether its DRO is 2-axis or 3-axis</b></td><td>How every sheet should be dimensioned</td></tr>
 </table>
 
 <h3>Pack list</h3>
