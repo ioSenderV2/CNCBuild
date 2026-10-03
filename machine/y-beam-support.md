@@ -193,8 +193,14 @@ arrangement available**, and 150 is what makes room for the third.
 **Why 82 / 110 / 138**, which are the two checks that bind:
 
 - **82 clears the casting's last tapped row at 71** - 11 mm along, 13.6 mm in 2D against the 8 mm
-  lateral offset, leaving ~5 mm of web.
-- **138 leaves 12 mm to the bar's inboard end**, enough for an 11.8 mm flange head.
+  lateral offset. ⚠️ **Restated for M8 2026-10-02:** the web was computed with an M5 clearance hole
+  in the bar, and an M8 clearance hole is 9 mm rather than 5.5, which takes **1.75 mm off each
+  side**. Both rows still clear; the web is the number to re-check if either moves.
+- **138 leaves 12 mm to the bar's inboard end**, against the **~9 mm half-head** of an M8 flange
+  bolt. 📌 **This line used to read "enough for an 11.8 mm flange head"** - the M5 head *diameter*,
+  compared against an edge *distance*. That comparison was conservative by a factor of two and it
+  survived the M5 → M8 change long enough to raise a false alarm: an 18 mm M8 head needs **9 mm**
+  from hole centre to edge, not 18. **Edge distance is a radius question.**
 
 ✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
 over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M8 of clamp.
