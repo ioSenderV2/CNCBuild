@@ -34,6 +34,13 @@ stopping there.
 ✅ **The X interposer is 3/8", the same as Y** - settled 2026-10-02. One thickness across the
 machine; see the casting section for why 3/8" is the right number and not merely an available one.
 
+✅ **It is held down by M8 flange bolts into slide-in T-nuts** - given 2026-10-02, and the same
+joint on all three axes: **X on top of its beam, Y1 and Y2 under theirs.** The casting itself never
+touches the extrusion; it is tapped into the interposer with M5. Only Z skips the plate, landing
+straight on the 1/2" X carriage plate. ⚠️ **How many bolts and where they sit along the X interposer
+is not recorded** - the Y bar's three rows at 82 / 110 / 138 were derived from the Y geometry and do
+not transfer.
+
 ✅ **154 mm is set by the bearing blocks, and it is now measured: 154.18 mm for two blocks butted**
 (2026-10-02, calipers - see
 [`photos/y-bearing-blocks-butted-154.jpg`](photos/y-bearing-blocks-butted-154.jpg)). Each block is

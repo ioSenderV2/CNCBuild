@@ -42,9 +42,12 @@
   DRO item below.
 - ⚠️ **A sensor reading at the min-Y end of the tape**, with the stepper in place, against
   mid-travel. Before 3 m of one-shot PSA goes down.
-- ⚠️ **Which extrusion face the casting bolts to**, recorded here because this file says "a face"
-  rather than naming it. The ball screws run underneath, so the underside is the expectation, not a
-  measurement.
+- ✅ ~~**Which extrusion face the casting bolts to**~~ **Closed 2026-10-02 - the question had no
+  answer because its premise was wrong.** The casting does not bolt to an extrusion face at all.
+  **X, Y1 and Y2 go casting → interposer → beam**, the interposer held by **M8 flange bolts into
+  slide-in T-nuts** - on **top** of the X beam, **under** the Y beams. Z has no interposer and lands
+  straight on the 1/2" X carriage plate. The face is therefore the top slot face on X and the bottom
+  slot face on Y, which was the standing expectation; what was missing was the plate between.
 - ⚠️ **The curb channel width** - dimensioned around 6.35 mm, now taking 3.175 mm, or 3.04 mm if
   the sheet arrives at a true 11 gauge.
 - ⚠️ **The delivered thickness of the 1/8" sheet.** The listing says both 1/8" and 11 gauge, which

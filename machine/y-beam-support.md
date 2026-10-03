@@ -143,9 +143,16 @@ Two complaints, and only one of them is a stiffness problem:
 
 ### How it mounts, and why that needs a bar
 
-🔴 **The casting bolts to a face of the extrusion, not to the end plate.** This is the whole
-difference from BK12 and it drives everything else. Its foot is **stepped, not one flat plane** -
-there is a ledge where the stepper mount begins.
+🔴 **The casting never touches the extrusion. It bolts to an interposer, and the interposer bolts
+to an extrusion face.** That it lands on the beam at all - rather than on the end plate, where BK12
+went - is the whole difference, and it drives everything else. Its foot is **stepped, not one flat
+plane** - there is a ledge where the stepper mount begins.
+
+📌 **Corrected 2026-10-02 by the owner.** This section used to open "the casting bolts to a face of
+the extrusion", which is how an open item came to ask *which* face - a question with no answer,
+because the premise was wrong. **X, Y1 and Y2 all go casting → interposer → beam**: on top of the X
+beam, under the Y beams, held by **M8 flange bolts into slide-in T-nuts**. Z is the exception and
+always was, landing straight on the 1/2" X carriage plate with no interposer at all.
 
 **Six through-bolt holes**, and they cannot land directly in the extrusion: the wall at that face is
 **2.21 mm** (measured), which is 0.44 diameters for an M5 and not a thread. So an interposer carries
@@ -155,7 +162,7 @@ them:
 |---|---|
 | Bar | **60 mm wide × 150 mm long × 3/8" aluminium** |
 | Position | its **outboard end 30 mm past the fin's outer face**, so the casting and bar protrude through the window together |
-| Bar to extrusion | **6 × M5 flange bolts** in **3 rows**, into T-nuts in the `30-6060`'s bottom-face slots at 15 and 45 mm |
+| Bar to extrusion | **6 × M8 flange bolts** in **3 rows**, into **slide-in T-nuts** in the `30-6060`'s bottom-face slots at 15 and 45 mm |
 | Rows, from the bar's outboard end | **82, 110 and 138** |
 | Counterbores | **none anywhere** |
 | Casting to bar | its 6 through holes, **tapped into 3/8"** = **1.9 × D** |
@@ -190,7 +197,7 @@ arrangement available**, and 150 is what makes room for the third.
 - **138 leaves 12 mm to the bar's inboard end**, enough for an 11.8 mm flange head.
 
 ✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
-over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M5 of clamp.
+over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M8 of clamp.
 
 ⚠️ **The casting now cantilevers 42.7 mm past the beam's end**, carried by the bar alone. That is
 accepted, and it is the same call made on X: roughly 2.5 kg at that reach is under 2 N·m, and the
