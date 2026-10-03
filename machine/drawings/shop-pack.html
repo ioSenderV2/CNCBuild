@@ -169,7 +169,8 @@ carrying two parallel rails.</li>
 <table>
 <tr><th>Plate</th><th>Qty</th><th>Material</th><th>Mill needed?</th><th>Status</th></tr>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td><b>10 mm</b> alu (measured &mdash; not 3/8"), from one 302 mm square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
-<tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 242.5</b></td><td><b>Yes</b></td><td><b>Outline settled 2026-10-02.</b> 16 block holes + the encoder bore still UNKNOWN; one shelf hole in CONFLICT &mdash; Sheet 2</td></tr>
+<tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 242.5</b></td><td><b>Yes</b></td><td><b>Outline settled 2026-10-02.</b> The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2</td></tr>
+<tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only, with the end plate</td><td><b>Was missing from this list.</b> Four holes, all dimensioned &mdash; Sheet 2b</td></tr>
 <tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 60</td><td>Drill only, with the end plate</td><td><b>Added 2026-10-02.</b> Height gated on the block row &mdash; Sheet 5</td></tr>
 <tr><td><b>Y nut sole bracket</b></td><td>2</td><td>1/4" alu, trapezoid 154 &rarr; ~46</td><td>Two angled cuts + 4 holes</td><td><b>Added 2026-10-02.</b> Nut pattern settled; root holes TBD &mdash; Sheet 5</td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
@@ -306,8 +307,11 @@ spindle clearance is unsettled and the cut is one bandsaw pass that cannot be pu
 <b>2 off &middot; 1/2" (12.7 mm) 6061 &middot; 154 &times; 242.5 mm</b><br>
 Identical below the top edge &mdash; <b>the RIGHT-HAND plate also carries a 40 &times; 60 mm BF12
 tongue above it.</b> Cut both outlines together; leave the tongue on one.<sup class="f">2.9</sup><br>
-<span class="datum">DATUM: bottom back corner.</span> Y is measured from the <b>plate's back edge</b>,
-never from the beam. Heights are from the Y beam top.
+<span class="datum">DATUM A: bottom back corner.</span> Y from the <b>plate's back edge</b>,
+never from the beam. Heights from the Y beam top.<br>
+<span class="datum">DATUM B: the &oslash;35 bore centre.</span> <b>The four bearing blocks &mdash;
+and therefore all 16 M5 holes &mdash; are located from it</b>, not from a plate
+edge.<sup class="f">2.5</sup>
 </div>
 
 <figure>
@@ -330,13 +334,22 @@ never from the beam. Heights are from the Y beam top.
     <circle cx="15" cy="15" r="4.5"/><circle cx="45" cy="15" r="4.5"/>
     <circle cx="15" cy="45" r="4.5"/><circle cx="45" cy="45" r="4.5"/>
   </g>
-  <text class="q" x="62" y="18">E1-E4 &mdash; 4 &times; &oslash;9, TRANSFER PUNCH</text>
-  <text class="q" x="62" y="29">Y 15 and 45 from the back edge</text>
-  <text class="q" x="62" y="40">heights +15 and +45 above the beam top</text>
+  <text class="q" x="64" y="22">E1&#8211;E4</text>
 
-  <!-- X beam footprint: flush with the back edge, 60 deep -->
-  <line x1="60" y1="0" x2="60" y2="60" stroke="#888" stroke-dasharray="4 3"/>
-  <text class="lbl" x="63" y="56">beam front face, Y 60</text>
+  <!-- X BEAM, BOTH extrusions. SVG y = 60 - height. The pair is stacked 60 + 60 and only
+       the TOP one is above the Y beam top - the half-overlap. Flush with the back edge, 60
+       deep in Y. E1-E4 land in the TOP extrusion only; the LOWER one is carried by the shelf. -->
+  <rect x="0" y="0" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1"/>
+  <text class="lbl" x="3" y="54" fill="#0a6">X TOP 60&#215;60</text>
+  <rect x="0" y="60" width="60" height="60" fill="none" stroke="#0a6" stroke-width="1.1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="3" y="114" fill="#0a6">X LOWER 60&#215;60</text>
+
+  <!-- the shelf bar, under the lower extrusion: 60 long x 50.8 tall, its top at height -60 -->
+  <rect x="0" y="120" width="60" height="50.8" fill="#fdf3e3" stroke="#b06000" stroke-width="1.3"/>
+  <text class="lbl" x="3" y="148" fill="#b06000">SHELF 2b</text>
+
+  <line x1="60" y1="0" x2="60" y2="170.8" stroke="#888" stroke-dasharray="4 3"/>
+  <text class="lbl" x="63" y="168">Y 60</text>
 
   <!-- the 45 mm measured gap between bearing block rows -->
   <line x1="0" y1="97.5" x2="154" y2="97.5" stroke="#c0c" stroke-dasharray="2 2"/>
@@ -347,23 +360,19 @@ never from the beam. Heights are from the Y beam top.
   <!-- C2: the encoder sensor bore, height settled, Y position not -->
   <circle cx="77" cy="120" r="17.5" fill="#fff" stroke="#111" stroke-width="1" stroke-dasharray="5 3"/>
   <text class="lbl" x="68" y="123">&oslash;35</text>
-  <text class="q" x="62" y="150">C2 encoder bore &mdash; height SETTLED</text>
-  <text class="q" x="62" y="161">on the seam. Y POSITION UNKNOWN,</text>
-  <text class="q" x="62" y="172">shown at the plate's mid only</text>
+  <text class="q" x="92" y="128">C2 &#8212; DATUM B</text>
 
   <!-- bearing block band, deliberately unbounded -->
   <rect x="0" y="60" width="154" height="120" fill="none" stroke="#c0c" stroke-width="0.8" stroke-dasharray="3 2"/>
-  <text class="q" x="4" y="174" fill="#c0c">P1-P16: 4 &times; HGH20, 2 &times; 2 on the OUTER face</text>
-  <text class="q" x="4" y="164" fill="#c0c">PATTERN UNKNOWN &mdash; band is only where they live</text>
+  <text class="q" x="92" y="174" fill="#c0c">P1&#8211;P16, from DATUM B</text>
 
   <!-- doubler footprint on the outer face -->
   <rect x="0" y="182.5" width="154" height="60" fill="none" stroke="#b06000" stroke-width="1.2" stroke-dasharray="6 3"/>
-  <text class="q" x="4" y="222">DOUBLER 154 &times; 60 &times; 1/2" on the OUTER face</text>
-  <text class="q" x="4" y="233">bolt pattern TBD &middot; top edge gated on the lower block row</text>
+  <text class="q" x="92" y="222">DOUBLER (Sheet 5)</text>
 
   <!-- datum -->
   <circle cx="0" cy="242.5" r="3.2" fill="#c00"/>
-  <text class="dim" x="-78" y="272">DATUM B = bottom BACK corner</text>
+  <text class="dim" x="-78" y="272">DATUM A = bottom BACK corner</text>
 
   <!-- dimensions -->
   <line x1="0" y1="-10" x2="154" y2="-10" stroke="#06c" stroke-width="0.7"/>
@@ -382,10 +391,68 @@ dimensioned.</figcaption>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y from back edge</th><th>Height</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td>E1&ndash;E4</td><td>Clearance into <b>top</b> extrusion corner bores</td><td>4</td><td class="n">15, 45</td><td class="n">+15, +45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
 <tr><td>H1, H2</td><td><b>Shelf to plate</b>, tapped M8</td><td>2</td><td class="n">30, 30</td><td class="n">&minus;75.8, &minus;95.8</td><td class="d">M8</td><td class="op">&#128308; <b>BLIND &mdash; do not break through</b><sup class="f">2.8</sup></td></tr>
-<tr class="unk"><td>C2</td><td><b>Encoder sensor bore</b></td><td>1</td><td class="n">UNKNOWN</td><td class="n">&minus;60</td><td class="d">35</td><td class="op">Through &middot; <b>do not drill</b><sup class="f">2.4</sup></td></tr>
-<tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op"><b>Measure the X/Y kit</b><sup class="f">2.5</sup></td></tr>
+<tr class="unk"><td><b>C2</b></td><td><b>Encoder sensor bore &mdash; DATUM B</b></td><td>1</td><td class="n">UNKNOWN</td><td class="n">&minus;60</td><td class="d">35</td><td class="op"><b>LOCATE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
+<tr class="unk"><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td colspan="2"><b>FROM DATUM B</b> &mdash; the &oslash;35 centre</td><td class="d">5.2</td><td class="op"><b>C&rsquo;BORED</b> &middot; pitch from the X/Y kit<sup class="f">2.5</sup></td></tr>
 <tr class="unk"><td>D1&ndash;Dn</td><td>Doubler block through-bolts</td><td>TBD</td><td class="n">UNKNOWN</td><td class="n">&minus;122 &rarr; &minus;182.5</td><td class="d">?</td><td class="op">Through &middot; <b>drill with the doubler</b><sup class="f">2.6</sup></td></tr>
 <tr class="unk"><td>B1&ndash;Bn</td><td>Sole bracket, up into the bottom edge</td><td>TBD</td><td class="n">UNKNOWN</td><td class="n">&minus;182.5</td><td class="d">M6</td><td class="op">Tapped &middot; <b>two rows</b><sup class="f">2.7</sup></td></tr>
+</table>
+
+<h3 style="margin-top:7mm">Sheet 2b &mdash; the shelf bar
+<span style="font-weight:400;font-size:10pt">(mates with this plate &mdash; drill together)</span></h3>
+<div class="stock">
+<b>2 off &middot; 1" &times; 2" aluminium bar &middot; 25.4 W &times; 50.8 H &times; 60 long</b><br>
+Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><br>
+<span class="datum">DATUM: Y from the PLATE'S BACK EDGE. Z from the bar's underside.</span>
+</div>
+
+<figure>
+<svg viewBox="-34 -22 300 190" width="150mm" xmlns="http://www.w3.org/2000/svg">
+  <text class="ttl" x="0" y="-10">SIDE ELEVATION &#8212; looking along X</text>
+  <rect x="0" y="0" width="60" height="50.8" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <circle cx="30" cy="35.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <circle cx="30" cy="15.8" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+  <text class="lbl" x="38" y="38">P1 &#183; Z 15</text>
+  <text class="lbl" x="38" y="18">P2 &#183; Z 35</text>
+  <line x1="15" y1="50.8" x2="15" y2="0" stroke="#111" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <line x1="45" y1="50.8" x2="45" y2="0" stroke="#111" stroke-width="0.7" stroke-dasharray="3 2"/>
+  <rect x="7.5" y="40" width="15" height="10.8" fill="#fff" stroke="#b06000" stroke-width="1"/>
+  <rect x="37.5" y="40" width="15" height="10.8" fill="#fff" stroke="#b06000" stroke-width="1"/>
+  <text class="q" x="-2" y="62">V1</text><text class="q" x="40" y="62">V2</text>
+  <line x1="-8" y1="0" x2="-8" y2="50.8" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="-31" y="28">50.8</text>
+  <line x1="0" y1="-4" x2="60" y2="-4" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="26" y="-6">60</text>
+  <circle cx="0" cy="50.8" r="2.4" fill="#c00"/>
+  <text class="dim" x="-16" y="70">Y 0</text>
+  <text class="q" x="96" y="20">verticals go UP into T-nuts in the</text>
+  <text class="q" x="96" y="30">bottom extrusion's underside slots</text>
+  <text class="q" x="96" y="44">horizontals go into the end plate,</text>
+  <text class="q" x="96" y="54">which is BLIND-tapped</text>
+
+  <g transform="translate(0,100)">
+    <text class="ttl" x="0" y="-10">PLAN FROM BELOW</text>
+    <rect x="0" y="0" width="60" height="25.4" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+    <circle cx="15" cy="12.7" r="7.5" fill="none" stroke="#b06000" stroke-width="1"/>
+    <circle cx="15" cy="12.7" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+    <circle cx="45" cy="12.7" r="7.5" fill="none" stroke="#b06000" stroke-width="1"/>
+    <circle cx="45" cy="12.7" r="4.5" fill="#fff" stroke="#111" stroke-width="0.8"/>
+    <text class="lbl" x="7" y="37">V1 Y 15</text>
+    <text class="lbl" x="37" y="37">V2 Y 45</text>
+    <line x1="-8" y1="0" x2="-8" y2="25.4" stroke="#06c" stroke-width="0.6"/>
+    <text class="dim" x="-31" y="16">25.4</text>
+    <text class="q" x="96" y="6">&#9888; only ~7.5 mm of wall outside a</text>
+    <text class="q" x="96" y="16">&#248;15 counterbore at Y 15 &#8212; check the</text>
+    <text class="q" x="96" y="26">real counterbore before cutting to 60</text>
+  </g>
+</svg>
+</figure>
+
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y</th><th>Z</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>V1</td><td>M8 <b>up</b> into a T-nut, bottom extrusion underside slot</td><td>1</td><td class="n">15</td><td class="n">&mdash;</td><td class="d">9</td><td class="op">Through &middot; <b>c'bored from BELOW</b><sup class="f">2.11</sup></td></tr>
+<tr><td>V2</td><td>M8 <b>up</b> into the second underside slot</td><td>1</td><td class="n">45</td><td class="n">&mdash;</td><td class="d">9</td><td class="op">Through &middot; c'bored from below</td></tr>
+<tr><td>P1</td><td>Horizontal, bar to plate &mdash; mates H1</td><td>1</td><td class="n">30</td><td class="n">15</td><td class="d">9</td><td class="op">Through the bar<sup class="f">2.12</sup></td></tr>
+<tr><td>P2</td><td>Horizontal, bar to plate &mdash; mates H2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">9</td><td class="op">Through the bar</td></tr>
 </table>
 
 </div>
@@ -393,7 +460,13 @@ dimensioned.</figcaption>
 <!-- ============================================================ -->
 <div class="plate pg-s3">
 <h2 id="sheet-3">Sheet 3 — X carriage plate</h2>
-<p class="sub">1 off · 1/2" aluminium · <b>154 mm W × 407 mm H</b> · exists, sprayed with layout dye, 30 holes to drill</p>
+<div class="stock">
+<b>1 off &middot; 1/2" aluminium &middot; 154 &times; 407 mm</b><br>
+<b>The plate already exists</b>, sprayed with layout dye, <b>30 holes to drill</b>.<br>
+<span class="datum">DATUM: bottom left.</span>
+<b>&#9888; No individual hole coordinate for this plate exists in the repo</b> &mdash; this sheet is a
+frame to fill, not a drawing to work from.<sup class="f">3.3</sup>
+</div>
 
 <figure>
 <svg viewBox="-70 -30 280 470" width="120mm" xmlns="http://www.w3.org/2000/svg">
@@ -433,26 +506,16 @@ dimensioned.</figcaption>
 overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 </figure>
 
-<div class="info">
-<b>✅ The 7 mm stands and the plate can be drilled as laid out.</b> Measured with calipers: 10 mm from
-the end of the block to the first exposed bearing. The option of moving the rail 3 mm up was kept as
-reasoning but is not needed — and it <b>expires the moment this plate is drilled</b>.
-</div>
-
-<h3>Hole schedule — datum: bottom left</h3>
-<table>
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th>Note</th></tr>
-<tr class="unk"><td>R1…</td><td>HGR20 rail 1 mounting holes — <b>close fit</b></td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Rail 1 is the reference. 400 mm rail, bottom end flush with the plate's bottom edge</td></tr>
-<tr class="unk"><td>R2…</td><td>HGR20 rail 2 mounting holes — <b>+1 mm oversize</b></td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Swept parallel to rail 1 at assembly with an indicator. Fixed holes on both rails makes the mill's error permanent</td></tr>
-<tr class="unk"><td>X1…</td><td>To the X-axis bearing blocks</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td>🔴 <b>Not adjustable</b> — these heads are buried under the Z rails at assembly. Tram is set here once, at build</td></tr>
-<tr class="unk"><td>K1–K4</td><td>BK12 + BF12 screw supports</td><td>8</td><td>UNKNOWN</td><td>UNKNOWN</td><td>Both fixed to this plate — screw and motor are fixed relative to it</td></tr>
-<tr class="unk"><td>TS1…</td><td>Top stop plate fixing</td><td>?</td><td>UNKNOWN</td><td>UNKNOWN</td><td><b>Keep the overhang short</b> so an impact loads the bolts in shear, not a cantilevered lip</td></tr>
+<h3>Hole schedule</h3>
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr class="unk"><td>R1&hellip;</td><td>HGR20 rail 1 &mdash; <b>the reference rail</b></td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">M5</td><td class="op"><b>CLOSE FIT</b><sup class="f">3.1</sup></td></tr>
+<tr class="unk"><td>R2&hellip;</td><td>HGR20 rail 2</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">M5</td><td class="op"><b>+1 mm OVERSIZE</b><sup class="f">3.1</sup></td></tr>
+<tr class="unk"><td>X1&hellip;</td><td>To the X-axis bearing blocks</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">&#128308; <b>NOT adjustable later</b><sup class="f">3.2</sup></td></tr>
+<tr class="unk"><td>K1&ndash;K4</td><td>BK12 + BF12 screw supports</td><td>8</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Both fixed to this plate</td></tr>
+<tr class="unk"><td>TS1&hellip;</td><td>Top stop plate fixing</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Keep the overhang short<sup class="f">3.4</sup></td></tr>
 </table>
 
-<div class="warn">
-<b>30 holes, and the count is the only firm number.</b> No individual coordinate for this plate exists
-in the repo. This sheet is a frame to fill, not a drawing to work from.
-</div>
 </div>
 
 <!-- ============================================================ -->
