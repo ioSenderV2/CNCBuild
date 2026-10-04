@@ -57,25 +57,29 @@ be similar.
 
 ❌ ~~**Buy 120 mm stock and rip the 45 mm front strips from it** — one thickness, one order.~~
 **Retired 2026-10-02.** Y's back is steel, so there is no 120 mm aluminium order to rip from. The
-three 45 mm × 1/4" 6061 strips need their own buy.
+three 45 mm × 4 mm 6061 strips need their own buy.
 
 ### Why the thicknesses differ
 
 The Y beams **do not move** (measured: their end plates bolt to the torsion box), so weight there is
 static load and the stiffer plate is free. The X gantry moves, so its ~3 lb saving is real.
 
-📌 **The Y front strip came down to 1/4" on 2026-10-02**, breaking the old "same as its back plate"
-rule. All three beams now carry an identical **45 mm × 1/4" 6061** strip, which is also the magnetic
-tape surface — one part made three times, instead of two specifications.
+📌 **The Y front strip came down to 1/4" on 2026-10-02**, and then to **4 mm on 2026-10-03**.
+All three beams carry an identical **45 mm × 4 mm 6061** strip, which is also the magnetic tape
+surface — one part made three times, instead of two specifications.
 
-🔴 **⚠️ Open 2026-10-03: is 1/4" too thick to get the bolt heads under the block overhang?** The
-strip's flange heads reach **23.65** from the seam (STRIP_HEAD_REACH) against a block inner edge near
-23, so the rim passes under the overhang — which **he confirmed fits, measured on a real beam with
-rails and blocks installed**. But that check was done **with a 4 mm plate**. At 1/4" the stack under
-the overhang is **2.35 mm taller** (STRIP_STACK, 8.85) against **4.5 mm of clearance**
-(BLOCK_OVERHANG_CLEAR). **Nothing has verified 6.35.** The thickness was chosen for stiffness — the
-table above gives +149 % at 1/4" against +241 % at 3/8" — and no row evaluates 4 mm, so if the strip
-has to come down to clear, the stiffness gain needs recomputing rather than assuming.
+🔴 **✅ Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** The strip's flange heads
+reach **23.65** from the seam (STRIP_HEAD_REACH) against a block inner edge near 23, so the head's
+rim passes **under the bearing block's overhang**. There is **4.5 mm of clearance** under that
+overhang (BLOCK_OVERHANG_CLEAR). At 4 mm the stack clears — **measured on a real beam with rails and
+blocks installed**. At 1/4" it is 2.35 mm taller and **it hits**.
+
+⚠️ **The stiffness table above no longer describes the build.** Its **+149 %** row is the 1/4"
+case. **No row evaluates 4 mm**, so the gain at 4 mm is not a number this repo has — it is smaller,
+and by how much is uncomputed. His call, 2026-10-03: *"take the stiffness hit, which in the grand
+scheme of the entire machine is probably irrelevant."* The constraint is hard and the stiffness was
+a preference, so the constraint wins. 📌 **If that gain ever matters, compute it rather than quoting
+the 149.**
 
 ---
 

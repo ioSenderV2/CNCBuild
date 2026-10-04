@@ -1310,5 +1310,11 @@ note = "How far a strip bolt's flange head reaches from the beam's seam: 23.65, 
 
 [[dim]]
 sym = "STRIP_STACK"
-expr = "T_BACK_JOIN_PLATE + FLANGE_HEAD_H"
-note = "\U0001f534 THE NUMBER TO WATCH, 8.85. Strip thickness plus the flange head's centre height, which is what has to live under BLOCK_OVERHANG_CLEAR where the head reaches past the strip's edge. HIS CLEARANCE CHECK WAS DONE ON A 4 mm PLATE, not on the 6.35 the strip is currently specified at - so it was verified with 2.35 LESS in the stack than the design asks for. Nothing in the repo confirms 6.35 fits. Re-measure with a 1/4in offcut before any strip is cut."
+expr = "T_FRONT_STRIP + FLANGE_RIM_H"
+note = "What has to pass under the block's overhang where the bolt head reaches past the strip's edge: the strip plus the flange AT ITS RIM, which is the only part that gets that far out. 5 against BLOCK_OVERHANG_CLEAR's 4.5 - it reads as a near miss on paper and it fits in practice, because FLANGE_RIM_H is an upper bound and the flange is thinner still over the 0.65 that actually overlaps. \u2705 HE MEASURED IT ON A REAL BEAM at 4 mm. At the old 6.35 the same stack was 7.35 and it did NOT fit, which is what drove the strip to 4."
+
+[[dim]]
+sym = "T_FRONT_STRIP"
+value = 4
+provenance = "derived"
+note = "The 45 mm front joining strip, all three beams. \U0001f534 WAS 1/4in (6.35) UNTIL 2026-10-03 AND IT DID NOT FIT - at 6.35 the bolt heads foul the bearing blocks, which he confirmed on the real beam. 4 mm fits, measured. The strip is NOT T_BACK_JOIN_PLATE any more: the two were sharing 6.35 and are now different parts with different constraints, which is the honest shape - the back plate is sized for stiffness and the front strip is sized by what clears a block overhang. See STRIP_STACK and gantry-beam-joint.md for the stiffness that was given up."

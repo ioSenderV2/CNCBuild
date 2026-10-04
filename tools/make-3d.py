@@ -275,7 +275,7 @@ def main() -> int:
     # BLOCK ROWS. That is the fit FRONT_STRIP_W exists to make: the blocks reach
     # to seam +/- 23, the strip to seam +/- 22.5, so it clears by half a
     # millimetre each side. The interference check is what proves it.
-    sw, st_t = v["FRONT_STRIP_W"], v["T_BACK_JOIN_PLATE"]
+    sw, st_t = v["FRONT_STRIP_W"], v["T_FRONT_STRIP"]
     strip_x = [v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
                for i in range(int(v["TSLOT_X_COUNT"]))]
     y_seam = ybot + v["EXT_W"]

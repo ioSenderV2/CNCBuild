@@ -46,7 +46,7 @@ Current as of 2026-10-02.
 
 | Part | Size | Material |
 |---|---|---|
-| Front strip, **all three beams** | 45 mm × 1000 mm × **1/4"** | **6061** - connector across the seam and the magnetic tape surface |
+| Front strip, **all three beams** | 45 mm × 1000 mm × **4 mm** | **6061** - connector across the seam and the magnetic tape surface |
 | X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
 | **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
 | **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 60.5 × 50 window. 🔴 **Measured stock, not 1/2" and not 3/8"** |
