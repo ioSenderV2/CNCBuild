@@ -212,7 +212,8 @@ Registry updated: **2026-10-02**
 | **Y_BEAM_TOP_Z** | 302 mm | derived | Y_BEAM_UNDERSIDE + BEAM_H | 302 above the box's top skin. THIS IS THE CROSS-CHECK THAT THE CHAIN IS RIGHT: it lands on exactly FIN_STOCK, the measured 302 of the fin square, from a completely separate direction - the window's drawn position. The fin is flush with the beam top; the side plate is not, and does not need to be. |
 | **SIDE_PLATE_PROUD** | 2.8 mm | derived | SIDE_PLATE_H - Y_BEAM_TOP_Z | How far the side plate's top edge stands above the Y beam's top, 2.8. Harmless, and the reason Sheet 9 is dimensioned off the bottom edge: a bought 12in plate was never going to land on the beam top by luck. If the delivered plate is under 304.8 this just gets smaller. |
 | **FLANGE_HEAD_D** | 17.3 mm | measured |  | M8 flange head across the flange, measured on the bench 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. |
-| **FLANGE_HEAD_H** | 5 mm | measured |  | M8 flange head height, same measurement. It is what stands proud of every plate face in the 3D model. |
+| **FLANGE_HEAD_H** | 2.5 mm | measured |  | The M8 flange's thickness AT ITS CENTRE. 🔴 WAS 5 AND THE 5 WAS WRONG - his correction 2026-10-03, and gantry-beam-joint.md's measured table carried it too. THE FLANGE IS A DOME: 2.5 at the centre, falling to UNDER 1 at the 17.3 rim, so it is nowhere near a 5 mm disc. What this does NOT cover is the hex head sitting on top of the flange, which the repo does not dimension anywhere - so the 3D model draws the flange only and the bolts sit lower than they really do. |
+| **FLANGE_RIM_H** | 1 mm | measured |  | Flange thickness at the 17.3 rim - he gives it as UNDER 1, so this is an upper bound rather than a figure. It is the number that matters for anything sliding past a bolted joint, which is why it is worth writing down separately from the centre. |
 
 ## Not confirmed on the real part
 

@@ -238,7 +238,7 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
 | Clearance under the block overhang | **4.5 mm** |
-| M8 flange head | **17.3 mm** diameter, **5 mm** high |
+| M8 flange head | **17.3 mm** diameter. 🔴 **The 5 mm height this table carried was wrong** - corrected 2026-10-03: the flange is a **DOME, 2.5 mm at the centre and under 1 mm at the rim**. The hex head above it is not dimensioned anywhere |
 | Rails | HGR20, **17 × M5 at 60 mm** into T-nuts, one rail per profile, front face |
 | Ball screw | 1605, BK12 / BF12 supports, M5 into the end plates |
 | Support block offset from extrusion face | **5 mm**, giving a **12 mm** gap under the ball nut |

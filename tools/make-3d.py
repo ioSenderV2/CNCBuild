@@ -277,6 +277,9 @@ def main() -> int:
     # heights, 197 / 227 / 257 / 287, because all three are the extrusion's own
     # slot grid off Y_BEAM_UNDERSIDE - so if they do not line up in the view,
     # something upstream has moved.
+    # FLANGE ONLY - 2.5 at the centre, domed away to under 1 at the rim. The hex
+    # head that sits on top of it is nowhere in the repo, so these sit lower than
+    # the real bolts do. Drawn flat; the dome is under a millimetre of relief.
     hd, hh = v["FLANGE_HEAD_D"] / 2, v["FLANGE_HEAD_H"]
     BOLT = 0x3C4248
     rows = [v["SIDE_TSLOT_ROW_1"] + i * v["SLOT_GRID"] for i in range(4)]

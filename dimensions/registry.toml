@@ -1219,6 +1219,12 @@ note = "M8 flange head across the flange, measured on the bench 2026-09-29. The 
 
 [[dim]]
 sym = "FLANGE_HEAD_H"
-value = 5
+value = 2.5
 provenance = "measured"
-note = "M8 flange head height, same measurement. It is what stands proud of every plate face in the 3D model."
+note = "The M8 flange's thickness AT ITS CENTRE. \U0001f534 WAS 5 AND THE 5 WAS WRONG - his correction 2026-10-03, and gantry-beam-joint.md's measured table carried it too. THE FLANGE IS A DOME: 2.5 at the centre, falling to UNDER 1 at the 17.3 rim, so it is nowhere near a 5 mm disc. What this does NOT cover is the hex head sitting on top of the flange, which the repo does not dimension anywhere - so the 3D model draws the flange only and the bolts sit lower than they really do."
+
+[[dim]]
+sym = "FLANGE_RIM_H"
+value = 1
+provenance = "measured"
+note = "Flange thickness at the 17.3 rim - he gives it as UNDER 1, so this is an upper bound rather than a figure. It is the number that matters for anything sliding past a bolted joint, which is why it is worth writing down separately from the centre."
