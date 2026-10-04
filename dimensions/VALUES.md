@@ -226,6 +226,9 @@ Registry updated: **2026-10-02**
 | **RAIL_CBORE_N_BEAM** | 17 mm | derived | ((BEAM_LEN - (2 * RAIL_CBORE_FIRST)) / RAIL_CBORE_PITCH) + 1 | 17 on a 1000 rail. IT COMES OUT EXACTLY, which is the check that the 20 / 60 / 20 pattern is right: gantry-beam-joint.md has said 'HGR20, 17 x M5 at 60 mm' since the bench measurements, from a completely separate direction. |
 | **RAIL_CBORE_N_Z** | 7 mm | derived | ((Z_RAIL_L - (2 * RAIL_CBORE_FIRST)) / RAIL_CBORE_PITCH) + 1 | 7 on the 400 Z rail. Also exact, on the same pattern. |
 | **Z_RAIL_L** | 400 mm | part |  | Z rail length, on a 407 carriage plate - which is where the 7 mm at one end that z-carriage.md calls 'forced, not chosen' comes from. |
+| **BLOCK_OVERHANG_CLEAR** | 4.5 mm | measured |  | Clear height under the HGH20 block's overhanging wing, above the extrusion face. Measured on the bench 2026-09-29 and in gantry-beam-joint.md's table since. IT IS THE CEILING ON ANYTHING THAT REACHES UNDER THE BLOCK - the front strip and its bolt heads being the case that matters. |
+| **STRIP_HEAD_REACH** | 23.65 mm | derived | RAIL_SLOT_INSET + (FLANGE_HEAD_D / 2) | How far a strip bolt's flange head reaches from the beam's seam: 23.65, against a strip half-width of 22.5 and a block inner edge near 23. So the head's RIM does pass under the block's overhang by about half a millimetre. ✅ THAT IS FINE AND IT IS MEASURED: he checked it 2026-10-03 on a real beam with rails and blocks fitted - the rim is under a millimetre thick at that radius and slides under the overhang. The 3D model flagged it as a clash only because it draws the block as a plain solid with no overhang relief. |
+| **STRIP_STACK** | 8.85 mm | derived | T_BACK_JOIN_PLATE + FLANGE_HEAD_H | 🔴 THE NUMBER TO WATCH, 8.85. Strip thickness plus the flange head's centre height, which is what has to live under BLOCK_OVERHANG_CLEAR where the head reaches past the strip's edge. HIS CLEARANCE CHECK WAS DONE ON A 4 mm PLATE, not on the 6.35 the strip is currently specified at - so it was verified with 2.35 LESS in the stack than the design asks for. Nothing in the repo confirms 6.35 fits. Re-measure with a 1/4in offcut before any strip is cut. |
 
 ## Not confirmed on the real part
 
@@ -238,7 +241,7 @@ numbers in one session on 2026-10-02.
 - **T_SOLE_BRACKET** (nominal) = 6.35 mm - nothing depends on it
 - **T_INTERPOSER** (nominal) = 9.525 mm - feeds 19: BEAM_SEAM_XEP, BF12_ROW1_Y, BF12_ROW2_Y, BLOCK_HIGH_COL_A, BLOCK_HIGH_COL_B, BLOCK_LOW_COL_A, BLOCK_LOW_COL_B, NUT_FACE_BELOW_BEAM, RAIL_HIGH_XEP, RAIL_LOW_XEP, SHELF_BOLT_HIGH_X, SHELF_BOLT_LOW_X, TONGUE_BF12_ROW1, TONGUE_BF12_ROW2, TONGUE_EDGE_MARGIN, TONGUE_TOP, XEP_BEAM_TOP_X, XEP_BOTTOM, XEP_H
 - **T_SIDE_PLATE** (nominal) = 3.175 mm - feeds 16: BEAM_SPAN, BOX_W, FIN_COVERS_TONGUE_END, FIN_PROUD, REAR_PLATE_L, RP_A_COL_1, RP_A_COL_3, RP_A_COL_4, RP_F_COL_1, RP_F_COL_2, RP_F_COL_3, RP_F_COL_4, XBOX_X_FIRST, Y1_EXT_FACE_X, Y2_EXT_FACE_X, Y_BEAM_ASSY_W
-- **T_BACK_JOIN_PLATE** (nominal) = 6.35 mm - nothing depends on it
+- **T_BACK_JOIN_PLATE** (nominal) = 6.35 mm - feeds 1: STRIP_STACK
 - **FIN_KERF** (nominal) = 2 mm - feeds 1: FIN_BASE_W
 - **T_Z_PLATE** (nominal) = 12.7 mm - feeds 2: GANTRY_ARM, SPINDLE_OFFSET
 - **T_X_CARRIAGE_PLATE** (nominal) = 12.7 mm - feeds 1: GANTRY_ARM

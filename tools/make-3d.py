@@ -408,6 +408,13 @@ ALLOWED = {
     frozenset({"Side plate", "Flange head"}),
     frozenset({"Rear plate", "Flange head"}),
     frozenset({"Front fin", "Flange head"}),
+    # The strip bolt's flange RIM passes under the bearing block's overhang, and
+    # that is measured on a real beam with rails and blocks fitted - the block has
+    # BLOCK_OVERHANG_CLEAR of relief underneath that this model does not draw,
+    # because its blocks are plain solids. See STRIP_STACK for the caveat: the
+    # measurement was taken with a 4 mm plate, not the specified 6.35.
+    frozenset({"Y block", "Flange head"}),
+    frozenset({"X block", "Flange head"}),
     # A counterbore is a HOLE IN the rail, drawn as a solid because the model has
     # no boolean subtraction. It also passes under a bearing block wherever one
     # happens to sit over it, which is normal.

@@ -68,6 +68,15 @@ static load and the stiffer plate is free. The X gantry moves, so its ~3 lb savi
 rule. All three beams now carry an identical **45 mm × 1/4" 6061** strip, which is also the magnetic
 tape surface — one part made three times, instead of two specifications.
 
+🔴 **⚠️ Open 2026-10-03: is 1/4" too thick to get the bolt heads under the block overhang?** The
+strip's flange heads reach **23.65** from the seam (STRIP_HEAD_REACH) against a block inner edge near
+23, so the rim passes under the overhang — which **he confirmed fits, measured on a real beam with
+rails and blocks installed**. But that check was done **with a 4 mm plate**. At 1/4" the stack under
+the overhang is **2.35 mm taller** (STRIP_STACK, 8.85) against **4.5 mm of clearance**
+(BLOCK_OVERHANG_CLEAR). **Nothing has verified 6.35.** The thickness was chosen for stiffness — the
+table above gives +149 % at 1/4" against +241 % at 3/8" — and no row evaluates 4 mm, so if the strip
+has to come down to clear, the stiffness gain needs recomputing rather than assuming.
+
 ---
 
 ## Why joining them matters at all

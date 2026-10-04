@@ -1296,3 +1296,19 @@ sym = "Z_RAIL_L"
 value = 400
 provenance = "part"
 note = "Z rail length, on a 407 carriage plate - which is where the 7 mm at one end that z-carriage.md calls 'forced, not chosen' comes from."
+
+[[dim]]
+sym = "BLOCK_OVERHANG_CLEAR"
+value = 4.5
+provenance = "measured"
+note = "Clear height under the HGH20 block's overhanging wing, above the extrusion face. Measured on the bench 2026-09-29 and in gantry-beam-joint.md's table since. IT IS THE CEILING ON ANYTHING THAT REACHES UNDER THE BLOCK - the front strip and its bolt heads being the case that matters."
+
+[[dim]]
+sym = "STRIP_HEAD_REACH"
+expr = "RAIL_SLOT_INSET + (FLANGE_HEAD_D / 2)"
+note = "How far a strip bolt's flange head reaches from the beam's seam: 23.65, against a strip half-width of 22.5 and a block inner edge near 23. So the head's RIM does pass under the block's overhang by about half a millimetre. \u2705 THAT IS FINE AND IT IS MEASURED: he checked it 2026-10-03 on a real beam with rails and blocks fitted - the rim is under a millimetre thick at that radius and slides under the overhang. The 3D model flagged it as a clash only because it draws the block as a plain solid with no overhang relief."
+
+[[dim]]
+sym = "STRIP_STACK"
+expr = "T_BACK_JOIN_PLATE + FLANGE_HEAD_H"
+note = "\U0001f534 THE NUMBER TO WATCH, 8.85. Strip thickness plus the flange head's centre height, which is what has to live under BLOCK_OVERHANG_CLEAR where the head reaches past the strip's edge. HIS CLEARANCE CHECK WAS DONE ON A 4 mm PLATE, not on the 6.35 the strip is currently specified at - so it was verified with 2.35 LESS in the stack than the design asks for. Nothing in the repo confirms 6.35 fits. Re-measure with a 1/4in offcut before any strip is cut."
