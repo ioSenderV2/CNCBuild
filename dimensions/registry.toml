@@ -1065,8 +1065,8 @@ note = "12in stock, the full-height outboard plate's width. A BOUGHT size, not a
 
 [[dim]]
 sym = "SIDE_TSLOT_ROW_1"
-expr = "SIDE_PLATE_H - BEAM_H + RAIL_SLOT_INSET"
-note = "Lowest of Sheet 9's four T-slot rows, measured from the plate's BOTTOM edge - 199.8. His call 2026-10-03, and it removes a real risk: the bottom edge is the reference because it bears on the box's top skin, so the rows stay correct even if the plate turns out slightly short of the Y beam's top face. Dimensioned from the top instead, a short plate would have moved all four. Rows 2-4 follow on SLOT_GRID."
+expr = "Y_BEAM_UNDERSIDE + RAIL_SLOT_INSET"
+note = "Lowest of Sheet 9's four T-slot rows, measured from the plate's BOTTOM edge - 197. \U0001f534 WAS 199.8 AND WAS WRONG. I had written it as SIDE_PLATE_H - BEAM_H + RAIL_SLOT_INSET, which assumes the side plate's bought 304.8 finishes flush with the beam top. It does not and it does not need to: he settled 2026-10-03 that the side plate is measured from its BOTTOM edge throughout, so a top edge a little under 304.8 has NO effect on the beam's height. The beam's height comes from the fin instead. The error was 2.8 and the 3D model's interference check is what surfaced it, by fouling the interposer against the fin above the window. Rows 2-4 follow on SLOT_GRID."
 
 [[dim]]
 sym = "SIDE_TSLOT_ROW_4"
@@ -1195,3 +1195,18 @@ sym = "INTERPOSER_PROUD"
 value = 30
 provenance = "derived"
 note = "How far the interposer's outboard end stands past the fin's outer face, so the casting and bar protrude through the window together. y-beam-support.md's 30 mm protrusion, which it calls the thing that sets everything else at that end."
+
+[[dim]]
+sym = "Y_BEAM_UNDERSIDE"
+expr = "WINDOW_Z_LOW + WINDOW_H"
+note = "The Y beam's underside above the torsion box's top skin, 182 - and it comes from the FIN, which is the riser that actually carries the beam. It is the top edge of the fin's window: the casting and interposer fill the window up to the beam, so the window's top IS the beam's underside. Settled 2026-10-03 after the side plate was ruled out as the datum."
+
+[[dim]]
+sym = "Y_BEAM_TOP_Z"
+expr = "Y_BEAM_UNDERSIDE + BEAM_H"
+note = "302 above the box's top skin. THIS IS THE CROSS-CHECK THAT THE CHAIN IS RIGHT: it lands on exactly FIN_STOCK, the measured 302 of the fin square, from a completely separate direction - the window's drawn position. The fin is flush with the beam top; the side plate is not, and does not need to be."
+
+[[dim]]
+sym = "SIDE_PLATE_PROUD"
+expr = "SIDE_PLATE_H - Y_BEAM_TOP_Z"
+note = "How far the side plate's top edge stands above the Y beam's top, 2.8. Harmless, and the reason Sheet 9 is dimensioned off the bottom edge: a bought 12in plate was never going to land on the beam top by luck. If the delivered plate is under 304.8 this just gets smaller."

@@ -1303,10 +1303,10 @@ purpose; the table had not followed.<sup class="f">9.2</sup>
   <line x1="0" y1="18.9" x2="420" y2="18.9" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
   <line x1="0" y1="31.5" x2="420" y2="31.5" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
   <line x1="0" y1="44.1" x2="420" y2="44.1" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <text class="lbl" x="426" y="8" fill="#b06000">289.8</text>
-  <text class="lbl" x="426" y="21" fill="#b06000">259.8</text>
-  <text class="lbl" x="426" y="34" fill="#b06000">229.8</text>
-  <text class="lbl" x="426" y="46" fill="#b06000">199.8</text>
+  <text class="lbl" x="426" y="8" fill="#b06000">287</text>
+  <text class="lbl" x="426" y="21" fill="#b06000">257</text>
+  <text class="lbl" x="426" y="34" fill="#b06000">227</text>
+  <text class="lbl" x="426" y="46" fill="#b06000">197</text>
   <text class="lbl" x="426" y="118" fill="#0a6">30</text>
 
   <!-- the box row at 274.8 from the top edge -->
@@ -1320,7 +1320,7 @@ purpose; the table had not followed.<sup class="f">9.2</sup>
   <circle cx="0" cy="128" r="3.4" fill="#c00"/>
   <text class="dim" x="-34" y="138" fill="#c00">WCS 0,0</text>
 
-  <text class="q" x="0" y="170" fill="#b06000">FOUR T-slot rows at Y 199.8 / 229.8 / 259.8 / 289.8 &#8212; the extrusion&#8217;s own four back slots,</text>
+  <text class="q" x="0" y="170" fill="#b06000">FOUR T-slot rows at Y 197 / 227 / 257 / 287 &#8212; the extrusion&#8217;s own four back slots,</text>
   <text class="q" x="0" y="182" fill="#b06000">which is exactly why this plate replaces the separate 120 mm back joining plate on Y.</text>
   <text class="q" x="0" y="202" fill="#0a6">SEVEN into the box tongue at Y 30 &#8212; BOX_TONGUE_BOLT_Y, central in the 60 mm tongue.</text>
   <text class="q" x="0" y="214" fill="#0a6">The tongue laps this plate from OUTBOARD; the plate sits flat on the box's top skin.</text>
@@ -1331,7 +1331,7 @@ purpose; the table had not followed.<sup class="f">9.2</sup>
 </svg>
 <figcaption>Full length at 0.42&times;, <b>Y 0 at the plate's BOTTOM edge</b> &mdash; the edge that
 bears on the box's top skin, and the reason every row on this sheet is dimensioned from it. The four
-orange rows are the beam's own back slots, 199.8 to 289.8; the green row is the bolt line into the
+orange rows are the beam's own back slots, 197 to 287; the green row is the bolt line into the
 plywood tongue at 30, the same line the front fin and the rear plate use. <b>Cut the plate a little
 short and nothing moves</b> &mdash; it loses material at the top, where there is nothing.</figcaption>
 </figure>
@@ -1339,7 +1339,7 @@ short and nothing moves</b> &mdash; it loses material at the top, where there is
 <h3>Hole schedule &mdash; machining coordinates</h3>
 <p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p><table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">from the BOTTOM edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>W1&ndash;W28</td><td><b>Beam T-slot rows</b> &mdash; four, one per back slot</td><td>4 &times; 7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>199.8, 229.8,<br>259.8, 289.8</b></td><td class="d">9</td><td class="op">Through &middot; M8 into T-nuts<br><b>off the BOTTOM edge</b>, so a short plate costs nothing<sup class="f">9.3</sup></td></tr>
+<tr><td>W1&ndash;W28</td><td><b>Beam T-slot rows</b> &mdash; four, one per back slot</td><td>4 &times; 7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>197, 227,<br>257, 287</b></td><td class="d">9</td><td class="op">Through &middot; M8 into T-nuts<br><b>off the BOTTOM edge</b>, so a short plate costs nothing<sup class="f">9.3</sup></td></tr>
 <tr><td>K1&ndash;K7</td><td><b>Into the plywood tongue</b> &mdash; the box fixing</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>the 9 IS the slot</b>, 1 mm of float per hole<sup class="f">9.4</sup></td></tr>
 </table>
 </div>
@@ -1469,7 +1469,7 @@ state.</b> That is the whole reason this pack exists — so take anything plausi
 <p><b>8.3</b> &mdash; <b>&#9989; Settled 2026-10-03: first hole at 50, then 150 pitch, on all three bolt-on plates.</b> That is <b>seven per row</b>, 50 to 950, with 50 clear at each end. The pitch had been in gantry-beam-joint.md for weeks &mdash; M8 T-nuts at 150, four rows on the back and two on the front &mdash; but where along the 1000 the first one sat had never been written anywhere, which is why these rows were amber rather than wrong. Eight at 150 would have spanned 1050 and not fitted at all. Nothing was ever blocked by it: these are &oslash;9 clearance holes into T-slots and the T-nut slides to meet the bolt.</p>
 <p><b>9.1</b> &mdash; <b>This plate replaced two parts.</b> It is the full-height outboard plate and the Y back joining plate at once, grown rather than bolted alongside, which is why it carries the beam's four T-slot rows. That is also why the Y beams have no Sheet 10 part and the X beam does.</p>
 <p><b>9.2</b> &mdash; <b>1/8", and an old table disagreed.</b> outboard-plate.md's cross-section said the plate was 6.35 mm (1/4") in three places, left behind when the plate went to 1/8" steel. Corrected 2026-10-03. The curb channel it drops into is a separate question and is still open &mdash; it was dimensioned around 6.35 and now takes 3.175, or 3.04 if the sheet arrives at a true 11 gauge.</p>
-<p><b>9.3</b> &mdash; <b>&#9989; The reference edge is the BOTTOM one, settled 2026-10-03, and that is what closed this sheet.</b> The four T-slot rows were first drawn as 15 / 45 / 75 / 105 from the top edge, which is the extrusion's own slot grid measured down from the beam's top face. That was only right if the plate's top edge finished <i>flush</i> with that face &mdash; and 304.8 is a <b>bought 12" size</b>, not a derived one, so there was nothing guaranteeing it. Dimensioned from the bottom instead the rows become <b>199.8 / 229.8 / 259.8 / 289.8</b>, the same four holes, but now <b>a plate that comes out short loses material at the top and nothing moves</b>. The bottom edge earns the job because it is the one that bears, on the box's top skin. Sheet 10 never had this problem: at 120 tall its top edge IS the beam top by construction.</p>
+<p><b>9.3</b> &mdash; <b>&#9989; The reference edge is the BOTTOM one, settled 2026-10-03, and that is what closed this sheet.</b> The four T-slot rows were first drawn as 15 / 45 / 75 / 105 from the top edge, which is the extrusion's own slot grid measured down from the beam's top face. That was only right if the plate's top edge finished <i>flush</i> with that face &mdash; and 304.8 is a <b>bought 12" size</b>, not a derived one, so there was nothing guaranteeing it. Dimensioned from the bottom instead the rows become <b>197 / 227 / 257 / 287</b>, the same four holes, but now <b>a plate that comes out short loses material at the top and nothing moves</b>. &#128308; <b>They were briefly published as 199.8 / 229.8 / 259.8 / 289.8 on 2026-10-03 and that was 2.8 too high</b> &mdash; computed as if the plate's 304.8 finished flush with the beam top, which is the very assumption dimensioning off the bottom exists to avoid. The beam's height comes from the FIN: the window's top edge is the beam's underside at 182, and 182 + 120 lands on the fin's measured 302 exactly. The bottom edge earns the job because it is the one that bears, on the box's top skin. Sheet 10 never had this problem: at 120 tall its top edge IS the beam top by construction.</p>
 <p><b>9.4</b> &mdash; <b>The 9 mm hole is the slot.</b> An earlier draft wanted the holes slotted progressively toward the ends for thermal differential. Unnecessary: &oslash;9 on M8 is 1 mm of float per hole, several times the whole differential across a metre of plywood in a climate-controlled shop, and the Y risers were reamed to 9 for the same reason. <b>Do not transfer that conclusion to the T-nut rows</b> &mdash; those are a preloaded friction joint whose whole job is shear transfer, and they are a different argument.</p>
 <p><b>10.1</b> &mdash; <b>X only, and that asymmetry is deliberate.</b> The Y beams do not move and bolt to the torsion box, so their outboard plate reaches all the way down and does this job on the way past. The X beam moves and has nothing to bolt down to, so it keeps a plain 120 back plate and nothing more.</p>
 <p><b>10.2</b> &mdash; <b>Same X stations as Sheets 8 and 9</b> &mdash; 50 then 150, seven per row. See 8.3.</p>

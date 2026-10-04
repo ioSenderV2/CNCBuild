@@ -45,12 +45,6 @@ ASSUMPTIONS = [
     "The box tongue is drawn from the bottom skin's top face up, 179 tall, to land "
     "at the 60 proud the registry gives. torsion-box.md says 180.",
     "NO BASE OR LEGS - deliberately out of scope. The box sits on the ground plane.",
-    "UNRESOLVED, 2.8 mm, AND THE INTERFERENCE CHECK IS REPORTING IT: the Y beam's "
-    "underside above the box skin is 184.8 if the SIDE PLATE's 304.8 is flush with "
-    "the beam top, or 182.0 if the FIN's measured 302 is. Sheet 1's window top is "
-    "drawn at 182, which backs the fin. This model uses 184.8, so the interposer "
-    "under the beam fouls the fin above the window by 2.8. One of the two plates "
-    "does not reach the beam top and the repo does not say which.",
 ]
 
 
@@ -117,7 +111,7 @@ def main() -> int:
     # The side plate's T-slot rows ARE the beam's own 15/45/75/105, so the beam's
     # underside sits SIDE_TSLOT_ROW_1 - RAIL_SLOT_INSET above the skin. That lands
     # the beam top exactly on the plate top - the check that this chain closes.
-    ybot = v["SIDE_TSLOT_ROW_1"] - v["RAIL_SLOT_INSET"]
+    ybot = v["Y_BEAM_UNDERSIDE"]
     ytop = ybot + v["BEAM_H"]
     lx0, rx0 = v["Y1_EXT_FACE_X"], v["Y2_EXT_FACE_X"] - v["EXT_W"]
     for x0 in (lx0, rx0):
@@ -315,6 +309,30 @@ ALLOWED = {
 }
 
 
+def through_hole(a, b) -> bool:
+    """A part passing THROUGH a cut-out is not an interference.
+
+    The prism's p/q is its bounding box, which knows nothing about the window in
+    it, so the interposer running out through the fin reads as a solid clash.
+    This resolves it properly rather than by adding the pair to ALLOWED: the
+    other part has to sit INSIDE the hole in both axes. Move the interposer and
+    it is flagged again, which is the whole point of the check.
+    """
+    for prism_, other in ((a, b), (b, a)):
+        for hp in prism_.get("holes", []):
+            hx = [pt[0] for pt in hp]
+            hz = [pt[1] for pt in hp]
+            # Same 0.05 slack the overlap test uses. Needed, not cosmetic: the
+            # window's edge and the beam's face are both 1208.575 but are reached
+            # by different routes, so an exact compare fails on one fin and not
+            # the other.
+            e = 0.05
+            if (min(hx) - e <= other["p"][0] and other["q"][0] <= max(hx) + e
+                    and min(hz) - e <= other["p"][2] and other["q"][2] <= max(hz) + e):
+                return True
+    return False
+
+
 def report_overlaps(P) -> int:
     """Solid-body interference check - the one thing a box model can prove.
 
@@ -329,7 +347,7 @@ def report_overlaps(P) -> int:
             if frozenset({a["n"], b["n"]}) in ALLOWED:
                 continue
             ov = [min(a["q"][k], b["q"][k]) - max(a["p"][k], b["p"][k]) for k in range(3)]
-            if all(o > 0.05 for o in ov):
+            if all(o > 0.05 for o in ov) and not through_hole(a, b):
                 bad.append((a["n"], b["n"], ov))
     if not bad:
         print("\ninterference check: clean - no two parts occupy the same space")
