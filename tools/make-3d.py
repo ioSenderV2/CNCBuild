@@ -219,6 +219,13 @@ def main() -> int:
             xc + rw / 2, cp_front + rw, cp_bot + 407.0)
         box("Z block", "motion", BC, xc - bw / 2, cp_front, block_mid - bl / 2,
             xc + bw / 2, cp_front + st, block_mid + bl / 2)
+        # The spacer bar is SANDWICHED between the blocks and the Z plate - one per
+        # rail, each spanning that rail's two blocks. The model had the gap but
+        # nothing in it until he spotted the omission, 2026-10-03.
+        box("Z spacer", "z", 0xBFC7CE,
+            xc - v["SPACER_W"] / 2, cp_front + st, block_mid - v["SPACER_L"] / 2,
+            xc + v["SPACER_W"] / 2, cp_front + st + v["SPACER_T"],
+            block_mid + v["SPACER_L"] / 2)
 
     groups = {
         "box": "Torsion box and tongues",

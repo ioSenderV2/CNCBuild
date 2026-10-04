@@ -1148,3 +1148,15 @@ sym = "Z_RAIL_COL"
 value = 57.5
 provenance = "measured"
 note = "Z rail centrelines either side of the carriage plate's centre. z-carriage.md has carried it since 2026-09-30: the M5 columns sit at +/-16 from each rail centreline, which lands them at the measured 41.5 and 73.5 from plate centre."
+
+[[dim]]
+sym = "SPACER_L"
+value = 150.5
+provenance = "measured"
+note = "Z spacer bar length, measured 2026-10-02. ITS PAIR IS 151.6 - the two were cut from one 12in piece and are 1.1 apart, which is why this is recorded as a measurement of one bar rather than a design length. Each bar spans TWO bearing blocks, so it is a little under the butted pair's BLOCK_BUTTED of 154.18; nothing is located by the ends."
+
+[[dim]]
+sym = "SPACER_W"
+value = 50.8
+provenance = "part"
+note = "2in bar, across the spacer. The dimension that is NOT in doubt on these two - it is the stock width, where the thickness turned out not to be the 5/8in the repo had assumed."
