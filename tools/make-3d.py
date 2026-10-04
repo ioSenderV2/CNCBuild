@@ -259,7 +259,7 @@ def main() -> int:
     # Z: vertical, on the carriage plate's front face
     for xc in (zp_cx - v["Z_RAIL_COL"], zp_cx + v["Z_RAIL_COL"]):
         box("Z rail", "motion", RC, xc - rw / 2, cp_front, cp_bot + 7,
-            xc + rw / 2, cp_front + rw, cp_bot + 407.0)
+            xc + rw / 2, cp_front + rw, cp_bot + 7 + v["Z_RAIL_L"])
         box("Z block", "motion", BC, xc - bw / 2, cp_front, block_mid - bl / 2,
             xc + bw / 2, cp_front + st, block_mid + bl / 2)
         # The spacer bar is SANDWICHED between the blocks and the Z plate - one per
@@ -330,6 +330,32 @@ def main() -> int:
             cyl("Flange head", "bolts", BOLT, st, z,
                 xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y", seg=12)
 
+    # ---- rail counterbores ------------------------------------------------
+    # Drilled into the rail's EXPOSED face and running RAIL_CBORE_DEPTH back
+    # toward the beam, so they are drawn as dark cylinders sunk into the rail.
+    # No boolean subtraction here - the model is solids - so the pair is allowed
+    # to interpenetrate on purpose and says so in ALLOWED.
+    cb_r, cb_d = v["RAIL_CBORE_D"] / 2, v["RAIL_CBORE_DEPTH"]
+    cb_f, cb_p = v["RAIL_CBORE_FIRST"], v["RAIL_CBORE_PITCH"]
+    HOLE = 0x22262A
+    n_beam = int(round(v["RAIL_CBORE_N_BEAM"]))
+    n_z = int(round(v["RAIL_CBORE_N_Z"]))
+
+    for face, d in ((lx0 + v["EXT_W"], +1), (rx0, -1)):          # Y rails
+        for z in (ybot + v["RAIL_LOW_Z"], ybot + v["RAIL_HIGH_Z"]):
+            for i in range(n_beam):
+                cyl("Rail counterbore", "motion", HOLE, y0 + cb_f + i * cb_p, z,
+                    face + d * rw, face + d * (rw - cb_d), cb_r, axis="x", seg=10)
+    for z in (xb_bot + v["RAIL_LOW_Z"], xb_bot + v["RAIL_HIGH_Z"]):   # X rails
+        for i in range(n_beam):
+            cyl("Rail counterbore", "motion", HOLE, xb_x0 + cb_f + i * cb_p, z,
+                xbeam_front + rw, xbeam_front + rw - cb_d, cb_r, axis="y", seg=10)
+    for xc in (zp_cx - v["Z_RAIL_COL"], zp_cx + v["Z_RAIL_COL"]):     # Z rails
+        for i in range(n_z):
+            cyl("Rail counterbore", "motion", HOLE, xc,
+                cp_bot + 7 + cb_f + i * cb_p,
+                cp_front + rw, cp_front + rw - cb_d, cb_r, axis="y", seg=10)
+
     groups = {
         "box": "Torsion box and tongues",
         "bolts": "M8 flange bolt heads",
@@ -382,6 +408,15 @@ ALLOWED = {
     frozenset({"Side plate", "Flange head"}),
     frozenset({"Rear plate", "Flange head"}),
     frozenset({"Front fin", "Flange head"}),
+    # A counterbore is a HOLE IN the rail, drawn as a solid because the model has
+    # no boolean subtraction. It also passes under a bearing block wherever one
+    # happens to sit over it, which is normal.
+    frozenset({"Y rail", "Rail counterbore"}),
+    frozenset({"X rail", "Rail counterbore"}),
+    frozenset({"Z rail", "Rail counterbore"}),
+    frozenset({"Y block", "Rail counterbore"}),
+    frozenset({"X block", "Rail counterbore"}),
+    frozenset({"Z block", "Rail counterbore"}),
 }
 
 

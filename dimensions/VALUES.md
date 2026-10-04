@@ -219,6 +219,13 @@ Registry updated: **2026-10-02**
 | **FLANGE_M5_HALF** | 6.7 mm | derived | FLANGE_M5_D / 2 | 6.7. The number edge distance is really asking for - a radius, not a diameter. y-beam-support.md raised a false alarm once by comparing a head DIAMETER against an edge DISTANCE, and this symbol exists so that cannot happen twice. |
 | **FLANGE_HALF** | 8.65 mm | derived | FLANGE_HEAD_D / 2 | 8.65, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear. |
 | **FLANGE_DRIVE** | 0 mm | part |  | NOT A LENGTH - a fact parked where the other fastener facts live, because it changes how a joint is assembled. Both the M8 and M5 flange fasteners are FLANGED BUTTON HEADS DRIVEN BY A HEX SOCKET in the centre of the dome, settled 2026-10-03. Two consequences. (1) They need AXIAL access for a hex key and cannot be driven by a spanner, so anywhere a bolt sits in a narrow slot the key reaches it where a wrench never would - the front strip's rows, 45 between the bearing block rows, are the case in point. (2) The whole head is FLANGE_HEAD_H or FLANGE_M5_H proud and no more; nothing sits above the dome. |
+| **RAIL_CBORE_D** | 10 mm | part |  | Counterbore diameter along an HGR20 rail, for the M5 socket head that bolts it down. His, 2026-10-03. |
+| **RAIL_CBORE_DEPTH** | 10 mm | part |  | Counterbore depth. Half the 20 mm rail section, so the socket head sits well below the running surface. |
+| **RAIL_CBORE_FIRST** | 20 mm | part |  | First counterbore from either end of a rail - the pattern is symmetric, 20 in from both ends with RAIL_CBORE_PITCH between. |
+| **RAIL_CBORE_PITCH** | 60 mm | part |  | Counterbore pitch along the rail. |
+| **RAIL_CBORE_N_BEAM** | 17 mm | derived | ((BEAM_LEN - (2 * RAIL_CBORE_FIRST)) / RAIL_CBORE_PITCH) + 1 | 17 on a 1000 rail. IT COMES OUT EXACTLY, which is the check that the 20 / 60 / 20 pattern is right: gantry-beam-joint.md has said 'HGR20, 17 x M5 at 60 mm' since the bench measurements, from a completely separate direction. |
+| **RAIL_CBORE_N_Z** | 7 mm | derived | ((Z_RAIL_L - (2 * RAIL_CBORE_FIRST)) / RAIL_CBORE_PITCH) + 1 | 7 on the 400 Z rail. Also exact, on the same pattern. |
+| **Z_RAIL_L** | 400 mm | part |  | Z rail length, on a 407 carriage plate - which is where the 7 mm at one end that z-carriage.md calls 'forced, not chosen' comes from. |
 
 ## Not confirmed on the real part
 

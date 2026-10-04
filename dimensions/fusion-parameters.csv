@@ -205,3 +205,10 @@ FLANGE_M5_H,mm,2.4,"[measured] TOTAL height the M5 head stands proud, at its cen
 FLANGE_M5_HALF,mm,6.7,"[derived] 6.7. The number edge distance is really asking for - a radius, not a diameter. y-beam-support.md raised a false alarm once by comparing a head DIAMETER against an edge DISTANCE, and this symbol exists so that cannot happen twice."
 FLANGE_HALF,mm,8.65,"[derived] 8.65, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear."
 FLANGE_DRIVE,mm,0,"[part] NOT A LENGTH - a fact parked where the other fastener facts live, because it changes how a joint is assembled. Both the M8 and M5 flange fasteners are FLANGED BUTTON HEADS DRIVEN BY A HEX SOCKET in the centre of the dome, settled 2026-10-03. T"
+RAIL_CBORE_D,mm,10,"[part] Counterbore diameter along an HGR20 rail, for the M5 socket head that bolts it down. His, 2026-10-03."
+RAIL_CBORE_DEPTH,mm,10,"[part] Counterbore depth. Half the 20 mm rail section, so the socket head sits well below the running surface."
+RAIL_CBORE_FIRST,mm,20,"[part] First counterbore from either end of a rail - the pattern is symmetric, 20 in from both ends with RAIL_CBORE_PITCH between."
+RAIL_CBORE_PITCH,mm,60,[part] Counterbore pitch along the rail.
+RAIL_CBORE_N_BEAM,mm,17,"[derived] 17 on a 1000 rail. IT COMES OUT EXACTLY, which is the check that the 20 / 60 / 20 pattern is right: gantry-beam-joint.md has said 'HGR20, 17 x M5 at 60 mm' since the bench measurements, from a completely separate direction."
+RAIL_CBORE_N_Z,mm,7,"[derived] 7 on the 400 Z rail. Also exact, on the same pattern."
+Z_RAIL_L,mm,400,"[part] Z rail length, on a 407 carriage plate - which is where the 7 mm at one end that z-carriage.md calls 'forced, not chosen' comes from."
