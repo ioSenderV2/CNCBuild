@@ -1160,3 +1160,9 @@ sym = "SPACER_W"
 value = 50.8
 provenance = "part"
 note = "2in bar, across the spacer. The dimension that is NOT in doubt on these two - it is the stock width, where the thickness turned out not to be the 5/8in the repo had assumed."
+
+[[dim]]
+sym = "CLAMP_W"
+value = 122
+provenance = "vendor"
+note = "Clamp footprint across the Z plate - the 122 in the 122 x 55 that Sheets 3 and 4 already drew. Pairs with CLAMP_AXIAL. It is what leaves 2 mm of relief at each end of the 164 plate once the 100 x 25 bolt pattern is centred in it."

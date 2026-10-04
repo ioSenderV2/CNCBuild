@@ -63,6 +63,14 @@ def main() -> int:
                   "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
                   "q": [max(x0, x1), max(y0, y1), max(z0, z1)]})
 
+    def cyl(name, group, colour, cx, cy, z0, z1, r):
+        """A vertical cylinder. The spindle is round and a box misrepresents its
+        clearance - at 45 degrees a box corner sticks out r*(sqrt2-1) further."""
+        P.append({"n": name, "g": group, "c": colour, "t": "cyl",
+                  "cx": cx, "cy": cy, "r": r, "z0": min(z0, z1), "z1": max(z0, z1),
+                  "p": [cx - r, cy - r, min(z0, z1)],
+                  "q": [cx + r, cy + r, max(z0, z1)]})
+
     def prism(name, group, colour, profile, ya, yb):
         """An X-Z profile extruded along fore-aft. The fins are not boxes.
 
@@ -169,16 +177,25 @@ def main() -> int:
         zp_cx + v["Z_PLATE_W"] / 2, zp_back + v["T_Z_PLATE"],
         block_mid + v["Z_PLATE_L"] / 2)
 
-    sp_axis = cp_front + v["SPINDLE_OFFSET"]
+    # The spindle axis is CLAMP_BORE_OFFSET off the Z plate's FRONT face - that
+    # term is what makes SPINDLE_OFFSET add up from the carriage plate.
+    zp_front = zp_back + v["T_Z_PLATE"]
+    sp_axis = zp_front + v["CLAMP_BORE_OFFSET"]
     r = v["SPINDLE_D"] / 2
     bar_bot = block_mid - v["SPINDLE_BARREL_L"] / 2
-    box("Spindle barrel", "z", 0x999999,
-        zp_cx - r, sp_axis - r, bar_bot,
-        zp_cx + r, sp_axis + r, bar_bot + v["SPINDLE_BARREL_L"])
-    nr = v["SPINDLE_NUT_D"] / 2
-    box("Collet nut", "z", 0x333333,
-        zp_cx - nr, sp_axis - nr, bar_bot - v["SPINDLE_COLLET_END"],
-        zp_cx + nr, sp_axis + nr, bar_bot - v["SPINDLE_SHOULDER_DROP"])
+    cyl("Spindle barrel", "z", 0x9AA3AB, zp_cx, sp_axis,
+        bar_bot, bar_bot + v["SPINDLE_BARREL_L"], r)
+    cyl("Collet nut", "z", 0x2E2E2E, zp_cx, sp_axis,
+        bar_bot - v["SPINDLE_COLLET_END"], bar_bot - v["SPINDLE_SHOULDER_DROP"],
+        v["SPINDLE_NUT_D"] / 2)
+
+    # Two clamps, CLAMP_CENTRES apart about the Z plate's mid-height, each
+    # CLAMP_AXIAL tall and CLAMP_W across, reaching from the plate's face past
+    # the bore so the barrel passes through them.
+    for cz in (block_mid - v["CLAMP_CENTRES"] / 2, block_mid + v["CLAMP_CENTRES"] / 2):
+        box("Spindle clamp", "z", 0x5E6B75,
+            zp_cx - v["CLAMP_W"] / 2, zp_front, cz - v["CLAMP_AXIAL"] / 2,
+            zp_cx + v["CLAMP_W"] / 2, sp_axis + r + 8, cz + v["CLAMP_AXIAL"] / 2)
 
     # ---- linear rails and bearing blocks ---------------------------------
     # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
@@ -260,7 +277,8 @@ ALLOWED = {
     frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
     frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers
-    frozenset({"Z plate", "Spindle barrel"}),       # clamps not modelled
+    frozenset({"Spindle clamp", "Spindle barrel"}),  # a clamp WRAPS the barrel
+    frozenset({"Spindle clamp", "Z plate"}),         # bolts to its face
     frozenset({"Y rail", "Y block"}),               # a block WRAPS its rail
     frozenset({"X rail", "X block"}),
     frozenset({"Z rail", "Z block"}),
@@ -348,7 +366,10 @@ const span=Math.max(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]);
 const byGroup={};
 for(const p of PARTS){
   let geom, ctr;
-  if(p.t==='prism'){
+  if(p.t==='cyl'){
+    geom=new THREE.CylinderGeometry(p.r,p.r,p.z1-p.z0,36);
+    ctr=[p.cx-mid[0],(p.z0+p.z1)/2-mid[2],-(p.cy-mid[1])];
+  }else if(p.t==='prism'){
     // profile is machine X-Z, extruded along fore-aft. Extrude runs along three's
     // +Z, so the mesh is built at the origin and then shifted to the right depth.
     const sh=new THREE.Shape();
