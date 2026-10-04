@@ -270,6 +270,22 @@ def main() -> int:
             xc + v["SPACER_W"] / 2, cp_front + st + v["SPACER_T"],
             block_mid + v["SPACER_L"] / 2)
 
+    # ---- the 45 mm front joining strips, Sheet 8 --------------------------
+    # One per beam, across the seam, SITTING IN THE GAP BETWEEN THE TWO BEARING
+    # BLOCK ROWS. That is the fit FRONT_STRIP_W exists to make: the blocks reach
+    # to seam +/- 23, the strip to seam +/- 22.5, so it clears by half a
+    # millimetre each side. The interference check is what proves it.
+    sw, st_t = v["FRONT_STRIP_W"], v["T_BACK_JOIN_PLATE"]
+    strip_x = [v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
+               for i in range(int(v["TSLOT_X_COUNT"]))]
+    y_seam = ybot + v["EXT_W"]
+    for face, d in ((lx0 + v["EXT_W"], +1), (rx0, -1)):     # Y beams, inner faces
+        box("Front strip", "plates", 0xB8C2CB, face, y0, y_seam - sw / 2,
+            face + d * st_t, y1, y_seam + sw / 2)
+    x_seam = xb_bot + v["EXT_W"]
+    box("Front strip", "plates", 0xB8C2CB, xb_x0, xbeam_front, x_seam - sw / 2,
+        xb_x1, xbeam_front + st_t, x_seam + sw / 2)
+
     # ---- M8 flange bolt heads -------------------------------------------
     # Only where the position is unambiguous from the registry: the four T-slot
     # rows on each side plate, the rear plate's sixteen A-holes, and each fin's
@@ -277,9 +293,9 @@ def main() -> int:
     # heights, 197 / 227 / 257 / 287, because all three are the extrusion's own
     # slot grid off Y_BEAM_UNDERSIDE - so if they do not line up in the view,
     # something upstream has moved.
-    # FLANGE ONLY - 2.5 at the centre, domed away to under 1 at the rim. The hex
-    # head that sits on top of it is nowhere in the repo, so these sit lower than
-    # the real bolts do. Drawn flat; the dome is under a millimetre of relief.
+    # 2.5 is the TOTAL proud height: these are flanged button heads with a hex
+    # socket in the middle of the dome, so nothing sits above it. Drawn flat,
+    # because the dome's fall to under 1 at the rim is a millimetre of relief.
     hd, hh = v["FLANGE_HEAD_D"] / 2, v["FLANGE_HEAD_H"]
     BOLT = 0x3C4248
     rows = [v["SIDE_TSLOT_ROW_1"] + i * v["SLOT_GRID"] for i in range(4)]
@@ -302,6 +318,17 @@ def main() -> int:
             for z in rows:
                 cyl("Flange head", "bolts", BOLT, outer + sgn * c, z,
                     y1 + v["T_FIN"], y1 + v["T_FIN"] + hh, hd, axis="y", seg=12)
+
+    # the strips' own two rows, which land in the slots flanking each seam
+    for face, d in ((lx0 + v["EXT_W"], +1), (rx0, -1)):
+        for st in [y0 + x for x in strip_x]:
+            for z in (y_seam - v["RAIL_SLOT_INSET"], y_seam + v["RAIL_SLOT_INSET"]):
+                cyl("Flange head", "bolts", BOLT, st, z,
+                    face + d * st_t, face + d * (st_t + hh), hd, axis="x", seg=12)
+    for st in [xb_x0 + x for x in strip_x]:
+        for z in (x_seam - v["RAIL_SLOT_INSET"], x_seam + v["RAIL_SLOT_INSET"]):
+            cyl("Flange head", "bolts", BOLT, st, z,
+                xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y", seg=12)
 
     groups = {
         "box": "Torsion box and tongues",
@@ -351,6 +378,10 @@ ALLOWED = {
     # touches at each end. The caps are seals and carry nothing; x-gantry-end-
     # plates.md settled that. A touch of exactly this size is the design.
     frozenset({"X end plate", "X block"}),
+    frozenset({"Front strip", "Flange head"}),      # head seats on the strip
+    frozenset({"Side plate", "Flange head"}),
+    frozenset({"Rear plate", "Flange head"}),
+    frozenset({"Front fin", "Flange head"}),
 }
 
 
