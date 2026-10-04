@@ -246,11 +246,14 @@ arrangement available**, and 150 is what makes room for the third.
   lateral offset. ⚠️ **Restated for M8 2026-10-02:** the web was computed with an M5 clearance hole
   in the bar, and an M8 clearance hole is 9 mm rather than 5.5, which takes **1.75 mm off each
   side**. Both rows still clear; the web is the number to re-check if either moves.
-- **138 leaves 12 mm to the bar's inboard end**, against the **~9 mm half-head** of an M8 flange
-  bolt. 📌 **This line used to read "enough for an 11.8 mm flange head"** - the M5 head *diameter*,
-  compared against an edge *distance*. That comparison was conservative by a factor of two and it
-  survived the M5 → M8 change long enough to raise a false alarm: an 18 mm M8 head needs **9 mm**
-  from hole centre to edge, not 18. **Edge distance is a radius question.**
+- **138 leaves 12 mm to the bar's inboard end**, against the **8.65 mm half-head** of an M8 flange
+  bolt - FLANGE_HALF, off a measured 17.3. 📌 **This line used to read "enough for an 11.8 mm flange
+  head"** - the M5 head *diameter*, compared against an edge *distance*. That comparison was
+  conservative by a factor of two and it survived the M5 → M8 change long enough to raise a false
+  alarm. **Edge distance is a radius question**, which is why FLANGE_HALF and FLANGE_M5_HALF exist.
+  🔴 **Two numbers in that old sentence were also just wrong**, corrected 2026-10-03: the M8 head is
+  **17.3**, not 18, and the M5 flange is **13.4**, not 11.8. Neither changes the conclusion here -
+  12 against 8.65 still clears - but both were being quoted elsewhere as if measured.
 
 ✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
 over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M8 of clamp.

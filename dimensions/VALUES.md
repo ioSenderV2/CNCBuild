@@ -214,6 +214,10 @@ Registry updated: **2026-10-02**
 | **FLANGE_HEAD_D** | 17.3 mm | measured |  | M8 flange head across the flange, measured on the bench 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. |
 | **FLANGE_HEAD_H** | 2.5 mm | measured |  | The M8 flange's thickness AT ITS CENTRE. 🔴 WAS 5 AND THE 5 WAS WRONG - his correction 2026-10-03, and gantry-beam-joint.md's measured table carried it too. THE FLANGE IS A DOME: 2.5 at the centre, falling to UNDER 1 at the 17.3 rim, so it is nowhere near a 5 mm disc. What this does NOT cover is the hex head sitting on top of the flange, which the repo does not dimension anywhere - so the 3D model draws the flange only and the bolts sit lower than they really do. |
 | **FLANGE_RIM_H** | 1 mm | measured |  | Flange thickness at the 17.3 rim - he gives it as UNDER 1, so this is an upper bound rather than a figure. It is the number that matters for anything sliding past a bolted joint, which is why it is worth writing down separately from the centre. |
+| **FLANGE_M5_D** | 13.4 mm | measured |  | M5 flange head across the flange. His, 2026-10-03. 🔴 THE REPO HAD 11.8 FOR THIS - y-beam-support.md records it as the figure a since-corrected edge-distance check leaned on. 13.4 is 1.6 bigger, and the half-head that edge distance actually turns on goes 5.9 to 6.7. |
+| **FLANGE_M5_H** | 2.4 mm | measured |  | M5 flange thickness at its centre, domed like the M8's. Only 0.1 under FLANGE_HEAD_H's 2.5, which is worth knowing: the two sizes stand off a face by effectively the same amount, so a clearance that works for one works for the other. |
+| **FLANGE_M5_HALF** | 6.7 mm | derived | FLANGE_M5_D / 2 | 6.7. The number edge distance is really asking for - a radius, not a diameter. y-beam-support.md raised a false alarm once by comparing a head DIAMETER against an edge DISTANCE, and this symbol exists so that cannot happen twice. |
+| **FLANGE_HALF** | 8.65 mm | derived | FLANGE_HEAD_D / 2 | 8.65, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear. |
 
 ## Not confirmed on the real part
 

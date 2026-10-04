@@ -1228,3 +1228,25 @@ sym = "FLANGE_RIM_H"
 value = 1
 provenance = "measured"
 note = "Flange thickness at the 17.3 rim - he gives it as UNDER 1, so this is an upper bound rather than a figure. It is the number that matters for anything sliding past a bolted joint, which is why it is worth writing down separately from the centre."
+
+[[dim]]
+sym = "FLANGE_M5_D"
+value = 13.4
+provenance = "measured"
+note = "M5 flange head across the flange. His, 2026-10-03. \U0001f534 THE REPO HAD 11.8 FOR THIS - y-beam-support.md records it as the figure a since-corrected edge-distance check leaned on. 13.4 is 1.6 bigger, and the half-head that edge distance actually turns on goes 5.9 to 6.7."
+
+[[dim]]
+sym = "FLANGE_M5_H"
+value = 2.4
+provenance = "measured"
+note = "M5 flange thickness at its centre, domed like the M8's. Only 0.1 under FLANGE_HEAD_H's 2.5, which is worth knowing: the two sizes stand off a face by effectively the same amount, so a clearance that works for one works for the other."
+
+[[dim]]
+sym = "FLANGE_M5_HALF"
+expr = "FLANGE_M5_D / 2"
+note = "6.7. The number edge distance is really asking for - a radius, not a diameter. y-beam-support.md raised a false alarm once by comparing a head DIAMETER against an edge DISTANCE, and this symbol exists so that cannot happen twice."
+
+[[dim]]
+sym = "FLANGE_HALF"
+expr = "FLANGE_HEAD_D / 2"
+note = "8.65, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear."
