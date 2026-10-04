@@ -70,9 +70,12 @@ surface — one part made three times, instead of two specifications.
 
 🔴 **✅ Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** The strip's flange heads
 reach **23.65** from the seam (STRIP_HEAD_REACH) against a block inner edge near 23, so the head's
-rim passes **under the bearing block's overhang**. There is **4.5 mm of clearance** under that
-overhang (BLOCK_OVERHANG_CLEAR). At 4 mm the stack clears — **measured on a real beam with rails and
-blocks installed**. At 1/4" it is 2.35 mm taller and **it hits**.
+rim passes **under the bearing block**. There is **at most 6 mm of clearance** under it
+(BLOCK_OVERHANG_CLEAR). At 4 mm the stack is **5 and clears**; at 1/4" it is **7.35 and hits** —
+both **measured on a real beam with rails and blocks installed**, and both now predicted by the
+arithmetic. 📌 **That agreement is itself the evidence the 6 is right**: against the old 4.5 the
+4 mm case computed as a near miss while fitting in practice, and a clearance figure that contradicts
+a measurement is the figure to doubt.
 
 ⚠️ **The stiffness table above no longer describes the build.** Its **+149 %** row is the 1/4"
 case. **No row evaluates 4 mm**, so the gain at 4 mm is not a number this repo has — it is smaller,
@@ -141,9 +144,9 @@ Two things fall out of this that are easy to get backwards:
   pattern. Do not trade 120 mm wide for something narrower and thicker.
 - **On the front, width beyond 45 mm buys nothing.** The strip is now exactly BLOCK_ROW_GAP, the
   conservative keep-out between the block rows, so it is the width that is known to fit; the 46 it
-  was until 2026-10-03 matched the *geometric* gap and left no clearance. Past the block gap there is only 4.5 mm of
-  height (measured), so any extra width would have to be rebated thin — about 14 % more area for a
-  machining operation on a 1000 mm strip.
+  was until 2026-10-03 matched the *geometric* gap and left no clearance. Past the block gap there is at most 6 mm of
+  height (measured; 4.5 until 2026-10-03), so any extra width would have to be rebated thin — about
+  14 % more area for a machining operation on a 1000 mm strip.
 
 ### 🔴 Fore-aft is the soft axis, and it is pure aspect ratio
 
@@ -250,7 +253,7 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | **Rail spacing, X** | ✅ **90 mm** - confirmed by the user 2026-10-01. The outermost of the four front slots, at 15 and 105 mm up the section. This is the widest the profile offers and it is what was used |
 | Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
-| Clearance under the block overhang | **4.5 mm** |
+| Clearance under the block, above the rail surface | **at most 6 mm** 🔴 corrected from 4.5 on 2026-10-03 |
 | M8 flange head | **17.3 mm** diameter. 🔴 **The 5 mm height this table carried was wrong** - corrected 2026-10-03: it is a **DOME, 2.5 mm at the centre and under 1 mm at the rim**, and that is the TOTAL proud height. These are **flanged button heads driven by a hex socket in the middle of the dome**, so nothing sits above it. The **M5** equivalent is **13.4 × 2.4** |
 | Rails | HGR20, **17 × M5 at 60 mm** into T-nuts, one rail per profile, front face |
 | Ball screw | 1605, BK12 / BF12 supports, M5 into the end plates |

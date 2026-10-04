@@ -1299,9 +1299,9 @@ note = "Z rail length, on a 407 carriage plate - which is where the 7 mm at one 
 
 [[dim]]
 sym = "BLOCK_OVERHANG_CLEAR"
-value = 4.5
+value = 6
 provenance = "measured"
-note = "Clear height under the HGH20 block's overhanging wing, above the extrusion face. Measured on the bench 2026-09-29 and in gantry-beam-joint.md's table since. IT IS THE CEILING ON ANYTHING THAT REACHES UNDER THE BLOCK - the front strip and its bolt heads being the case that matters."
+note = "Clear height under the HGH20 block, above the surface the rail sits on. His, 2026-10-03, stated as AT MOST 6 - so it is an upper bound, and anything designed against it should leave room. \U0001f534 WAS 4.5 from the 2026-09-29 bench table. The 6 is the better number because IT PREDICTS BOTH OF HIS MEASURED OUTCOMES, where 4.5 only predicted one: a 4 mm strip stacks to 5 and fits, a 1/4in strip stacks to 7.35 and does not. At 4.5 the 4 mm case came out marginal on paper while fitting in practice, which was the tell that the clearance figure was wrong rather than the fit. IT IS THE CEILING ON ANYTHING THAT REACHES UNDER THE BLOCK."
 
 [[dim]]
 sym = "STRIP_HEAD_REACH"
@@ -1311,7 +1311,7 @@ note = "How far a strip bolt's flange head reaches from the beam's seam: 23.65, 
 [[dim]]
 sym = "STRIP_STACK"
 expr = "T_FRONT_STRIP + FLANGE_RIM_H"
-note = "What has to pass under the block's overhang where the bolt head reaches past the strip's edge: the strip plus the flange AT ITS RIM, which is the only part that gets that far out. 5 against BLOCK_OVERHANG_CLEAR's 4.5 - it reads as a near miss on paper and it fits in practice, because FLANGE_RIM_H is an upper bound and the flange is thinner still over the 0.65 that actually overlaps. \u2705 HE MEASURED IT ON A REAL BEAM at 4 mm. At the old 6.35 the same stack was 7.35 and it did NOT fit, which is what drove the strip to 4."
+note = "What has to pass under the block where the bolt head reaches past the strip's edge: the strip plus the flange AT ITS RIM, which is the only part that gets that far out. 5 against BLOCK_OVERHANG_CLEAR's 6, so it CLEARS BY 1 - and both of those are upper bounds, so the real margin is larger. \u2705 Measured on a real beam at 4 mm. At the old 6.35 the stack was 7.35 against the same 6 and it did NOT fit, which is what drove the strip to 4. The arithmetic and the measurement now agree in both directions; with the old 4.5 clearance they did not, and the measurement was right."
 
 [[dim]]
 sym = "T_FRONT_STRIP"
