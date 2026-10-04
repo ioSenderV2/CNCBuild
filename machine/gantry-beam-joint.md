@@ -21,9 +21,9 @@ aluminium plates running the full 1000 mm, anchored with M8 T-nuts in the existi
 | | Back plate | Front plate |
 |---|---|---|
 | Width | **120 mm** — full section height, all four back slots | **45 mm** — the two slots flanking the seam |
-| Thickness | **1/4" (6.35 mm) on X**; on **Y** see the reversal below | **1/4" (6.35 mm), all three beams** |
+| Thickness | **1/4" (6.35 mm) on X**; on **Y** see the reversal below | **4 mm, all three beams** - 🔴 was 6.35 here until 2026-10-04 and that is the thickness that did not fit; see below |
 | Material | **6061 on X**; **1/8" steel on Y** | **6061, all three beams** |
-| Fasteners | M8 T-nuts, **150 mm** spacing, four rows | M8 **flange** bolts, two rows, no counterbore |
+| Fasteners | M8 T-nuts, **150 mm** spacing, four rows. **M8 × 12 on X; M8 × 10 + washer on Y** | M8 **flange** bolts, two rows, no counterbore. **M8 × 10, A4 / 316** |
 | Also carries | drag chain — bolts pass **through** the plate into T-nuts in the outer slots | the **magnetic encoder tape**, all three beams |
 
 The plates' job is **shear connection and flange area, not modulus.**
@@ -335,6 +335,54 @@ side over the nut's 16 mm length.
 | Body width (A) | 16.00 | 16.51 channel | 0.51 mm total |
 | Boss (E) | 7.80 | 8.14 mouth | 0.34 mm total |
 | Thickness (F) | **6.00** | 8.14 mouth | **2.14 mm spare** |
+
+⚠️ **That last row compares the wrong pair** - it reads the nut's thickness against the slot
+*mouth*, which is a width, not a depth. The depth comparison is the one that decides bolt length and
+it is in the next section.
+
+### ✅ Bolt lengths, settled 2026-10-04 - and the slot depth is what settled them
+
+**Measured 2026-10-04, his calipers.** Two numbers the published section does not give, and without
+them no bolt length on this joint could be computed:
+
+| | |
+|---|---|
+| **T-slot lip thickness** | **2.3 mm** (TSLOT_LIP_T) - the shoulder the T-nut bears against. 🔴 **Not** the drawing's `4.20` lip, which is the lip's reach inward |
+| **Beam face to slot floor** | **9.5 mm** (TSLOT_DEPTH) |
+| **T-nut body at the thread** | **6 mm** (TNUT_BODY_T) - his calipers, confirming the published F |
+
+The nut's boss is 1.80 and the lip is 2.3, so **the boss does not reach the face**: the shoulders bear
+on the lip underside and the boss top sits 0.5 recessed. The nut's back face is therefore at
+**8.3 mm** (TNUT_BACK_FACE), against a floor at 9.5.
+
+🔴 **So there is 1.2 mm of air behind the nut** (TNUT_BACK_CLEAR), and that is the whole
+protrusion budget. With 6 mm of thread in front of it, **a bolt may reach at most 7.2 mm past the
+back face of any plate** (BOLT_REACH_MAX).
+
+| Joint | Plate | Bolt | Reach | Engagement | Spare to floor |
+|---|---|---|---|---|---|
+| **Front strip**, all three beams | 4 mm 6061 | **M8 × 10** | 6.0 | **6.0 - full** | 1.2 |
+| **X back plate** | 6.35 mm 6061 | **M8 × 12** | 5.65 | 5.65 | 1.55 |
+| **Y back** - the outboard plate | 3.175 mm steel **+ M8 washer** | **M8 × 10** | 5.2 | 5.2 | 2.0 |
+
+🔴 **Engagement is capped at 6 mm by the nut, not by the bolt.** A longer bolt buys nothing and
+eventually bottoms. **M8 × 12 is wrong on the front strip** - it reaches 8.0 into a 7.2 limit and
+hits the slot floor before the head seats, which presents as a bolt that feels tight while the strip
+is still loose. That is the failure mode to recognise, because torque is not evidence of clamp here.
+
+⚠️ **The washer on the Y back is doing real work.** At a nominal 3.175 the bare M8 × 10
+reaches 6.83 - and if the sheet is really the 11-gauge 3.04 it was sourced as, 6.96 against the 7.2
+limit, a margin of 0.24 that is inside caliper noise. The washer moves the head out 1.6, and it
+spreads load on 3 mm steel anyway. **Measure the delivered sheet** (T_OUTBOARD_PLATE is nominal).
+
+📌 **Two lengths, not three** - the front strips and the Y backs share M8 × 10:
+
+| Bolt | Count | Where |
+|---|---|---|
+| **M8 × 10, A4 / 316 austenitic** | **42** | front strips, 14 per beam - the tape bolts, see the magnetic note |
+| **M8 × 10, plain** | **56** | Y back plates, 28 per beam × 2, **with washers** |
+| **M8 × 12** | **28** | X back plate |
+| | **126** | one per T-nut |
 
 ### 🔴 It is a slide-in nut. Load them before the end plates go on
 

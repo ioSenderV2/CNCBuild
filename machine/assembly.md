@@ -168,6 +168,19 @@ indicator on the plate against a straightedge and sweep.
 | Fixing, back | M8 T-nuts, four rows, 150 mm | — |
 | Fixing, front | — | M8 **flange** bolts, two rows, no counterbore |
 | Holes | **9 mm clearance** | 9 mm clearance |
+| **Bolt** | **M8 × 12** on X · **M8 × 10 + plain washer** on Y | **M8 × 10**, bare |
+
+🔴 **The lengths are not interchangeable, and the long one fails silently.** There is
+**1.2 mm of air behind the T-nut** (slot floor measured at 9.5, nut back face at 8.3), so a bolt may
+reach at most **7.2 mm** past the back of a plate. **An M8 × 12 in the 4 mm front strip reaches 8.0
+and bottoms on the slot floor before its head seats** - it feels tight and the strip is still loose.
+Engagement is capped at **6 mm by the nut**, so a longer bolt buys nothing anywhere on this machine.
+The washer on the Y back is margin, not decoration: bare, that bolt clears by 0.24 mm if the sheet is
+the 11-gauge it was sourced as. Full derivation in
+[`gantry-beam-joint.md`](gantry-beam-joint.md#-bolt-lengths-settled-2026-10-04---and-the-slot-depth-is-what-settled-them).
+
+**The buy: 42 × M8 × 10 A4 / 316** (front strips) · **56 × M8 × 10 plain + 56 washers** (Y backs) ·
+**28 × M8 × 12** (X back). 126 bolts, 126 T-nuts.
 
 🔴 **The front strip is 4 mm, not 1/4".** At 1/4" the flange head rim passes under the bearing block
 and hits — there is at most 6 mm of clearance there, and the 1/4" stack is 7.35.

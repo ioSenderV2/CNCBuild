@@ -36,7 +36,7 @@
 #    OPEN      not established. The value is a placeholder and MUST NOT be cut to.
 
 [meta]
-updated = "2026-10-02"
+updated = "2026-10-04"
 units = "mm"
 
 # ---------------------------------------------------------------- the extrusion
@@ -1318,3 +1318,68 @@ sym = "T_FRONT_STRIP"
 value = 4
 provenance = "derived"
 note = "The 45 mm front joining strip, all three beams. \U0001f534 WAS 1/4in (6.35) UNTIL 2026-10-03 AND IT DID NOT FIT - at 6.35 the bolt heads foul the bearing blocks, which he confirmed on the real beam. 4 mm fits, measured. The strip is NOT T_BACK_JOIN_PLATE any more: the two were sharing 6.35 and are now different parts with different constraints, which is the honest shape - the back plate is sized for stiffness and the front strip is sized by what clears a block overhang. See STRIP_STACK and gantry-beam-joint.md for the stiffness that was given up."
+
+# ------------------------------------------------- T-slot bolt lengths, 2026-10-04
+
+[[dim]]
+sym = "TSLOT_LIP_T"
+value = 2.3
+provenance = "measured"
+note = "Thickness of the T-slot lip on the 30-6060 - the shoulder a slide-in T-nut bears against, so it is also HOW DEEP the nut's back face starts. His calipers, 2026-10-04. The 8020 section drawing calls the lip 4.20, which is a DIFFERENT dimension (the lip's reach inward, not its thickness) and must not be substituted here. This is one of the two numbers that decide bolt length; nothing in the repo had it before."
+
+[[dim]]
+sym = "TSLOT_DEPTH"
+value = 9.5
+provenance = "measured"
+note = "Beam face to T-slot FLOOR on the 30-6060. His calipers, 2026-10-04. The other half of the bolt-length calculation, and the figure the published section does not give: the drawing dimensions the slot's mouth (8.14) and channel width (16.51) but never its depth, which is why bolt lengths could not be computed before this was taken."
+
+[[dim]]
+sym = "TNUT_BODY_T"
+value = 6
+provenance = "measured"
+note = "8020 13025 T-nut body thickness where the thread runs - 6, his calipers 2026-10-04, confirming the published F = 6.00. THIS IS THE CEILING ON THREAD ENGAGEMENT for every bolt-on plate on every beam: the bolt cannot engage more than 6 mm no matter how long it is, so engagement is set by the nut and not by the bolt. The nut's total height is 7.80 including its 1.80 boss, and that boss is not threaded usefully - do not compute engagement off 7.80."
+
+[[dim]]
+sym = "TNUT_BACK_FACE"
+expr = "TSLOT_LIP_T + TNUT_BODY_T"
+note = "Where the T-nut's back face sits below the beam face: 8.3. The boss (1.80) is SHORTER than the lip (2.3), so the nut's shoulders bear on the lip underside and the boss top sits 0.5 recessed from the face - which means the lip thickness, not the boss, is what sets this depth."
+
+[[dim]]
+sym = "TNUT_BACK_CLEAR"
+expr = "TSLOT_DEPTH - TNUT_BACK_FACE"
+note = "Air behind the T-nut, between its back face and the slot floor: 1.2. THIS IS THE PROTRUSION BUDGET - how far a bolt tip may stand proud of the nut before it bottoms on the slot floor. A bolt that bottoms reads as a tight bolt that never pulls the plate down, which is the failure this symbol exists to prevent."
+
+[[dim]]
+sym = "BOLT_REACH_MAX"
+expr = "TNUT_BODY_T + TNUT_BACK_CLEAR"
+note = "7.2 - the most a bolt may reach past the back face of any plate bolted to a beam. Bolt length minus plate thickness must not exceed this. It is what rules M8 x 12 OUT on the 4 mm front strip (reach 8.0) while leaving it correct on the 6.35 back plate (reach 5.65)."
+
+[[dim]]
+sym = "T_OUTBOARD_PLATE"
+value = 3.175
+provenance = "nominal"
+note = "1/8in steel outboard plate, which on Y IS the back joining plate. NOMINAL, NOT MEASURED: the sheet sourced 2026-10-02 is A36 '  11 gauge', which is 0.1196in = 3.04 and not 0.125in = 3.175. MEASURE WHAT ARRIVED before buying its bolts - at 3.04 an M8 x 10 reaches 6.96 against BOLT_REACH_MAX's 7.2, which still clears but only by 0.24, and that is inside caliper noise. The washer in BOLT_BACK_Y_WASHER is what takes the question away."
+
+[[dim]]
+sym = "BOLT_FRONT_STRIP"
+value = 10
+provenance = "derived"
+note = "M8 x 10 for the 45 x 4 mm front strip, all three beams - 42 of them, and these are the ones that must be A4 / 316 austenitic because the magnetic tape runs between their rows. Reach past the strip is exactly TNUT_BODY_T's 6, so engagement is FULL with 1.2 spare to the slot floor. M8 x 12 IS WRONG HERE: it reaches 8.0 against a 7.2 limit and bottoms before the head seats."
+
+[[dim]]
+sym = "BOLT_BACK_X"
+value = 12
+provenance = "derived"
+note = "M8 x 12 for the X back joining plate, 6.35 mm 6061 - 28 of them. Reach 5.65, so 5.65 of the available 6 engaged and 1.55 spare to the floor. The next size up, M8 x 16, would reach 9.65 and bottom."
+
+[[dim]]
+sym = "BOLT_BACK_Y_WASHER"
+value = 1.6
+provenance = "nominal"
+note = "A plain M8 washer under the head on the Y back plate - NOT a stiffness or clearance figure, a shim that buys margin. The Y back is only 3.175 nominal and possibly 3.04, so M8 x 10 bare leaves 0.24-0.37 to the slot floor; the washer moves the head out 1.6 and makes the reach 5.2 with 2.0 spare. It also spreads load on 3 mm steel, which is wanted anyway. 56 washers, two beams."
+
+[[dim]]
+sym = "BOLT_BACK_Y"
+value = 10
+provenance = "derived"
+note = "M8 x 10 for the Y back plate - the outboard steel plate, 28 per beam, 56 total - WITH the washer in BOLT_BACK_Y_WASHER. Same length as the front strip's bolts, so the buy is two lengths and not three: 98 of M8 x 10 (42 A4 / 316 for the front strips, 56 plain for the Y backs) and 28 of M8 x 12 for the X back. 126 bolts against 126 T-nuts."
