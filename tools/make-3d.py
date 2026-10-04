@@ -45,6 +45,12 @@ ASSUMPTIONS = [
     "The box tongue is drawn from the bottom skin's top face up, 179 tall, to land "
     "at the 60 proud the registry gives. torsion-box.md says 180.",
     "NO BASE OR LEGS - deliberately out of scope. The box sits on the ground plane.",
+    "UNRESOLVED, 2.8 mm, AND THE INTERFERENCE CHECK IS REPORTING IT: the Y beam's "
+    "underside above the box skin is 184.8 if the SIDE PLATE's 304.8 is flush with "
+    "the beam top, or 182.0 if the FIN's measured 302 is. Sheet 1's window top is "
+    "drawn at 182, which backs the fin. This model uses 184.8, so the interposer "
+    "under the beam fouls the fin above the window by 2.8. One of the two plates "
+    "does not reach the beam top and the repo does not say which.",
 ]
 
 
@@ -71,7 +77,7 @@ def main() -> int:
                   "p": [cx - r, cy - r, min(z0, z1)],
                   "q": [cx + r, cy + r, max(z0, z1)]})
 
-    def prism(name, group, colour, profile, ya, yb):
+    def prism(name, group, colour, profile, ya, yb, holes=None):
         """An X-Z profile extruded along fore-aft. The fins are not boxes.
 
         p/q stay the bounding box so the camera framing and the interference
@@ -81,7 +87,8 @@ def main() -> int:
         xs = [pt[0] for pt in profile]
         zs = [pt[1] for pt in profile]
         P.append({"n": name, "g": group, "c": colour, "t": "prism",
-                  "profile": profile, "ya": min(ya, yb), "yb": max(ya, yb),
+                  "profile": profile, "holes": holes or [],
+                  "ya": min(ya, yb), "yb": max(ya, yb),
                   "p": [min(xs), min(ya, yb), min(zs)],
                   "q": [max(xs), max(ya, yb), max(zs)]})
 
@@ -122,11 +129,25 @@ def main() -> int:
     # is square. Corrected 2026-10-03; the first model had them on the beams'
     # sides, which is the wrong plane entirely.
     fb, ft, h = v["FIN_BASE_W"], v["FIN_TOP_W"], v["FIN_STOCK"]
+    wo, ww = v["WINDOW_OUTB_DRAWN"], v["WINDOW_W"]
+    wz0, wz1 = v["WINDOW_Z_LOW"], v["WINDOW_Z_LOW"] + v["WINDOW_H"]
     for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
+        # The window's outboard edge lands on the Y beam's OUTER FACE - 3.175 and
+        # 1208.575 - which is what Sheet 1 says it is aligned to, and the check
+        # that WINDOW_OUTB_DRAWN's 20 is right where the measured 19 is not.
+        wa, wb = outer + sgn * wo, outer + sgn * (wo + ww)
         prism("Front fin", "plates", 0x6FA8DC,
               [[outer, 0], [outer + sgn * fb, 0],
                [outer + sgn * ft, h], [outer, h]],
-              y1, y1 + v["T_FIN"])
+              y1, y1 + v["T_FIN"],
+              holes=[[[wa, wz0], [wb, wz0], [wb, wz1], [wa, wz1]]])
+
+    # ---- the interposer, under each beam and out through the window -------
+    ip_t = v["T_INTERPOSER"]
+    ip_front = y1 + v["T_FIN"] + v["INTERPOSER_PROUD"]
+    for x0 in (lx0, rx0):
+        box("Interposer", "ybeams", 0xC0652A, x0, ip_front - v["INTERPOSER_L"],
+            ybot - ip_t, x0 + v["INTERPOSER_W"], ip_front, ybot)
 
     # ---- X gantry, at Y home ---------------------------------------------
     xep_t = v["T_X_ENDPLATE"]
@@ -344,7 +365,8 @@ HTML = r"""<!doctype html>
  li{margin:3px 0}
 </style>
 <canvas id="c"></canvas>
-<div class="panel" id="ui"><h1>CNC assembly</h1><div id="toggles"></div><table id="facts"></table></div>
+<div class="panel" id="ui"><h1>CNC assembly</h1><div id="toggles"></div>
+<button id="statsbtn">Show info</button><table id="facts" hidden></table></div>
 <details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
 <script src="vendor/three.min.js"></script>
 <script>
@@ -375,6 +397,11 @@ for(const p of PARTS){
     const sh=new THREE.Shape();
     p.profile.forEach((pt,i)=>i?sh.lineTo(pt[0]-mid[0],pt[1]-mid[2]):sh.moveTo(pt[0]-mid[0],pt[1]-mid[2]));
     sh.closePath();
+    (p.holes||[]).forEach(hp=>{
+      const hs=new THREE.Path();
+      hp.forEach((pt,i)=>i?hs.lineTo(pt[0]-mid[0],pt[1]-mid[2]):hs.moveTo(pt[0]-mid[0],pt[1]-mid[2]));
+      hs.closePath(); sh.holes.push(hs);
+    });
     geom=new THREE.ExtrudeGeometry(sh,{depth:p.yb-p.ya,bevelEnabled:false});
     ctr=[0,0,-(p.yb-mid[1])];
   }else{
@@ -433,6 +460,11 @@ document.getElementById('infobody').innerHTML=
   'Every box is placed from a registry value - drag to orbit, scroll to zoom. '+
   'Pose: X home left, Y home back, Z at max.<br><b class="w">Placements ASSUMED, not derived:</b>'+
   '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
+
+const sb=document.getElementById('statsbtn'), ft2=document.getElementById('facts');
+sb.style.cssText='margin-top:8px;background:#2f353d;color:#cde;border:1px solid #454c55;'+
+                 'border-radius:4px;padding:3px 9px;cursor:pointer;font:11.5px inherit';
+sb.onclick=()=>{ft2.hidden=!ft2.hidden;sb.textContent=ft2.hidden?'Show info':'Hide info';};
 
 place(); resize();
 </script>

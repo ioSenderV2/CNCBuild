@@ -203,6 +203,11 @@ Registry updated: **2026-10-02**
 | **SPACER_L** | 150.5 mm | measured |  | Z spacer bar length, measured 2026-10-02. ITS PAIR IS 151.6 - the two were cut from one 12in piece and are 1.1 apart, which is why this is recorded as a measurement of one bar rather than a design length. Each bar spans TWO bearing blocks, so it is a little under the butted pair's BLOCK_BUTTED of 154.18; nothing is located by the ends. |
 | **SPACER_W** | 50.8 mm | part |  | 2in bar, across the spacer. The dimension that is NOT in doubt on these two - it is the stock width, where the thickness turned out not to be the 5/8in the repo had assumed. |
 | **CLAMP_W** | 122 mm | vendor |  | Clamp footprint across the Z plate - the 122 in the 122 x 55 that Sheets 3 and 4 already drew. Pairs with CLAMP_AXIAL. It is what leaves 2 mm of relief at each end of the 164 plate once the 100 x 25 bolt pattern is centred in it. |
+| **WINDOW_Z_LOW** | 132 mm | derived |  | Window's lower edge, from the fin's BOTTOM edge - Sheet 1's X 132. The casting occupies 132 to 172.5 of it; the rest is clearance. |
+| **WINDOW_OUTB_DRAWN** | 20 mm | derived |  | Window's outboard edge from the fin's outboard factory edge, AS DRAWN on Sheet 1 (Y 20). ⚠ WINDOW_OUTB says 19, measured off the MDF template 2026-10-02, and open-items.md closed the strip widths at 19. The two disagree by 1. The 20 is almost certainly right and the 19 stale: at 20 the window's outboard edge lands on X 3.175 and 1208.575 in machine coordinates, which ARE the two Y beams' outer faces - exactly what Sheet 1's own note says it is aligned to. The 3D model uses 20. SETTLE IT before the fins are cut. |
+| **INTERPOSER_L** | 150 mm | derived |  | Sheet 6's bar length. Its outboard end protrudes 30 past the fin's outer face, so measuring along the beam from the beam's end face it runs -40 to +110. |
+| **INTERPOSER_W** | 60 mm | derived | EXT_W | 60 across, the beam's own footprint, because it sits under the beam. |
+| **INTERPOSER_PROUD** | 30 mm | derived |  | How far the interposer's outboard end stands past the fin's outer face, so the casting and bar protrude through the window together. y-beam-support.md's 30 mm protrusion, which it calls the thing that sets everything else at that end. |
 
 ## Not confirmed on the real part
 
