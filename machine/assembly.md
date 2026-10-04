@@ -46,26 +46,32 @@ that sets a plate.
 
 ## Order of work
 
-The box is **last**. The machine is assembled on a flat surface and its width measured off the
-standing assembly; that measurement is what the box skins are cut to.
+**The box is cut from the standing machine, and the spindle goes on after the box.** Two ordering
+rules carry the whole sequence, and neither can be worked around:
+
+- 🔴 **The machine is assembled on a flat surface and its width measured off the standing
+  assembly.** That measurement is what the box skins are cut to — so the machine comes before the
+  box, not after it.
+- 🔴 **The spindle and tram come last, after the machine is bolted to the box.** Tram is set in the
+  installed position or it is set against a datum the machine does not have yet.
 
 | | Stage |
 |---|---|
-| 1 | [Make the plates](#the-mill-trip) — one trip to the mill |
-| 2 | [Build the three beams](#1-the-beams) — T-nuts, rails, joining plates |
-| 3 | [The Y beam ends](#2-the-y-beam-ends) — interposers, castings, screws, fins, rear plate, outboard plates |
-| 4 | [The X gantry](#3-the-x-gantry) — end plates, shelves, beam, carriage plate |
-| 5 | [The Y ball nuts](#4-the-y-ball-nuts) — doublers and sole brackets |
-| 6 | [The Z axis](#5-the-z-axis) |
-| 7 | [The spindle](#6-the-spindle), and **tram before the clamps are torqued** |
-| 8 | [Stand it up and measure](#7-stand-it-up-and-measure-it) |
-| 9 | [Build the box and its base](#8-the-torsion-box) |
-| 10 | [Set the machine on the box](#9-set-the-machine-on-the-box) |
-| 11 | [Fill the sand](#10-fill-the-sand) |
+| 1 | [Make the plates](#1-the-mill-trip) — one trip to the mill |
+| 2 | [Build the three beams](#2-the-beams) — T-nuts, rails, joining plates |
+| 3 | [The Y beam ends](#3-the-y-beam-ends) — interposers, castings, screws, fins, rear plate, outboard plates |
+| 4 | [The X gantry](#4-the-x-gantry) — end plates, shelves, beam, carriage plate |
+| 5 | [The Y ball nuts](#5-the-y-ball-nuts) — doublers and sole brackets |
+| 6 | [The Z axis](#6-the-z-axis) |
+| 7 | [Stand it up and measure](#7-stand-it-up-and-measure-it) — this is where the box width comes from |
+| 8 | [Build the box and its base](#8-the-torsion-box) |
+| 9 | [Set the machine on the box](#9-set-the-machine-on-the-box) |
+| 10 | [Fit the spindle and **tram**](#10-fit-the-spindle-and-tram), then the [stiffness test](#then-run-the-stiffness-test) |
+| 11 | [Fill the sand](#11-fill-the-sand) |
 
 ---
 
-## The mill trip
+## 1. The mill trip
 
 Accurate holes are drilled on **one visit** — a Laguna mill, 4' × 1' bed, **manual X and Y**.
 Every plate must be fully dimensioned before the trip, including assemblies that will not be built
@@ -79,7 +85,7 @@ for months.
 | **X carriage plate**, 1/2" | 30 holes |
 | **Z plate**, 1/2" | |
 | **Interposer bars**, 60 × 150 × 3/8", 3 off | six tapped M5 under a bearing face, six flange clearance holes |
-| **Both Z spacers** | **face 1 mm off both in the same setup** — see [the Z axis](#5-the-z-axis) |
+| **Both Z spacers** | **face 1 mm off both in the same setup** — see [the Z axis](#6-the-z-axis) |
 | Rail mounting patterns, bearing block and nut housing patterns, counterbores | |
 
 | Home drill press | |
@@ -106,7 +112,7 @@ and datum off a scribed and indicated line rather than off a sawn edge.
 
 ---
 
-## 1. The beams
+## 2. The beams
 
 Three identical stacked pairs — X, Y1 and Y2. Each is two `30-6060` × 1000 mm.
 
@@ -158,7 +164,7 @@ indicator on the plate against a straightedge and sweep.
 | | Back | Front |
 |---|---|---|
 | **X** | 120 mm × 1/4" 6061, full section height | 45 mm × **4 mm** 6061 |
-| **Y1, Y2** | no separate back plate — the **outboard plate** is it, see [stage 3](#2-the-y-beam-ends) | 45 mm × **4 mm** 6061 |
+| **Y1, Y2** | no separate back plate — the **outboard plate** is it, see [the Y beam ends](#3-the-y-beam-ends) | 45 mm × **4 mm** 6061 |
 | Fixing, back | M8 T-nuts, four rows, 150 mm | — |
 | Fixing, front | — | M8 **flange** bolts, two rows, no counterbore |
 | Holes | **9 mm clearance** | 9 mm clearance |
@@ -199,7 +205,7 @@ Not decided.
 
 ---
 
-## 2. The Y beam ends
+## 3. The Y beam ends
 
 Each Y beam is carried **at its two ends only** — the ball screw runs underneath it, so nothing can
 support it along its length.
@@ -314,7 +320,7 @@ of it or leave it deliberately open at both ends so it can be blown through.
 
 ---
 
-## 3. The X gantry
+## 4. The X gantry
 
 ### The end plates
 
@@ -388,7 +394,7 @@ everything. **Build it solid and treat it as a datum.**
 
 ---
 
-## 4. The Y ball nuts
+## 5. The Y ball nuts
 
 The Y ball nut housings run **inverted** on both beams, so their mounting faces look **down** and
 their bolts are reachable.
@@ -419,7 +425,7 @@ sixteen block holes.
 
 ---
 
-## 5. The Z axis
+## 6. The Z axis
 
 | | |
 |---|---|
@@ -490,55 +496,6 @@ It is a machine measurement, taken once the machine stands.
 
 ---
 
-## 6. The spindle
-
-| | |
-|---|---|
-| Spindle | **Ø80 × 213 mm, 2.2 kW, 220 V, 8 A, 400 Hz** water-cooled, RATTMMOTOR, with VFD, ER20 collet and pump |
-| Mass | **5.2 kg** |
-| Clamps | **two 80 mm aluminium clamps**, 120 × 55 × 100 mm, one at each end of the barrel |
-| Clamp centres | **116 mm** — mid-height at ±58 mm from plate centre |
-| Fixing | **4 × M8 × 80 socket head** per clamp, into **tapped** holes in the Z plate |
-| M8 rows | **17 and 42 mm from the nearer plate end** ← the drilling dimension |
-| Water | two **Ø8 mm** fittings, exiting radially at the rear |
-
-**Orientation: the clamp's 100 mm dimension is front-to-back**, with the 80 mm bore centred in it.
-55 mm is axial.
-
-🔴 **Torque the clamp bolts to ~15 N·m, NOT the ~25 N·m an M8 8.8 would take.** 10 mm of engagement
-in 6061 is the limit, not the bolt. **Four M8 helicoils per clamp position** takes it to full spec if
-you would rather not have to remember.
-
-🔴 **Never shim the two clamps against each other.** They bore a round body and must stay coaxial.
-
-**Measure on arrival:** where the water fittings and cable exit sit, the body diameter over the whole
-clamping length, and the weight.
-
-### 🔴 Tram now, before the clamps are torqued
-
-**Tram is set once, at assembly, with the clamps off — all 16 bolts are accessible then.** There is
-no sub-plate and no permanent jacking provision. Redoing it later means pulling the spindle.
-
-| Rotation | Where it is taken |
-|---|---|
-| **Roll** | **Shim between the shelf bar's top face and the X beam's bottom extrusion**, at one end plate only. Shim the low end |
-| **Nod** | At the Z plate, using the two outermost M8 rows — one as the hinge, the other as the adjuster. The two middle rows are torqued once the tilt is set |
-| Yaw | Does nothing on a round spindle |
-
-**Roll shim stock: 1" wide aluminium strip**, which is exactly the bar's 25.4 width — a strip cut to
-the bar's 60 mm length is a full-face shim. **0.03 mm of shim moves tram by 0.003 mm per 100 mm.**
-
-🔴 **Slot the roll shim open from one edge at Y 15 and Y 45**, so it slides in with the two vertical
-M8 loosened rather than removed. A plain rectangle means pulling the beam off.
-
-**Order of work for roll: loosen the four M8, slide the shim in, re-torque.**
-
-⚠️ **Range is capped at about 0.5 mm by the 9 mm bolt clearance**, so the beam is deliberately not
-centred in those holes once shimmed.
-
-**For nod, use a row and not a column**, and use the two outermost rows — angular resolution is jack
-travel over row separation. **Every bolt above the hinge has to be free** while the tilt is set.
-
 ---
 
 ## 7. Stand it up and measure it
@@ -560,16 +517,6 @@ not let a nominal or catalogue figure substitute for it.
 ⚠️ **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
 curbs' inner faces, and a curb is a hard bearing face with no float. A millimetre or two too wide is
 a shim; **too narrow and the plates will not drop between the curbs at all.**
-
-### Then run the stiffness test
-
-📋 **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).** Six
-indicator positions and a subtraction — **do not improvise it at the machine.** One reading on the
-spindle nose is a total, and a total cannot say which part of the stack is moving.
-
-It settles two deferred decisions: whether the X gantry back plate goes from 1/4" to 3/8", and
-whether the X carriage plate goes from 1/2" to 5/8". ⚠️ **Do not act on either before the test.**
-If the carriage plate does move, it goes to **thicker aluminium, not a bolted-on steel backer.**
 
 ---
 
@@ -699,9 +646,76 @@ fin is tied by L-brackets; [`torsion-box.md`](torsion-box.md) and
 [`lateral-stiffness.md`](lateral-stiffness.md) still describe a continuous front tongue lapping the
 side tongues. **Resolve before the walls are glued up.**
 
+## 10. Fit the spindle and tram
+
+| | |
+|---|---|
+| Spindle | **Ø80 × 213 mm, 2.2 kW, 220 V, 8 A, 400 Hz** water-cooled, RATTMMOTOR, with VFD, ER20 collet and pump |
+| Mass | **5.2 kg** |
+| Clamps | **two 80 mm aluminium clamps**, 120 × 55 × 100 mm, one at each end of the barrel |
+| Clamp centres | **116 mm** — mid-height at ±58 mm from plate centre |
+| Fixing | **4 × M8 × 80 socket head** per clamp, into **tapped** holes in the Z plate |
+| M8 rows | **17 and 42 mm from the nearer plate end** ← the drilling dimension |
+| Water | two **Ø8 mm** fittings, exiting radially at the rear |
+
+**Orientation: the clamp's 100 mm dimension is front-to-back**, with the 80 mm bore centred in it.
+55 mm is axial.
+
+🔴 **Torque the clamp bolts to ~15 N·m, NOT the ~25 N·m an M8 8.8 would take.** 10 mm of engagement
+in 6061 is the limit, not the bolt. **Four M8 helicoils per clamp position** takes it to full spec if
+you would rather not have to remember.
+
+🔴 **Never shim the two clamps against each other.** They bore a round body and must stay coaxial.
+
+**Measure on arrival:** where the water fittings and cable exit sit, the body diameter over the whole
+clamping length, and the weight.
+
+### 🔴 Tram here, with the machine bolted down
+
+🔴 **Tram is set on the installed machine** — standing on the box, bolted to the tongues, in the
+position it will run in. Tramming a free-standing assembly sets it against a datum the machine does
+not have yet.
+
+**It is set once, and only with the clamps off** — all 16 M8 are accessible only then. There is no
+sub-plate and no permanent jacking provision, so redoing it later means lifting the spindle out of
+its two clamps.
+
+| Rotation | Where it is taken |
+|---|---|
+| **Roll** | **Shim between the shelf bar's top face and the X beam's bottom extrusion**, at one end plate only. Shim the low end |
+| **Nod** | At the Z plate, using the two outermost M8 rows — one as the hinge, the other as the adjuster. The two middle rows are torqued once the tilt is set |
+| Yaw | Does nothing on a round spindle |
+
+**Roll shim stock: 1" wide aluminium strip**, which is exactly the bar's 25.4 width — a strip cut to
+the bar's 60 mm length is a full-face shim. **0.03 mm of shim moves tram by 0.003 mm per 100 mm.**
+
+🔴 **Slot the roll shim open from one edge at Y 15 and Y 45**, so it slides in with the two vertical
+M8 loosened rather than removed. A plain rectangle means pulling the beam off.
+
+**Order of work for roll: loosen the four M8, slide the shim in, re-torque.**
+
+⚠️ **Range is capped at about 0.5 mm by the 9 mm bolt clearance**, so the beam is deliberately not
+centred in those holes once shimmed.
+
+**For nod, use a row and not a column**, and use the two outermost rows — angular resolution is jack
+travel over row separation. **Every bolt above the hinge has to be free** while the tilt is set.
+
+### Then run the stiffness test
+
+**It pushes on the spindle nose, so it cannot run before this stage**, and it is run on the
+machine bolted down in its installed position — the condition worth measuring.
+
+📋 **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).** Six
+indicator positions and a subtraction — **do not improvise it at the machine.** One reading on the
+spindle nose is a total, and a total cannot say which part of the stack is moving.
+
+It settles two deferred decisions: whether the X gantry back plate goes from 1/4" to 3/8", and
+whether the X carriage plate goes from 1/2" to 5/8". ⚠️ **Do not act on either before the test.**
+If the carriage plate does move, it goes to **thicker aluminium, not a bolted-on steel backer.**
+
 ---
 
-## 10. Fill the sand
+## 11. Fill the sand
 
 **Last, on site.** Roughly 165 lb. Everything above it has to be finished first, and dumping it is
 the single biggest lever on ever moving the machine.
@@ -742,4 +756,5 @@ cutting or drilling:
 | The **L-bracket** specification | gates the fin fixing |
 | How far past the front riser plane the **spindle** reaches | gates the fin's taper cut |
 | The **Z travel floor** against the spoilboard | a machine measurement, taken once it stands |
+| Whether the **stiffness test wants the sand in** | the order above runs it at stage 10 and fills at stage 11, because the sand is specified as last. Nothing states whether 165 lb of base mass changes the reading |
 | **Torque figures** — only the spindle clamp's ~15 N·m is specified anywhere in this repo | |
