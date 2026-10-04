@@ -20,11 +20,16 @@
 *-erc.rpt
 *-drc.rpt
 
-# The build document - DERIVED from machine/*.md by tools/make-pdf.ps1 (~4.4 MB, 97
-# pages, all fifteen photographs embedded so the pack works on paper), plus the
-# print-sized photo copies it scales on the way. Regenerate, do not track: a tracked
+# The two printable documents - DERIVED from machine/*.md by tools/make-pdf.ps1, plus
+# the print-sized photo copies it scales on the way. Regenerate, do not track: a tracked
 # copy would be a second source of truth that silently goes stale, which is the exact
 # failure STATUS.md and INDEX.md are generated to avoid.
+#
+#   build-document  <- machine/assembly.md    how to build it. ~18 pages, no photographs
+#   design-record   <- the twelve chapters    why it is that shape. ~102 pages, all
+#                                             sixteen photographs embedded
 build-document.html
 build-document.pdf
+design-record.html
+design-record.pdf
 build-photos/

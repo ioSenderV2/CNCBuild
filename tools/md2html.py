@@ -1,19 +1,31 @@
 #!/usr/bin/env python3
-"""Render the machine prose into ONE printable HTML file - the input to tools/make-pdf.ps1.
+"""Render the machine prose into TWO printable HTML files - the input to tools/make-pdf.ps1.
 
-    md2html.py            write build-document.html at the repo root
-    md2html.py --check    render and report, write nothing
+    md2html.py                 write both at the repo root
+    md2html.py --doc build     just build-document.html
+    md2html.py --check         render and report, write nothing
 
-WHY THIS EXISTS
----------------
-The reasoning is the artifact, and the reasoning is spread over twelve files. That is right
-for editing and wrong for the one thing prose cannot do: be carried. A build document is
-read at the machine, away from a checkout, and the mill trip is a single trip.
+WHY THERE ARE TWO
+-----------------
+They are split by REGISTER, not by subject, and the split is the whole point:
 
-So this is a VIEW, never a source. Nothing is specified here for the first time and nothing
-is summarised - every heading and every line of body text comes through verbatim. If this
-file and a `machine/*.md` file disagree, the `.md` file wins, exactly as
-machine/drawings/README.md says of the drawings.
+  build-document.html   <- machine/assembly.md      WHAT GETS BUILT. Parts, hardware, what
+                                                    bolts to what, in the order it is done.
+  design-record.html    <- the twelve machine/*.md   WHY IT IS THAT SHAPE. The schemes that
+                                                    were killed, the figures that moved.
+
+One document carrying both could not be worked from. A page that says "bolt this here" and
+then spends four paragraphs on what it nearly was instead is arguing with itself while
+somebody is standing at the machine holding a drill. Keeping the reasoning is right -
+it is genuinely useful - but not on the page the work is read from.
+
+So BOTH are VIEWS, never sources. Nothing is specified in either for the first time and
+nothing in the record is summarised - every heading and every line of body text comes
+through verbatim. If one of these files and a `machine/*.md` file disagree, the `.md` file
+wins, exactly as machine/drawings/README.md says of the drawings.
+
+A new decision goes into a chapter, and then into assembly.md if it changes what gets built.
+Writing the reasoning into assembly.md is the failure this split exists to prevent.
 
 WHAT IT DELIBERATELY DROPS
 --------------------------
@@ -63,7 +75,6 @@ except ModuleNotFoundError:
     sys.exit("ERROR: the markdown package is missing - run:  python -m pip install markdown")
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "build-document.html"
 PHOTO_CACHE = ROOT / "build-photos"   # print-sized copies; gitignored, rebuilt on demand
 
 # Long edge in pixels, and JPEG quality. See prepare_photos() for why these are enough.
@@ -90,6 +101,65 @@ ORDER = [
     "machining.md",
     "open-items.md",
 ]
+
+# TWO DOCUMENTS, from the same prose directory and the same CSS.
+#
+# The split is by REGISTER, not by subject. The build document says what gets built - parts,
+# hardware, what bolts to what, in the order it is done. The design record says why, what was
+# weighed and what a figure used to be. Mixing them is what made one document that could not be
+# worked from: a page carrying both is arguing with itself while somebody holds a drill.
+#
+# Neither is authoritative. The .md files are, exactly as machine/drawings/README.md says of
+# the drawings.
+DOCS = {
+    "build": {
+        "out": "build-document.html",
+        "order": ["assembly.md"],
+        "tab": "CNCBuild - build document",
+        "h1": "CNCBuild",
+        "sub": "Building the machine &mdash; what bolts to what, and in what order",
+        "sheets": True,
+        "note": (
+            "<p><strong>This is the build document. It says what gets built and nothing"
+            " else.</strong> The reasoning, the options that were weighed and what any figure"
+            " used to be are in the <em>design record</em> &mdash; a separate printout of the"
+            " twelve <code>machine/*.md</code> chapters. <strong>Where this document and a"
+            " chapter disagree, the chapter wins.</strong></p>"
+            "<p><strong>Drilled hole coordinates are not here.</strong> They are on the sheets"
+            " in the shop pack, one sheet per part, linked below. This document says which"
+            " parts meet, with what hardware, and when.</p>"
+            "<p><strong>An item marked &#9888; Open is not specified anywhere in this"
+            " repo.</strong> It is not an omission from this document &mdash; do not fill one"
+            " in from a catalogue or from inference.</p>"
+            "<p><strong>Measured values live in <a href=\"commissioning/\">commissioning/</a>"
+            " and outrank every computed figure here.</strong></p>"
+        ),
+    },
+    "record": {
+        "out": "design-record.html",
+        "order": None,            # filled from ORDER below
+        "tab": "CNCBuild - design record",
+        "h1": "CNCBuild &mdash; design record",
+        "sub": "Why the machine is the shape it is &mdash; the reasoning, kept",
+        "sheets": False,
+        "note": (
+            "<p><strong>This is the design record, not the build document.</strong> It is the"
+            " twelve <code>machine/*.md</code> files concatenated verbatim, in reading order,"
+            " so the reasoning behind every decision can be followed - including the schemes"
+            " that were tried and killed, and the figures that moved. <strong>To build from,"
+            " use <code>build-document.pdf</code> instead.</strong></p>"
+            "<p>Nothing is specified here for the first time and nothing is summarised."
+            " <strong>If this document and a <code>.md</code> file disagree, the"
+            " <code>.md</code> file wins</strong> and this copy is stale.</p>"
+            "<p>Ten of the twelve chapters were one 2877-line file,"
+            " <code>end-plates-risers-and-spindle.md</code>, until 2026-10-02. The split was"
+            " verbatim; the per-file note recording it is omitted here rather than repeated"
+            " ten times.</p>"
+            "<p><strong>Measured values live in <a href=\"commissioning/\">commissioning/</a>"
+            " and outrank every computed figure in this document.</strong></p>"
+        ),
+    },
+}
 
 # The shop pack's own sheets, by the id anchors added to machine/drawings/shop-pack.html.
 SHEETS = [
@@ -199,6 +269,11 @@ def slugger(prefix: str):
     def slugify(value: str, separator: str) -> str:
         v = re.sub(r"[^\w\s-]", "", value, flags=re.UNICODE).strip().lower()
         v = re.sub(r"[-\s]+", separator, v)
+        if not prefix:
+            # A single-file document needs no disambiguation, and leaving the slug bare is
+            # what makes an `#anchor` written in the markdown work BOTH here and in GitHub's
+            # own rendering of that file. Prefixed, every in-page link in the source is dead.
+            return v
         return f"{prefix}{separator}{v}" if v else prefix
 
     return slugify
@@ -281,30 +356,19 @@ def figures(names: list[str], captions: dict[str, str]) -> str:
     return f'<div class="figs">{"".join(cells)}</div>'
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--check", action="store_true", help="render and report, write nothing")
-    ap.add_argument("--rebuild-photos", action="store_true",
-                    help="re-scale every photograph even if the cached copy looks current")
-    args = ap.parse_args()
-
-    md_dir = ROOT / "machine"
-    photo_dir = md_dir / "photos"
-    chapters: dict[str, str] = {name: Path(name).stem for name in ORDER}
-
-    captions = load_captions(photo_dir)
-    on_disk = sorted(p.name for p in photo_dir.glob("*.jpg"))
-    if not args.check:
-        src_b, out_b = prepare_photos(photo_dir, PHOTO_CACHE, args.rebuild_photos)
-        print(f"photographs scaled to {PHOTO_MAX_PX}px: "
-              f"{src_b/1048576:.1f} MB -> {out_b/1048576:.1f} MB in {PHOTO_CACHE.name}/")
+def render(key: str, md_dir: Path, captions: dict[str, str], on_disk: list[str],
+           check: bool) -> tuple[str, Path, list[tuple[str, int, int]], list[str]]:
+    """Build one document. Returns (html, output path, per-file stats, orphan photographs)."""
+    spec = DOCS[key]
+    order = spec["order"] or ORDER
+    chapters: dict[str, str] = {name: Path(name).stem for name in order}
 
     # Which chapter cites which photograph. First citer wins, so a photo referenced twice is
     # printed once, with the chapter that leans on it hardest - the earlier one in reading
     # order. Anything no chapter cites goes to the appendix rather than being dropped.
-    placed: dict[str, list[str]] = {name: [] for name in ORDER}
+    placed: dict[str, list[str]] = {name: [] for name in order}
     for photo in on_disk:
-        for name in ORDER:
+        for name in order:
             if photo in (md_dir / name).read_text(encoding="utf-8"):
                 placed[name].append(photo)
                 break
@@ -314,10 +378,10 @@ def main() -> int:
     toc: list[str] = []
     stats: list[tuple[str, int, int]] = []
 
-    for name in ORDER:
+    for name in order:
         src = md_dir / name
         if not src.exists():
-            sys.exit(f"ERROR: {src} not found - ORDER is out of date")
+            sys.exit(f"ERROR: {src} not found - DOCS[{key!r}] is out of date")
 
         text = src.read_text(encoding="utf-8")
         text, dropped = PROVENANCE_RE.subn("", text, count=1)
@@ -325,7 +389,9 @@ def main() -> int:
         slug = chapters[name]
         md = markdown.Markdown(
             extensions=["extra", "toc", "sane_lists", "admonition"],
-            extension_configs={"toc": {"slugify": slugger(slug), "separator": "-"}},
+            extension_configs={
+                "toc": {"slugify": slugger(slug if len(order) > 1 else ""), "separator": "-"},
+            },
         )
         body = md.convert(text)
         body = HREF_RE.sub(lambda m: f'href="{rebase(m.group(1), chapters)}"', body)
@@ -354,7 +420,9 @@ def main() -> int:
         )
         stats.append((name, len(text.splitlines()), dropped))
 
-    if orphans:
+    # The appendix only belongs on the document that places photographs chapter by chapter.
+    # On the build document every photograph would be an orphan, which is not a finding.
+    if orphans and len(order) > 1:
         bodies.append(
             '<section class="plates" id="appendix-photographs">'
             "<h1>Appendix &mdash; further photographs</h1>"
@@ -365,46 +433,13 @@ def main() -> int:
         )
         toc.append('<li><a href="#appendix-photographs">Appendix &mdash; further photographs</a></li>')
 
-    sheets = "".join(
-        f'<li><a href="machine/drawings/shop-pack.html#{i}">{html.escape(t)}</a></li>'
-        for i, t in SHEETS
-    )
-
-    doc = f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<title>CNCBuild - the mechanical build document</title>
-<!-- GENERATED by tools/md2html.py - DO NOT EDIT. Regenerate: tools\\make-pdf.ps1 -->
-<style>{CSS}</style></head>
-<body><div class="page">
-
-<header class="front">
-<h1>CNCBuild</h1>
-<p class="sub">The mechanical build document &mdash; beams, plates, risers, spindle and Z</p>
-
-<div class="note">
-<p><strong>This document is derived, never authoritative.</strong> It is the twelve
-<code>machine/*.md</code> files concatenated verbatim, in reading order, so that the reasoning
-can be carried to the machine. Nothing is specified here for the first time and nothing is
-summarised. <strong>If this document and a <code>.md</code> file disagree, the
-<code>.md</code> file wins</strong> and this copy is stale.</p>
-<p>Ten of the twelve chapters were one 2877-line file,
-<code>end-plates-risers-and-spindle.md</code>, until 2026-10-02. The split was verbatim; the
-per-file note recording it is omitted here rather than repeated ten times.</p>
-<p><strong>Measured values live in <a href="commissioning/">commissioning/</a> and outrank
-every computed figure in this document.</strong></p>
-</div>
-
-<div class="warn">
-<p><strong>Four questions still gate drilling</strong>, and each needs a part or the mill in
-front of you: the 4&nbsp;&times;&nbsp;HGH20 block hole pattern measured on the <strong>X/Y</strong>
-kit &mdash; not the Z kit, a different supplier; the &oslash;35 encoder bore's fore-aft position on
-the X end plate; how far past the front riser plane the spindle reaches, which gates the front
-fin's taper cut; and the mill's model and DRO axis count. <strong>Two trip parts also have no
-sheet yet</strong> &mdash; the cast stepper frame interposer (3 off, fully dimensioned in the
-prose) and the 1200&nbsp;mm rear plate. See <a href="#open-items">Open items</a> before cutting
-anything.</p>
-</div>
-
+    sheet_block = ""
+    if spec["sheets"]:
+        sheets = "".join(
+            f'<li><a href="machine/drawings/shop-pack.html#{i}">{html.escape(t)}</a></li>'
+            for i, t in SHEETS
+        )
+        sheet_block = f"""
 <h2>Drawings &mdash; the shop pack</h2>
 <p>The sheets are a separate file because they are hand-authored SVG and are regenerated on a
 different cycle. These links open the pack at the named sheet. <strong>They resolve only on a
@@ -412,7 +447,23 @@ machine holding this checkout</strong> &mdash; on paper they are inert, and the 
 contents jumps are the ones that always work.</p>
 <ol>{sheets}</ol>
 <p><a href="machine/drawings/README.md">The rules that folder follows</a> &mdash; derived never
-authoritative, unknowns marked never invented, one datum per plate.</p>
+authoritative, unknowns marked never invented, one datum per plate.</p>"""
+
+    doc = f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>{spec["tab"]}</title>
+<!-- GENERATED by tools/md2html.py - DO NOT EDIT. Regenerate: tools\\make-pdf.ps1 -->
+<style>{CSS}</style></head>
+<body><div class="page">
+
+<header class="front">
+<h1>{spec["h1"]}</h1>
+<p class="sub">{spec["sub"]}</p>
+
+<div class="note">
+{spec["note"]}
+</div>
+{sheet_block}
 </header>
 
 <nav class="toc">
@@ -424,15 +475,28 @@ authoritative, unknowns marked never invented, one datum per plate.</p>
 
 </div></body></html>
 """
+    return doc, ROOT / spec["out"], stats, orphans
 
-    total = sum(n for _, n, _ in stats)
-    for name, n, dropped in stats:
-        pics = f"  +{len(placed[name])} photo(s)" if placed[name] else ""
-        flag = "  (provenance note dropped)" if dropped else ""
-        print(f"  {name:34} {n:5} lines{flag}{pics}")
-    print(f"\n{len(ORDER)} chapters, {total} source lines -> {len(doc.splitlines())} HTML lines")
-    print(f"photographs: {len(on_disk)} on disk, {len(on_disk) - len(orphans)} placed in chapters, "
-          f"{len(orphans)} in the appendix")
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--check", action="store_true", help="render and report, write nothing")
+    ap.add_argument("--rebuild-photos", action="store_true",
+                    help="re-scale every photograph even if the cached copy looks current")
+    ap.add_argument("--doc", choices=sorted(DOCS), action="append",
+                    help="render only this document; repeatable. Default: both")
+    args = ap.parse_args()
+
+    md_dir = ROOT / "machine"
+    photo_dir = md_dir / "photos"
+
+    captions = load_captions(photo_dir)
+    on_disk = sorted(p.name for p in photo_dir.glob("*.jpg"))
+    if not args.check:
+        src_b, out_b = prepare_photos(photo_dir, PHOTO_CACHE, args.rebuild_photos)
+        print(f"photographs scaled to {PHOTO_MAX_PX}px: "
+              f"{src_b/1048576:.1f} MB -> {out_b/1048576:.1f} MB in {PHOTO_CACHE.name}/")
+
     missing = [p for p in on_disk if p not in captions]
     unused_caps = [c for c in captions if c not in on_disk]
     if missing:
@@ -440,12 +504,23 @@ authoritative, unknowns marked never invented, one datum per plate.</p>
     if unused_caps:
         print(f"  WARNING caption with no file: {', '.join(unused_caps)}")
 
-    if args.check:
-        print("--check: nothing written")
-        return 0
+    for key in (args.doc or sorted(DOCS)):
+        doc, out, stats, orphans = render(key, md_dir, captions, on_disk, args.check)
+        print(f"\n== {key}: {out.name} ==")
+        for name, n, dropped in stats:
+            flag = "  (provenance note dropped)" if dropped else ""
+            print(f"  {name:34} {n:5} lines{flag}")
+        total = sum(n for _, n, _ in stats)
+        print(f"  {len(stats)} source file(s), {total} lines -> {len(doc.splitlines())} HTML lines")
+        if len(stats) > 1:
+            print(f"  photographs: {len(on_disk)} on disk, "
+                  f"{len(on_disk) - len(orphans)} placed, {len(orphans)} in the appendix")
+        if args.check:
+            print("  --check: nothing written")
+        else:
+            out.write_text(doc, encoding="utf-8")
+            print(f"  wrote {out}")
 
-    OUT.write_text(doc, encoding="utf-8")
-    print(f"wrote {OUT}")
     return 0
 
 

@@ -3,8 +3,26 @@
 The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons.
 Measured values belong in [`../commissioning/`](../commissioning/).
 
+## 🔴 Two documents, split by register - read this first
+
+**[`assembly.md`](assembly.md) says what gets built. The twelve chapters say why.** Keep them apart.
+A page that carries both is arguing with itself while somebody is holding a drill, which is how one
+unusable document came about in the first place.
+
+| | Source | Printout | What belongs in it |
+|---|---|---|---|
+| **The build document** | [`assembly.md`](assembly.md) | `build-document.pdf`, ~18 pages | Parts, hardware, what bolts to what, in the order it is done. Imperative. No reasoning, no options weighed, no figure's history |
+| **The design record** | the twelve chapters below | `design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every ⚠️ and 📌. Reference, never worked from |
+
+📋 **`tools\make-pdf.ps1`** from the repo root builds both. `-Doc build` or `-Doc record` for one.
+Both are derived and untracked: **if either disagrees with a `.md` file, the `.md` file wins.**
+
+🔴 **A new decision goes in a chapter, and then into `assembly.md` if it changes what gets built.**
+Writing the reasoning into `assembly.md` is the failure this split exists to prevent.
+
 | File | What is in it |
 |---|---|
+| [`assembly.md`](assembly.md) | **How the machine goes together.** Every part, its hardware, and the order of work - mill trip, beams, Y ends, X gantry, Z, spindle, stand-and-measure, box, sand |
 | [`gantry-beam-joint.md`](gantry-beam-joint.md) | Each gantry beam is two stacked 8020 `30-6060`. How they are tied together, and the four schemes that were killed getting there |
 | [`torsion-box.md`](torsion-box.md) | What the machine stands on. The box, its three cedar posts, the base frame and shear walls, and the transport plan |
 | **The ten plate files** | What holds the beams up and what hangs off them — listed below |
@@ -21,11 +39,10 @@ hangs off them. Several dimensions are still **⚠️ Open** and are marked as s
 They were one 2877-line file, `end-plates-risers-and-spindle.md`, until 2026-10-02. The split is
 verbatim — no decision was reopened in the move — and it is along the seams the prose already had.
 
-📋 **To carry all of this to the machine, run `tools\make-pdf.ps1`** from the repo root. It builds
-`build-document.pdf` — these ten files plus [`gantry-beam-joint.md`](gantry-beam-joint.md) and
-[`torsion-box.md`](torsion-box.md), in reading order, with a clickable contents, every photograph
-embedded beside the chapter that cites it, and links into [`drawings/shop-pack.html`](drawings/shop-pack.html).
-It is derived and untracked: **if it disagrees with a file below, the file below wins.**
+📋 **These twelve are the design record**, printed by `tools\make-pdf.ps1` as
+`design-record.pdf` — in reading order, with a clickable contents and every photograph embedded
+beside the chapter that cites it. **To carry something to the machine, carry `build-document.pdf`
+instead** — see the two-document note at the top of this file.
 
 | File | What is in it |
 |---|---|
