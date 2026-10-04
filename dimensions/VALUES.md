@@ -211,6 +211,8 @@ Registry updated: **2026-10-02**
 | **Y_BEAM_UNDERSIDE** | 182 mm | derived | WINDOW_Z_LOW + WINDOW_H | The Y beam's underside above the torsion box's top skin, 182 - and it comes from the FIN, which is the riser that actually carries the beam. It is the top edge of the fin's window: the casting and interposer fill the window up to the beam, so the window's top IS the beam's underside. Settled 2026-10-03 after the side plate was ruled out as the datum. |
 | **Y_BEAM_TOP_Z** | 302 mm | derived | Y_BEAM_UNDERSIDE + BEAM_H | 302 above the box's top skin. THIS IS THE CROSS-CHECK THAT THE CHAIN IS RIGHT: it lands on exactly FIN_STOCK, the measured 302 of the fin square, from a completely separate direction - the window's drawn position. The fin is flush with the beam top; the side plate is not, and does not need to be. |
 | **SIDE_PLATE_PROUD** | 2.8 mm | derived | SIDE_PLATE_H - Y_BEAM_TOP_Z | How far the side plate's top edge stands above the Y beam's top, 2.8. Harmless, and the reason Sheet 9 is dimensioned off the bottom edge: a bought 12in plate was never going to land on the beam top by luck. If the delivered plate is under 304.8 this just gets smaller. |
+| **FLANGE_HEAD_D** | 17.3 mm | measured |  | M8 flange head across the flange, measured on the bench 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. |
+| **FLANGE_HEAD_H** | 5 mm | measured |  | M8 flange head height, same measurement. It is what stands proud of every plate face in the 3D model. |
 
 ## Not confirmed on the real part
 

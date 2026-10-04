@@ -1210,3 +1210,15 @@ note = "302 above the box's top skin. THIS IS THE CROSS-CHECK THAT THE CHAIN IS 
 sym = "SIDE_PLATE_PROUD"
 expr = "SIDE_PLATE_H - Y_BEAM_TOP_Z"
 note = "How far the side plate's top edge stands above the Y beam's top, 2.8. Harmless, and the reason Sheet 9 is dimensioned off the bottom edge: a bought 12in plate was never going to land on the beam top by luck. If the delivered plate is under 304.8 this just gets smaller."
+
+[[dim]]
+sym = "FLANGE_HEAD_D"
+value = 17.3
+provenance = "measured"
+note = "M8 flange head across the flange, measured on the bench 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself."
+
+[[dim]]
+sym = "FLANGE_HEAD_H"
+value = 5
+provenance = "measured"
+note = "M8 flange head height, same measurement. It is what stands proud of every plate face in the 3D model."

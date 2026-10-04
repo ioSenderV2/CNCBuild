@@ -63,13 +63,24 @@ def main() -> int:
                   "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
                   "q": [max(x0, x1), max(y0, y1), max(z0, z1)]})
 
-    def cyl(name, group, colour, cx, cy, z0, z1, r):
-        """A vertical cylinder. The spindle is round and a box misrepresents its
-        clearance - at 45 degrees a box corner sticks out r*(sqrt2-1) further."""
-        P.append({"n": name, "g": group, "c": colour, "t": "cyl",
-                  "cx": cx, "cy": cy, "r": r, "z0": min(z0, z1), "z1": max(z0, z1),
-                  "p": [cx - r, cy - r, min(z0, z1)],
-                  "q": [cx + r, cy + r, max(z0, z1)]})
+    def cyl(name, group, colour, cx, cy, z0, z1, r, axis="z", seg=36):
+        """A cylinder along one axis. The spindle is round and a box misrepresents
+        its clearance - at 45 degrees a box corner sticks out r*(sqrt2-1) further.
+        Bolt heads are round for the same reason and are drawn with few segments.
+
+        cx, cy are the two coordinates the axis does NOT run along, in machine
+        order: for axis 'z' that is (x, y), for 'x' it is (y, z), for 'y' (x, z).
+        """
+        lo, hi = min(z0, z1), max(z0, z1)
+        if axis == "z":
+            p, q = [cx - r, cy - r, lo], [cx + r, cy + r, hi]
+        elif axis == "x":
+            p, q = [lo, cx - r, cy - r], [hi, cx + r, cy + r]
+        else:
+            p, q = [cx - r, lo, cy - r], [cx + r, hi, cy + r]
+        P.append({"n": name, "g": group, "c": colour, "t": "cyl", "ax": axis,
+                  "cx": cx, "cy": cy, "r": r, "z0": lo, "z1": hi, "seg": seg,
+                  "p": p, "q": q})
 
     def prism(name, group, colour, profile, ya, yb, holes=None):
         """An X-Z profile extruded along fore-aft. The fins are not boxes.
@@ -108,9 +119,9 @@ def main() -> int:
         box("Side plate", "plates", 0x8899AA, x0, y0, 0, x0 + sp, y1, v["SIDE_PLATE_H"])
 
     # ---- Y beams ---------------------------------------------------------
-    # The side plate's T-slot rows ARE the beam's own 15/45/75/105, so the beam's
-    # underside sits SIDE_TSLOT_ROW_1 - RAIL_SLOT_INSET above the skin. That lands
-    # the beam top exactly on the plate top - the check that this chain closes.
+    # The beam's height comes from the FIN, not the side plate: the window's top
+    # edge is the beam's underside. 182 + 120 lands on FIN_STOCK's measured 302,
+    # which is the cross-check that this chain closes.
     ybot = v["Y_BEAM_UNDERSIDE"]
     ytop = ybot + v["BEAM_H"]
     lx0, rx0 = v["Y1_EXT_FACE_X"], v["Y2_EXT_FACE_X"] - v["EXT_W"]
@@ -259,8 +270,39 @@ def main() -> int:
             xc + v["SPACER_W"] / 2, cp_front + st + v["SPACER_T"],
             block_mid + v["SPACER_L"] / 2)
 
+    # ---- M8 flange bolt heads -------------------------------------------
+    # Only where the position is unambiguous from the registry: the four T-slot
+    # rows on each side plate, the rear plate's sixteen A-holes, and each fin's
+    # eight into the beam's end bores. All three sets land on the SAME four
+    # heights, 197 / 227 / 257 / 287, because all three are the extrusion's own
+    # slot grid off Y_BEAM_UNDERSIDE - so if they do not line up in the view,
+    # something upstream has moved.
+    hd, hh = v["FLANGE_HEAD_D"] / 2, v["FLANGE_HEAD_H"]
+    BOLT = 0x3C4248
+    rows = [v["SIDE_TSLOT_ROW_1"] + i * v["SLOT_GRID"] for i in range(4)]
+    stations = [v["SIDE_TONGUE_START"] + v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
+                for i in range(int(v["TSLOT_X_COUNT"]))]
+
+    for face, d in ((0.0, -1), (W, +1)):            # side plates, heads outboard
+        for st in stations:
+            for z in rows:
+                cyl("Flange head", "bolts", BOLT, st, z, face, face + d * hh,
+                    hd, axis="x", seg=12)
+
+    for col in (v["RP_A_COL_1"], v["RP_A_COL_1"] + v["EXT_W"] - 2 * v["EXT_BORE_INSET"],
+                v["RP_A_COL_3"], v["RP_A_COL_4"]):   # rear plate, heads backward
+        for z in rows:
+            cyl("Flange head", "bolts", BOLT, col, z, 0.0, -hh, hd, axis="y", seg=12)
+
+    for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
+        for c in (v["FIN_COL_OUTB"], v["FIN_COL_INB"]):   # fins, heads forward
+            for z in rows:
+                cyl("Flange head", "bolts", BOLT, outer + sgn * c, z,
+                    y1 + v["T_FIN"], y1 + v["T_FIN"] + hh, hd, axis="y", seg=12)
+
     groups = {
         "box": "Torsion box and tongues",
+        "bolts": "M8 flange bolt heads",
         "motion": "Rails and bearing blocks",
         "plates": "Rear, side and fin plates",
         "ybeams": "Y beams",
@@ -383,8 +425,9 @@ HTML = r"""<!doctype html>
  li{margin:3px 0}
 </style>
 <canvas id="c"></canvas>
-<div class="panel" id="ui"><h1>CNC assembly</h1><div id="toggles"></div>
-<button id="statsbtn">Show info</button><table id="facts" hidden></table></div>
+<div class="panel" id="ui"><h1>CNC assembly</h1>
+<div id="btnrow"><button id="partsbtn">Show parts</button><button id="statsbtn">Show dimensions</button></div>
+<div id="toggles" hidden></div><table id="facts" hidden></table></div>
 <details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
 <script src="vendor/three.min.js"></script>
 <script>
@@ -407,8 +450,15 @@ const byGroup={};
 for(const p of PARTS){
   let geom, ctr;
   if(p.t==='cyl'){
-    geom=new THREE.CylinderGeometry(p.r,p.r,p.z1-p.z0,36);
-    ctr=[p.cx-mid[0],(p.z0+p.z1)/2-mid[2],-(p.cy-mid[1])];
+    geom=new THREE.CylinderGeometry(p.r,p.r,p.z1-p.z0,p.seg||36);
+    const m=(p.z0+p.z1)/2;
+    if(p.ax==='x'){      // machine X: cx is fore-aft, cy is height
+      geom.rotateZ(Math.PI/2); ctr=[m-mid[0],p.cy-mid[2],-(p.cx-mid[1])];
+    }else if(p.ax==='y'){ // machine fore-aft: cx is across, cy is height
+      geom.rotateX(Math.PI/2); ctr=[p.cx-mid[0],p.cy-mid[2],-(m-mid[1])];
+    }else{
+      ctr=[p.cx-mid[0],m-mid[2],-(p.cy-mid[1])];
+    }
   }else if(p.t==='prism'){
     // profile is machine X-Z, extruded along fore-aft. Extrude runs along three's
     // +Z, so the mesh is built at the origin and then shifted to the right depth.
@@ -463,7 +513,7 @@ for(const k in VIEWS){
   b.onclick=()=>{[az,el]=VIEWS[k];place();draw();};
   vb.appendChild(b);
 }
-document.getElementById('ui').insertBefore(vb,document.getElementById('toggles'));
+document.getElementById('ui').insertBefore(vb,document.getElementById('btnrow'));
 const t=document.getElementById('toggles');
 for(const k in GROUPS){
   const l=document.createElement('label');
@@ -479,10 +529,13 @@ document.getElementById('infobody').innerHTML=
   'Pose: X home left, Y home back, Z at max.<br><b class="w">Placements ASSUMED, not derived:</b>'+
   '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
 
+const BTN='margin:8px 6px 0 0;background:#2f353d;color:#cde;border:1px solid #454c55;'+
+          'border-radius:4px;padding:3px 9px;cursor:pointer;font:11.5px inherit';
 const sb=document.getElementById('statsbtn'), ft2=document.getElementById('facts');
-sb.style.cssText='margin-top:8px;background:#2f353d;color:#cde;border:1px solid #454c55;'+
-                 'border-radius:4px;padding:3px 9px;cursor:pointer;font:11.5px inherit';
-sb.onclick=()=>{ft2.hidden=!ft2.hidden;sb.textContent=ft2.hidden?'Show info':'Hide info';};
+const pb=document.getElementById('partsbtn'), tg=document.getElementById('toggles');
+sb.style.cssText=BTN; pb.style.cssText=BTN;
+sb.onclick=()=>{ft2.hidden=!ft2.hidden;sb.textContent=ft2.hidden?'Show dimensions':'Hide dimensions';};
+pb.onclick=()=>{tg.hidden=!tg.hidden;pb.textContent=tg.hidden?'Show parts':'Hide parts';};
 
 place(); resize();
 </script>
