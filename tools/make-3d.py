@@ -144,13 +144,22 @@ def main() -> int:
     # block row's centre 46 up the carriage plate, so the plate's bottom follows.
     xbeam_front = xep_back + v["EXT_W"]
     cp_bot = xb_bot + v["RAIL_LOW_Z"] - 46.0
-    cp_x0 = xb_x0                        # ASSUMPTION: X home, butted left
-    cp_x1 = cp_x0 + v["XEP_W"]
-    box("X carriage plate", "z", 0xD98E04, cp_x0, xbeam_front, cp_bot,
-        cp_x1, xbeam_front + v["T_X_CARRIAGE_PLATE"], cp_bot + 407.0)
+    # X HOME IS THE OPERATOR'S LEFT, which is MAX X in this frame, not min.
+    # X 0 is the rear plate's left as seen FROM BEHIND - the operator, standing at
+    # the front, has it on their right. The first model put the carriage at min X
+    # and so parked it back-RIGHT.
+    cp_x1 = xb_x1
+    cp_x0 = cp_x1 - v["XEP_W"]
+    # The plate bolts to the BLOCKS, so it stands RAIL_STACK off the beam's face -
+    # not on it. Caught by the interference check on 2026-10-03, which had the X
+    # rail passing straight through the plate; everything on the Z axis moved
+    # forward 30 with it.
+    cp_back = xbeam_front + v["RAIL_STACK"]
+    box("X carriage plate", "z", 0xD98E04, cp_x0, cp_back, cp_bot,
+        cp_x1, cp_back + v["T_X_CARRIAGE_PLATE"], cp_bot + 407.0)
 
     # ---- Z plate and spindle, at Z max -----------------------------------
-    cp_front = xbeam_front + v["T_X_CARRIAGE_PLATE"]
+    cp_front = cp_back + v["T_X_CARRIAGE_PLATE"]
     rail_top = cp_bot + 407.0 - 7.0
     block_mid = rail_top - (v["BLOCK_BUTTED"] / 2)       # ASSUMPTION: Z at max
     zp_back = cp_front + v["RAIL_STACK"] + v["SPACER_T"]
@@ -171,8 +180,49 @@ def main() -> int:
         zp_cx - nr, sp_axis - nr, bar_bot - v["SPINDLE_COLLET_END"],
         zp_cx + nr, sp_axis + nr, bar_bot - v["SPINDLE_SHOULDER_DROP"])
 
+    # ---- linear rails and bearing blocks ---------------------------------
+    # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
+    # envelopes the rail and stands RAIL_STACK off the face, which is the
+    # measured figure the whole machine's offsets are built on.
+    rw, st, bw, bl = v["RAIL_W"], v["RAIL_STACK"], v["BLOCK_W"], v["BLOCK_BUTTED"]
+    RC, BC = 0x7E8C99, 0xE04F3D
+
+    def rail_and_blocks(axis, face, d, zc, along, bfrom, bto):
+        """axis: which coordinate the stack grows along; d: +1 / -1."""
+        for z in zc:
+            if axis == "x":
+                box(f"{along} rail", "motion", RC, face, bfrom[0], z - rw / 2,
+                    face + d * rw, bto[0], z + rw / 2)
+                box(f"{along} block", "motion", BC, face, bfrom[1], z - bw / 2,
+                    face + d * st, bto[1], z + bw / 2)
+            else:                                   # stack grows along fore-aft
+                box(f"{along} rail", "motion", RC, bfrom[0], face, z - rw / 2,
+                    bto[0], face + d * rw, z + rw / 2)
+                box(f"{along} block", "motion", BC, bfrom[1], face, z - bw / 2,
+                    bto[1], face + d * st, z + bw / 2)
+
+    # Y: on each beam's INNER face, blocks carried by the X end plate
+    gb = (xep_back, xep_back + bl)
+    rail_and_blocks("x", lx0 + v["EXT_W"], +1, [ybot + v["RAIL_LOW_Z"], ybot + v["RAIL_HIGH_Z"]],
+                    "Y", (y0, gb[0]), (y1, gb[1]))
+    rail_and_blocks("x", rx0, -1, [ybot + v["RAIL_LOW_Z"], ybot + v["RAIL_HIGH_Z"]],
+                    "Y", (y0, gb[0]), (y1, gb[1]))
+    # X: on the X beam's FRONT face, blocks carried by the carriage plate
+    # The butted pair is BLOCK_BUTTED = 154.18 against a 154 plate, so it is
+    # CENTRED on the plate and the 0.09 that hangs over each end is end cap.
+    bo = (bl - v["XEP_W"]) / 2
+    rail_and_blocks("y", xbeam_front, +1, [xb_bot + v["RAIL_LOW_Z"], xb_bot + v["RAIL_HIGH_Z"]],
+                    "X", (xb_x0, cp_x0 - bo), (xb_x1, cp_x1 + bo))
+    # Z: vertical, on the carriage plate's front face
+    for xc in (zp_cx - v["Z_RAIL_COL"], zp_cx + v["Z_RAIL_COL"]):
+        box("Z rail", "motion", RC, xc - rw / 2, cp_front, cp_bot + 7,
+            xc + rw / 2, cp_front + rw, cp_bot + 407.0)
+        box("Z block", "motion", BC, xc - bw / 2, cp_front, block_mid - bl / 2,
+            xc + bw / 2, cp_front + st, block_mid + bl / 2)
+
     groups = {
         "box": "Torsion box and tongues",
+        "motion": "Rails and bearing blocks",
         "plates": "Rear, side and fin plates",
         "ybeams": "Y beams",
         "gantry": "X gantry",
@@ -204,6 +254,18 @@ ALLOWED = {
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
     frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers
     frozenset({"Z plate", "Spindle barrel"}),       # clamps not modelled
+    frozenset({"Y rail", "Y block"}),               # a block WRAPS its rail
+    frozenset({"X rail", "X block"}),
+    frozenset({"Z rail", "Z block"}),
+    frozenset({"X carriage plate", "Z rail"}),      # rail bolts to its face
+    frozenset({"X carriage plate", "Z block"}),
+    frozenset({"X carriage plate", "X block"}),     # carriage hangs off these
+    frozenset({"X end plate", "Y block"}),          # end plate hangs off these
+    # At X HOME the carriage is butted against the end plate, and the butted
+    # block pair is BLOCK_BUTTED 154.18 against a 154 plate - so 0.09 of END CAP
+    # touches at each end. The caps are seals and carry nothing; x-gantry-end-
+    # plates.md settled that. A touch of exactly this size is the design.
+    frozenset({"X end plate", "X block"}),
 }
 
 
