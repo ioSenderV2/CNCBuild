@@ -172,22 +172,6 @@ nav.toc ol ol { padding-left:2.1em; margin:.2em 0 .6em; }
 nav.toc ol ol li { font-weight:400; font-size:10pt; margin:.1em 0; }
 nav.toc a { border:0; }
 
-/* Footnotes. The main flow of every chapter carries CURRENT STATE ONLY - what gets built.
-   The why, what was tried and rejected, and what a figure was before it moved all live down
-   here, so a page someone is working from is never arguing with itself. Rendered by the
-   markdown package's footnotes extension (part of "extra"); the heading is ours. Labels are
-   NAMED and chapter-prefixed in the source, which is also what keeps the fn: ids unique
-   across twelve chapters rendered by twelve separate Markdown instances. */
-.footnote { margin-top:2em; font-size:9.5pt; color:#222; border-top:1.5pt solid var(--ink);
-            padding-top:.2em; }
-.footnote hr { display:none; }
-.footnote::before { content:"Notes"; display:block; font-size:12.5pt; font-weight:650;
-                    color:var(--ink); margin:.5em 0 .4em; }
-.footnote ol { padding-left:1.8em; }
-.footnote li { margin:.45em 0; page-break-inside:avoid; break-inside:avoid; }
-.footnote-ref { border:0; font-weight:650; }
-sup { line-height:0; }
-
 /* Photographs. Two across, each with its caption from machine/photos/README.md. The
    figures sit at the end of the chapter that cites them rather than interrupting a table. */
 section.plates { page-break-before:always; break-before:page; }
