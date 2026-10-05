@@ -7,7 +7,7 @@
 ---
 
 **Two plates, 1/2" aluminium, 154 mm wide**, stopping at the **top of the X beam** - identical
-below that edge, and the right-hand one carrying a **60 × 60 BF12 tongue** above it. **Both have the far-front corner cut off** on a line ending at X 185.5, Y 154. They carry the X
+below that edge, and the right-hand one carrying a **60 × 60 BF12 tongue** above it. **Both have the far-front corner cut off** on a line ending at X 188, Y 154. They carry the X
 beam and ride the Y rails on four bearing blocks.
 
 ## 🔴 Reworked 2026-10-02 - the screw and stepper left this plate

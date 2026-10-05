@@ -791,9 +791,9 @@ note = "Where the corner cut starts up the far end of both X end plates - 60, an
 
 [[dim]]
 sym = "CORNER_CUT_X_END"
-value = 185.5
+value = 188
 provenance = "derived"
-note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. His, 2026-10-04, and it is the same number on BOTH plates - 2a cuts from (XEP_H, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that set the tongue length. CHECKED 2026-10-04, computed not measured: the nearest feature is the far-upper bearing block M5 at (183.5, 133.5), 12.3 mm from the 2a line and 17.3 from the 2b line, so a ~10 mm counterbore leaves about 7 mm of material on the tighter of the two."
+note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. His, 2026-10-04, and it is the same number on BOTH plates - 2a cuts from (XEP_H, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that set the tongue length. WAS 185.5 FOR ONE DAY, moved to 188 on 2026-10-04 so the cut stops crowding the bearing block. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (183.5, 133.5), and the perpendicular distance to the cut goes 12.3 -> 14.2 mm on 2a and 17.3 -> 18.8 on 2b, so a ~10 mm counterbore leaves about 9 mm of material on the tighter of the two instead of 7. The 2.5 costs nothing: the corner it keeps is dead material either way."
 # ---------------------------------------------------------------- the torsion box
 
 [[dim]]
