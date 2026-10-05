@@ -23,8 +23,8 @@ make deliberately rather than drift into.
   measured.
 - **One WCS origin per plate, absolute coordinates, never chained.** The mill is manual in X and Y, so the
   operator types coordinates and chained dimensions accumulate error.
-- **Extrusion corner-bore patterns are transfer-punched, not dimensioned.** Those are extruded
-  features with looser position tolerance than anything drilled in plate.
+- **Extrusion bolt patterns are scribed, not punched.** Two lines, four stations ticked along each.
+  Punching through an extrusion offcut's own bores is less accurate, and the holes are ø9 on an M8.
 
 ## Files
 

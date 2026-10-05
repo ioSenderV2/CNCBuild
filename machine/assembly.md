@@ -94,10 +94,10 @@ for months.
 | Two **outboard plates**, 12" × 1 m × 1/8" steel | ~25 holes each, and steel runs several times longer than aluminium would |
 | Three **front strips**, 45 mm × 1 m × 4 mm | |
 
-**Take the mating hardware, not just the plates.** Bearing blocks, ball nut housing, BK12, BF12,
-**the Z ball nut housing**, and **an offcut of the `30-6060` with its corner bores**. Every pattern
-gets checked against the real part while still standing next to the mill; a transfer punch through
-the real extrusion beats measuring from a drawing.
+**Lay the extrusion bolt patterns out by scribing.** Scribe two lines and tick four stations along
+each — that is the eight-hole pattern at a beam end. It is quicker and more accurate than punching
+through an extrusion offcut's own bores, and every one of these holes is **ø9 clearance on an M8**,
+so the float is there by design.
 
 **Each plate only has one WCS origin for the holes to be drilled.** Pick a corner, dimension
 every hole from it, never chain dimensions.
@@ -360,8 +360,7 @@ a shelf.
 ⚠️ **The 15 mm to the back edge with a 9 mm hole leaves 10.5 mm of material** — the plate's tightest
 edge distance. Do not let that hole drift outboard.
 
-📌 **Transfer-punch the corner bores through the real extrusion** rather than working from the 15/45
-figures alone.
+📌 **Scribe and tick the 15/45 pattern**; the ø9 hole on an M8 carries the float.
 
 ### The shelf
 

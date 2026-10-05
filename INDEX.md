@@ -131,7 +131,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/machining.md](machine/machining.md)
 
 - [The two Z rails need nothing special at the mill](machine/machining.md#the-two-z-rails-need-nothing-special-at-the-mill)
-- [Take the mating hardware, not just the plates](machine/machining.md#take-the-mating-hardware-not-just-the-plates)
+- [Scribe the extrusion bolt patterns; do not punch them](machine/machining.md#scribe-the-extrusion-bolt-patterns-do-not-punch-them)
 - [Each plate only has one WCS origin for the holes to be drilled](machine/machining.md#each-plate-only-has-one-wcs-origin-for-the-holes-to-be-drilled)
 
 ## [machine/open-items.md](machine/open-items.md)

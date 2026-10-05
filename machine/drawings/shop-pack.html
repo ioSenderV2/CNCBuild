@@ -176,12 +176,11 @@ until it is filled in.
 <li><b>One WCS origin per plate, never chain dimensions.</b> Each drawing names its origin corner; every hole
 is an absolute X/Y from it. On a manual mill with a DRO the operator types absolute coordinates, and
 chained dimensions accumulate error.</li>
-<li><b>Take the mating hardware, not just the plates</b> — bearing blocks, ball nut housing, BK12,
-BF12, and an offcut of the 30-6060 with its corner bores. Every pattern gets checked against the real
-part while still standing next to the mill.</li>
-<li><b>Extrusion corner-bore patterns are transfer-punched, not dimensioned.</b> Those bores are
-extruded features whose position tolerance is looser than anything drilled in plate. A punch through
-the real profile beats a coordinate every time.</li>
+<li><b>Lay the extrusion bolt patterns out by scribing.</b> Scribe two lines and tick four stations
+along each &mdash; that is the eight-hole pattern at a beam end, and it is quicker and more accurate
+than punching. <b>Do not transfer-punch through an extrusion offcut:</b> punching through its bores
+is the less accurate of the two, and every one of these holes is <b>&oslash;9 clearance on an M8</b>,
+so the float is there by design.</li>
 <li><b>9 mm clearance on M8 wherever a plate meets extrusion.</b> That is the repo's deliberate
 figure — the joint works by friction, not bearing, and the float is wanted.</li>
 </ul>
@@ -303,14 +302,14 @@ Both from one <b>302 mm square</b>, one bandsaw cut, zero waste. Stock
   <text class="q" x="330" y="212" fill="#c00">&#9888; Do not cut the taper until the spindle</text>
   <text class="q" x="330" y="224" fill="#c00">clearance is settled &#8212; one bandsaw pass</text>
 </svg>
-<figcaption>Laid out as the part sits on the mill table: <b>the 302 runs along X</b>. Both plates come from one 302 mm square and are <b>rotations</b> of each other, not mirrors. Bolt positions in the beam-end pattern are transfer-punched, not measured.</figcaption>
+<figcaption>Laid out as the part sits on the mill table: <b>the 302 runs along X</b>. Both plates come from one 302 mm square and are <b>rotations</b> of each other, not mirrors. Bolt positions in the beam-end pattern are scribed and ticked.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
 <p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 302</span></th><th>Y <span style="font-weight:400">from the factory edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">197, 227, 257, 287</td><td class="n">35, 65</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">1.2</sup></td></tr>
+<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">197, 227, 257, 287</td><td class="n">35, 65</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
 <tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">132 &rarr; 182</td><td class="n">20 &rarr; 80.5</td><td class="d">50&times;60.5</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
 <tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">30</td><td class="n">25</td><td class="d">9</td><td class="op">Through</td></tr>
 <tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">30</td><td class="n">170</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
@@ -457,7 +456,7 @@ edge, running <b>up</b> the page. The beam's back face is <b>flush with the plat
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 242.5</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">122.5</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">197.5, 227.5</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
+<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">197.5, 227.5</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
 <tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">86.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
 <tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">106.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
 <tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>61.5, 93.5, 151.5, 183.5</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
@@ -626,7 +625,7 @@ back edge</b>.</figcaption>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 300</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">122.5</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">197.5, 227.5</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
+<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">197.5, 227.5</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
 <tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">86.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
 <tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">106.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
 <tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>61.5, 93.5, 151.5, 183.5</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
@@ -1348,7 +1347,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <circle cx="77.81" cy="330" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <circle cx="41.81" cy="294" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <circle cx="77.81" cy="294" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
-  <text class="lbl" x="100" y="300">A1&ndash;A8 &#8212; &oslash;9, transfer-punched</text>
+  <text class="lbl" x="100" y="300">A1&ndash;A8 &#8212; &oslash;9, scribed layout</text>
   <text class="lbl" x="100" y="312">X 18.175 / 48.175, Y 15 / 45 / 75 / 105</text>
 
   <!-- F holes: X 7 / 53, Y 127 and 145 -->
@@ -1377,10 +1376,10 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <text class="q" x="268" y="264" fill="#c0c">The plate runs flush with the side plates' outer</text>
   <text class="q" x="268" y="276" fill="#c0c">faces, so Y1's extrusion face is at X 3.175 and</text>
   <text class="q" x="268" y="288" fill="#c0c">every X here is the extrusion pattern + 3.175.</text>
-  <text class="q" x="268" y="310">A-holes are &oslash;9 and TRANSFER-PUNCHED off a real</text>
-  <text class="q" x="268" y="322">extrusion offcut &#8212; the joint works by friction,</text>
-  <text class="q" x="268" y="334">not bearing, so the coordinates are for setting up,</text>
-  <text class="q" x="268" y="346">not for hitting.</text>
+  <text class="q" x="268" y="310">A-holes are &oslash;9 on an M8 &#8212; the joint works by</text>
+  <text class="q" x="268" y="322">friction, not bearing, so there is a millimetre of</text>
+  <text class="q" x="268" y="334">float by design. Scribe two lines, tick four stations</text>
+  <text class="q" x="268" y="346">along each.</text>
   <text class="q" x="268" y="368" fill="#c00">F-holes are &oslash;4.2 DRILLED THROUGH, tapped M5 at</text>
   <text class="q" x="268" y="380" fill="#c00">home. Face-mounted BF12 takes 4; top-mounted</text>
   <text class="q" x="268" y="392" fill="#c00">takes 2 &#8212; this is the face-mounted count.</text>
@@ -1397,8 +1396,8 @@ mill.</figcaption>
 <p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;3.175, Y&nbsp;0</td><td>8</td><td class="n"><b>18.175, 48.175</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1208.575, Y&nbsp;0</td><td>8</td><td class="n"><b>1163.575, 1193.575</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;3.175, Y&nbsp;0</td><td>8</td><td class="n"><b>18.175, 48.175</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1208.575, Y&nbsp;0</td><td>8</td><td class="n"><b>1163.575, 1193.575</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
 <tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; first row</td><td>4</td><td class="n"><b>10.175, 56.175,<br>1155.575, 1201.575</b></td><td class="n"><b>136.5</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
 <tr><td>F5&ndash;F8</td><td><b>BF12</b>, face-mounted &mdash; second row</td><td>4</td><td class="n"><b>10.175, 56.175,<br>1155.575, 1201.575</b></td><td class="n"><b>154.5</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
 <tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>80.875, 230.875, 380.875, 530.875,<br>680.875, 830.875, 980.875, 1130.875</b></td><td class="n"><b>274.8</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1211.75 plate</b> &mdash; 80.875 clear at each end<sup class="f">7.3</sup><br><b>Drill guide for the plywood tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup></td></tr>
@@ -1646,7 +1645,7 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <p><b>6.4</b> &mdash; <b>X inherits these rows from Y geometry.</b> 82 / 110 / 138 came out of the Y end - the 30 mm protrusion past the fin, the window, the casting's own tapped rows. On X the bar sits on <i>top</i> of the beam and overhangs its end. <b>Check all three land over beam before drilling the third.</b></p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 7</b></p>
 <p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1085.4</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken <b>flush with the side plates' outer faces is 1211.75</b>. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1205.4 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is the WCS origin now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1211.75 before clamping or add the excess to every right-hand X.</p>
-<p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint</b>, transfer-punched from a real extrusion offcut. 16 bolts, 8 per beam.</p>
+<p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint.</b> 16 bolts, 8 per beam. <b>Lay it out by scribing:</b> two lines at the column positions, four stations ticked along each. Punching through an extrusion offcut's own bores is less accurate than that, and the holes are &oslash;9 on an M8 &mdash; about a millimetre of float, which this joint wants because it works by friction rather than bearing.</p>
 <p><b>7.3</b> &mdash; <b>Y 274.8, which IS the side plates' Y 30.</b> This plate is clamped upside down, so its Y is measured from the <i>installed top</i> edge, and 274.8 puts the row <b>exactly 30 up from the installed bottom edge</b> &mdash; the same single bolt line the side plates and the front fin use. &#128308; <b>Y 270 is the wrong number here</b>, and it put the row 34.8 up and 4.8 off everything else. This note used to call that difference <i>deliberate</i>; <b>it was not</b>. 270 was a round number given when the sheet was first reframed upside down, 34.8 was only 304.8 minus it, and nothing had ever derived either. The 4.8 has been added to close the gap. <b>The pitch no longer differs</b>: 150 here over the 1211.75, and the side plates run 150 from 50 as well. Eight at 150 span 1050, so centring them on the plate leaves <b>80.875 clear at each end</b>. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
 <p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
 <p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1211.75 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
@@ -1669,13 +1668,10 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <h3>Pack list</h3>
 <ul>
 <li>All four plates, plus the 12" square uncut if the taper is still open</li>
-<li><b>Mating hardware:</b> HGH20 bearing blocks, ball nut housing, BK12, BF12</li>
-<li><b>An offcut of the 30-6060 with its corner bores</b> — this is the transfer-punch master for every
-8-bolt and 4-bolt extrusion pattern in the pack</li>
 <li><b>The two Z spacer blocks, to be faced 1 mm &mdash; BOTH IN ONE SETUP</b>, so they finish identical. Take the ball nut housing with them: the 1 mm is measured against that part</li>
-<li>Transfer punches, M8 and M5</li>
 <li>The coupler (25 mm OD, checks every ø35 bore)</li>
 <li>A rail offcut, for checking the rail-hole pitch against the real part</li>
+<li><b>A scriber and a centre punch</b>, for the beam-end patterns</li>
 </ul>
 
 <div class="info">

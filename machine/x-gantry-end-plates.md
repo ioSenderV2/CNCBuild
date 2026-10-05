@@ -417,8 +417,7 @@ Rear bolt pair **15 mm from the plate's back edge**, which puts the top extrusio
 **flush with the plate's back edge**. The bolt is still 15 mm in from the beam's back face, into the
 same corner bore - only the plate shifted under it. **Both pairs, from the back edge: 15 and 45.**
 (The 45 follows from the corner bores being symmetric in a 60 × 60 - four corners at 15 from each
-face. Only the 15 is anchored in a stated dimension; transfer-punch them anyway, per the drawings
-convention for extruded features.)
+face. Only the 15 is anchored in a stated dimension, and the ø9 hole on an M8 carries the rest.)
 
 Back-mounting matters because the forward-hanging mass acts at an arm from the **block group's
 centroid** at Y 77:

@@ -56,12 +56,18 @@ straight into the plate**, so both patterns are fixed — drill them to the shee
 using it — lock rail one, then set rail two one fastener at a time — is an assembly step and lives in
 [`assembly.md`](assembly.md).
 
-## Take the mating hardware, not just the plates
+## Scribe the extrusion bolt patterns; do not punch them
 
-Bearing blocks, ball nut housing, BK12, BF12, and **an offcut of the `30-6060` with its corner
-bores**. Every pattern can then be checked against the real part while still standing next to a
-mill. The end plate pattern especially - a transfer punch through the real extrusion beats measuring
-from a drawing.
+**Scribe two lines and tick four stations along each** - that is the eight-hole pattern at a beam
+end, and it is quicker and more accurate than the alternative. **Punching through an offcut of the
+`30-6060` is the less accurate of the two**: you are working off that offcut's own bores, which are
+extruded features, and their error comes with you.
+
+It costs nothing to be approximate here in any case. Every one of these holes is **ø9 clearance on
+an M8** - about a millimetre of float, which this joint wants because it works by friction rather
+than bearing.
+
+**Take instead:** a scriber and a centre punch.
 
 ## Each plate only has one WCS origin for the holes to be drilled
 
