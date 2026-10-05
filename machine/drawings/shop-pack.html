@@ -99,6 +99,16 @@ two rear risers became one 1211.75&nbsp;mm steel plate. <b>Every sheet below has
 design.</b>
 </p>
 
+<p style="margin:0 0 .6rem; border:1.5px solid #555; background:#f6f6f6; padding:.5rem .7rem">
+<b>DATUM CONVENTION &mdash; EVERY SHEET, unless that sheet says otherwise.</b><br>
+<b>WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</b>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and negative
+into the material. All coordinates positive in X and Y, <b>absolute, never chained</b>.<br>
+Each sheet states only what X&nbsp;0 and Y&nbsp;0 mean <i>on that part</i>. <b>Three sheets override
+this and say so in their own header:</b> Sheet&nbsp;2d is clamped the short way on 2a's origin,
+Sheet&nbsp;6 takes X&nbsp;0 at the bar's outboard end, and Sheet&nbsp;7 is clamped <b>upside down</b>.
+</p>
+
 <p style="margin:0 0 .6rem; border:1.5px solid #b00; background:#fff2f2; padding:.5rem .7rem">
 <b>🔴 AT THE MILL YOU DRILL. EVERY THREADED HOLE GOES THROUGH.</b> Nothing here is tapped on the
 trip &mdash; each threaded feature is listed as its <b>tap drill, drilled through</b>, with the
@@ -205,9 +215,6 @@ clearance work for a home drill press; the back panel is likewise clearance hole
 <b>302 long &times; tapered 200 &rarr; 100 &times; 10 mm aluminium</b><br>
 Both from one <b>302 mm square</b>, one bandsaw cut, zero waste. Stock
 <b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
-negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 </div>
 
 <figure>
@@ -326,21 +333,10 @@ spindle clearance is unsettled and the cut is one bandsaw pass that cannot be pu
 <h2 id="sheet-2">Sheet 2a &mdash; X gantry end plate (quantity 2)</h2>
 <div class="stock">
 <b>242.5 long &times; 154 wide &times; 1/2" (12.7 mm) 6061</b>, out of a 200 &times; 300 piece.<br>
-Identical below the top edge &mdash; <b>the RIGHT-HAND plate keeps the stock's full 300 as a BF12
-tongue, and is drawn complete on Sheet 2b.</b> <b>Both plates take the same corner cut</b>, landing
-on the same X 188, Y 154. Cut both outlines together; leave the tongue on one.<sup class="f">2.9</sup><br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
-negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.<br>
+Cut both plates' outlines together; <b>leave the tongue on the right-hand one</b> &mdash; Sheet 2b.<sup class="f">2.9</sup><br>
 <b>X 0 is the plate's bottom end</b> (the sole-bracket end); <b>Y 0 is its back edge</b>.<br>
-<b>The &oslash;35 bore is at X 122.5, Y 77</b> &mdash; centred in the 154 &times; 120 area over the
-Y beam, which is also the beam's own <b>seam</b>. The four blocks sit on the <b>rails</b>, at
-X&nbsp;77.5 and 167.5 &mdash; the seam &plusmn;45, because both rails are in the beam's
-<b>outside T-slot</b> and are therefore <b>90 apart</b>. <b>All 16 M5 holes follow</b>:
-X 61.5, 93.5, 151.5, 183.5 and Y 20.5, 56.5, 97.5, 133.5.<sup class="f">2.5</sup><br>
-&#9989; <b>THE FAR-FRONT CORNER IS CUT OFF</b> &mdash; one straight line from <b>X 242.5, Y 60</b>
-to <b>X 188, Y 154</b>. Below Y 60 the plate stays full length because that is
-the upper extrusion's end; above it the corner is dead material.<sup class="f">2.14</sup>
+&#9989; <b>CUT THE FAR-FRONT CORNER OFF</b> &mdash; one straight line, <b>X 242.5, Y 60</b> to
+<b>X 188, Y 154</b>.<sup class="f">2.14</sup>
 </div>
 
 <figure>
@@ -473,44 +469,15 @@ edge, running <b>up</b> the page. The beam's back face is <b>flush with the plat
 
 <h3 style="margin-top:7mm">Sheet 2b &mdash; X gantry end plate, RIGHT-HAND, with the BF12 tongue (quantity 1)</h3>
 <div class="stock">
-<b>300 long &times; 154 wide &times; 1/2" (12.7 mm) 6061</b> &mdash; a <b>200 &times; 300</b> piece, cut to
-154 wide and <b>left at its full 300 length</b>. The 45 that comes off the width is the doubler of Sheet 2d.<br>
-<b>Below X 242.5 this is Sheet 2a's part exactly</b> &mdash; cut both plates to that outline together
-and leave the tongue on this one.<sup class="f">2.9</sup> <b>Everything this sheet needs is on this
-sheet</b>; nothing below has to be read off 2a.<br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
-negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.<br>
+<b>300 long &times; 154 wide &times; 1/2" (12.7 mm) 6061</b> &mdash; a <b>200 &times; 300</b> piece cut to
+154 wide. <b>Keep the 45 mm offcut</b>: it is the doubler of Sheet 2d.<br>
+Below X 242.5 this is Sheet 2a's part exactly &mdash; cut both outlines together and leave the tongue
+on this one.<sup class="f">2.9</sup><br>
 <b>X 0 is the plate's bottom end</b> (the sole-bracket end); <b>Y 0 is its back edge</b>.<br>
-<b>The &oslash;35 bore is at X 122.5, Y 77</b> &mdash; centred in the 154 &times; 120 area over the
-Y beam, which is also the beam's own <b>seam</b>. The four blocks sit on the <b>rails</b>, at
-X&nbsp;77.5 and 167.5 &mdash; the seam &plusmn;45, because both rails are in the beam's
-<b>outside T-slot</b> and are therefore <b>90 apart</b>. <b>All 16 M5 holes follow</b>:
-X 61.5, 93.5, 151.5, 183.5 and Y 20.5, 56.5, 97.5, 133.5.<sup class="f">2.5</sup><br>
-<b>The tongue is 60 across</b> &mdash; <b>Y 0 to 60</b>, the beam's own footprint off the back edge and
-the same 60 the shelf bar spans, so it sits entirely over the upper extrusion's end. <b>Along the
-plate it is whatever the stock leaves: X 242.5 to 300.</b><br>
-<b>It exists to carry BF12 above the beam.</b> <b>X 242.5 is the top of the X beam</b>, and the two
-BF12 rows sit 16.5 and 34.5 above it &mdash; 7 and 25 on the screw's own geometry, plus the
-<b>3/8" interposer that goes under the cast stepper frame</b> at this end. The tongue's job is to
-be there when those holes are drilled.<sup class="f">2.13</sup><br>
-&#128308; <b>DO NOT CUT THE FAR END.</b> The tongue has no length of its own to cut to &mdash; it is
-the stock's 300 less the plate's 242.5. <b>Dimension the 300 and the corner cut; there is nothing to
-measure a tongue length against.</b><br>
-&#9989; <b>IT ONLY HAS TO BE LONG ENOUGH TO BACK BF12</b>, and that is the one number to check if a
-different piece of plate is ever substituted. <b>BF12 is 43 tall and sits on the 9.5 interposer</b>,
-so the tongue must exceed <b>52.5</b>. At the 300 stock it is <b>57.5</b> and clears by about
-<b>5</b>. <b>Any plate from roughly 295 long will do</b>; above that floor the length is free.<sup class="f">2.13</sup><br>
-&#128308; <b>THE FAR END IS ONE CUT.</b> The corner cut below <i>is</i> the step &mdash; there is
-nothing to cut along X 242.5 and no end to trim.<br>
-<b>G1&ndash;G4 are not referenced to the tongue's end at all</b> &mdash; their X comes from the
-beam top plus the interposer, so the <b>23</b> to the end is margin, not a driver.<br>
-&#9989; <b>THE FAR-FRONT CORNER IS CUT OFF</b> &mdash; one straight line from <b>X 300, Y 60</b>
-to <b>X 188, Y 154</b>. Below Y 60 the plate stays full length because that is the upper
-extrusion's end; above it the corner is dead material. <b>2a's cut lands on the same
-X 188, Y 154</b>, from its own far end at X 242.5.<sup class="f">2.14</sup><br>
-&#9888; <b>This plate and its pair are not interchangeable at assembly.</b> The left-hand one stops
-at X 242.5; this is the only difference between them.
+&#128308; <b>DO NOT CUT THE FAR END.</b> The <b>300</b> is the stock's own length.<sup class="f">2.13</sup><br>
+&#9989; <b>CUT THE FAR-FRONT CORNER OFF</b> &mdash; one straight line, <b>X 300, Y 60</b> to
+<b>X 188, Y 154</b>. That one cut is the whole far end: <b>nothing to cut along X 242.5</b>.<sup class="f">2.14</sup><br>
+&#9888; <b>Not interchangeable with its pair</b> &mdash; the left-hand plate stops at X 242.5.<sup class="f">2.9</sup>
 </div>
 
 <figure>
@@ -677,9 +644,6 @@ back edge</b>.</figcaption>
 <div class="stock">
 <b>60 long &times; 25.4 W &times; 50.8 H &middot; 1" &times; 2" aluminium bar</b><br>
 Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
-negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 </div>
 
 <figure>
@@ -870,9 +834,6 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
 <b>407 long &times; 154 wide &times; 1/2" aluminium</b><br>
 <b>The plate already exists</b>, sprayed with layout dye.<br>
 <b>X 0 is the BOTTOM of the carriage as it hangs on the machine.</b> The bottom ~150 is over the X gantry; the rest stands above it.<sup class="f">3.6</sup><br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
-negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 <b>Everything but the top stop is dimensioned &mdash; 39 features.</b><sup class="f">3.3</sup>
 </div>
 
@@ -1003,9 +964,6 @@ overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 <h2 id="sheet-4">Sheet 4 — Z plate (quantity 1)</h2>
 <div class="stock">
 <b>175 long &times; 164 wide &times; 1/2" aluminium</b><br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
-negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.
 </div>
 
 <figure>
@@ -1259,10 +1217,8 @@ sits ~17&nbsp;mm inboard of the beam's inside face.
 <div class="stock">
 <b>150 long &times; 60 wide &times; 3/8" 6061</b><br>
 <b>One drawing, three off</b> &mdash; Y1, Y2 and the X stepper end are the same part.<br>
-<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
-<b>X</b> along the 150, <b>X 0 at the bar's OUTBOARD end</b> &mdash; the end that protrudes through
-the front plate's window. <b>Y</b> across the 60. <b>Z = 0 at the top face</b>, negative into the
-material.<sup class="f">6.1</sup>
+<span class="datum">X 0 IS THE BAR'S OUTBOARD END</span> &mdash; the end that protrudes
+through the front plate's window. Y across the 60.<sup class="f">6.1</sup>
 </div>
 
 <figure>
@@ -1332,7 +1288,7 @@ before drilling the third one.</b><sup class="f">6.4</sup></p>
 &#128308; <b>Clamp it inverted.</b> The plate's <b>installed TOP edge is Y&nbsp;0</b> and Y runs to
 <b>304.8</b> at the installed bottom edge. Every number below is in that frame, which is why both
 beams sit on Y&nbsp;0 to 120 instead of hanging off a far edge.<sup class="f">7.6</sup><br>
-<b>X</b> along the 1211.75 from the left end, <b>Z = 0 at the top face</b>.<br>
+<b>X</b> along the 1211.75 from the left end.<br>
 &#128308; <b>The length is NO LONGER a window.</b> It derives &mdash; 1085.4 between the beams plus
 2 &times; (60 extrusion + 1/8" side plate) &mdash; and <b>A9&ndash;A16 are absolute from the left
 edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="f">7.1</sup>
