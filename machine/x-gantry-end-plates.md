@@ -296,7 +296,7 @@ full drive thrust with a 66 mm arm on it.
 
 | Part | Size | Qty |
 |---|---|---|
-| **Doubler block** | **154 × 50 × 1/2"** 6061, bolted to the end plate's **outer** face at the bottom | 2 |
+| **Doubler block** | **154 × 45 × 1/2"** 6061, bolted to the end plate's **outer** face at the bottom | 2 |
 | **Sole bracket** | **1/4"** 6061 trapezoid - see below | 2 |
 
 **The doubler gives the plate a 25.4 mm (1") wide seating surface at its bottom**, and the sole

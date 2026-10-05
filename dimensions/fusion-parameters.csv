@@ -55,7 +55,7 @@ ROOT_BOLT_Y_FIRST,mm,32,"[derived] First of four Y stations across the 154 root,
 ROOT_BOLT_Y_PITCH,mm,30,"[derived] Pitch of those four stations: 32, 62, 92, 122. Leaves 32 of edge at each end of the 154."
 THRUST_ARM,mm,60,[derived] Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for.
 DOUBLER_SEATING,mm,25.4,[derived] Seating width at the plate's bottom with the doubler on
-DOUBLER_H,mm,50,"[derived] Closed 2026-10-03 at 50. Gated on the LOWER BLOCK ROW bottom edge, which shares this face and lands at X 56 once the block's measured 44 width is applied - so 50 clears by 6 and the earlier 60 overlapped by 4. NOT gated on the Y beam unders"
+DOUBLER_H,mm,45,"[derived] Doubler height. 45, so it can come out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW,"
 FIN_STOCK,mm,302,"[measured] The square is a measured 302, not a nominal 12in"
 FIN_KERF,mm,2,[nominal] The single diagonal cut
 FIN_TOP_W,mm,100,"[derived] FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation"
@@ -144,7 +144,7 @@ BLOCK_HIGH_COL_A,mm,151.525,"[derived] Upper rail, near column. 151.525, drawn 1
 BLOCK_HIGH_COL_B,mm,183.525,"[derived] Upper rail, far column. 183.525, drawn 183.5."
 BLOCK_ROW_Y1,mm,20.455,"[derived] First of the four P-hole rows across the plate, 20.455, drawn 20.5 - the rounding was settled deliberately, see the commit that moved it off 20.45. Rows 2 and 4 are this and BLOCK_ROW_Y3 plus BLOCK_PITCH_Y."
 BLOCK_ROW_Y3,mm,97.545,"[derived] Third P-hole row, 97.545, drawn 97.5."
-DOUBLER_BOLT_X,mm,25,"[derived] Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it; the doubler is 50 tall so 25 is its middle."
+DOUBLER_BOLT_X,mm,25,"[derived] Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it. 🔴 IT IS NO LONGER THE DOUBLER'S MIDPOINT and must not be re-derived as one: at DOUBLER_H 45 the middle is 22.5, and 25 is deliberate. THE REASON IS R"
 FIN_TONGUE_BOLT_1,mm,25,"[derived] Sheet 1's T1, the outboard of the fin's two tongue bolts. T2 is at 170. Shares a value with DOUBLER_BOLT_X by coincidence and nothing else."
 BF12_COL_INB,mm,7,"[measured] BF12's inboard bolt column from the beam's outer face. Measured on the cast stepper frame, and the same 7 that Sheets 2b and 7 both use. Paired with BF12_COL_OUTB at 53, so the pattern is 46 wide and centres in a 60 beam."
 BF12_COL_OUTB,mm,53,"[measured] BF12's outboard bolt column, same source as BF12_COL_INB."

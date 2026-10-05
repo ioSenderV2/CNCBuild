@@ -84,9 +84,9 @@
   72.7 mm** - 12.7 plate + 30 rail stack + 30 half beam. It is the **cantilever case**: ~100 mm of
   reach, thrust 60 mm outboard of the plate's outer face.
 - ✅ ~~**The sole bracket's form - flat foot or an L**~~ **Closed 2026-10-02: a doubler block.** A
-  154 × 50 × 1/2" block on the plate's outer face gives a 25.4 mm seating, and the sole bracket is a
+  154 × 45 × 1/2" block on the plate's outer face gives a 25.4 mm seating, and the sole bracket is a
   1/4" trapezoid, 154 at the root to ~46 over the nut. **Two rows of bolts across the 25.4.**
-- ✅ ~~**The doubler's 60 mm height**~~ **Closed 2026-10-03 at 50 mm, and 60 would have clashed.**
+- ✅ ~~**The doubler's 60 mm height**~~ **Closed at 45 mm, and 60 would have clashed.**
 The height was always gated on the **lower bearing block row's bottom edge** - the
   same unmeasured pattern as the 16 holes. It is *not* gated on the Y beam underside, which an earlier
   draft wrongly gave as the limit. **With the block's 44 mm width given on 2026-10-03 that edge lands

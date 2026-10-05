@@ -381,9 +381,9 @@ note = "Seating width at the plate's bottom with the doubler on"
 
 [[dim]]
 sym = "DOUBLER_H"
-value = 50
+value = 45
 provenance = "derived"
-note = "Closed 2026-10-03 at 50. Gated on the LOWER BLOCK ROW bottom edge, which shares this face and lands at X 56 once the block's measured 44 width is applied - so 50 clears by 6 and the earlier 60 overlapped by 4. NOT gated on the Y beam underside."
+note = "Doubler height. 45, so it can come out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW, whose bottom edge lands at 55.5 (the lower rail at 77.5 less half the block's measured 44), so anything under that clears. 45 clears by 10.5; the earlier 50 cleared by 5.5; 60 overlapped by 4.5 and is what the bound was found for. NOT gated on the Y beam underside - the doubler sits ~17 inboard of the beam's inside face. An earlier note rounded the 55.5 to 56 and the clearance to 6; the 55.5 is the computed figure and is the one to use. dims.py deps: nothing derives from this, so changing it is local - but see DOUBLER_BOLT_X, which STOPPED being the midpoint when this moved."
 
 # ---------------------------------------------------------------- the front fin
 
@@ -912,7 +912,7 @@ note = "Third P-hole row, 97.545, drawn 97.5."
 sym = "DOUBLER_BOLT_X"
 value = 25
 provenance = "derived"
-note = "Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it; the doubler is 50 tall so 25 is its middle."
+note = "Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it. 🔴 IT IS NO LONGER THE DOUBLER'S MIDPOINT and must not be re-derived as one: at DOUBLER_H 45 the middle is 22.5, and 25 is deliberate. THE REASON IS R1-R4: they bore 20 deep from X 0 into the doubler's end face and clear the 5 mm D-bolt wall - the bolt spans 22.5 to 27.5 - by 2.5. Re-centre the column to 22.5 and the bolt spans 20 to 25, which a 20 deep hole arrives exactly on; the R row would have to shorten to about 17.5. His call: leave it at 25. Edge distances at 45 are 20 above and 25 below, which on a 5 mm hole is 17.5 and 22.5 of material. Moving it would also move D1-D4 on Sheets 2a and 2b, which share this column."
 
 [[dim]]
 sym = "FIN_TONGUE_BOLT_1"

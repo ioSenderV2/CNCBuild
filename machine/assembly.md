@@ -414,7 +414,7 @@ their bolts are reachable.
 
 | Part | Size | Qty |
 |---|---|---|
-| **Doubler block** | **154 × 50 × 1/2"** 6061, on the end plate's **outer** face at the bottom | 2 |
+| **Doubler block** | **154 × 45 × 1/2"** 6061, on the end plate's **outer** face at the bottom | 2 |
 | **Sole bracket** | **1/4"** 6061 trapezoid, **154 at the root → ~46 at the tip, 98.7 overall** | 2 |
 
 **The doubler gives the plate a 25.4 mm seating at its bottom; the sole bracket bolts up into that.**
@@ -432,9 +432,10 @@ its long dimension running **along X**.
 ⚠️ **If "block" in the source meant anything other than the ball nut housing, these four holes are
 90° out.** Confirm against the real part before drilling.
 
-⚠️ **Open: the doubler's 50 mm height is not yet checkable** — it is gated on the lower Y bearing
-block row's bottom edge, which lands at about −127 from the Y beam top. Same measurement as the
-sixteen block holes.
+⚠️ **Open: the doubler's upper bound is not yet checked on the machine** — the lower Y bearing
+block row's bottom edge, computed to land at about −127 from the Y beam top. Same measurement as the
+sixteen block holes. **At 45 there is 10.5 of slack against it**, so that measurement would have to
+be badly wrong to matter.
 
 ---
 
