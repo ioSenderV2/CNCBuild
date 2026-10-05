@@ -47,7 +47,7 @@ interface.**~~ Same degree of freedom, worse joint:
 |---|---|---|
 | What is loosened | the **four Y bearing blocks** - the interface carrying the whole gantry into the rails | nothing |
 | How the adjustment is held | friction at a deliberately sloppy precision mount | a shim **in compression** under a bearing joint |
-| Against this repo's own rule | 🔴 contradicts *"close-fit holes for rail one, oversize for rail two"* | consistent |
+| Where the slop would live | 🔴 **designed into a precision mount**, and permanent | in a **shim**, which can be changed |
 
 **The shelf was already a bearing joint** - this file records that it *"takes the vertical load
 directly in bearing rather than through bolt shear, which is better anyway."* A shim belongs in a

@@ -130,7 +130,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 ## [machine/machining.md](machine/machining.md)
 
-- [Make one rail the reference, and give the second rail clearance](machine/machining.md#make-one-rail-the-reference-and-give-the-second-rail-clearance)
+- [The two Z rails need nothing special at the mill](machine/machining.md#the-two-z-rails-need-nothing-special-at-the-mill)
 - [Take the mating hardware, not just the plates](machine/machining.md#take-the-mating-hardware-not-just-the-plates)
 - [One datum per plate](machine/machining.md#one-datum-per-plate)
 

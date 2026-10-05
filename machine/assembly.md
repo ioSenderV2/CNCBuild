@@ -101,9 +101,12 @@ the real extrusion beats measuring from a drawing.
 
 **One datum per plate.** Pick a corner, dimension every hole from it, never chain dimensions.
 
-**Make one rail the reference and give the second rail clearance** — close-fit holes for rail one,
-oversize by about a millimetre for rail two. At assembly, mount rail one, put an indicator on its
-carriage and sweep rail two into parallel before tightening.
+**Make one rail the reference and set the second one fastener at a time.** Both rails tap **M5 into
+the plate**, so the holes are fixed and nothing is oversized at the mill — the float is the rail's
+own, **ø6 through under a ø9.5 counterbore** on an M5. **Lock rail one down completely.** Then work
+**along rail two, bolt by bolt**: set parallel at that station with an indicator on rail one's
+carriage, tighten that bolt, move to the next. ⚠️ **Never tighten rail two as a set** — it snakes,
+and a bolt already home fights the next one you set.
 
 ⚠️ **Open: whether the mill can hold one datum across the 1211.75 mm rear plate.** Bed size is not
 travel. The two 8-bolt patterns' relative height must land well inside 1 mm across the metre.

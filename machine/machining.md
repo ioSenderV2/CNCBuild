@@ -45,12 +45,16 @@ on the idle end.
 | | Bearing block and nut housing patterns, with counterbores |
 | | The 8-bolt end plate patterns that must match the extrusion corner bores |
 
-## Make one rail the reference, and give the second rail clearance
+## The two Z rails need nothing special at the mill
 
-Two rails parallel and coplanar over 407 mm is what decides whether the Z runs sweetly or binds.
-**Close-fit holes for rail one; oversize the holes for rail two** by about a millimetre. Then at
-assembly, mount rail one, put an indicator on its carriage and sweep rail two into parallel before
-tightening. Fixed holes on both rails makes whatever error the mill leaves permanent.
+Two rails parallel and coplanar over 407 mm is what decides whether the Z runs sweetly or binds, and
+it is tempting to try to buy that at the mill. **There is nothing to buy.** Both rails tap **M5
+straight into the plate**, so both patterns are fixed — drill them to the sheet and move on.
+
+**The adjustment is the rail's own and it happens at assembly**, not here: HGR20's mounting holes are
+**ø6 through under a ø9.5 counterbore** on an M5, about a millimetre of float. The procedure for
+using it — lock rail one, then set rail two one fastener at a time — is an assembly step and lives in
+[`assembly.md`](assembly.md).
 
 ## Take the mating hardware, not just the plates
 
