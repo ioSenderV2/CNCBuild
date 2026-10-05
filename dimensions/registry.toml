@@ -768,7 +768,8 @@ note = "Far end of the RIGHT-HAND plate - the stock's own end, uncut, so it is X
 [[dim]]
 sym = "TONGUE_H"
 expr = "TONGUE_TOP - XEP_H"
-note = "BF12 tongue length past the 2a outline - 57.475, DERIVED from the stock rather than chosen. It has been 40, then 50, then briefly 61.975 on a stock length that turned out to be wrong, and it is now whatever XEP_STOCK_L leaves. \U0001f534 DO NOT PRINT A ROUND NUMBER FOR IT: it was called '60 x 60' while the stock read 304.5 and 61.975 rounded there, and 57.475 does not. The sheet dimensions the 300 and the corner cut; the tongue has no cut-to length of its own. THE BF12 ROWS NEVER MOVED FOR ANY OF IT - their X is TONGUE_BF12_ROW1/ROW2, set by the beam top plus the interposer, so this symbol follows them and never the reverse."
+note = "BF12 tongue length past the 2a outline - 57.475, DERIVED from the stock rather than chosen, and it only has to beat TONGUE_MIN. It has been 40, then 50, then briefly 61.975 on a stock length that turned out to be wrong, and it is now whatever XEP_STOCK_L leaves. \U0001f534 DO NOT PRINT A ROUND NUMBER FOR IT: it was called '60 x 60' while the stock read 304.5 and 61.975 rounded there, and 57.475 does not. The sheet dimensions the stock length and the corner cut; the tongue has no cut-to length of its own. THE BF12 ROWS NEVER MOVED FOR ANY OF IT - their X is TONGUE_BF12_ROW1/ROW2, set by the beam top plus the interposer, so this symbol follows them and never the reverse."
+
 
 
 [[dim]]
@@ -804,6 +805,22 @@ value = 188
 provenance = "derived"
 note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. The same number on BOTH plates - 2a cuts from (XEP_H, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that let the far end stay uncut. WAS 185.5 BRIEFLY, moved to 188 so the cut stops crowding the bearing block. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (183.5, 133.5), and the perpendicular distance to the cut is 14.2 mm on 2a and 18.6 on 2b, so a ~10 mm counterbore leaves about 9 mm of material on the tighter of the two. At 185.5 those were 12.3 and 17.3."
 
+
+[[dim]]
+sym = "BF12_H"
+value = 43
+provenance = "part"
+note = "BF12's height - how far the block stands up the plate from its seating face. His, and it is the term that gives the tongue a FLOOR."
+
+[[dim]]
+sym = "TONGUE_MIN"
+expr = "BF12_H + T_INTERPOSER"
+note = "\U0001f534 THE TONGUE'S LOWER BOUND, and the only thing its length actually has to satisfy: the tongue must back the whole of BF12, and BF12 sits on the interposer, so the floor is the block's own height plus the interposer offset. His: 43 + 9.25 = 52.25. This expr gives 52.525 because it uses T_INTERPOSER's 3/8in nominal of 9.525 where he said 9.25 - a 0.275 difference that cannot matter against TONGUE_CLEAR, and deriving it this way means the floor TRACKS the 3/8in stock when it is finally calipered. ABOVE THIS FLOOR THE LENGTH IS FREE: it is not a fit, and the tongue is simply however much the stock leaves past XEP_H."
+
+[[dim]]
+sym = "TONGUE_CLEAR"
+expr = "TONGUE_H - TONGUE_MIN"
+note = "How much tongue there is past the floor BF12 needs - 4.95 on the 200 x 300 stock. THE CHECK TO RUN BEFORE SUBSTITUTING A DIFFERENT PIECE OF PLATE: any stock whose length leaves this positive will do, so the minimum usable plate is XEP_H + TONGUE_MIN, about 295. The 300 in hand clears by about 5."
 # ---------------------------------------------------------------- the torsion box
 
 [[dim]]
