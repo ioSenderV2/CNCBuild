@@ -338,7 +338,7 @@ of it or leave it deliberately open at both ends so it can be blown through.
 ### The end plates
 
 **Two, 1/2" 6061, 154 mm wide × 242.5 mm tall**, stopping at the top of the X beam. **Identical
-below the top edge.** The **right-hand plate only** carries a **60 × 60 BF12 tongue** — the stock's own end, left uncut — rising off the
+below the top edge.** The **right-hand plate only** carries a **BF12 tongue** — 60 across, running to the stock's 300, left uncut — rising off the
 top edge, 60 mm wide, with **4 × M5 tapped**.
 
 ⚠️ **They are not interchangeable at assembly.** Cut both outlines together and leave the tongue on
