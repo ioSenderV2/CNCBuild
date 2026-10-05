@@ -57,8 +57,7 @@ Nothing in the rear column above is as-built hardware.
 
 The riser lands on the **same top skin** the full-height plate bears on, just inboard of it - see
 "How it lands on the torsion box" below. Both fixings share that surface, and the riser is the one
-that sets the beam height and the two beams' coplanarity. So the riser is the datum of the pair and
-the plate follows it.
+that sets the beam height and the two beams' coplanarity. So the riser is the reference for the pair and the plate follows it.
 
 **Those 8 bolts land in the ø6.65 lengthwise corner bores** - four per profile, which is exactly
 what those bores exist for and the only way they are reachable.

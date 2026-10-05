@@ -63,7 +63,7 @@ bores**. Every pattern can then be checked against the real part while still sta
 mill. The end plate pattern especially - a transfer punch through the real extrusion beats measuring
 from a drawing.
 
-## One datum per plate
+## Each plate only has one WCS origin for the holes to be drilled
 
 Pick a corner, dimension every hole from it, **never chain dimensions**. On a manual mill with a DRO
 the operator types absolute coordinates; chained dimensions accumulate error and invite arithmetic

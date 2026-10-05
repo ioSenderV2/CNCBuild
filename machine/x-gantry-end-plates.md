@@ -512,7 +512,7 @@ on the real counterbore, **65 costs nothing and still stops short of the joining
 | **Horizontal, blind-tapped M8 in the end plate** | **30** | **15** | shelf to plate |
 | **Horizontal, blind-tapped M8 in the end plate** | **30** | **35** | shelf to plate |
 
-### 🔴 Why the datum moved, and it is the whole lesson of this section
+### 🔴 Why the WCS origin moved, and it is the whole lesson of this section
 
 The holes used to be dimensioned **from the beam front**. On 2026-10-02 the beam moved back to flush
 with the plate's back edge, which put the beam front at Y 60 - and so put the rear horizontal hole,
@@ -521,8 +521,8 @@ before the move, already too tight for a tapped M8.
 
 **Nothing in the file connected the two.** The hole was a literal computed from a face that moved, with
 no link back - the same failure as the "1.8 mm proud" figure, and the reason
-[`../dimensions/`](../dimensions/) now exists. **Dimension from the plate's own datum; the beam is not
-a datum, it is a part that moves.**
+[`../dimensions/`](../dimensions/) now exists. **Dimension from the plate's own WCS origin; the beam is not something to measure from, it is a
+part that moves.**
 
 ### Why both horizontals sit at Y 30, stacked in Z
 

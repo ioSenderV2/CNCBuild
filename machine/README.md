@@ -54,7 +54,7 @@ instead** — see the two-document note at the top of this file.
 | [`z-carriage.md`](z-carriage.md) | The 164 × 175 × 1/2" Z plate, the spacer blocks and why they get skimmed, the clamp mount geometry, the travel budget and the top stop |
 | [`x-gantry-end-plates.md`](x-gantry-end-plates.md) | The two X gantry end plates: the vertical stack-up, the 242.5 mm height, the sole plate and doubler block, the four bolts above the Y beam top, and the shelf |
 | [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
-| [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One datum per plate, one reference rail, and what mating hardware to take |
+| [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One WCS origin per plate, one reference rail, and what mating hardware to take |
 | [`open-items.md`](open-items.md) | Everything still unmeasured, grouped by where it came from |
 
 ## Frame and motion

@@ -219,7 +219,7 @@ balls**.
 7 mm of overrun has **3 mm to spare** and the design stands - **no rail shift needed, the carriage
 plate can be drilled as laid out.**
 
-📌 That 3 mm is nominal. Rail length, plate height and the flush-mount datum each carry a little
+📌 That 3 mm is nominal. Rail length, plate height and the flush-mount reference each carry a little
 tolerance, so the real figure could land between roughly 1.5 and 4 mm. Positive in every case, and
 the stop only fires if the control has already failed - but it is why the nominal should not go any
 tighter.

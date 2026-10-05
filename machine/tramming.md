@@ -32,7 +32,7 @@ Set screws over each bearing block is the usual arrangement and it is wrong here
    screw tips gives local yielding, brinelling under cyclic load, and a joint that keeps settling for
    months. At 1000 N it undoes the stiffness the rest of the design is chasing.
 
-**Build it solid and treat it as a datum.** Get it right at the mill.
+**Build it solid - everything else is set from it.** Get it right at the mill.
 
 ## ✅ Roll: SHIM THE SHELF - decided 2026-10-02
 

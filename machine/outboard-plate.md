@@ -252,7 +252,7 @@ same reason and to the same tolerance; what is gone is the groove.
 the chip barrier and the tongue sits outboard of it. Either seal the top of the seam or leave it
 deliberately open at both ends so it can be blown through.
 
-### 🔴 The machine is the datum, not the box - so the box is built last
+### 🔴 The machine is the reference, not the box - so the box is built last
 
 **The box will not be built until the whole CNC is assembled on a flat surface and the width measured
 exactly.** That is the standing rule of this repo applied to a structural part: the machine is the

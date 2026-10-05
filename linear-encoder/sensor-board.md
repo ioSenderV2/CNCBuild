@@ -93,6 +93,6 @@ Five signals over four pairs, nothing spare.
   that option on a wire-OR across all four axes into `IO1`/`IO2` off the SH1.0 connector. A test pad
   was put on `MagINCn` so the board does not foreclose it; **that was a judgement call, not something
   the design doc asked for**, and it is free to delete.
-- **Package datums.** Figure 14's Hall-array dimensions were read off a rendered page. §"carry the
+- **Package reference dimensions.** Figure 14's Hall-array dimensions were read off a rendered page. §"carry the
   chip" already says the reference edges deserve a second look before layout, and layout is exactly
   where they get used.

@@ -53,7 +53,7 @@ rules carry the whole sequence, and neither can be worked around:
   assembly.** That measurement is what the box skins are cut to — so the machine comes before the
   box, not after it.
 - 🔴 **The spindle and tram come last, after the machine is bolted to the box.** Tram is set in the
-  installed position or it is set against a datum the machine does not have yet.
+  installed position or it is set against a reference the machine does not have yet.
 
 | | Stage |
 |---|---|
@@ -99,7 +99,8 @@ for months.
 gets checked against the real part while still standing next to the mill; a transfer punch through
 the real extrusion beats measuring from a drawing.
 
-**One datum per plate.** Pick a corner, dimension every hole from it, never chain dimensions.
+**Each plate only has one WCS origin for the holes to be drilled.** Pick a corner, dimension
+every hole from it, never chain dimensions.
 
 **Make one rail the reference and set the second one fastener at a time.** Both rails tap **M5 into
 the plate**, so the holes are fixed and nothing is oversized at the mill — the float is the rail's
@@ -108,10 +109,10 @@ own, **ø6 through under a ø9.5 counterbore** on an M5. **Lock rail one down co
 carriage, tighten that bolt, move to the next. ⚠️ **Never tighten rail two as a set** — it snakes,
 and a bolt already home fights the next one you set.
 
-⚠️ **Open: whether the mill can hold one datum across the 1211.75 mm rear plate.** Bed size is not
+⚠️ **Open: whether the mill can hold one height reference across the 1211.75 mm rear plate.** Bed size is not
 travel. The two 8-bolt patterns' relative height must land well inside 1 mm across the metre.
 If the part is repositioned mid-job, **indicate the first pattern back in before drilling the second**,
-and datum off a scribed and indicated line rather than off a sawn edge.
+and work from a scribed and indicated line rather than from a sawn edge.
 
 ---
 
@@ -302,7 +303,7 @@ unwelcome.
 | To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.875, plus bottom-edge bearing over the full length |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped, one per beam |
 
-🔴 **1211.75 is a datum, not a dimension.** The plate runs flush with the outboard plates' outer
+🔴 **1211.75 is a reference, not a dimension.** The plate runs flush with the outboard plates' outer
 faces, and Sheet 7's X coordinates are absolute from the plate's left edge. **Cut it over-long and
 the Y2 station is out by the excess.**
 
@@ -406,7 +407,7 @@ carries the whole Z axis. The blue is layout dye, not a finish.
 
 🔴 **Do not make this joint adjustable.** No set screws over the bearing blocks. The bolt heads are
 buried under the Z rails, the screw and the nut housing once assembled, and this joint carries
-everything. **Build it solid and treat it as a datum.**
+everything. **Build it solid - everything else is set from it.**
 
 ---
 
@@ -517,7 +518,7 @@ It is a machine measurement, taken once the machine stands.
 
 ## 7. Stand it up and measure it
 
-🔴 **The machine is the datum, not the drawing. The box is not built until the whole machine is
+🔴 **The machine is the reference, not the drawing. The box is not built until the whole machine is
 assembled on a flat surface and its width measured.**
 
 The machine jigs itself for that measurement, so nothing has to be computed:
@@ -647,8 +648,7 @@ short** — if they carry load it is no longer a three-point mount.
 ## 9. Set the machine on the box
 
 Both the front fin and the outboard plate land on the **same top skin**. **The fin sets the beam
-height and the two beams' coplanarity, so the fin is the datum of the pair and the plate follows
-it.**
+height and the two beams' coplanarity, so the fin is the reference for the pair and the plate follows it.**
 
 | Part | How it lands |
 |---|---|
@@ -692,8 +692,8 @@ clamping length, and the weight.
 ### 🔴 Tram here, with the machine bolted down
 
 🔴 **Tram is set on the installed machine** — standing on the box, bolted to the tongues, in the
-position it will run in. Tramming a free-standing assembly sets it against a datum the machine does
-not have yet.
+position it will run in. Tramming a free-standing assembly sets it against a reference the machine
+does not have yet.
 
 **It is set once, and only with the clamps off** — all 16 M8 are accessible only then. There is no
 sub-plate and no permanent jacking provision, so redoing it later means lifting the spindle out of
@@ -768,7 +768,7 @@ cutting or drilling:
 | | |
 |---|---|
 | The **4 × HGH20 block hole pattern** measured on the **X/Y** kit — not the Z kit | gates the sixteen M5 in each X end plate |
-| Whether the mill holds one datum across **1211.75 mm** | gates the rear plate |
+| Whether the mill holds one height reference across **1211.75 mm** | gates the rear plate |
 | Whether X's interposer rows at **82 / 110 / 138** all land over beam | gates X's bar |
 | The **grid spacing**, and the box's deflection between its three points | gates the skins and the 2x4 clearance |
 | The front/back **tongue** inconsistency | gates the box walls |

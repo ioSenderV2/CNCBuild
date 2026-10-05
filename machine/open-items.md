@@ -38,7 +38,7 @@
 - ✅ ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
   line both check out against the physical template - photo committed. **The front fin's geometry
   is fully settled.**
-- 🔴 **Whether the Laguna can hold the HEIGHT datum across a 1211.75 mm part.** Bed size is not travel,
+- 🔴 **Whether the Laguna can hold the HEIGHT REFERENCE across a 1211.75 mm part.** Bed size is not travel,
   and the question is not whether the part fits - it is whether the two 8-bolt patterns' relative
   height survives a reposition. **The budget is well inside 1 mm**, that being the float the 9 mm
   holes give; past it the plate wins and a beam end has to be jacked. Gated on the mill model and
@@ -97,8 +97,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   sole bracket's root holes until the first two are mated.
 - ✅ ~~**The shelf's rear bolt is at Y 0, off the plate**~~ **Closed 2026-10-02.** The shelf becomes a
   **2" bar** with **two M8 at Y 30, stacked at Z 15 and Z 35**, blind-tapped. All four holes are now
-  dimensioned from the **plate's back edge**, which is the actual fix - the beam front was never a
-  datum.
+  dimensioned from the **plate's back edge**, which is the actual fix - the beam front was never something to measure from.
 - ⚠️ **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1211.75 mm of rear bottom-edge bearing.** Decide before the skins are cut.
@@ -150,7 +149,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   **14.1 mm centre-to-centre**, about 5 mm of web. **No tram sub-plate, no added moment arm.** Full
   working in the Z plate section.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
-- 🔴 **Can Garen's mill traverse ~1212 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a 1211.75 mm plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height datum between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
+- 🔴 **Can Garen's mill traverse ~1212 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a 1211.75 mm plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height reference between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
 - **Z travel floor** - where the confirmed 246 mm sits relative to the spoilboard. A machine
   measurement, and the one item the travel budget still waits on.
 - **Vertical distance from the X beam centreline down to the spindle nose, Z fully retracted** - plus

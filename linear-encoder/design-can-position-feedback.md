@@ -86,7 +86,7 @@ Consequences for what is already written here:
 - **The 3.9 µm hysteresis and 0.6 µm noise set §5's threshold floor.** An alarm tighter than ~5 µm is
   alarming on the sensor's own quantisation.
 
-#### The Index output is not a datum
+#### The Index output is not a unique position
 
 The AS5311 has an Index output, but it fires **once per 2 mm pole pair** - it repeats every 2 mm along
 the tape. It is not a machine reference and does **not** solve §8's reboot/zeroing problem. Useful only
@@ -135,7 +135,7 @@ of the 12 free pins - so the Z allocation is reserved, not spent.
 return path - it is what makes the field readable at 0.3 mm - so an aluminium substrate is fine
 everywhere; the tape brings its own ferrous backing.
 
-**Laid flush with one edge, and that edge is the registration datum.** Lateral alignment then comes from
+**Laid flush with one edge, and that edge is what the tape is registered against.** Lateral alignment then comes from
 machining rather than from eyeballing, and it fixes one dimension for the sensor mount: the magnetic
 centreline is **5 mm in from the tape edge**, so the Hall array must sit 5 mm from the registration edge
 and hold to ±0.5 mm (§1.3).
@@ -342,7 +342,7 @@ wrong direction to fail in for the one device whose job is preventing a crash.
 - **The encoder is not on the failure path.** A slipped coupling, a pinion that loses a set screw, a
   delaminated tape - in each case the encoder stops representing the axis. The switch is a physical
   backstop that does not care how the axis got there.
-- **No absolute datum.** Homing is seek → back off → re-seek slowly against a physical reference.
+- **No absolute position reference.** Homing is seek → back off → re-seek slowly against a physical reference.
   Incremental quadrature has no reference; it counts from wherever it powered up. Without an index track
   on the tape there is nothing to home *to*.
 
@@ -357,7 +357,7 @@ capability is worth more than two proximity sensors cost.
 
 ### What the scales do buy
 
-- **Soft limits that can be trusted.** `$130`–`$132` are dead-reckoned from the homing datum today.
+- **Soft limits that can be trusted.** `$130`–`$132` are dead-reckoned from where homing left them today.
   Measured position makes them real - and soft limits are the layer that stops most crashes before a hard
   limit is ever involved.
 - **Continuous rack detection on the gantry.** Two tapes on Y1/Y2 measure squareness all the time, not
@@ -546,7 +546,7 @@ Listed so they are not rediscovered. The first two gate a purchase.
    The AS5311's `MagDECn` pin is asserted exactly in the RED range, which is what an off-tape reader
    (no field) looks like. Wire one per axis into `flags`; decode table and pin budget in §1.3 and §14.
 2. ~~Does the tape have a reference/index track?~~ **Answered 2026-08-25: effectively no.** The AS5311
-   emits an Index pulse, but once per 2 mm pole pair — it repeats, so it is not a datum and homing-to-index
+   emits an Index pulse, but once per 2 mm pole pair — it repeats, so it is not a unique position and homing-to-index
    is not available from it (§1.3). The scales stay purely relative; §8 stands unchanged.
 3. ~~Tape resolution and repeatability~~ **Answered 2026-08-25 from the datasheet** (§1.3): 1.95 µm/step
    incremental, 3.9 µm hysteresis, 0.6 µm RMS transition noise, ±0.97 µm DNL. So §5's threshold cannot
@@ -698,7 +698,7 @@ count, not tidiness, settles the earlier open question: **one cable per sensor.*
 Power over one pair is ample. The AS5311 draws 16 mA typ / 21 mA max (§1.3), so 2.4 m of 24 AWG drops
 ~8.5 mV round trip, and even 28 AWG slim cable only ~22 mV, against a 3.0 V minimum on a 3.3 V rail.
 
-`Index` gets no conductor: per §1.3 it is not a datum.
+`Index` gets no conductor: per §1.3 it is not a unique position.
 
 ### Choosing the actual cable
 
@@ -742,7 +742,7 @@ Decided 2026-08-25: **a custom board with the AS5311 on it**, an RJ45 jack and t
 carrier that a breakout plugs into. The reason is mechanical, not electrical.
 
 What decides accuracy is where the **Hall array** sits relative to the magnetic strip, and Figure 14
-(p.21 of [`AS5311-Datasheet.pdf`](../manufacturer-assets/index.html)) gives the datums: the array is **2.0 mm long,
+(p.21 of [`AS5311-Datasheet.pdf`](../manufacturer-assets/index.html)) gives the reference dimensions: the array is **2.0 mm long,
 centred on the die centreline**, which sits **3.035 ±0.235 mm** along the package and **2.576 / 3.200
 ±0.235 mm** across it, with **0.245 ±0.100** and **0.755 ±0.100 mm** around the die plane vertically.
 
@@ -753,7 +753,7 @@ tolerance (~±0.1 mm) that is *yours*, and dropping the stacked board and header
 closer to the strip - the other half of the same budget. TSSOP-20 on 0.65 mm pitch is hand-solderable,
 so the chip is not the obstacle.
 
-Transfer those datums from the figure directly when laying out; the numbers above were read off a
+Transfer those reference dimensions from the figure directly when laying out; the numbers above were read off a
 rendered page and the reference edges deserve a second look.
 
 #### The pins a breakout was quietly handling

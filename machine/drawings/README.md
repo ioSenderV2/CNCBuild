@@ -21,7 +21,7 @@ make deliberately rather than drift into.
 - **Unknowns are marked, never invented.** Amber rows are dimensions that do not exist anywhere in the
   repo. That is the repo's standing rule applied to drawings: an unknown stays unknown until it is
   measured.
-- **One datum per plate, absolute coordinates, never chained.** The mill is manual in X and Y, so the
+- **One WCS origin per plate, absolute coordinates, never chained.** The mill is manual in X and Y, so the
   operator types coordinates and chained dimensions accumulate error.
 - **Extrusion corner-bore patterns are transfer-punched, not dimensioned.** Those are extruded
   features with looser position tolerance than anything drilled in plate.

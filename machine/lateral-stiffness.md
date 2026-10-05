@@ -72,8 +72,7 @@ Cost is about **+1.5 lb per front plate**, static. Two things it does *not* cost
 
 ## ✅ The fin, fully dimensioned - 2026-10-02
 
-**The taper is pinned, so everything below is arithmetic rather than judgement.** Datum is the
-**top-outboard corner**, the two factory edges, per the layout rule above. X runs inboard, Y runs
+**The taper is pinned, so everything below is arithmetic rather than judgement.** The WCS origin is the **top-outboard corner**, the two factory edges, per the layout rule above. X runs inboard, Y runs
 down.
 
 | | |
@@ -363,7 +362,7 @@ both belong to the old outline.
 **At Y 30, T2's perpendicular edge distance is 19.1 mm** - a little over 2 × the 9 mm hole
 diameter, and confirmed good on the template.
 
-✅ **Y 30 is one datum across all three plates** - the front fin's two bolts, the side plates' row
+✅ **Y 30 is one height across all three plates** - the front fin's two bolts, the side plates' row
 and the back plate's row all sit at 30 mm above the plate's bottom edge. 📌 **The fin's two became
 L-BRACKET bolts on 2026-10-03** when the front tongue was deleted, and deliberately did not move: the
 part they fasten to changed, the height and the 145 mm couple did not. Which since 2026-10-03 is
@@ -436,19 +435,19 @@ that turns the rear face from a portal frame with two bending legs into a diaphr
 
 The earlier text read: *"a monolithic replacement would put two 8-bolt patterns, two bores, two
 stepper patterns and two BK12 patterns on one 1.2 m part, cut on a 4' × 1' manual-XY mill on a
-one-shot trip, and would become the coplanarity datum before that datum has been measured."*
+one-shot trip, and would become the coplanarity reference before that reference has been measured."*
 
 | Ground | Status 2026-10-02 |
 |---|---|
 | Two stepper patterns | **Gone** - the steppers are at the front |
 | Two BK12 patterns | **Gone** - BK12 is inside the cast frame, at the front |
 | Two 35 mm shaft bores | **Gone** - same reason |
-| Becomes the coplanarity datum before that datum is measured | **Stands. Accepted deliberately.** |
+| Becomes the coplanarity reference before that reference is measured | **Stands. Accepted deliberately.** |
 
 **What is left on the part is two 8-bolt patterns and a clearance bore per screw** - fewer accurate
 features than either rear riser carried before.
 
-### ⚠️ On the datum, and a correction to how it was first described
+### ⚠️ On the reference, and a correction to how it was first described
 
 A one-piece plate **does** pre-commit geometry that was previously set by assembling on a flat
 surface with the 9 mm reamed holes absorbing error. That inverts this repo's loudest standing rule
@@ -491,14 +490,12 @@ you are fighting the plate, and in the vertical direction you lose.
 
 **The two 8-bolt patterns' relative height must land well inside 1 mm across the metre**, or the
 plate cannot be bolted on without jacking a beam end. That is a sharper statement of the mill risk
-below: the question is not whether the part fits on the table, it is **whether the height datum
-survives a reposition.**
+below: the question is not whether the part fits on the table, it is **whether the height reference survives a reposition.**
 
 ✅ **Material: plain hot-rolled A36 is correct**, and the reason is the drilling setup rather than
 the stock. Out-of-plane bow is the soft mode and bolting pulls it out. What would hurt is **camber**
-- in-plane curvature along the length - and only if the part is datumed off a sawn or sheared edge
-carrying it, because then the second pattern walks vertically by the camber amount. **Datum off a
-scribed and indicated line, or indicate the first pattern back in before drilling the second.** Ask
+- in-plane curvature along the length - and only if the part is set from a sawn or sheared edge
+carrying it, because then the second pattern walks vertically by the camber amount. **Work from a scribed and indicated line, or indicate the first pattern back in before drilling the second.** Ask
 for **P&O** if mill scale is unwelcome; same flatness, no scale, small premium.
 
 ### The length: 1211.75 mm, settled 2026-10-03 - it is a TARGET now, not a window
@@ -506,8 +503,7 @@ for **P&O** if mill scale is unwelcome; same flatness, no scale, small premium.
 ✅ **Decided: the plate runs FLUSH with the outboard plates' outer faces, so it is 1211.75** - the
 upper bound of the window below, taken exactly. The window closed because of what it does to
 **Sheet 7's coordinates**: with the WCS on the plate's lower-left corner, the Y2 beam's eight bores
-and four of the BF12 holes are **absolute from the plate's left edge**, so the plate's length is a
-datum rather than a dimension. Cut it over-long and the Y2 station is out by the excess.
+and four of the BF12 holes are **absolute from the plate's left edge**, so the plate's length is a reference rather than a dimension. Cut it over-long and the Y2 station is out by the excess.
 
 📌 **Why flush rather than butted between the two side plates.** Butting gives a rounder
 1205.4 and puts Y1's own corner back on X 0, which is how Sheet 7 was first drawn. It also lands the
@@ -545,7 +541,7 @@ and every sheet now carries **1211.75**. The registry derives it: REAR_PLATE_L =
 2 × Y_BEAM_ASSY_W.
 
 ✅ **A 48" sheet (1219.2 mm) covers it** with 7.5 mm of trim - but that is the entire margin, and
-there is now no slack to give back, because the length is a datum. **60" removes the question** and
+there is now no slack to give back, because the length is a reference. **60" removes the question** and
 leaves an offcut, which is the better buy on a part cut once.
 
 ✅ **Both of this chain's assumed terms were confirmed 2026-10-02.** The Y rails are on the beams'
@@ -553,11 +549,10 @@ leaves an offcut, which is the better buy on a part cut once.
 rail-and-block stack measured on X applies to both Y beams. The chain above is nominal only because
 the machine has not been assembled and measured - not because any of its terms are guesses.
 
-### ⚠️ Open: can the mill hold a datum across 1211.75 mm
+### ⚠️ Open: can the mill hold one height reference across 1211.75 mm
 
 Two bolt patterns a metre apart, both of which must match extruded corner bores, on a **4' × 1'
-manual-XY** mill. Bed size is not travel. If the part has to be repositioned mid-job the datum is
-lost exactly where it is most needed. **Gated on the mill model and DRO question already in the open
+manual-XY** mill. Bed size is not travel. If the part has to be repositioned mid-job the reference is lost exactly where it is most needed. **Gated on the mill model and DRO question already in the open
 items**, expected ~2026-10-04.
 
 ### ⚠️ The bottom-edge bearing now runs the full 1211.75 mm
