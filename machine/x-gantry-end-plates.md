@@ -7,7 +7,7 @@
 ---
 
 **Two plates, 1/2" aluminium, 154 mm wide**, stopping at the **top of the X beam** - identical
-below that edge, and the right-hand one carrying a **60 × 60 BF12 tongue** above it. They carry the X
+below that edge, and the right-hand one carrying a **60 × 60 BF12 tongue** above it. **Both have the far-front corner cut off** on a line ending at X 185.5, Y 154. They carry the X
 beam and ride the Y rails on four bearing blocks.
 
 ## 🔴 Reworked 2026-10-02 - the screw and stepper left this plate
@@ -59,7 +59,7 @@ T-nut bolts. **That leaves THREE interposers, all identical casting bars.**
 ### 🔴 The BF12 tongue, and it is on ONE plate only
 
 ✅ **Given 2026-10-02.** The plate's top 60 mm already covers the end of the upper extrusion and
-carries four M8 into its corner bores. **The tongue is a 60 × 60 extension rising off the top edge
+carries four M8 into its corner bores. **The tongue is the stock's own far end, nominally 60 × 60, rising off the top edge
 above that 60 mm square**, 60 mm wide, carrying **4 × M5 tapped** for BF12 - **the same pattern used
 on the Y end plates / Z risers**, so it is a pattern this repo already has rather than a new one.
 
