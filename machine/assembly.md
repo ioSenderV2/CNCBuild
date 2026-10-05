@@ -94,10 +94,8 @@ for months.
 | Two **outboard plates**, 12" × 1 m × 1/8" steel | ~25 holes each, and steel runs several times longer than aluminium would |
 | Three **front strips**, 45 mm × 1 m × 4 mm | |
 
-**Lay the extrusion bolt patterns out by scribing.** Scribe two lines and tick four stations along
-each — that is the eight-hole pattern at a beam end. It is quicker and more accurate than punching
-through an extrusion offcut's own bores, and every one of these holes is **ø9 clearance on an M8**,
-so the float is there by design.
+**Lay the extrusion bolt patterns out by scribing.** Two lines, four stations ticked along each —
+that is the eight-hole pattern at a beam end.
 
 **Each plate only has one WCS origin for the holes to be drilled.** Pick a corner, dimension
 every hole from it, never chain dimensions.
