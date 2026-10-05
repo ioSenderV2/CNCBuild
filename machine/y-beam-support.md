@@ -133,14 +133,14 @@ face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z l
 2.5 × D - so it bolts direct.** **No axis needs a second one for BF12**: on Y it face-mounts on the
 1211.75 mm rear plate, and on X it face-mounts on a tongue off the right-hand end plate.
 
-✅ **ONE part, three off - decided 2026-10-02.** All three interposers are **identical**, X's
+✅ **ONE part, quantity 3 - decided 2026-10-02.** All three interposers are **identical**, X's
 included, so there is one drawing and one setup:
 
 ❌ ~~A fourth, 60 × 80, top-mounting BF12 on X.~~ **Dropped the same day it was specified**: X's BF12
 face-mounts on a **tongue off the right-hand X end plate** instead, which uses a plate that already
 exists rather than adding a fifth part and four more T-nut bolts.
 
-| | **The casting bar - one drawing, 3 off** (Y1, Y2, X) |
+| | **The casting bar - one drawing, quantity 3** (Y1, Y2, X) |
 |---|---|
 | Size | **60 × 150 × 3/8" 6061** |
 | To the beam | **6 × M8** flange bolts into slide-in T-nuts, rows at **82 / 110 / 138** |

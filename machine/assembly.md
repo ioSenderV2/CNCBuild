@@ -84,7 +84,7 @@ for months.
 | Two **X gantry end plates**, 1/2" | one drawing, right-hand variant carries the BF12 tongue |
 | **X carriage plate**, 1/2" | 30 holes |
 | **Z plate**, 1/2" | |
-| **Interposer bars**, 60 × 150 × 3/8", 3 off | six tapped M5 under a bearing face, six flange clearance holes |
+| **Interposer bars**, 60 × 150 × 3/8", quantity 3 | six tapped M5 under a bearing face, six flange clearance holes |
 | **Both Z spacers** | **face 1 mm off both in the same setup** — see [the Z axis](#6-the-z-axis) |
 | Rail mounting patterns, bearing block and nut housing patterns, counterbores | |
 
@@ -225,7 +225,7 @@ support it along its length.
 
 ### The interposer bar and the cast stepper frame — front end
 
-**One part, three off** (Y1, Y2, X): **60 × 150 × 3/8" 6061**, no counterbores anywhere.
+**One part, quantity 3** (Y1, Y2, X): **60 × 150 × 3/8" 6061**, no counterbores anywhere.
 
 | | |
 |---|---|

@@ -51,7 +51,7 @@ panel. Every sheet in the pack has been brought up to that design.
 
 ### ⚠️ Not drawn yet - two trip parts have no sheet
 
-- **The cast stepper frame interposer** - 60 × 150 × 3/8" 6061, **3 off** (Y1, Y2 and the X stepper
+- **The cast stepper frame interposer** - 60 × 150 × 3/8" 6061, **quantity 3** (Y1, Y2 and the X stepper
   end), one drawing. Six M8 clearance into slide-in T-nuts at rows 82 / 110 / 138, six M5 tapped for
   the casting at bar coords 28-71, no counterbores. **Fully dimensioned in the prose and simply not
   drawn here.**

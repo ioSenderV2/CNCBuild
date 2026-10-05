@@ -781,7 +781,7 @@ note = "First tongue BF12 row BEFORE the interposer: 7 above the TOP OF THE X BE
 [[dim]]
 sym = "TONGUE_BF12_ROW1"
 expr = "TONGUE_BF12_ROW1_BARE + T_INTERPOSER"
-note = "THE INTERPOSER GOES UNDER THE CAST STEPPER FRAME - beam top, interposer, casting - so the frame and the screw it carries both stand 9.525 above the beam top, and these holes must be drilled where the screw ACTUALLY ends up rather than where a casting sitting straight on the beam would put it. The X stepper end has one too - it is 3 off, Y1, Y2 and X. The X tongue is ABOVE its beam where the Y frames hang BELOW theirs, so the interposer lifts this end rather than dropping it; on each sheet's own frame that is still an addition. Same correction as BF12_ROW1_Y on Sheet 7."
+note = "THE INTERPOSER GOES UNDER THE CAST STEPPER FRAME - beam top, interposer, casting - so the frame and the screw it carries both stand 9.525 above the beam top, and these holes must be drilled where the screw ACTUALLY ends up rather than where a casting sitting straight on the beam would put it. The X stepper end has one too - there are three, Y1, Y2 and X. The X tongue is ABOVE its beam where the Y frames hang BELOW theirs, so the interposer lifts this end rather than dropping it; on each sheet's own frame that is still an addition. Same correction as BF12_ROW1_Y on Sheet 7."
 
 [[dim]]
 sym = "TONGUE_BF12_ROW2"
