@@ -114,7 +114,7 @@ its own amber rows:</p>
 <tr><th>Sheet</th><th>Part</th><th>Size</th><th>Off</th></tr>
 <tr><td>1</td><td>Front Y end plate / Z riser</td><td>tapered 100 &rarr; 200 &times; 302 &times; 10 mm</td><td>2</td></tr>
 <tr><td>2a</td><td>X gantry end plate</td><td>154 &times; 242.5 &times; 1/2"</td><td>2</td></tr>
-<tr><td>2b</td><td>BF12 tongue &mdash; <b>the right-hand plate only</b>, a 50 mm extension on 2a's outline</td><td>everything below X 242.5 is 2a unchanged</td><td>1</td></tr>
+<tr><td>2b</td><td>X gantry end plate, <b>right-hand</b>, with the BF12 tongue &mdash; drawn complete</td><td>302.5 &times; 154 &times; 1/2"</td><td>1</td></tr>
 <tr><td>2c</td><td>Shelf bar</td><td>25.4 &times; 50.8 &times; 60</td><td>2</td></tr>
 <tr><td>2d</td><td>Y nut doubler block</td><td>154 &times; 50 &times; 1/2"</td><td>2</td></tr>
 <tr><td>3</td><td>X carriage plate</td><td>154 &times; 407 &times; 1/2"</td><td>1</td></tr>
@@ -330,8 +330,8 @@ spindle clearance is unsettled and the cut is one bandsaw pass that cannot be pu
 <h2 id="sheet-2">Sheet 2a &mdash; X gantry end plate (quantity 2)</h2>
 <div class="stock">
 <b>242.5 long &times; 154 wide &times; 1/2" (12.7 mm) 6061</b><br>
-Identical below the top edge &mdash; <b>the RIGHT-HAND plate also carries a 50 &times; 60 mm BF12
-tongue above it.</b> Cut both outlines together; leave the tongue on one.<sup class="f">2.9</sup><br>
+Identical below the top edge &mdash; <b>the RIGHT-HAND plate also carries a 60 &times; 60 mm BF12
+tongue above it, and is drawn complete on Sheet 2b.</b> Cut both outlines together; leave the tongue on one.<sup class="f">2.9</sup><br>
 <span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
 <b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
 negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.<br>
@@ -461,75 +461,195 @@ dimensioned.</figcaption>
 <tr><td>B1&ndash;B4</td><td><b>Sole bracket</b> &mdash; into the X 0 end edge of the <b>DOUBLER only</b></td><td>4</td><td class="n">from X 0, <b>20 deep MAX</b></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &#248;5 doubler bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>the END PLATE's row is NOT drilled here</b> &mdash; transferred at home<sup class="f">2.7</sup></td></tr>
 </table>
 
-<h3 style="margin-top:7mm">Sheet 2b &mdash; the BF12 tongue (quantity 1, the RIGHT-HAND plate only)
-<span style="font-weight:400;font-size:10pt">&mdash; 2a plus a 50 &times; 60 extension</span></h3>
+<h3 style="margin-top:7mm">Sheet 2b &mdash; X gantry end plate, RIGHT-HAND, with the BF12 tongue (quantity 1)</h3>
 <div class="stock">
-<b>Identical to Sheet 2a in every respect below X 242.5.</b> Cut both plates to the 2a outline
-together; <b>leave the tongue on one of them</b>.<sup class="f">2.9</sup><br>
-<span class="datum">SAME WCS AND SAME FRAME AS 2a</span> &mdash; X 0 is still the plate's bottom end,
-Y 0 still its back edge. Nothing is re-datumed; this sheet adds a <b>50 mm extension from
-X&nbsp;242.5 to X&nbsp;292.5</b>, <b>60 mm wide over Y&nbsp;0 to 60</b>, and four holes in it.<br>
-&#128308; <b>50, not 40.</b> It was 40 until the BF12 rows took the interposer; at 40 the far row left only <b>5.5</b> to the edge, which is not enough beside an M5. At 50 it leaves <b>15.5</b>.<br>
-The 60 is not a choice: it is the beam's own footprint off the back edge, the same 60 the shelf bar
-spans on Sheet 2c.
+<b>302.5 long &times; 154 wide &times; 1/2" (12.7 mm) 6061</b><br>
+<b>Below X 242.5 this is Sheet 2a's part exactly</b> &mdash; cut both plates to that outline together
+and leave the tongue on this one.<sup class="f">2.9</sup> <b>Everything this sheet needs is on this
+sheet</b>; nothing below has to be read off 2a.<br>
+<span class="datum">WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</span><br>
+<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and
+negative into the material. All coordinates positive in X and Y, absolute, <b>never chained</b>.<br>
+<b>X 0 is the plate's bottom end</b> (the sole-bracket end); <b>Y 0 is its back edge</b>.<br>
+<b>The &oslash;35 bore is at X 122.5, Y 77</b> &mdash; centred in the 154 &times; 120 area over the
+Y beam, which is also the beam's own <b>seam</b>. The four blocks sit on the <b>rails</b>, at
+X&nbsp;77.5 and 167.5 &mdash; the seam &plusmn;45, because both rails are in the beam's
+<b>outside T-slot</b> and are therefore <b>90 apart</b>. <b>All 16 M5 holes follow</b>:
+X 61.5, 93.5, 151.5, 183.5 and Y 20.5, 56.5, 97.5, 133.5.<sup class="f">2.5</sup><br>
+<b>The tongue is a 60 &times; 60 extension</b> &mdash; <b>X 242.5 to 302.5</b>, <b>Y 0 to 60</b>. The
+60 across is the beam's own footprint off the back edge, the same 60 the shelf bar spans, so the
+tongue sits entirely over the upper extrusion's end.<br>
+&#128308; <b>60 along, his call 2026-10-04.</b> It was <b>50</b>, and <b>40</b> before that. At 40
+the far BF12 row left only <b>5.5</b> to the edge, which is not enough beside an M5; at 50 it left
+<b>15.5</b>; at 60 it leaves <b>25.5</b>. <b>G1&ndash;G4 do not move</b> &mdash; their X comes from
+the beam end plus the interposer, not from where the tongue ends, so the extra 10 mm is edge
+distance and nothing else.<sup class="f">2.13</sup><br>
+&#9888; <b>This plate and its pair are not interchangeable at assembly.</b> The left-hand one stops
+at X 242.5; this is the only difference between them.
 </div>
 
 <figure>
-<svg viewBox="-56 -28 620 264" width="155mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- DETAIL of the tongue end only, X 210 to 292.5 and Y 0 to 70. Scale 2.6.
-       SVG x = (X - 210) * 2.6 ; SVG y = (70 - Y) * 2.6, so Y runs UP the page. -->
-  <rect x="0" y="0" width="84.5" height="182" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <rect x="84.5" y="26" width="130" height="156" fill="#dff0e4" stroke="#111" stroke-width="1.6"/>
-  <line x1="84.5" y1="0" x2="84.5" y2="182" stroke="#b06000" stroke-width="1.2" stroke-dasharray="5 3"/>
-  <text class="lbl" x="88" y="198" fill="#b06000">X 242.5 &#8212; top of the 2a outline</text>
-  <circle cx="127.5" cy="163.8" r="4.2" fill="#fff" stroke="#c00" stroke-width="1.5"/>
-  <circle cx="174.3" cy="163.8" r="4.2" fill="#fff" stroke="#c00" stroke-width="1.5"/>
-  <circle cx="127.5" cy="44.2"  r="4.2" fill="#fff" stroke="#c00" stroke-width="1.5"/>
-  <circle cx="174.3" cy="44.2"  r="4.2" fill="#fff" stroke="#c00" stroke-width="1.5"/>
-  <text class="lbl" x="118" y="108" fill="#c00">BF12 &#8212; 4 &times; M5</text>
-  <line x1="84.5" y1="-14" x2="214.5" y2="-14" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="142" y="-18">50</text>
-  <line x1="228" y1="26" x2="228" y2="182" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="232" y="108">60</text>
-  <line x1="-14" y1="182" x2="-14" y2="163.8" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="-40" y="176">7</text>
-  <line x1="-30" y1="182" x2="-30" y2="44.2" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="-54" y="116">53</text>
-  <line x1="127.5" y1="212" x2="174.3" y2="212" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="144" y="226">18</text>
-  <text class="dim" x="110" y="226">259.0</text>
-  <text class="dim" x="178" y="226">277.0</text>
-  <line x1="174.3" y1="14" x2="214.5" y2="14" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="180" y="10">15.5 to the edge</text>
-  <text class="q" x="256" y="14">THE Y IS FORCED.</text>
-  <text class="q" x="256" y="26">BF12&#8217;s 46 mm column spacing centred in the</text>
-  <text class="q" x="256" y="38">tongue&#8217;s 60 gives 7 and 53 &#8212; the same two</text>
-  <text class="q" x="256" y="50">columns Sheet 7 uses, and the same 7 / 53</text>
-  <text class="q" x="256" y="62">measured on the cast stepper frame.</text>
-  <text class="q" x="256" y="84" fill="#b06000">THE X CARRIES THE INTERPOSER.</text>
-  <text class="q" x="256" y="96" fill="#b06000">249.5 and 267.5 are 7 and 25 past the beam</text>
-  <text class="q" x="256" y="108" fill="#b06000">end. The X stepper frame sits on the 3/8&quot;</text>
-  <text class="q" x="256" y="120" fill="#b06000">interposer &#8212; it is 3 off, Y1, Y2 AND X &#8212; so</text>
-  <text class="q" x="256" y="132" fill="#b06000">this end lifts and BF12 goes with it:</text>
-  <text class="q" x="256" y="144" fill="#b06000">+ 9.525 = 259.0 and 277.0.</text>
-  <text class="q" x="256" y="166">THE TONGUE IS 50 BECAUSE OF THAT.</text>
-  <text class="q" x="256" y="178">At 40 the far row had 5.5 to the edge, which</text>
-  <text class="q" x="256" y="190">is not enough beside an M5. At 50 it has 15.5.</text>
-  <text class="q" x="256" y="208" fill="#c00">&#9888; T_INTERPOSER is still nominal &#8212; caliper the</text>
-  <text class="q" x="256" y="220" fill="#c00">3/8&quot; stock, and these two rows follow it.</text>
+<svg viewBox="-58 -44 420 360" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- the plate, an L: the body to X 242.5 full width, then the tongue over Y 0 to 60.
+       svg x = X ; svg y = 154 - Y, so Y runs UP the page. -->
+  <path d="M 0,0 L 242.5,0 L 242.5,94 L 302.5,94 L 302.5,154 L 0,154 Z"
+        fill="#e8f0fa" stroke="#111" stroke-width="1.6" stroke-linejoin="miter"/>
+
+  <!-- X GANTRY END PLATE, machining coordinates 2026-10-03. 242.5 along mill X.
+       X 0 at the plate&apos;s bottom end; Y 0 at the plate&apos;s back edge. -->
+  
+
+  <!-- X beam: TOP extrusion X 182.5-242.5, LOWER X 122.5-182.5, both Y 0-60 -->
+  <rect x="183.1" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <rect x="123.1" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="188" y="90.0" fill="#0a6">X TOP</text>
+  <text class="lbl" x="128" y="90.0" fill="#0a6">X LOWER</text>
+
+  <!-- shelf bar X 71.7-122.5, Y 0-60 -->
+  <rect x="72.3" y="94.6" width="49.599999999999994" height="58.8" fill="none" stroke="#b06000" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="78" y="90.0" fill="#b06000">SHELF</text>
+
+  <!-- doubler footprint, far face: X 0-60, full width -->
+  <rect x="0" y="0" width="50" height="154.0" fill="none" stroke="#b06000" stroke-width="1.1" stroke-dasharray="3 2"/>
+  <text class="lbl" x="4" y="84.0" fill="#b06000">DOUBLER 154 &#215; 50</text>
+
+  <rect x="55.5" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="55.5" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="145.5" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="145.5" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <!-- doubler attachment, one column at X 25 -->
+  <circle cx="25" cy="122.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="25" cy="92.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="25" cy="62.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="25" cy="32.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <!-- sole bracket: bored INTO the X 0 end edge, on the plate/doubler seam.
+       A face view can only show them as holes running in from that end. -->
+  <line x1="0" y1="122.0" x2="20" y2="122.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="0" y1="92.0" x2="20" y2="92.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="0" y1="62.0" x2="20" y2="62.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="0" y1="32.0" x2="20" y2="32.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <text class="q" x="2" y="16.0" fill="#c00">sole bracket: 2 rows in from this end, 20 deep MAX (2.5 clear)</text>
+
+  <!-- four HGH20 blocks, centred on the rails at X 77.5 and 167.5 (outside T-slots, 90 apart):
+       upper row X 145.5-189.5, lower X 55.5-99.5; two butted in Y -->
+    <circle cx="151.50" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="151.50" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.50" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.50" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="151.50" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="151.50" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.50" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="183.50" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="61.50" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="61.50" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="93.50" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="93.50" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="61.50" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="61.50" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="93.50" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="93.50" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+
+  <!-- E1-E4 into the top extrusion corner bores -->
+  <g fill="#fff" stroke="#111" stroke-width="0.9">
+    <circle cx="197.5" cy="139.0" r="4.5"/>
+    <circle cx="197.5" cy="109.0" r="4.5"/>
+    <circle cx="227.5" cy="139.0" r="4.5"/>
+    <circle cx="227.5" cy="109.0" r="4.5"/>
+  </g>
+
+  <!-- H1, H2 shelf-to-plate, and C2 the encoder bore -->
+  <circle cx="106.7" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="86.7" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <text class="lbl" x="102.7" y="132.0">H2</text>
+  <text class="lbl" x="82.7" y="132.0">H1</text>
+  <circle cx="122.5" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <text class="lbl" x="110" y="54.0">&#248;35 C2</text>
+
+  
+  
+  <line x1="-12" y1="0" x2="-12" y2="154.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-40" y="77.0">154</text>
+  <circle cx="0" cy="154.0" r="3.4" fill="#c00"/>
+  <text class="dim" x="-34" y="164.0" fill="#c00">WCS 0,0</text>
+
+
+  <!-- where the 2a outline ends and the tongue begins -->
+  <line x1="242.5" y1="94" x2="242.5" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="244" y="56" fill="#b06000">X 242.5 &#8212; the step</text>
+
+  <!-- G1-G4, BF12 face-mount: X 259.0 and 277.0, Y 7 and 53 -->
+  <g fill="#fff" stroke="#c00" stroke-width="1.3">
+    <circle cx="259" cy="147" r="3.4"/>
+    <circle cx="259" cy="101" r="3.4"/>
+    <circle cx="277" cy="147" r="3.4"/>
+    <circle cx="277" cy="101" r="3.4"/>
+  </g>
+  <text class="lbl" x="252" y="126" fill="#c00">BF12</text>
+  <text class="lbl" x="250" y="136" fill="#c00">4 &#215; M5</text>
+
+  <!-- tongue dimensions. The band above the tongue (x > 242.5, y < 94) is outside
+       the part, so the length dimension and the step label both live there. -->
+  <line x1="242.5" y1="74" x2="302.5" y2="74" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="266" y="70">60</text>
+  <line x1="277" y1="82" x2="302.5" y2="82" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="272" y="92">25.5 to the end</text>
+  <line x1="310" y1="94" x2="310" y2="154" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="314" y="126">60</text>
+
+  <!-- overall, and the two BF12 rows -->
+  <line x1="259" y1="162" x2="277" y2="162" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="264" y="172">18</text>
+  <line x1="0" y1="184" x2="302.5" y2="184" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="132" y="194">302.5 overall</text>
+
+  <text class="q" x="0" y="212" fill="#b06000">amber = parts on other sheets</text>
+  <text class="q" x="0" y="224" fill="#0a6">green = the X beam extrusions</text>
+  <text class="q" x="0" y="240" fill="#555">reference outlines are drawn INSET 0.6 so</text>
+  <text class="q" x="0" y="252" fill="#555">butting parts show as two lines, not one</text>
+  <text class="q" x="0" y="272" fill="#c00">THE TONGUE IS 60 &#215; 60, and G1&#8211;G4 do NOT move with it.</text>
+  <text class="q" x="0" y="284" fill="#c00">Their X is set by the beam end plus the interposer, so a longer</text>
+  <text class="q" x="0" y="296" fill="#c00">tongue buys edge distance and nothing else.</text>
+  <text class="q" x="0" y="314" fill="#c00">&#9888; T_INTERPOSER is still nominal &#8212; caliper the 3/8&quot; stock; both rows follow it.</text>
 </svg>
-<figcaption>Tongue end only, at 2.6&times;, and the tongue is <b>50</b> not 40. <b>Everything below X 242.5 is Sheet 2a unchanged</b> and is
-not repeated here. The tongue's 60 mm width is the beam's footprint off the back edge, so the
-extension sits entirely over the upper extrusion's end. <b>This sheet is one plate only</b> &mdash;
-the left-hand plate stops at X 242.5, which is the single thing that makes the pair
-non-interchangeable at assembly.</figcaption>
+<figcaption>
+<b>Key:</b>
+<span style="color:#111">&#9679; solid black</span> = this plate &middot;
+<span style="color:#0a6">&#9679; green</span> = the X beam extrusions &middot;
+<span style="color:#c0c">&#9679; magenta</span> = the four HGH20 bearing blocks &middot;
+<span style="color:#b06000">&#9679; amber</span> = parts on other sheets (shelf bar, doubler) and
+the M5 holes that fix them &middot;
+<span style="color:#c00">&#9679; red</span> = the tongue's BF12 pattern and the sole-bracket row &middot;
+<span style="color:#06c">&#9679; blue</span> = dimensions.
+<b>Dashed = not this plate</b>, or on its far face.
+<br><br>
+Outer face, seen from outboard. <b>The whole plate is drawn, tongue included</b>, so this sheet can
+be cut and drilled without a second one beside it. The beam's back face is <b>flush with the plate's
+back edge</b> as of 2026-10-02. <b>Redrawn 2026-10-04</b> &mdash; it used to show the tongue end
+alone at 2.6&times; and send the reader to 2a for everything below X 242.5.</figcaption>
 </figure>
 
+<h3>Hole schedule &mdash; machining coordinates, the complete plate</h3>
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 292.5</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>G1, G2</td><td><b>BF12</b> face-mount, first row</td><td>2</td><td class="n"><b>259.0</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>includes the interposer</b><sup class="f">2.13</sup></td></tr>
-<tr><td>G3, G4</td><td><b>BF12</b> face-mount, second row</td><td>2</td><td class="n"><b>277.0</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>15.5 to the tongue edge</b><sup class="f">2.13</sup></td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 302.5</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">122.5</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
+<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">197.5, 227.5</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>transfer punch</b><sup class="f">2.3</sup></td></tr>
+<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">86.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">106.7</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>61.5, 93.5, 151.5, 183.5</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
+<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">25</td><td class="n">32, 62, 92, 122</td><td class="d">5</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler carries the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
+<tr><td>B1&ndash;B4</td><td><b>Sole bracket</b> &mdash; into the X 0 end edge of the <b>DOUBLER only</b></td><td>4</td><td class="n">from X 0, <b>20 deep MAX</b></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &#248;5 doubler bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>the END PLATE's row is NOT drilled here</b> &mdash; transferred at home<sup class="f">2.7</sup></td></tr>
+<tr><td><b>G1, G2</b></td><td><b>BF12</b> face-mount on the tongue, first row</td><td>2</td><td class="n"><b>259.0</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>includes the interposer</b><sup class="f">2.13</sup></td></tr>
+<tr><td><b>G3, G4</b></td><td><b>BF12</b> face-mount on the tongue, second row</td><td>2</td><td class="n"><b>277.0</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>25.5 to the tongue's end</b><sup class="f">2.13</sup></td></tr>
 </table>
+
+<div class="warn">
+<b>The Y of the BF12 rows is forced.</b> BF12's 46 mm column spacing centred in the tongue's 60
+gives <b>7 and 53</b> &mdash; the same two columns Sheet 7 uses, and the same 7 / 53 measured on the
+cast stepper frame. The X is forced too: <b>249.5 and 267.5</b> put BF12 7 and 25 past the beam end,
+and the X stepper frame sits on the same 3/8" interposer the Y ends use, so this end lifts and BF12
+goes with it &mdash; <b>+ 9.525 = 259.0 and 277.0</b>.<sup class="f">2.13</sup>
+</div>
+
 <h3 style="margin-top:7mm">Sheet 2c &mdash; the shelf bar (quantity 2)
 <span style="font-weight:400;font-size:10pt">&mdash; mates with this plate, drill together</span></h3>
 <div class="stock">
@@ -1505,11 +1625,11 @@ is a bought 12" rather than the beam's own 120.</figcaption>
 <p><b>2.6</b> &mdash; <b>Machined separately, aligned by a common WCS.</b> The doubler is <i>not</i> clamped to the plate and drilled through &mdash; each part is machined on its own and the <b>shared origin</b> is what makes the two D rows line up. Hold the doubler <b>the short way</b>: X along its 50, Y along its 154, origin on the plate's bottom end and back edge, and its coordinates are then literally the same numbers 2a carries. These bolts run along X through the plate, in shear. The doubler is 154 &times; 50 - not 60, which overlapped the lower bearing block row by 4 mm once the block's 44 width was known.</p>
 <p><b>2.7</b> &mdash; <b>One root row is machined, the other is transferred.</b> The <b>doubler's</b> four root holes are drilled and tapped as part of machining the doubler &mdash; Sheet 2d's R1&ndash;R4, the only edge holes that need the mill. The <b>end plate's</b> four are never set up at all: bolt the doubler to the plate, bolt the sole bracket up into the doubler through that first row, and the bracket's second row is then four <b>empty</b> holes sitting on the end plate's end face. Drill through them. A hole you transfer needs no coordinate and fits better than one you compute.<br><b>20 deep max</b>: a &oslash;5 doubler bolt at X 25 spans 22.5 to 27.5, so a 20 mm hole clears its wall by 2.5.</p>
 <p><b>2.8</b> &mdash; <b>M8 &times; 35, not &times; 40.</b> These break out onto the face the <b>lower Y bearing block row</b> seats against, and a protruding bolt there would hold a block off its mounting face - the one surface on this plate that must be flat. Through 25.4 of shelf bar into 12.7 of plate, an M8 &times; 35 gives ~9.6 mm of engagement and stops short; an M8 &times; 40 protrudes ~1.6 mm. Blind-tapping used to make that impossible by construction; with a through hole the <b>bolt length is the safeguard</b>.</p>
-<p><b>2.9</b> &mdash; <b>The two plates are no longer interchangeable.</b> Everything below the top edge is one drawing - outline, block holes, encoder bore, shelf, sole plate and doubler all common. Only the right-hand plate carries the BF12 tongue, which is a 50 mm extension above the 60 mm square that covers the upper extrusion's end, with the same 4 &times; M5 pattern the Y end plates use.</p>
+<p><b>2.9</b> &mdash; <b>The two plates are no longer interchangeable.</b> Everything below the top edge is one drawing - outline, block holes, encoder bore, shelf, sole plate and doubler all common. Only the right-hand plate carries the BF12 tongue, which is a 60 &times; 60 extension over the upper extrusion's end, with the same 4 &times; M5 pattern the Y end plates use.</p>
 <p><b>2.10</b> &mdash; <b>60 long, and the change deleted a hazard.</b> The bar was 76.2 to span "the beam's 60 mm depth plus the back plate". With the beam flush, its back face <b>is</b> the plate's back edge, so the joining plate now sits entirely behind the plate in air. The old sheet warned that the joining plate's bottom edge had to be flush, never proud, or the gantry would sit on a plate edge in line contact. <b>That risk existed only because the bar reached under it.</b> Ending at Y 0 removes the failure mode by construction.</p>
 <p><b>2.11</b> &mdash; <b>&#9888; Check the counterbore diameter before cutting to exactly 60.</b> V1 at Y 15 leaves 15 mm to the bar's end, which is only ~7.5 mm of wall outside a &oslash;15 counterbore. If it reads tight on the real counterbore, 65 costs nothing and still stops short of the joining plate.</p>
 <p><b>2.12</b> &mdash; <b>Separated in Z, not in Y, and that is the better axis.</b> Both sit at Y 30 because the vertical T-nut bolts hold Y 15 and Y 45 and two M8 need ~12 mm between centres - so Y 30 is the only free station. Stacking them 20 mm apart in Z resists the bar pitching nose-down, which is the load that matters.</p>
-<p><b>2.13</b> &mdash; <b>The tongue's X carries the interposer, and that is why it is 50.</b> 249.5 and 267.5 put BF12 7 and 25 past the beam end &mdash; Sheet 7's own offsets before <i>it</i> took the interposer. The <b>interposer is 3 off: Y1, Y2 and the X stepper end</b>, so this screw has the same arrangement. The sign works out the same on both sheets for opposite physical reasons: the Y stepper frames hang <i>below</i> their beam and the interposer drops them further, while this tongue sits <i>above</i> its beam and the interposer lifts it &mdash; on each sheet's own frame, an addition. So <b>259.0 and 277.0</b>. At the original 40 the far row then had <b>5.5</b> to the tongue's edge, which is not enough beside an M5, so <b>the tongue went to 50</b> and has 15.5. Both rows derive from T_INTERPOSER, which is <b>still nominal</b> &mdash; caliper the 3/8&quot; stock and they follow it.</p>
+<p><b>2.13</b> &mdash; <b>The tongue's X carries the interposer.</b> 249.5 and 267.5 put BF12 7 and 25 past the beam end &mdash; Sheet 7's own offsets before <i>it</i> took the interposer. The <b>interposer is 3 off: Y1, Y2 and the X stepper end</b>, so this screw has the same arrangement. The sign works out the same on both sheets for opposite physical reasons: the Y stepper frames hang <i>below</i> their beam and the interposer drops them further, while this tongue sits <i>above</i> its beam and the interposer lifts it &mdash; on each sheet's own frame, an addition. So <b>259.0 and 277.0</b>. At the original 40 the far row then had <b>5.5</b> to the tongue's end, which is not enough beside an M5, so <b>the tongue went to 50</b> and then to <b>60</b> on 2026-10-04, where it has <b>25.5</b>. <b>The rows never moved for any of that</b> - the tongue's length follows them, not the other way round. Both rows derive from T_INTERPOSER, which is <b>still nominal</b> &mdash; caliper the 3/8&quot; stock and they follow it.</p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3</b></p>
 <p><b>3.1</b> &mdash; <b>Both rails are tapped M5, fixed.</b> Seven holes each at a 60 pitch, 20 from each end of the 400 mm rail - and 407 &minus; 400 leaves the 7 mm of designed overrun at the far end. Measured 10 mm of ball-free block, so 3 mm spare.</p>
 <p><b>3.2</b> &mdash; <b>These cannot be adjusted later.</b> Their heads are buried under the Z rails once assembled. <b>Tram is set here, once, at build.</b></p>

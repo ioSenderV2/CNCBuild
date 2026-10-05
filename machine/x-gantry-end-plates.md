@@ -7,7 +7,7 @@
 ---
 
 **Two plates, 1/2" aluminium, 154 mm wide**, stopping at the **top of the X beam** - identical
-below that edge, and the right-hand one carrying a 40 mm **BF12 tongue** above it. They carry the X
+below that edge, and the right-hand one carrying a **60 × 60 BF12 tongue** above it. They carry the X
 beam and ride the Y rails on four bearing blocks.
 
 ## 🔴 Reworked 2026-10-02 - the screw and stepper left this plate
@@ -59,7 +59,7 @@ T-nut bolts. **That leaves THREE interposers, all identical casting bars.**
 ### 🔴 The BF12 tongue, and it is on ONE plate only
 
 ✅ **Given 2026-10-02.** The plate's top 60 mm already covers the end of the upper extrusion and
-carries four M8 into its corner bores. **The tongue is a 50 mm extension rising off the top edge
+carries four M8 into its corner bores. **The tongue is a 60 × 60 extension rising off the top edge
 above that 60 mm square**, 60 mm wide, carrying **4 × M5 tapped** for BF12 - **the same pattern used
 on the Y end plates / Z risers**, so it is a pattern this repo already has rather than a new one.
 
@@ -599,7 +599,7 @@ one drawing and still common. **What is no longer common is the tongue**, which 
 plate has.
 
 **It is one drawing with a right-hand variant, not two drawings.** Cut both outlines together and
-leave the 40 mm tongue on one; nothing below the top edge moves. ⚠️ **But they are no longer
+leave the 60 × 60 tongue on one; nothing below the top edge moves. ⚠️ **But they are no longer
 interchangeable at assembly**, which is the thing the old wording promised and would now mislead.
 
 **Reworked 2026-10-02.** With the screw support and the stepper both off this plate, the thing that

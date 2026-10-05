@@ -749,9 +749,9 @@ note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050; centred 
 
 [[dim]]
 sym = "TONGUE_H"
-value = 50
+value = 60
 provenance = "derived"
-note = "BF12 tongue height above the 2a outline, raised from 40 on 2026-10-03 when the interposer pushed the far BF12 row out to 277. At 40 it left 5.5 to the edge, which is not enough beside an M5; at 50 it leaves 15.5."
+note = "BF12 tongue length past the 2a outline. 40 -> 50 on 2026-10-03 when the interposer pushed the far BF12 row out to 277 and left only 5.5 to the end, which is not enough beside an M5; 50 -> 60 on 2026-10-04, HIS CALL, making the tongue 60 x 60 - the 60 ACROSS was already the beam's footprint, so the two now agree. The edge margin goes 5.5 -> 15.5 -> 25.5. THE BF12 ROWS NEVER MOVED FOR ANY OF IT: their X is TONGUE_BF12_ROW1/ROW2, set by the beam end plus the interposer, so this symbol follows them and never the reverse. Changing it re-derives TONGUE_TOP and TONGUE_EDGE_MARGIN and nothing else."
 
 [[dim]]
 sym = "TONGUE_TOP"
@@ -777,7 +777,7 @@ note = "Second tongue row, same two columns at Y 7 and 53."
 [[dim]]
 sym = "TONGUE_EDGE_MARGIN"
 expr = "TONGUE_TOP - TONGUE_BF12_ROW2"
-note = "Far BF12 row to the tongue's top edge. Must stay well clear of an M5 - this is why the tongue went from 40 to 50."
+note = "Far BF12 row to the tongue's end. Must stay well clear of an M5 - 5.5 at the original 40 was not, which is what drove the tongue to 50 and then to 60. At 60 this reads 25.5, which is margin rather than a constraint: it is DERIVED from TONGUE_H, so it moves when the tongue does and never sets it."
 # ---------------------------------------------------------------- the torsion box
 
 [[dim]]
