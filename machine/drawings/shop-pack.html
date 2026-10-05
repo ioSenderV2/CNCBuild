@@ -55,11 +55,11 @@
   li { margin: 1mm 0; }
   code { background: #f2f2f2; padding: 0 2px; }
 
-  /* The operable header every sheet opens with: stock, quantity, datum. */
+  /* The operable header every sheet opens with: stock, quantity, WCS origin. */
   .stock { border: 1px solid #111; background: #f6f6f6; padding: 2mm 3mm; margin: 0 0 3mm;
            font-size: 10.5pt; }
   .stock b { font-size: 11.5pt; }
-  .datum { font-weight: 700; color: #c00; }
+  .wcs { font-weight: 700; color: #c00; }
 
   /* Hole schedules: the diameter and depth columns are the point of the sheet. */
   table.sched td.d, table.sched th.d { text-align: right; font-weight: 700;
@@ -100,8 +100,8 @@ design.</b>
 </p>
 
 <p style="margin:0 0 .6rem; border:1.5px solid #555; background:#f6f6f6; padding:.5rem .7rem">
-<b>DATUM CONVENTION &mdash; EVERY SHEET, unless that sheet says otherwise.</b><br>
-<b>WCS ORIGIN: the FRONT-LEFT-TOP corner of the part as clamped.</b>
+<b>WCS ORIGIN &mdash; THE SAME ON EVERY SHEET, unless that sheet says otherwise.</b><br>
+<b>It is the FRONT-LEFT-TOP corner of the part as clamped.</b>
 <b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and negative
 into the material. All coordinates positive in X and Y, <b>absolute, never chained</b>.<br>
 Each sheet states only what X&nbsp;0 and Y&nbsp;0 mean <i>on that part</i>. <b>Three sheets override
@@ -173,7 +173,7 @@ until it is filled in.
 <div class="info">
 <b>Standing rules for every plate in this pack</b>
 <ul>
-<li><b>One datum per plate, never chain dimensions.</b> Each drawing names a datum corner; every hole
+<li><b>One WCS origin per plate, never chain dimensions.</b> Each drawing names its origin corner; every hole
 is an absolute X/Y from it. On a manual mill with a DRO the operator types absolute coordinates, and
 chained dimensions accumulate error.</li>
 <li><b>Take the mating hardware, not just the plates</b> — bearing blocks, ball nut housing, BK12,
@@ -703,7 +703,7 @@ Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><b
 when an end plate is taken out of a 200 mm wide piece.<br>
 Bolts to the end plate's <b>OUTER face at the bottom</b>, the same face the bearing blocks are on,
 giving a <b>25.4 mm seating</b> across the stacked end faces for the sole bracket of Sheet 5.<br>
-<span class="datum">CLAMP IT THE SHORT WAY, ON 2a&apos;S WCS.</span> <b>X runs along this block&apos;s 45</b>
+<span class="wcs">CLAMP IT THE SHORT WAY, ON 2a&apos;S WCS.</span> <b>X runs along this block&apos;s 45</b>
 and <b>Y along its 154</b>, origin on the same corner 2a uses &mdash; the plate&apos;s bottom end and back
 edge. Held that way <b>every coordinate below is the same number 2a carries</b>, which is the whole
 point: the two parts are machined <b>separately</b> and the shared origin is what makes them
@@ -1176,7 +1176,7 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
 <tr><td><b>Sole bracket</b></td><td>2</td><td>trapezoid <b>154 &rarr; 46</b> over <b>98.7</b> overall, <b>1/4"</b></td><td>6061</td><td>Two angled cuts plus 4 &times; M5 clearance</td></tr>
 </table>
 
-<h3>Hole schedule &mdash; datum: <b>the root's left corner</b>, X outboard from the plate's inner face</h3>
+<h3>Hole schedule &mdash; WCS origin: <b>the root's left corner</b>, X outboard from the plate's inner face</h3>
 <p style="font-size:9pt;margin:0 0 1.5mm;color:#7a5200"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>An amber row is a dimension that does not exist anywhere in the repo.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
 <table>
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th>Note</th></tr>
@@ -1217,7 +1217,7 @@ sits ~17&nbsp;mm inboard of the beam's inside face.
 <div class="stock">
 <b>150 long &times; 60 wide &times; 3/8" 6061</b><br>
 <b>One drawing, quantity 3</b> &mdash; Y1, Y2 and the X stepper end are the same part.<br>
-<span class="datum">X 0 IS THE BAR'S OUTBOARD END</span> &mdash; the end that protrudes
+<span class="wcs">X 0 IS THE BAR'S OUTBOARD END</span> &mdash; the end that protrudes
 through the front plate's window. Y across the 60.<sup class="f">6.1</sup>
 </div>
 
@@ -1284,7 +1284,7 @@ before drilling the third one.</b><sup class="f">6.4</sup></p>
 <div class="stock">
 <b>1211.75 long &times; 12" (304.8) wide &times; 1/4" hot-rolled A36 steel</b><br>
 <b>One plate carries both Y beams</b> and is also the rear shear panel.<br>
-<span class="datum">WCS ORIGIN: the lower-left corner with the plate clamped <b>UPSIDE DOWN</b>.</span><br>
+<span class="wcs">WCS ORIGIN: the lower-left corner with the plate clamped <b>UPSIDE DOWN</b>.</span><br>
 &#128308; <b>Clamp it inverted.</b> The plate's <b>installed TOP edge is Y&nbsp;0</b> and Y runs to
 <b>304.8</b> at the installed bottom edge. Every number below is in that frame, which is why both
 beams sit on Y&nbsp;0 to 120 instead of hanging off a far edge.<sup class="f">7.6</sup><br>
@@ -1388,7 +1388,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <text class="q" x="268" y="392" fill="#c00">takes 2 &#8212; this is the face-mounted count.</text>
 </svg>
 <figcaption>Main view to scale along both axes, <b>plate clamped upside down</b> so its installed top
-edge is the Y&nbsp;0 datum and both beams sit on it. At plate scale the two stations are a few
+edge is Y&nbsp;0 and both beams sit on it. At plate scale the two stations are a few
 millimetres wide, so the <b>Y1 station is drawn again at 1.2&times;</b> below; <b>the Y2 station is
 its mirror</b> about X&nbsp;605.875, so every Y2 coordinate is 1211.75&nbsp;&minus;&nbsp;X. The schedule
 carries all sixteen A-holes explicitly rather than making anyone do that subtraction at the
@@ -1406,7 +1406,7 @@ mill.</figcaption>
 <tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>80.875, 230.875, 380.875, 530.875,<br>680.875, 830.875, 980.875, 1130.875</b></td><td class="n"><b>274.8</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1211.75 plate</b> &mdash; 80.875 clear at each end<sup class="f">7.3</sup><br><b>Drill guide for the plywood tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup></td></tr>
 </table>
 
-<p style="font-size:9.5pt;margin:0 0 3mm">&#128308; <b>Whether the Laguna can hold the height datum across
+<p style="font-size:9.5pt;margin:0 0 3mm">&#128308; <b>Whether the Laguna can hold the height reference across
 1211.75 mm is still open</b>, and it gates this plate more than any hole on it.<sup class="f">7.5</sup></p>
 </div>
 
@@ -1417,7 +1417,7 @@ mill.</figcaption>
 <b>One part made three times</b> &mdash; X, Y1 and Y2 carry an identical strip. It ties the two
 stacked extrusions across the seam on the FRONT face, and it is also the <b>magnetic encoder tape
 surface</b>.<sup class="f">8.1</sup><br>
-<span class="datum">NOT ON THE TRIP.</span> Every hole is &oslash;9 clearance into a T-slot, where the
+<span class="wcs">NOT ON THE TRIP.</span> Every hole is &oslash;9 clearance into a T-slot, where the
 T-nut moves to meet the bolt &mdash; <b>home drill press work</b>, not mill work.<br>
 <b>The 45 is not a round number, it is a fit.</b> It is BLOCK_ROW_GAP, the conservative keep-out
 between the two bearing block rows, so the strip is exactly the width known to pass between
@@ -1481,7 +1481,7 @@ rebating.</figcaption>
 <b>Y beams only</b> &mdash; one per beam, outboard. It is <b>also the Y back joining plate</b>, grown
 rather than added alongside, which is why it carries the beam's four T-slot rows as well as the
 bolt row into the torsion box.<sup class="f">9.1</sup><br>
-<span class="datum">NOT ON THE TRIP.</span> Every hole is &oslash;9 clearance on M8, into T-slots or
+<span class="wcs">NOT ON THE TRIP.</span> Every hole is &oslash;9 clearance on M8, into T-slots or
 into plywood &mdash; <b>home drill press work</b>.<br>
 &#128308; <b>Y IS MEASURED FROM THE BOTTOM EDGE</b>, not the top. The bottom edge is the reference
 because it bears on the box's top skin, so every row stays correct even if the plate comes out
@@ -1552,7 +1552,7 @@ short and nothing moves</b> &mdash; it loses material at the top, where there is
 <b>X gantry only.</b> The Y beams do not need one &mdash; Sheet 9's full-height plate <i>is</i> their
 back joining plate. The X beam moves and has nothing to bolt down to, so it keeps the plain
 120.<sup class="f">10.1</sup><br>
-<span class="datum">NOT ON THE TRIP.</span> &Oslash;9 clearance into T-slots, home drill press.<br>
+<span class="wcs">NOT ON THE TRIP.</span> &Oslash;9 clearance into T-slots, home drill press.<br>
 <b>120 is the full section height</b>, so the plate reaches all four back slots &mdash; width beats
 thickness on the back face, and this is the widest the section offers.
 </div>
@@ -1596,11 +1596,11 @@ is a bought 12" rather than the beam's own 120.</figcaption>
 <p><b>1.1</b> &mdash; <b>The stock is 10 mm, measured.</b> Not 3/8" (9.525) and not 1/2". The two plates nest out of one 302 mm square only because top + base + kerf closes: 100 + 200 + 2 = 302. Lay both patterns out from the <b>factory</b> vertical and top edges, so the bandsaw kerf never enters the pattern - it only shortens one piece's taper by about a millimetre. Laid out from the cut edge instead it becomes a ~1.5 mm offset built into a pattern that has to meet formed threads.</p>
 <p><b>1.2</b> &mdash; <b>&oslash;9, not 8.2, and punched rather than measured.</b> The bolts land in <i>extruded</i> corner bores, whose positions carry looser tolerance than anything drilled in plate, so a close fit is impossible in principle. The joint works by <b>friction, not bearing</b> - about 36 kN across eight bolts against loads of one to two kN - so the bolts never touch the hole walls. The nominal pattern is 15 and 45 in from each face; a stacked pair gives 15 / 45 / 75 / 105.</p>
 <p><b>1.3</b> &mdash; <b>The window is two stacked clearances, not one opening.</b> The upper 9.525 is the <b>interposer bar</b> passing through; the lower 40.49 is for the <b>casting, 27 tall</b>. The 13.49 surplus is the room the casting is <b>rotated</b> into - it does not drop straight in. The rotation is <b>fore and aft</b>, about an axis across the window, so the clearance it consumes is HEIGHT. The width, 60.5 over a 60 mm casting, is a slip fit and nothing more: if it binds, the remedy is height.<br><b>Assembly:</b> from behind the fin, casting upside down, stepper-bracket top into the window first, then rotate CCW until the casting lands flat on the bar.<br>The outboard edge is <b>aligned on the beam face at X 20</b> rather than centred on the beam, which puts all the clearance inboard where the taper has already provided room, and makes the window edge flush with the 1/8" side plate's inner face.</p>
-<p><b>1.4</b> &mdash; <b>These two are L-bracket holes, and the coordinates did not move when they became them.</b> They used to pass through the fin into a front tongue on the torsion box. <b>There is no front tongue any more</b> &mdash; the box runs 140 past the fins instead, the fin sits on its top skin, and <b>two L-brackets behind each fin</b> tie it down. These are the holes their vertical legs bolt to, so the part changed and the pattern did not. <b>T2's perpendicular edge distance is 19.1</b>, checked against the physical MDF template, and <b>the 145 mm couple with T1 is still the moment restraint</b> &mdash; which is the reason to keep the pattern rather than re-pick it for a bracket. X 30 also still holds the one datum shared with the side plates' and the back plate's rows.</p>
+<p><b>1.4</b> &mdash; <b>These two are L-bracket holes, and the coordinates did not move when they became them.</b> They used to pass through the fin into a front tongue on the torsion box. <b>There is no front tongue any more</b> &mdash; the box runs 140 past the fins instead, the fin sits on its top skin, and <b>two L-brackets behind each fin</b> tie it down. These are the holes their vertical legs bolt to, so the part changed and the pattern did not. <b>T2's perpendicular edge distance is 19.1</b>, checked against the physical MDF template, and <b>the 145 mm couple with T1 is still the moment restraint</b> &mdash; which is the reason to keep the pattern rather than re-pick it for a bracket. X 30 also still holds the one bolt height shared with the side plates' and the back plate's rows.</p>
 <p><b>1.5</b> &mdash; <b>The taper is gated on spindle clearance.</b> The spindle is confirmed to pass this plate's plane; the risk is a corner-of-envelope case - low Z, minimum Y, X near the beam. Four numbers decide it and three are unmeasured. <b>One bandsaw pass, and it cannot be put back.</b></p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 2</b></p>
 <p><b>2.3</b> &mdash; <b>The plate's tightest edge distance.</b> The beam's back face is flush with the plate's back edge, so the 15 is anchored and the 45 follows from the corner bores being symmetric in a 60 &times; 60. <b>15 mm of edge leaves 10.5 mm of material beside a &oslash;9</b> - do not let it drift.</p>
-<p><b>2.4</b> &mdash; <b>Bore it first, but it no longer sets anything.</b> Its height is the Y beam's <b>seam</b> centreline, which the vertical chain puts at <b>122.525</b> - the plate's bottom end is 62.525 below the beam, and the beam is 120 - so the 122.5 drawn here is that number rounded, not an independent choice. It sits in the gap between the block rows, which is <b>46</b> by geometry. That gap is a <b>KEEP-OUT, not a layout datum</b>: the magnetic linear encoder tape runs down it and this &oslash;35 sensor rides over the tape, both centred on the seam. The <b>measured 45 is kept as the conservative figure</b> for it &mdash; under-stating a keep-out is safe &mdash; and at 45 there is <b>5 each side of the sensor, so no room for a flange or clamp ring</b>. Y 77 is half of 154, so it is centred on the plate as well as on the block pattern.</p>
+<p><b>2.4</b> &mdash; <b>Bore it first, but it no longer sets anything.</b> Its height is the Y beam's <b>seam</b> centreline, which the vertical chain puts at <b>122.525</b> - the plate's bottom end is 62.525 below the beam, and the beam is 120 - so the 122.5 drawn here is that number rounded, not an independent choice. It sits in the gap between the block rows, which is <b>46</b> by geometry. That gap is a <b>KEEP-OUT, not something to lay holes out from</b>: the magnetic linear encoder tape runs down it and this &oslash;35 sensor rides over the tape, both centred on the seam. The <b>measured 45 is kept as the conservative figure</b> for it &mdash; under-stating a keep-out is safe &mdash; and at 45 there is <b>5 each side of the sensor, so no room for a flange or clamp ring</b>. Y 77 is half of 154, so it is centred on the plate as well as on the block pattern.</p>
 <p><b>2.5</b> &mdash; <b>Where the sixteen come from.</b> They used to be laid out off the <b>measured 45 mm gap</b> between the block rows, which put their centres 44.5 either side of X 122.5. <b>That was the wrong driver.</b> The blocks sit on the rails, and both rails go in the beam's <b>outside T-slot</b> - 15 in from each outer face of a 120 beam, so <b>90 apart</b>, centres at the seam &plusmn;45 = X <b>77.5 and 167.5</b>. The gap that follows is 46, not 45; the 45 was a measurement off the machine and is only conservative, never wrong, for the clearance it is used for in 2.4. <b>The correction moved all sixteen holes 0.5</b>, which an &oslash;5.2 clearance on an M5 cannot absorb, so it had to be made. The 32 &times; 36 bolt pattern is the kit's own, measured. The butted pair reads 154.18 against a 154 plate - that 0.09 of overhang at each end is <b>end cap</b>, which carries nothing, so the pattern is centred on the plate and the Y values are round. <b>Measure the X/Y kit, not the Z kit</b>: they are different suppliers and have only happened to agree so far.</p>
 <p><b>2.6</b> &mdash; <b>Machined separately, aligned by a common WCS.</b> The doubler is <i>not</i> clamped to the plate and drilled through &mdash; each part is machined on its own and the <b>shared origin</b> is what makes the two D rows line up. Hold the doubler <b>the short way</b>: X along its 45, Y along its 154, origin on the plate's bottom end and back edge, and its coordinates are then literally the same numbers 2a carries. These bolts run along X through the plate, in shear. The doubler is 154 &times; 45. Its height has an upper bound of 55.5 - the lower bearing block row's bottom edge, on this same face - and 45 sits well inside it, which is also the width of the offcut the pair comes out of. 60 overlapped that row by 4.5.</p>
 <p><b>2.7</b> &mdash; <b>One root row is machined, the other is transferred.</b> The <b>doubler's</b> four root holes are drilled and tapped as part of machining the doubler &mdash; Sheet 2d's R1&ndash;R4, the only edge holes that need the mill. The <b>end plate's</b> four are never set up at all: bolt the doubler to the plate, bolt the sole bracket up into the doubler through that first row, and the bracket's second row is then four <b>empty</b> holes sitting on the end plate's end face. Drill through them. A hole you transfer needs no coordinate and fits better than one you compute.<br><b>20 deep max</b>: a &oslash;5 doubler bolt at X 25 spans 22.5 to 27.5, so a 20 mm hole clears its wall by 2.5.</p>
@@ -1647,7 +1647,7 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <p><b>6.3</b> &mdash; <b>No counterbores anywhere.</b> Row 138 leaves 12 mm to the bar's inboard end, against the ~9 mm half-head of an M8 flange bolt. Row 82 clears the casting's last tapped row at 71 by 13.6 in 2D - 11 along against the 8 lateral offset.</p>
 <p><b>6.4</b> &mdash; <b>X inherits these rows from Y geometry.</b> 82 / 110 / 138 came out of the Y end - the 30 mm protrusion past the fin, the window, the casting's own tapped rows. On X the bar sits on <i>top</i> of the beam and overhangs its end. <b>Check all three land over beam before drilling the third.</b></p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 7</b></p>
-<p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1085.4</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken <b>flush with the side plates' outer faces is 1211.75</b>. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1205.4 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is a datum now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1211.75 before clamping or add the excess to every right-hand X.</p>
+<p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1085.4</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken <b>flush with the side plates' outer faces is 1211.75</b>. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1205.4 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is the WCS origin now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1211.75 before clamping or add the excess to every right-hand X.</p>
 <p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint</b>, transfer-punched from a real extrusion offcut. 16 bolts, 8 per beam.</p>
 <p><b>7.3</b> &mdash; <b>Y 274.8, which IS the side plates' Y 30.</b> This plate is clamped upside down, so its Y is measured from the <i>installed top</i> edge, and 274.8 puts the row <b>exactly 30 up from the installed bottom edge</b> &mdash; the same single bolt line the side plates and the front fin use. &#128308; <b>Y 270 is the wrong number here</b>, and it put the row 34.8 up and 4.8 off everything else. This note used to call that difference <i>deliberate</i>; <b>it was not</b>. 270 was a round number given when the sheet was first reframed upside down, 34.8 was only 304.8 minus it, and nothing had ever derived either. The 4.8 has been added to close the gap. <b>The pitch no longer differs</b>: 150 here over the 1211.75, and the side plates run 150 from 50 as well. Eight at 150 span 1050, so centring them on the plate leaves <b>80.875 clear at each end</b>. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
 <p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>

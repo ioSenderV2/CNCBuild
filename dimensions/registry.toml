@@ -776,7 +776,7 @@ note = "BF12 tongue length past the 2a outline - 57.475, DERIVED from the stock 
 sym = "TONGUE_BF12_ROW1_BARE"
 value = 249.5
 provenance = "derived"
-note = "First tongue BF12 row BEFORE the interposer: 7 above the TOP OF THE X BEAM at 242.5, matching Sheet 7's own pre-interposer offset. The datum is the beam top, not the plate end - XEP_TOP_ABOVE_BEAM makes those the same point on this plate, which is easy to read as a coincidence and is not one."
+note = "First tongue BF12 row BEFORE the interposer: 7 above the TOP OF THE X BEAM at 242.5, matching Sheet 7's own pre-interposer offset. The reference is the beam top, not the plate end - XEP_TOP_ABOVE_BEAM makes those the same point on this plate, which is easy to read as a coincidence and is not one."
 
 [[dim]]
 sym = "TONGUE_BF12_ROW1"
