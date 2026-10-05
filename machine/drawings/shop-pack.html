@@ -606,6 +606,104 @@ this same face in the same X band and lands at <b>X 55.5</b> &mdash; the lower r
 the block's measured 44 &mdash; so 50 clears by 5.5 and a 60 would have overlapped by 4.5.
 </div>
 
+<figure>
+<svg viewBox="-58 -36 450 338" width="185mm" xmlns="http://www.w3.org/2000/svg">
+  <text class="ttl" x="0" y="-18">FACE &#8212; on 2a&#8217;s WCS</text>
+  <text class="ttl" x="190" y="-18">END FACE &#8212; looking along X</text>
+  <text class="q" x="0" y="-6">X runs across this block&#8217;s 50 &#183; Y along its 154 &#183; origin is 2a&#8217;s, the plate&#8217;s bottom end and back edge</text>
+
+  <!-- the end plate continuing past the block, amber: it runs on to X 242.5 -->
+  <line x1="50" y1="0" x2="74" y2="0" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="50" y1="154" x2="74" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="74" y1="0" x2="74" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="2 3"/>
+  <text class="q" x="80" y="12">end plate (2a),</text>
+  <text class="q" x="80" y="22">on to X 242.5</text>
+
+  <!-- the block -->
+  <rect x="0" y="0" width="50" height="154" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+
+  <!-- R1-R4 first, so the D circles sit on top of their dashes -->
+  <g stroke="#c00" stroke-width="0.9" stroke-dasharray="2 2">
+    <line x1="0" y1="122" x2="20" y2="122"/>
+    <line x1="0" y1="92" x2="20" y2="92"/>
+    <line x1="0" y1="62" x2="20" y2="62"/>
+    <line x1="0" y1="32" x2="20" y2="32"/>
+  </g>
+
+  <!-- D1-D4 through, one column at X 25, on 2a's own Y stations -->
+  <g fill="#fff" stroke="#111" stroke-width="0.9">
+    <circle cx="25" cy="122" r="2.5"/>
+    <circle cx="25" cy="92" r="2.5"/>
+    <circle cx="25" cy="62" r="2.5"/>
+    <circle cx="25" cy="32" r="2.5"/>
+  </g>
+  <g class="lbl">
+    <text x="4" y="117">D1</text><text x="27" y="125">Y 32</text>
+    <text x="4" y="87">D2</text><text x="27" y="95">Y 62</text>
+    <text x="4" y="57">D3</text><text x="27" y="65">Y 92</text>
+    <text x="4" y="27">D4</text><text x="27" y="35">Y 122</text>
+  </g>
+
+  <!-- the single D column -->
+  <line x1="25" y1="154" x2="25" y2="0" stroke="#06c" stroke-width="0.6" stroke-dasharray="4 3"/>
+  <line x1="0" y1="164" x2="25" y2="164" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="5" y="173">X 25</text>
+  <line x1="0" y1="180" x2="50" y2="180" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="20" y="189">50</text>
+  <line x1="-20" y1="0" x2="-20" y2="154" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-48" y="79">154</text>
+  <circle cx="0" cy="154" r="3.4" fill="#c00"/>
+  <text class="dim" x="-40" y="167" fill="#c00">WCS 0,0</text>
+
+  <!-- the Y stations carried across, so the two views can be checked against each other -->
+  <g stroke="#999" stroke-width="0.5" stroke-dasharray="1 3">
+    <line x1="74" y1="122" x2="188" y2="122"/>
+    <line x1="74" y1="92" x2="188" y2="92"/>
+    <line x1="74" y1="62" x2="188" y2="62"/>
+    <line x1="74" y1="32" x2="188" y2="32"/>
+  </g>
+
+  <g transform="translate(190,0)">
+    <rect x="0" y="0" width="12.7" height="154" fill="#eef3ea" stroke="#111" stroke-width="1.4"/>
+    <g fill="#fff" stroke="#c00" stroke-width="0.9">
+      <circle cx="6.35" cy="122" r="2.1"/>
+      <circle cx="6.35" cy="92" r="2.1"/>
+      <circle cx="6.35" cy="62" r="2.1"/>
+      <circle cx="6.35" cy="32" r="2.1"/>
+    </g>
+    <g class="lbl">
+      <text x="18" y="125">R1 &#183; Y 32</text>
+      <text x="18" y="95">R2 &#183; Y 62</text>
+      <text x="18" y="65">R3 &#183; Y 92</text>
+      <text x="18" y="35">R4 &#183; Y 122</text>
+    </g>
+    <line x1="0" y1="164" x2="6.35" y2="164" stroke="#06c" stroke-width="0.7"/>
+    <text class="dim" x="-6" y="173">6.35</text>
+    <line x1="0" y1="180" x2="12.7" y2="180" stroke="#06c" stroke-width="0.7"/>
+    <text class="dim" x="-4" y="189">12.7</text>
+  </g>
+
+  <text class="q" x="0" y="216" fill="#c00">red = R1&#8211;R4, which enter the X 0 face shown at the left, 20 deep MAX</text>
+  <text class="q" x="0" y="228" fill="#c00">&#8212; the only row on this part that needs the mill</text>
+  <text class="q" x="0" y="240">amber = the end plate, drawn on 2a</text>
+  <text class="q" x="0" y="256">They are &#248;4.2 centred in the 12.7, tapped M5 at home. On Sheet 5&#8217;s frame the same row reads</text>
+  <text class="q" x="0" y="268">X 19.05 &#8212; measured across the stacked 25.4, not a second decision.</text>
+  <text class="q" x="0" y="284">&#9888; the lower Y bearing block row&#8217;s bottom edge lands at X 55.5 on this same face, so the 50</text>
+  <text class="q" x="0" y="296">clears it by 5.5. A 60 would have overlapped by 4.5.</text>
+</svg>
+<figcaption><b>The four Y stations are the point of this drawing, and they are not this part&#8217;s
+numbers &#8212; they are 2a&#8217;s.</b> D1&ndash;D4 at <b>Y 32, 62, 92, 122</b> are the same four values the
+end plate carries in its own schedule, and R1&ndash;R4 into the end face sit on the same four again, so
+one spread serves all three rows across 2a, 2d and Sheet&nbsp;5. <b>Nothing is clamped together at the
+mill</b> &mdash; the parts are machined separately and it is the shared WCS that makes them agree,
+which is why the block is clamped the short way on 2a&#8217;s origin rather than on its own long edge.
+<b>Held that way, every number above is a number already on Sheet 2a.</b><br><br>
+The grey projection lines carry the stations across to the end-face view: if a hole in one view does
+not land on its partner in the other, the error is in this drawing and not in the schedule.
+<b>Added 2026-10-04</b> &mdash; 2d had a hole schedule and no figure, so the agreement it depends on
+was asserted in prose and nowhere visible.</figcaption>
+</figure>
+
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">from the plate's bottom end</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column, in shear with full material around them</td><td>4</td><td class="n"><b>25</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">5</td><td class="op">Through &middot; <b>drilled in this part alone</b>, to the same numbers 2a uses<sup class="f">2.6</sup></td></tr>
