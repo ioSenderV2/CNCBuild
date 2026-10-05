@@ -48,7 +48,7 @@ asks for.
 
 📌 **Cold-rolled sheet is the tidier product at this thickness, but hot-rolled A36 is acceptable and
 is what was found.** Flatness does not bind here regardless: seven M8 along the bottom edge plus
-the curb channel pull 1/8" steel straight over a metre without argument, and the holes are 9 mm
+the bolted lap against the tongue pull 1/8" steel straight over a metre without argument, and the holes are 9 mm
 clearance into T-slots where the T-nut moves to meet the bolt.
 
 ### Sourcing, found 2026-10-02
@@ -61,8 +61,8 @@ clearance into T-slots where the T-nut moves to meet the bolt.
 
 ⚠️ **"11 gauge" and "1/8" are not the same number** - 11 ga is 0.1196" (3.04 mm) against 0.125"
 (3.175). Harmless for the structure: transformed area goes 9.2 → 8.8 mm equivalent aluminium, still
-on the 3/8" target. **But measure what arrives and record it here**, because the curb channel width
-and the riser-proud check at the front plates both key off this thickness.
+on the 3/8" target. **But measure what arrives and record it here**, because the riser-proud check at the
+front plates keys off this thickness.
 
 📌 **~$4/lb is retail.** A steel service centre is typically around half that; at $164 for the pair
 it is a judgement call whether the errand is worth it. **Mill scale comes off before paint** - and
@@ -78,10 +78,10 @@ coolant. Aluminium is the anode and the extrusion is the part that cannot be rep
 ever run. This is a bigger exposure than the rear plate's two bolt patterns and it is the one
 downside that does not have a number attached.
 
-⚠️ **The curb channel was dimensioned around a 6.35 mm plate** - see "How it lands on the torsion
-box" below, where the plate occupies the outer 6.35 mm of the 19 mm web. At 3.175 mm that channel
-needs resizing or the plate rattles in it. The box is not built, so this is free - but it is another
-item on the decide-before-the-skins list.
+✅ ~~**The channel was dimensioned around a 6.35 mm plate and the plate went to 1/8"**~~
+**Dead - there is no channel**, and this warning outlived by a day the correction that killed it.
+The plate sits flat on the top skin and the tongue laps it from outboard; see "THERE IS NO CHANNEL"
+under "How it lands on the torsion box" below. Nothing to resize and nothing to rattle in.
 
 At 12" it reaches from the beam down to the torsion box on a 12" riser, which is what makes it the
 continuous shear web rather than just a longer gusset. **A 6" plate would have spanned the beam plus
@@ -171,7 +171,10 @@ The box is **19 mm Baltic birch skins top and bottom over a grid of 19 mm strips
 2. **Each outer wall is two 19 mm laminations instead of one.** The inner one is an ordinary 100 mm web
    between the skins. The outer one is **180 mm tall, standing on the bottom skin's top face**, glued
    to the inner web's outer face and to the edge of the top skin. It spans the 100 mm web plus the
-   19 mm top skin and so **stands 60 mm proud** of the top surface as a **curb, outboard of the plate.**
+   19 mm top skin and so **stands 60 mm proud** of the top surface as a **tongue, outboard of the plate.**
+   📌 **It is a tongue, not a curb.** The word "curb" is retired across the repo as of
+   2026-10-04 - it carried the dead implication of a face the plate drops in against, and the plate
+   is bolted through a lap instead.
 
 🔴 **THERE IS NO CHANNEL - corrected 2026-10-03.** An earlier version of this section had the
 top skin stopping short of the tongue's inner face and the plate dropping into the groove between
@@ -215,8 +218,8 @@ seven M8 is orders of magnitude clear, and this joint's real limits are geometri
 |---|---|
 | Fastener | **M8 at 150 mm, first at 50** - seven per beam over the 1000 mm. 🔴 Was eleven at 100 until 2026-10-03; unified with the other bolt-on plates |
 | Height | **Y 30** above the plate's bottom edge - the same row height as the front fin and the back plate |
-| Direction | From **outboard**: washer, curb, plate, **M8 locknut** on the inboard face |
-| Holes | **9 mm clearance** in curb and plate both - see the thermal bullet above |
+| Direction | From **outboard**: washer, **tongue**, plate, **M8 locknut** on the inboard face |
+| Holes | **9 mm clearance** in **tongue** and plate both - see the thermal bullet above |
 | Why not tapped into the plate | M8 into 6.35 mm of aluminium is about **5 threads, 0.8 × D**, where aluminium wants 1.5-2 × D. It would strip before the bolt came near yield and could never be properly preloaded. The inboard face is open air - the beam is up on 12" risers - so a through-bolt costs nothing and was always available |
 
 Glue area is not a constraint: roughly **100 000 mm²** of face-to-face plywood per wall over the box
@@ -227,7 +230,7 @@ depth, plus the top skin's edge.
 Loads **along Y** lie in the plate's plane and were always handled. Loads **across the machine** -
 gantry acceleration, cutting force in X, the two Y beams wanting to spread - are out-of-plane for the
 plate, and the previous answer was that the risers take them edge-on, which means **at the two ends
-only.** The curb now takes that same load in plywood face bearing over the **full 1000 mm.**
+only.** The tongue now takes that same load in plywood face bearing over the **full 1000 mm.**
 
 That is a structural gain rather than a side effect of the assembly method, and it is part of why the
 interface is shaped this way instead of bolted flat to the box's top surface.
@@ -235,13 +238,18 @@ interface is shaped this way instead of bolted flat to the box's top surface.
 ### Two things to get right when cutting
 
 ⚠️ **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
-curbs' inner faces, and a curb is a hard bearing face with no float - the 9 mm holes let the *bolt*
-move, not the bearing. A millimetre or two **too wide** leaves a gap a shim fixes in minutes. **Too
-narrow and the plates will not drop between the curbs at all**, and planing a glued-up skin edge in
-place is a miserable job. The same cost at cut time, wildly different cost if you are out.
+**tongues'** inner faces, and a tongue's inner face is a hard bearing face with no float - the 9 mm
+holes let the *bolt* move, not the bearing. A millimetre or two **too wide** leaves a gap a shim
+fixes in minutes. **Too narrow and the plates will not fit between the tongues at all**, and planing
+a glued-up skin edge in place is a miserable job. The same cost at cut time, wildly different cost
+if you are out.
 
-⚠️ **The plate-to-curb seam is a swarf trap** running the length of the machine - the plate is
-the chip barrier and the curb sits outboard of it. Either seal the top of the seam or leave it
+📌 **"Fit between", not "drop between"** - the plates are not lowered into anything. They stand on
+the top skin and each is lapped from outboard by its tongue. The gap still has to be right, for the
+same reason and to the same tolerance; what is gone is the groove.
+
+⚠️ **The plate-to-tongue seam is a swarf trap** running the length of the machine - the plate is
+the chip barrier and the tongue sits outboard of it. Either seal the top of the seam or leave it
 deliberately open at both ends so it can be blown through.
 
 ### 🔴 The machine is the datum, not the box - so the box is built last

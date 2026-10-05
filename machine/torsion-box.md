@@ -3,7 +3,7 @@
 What the machine stands on. The box carries the two Y beams; the base carries the box on **three
 points** and is also the pallet it travels on.
 
-The box's *interface* to the Y beams - the laminated outer wall, the 60 mm curb and the bolt row -
+The box's *interface* to the Y beams - the laminated outer wall, the 60 mm **tongue** and the bolt row -
 is not here. It lives with the plate it belongs to, in
 [`outboard-plate.md`](outboard-plate.md) under "How it lands on the
 torsion box". Read that first; this file is everything below the top skin.

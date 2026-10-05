@@ -30,11 +30,11 @@
   this file had already corrected elsewhere while this bullet kept the old consequence. The chain:
   **35 − 15 = 20 mm of fin overhanging the Y beam's outboard face**, less the side plate's
   thickness. ✅ Thickness of the fin is not a term, so the 10 mm stock is irrelevant to it.
-  🔴 **The curb decision gets more important, not less** - a curb reaching the riser's station
-  would be held out by **~16.8 mm**, not 1.8, so terminating it short is now clearly required rather
-  than merely tidy.
-- ⚠️ **Terminate the side curb short of the front riser's station** so the curb bears on the side
-  plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
+  🔴 **The side tongue's termination gets more important, not less** - a tongue reaching the
+  riser's station would be held out by **~16.8 mm**, not 1.8, so terminating it short is now clearly
+  required rather than merely tidy.
+- ⚠️ **Terminate the side tongue short of the front riser's station** so the tongue bears on the
+  side plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
 - ✅ ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
   line both check out against the physical template - photo committed. **The front fin's geometry
   is fully settled.**
@@ -51,12 +51,12 @@
   slide-in T-nuts** - on **top** of the X beam, **under** the Y beams. Z has no interposer and lands
   straight on the 1/2" X carriage plate. The face is therefore the top slot face on X and the bottom
   slot face on Y, which was the standing expectation; what was missing was the plate between.
-- ✅ ~~**The curb channel width**~~ **Dead 2026-10-03 - there is no channel.** It had been
+- ✅ ~~**The channel width between the side tongues**~~ **Dead 2026-10-03 - there is no channel.** It had been
   dimensioned around 6.35 for a 1/4" plate and the plate went to 1/8", leaving a groove 3 mm wider
   than the thing it located. The arrangement changed instead: the plates sit **flat on the box's top
   skin** and the tongues lap them from **outboard**, a plain bolted lap with nothing to size.
 - ⚠️ **The delivered thickness of the 1/8" sheet.** The listing says both 1/8" and 11 gauge, which
-  differ by 0.135 mm. Harmless structurally, but the curb channel and the riser-proud check key off
+  differ by 0.135 mm. Harmless structurally, but the riser-proud check keys off
   it. **Caliper it on arrival and write the number here.**
 - ✅ ~~**Two assumed terms in the rear plate length chain**~~ **Closed 2026-10-02.** The Y rails are
   on the inside faces facing each other, and X / Y1 / Y2 share one HGR20 kit, so the measured 30 mm

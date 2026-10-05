@@ -63,7 +63,7 @@ FIN_BASE_W,mm,200,[derived]
 FIN_COL_OUTB,mm,35,[derived] Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value.
 FIN_COL_INB,mm,65,[derived] Inboard M8 column. 65.
 FIN_OVERHANG,mm,20,[derived] Fin overhanging the Y beam's outboard face
-FIN_PROUD,mm,16.825,[derived] Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The curb must terminate short of the riser's station.
+FIN_PROUD,mm,16.825,[derived] Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The side TONGUE must terminate short of the riser's station - it would otherwise be held out by this 16.825 rather than seating on the side plate
 WINDOW_W,mm,60.5,"[derived] Clearance window for the cast stepper frame, in each front fin. 60.5 OVER A 60 CASTING - half a millimetre total, a slip fit and deliberately little, because the window's loose axis is its HEIGHT, not its width. Corrected from 62 on 2026-10"
 WINDOW_H,mm,50,[derived] Window height. This is the loose axis - it is what the casting's clearance actually consumes - which is why the width is allowed to be a 0.5 slip fit.
 WINDOW_OUTB,mm,19,[measured] Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7.

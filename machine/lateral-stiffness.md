@@ -120,8 +120,8 @@ aluminium is a materially easier jigsaw or router job than 12.7.
 
 ✅ **The 1.8 mm proud figure is unaffected - confirmed 2026-10-02.** It comes from the **plate width
 and the offset from the vertical edge to the M8 bolt column**, both in-plane. **Thickness is not a
-term**, so the 10 mm stock does not disturb it and the curb condition carried to the box's list
-stands as written.
+term**, so the 10 mm stock does not disturb it and the **tongue** condition carried to the box's
+list stands as written.
 
 🔴 **But the 1.8 itself was stale, and is now corrected to ~16.6 - 2026-10-02.** It had been
 computed off a superseded M8 column at **20**. With the column at **35**, the corner bore 15 in from
@@ -139,7 +139,8 @@ takes about 3.2-3.4 of that back:
 ⚠️ **3.175 is the nominal, and the delivered sheet is still an open item.** A 3.36 was floated
 on 2026-10-02 and **withdrawn as a guess** - it is not a measurement and should not reappear. If the
 sheet arrives as **11 gauge (3.04)** rather than 1/8", the figure becomes **16.96**. Either way it is
-~17 mm, which is what the curb decision turns on; **caliper the sheet on arrival and settle it here.**
+~17 mm, which is what the **side tongue's** termination turns on; **caliper the sheet on arrival and
+settle it here.**
 
 📌 **Second part this session to come back metric where the file assumed imperial** - the Z
 spacers read 16.41 against a nominal 5/8". **Caliper the stock, do not trust the fraction it was
@@ -537,7 +538,7 @@ because every X on Sheet 7 now hangs off it.
 |---|---|---|
 | **Minimum** | **~1205** | Edge distance. The outermost M8 sits 15 mm in from the beam's outer face; a shorter plate eats into that |
 | **Chosen** | **1211.75** | Flush with the outboard plates. Buys 3.175 of edge distance over the minimum and squares the corner |
-| **Maximum** | **~1212** | Past the outboard plates' outer faces the **rear plate** becomes the proud member at the corner - the direction curb bearing cannot take |
+| **Maximum** | **~1212** | Past the outboard plates' outer faces the **rear plate** becomes the proud member at the corner - the direction the tongue's face bearing cannot take |
 
 📌 **"1200 mm" was a round number, not this calculation, and it has been retired** - every file
 and every sheet now carries **1211.75**. The registry derives it: REAR_PLATE_L = Y_BEAM_GAP +

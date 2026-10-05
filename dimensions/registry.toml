@@ -428,7 +428,7 @@ note = "Fin overhanging the Y beam's outboard face"
 [[dim]]
 sym = "FIN_PROUD"
 expr = "FIN_OVERHANG - T_SIDE_PLATE"
-note = "Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The curb must terminate short of the riser's station."
+note = "Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the dead FIN_COL_OUTB of 20. The side TONGUE must terminate short of the riser's station - it would otherwise be held out by this 16.825 rather than seating on the side plate. The word 'curb' is retired as of 2026-10-04: it implied a face the plate drops in against, and there is no channel - the plate stands on the top skin and the tongue laps it from outboard."
 
 [[dim]]
 sym = "WINDOW_W"

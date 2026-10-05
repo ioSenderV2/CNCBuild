@@ -318,17 +318,17 @@ plate — there is no separate 120 mm plate on Y. It runs from the beam down to 
 |---|---|
 | To the beam | T-nuts along its length, **9 mm clearance** holes |
 | To the box | **M8 at 150 mm, first at 50** — seven per beam, at **Y 30** above the plate's bottom edge |
-| Direction | from **outboard**: washer, curb, plate, **M8 locknut** on the inboard face |
-| Holes | **9 mm clearance** in curb and plate both |
+| Direction | from **outboard**: washer, **tongue**, plate, **M8 locknut** on the inboard face |
+| Holes | **9 mm clearance** in **tongue** and plate both |
 | Position | against the beam's outboard face at X 20, ending **1 mm shy of the beam's end** |
 
 ⚠️ **Measure the thickness of what arrives and record it.** Sheet sold as 1/8" is often "11 gauge",
-which is 3.04 mm not 3.175. The curb geometry and the riser-proud check both key off it.
+which is 3.04 mm not 3.175. The riser-proud check keys off it.
 
 **Powder coat or paint both faces.** This plate is the chip barrier and it is the part that gets wet
 with swarf — aluminium is the anode and the extrusion is what cannot be replaced.
 
-⚠️ **The plate-to-curb seam is a swarf trap** running the length of the machine. Either seal the top
+⚠️ **The plate-to-tongue seam is a swarf trap** running the length of the machine. Either seal the top
 of it or leave it deliberately open at both ends so it can be blown through.
 
 ---
@@ -528,8 +528,10 @@ The machine jigs itself for that measurement, so nothing has to be computed:
 not let a nominal or catalogue figure substitute for it.
 
 ⚠️ **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
-curbs' inner faces, and a curb is a hard bearing face with no float. A millimetre or two too wide is
-a shim; **too narrow and the plates will not drop between the curbs at all.**
+**tongues'** inner faces, and a tongue's inner face is a hard bearing face with no float. A
+millimetre or two too wide is a shim; **too narrow and the plates will not fit between the tongues
+at all.** They stand on the top skin and are lapped from outboard - nothing drops into a groove,
+but the gap is still a hard dimension.
 
 ---
 
@@ -540,7 +542,7 @@ a shim; **too narrow and the plates will not drop between the curbs at all.**
 | Skins | **19 mm Baltic birch** top and bottom — **25 mm top over 19 mm bottom** if anything is spent |
 | Grid | **19 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
 | Depth overall | **138 mm** |
-| Outer walls, all four sides | **two 19 mm laminations, 38 mm total** — the outer one 180 mm tall, standing on the bottom skin and **60 mm proud** of the top skin as a curb |
+| Outer walls, all four sides | **two 19 mm laminations, 38 mm total** — the outer one 180 mm tall, standing on the bottom skin and **60 mm proud** of the top skin as a **tongue** |
 | Footprint | **1211.75 across** by **1156.35 front to back** — ⚠️ derived, verify against the standing machine |
 | Fill | **sand in the cavities, LAST, on site** |
 
@@ -647,7 +649,7 @@ it.**
 | Part | How it lands |
 |---|---|
 | **Front fin** | bottom edge **bearing on the top skin**; **two L-brackets behind it** into T1 and T2 |
-| **Outboard plate** | bottom edge bearing on the top skin directly over the wall; outer face **bearing against the curb's inner face**; **seven M8 from outboard** into locknuts |
+| **Outboard plate** | bottom edge bearing on the top skin directly over the wall; outer face **bearing against the side tongue's inner face**; **seven M8 from outboard** into locknuts |
 | **Rear plate** | bottom edge bearing over the full 1211.75 mm; **eight bolts through the back tongue at Y 30** |
 
 **The side tongue runs 1000 mm, starting 1/4" from the box's back edge** — so it spans exactly the
