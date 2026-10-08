@@ -444,7 +444,7 @@ is about what calipers cost on a sawn bar. The new 160 × 50 stock is a differen
 none of those numbers.
 
 ⚠️ **It matters because two things downstream are bounded.** The thickness sets `Z_BOLT_ENGAGE`,
-which has to stay above about 1 × D and below the bearing block's **8 mm** tapped depth, and it sets
+which has to stay above about 1 × D and below the bearing block's **6 mm** thread, and it sets
 `SPINDLE_OFFSET`. **Mic the faced pair before the Z plate is counterbored** - that counterbore is a
 one-way door and the 4 mm web is what absorbs the answer.
 
@@ -511,10 +511,15 @@ pieces come from a single bar.
 the Z plate section above - so the overhanging plate is not carrying the load in the first place.
 **Keep the 6" spacers as built.**
 
-## The bolt is M5 × 25, and the bearing block's tapped depth is what decides it
+## The bolt is M5 × 25, and the bearing block's thread depth is what decides it
 
-🔴 **The block taps only 8 mm.** That is the ceiling on engagement, and everything else about this
-joint is arranged underneath it. A bolt longer than the stack allows does not grip harder — it
+🔴 **The block threads only 6 mm** — the Vevor page's Mxl column reads M5 × 6. That is the ceiling
+on engagement, and everything else about this joint is arranged underneath it.
+
+🔴 **It was read as 8 for most of a day, off the wrong column.** The 8 is **T**, the hole depth —
+and a measured 8.7 agreed with it, which is precisely why the error survived: the number checked
+out against the part, just not against the right feature. **A reading that confirms is not a
+reading that confirms the right thing.** A bolt longer than the stack allows does not grip harder — it
 bottoms in the block, and a bottomed bolt reads as a tight bolt while the plate stays loose. The
 same failure that [`gantry-beam-joint.md`](gantry-beam-joint.md) built `BOLT_REACH_MAX` to prevent on
 the T-nut joints.
@@ -524,8 +529,13 @@ the T-nut joints.
 | Bolt | **M5 × 25** |
 | Plate left under the head | **4 mm** — the web, and it is what gets specified |
 | Spacer after facing | ⚠️ **OPEN** — mic the faced pair |
-| **Engagement** | **5.78 mm, 1.16 × D** |
-| Spare to the tap floor | 1.92 |
+| **Engagement** | **5.8 mm, 1.16 × D** — adequate in steel |
+| **Spare before it jams at the thread's end** | 🔴 **0.2** |
+
+🔴 **So the faced spacer has to land between 15.0 and 16.0.** Thinner and the bolt runs out of
+mating thread and jams — reading tight while the plate stays loose. Thicker and engagement drops
+under 1 × D. **If the faced pair falls outside that window, move the web, not the bolt** — that is
+what the web is for.
 
 🔴 **Specify the counterbore as a WEB, not as a depth.** Engagement is bolt less web less spacer, so
 a web target gives the same engagement whatever the plate turns out to measure — and `T_Z_PLATE` is
@@ -547,7 +557,7 @@ times in one day — each move in the same direction:
 |---|---|
 | the counterbore went deeper | 5 mm to 6, and then to a 4 mm web |
 | the spacer came back thinner | **16.22 on a micrometer** against 16.41 and 16.43 on calipers |
-| the block's tapped depth turned out to be **8** | it had never been looked up |
+| the block's thread turned out to be **6** | read as 8 off the hole-depth column, and a measured 8.7 agreed with the wrong one |
 
 At a 6 mm counterbore on the faced spacer an M5 × 30 wants **8.59** and bottoms by 0.59. M5 × 35 was
 never close. **The lesson is not the bolt length — it is that this joint has four terms and three of

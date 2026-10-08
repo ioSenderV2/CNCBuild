@@ -290,7 +290,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Match the two spacers to each other before anything else](machine/z-carriage.md#match-the-two-spacers-to-each-other-before-anything-else)
 - [Mic the faced pair - this bar has been wrong twice](machine/z-carriage.md#mic-the-faced-pair---this-bar-has-been-wrong-twice)
 - [Do not lengthen the spacers - the question is closed twice over](machine/z-carriage.md#do-not-lengthen-the-spacers---the-question-is-closed-twice-over)
-- [The bolt is M5 × 25, and the bearing block's tapped depth is what decides it](machine/z-carriage.md#the-bolt-is-m5-25-and-the-bearing-blocks-tapped-depth-is-what-decides-it)
+- [The bolt is M5 × 25, and the bearing block's thread depth is what decides it](machine/z-carriage.md#the-bolt-is-m5-25-and-the-bearing-blocks-thread-depth-is-what-decides-it)
   - [M5 × 35 and M5 × 30 were both specified here, and both bottom](machine/z-carriage.md#m5-35-and-m5-30-were-both-specified-here-and-both-bottom)
 - [The skim has two jobs, and only one of them needs a skim](machine/z-carriage.md#the-skim-has-two-jobs-and-only-one-of-them-needs-a-skim)
   - [Assembly order, and it is not optional](machine/z-carriage.md#assembly-order-and-it-is-not-optional)

@@ -1113,9 +1113,9 @@ note = "8.7, the drilled depth of the bearing block's M5 holes - his, 2026-10-08
 
 [[dim]]
 sym = "BLOCK_TAP_DEPTH"
-value = 8
+value = 6
 provenance = "vendor"
-note = "8, the M5 tapped depth in an HGH20 bearing block - his spec sheet, confirmed against a measured BLOCK_HOLE_DEPTH of 8.7. 🔴 A HARD CEILING ON Z BOLT ENGAGEMENT, and it is what killed M5 x 30: at a 6 mm counterbore and the faced spacer that bolt wants 8.59 and bottoms. A bolt that bottoms reads as a tight bolt and never clamps, the same failure BOLT_REACH_MAX exists to prevent on the T-nut joints. ⚠ It happens to equal the nut housing's as-supplied thread depth and the two are NOT one fact - the housing has been tapped past it and the blocks cannot be. ⚠ THE SHEET IT CAME FROM IS NOT COMMITTED; this repo copies datasheets rather than linking them."
+note = "6 - the M5 THREAD depth in an HGH20 block, from the Vevor block page's Mxl column, which reads M5x6. 🔴 IT WAS CARRIED AS 8 AND THAT WAS THE WRONG COLUMN. The 8 is T, the hole depth, and a measured BLOCK_HOLE_DEPTH of 8.7 agreed with it - which is exactly why the error survived: the number checked out against the part, just not against the right feature. ⚠ IT TIGHTENS THE Z BOLT WINDOW HARD. Z_BOLT_ENGAGE is 5.8 against a 6 mm cap, so 0.2 of margin, and the faced spacer must land between 15.0 and 16.0 - thinner and the bolt jams where the thread stops, reading tight while the joint stays loose; thicker and engagement drops under 1 x D. If the faced pair falls outside that, MOVE Z_CBORE_WEB, which is what it is there for. ⚠ The nut housing is a different part with a different answer - see NUT_TAP_DEPTH."
 
 [[dim]]
 sym = "M5_HEAD_D"
@@ -1167,7 +1167,7 @@ note = "M5 x 25 for all sixteen Z carriage bolts. 🔴 IT WAS M5 x 35 AND THEN B
 [[dim]]
 sym = "Z_BOLT_ENGAGE"
 expr = "BOLT_Z_CARRIAGE - Z_CBORE_WEB - SPACER_T"
-note = "5.78 mm into the bearing block, 1.16 x D, with 2.22 to spare against BLOCK_TAP_DEPTH. 🔴 THIS IS THE GUARD ON THE WHOLE STACK and it is bounded at BOTH ends: below about 1 x D the thread strips, above BLOCK_TAP_DEPTH the bolt bottoms and the joint never clamps. If this ever leaves that window the stack has moved - check it after the spacers are faced and after the plate is caliper'ed, because both of its inputs are still provisional."
+note = "5.8 mm into the bearing block, 1.16 x D in STEEL, which is content with about one. 🔴 BUT THE CAP IS 6, NOT 8 - the block threads M5 x 6 - so this sits 0.2 from jamming at the thread's end. A bolt that reaches past the thread reads as tight and never clamps, the same failure BOLT_REACH_MAX exists to prevent on the T-nut joints. ⚠ SPACER_T IS STILL OPEN AND THIS IS BOUNDED BOTH WAYS BY IT: the faced pair must land between 15.0 and 16.0 for a 4 mm web, and if it does not, move the web rather than the bolt. Check this the moment the spacers come off the mill."
 
 # ------------------------------------ Z plate to ball nut, added 2026-10-08 - they were MISSING
 
@@ -1548,16 +1548,28 @@ provenance = "part"
 note = "NOT A LENGTH - a fact parked where the other fastener facts live, because it changes how a joint is assembled. Both the M8 and M5 flange fasteners are FLANGED BUTTON HEADS DRIVEN BY A HEX SOCKET in the centre of the dome, settled 2026-10-03. Two consequences. (1) They need AXIAL access for a hex key and cannot be driven by a spanner, so anywhere a bolt sits in a narrow slot the key reaches it where a wrench never would - the front strip's rows, 45 between the bearing block rows, are the case in point. (2) The whole head is FLANGE_HEAD_H or FLANGE_M5_H proud and no more; nothing sits above the dome."
 
 [[dim]]
+sym = "RAIL_BOLT_HOLE_D"
+value = 6
+provenance = "vendor"
+note = "6, the rail's through-hole - Vevor HGH block page, column d. 🔴 THE 0.5 OF RADIAL FLOAT ON AN M5 IS NOT SLOP, IT IS THE MECHANISM. It is what lets a bolt tilt to catch a T-nut thread that is not perfectly aligned, and what lets the rail be nudged into line. He found an M6 would enter but not wiggle, and concluded the bolts would have to be pre-threaded into their T-nuts and slid in one at a time - 51 assemblies by hand. That difficulty WAS the symptom: a mounting hole with no clearance is the wrong bolt, not a hard job."
+
+[[dim]]
+sym = "BOLT_RAIL"
+value = 16
+provenance = "vendor"
+note = "M5 x 16 for every rail mounting bolt - Vevor HGH block page. Socket head 8.5 across, which seats in the 9.5 counterbore with 0.5 to spare where an M6's 10.0 will not go in at all."
+
+[[dim]]
 sym = "RAIL_CBORE_D"
-value = 10
-provenance = "part"
-note = "Counterbore diameter along an HGR20 rail, for the M5 socket head that bolts it down. His, 2026-10-03."
+value = 9.5
+provenance = "vendor"
+note = "9.5, the counterbore along an HGR20 rail - Vevor HGH block page, column D, and he confirms it on the part. Was carried as 10. 🔴 IT IS WHAT SETTLED THE M5-versus-M6 ARGUMENT: the manual contradicts itself, the block page giving M5 x 16 with D 9.5 / h 8.5 / d 6 and the rail page giving S = M6 x 1P. An M6 SOCKET HEAD IS 10.0 ACROSS AND CANNOT SIT IN A 9.5 COUNTERBORE - he tried it. The block page is right, the rail page is an error, and Sheet 3a's fourteen M5 holes stand as drawn."
 
 [[dim]]
 sym = "RAIL_CBORE_DEPTH"
-value = 10
-provenance = "part"
-note = "Counterbore depth. Half the 20 mm rail section, so the socket head sits well below the running surface."
+value = 8.5
+provenance = "vendor"
+note = "8.5, the counterbore depth - Vevor HGH block page, column h, confirmed on the part. Was carried as 10, which also made the rail look like half its 17.5 height. It is one term in how far a hex driver has to reach to a rail bolt through the Z plate and spacer."
 
 [[dim]]
 sym = "RAIL_CBORE_FIRST"
