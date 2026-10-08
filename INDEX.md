@@ -288,7 +288,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The ball nut sits 1 mm below the spacer blocks - SKIM THE SPACERS, decided 2026-10-02](machine/z-carriage.md#the-ball-nut-sits-1-mm-below-the-spacer-blocks---skim-the-spacers-decided-2026-10-02)
   - [The skim takes 1 mm out of the stack, and three recorded numbers move with it](machine/z-carriage.md#the-skim-takes-1-mm-out-of-the-stack-and-three-recorded-numbers-move-with-it)
 - [Match the two spacers to each other before anything else](machine/z-carriage.md#match-the-two-spacers-to-each-other-before-anything-else)
-- [The spacers are not 5/8" - and the micrometer says 16.22](machine/z-carriage.md#the-spacers-are-not-58---and-the-micrometer-says-1622)
+- [Mic the faced pair - this bar has been wrong twice](machine/z-carriage.md#mic-the-faced-pair---this-bar-has-been-wrong-twice)
 - [Do not lengthen the spacers - the question is closed twice over](machine/z-carriage.md#do-not-lengthen-the-spacers---the-question-is-closed-twice-over)
 - [The bolt is M5 × 25, and the bearing block's tapped depth is what decides it](machine/z-carriage.md#the-bolt-is-m5-25-and-the-bearing-blocks-tapped-depth-is-what-decides-it)
   - [M5 × 35 and M5 × 30 were both specified here, and both bottom](machine/z-carriage.md#m5-35-and-m5-30-were-both-specified-here-and-both-bottom)

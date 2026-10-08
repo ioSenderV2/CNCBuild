@@ -11,7 +11,7 @@
 | Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
 | Rails | **HGR20, 400 mm, down both sides, mounted on the plate** |
 | Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
-| Spacers | **two lengths of 2" × nominally 5/8" aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks. 🔴 **150.5 and 151.6 long, and 16.22 thick** - they are *not* 15.875; see "The spacers are not 5/8"" below |
+| Spacers | **two bars of 5/8" × 50 mm aluminium, 160 long**, sandwiched between the bearing blocks and the Z plate. Each spans that rail's pair of blocks and carries a driver access hole at its centre — Sheet 3b. 🔴 **New stock**: the as-built pair at 150.5 and 151.6 cannot span the spread blocks. **Thickness is whatever the faced pair mics at** — see "Mic the faced pair" below |
 | Bolt count | **16 × M5 × 35** - 8 per spacer, 4 per bearing block |
 | Fixing | **one M5 per hole does the whole stack** - counterbored in the Z plate, through a 6 mm clearance hole in the spacer, into the bearing block's tapped M5 |
 
@@ -328,7 +328,7 @@ the spoilboard". That is a machine measurement, not a design decision.
 | Fixed | Moving |
 |---|---|
 | **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
-| HGR20 rails, mounted on it | spacer blocks, **16.22 mm measured** |
+| HGR20 rails, mounted on it | spacer blocks, **thickness after facing — ⚠️ not yet measured** |
 | 1605 screw, BK12 + motor, BF12 | ball nut housing |
 | | **Z plate** - **154 W × 175 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
 
@@ -378,7 +378,7 @@ removes 1 mm from everything downstream:
 
 | | Before | After the skim |
 |---|---|---|
-| Spacer thickness | **16.22** micrometer | **15.22, both identical** |
+| Spacer thickness | ⚠️ not recorded — it feeds nothing | **whatever the faced pair mics at, both identical** |
 | Z rails + blocks + spacers | **46.6** measured | **45.6** |
 | Carriage plate face to spindle centreline | 109 | **~108** |
 | X beam front face to spindle centreline | ~152 | **~151** |
@@ -413,28 +413,40 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   between the left and right spacer twists the plate and preloads all four bearing blocks against
   each other permanently.
 
-  ✅ **Checked 2026-10-02 and it passes: 16.41 and 16.43 on calipers, 0.02 mm apart** - and only one has since been micrometered, at 16.22, so the pair is equal within caliper noise and the skim faces both in one setup anyway. Both are halves of a
-  single bar, so the thickness is the as-supplied bar dimension on both, untouched; the cut set length
-  only. 0.02 mm is at the scale this bullet warned about and also at the limit of caliper
-  repeatability. ✅ **And it is about to be settled outright:** the ball nut skim faces both spacers in
-  one setup, so they finish identical and this check becomes a before-the-cut record rather than a
-  live concern. The pair sets the geometry.
+  ✅ **The skim settles this outright, and it is the reason the skim exists.** Both bars are faced
+  in **one setup**, so they come off identical by construction rather than by luck — no measurement
+  of the as-supplied pair can do that, and none is needed.
+
+  📌 **It was checked on the as-built pair anyway and passed** — 16.41 and 16.43 on calipers, 0.02
+  apart, which is both the scale this bullet warns about and the limit of caliper repeatability.
+  Those two are being replaced by the new 160 mm bars, so the figures are kept as evidence that a
+  pair cut from one bar does come out matched, not as a dimension.
 - **They locate nothing.** A 6 mm hole on an M5 bolt is 0.5 mm of radial float per side, so the
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
 
-## 🔴 The spacers are not 5/8" - and the micrometer says 16.22
+## 🔴 Mic the faced pair - this bar has been wrong twice
 
-| | Left | Right |
-|---|---|---|
-| **Length** | **150.5** | **151.6** |
-| **Thickness, micrometer** | **16.22** | ⚠️ not yet miked |
-| Thickness, calipers | 16.41 | 16.43 |
+**The registry carries ONE spacer thickness and it is the thickness AFTER facing.** Both bars are
+skimmed in the same setup, so the starting thickness feeds nothing - and recording it only invites
+the wrong number to be used. `SPACER_T` is flagged **OPEN** until the faced pair is miked.
 
-🔴 **The micrometer supersedes the calipers** - 0.2 thinner, which is about what calipers cost on a
-sawn bar. **This bar has now been wrong twice: once as a fraction, once by instrument.** The caliper
-pair is kept because nothing was derived from their 0.02 difference and because it is the evidence
-the two bars match.
+**The evidence for not guessing it**, on the bar that is now being replaced:
+
+| | |
+|---|---|
+| Called **5/8"** in six places | 15.875 |
+| Calipers | 16.41 and 16.43 |
+| **Micrometer** | **16.22** |
+
+**Wrong as a fraction, then wrong by instrument** - 0.54 out on the first, 0.2 on the second, which
+is about what calipers cost on a sawn bar. The new 160 × 50 stock is a different bar and inherits
+none of those numbers.
+
+⚠️ **It matters because two things downstream are bounded.** The thickness sets `Z_BOLT_ENGAGE`,
+which has to stay above about 1 × D and below the bearing block's **8 mm** tapped depth, and it sets
+`SPINDLE_OFFSET`. **Mic the faced pair before the Z plate is counterbored** - that counterbore is a
+one-way door and the 4 mm web is what absorbs the answer.
 
 **5/8" is 15.875.** The bar is **0.35 mm thicker than the nominal this file called it** in six
 places, which is far outside any normal rolling tolerance for 5/8" flat - so it is not a 5/8" bar
@@ -443,7 +455,7 @@ measured numbers.**
 
 ✅ **And the file already contained the right number under the wrong label.** The moment-arm stack
 gives *"Z rails, bearing blocks and spacers = 46.5 mm"*, measured. The rail-and-block stack is 30, so
-the spacer in that measurement was **16.4** - not 15.875, which would have made the stack 45.9. The micrometer's 16.22 and his later 46.6 for the same stack agree to within a tenth of each other.
+the spacer in that measurement was **16.4** - not 15.875, which would have made the stack 45.9. His later 46.6 for the same stack agrees with it to within a tenth.
 **Two independent measurements agree; it is the 5/8" label that was wrong.** Nothing downstream of
 the 46.5 moves, including the **109 mm** offset and the **~187 mm** gantry arm.
 
@@ -492,7 +504,7 @@ tapped holes clashing with the M5 counterbores - two features **in the plate**. 
 bearing on that, and the M5 positions are set by the blocks and cannot move.
 
 📌 **Keeping them also keeps the matched pair.** Both are halves of one 12" bar with the thickness
-as supplied - **16.22 on the micrometer**, see above. A re-cut only preserves that if both new
+as supplied - but the pair is being replaced with new 160 mm bars, so this no longer applies. A re-cut only preserves that if both new
 pieces come from a single bar.
 
 📌 **It is also solving a problem that is not there.** The clamp bolts land inside the spacer run - see
@@ -511,7 +523,7 @@ the T-nut joints.
 |---|---|
 | Bolt | **M5 × 25** |
 | Plate left under the head | **4 mm** — the web, and it is what gets specified |
-| Spacer after facing | **15.22** |
+| Spacer after facing | ⚠️ **OPEN** — mic the faced pair |
 | **Engagement** | **5.78 mm, 1.16 × D** |
 | Spare to the tap floor | 1.92 |
 

@@ -451,18 +451,6 @@ note = "Window's outboard edge from the fin's factory edge. Measured off the MDF
 # ---------------------------------------------------------------- Z carriage
 
 [[dim]]
-sym = "SPACER_T_ASFOUND_L"
-value = 16.22
-provenance = "nominal"
-note = "🔴 16.22 IS THE OLD BAR AND IT DOES NOT TRAVEL TO THE NEW ONE. It was his micrometer on the existing spacer, pre-facing, superseding a caliper pair of 16.41 and 16.43. The new 160 x 50 stock is a different bar and this part has now been wrong twice - once as a fraction (5/8in, 15.875) and once by instrument. So this is a NOMINAL until the new bar is miked, and it sets Z_BOLT_ENGAGE through SPACER_T. ⚠ MIC IT BEFORE THE Z PLATE IS COUNTERBORED - the counterbore is a one-way door and Z_CBORE_WEB is what absorbs the answer."
-
-[[dim]]
-sym = "SPACER_T_ASFOUND_R"
-value = 16.22
-provenance = "nominal"
-note = "Taken as its pair's figure. Both come off one new bar and the skim faces both in one setup, which is what actually makes them equal."
-
-[[dim]]
 sym = "SPACER_SKIM"
 value = 1.0
 provenance = "derived"
@@ -470,8 +458,9 @@ note = "1.0, THE AMOUNT ACTUALLY CUT - and it is deliberately LESS than the 1.3 
 
 [[dim]]
 sym = "SPACER_T"
-expr = "SPACER_T_ASFOUND_L - SPACER_SKIM"
-note = "15.22 after facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once the skim is cut. ⚠ AND THE EXPRESSION IS THE WEAKER OF TWO READINGS. What really sets this number is the ball nut housing's plane, because that is what the spacers are being faced down to - so if the 1 mm step and the 16.22 thickness ever disagree, THE STEP WINS and this expression is the thing to correct. It feeds the Z bolt engagement and the spindle offset, so it is worth getting from the faced part rather than from this sum."
+value = 15.2
+provenance = "OPEN"
+note = "🔴 THE ONLY SPACER THICKNESS THIS FILE CARRIES, and it is the thickness AFTER FACING - his call 2026-10-08. The two as-found symbols are gone: both bars are faced in one setup, so the starting thickness feeds nothing and recording it only invited the wrong number to be used. ⚠ 15.2 IS A PLACEHOLDER so the arithmetic resolves - it is the previous bar's micrometer reading less the skim, and the new 160 x 50 stock is a different bar. MIC THE FACED PAIR AND PUT THAT NUMBER HERE, with provenance measured. It feeds Z_BOLT_ENGAGE, which is bounded at both ends by the block's 8 mm tapped depth, and SPINDLE_OFFSET - so both are provisional until it is real. This part has been wrong twice already, once as a fraction (5/8in, 15.875) and once by instrument (16.41 on calipers against 16.22 on a micrometer), which is why it is not being guessed a third time."
 
 [[dim]]
 sym = "T_Z_PLATE"
