@@ -717,7 +717,7 @@ note = "Y1's outboard EXTRUSION face to Y2's, 1204.38 - the figure lateral-stiff
 sym = "BF12_ROW1_BARE"
 value = 127
 provenance = "derived"
-note = "First BF12 row on the rear plate BEFORE the interposer is accounted for, from the plate's installed TOP edge. His number, 2026-10-03."
+note = "First BF12 row on the rear plate BEFORE the interposer is accounted for, measured DOWN from the plate's installed top edge. His number, 2026-10-03. It is a distance from the top edge rather than a Y in any sheet frame, so re-referencing Sheet 7 to the bottom edge left it untouched - BF12_ROW1_Y does the conversion."
 
 [[dim]]
 sym = "BF12_ROW_PITCH"
@@ -727,13 +727,13 @@ note = "BF12 face-mount row spacing. Columns are 7 and 53 - the same columns mea
 
 [[dim]]
 sym = "BF12_ROW1_Y"
-expr = "BF12_ROW1_BARE + T_INTERPOSER"
-note = "The screw's far end is carried by the cast stepper frame sitting ON the interposer, which LOWERS that end, so BF12 drops by the same amount or the screw is not parallel to the beam. Sheet 7 is clamped inverted, so lower is a LARGER Y. The FULL interposer thickness applies, settled 2026-10-03: the 5 mm standoff no longer exists in the design, so BF12_ROW1_BARE is a bare-metal number with nothing to take back off. This is NOT the same as NUT_FACE_BELOW_BEAM, which subtracts the standoff because its base value was MEASURED with one."
+expr = "REAR_PLATE_W - BF12_ROW1_BARE - T_INTERPOSER"
+note = "165.1. The screw's far end is carried by the cast stepper frame sitting ON the interposer, which LOWERS that end, so BF12 drops by the same amount or the screw is not parallel to the beam. 🔴 SHEET 7 IS NOW REFERENCED TO THE PLATE'S BOTTOM EDGE (his call 2026-10-07), so lower is a SMALLER Y and the interposer SUBTRACTS - it added when the sheet was clamped inverted. The FULL interposer thickness applies, settled 2026-10-03: the 5 mm standoff no longer exists in the design, so BF12_ROW1_BARE is a bare-metal number with nothing to take back off. This is NOT the same as NUT_FACE_BELOW_BEAM, which subtracts the standoff because its base value was MEASURED with one. It now depends on REAR_PLATE_W, which is a BOUGHT size - that is the cost of the bottom-edge frame."
 
 [[dim]]
 sym = "BF12_ROW2_Y"
-expr = "BF12_ROW1_Y + BF12_ROW_PITCH"
-note = "Second BF12 row, same four columns."
+expr = "BF12_ROW1_Y - BF12_ROW_PITCH"
+note = "147.1, the second BF12 row, same four columns. It SUBTRACTS the pitch now rather than adding it: in the bottom-edge frame the second row is the lower of the two and therefore the smaller Y."
 
 [[dim]]
 sym = "XBOX_PITCH"
@@ -972,12 +972,12 @@ note = "Rear plate, Y1 station, near corner-bore column. 18.175. The far column 
 [[dim]]
 sym = "RP_A_COL_3"
 expr = "Y2_EXT_FACE_X - EXT_W + EXT_BORE_INSET"
-note = "Y2 station, near column. 1163.575."
+note = "Y2 station, near column. 1162.555."
 
 [[dim]]
 sym = "RP_A_COL_4"
 expr = "Y2_EXT_FACE_X - EXT_BORE_INSET"
-note = "Y2 station, far column. 1193.575."
+note = "Y2 station, far column. 1192.555."
 
 [[dim]]
 sym = "RP_F_COL_1"
@@ -992,12 +992,12 @@ note = "Y1 end, outboard column. 56.175."
 [[dim]]
 sym = "RP_F_COL_3"
 expr = "Y2_EXT_FACE_X - BF12_COL_OUTB"
-note = "Y2 end, outboard column. 1155.575."
+note = "Y2 end, outboard column. 1154.555."
 
 [[dim]]
 sym = "RP_F_COL_4"
 expr = "Y2_EXT_FACE_X - BF12_COL_INB"
-note = "Y2 end, inboard column. 1201.575."
+note = "Y2 end, inboard column. 1200.555."
 
 # ---- Sheet 4: the Z plate's sixteen spacer-block holes
 
@@ -1177,9 +1177,29 @@ provenance = "part"
 note = "11 7/8in = 301.625, THE ORDERED SIZE 2026-10-07 - the same bought size as the side plates' SIDE_PLATE_H, and the same as the fin square. Sheet 7 is referenced to the plate's BOTTOM edge, so this is the top edge's Y."
 
 [[dim]]
+sym = "RP_BEAM_ROW_1"
+expr = "REAR_PLATE_W - BEAM_H + EXT_BORE_INSET"
+note = "196.625. Lowest of Sheet 7's four beam-bore rows, A1-A16, measured from the plate's BOTTOM edge. 🔴 THESE FOUR EXIST BECAUSE THE SHEET WAS RE-REFERENCED on 2026-10-07. In the old inverted frame the rows read the extrusion's own 15 / 45 / 75 / 105 with nothing added and were loose numbers on a drawing; from the bottom edge they are large and they DEPEND ON THE BOUGHT PLATE HEIGHT, so they are symbols now and track REAR_PLATE_W rather than being retyped. They are also the rows gated by the open question of whether the Laguna can hold one height reference across 1210.73 mm."
+
+[[dim]]
+sym = "RP_BEAM_ROW_2"
+expr = "RP_BEAM_ROW_1 + SLOT_GRID"
+note = "226.625. The 30 series' module is the bore pitch up a stacked pair, so rows 2-4 follow on SLOT_GRID."
+
+[[dim]]
+sym = "RP_BEAM_ROW_3"
+expr = "RP_BEAM_ROW_1 + (2 * SLOT_GRID)"
+note = "256.625."
+
+[[dim]]
+sym = "RP_BEAM_ROW_4"
+expr = "RP_BEAM_ROW_1 + (3 * SLOT_GRID)"
+note = "286.625, the highest. It sits EXT_BORE_INSET below the beam's top face, which is 0.375 above the plate's own top edge - the fin square's shortfall, arriving here from a different direction."
+
+[[dim]]
 sym = "XBOX_ROW_Y"
-expr = "REAR_PLATE_W - BOX_TONGUE_BOLT_Y"
-note = "Sheet 7's X1-X8 torsion-box row, 271.625 in the inverted frame the plate is clamped in. IT MOVES WITH THE BOUGHT PLATE HEIGHT and the sixteen beam bores do not, which is the whole point of the inverted frame - these eight are drill guides into plywood with nothing pre-existing to meet. It DERIVES now: the plate is 301.625 and the row sits BOX_TONGUE_BOLT_Y = 30 up from the installed bottom edge, the one bolt line shared with the side plates and the front fin. It was a flat 270 until 2026-10-03, given as a round number when Sheet 7 was reframed upside down; that put it 34.8 up, 4.8 off every other plate, and a note had rationalised the gap as deliberate when nobody had decided it."
+expr = "BOX_TONGUE_BOLT_Y"
+note = "Sheet 7's X1-X8 torsion-box row: a flat 30, because the sheet is now referenced to the plate's BOTTOM edge (his call 2026-10-07) and this row has always been 30 up from it. It IS BOX_TONGUE_BOLT_Y - the one bolt line shared with the side plates and the front fin - so the symbol survives only as the name Sheet 7 uses for it. In the old inverted frame it read 271.625 and moved with the bought plate height; now it does not, and the sixteen beam bores do instead. It was a flat 270 until 2026-10-03, given as a round number when Sheet 7 was first reframed upside down; that put it 34.8 up, 4.8 off every other plate, and a note had rationalised the gap as deliberate when nobody had decided it."
 
 [[dim]]
 sym = "RAIL_W"
@@ -1221,7 +1241,7 @@ note = "Window's lower edge, from the fin's BOTTOM edge - Sheet 1's X 132. The c
 sym = "WINDOW_OUTB_DRAWN"
 value = 20
 provenance = "derived"
-note = "Window's outboard edge from the fin's outboard factory edge, AS DRAWN on Sheet 1 (Y 20). \u26a0 WINDOW_OUTB says 19, measured off the MDF template 2026-10-02, and open-items.md closed the strip widths at 19. The two disagree by 1. The 20 is almost certainly right and the 19 stale: at 20 the window's outboard edge lands on X 3.175 and 1208.575 in machine coordinates, which ARE the two Y beams' outer faces - exactly what Sheet 1's own note says it is aligned to. The 3D model uses 20. SETTLE IT before the fins are cut."
+note = "Window's outboard edge from the fin's outboard factory edge, AS DRAWN on Sheet 1 (Y 20). \u26a0 WINDOW_OUTB says 19, measured off the MDF template 2026-10-02, and open-items.md closed the strip widths at 19. The two disagree by 1. The 20 is almost certainly right and the 19 stale: at 20 the window's outboard edge lands on X 3.175 and 1207.555 in machine coordinates, which ARE the two Y beams' outer faces - exactly what Sheet 1's own note says it is aligned to. The 3D model uses 20. SETTLE IT before the fins are cut."
 
 [[dim]]
 sym = "INTERPOSER_L"
