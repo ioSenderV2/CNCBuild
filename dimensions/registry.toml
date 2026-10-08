@@ -1014,9 +1014,9 @@ note = "Z plate long dimension. See z-carriage.md for why it is 175 and why the 
 
 [[dim]]
 sym = "Z_PLATE_W"
-value = 164
+value = 165
 provenance = "derived"
-note = "Z plate width. 164, NOT the 154 it inherited from the X end plate - on 154 the outer M5 counterbore breaks through by 1.5."
+note = "165. Chosen 2026-10-08 so the SIXTEEN C-hole Y coordinates come out whole - 9 / 41 / 124 / 156 instead of 8.5 / 40.5 / 123.5 / 155.5. It had been 164, and 164 was itself NOT the 154 it inherited from the X end plate, because on 154 the outer M5 counterbore broke through by 1.5 - so the extra millimetre lands on exactly the hole that forced the width in the first place and buys 0.5 of edge at each side. ⚠ THE COST IS THE BALL NUT PATTERN. The C-hole columns sit at HALF-millimetre offsets from the plate centre (+/-41.5 and +/-73.5, the rails at +/-57.5 plus the block's +/-16) while the nut pattern sits at WHOLE offsets (+/-20), so with the screw on the plate centreline an odd width makes one set whole and the other half - you cannot have both. Sixteen matched holes beat four, and the nut's four are 5.5 clearance on M5 where half a millimetre is inside their own float."
 
 [[dim]]
 sym = "Z_M5_ROW_OFF_1"
@@ -1031,14 +1031,20 @@ provenance = "measured"
 note = "Third M5 row from the plate's centre, the first on the second block. Same measurement as Z_M5_ROW_OFF_1."
 
 [[dim]]
+sym = "Z_BLOCK_GROUP_SHIFT"
+value = 0.3
+provenance = "derived"
+note = "0.3, and it is a DECISION rather than a rounding error - which is the whole reason it has a name. The butted bearing-block pair is slid 0.3 along the plate so the four C-hole rows come out whole: 28 / 64 / 108 / 144 instead of 28.3 / 64.3 / 108.3 / 144.3. 🔴 NO WHOLE-MILLIMETRE PLATE LENGTH CAN DO THIS. The 0.2 lives in Z_M5_ROW_OFF_1, measured off the real HGH20 kit, and half of a whole number is only ever .0 or .5, so it can never cancel a .2 - every length from 172 to 179 lands on .3 or .8. Where the butted pair sits ALONG the plate is free, so that is the lever. The cost: the group is 0.3 off the plate's centre, so the spindle clamp bolts at +/-50 from the plate centre end up 7.2 inboard of one spacer centreline and 7.8 of the other, against 7.5 both ways. The two spacers are already 150.5 and 151.6, so exact symmetry was never on offer."
+
+[[dim]]
 sym = "Z_M5_X_1"
-expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_1"
-note = "Sheet 4's C-holes, first row in plate coordinates. 28.3. Row 2 is this plus BLOCK_PITCH_Y."
+expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_1 - Z_BLOCK_GROUP_SHIFT"
+note = "Sheet 4's C-holes, first row in plate coordinates - 28, X measured from the plate's INSTALLED BOTTOM. Row 2 is this plus BLOCK_PITCH_Y. It was 28.3 until the block group was slid; see Z_BLOCK_GROUP_SHIFT for why the slide and not a different plate length."
 
 [[dim]]
 sym = "Z_M5_X_3"
-expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_3"
-note = "Third C-hole row, 108.3. Row 4 is this plus BLOCK_PITCH_Y."
+expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_3 - Z_BLOCK_GROUP_SHIFT"
+note = "Third C-hole row, 108. Row 4 is this plus BLOCK_PITCH_Y."
 
 [[dim]]
 sym = "Z_M5_COL_INB"
@@ -1055,12 +1061,40 @@ note = "Outboard M5 column from the plate's centre. This is the one that forced 
 [[dim]]
 sym = "Z_M5_Y_1"
 expr = "(Z_PLATE_W / 2) - Z_M5_COL_OUTB"
-note = "Sheet 4's C-holes, first column in plate coordinates. 8.5. The next is this plus BLOCK_PITCH_X."
+note = "Sheet 4's C-holes, first column in plate coordinates - 9 on the 165 width, and whole only because the width is odd. The next is this plus BLOCK_PITCH_X."
 
 [[dim]]
 sym = "Z_M5_Y_3"
 expr = "(Z_PLATE_W / 2) + Z_M5_COL_INB"
-note = "Third C-hole column, 123.5. The fourth is this plus BLOCK_PITCH_X."
+note = "Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."
+
+# ------------------------------------ Z plate to ball nut, added 2026-10-08 - they were MISSING
+
+[[dim]]
+sym = "T_BF12_BLOCK"
+value = 20
+provenance = "measured"
+note = "20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12, 2026-10-08. Not to be confused with BF12_H, which is 43 and is how far the block stands UP its plate from the seating face. This is the one that sets where the Z ball nut can reach: going down, the nut bottoms on BF12's face."
+
+[[dim]]
+sym = "Z_NUT_X_1"
+expr = "T_BF12_BLOCK + NUT_INSET_Y"
+note = "28. First of the two rows of M5 clearance holes that bolt the Z plate to its ball nut, X from the plate's INSTALLED BOTTOM. 🔴 THESE FOUR HOLES WERE MISSING FROM SHEET 4 ENTIRELY - his catch, 2026-10-08. The plate had sixteen holes to its bearing blocks and none to the nut that drives it. The chain is his: at full down travel the nut bottoms on BF12's face, BF12 is T_BF12_BLOCK thick, so the nut's 40 mm face spans 20 to 60 and the pattern's NUT_INSET_Y of 8 at each end puts the rows at 28 and 52. It self-checks - 8 + 24 + 8 = 40 closes the face, and 28 + NUT_PATTERN_Y = 52 from the other direction. ⚠ Row 1 shares X 28 with C-hole row 1; the nearest pair is 21.5 apart in Y, so they do not foul, but see them on the drawing before the mill."
+
+[[dim]]
+sym = "Z_NUT_X_2"
+expr = "Z_NUT_X_1 + NUT_PATTERN_Y"
+note = "52. The second nut row. NUT_PATTERN_Y is 24 and it is the pattern pitch ACROSS the nut's 40 mm face - on the Z plate that face's short axis runs up the plate, which is why the 24 is the X pitch here and the 40 is the Y span."
+
+[[dim]]
+sym = "Z_NUT_Y_1"
+expr = "(Z_PLATE_W / 2) - (NUT_PATTERN_X / 2)"
+note = "62.5. First nut column, the 40 mm pattern centred across the plate because the nut is centred on the screw and the screw is on the plate's centreline. Half-millimetre, and that is the price of the odd width - see Z_PLATE_W. These are 5.5 clearance on M5, so it is inside their float."
+
+[[dim]]
+sym = "Z_NUT_Y_2"
+expr = "(Z_PLATE_W / 2) + (NUT_PATTERN_X / 2)"
+note = "102.5. Second nut column."
 
 # ---------------------------------------------------- consistency, settled 2026-10-03
 
