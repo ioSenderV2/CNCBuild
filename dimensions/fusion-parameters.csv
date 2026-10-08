@@ -69,7 +69,7 @@ WINDOW_H,mm,50,[derived] Window height. This is the loose axis - it is what the 
 WINDOW_OUTB,mm,19,[measured] Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7.
 SPACER_T_ASFOUND_L,mm,16.22,"[measured] 16.22, HIS MICROMETER 2026-10-08, pre-facing. 🔴 IT SUPERSEDES A CALIPER PAIR OF 16.41 AND 16.43 - 0.2 thinner, which is about what calipers cost on a sawn bar, and the better instrument wins. Not 5/8in (15.875) either; this bar has now bee"
 SPACER_T_ASFOUND_R,mm,16.22,"[measured] Taken as its pair's 16.22. ⚠ ONLY ONE SPACER WAS MICROMETERED. The caliper pair read 16.41 and 16.43, so the two bars are within caliper noise of each other, and the skim faces BOTH IN ONE SETUP - which is what actually makes them equal. I"
-SPACER_SKIM,mm,1,"[measured] The ball nut housing sits this far below the spacers. Both spacers get faced by it, IN ONE SETUP."
+SPACER_SKIM,mm,1,"[derived] 1.0, THE AMOUNT ACTUALLY CUT - and it is deliberately LESS than the 1.3 step it is closing. 🔴 THE SKIM HAS TWO JOBS AND ONLY ONE OF THEM NEEDS A SKIM. Facing both spacers IN ONE SETUP is the only way to make the pair coplanar and flat, and "
 SPACER_T,mm,15.22,"[derived] 15.22 after facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once the skim is cut. ⚠ AND THE EXPRESSION IS THE WEAKER OF TWO READINGS. What really sets this number is the ball nut housing's plane, because that i"
 T_Z_PLATE,mm,12.7,"[nominal] 1/2in 6061. CALIPER IT - the X end plate's half-inch stock measured 12.19, so a nominal 12.7 is not safe on this machine. Whether this plate is the same stock is unestablished."
 CLAMP_BORE_OFFSET,mm,50,[vendor] Clamp mounting face to the 80 bore centre - half of the clamp's 100
@@ -171,6 +171,10 @@ Z_M5_COL_INB,mm,41.5,"[measured] Inboard M5 column from the Z plate's centre. Th
 Z_M5_COL_OUTB,mm,73.5,"[measured] Outboard M5 column from the plate's centre. This is the one that forced the plate to 164: its counterbore is about dia 10, so on a 154 plate it broke through by 1.5."
 Z_M5_Y_1,mm,9,"[derived] Sheet 4's C-holes, first column in plate coordinates - 9 on the 165 width, and whole only because the width is odd. The next is this plus BLOCK_PITCH_X."
 Z_M5_Y_3,mm,124,"[derived] Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."
+SPACER_TOP_Z,mm,46.6,"[measured] 46.6, the spacers' top face above the X carriage plate - his, 2026-10-08. This is the plane the Z plate lands on, set by the rails and the bearing blocks, which are the precision reference in this stack."
+NUT_TOP_Z,mm,45.3,"[measured] 45.3, the Z ball nut's top face above the X carriage plate - his, 2026-10-08. It sits BELOW the spacers, so the Z plate laid on the spacers stands off the nut rather than touching it."
+NUT_STANDOFF_STEP,mm,1.3,"[derived] 1.3, the gap between the Z plate's back face and the ball nut's mounting face once the plate is down on the spacers. 🔴 IT MUST BE CLOSED WITH METAL, NOT BY TIGHTENING. The nut is captive on the screw, so pulling those four M5 across an open"
+NUT_SHIM,mm,0.3,"[derived] 0.3 NOMINAL, and the real one is measured on the assembled stack - feeler-gauge the gap at the nut with the plate already tight on the spacers and blocks, then shim to what you read. Solid shim, steel or brass, which comes in 0.05 steps and"
 BLOCK_TAP_DEPTH,mm,8,"[vendor] 8, the M5 tapped depth in an HGH20 bearing block - HIS SPEC SHEET 2026-10-08. 🔴 THIS IS THE CEILING ON Z BOLT ENGAGEMENT and it is what killed M5 x 30: at a 6 mm counterbore and the faced spacer that bolt wants 8.59 and bottoms by 0.59. A bo"
 M5_HEAD_D,mm,8.48,"[measured] 8.48, the socket head cap diameter on the M5 he is actually using - his calipers 2026-10-08, not the 8.5 nominal. An 8.9 counterbore leaves 0.21 radial clearance on it."
 M5_HEAD_H,mm,5,"[measured] 5, head height on the same bolts. The counterbore has to beat this or the head stands proud."

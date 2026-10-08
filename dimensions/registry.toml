@@ -464,9 +464,9 @@ note = "Taken as its pair's 16.22. ⚠ ONLY ONE SPACER WAS MICROMETERED. The cal
 
 [[dim]]
 sym = "SPACER_SKIM"
-value = 1
-provenance = "measured"
-note = "The ball nut housing sits this far below the spacers. Both spacers get faced by it, IN ONE SETUP."
+value = 1.0
+provenance = "derived"
+note = "1.0, THE AMOUNT ACTUALLY CUT - and it is deliberately LESS than the 1.3 step it is closing. 🔴 THE SKIM HAS TWO JOBS AND ONLY ONE OF THEM NEEDS A SKIM. Facing both spacers IN ONE SETUP is the only way to make the pair coplanar and flat, and that is what this cut is for. Closing the gap to the ball nut is the other job, and a shim does it better - see NUT_SHIM. It used to be 1.0 described as the whole step, which made a one-shot cut on the mill trip carry a number measured to about two tenths."
 
 [[dim]]
 sym = "SPACER_T"
@@ -1067,6 +1067,30 @@ note = "Sheet 4's C-holes, first column in plate coordinates - 9 on the 165 widt
 sym = "Z_M5_Y_3"
 expr = "(Z_PLATE_W / 2) + Z_M5_COL_INB"
 note = "Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."
+
+# ------------------------------------ the Z plate / ball nut standoff, measured 2026-10-08
+
+[[dim]]
+sym = "SPACER_TOP_Z"
+value = 46.6
+provenance = "measured"
+note = "46.6, the spacers' top face above the X carriage plate - his, 2026-10-08. This is the plane the Z plate lands on, set by the rails and the bearing blocks, which are the precision reference in this stack."
+
+[[dim]]
+sym = "NUT_TOP_Z"
+value = 45.3
+provenance = "measured"
+note = "45.3, the Z ball nut's top face above the X carriage plate - his, 2026-10-08. It sits BELOW the spacers, so the Z plate laid on the spacers stands off the nut rather than touching it."
+
+[[dim]]
+sym = "NUT_STANDOFF_STEP"
+expr = "SPACER_TOP_Z - NUT_TOP_Z"
+note = "1.3, the gap between the Z plate's back face and the ball nut's mounting face once the plate is down on the spacers. 🔴 IT MUST BE CLOSED WITH METAL, NOT BY TIGHTENING. The nut is captive on the screw, so pulling those four M5 across an open gap does not draw the plate down - it drags the NUT off the screw axis and holds it there for the whole travel, which is a constant side load. Even 0.3 across the nut's 40 mm bolt span is 0.43 degrees of tilt on a part that wants coplanarity in hundredths. Closed as SPACER_SKIM plus NUT_SHIM. ⚠ It is a difference of two readings against a common reference, so the errors add - call it two tenths, which is already too much to settle with an irreversible cut."
+
+[[dim]]
+sym = "NUT_SHIM"
+expr = "NUT_STANDOFF_STEP - SPACER_SKIM"
+note = "0.3 NOMINAL, and the real one is measured on the assembled stack - feeler-gauge the gap at the nut with the plate already tight on the spacers and blocks, then shim to what you read. Solid shim, steel or brass, which comes in 0.05 steps and so resolves the joint far finer than the step could be measured beforehand. 🔴 THE FOUR M5 CLEARANCE HOLES ALREADY GIVE THE NUT THE FLOAT IT NEEDS - 0.5 radial at Z_HOLE_D - so it self-centres on the screw as it is tightened. The only thing missing was the standoff, and that is all this shim sets: free where it needs to float, rigid where it drives. ⚠ The shim adds to the grip length of those four bolts, so it comes off their engagement into the nut."
 
 # ------------------------------------ the Z carriage bolt stack, settled 2026-10-08
 # Sixteen M5 cross the Z plate, the spacer and thread into the bearing block. Every term below
