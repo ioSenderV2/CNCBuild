@@ -11,7 +11,7 @@ They are split by REGISTER, not by subject, and the split is the whole point:
 
   build-document.html   <- machine/assembly.md      WHAT GETS BUILT. Parts, hardware, what
                                                     bolts to what, in the order it is done.
-  design-record.html    <- the twelve machine/*.md   WHY IT IS THAT SHAPE. The schemes that
+  design-record.html    <- the thirteen machine/*.md WHY IT IS THAT SHAPE. The schemes that
                                                     were killed, the figures that moved.
 
 One document carrying both could not be worked from. A page that says "bolt this here" and
@@ -95,6 +95,7 @@ ORDER = [
     "outboard-plate.md",
     "torsion-box.md",
     "spindle-and-mount.md",
+    "stepper-sizing.md",
     "z-carriage.md",
     "x-gantry-end-plates.md",
     "tramming.md",
@@ -123,7 +124,7 @@ DOCS = {
             "<p><strong>This is the build document. It says what gets built and nothing"
             " else.</strong> The reasoning, the options that were weighed and what any figure"
             " used to be are in the <em>design record</em> &mdash; a separate printout of the"
-            " twelve <code>machine/*.md</code> chapters. <strong>Where this document and a"
+            " thirteen <code>machine/*.md</code> chapters. <strong>Where this document and a"
             " chapter disagree, the chapter wins.</strong></p>"
             "<p><strong>Drilled hole coordinates are not here.</strong> They are on the sheets"
             " in the shop pack, one sheet per part, linked below. This document says which"
@@ -144,14 +145,14 @@ DOCS = {
         "sheets": False,
         "note": (
             "<p><strong>This is the design record, not the build document.</strong> It is the"
-            " twelve <code>machine/*.md</code> files concatenated verbatim, in reading order,"
+            " thirteen <code>machine/*.md</code> files concatenated verbatim, in reading order,"
             " so the reasoning behind every decision can be followed - including the schemes"
             " that were tried and killed, and the figures that moved. <strong>To build from,"
             " use <code>build-document.pdf</code> instead.</strong></p>"
             "<p>Nothing is specified here for the first time and nothing is summarised."
             " <strong>If this document and a <code>.md</code> file disagree, the"
             " <code>.md</code> file wins</strong> and this copy is stale.</p>"
-            "<p>Ten of the twelve chapters were one 2877-line file,"
+            "<p>Ten of the thirteen chapters were one 2877-line file,"
             " <code>end-plates-risers-and-spindle.md</code>, until 2026-10-02. The split was"
             " verbatim; the per-file note recording it is omitted here rather than repeated"
             " ten times.</p>"
@@ -282,7 +283,7 @@ def slugger(prefix: str):
 def rebase(href: str, chapters: dict[str, str]) -> str:
     """Rewrite one href for an HTML file living at the repo root.
 
-    Links between the twelve chapters become internal anchors; everything else is rebased
+    Links between the thirteen chapters become internal anchors; everything else is rebased
     from machine/ to the root so the relative path still points at a real file.
     """
     if href.startswith(("#", "http://", "https://", "mailto:")):

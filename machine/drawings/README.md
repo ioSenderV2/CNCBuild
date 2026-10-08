@@ -82,6 +82,6 @@ undone, and each needs a part or the mill in front of you - see
 2. The mill's model, and whether its DRO is 2-axis or 3-axis
 
 📌 **The merged build document exists now** - `tools\make-pdf.ps1` builds `build-document.pdf`, the
-twelve `machine/*.md` in reading order with every photograph embedded. It links to the sheets here by
+thirteen `machine/*.md` in reading order with every photograph embedded. It links to the sheets here by
 their anchors. It does **not** contain them: the pack is regenerated on its own cycle, and that is
 deliberate.

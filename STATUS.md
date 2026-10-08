@@ -175,7 +175,7 @@ interface, not this file.
 ## [machine/README.md](machine/README.md)  (2)
 
 - 🔴 [L20](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine / Two documents, split by register - read this…*<br>A new decision goes in a chapter, and then into assembly.md if it changes what gets built. Writing the reasoning into assembly.md is the failure this split exists to prevent.
-- 🔴 [L84](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one 1211.75 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
+- 🔴 [L86](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one 1211.75 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
 
 ## [machine/spindle-and-mount.md](machine/spindle-and-mount.md)  (7)
 
@@ -186,6 +186,14 @@ interface, not this file.
 - 🔴 [L104](machine/spindle-and-mount.md#the-offset-from-the-x-beam-to-the-spindle-centreline-109-mm) — *The spindle and its mount / The offset from the X beam to t…*<br>This is the moment arm. It is the number that turns cutting force into gantry deflection, and it was a placeholder in every calculation in this repo until now.
 - ⚠️ [L116](machine/spindle-and-mount.md#the-offset-from-the-x-beam-to-the-spindle-centreline-109-mm) — *The spindle and its mount / The offset from the X beam to t…*<br>That reference is the carriage plate, not the beam. The X carriage plate is itself bolted to the X-axis bearing blocks, so from the X beam's front face add the X rail-and-block stack (30 mm, measured) and the carriage plate (12.7 mm):
 - ⚠️ [L129](machine/spindle-and-mount.md#the-offset-from-the-x-beam-to-the-spindle-centreline-109-mm) — *The spindle and its mount / The offset from the X beam to t…*<br>Still missing: the vertical arm. The 109 mm converts a vertical cutting force into gantry torsion; a vertical offset converts a fore-aft force into the same. That vertical figure is the X beam centreline down to the spindle nose with Z retracted, plus Z travel - not "tool tip", which moves with Z position, tool length and stickout and is not a machine dimension. Even with it, 8020 publish Ix and Iy for 30-6060 but not J, so any torsional number stays an estimate.
+
+## [machine/stepper-sizing.md](machine/stepper-sizing.md)  (5)
+
+- 🔴 [L16](machine/stepper-sizing.md#stepper-sizing-22-nm-on-all-four-axes) — *Stepper sizing — 2.2 N·m on all four axes*<br>The size is not set by force, and the usual intuition is wrong on this machine. A 5 mm lead gives so much mechanical advantage that all three candidates deliver several times the thrust the structure is designed for. What separates them is torque in the 1000–1500 rpm band, and there the smaller motor is the better one.
+- ⚠️ [L35](machine/stepper-sizing.md#the-inputs-and-where-each-came-from) — *Stepper sizing — 2.2 N·m on all four axes / The inputs, and…*<br>The kgf reading is an inference, not a datum. 780 / 1790 are the standard pair for a 1605 and the units column was not captured. If they turn out to be newtons rather than kgf the life calculation below collapses by a factor of 9.6 and the screw becomes a term in the decision instead of a non-term. Worth one glance at the sheet's column header.
+- 🔴 [L83](machine/stepper-sizing.md#nor-is-inertia) — *Stepper sizing — 2.2 N·m on all four axes / Nor is inertia*<br>The screw and the rotor are the inertia; the moving mass is a rounding error. That inverts the usual sizing instinct, which reaches for a bigger motor when the gantry is heavy. Here a bigger motor mostly accelerates its own rotor.
+- ⚠️ [L105](machine/stepper-sizing.md#what-the-constraint-actually-is-whip-then-the-torque-curve) — *Stepper sizing — 2.2 N·m on all four axes / What the constr…*<br>Use the 1510 rpm row as the working figure and treat the other as headroom that may or may not be there.
+- ⚠️ [L169](machine/stepper-sizing.md#open-the-torque-curve-at-48-v) — *Stepper sizing — 2.2 N·m on all four axes / Open — the torq…*<br>Two cross-checks belong with that test and are not yet done:
 
 ## [machine/torsion-box.md](machine/torsion-box.md)  (8)
 
@@ -274,4 +282,4 @@ interface, not this file.
 
 ---
 
-**207 open** across 28 files.
+**212 open** across 29 files.

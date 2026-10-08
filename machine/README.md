@@ -5,14 +5,14 @@ Measured values belong in [`../commissioning/`](../commissioning/).
 
 ## 🔴 Two documents, split by register - read this first
 
-**[`assembly.md`](assembly.md) says what gets built. The twelve chapters say why.** Keep them apart.
+**[`assembly.md`](assembly.md) says what gets built. The thirteen chapters say why.** Keep them apart.
 A page that carries both is arguing with itself while somebody is holding a drill, which is how one
 unusable document came about in the first place.
 
 | | Source | Printout | What belongs in it |
 |---|---|---|---|
 | **The build document** | [`assembly.md`](assembly.md) | `build-document.pdf`, ~18 pages | Parts, hardware, what bolts to what, in the order it is done. Imperative. No reasoning, no options weighed, no figure's history |
-| **The design record** | the twelve chapters below | `design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every ⚠️ and 📌. Reference, never worked from |
+| **The design record** | the thirteen chapters below | `design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every ⚠️ and 📌. Reference, never worked from |
 
 📋 **`tools\make-pdf.ps1`** from the repo root builds both. `-Doc build` or `-Doc record` for one.
 Both are derived and untracked: **if either disagrees with a `.md` file, the `.md` file wins.**
@@ -39,7 +39,7 @@ hangs off them. Several dimensions are still **⚠️ Open** and are marked as s
 They were one 2877-line file, `end-plates-risers-and-spindle.md`, until 2026-10-02. The split is
 verbatim — no decision was reopened in the move — and it is along the seams the prose already had.
 
-📋 **These twelve are the design record**, printed by `tools\make-pdf.ps1` as
+📋 **These thirteen are the design record**, printed by `tools\make-pdf.ps1` as
 `design-record.pdf` — in reading order, with a clickable contents and every photograph embedded
 beside the chapter that cites it. **To carry something to the machine, carry `build-document.pdf`
 instead** — see the two-document note at the top of this file.
@@ -51,6 +51,7 @@ instead** — see the two-document note at the top of this file.
 | [`lateral-stiffness.md`](lateral-stiffness.md) | The lateral fix — tapered front fins per beam, the **one 1211.75 mm steel back plate** replacing both rear risers and the shear panel, and the tongues that back them |
 | [`outboard-plate.md`](outboard-plate.md) | The full-height outboard plate: **1/8" steel**, also the Y back joining plate, how it lands on the torsion box, the galvanic cost, and the encoder tape that runs on the front plate |
 | [`spindle-and-mount.md`](spindle-and-mount.md) | The Ø80 2.2 kW water-cooled spindle, its body dimensions, why not 3 kW, and the 109 mm offset from the X beam to its centreline |
+| [`stepper-sizing.md`](stepper-sizing.md) | **2.2 N·m NEMA 23 on all four axes**, and why neither 1.5 nor 3.2 — thrust is a non-term on a 5 mm lead, the screw and the rotor are the inertia, and the real ceiling is the **measured 930 mm** span's whip at 1510 rpm |
 | [`z-carriage.md`](z-carriage.md) | The 164 × 175 × 1/2" Z plate, the spacer blocks and why they get skimmed, the clamp mount geometry, the travel budget and the top stop |
 | [`x-gantry-end-plates.md`](x-gantry-end-plates.md) | The two X gantry end plates: the vertical stack-up, the 242.5 mm height, the sole plate and doubler block, the four bolts above the Y beam top, and the shelf |
 | [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
@@ -67,6 +68,7 @@ instead** — see the two-document note at the top of this file.
 | Ball screws | **1605**. **Every axis drives through a cast stepper frame** — X, Y1, Y2 and Z — carrying motor face, bearing housing and coupler in one part, which is what retired the M5 standoffs. BF12 stays at each far end. Y ball nuts run **inverted**, on a tongue off the bottom of the carriage plate, so their bolts are reachable at assembly |
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
 | Y steppers | **At the FRONT of the machine** (2026-10-02) — one cast frame carries motor face, bearing housing and coupler |
+| Steppers | **2.2 N·m, NEMA 23, on X, Y1, Y2 and Z** — one type, so one spare covers every axis. Not 3.2: no thrust is needed and a higher-inductance motor in the same frame is worse above ~1200 rpm, which is where the rapids live. See [`stepper-sizing.md`](stepper-sizing.md) |
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |

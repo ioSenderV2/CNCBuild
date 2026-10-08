@@ -9,7 +9,7 @@
     build-document.pdf   machine/assembly.md       HOW TO BUILD IT. Parts, hardware,
                                                    what bolts to what, in order. This is
                                                    the one that goes to the machine.
-    design-record.pdf    the twelve machine/*.md    WHY IT IS THAT SHAPE. The reasoning,
+    design-record.pdf    the thirteen machine/*.md  WHY IT IS THAT SHAPE. The reasoning,
                                                    the options weighed, the figures that
                                                    moved. Reference, not a work document.
 

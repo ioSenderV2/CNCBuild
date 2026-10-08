@@ -4,7 +4,7 @@
 done.
 
 This document states the build and nothing else. It does not carry the reasoning, the options that
-were weighed, or what any figure used to be — that is the design record, the twelve chapters listed
+were weighed, or what any figure used to be — that is the design record, the thirteen chapters listed
 in [`README.md`](README.md), and it is a separate printout. **Where this document and a chapter
 disagree, the chapter wins.**
 
@@ -27,7 +27,7 @@ is the full list.
 | Rails | **HGR20**, one per profile, in the **outside** T-slot — rails 90 mm apart on each beam. **Y rails face each other**, on the beams' inside faces |
 | Ball screws | **1605** on every axis, through a **cast stepper frame** at one end and **BF12** at the other |
 | Screw position | **X on top** of its beam; **both Y underneath** theirs |
-| Steppers | **Y steppers at the FRONT** of the machine |
+| Steppers | **2.2 N·m, NEMA 23 — four, one per axis.** **Y steppers at the FRONT** of the machine |
 | Y beams | Fixed — their end plates bolt to the torsion box. Only X, Y-carriage and Z move |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled**, 5.2 kg, on two 80 mm clamps |
 | Stands on | A sand-filled **torsion box** on **three cedar posts**, on a 2x6 base frame that is also the pallet |
