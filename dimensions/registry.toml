@@ -1188,6 +1188,23 @@ provenance = "measured"
 note = "20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12, 2026-10-08. Not to be confused with BF12_H, which is 43 and is how far the block stands UP its plate from the seating face. This is the one that sets where the Z ball nut can reach: going down, the nut bottoms on BF12's face. ⚠ IT DRIVES NO OTHER DIMENSION - dims.py deps re-derives Z_NUT_X_1 and Z_NUT_X_2 and nothing else, and X and Y get their nut geometry from the end plate chain through SCREW_AXIS_X instead, so do not reach for this symbol on those axes. ⚠ BUT IT IS A TERM IN A BOLT LENGTH, his 2026-10-08: BF12 is face-mounted through its own body, so the 4 x M5 that fix it to the rear plate and to the right X end plate's tongue have to clear this 20 before they reach any thread. Those lengths are not derived in this file yet."
 
 [[dim]]
+sym = "NUT_TAP_DEPTH"
+value = 8
+provenance = "vendor"
+note = "8, the M5 tapped depth in the ball nut. His, 2026-10-08. 🔴 IT IS THE SAME VALUE AS BLOCK_TAP_DEPTH AND IT IS A DIFFERENT PART - do NOT collapse the two the way T_DOUBLER and T_OUTBOARD_PLATE were collapsed. Those were one piece of metal under two names; these are two components that happen to agree, and a vendor changing either one has no bearing on the other. One physical fact, one symbol - which cuts both ways."
+
+[[dim]]
+sym = "BOLT_Z_NUT"
+value = 10
+provenance = "part"
+note = "M5 x 10 for the four bolts into the ball nut - N1-N4. 🔴 IT IS THE ONLY STANDARD LENGTH THAT FITS. M5 x 12 reaches exactly 8.0 if the shim comes out at zero, which is the tap floor with no margin, and x 16 bottoms outright; x 8 leaves 3.0 at a 1 mm shim, under a diameter. Ten holds 5.0 to 6.0 across the whole plausible shim range. ⚠ THEY ARE NOT THE SAME BOLT AS C1-C16, which are M5 x 25 because that path crosses the spacer as well. Two M5 of different lengths on one plate, in holes that look identical from the front - keep them apart at assembly."
+
+[[dim]]
+sym = "Z_NUT_BOLT_ENGAGE"
+expr = "BOLT_Z_NUT - Z_CBORE_WEB - NUT_SHIM"
+note = "5.7 mm into the ball nut, 1.14 x D, with 2.3 to spare against NUT_TAP_DEPTH. Same guard as Z_BOLT_ENGAGE and bounded the same way at both ends - under about 1 x D the thread strips, over the tap depth the bolt bottoms and the nut is never drawn against the plate. ⚠ NUT_SHIM is measured on the assembled stack, so this moves with it: at a zero shim it is 6.0, at a 1 mm shim 5.0. Both are inside the window, which is why M5 x 10 can be ordered before the shim is known."
+
+[[dim]]
 sym = "Z_NUT_X_1"
 expr = "T_BF12_BLOCK + NUT_INSET_Y"
 note = "28. First of the two rows of M5 clearance holes that bolt the Z plate to its ball nut, X from the plate's INSTALLED BOTTOM. 🔴 THESE FOUR HOLES WERE MISSING FROM SHEET 4 ENTIRELY - his catch, 2026-10-08. The plate had sixteen holes to its bearing blocks and none to the nut that drives it. The chain is his: at full down travel the nut bottoms on BF12's face, BF12 is T_BF12_BLOCK thick, so the nut's 40 mm face spans 20 to 60 and the pattern's NUT_INSET_Y of 8 at each end puts the rows at 28 and 52. It self-checks - 8 + 24 + 8 = 40 closes the face, and 28 + NUT_PATTERN_Y = 52 from the other direction. ⚠ Row 1 shares X 28 with C-hole row 1; the nearest pair is 21.5 apart in Y, so they do not foul, but see them on the drawing before the mill."
