@@ -373,7 +373,7 @@ is still loose. That is the failure mode to recognise, because torque is not evi
 ⚠️ **The washer on the Y back is doing real work.** At a nominal 3.175 the bare M8 × 10
 reaches 6.83 - and if the sheet is really the 11-gauge 3.04 it was sourced as, 6.96 against the 7.2
 limit, a margin of 0.24 that is inside caliper noise. The washer moves the head out 1.6, and it
-spreads load on 3 mm steel anyway. **Measure the delivered sheet** (T_OUTBOARD_PLATE is nominal).
+spreads load on 3 mm steel anyway. **Measure the delivered sheet, and put the reading in T_SIDE_PLATE** - that is the symbol the rear plate's length, the box width and Sheet 7's hole columns all hang off. T_OUTBOARD_PLATE is an alias of it and feeds nothing.
 
 📌 **Two lengths, not three** - the front strips and the Y backs share M8 × 10:
 

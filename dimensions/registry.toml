@@ -1400,9 +1400,8 @@ note = "7.2 - the most a bolt may reach past the back face of any plate bolted t
 
 [[dim]]
 sym = "T_OUTBOARD_PLATE"
-value = 3.175
-provenance = "nominal"
-note = "1/8in steel outboard plate, which on Y IS the back joining plate. NOMINAL, NOT MEASURED: the sheet sourced 2026-10-02 is A36 '  11 gauge', which is 0.1196in = 3.04 and not 0.125in = 3.175. MEASURE WHAT ARRIVED before buying its bolts - at 3.04 an M8 x 10 reaches 6.96 against BOLT_REACH_MAX's 7.2, which still clears but only by 0.24, and that is inside caliper noise. The washer in BOLT_BACK_Y_WASHER is what takes the question away."
+expr = "T_SIDE_PLATE"
+note = "ALIAS OF T_SIDE_PLATE, collapsed 2026-10-07 - it is the same piece of steel under two names, the Y outboard plate which on Y IS the back joining plate. It had its own value of 3.175 and fed NOTHING, while T_SIDE_PLATE carried the identical nominal and fed sixteen symbols. 🔴 THE TRAP WAS WHERE THE MEASUREMENT WOULD LAND: the standing instruction to measure the delivered sheet named THIS symbol, so a caliper reading written here would have changed nothing - not the rear plate's length, not the box width, not Sheet 7's hole columns. Put the reading in T_SIDE_PLATE. Same failure as T_DOUBLER the same day: two symbols for one part, only one of them wired up. Kept rather than deleted because the prose refers to it. Its bolt-reach consequence lives in BOLT_BACK_Y and BOLT_REACH_MAX: at an 11-gauge 3.04 an M8 x 10 reaches 6.96 against a 7.2 limit, clearing by 0.24, which is inside caliper noise - and BOLT_BACK_Y_WASHER is what takes the question away."
 
 [[dim]]
 sym = "BOLT_FRONT_STRIP"
