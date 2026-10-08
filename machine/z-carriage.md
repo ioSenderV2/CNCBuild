@@ -11,7 +11,7 @@
 | Plate | **154 mm W × 407 mm H × 1/2"** aluminium |
 | Rails | **HGR20, 400 mm, down both sides, mounted on the plate** |
 | Screw | 1605, with **BK12 and BF12 bolted to the same plate** - so screw and motor are fixed relative to it |
-| Spacers | **two lengths of 2" × nominally 5/8" aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks. 🔴 **Measured 2026-10-02: 150.5 and 151.6 long, 16.41 and 16.43 thick** - they are *not* 15.875; see "The spacers are not 5/8"" below |
+| Spacers | **two lengths of 2" × nominally 5/8" aluminium bar**, cut from one 12" piece, sandwiched between the bearing blocks and the Z plate. Each spans two bearing blocks. 🔴 **150.5 and 151.6 long, and 16.22 thick** - they are *not* 15.875; see "The spacers are not 5/8"" below |
 | Bolt count | **16 × M5 × 35** - 8 per spacer, 4 per bearing block |
 | Fixing | **one M5 per hole does the whole stack** - counterbored in the Z plate, through a 6 mm clearance hole in the spacer, into the bearing block's tapped M5 |
 
@@ -328,7 +328,7 @@ the spoilboard". That is a machine measurement, not a design decision.
 | Fixed | Moving |
 |---|---|
 | **X carriage plate** (the blue one), bolted to the X-axis bearing blocks | Z bearing blocks |
-| HGR20 rails, mounted on it | spacer blocks, **16.41 mm measured** |
+| HGR20 rails, mounted on it | spacer blocks, **16.22 mm measured** |
 | 1605 screw, BK12 + motor, BF12 | ball nut housing |
 | | **Z plate** - **154 W × 175 H × 1/2"** - bolted to both the spacers and the nut housing, carrying the spindle |
 
@@ -378,8 +378,8 @@ removes 1 mm from everything downstream:
 
 | | Before | After the skim |
 |---|---|---|
-| Spacer thickness | 16.41 / 16.43 measured | **~15.4, both identical** |
-| Z rails + blocks + spacers | 46.5 | **~45.5** |
+| Spacer thickness | **16.22** micrometer | **15.22, both identical** |
+| Z rails + blocks + spacers | **46.6** measured | **45.6** |
 | Carriage plate face to spindle centreline | 109 | **~108** |
 | X beam front face to spindle centreline | ~152 | **~151** |
 | X beam neutral axis to spindle centreline | ~187 | **~186** |
@@ -413,7 +413,7 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   between the left and right spacer twists the plate and preloads all four bearing blocks against
   each other permanently.
 
-  ✅ **Checked 2026-10-02, and it passes: 16.41 and 16.43 - 0.02 mm apart.** Both are halves of a
+  ✅ **Checked 2026-10-02 and it passes: 16.41 and 16.43 on calipers, 0.02 mm apart** - and only one has since been micrometered, at 16.22, so the pair is equal within caliper noise and the skim faces both in one setup anyway. Both are halves of a
   single bar, so the thickness is the as-supplied bar dimension on both, untouched; the cut set length
   only. 0.02 mm is at the scale this bullet warned about and also at the limit of caliper
   repeatability. ✅ **And it is about to be settled outright:** the ball nut skim faces both spacers in
@@ -423,27 +423,40 @@ M5 that runs from the Z plate into the bearing block. Two consequences:
   spacer sits wherever it is put. Geometry comes from the blocks and the plate, which is correct -
   just do not expect the spacer to square anything up.
 
-## 🔴 The spacers are not 5/8" - measured 16.41 and 16.43 on 2026-10-02
+## 🔴 The spacers are not 5/8" - and the micrometer says 16.22
 
 | | Left | Right |
 |---|---|---|
 | **Length** | **150.5** | **151.6** |
-| **Thickness** | **16.41** | **16.43** |
+| **Thickness, micrometer** | **16.22** | ⚠️ not yet miked |
+| Thickness, calipers | 16.41 | 16.43 |
 
-**5/8" is 15.875.** The bar is **0.54 mm thicker than the nominal this file called it** in six
+🔴 **The micrometer supersedes the calipers** - 0.2 thinner, which is about what calipers cost on a
+sawn bar. **This bar has now been wrong twice: once as a fraction, once by instrument.** The caliper
+pair is kept because nothing was derived from their 0.02 difference and because it is the evidence
+the two bars match.
+
+**5/8" is 15.875.** The bar is **0.35 mm thicker than the nominal this file called it** in six
 places, which is far outside any normal rolling tolerance for 5/8" flat - so it is not a 5/8" bar
 that came in heavy, it is a different bar. **The nominal is now gone from this file; use the
 measured numbers.**
 
 ✅ **And the file already contained the right number under the wrong label.** The moment-arm stack
 gives *"Z rails, bearing blocks and spacers = 46.5 mm"*, measured. The rail-and-block stack is 30, so
-the spacer in that measurement was **16.4** - not 15.875, which would have made the stack 45.9.
+the spacer in that measurement was **16.4** - not 15.875, which would have made the stack 45.9. The micrometer's 16.22 and his later 46.6 for the same stack agree to within a tenth of each other.
 **Two independent measurements agree; it is the 5/8" label that was wrong.** Nothing downstream of
 the 46.5 moves, including the **109 mm** offset and the **~187 mm** gantry arm.
 
-✅ **The 1 mm ball nut shim is unaffected** - it was measured on the real assembly ("the spacer
-blocks stand 1 mm higher than the ball nut housing"), so it already reflects 16.41 rather than a
-nominal.
+⚠️ **TWO MEASUREMENTS OF THAT STEP DISAGREE BY 0.3, and the older one may be the better.** This
+file recorded **1 mm**, taken directly on the real assembly - *"the spacer blocks stand 1 mm higher
+than the ball nut housing"*. On 2026-10-08 he measured the two heights separately, **46.6** to the
+spacer tops and **45.3** to the nut, which makes the step **1.3**.
+
+**A direct reading of a step beats a difference of two heights**, because the difference carries both
+readings' errors. So 1 mm is not superseded here - it is the reason `SPACER_SKIM` is **1.0** and not
+1.3, and the reason the remainder is left to be shimmed rather than cut. Both numbers are kept, and
+the assembled stack settles it: **feeler-gauge the gap at the nut with the plate tight on the blocks,
+and shim what you read.**
 
 ✅ **Leave the lengths alone - 150.5 and 151.6 both do the job, and the 1.1 mm difference does not
 matter.** The spacers carry no fasteners, locate nothing, and float 0.5 mm radially on their
@@ -479,25 +492,122 @@ tapped holes clashing with the M5 counterbores - two features **in the plate**. 
 bearing on that, and the M5 positions are set by the blocks and cannot move.
 
 📌 **Keeping them also keeps the matched pair.** Both are halves of one 12" bar with the thickness
-as supplied - **measured 16.41 and 16.43**, see above. A re-cut only preserves that if both new
+as supplied - **16.22 on the micrometer**, see above. A re-cut only preserves that if both new
 pieces come from a single bar.
 
 📌 **It is also solving a problem that is not there.** The clamp bolts land inside the spacer run - see
 the Z plate section above - so the overhanging plate is not carrying the load in the first place.
 **Keep the 6" spacers as built.**
 
-## Use M5 × 35, not M5 × 30
+## The bolt is M5 × 25, and the bearing block's tapped depth is what decides it
 
-Through a counterbore in a 12.7 mm plate - leaving about 7.7 mm of material under a 5 mm head - plus
-the spacer is roughly **24.1 mm of grip** at the measured 16.41. An M5 × 30 would leave only about
-**5.9 mm in the bearing block**, 1.2 diameters, with no margin if a counterbore runs deep. An
-M5 × 35 leaves about **10.9 mm**. The blocks have the thread depth for 35 mm.
+🔴 **The block taps only 8 mm.** That is the ceiling on engagement, and everything else about this
+joint is arranged underneath it. A bolt longer than the stack allows does not grip harder — it
+bottoms in the block, and a bottomed bolt reads as a tight bolt while the plate stays loose. The
+same failure that [`gantry-beam-joint.md`](gantry-beam-joint.md) built `BOLT_REACH_MAX` to prevent on
+the T-nut joints.
 
-📌 **This paragraph used to read 23.6 mm of grip and 6.4 mm left in the block, computed off a
-nominal 15.875 spacer.** The real spacer is 16.41, so the margin was half a millimetre thinner than
-stated all along - which does not change the decision, it strengthens it.
+| | |
+|---|---|
+| Bolt | **M5 × 25** |
+| Plate left under the head | **4 mm** — the web, and it is what gets specified |
+| Spacer after facing | **15.22** |
+| **Engagement** | **5.78 mm, 1.16 × D** |
+| Spare to the tap floor | 1.92 |
+
+🔴 **Specify the counterbore as a WEB, not as a depth.** Engagement is bolt less web less spacer, so
+a web target gives the same engagement whatever the plate turns out to measure — and `T_Z_PLATE` is
+still an unmeasured nominal whose half-inch stock came in at **12.19** on the X end plates, a 0.5
+swing larger than the whole engagement budget. Caliper the plate, subtract 4, dial that depth. It is
+the same move as referencing every standing plate from its bottom edge, one layer down: reference the
+term that matters, not the one that is convenient to dial.
+
+`Z_BOLT_ENGAGE` is a **guard with bounds at both ends** — below about 1 × D the thread strips, above
+the block's 8 it bottoms. Both of its inputs are still provisional, so check it again once the
+spacers are faced and the plate is caliper'd.
+
+### 📌 M5 × 35 and M5 × 30 were both specified here, and both bottom
+
+This section used to be headed *"Use M5 × 35, not M5 × 30"*, and the arithmetic behind it moved three
+times in one day — each move in the same direction:
+
+| | |
+|---|---|
+| the counterbore went deeper | 5 mm to 6, and then to a 4 mm web |
+| the spacer came back thinner | **16.22 on a micrometer** against 16.41 and 16.43 on calipers |
+| the block's tapped depth turned out to be **8** | it had never been looked up |
+
+At a 6 mm counterbore on the faced spacer an M5 × 30 wants **8.59** and bottoms by 0.59. M5 × 35 was
+never close. **The lesson is not the bolt length — it is that this joint has four terms and three of
+them were nominals.**
 
 ---
+
+## The skim has two jobs, and only one of them needs a skim
+
+Measured: the spacers' top face stands **46.6** above the X carriage plate, the ball nut's **45.3**.
+So the Z plate laid down on the spacers stands **1.3 off the nut**.
+
+🔴 **That gap closes with metal, not by tightening.** The nut is captive on the screw, so pulling its
+four M5 across an open gap does not draw the plate down — it drags the **nut** off the screw axis and
+holds it there for the whole travel. Even 0.3 across the nut's 40 mm bolt span is **0.43° of tilt** on
+a part that wants coplanarity in hundredths.
+
+So the 1.3 is closed in two parts, by the thing suited to each:
+
+| | |
+|---|---|
+| **Skim 1.0 off both spacers, in one setup** | Only a skim can make the **pair** coplanar and flat, and that is what this cut is for |
+| **Shim the remaining ~0.3 at the nut** | Measured on the assembled stack and closed with solid shim, which comes in 0.05 steps |
+
+⚠️ **The skim is deliberately less than the step.** It had been 1.0 described as the whole 1.3, which
+put a one-shot mill-trip cut in charge of a figure measurable to about two tenths — the step is a
+difference of two readings against a common reference, so the errors add. Two tenths across that bolt
+span is already more than the joint wants.
+
+✅ **The float the nut needs is already in the design.** Those four holes are M5 clearance at 6 mm, so
+**0.5 mm radial**: the nut self-centres on the screw as it is tightened. Only the standoff was
+missing, and the shim is all that sets it. **Free where it needs to float, rigid where it drives.**
+
+### 🔴 Assembly order, and it is not optional
+
+1. **Plate onto the spacers and blocks first, and tighten.** That plane belongs to the rails, which
+   are the precision reference in this stack. Let them win.
+2. **Feeler-gauge the residual gap at the nut**, with the plate already tight.
+3. **Shim to what you read.**
+4. **Bolt the nut up last.** Its four M5 stay loose until step 1 is done.
+
+Tighten the nut first and the least accurate part in the stack has defined the plane.
+
+### ❌ Killed: silicone gaskets at the nut instead of a shim
+
+Considered and rejected 2026-10-08 — leave the 1.3 open and put a compliant gasket around each of the
+four bolts into the nut, so the error is absorbed rather than cut to. **The instinct is right and the
+material is wrong.**
+
+The screw drives vertically and the gasket face is vertical, so **the entire Z drive force lies in the
+plane of the gasket** — it would carry the drive in shear. Four gaskets of silicone come to roughly
+**258 N/mm**:
+
+| | Lost motion |
+|---|---|
+| the Z assembly's own weight, ~9 kg, standing still | **0.34 mm** |
+| a 300 N plunge | **1.16 mm** |
+| 500 N | **1.94 mm** |
+
+**And it is the drive path**, so that is not deflection to design around — it is lost motion between
+screw and carriage that the controller cannot see. The spindle would sag a third of a millimetre
+sitting still and dive a millimetre more entering a cut. Silicone also takes a compression set, so
+the bolt preload carrying some of that shear in friction decays.
+
+📌 **The same scheme at the sixteen spacer bolts is worse still**, for a different reason: it puts
+compliance between the plate and the bearing blocks, which are what hold the plate square to the
+rails. The plate would then be located by the ball nut — the least precise member, held by a screw
+whose job is to push, not to locate. Sixteen washers in compression come to about 3.1 kN/mm, which is
+**0.16 mm at 500 N and 0.32 at 1000** against this machine's deflection figures of 0.022 and 0.0015.
+
+✅ **Where silicone does belong: around the outside of the seam, not in it.** A bead run around the
+spacer-to-plate joint after assembly keeps swarf and coolant out of a blind joint and carries no load.
 
 ## ✅ The clamp mount geometry - settled 2026-09-30
 

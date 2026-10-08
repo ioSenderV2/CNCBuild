@@ -469,13 +469,18 @@ eight of the Z plate's M5 counterbores break out of the edge.
 
 ### Face the spacers before assembly
 
-🔴 **The spacer blocks stand 1 mm higher than the ball nut housing.** Skim **1 mm off the spacers —
-both in the same setup, at the mill**, so they come out identical. **No shim, and not washers** —
-washers bear at four points and tilt the housing, which becomes a side load on the screw.
+🔴 **The spacer blocks stand higher than the ball nut housing — between 1 and 1.3.** Skim **1 mm off
+the spacers, both in the same setup, at the mill**, so they come out identical.
 
-⚠️ **Measure the 1 mm again before cutting** rather than assuming it is exactly 1.00. The cut cannot
-be undone and the spacers are a matched pair. **Take the ball nut housing to the mill** — the 1 mm is
-measured against that part.
+🔴 **Skim 1 mm and no more, even if the step measures 1.3.** The cut cannot be undone. Whatever is
+left over gets closed with a shim at the nut, where it can be measured on the assembled machine
+instead of guessed at the mill.
+
+🔴 **A full-face shim, not washers.** The shim covers the nut housing's whole 40 × 52 mounting face.
+**Washers bear at four points and tilt the housing, which becomes a side load on the screw.**
+
+⚠️ **Measure the step again before cutting**, and **take the ball nut housing to the mill** — the
+step is measured against that part.
 
 🔴 **Re-mic both spacers after facing and write the number into the design record.** Everything
 downstream of the spacer thickness moves with it, including the spindle offset.
@@ -511,8 +516,15 @@ nothing else substitutes the day one is needed.
 **Rails and spacers first, nut housing last.** The rails define the geometry; the nut follows the
 screw rather than being forced into position by its own bolts.
 
-**Leave the nut housing's four bolts finger-tight, run the carriage through full travel, then
-torque them.**
+1. **Bolt the Z plate down onto the spacers and bearing blocks, and torque it.**
+2. **Measure the gap at the nut housing with feeler gauges**, with the plate already tight.
+3. **Cut a full-face shim to what you read** and fit it behind the housing.
+4. **Leave the nut housing's four bolts finger-tight, run the carriage through full travel, then
+   torque them.**
+
+🔴 **Never close that gap by tightening the nut's bolts.** The nut cannot move — it is captive on the
+screw — so tightening across an open gap pulls the nut off the screw axis and holds it there for
+every move the axis makes.
 
 ⚠️ **Open: the Z travel floor.** 246 mm is confirmed available, but where that 246 sits relative to
 the spoilboard has never been set — material thickness plus tool length plus clearance over
