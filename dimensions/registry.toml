@@ -1194,15 +1194,26 @@ provenance = "vendor"
 note = "8, the M5 tapped depth in the ball nut. His, 2026-10-08. 🔴 IT IS THE SAME VALUE AS BLOCK_TAP_DEPTH AND IT IS A DIFFERENT PART - do NOT collapse the two the way T_DOUBLER and T_OUTBOARD_PLATE were collapsed. Those were one piece of metal under two names; these are two components that happen to agree, and a vendor changing either one has no bearing on the other. One physical fact, one symbol - which cuts both ways."
 
 [[dim]]
+sym = "Z_NUT_CBORE_WEB"
+value = 6
+provenance = "derived"
+note = "6, the plate left under the head on N1-N4 - DEEPER than the 4 the C-holes get, and his call 2026-10-08: 🔴 THE 4 mm WEB IS ONLY THE SPACER BOLTS' CONSTRAINT. C1-C16 cross the web AND the 15.2 spacer before they reach the block, so at a 6 web an M5 x 25 would engage 3.8, under a diameter - the 4 is forced there, not chosen. N1-N4 cross only the web and the shim, so they can afford a thicker one, and it buys 2 mm more material under the four heads that sit beneath the lower spindle clamp. ⚠ THE PLATE THEREFORE HAS TWO COUNTERBORE DEPTHS. I had claimed all twenty could share one setting, which was tidier and wrong."
+
+[[dim]]
+sym = "Z_NUT_CBORE_DEPTH"
+expr = "T_Z_PLATE - Z_NUT_CBORE_WEB"
+note = "6.7 on the nominal plate, 6.19 if it is really 12.19. Derived off the web for the same reason Z_CBORE_DEPTH is - caliper the plate, subtract the web, dial that depth."
+
+[[dim]]
 sym = "BOLT_Z_NUT"
-value = 10
+value = 12
 provenance = "part"
-note = "M5 x 10 for the four bolts into the ball nut - N1-N4. 🔴 IT IS THE ONLY STANDARD LENGTH THAT FITS. M5 x 12 reaches exactly 8.0 if the shim comes out at zero, which is the tap floor with no margin, and x 16 bottoms outright; x 8 leaves 3.0 at a 1 mm shim, under a diameter. Ten holds 5.0 to 6.0 across the whole plausible shim range. ⚠ THEY ARE NOT THE SAME BOLT AS C1-C16, which are M5 x 25 because that path crosses the spacer as well. Two M5 of different lengths on one plate, in holes that look identical from the front - keep them apart at assembly."
+note = "M5 x 12 for the four bolts into the ball nut - N1-N4, his call 2026-10-08. On the 6 mm web it engages 5.7, the same as an M5 x 10 would on a 4 mm web, with 2.3 to the nut's 8 mm tap floor. ⚠ NOT THE SAME BOLT AS C1-C16, which are M5 x 25 because that path crosses the spacer as well. Two M5 of different lengths on one plate, into holes that look identical from the front - keep them apart at assembly, and note the counterbores differ too."
 
 [[dim]]
 sym = "Z_NUT_BOLT_ENGAGE"
-expr = "BOLT_Z_NUT - Z_CBORE_WEB - NUT_SHIM"
-note = "5.7 mm into the ball nut, 1.14 x D, with 2.3 to spare against NUT_TAP_DEPTH. Same guard as Z_BOLT_ENGAGE and bounded the same way at both ends - under about 1 x D the thread strips, over the tap depth the bolt bottoms and the nut is never drawn against the plate. ⚠ NUT_SHIM is measured on the assembled stack, so this moves with it: at a zero shim it is 6.0, at a 1 mm shim 5.0. Both are inside the window, which is why M5 x 10 can be ordered before the shim is known."
+expr = "BOLT_Z_NUT - Z_NUT_CBORE_WEB - NUT_SHIM"
+note = "5.7 mm into the ball nut, 1.14 x D, with 2.3 to spare against NUT_TAP_DEPTH. Bounded at both ends like Z_BOLT_ENGAGE - under about 1 x D the thread strips, over the tap depth the bolt bottoms and the nut is never drawn against the plate. ⚠ NUT_SHIM is measured on the assembled stack, so this moves with it: 6.0 at a zero shim, 5.0 at a 1 mm shim. Both inside the window, which is why M5 x 12 can be ordered before the shim is known."
 
 [[dim]]
 sym = "Z_NUT_X_1"
