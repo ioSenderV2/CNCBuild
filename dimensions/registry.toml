@@ -1074,7 +1074,7 @@ note = "Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."
 sym = "T_BF12_BLOCK"
 value = 20
 provenance = "measured"
-note = "20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12, 2026-10-08. Not to be confused with BF12_H, which is 43 and is how far the block stands UP its plate from the seating face. This is the one that sets where the Z ball nut can reach: going down, the nut bottoms on BF12's face."
+note = "20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12, 2026-10-08. Not to be confused with BF12_H, which is 43 and is how far the block stands UP its plate from the seating face. This is the one that sets where the Z ball nut can reach: going down, the nut bottoms on BF12's face. ⚠ IT DRIVES NO OTHER DIMENSION - dims.py deps re-derives Z_NUT_X_1 and Z_NUT_X_2 and nothing else, and X and Y get their nut geometry from the end plate chain through SCREW_AXIS_X instead, so do not reach for this symbol on those axes. ⚠ BUT IT IS A TERM IN A BOLT LENGTH, his 2026-10-08: BF12 is face-mounted through its own body, so the 4 x M5 that fix it to the rear plate and to the right X end plate's tongue have to clear this 20 before they reach any thread. Those lengths are not derived in this file yet."
 
 [[dim]]
 sym = "Z_NUT_X_1"
