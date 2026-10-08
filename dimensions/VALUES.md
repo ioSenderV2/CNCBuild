@@ -69,10 +69,10 @@ Registry updated: **2026-10-04**
 | **THRUST_ARM** | 60 mm | derived | SCREW_AXIS_X - T_X_ENDPLATE | Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for. |
 | **DOUBLER_SEATING** | 24.38 mm | derived | T_X_ENDPLATE + T_DOUBLER | Seating width at the plate's bottom with the doubler on |
 | **DOUBLER_H** | 45 mm | derived |  | Doubler height. 45, so it can come out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW, whose bottom edge lands at 55.5 (the lower rail at 77.5 less half the block's measured 44), so anything under that clears. 45 clears by 10.5; the earlier 50 cleared by 5.5; 60 overlapped by 4.5 and is what the bound was found for. NOT gated on the Y beam underside - the doubler sits ~17 inboard of the beam's inside face. An earlier note rounded the 55.5 to 56 and the clearance to 6; the 55.5 is the computed figure and is the one to use. dims.py deps: nothing derives from this, so changing it is local - but see DOUBLER_BOLT_X, which STOPPED being the midpoint when this moved. |
-| **FIN_STOCK** | 302 mm | measured |  | The square is a measured 302, not a nominal 12in |
+| **FIN_STOCK** | 301.625 mm | measured |  | The square is 11 7/8in = 301.625, HIS PIECE 2026-10-07. It had been carried as a measured 302 and it is not 302 - nor is it the nominal 12in (304.8) it was already corrected away from once. Both fins come out of this one square, so it sets FIN_BASE_W directly. |
 | **FIN_KERF** ⚠️ | 2 mm | nominal |  | The single diagonal cut |
 | **FIN_TOP_W** | 100 mm | derived |  | FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation |
-| **FIN_BASE_W** | 200 mm | derived | FIN_STOCK - FIN_TOP_W - FIN_KERF |  |
+| **FIN_BASE_W** | 199.625 mm | derived | FIN_STOCK - FIN_TOP_W - FIN_KERF |  |
 | **FIN_COL_OUTB** | 35 mm | derived |  | Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value. |
 | **FIN_COL_INB** | 65 mm | derived | FIN_COL_OUTB + (EXT_W / 2) | Inboard M8 column. 65. |
 | **FIN_OVERHANG** | 20 mm | derived | FIN_COL_OUTB - EXT_BORE_INSET | Fin overhanging the Y beam's outboard face |

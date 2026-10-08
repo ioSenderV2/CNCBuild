@@ -388,9 +388,9 @@ note = "Doubler height. 45, so it can come out of OFFCUTS - his reason, and the 
 
 [[dim]]
 sym = "FIN_STOCK"
-value = 302
+value = 301.625
 provenance = "measured"
-note = "The square is a measured 302, not a nominal 12in"
+note = "The square is 11 7/8in = 301.625, HIS PIECE 2026-10-07. It had been carried as a measured 302 and it is not 302 - nor is it the nominal 12in (304.8) it was already corrected away from once. Both fins come out of this one square, so it sets FIN_BASE_W directly."
 
 [[dim]]
 sym = "FIN_KERF"

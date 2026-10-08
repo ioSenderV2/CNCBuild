@@ -56,10 +56,10 @@ ROOT_BOLT_Y_PITCH,mm,30,"[derived] Pitch of those four stations: 32, 62, 92, 122
 THRUST_ARM,mm,60,[derived] Drive thrust outboard of the plate's OUTER face. This is what the doubler and the two bolt rows are for.
 DOUBLER_SEATING,mm,24.38,[derived] Seating width at the plate's bottom with the doubler on
 DOUBLER_H,mm,45,"[derived] Doubler height. 45, so it can come out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW,"
-FIN_STOCK,mm,302,"[measured] The square is a measured 302, not a nominal 12in"
+FIN_STOCK,mm,301.625,"[measured] The square is 11 7/8in = 301.625, HIS PIECE 2026-10-07. It had been carried as a measured 302 and it is not 302 - nor is it the nominal 12in (304.8) it was already corrected away from once. Both fins come out of this one square, so it sets"
 FIN_KERF,mm,2,[nominal] The single diagonal cut
 FIN_TOP_W,mm,100,"[derived] FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation"
-FIN_BASE_W,mm,200,[derived]
+FIN_BASE_W,mm,199.625,[derived]
 FIN_COL_OUTB,mm,35,[derived] Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value.
 FIN_COL_INB,mm,65,[derived] Inboard M8 column. 65.
 FIN_OVERHANG,mm,20,[derived] Fin overhanging the Y beam's outboard face
