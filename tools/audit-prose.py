@@ -31,6 +31,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dims import Registry  # noqa: E402
 
+# The prose is full of emoji markers and they reach stdout in the context lines. On a
+# default Windows console that is cp1252 and the print RAISES, killing the report
+# partway through with a traceback - so the findings after the first marker were simply
+# never seen. Reconfigure rather than strip: the markers are load-bearing in the prose.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding='utf-8', errors='replace')
+    except (AttributeError, ValueError):
+        pass
+
 ROOT = Path(__file__).resolve().parent.parent
 SCAN = ["machine/**/*.md", "machine/**/*.html", "commissioning/**/*.md", "*.md"]
 
