@@ -1197,13 +1197,13 @@ note = "20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12
 sym = "NUT_HOLE_DEPTH"
 value = 16
 provenance = "measured"
-note = "16, the drilled depth of the ball nut housing's M5 holes - his, 2026-10-08, against only 8 of thread as supplied. 🔴 THE 8 BELOW THE THREAD IS NOT USABLE TRAVEL. It is tap drill diameter, about 4.2 on an M5 x 0.8, so a 5 mm thread cannot enter it - a longer bolt jams where the mating thread stops, exactly as if the hole ended at 8. That was got wrong once in this project, so it is written down: chip space is not depth. What the 16 DOES buy is room to tap deeper, which is why NUT_TAP_DEPTH is now a shop operation rather than a vendor figure."
+note = "16, the drilled depth of a ball nut housing's M5 holes - his, 2026-10-08, against only 8 of thread as supplied. 🔴 ALL FOUR NUTS AND SCREWS ARE THE SAME PART, differing only in length - his, 2026-10-08 - so every figure here applies to X, Y1, Y2 and Z alike. 🔴 THE 8 BELOW THE THREAD IS NOT USABLE TRAVEL: it is tap drill diameter, about 4.2 on an M5 x 0.8, so a 5 mm thread cannot enter it and a longer bolt jams where the mating thread stops, exactly as if the hole ended at 8. That was got wrong once here, so it is written down - chip space is not depth. What the 16 DOES buy is room to tap deeper."
 
 [[dim]]
 sym = "NUT_TAP_ASSUPPLIED"
 value = 8
 provenance = "vendor"
-note = "8, the thread depth the nut housing arrives with. Kept because it is what the part is, and because the decision to go past it only makes sense against it."
+note = "8, the thread depth every one of the four nut housings arrives with. ⚠ IT IS ENOUGH ON ITS OWN wherever the bolt only has to cross a plate: on the Y sole bracket an M5 x 12 reaches 5.65 through the 1/4in bracket, and the aluminium thread is already stronger than the bolt at that depth. Tapping deeper is margin, not a fix - see NUT_TAP_DEPTH."
 
 [[dim]]
 sym = "NUT_TAP_REACH"
@@ -1231,7 +1231,12 @@ note = "6.7 on the nominal plate, 6.19 if it is really 12.19. Derived off the we
 sym = "BOLT_Z_NUT"
 value = 16
 provenance = "part"
-note = "M5 x 16 for the four bolts into the ball nut housing - N1-N4. On the 6 mm web it engages 9.7, which is 1.94 x D and essentially the 2 x D aluminium asks for, with 2.3 to the 12 mm working depth and 4.3 to where a bolt actually bottoms. ⚠ M5 x 20 IS TOO LONG even on the tapped housing: it would reach 13.7, past the working depth and 0.3 from bottoming outright. ⚠ AND IT IS NOT THE BOLT C1-C16 TAKE, which are M5 x 25 because that path crosses the spacer as well. Two M5 of different lengths into holes that look alike from the front, with different counterbore webs - keep them apart at assembly."
+note = "M5 x 16 into the ball nut housing - and 🔴 THE SAME BOLT ON EVERY AXIS, because all four nuts are the same part. On Z it crosses a 6 mm web and the shim for 9.7 of engagement; on the Y sole brackets it crosses 6.35 of 1/4in bracket for 9.65. Both need the housing tapped to NUT_TAP_DEPTH first. ⚠ One bolt and one tap setting across four nuts was worth more than the alternative, which was M5 x 12 on Y against the as-supplied 8 mm thread - that works too, and leaves the Y housings untapped, but then two lengths and two tap states are loose in the same build. ⚠ NOT the M5 x 25 that the Z carriage bolts take."
+
+[[dim]]
+sym = "Y_NUT_BOLT_ENGAGE"
+expr = "BOLT_Z_NUT - T_SOLE_BRACKET"
+note = "9.65 mm into the Y ball nut housing, 1.93 x D, with the housing tapped to NUT_TAP_DEPTH. The sole bracket bolts UP into the inverted nut and there is nothing between them - no spacer, no shim - so this is the simplest of the nut joints: bolt less bracket. ⚠ SAME POINT AS THE Z: the load here is SHEAR and a bolted joint carries shear by friction, so what this joint needs is preload. The four holes are M5 clearance, so a joint that slips gives up lost motion the controller cannot see. Torque them properly and evenly. At the as-supplied 8 mm thread an M5 x 12 would reach 5.65 and the aluminium would still be stronger than the bolt - the deeper tap is margin."
 
 [[dim]]
 sym = "Z_NUT_BOLT_ENGAGE"

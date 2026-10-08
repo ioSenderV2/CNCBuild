@@ -137,6 +137,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/open-items.md](machine/open-items.md)
 
 - [From the 2026-10-02 stepper frame rework - all unmeasured](machine/open-items.md#from-the-2026-10-02-stepper-frame-rework---all-unmeasured)
+- [From the 2026-10-08 datasheet pass](machine/open-items.md#from-the-2026-10-08-datasheet-pass)
 - [Carried forward](machine/open-items.md#carried-forward)
 
 ## [machine/outboard-plate.md](machine/outboard-plate.md)

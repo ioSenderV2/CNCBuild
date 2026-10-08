@@ -102,6 +102,23 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1210.73 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
+## From the 2026-10-08 datasheet pass
+
+- 🔴 **The X ball nut has no mounting specified anywhere.** Not in prose, and Sheet 3a carries no
+  holes for it — the X carriage plate has its rails, BF12, the Z cast stepper frame, the sensor
+  bore, the four X bearing blocks and the top stop, and nothing that attaches the plate to the
+  screw that drives it. **The same omission the Z plate had**, found the same way: by working
+  through a neighbouring joint. All four nuts are the same part, so the pattern is known — 40 × 52
+  face, 4 × M5 on a 24 × 40 grid, 8 mm of thread in a 16 mm hole — but where it lands on the plate
+  and what carries it are not decided.
+- ⚠️ **One block measurement does not reconcile.** The body mics 75.68 and a pair pushed together
+  with the button heads touching reads 154, which makes each head 1.32 proud — but the over-head
+  reading was 76.24, which makes it 0.56. The two differ by 0.76 and it sets how much room the
+  driver has between the blocks. **It does not move a hole**: the C-hole rows derive from the
+  chosen 87 centre separation and the block’s own 36 bolt pitch.
+- ⚠️ **The C-hole row offsets imply the block centres sit 80 apart** where the closest they can
+  physically sit is 77. The button heads account for 1.32 of that, not 3.
+
 ## Carried forward
 
 - ✅ ~~**Height from the top of the beam to the torsion box fixing line**, and whether the box has
