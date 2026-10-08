@@ -1106,10 +1106,16 @@ note = "0.3 NOMINAL, and the real one is measured on the assembled stack - feele
 # plate, a caliper-measured spacer and an unchecked assumption about the block's tapped depth.
 
 [[dim]]
+sym = "BLOCK_HOLE_DEPTH"
+value = 8.7
+provenance = "measured"
+note = "8.7, the drilled depth of the bearing block's M5 holes - his, 2026-10-08, against 8 of thread. 🔴 0.7 OF CHIP SPACE, SO THERE IS NOTHING TO TAP INTO. The block's 8 really is a hard ceiling, unlike the nut housing's - and it does not matter, because the block is STEEL and 5.8 mm is 1.16 x D there. Two joints that read identically on paper - M5 into an 8 mm thread - and completely different problems, because of what they are cut in."
+
+[[dim]]
 sym = "BLOCK_TAP_DEPTH"
 value = 8
 provenance = "vendor"
-note = "8, the M5 tapped depth in an HGH20 bearing block - HIS SPEC SHEET 2026-10-08. 🔴 THIS IS THE CEILING ON Z BOLT ENGAGEMENT and it is what killed M5 x 30: at a 6 mm counterbore and the faced spacer that bolt wants 8.59 and bottoms by 0.59. A bolt that bottoms reads as a tight bolt and never clamps, which is the same failure as a bottomed T-nut bolt in BOLT_REACH_MAX. ⚠ THE SHEET IT CAME FROM IS NOT COMMITTED - this repo's rule is datasheets are copied into manufacturer-assets, not linked, and three decisions now rest on this one number."
+note = "8, the M5 tapped depth in an HGH20 bearing block - his spec sheet, confirmed against a measured BLOCK_HOLE_DEPTH of 8.7. 🔴 A HARD CEILING ON Z BOLT ENGAGEMENT, and it is what killed M5 x 30: at a 6 mm counterbore and the faced spacer that bolt wants 8.59 and bottoms. A bolt that bottoms reads as a tight bolt and never clamps, the same failure BOLT_REACH_MAX exists to prevent on the T-nut joints. ⚠ It happens to equal the nut housing's as-supplied thread depth and the two are NOT one fact - the housing has been tapped past it and the blocks cannot be. ⚠ THE SHEET IT CAME FROM IS NOT COMMITTED; this repo copies datasheets rather than linking them."
 
 [[dim]]
 sym = "M5_HEAD_D"
@@ -1188,10 +1194,22 @@ provenance = "measured"
 note = "20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12, 2026-10-08. Not to be confused with BF12_H, which is 43 and is how far the block stands UP its plate from the seating face. This is the one that sets where the Z ball nut can reach: going down, the nut bottoms on BF12's face. ⚠ IT DRIVES NO OTHER DIMENSION - dims.py deps re-derives Z_NUT_X_1 and Z_NUT_X_2 and nothing else, and X and Y get their nut geometry from the end plate chain through SCREW_AXIS_X instead, so do not reach for this symbol on those axes. ⚠ BUT IT IS A TERM IN A BOLT LENGTH, his 2026-10-08: BF12 is face-mounted through its own body, so the 4 x M5 that fix it to the rear plate and to the right X end plate's tongue have to clear this 20 before they reach any thread. Those lengths are not derived in this file yet."
 
 [[dim]]
-sym = "NUT_TAP_DEPTH"
+sym = "NUT_HOLE_DEPTH"
+value = 16
+provenance = "measured"
+note = "16, the drilled depth of the ball nut housing's M5 holes - his, 2026-10-08, against only 8 of thread as supplied. 🔴 THE 8 BELOW THE THREAD IS NOT USABLE TRAVEL. It is tap drill diameter, about 4.2 on an M5 x 0.8, so a 5 mm thread cannot enter it - a longer bolt jams where the mating thread stops, exactly as if the hole ended at 8. That was got wrong once in this project, so it is written down: chip space is not depth. What the 16 DOES buy is room to tap deeper, which is why NUT_TAP_DEPTH is now a shop operation rather than a vendor figure."
+
+[[dim]]
+sym = "NUT_TAP_ASSUPPLIED"
 value = 8
 provenance = "vendor"
-note = "8, the M5 tapped depth in the ball nut. His, 2026-10-08. 🔴 IT IS THE SAME VALUE AS BLOCK_TAP_DEPTH AND IT IS A DIFFERENT PART - do NOT collapse the two the way T_DOUBLER and T_OUTBOARD_PLATE were collapsed. Those were one piece of metal under two names; these are two components that happen to agree, and a vendor changing either one has no bearing on the other. One physical fact, one symbol - which cuts both ways."
+note = "8, the thread depth the nut housing arrives with. Kept because it is what the part is, and because the decision to go past it only makes sense against it."
+
+[[dim]]
+sym = "NUT_TAP_DEPTH"
+value = 12
+provenance = "derived"
+note = "12 - 🔴 TAPPED DEEPER ON PURPOSE, from the 8 it arrives with, and the reason is MATERIAL. The nut housing is ALUMINIUM where the bearing blocks are steel, and a steel bolt into aluminium wants roughly 2 x D of thread against roughly 1 x D into steel - a rule of thumb, not a measurement. At the as-supplied 8 the best an M5 could reach was 5.7, which is 1.14 x D and about half of what aluminium asks. There is room: NUT_HOLE_DEPTH is 16, and aluminium taps easily - the snapped-tap-in-a-hardened-part worry that first argued against this does not apply to this part. Tapping to 12 leaves 4 mm of the hole for chips. ⚠ THE BEARING BLOCKS CANNOT HAVE THIS - their hole is 8.7 against 8 of thread, so 0.7 of chip space and nothing to tap into. They do not need it either, being steel."
 
 [[dim]]
 sym = "Z_NUT_CBORE_WEB"
@@ -1206,14 +1224,14 @@ note = "6.7 on the nominal plate, 6.19 if it is really 12.19. Derived off the we
 
 [[dim]]
 sym = "BOLT_Z_NUT"
-value = 12
+value = 16
 provenance = "part"
-note = "M5 x 12 for the four bolts into the ball nut - N1-N4, his call 2026-10-08. On the 6 mm web it engages 5.7, the same as an M5 x 10 would on a 4 mm web, with 2.3 to the nut's 8 mm tap floor. ⚠ NOT THE SAME BOLT AS C1-C16, which are M5 x 25 because that path crosses the spacer as well. Two M5 of different lengths on one plate, into holes that look identical from the front - keep them apart at assembly, and note the counterbores differ too."
+note = "M5 x 16 for the four bolts into the ball nut housing - N1-N4. On the 6 mm web it engages 9.7, which is 1.94 x D and essentially the 2 x D aluminium asks for. It requires the housing to be tapped to NUT_TAP_DEPTH first. ⚠ M5 x 20 IS WORSE, NOT BETTER, at a 12 mm tap - the bolt would be longer than the thread and jam where the thread stops, which is the same trap NUT_HOLE_DEPTH warns about. ⚠ AND IT IS NOT THE BOLT C1-C16 TAKE, which are M5 x 25 because that path crosses the spacer as well. Two M5 of different lengths into holes that look alike from the front, with different counterbore webs - keep them apart at assembly."
 
 [[dim]]
 sym = "Z_NUT_BOLT_ENGAGE"
 expr = "BOLT_Z_NUT - Z_NUT_CBORE_WEB - NUT_SHIM"
-note = "5.7 mm into the ball nut, 1.14 x D, with 2.3 to spare against NUT_TAP_DEPTH. Bounded at both ends like Z_BOLT_ENGAGE - under about 1 x D the thread strips, over the tap depth the bolt bottoms and the nut is never drawn against the plate. ⚠ NUT_SHIM is measured on the assembled stack, so this moves with it: 6.0 at a zero shim, 5.0 at a 1 mm shim. Both inside the window, which is why M5 x 12 can be ordered before the shim is known."
+note = "9.7 mm into the nut housing, 1.94 x D in ALUMINIUM, where the rule of thumb is about 2 x D. It was 5.7 until the housing was tapped deeper. ⚠ Bounded at both ends like Z_BOLT_ENGAGE: too little and the thread strips - which in aluminium happens at a figure that would be fine in steel - and more than NUT_TAP_DEPTH and the bolt jams where the thread stops. NUT_SHIM is measured on the assembled stack, so this reads 10.0 at a zero shim and 9.0 at a 1 mm one, both comfortably inside."
 
 [[dim]]
 sym = "Z_NUT_X_1"

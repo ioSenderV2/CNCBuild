@@ -516,6 +516,10 @@ nothing else substitutes the day one is needed.
 **Rails and spacers first, nut housing last.** The rails define the geometry; the nut follows the
 screw rather than being forced into position by its own bolts.
 
+0. **Tap the ball nut housing's four M5 holes from 8 mm deep to 12.** It is aluminium and taps
+   easily; the holes are already drilled 16 deep, so there is room. **Blow the chips out.** The four
+   bolts into it are **M5 × 16** and they need that depth — at the as-supplied 8 mm they would reach
+   less than half the thread aluminium wants.
 1. **Bolt the Z plate down onto the spacers and bearing blocks, and torque it.**
 2. **Measure the gap at the nut housing with feeler gauges**, with the plate already tight.
 3. **Cut a full-face shim to what you read** and fit it behind the housing.
