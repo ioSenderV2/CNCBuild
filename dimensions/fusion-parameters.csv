@@ -67,15 +67,15 @@ FIN_PROUD,mm,16.825,[derived] Fin proud of the side plate's outer face. WAS RECO
 WINDOW_W,mm,60.5,"[derived] Clearance window for the cast stepper frame, in each front fin. 60.5 OVER A 60 CASTING - half a millimetre total, a slip fit and deliberately little, because the window's loose axis is its HEIGHT, not its width. Corrected from 62 on 2026-10"
 WINDOW_H,mm,50,[derived] Window height. This is the loose axis - it is what the casting's clearance actually consumes - which is why the width is allowed to be a 0.5 slip fit.
 WINDOW_OUTB,mm,19,[measured] Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7.
-SPACER_T_ASFOUND_L,mm,16.41,[measured] NOT 5/8in (15.875). The repo carried the fraction as if it were the dimension.
-SPACER_T_ASFOUND_R,mm,16.43,"[measured] 0.02 from its pair - at caliper repeatability, and about to be made moot by the skim"
+SPACER_T_ASFOUND_L,mm,16.22,"[measured] 16.22, HIS MICROMETER 2026-10-08, pre-facing. 🔴 IT SUPERSEDES A CALIPER PAIR OF 16.41 AND 16.43 - 0.2 thinner, which is about what calipers cost on a sawn bar, and the better instrument wins. Not 5/8in (15.875) either; this bar has now bee"
+SPACER_T_ASFOUND_R,mm,16.22,"[measured] Taken as its pair's 16.22. ⚠ ONLY ONE SPACER WAS MICROMETERED. The caliper pair read 16.41 and 16.43, so the two bars are within caliper noise of each other, and the skim faces BOTH IN ONE SETUP - which is what actually makes them equal. I"
 SPACER_SKIM,mm,1,"[measured] The ball nut housing sits this far below the spacers. Both spacers get faced by it, IN ONE SETUP."
-SPACER_T,mm,15.41,"[derived] After facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once cut."
+SPACER_T,mm,15.22,"[derived] 15.22 after facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once the skim is cut. ⚠ AND THE EXPRESSION IS THE WEAKER OF TWO READINGS. What really sets this number is the ball nut housing's plane, because that i"
 T_Z_PLATE,mm,12.7,"[nominal] 1/2in 6061. CALIPER IT - the X end plate's half-inch stock measured 12.19, so a nominal 12.7 is not safe on this machine. Whether this plate is the same stock is unestablished."
 CLAMP_BORE_OFFSET,mm,50,[vendor] Clamp mounting face to the 80 bore centre - half of the clamp's 100
-SPINDLE_OFFSET,mm,108.11,[derived] X carriage plate face to the spindle centreline. Was recorded as 109 before the skim.
+SPINDLE_OFFSET,mm,107.92,[derived] X carriage plate face to the spindle centreline. Was recorded as 109 before the skim.
 T_X_CARRIAGE_PLATE,mm,12.7,[nominal] 1/2in 6061. CALIPER IT - same reason as T_Z_PLATE: the end plate's half-inch stock came in at 12.19.
-GANTRY_ARM,mm,185.81,"[derived] X beam NEUTRAL AXIS to the spindle centreline - the arm for gantry bending. The 35 is the beam face to neutral axis, recorded in the prose as approximate."
+GANTRY_ARM,mm,185.62,"[derived] X beam NEUTRAL AXIS to the spindle centreline - the arm for gantry bending. The 35 is the beam face to neutral axis, recorded in the prose as approximate."
 SPINDLE_D,mm,80,[vendor]
 SPINDLE_BODY_L,mm,213,"[derived] CLOSED 2026-10-03: he confirmed 213 is correct, so this is now just another name for SPINDLE_BARREL_L and carries no independent value. THE 199 IS RETIRED - it had been the prose's nose-flange-to-rear figure, it reconciled with nothing, and"
 SPINDLE_BARREL_L,mm,213,"[vendor] Barrel length off the listing's dimensioned drawing, and the same figure as the nameplate's PHI80x213. Confirmed correct by him 2026-10-03, which closed SPINDLE_BODY_L - that symbol now just points here."
@@ -171,6 +171,16 @@ Z_M5_COL_INB,mm,41.5,"[measured] Inboard M5 column from the Z plate's centre. Th
 Z_M5_COL_OUTB,mm,73.5,"[measured] Outboard M5 column from the plate's centre. This is the one that forced the plate to 164: its counterbore is about dia 10, so on a 154 plate it broke through by 1.5."
 Z_M5_Y_1,mm,9,"[derived] Sheet 4's C-holes, first column in plate coordinates - 9 on the 165 width, and whole only because the width is odd. The next is this plus BLOCK_PITCH_X."
 Z_M5_Y_3,mm,124,"[derived] Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."
+BLOCK_TAP_DEPTH,mm,8,"[vendor] 8, the M5 tapped depth in an HGH20 bearing block - HIS SPEC SHEET 2026-10-08. 🔴 THIS IS THE CEILING ON Z BOLT ENGAGEMENT and it is what killed M5 x 30: at a 6 mm counterbore and the faced spacer that bolt wants 8.59 and bottoms by 0.59. A bo"
+M5_HEAD_D,mm,8.48,"[measured] 8.48, the socket head cap diameter on the M5 he is actually using - his calipers 2026-10-08, not the 8.5 nominal. An 8.9 counterbore leaves 0.21 radial clearance on it."
+M5_HEAD_H,mm,5,"[measured] 5, head height on the same bolts. The counterbore has to beat this or the head stands proud."
+Z_CBORE_D,mm,8.9,"[part] 8.9, the counterbore bit's bore - a piloted 5.2 x 8.9. The pilot size is why the drilling order is forced; see Z_PILOT_D."
+Z_PILOT_D,mm,5.2,"[part] 5.2, the counterbore's pilot, and therefore the size the hole must be WHILE IT IS COUNTERBORED. 🔴 THE ORDER IS FORCED AND IT IS A ONE-WAY DOOR: drill 5.2, counterbore, THEN open to Z_HOLE_D. Open it first and the pilot has nothing to steer on;"
+Z_HOLE_D,mm,6,"[derived] 6, the final clearance hole. It is opened from Z_PILOT_D with an END MILL and not a reamer - a reamer takes 0.1 to 0.3 and follows the hole it is given, so it can neither remove 0.8 nor move a hole. ⚠ IT MATCHES THE SPACERS, WHICH ARE ALREA"
+Z_CBORE_WEB,mm,4,"[derived] 4, the plate material left UNDER the head. 🔴 THE COUNTERBORE IS SPECIFIED AS A WEB AND NOT AS A DEPTH, which is the whole point: engagement is bolt minus web minus spacer, so a web target gives the same engagement whatever the plate turns o"
+Z_CBORE_DEPTH,mm,8.7,"[derived] 8.7 on the nominal plate, 8.19 if it is really 12.19. DERIVED, so it re-derives when the plate is finally caliper'ed - which is the reason Z_CBORE_WEB is the input and this is the output. It clears M5_HEAD_H by a wide margin, so the head si"
+BOLT_Z_CARRIAGE,mm,25,"[part] M5 x 25 for all sixteen Z carriage bolts. 🔴 IT WAS M5 x 35 AND THEN BRIEFLY M5 x 30, AND BOTH BOTTOM. The chain moved three times in one day: the counterbore went deeper, the spacer came back 0.2 thinner on a micrometer, and the block's tapped"
+Z_BOLT_ENGAGE,mm,5.78,"[derived] 5.78 mm into the bearing block, 1.16 x D, with 2.22 to spare against BLOCK_TAP_DEPTH. 🔴 THIS IS THE GUARD ON THE WHOLE STACK and it is bounded at BOTH ends: below about 1 x D the thread strips, above BLOCK_TAP_DEPTH the bolt bottoms and the"
 T_BF12_BLOCK,mm,20,"[measured] 20, BF12's thickness along the screw axis - HIS CALIPERS off a real BF12, 2026-10-08. Not to be confused with BF12_H, which is 43 and is how far the block stands UP its plate from the seating face. This is the one that sets where the Z bal"
 Z_NUT_X_1,mm,28,"[derived] 28. First of the two rows of M5 clearance holes that bolt the Z plate to its ball nut, X from the plate's INSTALLED BOTTOM. 🔴 THESE FOUR HOLES WERE MISSING FROM SHEET 4 ENTIRELY - his catch, 2026-10-08. The plate had sixteen holes to its be"
 Z_NUT_X_2,mm,52,"[derived] 52. The second nut row. NUT_PATTERN_Y is 24 and it is the pattern pitch ACROSS the nut's 40 mm face - on the Z plate that face's short axis runs up the plate, which is why the 24 is the X pitch here and the 40 is the Y span."

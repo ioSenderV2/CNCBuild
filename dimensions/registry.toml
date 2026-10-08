@@ -452,15 +452,15 @@ note = "Window's outboard edge from the fin's factory edge. Measured off the MDF
 
 [[dim]]
 sym = "SPACER_T_ASFOUND_L"
-value = 16.41
+value = 16.22
 provenance = "measured"
-note = "NOT 5/8in (15.875). The repo carried the fraction as if it were the dimension."
+note = "16.22, HIS MICROMETER 2026-10-08, pre-facing. 🔴 IT SUPERSEDES A CALIPER PAIR OF 16.41 AND 16.43 - 0.2 thinner, which is about what calipers cost on a sawn bar, and the better instrument wins. Not 5/8in (15.875) either; this bar has now been wrong twice, once as a fraction and once by instrument. The caliper figures are gone rather than kept because nothing was derived from their difference."
 
 [[dim]]
 sym = "SPACER_T_ASFOUND_R"
-value = 16.43
+value = 16.22
 provenance = "measured"
-note = "0.02 from its pair - at caliper repeatability, and about to be made moot by the skim"
+note = "Taken as its pair's 16.22. ⚠ ONLY ONE SPACER WAS MICROMETERED. The caliper pair read 16.41 and 16.43, so the two bars are within caliper noise of each other, and the skim faces BOTH IN ONE SETUP - which is what actually makes them equal. If the pair matters before facing, mic the second one."
 
 [[dim]]
 sym = "SPACER_SKIM"
@@ -471,7 +471,7 @@ note = "The ball nut housing sits this far below the spacers. Both spacers get f
 [[dim]]
 sym = "SPACER_T"
 expr = "SPACER_T_ASFOUND_L - SPACER_SKIM"
-note = "After facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once cut."
+note = "15.22 after facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance to measured once the skim is cut. ⚠ AND THE EXPRESSION IS THE WEAKER OF TWO READINGS. What really sets this number is the ball nut housing's plane, because that is what the spacers are being faced down to - so if the 1 mm step and the 16.22 thickness ever disagree, THE STEP WINS and this expression is the thing to correct. It feeds the Z bolt engagement and the spindle offset, so it is worth getting from the faced part rather than from this sum."
 
 [[dim]]
 sym = "T_Z_PLATE"
@@ -1067,6 +1067,69 @@ note = "Sheet 4's C-holes, first column in plate coordinates - 9 on the 165 widt
 sym = "Z_M5_Y_3"
 expr = "(Z_PLATE_W / 2) + Z_M5_COL_INB"
 note = "Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."
+
+# ------------------------------------ the Z carriage bolt stack, settled 2026-10-08
+# Sixteen M5 cross the Z plate, the spacer and thread into the bearing block. Every term below
+# was measured or read off a spec sheet on 2026-10-08 - the joint had been carried on a nominal
+# plate, a caliper-measured spacer and an unchecked assumption about the block's tapped depth.
+
+[[dim]]
+sym = "BLOCK_TAP_DEPTH"
+value = 8
+provenance = "vendor"
+note = "8, the M5 tapped depth in an HGH20 bearing block - HIS SPEC SHEET 2026-10-08. 🔴 THIS IS THE CEILING ON Z BOLT ENGAGEMENT and it is what killed M5 x 30: at a 6 mm counterbore and the faced spacer that bolt wants 8.59 and bottoms by 0.59. A bolt that bottoms reads as a tight bolt and never clamps, which is the same failure as a bottomed T-nut bolt in BOLT_REACH_MAX. ⚠ THE SHEET IT CAME FROM IS NOT COMMITTED - this repo's rule is datasheets are copied into manufacturer-assets, not linked, and three decisions now rest on this one number."
+
+[[dim]]
+sym = "M5_HEAD_D"
+value = 8.48
+provenance = "measured"
+note = "8.48, the socket head cap diameter on the M5 he is actually using - his calipers 2026-10-08, not the 8.5 nominal. An 8.9 counterbore leaves 0.21 radial clearance on it."
+
+[[dim]]
+sym = "M5_HEAD_H"
+value = 5
+provenance = "measured"
+note = "5, head height on the same bolts. The counterbore has to beat this or the head stands proud."
+
+[[dim]]
+sym = "Z_CBORE_D"
+value = 8.9
+provenance = "part"
+note = "8.9, the counterbore bit's bore - a piloted 5.2 x 8.9. The pilot size is why the drilling order is forced; see Z_PILOT_D."
+
+[[dim]]
+sym = "Z_PILOT_D"
+value = 5.2
+provenance = "part"
+note = "5.2, the counterbore's pilot, and therefore the size the hole must be WHILE IT IS COUNTERBORED. 🔴 THE ORDER IS FORCED AND IT IS A ONE-WAY DOOR: drill 5.2, counterbore, THEN open to Z_HOLE_D. Open it first and the pilot has nothing to steer on; open it before the depth is proven and the pilot no longer fits, so there is no second attempt at the counterbore."
+
+[[dim]]
+sym = "Z_HOLE_D"
+value = 6
+provenance = "derived"
+note = "6, the final clearance hole. It is opened from Z_PILOT_D with an END MILL and not a reamer - a reamer takes 0.1 to 0.3 and follows the hole it is given, so it can neither remove 0.8 nor move a hole. ⚠ IT MATCHES THE SPACERS, WHICH ARE ALREADY MADE WITH 6 mm CLEARANCE - his, 2026-10-08 - so this does not add float to the stack, it removes a step: the plate was the tight layer at 5.2 while the spacer beneath it was already 6. The cost is head bearing area, 35.2 mm2 down to 28.2, which takes the bearing stress under the head from about 59% to about 73% of 6061-T6 yield at a typical M5 8.8 preload. ESTIMATES, not spec - but the aluminium is the weak member in this joint, not the bolt, so do not torque these to what the fastener would take."
+
+[[dim]]
+sym = "Z_CBORE_WEB"
+value = 4
+provenance = "derived"
+note = "4, the plate material left UNDER the head. 🔴 THE COUNTERBORE IS SPECIFIED AS A WEB AND NOT AS A DEPTH, which is the whole point: engagement is bolt minus web minus spacer, so a web target gives the same engagement whatever the plate turns out to measure. A depth dialled from the face does not - T_Z_PLATE is still an unmeasured nominal and the half-inch stock the X end plates came from measured 12.19, a 0.5 swing that is larger than the whole engagement budget. Same thinking as referencing every standing plate from its bottom edge, one layer down. Caliper the plate, subtract this, dial that depth."
+
+[[dim]]
+sym = "Z_CBORE_DEPTH"
+expr = "T_Z_PLATE - Z_CBORE_WEB"
+note = "8.7 on the nominal plate, 8.19 if it is really 12.19. DERIVED, so it re-derives when the plate is finally caliper'ed - which is the reason Z_CBORE_WEB is the input and this is the output. It clears M5_HEAD_H by a wide margin, so the head sits several millimetres below the face."
+
+[[dim]]
+sym = "BOLT_Z_CARRIAGE"
+value = 25
+provenance = "part"
+note = "M5 x 25 for all sixteen Z carriage bolts. 🔴 IT WAS M5 x 35 AND THEN BRIEFLY M5 x 30, AND BOTH BOTTOM. The chain moved three times in one day: the counterbore went deeper, the spacer came back 0.2 thinner on a micrometer, and the block's tapped depth turned out to be 8. z-carriage.md carried a headed section called 'Use M5 x 35, not M5 x 30' whose answer is now neither."
+
+[[dim]]
+sym = "Z_BOLT_ENGAGE"
+expr = "BOLT_Z_CARRIAGE - Z_CBORE_WEB - SPACER_T"
+note = "5.78 mm into the bearing block, 1.16 x D, with 2.22 to spare against BLOCK_TAP_DEPTH. 🔴 THIS IS THE GUARD ON THE WHOLE STACK and it is bounded at BOTH ends: below about 1 x D the thread strips, above BLOCK_TAP_DEPTH the bolt bottoms and the joint never clamps. If this ever leaves that window the stack has moved - check it after the spacers are faced and after the plate is caliper'ed, because both of its inputs are still provisional."
 
 # ------------------------------------ Z plate to ball nut, added 2026-10-08 - they were MISSING
 
