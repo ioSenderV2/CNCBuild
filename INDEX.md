@@ -176,6 +176,18 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Why 2.2 kW and not 3 kW - the choice was made and reversed deliberately](machine/spindle-and-mount.md#why-22-kw-and-not-3-kw---the-choice-was-made-and-reversed-deliberately)
 - [The offset from the X beam to the spindle centreline: 109 mm](machine/spindle-and-mount.md#the-offset-from-the-x-beam-to-the-spindle-centreline-109-mm)
 
+## [machine/stepper-sizing.md](machine/stepper-sizing.md)
+
+- [The inputs, and where each came from](machine/stepper-sizing.md#the-inputs-and-where-each-came-from)
+- [Thrust is not the constraint](machine/stepper-sizing.md#thrust-is-not-the-constraint)
+- [Nor is screw life](machine/stepper-sizing.md#nor-is-screw-life)
+- [Nor is inertia](machine/stepper-sizing.md#nor-is-inertia)
+- [What the constraint actually is: whip, then the torque curve](machine/stepper-sizing.md#what-the-constraint-actually-is-whip-then-the-torque-curve)
+- [Why not 1.5 N·m](machine/stepper-sizing.md#why-not-15-nm)
+- [Why not 3.2 N·m](machine/stepper-sizing.md#why-not-32-nm)
+- [Open — the torque curve at 48 V](machine/stepper-sizing.md#open-the-torque-curve-at-48-v)
+- [What would change the answer](machine/stepper-sizing.md#what-would-change-the-answer)
+
 ## [machine/torsion-box.md](machine/torsion-box.md)
 
 - [The box](machine/torsion-box.md#the-box)
