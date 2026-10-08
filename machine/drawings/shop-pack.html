@@ -13,7 +13,8 @@
     @bottom-right { content: "Page " counter(page) " of " counter(pages);
                     font: 8.5pt "Segoe UI", sans-serif; color: #333; }
   }
-  @page s1 { @bottom-left { content: "Shop Pack — SHEET 1, front Y end plate / Z riser"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s1a { @bottom-left { content: "Shop Pack — SHEET 1a, front Y1 end plate / Z riser, LEFT"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s1b { @bottom-left { content: "Shop Pack — SHEET 1b, front Y2 end plate / Z riser, RIGHT"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s2 { @bottom-left { content: "Shop Pack — SHEET 2a-2d, X gantry end plate, tongue, shelf bar, doubler"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s3a { @bottom-left { content: "Shop Pack — SHEET 3a, X carriage plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s3b { @bottom-left { content: "Shop Pack — SHEET 3b, Z spacer bar"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
@@ -21,7 +22,8 @@
   @page s5 { @bottom-left { content: "Shop Pack — SHEET 5, Y nut sole bracket"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page sck { @bottom-left { content: "Shop Pack — CHECKLIST and pack list"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page snt { @bottom-left { content: "Shop Pack — NOTES (reasoning, not dimensions)"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
-  .pg-s1 { page: s1 } .pg-s2 { page: s2 } .pg-s3a { page: s3a } .pg-s3b { page: s3b }
+  .pg-s1a { page: s1a } .pg-s1b { page: s1b }
+  .pg-s2 { page: s2 } .pg-s3a { page: s3a } .pg-s3b { page: s3b }
   .pg-s4 { page: s4 }
   @page s6 { @bottom-left { content: "Shop Pack — SHEET 6, interposer"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s7 { @bottom-left { content: "Shop Pack — SHEET 7, 1210.73 mm rear plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
@@ -126,7 +128,8 @@ through onto a bearing block seat.
 its own amber rows:</p>
 <table style="margin:0 0 .7rem">
 <tr><th>Sheet</th><th>Part</th><th>Size</th><th>Qty</th></tr>
-<tr><td>1</td><td>Front Y end plate / Z riser</td><td>tapered 100 &rarr; 200 &times; 302 &times; 10 mm</td><td>2</td></tr>
+<tr><td>1a</td><td>Front <b>Y1</b> end plate / Z riser, <b>left</b></td><td>301.625 tall, tapered 200 base &rarr; 100 top &times; 10 mm</td><td>1</td></tr>
+<tr><td>1b</td><td>Front <b>Y2</b> end plate / Z riser, <b>right</b> &mdash; <b>the same part as 1a</b>, turned over</td><td>301.625 tall, tapered 200 base &rarr; 100 top &times; 10 mm</td><td>1</td></tr>
 <tr><td>2a</td><td>X gantry end plate</td><td>154 &times; 242.5 &times; 1/2"</td><td>2</td></tr>
 <tr><td>2b</td><td>X gantry end plate, <b>right-hand</b>, with the BF12 tongue &mdash; drawn complete</td><td>300 &times; 154 &times; 1/2", <b>the stock length, uncut</b></td><td>1</td></tr>
 <tr><td>2c</td><td>Shelf bar</td><td>25.4 &times; 50.8 &times; 60</td><td>2</td></tr>
@@ -191,7 +194,7 @@ figure — the joint works by friction, not bearing, and the float is wanted.</l
 <h3>What is on the trip</h3>
 <table>
 <tr><th>Plate</th><th>Qty</th><th>Material</th><th>Mill needed?</th><th>Status</th></tr>
-<tr><td>Front Y end plate / Z riser</td><td>2</td><td><b>10 mm</b> alu (measured), from one 302 mm square</td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance</td></tr>
+<tr><td>Front Y end plate / Z riser</td><td>2</td><td><b>10 mm</b> alu (measured), <b>each on its own piece</b></td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance. <b>1a and 1b are the same part</b> — Sheets 1a, 1b</td></tr>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 242.5</b></td><td><b>Yes</b></td><td>The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2a</td></tr>
 <tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Four holes, all dimensioned &mdash; Sheet 2c</td></tr>
 <tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 45</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Drill it clamped to the end plate &mdash; <b>Sheet 2d</b></td></tr>
@@ -208,122 +211,253 @@ clearance work for a home drill press; the back panel is likewise clearance hole
 </div>
 
 <!-- ============================================================ -->
-<div class="plate pg-s1">
-<h2 id="sheet-1">Sheet 1 — Front Y end plate / Z riser (quantity 2)</h2>
+<div class="plate pg-s1a">
+<h2 id="sheet-1a">Sheet 1a &mdash; front Y1 end plate / Z riser, LEFT (quantity 1)</h2>
 <div class="stock">
-<b>302 long &times; tapered 200 &rarr; 100 &times; 10 mm aluminium</b><br>
-Both from one <b>302 mm square</b>, one bandsaw cut, zero waste. Stock
-<b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
+<b>301.625 tall &times; tapered 200 at the base &rarr; 100 at the top &times; 10 mm aluminium</b><br>
+<b>Its own piece of plate.</b> Stock <b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
+<span class="wcs">WCS ORIGIN: the plate&apos;s <b>BOTTOM-LEFT</b> corner &mdash; the straight outboard
+edge meeting the bearing bottom edge. Both real stock corners.</span><br>
+&#128308; <b>Y 0 is the BEARING BOTTOM edge</b> and Y runs up to <b>301.625</b>. That edge bears on the
+torsion box&apos;s top skin, which is why every plate standing on that skin is dimensioned from
+it &mdash; and it is why B1&ndash;B8 read the same <b>197 / 227 / 257 / 287</b> as Sheet 7&apos;s
+beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
+<b>X 0 is the straight OUTBOARD edge</b>, X runs inboard, and the taper falls away to the right.<br>
+&#128308; <b>As drawn is the view from the FRONT of the machine.</b> Y1 is the left-hand beam, so its outboard edge faces the machine&apos;s left &mdash; the drawing&apos;s left. <sup class="f">1.7</sup>
 </div>
 
 <figure>
-<svg viewBox="-42 -44 650 396" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- MACHINING COORDINATES, 2026-10-03. Long axis (302) along mill X. Origin is the
-       corner where the plate's bottom/tongue edge meets the outboard FACTORY edge.
-       new X = from the bottom edge; new Y = from the factory edge. Both positive. -->
-  <rect x="0" y="0" width="302" height="302" fill="none" stroke="#bbb" stroke-dasharray="6 4"/>
-  <text class="lbl" x="92" y="-32" fill="#888">302 mm square stock</text>
+<svg viewBox="-54 -32 524 374" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- svg_x = X (across, 0 at the outboard edge) ; svg_y = 301.625 - Y (up from the bottom edge) -->
 
-  <!-- PLATE A: factory edge along the bottom, tongue end at the left -->
-  <polygon points="0,302 302,302 302,202 0,102" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <polygon points="302,200 302,0 0,0 0,100" fill="#f4f4f4" stroke="#111" stroke-width="1.4" stroke-dasharray="4 3"/>
-  <text class="ttl" x="200" y="252">PLATE A</text>
-  <text class="ttl" x="150" y="40">PLATE B</text>
-  <text class="lbl" x="150" y="58">(rotate 180&#176; and flip)</text>
+  <!-- the plate: vertical outboard edge at X 0, taper on the right -->
+  <polygon points="0,0 100,0 200,301.625 0,301.625" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the one cut, 2 mm kerf -->
-  <line x1="0" y1="102" x2="302" y2="202" stroke="#c00" stroke-width="1.2"/>
-  <line x1="0" y1="100" x2="302" y2="200" stroke="#c00" stroke-width="1.2"/>
-  <text class="q" x="120" y="162" transform="rotate(-18.3 120 162)">Cut line</text>
+  <!-- the Y beam end: X 20-80, Y 182 up to its top face at 302, which is 0.375 ABOVE this plate -->
+  <rect x="20" y="-0.375" width="60" height="120" fill="none" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="84" y="5.625" fill="#0a6">beam end 60 wide &#215; 120 tall</text>
+  <text class="lbl" x="84" y="17.625" fill="#0a6">underside Y 182, top face Y 302</text>
 
-  <!-- beam end envelope: Y 20-80, X 182-302 -->
-  <rect x="182" y="222" width="120" height="60" fill="none" stroke="#0a6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="214" y="218" fill="#0a6">beam end 60 &#215; 120</text>
+  <!-- the side plate's end, lying X 16.571 to 20, full height -->
+  <rect x="16.571" y="0" width="3.429" height="301.625" fill="#eef4ee" stroke="#0a6" stroke-width="0.8" stroke-dasharray="4 2.5"/>
 
-  <!-- END OF THE 1/8in SIDE PLATE: Y 16.825 - 20, full length -->
-  <rect x="0" y="282" width="302" height="3.175" fill="#eef4ee" stroke="#0a6" stroke-width="0.8" stroke-dasharray="4 2.5"/>
-
-  <!-- 8 x o9 clearance: X 197/227/257/287, Y 35/65 -->
+  <!-- B1-B8, the eight o9 clearance holes into the beam's corner bores -->
   <g fill="#fff" stroke="#111" stroke-width="0.9">
-    <circle cx="197" cy="267" r="4.5"/>
-    <circle cx="197" cy="237" r="4.5"/>
-    <circle cx="227" cy="267" r="4.5"/>
-    <circle cx="227" cy="237" r="4.5"/>
-    <circle cx="257" cy="267" r="4.5"/>
-    <circle cx="257" cy="237" r="4.5"/>
-    <circle cx="287" cy="267" r="4.5"/>
-    <circle cx="287" cy="237" r="4.5"/>
+    <circle cx="35" cy="104.625" r="4.5"/><circle cx="65" cy="104.625" r="4.5"/>
+    <circle cx="35" cy="74.625" r="4.5"/><circle cx="65" cy="74.625" r="4.5"/>
+    <circle cx="35" cy="44.625" r="4.5"/><circle cx="65" cy="44.625" r="4.5"/>
+    <circle cx="35" cy="14.625" r="4.5"/><circle cx="65" cy="14.625" r="4.5"/>
   </g>
 
-  <!-- the 60.5 x 50 window: X 132-182, Y 20-80.5 -->
-  <rect x="132" y="221.5" width="50" height="60.5" fill="#fff" stroke="#b06000" stroke-width="1.6"/>
-  <line x1="172.475" y1="221.5" x2="172.475" y2="282" stroke="#111" stroke-width="0.8" stroke-dasharray="2.5 2"/>
-  <text class="lbl" x="134" y="232" fill="#b06000">WINDOW</text>
-  <text class="lbl" x="134" y="244" fill="#b06000">62 &#215; 50</text>
-  <text class="lbl" x="174" y="272" fill="#333">bar</text>
+  <!-- the window, X 20-80.5 by Y 132-182 -->
+  <rect x="20" y="119.625" width="60.5" height="50" fill="#fff" stroke="#b06000" stroke-width="1.6"/>
+  <line x1="20" y1="129.15" x2="80.5" y2="129.15" stroke="#111" stroke-width="0.8" stroke-dasharray="2.5 2"/>
+  <text class="lbl" x="23" y="125.125" fill="#333">bar 9.525</text>
+  <text class="lbl" x="23" y="139.625" fill="#b06000">WINDOW</text>
+  <text class="lbl" x="23" y="151.625" fill="#b06000">60.5 wide &#215; 50 tall</text>
 
-  <!-- tongue bolts: X 30, Y 25 and Y 170 -->
-  <circle cx="30" cy="277" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
-  <circle cx="30" cy="132" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
-  <line x1="30" y1="277" x2="30" y2="132" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
-  <text class="lbl" x="36" y="280">T1</text>
-  <text class="lbl" x="36" y="135">T2</text>
+  <!-- T1 and T2, the L-bracket holes, both on Y 30 -->
+  <circle cx="25" cy="271.625" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="170" cy="271.625" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <line x1="25" y1="271.625" x2="170" y2="271.625" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="28" y="263.625">T1</text>
+  <text class="lbl" x="173" y="263.625">T2</text>
+  <text class="dim" x="86" y="279.625">145 couple</text>
 
-  <!-- 60 mm proud tongue, X 0-60 -->
-  <line x1="60" y1="302" x2="60" y2="112" stroke="#888" stroke-dasharray="4 3"/>
-  <text class="lbl" x="4" y="242" fill="#888">60 tongue</text>
+  <!-- the height, on the left, outside the plate -->
+  <line x1="-14" y1="0" x2="-14" y2="301.625" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-50" y="151.625">301.625</text>
+  <!-- the two widths -->
+  <line x1="0" y1="315.625" x2="200" y2="315.625" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="92" y="325.625">200</text>
+  <line x1="0" y1="-12" x2="100" y2="-12" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="44" y="-16">100</text>
 
-  <!-- dimensions and origin -->
-  <line x1="0" y1="312" x2="302" y2="312" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="140" y="322">302</text>
-  <line x1="-10" y1="302" x2="-10" y2="102" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-34" y="202">200</text>
-  <line x1="312" y1="302" x2="312" y2="202" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="316" y="252">100</text>
-  <line x1="0" y1="282" x2="0" y2="302" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="4" y="294" fill="#06c">20 strip</text>
-  <circle cx="0" cy="302" r="3.4" fill="#c00"/>
-  <text class="dim" x="-30" y="316" fill="#c00">WCS 0,0</text>
+  <!-- the B rows and columns -->
+  <g stroke="#888" stroke-width="0.5" stroke-dasharray="4 3">
+    <line x1="0" y1="104.625" x2="35" y2="104.625"/>
+    <line x1="0" y1="14.625" x2="35" y2="14.625"/>
+  </g>
+  <text class="dim" x="96" y="107.625">Y 197 &#183; 227 &#183; 257 &#183; 287</text>
+  <text class="dim" x="96" y="119.625">X 35 and 65</text>
 
-  <text class="q" x="330" y="20">MACHINING COORDINATES</text>
-  <text class="q" x="330" y="32">X from the plate&#8217;s bottom (tongue) edge</text>
-  <text class="q" x="330" y="44">Y from the outboard FACTORY edge</text>
-  <text class="q" x="330" y="56">both positive, both from the one corner</text>
+  <circle cx="0" cy="301.625" r="3.4" fill="#c00"/>
+  <text class="dim" x="-46" y="309.625" fill="#c00">WCS 0,0</text>
 
-  <text class="q" x="330" y="80" fill="#0a6">beam end sits X 182&#8211;302, Y 20&#8211;80</text>
-  <text class="q" x="330" y="92" fill="#b06000">window X 132&#8211;182, Y 20&#8211;80.5</text>
-  <text class="q" x="330" y="104">the 9.525 bar band is the X 172.475&#8211;182 end</text>
-  <text class="q" x="330" y="116">of the window; the casting uses X 132&#8211;172.5</text>
+  <!-- the annotation column -->
+  <text class="q" x="232" y="14">MACHINING COORDINATES</text>
+  <text class="q" x="232" y="26">X across, 0 at the straight OUTBOARD edge</text>
+  <text class="q" x="232" y="38">Y up, 0 at the BEARING BOTTOM edge</text>
+  <text class="q" x="232" y="50">both positive, both off the bottom-left corner</text>
 
-  <text class="q" x="330" y="140" fill="#0a6">the 1/8" side plate end lies Y 16.825&#8211;20,</text>
-  <text class="q" x="330" y="152" fill="#0a6">so the window edge at Y 20 is flush with it</text>
+  <text class="q" x="232" y="74" fill="#0a6">beam end sits X 20&#8211;80, Y 182 upward</text>
+  <text class="q" x="232" y="86" fill="#0a6">its top face is Y 302 &#8212; 0.375 ABOVE this</text>
+  <text class="q" x="232" y="98" fill="#0a6">plate&#8217;s own top edge, and that is fine:</text>
+  <text class="q" x="232" y="110" fill="#0a6">the window sets the beam, not the edge</text>
 
-  <text class="q" x="330" y="176">T2 perpendicular edge distance 19.1,</text>
-  <text class="q" x="330" y="188">checked against the MDF template</text>
+  <text class="q" x="232" y="134" fill="#b06000">window X 20&#8211;80.5, Y 132&#8211;182</text>
+  <text class="q" x="232" y="146">the 9.525 bar band is the Y 172.475&#8211;182</text>
+  <text class="q" x="232" y="158">top of the window, directly under the beam;</text>
+  <text class="q" x="232" y="170">the casting uses Y 132&#8211;172.475 below it</text>
 
-  <text class="q" x="330" y="212" fill="#c00">&#9888; Do not cut the taper until the spindle</text>
-  <text class="q" x="330" y="224" fill="#c00">clearance is settled &#8212; one bandsaw pass</text>
+  <text class="q" x="232" y="194" fill="#0a6">the side plate&#8217;s end lies X 16.571&#8211;20,</text>
+  <text class="q" x="232" y="206" fill="#0a6">so the window edge at X 20 is flush with</text>
+  <text class="q" x="232" y="218" fill="#0a6">it, and the fin stands 16.571 proud outboard</text>
+
+  <text class="q" x="232" y="242">T1 and T2 share Y 30 and are 145 apart;</text>
+  <text class="q" x="232" y="254">T2&#8217;s perpendicular edge distance to the</text>
+  <text class="q" x="232" y="266">taper is 19.1, off the MDF template</text>
+
+  <text class="q" x="232" y="290" fill="#c00">&#9888; Do not cut the taper until the spindle</text>
+  <text class="q" x="232" y="302" fill="#c00">clearance is settled &#8212; one bandsaw pass</text>
+
+  <text class="q" x="232" y="326" fill="#c00">&#9888; 1a and 1b are the SAME PART. Drill one</text>
+  <text class="q" x="232" y="338" fill="#c00">pattern twice; do NOT mirror it.</text>
 </svg>
-<figcaption>Laid out as the part sits on the mill table: <b>the 302 runs along X</b>. Both plates come from one 302 mm square and are <b>rotations</b> of each other, not mirrors. Bolt positions in the beam-end pattern are scribed and ticked.</figcaption>
+<figcaption>Laid out as the part sits on the mill table, <b>standing up: the 301.625 runs vertically and the
+straight outboard edge is the left-hand one</b>. Every feature is dimensioned off the bottom-left
+corner, and every feature goes through &mdash; which is why
+<b>Sheet 1a and Sheet 1b are the same part</b>, drilled from one pattern and simply turned over to
+hand them. As drawn is the view from the FRONT of the machine.<sup class="f">1.7</sup></figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 302</span></th><th>Y <span style="font-weight:400">from the factory edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">197, 227, 257, 287</td><td class="n">35, 65</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
-<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">132 &rarr; 182</td><td class="n">20 &rarr; 80.5</td><td class="d">50&times;60.5</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
-<tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">30</td><td class="n">25</td><td class="d">9</td><td class="op">Through</td></tr>
-<tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">30</td><td class="n">170</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
+<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">20 &rarr; 80.5</td><td class="n">132 &rarr; 182</td><td class="d">60.5&times;50</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
+<tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
+<tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
 </table>
 
 <p style="font-size:9.5pt;margin:0 0 3mm"><b>&#9888; Do not cut the taper line yet</b> &mdash; the
 spindle clearance is unsettled and the cut is one bandsaw pass that cannot be put
 back.<sup class="f">1.5</sup></p>
+</div>
+
+<!-- ============================================================ -->
+<div class="plate pg-s1b">
+<h2 id="sheet-1b">Sheet 1b &mdash; front Y2 end plate / Z riser, RIGHT (quantity 1)</h2>
+<div class="stock">
+<b>301.625 tall &times; tapered 200 at the base &rarr; 100 at the top &times; 10 mm aluminium</b><br>
+<b>Its own piece of plate.</b> Stock <b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
+<span class="wcs">WCS ORIGIN: the plate&apos;s <b>BOTTOM-LEFT</b> corner &mdash; the straight outboard
+edge meeting the bearing bottom edge. Both real stock corners.</span><br>
+&#128308; <b>Y 0 is the BEARING BOTTOM edge</b> and Y runs up to <b>301.625</b>. That edge bears on the
+torsion box&apos;s top skin, which is why every plate standing on that skin is dimensioned from
+it &mdash; and it is why B1&ndash;B8 read the same <b>197 / 227 / 257 / 287</b> as Sheet 7&apos;s
+beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
+<b>X 0 is the straight OUTBOARD edge</b>, X runs inboard, and the taper falls away to the right.<br>
+&#128308; <b>As drawn is the view from the REAR of the machine.</b> Y2 is the right-hand beam, so its outboard edge faces the machine&apos;s right. Seen from the front its taper falls the other way; drawn here outboard-edge-left like 1a, which is the same part turned over. <sup class="f">1.7</sup>
+</div>
+
+<figure>
+<svg viewBox="-54 -32 524 374" width="190mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- svg_x = X (across, 0 at the outboard edge) ; svg_y = 301.625 - Y (up from the bottom edge) -->
+
+  <!-- the plate: vertical outboard edge at X 0, taper on the right -->
+  <polygon points="0,0 100,0 200,301.625 0,301.625" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+
+  <!-- the Y beam end: X 20-80, Y 182 up to its top face at 302, which is 0.375 ABOVE this plate -->
+  <rect x="20" y="-0.375" width="60" height="120" fill="none" stroke="#0a6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="84" y="5.625" fill="#0a6">beam end 60 wide &#215; 120 tall</text>
+  <text class="lbl" x="84" y="17.625" fill="#0a6">underside Y 182, top face Y 302</text>
+
+  <!-- the side plate's end, lying X 16.571 to 20, full height -->
+  <rect x="16.571" y="0" width="3.429" height="301.625" fill="#eef4ee" stroke="#0a6" stroke-width="0.8" stroke-dasharray="4 2.5"/>
+
+  <!-- B1-B8, the eight o9 clearance holes into the beam's corner bores -->
+  <g fill="#fff" stroke="#111" stroke-width="0.9">
+    <circle cx="35" cy="104.625" r="4.5"/><circle cx="65" cy="104.625" r="4.5"/>
+    <circle cx="35" cy="74.625" r="4.5"/><circle cx="65" cy="74.625" r="4.5"/>
+    <circle cx="35" cy="44.625" r="4.5"/><circle cx="65" cy="44.625" r="4.5"/>
+    <circle cx="35" cy="14.625" r="4.5"/><circle cx="65" cy="14.625" r="4.5"/>
+  </g>
+
+  <!-- the window, X 20-80.5 by Y 132-182 -->
+  <rect x="20" y="119.625" width="60.5" height="50" fill="#fff" stroke="#b06000" stroke-width="1.6"/>
+  <line x1="20" y1="129.15" x2="80.5" y2="129.15" stroke="#111" stroke-width="0.8" stroke-dasharray="2.5 2"/>
+  <text class="lbl" x="23" y="125.125" fill="#333">bar 9.525</text>
+  <text class="lbl" x="23" y="139.625" fill="#b06000">WINDOW</text>
+  <text class="lbl" x="23" y="151.625" fill="#b06000">60.5 wide &#215; 50 tall</text>
+
+  <!-- T1 and T2, the L-bracket holes, both on Y 30 -->
+  <circle cx="25" cy="271.625" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <circle cx="170" cy="271.625" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
+  <line x1="25" y1="271.625" x2="170" y2="271.625" stroke="#06c" stroke-width="0.6" stroke-dasharray="3 2"/>
+  <text class="lbl" x="28" y="263.625">T1</text>
+  <text class="lbl" x="173" y="263.625">T2</text>
+  <text class="dim" x="86" y="279.625">145 couple</text>
+
+  <!-- the height, on the left, outside the plate -->
+  <line x1="-14" y1="0" x2="-14" y2="301.625" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-50" y="151.625">301.625</text>
+  <!-- the two widths -->
+  <line x1="0" y1="315.625" x2="200" y2="315.625" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="92" y="325.625">200</text>
+  <line x1="0" y1="-12" x2="100" y2="-12" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="44" y="-16">100</text>
+
+  <!-- the B rows and columns -->
+  <g stroke="#888" stroke-width="0.5" stroke-dasharray="4 3">
+    <line x1="0" y1="104.625" x2="35" y2="104.625"/>
+    <line x1="0" y1="14.625" x2="35" y2="14.625"/>
+  </g>
+  <text class="dim" x="96" y="107.625">Y 197 &#183; 227 &#183; 257 &#183; 287</text>
+  <text class="dim" x="96" y="119.625">X 35 and 65</text>
+
+  <circle cx="0" cy="301.625" r="3.4" fill="#c00"/>
+  <text class="dim" x="-46" y="309.625" fill="#c00">WCS 0,0</text>
+
+  <!-- the annotation column -->
+  <text class="q" x="232" y="14">MACHINING COORDINATES</text>
+  <text class="q" x="232" y="26">X across, 0 at the straight OUTBOARD edge</text>
+  <text class="q" x="232" y="38">Y up, 0 at the BEARING BOTTOM edge</text>
+  <text class="q" x="232" y="50">both positive, both off the bottom-left corner</text>
+
+  <text class="q" x="232" y="74" fill="#0a6">beam end sits X 20&#8211;80, Y 182 upward</text>
+  <text class="q" x="232" y="86" fill="#0a6">its top face is Y 302 &#8212; 0.375 ABOVE this</text>
+  <text class="q" x="232" y="98" fill="#0a6">plate&#8217;s own top edge, and that is fine:</text>
+  <text class="q" x="232" y="110" fill="#0a6">the window sets the beam, not the edge</text>
+
+  <text class="q" x="232" y="134" fill="#b06000">window X 20&#8211;80.5, Y 132&#8211;182</text>
+  <text class="q" x="232" y="146">the 9.525 bar band is the Y 172.475&#8211;182</text>
+  <text class="q" x="232" y="158">top of the window, directly under the beam;</text>
+  <text class="q" x="232" y="170">the casting uses Y 132&#8211;172.475 below it</text>
+
+  <text class="q" x="232" y="194" fill="#0a6">the side plate&#8217;s end lies X 16.571&#8211;20,</text>
+  <text class="q" x="232" y="206" fill="#0a6">so the window edge at X 20 is flush with</text>
+  <text class="q" x="232" y="218" fill="#0a6">it, and the fin stands 16.571 proud outboard</text>
+
+  <text class="q" x="232" y="242">T1 and T2 share Y 30 and are 145 apart;</text>
+  <text class="q" x="232" y="254">T2&#8217;s perpendicular edge distance to the</text>
+  <text class="q" x="232" y="266">taper is 19.1, off the MDF template</text>
+
+  <text class="q" x="232" y="290" fill="#c00">&#9888; Do not cut the taper until the spindle</text>
+  <text class="q" x="232" y="302" fill="#c00">clearance is settled &#8212; one bandsaw pass</text>
+
+  <text class="q" x="232" y="326" fill="#c00">&#9888; 1a and 1b are the SAME PART. Drill one</text>
+  <text class="q" x="232" y="338" fill="#c00">pattern twice; do NOT mirror it.</text>
+</svg>
+<figcaption>Laid out as the part sits on the mill table, <b>standing up: the 301.625 runs vertically and the
+straight outboard edge is the left-hand one</b>. Every feature is dimensioned off the bottom-left
+corner, and every feature goes through &mdash; which is why
+<b>Sheet 1a and Sheet 1b are the same part</b>, drilled from one pattern and simply turned over to
+hand them. As drawn is the view from the REAR of the machine.<sup class="f">1.7</sup></figcaption>
+</figure>
+
+<h3>Hole schedule &mdash; machining coordinates</h3>
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
+<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">20 &rarr; 80.5</td><td class="n">132 &rarr; 182</td><td class="d">60.5&times;50</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
+<tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
+<tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
+</table>
 
 <p style="font-size:9.5pt;margin:0 0 3mm"><b>&#9888; Do not cut the taper line yet</b> &mdash; the
-spindle clearance is unsettled and the cut is one bandsaw pass that cannot be put back.<sup class="f">1.5</sup></p>
-
-
+spindle clearance is unsettled and the cut is one bandsaw pass that cannot be put
+back.<sup class="f">1.5</sup></p>
 </div>
 
 <!-- ============================================================ -->
@@ -1378,7 +1512,7 @@ bottom edge is the reference because it bears on the box's top skin &mdash; the 
 other plate on this machine is dimensioned from.<sup class="f">7.6</sup><br>
 &#128308; <b>The beam bores do NOT depend on this plate's height.</b> They sit 182 above the box's
 top skin because the FIN's window puts the beam there, so A1&ndash;A16 read the same
-<b>197 / 227 / 257 / 287</b> that Sheet 1 carries for the fin.<sup class="f">7.6</sup><br>
+<b>197 / 227 / 257 / 287</b> that Sheets 1a and 1b carry for the fin.<sup class="f">7.6</sup><br>
 &#9888; <b>F1&ndash;F8 convert from a TOP-edge number</b> &mdash; their 127 is measured down from the
 installed top edge, so the Y below is 301.625 &minus; 127 &minus; 9.525. <b>That makes them the only
 holes on this sheet that move if the plate arrives off-size</b>, and the screw's far end moves with
@@ -1456,7 +1590,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <circle cx="77.81" cy="250" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <text class="lbl" x="100" y="246">A1&ndash;A8 &#8212; &oslash;9, scribed layout</text>
   <text class="lbl" x="100" y="258">X 18.175 / 48.175</text>
-  <text class="lbl" x="100" y="270">Y 197 / 227 / 257 / 287 &#8212; as Sheet 1</text>
+  <text class="lbl" x="100" y="270">Y 197 / 227 / 257 / 287 &#8212; as Sheets 1a / 1b</text>
 
   <!-- F holes: X 7 / 53 off the extrusion face, BELOW the beam's bottom face -->
   <circle cx="32.21" cy="395.83" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
@@ -1698,11 +1832,13 @@ is a bought 12" rather than the beam's own 120.</figcaption>
 <p class="sub">The reasoning behind the sheets. <b>Nothing here is a dimension to work from</b> &mdash; every number that gets drilled is on its own sheet. These explain why, and record what was tried and rejected, so neither has to sit on a page someone is working from.</p>
 <div class="fn">
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 1</b></p>
-<p><b>1.1</b> &mdash; <b>The stock is 10 mm, measured.</b> Not 3/8" (9.525) and not 1/2". The two plates nest out of one 302 mm square only because top + base + kerf closes: 100 + 200 + 2 = 302. Lay both patterns out from the <b>factory</b> vertical and top edges, so the bandsaw kerf never enters the pattern - it only shortens one piece's taper by about a millimetre. Laid out from the cut edge instead it becomes a ~1.5 mm offset built into a pattern that has to meet formed threads.</p>
+<p><b>1.1</b> &mdash; <b>The stock is 10 mm, measured.</b> Not 3/8" (9.525) and not 1/2". <b>Each fin is its own piece of plate.</b> &#9888; <b>They used to nest, and that is why the top width was 99.625 rather than 100.</b> Both came out of a single 301.625 square on one diagonal bandsaw cut, which only closed because top + base + kerf had to equal the square: 99.625 + 200 + 2. The base is the reference end &mdash; it is the one that bolts down and bears &mdash; so it stayed a fixed 200 and the top absorbed the remainder. On its own piece nothing couples the two widths and <b>the top is a chosen 100 again</b>. &#128308; <b>The square was never 302 either</b>: it measures 301.625, the same 11 7/8" as the side plates and the back plate, and that common height is what lets all five parts be dimensioned off one bearing bottom edge.</p>
 <p><b>1.2</b> &mdash; <b>&oslash;9, not 8.2, and punched rather than measured.</b> The bolts land in <i>extruded</i> corner bores, whose positions carry looser tolerance than anything drilled in plate, so a close fit is impossible in principle. The joint works by <b>friction, not bearing</b> - about 36 kN across eight bolts against loads of one to two kN - so the bolts never touch the hole walls. The nominal pattern is 15 and 45 in from each face; a stacked pair gives 15 / 45 / 75 / 105.</p>
-<p><b>1.3</b> &mdash; <b>The window is two stacked clearances, not one opening.</b> The upper 9.525 is the <b>interposer bar</b> passing through; the lower 40.49 is for the <b>casting, 27 tall</b>. The 13.49 surplus is the room the casting is <b>rotated</b> into - it does not drop straight in. The rotation is <b>fore and aft</b>, about an axis across the window, so the clearance it consumes is HEIGHT. The width, 60.5 over a 60 mm casting, is a slip fit and nothing more: if it binds, the remedy is height.<br><b>Assembly:</b> from behind the fin, casting upside down, stepper-bracket top into the window first, then rotate CCW until the casting lands flat on the bar.<br>The outboard edge is <b>aligned on the beam face at X 20</b> rather than centred on the beam, which puts all the clearance inboard where the taper has already provided room, and makes the window edge flush with the 1/8" side plate's inner face.</p>
-<p><b>1.4</b> &mdash; <b>These two are L-bracket holes, and the coordinates did not move when they became them.</b> They used to pass through the fin into a front tongue on the torsion box. <b>There is no front tongue any more</b> &mdash; the box runs 140 past the fins instead, the fin sits on its top skin, and <b>two L-brackets behind each fin</b> tie it down. These are the holes their vertical legs bolt to, so the part changed and the pattern did not. <b>T2's perpendicular edge distance is 19.1</b>, checked against the physical MDF template, and <b>the 145 mm couple with T1 is still the moment restraint</b> &mdash; which is the reason to keep the pattern rather than re-pick it for a bracket. X 30 also still holds the one bolt height shared with the side plates' and the back plate's rows.</p>
+<p><b>1.3</b> &mdash; <b>The window is two stacked clearances, not one opening.</b> The upper 9.525 is the <b>interposer bar</b> passing through; the lower 40.49 is for the <b>casting, 27 tall</b>. The 13.49 surplus is the room the casting is <b>rotated</b> into - it does not drop straight in. The rotation is <b>fore and aft</b>, about an axis across the window, so the clearance it consumes is HEIGHT. The width, 60.5 over a 60 mm casting, is a slip fit and nothing more: if it binds, the remedy is height.<br>&#9989; <b>The sheet standing up is what makes that readable.</b> The bar band is the window's <b>Y 172.475&ndash;182</b> top, sitting directly under the beam's underside at 182 &mdash; which is where the bar physically is, bolted up to that face &mdash; and the casting hangs below it at Y 132&ndash;172.475. Drawn on its side the stack ran along X and the word "upper" contradicted the drawing.<br><b>Assembly:</b> from behind the fin, casting upside down, stepper-bracket top into the window first, then rotate CCW until the casting lands flat on the bar.<br>The outboard edge is <b>aligned on the beam face at X 20</b> rather than centred on the beam, which puts all the clearance inboard where the taper has already provided room, and makes the window edge flush with the side plate's inner face. &#9888; <b>That side plate is 3.429, not 3.175</b> &mdash; ordered 10 gauge &mdash; so the fin now stands <b>16.571</b> proud of its outer face rather than 16.825. The window edge does not move: it is on the beam face, and the side plate is outboard of it.</p>
+<p><b>1.4</b> &mdash; <b>These two are L-bracket holes, and the coordinates did not move when they became them.</b> They used to pass through the fin into a front tongue on the torsion box. <b>There is no front tongue any more</b> &mdash; the box runs 140 past the fins instead, the fin sits on its top skin, and <b>two L-brackets behind each fin</b> tie it down. These are the holes their vertical legs bolt to, so the part changed and the pattern did not. <b>T2's perpendicular edge distance is 19.1</b>, checked against the physical MDF template, and <b>the 145 mm couple with T1 is still the moment restraint</b> &mdash; which is the reason to keep the pattern rather than re-pick it for a bracket. <b>Y 30</b> also still holds the one bolt height shared with the side plates' and the back plate's rows &mdash; it reads as a height now rather than as an X, which is the point of standing the sheet up.<sup class="f">1.6</sup></p>
 <p><b>1.5</b> &mdash; <b>The taper is gated on spindle clearance.</b> The spindle is confirmed to pass this plate's plane; the risk is a corner-of-envelope case - low Z, minimum Y, X near the beam. Four numbers decide it and three are unmeasured. <b>One bandsaw pass, and it cannot be put back.</b></p>
+<p><b>1.6</b> &mdash; <b>The sheet stands up now, and that is what put it on the same numbers as Sheets 7 and 9.</b> It used to be drawn with the 302 lying along the mill X and the width measured off the outboard factory edge, so the eight beam-bore holes read X 197 / 227 / 257 / 287 and Y 35 / 65. Those are the same eight holes; the frame turned. Standing the plate up with <b>Y measured from the bearing bottom edge</b> makes them read <b>Y 197 / 227 / 257 / 287</b> &mdash; which is literally the set Sheet 7 carries for the rear plate's beam bores and Sheet 9 carries for its T-slot rows, because all three plates stand on the same top skin and the beam's height comes from <b>this plate's window</b> rather than from any plate edge. The two L-bracket holes land on <b>X 25 and 170, both at Y 30</b>, which is how y-beam-support.md had always written them. <b>Nothing moved. Three sheets now say the same numbers the same way round</b>, and that is the whole value of the change.</p>
+<p><b>1.7</b> &mdash; <b>1a and 1b are the same part, and the sheets are separate anyway.</b> Every feature on this plate goes through &mdash; eight clearance holes, a window, two bracket holes &mdash; and the outline is a right trapezoid whose straight edge is the outboard one. Turning the plate over about that straight edge maps it onto itself and leaves every feature at the same distance from it. So <b>one pattern, drilled twice</b>; Y1 presents one face outboard and Y2 the other. &#128308; <b>Do not mirror the pattern.</b> Mirroring it within a fixed frame is a different part and would put the bolt columns 125 and 155 from the outboard edge instead of 35 and 65. The sheets are split per beam because what differs is <b>which way the part is installed</b>, and that is worth a page each at the machine rather than a parenthesis on one. <b>1a as drawn is the view from the front; 1b as drawn is the view from the rear.</b></p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 2</b></p>
 <p><b>2.3</b> &mdash; <b>The plate's tightest edge distance.</b> The beam's back face is flush with the plate's back edge, so the 15 is anchored and the 45 follows from the corner bores being symmetric in a 60 &times; 60. <b>15 mm of edge leaves 10.5 mm of material beside a &oslash;9</b> - do not let it drift.</p>
 <p><b>2.4</b> &mdash; <b>Bore it first, but it no longer sets anything.</b> Its height is the Y beam's <b>seam</b> centreline, which the vertical chain puts at <b>122.525</b> - the plate's bottom end is 62.525 below the beam, and the beam is 120 - so the 122.5 drawn here is that number rounded, not an independent choice. It sits in the gap between the block rows, which is <b>46</b> by geometry. That gap is a <b>KEEP-OUT, not something to lay holes out from</b>: the magnetic linear encoder tape runs down it and this &oslash;35 sensor rides over the tape, both centred on the seam. The <b>measured 45 is kept as the conservative figure</b> for it &mdash; under-stating a keep-out is safe &mdash; and at 45 there is <b>5 each side of the sensor, so no room for a flange or clamp ring</b>. Y 77 is half of 154, so it is centred on the plate as well as on the block pattern.</p>
@@ -1766,7 +1902,7 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <p><b>7.3</b> &mdash; <b>Y 30, the same number the side plates and the front fin carry.</b> One bolt line across every plate that lands on the box, and from the installed bottom edge it reads as itself with no arithmetic. It took two reframings to get here: it was a round <b>270</b> measured from the installed top, which put the row 34.8 up and 4.8 off every other plate while a note called the difference <i>deliberate</i> &mdash; <b>it was not</b> &mdash; then 271.625 once the plate height was corrected, and now simply 30. <b>The pitch no longer differs</b>: 150 here over the 1210.73, and the side plates run 150 from 50 as well. Eight at 150 span 1050, so centring them on the plate leaves <b>80.365 clear at each end</b>. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
 <p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
 <p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1210.73 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
-<p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part. Sheet 9 has been dimensioned from it since the side plate's T-slot rows were corrected, and this sheet now matches. <b>It costs nothing to do so</b>, which is worth stating because the sheet was drawn upside down until 2026-10-07 on the belief that it did. &#128308; <b>The beam bores are located by the FIN, not by this plate.</b> Y_BEAM_UNDERSIDE is 182 above the box skin because the fin's window puts the beam there &mdash; the fin is the riser that actually carries it, settled 2026-10-03 after the side plate was ruled out as the reference. So every plate standing on that skin sees the beam's corner bores at the same four heights, <b>197 / 227 / 257 / 287</b>, whatever height that plate happened to be bought at. Sheet 1 has carried exactly those numbers for the fin all along. &#9888; <b>The old inverted frame was 2.8 mm out and nobody had caught it.</b> It listed the A-holes at Y 15 / 45 / 75 / 105 from the installed top edge and called the beam's corner Y 0, which only holds if the beam's top face is flush with the plate's top edge. On a 304.8 plate it stood <i>2.8 proud</i> of the beam top, so those bores were a plate-height error of the same size and from the same 2026-10-03 correction that left Sheet 9's lines behind. Re-referencing to the bottom edge removes the error rather than rescaling it. <b>The four Y values live in the registry</b> as RP_BEAM_ROW_1 to RP_BEAM_ROW_4, on the same expression as SIDE_TSLOT_ROW_1, so the two plates cannot drift apart. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
+<p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part. Sheet 9 has been dimensioned from it since the side plate's T-slot rows were corrected, and this sheet now matches. <b>It costs nothing to do so</b>, which is worth stating because the sheet was drawn upside down until 2026-10-07 on the belief that it did. &#128308; <b>The beam bores are located by the FIN, not by this plate.</b> Y_BEAM_UNDERSIDE is 182 above the box skin because the fin's window puts the beam there &mdash; the fin is the riser that actually carries it, settled 2026-10-03 after the side plate was ruled out as the reference. So every plate standing on that skin sees the beam's corner bores at the same four heights, <b>197 / 227 / 257 / 287</b>, whatever height that plate happened to be bought at. Sheets 1a and 1b carry exactly those numbers for the fin, and Sheet 1 did before them. &#9888; <b>The old inverted frame was 2.8 mm out and nobody had caught it.</b> It listed the A-holes at Y 15 / 45 / 75 / 105 from the installed top edge and called the beam's corner Y 0, which only holds if the beam's top face is flush with the plate's top edge. On a 304.8 plate it stood <i>2.8 proud</i> of the beam top, so those bores were a plate-height error of the same size and from the same 2026-10-03 correction that left Sheet 9's lines behind. Re-referencing to the bottom edge removes the error rather than rescaling it. <b>The four Y values live in the registry</b> as RP_BEAM_ROW_1 to RP_BEAM_ROW_4, on the same expression as SIDE_TSLOT_ROW_1, so the two plates cannot drift apart. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
 <p><b>7.7</b> &mdash; <b>The BF12 rows carry the interposer, and the full thickness applies.</b> The screw's near end is carried by the cast stepper frame, which sits <i>on</i> the 3/8&quot; interposer and is therefore LOWER than bare metal. BF12 at the far end has to drop by the same amount or the screw is not parallel to its own beam. This sheet is clamped inverted, so lower is a <b>larger</b> Y: 127 and 145 become <b>136.5 and 154.5</b>. <b>It is the full 9.525, not 4.525.</b> The registry's NUT_FACE_BELOW_BEAM does subtract a 5 mm standoff, but only because its base figure was <i>measured</i> on a machine that still had one. <b>The standoff no longer exists in the design</b>, so there is nothing here to take back off. &#9888; <b>T_INTERPOSER is still nominal</b> &mdash; caliper the 3/8&quot; stock before this plate is drilled, and these two rows follow it automatically.</p>
 <p><b>7.8</b> &mdash; <b>The plywood tongues are never drilled to a coordinate.</b> The plan is to assemble the machine, set it on the torsion box, and then use the <b>front fins, the side plates and this rear plate as drill guides</b> to spot the plywood through their own holes. So the eight X stations here only have to clear obstructions and spread the load &mdash; nothing downstream has to agree with them, because the mating holes do not exist until the steel is bolted up and sitting in place. That is why 150 is a decision rather than a measurement, and why a hole landing a millimetre off costs nothing. It is the same logic as R5&ndash;R8 on Sheet&nbsp;5: <b>a hole you transfer needs no coordinate and fits better than one you compute.</b></p>
 <p class="src">Full reasoning, and the decisions these summarise, live in <b>machine/*.md</b>. If a note here and a .md file disagree, <b>the .md file wins</b>.</p>
@@ -1778,7 +1914,7 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <h3>Must be answered or nothing gets drilled</h3>
 <table class="sched">
 <tr><th>#</th><th>Question</th><th>Blocks</th></tr>
-<tr class="unk"><td>1</td><td><b>How far past the front riser plane the spindle reaches</b>, and whether it fouls the widened fin at low Z</td><td>Sheet 1's taper cut &mdash; one bandsaw pass, cannot be put back</td></tr>
+<tr class="unk"><td>1</td><td><b>How far past the front riser plane the spindle reaches</b>, and whether it fouls the widened fin at low Z</td><td>The taper cut on Sheets 1a and 1b &mdash; one bandsaw pass each, cannot be put back</td></tr>
 <tr class="unk"><td>2</td><td><b>The mill's model, and whether its DRO is 2-axis or 3-axis</b></td><td>How every sheet should be dimensioned</td></tr>
 </table>
 
