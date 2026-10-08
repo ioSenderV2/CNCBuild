@@ -166,7 +166,8 @@ DOCS = {
 SHEETS = [
     ("sheet-1", "Sheet 1 - Front Y end plate / Z riser"),
     ("sheet-2", "Sheet 2 - X gantry end plate"),
-    ("sheet-3", "Sheet 3 - X carriage plate"),
+    ("sheet-3a", "Sheet 3a - X carriage plate"),
+    ("sheet-3b", "Sheet 3b - Z spacer bar"),
     ("sheet-4", "Sheet 4 - Z plate"),
     ("sheet-5", "Sheet 5 - Y nut doubler block and sole bracket"),
     ("checklist", "Before the trip - checklist"),

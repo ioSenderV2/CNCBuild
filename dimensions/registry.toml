@@ -453,14 +453,14 @@ note = "Window's outboard edge from the fin's factory edge. Measured off the MDF
 [[dim]]
 sym = "SPACER_T_ASFOUND_L"
 value = 16.22
-provenance = "measured"
-note = "16.22, HIS MICROMETER 2026-10-08, pre-facing. 🔴 IT SUPERSEDES A CALIPER PAIR OF 16.41 AND 16.43 - 0.2 thinner, which is about what calipers cost on a sawn bar, and the better instrument wins. Not 5/8in (15.875) either; this bar has now been wrong twice, once as a fraction and once by instrument. The caliper figures are gone rather than kept because nothing was derived from their difference."
+provenance = "nominal"
+note = "🔴 16.22 IS THE OLD BAR AND IT DOES NOT TRAVEL TO THE NEW ONE. It was his micrometer on the existing spacer, pre-facing, superseding a caliper pair of 16.41 and 16.43. The new 160 x 50 stock is a different bar and this part has now been wrong twice - once as a fraction (5/8in, 15.875) and once by instrument. So this is a NOMINAL until the new bar is miked, and it sets Z_BOLT_ENGAGE through SPACER_T. ⚠ MIC IT BEFORE THE Z PLATE IS COUNTERBORED - the counterbore is a one-way door and Z_CBORE_WEB is what absorbs the answer."
 
 [[dim]]
 sym = "SPACER_T_ASFOUND_R"
 value = 16.22
-provenance = "measured"
-note = "Taken as its pair's 16.22. ⚠ ONLY ONE SPACER WAS MICROMETERED. The caliper pair read 16.41 and 16.43, so the two bars are within caliper noise of each other, and the skim faces BOTH IN ONE SETUP - which is what actually makes them equal. If the pair matters before facing, mic the second one."
+provenance = "nominal"
+note = "Taken as its pair's figure. Both come off one new bar and the skim faces both in one setup, which is what actually makes them equal."
 
 [[dim]]
 sym = "SPACER_SKIM"
@@ -1014,9 +1014,9 @@ note = "Z plate long dimension. See z-carriage.md for why it is 175 and why the 
 
 [[dim]]
 sym = "Z_PLATE_W"
-value = 165
+value = 164
 provenance = "derived"
-note = "165. Chosen 2026-10-08 so the SIXTEEN C-hole Y coordinates come out whole - 9 / 41 / 124 / 156 instead of 8.5 / 40.5 / 123.5 / 155.5. It had been 164, and 164 was itself NOT the 154 it inherited from the X end plate, because on 154 the outer M5 counterbore broke through by 1.5 - so the extra millimetre lands on exactly the hole that forced the width in the first place and buys 0.5 of edge at each side. ⚠ THE COST IS THE BALL NUT PATTERN. The C-hole columns sit at HALF-millimetre offsets from the plate centre (+/-41.5 and +/-73.5, the rails at +/-57.5 plus the block's +/-16) while the nut pattern sits at WHOLE offsets (+/-20), so with the screw on the plate centreline an odd width makes one set whole and the other half - you cannot have both. Sixteen matched holes beat four, and the nut's four are 5.5 clearance on M5 where half a millimetre is inside their own float."
+note = "164. 🔴 EVERY HOLE ON THIS PLATE IS NOW A WHOLE MILLIMETRE - all 28 of them - and that only works at 164. It briefly went to 165 to chase the C-hole columns, on the belief that the rail pitch was 115; the pitch is 114 (see Z_RAIL_COL), which puts the block bolt columns on whole offsets and makes an EVEN width the one that works. At 165 the nut and clamp holes land on half millimetres instead. The width was 154 before that, and 164 because on 154 the outer M5 counterbore broke through the edge by 1.5; at 164 it clears by 4.55 on the measured 8.9 bit."
 
 [[dim]]
 sym = "Z_M5_ROW_OFF_1"
@@ -1032,31 +1032,50 @@ note = "Third M5 row from the plate's centre, the first on the second block. Sam
 
 [[dim]]
 sym = "Z_BLOCK_GROUP_SHIFT"
-value = 0.3
+value = 0
 provenance = "derived"
-note = "0.3, and it is a DECISION rather than a rounding error - which is the whole reason it has a name. The butted bearing-block pair is slid 0.3 along the plate so the four C-hole rows come out whole: 28 / 64 / 108 / 144 instead of 28.3 / 64.3 / 108.3 / 144.3. 🔴 NO WHOLE-MILLIMETRE PLATE LENGTH CAN DO THIS. The 0.2 lives in Z_M5_ROW_OFF_1, measured off the real HGH20 kit, and half of a whole number is only ever .0 or .5, so it can never cancel a .2 - every length from 172 to 179 lands on .3 or .8. Where the butted pair sits ALONG the plate is free, so that is the lever. The cost: the group is 0.3 off the plate's centre, so the spindle clamp bolts at +/-50 from the plate centre end up 7.2 inboard of one spacer centreline and 7.8 of the other, against 7.5 both ways. The two spacers are already 150.5 and 151.6, so exact symmetry was never on offer."
+note = "0 - 🔴 RETIRED. It was 0.3, a deliberate slide of the block group to force the C-hole rows onto whole millimetres, and it existed only because the rows were being built from four loose measurements that were not symmetric. Deriving them from Z_BLOCK_CENTRE_SEP instead makes the pattern symmetric about the plate and the rows come out whole on their own. Kept at zero rather than deleted because the prose refers to it."
+
+[[dim]]
+sym = "BLOCK_BODY_L"
+expr = "BLOCK_BUTTED / 2"
+note = "77.09, one HGH20 block along the rail - half the measured butted pair. 🔴 TRUST THIS OVER THE ROW MEASUREMENTS. Z_M5_ROW_OFF_1 and _3 imply the two block centres sit 80 apart when butted, which contradicts this by 2.91, and BLOCK_BUTTED is one direct reading of the pair where the rows are four separate readings. Same looseness the Y block rows already carry a warning about."
+
+[[dim]]
+sym = "Z_BLOCK_CENTRE_SEP"
+value = 87
+provenance = "derived"
+note = "87, the two Z block centres apart - CHOSEN, and the one number this whole pattern hangs on. It puts the four bolt rows on 26 / 62 / 113 / 149, all whole and symmetric about the plate, which is why the group shift that used to sit here is gone. 🔴 DO NOT SPECIFY THE GAP, SPECIFY THESE ROWS. The gap is not something you set - it is what happens when the blocks are bolted to rows that are already drilled."
+
+[[dim]]
+sym = "Z_BLOCK_GAP"
+expr = "Z_BLOCK_CENTRE_SEP - BLOCK_BODY_L"
+note = "9.91, the clear gap between the two block bodies. 🔴 THE GAP IS THE WHOLE REASON THE BLOCKS ARE SPREAD AT ALL - his, 2026-10-08: a 4 mm hex driver passes through the Z plate and the spacer into this gap to reach a rail bolt beneath, so the Z plate, spacers, blocks and rails can be built as one sub-assembly and then bolted to the X carriage plate by fastening the rails last. At 9.91 a 4 mm shaft has 2.96 mm of slop, which is the difference between a job and a fight. It costs 9.91 mm of Z travel, and the blocks were butted before precisely to spend none."
+
+[[dim]]
+sym = "Z_TRAVEL"
+expr = "Z_RAIL_L - BLOCK_BUTTED - Z_BLOCK_GAP"
+note = "235.91 mm of Z travel, down from the 245.82 the butted blocks gave. Every millimetre of gap is a millimetre of travel - that is the honest trade and z-carriage.md already said so in the other direction."
 
 [[dim]]
 sym = "Z_M5_X_1"
-expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_1 - Z_BLOCK_GROUP_SHIFT"
-note = "Sheet 4's C-holes, first row in plate coordinates - 28, X measured from the plate's INSTALLED BOTTOM. Row 2 is this plus BLOCK_PITCH_Y. It was 28.3 until the block group was slid; see Z_BLOCK_GROUP_SHIFT for why the slide and not a different plate length."
+expr = "(Z_PLATE_L / 2) - (Z_BLOCK_CENTRE_SEP / 2) - (BLOCK_PITCH_Y / 2)"
+note = "26. Sheet 4's C-holes, first row, X from the plate's installed bottom. Row 2 is this plus BLOCK_PITCH_Y. DERIVED from the block separation now, where it used to be a measured row offset plus a 0.3 fudge to force a whole number - the fudge is gone because a symmetric pattern does not need one."
 
 [[dim]]
 sym = "Z_M5_X_3"
-expr = "(Z_PLATE_L / 2) + Z_M5_ROW_OFF_3 - Z_BLOCK_GROUP_SHIFT"
-note = "Third C-hole row, 108. Row 4 is this plus BLOCK_PITCH_Y."
+expr = "(Z_PLATE_L / 2) + (Z_BLOCK_CENTRE_SEP / 2) - (BLOCK_PITCH_Y / 2)"
+note = "113, the third C-hole row. Row 4 is this plus BLOCK_PITCH_Y, so 149."
 
 [[dim]]
 sym = "Z_M5_COL_INB"
-value = 41.5
-provenance = "measured"
-note = "Inboard M5 column from the Z plate's centre. The rail centrelines sit at +/-57.5 and the columns at +/-16 from each, giving 41.5 and 73.5."
+expr = "Z_RAIL_COL - BLOCK_BOLT_HALF_X"
+note = "41, the inboard M5 column. Same derivation, previously a measured 41.5."
 
 [[dim]]
 sym = "Z_M5_COL_OUTB"
-value = 73.5
-provenance = "measured"
-note = "Outboard M5 column from the plate's centre. This is the one that forced the plate to 164: its counterbore is about dia 10, so on a 154 plate it broke through by 1.5."
+expr = "Z_RAIL_COL + BLOCK_BOLT_HALF_X"
+note = "73, the outboard M5 column from the plate centre. DERIVED now, from the rail column plus half the block's own bolt pitch - it had been a measured 73.5, which carried the old 57.5 rail column with it. This is the hole whose counterbore forced the width off 154."
 
 [[dim]]
 sym = "Z_M5_Y_1"
@@ -1156,6 +1175,22 @@ expr = "BOLT_Z_CARRIAGE - Z_CBORE_WEB - SPACER_T"
 note = "5.78 mm into the bearing block, 1.16 x D, with 2.22 to spare against BLOCK_TAP_DEPTH. 🔴 THIS IS THE GUARD ON THE WHOLE STACK and it is bounded at BOTH ends: below about 1 x D the thread strips, above BLOCK_TAP_DEPTH the bolt bottoms and the joint never clamps. If this ever leaves that window the stack has moved - check it after the spacers are faced and after the plate is caliper'ed, because both of its inputs are still provisional."
 
 # ------------------------------------ Z plate to ball nut, added 2026-10-08 - they were MISSING
+
+[[dim]]
+sym = "BF12_W"
+value = 60.08
+provenance = "measured"
+note = "60.08 across, HIS CALIPERS 2026-10-08. BF12 is bolted to the X carriage plate on the screw centreline and has to pass between the two Z spacers - see BF12_SIDE_CLEAR. It had been back-derived at 60.2 from his recollection of about 2 mm each side, which was close, but three decisions were resting on it so it got measured."
+
+[[dim]]
+sym = "Z_SPACER_CHANNEL"
+expr = "(2 * Z_RAIL_COL) - SPACER_W"
+note = "64, the clear channel between the two spacers' inner edges, which is what BF12 passes through."
+
+[[dim]]
+sym = "BF12_SIDE_CLEAR"
+expr = "(Z_SPACER_CHANNEL - BF12_W) / 2"
+note = "1.96 mm each side of BF12. 🔴 HIS CATCH, 2026-10-08, and it nearly sank the rail pitch: bringing the rails in to 114 brings the spacers with them and closes this channel by 1. The new bar being 50 wide rather than 2in gives 0.8 of it back, which lands this within four hundredths of the ~2 mm the as-built carriage has. ⚠ If the spacers are ever ordered at 2in again this drops to 1.5. For more margin than the as-built, a 48 wide bar gives 2.9 and still covers the 44 block by 2 each side."
 
 [[dim]]
 sym = "T_BF12_BLOCK"
@@ -1338,22 +1373,33 @@ provenance = "part"
 note = "HGR20 rail width - the 20 in the designation. For the 3D model he settled 2026-10-03 that the rail may be drawn as 20 mm SQUARE ROD, so this doubles as its section height. That is an approximation he chose, not one the model invented: the real HGR20 profile is shorter than it is wide and shaped, and nothing downstream of a drawing depends on the difference."
 
 [[dim]]
+sym = "X_CARRIAGE_W"
+value = 154
+provenance = "part"
+note = "154, the X carriage plate across - same width as the X end plates, and Sheet 3a's Y axis."
+
+[[dim]]
+sym = "Z_RAIL_INSET"
+value = 20
+provenance = "derived"
+note = "20, each Z rail's centreline in from the carriage plate's long edge - Sheet 3a's R1 at Y 20 and R2 at Y 134. It is set at assembly with a 10 mm stop against the plate edge, the rail being RAIL_W wide, so the stop is the thing that makes this repeatable rather than a measurement."
+
+[[dim]]
 sym = "Z_RAIL_COL"
-value = 57.5
-provenance = "measured"
-note = "Z rail centrelines either side of the carriage plate's centre. z-carriage.md has carried it since 2026-09-30: the M5 columns sit at +/-16 from each rail centreline, which lands them at the measured 41.5 and 73.5 from plate centre."
+expr = "(X_CARRIAGE_W / 2) - Z_RAIL_INSET"
+note = "57, the Z rail centrelines either side of the carriage plate's centre, so a pitch of 114. 🔴 IT WAS CARRIED AS A MEASURED 57.5 AND SHEET 3a HAS ALWAYS DRAWN 57. The sheet puts R1a-g on Y 20 and R2a-g on Y 134 of a 154 plate - inset 20 from each long edge, which is 57 from the centre - and nobody had noticed the registry disagreeing by half a millimetre. The sheet wins: 20 from the edge is a design intent set with a stop block, where 57.5 was a reading off a carriage. That half millimetre is not cosmetic - it is what decides whether the block bolt columns land on whole numbers, and therefore the whole plate."
 
 [[dim]]
 sym = "SPACER_L"
-value = 150.5
-provenance = "measured"
-note = "Z spacer bar length, measured 2026-10-02. ITS PAIR IS 151.6 - the two were cut from one 12in piece and are 1.1 apart, which is why this is recorded as a measurement of one bar rather than a design length. Each bar spans TWO bearing blocks, so it is a little under the butted pair's BLOCK_BUTTED of 154.18; nothing is located by the ends."
+value = 160
+provenance = "part"
+note = "160, NEW STOCK ordered 2026-10-08 - the existing pair at 150.5 and 151.6 cannot span the spread blocks. It carries the four clearance holes at 18.5 / 54.5 / 105.5 / 141.5 and the driver access hole at its centre. ⚠ 160 puts a symmetric hole pattern on half millimetres; a 161 bar would read 19 / 55 / 106 / 142. Sheet 3b."
 
 [[dim]]
 sym = "SPACER_W"
-value = 50.8
+value = 50
 provenance = "part"
-note = "2in bar, across the spacer. The dimension that is NOT in doubt on these two - it is the stock width, where the thickness turned out not to be the 5/8in the repo had assumed."
+note = "50, the new bar across - metric, replacing the 2in (50.8) of the existing pair. His, 2026-10-08. It leaves 9 mm either side of the block's own 32 mm bolt pitch, and the 0.8 it gives up against 2in is what keeps the BF12 side clearance where it was once the rails came in to a 114 pitch - see BF12_SIDE_CLEAR."
 
 [[dim]]
 sym = "CLAMP_W"
