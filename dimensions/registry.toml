@@ -388,9 +388,8 @@ note = "Doubler height. 45, so it can come out of OFFCUTS - his reason, and the 
 
 [[dim]]
 sym = "FIN_STOCK"
-value = 301.625
-provenance = "measured"
-note = "The square is 11 7/8in = 301.625, HIS PIECE 2026-10-07. It had been carried as a measured 302 and it is not 302 - nor is it the nominal 12in (304.8) it was already corrected away from once. Both fins come out of this one square, so it sets FIN_BASE_W directly."
+expr = "PLATE_H"
+note = "The square both front fins are cut from, 301.625 - PLATE_H, because the fin's height IS the square's side and it has to match the other four plates. It is 11 7/8in, his piece 2026-10-07; it had been carried as a measured 302 and it is not 302, nor the nominal 12in it was already corrected away from once. Both fins come out of this one square, so it also sets FIN_TOP_W."
 
 [[dim]]
 sym = "FIN_KERF"
@@ -1102,10 +1101,15 @@ provenance = "part"
 note = "The 30 series' module. Corner bores and T-slot centres both sit on it, which is why EXT_BORE_INSET and RAIL_SLOT_INSET are both 15 and why a 120 beam has four rows at 15 / 45 / 75 / 105."
 
 [[dim]]
-sym = "SIDE_PLATE_H"
+sym = "PLATE_H"
 value = 301.625
 provenance = "part"
-note = "11 7/8in = 301.625, THE ORDERED SIZE 2026-10-07, down from a nominal 12in (304.8). It matches the fin square, which is the same buy. Still a BOUGHT size and not a derived one - which is exactly why Sheet 9 dimensions off the bottom edge, and that convention is now load-bearing rather than merely tidy, because the plate no longer reaches the beam top."
+note = "11 7/8in, THE ONE ORDERED HEIGHT - and his rule 2026-10-08: the two side plates, the back plate and the two front fins ALL stand this high, every hole on them is measured from the BOTTOM edge, and a part that does not measure 301.625 is misordered or mismade and goes back. 🔴 THAT MAKES IT AN ACCEPTANCE CRITERION, NOT A NOMINAL TO DESIGN AROUND, which is why SIDE_PLATE_H, REAR_PLATE_W and FIN_STOCK all derive from it rather than each carrying their own 301.625 - they are one bought size and they cannot be allowed to drift apart in this file. The bottom edge is the reference on all five because it is the edge that bears on the torsion box's top skin, so a common height plus a common reference edge is what makes the beam line up without any part knowing about any other. Check all five against each other on arrival, not just against this number - two parts both wrong by the same amount would still assemble."
+
+[[dim]]
+sym = "SIDE_PLATE_H"
+expr = "PLATE_H"
+note = "The full-height outboard plate's height, 301.625 - PLATE_H, because it is the same ordered size as the back plate and the fin square. Ordered 11 7/8in x 39 3/8in. Still a BOUGHT size and not a derived one, which is exactly why Sheet 9 dimensions off the bottom edge; that convention is now load-bearing rather than merely tidy, because the plate no longer reaches the beam top."
 
 [[dim]]
 sym = "SIDE_TSLOT_ROW_1"
@@ -1172,9 +1176,8 @@ note = "L-brackets behind each front fin, tying it down to the box's top skin - 
 
 [[dim]]
 sym = "REAR_PLATE_W"
-value = 301.625
-provenance = "part"
-note = "11 7/8in = 301.625, THE ORDERED SIZE 2026-10-07 - the same bought size as the side plates' SIDE_PLATE_H, and the same as the fin square. Sheet 7 is referenced to the plate's BOTTOM edge, so this is the top edge's Y."
+expr = "PLATE_H"
+note = "The rear plate's height, 301.625 - PLATE_H, the same ordered size as the side plates and the fin square. Ordered 11 7/8in x 47 21/32in. Sheet 7 is referenced to the plate's BOTTOM edge, so this is the top edge's Y."
 
 [[dim]]
 sym = "RP_BEAM_ROW_1"

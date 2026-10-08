@@ -94,6 +94,16 @@ for months.
 | Two **outboard plates**, 12" × 1 m × 1/8" steel | ~25 holes each, and steel runs several times longer than aluminium would |
 | Three **front strips**, 45 mm × 1 m × 4 mm | |
 
+🔴 **Five plates stand on the box and all five are 301.625 high: the two side plates, the back
+plate and the two front fins.** Measure all five against each other as they arrive, before any of
+them is drilled. **A part that is not 301.625 is misordered or mismade — send it back.** Two parts
+wrong by the same amount would still assemble, so check them against each other and not only
+against the number.
+
+**Every hole on those five is measured from the bottom edge**, because the bottom edge is what
+bears on the box's top skin. One height and one reference edge is what lines the beam up without
+any plate having to know about any other.
+
 **Lay the extrusion bolt patterns out by scribing.** Two lines, four stations ticked along each —
 that is the eight-hole pattern at a beam end.
 

@@ -73,6 +73,7 @@ instead** — see the two-document note at the top of this file.
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
 | Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 60.5 × 50 window for the stepper frame. **Rear:** one **1210.73 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
+| **Plate height** | 🔴 **The five plates that stand on the box are all 301.625 (11 7/8") high** — two side plates, the back plate, two front fins — and **every hole on them is measured from the bottom edge**, the edge that bears on the box's top skin. One height plus one reference edge is what lines the beam up without any plate knowing about another. **A part that is not 301.625 is misordered or mismade.** PLATE_H in the registry; the other three symbols derive from it so they cannot drift |
 | Plate materials | 6061 throughout **except** the two Y outboard plates (**1/8" steel**) and the Y rear plate (**1/4" A36**) — see [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), [`outboard-plate.md`](outboard-plate.md) and [`lateral-stiffness.md`](lateral-stiffness.md) |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
