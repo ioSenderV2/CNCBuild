@@ -182,21 +182,36 @@ note = "10 mm, HIS PART 2026-10-08 - metric plate, NOT the 3/8in (9.525) this wa
 sym = "T_FIN"
 value = 10
 provenance = "measured"
-note = "The 302 square measured 10 - metric plate, NOT 3/8in (9.525) and not 1/2in"
+note = "His caliper on the fin stock: 10, metric plate, NOT 3/8in (9.525) and not 1/2in. \u26a0 THIS NOTE SAID 'the 302 square' AND BOTH HALVES OF THAT WERE OVERTAKEN - the piece measures 301.625 (PLATE_H), and as of 2026-10-08 each fin has its own piece rather than both nesting out of one square. The 10 is the part of the reading that was ever about thickness and it is unchanged."
 source = "measured 2026-10-02"
 
 [[dim]]
 sym = "T_SIDE_PLATE"
-value = 3.175
-provenance = "nominal"
-note = "1/8in steel sheet. OPEN: the listing also says 11 gauge (3.04). A 3.36 was floated 2026-10-02 and WITHDRAWN as a guess."
-source = "caliper on arrival"
+value = 3.429
+provenance = "part"
+note = "\U0001f534 ORDERED 10 GAUGE, NOT 1/8in - 3.429, and the sales order is the authority. The line reads CSH 10GA(.135) x 11-7/8in x 39-5/16in CR, two pieces, cold-rolled carbon sheet, and .135in x 25.4 is 3.429. \u2705 THAT CLOSES THE OPEN: this symbol carried a nominal 1/8in (3.175) with a standing question about the listing also saying 11 gauge (3.04), and a 3.36 had been floated and withdrawn as a guess. None of the three was right and the question is now answered by a part that has been bought rather than by a better reading of a listing. \u26a0 IT FEEDS 17 SYMBOLS and the 0.254 it moved is not cosmetic in two of them: REAR_PLATE_L is the flush-envelope length and it grows by 0.508 to 1211.238, while the back plate was ORDERED at 47 21/32in = 1210.47 - so the plate no longer reaches flush and that gap is open. FIN_PROUD comes down to 16.571. Still caliper the delivered sheet: 10 gauge sheet is a gauge, and the gauge is the nominal."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
 sym = "T_BACK_JOIN_PLATE"
 value = 6.35
-provenance = "nominal"
-note = "1/4in 6061, X back joining plate across the beam seam"
+provenance = "part"
+note = "1/4in 6061, X back joining plate across the beam seam - ORDERED as a true 1/4in, same call as T_REAR_PLATE. The sales order line reads APL 0.25in x 4.6875in x 39.3125in 6061 T651, one piece, so the temper is T651 and the piece is sheared 119.0625 x 998.5375. \u26a0 SHEET 10 DRAWS IT 120 x 1000 and the ordered piece is neither: see XBJ_W and XBJ_L."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
+
+[[dim]]
+sym = "XBJ_W"
+value = 119.0625
+provenance = "part"
+note = "119.0625, the ORDERED width of the X back joining plate - 4 11/16in, sheared. \u26a0 SHEET 10 DRAWS IT 120 AND CALLS THAT 'the full section height', which is the one claim the ordered piece breaks: it is 0.9375 shy of the 30-6060 pair's 120. It costs nothing because Sheet 10 is referenced to the plate's TOP edge, which is the beam's top face, so the four T-slot rows at 15 / 45 / 75 / 105 do not move and the shortfall lands at the BOTTOM, 14.06 below the last row instead of 15. \U0001f534 DO NOT RE-REFERENCE SHEET 10 TO ITS BOTTOM EDGE to 'fix' this - the top edge is the reference precisely because it is the face that registers against the beam, and the bottom edge of this plate registers against nothing."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
+
+[[dim]]
+sym = "XBJ_L"
+value = 998.5375
+provenance = "part"
+note = "998.5375, the ORDERED length of the X back joining plate - 39 5/16in, sheared, the same shear length as the two side plates. Sheet 10 draws it 1000. Same shape of slack as SIDE_PLATE_L and the same reason it is harmless: the seven stations run 50 to 950, so 1.46 of margin disappears from the end the plate is not laid out from."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 # ---------------------------------------------------------------- X end plate
 
@@ -683,9 +698,16 @@ expr = "EXT_W + T_SIDE_PLATE"
 note = "One Y beam as assembled, across the machine: the extrusion plus its outboard side plate. His number, 2026-10-03 - he gave it as 60 + 1/8in."
 
 [[dim]]
+sym = "REAR_PLATE_L_ORDERED"
+value = 1210.47
+provenance = "part"
+note = "1210.47, the length the back plate was actually BOUGHT at - 47 21/32in, sheared, one piece. It was ordered to the nearest 1/32in under the flush envelope as REAR_PLATE_L then stood (1210.73 at a 1/8in side plate), which cost 0.26. The side plate then turned out to be 10 gauge rather than 1/8in, the envelope grew 0.508, and the shortfall is now 0.77. See REAR_PLATE_L."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
+
+[[dim]]
 sym = "REAR_PLATE_L"
 expr = "Y_BEAM_GAP + (2 * Y_BEAM_ASSY_W)"
-note = "Rear plate length, settled 2026-10-03 and NO LONGER A WINDOW. The plate runs FLUSH with the side plates' outer faces, which is exactly the ~1212 MAXIMUM lateral-stiffness.md names - past it the rear plate becomes the proud member at the corner. Supersedes the round 1200 and the tilde'd 1205. It is load-bearing now because Sheet 7's A9-A16 are absolute from the plate's left edge: cut the plate long and the Y2 station is wrong by the excess."
+note = "\u26a0 OPEN 2026-10-08 - THIS IS THE FLUSH ENVELOPE AND IT IS NO LONGER THE PLATE. 1211.238: the plate running FLUSH with the side plates' outer faces, which is exactly the ~1212 MAXIMUM lateral-stiffness.md names - past it the rear plate becomes the proud member at the corner. Settled 2026-10-03 and NO LONGER A WINDOW; supersedes the round 1200 and the tilde'd 1205. \U0001f534 THE DELIVERED PLATE IS REAR_PLATE_L_ORDERED = 1210.47, so it falls 0.77 SHORT of flush and the two cannot both be true. That matters because Sheet 7's A9-A16 are ABSOLUTE FROM THE PLATE'S LEFT EDGE, and so are its eight torsion-box stations through XBOX_X_FIRST: if the stations keep coming off this envelope figure while the plate is 0.77 shorter, the Y2 beam station is out by the whole 0.77 and the bolt rows sit 0.385 off centre. The alternatives are to reference Sheet 7's X off the Y1 EXTRUSION FACE instead of the plate edge, or to keep the plate edge and accept the plate sitting 0.385 recessed at each corner. HIS CALL, NOT MINE. BOX_W rides on whichever it is."
 
 [[dim]]
 sym = "Y1_EXT_FACE_X"
@@ -839,8 +861,9 @@ note = "The box's vertical thickness, 138 - his arithmetic 2026-10-03 and the fi
 [[dim]]
 sym = "T_REAR_PLATE"
 value = 6.35
-provenance = "nominal"
-note = "1/4in A36 hot-rolled, the Sheet 7 plate. CALIPER IT with the side plate on arrival."
+provenance = "part"
+note = "1/4in A36 hot-rolled, the Sheet 7 plate - and it is ORDERED as a true 1/4in, his word 2026-10-08. The sales order line reads CPL 1/4in x 11-7/8in x 47.6562in HR, one piece. \u2705 The nominal stands and that is worth saying rather than assuming: three nominals in this registry have already turned out wrong by being taken off what a part was SOLD as - a 5/8in spacer that measured 16.41, a 1/2in plate whose stock is 10 mm, a 1/2in end plate that micrometers 12.19. This one is ordered true rather than inferred from a label. Still caliper it with the side plate on arrival: ordered true is not the same as delivered true."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
 sym = "BOX_W"
@@ -1315,9 +1338,16 @@ provenance = "part"
 note = "11 7/8in, THE ONE ORDERED HEIGHT - and his rule 2026-10-08: the two side plates, the back plate and the two front fins ALL stand this high, every hole on them is measured from the BOTTOM edge, and a part that does not measure 301.625 is misordered or mismade and goes back. 🔴 THAT MAKES IT AN ACCEPTANCE CRITERION, NOT A NOMINAL TO DESIGN AROUND, which is why SIDE_PLATE_H, REAR_PLATE_W and FIN_STOCK all derive from it rather than each carrying their own 301.625 - they are one bought size and they cannot be allowed to drift apart in this file. The bottom edge is the reference on all five because it is the edge that bears on the torsion box's top skin, so a common height plus a common reference edge is what makes the beam line up without any part knowing about any other. Check all five against each other on arrival, not just against this number - two parts both wrong by the same amount would still assemble."
 
 [[dim]]
+sym = "SIDE_PLATE_L"
+value = 998.54
+provenance = "part"
+note = "998.54, the ORDERED length of each side plate - 39 5/16in, sheared, two pieces. \u26a0 THE BEAM IS 1000 AND THE PLATE IS 1.46 SHORT OF IT, which is a choice the shear size made rather than a derivation: BEAM_LEN is a part at 1000 and nothing on Sheets 8, 9 or 10 needs the plate to reach the beam's ends. The seven T-slot stations run 50 to 950 on TSLOT_X_PITCH, so the shortfall sits in the 48.54 of margin past the last hole rather than anywhere load-bearing. Which END the 1.46 comes off is NOT decided here - Sheet 9's X 0 is the plate's left edge and the stations are absolute from it, so if the plate is laid out from the left the slack all lands at the right."
+source = "Specialty Metals Corp sales order W053768, 2026-10-08"
+
+[[dim]]
 sym = "SIDE_PLATE_H"
 expr = "PLATE_H"
-note = "The full-height outboard plate's height, 301.625 - PLATE_H, because it is the same ordered size as the back plate and the fin square. Ordered 11 7/8in x 39 3/8in. Still a BOUGHT size and not a derived one, which is exactly why Sheet 9 dimensions off the bottom edge; that convention is now load-bearing rather than merely tidy, because the plate no longer reaches the beam top."
+note = "The full-height outboard plate's height, 301.625 - PLATE_H, because it is the same ordered size as the back plate and the fin square. Ordered 11 7/8in x 39 5/16in - the sales order, not the 39 3/8in this note carried until 2026-10-08, which was 1.59 long. Still a BOUGHT size and not a derived one, which is exactly why Sheet 9 dimensions off the bottom edge; that convention is now load-bearing rather than merely tidy, because the plate no longer reaches the beam top."
 
 [[dim]]
 sym = "SIDE_TSLOT_ROW_1"
