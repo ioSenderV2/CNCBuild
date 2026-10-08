@@ -1271,8 +1271,11 @@ before drilling the third one.</b><sup class="f">6.4</sup></p>
 &#128308; <b>Y 0 is the installed BOTTOM edge</b> and Y runs up to <b>301.625</b> at the top. The
 bottom edge is the reference because it bears on the box's top skin &mdash; the same edge every
 other plate on this machine is dimensioned from.<sup class="f">7.6</sup><br>
-&#128308; <b>So every beam-bore Y depends on the bought plate height.</b> Caliper the delivered
-plate and check it against 301.625 before scribing A1&ndash;A16.<sup class="f">7.6</sup><br>
+&#128308; <b>The beam bores do NOT depend on this plate's height.</b> They sit 182 above the box's
+top skin because the FIN's window puts the beam there, so A1&ndash;A16 read the same
+<b>197 / 227 / 257 / 287</b> that Sheet 1 carries for the fin.<sup class="f">7.6</sup><br>
+&#128308; <b>&#9888; F1&ndash;F8 are OPEN &mdash; do not drill them.</b> Their 127 was given from the
+installed TOP edge and that edge moved 3.175 when the plate went to 11 7/8".<sup class="f">7.4</sup><br>
 <b>X</b> along the 1210.73 from the left end.<br>
 &#128308; <b>The length is NO LONGER a window.</b> It derives &mdash; 1084.38 between the beams plus
 2 &times; (60 extrusion + 1/8" side plate) &mdash; and <b>A9&ndash;A16 are absolute from the left
@@ -1291,9 +1294,10 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <!-- the 1/8in side plates, which the rear plate runs FLUSH with: X 0-3.175 and 1207.555-1210.73 -->
   <rect x="0" y="0" width="1.14" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
   <rect x="434.72" y="0" width="1.14" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
-  <!-- the two beam footprints, 60 wide x 120 tall, at the plate's TOP: Y 181.625 to 301.625 -->
-  <rect x="1.14" y="0" width="21.6" height="43.2" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
-  <rect x="413.12" y="0" width="21.6" height="43.2" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+  <!-- the two beam footprints, 60 wide x 120 tall, Y 182 to 302 - so the beam's top face is
+       0.375 ABOVE this plate's top edge and the footprint is drawn clipped to the plate -->
+  <rect x="1.14" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+  <rect x="413.12" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
   <text class="lbl" x="3" y="53" fill="#c0c">Y1 BEAM</text>
   <text class="lbl" x="401" y="53" fill="#c0c">Y2 BEAM</text>
 
@@ -1311,22 +1315,23 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
 
   <text class="q" x="448" y="14">PLATE CLAMPED RIGHT SIDE UP.</text>
   <text class="q" x="448" y="26">Installed BOTTOM edge is Y 0. Both beams</text>
-  <text class="q" x="448" y="38">sit at the TOP &#8212; Y 181.625 to 301.625.</text>
+  <text class="q" x="448" y="38">sit at the TOP &#8212; Y 182 to 302.</text>
   <text class="q" x="448" y="56" fill="#c0c">Beam stations in X are FIXED:</text>
   <text class="q" x="448" y="68" fill="#c0c">Y1's extrusion face at X 3.175, Y2's at</text>
   <text class="q" x="448" y="80" fill="#c0c">X 1207.555 &#8212; a side plate at each end.</text>
   <text class="q" x="448" y="98" fill="#b06000">BF12 Y carries the interposer, and from this</text>
   <text class="q" x="448" y="110" fill="#b06000">edge it SUBTRACTS: 174.625 and 156.625</text>
   <text class="q" x="448" y="122" fill="#b06000">&minus; 9.525 = 165.1 and 147.1.</text>
-  <text class="q" x="448" y="140" fill="#c00">EVERY BEAM-BORE Y DEPENDS ON THE</text>
-  <text class="q" x="448" y="152" fill="#c00">BOUGHT 301.625. Caliper the delivered</text>
-  <text class="q" x="448" y="164" fill="#c00">plate before scribing A1&ndash;A16.</text>
+  <text class="q" x="448" y="140" fill="#c00">&#9888; F1&ndash;F8 ARE OPEN. The 127 they</text>
+  <text class="q" x="448" y="152" fill="#c00">come from was given off the installed TOP</text>
+  <text class="q" x="448" y="164" fill="#c00">edge, and that edge moved 3.175. Do not</text>
+  <text class="q" x="448" y="176" fill="#c00">drill them until it is settled.</text>
 
   <!-- ================= DETAIL: LEFT STATION, scale 1.2 ================= -->
   <text class="lbl" x="0" y="200">DETAIL &#8212; Y1 STATION, scale 1.2, drawn in the installed orientation. The Y2 station is this MIRRORED about X 605.365: read X&prime; = 1210.73 &minus; X.</text>
 
   <!-- detail: the BEAM'S OWN lower-left corner at SVG (20, 376) - that corner is plate
-       station X 3.175, Y 181.625. Local dimensions are off the beam; the sheet-frame Y of
+       station X 3.175, Y 182. Local dimensions are off the beam; the sheet-frame Y of
        every hole is listed beside it. SVG x = 20 + Xlocal*1.2 ; SVG y = 376 - Ylocal*1.2 -->
   <rect x="20" y="232" width="3.81" height="144" fill="#d8d8d8" stroke="#555" stroke-width="0.6"/>
   <rect x="23.81" y="232" width="72" height="144" fill="#fff" stroke="#c0c" stroke-width="1.4"/>
@@ -1344,14 +1349,14 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <circle cx="77.81" cy="250" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <text class="lbl" x="100" y="246">A1&ndash;A8 &#8212; &oslash;9, scribed layout</text>
   <text class="lbl" x="100" y="258">X 18.175 / 48.175</text>
-  <text class="lbl" x="100" y="270">Y 196.625 / 226.625 / 256.625 / 286.625</text>
+  <text class="lbl" x="100" y="270">Y 197 / 227 / 257 / 287 &#8212; as Sheet 1</text>
 
   <!-- F holes: X 7 / 53 off the extrusion face, BELOW the beam's bottom face -->
   <circle cx="32.21" cy="395.83" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
   <circle cx="87.41" cy="395.83" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
   <circle cx="32.21" cy="417.43" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
   <circle cx="87.41" cy="417.43" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
-  <text class="lbl" x="100" y="393" fill="#c00">F1, F2 &#8212; Y 165.1</text>
+  <text class="lbl" x="100" y="393" fill="#c00">F1, F2 &#8212; Y 165.1 &#9888; OPEN</text>
   <text class="lbl" x="100" y="415" fill="#c00">F5, F6 &#8212; Y 147.1 &middot; both on X 10.175 and 56.175</text>
 
   <!-- detail dimensions -->
@@ -1366,7 +1371,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <line x1="8" y1="376" x2="8" y2="232" stroke="#06c" stroke-width="0.5"/>
   <text class="dim" x="-20" y="306">120</text>
   <circle cx="20" cy="376" r="3.0" fill="#c00"/>
-  <text class="dim" x="-22" y="388" fill="#c00">X 3.175, Y 181.625</text>
+  <text class="dim" x="-22" y="388" fill="#c00">X 3.175, Y 182</text>
 
   <text class="q" x="268" y="252" fill="#c0c">THE SIDE PLATE PUSHES THE BEAM OFF X 0.</text>
   <text class="q" x="268" y="264" fill="#c0c">The plate runs flush with the side plates' outer</text>
@@ -1391,8 +1396,8 @@ explicitly rather than making anyone do that subtraction at the mill.</figcaptio
 <h3>Hole schedule &mdash; machining coordinates, Y from the installed bottom edge</h3>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;3.175, Y&nbsp;181.625</td><td>8</td><td class="n"><b>18.175, 48.175</b></td><td class="n"><b>196.625, 226.625,<br>256.625, 286.625</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1207.555, Y&nbsp;181.625</td><td>8</td><td class="n"><b>1162.555, 1192.555</b></td><td class="n"><b>196.625, 226.625,<br>256.625, 286.625</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;3.175, Y&nbsp;182</td><td>8</td><td class="n"><b>18.175, 48.175</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1207.555, Y&nbsp;182</td><td>8</td><td class="n"><b>1162.555, 1192.555</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
 <tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; first row</td><td>4</td><td class="n"><b>10.175, 56.175,<br>1154.555, 1200.555</b></td><td class="n"><b>165.1</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
 <tr><td>F5&ndash;F8</td><td><b>BF12</b>, face-mounted &mdash; second row</td><td>4</td><td class="n"><b>10.175, 56.175,<br>1154.555, 1200.555</b></td><td class="n"><b>147.1</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
 <tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>80.365, 230.365, 380.365, 530.365,<br>680.365, 830.365, 980.365, 1130.365</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1210.73 plate</b> &mdash; 80.365 clear at each end<sup class="f">7.3</sup><br><b>Drill guide for the plywood tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup></td></tr>
@@ -1645,7 +1650,7 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <p><b>7.3</b> &mdash; <b>Y 30, the same number the side plates and the front fin carry.</b> One bolt line across every plate that lands on the box, and from the installed bottom edge it reads as itself with no arithmetic. It took two reframings to get here: it was a round <b>270</b> measured from the installed top, which put the row 34.8 up and 4.8 off every other plate while a note called the difference <i>deliberate</i> &mdash; <b>it was not</b> &mdash; then 271.625 once the plate height was corrected, and now simply 30. <b>The pitch no longer differs</b>: 150 here over the 1210.73, and the side plates run 150 from 50 as well. Eight at 150 span 1050, so centring them on the plate leaves <b>80.365 clear at each end</b>. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
 <p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
 <p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1210.73 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
-<p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part; Sheet 9 has been dimensioned from it since the side plate's rows were corrected, and this sheet now matches. The alternative was to clamp the plate upside down, which is how it was drawn until 2026-10-07, and it was not an arbitrary choice &mdash; inverted, <b>Y1's lower-left corner landed on Y 0 exactly</b>, so the sixteen beam bores read the extrusion's own <b>15 / 45 / 75 / 105</b> with nothing added and nothing depending on the plate's height. &#128308; <b>Know what the change costs, because it is real.</b> From the bottom edge those sixteen are <b>196.625 / 226.625 / 256.625 / 286.625</b>, every one of them the bought 301.625 minus an extrusion inset &mdash; so a plate that arrives off-size moves all sixteen, and these are the bores that must match extruded corner bores on two beams a metre apart. They are also the ones gated by whether the Laguna can hold one height reference across 1210.73 (see 7.5). <b>The eight that got easier are the drill guides into plywood</b>, which had nothing to miss in the first place (7.8). The four Y values live in the registry as RP_BEAM_ROW_1 to RP_BEAM_ROW_4 rather than as numbers on a drawing, so they re-derive if the plate height ever moves again. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
+<p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part. Sheet 9 has been dimensioned from it since the side plate's T-slot rows were corrected, and this sheet now matches. <b>It costs nothing to do so</b>, which is worth stating because the sheet was drawn upside down until 2026-10-07 on the belief that it did. &#128308; <b>The beam bores are located by the FIN, not by this plate.</b> Y_BEAM_UNDERSIDE is 182 above the box skin because the fin's window puts the beam there &mdash; the fin is the riser that actually carries it, settled 2026-10-03 after the side plate was ruled out as the reference. So every plate standing on that skin sees the beam's corner bores at the same four heights, <b>197 / 227 / 257 / 287</b>, whatever height that plate happened to be bought at. Sheet 1 has carried exactly those numbers for the fin all along. &#9888; <b>The old inverted frame was 2.8 mm out and nobody had caught it.</b> It listed the A-holes at Y 15 / 45 / 75 / 105 from the installed top edge and called the beam's corner Y 0, which only holds if the beam's top face is flush with the plate's top edge. On a 304.8 plate it stood <i>2.8 proud</i> of the beam top, so those bores were a plate-height error of the same size and from the same 2026-10-03 correction that left Sheet 9's lines behind. Re-referencing to the bottom edge removes the error rather than rescaling it. <b>The four Y values live in the registry</b> as RP_BEAM_ROW_1 to RP_BEAM_ROW_4, on the same expression as SIDE_TSLOT_ROW_1, so the two plates cannot drift apart. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
 <p><b>7.7</b> &mdash; <b>The BF12 rows carry the interposer, and the full thickness applies.</b> The screw's near end is carried by the cast stepper frame, which sits <i>on</i> the 3/8&quot; interposer and is therefore LOWER than bare metal. BF12 at the far end has to drop by the same amount or the screw is not parallel to its own beam. This sheet is clamped inverted, so lower is a <b>larger</b> Y: 127 and 145 become <b>136.5 and 154.5</b>. <b>It is the full 9.525, not 4.525.</b> The registry's NUT_FACE_BELOW_BEAM does subtract a 5 mm standoff, but only because its base figure was <i>measured</i> on a machine that still had one. <b>The standoff no longer exists in the design</b>, so there is nothing here to take back off. &#9888; <b>T_INTERPOSER is still nominal</b> &mdash; caliper the 3/8&quot; stock before this plate is drilled, and these two rows follow it automatically.</p>
 <p><b>7.8</b> &mdash; <b>The plywood tongues are never drilled to a coordinate.</b> The plan is to assemble the machine, set it on the torsion box, and then use the <b>front fins, the side plates and this rear plate as drill guides</b> to spot the plywood through their own holes. So the eight X stations here only have to clear obstructions and spread the load &mdash; nothing downstream has to agree with them, because the mating holes do not exist until the steel is bolted up and sitting in place. That is why 150 is a decision rather than a measurement, and why a hole landing a millimetre off costs nothing. It is the same logic as R5&ndash;R8 on Sheet&nbsp;5: <b>a hole you transfer needs no coordinate and fits better than one you compute.</b></p>
 <p class="src">Full reasoning, and the decisions these summarise, live in <b>machine/*.md</b>. If a note here and a .md file disagree, <b>the .md file wins</b>.</p>

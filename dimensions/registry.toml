@@ -717,7 +717,7 @@ note = "Y1's outboard EXTRUSION face to Y2's, 1204.38 - the figure lateral-stiff
 sym = "BF12_ROW1_BARE"
 value = 127
 provenance = "derived"
-note = "First BF12 row on the rear plate BEFORE the interposer is accounted for, measured DOWN from the plate's installed top edge. His number, 2026-10-03. It is a distance from the top edge rather than a Y in any sheet frame, so re-referencing Sheet 7 to the bottom edge left it untouched - BF12_ROW1_Y does the conversion."
+note = "First BF12 row on the rear plate BEFORE the interposer is accounted for, measured DOWN from the plate's installed top edge. His number, 2026-10-03. ⚠ OPEN, 2026-10-07: THE EDGE IT IS MEASURED FROM HAS MOVED. 127 was given when the plate was a nominal 304.8, which placed the row 177.8 above the box skin; with the plate bought at 301.625 the same 127 places it at 174.625. Which of those he meant is not established and the chain cannot settle it - BF12 carries the ball screw's far end under the Y beam, so the row plausibly keys off Y_BEAM_UNDERSIDE (182) rather than off a bought plate edge at all, the way RP_BEAM_ROW_1 does. ASK BEFORE DRILLING F1-F8."
 
 [[dim]]
 sym = "BF12_ROW_PITCH"
@@ -1178,23 +1178,23 @@ note = "11 7/8in = 301.625, THE ORDERED SIZE 2026-10-07 - the same bought size a
 
 [[dim]]
 sym = "RP_BEAM_ROW_1"
-expr = "REAR_PLATE_W - BEAM_H + EXT_BORE_INSET"
-note = "196.625. Lowest of Sheet 7's four beam-bore rows, A1-A16, measured from the plate's BOTTOM edge. 🔴 THESE FOUR EXIST BECAUSE THE SHEET WAS RE-REFERENCED on 2026-10-07. In the old inverted frame the rows read the extrusion's own 15 / 45 / 75 / 105 with nothing added and were loose numbers on a drawing; from the bottom edge they are large and they DEPEND ON THE BOUGHT PLATE HEIGHT, so they are symbols now and track REAR_PLATE_W rather than being retyped. They are also the rows gated by the open question of whether the Laguna can hold one height reference across 1210.73 mm."
+expr = "Y_BEAM_UNDERSIDE + EXT_BORE_INSET"
+note = "197. Lowest of Sheet 7's four beam-bore rows, A1-A16, from the plate's BOTTOM edge - the SAME formula and the same number as SIDE_TSLOT_ROW_1, and the same 197 / 227 / 257 / 287 Sheet 1 already carries for the fin's beam-end bores. 🔴 IT DOES NOT DEPEND ON THE BOUGHT PLATE HEIGHT, and the first version of this symbol said it did: it was written as REAR_PLATE_W - BEAM_H + EXT_BORE_INSET, which assumes the beam's top face is flush with the plate's top edge. It is not, and the registry already said so - Y_BEAM_UNDERSIDE comes from the FIN's window, the riser that actually carries the beam, settled 2026-10-03 after the side plate was ruled out as the reference. Every plate standing on the box's top skin therefore sees these bores at the same height, whatever height that plate was bought at. ⚠ Still the rows gated by whether the Laguna can hold one height reference across 1210.73 mm."
 
 [[dim]]
 sym = "RP_BEAM_ROW_2"
 expr = "RP_BEAM_ROW_1 + SLOT_GRID"
-note = "226.625. The 30 series' module is the bore pitch up a stacked pair, so rows 2-4 follow on SLOT_GRID."
+note = "227. The 30 series' module is the bore pitch up a stacked pair, so rows 2-4 follow on SLOT_GRID."
 
 [[dim]]
 sym = "RP_BEAM_ROW_3"
 expr = "RP_BEAM_ROW_1 + (2 * SLOT_GRID)"
-note = "256.625."
+note = "257."
 
 [[dim]]
 sym = "RP_BEAM_ROW_4"
 expr = "RP_BEAM_ROW_1 + (3 * SLOT_GRID)"
-note = "286.625, the highest. It sits EXT_BORE_INSET below the beam's top face, which is 0.375 above the plate's own top edge - the fin square's shortfall, arriving here from a different direction."
+note = "287, the highest. It sits EXT_BORE_INSET below the beam's top face, and that face is 0.375 ABOVE this plate's own top edge - so the highest bore is 14.625 below the plate edge, the same 14.625 as SIDE_TSLOT_ROW_4 on the side plate. Both are the fin square's 0.375 shortfall arriving from a different direction."
 
 [[dim]]
 sym = "XBOX_ROW_Y"
