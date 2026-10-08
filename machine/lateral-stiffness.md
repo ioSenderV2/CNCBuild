@@ -322,7 +322,7 @@ terminate short because the length was never long enough to reach. This is the b
 the two parts cannot foul, rather than being trimmed until they do not.
 
 📌 **The rear needed the same thought and got it 2026-10-03** - the plate's length is now derived
-and fixed at **1211.75**, not a window. See "The length" under the rear plate.
+and fixed at **1210.73**, not a window. See "The length" under the rear plate.
 
 ## The second gain is bolt spacing, and it is the bigger one
 
@@ -369,7 +369,7 @@ part they fasten to changed, the height and the 145 mm couple did not. Which sin
 also 30 below the top of the 60 mm tongue - the tongue came off 61 for exactly that symmetry. One
 number to transfer instead of three, and now the same number read from either edge. 📌 **The pitches no longer differ, as of 2026-10-03.** The side plates were 100 mm, eleven
 over 1000; they are now **150 mm, first at 50, seven over 1000** - the same pattern as the front
-strips and the X back plate, and the same number as the rear plate's eight over 1211.75. The old
+strips and the X back plate, and the same number as the rear plate's eight over 1210.73. The old
 eleven-at-100 never closed arithmetically anyway: eleven at 100 spans exactly 1000, which puts a hole
 on each edge.
 
@@ -414,7 +414,7 @@ steel backing strip or large fender washers on both faces here, not plain washer
 worth having if it lands on structure rather than on skin spanning between grid members. The box is
 built last, so this is free, but it must be decided before the skins are cut.
 
-## Back: one 1211.75 mm steel plate, replacing both risers and the panel
+## Back: one 1210.73 mm steel plate, replacing both risers and the panel
 
 ✅ **Decided 2026-10-02.** The two rear risers are **scrapped**. One plate spanning the full machine
 width does both jobs - carrying the two beam ends down to the box, and acting as the shear panel
@@ -422,9 +422,9 @@ that turns the rear face from a portal frame with two bending legs into a diaphr
 
 | | |
 |---|---|
-| Plate | **1211.75 mm × 12" × 1/4" hot-rolled A36 steel** |
+| Plate | **1210.73 mm × 12" × 1/4" hot-rolled A36 steel** |
 | To the beams | **8 × M8 into each beam's corner bores** - the same proven pattern, 16 bolts total |
-| To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.875, plus bottom-edge bearing over the full 1211.75 mm |
+| To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full 1210.73 mm |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped into the plate, one per beam |
 
 - **It costs no travel** - the gantry stops well forward of the rear plate plane, and the spindle sits
@@ -464,13 +464,13 @@ get a substitution or a blank look.
 
 ⚠️ **Wrong turn two: "the plate follows the table."** The correction to the first was that the plate
 is **~2300× stiffer in-plane than out**, so the flat assembly surface would overrule it. The ratio is
-right; the conclusion drawn from it was not. **A 1211.75 mm steel plate standing on edge is not a
+right; the conclusion drawn from it was not. **A 1210.73 mm steel plate standing on edge is not a
 conforming object**, and the single ratio hides the fact that it is rigid in one of the modes that
 matters.
 
 ### What the plate actually controls, mode by mode
 
-Treating it as a beam 1211.75 mm long with a 305 × 6.35 section:
+Treating it as a beam 1210.73 mm long with a 305 × 6.35 section:
 
 | What you would have to do to it | Force needed | Who wins |
 |---|---|---|
@@ -498,15 +498,15 @@ the stock. Out-of-plane bow is the soft mode and bolting pulls it out. What woul
 carrying it, because then the second pattern walks vertically by the camber amount. **Work from a scribed and indicated line, or indicate the first pattern back in before drilling the second.** Ask
 for **P&O** if mill scale is unwelcome; same flatness, no scale, small premium.
 
-### The length: 1211.75 mm, settled 2026-10-03 - it is a TARGET now, not a window
+### The length: 1210.73 mm, settled 2026-10-03 - it is a TARGET now, not a window
 
-✅ **Decided: the plate runs FLUSH with the outboard plates' outer faces, so it is 1211.75** - the
+✅ **Decided: the plate runs FLUSH with the outboard plates' outer faces, so it is 1210.73** - the
 upper bound of the window below, taken exactly. The window closed because of what it does to
 **Sheet 7's coordinates**: with the WCS on the plate's lower-left corner, the Y2 beam's eight bores
 and four of the BF12 holes are **absolute from the plate's left edge**, so the plate's length is a reference rather than a dimension. Cut it over-long and the Y2 station is out by the excess.
 
 📌 **Why flush rather than butted between the two side plates.** Butting gives a rounder
-1205.4 and puts Y1's own corner back on X 0, which is how Sheet 7 was first drawn. It also lands the
+1204.38 and puts Y1's own corner back on X 0, which is how Sheet 7 was first drawn. It also lands the
 outermost bores exactly on their 15 mm edge-distance minimum with nothing left over for a saw cut
 that comes up short. The overlap buys **3.175 mm of edge distance at the eight most loaded holes**,
 and the beam ties the side plate and the rear plate to itself regardless - side plate on its outboard
@@ -522,9 +522,9 @@ because every X on Sheet 7 now hangs off it.
 | X beam | 1000 |
 | 2 × X end plate, 1/2" | 25.4 |
 | 2 × Y rail and bearing block stack, 30 mm | 60 |
-| **Y beam inboard face to inboard face** | **1085.4** |
+| **Y beam inboard face to inboard face** | **1084.38** |
 | 2 × Y beam width, 60 mm | 120 |
-| **Y beam outboard face to outboard face** | **1205.4** |
+| **Y beam outboard face to outboard face** | **1204.38** |
 | 2 × outboard plate, 1/8" | 6.4 |
 | **Outside of the machine** | **1211.8** |
 
@@ -533,11 +533,11 @@ because every X on Sheet 7 now hangs off it.
 | Bound | mm | Set by |
 |---|---|---|
 | **Minimum** | **~1205** | Edge distance. The outermost M8 sits 15 mm in from the beam's outer face; a shorter plate eats into that |
-| **Chosen** | **1211.75** | Flush with the outboard plates. Buys 3.175 of edge distance over the minimum and squares the corner |
+| **Chosen** | **1210.73** | Flush with the outboard plates. Buys 3.175 of edge distance over the minimum and squares the corner |
 | **Maximum** | **~1212** | Past the outboard plates' outer faces the **rear plate** becomes the proud member at the corner - the direction the tongue's face bearing cannot take |
 
 📌 **"1200 mm" was a round number, not this calculation, and it has been retired** - every file
-and every sheet now carries **1211.75**. The registry derives it: REAR_PLATE_L = Y_BEAM_GAP +
+and every sheet now carries **1210.73**. The registry derives it: REAR_PLATE_L = Y_BEAM_GAP +
 2 × Y_BEAM_ASSY_W.
 
 ✅ **A 48" sheet (1219.2 mm) covers it** with 7.5 mm of trim - but that is the entire margin, and
@@ -549,13 +549,13 @@ leaves an offcut, which is the better buy on a part cut once.
 rail-and-block stack measured on X applies to both Y beams. The chain above is nominal only because
 the machine has not been assembled and measured - not because any of its terms are guesses.
 
-### ⚠️ Open: can the mill hold one height reference across 1211.75 mm
+### ⚠️ Open: can the mill hold one height reference across 1210.73 mm
 
 Two bolt patterns a metre apart, both of which must match extruded corner bores, on a **4' × 1'
 manual-XY** mill. Bed size is not travel. If the part has to be repositioned mid-job the reference is lost exactly where it is most needed. **Gated on the mill model and DRO question already in the open
 items**, expected ~2026-10-04.
 
-### ⚠️ The bottom-edge bearing now runs the full 1211.75 mm
+### ⚠️ The bottom-edge bearing now runs the full 1210.73 mm
 
 So the rib under it has to as well. The box is built last, so this is free - but it joins the list
 of things that must be decided before the skins are cut.

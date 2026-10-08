@@ -80,7 +80,7 @@ for months.
 | On the mill | |
 |---|---|
 | Two **Y front plates / fins**, 10 mm | the 8-bolt corner-bore pattern and the 60.5 × 50 window |
-| The **1211.75 mm rear plate**, 1/4" steel | two 8-bolt patterns a metre apart |
+| The **1210.73 mm rear plate**, 1/4" steel | two 8-bolt patterns a metre apart |
 | Two **X gantry end plates**, 1/2" | one drawing, right-hand variant carries the BF12 tongue |
 | **X carriage plate**, 1/2" | 30 holes |
 | **Z plate**, 1/2" | |
@@ -107,7 +107,7 @@ own, **ø6 through under a ø9.5 counterbore** on an M5. **Lock rail one down co
 carriage, tighten that bolt, move to the next. ⚠️ **Never tighten rail two as a set** — it snakes,
 and a bolt already home fights the next one you set.
 
-⚠️ **Open: whether the mill can hold one height reference across the 1211.75 mm rear plate.** Bed size is not
+⚠️ **Open: whether the mill can hold one height reference across the 1210.73 mm rear plate.** Bed size is not
 travel. The two 8-bolt patterns' relative height must land well inside 1 mm across the metre.
 If the part is repositioned mid-job, **indicate the first pattern back in before drilling the second**,
 and work from a scribed and indicated line rather than from a sawn edge.
@@ -249,7 +249,7 @@ it is the same part, so the check is on the position, not the drawing.
 
 ### BF12 — rear end
 
-**4 × M5 tapped into the inside face of the 1211.75 mm rear plate**, one set per beam. Not
+**4 × M5 tapped into the inside face of the 1210.73 mm rear plate**, one set per beam. Not
 through-bolted.
 
 📌 **BF12's hole count depends on its orientation.** Face-mounted into a plate it is **4 × M5**;
@@ -292,16 +292,16 @@ plywood, not plain washers.
 
 ### The rear plate
 
-**One plate for both beams: 1211.75 mm × 12" × 1/4" hot-rolled A36 steel**, P&O if mill scale is
+**One plate for both beams: 1210.73 mm × 12" × 1/4" hot-rolled A36 steel**, P&O if mill scale is
 unwelcome.
 
 | | |
 |---|---|
 | To the beams | **8 × M8 into each beam's corner bores** — 16 bolts total |
-| To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.875, plus bottom-edge bearing over the full length |
+| To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full length |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped, one per beam |
 
-🔴 **1211.75 is a reference, not a dimension.** The plate runs flush with the outboard plates' outer
+🔴 **1210.73 is a reference, not a dimension.** The plate runs flush with the outboard plates' outer
 faces, and Sheet 7's X coordinates are absolute from the plate's left edge. **Cut it over-long and
 the Y2 station is out by the excess.**
 
@@ -416,7 +416,7 @@ their bolts are reachable.
 | Part | Size | Qty |
 |---|---|---|
 | **Doubler block** | **154 × 45 × 1/2"** 6061, on the end plate's **outer** face at the bottom | 2 |
-| **Sole bracket** | **1/4"** 6061 trapezoid, **154 at the root → ~46 at the tip, 98.7 overall** | 2 |
+| **Sole bracket** | **1/4"** 6061 trapezoid, **154 at the root → ~46 at the tip, 98.19 overall** | 2 |
 
 **The doubler gives the plate a 25.4 mm seating at its bottom; the sole bracket bolts up into that.**
 
@@ -545,7 +545,7 @@ but the gap is still a hard dimension.
 | Grid | **19 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
 | Depth overall | **138 mm** |
 | Outer walls, all four sides | **two 19 mm laminations, 38 mm total** — the outer one 180 mm tall, standing on the bottom skin and **60 mm proud** of the top skin as a **tongue** |
-| Footprint | **1211.75 across** by **1156.35 front to back** — ⚠️ derived, verify against the standing machine |
+| Footprint | **1210.73 across** by **1156.35 front to back** — ⚠️ derived, verify against the standing machine |
 | Fill | **sand in the cavities, LAST, on site** |
 
 ### Four things to get right on the grid
@@ -567,7 +567,7 @@ in from each perimeter must clear the front corner tenons**, and the **two front
 side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend to the back-centre
 tenon.
 
-⚠️ **Blocking has to be in the rib layout under the 200 mm fin bases and under the full 1211.75 mm
+⚠️ **Blocking has to be in the rib layout under the 200 mm fin bases and under the full 1210.73 mm
 of the rear plate's bottom edge** — bottom-edge bearing is only worth having if it lands on structure
 rather than on skin spanning between grid members.
 
@@ -651,7 +651,7 @@ height and the two beams' coplanarity, so the fin is the reference for the pair 
 |---|---|
 | **Front fin** | bottom edge **bearing on the top skin**; **two L-brackets behind it** into T1 and T2 |
 | **Outboard plate** | bottom edge bearing on the top skin directly over the wall; outer face **bearing against the side tongue's inner face**; **seven M8 from outboard** into locknuts |
-| **Rear plate** | bottom edge bearing over the full 1211.75 mm; **eight bolts through the back tongue at Y 30** |
+| **Rear plate** | bottom edge bearing over the full 1210.73 mm; **eight bolts through the back tongue at Y 30** |
 
 **The side tongue runs 1000 mm, starting 1/4" from the box's back edge** — so it spans exactly the
 beam and the side plate it laps, and ends where the fin begins.
@@ -765,7 +765,7 @@ cutting or drilling:
 | | |
 |---|---|
 | The **4 × HGH20 block hole pattern** measured on the **X/Y** kit — not the Z kit | gates the sixteen M5 in each X end plate |
-| Whether the mill holds one height reference across **1211.75 mm** | gates the rear plate |
+| Whether the mill holds one height reference across **1210.73 mm** | gates the rear plate |
 | Whether X's interposer rows at **82 / 110 / 138** all land over beam | gates X's bar |
 | The **grid spacing**, and the box's deflection between its three points | gates the skins and the 2x4 clearance |
 | The front/back **tongue** inconsistency | gates the box walls |

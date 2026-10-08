@@ -48,7 +48,7 @@ instead** — see the two-document note at the top of this file.
 |---|---|
 | [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md) | **Read this first.** The cutting-force recalibration (500-1000 N, not 250) that **every deflection figure in this repo depends on**, the plate and riser thicknesses it sets, and the one measurement that would settle the 1/4" question |
 | [`y-beam-support.md`](y-beam-support.md) | How each Y beam is held at its ends: the end plate / Z riser, the **cast stepper frames** on all four axes, the thrust block, the inverted ball nut and its sole plate, and BF12 at the rear |
-| [`lateral-stiffness.md`](lateral-stiffness.md) | The lateral fix — tapered front fins per beam, the **one 1211.75 mm steel back plate** replacing both rear risers and the shear panel, and the tongues that back them |
+| [`lateral-stiffness.md`](lateral-stiffness.md) | The lateral fix — tapered front fins per beam, the **one 1210.73 mm steel back plate** replacing both rear risers and the shear panel, and the tongues that back them |
 | [`outboard-plate.md`](outboard-plate.md) | The full-height outboard plate: **1/8" steel**, also the Y back joining plate, how it lands on the torsion box, the galvanic cost, and the encoder tape that runs on the front plate |
 | [`spindle-and-mount.md`](spindle-and-mount.md) | The Ø80 2.2 kW water-cooled spindle, its body dimensions, why not 3 kW, and the 109 mm offset from the X beam to its centreline |
 | [`stepper-sizing.md`](stepper-sizing.md) | **2.2 N·m NEMA 23 on all four axes**, and why neither 1.5 nor 3.2 — thrust is a non-term on a 5 mm lead, the screw and the rotor are the inertia, and the real ceiling is the **measured 930 mm** span's whip at 1510 rpm |
@@ -72,7 +72,7 @@ instead** — see the two-document note at the top of this file.
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
-| Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 60.5 × 50 window for the stepper frame. **Rear:** one **1211.75 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
+| Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 60.5 × 50 window for the stepper frame. **Rear:** one **1210.73 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
 | Plate materials | 6061 throughout **except** the two Y outboard plates (**1/8" steel**) and the Y rear plate (**1/4" A36**) — see [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), [`outboard-plate.md`](outboard-plate.md) and [`lateral-stiffness.md`](lateral-stiffness.md) |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
@@ -85,7 +85,7 @@ Partly specified - see [`y-beam-support.md`](y-beam-support.md) and
 
 🔴 **Reworked 2026-10-02 and all four as-built Y risers are scrapped.** Cast stepper frames replaced
 BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one
-1211.75 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be
+1210.73 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be
 undone — see [`open-items.md`](open-items.md) before ordering or cutting anything for the Y ends.
 
 **Deferred, not blocking: the 35 mm sensor bore.**

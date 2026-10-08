@@ -277,7 +277,7 @@ note = "Plate bottom, measured from the Y beam top. Negative is down."
 [[dim]]
 sym = "SCREW_AXIS_X"
 expr = "T_X_ENDPLATE + RAIL_STACK + (EXT_W / 2)"
-note = "Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) term is BY CONSTRUCTION, not an assumption: the BK12 and BF12 support blocks are 60 wide and the BF12 tongue is cut 60 wide to match, so the screw is centred in 60 by the parts themselves. Reconciled against a measurement 2026-10-03: it leaves 21.3 of air past the doubler, which meets the 20 minimum."
+note = "Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) term is BY CONSTRUCTION, not an assumption: the BK12 and BF12 support blocks are 60 wide and the BF12 tongue is cut 60 wide to match, so the screw is centred in 60 by the parts themselves. Reconciled against a measurement 2026-10-03: it leaves 21.81 of air past the doubler, which meets the 20 minimum."
 
 [[dim]]
 sym = "NUT_FACE_X"
@@ -339,12 +339,12 @@ note = "REQUIRED minimum clear air between the doubler's outer face and the ball
 [[dim]]
 sym = "NUT_AIR_CLEAR"
 expr = "(SCREW_AXIS_X - (NUT_FACE_X / 2)) - (T_X_ENDPLATE + T_DOUBLER)"
-note = "Actual clear air, doubler's outer face to the nut's near edge. Comes out 21.3, so it clears NUT_AIR_MIN by 1.3. If this ever drops below NUT_AIR_MIN the stack has moved."
+note = "Actual clear air, doubler's outer face to the nut's near edge. Comes out 21.81, so it clears NUT_AIR_MIN by 1.81. If this ever drops below NUT_AIR_MIN the stack has moved."
 
 [[dim]]
 sym = "SOLE_BRACKET_L"
 expr = "SCREW_AXIS_X + (NUT_FACE_X / 2)"
-note = "Sole bracket root to tip, from the plate's INNER face - the root covers the stacked plate and doubler end faces, so the 25.4 seating is INSIDE this length, not added to it. Comes out 98.7, flush with the nut's outboard edge. A 107.4 drawn 2026-10-02 added the seating twice."
+note = "Sole bracket root to tip, from the plate's INNER face - the root covers the stacked plate and doubler end faces, so the 25.4 seating is INSIDE this length, not added to it. Comes out 98.19, flush with the nut's outboard edge. A 107.4 drawn 2026-10-02 added the seating twice."
 
 [[dim]]
 sym = "ROOT_BOLT_X_ENDPLATE"
@@ -680,12 +680,12 @@ expr = "ROLL_RANGE / BEAM_LEN * 100"
 note = "Correctable tram error at a 100 mm circle. A 0.03 shim, the finest on hand, is worth 0.003 at the same circle."
 
 
-# ------------------------------------------------------------- the 1211.75 rear plate
+# ------------------------------------------------------------- the 1210.73 rear plate
 
 [[dim]]
 sym = "Y_BEAM_GAP"
 expr = "BEAM_LEN + (2 * (RAIL_STACK + T_X_ENDPLATE))"
-note = "Y beam INBOARD face to inboard face - the gap the X gantry spans. His chain, 2026-10-03: the X beam plus, each side, an end plate and a rail-and-block stack, which lands on the Y extrusion's inner face. Same 1085.4 that lateral-stiffness.md's length table already carried."
+note = "Y beam INBOARD face to inboard face - the gap the X gantry spans. His chain, 2026-10-03: the X beam plus, each side, an end plate and a rail-and-block stack, which lands on the Y extrusion's inner face. Same 1084.38 that lateral-stiffness.md's length table already carried."
 
 [[dim]]
 sym = "Y_BEAM_ASSY_W"
@@ -710,7 +710,7 @@ note = "Y2 extrusion's outboard face, from the same origin. Sheet 7's Y2 station
 [[dim]]
 sym = "BEAM_SPAN"
 expr = "Y2_EXT_FACE_X - Y1_EXT_FACE_X"
-note = "Y1's outboard EXTRUSION face to Y2's, 1205.4 - the figure lateral-stiffness.md's table calls outboard face to outboard face. It was 1200 until 2026-10-03, when his stackup replaced the round number; the plate is 6.35 longer than this because it also covers the two side plates."
+note = "Y1's outboard EXTRUSION face to Y2's, 1204.38 - the figure lateral-stiffness.md's table calls outboard face to outboard face. It was 1200 until 2026-10-03, when his stackup replaced the round number; the plate is 6.35 longer than this because it also covers the two side plates."
 
 [[dim]]
 sym = "BF12_ROW1_BARE"
@@ -743,7 +743,7 @@ note = "Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The sid
 [[dim]]
 sym = "XBOX_X_FIRST"
 expr = "(REAR_PLATE_L - (7 * XBOX_PITCH)) / 2"
-note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050; centred on the plate's own 1211.75 that leaves 80.875 at each end. Stations: 80.875, 230.875, 380.875, 530.875, 680.875, 830.875, 980.875, 1130.875 - and note 7.8 is why the fractions cost nothing, since these are drill-guide holes with no mating pattern to miss."
+note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050; centred on the plate's own 1210.73 that leaves 80.365 at each end. Stations: 80.365, 230.365, 380.365, 530.365, 680.365, 830.365, 980.365, 1130.365 - and note 7.8 is why the fractions cost nothing, since these are drill-guide holes with no mating pattern to miss."
 
 # ---------------------------------------------------------------- the BF12 tongue, Sheet 2b
 
@@ -849,7 +849,7 @@ note = "1/4in A36 hot-rolled, the Sheet 7 plate. CALIPER IT with the side plate 
 [[dim]]
 sym = "BOX_W"
 expr = "REAR_PLATE_L"
-note = "Box top skin across the machine, measured INSIDE the two side tongues - 1211.75, the same as the rear plate because both are the machine's outer envelope. \u26a0 THIS INVERTED on 2026-10-03 and the earlier reading is wrong: it was briefly recorded as 1205.4, the space INSIDE the side plates, on a reading that the box tucked between them. It does not. The side and back plates sit FLAT ON THE TOP SKIN and the tongues stand proud OUTBOARD of them, so the tongue's inside face is the plate's outer face. There is no channel and nothing is captured on two sides."
+note = "Box top skin across the machine, measured INSIDE the two side tongues - 1210.73, the same as the rear plate because both are the machine's outer envelope. \u26a0 THIS INVERTED on 2026-10-03 and the earlier reading is wrong: it was briefly recorded as 1204.38, the space INSIDE the side plates, on a reading that the box tucked between them. It does not. The side and back plates sit FLAT ON THE TOP SKIN and the tongues stand proud OUTBOARD of them, so the tongue's inside face is the plate's outer face. There is no channel and nothing is captured on two sides."
 
 [[dim]]
 sym = "BOX_FORE_AFT"

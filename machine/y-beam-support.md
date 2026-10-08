@@ -19,7 +19,7 @@ this file were reversed on purpose. The short form:
 | Stepper mount | NEMA 23 on four 18 mm M5 standoffs off the rear plate, BK12 beside it | **One cast frame** carrying motor face, bearing housing and coupler - see below |
 | Stepper end | Rear | **Front**, both Y beams |
 | Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **60.5 × 50 mm window** for the casting |
-| Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1211.75 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
+| Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1210.73 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
 | Outboard plates | 12" × 1000 × 1/4" **6061** | 12" × 1000 × **1/8" cold-rolled steel sheet** |
 | Front strips | 3/8" on Y, 1/4" on X | **45 mm × 4 mm 6061 on all three beams**, X included. 🔴 Went 1/4" → 4 mm 2026-10-03: at 1/4" the bolt heads hit the bearing blocks |
 
@@ -47,9 +47,9 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 
 | | **Front (2026-10-02)** | **Rear (2026-10-02)** |
 |---|---|---|
-| Size | **Tapered: 100 mm at the top, 200 mm at the base, 302 mm tall, 1/2" thick** | **One plate for both beams: 1211.75 mm × 12" × 1/4" steel** |
+| Size | **Tapered: 100 mm at the top, 200 mm at the base, 302 mm tall, 1/2" thick** | **One plate for both beams: 1210.73 mm × 12" × 1/4" steel** |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
-| To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 30**, plus bottom-edge bearing | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.875, plus bottom-edge bearing over the full 1211.75 mm |
+| To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 30**, plus bottom-edge bearing | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full 1210.73 mm |
 | Also carries | the **60.5 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
 ⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
@@ -85,7 +85,7 @@ could. The sentiment behind the rule still applies to anything else that is buil
 
 📌 **What survives from the as-built risers is the 8-bolt pattern and the 9 mm hole**, both of which
 carry straight into the new plates. The existing plates were drilled at home with a **mag drill**, so
-the pattern itself costs no mill time; only the window and the 1211.75 mm plate's two patterns need the
+the pattern itself costs no mill time; only the window and the 1210.73 mm plate's two patterns need the
 trip.
 
 ---
@@ -130,7 +130,7 @@ given 2026-10-02:
 📌 **Only Y and X need an interposer, and for the same reason**: the casting lands on an extrusion
 face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z lands on 1/2" plate -
 2.5 × D - so it bolts direct.** **No axis needs a second one for BF12**: on Y it face-mounts on the
-1211.75 mm rear plate, and on X it face-mounts on a tongue off the right-hand end plate.
+1210.73 mm rear plate, and on X it face-mounts on a tongue off the right-hand end plate.
 
 ✅ **ONE part, quantity 3 - decided 2026-10-02.** All three interposers are **identical**, X's
 included, so there is one drawing and one setup:
@@ -412,7 +412,7 @@ tongue that has to be drawn clear of the bar's inboard end.
 
 ### BF12 goes straight onto the rear plate - no bar at that end
 
-✅ **Decided 2026-10-02.** BF12 bolts to the **inside face of the 1211.75 mm rear plate**. The bar
+✅ **Decided 2026-10-02.** BF12 bolts to the **inside face of the 1210.73 mm rear plate**. The bar
 exists only because the casting lands on a 2.21 mm extrusion wall; BF12 lands on 1/4" steel and
 needs nothing.
 

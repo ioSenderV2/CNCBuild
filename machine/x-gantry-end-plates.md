@@ -253,7 +253,7 @@ question that had been asked. The other candidate - the Y bearing block - cannot
 axis has to follow the rail, which runs along **Y**, so "parallel with the X beam" is impossible for
 it. **If "block" meant something else, these four holes are 90° out.**
 
-### ✅ The X offset to the screw axis: 72.7 mm - closed 2026-10-02
+### ✅ The X offset to the screw axis: 72.19 mm - closed 2026-10-02
 
 **From the end plate's inner face to the Y screw centreline**, assuming the screw runs under the
 beam's width centreline:
@@ -263,7 +263,7 @@ beam's width centreline:
 | Plate thickness, inner face to **outer** face | 12.7 |
 | Rail and block stack, outer face to the beam's **inside** face | 30 |
 | Half the beam width, to the beam centreline | 30 |
-| **Inner face to the screw axis** | **72.7** |
+| **Inner face to the screw axis** | **72.19** |
 | *(From the plate's outer face)* | *60* |
 
 Carrying the 52 × 40 face and the ±20 / ±12 pattern through it, all measured in X from the plate's
@@ -272,10 +272,10 @@ Carrying the 52 × 40 face and the ±20 / ±12 pattern through it, all measured 
 | | X, mm |
 |---|---|
 | Nut face, inboard edge | **46.7** |
-| First M5 column | **52.7** |
-| Screw axis | **72.7** |
-| Second M5 column | **92.7** |
-| Nut face, outboard edge | **98.7** |
+| First M5 column | **52.19** |
+| Screw axis | **72.19** |
+| Second M5 column | **92.19** |
+| Nut face, outboard edge | **98.19** |
 
 🔴 **So this is the cantilever case, not the strip case.** The sole plate reaches about **100 mm** in
 X, and the nut's inboard edge is still **34 mm clear of the plate's outer face** - the flange never
@@ -337,13 +337,13 @@ unverified.
 
 #### ✅ The sole bracket is a trapezoid
 
-**154 mm at the root, tapering to 46 mm over the nut, 98.7 mm overall - which is 73.3 of free reach past the doubler plus the 25.4 of seating it covers.**
+**154 mm at the root, tapering to 46 mm over the nut, 98.19 mm overall - which is 73.81 of free reach past the doubler plus the 25.4 of seating it covers.**
 
 | | |
 |---|---|
 | Root width | **154** - the full plate width |
 | Tip width | **~46** |
-| Reach | **~73 mm**, doubler outer face at X 25.4 to the nut face's outboard edge at 98.7 |
+| Reach | **~73 mm**, doubler outer face at X 25.4 to the nut face's outboard edge at 98.19 |
 
 **Why the root is full width:** the 60 mm arm is reacted as a shear couple across the bolt group's
 spread **along Y**, so width at the root is the thing that resists it, and 154 takes all there is.
@@ -359,7 +359,7 @@ little either side rather than flush to the edge.
 
 ⚠️ **Only the 46 is free.** Nothing mates to the narrow end, so it can be rounded to whatever is
 convenient - 46 rather than 40 on purpose, since 40 would match the nut face exactly but leave only
-8 mm of edge beside an M5 at ±12. The **98.7 is derived**, not chosen: 72.7 screw axis + 26 for half
+8 mm of edge beside an M5 at ±12. The **98.19 is derived**, not chosen: 72.19 screw axis + 26 for half
 the nut, and it **includes the 25.4 of seating the root covers** rather than adding length beyond it.
 A 107.4 drawn on 2026-10-02 counted that seating twice. The other numbers that are **not** free are
 the four M5 at ±20 in X and ±12 in Y, and the root's 154.

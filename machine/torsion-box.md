@@ -364,9 +364,9 @@ Same deadline as everything else on this page: before the box is closed.
   clearance above, and it needs the grid spacing and the sand mass first. **The one number on this page
   that a wrong guess would quietly cost accuracy for.**
 - ✅ **The box footprint is now DESIGNED, not measured** - closed 2026-10-03, then **corrected the
-  same day**. The first answer had the box tucking *inside* the plates at 1205.4 by 983.65. It does
+  same day**. The first answer had the box tucking *inside* the plates at 1204.38 by 983.65. It does
   not: the plates sit **flat on the top skin** and the tongues lap them from **outboard**, so the box
-  is the larger part, not the smaller. **1211.75 across** (inside the two side tongues, which is the
+  is the larger part, not the smaller. **1210.73 across** (inside the two side tongues, which is the
   machine's own outer envelope) by **1156.35 front to back** - the 1000 beam *plus* the 6.35 rear
   plate, the 10 mm fin and a **140 mm front overhang**. Verify against the standing machine before the
   skins are cut, but it no longer blocks anything. See

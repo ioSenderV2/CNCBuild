@@ -50,11 +50,11 @@ Current as of 2026-10-02.
 | X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
 | **Y outboard / back joining plate** | 12" × 1000 mm × **1/8"** | **cold-rolled steel sheet** - see the reversal above |
 | **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 60.5 × 50 window. 🔴 **Measured stock, not 1/2" and not 3/8"** |
-| **Y rear plate**, one for both beams | 1211.75 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
+| **Y rear plate**, one for both beams | 1210.73 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, **quantity 3** - Y1, Y2 and the X stepper end. One drawing; X's BF12 end takes none, using a tongue off the end plate |
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, quantity 2 - identical below the top edge; the **right-hand one carries the BF12 tongue** above it, running to the stock's 300 |
 | **Y nut doubler block** | 154 × 45 × **1/2"** | 6061, quantity 2 - on the end plate's outer face, giving a 25.4 mm seating |
-| **Y nut sole bracket** | trapezoid **154 → 46** over **98.7** × **1/4"** | 6061, quantity 2 - carries the inverted Y ball nut |
+| **Y nut sole bracket** | trapezoid **154 → 46** over **98.19** × **1/4"** | 6061, quantity 2 - carries the inverted Y ball nut |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
 
