@@ -389,13 +389,13 @@ note = "Doubler height. 45, so it can come out of OFFCUTS - his reason, and the 
 [[dim]]
 sym = "FIN_STOCK"
 expr = "PLATE_H"
-note = "The square both front fins are cut from, 301.625 - PLATE_H, because the fin's height IS the square's side and it has to match the other four plates. It is 11 7/8in, his piece 2026-10-07; it had been carried as a measured 302 and it is not 302, nor the nominal 12in it was already corrected away from once. Both fins come out of this one square, so it also sets FIN_TOP_W."
+note = "Each front fin's stock height, 301.625 - PLATE_H, because the fin stands as high as the other four plates and is dimensioned off the same bottom edge. It is 11 7/8in, his piece 2026-10-07; it had been carried as a measured 302 and it is not 302, nor the nominal 12in it was already corrected away from once. \u26a0 THE NAME SAYS SQUARE AND IT IS NO LONGER ONE: both fins came out of a SINGLE 301.625 square on one diagonal cut until 2026-10-08, when he put each fin on its OWN piece of 10 mm plate. That is what released FIN_TOP_W back to a chosen 100 and retired FIN_KERF - top plus base plus kerf no longer has to close on anything. Kept under this name because every sheet and both documents refer to it."
 
 [[dim]]
 sym = "FIN_KERF"
 value = 2
 provenance = "nominal"
-note = "The single diagonal cut"
+note = "\U0001f534 RETIRED 2026-10-08 AND NOTHING DERIVES FROM IT. It was the bandsaw kerf of the single diagonal cut that nested both fins out of one 301.625 square. He put each fin on its own piece of plate instead, so there is no cut to allow for and FIN_TOP_W stopped being forced by it. Kept rather than deleted because it is the reason FIN_TOP_W reads 100 again rather than 99.625, and a bare deletion would leave that reversal with no record."
 
 [[dim]]
 sym = "FIN_BASE_W"
@@ -405,8 +405,9 @@ note = "THE BASE IS THE REFERENCE, his call 2026-10-07 - so it is a fixed 200 an
 
 [[dim]]
 sym = "FIN_TOP_W"
-expr = "FIN_STOCK - FIN_BASE_W - FIN_KERF"
-note = "99.625, and it is DERIVED now rather than the chosen 100 it used to be. Top + base + kerf must close on FIN_STOCK or the two halves do not nest out of the one square, so one of the three has to give - and it is this one. Both halves are still identical by rotation."
+value = 100
+provenance = "part"
+note = "100, his choice, and it is CHOSEN AGAIN rather than derived - 2026-10-08. It was forced to 99.625 for as long as both fins nested out of one 301.625 square, because top plus base plus kerf had to close on the square or the two halves did not fit. Each fin is its own piece of plate now, so nothing couples the top width to the base width and the round number comes back. FIN_BASE_W stays the reference end at 200 for the reason it always was: it is the end that bolts down and bears."
 
 [[dim]]
 sym = "FIN_COL_OUTB"
