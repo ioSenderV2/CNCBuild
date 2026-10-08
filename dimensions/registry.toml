@@ -399,14 +399,15 @@ provenance = "nominal"
 note = "The single diagonal cut"
 
 [[dim]]
-sym = "FIN_TOP_W"
-value = 100
-provenance = "derived"
-note = "FIN_TOP_W + FIN_BASE_W + FIN_KERF = FIN_STOCK, both halves identical by rotation"
+sym = "FIN_BASE_W"
+value = 200
+provenance = "part"
+note = "THE BASE IS THE REFERENCE, his call 2026-10-07 - so it is a fixed 200 and the top absorbs whatever the square leaves. The base is the end that bolts down and bears, which is why it gets to be the round number. It was the other way round until the square turned out to be 301.625 rather than 302, and then the shortfall was landing on the bearing end."
 
 [[dim]]
-sym = "FIN_BASE_W"
-expr = "FIN_STOCK - FIN_TOP_W - FIN_KERF"
+sym = "FIN_TOP_W"
+expr = "FIN_STOCK - FIN_BASE_W - FIN_KERF"
+note = "99.625, and it is DERIVED now rather than the chosen 100 it used to be. Top + base + kerf must close on FIN_STOCK or the two halves do not nest out of the one square, so one of the three has to give - and it is this one. Both halves are still identical by rotation."
 
 [[dim]]
 sym = "FIN_COL_OUTB"
@@ -1102,19 +1103,19 @@ note = "The 30 series' module. Corner bores and T-slot centres both sit on it, w
 
 [[dim]]
 sym = "SIDE_PLATE_H"
-value = 304.8
+value = 301.625
 provenance = "part"
-note = "12in stock, the full-height outboard plate's width. A BOUGHT size, not a derived one - which is exactly why Sheet 9 dimensions off the bottom edge."
+note = "11 7/8in = 301.625, THE ORDERED SIZE 2026-10-07, down from a nominal 12in (304.8). It matches the fin square, which is the same buy. Still a BOUGHT size and not a derived one - which is exactly why Sheet 9 dimensions off the bottom edge, and that convention is now load-bearing rather than merely tidy, because the plate no longer reaches the beam top."
 
 [[dim]]
 sym = "SIDE_TSLOT_ROW_1"
 expr = "Y_BEAM_UNDERSIDE + RAIL_SLOT_INSET"
-note = "Lowest of Sheet 9's four T-slot rows, measured from the plate's BOTTOM edge - 197. \U0001f534 WAS 199.8 AND WAS WRONG. I had written it as SIDE_PLATE_H - BEAM_H + RAIL_SLOT_INSET, which assumes the side plate's bought 304.8 finishes flush with the beam top. It does not and it does not need to: he settled 2026-10-03 that the side plate is measured from its BOTTOM edge throughout, so a top edge a little under 304.8 has NO effect on the beam's height. The beam's height comes from the fin instead. The error was 2.8 and the 3D model's interference check is what surfaced it, by fouling the interposer against the fin above the window. Rows 2-4 follow on SLOT_GRID."
+note = "Lowest of Sheet 9's four T-slot rows, measured from the plate's BOTTOM edge - 197. \U0001f534 WAS 199.8 AND WAS WRONG. I had written it as SIDE_PLATE_H - BEAM_H + RAIL_SLOT_INSET, which assumes the side plate's bought 304.8 finishes flush with the beam top. It does not and it does not need to: he settled 2026-10-03 that the side plate is measured from its BOTTOM edge throughout, so the bought top edge has NO effect on the beam's height - which is what made the drop to an ordered 301.625 cost nothing on this sheet. The beam's height comes from the fin instead. The error was 2.8 and the 3D model's interference check is what surfaced it, by fouling the interposer against the fin above the window. Rows 2-4 follow on SLOT_GRID."
 
 [[dim]]
 sym = "SIDE_TSLOT_ROW_4"
 expr = "SIDE_TSLOT_ROW_1 + (3 * SLOT_GRID)"
-note = "Highest of the four, 289.8 from the bottom edge. If the plate is cut exactly 304.8 this sits 15 below its top edge, which is the beam's own slot inset - the check that the chain is right."
+note = "Highest of the four, 287 from the bottom edge. 🔴 THIS NOTE SAID 289.8 AND A 15 mm CHECK AND BOTH WERE STALE - left behind when SIDE_TSLOT_ROW_1 was corrected from 199.8 to 197 on 2026-10-03. The label was updated and this note was not. Against the ordered 301.625 top edge the row now sits 14.625 below it, which is within 0.375 of the beam's own 15 slot inset - and that 0.375 is the fin square's own shortfall, arriving here from a different direction."
 
 [[dim]]
 sym = "STRIP_ROW_LOW"
@@ -1171,14 +1172,14 @@ note = "L-brackets behind each front fin, tying it down to the box's top skin - 
 
 [[dim]]
 sym = "REAR_PLATE_W"
-value = 304.8
+value = 301.625
 provenance = "part"
-note = "12in stock, the rear plate's width - the same bought size as the side plates' SIDE_PLATE_H."
+note = "11 7/8in = 301.625, THE ORDERED SIZE 2026-10-07 - the same bought size as the side plates' SIDE_PLATE_H, and the same as the fin square. Sheet 7 is referenced to the plate's BOTTOM edge, so this is the top edge's Y."
 
 [[dim]]
 sym = "XBOX_ROW_Y"
 expr = "REAR_PLATE_W - BOX_TONGUE_BOLT_Y"
-note = "Sheet 7's X1-X8 torsion-box row, 274.8 in the inverted frame the plate is clamped in. It DERIVES now: the plate is 304.8 and the row sits BOX_TONGUE_BOLT_Y = 30 up from the installed bottom edge, the one bolt line shared with the side plates and the front fin. It was a flat 270 until 2026-10-03, given as a round number when Sheet 7 was reframed upside down; that put it 34.8 up, 4.8 off every other plate, and a note had rationalised the gap as deliberate when nobody had decided it."
+note = "Sheet 7's X1-X8 torsion-box row, 271.625 in the inverted frame the plate is clamped in. IT MOVES WITH THE BOUGHT PLATE HEIGHT and the sixteen beam bores do not, which is the whole point of the inverted frame - these eight are drill guides into plywood with nothing pre-existing to meet. It DERIVES now: the plate is 301.625 and the row sits BOX_TONGUE_BOLT_Y = 30 up from the installed bottom edge, the one bolt line shared with the side plates and the front fin. It was a flat 270 until 2026-10-03, given as a round number when Sheet 7 was reframed upside down; that put it 34.8 up, 4.8 off every other plate, and a note had rationalised the gap as deliberate when nobody had decided it."
 
 [[dim]]
 sym = "RAIL_W"
@@ -1252,7 +1253,7 @@ note = "302 above the box's top skin. THIS IS THE CROSS-CHECK THAT THE CHAIN IS 
 [[dim]]
 sym = "SIDE_PLATE_PROUD"
 expr = "SIDE_PLATE_H - Y_BEAM_TOP_Z"
-note = "How far the side plate's top edge stands above the Y beam's top, 2.8. Harmless, and the reason Sheet 9 is dimensioned off the bottom edge: a bought 12in plate was never going to land on the beam top by luck. If the delivered plate is under 304.8 this just gets smaller."
+note = "The side plate's top edge against the Y beam's top. NOW NEGATIVE at -0.375: the plate finishes just BELOW the beam top rather than 2.8 above it, because the ordered height came down to 11 7/8. The name says proud and the number no longer is - kept rather than renamed because every sheet and both documents refer to it. Harmless either way, and it is the reason Sheet 9 is dimensioned off the bottom edge: a bought plate was never going to land on the beam top by luck."
 
 [[dim]]
 sym = "FLANGE_HEAD_D"
