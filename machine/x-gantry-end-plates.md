@@ -189,7 +189,7 @@ appears anywhere it is stale.**
 ### The 1/4" sole plate - the plate is the tie, not a shared bolt
 
 A **1/4" plate across the bottom of the end plate**, horizontal, at Z −182.5. **Its top face is one
-flat seat** taking the end plate's 12.7 mm bottom edge and the nut's mounting face at the same
+flat seat** taking the end plate's 12.19 mm bottom edge and the nut's mounting face at the same
 height. That is what the level bottom buys: any step between them and the sole plate becomes a bent
 or shimmed part.
 
@@ -299,7 +299,7 @@ full drive thrust with a 66 mm arm on it.
 | **Doubler block** | **154 × 45 × 1/2"** 6061, bolted to the end plate's **outer** face at the bottom | 2 |
 | **Sole bracket** | **1/4"** 6061 trapezoid - see below | 2 |
 
-**The doubler gives the plate a 25.4 mm (1") wide seating surface at its bottom**, and the sole
+**The doubler gives the plate a 24.38 mm wide seating surface at its bottom**, and the sole
 bracket bolts up into that.
 
 ❌ ~~**An L with a vertical leg, or a length of angle.**~~ The doubler does the same job with none of
@@ -313,13 +313,13 @@ plane - and the shear that matters bears **sideways on the thin wall beside the 
 | Seating width | Wall each side of an M6 |
 |---|---|
 | 12.7 mm, bare plate edge | 3.35 mm |
-| **25.4 mm, with the doubler** | **9.7 mm** |
+| **24.38 mm, with the doubler** | **9.7 mm** |
 
 ✅ **And the doubler's own bolts pass through the end plate along X, in shear, with full material all
 round them** - which was the entire benefit the L leg was buying. It stiffens the plate's bottom
 locally too, now its most heavily loaded region.
 
-🔴 **Two rows of bolts across the 25.4, not one row down the middle.** A single row leaves the joint
+🔴 **Two rows of bolts across the 24.38, not one row down the middle.** A single row leaves the joint
 nothing to resist rolling about Y, and the second row is free once the doubler is there. **That,
 rather than the bolt size, is what the doubler actually buys.**
 
@@ -327,7 +327,7 @@ rather than the bolt size, is what the doubler actually buys.**
 
 An earlier version of this section said the clear run was the **62.5 mm** between the Y beam
 underside at −120 and the plate bottom at −182.5. **That was wrong** - the doubler is nowhere near
-the Y beam. The beam's inside face is at **X 42.7** and the doubler occupies **X 12.7 to 25.4**,
+the Y beam. The beam's inside face is at **X 42.19** and the doubler occupies **X 12.19 to 24.38**,
 some 17 mm inboard of it, so the beam's underside is not a constraint at all.
 
 ⚠️ **What does constrain it is the bottom edge of the lower Y bearing block row**, which sits on the
@@ -337,13 +337,13 @@ unverified.
 
 #### ✅ The sole bracket is a trapezoid
 
-**154 mm at the root, tapering to 46 mm over the nut, 98.19 mm overall - which is 73.81 of free reach past the doubler plus the 25.4 of seating it covers.**
+**154 mm at the root, tapering to 46 mm over the nut, 98.19 mm overall - which is 73.81 of free reach past the doubler plus the 24.38 of seating it covers.**
 
 | | |
 |---|---|
 | Root width | **154** - the full plate width |
 | Tip width | **~46** |
-| Reach | **~73 mm**, doubler outer face at X 25.4 to the nut face's outboard edge at 98.19 |
+| Reach | **~74 mm**, doubler outer face at X 24.38 to the nut face's outboard edge at 98.19 |
 
 **Why the root is full width:** the 60 mm arm is reacted as a shear couple across the bolt group's
 spread **along Y**, so width at the root is the thing that resists it, and 154 takes all there is.
@@ -360,7 +360,7 @@ little either side rather than flush to the edge.
 ⚠️ **Only the 46 is free.** Nothing mates to the narrow end, so it can be rounded to whatever is
 convenient - 46 rather than 40 on purpose, since 40 would match the nut face exactly but leave only
 8 mm of edge beside an M5 at ±12. The **98.19 is derived**, not chosen: 72.19 screw axis + 26 for half
-the nut, and it **includes the 25.4 of seating the root covers** rather than adding length beyond it.
+the nut, and it **includes the 24.38 of seating the root covers** rather than adding length beyond it.
 A 107.4 drawn on 2026-10-02 counted that seating twice. The other numbers that are **not** free are
 the four M5 at ±20 in X and ±12 in Y, and the root's 154.
 

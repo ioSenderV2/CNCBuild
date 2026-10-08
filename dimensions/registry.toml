@@ -344,7 +344,7 @@ note = "Actual clear air, doubler's outer face to the nut's near edge. Comes out
 [[dim]]
 sym = "SOLE_BRACKET_L"
 expr = "SCREW_AXIS_X + (NUT_FACE_X / 2)"
-note = "Sole bracket root to tip, from the plate's INNER face - the root covers the stacked plate and doubler end faces, so the 25.4 seating is INSIDE this length, not added to it. Comes out 98.19, flush with the nut's outboard edge. A 107.4 drawn 2026-10-02 added the seating twice."
+note = "Sole bracket root to tip, from the plate's INNER face - the root covers the stacked plate and doubler end faces, so the 24.38 seating is INSIDE this length, not added to it. Comes out 98.19, flush with the nut's outboard edge. A 107.4 drawn 2026-10-02 added the seating twice."
 
 [[dim]]
 sym = "ROOT_BOLT_X_ENDPLATE"

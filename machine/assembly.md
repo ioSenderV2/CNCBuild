@@ -428,9 +428,9 @@ their bolts are reachable.
 | **Doubler block** | **154 × 45 × 1/2"** 6061, on the end plate's **outer** face at the bottom | 2 |
 | **Sole bracket** | **1/4"** 6061 trapezoid, **154 at the root → ~46 at the tip, 98.19 overall** | 2 |
 
-**The doubler gives the plate a 25.4 mm seating at its bottom; the sole bracket bolts up into that.**
+**The doubler gives the plate a 24.38 mm seating at its bottom; the sole bracket bolts up into that.**
 
-🔴 **Two rows of bolts across the 25.4, not one row down the middle.** A single row leaves the joint
+🔴 **Two rows of bolts across the 24.38, not one row down the middle.** A single row leaves the joint
 nothing to resist rolling about Y.
 
 **The doubler's bolts pass through the end plate along X. The sole bracket's go into the doubler** —
