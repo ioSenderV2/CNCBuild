@@ -27,7 +27,7 @@ not any more:
 **Reversed 2026-10-02 - all four are scrapped.** The front pair is remade with the window; the rear
 pair is replaced by the single 1210.73 mm plate.
 
-Still to make, but **no mill needed** - T-slot clearance holes throughout: two **12" × 1 m × 1/8"
+Still to make, but **no mill needed** - T-slot clearance holes throughout: two **11 7/8" × 39 5/16" × 10 gauge
 steel** outboard plates and three **45 mm × 1 m × 4 mm 6061** front strips, one per beam.
 
 ⚠️ **The outboard plates are steel now**, so that "no mill needed" afternoon on roughly 25 holes

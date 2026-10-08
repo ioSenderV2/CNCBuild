@@ -6,7 +6,7 @@
 
 ---
 
-✅ **Decided 2026-09-29, material changed 2026-10-02. One per Y beam, 12" × 1000 mm × 1/8"
+✅ **Decided 2026-09-29, material changed 2026-10-02, size settled by the order 2026-10-08. One per Y beam, 11 7/8" × 39 5/16" × 10 gauge
 cold-rolled steel sheet**, replacing the existing 12" × 6" × 1/4" gusset - the dimensions rotate,
 from 12" along the beam to 12" tall and a metre long.
 
@@ -55,13 +55,16 @@ clearance into T-slots where the T-nut moves to meet the bolt.
 
 | | |
 |---|---|
-| Listing | 1/8" × 12" × 48" mild steel sheet, **A36 hot rolled, "11 gauge"**, uncoated |
+| Listing *(superseded - not what was bought)* | 1/8" × 12" × 48" mild steel sheet, **A36 hot rolled, "11 gauge"**, uncoated |
+| **Ordered** | **10 GA (.135) × 11 7/8" × 39 5/16" cold-rolled**, sheared, two pieces |
 | Price | **$81.99 each** - and **two are needed**, one plate per sheet |
 | Yield | 48" = 1219 mm against a 1000 mm plate, so a 219 mm offcut each |
 
-⚠️ **"11 gauge" and "1/8" are not the same number** - 11 ga is 0.1196" (3.04 mm) against 0.125"
-(3.175). Harmless for the structure: transformed area goes 9.2 → 8.8 mm equivalent aluminium, still
-on the 3/8" target. **But measure what arrives and record it here**, because the riser-proud check at the
+✅ **CLOSED 2026-10-08: neither. It was bought as 10 gauge, .135" = 3.429 mm.** The listing's two
+numbers disagreed - "11 gauge" is 0.1196" (3.04) against 1/8" at 0.125" (3.175) - and the sheet
+actually ordered is thicker than both. Harmless for the structure either way: transformed area is
+still on the 3/8" target. ⚠️ **Record the caliper reading in T_SIDE_PLATE**, not here and not in
+T_OUTBOARD_PLATE, because the riser-proud check at the
 front plates keys off this thickness.
 
 📌 **~$4/lb is retail.** A steel service centre is typically around half that; at $164 for the pair
@@ -194,7 +197,7 @@ by the tongue it is bolted through.
 |---|---|---|
 | Inner web of the outer wall | 19 mm | Between the skins, 100 mm high |
 | The top skin | 19 mm | **Runs out to the tongue** - the plate stands on it |
-| The full-height plate | **3.175 mm (1/8")** | Up to the Y beam - 12", 305 mm tall |
+| The full-height plate | **3.429 mm (10 gauge, ordered)** | Up to the Y beam - 11 7/8", 301.625 mm tall |
 | Outer lamination, the tongue | 19 mm | 180 mm tall, **60 mm proud** of the top skin, **outboard of the plate** |
 
 ### The plate is captured on three sides

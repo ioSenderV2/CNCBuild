@@ -20,7 +20,7 @@ this file were reversed on purpose. The short form:
 | Stepper end | Rear | **Front**, both Y beams |
 | Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **60.5 × 50 mm window** for the casting |
 | Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1210.73 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
-| Outboard plates | 12" × 1000 × 1/4" **6061** | 12" × 1000 × **1/8" cold-rolled steel sheet** |
+| Outboard plates | 12" × 1000 × 1/4" **6061** | **11 7/8" × 39 5/16" × 10 gauge cold-rolled steel sheet**, as ordered 2026-10-08 |
 | Front strips | 3/8" on Y, 1/4" on X | **45 mm × 4 mm 6061 on all three beams**, X included. 🔴 Went 1/4" → 4 mm 2026-10-03: at 1/4" the bolt heads hit the bearing blocks |
 
 Two reversals are deliberate and are recorded with their reasons where they occur: the
@@ -47,9 +47,9 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 
 | | **Front (2026-10-02)** | **Rear (2026-10-02)** |
 |---|---|---|
-| Size | **Tapered: 100 mm at the top, 200 mm at the base, 302 mm tall, 1/2" thick** | **One plate for both beams: 1210.73 mm × 12" × 1/4" steel** |
+| Size | **Tapered: 100 mm at the top, 200 mm at the base, 301.625 mm tall, 10 mm thick** | **One plate for both beams: 11 7/8" × a true 1/4" A36, ordered 47 21/32" (1210.47) long.** ⚠️ **The length is open** - the flush envelope at a 10 gauge side plate is 1211.238, so the bought plate is 0.77 short. Caliper it on arrival; see `open-items.md` |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
-| To the torsion box | **Two M8 through the front tongue at X 25 and 170, Y 30**, plus bottom-edge bearing | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full 1210.73 mm |
+| To the torsion box | **Two M8 at X 25 and 170, both on Y 30**, into the vertical legs of two L-brackets behind the fin, plus bottom-edge bearing. ⚠️ **There is no front tongue** - the box runs past the fins and the brackets tie it down | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full 1210.73 mm |
 | Also carries | the **60.5 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
 ⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.

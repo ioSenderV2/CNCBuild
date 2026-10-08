@@ -363,16 +363,20 @@ back face of any plate** (BOLT_REACH_MAX).
 |---|---|---|---|---|---|
 | **Front strip**, all three beams | 4 mm 6061 | **M8 × 10** | 6.0 | **6.0 - full** | 1.2 |
 | **X back plate** | 6.35 mm 6061 | **M8 × 12** | 5.65 | 5.65 | 1.55 |
-| **Y back** - the outboard plate | 3.175 mm steel **+ M8 washer** | **M8 × 10** | 5.2 | 5.2 | 2.0 |
+| **Y back** - the outboard plate | 3.429 mm steel **+ M8 washer** | **M8 × 10** | 4.97 | 4.97 | 2.23 |
 
 🔴 **Engagement is capped at 6 mm by the nut, not by the bolt.** A longer bolt buys nothing and
 eventually bottoms. **M8 × 12 is wrong on the front strip** - it reaches 8.0 into a 7.2 limit and
 hits the slot floor before the head seats, which presents as a bolt that feels tight while the strip
 is still loose. That is the failure mode to recognise, because torque is not evidence of clamp here.
 
-⚠️ **The washer on the Y back is doing real work.** At a nominal 3.175 the bare M8 × 10
-reaches 6.83 - and if the sheet is really the 11-gauge 3.04 it was sourced as, 6.96 against the 7.2
-limit, a margin of 0.24 that is inside caliper noise. The washer moves the head out 1.6, and it
+✅ **The washer on the Y back is no longer load-bearing on the argument, and it stays anyway.** At
+the **ordered 10 gauge (3.429)** the bare M8 × 10 reaches **6.571** against the 7.2 limit - clear by
+**0.629**, which is outside caliper noise. ⚠️ **That is not what this paragraph used to say**: at a
+nominal 3.175 the bare bolt reaches 6.83, and at the 11-gauge 3.04 the sheet was sourced as, 6.96 -
+a margin of 0.24 that *was* inside caliper noise, and that margin is why the washer was specified at
+all. Keep it for the reason it was wanted regardless: it spreads load on 3.4 mm steel. The washer
+moves the head out 1.6, and it
 spreads load on 3 mm steel anyway. **Measure the delivered sheet, and put the reading in T_SIDE_PLATE** - that is the symbol the rear plate's length, the box width and Sheet 7's hole columns all hang off. T_OUTBOARD_PLATE is an alias of it and feeds nothing.
 
 📌 **Two lengths, not three** - the front strips and the Y backs share M8 × 10:

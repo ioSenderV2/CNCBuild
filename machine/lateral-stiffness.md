@@ -40,9 +40,9 @@ against. *(An earlier draft had them at 3/8" and derated this to ~9.5×; that no
 ⚠️ **Calculated, not measured.** Tapered cantilever, width varying linearly, load at the top, fixed
 base. The fixed-base assumption is doing real work - see the bolt note below.
 
-## Cut two from one 12" square, and reference off the factory edges
+## One piece per fin, and reference off the factory edges
 
-✅ **Decided 2026-09-30.** One **12" square of 3/8" aluminium**, cut once on a line from **3" in at the
+⚠️ **Superseded twice over - kept because the layout rule below still holds.** The stock is **10 mm, not 3/8"**, it measures **301.625, not 12"**, and as of 2026-10-08 **each fin has its own piece** rather than both nesting out of one. What survives is referencing off the factory edges. The original: one **12" square of 3/8" aluminium**, cut once on a line from **3" in at the
 top to 200 mm in at the bottom**, yields **both front plates** - each half is 100 mm at the top,
 200 mm at the base, 302 mm tall. **100 + 200 + 2 = 302**, the 2 being the kerf.
 
@@ -85,7 +85,7 @@ down.
 
 ### ✅ The stock is 10 mm, not 1/2" - and that is acceptable, by this file's own test
 
-**Measured 2026-10-02: the 302 mm square is 10 mm thick.** It is **not 3/8"** either - 3/8" is 9.525,
+**Measured 2026-10-02: the fin stock is 10 mm thick.** It is **not 3/8"** either - 3/8" is 9.525,
 so this is metric plate, 5% thicker than 3/8" and 21% thinner than the 1/2" this file had specified.
 ✅ **Decision: stay with 10 mm.**
 
@@ -132,20 +132,22 @@ takes about 3.2-3.4 of that back:
 | M8 column from the fin's outboard edge | **35** |
 | Corner bore inset in the `30-6060` | − 15 |
 | **Fin overhanging the Y beam's outboard face** | **20 mm** |
-| Side plate, **1/8" nominal** | − 3.175 |
-| **Fin proud of the side plate's outer face** | **16.825 mm** |
+| Side plate, **10 gauge as ordered** | − 3.429 |
+| **Fin proud of the side plate's outer face** | **16.571 mm** |
 
-⚠️ **3.175 is the nominal, and the delivered sheet is still an open item.** A 3.36 was floated
-on 2026-10-02 and **withdrawn as a guess** - it is not a measurement and should not reappear. If the
-sheet arrives as **11 gauge (3.04)** rather than 1/8", the figure becomes **16.96**. Either way it is
-~17 mm, which is what the **side tongue's** termination turns on; **caliper the sheet on arrival and
-settle it here.**
+✅ **CLOSED 2026-10-08 by the order: the sheet is 10 gauge, .135" = 3.429.** Three numbers had been
+in play and none of them was this one - a nominal 1/8" (3.175), an "11 gauge" (3.04) the listing also
+claimed, and a 3.36 floated on 2026-10-02 and **withdrawn as a guess**. The question was not settled
+by reading the listing more carefully; it was settled by buying the part. The figure is **16.571**,
+still the ~17 mm the **side tongue's** termination turns on. ⚠️ **Caliper the delivered sheet
+anyway** - a gauge is a nominal, and this is the symbol the reading goes in (T_SIDE_PLATE, not
+T_OUTBOARD_PLATE, which is an alias that feeds nothing).
 
 📌 **Second part this session to come back metric where the file assumed imperial** - the Z
 spacers read 16.41 against a nominal 5/8". **Caliper the stock, do not trust the fraction it was
 sold as.**
 
-📌 **The stock is a MEASURED 302 mm square, not a nominal 12".** That is what sets the numbers:
+📌 **The stock measures 301.625, not a nominal 12" and not the 302 it was carried at.** ⚠️ **And it is no longer one square**: each fin went onto its own piece of plate on 2026-10-08, which released the top width back to a chosen 100. That is what sets the numbers:
 **100 + 200 + 2 = 302**, the 2 mm being the kerf of the single diagonal cut. Both halves come out
 identical by rotation, with nothing left over and nothing assumed about the cut being free.
 
@@ -183,7 +185,7 @@ tight one - it is the factory edge, and the side plate's end lands on it - while
 tapered edge is out past X 150 at the window's height. **All the rotation clearance now falls
 inboard.**
 
-✅ **And it closes the breakout.** The side plate's end occupies X 16.825 to 20, so a window edge at
+✅ **And it closes the breakout.** The side plate's end occupies X 16.571 to 20, so a window edge at
 X 20 is **flush with that plate's inner face** instead of cutting 1 mm into its band.
 
 🔴 **The width is a slip fit, NOT the rotation clearance - corrected 2026-10-03.** The casting is
@@ -261,10 +263,9 @@ square when **top + base = 12**. So 3" / 9" works, and **4" / 8" works**, but 4"
 blank.
 
 ⚠️ **The 20 mm strip is not 20 mm of free material - the side plate's end uses the outer part of
-it.** The 1/8" × 12" outboard plate lies against the beam's outboard face at **X 20** and is
-**3.175** thick, so its end occupies **X 16.825 to 20**. About **16.8 mm** of the strip is clear
-fin, and the rest is under the plate. ⚠️ **3.175 is nominal** - if the sheet arrives as 11 gauge the
-band moves.
+it.** The outboard plate lies against the beam's outboard face at **X 20** and is **3.429** thick as
+ordered, so its end occupies **X 16.571 to 20**. About **16.6 mm** of the strip is clear fin, and the
+rest is under the plate. ✅ **3.429 is the ordered 10 gauge** - the 11-gauge alternative is dead.
 
 ✅ **Closed by the realignment, 2026-10-03.** When the window ran X 19 to 81 its outboard edge
 fell **inside** the plate's band and broke out into the space the plate's end occupies. At **X 20**
@@ -296,7 +297,7 @@ each face, so columns at **35 and 65** put the beam's outboard face **20 mm inbo
 plate's outboard factory edge - and the beam therefore spans **X 20 to 80**, centred in the fin's
 100 mm top width with 20 mm of overhang each side.
 
-**The outboard plate is 1/8" steel (3.175 mm), so the riser's edge stands 16.8 mm proud of it** -
+**The outboard plate is 10 gauge steel (3.429 mm as ordered), so the riser's edge stands 16.571 mm proud of it** -
 and as of 2026-10-02 **that is wanted, not tolerated.** The end plate overhanging the side plate
 looks better, and the two never meet in any case: the side plate stops **1 mm shy of the beam's
 end**.
@@ -311,7 +312,7 @@ stands 60 mm proud as a tongue and the design has **the full-height plate's oute
 it** - that is the full-metre lateral restraint, and "bias the top skin wide, never narrow" exists
 because it is a hard bearing face with no float. If the riser's edge is the proud member **and the
 tongue reaches that far forward**, the tongue is held out by the riser and leaves a gap along
-the plate's whole length. The riser stands FIN_PROUD = **16.825 mm** outboard of the side plate, so
+the plate's whole length. The riser stands FIN_PROUD = **16.571 mm** outboard of the side plate, so
 that gap is not small.
 
 ✅ **CLOSED 2026-10-03, and by construction rather than by trimming.** The side tongue is

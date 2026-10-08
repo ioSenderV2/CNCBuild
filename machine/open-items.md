@@ -16,8 +16,10 @@
   the bar runs ~30 mm past the casting and the four T-nut bolts live in the overhang.
 - ✅ ~~**The two strip widths either side of the window**~~ **Measured 2026-10-02 at 19 mm outboard
   on the MDF template; the design moved to 20 on 2026-10-03** when the window was realigned onto the
-  beam face. The measurement confirmed the approach, not this number. The fins are **100 / 200 over 302**, both halves out of
-  the measured 302 mm square with 2 mm for the kerf.
+  beam face. The measurement confirmed the approach, not this number. The fins are **100 / 200 over 301.625**, and ✅ **each is now on its own piece of plate** -
+  settled 2026-10-08. They used to nest out of one square with 2 mm for the kerf, which is the only
+  reason the top width was ever 99.625 rather than 100; the base is the reference end at a fixed 200,
+  so the top absorbed the remainder. On its own piece nothing couples the two widths.
 - ✅ ~~**The window's horizontal position does not reconcile**~~ **Closed 2026-10-02, and the window
   was then realigned on 2026-10-03.** The original non-reconciliation was arithmetic off a wrong
   column position; with the M8 columns at **35 and 65** the beam spans X 20-80 and nothing about the
@@ -31,8 +33,9 @@
   **35 − 15 = 20 mm of fin overhanging the Y beam's outboard face**, less the side plate's
   thickness. ✅ Thickness of the fin is not a term, so the 10 mm stock is irrelevant to it.
   🔴 **The side tongue's termination gets more important, not less** - a tongue reaching the
-  riser's station would be held out by **~16.8 mm**, not 1.8, so terminating it short is now clearly
-  required rather than merely tidy.
+  riser's station would be held out by **16.571 mm**, not 1.8, so terminating it short is now clearly
+  required rather than merely tidy. ✅ **16.571, not the 16.8 this bullet carried**: the side plate
+  was bought at 10 gauge (3.429) rather than the nominal 1/8" (3.175) the figure was computed on.
 - ⚠️ **Terminate the side tongue short of the front riser's station** so the tongue bears on the
   side plate rather than being held out by the riser. A box decision, free while the box is unbuilt.
 - ✅ ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
@@ -101,6 +104,26 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - ⚠️ **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1210.73 mm of rear bottom-edge bearing.** Decide before the skins are cut.
+
+## ⚠️ From the 2026-10-08 order - the back plate's length
+
+- 🔴 **What Sheet 7's X 0 measures from, now that the bought plate is shorter than the flush
+  envelope.** The side plates came in at **10 gauge (3.429)** rather than the nominal 1/8" (3.175),
+  so the envelope that runs the back plate flush with their outer faces grew 0.508 to **1211.238**.
+  The back plate was bought at **47 21/32" = 1210.47**, which was the nearest 1/32" under the old
+  1210.73. It is now **0.77 short of flush**.
+  **Why that is not cosmetic:** Sheet 7's sixteen beam bores *and* its eight torsion-box stations are
+  **absolute from the plate's left edge**, so a plate 0.77 short puts the **Y2 beam station out by
+  the whole 0.77** and the bolt rows 0.385 off centre. A short side plate is margin; a short back
+  plate is error, because this plate's length is what sets where the second beam goes.
+  **The two ways out**, neither picked: re-reference Sheet 7's X to the **Y1 extrusion face**, after
+  which the plate's length feeds nothing; or keep the plate edge as X 0, let REAR_PLATE_L become the
+  delivered length, and accept the plate sitting **0.385 recessed** at each corner.
+  ✅ **Decided 2026-10-08 to measure before choosing** - the plate's req date is 15 Oct. Until then
+  `REAR_PLATE_L` is marked open in the registry, `REAR_PLATE_L_ORDERED` records the bought length,
+  and **1210.73 is left standing in the prose deliberately** rather than swept to a number that is
+  also not the part. **Nothing on Sheet 7 gets drilled first** - that is checklist row 3 in the shop
+  pack.
 
 ## From the 2026-10-08 datasheet pass
 

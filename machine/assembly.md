@@ -91,7 +91,7 @@ for months.
 | Home drill press | |
 |---|---|
 | Beam joining plates | 9 mm clearance into T-slots at 150 mm — the T-nut moves to meet the bolt |
-| Two **outboard plates**, 12" × 1 m × 1/8" steel | ~25 holes each, and steel runs several times longer than aluminium would |
+| Two **outboard plates**, 11 7/8" × 39 5/16" × 10 gauge steel | ~25 holes each, and steel runs several times longer than aluminium would |
 | Three **front strips**, 45 mm × 1 m × 4 mm | |
 
 🔴 **Five plates stand on the box and all five are 301.625 high: the two side plates, the back
@@ -268,7 +268,7 @@ does not name the orientation means nothing.
 
 ### The front plate — the fin
 
-**Two off**, cut from one 12" square: **tapered 100 mm at the top to 200 mm at the base, 302 mm
+**Two off, each on its own piece of plate** - they used to nest out of one square: **tapered 100 mm at the top to 200 mm at the base, 301.625 mm
 tall, 10 mm** 6061, with a **60.5 × 50 mm window** below the beam for the casting.
 
 The two halves are **rotations of each other, not mirrors** — turn one 180° and the outline is
@@ -323,7 +323,7 @@ over a metre of contact.
 
 ### The outboard plates
 
-**One per Y beam: 12" × 1000 mm × 1/8" cold-rolled steel sheet.** This **is** the Y back joining
+**One per Y beam, as ordered: 11 7/8" × 39 5/16" × 10 gauge cold-rolled steel sheet** - 301.625 × 998.54 × 3.429. This **is** the Y back joining
 plate — there is no separate 120 mm plate on Y. It runs from the beam down to the torsion box.
 
 | | |
@@ -334,8 +334,11 @@ plate — there is no separate 120 mm plate on Y. It runs from the beam down to 
 | Holes | **9 mm clearance** in **tongue** and plate both |
 | Position | against the beam's outboard face at X 20, ending **1 mm shy of the beam's end** |
 
-⚠️ **Measure the thickness of what arrives and record it.** Sheet sold as 1/8" is often "11 gauge",
-which is 3.04 mm not 3.175. The riser-proud check keys off it.
+✅ **Settled by the order, 2026-10-08: it is 10 gauge, .135" = 3.429 mm** - not 1/8" (3.175) and
+not the "11 gauge" (3.04) the listing also offered. That question stood open for weeks and was
+closed by buying the part. The riser-proud check keys off it, and the figure is now **16.571**.
+⚠️ **Still caliper what arrives**: a gauge is a nominal, and three nominals on this machine have
+already come in wrong.
 
 **Powder coat or paint both faces.** This plate is the chip barrier and it is the part that gets wet
 with swarf — aluminium is the anode and the extrusion is what cannot be replaced.
