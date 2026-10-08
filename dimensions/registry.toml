@@ -156,16 +156,15 @@ source = "spec sheet supplied with the X/Y kit, read 2026-10-03"
 
 [[dim]]
 sym = "T_X_ENDPLATE"
-value = 12.7
-provenance = "nominal"
-note = "1/2in 6061. CALIPER IT - two 'nominal' thicknesses were wrong this session."
+value = 12.19
+provenance = "measured"
+note = "1/2in 6061, HIS MICROMETER in several places 2026-10-07: 12.19, not the 12.7 nominal this was carried at. That is 0.48in stock sold as half inch, and 0.61 per plate - so 1.22 across the machine, which is why REAR_PLATE_L moved. The entry had said CALIPER IT because two other nominals had already been wrong; this is the third."
 source = "machine/end-plates-risers-and-spindle.md"
 
 [[dim]]
 sym = "T_DOUBLER"
-value = 12.7
-provenance = "nominal"
-note = "1/2in 6061, same stock as the end plate"
+expr = "T_X_ENDPLATE"
+note = "The doubler IS the end plate's offcut - 200 wide stock less the plate's 154 leaves the 45 strip, which is where DOUBLER_H comes from. So it is the same piece of metal and cannot have its own thickness. It was carried as an independent 12.7 and would have stayed at 12.7 when the end plate went to 12.19, which is the drift this expression removes."
 
 [[dim]]
 sym = "T_SOLE_BRACKET"
@@ -478,7 +477,7 @@ note = "After facing. ARITHMETIC, NOT A MEASUREMENT - re-mic and set provenance 
 sym = "T_Z_PLATE"
 value = 12.7
 provenance = "nominal"
-note = "1/2in 6061"
+note = "1/2in 6061. CALIPER IT - the X end plate's half-inch stock measured 12.19, so a nominal 12.7 is not safe on this machine. Whether this plate is the same stock is unestablished."
 
 [[dim]]
 sym = "CLAMP_BORE_OFFSET"
@@ -495,6 +494,7 @@ note = "X carriage plate face to the spindle centreline. Was recorded as 109 bef
 sym = "T_X_CARRIAGE_PLATE"
 value = 12.7
 provenance = "nominal"
+note = "1/2in 6061. CALIPER IT - same reason as T_Z_PLATE: the end plate's half-inch stock came in at 12.19."
 
 [[dim]]
 sym = "GANTRY_ARM"
