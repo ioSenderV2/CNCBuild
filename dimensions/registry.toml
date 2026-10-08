@@ -1274,6 +1274,16 @@ expr = "Y_BEAM_UNDERSIDE + BEAM_H"
 note = "302 above the box's top skin. THIS IS THE CROSS-CHECK THAT THE CHAIN IS RIGHT: it lands on exactly FIN_STOCK, the measured 302 of the fin square, from a completely separate direction - the window's drawn position. The fin is flush with the beam top; the side plate is not, and does not need to be."
 
 [[dim]]
+sym = "X_BEAM_TOP_Z"
+expr = "Y_BEAM_TOP_Z + XEP_TOP_ABOVE_BEAM"
+note = "362 above the torsion box's top skin. The X end plate stops at the top of the X beam's upper extrusion, which is XEP_TOP_ABOVE_BEAM = 60 above the Y beam's top - so this is where the gantry's top face lands."
+
+[[dim]]
+sym = "X_BEAM_UNDERSIDE"
+expr = "X_BEAM_TOP_Z - BEAM_H"
+note = "242 above the torsion box's top skin. 🔴 IT IS NOT PLATE_H MINUS 60. That arithmetic gives 241.625 and it was tried on 2026-10-08; it uses the standing plates' top edge as a stand-in for the Y beam's top, and the two differ by 0.375 because the plates are bought at 301.625 while the beam top is at 302. The gantry's height is set by the Y RAILS, which are set by the Y beam, which the FIN'S WINDOW puts at Y_BEAM_UNDERSIDE = 182 - no plate edge is in that chain. THIRD TIME IN ONE DAY for the same substitution: RP_BEAM_ROW_1 was written off REAR_PLATE_W and corrected, BF12_ROW1_BARE still converts from a plate edge and is open, and then this. Independent cross-check: 242 is also the Y beam's own seam, 182 + EXT_W - a coincidence of the 60 series and worth knowing as a check, but do NOT derive from it, because nothing makes the gantry underside and the Y seam the same thing."
+
+[[dim]]
 sym = "SIDE_PLATE_PROUD"
 expr = "SIDE_PLATE_H - Y_BEAM_TOP_Z"
 note = "The side plate's top edge against the Y beam's top. NOW NEGATIVE at -0.375: the plate finishes just BELOW the beam top rather than 2.8 above it, because the ordered height came down to 11 7/8. The name says proud and the number no longer is - kept rather than renamed because every sheet and both documents refer to it. Harmless either way, and it is the reason Sheet 9 is dimensioned off the bottom edge: a bought plate was never going to land on the beam top by luck."
