@@ -1539,23 +1539,23 @@ note = "The side plate's top edge against the Y beam's top. NOW NEGATIVE at -0.3
 
 [[dim]]
 sym = "FLANGE_HEAD_D"
-value = 13.8
+value = 17.3
 provenance = "measured"
-note = "M8 flange head across the flange. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. \U0001f534 A DIFFERENT BOLT AS OF 2026-10-08 - 13.8, his choice, superseding the 17.3 measured on the bench 2026-09-29. \u2705 IT IS NOT A COSMETIC CHANGE AND THAT IS THE POINT: the AS5311 puck needs SENSOR_KEEPOUT_W of 15 mm centred over the tape, and the strip's bolt rows CANNOT move - they are at 7.5 and 37.5 because the extrusion's T-slots sit RAIL_SLOT_INSET either side of the seam. At 17.3 the clear channel between the two head rims is 12.7 and the puck DOES NOT FIT, short by 1.15 a side. At 13.8 the channel is 16.2 and it fits by 0.6 a side. The head diameter was the only variable in that sum. See STRIP_CHANNEL_W and SENSOR_KEEPOUT_SLACK."
-source = "his calipers and his choice, 2026-10-08"
+note = "M8 flange head across the flange, THE BEAM-END BOLT - 17.3, measured on the bench 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. \U0001f534 THIS IS THE BOLT THAT GOES INTO A BEAM'S END, i.e. into the extrusion's lengthwise corner bores, and his rule 2026-10-08 is that THESE STAY THE OLD STYLE. Three places, all the same 8-per-beam-end pattern: the back plate and the two front fins onto the Y beam ends, and the two X end plates onto the X beam ends, eight bolts each. \u26a0 DO NOT CONFUSE IT WITH FLANGE_STRIP_D: the bolts that go into T-SLOTS on the beam's front face went to a smaller 13.8 head on 2026-10-08 so the encoder puck would fit, and for a few hours this symbol wrongly carried that 13.8 and took the beam-end bolt with it. Two fasteners, two symbols."
+source = "measured on the bench 2026-09-29; scope confirmed by him 2026-10-08"
 
 [[dim]]
 sym = "FLANGE_HEAD_H"
-value = 3
+value = 4
 provenance = "measured"
-note = "TOTAL height the M8 head stands proud of the face, at its centre - 3 on the 13.8 bolt adopted 2026-10-08. THESE ARE FLANGED BUTTON HEADS WITH A HEX SOCKET IN THE MIDDLE OF THE DOME, not hex-head flange bolts: there is NOTHING above this. \u26a0 THE SUPERSEDED 17.3 BOLT HAS BEEN READ TWICE AND THE READINGS DISAGREE: 2.5 on 2026-10-03 and 4 on 2026-10-08, both his. It is moot - that bolt is out - but it is recorded rather than overwritten, because the earlier number had itself replaced a wrong 5 and the history of this symbol is three different figures for one part. \u2705 Nothing turns on it either way: the head stands above the chip's plane at BOTH heights, and what keeps it clear of the sensor is lateral, not vertical. Was 5 before 2.5; the 5 came from believing a hex head sat on top of the dome."
+note = "TOTAL height the BEAM-END M8 head stands proud of the face, at its centre - 4 on the 17.3 bolt, his 2026-10-08. THESE ARE FLANGED BUTTON HEADS WITH A HEX SOCKET IN THE MIDDLE OF THE DOME, not hex-head flange bolts: there is NOTHING above this. \u26a0 THIS SYMBOL HAS NOW CARRIED FOUR FIGURES FOR ONE PART: 5, then 2.5 on 2026-10-03, then briefly 3 on 2026-10-08 when the strip bolt's height was wrongly written here, and now 4. The 5 came from believing a hex head sat on top of the dome and is simply wrong; 2.5 and 4 are both his own readings of the same 17.3 bolt five days apart and they have never been reconciled. \u2705 Nothing derives from it - dims.py deps returns nothing - so it is a recorded fact rather than a load-bearing one, and the clearances that matter around these heads are all lateral. The strip bolt's height is FLANGE_STRIP_H."
 source = "his calipers and his choice, 2026-10-08"
 
 [[dim]]
 sym = "FLANGE_RIM_H"
 value = 1
 provenance = "measured"
-note = "Flange thickness at the rim - he gives it as UNDER 1, so this is an upper bound rather than a figure. It is the number that matters for anything sliding past a bolted joint, which is why it is worth writing down separately from the centre. \u26a0 IT WAS READ ON THE SUPERSEDED 17.3 HEAD and has NOT been re-read on the 13.8 one adopted 2026-10-08. That is deliberate rather than an omission: its only consumer is STRIP_STACK, and STRIP_HEAD_REACH now stops 0.6 inside the strip's edge so nothing slides past anything. Re-measure it only if a joint turns up where a flange rim has to pass under something."
+note = "Flange thickness at the rim - he gives it as UNDER 1, so this is an upper bound rather than a figure. It is the number that matters for anything sliding past a bolted joint, which is why it is worth writing down separately from the centre. \u26a0 IT WAS READ ON THE 17.3 BEAM-END HEAD, which is still in service, and has NEVER been read on the 13.8 strip head. Its only consumer is STRIP_STACK, which is about the STRIP bolt - so the one value this symbol feeds is taken from the wrong bolt. It does not currently matter, because STRIP_HEAD_REACH stops 0.6 inside the strip's edge and nothing slides past anything; a 13.8 head's rim will also be thinner than a 17.3 one's, so the bound is conservative in the safe direction. Re-measure on the strip bolt if a joint ever turns up where its rim has to pass under something."
 
 [[dim]]
 sym = "FLANGE_M5_D"
@@ -1575,6 +1575,20 @@ expr = "FLANGE_M5_D / 2"
 note = "6.7. The number edge distance is really asking for - a radius, not a diameter. y-beam-support.md raised a false alarm once by comparing a head DIAMETER against an edge DISTANCE, and this symbol exists so that cannot happen twice."
 
 [[dim]]
+sym = "FLANGE_STRIP_D"
+value = 13.8
+provenance = "measured"
+note = "M8 flange head across the flange, THE T-SLOT BOLT ON THE FRONT JOINING STRIP - 13.8, his choice 2026-10-08, superseding the 17.3 of FLANGE_HEAD_D on this joint only. \U0001f534 IT IS NOT A COSMETIC CHANGE AND THAT IS THE POINT: the AS5311 puck needs SENSOR_KEEPOUT_W of 15 mm centred over the tape, and the strip\u2019s bolt rows CANNOT move - they sit at 7.5 and 37.5 because the extrusion\u2019s T-slots are RAIL_SLOT_INSET either side of the seam. At a 17.3 head the clear channel between the two head rims is 12.7 and the puck DOES NOT FIT, short by 1.15 a side; at 13.8 the channel is 16.2 and it fits by 0.6. The head diameter was the only variable in that sum. \u26a0 THE BEAM-END BOLTS ARE NOT THIS BOLT - they stay at 17.3, see FLANGE_HEAD_D. \u26a0 OPEN: whether the OTHER T-slot joints (the Y back plates, the X back plate, the casting interposer bars) also take this head or keep the 17.3. Only the front strip is FORCED by the encoder; the rest is a buy-one-bolt question and has not been asked."
+source = "his calipers and his choice, 2026-10-08"
+
+[[dim]]
+sym = "FLANGE_STRIP_H"
+value = 3
+provenance = "measured"
+note = "TOTAL height the strip bolt\u2019s head stands proud of the face, at its centre - 3 on the 13.8 head, his 2026-10-08. Flanged button head, hex socket in the dome, nothing above it. \u2705 It is 0.8 to 1.1 ABOVE the chip\u2019s plane - tape 1.6 plus the AS5311\u2019s 0.3-0.6 air gap puts the chip face at 1.9-2.2 - so the head IS taller than the sensor rides. That decides nothing, because the heads are outside the lane laterally; see SENSOR_KEEPOUT_SLACK. If the puck ever has to cross a head, this is the number it has to clear."
+source = "his calipers and his choice, 2026-10-08"
+
+[[dim]]
 sym = "SENSOR_KEEPOUT_W"
 value = 15
 provenance = "part"
@@ -1583,7 +1597,7 @@ source = "his, 2026-10-08"
 
 [[dim]]
 sym = "STRIP_CHANNEL_W"
-expr = "STRIP_ROW_HIGH - STRIP_ROW_LOW - FLANGE_HEAD_D"
+expr = "STRIP_ROW_HIGH - STRIP_ROW_LOW - FLANGE_STRIP_D"
 note = "16.2 - the clear lane down the middle of the front strip, between the facing rims of the two bolt head rows. It is what the sensor puck has to fit inside. \U0001f534 THE BOLT ROWS ARE NOT A FREE CHOICE: STRIP_ROW_LOW and STRIP_ROW_HIGH come straight off the extrusion\u2019s T-slots at RAIL_SLOT_INSET either side of the seam, so the ONLY way to widen this lane is a smaller flange head, which is exactly what happened on 2026-10-08. It was 12.7 at the old 17.3 head."
 
 [[dim]]
@@ -1594,7 +1608,7 @@ note = "0.6 per side, and \u26a0 THAT IS THE WHOLE MARGIN ON THE ENCODER LANE. I
 [[dim]]
 sym = "FLANGE_HALF"
 expr = "FLANGE_HEAD_D / 2"
-note = "6.9, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear. \u26a0 WAS 8.65 off the superseded 17.3 head - every edge-distance check written before 2026-10-08 was made against the larger number, so each of them still passes and passes by more. Nothing that cleared 8.65 can fail at 6.9."
+note = "8.65, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear. \U0001f534 IT IS THE BEAM-END HEAD'S HALF, off FLANGE_HEAD_D's 17.3 - the bolt that goes into a beam's corner bores, which his rule 2026-10-08 keeps at the old style. \u26a0 THE FRONT STRIP'S BOLT IS A DIFFERENT PART at 13.8, so its half is 6.9: use FLANGE_STRIP_D for anything on that joint. This symbol briefly read 6.9 on 2026-10-08 when the strip bolt was wrongly written into FLANGE_HEAD_D, which would have relaxed every edge distance in the repo on the strength of a bolt that is not in those joints."
 
 [[dim]]
 sym = "FLANGE_DRIVE"
@@ -1662,7 +1676,7 @@ note = "Clear height under the HGH20 block, above the surface the rail sits on. 
 
 [[dim]]
 sym = "STRIP_HEAD_REACH"
-expr = "RAIL_SLOT_INSET + (FLANGE_HEAD_D / 2)"
+expr = "RAIL_SLOT_INSET + (FLANGE_STRIP_D / 2)"
 note = "How far a strip bolt's flange head reaches from the beam's seam: \u2705 21.9 on the 13.8 head adopted 2026-10-08, against a strip half-width of 22.5. THE HEAD NOW STOPS 0.6 INSIDE THE STRIP'S OWN EDGE and reaches nothing. \u26a0 THAT RETIRES A WHOLE CLEARANCE QUESTION rather than changing its answer: at the old 17.3 head this was 23.65, past the 22.5 and past a block inner edge near 23, so the head's RIM passed under the bearing block's overhang by about half a millimetre. That was fine and it was MEASURED - he checked it 2026-10-03 on a real beam with rails and blocks fitted, the rim being under a millimetre thick at that radius - and the 3D model only flagged it because it draws the block as a plain solid with no overhang relief. None of that applies now; nothing goes under the block. See STRIP_STACK, which existed to bound it."
 
 [[dim]]

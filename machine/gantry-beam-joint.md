@@ -257,7 +257,9 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
 | Clearance under the block, above the rail surface | **at most 6 mm** 🔴 corrected from 4.5 on 2026-10-03 |
-| M8 flange head | **13.8 mm** diameter × **3 mm** proud at the centre - his choice 2026-10-08, and it is what makes the encoder puck fit. These are **flanged button heads driven by a hex socket in the middle of the dome**, so nothing sits above it. ⚠️ **The superseded 17.3 head has been read three ways** - 5, then 2.5 on 2026-10-03, then 4 on 2026-10-08 - and nothing turns on which was right, since that bolt is out. The **M5** equivalent is **13.4 × 2.4** |
+| M8 flange head, **beam ends** | **17.3 mm** diameter × **4 mm** proud at the centre. The bolt that goes into a beam's lengthwise corner bores - back plate and both front fins onto the Y beam ends, both X end plates onto the X beam ends, eight each. ⚠️ **Its height has been read four ways** - 5, 2.5, 3, now 4 - and nothing derives from it. The **M5** equivalent is **13.4 × 2.4** |
+| M8 flange head, **front strip** | **13.8 mm** diameter × **3 mm** proud at the centre - his choice 2026-10-08, and it is what makes the encoder puck fit. 🔴 **A different bolt from the row above, not a replacement for it.** |
+| Both heads | **Flanged button heads driven by a hex socket in the middle of the dome**, so nothing sits above the dome |
 | Rails | HGR20, **17 × M5 at 60 mm** into T-nuts, one rail per profile, front face |
 | Ball screw | 1605, BK12 / BF12 supports, M5 into the end plates |
 | Support block offset from extrusion face | **5 mm**, giving a **12 mm** gap under the ball nut |

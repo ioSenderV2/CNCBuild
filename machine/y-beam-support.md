@@ -245,17 +245,18 @@ arrangement available**, and 150 is what makes room for the third.
   lateral offset. ⚠️ **Restated for M8 2026-10-02:** the web was computed with an M5 clearance hole
   in the bar, and an M8 clearance hole is 9 mm rather than 5.5, which takes **1.75 mm off each
   side**. Both rows still clear; the web is the number to re-check if either moves.
-- **138 leaves 12 mm to the bar's inboard end**, against the **6.9 mm half-head** of an M8 flange
-  bolt - FLANGE_HALF, off a measured 13.8. ✅ **It was 8.65 off the superseded 17.3 head, and this
-  check passed then too** - every edge distance in this repo was written against the larger head, so
-  the smaller one cannot break any of them. 📌 **This line used to read "enough for an 11.8 mm flange
+- **138 leaves 12 mm to the bar's inboard end**, against the **8.65 mm half-head** of an M8 flange
+  bolt - FLANGE_HALF, off a measured 17.3. ⚠️ **Which head this bar takes is open.** The 17.3 is the
+  beam-end bolt and these six are T-slot bolts; the front strip's T-slot bolts went to a 13.8 head on
+  2026-10-08 for the encoder puck, and whether the other T-slot joints follow has not been decided.
+  **The check passes either way** - 12 against 8.65 clears, and a smaller head clears by more - which
+  is why it is not gating anything. 📌 **This line used to read "enough for an 11.8 mm flange
   head"** - the M5 head *diameter*, compared against an edge *distance*. That comparison was
   conservative by a factor of two and it survived the M5 → M8 change long enough to raise a false
   alarm. **Edge distance is a radius question**, which is why FLANGE_HALF and FLANGE_M5_HALF exist.
   🔴 **Two numbers in that old sentence were also just wrong**, corrected 2026-10-03: the M8 head is
   **17.3**, not 18, and the M5 flange is **13.4**, not 11.8. Neither changes the conclusion here -
-  12 against 8.65 cleared, and 12 against today's 6.9 clears by more - but both were being quoted
-  elsewhere as if measured.
+  12 against 8.65 still clears - but both were being quoted elsewhere as if measured.
 
 ✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
 over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M8 of clamp.
