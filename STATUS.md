@@ -143,13 +143,12 @@ interface, not this file.
 - ⚠️ [L98](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question) — *Cutting loads and plate thicknesses / The measurement that…*<br>It is not a single number. One reading on the nose is a total, and a total cannot say which part of the stack is moving - which is the entire question. The procedure uses six indicator positions and subtracts.
 - 🔴 [L118](machine/loads-and-plate-thicknesses.md#open-the-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance) — *The measurement that would settle the 1/4" question / Open:…*<br>A bolted-on steel backer is the wrong answer, and it is the one that looks obvious. The gain depends entirely on whether the two plates transfer shear across the whole face: bolted on a grid they approach one section and ~5×, but bolted at the corners they only share curvature and give 1.36× for 2.45× the mass. Thicker aluminium beats it on both axes at once.
 
-## [machine/machining.md](machine/machining.md)  (5)
+## [machine/machining.md](machine/machining.md)  (4)
 
 - 🔴 [L13](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>Every plate needing accurate holes must be fully dimensioned before that trip, including assemblies that will not be built for months: X carriage plate, Z plate, two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
 - 🔴 [L17](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The 2026-10-02 rework put three more parts on this trip. The list had been shrinking; it is not any more:
 - 🔴 [L26](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The six bolt-on plates went ONTO the trip on 2026-10-09 - two 11 7/8" × 39 5/16" × 10 gauge steel outboard plates, three 45 mm × 1 m × 4 mm 6061 front strips, and the 4 11/16" × 39 5/16" × 1/4" X back joining plate.
-- 🔴 [L37](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The three front strips are a different case and the T-nut argument never applied to them. The nut slides along its slot, so it forgives X and forgives nothing in Y - the bolt's Y is set by the slot. A hole off in Y past the ø9-on-M8 float cannot be taken up by the nut, so the strip moves, and the strip has nowhere to go: 45 wide against a block row gap measured at 45, which is zero per side on the figure the repo designs to and under a millimetre on the 46.7 trial fit. A wandering row on a front strip fouls a bearing block.
-- ⚠️ [L44](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>This is six more metre-long parts on a trip that already has an open question about X traverse - the one gating the rear plate. If the answer comes back short, reposition the two outboard plates or the X back plate - there the T-nut reason that used to keep them home does make a shifted station cheap. Not the front strips, and not the rear plate: the strips because their Y is a clearance against a bearing block, the rear plate because its two patterns must meet extruded bores a metre apart.
+- ⚠️ [L40](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>This is six more metre-long parts on a trip that already has an open question about X traverse - the one gating the rear plate. If the answer comes back short, reposition the two outboard plates or the X back plate - there the T-nut reason that used to keep them home does make a shifted station cheap. Not the front strips, and not the rear plate: the strips because their Y is a clearance against a bearing block, the rear plate because its two patterns must meet extruded bores a metre apart.
 
 ## [machine/open-items.md](machine/open-items.md)  (15)
 
@@ -307,4 +306,4 @@ interface, not this file.
 
 ---
 
-**234 open** across 29 files.
+**233 open** across 29 files.

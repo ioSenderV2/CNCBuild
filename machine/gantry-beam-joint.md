@@ -57,7 +57,7 @@ be similar.
 
 ❌ ~~**Buy 120 mm stock and rip the 45 mm front strips from it** — one thickness, one order.~~
 **Retired 2026-10-02.** Y's back is steel, so there is no 120 mm aluminium order to rip from. The
-three 45 mm × 4 mm 6061 strips need their own buy.
+three 2" × 1/8" 6061 strips need their own buy.
 
 ### Why the thicknesses differ
 
@@ -65,7 +65,7 @@ The Y beams **do not move** (measured: their end plates bolt to the torsion box)
 static load and the stiffer plate is free. The X gantry moves, so its ~3 lb saving is real.
 
 📌 **The Y front strip came down to 1/4" on 2026-10-02**, and then to **4 mm on 2026-10-03**.
-All three beams carry an identical **45 mm × 4 mm 6061** strip, which is also the magnetic tape
+All three beams carry an identical **2" (50.8) × 1/8" 6061** strip, which is also the magnetic tape
 surface — one part made three times, instead of two specifications.
 
 🔴 **✅ Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** ⚠️ **The clash this

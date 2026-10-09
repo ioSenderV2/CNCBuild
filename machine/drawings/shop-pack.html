@@ -27,7 +27,7 @@
   .pg-s4 { page: s4 }
   @page s6 { @bottom-left { content: "Shop Pack — SHEET 6, interposer"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s7 { @bottom-left { content: "Shop Pack — SHEET 7, 1210.73 mm rear plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
-  @page s8 { @bottom-left { content: "Shop Pack — SHEET 8, 45 mm front joining strip"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s8 { @bottom-left { content: "Shop Pack — SHEET 8, 2in front joining strip"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s9 { @bottom-left { content: "Shop Pack — SHEET 9, full-height outboard plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s10 { @bottom-left { content: "Shop Pack — SHEET 10, 120 mm X back joining plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   .pg-s5 { page: s5 } .pg-s6 { page: s6 } .pg-s7 { page: s7 } .pg-ck { page: sck } .pg-nt { page: snt }
@@ -142,7 +142,7 @@ its own amber rows:</p>
 <tr><td>5</td><td>Y nut sole bracket</td><td>trapezoid 154 &rarr; 46 over 98.19 &times; 1/4"</td><td>2</td></tr>
 <tr><td>6</td><td>Cast stepper frame interposer</td><td>150 &times; 60 &times; 3/8" 6061</td><td>3</td></tr>
 <tr><td>7</td><td>Rear plate</td><td>1210.73 &times; 301.625 &times; 1/4" hot-rolled A36 steel</td><td>1</td></tr>
-<tr><td>8</td><td>Front joining strip</td><td>1000 &times; 45 &times; 4 mm 6061</td><td>3</td></tr>
+<tr><td>8</td><td>Front joining strip</td><td>1000 &times; 50.8 &times; 1/8" 6061 <span style="font-weight:400">&mdash; thickness open</span></td><td>3</td></tr>
 <tr><td>9</td><td>Full-height outboard plate</td><td>998.54 &times; 301.625 &times; 10 gauge (3.429) cold-rolled steel</td><td>2</td></tr>
 <tr><td>10</td><td>X back joining plate</td><td>998.54 &times; 119.06 &times; 1/4" 6061-T651</td><td>1</td></tr>
 </table>
@@ -215,10 +215,9 @@ press.<br><br>
 The six bolt-on plates came on last &mdash; the three 45 mm front strips, the two full-height
 outboard plates and the X back joining plate. They had been
 excluded on the grounds that every hole is &oslash;9 clearance into a T-slot where the nut slides to
-meet the bolt, so position hardly matters. <b>That argument is sound for the back plates and it does NOT hold on the
-front strips</b>, where a row that wanders in Y drives the strip into a bearing block rather than
-merely making it awkward. 126 holes of hand layout across the six, and on three of them the
-tolerance is a clearance, not a convenience.<sup class="f">8.4</sup>
+meet the bolt, so position hardly matters. <b>That argument is sound, and 126 holes of hand layout across the six
+plates is what overrules it.</b> A plate whose rows have wandered still bolts up, and fights you for
+an afternoon while it does.<sup class="f">8.4</sup>
 </div>
 
 <!-- ============================================================ -->
@@ -1658,60 +1657,67 @@ explicitly rather than making anyone do that subtraction at the mill.</figcaptio
 </div>
 
 <div class="plate pg-s8">
-<h2 id="sheet-8">Sheet 8 &mdash; the 45 mm front joining strip (quantity 3)</h2>
+<h2 id="sheet-8">Sheet 8 &mdash; the 2" front joining strip (quantity 3)</h2>
 <div class="stock">
-<b>1000 long &times; 45 wide &times; 4 mm 6061</b><br>
+<b>1000 long &times; 2" (50.8) wide &times; 1/8" 6061 flat bar</b>, cut from 4ft<br>
+&#9888; <b>THE THICKNESS IS NOT KNOWN YET &mdash; it may arrive 3.175 or 4.0.</b> Metric and SAE
+intermix unpredictably on this stock. <b>Caliper it before choosing the bolt</b>: an M8 &times; 10
+clears by 1.2 through a 4 mm strip and by only 0.375 through a 1/8" one.<sup class="f">8.5</sup><br>
 <b>One part made three times</b> &mdash; X, Y1 and Y2 carry an identical strip. It ties the two
 stacked extrusions across the seam on the FRONT face, and it is also the <b>magnetic encoder tape
 surface</b>.<sup class="f">8.1</sup><br>
-<span class="wcs">ON THE TRIP &mdash; reversed 2026-10-09.</span> <b>14 holes per strip, three strips</b>,
-and &#128308; <b>on THIS sheet a hole that wanders in Y pushes the strip into a bearing block</b> &mdash;
-the strip is the full width of the block gap and the bolt's Y is fixed by the slot.<sup class="f">8.4</sup><br>
-<b>The 45 is not a round number, it is a fit.</b> It is BLOCK_ROW_GAP, the conservative keep-out
-between the two bearing block rows, so the strip is exactly the width known to pass between
-them.<sup class="f">8.2</sup>
+<span class="wcs">ON THE TRIP.</span> <b>14 holes per strip, three strips</b>, and they want to be
+straight.<sup class="f">8.4</sup><br>
+&#128308; <b>DIMENSION BOTH ROWS FROM THE STRIP'S CENTRELINE, 30 APART &mdash; NOT FROM AN EDGE.</b>
+The rows are &plusmn;15 from the beam's seam because that is where the T-slots are, and 2" stock may
+arrive at 50 rather than 50.8. Measured from the centre, a narrow strip still self-centres on the
+seam and nothing moves. Measured from an edge, the stock's width tolerance lands straight in the
+hole positions.<sup class="f">8.2</sup><br>
+<b>This strip runs UNDER the bearing blocks, not between them</b> &mdash; 2.4 of overlap each side,
+and that is what buys the Y tolerance.<sup class="f">8.2</sup>
 </div>
 
 <figure>
 <svg viewBox="-60 -40 620 270" width="185mm" xmlns="http://www.w3.org/2000/svg">
   <!-- FULL LENGTH at 0.42: 1000 -> 420, 45 -> 18.9. Then a 4x cross-section below. -->
-  <rect x="0" y="0" width="420" height="18.9" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
-  <line x1="0" y1="3.15" x2="420" y2="3.15" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <line x1="0" y1="15.75" x2="420" y2="15.75" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <line x1="0" y1="9.45" x2="420" y2="9.45" stroke="#888" stroke-width="0.6" stroke-dasharray="2 3"/>
+  <rect x="0" y="0" width="420" height="21.336" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <line x1="0" y1="4.368" x2="420" y2="4.368" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
+  <line x1="0" y1="16.968" x2="420" y2="16.968" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
+  <line x1="0" y1="10.668" x2="420" y2="10.668" stroke="#c00" stroke-width="0.7" stroke-dasharray="4 2"/>
   <line x1="0" y1="30" x2="420" y2="30" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="196" y="39">1000</text>
   <text class="lbl" x="426" y="6" fill="#b06000">row 1</text>
   <text class="lbl" x="426" y="19" fill="#b06000">row 2</text>
 
-  <!-- CROSS SECTION, 4x. 45 wide, 6.35 thick. origin SVG (40, 120) -->
+  <!-- CROSS SECTION, 4x. 50.8 wide, 3.175 thick (nominal). origin SVG (40, 120) -->
   <text class="lbl" x="0" y="86">CROSS SECTION, 4&#215; &#8212; looking along the beam</text>
-  <rect x="40" y="120" width="180" height="25.4" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
-  <line x1="130" y1="112" x2="130" y2="154" stroke="#888" stroke-width="0.8" stroke-dasharray="3 2"/>
-  <text class="lbl" x="104" y="108" fill="#888">the SEAM</text>
-  <circle cx="70" cy="132.7" r="5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
-  <circle cx="190" cy="132.7" r="5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
-  <line x1="40" y1="166" x2="70" y2="166" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="44" y="175">7.5</text>
-  <line x1="40" y1="180" x2="190" y2="180" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="104" y="189">37.5</text>
-  <line x1="40" y1="194" x2="220" y2="194" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="120" y="203">45</text>
+  <rect x="40" y="120" width="203.2" height="12.7" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <line x1="141.6" y1="112" x2="141.6" y2="154" stroke="#c00" stroke-width="1" stroke-dasharray="4 2"/>
+  <text class="lbl" x="93.6" y="108" fill="#c00">the SEAM = the strip&#8217;s CENTRELINE</text>
+  <circle cx="81.6" cy="126.35" r="5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <circle cx="201.6" cy="126.35" r="5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <line x1="81.6" y1="166" x2="141.6" y2="166" stroke="#06c" stroke-width="0.6"/>
+  <line x1="141.6" y1="166" x2="201.6" y2="166" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="91.6" y="175">15</text>
+  <text class="dim" x="165.6" y="175">15</text>
+  <line x1="40" y1="194" x2="243.2" y2="194" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="131.6" y="203">50.8</text>
 
-  <text class="q" x="250" y="96" fill="#b06000">THE TWO ROWS ARE FORCED, not chosen.</text>
-  <text class="q" x="250" y="108" fill="#b06000">The strip is centred on the seam because the</text>
-  <text class="q" x="250" y="120" fill="#b06000">block gap it passes through is. The two slots</text>
-  <text class="q" x="250" y="132" fill="#b06000">flanking the seam sit 15 either side of it, so</text>
-  <text class="q" x="250" y="144" fill="#b06000">on the strip&#8217;s own 45 they land at 7.5 and 37.5.</text>
-  <text class="q" x="250" y="162">&oslash;9 clearance on M8 &#183; M8 FLANGE bolts,</text>
-  <text class="q" x="250" y="174">so there is NO counterbore on this part.</text>
-  <text class="q" x="250" y="192">X stations: first at 50, then</text>
-  <text class="q" x="250" y="204">150 pitch &#8212; seven per row, 50 clear at each end.</text>
+  <text class="q" x="250" y="96" fill="#c00">&#128308; DIMENSION THE ROWS FROM THE CENTRELINE,</text>
+  <text class="q" x="250" y="108" fill="#c00">15 EITHER SIDE &#8212; NOT FROM AN EDGE.</text>
+  <text class="q" x="250" y="126" fill="#b06000">The two slots flanking the seam sit 15 either</text>
+  <text class="q" x="250" y="138" fill="#b06000">side of it, so the rows are 30 apart whatever</text>
+  <text class="q" x="250" y="150" fill="#b06000">the strip&#8217;s width. On a 50.8 strip that reads</text>
+  <text class="q" x="250" y="162" fill="#b06000">10.4 and 40.4 from an edge &#8212; but 2" stock may</text>
+  <text class="q" x="250" y="174" fill="#b06000">come in at 50, and then those are both wrong.</text>
+  <text class="q" x="250" y="192">&oslash;9 clearance on M8 &#183; M8 FLANGE bolts, no counterbore.</text>
+  <text class="q" x="250" y="204">X stations: first at 50, then 150 pitch &#8212; seven per row.</text>
 </svg>
 <figcaption>Full length at 0.42&times;, with the section at 4&times;. <b>Both rows run the whole
-1000</b>. The strip spans the gap between the upper and lower bearing block rows, which is why its
-width is a clearance rather than a design choice, and why nothing wider would fit without
-rebating.</figcaption>
+1000</b>, 30 apart, centred on the seam. <b>The strip is wider than the gap between the bearing
+block rows and runs underneath them</b> &mdash; 2.4 of overlap each side &mdash; which is what gives
+it room to sit off-centre without touching anything. The red line is the strip&#8217;s centreline and
+the seam at once; <b>lay the two rows out from it, not from an edge</b>.<sup class="f">8.2</sup></figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
@@ -1955,10 +1961,11 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 state.</b> That is the whole reason this pack exists — so take anything plausible, drilled or not.
 </div>
 <p><b>8.1</b> &mdash; <b>One part made three times, and it is 4 mm not 1/4".</b> The Y front strip came down to 1/4", breaking the old "same as its back plate" rule, and that is what made all three beams identical. &#128308; <b>It came down again to 4 mm, because 1/4" does not fit</b>: the bolt heads reach past the strip's edge and have to pass under the bearing block, which leaves at most 6 mm. At 4 mm the stack is 5 and clears; at 1/4" it is 7.35 and hits, both measured on a real beam. The stiffness gain quoted in gantry-beam-joint.md is the 1/4" figure and no longer applies. It is also the magnetic encoder tape surface, so its face finish matters more than its edges do.</p>
-<p><b>8.2</b> &mdash; <b>45 is a fit, not a round number.</b> It was 46, which is the GEOMETRIC gap between the bearing block rows &mdash; the 90 rail pitch less a 44 block &mdash; so the strip exactly filled the gap with nothing to spare. 45 is BLOCK_ROW_GAP, the conservative measured figure, which leaves half a millimetre each side. Past the block gap there is only 4.5 mm of height, so no width beyond this buys anything without rebating the strip thin.</p>
+<p><b>8.2</b> &mdash; <b>&#128308; The strip is now WIDER than the gap it used to fit, and runs under the blocks.</b> It was 45, chosen as BLOCK_ROW_GAP so it sat <i>between</i> the bearing block rows with about half a millimetre either side &mdash; 46 is the geometric gap, the 90 rail pitch less a 44 block, and 45 was the conservative measured figure. At 50.8 it overlaps each block by <b>2.4 and passes beneath it</b>, which a thin strip may do: he proved it with 60 &times; 60 &times; 4 test pieces, which overlap 7.0 a side at a <i>thicker</i> stack and clear. <b>The gain is Y tolerance.</b> At 45 the strip had essentially nowhere to go sideways; at 50.8 the next thing in its way is the <b>rail, 9.6 from the strip edge</b>. &#9888; <b>Which is why the rows must be dimensioned from the centreline.</b> The two rows sit &plusmn;15 from the seam because the T-slots put them there &mdash; that separation is 30 whatever the strip's width &mdash; so centre-referenced holes absorb a 50-versus-50.8 stock variation and edge-referenced ones do not. <b>The encoder lane is unaffected by any of this</b>: it is the row separation less the head, 30 &minus; 13.8 = 16.2, and the strip's width is not in that sum.</p>
 <p><b>8.4</b> &mdash; <b>&#128308; The six bolt-on plates are on the trip, and the reason that kept them off was not wrong.</b> Sheets 8, 9 and 10 were home drill-press work because every hole on them is a &oslash;9 clearance into a T-slot and <b>the T-nut slides to meet the bolt</b>, so an individual hole’s position hardly matters. That is still true. <b>His call 2026-10-09 overrules it on a different argument:</b> 14 holes on a front strip and 28 on a back plate, across six plates, is 126 holes of hand layout, and small errors creep in. A plate whose rows have wandered still bolts up &mdash; and fights for an afternoon while it does, because every bolt needs its nut nudged to a different place. <b>On Sheets 9 and 10 that is the whole of it: perfect holes are not needed for the joint, they are wanted for the assembly.</b><br>
-🔴 <b>SHEET 8 IS DIFFERENT AND THE T-NUT ARGUMENT NEVER APPLIED TO IT.</b> The nut slides <i>along</i> the slot, which forgives X and forgives nothing in Y &mdash; the bolt’s Y is set by the slot itself. So a hole drilled off in Y past the ø9-on-M8 float cannot be taken up by the nut; <b>the strip moves instead</b>. And the strip has nowhere to move: FRONT_STRIP_W is 45 against a BLOCK_ROW_GAP measured at 45, which is <b>zero per side</b> on the figure this repo designs to (46 geometric, 46.7 on the trial fit, so really under a millimetre). <b>A wandering row on a front strip fouls a bearing block.</b> That is a clash, not an awkward afternoon, and it is the reason these three are on the trip &mdash; not the hole count.<br>
+❌ <b>A clash argument stood here and the 2" strip removed it.</b> While the strip was 45 wide it sat in the block gap with nothing either side, so a row wandering in Y drove it into a bearing block &mdash; the nut slides <i>along</i> its slot, forgiving X and forgiving nothing in Y, so a hole off in Y moves the strip rather than being taken up. All of that is still true except the part that mattered: at 50.8 the strip runs <i>under</i> the blocks and the next obstruction is the rail, <b>9.6 away</b>. <b>So Sheet 8 is on the trip for the same reason as the rest &mdash; 14 holes a strip, three strips, and they want to be straight.</b><br>
 ⚠ <b>It puts six more metre-long parts on a trip whose X traverse is still an open question</b> &mdash; the same one gating the 1210.73 rear plate, "can the mill traverse ~1212 in X". <b>If something has to be repositioned mid-job for want of travel, take it out of Sheets 9 and 10</b>, where the T-nut genuinely does forgive a shifted station. <b>Not Sheet 8, and not the rear plate</b> &mdash; the strips because Y is a clearance, the rear plate because its two patterns must meet extruded bores a metre apart.</p>
+<p><b>8.5</b> &mdash; <b>&#9888; The stock thickness is open, and the bolt is what it decides.</b> Ordered as 1/8" 6061 flat bar, but metric and SAE intermix unpredictably on this supplier's aluminium, so it may arrive at <b>3.175 or at 4.0</b>. &#9989; <b>Block clearance is safe either way</b> &mdash; the strip plus a flange rim is 4.175 or 5.0 against the 6 mm under a block, and the 5.0 case is the one the 60 mm test pieces already proved. &#128308; <b>The bolt is not safe either way.</b> An M8 &times; 10 reaches 6.0 past a 4 mm strip, with 1.2 to the slot floor; past a 3.175 strip it reaches <b>6.825, which is 0.375 inside the limit</b> &mdash; caliper noise. If it calipers at 1/8", go to an M8 &times; 8 or put a washer under the head, which is exactly how the 3.175 back plate solves it. <b>A washer here must be A4 / 316</b>, for the same reason these bolts are: the magnetic tape runs between their rows.</p>
 <p><b>8.3</b> &mdash; <b>&#9989; First hole at 50, then 150 pitch, on all three bolt-on plates.</b> That is <b>seven per row</b>, 50 to 950, with 50 clear at each end. The pitch had been in gantry-beam-joint.md for weeks &mdash; M8 T-nuts at 150, four rows on the back and two on the front &mdash; but where along the 1000 the first one sat had never been written anywhere, which is why these rows were amber rather than wrong. Eight at 150 would have spanned 1050 and not fitted at all. Nothing was ever blocked by it: these are &oslash;9 clearance holes into T-slots and the T-nut slides to meet the bolt.</p>
 <p><b>9.1</b> &mdash; <b>This plate replaced two parts.</b> It is the full-height outboard plate and the Y back joining plate at once, grown rather than bolted alongside, which is why it carries the beam's four T-slot rows. That is also why the Y beams have no Sheet 10 part and the X beam does.</p>
 <p><b>9.2</b> &mdash; <b>10 gauge, and this plate's thickness has now been wrong twice in prose.</b> outboard-plate.md's cross-section said 6.35 mm (1/4") in three places, left behind when the plate went to 1/8" steel; the 1/8" was then itself a nominal, with the listing also offering 11 gauge (3.04) and a 3.36 floated and withdrawn as a guess. &#9989; <b>The order ends it</b>: 10 GA (.135) cold-rolled, which is 3.429. None of the three earlier numbers was right, and the question was closed by buying the part rather than by reading the listing again. <b>It does not drop into a channel</b> &mdash; that question is dead, not open: the plate stands flat on the box&apos;s top skin and the 60 mm proud outer lamination, the <b>tongue</b>, laps it from outboard on a plain bolted lap. The channel had been dimensioned around 6.35 and there is nothing left to size. The delivered thickness still matters, but for the riser-proud check, not for a groove.</p>

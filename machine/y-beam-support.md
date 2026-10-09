@@ -21,7 +21,7 @@ this file were reversed on purpose. The short form:
 | Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **60.5 × 50 mm window** for the casting |
 | Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1210.73 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
 | Outboard plates | 12" × 1000 × 1/4" **6061** | **11 7/8" × 39 5/16" × 10 gauge cold-rolled steel sheet**, as ordered 2026-10-08 |
-| Front strips | 3/8" on Y, 1/4" on X | **45 mm × 4 mm 6061 on all three beams**, X included. 🔴 Went 1/4" → 4 mm 2026-10-03: at 1/4" the bolt heads hit the bearing blocks |
+| Front strips | 3/8" on Y, 1/4" on X | **2" (50.8) × 1/8" 6061 on all three beams**, X included. 🔴 Went 1/4" → 4 mm 2026-10-03: at 1/4" the bolt heads hit the bearing blocks |
 
 Two reversals are deliberate and are recorded with their reasons where they occur: the
 **monolithic rear plate**, rejected on 2026-09-30 and adopted now because three of its four grounds
