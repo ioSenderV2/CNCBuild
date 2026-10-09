@@ -1291,9 +1291,10 @@ note = "102.5. Second nut column."
 
 [[dim]]
 sym = "FRONT_STRIP_W"
-value = 45
-provenance = "derived"
-note = "The front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. WAS 46 until 2026-10-03, changed by him for consistency - and the consistency is real, not cosmetic: 45 is BLOCK_ROW_GAP, the conservative keep-out between the bearing block rows, so the strip is exactly the width that is known to fit. At 46 it matched the GEOMETRIC gap instead and had no clearance at all."
+value = 50.8
+provenance = "part"
+note = "The front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. 50.8 - 2in flat bar, 6061, bought 4ft long and cut to 1000. \U0001f534 IT IS WIDER THAN THE GAP BETWEEN THE BEARING BLOCK ROWS, ON PURPOSE, AND THAT IS THE CHANGE. It used to be 45, chosen as BLOCK_ROW_GAP so the strip sat BETWEEN the block rows with about half a millimetre either side. At 50.8 it runs 2.4 UNDER each block instead, which a thin strip may do: he proved it with 60 x 60 x 4 test pieces that clear with 7.0 of overlap a side. \u2705 THE Y TOLERANCE GOES FROM ABOUT NOTHING TO ABOUT TEN MILLIMETRES - the next thing in the strip's way is the RAIL, 9.6 from the strip edge - which retires the clash this part used to be gated by. \u26a0 2in STOCK MAY ARRIVE AT 50, NOT 50.8: metric and SAE intermix unpredictably on this supplier's aluminium. It does not matter PROVIDED Sheet 8's two rows are dimensioned symmetric about the strip's own centreline, 30 apart, rather than off an edge - then a narrower strip still self-centres on the seam. Dimension it off an edge and the stock's width tolerance lands straight in the hole positions."
+source = "his, 2026-10-09"
 
 [[dim]]
 sym = "BOX_TONGUE_PROUD"
@@ -1748,9 +1749,10 @@ note = "What has to pass under the block where the bolt head reaches past the st
 
 [[dim]]
 sym = "T_FRONT_STRIP"
-value = 4
-provenance = "derived"
-note = "The 45 mm front joining strip, all three beams. \U0001f534 WAS 1/4in (6.35) UNTIL 2026-10-03 AND IT DID NOT FIT - at 6.35 the bolt heads foul the bearing blocks, which he confirmed on the real beam. 4 mm fits, measured. The strip is NOT T_BACK_JOIN_PLATE any more: the two were sharing 6.35 and are now different parts with different constraints, which is the honest shape - the back plate is sized for stiffness and the front strip is sized by what clears a block overhang. See STRIP_STACK and gantry-beam-joint.md for the stiffness that was given up."
+value = 3.175
+provenance = "nominal"
+note = "The front joining strip, all three beams. \u26a0 OPEN AND BOUNDED RATHER THAN KNOWN: ordered as 1/8in 6061 flat bar, but metric and SAE intermix unpredictably on this supplier's aluminium, so it may arrive at 3.175 OR at 4.0 - his warning 2026-10-09. 3.175 is carried here because it is the conservative end for the consequence that actually bites. \U0001f534 CALIPER IT ON ARRIVAL AND PUT THE READING HERE, which is the fourth time this repo has had a nominal turn out wrong - a 5/8in spacer that measured 16.41, a 1/2in plate whose stock is 10 mm, a 1/2in end plate at 12.19. \u2705 BOTH ENDS ARE SAFE ON BLOCK CLEARANCE: STRIP_STACK is 4.175 at 3.175 and 5.0 at 4.0, against BLOCK_OVERHANG_CLEAR's 6, and the 5.0 case is the one his 60 mm test pieces already proved. \u26a0 THE BOLT IS WHERE IT BITES: see BOLT_FRONT_STRIP - an M8 x 10 reaches 6.0 through a 4.0 strip and 6.825 through a 3.175 one, against a 7.2 limit, so the margin falls from 1.2 to 0.375. \U0001f534 WAS 1/4in (6.35) UNTIL 2026-10-03 AND THAT DID NOT FIT: the bolt heads fouled the bearing blocks, confirmed on the real beam. The strip is NOT T_BACK_JOIN_PLATE - they shared 6.35 once and are different parts with different constraints; the back plate is sized for stiffness, the strip by what clears a block overhang. See gantry-beam-joint.md for the stiffness given up."
+source = "ordered 1/8in; CALIPER ON ARRIVAL"
 
 # ------------------------------------------------- T-slot bolt lengths, 2026-10-04
 
@@ -1796,7 +1798,7 @@ note = "ALIAS OF T_SIDE_PLATE, collapsed 2026-10-07 - it is the same piece of st
 sym = "BOLT_FRONT_STRIP"
 value = 10
 provenance = "derived"
-note = "M8 x 10 for the 45 x 4 mm front strip, all three beams - 42 of them, and these are the ones that must be A4 / 316 austenitic because the magnetic tape runs between their rows. Reach past the strip is exactly TNUT_BODY_T's 6, so engagement is FULL with 1.2 spare to the slot floor. M8 x 12 IS WRONG HERE: it reaches 8.0 against a 7.2 limit and bottoms before the head seats."
+note = "M8 x 10 for the front joining strip, all three beams - 42 of them, and these are the ones that must be A4 / 316 austenitic because the magnetic tape runs between their rows. M8 x 12 IS WRONG HERE: it reaches 8.0 against BOLT_REACH_MAX's 7.2 and bottoms before the head seats. \u26a0 THE x 10 IS NO LONGER COMFORTABLE AND THAT IS NEW: it was chosen against a 4 mm strip, where reach is exactly TNUT_BODY_T's 6 with 1.2 spare to the slot floor. T_FRONT_STRIP is now open between 3.175 and 4.0, and at 3.175 the reach is 6.825 - inside the limit by 0.375, which is caliper noise. \U0001f534 IF THE STOCK CALIPERS AT 1/8in, DECIDE THIS BEFORE TIGHTENING ANYTHING: an M8 x 8, or a washer under the head the way BOLT_BACK_Y_WASHER solves the identical problem on the 3.175 back plate. A washer here must be A4 / 316 as well, for the same reason the bolts are."
 
 [[dim]]
 sym = "BOLT_BACK_X"
