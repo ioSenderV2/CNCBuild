@@ -143,11 +143,12 @@ interface, not this file.
 - ⚠️ [L95](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question) — *Cutting loads and plate thicknesses / The measurement that…*<br>It is not a single number. One reading on the nose is a total, and a total cannot say which part of the stack is moving - which is the entire question. The procedure uses six indicator positions and subtracts.
 - 🔴 [L115](machine/loads-and-plate-thicknesses.md#open-the-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance) — *The measurement that would settle the 1/4" question / Open:…*<br>A bolted-on steel backer is the wrong answer, and it is the one that looks obvious. The gain depends entirely on whether the two plates transfer shear across the whole face: bolted on a grid they approach one section and ~5×, but bolted at the corners they only share curvature and give 1.36× for 2.45× the mass. Thicker aluminium beats it on both axes at once.
 
-## [machine/machining.md](machine/machining.md)  (3)
+## [machine/machining.md](machine/machining.md)  (4)
 
 - 🔴 [L13](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>Every plate needing accurate holes must be fully dimensioned before that trip, including assemblies that will not be built for months: X carriage plate, Z plate, two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
 - 🔴 [L17](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The 2026-10-02 rework put three more parts on this trip. The list had been shrinking; it is not any more:
-- ⚠️ [L33](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The outboard plates are steel now, so that "no mill needed" afternoon on roughly 25 holes per plate runs several times longer than it would have in aluminium. Still a drill press job, but budget for it.
+- 🔴 [L30](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The six bolt-on plates went ONTO the trip on 2026-10-09 - two 11 7/8" × 39 5/16" × 10 gauge steel outboard plates, three 45 mm × 1 m × 4 mm 6061 front strips, and the 4 11/16" × 39 5/16" × 1/4" X back joining plate.
+- ⚠️ [L41](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>This is six more metre-long parts on a trip that already has an open question about X traverse - the one gating the rear plate. If the answer comes back short, these are the parts to reposition rather than the rear plate: the T-nut reason that used to keep them home is exactly what makes a mid-job reposition cheap on them and ruinous on a plate whose patterns must meet extruded bores a metre apart.
 
 ## [machine/open-items.md](machine/open-items.md)  (15)
 
@@ -304,4 +305,4 @@ interface, not this file.
 
 ---
 
-**231 open** across 29 files.
+**232 open** across 29 files.

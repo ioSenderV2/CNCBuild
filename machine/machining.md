@@ -27,12 +27,22 @@ not any more:
 **Reversed 2026-10-02 - all four are scrapped.** The front pair is remade with the window; the rear
 pair is replaced by the single 1210.73 mm plate.
 
-Still to make, but **no mill needed** - T-slot clearance holes throughout: two **11 7/8" × 39 5/16" × 10 gauge
-steel** outboard plates and three **45 mm × 1 m × 4 mm 6061** front strips, one per beam.
+🔴 **The six bolt-on plates went ONTO the trip on 2026-10-09** - two **11 7/8" × 39 5/16" × 10
+gauge steel** outboard plates, three **45 mm × 1 m × 4 mm 6061** front strips, and the **4 11/16" ×
+39 5/16" × 1/4"** X back joining plate.
 
-⚠️ **The outboard plates are steel now**, so that "no mill needed" afternoon on roughly 25 holes
-per plate runs several times longer than it would have in aluminium. Still a drill press job, but
-budget for it.
+They had been "no mill needed" on a sound argument: every hole is a ø9 clearance into a T-slot and
+the nut slides to meet the bolt, so an individual hole's position hardly matters. **His call
+overrules it on a different one** - 14 holes on a strip and 28 on a back plate, 126 across the six,
+is more hand layout than comes out straight. A plate whose rows have wandered still bolts up, and
+fights for an afternoon while it does. **The holes are not needed perfect for the joint; they are
+wanted perfect for the assembly.**
+
+⚠️ **This is six more metre-long parts on a trip that already has an open question about X
+traverse** - the one gating the rear plate. ✅ If the answer comes back short, **these are the parts
+to reposition rather than the rear plate**: the T-nut reason that used to keep them home is exactly
+what makes a mid-job reposition cheap on them and ruinous on a plate whose patterns must meet
+extruded bores a metre apart.
 
 ✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
