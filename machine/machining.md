@@ -34,15 +34,22 @@ gauge steel** outboard plates, three **45 mm × 1 m × 4 mm 6061** front strips,
 They had been "no mill needed" on a sound argument: every hole is a ø9 clearance into a T-slot and
 the nut slides to meet the bolt, so an individual hole's position hardly matters. **His call
 overrules it on a different one** - 14 holes on a strip and 28 on a back plate, 126 across the six,
-is more hand layout than comes out straight. A plate whose rows have wandered still bolts up, and
-fights for an afternoon while it does. **The holes are not needed perfect for the joint; they are
-wanted perfect for the assembly.**
+is more hand layout than comes out straight. On the two back plates a wandered row still bolts up and
+merely fights for an afternoon - there the holes are not needed perfect for the joint, they are
+wanted perfect for the assembly.
+
+🔴 **The three front strips are a different case and the T-nut argument never applied to them.** The
+nut slides *along* its slot, so it forgives X and forgives nothing in Y - the bolt's Y is set by the
+slot. A hole off in Y past the ø9-on-M8 float cannot be taken up by the nut, so **the strip moves**,
+and the strip has nowhere to go: 45 wide against a block row gap measured at 45, which is zero per
+side on the figure the repo designs to and under a millimetre on the 46.7 trial fit. **A wandering
+row on a front strip fouls a bearing block.**
 
 ⚠️ **This is six more metre-long parts on a trip that already has an open question about X
-traverse** - the one gating the rear plate. ✅ If the answer comes back short, **these are the parts
-to reposition rather than the rear plate**: the T-nut reason that used to keep them home is exactly
-what makes a mid-job reposition cheap on them and ruinous on a plate whose patterns must meet
-extruded bores a metre apart.
+traverse** - the one gating the rear plate. If the answer comes back short, **reposition the two outboard plates or the X back
+plate** - there the T-nut reason that used to keep them home does make a shifted station cheap.
+**Not the front strips, and not the rear plate**: the strips because their Y is a clearance against a
+bearing block, the rear plate because its two patterns must meet extruded bores a metre apart.
 
 ✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
