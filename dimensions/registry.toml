@@ -1606,6 +1606,68 @@ expr = "(STRIP_CHANNEL_W - SENSOR_KEEPOUT_W) / 2"
 note = "0.6 per side, and \u26a0 THAT IS THE WHOLE MARGIN ON THE ENCODER LANE. It was NEGATIVE (-1.15) at the old 17.3 head, which is to say the puck did not fit at all. \U0001f534 THE o9 CLEARANCE HOLES CAN EAT IT: S1-S14 are \u00f89 on M8 into SLIDING T-nuts, so nothing centres a bolt in its hole and \u00b10.5 is available. Both rows drifting inboard leaves 0.10 a side. BIAS THE STRIP BOLTS OUTBOARD WHEN TIGHTENING - it costs nothing and it is not a thing to discover after 3 m of one-shot PSA tape is down."
 
 [[dim]]
+sym = "CARRIAGE_TRAVEL"
+value = 820
+provenance = "measured"
+note = "820 mm, THE TRAVEL ON ALL THREE LONG AXES - X, Y1 and Y2 - his measurement 2026-10-09, and it closes an open item the encoder doc had been carrying with stale Mega V XL numbers. \U0001f534 THE METHOD IS THE PART WORTH KEEPING, because it is not obvious and a future session would otherwise re-derive it badly: put ONE bearing block at each end of the same rail, each pushed until its grease zerk touches the end plate, and measure the INSIDE distance between them. That gap is (rail span) less TWO block bodies - and the real carriage IS two butted blocks, BLOCK_BUTTED, so the gap you measure is exactly the real carriage\u2019s travel rather than a proxy for it. The zerks are necessarily on the blocks\u2019 OUTER ends, since otherwise a pair could not butt, so the test reproduces the real stop geometry at both ends. \u2705 One figure serves all three beams: butted blocks set the carriage width on X and Y alike and every beam is BEAM_LEN, so there is one carriage length and one rail length. The stops are the X end plates meeting the back plate or a front fin."
+source = "his calipers, 2026-10-09"
+
+[[dim]]
+sym = "TRAVEL_RAIL_LIMITED"
+expr = "BEAM_LEN - BLOCK_BUTTED"
+note = "845.82 - what the travel WOULD be if the rail ends alone stopped the carriage. \u2705 IT IS A CROSS-CHECK, NOT THE FIGURE TO USE: CARRIAGE_TRAVEL is measured at 820 and that is what sizes the tape. The two agree to 25.82, which is TRAVEL_LOST_TO_STOPS - the end plates standing inboard of the rail ends plus the zerks\u2019 own protrusion. \u26a0 It takes BEAM_LEN as a stand-in for rail length; the rails are 17 x M5 at 60 pitch, so about a metre, not exactly it. Close enough to confirm the measurement is the right size and nowhere near good enough to replace it."
+
+[[dim]]
+sym = "TRAVEL_LOST_TO_STOPS"
+expr = "TRAVEL_RAIL_LIMITED - CARRIAGE_TRAVEL"
+note = "25.82 - what the end plates take off the rail-limited travel, about 13 a side. Recorded because it is the number that moves if a stop face ever changes: the fin gets thicker, the back plate moves, or a zerk is swapped for a flush fitting. Nothing derives from it today."
+
+[[dim]]
+sym = "TAPE_STOCK"
+value = 3000
+provenance = "part"
+note = "3 m of 10 mm magnetic strip on a steel band with 3M PSA, in stock - the figure design-can-position-feedback.md has carried since 2026-08-25. \U0001f534 IT IS THE BINDING CONSTRAINT ON THE WHOLE ENCODER LAYOUT and it is a ONE-SHOT consumable: the PSA does not survive a second lay. See TAPE_REMAINING, which is what is left after four axes."
+
+[[dim]]
+sym = "CARRIER_SECTION_L"
+value = 220
+provenance = "part"
+note = "220 mm, the printed tape carrier\u2019s section length - his 2026-10-09, set by the Bambu P1S\u2019s 256 x 256 bed with four laid side by side. \u26a0 220 IS NOT A ROUND NUMBER PICKED FOR TIDINESS, it is the point where two limits nearly meet: below about 206 the four sections no longer span CARRIAGE_TRAVEL at all, and much above 220 the three beams plus Z no longer come out of TAPE_STOCK. 4 x 205 was considered and rejected - it gives exactly 820, which is the travel, leaving nothing for the Hall array or the tape\u2019s own unusable end poles."
+source = "his, 2026-10-09"
+
+[[dim]]
+sym = "CARRIER_SECTIONS"
+value = 4
+provenance = "part"
+note = "Four printed sections per beam. Four fit the bed in one run at 220 long; five would need them narrower. See CARRIER_W, which is open."
+source = "his, 2026-10-09"
+
+[[dim]]
+sym = "TAPE_PER_BEAM"
+expr = "CARRIER_SECTION_L * CARRIER_SECTIONS"
+note = "880 mm of tape per long axis. The carrier sections butt end to end, joined by loose keys in blind sockets rather than protruding tenons - a male tenon would be swallowed at each joint and four sections would no longer reach 880."
+
+[[dim]]
+sym = "TAPE_OVERRUN_END"
+expr = "(TAPE_PER_BEAM - CARRIAGE_TRAVEL) / 2"
+note = "30 mm of tape past each end of travel. \U0001f534 THE OVERRUN IS NOT SLOP, IT IS LOAD-BEARING TWICE OVER. The AS5311 datasheet gives usable stroke as the active area LESS the 2.0 mm Hall array, with the short poles at either edge of the strip excluded from the active area - so tape equal to travel is always short. And the carriage reaches its hard stops exactly when something has gone wrong, which is the worst moment for the reader to be off the end: a magnetic reader that leaves the tape and returns gives a wrong count and does not complain. At 30 a side the array never approaches an end pole, which retires the end-exclusion question rather than requiring it to be respected."
+
+[[dim]]
+sym = "TAPE_THREE_BEAMS"
+expr = "3 * TAPE_PER_BEAM"
+note = "2640 mm for X, Y1 and Y2. One figure times three because CARRIAGE_TRAVEL is the same on all three."
+
+[[dim]]
+sym = "TAPE_Z"
+expr = "Z_TRAVEL + (2 * TAPE_OVERRUN_END)"
+note = "295.91 for the Z axis, on the same overrun rule. \u26a0 THE SOFTEST NUMBER IN THIS CHAIN: Z\u2019s tape runs on the EDGE of the Z gantry plate rather than between rails, because the 1605 screw occupies the centre, and that axis has never been laid out - the encoder doc calls its reader allocation reserved rather than spent. Z_TRAVEL is firm; how much tape the edge mounting actually wants is not."
+
+[[dim]]
+sym = "TAPE_REMAINING"
+expr = "TAPE_STOCK - TAPE_THREE_BEAMS - TAPE_Z"
+note = "64.09 mm left of the 3 m roll after all four axes. \U0001f534 THAT IS THE MARGIN ON A ONE-SHOT CONSUMABLE AND IT IS THIN. It is why CARRIER_SECTION_L stops at 220: at 230 the sections come to 2760 for the three beams and the roll goes NEGATIVE once Z is counted. Any of these going up - a longer travel on one axis, a more generous overrun, a wider Z allowance - comes out of 64 mm. \u26a0 Buy more tape before changing any of them, not after."
+
+[[dim]]
 sym = "FLANGE_HALF"
 expr = "FLANGE_HEAD_D / 2"
 note = "8.65, the M8 equivalent of FLANGE_M5_HALF. Same reason: this is what an edge distance has to clear. \U0001f534 IT IS THE BEAM-END HEAD'S HALF, off FLANGE_HEAD_D's 17.3 - the bolt that goes into a beam's corner bores, which his rule 2026-10-08 keeps at the old style. \u26a0 THE FRONT STRIP'S BOLT IS A DIFFERENT PART at 13.8, so its half is 6.9: use FLANGE_STRIP_D for anything on that joint. This symbol briefly read 6.9 on 2026-10-08 when the strip bolt was wrongly written into FLANGE_HEAD_D, which would have relaxed every edge distance in the repo on the strength of a bolt that is not in those joints."
