@@ -218,8 +218,18 @@ before the joining plate bolts come up tight.** This is the moment the rail geom
 ### The magnetic tape
 
 **10 mm tape on the face of the 45 mm front strip**, centred between the two bolt rows. Two rows at
-±15 with 17.3 mm flange heads leaves about 12.7 mm clear — roughly 1 mm each side of the tape. **All
-three beams carry tape.**
+±15 with **13.8 mm** flange heads leaves **16.2 mm clear**. **All three beams carry tape.**
+
+🔴 **The clear lane is sized by the SENSOR, not by the tape.** The AS5311 puck needs **15 mm**
+kept clear centred over the tape - the PCB and its mounting points, not the chip - which leaves
+**0.6 mm each side**. ⚠️ **At the old 17.3 mm head the lane was 12.7 and the puck did not fit at
+all**, which is why the bolt changed. The bolt rows cannot move to help: they are at ±15 because
+that is where the extrusion's T-slots are.
+
+🔴 **Bias the strip bolts OUTBOARD as you tighten them.** The holes are ø9 clearance on M8 into
+sliding T-nuts, so nothing centres a bolt and ±0.5 is available - both rows drifting inboard takes
+the 0.6 down to **0.1**. It costs nothing to push them out, and it is not something to find out
+about after the tape is down.
 
 ⚠️ **Before 3 m of one-shot PSA goes down:** fit a tape offcut and a sensor and **read at the stepper
 end against mid-travel.** A NEMA 23 permanent-magnet rotor sits at the min-Y end of both Y tapes.

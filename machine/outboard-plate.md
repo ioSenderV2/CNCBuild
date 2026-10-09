@@ -284,8 +284,11 @@ Two consequences worth holding on to:
 ## The magnetic encoder tape runs on the front plate
 
 The **10 mm magnetic tape** for the AS5311 sensors runs on the face of the **45 mm front plate**,
-centred in the gap between its two rows of seven M8 flange bolts. Two rows at ±15 mm with 17.3 mm
-flange heads leaves about **12.7 mm clear**, so a 10 mm tape sits with roughly 1 mm each side.
+centred in the gap between its two rows of seven M8 flange bolts. Two rows at ±15 mm with **13.8 mm**
+flange heads leaves **16.2 mm clear**. 🔴 **What has to fit in that lane is the SENSOR PUCK, not the
+tape**: it needs **15 mm**, so the margin is **0.6 mm a side**. ⚠️ At the old 17.3 mm head the lane
+was 12.7 and the puck missed by 1.15 a side - the tape fitted and the thing that reads it did not,
+which is the trap in sizing this gap off the tape width.
 
 🔴 **Those bolts must be austenitic stainless.** They put ferromagnetic material about 1 mm from
 the edge of a magnetic scale, repeating every 150 mm, and steel draws flux laterally. The failure

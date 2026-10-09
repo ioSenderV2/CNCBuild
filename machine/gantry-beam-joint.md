@@ -68,9 +68,12 @@ static load and the stiffer plate is free. The X gantry moves, so its ~3 lb savi
 All three beams carry an identical **45 mm × 4 mm 6061** strip, which is also the magnetic tape
 surface — one part made three times, instead of two specifications.
 
-🔴 **✅ Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** The strip's flange heads
-reach **23.65** from the seam (STRIP_HEAD_REACH) against a block inner edge near 23, so the head's
-rim passes **under the bearing block**. There is **at most 6 mm of clearance** under it
+🔴 **✅ Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** ⚠️ **The clash this
+argument turns on is gone as of 2026-10-08, and the conclusion stands anyway** - at the 13.8 mm
+flange head the strip's bolts reach **21.9** from the seam (STRIP_HEAD_REACH) against a strip
+half-width of 22.5, so **nothing passes under the block any more**. The original, at the 17.3 head:
+the heads reached **23.65** against a block inner edge near 23, so the head's rim passed **under the
+bearing block**. There is **at most 6 mm of clearance** under it
 (BLOCK_OVERHANG_CLEAR). At 4 mm the stack is **5 and clears**; at 1/4" it is **7.35 and hits** —
 both **measured on a real beam with rails and blocks installed**, and both now predicted by the
 arithmetic. 📌 **That agreement is itself the evidence the 6 is right**: against the old 4.5 the
@@ -254,7 +257,7 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
 | Clearance under the block, above the rail surface | **at most 6 mm** 🔴 corrected from 4.5 on 2026-10-03 |
-| M8 flange head | **17.3 mm** diameter. 🔴 **The 5 mm height this table carried was wrong** - corrected 2026-10-03: it is a **DOME, 2.5 mm at the centre and under 1 mm at the rim**, and that is the TOTAL proud height. These are **flanged button heads driven by a hex socket in the middle of the dome**, so nothing sits above it. The **M5** equivalent is **13.4 × 2.4** |
+| M8 flange head | **13.8 mm** diameter × **3 mm** proud at the centre - his choice 2026-10-08, and it is what makes the encoder puck fit. These are **flanged button heads driven by a hex socket in the middle of the dome**, so nothing sits above it. ⚠️ **The superseded 17.3 head has been read three ways** - 5, then 2.5 on 2026-10-03, then 4 on 2026-10-08 - and nothing turns on which was right, since that bolt is out. The **M5** equivalent is **13.4 × 2.4** |
 | Rails | HGR20, **17 × M5 at 60 mm** into T-nuts, one rail per profile, front face |
 | Ball screw | 1605, BK12 / BF12 supports, M5 into the end plates |
 | Support block offset from extrusion face | **5 mm**, giving a **12 mm** gap under the ball nut |
