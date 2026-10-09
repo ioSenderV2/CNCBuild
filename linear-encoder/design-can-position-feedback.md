@@ -158,28 +158,134 @@ allow a day or two for full bond, and dry-fit and mark the ends before peeling a
 bases, magnetic trays and magnetic sweepers off it** - a strong magnet can permanently corrupt the
 magnetisation, and the result would look like a localised position error with no discoverable cause.
 
-**Length budget: it fits, comfortably.** The tape is fixed to the extrusion and the sensor rides in the
+**Length budget: it fits, and not comfortably.** The tape is fixed to the extrusion and the sensor rides in the
 plate's bore, so what a tape must span is **the range that bore sweeps** - not the extrusion length, not
 the plate width. Every bit of end-of-travel dead zone is tape not bought — the plates stop well short
 of the extrusion ends.
 
-> ⚠️ **Open: the numbers below are from the superseded Mega V XL geometry** (1080 mm extrusions on X,
-> Y and A; 150 mm plates). The design itself is for the current build and stands — but that build's
-> gantry beams are **1000 mm** (see [`../machine/gantry-beam-joint.md`](../machine/gantry-beam-joint.md)),
-> and its travels are not yet established. **Re-derive this table before cutting tape.** The method is
-> unaffected; only the inputs are stale. The 3000 mm of tape in stock is real.
+✅ **Closed 2026-10-09 - the travel is measured and the budget is real.** This table used to carry
+upper bounds from the superseded Mega V XL geometry with a warning to re-derive it before cutting
+tape. That is done.
 
-| Axis | Tape - **upper bound**, pending measurement |
+**The travel is 820 mm, and it is the same on all three long axes.** Butted bearing blocks set the
+carriage width on X and Y alike and every beam is 1000 mm, so there is one carriage length and one
+rail length. The stops are the X end plates meeting the back plate or a front fin.
+
+> **How it was measured, because the arithmetic is not obvious.** Put **one** bearing block at each
+> end of the same rail, each pushed until its grease zerk touches the end plate, and measure the
+> **inside** distance between them. That gap is the rail span less **two** block bodies — and the real
+> carriage *is* two butted blocks (`BLOCK_BUTTED`, 154.18) — so the gap is the carriage's travel
+> itself, not a proxy for it. The zerks are necessarily on the blocks' **outer** ends, since otherwise
+> a pair could not butt, so the test reproduces the real stop geometry at both ends.
+>
+> Cross-check: rail-limited travel would be 1000 − 154.18 = **845.82**, so the end plates take
+> **25.82** off, about 13 a side. The measurement is the figure; the derivation only confirms it is
+> the right size.
+
+| | mm |
 |---|---|
-| X | ≤880 mm |
-| Y | ≤880 mm |
-| A | ≤880 mm |
-| Z | ~200 mm |
-| **Total** | **≤2840 mm of the 3000 in stock** |
+| Travel, each long axis | **820** |
+| Tape per long axis, 4 × 220 carrier sections | **880** |
+| Overrun past each end of travel | **30** |
+| X + Y1 + Y2 | 2640 |
+| Z, on the same overrun rule | 295.91 |
+| **Left of the 3 m roll** | **64.09** |
 
-Those are ceilings from 1 m rails and 150 mm plates (~848 mm of travel, agreeing with the ~860 mm the
-`$130` investigation measured). The real dead zone is larger - the plate cannot approach closer than
-76 mm - so expect nearer 780 mm per long axis and ~400 mm spare.
+🔴 **The roll is the binding constraint on this whole layout, not the printer and not the beams.**
+64 mm of margin on a **one-shot** PSA consumable is thin, and it is why the carrier sections stop at
+220: at 230 the three beams come to 2760 and the roll goes negative once Z is counted. Anything that
+grows — a longer travel on one axis, a more generous overrun, a wider Z allowance — comes out of that
+64. **Buy more tape before changing any of them, not after.**
+
+⚠️ **Z's 295.91 is the softest number here.** Its tape runs on the *edge* of the Z gantry plate
+rather than between rails, and that axis has never been laid out — §1.4 calls its reader allocation
+reserved rather than spent. `Z_TRAVEL` is firm; how much tape the edge mounting actually wants is not.
+
+#### The overrun is not slop
+
+Two independent reasons, and either alone would justify it:
+
+1. **The datasheet forbids tape equal to travel.** Page 20 gives *maximum stroke = length of active
+   area − length of Hall array*, the array being 2.0 mm, and "shorter poles at either edge of the
+   magnet **must be excluded** from the active area". Usable stroke is therefore always less than the
+   tape laid. ❌ **4 × 205 was considered and rejected** for exactly this: it gives 820, which *is* the
+   travel, leaving nothing for the array, nothing for the end poles, and no tolerance at all on
+   landing a four-section run by hand.
+2. 🔴 **The hard stops are where the carriage ends up when something has gone wrong** — which is the
+   worst possible moment for the reader to be off the end of its scale. A magnetic reader that leaves
+   the tape and comes back gives a **wrong count and does not complain**. Tape past the mechanical
+   stops costs nothing here.
+
+At 30 mm a side the Hall array never approaches an end pole, so the end-pole exclusion stops being a
+number anyone has to respect — it is simply never reached.
+
+#### ⚠️ PROPOSAL - a printed carrier to lift the tape clear of the bolt heads
+
+**Nothing here is built.** It is recorded because the reasoning is long, several blind alleys were
+walked and closed on the way, and the alternative is re-walking them. **The tape-mounting text above
+assumes the tape lies directly on the 45 mm front strip, which is what this would change.**
+
+**The problem it solves.** The sensor puck needs `SENSOR_KEEPOUT_W` = 15 mm of clear lane, and the
+strip's two bolt rows cannot move — they sit at ±15 from the seam because that is where the
+extrusion's T-slots are. Going to a 13.8 mm flange head (`FLANGE_STRIP_D`) opened the lane to 16.2
+and made the puck fit by **0.6 mm a side**, which the ø9 clearance holes' own ±0.5 of float can take
+to 0.1. That is a *moving* clearance over a metre of stroke, and the way you discover it is by
+destroying a sensor.
+
+**The proposal.** A carrier strip between the rails, under the tape, thick enough that the puck rides
+*over* the bolt heads instead of between them:
+
+| | |
+|---|---|
+| Sections | **4 × 220 mm**, butted — the P1S bed takes four abreast in one run |
+| Thickness | **4 mm**, which puts the chip face ~5.9–6.2 above the strip against 3 mm head crowns |
+| Trench | **10 × 0.6 deep**, so the tape registers on both its own edges rather than a scribed line |
+| Joints | **Loose keys in blind sockets**, not protruding tenons |
+| Lateral location | **Scallops** at the seven bolt stations, the heads sitting in them |
+| Bonding | **Continuous to the aluminium** — see below, this is not optional |
+
+**Why loose keys and not a male/female dovetail.** A protruding tenon is swallowed at each joint, so
+four sections would no longer reach 880. Blind sockets at both ends with a separate key keep every
+piece a full 220. The joint's real job is **assembly** — self-aligning the sections into one straight
+continuous trench while the adhesive cures — not structure; the aluminium underneath does that. Note
+that a flat in-plane joint locks sideways and lengthwise but **not** vertically, and vertical is the
+one the sensor feels, because vertical is air gap. Flatness has to come from the bond, not the joint.
+
+**Why the scallops must locate in one direction only.** A semicircle matched to the head constrains
+both axes, and seven of those along a metre, against holes each with ±0.5 of float in a ø9 clearance
+hole, is an interference fit that will bow the strip. A **long straight-sided notch** running well
+past the head locates laterally and slides freely lengthwise. Same register, no fight. What the
+scallops buy beyond centring is width: the heads are only in the way *at* the stations, so between
+them the carrier can run out toward the 45 mm block gap, which is more material around the trench and
+far more bond area.
+
+🔴 **Why the bond to the aluminium is the whole design, and why plastic was nearly wrong.** §1.4's
+standing rule is *bond the full length* so the band is dragged by its substrate and the scale tracks
+the machine's real thermal growth — with an explicit "do not improve it into a one-end anchor later".
+That rule works because the substrate overwhelms the band: the 45 × 4 aluminium strip is of order
+**12,000 kN** axially against a 15 × 4 printed carrier's **~180 kN**. Aluminium *commands* the steel
+band. A printed strip commands nothing, and if it is left floating — located only by the bolt heads —
+then the tape's own steel band becomes the stiff member and the assembly reports **steel's
+11.7 µm/m/K while the machine moves on aluminium's 23.1**. That is precisely the failure the
+full-length bond exists to prevent, arrived at from a different direction, and **segmenting makes it
+worse rather than better**.
+
+Bonded continuously to the aluminium, the stiffness order is restored and the carrier is a slave.
+Unbonded, this design is wrong no matter how the sections are joined.
+
+**⚠️ Open, and both are decisions rather than measurements:**
+
+- **Carrier width.** 40 and 45 have both been said. The block gap is `BLOCK_ROW_GAP` = 45 *measured*,
+  so 45 fills it exactly with nothing to spare; 40 leaves 2.5 a side. Four sections at either width
+  fit the bed in one run, so the bed does not decide it.
+- **Plastic at all, versus aluminium.** The thermal argument above is survivable when bonded, but it
+  leaves a creep-prone member and two adhesive layers under the position reference. **An aluminium
+  riser with a milled trench has every advantage and no CTE argument to win** — and then the printed
+  sections become the laying jig instead, which is a job plastic is unambiguously good at, since
+  nothing about a jig's expansion matters once it is off the machine.
+
+**One measurement would sharpen all of this:** the steel band's own thickness, which is recorded
+nowhere and decides whether the tape or the carrier is the stiffer member.
 
 #### Mark it on the machine; do not compute it
 

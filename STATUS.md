@@ -288,6 +288,12 @@ interface, not this file.
 - ⚠️ [L585](machine/z-carriage.md#the-skim-has-two-jobs-and-only-one-of-them-needs-a-skim) — *The Z carriage / The skim has two jobs, and only one of the…*<br>The skim is deliberately less than the step. It had been 1.0 described as the whole 1.3, which put a one-shot mill-trip cut in charge of a figure measurable to about two tenths — the step is a difference of two readings against a common reference, so the errors add. Two tenths across that bolt span is already more than the joint wants.
 - ⚠️ [L653](machine/z-carriage.md#tap-the-plate-and-torque-to-15-nm---not-25) — *The clamp mount geometry - settled 2026-09-30 / Tap the pla…*<br>What is not fine is torquing it like an M8 in steel. The aluminium thread is the limit, not the bolt. ~15 N·m, not the ~25 N·m an M8 8.8 would otherwise take. If you would rather not have to remember that, four M8 helicoils per clamp position takes it to full spec for the price of a tap.
 
+## [linear-encoder/design-can-position-feedback.md](linear-encoder/design-can-position-feedback.md)  (3)
+
+- 🔴 [L194](linear-encoder/design-can-position-feedback.md#the-scales) — *1.4 Physical layout / The scales*<br>The roll is the binding constraint on this whole layout, not the printer and not the beams. 64 mm of margin on a one-shot PSA consumable is thin, and it is why the carrier sections stop at 220: at 230 the three beams come to 2760 and the roll goes negative once Z is counted. Anything that grows — a longer travel on one axis, a more generous overrun, a wider Z allowance — comes out of that
+- ⚠️ [L200](linear-encoder/design-can-position-feedback.md#the-scales) — *1.4 Physical layout / The scales*<br>Z's 295.91 is the softest number here. Its tape runs on the edge of the Z gantry plate rather than between rails, and that axis has never been laid out — §1.4 calls its reader allocation reserved rather than spent. Z_TRAVEL is firm; how much tape the edge mounting actually wants is not.
+- 🔴 [L262](linear-encoder/design-can-position-feedback.md#proposal---a-printed-carrier-to-lift-the-tape-clear-of-the-bolt-heads) — *1.4 Physical layout / PROPOSAL - a printed carrier to lift…*<br>Why the bond to the aluminium is the whole design, and why plastic was nearly wrong. §1.4's standing rule is bond the full length so the band is dragged by its substrate and the scale tracks the machine's real thermal growth — with an explicit "do not improve it into a one-end anchor later". That rule works because the substrate overwhelms the band: the 45 × 4 aluminium strip is of order 12,000 kN axially against a 15 × 4 printed carrier's ~180 kN. Aluminium commands the steel band. A printed strip commands nothing, and if it is left floating — located only by the bolt heads — then the tape's own steel band becomes the stiff member and the assembly reports steel's 11.7 µm/m/K while the machine moves on aluminium's 23.1. That is precisely the failure the full-length bond exists to prevent, arrived at from a different direction, and segmenting makes it worse rather than better.
+
 ## [commissioning/stiffness-test.md](commissioning/stiffness-test.md)  (5)
 
 - 🔴 [L11](commissioning/stiffness-test.md#the-stiffness-test-push-the-nose-find-where-it-moves) — *The stiffness test: push the nose, find where it moves*<br>Whether the X beam's joining plates should be 1/4" or 3/8". That choice was made on the claim that the Z assembly is the largest compliance in the stack - a claim, not a measurement. The plates are bolt-on precisely so the swap stays cheap if this says otherwise.
@@ -298,4 +304,4 @@ interface, not this file.
 
 ---
 
-**228 open** across 29 files.
+**231 open** across 29 files.
