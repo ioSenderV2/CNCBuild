@@ -34,7 +34,7 @@ make deliberately rather than drift into.
 ## Status
 
 **Regenerated through 2026-10-02**, after the Y end rework: cast stepper frames replaced BK12 and
-the M5 standoffs, the Y steppers moved to the **front**, all four as-built Y risers are scrapped, and
+the M5 standoffs, the Y steppers moved to the **front**, each Y beam end carries a tapered front fin, and
 the two rear risers became one 1200 mm × 12" × 1/4" A36 steel plate that is also the rear shear
 panel. Every sheet in the pack has been brought up to that design.
 

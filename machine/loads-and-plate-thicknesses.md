@@ -62,14 +62,17 @@ Current as of 2026-10-02.
 tall and carries the box fixing; X's stays 6061 at 120 mm. Do not let the old "all three axes, 1/4"
 aluminium" line survive in anyone's head.
 
-### The 3/8" question is closed - the Y risers are built at 1/2"
+### The 3/8" question is closed - at 1/2"
 
 Recorded because the reasoning still applies to anything cut later. 3/8" loses **58 %** of the
 weak-axis stiffness against only 25 % of the strong-axis, which would have been acceptable **only
-if the full-height plate took the fore-aft load in-plane**. The Y risers went to 1/2" and are made,
-so the coupling never had to be managed.
+if the full-height plate took the fore-aft load in-plane**. The risers this was decided for went to
+1/2", so the coupling never had to be managed. ⚠️ **Those risers no longer exist** - all four were
+scrapped, and each Y beam end now carries a tapered front fin with the back plate behind both. The
+**reasoning** is what this section is for, and it is what [`lateral-stiffness.md`](lateral-stiffness.md)
+checks the fins against.
 
-The saving is only about 0.44 lb per riser, 1.76 lb across all four, and it is static weight. Thin
+The saving was only about 0.44 lb per riser, 1.76 lb across all four, and it is static weight. Thin
 them for cost or machinability if you like; there is nothing to gain in weight.
 
 ### Why the X end plates are different

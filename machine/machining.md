@@ -23,10 +23,6 @@ not any more:
 | **The 1210.73 mm rear plate**, 1/4" steel | two 8-bolt patterns a metre apart that must match extruded bores - and the part may exceed the machine's X travel |
 | **Interposer bars**, 60 × 150 × 3/8" - two for Y, plus X | six tapped M5 under a bearing face and six flange clearance holes, all in a small part |
 
-❌ ~~**The four Y risers are already made and in service** - they are not on this list.~~
-**Reversed 2026-10-02 - all four are scrapped.** The front pair is remade with the window; the rear
-pair is replaced by the single 1210.73 mm plate.
-
 🔴 **The six bolt-on plates went ONTO the trip on 2026-10-09** - two **11 7/8" × 39 5/16" × 10
 gauge steel** outboard plates, three **45 mm × 1 m × 4 mm 6061** front strips, and the **4 11/16" ×
 39 5/16" × 1/4"** X back joining plate.

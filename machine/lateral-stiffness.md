@@ -109,9 +109,9 @@ already noise.
 
 ✅ **And this is exactly the condition the earlier 3/8" discussion named.** That section says a
 thinner riser *"would have been acceptable **only if** the full-height plate took the fore-aft load
-in-plane"*, and concluded 1/2" only because *"the Y risers went to 1/2" and are made, so the coupling
-never had to be managed."* **These fins are not made, and the full-height plate does take the
-fore-aft load in-plane.** The stated condition is satisfied, so this is not a reversal of that
+in-plane"*, and concluded 1/2" only because *"the risers this was decided for went to 1/2", so the
+coupling never had to be managed."* **These fins are not made, and the full-height plate does take
+the fore-aft load in-plane.** The stated condition is satisfied, so this is not a reversal of that
 decision - it is that decision's own escape clause being used as written.
 
 📌 **It also makes the 60.5 × 50 window easier to cut**, which is a live question - 10 mm of

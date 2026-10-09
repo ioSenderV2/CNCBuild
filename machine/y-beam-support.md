@@ -31,14 +31,15 @@ than avoided.
 
 ---
 
-✅ **Both Y beams are built** as described here - stacked pairs, rails, screws, BK12/BF12, steppers
-and all four risers. See [`photos/y-beam-end-plate-outer.jpg`](photos/y-beam-end-plate-outer.jpg) and
-the three beside it. **The riser geometry below is as-built, not a proposal**, and the 8-bolt pattern
-into the corner bores is proven hardware rather than a first attempt - which is why the X end plates
-copy it.
+✅ **Both Y beams are built** as described here - stacked pairs, rails, screws, BK12/BF12 and
+steppers. See [`photos/y-beam-end-plate-outer.jpg`](photos/y-beam-end-plate-outer.jpg) and the three
+beside it.
 
-⚠️ **As-built is no longer as-designed.** All four risers come off. The 8-bolt corner-bore pattern
-is the part that carries forward; the plates themselves do not.
+🔴 **The end plates in those photographs are gone.** Each Y beam end now carries a **tapered front
+fin**, and a single **full-width, full-height back plate** serves both beams - Sheets 1a, 1b and 7.
+**What carries forward from what was there is the 8-bolt corner-bore pattern and the 9 mm hole**,
+and those carry forward because they are proven on real hardware rather than a first attempt, which
+is why the X end plates copy them too. The plates themselves do not carry forward.
 
 Each Y beam is carried at its two ends only. It cannot be supported along its length: **the ball
 screw runs underneath the beam**, which is also why the outboard plate below matters so much.
@@ -83,10 +84,14 @@ The rule was right and it is not being abandoned on cosmetics: the front plates 
 gain a window, and the rear pair is replaced by a single member that does a job neither of them
 could. The sentiment behind the rule still applies to anything else that is built and calibrated.
 
-📌 **What survives from the as-built risers is the 8-bolt pattern and the 9 mm hole**, both of which
-carry straight into the new plates. The existing plates were drilled at home with a **mag drill**, so
-the pattern itself costs no mill time; only the window and the 1210.73 mm plate's two patterns need the
-trip.
+📌 **What survives is the 8-bolt pattern and the 9 mm hole**, both of which carry straight into
+the new plates.
+
+⚠️ **This used to add "so the pattern costs no mill time" and that is no longer true.** It was true
+while the pattern lived in plates already drilled at home with a mag drill. Those plates are gone;
+the fins are new parts and the pattern has to be cut into them. See
+[`machining.md`](machining.md) for what the trip now carries - it is no longer just the window and
+the back plate's two patterns.
 
 ---
 

@@ -100,7 +100,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/lateral-stiffness.md](machine/lateral-stiffness.md)
 
 - [Front: widen the riser in its own plane](machine/lateral-stiffness.md#front-widen-the-riser-in-its-own-plane)
-- [Cut two from one 12" square, and reference off the factory edges](machine/lateral-stiffness.md#cut-two-from-one-12-square-and-reference-off-the-factory-edges)
+- [One piece per fin, and reference off the factory edges](machine/lateral-stiffness.md#one-piece-per-fin-and-reference-off-the-factory-edges)
 - [The fin, fully dimensioned - 2026-10-02](machine/lateral-stiffness.md#the-fin-fully-dimensioned---2026-10-02)
   - [The stock is 10 mm, not 1/2" - and that is acceptable, by this file's own test](machine/lateral-stiffness.md#the-stock-is-10-mm-not-12---and-that-is-acceptable-by-this-files-own-test)
 - [The 60.5 × 50 window, and why the taper does not help it](machine/lateral-stiffness.md#the-605-50-window-and-why-the-taper-does-not-help-it)
@@ -123,7 +123,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 - [Cutting forces: 500-1000 N, not 250](machine/loads-and-plate-thicknesses.md#cutting-forces-500-1000-n-not-250)
 - [Plate and riser thicknesses](machine/loads-and-plate-thicknesses.md#plate-and-riser-thicknesses)
-  - [The 3/8" question is closed - the Y risers are built at 1/2"](machine/loads-and-plate-thicknesses.md#the-38-question-is-closed---the-y-risers-are-built-at-12)
+  - [The 3/8" question is closed - at 1/2"](machine/loads-and-plate-thicknesses.md#the-38-question-is-closed---at-12)
   - [Why the X end plates are different](machine/loads-and-plate-thicknesses.md#why-the-x-end-plates-are-different)
 - [The measurement that would settle the 1/4" question](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question)
   - [Open: the X carriage plate goes to 5/8" if the stiffness test says it is the compliance](machine/loads-and-plate-thicknesses.md#open-the-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance)
@@ -137,6 +137,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/open-items.md](machine/open-items.md)
 
 - [From the 2026-10-02 stepper frame rework - all unmeasured](machine/open-items.md#from-the-2026-10-02-stepper-frame-rework---all-unmeasured)
+- [From the 2026-10-08 order - the back plate's length](machine/open-items.md#from-the-2026-10-08-order---the-back-plates-length)
 - [From the 2026-10-08 datasheet pass](machine/open-items.md#from-the-2026-10-08-datasheet-pass)
 - [Carried forward](machine/open-items.md#carried-forward)
 
@@ -326,6 +327,8 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
     - [It does have a field-validity output - §11.1 is answered](linear-encoder/design-can-position-feedback.md#it-does-have-a-field-validity-output---111-is-answered)
   - [1.4 Physical layout](linear-encoder/design-can-position-feedback.md#14-physical-layout)
     - [The scales](linear-encoder/design-can-position-feedback.md#the-scales)
+    - [The overrun is not slop](linear-encoder/design-can-position-feedback.md#the-overrun-is-not-slop)
+    - [PROPOSAL - a printed carrier to lift the tape clear of the bolt heads](linear-encoder/design-can-position-feedback.md#proposal---a-printed-carrier-to-lift-the-tape-clear-of-the-bolt-heads)
     - [Mark it on the machine; do not compute it](linear-encoder/design-can-position-feedback.md#mark-it-on-the-machine-do-not-compute-it)
     - [Z's Abbe offset, and why its threshold is looser](linear-encoder/design-can-position-feedback.md#zs-abbe-offset-and-why-its-threshold-is-looser)
     - [The sensor mount: a clamped puck in a 35 mm bore](linear-encoder/design-can-position-feedback.md#the-sensor-mount-a-clamped-puck-in-a-35-mm-bore)
