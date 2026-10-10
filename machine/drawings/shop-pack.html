@@ -833,10 +833,18 @@ Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><b
 <h3 style="margin-top:7mm">Sheet 2d &mdash; the nut doubler block (quantity 3)
 <span style="font-weight:400;font-size:10pt">&mdash; machined on its own, on the <b>same WCS</b> as 2a</span></h3>
 <div class="stock">
-<b>154 long &times; 45 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b> &mdash; <b>cut from the 45 mm offcut</b> left
-when an end plate is taken out of a 200 mm wide piece.<br>
-Bolts to the end plate's <b>OUTER face at the bottom</b>, the same face the bearing blocks are on,
-giving a <b>24.38 mm seating</b> across the stacked end faces for the sole bracket of Sheet 5.<br>
+<b>154 long &times; 45 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b><br>
+&#128308; <b>THREE OF THEM, AND THE THIRD IS NOT LIKE THE OTHER TWO.</b> The block is identical;
+where it goes is not.<br>
+<b>Two for the Y ends.</b> Cut from the <b>45 mm offcut</b> left when an end plate is taken out of a
+200 mm wide piece. Each bolts to the end plate's <b>OUTER face at the bottom</b>, the same face the
+bearing blocks are on, giving a <b>24.38 mm seating</b> across the stacked end faces for the sole
+bracket of Sheet 5.<br>
+<b>One for the X axis.</b> &#9888; <b>There is no offcut for it</b> &mdash; it wants its own piece of
+the same 1/2" stock. It bolts to the X carriage plate's <b>REAR face, the other way up</b>, with its
+<b>bottom edge at 177</b> and its tapped end face at the TOP, carrying the X ball nut through the sole
+plate of Sheet&nbsp;11. Its seating there is <b>12.19, not 24.38</b>, because nothing stands behind
+it.<sup class="f">11.1</sup><br>
 <span class="wcs">CLAMP IT THE SHORT WAY, ON 2a&apos;S WCS.</span> <b>X runs along this block&apos;s 45</b>
 and <b>Y along its 154</b>, origin on the same corner 2a uses &mdash; the plate&apos;s bottom end and back
 edge. Held that way <b>every coordinate below is the same number 2a carries</b>, which is the whole
@@ -855,7 +863,7 @@ gone.<sup class="f">2.7</sup>
 <svg viewBox="-58 -36 450 338" width="185mm" xmlns="http://www.w3.org/2000/svg">
   <text class="ttl" x="0" y="-18">FACE &#8212; on 2a&#8217;s WCS</text>
   <text class="ttl" x="190" y="-18">END FACE &#8212; looking along X</text>
-  <text class="q" x="0" y="-6">X runs across this block&#8217;s 50 &#183; Y along its 154 &#183; origin is 2a&#8217;s, the plate&#8217;s bottom end and back edge</text>
+  <text class="q" x="0" y="-6">X runs across this block&#8217;s 45 &#183; Y along its 154 &#183; origin is 2a&#8217;s, the plate&#8217;s bottom end and back edge</text>
 
   <!-- the end plate continuing past the block, amber: it runs on to X 242.5 -->
   <line x1="45" y1="0" x2="74" y2="0" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
@@ -933,8 +941,8 @@ gone.<sup class="f">2.7</sup>
   <text class="q" x="0" y="240">amber = the end plate, drawn on 2a</text>
   <text class="q" x="0" y="256">They are &#248;4.2 centred in the 12.19, tapped M5 at home. On Sheet 5&#8217;s frame the same row reads</text>
   <text class="q" x="0" y="268">X 18.285 &#8212; measured across the stacked 24.38, not a second decision.</text>
-  <text class="q" x="0" y="284">&#9888; the lower Y bearing block row&#8217;s bottom edge lands at X 55.5 on this same face, so the 50</text>
-  <text class="q" x="0" y="296">clears it by 5.5. A 60 would have overlapped by 4.5.</text>
+  <text class="q" x="0" y="284">&#9888; the lower Y bearing block row&#8217;s bottom edge lands at X 55.5 on this same face, so the 45</text>
+  <text class="q" x="0" y="296">clears it by 10.5. A 60 would have overlapped by 4.5.</text>
 </svg>
 <figcaption><b>The four Y stations are the point of this drawing, and they are not this part&#8217;s
 numbers &#8212; they are 2a&#8217;s.</b> D1&ndash;D4 at <b>Y 32, 62, 92, 122</b> are the same four values the
@@ -968,7 +976,7 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
 <b>407 long &times; 154 wide &times; 1/2" aluminium</b><br>
 <b>The plate already exists</b>, sprayed with layout dye.<br>
 <b>X 0 is the BOTTOM of the carriage as it hangs on the machine.</b> The bottom ~150 is over the X gantry; the rest stands above it.<sup class="f">3.6</sup><br>
-<b>Everything but the top stop is dimensioned &mdash; 39 features.</b><sup class="f">3.3</sup>
+<b>Everything but the top stop is dimensioned &mdash; 43 features.</b><sup class="f">3.3</sup>
 </div>
 
 <figure>
@@ -1046,6 +1054,13 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <circle cx="403" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="lbl" x="352" y="42.0" fill="#b06000">Z CASTING</text>
 
+  <!-- NUT DOUBLER, rear face: Sheet 2d's block, X 177 to 222, its bolt column at X 202 -->
+  <rect x="177" y="0" width="45" height="154" fill="none" stroke="#0a6" stroke-width="1.1" stroke-dasharray="5 3"/>
+  <circle cx="202" cy="122" r="4" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
+  <circle cx="202" cy="92" r="4" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
+  <circle cx="202" cy="62" r="4" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
+  <circle cx="202" cy="32" r="4" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
+  <text class="lbl" x="179" y="-6" fill="#0a6">NUT DOUBLER 177&#8211;222</text>
   <!-- BF12 at X 10, two holes 46 apart centred on Y 77 -->
   <circle cx="10" cy="100.0" r="3" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
   <circle cx="10" cy="54.0" r="3" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>

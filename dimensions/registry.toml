@@ -341,6 +341,17 @@ note = "167 - the X beam\u2019s top face above the BOTTOM of the X carriage plat
 source = "his, 2026-10-09"
 
 [[dim]]
+sym = "X_BLOCK_UPPER_CENTRE"
+value = 136
+provenance = "derived"
+note = "136 - the upper pair of X-axis bearing blocks, centred between Sheet 3a's X1-X16 columns at 120 and 152. ⚠ THOSE TWO ARE 32 APART, WHICH IS BLOCK_PITCH_X, THE ACROSS-RAIL PITCH - not the along-rail 36. The X carriage plate hangs with its 407 VERTICAL, so the X beam's rails run along the plate's Y and each block extends BLOCK_W along the plate's X. Getting that backwards makes the block look 77 long up the plate instead of 44 wide, and it is an easy mistake: the Y values on that same sheet really are on the 36."
+
+[[dim]]
+sym = "X_DOUBLER_BLOCK_CLEAR"
+expr = "X_DOUBLER_BOTTOM - X_BLOCK_UPPER_CENTRE - (BLOCK_W / 2)"
+note = "19 - the gap up the plate between the upper X bearing blocks and the bottom of the nut doubler. They share the plate's REAR face, and nothing had checked they clear until the doubler was drawn on Sheet 3a on 2026-10-09. ✅ THE REASON THEY CLEAR IS STRUCTURAL, NOT ARITHMETIC - his, 2026-10-09: the doubler sits ABOVE THE TOP OF THE X BEAM, and the blocks ride the beam, so they cannot reach it. X_DOUBLER_BOTTOM less X_BEAM_TOP_XC is exactly T_INTERPOSER, 10, because the nut height is built up from the beam top through that interposer. The 19 is the slack that follows, and it is the number to re-read if the nut height ever changes - but the ordering is guaranteed by the chain, not by this value staying positive."
+
+[[dim]]
 sym = "X_SCREW_AXIS"
 expr = "RAIL_STACK + (EXT_W / 2)"
 note = "60 - the X screw axis out from the X carriage plate's REAR face, the face the doubler bolts to. ✅ THE PLATE'S OWN THICKNESS IS NOT IN THIS CHAIN and that is the whole difference from Y. SCREW_AXIS_X on the Y side is 72.19 because it measures from the X end plate's INNER face and so carries the plate's 12.19; here the root sits on the rear face and the 12.19 drops out. That is why every X number on Sheet 11 is round where Sheet 5's are not, and it also means T_X_CARRIAGE_PLATE - a nominal 12.7 still flagged to caliper - cannot move any of them."
