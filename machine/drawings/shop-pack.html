@@ -199,6 +199,12 @@ chained dimensions accumulate error.</li>
 each &mdash; that is the eight-hole pattern at a beam end.</li>
 <li><b>9 mm clearance on M8 wherever a plate meets extrusion.</b> That is the repo's deliberate
 figure — the joint works by friction, not bearing, and the float is wanted.</li>
+<li><b>Every hole in a schedule is tagged on the drawing, and the numbering runs ACROSS X,
+THEN UP IN Y.</b> One rule for the whole pack: finish a row left to right before starting the
+row above it. So on a four-by-four pattern, <b>1 to 4 is the whole bottom row</b> across every
+block it passes through &mdash; not the first block's four. A single column numbers upward; a
+single row numbers left to right. <b>Run tools/check-shop-pack-refs.py</b> &mdash; it fails if
+any schedule Ref has no matching tag on its own sheet.</li>
 <li><b>The plate is the drill guide for its own plywood tongue.</b> No tongue on the torsion box is
 ever drilled to a coordinate. Bolt the machine up, set it on the box, and <b>spot every tongue hole
 through the plate that secures it</b> &mdash; the rear plate drills the back tongue, each outboard
@@ -999,16 +1005,15 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
 </div>
 
 <figure>
-<svg viewBox="-54 -40 640 380" width="190mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="-54 -30 640 370" width="190mm" xmlns="http://www.w3.org/2000/svg">
   <!-- X CARRIAGE PLATE, machining coordinates. svg y = 154 - machine Y. -->
   <rect x="0" y="0" width="407.0" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-  <!-- background regions first, so no feature can be painted over -->
-  <rect x="400.0" y="0" width="7" height="154.0" fill="#fdd" stroke="#c00" stroke-width="1"/>
-  <text class="q" x="360" y="-16.0" fill="#c00">7 overrun</text>
 
-  <!-- HGR20 rails, 400 long x RAIL_W 20 wide, centred on Y 20 and Y 134 -->
+  <!-- HGR20 rails, 400 long x RAIL_W 20 wide, centred on Y 20 and Y 134. Their ends
+       at X 400 are what shows the last 7 of the plate carries no rail. -->
   <rect x="0.00" y="124.0" width="400.00" height="20.00" fill="#c0c" fill-opacity="0.10" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
   <rect x="0.00" y="10.0" width="400.00" height="20.00" fill="#c0c" fill-opacity="0.10" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
+  <text class="lbl" x="403" y="162.0" fill="#c0c" text-anchor="middle">400</text>
   <!-- the four machined pads under the X bearing blocks, 50.5 x 44 -->
   <rect x="20.75" y="94.0" width="50.50" height="44.00" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
   <rect x="20.75" y="16.0" width="50.50" height="44.00" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
@@ -1017,88 +1022,91 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <!-- BF12 base, 60 x 20: the 20 along X flush with the X 0 end puts F1/F2 at X 10,
        and the 60 across centres on Y 77, which lands them 7 and 53 off its edges -->
   <rect x="0.00" y="47.0" width="20.00" height="60.00" fill="none" stroke="#06c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <!-- Z stepper casting, 60 x 72.5. The 60 across is Y 47 to 107 and is drawn; where
-       the 72.5 sits along X is not fixed, so the two ends are left off. -->
-  <line x1="334" y1="107.0" x2="407" y2="107.0" stroke="#b06000" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <line x1="334" y1="47.0" x2="407" y2="47.0" stroke="#b06000" stroke-width="0.9" stroke-dasharray="4 2.5"/>
+  <!-- Z stepper casting, 60 x 72.5. Its first hole column sits 10 in from the left
+       edge, so the casting runs X 350 to 422.5 and OVERHANGS the plate. Drawn whole:
+       the overhang is unsupported, and K3/K6 at X 403 are still in material. -->
+  <rect x="350.00" y="47.0" width="72.50" height="60.00" fill="none" stroke="#b06000" stroke-width="0.9" stroke-dasharray="4 2.5"/>
+  <line x1="407.0" y1="107.0" x2="407.0" y2="47.0" stroke="#b06000" stroke-width="0.7"/>
+  <text class="lbl" x="411.0" y="43.0" fill="#b06000">unsupported past 407</text>
   <!-- nut doubler on the REAR face, Sheet 2d -->
   <rect x="177.00" y="0.0" width="45.00" height="154.00" fill="none" stroke="#0a6" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <!-- Z top stop block, Sheet 3c -->
+  <!-- Z top stop block, Sheet 3c. It ends at 335.4 and the casting starts at 350. -->
   <rect x="310.00" y="52.0" width="25.40" height="50.00" fill="none" stroke="#c00" stroke-width="0.9" stroke-dasharray="4 2.5"/>
 
-  <!-- R1a-g, R2a-g. Tags run OUTBOARD, away from the X block tags on the same lines. -->
+  <!-- R1-R14, the same rule: R1-R7 across the Y 20 rail, then R8-R14 on Y 134.
+       Tags run OUTBOARD, away from the X block tags that share those two lines. -->
   <circle cx="20.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="20.00" y="144.0" fill="#b06000" text-anchor="middle">R1a</text>
+  <text class="ref" x="20.00" y="144.0" fill="#b06000" text-anchor="middle">R1</text>
   <circle cx="80.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="80.00" y="144.0" fill="#b06000" text-anchor="middle">R1b</text>
+  <text class="ref" x="80.00" y="144.0" fill="#b06000" text-anchor="middle">R2</text>
   <circle cx="140.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="140.00" y="144.0" fill="#b06000" text-anchor="middle">R1c</text>
+  <text class="ref" x="140.00" y="144.0" fill="#b06000" text-anchor="middle">R3</text>
   <circle cx="200.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="200.00" y="144.0" fill="#b06000" text-anchor="middle">R1d</text>
+  <text class="ref" x="200.00" y="144.0" fill="#b06000" text-anchor="middle">R4</text>
   <circle cx="260.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="260.00" y="144.0" fill="#b06000" text-anchor="middle">R1e</text>
+  <text class="ref" x="260.00" y="144.0" fill="#b06000" text-anchor="middle">R5</text>
   <circle cx="320.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="320.00" y="144.0" fill="#b06000" text-anchor="middle">R1f</text>
+  <text class="ref" x="320.00" y="144.0" fill="#b06000" text-anchor="middle">R6</text>
   <circle cx="380.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="380.00" y="144.0" fill="#b06000" text-anchor="middle">R1g</text>
+  <text class="ref" x="380.00" y="144.0" fill="#b06000" text-anchor="middle">R7</text>
   <circle cx="20.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="20.00" y="16.0" fill="#b06000" text-anchor="middle">R2a</text>
+  <text class="ref" x="20.00" y="16.0" fill="#b06000" text-anchor="middle">R8</text>
   <circle cx="80.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="80.00" y="16.0" fill="#b06000" text-anchor="middle">R2b</text>
+  <text class="ref" x="80.00" y="16.0" fill="#b06000" text-anchor="middle">R9</text>
   <circle cx="140.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="140.00" y="16.0" fill="#b06000" text-anchor="middle">R2c</text>
+  <text class="ref" x="140.00" y="16.0" fill="#b06000" text-anchor="middle">R10</text>
   <circle cx="200.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="200.00" y="16.0" fill="#b06000" text-anchor="middle">R2d</text>
+  <text class="ref" x="200.00" y="16.0" fill="#b06000" text-anchor="middle">R11</text>
   <circle cx="260.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="260.00" y="16.0" fill="#b06000" text-anchor="middle">R2e</text>
+  <text class="ref" x="260.00" y="16.0" fill="#b06000" text-anchor="middle">R12</text>
   <circle cx="320.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="320.00" y="16.0" fill="#b06000" text-anchor="middle">R2f</text>
+  <text class="ref" x="320.00" y="16.0" fill="#b06000" text-anchor="middle">R13</text>
   <circle cx="380.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="380.00" y="16.0" fill="#b06000" text-anchor="middle">R2g</text>
+  <text class="ref" x="380.00" y="16.0" fill="#b06000" text-anchor="middle">R14</text>
 
-  <!-- X1-X16. X1-X4 the lower left block, then up, then right. Tags run INBOARD. -->
+  <!-- X1-X16, ACROSS X THEN UP IN Y: X1-X4 is the whole Y 20 row across both blocks. -->
   <circle cx="30.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="30.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
   <text class="ref" x="30.00" y="129.5" fill="#06c" text-anchor="middle">X1</text>
   <circle cx="62.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="62.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
   <text class="ref" x="62.00" y="129.5" fill="#06c" text-anchor="middle">X2</text>
-  <circle cx="30.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="108.5" fill="#06c" text-anchor="middle">X3</text>
-  <circle cx="62.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="108.5" fill="#06c" text-anchor="middle">X4</text>
-  <circle cx="30.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="51.5" fill="#06c" text-anchor="middle">X5</text>
-  <circle cx="62.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="51.5" fill="#06c" text-anchor="middle">X6</text>
-  <circle cx="30.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="30.5" fill="#06c" text-anchor="middle">X7</text>
-  <circle cx="62.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="30.5" fill="#06c" text-anchor="middle">X8</text>
   <circle cx="120.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="120.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="129.5" fill="#06c" text-anchor="middle">X9</text>
+  <text class="ref" x="120.00" y="129.5" fill="#06c" text-anchor="middle">X3</text>
   <circle cx="152.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="152.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="129.5" fill="#06c" text-anchor="middle">X10</text>
+  <text class="ref" x="152.00" y="129.5" fill="#06c" text-anchor="middle">X4</text>
+  <circle cx="30.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
+  <circle cx="30.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
+  <text class="ref" x="30.00" y="108.5" fill="#06c" text-anchor="middle">X5</text>
+  <circle cx="62.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
+  <circle cx="62.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
+  <text class="ref" x="62.00" y="108.5" fill="#06c" text-anchor="middle">X6</text>
   <circle cx="120.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="120.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="108.5" fill="#06c" text-anchor="middle">X11</text>
+  <text class="ref" x="120.00" y="108.5" fill="#06c" text-anchor="middle">X7</text>
   <circle cx="152.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="152.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="108.5" fill="#06c" text-anchor="middle">X12</text>
+  <text class="ref" x="152.00" y="108.5" fill="#06c" text-anchor="middle">X8</text>
+  <circle cx="30.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
+  <circle cx="30.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
+  <text class="ref" x="30.00" y="51.5" fill="#06c" text-anchor="middle">X9</text>
+  <circle cx="62.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
+  <circle cx="62.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
+  <text class="ref" x="62.00" y="51.5" fill="#06c" text-anchor="middle">X10</text>
   <circle cx="120.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="120.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="51.5" fill="#06c" text-anchor="middle">X13</text>
+  <text class="ref" x="120.00" y="51.5" fill="#06c" text-anchor="middle">X11</text>
   <circle cx="152.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="152.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="51.5" fill="#06c" text-anchor="middle">X14</text>
+  <text class="ref" x="152.00" y="51.5" fill="#06c" text-anchor="middle">X12</text>
+  <circle cx="30.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
+  <circle cx="30.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
+  <text class="ref" x="30.00" y="30.5" fill="#06c" text-anchor="middle">X13</text>
+  <circle cx="62.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
+  <circle cx="62.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
+  <text class="ref" x="62.00" y="30.5" fill="#06c" text-anchor="middle">X14</text>
   <circle cx="120.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="120.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
   <text class="ref" x="120.00" y="30.5" fill="#06c" text-anchor="middle">X15</text>
@@ -1117,7 +1125,7 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <circle cx="10.00" cy="54.0" r="3.0" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
   <text class="ref" x="10.00" y="65.0" fill="#06c" text-anchor="middle">F2</text>
 
-  <!-- K1-K6: Y 54 first, then Y 100 - which is what makes X 403 the K3/K6 pair -->
+  <!-- K1-K6, same rule: across X on Y 54, then up to Y 100 -->
   <circle cx="360.00" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="360.00" y="95.0" fill="#b06000" text-anchor="middle">K1</text>
   <circle cx="373.00" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
@@ -1131,7 +1139,7 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <circle cx="403.00" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="403.00" y="65.0" fill="#b06000" text-anchor="middle">K6</text>
 
-  <!-- XD1-XD4, one column at X 202 into the doubler behind -->
+  <!-- XD1-XD4, one column at X 202 into the doubler behind, up in Y -->
   <circle cx="202.00" cy="122.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
   <text class="ref" x="190" y="125.0" fill="#0a6" text-anchor="middle">XD1</text>
   <circle cx="202.00" cy="92.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
@@ -1141,11 +1149,11 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <circle cx="202.00" cy="32.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
   <text class="ref" x="190" y="35.0" fill="#0a6" text-anchor="middle">XD4</text>
 
-  <!-- TS1, TS2, inside the stop block outline -->
-  <circle cx="322.70" cy="62.0" r="3.0" fill="#fee" stroke="#c00" stroke-width="1.3"/>
-  <text class="ref" x="322.70" y="57.0" fill="#c00" text-anchor="middle">TS1</text>
+  <!-- TS1, TS2 inside the stop block outline, up in Y -->
   <circle cx="322.70" cy="92.0" r="3.0" fill="#fee" stroke="#c00" stroke-width="1.3"/>
-  <text class="ref" x="322.70" y="103.0" fill="#c00" text-anchor="middle">TS2</text>
+  <text class="ref" x="322.70" y="103.0" fill="#c00" text-anchor="middle">TS1</text>
+  <circle cx="322.70" cy="62.0" r="3.0" fill="#fee" stroke="#c00" stroke-width="1.3"/>
+  <text class="ref" x="322.70" y="57.0" fill="#c00" text-anchor="middle">TS2</text>
 
   <line x1="0" y1="166.0" x2="407.0" y2="166.0" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="192" y="176.0">407</text>
@@ -1154,35 +1162,38 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <circle cx="0" cy="154.0" r="3.4" fill="#c00"/>
   <text class="dim" x="-32" y="164.0" fill="#c00">WCS 0,0</text>
 
-  <text class="q" x="0" y="206" fill="#b06000">R1a&#8211;g, R2a&#8211;g &#183; RAILS &#8212; 14 &#215; &#248;4.2</text>
-  <text class="q" x="0" y="218">X 20, 80, 140, 200, 260, 320, 380 &#183; Y 20 and Y 134</text>
+  <text class="q" x="0" y="206" fill="#b06000">R1&#8211;R14 &#183; HGR20 RAILS &#8212; 14 &#215; &#248;4.2</text>
+  <text class="q" x="0" y="218">X 20, 80, 140, 200, 260, 320, 380 &#183; R1&#8211;R7 on Y 20, R8&#8211;R14 on Y 134</text>
   <text class="q" x="0" y="230">tap M5 at home &#183; dotted = the 400 &#215; 20 rail itself</text>
   <text class="q" x="0" y="254" fill="#06c">F1, F2 &#183; BF12 &#8212; 2 &#215; &#248;4.2 at X 10, Y 54 and 100</text>
   <text class="q" x="0" y="266">dotted = its 60 &#215; 20 base, flush with the X 0 end</text>
   <text class="q" x="0" y="290" fill="#06c">X1&#8211;X16 &#183; X BEARING BLOCKS &#8212; 16 &#215; &#248;5.2 C&#8217;BORED</text>
   <text class="q" x="0" y="302">X 30, 62, 120, 152 &#183; Y 20, 56, 98, 134</text>
-  <text class="q" x="0" y="314">X1&#8211;X4 the lower left block, then up, then right</text>
-  <text class="q" x="0" y="326">dotted = the 50.5 &#215; 44 MACHINED PAD</text>
-  <text class="q" x="0" y="350">S1 &#183; &#248;35 SENSOR BORE at X 91, Y 77</text>
+  <text class="q" x="0" y="314">dotted = the 50.5 &#215; 44 MACHINED PAD</text>
+  <text class="q" x="0" y="338">S1 &#183; &#248;35 SENSOR BORE at X 91, Y 77</text>
   <text class="q" x="300" y="206" fill="#0a6">XD1&#8211;XD4 &#183; NUT DOUBLER &#8212; 4 &#215; &#248;5</text>
   <text class="q" x="300" y="218">X 202 &#183; Y 32, 62, 92, 122 &#183; dashed = the doubler behind</text>
   <text class="q" x="300" y="242" fill="#b06000">K1&#8211;K6 &#183; Z STEPPER CASTING &#8212; 6 &#215; &#248;4.2</text>
-  <text class="q" x="300" y="254">X 360, 373, 403 &#183; K1&#8211;K3 on Y 54, K4&#8211;K6 on Y 100</text>
-  <text class="q" x="300" y="266" fill="#c00">&#9888; THE CASTING OUTLINE HAS NO ENDS YET. It is 60 &#215; 72.5;</text>
-  <text class="q" x="300" y="278" fill="#c00">the 60 across is Y 47 to 107 and is drawn, but where the</text>
-  <text class="q" x="300" y="290" fill="#c00">72.5 sits along X is not fixed, so only the long edges show.</text>
+  <text class="q" x="300" y="254">X 360, 373, 403 &#183; Y 54 and 100</text>
+  <text class="q" x="300" y="266">Its 60 &#215; 72.5 base runs X 350 to 422.5, so it overhangs the</text>
+  <text class="q" x="300" y="278">plate by 15.5. That overhang carries nothing &#8212; but K3 and K6</text>
+  <text class="q" x="300" y="290">at X 403 are still in material, which is the part that matters.</text>
   <text class="q" x="300" y="314" fill="#c00">TS1, TS2 &#183; Z TOP STOP BLOCK &#8212; 2 &#215; &#248;4.2</text>
   <text class="q" x="300" y="326">X 322.7 &#183; Y 62, 92 &#183; dashed = the block, Sheet 3c</text>
+  <text class="q" x="300" y="338">It ends at 335.4 and the casting starts at 350 &#8212; a 14.6 gap.</text>
 </svg>
-<figcaption>Rail flush with the bottom edge leaves exactly 7 mm at the top, which is the designed
-overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
+<figcaption>The plate is <b>407</b> and each rail is <b>400</b>, set flush with the bottom edge
+&mdash; so the rails finish 7 short of the top, which the drawing shows and nothing has to say
+twice. <b>Every hole carries its schedule ref</b>, and the numbering runs <b>across X, then up in
+Y</b>: R1&ndash;R7 is the whole lower rail before R8 starts the upper one, and X1&ndash;X4 is the
+whole Y 20 row across both bearing blocks.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 407</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>R1a&ndash;g</td><td><b>HGR20 rail 1</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
-<tr><td>R2a&ndash;g</td><td><b>HGR20 rail 2</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
+<tr><td><b>R1&ndash;R7</b></td><td><b>HGR20 rail 1</b> &mdash; the reference rail</td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
+<tr><td><b>R8&ndash;R14</b></td><td><b>HGR20 rail 2</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
 <tr><td>F1, F2</td><td><b>BF12</b> screw support</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.5</sup></td></tr>
 <tr><td>K1&ndash;K6</td><td><b>Z cast stepper frame</b> (the BK12 end)</td><td>6</td><td class="n">360, 373, 403</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br>&#9888; <b>X 403 leaves 4 mm to the end</b><sup class="f">3.7</sup></td></tr>
 <tr><td><b>S1</b></td><td><b>Sensor bore</b> &mdash; centred on the block pattern</td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
@@ -2175,7 +2186,7 @@ which is <b>43 tall on a 9.5 interposer</b>, so anything over <b>52.5</b> serves
 that floor the block overhangs unsupported plate; above it, longer buys nothing but edge distance.</p>
 <p><b>2.14</b> &mdash; <b>The corner cut.</b> Both plates lose the far-front corner on a straight line ending at <b>X 188, Y 154</b> &mdash; 2a from <b>X 242.5, Y 60</b>, 2b from <b>X 300, Y 60</b>. <b>Y 60 is where it has to start:</b> below that is the upper extrusion's end and the plate must stay full length to cover it; above it the corner carries nothing. <b>Clearance, computed and not measured:</b> the nearest feature to either line is the far-upper bearing block M5 at <b>X 183.5, Y 133.5</b> &mdash; <b>14.2 mm</b> from 2a's line and 18.6 from 2b's, so a ~&oslash;10 counterbore leaves about <b>9 mm</b> of material on the tighter one. Nothing else comes within 20 mm: E1&ndash;E4 are all at Y 45 or below, and the &oslash;35 bore is 79 mm clear.</p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3</b></p>
-<p><b>3.1</b> &mdash; <b>Both rails are tapped M5, fixed.</b> Seven holes each at a 60 pitch, 20 from each end of the 400 mm rail - and 407 &minus; 400 leaves the 7 mm of designed overrun at the far end. Measured 10 mm of ball-free block, so 3 mm spare.</p>
+<p><b>3.1</b> &mdash; <b>Both rails are tapped M5, fixed.</b> Seven holes each at a 60 pitch, <b>20 from each end of the 400 mm rail</b>. The rails are set flush with the plate's bottom edge, so they finish 7 short of its top - that is just what 407 minus 400 leaves, and the rail outlines on the drawing show it.</p>
 <p><b>3.2</b> &mdash; <b>These cannot be adjusted later.</b> Their heads are buried under the Z rails once assembled. <b>Tram is set here, once, at build.</b></p>
 <p><b>3.3</b> &mdash; The plate exists and is dyed. Rails, BF12, the four X blocks, the Z casting and the sensor bore are all dimensioned; <b>only the top stop is open</b>.</p>
 <p><b>3.4</b> &mdash; <b>The top stop is a bolt-on block now, not a plate with a lip.</b> The idea of a stop plate overhanging the carriage is dropped. In its place is a <b>1" 6061 block, Sheet&nbsp;3c</b>, bored &oslash;22 so the Z screw passes through it and bolted flat to the carriage plate&apos;s front face by two M5. All this sheet carries for it is TS1 and TS2 &mdash; two tapped holes at X&nbsp;322.7, Y&nbsp;62 and 92. <b>Nothing else on the plate is near them</b>: the closest rail holes are at X&nbsp;320 and 380 but out at Y&nbsp;20 and 134, and the Z casting pattern does not start until X&nbsp;360.</p>
