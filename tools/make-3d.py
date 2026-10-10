@@ -224,22 +224,34 @@ def main() -> int:
     # ---- the X nut doubler and sole plate, on the plate's BACK face --------
     # The X ball nut sits above the beam BEHIND this plate, so the doubler
     # stands off the plate's back face and the sole plate laps from its top
-    # edge out over the nut. The two heights come straight off the registry
-    # and the check that they close is that the doubler's top, X_NUT_FACE_Z,
-    # is the same plane as the nut's upward bolting face - both are the beam
-    # top plus the interposer plus the casting's bore height plus the nut's
-    # own axis-to-face. The doubler's bottom clears the upper bearing blocks
-    # by X_DOUBLER_BLOCK_CLEAR for the same reason.
+    # edge out over the nut.
+    #
+    # BOTH ARE ANCHORED TO THE X BEAM'S TOP, not to the carriage plate's
+    # bottom - his, 2026-10-10. The nut's face is 55 above the beam top, ten
+    # of interposer, twenty-five to the casting's bore, twenty from the bore
+    # to the nut's face, and the 45 doubler hangs from that, which lands its
+    # bottom edge 10 above the beam top. The upper bearing blocks stand 10
+    # proud of the beam top as well, so THE DOUBLER RESTS ON THEIR SIDES -
+    # fine, because both parts are fixed by the same carriage plate.
+    #
+    # Referenced this way they meet the nut by construction. The registry
+    # reaches the same two planes from the carriage plate's bottom, at
+    # X_DOUBLER_BOTTOM and X_NUT_FACE_Z, and those run through a measured
+    # X_BEAM_TOP_XC of 167 where the model's rails and blocks put the beam top
+    # 151 above that edge - see the open item; nothing here resolves it.
+    #
     # ASSUMPTION: both are drawn the carriage plate's own 154 across. The
     # sheets give their lengths and rows, not a width.
+    x_nut_face = (xb_top + v["T_INTERPOSER"] + v["CASTING_AXIS_ABOVE_FOOT"]
+                  + v["NUT_AXIS_TO_FACE"])
     box("X nut doubler", "gantry", 0xB06000,
-        cp_x0, cp_back - v["T_DOUBLER"], cp_bot + v["X_DOUBLER_BOTTOM"],
-        cp_x1, cp_back, cp_bot + v["X_NUT_FACE_Z"])
+        cp_x0, cp_back - v["T_DOUBLER"], x_nut_face - v["DOUBLER_H"],
+        cp_x1, cp_back, x_nut_face)
     # X_SOLE_BRACKET_L is measured from the carriage plate's back face, so it
     # covers the doubler's 12.19 and then SOLE_REACH of free span to the nut.
     box("X sole plate", "gantry", 0xC9A227,
-        cp_x0, cp_back - v["X_SOLE_BRACKET_L"], cp_bot + v["X_NUT_FACE_Z"],
-        cp_x1, cp_back, cp_bot + v["X_NUT_FACE_Z"] + v["T_SOLE_BRACKET"])
+        cp_x0, cp_back - v["X_SOLE_BRACKET_L"], x_nut_face,
+        cp_x1, cp_back, x_nut_face + v["T_SOLE_BRACKET"])
 
     # ---- Z plate and spindle, at Z max -----------------------------------
     cp_front = cp_back + v["T_X_CARRIAGE_PLATE"]
@@ -723,6 +735,10 @@ ALLOWED = {
     frozenset({"X nut doubler", "X sole plate"}),
     frozenset({"X sole plate", "Nut bolt face"}),
     frozenset({"X carriage plate", "X sole plate"}),
+    # The doubler's bottom edge rests on the SIDES of the upper bearing blocks,
+    # which stand 10 proud of the beam top - both parts are fixed by the same
+    # carriage plate, so a touch there is the design and not a clash.
+    frozenset({"X block", "X nut doubler"}),
     frozenset({"X end plate", "Y block"}),          # end plate hangs off these
     # Kept for when the carriage is parked at either end rather than mid travel:
     # butted against the end plate, the block pair is BLOCK_BUTTED 154.18 against
