@@ -1627,16 +1627,16 @@ note = "4 - how far the screw's end stops SHORT of BF12's mounting face. \U0001f
 
 [[dim]]
 sym = "INTERPOSER_BOLT_ROW_1"
-value = 110
+value = 105
 provenance = "derived"
-note = "110 - the first of the interposer bar's two T-nut rows, from the bar's OUTBOARD end, Sheet 6's T1 and T3. \U0001f534 IT WAS DRAWING-ONLY until 2026-10-10, the same gap SHELF_BOLT_LOW_X records: the number lived on one sheet and nowhere else, so nothing could check it. There used to be a third row at 82 and it is gone - the bar slid back to meet the screw and an M8 flange there fouls the casting's face."
+note = "105 - the first of the interposer bar's two T-nut rows, from the bar's OUTBOARD end, Sheet 6's T1 and T3. \U0001f534 IT WAS DRAWING-ONLY until 2026-10-10, the same gap SHELF_BOLT_LOW_X records: the number lived on one sheet and nowhere else, so nothing could check it. The pair used to be 82 / 110 / 138 and there used to be three: the bar slid back to meet the screw and the casting came back at 77 rather than 72.5, so 82 fouls its face outright and the other two moved in to 105 and 135."
 source = "shop-pack Sheet 6"
 
 [[dim]]
 sym = "INTERPOSER_BOLT_ROW_2"
-value = 138
+value = 135
 provenance = "derived"
-note = "138 - the second T-nut row, Sheet 6's T2 and T4. \u2705 It leaves 12 to the bar's inboard end against the roughly 9 half-head of an M8 flange bolt, which is why there are no counterbores on this part."
+note = "135 - the second T-nut row, Sheet 6's T2 and T4. \u2705 It leaves 15 to the bar's inboard end against the roughly 9 half-head of an M8 flange bolt, which is why there are no counterbores on this part. The first column clears the casting's face by 28, so its head clears by 19."
 source = "shop-pack Sheet 6"
 
 [[dim]]
@@ -2057,9 +2057,9 @@ note = "43 - a real BK12\u2019s centre boss, the tallest part of it. \U0001F534 
 
 [[dim]]
 sym = "CASTING_FOOTPRINT_L"
-value = 72.5
+value = 77
 provenance = "part"
-note = "The cast stepper frame's bolted footprint along the screw - Sheet 3a's K1-K6 sit in it, with the first hole column 10 in from its leading edge. The motor frame starts immediately after this."
+note = "77 - the cast stepper frame's bolted footprint along the screw, front flange of the motor mount to the front edge of the casting. His calipers off the casting's underside, 2026-10-10. \U0001f534 IT WAS 72.5 AND THE 72.5 WAS WRONG, remeasured after the 3D view put an M8 flange head 0.85 from the casting's face. Sheet 3a's K1-K6 sit in it. The motor frame starts immediately after this. \u2705 ON A 150 BAR IT LEAVES 73 EXPOSED, which is what the interposer's two T-nut columns have to live in."
 
 [[dim]]
 sym = "CASTING_FOOTPRINT_W"
