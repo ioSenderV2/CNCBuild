@@ -136,7 +136,10 @@ def main() -> int:
     # which is the cross-check that this chain closes.
     ybot = v["Y_BEAM_UNDERSIDE"]
     ytop = ybot + v["BEAM_H"]
-    lx0, rx0 = v["Y1_EXT_FACE_X"], v["Y2_EXT_FACE_X"] - v["EXT_W"]
+    # Y2_EXT_FACE_X IS A SHEET 7 COORDINATE, off the Y1 extrusion's outboard face,
+    # so the machine X adds Y1_EXT_FACE_X the same way the RP_ columns do.
+    lx0 = v["Y1_EXT_FACE_X"]
+    rx0 = lx0 + v["Y2_EXT_FACE_X"] - v["EXT_W"]
     for x0 in (lx0, rx0):
         box("Y beam", "ybeams", 0x4A7DB5, x0, y0, ybot, x0 + v["EXT_W"], y1, ytop)
 
@@ -748,8 +751,13 @@ def main() -> int:
                 cyl("Flange head", "bolts", BOLT, st, z, face, face + d * hh,
                     hd, axis="x", seg=12)
 
-    for col in (v["RP_A_COL_1"], v["RP_A_COL_1"] + v["EXT_W"] - 2 * v["EXT_BORE_INSET"],
-                v["RP_A_COL_3"], v["RP_A_COL_4"]):   # rear plate, heads backward
+    # THE RP_ COLUMNS ARE SHEET 7 COORDINATES, measured from the plate's left edge,
+    # which sits on the Y1 extrusion's outboard face - so the machine X is each of
+    # them plus Y1_EXT_FACE_X.
+    rp0 = v["Y1_EXT_FACE_X"]
+    for col in (rp0 + v["RP_A_COL_1"],
+                rp0 + v["RP_A_COL_1"] + v["EXT_W"] - 2 * v["EXT_BORE_INSET"],
+                rp0 + v["RP_A_COL_3"], rp0 + v["RP_A_COL_4"]):   # heads backward
         for z in rows:
             cyl("Flange head", "bolts", BOLT, col, z, 0.0, -hh, hd, axis="y", seg=12)
 
@@ -761,7 +769,8 @@ def main() -> int:
     # level with the interposer's underside, which is what puts the rows at 165
     # and 147. Head drawn as the M5 socket cap he is using, M5_HEAD_D / _H.
     bf12_face = v["T_REAR_PLATE"] + v["T_BF12_BLOCK"]       # BF12's outer face
-    for col in (v["RP_F_COL_1"], v["RP_F_COL_2"], v["RP_F_COL_3"], v["RP_F_COL_4"]):
+    for col in (rp0 + v["RP_F_COL_1"], rp0 + v["RP_F_COL_2"],
+                rp0 + v["RP_F_COL_3"], rp0 + v["RP_F_COL_4"]):
         for z in (v["BF12_ROW1_Y"], v["BF12_ROW2_Y"]):
             cyl("BF12 bolt head", "bolts", BOLT, col, z,
                 bf12_face, bf12_face + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,

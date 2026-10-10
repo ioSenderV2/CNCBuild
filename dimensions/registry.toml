@@ -820,12 +820,12 @@ note = "\u26a0 OPEN 2026-10-08 - THIS IS THE FLUSH ENVELOPE AND IT IS NO LONGER 
 [[dim]]
 sym = "Y1_EXT_FACE_X"
 expr = "T_SIDE_PLATE"
-note = "Y1 extrusion's outboard face, from the rear plate's left edge = Sheet 7's X 0. The side plate occupies that 3.175, so the beam no longer sits on the origin the way Sheet 7 was first drawn."
+note = "Y1 extrusion's outboard face in the MACHINE frame, whose X 0 is the side plates' outer face. \U0001f534 IT IS NO LONGER SHEET 7'S X 0. Sheet 7's X 0 is the plate's LEFT EDGE, and that edge is set flush with the Y1 extrusion's OUTBOARD FACE - his call, 2026-10-10, and the side plate is NOT in it. The side plate therefore stands proud of the plate's end by its own thickness, and the plate's far end falls wherever the delivered length puts it. So Sheet 7's X is the machine X less this, and every RP_A_COL and RP_F_COL below is a SHEET coordinate - make-3d adds this term back to place them."
 
 [[dim]]
 sym = "Y2_EXT_FACE_X"
-expr = "REAR_PLATE_L - T_SIDE_PLATE"
-note = "Y2 extrusion's outboard face, from the same origin. Sheet 7's Y2 station mirrors about REAR_PLATE_L / 2, so every Y2 coordinate is REAR_PLATE_L minus its Y1 twin."
+expr = "Y_BEAM_GAP + 2 * EXT_W"
+note = "1204.38 - Y2 extrusion's outboard face in SHEET 7 coordinates, measured from Y1's outboard face. \U0001f534 IT USED TO READ REAR_PLATE_L LESS A SIDE PLATE and it must not go back to that: the plate's length is what it was bought at, and hanging the Y2 station off it put the whole beam spacing at the mercy of a sheared edge. It is the beams that set this - the gap the gantry spans plus one extrusion at each end. \u26a0 THE Y2-END HOLES THAT FOLLOW ARE PROVISIONAL: measure the built beam spacing before drilling that end, which is his call, 2026-10-10. The delivered plate reaches 1210.47 from the same edge, so there is about 6 past this face to play with."
 
 [[dim]]
 sym = "BEAM_SPAN"
@@ -1090,40 +1090,38 @@ note = "BF12's outboard bolt column, same source as BF12_COL_INB."
 
 [[dim]]
 sym = "RP_A_COL_1"
-expr = "Y1_EXT_FACE_X + EXT_BORE_INSET"
-note = "Rear plate, Y1 station, near corner-bore column. 18.175. The far column is this plus EXT_BORE_PITCH-worth of the section, drawn 48.175."
+expr = "EXT_BORE_INSET"
+note = "15 - rear plate, Y1 station, near corner-bore column, and the far one is 45. \U0001f534 BOTH WERE 3.429 HIGHER until 2026-10-10, when Sheet 7's X 0 moved onto the beam face. Sheet 7's X 0 is the plate's LEFT EDGE, and that edge is set flush with the Y1 extrusion's OUTBOARD FACE - his call, 2026-10-10, and the side plate is NOT in it. The side plate therefore stands proud of the plate's end by its own thickness, and the plate's far end falls wherever the delivered length puts it."
 
 [[dim]]
 sym = "RP_A_COL_3"
 expr = "Y2_EXT_FACE_X - EXT_W + EXT_BORE_INSET"
-note = "Y2 station, near column. 1162.555."
+note = "1159.38 - Y2 station, near column. \u26a0 PROVISIONAL: it hangs off the built beam spacing, so measure before drilling this end."
 
 [[dim]]
 sym = "RP_A_COL_4"
 expr = "Y2_EXT_FACE_X - EXT_BORE_INSET"
-note = "Y2 station, far column. 1192.555."
+note = "1189.38 - Y2 station, far column. Provisional for the same reason as RP_A_COL_3."
 
 [[dim]]
 sym = "RP_F_COL_1"
-expr = "Y1_EXT_FACE_X + BF12_COL_INB"
-note = "Rear plate BF12, Y1 end, inboard column. 10.175."
+expr = "BF12_COL_INB"
+note = "7 - rear plate BF12, Y1 end, inboard column, which is BF12_COL_INB itself now that the origin is the beam face. Sheet 7's X 0 is the plate's LEFT EDGE, and that edge is set flush with the Y1 extrusion's OUTBOARD FACE - his call, 2026-10-10, and the side plate is NOT in it. The side plate therefore stands proud of the plate's end by its own thickness, and the plate's far end falls wherever the delivered length puts it."
 
 [[dim]]
 sym = "RP_F_COL_2"
-expr = "Y1_EXT_FACE_X + BF12_COL_OUTB"
-note = "Y1 end, outboard column. 56.175."
+expr = "BF12_COL_OUTB"
+note = "53 - Y1 end, outboard column, likewise BF12_COL_OUTB itself."
 
 [[dim]]
 sym = "RP_F_COL_3"
 expr = "Y2_EXT_FACE_X - BF12_COL_OUTB"
-note = "Y2 end, outboard column. 1154.555."
+note = "1151.38 - Y2 end, outboard column. \u26a0 PROVISIONAL, same as RP_A_COL_3."
 
 [[dim]]
 sym = "RP_F_COL_4"
 expr = "Y2_EXT_FACE_X - BF12_COL_INB"
-note = "Y2 end, inboard column. 1200.555."
-
-# ---- Sheet 4: the Z plate's sixteen spacer-block holes
+note = "1197.38 - Y2 end, inboard column. Provisional, same as RP_A_COL_3."
 
 [[dim]]
 sym = "Z_PLATE_L"
