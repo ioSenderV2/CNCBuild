@@ -131,7 +131,7 @@ note = "The Y beam's seam - where the two stacked extrusions meet - in the X end
 [[dim]]
 sym = "RAIL_LOW_XEP"
 expr = "NUT_FACE_BELOW_BEAM + RAIL_LOW_Z"
-note = "Lower Y rail centreline in the end plate's frame = the lower block row's centre. 77.525, drawn and scheduled at 77.5."
+note = "Lower Y rail centreline in the end plate's frame = the lower block row's centre, 70, drawn and scheduled at 70. They are 7.5 less than the sheet used to print, because XEP_CUT came down from 242.5 to 235 on 2026-10-10 and that edge is what they are measured from. The hole did not move."
 
 [[dim]]
 sym = "RAIL_HIGH_XEP"
@@ -894,7 +894,7 @@ note = "Far end of the RIGHT-HAND plate - the stock's own end, uncut, so it is X
 [[dim]]
 sym = "TONGUE_H"
 expr = "TONGUE_TOP - XEP_CUT"
-note = "BF12 tongue length past the 2a outline - 57.475, DERIVED from the stock rather than chosen, and it only has to beat TONGUE_MIN. It has been 40, then 50, then briefly 61.975 on a stock length that turned out to be wrong, and it is now whatever XEP_STOCK_L leaves. \U0001f534 DO NOT PRINT A ROUND NUMBER FOR IT: it was called '60 x 60' while the stock read 304.5 and 61.975 rounded there, and 57.475 does not. The sheet dimensions the stock length and the corner cut; the tongue has no cut-to length of its own. THE BF12 ROWS NEVER MOVED FOR ANY OF IT - their X is TONGUE_BF12_ROW1/ROW2, set by the beam top plus the interposer, so this symbol follows them and never the reverse."
+note = "BF12 tongue length past the 2a outline - 65, DERIVED from the stock rather than chosen, and it only has to beat TONGUE_MIN. It has been 40, then 50, then briefly 61.975 on a stock length that turned out to be wrong, then 57.475, and it is now whatever XEP_STOCK_L leaves above XEP_CUT. \u2705 IT IS A ROUND 65 AND THAT IS NOT A ROUNDING: 300 less 235, both exact. The old warning here said never to print a round number for it, because '60 x 60' had once been printed while the real figure was 61.975 - that warning was about a rounded figure, not about this one. The sheet dimensions the stock length and the corner cut; the tongue has no cut-to length of its own. THE BF12 ROWS NEVER MOVED FOR ANY OF IT - their X is TONGUE_BF12_ROW1/ROW2, set by the beam top plus the interposer, so this symbol follows them and never the reverse."
 
 
 
@@ -916,7 +916,7 @@ note = "Second tongue row, same two columns at Y 7 and 53."
 [[dim]]
 sym = "TONGUE_EDGE_MARGIN"
 expr = "TONGUE_TOP - TONGUE_BF12_ROW2"
-note = "Far BF12 row to the tongue's end - 22.975 on the 300 stock. Must stay well clear of an M5; 5.5 at the original 40 was not, which drove the tongue to 50 and then to the full piece. DERIVED, so it moves when the stock does and never sets anything."
+note = "Far BF12 row to the tongue's end - 30 on the 300 stock. Must stay well clear of an M5; 5.5 at the original 40 was not, which drove the tongue to 50 and then to the full piece. DERIVED, so it moves when the stock does and never sets anything."
 
 
 [[dim]]
@@ -928,7 +928,7 @@ note = "Where the corner cut starts up the far end of both X end plates - 60, an
 sym = "CORNER_CUT_X_END"
 value = 188
 provenance = "derived"
-note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. The same number on BOTH plates - 2a cuts from (XEP_H, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that let the far end stay uncut. WAS 185.5 BRIEFLY, moved to 188 so the cut stops crowding the bearing block. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (183.5, 133.5), and the perpendicular distance to the cut is 14.2 mm on 2a and 18.6 on 2b, so a ~10 mm counterbore leaves about 9 mm of material on the tighter of the two. At 185.5 those were 12.3 and 17.3."
+note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. The same number on BOTH plates - 2a cuts from (XEP_CUT, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that let the far end stay uncut. WAS 185.5 BRIEFLY, moved to 188 so the cut stops crowding the bearing block. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (176, 133.5), and the perpendicular distance to the cut is 19.9 mm on 2a and 23.4 on 2b, so a ~10 mm counterbore leaves about 15 mm of material on the tighter of the two. \u2705 BOTH GREW BY ABOUT 5 ON 2026-10-10 and nothing was done to them: the block came down 7.5 with XEP_CUT while this end stayed at 188, because 188 is measured from the plate's bottom edge and the block is measured from the beam. At the block's old (183.5, 133.5) they were 14.2 and 18.6, and at a 185.5 cut end before that, 12.3 and 17.3."
 
 
 [[dim]]
@@ -944,7 +944,7 @@ note = "\U0001F534 THE TONGUE\u2019S LOWER BOUND, and it came down from 53 to 40
 [[dim]]
 sym = "TONGUE_CLEAR"
 expr = "TONGUE_H - TONGUE_MIN"
-note = "How much tongue there is past the floor BF12 needs - 4.95 on the 200 x 300 stock. THE CHECK TO RUN BEFORE SUBSTITUTING A DIFFERENT PIECE OF PLATE: any stock whose length leaves this positive will do, so the minimum usable plate is XEP_H + TONGUE_MIN, about 295. The 300 in hand clears by about 5."
+note = "How much tongue there is past the floor BF12 needs - 25 on the 200 x 300 stock, which went from a nervous 4.95 to this when TONGUE_MIN came down to 40 and XEP_CUT to 235. THE CHECK TO RUN BEFORE SUBSTITUTING A DIFFERENT PIECE OF PLATE: any stock whose length leaves this positive will do, so the minimum usable plate is XEP_H + TONGUE_MIN, about 295. The 300 in hand clears by about 5."
 # ---------------------------------------------------------------- the torsion box
 
 [[dim]]
@@ -996,7 +996,7 @@ note = "Box top skin front to back, from the back tongue's inside face to the fr
 [[dim]]
 sym = "XEP_BEAM_TOP_X"
 expr = "XEP_H - XEP_TOP_ABOVE_BEAM"
-note = "The Y beam's TOP face in the end plate's machining frame, 182.525 from the plate's bottom end. The bridge between machine Z (measured from the beam top, negative downwards) and this sheet's X. Everything the shelf bar and the beam contribute to Sheet 2a comes through here."
+note = "The Y beam's TOP face in the end plate's machining frame, 175 from the plate's bottom end. They are 7.5 less than the sheet used to print, because XEP_CUT came down from 242.5 to 235 on 2026-10-10 and that edge is what they are measured from. The hole did not move. The bridge between machine Z (measured from the beam top, negative downwards) and this sheet's X. Everything the shelf bar and the beam contribute to Sheet 2a comes through here."
 
 [[dim]]
 sym = "SHELF_BOLT_HIGH_Z"
@@ -1006,12 +1006,12 @@ note = "Machine Z of the UPPER horizontal shelf bolt, -75.8. Pairs with SHELF_BO
 [[dim]]
 sym = "SHELF_BOLT_LOW_X"
 expr = "XEP_BEAM_TOP_X + SHELF_BOLT_LOW_Z"
-note = "Sheet 2a's H1, 86.725, drawn as 86.7. THIS WAS DRAWING-ONLY UNTIL 2026-10-03 - the audit found 86.7 and 106.7 nowhere else in the repo, not even in the prose. They do derive, and they check out, but nothing had ever said so."
+note = "Sheet 2a's H1, 79.2, drawn and scheduled at 79.2. They are 7.5 less than the sheet used to print, because XEP_CUT came down from 242.5 to 235 on 2026-10-10 and that edge is what they are measured from. The hole did not move. THIS WAS DRAWING-ONLY UNTIL 2026-10-03 - the audit found 86.7 and 106.7 nowhere else in the repo, not even in the prose. They do derive, and they check out, but nothing had ever said so."
 
 [[dim]]
 sym = "SHELF_BOLT_HIGH_X"
 expr = "XEP_BEAM_TOP_X + SHELF_BOLT_HIGH_Z"
-note = "Sheet 2a's H2, 106.725, drawn as 106.7. Same history as SHELF_BOLT_LOW_X."
+note = "Sheet 2a's H2, 99.2, drawn and scheduled at 99.2. Same reference, the same 7.5, and the same history as SHELF_BOLT_LOW_X."
 
 # ---- Sheet 2a: the sixteen bearing block holes
 
@@ -1033,22 +1033,22 @@ note = "Each block's centre from the butted pair's centroid, 38.545. Two blocks 
 [[dim]]
 sym = "BLOCK_LOW_COL_A"
 expr = "RAIL_LOW_XEP - BLOCK_BOLT_HALF_X"
-note = "Sheet 2a P-holes, lower rail, near column. 61.525, drawn 61.5."
+note = "Sheet 2a P-holes, lower rail, near column, 54, drawn and scheduled at 54. They are 7.5 less than the sheet used to print, because XEP_CUT came down from 242.5 to 235 on 2026-10-10 and that edge is what they are measured from. The hole did not move."
 
 [[dim]]
 sym = "BLOCK_LOW_COL_B"
 expr = "RAIL_LOW_XEP + BLOCK_BOLT_HALF_X"
-note = "Lower rail, far column. 93.525, drawn 93.5."
+note = "Lower rail, far column, 86. Same reference and the same 7.5 as BLOCK_LOW_COL_A."
 
 [[dim]]
 sym = "BLOCK_HIGH_COL_A"
 expr = "RAIL_HIGH_XEP - BLOCK_BOLT_HALF_X"
-note = "Upper rail, near column. 151.525, drawn 151.5."
+note = "Upper rail, near column, 144. Same reference and the same 7.5 as BLOCK_LOW_COL_A."
 
 [[dim]]
 sym = "BLOCK_HIGH_COL_B"
 expr = "RAIL_HIGH_XEP + BLOCK_BOLT_HALF_X"
-note = "Upper rail, far column. 183.525, drawn 183.5."
+note = "Upper rail, far column, 176. Same reference and the same 7.5 as BLOCK_LOW_COL_A. It is the feature the corner cut on Sheets 2a and 2b clears, and CORNER_CUT_X_END carries that distance."
 
 [[dim]]
 sym = "BLOCK_ROW_Y1"
