@@ -281,7 +281,7 @@ note = "55 - the ball nut's downward bolting face below the Y beam. \U0001F534 I
 [[dim]]
 sym = "XEP_H"
 expr = "XEP_TOP_ABOVE_BEAM + BEAM_H + NUT_FACE_BELOW_BEAM"
-note = "X end plate height. Bottom level with the nut's mounting face."
+note = "235 - the MINIMUM height the X end plate has to reach, its bottom level with the ball nut's mounting face so the doubler and sole bracket can get to it. \U0001F534 IT IS A FLOOR AND NOT THE CUT, which is XEP_CUT. Those were the same symbol until 2026-10-10 and the conflation hid two drifts at once: T_INTERPOSER went 9.525 to 10 and took this from 242.525 to 243 without Sheet 2a hearing about it, and then NUT_FACE_BELOW_BEAM came down 8. Running a cut off a floor means every time the floor moves, a plate silently wants recutting. \u2705 The 242.5 cut clears this by 7.5 and that is spare metal, nothing more - his, 2026-10-10: no hole moves because of XEP_H."
 
 [[dim]]
 sym = "XEP_BOTTOM"
@@ -862,7 +862,7 @@ note = "Far end of the RIGHT-HAND plate - the stock's own end, uncut, so it is X
 
 [[dim]]
 sym = "TONGUE_H"
-expr = "TONGUE_TOP - XEP_H"
+expr = "TONGUE_TOP - XEP_CUT"
 note = "BF12 tongue length past the 2a outline - 57.475, DERIVED from the stock rather than chosen, and it only has to beat TONGUE_MIN. It has been 40, then 50, then briefly 61.975 on a stock length that turned out to be wrong, and it is now whatever XEP_STOCK_L leaves. \U0001f534 DO NOT PRINT A ROUND NUMBER FOR IT: it was called '60 x 60' while the stock read 304.5 and 61.975 rounded there, and 57.475 does not. The sheet dimensions the stock length and the corner cut; the tongue has no cut-to length of its own. THE BF12 ROWS NEVER MOVED FOR ANY OF IT - their X is TONGUE_BF12_ROW1/ROW2, set by the beam top plus the interposer, so this symbol follows them and never the reverse."
 
 
@@ -2100,3 +2100,9 @@ note = "13 of wing either side of the casting end\u2019s boss."
 sym = "Y_SCREW_BELOW_BEAM"
 expr = "T_INTERPOSER + SCREW_AXIS_H"
 note = "35 - the Y screw centreline below the Y beam's underside, and HIS FIGURE STATED DIRECTLY on 2026-10-10: ten of interposer, twenty-five to the bore. It exists as a symbol because it had been an assembly three symbols deep that nobody could check - the registry held SCREW_AXIS_X and X_SCREW_AXIS and nothing at all for Y's height, so a disagreement of 8 between this and the ball nut chain went unnoticed until the 3D model needed to place a screw. A number the model needs and the registry cannot state is a gap whether or not it is wrong."
+
+[[dim]]
+sym = "XEP_CUT"
+value = 242.5
+provenance = "part"
+note = "242.5 - what the X gantry end plate is actually CUT to, as drawn on Sheet 2a, out of a 300 piece. It must beat XEP_H and does, by 7.5. \U0001F534 IT IS A SEPARATE SYMBOL FROM XEP_H ON PURPOSE. XEP_H is the floor the plate has to reach and it moves whenever the nut or the interposer moves; the cut is a decision about a piece of metal and should only move when somebody decides to cut differently. Keeping one symbol for both meant the sheet quietly disagreed with the registry twice - by 0.5 when T_INTERPOSER went 9.525 to 10, and by 8 more when NUT_FACE_BELOW_BEAM was rebuilt on the screw axis. \u26a0 IF THIS EVER DROPS BELOW XEP_H the plate no longer reaches the nut face, and nothing checks that automatically yet."
