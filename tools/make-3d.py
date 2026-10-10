@@ -196,6 +196,49 @@ def main() -> int:
             x0 if x0 < xb_x0 else x0 + xep_t + v["T_DOUBLER"],
             xep_front, xep_bot + v["DOUBLER_H"])
 
+        # ---- the shelf bar, carrying the X beam off this plate ----------
+        # It stands INBOARD off the plate's face with the beam's underside
+        # resting on its top, 60 fore-aft so it covers the beam's footprint
+        # exactly. Two M8 up into the extrusion's two underside slots, two
+        # more horizontally into the bar's side through the plate - those are
+        # BLIND-tapped, because through-drilling would break out where the
+        # lower Y bearing block sits.
+        inb = +1 if x0 < xb_x0 else -1
+        bar_face = x0 + xep_t if x0 < xb_x0 else x0
+        bar_top = ytop + v["SHELF_BAR_TOP"]
+        bar_bottom = ytop + v["SHELF_BAR_BOTTOM"]
+        box("Shelf bar", "gantry", 0x7E6B8F,
+            bar_face, xep_back, bar_bottom,
+            bar_face + inb * v["SHELF_BAR_W"], xep_back + v["SHELF_BAR_L"], bar_top)
+        bar_mid = bar_face + inb * v["SHELF_BAR_W"] / 2
+        shank8 = v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5
+        for sy in (v["SHELF_VERT_REAR"], v["SHELF_VERT_FRONT"]):
+            cyl("Shelf bolt head", "bolts", 0x3C4248, bar_mid, xep_back + sy,
+                bar_bottom, bar_bottom - v["FLANGE_HEAD_H"],
+                v["FLANGE_HEAD_D"] / 2, seg=12)
+            cyl("Shelf bolt", "bolts", 0x3C4248, bar_mid, xep_back + sy,
+                bar_bottom, bar_top, shank8, seg=10)
+        # The horizontal pair are driven from the BAR side, head on the bar's
+        # inboard face and the shank running back through it into the plate.
+        # They cannot come the other way: Sheet 2a's H1 and H2 are blind-
+        # tapped precisely because through-drilling breaks out on the plate's
+        # outboard face, and that is where the lower Y bearing block sits -
+        # the model showed the head inside the block when it was drawn that
+        # way round.
+        # ASSUMPTION: drawn to the plate's mid-thickness. The registry gives
+        # the stations but no blind-tap depth.
+        plate_mid = (x0 + x0 + xep_t) / 2
+        bar_out = bar_face + inb * v["SHELF_BAR_W"]
+        for sz in (v["SHELF_HORIZ_Z_LOW"], v["SHELF_HORIZ_Z_HIGH"]):
+            hz = bar_bottom + sz
+            cyl("Shelf bolt head", "bolts", 0x3C4248,
+                xep_back + v["SHELF_HORIZ_Y"], hz,
+                bar_out, bar_out + inb * v["FLANGE_HEAD_H"],
+                v["FLANGE_HEAD_D"] / 2, axis="x", seg=12)
+            cyl("Shelf bolt", "bolts", 0x3C4248,
+                xep_back + v["SHELF_HORIZ_Y"], hz, bar_out, plate_mid, shank8,
+                axis="x", seg=10)
+
     # THE BF12 TONGUE, on the MIN X plate only - the operator's right, and the
     # left of a view taken from behind the machine. It carries on past the 2a
     # outline to TONGUE_TOP, 60 wide fore-aft so it sits over the beam, and BF12
@@ -800,6 +843,13 @@ ALLOWED = {
     frozenset({"X carriage plate", "Z rail"}),      # rail bolts to its face
     frozenset({"X carriage plate", "Z block"}),
     frozenset({"X carriage plate", "X block"}),     # carriage hangs off these
+    # The shelf bar is bolted to the end plate's face and the beam sits on it,
+    # so it touches both. Its four bolts cross the plate and the bar.
+    frozenset({"Shelf bar", "X end plate"}),
+    frozenset({"Shelf bar", "X beam"}),
+    frozenset({"Shelf bar", "Shelf bolt"}),
+    frozenset({"X end plate", "Shelf bolt"}),
+    frozenset({"X beam", "Shelf bolt"}),
     # The Y sole bracket laps the end plate and doubler end faces and the nut's
     # face, and its twelve bolts cross it into all three. Only the shanks are
     # listed; the heads hang below the bracket and clash with nothing.
