@@ -552,7 +552,10 @@ def main() -> int:
     screw("z", zp_cx, z_axis_y, z_lo, v["SCREW_OAL_Z"], bf_low=True)
     support("bf12", "z", zp_cx, z_axis_y, z_lo, +1, cp_front, +1)
     nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
-    z_cast_in = z_hi - v["BK12_L"]
+    # Same as X: the bore takes the INNER BK12_L of the long journal so the
+    # thread runs to the casting's face, and the remaining 24.5 stands out the
+    # far side for the coupler.
+    z_cast_in = z_hi - v["SCREW_JOURNAL_CAST"]
     support("casting", "z", zp_cx, z_axis_y, z_cast_in, +1, cp_front, +1)
     rails("z", zp_cx, z_cast_in + v["BK12_L"], +1, cp_front, +1)
     motor("z", zp_cx, z_axis_y, z_cast_in + v["CASTING_FOOTPRINT_L"], +1)
