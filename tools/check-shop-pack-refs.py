@@ -152,6 +152,25 @@ def _clipped_in_svg(block):
     return out
 
 
+# HTML elements that terminate foreign content. One of these inside an <svg> ends the
+# drawing on the spot: the browser pops out of SVG and renders everything after it as
+# page text, below the figure. Sheet 4 lost its whole lower legend to a <sup> this way.
+# tspan with baseline-shift does the superscript job and is a real SVG element.
+BREAKOUT = ('b', 'big', 'blockquote', 'br', 'center', 'code', 'dd', 'div', 'dl', 'dt',
+            'em', 'embed', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'li',
+            'listing', 'menu', 'meta', 'nobr', 'ol', 'p', 'pre', 'ruby', 's', 'small',
+            'span', 'strong', 'strike', 'sub', 'sup', 'table', 'tt', 'u', 'ul', 'var')
+
+
+def breakout_tags(block):
+    out = []
+    for svg in re.findall(r'<svg .*?</svg>', block, re.S):
+        for m in re.finditer(r'<([a-z][a-z0-9]*)[\s/>]', svg):
+            if m.group(1) in BREAKOUT:
+                out.append(m.group(1))
+    return out
+
+
 def main():
     src = io.open(PACK, encoding='utf-8').read()
     sheets = re.findall(r'<div class="plate pg-(s[0-9a-z]+)">(.*?)(?=\n<div class="plate )',
@@ -162,6 +181,16 @@ def main():
 
     bad = 0
     clip = 0
+    brk = 0
+    for name, block in sheets:
+        tags = breakout_tags(block)
+        if tags:
+            brk += len(tags)
+            print('sheet %-6s HTML INSIDE SVG, ends the drawing early: %s'
+                  % (name[1:], ', '.join('<%s>' % t for t in sorted(set(tags)))))
+    if brk:
+        print()
+
     for name, block in sheets:
         for body, why in clipped_text(block):
             clip += 1
@@ -184,13 +213,15 @@ def main():
             print('%-12s all %2d refs tagged' % (label, len(refs)))
 
     print()
+    if brk:
+        print('%d HTML tags inside an SVG. Everything after one renders as page text.' % brk)
     if clip:
         print('%d lines of text fall outside their viewBox and will not print.' % clip)
     if bad:
         print('%d refs appear in a schedule but nowhere on their drawing.' % bad)
-    if bad or clip:
+    if bad or clip or brk:
         return 1
-    print('Every schedule ref is tagged on its drawing, and no text falls off a sheet.')
+    print('Every ref is tagged, no text falls off a sheet, and no SVG ends early.')
     return 0
 
 
