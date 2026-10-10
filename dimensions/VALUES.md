@@ -364,6 +364,10 @@ Registry updated: **2026-10-04**
 | **CASTING_WING_W** | 13 mm | derived | (CASTING_FOOTPRINT_W - CASTING_BOSS_W) / 2 | 13 of wing either side of the casting end’s boss. |
 | **Y_SCREW_BELOW_BEAM** | 35 mm | derived | T_INTERPOSER + SCREW_AXIS_H | 35 - the Y screw centreline below the Y beam's underside, and HIS FIGURE STATED DIRECTLY on 2026-10-10: ten of interposer, twenty-five to the bore. It exists as a symbol because it had been an assembly three symbols deep that nobody could check - the registry held SCREW_AXIS_X and X_SCREW_AXIS and nothing at all for Y's height, so a disagreement of 8 between this and the ball nut chain went unnoticed until the 3D model needed to place a screw. A number the model needs and the registry cannot state is a gap whether or not it is wrong. |
 | **XEP_CUT** | 242.5 mm | part |  | 242.5 - what the X gantry end plate is actually CUT to, as drawn on Sheet 2a, out of a 300 piece. It must beat XEP_H and does, by 7.5. 🔴 IT IS A SEPARATE SYMBOL FROM XEP_H ON PURPOSE. XEP_H is the floor the plate has to reach and it moves whenever the nut or the interposer moves; the cut is a decision about a piece of metal and should only move when somebody decides to cut differently. Keeping one symbol for both meant the sheet quietly disagreed with the registry twice - by 0.5 when T_INTERPOSER went 9.525 to 10, and by 8 more when NUT_FACE_BELOW_BEAM was rebuilt on the screw axis. ⚠ IF THIS EVER DROPS BELOW XEP_H the plate no longer reaches the nut face, and nothing checks that automatically yet. |
+| **FENDER_WASHER_D** ⚠️ | 25 mm | nominal |  | M8 fender washer, outside diameter. ⚠ A CATALOGUE FIGURE AND NOT HIS - caliper the washers actually bought. It spreads the clamp into 19 mm plywood, so the diameter is the whole point of choosing a fender over a plain washer; a plain M8 washer is about 16 and would be most of the way to pulling through. |
+| **FENDER_WASHER_T** ⚠️ | 2 mm | nominal |  | M8 fender washer thickness. ⚠ CATALOGUE, NOT MEASURED. It is a term in the bolt length: it sits between the tongue and the acorn nut, so it eats 2 of the thread that would otherwise reach the nut. Sheet 7's footnote 7.9 already says to measure the washer actually in hand before buying a box of bolts. |
+| **ACORN_NUT_D** ⚠️ | 15 mm | nominal |  | M8 acorn nut across the corners - 13 across the flats, about 15 across the points. ⚠ CATALOGUE, NOT MEASURED. Drawn round in the model because a hexagon buys nothing at this scale. |
+| **ACORN_NUT_H** ⚠️ | 13 mm | nominal |  | M8 acorn nut overall height. ⚠ CATALOGUE, NOT MEASURED, AND IT IS THE ONE THAT MATTERS: the nut is CLOSED, so how deep its thread runs decides whether an M8 x 35 bottoms out before it clamps. That depth is the open question on Sheet 7's footnote 7.9 and this overall height is not a substitute for it. |
 
 ## Not confirmed on the real part
 
@@ -380,3 +384,7 @@ numbers in one session on 2026-10-02.
 - **T_BB_SKIN** (nominal) = 19 mm - feeds 1: BOX_THK
 - **T_FRONT_STRIP** (nominal) = 3.175 mm - feeds 1: STRIP_STACK
 - **BOLT_BACK_Y_WASHER** (nominal) = 1.6 mm - nothing depends on it
+- **FENDER_WASHER_D** (nominal) = 25 mm - nothing depends on it
+- **FENDER_WASHER_T** (nominal) = 2 mm - nothing depends on it
+- **ACORN_NUT_D** (nominal) = 15 mm - nothing depends on it
+- **ACORN_NUT_H** (nominal) = 13 mm - nothing depends on it

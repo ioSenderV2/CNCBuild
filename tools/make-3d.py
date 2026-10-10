@@ -470,6 +470,41 @@ def main() -> int:
             cyl("Flange head", "bolts", BOLT, st, z,
                 xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y", seg=12)
 
+    # ---- the tongue bolts, through plate and tongue into an acorn nut -----
+    # Twenty-two of them: eight through the rear plate into the back tongue and
+    # seven through each outboard plate into its side tongue. The stack runs
+    # flange head on the INBOARD face, shank through plate and tongue, fender
+    # washer, acorn nut outboard - head inside so one wrench sits on the nut in
+    # the open while the bolt is driven from within.
+    WD, WT = v["FENDER_WASHER_D"] / 2, v["FENDER_WASHER_T"]
+    AD, AH = v["ACORN_NUT_D"] / 2, v["ACORN_NUT_H"]
+    SHANK = v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5        # the M8 itself, not its hole
+    WASH, ACORN = 0x9AA3AB, 0x5A6068
+
+    def bolt_stack(axis, c0, c1, head_face, far_face, out):
+        """head_face is the plate's inboard face, far_face the tongue's outer."""
+        cyl("Tongue bolt head", "bolts", BOLT, c0, c1,
+            head_face, head_face - out * v["FLANGE_HEAD_H"],
+            v["FLANGE_HEAD_D"] / 2, axis=axis, seg=12)
+        cyl("Tongue bolt", "bolts", BOLT, c0, c1, head_face, far_face,
+            SHANK, axis=axis, seg=10)
+        cyl("Fender washer", "bolts", WASH, c0, c1,
+            far_face, far_face + out * WT, WD, axis=axis, seg=14)
+        cyl("Acorn nut", "bolts", ACORN, c0, c1,
+            far_face + out * WT, far_face + out * (WT + AH), AD, axis=axis, seg=6)
+
+    # the back tongue laps the rear plate from BEHIND, so these drive -y
+    for i in range(8):
+        x = v["XBOX_X_FIRST"] + i * v["XBOX_PITCH"]
+        bolt_stack("y", x, v["XBOX_ROW_Y"], v["T_REAR_PLATE"], -TT, -1)
+
+    # each side tongue laps its plate from OUTBOARD
+    side_st = [v["SIDE_TONGUE_START"] + v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
+               for i in range(int(v["TSLOT_X_COUNT"]))]
+    for head_face, far_face, out in ((sp, -TT, -1), (W - sp, W + TT, +1)):
+        for st in side_st:
+            bolt_stack("x", st, v["BOX_TONGUE_BOLT_Y"], head_face, far_face, out)
+
     # ---- rail counterbores ------------------------------------------------
     # Drilled into the rail's EXPOSED face and running RAIL_CBORE_DEPTH back
     # toward the beam, so they are drawn as dark cylinders sunk into the rail.
@@ -564,6 +599,16 @@ ALLOWED = {
     frozenset({"Casting wing", "Motor plate"}),
     frozenset({"Casting boss", "Motor plate"}),
     frozenset({"Motor plate", "Stepper motor"}),
+
+    # Every tongue bolt passes through a o9 clearance hole in its plate and
+    # another in the tongue. The plates are drawn as solid boxes, so the check
+    # sees a shank in metal. Only the SHANK is listed here - the head, washer
+    # and acorn nut sit proud of their faces and clash with nothing, which is
+    # the check confirming the stack is the right way round.
+    frozenset({"Rear plate", "Tongue bolt"}),
+    frozenset({"Back tongue", "Tongue bolt"}),
+    frozenset({"Side plate", "Tongue bolt"}),
+    frozenset({"Side tongue", "Tongue bolt"}),
     frozenset({"Spindle clamp", "Spindle barrel"}),  # a clamp WRAPS the barrel
     frozenset({"Spindle clamp", "Z plate"}),         # bolts to its face
     frozenset({"Y rail", "Y block"}),               # a block WRAPS its rail

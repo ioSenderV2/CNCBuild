@@ -2106,3 +2106,32 @@ sym = "XEP_CUT"
 value = 242.5
 provenance = "part"
 note = "242.5 - what the X gantry end plate is actually CUT to, as drawn on Sheet 2a, out of a 300 piece. It must beat XEP_H and does, by 7.5. \U0001F534 IT IS A SEPARATE SYMBOL FROM XEP_H ON PURPOSE. XEP_H is the floor the plate has to reach and it moves whenever the nut or the interposer moves; the cut is a decision about a piece of metal and should only move when somebody decides to cut differently. Keeping one symbol for both meant the sheet quietly disagreed with the registry twice - by 0.5 when T_INTERPOSER went 9.525 to 10, and by 8 more when NUT_FACE_BELOW_BEAM was rebuilt on the screw axis. \u26a0 IF THIS EVER DROPS BELOW XEP_H the plate no longer reaches the nut face, and nothing checks that automatically yet."
+
+# ------------------------------------------------- the tongue bolt's outboard end
+# The washer and the nut on the far side of every plywood tongue. Standard M8
+# hardware, NOT measured - they are here so the 3D model can draw the joint, and
+# they are the only two figures in that joint that nobody has put a caliper on.
+
+[[dim]]
+sym = "FENDER_WASHER_D"
+value = 25
+provenance = "nominal"
+note = "M8 fender washer, outside diameter. \u26a0 A CATALOGUE FIGURE AND NOT HIS - caliper the washers actually bought. It spreads the clamp into 19 mm plywood, so the diameter is the whole point of choosing a fender over a plain washer; a plain M8 washer is about 16 and would be most of the way to pulling through."
+
+[[dim]]
+sym = "FENDER_WASHER_T"
+value = 2
+provenance = "nominal"
+note = "M8 fender washer thickness. \u26a0 CATALOGUE, NOT MEASURED. It is a term in the bolt length: it sits between the tongue and the acorn nut, so it eats 2 of the thread that would otherwise reach the nut. Sheet 7's footnote 7.9 already says to measure the washer actually in hand before buying a box of bolts."
+
+[[dim]]
+sym = "ACORN_NUT_D"
+value = 15
+provenance = "nominal"
+note = "M8 acorn nut across the corners - 13 across the flats, about 15 across the points. \u26a0 CATALOGUE, NOT MEASURED. Drawn round in the model because a hexagon buys nothing at this scale."
+
+[[dim]]
+sym = "ACORN_NUT_H"
+value = 13
+provenance = "nominal"
+note = "M8 acorn nut overall height. \u26a0 CATALOGUE, NOT MEASURED, AND IT IS THE ONE THAT MATTERS: the nut is CLOSED, so how deep its thread runs decides whether an M8 x 35 bottoms out before it clamps. That depth is the open question on Sheet 7's footnote 7.9 and this overall height is not a substitute for it."
