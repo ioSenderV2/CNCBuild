@@ -318,7 +318,7 @@ note = "40 - the pattern ACROSS the housing's mounting flat, P on the DSG1605 pa
 sym = "NUT_PATTERN_Y"
 value = 24
 provenance = "vendor"
-note = "Pattern along Y"
+note = "24 - the nut\u2019s bolt pattern along its 40 mm face, the short axis of the four tapped M5. \u2705 CHALLENGED AND HELD, 2026-10-10. A caliper reading of 22 was taken off the part and then withdrawn as sloppy; the spec sheet\u2019s 24 is the one. It is recorded because the 2 mm was not harmless: these four are THREADED INTO THE NUT and have no float, so the sole plate\u2019s clearance holes have to match them exactly, and a 22 would have moved Sheet 4\u2019s N1-N4 to X 29 and 51, Sheet 11\u2019s to Y 66 and 88, and Sheet 5\u2019s to plus or minus 11. \u26a0 THIS NOTE USED TO READ \u201cPattern along Y\u201d AND NOTHING ELSE, which is why the symbol drew suspicion the moment a second figure appeared - every other number in this group cites the DSG1605 page and this one cited nothing. A thin note is not evidence of a thin number, but it is what makes a good number impossible to defend."
 
 [[dim]]
 sym = "NUT_AXIS_TO_FACE"
@@ -406,7 +406,7 @@ note = "Closes exactly at 6, which is how the centred pattern was confirmed"
 [[dim]]
 sym = "NUT_INSET_Y"
 expr = "(NUT_FACE_Y - NUT_PATTERN_Y) / 2"
-note = "Closes exactly at 8. A 7 was given first and corrected."
+note = "Closes exactly at 8. A 7 was given first and corrected. \u2705 Still 8 after NUT_PATTERN_Y was challenged with a 22 on 2026-10-10 and held at 24 - a 22 would have made this 9 and moved every hole that bolts into the nut."
 
 [[dim]]
 sym = "NUT_BOLT_X_NEAR"

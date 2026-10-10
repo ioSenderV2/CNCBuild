@@ -42,7 +42,7 @@ SCREW_AXIS_X,mm,72.19,"[derived] Y screw centreline, from the X end plate's INNE
 NUT_FACE_X,mm,52,"[vendor] Ball nut housing across the long way - B on the DSG1605 page, 52. Parallel with the X beam. ✅ It had been carried since 2026-10-02 with a date and no source; the page turned up 2026-10-09 and confirms it."
 NUT_FACE_Y,mm,40,"[vendor] Ball nut housing's mounting flat along the screw axis - L on the DSG1605 page, 40. With NUT_FACE_X's B of 52 this is the flat the sole plate lands on, 52 x 40. ⚠ IT IS L, NOT H, AND I FIRST WROTE H: the page carries BOTH at 40, so nothing nu"
 NUT_PATTERN_X,mm,40,"[vendor] 40 - the pattern ACROSS the housing's mounting flat, P on the DSG1605 page, and the span a sole plate's clearance holes have to match. 4 x M5 THREADED INTO THE HOUSING, not through-holes. ✅ CLOSED 2026-10-09 AFTER A FALSE ALARM WORTH RECORDI"
-NUT_PATTERN_Y,mm,24,[vendor] Pattern along Y
+NUT_PATTERN_Y,mm,24,"[vendor] 24 - the nut’s bolt pattern along its 40 mm face, the short axis of the four tapped M5. ✅ CHALLENGED AND HELD, 2026-10-10. A caliper reading of 22 was taken off the part and then withdrawn as sloppy; the spec sheet’s 24 is the one. It is rec"
 NUT_AXIS_TO_FACE,mm,20,"[vendor] 20 - the screw axis above the ball nut housing’s mounting face, h on the DSG1605 page. 🔴 IT DISAGREES WITH THE SUPPORT BLOCKS BY 8, AND ONE OF THE TWO IS WRONG. The Y screw axis can be reached two ways and they do not meet. Via the blocks: B"
 CASTING_AXIS_ABOVE_FOOT,mm,25,"[part] 25 - the cast stepper frame’s screw axis above its own foot, measured 2026-10-02. ⚠ IT EXISTED ONLY IN y-beam-support.md PROSE UNTIL 2026-10-09 and now feeds the X nut height, which is why it is a symbol. The casting inherits BK12’s bearing ge"
 X_BEAM_TOP_XC,mm,167,"[measured] 167 - the X beam’s top face above the BOTTOM of the X carriage plate, his 2026-10-09. 🔴 IT IS REFERENCED TO THE CARRIAGE PLATE, NOT TO THE TORSION BOX, and that is deliberate: everything bolted to the carriage plate is laid out from that p"
@@ -58,7 +58,7 @@ X_NUT_FACE_Z,mm,222,"[derived] 222 - the X ball nut’s mounting face, above the
 X_DOUBLER_BOTTOM,mm,177,"[derived] 177 - where the X doubler’s BOTTOM edge sits on the back of the X carriage plate. Its TOP edge is X_NUT_FACE_Z, carrying four M5 tapped into that top edge for the X nut sole plate, the way Sheet 2d’s R1-R4 tap into that block’s end face. 🔴 "
 NUT_SFU_PATTERN,mm,38,[vendor] ø38 - the bolt circle of the SIX M5 that hold the DSG housing to the SFU ball nut’s own flange. 🔴 IT IS INTERNAL TO THE SCREW ASSEMBLY AND NOTHING ON THIS MACHINE BOLTS TO IT. The symbol exists only so the next person does not re-open the qu
 NUT_INSET_X,mm,6,"[derived] Closes exactly at 6, which is how the centred pattern was confirmed"
-NUT_INSET_Y,mm,8,[derived] Closes exactly at 8. A 7 was given first and corrected.
+NUT_INSET_Y,mm,8,[derived] Closes exactly at 8. A 7 was given first and corrected. ✅ Still 8 after NUT_PATTERN_Y was challenged with a 22 on 2026-10-10 and held at 24 - a 22 would have made this 9 and moved every hole that bolts into the nut.
 NUT_BOLT_X_NEAR,mm,52.19,"[derived] Inboard M5 column, from the end plate's inner face"
 NUT_BOLT_X_FAR,mm,92.19,[derived] Outboard M5 column
 SOLE_REACH,mm,73.81,"[derived] Free span of the sole bracket, doubler's outer face to the nut face's outboard edge"
