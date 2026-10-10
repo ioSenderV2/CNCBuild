@@ -35,7 +35,7 @@ BEAM_CENTRELINE_Y,mm,30,"[derived] X beam centreline from the plate's back edge,
 HANG_ARM,mm,92,[derived] Arm from the block centroid to the forward-hanging mass. 139 is the centred case recorded in the prose.
 BK12_STANDOFF_ASBUILT,mm,5,"[measured] BK12/BF12 mounted 5 above the extrusion, AS BUILT. 🔴 DO NOT DELETE because the standoff no longer exists in the design - that is exactly why this is here. NUT_FACE_BELOW_BEAM_ASBUILT was measured WITH the standoff, so converting that measu"
 NUT_FACE_BELOW_BEAM_ASBUILT,mm,58,"[measured] Beam underside to the ball nut's downward mounting face, as built with the 5 mm standoff"
-NUT_FACE_BELOW_BEAM,mm,63,"[derived] The interposer replaces the 5 mm standoff, so the nut face drops by the difference"
+NUT_FACE_BELOW_BEAM,mm,63,"[derived] The interposer replaces the 5 mm standoff, so the nut face drops by the difference. 🔴 IT DISAGREES WITH THE SUPPORT BLOCKS BY 8, AND ONE OF THE TWO IS WRONG. The Y screw axis can be reached two ways and they do not meet. Via the blocks: BF1"
 XEP_H,mm,243,[derived] X end plate height. Bottom level with the nut's mounting face.
 XEP_BOTTOM,mm,-183,"[derived] Plate bottom, measured from the Y beam top. Negative is down."
 SCREW_AXIS_X,mm,72.19,"[derived] Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) term is BY CONSTRUCTION, not an assumption: the BK12 and BF12 support blocks are 60 wide and the BF12 tongue is cut 60 wide to match, so the screw is centred in 60 by th"
@@ -43,7 +43,7 @@ NUT_FACE_X,mm,52,"[vendor] Ball nut housing across the long way - B on the DSG16
 NUT_FACE_Y,mm,40,"[vendor] Ball nut housing's mounting flat along the screw axis - L on the DSG1605 page, 40. With NUT_FACE_X's B of 52 this is the flat the sole plate lands on, 52 x 40. ⚠ IT IS L, NOT H, AND I FIRST WROTE H: the page carries BOTH at 40, so nothing nu"
 NUT_PATTERN_X,mm,40,"[vendor] 40 - the pattern ACROSS the housing's mounting flat, P on the DSG1605 page, and the span a sole plate's clearance holes have to match. 4 x M5 THREADED INTO THE HOUSING, not through-holes. ✅ CLOSED 2026-10-09 AFTER A FALSE ALARM WORTH RECORDI"
 NUT_PATTERN_Y,mm,24,[vendor] Pattern along Y
-NUT_AXIS_TO_FACE,mm,20,"[vendor] 20 - the screw axis above the ball nut housing’s mounting face, h on the DSG1605 page. ✅ THE CONVENTION IS THE SAME ONE BK-12 AND BF-12 USE for their h of 25, which is what lets these numbers be added up the way they are. It checks against t"
+NUT_AXIS_TO_FACE,mm,20,"[vendor] 20 - the screw axis above the ball nut housing’s mounting face, h on the DSG1605 page. 🔴 IT DISAGREES WITH THE SUPPORT BLOCKS BY 8, AND ONE OF THE TWO IS WRONG. The Y screw axis can be reached two ways and they do not meet. Via the blocks: B"
 CASTING_AXIS_ABOVE_FOOT,mm,25,"[part] 25 - the cast stepper frame’s screw axis above its own foot, measured 2026-10-02. ⚠ IT EXISTED ONLY IN y-beam-support.md PROSE UNTIL 2026-10-09 and now feeds the X nut height, which is why it is a symbol. The casting inherits BK12’s bearing ge"
 X_BEAM_TOP_XC,mm,167,"[measured] 167 - the X beam’s top face above the BOTTOM of the X carriage plate, his 2026-10-09. 🔴 IT IS REFERENCED TO THE CARRIAGE PLATE, NOT TO THE TORSION BOX, and that is deliberate: everything bolted to the carriage plate is laid out from that p"
 X_BLOCK_UPPER_CENTRE,mm,136,"[derived] 136 - the upper pair of X-axis bearing blocks, centred between Sheet 3a's X1-X16 columns at 120 and 152. ⚠ THOSE TWO ARE 32 APART, WHICH IS BLOCK_PITCH_X, THE ACROSS-RAIL PITCH - not the along-rail 36. The X carriage plate hangs with its 40"
@@ -324,8 +324,20 @@ SCREW_OAL_LONG,mm,1000,"[part] Overall length of the X, Y1 and Y2 screws."
 SCREW_OAL_Z,mm,400,[part] Overall length of the Z screw.
 SCREW_THREAD_LONG,mm,934.5,"[derived] Threaded portion on X, Y1 and Y2 - 934.5. This, not the overall 1000, is the most the nut could ever traverse, and the travel is shorter again by the nut's own length and both stops."
 SCREW_THREAD_Z,mm,334.5,"[derived] Threaded portion on Z - 334.5, against a 400 rail."
-SCREW_AXIS_H,mm,25,[part] Screw centreline above the seating face of whatever carries it. BF12 at one end and the stepper casting at the other must both put the axis here or the screw is not straight - NUT_AXIS_TO_FACE's note already records that BK-12 and BF-12 share 
+SCREW_AXIS_H,mm,25,"[part] Screw centreline above the seating face of whatever carries it. ✅ CONFIRMED off the BF/BK12 spec by him, 2026-10-10: the ball screw centreline is 25 above the bottom of the block. That makes it the FIXED point in the Y height chain and puts th"
 NUT_BODY_L,mm,40,"[part] Ball nut body along the screw, without its flange. His 2026-10-10. Numerically the same as NUT_FACE_Y's L, which is the mounting flat's length - they are different dimensions that happen to agree, the same trap NUT_FACE_Y's own note describes "
 NUT_FLANGE_T,mm,14,"[part] The flange bolted to the nut, measured along the screw. His 2026-10-10."
 NUT_OAL,mm,54,"[derived] Ball nut overall along the screw, 54. This is the figure that eats travel at each end, not the 40."
 NUT_W,mm,52,"[part] Ball nut across, 52 - the same figure as NUT_FACE_X's B, which is why SOLE_BRACKET_L closes at the screw axis plus 26."
+BK12_W,mm,60,"[part] BK12 across - the same 60 as BF12 and as the beam, which is what lets SCREW_AXIS_X treat the (EXT_W / 2) term as by-construction rather than an assumption."
+BK12_L,mm,30,"[part] BK12 along the screw axis. BF12's equivalent is T_BF12_BLOCK at 20, so the fixed end is 10 longer than the free end."
+BK12_H,mm,45,"[part] BK12 overall height. ⚠ IT IS NOT THE SAME AS BF12_H, which is 43 - and that is fine rather than a conflict, because what has to match is the BORE height and not the overall. Both put the centreline SCREW_AXIS_H above their own bottom face, so "
+CASTING_FOOTPRINT_L,mm,72.5,"[part] The cast stepper frame's bolted footprint along the screw - Sheet 3a's K1-K6 sit in it, with the first hole column 10 in from its leading edge. The motor frame starts immediately after this."
+CASTING_FOOTPRINT_W,mm,60,"[part] The casting's footprint across, matching BK12_W and the beam."
+CASTING_RAIL_H,mm,30,"[part] The rails that carry the motor frame off the BK12 section are 30 high. They are the open part of the casting - the model draws them as solid, which is conservative for an interference check and wrong for a photograph."
+MOTOR_FRAME_T,mm,12.5,"[part] The casting's NEMA 23 mounting plate, measured along the screw. It begins where CASTING_FOOTPRINT_L ends."
+MOTOR_FRAME_W,mm,60,[part] The motor frame is 60 square - wider than the 56 motor it carries.
+MOTOR_BODY_SQ,mm,56,"[part] NEMA 23 body, square section. These are the integrated closed-loop units, so the body carries its own driver and is longer than a plain NEMA 23."
+MOTOR_BODY_L,mm,94,[part] NEMA 23 body length. ⚠ HIS FIRST FIGURE WAS 99 AND HE CORRECTED IT TO 94 the same day - if 99 appears anywhere it is stale.
+CASTING_OAL,mm,85,"[derived] The casting alone along the screw, 85 - footprint plus the motor plate."
+CASTING_PLUS_MOTOR,mm,179,"[derived] 179 from the casting's leading edge to the back of the motor. This is the figure that decides whether a stepper end fouls anything, and it is why the motors are worth drawing at all - the casting on its own clears everything easily."

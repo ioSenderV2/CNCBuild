@@ -277,7 +277,7 @@ source = "measured 2026-10-02"
 [[dim]]
 sym = "NUT_FACE_BELOW_BEAM"
 expr = "NUT_FACE_BELOW_BEAM_ASBUILT + (T_INTERPOSER - BK12_STANDOFF_ASBUILT)"
-note = "The interposer replaces the 5 mm standoff, so the nut face drops by the difference"
+note = "The interposer replaces the 5 mm standoff, so the nut face drops by the difference. \U0001F534 IT DISAGREES WITH THE SUPPORT BLOCKS BY 8, AND ONE OF THE TWO IS WRONG. The Y screw axis can be reached two ways and they do not meet. Via the blocks: BF12 sits upside down with its base level with the interposer's underside, so the axis is Y_BEAM_UNDERSIDE - T_INTERPOSER - SCREW_AXIS_H = 182 - 10 - 25 = 147. Via the nut: the face is NUT_FACE_BELOW_BEAM under the beam and the axis NUT_AXIS_TO_FACE above it, so 182 - 63 + 20 = 139. Those are the two ends of ONE screw. The same 8 is in the as-built pair as well, which points at a constant being wrong rather than a slip. SCREW_AXIS_H's 25 is confirmed off the BF/BK12 spec - his, 2026-10-10 - so the error is on the nut side: either NUT_FACE_BELOW_BEAM is 8 too big or NUT_AXIS_TO_FACE is 8 too small. \u26a0 NOTHING HERE HAS BEEN CHANGED TO MAKE IT CLOSE. THE MEASUREMENT THAT SETTLES IT: the nut housing's H, across the mounting face - if it is 40 then h is 20 and NUT_FACE_BELOW_BEAM moves to 55; if it is 56 then h is 28 and the nut chain was right all along. Measuring the built machine's beam underside down to the nut's mounting face does it just as well. WHAT IT WOULD MOVE: dims.py deps NUT_FACE_BELOW_BEAM re-derives 14 symbols including XEP_H, Sheet 2a's 242.5 plate height, and all four BLOCK_*_COL - the sixteen P1-P16 bearing block holes on that same sheet. Both are on the mill trip, so settle this before drilling Sheet 2a."
 
 [[dim]]
 sym = "XEP_H"
@@ -324,7 +324,7 @@ note = "Pattern along Y"
 sym = "NUT_AXIS_TO_FACE"
 value = 20
 provenance = "vendor"
-note = "20 - the screw axis above the ball nut housing\u2019s mounting face, h on the DSG1605 page. \u2705 THE CONVENTION IS THE SAME ONE BK-12 AND BF-12 USE for their h of 25, which is what lets these numbers be added up the way they are. It checks against the page\u2019s own H of 40: the bore sits centred across that width, so h is half of it. This is the last term in the height chain at both ends of the machine - on Y the nut hangs and the face points down, on X the screw runs on top of the beam and the face points up."
+note = "20 - the screw axis above the ball nut housing\u2019s mounting face, h on the DSG1605 page. \U0001F534 IT DISAGREES WITH THE SUPPORT BLOCKS BY 8, AND ONE OF THE TWO IS WRONG. The Y screw axis can be reached two ways and they do not meet. Via the blocks: BF12 sits upside down with its base level with the interposer's underside, so the axis is Y_BEAM_UNDERSIDE - T_INTERPOSER - SCREW_AXIS_H = 182 - 10 - 25 = 147. Via the nut: the face is NUT_FACE_BELOW_BEAM under the beam and the axis NUT_AXIS_TO_FACE above it, so 182 - 63 + 20 = 139. Those are the two ends of ONE screw. The same 8 is in the as-built pair as well, which points at a constant being wrong rather than a slip. SCREW_AXIS_H's 25 is confirmed off the BF/BK12 spec - his, 2026-10-10 - so the error is on the nut side: either NUT_FACE_BELOW_BEAM is 8 too big or NUT_AXIS_TO_FACE is 8 too small. \u26a0 NOTHING HERE HAS BEEN CHANGED TO MAKE IT CLOSE. THE MEASUREMENT THAT SETTLES IT: the nut housing's H, across the mounting face - if it is 40 then h is 20 and NUT_FACE_BELOW_BEAM moves to 55; if it is 56 then h is 28 and the nut chain was right all along. Measuring the built machine's beam underside down to the nut's mounting face does it just as well. WHAT IT WOULD MOVE: dims.py deps NUT_FACE_BELOW_BEAM re-derives 14 symbols including XEP_H, Sheet 2a's 242.5 plate height, and all four BLOCK_*_COL - the sixteen P1-P16 bearing block holes on that same sheet. Both are on the mill trip, so settle this before drilling Sheet 2a. The half-of-H reasoning below is the part most likely to be the fault: it assumes the page\u2019s H is 40 and that the bore is centred across it, and his 2026-10-10 figure for the nut across is 52, not 40. If H is really 56 this symbol is 28. \u2705 THE CONVENTION IS THE SAME ONE BK-12 AND BF-12 USE for their h of 25, which is what lets these numbers be added up the way they are. It checks against the page\u2019s own H of 40: the bore sits centred across that width, so h is half of it. This is the last term in the height chain at both ends of the machine - on Y the nut hangs and the face points down, on X the screw runs on top of the beam and the face points up."
 source = "Vevor DSG1605 page, printed manual with the ball screw kit"
 
 [[dim]]
@@ -1955,7 +1955,7 @@ note = "Threaded portion on Z - 334.5, against a 400 rail."
 sym = "SCREW_AXIS_H"
 value = 25
 provenance = "part"
-note = "Screw centreline above the seating face of whatever carries it. BF12 at one end and the stepper casting at the other must both put the axis here or the screw is not straight - NUT_AXIS_TO_FACE's note already records that BK-12 and BF-12 share an h of 25, and this is that number as a symbol. It is also his 25 for the Z top stop block's bore, seen from the carriage plate, and footnote 3.8's \"25 for the casting's axis\" in the X nut chain."
+note = "Screw centreline above the seating face of whatever carries it. \u2705 CONFIRMED off the BF/BK12 spec by him, 2026-10-10: the ball screw centreline is 25 above the bottom of the block. That makes it the FIXED point in the Y height chain and puts the disagreement on the nut side - see NUT_AXIS_TO_FACE. BF12 at one end and the stepper casting at the other must both put the axis here or the screw is not straight - NUT_AXIS_TO_FACE's note already records that BK-12 and BF-12 share an h of 25, and this is that number as a symbol. It is also his 25 for the Z top stop block's bore, seen from the carriage plate, and footnote 3.8's \"25 for the casting's axis\" in the X nut chain."
 
 [[dim]]
 sym = "NUT_BODY_L"
@@ -1979,3 +1979,77 @@ sym = "NUT_W"
 value = 52
 provenance = "part"
 note = "Ball nut across, 52 - the same figure as NUT_FACE_X's B, which is why SOLE_BRACKET_L closes at the screw axis plus 26."
+
+# -------------------------------------------------- BK12, the casting, and the motors
+# His 2026-10-10. The cast stepper frame replaced BK12 and the M5 standoffs on the Y
+# ends, but its screw end is BK12's shape, so BK12's own figures still describe it.
+
+[[dim]]
+sym = "BK12_W"
+value = 60
+provenance = "part"
+note = "BK12 across - the same 60 as BF12 and as the beam, which is what lets SCREW_AXIS_X treat the (EXT_W / 2) term as by-construction rather than an assumption."
+
+[[dim]]
+sym = "BK12_L"
+value = 30
+provenance = "part"
+note = "BK12 along the screw axis. BF12's equivalent is T_BF12_BLOCK at 20, so the fixed end is 10 longer than the free end."
+
+[[dim]]
+sym = "BK12_H"
+value = 45
+provenance = "part"
+note = "BK12 overall height. \u26a0 IT IS NOT THE SAME AS BF12_H, which is 43 - and that is fine rather than a conflict, because what has to match is the BORE height and not the overall. Both put the centreline SCREW_AXIS_H above their own bottom face, so a 45 block and a 43 block hang the same screw straight."
+
+[[dim]]
+sym = "CASTING_FOOTPRINT_L"
+value = 72.5
+provenance = "part"
+note = "The cast stepper frame's bolted footprint along the screw - Sheet 3a's K1-K6 sit in it, with the first hole column 10 in from its leading edge. The motor frame starts immediately after this."
+
+[[dim]]
+sym = "CASTING_FOOTPRINT_W"
+value = 60
+provenance = "part"
+note = "The casting's footprint across, matching BK12_W and the beam."
+
+[[dim]]
+sym = "CASTING_RAIL_H"
+value = 30
+provenance = "part"
+note = "The rails that carry the motor frame off the BK12 section are 30 high. They are the open part of the casting - the model draws them as solid, which is conservative for an interference check and wrong for a photograph."
+
+[[dim]]
+sym = "MOTOR_FRAME_T"
+value = 12.5
+provenance = "part"
+note = "The casting's NEMA 23 mounting plate, measured along the screw. It begins where CASTING_FOOTPRINT_L ends."
+
+[[dim]]
+sym = "MOTOR_FRAME_W"
+value = 60
+provenance = "part"
+note = "The motor frame is 60 square - wider than the 56 motor it carries."
+
+[[dim]]
+sym = "MOTOR_BODY_SQ"
+value = 56
+provenance = "part"
+note = "NEMA 23 body, square section. These are the integrated closed-loop units, so the body carries its own driver and is longer than a plain NEMA 23."
+
+[[dim]]
+sym = "MOTOR_BODY_L"
+value = 94
+provenance = "part"
+note = "NEMA 23 body length. \u26a0 HIS FIRST FIGURE WAS 99 AND HE CORRECTED IT TO 94 the same day - if 99 appears anywhere it is stale."
+
+[[dim]]
+sym = "CASTING_OAL"
+expr = "CASTING_FOOTPRINT_L + MOTOR_FRAME_T"
+note = "The casting alone along the screw, 85 - footprint plus the motor plate."
+
+[[dim]]
+sym = "CASTING_PLUS_MOTOR"
+expr = "CASTING_OAL + MOTOR_BODY_L"
+note = "179 from the casting's leading edge to the back of the motor. This is the figure that decides whether a stepper end fouls anything, and it is why the motors are worth drawing at all - the casting on its own clears everything easily."
