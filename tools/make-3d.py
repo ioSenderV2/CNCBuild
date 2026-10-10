@@ -478,12 +478,16 @@ def main() -> int:
     # ------------------------------------------------ Y1 and Y2
     y_axis_z = ybot - v["Y_SCREW_BELOW_BEAM"]
     y_seat_z = ybot - ip_t                      # the interposer's underside
-    y_lo = v["T_REAR_PLATE"]                    # BF12 seats on the rear plate
+    # BF12 seats on the rear plate, but THE SCREW STOPS SCREW_END_IN_BF12
+    # SHORT OF IT - the bearing is centred in the block and the journal has to
+    # straddle the bearing, which centres the journal too.
+    bf12_y = v["T_REAR_PLATE"]
+    y_lo = bf12_y + v["SCREW_END_IN_BF12"]
     y_hi = y_lo + v["SCREW_OAL_LONG"]
     for x0 in (lx0, rx0):
         cx = x0 + v["EXT_W"] / 2
         screw("y", cx, y_axis_z, y_lo, v["SCREW_OAL_LONG"], bf_low=True)
-        support("bf12", "y", cx, y_axis_z, y_lo, +1, y_seat_z, -1)
+        support("bf12", "y", cx, y_axis_z, bf12_y, +1, y_seat_z, -1)
         # ASSUMPTION: the nut is drawn at mid travel - it has no home position
         nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
         # THE CASTING IS PLACED BY ITS SCREW AND THE INTERPOSER FOLLOWS IT -
@@ -543,10 +547,11 @@ def main() -> int:
     # THE STEPPER IS AT MAX X and BF12 at min - his, 2026-10-10. Seen from BEHIND
     # the machine, which is the frame X 0 is measured in, that puts the motor on
     # the RIGHT and the tongue plate on the left. It was the other way round.
-    x_lo = xb_x0                                # BF12 on the left plate's tongue
+    bf12_x = xb_x0                              # BF12 on the left plate's tongue
+    x_lo = bf12_x + v["SCREW_END_IN_BF12"]      # the screw stops short of it
     x_hi = x_lo + v["SCREW_OAL_LONG"]
     screw("x", x_axis_y, x_axis_z, x_lo, v["SCREW_OAL_LONG"], bf_low=True)
-    support("bf12", "x", x_axis_y, x_axis_z, x_lo, +1, x_seat_z, +1)
+    support("bf12", "x", x_axis_y, x_axis_z, bf12_x, +1, x_seat_z, +1)
     nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
     # THE CASTING'S BORE SITS AT THE INNER END OF THE LONG JOURNAL. The journal is
     # SCREW_JOURNAL_CAST, 54.5, because the coupler lives on it as well as the
@@ -576,10 +581,11 @@ def main() -> int:
     # No interposer here, which is why the Z nut face sits 45 off the plate
     # where the beams get 55.
     z_axis_y = cp_front + v["SCREW_AXIS_H"]
-    z_lo = cp_bot
+    bf12_z = cp_bot
+    z_lo = bf12_z + v["SCREW_END_IN_BF12"]
     z_hi = z_lo + v["SCREW_OAL_Z"]
     screw("z", zp_cx, z_axis_y, z_lo, v["SCREW_OAL_Z"], bf_low=True)
-    support("bf12", "z", zp_cx, z_axis_y, z_lo, +1, cp_front, +1)
+    support("bf12", "z", zp_cx, z_axis_y, bf12_z, +1, cp_front, +1)
     nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
     # Same as X: the bore takes the INNER BK12_L of the long journal so the
     # thread runs to the casting's face, and the remaining 24.5 stands out the
