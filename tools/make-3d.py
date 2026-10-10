@@ -454,7 +454,6 @@ def main() -> int:
     # socket in the middle of the dome, so nothing sits above it. Drawn flat,
     # because the dome's fall to under 1 at the rim is a millimetre of relief.
     hd, hh = v["FLANGE_HEAD_D"] / 2, v["FLANGE_HEAD_H"]
-    SHANK_M8 = v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5     # the M8 itself, not its hole
     BOLT = 0x3C4248
     rows = [v["SIDE_TSLOT_ROW_1"] + i * v["SLOT_GRID"] for i in range(4)]
     stations = [v["SIDE_TONGUE_START"] + v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
@@ -471,17 +470,21 @@ def main() -> int:
         for z in rows:
             cyl("Flange head", "bolts", BOLT, col, z, 0.0, -hh, hd, axis="y", seg=12)
 
-    # The BF12 bolts, four per Y beam, driven from BEHIND the rear plate into the
-    # support block on its inside face. The block hangs upside down with its base
+    # The BF12 bolts, four per Y beam. THEY RUN FORWARD, NOT BACKWARD - his,
+    # 2026-10-10: the rear plate is TAPPED M5 and the bolt is driven from the
+    # block side, so the head seats on BF12's own outer face and the bolt ends
+    # FLUSH with the plate's back face. From behind, the plate shows four tapped
+    # holes per beam and nothing proud. The block hangs upside down with its base
     # level with the interposer's underside, which is what puts the rows at 165
-    # and 147. Drawn with the same M8 flange head as the rest of this plate -
-    # ASSUMPTION, the block's own bolt size is not in the registry.
+    # and 147. Head drawn as the M5 socket cap he is using, M5_HEAD_D / _H.
+    bf12_face = v["T_REAR_PLATE"] + v["T_BF12_BLOCK"]       # BF12's outer face
     for col in (v["RP_F_COL_1"], v["RP_F_COL_2"], v["RP_F_COL_3"], v["RP_F_COL_4"]):
         for z in (v["BF12_ROW1_Y"], v["BF12_ROW2_Y"]):
-            cyl("BF12 bolt head", "bolts", BOLT, col, z, 0.0, -hh, hd,
+            cyl("BF12 bolt head", "bolts", BOLT, col, z,
+                bf12_face, bf12_face + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,
                 axis="y", seg=12)
-            cyl("BF12 bolt", "bolts", BOLT, col, z, 0.0, v["T_REAR_PLATE"],
-                SHANK_M8, axis="y", seg=10)
+            cyl("BF12 bolt", "bolts", BOLT, col, z, 0.0, bf12_face, 2.5,
+                axis="y", seg=10)
 
     for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
         for c in (v["FIN_COL_OUTB"], v["FIN_COL_INB"]):   # fins, heads forward
@@ -641,9 +644,13 @@ ALLOWED = {
     # and acorn nut sit proud of their faces and clash with nothing, which is
     # the check confirming the stack is the right way round.
     frozenset({"Rear plate", "Tongue bolt"}),
-    # same story for the four BF12 bolts per beam - shank through a clearance
-    # hole in the rear plate, head proud on the back face
+    # The four BF12 bolts per beam run through the block's wing and THREAD INTO
+    # the rear plate, ending flush with its back face. Both solids therefore have
+    # a bolt inside them on purpose. Only the shank is listed: the head stands
+    # proud of BF12's outer face and clashes with nothing, which is the check
+    # confirming the stack is the right way round.
     frozenset({"Rear plate", "BF12 bolt"}),
+    frozenset({"BF12 wing", "BF12 bolt"}),
     frozenset({"Back tongue", "Tongue bolt"}),
     frozenset({"Side plate", "Tongue bolt"}),
     frozenset({"Side tongue", "Tongue bolt"}),
