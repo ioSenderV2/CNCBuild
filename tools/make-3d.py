@@ -406,6 +406,16 @@ def main() -> int:
     # BARE SHAFT showed between the thread and the casting; the thread runs all
     # the way to the casting's face. His catch, 2026-10-10.
     x_cast_in = x_hi - v["SCREW_JOURNAL_CAST"]
+    # THE X INTERPOSER, on top of the beam under the casting. It is what lifts
+    # this end by T_INTERPOSER and so puts the tongue's BF12 rows where
+    # TONGUE_BF12_ROW1 has them. ASSUMPTION: drawn the casting's own footprint,
+    # 72.5 by the beam's 60, because no length is given for it anywhere - the Y
+    # bar is INTERPOSER_L at 150 and this one has no symbol. It overhangs the
+    # beam's end with the casting, the same way the Y bar runs out through the
+    # fin with its casting.
+    box("Interposer", "gantry", 0xC0652A,
+        x_cast_in, xep_back, xb_top,
+        x_cast_in + v["CASTING_FOOTPRINT_L"], xep_back + v["EXT_W"], x_seat_z)
     support("casting", "x", x_axis_y, x_axis_z, x_cast_in, +1, x_seat_z, +1)
     rails("x", x_axis_y, x_cast_in + v["BK12_L"], +1, x_seat_z, +1)
     motor("x", x_axis_y, x_axis_z, x_cast_in + v["CASTING_FOOTPRINT_L"], +1)
