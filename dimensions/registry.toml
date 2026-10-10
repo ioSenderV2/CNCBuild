@@ -298,27 +298,57 @@ note = "Y screw centreline, from the X end plate's INNER face. The (EXT_W / 2) t
 sym = "NUT_FACE_X"
 value = 52
 provenance = "vendor"
-note = "Ball nut mounting face, along X. The long dimension, parallel with the X beam."
-source = "given 2026-10-02"
+note = "Ball nut housing across the long way - B on the DSG1605 page, 52. Parallel with the X beam. \u2705 It had been carried since 2026-10-02 with a date and no source; the page turned up 2026-10-09 and confirms it."
+source = "Vevor DSG1605 page, printed manual with the ball screw kit"
 
 [[dim]]
 sym = "NUT_FACE_Y"
 value = 40
 provenance = "vendor"
-note = "Ball nut mounting face, along Y"
-source = "given 2026-10-02"
+note = "Ball nut housing the short way - H on the DSG1605 page, 40. \u2705 Confirmed against the page 2026-10-09. It is also the check on NUT_AXIS_TO_FACE: the bore is centred across this 40, so h is half of it."
+source = "Vevor DSG1605 page, printed manual with the ball screw kit"
 
 [[dim]]
 sym = "NUT_PATTERN_X"
 value = 40
 provenance = "vendor"
-note = "4 x M5 THREADED INTO THE NUT - not through-holes. Pattern along X."
+note = "\u26a0 OPEN AS OF 2026-10-09 - THE COUNT DOES NOT MATCH THE PAGE. Carried as a FOUR-hole pattern, 40 along X by 24 along Y, which maps onto the DSG1605 page's P 40 and C2 24. But that page is labelled 6-Y - SIX M5 - on a bolt circle of \u00f8W 38, and 38 cannot be the spacing of four holes pitched 40. Either four of the six are the ones used and P is not their spacing, or the pattern is not the rectangle this assumes. \U0001f534 THE Y SOLE BRACKET'S CLEARANCE HOLES ARE ALREADY DRAWN ON THIS and the X one is about to be, so settle it off the real part before either is cut. Original note: 4 x M5 THREADED INTO THE NUT - not through-holes, pattern along X."
 
 [[dim]]
 sym = "NUT_PATTERN_Y"
 value = 24
 provenance = "vendor"
 note = "Pattern along Y"
+
+[[dim]]
+sym = "NUT_AXIS_TO_FACE"
+value = 20
+provenance = "vendor"
+note = "20 - the screw axis above the ball nut housing\u2019s mounting face, h on the DSG1605 page. \u2705 THE CONVENTION IS THE SAME ONE BK-12 AND BF-12 USE for their h of 25, which is what lets these numbers be added up the way they are. It checks against the page\u2019s own H of 40: the bore sits centred across that width, so h is half of it. This is the last term in the height chain at both ends of the machine - on Y the nut hangs and the face points down, on X the screw runs on top of the beam and the face points up."
+source = "Vevor DSG1605 page, printed manual with the ball screw kit"
+
+[[dim]]
+sym = "CASTING_AXIS_ABOVE_FOOT"
+value = 25
+provenance = "part"
+note = "25 - the cast stepper frame\u2019s screw axis above its own foot, measured 2026-10-02. \u26a0 IT EXISTED ONLY IN y-beam-support.md PROSE UNTIL 2026-10-09 and now feeds the X nut height, which is why it is a symbol. The casting inherits BK12\u2019s bearing geometry, so this is the same 25 as BK-12 and BF-12\u2019s h - worth knowing as a cross-check, not a derivation, since nothing guarantees a casting copies a support block\u2019s axis height."
+
+[[dim]]
+sym = "X_BEAM_TOP_XC"
+value = 167
+provenance = "measured"
+note = "167 - the X beam\u2019s top face above the BOTTOM of the X carriage plate, his 2026-10-09. \U0001f534 IT IS REFERENCED TO THE CARRIAGE PLATE, NOT TO THE TORSION BOX, and that is deliberate: everything bolted to the carriage plate is laid out from that plate\u2019s own bottom edge, so a height taken from the box would have to be converted every time and would go stale the moment the gantry moved. X_BEAM_TOP_Z is the box-referenced figure and the two are not interchangeable."
+source = "his, 2026-10-09"
+
+[[dim]]
+sym = "X_NUT_FACE_Z"
+expr = "X_BEAM_TOP_XC + T_INTERPOSER + CASTING_AXIS_ABOVE_FOOT + NUT_AXIS_TO_FACE"
+note = "222 - the X ball nut\u2019s mounting face, above the bottom of the X carriage plate. The chain is the beam top, the interposer the casting sits on, the casting\u2019s own axis height, then the nut\u2019s h. \u2705 EVERY TERM COMES FROM A PART OR A PAGE: 167 his measurement, 10 the interposer he bought, 25 measured off the casting, 20 the DSG1605 page. On X the face points UP because the screw runs on top of the beam - the mirror of Y, where the nut hangs and its face points down."
+
+[[dim]]
+sym = "X_DOUBLER_BOTTOM"
+expr = "X_NUT_FACE_Z - DOUBLER_H"
+note = "177 - where the X doubler\u2019s BOTTOM edge sits on the back of the X carriage plate. Its TOP edge is X_NUT_FACE_Z, carrying four M5 tapped into that top edge for the X nut sole plate, the way Sheet 2d\u2019s R1-R4 tap into that block\u2019s end face. \U0001f534 THE BOTTOM EDGE IS WHAT GETS DIMENSIONED AND THE TOP IS WHERE THE WORK IS - read them the wrong way round and the part sits DOUBLER_H low with the sole plate missing the nut entirely. \u2705 His reason for putting the sole plate on top: the bolts then come from ABOVE, where they stay reachable during assembly. The same instinct that inverted the Y nut."
 
 [[dim]]
 sym = "NUT_INSET_X"
