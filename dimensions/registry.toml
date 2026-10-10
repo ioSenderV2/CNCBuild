@@ -2129,6 +2129,27 @@ expr = "(BF12_W - BF12_BOSS_W) / 2"
 note = "13.04 of wing either side of the boss, which is where the four mounting bolts go. Derived rather than measured because BF12_W is a caliper figure with a decimal and the boss is a round 34."
 
 [[dim]]
+sym = "CASTING_BOLT_ROW_1"
+value = 28
+provenance = "measured"
+note = "28 - the first of the cast stepper frame's three mounting rows, measured from its MOTOR END. Sheet 6's C1 and C4. \U0001f534 THE TWO SHEETS DISAGREED AND SHEET 6 WON - his, 2026-10-10. Sheet 3a drew this pattern 4.5 further toward the motor, which is exactly what CASTING_FOOTPRINT_L moved when the casting was remeasured at 77, so 3a was laid out on the old 72.5 and never corrected. Its K1-K6 come DOWN 4.5. \u2705 THE SAME SIX HOLES SERVE ALL FOUR PLATES - both Y bars, the X bar and the carriage plate - so they are a property of the casting and belong here rather than on a sheet. The columns are BF12_COL_INB and _OUTB, the same 7 and 53."
+source = "shop-pack Sheet 6, confirmed by him 2026-10-10"
+
+[[dim]]
+sym = "CASTING_BOLT_ROW_2"
+value = 58
+provenance = "measured"
+note = "58 - the second row, Sheet 6's C2 and C5. \U0001f534 THE TWO SHEETS DISAGREED AND SHEET 6 WON - his, 2026-10-10. Sheet 3a drew this pattern 4.5 further toward the motor, which is exactly what CASTING_FOOTPRINT_L moved when the casting was remeasured at 77, so 3a was laid out on the old 72.5 and never corrected. Its K1-K6 come DOWN 4.5. \u2705 THE SAME SIX HOLES SERVE ALL FOUR PLATES - both Y bars, the X bar and the carriage plate - so they are a property of the casting and belong here rather than on a sheet. The columns are BF12_COL_INB and _OUTB, the same 7 and 53."
+source = "shop-pack Sheet 6, confirmed by him 2026-10-10"
+
+[[dim]]
+sym = "CASTING_BOLT_ROW_3"
+value = 71
+provenance = "measured"
+note = "71 - the third row, Sheet 6's C3 and C6, nearest the bearing end. It sits 6 inside the casting's CASTING_FOOTPRINT_L of 77. \U0001f534 THE TWO SHEETS DISAGREED AND SHEET 6 WON - his, 2026-10-10. Sheet 3a drew this pattern 4.5 further toward the motor, which is exactly what CASTING_FOOTPRINT_L moved when the casting was remeasured at 77, so 3a was laid out on the old 72.5 and never corrected. Its K1-K6 come DOWN 4.5. \u2705 THE SAME SIX HOLES SERVE ALL FOUR PLATES - both Y bars, the X bar and the carriage plate - so they are a property of the casting and belong here rather than on a sheet. The columns are BF12_COL_INB and _OUTB, the same 7 and 53."
+source = "shop-pack Sheet 6, confirmed by him 2026-10-10"
+
+[[dim]]
 sym = "CASTING_BOSS_W"
 value = 34
 provenance = "part"

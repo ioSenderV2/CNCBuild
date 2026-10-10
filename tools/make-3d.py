@@ -464,6 +464,18 @@ def main() -> int:
         box("Casting rails", "drive", SUP,
             *span(axis, a0, a1, c0 - w, c0 + w, s0, s1))
 
+    def casting_rows(c0):
+        """The casting's six mounting points, as (row offset from its motor end,
+        how deep the casting is there, column coordinate). The rows nearer the
+        bearing end are in the WING, which is taller than the rails."""
+        rails_len = v["CASTING_FOOTPRINT_L"] - v["BK12_L"]
+        half = (v["BF12_COL_OUTB"] - v["BF12_COL_INB"]) / 2
+        for r in (v["CASTING_BOLT_ROW_1"], v["CASTING_BOLT_ROW_2"],
+                  v["CASTING_BOLT_ROW_3"]):
+            d = v["CASTING_RAIL_H"] if r < rails_len else v["CASTING_WING_H"]
+            for c in (c0 - half, c0 + half):
+                yield r, d, c
+
     def motor(axis, c0, c1, plate_at, grow):
         """The casting's motor plate and the NEMA 23 hanging off it."""
         t, fw = v["MOTOR_FRAME_T"], v["MOTOR_FRAME_W"] / 2
@@ -503,6 +515,17 @@ def main() -> int:
         support("casting", "y", cx, y_axis_z, cast_in, +1, y_seat_z, -1)
         rails("y", cx, cast_in + v["BK12_L"], +1, y_seat_z, -1)
         motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
+        # Six M5 up out of the casting into the tapped bar - Sheet 6's C1-C6,
+        # three rows back from the casting's MOTOR end on the same two columns
+        # BF12 uses. The head is under the casting, which is as deep as the
+        # wing at the bearing end and as the rails further forward.
+        motor_end = cast_in + v["CASTING_FOOTPRINT_L"]
+        for r, d, c in casting_rows(cx):
+            cyl("Casting bolt head", "bolts", 0x3C4248, c, motor_end - r,
+                y_seat_z - d, y_seat_z - d - v["M5_HEAD_H"],
+                v["M5_HEAD_D"] / 2, seg=12)
+            cyl("Casting bolt", "bolts", 0x3C4248, c, motor_end - r,
+                y_seat_z - d, y_seat_z + ip_t, 2.5, seg=10)
 
         # ---- the Y nut sole bracket, under the X end plate at this end ----
         # The nut hangs below the beam with its face DOWN, so the bracket lies
@@ -591,6 +614,13 @@ def main() -> int:
     support("casting", "x", x_axis_y, x_axis_z, x_cast_in, +1, x_seat_z, +1)
     rails("x", x_axis_y, x_cast_in + v["BK12_L"], +1, x_seat_z, +1)
     motor("x", x_axis_y, x_axis_z, x_cast_in + v["CASTING_FOOTPRINT_L"], +1)
+    # the same six, but this casting sits ON its bar so they drive downward
+    for r, d, c in casting_rows(x_axis_y):
+        cyl("Casting bolt head", "bolts", 0x3C4248, x_ip_out - r, c,
+            x_seat_z + d, x_seat_z + d + v["M5_HEAD_H"],
+            v["M5_HEAD_D"] / 2, seg=12)
+        cyl("Casting bolt", "bolts", 0x3C4248, x_ip_out - r, c,
+            x_seat_z + d, x_seat_z - ip_t, 2.5, seg=10)
 
     # ------------------------------------------------ Z, up the carriage plate
     # No interposer here, which is why the Z nut face sits 45 off the plate
@@ -623,6 +653,15 @@ def main() -> int:
     support("casting", "z", zp_cx, z_axis_y, z_cast_in, +1, cp_front, +1)
     rails("z", zp_cx, z_cast_in + v["BK12_L"], +1, cp_front, +1)
     motor("z", zp_cx, z_axis_y, z_cast_in + v["CASTING_FOOTPRINT_L"], +1)
+    # and here the casting stands off the carriage plate's face, so the six run
+    # fore-aft into the plate rather than up or down into a bar
+    z_motor_end = z_cast_in + v["CASTING_FOOTPRINT_L"]
+    for r, d, c in casting_rows(zp_cx):
+        cyl("Casting bolt head", "bolts", 0x3C4248, c, z_motor_end - r,
+            cp_front + d, cp_front + d + v["M5_HEAD_H"],
+            v["M5_HEAD_D"] / 2, axis="y", seg=12)
+        cyl("Casting bolt", "bolts", 0x3C4248, c, z_motor_end - r,
+            cp_front + d, cp_back, 2.5, axis="y", seg=10)
 
     # ---- linear rails and bearing blocks ---------------------------------
     # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
@@ -942,6 +981,13 @@ ALLOWED = {
     # the four T-nut bolts on each interposer bar, shank through the bar and
     # on into the extrusion's slot
     frozenset({"Interposer", "Interposer bolt"}),
+    # the casting's own six, up through it into the bar - or into the carriage
+    # plate on Z - so they sit inside both parts on purpose
+    frozenset({"Interposer", "Casting bolt"}),
+    frozenset({"Casting wing", "Casting bolt"}),
+    frozenset({"Casting rails", "Casting bolt"}),
+    frozenset({"Casting boss", "Casting bolt"}),
+    frozenset({"X carriage plate", "Casting bolt"}),
     frozenset({"Y beam", "Interposer bolt"}),
     frozenset({"X beam", "Interposer bolt"}),
     frozenset({"Shelf bar", "X end plate"}),
