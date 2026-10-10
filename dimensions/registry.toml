@@ -277,7 +277,7 @@ source = "measured 2026-10-02"
 [[dim]]
 sym = "NUT_FACE_BELOW_BEAM"
 expr = "Y_SCREW_BELOW_BEAM + NUT_AXIS_TO_FACE"
-note = "55 - the ball nut's downward bolting face below the Y beam. \U0001F534 IT WAS 63 UNTIL 2026-10-10 and it is now built the other way round. It used to start from NUT_FACE_BELOW_BEAM_ASBUILT, a 58 calipered on the machine as it was built with the 5 mm standoff, and convert that to the design. It now starts from where the screw actually runs: Y_SCREW_BELOW_BEAM, which is his 35, plus the nut's own h. The old route disagreed with the supports by 8 and the supports won - BF12 and the casting are both spec parts and the 58 was one reading of a machine that no longer exists in that form. \u26a0 THIS MOVES XEP_H, so the X gantry end plate on Sheet 2a gets 8 shorter. It moves no hole against the beam - the rail and block figures are beam-local underneath and only their coordinates from the plate edge change."
+note = "55 - the ball nut's downward bolting face below the Y beam. \U0001F534 IT WAS 63 UNTIL 2026-10-10 and it is now built the other way round. It used to start from NUT_FACE_BELOW_BEAM_ASBUILT, a 58 calipered on the machine as it was built with the 5 mm standoff, and convert that to the design. It now starts from where the screw actually runs: Y_SCREW_BELOW_BEAM, which is his 35, plus the nut's own h. The old route disagreed with the supports by 8 and the supports won - BF12 and the casting are both spec parts and the 58 was one reading of a machine that no longer exists in that form. \u26a0 THIS MOVES XEP_H, so the X gantry end plate on Sheet 2a gets 8 shorter. It moves no hole against the beam - the rail and block figures are beam-local underneath and only their coordinates from the plate edge change. \u2705 CONFIRMED INDEPENDENTLY by him on 2026-10-10: the nut face stands 55 off the beam, below on Y and above on X, both being the same 10 of interposer plus 25 to the bore plus 20 of nut. That is also footnote 3.8's X chain, which already added those three to put the X doubler's top edge at 222 - so the 55 was in the prose before it was in this symbol."
 [[dim]]
 sym = "XEP_H"
 expr = "XEP_TOP_ABOVE_BEAM + BEAM_H + NUT_FACE_BELOW_BEAM"
@@ -1188,7 +1188,7 @@ note = "46.6, the spacers' top face above the X carriage plate - his, 2026-10-08
 sym = "NUT_TOP_Z"
 value = 45.3
 provenance = "measured"
-note = "45.3, the Z ball nut's top face above the X carriage plate - his, 2026-10-08. It sits BELOW the spacers, so the Z plate laid on the spacers stands off the nut rather than touching it."
+note = "45.3, the Z ball nut's top face above the X carriage plate - his, 2026-10-08. It sits BELOW the spacers, so the Z plate laid on the spacers stands off the nut rather than touching it. \u2705 IT CROSS-CHECKS THE TWO CONSTANTS THAT CAUSED ALL THE TROUBLE, from a third direction. The Z axis has no interposer, so geometry puts this face at SCREW_AXIS_H + NUT_AXIS_TO_FACE = 25 + 20 = 45, and the caliper says 45.3. His 2026-10-10 statement of 45 for Z and 55 for the beams - the same stack plus the interposer - is what made the comparison. Two constants arrived at off a BF12 and off a nut page, checked against a measurement on a different axis, landing within three tenths. \u26a0 DO NOT ROUND THIS TO 45: it is measured, and NUT_STANDOFF_STEP subtracts it from a measured SPACER_TOP_Z to get 1.3, which is a tenths-level chain feeding the shim. The 0.3 earns its place."
 
 [[dim]]
 sym = "NUT_STANDOFF_STEP"
