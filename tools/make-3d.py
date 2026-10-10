@@ -179,14 +179,28 @@ def main() -> int:
     xb_bot = xb_top - v["BEAM_H"]
     box("X beam", "gantry", 0x4A7DB5, xb_x0, xep_back, xb_bot,
         xb_x1, xep_back + v["EXT_W"], xb_top)
+    # The plate is drawn at XEP_CUT, what Sheet 2a actually cuts, not at XEP_H,
+    # which is only the floor it has to beat. Its TOP is fixed at the X beam's
+    # upper extrusion, so the extra 7.5 hangs DOWN as spare metal.
+    xep_bot = xb_top - v["XEP_CUT"]
     for x0 in (xb_x0 - xep_t, xb_x1):
         box("X end plate", "gantry", 0x6FA8DC,
-            x0, xep_back, xb_top - v["XEP_H"], x0 + xep_t, xep_front, xb_top)
+            x0, xep_back, xep_bot, x0 + xep_t, xep_front, xb_top)
         box("Y nut doubler", "gantry", 0xB06000,
             x0 - v["T_DOUBLER"] if x0 < xb_x0 else x0 + xep_t, xep_back,
-            xb_top - v["XEP_H"],
+            xep_bot,
             x0 if x0 < xb_x0 else x0 + xep_t + v["T_DOUBLER"],
-            xep_back + v["DOUBLER_H"], xb_top - v["XEP_H"] + v["DOUBLER_H"])
+            xep_back + v["DOUBLER_H"], xep_bot + v["DOUBLER_H"])
+
+    # THE BF12 TONGUE, on the MIN X plate only - the operator's right, and the
+    # left of a view taken from behind the machine. It carries on past the 2a
+    # outline to TONGUE_TOP, 60 wide fore-aft so it sits over the beam, and BF12
+    # bolts to its inboard face. The check that it is in the right place: the
+    # sheet puts the first BF12 row at TONGUE_BF12_ROW1 up from the plate's
+    # bottom, which lands at the beam top plus the interposer plus BF12's own 7.
+    box("BF12 tongue", "gantry", 0x6FA8DC,
+        xb_x0 - xep_t, xep_back, xb_top,
+        xb_x0, xep_back + v["EXT_W"], xb_top + v["TONGUE_H"])
 
     # ---- X carriage, at mid travel ----------------------------------------
     # The X rails sit RAIL_LOW_Z up the beam's front face; Sheet 3 puts the lower
@@ -357,14 +371,24 @@ def main() -> int:
     x_seat_z = xb_top + ip_t
     x_axis_z = x_seat_z + v["SCREW_AXIS_H"]
     x_axis_y = xep_back + v["EXT_W"] / 2
-    x_hi = xb_x1                                # BF12 on the right plate's tongue
-    x_lo = x_hi - v["SCREW_OAL_LONG"]
-    screw("x", x_axis_y, x_axis_z, x_lo, v["SCREW_OAL_LONG"], bf_low=False)
-    support("bf12", "x", x_axis_y, x_axis_z, x_hi, -1, x_seat_z, +1)
+    # THE STEPPER IS AT MAX X and BF12 at min - his, 2026-10-10. Seen from BEHIND
+    # the machine, which is the frame X 0 is measured in, that puts the motor on
+    # the RIGHT and the tongue plate on the left. It was the other way round.
+    x_lo = xb_x0                                # BF12 on the left plate's tongue
+    x_hi = x_lo + v["SCREW_OAL_LONG"]
+    screw("x", x_axis_y, x_axis_z, x_lo, v["SCREW_OAL_LONG"], bf_low=True)
+    support("bf12", "x", x_axis_y, x_axis_z, x_lo, +1, x_seat_z, +1)
     nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
-    support("casting", "x", x_axis_y, x_axis_z, x_lo + v["BK12_L"], -1, x_seat_z, +1)
-    rails("x", x_axis_y, x_lo, -1, x_seat_z, +1)
-    motor("x", x_axis_y, x_axis_z, x_lo + v["BK12_L"] - v["CASTING_FOOTPRINT_L"], -1)
+    # THE CASTING'S BORE SITS AT THE INNER END OF THE LONG JOURNAL. The journal is
+    # SCREW_JOURNAL_CAST, 54.5, because the coupler lives on it as well as the
+    # bearing - so the bore takes the inner BK12_L of it and the remaining 24.5
+    # stands out the far side for the coupler. Drawn the other way round, 24.5 of
+    # BARE SHAFT showed between the thread and the casting; the thread runs all
+    # the way to the casting's face. His catch, 2026-10-10.
+    x_cast_in = x_hi - v["SCREW_JOURNAL_CAST"]
+    support("casting", "x", x_axis_y, x_axis_z, x_cast_in, +1, x_seat_z, +1)
+    rails("x", x_axis_y, x_cast_in + v["BK12_L"], +1, x_seat_z, +1)
+    motor("x", x_axis_y, x_axis_z, x_cast_in + v["CASTING_FOOTPRINT_L"], +1)
 
     # ------------------------------------------------ Z, up the carriage plate
     # No interposer here, which is why the Z nut face sits 45 off the plate
