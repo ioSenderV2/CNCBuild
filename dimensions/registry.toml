@@ -305,14 +305,14 @@ source = "Vevor DSG1605 page, printed manual with the ball screw kit"
 sym = "NUT_FACE_Y"
 value = 40
 provenance = "vendor"
-note = "Ball nut housing the short way - H on the DSG1605 page, 40. \u2705 Confirmed against the page 2026-10-09. It is also the check on NUT_AXIS_TO_FACE: the bore is centred across this 40, so h is half of it."
+note = "Ball nut housing's mounting flat along the screw axis - L on the DSG1605 page, 40. With NUT_FACE_X's B of 52 this is the flat the sole plate lands on, 52 x 40. \u26a0 IT IS L, NOT H, AND I FIRST WROTE H: the page carries BOTH at 40, so nothing numeric moves, but they are different dimensions and conflating them would mislead the next reader. H is the housing's width in the face view and it is the one NUT_AXIS_TO_FACE is half of; L is the length along the screw and it is the one C1 and C2 divide up. \u2705 The check that settles which: NUT_INSET_Y comes out at 8, which is C1 - and C1 is an inset along L."
 source = "Vevor DSG1605 page, printed manual with the ball screw kit"
 
 [[dim]]
 sym = "NUT_PATTERN_X"
 value = 40
 provenance = "vendor"
-note = "\u26a0 OPEN AS OF 2026-10-09 - THE COUNT DOES NOT MATCH THE PAGE. Carried as a FOUR-hole pattern, 40 along X by 24 along Y, which maps onto the DSG1605 page's P 40 and C2 24. But that page is labelled 6-Y - SIX M5 - on a bolt circle of \u00f8W 38, and 38 cannot be the spacing of four holes pitched 40. Either four of the six are the ones used and P is not their spacing, or the pattern is not the rectangle this assumes. \U0001f534 THE Y SOLE BRACKET'S CLEARANCE HOLES ARE ALREADY DRAWN ON THIS and the X one is about to be, so settle it off the real part before either is cut. Original note: 4 x M5 THREADED INTO THE NUT - not through-holes, pattern along X."
+note = "40 - the pattern ACROSS the housing's mounting flat, P on the DSG1605 page, and the span a sole plate's clearance holes have to match. 4 x M5 THREADED INTO THE HOUSING, not through-holes. \u2705 CLOSED 2026-10-09 AFTER A FALSE ALARM WORTH RECORDING: the page is also labelled 6-Y, six M5 on a \u00f8W 38 circle, and 38 cannot be the spacing of four holes pitched 40, so the two looked irreconcilable. They are different interfaces. THE SIX ARE NUT_SFU_PATTERN - the housing bolting to the SFU ball nut's own flange, internal to the screw assembly and nothing to do with the machine. THE FOUR ON THE FLAT ARE THE MACHINE INTERFACE, and they are the ones in the LEFT view. \u2705 The four-hole reading is confirmed by arithmetic the page closes on itself: C1 + C2 + C1 = 8 + 24 + 8 = 40 = L, and NUT_INSET_Y had already derived to exactly that 8 before anyone had seen the page."
 
 [[dim]]
 sym = "NUT_PATTERN_Y"
@@ -349,6 +349,13 @@ note = "222 - the X ball nut\u2019s mounting face, above the bottom of the X car
 sym = "X_DOUBLER_BOTTOM"
 expr = "X_NUT_FACE_Z - DOUBLER_H"
 note = "177 - where the X doubler\u2019s BOTTOM edge sits on the back of the X carriage plate. Its TOP edge is X_NUT_FACE_Z, carrying four M5 tapped into that top edge for the X nut sole plate, the way Sheet 2d\u2019s R1-R4 tap into that block\u2019s end face. \U0001f534 THE BOTTOM EDGE IS WHAT GETS DIMENSIONED AND THE TOP IS WHERE THE WORK IS - read them the wrong way round and the part sits DOUBLER_H low with the sole plate missing the nut entirely. \u2705 His reason for putting the sole plate on top: the bolts then come from ABOVE, where they stay reachable during assembly. The same instinct that inverted the Y nut."
+
+[[dim]]
+sym = "NUT_SFU_PATTERN"
+value = 38
+provenance = "vendor"
+note = "\u00f838 - the bolt circle of the SIX M5 that hold the DSG housing to the SFU ball nut\u2019s own flange. \U0001f534 IT IS INTERNAL TO THE SCREW ASSEMBLY AND NOTHING ON THIS MACHINE BOLTS TO IT. The symbol exists only so the next person does not re-open the question that cost a round trip on 2026-10-09: the DSG1605 page shows 6-Y on this \u00f838 in its middle view AND a four-hole P 40 by C2 24 pattern on the flat in its left view, and the two look contradictory until you see they are different joints. The machine interface is the four - NUT_PATTERN_X and NUT_PATTERN_Y."
+source = "Vevor DSG1605 page, printed manual with the ball screw kit"
 
 [[dim]]
 sym = "NUT_INSET_X"
