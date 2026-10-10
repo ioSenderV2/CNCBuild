@@ -412,6 +412,42 @@ def main() -> int:
         rails("y", cx, cast_in + v["BK12_L"], +1, y_seat_z, -1)
         motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
 
+        # ---- the Y nut sole bracket, under the X end plate at this end ----
+        # The nut hangs below the beam with its face DOWN, so the bracket lies
+        # under it and bolts UP - into the nut at the tip, and into the END
+        # FACES of the X end plate and its doubler at the root. Its top is put
+        # on the NUT'S face rather than on the plate's bottom edge, so that if
+        # XEP_CUT ever drifts off XEP_H again the plate shows it instead of the
+        # bracket quietly missing the nut.
+        inner = xb_x0 if x0 == lx0 else xb_x1       # the plate face it starts at
+        out = -1 if x0 == lx0 else +1               # and which way it reaches
+        face_z = y_axis_z - v["NUT_AXIS_TO_FACE"]
+        tip = inner + out * v["SOLE_BRACKET_L"]
+        box("Y sole bracket", "gantry", 0xC9A227,
+            min(inner, tip), xep_back, face_z - v["T_SOLE_BRACKET"],
+            max(inner, tip), xep_front, face_z)
+
+        # Twelve M5 up through it: R5-R8 into the end plate's end face, R1-R4
+        # into the doubler's behind it, then four into the nut on its own
+        # pattern. ASSUMPTION: the root bolts are drawn BOLT_Z_NUT long like
+        # the nut ones - no length is given for them.
+        nut_mid = (y_lo + y_hi) / 2
+        cols = [(inner + out * v["ROOT_BOLT_X_ENDPLATE"], j) for j in range(4)]
+        cols += [(inner + out * v["ROOT_BOLT_X_DOUBLER"], j) for j in range(4)]
+        pts = [(bx, xep_back + v["ROOT_BOLT_Y_FIRST"] + j * v["ROOT_BOLT_Y_PITCH"])
+               for bx, j in cols]
+        for bx in (v["NUT_BOLT_X_NEAR"], v["NUT_BOLT_X_FAR"]):
+            for dy in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
+                pts.append((inner + out * bx, nut_mid + dy))
+        for bx, by in pts:
+            cyl("Y sole bolt head", "bolts", 0x3C4248, bx, by,
+                face_z - v["T_SOLE_BRACKET"],
+                face_z - v["T_SOLE_BRACKET"] - v["M5_HEAD_H"],
+                v["M5_HEAD_D"] / 2, seg=12)
+            cyl("Y sole bolt", "bolts", 0x3C4248, bx, by,
+                face_z - v["T_SOLE_BRACKET"],
+                face_z - v["T_SOLE_BRACKET"] + v["BOLT_Z_NUT"], 2.5, seg=10)
+
     # ------------------------------------------------ X, on TOP of its beam
     x_seat_z = xb_top + ip_t
     x_axis_z = x_seat_z + v["SCREW_AXIS_H"]
@@ -764,6 +800,17 @@ ALLOWED = {
     frozenset({"X carriage plate", "Z rail"}),      # rail bolts to its face
     frozenset({"X carriage plate", "Z block"}),
     frozenset({"X carriage plate", "X block"}),     # carriage hangs off these
+    # The Y sole bracket laps the end plate and doubler end faces and the nut's
+    # face, and its twelve bolts cross it into all three. Only the shanks are
+    # listed; the heads hang below the bracket and clash with nothing.
+    frozenset({"Y sole bracket", "X end plate"}),
+    frozenset({"Y sole bracket", "Y nut doubler"}),
+    frozenset({"Y sole bracket", "Nut bolt face"}),
+    frozenset({"Y sole bracket", "Y sole bolt"}),
+    frozenset({"X end plate", "Y sole bolt"}),
+    frozenset({"Y nut doubler", "Y sole bolt"}),
+    frozenset({"Ball nut", "Y sole bolt"}),
+    frozenset({"Nut bolt face", "Y sole bolt"}),
     # The doubler is bolted flat to the plate's back face and the sole plate
     # lands on the doubler's top edge and on the nut's bolting face - those are
     # the same plane, which is the whole point of X_NUT_FACE_Z.
