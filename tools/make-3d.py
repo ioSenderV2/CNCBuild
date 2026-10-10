@@ -552,6 +552,25 @@ def main() -> int:
             cyl("BF12 bolt", "bolts", BOLT, col, z, 0.0, bf12_face, 2.5,
                 axis="y", seg=10)
 
+    # The eight M5 through the X sole plate, all driven DOWNWARD from above -
+    # his reason for putting the plate on top in the first place: the bolts stay
+    # reachable during assembly. Four at the root tap into the doubler's top
+    # edge, four further out tap into the ball nut housing. Head proud on the
+    # plate's top face, shank BOLT_Z_NUT down from under it, which crosses the
+    # 6.35 plate and leaves Y_NUT_BOLT_ENGAGE in the part below.
+    sole_top = x_nut_face + v["T_SOLE_BRACKET"]
+    sole_bolts = [(cp_x0 + v["ROOT_BOLT_Y_FIRST"] + i * v["ROOT_BOLT_Y_PITCH"],
+                   cp_back - v["X_SOLE_ROOT_ROW"]) for i in range(4)]
+    x_nut_mid = (x_lo + x_hi) / 2
+    for ry in (v["X_NUT_BOLT_NEAR"], v["X_NUT_BOLT_FAR"]):
+        for dx in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
+            sole_bolts.append((x_nut_mid + dx, cp_back - ry))
+    for bx, by in sole_bolts:
+        cyl("X sole bolt head", "bolts", BOLT, bx, by,
+            sole_top, sole_top + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2, seg=12)
+        cyl("X sole bolt", "bolts", BOLT, bx, by,
+            sole_top, sole_top - v["BOLT_Z_NUT"], 2.5, seg=10)
+
     for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
         for c in (v["FIN_COL_OUTB"], v["FIN_COL_INB"]):   # fins, heads forward
             for z in rows:
@@ -733,6 +752,13 @@ ALLOWED = {
     # the same plane, which is the whole point of X_NUT_FACE_Z.
     frozenset({"X carriage plate", "X nut doubler"}),
     frozenset({"X nut doubler", "X sole plate"}),
+    # The eight sole-plate bolts cross the plate and thread into the part under
+    # it - the doubler's tapped top edge at the root, the nut housing further
+    # out. Only the shank is listed; the heads stand proud of the plate.
+    frozenset({"X sole plate", "X sole bolt"}),
+    frozenset({"X nut doubler", "X sole bolt"}),
+    frozenset({"Ball nut", "X sole bolt"}),
+    frozenset({"Nut bolt face", "X sole bolt"}),
     frozenset({"X sole plate", "Nut bolt face"}),
     frozenset({"X carriage plate", "X sole plate"}),
     # The doubler's bottom edge rests on the SIDES of the upper bearing blocks,
