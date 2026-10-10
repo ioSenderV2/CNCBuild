@@ -1141,10 +1141,10 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <!-- BF12 base, 60 x 20: the 20 along X flush with the X 0 end puts F1/F2 at X 10,
        and the 60 across centres on Y 77, which lands them 7 and 53 off its edges -->
   <rect x="0.00" y="47.0" width="20.00" height="60.00" fill="none" stroke="#06c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <!-- Z stepper casting, 60 x 72.5. Its first hole column sits 10 in from the left
-       edge, so the casting runs X 350 to 422.5 and OVERHANGS the plate. Drawn whole:
-       the overhang is unsupported, and K3/K6 at X 403 are still in material. -->
-  <rect x="350.00" y="47.0" width="72.50" height="60.00" fill="none" stroke="#b06000" stroke-width="0.9" stroke-dasharray="4 2.5"/>
+  <!-- Z stepper casting, 60 x 77. Its last hole column sits 6 in from the left
+       edge, so the casting runs X 349.5 to 426.5 and OVERHANGS the plate. Drawn
+       whole: the overhang is unsupported, and K3/K6 at X 398.5 are in material. -->
+  <rect x="349.50" y="47.0" width="77.00" height="60.00" fill="none" stroke="#b06000" stroke-width="0.9" stroke-dasharray="4 2.5"/>
   <line x1="407.0" y1="107.0" x2="407.0" y2="47.0" stroke="#b06000" stroke-width="0.7"/>
   <text class="lbl" x="411.0" y="43.0" fill="#b06000">unsupported past 407</text>
   <!-- nut doubler on the REAR face, Sheet 2d -->
@@ -1245,18 +1245,18 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <text class="ref" x="10.00" y="65.0" fill="#06c" text-anchor="middle">F2</text>
 
   <!-- K1-K6, same rule: across X on Y 54, then up to Y 100 -->
-  <circle cx="360.00" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="355.50" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="360.00" y="95.0" fill="#b06000" text-anchor="middle">K1</text>
-  <circle cx="373.00" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="368.50" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="373.00" y="95.0" fill="#b06000" text-anchor="middle">K2</text>
-  <circle cx="403.00" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="398.50" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="403.00" y="95.0" fill="#b06000" text-anchor="middle">K3</text>
-  <circle cx="360.00" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="360.00" y="65.0" fill="#b06000" text-anchor="middle">K4</text>
-  <circle cx="373.00" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="373.00" y="65.0" fill="#b06000" text-anchor="middle">K5</text>
-  <circle cx="403.00" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="403.00" y="65.0" fill="#b06000" text-anchor="middle">K6</text>
+  <circle cx="355.50" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="355.50" y="65.0" fill="#b06000" text-anchor="middle">K4</text>
+  <circle cx="368.50" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="368.50" y="65.0" fill="#b06000" text-anchor="middle">K5</text>
+  <circle cx="398.50" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="398.50" y="65.0" fill="#b06000" text-anchor="middle">K6</text>
 
   <!-- XD1-XD4, one column at X 186 into the doubler behind, up in Y -->
   <circle cx="186.00" cy="122.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
@@ -1293,10 +1293,10 @@ is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<s
   <text class="q" x="300" y="206" fill="#0a6">XD1&#8211;XD4 &#183; NUT DOUBLER &#8212; 4 &#215; &#248;5</text>
   <text class="q" x="300" y="218">X 186 &#183; Y 32, 62, 92, 122 &#183; dashed = the doubler behind</text>
   <text class="q" x="300" y="242" fill="#b06000">K1&#8211;K6 &#183; Z STEPPER CASTING &#8212; 6 &#215; &#248;4.2</text>
-  <text class="q" x="300" y="254">X 360, 373, 403 &#183; Y 54 and 100</text>
-  <text class="q" x="300" y="266">Its 60 &#215; 72.5 base runs X 350 to 422.5, so it overhangs the</text>
-  <text class="q" x="300" y="278">plate by 15.5. That overhang carries nothing &#8212; but K3 and K6</text>
-  <text class="q" x="300" y="290">at X 403 are still in material, which is the part that matters.</text>
+  <text class="q" x="300" y="254">X 355.5, 368.5, 398.5 &#183; Y 54 and 100</text>
+  <text class="q" x="300" y="266">Its 60 &#215; 77 base runs X 349.5 to 426.5, so it overhangs the</text>
+  <text class="q" x="300" y="278">plate by 19.5. That overhang carries nothing &#8212; but K3 and K6</text>
+  <text class="q" x="300" y="290">at X 398.5 are in material by 8.5, which is the part that matters.</text>
   <text class="q" x="300" y="314" fill="#c00">TS1, TS2 &#183; Z TOP STOP BLOCK &#8212; 2 &#215; &#248;4.2</text>
   <text class="q" x="300" y="326">X 322.7 &#183; Y 62, 92 &#183; dashed = the block, Sheet 3c</text>
   <text class="q" x="300" y="338">It ends at 335.4 and the casting starts at 350 &#8212; a 14.6 gap.</text>
@@ -1314,7 +1314,7 @@ whole Y 20 row across both bearing blocks.</figcaption>
 <tr><td><b>R1&ndash;R7</b></td><td><b>HGR20 rail 1</b> &mdash; the reference rail</td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
 <tr><td><b>R8&ndash;R14</b></td><td><b>HGR20 rail 2</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
 <tr><td>F1, F2</td><td><b>BF12</b> screw support</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.5</sup></td></tr>
-<tr><td>K1&ndash;K6</td><td><b>Z cast stepper frame</b> (the BK12 end)</td><td>6</td><td class="n">360, 373, 403</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br>&#9888; <b>X 403 leaves 4 mm to the end</b><sup class="f">3.7</sup></td></tr>
+<tr><td>K1&ndash;K6</td><td><b>Z cast stepper frame</b> (the BK12 end)</td><td>6</td><td class="n">355.5, 368.5, 398.5</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>X 398.5 leaves 8.5 mm to the end</b><sup class="f">3.7</sup></td></tr>
 <tr><td><b>S1</b></td><td><b>Sensor bore</b> &mdash; centred on the block pattern</td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
 <tr><td>X1&ndash;X16</td><td><b>Four X-axis bearing blocks</b>, far face</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n">20, 56, 98, 134</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b><sup class="f">3.2</sup></td></tr>
 <tr><td><b>XD1&ndash;XD4</b></td><td><b>Nut doubler to this plate</b> &mdash; one column, rear face<sup class="f">3.8</sup></td><td>4</td><td class="n"><b>186</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td class="op">Through &middot; the doubler of Sheet 2d bolts here, carrying the X ball nut &mdash; <b>new 2026-10-09</b><sup class="f">3.8</sup></td></tr>
@@ -2596,7 +2596,7 @@ that floor the block overhangs unsupported plate; above it, longer buys nothing 
 <p><b>3.4</b> &mdash; <b>The top stop is a bolt-on block now, not a plate with a lip.</b> The idea of a stop plate overhanging the carriage is dropped. In its place is a <b>1" 6061 block, Sheet&nbsp;3c</b>, bored &oslash;22 so the Z screw passes through it and bolted flat to the carriage plate&apos;s front face by two M5. All this sheet carries for it is TS1 and TS2 &mdash; two tapped holes at X&nbsp;322.7, Y&nbsp;62 and 92. <b>Nothing else on the plate is near them</b>: the closest rail holes are at X&nbsp;320 and 380 but out at Y&nbsp;20 and 134, and the Z casting pattern does not start until X&nbsp;360.</p>
 <p><b>3.5</b> &mdash; <b>X 10 puts the support flush with the plate's X 0 end.</b> The two holes are 46 apart, centred on Y 77 - the plate's mid - so 54 and 100.</p>
 <p><b>3.6</b> &mdash; <b>The cantilever is deliberate.</b> The bottom ~150 is over the X gantry and the rest stands above it, which is how the owner's Mega V is built: 300 mm rails there give 150 over and 150 in air, and the 400 mm rails here add the height.</p>
-<p><b>3.7</b> &mdash; <b>&#9888; X 403 leaves 4 mm to the plate's end</b>, so a &oslash;4.2 drill leaves about 1.9 mm of wall. The pattern is the casting's own - spacings 13 and 30 along X, 46 across - the same six holes the interposer carries on Sheet 6, which is how both were checked.</p>
+<p><b>3.7</b> &mdash; <b>X 398.5 leaves 8.5 mm to the plate's end</b>, so a &oslash;4.2 drill leaves about 6.4 mm of wall. It used to be 403 with 4 mm, and the 4.5 it moved is what the casting gained when it was remeasured at 77. The pattern is the casting's own - spacings 13 and 30 along X, 46 across - the same six holes the interposer carries on Sheet 6, and those spacings matching is how the shift was caught: both sheets drew the same pattern from different ends and only one had been corrected.</p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3b</b></p>
 <p><b>3b.1</b> &mdash; <b>Mic the bar, do not trust the fraction.</b> This part has been wrong twice already: the repo called it 5/8" (15.875) when it was not, then calipers read 16.41 and 16.43, then a micrometer read 16.22 on the existing bar. &#128308; <b>The new stock is a different bar and inherits none of that.</b> Its thickness sets the Z bolt engagement through Z_CBORE_WEB, and the Z plate counterbore is a one-way door &mdash; so the number has to exist before that counterbore is cut, not after.</p>
 <p><b>3b.2</b> &mdash; <b>One setup, both bars.</b> Facing them together is the only thing that makes the pair coplanar, and a pair that is not coplanar twists the Z plate across the two rails. The 1 mm is deliberately LESS than the measured step down to the ball nut housing &mdash; the remainder is closed with a full-face shim at the nut, where it can be feeler-gauged on the assembled stack instead of guessed at the mill. See z-carriage.md.</p>
