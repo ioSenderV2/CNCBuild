@@ -208,65 +208,75 @@ because the premise was wrong. **X, Y1 and Y2 all go casting → interposer → 
 beam, under the Y beams, held by **M8 flange bolts into slide-in T-nuts**. Z is the exception and
 always was, landing straight on the 1/2" X carriage plate with no interposer at all.
 
-**Six through-bolt holes**, and they cannot land directly in the extrusion: the wall at that face is
-**2.21 mm** (measured), which is 0.44 diameters for an M5 and not a thread. So an interposer carries
-them:
+**Six through-bolt holes** for the casting, and they cannot land directly in the extrusion: the wall
+at that face is **2.21 mm** (measured), which is 0.44 diameters for an M5 and not a thread. So an
+interposer carries them:
 
 | | |
 |---|---|
-| Bar | **60 mm wide × 150 mm long × 3/8" aluminium** |
-| Position | its **outboard end 30 mm past the fin's outer face**, so the casting and bar protrude through the window together |
-| Bar to extrusion | **6 × M8 flange bolts** in **3 rows**, into **slide-in T-nuts** in the `30-6060`'s bottom-face slots at 15 and 45 mm |
-| Rows, from the bar's outboard end | **82, 110 and 138** |
+| Bar | **60 mm wide × 150 mm long × 10 mm aluminium** |
+| Position | **wherever the screw puts it** - see below; it currently stands **16.5 mm past the fin's outer face**, and the casting and bar protrude through the window together |
+| Bar to extrusion | **4 × M8 flange bolts** in **2 rows**, into **slide-in T-nuts** in the `30-6060`'s bottom-face slots at 15 and 45 mm |
+| Rows, from the bar's outboard end | **105 and 135** |
 | Counterbores | **none anywhere** |
-| Casting to bar | its 6 through holes, **tapped into 3/8"** = **1.9 × D** |
+| Casting to bar | its 6 through holes, **tapped into 10 mm** = **2.0 × D** |
 
-✅ **3/8" confirmed 2026-10-02, and it is a thread-engagement decision.** M5 into 9.525 mm of 6061
-sits in the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN** against an M5
-class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds. Same thickness on X;
-Z needs none, landing on 1/2" plate.
+✅ **The 10 mm is a thread-engagement decision as well as what the plate measured.** M5 into 10 mm
+of 6061 sits at the top of the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN**
+against an M5 class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds. Same
+thickness on X; Z needs none, landing on 1/2" plate.
 
-#### The 30 mm protrusion is what sets everything else
+#### The protrusion is not chosen - the screw sets it
+
+This is the bar's second job. Besides giving the casting's six bolts something solid to land in, it
+**slides along the beam until the casting's bearing contains the screw's journal**. Place the bar
+first and the screw ends up with bare shaft showing between its thread and the casting; place the
+casting on the screw and the bar follows it. So the protrusion is an output, not an input, and it
+moves whenever anything in the screw's chain does.
 
 Measuring along the beam from its end face, with the fin occupying 0 to −10 — **the stock measured 10, not the 1/2" an earlier draft assumed**, corrected 2026-10-03:
 
 | | |
 |---|---|
 | Fin's outer face | **−10** |
-| Bar's outboard end, 30 mm proud of it | **−40** |
-| Bar's inboard end, at 150 long | **+110** |
-| **Bar length actually over the beam** | **110 mm** - the only part that can reach a T-nut |
+| Bar's outboard end, 16.5 proud of it | **−26.5** |
+| Bar's inboard end, at 150 long | **+123.5** |
+| **Bar length actually over the beam** | **123.5 mm** - the only part that can reach a T-nut |
 
 🔴 **That is why the bar went to 150 and why the counterbores disappeared.** At 120 the bolted
 length would have been 77 mm and **all four** counterbored bolts would have fallen off the beam -
-the rows at 14 and 43 landing at −28.7 and +0.3. The casting's own tapped holes occupy bar
-coordinates 28 to 71, which is mostly past the beam's end, so there is simply nowhere under the
-casting to put a T-nut bolt. **Three rows of flange bolts inboard of the casting is the only
-arrangement available**, and 150 is what makes room for the third.
+the rows at 14 and 43 landing at −28.7 and +0.3. The casting's footprint occupies bar coordinates
+**0 to 77**, so there is nowhere under the casting to put a T-nut bolt and the flange bolts all go
+inboard of it. 150 is what makes room for them.
 
-**Why 82 / 110 / 138**, which are the two checks that bind:
+**Why 105 and 135**, which are the two checks that bind:
 
-- **82 clears the casting's last tapped row at 71** - 11 mm along, 13.6 mm in 2D against the 8 mm
-  lateral offset. ⚠️ **Restated for M8 2026-10-02:** the web was computed with an M5 clearance hole
-  in the bar, and an M8 clearance hole is 9 mm rather than 5.5, which takes **1.75 mm off each
-  side**. Both rows still clear; the web is the number to re-check if either moves.
-- **138 leaves 12 mm to the bar's inboard end**, against the **8.65 mm half-head** of an M8 flange
+- **105 clears the casting's face at 77** by 28 mm, so an M8 flange's 8.65 half-head clears it by
+  19. 🔴 **There used to be a third row at 82 and it does not fit.** That row was laid out against
+  a casting believed to be 72.5 long and a bar standing 30 proud; the casting measured **77** and
+  the bar slid back, which leaves an M8 flange centred at 82 sitting **0.85 mm** off the casting's
+  face. The clearance that was being checked was to the casting's last *tapped row* at 71, not to
+  the part.
+- **135 leaves 15 mm to the bar's inboard end**, against the **8.65 mm half-head** of an M8 flange
   bolt - FLANGE_HALF, off a measured 17.3. ⚠️ **Which head this bar takes is open.** The 17.3 is the
   beam-end bolt and these six are T-slot bolts; the front strip's T-slot bolts went to a 13.8 head on
   2026-10-08 for the encoder puck, and whether the other T-slot joints follow has not been decided.
-  **The check passes either way** - 12 against 8.65 clears, and a smaller head clears by more - which
+  **The check passes either way** - 15 against 8.65 clears, and a smaller head clears by more - which
   is why it is not gating anything. 📌 **This line used to read "enough for an 11.8 mm flange
   head"** - the M5 head *diameter*, compared against an edge *distance*. That comparison was
   conservative by a factor of two and it survived the M5 → M8 change long enough to raise a false
   alarm. **Edge distance is a radius question**, which is why FLANGE_HALF and FLANGE_M5_HALF exist.
   🔴 **Two numbers in that old sentence were also just wrong**, corrected 2026-10-03: the M8 head is
   **17.3**, not 18, and the M5 flange is **13.4**, not 11.8. Neither changes the conclusion here -
-  12 against 8.65 still clears - but both were being quoted elsewhere as if measured.
+  15 against 8.65 still clears - but both were being quoted elsewhere as if measured.
 
 ✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
-over the 56 mm spread of the bolt group that is about **400 N of uplift** against six M8 of clamp.
+over the 56 mm spread of the bolt group that is about **400 N of uplift** against four M8 of
+clamp. ⚠️ **It was six until 2026-10-10** - the row at 82 came out, so the clamp is two bolts
+down and the spread along the bar is 30 rather than 56. The margin is still large, but this is the
+number to redo if the bar ever carries more.
 
-⚠️ **The casting now cantilevers 42.7 mm past the beam's end**, carried by the bar alone. That is
+⚠️ **The casting cantilevers 26.5 mm past the beam's end**, carried by the bar alone. That is
 accepted, and it is the same call made on X: roughly 2.5 kg at that reach is under 2 N·m, and the
 thrust it carries runs **along** the beam rather than down.
 
