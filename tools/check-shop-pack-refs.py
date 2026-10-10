@@ -49,12 +49,40 @@ def tags_in_drawing(block):
     return [text_of(t) for t in re.findall(r'<text class="ref"[^>]*>(.*?)</text>', block, re.S)]
 
 
+def expand(ref):
+    """The members a row ref stands for.
+
+    Schedules write ranges two ways and a drawing may tag either the range as a whole
+    or every hole in it:
+        X1-X16   -> X1 X2 ... X16        (numeric tail)
+        R1a-g    -> R1a R1b ... R1g      (letter tail, prefix carried)
+        TS1, TS2 -> TS1 TS2              (comma list)
+    """
+    parts = [p.strip() for p in ref.split(',') if p.strip()]
+    if len(parts) > 1:
+        return parts
+
+    m = re.match(r'^([A-Za-z]+)(\d+)-(?:\1)?(\d+)$', ref)
+    if m:
+        pre, lo, hi = m.group(1), int(m.group(2)), int(m.group(3))
+        if lo <= hi:
+            return ['%s%d' % (pre, i) for i in range(lo, hi + 1)]
+
+    m = re.match(r'^([A-Za-z]+\d+)([a-z])-(?:\1)?([a-z])$', ref)
+    if m:
+        pre, lo, hi = m.group(1), m.group(2), m.group(3)
+        if lo <= hi:
+            return ['%s%s' % (pre, chr(c)) for c in range(ord(lo), ord(hi) + 1)]
+
+    return [ref]
+
+
 def covered(ref, tags):
-    """A row ref may be tagged as a whole ("K1-K6") or by its parts ("TS1" + "TS2")."""
+    """Tagged as the whole range, or with every member tagged individually."""
     if ref in tags:
         return True
-    parts = [p.strip() for p in ref.split(',') if p.strip()]
-    return len(parts) > 1 and all(p in tags for p in parts)
+    members = expand(ref)
+    return len(members) > 1 and all(m in tags for m in members)
 
 
 def main():
