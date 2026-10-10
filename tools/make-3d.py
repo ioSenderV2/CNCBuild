@@ -296,18 +296,25 @@ def main() -> int:
             *span(axis, a0, a1, c0 - v["NUT_FACE_X"] / 2, c0 + v["NUT_FACE_X"] / 2,
                   min(f, f - face_dir * 2), max(f, f - face_dir * 2)))
 
-    def rails(axis, c0, c1, start, grow):
+    def rails(axis, c0, start, grow, seat, up):
         """The open rails joining the casting's screw end to its motor plate.
 
         Drawn SOLID, which is conservative: the real casting is open between
         them. A clearance the model shows is therefore real; one it denies may
         not be.
+
+        THEY RUN FROM THE SEATING PLANE, not from the screw axis. The whole of
+        CASTING_FOOTPRINT_L is bolted face - Sheet 3a's K1-K6 are spread across
+        all 72.5 of it - so the casting is flat against the interposer for its
+        full length. Drawing them centred on the axis left them floating 10
+        below it, which is what the view showed.
         """
         n = v["CASTING_FOOTPRINT_L"] - v["BK12_L"]
         a0, a1 = sorted((start, start + grow * n))
-        h, w = v["CASTING_RAIL_H"] / 2, v["CASTING_FOOTPRINT_W"] / 2
+        w = v["CASTING_FOOTPRINT_W"] / 2
+        s0, s1 = sorted((seat, seat + up * v["CASTING_RAIL_H"]))
         box("Casting rails", "drive", SUP,
-            *span(axis, a0, a1, c0 - w, c0 + w, c1 - h, c1 + h))
+            *span(axis, a0, a1, c0 - w, c0 + w, s0, s1))
 
     def motor(axis, c0, c1, plate_at, grow):
         """The casting's motor plate and the NEMA 23 hanging off it."""
@@ -333,7 +340,7 @@ def main() -> int:
         nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
         cast_in = y_hi - v["BK12_L"]
         support("casting", "y", cx, y_axis_z, cast_in, +1, y_seat_z, -1)
-        rails("y", cx, y_axis_z, cast_in + v["BK12_L"], +1)
+        rails("y", cx, cast_in + v["BK12_L"], +1, y_seat_z, -1)
         motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
 
     # ------------------------------------------------ X, on TOP of its beam
@@ -346,7 +353,7 @@ def main() -> int:
     support("bf12", "x", x_axis_y, x_axis_z, x_hi, -1, x_seat_z, +1)
     nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
     support("casting", "x", x_axis_y, x_axis_z, x_lo + v["BK12_L"], -1, x_seat_z, +1)
-    rails("x", x_axis_y, x_axis_z, x_lo, -1)
+    rails("x", x_axis_y, x_lo, -1, x_seat_z, +1)
     motor("x", x_axis_y, x_axis_z, x_lo + v["BK12_L"] - v["CASTING_FOOTPRINT_L"], -1)
 
     # ------------------------------------------------ Z, up the carriage plate
@@ -360,7 +367,7 @@ def main() -> int:
     nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
     z_cast_in = z_hi - v["BK12_L"]
     support("casting", "z", zp_cx, z_axis_y, z_cast_in, +1, cp_front, +1)
-    rails("z", zp_cx, z_axis_y, z_cast_in + v["BK12_L"], +1)
+    rails("z", zp_cx, z_cast_in + v["BK12_L"], +1, cp_front, +1)
     motor("z", zp_cx, z_axis_y, z_cast_in + v["CASTING_FOOTPRINT_L"], +1)
 
     # ---- linear rails and bearing blocks ---------------------------------
