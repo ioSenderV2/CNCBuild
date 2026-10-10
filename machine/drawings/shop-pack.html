@@ -30,8 +30,9 @@
   @page s8 { @bottom-left { content: "Shop Pack — SHEET 8, 2in front joining strip"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s9 { @bottom-left { content: "Shop Pack — SHEET 9, full-height outboard plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s10 { @bottom-left { content: "Shop Pack — SHEET 10, 120 mm X back joining plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s11 { @bottom-left { content: "Shop Pack — SHEET 11, X nut sole plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   .pg-s5 { page: s5 } .pg-s6 { page: s6 } .pg-s7 { page: s7 } .pg-ck { page: sck } .pg-nt { page: snt }
-  .pg-s8 { page: s8 } .pg-s9 { page: s9 } .pg-s10 { page: s10 }
+  .pg-s8 { page: s8 } .pg-s9 { page: s9 } .pg-s10 { page: s10 } .pg-s11 { page: s11 }
   body { font: 11pt/1.45 "Segoe UI", system-ui, sans-serif; color: #111; max-width: 190mm; margin: 0 auto; }
   h1 { font-size: 20pt; margin: 0 0 2mm; }
   h2 { font-size: 15pt; margin: 0 0 1mm; border-bottom: 2px solid #111; padding-bottom: 1mm; }
@@ -145,6 +146,7 @@ its own amber rows:</p>
 <tr><td>8</td><td>Front joining strip</td><td>1000 &times; 50.8 &times; 1/8" 6061 <span style="font-weight:400">&mdash; thickness open</span></td><td>3</td></tr>
 <tr><td>9</td><td>Full-height outboard plate</td><td>998.54 &times; 301.625 &times; 10 gauge (3.429) cold-rolled steel</td><td>2</td></tr>
 <tr><td>10</td><td>X back joining plate</td><td>998.54 &times; 119.06 &times; 1/4" 6061-T651</td><td>1</td></tr>
+<tr><td><b>11</b></td><td><b>X nut sole plate</b> <span style="font-weight:400">&mdash; Sheet 5&apos;s shape, one root row</span></td><td>trapezoid 154 &rarr; 46, 1/4" &mdash; <b>length amber</b></td><td>1</td></tr>
 </table>
 <p style="margin:0 0 .7rem;font-size:9.5pt">The sheet count in the page furniture is the cross-check:
 if the printed pack has sheets this table does not name, this table is the stale one.</p>
@@ -207,6 +209,8 @@ figure — the joint works by friction, not bearing, and the float is wanted.</l
 <tr><td><b>Front joining strip</b></td><td>3</td><td>45 &times; 1000 &times; 4 mm 6061</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>14 holes each, two T-slot rows &mdash; Sheet 8<sup class="f">8.4</sup></td></tr>
 <tr><td><b>Full-height outboard plate</b></td><td>2</td><td>11 7/8" &times; 39 5/16" &times; 10 gauge steel</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>35 holes each &mdash; Sheet 9. <b>Steel, so budget the time</b><sup class="f">8.4</sup></td></tr>
 <tr><td><b>X back joining plate</b></td><td>1</td><td>4 11/16" &times; 39 5/16" &times; 1/4" 6061</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>28 holes in four rows &mdash; Sheet 10<sup class="f">8.4</sup></td></tr>
+<tr><td><b>Nut doubler block</b></td><td><b>3</b></td><td>1/2" alu, 154 &times; 45</td><td>Drill only</td><td>Was 2 &mdash; <b>the X axis needs one too</b>, installed inverted. Sheet 2d<sup class="f">11.1</sup></td></tr>
+<tr class="unk"><td><b>X nut sole plate</b></td><td>1</td><td>1/4" alu, Sheet 5&apos;s trapezoid</td><td>Two angled cuts + 4 holes</td><td>&#9888; <b>Shape only &mdash; its length and both hole rows are amber</b>, Sheet 11<sup class="f">11.2</sup></td></tr>
 </table>
 
 <div class="warn">
@@ -826,7 +830,7 @@ Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><b
 <tr><td>P2</td><td>Horizontal, bar to plate &mdash; mates H2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">9</td><td class="op">Through the bar</td></tr>
 </table>
 
-<h3 style="margin-top:7mm">Sheet 2d &mdash; the Y nut doubler block (quantity 2)
+<h3 style="margin-top:7mm">Sheet 2d &mdash; the nut doubler block (quantity 3)
 <span style="font-weight:400;font-size:10pt">&mdash; machined on its own, on the <b>same WCS</b> as 2a</span></h3>
 <div class="stock">
 <b>154 long &times; 45 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b> &mdash; <b>cut from the 45 mm offcut</b> left
@@ -1084,6 +1088,7 @@ overrun. Measured 10 mm of ball-free block, so 3 mm spare.</figcaption>
 <tr><td>K1&ndash;K6</td><td><b>Z cast stepper frame</b> (the BK12 end)</td><td>6</td><td class="n">360, 373, 403</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br>&#9888; <b>X 403 leaves 4 mm to the end</b><sup class="f">3.7</sup></td></tr>
 <tr><td><b>S1</b></td><td><b>Sensor bore</b> &mdash; centred on the block pattern</td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
 <tr><td>X1&ndash;X16</td><td><b>Four X-axis bearing blocks</b>, far face</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n">20, 56, 98, 134</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b><sup class="f">3.2</sup></td></tr>
+<tr><td><b>XD1&ndash;XD4</b></td><td><b>Nut doubler to this plate</b> &mdash; one column, rear face<sup class="f">3.8</sup></td><td>4</td><td class="n"><b>202</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">5</td><td class="op">Through &middot; the doubler of Sheet 2d bolts here, carrying the X ball nut &mdash; <b>new 2026-10-09</b><sup class="f">3.8</sup></td></tr>
 <tr class="unk"><td>TS1&hellip;</td><td>Top stop plate fixing</td><td>?</td><td class="n">UNKNOWN</td><td class="n">UNKNOWN</td><td class="d">?</td><td class="op">Keep the overhang short<sup class="f">3.4</sup></td></tr>
 </table>
 
@@ -1855,6 +1860,36 @@ is a bought 12" rather than the beam's own 120.</figcaption>
 </table>
 </div>
 
+<!-- ============================================================ -->
+<div class="plate pg-s11">
+<h2 id="sheet-11">Sheet 11 &mdash; the X nut sole plate (quantity 1)</h2>
+<div class="stock">
+<b>Sheet&nbsp;5&apos;s trapezoid, 1/4" 6061</b> &mdash; <b>154 wide at the root</b>, tapering to
+<b>46</b>.<br>
+<b>Why it exists.</b> The X ball screw runs on TOP of the X beam, so the nut is above the carriage
+and something has to reach up and over to it. The <b>doubler of Sheet&nbsp;2d</b> bolts to the back
+of the X carriage plate with its top edge level with the nut&apos;s mounting face; this plate lies
+across that top edge and bolts down into both the doubler and the nut.<sup class="f">11.1</sup><br>
+&#128308; <b>The bolts go in from ABOVE</b>, which is the whole reason the plate is on top &mdash;
+they stay reachable while the gantry is being assembled. Same call as the inverted Y nut.<br>
+<span class="wcs">ONE root row, not two.</span> Sheet&nbsp;5 has a second row into the X end
+plate&apos;s end face; there is no second plate here, so that row is <b>deleted</b> rather than left
+blank.<sup class="f">11.1</sup>
+</div>
+
+<h3>Hole schedule &mdash; machining coordinates</h3>
+<table class="sched">
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">from the carriage plate&apos;s rear face</span></th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr class="unk"><td>N1&ndash;N4</td><td><b>M5 clearance, plate down into the nut</b> &mdash; the nut&apos;s own threads, <b>pattern 40 &times; 24</b></td><td>4</td><td class="n"><b>&plusmn;20 about the screw axis</b></td><td class="n"><b>&plusmn;12 about the nut centre</b></td><td class="d">5.5</td><td class="op">Through &middot; &#9888; <b>the screw axis is NOT established on X</b> &mdash; see 11.2</td></tr>
+<tr class="unk"><td>R1&ndash;R4</td><td><b>Into the DOUBLER&apos;s top edge</b> &mdash; the same four Sheet&nbsp;2d taps</td><td>4</td><td class="n">centred in the doubler&apos;s thickness</td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">5.5</td><td class="op">Through &middot; M5 into the doubler&apos;s edge, <b>20 deep MAX</b><sup class="f">11.2</sup></td></tr>
+</table>
+
+<p style="font-size:9.5pt;margin:0 0 3mm"><b>&#9888; Both rows are amber and the plate&apos;s LENGTH
+is amber with them.</b> The vertical chain is settled &mdash; the doubler&apos;s top edge is at 222
+above the carriage plate&apos;s bottom. <b>The horizontal chain is not</b>, and it is what sets how
+far this plate reaches.<sup class="f">11.2</sup></p>
+</div>
+
 <div class="plate pg-nt">
 <h2 id="notes">Notes</h2>
 <p class="sub">The reasoning behind the sheets. <b>Nothing here is a dimension to work from</b> &mdash; every number that gets drilled is on its own sheet. These explain why, and record what was tried and rejected, so neither has to sit on a page someone is working from.</p>
@@ -1974,6 +2009,10 @@ state.</b> That is the whole reason this pack exists — so take anything plausi
 <p><b>9.4</b> &mdash; <b>The 9 mm hole is the slot.</b> An earlier draft wanted the holes slotted progressively toward the ends for thermal differential. Unnecessary: &oslash;9 on M8 is 1 mm of float per hole, several times the whole differential across a metre of plywood in a climate-controlled shop, and the Y risers were reamed to 9 for the same reason. <b>Do not transfer that conclusion to the T-nut rows</b> &mdash; those are a preloaded friction joint whose whole job is shear transfer, and they are a different argument.</p>
 <p><b>10.1</b> &mdash; <b>X only, and that asymmetry is deliberate.</b> The Y beams do not move and bolt to the torsion box, so their outboard plate reaches all the way down and does this job on the way past. The X beam moves and has nothing to bolt down to, so it keeps a plain 120 back plate and nothing more.</p>
 <p><b>10.2</b> &mdash; <b>Same X stations as Sheets 8 and 9</b> &mdash; 50 then 150, seven per row. See 8.3.</p>
+<p><b>3.8</b> &mdash; <b>The X ball nut had nothing to attach to, and this column is it.</b> The X screw runs on TOP of the beam, so the nut is above the carriage and the drive has to reach up and over. The <b>doubler of Sheet&nbsp;2d</b> &mdash; the same block the Y ends use, now made three times &mdash; bolts to this plate&rsquo;s rear face with its bottom edge at <b>177</b> and its top edge at <b>222</b>, which is the nut&rsquo;s mounting face: 167 to the beam top, 10 for the interposer, 25 for the casting&rsquo;s axis, 20 for the nut&rsquo;s own h off the DSG1605 page. The column lands at <b>202</b> because it sits 25 up the block, the same DOUBLER_BOLT_X the Y side uses. <b>Sheet&nbsp;11</b> is the plate that lies across the top. &#9888; <b>This plate already exists, dyed and undrilled</b>, and nothing in its schedule put a doubler on it before 2026-10-09 &mdash; these four are genuinely new, not a correction.</p>
+<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 11</b></p>
+<p><b>11.1</b> &mdash; <b>It is Sheet&nbsp;5 with one row taken out, and the same part at the other end of the machine.</b> On Y the ball nut hangs under the beam, its mounting face points DOWN, and the sole bracket bolts UP into it off a doubler on the X end plate. On X the screw sits on TOP of the beam, so everything inverts: the face points up and the plate lies over it. The root seating is the reason the row count differs &mdash; Sheet&nbsp;5 bolts into a doubler AND the end plate behind it, a 24.38 stack, and takes a row into each. Here the doubler stands on the carriage plate&apos;s back face with nothing behind it, so there is one row.</p>
+<p><b>11.2</b> &mdash; <b>&#9888; THE HORIZONTAL CHAIN DOES NOT EXIST IN THIS REPO AND MUST NOT BE COPIED FROM SHEET&nbsp;5.</b> Sheet&nbsp;5&apos;s overall 98.19 is SOLE_BRACKET_L, and that derives from SCREW_AXIS_X = 72.19, which is <b>12.19 plate + 30 rail stack + 30 half beam</b> &mdash; a chain measured from the X end plate&apos;s INNER face on the Y axis. None of it transfers. On X the plate&apos;s root sits on the carriage plate&apos;s REAR face, the rail stack and half the beam are still in the way, but the end plate&apos;s 12.19 is not, and nothing in the registry records where the X screw axis lands relative to that rear face. <b>Two numbers close this sheet</b>: the screw axis out from the carriage plate&apos;s rear face, and the doubler&apos;s stock thickness, which sets the R-row&apos;s X the way ROOT_BOLT_X_DOUBLER&apos;s 18.285 does on Y. &#128308; <b>Until both are measured this plate has no length and no hole positions</b> &mdash; the shape is Sheet&nbsp;5&apos;s and nothing else here is settled.</p>
 <p><b>10.3</b> &mdash; <b>Ordered 4 11/16" &times; 39 5/16", and the sheet draws 120 &times; 1000.</b> The 120 was never arbitrary: it is the stacked pair's full section height, so the plate reaches all four back slots. The sheared piece is 119.06, <b>0.94 short</b>. &#9989; <b>It costs nothing, and the reason is the reference edge.</b> This sheet measures Y <i>down from the top edge</i>, which is the beam's top face, so the four rows at 15 / 45 / 75 / 105 are fixed against the beam and the shortfall falls off the bottom &mdash; 14.06 below the last row where 15 was intended, against a &oslash;9 clearance hole. &#128308; <b>Do not re-reference this sheet to its bottom edge.</b> Sheets 1a, 1b, 7 and 9 all measure from their bottom edges because those edges <i>bear on the torsion box</i>; this plate bolts to a moving beam and its bottom edge bears on nothing. The two conventions are each right for their own part, and footnote 9.3 is the argument for the other one. The 1.46 of length is the same slack as Sheet 9 &mdash; see 9.5.</p>
 </div>
 

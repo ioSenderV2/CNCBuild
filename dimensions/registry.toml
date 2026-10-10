@@ -341,6 +341,11 @@ note = "167 - the X beam\u2019s top face above the BOTTOM of the X carriage plat
 source = "his, 2026-10-09"
 
 [[dim]]
+sym = "X_DOUBLER_BOLT_XC"
+expr = "X_DOUBLER_BOTTOM + DOUBLER_BOLT_X"
+note = "202 - the X doubler's bolt column where it lands ON THE X CARRIAGE PLATE, measured from that plate's bottom edge, which is Sheet 3a's X 0. It is the doubler's own DOUBLER_BOLT_X of 25 carried up to where the block sits. 🔴 SHEET 3a HAS TO GAIN FOUR HOLES FOR IT - the carriage plate exists, dyed and undrilled, and nothing in its schedule put a doubler on it until 2026-10-09. The Y side has the same column at the same 25 within the block, which is why DOUBLER_BOLT_X is shared rather than duplicated."
+
+[[dim]]
 sym = "X_NUT_FACE_Z"
 expr = "X_BEAM_TOP_XC + T_INTERPOSER + CASTING_AXIS_ABOVE_FOOT + NUT_AXIS_TO_FACE"
 note = "222 - the X ball nut\u2019s mounting face, above the bottom of the X carriage plate. The chain is the beam top, the interposer the casting sits on, the casting\u2019s own axis height, then the nut\u2019s h. \u2705 EVERY TERM COMES FROM A PART OR A PAGE: 167 his measurement, 10 the interposer he bought, 25 measured off the casting, 20 the DSG1605 page. On X the face points UP because the screw runs on top of the beam - the mirror of Y, where the nut hangs and its face points down."
