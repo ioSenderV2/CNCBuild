@@ -334,11 +334,9 @@ note = "25 - the cast stepper frame\u2019s screw axis above its own foot, measur
 
 [[dim]]
 sym = "X_BEAM_TOP_XC"
-value = 167
-provenance = "measured"
-note = "167 - the X beam\u2019s top face above the BOTTOM of the X carriage plate, his 2026-10-09. \U0001f534 IT IS REFERENCED TO THE CARRIAGE PLATE, NOT TO THE TORSION BOX, and that is deliberate: everything bolted to the carriage plate is laid out from that plate\u2019s own bottom edge, so a height taken from the box would have to be converted every time and would go stale the moment the gantry moved. X_BEAM_TOP_Z is the box-referenced figure and the two are not interchangeable."
-source = "his, 2026-10-09"
-
+expr = "X_BLOCK_UPPER_CENTRE + (BEAM_H - RAIL_HIGH_Z)"
+note = "151 - the X beam’s top face above the BOTTOM of the X carriage plate. 🔴 IT WAS 167 AND CARRIED AS MEASURED UNTIL 2026-10-10, AND IT CANNOT EVER HAVE BEEN MEASURED: the X carriage plate has never been on the beam, so there was no such distance to put a rule across. His, 2026-10-10. It is DERIVED now and the chain is his: Sheet 3a puts the upper block row X4/8/12/16 at 152 up the plate, the Vevor block page puts 6 from a hole centre to the block’s side, so that side is at 158 - and the block stands 7 proud of the beam top, which is BLOCK_W/2 less the rail’s 15 from the beam’s top face. 158 less 7 is 151. The expression reaches the same point more directly, through the block CENTRE, which is the rail centre: X_BLOCK_UPPER_CENTRE plus the beam’s own 15 above that rail. ✅ THE LOWER ROW AGREES: X1/5/9/13 at 30 and X2/6/10/14 at 62 centre the lower block at 46, less the same 15 puts the beam’s BOTTOM at 31, and 31 plus BEAM_H is 151. ⚠ THE 16 IT TOOK OFF MOVES REAL HOLES - X_NUT_FACE_Z, X_DOUBLER_BOTTOM and X_DOUBLER_BOLT_XC all come down with it, so Sheet 3a’s back-face holes are 16 lower than they were drawn. IT IS REFERENCED TO THE CARRIAGE PLATE, NOT TO THE TORSION BOX, and that is deliberate: everything bolted to the carriage plate is laid out from that plate’s own bottom edge, so a height taken from the box would have to be converted every time and would go stale the moment the gantry moved. X_BEAM_TOP_Z is the box-referenced figure and the two are not interchangeable."
+source = "his, 2026-10-10"
 [[dim]]
 sym = "X_BLOCK_UPPER_CENTRE"
 value = 136
@@ -348,7 +346,7 @@ note = "136 - the upper pair of X-axis bearing blocks, centred between Sheet 3a'
 [[dim]]
 sym = "X_DOUBLER_BLOCK_CLEAR"
 expr = "X_DOUBLER_BOTTOM - X_BLOCK_UPPER_CENTRE - (BLOCK_W / 2)"
-note = "19 - the gap up the plate between the upper X bearing blocks and the bottom of the nut doubler. They share the plate's REAR face, and nothing had checked they clear until the doubler was drawn on Sheet 3a on 2026-10-09. ✅ THE REASON THEY CLEAR IS STRUCTURAL, NOT ARITHMETIC - his, 2026-10-09: the doubler sits ABOVE THE TOP OF THE X BEAM, and the blocks ride the beam, so they cannot reach it. X_DOUBLER_BOTTOM less X_BEAM_TOP_XC is exactly T_INTERPOSER, 10, because the nut height is built up from the beam top through that interposer. The 19 is the slack that follows, and it is the number to re-read if the nut height ever changes - but the ordering is guaranteed by the chain, not by this value staying positive."
+note = "3 - the gap up the plate between the upper X bearing blocks and the bottom of the nut doubler. They share the plate's REAR face, and nothing had checked they clear until the doubler was drawn on Sheet 3a on 2026-10-09. ✅ THE REASON THEY CLEAR IS STRUCTURAL, NOT ARITHMETIC - his, 2026-10-09: the doubler sits ABOVE THE TOP OF THE X BEAM, and the blocks ride the beam, so they cannot reach it. X_DOUBLER_BOTTOM less X_BEAM_TOP_XC is exactly T_INTERPOSER, 10, because the nut height is built up from the beam top through that interposer. The 3 is the slack that follows - it was 19 until X_BEAM_TOP_XC came down 16 on 2026-10-10, and 3 is tight enough to be worth knowing even though nothing depends on it. It is the number to re-read if the nut height ever changes - but the ordering is guaranteed by the chain, not by this value staying positive."
 
 [[dim]]
 sym = "X_SCREW_AXIS"
@@ -378,17 +376,17 @@ note = "80 - the outboard nut row. 🔴 THESE TWO BOLT INTO THE NUT'S OWN THREAD
 [[dim]]
 sym = "X_DOUBLER_BOLT_XC"
 expr = "X_DOUBLER_BOTTOM + DOUBLER_BOLT_X"
-note = "202 - the X doubler's bolt column where it lands ON THE X CARRIAGE PLATE, measured from that plate's bottom edge, which is Sheet 3a's X 0. It is the doubler's own DOUBLER_BOLT_X of 25 carried up to where the block sits. 🔴 SHEET 3a HAS TO GAIN FOUR HOLES FOR IT - the carriage plate exists, dyed and undrilled, and nothing in its schedule put a doubler on it until 2026-10-09. The Y side has the same column at the same 25 within the block, which is why DOUBLER_BOLT_X is shared rather than duplicated."
+note = "186 - the X doubler's bolt column where it lands ON THE X CARRIAGE PLATE, measured from that plate's bottom edge, which is Sheet 3a's X 0. It is the doubler's own DOUBLER_BOLT_X of 25 carried up to where the block sits. 🔴 SHEET 3a HAS TO GAIN FOUR HOLES FOR IT - the carriage plate exists, dyed and undrilled, and nothing in its schedule put a doubler on it until 2026-10-09. The Y side has the same column at the same 25 within the block, which is why DOUBLER_BOLT_X is shared rather than duplicated."
 
 [[dim]]
 sym = "X_NUT_FACE_Z"
 expr = "X_BEAM_TOP_XC + T_INTERPOSER + CASTING_AXIS_ABOVE_FOOT + NUT_AXIS_TO_FACE"
-note = "222 - the X ball nut\u2019s mounting face, above the bottom of the X carriage plate. The chain is the beam top, the interposer the casting sits on, the casting\u2019s own axis height, then the nut\u2019s h. \u2705 EVERY TERM COMES FROM A PART OR A PAGE: 167 his measurement, 10 the interposer he bought, 25 measured off the casting, 20 the DSG1605 page. On X the face points UP because the screw runs on top of the beam - the mirror of Y, where the nut hangs and its face points down."
+note = "206 - the X ball nut\u2019s mounting face, above the bottom of the X carriage plate. The chain is the beam top, the interposer the casting sits on, the casting\u2019s own axis height, then the nut\u2019s h. \u2705 EVERY TERM COMES FROM A PART OR A PAGE: 151 from Sheet 3a\u2019s own block rows, 10 the interposer he bought, 25 measured off the casting, 20 the DSG1605 page. \u26a0 IT WAS 222 UNTIL 2026-10-10, on an X_BEAM_TOP_XC of 167 that could never have been measured. On X the face points UP because the screw runs on top of the beam - the mirror of Y, where the nut hangs and its face points down."
 
 [[dim]]
 sym = "X_DOUBLER_BOTTOM"
 expr = "X_NUT_FACE_Z - DOUBLER_H"
-note = "177 - where the X doubler\u2019s BOTTOM edge sits on the back of the X carriage plate. Its TOP edge is X_NUT_FACE_Z, carrying four M5 tapped into that top edge for the X nut sole plate, the way Sheet 2d\u2019s R1-R4 tap into that block\u2019s end face. \U0001f534 THE BOTTOM EDGE IS WHAT GETS DIMENSIONED AND THE TOP IS WHERE THE WORK IS - read them the wrong way round and the part sits DOUBLER_H low with the sole plate missing the nut entirely. \u2705 His reason for putting the sole plate on top: the bolts then come from ABOVE, where they stay reachable during assembly. The same instinct that inverted the Y nut."
+note = "161 - where the X doubler\u2019s BOTTOM edge sits on the back of the X carriage plate. Its TOP edge is X_NUT_FACE_Z, carrying four M5 tapped into that top edge for the X nut sole plate, the way Sheet 2d\u2019s R1-R4 tap into that block\u2019s end face. \U0001f534 THE BOTTOM EDGE IS WHAT GETS DIMENSIONED AND THE TOP IS WHERE THE WORK IS - read them the wrong way round and the part sits DOUBLER_H low with the sole plate missing the nut entirely. \u2705 His reason for putting the sole plate on top: the bolts then come from ABOVE, where they stay reachable during assembly. The same instinct that inverted the Y nut."
 
 [[dim]]
 sym = "NUT_SFU_PATTERN"
