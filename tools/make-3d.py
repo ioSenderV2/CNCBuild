@@ -123,7 +123,14 @@ def main() -> int:
             x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, v["SIDE_TONGUE_END"], tz1)
 
     # ---- the plates that stand on the skin -------------------------------
-    box("Rear plate", "plates", 0x8899AA, 0, 0, 0, W, v["T_REAR_PLATE"], v["REAR_PLATE_W"])
+    # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side
+    # plate's - his, 2026-10-10 - and it is drawn at the length it was BOUGHT,
+    # REAR_PLATE_L_ORDERED, rather than at the flush envelope REAR_PLATE_L. The
+    # side plate at each end is outboard of it, and the far end runs past the
+    # machine's outer width by whatever the delivered piece gives.
+    rpx = v["Y1_EXT_FACE_X"]
+    box("Rear plate", "plates", 0x8899AA, rpx, 0, 0,
+        rpx + v["REAR_PLATE_L_ORDERED"], v["T_REAR_PLATE"], v["REAR_PLATE_W"])
 
     sp = v["T_SIDE_PLATE"]
     y0, y1 = v["SIDE_TONGUE_START"], v["SIDE_TONGUE_END"]
@@ -839,7 +846,8 @@ def main() -> int:
 
     # the back tongue laps the rear plate from BEHIND, so these drive -y
     for i in range(8):
-        x = v["XBOX_X_FIRST"] + i * v["XBOX_PITCH"]
+        # Sheet 7 coordinates, so off the plate's left edge like the RP_ columns
+        x = rp0 + v["XBOX_X_FIRST"] + i * v["XBOX_PITCH"]
         bolt_stack("y", x, v["XBOX_ROW_Y"], v["T_REAR_PLATE"], -TT, -1)
 
     # each side tongue laps its plate from OUTBOARD

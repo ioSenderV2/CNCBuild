@@ -27,7 +27,7 @@
   .pg-s2 { page: s2 } .pg-s3a { page: s3a } .pg-s3b { page: s3b } .pg-s3c { page: s3c }
   .pg-s4 { page: s4 }
   @page s6 { @bottom-left { content: "Shop Pack — SHEET 6, interposer"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
-  @page s7 { @bottom-left { content: "Shop Pack — SHEET 7, 1210.73 mm rear plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
+  @page s7 { @bottom-left { content: "Shop Pack — SHEET 7, 1210.47 mm rear plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s8 { @bottom-left { content: "Shop Pack — SHEET 8, 2in front joining strip"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s9 { @bottom-left { content: "Shop Pack — SHEET 9, full-height outboard plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s10 { @bottom-left { content: "Shop Pack — SHEET 10, 120 mm X back joining plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
@@ -165,7 +165,7 @@ its own amber rows:</p>
 <tr><td><a href="#sheet-4">4</a></td><td>Z plate</td><td>164 &times; 175 &times; 1/2"</td><td>1</td></tr>
 <tr><td><a href="#sheet-5">5</a></td><td>Y nut sole bracket</td><td>trapezoid 154 &rarr; 46 over 98.19 &times; 1/4"</td><td>2</td></tr>
 <tr><td><a href="#sheet-6">6</a></td><td>Cast stepper frame interposer</td><td>150 &times; 60 &times; 3/8" 6061</td><td>3</td></tr>
-<tr><td><a href="#sheet-7">7</a></td><td>Rear plate</td><td>1210.73 &times; 301.625 &times; 1/4" hot-rolled A36 steel</td><td>1</td></tr>
+<tr><td><a href="#sheet-7">7</a></td><td>Rear plate</td><td>1210.47 &times; 301.625 &times; 1/4" hot-rolled A36 steel</td><td>1</td></tr>
 <tr><td><a href="#sheet-8">8</a></td><td>Front joining strip</td><td>1000 &times; 50.8 &times; 1/8" 6061 <span style="font-weight:400">&mdash; thickness open</span></td><td>3</td></tr>
 <tr><td><a href="#sheet-9">9</a></td><td>Full-height outboard plate</td><td>998.54 &times; 301.625 &times; 10 gauge (3.429) cold-rolled steel</td><td>2</td></tr>
 <tr><td><a href="#sheet-10">10</a></td><td>X back joining plate</td><td>998.54 &times; 119.06 &times; 1/4" 6061-T651</td><td>1</td></tr>
@@ -1918,9 +1918,9 @@ before drilling.</b><sup class="f">6.4</sup></p>
 </div>
 
 <div class="plate pg-s7">
-<h2 id="sheet-7">Sheet 7 &mdash; the 1210.73 mm rear plate (quantity 1)</h2>
+<h2 id="sheet-7">Sheet 7 &mdash; the 1210.47 mm rear plate (quantity 1)</h2>
 <div class="stock">
-<b>1210.73 long &times; 11 7/8" (301.625) wide &times; 1/4" hot-rolled A36 steel</b><br>
+<b>1210.47 long &times; 11 7/8" (301.625) wide &times; 1/4" hot-rolled A36 steel</b><br>
 <b>One plate carries both Y beams</b> and is also the rear shear panel.<br>
 <span class="wcs">WCS ORIGIN: the plate's installed <b>LOWER-LEFT</b> corner, clamped right side up.</span><br>
 &#128308; <b>Y 0 is the installed BOTTOM edge</b> and Y runs up to <b>301.625</b> at the top. The
@@ -1933,22 +1933,28 @@ top skin because the FIN's window puts the beam there, so A1&ndash;A16 read the 
 182 above the box's top skin, the interposer takes 10 off that and BF12's own base-to-first-row
 takes 7 more, so the rows are 165 and 147. <b>Nothing about the delivered plate can move them</b>,
 which was not true while they were converted down from the installed top edge.<sup class="f">7.4</sup><br>
-<b>X</b> along the 1210.73 from the left end.<br>
-&#128308; <b>The length is NO LONGER a window.</b> It derives &mdash; 1084.38 between the beams plus
-2 &times; (60 extrusion + 1/8" side plate) &mdash; and <b>A9&ndash;A16 are absolute from the left
-edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="f">7.1</sup>
+<b>X 0 is the plate's LEFT EDGE, set flush with the Y1 extrusion's OUTBOARD FACE</b> &mdash;
+the side plate is not in it and stands proud of the plate's end by its own thickness.<br>
+&#128308; <b>The Y1 holes are exact and the Y2 holes are not.</b> Everything at the Y1 end is
+measured straight off that face, which is why A1&ndash;A8 land on a round 15 and 45 and BF12 on
+7 and 53. The Y2 end is <b>1204.38 away by the beam spacing</b>, not by this plate's length, so
+<b>measure the built spacing before drilling that end</b> and treat the Y2 numbers below as
+provisional. The delivered plate runs about 6 past Y2's face, so there is material either
+way.<sup class="f">7.1</sup>
 </div>
 
 <figure>
 <svg viewBox="-46 -30 682 510" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- 1210.73 mm REAR PLATE, clamped RIGHT SIDE UP: the WCS is the installed LOWER-LEFT
+  <!-- 1210.47 mm REAR PLATE, clamped RIGHT SIDE UP: the WCS is the installed LOWER-LEFT
        corner, Y 0 is the installed BOTTOM edge and Y runs UP the page to 301.625.
        Scale 0.36 along both axes.
        SVG x = X * 0.36 ; SVG y = (301.625 - Y) * 0.36 -->
 
   <rect x="0" y="0" width="435.86" height="108.59" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the 1/8in side plates, which the rear plate runs FLUSH with: X 0-3.175 and 1207.555-1210.73 -->
+  <!-- the side plates, now OUTBOARD of this plate's ends rather than flush with
+       them: the left one sits off the drawing at negative X, the right one past
+       X 1204.38. Drawn at the ends for orientation only. -->
   <rect x="0" y="0" width="1.14" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
   <rect x="434.72" y="0" width="1.14" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
   <!-- the two beam footprints, 60 wide x 120 tall, Y 182 to 302 - so the beam's top face is
@@ -1960,11 +1966,11 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
 
   <!-- X1-X8 row at Y 30, 30 up from the installed bottom edge -->
   <line x1="0" y1="97.79" x2="435.86" y2="97.79" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
-  <text class="lbl" x="4" y="94" fill="#b06000">X1&ndash;X8 torsion-box row, Y 30 &#8212; 8 at 150, from X 80.365</text>
+  <text class="lbl" x="4" y="94" fill="#b06000">X1&ndash;X8 torsion-box row, Y 30 &#8212; 8 at 150, from X 50</text>
 
   <!-- plate dimensions -->
   <line x1="0" y1="122.6" x2="435.86" y2="122.6" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="178" y="132.6">1210.73 &#8212; derived, and now a target</text>
+  <text class="dim" x="178" y="132.6">1210.47 &#8212; the piece that was bought</text>
   <line x1="-12" y1="0" x2="-12" y2="108.59" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="-42" y="55">301.625</text>
   <circle cx="0" cy="108.59" r="3.4" fill="#c00"/>
@@ -1974,8 +1980,8 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <text class="q" x="448" y="26">Installed BOTTOM edge is Y 0. Both beams</text>
   <text class="q" x="448" y="38">sit at the TOP &#8212; Y 182 to 302.</text>
   <text class="q" x="448" y="56" fill="#c0c">Beam stations in X are FIXED:</text>
-  <text class="q" x="448" y="68" fill="#c0c">Y1's extrusion face at X 3.175, Y2's at</text>
-  <text class="q" x="448" y="80" fill="#c0c">X 1207.555 &#8212; a side plate at each end.</text>
+  <text class="q" x="448" y="68" fill="#c0c">Y1's extrusion face IS X 0; Y2's is at</text>
+  <text class="q" x="448" y="80" fill="#c0c">X 1204.38, by the beams not this plate.</text>
   <text class="q" x="448" y="98" fill="#b06000">BF12 Y carries the interposer, and it is</text>
   <text class="q" x="448" y="110" fill="#b06000">BEAM-REFERENCED: the beam underside at 182,</text>
   <text class="q" x="448" y="122" fill="#b06000">less the 10 bar, less BF12's 7 = 165, 147.</text>
@@ -1985,7 +1991,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <text class="q" x="448" y="176" fill="#b06000">plate's width cannot move them.</text>
 
   <!-- ================= DETAIL: LEFT STATION, scale 1.2 ================= -->
-  <text class="lbl" x="0" y="200">DETAIL &#8212; Y1 STATION, scale 1.2, drawn in the installed orientation. The Y2 station is this MIRRORED about X 605.365: read X&prime; = 1210.73 &minus; X.</text>
+  <text class="lbl" x="0" y="200">DETAIL &#8212; Y1 STATION, scale 1.2, drawn in the installed orientation. The Y2 station is this MIRRORED about X 602.19: read X&prime; = 1204.38 &minus; X.</text>
 
   <!-- detail: the BEAM'S OWN lower-left corner at SVG (20, 376) - that corner is plate
        station X 3.175, Y 182. Local dimensions are off the beam; the sheet-frame Y of
@@ -2005,7 +2011,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <circle cx="41.81" cy="250" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <circle cx="77.81" cy="250" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
   <text class="lbl" x="100" y="246">A1&ndash;A8 &#8212; &oslash;9, scribed layout</text>
-  <text class="lbl" x="100" y="258">X 18.175 / 48.175</text>
+  <text class="lbl" x="100" y="258">X 15 / 45</text>
   <text class="lbl" x="100" y="270">Y 197 / 227 / 257 / 287 &#8212; as Sheets 1a / 1b</text>
 
   <!-- F holes: X 7 / 53 off the extrusion face, BELOW the beam's bottom face -->
@@ -2014,7 +2020,7 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
   <circle cx="32.21" cy="417.43" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
   <circle cx="87.41" cy="417.43" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
   <text class="lbl" x="100" y="393" fill="#c00">F1, F2 &#8212; Y 165</text>
-  <text class="lbl" x="100" y="415" fill="#c00">F5, F6 &#8212; Y 147 &middot; both on X 10.175 and 56.175</text>
+  <text class="lbl" x="100" y="415" fill="#c00">F5, F6 &#8212; Y 147 &middot; both on X 7 and 53</text>
 
   <!-- detail dimensions -->
   <line x1="23.81" y1="434" x2="41.81" y2="434" stroke="#06c" stroke-width="0.5"/>
@@ -2098,23 +2104,23 @@ edge</b>, so an over-long cut puts the Y2 station out by the excess.<sup class="
 <figcaption>Main view to scale along both axes, <b>plate clamped right side up</b> so the WCS is
 its installed lower-left corner and Y runs up from the installed bottom edge. Both beams sit at
 the plate's top. At plate scale the two stations are a few millimetres wide, so the <b>Y1 station
-is drawn again at 1.2&times;</b> below; <b>the Y2 station is its mirror</b> about X&nbsp;605.365, so
-every Y2 coordinate is 1210.73&nbsp;&minus;&nbsp;X. The schedule carries all sixteen A-holes
+is drawn again at 1.2&times;</b> below; <b>the Y2 station is its mirror</b> about X&nbsp;602.19, so
+every Y2 coordinate is 1204.38&nbsp;&minus;&nbsp;X &mdash; the beam spacing, not this plate's length. The schedule carries all sixteen A-holes
 explicitly rather than making anyone do that subtraction at the mill.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates, Y from the installed bottom edge</h3>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;3.175, Y&nbsp;182</td><td>8</td><td class="n"><b>18.175, 48.175</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1207.555, Y&nbsp;182</td><td>8</td><td class="n"><b>1162.555, 1192.555</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>F5&ndash;F8</b></td><td><b>BF12</b>, face-mounted &mdash; the upper row</td><td>4</td><td class="n"><b>10.175, 56.175,<br>1154.555, 1200.555</b></td><td class="n"><b>165</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
-<tr><td><b>F1&ndash;F4</b></td><td><b>BF12</b>, face-mounted &mdash; the lower row</td><td>4</td><td class="n"><b>10.175, 56.175,<br>1154.555, 1200.555</b></td><td class="n"><b>147</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
-<tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>80.365, 230.365, 380.365, 530.365,<br>680.365, 830.365, 980.365, 1130.365</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1210.73 plate</b> &mdash; 80.365 clear at each end<sup class="f">7.3</sup><br><b>This plate IS the drill guide for the back tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup><br><b>M8 &times; 35</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b><sup class="f">7.9</sup></td></tr>
+<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;0, Y&nbsp;182</td><td>8</td><td class="n"><b>15, 45</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1204.38, Y&nbsp;182 &middot; <b>PROVISIONAL</b></td><td>8</td><td class="n"><b>1159.38, 1189.38</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
+<tr><td><b>F5&ndash;F8</b></td><td><b>BF12</b>, face-mounted &mdash; the upper row</td><td>4</td><td class="n"><b>7, 53,<br>1151.38, 1197.38</b></td><td class="n"><b>165</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
+<tr><td><b>F1&ndash;F4</b></td><td><b>BF12</b>, face-mounted &mdash; the lower row</td><td>4</td><td class="n"><b>7, 53,<br>1151.38, 1197.38</b></td><td class="n"><b>147</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
+<tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>50, 200, 350, 500,<br>650, 800, 950, 1100</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1210.73 plate</b> &mdash; 80.365 clear at each end<sup class="f">7.3</sup><br><b>This plate IS the drill guide for the back tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup><br><b>M8 &times; 35</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b><sup class="f">7.9</sup></td></tr>
 </table>
 
 <p style="font-size:9.5pt;margin:0 0 3mm">&#128308; <b>Whether the Laguna can hold the height reference across
-1210.73 mm is still open</b>, and it gates this plate more than any hole on it.<sup class="f">7.5</sup></p>
+1210.47 mm is still open</b>, and it gates this plate more than any hole on it.<sup class="f">7.5</sup></p>
 </div>
 
 <div class="plate pg-s8">
@@ -2622,7 +2628,7 @@ unsupported plate; above it, longer buys nothing but edge distance.</p>
 <p><b>6.3</b> &mdash; <b>No counterbores anywhere.</b> Row 135 leaves 15 mm to the bar's inboard end, against the ~9 mm half-head of an M8 flange bolt.</p>
 <p><b>6.4</b> &mdash; <b>X inherits these rows from Y geometry, and there are two of them now.</b> They were 82 / 110 / 138 when the bar stood 30 past the fin and the casting was thought to be 72.5 long. <b>The 82 row is gone and the other two moved in to 105 and 135:</b> the bar slid back to meet the screw, the casting measured 77, and an M8 flange centred at 82 lands on its face. 105 clears that face by 28, so its flange clears by 19. On X the bar sits on <i>top</i> of the beam and overhangs its end. <b>Check both land over beam before drilling.</b></p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 7</b></p>
-<p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1084.38</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken <b>flush with the side plates' outer faces is 1210.73</b>. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1204.38 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is the WCS origin now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1210.73 before clamping or add the excess to every right-hand X.</p>
+<p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1084.38</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken flush with the side plates' outer faces would be <b>1210.73</b> &mdash; which is NOT how it is placed any more. &#128308; <b>Its left edge goes on the Y1 extrusion's outboard face instead</b>, his call 2026-10-10, so the side plate is proud of the plate at that end and the far end falls where the bought <b>1210.47</b> puts it. The stackup still sets the holes; it no longer sets the edge. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1204.38 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is the WCS origin now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1210.73 before clamping or add the excess to every right-hand X.</p>
 <p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint.</b> 16 bolts, 8 per beam. <b>Lay it out by scribing:</b> two lines at the column positions, four stations ticked along each. <b>A scribed line beats working off an extruded bore</b>, whose own position error would come along with it &mdash; and these holes are &oslash;9 on an M8 in any case, about a millimetre of float, which this joint wants because it works by friction rather than bearing.</p>
 <p><b>7.3</b> &mdash; <b>Y 30, the same number the side plates and the front fin carry.</b> One bolt line across every plate that lands on the box, and from the installed bottom edge it reads as itself with no arithmetic. It took two reframings to get here: it was a round <b>270</b> measured from the installed top, which put the row 34.8 up and 4.8 off every other plate while a note called the difference <i>deliberate</i> &mdash; <b>it was not</b> &mdash; then 271.625 once the plate height was corrected, and now simply 30. <b>The pitch no longer differs</b>: 150 here over the 1210.73, and the side plates run 150 from 50 as well. Eight at 150 span 1050, so centring them on the plate leaves <b>80.365 clear at each end</b>. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
 <p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
@@ -2674,7 +2680,7 @@ state.</b> That is the whole reason this pack exists — so take anything plausi
 <p><b>8.2</b> &mdash; <b>&#128308; The strip is now WIDER than the gap it used to fit, and runs under the blocks.</b> It was 45, chosen as BLOCK_ROW_GAP so it sat <i>between</i> the bearing block rows with about half a millimetre either side &mdash; 46 is the geometric gap, the 90 rail pitch less a 44 block, and 45 was the conservative measured figure. At 50.8 it overlaps each block by <b>2.4 and passes beneath it</b>, which a thin strip may do: he proved it with 60 &times; 60 &times; 4 test pieces, which overlap 7.0 a side at a <i>thicker</i> stack and clear. <b>The gain is Y tolerance.</b> At 45 the strip had essentially nowhere to go sideways; at 50.8 the next thing in its way is the <b>rail, 9.6 from the strip edge</b>. &#9888; <b>Which is why the rows must be dimensioned from the centreline.</b> The two rows sit &plusmn;15 from the seam because the T-slots put them there &mdash; that separation is 30 whatever the strip's width &mdash; so centre-referenced holes absorb a 50-versus-50.8 stock variation and edge-referenced ones do not. <b>The encoder lane is unaffected by any of this</b>: it is the row separation less the head, 30 &minus; 13.8 = 16.2, and the strip's width is not in that sum.</p>
 <p><b>8.4</b> &mdash; <b>&#128308; The six bolt-on plates are on the trip, and the reason that kept them off was not wrong.</b> Sheets 8, 9 and 10 were home drill-press work because every hole on them is a &oslash;9 clearance into a T-slot and <b>the T-nut slides to meet the bolt</b>, so an individual hole’s position hardly matters. That is still true. <b>His call 2026-10-09 overrules it on a different argument:</b> 14 holes on a front strip and 28 on a back plate, across six plates, is 126 holes of hand layout, and small errors creep in. A plate whose rows have wandered still bolts up &mdash; and fights for an afternoon while it does, because every bolt needs its nut nudged to a different place. <b>On Sheets 9 and 10 that is the whole of it: perfect holes are not needed for the joint, they are wanted for the assembly.</b><br>
 ❌ <b>A clash argument stood here and the 2" strip removed it.</b> While the strip was 45 wide it sat in the block gap with nothing either side, so a row wandering in Y drove it into a bearing block &mdash; the nut slides <i>along</i> its slot, forgiving X and forgiving nothing in Y, so a hole off in Y moves the strip rather than being taken up. All of that is still true except the part that mattered: at 50.8 the strip runs <i>under</i> the blocks and the next obstruction is the rail, <b>9.6 away</b>. <b>So Sheet 8 is on the trip for the same reason as the rest &mdash; 14 holes a strip, three strips, and they want to be straight.</b><br>
-⚠ <b>It puts six more metre-long parts on a trip whose X traverse is still an open question</b> &mdash; the same one gating the 1210.73 rear plate, "can the mill traverse ~1212 in X". <b>If something has to be repositioned mid-job for want of travel, take it out of Sheets 9 and 10</b>, where the T-nut genuinely does forgive a shifted station. <b>Not Sheet 8, and not the rear plate</b> &mdash; the strips because Y is a clearance, the rear plate because its two patterns must meet extruded bores a metre apart.</p>
+⚠ <b>It puts six more metre-long parts on a trip whose X traverse is still an open question</b> &mdash; the same one gating the 1210.47 rear plate, "can the mill traverse ~1212 in X". <b>If something has to be repositioned mid-job for want of travel, take it out of Sheets 9 and 10</b>, where the T-nut genuinely does forgive a shifted station. <b>Not Sheet 8, and not the rear plate</b> &mdash; the strips because Y is a clearance, the rear plate because its two patterns must meet extruded bores a metre apart.</p>
 <p><b>8.5</b> &mdash; <b>&#9888; The stock thickness is open, and the bolt is what it decides.</b> Ordered as 1/8" 6061 flat bar, but metric and SAE intermix unpredictably on this supplier's aluminium, so it may arrive at <b>3.175 or at 4.0</b>. &#9989; <b>Block clearance is safe either way</b> &mdash; the strip plus a flange rim is 4.175 or 5.0 against the 6 mm under a block, and the 5.0 case is the one the 60 mm test pieces already proved. &#128308; <b>The bolt is not safe either way.</b> An M8 &times; 10 reaches 6.0 past a 4 mm strip, with 1.2 to the slot floor; past a 3.175 strip it reaches <b>6.825, which is 0.375 inside the limit</b> &mdash; caliper noise. If it calipers at 1/8", go to an M8 &times; 8 or put a washer under the head, which is exactly how the 3.175 back plate solves it. <b>A washer here must be A4 / 316</b>, for the same reason these bolts are: the magnetic tape runs between their rows.</p>
 <p><b>8.3</b> &mdash; <b>&#9989; First hole at 50, then 150 pitch, on all three bolt-on plates.</b> That is <b>seven per row</b>, 50 to 950, with 50 clear at each end. The pitch had been in gantry-beam-joint.md for weeks &mdash; M8 T-nuts at 150, four rows on the back and two on the front &mdash; but where along the 1000 the first one sat had never been written anywhere, which is why these rows were amber rather than wrong. Eight at 150 would have spanned 1050 and not fitted at all. Nothing was ever blocked by it: these are &oslash;9 clearance holes into T-slots and the T-nut slides to meet the bolt.</p>
 <p><b>9.1</b> &mdash; <b>This plate replaced two parts.</b> It is the full-height outboard plate and the Y back joining plate at once, grown rather than bolted alongside, which is why it carries the beam's four T-slot rows. That is also why the Y beams have no Sheet 10 part and the X beam does.</p>

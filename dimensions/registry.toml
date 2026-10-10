@@ -868,8 +868,10 @@ note = "Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The sid
 
 [[dim]]
 sym = "XBOX_X_FIRST"
-expr = "(REAR_PLATE_L - (7 * XBOX_PITCH)) / 2"
-note = "First of eight torsion-box bolts. Eight at 150 pitch span 1050; centred on the plate's own 1210.73 that leaves 80.365 at each end. Stations: 80.365, 230.365, 380.365, 530.365, 680.365, 830.365, 980.365, 1130.365 - and note 7.8 is why the fractions cost nothing, since these are drill-guide holes with no mating pattern to miss."
+value = 50
+provenance = "part"
+note = "50 - first of eight torsion-box bolts, then XBOX_PITCH. Stations: 50, 200, 350, 500, 650, 800, 950, 1100. \U0001f534 IT IS NOT CENTRED ON THE PLATE AND MUST NOT GO BACK TO BEING - his, 2026-10-10. It used to read (REAR_PLATE_L less seven pitches) / 2, which put the first at 80.365 and tied all eight to a sheared plate edge and to an envelope figure that is not the delivered plate. \u2705 IT MATCHES THE OTHER BOLT-ON PLATES: footnote 8.3 already has 50 then 150 on all three, and this plate now does the same. The eight span 50 to 1100, leaving about 110 to the far end. Note 7.8 is why the exact stations cost nothing anyway - these are drill-guide holes with no mating pattern to miss."
+source = "his, 2026-10-10"
 
 # ---------------------------------------------------------------- the BF12 tongue, Sheet 2b
 
