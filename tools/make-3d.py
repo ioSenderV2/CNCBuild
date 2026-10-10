@@ -22,6 +22,7 @@ from dims import Registry  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "machine" / "drawings" / "model-3d.html"
+VENDOR = ROOT / "machine" / "drawings" / "vendor" / "three.min.js"
 
 # ---------------------------------------------------------------- the frame
 #
@@ -370,12 +371,22 @@ def main() -> int:
         ("Y beam underside", ybot), ("Y beam top", ytop),
         ("X beam top", xb_top), ("Collet nut tip", bar_bot - v["SPINDLE_COLLET_END"]),
     ]
-    OUT.write_text(HTML.replace("__PARTS__", json.dumps(P))
-                       .replace("__GROUPS__", json.dumps(groups))
-                       .replace("__ASSUMPTIONS__", json.dumps(ASSUMPTIONS))
-                       .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts])),
-                   encoding="utf-8")
-    print(f"wrote {OUT.relative_to(ROOT)} - {len(P)} parts")
+    # three.js goes INLINE rather than being referenced. The model is a thing that
+    # gets sent to people, and a two-file page arrives broken the moment the vendor
+    # folder is left behind - a blank window with nothing to say why. One file costs
+    # about 600 KB and cannot be separated from the thing it needs.
+    three = VENDOR.read_text(encoding="utf-8")
+    html = (HTML.replace("__PARTS__", json.dumps(P))
+                .replace("__GROUPS__", json.dumps(groups))
+                .replace("__ASSUMPTIONS__", json.dumps(ASSUMPTIONS))
+                .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts])))
+    # last, and not via str.replace on the whole document: three.min.js contains
+    # backslash escapes that a replacement template would eat.
+    i = html.index("__THREE__")
+    html = html[:i] + three + html[i + len("__THREE__"):]
+    OUT.write_text(html, encoding="utf-8")
+    kb = len(html.encode("utf-8")) / 1024
+    print(f"wrote {OUT.relative_to(ROOT)} - {len(P)} parts, {kb:.0f} KB, self-contained")
     for a, b in facts:
         print(f"  {a:22} {b:10.2f}")
     return report_overlaps(P)
@@ -505,7 +516,7 @@ HTML = r"""<!doctype html>
 <div id="btnrow"><button id="partsbtn">Show parts</button><button id="statsbtn">Show dimensions</button></div>
 <div id="toggles" hidden></div><table id="facts" hidden></table></div>
 <details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
-<script src="vendor/three.min.js"></script>
+<script>__THREE__</script>
 <script>
 const PARTS=__PARTS__, GROUPS=__GROUPS__, ASSUMPTIONS=__ASSUMPTIONS__, FACTS=__FACTS__;
 
