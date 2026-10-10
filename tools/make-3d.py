@@ -52,10 +52,11 @@ ASSUMPTIONS = [
     "rails that join its screw end to its motor plate. Solid is the conservative way "
     "round for an interference check - a clearance the model SHOWS is real, one it "
     "denies may not be.",
-    "EACH CASTING IS PLACED BY ITS SCREW. Its bearing end is set where the screw's long "
-    "journal ends and the rest follows forward, so the motor's position is a consequence "
-    "of the 1000 screw rather than a figure anyone chose. If a casting bolts somewhere "
-    "specific along its beam, that is not captured.",
+    "THE X AND Z CASTINGS ARE PLACED BY THEIR SCREW. The bearing end is set where the "
+    "screw's long journal ends and the rest follows, so the motor's position is a "
+    "consequence of the 1000 screw rather than a figure anyone chose. THE TWO Y "
+    "CASTINGS ARE NOT: they are placed by the interposer's leading edge, which their "
+    "motor frame's 5 mm lip sits on.",
     "NO BASE OR LEGS - deliberately out of scope. The box sits on the ground plane.",
 ]
 
@@ -338,7 +339,14 @@ def main() -> int:
         support("bf12", "y", cx, y_axis_z, y_lo, +1, y_seat_z, -1)
         # ASSUMPTION: the nut is drawn at mid travel - it has no home position
         nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
-        cast_in = y_hi - v["BK12_L"]
+        # THE Y CASTING IS PLACED BY THE INTERPOSER, NOT BY ITS SCREW - his,
+        # 2026-10-10. The motor frame's 5 mm lip lands on the interposer's
+        # leading edge, so the bolted footprint ends exactly there and the
+        # casting is set back CASTING_FOOTPRINT_L from it. Placing it by the
+        # screw's journal instead left the lip 2.5 past the plate, touching
+        # nothing. The 2.5 does not vanish: it reappears as the screw's journal
+        # standing proud of the casting's bore, which is where it is real.
+        cast_in = ip_front - v["CASTING_FOOTPRINT_L"]
         support("casting", "y", cx, y_axis_z, cast_in, +1, y_seat_z, -1)
         rails("y", cx, cast_in + v["BK12_L"], +1, y_seat_z, -1)
         motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
@@ -610,6 +618,11 @@ ALLOWED = {
     frozenset({"Screw journal", "BF12 boss"}),
     frozenset({"Screw journal", "Casting wing"}),
     frozenset({"Screw journal", "Casting boss"}),
+    # The Y casting is placed by the interposer and the screw by the rear plate,
+    # so the journal runs 2.5 past the bore into the open coupler space between
+    # the rails. The rails are DRAWN SOLID, which is what makes that read as a
+    # clash; on the real casting it is where the coupler goes.
+    frozenset({"Screw journal", "Casting rails"}),
     # each support is ONE part drawn as two boxes - a boss standing out of a wing
     frozenset({"BF12 wing", "BF12 boss"}),
     frozenset({"Casting wing", "Casting boss"}),
