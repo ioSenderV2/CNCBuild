@@ -36,6 +36,10 @@ def text_of(html):
                     ('&minus;', '-'), ('&plus;', '+'), ('&rsquo;', "'"),
                     ('&apos;', "'"), ('&quot;', '"'), ('&lt;', '<'), ('&gt;', '>')):
         t = t.replace(ent, ch)
+    # A1&ndash;A8 in a schedule and A1&#8211;A8 on a drawing are the same ref. Fold every
+    # dash the pack uses onto a plain hyphen so they compare equal.
+    for dash in (u'‐', u'‑', u'‒', u'–', u'—', u'―', u'−'):
+        t = t.replace(dash, '-')
     return ' '.join(t.split())
 
 
