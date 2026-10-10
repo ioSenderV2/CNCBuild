@@ -186,11 +186,15 @@ def main() -> int:
     for x0 in (xb_x0 - xep_t, xb_x1):
         box("X end plate", "gantry", 0x6FA8DC,
             x0, xep_back, xep_bot, x0 + xep_t, xep_front, xb_top)
+        # It runs the plate's FULL 154 fore-aft, not DOUBLER_H - the four
+        # stations D1-D4 that bolt it on are spread across that 154, and so
+        # are the sole bracket's two rows. DOUBLER_H is its 45 UP the plate,
+        # the offcut width, and it had been standing in for both.
         box("Y nut doubler", "gantry", 0xB06000,
             x0 - v["T_DOUBLER"] if x0 < xb_x0 else x0 + xep_t, xep_back,
             xep_bot,
             x0 if x0 < xb_x0 else x0 + xep_t + v["T_DOUBLER"],
-            xep_back + v["DOUBLER_H"], xep_bot + v["DOUBLER_H"])
+            xep_front, xep_bot + v["DOUBLER_H"])
 
     # THE BF12 TONGUE, on the MIN X plate only - the operator's right, and the
     # left of a view taken from behind the machine. It carries on past the 2a
