@@ -196,6 +196,25 @@ def main() -> int:
             x0 if x0 < xb_x0 else x0 + xep_t + v["T_DOUBLER"],
             xep_front, xep_bot + v["DOUBLER_H"])
 
+        # ---- four M8 into the X beam's TOP extrusion end bores ----------
+        # The plate bolts to the beam's end, and the bores are EXT_BORE_INSET
+        # in from each of the four faces - so fore-aft they are XEP_BOLT_REAR
+        # and _FRONT off the plate's back edge, and in Z the same inset down
+        # from the beam's top and up from the top extrusion's own bottom. Head
+        # on the plate's OUTBOARD face, shank through the plate into the bore.
+        # They clear the Y bearing blocks, which stop at the upper rail.
+        outer = x0 if x0 < xb_x0 else x0 + xep_t
+        faceward = -1 if x0 < xb_x0 else +1
+        for by in (v["XEP_BOLT_REAR"], v["XEP_BOLT_FRONT"]):
+            for bz in (xb_top - v["EXT_BORE_INSET"],
+                       xb_top - v["EXT_W"] + v["EXT_BORE_INSET"]):
+                cyl("Flange head", "bolts", 0x3C4248, xep_back + by, bz,
+                    outer, outer + faceward * v["FLANGE_HEAD_H"],
+                    v["FLANGE_HEAD_D"] / 2, axis="x", seg=12)
+                cyl("X end plate bolt", "bolts", 0x3C4248, xep_back + by, bz,
+                    outer, outer - faceward * xep_t,
+                    v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, axis="x", seg=10)
+
         # ---- the shelf bar, carrying the X beam off this plate ----------
         # It stands INBOARD off the plate's face with the beam's underside
         # resting on its top, 60 fore-aft so it covers the beam's footprint
@@ -845,6 +864,9 @@ ALLOWED = {
     frozenset({"X carriage plate", "X block"}),     # carriage hangs off these
     # The shelf bar is bolted to the end plate's face and the beam sits on it,
     # so it touches both. Its four bolts cross the plate and the bar.
+    # the four M8 that bolt each end plate to the beam's top extrusion
+    frozenset({"X end plate", "X end plate bolt"}),
+    frozenset({"X beam", "X end plate bolt"}),
     frozenset({"Shelf bar", "X end plate"}),
     frozenset({"Shelf bar", "X beam"}),
     frozenset({"Shelf bar", "Shelf bolt"}),
