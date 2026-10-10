@@ -272,6 +272,14 @@ def main() -> int:
     bar_bot = block_mid - v["SPINDLE_BARREL_L"] / 2
     cyl("Spindle barrel", "z", 0x9AA3AB, zp_cx, sp_axis,
         bar_bot, bar_bot + v["SPINDLE_BARREL_L"], r)
+    # The nose: a SPINDLE_NOSE_D boss stepping down out of the barrel for
+    # SPINDLE_NOSE_L, then the shaft the collet nut threads onto. Neither was
+    # drawn and the view showed the barrel ending in air above the nut.
+    cyl("Spindle nose", "z", 0x9AA3AB, zp_cx, sp_axis,
+        bar_bot - v["SPINDLE_NOSE_L"], bar_bot, v["SPINDLE_NOSE_D"] / 2)
+    cyl("Spindle shaft", "z", 0x8A9097, zp_cx, sp_axis,
+        bar_bot - v["SPINDLE_SHOULDER_DROP"], bar_bot - v["SPINDLE_NOSE_L"],
+        v["SPINDLE_SHAFT_D"] / 2)
     cyl("Collet nut", "z", 0x2E2E2E, zp_cx, sp_axis,
         bar_bot - v["SPINDLE_COLLET_END"], bar_bot - v["SPINDLE_SHOULDER_DROP"],
         v["SPINDLE_NUT_D"] / 2)
@@ -739,6 +747,10 @@ ALLOWED = {
     frozenset({"Back tongue", "Tongue bolt"}),
     frozenset({"Side plate", "Tongue bolt"}),
     frozenset({"Side tongue", "Tongue bolt"}),
+    # barrel, nose, shaft and nut are one spindle drawn as four cylinders
+    frozenset({"Spindle barrel", "Spindle nose"}),
+    frozenset({"Spindle nose", "Spindle shaft"}),
+    frozenset({"Spindle shaft", "Collet nut"}),
     frozenset({"Spindle clamp", "Spindle barrel"}),  # a clamp WRAPS the barrel
     frozenset({"Spindle clamp", "Z plate"}),         # bolts to its face
     frozenset({"Y rail", "Y block"}),               # a block WRAPS its rail

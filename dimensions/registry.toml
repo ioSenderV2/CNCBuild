@@ -631,6 +631,27 @@ note = "Barrel front face to the collet nut's outer end, measured off the Mega V
 source = "measured on the Mega V, 2026-10-03"
 
 [[dim]]
+sym = "SPINDLE_NOSE_D"
+value = 60
+provenance = "measured"
+note = "60 - the diameter of the spindle's nose boss, the step between the 80 barrel and the shaft. His, 2026-10-10, given when the view showed an air gap where the nose should be: the model drew the barrel and the collet nut and nothing in between."
+source = "his, 2026-10-10"
+
+[[dim]]
+sym = "SPINDLE_NOSE_L"
+value = 15
+provenance = "measured"
+note = "15 - how far the 60 nose boss comes down from the barrel's front face before the shaft. His, 2026-10-10. WARNING IT IS NOT SPINDLE_SHOULDER_DROP, which is 17 and is his own 2026-10-03 measurement of the same step off the Mega V. The two disagree by 2 and both came off a real spindle; the 17 is what places the collet nut, so nothing has been moved to make them close. Re-measure the barrel face to the nose shoulder and retire whichever is wrong."
+source = "his, 2026-10-10"
+
+[[dim]]
+sym = "SPINDLE_SHAFT_D"
+value = 23
+provenance = "measured"
+note = "23 - the shaft below the nose boss, which the ER20 collet nut threads onto. His, 2026-10-10. Nearly all of it is inside the nut; what the model shows of it is only the 2 between SPINDLE_NOSE_L and SPINDLE_SHOULDER_DROP, so this diameter is there to make that span honest rather than to carry any clearance."
+source = "his, 2026-10-10"
+
+[[dim]]
 sym = "SPINDLE_NOSE_TO_COLLET"
 expr = "SPINDLE_COLLET_END - SPINDLE_SHOULDER_DROP"
 note = "The collet nut's own axial extent past the shoulder, 43. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps."
