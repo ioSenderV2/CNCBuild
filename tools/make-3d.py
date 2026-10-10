@@ -552,6 +552,21 @@ def main() -> int:
     x_hi = x_lo + v["SCREW_OAL_LONG"]
     screw("x", x_axis_y, x_axis_z, x_lo, v["SCREW_OAL_LONG"], bf_low=True)
     support("bf12", "x", x_axis_y, x_axis_z, bf12_x, +1, x_seat_z, +1)
+    # Four M5 hold it to the tongue, the same joint as the rear plate's: the
+    # TONGUE is tapped, the bolt is driven from the block side, and its end
+    # finishes flush with the tongue's outboard face. Rows TONGUE_BF12_ROW1
+    # and _ROW2 up from the plate's bottom edge, columns BF12_COL_INB/_OUTB
+    # from its back edge - the same two columns the casting uses.
+    tongue_out = bf12_x - xep_t
+    for bz in (v["TONGUE_BF12_ROW1"], v["TONGUE_BF12_ROW2"]):
+        for by in (v["BF12_COL_INB"], v["BF12_COL_OUTB"]):
+            cyl("BF12 bolt head", "bolts", 0x3C4248,
+                xep_back + by, xep_bot + bz,
+                bf12_x + v["T_BF12_BLOCK"],
+                bf12_x + v["T_BF12_BLOCK"] + v["M5_HEAD_H"],
+                v["M5_HEAD_D"] / 2, axis="x", seg=12)
+            cyl("BF12 bolt", "bolts", 0x3C4248, xep_back + by, xep_bot + bz,
+                tongue_out, bf12_x + v["T_BF12_BLOCK"], 2.5, axis="x", seg=10)
     nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
     # THE CASTING'S BORE SITS AT THE INNER END OF THE LONG JOURNAL. The journal is
     # SCREW_JOURNAL_CAST, 54.5, because the coupler lives on it as well as the
@@ -586,6 +601,20 @@ def main() -> int:
     z_hi = z_lo + v["SCREW_OAL_Z"]
     screw("z", zp_cx, z_axis_y, z_lo, v["SCREW_OAL_Z"], bf_low=True)
     support("bf12", "z", zp_cx, z_axis_y, bf12_z, +1, cp_front, +1)
+    # Sheet 3a's F1 and F2, and there are only two of them. Here the screw runs
+    # ALONG the plate rather than through it, so the block stands off its face
+    # and the bolts cross its wings fore-aft instead of its 20. Mid-block along
+    # the screw, and either side of the plate's centre by half the column pitch
+    # BF12_COL_INB/_OUTB give.
+    f_half = (v["BF12_COL_OUTB"] - v["BF12_COL_INB"]) / 2
+    for bx in (zp_cx - f_half, zp_cx + f_half):
+        cyl("BF12 bolt head", "bolts", 0x3C4248,
+            bx, bf12_z + v["T_BF12_BLOCK"] / 2,
+            cp_front + v["BF12_WING_H"],
+            cp_front + v["BF12_WING_H"] + v["M5_HEAD_H"],
+            v["M5_HEAD_D"] / 2, axis="y", seg=12)
+        cyl("BF12 bolt", "bolts", 0x3C4248, bx, bf12_z + v["T_BF12_BLOCK"] / 2,
+            cp_back, cp_front + v["BF12_WING_H"], 2.5, axis="y", seg=10)
     nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
     # Same as X: the bore takes the INNER BK12_L of the long journal so the
     # thread runs to the casting's face, and the remaining 24.5 stands out the
@@ -884,6 +913,11 @@ ALLOWED = {
     # proud of BF12's outer face and clashes with nothing, which is the check
     # confirming the stack is the right way round.
     frozenset({"Rear plate", "BF12 bolt"}),
+    # the same joint on the X tongue and on the Z carriage plate
+    frozenset({"BF12 tongue", "BF12 bolt"}),
+    frozenset({"X end plate", "BF12 bolt"}),
+    frozenset({"X carriage plate", "BF12 bolt"}),
+    frozenset({"BF12 boss", "BF12 bolt"}),
     frozenset({"BF12 wing", "BF12 bolt"}),
     frozenset({"Back tongue", "Tongue bolt"}),
     frozenset({"Side plate", "Tongue bolt"}),
