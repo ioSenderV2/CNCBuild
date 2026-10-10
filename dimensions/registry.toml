@@ -1895,3 +1895,87 @@ sym = "BOLT_BACK_Y"
 value = 10
 provenance = "derived"
 note = "M8 x 10 for the Y back plate - the outboard steel plate, 28 per beam, 56 total - WITH the washer in BOLT_BACK_Y_WASHER. Same length as the front strip's bolts, so the buy is two lengths and not three: 98 of M8 x 10 (42 A4 / 316 for the front strips, 56 plain for the Y backs) and 28 of M8 x 12 for the X back. 126 bolts against 126 T-nuts."
+
+# ---------------------------------------------------------------- the ball screws
+# His 2026-10-10, off the four screws in hand. Every axis uses the same 1605, so one
+# set of symbols covers all four and only the overall length differs.
+
+[[dim]]
+sym = "SCREW_D"
+value = 16
+provenance = "part"
+note = "Ball screw nominal diameter - the 16 in 1605. All four axes run the same screw."
+
+[[dim]]
+sym = "SCREW_JOURNAL_D"
+value = 10
+provenance = "part"
+note = "The bare shaft at each end, turned down from the 16 to ride in its bearing. Both ends are the same diameter; only the LENGTHS differ."
+
+[[dim]]
+sym = "SCREW_JOURNAL_BF"
+value = 11
+provenance = "part"
+note = "Bare shaft at the BF12 end - the short one. It only has to reach through the bearing."
+
+[[dim]]
+sym = "SCREW_JOURNAL_CAST"
+value = 54.5
+provenance = "part"
+note = "Bare shaft at the stepper casting end. Long because the coupler lives on it as well as the bearing, which is also why the casting end is the one that sets how far the screw stands off its mount."
+
+[[dim]]
+sym = "SCREW_BARE_TOTAL"
+expr = "SCREW_JOURNAL_BF + SCREW_JOURNAL_CAST"
+note = "Both journals together, 65.5. It is what comes off an overall length to leave thread, and it is the same on every axis."
+
+[[dim]]
+sym = "SCREW_OAL_LONG"
+value = 1000
+provenance = "part"
+note = "Overall length of the X, Y1 and Y2 screws."
+
+[[dim]]
+sym = "SCREW_OAL_Z"
+value = 400
+provenance = "part"
+note = "Overall length of the Z screw."
+
+[[dim]]
+sym = "SCREW_THREAD_LONG"
+expr = "SCREW_OAL_LONG - SCREW_BARE_TOTAL"
+note = "Threaded portion on X, Y1 and Y2 - 934.5. This, not the overall 1000, is the most the nut could ever traverse, and the travel is shorter again by the nut's own length and both stops."
+
+[[dim]]
+sym = "SCREW_THREAD_Z"
+expr = "SCREW_OAL_Z - SCREW_BARE_TOTAL"
+note = "Threaded portion on Z - 334.5, against a 400 rail."
+
+[[dim]]
+sym = "SCREW_AXIS_H"
+value = 25
+provenance = "part"
+note = "Screw centreline above the seating face of whatever carries it. BF12 at one end and the stepper casting at the other must both put the axis here or the screw is not straight - NUT_AXIS_TO_FACE's note already records that BK-12 and BF-12 share an h of 25, and this is that number as a symbol. It is also his 25 for the Z top stop block's bore, seen from the carriage plate, and footnote 3.8's \"25 for the casting's axis\" in the X nut chain."
+
+[[dim]]
+sym = "NUT_BODY_L"
+value = 40
+provenance = "part"
+note = "Ball nut body along the screw, without its flange. His 2026-10-10. Numerically the same as NUT_FACE_Y's L, which is the mounting flat's length - they are different dimensions that happen to agree, the same trap NUT_FACE_Y's own note describes between L and H."
+
+[[dim]]
+sym = "NUT_FLANGE_T"
+value = 14
+provenance = "part"
+note = "The flange bolted to the nut, measured along the screw. His 2026-10-10."
+
+[[dim]]
+sym = "NUT_OAL"
+expr = "NUT_BODY_L + NUT_FLANGE_T"
+note = "Ball nut overall along the screw, 54. This is the figure that eats travel at each end, not the 40."
+
+[[dim]]
+sym = "NUT_W"
+value = 52
+provenance = "part"
+note = "Ball nut across, 52 - the same figure as NUT_FACE_X's B, which is why SOLE_BRACKET_L closes at the screw axis plus 26."
