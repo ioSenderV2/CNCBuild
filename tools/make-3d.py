@@ -221,6 +221,26 @@ def main() -> int:
     box("X carriage plate", "z", 0xD98E04, cp_x0, cp_back, cp_bot,
         cp_x1, cp_back + v["T_X_CARRIAGE_PLATE"], cp_bot + 407.0)
 
+    # ---- the X nut doubler and sole plate, on the plate's BACK face --------
+    # The X ball nut sits above the beam BEHIND this plate, so the doubler
+    # stands off the plate's back face and the sole plate laps from its top
+    # edge out over the nut. The two heights come straight off the registry
+    # and the check that they close is that the doubler's top, X_NUT_FACE_Z,
+    # is the same plane as the nut's upward bolting face - both are the beam
+    # top plus the interposer plus the casting's bore height plus the nut's
+    # own axis-to-face. The doubler's bottom clears the upper bearing blocks
+    # by X_DOUBLER_BLOCK_CLEAR for the same reason.
+    # ASSUMPTION: both are drawn the carriage plate's own 154 across. The
+    # sheets give their lengths and rows, not a width.
+    box("X nut doubler", "gantry", 0xB06000,
+        cp_x0, cp_back - v["T_DOUBLER"], cp_bot + v["X_DOUBLER_BOTTOM"],
+        cp_x1, cp_back, cp_bot + v["X_NUT_FACE_Z"])
+    # X_SOLE_BRACKET_L is measured from the carriage plate's back face, so it
+    # covers the doubler's 12.19 and then SOLE_REACH of free span to the nut.
+    box("X sole plate", "gantry", 0xC9A227,
+        cp_x0, cp_back - v["X_SOLE_BRACKET_L"], cp_bot + v["X_NUT_FACE_Z"],
+        cp_x1, cp_back, cp_bot + v["X_NUT_FACE_Z"] + v["T_SOLE_BRACKET"])
+
     # ---- Z plate and spindle, at Z max -----------------------------------
     cp_front = cp_back + v["T_X_CARRIAGE_PLATE"]
     rail_top = cp_bot + 407.0 - 7.0
@@ -686,6 +706,13 @@ ALLOWED = {
     frozenset({"X carriage plate", "Z rail"}),      # rail bolts to its face
     frozenset({"X carriage plate", "Z block"}),
     frozenset({"X carriage plate", "X block"}),     # carriage hangs off these
+    # The doubler is bolted flat to the plate's back face and the sole plate
+    # lands on the doubler's top edge and on the nut's bolting face - those are
+    # the same plane, which is the whole point of X_NUT_FACE_Z.
+    frozenset({"X carriage plate", "X nut doubler"}),
+    frozenset({"X nut doubler", "X sole plate"}),
+    frozenset({"X sole plate", "Nut bolt face"}),
+    frozenset({"X carriage plate", "X sole plate"}),
     frozenset({"X end plate", "Y block"}),          # end plate hangs off these
     # Kept for when the carriage is parked at either end rather than mid travel:
     # butted against the end plate, the block pair is BLOCK_BUTTED 154.18 against
