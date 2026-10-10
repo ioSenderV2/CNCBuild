@@ -28,8 +28,16 @@
 #   build-document  <- machine/assembly.md    how to build it. ~18 pages, no photographs
 #   design-record   <- the twelve chapters    why it is that shape. ~102 pages, all
 #                                             sixteen photographs embedded
+#   shop-pack       <- machine/drawings/     what to make. The fourteen plate sheets for
+#                      shop-pack.html        the machining visit - and the one that gets
+#                                            emailed out. Its HTML IS tracked and is
+#                                            hand-authored, so only the PDF is derived.
 build-document.html
 build-document.pdf
 design-record.html
 design-record.pdf
+machine/drawings/shop-pack.pdf
 build-photos/
+
+# tools/ gets imported as modules by the pack checks
+__pycache__/

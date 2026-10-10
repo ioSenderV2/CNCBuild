@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
-  Build the two printable documents - build-document.pdf and design-record.pdf.
+  Build the printable documents - build-document.pdf, design-record.pdf and
+  machine/drawings/shop-pack.pdf.
 
 .DESCRIPTION
   Two steps: tools/md2html.py renders both HTML files at the repo root, then
@@ -32,7 +33,7 @@
   point at real files from there.
 
 .PARAMETER Doc
-  Which document to build: build, record, or both (the default).
+  Which document to build: build, record, pack, or all (the default).
 
 .PARAMETER KeepHtml
   Leave the HTML files in place. They are kept by default; this switch exists so
@@ -46,8 +47,8 @@
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('build', 'record', 'both')]
-    [string] $Doc = 'both',
+    [ValidateSet('build', 'record', 'pack', 'all', 'both')]
+    [string] $Doc = 'all',
     [switch] $KeepHtml = $true
 )
 
@@ -61,8 +62,12 @@ if (-not (Test-Path $edge)) { Write-Host "ERROR: Edge not found at $edge" -Foreg
 $docs = @(
     [pscustomobject]@{ Key = 'build';  Html = 'build-document.html'; Pdf = 'build-document.pdf' }
     [pscustomobject]@{ Key = 'record'; Html = 'design-record.html';  Pdf = 'design-record.pdf'  }
+    [pscustomobject]@{ Key = 'pack';   Html = 'machine/drawings/shop-pack.html'
+                                       Pdf  = 'machine/drawings/shop-pack.pdf' }
 )
-if ($Doc -ne 'both') { $docs = $docs | Where-Object Key -eq $Doc }
+# 'both' still means the two root documents, so an older command line keeps working
+if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }
+elseif ($Doc -ne 'all') { $docs = $docs | Where-Object Key -eq $Doc }
 
 function Invoke-EdgePrint {
     param([string] $HtmlPath, [string] $PdfPath, [string] $Label)
@@ -103,10 +108,25 @@ function Invoke-EdgePrint {
     return $size
 }
 
-# --- 1. markdown -> HTML, both documents in one pass ------------------------------------
-Write-Host "Rendering from machine/*.md ..." -ForegroundColor Cyan
-& python (Join-Path $PSScriptRoot 'md2html.py')
-if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: md2html.py failed" -ForegroundColor Red; exit 1 }
+# --- 1. markdown -> HTML, both generated documents in one pass --------------------------
+# The shop pack is hand-authored HTML and is not touched by this step.
+if ($docs | Where-Object Key -in 'build', 'record') {
+    Write-Host "Rendering from machine/*.md ..." -ForegroundColor Cyan
+    & python (Join-Path $PSScriptRoot 'md2html.py')
+    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: md2html.py failed" -ForegroundColor Red; exit 1 }
+}
+
+# The pack's own two checks, so a stale tally or an untagged hole cannot reach the shop.
+if ($docs | Where-Object Key -eq 'pack') {
+    Write-Host "Rebuilding the hole tally and checking the pack ..." -ForegroundColor Cyan
+    & python (Join-Path $PSScriptRoot 'build-hole-tally.py')
+    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: build-hole-tally.py failed" -ForegroundColor Red; exit 1 }
+    & python (Join-Path $PSScriptRoot 'check-shop-pack-refs.py')
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "ERROR: the shop pack fails its own checks - fix those before printing" -ForegroundColor Red
+        exit 1
+    }
+}
 
 # --- 2. HTML -> PDF via headless Edge ---------------------------------------------------
 $failed = 0
@@ -122,7 +142,7 @@ foreach ($d in $docs) {
     $size = Invoke-EdgePrint -HtmlPath $htmlPath -PdfPath $pdfPath -Label $d.Pdf
     if ($size -lt 0) { $failed++; continue }
 
-    if (-not $KeepHtml) { Remove-Item $htmlPath -Force }
+    if (-not $KeepHtml -and $d.Key -ne 'pack') { Remove-Item $htmlPath -Force }   # the pack's HTML is a source file
     $mb = [math]::Round($size / 1MB, 1)
     Write-Host "OK  $($d.Pdf)  $mb MB  ($size bytes)" -ForegroundColor Green
 }
