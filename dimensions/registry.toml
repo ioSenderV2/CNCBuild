@@ -618,10 +618,10 @@ source = "manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png"
 
 [[dim]]
 sym = "SPINDLE_SHOULDER_DROP"
-value = 17
+value = 15
 provenance = "measured"
-note = "Barrel front face to the nose shoulder, measured off the Mega V's spindle 2026-10-03 - it is the same part. THE REFERENCE IS CONFIRMED: he stated it as measured from the END OF THE BARREL, which is what this and SPINDLE_COLLET_END both assume. The listing's dimensioned drawing gives no axial figure at all for the nose or the nut, so this could only come off a real one."
-source = "measured on the Mega V, 2026-10-03"
+note = "15 - barrel front face to the nose shoulder, which is how far the SPINDLE_NOSE_D boss stands out of the 80 barrel. \U0001f534 IT WAS 17 AND THE 17 WAS SLOPPY - his words, 2026-10-10, re-measured. THE REFERENCE IS CONFIRMED: he stated it as measured from the END OF THE BARREL, which is what this and SPINDLE_COLLET_END both assume. The listing\u2019s dimensioned drawing gives no axial figure at all for the nose or the nut, so this could only come off a real one."
+source = "his, 2026-10-10, correcting a 2026-10-03 reading"
 
 [[dim]]
 sym = "SPINDLE_COLLET_END"
@@ -638,13 +638,6 @@ note = "60 - the diameter of the spindle's nose boss, the step between the 80 ba
 source = "his, 2026-10-10"
 
 [[dim]]
-sym = "SPINDLE_NOSE_L"
-value = 15
-provenance = "measured"
-note = "15 - how far the 60 nose boss comes down from the barrel's front face before the shaft. His, 2026-10-10. WARNING IT IS NOT SPINDLE_SHOULDER_DROP, which is 17 and is his own 2026-10-03 measurement of the same step off the Mega V. The two disagree by 2 and both came off a real spindle; the 17 is what places the collet nut, so nothing has been moved to make them close. Re-measure the barrel face to the nose shoulder and retire whichever is wrong."
-source = "his, 2026-10-10"
-
-[[dim]]
 sym = "SPINDLE_SHAFT_D"
 value = 23
 provenance = "measured"
@@ -652,9 +645,28 @@ note = "23 - the shaft below the nose boss, which the ER20 collet nut threads on
 source = "his, 2026-10-10"
 
 [[dim]]
+sym = "SPINDLE_SHAFT_L"
+value = 30
+provenance = "measured"
+note = "30 - the SPINDLE_SHAFT_D shaft\u2019s length below the nose shoulder. His, 2026-10-10. With the shoulder at 15 the shaft runs 15 to 45 below the barrel\u2019s front face, and the collet nut reaches 15 past its end."
+source = "his, 2026-10-10"
+
+[[dim]]
+sym = "SPINDLE_SHAFT_THREAD_L"
+value = 18
+provenance = "measured"
+note = "18 - the threaded part of the shaft, at its OUTER end, which the ER20 collet nut screws onto. His, 2026-10-10. \u2705 THIS IS WHAT PLACES THE NUT: the thread starts SPINDLE_SHAFT_L less this below the shoulder, the nut has to cover it, and the nut\u2019s far end is the measured SPINDLE_COLLET_END - so the nut\u2019s length follows rather than being guessed."
+source = "his, 2026-10-10"
+
+[[dim]]
+sym = "SPINDLE_NUT_L"
+expr = "SPINDLE_COLLET_END - SPINDLE_SHOULDER_DROP - SPINDLE_SHAFT_L + SPINDLE_SHAFT_THREAD_L"
+note = "33 - the ER20 collet nut along the axis, DERIVED and not measured. The nut seats where the shaft\u2019s thread begins and ends at SPINDLE_COLLET_END, so its length is what is left between them. \u2705 It is the last axial figure the spindle was missing - SPINDLE_NUT_D\u2019s note records that the listing gives none."
+
+[[dim]]
 sym = "SPINDLE_NOSE_TO_COLLET"
 expr = "SPINDLE_COLLET_END - SPINDLE_SHOULDER_DROP"
-note = "The collet nut's own axial extent past the shoulder, 43. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps."
+note = "45 - shoulder to the collet nut\u2019s outer end. \U0001f534 IT IS NOT THE NUT\u2019S OWN LENGTH, which is SPINDLE_NUT_L at 33, and it used to say it was: the nut does not start at the shoulder, it starts where the shaft\u2019s thread does, 12 further down. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps."
 
 [[dim]]
 sym = "SPINDLE_MASS_KG"

@@ -272,17 +272,18 @@ def main() -> int:
     bar_bot = block_mid - v["SPINDLE_BARREL_L"] / 2
     cyl("Spindle barrel", "z", 0x9AA3AB, zp_cx, sp_axis,
         bar_bot, bar_bot + v["SPINDLE_BARREL_L"], r)
-    # The nose: a SPINDLE_NOSE_D boss stepping down out of the barrel for
-    # SPINDLE_NOSE_L, then the shaft the collet nut threads onto. Neither was
-    # drawn and the view showed the barrel ending in air above the nut.
+    # The nose: a SPINDLE_NOSE_D boss stepping out of the barrel as far as the
+    # shoulder, then the shaft the collet nut screws onto. Neither was drawn and
+    # the view showed the barrel ending in air above the nut. The nut OVERLAPS
+    # the shaft - it seats where the thread starts, not at the shoulder.
+    shoulder = bar_bot - v["SPINDLE_SHOULDER_DROP"]
     cyl("Spindle nose", "z", 0x9AA3AB, zp_cx, sp_axis,
-        bar_bot - v["SPINDLE_NOSE_L"], bar_bot, v["SPINDLE_NOSE_D"] / 2)
+        shoulder, bar_bot, v["SPINDLE_NOSE_D"] / 2)
     cyl("Spindle shaft", "z", 0x8A9097, zp_cx, sp_axis,
-        bar_bot - v["SPINDLE_SHOULDER_DROP"], bar_bot - v["SPINDLE_NOSE_L"],
-        v["SPINDLE_SHAFT_D"] / 2)
+        shoulder - v["SPINDLE_SHAFT_L"], shoulder, v["SPINDLE_SHAFT_D"] / 2)
+    nut_end = bar_bot - v["SPINDLE_COLLET_END"]
     cyl("Collet nut", "z", 0x2E2E2E, zp_cx, sp_axis,
-        bar_bot - v["SPINDLE_COLLET_END"], bar_bot - v["SPINDLE_SHOULDER_DROP"],
-        v["SPINDLE_NUT_D"] / 2)
+        nut_end, nut_end + v["SPINDLE_NUT_L"], v["SPINDLE_NUT_D"] / 2)
 
     # Two clamps, CLAMP_CENTRES apart about the Z plate's mid-height, each
     # CLAMP_AXIAL tall and CLAMP_W across, reaching from the plate's face past
