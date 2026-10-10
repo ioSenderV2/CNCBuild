@@ -1763,6 +1763,20 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
   <text class="q" x="268" y="96" fill="#c00">nut 46.7 to 98.19 &#8212; tip flush with its far edge</text>
   <text class="q" x="268" y="108" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
   <text class="q" x="268" y="126">21.81 of air clears the 20 minimum by 1.81</text>
+  <!-- schedule ref tags -->
+  <!-- schedule ref tags -->
+  <text class="ref" x="44.00" y="82.65" fill="#b06000" text-anchor="middle">R1</text>
+  <text class="ref" x="44.00" y="95.35" fill="#111" text-anchor="middle">R5</text>
+  <text class="ref" x="74.00" y="82.65" fill="#b06000" text-anchor="middle">R2</text>
+  <text class="ref" x="74.00" y="95.35" fill="#111" text-anchor="middle">R6</text>
+  <text class="ref" x="104.00" y="82.65" fill="#b06000" text-anchor="middle">R3</text>
+  <text class="ref" x="104.00" y="95.35" fill="#111" text-anchor="middle">R7</text>
+  <text class="ref" x="134.00" y="82.65" fill="#b06000" text-anchor="middle">R4</text>
+  <text class="ref" x="134.00" y="95.35" fill="#111" text-anchor="middle">R8</text>
+  <text class="ref" x="65.00" y="39.00" fill="#c00" text-anchor="middle">N1</text>
+  <text class="ref" x="65.00" y="19.00" fill="#c00" text-anchor="middle">N2</text>
+  <text class="ref" x="89.00" y="39.00" fill="#c00" text-anchor="middle">N3</text>
+  <text class="ref" x="89.00" y="19.00" fill="#c00" text-anchor="middle">N4</text>
 </svg>
 <figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) the <b>doubler's</b> four root holes are drilled and tapped <b>as part of machining the doubler</b>, at Y 32, 62, 92, 122 &mdash; Sheet 2d's R1&ndash;R4; (2) bolt the doubler to the end plate; (3) bolt <b>this bracket</b> up into the doubler through that row; (4) the bracket's <b>other</b> row is now four <b>empty</b> holes sitting on the end plate's end face &mdash; <b>drill through them</b> to spot the end plate, and tap. <b>Only the doubler's row needs the mill.</b> The end plate's is transferred at home off the bracket itself and needs no coordinate at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The two bolt rows sit at <b>6.35</b> and <b>18.285</b>, each centred in its own 12.7 plate, and on <b>Y 32, 62, 92, 122</b> &mdash; D1&ndash;D4's stations, so one spread serves all three rows. None of those four numbers is a free choice. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
 </figure>
@@ -1774,7 +1788,7 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
 </table>
 
 <h3>Hole schedule &mdash; WCS origin: <b>the root's left corner</b>, X outboard from the plate's inner face</h3>
-<table>
+<table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th>Note</th></tr>
 <tr><td>N1&ndash;N4</td><td>M5 clearance, bracket up into the nut</td><td>4</td><td><b>52.19</b> and <b>92.19</b></td><td><b>&plusmn;12</b> about the nut centre</td><td>The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern 24 &times; 40 centred on a 40 &times; 52 face: insets 8 across the 40, 6 across the 52</td></tr>
 <tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the only edge holes that need the mill. Same holes as Sheet 2a's <b>B1&ndash;B4</b>, drawn on <b>Sheet 2d</b></td><td>4</td><td><b>18.285</b> &mdash; centred in the doubler's 12.7</td><td><b>32, 62, 92, 122</b></td><td>&oslash;5.5 clearance through the bracket; <b>M5 tapped into the doubler's edge, 20 deep MAX</b>, which clears the &oslash;5 D-bolt wall by 2.5. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations<sup class="f">2.7</sup></td></tr>

@@ -205,6 +205,14 @@ def main():
     for name, block in sheets:
         refs = refs_in_schedules(block)
         if not refs:
+            # Sheet 5 sat here for a whole sweep. Its hole schedule is a real schedule
+            # but was written as a plain <table>, so this loop skipped the sheet and the
+            # run still ended "every ref is tagged". A sheet with a drawing on it has
+            # holes; saying nothing about it is the one thing this must not do.
+            if '<svg ' in block:
+                bad += 1
+                print('%-12s HAS A DRAWING BUT NO <table class="sched"> - NOT CHECKED. '
+                      'Give its hole schedule that class.' % ('sheet ' + name[1:]))
             continue
         tags = tags_in_drawing(block)
         missing = [r for r in refs if not covered(r, tags)]
