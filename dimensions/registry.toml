@@ -906,12 +906,12 @@ note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. The 
 sym = "BF12_H"
 value = 43
 provenance = "part"
-note = "BF12's height - how far the block stands up the plate from its seating face. His, and it is the term that gives the tongue a FLOOR."
+note = "43 - the height of BF12\u2019s CENTRE SECTION, the part that holds the bearing. \U0001F534 IT IS NOT THE HEIGHT OF THE WHOLE BLOCK and it used to be described as if it were, which is what gave the tongue a floor 13 too high. His, 2026-10-10: BF12 is a tall centre boss with a LOW WING either side, and the four mounting holes are in the wings, which are BF12_WING_H at 30. So the part that has to be backed by anything is 30 tall; the 43 boss stands above it carrying the bearing and touches nothing. See TONGUE_MIN, which now runs on the wings."
 
 [[dim]]
 sym = "TONGUE_MIN"
-expr = "T_INTERPOSER + BF12_ROW_COVER"
-note = "\U0001F534 THE TONGUE\u2019S LOWER BOUND, and it came down from 53 to 40 on 2026-10-10. It used to read BF12_H + T_INTERPOSER on the reasoning that the tongue must back the WHOLE of BF12. His correction: it only has to reach both rows of mounting bolts, which is BF12_ROW_COVER\u2019s 30, not the block\u2019s full 43. The block can stand proud of the tongue above its top row and nothing cares. \u2705 That takes TONGUE_CLEAR from 4 to 17, so the tongue stops being a tight constraint - and the old 53 was the number that made an 8 mm change elsewhere look like it would break this."
+expr = "T_INTERPOSER + BF12_WING_H"
+note = "\U0001F534 THE TONGUE\u2019S LOWER BOUND, and it came down from 53 to 40 on 2026-10-10. It used to read BF12_H + T_INTERPOSER on the reasoning that the tongue must back the WHOLE of BF12. His correction: it only has to reach both rows of mounting bolts, which is BF12_WING_H\u2019s 30 - the two low side wings the bolts actually go into - not the 43 of the centre boss, which carries the bearing and touches nothing. The block can stand proud of the tongue above its top row and nothing cares. \u2705 That takes TONGUE_CLEAR from 4 to 17, so the tongue stops being a tight constraint - and the old 53 was the number that made an 8 mm change elsewhere look like it would break this."
 [[dim]]
 sym = "TONGUE_CLEAR"
 expr = "TONGUE_H - TONGUE_MIN"
@@ -2054,7 +2054,7 @@ expr = "CASTING_OAL + MOTOR_BODY_L"
 note = "179 from the casting's leading edge to the back of the motor. This is the figure that decides whether a stepper end fouls anything, and it is why the motors are worth drawing at all - the casting on its own clears everything easily."
 
 [[dim]]
-sym = "BF12_ROW_COVER"
+sym = "BF12_WING_H"
 value = 30
 provenance = "part"
-note = "How much of BF12\u2019s height the tongue actually has to back - 30, his 2026-10-10. BF12\u2019s two rows sit BF12_BASE_TO_ROW1 and that plus BF12_ROW_PITCH off its base, so 7 and 25, and 30 clears the upper row by 5. It is NOT BF12_H: the block may stand proud above its top row, because nothing bolts there."
+note = "30 - the height of BF12\u2019s two SIDE WINGS, the low flanges either side of the centre boss, and the only part of the block that anything bolts to. His, 2026-10-10. The four mounting holes live here, at BF12_BASE_TO_ROW1 and that plus BF12_ROW_PITCH off the base - 7 and 25 - so a 30 wing clears the upper row by 5. \u2705 THIS IS WHAT THE TONGUE HAS TO BACK, not BF12_H\u2019s 43: that 43 is the centre boss carrying the bearing and it stands above the wings touching nothing. \u26a0 An earlier version of this note had the right 30 for the wrong reason - it guessed the block \u201cmay stand proud above its top row\u201d rather than knowing it is a T-section. Same number, but one of those is checkable against the part and the other is not."
