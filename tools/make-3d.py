@@ -45,6 +45,17 @@ ASSUMPTIONS = [
     "taper on its back. Sheet 1 gives the widths, not which edge is square.",
     "The box tongue is drawn from the bottom skin's top face up, 179 tall, to land "
     "at the 60 proud the registry gives. torsion-box.md says 180.",
+    "THE BALL NUTS ARE DRAWN AT MID TRAVEL. None of the three axes has a home or "
+    "park position in the registry, so the nut is put halfway along its screw. Where a "
+    "nut sits is therefore the one thing in the drive train NOT to read off this model.",
+    "THE CASTINGS' RAILS ARE DRAWN SOLID. The real casting is open between the two "
+    "rails that join its screw end to its motor plate. Solid is the conservative way "
+    "round for an interference check - a clearance the model SHOWS is real, one it "
+    "denies may not be.",
+    "EACH CASTING IS PLACED BY ITS SCREW. Its bearing end is set where the screw's long "
+    "journal ends and the rest follows forward, so the motor's position is a consequence "
+    "of the 1000 screw rather than a figure anyone chose. If a casting bolts somewhere "
+    "specific along its beam, that is not captured.",
     "NO BASE OR LEGS - deliberately out of scope. The box sits on the ground plane.",
 ]
 
@@ -224,6 +235,134 @@ def main() -> int:
             zp_cx - v["CLAMP_W"] / 2, zp_front, cz - v["CLAMP_AXIAL"] / 2,
             zp_cx + v["CLAMP_W"] / 2, sp_axis + r + 8, cz + v["CLAMP_AXIAL"] / 2)
 
+    # ---- ball screws, nuts, BF12 and the stepper castings -----------------
+    # Four identical 1605 screws, each running from a BF12 at one end to a cast
+    # stepper frame at the other, carrying a nut that something bolts to.
+    #
+    # Neither support is a block. Both are a tall centre boss holding the
+    # bearing with a LOWER WING either side, and the mounting bolts go through
+    # the wings - so each is drawn as two parts. One box would put a 43 boss
+    # across the full 60 width and show the tongue fouling metal that is not
+    # there.
+    SCR, JRN = v["SCREW_D"] / 2, v["SCREW_JOURNAL_D"] / 2
+    JB, JC = v["SCREW_JOURNAL_BF"], v["SCREW_JOURNAL_CAST"]
+    STEEL, DARK, SUP = 0xB9C0C7, 0x8A9097, 0x7E6B8F
+    NUTC, MOT = 0xC06000, 0x3C4248
+
+    def screw(axis, c0, c1, lo, oal, bf_low):
+        """lo to lo+oal along `axis`. The journals are drawn at their real 10,
+        which is what makes the length visibly land inside its two supports."""
+        a, b = (JB, JC) if bf_low else (JC, JB)
+        cyl("Screw journal", "drive", DARK, c0, c1, lo, lo + a, JRN, axis)
+        cyl("Ball screw", "drive", STEEL, c0, c1, lo + a, lo + oal - b, SCR, axis)
+        cyl("Screw journal", "drive", DARK, c0, c1, lo + oal - b, lo + oal, JRN, axis)
+
+    def span(axis, along0, along1, c0lo, c0hi, c1lo, c1hi):
+        """A box given as (along the screw) x (the other two), in machine order."""
+        if axis == "y":
+            return (c0lo, along0, c1lo, c0hi, along1, c1hi)
+        if axis == "x":
+            return (along0, c0lo, c1lo, along1, c0hi, c1hi)
+        return (c0lo, c1lo, along0, c0hi, c1hi, along1)
+
+    def support(kind, axis, c0, c1, inner, grow, seat, up):
+        """BF12 or the casting's screw end, as wing + boss.
+
+        inner is the face the screw enters, grow is +1/-1 along the screw, and
+        up is +1/-1 for which way the part stands off its seating plane.
+        """
+        if kind == "bf12":
+            depth, w, bw = v["T_BF12_BLOCK"], v["BF12_W"], v["BF12_BOSS_W"]
+            wh, bh = v["BF12_WING_H"], v["BF12_H"]
+        else:
+            depth, w, bw = v["BK12_L"], v["CASTING_FOOTPRINT_W"], v["CASTING_BOSS_W"]
+            wh, bh = v["CASTING_WING_H"], v["CASTING_BOSS_H"]
+        a0, a1 = sorted((inner, inner + grow * depth))
+        for name, half, h in (("wing", w / 2, wh), ("boss", bw / 2, bh)):
+            s0, s1 = sorted((seat, seat + up * h))
+            lbl = ("BF12 " if kind == "bf12" else "Casting ") + name
+            box(lbl, "drive", SUP, *span(axis, a0, a1, c0 - half, c0 + half, s0, s1))
+
+    def nut(axis, c0, c1, mid, face_dir):
+        """The ball nut, its bolting face NUT_AXIS_TO_FACE off the axis."""
+        h = v["NUT_AXIS_TO_FACE"]
+        a0, a1 = mid - v["NUT_OAL"] / 2, mid + v["NUT_OAL"] / 2
+        box("Ball nut", "drive", NUTC,
+            *span(axis, a0, a1, c0 - v["NUT_W"] / 2, c0 + v["NUT_W"] / 2,
+                  c1 - h, c1 + h))
+        # the bolting face, drawn thin so it is obvious which side bolts
+        f = c1 + face_dir * h
+        box("Nut bolt face", "drive", 0xE08A2E,
+            *span(axis, a0, a1, c0 - v["NUT_FACE_X"] / 2, c0 + v["NUT_FACE_X"] / 2,
+                  min(f, f - face_dir * 2), max(f, f - face_dir * 2)))
+
+    def rails(axis, c0, c1, start, grow):
+        """The open rails joining the casting's screw end to its motor plate.
+
+        Drawn SOLID, which is conservative: the real casting is open between
+        them. A clearance the model shows is therefore real; one it denies may
+        not be.
+        """
+        n = v["CASTING_FOOTPRINT_L"] - v["BK12_L"]
+        a0, a1 = sorted((start, start + grow * n))
+        h, w = v["CASTING_RAIL_H"] / 2, v["CASTING_FOOTPRINT_W"] / 2
+        box("Casting rails", "drive", SUP,
+            *span(axis, a0, a1, c0 - w, c0 + w, c1 - h, c1 + h))
+
+    def motor(axis, c0, c1, plate_at, grow):
+        """The casting's motor plate and the NEMA 23 hanging off it."""
+        t, fw = v["MOTOR_FRAME_T"], v["MOTOR_FRAME_W"] / 2
+        bl, bs = v["MOTOR_BODY_L"], v["MOTOR_BODY_SQ"] / 2
+        p0, p1 = sorted((plate_at, plate_at + grow * t))
+        box("Motor plate", "drive", SUP,
+            *span(axis, p0, p1, c0 - fw, c0 + fw, c1 - fw, c1 + fw))
+        m0, m1 = sorted((plate_at + grow * t, plate_at + grow * (t + bl)))
+        box("Stepper motor", "drive", MOT,
+            *span(axis, m0, m1, c0 - bs, c0 + bs, c1 - bs, c1 + bs))
+
+    # ------------------------------------------------ Y1 and Y2
+    y_axis_z = ybot - v["Y_SCREW_BELOW_BEAM"]
+    y_seat_z = ybot - ip_t                      # the interposer's underside
+    y_lo = v["T_REAR_PLATE"]                    # BF12 seats on the rear plate
+    y_hi = y_lo + v["SCREW_OAL_LONG"]
+    for x0 in (lx0, rx0):
+        cx = x0 + v["EXT_W"] / 2
+        screw("y", cx, y_axis_z, y_lo, v["SCREW_OAL_LONG"], bf_low=True)
+        support("bf12", "y", cx, y_axis_z, y_lo, +1, y_seat_z, -1)
+        # ASSUMPTION: the nut is drawn at mid travel - it has no home position
+        nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
+        cast_in = y_hi - v["BK12_L"]
+        support("casting", "y", cx, y_axis_z, cast_in, +1, y_seat_z, -1)
+        rails("y", cx, y_axis_z, cast_in + v["BK12_L"], +1)
+        motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
+
+    # ------------------------------------------------ X, on TOP of its beam
+    x_seat_z = xb_top + ip_t
+    x_axis_z = x_seat_z + v["SCREW_AXIS_H"]
+    x_axis_y = xep_back + v["EXT_W"] / 2
+    x_hi = xb_x1                                # BF12 on the right plate's tongue
+    x_lo = x_hi - v["SCREW_OAL_LONG"]
+    screw("x", x_axis_y, x_axis_z, x_lo, v["SCREW_OAL_LONG"], bf_low=False)
+    support("bf12", "x", x_axis_y, x_axis_z, x_hi, -1, x_seat_z, +1)
+    nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
+    support("casting", "x", x_axis_y, x_axis_z, x_lo + v["BK12_L"], -1, x_seat_z, +1)
+    rails("x", x_axis_y, x_axis_z, x_lo, -1)
+    motor("x", x_axis_y, x_axis_z, x_lo + v["BK12_L"] - v["CASTING_FOOTPRINT_L"], -1)
+
+    # ------------------------------------------------ Z, up the carriage plate
+    # No interposer here, which is why the Z nut face sits 45 off the plate
+    # where the beams get 55.
+    z_axis_y = cp_front + v["SCREW_AXIS_H"]
+    z_lo = cp_bot
+    z_hi = z_lo + v["SCREW_OAL_Z"]
+    screw("z", zp_cx, z_axis_y, z_lo, v["SCREW_OAL_Z"], bf_low=True)
+    support("bf12", "z", zp_cx, z_axis_y, z_lo, +1, cp_front, +1)
+    nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
+    z_cast_in = z_hi - v["BK12_L"]
+    support("casting", "z", zp_cx, z_axis_y, z_cast_in, +1, cp_front, +1)
+    rails("z", zp_cx, z_axis_y, z_cast_in + v["BK12_L"], +1)
+    motor("z", zp_cx, z_axis_y, z_cast_in + v["CASTING_FOOTPRINT_L"], +1)
+
     # ---- linear rails and bearing blocks ---------------------------------
     # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
     # envelopes the rail and stands RAIL_STACK off the face, which is the
@@ -363,6 +502,7 @@ def main() -> int:
         "motion": "Rails and bearing blocks",
         "plates": "Rear, side and fin plates",
         "ybeams": "Y beams",
+        "drive": "Ball screws, nuts and steppers",
         "gantry": "X gantry",
         "z": "Z carriage and spindle",
     }
@@ -401,6 +541,29 @@ ALLOWED = {
     frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
     frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers
+
+    # The drive train is mostly parts that pass through each other by design.
+    # A screw inside its own nut is not a clash, and neither is a journal
+    # inside the bearing that holds it. Declaring them is the price of having
+    # the check mean something when a motor DOES foul a fin.
+    frozenset({"Ball screw", "Ball nut"}),          # the nut runs on it
+    frozenset({"Ball screw", "BF12 wing"}),         # thread reaches into the bore
+    frozenset({"Ball screw", "BF12 boss"}),
+    frozenset({"Ball screw", "Casting wing"}),
+    frozenset({"Ball screw", "Casting boss"}),
+    frozenset({"Screw journal", "BF12 wing"}),      # journal in its bearing
+    frozenset({"Screw journal", "BF12 boss"}),
+    frozenset({"Screw journal", "Casting wing"}),
+    frozenset({"Screw journal", "Casting boss"}),
+    # each support is ONE part drawn as two boxes - a boss standing out of a wing
+    frozenset({"BF12 wing", "BF12 boss"}),
+    frozenset({"Casting wing", "Casting boss"}),
+    # and the nut's bolting face is a face of the nut, not a separate part
+    frozenset({"Ball nut", "Nut bolt face"}),
+    # the casting carries its motor plate, which carries the motor
+    frozenset({"Casting wing", "Motor plate"}),
+    frozenset({"Casting boss", "Motor plate"}),
+    frozenset({"Motor plate", "Stepper motor"}),
     frozenset({"Spindle clamp", "Spindle barrel"}),  # a clamp WRAPS the barrel
     frozenset({"Spindle clamp", "Z plate"}),         # bolts to its face
     frozenset({"Y rail", "Y block"}),               # a block WRAPS its rail
