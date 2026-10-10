@@ -33,14 +33,13 @@ VENDOR = ROOT / "machine" / "drawings" / "vendor" / "three.min.js"
 # Three.js is Y-up, so the writer swaps: three(x, z, y).
 
 ASSUMPTIONS = [
-    "Y HOME is taken as the X end plate's BACK edge level with the Y beam's back "
-    "end, mirroring the documented Y MAX (front face level with the beam end). "
-    "The rear hard stop is not dimensioned anywhere.",
-    "X HOME is the carriage plate butted against the left end plate's inner face. "
-    "No stop or soft-limit figure exists for it.",
-    "Z AT MAX puts the butted block pair at the top of the 400 mm rail, and the Z "
-    "plate is centred on that pair. The plate's exact offset along the spacers is "
-    "not dimensioned.",
+    "THE GANTRY IS PARKED AT MID TRAVEL ON ALL THREE AXES, so that it hides nothing "
+    "on the rear plate or the beams. It is a viewing position and not a machine "
+    "position: no axis has a home or a park figure in the registry. Y runs between "
+    "the end plate's back edge level with the beam's back end and its front face "
+    "level with the front end; X between the carriage butted against either end "
+    "plate; Z over the 400 rail, with the Z plate centred on the butted block pair "
+    "because the plate's offset along the spacers is not dimensioned.",
     "The front fin's taper is drawn with a VERTICAL FRONT EDGE and the 200-to-100 "
     "taper on its back. Sheet 1 gives the widths, not which edge is square.",
     "The box tongue is drawn from the bottom skin's top face up, 179 tall, to land "
@@ -171,7 +170,10 @@ def main() -> int:
     xep_t = v["T_X_ENDPLATE"]
     xb_x0 = lx0 + v["EXT_W"] + v["RAIL_STACK"] + xep_t
     xb_x1 = xb_x0 + v["BEAM_LEN"]
-    xep_back = y0                       # ASSUMPTION: Y home
+    # MID TRAVEL ON ALL THREE AXES, so nothing on the rear plate or the beams is
+    # hidden behind the gantry. Y runs from the end plate's back edge level with
+    # the beam's back end to its front face level with the front end.
+    xep_back = (y0 + (y1 - v["XEP_W"])) / 2
     xep_front = xep_back + v["XEP_W"]
     xb_top = ytop + v["XEP_TOP_ABOVE_BEAM"]
     xb_bot = xb_top - v["BEAM_H"]
@@ -186,16 +188,16 @@ def main() -> int:
             x0 if x0 < xb_x0 else x0 + xep_t + v["T_DOUBLER"],
             xep_back + v["DOUBLER_H"], xb_top - v["XEP_H"] + v["DOUBLER_H"])
 
-    # ---- X carriage, at X home -------------------------------------------
+    # ---- X carriage, at mid travel ----------------------------------------
     # The X rails sit RAIL_LOW_Z up the beam's front face; Sheet 3 puts the lower
     # block row's centre 46 up the carriage plate, so the plate's bottom follows.
     xbeam_front = xep_back + v["EXT_W"]
     cp_bot = xb_bot + v["RAIL_LOW_Z"] - 46.0
-    # X HOME IS THE OPERATOR'S LEFT, which is MAX X in this frame, not min.
-    # X 0 is the rear plate's left as seen FROM BEHIND - the operator, standing at
-    # the front, has it on their right. The first model put the carriage at min X
-    # and so parked it back-RIGHT.
-    cp_x1 = xb_x1
+    # X 0 is the rear plate's left as seen FROM BEHIND, so the operator standing at
+    # the front has it on their right, and X HOME - the operator's left - is MAX X
+    # in this frame rather than min. It matters for reading the view even with the
+    # carriage parked in the middle.
+    cp_x1 = (xb_x0 + v["XEP_W"] + xb_x1) / 2
     cp_x0 = cp_x1 - v["XEP_W"]
     # The plate bolts to the BLOCKS, so it stands RAIL_STACK off the beam's face -
     # not on it. Caught by the interference check on 2026-10-03, which had the X
@@ -208,7 +210,7 @@ def main() -> int:
     # ---- Z plate and spindle, at Z max -----------------------------------
     cp_front = cp_back + v["T_X_CARRIAGE_PLATE"]
     rail_top = cp_bot + 407.0 - 7.0
-    block_mid = rail_top - (v["BLOCK_BUTTED"] / 2)       # ASSUMPTION: Z at max
+    block_mid = (rail_top + cp_bot + 7.0) / 2            # mid travel, as above
     zp_back = cp_front + v["RAIL_STACK"] + v["SPACER_T"]
     zp_cx = (cp_x0 + cp_x1) / 2
     box("Z plate", "z", 0xD98E04,
@@ -654,10 +656,11 @@ ALLOWED = {
     frozenset({"X carriage plate", "Z block"}),
     frozenset({"X carriage plate", "X block"}),     # carriage hangs off these
     frozenset({"X end plate", "Y block"}),          # end plate hangs off these
-    # At X HOME the carriage is butted against the end plate, and the butted
-    # block pair is BLOCK_BUTTED 154.18 against a 154 plate - so 0.09 of END CAP
-    # touches at each end. The caps are seals and carry nothing; x-gantry-end-
-    # plates.md settled that. A touch of exactly this size is the design.
+    # Kept for when the carriage is parked at either end rather than mid travel:
+    # butted against the end plate, the block pair is BLOCK_BUTTED 154.18 against
+    # a 154 plate, so 0.09 of END CAP touches at each end. The caps are seals and
+    # carry nothing; x-gantry-end-plates.md settled that. A touch of exactly this
+    # size is the design.
     frozenset({"X end plate", "X block"}),
     frozenset({"Front strip", "Flange head"}),      # head seats on the strip
     frozenset({"Side plate", "Flange head"}),
