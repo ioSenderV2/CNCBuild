@@ -462,14 +462,16 @@ def main() -> int:
         support("bf12", "y", cx, y_axis_z, y_lo, +1, y_seat_z, -1)
         # ASSUMPTION: the nut is drawn at mid travel - it has no home position
         nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
-        # THE Y CASTING IS PLACED BY THE INTERPOSER, NOT BY ITS SCREW - his,
-        # 2026-10-10. The motor frame's 5 mm lip lands on the interposer's
-        # leading edge, so the bolted footprint ends exactly there and the
-        # casting is set back CASTING_FOOTPRINT_L from it. Placing it by the
-        # screw's journal instead left the lip 2.5 past the plate, touching
-        # nothing. The 2.5 does not vanish: it reappears as the screw's journal
-        # standing proud of the casting's bore, which is where it is real.
-        cast_in = ip_front - v["CASTING_FOOTPRINT_L"]
+        # THE CASTING IS PLACED BY ITS SCREW AND THE INTERPOSER FOLLOWS IT -
+        # his, 2026-10-10, and it is the bar's second job: besides giving
+        # K1-K6 something solid to land in, it slides along the beam to meet
+        # whatever the screw dictates. So the bore takes the inner BK12_L of
+        # the long journal, the thread runs to the casting's face, and the
+        # remaining 24.5 stands out for the coupler - the same as X and Z.
+        # The interposer's leading edge is reached independently, off the fin
+        # through INTERPOSER_PROUD, so if the two ever stop agreeing the lip
+        # lifts off the bar in the view instead of the drift hiding.
+        cast_in = y_hi - v["SCREW_JOURNAL_CAST"]
         support("casting", "y", cx, y_axis_z, cast_in, +1, y_seat_z, -1)
         rails("y", cx, cast_in + v["BK12_L"], +1, y_seat_z, -1)
         motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
