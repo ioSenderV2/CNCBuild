@@ -341,6 +341,31 @@ note = "167 - the X beam\u2019s top face above the BOTTOM of the X carriage plat
 source = "his, 2026-10-09"
 
 [[dim]]
+sym = "X_SCREW_AXIS"
+expr = "RAIL_STACK + (EXT_W / 2)"
+note = "60 - the X screw axis out from the X carriage plate's REAR face, the face the doubler bolts to. ✅ THE PLATE'S OWN THICKNESS IS NOT IN THIS CHAIN and that is the whole difference from Y. SCREW_AXIS_X on the Y side is 72.19 because it measures from the X end plate's INNER face and so carries the plate's 12.19; here the root sits on the rear face and the 12.19 drops out. That is why every X number on Sheet 11 is round where Sheet 5's are not, and it also means T_X_CARRIAGE_PLATE - a nominal 12.7 still flagged to caliper - cannot move any of them."
+
+[[dim]]
+sym = "X_SOLE_BRACKET_L"
+expr = "X_SCREW_AXIS + (NUT_FACE_X / 2)"
+note = "86 - the X nut sole plate's root to tip, which is Sheet 5's 98.19 less the 12.19 that the end plate contributed. ✅ IT CLOSES ON THE NUT: 86 less X_NUT_BOLT_FAR's 80 is 6, which is NUT_INSET_X, so the plate's tip finishes flush with the nut face's edge rather than at a number someone chose."
+
+[[dim]]
+sym = "X_SOLE_ROOT_ROW"
+expr = "T_DOUBLER / 2"
+note = "6.095 - the X sole plate's single root row, centred in the doubler's thickness. ⚠ IT IS THE SAME 6.095 SHEET 5 PUTS ITS *OTHER* ROW AT, and the coincidence is worth naming so nobody reads one as the other: on Y, 6.095 is centred in the END PLATE and 18.285 is centred in the doubler behind it. Here there is no end plate, the doubler is the first thing at the root, and 6.095 is the doubler's own mid-thickness."
+
+[[dim]]
+sym = "X_NUT_BOLT_NEAR"
+expr = "X_SCREW_AXIS - (NUT_PATTERN_X / 2)"
+note = "40 - the inboard of the two nut rows on the X sole plate."
+
+[[dim]]
+sym = "X_NUT_BOLT_FAR"
+expr = "X_SCREW_AXIS + (NUT_PATTERN_X / 2)"
+note = "80 - the outboard nut row. 🔴 THESE TWO BOLT INTO THE NUT'S OWN THREADS, so unlike the root row a ø5.5 clearance hole does not rescue a wrong position - the nut has no float at all."
+
+[[dim]]
 sym = "X_DOUBLER_BOLT_XC"
 expr = "X_DOUBLER_BOTTOM + DOUBLER_BOLT_X"
 note = "202 - the X doubler's bolt column where it lands ON THE X CARRIAGE PLATE, measured from that plate's bottom edge, which is Sheet 3a's X 0. It is the doubler's own DOUBLER_BOLT_X of 25 carried up to where the block sits. 🔴 SHEET 3a HAS TO GAIN FOUR HOLES FOR IT - the carriage plate exists, dyed and undrilled, and nothing in its schedule put a doubler on it until 2026-10-09. The Y side has the same column at the same 25 within the block, which is why DOUBLER_BOLT_X is shared rather than duplicated."
