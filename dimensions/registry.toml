@@ -1614,6 +1614,20 @@ expr = "EXT_W"
 note = "60 across, the beam's own footprint, because it sits under the beam."
 
 [[dim]]
+sym = "INTERPOSER_BOLT_ROW_1"
+value = 110
+provenance = "derived"
+note = "110 - the first of the interposer bar's two T-nut rows, from the bar's OUTBOARD end, Sheet 6's T1 and T3. \U0001f534 IT WAS DRAWING-ONLY until 2026-10-10, the same gap SHELF_BOLT_LOW_X records: the number lived on one sheet and nowhere else, so nothing could check it. There used to be a third row at 82 and it is gone - the bar slid back to meet the screw and an M8 flange there fouls the casting's face."
+source = "shop-pack Sheet 6"
+
+[[dim]]
+sym = "INTERPOSER_BOLT_ROW_2"
+value = 138
+provenance = "derived"
+note = "138 - the second T-nut row, Sheet 6's T2 and T4. \u2705 It leaves 12 to the bar's inboard end against the roughly 9 half-head of an M8 flange bolt, which is why there are no counterbores on this part."
+source = "shop-pack Sheet 6"
+
+[[dim]]
 sym = "INTERPOSER_PROUD"
 expr = "T_REAR_PLATE + SCREW_OAL_LONG - SCREW_JOURNAL_CAST + CASTING_FOOTPRINT_L - SIDE_TONGUE_END - T_FIN"
 note = "8 - how far the interposer's outboard end stands past the fin's outer face, so the casting and bar protrude through the window together. \U0001f534 IT WAS A CHOSEN 30 AND IS DERIVED NOW - his, 2026-10-10. THE BAR FOLLOWS THE SCREW, which is the whole reason it exists besides giving K1-K6 something solid to land in: the casting has to sit where its bearing contains the journal, and the bar slides back to meet it. Place the bar first and the screw ends up with 22 of bare shaft between its thread and the casting. \u2705 THE EXPRESSION IS JUST THAT SENTENCE: the screw starts on the rear plate's inner face, runs SCREW_OAL_LONG, its bore takes the inner end of the long journal, and the footprint ends CASTING_FOOTPRINT_L later - measured past the fin's outer face, that is 8. y-beam-support.md's 30 is superseded."

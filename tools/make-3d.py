@@ -160,11 +160,35 @@ def main() -> int:
               holes=[[[wa, wz0], [wb, wz0], [wb, wz1], [wa, wz1]]])
 
     # ---- the interposer, under each beam and out through the window -------
+    # Four M8 into slide-in T-nuts hold each bar on, at Sheet 6's two rows
+    # measured from the bar's OUTBOARD end and on the extrusion's own two slot
+    # centrelines across the 60. There is no third row: the bar slides back
+    # along the beam to seat the screw's journal in the casting, which brings
+    # the casting's footprint over the bar's first 72.5.
     ip_t = v["T_INTERPOSER"]
+    ip_rows = (v["INTERPOSER_BOLT_ROW_1"], v["INTERPOSER_BOLT_ROW_2"])
+    ip_slots = (v["RAIL_SLOT_INSET"], v["RAIL_SLOT_INSET"] + v["SLOT_GRID"])
+
+    def interposer_bolts(along, across0, outb, along_axis, seat, up):
+        """outb is the bar's outboard end; the rows run back from it. seat is
+        the bar's face away from the beam, up the way the head stands off it."""
+        for r in ip_rows:
+            for s in ip_slots:
+                a, c = outb - along * r, across0 + s
+                cx, cy = (c, a) if along_axis == "y" else (a, c)
+                cyl("Flange head", "bolts", 0x3C4248, cx, cy,
+                    seat, seat + up * v["FLANGE_HEAD_H"],
+                    v["FLANGE_HEAD_D"] / 2, seg=12)
+                cyl("Interposer bolt", "bolts", 0x3C4248, cx, cy,
+                    seat, seat - up * ip_t,
+                    v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, seg=10)
+
     ip_front = y1 + v["T_FIN"] + v["INTERPOSER_PROUD"]
     for x0 in (lx0, rx0):
         box("Interposer", "ybeams", 0xC0652A, x0, ip_front - v["INTERPOSER_L"],
             ybot - ip_t, x0 + v["INTERPOSER_W"], ip_front, ybot)
+        # it HANGS under the beam, so these drive upward and the heads are below
+        interposer_bolts(+1, x0, ip_front, "y", ybot - ip_t, -1)
 
     # ---- X gantry, at Y home ---------------------------------------------
     xep_t = v["T_X_ENDPLATE"]
@@ -533,14 +557,17 @@ def main() -> int:
     x_cast_in = x_hi - v["SCREW_JOURNAL_CAST"]
     # THE X INTERPOSER, on top of the beam under the casting. It is what lifts
     # this end by T_INTERPOSER and so puts the tongue's BF12 rows where
-    # TONGUE_BF12_ROW1 has them. ASSUMPTION: drawn the casting's own footprint,
-    # 72.5 by the beam's 60, because no length is given for it anywhere - the Y
-    # bar is INTERPOSER_L at 150 and this one has no symbol. It overhangs the
-    # beam's end with the casting, the same way the Y bar runs out through the
-    # fin with its casting.
+    # TONGUE_BF12_ROW1 has them. IT IS THE SAME 150 BAR AS Y - Sheet 6 makes
+    # three of them - running back from the casting's outboard end, so it
+    # overhangs the beam's end the way the Y bar runs out through the fin.
+    # Drawn at the casting's own 72.5 until 2026-10-10, which left it with
+    # nowhere to put its T-nut bolts.
+    x_ip_out = x_cast_in + v["CASTING_FOOTPRINT_L"]
     box("Interposer", "gantry", 0xC0652A,
-        x_cast_in, xep_back, xb_top,
-        x_cast_in + v["CASTING_FOOTPRINT_L"], xep_back + v["EXT_W"], x_seat_z)
+        x_ip_out - v["INTERPOSER_L"], xep_back, xb_top,
+        x_ip_out, xep_back + v["EXT_W"], x_seat_z)
+    # this one SITS ON the beam, so its bolts drive down and the heads are up
+    interposer_bolts(+1, xep_back, x_ip_out, "x", x_seat_z, +1)
     support("casting", "x", x_axis_y, x_axis_z, x_cast_in, +1, x_seat_z, +1)
     rails("x", x_axis_y, x_cast_in + v["BK12_L"], +1, x_seat_z, +1)
     motor("x", x_axis_y, x_axis_z, x_cast_in + v["CASTING_FOOTPRINT_L"], +1)
@@ -872,6 +899,11 @@ ALLOWED = {
     # the four M8 that bolt each end plate to the beam's top extrusion
     frozenset({"X end plate", "X end plate bolt"}),
     frozenset({"X beam", "X end plate bolt"}),
+    # the four T-nut bolts on each interposer bar, shank through the bar and
+    # on into the extrusion's slot
+    frozenset({"Interposer", "Interposer bolt"}),
+    frozenset({"Y beam", "Interposer bolt"}),
+    frozenset({"X beam", "Interposer bolt"}),
     frozenset({"Shelf bar", "X end plate"}),
     frozenset({"Shelf bar", "X beam"}),
     frozenset({"Shelf bar", "Shelf bolt"}),
