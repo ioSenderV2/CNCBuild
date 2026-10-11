@@ -487,6 +487,10 @@ Registry updated: **2026-10-04**
 | **RIB_LAST_FRONT** | 971.8 mm | derived | T_BOX_WALL_WEB + BOX_RIBS_ACROSS * (BOX_BAY_FORE_AFT + T_BB_RIB) | 971.8 - the front face of the LAST across-rib, the one nearest the fins. Named because three separate questions measure from it, and because walking the rib pitch inline each time is how the three would drift apart. It follows the bay count and bay size, so it moves when the grid does. |
 | **FIN_BASE_TO_RIB** | 34.55 mm | derived | SIDE_TONGUE_END - RIB_LAST_FRONT | 34.55 - from the last across-rib's front face to where the front fin's base starts bearing. ✅ THIS IS THE NUMBER THAT CLOSED THE BLOCKING QUESTION, 2026-10-11, and it closed it as NOT NEEDED. lateral-stiffness.md had carried a general warning that bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning between grid members - written before any rib layout existed to check it against. At 34.55 from a rib, a 25 top skin is not spanning anything; it is a short overhang off a support that is right there. His call, and the measurement is his too - he put the nearest rib at about 40 by eye. 🔴 IF THE FIN'S BEARING IS EVER WANTED HARDER, MOVE A RIB UNDER IT RATHER THAN ADDING BLOCKING - a rib is continuous and a block is not, and the grid is egg crate precisely because continuity is what gives two-way plate action. |
 | **FIN_TNUT_TO_RIB** | 67.55 mm | derived | SIDE_TONGUE_END + T_FIN + FIN_ANGLE_T + (FIN_ANGLE_LEG - FIN_ANGLE_T) / 2 - RIB_LAST_FRONT | 67.55 - from the last across-rib's front face to the fin angle's T-nut line. ✅ ALSO CLOSED AS NO BLOCKING, same day and same reasoning as FIN_BASE_TO_RIB, with one thing in its favour: these pull UP rather than bear down, and 25 of Baltic birch over a 67.55 reach against a hand-tightened M8 is nowhere near the weak link in that joint. 📌 THE WEAK LINK IS THE T-NUT'S OWN GRIP ON THE PLYWOOD, which is why the prongs and the flange matter and the span does not. |
+| **REAR_PLATE_BEARING_INSET** | 12.65 mm | derived | T_BOX_WALL_WEB - T_REAR_PLATE | 12.65 - how much of the back perimeter web is still INBOARD of the rear plate's footprint. ✅ THIS IS WHAT CLOSED THE REAR PLATE'S BLOCKING QUESTION, 2026-10-11, and it closed it as NOT NEEDED. The plate's bottom edge occupies the first T_REAR_PLATE of the box's fore-aft run, and the web occupies the first T_BOX_WALL_WEB - so the plate bears on skin that is backed by solid wall over its WHOLE footprint, with 12.65 of web to spare and the 25 tongue outboard of that as well. It is not spanning between grid members; there is no span. ✅ HIS REASONING, and it is stronger than he put it - he said the plate rests on the skin over the back of the box, which is true, and the figure says the footprint is wholly inside the wall rather than merely over it. |
+| **BACK_TENON_BLOCK_X1** | 562.619 mm | derived | BOX_W / 2 - POST_W / 2 | 562.62 - the inboard face of the first block beside the back centre tenon, which is the tenon's own left face. ✅ THE BACK CENTRE TENON IS THE ONLY ONE WANTING BLOCKING and torsion-box.md already said so: the two front corner tenons are snug into the box corners and are located by both perimeter walls for free, while this one has only the back wall behind it and nothing either side. 🔴 THE BLOCKS ARE FOR LOCATION, NOT BEARING - the tenon carries no vertical load, all of that is on the shoulder, so these stop the box walking across the machine and do nothing else. ✅ IT SITS MID-BAY WITH 66.72 CLEAR EACH SIDE, which is why two symmetric blocks were chosen over distorting the grid to bring a rib against it - see BOX_RIBS_FORE_AFT, whose even count put the centreline mid-bay on purpose. |
+| **BACK_TENON_BLOCK_X2** | 648.619 mm | derived | BOX_W / 2 + POST_W / 2 | 648.62 - the inboard face of the second block beside the back centre tenon, the tenon's right face. Symmetric with BACK_TENON_BLOCK_X1 about the machine centreline at 605.619, which is where the tenon is centred. |
+| **BACK_TENON_BLOCK_L** | 219.2 mm | derived | BOX_BAY_FORE_AFT | 219.2 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. ✅ THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_BACK_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. ⚠ HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end. |
 
 ## Not confirmed on the real part
 
@@ -504,7 +508,7 @@ numbers in one session on 2026-10-02.
 - **SHELF_BAR_W** (nominal) = 25.4 mm - feeds 1: SHELF_SHIM_W
 - **T_BB_SKIN_TOP** (nominal) = 25 mm - feeds 4: BOX_FRONT_CAP_H, BOX_THK, FIN_ANGLE_BOLT_DEAD, TONGUE_FULL_H
 - **T_BB_SKIN_BOT** (nominal) = 19 mm - feeds 3: BOX_FRONT_CAP_H, BOX_THK, TONGUE_FULL_H
-- **BOX_FORE_AFT** (nominal) = 1210 mm - feeds 11: BOX_BAY_FORE_AFT, BOX_CAVITY_FORE_AFT, BOX_FRONT_BARE, BOX_FRONT_OVERHANG, BOX_FRONT_WALL_AT, BOX_SIDE_CAP_L, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT, SIDE_LAM_L
+- **BOX_FORE_AFT** (nominal) = 1210 mm - feeds 12: BACK_TENON_BLOCK_L, BOX_BAY_FORE_AFT, BOX_CAVITY_FORE_AFT, BOX_FRONT_BARE, BOX_FRONT_OVERHANG, BOX_FRONT_WALL_AT, BOX_SIDE_CAP_L, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT, SIDE_LAM_L
 - **TOOL_D** (nominal) = 6.35 mm - nothing depends on it
 - **TOOL_L** (nominal) = 50.8 mm - nothing depends on it
 - **T_FRONT_STRIP** (nominal) = 3.175 mm - feeds 1: STRIP_STACK
@@ -513,14 +517,14 @@ numbers in one session on 2026-10-02.
 - **FENDER_WASHER_T** (nominal) = 2 mm - nothing depends on it
 - **ACORN_NUT_D** (nominal) = 15 mm - nothing depends on it
 - **ACORN_NUT_H** (nominal) = 13 mm - nothing depends on it
-- **T_BB_RIB** (nominal) = 19 mm - feeds 6: BOX_BAY_FORE_AFT, BOX_BAY_W, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT
-- **T_BOX_WALL_WEB** (nominal) = 19 mm - feeds 12: BOX_BAY_FORE_AFT, BOX_BAY_W, BOX_CAVITY_FORE_AFT, BOX_CAVITY_W, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT, TENON_BACK_DEPTH, TENON_CORNER, T_BOX_LEDGE, T_BOX_WALL
+- **T_BB_RIB** (nominal) = 19 mm - feeds 7: BACK_TENON_BLOCK_L, BOX_BAY_FORE_AFT, BOX_BAY_W, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT
+- **T_BOX_WALL_WEB** (nominal) = 19 mm - feeds 14: BACK_TENON_BLOCK_L, BOX_BAY_FORE_AFT, BOX_BAY_W, BOX_CAVITY_FORE_AFT, BOX_CAVITY_W, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, REAR_PLATE_BEARING_INSET, RIB_LAST_FRONT, TENON_BACK_DEPTH, TENON_CORNER, T_BOX_LEDGE, T_BOX_WALL
 - **TT_BED_GROOVE_D** (nominal) = 1 mm - nothing depends on it
 - **TT_BED_GROOVE_W** (nominal) = 12 mm - nothing depends on it
-- **POST_W** (nominal) = 86 mm - feeds 2: TENON_BACK_DEPTH, TENON_CORNER
+- **POST_W** (nominal) = 86 mm - feeds 4: BACK_TENON_BLOCK_X1, BACK_TENON_BLOCK_X2, TENON_BACK_DEPTH, TENON_CORNER
 - **POST_TENON_L** (nominal) = 118 mm - nothing depends on it
 - **BOX_RIBS_FORE_AFT** (nominal) = 4 mm - feeds 1: BOX_BAY_W
-- **BOX_RIBS_ACROSS** (nominal) = 4 mm - feeds 5: BOX_BAY_FORE_AFT, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT
+- **BOX_RIBS_ACROSS** (nominal) = 4 mm - feeds 6: BACK_TENON_BLOCK_L, BOX_BAY_FORE_AFT, FIN_ANGLE_TO_RIB, FIN_BASE_TO_RIB, FIN_TNUT_TO_RIB, RIB_LAST_FRONT
 - **TENON_HOLE_CLEAR** (nominal) = 1 mm - nothing depends on it
 - **POST_STUB_L** (nominal) = 254 mm - nothing depends on it
 - **BOX_WALL_STANDS_ON** (nominal) = 0 mm - nothing depends on it

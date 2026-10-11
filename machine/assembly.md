@@ -637,8 +637,17 @@ T-nut's own grip on the plywood, not the span.
 is continuous and a block is not, and the grid is egg crate precisely because continuity is what
 gives the two-way plate action.
 
-⚠️ **Still open for the rear plate**, whose bottom edge bears over the full 1210.73 mm — a different
-question with a different answer, and it is in [`open-items.md`](open-items.md).
+✅ **And none under the rear plate either — closed 2026-10-11.** Its bottom edge occupies the first
+**6.35 mm** of the box's fore-aft run and the back perimeter web occupies the first **19 mm**, so the
+plate bears on skin backed by solid wall over its whole footprint, with **12.65 mm of web to spare**
+and the 25 mm tongue outboard of that as well. There is no span to block.
+
+🔴 **The back centre tenon does want blocking, and it is the only one that does.** The two front
+corner tenons are snug into the box corners and located by both perimeter walls for free; this one
+has the back wall behind it and nothing either side. **Two blocks, one against each of its
+across-machine faces at X 562.62 and 648.62**, running forward from the back web to the first
+across-rib so each is captured at both ends. 📌 **They are for location, not bearing** — the tenon
+carries no vertical load, all of it is on the shoulder.
 
 ### The three posts
 

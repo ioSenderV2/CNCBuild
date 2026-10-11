@@ -367,6 +367,24 @@ def main() -> int:
         return [lo + bay + v["T_BB_RIB"] / 2 + i * (bay + v["T_BB_RIB"])
                 for i in range(int(n))]
 
+    # ---- the two blocks beside the back centre tenon ----------------------
+    # THE ONLY TENON THAT WANTS THEM: the front corner tenons are snug into the
+    # box corners and located by both perimeter walls for free, while this one
+    # has the back wall behind it and nothing either side.
+    #
+    # 📌 FOR LOCATION, NOT BEARING - the tenon carries no vertical load, all of
+    # it is on the shoulder, so these only stop the box walking across.
+    #
+    # They run forward from the back web to the first across-rib, so each is
+    # captured at both ends rather than floating. BACK_TENON_BLOCK_L's note
+    # records that the length is his to shorten; the position is settled.
+    for bx, sgn_b in ((v["BACK_TENON_BLOCK_X1"], -1), (v["BACK_TENON_BLOCK_X2"], +1)):
+        box("Back tenon block", "grid", 0xC2A23F,
+            bx, web, cav_z0, bx + sgn_b * v["T_BB_RIB"],
+            web + v["BACK_TENON_BLOCK_L"], cav_z1,
+            d="location only - the back centre tenon is the one with no wall "
+              "either side")
+
     bw, bf = v["BOX_BAY_W"], v["BOX_BAY_FORE_AFT"]
     half = v["T_BB_RIB"] / 2
     for cx_ in rib_centres(v["BOX_RIBS_FORE_AFT"], bw, web):
@@ -1618,6 +1636,9 @@ ALLOWED = {
     frozenset({"Perimeter web", "Side tongue"}),
     frozenset({"Perimeter web", "Rib, fore-aft"}),  # ribs die into the webs
     frozenset({"Perimeter web", "Rib, across"}),
+    frozenset({"Perimeter web", "Back tenon block"}),   # it dies into the web
+    frozenset({"Back tenon block", "Rib, across"}),     # and into the first rib
+    frozenset({"Back tenon block", "Post, back centre tenon"}),  # it beds against it
 
     # Each post is drawn as a tenon standing out of a full-section stub - one
     # part, two boxes, the same convention as the BF12 wing and boss below.

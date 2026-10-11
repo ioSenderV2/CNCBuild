@@ -103,7 +103,12 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   dimensioned from the **plate's back edge**, which is the actual fix - the beam front was never something to measure from.
 - ⚠️ **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
-- ⚠️ **Rib under the full 1210.73 mm of rear bottom-edge bearing.** Decide before the skins are cut.
+- ✅ ~~**Rib under the full 1210.73 mm of rear bottom-edge bearing.**~~ **Closed 2026-10-11: not
+  needed.** The plate's 6.35 footprint sits wholly inside the 19 back web, with the 25 tongue
+  outboard of that - backed by solid wall over its whole length, so there is no span.
+- ⚠️ **The two blocks beside the back centre tenon** - position settled at X 562.62 and 648.62,
+  running forward from the back web. **Length is his call**; drawn to the first across-rib so each is
+  captured at both ends.
 - ✅ ~~**Blocking under the front fin bases and the fin angle's T-nuts.**~~ **Closed 2026-10-11: not
   needed.** The fin base is **34.55 mm** from the last across-rib and the T-nuts **67.55 mm** - short
   overhangs off a support, not spans. The item existed because the general warning predated any rib
