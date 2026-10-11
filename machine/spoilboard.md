@@ -244,6 +244,28 @@ saying he had not placed the bed fore-aft; his answer, 2026-10-11, is that the g
 placed it. `TT_BED_FORE_AFT_CHECK` now subtracts the bed's depth from the beam length and must read
 **zero**, so if either figure moves the registry says so rather than the drawing quietly going wrong.
 
+## ⚠️ The spacer may not clear the skin - open, being tested
+
+The M5 hole centre in the panel end is **4 mm above the top skin**, and the spacer he is ordering is
+**8 mm OD with a 5.1 bore**, stainless. An 8 OD is a 4 radius, so **the spacer's bottom edge is
+tangent to the skin** - zero clearance.
+
+🔴 **That is a coincidence, not a fit, and it fails in the direction that matters.** Anything the
+wrong way by a tenth and the spacer rides **on** the skin, which lifts the panel end off its
+bedding - giving back exactly the continuous support that dropping the 2040s was for. Things that
+can go the wrong way: the hole centre on panels he did not drill, spacer OD tolerance, glue
+squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 panel.
+
+✅ **He is ordering spacers to test it**, 2026-10-11, so `TT_BED_SPACER_CLEAR` stays **OPEN** until a
+real one is offered up to a real panel.
+
+**If it fouls, relieve the skin and not the spacer.** Sixteen scallops, roughly 10 across and 1.5
+deep, one under each screw, marked off the panels at assembly rather than drilled to a drawing - the
+panels own the hole spacing. 📌 **The reason to relieve the skin is that it cannot lift the panel.**
+A filed spacer or a thinner one both can, and a 6 OD spacer - 1 mm of clearance on a 0.45 mm
+stainless wall, which these no-load screws would carry fine - also depends on sourcing a part, where
+a scallop depends on nothing.
+
 ## Still to measure
 
 - 🔴 **The 58 mm** that the whole 242.5 mm end-plate chain hangs on - an as-built measurement off the
@@ -253,3 +275,5 @@ placed it. `TT_BED_FORE_AFT_CHECK` now subtracts the bed's depth from the beam l
 - **Whether the four tee track plates' top faces come out coplanar** when laid on something flat, or
   need shimming where they meet the box.
 - **Whether the vice can bolt straight down to the tee track** with the MDF layers off.
+- ⚠️ **Whether the 8 mm OD spacer clears the top skin** - ordered to test, and tangent on paper. See
+  the section above.
