@@ -103,10 +103,11 @@ what = "Cast stepper frame, through its rails into the interposer"
 size = 5
 count = 6
 per = "2 per casting, three castings"
-length = 40
+length = 35
 into = "tapped"
 grip = ["CASTING_RAIL_H"]   # the interposer is TAPPED, so it is thread, not grip
-source = "his, 2026-10-11"
+source = "his, 2026-10-11 - 35, corrected down from 40 the same day"
+note = "⚠ THE 35 LEAVES 5 OF ENGAGEMENT in the interposer, 1 x D on an M5, where the 40 gave 10. His call, and the tool flags it under one diameter every run - that flag is expected here, not a thing to chase."
 
 [[joint]]
 id = "casting-block"
