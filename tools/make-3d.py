@@ -370,7 +370,18 @@ def main() -> int:
         box("Rib, across", "grid", 0xD4B24A, web, cy_ - half, cav_z0,
             W - web, cy_ + half, cav_z1, d="19 x 100, continuous")
 
-    tz0, tz1 = -(v["BOX_THK"] - SKIN), v["BOX_TONGUE_PROUD"]
+    # THE TONGUE COVERS THE END GRAIN OF BOTH SKINS - his, 2026-10-11 - so it
+    # runs the box's full thickness and stands BOX_TONGUE_PROUD above the top
+    # skin: -BOX_THK to +60, which is TONGUE_FULL_H = 204 tall.
+    #
+    # 🔴 IT USED TO READ -(BOX_THK - SKIN) AND THAT BECAME WRONG ON 2026-10-11.
+    # With both skins at 19 that expression gave -119, which WAS the bottom
+    # skin's top face, so the tongue stood on it as the prose said. When the
+    # top skin went to 25 the expression still gave -119 BY COINCIDENCE - 144
+    # less 25 - while the bottom skin's top face moved to -125, leaving the
+    # tongue floating 6 above it. A formula that reached for the BOTTOM skin
+    # through the TOP skin's symbol only worked while the two were equal.
+    tz0, tz1 = -v["BOX_THK"], v["BOX_TONGUE_PROUD"]
     box("Back tongue", "box", 0xA07B16, -TT, -TT, tz0, W + TT, 0, tz1)
     for x0 in (-TT, W):
         box("Side tongue", "box", 0xA07B16,

@@ -25,8 +25,11 @@ began as the left/right detail that captures the full-height outboard plates. Th
 get it too, because the **front taper fins and the full-width back panel need the same backing face**
 - see [`lateral-stiffness.md`](lateral-stiffness.md). Three consequences, all good:
 
-- **One detail everywhere** instead of two. Inner web between the skins, outer lamination 180 mm tall
-  standing on the bottom skin and 60 mm proud, aluminium bolted through it. 📌 **The outer lamination
+- **One detail everywhere** instead of two. Inner web between the skins, outer lamination **204 mm
+  tall covering the end grain of both skins** and 60 mm proud, aluminium bolted through it. ✅ **It
+  caps the skins rather than standing on them** - his, 2026-10-11: the tongues are glued to the sides
+  of the box, so running the bottom skin out underneath buys nothing and the capped end is cleaner.
+  (The 180 this carried never closed - 100 + 19 + 60 is 179.) 📌 **The outer lamination
   IS the tongue** - one part, not two - which is why its thickness and the tongue's are a single
   decision.
 - **The front and back tongues are the continuous ones.** Each runs the full width and **19 mm past
@@ -178,7 +181,7 @@ letting the box land on one destroys the three-point mount. Skin thickness is a 
 spanning problem; a **deep back-edge member**, running below the bottom skin if it has to, is the
 right spend.
 
-✅ **Partly answered 2026-09-30.** The doubled back wall is a 44 mm lamination ~180 mm deep running
+✅ **Partly answered 2026-09-30.** The doubled back wall is a 44 mm lamination ~204 mm deep running
 the full back edge, which is a considerably deeper member than the 144 mm box. It was adopted for the
 back panel's sake, not for this, so treat it as a windfall rather than a solved problem - if the back
 edge still wants more, it now wants it **below the bottom skin**, since the wall has taken the space

@@ -583,7 +583,7 @@ but the gap is still a hard dimension.
 | Skins | **25 mm Baltic birch top, 19 mm bottom** — settled 2026-10-11, and the 25 is for **bearing** not stiffness |
 | Grid | **19 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
 | Depth overall | **144 mm** (25 + 100 + 19) |
-| Outer walls, all four sides | **25 mm outer + 19 mm inner web, 44 mm total** — the outer one 180 mm tall, standing on the bottom skin and **60 mm proud** of the top skin as a **tongue**. The 25 is for **bolt bearing**, settled 2026-10-11 |
+| Outer walls, all four sides | **25 mm outer + 19 mm inner web, 44 mm total** — the outer one **204 mm tall, capping the end grain of both skins** and **60 mm proud** of the top skin as a **tongue**. The 25 is for **bolt bearing**, settled 2026-10-11 |
 | Footprint | **1210.73 across** by **1156.35 front to back** — ⚠️ derived, verify against the standing machine |
 | Fill | **sand in the cavities, LAST, on site** |
 
