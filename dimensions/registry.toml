@@ -2934,3 +2934,25 @@ sym = "Z_RAIL_BOLT_ENGAGE"
 value = 10
 provenance = "part"
 note = "10 of M5 thread in the X carriage plate, his 2026-10-11 - 2 x D. \u2705 IT STOPS 2.7 SHORT OF THE FAR FACE on a T_X_CARRIAGE_PLATE of 12.7, so nothing breaks through the back. \u26A0 THE 12.7 IS STILL A NOMINAL in this file and this clearance is only 2.7, so a plate that micrometers thin is worth knowing about before tapping."
+
+[[dim]]
+sym = "BF12_BODY_AT_BOLT"
+expr = "BF12_FACE_BOLT_L - BF12_FACE_ENGAGE_TONGUE"
+note = "20 - how much BF12 body an M5 crosses before it reaches the plate it threads into, face-mounted. \u26A0 DERIVED BACKWARDS FROM HIS TWO FIGURES - an M5 x 30 giving 10 of engagement in the X tongue - because BF12's own body dimension at the bolt is not in this file. It is HIS arithmetic, not a measured casting. \u2705 IT IS WHAT EXPLAINS THE PROTRUSION: the same 30 bolt has the same 10 past the body wherever it lands, so in the 1/2in tongue it stops 2.19 short and in the 1/4in rear plate it runs 3.65 through."
+
+[[dim]]
+sym = "BF12_FACE_BOLT_L"
+value = 30
+provenance = "part"
+note = "M5 x 30 for a face-mounted BF12, his 2026-10-11."
+
+[[dim]]
+sym = "BF12_FACE_ENGAGE_TONGUE"
+value = 10
+provenance = "part"
+note = "10 of M5 thread into the X end plate's tongue, his 2026-10-11 - 2 x D in 1/2in plate, stopping 2.19 short of the far face."
+
+[[dim]]
+sym = "BF12_FACE_PROTRUDE_REAR"
+expr = "BF12_FACE_BOLT_L - BF12_BODY_AT_BOLT - T_REAR_PLATE"
+note = "3.65 - how far a face-mount M5 x 30 stands through the back of the 1/4in rear plate. His figure was 'about 4' and this is it exactly. \u26A0 IT IS THE SAME BOLT AS THE TONGUE'S and that is the whole point: one length, two plate thicknesses, and only one of them stops short. \U0001F4CC IF THE STUB IS UNWANTED, SHORTEN THE BOLT RATHER THAN CAP IT - an M5 x 25 leaves 5 of engagement in the 6.35 plate, which is 1 x D in steel, and nothing protrudes."

@@ -111,11 +111,24 @@ source = "his, 2026-10-11"
 id = "bf12-to-plate"
 what = "BF12 face-mounted into the rear plate and the X end plate tongue"
 size = 5
-count = 12
-per = "4 per BF12, three"
+count = 8
+per = "4 per BF12"
+length = 30
 into = "tapped"
-source = "assembly.md: '4 x M5 tapped into the inside face of the rear plate'"
-note = "Face-mounted it is 4 x M5; top-mounted it would be 2. Any BF12 figure must say which."
+grip = ["BF12_BODY_AT_BOLT"]
+source = "his, 2026-10-11"
+note = "Face-mounted it is 4 x M5; top-mounted it would be 2. Any BF12 figure must say which. 🔴 THE SAME BOLT LANDS IN TWO DIFFERENT THICKNESSES: 10 of engagement in the X tongue's 1/2in plate, where it stops short, but the 1/4in rear plate is only 6.35 thick so it goes clean through and PROTRUDES ABOUT 4. ⚠️ HIS COUNT IS 8 AND THE PROSE IMPLIES 12 - there are three face-mounted BF12 by assembly.md's reckoning, X plus Y1 plus Y2, which would be twelve. Left at his 8 until he says which."
+
+[[joint]]
+id = "rear-plate-to-beam-ends"
+what = "Rear plate into the ends of the Y1 and Y2 beams"
+size = 8
+count = 16
+per = "8 per beam"
+into = "bore"
+grip = ["T_REAR_PLATE"]
+source = "his, 2026-10-11; assembly.md: '8 x M8 into each beam's corner bores - 16 bolts total'"
+note = "🔴 THIS JOINT WAS MISSING FROM THE SCHEDULE ENTIRELY until he listed it - it is in assembly.md and was simply not transcribed. LENGTH STILL UNKNOWN: it wants T_REAR_PLATE of grip plus whatever engagement into the o6.65 corner bore, and the beam-to-endplate joint's M8 x 35 is the obvious comparison."
 
 [[joint]]
 id = "beam-to-endplate"
@@ -163,8 +176,9 @@ size = 8
 count = 8
 into = "nut"
 grip = ["T_REAR_PLATE", "T_BOX_TONGUE"]
+extras = ["M8 fender washer", "M8 acorn nut"]
 source = "assembly.md: '8 bolts through the back tongue at Y 30, 150 mm pitch'"
-note = "From outboard: washer, tongue, plate, M8 locknut on the inboard face."
+note = "From outboard: fender washer, tongue, plate, nut. ⚠️ THE ACORN NUT IS A TERM IN THE BOLT LENGTH, not a finish: it is CLOSED, so how deep its thread runs is what decides whether the bolt bottoms before it clamps - see ACORN_NUT_H."
 
 [[joint]]
 id = "side-plate-to-tongue"
@@ -174,6 +188,7 @@ count = 14
 per = "7 per beam"
 into = "nut"
 grip = ["T_SIDE_PLATE", "T_BOX_TONGUE"]
+extras = ["M8 fender washer", "M8 acorn nut"]
 source = "assembly.md: 'M8 at 150 mm, first at 50 - seven per beam, at Y 30'"
 
 [[joint]]

@@ -138,6 +138,19 @@ def main():
         if "size" in r and r.get("length") is not None:
             buy[(r["size"], r["length"])] = (
                 buy.get((r["size"], r["length"]), 0) + r.get("count", 0))
+    # WASHERS AND NUTS ARE PART OF THE BUY AND PART OF THE LENGTH. A fender
+    # washer and an acorn nut are not trim: the washer is a term in the grip,
+    # and a CLOSED acorn nut can bottom before the joint clamps. Totalling them
+    # here is the only place in the repo that does.
+    extras = {}
+    for r in rows:
+        for e in r.get("extras", []):
+            extras[e] = extras.get(e, 0) + r.get("count", 0)
+    if extras:
+        print("\n  Washers and nuts:")
+        for e in sorted(extras):
+            print(f"     {e}: {extras[e]}")
+
     print("\n  Bolts to buy:")
     for (sz, L) in sorted(buy):
         print(f"     M{sz} x {L:g}: {buy[(sz, L)]}")
