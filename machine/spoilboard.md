@@ -259,12 +259,43 @@ squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 
 ✅ **He is ordering spacers to test it**, 2026-10-11, so `TT_BED_SPACER_CLEAR` stays **OPEN** until a
 real one is offered up to a real panel.
 
-**If it fouls, relieve the skin and not the spacer.** Sixteen scallops, roughly 10 across and 1.5
-deep, one under each screw, marked off the panels at assembly rather than drilled to a drawing - the
-panels own the hole spacing. 📌 **The reason to relieve the skin is that it cannot lift the panel.**
-A filed spacer or a thinner one both can, and a 6 OD spacer - 1 mm of clearance on a 0.45 mm
-stainless wall, which these no-load screws would carry fine - also depends on sourcing a part, where
-a scallop depends on nothing.
+**If it fouls, relieve the skin and not the spacer.** 📌 **The reason is that a relief in the skin
+cannot lift the panel.** A filed spacer or a thinner one both can, and a 6 OD spacer - 1 mm of
+clearance on a 0.45 mm stainless wall, which these no-load screws would carry fine - also depends on
+sourcing a part, where cutting the skin depends on nothing.
+
+### ✅ How the relief gets cut: a router groove, not sixteen scallops
+
+**His, 2026-10-11, and it is better than the scallops first proposed** for a reason beyond effort: a
+groove does not need the hole positions at all. It only has to be in the right **band**, so nothing
+gets marked off the panels - and the panels own the hole spacing, which is not a figure this repo
+has.
+
+| | |
+|---|---|
+| Depth | **1 mm** - turns the tangent into a clearance; nothing in a 25 mm skin |
+| Outboard edge, inset from the box's skin edge | **3.429 mm**, the side plate's thickness |
+| Width, inboard from there | **about 12 mm** - anything from 8 to 15 works |
+| Length | the full fore-aft run the bed occupies, not stopping at the end spacers |
+
+✅ **The side plate stands flush with the box's top-skin edge**, so a router fence off the box edge is
+enough - no need to clamp the plate as a fence. The file agrees: BOX_W is measured **inside** the
+side tongues and the tongue's inside face is the plate's **outer** face, so there is no channel and
+the plate's outer face is the skin's edge.
+
+🔴 **The inset is 3.429, not 1/8".** The plate was ordered **10 gauge** and
+[`../dimensions/VALUES.md`](../dimensions/VALUES.md) records that a nominal 1/8" was carried for it
+and was wrong. The 0.254 matters only because of which way it errs: insetting 3.175 starts the groove
+**0.254 under the plate's footprint**, undercutting the one edge PLATE_H calls the edge that bears on
+the top skin. **Inset 3.5 and let the error fall inboard**, where it costs nothing - the width is
+slack and the inset is not.
+
+⚠️ **Caliper the delivered sheet.** T_SIDE_PLATE's own note says 10 gauge is a gauge and the gauge is
+the nominal, with a standing instruction to measure the real plate. The groove follows the plate in
+hand, not the catalogue.
+
+📌 **One thing to decide at the bench rather than here:** whether the groove is cut in the skin
+**before** it is glued to the ribs, or after the box is assembled with the plates dry-fitted.
 
 ## Still to measure
 

@@ -177,7 +177,7 @@ letting the box land on one destroys the three-point mount. Skin thickness is a 
 spanning problem; a **deep back-edge member**, running below the bottom skin if it has to, is the
 right spend.
 
-✅ **Partly answered 2026-09-30.** The doubled back wall is a 38 mm lamination ~180 mm deep running
+✅ **Partly answered 2026-09-30.** The doubled back wall is a 44 mm lamination ~180 mm deep running
 the full back edge, which is a considerably deeper member than the 144 mm box. It was adopted for the
 back panel's sake, not for this, so treat it as a windfall rather than a solved problem - if the back
 edge still wants more, it now wants it **below the bottom skin**, since the wall has taken the space
