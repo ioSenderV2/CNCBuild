@@ -686,6 +686,95 @@ value = 55
 provenance = "vendor"
 note = "Clamp's axial dimension"
 
+# ------------------------------------------------- the clamp's shape, his 2026-10-10
+
+[[dim]]
+sym = "CLAMP_SHOULDER_W"
+value = 115
+provenance = "part"
+note = "Across the clamp where the SHOULDERS are, which is its widest point away from the plate. CLAMP_W's 120 is at the mounting face."
+
+[[dim]]
+sym = "CLAMP_MID_W"
+value = 80
+provenance = "part"
+note = "Across the raised middle section, which is also the gap between the two shoulders. With CLAMP_SHOULDER_W it makes each shoulder CLAMP_SHOULDER_EACH wide."
+
+[[dim]]
+sym = "CLAMP_SHOULDER_EACH"
+expr = "(CLAMP_SHOULDER_W - CLAMP_MID_W) / 2"
+note = "17.5 of shoulder each side of the middle. \u26a0 THE BOLT IS NOT CENTRED IN IT - the pattern is CLAMP_BOLT_PITCH_W, 100, centred on the clamp, which puts each bolt 50 out where the shoulder's own centre is 48.75. Eyeballing the offset off the shoulder is what put the pattern 2.5 wrong; the rounded edges make it hard to read off the part at all."
+
+[[dim]]
+sym = "CLAMP_TOP_W"
+value = 38.1
+provenance = "part"
+note = "1.5in across the FACE at the clamp's tallest point. From there each side falls away to the shoulder - he calls it 45 degrees, and the model draws it landing on CLAMP_MID_W at CLAMP_SHOULDER_OUT, which comes out at 42.3 rather than 45. \u26a0 THE TWO WIDTHS ARE KEPT AND THE ANGLE IS NOT: 19.05 plus a true 45 over the 23 of drop would land at 84.1 across, 4 wider than the 80 gap between the shoulders he also gave. Nothing is built to this - it is a bought clamp - so the slope is drawn to the dimensions that can be measured."
+
+[[dim]]
+sym = "CLAMP_MID_OUT"
+value = 103
+provenance = "part"
+note = "How far the middle section stands OUT from the Z plate's face - the clamp's highest point. It covers the barrel: CLAMP_BORE_OFFSET puts the bore centre 50 out and the \u00f880 barrel's front face at 90, so 13 of metal stands beyond it."
+
+[[dim]]
+sym = "CLAMP_SHOULDER_OUT"
+value = 80
+provenance = "part"
+note = "How far the shoulders stand out from the Z plate's face. It is the length of bolt buried in the clamp, and with BOLT_SPINDLE_CLAMP it is what leaves CLAMP_BOLT_ENGAGE in the plate."
+
+[[dim]]
+sym = "CLAMP_GAP_START"
+value = 55
+provenance = "part"
+note = "Where the clamping gap starts, measured OUT from the Z plate's face - his, 2026-10-10. It splits the clamp into a piece against the plate and a piece carrying the shoulders, and the four M8 cross it: tightening them pulls the outer piece down and closes the gap on the barrel."
+
+[[dim]]
+sym = "CLAMP_GAP_W"
+value = 2
+provenance = "part"
+note = "The gap, open, with the bolts slack. It is what the bolts take up, so it is also the travel available to grip the barrel - the clamp is not bottomed out when it is tight."
+
+[[dim]]
+sym = "CLAMP_BOLT_PITCH_W"
+value = 100
+provenance = "part"
+note = "Across between the two bolt columns, centred on the clamp - Sheet 4's M1-M8 at Y 32 and 132 on the 164 plate. \u2705 CHALLENGED AND HELD 2026-10-10: reading the bolts as centred in the 17.5 shoulders gives 97.5, and the sheet's 100 is the one. The shoulder reading was taken off rounded edges."
+
+[[dim]]
+sym = "CLAMP_BOLT_PITCH_AXIAL"
+value = 25
+provenance = "part"
+note = "Between the two bolts in one shoulder, along the spindle axis - Sheet 4's M1-M8 pairs at X 17/42 and 133/158."
+
+[[dim]]
+sym = "CLAMP_BOLT_EDGE"
+expr = "(CLAMP_AXIAL - CLAMP_BOLT_PITCH_AXIAL) / 2"
+note = "15 in from each end of the clamp's 55. DERIVED AND NOT MEASURED, his 2026-10-10, for the reason the part cannot be read: the edges are rounded, so an offset taken from them is a guess. 55 less 25 leaves 30 to share. A direct reading of 14 is what it replaces."
+
+[[dim]]
+sym = "BOLT_SPINDLE_CLAMP"
+value = 90
+provenance = "part"
+note = "M8 x 90 socket head cap, four to a clamp, eight in all. It crosses CLAMP_SHOULDER_OUT of clamp and threads CLAMP_BOLT_ENGAGE into the Z plate, which Sheet 4 taps M8 x 1.25."
+
+[[dim]]
+sym = "CLAMP_BOLT_ENGAGE"
+expr = "BOLT_SPINDLE_CLAMP - CLAMP_SHOULDER_OUT"
+note = "10 mm of thread in the Z plate, out of its T_Z_PLATE. His figure and the model's agree by construction - if the clamp or the bolt ever changes, this moves instead of staying a stale 10."
+
+[[dim]]
+sym = "M8_HEAD_D"
+value = 13
+provenance = "nominal"
+note = "\u00f813, a socket head cap M8 across the head. \u26a0 CATALOGUE AND NOT HIS - the standard ISO 4762 figure, carried so the model can draw the clamp bolts. Caliper one before anything is cut to it. It is NOT FLANGE_HEAD_D, which is the flanged button head used on the beams."
+
+[[dim]]
+sym = "M8_HEAD_H"
+value = 8
+provenance = "nominal"
+note = "Socket head cap M8 head height, the same catalogue source and the same caveat as M8_HEAD_D."
+
 [[dim]]
 sym = "CLAMP_PAIR_SPAN"
 expr = "CLAMP_CENTRES + CLAMP_AXIAL"
@@ -1680,9 +1769,9 @@ note = "50, the new bar across - metric, replacing the 2in (50.8) of the existin
 
 [[dim]]
 sym = "CLAMP_W"
-value = 122
-provenance = "vendor"
-note = "Clamp footprint across the Z plate - the 122 in the 122 x 55 that Sheets 3 and 4 already drew. Pairs with CLAMP_AXIAL. It is what leaves 2 mm of relief at each end of the 164 plate once the 100 x 25 bolt pattern is centred in it."
+value = 120
+provenance = "part"
+note = "Clamp footprint across the Z plate, where it lands on the face - HIS, 2026-10-10, superseding a vendor 122. \u26a0 SHEETS 3 AND 4 STILL PRINT 122 x 55 and are not changed by this. The clamp narrows to CLAMP_SHOULDER_W further out; how far out it makes that step is not known, so the model draws the narrower figure the whole way. Pairs with CLAMP_AXIAL. It is what leaves 2 mm of relief at each end of the 164 plate once the 100 x 25 bolt pattern is centred in it."
 
 [[dim]]
 sym = "WINDOW_Z_LOW"

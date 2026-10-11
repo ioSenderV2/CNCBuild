@@ -186,21 +186,31 @@ def main() -> int:
                   "cx": cx, "cy": cy, "r": r, "z0": lo, "z1": hi, "lead": lead,
                   "d": d, "k": ride[0] if k is None else k, "p": p, "q": q})
 
-    def prism(name, group, colour, profile, ya, yb, holes=None, d="", k=None):
-        """An X-Z profile extruded along fore-aft. The fins are not boxes.
+    def prism(name, group, colour, profile, ya, yb, holes=None, d="", k=None,
+              plane="xz"):
+        """A profile extruded along the axis it does not lie in.
 
-        p/q stay the bounding box so the camera framing and the interference
-        check keep working; the check is then CONSERVATIVE on a prism, which is
-        the safe direction - it may flag a touch that the real taper clears.
+        plane "xz" is a section across the machine and up, extruded along
+        FORE-AFT - the fins. plane "xy" is a section across the machine and
+        OUT from the Z plate, extruded along Z - the spindle clamps, whose
+        shape lives in that plane and whose bore runs along the extrusion.
+
+        p/q stay the bounding box so the camera framing keeps working. The
+        interference check no longer settles for that: where a prism is in the
+        pair it re-tests against this profile, because on a tapered part the
+        box claims metal the part does not have.
         """
-        xs = [pt[0] for pt in profile]
-        zs = [pt[1] for pt in profile]
+        us = [pt[0] for pt in profile]
+        vs = [pt[1] for pt in profile]
+        lo, hi = min(ya, yb), max(ya, yb)
+        if plane == "xz":
+            p, q = [min(us), lo, min(vs)], [max(us), hi, max(vs)]
+        else:
+            p, q = [min(us), min(vs), lo], [max(us), max(vs), hi]
         P.append({"n": name, "g": group, "c": colour, "t": "prism", "d": d,
-                  "k": ride[0] if k is None else k,
+                  "k": ride[0] if k is None else k, "pl": plane,
                   "profile": profile, "holes": holes or [],
-                  "ya": min(ya, yb), "yb": max(ya, yb),
-                  "p": [min(xs), min(ya, yb), min(zs)],
-                  "q": [max(xs), max(ya, yb), max(zs)]})
+                  "ya": lo, "yb": hi, "p": p, "q": q})
 
     W = v["MACHINE_OUTER_W"]         # 1211.238, side plate face to side plate face
     D = v["BOX_FORE_AFT"]            # 1156.35
@@ -493,13 +503,75 @@ def main() -> int:
         v["TOOL_D"] / 2, seg=16,
         d="a stand-in cutter, 1/4in by 2in of stickout - NOT a machine dimension")
 
-    # Two clamps, CLAMP_CENTRES apart about the Z plate's mid-height, each
-    # CLAMP_AXIAL tall and CLAMP_W across, reaching from the plate's face past
-    # the bore so the barrel passes through them.
+    # Two clamps, CLAMP_CENTRES apart about the Z plate's mid-height. Each is a
+    # STEPPED SECTION, not a block - his, 2026-10-10: a middle that stands
+    # CLAMP_MID_OUT off the plate with a CLAMP_TOP_W face on top and a fall away
+    # each side, and a shoulder either side standing CLAMP_SHOULDER_OUT, which
+    # is what the four M8 go through. The section lies across the machine and
+    # out from the plate, and the bore runs along the extrusion, so the barrel
+    # passes through a real hole rather than through declared metal.
+    # IT IS SLIT DOWN ONE SIDE ONLY - the operator's right, which is the LOW X
+    # side of this frame because X is measured from behind. So the clamp is one
+    # C-shaped piece: the slit runs in from that edge at CLAMP_GAP_START,
+    # CLAMP_GAP_W open with the bolts slack, and meets the bore. The bore is
+    # therefore not an enclosed hole; it is part of the outline, reached
+    # through the slit, which is what lets the jaw close on the barrel.
+    import math as _math
+    cl_half, sh_in = v["CLAMP_SHOULDER_W"] / 2, v["CLAMP_MID_W"] / 2
+    top_half, sh_out = v["CLAMP_TOP_W"] / 2, v["CLAMP_SHOULDER_OUT"]
+    mid_out, bore_r = v["CLAMP_MID_OUT"], v["SPINDLE_D"] / 2
+    g0 = zp_front + v["CLAMP_GAP_START"]
+    g1 = g0 + v["CLAMP_GAP_W"]
+
+    def _slit_x(y):
+        """Where the slit's edge at height y meets the bore."""
+        dy = y - sp_axis
+        return zp_cx - _math.sqrt(max(bore_r ** 2 - dy ** 2, 0.0))
+
+    # The bore, traced the LONG way round from the slit's upper lip to its
+    # lower one, so the short way - the slit itself - is left open.
+    a_top = _math.atan2(g1 - sp_axis, _slit_x(g1) - zp_cx)
+    a_bot = _math.atan2(g0 - sp_axis, _slit_x(g0) - zp_cx) - 2 * _math.pi
+    n = 48
+    bore_arc = [[zp_cx + bore_r * _math.cos(a_top + (a_bot - a_top) * i / n),
+                 sp_axis + bore_r * _math.sin(a_top + (a_bot - a_top) * i / n)]
+                for i in range(n + 1)]
+
+    clamp_profile = (
+        [[zp_cx - cl_half, zp_front], [zp_cx + cl_half, zp_front],
+         [zp_cx + cl_half, zp_front + sh_out], [zp_cx + sh_in, zp_front + sh_out],
+         [zp_cx + top_half, zp_front + mid_out], [zp_cx - top_half, zp_front + mid_out],
+         [zp_cx - sh_in, zp_front + sh_out], [zp_cx - cl_half, zp_front + sh_out],
+         [zp_cx - cl_half, g1], [_slit_x(g1), g1]]
+        + bore_arc
+        + [[_slit_x(g0), g0], [zp_cx - cl_half, g0]])
+
     for cz in (block_mid - v["CLAMP_CENTRES"] / 2, block_mid + v["CLAMP_CENTRES"] / 2):
-        box("Spindle clamp", "z", 0x5E6B75,
-            zp_cx - v["CLAMP_W"] / 2, zp_front, cz - v["CLAMP_AXIAL"] / 2,
-            zp_cx + v["CLAMP_W"] / 2, sp_axis + r + 8, cz + v["CLAMP_AXIAL"] / 2)
+        prism("Spindle clamp", "z", 0x5E6B75, clamp_profile,
+              cz - v["CLAMP_AXIAL"] / 2, cz + v["CLAMP_AXIAL"] / 2, plane="xy",
+              d="bolts to the Z plate face, " + str(v["CLAMP_MID_OUT"]) +
+                " out at the middle and " + str(v["CLAMP_SHOULDER_OUT"]) +
+                " at the shoulders, slit on the operator's right")
+        # Four M8 x 90 a clamp, on Sheet 4's M1-M8 pattern: CLAMP_BOLT_PITCH_W
+        # across CENTRED ON THE CLAMP - not centred in the shoulder, which is
+        # the reading that put it 2.5 out - and CLAMP_BOLT_EDGE in from each
+        # end of the 55. Head proud of the shoulder, shank through it and
+        # CLAMP_BOLT_ENGAGE into the plate.
+        for bx in (zp_cx - v["CLAMP_BOLT_PITCH_W"] / 2,
+                   zp_cx + v["CLAMP_BOLT_PITCH_W"] / 2):
+            for bz in (cz - v["CLAMP_AXIAL"] / 2 + v["CLAMP_BOLT_EDGE"],
+                       cz + v["CLAMP_AXIAL"] / 2 - v["CLAMP_BOLT_EDGE"]):
+                cyl("Clamp bolt head", "bolts", 0x3C4248, bx, bz,
+                    zp_front + sh_out, zp_front + sh_out + v["M8_HEAD_H"],
+                    v["M8_HEAD_D"] / 2, axis="y", seg=12,
+                    d="M8 x 1.25 x 90 socket head cap (BOLT_SPINDLE_CLAMP)")
+                cyl("Clamp bolt", "bolts", 0x3C4248, bx, bz,
+                    zp_front + sh_out,
+                    zp_front + sh_out - v["BOLT_SPINDLE_CLAMP"], 4.0,
+                    axis="y", seg=10,
+                    d="M8 x 1.25 x 90 - " + str(v["CLAMP_SHOULDER_OUT"]) +
+                      " of clamp then " + str(v["CLAMP_BOLT_ENGAGE"]) +
+                      " tapped into the Z plate")
 
     # ---- ball screws, nuts, BF12 and the stepper castings -----------------
     # Four identical 1605 screws, each running from a BF12 at one end to a cast
@@ -1249,6 +1321,12 @@ ALLOWED = {
     frozenset({"Spindle nose", "Spindle shaft"}),
     frozenset({"Spindle shaft", "Collet nut"}),
     frozenset({"Spindle clamp", "Spindle barrel"}),  # a clamp WRAPS the barrel
+    # Four M8 x 90 a clamp: 80 through the shoulder and 10 into the plate, which
+    # is CLAMP_SHOULDER_OUT and CLAMP_BOLT_ENGAGE coming back out of the model.
+    # Only the shank is listed - the heads stand proud of the shoulder and clash
+    # with nothing, which is the check that they are the right way round.
+    frozenset({"Spindle clamp", "Clamp bolt"}),
+    frozenset({"Z plate", "Clamp bolt"}),
     frozenset({"Spindle clamp", "Z plate"}),         # bolts to its face
     frozenset({"Y rail", "Y block"}),               # a block WRAPS its rail
     frozenset({"X rail", "X block"}),
@@ -1352,6 +1430,12 @@ ALLOWED = {
 }
 
 
+# Which two coordinates a prism's profile lives in, and which it extrudes
+# along. Everything below reads the profile through this rather than assuming
+# the fins' plane.
+PLANE_AXES = {"xz": (0, 2), "xy": (0, 1)}
+
+
 def through_hole(a, b) -> bool:
     """A part passing THROUGH a cut-out is not an interference.
 
@@ -1362,6 +1446,7 @@ def through_hole(a, b) -> bool:
     it is flagged again, which is the whole point of the check.
     """
     for prism_, other in ((a, b), (b, a)):
+        i, j = PLANE_AXES[prism_.get("pl", "xz")]
         for hp in prism_.get("holes", []):
             hx = [pt[0] for pt in hp]
             hz = [pt[1] for pt in hp]
@@ -1370,8 +1455,8 @@ def through_hole(a, b) -> bool:
             # by different routes, so an exact compare fails on one fin and not
             # the other.
             e = 0.05
-            if (min(hx) - e <= other["p"][0] and other["q"][0] <= max(hx) + e
-                    and min(hz) - e <= other["p"][2] and other["q"][2] <= max(hz) + e):
+            if (min(hx) - e <= other["p"][i] and other["q"][i] <= max(hx) + e
+                    and min(hz) - e <= other["p"][j] and other["q"][j] <= max(hz) + e):
                 return True
     return False
 
@@ -1470,9 +1555,12 @@ def prism_bite(a, b):
         if prism_.get("t") != "prism":
             continue
         pts = prism_["profile"]
+        # ai / aj and NOT i / j: the sampling loop below uses i, and naming the
+        # axis index the same thing made it read the part's z as its x.
+        ai, aj = PLANE_AXES[prism_.get("pl", "xz")]
         zs = [q[1] for q in pts]
-        z0 = max(prism_["p"][2], other["p"][2], min(zs))
-        z1 = min(prism_["q"][2], other["q"][2], max(zs))
+        z0 = max(prism_["p"][aj], other["p"][aj], min(zs))
+        z1 = min(prism_["q"][aj], other["q"][aj], max(zs))
         if z1 <= z0:
             continue
         for i in range(201):
@@ -1488,8 +1576,8 @@ def prism_bite(a, b):
                     xs.append(ax + (z - az) * (bx - ax) / (bz - az))
             if len(xs) < 2:
                 continue
-            lo = max(min(xs), other["p"][0])
-            hi = min(max(xs), other["q"][0])
+            lo = max(min(xs), other["p"][ai])
+            hi = min(max(xs), other["q"][ai])
             worst = max(worst, hi - lo)
     return worst
 
@@ -1506,10 +1594,11 @@ def prism_misses(a, b) -> bool:
     for prism_, other in ((a, b), (b, a)):
         if prism_.get("t") != "prism":
             continue
-        x0 = max(prism_["p"][0], other["p"][0])
-        x1 = min(prism_["q"][0], other["q"][0])
-        z0 = max(prism_["p"][2], other["p"][2])
-        z1 = min(prism_["q"][2], other["q"][2])
+        i, j = PLANE_AXES[prism_.get("pl", "xz")]
+        x0 = max(prism_["p"][i], other["p"][i])
+        x1 = min(prism_["q"][i], other["q"][i])
+        z0 = max(prism_["p"][j], other["p"][j])
+        z1 = min(prism_["q"][j], other["q"][j])
         if not _rect_hits_poly(prism_["profile"], x0, x1, z0, z1):
             return True
     return False
@@ -1715,18 +1804,29 @@ for(const p of PARTS){
       ctr=[p.cx-mid[0],m-mid[2],-(p.cy-mid[1])];
     }
   }else if(p.t==='prism'){
-    // profile is machine X-Z, extruded along fore-aft. Extrude runs along three's
-    // +Z, so the mesh is built at the origin and then shifted to the right depth.
+    // Two planes. "xz" is a section across and up, extruded along fore-aft -
+    // the fins. "xy" is across and OUT from the Z plate, extruded along Z -
+    // the spindle clamps. Either way the profile is built in the shape's own
+    // plane and the mesh is then turned to stand the right way up.
+    const xy=(p.pl==='xy');
+    const u=pt=>pt[0]-mid[0], w=pt=>xy?(pt[1]-mid[1]):(pt[1]-mid[2]);
     const sh=new THREE.Shape();
-    p.profile.forEach((pt,i)=>i?sh.lineTo(pt[0]-mid[0],pt[1]-mid[2]):sh.moveTo(pt[0]-mid[0],pt[1]-mid[2]));
+    p.profile.forEach((pt,i)=>i?sh.lineTo(u(pt),w(pt)):sh.moveTo(u(pt),w(pt)));
     sh.closePath();
     (p.holes||[]).forEach(hp=>{
       const hs=new THREE.Path();
-      hp.forEach((pt,i)=>i?hs.lineTo(pt[0]-mid[0],pt[1]-mid[2]):hs.moveTo(pt[0]-mid[0],pt[1]-mid[2]));
+      hp.forEach((pt,i)=>i?hs.lineTo(u(pt),w(pt)):hs.moveTo(u(pt),w(pt)));
       hs.closePath(); sh.holes.push(hs);
     });
     geom=new THREE.ExtrudeGeometry(sh,{depth:p.yb-p.ya,bevelEnabled:false});
-    ctr=[0,0,-(p.yb-mid[1])];
+    if(xy){
+      // the shape's second axis is machine fore-aft, which is three's -Z, and
+      // the extrusion is machine Z, which is three's +Y
+      geom.rotateX(-Math.PI/2);
+      ctr=[0,p.ya-mid[2],0];
+    }else{
+      ctr=[0,0,-(p.yb-mid[1])];
+    }
   }else{
     const s=[0,1,2].map(i=>Math.max(p.q[i]-p.p[i],0.4));
     geom=new THREE.BoxGeometry(s[0],s[2],s[1]);
