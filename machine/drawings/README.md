@@ -11,6 +11,19 @@ particular are hard to carry in words and easy to get wrong later - the **riser 
 **three-point pad layout relative to the five legs** - and that was already flagged as a decision to
 make deliberately rather than drift into.
 
+## What is in here
+
+| File | What it is | Made by |
+|---|---|---|
+| [`shop-pack.html`](shop-pack.html) | One sheet per metal plate, for the **machining trip** | hand-authored |
+| [`model-3d.html`](model-3d.html) | The whole machine as solids, with an interference check and an envelope sweep | `tools/make-3d.py` |
+| [`box-cutlist.html`](box-cutlist.html) | The **torsion box** cut list and its sheet count | `tools/make-cutlist.py` |
+
+📌 **The box cut list is deliberately NOT in the shop pack.** The pack is for the
+one machining trip - steel and aluminium, cut at somebody else's mill. The box is
+plywood in his own shop with no trip and no deadline, and merging them would mean
+carrying mill sheets to the bandsaw and box sheets to the mill.
+
 ## The rules this folder follows
 
 - **Derived, never authoritative.** If a sheet and a `.md` file disagree, **the `.md` file wins** and
