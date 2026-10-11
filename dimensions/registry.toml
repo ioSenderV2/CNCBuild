@@ -1080,8 +1080,9 @@ note = "Box top skin across the machine, measured INSIDE the two side tongues - 
 
 [[dim]]
 sym = "BOX_FORE_AFT"
-expr = "BEAM_LEN + T_REAR_PLATE + T_FIN + BOX_FRONT_OVERHANG"
-note = "Box top skin front to back, from the back tongue's inside face to the front edge - 1156.35. \u26a0 ALSO INVERTED on 2026-10-03, same reason as BOX_W: it was 983.65 on the reading that the box tucked inside the plates. It does not; the machine stands ON it. So this ADDS the plate thicknesses the old one subtracted, and adds the front overhang on top. THE FRONT HAS NO TONGUE - the box simply runs past the fins and four L-brackets behind each fin tie it down."
+value = 1210
+provenance = "nominal"
+note = "1210 - box top skin front to back, from the back tongue's inside face to the front edge. \u2705 HIS FIGURE 2026-10-11, CHOSEN TO MAKE THE BOX SQUARE: BOX_W is 1211.238, so the two differ by 1.24 and the box reads square while still giving a front work area. \U0001F534 THE CHAIN IS NOW INVERTED AND THAT IS DELIBERATE - it used to be BEAM_LEN + T_REAR_PLATE + T_FIN + BOX_FRONT_OVERHANG with the overhang stated at 140, and the overall size fell out of it. He picks the overall size, so the SIZE is stated here and BOX_FRONT_OVERHANG is what falls out: 193.65, or 7.62in of apron. \u26A0 THE OLD 140 WAS NOT A CHOICE ANYBODY DEFENDED, it was a round number; the apron depth now follows the box, which is the direction he reasons in. Historic note follows. \u26a0 ALSO INVERTED on 2026-10-03, same reason as BOX_W: it was 983.65 on the reading that the box tucked inside the plates. It does not; the machine stands ON it. So this ADDS the plate thicknesses the old one subtracted, and adds the front overhang on top. THE FRONT HAS NO TONGUE - the box simply runs past the fins and four L-brackets behind each fin tie it down."
 
 # ================================================================ drilled coordinates
 #
@@ -1673,9 +1674,8 @@ note = "Sheet 8's upper bolt row, 37.5. Same derivation as STRIP_ROW_LOW, the ot
 
 [[dim]]
 sym = "BOX_FRONT_OVERHANG"
-value = 140
-provenance = "derived"
-note = "How far the box's top skin runs PAST the front fins. His, 2026-10-03. The front is the one side with no tongue: rather than capture the fins, the box simply extends under and beyond them and FOUR L-BRACKETS BEHIND EACH FIN tie the fin down to the top skin. That is why BOX_FORE_AFT grew rather than shrank, and why Sheet 1's two tongue bolts need re-purposing or deleting."
+expr = "BOX_FORE_AFT - (BEAM_LEN + T_REAR_PLATE + T_FIN)"
+note = "193.65 - how far the box's top skin runs PAST the front fins, which is 7.62in of front work area for the toolsetter and storage he keeps there on the Mega V. \U0001F534 IT IS DERIVED NOW, NOT STATED, and it was 140 until 2026-10-11: he sizes the BOX and the apron is the remainder, so BOX_FORE_AFT carries the stated figure and this follows. \u26A0 ANYONE WANTING A PARTICULAR APRON DEPTH MUST CHANGE BOX_FORE_AFT, not this. Original note: His, 2026-10-03. The front is the one side with no tongue: rather than capture the fins, the box simply extends under and beyond them and FOUR L-BRACKETS BEHIND EACH FIN tie the fin down to the top skin. That is why BOX_FORE_AFT grew rather than shrank, and why Sheet 1's two tongue bolts need re-purposing or deleting."
 
 [[dim]]
 sym = "SIDE_TONGUE_START"

@@ -152,9 +152,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   Then the rear plate's length stopped being a window and became **1210.73 derived**, and his rule
   settles the rest: **the box with its laminated tongues fills the space inside the side plates, the
   rear plate and the front fins exactly.** 🔴 **That reading was WRONG and was corrected the same
-  day** - the box is the larger part. **BOX_W = 1210.73** (inside the two side tongues, the machine's
-  own outer envelope) and **BOX_FORE_AFT = 1156.35** (the 1000 beam *plus* the rear plate, the fin and
-  a 140 front overhang). 📌 **Still
+  day** - the box is the larger part. **BOX_W = 1211.24** (inside the two side tongues, the machine's
+  own outer envelope) and **BOX_FORE_AFT = 1210**, his figure 2026-10-11, picked to make the box
+  square - the two differ by 1.24. The front overhang is now what falls out of it, **193.65**, and
+  the chain was inverted to say so: he sizes the box and the apron is the remainder. 📌 **Still
   check it against the standing machine before cutting the skins** - the chain is nominal in its plate
   thicknesses, so this closes the *design* question, not the verification.
 - ✅ ~~**Where the three-point mount pads sit relative to the two outer walls**~~ **Already answered,
