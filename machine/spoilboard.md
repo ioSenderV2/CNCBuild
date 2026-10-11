@@ -326,8 +326,10 @@ washer and the nut - so the counterbore in the model will move when they are. Th
 checked against the real slot grid on every run.
 
 ✅ **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
-does not foul the gantry anywhere. (The six overlaps the model still reports are the pre-existing
-block-against-front-strip pairs and have nothing to do with the bed.)
+does not foul the gantry anywhere. (The model now reports NO overlaps at all at the drawn
+pose - the six block-against-front-strip pairs it used to carry were an artifact of drawing the
+bearing block as a solid box, closed 2026-10-11 with his gauge-block measurement of the 4.2 under
+the block's wings.)
 
 ✅ **The bed is captured in both directions, and there is nothing to place.** Across the machine it
 fits the 1204.38 between the side plates. Fore-aft, the clear run from the **rear plate's front face

@@ -1403,6 +1403,13 @@ def main() -> int:
     # measured figure the whole machine's offsets are built on.
     ride[0] = ""
     rw, st, bw, bl = v["RAIL_W"], v["RAIL_STACK"], v["BLOCK_W"], v["BLOCK_BUTTED"]
+    # 🔴 THE BLOCK DOES NOT REACH THE FACE. Its side wings stop BLOCK_FACE_CLEAR
+    # short of it - 4.2, his gauge-block measurement 2026-10-11 - and that gap is
+    # what the front strips run through. Drawn as a solid box from the face, the
+    # model reported six clashes against the strips that do not exist on the
+    # machine. The relief is drawn rather than the pair being declared allowed,
+    # so a strip thicker than 4.2 still gets caught.
+    bfc = v["BLOCK_FACE_CLEAR"]
     RC, BC = 0x7E8C99, 0xE04F3D
 
     def rail_and_blocks(axis, face, d, zc, along, bfrom, bto, rk="", bk=""):
@@ -1416,13 +1423,13 @@ def main() -> int:
             if axis == "x":
                 box(f"{along} rail", "motion", RC, face, bfrom[0], z - rw / 2,
                     face + d * rw, bto[0], z + rw / 2, k=rk)
-                box(f"{along} block", "motion", BC, face, bfrom[1], z - bw / 2,
-                    face + d * st, bto[1], z + bw / 2, k=bk)
+                box(f"{along} block", "motion", BC, face + d * bfc, bfrom[1],
+                    z - bw / 2, face + d * st, bto[1], z + bw / 2, k=bk)
             else:                                   # stack grows along fore-aft
                 box(f"{along} rail", "motion", RC, bfrom[0], face, z - rw / 2,
                     bto[0], face + d * rw, z + rw / 2, k=rk)
-                box(f"{along} block", "motion", BC, bfrom[1], face, z - bw / 2,
-                    bto[1], face + d * st, z + bw / 2, k=bk)
+                box(f"{along} block", "motion", BC, bfrom[1], face + d * bfc,
+                    z - bw / 2, bto[1], face + d * st, z + bw / 2, k=bk)
 
     # Y: on each beam's INNER face, blocks carried by the X end plate
     gb = (xep_back, xep_back + bl)
@@ -1440,7 +1447,8 @@ def main() -> int:
     for xc in (zp_cx - v["Z_RAIL_COL"], zp_cx + v["Z_RAIL_COL"]):
         box("Z rail", "motion", RC, xc - rw / 2, cp_front, cp_bot + 7,
             xc + rw / 2, cp_front + rw, cp_bot + 7 + v["Z_RAIL_L"], k="YX")
-        box("Z block", "motion", BC, xc - bw / 2, cp_front, block_mid - bl / 2,
+        box("Z block", "motion", BC, xc - bw / 2, cp_front + bfc,
+            block_mid - bl / 2,
             xc + bw / 2, cp_front + st, block_mid + bl / 2, k="YXZ")
         # The spacer bar is SANDWICHED between the blocks and the Z plate - one per
         # rail, each spanning that rail's two blocks. The model had the gap but
@@ -1451,10 +1459,14 @@ def main() -> int:
             block_mid + v["SPACER_L"] / 2, k="YXZ")
 
     # ---- the 45 mm front joining strips, Sheet 8 --------------------------
-    # One per beam, across the seam, SITTING IN THE GAP BETWEEN THE TWO BEARING
-    # BLOCK ROWS. That is the fit FRONT_STRIP_W exists to make: the blocks reach
-    # to seam +/- 23, the strip to seam +/- 22.5, so it clears by half a
-    # millimetre each side. The interference check is what proves it.
+    # One per beam, across the seam, RUNNING UNDER BOTH BEARING BLOCK ROWS.
+    # ⚠️ THIS COMMENT DESCRIBED THE OLD 45 STRIP until 2026-10-11 - one that sat
+    # BETWEEN the rows with half a millimetre either side - and the registry had
+    # moved to 50.8 on 2026-10-09 without it. At 50.8 the strip is wider than the
+    # block gap ON PURPOSE and passes 2.4 under each block, which buys about ten
+    # millimetres of fore-aft tolerance instead of about nothing; see
+    # FRONT_STRIP_W. What makes it fit is BLOCK_FACE_CLEAR, the 4.2 under the
+    # block's wings, against the strip's 3.175.
     sw, st_t = v["FRONT_STRIP_W"], v["T_FRONT_STRIP"]
     strip_x = [v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
                for i in range(int(v["TSLOT_X_COUNT"]))]
