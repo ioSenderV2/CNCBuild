@@ -19,13 +19,19 @@
    background:#0e1114F2;border:1px solid #4a515a;border-radius:4px;padding:6px 9px;
    font-size:11.5px;line-height:1.45;color:#dde}
  #tip .dim{color:#8fd}
- #jogro{margin-top:8px;font-size:11.5px}
- #jogro .ax{color:#e8b64c;font-weight:600}
- #jogro .stop{color:#e8613d;font-weight:600}
- #jogro .hint{color:#8a929b;font-size:11px}
- #jogro .warn{color:#e8b64c}
- #jogro table{margin:2px 0 0}
- #jogro td.v{text-align:right;color:#8fd;padding-right:8px}
+ /* The two readouts share one row at the top right. Travel is the left of
+    the pair, so when the DRO is switched off it falls into the DRO's place
+    without anything having to measure or move. */
+ #topright{position:fixed;top:12px;right:12px;display:flex;gap:10px;align-items:flex-start}
+ #topright .panel{position:static}
+ #jogro h2{font-size:11px;margin:0 0 4px;color:#e8b64c;letter-spacing:.06em}
+ #jogro table{font:13px/1.35 "Consolas",ui-monospace,monospace;border-collapse:collapse;margin:0}
+ #jogro td{padding:0 2px}
+ #jogro td.ax{color:#e8b64c;padding-right:4px}
+ #jogro td.e{text-align:right;color:#8a929b}
+ #jogro td.v{text-align:right;color:#8fd}
+ #jogro td.v.stop{color:#e8613d}
+ #jogro td.br,#jogro td.d{color:#5c646d}
  button{background:#2f353d;color:#cde;border:1px solid #454c55;border-radius:4px;
    padding:3px 10px;cursor:pointer;font:11.5px inherit}
  button:hover{background:#39414a}
@@ -37,7 +43,7 @@
  .mrow.sub.open::after{content:' \25BE'}
  .mbody{border-left:2px solid #3a4048;margin:0 0 2px 10px}
  .mrow label,label.mrow{display:block;cursor:pointer}
- #dro{top:12px;right:12px;min-width:150px}
+ #dro{min-width:150px}
  #dro h2{font-size:11px;margin:0 0 4px;color:#e8b64c;letter-spacing:.06em}
  #dro table{font:15px/1.35 "Consolas",ui-monospace,monospace;border-collapse:collapse}
  #dro td.ax{color:#e8b64c;padding-right:10px}
@@ -50,14 +56,16 @@
  #help .close,#about .close{float:right;cursor:pointer;color:#8fd}
  #help table{border-collapse:collapse}
  #help td{padding:1px 12px 1px 0;vertical-align:top}
+ #help td:first-child{white-space:nowrap}
 </style>
 <canvas id="c"></canvas>
 <div id="tip"></div>
 <div class="panel" id="ui"><h1>CNC assembly</h1>
 <button id="menubtn">Menu</button>
 <div id="menu" hidden></div><table id="facts" hidden></table>
-<div id="jogro" hidden></div></div>
-<div class="panel" id="dro"></div>
+</div>
+<div id="topright"><div class="panel" id="jogro" hidden></div>
+<div class="panel" id="dro"></div></div>
 <div class="panel" id="help" hidden></div>
 <div class="panel" id="about" hidden></div>
 <script>/**
@@ -210,8 +218,11 @@ const KEYS={ArrowLeft:['X',+1],ArrowRight:['X',-1],
             PageUp:['Z',+1],PageDown:['Z',-1]};
 // Each pair is [what the low end of the offset is called, what the high end is].
 // X reads reversed for the same reason the keys do.
-const ENDS={Y:['back','front'],X:['right','left'],Z:['down','up']};
-const j1=n=>(n<0?'':'+')+(Math.round(n*10)/10).toFixed(1);
+// What the DRO reads for one axis at a given jog offset. X and Y are home
+// MINUS current because both home ends sit at the high end of their machine
+// axis; Z is the other way about. Home therefore always reads zero.
+const axisDro=(ax,j)=>ax==='Z'?j-HOME.Z:HOME[ax]-j;
+const j1=n=>String(Math.round(n*10)/10);
 
 function applyJog(){
   GY.position.z=-JOGPOS.Y;        // machine +Y is forward, which is three's -Z
@@ -219,16 +230,20 @@ function applyJog(){
   GZ.position.y=JOGPOS.Z;
   // the raycaster reads matrixWorld, and a hover can land before the next draw
   scene.updateMatrixWorld(true);
+  // ONE LINE PER AXIS, IN THE SAME NUMBERS THE DRO SHOWS: where home is, where the tool
+  // is now, and where the far stop is. Home is always the zero, so the first
+  // figure is always 0 and the last is the travel, signed the way that axis
+  // runs. Reading the same numbers as the DRO is the point - a position you
+  // cannot compare against the travel is just another number.
   const rows=['X','Y','Z'].map(ax=>{
-    const L=JOG[ax], p=JOGPOS[ax], e=ENDS[ax];
-    const hit=p<=L[0]+1e-6?e[0]:p>=L[1]-1e-6?e[1]:'';
-    // A pinned end is not a stop, and must not read as one.
-    const say=hit?(L[2]&&hit===e[1]
-      ?' &middot; <span class="warn">PINNED, no '+e[1]+' stop modelled</span>'
-      :' &middot; <span class="stop">AT THE '+hit.toUpperCase()+' STOP</span>'):'';
-    return '<tr><td class="ax">'+ax+'</td><td class="v">'+j1(p)+'</td>'+
-      '<td>'+j1(p-L[0])+' to '+e[0]+', '+j1(L[1]-p)+' to '+e[1]+say+
-      '</td></tr>';
+    const L=JOG[ax], home=HOME[ax];
+    const far=(Math.abs(L[0]-home)<1e-6)?L[1]:L[0];
+    const cur=axisDro(ax,JOGPOS[ax]), end=axisDro(ax,far);
+    const atStop=Math.abs(cur)<1e-6||Math.abs(cur-end)<1e-6;
+    return '<tr><td class="ax">'+ax+'</td><td class="br">[</td>'+
+      '<td class="e">0</td><td class="d">...</td>'+
+      '<td class="v'+(atStop?' stop':'')+'">'+j1(cur)+'</td>'+
+      '<td class="d">...</td><td class="e">'+j1(end)+'</td><td class="br">]</td></tr>';
   }).join('');
   // THE DRO IS THE TOOL TIP, MEASURED FROM HOME - zero in the back left corner
   // at the top of travel, and from there X runs POSITIVE to the right while Y
@@ -239,14 +254,10 @@ function applyJog(){
   // fore-aft runs forward, so moving forward has to come out negative.
   const v2=n=>(n<0?'-':'')+Math.abs(n).toFixed(2);
   document.getElementById('dro').innerHTML='<h2>DRO</h2><table>'+
-    [['X',HOME.X-JOGPOS.X],['Y',HOME.Y-JOGPOS.Y],['Z',JOGPOS.Z-HOME.Z]]
+    [['X',axisDro('X',JOGPOS.X)],['Y',axisDro('Y',JOGPOS.Y)],['Z',axisDro('Z',JOGPOS.Z)]]
       .map(r=>'<tr><td class="ax">'+r[0]+'</td><td class="v">'+v2(r[1])+'</td></tr>').join('')+
     '</table>';
-  const warn=['X','Y','Z'].filter(ax=>JOG[ax][2]).map(ax=>JOG[ax][2]);
-  jogro.innerHTML=
-    '<span class="hint">TRAVEL LEFT ON EACH AXIS</span>'+
-    '<table>'+rows+'</table>'+
-    (warn.length?'<span class="warn">'+warn.join('<br>')+'</span>':'');
+  jogro.innerHTML='<h2>TRAVEL</h2><table>'+rows+'</table>';
 }
 
 addEventListener('keydown',e=>{
