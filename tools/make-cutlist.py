@@ -26,6 +26,12 @@ HERE = Path(__file__).resolve().parent
 OUT = HERE.parent / "machine" / "drawings" / "box-cutlist.html"
 
 # Sheet sizes to test, in mm. The two Baltic birch formats he asked about.
+#
+# ✅ THE 4 x 8 IS A TRUE 48 x 96 FROM CROSSCUT - his, 2026-10-11, from having
+# bought sheet goods there before. That matters more than it looks: the skins
+# clear the sheet's WIDTH by only 6.00 after his trim, so a board arriving
+# undersize is the one thing that breaks this plan. It is his supplier and his
+# experience, so it is recorded as fact rather than carried as a risk.
 SHEETS = [
     ("4 x 8", 1219.2, 2438.4),
     ("5 x 5", 1524.0, 1524.0),
