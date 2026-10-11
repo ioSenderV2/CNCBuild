@@ -138,21 +138,22 @@ what = "Rear plate into the ends of the Y1 and Y2 beams"
 size = 8
 count = 16
 per = "8 per beam"
+length = 35
 into = "bore"
 grip = ["T_REAR_PLATE"]
 source = "his, 2026-10-11; assembly.md: '8 x M8 into each beam's corner bores - 16 bolts total'"
 note = "🔴 THIS JOINT WAS MISSING FROM THE SCHEDULE ENTIRELY until he listed it - it is in assembly.md and was simply not transcribed. LENGTH STILL UNKNOWN: it wants T_REAR_PLATE of grip plus whatever engagement into the o6.65 corner bore, and the beam-to-endplate joint's M8 x 35 is the obvious comparison."
 
 [[joint]]
-id = "beam-to-endplate"
-what = "Y beams into the end plates' corner bores"
+id = "fin-to-beam-end"
+what = "Front fin onto the end of each Y beam"
 size = 8
 count = 16
-per = "8 per beam"
+per = "8 per fin, two fins"
 length = 35
 into = "bore"
-source = "assembly.md: '8 x M8 x 35 flange bolts into the o6.65 lengthwise corner bores'"
-note = "M8 x 35 leaves 22.3 mm in the extrusion."
+source = "his, 2026-10-11; assembly.md: '8 x M8 x 35 flange bolts into the o6.65 lengthwise corner bores'"
+note = "Flange head. M8 x 35 leaves 22.3 in the extrusion. 🔴 THIS WAS ENTERED AS 'Y beams into the end plates' - MY MISLABEL. The section it came from is the FRONT FIN's, which is why its M8 columns are at 35 and 65 from the factory edge. Same bolts, wrong name, and a wrong name is how a joint gets counted twice or missed."
 
 [[joint]]
 id = "xep-to-xbeam"
@@ -160,8 +161,11 @@ what = "X end plates to the X beam's top extrusion corner bores"
 size = 8
 count = 8
 per = "4 per plate"
+length = 35
 into = "bore"
-source = "assembly.md: '4 x M8 into the top extrusion's corner bores, 9 mm clearance'"
+grip = ["T_X_ENDPLATE"]
+source = "his, 2026-10-11; assembly.md: '4 x M8 into the top extrusion's corner bores, 9 mm clearance'"
+note = "Flange head, same 35 as the other two bore joints."
 
 [[joint]]
 id = "shelf-bar-horizontal"
@@ -179,17 +183,24 @@ id = "shelf-bar-vertical"
 what = "Shelf bar up into the bottom extrusion's underside slots"
 size = 8
 count = 4
+length = 50
+head = "socket, counterbored"
 into = "t-nut"
-source = "assembly.md: 'M8 up into a T-nut in the bottom extrusion's underside slot'"
+grip = ["SHELF_BAR_W"]
+source = "his, 2026-10-11"
+note = "🔴 SOCKET HEAD AND COUNTERBORED, not flange - the only joint on the machine that is. ⚠️ THE GRIP SHOWN IS THE BAR'S FULL WIDTH AND THAT IS WRONG WHILE THE COUNTERBORE DEPTH IS UNKNOWN: a counterbore REDUCES the material the bolt passes through, so the real grip is SHELF_BAR_W less the counterbore and the bolt stands further past the T-nut than this says. The T-nut only holds TNUT_THREAD_M8 either way; what the counterbore depth decides is how much bolt ends up inside the slot."
 
 [[joint]]
 id = "rear-plate-to-tongue"
 what = "Rear plate through the back tongue"
 size = 8
 count = 8
-into = "nut"
-grip = ["T_REAR_PLATE", "T_BOX_TONGUE"]
+length = 40
+head = "small flange"
+into = "acorn"
+grip = ["T_BOX_TONGUE", "T_REAR_PLATE", "FENDER_WASHER_T"]
 extras = ["M8 fender washer", "M8 acorn nut"]
+provisional = true
 source = "assembly.md: '8 bolts through the back tongue at Y 30, 150 mm pitch'"
 note = "From outboard: fender washer, tongue, plate, nut. ⚠️ THE ACORN NUT IS A TERM IN THE BOLT LENGTH, not a finish: it is CLOSED, so how deep its thread runs is what decides whether the bolt bottoms before it clamps - see ACORN_NUT_H."
 
@@ -199,8 +210,10 @@ what = "Side plates through the side tongues"
 size = 8
 count = 14
 per = "7 per beam"
-into = "nut"
-grip = ["T_SIDE_PLATE", "T_BOX_TONGUE"]
+length = 40
+head = "small flange"
+into = "acorn"
+grip = ["T_BOX_TONGUE", "T_SIDE_PLATE", "FENDER_WASHER_T"]
 extras = ["M8 fender washer", "M8 acorn nut"]
 source = "assembly.md: 'M8 at 150 mm, first at 50 - seven per beam, at Y 30'"
 
@@ -224,6 +237,7 @@ count = 6
 per = "3 per angle"
 length = 30
 into = "t-nut"
+tnut_thread = "FIN_ANGLE_TNUT_THREAD"
 grip = ["FIN_ANGLE_BOLT_DEAD"]   # leg + the EMPTY hole above the T-nut
 source = "his, 2026-10-11"
 note = "THE T-NUT'S THREAD IS IN THE BOTTOM 10 OF THE SKIN, so the grip includes the empty 15 above it - see FIN_ANGLE_BOLT_DEAD. An M8 x 25 was specified first and would have engaged 4."

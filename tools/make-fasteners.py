@@ -81,7 +81,21 @@ def main():
         grip, grip_txt = grip_of(j, v)
         L = j.get("length")
         eng = (L - grip) if (L is not None and grip is not None) else None
-        rows.append(dict(j, grip=grip, grip_txt=grip_txt, eng=eng))
+        # 🔴 A T-NUT GIVES TNUT_THREAD_M8 WHATEVER THE BOLT IS. Reporting
+        # length-minus-grip for one overstates the engagement badly - a 50 bolt
+        # read as 24.6 engaged when the nut can only hold 6, with the rest
+        # standing through into the slot. So cap it, and carry the remainder as
+        # `past` so a bolt running deep into a slot is visible rather than
+        # flattered into looking well engaged.
+        past = None
+        if eng is not None and j.get("into") == "t-nut":
+            # A PRONGED T-NUT IN PLYWOOD IS NOT A SLIDE-IN EXTRUSION T-NUT.
+            # The fin angle's give 10, the extrusion's give 6, so a joint
+            # may name its own symbol rather than take the default.
+            cap = v.get(j.get("tnut_thread", "TNUT_THREAD_M8"), 6.0)
+            if eng > cap:
+                past, eng = eng - cap, cap
+        rows.append(dict(j, grip=grip, grip_txt=grip_txt, eng=eng, past=past))
 
     missing = [r for r in rows if r.get("length") is None]
     nosize = [r for r in rows if "size" not in r]
@@ -103,7 +117,9 @@ def main():
         L = f"{r['length']:g}" if r.get("length") is not None else "--"
         g = f"{r['grip']:g}" if r.get("grip") is not None else ""
         e = f"{r['eng']:g}" if r.get("eng") is not None else ""
-        print(f"  {r['id']:22s} {sz:6s} {r.get('count','?'):>4} {L:>6s} {g:>7s} {e:>7s}")
+        pa = f"  +{r['past']:g} past" if r.get("past") else ""
+        print(f"  {r['id']:22s} {sz:6s} {r.get('count','?'):>4} {L:>6s} "
+              f"{g:>7s} {e:>7s}{pa}")
 
     # 🔴 ENGAGEMENT IS THE CHECK, and it caught two errors in the joints file the
     # first time it ran. Both were the same mistake: a TAPPED part listed in the
