@@ -11,6 +11,9 @@
  td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
  .bad { color: #a00; }
  .s { color: #666; font-size: 8pt; }
+ .buys { display: flex; gap: 8mm; flex-wrap: wrap; align-items: flex-start; }
+ .buy table { width: auto; }
+ .buy h3 { font-size: 11pt; margin: 2mm 0 1mm; }
  .note { background: #fff8e1; border-left: 3px solid #e0a800; padding: 2mm 3mm; }
 </style></head><body>
 <h1>Fastener schedule</h1>
@@ -35,8 +38,5 @@ else in the repo totals them, and forgetting them is a trip to the supplier.
 ⚠️ These totals cover only the joints with a count recorded &mdash; the Z rails
 are a different kit and their hole count is not known yet.</p>
 
-<table style="width:auto">
-<tr><th>Bolts</th><th class=n>Off</th><th>T-nuts</th><th class=n>Off</th></tr>
-<tr><td>M5 &times; 16</td><td class=n>102</td><td>M5 T-nut</td><td class=n>102</td></tr><tr><td>M5 &times; 20</td><td class=n>30</td><td>M8 T-nut</td><td class=n>148</td></tr><tr><td>M5 &times; 25</td><td class=n>8</td><td></td><td></td></tr><tr><td>M5 &times; 30</td><td class=n>4</td><td></td><td></td></tr><tr><td>M5 &times; 40</td><td class=n>6</td><td></td><td></td></tr><tr><td>M5 &times; 45</td><td class=n>12</td><td></td><td></td></tr><tr><td>M8 &times; 10</td><td class=n>98</td><td></td><td></td></tr><tr><td>M8 &times; 12</td><td class=n>28</td><td></td><td></td></tr><tr><td>M8 &times; 16</td><td class=n>4</td><td></td><td></td></tr><tr><td>M8 &times; 20</td><td class=n>12</td><td></td><td></td></tr><tr><td>M8 &times; 30</td><td class=n>6</td><td></td><td></td></tr><tr><td>M8 &times; 35</td><td class=n>20</td><td></td><td></td></tr><tr><td>M8 &times; 90</td><td class=n>4</td><td></td><td></td></tr>
-</table>
+<div class="buys"><div class="buy"><h3>M5</h3><table><tr><th>Item</th><th class=n>Off</th></tr><tr><td>bolt M5 x 16</td><td class=n>102</td></tr><tr><td>bolt M5 x 20</td><td class=n>30</td></tr><tr><td>bolt M5 x 25</td><td class=n>8</td></tr><tr><td>bolt M5 x 30</td><td class=n>4</td></tr><tr><td>bolt M5 x 40</td><td class=n>6</td></tr><tr><td>bolt M5 x 45</td><td class=n>12</td></tr><tr><td>T-nut M5</td><td class=n>102</td></tr></table></div><div class="buy"><h3>M8</h3><table><tr><th>Item</th><th class=n>Off</th></tr><tr><td>bolt M8 x 10</td><td class=n>98</td></tr><tr><td>bolt M8 x 12</td><td class=n>28</td></tr><tr><td>bolt M8 x 16</td><td class=n>4</td></tr><tr><td>bolt M8 x 20</td><td class=n>12</td></tr><tr><td>bolt M8 x 30</td><td class=n>6</td></tr><tr><td>bolt M8 x 35</td><td class=n>20</td></tr><tr><td>bolt M8 x 90</td><td class=n>4</td></tr><tr><td>T-nut M8</td><td class=n>148</td></tr><tr><td>acorn nut</td><td class=n>22</td></tr><tr><td>fender washer</td><td class=n>22</td></tr></table></div></div>
 </body></html>

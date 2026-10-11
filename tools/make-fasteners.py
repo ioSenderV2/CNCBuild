@@ -16,6 +16,7 @@ Both were caught by working the grip stack by hand. This does that arithmetic.
 Writes machine/drawings/fasteners.html. No third-party imports.
 """
 import argparse
+import re
 import sys
 import tomllib
 from pathlib import Path
@@ -119,41 +120,35 @@ def main():
             print(f"     {r['id']:24s} engages {r['eng']:g} "
                   f"on M{r.get('size', '?')}{tail}")
 
-    # T-NUTS ARE A SEPARATE BUY AND THE SAME COUNT AS THE BOLTS. Forgetting
-    # them is a trip to the supplier, and nothing else in the repo totals them -
-    # his 2026-10-11 reminder that 102 rail bolts also means 102 T-nuts.
-    tnuts = {}
-    for r in rows:
-        if r.get("into") == "t-nut" and "size" in r:
-            tnuts[r["size"]] = tnuts.get(r["size"], 0) + r.get("count", 0)
-    if tnuts:
-        print("\n  T-nuts needed, same count as the bolts:")
-        for sz in sorted(tnuts):
-            print(f"     M{sz}: {tnuts[sz]}")
-
-    # THE BUY LIST, by size and length. The schedule is read joint by joint at
-    # the bench and size by size at the counter, and those are different sorts.
+    # THE BUY LIST IS GROUPED BY THREAD SIZE - his call 2026-10-11, and it is
+    # how hardware is actually bought: you stand at one drawer for M5 and
+    # another for M8, not at a list sorted by joint. Bolts, T-nuts, washers and
+    # nuts for a size all sit together, because forgetting the T-nuts is a
+    # second trip and nothing else in the repo totals them.
     buy = {}
-    for r in rows:
-        if "size" in r and r.get("length") is not None:
-            buy[(r["size"], r["length"])] = (
-                buy.get((r["size"], r["length"]), 0) + r.get("count", 0))
-    # WASHERS AND NUTS ARE PART OF THE BUY AND PART OF THE LENGTH. A fender
-    # washer and an acorn nut are not trim: the washer is a term in the grip,
-    # and a CLOSED acorn nut can bottom before the joint clamps. Totalling them
-    # here is the only place in the repo that does.
-    extras = {}
-    for r in rows:
-        for e in r.get("extras", []):
-            extras[e] = extras.get(e, 0) + r.get("count", 0)
-    if extras:
-        print("\n  Washers and nuts:")
-        for e in sorted(extras):
-            print(f"     {e}: {extras[e]}")
 
-    print("\n  Bolts to buy:")
-    for (sz, L) in sorted(buy):
-        print(f"     M{sz} x {L:g}: {buy[(sz, L)]}")
+    def add(size, item, n):
+        buy.setdefault(size, {})
+        buy[size][item] = buy[size].get(item, 0) + n
+
+    for r in rows:
+        n = r.get("count", 0)
+        if "size" not in r:
+            continue
+        sz = r["size"]
+        if r.get("length") is not None:
+            add(sz, f"bolt M{sz} x {r['length']:g}", n)
+        if r.get("into") == "t-nut":
+            add(sz, f"T-nut M{sz}", n)
+        for e in r.get("extras", []):
+            m = re.match(r'M(\d+)\s+(.*)', e)
+            add(int(m.group(1)) if m else sz, m.group(2) if m else e, n)
+
+    print("\n  WHAT TO BUY, by thread size")
+    for sz in sorted(buy):
+        print(f"\n   --- M{sz} ---")
+        for item in sorted(buy[sz], key=lambda i: (not i.startswith("bolt"), i)):
+            print(f"      {item:24s} {buy[sz][item]:4d}")
 
     print(f"\n  {len(rows)} joints, {total_pcs} pieces")
     print(f"  🔴 {len(missing)} joints have NO LENGTH recorded")
@@ -162,23 +157,22 @@ def main():
               + ", ".join(r['id'] for r in nosize))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows, missing, total_pcs, tnuts, buy),
+    OUT.write_text(render(rows, missing, total_pcs, buy),
                    encoding="utf-8")
     print("\nwrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, missing, total_pcs, tnuts, buy):
-    bl = [f"M{sz} &times; {L:g}" for (sz, L) in sorted(buy)]
-    bn = [buy[k] for k in sorted(buy)]
-    tl = [f"M{sz} T-nut" for sz in sorted(tnuts)]
-    tn = [tnuts[k] for k in sorted(tnuts)]
-    pair = []
-    for i in range(max(len(bl), len(tl))):
-        a = f"<td>{bl[i]}</td><td class=n>{bn[i]}</td>" if i < len(bl) else "<td></td><td></td>"
-        b = f"<td>{tl[i]}</td><td class=n>{tn[i]}</td>" if i < len(tl) else "<td></td><td></td>"
-        pair.append(f"<tr>{a}{b}</tr>")
-    rowspair = "".join(pair)
+def render(rows, missing, total_pcs, buy):
+    tables = []
+    for sz in sorted(buy):
+        rws = "".join(
+            f"<tr><td>{i}</td><td class=n>{buy[sz][i]}</td></tr>"
+            for i in sorted(buy[sz], key=lambda i: (not i.startswith("bolt"), i)))
+        tables.append(
+            f'<div class="buy"><h3>M{sz}</h3><table>'
+            f"<tr><th>Item</th><th class=n>Off</th></tr>{rws}</table></div>")
+    buytables = "".join(tables)
     tr = []
     for r in rows:
         sz = f"M{r['size']}" if "size" in r else '<b class="bad">?</b>'
@@ -204,6 +198,9 @@ def render(rows, missing, total_pcs, tnuts, buy):
  td.n {{ text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }}
  .bad {{ color: #a00; }}
  .s {{ color: #666; font-size: 8pt; }}
+ .buys {{ display: flex; gap: 8mm; flex-wrap: wrap; align-items: flex-start; }}
+ .buy table {{ width: auto; }}
+ .buy h3 {{ font-size: 11pt; margin: 2mm 0 1mm; }}
  .note {{ background: #fff8e1; border-left: 3px solid #e0a800; padding: 2mm 3mm; }}
 </style></head><body>
 <h1>Fastener schedule</h1>
@@ -228,10 +225,7 @@ else in the repo totals them, and forgetting them is a trip to the supplier.
 ⚠️ These totals cover only the joints with a count recorded &mdash; the Z rails
 are a different kit and their hole count is not known yet.</p>
 
-<table style="width:auto">
-<tr><th>Bolts</th><th class=n>Off</th><th>T-nuts</th><th class=n>Off</th></tr>
-{rowspair}
-</table>
+<div class="buys">{buytables}</div>
 </body></html>
 """
 
