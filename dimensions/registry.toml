@@ -2743,9 +2743,9 @@ note = "44.55 - from the LAST across-rib's front face to where the angle's horiz
 
 [[dim]]
 sym = "FIN_ANGLE_T"
-value = 5
-provenance = "nominal"
-note = "\U0001F534 NOT MEASURED. The angle extrusion's wall thickness, drawn at 5 so the 3D model has a solid to show. \u26A0 CALIPER THE PIECE HE HAS AND PUT THE READING HERE. It feeds NOTHING - no clearance, no hole, no length - and exists only so the angle is not a zero-thickness plane in the view. The one place it could ever matter is the inside corner radius holding the vertical leg off the fin's face or the horizontal leg off the skin, which is a fit to check with the part in hand rather than a number to design to."
+value = 6
+provenance = "measured"
+note = "6 - the angle extrusion's wall thickness, his 2026-10-11. \U0001F534 IT WAS A NOMINAL 5 THAT I INVENTED, and the note then claimed it FED NOTHING - which was true when written and wrong within the hour: it sets how much bolt is used up before the thread, so it sizes FIN_ANGLE_BOLT_L. A symbol recorded as inert is exactly the one that quietly becomes load-bearing. The one place it could ever matter is the inside corner radius holding the vertical leg off the fin's face or the horizontal leg off the skin, which is a fit to check with the part in hand rather than a number to design to."
 
 [[dim]]
 sym = "BOX_SIDE_CAP_START"
@@ -2783,3 +2783,26 @@ note = "3 - how proud the small M8 flange head stands, his 2026-10-11. \u2705 TH
 sym = "FIN_ANGLE_BOLT_PITCH"
 expr = "FIN_ANGLE_L / FIN_ANGLE_SKIN_FIX"
 note = "42.5 - the spacing of the four skin bolts along each fin angle. \u26A0 NOMINAL, NOT HIS: he has given the count and the head, not the positions. Drawn evenly spaced with EQUAL END MARGINS - first and last at half a pitch in, so 21.25 and 148.75 along a 170 piece. \U0001F534 THE REAL PATTERN IS THE ANGLE'S OWN, since it is a stock extrusion with holes already in it - measure them and replace this. It feeds only the picture."
+
+[[dim]]
+sym = "FIN_ANGLE_BOLT_DEAD"
+expr = "FIN_ANGLE_T + (T_BB_SKIN_TOP - FIN_ANGLE_TNUT_THREAD)"
+note = "21 - how much of each skin bolt is used up BEFORE it meets any thread: the angle's leg plus the unthreaded part of the hole. \U0001F534 THE 15 OF EMPTY HOLE IS THE PART THAT SURPRISES. The T-nut is driven in from UNDERNEATH, so its thread occupies the BOTTOM 10 of a 25 skin and the top 15 is a clearance hole. Reading the skin as 'the bolt goes through 25 of wood into a nut' gets the length wrong by 15 - which is how an M8 x 25 was first specified."
+
+[[dim]]
+sym = "FIN_ANGLE_TNUT_THREAD"
+value = 10
+provenance = "part"
+note = "10 - the thread the pronged T-nuts he has actually provide. His, 2026-10-11. \u26A0 IT IS THE BARREL'S THREAD AND NOT THE SKIN'S THICKNESS: the barrel sits in the lower 10 of the 25 skin, see FIN_ANGLE_BOLT_DEAD."
+
+[[dim]]
+sym = "FIN_ANGLE_BOLT_L"
+value = 30
+provenance = "part"
+note = "M8 x 30, the small flange type - M8_FLANGE_HEAD_D and M8_FLANGE_HEAD_H. \u2705 IT ENGAGES 9 OF THE 10: 30 less FIN_ANGLE_BOLT_DEAD's 21. \U0001F534 AN M8 x 25 WAS SPECIFIED FIRST AND WOULD HAVE ENGAGED 4 - under half a diameter - because the 15 of unthreaded hole above the T-nut was not counted. He caught it himself on being shown the stack. \u2705 NOTHING BOTTOMS OUT: a T-nut is through-threaded, so a longer bolt would simply protrude into the cavity, which ends up full of sand. 35 would give the full 10 and protrude 4; 30 is enough and sits flush."
+
+[[dim]]
+sym = "FIN_T_BOLT_L"
+value = 15
+provenance = "part"
+note = "M8 x 15 for T1 and T2, his 2026-10-11 - the two through the angle's vertical leg into the fin's TAPPED holes. ✅ IT ENGAGES 9 OF THE 10: 15 less FIN_ANGLE_T's 6, which is 1.12 x D and the same engagement the skin bolts get. ✅ AND NOTHING PROTRUDES PAST THE FIN'S BACK FACE, since 9 is inside the 10 of tap - which matters here more than it usually would, because the tee track bed is hard against that face and is the whole reason the fin is tapped rather than through-bolted. 📌 A 16 WOULD HAVE USED THE TAP EXACTLY and was the derived answer before he gave the real part; 15 is what he has and it gives up nothing worth having."

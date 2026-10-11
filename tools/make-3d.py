@@ -570,6 +570,20 @@ def main() -> int:
         # ⚠️ THE ALONG-LENGTH SPACING IS A NOMINAL: he has given the count and
         # the head, not the positions, and the real pattern is the extrusion's
         # own. Drawn evenly with equal end margins - see FIN_ANGLE_BOLT_PITCH.
+        # T1 and T2 - the two M8 through the angle's VERTICAL leg into the fin's
+        # TAPPED holes at FIN_BRACKET_BOLT_Y. Their X comes off the FIN's own
+        # outboard edge, confirmed by him 2026-10-11, which is FIN_PROUD outside
+        # the box edge - so T1 ends up only FIN_ANGLE_T1_END from the angle's
+        # near end, a known thin spot recorded rather than designed away.
+        fin_edge = xa - sgn * v["FIN_PROUD"]
+        for bolt_x in (v["FIN_TONGUE_BOLT_1"], 170.0):
+            cyl("Fin T bolt", "bolts", 0xC8CDD3,
+                fin_edge + sgn * bolt_x, v["FIN_BRACKET_BOLT_Y"],
+                fin_front + at, fin_front + at + v["M8_FLANGE_HEAD_H"],
+                v["M8_FLANGE_HEAD_D"] / 2, axis="y",
+                d="M8 into a TAPPED hole in the fin - no nut, because the tee "
+                  "track bed is hard against the fin's back face")
+
         bp = v["FIN_ANGLE_BOLT_PITCH"]
         by = fin_front + at + (aleg - at) / 2        # centred in the free leg
         for i in range(int(v["FIN_ANGLE_SKIN_FIX"])):
@@ -1635,6 +1649,8 @@ ALLOWED = {
     frozenset({"Fin angle", "Fin angle"}),
     frozenset({"Fin angle", "Front fin"}),          # it bolts to its face
     frozenset({"Fin angle bolt", "Fin angle"}),     # the head sits on the leg
+    frozenset({"Fin T bolt", "Fin angle"}),         # head on the vertical leg
+    frozenset({"Fin T bolt", "Front fin"}),         # it threads into the fin
     frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
     frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers
