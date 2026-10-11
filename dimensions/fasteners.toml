@@ -208,14 +208,13 @@ id = "rear-plate-to-tongue"
 what = "Rear plate through the back tongue"
 size = 8
 count = 8
-length = 40
+length = 45
 head = "small flange"
 into = "acorn"
-grip = ["T_BOX_TONGUE", "T_REAR_PLATE", "FENDER_WASHER_T"]
-extras = ["M8 fender washer", "M8 acorn nut"]
-provisional = true
-source = "assembly.md: '8 bolts through the back tongue at Y 30, 150 mm pitch'"
-note = "From outboard: fender washer, tongue, plate, nut. ⚠️ THE ACORN NUT IS A TERM IN THE BOLT LENGTH, not a finish: it is CLOSED, so how deep its thread runs is what decides whether the bolt bottoms before it clamps - see ACORN_NUT_H."
+grip = ["T_BOX_TONGUE", "T_REAR_PLATE", "FENDER_WASHER_T", "FENDER_WASHER_T"]
+extras = ["M8 fender washer", "M8 fender washer", "M8 acorn nut"]
+source = "his, 2026-10-11 - M8 x 45 on TWO fender washers"
+note = "From outboard: fender washer, tongue, plate, then a SECOND FENDER WASHER UNDER THE ACORN NUT - his, 2026-10-11, and it is what makes a 45 work here. 🔴 THE 40 ENGAGED 6.65, UNDER ONE DIAMETER, AND NO LONGER BOLT COULD FIX IT: a 45 on one washer wants 11.65 of nut against the ACORN_NUT_DEPTH of 11 and would bottom on the dome. The second washer lifts the nut 2, so the same 45 protrudes 9.65 - inside the 11, inside the ACORN_NUT_THREAD of 10, and engaging 9.65 instead of 6.65. ⚠️ THE WASHER IS THE PART THAT MAKES THE LENGTH LEGAL, so do not drop one to tidy the stack."
 
 [[joint]]
 id = "side-plate-to-tongue"
