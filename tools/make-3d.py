@@ -1651,7 +1651,15 @@ def main() -> int:
                 .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts]))
                 .replace("__JOG__", json.dumps(jog))
                 .replace("__TIP__", json.dumps(tip))
-                .replace("__HOME__", json.dumps(home)))
+                .replace("__HOME__", json.dumps(home))
+                # THE PAGE DOES NOT GET ITS OWN EXCLUSION LIST. The live clash
+                # check in the viewer is a port of the one above, and the thing
+                # that would rot first is two copies of ALLOWED drifting apart -
+                # so the page is handed THIS one. Same for the bite pairs.
+                .replace("__ALLOWED__", json.dumps(
+                    sorted(sorted(f) for f in ALLOWED if len(f) == 2)))
+                .replace("__BITE__", json.dumps(
+                    sorted(sorted(f) for f in BITE))))
     # last, and not via str.replace on the whole document: three.min.js contains
     # backslash escapes that a replacement template would eat.
     i = html.index("__THREE__")
@@ -1679,6 +1687,15 @@ def main() -> int:
 
 # Pairs that SHOULD interpenetrate, with the reason. Everything else that
 # overlaps is a real interference and gets printed.
+# 🔴 THE TOOL IN THE SACRIFICIAL SHEET IS NOT A FAULT, IT IS THE JOB. The
+# spoilboard exists to be cut into, so a tool-in-MDF overlap is reported as a
+# BITE and drawn in a different colour from a clash. Only the MDF is listed:
+# the tool reaching the ALUMINIUM would be a real fault and must stay red.
+BITE = {
+    frozenset({"Tool", "MDF sacrificial sheet"}),
+    frozenset({"Tool", "MDF sheet"}),
+}
+
 ALLOWED = {
     # THE EGG CRATE IS HALF-DEPTH NOTCHED AT EVERY CROSSING - settled
     # 2026-09-30 - and the notches are deliberately not drawn: a half-depth
@@ -2199,6 +2216,11 @@ HTML = r"""<!doctype html>
  #dro td.ax{color:#e8b64c;padding-right:10px}
  #dro td.v{text-align:right;color:#8fd}
  #dro .frame{margin-top:6px;font-size:10.5px;color:#8a929b;max-width:200px;white-space:normal}
+ #clashlist{top:56px;left:12px;max-width:260px;max-height:70vh;overflow-y:auto;font-size:11.5px}
+ #clashlist h2{font-size:11px;margin:0 0 6px;color:#ff6b5a;letter-spacing:.06em}
+ .cl{border-left:3px solid #ff2b2b;padding:2px 0 2px 7px;margin:0 0 6px;color:#cdd}
+ .cl.bite{border-left-color:#25c08a}
+ button.alarm{background:#5a2a2a;border-color:#8a4040;color:#fee}
  #help,#about{top:56px;left:50%;transform:translateX(-50%);max-width:520px;font-size:12px}
  #about{max-height:78vh;overflow-y:auto}
  #help h2,#about h2{font-size:12.5px;margin:0 0 6px;color:#e8b64c}
@@ -2214,12 +2236,14 @@ HTML = r"""<!doctype html>
 <table class="panel" id="facts" hidden></table>
 <div id="topright"><div class="panel" id="jogro" hidden></div>
 <div class="panel" id="dro"></div></div>
+<div class="panel" id="clashlist" hidden></div>
 <div class="panel" id="help" hidden></div>
 <div class="panel" id="about" hidden></div>
 <script>__THREE__</script>
 <script>
 const PARTS=__PARTS__, GROUPS=__GROUPS__, ASSUMPTIONS=__ASSUMPTIONS__, FACTS=__FACTS__;
 const JOG=__JOG__, TIP=__TIP__, HOME=__HOME__;
+const ALLOWED=__ALLOWED__, BITE=__BITE__;
 
 const scene=new THREE.Scene(); scene.background=new THREE.Color(0x1a1d21);
 const cam=new THREE.PerspectiveCamera(42,1,10,20000);
@@ -2417,6 +2441,7 @@ function applyJog(){
       .map(r=>'<tr><td class="ax">'+r[0]+'</td><td class="v">'+v2(r[1])+'</td></tr>').join('')+
     '</table>';
   jogro.innerHTML='<h2>TRAVEL</h2><table>'+rows+'</table>';
+  paintClashes();   // the carriages moved, so the answer may have
 }
 
 addEventListener('keydown',e=>{
@@ -2501,6 +2526,188 @@ addEventListener('pointermove',e=>{
   tip.style.top=(e.clientY+18+th>innerHeight?Math.max(6,e.clientY-th-12):e.clientY+18)+'px';
 });
 
+// --- the live clash check, ported from tools/make-3d.py ---------------
+// CLASH-CHECK-BEGIN
+// 🔴 THIS IS A SECOND IMPLEMENTATION OF A CHECK THAT ALREADY EXISTS, which is
+// a thing this repo is right to be suspicious of. Three guards: the exclusion
+// list and the bite list are HANDED OVER from the generator rather than
+// retyped; every helper below is a line-for-line port with the same 0.05
+// slack; and tools/check-clash-js.py lifts this function out of the generated
+// page and runs it under node against the Python answer at the drawn pose and
+// all eight corners of travel. If they ever disagree, that script says so.
+const PLANE_AXES={xz:[0,2],xy:[0,1]};
+const ALLOW=new Set(ALLOWED.map(x=>x[0]+'|'+x[1]));
+const BITES=new Set(BITE.map(x=>x[0]+'|'+x[1]));
+const pairKey=(a,b)=>a<b?a+'|'+b:b+'|'+a;
+
+function shiftPart(p,off){
+  const k=p.k||'';
+  const d=[k.indexOf('X')>=0?off[0]:0,
+           k.indexOf('Y')>=0?off[1]:0,
+           k.indexOf('Z')>=0?off[2]:0];
+  if(!d[0]&&!d[1]&&!d[2])return p;
+  const q=Object.create(p);
+  q.p=[p.p[0]+d[0],p.p[1]+d[1],p.p[2]+d[2]];
+  q.q=[p.q[0]+d[0],p.q[1]+d[1],p.q[2]+d[2]];
+  return q;
+}
+
+function rectHitsPoly(poly,x0,x1,z0,z1){
+  const inside=(px,pz)=>{
+    let c=false;
+    for(let i=0;i<poly.length;i++){
+      const [ax,az]=poly[i], [bx,bz]=poly[(i+1)%poly.length];
+      if((az>pz)!==(bz>pz)){
+        const xx=ax+(pz-az)*(bx-ax)/(bz-az);
+        if(xx>px)c=!c;
+      }
+    }
+    return c;
+  };
+  for(const [px,pz] of poly)
+    if(x0-0.05<=px&&px<=x1+0.05&&z0-0.05<=pz&&pz<=z1+0.05)return true;
+  for(const px of [x0,x1])for(const pz of [z0,z1])if(inside(px,pz))return true;
+  for(let i=0;i<poly.length;i++){
+    const [ax,az]=poly[i], [bx,bz]=poly[(i+1)%poly.length];
+    for(const [cx,cz,dx_,dz_] of [[x0,z0,x1,z0],[x1,z0,x1,z1],
+                                  [x1,z1,x0,z1],[x0,z1,x0,z0]]){
+      const d1=(bx-ax)*(cz-az)-(bz-az)*(cx-ax);
+      const d2=(bx-ax)*(dz_-az)-(bz-az)*(dx_-ax);
+      const d3=(dx_-cx)*(az-cz)-(dz_-cz)*(ax-cx);
+      const d4=(dx_-cx)*(bz-cz)-(dz_-cz)*(bx-cx);
+      if(((d1>0)!==(d2>0))&&((d3>0)!==(d4>0)))return true;
+    }
+  }
+  return false;
+}
+
+// A part passing THROUGH a cut-out is not an interference.
+function throughHole(a,b){
+  for(const [pr,other] of [[a,b],[b,a]]){
+    const [i,j]=PLANE_AXES[pr.pl||'xz'], e=0.05;
+    for(const hp of (pr.holes||[])){
+      const hx=hp.map(t=>t[0]), hz=hp.map(t=>t[1]);
+      if(Math.min(...hx)-e<=other.p[i]&&other.q[i]<=Math.max(...hx)+e
+       &&Math.min(...hz)-e<=other.p[j]&&other.q[j]<=Math.max(...hz)+e)return true;
+    }
+  }
+  return false;
+}
+
+// A PRISM IS NOT ITS BOUNDING BOX - on the fins the taper is the whole part.
+function prismMisses(a,b){
+  for(const [pr,other] of [[a,b],[b,a]]){
+    if(pr.t!=='prism')continue;
+    const [i,j]=PLANE_AXES[pr.pl||'xz'];
+    const x0=Math.max(pr.p[i],other.p[i]), x1=Math.min(pr.q[i],other.q[i]);
+    const z0=Math.max(pr.p[j],other.p[j]), z1=Math.min(pr.q[j],other.q[j]);
+    if(!rectHitsPoly(pr.profile,x0,x1,z0,z1))return true;
+  }
+  return false;
+}
+
+// How wide the overlap really is across a prism, measured on its section.
+function prismBite(a,b){
+  let worst=0;
+  for(const [pr,other] of [[a,b],[b,a]]){
+    if(pr.t!=='prism')continue;
+    const pts=pr.profile, [ai,aj]=PLANE_AXES[pr.pl||'xz'];
+    const zs=pts.map(t=>t[1]);
+    const z0=Math.max(pr.p[aj],other.p[aj],Math.min(...zs));
+    const z1=Math.min(pr.q[aj],other.q[aj],Math.max(...zs));
+    if(z1<=z0)continue;
+    for(let i=0;i<=200;i++){
+      const z=z0+(z1-z0)*i/200, xs=[];
+      for(let j=0;j<pts.length;j++){
+        const [ax,az]=pts[j], [bx,bz]=pts[(j+1)%pts.length];
+        if(az===bz)continue;
+        if(Math.min(az,bz)-1e-9<=z&&z<=Math.max(az,bz)+1e-9)
+          xs.push(ax+(z-az)*(bx-ax)/(bz-az));
+      }
+      if(xs.length<2)continue;
+      const lo=Math.max(Math.min(...xs),other.p[ai]);
+      const hi=Math.min(Math.max(...xs),other.q[ai]);
+      worst=Math.max(worst,hi-lo);
+    }
+  }
+  return worst;
+}
+
+// Every pair of solids sharing space, with the carriages where they are now.
+function clashesAt(off){
+  // SORTED BY MACHINE X AND THE INNER LOOP BREAKS - 779 parts is 303k pairs,
+  // which measured 17 ms a pass, and this runs on every jog keypress. Sorting
+  // on one axis and stopping as soon as a part starts beyond the current one's
+  // far face skips only pairs that CANNOT overlap, so the answer is identical -
+  // tools/check-clash-js.py is what proves that, at nine poses.
+  const Q=PARTS.filter(p=>p.t!=='helix').map(p=>shiftPart(p,off));
+  Q.sort((u,w)=>u.p[0]-w.p[0]);
+  const out=[];
+  for(let i=0;i<Q.length;i++){
+    const a=Q[i];
+    for(let j=i+1;j<Q.length;j++){
+      const b=Q[j];
+      if(b.p[0]>=a.q[0]-0.05)break;     // and so does everything after it
+      if(a.q[1]-b.p[1]<=0.05||b.q[1]-a.p[1]<=0.05)continue;
+      if(a.q[2]-b.p[2]<=0.05||b.q[2]-a.p[2]<=0.05)continue;
+      const k=pairKey(a.n,b.n);
+      if(ALLOW.has(k))continue;
+      if(throughHole(a,b)||prismMisses(a,b))continue;
+      const ov=[0,1,2].map(t=>Math.min(a.q[t],b.q[t])-Math.max(a.p[t],b.p[t]));
+      if(a.t==='prism'||b.t==='prism')ov[0]=prismBite(a,b);
+      out.push({a:a.n,b:b.n,ov:ov,bite:BITES.has(k),
+                lo:[0,1,2].map(t=>Math.max(a.p[t],b.p[t])),
+                hi:[0,1,2].map(t=>Math.min(a.q[t],b.q[t]))});
+    }
+  }
+  return out;
+}
+// CLASH-CHECK-END
+
+// --- drawing what the check found -------------------------------------
+// RED IS A CLASH, GREEN IS A BITE. The tool in the sacrificial sheet is the
+// machine doing its job and must not read as a fault; everything else in red
+// is two solids in the same space. The boxes are drawn WITHOUT depth testing
+// on purpose - a clash is usually buried inside the parts that cause it, and a
+// marker you can only see by hiding the machine is a marker you will not see.
+const clashGrp=new THREE.Group(); scene.add(clashGrp);
+let clashOn=false, clashBtn=null, clashList=null, CLASHES=[];
+const f1=n=>Math.round(n*100)/100;
+
+function paintClashes(){
+  while(clashGrp.children.length){
+    const m=clashGrp.children.pop(); m.geometry.dispose(); clashGrp.remove(m);
+  }
+  CLASHES=clashesAt([JOGPOS.X,JOGPOS.Y,JOGPOS.Z]);
+  for(const c of CLASHES){
+    const s=[0,1,2].map(t=>Math.max(c.hi[t]-c.lo[t],0.3));
+    const m=new THREE.Mesh(new THREE.BoxGeometry(s[0],s[2],s[1]),
+      new THREE.MeshBasicMaterial({color:c.bite?0x25c08a:0xff2b2b,
+        transparent:true,opacity:0.55,depthTest:false}));
+    m.position.set((c.lo[0]+c.hi[0])/2-mid[0],(c.lo[2]+c.hi[2])/2-mid[2],
+                   -((c.lo[1]+c.hi[1])/2-mid[1]));
+    m.renderOrder=999;
+    clashGrp.add(m);
+  }
+  clashGrp.visible=clashOn;
+  const hard=CLASHES.filter(c=>!c.bite).length, bite=CLASHES.length-hard;
+  if(clashBtn){
+    clashBtn.textContent='Clashes ('+hard+(bite?' + '+bite+' bite':'')+')';
+    clashBtn.classList.toggle('alarm',hard>0);
+    clashBtn.classList.toggle('on',clashOn);
+  }
+  if(clashList){
+    clashList.innerHTML=CLASHES.length
+      ? '<h2>'+(hard?'CLASHES':'NO CLASH')+'</h2>'+CLASHES.map(c=>
+          '<div class="cl'+(c.bite?' bite':'')+'"><b>'+c.a+'</b> &amp; <b>'+c.b+
+          '</b><br>'+(c.bite?'cuts ':'overlaps ')+f1(c.ov[0])+' x '+f1(c.ov[1])+
+          ' x '+f1(c.ov[2])+' mm'+(c.bite?' - the job, not a fault':'')+'</div>'
+        ).join('')
+      : '<h2>NO CLASH</h2><div class="cl">Nothing shares space at this position.</div>';
+    clashList.hidden=!clashOn;
+  }
+}
+
 function resize(){const w=innerWidth,h=innerHeight;rend.setPixelRatio(devicePixelRatio);rend.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();draw();}
 function draw(){rend.render(scene,cam);}
 addEventListener('resize',resize);
@@ -2520,6 +2727,7 @@ const bar=document.getElementById('bar');
 const facts=document.getElementById('facts'), dro=document.getElementById('dro');
 const help=document.getElementById('help'), about=document.getElementById('about');
 const jogro=document.getElementById('jogro');
+clashList=document.getElementById('clashlist');
 
 function mrow(label,parent){
   const d=document.createElement('div');
@@ -2590,6 +2798,14 @@ bbtn('Show all parts',
     applyVis();
   };
 
+// THE CLASH BUTTON CARRIES THE COUNT, so the answer is on the bar without
+// turning anything on. It re-runs on every jog - that is the whole point of
+// checking live rather than shipping the drawn pose's answer.
+clashBtn=bbtn('Clashes',
+  'Red where two solids share space, green where the tool is cutting the '
+  +'sacrificial sheet. Re-checked every time you jog.');
+clashBtn.onclick=()=>{clashOn=!clashOn; paintClashes(); draw();};
+
 btoggle('DRO',true,v=>{dro.hidden=!v;});               // ON by default - his
 btoggle('Travel',false,v=>{jogro.hidden=!v;});
 btoggle('Dimensions',false,v=>{facts.hidden=!v;});
@@ -2626,6 +2842,11 @@ help.innerHTML=
   '<tr><td><b>Shift / Ctrl</b></td><td>1 mm and 50 mm a press, instead of 10</td></tr>'+
   '<tr><td><b>Home</b></td><td>all three axes back to the drawn pose</td></tr>'+
   '<tr><td><b>Esc</b></td><td>shuts this and any open drop</td></tr></table>'+
+  '<p><b>Clashes</b> on the bar counts every pair of solids sharing space '+
+  '<i>at the position you are jogged to</i>, and re-checks on every jog. Red is '+
+  'a clash; green is the tool cutting the sacrificial sheet, which is the job '+
+  'rather than a fault. The boxes draw through the machine on purpose - a clash '+
+  'is usually buried inside the parts that cause it.</p>'+
   '<p>Each axis stops 5 mm short of the part it would otherwise hit, and the panel on '+
   'the left says how far is left to run. The DRO is the <b>tool tip</b>.</p>';
 help.querySelector('.close').onclick=()=>{help.hidden=true;};
