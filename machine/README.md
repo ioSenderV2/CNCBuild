@@ -39,7 +39,7 @@ hangs off them. Several dimensions are still **⚠️ Open** and are marked as s
 They were one 2877-line file, `end-plates-risers-and-spindle.md`, until 2026-10-02. The split is
 verbatim — no decision was reopened in the move — and it is along the seams the prose already had.
 
-📋 **These thirteen are the design record**, printed by `tools\make-pdf.ps1` as
+📋 **These fourteen are the design record**, printed by `tools\make-pdf.ps1` as
 `design-record.pdf` — in reading order, with a clickable contents and every photograph embedded
 beside the chapter that cites it. **To carry something to the machine, carry `build-document.pdf`
 instead** — see the two-document note at the top of this file.
@@ -54,6 +54,7 @@ instead** — see the two-document note at the top of this file.
 | [`stepper-sizing.md`](stepper-sizing.md) | **2.2 N·m NEMA 23 on all four axes**, and why neither 1.5 nor 3.2 — thrust is a non-term on a 5 mm lead, the screw and the rotor are the inertia, and the real ceiling is the **measured 930 mm** span's whip at 1510 rpm |
 | [`z-carriage.md`](z-carriage.md) | The 164 × 175 × 1/2" Z plate, the spacer blocks and why they get skimmed, the clamp mount geometry, the travel budget and the top stop |
 | [`x-gantry-end-plates.md`](x-gantry-end-plates.md) | The two X gantry end plates: the vertical stack-up, the 242.5 mm height, the sole plate and doubler block, the four bolts above the Y beam top, and the shelf |
+| [`spoilboard.md`](spoilboard.md) | The spoilboard stack and **both ends of the Z envelope**: why a thinner stack loses cut depth instead of gaining it, the Mega V tee tracks bedded straight on the box, the Y sole plate as the lowest sweeping part, and why the X carriage does not move down |
 | [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
 | [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One WCS origin per plate, one reference rail, and what mating hardware to take |
 | [`open-items.md`](open-items.md) | Everything still unmeasured, grouped by where it came from |

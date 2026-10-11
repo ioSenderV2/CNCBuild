@@ -319,9 +319,12 @@ clamp puts the trade back on the table:
 4. **Check the remaining travel against step 1.**
 5. **Cut spacers to suit** (8" rather than 6", if spread that far).
 
-⚠️ **Step 1 is still open.** The travel floor was never set as a number, and 246 mm is now confirmed
-available - so the question is no longer "how much can we get" but "where does the 246 sit relative to
-the spoilboard". That is a machine measurement, not a design decision.
+✅ **Step 1 closed 2026-10-11, and the spoilboard set it.** The tool tip's floor is **45 mm above
+the box's top skin** and the work surface sits at **67.5 mm**, so there is 22.5 mm below the surface
+with a 2" stickout - which clears the deepest wood through-cut by 28.85 mm. The travel floor was
+never a machine measurement in the end: the gantry fixes the reach and the **spoilboard stack** is
+what positions the work in it. Full working, both ends of travel and the four fixturing cases, in
+[`spoilboard.md`](spoilboard.md).
 
 ## Which half moves - settled
 

@@ -189,8 +189,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   working in the Z plate section.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
 - 🔴 **Can Garen's mill traverse ~1212 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a 1210.73 mm plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height reference between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
-- **Z travel floor** - where the confirmed 246 mm sits relative to the spoilboard. A machine
-  measurement, and the one item the travel budget still waits on.
+- ✅ ~~**Z travel floor** - where the confirmed travel sits relative to the spoilboard.~~
+  **Closed 2026-10-11, and it was not a machine measurement.** The tip floor is **45 mm** above the
+  box's top skin and the spoilboard surface is at **67.5 mm**; the gantry fixes the reach and the
+  spoilboard stack positions the work in it. See [`spoilboard.md`](spoilboard.md).
 - **Vertical distance from the X beam centreline down to the spindle nose, Z fully retracted** - plus
   the **Z travel**. Together these give the torsional arm; worst case is the fixed distance plus full
   travel plus tool stickout. (Earlier drafts asked for "tool tip to beam", which is not a machine
