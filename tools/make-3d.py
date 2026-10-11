@@ -1098,7 +1098,11 @@ def main() -> int:
     # moves, the same way everything else here does.
     #
     #   Y   back: the X end plates' back edge, 5 from the rear plate's front face
-    #       front: their front edge, 5 from the front fin's back face
+    #       front: THE Z PLATE's front face, 5 from the front fin's back face -
+    #       his, 2026-10-10. It was the end plate's front edge, which is 6.6
+    #       behind the Z plate, so the plate itself went 1.6 INTO the fin at
+    #       full forward travel with Z down. The envelope sweep found it; the
+    #       limit now rides on the part that gets there first.
     #   X   either way: the Z PLATE's edge, 5 from the inside face of the X end
     #       plate at that end. The Z plate and not the carriage plate because it
     #       is the wider of the two, Z_PLATE_W against XEP_W.
@@ -1107,7 +1111,7 @@ def main() -> int:
     #       face the nut would land on if it ever got there.
     jog = {
         "Y": [round(v["T_REAR_PLATE"] + 5 - xep_back, 2),
-              round((y1 - 5) - xep_front, 2), ""],
+              round((y1 - 5) - zp_front, 2), ""],
         "X": [round((xb_x0 + 5) - (zp_cx - v["Z_PLATE_W"] / 2), 2),
               round((xb_x1 - 5) - (zp_cx + v["Z_PLATE_W"] / 2), 2), ""],
         "Z": [round((bf12_z + v["T_BF12_BLOCK"] + 5) - (z_nut_mid - v["NUT_OAL"] / 2), 2),
