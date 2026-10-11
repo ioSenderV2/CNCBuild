@@ -622,18 +622,23 @@ in from each perimeter must clear the front corner tenons**, and the **two front
 side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend to the back-centre
 tenon.
 
-⚠️ **Blocking has to be in the rib layout under the 200 mm fin bases and under the full 1210.73 mm
-of the rear plate's bottom edge** — bottom-edge bearing is only worth having if it lands on structure
-rather than on skin spanning between grid members.
+✅ **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
+across-rib's front face is at **971.8** and the fin's base starts bearing at **1006.35**, so it is
+**34.55 mm** from a rib. At that distance a 25 mm top skin is not spanning anything; it is a short
+overhang off a support that is right there.
 
-🔴 **It has to cover the fin angle's four T-nuts as well**, which were not in view when the line
-above was written. The last across-rib's front face is at 971.8 and the angle's horizontal leg
-starts at 1016.35, so the T-nuts sit **44.55 mm clear of the nearest rib**, mid-bay in a 219 mm
-span. The fin's own base is in the same bay.
+📌 **The warning this replaces was written before any rib layout existed to check it against** —
+"bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning
+between grid members", which is true in general and does not bite here. The fin angle's T-nuts are
+**67.55 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
+T-nut's own grip on the plywood, not the span.
 
-🔴 **And the blocking cannot sit directly under a T-nut** — the barrel drops into the cavity and
-would foul it. Put the blocking beside the four, or relieve it, and settle that **before the top
-skin is glued**: the T-nuts go in from underneath and there is no access afterwards.
+🔴 **If the fin's bearing is ever wanted harder, move a rib under it — do not add blocking.** A rib
+is continuous and a block is not, and the grid is egg crate precisely because continuity is what
+gives the two-way plate action.
+
+⚠️ **Still open for the rear plate**, whose bottom edge bears over the full 1210.73 mm — a different
+question with a different answer, and it is in [`open-items.md`](open-items.md).
 
 ### The three posts
 

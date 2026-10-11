@@ -2738,8 +2738,8 @@ note = "144 - the front cap's height: the box's full thickness, capping the end 
 
 [[dim]]
 sym = "FIN_ANGLE_TO_RIB"
-expr = "(SIDE_TONGUE_END + T_FIN) - (T_BOX_WALL_WEB + (BOX_BAY_FORE_AFT + T_BB_RIB) * (BOX_RIBS_ACROSS - 1) + BOX_BAY_FORE_AFT + T_BB_RIB)"
-note = "44.55 - from the LAST across-rib's front face to where the angle's horizontal leg begins. \U0001F534 SO THE FOUR T-NUTS LAND IN UNSUPPORTED SKIN, mid-bay in a BOX_BAY_FORE_AFT span, with no rib under them. The fin's own 200 base is in the same bay, 34.55 ahead of that rib. \u26A0 assembly.md ALREADY CARRIES BLOCKING UNDER THE FIN BASES AS OPEN, and this says the open item must cover the angle's fixings too - they were not in view when it was written. \U0001F534 AND THE BLOCKING CANNOT SIT DIRECTLY UNDER A T-NUT: the barrel drops into the cavity, so blocking placed under one fouls it. Position the blocking beside the four, or relieve it, and decide that BEFORE the skin is glued - the T-nuts go in from underneath and there is no access afterwards. \u26A0 DERIVED THE LONG WAY ON PURPOSE, off the same rib walk make-3d uses, so it moves if the bay count, the bay size or the fin position moves."
+expr = "SIDE_TONGUE_END + T_FIN - RIB_LAST_FRONT"
+note = "44.55 - from the LAST across-rib's front face to where the angle's horizontal leg begins. See FIN_BASE_TO_RIB, which is the figure that CLOSED the blocking question on 2026-10-11."
 
 [[dim]]
 sym = "FIN_ANGLE_T"
@@ -2818,3 +2818,18 @@ note = "30 - the first skin bolt from the angle's near end, which is the end tha
 sym = "FIN_ANGLE_BOLT_END_MARGIN"
 expr = "FIN_ANGLE_L - (FIN_ANGLE_BOLT_FIRST + (FIN_ANGLE_SKIN_FIX - 1) * FIN_ANGLE_BOLT_PITCH)"
 note = "30 - the margin left at the angle's FAR end after the three bolts. \u2705 IT EXISTS TO CLOSE ON FIN_ANGLE_BOLT_FIRST, and it does: both margins are 30, so the pattern is symmetric in a 170 piece and the middle bolt sits on the centre. If either the length, the pitch or the first position is ever changed without the others, this goes unequal and says so."
+
+[[dim]]
+sym = "RIB_LAST_FRONT"
+expr = "T_BOX_WALL_WEB + BOX_RIBS_ACROSS * (BOX_BAY_FORE_AFT + T_BB_RIB)"
+note = "971.8 - the front face of the LAST across-rib, the one nearest the fins. Named because three separate questions measure from it, and because walking the rib pitch inline each time is how the three would drift apart. It follows the bay count and bay size, so it moves when the grid does."
+
+[[dim]]
+sym = "FIN_BASE_TO_RIB"
+expr = "SIDE_TONGUE_END - RIB_LAST_FRONT"
+note = "34.55 - from the last across-rib's front face to where the front fin's base starts bearing. \u2705 THIS IS THE NUMBER THAT CLOSED THE BLOCKING QUESTION, 2026-10-11, and it closed it as NOT NEEDED. lateral-stiffness.md had carried a general warning that bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning between grid members - written before any rib layout existed to check it against. At 34.55 from a rib, a 25 top skin is not spanning anything; it is a short overhang off a support that is right there. His call, and the measurement is his too - he put the nearest rib at about 40 by eye. \U0001F534 IF THE FIN'S BEARING IS EVER WANTED HARDER, MOVE A RIB UNDER IT RATHER THAN ADDING BLOCKING - a rib is continuous and a block is not, and the grid is egg crate precisely because continuity is what gives two-way plate action."
+
+[[dim]]
+sym = "FIN_TNUT_TO_RIB"
+expr = "SIDE_TONGUE_END + T_FIN + FIN_ANGLE_T + (FIN_ANGLE_LEG - FIN_ANGLE_T) / 2 - RIB_LAST_FRONT"
+note = "67.55 - from the last across-rib's front face to the fin angle's T-nut line. \u2705 ALSO CLOSED AS NO BLOCKING, same day and same reasoning as FIN_BASE_TO_RIB, with one thing in its favour: these pull UP rather than bear down, and 25 of Baltic birch over a 67.55 reach against a hand-tightened M8 is nowhere near the weak link in that joint. \U0001F4CC THE WEAK LINK IS THE T-NUT'S OWN GRIP ON THE PLYWOOD, which is why the prongs and the flange matter and the span does not."

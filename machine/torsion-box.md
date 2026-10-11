@@ -56,6 +56,12 @@ grid" below.
 
 ### The ribs are egg crate - half-lapped both ways, not blocking
 
+> 📌 **"Blocking" means two different things in this repo and they are one section apart.** Here it
+> is a **construction method for the grid** - full-length ribs one way with short pieces fitted
+> between them the other - and it was rejected. Elsewhere it means **local packing under a part that
+> bears on the skin**, which is a separate question, asked of the fins and the rear plate and
+> answered independently. Rejecting the first says nothing about the second.
+
 ✅ **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
 The alternative considered was full-length ribs one way with blocking between them the other.
 

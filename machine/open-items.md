@@ -104,10 +104,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - ⚠️ **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1210.73 mm of rear bottom-edge bearing.** Decide before the skins are cut.
-- 🔴 **Blocking under the front fin bases AND under the fin angle's four T-nuts** - they land 44.55 mm
-  clear of the nearest rib, mid-bay. The blocking must not sit directly under a T-nut, whose barrel
-  drops into the cavity. **Settle before the top skin is glued** - the T-nuts fit from underneath and
-  there is no access after. See [`assembly.md`](assembly.md).
+- ✅ ~~**Blocking under the front fin bases and the fin angle's T-nuts.**~~ **Closed 2026-10-11: not
+  needed.** The fin base is **34.55 mm** from the last across-rib and the T-nuts **67.55 mm** - short
+  overhangs off a support, not spans. The item existed because the general warning predated any rib
+  layout. If the bearing is ever wanted harder, **move a rib, do not add blocking**.
 
 ## ✅ From the 2026-10-08 order - the back plate's length
 
@@ -188,7 +188,9 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   **Worse as of 2026-10-02**: the cast stepper frame and a NEMA 23 now occupy that end too, so the
   question is no longer only "does the spindle clear the fin" but "does it clear the fin, the
   casting and the motor". Add the casting's envelope to the four numbers.
-- **Whether the front fins need the rib layout fixed first** - the bottom-edge bearing wants blocking
+- ✅ ~~**Whether the front fins need the rib layout fixed first.**~~ **Closed 2026-10-11** - the layout
+  is fixed at 4 + 4 and the fin lands 34.55 from a rib, which needs nothing. Original wording: the
+  bottom-edge bearing wants blocking
   under the full 203 mm base.
 - ✅ **How nod is adjusted - answered 2026-09-30.** The question was whether the spacer M5 counterbore
   pattern clears the clamp footprint. **It does not clear it by position alone** - the M8 column at

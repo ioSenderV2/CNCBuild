@@ -411,7 +411,10 @@ genuinely fixed, and the reaction at those bolts is vertical load bearing into p
 note's standing warning is that **plywood creeps in compression** with nothing to tell you. Use a
 steel backing strip or large fender washers on both faces here, not plain washers.
 
-⚠️ **Blocking under the 200 mm base** has to be in the rib layout - the bottom-edge bearing is only
+✅ **No blocking under the 200 mm base - closed 2026-10-11.** The fin's base lands **34.55 mm**
+from the last across-rib's front face, and at that distance the 25 mm top skin is a short overhang
+rather than a span. See [`assembly.md`](assembly.md). The original concern, kept because it is the
+right question to ask of any bottom-edge bearing: the bearing is only
 worth having if it lands on structure rather than on skin spanning between grid members. The box is
 built last, so this is free, but it must be decided before the skins are cut.
 
