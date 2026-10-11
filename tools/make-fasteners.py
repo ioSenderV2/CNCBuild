@@ -88,6 +88,10 @@ def by_group(rows):
         n = r.get("count", 0)
         placed = 0
         for g, c in r.get("groups", []):
+            # 🔴 ONE T-NUT PER BOLT, ON THE SAME LINE AS THE BOLT - his,
+            # 2026-10-11. The buy list totals them for the order; what this view
+            # has to answer is what goes on the mat for ONE assembly, and a
+            # T-slot bolt without its nut is a trip back to the drawer.
             if g not in out:
                 out.setdefault(g, [])     # an unknown name must still show up
             out[g].append((r, c))
@@ -255,6 +259,9 @@ def main():
         for r, c in groups[g]:
             L = f"M{r['size']} x {r['length']:g}" if r.get("length") else "?"
             print(f"      {L:14s} {c:>4}   {r['what']}")
+            if r.get("into") == "t-nut":
+                print(f"      {'T-nut M%d' % r['size']:14s} {c:>4}   "
+                      f"for the line above")
     if loose:
         print("\n  ⚠ NOT IN ANY GROUP - these have no home in the list yet:")
         for r, c in loose:
@@ -280,14 +287,18 @@ def render(rows, missing, total_pcs, buy, groups, loose):
     for g in [x for x in GROUPS if groups.get(x)] + \
              [x for x in groups if x not in GROUPS]:
         rws = "".join(
-            f"<tr><td>{('M%d x %g' % (r['size'], r['length'])) if r.get('length') else '?'}"
-            f"</td><td class=n>{c}</td><td>{r['what']}</td></tr>"
+            (f"<tr><td>{('M%d x %g' % (r['size'], r['length'])) if r.get('length') else '?'}"
+             f"</td><td class=n>{c}</td><td>{r['what']}</td></tr>"
+             + (f"<tr><td>T-nut M{r['size']}</td><td class=n>{c}</td>"
+                f"<td class=s>one per bolt, for the line above</td></tr>"
+                if r.get("into") == "t-nut" else ""))
             for r, c in groups[g])
         n = sum(c for _, c in groups[g])
         cards.append(
             f'<div class="buy"><h3>{g}</h3><table>'
-            f"<tr><th>Bolt</th><th class=n>Off</th><th>Joint</th></tr>{rws}"
-            f'<tr><td></td><td class=n><b>{n}</b></td><td></td></tr>'
+            f"<tr><th>Bolt</th><th class=n>Qty</th><th>Joint</th></tr>{rws}"
+            f'<tr><td><b>bolts</b></td><td class=n><b>{n}</b></td>'
+            f'<td class=s>T-nuts are the lines above, not counted here</td></tr>'
             f"</table></div>")
     looserows = "".join(
         f"<tr><td>{r['id']}</td><td class=n>{c} of {r.get('count','?')}</td>"
@@ -300,7 +311,7 @@ def render(rows, missing, total_pcs, buy, groups, loose):
         + (f'<div class="note"><b>Not in any group yet.</b> These are not '
            f'missing from the schedule - they are in it, and they have no home '
            f'in the group list. Shown rather than filed under the nearest '
-           f'plausible heading.<table><tr><th>Joint</th><th class=n>Off</th>'
+           f'plausible heading.<table><tr><th>Joint</th><th class=n>Qty</th>'
            f"<th>What</th></tr>{looserows}</table></div>" if loose else ""))
 
     tables = []
@@ -310,7 +321,7 @@ def render(rows, missing, total_pcs, buy, groups, loose):
             for i in sorted(buy[sz], key=lambda i: (not i.startswith("bolt"), i)))
         tables.append(
             f'<div class="buy"><h3>M{sz}</h3><table>'
-            f"<tr><th>Item</th><th class=n>Off</th></tr>{rws}</table></div>")
+            f"<tr><th>Item</th><th class=n>Qty</th></tr>{rws}</table></div>")
     buytables = "".join(tables)
     tr = []
     for r in rows:
@@ -353,7 +364,7 @@ is inferred, because the two length errors this repo has already made were both
 inferences that read as facts.</div>
 
 <table>
-<tr><th>Joint</th><th>Size</th><th>Off</th><th>Length</th><th>Grip</th>
+<tr><th>Joint</th><th>Size</th><th>Qty</th><th>Length</th><th>Grip</th>
 <th>Engages</th><th>If it runs long</th></tr>
 {''.join(tr)}
 </table>

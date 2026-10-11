@@ -78,17 +78,30 @@ source = "his, 2026-10-11 - 14, not the 12 assembly.md gave"
 note = "🔴 IT WAS 12 UNTIL HE CORRECTED IT, from assembly.md's '28 x M8 x 12 (X back)'. The 2 buys thread in the T-nut and the plate is the same, so nothing else moves."
 
 [[joint]]
-id = "interposer-to-beam"
-what = "Interposer bars up into the beam's T-slots"
+id = "x-interposer-to-beam"
+what = "X interposer bar DOWN into the X beam's top T-slots"
 size = 8
-count = 12
-per = "4 per bar, three bars"
+count = 4
+per = "2 rows x 2 slots, one bar"
 length = 20
-groups = [["Interposer/stepper assembly/BF12 for X", 4], ["Interposer/stepper assembly/BF12 for Y1", 4], ["Interposer/stepper assembly/BF12 for Y2", 4]]
+groups = [["Interposer/stepper assembly/BF12 for X", 4]]
+into = "t-nut"
+grip = ["T_INTERPOSER"]
+source = "his, 2026-10-11"
+note = "🔴 THIS BAR SITS ON TOP OF THE X BEAM, so these drive DOWNWARD into the TOP slots and the heads stand up - his, 2026-10-11, and tools/make-3d.py already draws it that way. They were in one entry with the Y bars' eight, whose note said everything below the beam is in tension, and that reads exactly backwards here: the bar is in COMPRESSION under the casting, and these bolts locate it rather than hang it. ✅ 20 LONG TAKES ALL 6 OF THE T-NUT'S THREAD - see TNUT_THREAD_M8 - with 10 left after the interposer. 📌 IT IS THE SAME BAR AS Y - Sheet 6 makes three."
+
+[[joint]]
+id = "y-interposer-to-beam"
+what = "Y1 and Y2 interposer bars UP into the beams' underside T-slots"
+size = 8
+count = 8
+per = "4 per bar, two bars"
+length = 20
+groups = [["Interposer/stepper assembly/BF12 for Y1", 4], ["Interposer/stepper assembly/BF12 for Y2", 4]]
 into = "t-nut"
 grip = ["T_INTERPOSER"]
 source = "his, 2026-10-11; the 3D model independently draws 4 per bar"
-note = "EVERYTHING BELOW THE BEAM IS IN TENSION HERE - these hold the bar UP against the beam's underside. 🔴 COUNT CORRECTED FROM 18: assembly.md said six per bar in three rows, but make-3d draws TWO rows x TWO slots = four, and he says four. The model and he agree; the prose was the odd one out. ✅ 20 LONG TAKES ALL 6 OF THE T-NUT'S THREAD - see TNUT_THREAD_M8 - with 10 left after the interposer."
+note = "EVERYTHING BELOW THE BEAM IS IN TENSION HERE - these bars HANG under the beams, so these hold the bar UP against the underside and the heads are below. 🔴 COUNT CORRECTED FROM 18: assembly.md said six per bar in three rows, but make-3d draws TWO rows x TWO slots = four, and he says four. The model and he agree; the prose was the odd one out. ✅ 20 LONG TAKES ALL 6 OF THE T-NUT'S THREAD - see TNUT_THREAD_M8 - with 10 left after the interposer."
 
 [[joint]]
 id = "stepper-to-frame"
