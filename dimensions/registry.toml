@@ -1044,10 +1044,16 @@ note = "How much tongue there is past the floor BF12 needs - 25 on the 200 x 300
 # ---------------------------------------------------------------- the torsion box
 
 [[dim]]
-sym = "T_BB_SKIN"
+sym = "T_BB_SKIN_TOP"
+value = 25
+provenance = "nominal"
+note = "25 - the TOP skin, and the thicker of the two. \u2705 HIS CALL 2026-10-11, and torsion-box.md had already named it the one place 25 earns its place: the top skin takes the riser feet, the Y plate bolt line and the five standing plates' bottom edges IN BEARING. \U0001F534 IT IS NOT FOR STIFFNESS - 25 on both skins buys +46% against +100% for 19 skins on 150 ribs, and most of that 46% is only the box getting deeper. ASYMMETRIC SKINS ARE FINE IN A TORSION BOX, which is what lets the material go where the bearing is. \u26A0 NOMINAL ON PURPOSE - torsion-box.md warns that sheet sold at a nominal commonly runs under, and that the rib notches must be cut to the measured thickness of the sheet in hand, not to this. \U0001F4CC THE UNDERSIDE OF THE TOP SKIN DOES NOT MOVE: it is set by the post ledge, the bottom skin and the cavity, so this only makes the box 6 thicker and stands the machine 6 higher off the floor. Z 0 is the top skin, so nothing above the box moves at all."
+
+[[dim]]
+sym = "T_BB_SKIN_BOT"
 value = 19
 provenance = "nominal"
-note = "Baltic birch skin, top and bottom. NOMINAL ON PURPOSE - torsion-box.md warns that sheet sold as 19 commonly measures 18.2-18.5 and varies between sheets, and that the rib notches must be cut to the measured thickness of the sheet in hand, not to this."
+note = "19 - the BOTTOM skin, unchanged when the top went to 25 on 2026-10-11. Nothing bears on it: it rests on the post ledges and works purely as the lower flange, where separation squared does the work rather than thickness. \u26A0 NOMINAL ON PURPOSE, same warning as T_BB_SKIN_TOP - cut the rib notches to the sheet in hand."
 
 [[dim]]
 sym = "BOX_RIB_H"
@@ -1057,8 +1063,8 @@ note = "Egg-crate rib height between the skins. His, 2026-10-03."
 
 [[dim]]
 sym = "BOX_THK"
-expr = "BOX_RIB_H + (2 * T_BB_SKIN)"
-note = "The box's vertical thickness, 138 - his arithmetic 2026-10-03 and the figure torsion-box.md already carried as 'depth overall'. Named THK here because 'depth' was ambiguous against the fore-aft run."
+expr = "BOX_RIB_H + T_BB_SKIN_TOP + T_BB_SKIN_BOT"
+note = "The box's vertical thickness, 144. \U0001F534 IT WAS 138 ON TWO EQUAL 19 SKINS and it is 144 since the top went to 25 on 2026-10-11 - if 138 appears anywhere in the prose it is stale. The skins are summed separately rather than doubled BECAUSE THEY ARE NO LONGER THE SAME, and an expression reading 2 x skin is exactly how the asymmetry would get quietly lost. Named THK rather than depth because 'depth' was ambiguous against the fore-aft run."
 
 [[dim]]
 sym = "T_REAR_PLATE"
@@ -1695,7 +1701,7 @@ note = "Bare top skin ahead of the side tongue, 150. The front fin occupies the 
 sym = "T_BOX_TONGUE"
 value = 19
 provenance = "derived"
-note = "The box tongue is ONE 19 mm lamination, settled by him 2026-10-03 - not the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. Same stock as the skins, so T_BB_SKIN's warning applies: sheet sold as 19 commonly measures 18.2-18.5."
+note = "The box tongue is ONE 19 mm lamination, settled by him 2026-10-03 - not the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. Same stock as the BOTTOM skin, so T_BB_SKIN_BOT's warning applies: sheet sold as 19 commonly measures 18.2-18.5. \u26A0 NOT the top skin, which went to 25 on 2026-10-11 - the tongue stayed 19."
 
 [[dim]]
 sym = "FIN_COVERS_TONGUE_END"
@@ -2564,3 +2570,9 @@ note = "5.1 - the spacer's bore, 0.1 over the M5 screw. His, 2026-10-11. Stainle
 sym = "TT_BED_SPACER_CLEAR"
 expr = "TT_BED_END_HOLE_Z - (TT_BED_SPACER_OD / 2)"
 note = "\U0001F534 ZERO. The spacer's bottom edge is TANGENT to the top skin - 4 of hole centre against a 4 radius - and that is a coincidence rather than a fit. \u26A0 IT FAILS IN THE DIRECTION THAT MATTERS: if anything goes the wrong way by a tenth the spacer rides ON the skin and LIFTS THE PANEL END OFF ITS BEDDING, which gives back the continuous support that dropping the 2040s was for. Things that can go the wrong way: the hole centre on panels he did not drill, spacer OD tolerance, glue squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 panel. \u2705 HE IS ORDERING SPACERS TO TEST THE FIT, 2026-10-11 - UNVERIFIED UNTIL A REAL ONE IS OFFERED UP TO A REAL PANEL. \u26A0 IT CANNOT BE MARKED provenance OPEN because it has an expr, and dims.py rightly forbids that pair - the ARITHMETIC is certain and it is the CONSEQUENCE that is open, so machine/spoilboard.md carries the open item and this note carries the warning. IF IT FOULS, the fix is to RELIEVE THE SKIN and not the spacer: sixteen scallops about 10 across and 1.5 deep, one under each screw, marked off the panels at assembly. A relief in the skin cannot lift the panel; a filed spacer or a thinner one both can. A 6 OD spacer would give 1 of clearance on a 0.45 stainless wall, which these no-load screws would carry, but it depends on sourcing a part where the relief does not."
+
+[[dim]]
+sym = "T_BB_RIB"
+value = 19
+provenance = "nominal"
+note = "19 - the egg-crate ribs, and they STAY 19 even though going to a 25 top skin leaves surplus 25 stock. \U0001F534 ASKED AND ANSWERED 2026-10-11. The skins are the flanges and carry the bending moment; THE RIBS CARRY SHEAR, and 19 of Baltic birch is far past what the shear demands - which is the same reason torsion-box.md calls rib HEIGHT the lever and skin material the weak one. \u26A0 AND THE TRADE RUNS BACKWARDS: thicker ribs DISPLACE SAND, and sand is about 1.5 g/cc against plywood's 0.68, so swapping rib volume for sand volume REDUCES total mass - paying plywood to remove ballast, on a box where mass is wanted for damping. \u2705 THE SURPLUS 25 GOES TO THE BACK EDGE instead, which torsion-box.md names as the thing that deserves material: a beam supported at its midpoint carrying both back corners, which cannot be propped. The walls and tongues are the next best homes for it."

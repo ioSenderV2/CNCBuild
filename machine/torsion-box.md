@@ -16,7 +16,7 @@ torsion box". Read that first; this file is everything below the top skin.
 |---|---|
 | Skins | **19 mm Baltic birch**, top and bottom - 25 mm is available, see below |
 | Grid | **19 mm strips, 100 mm high**, between the skins - **egg crate**, see below |
-| Depth overall | **138 mm** (19 + 100 + 19) |
+| Depth overall | **144 mm** (25 top skin + 100 ribs + 19 bottom skin) |
 | Fill | **Sand in the cavities** - filled **last**, on site |
 | Outer walls, **all four sides** | **Two 19 mm laminations, 38 mm total**, the outer one standing **60 mm proud** of the top skin - see the Y beam interface |
 
@@ -111,6 +111,28 @@ move anyway.
 Y plate bolt line and the plate bottom edges **in bearing**. Asymmetric skins are fine in a torsion
 box, so **25 mm top over 19 mm bottom** is the sensible split if anything is spent.
 
+✅ **Settled 2026-10-11: 25 mm top, 19 mm bottom.** The box is **144 mm** deep rather than 138. The
+underside of the top skin **does not move** - it is set by the post ledge, the bottom skin and the
+cavity - so the 6 mm is all on the outside and the machine simply stands 6 mm higher off the floor.
+Z 0 is the top skin, so nothing above the box moves at all.
+
+### ✅ The ribs stay 19 mm, and the surplus 25 goes to the back edge
+
+Going to a 25 mm top skin leaves surplus 25 mm stock, and the question was whether the ribs are a
+better home for it. **They are not.**
+
+The skins are the flanges and carry the bending moment; **the ribs carry shear**, and 19 mm of
+Baltic birch is far past what the shear demands. That is the same reason rib height is the lever
+here and skin material is the weak one.
+
+🔴 **And the trade runs backwards.** Thicker ribs **displace sand**. Sand is about 1.5 g/cc against
+plywood's 0.68, so swapping rib volume for sand volume **reduces** total mass - paying plywood to
+remove ballast, on a box where mass is wanted for damping.
+
+✅ **The back edge is where it goes**, for the reason the next section gives: it is a beam supported
+at its midpoint carrying both back corners, and those corners cannot be propped. Spanning problems
+eat material usefully. The outer walls and the tongues are the next best homes.
+
 ✅ **And gross sag mostly does not matter.** Three points symmetric left-to-right means both Y beams
 sag together, so they stay **coplanar** - the property that counts. A uniformly dished table is
 irrelevant on a router; the spoilboard gets surfaced. Twist arises only from the X carriage sitting
@@ -126,7 +148,7 @@ spanning problem; a **deep back-edge member**, running below the bottom skin if 
 right spend.
 
 ✅ **Partly answered 2026-09-30.** The doubled back wall is a 38 mm lamination ~180 mm deep running
-the full back edge, which is a considerably deeper member than the 138 mm box. It was adopted for the
+the full back edge, which is a considerably deeper member than the 144 mm box. It was adopted for the
 back panel's sake, not for this, so treat it as a windfall rather than a solved problem - if the back
 edge still wants more, it now wants it **below the bottom skin**, since the wall has taken the space
 above.

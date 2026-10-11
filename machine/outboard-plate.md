@@ -166,8 +166,8 @@ figure that was always offered as a design budget rather than a limit.
 ✅ **Decided 2026-09-30.** This is the plate's bottom fixing, and it is what closes the "does the
 box have a vertical face" question above: **one is built into the box for the purpose.**
 
-The box is **19 mm Baltic birch skins top and bottom over a grid of 19 mm strips 100 mm high**, so
-138 mm deep overall. Two changes make it the plate's foundation:
+The box is a **25 mm Baltic birch top skin and a 19 mm bottom over a grid of 19 mm strips 100 mm
+high**, so **144 mm** deep overall. Two changes make it the plate's foundation:
 
 1. **The box is widened to the machine's width at the plates**, so its top skin reaches out far enough
    that the plates stand on it rather than hanging alongside it.

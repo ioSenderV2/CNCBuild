@@ -267,7 +267,10 @@ def main() -> int:
     W = v["MACHINE_OUTER_W"]         # 1211.238, side plate face to side plate face
     D = v["BOX_FORE_AFT"]            # 1156.35
     TT = v["T_BOX_TONGUE"]           # 19
-    SKIN = v["T_BB_SKIN"]            # 19
+    # THE TOP SKIN, which is the one this is used for - the back and side tongues
+    # reach down to its underside. 25 since 2026-10-11, and the underside does NOT
+    # move with it: BOX_THK grows by the same 6, so -(BOX_THK - SKIN) is still -119.
+    SKIN = v["T_BB_SKIN_TOP"]        # 25
 
     # ---- torsion box -----------------------------------------------------
     box("Torsion box", "box", 0xC9A227, 0, 0, -v["BOX_THK"], W, D, 0)
