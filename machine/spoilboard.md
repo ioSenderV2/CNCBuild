@@ -83,17 +83,25 @@ tracks hold the MDF down, counterbored well below the surface so there is depth 
 
 The tee track sections are **47" = 1193.8 mm**, and the clear span between the side plates' inside
 faces is **1211.238 − 2 × 3.429 = 1204.38 mm**. The tracks are therefore **10.58 mm short** of the
-span - there is nothing to cut off. **Two M4 self-tapping screws into each end of each panel** - the
-Mega V's own arrangement - pass through the side plate, each carrying **one 5 mm aluminium M4
-spacer** to fill the 5.29. That is **16 screws, eight through each side plate**.
+span - there is nothing to cut off. **Two M5 screws into each end of each panel** pass through the
+side plate, each carrying **one 5 mm aluminium spacer** to fill the 5.29. That is **16 screws, eight
+through each side plate**.
 
-🔴 **They are self-tapping, and this file called the track ends "threaded holes" until he said
-otherwise.** It matters in two ways. The screw now passes through **3.429 of side plate plus 5 of
-spacer = 8.43** before it reaches aluminium, and on the Mega V the panel end lands against the frame
-with neither of those in the way - so the existing screws are short by about that much, and the
-engagement into the extrusion end has to be what it was rather than what is left over. And a
-self-tapper re-driven into a hole it already cut holds poorly, so if these ends have been apart
-before, expect to go a size up or move the hole.
+✅ **The ends are drilled and tapped M5, done 2026-10-11.** 4.2 drill, M5 tap, **10 mm of thread
+engagement** - two diameters, into depth rather than through a skin, which closes the question of
+what the wall thickness at the panel end was. The Mega V's own fixing was two **M4 self-tapping**
+screws per end, and none of that carries over.
+
+🔴 **M4 was recommended here and M4 was wrong.** The advice was to drill 3.3 and tap M4, reasoning
+that three in-and-out cycles is light duty. **A 3.3 drill entered the existing hole with no
+resistance** - his measurement - so the hole was already at or above the M4 tapping size and an M4
+tap would have had almost nothing to cut. The cycle count was the wrong thing to judge it on; the
+hole size was, and it was measurable the whole time.
+
+⚠️ **Buy M5 × 18, not × 20.** Each screw passes through 3.429 of side plate plus 5 of spacer before
+it reaches aluminium, so an 18 reaches 9.57 into a hole tapped 10 and tightens, while a 20 wants
+11.57 and would bottom out 1.57 short of clamping - tight to the wrist, holding nothing. Check one
+hole's depth before buying sixteen screws.
 
 ✅ **The gap and the part are different numbers on purpose.** The gap is 5.29 and the spacer is 5,
 which leaves **0.29 per end, 0.58 across the bed** - and that float does not matter, because the

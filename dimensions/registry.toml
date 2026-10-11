@@ -2447,7 +2447,7 @@ note = "1204.38 - the clear span between the two side plates' INSIDE faces, whic
 [[dim]]
 sym = "TT_BED_SPACER"
 expr = "(TT_BED_CLEAR - TT_BED_L) / 2"
-note = "5.29 - THE GAP AT EACH END OF THE BED, not a part to obtain. \U0001F534 IT WAS WORDED AS A SPACER THICKNESS AND THAT IS HOW A 5.29 FLAT BAR GETS ORDERED, which does not exist - his point, 2026-10-11. \u2705 TAKEN UP BY ONE 5 mm M4 ALUMINIUM SPACER PER BOLT - his, 2026-10-11, and he can buy them, which is what settled it over the washer stack considered first. The standoff only has to keep the bolt from drawing the side plate inward as it tightens, so it needs AXIAL STIFFNESS UNDER THE HEAD and nothing else - no fit and no thickness to hit. TT_BED_FLOAT is what the 5 leaves. The bed carries no hold-down duty either: it beds flat on the top skin and gravity holds it, so these bolts only stop it walking. \u26A0 NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
+note = "5.29 - THE GAP AT EACH END OF THE BED, not a part to obtain. \U0001F534 IT WAS WORDED AS A SPACER THICKNESS AND THAT IS HOW A 5.29 FLAT BAR GETS ORDERED, which does not exist - his point, 2026-10-11. \u2705 TAKEN UP BY ONE 5 mm M5-BORE ALUMINIUM SPACER PER SCREW - his, 2026-10-11, and he can buy them, which is what settled it over the washer stack considered first. The standoff only has to keep the bolt from drawing the side plate inward as it tightens, so it needs AXIAL STIFFNESS UNDER THE HEAD and nothing else - no fit and no thickness to hit. TT_BED_FLOAT is what the 5 leaves. The bed carries no hold-down duty either: it beds flat on the top skin and gravity holds it, so these bolts only stop it walking. \u26A0 NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
 
 [[dim]]
 sym = "TT_BED_FORE_AFT"
@@ -2500,15 +2500,15 @@ note = "0 - the slack the bed has fore-aft, and there is none. The clear run fro
 
 [[dim]]
 sym = "TT_BED_END_BOLT"
-value = 4
-provenance = "part"
-note = "M4 - the screws into the tee track sections' ends, TWO PER END, which the Mega V already uses. His, 2026-10-11. \U0001F534 THEY ARE SELF-TAPPING, NOT MACHINE SCREWS INTO A TAPPED HOLE, and this file said the ends carried 'threaded holes' until he corrected it - the holes are cut by the screw, which is a different part, a different length and a different re-use story. \u26A0 IT IS THE SMALLEST FASTENER HOLDING THE BED and that is fine: these screws carry no hold-down load, only the bed walking - see TT_BED_SPACER. The side plate's clearance holes are the only thing to size from it."
+value = 5
+provenance = "measured"
+note = "M5 - the screws into the tee track sections' ends, TWO PER END. \u2705 HE DRILLED AND TAPPED THEM 2026-10-11, so this is a finished hole and not a plan: 4.2 drill, M5 tap, TT_BED_END_ENGAGE of thread. \U0001F534 M4 WAS RECOMMENDED AND M4 WAS WRONG. The Mega V used two M4 SELF-TAPPING screws per end - not machine screws in a tapped hole, which this file called them until he corrected it - and the advice was to drill 3.3 and tap M4 on the reasoning that three in-and-out cycles is light duty. His measurement killed it: A 3.3 DRILL ENTERED THE EXISTING HOLE WITH NO RESISTANCE, so the hole was already at or above the M4 tapping size and an M4 tap would have had almost nothing to cut. THE CYCLE COUNT WAS THE WRONG THING TO JUDGE IT ON; the hole size was, and it was measurable all along."
 
 [[dim]]
 sym = "TT_BED_SPACER_PART"
 value = 5
 provenance = "part"
-note = "5 - the M4 aluminium spacer actually bought, one per bolt. His, 2026-10-11. \U0001F534 THE PART IS 5 AND THE GAP IS TT_BED_SPACER'S 5.29 - they are different numbers on purpose, and the difference is TT_BED_FLOAT. Do not 'correct' either to match the other."
+note = "5 - the aluminium spacer, one per screw, and it is an M5 BORE now that the ends are tapped M5 - it was specified M4 before the holes were drilled out. His, 2026-10-11. \U0001F534 THE PART IS 5 AND THE GAP IS TT_BED_SPACER'S 5.29 - they are different numbers on purpose, and the difference is TT_BED_FLOAT. Do not 'correct' either to match the other."
 
 [[dim]]
 sym = "TT_BED_FLOAT"
@@ -2529,4 +2529,15 @@ note = "16 screws holding the bed against walking - two per end, both ends, four
 [[dim]]
 sym = "TT_BED_SCREW_STACK"
 expr = "T_SIDE_PLATE + TT_BED_SPACER_PART"
-note = "8.43 - what each self-tapping screw passes through before it reaches aluminium: the 3.429 side plate plus the 5 spacer. \U0001F534 THE MEGA V SCREWS ARE TOO SHORT BY ROUGHLY THIS MUCH, because on the Mega V the panel ends land against the frame with neither of these in the way. Add it to whatever length the existing screws are - the engagement into the extrusion end has to be what it was, not what is left over. \u26A0 AND A SELF-TAPPER RE-DRIVEN INTO A HOLE IT ALREADY CUT holds poorly; if these ends have been apart before, expect to go one size up or move the hole."
+note = "8.429 - what each screw passes through before it reaches aluminium: the 3.429 side plate plus the 5 spacer. \u2705 THE MEGA V SCREWS DO NOT CARRY OVER AT ALL - they were self-tappers and the ends are now tapped M5 - so the length comes from this plus the engagement wanted, which is TT_BED_END_SCREW_L. On the Mega V the panel end lands against the frame with neither the plate nor the spacer in the way, which is why nothing in that drawer is long enough."
+
+[[dim]]
+sym = "TT_BED_END_ENGAGE"
+value = 10
+provenance = "measured"
+note = "10 of M5 thread available in each panel end - his, 2026-10-11, after tapping. \u2705 THAT IS 2 x D AND IT CLOSES THE LAST WORRY ABOUT THIS JOINT: the question asked was the wall thickness at the panel end, because a thin web would have left 2-3 mm, and 10 says the screw is going into depth rather than through a skin. These screws only stop the bed walking, so 2 x D is far more than the duty - but it is measured, and the earlier concern was not."
+
+[[dim]]
+sym = "TT_BED_END_SCREW_L"
+expr = "TT_BED_SCREW_STACK + TT_BED_END_ENGAGE"
+note = "18.43 - the M5 screw length that uses the whole tapped depth: 3.429 side plate + 5 spacer + 10 of thread. \u26A0 BUY 18, NOT 20. An M5 x 18 reaches 9.57 into the hole and tightens; an M5 x 20 wants 11.57 and the tap was taken to 10, so it would bottom out 1.57 short of clamping and FEEL tight while holding nothing. If the tapped holes turn out deeper than 11.6, a 20 is the better part - check one before buying sixteen."
