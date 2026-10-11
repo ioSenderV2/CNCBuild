@@ -1899,6 +1899,13 @@ provenance = "measured"
 note = "Beam face to T-slot FLOOR on the 30-6060. His calipers, 2026-10-04. The other half of the bolt-length calculation, and the figure the published section does not give: the drawing dimensions the slot's mouth (8.14) and channel width (16.51) but never its depth, which is why bolt lengths could not be computed before this was taken."
 
 [[dim]]
+sym = "TSLOT_MOUTH_W"
+value = 8.14
+provenance = "part"
+note = "8.14, the T-slot's MOUTH on the 30-6060 - the gap between the two lips, which is what you see looking at the face. It was already in the repo as prose inside TSLOT_DEPTH's note and nowhere else, so nothing could draw a slot from it. It is NOT the channel width behind the lips, which the same drawing gives as 16.51, and it is not a bolt clearance - an M8 passes the mouth with room because the lip, not the mouth, is what a T-nut bears on."
+source = "manufacturer-assets/8020-30-6060-Profile-Drawing.jpg"
+
+[[dim]]
 sym = "TNUT_BODY_T"
 value = 6
 provenance = "measured"

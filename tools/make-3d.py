@@ -987,6 +987,37 @@ def main() -> int:
                 cp_front + rw, cp_front + rw - cb_d, cb_r, axis="y", seg=10,
                 k="YX")
 
+    # ---- the T-slots on the beams' top and bottom faces ------------------
+    # Two per face, on the same two centrelines the bolt rows already use -
+    # RAIL_SLOT_INSET and one SLOT_GRID further in, so 15 and 45 across the 60.
+    # Sunk TSLOT_DEPTH to the slot floor and TSLOT_MOUTH_W across the mouth.
+    #
+    # THE MOUTH AND THE DEPTH ONLY. The lips, the undercut behind them and the
+    # corner bores are not drawn - the registry has the lip's thickness but not
+    # its reach, so a full section would be invented rather than placed. What
+    # this gives is where a slot IS, which is what a bolt column has to land in.
+    #
+    # Drawn the way the rail counterbores are, as a dark solid sunk into the
+    # face, because the model has no boolean subtraction. The pair is allowed to
+    # interpenetrate on purpose and says so in ALLOWED.
+    D_SLOT = ("T-slot on the 30-6060 - " + str(v["TSLOT_MOUTH_W"]) + " across the "
+              "mouth, " + str(v["TSLOT_DEPTH"]) + " to the floor. The lips and the "
+              "undercut behind them are not drawn")
+    mw, td = v["TSLOT_MOUTH_W"] / 2, v["TSLOT_DEPTH"]
+    slots = (v["RAIL_SLOT_INSET"], v["RAIL_SLOT_INSET"] + v["SLOT_GRID"])
+
+    for x0 in (lx0, rx0):                       # the two Y beams, frame
+        for sc in slots:
+            c = x0 + sc
+            for face, into in ((ytop, -1), (ybot, +1)):
+                box("Beam T-slot", "ybeams", HOLE, c - mw, y0, face,
+                    c + mw, y1, face + into * td, d=D_SLOT, k="")
+    for sc in slots:                            # the X beam, which rides Y
+        c = xep_back + sc
+        for face, into in ((xb_top, -1), (xb_bot, +1)):
+            box("Beam T-slot", "gantry", HOLE, xb_x0, c - mw, face,
+                xb_x1, c + mw, face + into * td, d=D_SLOT, k="Y")
+
     # ---- jog limits ------------------------------------------------------
     # HIS, 2026-10-10, and every one of them is a 5 mm standoff off a part this
     # model already places - so each limit moves if the part it is measured from
@@ -1203,6 +1234,10 @@ ALLOWED = {
     # A counterbore is a HOLE IN the rail, drawn as a solid because the model has
     # no boolean subtraction. It also passes under a bearing block wherever one
     # happens to sit over it, which is normal.
+    # A slot is a VOID IN the beam, drawn as a solid for want of boolean
+    # subtraction - the same licence the rail counterbores take.
+    frozenset({"Y beam", "Beam T-slot"}),
+    frozenset({"X beam", "Beam T-slot"}),
     frozenset({"Y rail", "Rail counterbore"}),
     frozenset({"X rail", "Rail counterbore"}),
     frozenset({"Z rail", "Rail counterbore"}),
