@@ -1114,6 +1114,12 @@ def main() -> int:
               round((zs_bot - 5) - (z_nut_mid + v["NUT_OAL"] / 2), 2), ""],
     }
 
+    # WHERE HOME IS: the back left corner, top of travel - his, 2026-10-10, and
+    # the same corner the Mega V homes to. Left is the operator's left, which is
+    # MAX machine X; back is MIN fore-aft; top is the up stop. Each one is an end
+    # of travel the model already works out, so home moves if a stop moves.
+    home = {"X": jog["X"][1], "Y": jog["Y"][0], "Z": jog["Z"][1]}
+
     groups = {
         "box": "Torsion box and tongues",
         "bolts": "M8 flange bolt heads",
@@ -1150,7 +1156,8 @@ def main() -> int:
                 .replace("__ASSUMPTIONS__", json.dumps(ASSUMPTIONS))
                 .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts]))
                 .replace("__JOG__", json.dumps(jog))
-                .replace("__TIP__", json.dumps(tip)))
+                .replace("__TIP__", json.dumps(tip))
+                .replace("__HOME__", json.dumps(home)))
     # last, and not via str.replace on the whole document: three.min.js contains
     # backslash escapes that a replacement template would eat.
     i = html.index("__THREE__")
@@ -1162,6 +1169,10 @@ def main() -> int:
         print(f"  {a:22} {b:10.2f}")
     print(f"\ntool tip at the drawn pose: X {tip[0]:.2f}  fore-aft {tip[1]:.2f}  "
           f"Z {tip[2]:.2f}")
+    print("\nhome is the back left corner at the top of travel, where the DRO "
+          "reads zero:")
+    print(f"  from the drawn pose that is X {home['X']:+.2f}  Y {home['Y']:+.2f}  "
+          f"Z {home['Z']:+.2f}")
     print("\njog limits, as an offset from the drawn pose:")
     for ax, (lo_, hi_, warn) in jog.items():
         print(f"  {ax}  {lo_:+9.2f} to {hi_:+9.2f}   travel {hi_ - lo_:8.2f}"
@@ -1398,12 +1409,6 @@ HTML = r"""<!doctype html>
  #c{position:fixed;inset:0}
  .panel{position:fixed;background:#23272dEE;border:1px solid #3a4048;border-radius:6px;padding:10px 12px}
  #ui{top:12px;left:12px;max-width:280px}
- #info{bottom:12px;left:12px;max-width:430px;font-size:11.5px;color:#aab}
- #info summary{cursor:pointer;color:#e8b64c;font-weight:600;list-style:none}
- #info summary::-webkit-details-marker{display:none}
- #info summary::before{content:'show  ';color:#8fd}
- #info[open] summary::before{content:'hide  '}
- #info .body{margin-top:8px}
  h1{font-size:14px;margin:0 0 8px}
  label{display:block;cursor:pointer;padding:1px 0}
  input{vertical-align:-2px;margin-right:6px}
@@ -1441,10 +1446,11 @@ HTML = r"""<!doctype html>
  #dro td.ax{color:#e8b64c;padding-right:10px}
  #dro td.v{text-align:right;color:#8fd}
  #dro .frame{margin-top:6px;font-size:10.5px;color:#8a929b;max-width:200px;white-space:normal}
- #help{top:12px;left:50%;transform:translateX(-50%);max-width:520px;font-size:12px}
- #help h2{font-size:12.5px;margin:0 0 6px;color:#e8b64c}
- #help b{color:#e8b64c}
- #help .close{float:right;cursor:pointer;color:#8fd}
+ #help,#about{top:12px;left:50%;transform:translateX(-50%);max-width:520px;font-size:12px}
+ #about{max-height:78vh;overflow-y:auto}
+ #help h2,#about h2{font-size:12.5px;margin:0 0 6px;color:#e8b64c}
+ #help b,#about b{color:#e8b64c}
+ #help .close,#about .close{float:right;cursor:pointer;color:#8fd}
  #help table{border-collapse:collapse}
  #help td{padding:1px 12px 1px 0;vertical-align:top}
 </style>
@@ -1453,14 +1459,14 @@ HTML = r"""<!doctype html>
 <div class="panel" id="ui"><h1>CNC assembly</h1>
 <button id="menubtn">Menu</button>
 <div id="menu" hidden></div><table id="facts" hidden></table>
-<div id="jogro"></div></div>
+<div id="jogro" hidden></div></div>
 <div class="panel" id="dro"></div>
 <div class="panel" id="help" hidden></div>
-<details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
+<div class="panel" id="about" hidden></div>
 <script>__THREE__</script>
 <script>
 const PARTS=__PARTS__, GROUPS=__GROUPS__, ASSUMPTIONS=__ASSUMPTIONS__, FACTS=__FACTS__;
-const JOG=__JOG__, TIP=__TIP__;
+const JOG=__JOG__, TIP=__TIP__, HOME=__HOME__;
 
 const scene=new THREE.Scene(); scene.background=new THREE.Color(0x1a1d21);
 const cam=new THREE.PerspectiveCamera(42,1,10,20000);
@@ -1621,22 +1627,31 @@ function applyJog(){
       '<td>'+j1(p-L[0])+' to '+e[0]+', '+j1(L[1]-p)+' to '+e[1]+say+
       '</td></tr>';
   }).join('');
-  // THE DRO IS THE TOOL TIP, not the carriage: the drawn-pose tip plus the jog.
+  // THE DRO IS THE TOOL TIP, MEASURED FROM HOME - zero in the back left corner
+  // at the top of travel, and from there X runs POSITIVE to the right while Y
+  // and Z run NEGATIVE, which is how the Mega V reads. His, 2026-10-10.
+  //
+  // X and Y are home MINUS current because both home ends are at the high end
+  // of their machine axis: left is max machine X and back is min fore-aft, and
+  // fore-aft runs forward, so moving forward has to come out negative.
   const v2=n=>(n<0?'-':'')+Math.abs(n).toFixed(2);
-  document.getElementById('dro').innerHTML='<h2>TOOL TIP</h2><table>'+
-    [['X',TIP[0]+JOGPOS.X],['Y',TIP[1]+JOGPOS.Y],['Z',TIP[2]+JOGPOS.Z]]
+  document.getElementById('dro').innerHTML='<h2>DRO</h2><table>'+
+    [['X',HOME.X-JOGPOS.X],['Y',HOME.Y-JOGPOS.Y],['Z',JOGPOS.Z-HOME.Z]]
       .map(r=>'<tr><td class="ax">'+r[0]+'</td><td class="v">'+v2(r[1])+'</td></tr>').join('')+
-    '</table><div class="frame">Machine coordinates: X across from the rear plate left end, '+
-    'Y fore-aft from the box back edge, Z up from the box top skin.</div>';
+    '</table>';
   const warn=['X','Y','Z'].filter(ax=>JOG[ax][2]).map(ax=>JOG[ax][2]);
-  document.getElementById('jogro').innerHTML=
-    '<span class="hint">TRAVEL LEFT ON EACH AXIS. Menu &rarr; Help for the keys.</span>'+
+  jogro.innerHTML=
+    '<span class="hint">TRAVEL LEFT ON EACH AXIS</span>'+
     '<table>'+rows+'</table>'+
     (warn.length?'<span class="warn">'+warn.join('<br>')+'</span>':'');
 }
 
 addEventListener('keydown',e=>{
-  if(e.key==='Home'){JOGPOS.X=JOGPOS.Y=JOGPOS.Z=0;e.preventDefault();applyJog();draw();return;}
+  // HOME GOES HOME - the back left corner at the top of travel, where the DRO
+  // reads zero. It used to return to the drawn pose, which is mid travel.
+  if(e.key==='Home'){
+    JOGPOS.X=HOME.X; JOGPOS.Y=HOME.Y; JOGPOS.Z=HOME.Z;
+    e.preventDefault(); applyJog(); draw(); return;}
   const k=KEYS[e.key]; if(!k)return;
   e.preventDefault();
   const ax=k[0], L=JOG[ax];
@@ -1690,7 +1705,8 @@ const VIEWS={iso:[-2.42,0.42],front:[Math.PI,0.06],back:[0,0.06],
 // --- one menu, instead of a row of buttons per thing -------------------
 const menu=document.getElementById('menu'), menubtn=document.getElementById('menubtn');
 const facts=document.getElementById('facts'), dro=document.getElementById('dro');
-const help=document.getElementById('help');
+const help=document.getElementById('help'), about=document.getElementById('about');
+const jogro=document.getElementById('jogro');
 
 function mrow(label,parent,cls){
   const d=document.createElement('div');
@@ -1719,18 +1735,24 @@ const vmenu=msub('View',menu);
 
 const smenu=msub('Show / hide',menu);
 mcheck('DRO',smenu,true,v=>{dro.hidden=!v;});          // ON by default - his
+mcheck('Travel',smenu,false,v=>{jogro.hidden=!v;});
 mcheck('Dimensions',smenu,false,v=>{facts.hidden=!v;});
 const pmenu=msub('Parts',smenu);
 for(const k in GROUPS)
   mcheck(GROUPS[k],pmenu,true,v=>{(byGroup[k]||[]).forEach(m=>m.visible=v);draw();});
 
-mrow('Help',menu).onclick=()=>{help.hidden=false;menu.hidden=true;};
+mrow('Help',menu).onclick=()=>{help.hidden=false;about.hidden=true;menu.hidden=true;};
+// The assumptions used to sit in a panel along the bottom of the window. They
+// are still ON THE PAGE, which is the point of them - a guess has to be visible
+// as a guess - but behind a menu row instead of taking up the window.
+mrow('How this was built',menu).onclick=()=>{about.hidden=false;help.hidden=true;menu.hidden=true;};
 
 menubtn.onclick=()=>{menu.hidden=!menu.hidden;};
 addEventListener('pointerdown',e=>{
   if(!menu.hidden&&!menu.contains(e.target)&&e.target!==menubtn) menu.hidden=true;
 },true);
-addEventListener('keydown',e=>{if(e.key==='Escape'){menu.hidden=true;help.hidden=true;}});
+addEventListener('keydown',e=>{
+  if(e.key==='Escape'){menu.hidden=true;help.hidden=true;about.hidden=true;}});
 
 help.innerHTML=
   '<span class="close">close</span><h2>Driving the model</h2><table>'+
@@ -1750,13 +1772,16 @@ help.innerHTML=
 help.querySelector('.close').onclick=()=>{help.hidden=true;};
 
 facts.innerHTML=FACTS.map(f=>'<tr><td>'+f[0]+'</td><td class="n">'+f[1]+'</td></tr>').join('');
-document.getElementById('infobody').innerHTML=
-  '<b class="w">Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
-  'Every box is placed from a registry value. <b class="w">Menu &rarr; Help</b> says what the '+
-  'mouse and the keys do.<br>'+
-  'Pose: the drawn pose is mid travel on all three axes.<br>'+
-  '<b class="w">Placements ASSUMED, not derived:</b>'+
+about.innerHTML=
+  '<span class="close">close</span><h2>How this was built</h2>'+
+  '<b>Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
+  'Every box is placed from a registry value, so a dimension that moves shows up here '+
+  'as a gap or an overlap instead of being quietly absorbed. The model opens at mid '+
+  'travel on all three axes; Home drives to the back left corner at the top of travel, '+
+  'where the DRO reads zero.'+
+  '<h2>Placements assumed, not derived</h2>'+
   '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
+about.querySelector('.close').onclick=()=>{about.hidden=true;};
 
 applyJog(); place(); resize();
 </script>
