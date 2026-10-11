@@ -563,6 +563,20 @@ def main() -> int:
             hi, fin_front + aleg, at,
             d="four bolts into pronged T-NUTS in the top skin - fitted from "
               "underneath BEFORE the skin is glued")
+        # The four small M8 FLANGE heads - 14 across and only 3 proud, which is
+        # why they suit a bracket sitting out on the apron where anything tall
+        # catches a workpiece. NOT M8_HEAD_D's plain hex, a different fastener.
+        #
+        # ⚠️ THE ALONG-LENGTH SPACING IS A NOMINAL: he has given the count and
+        # the head, not the positions, and the real pattern is the extrusion's
+        # own. Drawn evenly with equal end margins - see FIN_ANGLE_BOLT_PITCH.
+        bp = v["FIN_ANGLE_BOLT_PITCH"]
+        by = fin_front + at + (aleg - at) / 2        # centred in the free leg
+        for i in range(int(v["FIN_ANGLE_SKIN_FIX"])):
+            bx = lo + bp / 2 + i * bp
+            cyl("Fin angle bolt", "bolts", 0xC8CDD3, bx, by, at,
+                at + v["M8_FLANGE_HEAD_H"], v["M8_FLANGE_HEAD_D"] / 2,
+                d="small M8 flange head, 14 across and 3 proud, into a T-nut")
 
     # ---- the interposer, under each beam and out through the window -------
     # Four M8 into slide-in T-nuts hold each bar on, at Sheet 6's two rows
@@ -1620,6 +1634,7 @@ ALLOWED = {
     # One part drawn as two boxes, the same convention as the BF12 wing/boss.
     frozenset({"Fin angle", "Fin angle"}),
     frozenset({"Fin angle", "Front fin"}),          # it bolts to its face
+    frozenset({"Fin angle bolt", "Fin angle"}),     # the head sits on the leg
     frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
     frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers

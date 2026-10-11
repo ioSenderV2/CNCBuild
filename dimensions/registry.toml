@@ -2766,3 +2766,20 @@ note = "1203.65 - each side's outer lamination CUT AS ONE PIECE, running the box
 sym = "SIDE_LAM_PROUD_CUT"
 expr = "SIDE_TONGUE_END"
 note = "1006.35 - where the saw cut falls on each side lamination: BEHIND it the piece stands BOX_TONGUE_PROUD above the top skin as the tongue, AHEAD of it the top 60 is cut away so the piece finishes flush. \u2705 IT IS SIDE_TONGUE_END BY CONSTRUCTION - the tongue is wanted exactly where the Y beam's outboard plate is bolted to it and nowhere else, and SIDE_TONGUE_END is already where the fin caps the beam. \U0001F4CC THE CUT IS THE ONLY THING THAT CHANGES ALONG THE PIECE: thickness, height below the skin and the bolt line all run through unbroken."
+
+[[dim]]
+sym = "M8_FLANGE_HEAD_D"
+value = 14
+provenance = "measured"
+note = "14 - the SMALL M8 flange bolt's head across the flange, his 2026-10-11, the ones holding each fin angle to the top skin. \U0001F534 IT IS NOT M8_HEAD_D's 13, WHICH IS A DIFFERENT FASTENER: that one is a plain hex at 13 across and M8_HEAD_H tall at 8. These are wider and far shallower - the flange spreads the bearing and the head sits almost flush. Keep the two apart; they are both M8 and both 'the bolt head' in conversation."
+
+[[dim]]
+sym = "M8_FLANGE_HEAD_H"
+value = 3
+provenance = "measured"
+note = "3 - how proud the small M8 flange head stands, his 2026-10-11. \u2705 THAT SHALLOWNESS IS WHY THEY SUIT THE FIN ANGLE: the heads sit on the angle's horizontal leg out on the apron, where anything tall is something to catch a workpiece or a hand on. Against M8_HEAD_H's 8 for the plain hex."
+
+[[dim]]
+sym = "FIN_ANGLE_BOLT_PITCH"
+expr = "FIN_ANGLE_L / FIN_ANGLE_SKIN_FIX"
+note = "42.5 - the spacing of the four skin bolts along each fin angle. \u26A0 NOMINAL, NOT HIS: he has given the count and the head, not the positions. Drawn evenly spaced with EQUAL END MARGINS - first and last at half a pitch in, so 21.25 and 148.75 along a 170 piece. \U0001F534 THE REAL PATTERN IS THE ANGLE'S OWN, since it is a stock extrusion with holes already in it - measure them and replace this. It feeds only the picture."
