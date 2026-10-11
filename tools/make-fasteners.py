@@ -119,6 +119,29 @@ def main():
             print(f"     {r['id']:24s} engages {r['eng']:g} "
                   f"on M{r.get('size', '?')}{tail}")
 
+    # T-NUTS ARE A SEPARATE BUY AND THE SAME COUNT AS THE BOLTS. Forgetting
+    # them is a trip to the supplier, and nothing else in the repo totals them -
+    # his 2026-10-11 reminder that 102 rail bolts also means 102 T-nuts.
+    tnuts = {}
+    for r in rows:
+        if r.get("into") == "t-nut" and "size" in r:
+            tnuts[r["size"]] = tnuts.get(r["size"], 0) + r.get("count", 0)
+    if tnuts:
+        print("\n  T-nuts needed, same count as the bolts:")
+        for sz in sorted(tnuts):
+            print(f"     M{sz}: {tnuts[sz]}")
+
+    # THE BUY LIST, by size and length. The schedule is read joint by joint at
+    # the bench and size by size at the counter, and those are different sorts.
+    buy = {}
+    for r in rows:
+        if "size" in r and r.get("length") is not None:
+            buy[(r["size"], r["length"])] = (
+                buy.get((r["size"], r["length"]), 0) + r.get("count", 0))
+    print("\n  Bolts to buy:")
+    for (sz, L) in sorted(buy):
+        print(f"     M{sz} x {L:g}: {buy[(sz, L)]}")
+
     print(f"\n  {len(rows)} joints, {total_pcs} pieces")
     print(f"  🔴 {len(missing)} joints have NO LENGTH recorded")
     if nosize:
@@ -126,12 +149,23 @@ def main():
               + ", ".join(r['id'] for r in nosize))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows, missing, total_pcs), encoding="utf-8")
+    OUT.write_text(render(rows, missing, total_pcs, tnuts, buy),
+                   encoding="utf-8")
     print("\nwrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, missing, total_pcs):
+def render(rows, missing, total_pcs, tnuts, buy):
+    bl = [f"M{sz} &times; {L:g}" for (sz, L) in sorted(buy)]
+    bn = [buy[k] for k in sorted(buy)]
+    tl = [f"M{sz} T-nut" for sz in sorted(tnuts)]
+    tn = [tnuts[k] for k in sorted(tnuts)]
+    pair = []
+    for i in range(max(len(bl), len(tl))):
+        a = f"<td>{bl[i]}</td><td class=n>{bn[i]}</td>" if i < len(bl) else "<td></td><td></td>"
+        b = f"<td>{tl[i]}</td><td class=n>{tn[i]}</td>" if i < len(tl) else "<td></td><td></td>"
+        pair.append(f"<tr>{a}{b}</tr>")
+    rowspair = "".join(pair)
     tr = []
     for r in rows:
         sz = f"M{r['size']}" if "size" in r else '<b class="bad">?</b>'
@@ -173,6 +207,17 @@ inferences that read as facts.</div>
 <tr><th>Joint</th><th>Size</th><th>Off</th><th>Length</th><th>Grip</th>
 <th>Engages</th><th>If it runs long</th></tr>
 {''.join(tr)}
+</table>
+
+<h2>What to buy</h2>
+<p>🔴 <b>T-nuts are a separate line and the same count as the bolts.</b> Nothing
+else in the repo totals them, and forgetting them is a trip to the supplier.
+⚠️ These totals cover only the joints with a count recorded &mdash; the Z rails
+are a different kit and their hole count is not known yet.</p>
+
+<table style="width:auto">
+<tr><th>Bolts</th><th class=n>Off</th><th>T-nuts</th><th class=n>Off</th></tr>
+{rowspair}
 </table>
 </body></html>
 """

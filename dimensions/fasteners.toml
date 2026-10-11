@@ -21,14 +21,22 @@
 
 [[joint]]
 id = "rail-to-beam"
-what = "Linear rails to the beams"
+what = "Linear rails to the X, Y1 and Y2 beams"
 size = 5
-count = 68
-per = "17 per rail, four rails"
+count = 102
+per = "17 per rail, two rails per beam, three beams"
 length = 16
 into = "t-nut"
-source = "assembly.md: 'M5 x 16 into T-nuts, 17 per rail at 60 mm'"
-note = "o6 through with a o9.5 counterbore. An M6 head will not enter a 9.5 counterbore."
+source = "his count 2026-10-11; length from assembly.md 'M5 x 16 into T-nuts, 17 per rail at 60 mm'"
+note = "o6 through with a o9.5 counterbore. An M6 head will not enter a 9.5 counterbore. COUNT CORRECTED FROM 68: this file had four rails, but README says ONE RAIL PER PROFILE and a beam is two stacked 30-6060, so it is six rails across the three beams, not four."
+
+[[joint]]
+id = "z-rail-to-carriage"
+what = "Z rails to the X carriage plate"
+size = 5
+into = "t-nut"
+source = "README: 'Z is a 400 mm kit from a different supplier - do not quote one kit's dimension for the other'"
+note = "COUNT AND LENGTH BOTH UNKNOWN. Separated from rail-to-beam on 2026-10-11 because it is a DIFFERENT KIT: a 400 mm rail has fewer holes than the 17 at 60 that the 1 m rails carry, and the repo already warns against quoting one kit's figures for the other. Count the holes on the rail in hand."
 
 [[joint]]
 id = "front-strip"
