@@ -2447,7 +2447,7 @@ note = "1204.38 - the clear span between the two side plates' INSIDE faces, whic
 [[dim]]
 sym = "TT_BED_SPACER"
 expr = "(TT_BED_CLEAR - TT_BED_L) / 2"
-note = "5.29 - THE GAP AT EACH END OF THE BED, not a part to obtain. \U0001F534 IT WAS WORDED AS A SPACER THICKNESS AND THAT IS HOW A 5.29 FLAT BAR GETS ORDERED, which does not exist - his point, 2026-10-11. \u2705 TAKEN UP BY A WASHER STACK ON EACH BOLT, his call the same day: the gap is split two ways by the bed sitting roughly central, and the standoff only has to keep the bolt from drawing the side plate inward as it tightens. So it needs AXIAL STIFFNESS UNDER THE HEAD and nothing else - no fit, no thickness to hit, and whatever the stack comes to is what the bed floats by. The bed carries no hold-down duty either: it beds flat on the top skin and gravity holds it, so these bolts only stop it walking. \u26A0 NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
+note = "5.29 - THE GAP AT EACH END OF THE BED, not a part to obtain. \U0001F534 IT WAS WORDED AS A SPACER THICKNESS AND THAT IS HOW A 5.29 FLAT BAR GETS ORDERED, which does not exist - his point, 2026-10-11. \u2705 TAKEN UP BY ONE 5 mm M4 ALUMINIUM SPACER PER BOLT - his, 2026-10-11, and he can buy them, which is what settled it over the washer stack considered first. The standoff only has to keep the bolt from drawing the side plate inward as it tightens, so it needs AXIAL STIFFNESS UNDER THE HEAD and nothing else - no fit and no thickness to hit. TT_BED_FLOAT is what the 5 leaves. The bed carries no hold-down duty either: it beds flat on the top skin and gravity holds it, so these bolts only stop it walking. \u26A0 NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
 
 [[dim]]
 sym = "TT_BED_FORE_AFT"
@@ -2497,3 +2497,20 @@ note = "250 - his breakdown of the plate's depth, summed: 2 x 16 end flats, 7 x 
 sym = "TT_BED_FORE_AFT_CHECK"
 expr = "BEAM_LEN - TT_BED_FORE_AFT"
 note = "0 - the slack the bed has fore-aft, and there is none. The clear run from the rear plate's front face to the front fin's back face is BEAM_LEN; four 250 plates are 1000; the difference is zero, so the bed is captured front to back. \u2705 THIS SYMBOL EXISTS BECAUSE THE PLACEMENT WAS BRIEFLY RECORDED AS A FREE CHOICE and it is not one - his correction 2026-10-11. If either number ever moves this goes non-zero and says so."
+
+[[dim]]
+sym = "TT_BED_END_BOLT"
+value = 4
+provenance = "part"
+note = "M4 - the thread in the tee track sections' ends, which the side-plate bolts run into. His, 2026-10-11, given when he found the spacer. \u26A0 IT IS THE SMALLEST FASTENER HOLDING THE BED and that is fine: these bolts carry no hold-down load, only the bed walking - see TT_BED_SPACER. The side plate's clearance holes are the only thing to size from it."
+
+[[dim]]
+sym = "TT_BED_SPACER_PART"
+value = 5
+provenance = "part"
+note = "5 - the M4 aluminium spacer actually bought, one per bolt. His, 2026-10-11. \U0001F534 THE PART IS 5 AND THE GAP IS TT_BED_SPACER'S 5.29 - they are different numbers on purpose, and the difference is TT_BED_FLOAT. Do not 'correct' either to match the other."
+
+[[dim]]
+sym = "TT_BED_FLOAT"
+expr = "TT_BED_SPACER - TT_BED_SPACER_PART"
+note = "0.29 per end, 0.58 across the bed - how far the bed can shift before a spacer touches. \u2705 IT DOES NOT MATTER AND THAT IS THE POINT OF RECORDING IT: the aluminium is not a reference surface, the MDF above it is surfaced in place by the machine, and nothing is laid out from the bed's position. A number small enough to ignore is still worth naming, so that nobody later reads the 0.29 as an error to chase."
