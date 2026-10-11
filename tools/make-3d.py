@@ -483,6 +483,16 @@ def main() -> int:
     cyl("Collet nut", "z", 0x2E2E2E, zp_cx, sp_axis,
         nut_end, nut_end + v["SPINDLE_NUT_L"], v["SPINDLE_NUT_D"] / 2)
 
+    # The tool, for the view only. It hangs TOOL_L out of the collet nut's face
+    # on the spindle axis, and ITS TIP IS WHAT THE DRO READS - the one point on
+    # the machine an operator actually cares about. Stickout, not a cutter's
+    # overall length: how much of a real tool is in the collet is not something
+    # the model can know.
+    tool_tip = nut_end - v["TOOL_L"]
+    cyl("Tool", "z", 0xE8B64C, zp_cx, sp_axis, tool_tip, nut_end,
+        v["TOOL_D"] / 2, seg=16,
+        d="a stand-in cutter, 1/4in by 2in of stickout - NOT a machine dimension")
+
     # Two clamps, CLAMP_CENTRES apart about the Z plate's mid-height, each
     # CLAMP_AXIAL tall and CLAMP_W across, reaching from the plate's face past
     # the bore so the barrel passes through them.
@@ -1114,6 +1124,10 @@ def main() -> int:
         "gantry": "X gantry",
         "z": "Z carriage and spindle",
     }
+    # Where the tool tip sits at the drawn pose, in machine coordinates. The DRO
+    # adds the jog offsets to it, which is all a DRO is here.
+    tip = [round(zp_cx, 3), round(sp_axis, 3), round(tool_tip, 3)]
+
     facts = [
         ("Machine width", W), ("Box fore-aft", D), ("Box thickness", v["BOX_THK"]),
         ("Y beam underside", ybot), ("Y beam top", ytop),
@@ -1135,7 +1149,8 @@ def main() -> int:
                 .replace("__GROUPS__", json.dumps(groups))
                 .replace("__ASSUMPTIONS__", json.dumps(ASSUMPTIONS))
                 .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts]))
-                .replace("__JOG__", json.dumps(jog)))
+                .replace("__JOG__", json.dumps(jog))
+                .replace("__TIP__", json.dumps(tip)))
     # last, and not via str.replace on the whole document: three.min.js contains
     # backslash escapes that a replacement template would eat.
     i = html.index("__THREE__")
@@ -1145,6 +1160,8 @@ def main() -> int:
     print(f"wrote {OUT.relative_to(ROOT)} - {len(P)} parts, {kb:.0f} KB, self-contained")
     for a, b in facts:
         print(f"  {a:22} {b:10.2f}")
+    print(f"\ntool tip at the drawn pose: X {tip[0]:.2f}  fore-aft {tip[1]:.2f}  "
+          f"Z {tip[2]:.2f}")
     print("\njog limits, as an offset from the drawn pose:")
     for ax, (lo_, hi_, warn) in jog.items():
         print(f"  {ax}  {lo_:+9.2f} to {hi_:+9.2f}   travel {hi_ - lo_:8.2f}"
@@ -1407,18 +1424,43 @@ HTML = r"""<!doctype html>
  #jogro .warn{color:#e8b64c}
  #jogro table{margin:2px 0 0}
  #jogro td.v{text-align:right;color:#8fd;padding-right:8px}
+ button{background:#2f353d;color:#cde;border:1px solid #454c55;border-radius:4px;
+   padding:3px 10px;cursor:pointer;font:11.5px inherit}
+ button:hover{background:#39414a}
+ #menu{margin-top:6px;border:1px solid #3a4048;border-radius:5px;background:#1d2126;
+   padding:3px 0;min-width:190px}
+ .mrow{padding:3px 10px;cursor:pointer;white-space:nowrap}
+ .mrow:hover{background:#2f353d}
+ .mrow.sub::after{content:' \25B8';float:right;color:#8a929b}
+ .mrow.sub.open::after{content:' \25BE'}
+ .mbody{border-left:2px solid #3a4048;margin:0 0 2px 10px}
+ .mrow label,label.mrow{display:block;cursor:pointer}
+ #dro{top:12px;right:12px;min-width:150px}
+ #dro h2{font-size:11px;margin:0 0 4px;color:#e8b64c;letter-spacing:.06em}
+ #dro table{font:15px/1.35 "Consolas",ui-monospace,monospace;border-collapse:collapse}
+ #dro td.ax{color:#e8b64c;padding-right:10px}
+ #dro td.v{text-align:right;color:#8fd}
+ #dro .frame{margin-top:6px;font-size:10.5px;color:#8a929b;max-width:200px;white-space:normal}
+ #help{top:12px;left:50%;transform:translateX(-50%);max-width:520px;font-size:12px}
+ #help h2{font-size:12.5px;margin:0 0 6px;color:#e8b64c}
+ #help b{color:#e8b64c}
+ #help .close{float:right;cursor:pointer;color:#8fd}
+ #help table{border-collapse:collapse}
+ #help td{padding:1px 12px 1px 0;vertical-align:top}
 </style>
 <canvas id="c"></canvas>
 <div id="tip"></div>
 <div class="panel" id="ui"><h1>CNC assembly</h1>
-<div id="btnrow"><button id="partsbtn">Show parts</button><button id="statsbtn">Show dimensions</button></div>
-<div id="toggles" hidden></div><table id="facts" hidden></table>
+<button id="menubtn">Menu</button>
+<div id="menu" hidden></div><table id="facts" hidden></table>
 <div id="jogro"></div></div>
+<div class="panel" id="dro"></div>
+<div class="panel" id="help" hidden></div>
 <details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
 <script>__THREE__</script>
 <script>
 const PARTS=__PARTS__, GROUPS=__GROUPS__, ASSUMPTIONS=__ASSUMPTIONS__, FACTS=__FACTS__;
-const JOG=__JOG__;
+const JOG=__JOG__, TIP=__TIP__;
 
 const scene=new THREE.Scene(); scene.background=new THREE.Color(0x1a1d21);
 const cam=new THREE.PerspectiveCamera(42,1,10,20000);
@@ -1525,7 +1567,9 @@ function place(){
                    tgt.z+dist*Math.cos(el)*Math.cos(az));
   cam.lookAt(tgt);
 }
+const onPanel=e=>!!(e.target.closest&&e.target.closest('.panel'));
 addEventListener('pointerdown',e=>{
+  if(onPanel(e))return;              // a click on the UI is not a drag on the model
   if(e.button!==0&&e.button!==1)return;
   if(e.button===1)e.preventDefault();          // middle-click autoscroll
   down=[e.clientX,e.clientY]; mode=e.button===0?'pan':'orbit';});
@@ -1577,12 +1621,16 @@ function applyJog(){
       '<td>'+j1(p-L[0])+' to '+e[0]+', '+j1(L[1]-p)+' to '+e[1]+say+
       '</td></tr>';
   }).join('');
+  // THE DRO IS THE TOOL TIP, not the carriage: the drawn-pose tip plus the jog.
+  const v2=n=>(n<0?'-':'')+Math.abs(n).toFixed(2);
+  document.getElementById('dro').innerHTML='<h2>TOOL TIP</h2><table>'+
+    [['X',TIP[0]+JOGPOS.X],['Y',TIP[1]+JOGPOS.Y],['Z',TIP[2]+JOGPOS.Z]]
+      .map(r=>'<tr><td class="ax">'+r[0]+'</td><td class="v">'+v2(r[1])+'</td></tr>').join('')+
+    '</table><div class="frame">Machine coordinates: X across from the rear plate left end, '+
+    'Y fore-aft from the box back edge, Z up from the box top skin.</div>';
   const warn=['X','Y','Z'].filter(ax=>JOG[ax][2]).map(ax=>JOG[ax][2]);
   document.getElementById('jogro').innerHTML=
-    '<span class="hint">JOG: left/right = X, AS THE OPERATOR SEES THEM standing at the '+
-    'front - so left is max X, and the opening view looks from the front too. '+
-    'Up/down = fore-aft, PgUp/PgDn = Z. '+
-    '10 mm a press, Shift 1 mm, Ctrl 50 mm. Home recentres all three.</span>'+
+    '<span class="hint">TRAVEL LEFT ON EACH AXIS. Menu &rarr; Help for the keys.</span>'+
     '<table>'+rows+'</table>'+
     (warn.length?'<span class="warn">'+warn.join('<br>')+'</span>':'');
 }
@@ -1610,7 +1658,7 @@ function sizeOf(p){
          ' mm (X x fore-aft x Z)';
 }
 addEventListener('pointermove',e=>{
-  if(down){tip.style.display='none';return;}
+  if(down||onPanel(e)){tip.style.display='none';return;}
   ray.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
   // THE RAYCASTER DOES NOT TEST .visible, so a part in a hidden group is still
   // hit - take the first intersection that is actually on the screen.
@@ -1633,40 +1681,82 @@ addEventListener('resize',resize);
 // azimuth is the old one swung round behind-to-front: cos(az) negative puts the
 // camera forward of the machine, sin(az) negative puts it on the MIN X side,
 // which is the operator's right when they are standing at the front.
+// LEFT AND RIGHT ARE AS THE OPERATOR SEES THEM, standing at the front - so the
+// Left view looks from the MAX X side. They were the other way round, which was
+// the same mix-up the jog keys had.
 const VIEWS={iso:[-2.42,0.42],front:[Math.PI,0.06],back:[0,0.06],
-             left:[-Math.PI/2,0.06],right:[Math.PI/2,0.06],top:[0,1.44]};
-const vb=document.createElement('div'); vb.style.margin='2px 0 8px';
-for(const k in VIEWS){
-  const b=document.createElement('button'); b.textContent=k;
-  b.style.cssText='margin:2px 4px 0 0;background:#2f353d;color:#cde;border:1px solid #454c55;'+
-                  'border-radius:4px;padding:2px 7px;cursor:pointer;font:11px inherit';
-  b.onclick=()=>{[az,el]=VIEWS[k];tgt.set(0,0,0);place();draw();};
-  vb.appendChild(b);
+             left:[Math.PI/2,0.06],right:[-Math.PI/2,0.06],top:[0,1.44]};
+
+// --- one menu, instead of a row of buttons per thing -------------------
+const menu=document.getElementById('menu'), menubtn=document.getElementById('menubtn');
+const facts=document.getElementById('facts'), dro=document.getElementById('dro');
+const help=document.getElementById('help');
+
+function mrow(label,parent,cls){
+  const d=document.createElement('div');
+  d.className='mrow'+(cls?' '+cls:''); d.textContent=label;
+  parent.appendChild(d); return d;
 }
-document.getElementById('ui').insertBefore(vb,document.getElementById('btnrow'));
-const t=document.getElementById('toggles');
-for(const k in GROUPS){
-  const l=document.createElement('label');
-  l.innerHTML='<input type="checkbox" checked>'+GROUPS[k];
-  l.firstChild.onchange=e=>{(byGroup[k]||[]).forEach(m=>m.visible=e.target.checked);draw();};
-  t.appendChild(l);
+function msub(label,parent){
+  const head=mrow(label,parent,'sub');
+  const body=document.createElement('div'); body.className='mbody'; body.hidden=true;
+  parent.insertBefore(body,head.nextSibling);
+  head.onclick=()=>{body.hidden=!body.hidden;head.classList.toggle('open',!body.hidden);};
+  return body;
 }
-document.getElementById('facts').innerHTML=
-  FACTS.map(f=>'<tr><td>'+f[0]+'</td><td class="n">'+f[1]+'</td></tr>').join('');
+function mcheck(label,parent,on,fn){
+  const l=document.createElement('label'); l.className='mrow';
+  l.innerHTML='<input type="checkbox"'+(on?' checked':'')+'>'+label;
+  l.firstChild.onchange=e=>fn(e.target.checked);
+  parent.appendChild(l); return l.firstChild;
+}
+
+const vmenu=msub('View',menu);
+[['ISO','iso'],['Left','left'],['Right','right'],
+ ['Front','front'],['Back','back'],['Top','top']].forEach(v=>{
+  mrow(v[0],vmenu).onclick=()=>{[az,el]=VIEWS[v[1]];tgt.set(0,0,0);place();draw();};
+});
+
+const smenu=msub('Show / hide',menu);
+mcheck('DRO',smenu,true,v=>{dro.hidden=!v;});          // ON by default - his
+mcheck('Dimensions',smenu,false,v=>{facts.hidden=!v;});
+const pmenu=msub('Parts',smenu);
+for(const k in GROUPS)
+  mcheck(GROUPS[k],pmenu,true,v=>{(byGroup[k]||[]).forEach(m=>m.visible=v);draw();});
+
+mrow('Help',menu).onclick=()=>{help.hidden=false;menu.hidden=true;};
+
+menubtn.onclick=()=>{menu.hidden=!menu.hidden;};
+addEventListener('pointerdown',e=>{
+  if(!menu.hidden&&!menu.contains(e.target)&&e.target!==menubtn) menu.hidden=true;
+},true);
+addEventListener('keydown',e=>{if(e.key==='Escape'){menu.hidden=true;help.hidden=true;}});
+
+help.innerHTML=
+  '<span class="close">close</span><h2>Driving the model</h2><table>'+
+  '<tr><td><b>Left drag</b></td><td>pans</td></tr>'+
+  '<tr><td><b>Middle drag</b></td><td>orbits</td></tr>'+
+  '<tr><td><b>Scroll</b></td><td>zooms</td></tr>'+
+  '<tr><td><b>Hover</b></td><td>names the part under the cursor and gives its size</td></tr>'+
+  '<tr><td><b>Left / Right</b></td><td>jog the X carriage - as the operator sees them, '+
+  'standing at the front, so Left runs toward max X</td></tr>'+
+  '<tr><td><b>Up / Down</b></td><td>jog the gantry back and forward</td></tr>'+
+  '<tr><td><b>PgUp / PgDn</b></td><td>jog the Z axis up and down</td></tr>'+
+  '<tr><td><b>Shift / Ctrl</b></td><td>1 mm and 50 mm a press, instead of 10</td></tr>'+
+  '<tr><td><b>Home</b></td><td>all three axes back to the drawn pose</td></tr>'+
+  '<tr><td><b>Esc</b></td><td>shuts this and the menu</td></tr></table>'+
+  '<p>Each axis stops 5 mm short of the part it would otherwise hit, and the panel on '+
+  'the left says how far is left to run. The DRO is the <b>tool tip</b>.</p>';
+help.querySelector('.close').onclick=()=>{help.hidden=true;};
+
+facts.innerHTML=FACTS.map(f=>'<tr><td>'+f[0]+'</td><td class="n">'+f[1]+'</td></tr>').join('');
 document.getElementById('infobody').innerHTML=
   '<b class="w">Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
-  'Every box is placed from a registry value. <b class="w">LEFT DRAG PANS, MIDDLE DRAG ORBITS</b>, scroll zooms, a view button recentres, and <b class="w">HOVER NAMES THE PART</b> under the cursor. '+
-  '<b class="w">THE CURSOR KEYS JOG THE CARRIAGES</b> - left/right the X carriage, up/down the gantry fore-aft, PgUp/PgDn the Z axis, Home back to the drawn pose. Each axis stops 5 mm short of the part it would hit.<br>'+
-  'Pose: the drawn pose is mid travel on all three axes.<br><b class="w">Placements ASSUMED, not derived:</b>'+
+  'Every box is placed from a registry value. <b class="w">Menu &rarr; Help</b> says what the '+
+  'mouse and the keys do.<br>'+
+  'Pose: the drawn pose is mid travel on all three axes.<br>'+
+  '<b class="w">Placements ASSUMED, not derived:</b>'+
   '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
-
-const BTN='margin:8px 6px 0 0;background:#2f353d;color:#cde;border:1px solid #454c55;'+
-          'border-radius:4px;padding:3px 9px;cursor:pointer;font:11.5px inherit';
-const sb=document.getElementById('statsbtn'), ft2=document.getElementById('facts');
-const pb=document.getElementById('partsbtn'), tg=document.getElementById('toggles');
-sb.style.cssText=BTN; pb.style.cssText=BTN;
-sb.onclick=()=>{ft2.hidden=!ft2.hidden;sb.textContent=ft2.hidden?'Show dimensions':'Hide dimensions';};
-pb.onclick=()=>{tg.hidden=!tg.hidden;pb.textContent=tg.hidden?'Show parts':'Hide parts';};
 
 applyJog(); place(); resize();
 </script>

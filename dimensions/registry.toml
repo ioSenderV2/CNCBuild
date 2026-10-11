@@ -1374,6 +1374,22 @@ note = "9.7 mm into the nut housing, 1.94 x D in aluminium. It was 5.7 before th
 
 # ------------------------------------------------- the Z top stop block, Sheet 3c
 
+# ------------------------------------------------- the tool, for the 3D view only
+
+[[dim]]
+sym = "TOOL_D"
+value = 6.35
+provenance = "nominal"
+note = "1/4in, a stand-in cutter. IT IS NOT A MACHINE DIMENSION - nothing is built to it. It exists so the 3D view can show a tool and read out where its tip is, which is the point on the machine an operator actually cares about. His, 2026-10-10."
+source = "his, for the model"
+
+[[dim]]
+sym = "TOOL_L"
+value = 50.8
+provenance = "nominal"
+note = "2in of tool standing out of the collet nut, the same stand-in as TOOL_D. DRAWN FROM THE NUT FACE DOWN, so it is stickout and not the cutter's overall length - how much of a real tool is gripped is not something the model can know."
+source = "his, for the model"
+
 [[dim]]
 sym = "Z_STOP_W"
 value = 50
