@@ -1056,8 +1056,9 @@ def main() -> int:
     #
     #   Y   back: the X end plates' back edge, 5 from the rear plate's front face
     #       front: their front edge, 5 from the front fin's back face
-    #   X   left: the carriage plate's left edge, 5 from the Y1 rail's face
-    #       right: its right edge, 5 from the Y2 rail's face
+    #   X   either way: the Z PLATE's edge, 5 from the inside face of the X end
+    #       plate at that end. The Z plate and not the carriage plate because it
+    #       is the wider of the two, Z_PLATE_W against XEP_W.
     #   Z   down: the nut's lower end, 5 above BF12's upper face
     #       up: THE Z TOP STOP BLOCK IS NOT IN THE MODEL. Sheet 3c dimensions it
     #       - 50 x 25.4 x 45 off 1in 6061, stop face at X 310 up the carriage
@@ -1067,8 +1068,8 @@ def main() -> int:
     jog = {
         "Y": [round(v["T_REAR_PLATE"] + 5 - xep_back, 2),
               round((y1 - 5) - xep_front, 2), ""],
-        "X": [round((lx0 + v["EXT_W"] + rw + 5) - cp_x0, 2),
-              round((rx0 - rw - 5) - cp_x1, 2), ""],
+        "X": [round((xb_x0 + 5) - (zp_cx - v["Z_PLATE_W"] / 2), 2),
+              round((xb_x1 - 5) - (zp_cx + v["Z_PLATE_W"] / 2), 2), ""],
         "Z": [round((bf12_z + v["T_BF12_BLOCK"] + 5) - (z_nut_mid - v["NUT_OAL"] / 2), 2),
               0.0, "UP STOP NOT MODELLED - the Z top stop block has no registry "
                    "symbols, so the up limit is the drawn pose"],
@@ -1509,10 +1510,14 @@ addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(span*0.25,Math.min
 // BEHIND, fore-aft is +Y toward the operator, Z is up. The limits come from the
 // generator, each one a 5 mm standoff off a part the model already places.
 const JOGPOS={Y:0,X:0,Z:0};
-const KEYS={ArrowLeft:['X',-1],ArrowRight:['X',+1],
+// LEFT AND RIGHT ARE NOT THE SIGN OF MACHINE X. X is measured across the
+// machine FROM BEHIND, so on screen +X runs to the LEFT - his, 2026-10-10.
+const KEYS={ArrowLeft:['X',+1],ArrowRight:['X',-1],
             ArrowUp:['Y',-1],ArrowDown:['Y',+1],
             PageUp:['Z',+1],PageDown:['Z',-1]};
-const ENDS={Y:['back','front'],X:['left','right'],Z:['down','up']};
+// Each pair is [what the low end of the offset is called, what the high end is].
+// X reads reversed for the same reason the keys do.
+const ENDS={Y:['back','front'],X:['right','left'],Z:['down','up']};
 const j1=n=>(n<0?'':'+')+(Math.round(n*10)/10).toFixed(1);
 
 function applyJog(){
@@ -1534,7 +1539,9 @@ function applyJog(){
   }).join('');
   const warn=['X','Y','Z'].filter(ax=>JOG[ax][2]).map(ax=>JOG[ax][2]);
   document.getElementById('jogro').innerHTML=
-    '<span class="hint">JOG: left/right = X, up/down = fore-aft, PgUp/PgDn = Z. '+
+    '<span class="hint">JOG: left/right = X, AS THE OPERATOR SEES THEM standing at the '+
+    'front - so left is max X, and the opening view, which is from behind, shows it '+
+    'mirrored. Up/down = fore-aft, PgUp/PgDn = Z. '+
     '10 mm a press, Shift 1 mm, Ctrl 50 mm. Home recentres all three.</span>'+
     '<table>'+rows+'</table>'+
     (warn.length?'<span class="warn">'+warn.join('<br>')+'</span>':'');
