@@ -200,6 +200,15 @@ def load() -> list[Doc]:
         for p in sorted(base.rglob("*.md")):
             if p.name in GENERATED:
                 continue
+            # 🔴 THE ARCHIVE IS NOT CURRENT AND MUST NOT BE INDEXED AS IF IT
+            # WERE. machine/archive/ holds prose retired on 2026-10-11 because
+            # its dimensions had drifted from the registry. Harvesting its open
+            # markers into STATUS.md would resurrect settled questions, and
+            # listing its headings in INDEX.md would send a reader to numbers
+            # the archive's own README warns are stale. Skipping it is the
+            # whole point of having moved the files.
+            if "archive" in p.parts:
+                continue
             docs.append(parse(p))
     return docs
 
