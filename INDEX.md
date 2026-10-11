@@ -263,7 +263,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Every axis gets one - X, Y1, Y2 and Z](machine/y-beam-support.md#every-axis-gets-one---x-y1-y2-and-z)
   - [Why it was worth reopening a built axis](machine/y-beam-support.md#why-it-was-worth-reopening-a-built-axis)
   - [How it mounts, and why that needs a bar](machine/y-beam-support.md#how-it-mounts-and-why-that-needs-a-bar)
-    - [The 30 mm protrusion is what sets everything else](machine/y-beam-support.md#the-30-mm-protrusion-is-what-sets-everything-else)
+    - [The protrusion is not chosen - the screw sets it](machine/y-beam-support.md#the-protrusion-is-not-chosen---the-screw-sets-it)
     - [The ball nut clears the bar by 5 mm](machine/y-beam-support.md#the-ball-nut-clears-the-bar-by-5-mm)
     - [The clash that shaped the earlier design, and why it is now moot](machine/y-beam-support.md#the-clash-that-shaped-the-earlier-design-and-why-it-is-now-moot)
     - [The casting's hole pattern, measured 2026-10-02](machine/y-beam-support.md#the-castings-hole-pattern-measured-2026-10-02)

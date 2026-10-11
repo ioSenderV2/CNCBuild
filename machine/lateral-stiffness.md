@@ -537,9 +537,11 @@ because every X on Sheet 7 now hangs off it.
 | **Chosen** | **1210.73** | Flush with the outboard plates. Buys 3.175 of edge distance over the minimum and squares the corner |
 | **Maximum** | **~1212** | Past the outboard plates' outer faces the **rear plate** becomes the proud member at the corner - the direction the tongue's face bearing cannot take |
 
-📌 **"1200 mm" was a round number, not this calculation, and it has been retired** - every file
-and every sheet now carries **1210.73**. The registry derives it: REAR_PLATE_L = Y_BEAM_GAP +
-2 × Y_BEAM_ASSY_W.
+📌 **"1200 mm" was a round number, not this calculation, and it has been retired.** The registry
+derives the envelope as MACHINE_OUTER_W = Y_BEAM_GAP + 2 × Y_BEAM_ASSY_W, **1211.238**. 📌 **It
+used to be called REAR_PLATE_L and that name is gone** - it is the machine's outer width, not the
+back plate, which is bought at 1210.47 and placed by its left edge on the Y1 extrusion's outboard
+face. The plate therefore sits inside this ceiling rather than defining it.
 
 ✅ **A 48" sheet (1219.2 mm) covers it** with 7.5 mm of trim - but that is the entire margin, and
 there is now no slack to give back, because the length is a reference. **60" removes the question** and

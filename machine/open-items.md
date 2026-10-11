@@ -105,25 +105,24 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1210.73 mm of rear bottom-edge bearing.** Decide before the skins are cut.
 
-## ⚠️ From the 2026-10-08 order - the back plate's length
+## ✅ From the 2026-10-08 order - the back plate's length
 
-- 🔴 **What Sheet 7's X 0 measures from, now that the bought plate is shorter than the flush
-  envelope.** The side plates came in at **10 gauge (3.429)** rather than the nominal 1/8" (3.175),
-  so the envelope that runs the back plate flush with their outer faces grew 0.508 to **1211.238**.
-  The back plate was bought at **47 21/32" = 1210.47**, which was the nearest 1/32" under the old
-  1210.73. It is now **0.77 short of flush**.
-  **Why that is not cosmetic:** Sheet 7's sixteen beam bores *and* its eight torsion-box stations are
-  **absolute from the plate's left edge**, so a plate 0.77 short puts the **Y2 beam station out by
-  the whole 0.77** and the bolt rows 0.385 off centre. A short side plate is margin; a short back
-  plate is error, because this plate's length is what sets where the second beam goes.
-  **The two ways out**, neither picked: re-reference Sheet 7's X to the **Y1 extrusion face**, after
-  which the plate's length feeds nothing; or keep the plate edge as X 0, let REAR_PLATE_L become the
-  delivered length, and accept the plate sitting **0.385 recessed** at each corner.
-  ✅ **Decided 2026-10-08 to measure before choosing** - the plate's req date is 15 Oct. Until then
-  `REAR_PLATE_L` is marked open in the registry, `REAR_PLATE_L_ORDERED` records the bought length,
-  and **1210.73 is left standing in the prose deliberately** rather than swept to a number that is
-  also not the part. **Nothing on Sheet 7 gets drilled first** - that is checklist row 3 in the shop
-  pack.
+- ✅ **What Sheet 7's X 0 measures from. Closed 2026-10-10: the Y1 extrusion's outboard face.**
+  The side plates came in at **10 gauge (3.429)** rather than the nominal 1/8" (3.175), so the
+  envelope that runs the back plate flush with their outer faces grew 0.508 to **1211.238**, and
+  the plate was bought at **47 21/32" = 1210.47** - **0.77 short of flush**. That was not cosmetic
+  while Sheet 7's sixteen beam bores and its eight torsion-box stations were absolute from the
+  plate's left edge: a plate 0.77 short put the **Y2 beam station out by the whole 0.77**.
+  **His call:** the plate's left edge goes on the **Y1 extrusion's outboard face**, side plate not
+  included, so the side plate stands proud of it there and the far end falls where the bought
+  length puts it. **The plate's length now feeds nothing.** Sheet 7's near-end holes come out on a
+  round 15 and 45 and 7 and 53, the Y2 station mirrors about the **beam spacing** at 1204.38
+  rather than about the plate, and the eight torsion-box bolts start at **50** on the same 150
+  pitch the other bolt-on plates use instead of being centred on the plate.
+  **The envelope figure kept its meaning and lost the plate's name:** it is `MACHINE_OUTER_W` now,
+  the width `BOX_W` takes and the ceiling lateral-stiffness.md names. `REAR_PLATE_L` is retired.
+  ⚠️ **The Y2-end holes are provisional** - measure the built beam spacing before drilling that
+  end.
 
 ## From the 2026-10-08 datasheet pass
 

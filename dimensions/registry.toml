@@ -158,7 +158,7 @@ source = "spec sheet supplied with the X/Y kit, read 2026-10-03"
 sym = "T_X_ENDPLATE"
 value = 12.19
 provenance = "measured"
-note = "1/2in 6061, HIS MICROMETER in several places 2026-10-07: 12.19, not the 12.7 nominal this was carried at. That is 0.48in stock sold as half inch, and 0.61 per plate - so 1.22 across the machine, which is why REAR_PLATE_L moved. The entry had said CALIPER IT because two other nominals had already been wrong; this is the third."
+note = "1/2in 6061, HIS MICROMETER in several places 2026-10-07: 12.19, not the 12.7 nominal this was carried at. That is 0.48in stock sold as half inch, and 0.61 per plate - so 1.22 across the machine, which is why MACHINE_OUTER_W moved - it was called REAR_PLATE_L then. The entry had said CALIPER IT because two other nominals had already been wrong; this is the third."
 source = "machine/end-plates-risers-and-spindle.md"
 
 [[dim]]
@@ -189,7 +189,7 @@ source = "measured 2026-10-02"
 sym = "T_SIDE_PLATE"
 value = 3.429
 provenance = "part"
-note = "\U0001f534 ORDERED 10 GAUGE, NOT 1/8in - 3.429, and the sales order is the authority. The line reads CSH 10GA(.135) x 11-7/8in x 39-5/16in CR, two pieces, cold-rolled carbon sheet, and .135in x 25.4 is 3.429. \u2705 THAT CLOSES THE OPEN: this symbol carried a nominal 1/8in (3.175) with a standing question about the listing also saying 11 gauge (3.04), and a 3.36 had been floated and withdrawn as a guess. None of the three was right and the question is now answered by a part that has been bought rather than by a better reading of a listing. \u26a0 IT FEEDS 17 SYMBOLS and the 0.254 it moved is not cosmetic in two of them: REAR_PLATE_L is the flush-envelope length and it grows by 0.508 to 1211.238, while the back plate was ORDERED at 47 21/32in = 1210.47 - so the plate no longer reaches flush and that gap is open. FIN_PROUD comes down to 16.571. Still caliper the delivered sheet: 10 gauge sheet is a gauge, and the gauge is the nominal."
+note = "\U0001f534 ORDERED 10 GAUGE, NOT 1/8in - 3.429, and the sales order is the authority. The line reads CSH 10GA(.135) x 11-7/8in x 39-5/16in CR, two pieces, cold-rolled carbon sheet, and .135in x 25.4 is 3.429. \u2705 THAT CLOSES THE OPEN: this symbol carried a nominal 1/8in (3.175) with a standing question about the listing also saying 11 gauge (3.04), and a 3.36 had been floated and withdrawn as a guess. None of the three was right and the question is now answered by a part that has been bought rather than by a better reading of a listing. \u26a0 IT FEEDS 17 SYMBOLS and the 0.254 it moved is not cosmetic in two of them: MACHINE_OUTER_W is the flush-envelope width - REAR_PLATE_L as it was called then - and it grows by 0.508 to 1211.238, while the back plate was ORDERED at 47 21/32in = 1210.47, so the plate does not reach flush. \u2705 THAT GAP IS CLOSED, 2026-10-10: the plate is placed by its left edge on the Y1 extrusion's outboard face and its length feeds nothing, so the shortfall costs a recessed corner and no hole. FIN_PROUD comes down to 16.571. Still caliper the delivered sheet: 10 gauge sheet is a gauge, and the gauge is the nominal."
 source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
@@ -809,14 +809,13 @@ note = "One Y beam as assembled, across the machine: the extrusion plus its outb
 sym = "REAR_PLATE_L_ORDERED"
 value = 1210.47
 provenance = "part"
-note = "1210.47, the length the back plate was actually BOUGHT at - 47 21/32in, sheared, one piece. It was ordered to the nearest 1/32in under the flush envelope as REAR_PLATE_L then stood (1210.73 at a 1/8in side plate), which cost 0.26. The side plate then turned out to be 10 gauge rather than 1/8in, the envelope grew 0.508, and the shortfall is now 0.77. See REAR_PLATE_L."
+note = "1210.47, the length the back plate was actually BOUGHT at - 47 21/32in, sheared, one piece, and \u2705 SINCE 2026-10-10 IT IS THE ONLY LENGTH THE PLATE HAS. Nothing is derived from it and it derives nothing: the plate is placed by its left edge on the Y1 extrusion's outboard face and its far end falls where this puts it. It was ordered to the nearest 1/32in under the flush envelope as REAR_PLATE_L then stood (1210.73 at a 1/8in side plate), which cost 0.26. The side plate then turned out to be 10 gauge rather than 1/8in, the envelope grew 0.508, and the shortfall is now 0.77. See REAR_PLATE_L."
 source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
-sym = "REAR_PLATE_L"
-expr = "Y_BEAM_GAP + (2 * Y_BEAM_ASSY_W)"
-note = "\u26a0 OPEN 2026-10-08 - THIS IS THE FLUSH ENVELOPE AND IT IS NO LONGER THE PLATE. 1211.238: the plate running FLUSH with the side plates' outer faces, which is exactly the ~1212 MAXIMUM lateral-stiffness.md names - past it the rear plate becomes the proud member at the corner. Settled 2026-10-03 and NO LONGER A WINDOW; supersedes the round 1200 and the tilde'd 1205. \U0001f534 THE DELIVERED PLATE IS REAR_PLATE_L_ORDERED = 1210.47, so it falls 0.77 SHORT of flush and the two cannot both be true. That matters because Sheet 7's A9-A16 are ABSOLUTE FROM THE PLATE'S LEFT EDGE, and so are its eight torsion-box stations through XBOX_X_FIRST: if the stations keep coming off this envelope figure while the plate is 0.77 shorter, the Y2 beam station is out by the whole 0.77 and the bolt rows sit 0.385 off centre. The alternatives are to reference Sheet 7's X off the Y1 EXTRUSION FACE instead of the plate edge, or to keep the plate edge and accept the plate sitting 0.385 recessed at each corner. HIS CALL, NOT MINE. BOX_W rides on whichever it is."
-
+sym = "MACHINE_OUTER_W"
+expr = "Y_BEAM_GAP + 2 * Y_BEAM_ASSY_W"
+note = "1211.238 - the machine across its OUTER FACES, side plate to side plate. \U0001f534 IT WAS CALLED REAR_PLATE_L AND THAT NAME IS RETIRED - his, 2026-10-10. It was never the rear plate once the plate was bought: it is the flush ENVELOPE, and the delivered piece is REAR_PLATE_L_ORDERED at 1210.47, 0.77 short of it. Carrying the envelope under the plate's name is what let Sheet 7 hang the Y2 beam station off a sheared edge. The plate is now placed by its LEFT EDGE on the Y1 extrusion's outboard face and its length feeds nothing. \u2705 WHAT THE NUMBER STILL MEANS: it is the width BOX_W takes, and it is the ceiling lateral-stiffness.md names - past the outboard plates' outer faces the rear plate becomes the proud member at the corner, the one direction the side tongue's face bearing cannot take. The delivered plate sits inside that, so the ceiling is no longer in play."
 [[dim]]
 sym = "Y1_EXT_FACE_X"
 expr = "T_SIDE_PLATE"
@@ -975,7 +974,7 @@ source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
 sym = "BOX_W"
-expr = "REAR_PLATE_L"
+expr = "MACHINE_OUTER_W"
 note = "Box top skin across the machine, measured INSIDE the two side tongues - 1210.73, the same as the rear plate because both are the machine's outer envelope. \u26a0 THIS INVERTED on 2026-10-03 and the earlier reading is wrong: it was briefly recorded as 1204.38, the space INSIDE the side plates, on a reading that the box tucked between them. It does not. The side and back plates sit FLAT ON THE TOP SKIN and the tongues stand proud OUTBOARD of them, so the tongue's inside face is the plate's outer face. There is no channel and nothing is captured on two sides."
 
 [[dim]]

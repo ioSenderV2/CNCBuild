@@ -109,7 +109,7 @@ def main() -> int:
                   "p": [min(xs), min(ya, yb), min(zs)],
                   "q": [max(xs), max(ya, yb), max(zs)]})
 
-    W = v["REAR_PLATE_L"]            # 1211.75, the machine's outer width
+    W = v["MACHINE_OUTER_W"]         # 1211.238, side plate face to side plate face
     D = v["BOX_FORE_AFT"]            # 1156.35
     TT = v["T_BOX_TONGUE"]           # 19
     SKIN = v["T_BB_SKIN"]            # 19
@@ -125,7 +125,7 @@ def main() -> int:
     # ---- the plates that stand on the skin -------------------------------
     # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side
     # plate's - his, 2026-10-10 - and it is drawn at the length it was BOUGHT,
-    # REAR_PLATE_L_ORDERED, rather than at the flush envelope REAR_PLATE_L. The
+    # REAR_PLATE_L_ORDERED, rather than at the flush envelope MACHINE_OUTER_W. The
     # side plate at each end is outboard of it, and the far end runs past the
     # machine's outer width by whatever the delivered piece gives.
     rpx = v["Y1_EXT_FACE_X"]
