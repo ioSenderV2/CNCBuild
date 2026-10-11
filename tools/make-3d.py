@@ -295,15 +295,21 @@ def main() -> int:
     # -T_BOX_TONGUE, the 44 wall (25 tongue + 19 web) sits squarely on the 44
     # shoulder, and the tenon occupies from the web's inner face inboard. No
     # number was chosen to make that happen.
-    # 🔴 THE FRONT POSTS ASSUME A FRONT WALL AT THE BOX'S FRONT EDGE, symmetric
-    # with the sides, so each front post reaches to D - web + ledge = 1181.35 -
-    # 25 past the skin's front edge, exactly as it reaches 25 past the side edge
-    # at x = -25. THAT MAY BE WRONG. torsion-box.md says the doubled wall runs
-    # the whole perimeter; VALUES.md says THE FRONT HAS NO TONGUE and the skin
-    # simply runs BOX_FRONT_OVERHANG = 140 past the fins with L-brackets tying
-    # it down. The two do not settle where the front wall is, or whether the
-    # front posts stand at the skin's front edge or back at the fin line. The
-    # model draws no front tongue either. See BOX_FRONT_WALL_AT in the registry.
+    # ✅ THE FRONT WALL AND THE TWO FRONT POSTS STAND AT THE BOX'S FRONT EDGE
+    # AND MOVE WITH IT - his, 2026-10-11, closing BOX_FRONT_WALL_AT. Each front
+    # post therefore reaches D - web + ledge, 25 past the skin's front edge,
+    # exactly as it reaches 25 past the side edge at x = -25. Everything below
+    # is written off D, so the posts follow the front face for free - which
+    # matters because the apron depth is a REMAINDER now, so the front edge
+    # moves whenever the box is resized. It moved 53.65 forward the same day.
+    #
+    # 📌 It also keeps the front tenons in a real corner, snug against both
+    # perimeter walls - the property TENON_CORNER's note leans on.
+    #
+    # ⚠️ The model still draws no FRONT TONGUE, only the back and side ones.
+    # VALUES.md on BOX_FRONT_OVERHANG says the front has none: the box runs
+    # past the fins and four L-brackets per fin tie it down. The front WALL is
+    # here; a front tongue standing 60 proud is not, and that is on purpose.
     ledge = v["T_BOX_LEDGE"]
     tc, tb = v["TENON_CORNER"], v["TENON_BACK_DEPTH"]
     post_top = -SKIN - 1.0           # 1 shy of the top skin's underside
