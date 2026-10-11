@@ -2511,6 +2511,23 @@ expr = "BEAM_LEN - TT_BED_FORE_AFT"
 note = "0 - the slack the bed has fore-aft, and there is none. The clear run from the rear plate's front face to the front fin's back face is BEAM_LEN; four 250 plates are 1000; the difference is zero, so the bed is captured front to back. \u2705 THIS SYMBOL EXISTS BECAUSE THE PLACEMENT WAS BRIEFLY RECORDED AS A FREE CHOICE and it is not one - his correction 2026-10-11. If either number ever moves this goes non-zero and says so."
 
 [[dim]]
+sym = "MDF_LAYER_T"
+value = 25
+provenance = "part"
+note = "25 - one sheet of the MDF stack over the aluminium. \U0001F534 ULTRA LITE MDF, about a third lighter than the ordinary board - his choice 2026-10-11, and the weight is the reason: the stack covers a square metre and it sits on top of everything the posts carry. TWO SHEETS, see MDF_LAYERS. It replaces the Mega V's 9.5 sheet plus two 19s, which is what machine/spoilboard.md's stack table still describes."
+
+[[dim]]
+sym = "MDF_LAYERS"
+value = 2
+provenance = "part"
+note = "Two sheets of MDF_LAYER_T over the tee track, the upper one sacrificial. His, 2026-10-11."
+
+[[dim]]
+sym = "SPOIL_SURFACE"
+expr = "TT_BED_T + (MDF_LAYERS * MDF_LAYER_T)"
+note = "66 - a FRESH work surface above the box's top skin: 16 of aluminium and two 25 sheets. ⚠ machine/spoilboard.md's Z envelope runs on 67.5, so every clearance in that table is 1.5 out until it is redone on this stack. It is the right direction for the sweep clearances and the wrong one for reach, and the reach has 20.8 mm to give: the tool tip floor is 45.2. \U0001F4CC IT ONLY EVER GOES DOWN - the top sheet is sacrificial and the machine skims it."
+
+[[dim]]
 sym = "TT_BED_END_BOLT"
 value = 5
 provenance = "measured"

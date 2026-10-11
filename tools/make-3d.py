@@ -491,6 +491,30 @@ def main() -> int:
             print(f"tee track plate {i}: flats and slots sum to {y - py0}, "
                   f"not {bed_pw}", file=sys.stderr)
             return 2
+    # ---- the MDF spoilboard over the aluminium ---------------------------
+    # TWO SHEETS OF 25 ULTRA LITE MDF, his 2026-10-11, which is what makes the
+    # bed a work surface the tool can actually reach: the tip floor is 45.2 above
+    # the box's top skin and a fresh surface here is SPOIL_SURFACE = 66, so the
+    # machine can skim its own board. The upper sheet is the sacrificial one.
+    #
+    # THE FOOTPRINT IS THE ALUMINIUM'S, exactly - same x, same fore-aft. That is
+    # not a shortcut: the bed is already TT_BED_SPACER short of each side plate,
+    # which is the relief gap machine/spoilboard.md asks the stack to keep so the
+    # tongue bolt heads at Y 30 have somewhere to live. Matching it invents no
+    # new edge.
+    mdf_t = v["MDF_LAYER_T"]
+    bed_y1 = bed_y0 + int(v["TT_BED_PLATES"]) * bed_pw
+    for i in range(int(v["MDF_LAYERS"])):
+        z0 = v["TT_BED_T"] + i * mdf_t
+        top = i == int(v["MDF_LAYERS"]) - 1
+        box("MDF sacrificial sheet" if top else "MDF sheet", "spoil", 0xC2A878,
+            bed_x0, bed_y0, z0, bed_x1, bed_y1, z0 + mdf_t,
+            d=f"{mdf_t:g} ultra lite MDF" + (
+               f" - the sacrificial sheet, surfaced in place. A fresh surface is "
+               f"{v['SPOIL_SURFACE']:g} above the box's top skin and the tool tip "
+               f"floor is 45.2, so the machine can skim it"
+               if top else " - the lower sheet, held down by tee nuts in the track"))
+
     # THE TT_BED_SPACER GAP AT EACH END IS NOT DRAWN, and that is right rather
     # than missing: it is taken up by a WASHER STACK ON EACH BOLT - his, 2026-10-11
     # - so there is no part with a footprint here to draw. It was briefly modelled
@@ -1579,6 +1603,7 @@ def main() -> int:
         "grid": "Torsion box: ribs and perimeter webs",
         "posts": "The three posts, top 10in",
         "bed": "Tee track bed",
+        "spoil": "MDF spoilboard (hide to see the track)",
         "bolts": "M8 flange bolt heads",
         "motion": "Rails and bearing blocks",
         "plates": "Rear, side and fin plates",
