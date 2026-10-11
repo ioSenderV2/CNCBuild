@@ -2760,7 +2760,7 @@ note = "203.65 - each side cap's run, from the side tongue's front end forward t
 [[dim]]
 sym = "SIDE_LAM_L"
 expr = "SIDE_TONGUE_L + BOX_SIDE_CAP_L"
-note = "1203.65 - each side's outer lamination CUT AS ONE PIECE, running the box's full depth from SIDE_TONGUE_START to the front edge. \u2705 HIS BUILD CALL 2026-10-11: cut it full depth and TONGUE_FULL_H tall, then saw away the proud portion forward of SIDE_TONGUE_END where it is not wanted. \U0001F534 SO THE SIDE TONGUE AND THE SIDE CAP ARE ONE PART, NOT TWO - they were drawn and reasoned about as separate pieces, and this removes the butt joint at 1006.35 on each side. The step from 60 proud to flush becomes a SAW CUT rather than a joint. \u2705 IT IS THE BETTER PART BREAKDOWN: a continuous lamination along the Y beam's whole bearing line, one part per side instead of two, and no end grain at the one place the beam is carried. \u26A0 THE STOCK IS BIGGER: each side now wants a piece 1203.65 x 204 rather than two smaller ones, so it must be nested before the sheet is cut. The back and front still lap it - the back tongue caps its back end and the front cap laps its front end, which is the convention torsion-box.md already sets."
+note = "1203.65 - each side's outer lamination CUT AS ONE PIECE, running the box's full depth from SIDE_TONGUE_START to the front edge, where the back and front laminations lap its end grain. \U0001F534 IT WAS BRIEFLY 1235 ON 2026-10-11, when he had the SIDE lap the BACK - his preference - and it was reverted the same day for money: at 1235 the side no longer fits beside the top skin on a 4 x 8 sheet, which costs a whole sheet of 25 mm at $245. \u26A0 THE REVERSAL ALSO CAUSED A CLASH that reverting removes: running the side back to the box's back face put it through the rear plate's right end, which overhangs the box by 2.66 - and SIDE_TONGUE_START's 6.35 exists precisely to clear that plate. \u2705 HIS BUILD CALL 2026-10-11: cut it full depth and TONGUE_FULL_H tall, then saw away the proud portion forward of SIDE_TONGUE_END where it is not wanted. \U0001F534 SO THE SIDE TONGUE AND THE SIDE CAP ARE ONE PART, NOT TWO - they were drawn and reasoned about as separate pieces, and this removes the butt joint at 1006.35 on each side. The step from 60 proud to flush becomes a SAW CUT rather than a joint. \u2705 IT IS THE BETTER PART BREAKDOWN: a continuous lamination along the Y beam's whole bearing line, one part per side instead of two, and no end grain at the one place the beam is carried. \u26A0 THE STOCK IS BIGGER: each side now wants a piece 1203.65 x 204 rather than two smaller ones, so it must be nested before the sheet is cut. The back and front still lap it - the back tongue caps its back end and the front cap laps its front end, which is the convention torsion-box.md already sets."
 
 [[dim]]
 sym = "SIDE_LAM_PROUD_CUT"
@@ -2852,4 +2852,29 @@ note = "648.62 - the inboard face of the second block beside the back centre ten
 [[dim]]
 sym = "BACK_TENON_BLOCK_L"
 expr = "BOX_BAY_FORE_AFT"
-note = "219.2 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. \u2705 THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_BACK_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. \u26A0 HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end."
+note = "219.2 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. \U0001F4CC THEY COME FROM THE SCRAP BIN and are not on the cut list - see BACK_TENON_BLOCK_T_MAX. \u2705 THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_BACK_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. \u26A0 HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end."
+
+[[dim]]
+sym = "BACK_LAM_L"
+expr = "BOX_W + 2 * T_BOX_TONGUE"
+note = "1261.238 - the back outer lamination, running the FULL OUTER WIDTH and lapping both side laminations' end grain. \U0001F534 CUT AS TWO PIECES, NOT ONE - see BACK_LAM_PIECE_L. \u26A0 THE CORNER WAS BRIEFLY REVERSED on 2026-10-11, the side lapping the back, which he preferred - and it was reverted the same day because it costs a sheet of 25 mm at $245: a 1235 side will not sit beside the top skin on a 4 x 8 where a 1203.65 one will."
+
+[[dim]]
+sym = "FRONT_CAP_L"
+expr = "BOX_W + 2 * T_BOX_TONGUE"
+note = "1261.238 - the front cap, lapping the two side laminations and running the full outer width, the same as the back. \U0001F534 CUT AS TWO PIECES, NOT ONE - see FRONT_CAP_PIECE_L. torsion-box.md's reason for the front being the continuous one stands: it is what resolves the front-corner convergence, where the fin, the side lamination and the apron all arrive together."
+
+[[dim]]
+sym = "BACK_LAM_PIECE_L"
+expr = "BACK_LAM_L / 2"
+note = "630.619 - each of the TWO pieces the back lamination is cut from, butted end to end at the middle. \u2705 HIS CALL 2026-10-11, AND IT IS WHAT PUTS THE WHOLE 25 mm ON ONE SHEET: at 1261.238 the back will not sit beside the top skin on a 4 x 8, where a 630.619 piece will, twice over. One sheet instead of two, $245. \u2705 THE JOINT IS SOUND BECAUSE THE WALL IS TWO LAMINATIONS: the inner web behind it is ONE continuous 1211.238 piece, so the butt is staggered against solid material - which is what laminating a wall is for. \u2705 AND IT LANDS BETWEEN BOLTS: mid-length is box X 605.619, with the rear plate's nearest bolt columns at 530.4 and 680.4, so 74.7 and 75.3 clear of each. \U0001F4CC IT ALSO LANDS OVER THE BACK CENTRE POST, whose shoulder spans 562.6 to 648.6 - so both halves are directly supported AT the joint rather than the joint floating between supports. That is the better of the two places to put it, not the worse."
+
+[[dim]]
+sym = "FRONT_CAP_PIECE_L"
+expr = "FRONT_CAP_L / 2"
+note = "630.619 - each of the TWO pieces the front cap is cut from. \u2705 SPLITTING THE BACK ALONE DOES NOT SAVE THE SHEET and that was tested: with the back in two and the front still 1261.238, the front is the piece that will not sit beside the skin and the second sheet is still needed. BOTH have to be split, which is why the front is too. \u26A0 IT IS THE EASIER OF THE TWO TO ACCEPT: the front cap carries no tongue, no bolt line and nothing bears through it - it caps end grain and keeps the apron clear."
+
+[[dim]]
+sym = "BACK_TENON_BLOCK_T_MAX"
+expr = "(BOX_BAY_W - POST_W) / 2"
+note = "66.72 - the most a back tenon block can be thick, which is the clear space each side of the tenon in its bay. \u2705 THE THICKNESS IS FREE ANYWHERE UNDER THIS and that is the point: the blocks are CUT FROM HIS SCRAP BIN, not off a sheet - his call 2026-10-11 - because they are location pieces inside the box and nothing about them is structural. They carry no vertical load, all of it is on the post shoulder. \U0001F534 IT IS WHAT SAVED THE THIRD SHEET: the two blocks were the ONLY parts on a second sheet of 19 mm, 1% used, a $245 board for 0.044 m2 of plywood. Cutting them at 25 off the other sheet was offered and his answer was better - the scrap bin costs nothing and constrains nothing. \u26A0 THE HEIGHT IS NOT FREE: they must be BOX_RIB_H tall like a rib, so both skins glue to them."

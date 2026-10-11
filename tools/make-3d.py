@@ -406,6 +406,19 @@ def main() -> int:
     # tongue floating 6 above it. A formula that reached for the BOTTOM skin
     # through the TOP skin's symbol only worked while the two were equal.
     tz0, tz1 = -v["BOX_THK"], v["BOX_TONGUE_PROUD"]
+    # THE BACK AND FRONT LAP THE SIDES, which is the file's original corner.
+    # 📌 IT WAS REVERSED FOR ONE COMMIT on 2026-10-11 - his preference, the
+    # side lapping the back - and reverted the same day for money: a 1235 side
+    # will not sit beside the top skin on a 4 x 8 where a 1203.65 one will, and
+    # that is a whole sheet of 25 mm at $245. The reversal also drove the side
+    # through the rear plate's right end, which overhangs the box by 2.66;
+    # SIDE_TONGUE_START's 6.35 exists to clear that plate.
+    #
+    # 🔴 THE BACK AND FRONT ARE EACH CUT IN TWO PIECES, butted at mid-length.
+    # Not drawn as two here - a butt joint removes no envelope - but see
+    # BACK_LAM_PIECE_L, which also records why the joint is sound: the inner
+    # web behind it is continuous, and the joint lands over the back centre
+    # post, so both halves are supported AT it.
     box("Back tongue", "box", 0xA07B16, -TT, -TT, tz0, W + TT, 0, tz1)
     for x0 in (-TT, W):
         box("Side tongue", "box", 0xA07B16,

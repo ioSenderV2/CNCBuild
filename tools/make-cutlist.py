@@ -69,10 +69,12 @@ def parts(v):
         # part sawn off forward of SIDE_LAM_PROUD_CUT - so it is ordered at the
         # TALL height even though most of its length finishes flush.
         ("Side lamination", v["SIDE_LAM_L"], v["TONGUE_FULL_H"], 2, t_out),
-        # The back and front run the full OUTER width: they lap the side pieces'
-        # end grain, so they cover the box plus both side laminations.
-        ("Back lamination", W + 2 * t_out, v["TONGUE_FULL_H"], 1, t_out),
-        ("Front cap", W + 2 * t_out, v["BOX_FRONT_CAP_H"], 1, t_out),
+        # 🔴 THE BACK AND FRONT ARE EACH CUT IN TWO - his call 2026-10-11, and
+        # it is what puts the whole 25 mm on ONE sheet instead of two. At full
+        # length neither will sit beside the top skin on a 4 x 8; at half they
+        # both will. Splitting only one of them does not do it.
+        ("Back lamination half", v["BACK_LAM_PIECE_L"], v["TONGUE_FULL_H"], 2, t_out),
+        ("Front cap half", v["FRONT_CAP_PIECE_L"], v["BOX_FRONT_CAP_H"], 2, t_out),
 
         # --- the inner webs, between the skins ------------------------------
         ("Web, back and front", W, h_cav, 2, web),
@@ -81,33 +83,42 @@ def parts(v):
         # --- the egg crate ---------------------------------------------------
         ("Rib, fore-aft", D - 2 * web, h_cav, int(v["BOX_RIBS_FORE_AFT"]), rib),
         ("Rib, across", W - 2 * web, h_cav, int(v["BOX_RIBS_ACROSS"]), rib),
-        ("Back tenon block", v["BACK_TENON_BLOCK_L"], h_cav, 2, rib),
+        # 🔴 THE TWO BACK TENON BLOCKS ARE NOT HERE ON PURPOSE - they come from
+        # his scrap bin, 2026-10-11. They were the ONLY parts on a second sheet
+        # of 19 mm, 1% used: a $245 board for 0.044 m2 of location blocking that
+        # carries no load and whose thickness is free up to
+        # BACK_TENON_BLOCK_T_MAX. Leaving them on the list bought nothing and
+        # cost a sheet.
     ]
 
 
 def pack(pieces, sw, sl):
-    """Shelf-pack onto sheets. Returns (placements, failure).
+    """Guillotine-pack onto sheets. Returns (placements, failure).
 
     A placement is (sheet, x, y, w, h, name), x along the sheet's LENGTH and y
     across its WIDTH, both from the trimmed corner. Returning placements rather
     than a count is what lets the nesting be DRAWN - a count can be believed or
     not, a picture can be checked.
 
-    🔴 IT IS AN UPPER BOUND, NOT AN OPTIMUM. Shelf packing lays parts in rows and
-    never backfills, so a real nest beats it. That is the right error to make
-    here: a list that says three sheets and needs two wastes money, one that says
-    two and needs three stops the build.
+    🔴 IT WAS SHELF PACKING AND SHELF PACKING GOT A REAL ANSWER WRONG. Shelves
+    run the full width of the sheet, so the skin - 1210 deep on a 1216 sheet -
+    consumed a whole shelf and everything after it went to a second sheet. But
+    the skin only uses 1211 of the shelf's 2435 LENGTH, and the 1222 x 1216
+    region beside it holds six wall pieces stacked. The tool said two sheets of
+    25 mm where one does, on a sheet costing $245.
+
+    So: FREE RECTANGLES, split guillotine-style after each placement. Still not
+    optimal - it never merges free rectangles back together - but it sees the
+    space beside a tall part, which shelves cannot.
     """
     usable_w, usable_l = sw - 2 * EDGE_TRIM, sl - 2 * EDGE_TRIM
     flat = []
     for name, a, b, qty, _t in pieces:
         for _ in range(qty):
             flat.append((name, max(a, b), min(a, b)))
-    # SORT BY THE SHORT SIDE, DESCENDING - this is first-fit-decreasing-height
-    # and the sort key is the whole algorithm. Sorting by the LONG side instead
-    # cost a whole sheet of 25 mm: it laid the thin laminations down first and
-    # then had no depth left for the 1210-deep skin.
-    flat.sort(key=lambda p: (-p[2], -p[1]))
+    # Biggest first by area: a guillotine packer wants the awkward parts placed
+    # while the sheet is still whole.
+    flat.sort(key=lambda p: -(p[1] * p[2]))
 
     for name, lng, shrt in flat:
         # A piece must fit some way round on a bare sheet at all. REPORT THE
@@ -119,34 +130,33 @@ def pack(pieces, sw, sl):
                        max(lng - usable_w, shrt - usable_l))
             return None, f"{name}, over by {over:.2f}"
 
-    # FIRST FIT ACROSS ALL OPEN SHEETS, not next-fit on the current one. The
-    # difference is not cosmetic: the skin's row is 1210 deep and only 1211 of
-    # its 2435 length is used, so a 204-deep lamination drops into the space
-    # beside it - but only if earlier sheets stay open. Next-fit abandoned that
-    # row the moment a piece too long for it opened a new sheet, and left 1.2 m
-    # of usable row empty in the drawing.
     out = []
-    sheets = [{"rows": [], "depth": 0.0}]   # rows: [y0, depth, x_cursor]
+    sheets = [[(0.0, 0.0, usable_l, usable_w)]]      # free rects per sheet
     for name, lng, shrt in flat:
-        placed = False
-        for idx, sheet in enumerate(sheets):
-            for row in sheet["rows"]:
-                if shrt <= row[1] and row[2] + lng <= usable_l:
-                    out.append((idx, row[2], row[0], lng, shrt, name))
-                    row[2] += lng + KERF
-                    placed = True
-                    break
-            if placed:
-                break
-            if sheet["depth"] + shrt <= usable_w:
-                out.append((idx, 0.0, sheet["depth"], lng, shrt, name))
-                sheet["rows"].append([sheet["depth"], shrt, lng + KERF])
-                sheet["depth"] += shrt + KERF
-                placed = True
-                break
-        if not placed:
-            sheets.append({"rows": [[0.0, shrt, lng + KERF]], "depth": shrt + KERF})
-            out.append((len(sheets) - 1, 0.0, 0.0, lng, shrt, name))
+        best = None                                  # (sheet, rect idx, w, h)
+        for si, free in enumerate(sheets):
+            for ri, (fx, fy, fw, fh) in enumerate(free):
+                for w, h in ((lng, shrt), (shrt, lng)):
+                    if w <= fw + 1e-9 and h <= fh + 1e-9:
+                        # SHORTEST LEFTOVER SIDE: prefer the rect that leaves
+                        # the least awkward offcut, not the first that fits.
+                        waste = min(fw - w, fh - h)
+                        if best is None or waste < best[0]:
+                            best = (waste, si, ri, w, h)
+        if best is None:
+            sheets.append([(0.0, 0.0, usable_l, usable_w)])
+            si, ri = len(sheets) - 1, 0
+            w, h = (lng, shrt) if lng <= usable_l else (shrt, lng)
+        else:
+            _waste, si, ri, w, h = best
+        fx, fy, fw, fh = sheets[si].pop(ri)
+        out.append((si, fx, fy, w, h, name))
+        # Guillotine split: the strip to the right of the piece, and the strip
+        # above the whole rect. Kerf comes off both new rects.
+        if fw - w - KERF > 0:
+            sheets[si].append((fx + w + KERF, fy, fw - w - KERF, h))
+        if fh - h - KERF > 0:
+            sheets[si].append((fx, fy + h + KERF, fw, fh - h - KERF))
     return out, None
 
 
@@ -239,7 +249,7 @@ def main():
         print()
 
     print(f"SHEETS NEEDED - kerf {KERF:g}, edge trim {EDGE_TRIM:g} "
-          f"(shelf-packed, an UPPER bound)\n")
+          f"(guillotine-packed, an UPPER bound)\n")
     summary, nests = [], []
     for label, sw, sl in SHEETS:
         print(f"  {label} ({sw:g} x {sl:g})")
@@ -317,10 +327,10 @@ from the same sheet.</div>
 {''.join(th)}</table>
 
 <h2>Sheets</h2>
-<p>Shelf-packed with a <b>{KERF:g} mm</b> kerf and <b>{EDGE_TRIM:g} mm</b> off
+<p>Guillotine-packed with a <b>{KERF:g} mm</b> kerf and <b>{EDGE_TRIM:g} mm</b> off
 each factory edge &mdash; a Festool track saw on Baltic birch, which is all that
-gets removed. <b>The counts are an upper bound</b>: parts are laid in rows and
-never backfilled, so a real nest does better.</p>
+gets removed. <b>The counts are an upper bound</b>: offcuts are never merged
+back together, so a careful nest can still do better.</p>
 <table><tr><th>Sheet</th><th>Thickness</th><th>Needs</th></tr>
 {''.join(sh)}</table>
 
@@ -329,6 +339,14 @@ never backfilled, so a real nest does better.</p>
 <b>{EDGE_TRIM:g} mm</b> off each factory edge; everything sits inside it.
 Offcut is whatever stays white.</p>
 {''.join(ns)}
+
+<h2>Not on this list</h2>
+<p><b>The two blocks beside the back centre tenon.</b> They are location pieces
+inside the box, carry no load, and their thickness is free &mdash; so they come
+out of the scrap bin rather than off a sheet. They must be <b>{v['BOX_RIB_H']:.0f}
+tall</b> like a rib so both skins glue to them, and no thicker than
+<b>{v['BACK_TENON_BLOCK_T_MAX']:.1f}</b>, which is the clear space each side of
+the tenon.</p>
 
 <h2>Notches</h2>
 <p>Egg crate, continuous both ways, half-depth notches at every crossing. Notch
