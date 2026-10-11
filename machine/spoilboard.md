@@ -269,7 +269,7 @@ in plan** - it is not a vertical lever, so the bolt height does not touch it.
 ## It is in the 3D model
 
 The four plates and the two end spacers are drawn as the **Tee track bed** group in
-[`drawings/model-3d.html`](drawings/model-3d.html), 16 thick, z 0 to 16 on the top skin, and the
+[`drawings/Interactive_Model.html`](drawings/Interactive_Model.html), 16 thick, z 0 to 16 on the top skin, and the
 group toggles off like any other assembly. **The end gaps are deliberately empty** - what fills them
 is one 5 mm spacer per bolt, which has no footprint across the bed, and the model briefly drew a
 5.29 × 1000 bar there that does not exist.

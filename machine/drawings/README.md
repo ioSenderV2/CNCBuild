@@ -16,7 +16,7 @@ make deliberately rather than drift into.
 | File | What it is | Made by |
 |---|---|---|
 | [`shop-pack.html`](shop-pack.html) | One sheet per metal plate, for the **machining trip** | hand-authored |
-| [`model-3d.html`](model-3d.html) | The whole machine as solids, with an interference check and an envelope sweep | `tools/make-3d.py` |
+| [`Interactive_Model.html`](Interactive_Model.html) | The whole machine as solids, with an interference check and an envelope sweep | `tools/make-3d.py` |
 | [`box-cutlist.html`](box-cutlist.html) | The **torsion box** cut list and its sheet count | `tools/make-cutlist.py` |
 | [`fasteners.html`](fasteners.html) | Every bolted joint: size, count, grip stack, **length and engagement** | `tools/make-fasteners.py` |
 
