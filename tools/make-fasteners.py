@@ -48,6 +48,58 @@ LONG_IS = {
 }
 
 
+# THE SECOND VIEW: BY WHAT YOU ARE BUILDING, not by what you are buying - his
+# list, 2026-10-11, and this is the order he gave it in. The buy list answers
+# "what do I order"; this answers "what do I need in front of me to assemble
+# ONE thing", which is the question you have at the bench with a sub-assembly
+# on the mat.
+#
+# A joint names its own share of each group in `groups`, as [name, count]
+# pairs, because a joint usually spans two sides - the fourteen side plate
+# bolts are seven on Y1 and seven on Y2. 🔴 THE PAIRS DO NOT HAVE TO SUM TO THE
+# JOINT'S COUNT. What is left over is reported as unassigned, so a joint that
+# belongs partly to something he has not named stays VISIBLE rather than being
+# forced into the nearest group - which is how a wrong assignment would get
+# into a shop sheet and be read as settled.
+GROUPS = [
+    "Interposer/stepper assembly/BF12 for X",
+    "Interposer/stepper assembly/BF12 for Y1",
+    "Interposer/stepper assembly/BF12 for Y2",
+    "X inside joiner plate",
+    "Y1 inside joiner plate",
+    "Y2 inside joiner plate",
+    "Y1 Side Plate",
+    "Y2 Side Plate",
+    "Backplate",
+    "Y1 Front fin",
+    "Y2 Front fin",
+    "Left X endplate",
+    "Right X endplate",
+    "X carriage plate",
+    "Z plate",
+]
+
+
+def by_group(rows):
+    """{group: [(row, count), ...]}, plus what each joint left unassigned."""
+    out = {g: [] for g in GROUPS}
+    loose = []
+    for r in rows:
+        n = r.get("count", 0)
+        placed = 0
+        for g, c in r.get("groups", []):
+            if g not in out:
+                out.setdefault(g, [])     # an unknown name must still show up
+            out[g].append((r, c))
+            placed += c
+        if placed > n:
+            print(f"  \U0001F534 {r['id']}: groups sum to {placed}, "
+                  f"more than its count of {n}", file=sys.stderr)
+        if placed < n:
+            loose.append((r, n - placed))
+    return out, loose
+
+
 def grip_of(j, v):
     """The stack a bolt crosses before it meets thread, from registry symbols."""
     syms = j.get("grip")
@@ -195,6 +247,19 @@ def main():
         for item in sorted(buy[sz], key=lambda i: (not i.startswith("bolt"), i)):
             print(f"      {item:24s} {buy[sz][item]:4d}")
 
+    groups, loose = by_group(rows)
+    print("\n  BY FUNCTION GROUP - what to have in front of you for one assembly")
+    for g in [x for x in GROUPS if groups.get(x)] + \
+             [x for x in groups if x not in GROUPS]:
+        print(f"\n   --- {g} ---")
+        for r, c in groups[g]:
+            L = f"M{r['size']} x {r['length']:g}" if r.get("length") else "?"
+            print(f"      {L:14s} {c:>4}   {r['what']}")
+    if loose:
+        print("\n  ⚠ NOT IN ANY GROUP - these have no home in the list yet:")
+        for r, c in loose:
+            print(f"      {r['id']:24s} {c:>4} of {r.get('count','?')}")
+
     print(f"\n  {len(rows)} joints, {total_pcs} pieces")
     print(f"  🔴 {len(missing)} joints have NO LENGTH recorded")
     if nosize:
@@ -202,13 +267,42 @@ def main():
               + ", ".join(r['id'] for r in nosize))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows, missing, total_pcs, buy),
+    OUT.write_text(render(rows, missing, total_pcs, buy, groups, loose),
                    encoding="utf-8")
     print("\nwrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, missing, total_pcs, buy):
+def render(rows, missing, total_pcs, buy, groups, loose):
+    # One card per function group, in his order, each one a pick list for a
+    # single sub-assembly. Same data as the schedule above it, cut the other way.
+    cards = []
+    for g in [x for x in GROUPS if groups.get(x)] + \
+             [x for x in groups if x not in GROUPS]:
+        rws = "".join(
+            f"<tr><td>{('M%d x %g' % (r['size'], r['length'])) if r.get('length') else '?'}"
+            f"</td><td class=n>{c}</td><td>{r['what']}</td></tr>"
+            for r, c in groups[g])
+        n = sum(c for _, c in groups[g])
+        cards.append(
+            f'<div class="buy"><h3>{g}</h3><table>'
+            f"<tr><th>Bolt</th><th class=n>Off</th><th>Joint</th></tr>{rws}"
+            f'<tr><td></td><td class=n><b>{n}</b></td><td></td></tr>'
+            f"</table></div>")
+    looserows = "".join(
+        f"<tr><td>{r['id']}</td><td class=n>{c} of {r.get('count','?')}</td>"
+        f"<td>{r['what']}</td></tr>" for r, c in loose)
+    grouped = (
+        '<h2>By function group</h2><p>What to have in front of you to build '
+        '<b>one</b> sub-assembly. Same bolts as the schedule above, cut the '
+        'other way.</p>'
+        f'<div class="buys">{"".join(cards)}</div>'
+        + (f'<div class="note"><b>Not in any group yet.</b> These are not '
+           f'missing from the schedule - they are in it, and they have no home '
+           f'in the group list. Shown rather than filed under the nearest '
+           f'plausible heading.<table><tr><th>Joint</th><th class=n>Off</th>'
+           f"<th>What</th></tr>{looserows}</table></div>" if loose else ""))
+
     tables = []
     for sz in sorted(buy):
         rws = "".join(
@@ -271,6 +365,8 @@ else in the repo totals them, and forgetting them is a trip to the supplier.
 are a different kit and their hole count is not known yet.</p>
 
 <div class="buys">{buytables}</div>
+
+{grouped}
 </body></html>
 """
 
