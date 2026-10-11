@@ -34,9 +34,10 @@ get it too, because the **front taper fins and the full-width back panel need th
   tongues die into them, not the other way round. That is what resolves the front-corner convergence
   in the riser file. ⚠️ The butt joint itself is end grain onto face and is a weak glue joint; it is
   not load path, so do not make it one.
-- **It resolves the ⚠️ under "Ledge depth"** below, which anticipated exactly this. Every ledge is
-  now 38 mm, the tenons shrink accordingly, and the **back post's single-sided shoulder roughly
-  doubles** - which fixes the one wart in that section rather than working around it.
+- **It resolves the ⚠️ under "Ledge depth"** below, which anticipated exactly this. Every ledge
+  equals the wall standing on it - **44 mm** since 2026-10-11 - the tenons shrink accordingly, and the
+  **back post's single-sided shoulder more than doubles**, which fixes the one wart in that section
+  rather than working around it.
 - **It is the deep back-edge member** the sag section asks for. The back wall becomes a composite
   ~180 mm deep along the whole back edge, on the span that is supported only at its midpoint.
 
@@ -224,41 +225,51 @@ directly over the shoulder**. The load then runs wall, skin, shoulder, post in a
 no plate bending anywhere. Good intent, and it dictates the depth: **each ledge must be as deep as
 the wall standing on it.**
 
-Every outer wall is **two laminations, 38 mm**. A 19 mm ledge under one would put the tenon directly
-under that wall, leaving the wall with a hole where it needs to bear.
+Every outer wall is **two laminations, 44 mm** - 25 outer plus a 19 inner web. A 19 mm ledge under
+one would put the tenon directly under that wall, leaving the wall with a hole where it needs to
+bear.
 
-✅ **Since the perimeter was doubled on all four sides (2026-09-30), every ledge is 38 mm.** The
-earlier version of this table had 19 mm on the front and back faces and carried a ⚠️ saying the
-correction would apply if either were doubled. Both were.
+✅ **Every ledge is 44 mm.** Since the perimeter was doubled on all four sides (2026-09-30) the
+ledges have been equal all round; the depth moved from 38 to 44 on **2026-10-11** when the outer
+lamination went to 25. 🔴 **That is the consequence that was missed** when the 25 mm wall was called
+geometrically free - it is free inside the machine and not at the posts.
 
 | Post | Face | Ledge depth | Wall above it |
 |---|---|---|---|
-| Front left / front right | The **side** face (left or right) | **38 mm** | Laminated outer wall |
-| Front left / front right | The **front** face | **38 mm** | Laminated outer wall |
-| Back centre | The **back** face | **38 mm** | Laminated outer wall |
+| Front left / front right | The **side** face (left or right) | **44 mm** | Laminated outer wall |
+| Front left / front right | The **front** face | **44 mm** | Laminated outer wall |
+| Back centre | The **back** face | **44 mm** | Laminated outer wall |
 
-So the **front corner tenons are 48 × 48**, and the holes in the bottom skin with them. The **back
-centre tenon is 86 × 48** - 19 mm thinner front-to-back than it was.
+So the **front corner tenons are 42 × 42**, and the holes in the bottom skin with them. The **back
+centre tenon is 86 × 42**.
 
-| | Was (19 mm front/back ledges) | **Now (38 mm all round)** |
-|---|---|---|
-| Front corner tenon | 48 × 67 | **48 × 48** |
-| Back centre tenon | 86 × 67 | **86 × 48** |
+| | At 19 mm front/back ledges | At 38 mm all round | **Now, 44 mm all round** |
+|---|---|---|---|
+| Front corner tenon | 48 × 67 | 48 × 48 | **42 × 42** |
+| Back centre tenon | 86 × 67 | 86 × 48 | **86 × 42** |
+
+✅ **The smaller tenon is not a problem, and the question was asked and answered 2026-10-11.** The
+tenon **carries no vertical load** - all of it is on the shoulder - so with 99 mm of engagement in
+cedar this is location duty only, and the corner tenons are located by both perimeter walls besides.
+📌 **And the shoulder grew, which is the half that matters:** the corner shoulder goes from about
+5090 mm² to **5630**, and the back post's bearing centroid comes in from about 24 mm off the post
+axis to **21**. Every structural number improved.
 
 Two side effects of the deeper ledges, both welcome: the corner shoulder area rises, and each corner
 tenon ends up snug against both perimeter walls, so it is **laterally located by the walls themselves**.
 
-⚠️ **48 mm is where the corner tenons stop being generous.** They carry no vertical load - that is
-all on the shoulder - and they have 99 mm of engagement, so this is location duty only. But the rule
-below about cutting each hole to its own post matters more at 48 mm than it did at 67, and a 38 mm
-ledge on two adjacent faces of a stick that measures 88.9 rather than 86 leaves ~51 mm, not 48.
+⚠️ **The smaller the tenon, the more the cutting rule below matters** - a given error is a larger
+fraction of it. That is a **fit** concern and not a capacity one, and it does not bite either,
+because the box's position on the posts is **not a machine reference**: the machine is referenced to
+the top skin, so slop in the tenon changes nothing. A 44 mm ledge on two adjacent faces of a stick
+that measures 88.9 rather than 86 leaves ~45 mm, not 42.
 
 ### Bearing, and the shoulder that stopped being single-sided
 
 | Post | Shoulder area | Note |
 |---|---|---|
-| Front corners | **~5090 mm²** (was ~4180) | Wraps two faces |
-| Back centre | **~3270 mm²** (was ~1634) | Still one face, but **double the area**, and the centroid moves in from ~33 mm off the post axis to ~24 mm |
+| Front corners | **~5630 mm²** (~5090 at 38 mm ledges, ~4180 at 19) | Wraps two faces |
+| Back centre | **~3780 mm²** (~3270 at 38 mm ledges, ~1634 at 19) | Still one face, and the centroid has moved in from ~33 mm off the post axis to ~21 |
 
 Both are far inside cedar loaded **parallel to the grain** - the ledge is a cross-cut, so the plywood
 bears on end grain in the post's strong direction.

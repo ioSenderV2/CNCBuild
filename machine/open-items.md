@@ -159,7 +159,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   thicknesses, so this closes the *design* question, not the verification.
 - ✅ ~~**Where the three-point mount pads sit relative to the two outer walls**~~ **Already answered,
   and this item was stale - corrected 2026-10-02.** They are not pads. Each post is reduced over its
-  top 118 mm to a tenon, and the **38 mm ledge** left behind is cut on the **outward-facing** faces
+  top 118 mm to a tenon, and the **44 mm ledge** left behind is cut on the **outward-facing** faces
   **precisely so the perimeter wall lands on it** - which is exactly what this item was asking for.
   Front posts carry a ledge on their outside *and* front edges, taking the side and front walls plus
   their laminated tongues; the back-centre post has a single-sided ledge under the back wall and its

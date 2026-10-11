@@ -574,9 +574,9 @@ axis has not been looked up.)*
 
 Both fixings need a bearing face, so **the box's doubled outer wall now runs all four sides** - the
 outer lamination standing **60 mm proud** front and back exactly as it does left and right. See
-[`torsion-box.md`](torsion-box.md), which carries the consequences: every ledge goes to 38 mm, front
-corner tenons become **48 × 48**, the back centre tenon **86 × 48**, and the back post's shoulder
-roughly doubles.
+[`torsion-box.md`](torsion-box.md), which carries the consequences: every ledge equals the wall
+standing on it, so at the **44 mm** wall settled 2026-10-11 the front corner tenons are **42 × 42**,
+the back centre tenon **86 × 42**, and the back post's shoulder more than doubles.
 
 ✅ **The front corner convergence is resolved: the front and back tongues run long and lap the side
 tongues' ends.** Each runs the full width and extends **19 mm past the front post tenon**, covering the

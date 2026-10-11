@@ -623,17 +623,18 @@ skin. The bottom skin lands on the shoulder.
 | Cavity | 100 mm |
 | Underside of the top skin | **119 mm** — so the post top stops **1 mm shy** |
 
-**Every ledge is 38 mm, cut on the outward-facing faces**, so the perimeter wall lands directly over
-the shoulder.
+**Every ledge is 44 mm, cut on the outward-facing faces**, so the perimeter wall lands directly over
+the shoulder. The ledge is as deep as the wall standing on it, which is why it went from 38 to 44
+when the outer lamination went to 25.
 
 | Post | Faces ledged | Tenon |
 |---|---|---|
-| Front left / front right | the **side** face and the **front** face | **48 × 48** |
-| Back centre | the **back** face | **86 × 48** |
+| Front left / front right | the **side** face and the **front** face | **42 × 42** |
+| Back centre | the **back** face | **86 × 42** |
 
 ⚠️ **Cut each hole to its own post.** 86 mm is the working figure; S4S 4×4 is commonly 88.9 and
-cedar varies between sticks. **Measure the three you have** — a 38 mm ledge on two adjacent faces of
-an 88.9 stick leaves ~51 mm, not 48.
+cedar varies between sticks. **Measure the three you have** — a 44 mm ledge on two adjacent faces of
+an 88.9 stick leaves ~45 mm, not 42.
 
 🔴 **Drive one screw at an angle into the side of each tenon, from inside the cavity, BEFORE the top
 skin is glued.** After that there is no access to those tenons ever again. Not a vertical bolt down
@@ -646,7 +647,7 @@ through the shoulder — that is withdrawal from cedar end grain.
 **Low in the front and back perimeter walls.** They gravity-drain into a bucket and stay reachable.
 
 🔴 **Not in the bottom skin** — the 2x4 frame and three carcases make it unreachable.
-⚠️ **Not in the laminated left and right walls** — those are the 38 mm webs the Y beam plates bolt to.
+⚠️ **Not in the laminated left and right walls** — those are the 44 mm walls the Y beam plates bolt to.
 
 ### The base
 
