@@ -104,6 +104,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - ⚠️ **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
 - ⚠️ **Rib under the full 1210.73 mm of rear bottom-edge bearing.** Decide before the skins are cut.
+- 🔴 **Blocking under the front fin bases AND under the fin angle's four T-nuts** - they land 44.55 mm
+  clear of the nearest rib, mid-bay. The blocking must not sit directly under a T-nut, whose barrel
+  drops into the cavity. **Settle before the top skin is glued** - the T-nuts fit from underneath and
+  there is no access after. See [`assembly.md`](assembly.md).
 
 ## ✅ From the 2026-10-08 order - the back plate's length
 

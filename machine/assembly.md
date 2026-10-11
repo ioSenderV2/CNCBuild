@@ -626,6 +626,15 @@ tenon.
 of the rear plate's bottom edge** — bottom-edge bearing is only worth having if it lands on structure
 rather than on skin spanning between grid members.
 
+🔴 **It has to cover the fin angle's four T-nuts as well**, which were not in view when the line
+above was written. The last across-rib's front face is at 971.8 and the angle's horizontal leg
+starts at 1016.35, so the T-nuts sit **44.55 mm clear of the nearest rib**, mid-bay in a 219 mm
+span. The fin's own base is in the same bay.
+
+🔴 **And the blocking cannot sit directly under a T-nut** — the barrel drops into the cavity and
+would foul it. Put the blocking beside the four, or relieve it, and settle that **before the top
+skin is glued**: the T-nuts go in from underneath and there is no access afterwards.
+
 ### The three posts
 
 **Front left corner, front right corner, and the middle of the back.** Each an **86 mm square cedar

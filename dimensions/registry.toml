@@ -1173,7 +1173,7 @@ note = "Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full m
 sym = "FIN_TONGUE_BOLT_1"
 value = 25
 provenance = "derived"
-note = "Sheet 1's T1, the outboard of the fin's two tongue bolts. T2 is at 170. Shares a value with DOUBLER_BOLT_X by coincidence and nothing else."
+note = "Sheet 1's T1, the outboard of the fin's two bolts. T2 is at 170. \u2705 MEASURED FROM THE FIN'S OUTBOARD (SQUARE) EDGE - confirmed by him 2026-10-11, and everything about the fin angle depends on it: FIN_ANGLE_L, FIN_ANGLE_T1_END and the taper clearances are all computed from that edge. The alternative reading, machine X, is self-refuting - it would put T2 0.17 from the tapered edge at the angle leg's top. \u26A0 THE NAME IS NOW WRONG AND IS LEFT ALONE DELIBERATELY: these stopped being TONGUE bolts on 2026-10-03 when the front tongue was deleted, and they are bracket bolts - renaming the symbol would break every sheet reference for no gain. Shares a value with DOUBLER_BOLT_X by coincidence and nothing else."
 
 # ---- the BF12 columns, which three sheets share
 
@@ -2724,7 +2724,7 @@ note = "10 - the fin is TAPPED M8 and there is NO NUT. \U0001F534 NOT A PREFEREN
 sym = "FIN_ANGLE_SKIN_FIX"
 value = 4
 provenance = "part"
-note = "Four bolts per angle, through its horizontal leg into THREADED INSERTS IN THE TOP SKIN - the prong type, driven into a drilled hole from UNDERNEATH and hammered home. His, 2026-10-11, replacing screws into plywood. \U0001F534 THEY MUST GO IN BEFORE THE TOP SKIN IS GLUED TO THE RIBS. They are fitted from below and there is no access afterwards - the same hard ordering as assembly.md's rule about driving a screw into each post tenon before the skin goes on, and the same consequence for getting it wrong: a hole in the box. \u2705 IT ANSWERS A REAL OBJECTION: with the angle in FRONT of the fin these fixings work in WITHDRAWAL if the fin tips backward, the opposite sense to the old behind-the-fin brackets, and a prong insert in the 25 top skin is a far better anchor than a screw."
+note = "Four bolts per angle, through its horizontal leg into PRONGED T-NUTS in the top skin, driven into a drilled hole from UNDERNEATH and hammered home. His, 2026-10-11, replacing screws into plywood. \U0001F4CC THE PART IS A T-NUT - a pronged tee nut, three or four prongs. NOT a threaded insert, which has an external wood-screw thread and drives with a hex key, and NOT a hopper-feed T-nut, which is the flanged barrel with screw holes instead of prongs. The name is recorded because he asked for it and because the three get ordered interchangeably. \u2705 THE ORIENTATION IS RIGHT AND IT IS THE THING USUALLY GOT WRONG: a T-nut goes on the face the bolt pulls TOWARD, so the flange bears on the wood and the prongs only stop it rotating. Bolt down from above, flange under the top skin. \U0001F534 THEY MUST GO IN BEFORE THE TOP SKIN IS GLUED TO THE RIBS. They are fitted from below and there is no access afterwards - the same hard ordering as assembly.md's rule about driving a screw into each post tenon before the skin goes on, and the same consequence for getting it wrong: a hole in the box. \u2705 IT ANSWERS A REAL OBJECTION: with the angle in FRONT of the fin these fixings work in WITHDRAWAL if the fin tips backward, the opposite sense to the old behind-the-fin brackets, and a prong insert in the 25 top skin is a far better anchor than a screw."
 
 [[dim]]
 sym = "T_BOX_FRONT_CAP"
@@ -2735,3 +2735,8 @@ note = "25 - the board capping the box's FRONT edge, same stock and thickness as
 sym = "BOX_FRONT_CAP_H"
 expr = "BOX_THK"
 note = "144 - the front cap's height: the box's full thickness, capping the end grain of both skins exactly as the tongues do, finishing FLUSH with the top skin. \u2705 ZERO PROUD, his words 2026-10-11 - so it will not project out. That is the ONE way the front differs from the other three sides, which stand BOX_TONGUE_PROUD above the skin. Compare TONGUE_FULL_H at 204 against this 144: the 60 between them is exactly the proud the front does not have."
+
+[[dim]]
+sym = "FIN_ANGLE_TO_RIB"
+expr = "(SIDE_TONGUE_END + T_FIN) - (T_BOX_WALL_WEB + (BOX_BAY_FORE_AFT + T_BB_RIB) * (BOX_RIBS_ACROSS - 1) + BOX_BAY_FORE_AFT + T_BB_RIB)"
+note = "44.55 - from the LAST across-rib's front face to where the angle's horizontal leg begins. \U0001F534 SO THE FOUR T-NUTS LAND IN UNSUPPORTED SKIN, mid-bay in a BOX_BAY_FORE_AFT span, with no rib under them. The fin's own 200 base is in the same bay, 34.55 ahead of that rib. \u26A0 assembly.md ALREADY CARRIES BLOCKING UNDER THE FIN BASES AS OPEN, and this says the open item must cover the angle's fixings too - they were not in view when it was written. \U0001F534 AND THE BLOCKING CANNOT SIT DIRECTLY UNDER A T-NUT: the barrel drops into the cavity, so blocking placed under one fouls it. Position the blocking beside the four, or relieve it, and decide that BEFORE the skin is glued - the T-nuts go in from underneath and there is no access afterwards. \u26A0 DERIVED THE LONG WAY ON PURPOSE, off the same rib walk make-3d uses, so it moves if the bay count, the bay size or the fin position moves."
