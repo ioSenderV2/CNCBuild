@@ -451,6 +451,31 @@ def main() -> int:
     # as a 5.29 x 1000 x 16 bar at each end, which both invented a part and implied
     # a flat bar in a thickness nobody stocks.
 
+    # ---- the front cap and the two side caps ------------------------------
+    # The front has NO TONGUE: this cap is the same 25 stock and the same 44
+    # wall section as the other three sides, but it stops FLUSH with the top
+    # skin instead of standing BOX_TONGUE_PROUD above it - his, 2026-10-11, so
+    # the apron stays a clear work surface.
+    #
+    # ✅ IT CLOSES ON THE POST WITHOUT ANYTHING BEING CHOSEN: the front post's
+    # full section reaches D - web + ledge = 1235, and the cap occupies D to
+    # D + 25 = 1210 to 1235. The 44 wall is web (1191..1210) plus cap
+    # (1210..1235), landing squarely on the 44 shoulder, exactly as at the sides.
+    #
+    # The SIDE CAPS run back from the front cap to where the side tongue ends.
+    # 🔴 That stretch was BARE - the side tongue stops at SIDE_TONGUE_END while
+    # the box runs on to BOX_FORE_AFT - and it is where the front fin overhangs
+    # outboard by FIN_PROUD. His words: so the fin overhang will not look like
+    # it is hanging in midair. The fin's overhang now lands on the cap's top edge.
+    cap_t = v["T_BOX_FRONT_CAP"]
+    cap_z0 = -v["BOX_FRONT_CAP_H"]
+    box("Front cap", "box", 0xA07B16, -cap_t, D, cap_z0, W + cap_t, D + cap_t, 0,
+        d="25, flush with the top skin - the front has no tongue")
+    for x0 in (-cap_t, W):
+        box("Side cap", "box", 0xA07B16, x0, v["BOX_SIDE_CAP_START"], cap_z0,
+            x0 + cap_t, D, 0,
+            d="25, flush - carries the fin's outboard overhang")
+
     # ---- the plates that stand on the skin -------------------------------
     # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side
     # plate's - his, 2026-10-10 - and it is drawn at the length it was BOUGHT,
@@ -500,6 +525,37 @@ def main() -> int:
               y1, y1 + v["T_FIN"],
               holes=[[[wa, wz0], [wb, wz0], [wb, wz1], [wa, wz1]]],
               d=sheet_note("1a" if sgn > 0 else "1b"))
+
+    # ---- the angle that ties each front fin down --------------------------
+    # ONE 170 piece per fin, in FRONT of it - 2026-10-11. In front because the
+    # tee track bed's front edge and the fin's back face are BOTH at 1006.35,
+    # leaving zero room behind; the bed decision the same day closed that space.
+    #
+    # It starts FLUSH WITH THE BOX'S SIDE EDGE and runs inboard, not flush with
+    # the fin: the fin stands FIN_PROUD outboard, so an angle on the fin's edge
+    # would have its first 16.571 hanging in air with no skin to bolt into.
+    #
+    # The 170 is his, measured off the fin's tapered edge at the leg's top and
+    # rounded - it finishes 0.17 inside the taper and reads flush. That tightness
+    # is the point: the failure here is cosmetic, and margin would show as a step.
+    #
+    # ⚠️ FIN_ANGLE_T is a NOMINAL - the piece has not been calipered. It feeds
+    # nothing; it is here so the angle is not a zero-thickness plane.
+    at = v["FIN_ANGLE_T"]
+    aleg, alen = v["FIN_ANGLE_LEG"], v["FIN_ANGLE_L"]
+    fin_front = y1 + v["T_FIN"]
+    for xa, sgn in ((0.0, +1), (W, -1)):
+        xb = xa + sgn * alen
+        lo, hi = min(xa, xb), max(xa, xb)
+        # vertical leg, against the fin's front face
+        box("Fin angle", "plates", 0x9AA5B1, lo, fin_front, 0,
+            hi, fin_front + at, aleg,
+            d="40 x 40, 170 long - two M8 into TAPPED holes in the fin at Y 20")
+        # horizontal leg, on the top skin
+        box("Fin angle", "plates", 0x9AA5B1, lo, fin_front + at, 0,
+            hi, fin_front + aleg, at,
+            d="four bolts into pronged T-NUTS in the top skin - fitted from "
+              "underneath BEFORE the skin is glued")
 
     # ---- the interposer, under each beam and out through the window -------
     # Four M8 into slide-in T-nuts hold each bar on, at Sheet 6's two rows
@@ -1543,6 +1599,20 @@ ALLOWED = {
     frozenset({"Post, back centre", "Perimeter web"}),
 
     frozenset({"Back tongue", "Side tongue"}),      # meet at the corner
+    # The caps are the front's wall lamination - they laminate to the web and
+    # bear on the post shoulder exactly as the tongues do.
+    frozenset({"Front cap", "Side cap"}),           # meet at the front corner
+    frozenset({"Front cap", "Perimeter web"}),
+    frozenset({"Side cap", "Perimeter web"}),
+    frozenset({"Front cap", "Post, front left"}),
+    frozenset({"Front cap", "Post, front right"}),
+    frozenset({"Side cap", "Post, front left"}),
+    frozenset({"Side cap", "Post, front right"}),
+    frozenset({"Front cap", "Side tongue"}),
+    frozenset({"Side cap", "Side tongue"}),
+    # One part drawn as two boxes, the same convention as the BF12 wing/boss.
+    frozenset({"Fin angle", "Fin angle"}),
+    frozenset({"Fin angle", "Front fin"}),          # it bolts to its face
     frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
     frozenset({"X carriage plate", "Z plate"}),     # modelled without the spacers
