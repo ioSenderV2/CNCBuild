@@ -2631,3 +2631,59 @@ sym = "POST_TENON_L"
 value = 118
 provenance = "nominal"
 note = "118 - the length of post reduced to form the tenon, measured from the ledge to the post top. \u2705 THE STACK CLOSES ON IT: 118 less the 19 bottom skin resting on the ledge less the 100 cavity leaves the post top 1 SHY of the top skin's underside at 119, and that 1 is stable because 118 along the grain of vertical cedar moves essentially nothing seasonally. \U0001F4CC IT DOES NOT FOLLOW THE TOP SKIN: when the top skin went 19 to 25 on 2026-10-11 the underside stayed at 119, set by ledge plus bottom skin plus cavity, so this did not move."
+
+[[dim]]
+sym = "BOX_RIBS_FORE_AFT"
+value = 4
+provenance = "nominal"
+note = "\u2705 FOUR, AND IT IS HIS CALL 2026-10-11. Interior ribs RUNNING fore-aft, therefore SPACED across the machine, giving five bays. \U0001F534 THE COUNT MUST BE EVEN AND THAT IS THE WHOLE POINT: with an odd count and equal bays a rib lands exactly on the machine centreline at 605.619, which is where the back centre post's tenon goes - a collision, not a clearance. An even count puts the centreline MID-BAY. He proposed five first and took the correction the same day, which is what closed the grid spacing torsion-box.md had carried as open since 2026-09-30."
+
+[[dim]]
+sym = "BOX_RIBS_ACROSS"
+value = 4
+provenance = "nominal"
+note = "\u2705 FOUR, AND IT IS HIS CALL 2026-10-11. Interior ribs RUNNING across the machine, therefore SPACED fore-aft, giving five bays. His figure 2026-10-11. Nothing constrains the parity here - the back tenon is only 42 deep and sits against the back wall, so the first across-rib in from the back clears it with the whole first bay to spare."
+
+[[dim]]
+sym = "BOX_CAVITY_W"
+expr = "BOX_W - (2 * T_BOX_WALL_WEB)"
+note = "1173.238 - the cavity across the machine, inside the two perimeter inner webs. \U0001F534 IT ASSUMES THE WEB SITS INBOARD OF THE SKIN EDGE, with the tongue outboard of it - 25 out, 19 in, 44 total. That is what the committed 3D model's geometry already implies and what makes a 44 wall land over a 44 ledge, and the post arithmetic closes on it exactly: the post's outer face lands flush with the tongue's outer face and the 44 shoulder sits under the 44 wall. \u26A0 BUT SEE BOX_WALL_STANDS_ON - torsion-box.md says the outer lamination STANDS ON THE BOTTOM SKIN, and the model draws it alongside the skin rather than on it. Every bay figure below hangs on this, and notch positions are the critical dimension in this box."
+
+[[dim]]
+sym = "BOX_CAVITY_FORE_AFT"
+expr = "BOX_FORE_AFT - (2 * T_BOX_WALL_WEB)"
+note = "1118.35 - the cavity front to back, inside the perimeter inner webs. Same assumption as BOX_CAVITY_W."
+
+[[dim]]
+sym = "BOX_BAY_W"
+expr = "(BOX_CAVITY_W - (BOX_RIBS_FORE_AFT * T_BB_RIB)) / (BOX_RIBS_FORE_AFT + 1)"
+note = "219.448 - the clear bay across the machine, five of them between four ribs. Inside the file's 200-300 convention band. \u2705 THE CHECK THAT THE PARITY ARGUMENT IS RIGHT: with four ribs the middle bay runs 495.90 to 715.34, whose centre is 605.619 - the machine centreline, to three decimals. The 86 back tenon therefore sits mid-bay with about 67 clear each side."
+
+[[dim]]
+sym = "BOX_BAY_FORE_AFT"
+expr = "(BOX_CAVITY_FORE_AFT - (BOX_RIBS_ACROSS * T_BB_RIB)) / (BOX_RIBS_ACROSS + 1)"
+note = "208.47 - the clear bay front to back, five of them between four ribs. Also inside the 200-300 band."
+
+[[dim]]
+sym = "TENON_HOLE_CLEAR"
+value = 1
+provenance = "nominal"
+note = "1 per side, so every tenon hole in the bottom skin is cut 2 LARGER THAN THE TENON. His, 2026-10-11, asking whether the holes are generous - and they should be. \u2705 THE TENON IS LOCATION ONLY and a 565 lb box is being lowered onto three of them: zero clearance makes assembly impossible, and 1 per side is nothing against a job that is only stopping the box walking. The box's position on the posts is NOT a machine reference - the machine is referenced to the top skin. \U0001F534 WHAT MUST NOT BE GENEROUS IS THE LEDGE DEPTH, which is the bearing surface and is T_BOX_LEDGE. The hole size is free; the shoulder is not."
+
+[[dim]]
+sym = "POST_STUB_L"
+value = 254
+provenance = "nominal"
+note = "254 - 10in, how much of each post the 3D model draws. \u26A0 IT IS A DRAWING LENGTH AND NOT A PART: the posts run down to the base and nothing in this repo sets their full height. His, 2026-10-11, asked for so the tenon and ledge can be seen in context without the model growing a base."
+
+[[dim]]
+sym = "BOX_WALL_STANDS_ON"
+value = 0
+provenance = "OPEN"
+note = "\U0001F534 OPEN, AND IT IS A CONTRADICTION BETWEEN THE PROSE AND THE MODEL, not a missing number. torsion-box.md says the outer lamination is '180 mm tall standing on the bottom skin and 60 mm proud' of the top skin. 180 = 19 bottom skin is NOT in it: 100 cavity + 19 bottom skin + 60 proud = 179, so 180 only closes if the lamination starts at the bottom skin's TOP face and the figure is rounded, OR if it starts at its underside and runs 60 proud of a 19 top skin. \u26A0 AND THE MODEL DRAWS IT ALONGSIDE THE SKINS, NOT ON THEM - the box body spans 0 to BOX_W and the tongues sit outboard at -25 to 0, so the skins do not pass under the tongue at all. BOX_CAVITY_W and every bay and notch position depend on which reading is right. Value 0 is a placeholder so the registry resolves; it carries no meaning. ASK HIM: does the bottom skin run out under the outer lamination, or butt its inner face?"
+
+[[dim]]
+sym = "BOX_FRONT_WALL_AT"
+value = 0
+provenance = "OPEN"
+note = "\U0001F534 OPEN: WHERE THE FRONT WALL AND THE TWO FRONT POSTS STAND. Two committed statements do not meet. torsion-box.md, 2026-09-30: the doubled wall runs the WHOLE PERIMETER, front and back included, outer lamination 180 tall and 60 proud. VALUES.md on BOX_FRONT_OVERHANG: THE FRONT HAS NO TONGUE - the skin runs 140 PAST THE FINS and four L-brackets per fin tie it down. The 3D model draws a back tongue and two side tongues and NO FRONT TONGUE, which sides with the second. \u26A0 WHAT IT DECIDES: the 3D model now places each front post with its outer face 25 past the skin's front edge at 1181.35, symmetric with the x = -25 it reaches at the side - which ASSUMES a front wall at the box's front edge. If the front wall instead sits back at the fin line, or if there is no front wall, the front posts move and the front corner tenons are not in a corner at all - they lose the two-walls-locate-them-free property that TENON_CORNER's note leans on. Value 0 is a placeholder; it carries no meaning. ASK HIM."

@@ -273,7 +273,103 @@ def main() -> int:
     SKIN = v["T_BB_SKIN_TOP"]        # 25
 
     # ---- torsion box -----------------------------------------------------
-    box("Torsion box", "box", 0xC9A227, 0, 0, -v["BOX_THK"], W, D, 0)
+    # DRAWN AS ITS REAL PARTS since 2026-10-11, not as one solid: he needs to
+    # hide the top skin and look at the bay layout and the tenon placement. So
+    # the top skin is its OWN GROUP and toggles alone.
+    #
+    # The z stack, and it closes on BOX_THK exactly:
+    #   0 to -T_BB_SKIN_TOP          the top skin            (25)
+    #   -25 to -125                  the cavity, ribs and webs stand here (100)
+    #   -125 to -144                 the bottom skin         (19)
+    skin_bot_top = -(v["BOX_THK"] - v["T_BB_SKIN_BOT"])   # -125
+    cav_z0, cav_z1 = skin_bot_top, -SKIN                  # -125 .. -25
+    web = v["T_BOX_WALL_WEB"]
+
+    box("Top skin", "topskin", 0xC9A227, 0, 0, -SKIN, W, D, 0,
+        d="25 Baltic birch - hide this group to see the bays and tenons")
+
+    # ---- the three posts, and the tenon holes they need in the bottom skin --
+    # THE GEOMETRY CLOSES AND IT IS WORTH SAYING WHY, because it is the check
+    # that the 44 ledge is right: the ledges are cut on the OUTWARD-facing
+    # faces, so a post's outer face lands FLUSH WITH THE TONGUE'S OUTER FACE at
+    # -T_BOX_TONGUE, the 44 wall (25 tongue + 19 web) sits squarely on the 44
+    # shoulder, and the tenon occupies from the web's inner face inboard. No
+    # number was chosen to make that happen.
+    # 🔴 THE FRONT POSTS ASSUME A FRONT WALL AT THE BOX'S FRONT EDGE, symmetric
+    # with the sides, so each front post reaches to D - web + ledge = 1181.35 -
+    # 25 past the skin's front edge, exactly as it reaches 25 past the side edge
+    # at x = -25. THAT MAY BE WRONG. torsion-box.md says the doubled wall runs
+    # the whole perimeter; VALUES.md says THE FRONT HAS NO TONGUE and the skin
+    # simply runs BOX_FRONT_OVERHANG = 140 past the fins with L-brackets tying
+    # it down. The two do not settle where the front wall is, or whether the
+    # front posts stand at the skin's front edge or back at the fin line. The
+    # model draws no front tongue either. See BOX_FRONT_WALL_AT in the registry.
+    ledge = v["T_BOX_LEDGE"]
+    tc, tb = v["TENON_CORNER"], v["TENON_BACK_DEPTH"]
+    post_top = -SKIN - 1.0           # 1 shy of the top skin's underside
+    post_bot = post_top - v["POST_STUB_L"]
+    ledge_z = -v["BOX_THK"]          # the shoulder IS the bottom skin's underside
+    hc = v["TENON_HOLE_CLEAR"]
+
+    # Each post: (tenon rect, full-section rect) in machine x/y.
+    posts = [
+        ("Post, front left", (web, web + tc, D - web - tc, D - web),
+         (web - ledge, web + tc, D - web - tc, D - web + ledge)),
+        ("Post, front right", (W - web - tc, W - web, D - web - tc, D - web),
+         (W - web - tc, W - web + ledge, D - web - tc, D - web + ledge)),
+        ("Post, back centre", (W / 2 - v["POST_W"] / 2,
+                               W / 2 + v["POST_W"] / 2, web, web + tb),
+         (W / 2 - v["POST_W"] / 2, W / 2 + v["POST_W"] / 2, web - ledge, web + tb)),
+    ]
+    holes_xy = []
+    for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
+        box(nm + " tenon", "posts", 0x9C6B3C, tx0, ty0, ledge_z, tx1, ty1, post_top,
+            d="location only - carries no vertical load, that is all on the shoulder")
+        box(nm, "posts", 0x7A5230, px0, py0, post_bot, px1, py1, ledge_z,
+            d="cedar 4x4, top 10in drawn - the shoulder bears the whole box")
+        # the hole the tenon passes through, cut TENON_HOLE_CLEAR generous a side
+        holes_xy.append([[tx0 - hc, ty0 - hc], [tx1 + hc, ty0 - hc],
+                         [tx1 + hc, ty1 + hc], [tx0 - hc, ty1 + hc]])
+
+    prism("Bottom skin", "box", 0xB08A1E,
+          [[0, 0], [W, 0], [W, D], [0, D]], skin_bot_top, -v["BOX_THK"],
+          holes=holes_xy, plane="xy",
+          d="19 Baltic birch, resting on the three post shoulders - the holes "
+            "are the tenons plus 1 a side")
+
+    # ---- the perimeter inner webs ----------------------------------------
+    # The INNER lamination of each wall, between the skins. It stays 19 while
+    # the outer lamination went to 25: it is a perimeter rib and carries shear.
+    # 🔴 WHERE IT SITS IS THE OPEN QUESTION - see BOX_WALL_STANDS_ON. Drawn
+    # INBOARD of the skin edge, which is what this model already implied and
+    # what the post arithmetic above closes on.
+    for x0, y0, x1, y1 in ((0, 0, W, web), (0, D - web, W, D),
+                           (0, web, web, D - web), (W - web, web, W, D - web)):
+        box("Perimeter web", "grid", 0xA8822C, x0, y0, cav_z0, x1, y1, cav_z1,
+            d="19 inner wall lamination - a perimeter rib, carries shear")
+
+    # ---- the egg crate ----------------------------------------------------
+    # CONTINUOUS BOTH WAYS, half-depth notches at every crossing - settled
+    # 2026-09-30, and the notches are not drawn: a half-depth notch removes no
+    # envelope and drawing it would only hide the bay layout he wants to see.
+    #
+    # ⚠️ THE COUNTS ARE PROVISIONAL. torsion-box.md still lists the grid
+    # spacing as open, and BOX_RIBS_FORE_AFT's note carries why four and not
+    # five: an odd count puts a rib ON the centreline, where the back tenon is.
+    def rib_centres(n, bay, lo):
+        """Centres of n ribs making n+1 equal bays, first bay starting at lo."""
+        return [lo + bay + v["T_BB_RIB"] / 2 + i * (bay + v["T_BB_RIB"])
+                for i in range(int(n))]
+
+    bw, bf = v["BOX_BAY_W"], v["BOX_BAY_FORE_AFT"]
+    half = v["T_BB_RIB"] / 2
+    for cx_ in rib_centres(v["BOX_RIBS_FORE_AFT"], bw, web):
+        box("Rib, fore-aft", "grid", 0xD4B24A, cx_ - half, web, cav_z0,
+            cx_ + half, D - web, cav_z1, d="19 x 100, continuous")
+    for cy_ in rib_centres(v["BOX_RIBS_ACROSS"], bf, web):
+        box("Rib, across", "grid", 0xD4B24A, web, cy_ - half, cav_z0,
+            W - web, cy_ + half, cav_z1, d="19 x 100, continuous")
+
     tz0, tz1 = -(v["BOX_THK"] - SKIN), v["BOX_TONGUE_PROUD"]
     box("Back tongue", "box", 0xA07B16, -TT, -TT, tz0, W + TT, 0, tz1)
     for x0 in (-TT, W):
@@ -1321,7 +1417,10 @@ def main() -> int:
     home = {"X": jog["X"][1], "Y": jog["Y"][0], "Z": jog["Z"][1]}
 
     groups = {
-        "box": "Torsion box and tongues",
+        "box": "Torsion box: bottom skin and tongues",
+        "topskin": "Torsion box: TOP SKIN (hide to see the bays)",
+        "grid": "Torsion box: ribs and perimeter webs",
+        "posts": "The three posts, top 10in",
         "bed": "Tee track bed",
         "bolts": "M8 flange bolt heads",
         "motion": "Rails and bearing blocks",
@@ -1391,8 +1490,41 @@ def main() -> int:
 # Pairs that SHOULD interpenetrate, with the reason. Everything else that
 # overlaps is a real interference and gets printed.
 ALLOWED = {
-    frozenset({"Torsion box", "Back tongue"}),      # laminated to the wall
-    frozenset({"Torsion box", "Side tongue"}),
+    # THE EGG CRATE IS HALF-DEPTH NOTCHED AT EVERY CROSSING - settled
+    # 2026-09-30 - and the notches are deliberately not drawn: a half-depth
+    # notch removes no envelope, and drawing sixteen of them would clutter the
+    # bay layout the interior was decomposed to show. So every crossing reads
+    # as a 19 x 19 x 100 overlap, and all sixteen are intentional.
+    #
+    # 🔴 THE PRICE IS NAMED RATHER THAN HIDDEN: this pair is now blind, so if a
+    # rib ever moves onto a POST it will not be caught here. The checks that
+    # still bite are rib-against-tenon and rib-against-web, both left live.
+    frozenset({"Rib, fore-aft", "Rib, across"}),
+
+    # The perimeter web is one lamination of a wall whose other lamination is
+    # the tongue. They are laminated face to face, so they touch by design.
+    frozenset({"Perimeter web", "Back tongue"}),
+    frozenset({"Perimeter web", "Side tongue"}),
+    frozenset({"Perimeter web", "Rib, fore-aft"}),  # ribs die into the webs
+    frozenset({"Perimeter web", "Rib, across"}),
+
+    # Each post is drawn as a tenon standing out of a full-section stub - one
+    # part, two boxes, the same convention as the BF12 wing and boss below.
+    frozenset({"Post, front left", "Post, front left tenon"}),
+    frozenset({"Post, front right", "Post, front right tenon"}),
+    frozenset({"Post, back centre", "Post, back centre tenon"}),
+    # The post's outer face is FLUSH with the tongue's outer face and the 44
+    # wall lands on the 44 shoulder - that is the whole ledge detail, so the
+    # wall standing on the shoulder is contact by design, not a clash.
+    frozenset({"Post, front left", "Side tongue"}),
+    frozenset({"Post, front left", "Back tongue"}),
+    frozenset({"Post, front right", "Side tongue"}),
+    frozenset({"Post, front right", "Back tongue"}),
+    frozenset({"Post, back centre", "Back tongue"}),
+    frozenset({"Post, front left", "Perimeter web"}),
+    frozenset({"Post, front right", "Perimeter web"}),
+    frozenset({"Post, back centre", "Perimeter web"}),
+
     frozenset({"Back tongue", "Side tongue"}),      # meet at the corner
     frozenset({"X beam", "X end plate"}),           # plate laps the beam's end
     frozenset({"X end plate", "Y nut doubler"}),    # doubler bolts to its face
