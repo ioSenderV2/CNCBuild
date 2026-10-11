@@ -2502,7 +2502,7 @@ note = "0 - the slack the bed has fore-aft, and there is none. The clear run fro
 sym = "TT_BED_END_BOLT"
 value = 4
 provenance = "part"
-note = "M4 - the thread in the tee track sections' ends, which the side-plate bolts run into. His, 2026-10-11, given when he found the spacer. \u26A0 IT IS THE SMALLEST FASTENER HOLDING THE BED and that is fine: these bolts carry no hold-down load, only the bed walking - see TT_BED_SPACER. The side plate's clearance holes are the only thing to size from it."
+note = "M4 - the screws into the tee track sections' ends, TWO PER END, which the Mega V already uses. His, 2026-10-11. \U0001F534 THEY ARE SELF-TAPPING, NOT MACHINE SCREWS INTO A TAPPED HOLE, and this file said the ends carried 'threaded holes' until he corrected it - the holes are cut by the screw, which is a different part, a different length and a different re-use story. \u26A0 IT IS THE SMALLEST FASTENER HOLDING THE BED and that is fine: these screws carry no hold-down load, only the bed walking - see TT_BED_SPACER. The side plate's clearance holes are the only thing to size from it."
 
 [[dim]]
 sym = "TT_BED_SPACER_PART"
@@ -2514,3 +2514,19 @@ note = "5 - the M4 aluminium spacer actually bought, one per bolt. His, 2026-10-
 sym = "TT_BED_FLOAT"
 expr = "TT_BED_SPACER - TT_BED_SPACER_PART"
 note = "0.29 per end, 0.58 across the bed - how far the bed can shift before a spacer touches. \u2705 IT DOES NOT MATTER AND THAT IS THE POINT OF RECORDING IT: the aluminium is not a reference surface, the MDF above it is surfaced in place by the machine, and nothing is laid out from the bed's position. A number small enough to ignore is still worth naming, so that nobody later reads the 0.29 as an error to chase."
+
+[[dim]]
+sym = "TT_BED_END_SCREWS_PER_END"
+value = 2
+provenance = "part"
+note = "Two M4 self-tapping screws into each end of each 250 panel - the Mega V's own arrangement, carried over. His, 2026-10-11."
+
+[[dim]]
+sym = "TT_BED_END_SCREWS"
+expr = "TT_BED_END_SCREWS_PER_END * 2 * TT_BED_PLATES"
+note = "16 screws holding the bed against walking - two per end, both ends, four panels, so EIGHT THROUGH EACH SIDE PLATE. That is the hole count the side plate has to carry at bed height, and the reason to know it is the side plate's drilling rather than the bed's."
+
+[[dim]]
+sym = "TT_BED_SCREW_STACK"
+expr = "T_SIDE_PLATE + TT_BED_SPACER_PART"
+note = "8.43 - what each self-tapping screw passes through before it reaches aluminium: the 3.429 side plate plus the 5 spacer. \U0001F534 THE MEGA V SCREWS ARE TOO SHORT BY ROUGHLY THIS MUCH, because on the Mega V the panel ends land against the frame with neither of these in the way. Add it to whatever length the existing screws are - the engagement into the extrusion end has to be what it was, not what is left over. \u26A0 AND A SELF-TAPPER RE-DRIVEN INTO A HOLE IT ALREADY CUT holds poorly; if these ends have been apart before, expect to go one size up or move the hole."

@@ -83,8 +83,17 @@ tracks hold the MDF down, counterbored well below the surface so there is depth 
 
 The tee track sections are **47" = 1193.8 mm**, and the clear span between the side plates' inside
 faces is **1211.238 − 2 × 3.429 = 1204.38 mm**. The tracks are therefore **10.58 mm short** of the
-span - there is nothing to cut off. **M4 bolts** pass through the side plate into the threaded holes
-in the track ends, each carrying **one 5 mm aluminium M4 spacer** to fill the 5.29.
+span - there is nothing to cut off. **Two M4 self-tapping screws into each end of each panel** - the
+Mega V's own arrangement - pass through the side plate, each carrying **one 5 mm aluminium M4
+spacer** to fill the 5.29. That is **16 screws, eight through each side plate**.
+
+🔴 **They are self-tapping, and this file called the track ends "threaded holes" until he said
+otherwise.** It matters in two ways. The screw now passes through **3.429 of side plate plus 5 of
+spacer = 8.43** before it reaches aluminium, and on the Mega V the panel end lands against the frame
+with neither of those in the way - so the existing screws are short by about that much, and the
+engagement into the extrusion end has to be what it was rather than what is left over. And a
+self-tapper re-driven into a hole it already cut holds poorly, so if these ends have been apart
+before, expect to go a size up or move the hole.
 
 ✅ **The gap and the part are different numbers on purpose.** The gap is 5.29 and the spacer is 5,
 which leaves **0.29 per end, 0.58 across the bed** - and that float does not matter, because the
