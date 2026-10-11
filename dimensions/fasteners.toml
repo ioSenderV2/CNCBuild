@@ -45,14 +45,16 @@ note = "TAPPED INTO THE PLATE, not a T-nut - the X carriage plate is 1/2in and c
 
 [[joint]]
 id = "front-strip"
-what = "Front joining strips to the beams"
+what = "Front joining strips to the beams - his INSIDE JOINER PLATES"
 size = 8
 count = 42
+per = "14 per strip, three strips"
 length = 10
+groups = [["X inside joiner plate", 14], ["Y1 inside joiner plate", 14], ["Y2 inside joiner plate", 14]]
 into = "t-nut"
 grip = ["T_FRONT_STRIP"]
 source = "assembly.md: 'The buy: 42 x M8 x 10 A4 / 316 (front strips)'"
-note = "A4/316. An M8 x 12 in the 4 mm strip reaches 8.0 past the plate against a 7.2 limit - the length is NOT interchangeable with the X back plate's 12."
+note = "A4/316. An M8 x 12 in the 4 mm strip reaches 8.0 past the plate against a 7.2 limit - the length is NOT interchangeable with the X back plate's 12. 🔴 ONE PART, TWO NAMES: the model and this file call it the FRONT STRIP, he calls it the INSIDE JOINER PLATE - and it is inside, on the Y beams' inboard faces and the X beam's front face. His function groups were first read as the BACK joining plates and that was wrong, his correction 2026-10-11."
 
 [[joint]]
 id = "y-back-plate"
@@ -60,7 +62,6 @@ what = "Y back joining plates to the beams"
 size = 8
 count = 56
 length = 10
-groups = [["Y1 inside joiner plate", 28], ["Y2 inside joiner plate", 28]]
 into = "t-nut"
 source = "assembly.md: '56 x M8 x 10 plain + 56 washers (Y backs)'"
 note = "Plain, plus a washer each."
@@ -71,7 +72,6 @@ what = "X back joining plate to the beam"
 size = 8
 count = 28
 length = 14
-groups = [["X inside joiner plate", 28]]
 into = "t-nut"
 grip = ["T_BACK_JOIN_PLATE"]
 source = "his, 2026-10-11 - 14, not the 12 assembly.md gave"
