@@ -108,16 +108,29 @@ grip = ["CASTING_T_AT_BLOCK"]   # ditto - tapped, not grip
 source = "his, 2026-10-11"
 
 [[joint]]
-id = "bf12-to-plate"
-what = "BF12 face-mounted into the rear plate and the X end plate tongue"
+id = "bf12-to-rear-plate"
+what = "BF12 face-mounted into the 1/4in rear plate, Y1 and Y2"
 size = 5
 count = 8
-per = "4 per BF12"
+per = "4 per BF12, two BF12"
+length = 25
+into = "tapped"
+grip = ["BF12_BODY_AT_BOLT"]
+extras = []
+source = "his, 2026-10-11"
+note = "M5 x 25, giving 5 of engagement in the 6.35 plate - 1 x D in steel - and NOTHING PROTRUDES. 🔴 IT IS A DIFFERENT LENGTH FROM THE TONGUE'S for one reason: the same 30 bolt that stops 2.19 short in the 1/2in tongue runs 3.65 clean through a 1/4in plate. Shortening the bolt was taken over capping the stub with an acorn nut - one fewer part and one fewer step, and the stub was at the back of the machine where it did no harm anyway."
+
+[[joint]]
+id = "bf12-to-x-tongue"
+what = "BF12 face-mounted into the X end plate's tongue"
+size = 5
+count = 4
+per = "4 per BF12, one BF12"
 length = 30
 into = "tapped"
 grip = ["BF12_BODY_AT_BOLT"]
 source = "his, 2026-10-11"
-note = "Face-mounted it is 4 x M5; top-mounted it would be 2. Any BF12 figure must say which. 🔴 THE SAME BOLT LANDS IN TWO DIFFERENT THICKNESSES: 10 of engagement in the X tongue's 1/2in plate, where it stops short, but the 1/4in rear plate is only 6.35 thick so it goes clean through and PROTRUDES ABOUT 4. ⚠️ HIS COUNT IS 8 AND THE PROSE IMPLIES 12 - there are three face-mounted BF12 by assembly.md's reckoning, X plus Y1 plus Y2, which would be twelve. Left at his 8 until he says which."
+note = "M5 x 30 into 1/2in plate: 10 of engagement, 2 x D, stopping 2.19 short of the far face. ✅ TWELVE IN TOTAL, SPLIT 8 PLUS 4 - his confirmation 2026-10-11. The eight are the rear plate's two BF12 at M5 x 25, these four are X's at 30, and the two lengths differ only because the plates do."
 
 [[joint]]
 id = "rear-plate-to-beam-ends"
