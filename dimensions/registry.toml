@@ -2878,3 +2878,36 @@ note = "630.619 - each of the TWO pieces the front cap is cut from. \u2705 SPLIT
 sym = "BACK_TENON_BLOCK_T_MAX"
 expr = "(BOX_BAY_W - POST_W) / 2"
 note = "66.72 - the most a back tenon block can be thick, which is the clear space each side of the tenon in its bay. \u2705 THE THICKNESS IS FREE ANYWHERE UNDER THIS and that is the point: the blocks are CUT FROM HIS SCRAP BIN, not off a sheet - his call 2026-10-11 - because they are location pieces inside the box and nothing about them is structural. They carry no vertical load, all of it is on the post shoulder. \U0001F534 IT IS WHAT SAVED THE THIRD SHEET: the two blocks were the ONLY parts on a second sheet of 19 mm, 1% used, a $245 board for 0.044 m2 of plywood. Cutting them at 25 off the other sheet was offered and his answer was better - the scrap bin costs nothing and constrains nothing. \u26A0 THE HEIGHT IS NOT FREE: they must be BOX_RIB_H tall like a rib, so both skins glue to them."
+
+[[dim]]
+sym = "CASTING_T_AT_BLOCK"
+value = 35
+provenance = "part"
+note = "35 - the casting's thickness where the four bolts pass through it, either side of the bearing block. His, 2026-10-11. \u26A0 IT IS NOT CASTING_RAIL_H: the rails are 30 and carry a different pair of bolts, so the casting is bolted down at TWO different thicknesses and the two bolt lengths differ by exactly that 5."
+
+[[dim]]
+sym = "CASTING_RAIL_BOLTS"
+value = 2
+provenance = "part"
+note = "Two M5 through the casting's RAILS and into the interposer. His, 2026-10-11."
+
+[[dim]]
+sym = "CASTING_BLOCK_BOLTS"
+value = 4
+provenance = "part"
+note = "Four M5 through the casting either side of the BEARING BLOCK and into the interposer. His, 2026-10-11. With CASTING_RAIL_BOLTS that is six M5 holding each casting down, and six tapped holes in each interposer."
+
+[[dim]]
+sym = "CASTING_RAIL_BOLT_L"
+expr = "CASTING_RAIL_H + T_INTERPOSER"
+note = "M5 x 40 through the casting rails - 30 of rail plus 10 of interposer. His, 2026-10-11, and he gave the 40 and its breakdown together. \u2705 IT CLOSES EXACTLY ON THE STACK, which is what says the INTERPOSER IS TAPPED: the bolt finishes flush with the interposer's far face, so it cannot be reaching a T-nut in the beam beyond it - there is nothing left to reach with. 10 of M5 thread is 2 x D, which is generous. \U0001F4CC THE SAME SHAPE AS THE FIN'S M8 x 16, which is 6 of angle leg plus 10 of tapped plate: a bolt length that equals the stack is the tell that the last layer carries the thread."
+
+[[dim]]
+sym = "CASTING_BLOCK_BOLT_L"
+expr = "CASTING_T_AT_BLOCK + T_INTERPOSER"
+note = "M5 x 45 through the casting either side of the bearing block - 35 of casting plus 10 of interposer. His, 2026-10-11. Same construction as CASTING_RAIL_BOLT_L and the same 10 of tapped interposer; only the casting thickness differs."
+
+[[dim]]
+sym = "INTERPOSER_TAPPED_M5"
+expr = "CASTING_RAIL_BOLTS + CASTING_BLOCK_BOLTS"
+note = "Six M5 tapped through each interposer, for the casting above it. \U0001F534 THE INTERPOSER CARRIES TWO SEPARATE BOLT PATTERNS AND THEY MUST NOT BE CONFUSED: these six are TAPPED M5 holding the CASTING DOWN onto it, while INTERPOSER_BOLT_ROW_1 and _2 are M8 CLEARANCE holes for the bolts that hold the INTERPOSER ITSELF to the beam's T-slots. Different thread, different direction of assembly, different part being held. \u26A0 THE TAPPING IS THE WHOLE DEPTH: T_INTERPOSER is 10 and both bolt lengths end flush with its far face, so there is no margin for a bolt that runs long - and a long one would stand proud into the beam's slot face."
