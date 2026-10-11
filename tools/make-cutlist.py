@@ -15,6 +15,7 @@ skins are BOX_W x BOX_FORE_AFT and BOX_W is within 8 mm of a 4-foot sheet.
 Writes machine/drawings/box-cutlist.html and prints the sheet summary.
 No third-party imports, same as every other tool here.
 """
+import argparse
 import sys
 from pathlib import Path
 
@@ -30,11 +31,18 @@ SHEETS = [
     ("5 x 5", 1524.0, 1524.0),
 ]
 
-# How much is lost to a saw cut. 3 mm is a thin-kerf blade and the honest
-# figure for a track saw; it is applied between parts, not around the sheet.
-KERF = 3.0
-# Trim taken off the factory edges before anything is cut to size.
-EDGE_TRIM = 6.0
+# HIS NUMBERS, 2026-10-11, and they are the whole answer to the sheet-size
+# question. A Festool track saw takes 1.6 off a Baltic birch factory edge and
+# that is ALL he removes - he does not trim an allowance on top of the kerf.
+#
+# 🔴 THESE WERE 3.0 AND 6.0 FOR ONE COMMIT AND BOTH WERE INVENTED. On that
+# pair a 4 x 8 sheet came out 2.8 SHORT of the skins and the tool said 5 x 5
+# was required. It is not: the 6 was a trim allowance nobody had asked for,
+# and it alone decided the answer. Defaults are his practice now, and both are
+# overridable so a different blade or a different habit can be tested rather
+# than argued about.
+KERF = 1.6
+EDGE_TRIM = 1.6
 
 
 def parts(v):
@@ -126,7 +134,35 @@ def pack(pieces, sw, sl):
     return sheets, None
 
 
+def tightest(pieces, sw, sl):
+    """The least spare any part has against the sheet's narrow dimension.
+
+    PASS/FAIL IS NOT ENOUGH HERE. The skins clear a 4 ft sheet by a few
+    millimetres, so whether that sheet arrives on size matters more than the
+    sheet count does - and a number he can check against the delivered board
+    is the only form of that warning worth printing.
+    """
+    usable_w, usable_l = sw - 2 * EDGE_TRIM, sl - 2 * EDGE_TRIM
+    best, who = None, ""
+    for name, a, b, qty, _t in pieces:
+        lng, shrt = max(a, b), min(a, b)
+        spare = max(usable_w - shrt if lng <= usable_l else -1e9,
+                    usable_w - lng if shrt <= usable_l else -1e9)
+        if best is None or spare < best:
+            best, who = spare, name
+    return best, who
+
+
 def main():
+    global KERF, EDGE_TRIM
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--kerf", type=float, default=KERF,
+                    help=f"saw kerf between parts, mm (default {KERF})")
+    ap.add_argument("--trim", type=float, default=EDGE_TRIM,
+                    help=f"taken off each factory edge, mm (default {EDGE_TRIM})")
+    a = ap.parse_args()
+    KERF, EDGE_TRIM = a.kerf, a.trim
+
     reg = Registry()
     reg.evaluate_all()
     if reg.errors:
@@ -148,7 +184,8 @@ def main():
             rows_html.append((t, name, a, b, qty))
         print()
 
-    print("SHEETS NEEDED, per thickness (shelf-packed, an UPPER bound)\n")
+    print(f"SHEETS NEEDED - kerf {KERF:g}, edge trim {EDGE_TRIM:g} "
+          f"(shelf-packed, an UPPER bound)\n")
     summary = []
     for label, sw, sl in SHEETS:
         print(f"  {label} ({sw:g} x {sl:g})")
@@ -161,7 +198,9 @@ def main():
                 ok = False
                 summary.append((label, t, None, fail))
             else:
-                print(f"    {t:g} mm : {n} sheet(s)")
+                tight, part = tightest(by_t[t], sw, sl)
+                print(f"    {t:g} mm : {n} sheet(s)   tightest {tight:.2f} spare"
+                      f"  ({part})")
                 total += n
                 summary.append((label, t, n, None))
         print(f"    total   : {total} sheet(s)" if ok else "    total   : n/a")
@@ -217,8 +256,9 @@ from the same sheet.</div>
 {''.join(th)}</table>
 
 <h2>Sheets</h2>
-<p>Shelf-packed with a {KERF:g} mm kerf and {EDGE_TRIM:g} mm trimmed off each
-factory edge. <b>This is an upper bound</b> &mdash; parts are laid in rows and
+<p>Shelf-packed with a <b>{KERF:g} mm</b> kerf and <b>{EDGE_TRIM:g} mm</b> off
+each factory edge &mdash; a Festool track saw on Baltic birch, which is all that
+gets removed. <b>This is an upper bound</b> &mdash; parts are laid in rows and
 never backfilled, so a real nest does better.</p>
 <table><tr><th>Sheet</th><th>Thickness</th><th>Needs</th></tr>
 {''.join(sh)}</table>
