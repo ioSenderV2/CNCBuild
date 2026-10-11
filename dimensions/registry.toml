@@ -2608,8 +2608,8 @@ note = "12 - the groove's width, measured inboard from TT_BED_GROOVE_INSET. The 
 [[dim]]
 sym = "POST_W"
 value = 86
-provenance = "nominal"
-note = "86 - the cedar post, square, the 4x4 at each of the three load-bearing points. \U0001F534 NOMINAL AND KNOWN TO BE OPTIMISTIC: S4S 4x4 is commonly 88.9 and cedar varies between sticks, so assembly.md's standing instruction is MEASURE THE THREE YOU HAVE and cut each hole to its own post. Every tenon figure below is this less a ledge, so a stick that measures 88.9 gives a tenon 2.9 larger than the derived number - that is expected, not an error."
+provenance = "part"
+note = "86 - the cedar post, square, the 4x4 at each of the three load-bearing points. \u2705 IT IS MACHINED TO THIS, NOT MEASURED AT IT - his call 2026-10-11: he dresses all three on the Hammer A31, so 86 is a TARGET HE PRODUCES rather than a figure inherited from whatever the stick gave. \U0001F534 THAT RETIRES 'CUT EACH HOLE TO ITS OWN POST', which this file and assembly.md both carried: with three posts at one size the three tenon holes are identical and come off one setup, and TENON_CORNER's 42 stops being provisional. \u2705 THE SQUARE FACES MATTER MORE THAN THE WIDTH: the ledge is a cross-cut shoulder and the perimeter wall lands directly over it, so a face out of square puts the bearing on an edge instead of a face - which is the half of the jointer's job that the width figure does not capture. \u26A0 86 WAS CHOSEN AGAIN RATHER THAN INHERITED: it is what everything already derives from, and reaching it from a nominal 88.9 S4S stick is about 1.45 off each of two faces. \U0001F4CC TENON_HOLE_CLEAR STILL STANDS at 1 a side - machining the posts makes the holes identical, not the assembly easier; a 565 lb box still has to be lowered onto three tenons. \U0001F4CC WHAT THIS REPLACED, 2026-10-11: the note read NOMINAL AND KNOWN TO BE OPTIMISTIC, with a standing instruction to measure the three you have and cut each hole to its own post, because a stick measuring 88.9 would give a tenon 2.9 larger than derived. Machining the posts removes that whole branch."
 
 [[dim]]
 sym = "T_BOX_LEDGE"

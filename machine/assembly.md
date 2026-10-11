@@ -671,9 +671,17 @@ when the outer lamination went to 25.
 | Front left / front right | the **side** face and the **front** face | **42 × 42** |
 | Back centre | the **back** face | **86 × 42** |
 
-⚠️ **Cut each hole to its own post.** 86 mm is the working figure; S4S 4×4 is commonly 88.9 and
-cedar varies between sticks. **Measure the three you have** — a 44 mm ledge on two adjacent faces of
-an 88.9 stick leaves ~45 mm, not 42.
+✅ **Dress all three posts to 86 mm square on the jointer/planer**, settled 2026-10-11 — so the three
+tenon holes are **identical** and come off one setup. The older instruction to cut each hole to its
+own post is retired; it existed because an S4S 4×4 commonly runs 88.9 and cedar varies between
+sticks.
+
+🔴 **Square faces matter more here than the width.** The ledge is a cross-cut shoulder and the
+perimeter wall lands directly over it, so a post face out of square puts the bearing on an edge
+instead of a face.
+
+📌 **The holes stay 2 mm generous** — machining the posts makes them identical, not the assembly
+easier. A 565 lb box still has to be lowered onto three tenons.
 
 🔴 **Drive one screw at an angle into the side of each tenon, from inside the cavity, BEFORE the top
 skin is glued.** After that there is no access to those tenons ever again. Not a vertical bolt down

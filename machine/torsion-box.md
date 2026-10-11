@@ -273,11 +273,11 @@ axis to **21**. Every structural number improved.
 Two side effects of the deeper ledges, both welcome: the corner shoulder area rises, and each corner
 tenon ends up snug against both perimeter walls, so it is **laterally located by the walls themselves**.
 
-⚠️ **The smaller the tenon, the more the cutting rule below matters** - a given error is a larger
-fraction of it. That is a **fit** concern and not a capacity one, and it does not bite either,
-because the box's position on the posts is **not a machine reference**: the machine is referenced to
-the top skin, so slop in the tenon changes nothing. A 44 mm ledge on two adjacent faces of a stick
-that measures 88.9 rather than 86 leaves ~45 mm, not 42.
+📌 **The smaller the tenon, the more a cutting error costs as a fraction of it** - but that is a
+**fit** concern and not a capacity one, and it does not bite either, because the box's position on
+the posts is **not a machine reference**: the machine is referenced to the top skin, so slop in the
+tenon changes nothing. ✅ **And since 2026-10-11 the posts are dressed to 86 square** rather than
+taken as they come, so the tenons are exactly 42 and all three holes are the same.
 
 ### Bearing, and the shoulder that stopped being single-sided
 
@@ -295,8 +295,10 @@ remedy, at the cost of wall-over-shoulder alignment. Doubling the back wall got 
 without paying that price: twice the area, a third less eccentricity, and the wall still lands
 directly over the shoulder.
 
-⚠️ **Cut each hole to its own post.** 86 mm is the working figure; S4S 4×4 is commonly 88.9 mm, and
-cedar varies between sticks. Measure the three you have.
+✅ **Dress all three posts to 86 mm square**, settled 2026-10-11 — one size, so the three tenon holes
+are identical. This previously read "cut each hole to its own post", because an S4S 4×4 commonly runs
+88.9 mm and cedar varies between sticks. 🔴 **Square faces matter more than the width**: the ledge is
+a cross-cut and the wall lands over it, so a face out of square bears on an edge.
 
 ---
 
