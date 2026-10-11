@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The torsion box cut list, generated from the registry.
+"""The torsion box cut list and sheet nesting, generated from the registry.
 
 WHY THIS IS GENERATED AND NOT TYPED: every part below is a plywood piece whose
 size depends on thicknesses that are still NOMINAL - the sheets have not been
@@ -10,7 +10,7 @@ would be wrong are the notch fits and the wall, which are the two that matter.
 It also answers the sheet-size question, because that is not eyeballable: the
 skins are BOX_W x BOX_FORE_AFT and BOX_W is within 8 mm of a 4-foot sheet.
 
-    python tools/make-cutlist.py
+    python tools/make-cutlist.py [--kerf 1.6] [--trim 1.6] [--sheet "4 x 8"]
 
 Writes machine/drawings/box-cutlist.html and prints the sheet summary.
 No third-party imports, same as every other tool here.
@@ -35,14 +35,17 @@ SHEETS = [
 # question. A Festool track saw takes 1.6 off a Baltic birch factory edge and
 # that is ALL he removes - he does not trim an allowance on top of the kerf.
 #
-# 🔴 THESE WERE 3.0 AND 6.0 FOR ONE COMMIT AND BOTH WERE INVENTED. On that
-# pair a 4 x 8 sheet came out 2.8 SHORT of the skins and the tool said 5 x 5
-# was required. It is not: the 6 was a trim allowance nobody had asked for,
-# and it alone decided the answer. Defaults are his practice now, and both are
-# overridable so a different blade or a different habit can be tested rather
-# than argued about.
+# 🔴 THESE WERE 3.0 AND 6.0 FOR ONE COMMIT AND BOTH WERE INVENTED. On that pair
+# a 4 x 8 sheet came out 2.8 SHORT of the skins and the tool reported 5 x 5 as
+# required. It is not: the 6 was a trim allowance nobody had asked for, and it
+# alone decided the answer. Defaults are his practice now, and both are
+# overridable so the next question of this kind gets tested, not argued.
 KERF = 1.6
 EDGE_TRIM = 1.6
+
+# One colour per part name, so a piece is recognisable across sheets.
+PALETTE = ["#cfe3f7", "#d8efd4", "#fbe3cd", "#e8dcf2", "#fdf0c4",
+           "#d6eef0", "#f6d8de", "#dfe3e8", "#e9f0cf", "#f2ded0"]
 
 
 def parts(v):
@@ -83,12 +86,17 @@ def parts(v):
 
 
 def pack(pieces, sw, sl):
-    """Shelf-pack onto sheets, longest piece first. Returns (sheets, fits).
+    """Shelf-pack onto sheets. Returns (placements, failure).
 
-    🔴 IT IS AN UPPER BOUND, NOT AN OPTIMUM. Shelf packing lays parts in rows
-    and never backfills, so a real nest beats it. That is the right error to
-    make here: a cut list that says three sheets and needs two wastes money,
-    one that says two and needs three stops the build.
+    A placement is (sheet, x, y, w, h, name), x along the sheet's LENGTH and y
+    across its WIDTH, both from the trimmed corner. Returning placements rather
+    than a count is what lets the nesting be DRAWN - a count can be believed or
+    not, a picture can be checked.
+
+    🔴 IT IS AN UPPER BOUND, NOT AN OPTIMUM. Shelf packing lays parts in rows and
+    never backfills, so a real nest beats it. That is the right error to make
+    here: a list that says three sheets and needs two wastes money, one that says
+    two and needs three stops the build.
     """
     usable_w, usable_l = sw - 2 * EDGE_TRIM, sl - 2 * EDGE_TRIM
     flat = []
@@ -103,44 +111,52 @@ def pack(pieces, sw, sl):
 
     for name, lng, shrt in flat:
         # A piece must fit some way round on a bare sheet at all. REPORT THE
-        # SHORTFALL, not just the refusal: "4 mm over" is a decision he can
-        # make - a sheet may run oversize, or the trim can be skipped on one
-        # edge - where a bare "will not fit" is not.
+        # SHORTFALL, not just the refusal: "over by 2.8" is a decision he can
+        # make - a sheet may run oversize - where a bare "will not fit" is not.
         if not ((lng <= usable_l and shrt <= usable_w)
                 or (lng <= usable_w and shrt <= usable_l)):
             over = min(max(lng - usable_l, shrt - usable_w),
                        max(lng - usable_w, shrt - usable_l))
             return None, f"{name}, over by {over:.2f}"
 
-    sheets = 1
-    rows = []                                       # (depth, remaining_width) per row
-    sheet_depth_used = 0.0
+    # FIRST FIT ACROSS ALL OPEN SHEETS, not next-fit on the current one. The
+    # difference is not cosmetic: the skin's row is 1210 deep and only 1211 of
+    # its 2435 length is used, so a 204-deep lamination drops into the space
+    # beside it - but only if earlier sheets stay open. Next-fit abandoned that
+    # row the moment a piece too long for it opened a new sheet, and left 1.2 m
+    # of usable row empty in the drawing.
+    out = []
+    sheets = [{"rows": [], "depth": 0.0}]   # rows: [y0, depth, x_cursor]
     for name, lng, shrt in flat:
         placed = False
-        for i, (depth, rem) in enumerate(rows):
-            if shrt <= depth and lng + KERF <= rem:
-                rows[i] = (depth, rem - lng - KERF)
+        for idx, sheet in enumerate(sheets):
+            for row in sheet["rows"]:
+                if shrt <= row[1] and row[2] + lng <= usable_l:
+                    out.append((idx, row[2], row[0], lng, shrt, name))
+                    row[2] += lng + KERF
+                    placed = True
+                    break
+            if placed:
+                break
+            if sheet["depth"] + shrt <= usable_w:
+                out.append((idx, 0.0, sheet["depth"], lng, shrt, name))
+                sheet["rows"].append([sheet["depth"], shrt, lng + KERF])
+                sheet["depth"] += shrt + KERF
                 placed = True
                 break
-        if placed:
-            continue
-        if sheet_depth_used + shrt + KERF <= usable_w:
-            rows.append((shrt, usable_l - lng - KERF))
-            sheet_depth_used += shrt + KERF
-        else:
-            sheets += 1
-            rows = [(shrt, usable_l - lng - KERF)]
-            sheet_depth_used = shrt + KERF
-    return sheets, None
+        if not placed:
+            sheets.append({"rows": [[0.0, shrt, lng + KERF]], "depth": shrt + KERF})
+            out.append((len(sheets) - 1, 0.0, 0.0, lng, shrt, name))
+    return out, None
 
 
 def tightest(pieces, sw, sl):
-    """The least spare any part has against the sheet's narrow dimension.
+    """The least spare any part has against the sheet's NARROW dimension.
 
     PASS/FAIL IS NOT ENOUGH HERE. The skins clear a 4 ft sheet by a few
     millimetres, so whether that sheet arrives on size matters more than the
-    sheet count does - and a number he can check against the delivered board
-    is the only form of that warning worth printing.
+    sheet count does - and a number he can check against the delivered board is
+    the only form of that warning worth printing.
     """
     usable_w, usable_l = sw - 2 * EDGE_TRIM, sl - 2 * EDGE_TRIM
     best, who = None, ""
@@ -153,6 +169,41 @@ def tightest(pieces, sw, sl):
     return best, who
 
 
+def nest_svg(places, sw, sl, colours, s=0.105):
+    """One SVG per sheet, to scale, sheet length running left to right.
+
+    THE TRIM BORDER IS DRAWN as a dashed line inside the sheet edge, because the
+    whole 4 x 8 answer turns on how much comes off those edges - a nesting
+    picture that hid it would hide the one assumption worth seeing.
+    """
+    by_sheet = {}
+    for sheet, x, y, w, h, name in places:
+        by_sheet.setdefault(sheet, []).append((x, y, w, h, name))
+    svgs = []
+    for sheet in sorted(by_sheet):
+        pw, ph, t = sl * s, sw * s, EDGE_TRIM * s
+        body = [f'<rect x="0" y="0" width="{pw:.1f}" height="{ph:.1f}" '
+                f'fill="#fcfcfc" stroke="#777"/>',
+                f'<rect x="{t:.1f}" y="{t:.1f}" width="{pw - 2 * t:.1f}" '
+                f'height="{ph - 2 * t:.1f}" fill="none" stroke="#c00" '
+                f'stroke-dasharray="4 3" stroke-width="0.7"/>']
+        for x, y, w, h, name in sorted(by_sheet[sheet], key=lambda p: (p[1], p[0])):
+            px, py, ww, hh = t + x * s, t + y * s, w * s, h * s
+            body.append(f'<rect x="{px:.1f}" y="{py:.1f}" width="{ww:.1f}" '
+                        f'height="{hh:.1f}" fill="{colours[name]}" '
+                        f'stroke="#333" stroke-width="0.6"/>')
+            if hh > 9 and ww > 40:
+                body.append(
+                    f'<text x="{px + ww / 2:.1f}" y="{py + hh / 2 + 2.6:.1f}" '
+                    f'text-anchor="middle" font-size="7">{name}'
+                    f'<tspan font-size="5.5" fill="#555">  {w:.0f}&#215;{h:.0f}'
+                    f'</tspan></text>')
+        svgs.append((sheet + 1,
+                     f'<svg viewBox="0 0 {pw:.1f} {ph:.1f}" width="100%" '
+                     f'style="max-width:{pw:.0f}px">{"".join(body)}</svg>'))
+    return svgs
+
+
 def main():
     global KERF, EDGE_TRIM
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -160,6 +211,8 @@ def main():
                     help=f"saw kerf between parts, mm (default {KERF})")
     ap.add_argument("--trim", type=float, default=EDGE_TRIM,
                     help=f"taken off each factory edge, mm (default {EDGE_TRIM})")
+    ap.add_argument("--sheet", default="4 x 8",
+                    help='which sheet size to DRAW the nesting for')
     a = ap.parse_args()
     KERF, EDGE_TRIM = a.kerf, a.trim
 
@@ -171,6 +224,7 @@ def main():
     v = {s: reg.value(s) for s in reg.order}
 
     all_parts = parts(v)
+    colours = {p[0]: PALETTE[i % len(PALETTE)] for i, p in enumerate(all_parts)}
     by_t = {}
     for p in all_parts:
         by_t.setdefault(round(p[4], 3), []).append(p)
@@ -179,42 +233,44 @@ def main():
     rows_html = []
     for t in sorted(by_t, reverse=True):
         print(f"  --- {t:g} mm ---")
-        for name, a, b, qty, _ in by_t[t]:
-            print(f"    {name:22s} {a:9.2f} x {b:7.2f}   x{qty}")
-            rows_html.append((t, name, a, b, qty))
+        for name, aa, bb, qty, _ in by_t[t]:
+            print(f"    {name:22s} {aa:9.2f} x {bb:7.2f}   x{qty}")
+            rows_html.append((t, name, aa, bb, qty))
         print()
 
     print(f"SHEETS NEEDED - kerf {KERF:g}, edge trim {EDGE_TRIM:g} "
           f"(shelf-packed, an UPPER bound)\n")
-    summary = []
+    summary, nests = [], []
     for label, sw, sl in SHEETS:
         print(f"  {label} ({sw:g} x {sl:g})")
-        total = 0
-        ok = True
+        total, ok = 0, True
         for t in sorted(by_t, reverse=True):
-            n, fail = pack(by_t[t], sw, sl)
-            if n is None:
+            places, fail = pack(by_t[t], sw, sl)
+            if places is None:
                 print(f"    {t:g} mm : DOES NOT FIT - {fail}")
                 ok = False
                 summary.append((label, t, None, fail))
-            else:
-                tight, part = tightest(by_t[t], sw, sl)
-                print(f"    {t:g} mm : {n} sheet(s)   tightest {tight:.2f} spare"
-                      f"  ({part})")
-                total += n
-                summary.append((label, t, n, None))
+                continue
+            n = max(p[0] for p in places) + 1
+            tight, part = tightest(by_t[t], sw, sl)
+            print(f"    {t:g} mm : {n} sheet(s)   tightest {tight:.2f} spare"
+                  f"  ({part})")
+            total += n
+            summary.append((label, t, n, None))
+            if label == a.sheet:
+                for num, svg in nest_svg(places, sw, sl, colours):
+                    nests.append((t, num, svg))
         print(f"    total   : {total} sheet(s)" if ok else "    total   : n/a")
         print()
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows_html, summary, v), encoding="utf-8")
+    OUT.write_text(render(rows_html, summary, nests, a.sheet, v), encoding="utf-8")
     print("wrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, summary, v):
-    th = []
-    last_t = None
+def render(rows, summary, nests, drawn, v):
+    th, last_t = [], None
     for t, name, a, b, qty in rows:
         if t != last_t:
             th.append(f'<tr class="grp"><td colspan="4">{t:g} mm</td></tr>')
@@ -223,8 +279,11 @@ def render(rows, summary, v):
                   f"<td class=n>{b:.1f}</td><td class=n>{qty}</td></tr>")
     sh = []
     for label, t, n, fail in summary:
-        cell = f"{n} sheet(s)" if n else f'<b class="bad">will not fit</b> &mdash; {fail}'
+        cell = (f"{n} sheet(s)" if n
+                else f'<b class="bad">will not fit</b> &mdash; {fail}')
         sh.append(f"<tr><td>{label}</td><td class=n>{t:g} mm</td><td>{cell}</td></tr>")
+    ns = [f'<div class="nest"><h3>{t:g} mm &mdash; sheet {num}</h3>{svg}</div>'
+          for t, num, svg in nests]
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <title>CNCBuild &mdash; Torsion Box Cut List</title>
@@ -233,6 +292,7 @@ def render(rows, summary, v):
  body {{ font: 10.5pt "Segoe UI", sans-serif; color: #111; max-width: 190mm; }}
  h1 {{ font-size: 15pt; margin: 0 0 2mm; }}
  h2 {{ font-size: 12pt; margin: 7mm 0 2mm; border-bottom: 1px solid #bbb; }}
+ h3 {{ font-size: 10pt; margin: 4mm 0 1mm; color: #444; }}
  table {{ border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; }}
  td, th {{ border: 1px solid #ccc; padding: 1.4mm 2.2mm; }}
  th {{ background: #eee; text-align: left; }}
@@ -241,10 +301,11 @@ def render(rows, summary, v):
  .bad {{ color: #a00; }}
  .note {{ background: #fff8e1; border-left: 3px solid #e0a800;
           padding: 2mm 3mm; margin: 3mm 0; }}
+ .nest {{ page-break-inside: avoid; margin: 0 0 4mm; }}
 </style></head><body>
 <h1>Torsion box &mdash; cut list</h1>
-<p>Box <b>{v['BOX_W']:.2f}</b> across by <b>{v['BOX_FORE_AFT']:.0f}</b> front to back,
-<b>{v['BOX_THK']:.0f}</b> deep. All sizes in mm.</p>
+<p>Box <b>{v['BOX_W']:.2f}</b> across by <b>{v['BOX_FORE_AFT']:.0f}</b> front to
+back, <b>{v['BOX_THK']:.0f}</b> deep. All sizes in mm.</p>
 
 <div class="note"><b>Cut the rib notches to the sheet in hand, not to the number
 in this table.</b> The plywood thicknesses here are nominal until the sheets are
@@ -258,15 +319,21 @@ from the same sheet.</div>
 <h2>Sheets</h2>
 <p>Shelf-packed with a <b>{KERF:g} mm</b> kerf and <b>{EDGE_TRIM:g} mm</b> off
 each factory edge &mdash; a Festool track saw on Baltic birch, which is all that
-gets removed. <b>This is an upper bound</b> &mdash; parts are laid in rows and
+gets removed. <b>The counts are an upper bound</b>: parts are laid in rows and
 never backfilled, so a real nest does better.</p>
 <table><tr><th>Sheet</th><th>Thickness</th><th>Needs</th></tr>
 {''.join(sh)}</table>
 
+<h2>Nesting &mdash; {drawn}</h2>
+<p>To scale, sheet length left to right. The dashed red line is the
+<b>{EDGE_TRIM:g} mm</b> off each factory edge; everything sits inside it.
+Offcut is whatever stays white.</p>
+{''.join(ns)}
+
 <h2>Notches</h2>
-<p>Egg crate, continuous both ways, half-depth notches at every crossing.
-Notch depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and
-loses contact with a skin along its whole length. The fit is a slip fit, not a
+<p>Egg crate, continuous both ways, half-depth notches at every crossing. Notch
+depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and loses
+contact with a skin along its whole length. The fit is a slip fit, not a
 clearance: too tight splits the rib, too loose leaves no glue line.</p>
 <p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
 20 &times; 15, so the sand can migrate between cells.</p>

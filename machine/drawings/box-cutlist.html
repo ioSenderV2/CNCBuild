@@ -6,6 +6,7 @@
  body { font: 10.5pt "Segoe UI", sans-serif; color: #111; max-width: 190mm; }
  h1 { font-size: 15pt; margin: 0 0 2mm; }
  h2 { font-size: 12pt; margin: 7mm 0 2mm; border-bottom: 1px solid #bbb; }
+ h3 { font-size: 10pt; margin: 4mm 0 1mm; color: #444; }
  table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; }
  td, th { border: 1px solid #ccc; padding: 1.4mm 2.2mm; }
  th { background: #eee; text-align: left; }
@@ -14,10 +15,11 @@
  .bad { color: #a00; }
  .note { background: #fff8e1; border-left: 3px solid #e0a800;
           padding: 2mm 3mm; margin: 3mm 0; }
+ .nest { page-break-inside: avoid; margin: 0 0 4mm; }
 </style></head><body>
 <h1>Torsion box &mdash; cut list</h1>
-<p>Box <b>1211.24</b> across by <b>1210</b> front to back,
-<b>144</b> deep. All sizes in mm.</p>
+<p>Box <b>1211.24</b> across by <b>1210</b> front to
+back, <b>144</b> deep. All sizes in mm.</p>
 
 <div class="note"><b>Cut the rib notches to the sheet in hand, not to the number
 in this table.</b> The plywood thicknesses here are nominal until the sheets are
@@ -31,15 +33,21 @@ from the same sheet.</div>
 <h2>Sheets</h2>
 <p>Shelf-packed with a <b>1.6 mm</b> kerf and <b>1.6 mm</b> off
 each factory edge &mdash; a Festool track saw on Baltic birch, which is all that
-gets removed. <b>This is an upper bound</b> &mdash; parts are laid in rows and
+gets removed. <b>The counts are an upper bound</b>: parts are laid in rows and
 never backfilled, so a real nest does better.</p>
 <table><tr><th>Sheet</th><th>Thickness</th><th>Needs</th></tr>
 <tr><td>4 x 8</td><td class=n>25 mm</td><td>2 sheet(s)</td></tr><tr><td>4 x 8</td><td class=n>19 mm</td><td>2 sheet(s)</td></tr><tr><td>5 x 5</td><td class=n>25 mm</td><td>2 sheet(s)</td></tr><tr><td>5 x 5</td><td class=n>19 mm</td><td>2 sheet(s)</td></tr></table>
 
+<h2>Nesting &mdash; 4 x 8</h2>
+<p>To scale, sheet length left to right. The dashed red line is the
+<b>1.6 mm</b> off each factory edge; everything sits inside it.
+Offcut is whatever stays white.</p>
+<div class="nest"><h3>25 mm &mdash; sheet 1</h3><svg viewBox="0 0 256.0 128.0" width="100%" style="max-width:256px"><rect x="0" y="0" width="256.0" height="128.0" fill="#fcfcfc" stroke="#777"/><rect x="0.2" y="0.2" width="255.7" height="127.7" fill="none" stroke="#c00" stroke-dasharray="4 3" stroke-width="0.7"/><rect x="0.2" y="0.2" width="127.2" height="127.0" fill="#cfe3f7" stroke="#333" stroke-width="0.6"/><text x="63.8" y="66.3" text-anchor="middle" font-size="7">Top skin<tspan font-size="5.5" fill="#555">  1211&#215;1210</tspan></text><rect x="127.5" y="0.2" width="126.4" height="21.4" fill="#fbe3cd" stroke="#333" stroke-width="0.6"/><text x="190.7" y="13.5" text-anchor="middle" font-size="7">Side lamination<tspan font-size="5.5" fill="#555">  1204&#215;204</tspan></text></svg></div><div class="nest"><h3>25 mm &mdash; sheet 2</h3><svg viewBox="0 0 256.0 128.0" width="100%" style="max-width:256px"><rect x="0" y="0" width="256.0" height="128.0" fill="#fcfcfc" stroke="#777"/><rect x="0.2" y="0.2" width="255.7" height="127.7" fill="none" stroke="#c00" stroke-dasharray="4 3" stroke-width="0.7"/><rect x="0.2" y="0.2" width="132.4" height="21.4" fill="#e8dcf2" stroke="#333" stroke-width="0.6"/><text x="66.4" y="13.5" text-anchor="middle" font-size="7">Back lamination<tspan font-size="5.5" fill="#555">  1261&#215;204</tspan></text><rect x="0.2" y="21.8" width="126.4" height="21.4" fill="#fbe3cd" stroke="#333" stroke-width="0.6"/><text x="63.4" y="35.1" text-anchor="middle" font-size="7">Side lamination<tspan font-size="5.5" fill="#555">  1204&#215;204</tspan></text><rect x="0.2" y="43.3" width="132.4" height="15.1" fill="#fdf0c4" stroke="#333" stroke-width="0.6"/><text x="66.4" y="53.5" text-anchor="middle" font-size="7">Front cap<tspan font-size="5.5" fill="#555">  1261&#215;144</tspan></text></svg></div><div class="nest"><h3>19 mm &mdash; sheet 1</h3><svg viewBox="0 0 256.0 128.0" width="100%" style="max-width:256px"><rect x="0" y="0" width="256.0" height="128.0" fill="#fcfcfc" stroke="#777"/><rect x="0.2" y="0.2" width="255.7" height="127.7" fill="none" stroke="#c00" stroke-dasharray="4 3" stroke-width="0.7"/><rect x="0.2" y="0.2" width="127.2" height="127.0" fill="#d8efd4" stroke="#333" stroke-width="0.6"/><text x="63.8" y="66.3" text-anchor="middle" font-size="7">Bottom skin<tspan font-size="5.5" fill="#555">  1211&#215;1210</tspan></text><rect x="127.5" y="0.2" width="127.2" height="10.5" fill="#d6eef0" stroke="#333" stroke-width="0.6"/><text x="191.1" y="8.0" text-anchor="middle" font-size="7">Web, back and front<tspan font-size="5.5" fill="#555">  1211&#215;100</tspan></text></svg></div><div class="nest"><h3>19 mm &mdash; sheet 2</h3><svg viewBox="0 0 256.0 128.0" width="100%" style="max-width:256px"><rect x="0" y="0" width="256.0" height="128.0" fill="#fcfcfc" stroke="#777"/><rect x="0.2" y="0.2" width="255.7" height="127.7" fill="none" stroke="#c00" stroke-dasharray="4 3" stroke-width="0.7"/><rect x="0.2" y="0.2" width="127.2" height="10.5" fill="#d6eef0" stroke="#333" stroke-width="0.6"/><text x="63.8" y="8.0" text-anchor="middle" font-size="7">Web, back and front<tspan font-size="5.5" fill="#555">  1211&#215;100</tspan></text><rect x="127.5" y="0.2" width="123.2" height="10.5" fill="#e9f0cf" stroke="#333" stroke-width="0.6"/><text x="189.1" y="8.0" text-anchor="middle" font-size="7">Rib, across<tspan font-size="5.5" fill="#555">  1173&#215;100</tspan></text><rect x="0.2" y="10.8" width="123.2" height="10.5" fill="#e9f0cf" stroke="#333" stroke-width="0.6"/><text x="61.8" y="18.7" text-anchor="middle" font-size="7">Rib, across<tspan font-size="5.5" fill="#555">  1173&#215;100</tspan></text><rect x="123.5" y="10.8" width="123.2" height="10.5" fill="#e9f0cf" stroke="#333" stroke-width="0.6"/><text x="185.1" y="18.7" text-anchor="middle" font-size="7">Rib, across<tspan font-size="5.5" fill="#555">  1173&#215;100</tspan></text><rect x="0.2" y="21.5" width="123.2" height="10.5" fill="#e9f0cf" stroke="#333" stroke-width="0.6"/><text x="61.8" y="29.4" text-anchor="middle" font-size="7">Rib, across<tspan font-size="5.5" fill="#555">  1173&#215;100</tspan></text><rect x="123.5" y="21.5" width="123.1" height="10.5" fill="#f6d8de" stroke="#333" stroke-width="0.6"/><text x="185.1" y="29.4" text-anchor="middle" font-size="7">Web, sides<tspan font-size="5.5" fill="#555">  1172&#215;100</tspan></text><rect x="0.2" y="32.2" width="123.1" height="10.5" fill="#f6d8de" stroke="#333" stroke-width="0.6"/><text x="61.7" y="40.0" text-anchor="middle" font-size="7">Web, sides<tspan font-size="5.5" fill="#555">  1172&#215;100</tspan></text><rect x="123.4" y="32.2" width="123.1" height="10.5" fill="#dfe3e8" stroke="#333" stroke-width="0.6"/><text x="184.9" y="40.0" text-anchor="middle" font-size="7">Rib, fore-aft<tspan font-size="5.5" fill="#555">  1172&#215;100</tspan></text><rect x="0.2" y="42.8" width="123.1" height="10.5" fill="#dfe3e8" stroke="#333" stroke-width="0.6"/><text x="61.7" y="50.7" text-anchor="middle" font-size="7">Rib, fore-aft<tspan font-size="5.5" fill="#555">  1172&#215;100</tspan></text><rect x="123.4" y="42.8" width="123.1" height="10.5" fill="#dfe3e8" stroke="#333" stroke-width="0.6"/><text x="184.9" y="50.7" text-anchor="middle" font-size="7">Rib, fore-aft<tspan font-size="5.5" fill="#555">  1172&#215;100</tspan></text><rect x="0.2" y="53.5" width="123.1" height="10.5" fill="#dfe3e8" stroke="#333" stroke-width="0.6"/><text x="61.7" y="61.4" text-anchor="middle" font-size="7">Rib, fore-aft<tspan font-size="5.5" fill="#555">  1172&#215;100</tspan></text><rect x="123.4" y="53.5" width="23.0" height="10.5" fill="#f2ded0" stroke="#333" stroke-width="0.6"/><rect x="146.6" y="53.5" width="23.0" height="10.5" fill="#f2ded0" stroke="#333" stroke-width="0.6"/></svg></div>
+
 <h2>Notches</h2>
-<p>Egg crate, continuous both ways, half-depth notches at every crossing.
-Notch depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and
-loses contact with a skin along its whole length. The fit is a slip fit, not a
+<p>Egg crate, continuous both ways, half-depth notches at every crossing. Notch
+depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and loses
+contact with a skin along its whole length. The fit is a slip fit, not a
 clearance: too tight splits the rib, too loose leaves no glue line.</p>
 <p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
 20 &times; 15, so the sand can migrate between cells.</p>
