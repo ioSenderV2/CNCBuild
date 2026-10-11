@@ -83,13 +83,18 @@ tracks hold the MDF down, counterbored well below the surface so there is depth 
 
 The tee track sections are **47" = 1193.8 mm**, and the clear span between the side plates' inside
 faces is **1211.238 − 2 × 3.429 = 1204.38 mm**. The tracks are therefore **10.58 mm short** of the
-span - there is nothing to cut off. The gap is split, **5 mm of spacer at each end**, and bolts pass
-through the side plate into the threaded holes in the track ends.
+span - there is nothing to cut off. Bolts pass through the side plate into the threaded holes in the
+track ends, with the **5.29 mm each side taken up by a washer stack on each bolt**.
 
-✅ **Those bolts only stop it walking.** Bedded flat on the box, gravity holds the stack down; the end
-fixing has no hold-down duty, which is what makes a 5 mm spacer in the load path a non-issue. The
-bolts land in plywood at the box end, so threaded inserts in the top skin rather than screws into a
-ply edge.
+✅ **The gap is a clearance, not a part.** It was first written as a spacer thickness, and 5.29 is not
+a flat bar anybody stocks - which is exactly how a part that cannot be bought gets onto a list. A
+washer stack costs nothing, needs no fit, and does the one thing required: keep the bolt from drawing
+the side plate inward as it tightens. Whatever the stack comes to is what the bed floats by, and the
+float does not matter.
+
+✅ **Those bolts only stop it walking.** Bedded flat on the box, gravity holds the stack down and the
+end fixing has no hold-down duty. The bolts land in plywood at the box end, so threaded inserts in
+the top skin rather than screws into a ply edge.
 
 📌 **Hold the stack a few millimetres short of the side plates' inside faces** and the tongue bolt
 heads at Y 30 live in a relief gap, with no plate geometry changed. That is cheaper than moving the
@@ -186,7 +191,8 @@ in plan** - it is not a vertical lever, so the bolt height does not touch it.
 
 The four plates and the two end spacers are drawn as the **Tee track bed** group in
 [`drawings/model-3d.html`](drawings/model-3d.html), 16 thick, z 0 to 16 on the top skin, and the
-group toggles off like any other assembly.
+group toggles off like any other assembly. **The end gaps are deliberately empty** - a washer stack
+has no footprint, and the model briefly drew a 5.29 × 1000 bar there that does not exist.
 
 **The slots are drawn as the flats between them.** Each flat is a full-thickness bar and the eight
 slots are the open gaps, which puts the top face and the 8 mm openings exactly where they are and

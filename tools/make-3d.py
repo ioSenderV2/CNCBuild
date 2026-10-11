@@ -329,12 +329,11 @@ def main() -> int:
             print(f"tee track plate {i}: flats and slots sum to {y - py0}, "
                   f"not {bed_pw}", file=sys.stderr)
             return 2
-    # The spacers that take up the 1193.8 against the 1204.38.
-    for sx in (v["T_SIDE_PLATE"], bed_x0 + v["TT_BED_L"]):
-        box("Bed end spacer", "bed", 0x8A9094,
-            sx, bed_y0, 0, sx + v["TT_BED_SPACER"],
-            bed_y0 + v["TT_BED_FORE_AFT"], v["TT_BED_T"],
-            d="stops it walking, carries no hold-down load")
+    # THE TT_BED_SPACER GAP AT EACH END IS NOT DRAWN, and that is right rather
+    # than missing: it is taken up by a WASHER STACK ON EACH BOLT - his, 2026-10-11
+    # - so there is no part with a footprint here to draw. It was briefly modelled
+    # as a 5.29 x 1000 x 16 bar at each end, which both invented a part and implied
+    # a flat bar in a thickness nobody stocks.
 
     # ---- the plates that stand on the skin -------------------------------
     # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side

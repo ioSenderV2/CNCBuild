@@ -2447,7 +2447,7 @@ note = "1204.38 - the clear span between the two side plates' INSIDE faces, whic
 [[dim]]
 sym = "TT_BED_SPACER"
 expr = "(TT_BED_CLEAR - TT_BED_L) / 2"
-note = "5.29 of spacer at each end of the bed, his call 2026-10-11 to split the shortfall - he said 5 mm and this is what the geometry makes it. \u2705 THE SPACER IS IN NO LOAD PATH: the bed is bedded flat on the top skin and gravity holds it down, so the bolts through the side plates into the track ends only stop it walking. That is what makes a spacer here a non-issue rather than a soft joint."
+note = "5.29 - THE GAP AT EACH END OF THE BED, not a part to obtain. \U0001F534 IT WAS WORDED AS A SPACER THICKNESS AND THAT IS HOW A 5.29 FLAT BAR GETS ORDERED, which does not exist - his point, 2026-10-11. \u2705 TAKEN UP BY A WASHER STACK ON EACH BOLT, his call the same day: the gap is split two ways by the bed sitting roughly central, and the standoff only has to keep the bolt from drawing the side plate inward as it tightens. So it needs AXIAL STIFFNESS UNDER THE HEAD and nothing else - no fit, no thickness to hit, and whatever the stack comes to is what the bed floats by. The bed carries no hold-down duty either: it beds flat on the top skin and gravity holds it, so these bolts only stop it walking. \u26A0 NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
 
 [[dim]]
 sym = "TT_BED_FORE_AFT"
