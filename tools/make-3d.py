@@ -471,10 +471,17 @@ def main() -> int:
     cap_z0 = -v["BOX_FRONT_CAP_H"]
     box("Front cap", "box", 0xA07B16, -cap_t, D, cap_z0, W + cap_t, D + cap_t, 0,
         d="25, flush with the top skin - the front has no tongue")
+    # 🔴 THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
+    # lamination is cut as ONE piece, SIDE_LAM_L long and TONGUE_FULL_H tall,
+    # and the proud portion forward of SIDE_LAM_PROUD_CUT is sawn away. It is
+    # drawn as two boxes here only because the elevation is an L - the same
+    # convention as the post tenon standing out of its stub, or the BF12 wing
+    # and boss. There is no butt joint at 1006.35 on the sides.
     for x0 in (-cap_t, W):
         box("Side cap", "box", 0xA07B16, x0, v["BOX_SIDE_CAP_START"], cap_z0,
             x0 + cap_t, D, 0,
-            d="25, flush - carries the fin's outboard overhang")
+            d="same piece as the side tongue, proud portion sawn off - "
+              "carries the fin's outboard overhang")
 
     # ---- the plates that stand on the skin -------------------------------
     # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side

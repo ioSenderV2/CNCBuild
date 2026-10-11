@@ -32,6 +32,12 @@ get it too, because the **front taper fins and the full-width back panel need th
   (The 180 this carried never closed - 100 + 19 + 60 is 179.) 📌 **The outer lamination
   IS the tongue** - one part, not two - which is why its thickness and the tongue's are a single
   decision.
+📌 **Each side's outer lamination is cut as ONE piece** - full box depth and full height - **and the
+proud portion forward of the beam's end is sawn away.** His build call 2026-10-11. So the side
+tongue and the front side cap are the same part, there is no butt joint where the tongue stops being
+proud, and the step is a saw cut. It wants a piece **1203.65 × 204** per side, so nest it before the
+sheet is cut.
+
 - **The front and back tongues are the continuous ones.** Each runs the full width and **19 mm past
   the front post tenon**, covering the end grain of the side tongue in a butt joint - so the side
   tongues die into them, not the other way round. That is what resolves the front-corner convergence
