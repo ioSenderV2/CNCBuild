@@ -5,7 +5,16 @@
    font:13px/1.5 "Segoe UI",system-ui,sans-serif;overflow:hidden}
  #c{position:fixed;inset:0}
  .panel{position:fixed;background:#23272dEE;border:1px solid #3a4048;border-radius:6px;padding:10px 12px}
- #ui{top:12px;left:12px;max-width:280px}
+ /* THE CONTROLS ARE A ROW ACROSS THE TOP OF THE WINDOW, not one Menu button -
+    his, 2026-10-11. Everything that used to sit at the top of the window is
+    pushed below the bar, so the bar never covers a readout. */
+ #bar{top:0;left:0;right:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;
+   padding:7px 10px;border:none;border-bottom:1px solid #3a4048;border-radius:0;z-index:10}
+ #bar h1{margin:0 10px 0 2px}
+ .mwrap{position:relative;display:inline-block}
+ .drop{position:absolute;top:calc(100% + 6px);left:0;border:1px solid #3a4048;
+   border-radius:5px;background:#1d2126;padding:3px 0;min-width:190px;z-index:11}
+ #facts{top:56px;left:12px;max-width:280px;margin-top:0}
  h1{font-size:14px;margin:0 0 8px}
  label{display:block;cursor:pointer;padding:1px 0}
  input{vertical-align:-2px;margin-right:6px}
@@ -22,7 +31,7 @@
  /* The two readouts share one row at the top right. Travel is the left of
     the pair, so when the DRO is switched off it falls into the DRO's place
     without anything having to measure or move. */
- #topright{position:fixed;top:12px;right:12px;display:flex;gap:10px;align-items:flex-start}
+ #topright{position:fixed;top:56px;right:12px;display:flex;gap:10px;align-items:flex-start}
  #topright .panel{position:static}
  #jogro h2{font-size:11px;margin:0 0 4px;color:#e8b64c;letter-spacing:.06em}
  #jogro table{font:13px/1.35 "Consolas",ui-monospace,monospace;border-collapse:collapse;margin:0}
@@ -35,21 +44,21 @@
  button{background:#2f353d;color:#cde;border:1px solid #454c55;border-radius:4px;
    padding:3px 10px;cursor:pointer;font:11.5px inherit}
  button:hover{background:#39414a}
- #menu{margin-top:6px;border:1px solid #3a4048;border-radius:5px;background:#1d2126;
-   padding:3px 0;min-width:190px}
+ button.on{background:#3d4a39;border-color:#5a6b53;color:#dfe}
  .mrow{padding:3px 10px;cursor:pointer;white-space:nowrap}
  .mrow:hover{background:#2f353d}
- .mrow.sub::after{content:' \25B8';float:right;color:#8a929b}
- .mrow.sub.open::after{content:' \25BE'}
- .mbody{border-left:2px solid #3a4048;margin:0 0 2px 10px}
- .mrow label,label.mrow{display:block;cursor:pointer}
+ /* One row per group, the box in its own column so the names line up. */
+ table.ptable{margin:0;font-size:12px}
+ table.ptable td{padding:2px 10px 2px 0;cursor:pointer;white-space:nowrap}
+ table.ptable td:first-child{padding:2px 2px 2px 8px}
+ table.ptable tr:hover{background:#2f353d}
  #dro{min-width:150px}
  #dro h2{font-size:11px;margin:0 0 4px;color:#e8b64c;letter-spacing:.06em}
  #dro table{font:15px/1.35 "Consolas",ui-monospace,monospace;border-collapse:collapse}
  #dro td.ax{color:#e8b64c;padding-right:10px}
  #dro td.v{text-align:right;color:#8fd}
  #dro .frame{margin-top:6px;font-size:10.5px;color:#8a929b;max-width:200px;white-space:normal}
- #help,#about{top:12px;left:50%;transform:translateX(-50%);max-width:520px;font-size:12px}
+ #help,#about{top:56px;left:50%;transform:translateX(-50%);max-width:520px;font-size:12px}
  #about{max-height:78vh;overflow-y:auto}
  #help h2,#about h2{font-size:12.5px;margin:0 0 6px;color:#e8b64c}
  #help b,#about b{color:#e8b64c}
@@ -60,10 +69,8 @@
 </style>
 <canvas id="c"></canvas>
 <div id="tip"></div>
-<div class="panel" id="ui"><h1>CNC assembly</h1>
-<button id="menubtn">Menu</button>
-<div id="menu" hidden></div><table id="facts" hidden></table>
-</div>
+<div class="panel" id="bar"><h1>CNC assembly</h1></div>
+<table class="panel" id="facts" hidden></table>
 <div id="topright"><div class="panel" id="jogro" hidden></div>
 <div class="panel" id="dro"></div></div>
 <div class="panel" id="help" hidden></div>
@@ -198,6 +205,14 @@ function place(){
 const onPanel=e=>!!(e.target.closest&&e.target.closest('.panel'));
 addEventListener('pointerdown',e=>{
   if(onPanel(e))return;              // a click on the UI is not a drag on the model
+  // CTRL + LEFT CLICK HIDES THE PART UNDER THE CURSOR - his, 2026-10-11. It
+  // swallows the left button's own drag, so the model does not pan as the part
+  // goes. Show all parts brings every one of them back.
+  if(e.button===0&&e.ctrlKey){
+    const h=pickAt(e);
+    if(h){h.object.userData.hid=true; applyVis(); tip.style.display='none';}
+    e.preventDefault(); return;
+  }
   if(e.button!==0&&e.button!==1)return;
   if(e.button===1)e.preventDefault();          // middle-click autoscroll
   down=[e.clientX,e.clientY]; mode=e.button===0?'pan':'orbit';});
@@ -297,12 +312,17 @@ function sizeOf(p){
   return f2(p.q[0]-p.p[0])+' x '+f2(p.q[1]-p.p[1])+' x '+f2(p.q[2]-p.p[2])+
          ' mm (X x fore-aft x Z)';
 }
+// THE RAYCASTER DOES NOT TEST .visible, so a part in a hidden group is still
+// hit - take the first intersection that is actually on the screen. Both the
+// hover and Ctrl+click go through here, so they can never disagree about which
+// part is under the cursor.
+function pickAt(e){
+  ray.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
+  return ray.intersectObjects(PICK,false).find(x=>x.object.visible);
+}
 addEventListener('pointermove',e=>{
   if(down||onPanel(e)){tip.style.display='none';return;}
-  ray.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
-  // THE RAYCASTER DOES NOT TEST .visible, so a part in a hidden group is still
-  // hit - take the first intersection that is actually on the screen.
-  const h=ray.intersectObjects(PICK,false).find(x=>x.object.visible);
+  const h=pickAt(e);
   if(!h){tip.style.display='none';return;}
   const p=h.object.userData.part;
   tip.innerHTML='<b class="w">'+p.n+'</b><br>'+(p.d?p.d+'<br>':'')+
@@ -327,57 +347,96 @@ addEventListener('resize',resize);
 const VIEWS={iso:[-2.42,0.42],front:[Math.PI,0.06],back:[0,0.06],
              left:[Math.PI/2,0.06],right:[-Math.PI/2,0.06],top:[0,1.44]};
 
-// --- one menu, instead of a row of buttons per thing -------------------
-const menu=document.getElementById('menu'), menubtn=document.getElementById('menubtn');
+// --- a row of buttons across the top, each one its own drop ------------
+const bar=document.getElementById('bar');
 const facts=document.getElementById('facts'), dro=document.getElementById('dro');
 const help=document.getElementById('help'), about=document.getElementById('about');
 const jogro=document.getElementById('jogro');
 
-function mrow(label,parent,cls){
+function mrow(label,parent){
   const d=document.createElement('div');
-  d.className='mrow'+(cls?' '+cls:''); d.textContent=label;
+  d.className='mrow'; d.textContent=label;
   parent.appendChild(d); return d;
 }
-function msub(label,parent){
-  const head=mrow(label,parent,'sub');
-  const body=document.createElement('div'); body.className='mbody'; body.hidden=true;
-  parent.insertBefore(body,head.nextSibling);
-  head.onclick=()=>{body.hidden=!body.hidden;head.classList.toggle('open',!body.hidden);};
-  return body;
+const DROPS=[];
+function closeDrops(){DROPS.forEach(d=>{d.hidden=true;});}
+function bbtn(label,title){
+  const b=document.createElement('button');
+  b.textContent=label; if(title)b.title=title;
+  bar.appendChild(b); return b;
 }
-function mcheck(label,parent,on,fn){
-  const l=document.createElement('label'); l.className='mrow';
-  l.innerHTML='<input type="checkbox"'+(on?' checked':'')+'>'+label;
-  l.firstChild.onchange=e=>fn(e.target.checked);
-  parent.appendChild(l); return l.firstChild;
+// A button with a panel under it. Opening one shuts the others, so there is
+// never more than one drop over the model.
+function bdrop(label,title){
+  const w=document.createElement('span'); w.className='mwrap';
+  const b=document.createElement('button'); b.textContent=label+' ▾';
+  if(title)b.title=title;
+  const d=document.createElement('div'); d.className='drop'; d.hidden=true;
+  w.appendChild(b); w.appendChild(d); bar.appendChild(w);
+  b.onclick=()=>{const shut=d.hidden; closeDrops(); d.hidden=!shut;};
+  DROPS.push(d); return d;
+}
+// A button that stands for a thing being on or off, lit while it is on.
+function btoggle(label,on,fn,title){
+  const b=bbtn(label,title); let v=on;
+  const paint=()=>{b.classList.toggle('on',v); fn(v);};
+  b.onclick=()=>{v=!v; paint();};
+  paint(); return b;
 }
 
-const vmenu=msub('View',menu);
+const vdrop=bdrop('View','Swing the camera to a square-on view');
 [['ISO','iso'],['Left','left'],['Right','right'],
  ['Front','front'],['Back','back'],['Top','top']].forEach(v=>{
-  mrow(v[0],vmenu).onclick=()=>{[az,el]=VIEWS[v[1]];tgt.set(0,0,0);place();draw();};
+  mrow(v[0],vdrop).onclick=()=>{[az,el]=VIEWS[v[1]];tgt.set(0,0,0);place();draw();
+    closeDrops();};
 });
 
-const smenu=msub('Show / hide',menu);
-mcheck('DRO',smenu,true,v=>{dro.hidden=!v;});          // ON by default - his
-mcheck('Travel',smenu,false,v=>{jogro.hidden=!v;});
-mcheck('Dimensions',smenu,false,v=>{facts.hidden=!v;});
-const pmenu=msub('Parts',smenu);
-for(const k in GROUPS)
-  mcheck(GROUPS[k],pmenu,true,v=>{(byGroup[k]||[]).forEach(m=>m.visible=v);draw();});
+// WHAT IS VISIBLE HAS TWO SWITCHES, and a part needs both: its group's check box
+// and its own. Ctrl+click clears a part's own switch; turning a group back on
+// therefore does NOT resurrect a part that was hidden one at a time. Only Show
+// all parts clears both.
+const GON={}, gbox={};
+function applyVis(){
+  PICK.forEach(m=>{m.visible=GON[m.userData.part.g]!==false&&!m.userData.hid;});
+  draw();
+}
+const pdrop=bdrop('Parts','Show or hide a whole group of parts');
+const ptab=document.createElement('table'); ptab.className='ptable';
+pdrop.appendChild(ptab);
+for(const k in GROUPS){
+  GON[k]=true;
+  const tr=ptab.insertRow(), c1=tr.insertCell(), c2=tr.insertCell();
+  const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=true;
+  cb.onchange=()=>{GON[k]=cb.checked; applyVis();};
+  c1.appendChild(cb); c2.textContent=GROUPS[k];
+  // the name is part of the switch, not a label beside it
+  c2.onclick=()=>{cb.checked=!cb.checked; cb.onchange();};
+  gbox[k]=cb;
+}
 
-mrow('Help',menu).onclick=()=>{help.hidden=false;about.hidden=true;menu.hidden=true;};
+bbtn('Show all parts',
+     'Shows all the parts again - including the ones hidden with Ctrl+click on a part')
+  .onclick=()=>{
+    for(const k in GON){GON[k]=true; gbox[k].checked=true;}
+    PICK.forEach(m=>{m.userData.hid=false;});
+    applyVis();
+  };
+
+btoggle('DRO',true,v=>{dro.hidden=!v;});               // ON by default - his
+btoggle('Travel',false,v=>{jogro.hidden=!v;});
+btoggle('Dimensions',false,v=>{facts.hidden=!v;});
+
+bbtn('Help').onclick=()=>{help.hidden=false;about.hidden=true;closeDrops();};
 // The assumptions used to sit in a panel along the bottom of the window. They
 // are still ON THE PAGE, which is the point of them - a guess has to be visible
-// as a guess - but behind a menu row instead of taking up the window.
-mrow('How this was built',menu).onclick=()=>{about.hidden=false;help.hidden=true;menu.hidden=true;};
+// as a guess - but behind a button instead of taking up the window.
+bbtn('How this was built').onclick=()=>{about.hidden=false;help.hidden=true;closeDrops();};
 
-menubtn.onclick=()=>{menu.hidden=!menu.hidden;};
 addEventListener('pointerdown',e=>{
-  if(!menu.hidden&&!menu.contains(e.target)&&e.target!==menubtn) menu.hidden=true;
+  if(!bar.contains(e.target)) closeDrops();
 },true);
 addEventListener('keydown',e=>{
-  if(e.key==='Escape'){menu.hidden=true;help.hidden=true;about.hidden=true;}});
+  if(e.key==='Escape'){closeDrops();help.hidden=true;about.hidden=true;}});
 
 help.innerHTML=
   '<span class="close">close</span><h2>Driving the model</h2><table>'+
@@ -385,13 +444,15 @@ help.innerHTML=
   '<tr><td><b>Middle drag</b></td><td>orbits</td></tr>'+
   '<tr><td><b>Scroll</b></td><td>zooms</td></tr>'+
   '<tr><td><b>Hover</b></td><td>names the part under the cursor and gives its size</td></tr>'+
+  '<tr><td><b>Ctrl + left click</b></td><td>hides the part under the cursor - '+
+  '<b>Show all parts</b> brings them all back</td></tr>'+
   '<tr><td><b>Left / Right</b></td><td>jog the X carriage - as the operator sees them, '+
   'standing at the front, so Left runs toward max X</td></tr>'+
   '<tr><td><b>Up / Down</b></td><td>jog the gantry back and forward</td></tr>'+
   '<tr><td><b>PgUp / PgDn</b></td><td>jog the Z axis up and down</td></tr>'+
   '<tr><td><b>Shift / Ctrl</b></td><td>1 mm and 50 mm a press, instead of 10</td></tr>'+
   '<tr><td><b>Home</b></td><td>all three axes back to the drawn pose</td></tr>'+
-  '<tr><td><b>Esc</b></td><td>shuts this and the menu</td></tr></table>'+
+  '<tr><td><b>Esc</b></td><td>shuts this and any open drop</td></tr></table>'+
   '<p>Each axis stops 5 mm short of the part it would otherwise hit, and the panel on '+
   'the left says how far is left to run. The DRO is the <b>tool tip</b>.</p>';
 help.querySelector('.close').onclick=()=>{help.hidden=true;};
