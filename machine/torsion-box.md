@@ -14,11 +14,11 @@ torsion box". Read that first; this file is everything below the top skin.
 
 | | |
 |---|---|
-| Skins | **19 mm Baltic birch**, top and bottom - 25 mm is available, see below |
+| Skins | **25 mm Baltic birch top, 19 mm bottom** - settled 2026-10-11, see below |
 | Grid | **19 mm strips, 100 mm high**, between the skins - **egg crate**, see below |
 | Depth overall | **144 mm** (25 top skin + 100 ribs + 19 bottom skin) |
 | Fill | **Sand in the cavities** - filled **last**, on site |
-| Outer walls, **all four sides** | **Two 19 mm laminations, 38 mm total**, the outer one standing **60 mm proud** of the top skin - see the Y beam interface |
+| Outer walls, **all four sides** | **25 mm outer + 19 mm inner web, 44 mm total**, the outer one standing **60 mm proud** of the top skin as the **tongue** - see the Y beam interface |
 
 ✅ **Decided 2026-09-30: the doubled wall runs the whole perimeter, not just left and right.** It
 began as the left/right detail that captures the full-height outboard plates. The front and back now
@@ -26,7 +26,9 @@ get it too, because the **front taper fins and the full-width back panel need th
 - see [`lateral-stiffness.md`](lateral-stiffness.md). Three consequences, all good:
 
 - **One detail everywhere** instead of two. Inner web between the skins, outer lamination 180 mm tall
-  standing on the bottom skin and 60 mm proud, aluminium bolted through it.
+  standing on the bottom skin and 60 mm proud, aluminium bolted through it. 📌 **The outer lamination
+  IS the tongue** - one part, not two - which is why its thickness and the tongue's are a single
+  decision.
 - **The front and back tongues are the continuous ones.** Each runs the full width and **19 mm past
   the front post tenon**, covering the end grain of the side tongue in a butt joint - so the side
   tongues die into them, not the other way round. That is what resolves the front-corner convergence
@@ -129,15 +131,43 @@ here and skin material is the weak one.
 plywood's 0.68, so swapping rib volume for sand volume **reduces** total mass - paying plywood to
 remove ballast, on a box where mass is wanted for damping.
 
-✅ **The back edge is where it goes**, for the reason the next section gives: it is a beam supported
-at its midpoint carrying both back corners, and those corners cannot be propped. Spanning problems
-eat material usefully. The outer walls and the tongues are the next best homes.
+✅ **The outer wall takes it, and the back edge after that.**
+
+### ✅ The outer lamination goes to 25 mm, and that is the tongue
+
+Settled 2026-10-11. **The tongue is not a separate part** - it is the outer wall lamination, 180 mm
+tall, standing on the bottom skin with 60 mm proud of the top skin. So the wall and the tongue are
+one decision, and the wall becomes **25 outer + 19 inner web = 44 mm** rather than 38.
+
+🔴 **The argument is bolt bearing, not stiffness.** The standing plates bolt **through** the tongue
+in a lap - M8 in a 9 mm hole - so the bearing area is hole diameter × thickness: **171 mm² at 19
+against 225 at 25, up 32%**. [`lateral-stiffness.md`](lateral-stiffness.md) makes those two
+through-bolts **the** lateral load path, as a 145 mm couple. Plywood crushing under a bolt is a real
+limit, where plywood shearing in a rib is not - which is exactly why the ribs stayed 19 and this did
+not.
+
+✅ **Geometrically free.** MACHINE_OUTER_W is plate to plate and the tongue laps the plates from
+**outboard**, so the 6 mm grows the box's outer envelope and nothing inside the machine moves.
+
+✅ **The inner web stays 19**, because it is a perimeter rib and carries shear - the same argument as
+the ribs. Nothing bolts through it.
+
+📌 **The exposed end grain is chamfered.** The front fin stands 16.571 mm proud of the side plate, so
+it covers that much of the side tongue's front end grain and the rest shows. At 19 that was 2.4 mm
+and was deliberately left; at 25 it is **8.4 mm**, and his answer 2026-10-11 is a chamfer on it. No
+structural term either way.
+
+### Then the back edge
+
+It is a beam supported at its midpoint carrying both back corners, and those corners cannot be
+propped. Spanning problems eat material usefully - but depth beats thickness there, so it is third
+in line behind the top skin and the outer wall.
 
 ✅ **And gross sag mostly does not matter.** Three points symmetric left-to-right means both Y beams
 sag together, so they stay **coplanar** - the property that counts. A uniformly dished table is
 irrelevant on a router; the spoilboard gets surfaced. Twist arises only from the X carriage sitting
 at one end of its travel. Along each Y edge the stiffness is dominated by the 12" × 1 m × 1/4"
-plate bolted to the 38 mm wall every 100 mm, which is far deeper than the box - **the skins are not
+plate bolted to the 44 mm wall every 100 mm, which is far deeper than the box - **the skins are not
 the main load path there.**
 
 🔴 **What does deserve the material is the back edge.** With posts at the front corners and the

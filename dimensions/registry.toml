@@ -1699,14 +1699,14 @@ note = "Bare top skin ahead of the side tongue, 150. The front fin occupies the 
 
 [[dim]]
 sym = "T_BOX_TONGUE"
-value = 19
+value = 25
 provenance = "derived"
-note = "The box tongue is ONE 19 mm lamination, settled by him 2026-10-03 - not the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. Same stock as the BOTTOM skin, so T_BB_SKIN_BOT's warning applies: sheet sold as 19 commonly measures 18.2-18.5. \u26A0 NOT the top skin, which went to 25 on 2026-10-11 - the tongue stayed 19."
+note = "25 - the box tongue, ONE lamination and NOT the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. \U0001F534 IT IS NOT A SEPARATE PART FROM THE OUTER WALL - torsion-box.md: 'inner web between the skins, outer lamination 180 mm tall standing on the bottom skin and 60 mm proud'. The tongue IS that outer lamination, so its thickness and the outer wall's are ONE DECISION and cannot be set apart. \u2705 25 SINCE 2026-10-11, up from 19, AND THE ARGUMENT IS BOLT BEARING RATHER THAN STIFFNESS: the standing plates bolt THROUGH this in a lap, M8 in a 9 hole, so bearing area is hole x thickness - 171 mm2 at 19 against 225 at 25, up 32%. lateral-stiffness.md makes those two through-bolts THE lateral load path, as a 145 mm couple, and plywood crushing under a bolt is a real limit where plywood shearing in a rib is not. \u2705 GEOMETRICALLY FREE: MACHINE_OUTER_W is plate to plate and the tongue laps the plates from OUTBOARD, so this only grows the box's outer envelope and nothing inside the machine moves. \u26A0 NOMINAL - caliper the sheet in hand, same warning as the skins."
 
 [[dim]]
 sym = "FIN_COVERS_TONGUE_END"
 expr = "FIN_PROUD - T_BOX_TONGUE"
-note = "Shortfall in the fin's cover of the side tongue's front END GRAIN, -2.175. ✅ RESOLVED 2026-10-03 and the answer is: leave it. He first said the fin runs 19 past the side plate, which would cover a 19 tongue exactly; the repo computes FIN_PROUD = 16.825 (FIN_OVERHANG 20 less the 3.175 side plate). Asked which was right he confirmed THE REPO IS CORRECT and that a partial overlap is fine - so the fin covers 16.825 of the 19 and 2.175 of end grain stays exposed, deliberately. NOTHING TO CHANGE. This symbol exists so the next person finds the answer instead of the discrepancy."
+note = "Shortfall in the fin's cover of the side tongue's front END GRAIN, -8.429 since the tongue went to 25 on 2026-10-11 - it was -2.175 on a 19 tongue and a 3.175 side plate, and both numbers have moved since. HE IS CHAMFERING THE EXPOSED END GRAIN, his call 2026-10-11, so the four-fold increase costs nothing and there is still nothing to change. ✅ RESOLVED 2026-10-03 and the answer is: leave it. He first said the fin runs 19 past the side plate, which would cover a 19 tongue exactly; the repo computes FIN_PROUD = 16.825 (FIN_OVERHANG 20 less the 3.175 side plate). Asked which was right he confirmed THE REPO IS CORRECT and that a partial overlap is fine - so the fin covers 16.825 of the 19 and 2.175 of end grain stays exposed, deliberately. NOTHING TO CHANGE. This symbol exists so the next person finds the answer instead of the discrepancy."
 
 [[dim]]
 sym = "FIN_BRACKETS"
@@ -2576,3 +2576,14 @@ sym = "T_BB_RIB"
 value = 19
 provenance = "nominal"
 note = "19 - the egg-crate ribs, and they STAY 19 even though going to a 25 top skin leaves surplus 25 stock. \U0001F534 ASKED AND ANSWERED 2026-10-11. The skins are the flanges and carry the bending moment; THE RIBS CARRY SHEAR, and 19 of Baltic birch is far past what the shear demands - which is the same reason torsion-box.md calls rib HEIGHT the lever and skin material the weak one. \u26A0 AND THE TRADE RUNS BACKWARDS: thicker ribs DISPLACE SAND, and sand is about 1.5 g/cc against plywood's 0.68, so swapping rib volume for sand volume REDUCES total mass - paying plywood to remove ballast, on a box where mass is wanted for damping. \u2705 THE SURPLUS 25 GOES TO THE BACK EDGE instead, which torsion-box.md names as the thing that deserves material: a beam supported at its midpoint carrying both back corners, which cannot be propped. The walls and tongues are the next best homes for it."
+
+[[dim]]
+sym = "T_BOX_WALL_WEB"
+value = 19
+provenance = "nominal"
+note = "19 - the INNER wall lamination, the web that sits between the two skins. It stays 19 while the outer lamination went to 25 on 2026-10-11, because it is effectively a PERIMETER RIB and carries shear - the same argument that keeps T_BB_RIB at 19. Nothing bolts through it: the plates bolt through the OUTER lamination, which is T_BOX_TONGUE. \u26A0 NOMINAL - caliper the sheet."
+
+[[dim]]
+sym = "T_BOX_WALL"
+expr = "T_BOX_TONGUE + T_BOX_WALL_WEB"
+note = "44 - the outer wall's full thickness, both laminations. \U0001F534 IT WAS 38 ON TWO EQUAL 19s and it is 44 since the outer lamination went to 25 on 2026-10-11 - if 38 appears in the prose as a wall thickness it is stale. The two laminations are summed separately BECAUSE THEY ARE NO LONGER THE SAME, the same reason BOX_THK stopped doubling one skin symbol. \u2705 The 6 it grew is all OUTBOARD: the plates sit on the top skin and the tongue laps them from outside, so the box's outer envelope grows and nothing inside the machine moves."

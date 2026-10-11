@@ -171,7 +171,7 @@ high**, so **144 mm** deep overall. Two changes make it the plate's foundation:
 
 1. **The box is widened to the machine's width at the plates**, so its top skin reaches out far enough
    that the plates stand on it rather than hanging alongside it.
-2. **Each outer wall is two 19 mm laminations instead of one.** The inner one is an ordinary 100 mm web
+2. **Each outer wall is two laminations instead of one - 25 mm outer, 19 mm inner.** The inner one is an ordinary 100 mm web
    between the skins. The outer one is **180 mm tall, standing on the bottom skin's top face**, glued
    to the inner web's outer face and to the edge of the top skin. It spans the 100 mm web plus the
    19 mm top skin and so **stands 60 mm proud** of the top surface as a **tongue, outboard of the plate.**
