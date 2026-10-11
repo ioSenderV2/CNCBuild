@@ -108,22 +108,61 @@ side**, and reaches back to 221.95, inside by **15.60**. ⚠️ **The tool overr
 runs to the back. The fix being considered was trimming 4 mm off that edge; 200 makes the question
 go away.
 
-## Holding the MDF down - M8 drop-in T-bolts
+## Holding the MDF down - four M8 drop-in T-bolts
 
-**His scheme, 2026-10-11.** Drill 8 mm through both sheets at the four corners, with the
-**front-to-back hole spacing on the tee track's own slot spacing**, and counterbore from the top
-deep enough to take the washer and nut below the surface. Then preinstall the T-bolts in the corners,
-drop the whole sandwich onto the aluminium, turn each bolt so its T lines up with its slot, let it
-drop in, and tighten.
+**His scheme, 2026-10-11.** Drill 8 mm through both sheets at the four corners, counterbore from the
+top for the washer and nut, preinstall the bolts in the holes, set the sandwich on the aluminium,
+turn each bolt so its T lines up with its slot, let it drop and tighten.
 
-📌 **The slot grid closes on it.** Slot centres sit at 26.35 + 250 × plate + 30 × slot. The board's
-back edge at 206.35 is exactly a centre, and the nearest centre to the front edge is 986.35, 20 mm
-back from it - **780 apart, 26 pitches**, so a front-to-back pair lands on real slots with no
-fudging.
+| | |
+|---|---|
+| Hole centres, across | **173.43** and **1037.81** - `SPOIL_BOLT_INSET` = 20 in from each MDF edge |
+| Hole centres, fore-aft | **236.35** and **986.35** |
+| Clearance hole | 8 through both sheets, z 16 to 57.9 |
+| Counterbore | 16 diameter, floor at `SPOIL_CBORE_Z` = **57.9**, so 8.1 deep |
+| Bolt | thread stands `SPOIL_BOLT_RISE` = 50 above the aluminium, topping out level with the 66 surface |
+| Washer | **plain M8, 16 OD** - his, 2026-10-11, not the fender |
+| Nut | plain M8, finishing **at** the surface and never proud of it |
 
-⚠️ **The bolt is not settled and the holes are NOT in the 3D model yet.** A 40 mm T-bolt photographed
-beside the sandwich tops out around the seam between the two sheets, dying inside the board; **he
-reads a 50 as the one**, to be measured off the drawer. See the open item.
+🔴 **A MULTIPLE OF 30 ONLY WALKS SLOTS WITHIN ONE 250 PANEL** - his catch. Across a panel join the
+step is **40**: 16 of end flat, the 8 slot, 16 more. His rule - 20 in from the front corner, then
+back in multiples of 30 while staying 20 clear of the back edge - lands both rows on real slots
+anyway, and only because **25 × 30 is 750, which is also 3 × 250**: the back hole is the *same slot*
+three panels along. ✅ **`tools/make-3d.py` builds the real slot-centre list and fails the build** if
+either row misses one, or if the back row comes inside the 20. A coincidence that is checked every
+run can stop being one safely.
+
+⚠️ **The 50 is his pick, not a measurement.** A 40 photographed beside the sandwich tops out around
+the seam between the two sheets, dying inside the board with nothing to put a nut on. The rise, the
+washer thickness and the nut height are all still to be caliper'd - see the open item - and the
+counterbore moves with them.
+
+## ✅ Four corner bolts are enough, and the sheets are NOT glued - settled 2026-10-11
+
+**There is no span to spring.** The MDF sits on aluminium over its whole footprint - the board runs
+X 153.43-1057.81 and 206.35-1006.35, the bed runs 8.72-1202.52 and 6.35-1006.35 - so the **largest
+unsupported span under it is the 8 mm slot opening**. Cutting force goes straight down into
+continuous metal. It is the same argument that dropped the three 2040s: the Mega V board sprang
+because it bridged 500 mm centres, and the cure was removing the span, not stiffening the board.
+
+So the four bolts carry no bending. They stop the sandwich walking and hold it down. **Two things
+they do not cover**, both cheap to fix later because the slot grid takes a bolt anywhere along X:
+
+1. A **cupped or bowed sheet** stays bowed in the middle under corner-only clamping, and will
+   deflect and spring back under the cutter after being skimmed flat.
+2. Anything **pulling up in the middle** - a workpiece clamped to the surface, a climb cut lifting -
+   is resisted only by the board's own stiffness back to the corners.
+
+📌 **The first skim is the test.** If it cleans up over the whole board at a shallow depth, the
+sheets were lying flat and four bolts is the answer. If it does not, add bolts rather than
+re-thinking the stack.
+
+🔴 **DO NOT GLUE THE TWO SHEETS TOGETHER.** Glued, they bend as one 50 and the stiffness goes up
+about fourfold - and that stiffness is doing **no work**, because the support underneath is
+continuous. What it costs is the whole reason for two sheets: the top one is sacrificial, and
+unglued it gets skimmed until it is used up and replaced on its own. Glued, replacing it means
+scrapping the lower sheet too, so every renewal buys **50 mm of MDF to use up 25**. The T-bolts
+already clamp the pair together at the corners, which is all the acting-as-one this needs.
 
 ## How it is anchored
 
@@ -274,12 +313,17 @@ group toggles off like any other assembly. **The end gaps are deliberately empty
 is one 5 mm spacer per bolt, which has no footprint across the bed, and the model briefly drew a
 5.29 × 1000 bar there that does not exist.
 
-**The slots are drawn as the flats between them.** Each flat is a full-thickness bar and the eight
-slots are the open gaps, which puts the top face and the 8 mm openings exactly where they are and
-invents nothing about the profile below. 🔴 **The undercut and the slot depth are not figures we
-have** - a slot drawn as a pocket would need a depth, and a depth would be a guess. The generator
-also checks the flats and slots sum to the plate's 250 and fails loudly if they ever stop. **The MDF above them is deliberately not drawn** - it is
-sacrificial, it gets skimmed, and its thickness is a build-time choice rather than a dimension.
+**The slots are drawn as 8 x 10 pockets.** Each flat is a full-thickness bar and a bar
+`TT_BED_T` - `TT_SLOT_DEPTH` = 6 thick carries the plate's bottom across under each gap, so the
+slot reads as the pocket it is rather than a hole through the plate. ⚠️ **The undercut is still not
+a figure we have**, so the lips that make it a tee slot are not drawn. The generator also checks the
+flats and slots sum to the plate's 250 and fails loudly if they ever stop.
+
+**The MDF and its four T-bolts are drawn too**, as the **MDF spoilboard** group - two 25 sheets on
+his footprint, and each bolt as five parts: the clearance hole, the counterbore, the bolt, the
+washer and the nut. 🔴 **The bolts are drawn on figures that are not measured yet** - the rise, the
+washer and the nut - so the counterbore in the model will move when they are. The hole POSITIONS are
+checked against the real slot grid on every run.
 
 ✅ **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
 does not foul the gantry anywhere. (The six overlaps the model still reports are the pre-existing
@@ -357,5 +401,10 @@ hand, not the catalogue.
 - **Whether the four tee track plates' top faces come out coplanar** when laid on something flat, or
   need shimming where they meet the box.
 - **Whether the vice can bolt straight down to the tee track** with the MDF layers off.
+- ⚠️ **The T-bolt's rise above the aluminium, the washer thickness and the nut height** - three
+  caliper readings off the drawer. They set the counterbore depth, and the 50 the model draws is
+  his pick rather than a measurement.
+- 📌 **Whether four corner bolts hold the sheets flat.** The first skim answers it: clean over the
+  whole board at a shallow depth and four is enough. See the section above.
 - ⚠️ **Whether the 8 mm OD spacer clears the top skin** - ordered to test, and tangent on paper. See
   the section above.

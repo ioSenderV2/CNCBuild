@@ -154,8 +154,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 
 - ⚠️ **The M8 drop-in T-bolt that holds the MDF down - three figures, all off the drawer.** How far
   the thread stands **above the top of the aluminium** with the T home in its slot; the **washer
-  thickness**; the **nut height**. Together they set the counterbore depth, and until they are
-  measured the holes are deliberately **not drawn in the 3D model**. 📌 **A 40 was photographed
+  thickness**; the **nut height**. Together they set the counterbore depth. 🔴 **The holes ARE now
+  drawn in the 3D model**, on the 50 and on catalogue washer and nut figures, so the counterbore
+  there will move when these are measured - this item said they were deliberately left out, and
+  that stopped being true the same day. 📌 **A 40 was photographed
   beside the sandwich and tops out around the seam between the two sheets - it dies inside the
   board. He reads a 50 as the one.** With a 66 surface over a 16 track there is 50 of MDF to get
   through, so the nut has to sit in a counterbore whichever bolt it is. See
