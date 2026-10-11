@@ -574,7 +574,8 @@ def main() -> int:
     # therefore not an enclosed hole; it is part of the outline, reached
     # through the slit, which is what lets the jaw close on the barrel.
     import math as _math
-    cl_half, sh_in = v["CLAMP_SHOULDER_W"] / 2, v["CLAMP_MID_W"] / 2
+    cl_half, sh_in = v["CLAMP_W"] / 2, v["CLAMP_MID_W"] / 2
+    sh_half, step = v["CLAMP_SHOULDER_W"] / 2, v["CLAMP_STEP_OUT"]
     top_half, sh_out = v["CLAMP_TOP_W"] / 2, v["CLAMP_SHOULDER_OUT"]
     mid_out, bore_r = v["CLAMP_MID_OUT"], v["SPINDLE_D"] / 2
     g0 = zp_front + v["CLAMP_GAP_START"]
@@ -594,14 +595,19 @@ def main() -> int:
                  sp_axis + bore_r * _math.sin(a_top + (a_bot - a_top) * i / n)]
                 for i in range(n + 1)]
 
+    # CLAMP_W at the face for CLAMP_STEP_OUT, then in to CLAMP_SHOULDER_W the
+    # rest of the way up - his calipers, 2026-10-10. The slit is above the step,
+    # so it starts from the narrower part of the side.
     clamp_profile = (
         [[zp_cx - cl_half, zp_front], [zp_cx + cl_half, zp_front],
-         [zp_cx + cl_half, zp_front + sh_out], [zp_cx + sh_in, zp_front + sh_out],
+         [zp_cx + cl_half, zp_front + step], [zp_cx + sh_half, zp_front + step],
+         [zp_cx + sh_half, zp_front + sh_out], [zp_cx + sh_in, zp_front + sh_out],
          [zp_cx + top_half, zp_front + mid_out], [zp_cx - top_half, zp_front + mid_out],
-         [zp_cx - sh_in, zp_front + sh_out], [zp_cx - cl_half, zp_front + sh_out],
-         [zp_cx - cl_half, g1], [_slit_x(g1), g1]]
+         [zp_cx - sh_in, zp_front + sh_out], [zp_cx - sh_half, zp_front + sh_out],
+         [zp_cx - sh_half, g1], [_slit_x(g1), g1]]
         + bore_arc
-        + [[_slit_x(g0), g0], [zp_cx - cl_half, g0]])
+        + [[_slit_x(g0), g0], [zp_cx - sh_half, g0],
+           [zp_cx - sh_half, zp_front + step], [zp_cx - cl_half, zp_front + step]])
 
     for cz in (block_mid - v["CLAMP_CENTRES"] / 2, block_mid + v["CLAMP_CENTRES"] / 2):
         prism("Spindle clamp", "z", 0x5E6B75, clamp_profile,

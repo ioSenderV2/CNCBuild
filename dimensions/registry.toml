@@ -690,9 +690,15 @@ note = "Clamp's axial dimension"
 
 [[dim]]
 sym = "CLAMP_SHOULDER_W"
-value = 115
-provenance = "part"
-note = "Across the clamp where the SHOULDERS are, which is its widest point away from the plate. CLAMP_W's 120 is at the mounting face."
+value = 116
+provenance = "measured"
+note = "Across the clamp from CLAMP_STEP_OUT upward, the shoulders included - his calipers, 2026-10-10, against a first reading of 115. \u2705 THE SECOND READING IS THE TIDIER NUMBER FOR A REASON: at 116 each shoulder is exactly 18 wide beside the 80 middle, where 115 gave 17.5."
+
+[[dim]]
+sym = "CLAMP_STEP_OUT"
+value = 25.4
+provenance = "measured"
+note = "1in out from the Z plate's face, where the clamp narrows from CLAMP_W to CLAMP_SHOULDER_W - his calipers, 2026-10-10. It is well below the slit at CLAMP_GAP_START, so the step is in solid metal and has nothing to do with the jaw."
 
 [[dim]]
 sym = "CLAMP_MID_W"
@@ -1769,9 +1775,9 @@ note = "50, the new bar across - metric, replacing the 2in (50.8) of the existin
 
 [[dim]]
 sym = "CLAMP_W"
-value = 120
-provenance = "part"
-note = "Clamp footprint across the Z plate, where it lands on the face - HIS, 2026-10-10, superseding a vendor 122. \u26a0 SHEETS 3 AND 4 STILL PRINT 122 x 55 and are not changed by this. The clamp narrows to CLAMP_SHOULDER_W further out; how far out it makes that step is not known, so the model draws the narrower figure the whole way. Pairs with CLAMP_AXIAL. It is what leaves 2 mm of relief at each end of the 164 plate once the 100 x 25 bolt pattern is centred in it."
+value = 122
+provenance = "measured"
+note = "Clamp footprint across the Z plate, where it lands on the face - HIS CALIPERS, 2026-10-10. \u2705 THE VENDOR 122 WAS RIGHT: a first reading gave 120, the second reading gives 122, and Sheets 3 and 4 had drawn 122 all along, so nothing downstream moves. It holds the 122 for CLAMP_STEP_OUT and then steps in to CLAMP_SHOULDER_W. Pairs with CLAMP_AXIAL. It is what leaves 2 mm of relief at each end of the 164 plate once the 100 x 25 bolt pattern is centred in it."
 
 [[dim]]
 sym = "WINDOW_Z_LOW"
