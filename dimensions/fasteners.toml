@@ -269,10 +269,11 @@ what = "Y ball nut up into the sole bracket"
 size = 5
 count = 8
 per = "4 per nut"
+length = 16
 into = "tapped"
 grip = ["T_SOLE_BRACKET"]
-source = "assembly.md: 'The nut sits ON the sole plate, bolted up from underneath - 4 x M5 threaded into the nut body'"
-note = "THREADED INTO THE NUT, so the engagement is bounded by NUT_TAP_DEPTH, not by the bracket."
+source = "registry BOLT_Z_NUT = 16"
+note = "THREADED INTO THE NUT BODY. 🔴 THE LENGTH WAS IN THE REGISTRY ALL ALONG as BOLT_Z_NUT and was simply not linked here - the schedule reported it as a gap when the figure existed. ✅ THE SAME M5 x 16 SERVES ALL FOUR NUTS, which was chosen over an M5 x 12 on Y precisely so one length and one tap setting cover the build. ⚠️ THE HOUSING MUST BE TAPPED DEEPER FIRST - see NUT_TAP_DEPTH, and note that his recollection of the as-supplied thread (6, tapped to 11) does not match the file (8, tapped to 12 working). It changes nothing: 9.65 of engagement fits under either."
 
 [[joint]]
 id = "post-tenon-screw"
