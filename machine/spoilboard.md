@@ -87,9 +87,9 @@ span - there is nothing to cut off. **Two M5 screws into each end of each panel*
 side plate, each carrying **one 5 mm aluminium spacer** to fill the 5.29. That is **16 screws, eight
 through each side plate**.
 
-✅ **The ends are drilled and tapped M5, done 2026-10-11.** 4.2 drill, M5 tap, **10 mm of thread
-engagement** - two diameters, into depth rather than through a skin, which closes the question of
-what the wall thickness at the panel end was. The Mega V's own fixing was two **M4 self-tapping**
+✅ **The ends are drilled and tapped M5, done 2026-10-11.** 4.2 drill, M5 tap, **15 mm of thread
+engagement** gauged off the hole - three diameters, into real depth rather than through a skin, which
+closes the question of what the wall thickness at the panel end was. The Mega V's own fixing was two **M4 self-tapping**
 screws per end, and none of that carries over.
 
 🔴 **M4 was recommended here and M4 was wrong.** The advice was to drill 3.3 and tap M4, reasoning
@@ -98,10 +98,13 @@ resistance** - his measurement - so the hole was already at or above the M4 tapp
 tap would have had almost nothing to cut. The cycle count was the wrong thing to judge it on; the
 hole size was, and it was measurable the whole time.
 
-⚠️ **Buy M5 × 18, not × 20.** Each screw passes through 3.429 of side plate plus 5 of spacer before
-it reaches aluminium, so an 18 reaches 9.57 into a hole tapped 10 and tightens, while a 20 wants
-11.57 and would bottom out 1.57 short of clamping - tight to the wrist, holding nothing. Check one
-hole's depth before buying sixteen screws.
+✅ **Buy M5 × 20.** Each screw passes through 3.429 of side plate plus 5 of spacer before it reaches
+aluminium, so a 20 reaches 11.57 into a hole tapped 15 and clamps with 3.4 of hole to spare. **Not a
+25** - that wants 16.57 and would bottom out 1.57 short, tight to the wrist and holding nothing.
+
+📌 **An 18 was the answer an hour earlier, on a depth of 10 rather than 15.** The two
+recommendations are opposite off a 5 mm difference in one measurement, which is the argument for
+gauging the hole rather than taking the first figure for it.
 
 ✅ **The gap and the part are different numbers on purpose.** The gap is 5.29 and the spacer is 5,
 which leaves **0.29 per end, 0.58 across the bed** - and that float does not matter, because the
