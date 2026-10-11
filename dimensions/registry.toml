@@ -2456,8 +2456,8 @@ note = "1000 - the bed front to back, four 250 plates side by side. \U0001F4CC I
 
 [[dim]]
 sym = "TT_BED_Y0"
-expr = "SIDE_TONGUE_START"
-note = "\u26A0 PLACEHOLDER UNTIL HE PLACES IT. The bed's back edge drawn at 6.35 from the box's back edge - just clear of the rear plate, the same start as the side tongue and the Y beam. Chosen because it is the only non-arbitrary reference available and because TT_BED_FORE_AFT's 1000 then runs 6.35 to 1006.35, coincident with the beam run. HE HAS NOT SAID WHERE THE BED SITS FORE-AFT; if it wants centring on the box's 1156.35 instead, this is the one symbol to change."
+expr = "T_REAR_PLATE"
+note = "6.35 - the bed's back edge, butted against the REAR PLATE'S FRONT FACE. \u2705 IT IS NOT A CHOICE AND IT IS NOT A PLACEHOLDER, which is what this note said for one commit: the clear run between the rear plate's front face at 6.35 and the front fin's back face at 1006.35 is exactly BEAM_LEN, 1000, and TT_BED_FORE_AFT is exactly 1000, so the bed is CAPTURED fore-aft the same way TT_BED_CLEAR captures it across. His, 2026-10-11, and he is right - there was never a degree of freedom here to pick. TT_BED_FORE_AFT_CHECK holds it closed. \U0001F534 KEYED TO THE REAR PLATE RATHER THAN TO SIDE_TONGUE_START, which is the same 6.35 by coincidence of both deriving from T_REAR_PLATE: the bed butts the PLATE, not the tongue, and a tongue that moved would otherwise drag the bed with it."
 
 [[dim]]
 sym = "TT_SLOT_W"
@@ -2492,3 +2492,8 @@ note = "30 - slot centre to slot centre. \U0001F534 IT IS NOT 40, AND 40 IS WHAT
 sym = "TT_PLATE_W_CHECK"
 expr = "(2 * TT_END_FLAT) + ((TT_SLOTS - 1) * TT_MID_FLAT) + (TT_SLOTS * TT_SLOT_W)"
 note = "250 - his breakdown of the plate's depth, summed: 2 x 16 end flats, 7 x 22 inner flats, 8 x 8 slots. \u2705 IT EXISTS ONLY TO CLOSE ON TT_BED_PLATE_W, and it does, exactly. That is the check the first set of slot figures failed."
+
+[[dim]]
+sym = "TT_BED_FORE_AFT_CHECK"
+expr = "BEAM_LEN - TT_BED_FORE_AFT"
+note = "0 - the slack the bed has fore-aft, and there is none. The clear run from the rear plate's front face to the front fin's back face is BEAM_LEN; four 250 plates are 1000; the difference is zero, so the bed is captured front to back. \u2705 THIS SYMBOL EXISTS BECAUSE THE PLACEMENT WAS BRIEFLY RECORDED AS A FREE CHOICE and it is not one - his correction 2026-10-11. If either number ever moves this goes non-zero and says so."

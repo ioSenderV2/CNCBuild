@@ -199,11 +199,15 @@ sacrificial, it gets skimmed, and its thickness is a build-time choice rather th
 does not foul the gantry anywhere. (The six overlaps the model still reports are the pre-existing
 block-against-front-strip pairs and have nothing to do with the bed.)
 
-⚠️ **The fore-aft placement is a placeholder.** `TT_BED_Y0` puts the bed's back edge 6.35 from the
-box's back edge, just clear of the rear plate, which is also where the side tongue and the Y beam
-start - and `TT_BED_FORE_AFT`'s 1000 then runs to 1006.35, coincident with the beam run, which is
-the only thing that makes the choice better than arbitrary. **He has not said where the bed sits
-fore-aft.** One symbol to change if it wants centring on the box's 1156.35 instead.
+✅ **The bed is captured in both directions, and there is nothing to place.** Across the machine it
+fits the 1204.38 between the side plates. Fore-aft, the clear run from the **rear plate's front face
+at 6.35** to the **front fin's back face at 1006.35** is exactly **1000 - BEAM_LEN** - and four 250
+plates are exactly 1000. It butts the rear plate and finishes on the fin.
+
+⚠️ **This was briefly recorded as a free choice and it never was one.** `TT_BED_Y0` carried a note
+saying he had not placed the bed fore-aft; his answer, 2026-10-11, is that the geometry had already
+placed it. `TT_BED_FORE_AFT_CHECK` now subtracts the bed's depth from the beam length and must read
+**zero**, so if either figure moves the registry says so rather than the drawing quietly going wrong.
 
 ## Still to measure
 
