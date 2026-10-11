@@ -59,6 +59,62 @@ ASSUMPTIONS = [
     "NO BASE OR LEGS - deliberately out of scope. The box sits on the ground plane.",
 ]
 
+# What the hover says about a part, keyed by the name it is drawn under. ONLY
+# WHAT THE REGISTRY OR A VENDOR PAGE ALREADY SAYS goes in here - a tooltip that
+# invents a spec is worse than one that says nothing, because it reads as though
+# somebody checked. Where a fastener's length is genuinely not recorded, the
+# string says so rather than guessing a size that would then get ordered.
+#
+# A call site may pass d= instead, and that wins. It has to for the fasteners:
+# "Flange head" is drawn at six different joints and they are not all one bolt.
+DETAIL = {
+    "Y beam": "30-6060 aluminium extrusion",
+    "X beam": "30-6060 aluminium extrusion",
+    "Y rail": "HGR20 linear rail",
+    "X rail": "HGR20 linear rail",
+    "Z rail": "HGR20 linear rail",
+    "Y block": "HGH20 bearing block",
+    "X block": "HGH20 bearing block",
+    "Z block": "HGH20 bearing block",
+    "Ball screw": "1605 ball screw - all four axes are the same part, only the length differs",
+    "Screw journal": "the screw's journal, into a bearing at each end",
+    "Ball nut": "DSG1605 housed ball nut - the same part on all four axes",
+    "Nut bolt face": "the nut housing's mounting flat, 4 x M5 tapped INTO the housing",
+    "BF12 wing": "BF12 bearing support - one part, drawn as a wing plus a boss",
+    "BF12 boss": "BF12 bearing support - one part, drawn as a wing plus a boss",
+    "Casting wing": "the cast stepper mount's bearing end",
+    "Casting boss": "the cast stepper mount's bearing end",
+    "Casting rails": "the cast stepper mount, DRAWN SOLID - the real casting is open here",
+    "Motor plate": "the casting's motor plate",
+    "Stepper motor": "NEMA 23",
+    "Interposer": "interposer bar, Sheet 6 - three the same",
+    "Front strip": "front joining strip, ordered as 1/8in 6061 flat bar",
+    "Fender washer": "plain M8 fender washer, under the acorn nut",
+    "Acorn nut": "M8 acorn nut, on the tongue bolt's outboard end",
+    "Rail counterbore": "counterbore in the rail, for an M5 x 16 rail bolt",
+    "Z spacer": "spacer bar, sandwiched between the bearing blocks and the Z plate",
+    "Y nut doubler": "doubler on the X end plate's outboard face, carrying the Y nut sole bracket",
+    "X nut doubler": "doubler on the carriage plate's back face, carrying the X sole plate",
+    "Shelf bar": "the bar the X beam's underside rests on",
+    "BF12 tongue": "the tongue that carries the X axis BF12, on the MIN X end plate only",
+}
+
+# The fasteners. Lengths are quoted ONLY where the registry carries one -
+# BOLT_BACK_Y, BOLT_FRONT_STRIP, BOLT_Z_NUT - and the rest say so.
+M8_HEAD = "M8 x 1.25 flanged button head, hex socket in the dome"
+D_SIDE_BOLT = M8_HEAD + " - 10 mm, with a plain washer, into a slide-in T-nut (BOLT_BACK_Y)"
+D_STRIP_BOLT = M8_HEAD + " - 10 mm, A4/316, into a slide-in T-nut (BOLT_FRONT_STRIP)"
+D_BEAM_END = M8_HEAD + " - into the extrusion's lengthwise corner bore. LENGTH NOT RECORDED"
+D_TNUT = M8_HEAD + " - into a slide-in T-nut in the beam's slot. LENGTH NOT RECORDED"
+D_SHELF_V = M8_HEAD + " - up into the beam's underside slot. LENGTH NOT RECORDED"
+D_SHELF_H = M8_HEAD + " - into a BLIND tap in the X end plate. LENGTH NOT RECORDED"
+D_TONGUE = M8_HEAD + " - through plate and tongue to a fender washer and an acorn nut. LENGTH NOT RECORDED"
+D_M5_PLATE = "M5 x 0.8 socket cap, tapped into the plate. LENGTH NOT RECORDED"
+D_M5_BAR = "M5 x 0.8 socket cap, up out of the casting into the tapped bar. LENGTH NOT RECORDED"
+D_M5_END = "M5 x 0.8 socket cap into a tapped end face. LENGTH NOT RECORDED"
+D_M5_EDGE = "M5 x 0.8 socket cap into the doubler's tapped top edge. LENGTH NOT RECORDED"
+D_M5_NUT = "M5 x 0.8 x 16 socket cap into the ball nut housing, 9.65 mm engaged (BOLT_Z_NUT)"
+
 
 def main() -> int:
     reg = Registry()
@@ -70,12 +126,12 @@ def main() -> int:
 
     P = []  # parts: name, group, colour, [x0,y0,z0], [x1,y1,z1]
 
-    def box(name, group, colour, x0, y0, z0, x1, y1, z1):
-        P.append({"n": name, "g": group, "c": colour, "t": "box",
+    def box(name, group, colour, x0, y0, z0, x1, y1, z1, d=""):
+        P.append({"n": name, "g": group, "c": colour, "t": "box", "d": d,
                   "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
                   "q": [max(x0, x1), max(y0, y1), max(z0, z1)]})
 
-    def cyl(name, group, colour, cx, cy, z0, z1, r, axis="z", seg=36):
+    def cyl(name, group, colour, cx, cy, z0, z1, r, axis="z", seg=36, d=""):
         """A cylinder along one axis. The spindle is round and a box misrepresents
         its clearance - at 45 degrees a box corner sticks out r*(sqrt2-1) further.
         Bolt heads are round for the same reason and are drawn with few segments.
@@ -92,9 +148,9 @@ def main() -> int:
             p, q = [cx - r, lo, cy - r], [cx + r, hi, cy + r]
         P.append({"n": name, "g": group, "c": colour, "t": "cyl", "ax": axis,
                   "cx": cx, "cy": cy, "r": r, "z0": lo, "z1": hi, "seg": seg,
-                  "p": p, "q": q})
+                  "d": d, "p": p, "q": q})
 
-    def prism(name, group, colour, profile, ya, yb, holes=None):
+    def prism(name, group, colour, profile, ya, yb, holes=None, d=""):
         """An X-Z profile extruded along fore-aft. The fins are not boxes.
 
         p/q stay the bounding box so the camera framing and the interference
@@ -103,7 +159,7 @@ def main() -> int:
         """
         xs = [pt[0] for pt in profile]
         zs = [pt[1] for pt in profile]
-        P.append({"n": name, "g": group, "c": colour, "t": "prism",
+        P.append({"n": name, "g": group, "c": colour, "t": "prism", "d": d,
                   "profile": profile, "holes": holes or [],
                   "ya": min(ya, yb), "yb": max(ya, yb),
                   "p": [min(xs), min(ya, yb), min(zs)],
@@ -188,10 +244,10 @@ def main() -> int:
                 cx, cy = (c, a) if along_axis == "y" else (a, c)
                 cyl("Flange head", "bolts", 0x3C4248, cx, cy,
                     seat, seat + up * v["FLANGE_HEAD_H"],
-                    v["FLANGE_HEAD_D"] / 2, seg=12)
+                    v["FLANGE_HEAD_D"] / 2, seg=12, d=D_TNUT)
                 cyl("Interposer bolt", "bolts", 0x3C4248, cx, cy,
                     seat, seat - up * ip_t,
-                    v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, seg=10)
+                    v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, seg=10, d=D_TNUT)
 
     ip_front = y1 + v["T_FIN"] + v["INTERPOSER_PROUD"]
     for x0 in (lx0, rx0):
@@ -244,10 +300,11 @@ def main() -> int:
                        xb_top - v["EXT_W"] + v["EXT_BORE_INSET"]):
                 cyl("Flange head", "bolts", 0x3C4248, xep_back + by, bz,
                     outer, outer + faceward * v["FLANGE_HEAD_H"],
-                    v["FLANGE_HEAD_D"] / 2, axis="x", seg=12)
+                    v["FLANGE_HEAD_D"] / 2, axis="x", seg=12, d=D_BEAM_END)
                 cyl("X end plate bolt", "bolts", 0x3C4248, xep_back + by, bz,
                     outer, outer - faceward * xep_t,
-                    v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, axis="x", seg=10)
+                    v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, axis="x", seg=10,
+                    d=D_BEAM_END)
 
         # ---- the shelf bar, carrying the X beam off this plate ----------
         # It stands INBOARD off the plate's face with the beam's underside
@@ -268,9 +325,9 @@ def main() -> int:
         for sy in (v["SHELF_VERT_REAR"], v["SHELF_VERT_FRONT"]):
             cyl("Shelf bolt head", "bolts", 0x3C4248, bar_mid, xep_back + sy,
                 bar_bottom, bar_bottom - v["FLANGE_HEAD_H"],
-                v["FLANGE_HEAD_D"] / 2, seg=12)
+                v["FLANGE_HEAD_D"] / 2, seg=12, d=D_SHELF_V)
             cyl("Shelf bolt", "bolts", 0x3C4248, bar_mid, xep_back + sy,
-                bar_bottom, bar_top, shank8, seg=10)
+                bar_bottom, bar_top, shank8, seg=10, d=D_SHELF_V)
         # The horizontal pair are driven from the BAR side, head on the bar's
         # inboard face and the shank running back through it into the plate.
         # They cannot come the other way: Sheet 2a's H1 and H2 are blind-
@@ -287,10 +344,10 @@ def main() -> int:
             cyl("Shelf bolt head", "bolts", 0x3C4248,
                 xep_back + v["SHELF_HORIZ_Y"], hz,
                 bar_out, bar_out + inb * v["FLANGE_HEAD_H"],
-                v["FLANGE_HEAD_D"] / 2, axis="x", seg=12)
+                v["FLANGE_HEAD_D"] / 2, axis="x", seg=12, d=D_SHELF_H)
             cyl("Shelf bolt", "bolts", 0x3C4248,
                 xep_back + v["SHELF_HORIZ_Y"], hz, bar_out, plate_mid, shank8,
-                axis="x", seg=10)
+                axis="x", seg=10, d=D_SHELF_H)
 
     # THE BF12 TONGUE, on the MIN X plate only - the operator's right, and the
     # left of a view taken from behind the machine. It carries on past the 2a
@@ -533,9 +590,9 @@ def main() -> int:
         for r, d, c in casting_rows(cx):
             cyl("Casting bolt head", "bolts", 0x3C4248, c, motor_end - r,
                 y_seat_z - d, y_seat_z - d - v["M5_HEAD_H"],
-                v["M5_HEAD_D"] / 2, seg=12)
+                v["M5_HEAD_D"] / 2, seg=12, d=D_M5_BAR)
             cyl("Casting bolt", "bolts", 0x3C4248, c, motor_end - r,
-                y_seat_z - d, y_seat_z + ip_t, 2.5, seg=10)
+                y_seat_z - d, y_seat_z + ip_t, 2.5, seg=10, d=D_M5_BAR)
 
         # ---- the Y nut sole bracket, under the X end plate at this end ----
         # The nut hangs below the beam with its face DOWN, so the bracket lies
@@ -559,19 +616,20 @@ def main() -> int:
         nut_mid = (y_lo + y_hi) / 2
         cols = [(inner + out * v["ROOT_BOLT_X_ENDPLATE"], j) for j in range(4)]
         cols += [(inner + out * v["ROOT_BOLT_X_DOUBLER"], j) for j in range(4)]
-        pts = [(bx, xep_back + v["ROOT_BOLT_Y_FIRST"] + j * v["ROOT_BOLT_Y_PITCH"])
-               for bx, j in cols]
+        pts = [(bx, xep_back + v["ROOT_BOLT_Y_FIRST"] + j * v["ROOT_BOLT_Y_PITCH"],
+                D_M5_END) for bx, j in cols]
         for bx in (v["NUT_BOLT_X_NEAR"], v["NUT_BOLT_X_FAR"]):
             for dy in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-                pts.append((inner + out * bx, nut_mid + dy))
-        for bx, by in pts:
+                pts.append((inner + out * bx, nut_mid + dy, D_M5_NUT))
+        for bx, by, det in pts:
             cyl("Y sole bolt head", "bolts", 0x3C4248, bx, by,
                 face_z - v["T_SOLE_BRACKET"],
                 face_z - v["T_SOLE_BRACKET"] - v["M5_HEAD_H"],
-                v["M5_HEAD_D"] / 2, seg=12)
+                v["M5_HEAD_D"] / 2, seg=12, d=det)
             cyl("Y sole bolt", "bolts", 0x3C4248, bx, by,
                 face_z - v["T_SOLE_BRACKET"],
-                face_z - v["T_SOLE_BRACKET"] + v["BOLT_Z_NUT"], 2.5, seg=10)
+                face_z - v["T_SOLE_BRACKET"] + v["BOLT_Z_NUT"], 2.5, seg=10,
+                d=det)
 
     # ------------------------------------------------ X, on TOP of its beam
     x_seat_z = xb_top + ip_t
@@ -597,9 +655,10 @@ def main() -> int:
                 xep_back + by, xep_bot + bz,
                 bf12_x + v["T_BF12_BLOCK"],
                 bf12_x + v["T_BF12_BLOCK"] + v["M5_HEAD_H"],
-                v["M5_HEAD_D"] / 2, axis="x", seg=12)
+                v["M5_HEAD_D"] / 2, axis="x", seg=12, d=D_M5_PLATE)
             cyl("BF12 bolt", "bolts", 0x3C4248, xep_back + by, xep_bot + bz,
-                tongue_out, bf12_x + v["T_BF12_BLOCK"], 2.5, axis="x", seg=10)
+                tongue_out, bf12_x + v["T_BF12_BLOCK"], 2.5, axis="x", seg=10,
+                d=D_M5_PLATE)
     nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
     # THE CASTING'S BORE SITS AT THE INNER END OF THE LONG JOURNAL. The journal is
     # SCREW_JOURNAL_CAST, 54.5, because the coupler lives on it as well as the
@@ -628,9 +687,9 @@ def main() -> int:
     for r, d, c in casting_rows(x_axis_y):
         cyl("Casting bolt head", "bolts", 0x3C4248, x_ip_out - r, c,
             x_seat_z + d, x_seat_z + d + v["M5_HEAD_H"],
-            v["M5_HEAD_D"] / 2, seg=12)
+            v["M5_HEAD_D"] / 2, seg=12, d=D_M5_BAR)
         cyl("Casting bolt", "bolts", 0x3C4248, x_ip_out - r, c,
-            x_seat_z + d, x_seat_z - ip_t, 2.5, seg=10)
+            x_seat_z + d, x_seat_z - ip_t, 2.5, seg=10, d=D_M5_BAR)
 
     # ------------------------------------------------ Z, up the carriage plate
     # No interposer here, which is why the Z nut face sits 45 off the plate
@@ -652,9 +711,10 @@ def main() -> int:
             bx, bf12_z + v["T_BF12_BLOCK"] / 2,
             cp_front + v["BF12_WING_H"],
             cp_front + v["BF12_WING_H"] + v["M5_HEAD_H"],
-            v["M5_HEAD_D"] / 2, axis="y", seg=12)
+            v["M5_HEAD_D"] / 2, axis="y", seg=12, d=D_M5_PLATE)
         cyl("BF12 bolt", "bolts", 0x3C4248, bx, bf12_z + v["T_BF12_BLOCK"] / 2,
-            cp_back, cp_front + v["BF12_WING_H"], 2.5, axis="y", seg=10)
+            cp_back, cp_front + v["BF12_WING_H"], 2.5, axis="y", seg=10,
+            d=D_M5_PLATE)
     nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
     # Same as X: the bore takes the INNER BK12_L of the long journal so the
     # thread runs to the casting's face, and the remaining 24.5 stands out the
@@ -669,9 +729,9 @@ def main() -> int:
     for r, d, c in casting_rows(zp_cx):
         cyl("Casting bolt head", "bolts", 0x3C4248, c, z_motor_end - r,
             cp_front + d, cp_front + d + v["M5_HEAD_H"],
-            v["M5_HEAD_D"] / 2, axis="y", seg=12)
+            v["M5_HEAD_D"] / 2, axis="y", seg=12, d=D_M5_PLATE)
         cyl("Casting bolt", "bolts", 0x3C4248, c, z_motor_end - r,
-            cp_front + d, cp_back, 2.5, axis="y", seg=10)
+            cp_front + d, cp_back, 2.5, axis="y", seg=10, d=D_M5_PLATE)
 
     # ---- linear rails and bearing blocks ---------------------------------
     # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
@@ -756,7 +816,7 @@ def main() -> int:
         for st in stations:
             for z in rows:
                 cyl("Flange head", "bolts", BOLT, st, z, face, face + d * hh,
-                    hd, axis="x", seg=12)
+                    hd, axis="x", seg=12, d=D_SIDE_BOLT)
 
     # THE RP_ COLUMNS ARE SHEET 7 COORDINATES, measured from the plate's left edge,
     # which sits on the Y1 extrusion's outboard face - so the machine X is each of
@@ -766,7 +826,8 @@ def main() -> int:
                 rp0 + v["RP_A_COL_1"] + v["EXT_W"] - 2 * v["EXT_BORE_INSET"],
                 rp0 + v["RP_A_COL_3"], rp0 + v["RP_A_COL_4"]):   # heads backward
         for z in rows:
-            cyl("Flange head", "bolts", BOLT, col, z, 0.0, -hh, hd, axis="y", seg=12)
+            cyl("Flange head", "bolts", BOLT, col, z, 0.0, -hh, hd, axis="y",
+                seg=12, d=D_BEAM_END)
 
     # The BF12 bolts, four per Y beam. THEY RUN FORWARD, NOT BACKWARD - his,
     # 2026-10-10: the rear plate is TAPPED M5 and the bolt is driven from the
@@ -781,9 +842,9 @@ def main() -> int:
         for z in (v["BF12_ROW1_Y"], v["BF12_ROW2_Y"]):
             cyl("BF12 bolt head", "bolts", BOLT, col, z,
                 bf12_face, bf12_face + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,
-                axis="y", seg=12)
+                axis="y", seg=12, d=D_M5_PLATE)
             cyl("BF12 bolt", "bolts", BOLT, col, z, 0.0, bf12_face, 2.5,
-                axis="y", seg=10)
+                axis="y", seg=10, d=D_M5_PLATE)
 
     # The eight M5 through the X sole plate, all driven DOWNWARD from above -
     # his reason for putting the plate on top in the first place: the bolts stay
@@ -793,33 +854,37 @@ def main() -> int:
     # 6.35 plate and leaves Y_NUT_BOLT_ENGAGE in the part below.
     sole_top = x_nut_face + v["T_SOLE_BRACKET"]
     sole_bolts = [(cp_x0 + v["ROOT_BOLT_Y_FIRST"] + i * v["ROOT_BOLT_Y_PITCH"],
-                   cp_back - v["X_SOLE_ROOT_ROW"]) for i in range(4)]
+                   cp_back - v["X_SOLE_ROOT_ROW"], D_M5_EDGE) for i in range(4)]
     x_nut_mid = (x_lo + x_hi) / 2
     for ry in (v["X_NUT_BOLT_NEAR"], v["X_NUT_BOLT_FAR"]):
         for dx in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-            sole_bolts.append((x_nut_mid + dx, cp_back - ry))
-    for bx, by in sole_bolts:
+            sole_bolts.append((x_nut_mid + dx, cp_back - ry, D_M5_NUT))
+    for bx, by, det in sole_bolts:
         cyl("X sole bolt head", "bolts", BOLT, bx, by,
-            sole_top, sole_top + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2, seg=12)
+            sole_top, sole_top + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2, seg=12,
+            d=det)
         cyl("X sole bolt", "bolts", BOLT, bx, by,
-            sole_top, sole_top - v["BOLT_Z_NUT"], 2.5, seg=10)
+            sole_top, sole_top - v["BOLT_Z_NUT"], 2.5, seg=10, d=det)
 
     for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
         for c in (v["FIN_COL_OUTB"], v["FIN_COL_INB"]):   # fins, heads forward
             for z in rows:
                 cyl("Flange head", "bolts", BOLT, outer + sgn * c, z,
-                    y1 + v["T_FIN"], y1 + v["T_FIN"] + hh, hd, axis="y", seg=12)
+                    y1 + v["T_FIN"], y1 + v["T_FIN"] + hh, hd, axis="y",
+                    seg=12, d=D_BEAM_END)
 
     # the strips' own two rows, which land in the slots flanking each seam
     for face, d in ((lx0 + v["EXT_W"], +1), (rx0, -1)):
         for st in [y0 + x for x in strip_x]:
             for z in (y_seam - v["RAIL_SLOT_INSET"], y_seam + v["RAIL_SLOT_INSET"]):
                 cyl("Flange head", "bolts", BOLT, st, z,
-                    face + d * st_t, face + d * (st_t + hh), hd, axis="x", seg=12)
+                    face + d * st_t, face + d * (st_t + hh), hd, axis="x",
+                    seg=12, d=D_STRIP_BOLT)
     for st in [xb_x0 + x for x in strip_x]:
         for z in (x_seam - v["RAIL_SLOT_INSET"], x_seam + v["RAIL_SLOT_INSET"]):
             cyl("Flange head", "bolts", BOLT, st, z,
-                xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y", seg=12)
+                xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y",
+                seg=12, d=D_STRIP_BOLT)
 
     # ---- the tongue bolts, through plate and tongue into an acorn nut -----
     # Twenty-two of them: eight through the rear plate into the back tongue and
@@ -836,9 +901,9 @@ def main() -> int:
         """head_face is the plate's inboard face, far_face the tongue's outer."""
         cyl("Tongue bolt head", "bolts", BOLT, c0, c1,
             head_face, head_face - out * v["FLANGE_HEAD_H"],
-            v["FLANGE_HEAD_D"] / 2, axis=axis, seg=12)
+            v["FLANGE_HEAD_D"] / 2, axis=axis, seg=12, d=D_TONGUE)
         cyl("Tongue bolt", "bolts", BOLT, c0, c1, head_face, far_face,
-            SHANK, axis=axis, seg=10)
+            SHANK, axis=axis, seg=10, d=D_TONGUE)
         cyl("Fender washer", "bolts", WASH, c0, c1,
             far_face, far_face + out * WT, WD, axis=axis, seg=14)
         cyl("Acorn nut", "bolts", ACORN, c0, c1,
@@ -902,6 +967,13 @@ def main() -> int:
     # gets sent to people, and a two-file page arrives broken the moment the vendor
     # folder is left behind - a blank window with nothing to say why. One file costs
     # about 600 KB and cannot be separated from the thing it needs.
+    # Anything no call site described gets the table's line for its name. Parts
+    # with neither keep an empty string and the hover then shows name and size
+    # only, which is still better than nothing and is honest about the rest.
+    for p in P:
+        if not p.get("d"):
+            p["d"] = DETAIL.get(p["n"], "")
+
     three = VENDOR.read_text(encoding="utf-8")
     html = (HTML.replace("__PARTS__", json.dumps(P))
                 .replace("__GROUPS__", json.dumps(groups))
@@ -1143,8 +1215,13 @@ HTML = r"""<!doctype html>
  b.w{color:#e8b64c}
  ul{margin:4px 0 0;padding-left:16px}
  li{margin:3px 0}
+ #tip{position:fixed;display:none;max-width:300px;z-index:9;pointer-events:none;
+   background:#0e1114F2;border:1px solid #4a515a;border-radius:4px;padding:6px 9px;
+   font-size:11.5px;line-height:1.45;color:#dde}
+ #tip .dim{color:#8fd}
 </style>
 <canvas id="c"></canvas>
+<div id="tip"></div>
 <div class="panel" id="ui"><h1>CNC assembly</h1>
 <div id="btnrow"><button id="partsbtn">Show parts</button><button id="statsbtn">Show dimensions</button></div>
 <div id="toggles" hidden></div><table id="facts" hidden></table></div>
@@ -1166,7 +1243,7 @@ const mid=[0,1,2].map(i=>(lo[i]+hi[i])/2);
 const span=Math.max(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]);
 
 // machine (x,y,z) -> three (x, z, -y); three's Y is up, and fore-aft runs to -Z
-const byGroup={};
+const byGroup={}, PICK=[];
 for(const p of PARTS){
   let geom, ctr;
   if(p.t==='cyl'){
@@ -1202,6 +1279,7 @@ for(const p of PARTS){
   const e=new THREE.LineSegments(new THREE.EdgesGeometry(g.geometry),
     new THREE.LineBasicMaterial({color:0x000000,opacity:0.35,transparent:true}));
   g.add(e); scene.add(g);
+  g.userData.part=p; PICK.push(g);
   (byGroup[p.g]=byGroup[p.g]||[]).push(g);
 }
 
@@ -1241,6 +1319,34 @@ addEventListener('pointermove',e=>{if(!down)return;
   down=[e.clientX,e.clientY]; place(); draw();});
 addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(span*0.25,Math.min(span*6,dist*(1+Math.sign(e.deltaY)*0.11)));place();draw();},{passive:false});
 
+// --- hover: say what the part under the cursor IS -----------------------
+// The one place the model says what a part is rather than where it is. The
+// fastener lines carry a designation only where the registry has one and say
+// LENGTH NOT RECORDED where it does not - see DETAIL in tools/make-3d.py.
+const ray=new THREE.Raycaster(), tip=document.getElementById('tip');
+const f2=n=>Math.round(n*100)/100;
+function sizeOf(p){
+  if(p.t==='cyl')
+    return '&oslash;'+f2(2*p.r)+' x '+f2(p.z1-p.z0)+' mm long, along '+(p.ax||'z').toUpperCase();
+  return f2(p.q[0]-p.p[0])+' x '+f2(p.q[1]-p.p[1])+' x '+f2(p.q[2]-p.p[2])+
+         ' mm (X x fore-aft x Z)';
+}
+addEventListener('pointermove',e=>{
+  if(down){tip.style.display='none';return;}
+  ray.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
+  // THE RAYCASTER DOES NOT TEST .visible, so a part in a hidden group is still
+  // hit - take the first intersection that is actually on the screen.
+  const h=ray.intersectObjects(PICK,false).find(x=>x.object.visible);
+  if(!h){tip.style.display='none';return;}
+  const p=h.object.userData.part;
+  tip.innerHTML='<b class="w">'+p.n+'</b><br>'+(p.d?p.d+'<br>':'')+
+    '<span class="dim">'+sizeOf(p)+' &middot; '+(GROUPS[p.g]||p.g)+'</span>';
+  tip.style.display='block';
+  const w=tip.offsetWidth, th=tip.offsetHeight;
+  tip.style.left=Math.max(6,Math.min(e.clientX+14,innerWidth-w-8))+'px';
+  tip.style.top=(e.clientY+18+th>innerHeight?Math.max(6,e.clientY-th-12):e.clientY+18)+'px';
+});
+
 function resize(){const w=innerWidth,h=innerHeight;rend.setPixelRatio(devicePixelRatio);rend.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();draw();}
 function draw(){rend.render(scene,cam);}
 addEventListener('resize',resize);
@@ -1267,7 +1373,7 @@ document.getElementById('facts').innerHTML=
   FACTS.map(f=>'<tr><td>'+f[0]+'</td><td class="n">'+f[1]+'</td></tr>').join('');
 document.getElementById('infobody').innerHTML=
   '<b class="w">Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
-  'Every box is placed from a registry value. <b class="w">LEFT DRAG PANS, MIDDLE DRAG ORBITS</b>, scroll zooms, and a view button recentres. '+
+  'Every box is placed from a registry value. <b class="w">LEFT DRAG PANS, MIDDLE DRAG ORBITS</b>, scroll zooms, a view button recentres, and <b class="w">HOVER NAMES THE PART</b> under the cursor. '+
   'Pose: X home left, Y home back, Z at max.<br><b class="w">Placements ASSUMED, not derived:</b>'+
   '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
 
