@@ -37,12 +37,14 @@ OUT = HERE.parent / "machine" / "drawings" / "fasteners.html"
 #   nut    - a plain nut on the far side; length only has to reach
 #   bore   - into an extrusion's lengthwise corner bore; deep, forgiving
 #   wood   - a screw into timber
+#   acorn  - a CLOSED nut; past its depth the bolt lands on the dome
 LONG_IS = {
     "tapped": "may protrude - check what is behind it",
     "t-nut": "harmless, the T-nut is through-threaded",
     "nut": "harmless, it just stands proud of the nut",
     "bore": "harmless, the bore is deep",
     "wood": "n/a",
+    "acorn": "DAMAGING - it bottoms on the dome and never clamps",
 }
 
 
@@ -88,6 +90,20 @@ def main():
         # `past` so a bolt running deep into a slot is visible rather than
         # flattered into looking well engaged.
         past = None
+        # 🔴 AN ACORN NUT IS THE ONE DESTINATION WHERE RUNNING LONG IS FATAL.
+        # It gives ACORN_NUT_THREAD of thread and will swallow ACORN_NUT_DEPTH
+        # of bolt; a bolt that wants more than the depth lands on the closed
+        # dome and the joint NEVER CLAMPS, however hard the nut is turned. Both
+        # figures are his, measured off two brands in hand on 2026-10-11 - the
+        # question Sheet 7's footnote 7.9 asked. Engagement is capped the same
+        # way a T-nut's is, and `over` carries what will not fit.
+        over = None
+        if eng is not None and j.get("into") == "acorn":
+            depth = v.get("ACORN_NUT_DEPTH")
+            thread = v.get("ACORN_NUT_THREAD", eng)
+            if depth is not None and eng > depth:
+                over = eng - depth
+            eng = min(eng, thread)
         if eng is not None and j.get("into") == "t-nut":
             # A PRONGED T-NUT IN PLYWOOD IS NOT A SLIDE-IN EXTRUSION T-NUT.
             # The fin angle's give 10, the extrusion's give 6, so a joint
@@ -95,7 +111,8 @@ def main():
             cap = v.get(j.get("tnut_thread", "TNUT_THREAD_M8"), 6.0)
             if eng > cap:
                 past, eng = eng - cap, cap
-        rows.append(dict(j, grip=grip, grip_txt=grip_txt, eng=eng, past=past))
+        rows.append(dict(j, grip=grip, grip_txt=grip_txt, eng=eng, past=past,
+                         over=over))
 
     missing = [r for r in rows if r.get("length") is None]
     nosize = [r for r in rows if "size" not in r]
@@ -135,6 +152,18 @@ def main():
                     if r["eng"] <= 0 else "")
             print(f"     {r['id']:24s} engages {r['eng']:g} "
                   f"on M{r.get('size', '?')}{tail}")
+
+    # 🔴 BOTTOMING IS A DIFFERENT FAULT FROM THIN ENGAGEMENT and gets its own
+    # list: a thin joint holds less than you wanted, a bottomed one holds
+    # NOTHING. It is also the quiet one - the nut spins up tight against the
+    # dome and feels exactly like a joint that is clamped.
+    deep = [r for r in rows if r.get("over")]
+    if deep:
+        print("\n  \U0001F534 BOTTOMS OUT IN THE ACORN NUT - the bolt is too long:")
+        for r in deep:
+            print(f"     {r['id']:24s} wants {r['length'] - r['grip']:g} of "
+                  f"nut, it takes {v['ACORN_NUT_DEPTH']:g} - "
+                  f"{r['over']:g} too long")
 
     # THE BUY LIST IS GROUPED BY THREAD SIZE - his call 2026-10-11, and it is
     # how hardware is actually bought: you stand at one drawer for M5 and

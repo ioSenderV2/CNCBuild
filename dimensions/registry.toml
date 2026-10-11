@@ -2419,7 +2419,19 @@ note = "M8 acorn nut across the corners - 13 across the flats, about 15 across t
 sym = "ACORN_NUT_H"
 value = 13
 provenance = "nominal"
-note = "M8 acorn nut overall height. \u26a0 CATALOGUE, NOT MEASURED, AND IT IS THE ONE THAT MATTERS: the nut is CLOSED, so how deep its thread runs decides whether an M8 x 35 bottoms out before it clamps. That depth is the open question on Sheet 7's footnote 7.9 and this overall height is not a substitute for it."
+note = "M8 acorn nut overall height. \u26a0 CATALOGUE, NOT MEASURED - but the question this note carried is CLOSED: the nuts are in hand and the figures that matter are ACORN_NUT_THREAD and ACORN_NUT_DEPTH, both measured 2026-10-11. The overall height was never a substitute for them and still is not."
+
+[[dim]]
+sym = "ACORN_NUT_THREAD"
+value = 10
+provenance = "measured"
+note = "10 - the thread a bolt can engage in the M8 acorn nut. \u2705 HIS MEASUREMENT 2026-10-11, OFF TWO DIFFERENT BRANDS IN HAND, and both give the same 10. That is 1.25 x D, so a bolt that reaches it is properly held. \U0001F534 A BOLT CANNOT ENGAGE MORE THAN THIS NO MATTER HOW LONG IT IS - the extra goes into ACORN_NUT_DEPTH's spare room and then stops dead. tools/make-fasteners.py caps engagement here the same way it caps a T-nut's."
+
+[[dim]]
+sym = "ACORN_NUT_DEPTH"
+value = 11
+provenance = "measured"
+note = "11 - how much BOLT the M8 acorn nut will take before it bottoms on the closed end. \u2705 HIS MEASUREMENT 2026-10-11, the same on both brands. \U0001F534 THIS IS A HARD CEILING ON BOLT LENGTH, not a guideline: past it the bolt lands on the dome and the joint never clamps, however hard the nut is turned. It is the figure Sheet 7's footnote 7.9 asked for. The two acorn joints both clear it - the rear plate's 40 protrudes 6.65 and the side plates' 40 protrudes 9.571 - and it says the rear plate's 6.65 CANNOT be improved by going longer: a 45 would want 11.65 and bottom out."
 
 [[dim]]
 sym = "TT_BED_T"
