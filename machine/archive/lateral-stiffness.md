@@ -2,7 +2,7 @@
 
 > Split out of `end-plates-risers-and-spindle.md` on 2026-10-02 - the section below is
 > **verbatim**, nothing was re-decided in the move. Its nine siblings are listed in
-> [`README.md`](README.md).
+> [`README.md`](../README.md).
 
 ---
 
@@ -243,7 +243,7 @@ Given 2026-10-03:
 window is not simply 9.525 + 27 = 36.5, and it retires the earlier note that 50 was a guess expected
 to shrink. ⚠️ **Mark the bar's underside on the plate** - 9.525 below the window top - because the
 lower opening is the only part the casting can use. **A plywood mockup is being cut to find the real number** - see the plate list in
-[`drawings/README.md`](drawings/README.md). Nothing downstream depends on it: the window's tight
+[`drawings/README.md`](../drawings/README.md). Nothing downstream depends on it: the window's tight
 dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
 from the 60 mm tongue at the plate's base.
 
@@ -413,7 +413,7 @@ steel backing strip or large fender washers on both faces here, not plain washer
 
 ✅ **No blocking under the 200 mm base - closed 2026-10-11.** The fin's base lands **34.55 mm**
 from the last across-rib's front face, and at that distance the 25 mm top skin is a short overhang
-rather than a span. See [`assembly.md`](assembly.md). The original concern, kept because it is the
+rather than a span. See [`assembly.md`](../assembly.md). The original concern, kept because it is the
 right question to ask of any bottom-edge bearing: the bearing is only
 worth having if it lands on structure rather than on skin spanning between grid members. The box is
 built last, so this is free, but it must be decided before the skins are cut.
@@ -644,6 +644,6 @@ and it has already been misread that way once. Under the 1000 N envelope the sam
 **0.065 mm vertically and 0.13 mm fore-aft** (indicative only). **Fore-aft is the soft axis, by about
 2×**, because the section is 120 tall and 60 deep and stiffness goes as (height/width)². The full
 working, and why a single 40×120 was compared and rejected on exactly this, is in
-[`gantry-beam-joint.md`](gantry-beam-joint.md).
+[`gantry-beam-joint.md`](../gantry-beam-joint.md).
 
 ---

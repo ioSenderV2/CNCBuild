@@ -745,8 +745,8 @@ beam and the side plate it laps, and ends where the fin begins.
 
 ⚠️ **The front and back tongue arrangement is inconsistent between the design record and the shop
 pack.** The shop pack (2026-10-03, the later of the two) says **there is no front tongue** and the
-fin is tied by L-brackets; [`torsion-box.md`](torsion-box.md) and
-[`lateral-stiffness.md`](lateral-stiffness.md) still describe a continuous front tongue lapping the
+fin is tied by L-brackets; [`archive/torsion-box.md`](archive/torsion-box.md) and
+[`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) still describe a continuous front tongue lapping the
 side tongues. **Resolve before the walls are glued up.**
 
 ## 10. Fit the spindle and tram

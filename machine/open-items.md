@@ -175,7 +175,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   their laminated tongues; the back-centre post has a single-sided ledge under the back wall and its
   tongue. The two rear corner legs have no tenon and stand ~2 mm shy, so the box never touches them.
   🔴 **The claim that the scheme was "only in the project notes, not in this repo" was simply
-  wrong** - [`torsion-box.md`](torsion-box.md) carries the mount, the tenons, the ledge depth, the
+  wrong** - [`archive/torsion-box.md`](archive/torsion-box.md) carries the mount, the tenons, the ledge depth, the
   back post's single-sided shoulder and what the tenons ask of the rib grid. **It was repeated twice
   in conversation on 2026-10-02 on the strength of this list rather than the file.** An open-items
   entry is a pointer, not evidence; read the file it points at before believing it.

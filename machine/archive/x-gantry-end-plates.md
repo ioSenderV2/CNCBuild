@@ -2,7 +2,7 @@
 
 > Split out of `end-plates-risers-and-spindle.md` on 2026-10-02 - the section below is
 > **verbatim**, nothing was re-decided in the move. Its nine siblings are listed in
-> [`README.md`](README.md).
+> [`README.md`](../README.md).
 
 ---
 
@@ -613,7 +613,7 @@ the coupler" working: the coupler now lives inside the casting, not in a bore th
 ✅ **And the 35 mm ambiguity resolves itself.** This file used to warn that two different 35 mm
 holes would exist in the X end plate - a stepper shaft clearance and the **encoder sensor bore**
 from
-[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
+[`../linear-encoder/design-can-position-feedback.md`](../../linear-encoder/design-can-position-feedback.md).
 **Only the encoder bore remains**, so "the 35 mm hole in the X end plate" is now unambiguous.
 
 ---

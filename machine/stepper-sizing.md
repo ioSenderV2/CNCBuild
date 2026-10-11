@@ -9,7 +9,7 @@
 
 **One motor type for the whole machine, so one spare covers every axis.** The candidates were
 1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 57 frame the cast stepper frames take —
-see [`y-beam-support.md`](y-beam-support.md) for the frames themselves. The drives are TOSEASTARS
+see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames themselves. The drives are TOSEASTARS
 HBT57C on a 48 V rail; that part of the machine is settled in
 [`../wiring/breakout-box.md`](../wiring/breakout-box.md) and is not reopened here.
 
@@ -49,7 +49,7 @@ Thrust at the nut is 2π·T·η / lead. At η = 0.9 and a 5 mm lead:
 
 Against that, two figures this repo already works to: the **500–1000 N structural envelope** in
 [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), and the **~700 N** working
-thrust used in the Y peel check in [`y-beam-support.md`](y-beam-support.md). Even 1.5 N·m clears
+thrust used in the Y peel check in [`archive/y-beam-support.md`](archive/y-beam-support.md). Even 1.5 N·m clears
 both. **Every candidate is oversized on thrust, so thrust cannot choose between them.**
 
 📌 **The motor is the fuse, and that is the right way round.** The largest candidate reaches 3620 N,
@@ -139,7 +139,7 @@ is a choice, not a constraint.
    the one claim in this chapter that a torque curve could overturn, and it is the claim the
    decision rests on most heavily.
 3. **It adds hanging mass at a reach already budgeted.** Both
-   [`x-gantry-end-plates.md`](x-gantry-end-plates.md) and [`y-beam-support.md`](y-beam-support.md)
+   [`archive/x-gantry-end-plates.md`](archive/x-gantry-end-plates.md) and [`archive/y-beam-support.md`](archive/y-beam-support.md)
    accept the stepper-and-casting cantilever on the figure *"roughly 2.5 kg at that reach is under
    2 N·m"*. A 3.2 is a longer, heavier motor than that figure assumes. The 2.2 sits inside it.
 4. **The current budget is 12.5 A for all four axes.** ⚠️ Rated phase current per motor is not in

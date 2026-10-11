@@ -69,7 +69,7 @@ weak-axis stiffness against only 25 % of the strong-axis, which would have been 
 if the full-height plate took the fore-aft load in-plane**. The risers this was decided for went to
 1/2", so the coupling never had to be managed. ⚠️ **Those risers no longer exist** - all four were
 scrapped, and each Y beam end now carries a tapered front fin with the back plate behind both. The
-**reasoning** is what this section is for, and it is what [`lateral-stiffness.md`](lateral-stiffness.md)
+**reasoning** is what this section is for, and it is what [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md)
 checks the fins against.
 
 The saving was only about 0.44 lb per riser, 1.76 lb across all four, and it is static weight. Thin

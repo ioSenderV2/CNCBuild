@@ -82,22 +82,29 @@ PHOTO_MAX_PX = 1100
 PHOTO_QUALITY = 82
 
 # Reading order, which is NOT the directory listing order. The load case is the premise every
-# deflection figure depends on, so it leads. The beams come before what holds them up.
-# outboard-plate sits immediately before torsion-box because torsion-box.md opens by telling
-# you to read the outboard plate's "How it lands on the torsion box" first. The three
-# cross-cutting files - tramming, machining, open items - come last because every plate
-# section refers to them.
+# deflection figure depends on, so it leads. The three cross-cutting files - tramming,
+# machining, open items - come last because the others refer to them.
+#
+# 🔴 SIX FILES LEFT THIS LIST ON 2026-10-11, into machine/archive/. They were walkthroughs of
+# dimension chains the registry now owns - torsion-box, lateral-stiffness, x-gantry-end-plates,
+# z-carriage, y-beam-support, outboard-plate - and they kept going stale against it. The specific
+# failure: a sole plate position was read out of x-gantry-end-plates.md as -182.5 when the
+# registry had moved it to -175 the week before, and the prose audit cannot catch that class of
+# drift because a 7.5 error reads as a different quantity, not a near miss.
+#
+# What was worth keeping came out as FOUR SMALL FILES, one argument each - the parts that do not
+# reduce to symbols. They are comparisons and rejected options, so their numbers cannot go stale
+# against the registry: nothing in them defines a part.
 ORDER = [
     "loads-and-plate-thicknesses.md",
     "gantry-beam-joint.md",
-    "y-beam-support.md",
-    "lateral-stiffness.md",
-    "outboard-plate.md",
-    "torsion-box.md",
+    "box-stiffness.md",
+    "three-point-mount.md",
+    "egg-crate.md",
+    "lateral-fix.md",
     "spindle-and-mount.md",
     "stepper-sizing.md",
-    "z-carriage.md",
-    "x-gantry-end-plates.md",
+    "spoilboard.md",
     "tramming.md",
     "machining.md",
     "open-items.md",

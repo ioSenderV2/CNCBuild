@@ -2,7 +2,7 @@
 
 > Split out of `end-plates-risers-and-spindle.md` on 2026-10-02 - the section below is
 > **verbatim**, nothing was re-decided in the move. Its nine siblings are listed in
-> [`README.md`](README.md).
+> [`README.md`](../README.md).
 
 ---
 
@@ -201,7 +201,7 @@ measured on the wrong kit.
 ⚠️ **This heading used to read "with no hard stop", and it was wrong** - the resolution was already
 written in the paragraphs below it while the alarm stayed in the title. Corrected 2026-10-01, after
 that stale heading was read at face value and propagated into
-[`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md) as a reason not to put the
+[`../commissioning/stiffness-test.md`](../../commissioning/stiffness-test.md) as a reason not to put the
 carriage near the top of travel. **A headline that contradicts its own body is worse than no note**,
 because skimming is how a long file gets read.
 
@@ -325,7 +325,7 @@ with a 2" stickout - which clears the deepest wood through-cut by 28.65 mm. 📌
 arithmetic runs on the 226 mm between the stops, not on Z_TRAVEL's rail-limited 235.91.** The travel floor was
 never a machine measurement in the end: the gantry fixes the reach and the **spoilboard stack** is
 what positions the work in it. Full working, both ends of travel and the four fixturing cases, in
-[`spoilboard.md`](spoilboard.md).
+[`spoilboard.md`](../spoilboard.md).
 
 ## Which half moves - settled
 
@@ -525,7 +525,7 @@ and a measured 8.7 agreed with it, which is precisely why the error survived: th
 out against the part, just not against the right feature. **A reading that confirms is not a
 reading that confirms the right thing.** A bolt longer than the stack allows does not grip harder — it
 bottoms in the block, and a bottomed bolt reads as a tight bolt while the plate stays loose. The
-same failure that [`gantry-beam-joint.md`](gantry-beam-joint.md) built `BOLT_REACH_MAX` to prevent on
+same failure that [`gantry-beam-joint.md`](../gantry-beam-joint.md) built `BOLT_REACH_MAX` to prevent on
 the T-nut joints.
 
 | | |

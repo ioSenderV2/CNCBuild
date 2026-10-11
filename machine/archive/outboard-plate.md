@@ -2,7 +2,7 @@
 
 > Split out of `end-plates-risers-and-spindle.md` on 2026-10-02 - the section below is
 > **verbatim**, nothing was re-decided in the move. Its nine siblings are listed in
-> [`README.md`](README.md).
+> [`README.md`](../README.md).
 
 ---
 
@@ -14,7 +14,7 @@ from 12" along the beam to 12" tall and a metre long.
 
 **Both halves of that sentence matter, and the second is what makes the first a reversal.** On Y
 there is no separate 120 mm back joining plate - this plate *is* it, grown. So choosing steel here
-overturns the explicit decision in [`gantry-beam-joint.md`](gantry-beam-joint.md):
+overturns the explicit decision in [`gantry-beam-joint.md`](../gantry-beam-joint.md):
 
 > **Material is aluminium, not steel.** Steel would give roughly three times the modulus, but over
 > 1000 mm a shop temperature swing puts a couple of tenths of differential expansion into a joint
@@ -36,7 +36,7 @@ right at "a couple of tenths".
 Two things point the same way:
 
 1. ✅ **9.2 mm equivalent is almost exactly the 3/8" (9.53 mm)** that
-   [`gantry-beam-joint.md`](gantry-beam-joint.md) specifies for the Y back plate. So 1/8" steel is
+   [`gantry-beam-joint.md`](../gantry-beam-joint.md) specifies for the Y back plate. So 1/8" steel is
    **sized right for the job it is taking over**, not merely adequate.
 2. ✅ **Thermal restraint force scales with E·A**, so 1/8" generates **half** the load at the end
    T-nuts that 1/4" steel would. Against an objection that is specifically thermal, the thinner plate
@@ -138,7 +138,7 @@ duty, and conflating them is how the steel question gets waved through without b
 |---|---|---|
 | Differential at 15 K | 0.18 mm, steel to plywood | **0.17 mm, steel to aluminium** |
 | What the bolts do | **"retention, not the load path"** - vertical and outboard loads arrive in bearing on plywood faces | **Preloaded friction joint whose entire job is shear transfer** across the seam |
-| Can it take up the movement in the clearance? | Yes - nothing needs the bolts to grip | **This is the open question**, and it is what [`gantry-beam-joint.md`](gantry-beam-joint.md) rejected steel over |
+| Can it take up the movement in the clearance? | Yes - nothing needs the bolts to grip | **This is the open question**, and it is what [`gantry-beam-joint.md`](../gantry-beam-joint.md) rejected steel over |
 
 The two numbers being near-identical is a coincidence of the materials, not evidence that the second
 joint is as relaxed as the first.
@@ -323,7 +323,7 @@ More room for the tape either way - do not fight the supplier over head style.
 
 ⚠️ **This is reasoning from principle, not a measurement.** The AS5311's sensitivity to lateral
 disturbance is not established here, and
-[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
+[`../linear-encoder/design-can-position-feedback.md`](../../linear-encoder/design-can-position-feedback.md)
 is the authority on the sensing side. To know rather than assume: fit a tape offcut and a sensor, and
 read across a bolt head against between bolt heads. Worth doing before 3 m of one-shot PSA goes down.
 
@@ -338,6 +338,6 @@ was optimistic.)
 
 ⚠️ 5 mm is clearance and not much else - **no room for a flanged puck or an external clamp ring.**
 Check that against the puck design in
-[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
+[`../linear-encoder/design-can-position-feedback.md`](../../linear-encoder/design-can-position-feedback.md).
 
 ---

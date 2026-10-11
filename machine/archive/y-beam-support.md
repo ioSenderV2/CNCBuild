@@ -2,7 +2,7 @@
 
 > Split out of `end-plates-risers-and-spindle.md` on 2026-10-02 - the section below is
 > **verbatim**, nothing was re-decided in the move. Its nine siblings are listed in
-> [`README.md`](README.md).
+> [`README.md`](../README.md).
 
 ---
 
@@ -26,7 +26,7 @@ this file were reversed on purpose. The short form:
 Two reversals are deliberate and are recorded with their reasons where they occur: the
 **monolithic rear plate**, rejected on 2026-09-30 and adopted now because three of its four grounds
 lapsed; and **steel joining plates**, rejected in
-[`gantry-beam-joint.md`](gantry-beam-joint.md) and adopted now with the thermal cost accepted rather
+[`gantry-beam-joint.md`](../gantry-beam-joint.md) and adopted now with the thermal cost accepted rather
 than avoided.
 
 ---
@@ -90,7 +90,7 @@ the new plates.
 ⚠️ **This used to add "so the pattern costs no mill time" and that is no longer true.** It was true
 while the pattern lived in plates already drilled at home with a mag drill. Those plates are gone;
 the fins are new parts and the pattern has to be cut into them. See
-[`machining.md`](machining.md) for what the trip now carries - it is no longer just the window and
+[`machining.md`](../machining.md) for what the trip now carries - it is no longer just the window and
 the back plate's two patterns.
 
 ---
