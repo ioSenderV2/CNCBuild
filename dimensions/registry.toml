@@ -2803,6 +2803,6 @@ note = "M8 x 30, the small flange type - M8_FLANGE_HEAD_D and M8_FLANGE_HEAD_H. 
 
 [[dim]]
 sym = "FIN_T_BOLT_L"
-value = 15
+value = 16
 provenance = "part"
-note = "M8 x 15 for T1 and T2, his 2026-10-11 - the two through the angle's vertical leg into the fin's TAPPED holes. ✅ IT ENGAGES 9 OF THE 10: 15 less FIN_ANGLE_T's 6, which is 1.12 x D and the same engagement the skin bolts get. ✅ AND NOTHING PROTRUDES PAST THE FIN'S BACK FACE, since 9 is inside the 10 of tap - which matters here more than it usually would, because the tee track bed is hard against that face and is the whole reason the fin is tapped rather than through-bolted. 📌 A 16 WOULD HAVE USED THE TAP EXACTLY and was the derived answer before he gave the real part; 15 is what he has and it gives up nothing worth having."
+note = "M8 x 16 for T1 and T2 - the two through the angle's vertical leg into the fin's TAPPED holes. ✅ IT EQUALS FIN_ANGLE_T + FIN_BOLT_TAP_DEPTH EXACTLY, 6 + 10, so the thread uses the whole tapped depth and the bolt finishes FLUSH with the fin's back face. ✅ NOTHING PROTRUDES, which matters more here than it usually would: the tee track bed is hard against that face and is the whole reason the fin is tapped rather than through-bolted. 📌 HE CHECKED THE SUPPLY AND 16 IS WHAT IS SOLD - a 15 was recorded for one commit off his first reading, and it would have engaged 9 and cost nothing either; the stocked size happens to be the exact one. A bolt here CANNOT BOTTOM OUT, the 10 fin being tapped THROUGH."
