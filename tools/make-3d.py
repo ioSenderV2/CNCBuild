@@ -497,18 +497,24 @@ def main() -> int:
     # the box's top skin and a fresh surface here is SPOIL_SURFACE = 66, so the
     # machine can skim its own board. The upper sheet is the sacrificial one.
     #
-    # THE FOOTPRINT IS THE ALUMINIUM'S, exactly - same x, same fore-aft. That is
-    # not a shortcut: the bed is already TT_BED_SPACER short of each side plate,
-    # which is the relief gap machine/spoilboard.md asks the stack to keep so the
-    # tongue bolt heads at Y 30 have somewhere to live. Matching it invents no
-    # new edge.
+    # THE SHEET IS SMALLER THAN THE ALUMINIUM UNDER IT and that is his call: it
+    # only has to cover the range the tool can reach. FLUSH WITH THE BED'S FRONT
+    # EDGE, SPOIL_BACK_SHY off the rear plate, SPOIL_SIDE_SHY off each side
+    # plate's inside face - his, 2026-10-11.
+    #
+    # It also settles a clash the full footprint had: eight tongue bolt heads
+    # stand 4 mm proud of the bed's back edge, up at z 21.35 to 38.65, straight
+    # through the lower sheet. 200 of setback leaves them in clear air.
     mdf_t = v["MDF_LAYER_T"]
     bed_y1 = bed_y0 + int(v["TT_BED_PLATES"]) * bed_pw
+    mdf_x0 = v["T_SIDE_PLATE"] + v["SPOIL_SIDE_SHY"]
+    mdf_x1 = W - v["T_SIDE_PLATE"] - v["SPOIL_SIDE_SHY"]
+    mdf_y0 = v["T_REAR_PLATE"] + v["SPOIL_BACK_SHY"]
     for i in range(int(v["MDF_LAYERS"])):
         z0 = v["TT_BED_T"] + i * mdf_t
         top = i == int(v["MDF_LAYERS"]) - 1
         box("MDF sacrificial sheet" if top else "MDF sheet", "spoil", 0xC2A878,
-            bed_x0, bed_y0, z0, bed_x1, bed_y1, z0 + mdf_t,
+            mdf_x0, mdf_y0, z0, mdf_x1, bed_y1, z0 + mdf_t,
             d=f"{mdf_t:g} ultra lite MDF" + (
                f" - the sacrificial sheet, surfaced in place. A fresh surface is "
                f"{v['SPOIL_SURFACE']:g} above the box's top skin and the tool tip "

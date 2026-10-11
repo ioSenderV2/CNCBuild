@@ -2528,6 +2528,18 @@ expr = "TT_BED_T + (MDF_LAYERS * MDF_LAYER_T)"
 note = "66 - a FRESH work surface above the box's top skin: 16 of aluminium and two 25 sheets. ⚠ machine/spoilboard.md's Z envelope runs on 67.5, so every clearance in that table is 1.5 out until it is redone on this stack. It is the right direction for the sweep clearances and the wrong one for reach, and the reach has 20.8 mm to give: the tool tip floor is 45.2. \U0001F4CC IT ONLY EVER GOES DOWN - the top sheet is sacrificial and the machine skims it."
 
 [[dim]]
+sym = "SPOIL_BACK_SHY"
+value = 200
+provenance = "part"
+note = "200 - how far the MDF's back edge stops short of the REAR PLATE's front face. His, 2026-10-11. ✅ THE SHEET ONLY HAS TO COVER THE TOOL'S TRAVEL, which is smaller than the aluminium under it, so there is no reason to carry board where the tool cannot go. \U0001F534 IT ALSO SOLVES THE CLASH THE FULL FOOTPRINT HAD: eight tongue bolt heads stand 4 mm proud of the bed's back edge at z 21.35 to 38.65, straight through the lower sheet, and 200 clears them by a mile. The first fix considered was trimming 4 and he had a better one."
+
+[[dim]]
+sym = "SPOIL_SIDE_SHY"
+value = 150
+provenance = "part"
+note = "150 - how far the MDF stops short of each SIDE PLATE's inside face. His, 2026-10-11. Same reasoning as SPOIL_BACK_SHY: it only has to cover the tool's travel."
+
+[[dim]]
 sym = "TT_BED_END_BOLT"
 value = 5
 provenance = "measured"
