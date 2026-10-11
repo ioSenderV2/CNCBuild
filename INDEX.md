@@ -132,6 +132,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [From the 2026-10-02 stepper frame rework - all unmeasured](machine/open-items.md#from-the-2026-10-02-stepper-frame-rework---all-unmeasured)
 - [From the 2026-10-08 order - the back plate's length](machine/open-items.md#from-the-2026-10-08-order---the-back-plates-length)
 - [From the 2026-10-08 datasheet pass](machine/open-items.md#from-the-2026-10-08-datasheet-pass)
+- [From the 2026-10-11 spoilboard pass](machine/open-items.md#from-the-2026-10-11-spoilboard-pass)
 - [Carried forward](machine/open-items.md#carried-forward)
 
 ## [machine/photos/README.md](machine/photos/README.md)
@@ -158,6 +159,8 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 - [The Mega V tee track spoilboard is carried over - settled 2026-10-11](machine/spoilboard.md#the-mega-v-tee-track-spoilboard-is-carried-over---settled-2026-10-11)
 - [The height trap - a thinner stack cannot be surfaced](machine/spoilboard.md#the-height-trap---a-thinner-stack-cannot-be-surfaced)
+- [The MDF's own footprint - his, 2026-10-11](machine/spoilboard.md#the-mdfs-own-footprint---his-2026-10-11)
+- [Holding the MDF down - M8 drop-in T-bolts](machine/spoilboard.md#holding-the-mdf-down---m8-drop-in-t-bolts)
 - [How it is anchored](machine/spoilboard.md#how-it-is-anchored)
 - [The Z envelope, both ends](machine/spoilboard.md#the-z-envelope-both-ends)
   - [The four fixturing cases](machine/spoilboard.md#the-four-fixturing-cases)

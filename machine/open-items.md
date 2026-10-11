@@ -150,6 +150,21 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - ⚠️ **The C-hole row offsets imply the block centres sit 80 apart** where the closest they can
   physically sit is 77. The button heads account for 1.32 of that, not 3.
 
+## From the 2026-10-11 spoilboard pass
+
+- ⚠️ **The M8 drop-in T-bolt that holds the MDF down - three figures, all off the drawer.** How far
+  the thread stands **above the top of the aluminium** with the T home in its slot; the **washer
+  thickness**; the **nut height**. Together they set the counterbore depth, and until they are
+  measured the holes are deliberately **not drawn in the 3D model**. 📌 **A 40 was photographed
+  beside the sandwich and tops out around the seam between the two sheets - it dies inside the
+  board. He reads a 50 as the one.** With a 66 surface over a 16 track there is 50 of MDF to get
+  through, so the nut has to sit in a counterbore whichever bolt it is. See
+  [`spoilboard.md`](spoilboard.md).
+- ⚠️ **The sole plate underside reads 113.15 in prose and 120.65 in the model.** `spoilboard.md`'s
+  envelope table calls 113.15 the lowest thing that sweeps; the Y sole brackets in
+  `tools/make-3d.py` bottom out at 120.65. Noticed 2026-10-11 and **not chased** - it moves a
+  clearance, not a hole, and the two may be different elements of the same assembly.
+
 ## Carried forward
 
 - ✅ ~~**Height from the top of the beam to the torsion box fixing line**, and whether the box has

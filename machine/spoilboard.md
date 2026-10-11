@@ -65,19 +65,65 @@ below is worked against.
 | The stack as built on this machine | mm |
 |---|---|
 | Four tee track plates, bedded directly on the box's top skin | 16 |
-| 3/8" MDF sheet | 9.5 |
-| 19 mm MDF, two layers, the upper one sacrificial | 38 |
-| Sum | 63.5 |
-| **MDF skimmed or shimmed to put the surface at** | **~67.5** |
+| **Ultra lite MDF, two sheets of 25, the upper one sacrificial** | **50** |
+| **A fresh surface above the box's top skin** | **66** |
 
-📌 **Skim, do not shim, if it can be helped.** The upper layer is sacrificial and the machine
-surfaces it anyway, so the 4 mm is better spent as thicker stock taken down than as a packer under
-the aluminium - a packer would undo the continuous bedding that is the whole point of dropping the
-2040s.
+🔴 **Two sheets of 25 mm ultra lite MDF - his, 2026-10-11, and it replaces the 3/8" sheet plus two
+19s this table carried before.** Ultra lite is about a third lighter than ordinary board and the
+stack covers a square metre, which is the reason for it: that weight sits on top of everything the
+posts carry. `MDF_LAYER_T`, `MDF_LAYERS` and `SPOIL_SURFACE` are in the registry and the 3D model
+draws both sheets.
+
+⚠️ **The surface is 66, and the Z envelope below is worked on 67.5 - so every figure in it that is
+measured from the surface is 1.5 too high, and every spare 1.5 too generous.** It is the safe
+direction for the swept clearances and the costly one for reach, and reach has 20.8 mm to give: the
+tool tip floor is 45.2 and the interference check measures the tool biting 20.80 into the sacrificial
+sheet at the bottom of travel. 📌 **It only ever goes down from 66** - the top sheet is sacrificial
+and the machine skims it, so there is no shimming to do and nothing to aim at.
 
 **Surface the MDF, never the aluminium.** Bedded on the box the remaining problem is flatness and
 tram, not stiffness, and a sacrificial layer the machine can skim solves both. Tee nuts in the
 tracks hold the MDF down, counterbored well below the surface so there is depth to skim into.
+
+## The MDF's own footprint - his, 2026-10-11
+
+**The board only has to cover the range the tool can reach**, which is smaller than the aluminium
+under it, so it is cut back on three sides:
+
+| Edge | Where it lands |
+|---|---|
+| Front | **flush with the tee track bed's front edge** |
+| Back | `SPOIL_BACK_SHY` = **200** short of the rear plate |
+| Each side | `SPOIL_SIDE_SHY` = **150** short of the side plate's inside face |
+
+That puts it at X 153.43-1057.81 and 206.35-1006.35 fore-aft - **904.38 × 800**.
+
+✅ **It covers the sweep.** The tool tip runs X 192.62-1018.62, inside the board by **39.19 each
+side**, and reaches back to 221.95, inside by **15.60**. ⚠️ **The tool overruns the FRONT edge by
+45.00** - and that is the aluminium's own edge, so the bed stops there too. Work needing that last
+45 mm sits on the tee track with no sacrificial layer under it.
+
+🔴 **The setback also killed a clash the full-footprint board had.** Eight tongue bolt heads stand
+**4 mm proud of the bed's back edge** at z 21.35-38.65, which is straight through a lower sheet that
+runs to the back. The fix being considered was trimming 4 mm off that edge; 200 makes the question
+go away.
+
+## Holding the MDF down - M8 drop-in T-bolts
+
+**His scheme, 2026-10-11.** Drill 8 mm through both sheets at the four corners, with the
+**front-to-back hole spacing on the tee track's own slot spacing**, and counterbore from the top
+deep enough to take the washer and nut below the surface. Then preinstall the T-bolts in the corners,
+drop the whole sandwich onto the aluminium, turn each bolt so its T lines up with its slot, let it
+drop in, and tighten.
+
+📌 **The slot grid closes on it.** Slot centres sit at 26.35 + 250 × plate + 30 × slot. The board's
+back edge at 206.35 is exactly a centre, and the nearest centre to the front edge is 986.35, 20 mm
+back from it - **780 apart, 26 pitches**, so a front-to-back pair lands on real slots with no
+fudging.
+
+⚠️ **The bolt is not settled and the holes are NOT in the 3D model yet.** A 40 mm T-bolt photographed
+beside the sandwich tops out around the seam between the two sheets, dying inside the board; **he
+reads a 50 as the one**, to be measured off the drawer. See the open item.
 
 ## How it is anchored
 
@@ -147,7 +193,7 @@ figure below is on the 226.
 | | mm above the box top skin |
 |---|---|
 | Tool tip, bottom of travel | **45.2** |
-| Work surface | **67.5** |
+| Work surface | **66** - was 67.5, see the stack table above |
 | Collet nut face, bottom of travel | **96.0** |
 | **Y sole plate underside** - the lowest thing that sweeps | **113.15** |
 | Dust shroud frame bottom, bottom of travel | **129.0** |
@@ -157,7 +203,12 @@ figure below is on the 226.
 **−182.5** from it, level with the inverted Y nut's mounting face, less the 1/4" plate. The spoilboard
 runs under it - the sole plate reaches outboard from the X end plate toward the side plate while the
 tracks span nearly plate to plate - so this is the swept clearance that matters: **45.65 mm** over a
-67.5 surface, or **~41 mm** allowing for the nut bolt heads on the plate's underside.
+67.5 surface, or **~41 mm** allowing for the nut bolt heads on the plate's underside. ⚠️ **On the 66
+surface it is 47.15**, and the same 1.5 is owed to every other figure here that is measured from the
+surface - the four cases below included, where each spare is 1.5 smaller than it says. ✅ **The
+spoilboard no longer runs under the sole plate at all.** The brackets sit at X 7.43-105.62 and
+1105.62-1203.81 in the model; the MDF spans 153.43-1057.81, so they sweep over bare aluminium and
+the clearance that matters there is over the **16**, not over the surface.
 
 **The shroud frame** comes down to the top of the threads on the 23 mm shaft, his. The thread starts
 **12 mm** below the nose shoulder and the shoulder is 15 below the barrel face, so the frame bottom
