@@ -2956,3 +2956,14 @@ note = "10 of M5 thread into the X end plate's tongue, his 2026-10-11 - 2 x D in
 sym = "BF12_FACE_PROTRUDE_REAR"
 expr = "BF12_FACE_BOLT_L - BF12_BODY_AT_BOLT - T_REAR_PLATE"
 note = "3.65 - how far a face-mount M5 x 30 stands through the back of the 1/4in rear plate. His figure was 'about 4' and this is it exactly. \u26A0 IT IS THE SAME BOLT AS THE TONGUE'S and that is the whole point: one length, two plate thicknesses, and only one of them stops short. \U0001F4CC IF THE STUB IS UNWANTED, SHORTEN THE BOLT RATHER THAN CAP IT - an M5 x 25 leaves 5 of engagement in the 6.35 plate, which is 1 x D in steel, and nothing protrudes."
+
+[[dim]]
+sym = "M8_SOCKET_CBORE"
+value = 8
+provenance = "part"
+note = "8 - the least a counterbore can be and still bury an M8 socket head, which is 8 tall. His, 2026-10-11. ✅ IT IS A GRIP TERM, NOT A DETAIL: a counterbore REMOVES material the bolt would otherwise pass through, so it makes the grip SHORTER and the bolt reach FURTHER past the far face. The shelf bar's verticals are the only counterbored joint on the machine."
+
+[[dim]]
+sym = "SHELF_VERT_GRIP"
+expr = "SHELF_BAR_H - M8_SOCKET_CBORE"
+note = "42.8 - what the shelf bar's VERTICAL bolts cross: the bar's HEIGHT less the counterbore. 🔴 IT IS SHELF_BAR_H AND NOT SHELF_BAR_W, and the fastener schedule had the width. The verticals are counterbored FROM BELOW and run up through the 50.8 height into the beam's underside slot; it is the HORIZONTAL pair that cross the 25.4 width. Reading the wrong one made an M8 x 50 look 26.6 too long when it is right."

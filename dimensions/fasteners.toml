@@ -186,9 +186,9 @@ count = 4
 length = 50
 head = "socket, counterbored"
 into = "t-nut"
-grip = ["SHELF_BAR_W"]
+grip = ["SHELF_VERT_GRIP"]
 source = "his, 2026-10-11"
-note = "🔴 SOCKET HEAD AND COUNTERBORED, not flange - the only joint on the machine that is. ⚠️ THE GRIP SHOWN IS THE BAR'S FULL WIDTH AND THAT IS WRONG WHILE THE COUNTERBORE DEPTH IS UNKNOWN: a counterbore REDUCES the material the bolt passes through, so the real grip is SHELF_BAR_W less the counterbore and the bolt stands further past the T-nut than this says. The T-nut only holds TNUT_THREAD_M8 either way; what the counterbore depth decides is how much bolt ends up inside the slot."
+note = "🔴 SOCKET HEAD AND COUNTERBORED, not flange - the only joint on the machine that is. ✅ THE GRIP IS THE BAR'S HEIGHT LESS THE COUNTERBORE, 42.8 - these run UP through the 50.8 height, counterbored from below, where it is the HORIZONTAL pair that cross the 25.4 width. 🔴 THIS ENTRY HAD THE WIDTH, which made the M8 x 50 look 26.6 too long when it is right: 7.2 past the bar, the T-nut takes TNUT_THREAD_M8 of it and 1.2 stands into the slot."
 
 [[joint]]
 id = "rear-plate-to-tongue"
