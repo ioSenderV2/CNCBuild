@@ -1950,26 +1950,28 @@ way.<sup class="f">7.1</sup>
        Scale 0.36 along both axes.
        SVG x = X * 0.36 ; SVG y = (301.625 - Y) * 0.36 -->
 
-  <rect x="0" y="0" width="435.86" height="108.59" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
+  <rect x="0" y="0" width="435.77" height="108.59" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the side plates, now OUTBOARD of this plate's ends rather than flush with
-       them: the left one sits off the drawing at negative X, the right one past
-       X 1204.38. Drawn at the ends for orientation only. -->
-  <rect x="0" y="0" width="1.14" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
-  <rect x="434.72" y="0" width="1.14" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
+  <!-- the side plates sit OUTBOARD of their beams, and the plate's left edge is
+       on Y1's outboard face - so the left one is entirely off this plate at
+       negative X, and the right one runs X 1204.38 to 1207.809 with the plate
+       carrying on 2.66 past it. -->
+  <rect x="-1.234" y="0" width="1.234" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
+  <rect x="433.58" y="0" width="1.234" height="43.2" fill="#d8d8d8" stroke="#555" stroke-width="0.5"/>
   <!-- the two beam footprints, 60 wide x 120 tall, Y 182 to 302 - so the beam's top face is
-       0.375 ABOVE this plate's top edge and the footprint is drawn clipped to the plate -->
-  <rect x="1.14" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
-  <rect x="413.12" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
-  <text class="lbl" x="3" y="53" fill="#c0c">Y1 BEAM</text>
-  <text class="lbl" x="401" y="53" fill="#c0c">Y2 BEAM</text>
+       0.375 ABOVE this plate's top edge and the footprint is drawn clipped to the plate.
+       Y1 STARTS ON X 0: its outboard face is what the plate's edge is set to. -->
+  <rect x="0" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+  <rect x="411.98" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+  <text class="lbl" x="2" y="53" fill="#c0c">Y1 BEAM</text>
+  <text class="lbl" x="400" y="53" fill="#c0c">Y2 BEAM</text>
 
   <!-- X1-X8 row at Y 30, 30 up from the installed bottom edge -->
-  <line x1="0" y1="97.79" x2="435.86" y2="97.79" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
+  <line x1="0" y1="97.79" x2="435.77" y2="97.79" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
   <text class="lbl" x="4" y="94" fill="#b06000">X1&ndash;X8 torsion-box row, Y 30 &#8212; 8 at 150, from X 50</text>
 
   <!-- plate dimensions -->
-  <line x1="0" y1="122.6" x2="435.86" y2="122.6" stroke="#06c" stroke-width="0.7"/>
+  <line x1="0" y1="122.6" x2="435.77" y2="122.6" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="178" y="132.6">1210.47 &#8212; the piece that was bought</text>
   <line x1="-12" y1="0" x2="-12" y2="108.59" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="-42" y="55">301.625</text>
