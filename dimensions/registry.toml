@@ -2417,9 +2417,9 @@ note = "M8 acorn nut overall height. \u26a0 CATALOGUE, NOT MEASURED, AND IT IS T
 
 [[dim]]
 sym = "TT_BED_T"
-value = 20
+value = 16
 provenance = "part"
-note = "20 - the aluminium tee track plate's thickness, and the whole height of the bed that bears on the box. His, 2026-10-11, off the Mega V spoilboard the plates come from. \U0001F534 ON THIS MACHINE THE PLATES BED DIRECTLY ON THE TOP SKIN: the Mega V carried them on three 2040 extrusions laid flat at 500 mm centres, which is why that board springs under the cutter, and the 2040s do not come across. See machine/spoilboard.md."
+note = "16 - the aluminium tee track plate's thickness, and the whole height of the bed that bears on the box. \U0001F534 IT WAS CARRIED AT 20 FOR ONE COMMIT AND THAT WAS WRONG - his correction 2026-10-11, given with the rest of the profile when the slots were asked for. The 20 came from his first description of the Mega V stack; the plate is 16 and THE PROFILE IS NON-STANDARD, so no catalog figure substitutes for his. The 4 it moved comes straight off the bed's top, so the MDF above makes it up - see machine/spoilboard.md. \U0001F534 ON THIS MACHINE THE PLATES BED DIRECTLY ON THE TOP SKIN: the Mega V carried them on three 2040 extrusions laid flat at 500 mm centres, which is why that board springs under the cutter, and the 2040s do not come across. See machine/spoilboard.md."
 
 [[dim]]
 sym = "TT_BED_PLATE_W"

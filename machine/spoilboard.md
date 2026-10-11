@@ -15,9 +15,13 @@ out to be set by the spoilboard rather than by the machine.
 ## ✅ The Mega V tee track spoilboard is carried over - settled 2026-10-11
 
 The 1 m square T-track spoilboard was a Mega V addon, and used listings split about evenly between
-machines with and without it, so parting with it costs nothing on the sale. The four **20 mm
+machines with and without it, so parting with it costs nothing on the sale. The four **16 mm
 aluminium tee track extrusions** are the expensive part of it and the new machine needs a tee-slot
 fixturing surface regardless. There is no case for selling aluminium that would then be re-bought.
+
+🔴 **The profile is non-standard, so every figure for it is his.** 16 thick, 250 deep, 47" wide, 8 mm
+slot width, 40 mm slot pitch - 2026-10-11. ⚠️ **The plate was carried at 20 thick for one commit**,
+taken from his first description of the Mega V stack, and the 4 mm comes straight off the bed's top.
 
 **What does not come across is the three 2040 extrusions.** On the Mega V they are the only support
 under the rest of the stack, at **500 mm centres**, and that is why the board springs under the
@@ -28,14 +32,17 @@ would re-create exactly the spans being got rid of.
 | The Mega V stack, his measurement | mm |
 |---|---|
 | Three 2040 extrusions, **laid flat** | 20 |
-| Four tee track plates, 250 mm × 47" | 20 |
+| Four tee track plates, 250 mm × 47" | 16 |
 | One 3/8" MDF sheet | 9.5 |
 | Six 19 mm MDF strips between the tracks | 19 |
-| **Layer sum** | **68.5** |
+| **Layer sum** | **64.5** |
 | **Measured total, and the figure the Z chain uses** | **67.5** |
 
-📌 **The 1 mm between the sum and the measurement is MDF nominal against actual, and nothing in the
-envelope moves on it.** The measured total is the one to carry.
+⚠️ **The sum and the measurement are 3 mm apart and I cannot reconcile them.** The measured 67.5 is
+the one the envelope runs on - it is the figure off the real board - but a 3 mm gap is more than MDF
+nominal-against-actual accounts for, so one of the layer figures is loose. It changes nothing that
+gets built, because the stack on this machine is made up in MDF to suit; it is recorded so nobody
+later reads the layer sum as a check on the total.
 
 ## 🔴 The height trap - a thinner stack cannot be surfaced
 
@@ -43,16 +50,23 @@ Bed the tee tracks straight on the box and keep only the 19 mm strips and the su
 **39 mm** above the top skin. The tool tip floor is **45.2 mm**. The surface is then below the tool's
 reach entirely, so it cannot be surfaced - which is the one job the sacrificial layer exists for.
 
-**So any stack that drops the 2040s has to put that 20 mm back above the aluminium.** Two 19 mm
-layers plus the 9.5 mm sheet over the 20 mm plates gives **67.5 mm**, the same surface height the Z
-chain was already worked against, with the aluminium continuously bedded instead of spanning.
+**So any stack that drops the 2040s has to put that 20 mm back above the aluminium** - and with the
+plate at 16 rather than 20 there is 4 mm more to find. The MDF above is what makes it up, and it is a
+build-time choice rather than a dimension: aim the **surface at 67.5**, which is what the Z envelope
+below is worked against.
 
 | The stack as built on this machine | mm |
 |---|---|
-| Four tee track plates, bedded directly on the box's top skin | 20 |
+| Four tee track plates, bedded directly on the box's top skin | 16 |
 | 3/8" MDF sheet | 9.5 |
 | 19 mm MDF, two layers, the upper one sacrificial | 38 |
-| **Surface above the top skin** | **~67.5** |
+| Sum | 63.5 |
+| **MDF skimmed or shimmed to put the surface at** | **~67.5** |
+
+📌 **Skim, do not shim, if it can be helped.** The upper layer is sacrificial and the machine
+surfaces it anyway, so the 4 mm is better spent as thicker stock taken down than as a packer under
+the aluminium - a packer would undo the continuous bedding that is the whole point of dropping the
+2040s.
 
 **Surface the MDF, never the aluminium.** Bedded on the box the remaining problem is flatness and
 tram, not stiffness, and a sacrificial layer the machine can skim solves both. Tee nuts in the
@@ -164,8 +178,9 @@ in plan** - it is not a vertical lever, so the bolt height does not touch it.
 ## It is in the 3D model
 
 The four plates and the two end spacers are drawn as the **Tee track bed** group in
-[`drawings/model-3d.html`](drawings/model-3d.html), 20 thick, z 0 to 20 on the top skin, and the
-group toggles off like any other assembly. **The MDF above them is deliberately not drawn** - it is
+[`drawings/model-3d.html`](drawings/model-3d.html), 16 thick, z 0 to 16 on the top skin, and the
+group toggles off like any other assembly. ⚠️ **The tee slots are not drawn yet** - the count and
+pitch he gave do not close on the 250 depth (eight at 40 needs 280 of span) and the question is out. **The MDF above them is deliberately not drawn** - it is
 sacrificial, it gets skimmed, and its thickness is a build-time choice rather than a dimension.
 
 ✅ **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
