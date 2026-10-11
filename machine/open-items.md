@@ -167,6 +167,15 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   `tools/make-3d.py` bottom out at 120.65. Noticed 2026-10-11 and **not chased** - it moves a
   clearance, not a hole, and the two may be different elements of the same assembly.
 
+## From the 2026-10-11 tooltip pass
+
+- 🔴 **28 bolts are drawn on the machine that the fastener schedule has no entry for**, so they are
+  on no buy list: **16 Y sole bolts** (the sole bracket's root rows into the end plate's end face
+  and the doubler's edge), **6 Z casting bolts** into the carriage plate, **4 X sole bolts**, and
+  **2 BF12 bolts** on the carriage plate. Found by making the model's tooltips read their length out
+  of `dimensions/fasteners.toml`: the ones that came back empty are this list.
+  `tools/make-3d.py` now prints it on every run, so it cannot go quiet again.
+
 ## Carried forward
 
 - ✅ ~~**Height from the top of the beam to the torsion box fixing line**, and whether the box has

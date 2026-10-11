@@ -133,6 +133,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [From the 2026-10-08 order - the back plate's length](machine/open-items.md#from-the-2026-10-08-order---the-back-plates-length)
 - [From the 2026-10-08 datasheet pass](machine/open-items.md#from-the-2026-10-08-datasheet-pass)
 - [From the 2026-10-11 spoilboard pass](machine/open-items.md#from-the-2026-10-11-spoilboard-pass)
+- [From the 2026-10-11 tooltip pass](machine/open-items.md#from-the-2026-10-11-tooltip-pass)
 - [Carried forward](machine/open-items.md#carried-forward)
 
 ## [machine/photos/README.md](machine/photos/README.md)
