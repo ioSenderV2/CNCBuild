@@ -2552,6 +2552,46 @@ provenance = "part"
 note = "150 - how far the MDF stops short of each SIDE PLATE's inside face. His, 2026-10-11. Same reasoning as SPOIL_BACK_SHY: it only has to cover the tool's travel."
 
 [[dim]]
+sym = "SPOIL_BOLT_INSET"
+value = 20
+provenance = "part"
+note = "20 - the T-bolt holes, in from the MDF's FRONT edge and in from each SIDE edge. His, 2026-10-11. ✅ THE 20 IS NOT ARBITRARY: the bed's front edge is 1006.35 and the last slot centre of the front panel is 986.35, so 20 in from the corner lands exactly on a slot. SPOIL_BOLT_BACK_Y is what the back pair falls on."
+
+[[dim]]
+sym = "SPOIL_BOLT_BACK_Y"
+expr = "TT_BED_Y0 + TT_BED_FORE_AFT - SPOIL_BOLT_INSET - (25 * TT_SLOT_PITCH)"
+note = "236.35 - the back pair of T-bolt holes, stepped back from the front pair by 25 slot pitches. His rule, 2026-10-11: multiples of 30 back from the front hole, stopping before the hole comes within SPOIL_BOLT_INSET of the MDF's back edge - it lands 30 clear. 🔴 A MULTIPLE OF 30 ONLY WALKS SLOTS WITHIN ONE 250 PANEL - his own catch, same day - because across a panel join the step is 40: 16 of end flat, the 8 slot, 16 more of end flat. This pair works anyway, and the reason is a coincidence worth writing down: 25 x 30 is 750, which is also 3 x 250, so the back hole is the SAME SLOT three panels along. ✅ tools/make-3d.py ASSERTS both rows land on real slot centres and fails the build if they do not, so the coincidence cannot quietly stop holding if the footprint or the inset moves."
+
+[[dim]]
+sym = "SPOIL_BOLT_RISE"
+value = 50
+provenance = "nominal"
+note = "50 - how far the T-bolt's thread stands above the TOP OF THE ALUMINIUM, so the thread tops out level with the 66 work surface. ⚠ HIS PICK, NOT A MEASUREMENT, and it is an OPEN ITEM - see machine/open-items.md. The convention is his: he measured a 40 mm T-bolt as 40 of rise above the bed, so a 50 is read as 50. 📌 THE 40 IS WHY IT HAD TO GO UP - photographed beside the sandwich it tops out around the seam between the two sheets, dying inside the board with nothing to put a nut on."
+
+[[dim]]
+sym = "M8_NUT_H"
+value = 6.5
+provenance = "nominal"
+note = "Plain M8 hex nut height. ⚠ CATALOGUE, NOT MEASURED - caliper the nuts actually bought, as for the washer. It is a term in the spoilboard counterbore's depth: the counterbore floor is the surface less this and the washer, which is what puts the nut under the surface where a cutter cannot find it."
+
+[[dim]]
+sym = "M8_WASHER_D"
+value = 16
+provenance = "nominal"
+note = "Plain M8 flat washer, outside diameter. ⚠ CATALOGUE, NOT MEASURED. 🔴 IT IS NOT THE FENDER - FENDER_WASHER_D is 25 and is for the tongue bolts, where the clamp goes into plywood and a small washer would pull through. The spoilboard T-bolts use a PLAIN washer - his, 2026-10-11 - because there it bears on MDF inside a counterbore, and the 16 keeps that counterbore small."
+
+[[dim]]
+sym = "M8_WASHER_T"
+value = 1.6
+provenance = "nominal"
+note = "Plain M8 flat washer thickness. ⚠ CATALOGUE, NOT MEASURED. It is a term in SPOIL_CBORE_Z."
+
+[[dim]]
+sym = "SPOIL_CBORE_Z"
+expr = "SPOIL_SURFACE - M8_NUT_H - M8_WASHER_T"
+note = "57.9 - the counterbore floor in the MDF, measured from the box's top skin: the work surface less the nut and the washer under it. ⚠ EVERY TERM BUT THE SURFACE IS A CATALOGUE FIGURE, so treat this as the shape of the answer rather than the depth to set a stop at - 8.1 below a 66 surface. ✅ THE NUT MUST FINISH BELOW THE SURFACE, because the sacrificial sheet gets skimmed and a nut proud of it is what the cutter finds."
+
+[[dim]]
 sym = "TT_BED_END_BOLT"
 value = 5
 provenance = "measured"

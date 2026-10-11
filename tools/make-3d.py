@@ -182,6 +182,10 @@ def main() -> int:
     v = {s: reg.value(s) for s in reg.order}
 
     P = []  # parts: name, group, colour, [x0,y0,z0], [x1,y1,z1]
+    # A SUNK HOLE OR POCKET, dark. Defined here rather than beside the rail
+    # counterbores that first used it: the spoilboard draws holes long before
+    # the rails do, and a colour constant is not a rail detail.
+    HOLE = 0x22262A
 
     # WHICH CARRIAGES A PART RIDES ON - "" for the frame, "Y" for the gantry,
     # "YX" for the X carriage, "YXZ" for the Z carriage. It is set as a cursor
@@ -522,6 +526,80 @@ def main() -> int:
                f"{v['SPOIL_SURFACE']:g} above the box's top skin and the tool tip "
                f"floor is 45.2, so the machine can skim it"
                if top else " - the lower sheet, held down by tee nuts in the track"))
+
+    # ---- the four T-bolts that hold the MDF down -------------------------
+    # HIS SCHEME, 2026-10-11: drill 8 through both sheets at the four corners,
+    # counterbore from the top for the washer and nut, drop the T-bolts in the
+    # holes, set the sandwich on the aluminium, turn each bolt so its T lines
+    # up with the slot, let it drop and tighten.
+    #
+    # THE HOLES HAVE TO LAND ON REAL SLOT CENTRES, so they are worked out from
+    # the slot walk above rather than from a pitch - and then CHECKED. His rule
+    # is "20 in from the front corner, then back in multiples of 30 while
+    # staying 20 clear of the back edge", and he is right that a multiple of 30
+    # only walks slots WITHIN one 250 panel: across a join the step is 40. It
+    # happens to close here because 25 x 30 is also 3 x 250, the same slot three
+    # panels along. That coincidence is exactly the kind that stops holding
+    # quietly when a number moves, so the assert below is not decoration.
+    slot_centres = []
+    for i in range(int(v["TT_BED_PLATES"])):
+        y = bed_y0 + i * bed_pw + v["TT_END_FLAT"]
+        for j in range(n_slots):
+            slot_centres.append(y + sw / 2)
+            y += sw + (v["TT_MID_FLAT"] if j < n_slots - 1 else 0)
+
+    bolt_front_y = bed_y1 - v["SPOIL_BOLT_INSET"]
+    bolt_back_y = v["SPOIL_BOLT_BACK_Y"]
+    for label, by in (("front", bolt_front_y), ("back", bolt_back_y)):
+        off = min(abs(c - by) for c in slot_centres)
+        if off > 1e-6:
+            print(f"the {label} T-bolt row at {by:.3f} is not on a slot centre "
+                  f"- nearest is {off:.3f} away. Move SPOIL_BOLT_INSET or "
+                  f"SPOIL_BOLT_BACK_Y onto the grid.", file=sys.stderr)
+            return 2
+    if bolt_back_y - mdf_y0 < v["SPOIL_BOLT_INSET"]:
+        print(f"the back T-bolt row is {bolt_back_y - mdf_y0:.1f} from the "
+              f"MDF's back edge, inside the {v['SPOIL_BOLT_INSET']:g} he set",
+              file=sys.stderr)
+        return 2
+
+    # The thread tops out at the work surface; the nut and its washer sit in a
+    # counterbore below it, because the sacrificial sheet gets skimmed and a nut
+    # proud of the surface is what the cutter finds.
+    thread_top = v["TT_BED_T"] + v["SPOIL_BOLT_RISE"]
+    cbore_z = v["SPOIL_CBORE_Z"]
+    wash_r, nut_r = v["M8_WASHER_D"] / 2, v["ACORN_NUT_D"] / 2
+    D_TBOLT = ("M8 drop-in T-bolt - the T drops into the slot and turns to "
+               "catch. " + str(v["SPOIL_BOLT_RISE"]) + " of thread above the "
+               "aluminium puts its top level with the work surface. \u26a0 THE "
+               "RISE IS HIS PICK, NOT A MEASUREMENT - see open-items.md. The T "
+               "itself is not drawn: its size is not a figure we have")
+    for bx in (mdf_x0 + v["SPOIL_BOLT_INSET"], mdf_x1 - v["SPOIL_BOLT_INSET"]):
+        for by in (bolt_back_y, bolt_front_y):
+            # the clearance hole through both sheets, and the counterbore over it
+            cyl("Spoilboard bolt hole", "spoil", HOLE, bx, by,
+                v["TT_BED_T"], cbore_z, v["BEAM_BOLT_CLEARANCE"] / 2,
+                seg=12, d="8 through both sheets, drilled before the sandwich "
+                          "goes down")
+            cyl("Spoilboard counterbore", "spoil", HOLE, bx, by,
+                cbore_z, v["SPOIL_SURFACE"], wash_r, seg=16,
+                d="sunk to clear the washer and bring the nut below the "
+                  "surface - the floor is at " + f"{cbore_z:g}" + ", which is "
+                  "the surface less the nut and the washer")
+            # the bolt, from inside the slot up to the surface
+            cyl("Spoilboard T-bolt", "spoil", 0x8A939B, bx, by,
+                v["TT_BED_T"] - v["TT_SLOT_DEPTH"], thread_top,
+                v["TT_BED_END_BOLT"] * 0.8, seg=12, d=D_TBOLT)
+            cyl("Spoilboard washer", "spoil", 0x9AA3AB, bx, by,
+                cbore_z, cbore_z + v["M8_WASHER_T"], wash_r, seg=20,
+                d="plain M8 flat washer - his, 2026-10-11, over the fender "
+                  "this was first drawn with: it bears on MDF in a counterbore, "
+                  "not on a face that could pull through")
+            cyl("Spoilboard nut", "spoil", 0x5A6068, bx, by,
+                cbore_z + v["M8_WASHER_T"], v["SPOIL_SURFACE"], nut_r,
+                seg=6, d="plain M8 nut, finishing level with the surface at "
+                         "worst - it must never stand proud of a sheet the "
+                         "machine skims")
 
     # THE TT_BED_SPACER GAP AT EACH END IS NOT DRAWN, and that is right rather
     # than missing: it is taken up by a WASHER STACK ON EACH BOLT - his, 2026-10-11
@@ -1521,7 +1599,6 @@ def main() -> int:
     # to interpenetrate on purpose and says so in ALLOWED.
     cb_r, cb_d = v["RAIL_CBORE_D"] / 2, v["RAIL_CBORE_DEPTH"]
     cb_f, cb_p = v["RAIL_CBORE_FIRST"], v["RAIL_CBORE_PITCH"]
-    HOLE = 0x22262A
     n_beam = int(round(v["RAIL_CBORE_N_BEAM"]))
     n_z = int(round(v["RAIL_CBORE_N_Z"]))
 
@@ -1697,6 +1774,29 @@ BITE = {
 }
 
 ALLOWED = {
+    # The spoilboard's four T-bolts: the shank crosses both MDF sheets and the
+    # nut and washer sit in a counterbore that is DRAWN AS A SOLID rather than
+    # subtracted from the board, so every one of these pairs is a part sharing
+    # space with the hole it lives in. Declared rather than left to clutter the
+    # clash list red.
+    frozenset({"Spoilboard T-bolt", "MDF sheet"}),
+    frozenset({"Spoilboard T-bolt", "MDF sacrificial sheet"}),
+    frozenset({"Spoilboard T-bolt", "Spoilboard bolt hole"}),
+    frozenset({"Spoilboard T-bolt", "Spoilboard counterbore"}),
+    frozenset({"Spoilboard T-bolt", "Spoilboard washer"}),
+    frozenset({"Spoilboard T-bolt", "Spoilboard nut"}),
+    frozenset({"Spoilboard T-bolt", "Tee track flat"}),
+    frozenset({"Spoilboard T-bolt", "Tee track slot bottom"}),
+    frozenset({"Spoilboard bolt hole", "MDF sheet"}),
+    frozenset({"Spoilboard bolt hole", "MDF sacrificial sheet"}),
+    frozenset({"Spoilboard counterbore", "MDF sacrificial sheet"}),
+    frozenset({"Spoilboard counterbore", "MDF sheet"}),
+    frozenset({"Spoilboard counterbore", "Spoilboard washer"}),
+    frozenset({"Spoilboard counterbore", "Spoilboard nut"}),
+    frozenset({"Spoilboard washer", "MDF sacrificial sheet"}),
+    frozenset({"Spoilboard nut", "MDF sacrificial sheet"}),
+    frozenset({"Spoilboard washer", "MDF sheet"}),
+    frozenset({"Spoilboard nut", "MDF sheet"}),
     # THE EGG CRATE IS HALF-DEPTH NOTCHED AT EVERY CROSSING - settled
     # 2026-09-30 - and the notches are deliberately not drawn: a half-depth
     # notch removes no envelope, and drawing sixteen of them would clutter the
