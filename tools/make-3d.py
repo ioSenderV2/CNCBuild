@@ -795,6 +795,39 @@ def main() -> int:
         cyl("Casting bolt", "bolts", 0x3C4248, c, z_motor_end - r,
             cp_front + d, cp_back, 2.5, axis="y", seg=10, d=D_M5_PLATE)
 
+    # ---- the Z top stop block, Sheet 3c ----------------------------------
+    # It bolts to the carriage plate's front face and the Z ball nut lands on
+    # its LOWER face, which is the stop. The screw runs on past it through the
+    # \u00f822 bore - not drawn, because the model has no boolean subtraction, so
+    # the screw passing through the block is declared in ALLOWED instead.
+    #
+    # The sheet reaches the bore at Z_STOP_BORE_OUT, 25 out from the plate face;
+    # the model reaches the screw axis independently through SCREW_AXIS_H, also
+    # 25. They agree, which is the check that the block is on the screw.
+    ride[0] = "YX"                  # bolted to the carriage plate
+    zs_out = cp_front + v["Z_STOP_OUT"]
+    zs_bot = cp_bot + v["Z_STOP_FACE_X"]
+    box("Z stop block", "z", 0xC9A227,
+        zp_cx - v["Z_STOP_W"] / 2, cp_front, zs_bot,
+        zp_cx + v["Z_STOP_W"] / 2, zs_out, zs_bot + v["Z_STOP_T"],
+        d="Sheet 3c, 1in 6061 - the Z nut lands on its lower face. SACRIFICIAL: "
+          "replace it and its bolts if it is ever used")
+    # TS1 and TS2: M5 x 50 counterbored Z_STOP_CBORE_DEPTH from the outer face,
+    # so the shank starts at the counterbore floor and runs its full 50 - which
+    # ends BOLT_Z_STOP - (Z_STOP_OUT - Z_STOP_CBORE_DEPTH) inside the plate.
+    zs_floor = zs_out - v["Z_STOP_CBORE_DEPTH"]
+    for sx in (zp_cx - (v["Z_STOP_W"] / 2 - v["Z_STOP_BOLT_INSET"]),
+               zp_cx + (v["Z_STOP_W"] / 2 - v["Z_STOP_BOLT_INSET"])):
+        sz = zs_bot + v["Z_STOP_BOLT_Z"]
+        cyl("Z stop bolt head", "bolts", 0x3C4248, sx, sz,
+            zs_floor, zs_floor + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,
+            axis="y", seg=12,
+            d="M5 x 0.8 x 50 socket cap, counterbored 6 deep (BOLT_Z_STOP)")
+        cyl("Z stop bolt", "bolts", 0x3C4248, sx, sz,
+            zs_floor, zs_floor - v["BOLT_Z_STOP"], 2.5, axis="y", seg=10,
+            d="M5 x 0.8 x 50 socket cap - 39 of block then 11 into the carriage plate")
+    ride[0] = ""
+
     # ---- linear rails and bearing blocks ---------------------------------
     # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
     # envelopes the rail and stands RAIL_STACK off the face, which is the
@@ -1060,19 +1093,15 @@ def main() -> int:
     #       plate at that end. The Z plate and not the carriage plate because it
     #       is the wider of the two, Z_PLATE_W against XEP_W.
     #   Z   down: the nut's lower end, 5 above BF12's upper face
-    #       up: THE Z TOP STOP BLOCK IS NOT IN THE MODEL. Sheet 3c dimensions it
-    #       - 50 x 25.4 x 45 off 1in 6061, stop face at X 310 up the carriage
-    #       plate - but it has no registry symbols, and nothing here is placed
-    #       from a number typed in this file. So the up stop is pinned at the
-    #       drawn pose and says so on the page rather than guessing one.
+    #       up: the nut's upper end, 5 below the stop block's lower face - the
+    #       face the nut would land on if it ever got there.
     jog = {
         "Y": [round(v["T_REAR_PLATE"] + 5 - xep_back, 2),
               round((y1 - 5) - xep_front, 2), ""],
         "X": [round((xb_x0 + 5) - (zp_cx - v["Z_PLATE_W"] / 2), 2),
               round((xb_x1 - 5) - (zp_cx + v["Z_PLATE_W"] / 2), 2), ""],
         "Z": [round((bf12_z + v["T_BF12_BLOCK"] + 5) - (z_nut_mid - v["NUT_OAL"] / 2), 2),
-              0.0, "UP STOP NOT MODELLED - the Z top stop block has no registry "
-                   "symbols, so the up limit is the drawn pose"],
+              round((zs_bot - 5) - (z_nut_mid + v["NUT_OAL"] / 2), 2), ""],
     }
 
     groups = {
@@ -1266,6 +1295,17 @@ ALLOWED = {
     # A counterbore is a HOLE IN the rail, drawn as a solid because the model has
     # no boolean subtraction. It also passes under a bearing block wherever one
     # happens to sit over it, which is normal.
+    # The Z top stop block. The screw runs THROUGH it, down the \u00f822 bore, and
+    # the two M5 x 50 cross it into the carriage plate - 39 of block and 11 of
+    # plate, which is the sheet's own arithmetic read back off the model. The
+    # head sits 5 down inside a 6 counterbore, so it clashes with the block too
+    # and with nothing else, which is the check that the counterbore is deep
+    # enough to bury it.
+    frozenset({"Ball screw", "Z stop block"}),
+    frozenset({"Z stop block", "Z stop bolt"}),
+    frozenset({"Z stop block", "Z stop bolt head"}),
+    frozenset({"X carriage plate", "Z stop bolt"}),
+
     # A slot is a VOID IN the beam, drawn as a solid for want of boolean
     # subtraction - the same licence the rail counterbores take.
     frozenset({"Y beam", "Beam T-slot"}),
@@ -1477,7 +1517,7 @@ const grid=new THREE.GridHelper(span*2.2, 22, 0x44505c, 0x2b3139); grid.position
 // LEFT DRAG PANS, MIDDLE DRAG ORBITS. His call - on a model this size you spend
 // far more time sliding across it than swinging around it, and the left button
 // is the one your hand is already on.
-let az=-0.72, el=0.42, dist=span*1.75, down=null, mode=null;
+let az=-2.42, el=0.42, dist=span*1.75, down=null, mode=null;
 const tgt=new THREE.Vector3(0,0,0);
 function place(){
   cam.position.set(tgt.x+dist*Math.cos(el)*Math.sin(az),
@@ -1540,8 +1580,8 @@ function applyJog(){
   const warn=['X','Y','Z'].filter(ax=>JOG[ax][2]).map(ax=>JOG[ax][2]);
   document.getElementById('jogro').innerHTML=
     '<span class="hint">JOG: left/right = X, AS THE OPERATOR SEES THEM standing at the '+
-    'front - so left is max X, and the opening view, which is from behind, shows it '+
-    'mirrored. Up/down = fore-aft, PgUp/PgDn = Z. '+
+    'front - so left is max X, and the opening view looks from the front too. '+
+    'Up/down = fore-aft, PgUp/PgDn = Z. '+
     '10 mm a press, Shift 1 mm, Ctrl 50 mm. Home recentres all three.</span>'+
     '<table>'+rows+'</table>'+
     (warn.length?'<span class="warn">'+warn.join('<br>')+'</span>':'');
@@ -1589,7 +1629,11 @@ function resize(){const w=innerWidth,h=innerHeight;rend.setPixelRatio(devicePixe
 function draw(){rend.render(scene,cam);}
 addEventListener('resize',resize);
 
-const VIEWS={iso:[-0.72,0.42],front:[Math.PI,0.06],back:[0,0.06],
+// ISO LOOKS FROM THE FRONT AND THE OPERATOR'S RIGHT - his, 2026-10-10. The
+// azimuth is the old one swung round behind-to-front: cos(az) negative puts the
+// camera forward of the machine, sin(az) negative puts it on the MIN X side,
+// which is the operator's right when they are standing at the front.
+const VIEWS={iso:[-2.42,0.42],front:[Math.PI,0.06],back:[0,0.06],
              left:[-Math.PI/2,0.06],right:[Math.PI/2,0.06],top:[0,1.44]};
 const vb=document.createElement('div'); vb.style.margin='2px 0 8px';
 for(const k in VIEWS){
