@@ -2458,3 +2458,37 @@ note = "1000 - the bed front to back, four 250 plates side by side. \U0001F4CC I
 sym = "TT_BED_Y0"
 expr = "SIDE_TONGUE_START"
 note = "\u26A0 PLACEHOLDER UNTIL HE PLACES IT. The bed's back edge drawn at 6.35 from the box's back edge - just clear of the rear plate, the same start as the side tongue and the Y beam. Chosen because it is the only non-arbitrary reference available and because TT_BED_FORE_AFT's 1000 then runs 6.35 to 1006.35, coincident with the beam run. HE HAS NOT SAID WHERE THE BED SITS FORE-AFT; if it wants centring on the box's 1156.35 instead, this is the one symbol to change."
+
+[[dim]]
+sym = "TT_SLOT_W"
+value = 8
+provenance = "part"
+note = "8 - the tee slot's opening across the plate. His, 2026-10-11. \u26A0 IT IS THE OPENING ONLY: the slot's undercut below the top face and its depth into the 16 are not figures he has given, and nothing in this registry infers them."
+
+[[dim]]
+sym = "TT_SLOTS"
+value = 8
+provenance = "part"
+note = "Eight tee slots across each plate's 250, running the full 47in length. His, 2026-10-11."
+
+[[dim]]
+sym = "TT_END_FLAT"
+value = 16
+provenance = "part"
+note = "16 of flat at each edge of the plate, outboard of the first and last slot. His breakdown, 2026-10-11."
+
+[[dim]]
+sym = "TT_MID_FLAT"
+value = 22
+provenance = "part"
+note = "22 of flat between adjacent slots, seven of them. His breakdown, 2026-10-11."
+
+[[dim]]
+sym = "TT_SLOT_PITCH"
+expr = "TT_MID_FLAT + TT_SLOT_W"
+note = "30 - slot centre to slot centre. \U0001F534 IT IS NOT 40, AND 40 IS WHAT WAS FIRST RECORDED. He gave the pitch as 40 on 2026-10-11 and eight at 40 needs 280 of span across a 250 plate, which is what sent the question back; his own breakdown then closed the 250 exactly and makes the pitch 30. DERIVED FROM THE FLATS RATHER THAN STATED, because the flats are what he measured and a stated pitch is what went wrong."
+
+[[dim]]
+sym = "TT_PLATE_W_CHECK"
+expr = "(2 * TT_END_FLAT) + ((TT_SLOTS - 1) * TT_MID_FLAT) + (TT_SLOTS * TT_SLOT_W)"
+note = "250 - his breakdown of the plate's depth, summed: 2 x 16 end flats, 7 x 22 inner flats, 8 x 8 slots. \u2705 IT EXISTS ONLY TO CLOSE ON TT_BED_PLATE_W, and it does, exactly. That is the check the first set of slot figures failed."

@@ -290,13 +290,45 @@ def main() -> int:
     # sacrificial, it gets skimmed, and its thickness is a choice at build time.
     #
     # The fore-aft placement is a PLACEHOLDER - TT_BED_Y0's note says so.
+    # THE SLOTS ARE DRAWN AS THE FLATS BETWEEN THEM, which is a deliberate choice
+    # and not laziness: he has given the 8 mm OPENING and the flats either side of
+    # it, and he has NOT given the undercut below the top face or how deep the slot
+    # runs into the 16. Drawing each flat as a full-thickness bar leaves the slots
+    # as open gaps - that gets the top face and the 8 mm openings exactly right,
+    # which is what a fixturing layout and anything sweeping over the bed care
+    # about, and invents nothing about the profile underneath. A slot drawn as a
+    # pocket would need a depth, and a depth would be a guess.
+    #
+    # His breakdown of the 250: 2 x 16 end flats + 7 x 22 inner flats + 8 x 8
+    # slots. TT_PLATE_W_CHECK sums it and closes on TT_BED_PLATE_W exactly.
     bed_x0 = v["T_SIDE_PLATE"] + v["TT_BED_SPACER"]
+    bed_x1 = bed_x0 + v["TT_BED_L"]
     bed_y0, bed_pw = v["TT_BED_Y0"], v["TT_BED_PLATE_W"]
+    n_slots, sw = int(v["TT_SLOTS"]), v["TT_SLOT_W"]
     for i in range(int(v["TT_BED_PLATES"])):
-        box("Tee track plate", "bed", 0xB0B6BC,
-            bed_x0, bed_y0 + i * bed_pw, 0,
-            bed_x0 + v["TT_BED_L"], bed_y0 + (i + 1) * bed_pw, v["TT_BED_T"],
-            d="20 thick, bedded on the skin - MDF above it not drawn")
+        py0 = bed_y0 + i * bed_pw
+        # Walk the plate's depth: end flat, then slot / inner flat alternating,
+        # then the far end flat. The cursor is what guarantees the flats and the
+        # slots cannot drift apart - there is no second expression for either.
+        y = py0
+        runs = [v["TT_END_FLAT"]]
+        for j in range(n_slots):
+            runs.append(("slot", sw))
+            runs.append(v["TT_MID_FLAT"] if j < n_slots - 1 else v["TT_END_FLAT"])
+        for run in runs:
+            if isinstance(run, tuple):
+                y += run[1]            # a slot: leave the gap, draw nothing
+                continue
+            box("Tee track flat", "bed", 0xB0B6BC, bed_x0, y, 0,
+                bed_x1, y + run, v["TT_BED_T"],
+                d="16 thick, bedded on the skin - the gaps are the 8 mm slots, "
+                  "whose undercut and depth are not figures we have")
+            y += run
+        # Belt and braces: the walk has to land exactly on the plate's far edge.
+        if abs(y - (py0 + bed_pw)) > 1e-6:
+            print(f"tee track plate {i}: flats and slots sum to {y - py0}, "
+                  f"not {bed_pw}", file=sys.stderr)
+            return 2
     # The spacers that take up the 1193.8 against the 1204.38.
     for sx in (v["T_SIDE_PLATE"], bed_x0 + v["TT_BED_L"]):
         box("Bed end spacer", "bed", 0x8A9094,

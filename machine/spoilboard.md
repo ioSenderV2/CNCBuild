@@ -19,9 +19,16 @@ machines with and without it, so parting with it costs nothing on the sale. The 
 aluminium tee track extrusions** are the expensive part of it and the new machine needs a tee-slot
 fixturing surface regardless. There is no case for selling aluminium that would then be re-bought.
 
-🔴 **The profile is non-standard, so every figure for it is his.** 16 thick, 250 deep, 47" wide, 8 mm
-slot width, 40 mm slot pitch - 2026-10-11. ⚠️ **The plate was carried at 20 thick for one commit**,
-taken from his first description of the Mega V stack, and the 4 mm comes straight off the bed's top.
+🔴 **The profile is non-standard, so every figure for it is his.** 2026-10-11: **16 thick, 250 deep,
+47" wide, eight slots, 8 mm opening.** Across the 250 that is **2 × 16 end flats, 7 × 22 inner flats
+and 8 × 8 slots**, which sums to exactly 250 - his breakdown, and `TT_PLATE_W_CHECK` is in the
+registry to hold it closed.
+
+⚠️ **Two figures in this profile were wrong before that breakdown arrived.** The plate was carried at
+**20 thick** for one commit, off his first description of the Mega V stack - the 4 mm comes straight
+off the bed's top. And the slot pitch was given as **40**, which needs 280 mm of span across a 250
+plate; the flats make it **30**. `TT_SLOT_PITCH` is therefore derived from the flats rather than
+stated, because the flats are what he measured and a stated pitch is what went wrong.
 
 **What does not come across is the three 2040 extrusions.** On the Mega V they are the only support
 under the rest of the stack, at **500 mm centres**, and that is why the board springs under the
@@ -179,8 +186,13 @@ in plan** - it is not a vertical lever, so the bolt height does not touch it.
 
 The four plates and the two end spacers are drawn as the **Tee track bed** group in
 [`drawings/model-3d.html`](drawings/model-3d.html), 16 thick, z 0 to 16 on the top skin, and the
-group toggles off like any other assembly. ⚠️ **The tee slots are not drawn yet** - the count and
-pitch he gave do not close on the 250 depth (eight at 40 needs 280 of span) and the question is out. **The MDF above them is deliberately not drawn** - it is
+group toggles off like any other assembly.
+
+**The slots are drawn as the flats between them.** Each flat is a full-thickness bar and the eight
+slots are the open gaps, which puts the top face and the 8 mm openings exactly where they are and
+invents nothing about the profile below. 🔴 **The undercut and the slot depth are not figures we
+have** - a slot drawn as a pocket would need a depth, and a depth would be a guess. The generator
+also checks the flats and slots sum to the plate's 250 and fails loudly if they ever stop. **The MDF above them is deliberately not drawn** - it is
 sacrificial, it gets skimmed, and its thickness is a build-time choice rather than a dimension.
 
 ✅ **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
