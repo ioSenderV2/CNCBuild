@@ -90,7 +90,7 @@ DETAIL = {
     "Casting rails": "the cast stepper mount, DRAWN SOLID - the real casting is open here",
     "Motor plate": "the casting's motor plate",
     "Stepper motor": "NEMA 23",
-    "Interposer": "interposer bar, Sheet 6 - three the same",
+    "Interposer": "interposer bar - three the same",
     "Front strip": "front joining strip, ordered as 1/8in 6061 flat bar",
     "Fender washer": "plain M8 fender washer, under the acorn nut",
     "Acorn nut": "M8 acorn nut, on the tongue bolt's outboard end",
@@ -101,6 +101,58 @@ DETAIL = {
     "Shelf bar": "the bar the X beam's underside rests on",
     "BF12 tongue": "the tongue that carries the X axis BF12, on the MIN X end plate only",
 }
+
+# WHICH SHOP PACK SHEET MAKES A PART, by the name it is drawn under. Only parts
+# that get MADE are here: a bought rail, a bought clamp and a stepper have no
+# sheet, and the absence is the information. Checked against the pack itself at
+# generation time, so a renumbered sheet is an error here and not a wrong label
+# on the page.
+#
+# Two parts are drawn twice under one name and their sheets differ by hand, so
+# those are passed at the call site instead: the fins are Sheets 1a and 1b, and
+# the X end plates are 2a with the min X one also carrying 2b's tongue.
+SHEETS = {
+    "Shelf bar": "2c",
+    "Y nut doubler": "2d",
+    "X nut doubler": "2d",
+    "BF12 tongue": "2b",
+    "X carriage plate": "3a",
+    "Z spacer": "3b",
+    "Z stop block": "3c",
+    "Z plate": "4",
+    "Y sole bracket": "5",
+    "Interposer": "6",
+    "Rear plate": "7",
+    "Front strip": "8",
+    "Side plate": "9",
+    "X sole plate": "11",
+}
+SHOP_PACK = ROOT / "machine" / "drawings" / "shop-pack.html"
+
+
+def sheet_note(label):
+    return "SHOP PACK: Sheet " + label
+
+
+def check_sheets(extra):
+    """Every sheet named here has to exist in the pack. Nothing else in this
+    script can tell the difference between a right and a wrong sheet number,
+    and a wrong one on a hover is worse than none - it sends somebody to the
+    wrong drawing."""
+    import re
+    pack = SHOP_PACK.read_text(encoding="utf-8")
+    # THE ANCHORS AND NOT THE PROSE. The pack says "Sheet 1 gives the widths"
+    # in running text, which made two sheets that do not exist look as though
+    # they did. One anchor does not match its own number: 2a is sheet-2.
+    have = {{"2": "2a"}.get(x, x)
+            for x in re.findall(r'id="sheet-([0-9]+[a-z]?)"', pack)}
+    want = set(SHEETS.values()) | set(extra)
+    missing = sorted(want - have)
+    if missing:
+        raise SystemExit("sheet(s) named by the model but not in the shop pack: "
+                         + ", ".join(missing))
+    return sorted(have - want)
+
 
 # The fasteners. Lengths are quoted ONLY where the registry carries one -
 # BOLT_BACK_Y, BOLT_FRONT_STRIP, BOLT_Z_NUT - and the rest say so.
@@ -266,11 +318,14 @@ def main() -> int:
         # 1208.575 - which is what Sheet 1 says it is aligned to, and the check
         # that WINDOW_OUTB_DRAWN's 20 is right where the measured 19 is not.
         wa, wb = outer + sgn * wo, outer + sgn * (wo + ww)
+        # 1a is the Y1 end, 1b the Y2 end - and the pack calls Y1 the left,
+        # which is the left of a view taken from BEHIND, the frame X runs in.
         prism("Front fin", "plates", 0x6FA8DC,
               [[outer, 0], [outer + sgn * fb, 0],
                [outer + sgn * ft, h], [outer, h]],
               y1, y1 + v["T_FIN"],
-              holes=[[[wa, wz0], [wb, wz0], [wb, wz1], [wa, wz1]]])
+              holes=[[[wa, wz0], [wb, wz0], [wb, wz1], [wa, wz1]]],
+              d=sheet_note("1a" if sgn > 0 else "1b"))
 
     # ---- the interposer, under each beam and out through the window -------
     # Four M8 into slide-in T-nuts hold each bar on, at Sheet 6's two rows
@@ -324,7 +379,9 @@ def main() -> int:
     xep_bot = xb_top - v["XEP_CUT"]
     for x0 in (xb_x0 - xep_t, xb_x1):
         box("X end plate", "gantry", 0x6FA8DC,
-            x0, xep_back, xep_bot, x0 + xep_t, xep_front, xb_top)
+            x0, xep_back, xep_bot, x0 + xep_t, xep_front, xb_top,
+            # 2a is both plates; 2b is the min X one, which carries the tongue
+            d=sheet_note("2a and 2b" if x0 < xb_x0 else "2a"))
         # It runs the plate's FULL 154 fore-aft, not DOUBLER_H - the four
         # stations D1-D4 that bolt it on are spread across that 154, and so
         # are the sole bracket's two rows. DOUBLER_H is its 45 UP the plate,
@@ -892,8 +949,8 @@ def main() -> int:
     box("Z stop block", "z", 0xC9A227,
         zp_cx - v["Z_STOP_W"] / 2, cp_front, zs_bot,
         zp_cx + v["Z_STOP_W"] / 2, zs_out, zs_bot + v["Z_STOP_T"],
-        d="Sheet 3c, 1in 6061 - the Z nut lands on its lower face. SACRIFICIAL: "
-          "replace it and its bolts if it is ever used")
+        d="1in 6061 - the Z nut lands on its lower face. SACRIFICIAL: replace it "
+          "and its bolts if it is ever used")
     # TS1 and TS2: M5 x 50 counterbored Z_STOP_CBORE_DEPTH from the outer face,
     # so the shank starts at the counterbore floor and runs its full 50 - which
     # ends BOLT_Z_STOP - (Z_STOP_OUT - Z_STOP_CBORE_DEPTH) inside the plate.
@@ -1225,6 +1282,9 @@ def main() -> int:
     for p in P:
         if not p.get("d"):
             p["d"] = DETAIL.get(p["n"], "")
+        if p["n"] in SHEETS:
+            p["d"] = ((p["d"] + " \u00b7 ") if p["d"] else "") + sheet_note(SHEETS[p["n"]])
+    unused = check_sheets(("1a", "1b", "2a", "2b"))
 
     three = VENDOR.read_text(encoding="utf-8")
     html = (HTML.replace("__PARTS__", json.dumps(P))
@@ -1243,6 +1303,8 @@ def main() -> int:
     print(f"wrote {OUT.relative_to(ROOT)} - {len(P)} parts, {kb:.0f} KB, self-contained")
     for a, b in facts:
         print(f"  {a:22} {b:10.2f}")
+    print(f"\n{len(SHEETS) + 4} shop pack sheets are named on hover"
+          + (f"; NOT MODELLED: Sheet {', Sheet '.join(unused)}" if unused else ""))
     print(f"\ntool tip at the drawn pose: X {tip[0]:.2f}  fore-aft {tip[1]:.2f}  "
           f"Z {tip[2]:.2f}")
     print("\nhome is the back left corner at the top of travel, where the DRO "
