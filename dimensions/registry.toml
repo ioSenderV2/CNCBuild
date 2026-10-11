@@ -2722,9 +2722,9 @@ note = "10 - the fin is TAPPED M8 and there is NO NUT. \U0001F534 NOT A PREFEREN
 
 [[dim]]
 sym = "FIN_ANGLE_SKIN_FIX"
-value = 4
+value = 3
 provenance = "part"
-note = "Four bolts per angle, through its horizontal leg into PRONGED T-NUTS in the top skin, driven into a drilled hole from UNDERNEATH and hammered home. His, 2026-10-11, replacing screws into plywood. \U0001F4CC THE PART IS A T-NUT - a pronged tee nut, three or four prongs. NOT a threaded insert, which has an external wood-screw thread and drives with a hex key, and NOT a hopper-feed T-nut, which is the flanged barrel with screw holes instead of prongs. The name is recorded because he asked for it and because the three get ordered interchangeably. \u2705 THE ORIENTATION IS RIGHT AND IT IS THE THING USUALLY GOT WRONG: a T-nut goes on the face the bolt pulls TOWARD, so the flange bears on the wood and the prongs only stop it rotating. Bolt down from above, flange under the top skin. \U0001F534 THEY MUST GO IN BEFORE THE TOP SKIN IS GLUED TO THE RIBS. They are fitted from below and there is no access afterwards - the same hard ordering as assembly.md's rule about driving a screw into each post tenon before the skin goes on, and the same consequence for getting it wrong: a hole in the box. \u2705 IT ANSWERS A REAL OBJECTION: with the angle in FRONT of the fin these fixings work in WITHDRAWAL if the fin tips backward, the opposite sense to the old behind-the-fin brackets, and a prong insert in the 25 top skin is a far better anchor than a screw."
+note = "THREE bolts per angle, through its horizontal leg into PRONGED T-NUTS in the top skin - four was carried for one commit and he cut it to three as unnecessary over 170, driven into a drilled hole from UNDERNEATH and hammered home. His, 2026-10-11, replacing screws into plywood. \U0001F4CC THE PART IS A T-NUT - a pronged tee nut, three or four prongs. NOT a threaded insert, which has an external wood-screw thread and drives with a hex key, and NOT a hopper-feed T-nut, which is the flanged barrel with screw holes instead of prongs. The name is recorded because he asked for it and because the three get ordered interchangeably. \u2705 THE ORIENTATION IS RIGHT AND IT IS THE THING USUALLY GOT WRONG: a T-nut goes on the face the bolt pulls TOWARD, so the flange bears on the wood and the prongs only stop it rotating. Bolt down from above, flange under the top skin. \U0001F534 THEY MUST GO IN BEFORE THE TOP SKIN IS GLUED TO THE RIBS. They are fitted from below and there is no access afterwards - the same hard ordering as assembly.md's rule about driving a screw into each post tenon before the skin goes on, and the same consequence for getting it wrong: a hole in the box. \u2705 IT ANSWERS A REAL OBJECTION: with the angle in FRONT of the fin these fixings work in WITHDRAWAL if the fin tips backward, the opposite sense to the old behind-the-fin brackets, and a prong insert in the 25 top skin is a far better anchor than a screw."
 
 [[dim]]
 sym = "T_BOX_FRONT_CAP"
@@ -2781,8 +2781,9 @@ note = "3 - how proud the small M8 flange head stands, his 2026-10-11. \u2705 TH
 
 [[dim]]
 sym = "FIN_ANGLE_BOLT_PITCH"
-expr = "FIN_ANGLE_L / FIN_ANGLE_SKIN_FIX"
-note = "42.5 - the spacing of the four skin bolts along each fin angle. \u26A0 NOMINAL, NOT HIS: he has given the count and the head, not the positions. Drawn evenly spaced with EQUAL END MARGINS - first and last at half a pitch in, so 21.25 and 148.75 along a 170 piece. \U0001F534 THE REAL PATTERN IS THE ANGLE'S OWN, since it is a stock extrusion with holes already in it - measure them and replace this. It feeds only the picture."
+value = 55
+provenance = "part"
+note = "55 - the spacing of the three skin bolts along each fin angle, which with FIN_ANGLE_BOLT_FIRST puts them at 30, 85 and 140. His, 2026-10-11. \u2705 THE EXTRUSION COMES WITHOUT HOLES, so this is a pattern to drill rather than one to measure - which is why it is a stated part figure now. \U0001F534 IT WAS A NOMINAL 42.5 FOR FOUR BOLTS, invented when the piece was assumed to be pre-drilled and the note said so. Both the count and the basis were wrong: he drills his own, and three over 170 is enough. \u2705 THE 85 LANDS ON THE MIDDLE of the 170 and the end margins match at 30 - see FIN_ANGLE_BOLT_END_MARGIN."
 
 [[dim]]
 sym = "FIN_ANGLE_BOLT_DEAD"
@@ -2806,3 +2807,14 @@ sym = "FIN_T_BOLT_L"
 value = 16
 provenance = "part"
 note = "M8 x 16 for T1 and T2 - the two through the angle's vertical leg into the fin's TAPPED holes. ✅ IT EQUALS FIN_ANGLE_T + FIN_BOLT_TAP_DEPTH EXACTLY, 6 + 10, so the thread uses the whole tapped depth and the bolt finishes FLUSH with the fin's back face. ✅ NOTHING PROTRUDES, which matters more here than it usually would: the tee track bed is hard against that face and is the whole reason the fin is tapped rather than through-bolted. 📌 HE CHECKED THE SUPPLY AND 16 IS WHAT IS SOLD - a 15 was recorded for one commit off his first reading, and it would have engaged 9 and cost nothing either; the stocked size happens to be the exact one. A bolt here CANNOT BOTTOM OUT, the 10 fin being tapped THROUGH."
+
+[[dim]]
+sym = "FIN_ANGLE_BOLT_FIRST"
+value = 30
+provenance = "part"
+note = "30 - the first skin bolt from the angle's near end, which is the end that starts flush with the box's side edge. His, 2026-10-11. The three run 30, 85, 140 at FIN_ANGLE_BOLT_PITCH."
+
+[[dim]]
+sym = "FIN_ANGLE_BOLT_END_MARGIN"
+expr = "FIN_ANGLE_L - (FIN_ANGLE_BOLT_FIRST + (FIN_ANGLE_SKIN_FIX - 1) * FIN_ANGLE_BOLT_PITCH)"
+note = "30 - the margin left at the angle's FAR end after the three bolts. \u2705 IT EXISTS TO CLOSE ON FIN_ANGLE_BOLT_FIRST, and it does: both margins are 30, so the pattern is symmetric in a 170 piece and the middle bolt sits on the centre. If either the length, the pitch or the first position is ever changed without the others, this goes unequal and says so."

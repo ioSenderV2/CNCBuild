@@ -561,15 +561,8 @@ def main() -> int:
         # horizontal leg, on the top skin
         box("Fin angle", "plates", 0x9AA5B1, lo, fin_front + at, 0,
             hi, fin_front + aleg, at,
-            d="four bolts into pronged T-NUTS in the top skin - fitted from "
+            d="three bolts into pronged T-NUTS in the top skin - fitted from "
               "underneath BEFORE the skin is glued")
-        # The four small M8 FLANGE heads - 14 across and only 3 proud, which is
-        # why they suit a bracket sitting out on the apron where anything tall
-        # catches a workpiece. NOT M8_HEAD_D's plain hex, a different fastener.
-        #
-        # ⚠️ THE ALONG-LENGTH SPACING IS A NOMINAL: he has given the count and
-        # the head, not the positions, and the real pattern is the extrusion's
-        # own. Drawn evenly with equal end margins - see FIN_ANGLE_BOLT_PITCH.
         # T1 and T2 - the two M8 through the angle's VERTICAL leg into the fin's
         # TAPPED holes at FIN_BRACKET_BOLT_Y. Their X comes off the FIN's own
         # outboard edge, confirmed by him 2026-10-11, which is FIN_PROUD outside
@@ -584,11 +577,21 @@ def main() -> int:
                 d="M8 into a TAPPED hole in the fin - no nut, because the tee "
                   "track bed is hard against the fin's back face")
 
-        bp = v["FIN_ANGLE_BOLT_PITCH"]
+        # The small M8 FLANGE heads - 14 across and only 3 proud, which is why
+        # they suit a bracket out on the apron where anything tall catches a
+        # workpiece. NOT M8_HEAD_D's plain hex, which is a different fastener.
+        #
+        # THE EXTRUSION COMES WITHOUT HOLES, so this is a pattern he drills:
+        # THREE at 30, 85 and 140 from the near end - his, 2026-10-11, cutting
+        # four down as unnecessary over 170. Measured from the end that starts
+        # flush with the box's side edge, so the right-hand angle mirrors.
+        # The margins match at 30 and the middle lands on the centre;
+        # FIN_ANGLE_BOLT_END_MARGIN is the symbol that holds that closed.
+        bp, b1 = v["FIN_ANGLE_BOLT_PITCH"], v["FIN_ANGLE_BOLT_FIRST"]
         by = fin_front + at + (aleg - at) / 2        # centred in the free leg
         for i in range(int(v["FIN_ANGLE_SKIN_FIX"])):
-            bx = lo + bp / 2 + i * bp
-            cyl("Fin angle bolt", "bolts", 0xC8CDD3, bx, by, at,
+            cyl("Fin angle bolt", "bolts", 0xC8CDD3,
+                xa + sgn * (b1 + i * bp), by, at,
                 at + v["M8_FLANGE_HEAD_H"], v["M8_FLANGE_HEAD_D"] / 2,
                 d="small M8 flange head, 14 across and 3 proud, into a T-nut")
 
