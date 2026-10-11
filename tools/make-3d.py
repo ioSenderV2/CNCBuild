@@ -89,7 +89,9 @@ DETAIL = {
     "Casting boss": "the cast stepper mount's bearing end",
     "Casting rails": "the cast stepper mount, DRAWN SOLID - the real casting is open here",
     "Motor plate": "the casting's motor plate",
-    "Stepper motor": "NEMA 23",
+    # HIS OWN WORDING FOR THE PART, 2026-10-11 - the motor carries its driver,
+    # which is why MOTOR_BODY_L is 94 and not a plain NEMA 23's length.
+    "Stepper motor": "All in one Closed Loop NEMA 23 stepper, 2.2N.m 5A 24-50VDC",
     "Interposer": "interposer bar - three the same",
     "Front strip": "front joining strip, ordered as 1/8in 6061 flat bar",
     "Fender washer": "plain M8 fender washer, under the acorn nut",
