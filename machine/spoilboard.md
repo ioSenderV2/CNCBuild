@@ -113,9 +113,16 @@ first written as a spacer thickness**, and 5.29 is not a flat bar anybody stocks
 how a part that cannot be bought gets onto a list. The standoff has one job: keep the bolt from
 drawing the side plate inward as it tightens.
 
-✅ **Those bolts only stop it walking.** Bedded flat on the box, gravity holds the stack down and the
-end fixing has no hold-down duty. The bolts land in plywood at the box end, so threaded inserts in
-the top skin rather than screws into a ply edge.
+✅ **Those screws only stop it walking.** Bedded flat on the box, gravity holds the stack down and
+the end fixing has no hold-down duty.
+
+🔴 **Nothing in the bed's fixing touches the torsion box.** Both ends land in the **side plates**,
+steel to aluminium, and the bed simply rests on the top skin. ⚠️ **This file claimed threaded
+inserts in the top skin until 2026-10-11** - an invented detail, from reading his "anchor in either
+end with bracket" as a bracket reaching down to the box. Once the scheme became screws through the
+side plate into the panel ends there was nothing landing in plywood, and the sentence should have
+gone with the bracket. It was then quoted back at him as an argument for a thicker top skin, which
+is how an invented detail earns compound interest.
 
 📌 **Hold the stack a few millimetres short of the side plates' inside faces** and the tongue bolt
 heads at Y 30 live in a relief gap, with no plate geometry changed. That is cheaper than moving the
