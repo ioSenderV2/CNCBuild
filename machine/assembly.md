@@ -263,9 +263,13 @@ rests on anything.
 ⚠️ **The casting's foot is stepped, not one flat plane.** Match or clear the step — if the bar sits
 under the stepped portion it holds the casting off its bearing face.
 
-⚠️ **Open on X only: whether all three bolt rows land over beam.** The 82 / 110 / 138 rows came from
-Y geometry, and on X the bar sits on top and overhangs the end. **Check before drilling X's bar** —
-it is the same part, so the check is on the position, not the drawing.
+⚠️ **Open on X only: whether both bolt rows land over beam.** The rows come from Y geometry, and on
+X the bar sits on top and overhangs the end. **Check before drilling X's bar** — it is the same
+part, so the check is on the position, not the drawing.
+
+🔴 **This read "all three bolt rows ... the 82 / 110 / 138 rows" until 2026-10-11, and that was
+stale twice over.** There are **two** rows, not three, and the registry puts them at
+**105 and 135** — see INTERPOSER_BOLT_ROW_1 and _2. The 3D model has drawn two rows all along.
 
 ### BF12 — rear end
 
@@ -431,8 +435,8 @@ bar passes under where that plate lands.
 
 ### The X stepper end
 
-**Interposer on TOP of the beam**, overhanging the end — same 60 × 150 × 3/8" part as Y, same six M8
-into slide-in T-nuts. 🔴 **On X the parts are in compression, stacked** — the opposite of the Y ends.
+**Interposer on TOP of the beam**, overhanging the end — same 60 × 150 × 3/8" part as Y, same
+**four M8 × 20** into slide-in T-nuts. 🔴 **On X the parts are in compression, stacked** — the opposite of the Y ends.
 
 **BF12 face-mounts on the right-hand end plate's tongue**, 4 × M5.
 
@@ -853,7 +857,7 @@ cutting or drilling:
 |---|---|
 | The **4 × HGH20 block hole pattern** measured on the **X/Y** kit — not the Z kit | gates the sixteen M5 in each X end plate |
 | Whether the mill holds one height reference across **1210.73 mm** | gates the rear plate |
-| Whether X's interposer rows at **82 / 110 / 138** all land over beam | gates X's bar |
+| Whether X's **two** interposer rows at **105 and 135** both land over beam | gates X's bar |
 | The **grid spacing**, and the box's deflection between its three points | gates the skins and the 2x4 clearance |
 | The front/back **tongue** inconsistency | gates the box walls |
 | The **L-bracket** specification | gates the fin fixing |
