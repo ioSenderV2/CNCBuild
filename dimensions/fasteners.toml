@@ -68,10 +68,11 @@ id = "x-back-plate"
 what = "X back joining plate to the beam"
 size = 8
 count = 28
-length = 12
+length = 14
 into = "t-nut"
 grip = ["T_BACK_JOIN_PLATE"]
-source = "assembly.md: '28 x M8 x 12 (X back)'"
+source = "his, 2026-10-11 - 14, not the 12 assembly.md gave"
+note = "🔴 IT WAS 12 UNTIL HE CORRECTED IT, from assembly.md's '28 x M8 x 12 (X back)'. The 2 buys thread in the T-nut and the plate is the same, so nothing else moves."
 
 [[joint]]
 id = "interposer-to-beam"
@@ -84,6 +85,17 @@ into = "t-nut"
 grip = ["T_INTERPOSER"]
 source = "his, 2026-10-11; the 3D model independently draws 4 per bar"
 note = "EVERYTHING BELOW THE BEAM IS IN TENSION HERE - these hold the bar UP against the beam's underside. 🔴 COUNT CORRECTED FROM 18: assembly.md said six per bar in three rows, but make-3d draws TWO rows x TWO slots = four, and he says four. The model and he agree; the prose was the odd one out. ✅ 20 LONG TAKES ALL 6 OF THE T-NUT'S THREAD - see TNUT_THREAD_M8 - with 10 left after the interposer."
+
+[[joint]]
+id = "stepper-to-frame"
+what = "Stepper motors to the cast stepper frame"
+size = 4
+count = 16
+per = "4 per motor"
+length = 16
+into = "tapped"
+source = "his, 2026-10-11"
+note = "🔴 THIS JOINT WAS MISSING FROM THE SCHEDULE ENTIRELY until he listed it - every motor on the machine hangs on these and not one was counted. NO GRIP RECORDED: the frame's thickness at the motor face is not a figure in the registry, so engagement is left blank rather than approximated."
 
 [[joint]]
 id = "casting-rails"
