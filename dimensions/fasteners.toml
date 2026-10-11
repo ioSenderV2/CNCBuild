@@ -34,9 +34,13 @@ note = "o6 through with a o9.5 counterbore. An M6 head will not enter a 9.5 coun
 id = "z-rail-to-carriage"
 what = "Z rails to the X carriage plate"
 size = 5
-into = "t-nut"
-source = "README: 'Z is a 400 mm kit from a different supplier - do not quote one kit's dimension for the other'"
-note = "COUNT AND LENGTH BOTH UNKNOWN. Separated from rail-to-beam on 2026-10-11 because it is a DIFFERENT KIT: a 400 mm rail has fewer holes than the 17 at 60 that the 1 m rails carry, and the repo already warns against quoting one kit's figures for the other. Count the holes on the rail in hand."
+count = 14
+per = "7 per rail, two rails"
+length = 20
+into = "tapped"
+grip = ["Z_RAIL_BOLT_GRIP"]
+source = "his, 2026-10-11"
+note = "TAPPED INTO THE PLATE, not a T-nut - the X carriage plate is 1/2in and carries the thread itself. 10 of engagement, and it stops 2.7 SHORT of the far face, so nothing breaks through to the back of the plate. 🔴 A DIFFERENT KIT from the beam rails: 7 holes on a 400 rail against 17 at 60 on the metre rails, and the repo warns against quoting one kit's figures for the other."
 
 [[joint]]
 id = "front-strip"
@@ -73,12 +77,13 @@ source = "assembly.md: '28 x M8 x 12 (X back)'"
 id = "interposer-to-beam"
 what = "Interposer bars up into the beam's T-slots"
 size = 8
-count = 18
-per = "6 per bar, three bars"
+count = 12
+per = "4 per bar, three bars"
+length = 20
 into = "t-nut"
 grip = ["T_INTERPOSER"]
-source = "assembly.md: '6 x M8 flange bolts into slide-in T-nuts, three rows'"
-note = "EVERYTHING BELOW THE BEAM IS IN TENSION HERE - these six hold the bar UP against the beam's underside."
+source = "his, 2026-10-11; the 3D model independently draws 4 per bar"
+note = "EVERYTHING BELOW THE BEAM IS IN TENSION HERE - these hold the bar UP against the beam's underside. 🔴 COUNT CORRECTED FROM 18: assembly.md said six per bar in three rows, but make-3d draws TWO rows x TWO slots = four, and he says four. The model and he agree; the prose was the odd one out. ✅ 20 LONG TAKES ALL 6 OF THE T-NUT'S THREAD - see TNUT_THREAD_M8 - with 10 left after the interposer."
 
 [[joint]]
 id = "casting-rails"

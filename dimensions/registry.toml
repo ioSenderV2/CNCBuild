@@ -2911,3 +2911,26 @@ note = "M5 x 45 through the casting either side of the bearing block - 35 of cas
 sym = "INTERPOSER_TAPPED_M5"
 expr = "CASTING_RAIL_BOLTS + CASTING_BLOCK_BOLTS"
 note = "Six M5 tapped through each interposer, for the casting above it. \U0001F534 THE INTERPOSER CARRIES TWO SEPARATE BOLT PATTERNS AND THEY MUST NOT BE CONFUSED: these six are TAPPED M5 holding the CASTING DOWN onto it, while INTERPOSER_BOLT_ROW_1 and _2 are M8 CLEARANCE holes for the bolts that hold the INTERPOSER ITSELF to the beam's T-slots. Different thread, different direction of assembly, different part being held. \u26A0 THE TAPPING IS THE WHOLE DEPTH: T_INTERPOSER is 10 and both bolt lengths end flush with its far face, so there is no margin for a bolt that runs long - and a long one would stand proud into the beam's slot face."
+
+[[dim]]
+sym = "TNUT_THREAD_M8"
+value = 6
+provenance = "part"
+note = "6 - the thread an M8 slide-in T-nut actually gives. His, 2026-10-11, and it is SHORT: a T-nut is a thin block, not a nut, so the engagement a bolt gets is 6 whatever its length. \u2705 THAT IS WHY THE INTERPOSER BOLT IS 20 - it crosses T_INTERPOSER's 10 and still has 10 left, which is more than enough to take all 6. \U0001F534 IT IS ALSO WHY A LONGER BOLT BUYS NOTHING in any T-nut joint on this machine: past 6 the extra just stands through the back of the nut into the slot."
+
+[[dim]]
+sym = "Z_RAIL_BOLT_GRIP"
+expr = "Z_RAIL_BOLT_L - Z_RAIL_BOLT_ENGAGE"
+note = "10 - what an M5 crosses in the Z rail before it reaches the X carriage plate's tapped thread: the rail's own material under its counterbore. \u26A0 DERIVED BACKWARDS FROM HIS TWO FIGURES, the 20 bolt and the 10 of engagement, because the rail's counterbore depth is not in this file. It is a real quantity and it is HIS arithmetic, not a measured rail - caliper the counterbore if it ever matters."
+
+[[dim]]
+sym = "Z_RAIL_BOLT_L"
+value = 20
+provenance = "part"
+note = "M5 x 20 for the Z rails, his 2026-10-11, seven per rail and two rails."
+
+[[dim]]
+sym = "Z_RAIL_BOLT_ENGAGE"
+value = 10
+provenance = "part"
+note = "10 of M5 thread in the X carriage plate, his 2026-10-11 - 2 x D. \u2705 IT STOPS 2.7 SHORT OF THE FAR FACE on a T_X_CARRIAGE_PLATE of 12.7, so nothing breaks through the back. \u26A0 THE 12.7 IS STILL A NOMINAL in this file and this clearance is only 2.7, so a plate that micrometers thin is worth knowing about before tapping."

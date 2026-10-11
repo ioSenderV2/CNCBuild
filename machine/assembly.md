@@ -251,7 +251,7 @@ support it along its length.
 
 | | |
 |---|---|
-| Bar to beam | **6 × M8 flange bolts into slide-in T-nuts**, three rows at **82 / 110 / 138** from the bar's outboard end |
+| Bar to beam | **4 × M8 × 20 flange bolts into slide-in T-nuts** — two rows, two slots. 🔴 **Not six in three rows**, which this line said until 2026-10-11; the 3D model has always drawn four and he confirms four |
 | Position | the bar's **outboard end 30 mm past the fin's outer face**, so casting and bar protrude through the window together |
 | Casting to bar | its **6 through holes, M5 tapped into the 3/8"** — bar coordinates, columns 7 and 53, rows 28 / 58 / 71 |
 | Motor | NEMA 23 onto the casting's own flange |
