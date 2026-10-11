@@ -1177,7 +1177,8 @@ def main() -> int:
     for ax, (lo_, hi_, warn) in jog.items():
         print(f"  {ax}  {lo_:+9.2f} to {hi_:+9.2f}   travel {hi_ - lo_:8.2f}"
               + ("   " + warn.split(" - ")[0] if warn else ""))
-    return report_overlaps(P)
+    rc = report_overlaps(P)
+    return rc or sweep_envelope(P, jog, home)
 
 
 # Pairs that SHOULD interpenetrate, with the reason. Everything else that
@@ -1371,17 +1372,34 @@ def through_hole(a, b) -> bool:
     return False
 
 
-def report_overlaps(P) -> int:
-    """Solid-body interference check - the one thing a box model can prove.
+def shifted(p, off):
+    """One part moved by the jog, according to the carriages it rides on."""
+    k = p.get("k", "")
+    d = (off[0] if "X" in k else 0.0,
+         off[1] if "Y" in k else 0.0,
+         off[2] if "Z" in k else 0.0)
+    if d == (0.0, 0.0, 0.0):
+        return p
+    if p.get("holes"):
+        # through_hole() reads a prism's window in absolute coordinates, so a
+        # prism that ever rides a carriage would take its window with it and
+        # this would quietly stop working. Nothing rides today; say so loudly
+        # if that changes rather than reporting a clearance that is not there.
+        raise SystemExit("a prism with a window now rides a carriage - "
+                         "through_hole() has to move its holes too")
+    q = dict(p)
+    q["p"] = [p["p"][i] + d[i] for i in range(3)]
+    q["q"] = [p["q"][i] + d[i] for i in range(3)]
+    return q
 
-    It cannot tell you a part is in the RIGHT place. It can tell you two parts
-    are in the SAME place, which is the failure a dimension change causes and
-    the eye misses on a shaded render.
-    """
+
+def overlaps_at(P, off=(0.0, 0.0, 0.0)):
+    """Every pair of solids sharing space, with the carriages at one position."""
+    Q = [shifted(p, off) for p in P]
     bad = []
-    for i in range(len(P)):
-        for j in range(i + 1, len(P)):
-            a, b = P[i], P[j]
+    for i in range(len(Q)):
+        for j in range(i + 1, len(Q)):
+            a, b = Q[i], Q[j]
             # A LINE HAS NO VOLUME. The thread is drawn over the screw's own
             # cylinder, and that cylinder is what the check already tests, so
             # including the helix would only re-flag the screw's own envelope.
@@ -1390,14 +1408,168 @@ def report_overlaps(P) -> int:
             if frozenset({a["n"], b["n"]}) in ALLOWED:
                 continue
             ov = [min(a["q"][k], b["q"][k]) - max(a["p"][k], b["p"][k]) for k in range(3)]
-            if all(o > 0.05 for o in ov) and not through_hole(a, b):
+            if (all(o > 0.05 for o in ov) and not through_hole(a, b)
+                    and not prism_misses(a, b)):
+                if a["t"] == "prism" or b["t"] == "prism":
+                    ov = list(ov)
+                    ov[0] = prism_bite(a, b)      # the real width, not the box
                 bad.append((a["n"], b["n"], ov))
+    return bad
+
+
+def _rect_hits_poly(poly, x0, x1, z0, z1) -> bool:
+    """Does the axis-aligned rectangle touch the polygon? Three ways it can."""
+    def inside(px, pz):                      # crossing number, polygon in X-Z
+        c = False
+        n = len(poly)
+        for i in range(n):
+            ax, az = poly[i]
+            bx, bz = poly[(i + 1) % n]
+            if (az > pz) != (bz > pz):
+                xx = ax + (pz - az) * (bx - ax) / (bz - az)
+                if xx > px:
+                    c = not c
+        return c
+
+    for px, pz in poly:                      # a corner of the part inside
+        if x0 - 0.05 <= px <= x1 + 0.05 and z0 - 0.05 <= pz <= z1 + 0.05:
+            return True
+    for px in (x0, x1):                      # a corner of the rectangle inside
+        for pz in (z0, z1):
+            if inside(px, pz):
+                return True
+    for i in range(len(poly)):               # or an edge crossing an edge
+        ax, az = poly[i]
+        bx, bz = poly[(i + 1) % len(poly)]
+        for _ in range(1):
+            # the segment against the four sides of the rectangle
+            for cx, cz, dx_, dz_ in ((x0, z0, x1, z0), (x1, z0, x1, z1),
+                                     (x1, z1, x0, z1), (x0, z1, x0, z0)):
+                d1 = (bx - ax) * (cz - az) - (bz - az) * (cx - ax)
+                d2 = (bx - ax) * (dz_ - az) - (bz - az) * (dx_ - ax)
+                d3 = (dx_ - cx) * (az - cz) - (dz_ - cz) * (ax - cx)
+                d4 = (dx_ - cx) * (bz - cz) - (dz_ - cz) * (bx - cx)
+                if ((d1 > 0) != (d2 > 0)) and ((d3 > 0) != (d4 > 0)):
+                    return True
+    return False
+
+
+def prism_bite(a, b):
+    """How wide the overlap really is across a prism, measured on its section.
+
+    The caller prints the bounding box extents, and on a tapered part that
+    number is too big - on a fin the box claims the 100 mm the taper removes.
+    This walks the shared height and returns the widest run of REAL metal.
+    """
+    worst = 0.0
+    for prism_, other in ((a, b), (b, a)):
+        if prism_.get("t") != "prism":
+            continue
+        pts = prism_["profile"]
+        zs = [q[1] for q in pts]
+        z0 = max(prism_["p"][2], other["p"][2], min(zs))
+        z1 = min(prism_["q"][2], other["q"][2], max(zs))
+        if z1 <= z0:
+            continue
+        for i in range(201):
+            z = z0 + (z1 - z0) * i / 200
+            # the section's x span at this height, from the edges it crosses
+            xs = []
+            for j in range(len(pts)):
+                ax, az = pts[j]
+                bx, bz = pts[(j + 1) % len(pts)]
+                if az == bz:
+                    continue
+                if min(az, bz) - 1e-9 <= z <= max(az, bz) + 1e-9:
+                    xs.append(ax + (z - az) * (bx - ax) / (bz - az))
+            if len(xs) < 2:
+                continue
+            lo = max(min(xs), other["p"][0])
+            hi = min(max(xs), other["q"][0])
+            worst = max(worst, hi - lo)
+    return worst
+
+
+def prism_misses(a, b) -> bool:
+    """A PRISM IS NOT ITS BOUNDING BOX, and on the fins the difference is the
+    whole part: the taper runs 200 down to 100 on the INBOARD face, which is
+    exactly where the Z assembly comes past. Comparing boxes claimed 100 mm of
+    metal that is not there and reported two clashes against air.
+
+    So where one of the pair is a prism, the overlap is re-tested against the
+    real section. The fore-aft overlap is already established by the caller.
+    """
+    for prism_, other in ((a, b), (b, a)):
+        if prism_.get("t") != "prism":
+            continue
+        x0 = max(prism_["p"][0], other["p"][0])
+        x1 = min(prism_["q"][0], other["q"][0])
+        z0 = max(prism_["p"][2], other["p"][2])
+        z1 = min(prism_["q"][2], other["q"][2])
+        if not _rect_hits_poly(prism_["profile"], x0, x1, z0, z1):
+            return True
+    return False
+
+
+def report_overlaps(P) -> int:
+    """Solid-body interference check - the one thing a box model can prove.
+
+    It cannot tell you a part is in the RIGHT place. It can tell you two parts
+    are in the SAME place, which is the failure a dimension change causes and
+    the eye misses on a shaded render.
+    """
+    bad = overlaps_at(P)
     if not bad:
         print("\ninterference check: clean - no two parts occupy the same space")
         return 0
     print(f"\ninterference check: {len(bad)} OVERLAP(S)")
     for n1, n2, ov in bad:
         print(f"  {n1} <-> {n2}   by {ov[0]:.2f} x {ov[1]:.2f} x {ov[2]:.2f} mm")
+    return 0
+
+
+def sweep_envelope(P, jog, home) -> int:
+    """THE CORNERS, NOT JUST THE MIDDLE.
+
+    The pose the model is drawn at is mid travel, and a clash that only happens
+    at an end of travel is invisible there. Worse, the ones worth finding need
+    TWO axes at once - the Z assembly can only reach a front fin with X at an
+    end AND Y fully forward - so sweeping one axis at a time would not find them
+    either. Eight corners is the smallest set that contains every such pair.
+
+    It cannot prove the inside of the envelope is clear. Every part here is a
+    box or a cylinder travelling in a straight line, so for any two of them the
+    overlap is largest at an extreme of each axis - but the castings' rails are
+    drawn SOLID and a prism's bounding box is bigger than the prism, so this is
+    conservative rather than exact, the same way the drawn-pose check is.
+    """
+    base = {frozenset({n1, n2}) for n1, n2, _ in overlaps_at(P)}
+    print(f"\nenvelope sweep: the same check at the 8 corners of travel. "
+          f"{len(base)} pair(s) already overlap at the drawn pose and are not "
+          f"repeated below.")
+    found = {}
+    for jx in jog["X"][:2]:
+        for jy in jog["Y"][:2]:
+            for jz in jog["Z"][:2]:
+                dro = (home["X"] - jx, home["Y"] - jy, jz - home["Z"])
+                label = f"X {dro[0]:+8.1f}  Y {dro[1]:+8.1f}  Z {dro[2]:+8.1f}"
+                new = [b for b in overlaps_at(P, (jx, jy, jz))
+                       if frozenset({b[0], b[1]}) not in base]
+                if not new:
+                    print(f"  {label}   clear")
+                    continue
+                print(f"  {label}   {len(new)} NEW")
+                for n1, n2, ov in new:
+                    print(f"      {n1} <-> {n2}   by "
+                          f"{ov[0]:.2f} x {ov[1]:.2f} x {ov[2]:.2f} mm")
+                    key = frozenset({n1, n2})
+                    found[key] = max(found.get(key, 0), min(ov))
+    if found:
+        print(f"\n  {len(found)} distinct pair(s) foul somewhere in the envelope:")
+        for k, worst in sorted(found.items(), key=lambda kv: -kv[1]):
+            print(f"    {' <-> '.join(sorted(k))}   worst bite {worst:.2f} mm")
+    else:
+        print("  nothing new at any corner.")
     return 0
 
 
