@@ -1966,6 +1966,13 @@ provenance = "part"
 note = "Ball screw nominal diameter - the 16 in 1605. All four axes run the same screw."
 
 [[dim]]
+sym = "SCREW_LEAD"
+value = 5
+provenance = "part"
+note = "5, the lead - how far the nut travels in one turn of the screw. It is the 05 in 1605 and in DSG1605, so it has been in every reference to the part from the start, but it was never a symbol and nothing could be drawn or computed from it. RIGHT-HAND, his 2026-10-10, which the paperwork does not state either. It is the lead and not a pitch: a 1605 is single-start, so the two happen to be the same number here, and they would not be on a multi-start screw."
+source = "Vevor DSG1605 page, printed manual with the ball screw kit"
+
+[[dim]]
 sym = "SCREW_JOURNAL_D"
 value = 10
 provenance = "part"

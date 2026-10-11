@@ -326,6 +326,7 @@ BOLT_BACK_X,mm,12,"[derived] M8 x 12 for the X back joining plate, 6.35 mm 6061 
 BOLT_BACK_Y_WASHER,mm,1.6,"[nominal] A plain M8 washer under the head on the Y back plate - NOT a stiffness or clearance figure, a shim that buys margin. ✅ THE MARGIN IT WAS BOUGHT FOR TURNED OUT NOT TO BE NEEDED, and the washer stays anyway: at the ORDERED 10 gauge (T_SIDE_PL"
 BOLT_BACK_Y,mm,10,"[derived] M8 x 10 for the Y back plate - the outboard steel plate, 28 per beam, 56 total - WITH the washer in BOLT_BACK_Y_WASHER. Same length as the front strip's bolts, so the buy is two lengths and not three: 98 of M8 x 10 (42 A4 / 316 for the fron"
 SCREW_D,mm,16,[part] Ball screw nominal diameter - the 16 in 1605. All four axes run the same screw.
+SCREW_LEAD,mm,5,"[part] 5, the lead - how far the nut travels in one turn of the screw. It is the 05 in 1605 and in DSG1605, so it has been in every reference to the part from the start, but it was never a symbol and nothing could be drawn or computed from it. RIGHT-"
 SCREW_JOURNAL_D,mm,10,"[part] The bare shaft at each end, turned down from the 16 to ride in its bearing. Both ends are the same diameter; only the LENGTHS differ."
 SCREW_JOURNAL_BF,mm,11,[part] Bare shaft at the BF12 end - the short one. It only has to reach through the bearing.
 SCREW_JOURNAL_CAST,mm,54.5,"[part] Bare shaft at the stepper casting end. Long because the coupler lives on it as well as the bearing, which is also why the casting end is the one that sets how far the screw stands off its mount."

@@ -76,7 +76,10 @@ DETAIL = {
     "Y block": "HGH20 bearing block",
     "X block": "HGH20 bearing block",
     "Z block": "HGH20 bearing block",
-    "Ball screw": "1605 ball screw - all four axes are the same part, only the length differs",
+    "Ball screw": "1605 ball screw, 16 diameter and 5 lead, right-hand - all four "
+                  "axes are the same part, only the length differs",
+    "Ball screw thread": "the thread's turns at the 5 mm lead, drawn as a line at the "
+                         "crest. The groove's section is not dimensioned in the repo",
     "Screw journal": "the screw's journal, into a bearing at each end",
     "Ball nut": "DSG1605 housed ball nut - the same part on all four axes",
     "Nut bolt face": "the nut housing's mounting flat, 4 x M5 tapped INTO the housing",
@@ -160,6 +163,28 @@ def main() -> int:
                   "cx": cx, "cy": cy, "r": r, "z0": lo, "z1": hi, "seg": seg,
                   "d": d, "k": ride[0] if k is None else k,
                   "p": p, "q": q})
+
+    def helix(name, group, colour, cx, cy, z0, z1, r, axis, lead, d="", k=None):
+        """The thread, as ONE RIGHT-HAND POLYLINE at the crest radius.
+
+        Not a solid and not a swept ridge. The ball groove's section is not
+        dimensioned anywhere in the repo, so a ridge would be invented metal;
+        what a line can carry honestly is WHERE the turns are, which is the
+        lead. cx, cy and axis follow cyl's convention exactly.
+
+        It therefore has no volume, stays out of the interference check, and
+        leaves the screw's envelope as the cylinder underneath it.
+        """
+        lo, hi = min(z0, z1), max(z0, z1)
+        if axis == "z":
+            p, q = [cx - r, cy - r, lo], [cx + r, cy + r, hi]
+        elif axis == "x":
+            p, q = [lo, cx - r, cy - r], [hi, cx + r, cy + r]
+        else:
+            p, q = [cx - r, lo, cy - r], [cx + r, hi, cy + r]
+        P.append({"n": name, "g": group, "c": colour, "t": "helix", "ax": axis,
+                  "cx": cx, "cy": cy, "r": r, "z0": lo, "z1": hi, "lead": lead,
+                  "d": d, "k": ride[0] if k is None else k, "p": p, "q": q})
 
     def prism(name, group, colour, profile, ya, yb, holes=None, d="", k=None):
         """An X-Z profile extruded along fore-aft. The fins are not boxes.
@@ -479,6 +504,7 @@ def main() -> int:
     SCR, JRN = v["SCREW_D"] / 2, v["SCREW_JOURNAL_D"] / 2
     JB, JC = v["SCREW_JOURNAL_BF"], v["SCREW_JOURNAL_CAST"]
     STEEL, DARK, SUP = 0xB9C0C7, 0x8A9097, 0x7E6B8F
+    THREAD = 0x444C54        # the thread line, dark against the steel
     NUTC, MOT = 0xC06000, 0x3C4248
 
     def screw(axis, c0, c1, lo, oal, bf_low):
@@ -487,6 +513,11 @@ def main() -> int:
         a, b = (JB, JC) if bf_low else (JC, JB)
         cyl("Screw journal", "drive", DARK, c0, c1, lo, lo + a, JRN, axis)
         cyl("Ball screw", "drive", STEEL, c0, c1, lo + a, lo + oal - b, SCR, axis)
+        # The threaded span runs between the two journals, so its length is the
+        # overall less SCREW_BARE_TOTAL - which is what SCREW_THREAD_LONG and
+        # SCREW_THREAD_Z already say, reached here from the other direction.
+        helix("Ball screw thread", "drive", THREAD, c0, c1,
+              lo + a, lo + oal - b, SCR, axis, v["SCREW_LEAD"])
         cyl("Screw journal", "drive", DARK, c0, c1, lo + oal - b, lo + oal, JRN, axis)
 
     def span(axis, along0, along1, c0lo, c0hi, c1lo, c1hi):
@@ -1282,6 +1313,11 @@ def report_overlaps(P) -> int:
     for i in range(len(P)):
         for j in range(i + 1, len(P)):
             a, b = P[i], P[j]
+            # A LINE HAS NO VOLUME. The thread is drawn over the screw's own
+            # cylinder, and that cylinder is what the check already tests, so
+            # including the helix would only re-flag the screw's own envelope.
+            if a["t"] == "helix" or b["t"] == "helix":
+                continue
             if frozenset({a["n"], b["n"]}) in ALLOWED:
                 continue
             ov = [min(a["q"][k], b["q"][k]) - max(a["p"][k], b["p"][k]) for k in range(3)]
@@ -1367,6 +1403,34 @@ const RIDE={Y:GY,YX:GX,YXZ:GZ};
 const byGroup={}, PICK=[];
 for(const p of PARTS){
   let geom, ctr;
+  if(p.t==='helix'){
+    // ONE RIGHT-HAND POLYLINE at the crest, over the plain cylinder. Drawn
+    // 0.05 clear of the surface on purpose: exactly on it z-fights with it,
+    // and 0.05 out puts the near side cleanly in front while the cylinder
+    // still hides the far side, which is what makes it read as a thread.
+    //
+    // Machine X / fore-aft / Z is right-handed and the mapping into three's
+    // frame is a rotation, so a right-hand helix stays right-hand on screen.
+    // The ONE exception is a screw along fore-aft: there cyl's (cx,cy) order
+    // swaps two axes rather than rotating them, so the angle runs backwards
+    // and has to be negated to keep the hand right.
+    const turns=(p.z1-p.z0)/p.lead, segs=Math.max(8,Math.round(turns*24));
+    const R=p.r+0.05, hand=(p.ax==='y')?-1:1, pts=[];
+    for(let i=0;i<=segs;i++){
+      const f=i/segs, a=2*Math.PI*turns*f*hand, L=p.z0+(p.z1-p.z0)*f;
+      const u=p.cx+R*Math.cos(a), w=p.cy+R*Math.sin(a);
+      if(p.ax==='x')      pts.push(new THREE.Vector3(L-mid[0], w-mid[2], -(u-mid[1])));
+      else if(p.ax==='y') pts.push(new THREE.Vector3(u-mid[0], w-mid[2], -(L-mid[1])));
+      else                pts.push(new THREE.Vector3(u-mid[0], L-mid[2], -(w-mid[1])));
+    }
+    const ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+                            new THREE.LineBasicMaterial({color:p.c}));
+    (RIDE[p.k]||scene).add(ln);
+    // It toggles with its group, but it is NOT in PICK - hovering the screw
+    // should report the screw, not a line lying on its surface.
+    (byGroup[p.g]=byGroup[p.g]||[]).push(ln);
+    continue;
+  }
   if(p.t==='cyl'){
     geom=new THREE.CylinderGeometry(p.r,p.r,p.z1-p.z0,p.seg||36);
     const m=(p.z0+p.z1)/2;
