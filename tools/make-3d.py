@@ -444,14 +444,13 @@ def main() -> int:
     # sacrificial, it gets skimmed, and its thickness is a choice at build time.
     #
     # The fore-aft placement is a PLACEHOLDER - TT_BED_Y0's note says so.
-    # THE SLOTS ARE DRAWN AS THE FLATS BETWEEN THEM, which is a deliberate choice
-    # and not laziness: he has given the 8 mm OPENING and the flats either side of
-    # it, and he has NOT given the undercut below the top face or how deep the slot
-    # runs into the 16. Drawing each flat as a full-thickness bar leaves the slots
-    # as open gaps - that gets the top face and the 8 mm openings exactly right,
-    # which is what a fixturing layout and anything sweeping over the bed care
-    # about, and invents nothing about the profile underneath. A slot drawn as a
-    # pocket would need a depth, and a depth would be a guess.
+    # THE SLOTS ARE DRAWN AS THE FLATS BETWEEN THEM, with a bar under each slot
+    # carrying the plate's bottom 6 across. The flats give the top face and the
+    # 8 mm openings exactly; the bar is TT_BED_T - TT_SLOT_DEPTH thick, so the
+    # slot reads as the 10 deep pocket it is instead of a hole through the plate -
+    # it was a through gap until he gave the depth and the box's top skin showed
+    # through every slot from above. THE UNDERCUT IS STILL NOT A FIGURE WE HAVE,
+    # so the lips that make it a tee slot are not drawn and the pocket is plain.
     #
     # His breakdown of the 250: 2 x 16 end flats + 7 x 22 inner flats + 8 x 8
     # slots. TT_PLATE_W_CHECK sums it and closes on TT_BED_PLATE_W exactly.
@@ -469,14 +468,22 @@ def main() -> int:
         for j in range(n_slots):
             runs.append(("slot", sw))
             runs.append(v["TT_MID_FLAT"] if j < n_slots - 1 else v["TT_END_FLAT"])
+        slot_floor = v["TT_BED_T"] - v["TT_SLOT_DEPTH"]
         for run in runs:
             if isinstance(run, tuple):
-                y += run[1]            # a slot: leave the gap, draw nothing
+                # a slot: the plate's bottom 6 runs on under it
+                box("Tee track slot bottom", "bed", 0xB0B6BC, bed_x0, y, 0,
+                    bed_x1, y + run[1], slot_floor,
+                    d="the floor of an 8 x 10 slot - the plate's bottom "
+                      f"{slot_floor:g} carrying on under the gap. The undercut "
+                      "that makes it a tee slot is not a figure we have",
+                    u=f"bed{i}")
+                y += run[1]
                 continue
             box("Tee track flat", "bed", 0xB0B6BC, bed_x0, y, 0,
                 bed_x1, y + run, v["TT_BED_T"],
                 d="16 thick, bedded on the skin - the gaps are the 8 mm slots, "
-                  "whose undercut and depth are not figures we have",
+                  "10 deep, whose undercut is not a figure we have",
                 u=f"bed{i}")
             y += run
         # Belt and braces: the walk has to land exactly on the plate's far edge.

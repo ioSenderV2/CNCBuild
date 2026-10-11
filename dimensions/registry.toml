@@ -2469,7 +2469,13 @@ note = "6.35 - the bed's back edge, butted against the REAR PLATE'S FRONT FACE. 
 sym = "TT_SLOT_W"
 value = 8
 provenance = "part"
-note = "8 - the tee slot's opening across the plate. His, 2026-10-11. \u26A0 IT IS THE OPENING ONLY: the slot's undercut below the top face and its depth into the 16 are not figures he has given, and nothing in this registry infers them."
+note = "8 - the tee slot's opening across the plate. His, 2026-10-11. \u26A0 IT IS THE OPENING ONLY: the slot's undercut below the top face is not a figure he has given, and nothing in this registry infers it. The DEPTH is TT_SLOT_DEPTH - this note said it was unknown until he gave it."
+
+[[dim]]
+sym = "TT_SLOT_DEPTH"
+value = 10
+provenance = "part"
+note = "10 - from the plate's top face down to the slot bottom. His, 2026-10-11, given when the model showed the box's top skin through every slot from above. ⚠ IT IS THE DEPTH ONLY: the undercut that makes it a TEE slot rather than a straight 8 mm groove is still not a figure he has given, so the model draws the slot as a plain 8 x 10 pocket - the opening and the depth are right, the lips are not drawn. Leaves TT_BED_T - TT_SLOT_DEPTH = 6 of solid plate under each slot."
 
 [[dim]]
 sym = "TT_SLOTS"
