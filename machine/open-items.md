@@ -170,8 +170,12 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   back post's single-sided shoulder and what the tenons ask of the rib grid. **It was repeated twice
   in conversation on 2026-10-02 on the strength of this list rather than the file.** An open-items
   entry is a pointer, not evidence; read the file it points at before believing it.
-- ✅ ~~**The L bracket specification** - "15 × 1.5" has not been resolved.~~ **Moot 2026-09-30** - the
-  tapered base gives the bolt spacing directly, so there are no L brackets. See "The lateral fix".
+- ✅ ~~**The L bracket specification** - "15 × 1.5" has not been resolved.~~ ⚠️ **"Moot 2026-09-30 -
+  there are no L brackets" WAS WRONG AND STAYED IN THIS FILE FOR ELEVEN DAYS.** Brackets came back on
+  2026-10-03 when the front tongue was deleted and the fin needed tying down, and the item was never
+  reopened. ✅ **Now genuinely closed, 2026-10-11, with a specified part**: one 170 mm length of
+  40 × 40 angle extrusion per fin, in FRONT of it, tapped M8 into the fin at Y 20 and bolted to
+  prong inserts in the top skin. See [`assembly.md`](assembly.md).
 - ✅ ~~**Front corner three-way convergence**~~ **Closed 2026-09-30** - the front and back tongues run
   long and lap the side tongues' ends; nothing is notched. See "The lateral fix".
 - 🔴 **How far past the front riser plane the spindle reaches**, and whether it fouls the widened fin

@@ -297,15 +297,31 @@ spot-facing or counterboring on one face only.
 | To the beam | **8 × M8 × 35 flange bolts** into the ø6.65 lengthwise corner bores — four per profile |
 | Hole | **9 mm**, deliberately. The bores are extruded features and a close fit is impossible in principle |
 | M8 columns | **35 and 65 mm** from the factory edge, so the beam spans X 20 to 80 |
-| To the box | **two M8 at X 25 and X 170, Y 30** above the plate's bottom edge — these are **L-bracket holes** |
+| To the box | **two M8 at X 25 and X 170, Y 20** above the plate's bottom edge — **TAPPED**, for the angle in front |
 
 **M8 × 35 leaves 22.3 mm in the extrusion.**
 
-🔴 **There is no front tongue on the box.** The fin sits on the box's **top skin** and **two
-L-brackets behind each fin** tie it down, bolting into T1 at X 25 and T2 at X 170. The box runs
-**140 mm past the fins**.
+🔴 **There is no front tongue on the box.** The fin sits on the box's **top skin**, and **one
+170 mm length of 40 × 40 angle extrusion in FRONT of it** ties it down - two across the machine,
+bolting into **T1 at X 25 and T2 at X 170, tapped, at Y 20**. 🔴 **In front because the tee track
+bed leaves zero room behind**: the bed's front edge and the fin's back face are both at 1006.35.
+The box runs **193.65 mm past the fins**.
 
-⚠️ **Open: the L-bracket itself is not specified** — no size, no fixing into the box. Four are needed.
+✅ **Settled 2026-10-11: one 170 mm length of 40 × 40 angle extrusion per fin, in FRONT of it.** Two
+across the machine, not four. It starts flush with the box's side edge, the two M8 run into **tapped**
+holes in the fin — no nuts — and four bolts through its horizontal leg go into **prong-type threaded
+inserts in the top skin**.
+
+🔴 **The angle is in front because there is no room behind.** The tee track bed's front edge and the
+fin's back face are both at 1006.35 — zero gap. The bed, settled the same day, is what closed that
+space.
+
+🔴 **The fin is tapped because of the bed too.** The bed's top face is at 16, so an M8 nut and washer
+at Y 20 would reach down to 11.5 and foul it by 4.5. Tapping puts nothing on the back face.
+
+🔴 **The inserts go in BEFORE the top skin is glued to the ribs.** They fit from underneath and there
+is no access afterwards — the same hard ordering as the screw into each post tenon, and the same
+consequence for missing it.
 
 **Use a steel backing strip or large fender washers on both faces** where these bolts land in
 plywood, not plain washers.
@@ -689,7 +705,7 @@ height and the two beams' coplanarity, so the fin is the reference for the pair 
 
 | Part | How it lands |
 |---|---|
-| **Front fin** | bottom edge **bearing on the top skin**; **two L-brackets behind it** into T1 and T2 |
+| **Front fin** | bottom edge **bearing on the top skin**; **one 170 mm 40 × 40 angle in front of it**, tapped M8 into T1 and T2 at Y 20, four bolts into skin inserts |
 | **Outboard plate** | bottom edge bearing on the top skin directly over the wall; outer face **bearing against the side tongue's inner face**; **seven M8 from outboard** into locknuts |
 | **Rear plate** | bottom edge bearing over the full 1210.73 mm; **eight bolts through the back tongue at Y 30** |
 

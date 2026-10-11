@@ -590,7 +590,7 @@ wall's inner web front face** - and the front tongue simply runs across all of i
 |---|---|
 | Full-height outboard plate | Ends at that plane, 1006.35 from the box's back edge |
 | Side tongue | Ends at the same plane. 🔴 **Its end grain is now EXPOSED** - the front tongue that used to cover it was deleted 2026-10-03 |
-| Front riser | 🔴 **No longer bears on a front tongue - there is none.** It sits on the box's top skin and is tied down by four L-brackets behind it |
+| Front riser | 🔴 **No longer bears on a front tongue - there is none.** It sits on the box's top skin and is tied down by **one 170 mm angle in FRONT of it** - settled 2026-10-11, and in front because the tee track bed leaves zero room behind |
 
 So **nothing needs notching or mitring.** The one thing to keep in mind is that the corner butt joint
 is plywood end grain onto face, which is a weak glue joint - it is not load path here (the fins' bolts
