@@ -1,0 +1,228 @@
+# The fastener schedule.
+#
+# WHY THIS EXISTS: the registry knows where every fastener GOES - it is full of
+# BOLT_* position symbols - and it did not know how LONG any of them is. Lengths
+# lived scattered in prose, and the length is the figure that gets guessed at the
+# bench. This repo has been bitten by that twice in one day: an M8 x 25 that
+# engaged 4 mm because a T-nut's thread sits in the BOTTOM of a 25 skin, and a
+# fin bolt that had to be 16 rather than 15.
+#
+# RULES FOR THIS FILE, and they are the point of it:
+#   - `length` is filled ONLY where a file or he states one. Blank means
+#     UNKNOWN and the tool reports it. Nothing here is inferred.
+#   - `source` says where the entry came from. An entry with no source is a
+#     guess and should not be here.
+#   - `grip` is the stack the bolt passes through before it meets thread,
+#     written as registry symbols so it moves when they do. Where the stack is
+#     not known, leave it out rather than approximate it.
+#   - `into` says what carries the thread: tapped, t-nut, nut, or bore.
+#
+# Read with tools/make-fasteners.py.
+
+[[joint]]
+id = "rail-to-beam"
+what = "Linear rails to the beams"
+size = 5
+count = 68
+per = "17 per rail, four rails"
+length = 16
+into = "t-nut"
+source = "assembly.md: 'M5 x 16 into T-nuts, 17 per rail at 60 mm'"
+note = "o6 through with a o9.5 counterbore. An M6 head will not enter a 9.5 counterbore."
+
+[[joint]]
+id = "front-strip"
+what = "Front joining strips to the beams"
+size = 8
+count = 42
+length = 10
+into = "t-nut"
+grip = ["T_FRONT_STRIP"]
+source = "assembly.md: 'The buy: 42 x M8 x 10 A4 / 316 (front strips)'"
+note = "A4/316. An M8 x 12 in the 4 mm strip reaches 8.0 past the plate against a 7.2 limit - the length is NOT interchangeable with the X back plate's 12."
+
+[[joint]]
+id = "y-back-plate"
+what = "Y back joining plates to the beams"
+size = 8
+count = 56
+length = 10
+into = "t-nut"
+source = "assembly.md: '56 x M8 x 10 plain + 56 washers (Y backs)'"
+note = "Plain, plus a washer each."
+
+[[joint]]
+id = "x-back-plate"
+what = "X back joining plate to the beam"
+size = 8
+count = 28
+length = 12
+into = "t-nut"
+grip = ["T_BACK_JOIN_PLATE"]
+source = "assembly.md: '28 x M8 x 12 (X back)'"
+
+[[joint]]
+id = "interposer-to-beam"
+what = "Interposer bars up into the beam's T-slots"
+size = 8
+count = 18
+per = "6 per bar, three bars"
+into = "t-nut"
+grip = ["T_INTERPOSER"]
+source = "assembly.md: '6 x M8 flange bolts into slide-in T-nuts, three rows'"
+note = "EVERYTHING BELOW THE BEAM IS IN TENSION HERE - these six hold the bar UP against the beam's underside."
+
+[[joint]]
+id = "casting-rails"
+what = "Cast stepper frame, through its rails into the interposer"
+size = 5
+count = 6
+per = "2 per casting, three castings"
+length = 40
+into = "tapped"
+grip = ["CASTING_RAIL_H"]   # the interposer is TAPPED, so it is thread, not grip
+source = "his, 2026-10-11"
+
+[[joint]]
+id = "casting-block"
+what = "Cast stepper frame, either side of the bearing block, into the interposer"
+size = 5
+count = 12
+per = "4 per casting, three castings"
+length = 45
+into = "tapped"
+grip = ["CASTING_T_AT_BLOCK"]   # ditto - tapped, not grip
+source = "his, 2026-10-11"
+
+[[joint]]
+id = "bf12-to-plate"
+what = "BF12 face-mounted into the rear plate and the X end plate tongue"
+size = 5
+count = 12
+per = "4 per BF12, three"
+into = "tapped"
+source = "assembly.md: '4 x M5 tapped into the inside face of the rear plate'"
+note = "Face-mounted it is 4 x M5; top-mounted it would be 2. Any BF12 figure must say which."
+
+[[joint]]
+id = "beam-to-endplate"
+what = "Y beams into the end plates' corner bores"
+size = 8
+count = 16
+per = "8 per beam"
+length = 35
+into = "bore"
+source = "assembly.md: '8 x M8 x 35 flange bolts into the o6.65 lengthwise corner bores'"
+note = "M8 x 35 leaves 22.3 mm in the extrusion."
+
+[[joint]]
+id = "xep-to-xbeam"
+what = "X end plates to the X beam's top extrusion corner bores"
+size = 8
+count = 8
+per = "4 per plate"
+into = "bore"
+source = "assembly.md: '4 x M8 into the top extrusion's corner bores, 9 mm clearance'"
+
+[[joint]]
+id = "shelf-bar-horizontal"
+what = "Shelf bar horizontally into the X end plate"
+size = 8
+count = 4
+length = 35
+into = "tapped"
+grip = ["SHELF_BAR_W"]
+source = "assembly.md: 'M8 x 35 into the end plate' and 'M8 x 35, not x 40'"
+note = "Through 25.4 of bar into 12.7 of plate gives ~9.6 of engagement. AN M8 x 40 PROTRUDES ~1.6 ONTO THE Y BEARING BLOCK."
+
+[[joint]]
+id = "shelf-bar-vertical"
+what = "Shelf bar up into the bottom extrusion's underside slots"
+size = 8
+count = 4
+into = "t-nut"
+source = "assembly.md: 'M8 up into a T-nut in the bottom extrusion's underside slot'"
+
+[[joint]]
+id = "rear-plate-to-tongue"
+what = "Rear plate through the back tongue"
+size = 8
+count = 8
+into = "nut"
+grip = ["T_REAR_PLATE", "T_BOX_TONGUE"]
+source = "assembly.md: '8 bolts through the back tongue at Y 30, 150 mm pitch'"
+note = "From outboard: washer, tongue, plate, M8 locknut on the inboard face."
+
+[[joint]]
+id = "side-plate-to-tongue"
+what = "Side plates through the side tongues"
+size = 8
+count = 14
+per = "7 per beam"
+into = "nut"
+grip = ["T_SIDE_PLATE", "T_BOX_TONGUE"]
+source = "assembly.md: 'M8 at 150 mm, first at 50 - seven per beam, at Y 30'"
+
+[[joint]]
+id = "fin-to-angle"
+what = "Front fin to its angle, tapped"
+size = 8
+count = 4
+per = "2 per fin"
+length = 16
+into = "tapped"
+grip = ["FIN_ANGLE_T"]
+source = "his, 2026-10-11"
+note = "Tapped because the tee track bed is hard against the fin's back face - a nut would foul it."
+
+[[joint]]
+id = "fin-angle-to-skin"
+what = "Fin angle down into T-nuts in the top skin"
+size = 8
+count = 6
+per = "3 per angle"
+length = 30
+into = "t-nut"
+grip = ["FIN_ANGLE_BOLT_DEAD"]   # leg + the EMPTY hole above the T-nut
+source = "his, 2026-10-11"
+note = "THE T-NUT'S THREAD IS IN THE BOTTOM 10 OF THE SKIN, so the grip includes the empty 15 above it - see FIN_ANGLE_BOLT_DEAD. An M8 x 25 was specified first and would have engaged 4."
+
+[[joint]]
+id = "bed-to-side-plate"
+what = "Tee track bed ends, through the side plates"
+size = 5
+count = 16
+per = "2 per panel end, four panels"
+length = 20
+into = "tapped"
+grip = ["T_SIDE_PLATE", "TT_BED_SPACER_PART"]
+source = "his, 2026-10-11"
+note = "The panel ends were drilled 4.2 and tapped M5, 15 deep."
+
+[[joint]]
+id = "spindle-clamp"
+what = "Spindle clamps to the Z plate"
+size = 8
+count = 4
+length = 90
+into = "tapped"
+source = "registry BOLT_SPINDLE_CLAMP = 90"
+
+[[joint]]
+id = "y-nut-to-sole"
+what = "Y ball nut up into the sole bracket"
+size = 5
+count = 8
+per = "4 per nut"
+into = "tapped"
+grip = ["T_SOLE_BRACKET"]
+source = "assembly.md: 'The nut sits ON the sole plate, bolted up from underneath - 4 x M5 threaded into the nut body'"
+note = "THREADED INTO THE NUT, so the engagement is bounded by NUT_TAP_DEPTH, not by the bracket."
+
+[[joint]]
+id = "post-tenon-screw"
+what = "One angled screw into the side of each post tenon"
+count = 3
+into = "wood"
+source = "assembly.md: 'Drive one screw at an angle into the side of each tenon, from inside the cavity'"
+note = "BEFORE THE TOP SKIN IS GLUED - there is no access afterwards. Size and length never stated."

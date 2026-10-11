@@ -18,6 +18,7 @@ make deliberately rather than drift into.
 | [`shop-pack.html`](shop-pack.html) | One sheet per metal plate, for the **machining trip** | hand-authored |
 | [`model-3d.html`](model-3d.html) | The whole machine as solids, with an interference check and an envelope sweep | `tools/make-3d.py` |
 | [`box-cutlist.html`](box-cutlist.html) | The **torsion box** cut list and its sheet count | `tools/make-cutlist.py` |
+| [`fasteners.html`](fasteners.html) | Every bolted joint: size, count, grip stack, **length and engagement** | `tools/make-fasteners.py` |
 
 📌 **The box cut list is deliberately NOT in the shop pack.** The pack is for the
 one machining trip - steel and aluminium, cut at somebody else's mill. The box is
