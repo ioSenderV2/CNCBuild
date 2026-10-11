@@ -107,7 +107,7 @@ length = 35
 into = "tapped"
 grip = ["CASTING_RAIL_H"]   # the interposer is TAPPED, so it is thread, not grip
 source = "his, 2026-10-11 - 35, corrected down from 40 the same day"
-note = "⚠ THE 35 LEAVES 5 OF ENGAGEMENT in the interposer, 1 x D on an M5, where the 40 gave 10. His call, and the tool flags it under one diameter every run - that flag is expected here, not a thing to chase."
+note = "⚠ THE 35 LEAVES 5 OF ENGAGEMENT in the interposer, EXACTLY 1 x D on an M5, where the 40 gave 10. His call. It sits right on the threshold: the under-one-diameter check is strictly less-than, so this passes without a flag - it is the thinnest engagement on the machine that the tool will not warn about."
 
 [[joint]]
 id = "casting-block"
