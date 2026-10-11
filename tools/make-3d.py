@@ -277,6 +277,33 @@ def main() -> int:
         box("Side tongue", "box", 0xA07B16,
             x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, v["SIDE_TONGUE_END"], tz1)
 
+    # ---- the tee track bed -----------------------------------------------
+    # The four Mega V tee track plates, 20 thick, BEDDED DIRECTLY ON THE TOP SKIN.
+    # The Mega V carries them on three 2040s laid flat at 500 mm centres and the
+    # board springs under the cutter because of it; on a continuous skin they are
+    # supported everywhere and the 2040s have no job left. So z runs 0 to 20 and
+    # there is nothing under them - see machine/spoilboard.md.
+    #
+    # They run ACROSS the machine at 1193.8, which is SHORTER than the 1204.38
+    # between the side plates' inside faces, so TT_BED_SPACER sits at each end
+    # rather than the plates being cut. The MDF above them is NOT drawn: it is
+    # sacrificial, it gets skimmed, and its thickness is a choice at build time.
+    #
+    # The fore-aft placement is a PLACEHOLDER - TT_BED_Y0's note says so.
+    bed_x0 = v["T_SIDE_PLATE"] + v["TT_BED_SPACER"]
+    bed_y0, bed_pw = v["TT_BED_Y0"], v["TT_BED_PLATE_W"]
+    for i in range(int(v["TT_BED_PLATES"])):
+        box("Tee track plate", "bed", 0xB0B6BC,
+            bed_x0, bed_y0 + i * bed_pw, 0,
+            bed_x0 + v["TT_BED_L"], bed_y0 + (i + 1) * bed_pw, v["TT_BED_T"],
+            d="20 thick, bedded on the skin - MDF above it not drawn")
+    # The spacers that take up the 1193.8 against the 1204.38.
+    for sx in (v["T_SIDE_PLATE"], bed_x0 + v["TT_BED_L"]):
+        box("Bed end spacer", "bed", 0x8A9094,
+            sx, bed_y0, 0, sx + v["TT_BED_SPACER"],
+            bed_y0 + v["TT_BED_FORE_AFT"], v["TT_BED_T"],
+            d="stops it walking, carries no hold-down load")
+
     # ---- the plates that stand on the skin -------------------------------
     # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side
     # plate's - his, 2026-10-10 - and it is drawn at the length it was BOUGHT,
@@ -1261,6 +1288,7 @@ def main() -> int:
 
     groups = {
         "box": "Torsion box and tongues",
+        "bed": "Tee track bed",
         "bolts": "M8 flange bolt heads",
         "motion": "Rails and bearing blocks",
         "plates": "Rear, side and fin plates",
@@ -1275,6 +1303,7 @@ def main() -> int:
 
     facts = [
         ("Machine width", W), ("Box fore-aft", D), ("Box thickness", v["BOX_THK"]),
+        ("Tee track bed top", v["TT_BED_T"]),
         ("Y beam underside", ybot), ("Y beam top", ytop),
         ("X beam top", xb_top), ("Collet nut tip", bar_bot - v["SPINDLE_COLLET_END"]),
     ]

@@ -40,7 +40,7 @@ envelope moves on it.** The measured total is the one to carry.
 ## 🔴 The height trap - a thinner stack cannot be surfaced
 
 Bed the tee tracks straight on the box and keep only the 19 mm strips and the surface lands at
-**39 mm** above the top skin. The tool tip floor is **45 mm**. The surface is then below the tool's
+**39 mm** above the top skin. The tool tip floor is **45.2 mm**. The surface is then below the tool's
 reach entirely, so it cannot be surfaced - which is the one job the sacrificial layer exists for.
 
 **So any stack that drops the 2040s has to put that 20 mm back above the aluminium.** Two 19 mm
@@ -76,19 +76,28 @@ bolt line - see below.
 
 ## The Z envelope, both ends
 
-Everything here hangs off one figure: **the tool tip's lowest point is 45 mm above the box's top
-skin**, his, off the model, with the 2" stickout the model carries as a stand-in (`TOOL_L`,
-[`../dimensions/VALUES.md`](../dimensions/VALUES.md)). With that stickout the **collet nut face at
-the bottom of travel is at 95.8 mm**, and that is the number that does not move with tool choice.
+Everything here hangs off one figure: **the tool tip's lowest point is 45.2 mm above the box's top
+skin**, with the 2" stickout the model carries as a stand-in (`TOOL_L`,
+[`../dimensions/VALUES.md`](../dimensions/VALUES.md)). He gave it as 45 and `tools\make-3d.py`
+independently puts the tip at Z 197.20 with the down stop 152 below, which is 45.20 - two routes to
+the same number. With that stickout the **collet nut face at the bottom of travel is at 96.0 mm**,
+and that is the figure that does not move with tool choice.
+
+🔴 **The travel to use here is 226 mm, not the rail-limited 235.91.** The 226 is what the two
+mechanical stops leave with the 5 mm standoffs he set on 2026-10-10 - the nut 5 above BF12's face
+going down, 5 below the stop block going up - and it is what an operator actually gets.
+`Z_TRAVEL`'s 235.91 is the rail-and-block figure, and it is the wrong one for an envelope question.
+⚠️ **An earlier pass of this file used the 235.91 and put the ceiling 9.7 mm too high**; every
+figure below is on the 226.
 
 | | mm above the box top skin |
 |---|---|
-| Tool tip, bottom of travel | **45** |
+| Tool tip, bottom of travel | **45.2** |
 | Work surface | **67.5** |
-| Collet nut face, bottom of travel | **95.8** |
+| Collet nut face, bottom of travel | **96.0** |
 | **Y sole plate underside** - the lowest thing that sweeps | **113.15** |
-| Dust shroud frame bottom, bottom of travel | **128.8** |
-| Tool tip, top of travel | **280.9** |
+| Dust shroud frame bottom, bottom of travel | **129.0** |
+| Tool tip, top of travel | **271.2** |
 
 **The sole plate figure** comes off the Y beam top at **302** and the sole plate's top face at
 **−182.5** from it, level with the inverted Y nut's mounting face, less the 1/4" plate. The spoilboard
@@ -99,7 +108,7 @@ tracks span nearly plate to plate - so this is the swept clearance that matters:
 **The shroud frame** comes down to the top of the threads on the 23 mm shaft, his. The thread starts
 **12 mm** below the nose shoulder and the shoulder is 15 below the barrel face, so the frame bottom
 is 27 below the barrel face against the collet nut's 60 - **33 mm above the nut face**. At the bottom
-of travel that is 128.8, which is **15.65 mm higher than the sole plate**, so the shroud never
+of travel that is 129.0, which is **15.85 mm higher than the sole plate**, so the shroud never
 becomes the low point.
 
 ⚠️ **The sole plate also sets a ceiling on the stack.** The surface could rise to roughly 100 mm
@@ -110,10 +119,10 @@ number to check against before thickening the stack.
 
 | Case | What the envelope gives |
 |---|---|
-| Wood, 2" stock + 1/4" waste board, through-cut | Tip must reach **73.85**; floor is 45, so **28.85 mm spare** |
-| Vacuum table, 1" + 1/4" waste board, through-cut | Tip must reach **99.25**; **54.25 mm spare** |
-| Machinist vice **on** the rotating base, 5.5" | Jaw tops at **207.2**; **73.7 mm** above them for stock and tool |
-| Machinist vice **off** the base, 4" | Jaw tops at **169.1**; **111.8 mm** above them |
+| Wood, 2" stock + 1/4" waste board, through-cut | Tip must reach **73.85**; floor is 45.2, so **28.65 mm spare** |
+| Vacuum table, 1" + 1/4" waste board, through-cut | Tip must reach **99.25**; **54.05 mm spare** |
+| Machinist vice **on** the rotating base, 5.5" | Jaw tops at **207.2**; **64.0 mm** above them for stock and tool |
+| Machinist vice **off** the base, 4" | Jaw tops at **169.1**; **102.1 mm** above them |
 
 📌 **Two consequences of the shroud geometry, both checks rather than changes.** The brush skirt has
 to reach **61 mm** down from the frame to seal on the surface at full Z down. And frame-to-tip is
@@ -126,10 +135,10 @@ Dropping the X carriage **20-25 mm** was on the table, which would have meant fl
 and fitting the X sole plate to its bottom edge **before** the carriage went onto its bearing blocks
 - an ordering that is irreversible once bolted up.
 
-🔴 **It is the wrong lever, and it makes the machine worse.** A 25 mm drop lowers the floor to 20 and
-the ceiling to 255.9. The floor gains nothing, because the deepest wood through-cut already clears by
-28.85 mm. The ceiling loss takes vice headroom from **73.7 mm to 48.7 mm** - straight out of the one
-case the travel was built for.
+🔴 **It is the wrong lever, and it makes the machine worse.** A 25 mm drop lowers the floor to 20.2
+and the ceiling to 246.2. The floor gains nothing, because the deepest wood through-cut already
+clears by 28.65 mm. The ceiling loss takes vice headroom from **64.0 mm to 39.0 mm** - straight out
+of the one case the travel was built for, and 39 mm is not much once a tool is in the collet.
 
 ✅ **The spoilboard is the adjustable element, and it moves in both directions.** Add layers if wood
 depth ever gets tight; strip the MDF and bolt a vice down to the tee track to get the jaws lower for
@@ -151,6 +160,23 @@ nothing.
 
 📌 **The 145 mm couple is not in this at all.** T1 and T2 both sit at Y 30 and the 145 is **fore-aft,
 in plan** - it is not a vertical lever, so the bolt height does not touch it.
+
+## It is in the 3D model
+
+The four plates and the two end spacers are drawn as the **Tee track bed** group in
+[`drawings/model-3d.html`](drawings/model-3d.html), 20 thick, z 0 to 20 on the top skin, and the
+group toggles off like any other assembly. **The MDF above them is deliberately not drawn** - it is
+sacrificial, it gets skimmed, and its thickness is a build-time choice rather than a dimension.
+
+✅ **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
+does not foul the gantry anywhere. (The six overlaps the model still reports are the pre-existing
+block-against-front-strip pairs and have nothing to do with the bed.)
+
+⚠️ **The fore-aft placement is a placeholder.** `TT_BED_Y0` puts the bed's back edge 6.35 from the
+box's back edge, just clear of the rear plate, which is also where the side tongue and the Y beam
+start - and `TT_BED_FORE_AFT`'s 1000 then runs to 1006.35, coincident with the beam run, which is
+the only thing that makes the choice better than arbitrary. **He has not said where the bed sits
+fore-aft.** One symbol to change if it wants centring on the box's 1156.35 instead.
 
 ## Still to measure
 
