@@ -189,11 +189,18 @@ def main() -> int:
     # "drive" holds both the screws, which never move, and the nuts, which do.
     ride = [""]
 
-    def box(name, group, colour, x0, y0, z0, x1, y1, z1, d="", k=None):
-        P.append({"n": name, "g": group, "c": colour, "t": "box", "d": d,
-                  "k": ride[0] if k is None else k,
-                  "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
-                  "q": [max(x0, x1), max(y0, y1), max(z0, z1)]})
+    def box(name, group, colour, x0, y0, z0, x1, y1, z1, d="", k=None, u=None):
+        # u is a UNIT ID for one part that has to be drawn as several boxes -
+        # the tee track bed's flats are slices of one 250 panel, not parts. A
+        # click in the viewer takes the whole unit, because hiding one flat of a
+        # panel is not a thing anybody wants to do.
+        b = {"n": name, "g": group, "c": colour, "t": "box", "d": d,
+             "k": ride[0] if k is None else k,
+             "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
+             "q": [max(x0, x1), max(y0, y1), max(z0, z1)]}
+        if u:
+            b["u"] = u
+        P.append(b)
 
     def cyl(name, group, colour, cx, cy, z0, z1, r, axis="z", seg=36, d="",
             k=None):
@@ -469,7 +476,8 @@ def main() -> int:
             box("Tee track flat", "bed", 0xB0B6BC, bed_x0, y, 0,
                 bed_x1, y + run, v["TT_BED_T"],
                 d="16 thick, bedded on the skin - the gaps are the 8 mm slots, "
-                  "whose undercut and depth are not figures we have")
+                  "whose undercut and depth are not figures we have",
+                u=f"bed{i}")
             y += run
         # Belt and braces: the walk has to land exactly on the plate's far edge.
         if abs(y - (py0 + bed_pw)) > 1e-6:
@@ -2292,13 +2300,11 @@ function place(){
 const onPanel=e=>!!(e.target.closest&&e.target.closest('.panel'));
 addEventListener('pointerdown',e=>{
   if(onPanel(e))return;              // a click on the UI is not a drag on the model
-  // CTRL + LEFT CLICK HIDES THE PART UNDER THE CURSOR - his, 2026-10-11. It
-  // swallows the left button's own drag, so the model does not pan as the part
-  // goes. Show all parts brings every one of them back.
-  if(e.button===0&&e.ctrlKey){
-    const h=pickAt(e);
-    if(h){h.object.userData.hid=true; applyVis(); tip.style.display='none';}
-    e.preventDefault(); return;
+  // A MODIFIED LEFT CLICK HIDES WHAT IS UNDER THE CURSOR - his, 2026-10-11.
+  // It swallows the left button's own drag, so the model does not pan as the
+  // part goes. Show all parts brings every one of them back.
+  if(e.button===0&&(e.ctrlKey||e.shiftKey)){
+    hideAt(e); e.preventDefault(); return;
   }
   if(e.button!==0&&e.button!==1)return;
   if(e.button===1)e.preventDefault();          // middle-click autoscroll
@@ -2406,6 +2412,41 @@ function sizeOf(p){
 function pickAt(e){
   ray.setFromCamera({x:e.clientX/innerWidth*2-1,y:-(e.clientY/innerHeight)*2+1},cam);
   return ray.intersectObjects(PICK,false).find(x=>x.object.visible);
+}
+// WHAT A MODIFIED CLICK HIDES - his, 2026-10-11:
+//   Shift        the part alone, its fasteners left standing, which is how you
+//                see whether a bolt fouls something once the metal is out of
+//                the way
+//   Ctrl         the part AND the fasteners that hold it
+//   Ctrl + Shift the whole group the part belongs to, box unticked to match
+// A part that has to be drawn as several boxes carries a unit id - the tee
+// track bed's flats are slices of one 250 panel, not parts - and the whole
+// unit goes together.
+function unitMeshes(m){
+  const u=m.userData.part.u;
+  return u?PICK.filter(x=>x.userData.part.u===u):[m];
+}
+// A fastener is a part in the bolts group, and the ones holding this part are
+// the ones its metal touches. Tested in WORLD space with a 0.3 mm skin: a bolt
+// head sits ON a face rather than inside it, and the part and the fastener can
+// ride different carriages.
+function fastenersOn(ms){
+  scene.updateMatrixWorld(true);
+  const near=ms.map(m=>new THREE.Box3().setFromObject(m).expandByScalar(0.3));
+  return PICK.filter(x=>x.userData.part.g==='bolts'&&ms.indexOf(x)<0&&
+    near.some(b=>b.intersectsBox(new THREE.Box3().setFromObject(x))));
+}
+function hideAt(e){
+  const h=pickAt(e); if(!h)return;
+  const p=h.object.userData.part;
+  if(e.ctrlKey&&e.shiftKey){
+    GON[p.g]=false; if(gbox[p.g])gbox[p.g].checked=false;
+  }else{
+    let ms=unitMeshes(h.object);
+    if(e.ctrlKey)ms=ms.concat(fastenersOn(ms));
+    ms.forEach(x=>{x.userData.hid=true;});
+  }
+  applyVis(); tip.style.display='none';
 }
 addEventListener('pointermove',e=>{
   if(down||onPanel(e)){tip.style.display='none';return;}
@@ -2531,8 +2572,13 @@ help.innerHTML=
   '<tr><td><b>Middle drag</b></td><td>orbits</td></tr>'+
   '<tr><td><b>Scroll</b></td><td>zooms</td></tr>'+
   '<tr><td><b>Hover</b></td><td>names the part under the cursor and gives its size</td></tr>'+
-  '<tr><td><b>Ctrl + left click</b></td><td>hides the part under the cursor - '+
-  '<b>Show all parts</b> brings them all back</td></tr>'+
+  '<tr><td><b>Shift + left click</b></td><td>hides the part under the cursor and '+
+  'leaves its fasteners standing</td></tr>'+
+  '<tr><td><b>Ctrl + left click</b></td><td>hides the part <i>and</i> the fasteners '+
+  'that hold it</td></tr>'+
+  '<tr><td><b>Ctrl + Shift + left click</b></td><td>hides the whole group the part '+
+  'belongs to</td></tr>'+
+  '<tr><td></td><td><b>Show all parts</b> brings every one of them back</td></tr>'+
   '<tr><td><b>Left / Right</b></td><td>jog the X carriage - as the operator sees them, '+
   'standing at the front, so Left runs toward max X</td></tr>'+
   '<tr><td><b>Up / Down</b></td><td>jog the gantry back and forward</td></tr>'+
