@@ -126,12 +126,22 @@ def main() -> int:
 
     P = []  # parts: name, group, colour, [x0,y0,z0], [x1,y1,z1]
 
-    def box(name, group, colour, x0, y0, z0, x1, y1, z1, d=""):
+    # WHICH CARRIAGES A PART RIDES ON - "" for the frame, "Y" for the gantry,
+    # "YX" for the X carriage, "YXZ" for the Z carriage. It is set as a cursor
+    # across the sections below rather than passed at 60 call sites, and a call
+    # may override it with k=. The display groups cannot serve: a bolt is in
+    # "bolts" whether it rides the gantry or sits in the torsion box, and
+    # "drive" holds both the screws, which never move, and the nuts, which do.
+    ride = [""]
+
+    def box(name, group, colour, x0, y0, z0, x1, y1, z1, d="", k=None):
         P.append({"n": name, "g": group, "c": colour, "t": "box", "d": d,
+                  "k": ride[0] if k is None else k,
                   "p": [min(x0, x1), min(y0, y1), min(z0, z1)],
                   "q": [max(x0, x1), max(y0, y1), max(z0, z1)]})
 
-    def cyl(name, group, colour, cx, cy, z0, z1, r, axis="z", seg=36, d=""):
+    def cyl(name, group, colour, cx, cy, z0, z1, r, axis="z", seg=36, d="",
+            k=None):
         """A cylinder along one axis. The spindle is round and a box misrepresents
         its clearance - at 45 degrees a box corner sticks out r*(sqrt2-1) further.
         Bolt heads are round for the same reason and are drawn with few segments.
@@ -148,9 +158,10 @@ def main() -> int:
             p, q = [cx - r, lo, cy - r], [cx + r, hi, cy + r]
         P.append({"n": name, "g": group, "c": colour, "t": "cyl", "ax": axis,
                   "cx": cx, "cy": cy, "r": r, "z0": lo, "z1": hi, "seg": seg,
-                  "d": d, "p": p, "q": q})
+                  "d": d, "k": ride[0] if k is None else k,
+                  "p": p, "q": q})
 
-    def prism(name, group, colour, profile, ya, yb, holes=None, d=""):
+    def prism(name, group, colour, profile, ya, yb, holes=None, d="", k=None):
         """An X-Z profile extruded along fore-aft. The fins are not boxes.
 
         p/q stay the bounding box so the camera framing and the interference
@@ -160,6 +171,7 @@ def main() -> int:
         xs = [pt[0] for pt in profile]
         zs = [pt[1] for pt in profile]
         P.append({"n": name, "g": group, "c": colour, "t": "prism", "d": d,
+                  "k": ride[0] if k is None else k,
                   "profile": profile, "holes": holes or [],
                   "ya": min(ya, yb), "yb": max(ya, yb),
                   "p": [min(xs), min(ya, yb), min(zs)],
@@ -257,6 +269,8 @@ def main() -> int:
         interposer_bolts(+1, x0, ip_front, "y", ybot - ip_t, -1)
 
     # ---- X gantry, at Y home ---------------------------------------------
+    # EVERYTHING FROM HERE RIDES THE Y CARRIAGE until the cursor says otherwise.
+    ride[0] = "Y"
     xep_t = v["T_X_ENDPLATE"]
     xb_x0 = lx0 + v["EXT_W"] + v["RAIL_STACK"] + xep_t
     xb_x1 = xb_x0 + v["BEAM_LEN"]
@@ -360,6 +374,7 @@ def main() -> int:
         xb_x0, xep_back + v["EXT_W"], xb_top + v["TONGUE_H"])
 
     # ---- X carriage, at mid travel ----------------------------------------
+    ride[0] = "YX"
     # The X rails sit RAIL_LOW_Z up the beam's front face; Sheet 3 puts the lower
     # block row's centre 46 up the carriage plate, so the plate's bottom follows.
     xbeam_front = xep_back + v["EXT_W"]
@@ -411,6 +426,7 @@ def main() -> int:
         cp_x1, cp_back, x_nut_face + v["T_SOLE_BRACKET"])
 
     # ---- Z plate and spindle, at Z max -----------------------------------
+    ride[0] = "YXZ"
     cp_front = cp_back + v["T_X_CARRIAGE_PLATE"]
     rail_top = cp_bot + 407.0 - 7.0
     block_mid = (rail_top + cp_bot + 7.0) / 2            # mid travel, as above
@@ -459,6 +475,7 @@ def main() -> int:
     # the wings - so each is drawn as two parts. One box would put a 43 boss
     # across the full 60 width and show the tongue fouling metal that is not
     # there.
+    ride[0] = ""
     SCR, JRN = v["SCREW_D"] / 2, v["SCREW_JOURNAL_D"] / 2
     JB, JC = v["SCREW_JOURNAL_BF"], v["SCREW_JOURNAL_CAST"]
     STEEL, DARK, SUP = 0xB9C0C7, 0x8A9097, 0x7E6B8F
@@ -565,10 +582,13 @@ def main() -> int:
     y_hi = y_lo + v["SCREW_OAL_LONG"]
     for x0 in (lx0, rx0):
         cx = x0 + v["EXT_W"] / 2
+        ride[0] = ""
         screw("y", cx, y_axis_z, y_lo, v["SCREW_OAL_LONG"], bf_low=True)
         support("bf12", "y", cx, y_axis_z, bf12_y, +1, y_seat_z, -1)
         # ASSUMPTION: the nut is drawn at mid travel - it has no home position
+        ride[0] = "Y"            # the nut is bolted to the gantry
         nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
+        ride[0] = ""
         # THE CASTING IS PLACED BY ITS SCREW AND THE INTERPOSER FOLLOWS IT -
         # his, 2026-10-10, and it is the bar's second job: besides giving
         # K1-K6 something solid to land in, it slides along the beam to meet
@@ -604,6 +624,7 @@ def main() -> int:
         inner = xb_x0 if x0 == lx0 else xb_x1       # the plate face it starts at
         out = -1 if x0 == lx0 else +1               # and which way it reaches
         face_z = y_axis_z - v["NUT_AXIS_TO_FACE"]
+        ride[0] = "Y"            # it hangs off the X end plate
         tip = inner + out * v["SOLE_BRACKET_L"]
         box("Y sole bracket", "gantry", 0xC9A227,
             min(inner, tip), xep_back, face_z - v["T_SOLE_BRACKET"],
@@ -632,6 +653,9 @@ def main() -> int:
                 d=det)
 
     # ------------------------------------------------ X, on TOP of its beam
+    # The X screw, its supports, its bar and its motor are all carried by the X
+    # beam, so they ride Y and not X. Only the nut rides X.
+    ride[0] = "Y"
     x_seat_z = xb_top + ip_t
     x_axis_z = x_seat_z + v["SCREW_AXIS_H"]
     x_axis_y = xep_back + v["EXT_W"] / 2
@@ -659,7 +683,9 @@ def main() -> int:
             cyl("BF12 bolt", "bolts", 0x3C4248, xep_back + by, xep_bot + bz,
                 tongue_out, bf12_x + v["T_BF12_BLOCK"], 2.5, axis="x", seg=10,
                 d=D_M5_PLATE)
+    ride[0] = "YX"
     nut("x", x_axis_y, x_axis_z, (x_lo + x_hi) / 2, +1)
+    ride[0] = "Y"
     # THE CASTING'S BORE SITS AT THE INNER END OF THE LONG JOURNAL. The journal is
     # SCREW_JOURNAL_CAST, 54.5, because the coupler lives on it as well as the
     # bearing - so the bore takes the inner BK12_L of it and the remaining 24.5
@@ -692,6 +718,8 @@ def main() -> int:
             x_seat_z + d, x_seat_z - ip_t, 2.5, seg=10, d=D_M5_BAR)
 
     # ------------------------------------------------ Z, up the carriage plate
+    # Carried by the X carriage plate, so the Z screw and its ends ride X.
+    ride[0] = "YX"
     # No interposer here, which is why the Z nut face sits 45 off the plate
     # where the beams get 55.
     z_axis_y = cp_front + v["SCREW_AXIS_H"]
@@ -715,7 +743,10 @@ def main() -> int:
         cyl("BF12 bolt", "bolts", 0x3C4248, bx, bf12_z + v["T_BF12_BLOCK"] / 2,
             cp_back, cp_front + v["BF12_WING_H"], 2.5, axis="y", seg=10,
             d=D_M5_PLATE)
-    nut("z", zp_cx, z_axis_y, (z_lo + z_hi) / 2, +1)
+    z_nut_mid = (z_lo + z_hi) / 2
+    ride[0] = "YXZ"
+    nut("z", zp_cx, z_axis_y, z_nut_mid, +1)
+    ride[0] = "YX"
     # Same as X: the bore takes the INNER BK12_L of the long journal so the
     # thread runs to the casting's face, and the remaining 24.5 stands out the
     # far side for the coupler.
@@ -737,48 +768,54 @@ def main() -> int:
     # Rails sit on their beam's face at RAIL_LOW_Z / RAIL_HIGH_Z; the block
     # envelopes the rail and stands RAIL_STACK off the face, which is the
     # measured figure the whole machine's offsets are built on.
+    ride[0] = ""
     rw, st, bw, bl = v["RAIL_W"], v["RAIL_STACK"], v["BLOCK_W"], v["BLOCK_BUTTED"]
     RC, BC = 0x7E8C99, 0xE04F3D
 
-    def rail_and_blocks(axis, face, d, zc, along, bfrom, bto):
-        """axis: which coordinate the stack grows along; d: +1 / -1."""
+    def rail_and_blocks(axis, face, d, zc, along, bfrom, bto, rk="", bk=""):
+        """axis: which coordinate the stack grows along; d: +1 / -1.
+
+        rk and bk are what the rail and the blocks ride on, and they are never
+        the same thing: the rail belongs to whatever it is bolted to and the
+        blocks to the carriage that slides on it.
+        """
         for z in zc:
             if axis == "x":
                 box(f"{along} rail", "motion", RC, face, bfrom[0], z - rw / 2,
-                    face + d * rw, bto[0], z + rw / 2)
+                    face + d * rw, bto[0], z + rw / 2, k=rk)
                 box(f"{along} block", "motion", BC, face, bfrom[1], z - bw / 2,
-                    face + d * st, bto[1], z + bw / 2)
+                    face + d * st, bto[1], z + bw / 2, k=bk)
             else:                                   # stack grows along fore-aft
                 box(f"{along} rail", "motion", RC, bfrom[0], face, z - rw / 2,
-                    bto[0], face + d * rw, z + rw / 2)
+                    bto[0], face + d * rw, z + rw / 2, k=rk)
                 box(f"{along} block", "motion", BC, bfrom[1], face, z - bw / 2,
-                    bto[1], face + d * st, z + bw / 2)
+                    bto[1], face + d * st, z + bw / 2, k=bk)
 
     # Y: on each beam's INNER face, blocks carried by the X end plate
     gb = (xep_back, xep_back + bl)
     rail_and_blocks("x", lx0 + v["EXT_W"], +1, [ybot + v["RAIL_LOW_Z"], ybot + v["RAIL_HIGH_Z"]],
-                    "Y", (y0, gb[0]), (y1, gb[1]))
+                    "Y", (y0, gb[0]), (y1, gb[1]), rk="", bk="Y")
     rail_and_blocks("x", rx0, -1, [ybot + v["RAIL_LOW_Z"], ybot + v["RAIL_HIGH_Z"]],
-                    "Y", (y0, gb[0]), (y1, gb[1]))
+                    "Y", (y0, gb[0]), (y1, gb[1]), rk="", bk="Y")
     # X: on the X beam's FRONT face, blocks carried by the carriage plate
     # The butted pair is BLOCK_BUTTED = 154.18 against a 154 plate, so it is
     # CENTRED on the plate and the 0.09 that hangs over each end is end cap.
     bo = (bl - v["XEP_W"]) / 2
     rail_and_blocks("y", xbeam_front, +1, [xb_bot + v["RAIL_LOW_Z"], xb_bot + v["RAIL_HIGH_Z"]],
-                    "X", (xb_x0, cp_x0 - bo), (xb_x1, cp_x1 + bo))
+                    "X", (xb_x0, cp_x0 - bo), (xb_x1, cp_x1 + bo), rk="Y", bk="YX")
     # Z: vertical, on the carriage plate's front face
     for xc in (zp_cx - v["Z_RAIL_COL"], zp_cx + v["Z_RAIL_COL"]):
         box("Z rail", "motion", RC, xc - rw / 2, cp_front, cp_bot + 7,
-            xc + rw / 2, cp_front + rw, cp_bot + 7 + v["Z_RAIL_L"])
+            xc + rw / 2, cp_front + rw, cp_bot + 7 + v["Z_RAIL_L"], k="YX")
         box("Z block", "motion", BC, xc - bw / 2, cp_front, block_mid - bl / 2,
-            xc + bw / 2, cp_front + st, block_mid + bl / 2)
+            xc + bw / 2, cp_front + st, block_mid + bl / 2, k="YXZ")
         # The spacer bar is SANDWICHED between the blocks and the Z plate - one per
         # rail, each spanning that rail's two blocks. The model had the gap but
         # nothing in it until he spotted the omission, 2026-10-03.
         box("Z spacer", "z", 0xBFC7CE,
             xc - v["SPACER_W"] / 2, cp_front + st, block_mid - v["SPACER_L"] / 2,
             xc + v["SPACER_W"] / 2, cp_front + st + v["SPACER_T"],
-            block_mid + v["SPACER_L"] / 2)
+            block_mid + v["SPACER_L"] / 2, k="YXZ")
 
     # ---- the 45 mm front joining strips, Sheet 8 --------------------------
     # One per beam, across the seam, SITTING IN THE GAP BETWEEN THE TWO BEARING
@@ -794,7 +831,7 @@ def main() -> int:
             face + d * st_t, y1, y_seam + sw / 2)
     x_seam = xb_bot + v["EXT_W"]
     box("Front strip", "plates", 0xB8C2CB, xb_x0, xbeam_front, x_seam - sw / 2,
-        xb_x1, xbeam_front + st_t, x_seam + sw / 2)
+        xb_x1, xbeam_front + st_t, x_seam + sw / 2, k="Y")
 
     # ---- M8 flange bolt heads -------------------------------------------
     # Only where the position is unambiguous from the registry: the four T-slot
@@ -862,9 +899,9 @@ def main() -> int:
     for bx, by, det in sole_bolts:
         cyl("X sole bolt head", "bolts", BOLT, bx, by,
             sole_top, sole_top + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2, seg=12,
-            d=det)
+            d=det, k="YX")
         cyl("X sole bolt", "bolts", BOLT, bx, by,
-            sole_top, sole_top - v["BOLT_Z_NUT"], 2.5, seg=10, d=det)
+            sole_top, sole_top - v["BOLT_Z_NUT"], 2.5, seg=10, d=det, k="YX")
 
     for outer, sgn in ((0 - v["FIN_PROUD"], +1), (W + v["FIN_PROUD"], -1)):
         for c in (v["FIN_COL_OUTB"], v["FIN_COL_INB"]):   # fins, heads forward
@@ -884,7 +921,7 @@ def main() -> int:
         for z in (x_seam - v["RAIL_SLOT_INSET"], x_seam + v["RAIL_SLOT_INSET"]):
             cyl("Flange head", "bolts", BOLT, st, z,
                 xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y",
-                seg=12, d=D_STRIP_BOLT)
+                seg=12, d=D_STRIP_BOLT, k="Y")
 
     # ---- the tongue bolts, through plate and tongue into an acorn nut -----
     # Twenty-two of them: eight through the rear plate into the back tongue and
@@ -941,12 +978,39 @@ def main() -> int:
     for z in (xb_bot + v["RAIL_LOW_Z"], xb_bot + v["RAIL_HIGH_Z"]):   # X rails
         for i in range(n_beam):
             cyl("Rail counterbore", "motion", HOLE, xb_x0 + cb_f + i * cb_p, z,
-                xbeam_front + rw, xbeam_front + rw - cb_d, cb_r, axis="y", seg=10)
+                xbeam_front + rw, xbeam_front + rw - cb_d, cb_r, axis="y",
+                seg=10, k="Y")
     for xc in (zp_cx - v["Z_RAIL_COL"], zp_cx + v["Z_RAIL_COL"]):     # Z rails
         for i in range(n_z):
             cyl("Rail counterbore", "motion", HOLE, xc,
                 cp_bot + 7 + cb_f + i * cb_p,
-                cp_front + rw, cp_front + rw - cb_d, cb_r, axis="y", seg=10)
+                cp_front + rw, cp_front + rw - cb_d, cb_r, axis="y", seg=10,
+                k="YX")
+
+    # ---- jog limits ------------------------------------------------------
+    # HIS, 2026-10-10, and every one of them is a 5 mm standoff off a part this
+    # model already places - so each limit moves if the part it is measured from
+    # moves, the same way everything else here does.
+    #
+    #   Y   back: the X end plates' back edge, 5 from the rear plate's front face
+    #       front: their front edge, 5 from the front fin's back face
+    #   X   left: the carriage plate's left edge, 5 from the Y1 rail's face
+    #       right: its right edge, 5 from the Y2 rail's face
+    #   Z   down: the nut's lower end, 5 above BF12's upper face
+    #       up: THE Z TOP STOP BLOCK IS NOT IN THE MODEL. Sheet 3c dimensions it
+    #       - 50 x 25.4 x 45 off 1in 6061, stop face at X 310 up the carriage
+    #       plate - but it has no registry symbols, and nothing here is placed
+    #       from a number typed in this file. So the up stop is pinned at the
+    #       drawn pose and says so on the page rather than guessing one.
+    jog = {
+        "Y": [round(v["T_REAR_PLATE"] + 5 - xep_back, 2),
+              round((y1 - 5) - xep_front, 2), ""],
+        "X": [round((lx0 + v["EXT_W"] + rw + 5) - cp_x0, 2),
+              round((rx0 - rw - 5) - cp_x1, 2), ""],
+        "Z": [round((bf12_z + v["T_BF12_BLOCK"] + 5) - (z_nut_mid - v["NUT_OAL"] / 2), 2),
+              0.0, "UP STOP NOT MODELLED - the Z top stop block has no registry "
+                   "symbols, so the up limit is the drawn pose"],
+    }
 
     groups = {
         "box": "Torsion box and tongues",
@@ -978,7 +1042,8 @@ def main() -> int:
     html = (HTML.replace("__PARTS__", json.dumps(P))
                 .replace("__GROUPS__", json.dumps(groups))
                 .replace("__ASSUMPTIONS__", json.dumps(ASSUMPTIONS))
-                .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts])))
+                .replace("__FACTS__", json.dumps([[a, round(b, 2)] for a, b in facts]))
+                .replace("__JOG__", json.dumps(jog)))
     # last, and not via str.replace on the whole document: three.min.js contains
     # backslash escapes that a replacement template would eat.
     i = html.index("__THREE__")
@@ -988,6 +1053,10 @@ def main() -> int:
     print(f"wrote {OUT.relative_to(ROOT)} - {len(P)} parts, {kb:.0f} KB, self-contained")
     for a, b in facts:
         print(f"  {a:22} {b:10.2f}")
+    print("\njog limits, as an offset from the drawn pose:")
+    for ax, (lo_, hi_, warn) in jog.items():
+        print(f"  {ax}  {lo_:+9.2f} to {hi_:+9.2f}   travel {hi_ - lo_:8.2f}"
+              + ("   " + warn.split(" - ")[0] if warn else ""))
     return report_overlaps(P)
 
 
@@ -1219,16 +1288,25 @@ HTML = r"""<!doctype html>
    background:#0e1114F2;border:1px solid #4a515a;border-radius:4px;padding:6px 9px;
    font-size:11.5px;line-height:1.45;color:#dde}
  #tip .dim{color:#8fd}
+ #jogro{margin-top:8px;font-size:11.5px}
+ #jogro .ax{color:#e8b64c;font-weight:600}
+ #jogro .stop{color:#e8613d;font-weight:600}
+ #jogro .hint{color:#8a929b;font-size:11px}
+ #jogro .warn{color:#e8b64c}
+ #jogro table{margin:2px 0 0}
+ #jogro td.v{text-align:right;color:#8fd;padding-right:8px}
 </style>
 <canvas id="c"></canvas>
 <div id="tip"></div>
 <div class="panel" id="ui"><h1>CNC assembly</h1>
 <div id="btnrow"><button id="partsbtn">Show parts</button><button id="statsbtn">Show dimensions</button></div>
-<div id="toggles" hidden></div><table id="facts" hidden></table></div>
+<div id="toggles" hidden></div><table id="facts" hidden></table>
+<div id="jogro"></div></div>
 <details class="panel" id="info"><summary>How this was built, and what is assumed</summary><div class="body" id="infobody"></div></details>
 <script>__THREE__</script>
 <script>
 const PARTS=__PARTS__, GROUPS=__GROUPS__, ASSUMPTIONS=__ASSUMPTIONS__, FACTS=__FACTS__;
+const JOG=__JOG__;
 
 const scene=new THREE.Scene(); scene.background=new THREE.Color(0x1a1d21);
 const cam=new THREE.PerspectiveCamera(42,1,10,20000);
@@ -1243,6 +1321,14 @@ const mid=[0,1,2].map(i=>(lo[i]+hi[i])/2);
 const span=Math.max(hi[0]-lo[0],hi[1]-lo[1],hi[2]-lo[2]);
 
 // machine (x,y,z) -> three (x, z, -y); three's Y is up, and fore-aft runs to -Z
+// THE THREE CARRIAGES, NESTED THE WAY THE MACHINE IS: Z rides on X, X rides on
+// Y. So one translation per group is enough - moving the gantry carries the X
+// carriage and everything on the Z axis with it, without touching their own
+// offsets. A part's k says which group it belongs in; the frame goes in the
+// scene and never moves.
+const GY=new THREE.Group(), GX=new THREE.Group(), GZ=new THREE.Group();
+scene.add(GY); GY.add(GX); GX.add(GZ);
+const RIDE={Y:GY,YX:GX,YXZ:GZ};
 const byGroup={}, PICK=[];
 for(const p of PARTS){
   let geom, ctr;
@@ -1278,7 +1364,7 @@ for(const p of PARTS){
   g.position.set(ctr[0],ctr[1],ctr[2]);
   const e=new THREE.LineSegments(new THREE.EdgesGeometry(g.geometry),
     new THREE.LineBasicMaterial({color:0x000000,opacity:0.35,transparent:true}));
-  g.add(e); scene.add(g);
+  g.add(e); (RIDE[p.k]||scene).add(g);
   g.userData.part=p; PICK.push(g);
   (byGroup[p.g]=byGroup[p.g]||[]).push(g);
 }
@@ -1318,6 +1404,52 @@ addEventListener('pointermove',e=>{if(!down)return;
   }
   down=[e.clientX,e.clientY]; place(); draw();});
 addEventListener('wheel',e=>{e.preventDefault();dist=Math.max(span*0.25,Math.min(span*6,dist*(1+Math.sign(e.deltaY)*0.11)));place();draw();},{passive:false});
+
+// --- jog: the cursor keys drive the three carriages ---------------------
+// Machine axes, not screen directions: X is measured across the machine FROM
+// BEHIND, fore-aft is +Y toward the operator, Z is up. The limits come from the
+// generator, each one a 5 mm standoff off a part the model already places.
+const JOGPOS={Y:0,X:0,Z:0};
+const KEYS={ArrowLeft:['X',-1],ArrowRight:['X',+1],
+            ArrowUp:['Y',-1],ArrowDown:['Y',+1],
+            PageUp:['Z',+1],PageDown:['Z',-1]};
+const ENDS={Y:['back','front'],X:['left','right'],Z:['down','up']};
+const j1=n=>(n<0?'':'+')+(Math.round(n*10)/10).toFixed(1);
+
+function applyJog(){
+  GY.position.z=-JOGPOS.Y;        // machine +Y is forward, which is three's -Z
+  GX.position.x=JOGPOS.X;
+  GZ.position.y=JOGPOS.Z;
+  // the raycaster reads matrixWorld, and a hover can land before the next draw
+  scene.updateMatrixWorld(true);
+  const rows=['X','Y','Z'].map(ax=>{
+    const L=JOG[ax], p=JOGPOS[ax], e=ENDS[ax];
+    const hit=p<=L[0]+1e-6?e[0]:p>=L[1]-1e-6?e[1]:'';
+    // A pinned end is not a stop, and must not read as one.
+    const say=hit?(L[2]&&hit===e[1]
+      ?' &middot; <span class="warn">PINNED, no '+e[1]+' stop modelled</span>'
+      :' &middot; <span class="stop">AT THE '+hit.toUpperCase()+' STOP</span>'):'';
+    return '<tr><td class="ax">'+ax+'</td><td class="v">'+j1(p)+'</td>'+
+      '<td>'+j1(p-L[0])+' to '+e[0]+', '+j1(L[1]-p)+' to '+e[1]+say+
+      '</td></tr>';
+  }).join('');
+  const warn=['X','Y','Z'].filter(ax=>JOG[ax][2]).map(ax=>JOG[ax][2]);
+  document.getElementById('jogro').innerHTML=
+    '<span class="hint">JOG: left/right = X, up/down = fore-aft, PgUp/PgDn = Z. '+
+    '10 mm a press, Shift 1 mm, Ctrl 50 mm. Home recentres all three.</span>'+
+    '<table>'+rows+'</table>'+
+    (warn.length?'<span class="warn">'+warn.join('<br>')+'</span>':'');
+}
+
+addEventListener('keydown',e=>{
+  if(e.key==='Home'){JOGPOS.X=JOGPOS.Y=JOGPOS.Z=0;e.preventDefault();applyJog();draw();return;}
+  const k=KEYS[e.key]; if(!k)return;
+  e.preventDefault();
+  const ax=k[0], L=JOG[ax];
+  const step=(e.shiftKey?1:e.ctrlKey?50:10)*k[1];
+  JOGPOS[ax]=Math.max(L[0],Math.min(L[1],JOGPOS[ax]+step));
+  applyJog(); draw();
+});
 
 // --- hover: say what the part under the cursor IS -----------------------
 // The one place the model says what a part is rather than where it is. The
@@ -1374,7 +1506,8 @@ document.getElementById('facts').innerHTML=
 document.getElementById('infobody').innerHTML=
   '<b class="w">Generated from dimensions/registry.toml by tools/make-3d.py.</b> '+
   'Every box is placed from a registry value. <b class="w">LEFT DRAG PANS, MIDDLE DRAG ORBITS</b>, scroll zooms, a view button recentres, and <b class="w">HOVER NAMES THE PART</b> under the cursor. '+
-  'Pose: X home left, Y home back, Z at max.<br><b class="w">Placements ASSUMED, not derived:</b>'+
+  '<b class="w">THE CURSOR KEYS JOG THE CARRIAGES</b> - left/right the X carriage, up/down the gantry fore-aft, PgUp/PgDn the Z axis, Home back to the drawn pose. Each axis stops 5 mm short of the part it would hit.<br>'+
+  'Pose: the drawn pose is mid travel on all three axes.<br><b class="w">Placements ASSUMED, not derived:</b>'+
   '<ul>'+ASSUMPTIONS.map(a=>'<li>'+a+'</li>').join('')+'</ul>';
 
 const BTN='margin:8px 6px 0 0;background:#2f353d;color:#cde;border:1px solid #454c55;'+
@@ -1385,7 +1518,7 @@ sb.style.cssText=BTN; pb.style.cssText=BTN;
 sb.onclick=()=>{ft2.hidden=!ft2.hidden;sb.textContent=ft2.hidden?'Show dimensions':'Hide dimensions';};
 pb.onclick=()=>{tg.hidden=!tg.hidden;pb.textContent=tg.hidden?'Show parts':'Hide parts';};
 
-place(); resize();
+applyJog(); place(); resize();
 </script>
 """
 
