@@ -381,6 +381,15 @@ def _esc(s: str) -> str:
     return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
+def _attr(s: str) -> str:
+    """🔴 FOR AN ATTRIBUTE VALUE, WHICH NEEDS THE QUOTES TOO. _esc was used for
+    both and does not touch them, so the one registry note that quotes him -
+    SCREW_AXIS_H, carrying footnote 3.8's "25 for the casting's axis" - closed
+    its own data-note early and left the rest of the sentence parsed as junk
+    attributes on the card."""
+    return _esc(s).replace('"', "&quot;")
+
+
 def cmd_html(args) -> int:
     reg = _load()
     out = Path(args.output) if args.output else ROOT / "dimensions" / "registry.html"
@@ -431,7 +440,8 @@ def cmd_html(args) -> int:
                     if d.get("note") else "")
             rows.append(
                 f'<div class="sym p-{prov}" id="{s}" data-sym="{s.lower()}" '
-                f'data-prov="{prov}" data-note="{_esc(d.get("note","")).lower()}">'
+                f'data-prov="{prov}" '
+                f'data-note="{_attr(d.get("note","")).lower()}">'
                 f'<div class="hd"><a class="name" href="#{s}">{s}</a>'
                 f'<span class="val">{reg.fmt(s)} {d["unit"]}</span>'
                 f'<span class="prov">{prov}</span></div>'
@@ -443,8 +453,8 @@ def cmd_html(args) -> int:
         f'<a href="#{slug(g)}">{_esc(g)}<span>{len(buckets[g])}</span></a>'
         for g in order)
     chips = "".join(
-        f'<button class="chip" data-prov="{p}">{p} <span>{counts[p]}</span></button>'
-        for p in sorted(counts))
+        f'<button type="button" class="chip" data-prov="{p}">{p} '
+        f'<span>{counts[p]}</span></button>' for p in sorted(counts))
 
     html = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -473,6 +483,7 @@ def cmd_html(args) -> int:
  nav a {{ display: flex; justify-content: space-between; gap: 8px;
    padding: 2px 6px; color: #2b333a; text-decoration: none; border-radius: 4px; }}
  nav a:hover {{ background: #e7ebef; }}
+ nav a.cur {{ background: #dce9f6; color: #0b3f6e; font-weight: 600; }}
  nav a span {{ color: #8a939b; }}
  main {{ flex: 1 1 auto; min-width: 0; }}
  section {{ margin: 0 0 22px; }}
@@ -509,6 +520,7 @@ def cmd_html(args) -> int:
    header {{ background: #1c2024f2; border-color: #2c3237; }}
    .sym {{ background: #1c2024; border-color: #2c3237; }}
    nav a {{ color: #c3cbd2; }} nav a:hover {{ background: #252a2f; }}
+   nav a.cur {{ background: #1d3450; color: #cfe4fb; }}
    .name {{ color: #eaeef2; }} .val {{ color: #5fd3a3; }}
    .r, .n {{ color: #b4bdc5; }} a {{ color: #6cb6f5; }}
    #q, .chip {{ background: #1c2024; color: inherit; border-color: #39414a; }}
@@ -544,17 +556,67 @@ function apply(){{
   }}
   for(const sec of document.querySelectorAll('section'))
     sec.classList.toggle('hide',!sec.querySelector('.sym:not(.hide)'));
-  document.getElementById('n').textContent=n+' shown';
+  const hidden=[...off].sort();
+  document.getElementById('n').textContent=
+    n+' shown'+(hidden.length?' · hiding '+hidden.join(', '):'');
 }}
 q.addEventListener('input',apply);
-for(const c of document.querySelectorAll('.chip[data-prov]'))
-  c.onclick=()=>{{
+// addEventListener rather than .onclick, and the counter NAMES what is filtered
+// out - so if a click ever appears to do nothing again, the counter says which
+// half failed: unchanged text means the handler never ran, changed text with
+// nothing hidden means the CSS did not take.
+for(const c of document.querySelectorAll('.chip[data-prov]')){{
+  c.addEventListener('click',()=>{{
     const p=c.dataset.prov;
     off.has(p)?off.delete(p):off.add(p);
     c.classList.toggle('off',off.has(p));
     apply();
-  }};
+  }});
+}}
 apply();
+
+// --- the left index follows the right pane ----------------------------
+// Scrolling the symbols moves the highlight, and the index scrolls itself so
+// the current section stays visible - his, 2026-10-11, and the reason is that
+// an index you have to hunt in is not an index.
+const links=new Map();
+for(const a of document.querySelectorAll('nav a'))
+  links.set(a.getAttribute('href').slice(1),a);
+
+function mark(id){{
+  if(!id||!links.has(id))return;
+  for(const a of links.values())a.classList.remove('cur');
+  const a=links.get(id);
+  a.classList.add('cur');
+  const nav=a.parentElement, r=a.getBoundingClientRect(),
+        nr=nav.getBoundingClientRect();
+  if(r.top<nr.top||r.bottom>nr.bottom)
+    nav.scrollTop+=r.top-nr.top-nr.height/3;
+}}
+
+// The section whose top is nearest the top of the viewport and still above it -
+// a plain scroll handler rather than IntersectionObserver, because sections here
+// are tall enough that several are on screen at once and "the one I am in" is
+// the last one I passed.
+const secs=[...document.querySelectorAll('section')];
+function spy(){{
+  let cur=null;
+  for(const sec of secs){{
+    if(sec.classList.contains('hide'))continue;
+    if(sec.getBoundingClientRect().top<=120)cur=sec.id;
+  }}
+  mark(cur||(secs.find(x=>!x.classList.contains('hide'))||{{}}).id);
+}}
+addEventListener('scroll',spy,{{passive:true}});
+spy();
+
+// Clicking a symbol - or landing on one from a link in a note - moves the index
+// with it, which a plain #anchor jump does not do.
+addEventListener('hashchange',()=>{{
+  const el=document.getElementById(location.hash.slice(1));
+  const sec=el&&el.closest('section');
+  if(sec)mark(sec.id);
+}});
 </script>
 </body></html>
 """
