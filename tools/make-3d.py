@@ -181,14 +181,19 @@ def blen(jid):
     if j is None:
         raise SystemExit(f"a tooltip names the joint {jid!r}, which is not in "
                          f"dimensions/fasteners.toml")
+    head = f", {j['head']}" if j.get("head") else ""
     if j.get("length") is None:
-        return " - LENGTH NOT RECORDED - the schedule has no length for it"
-    return f" - M{j['size']:g} x {j['length']:g}"
+        return " - LENGTH NOT RECORDED - the schedule has no length for it" + head
+    return f" - M{j['size']:g} x {j['length']:g}{head}"
 
 
 M8_HEAD = "M8 x 1.25 flanged button head, hex socket in the dome"
-D_SIDE_BOLT = M8_HEAD + " - 10 mm, with a plain washer, into a slide-in T-nut (BOLT_BACK_Y)"
-D_STRIP_BOLT = M8_HEAD + " - 10 mm, A4/316, into a slide-in T-nut (BOLT_FRONT_STRIP)"
+def D_SIDE_BOLT(jid):
+    return M8_HEAD + " - with a plain washer, into a slide-in T-nut" + blen(jid)
+
+
+def D_STRIP_BOLT(jid):
+    return M8_HEAD + " - A4/316, into a slide-in T-nut" + blen(jid)
 def D_BEAM_END(jid):
     return M8_HEAD + " - into the extrusion's lengthwise corner bore" + blen(jid)
 
@@ -787,9 +792,11 @@ def main() -> int:
                 fin_front + at, fin_front + at + v["FLANGE_LOW_H"],
                 v["FLANGE_LOW_D"] / 2, axis="y",
                 d="M8 into a TAPPED hole in the fin - no nut, because the tee "
-                  "track bed is hard against the fin's back face")
+                  "track bed is hard against the fin's back face"
+                  + blen("fin-to-angle"))
 
-        # The small M8 FLANGE heads - 14 across and only 3 proud, which is why
+        # The LOW PROFILE M8 flange heads - 13.75 across and only 3 proud,
+        # which is why
         # they suit a bracket out on the apron where anything tall catches a
         # workpiece. NOT M8_HEAD_D's plain hex, which is a different fastener.
         #
@@ -805,7 +812,8 @@ def main() -> int:
             cyl("Fin angle bolt", "bolts", 0xC8CDD3,
                 xa + sgn * (b1 + i * bp), by, at,
                 at + v["FLANGE_LOW_H"], v["FLANGE_LOW_D"] / 2,
-                d="small M8 flange head, 14 across and 3 proud, into a T-nut")
+                d="into a pronged T-nut in the top skin"
+                  + blen("fin-angle-to-skin"))
 
     # ---- the interposer, under each beam and out through the window -------
     # Four M8 into slide-in T-nuts hold each bar on, at Sheet 6's two rows
@@ -912,8 +920,8 @@ def main() -> int:
         shank8 = v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5
         for sy in (v["SHELF_VERT_REAR"], v["SHELF_VERT_FRONT"]):
             cyl("Shelf bolt head", "bolts", 0x3C4248, bar_mid, xep_back + sy,
-                bar_bottom, bar_bottom - v["FLANGE_NORMAL_H"],
-                v["FLANGE_NORMAL_D"] / 2, seg=12, d=D_SHELF_V("shelf-bar-vertical"))
+                bar_bottom, bar_bottom - v["M8_HEAD_H"],
+                v["M8_HEAD_D"] / 2, seg=12, d=D_SHELF_V("shelf-bar-vertical"))
             cyl("Shelf bolt", "bolts", 0x3C4248, bar_mid, xep_back + sy,
                 bar_bottom, bar_top, shank8, seg=10, d=D_SHELF_V("shelf-bar-vertical"))
         # The horizontal pair are driven from the BAR side, head on the bar's
@@ -931,8 +939,9 @@ def main() -> int:
             hz = bar_bottom + sz
             cyl("Shelf bolt head", "bolts", 0x3C4248,
                 xep_back + v["SHELF_HORIZ_Y"], hz,
-                bar_out, bar_out + inb * v["FLANGE_NORMAL_H"],
-                v["FLANGE_NORMAL_D"] / 2, axis="x", seg=12, d=D_SHELF_H("shelf-bar-horizontal"))
+                bar_out, bar_out + inb * v["FLANGE_LOW_H"],
+                v["FLANGE_LOW_D"] / 2, axis="x", seg=12,
+                d=D_SHELF_H("shelf-bar-horizontal"))
             cyl("Shelf bolt", "bolts", 0x3C4248,
                 xep_back + v["SHELF_HORIZ_Y"], hz, bar_out, plate_mid, shank8,
                 axis="x", seg=10, d=D_SHELF_H("shelf-bar-horizontal"))
@@ -1556,6 +1565,13 @@ def main() -> int:
     # socket in the middle of the dome, so nothing sits above it. Drawn flat,
     # because the dome's fall to under 1 at the rim is a millimetre of relief.
     hd, hh = v["FLANGE_NORMAL_D"] / 2, v["FLANGE_NORMAL_H"]
+    # 🔴 THE STRIP BOLTS ARE A DIFFERENT HEAD AND THE MODEL DREW THEM AS THIS
+    # ONE. FLANGE_LOW_D exists because the AS5311 puck has to pass between the
+    # two head rows - at 17.5 the channel is 12.5 and the puck does not fit, at
+    # 13.75 it is 16.25 and it does. Drawing the big head there contradicted the
+    # symbol that was created for the clearance. Caught 2026-10-11 when he gave
+    # the head type for every joint.
+    ld, lh = v["FLANGE_LOW_D"] / 2, v["FLANGE_LOW_H"]
     BOLT = 0x3C4248
     rows = [v["SIDE_TSLOT_ROW_1"] + i * v["SLOT_GRID"] for i in range(4)]
     stations = [v["SIDE_TONGUE_START"] + v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
@@ -1565,7 +1581,7 @@ def main() -> int:
         for st in stations:
             for z in rows:
                 cyl("Flange head", "bolts", BOLT, st, z, face, face + d * hh,
-                    hd, axis="x", seg=12, d=D_SIDE_BOLT)
+                    hd, axis="x", seg=12, d=D_SIDE_BOLT("y-back-plate"))
 
     # THE RP_ COLUMNS ARE SHEET 7 COORDINATES, measured from the plate's left edge,
     # which sits on the Y1 extrusion's outboard face - so the machine X is each of
@@ -1627,13 +1643,13 @@ def main() -> int:
         for st in [y0 + x for x in strip_x]:
             for z in (y_seam - v["RAIL_SLOT_INSET"], y_seam + v["RAIL_SLOT_INSET"]):
                 cyl("Flange head", "bolts", BOLT, st, z,
-                    face + d * st_t, face + d * (st_t + hh), hd, axis="x",
-                    seg=12, d=D_STRIP_BOLT)
+                    face + d * st_t, face + d * (st_t + lh), ld, axis="x",
+                    seg=12, d=D_STRIP_BOLT("front-strip"))
     for st in [xb_x0 + x for x in strip_x]:
         for z in (x_seam - v["RAIL_SLOT_INSET"], x_seam + v["RAIL_SLOT_INSET"]):
             cyl("Flange head", "bolts", BOLT, st, z,
-                xbeam_front + st_t, xbeam_front + st_t + hh, hd, axis="y",
-                seg=12, d=D_STRIP_BOLT, k="Y")
+                xbeam_front + st_t, xbeam_front + st_t + lh, ld, axis="y",
+                seg=12, d=D_STRIP_BOLT("front-strip"), k="Y")
 
     # ---- the tongue bolts, through plate and tongue into an acorn nut -----
     # Twenty-two of them: eight through the rear plate into the back tongue and
