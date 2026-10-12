@@ -181,37 +181,55 @@ def blen(jid):
     if j is None:
         raise SystemExit(f"a tooltip names the joint {jid!r}, which is not in "
                          f"dimensions/fasteners.toml")
-    head = f", {j['head']}" if j.get("head") else ""
     if j.get("length") is None:
-        return " - LENGTH NOT RECORDED - the schedule has no length for it" + head
-    return f" - M{j['size']:g} x {j['length']:g}{head}"
+        return " - LENGTH NOT RECORDED - the schedule has no length for it"
+    return f" - M{j['size']:g} x {j['length']:g}"
 
 
-M8_HEAD = "M8 x 1.25 flanged button head, hex socket in the dome"
+# 🔴 THE HEAD IS DESCRIBED FROM THE SCHEDULE TOO, not from a constant. There
+# was one M8_HEAD string saying "flanged button head" and it prefixed every M8
+# tooltip, including the shelf bar's socket-head pair - so the same tooltip said
+# flanged button head at the front and socket at the back. His catch came from
+# the other end of the same fault: the spindle clamp's bolts reported themselves
+# as flange because the GROUP was called "M8 flange bolt heads".
+HEAD_PROSE = {
+    "flange": "M8 x 1.25 flanged button head, hex socket in the dome",
+    "flange, low profile": "M8 x 1.25 LOW PROFILE flanged button head, hex "
+                           "socket in the dome",
+    "socket": "M8 x 1.25 socket head cap",
+    "socket, counterbored": "M8 x 1.25 socket head cap, counterbored",
+}
+
+
+def M8_HEAD(jid):
+    """What the head IS, in words, for the joint the schedule names."""
+    j = _JOINTS.get(jid) if jid else None
+    h = j.get("head") if j else None
+    return HEAD_PROSE.get(h, "M8 x 1.25, HEAD NOT RECORDED")
 def D_SIDE_BOLT(jid):
-    return M8_HEAD + " - with a plain washer, into a slide-in T-nut" + blen(jid)
+    return M8_HEAD(jid) + " - with a plain washer, into a slide-in T-nut" + blen(jid)
 
 
 def D_STRIP_BOLT(jid):
-    return M8_HEAD + " - A4/316, into a slide-in T-nut" + blen(jid)
+    return M8_HEAD(jid) + " - A4/316, into a slide-in T-nut" + blen(jid)
 def D_BEAM_END(jid):
-    return M8_HEAD + " - into the extrusion's lengthwise corner bore" + blen(jid)
+    return M8_HEAD(jid) + " - into the extrusion's lengthwise corner bore" + blen(jid)
 
 
 def D_TNUT(jid):
-    return M8_HEAD + " - into a slide-in T-nut in the beam's slot" + blen(jid)
+    return M8_HEAD(jid) + " - into a slide-in T-nut in the beam's slot" + blen(jid)
 
 
 def D_SHELF_V(jid):
-    return M8_HEAD + " - up into the beam's underside slot" + blen(jid)
+    return M8_HEAD(jid) + " - up into the beam's underside slot" + blen(jid)
 
 
 def D_SHELF_H(jid):
-    return M8_HEAD + " - into a BLIND tap in the X end plate" + blen(jid)
+    return M8_HEAD(jid) + " - into a BLIND tap in the X end plate" + blen(jid)
 
 
 def D_TONGUE(jid):
-    return (M8_HEAD + " - through plate and tongue to a fender washer and an "
+    return (M8_HEAD(jid) + " - through plate and tongue to a fender washer and an "
             "acorn nut" + blen(jid))
 
 
@@ -1786,7 +1804,13 @@ def main() -> int:
         "posts": "The three posts, top 10in",
         "bed": "Tee track bed",
         "spoil": "MDF spoilboard (hide to see the track)",
-        "bolts": "M8 flange bolt heads",
+        # 🔴 NOT "M8 flange bolt heads", WHICH IS WHAT IT SAID. The hover line
+        # ends with the part's group, so every socket-head bolt in the model was
+        # reporting itself as a flange one - he caught it on the spindle clamp's
+        # M8 x 90, whose own text has always said socket head cap. The group was
+        # named when it held nothing else; it now holds M4 and M5 socket heads,
+        # two M8 socket joints, acorn nuts, washers and the spoilboard T-bolts.
+        "bolts": "Bolts, nuts and washers",
         "motion": "Rails and bearing blocks",
         "plates": "Rear, side and fin plates",
         "ybeams": "Y beams",
