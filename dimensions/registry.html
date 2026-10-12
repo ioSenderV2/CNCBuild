@@ -114,8 +114,9 @@
   <span id="n" class="chip" style="cursor:default"></span>
   <div class="hint">Chips show <b>only</b> what you pick &mdash; click one to
     isolate it, click more to add, click again to drop. None picked shows
-    everything. <b>Press and hold</b> any symbol link to peek at it without
-    leaving your place; click it to go there.</div>
+    everything. <b>Press and hold</b> a symbol link to peek at it &mdash;
+    letting go leaves you exactly where you were. <b>Ctrl+click</b> goes
+    there.</div>
 </header>
 <div id="peek" hidden></div>
 <div class="wrap">
@@ -239,6 +240,16 @@ if(location.hash)land();
 // is right. Mouse down shows the card, mouse up puts it away, and a plain click
 // still navigates for when that IS what you want.
 const peek=document.getElementById('peek');
+
+// Is this a link to a SYMBOL CARD? The section index uses #anchors too and must
+// go on behaving like an ordinary link - none of what follows applies to it.
+function symLink(t){
+  const a=t&&t.closest&&t.closest('a[href^="#"]');
+  if(!a)return null;
+  const el=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+  return el&&el.classList.contains('sym')?a:null;
+}
+
 function showPeek(id,x,y){
   const el=document.getElementById(id);
   if(!el||!el.classList.contains('sym'))return;
@@ -251,12 +262,30 @@ function showPeek(id,x,y){
 }
 const hidePeek=()=>{peek.hidden=true;};
 addEventListener('pointerdown',e=>{
-  const a=e.target.closest&&e.target.closest('a[href^="#"]');
-  if(!a)return;
-  const id=decodeURIComponent(a.getAttribute('href').slice(1));
-  showPeek(id,e.clientX,e.clientY);
+  const a=symLink(e.target);
+  // 🔴 CTRL IS THE ONE THAT GOES THERE. A plain press peeks and the peek dies
+  // on release, leaving you exactly where you were - his, 2026-10-11. The first
+  // cut navigated on release, which is the opposite of a peek.
+  if(!a||e.ctrlKey||e.metaKey)return;
+  showPeek(decodeURIComponent(a.getAttribute('href').slice(1)),
+           e.clientX,e.clientY);
 });
 addEventListener('pointerup',hidePeek);
+
+// BOTH CASES PREVENT THE BROWSER'S OWN NAVIGATION: a plain click would follow
+// the anchor and lose your place, and a Ctrl+click would open a NEW TAB, which
+// on a page this size is worse than either. So the page navigates itself.
+addEventListener('click',e=>{
+  const a=symLink(e.target);
+  if(!a)return;
+  e.preventDefault();
+  hidePeek();
+  if(!(e.ctrlKey||e.metaKey))return;          // plain click peeked, nothing else
+  const id=decodeURIComponent(a.getAttribute('href').slice(1));
+  if(location.hash.slice(1)===id)land();      // already there: just flash it
+  else location.hash='#'+id;                  // explicit: do not lean on the
+                                              // browser normalising it
+});
 addEventListener('pointercancel',hidePeek);
 addEventListener('scroll',hidePeek,{passive:true});
 </script>

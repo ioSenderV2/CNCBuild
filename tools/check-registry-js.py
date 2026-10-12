@@ -27,6 +27,16 @@ import sys
 import tempfile
 from pathlib import Path
 
+# The failure lines carry emoji markers and reach stdout. On a default Windows
+# console that is cp1252 and the print RAISES - so the ONE thing this tool
+# exists to show, a failure, is the thing that kills it. Same trap and same fix
+# as tools/dims.py.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 PAGE = ROOT / "dimensions" / "registry.html"
@@ -224,9 +234,13 @@ ok('and everything is back', shown(), cards.length);
 ok('and it flashes', other.has('flash'), true);
 
 // press and hold a symbol link: the card appears, release puts it away
+const mkLink = t => {
+  const a = { getAttribute: () => '#' + t.id };
+  a.closest = sel => (sel === 'a[href^="#"]' ? a : null);
+  return a;
+};
 const target = cards[7];
-const anchor = { getAttribute: () => '#' + target.id,
-                 closest: sel => (sel === 'a[href^="#"]' ? anchor : null) };
+const anchor = mkLink(target);
 winHandlers.pointerdown({ target: anchor, clientX: 100, clientY: 100 });
 ok('holding a link shows the peek', peekEl.hidden, false);
 ok('and it is the right symbol', peekEl.innerHTML, target.innerHTML);
@@ -239,6 +253,36 @@ ok('releasing hides it', peekEl.hidden, true);
 // pressing somewhere that is not a symbol link does nothing
 winHandlers.pointerdown({ target: { closest: () => null } });
 ok('pressing elsewhere leaves it hidden', peekEl.hidden, true);
+
+// 🔴 A PLAIN CLICK MUST NOT NAVIGATE - it peeked, and that is all it does
+location.hash = '';
+let prevented = false;
+winHandlers.click({ target: anchor, preventDefault: () => { prevented = true; },
+                    ctrlKey: false, metaKey: false });
+ok('a plain click is prevented from following the link', prevented, true);
+ok('and the hash does not move', location.hash, '');
+
+// CTRL+CLICK IS THE ONE THAT GOES THERE, and it is prevented too so the
+// browser does not open a new tab
+prevented = false;
+winHandlers.click({ target: anchor, preventDefault: () => { prevented = true; },
+                    ctrlKey: true, metaKey: false });
+ok('ctrl+click is prevented from opening a tab', prevented, true);
+ok('and navigates itself', location.hash, '#' + target.id);
+
+// ctrl held on PRESS does not peek - it is a navigation, not a look
+peekEl.hidden = true;
+winHandlers.pointerdown({ target: anchor, clientX: 10, clientY: 10,
+                          ctrlKey: true });
+ok('ctrl+press does not peek', peekEl.hidden, true);
+
+// and a link that is NOT a symbol - the section index - is left alone
+const navA = { getAttribute: () => '#the-extrusion' };
+navA.closest = sel => (sel === 'a[href^="#"]' ? navA : null);
+prevented = false;
+winHandlers.click({ target: navA, preventDefault: () => { prevented = true; },
+                    ctrlKey: false, metaKey: false });
+ok('an index link is left to the browser', prevented, false);
 
 // a hold on a link to a HIDDEN card still peeks - a filter is a view, and
 // looking at something is not navigating to it
