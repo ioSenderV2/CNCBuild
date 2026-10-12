@@ -42,6 +42,47 @@ is the full list.
 **A dimension measured on the Z kit is a Z dimension.** Measure the X/Y kit separately for anything
 that sets a plate.
 
+### Thread locker
+
+**Blue, and not on everything.** It goes on threads that run into **tapped metal**, which are the
+joints that have nothing but thread holding them:
+
+| Where | |
+|---|---|
+| Fin into its angle | M8 into the tapped fin |
+| Shelf bar into the X end plate | the horizontal pair, into blind taps |
+| BF12 into the rear plate and into the X tongue | M5 |
+| Cast stepper frame into the interposer | M5, both rows |
+| Spindle clamps into the Z plate | M8 x 90 |
+| Ball nut, all four | M5 into the nut housing |
+
+**Leave it off anything you are still setting.** Tram, the Z top stop and anything you expect to
+move during commissioning get locker when the adjustment is finished, not before.
+
+**None on T-nut joints.** A slide-in T-nut gives 6 mm of thread and the clamp comes from the
+flange bearing on the extrusion, not from the thread. You will also be loosening these to slide
+things along, which is what the slot is for.
+
+FLAG: **None in the acorn nuts, and this one is not a preference.** The nut takes **11 mm** of bolt.
+The rear plate's M8 x 45 puts **9.65** in and the side plates' M8 x 40 put **9.571** in, so there is
+about **1.3 mm** of space left at the closed end. Locker is a liquid and a closed nut gives it
+nowhere to go: the bolt can come up against trapped liquid and **feel tight while the joint is not
+clamped**. That is the same false reading the 11 mm was measured to rule out, arriving the other way
+round, and it is the one you cannot see from outside.
+
+**Re-torque the tongue bolts instead.** What relaxes on that line is the plywood under the bolt, not
+the thread — it is why the tongue is 25 mm, for bearing area. Check them after the machine has run a
+few hours and again after the first weeks. Locker does nothing about wood creeping and makes the
+re-check harder.
+
+NOTE: **Do not reach for a longer bolt to get more thread into an acorn nut.** The 11 mm is a
+ceiling: the rear plate needed a **second fender washer** to make an M8 x 45 fit, which is why that
+joint has two.
+
+**Buy the stick, not a jar to dip into.** Thread locker sets where air cannot reach it, which is why
+it keeps in its own bottle and why an open pot skins over and thickens. The semi-solid stick wipes on
+like a crayon, does not drip, and suits doing a lot of bolts in one sitting.
+
 ---
 
 ## Order of work

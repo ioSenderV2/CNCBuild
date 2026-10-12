@@ -15,6 +15,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 - [The machine](machine/assembly.md#the-machine)
   - [Rails come from two suppliers](machine/assembly.md#rails-come-from-two-suppliers)
+  - [Thread locker](machine/assembly.md#thread-locker)
 - [Order of work](machine/assembly.md#order-of-work)
 - [1. The mill trip](machine/assembly.md#1-the-mill-trip)
 - [2. The beams](machine/assembly.md#2-the-beams)
