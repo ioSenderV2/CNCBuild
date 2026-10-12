@@ -34,7 +34,7 @@ from pathlib import Path
 # The notes are full of emoji markers and they reach stdout in `table`, `deps` and
 # `open`. On a default Windows console that is cp1252 and the print RAISES, so a
 # single marker in one note kills the whole report partway through - `deps` died on
-# FLANGE_HEAD_D on 2026-10-08 and reported nothing at all. Reconfigure rather than
+# FLANGE_NORMAL_D on 2026-10-08 and reported nothing at all. Reconfigure rather than
 # strip: the markers are load-bearing in the prose. Same fix as tools/audit-prose.py.
 for _stream in (sys.stdout, sys.stderr):
     try:

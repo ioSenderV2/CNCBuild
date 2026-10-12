@@ -227,7 +227,7 @@ assumes the tape lies directly on the 45 mm front strip, which is what this woul
 
 **The problem it solves.** The sensor puck needs `SENSOR_KEEPOUT_W` = 15 mm of clear lane, and the
 strip's two bolt rows cannot move — they sit at ±15 from the seam because that is where the
-extrusion's T-slots are. Going to a 13.8 mm flange head (`FLANGE_STRIP_D`) opened the lane to 16.2
+extrusion's T-slots are. Going to a 13.8 mm flange head (`FLANGE_LOW_D`) opened the lane to 16.2
 and made the puck fit by **0.6 mm a side**, which the ø9 clearance holes' own ±0.5 of float can take
 to 0.1. That is a *moving* clearance over a metre of stroke, and the way you discover it is by
 destroying a sensor.

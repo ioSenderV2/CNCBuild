@@ -784,8 +784,8 @@ def main() -> int:
         for bolt_x in (v["FIN_TONGUE_BOLT_1"], 170.0):
             cyl("Fin T bolt", "bolts", 0xC8CDD3,
                 fin_edge + sgn * bolt_x, v["FIN_BRACKET_BOLT_Y"],
-                fin_front + at, fin_front + at + v["M8_FLANGE_HEAD_H"],
-                v["M8_FLANGE_HEAD_D"] / 2, axis="y",
+                fin_front + at, fin_front + at + v["FLANGE_LOW_H"],
+                v["FLANGE_LOW_D"] / 2, axis="y",
                 d="M8 into a TAPPED hole in the fin - no nut, because the tee "
                   "track bed is hard against the fin's back face")
 
@@ -804,7 +804,7 @@ def main() -> int:
         for i in range(int(v["FIN_ANGLE_SKIN_FIX"])):
             cyl("Fin angle bolt", "bolts", 0xC8CDD3,
                 xa + sgn * (b1 + i * bp), by, at,
-                at + v["M8_FLANGE_HEAD_H"], v["M8_FLANGE_HEAD_D"] / 2,
+                at + v["FLANGE_LOW_H"], v["FLANGE_LOW_D"] / 2,
                 d="small M8 flange head, 14 across and 3 proud, into a T-nut")
 
     # ---- the interposer, under each beam and out through the window -------
@@ -825,8 +825,8 @@ def main() -> int:
                 a, c = outb - along * r, across0 + s
                 cx, cy = (c, a) if along_axis == "y" else (a, c)
                 cyl("Flange head", "bolts", 0x3C4248, cx, cy,
-                    seat, seat + up * v["FLANGE_HEAD_H"],
-                    v["FLANGE_HEAD_D"] / 2, seg=12, d=D_TNUT(jid))
+                    seat, seat + up * v["FLANGE_NORMAL_H"],
+                    v["FLANGE_NORMAL_D"] / 2, seg=12, d=D_TNUT(jid))
                 cyl("Interposer bolt", "bolts", 0x3C4248, cx, cy,
                     seat, seat - up * ip_t,
                     v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, seg=10, d=D_TNUT(jid))
@@ -886,8 +886,8 @@ def main() -> int:
             for bz in (xb_top - v["EXT_BORE_INSET"],
                        xb_top - v["EXT_W"] + v["EXT_BORE_INSET"]):
                 cyl("Flange head", "bolts", 0x3C4248, xep_back + by, bz,
-                    outer, outer + faceward * v["FLANGE_HEAD_H"],
-                    v["FLANGE_HEAD_D"] / 2, axis="x", seg=12,
+                    outer, outer + faceward * v["FLANGE_NORMAL_H"],
+                    v["FLANGE_NORMAL_D"] / 2, axis="x", seg=12,
                     d=D_BEAM_END("xep-to-xbeam"))
                 cyl("X end plate bolt", "bolts", 0x3C4248, xep_back + by, bz,
                     outer, outer - faceward * xep_t,
@@ -912,8 +912,8 @@ def main() -> int:
         shank8 = v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5
         for sy in (v["SHELF_VERT_REAR"], v["SHELF_VERT_FRONT"]):
             cyl("Shelf bolt head", "bolts", 0x3C4248, bar_mid, xep_back + sy,
-                bar_bottom, bar_bottom - v["FLANGE_HEAD_H"],
-                v["FLANGE_HEAD_D"] / 2, seg=12, d=D_SHELF_V("shelf-bar-vertical"))
+                bar_bottom, bar_bottom - v["FLANGE_NORMAL_H"],
+                v["FLANGE_NORMAL_D"] / 2, seg=12, d=D_SHELF_V("shelf-bar-vertical"))
             cyl("Shelf bolt", "bolts", 0x3C4248, bar_mid, xep_back + sy,
                 bar_bottom, bar_top, shank8, seg=10, d=D_SHELF_V("shelf-bar-vertical"))
         # The horizontal pair are driven from the BAR side, head on the bar's
@@ -931,8 +931,8 @@ def main() -> int:
             hz = bar_bottom + sz
             cyl("Shelf bolt head", "bolts", 0x3C4248,
                 xep_back + v["SHELF_HORIZ_Y"], hz,
-                bar_out, bar_out + inb * v["FLANGE_HEAD_H"],
-                v["FLANGE_HEAD_D"] / 2, axis="x", seg=12, d=D_SHELF_H("shelf-bar-horizontal"))
+                bar_out, bar_out + inb * v["FLANGE_NORMAL_H"],
+                v["FLANGE_NORMAL_D"] / 2, axis="x", seg=12, d=D_SHELF_H("shelf-bar-horizontal"))
             cyl("Shelf bolt", "bolts", 0x3C4248,
                 xep_back + v["SHELF_HORIZ_Y"], hz, bar_out, plate_mid, shank8,
                 axis="x", seg=10, d=D_SHELF_H("shelf-bar-horizontal"))
@@ -1555,7 +1555,7 @@ def main() -> int:
     # 2.5 is the TOTAL proud height: these are flanged button heads with a hex
     # socket in the middle of the dome, so nothing sits above it. Drawn flat,
     # because the dome's fall to under 1 at the rim is a millimetre of relief.
-    hd, hh = v["FLANGE_HEAD_D"] / 2, v["FLANGE_HEAD_H"]
+    hd, hh = v["FLANGE_NORMAL_D"] / 2, v["FLANGE_NORMAL_H"]
     BOLT = 0x3C4248
     rows = [v["SIDE_TSLOT_ROW_1"] + i * v["SLOT_GRID"] for i in range(4)]
     stations = [v["SIDE_TONGUE_START"] + v["TSLOT_X_FIRST"] + i * v["TSLOT_X_PITCH"]
@@ -1649,8 +1649,8 @@ def main() -> int:
     def bolt_stack(axis, c0, c1, head_face, far_face, out, jid):
         """head_face is the plate's inboard face, far_face the tongue's outer."""
         cyl("Tongue bolt head", "bolts", BOLT, c0, c1,
-            head_face, head_face - out * v["FLANGE_HEAD_H"],
-            v["FLANGE_HEAD_D"] / 2, axis=axis, seg=12, d=D_TONGUE(jid))
+            head_face, head_face - out * v["FLANGE_NORMAL_H"],
+            v["FLANGE_NORMAL_D"] / 2, axis=axis, seg=12, d=D_TONGUE(jid))
         cyl("Tongue bolt", "bolts", BOLT, c0, c1, head_face, far_face,
             SHANK, axis=axis, seg=10, d=D_TONGUE(jid))
         cyl("Fender washer", "bolts", WASH, c0, c1,
