@@ -173,17 +173,33 @@ _JOINTS = {j["id"]: j for j in tomllib.loads(
     (ROOT / "dimensions" / "fasteners.toml").read_text(encoding="utf-8"))["joint"]}
 
 
+# What the two helpers have handed out. Membership, not pattern matching: a
+# tooltip is derived if it CAME FROM HERE, which is the only form of that
+# question with a reliable answer.
+DERIVED_HEAD, DERIVED_LEN = set(), set()
+
+
+def _keep_head(t):
+    DERIVED_HEAD.add(t)
+    return t
+
+
+def _keep_len(t):
+    DERIVED_LEN.add(t)
+    return t
+
+
 def blen(jid):
     """' - M8 x 35' for a joint in the schedule, from the schedule."""
     if jid is None:
-        return " - LENGTH NOT RECORDED - no entry in the fastener schedule"
+        return _keep_len(" - LENGTH NOT RECORDED - no entry in the schedule")
     j = _JOINTS.get(jid)
     if j is None:
         raise SystemExit(f"a tooltip names the joint {jid!r}, which is not in "
                          f"dimensions/fasteners.toml")
     if j.get("length") is None:
-        return " - LENGTH NOT RECORDED - the schedule has no length for it"
-    return f" - M{j['size']:g} x {j['length']:g}"
+        return _keep_len(" - LENGTH NOT RECORDED - the schedule has none")
+    return _keep_len(f" - M{j['size']:g} x {j['length']:g}")
 
 
 # FLAG: THE HEAD IS DESCRIBED FROM THE SCHEDULE TOO, not from a constant. There
@@ -193,19 +209,33 @@ def blen(jid):
 # the other end of the same fault: the spindle clamp's bolts reported themselves
 # as flange because the GROUP was called "M8 flange bolt heads".
 HEAD_PROSE = {
-    "flange": "M8 x 1.25 flanged button head, hex socket in the dome",
-    "flange, low profile": "M8 x 1.25 LOW PROFILE flanged button head, hex "
-                           "socket in the dome",
-    "socket": "M8 x 1.25 socket head cap",
-    "socket, counterbored": "M8 x 1.25 socket head cap, counterbored",
+    "flange": "flanged button head, hex socket in the dome",
+    "flange, low profile": "LOW PROFILE flanged button head, hex socket in the dome",
+    "socket": "socket head cap",
+    "socket, counterbored": "socket head cap, counterbored",
 }
 
 
 def M8_HEAD(jid):
-    """What the head IS, in words, for the joint the schedule names."""
+    """What the head IS, in words, for the joint the schedule names.
+
+    FLAG: EVERY BOLT TOOLTIP COMES THROUGH HERE AND THROUGH blen(). They record
+    what they hand out, and check_tips() at the end of main() fails the build if
+    any part in the bolts group carries text that did not come from them. The
+    sweep that was supposed to make the tooltips derive from the schedule
+    converted the shared helpers and left the call sites that spell their text
+    out inline, so the fin angle bolts went on saying nothing about their head
+    while the strip bolts said it - his catch, 2026-10-11. A sweep nobody can
+    check is a sweep that will be incomplete again.
+    """
     j = _JOINTS.get(jid) if jid else None
-    h = j.get("head") if j else None
-    return HEAD_PROSE.get(h, "M8 x 1.25, HEAD NOT RECORDED")
+    if j is None:
+        return _keep_head("NOT IN THE FASTENER SCHEDULE, so neither the head "
+                          "nor the length below is from it")
+    pitch = {3: "0.5", 4: "0.7", 5: "0.8", 6: "1.0", 8: "1.25"}.get(j.get("size"), "")
+    size = f"M{j['size']:g}" + (f" x {pitch}" if pitch else "")
+    kind = HEAD_PROSE.get(j.get("head"))
+    return _keep_head(f"{size} {kind}" if kind else f"{size}, HEAD NOT RECORDED")
 def D_SIDE_BOLT(jid):
     return M8_HEAD(jid) + " - with a plain washer, into a slide-in T-nut" + blen(jid)
 
@@ -234,22 +264,23 @@ def D_TONGUE(jid):
 
 
 def D_M5_PLATE(jid):
-    return "M5 x 0.8 socket cap, tapped into the plate" + blen(jid)
+    return M8_HEAD(jid) + " - tapped into the plate" + blen(jid)
 
 
 def D_M5_BAR(jid):
-    return ("M5 x 0.8 socket cap, up out of the casting into the tapped bar"
-            + blen(jid))
+    return M8_HEAD(jid) + " - up out of the casting into the tapped bar" + blen(jid)
 
 
 def D_M5_END(jid):
-    return "M5 x 0.8 socket cap into a tapped end face" + blen(jid)
+    return M8_HEAD(jid) + " - into a tapped end face" + blen(jid)
 
 
 def D_M5_EDGE(jid):
-    return ("M5 x 0.8 socket cap into the doubler's tapped top edge"
-            + blen(jid))
-D_M5_NUT = "M5 x 0.8 x 16 socket cap into the ball nut housing, 9.65 mm engaged (BOLT_Z_NUT)"
+    return M8_HEAD(jid) + " - into the doubler's tapped top edge" + blen(jid)
+
+
+def D_M5_NUT(jid):
+    return M8_HEAD(jid) + " - into the ball nut housing" + blen(jid)
 
 
 def main() -> int:
@@ -662,7 +693,8 @@ def main() -> int:
     thread_top = v["TT_BED_T"] + v["SPOIL_BOLT_RISE"]
     cbore_z = v["SPOIL_CBORE_Z"]
     wash_r, nut_r = v["M8_WASHER_D"] / 2, v["ACORN_NUT_D"] / 2
-    D_TBOLT = ("M8 drop-in T-bolt - the T drops into the slot and turns to "
+    D_TBOLT = (M8_HEAD(None) + " - M8 drop-in T-bolt, the T drops into the "
+               "slot and turns to "
                "catch. " + str(v["SPOIL_BOLT_RISE"]) + " of thread above the "
                "aluminium puts its top level with the work surface. \u26a0 THE "
                "RISE IS HIS PICK, NOT A MEASUREMENT - see open-items.md. The T "
@@ -826,9 +858,9 @@ def main() -> int:
                 fin_edge + sgn * bolt_x, v["FIN_BRACKET_BOLT_Y"],
                 fin_front + at, fin_front + at + v["FLANGE_LOW_H"],
                 v["FLANGE_LOW_D"] / 2, axis="y",
-                d="M8 into a TAPPED hole in the fin - no nut, because the tee "
-                  "track bed is hard against the fin's back face"
-                  + blen("fin-to-angle"))
+                d=M8_HEAD("fin-to-angle") + " - into a TAPPED hole in the "
+                  "fin, no nut, because the tee track bed is hard against the "
+                  "fin's back face" + blen("fin-to-angle"))
 
         # The LOW PROFILE M8 flange heads - 13.75 across and only 3 proud,
         # which is why
@@ -847,8 +879,8 @@ def main() -> int:
             cyl("Fin angle bolt", "bolts", 0xC8CDD3,
                 xa + sgn * (b1 + i * bp), by, at,
                 at + v["FLANGE_LOW_H"], v["FLANGE_LOW_D"] / 2,
-                d="into a pronged T-nut in the top skin"
-                  + blen("fin-angle-to-skin"))
+                d=M8_HEAD("fin-angle-to-skin") + " - into a pronged T-nut in "
+                  "the top skin" + blen("fin-angle-to-skin"))
 
     # ---- the interposer, under each beam and out through the window -------
     # Four M8 into slide-in T-nuts hold each bar on, at Sheet 6's two rows
@@ -1153,14 +1185,16 @@ def main() -> int:
                 cyl("Clamp bolt head", "bolts", 0x3C4248, bx, bz,
                     zp_front + sh_out, zp_front + sh_out + v["M8_HEAD_H"],
                     v["M8_HEAD_D"] / 2, axis="y", seg=12,
-                    d="M8 x 1.25 x 90 socket head cap (BOLT_SPINDLE_CLAMP)")
+                    d=M8_HEAD("spindle-clamp") + " - head proud of the "
+                      "shoulder" + blen("spindle-clamp"))
                 cyl("Clamp bolt", "bolts", 0x3C4248, bx, bz,
                     zp_front + sh_out,
                     zp_front + sh_out - v["BOLT_SPINDLE_CLAMP"], 4.0,
                     axis="y", seg=10,
-                    d="M8 x 1.25 x 90 - " + str(v["CLAMP_SHOULDER_OUT"]) +
-                      " of clamp then " + str(v["CLAMP_BOLT_ENGAGE"]) +
-                      " tapped into the Z plate")
+                    d=M8_HEAD("spindle-clamp") + " - " +
+                      str(v["CLAMP_SHOULDER_OUT"]) + " of clamp then " +
+                      str(v["CLAMP_BOLT_ENGAGE"]) + " tapped into the Z plate" +
+                      blen("spindle-clamp"))
 
     # ---- ball screws, nuts, BF12 and the stepper castings -----------------
     # Four identical 1605 screws, each running from a BF12 at one end to a cast
@@ -1350,7 +1384,7 @@ def main() -> int:
                 D_M5_END(None)) for bx, j in cols]
         for bx in (v["NUT_BOLT_X_NEAR"], v["NUT_BOLT_X_FAR"]):
             for dy in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-                pts.append((inner + out * bx, nut_mid + dy, D_M5_NUT))
+                pts.append((inner + out * bx, nut_mid + dy, D_M5_NUT("y-nut-to-sole")))
         for bx, by, det in pts:
             cyl("Y sole bolt head", "bolts", 0x3C4248, bx, by,
                 face_z - v["T_SOLE_BRACKET"],
@@ -1502,10 +1536,12 @@ def main() -> int:
         cyl("Z stop bolt head", "bolts", 0x3C4248, sx, sz,
             zs_floor, zs_floor + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,
             axis="y", seg=12,
-            d="M5 x 0.8 x 50 socket cap, counterbored 6 deep (BOLT_Z_STOP)")
+            d=M8_HEAD(None) + " - M5 x 0.8 x 50 socket cap from BOLT_Z_STOP, "
+              "counterbored 6 deep" + blen(None))
         cyl("Z stop bolt", "bolts", 0x3C4248, sx, sz,
             zs_floor, zs_floor - v["BOLT_Z_STOP"], 2.5, axis="y", seg=10,
-            d="M5 x 0.8 x 50 socket cap - 39 of block then 11 into the carriage plate")
+            d=M8_HEAD(None) + " - M5 x 0.8 x 50 from BOLT_Z_STOP, 39 of block "
+              "then 11 into the carriage plate" + blen(None))
     ride[0] = ""
 
     # ---- linear rails and bearing blocks ---------------------------------
@@ -1658,7 +1694,7 @@ def main() -> int:
     x_nut_mid = (x_lo + x_hi) / 2
     for ry in (v["X_NUT_BOLT_NEAR"], v["X_NUT_BOLT_FAR"]):
         for dx in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-            sole_bolts.append((x_nut_mid + dx, cp_back - ry, D_M5_NUT))
+            sole_bolts.append((x_nut_mid + dx, cp_back - ry, D_M5_NUT("y-nut-to-sole")))
     for bx, by, det in sole_bolts:
         cyl("X sole bolt head", "bolts", BOLT, bx, by,
             sole_top, sole_top + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2, seg=12,
@@ -1857,6 +1893,27 @@ def main() -> int:
             p["d"] = DETAIL.get(p["n"], "")
         if p["n"] in SHEETS:
             p["d"] = ((p["d"] + " \u00b7 ") if p["d"] else "") + sheet_note(SHEETS[p["n"]])
+    # FLAG: EVERY BOLT TOOLTIP MUST HAVE COME FROM THE SCHEDULE HELPERS, and this
+    # is what proves it rather than a sweep somebody believed. A part in the
+    # bolts group has to carry one of the strings M8_HEAD() handed out AND one
+    # of blen()'s - membership, not pattern matching. Nuts and washers are
+    # exempt: they are not bolts and have no length of their own.
+    EXEMPT = {"Acorn nut", "Fender washer", "Spoilboard washer",
+              "Spoilboard nut", "Spoilboard counterbore", "Spoilboard bolt hole"}
+    typed = []
+    for q in P:
+        if q["g"] != "bolts" or q["n"] in EXEMPT:
+            continue
+        d = q.get("d", "")
+        if not (any(h in d for h in DERIVED_HEAD)
+                and any(L in d for L in DERIVED_LEN)):
+            typed.append(q["n"])
+    if typed:
+        names = sorted(set(typed))
+        print(f"{len(typed)} bolt(s) carry a tooltip that did not come from the "
+              f"fastener schedule: {', '.join(names)}", file=sys.stderr)
+        return 2
+
     unused = check_sheets(("1a", "1b", "2a", "2b"))
 
     # FLAG: A BOLT THE SCHEDULE HAS NEVER HEARD OF IS A BOLT NOBODY ORDERS. Now
