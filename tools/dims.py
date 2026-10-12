@@ -46,7 +46,15 @@ for _stream in (sys.stdout, sys.stderr):
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "dimensions" / "registry.toml"
 
-PROVENANCE = {"measured", "part", "vendor", "nominal", "derived", "OPEN"}
+PROVENANCE = {"measured", "part", "vendor", "nominal", "derived", "alias", "OPEN"}
+
+# 🔴 AN ALIAS IS A RENAME, NOT A CALCULATION - his call, 2026-10-11, after
+# RAIL_LOW_Z read as "derived from RAIL_SLOT_INSET" when both are 15 and nothing
+# happens in between. 31 of the registry's symbols are one symbol pointing
+# straight at another, and calling that derived hides the single most useful
+# thing about it: there is no arithmetic to check, only a question of whether
+# the two still MEAN the same thing. It is assigned mechanically - a bare name
+# is an alias, anything else is derived - so it cannot be got wrong by hand.
 
 # Provenance that means "this number is not confirmed on the real thing". The repo's
 # standing rule is that the machine is the authority, so these are called out loudly.
@@ -87,6 +95,21 @@ def _eval_node(node: ast.AST, resolve) -> float:
     raise RegistryError(f"expression node {type(node).__name__} not allowed")
 
 
+def is_alias(expr: str) -> bool:
+    """Is this expression nothing but another symbol's name?
+
+    That is a RENAME, and it is worth telling apart from a calculation: there is
+    no arithmetic in it to be wrong, only the question of whether the two still
+    mean the same thing. The day the answer is no, the alias has to become a
+    value or an expression - and the thing that would hide that day coming is
+    exactly how alike the two look.
+    """
+    try:
+        return isinstance(ast.parse(expr, mode="eval").body, ast.Name)
+    except SyntaxError:
+        return False
+
+
 def refs(expr: str) -> set[str]:
     return {n.id for n in ast.walk(ast.parse(expr, mode="eval")) if isinstance(n, ast.Name)}
 
@@ -100,6 +123,7 @@ class Registry:
         self.dims: dict[str, dict] = {}
         self.order: list[str] = []
         self.errors: list[str] = []
+        self.pinned: list[str] = []      # value, but provenance says derived
 
         for d in raw.get("dim", []):
             sym = d.get("sym")
@@ -114,12 +138,23 @@ class Registry:
                 self.errors.append(f"{sym}: needs exactly one of `value` or `expr`")
                 continue
             if has_e:
-                d.setdefault("provenance", "derived")
+                d["provenance"] = "alias" if is_alias(d["expr"]) else "derived"
             p = d.get("provenance")
             if p not in PROVENANCE:
                 self.errors.append(f"{sym}: provenance {p!r} not one of {sorted(PROVENANCE)}")
-            if has_e and p != "derived":
-                self.errors.append(f"{sym}: has `expr` so provenance must be 'derived', not {p!r}")
+            # ⚠️ A LITERAL VALUE CALLING ITSELF DERIVED IS NOT AN ERROR HERE, and
+            # 51 entries do it. Reading them, they mean something real and
+            # different: computed once and then PINNED - XEP_W is "set by
+            # BLOCK_BUTTED at 154.18, rounded down. Not re-derived". That does
+            # NOT move when its source moves, which is the exact failure `deps`
+            # exists to catch, so it is worth a name of its own. Naming it is
+            # his call; until then they are counted rather than failed.
+            if not has_e and p == "alias":
+                self.errors.append(
+                    f"{sym}: provenance 'alias' is for an `expr`, and this has "
+                    f"a `value`")
+            if not has_e and p == "derived":
+                self.pinned.append(sym)
             if not (sym[0].isalpha() and all(c.isalnum() or c == "_" for c in sym)):
                 self.errors.append(f"{sym}: not a Fusion-safe identifier")
             d.setdefault("unit", self.meta.get("units", "mm"))
@@ -428,8 +463,13 @@ def cmd_html(args) -> int:
             d = reg.dims[s]
             prov = d["provenance"]
             used = reg.direct_dependents(s)
-            expr = (f'<div class="r"><b>built from</b> <code>{link(d["expr"])}</code></div>'
-                    if d.get("expr") else "")
+            expr = ""
+            if d.get("expr"):
+                # ANOTHER NAME FOR THE SAME NUMBER reads differently from a sum,
+                # and the card should say which it is at a glance.
+                lbl = "another name for" if prov == "alias" else "built from"
+                expr = (f'<div class="r"><b>{lbl}</b> '
+                        f'<code>{link(d["expr"])}</code></div>')
             src = (f'<div class="r"><b>source</b> {link(d["source"])}</div>'
                    if d.get("source") else "")
             usedby = ("" if not used else
@@ -525,9 +565,19 @@ def cmd_html(args) -> int:
  .p-measured {{ border-left-color: #2e9e6b; }}
  .p-part {{ border-left-color: #2e7fae; }}
  .p-derived {{ border-left-color: #b9c0c7; }}
+ .p-alias {{ border-left-color: #8d7bb5; }}
  .p-nominal {{ border-left-color: #d9a406; }}
  .p-OPEN {{ border-left-color: #d64545; }}
  .hide {{ display: none; }}
+ /* 🔴 PRESS AND HOLD A SYMBOL LINK TO PEEK AT IT - his, 2026-10-11. Following
+    the link answers "what is that?" by throwing away where you were, which on a
+    page whose whole point is cross-references is the wrong trade. */
+ #peek {{ position: fixed; z-index: 20; max-width: 420px; pointer-events: none;
+   background: #fff; border: 1px solid #b9c0c7; border-left: 4px solid #8d7bb5;
+   border-radius: 6px; padding: 8px 12px; box-shadow: 0 6px 24px #0003;
+   font-size: 12.5px; }}
+ #peek .hd {{ margin-bottom: 3px; }}
+ #peek[hidden] {{ display: none; }}
  @media (prefers-color-scheme: dark) {{
    body {{ color: #dfe4e8; background: #16191c; }}
    header {{ background: #1c2024f2; border-color: #2c3237; }}
@@ -553,8 +603,10 @@ def cmd_html(args) -> int:
   <span id="n" class="chip" style="cursor:default"></span>
   <div class="hint">Chips show <b>only</b> what you pick &mdash; click one to
     isolate it, click more to add, click again to drop. None picked shows
-    everything.</div>
+    everything. <b>Press and hold</b> any symbol link to peek at it without
+    leaving your place; click it to go there.</div>
 </header>
+<div id="peek" hidden></div>
 <div class="wrap">
   <nav>{toc}</nav>
   <main>{"".join(cards)}</main>
@@ -660,6 +712,33 @@ function land(){{
 }}
 addEventListener('hashchange',land);
 if(location.hash)land();
+
+// --- press and hold a symbol link to peek ------------------------------
+// 🔴 FOLLOWING A LINK ANSWERS "WHAT IS THAT?" BY LOSING WHERE YOU WERE, and on
+// a page that is mostly cross-references that is the wrong trade - his, and he
+// is right. Mouse down shows the card, mouse up puts it away, and a plain click
+// still navigates for when that IS what you want.
+const peek=document.getElementById('peek');
+function showPeek(id,x,y){{
+  const el=document.getElementById(id);
+  if(!el||!el.classList.contains('sym'))return;
+  peek.innerHTML=el.innerHTML;
+  peek.hidden=false;
+  // clamp into the window, and prefer below-right of the cursor
+  const w=peek.offsetWidth,h=peek.offsetHeight;
+  peek.style.left=Math.max(6,Math.min(x+14,innerWidth-w-8))+'px';
+  peek.style.top=(y+18+h>innerHeight?Math.max(6,y-h-12):y+18)+'px';
+}}
+const hidePeek=()=>{{peek.hidden=true;}};
+addEventListener('pointerdown',e=>{{
+  const a=e.target.closest&&e.target.closest('a[href^="#"]');
+  if(!a)return;
+  const id=decodeURIComponent(a.getAttribute('href').slice(1));
+  showPeek(id,e.clientX,e.clientY);
+}});
+addEventListener('pointerup',hidePeek);
+addEventListener('pointercancel',hidePeek);
+addEventListener('scroll',hidePeek,{{passive:true}});
 </script>
 </body></html>
 """

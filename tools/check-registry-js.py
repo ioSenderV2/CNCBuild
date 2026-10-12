@@ -51,7 +51,8 @@ function el(cls, data, id) {
     getAttribute(n) { return this._attrs ? this._attrs[n] : undefined; },
     closest(sel) { return sel === 'section' ? this.parentElement : null; },
     scrollIntoView() { this._scrolled = true; },
-    offsetWidth: 0,
+    offsetWidth: 0, offsetHeight: 0, innerHTML: '', hidden: false,
+    style: {},
     addEventListener(t, fn) { (this._h = this._h || {})[t] = fn; },
   };
 }
@@ -70,6 +71,7 @@ while ((m = re.exec(html))) {
     continue;
   }
   const e = el('sym ' + m[2], { sym: m[4], prov: m[5], note: m[6] }, m[3]);
+  e.innerHTML = '<card>' + m[3] + '</card>';
   e.parentElement = cur;
   cards.push(e);
   if (cur) cur.syms.push(e);
@@ -90,7 +92,8 @@ const chips = [...html.matchAll(/<button type="button" class="chip" data-prov="(
 
 const qEl = el(''); qEl.value = '';
 const nEl = el('');
-const byId = new Map([['q', qEl], ['n', nEl]]);
+const peekEl = el(''); peekEl.hidden = true;
+const byId = new Map([['q', qEl], ['n', nEl], ['peek', peekEl]]);
 cards.forEach(c => byId.set(c.id, c));
 
 const location = { hash: '' };
@@ -107,7 +110,9 @@ const document = {
 };
 function addEventListener(t, fn) { winHandlers[t] = fn; }
 
-const sandbox = { document, location, addEventListener, console };
+const innerWidth = 1400, innerHeight = 900;
+const sandbox = { document, location, addEventListener, console,
+                  innerWidth, innerHeight };
 require('vm').runInNewContext(script, sandbox);
 
 // --- drive it the way a person does -----------------------------------
@@ -210,6 +215,35 @@ ok('and scrolls to it', other._scrolled, true);
 ok('and the chip goes out', chips[0].has('on'), false);
 ok('and everything is back', shown(), cards.length);
 ok('and it flashes', other.has('flash'), true);
+
+// press and hold a symbol link: the card appears, release puts it away
+const target = cards[7];
+const anchor = { getAttribute: () => '#' + target.id,
+                 closest: sel => (sel === 'a[href^="#"]' ? anchor : null) };
+winHandlers.pointerdown({ target: anchor, clientX: 100, clientY: 100 });
+ok('holding a link shows the peek', peekEl.hidden, false);
+ok('and it is the right symbol', peekEl.innerHTML, target.innerHTML);
+ok('and it is placed on screen',
+   typeof peekEl.style.left === 'string' && typeof peekEl.style.top === 'string',
+   true);
+winHandlers.pointerup();
+ok('releasing hides it', peekEl.hidden, true);
+
+// pressing somewhere that is not a symbol link does nothing
+winHandlers.pointerdown({ target: { closest: () => null } });
+ok('pressing elsewhere leaves it hidden', peekEl.hidden, true);
+
+// a hold on a link to a HIDDEN card still peeks - a filter is a view, and
+// looking at something is not navigating to it
+chips[0]._h.click();
+const hiddenOne = cards.find(c => c.has('hide'));
+const a2 = { getAttribute: () => '#' + hiddenOne.id,
+             closest: sel => (sel === 'a[href^="#"]' ? a2 : null) };
+winHandlers.pointerdown({ target: a2, clientX: 10, clientY: 10 });
+ok('peeking at a filtered-out symbol still works', peekEl.hidden, false);
+ok('and does NOT clear the filter', hiddenOne.has('hide'), true);
+winHandlers.pointerup();
+chips[0]._h.click();
 
 console.log(JSON.stringify(out));
 """
