@@ -184,7 +184,8 @@ def main():
         return 0
 
     print("FASTENER SCHEDULE\n")
-    print(f"{'joint':24s} {'size':6s} {'off':>4s} {'len':>6s} {'grip':>7s} {'eng':>7s}")
+    print(f"{'joint':24s} {'size':6s} {'off':>4s} {'len':>6s} {'head':18s} "
+          f"{'grip':>7s} {'eng':>7s}")
     for r in rows:
         sz = f"M{r['size']}" if "size" in r else "?"
         L = f"{r['length']:g}" if r.get("length") is not None else "--"
@@ -192,7 +193,7 @@ def main():
         e = f"{r['eng']:g}" if r.get("eng") is not None else ""
         pa = f"  +{r['past']:g} past" if r.get("past") else ""
         print(f"  {r['id']:22s} {sz:6s} {r.get('count','?'):>4} {L:>6s} "
-              f"{g:>7s} {e:>7s}{pa}")
+              f"{r.get('head','?'):18s} {g:>7s} {e:>7s}{pa}")
 
     # 🔴 ENGAGEMENT IS THE CHECK, and it caught two errors in the joints file the
     # first time it ran. Both were the same mistake: a TAPPED part listed in the
@@ -238,7 +239,13 @@ def main():
             continue
         sz = r["size"]
         if r.get("length") is not None:
-            add(sz, f"bolt M{sz} x {r['length']:g}", n)
+            # 🔴 THE HEAD IS PART OF THE PART, so it belongs on the line you
+            # order from - his spec, 2026-10-11. An M8 x 10 in normal flange and
+            # an M8 x 10 in low profile are different bolts, and totalling them
+            # together is how one of the two never gets bought.
+            head = r.get("head")
+            add(sz, f"bolt M{sz} x {r['length']:g}"
+                    + (f", {head}" if head else " (HEAD NOT RECORDED)"), n)
         if r.get("into") == "t-nut":
             add(sz, f"T-nut M{sz}", n)
         for e in r.get("extras", []):
@@ -288,6 +295,7 @@ def render(rows, missing, total_pcs, buy, groups, loose):
              [x for x in groups if x not in GROUPS]:
         rws = "".join(
             (f"<tr><td>{('M%d x %g' % (r['size'], r['length'])) if r.get('length') else '?'}"
+             f"{(', ' + r['head']) if r.get('head') else ''}"
              f"</td><td class=n>{c}</td><td>{r['what']}</td></tr>"
              + (f"<tr><td>T-nut M{r['size']}</td><td class=n>{c}</td>"
                 f"<td class=s>one per bolt, for the line above</td></tr>"
@@ -333,7 +341,8 @@ def render(rows, missing, total_pcs, buy, groups, loose):
         tr.append(
             f"<tr><td>{r['what']}<br><span class=s>{r.get('note','')}</span></td>"
             f"<td class=n>{sz}</td><td class=n>{r.get('count','?')}</td>"
-            f"<td class=n>{L}</td><td class=n>{g}</td><td class=n>{e}</td>"
+            f"<td class=n>{L}</td><td>{r.get('head') or 'not recorded'}</td>"
+            f"<td class=n>{g}</td><td class=n>{e}</td>"
             f"<td>{LONG_IS.get(r.get('into',''), '')}</td></tr>")
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -364,7 +373,7 @@ is inferred, because the two length errors this repo has already made were both
 inferences that read as facts.</div>
 
 <table>
-<tr><th>Joint</th><th>Size</th><th>Qty</th><th>Length</th><th>Grip</th>
+<tr><th>Joint</th><th>Size</th><th>Qty</th><th>Length</th><th>Head</th><th>Grip</th>
 <th>Engages</th><th>If it runs long</th></tr>
 {''.join(tr)}
 </table>
