@@ -506,12 +506,26 @@ def main() -> int:
     # through the rear plate's right end, which overhangs the box by 2.66;
     # SIDE_TONGUE_START's 6.35 exists to clear that plate.
     #
-    # FLAG: THE BACK AND FRONT ARE EACH CUT IN TWO PIECES, butted at mid-length.
-    # Not drawn as two here - a butt joint removes no envelope - but see
-    # BACK_LAM_PIECE_L, which also records why the joint is sound: the inner
-    # web behind it is continuous, and the joint lands over the back centre
-    # post, so both halves are supported AT it.
-    box("Back tongue", "box", 0xA07B16, -TT, -TT, tz0, W + TT, 0, tz1)
+    # THE BACK AND FRONT ARE EACH CUT IN TWO PIECES, butted at mid-length, and
+    # they are DRAWN as two - his, 2026-10-11: the model should show what he is
+    # building. A butt joint removes no envelope, so this changes no clearance;
+    # what it changes is that the seam is there to see and the hover says which
+    # half you are on.
+    #
+    # The joint is sound because the wall is two laminations: the inner web
+    # behind it is one continuous piece, so the butt is staggered against solid
+    # material. It also lands over the back centre post, so both halves are
+    # supported AT the joint rather than it floating between supports. See
+    # BACK_LAM_PIECE_L.
+    lam_mid = (-TT + W + TT) / 2
+    D_LAM_PIECE = (" - ONE OF TWO PIECES, butted at the box's middle. The whole "
+                   "25 mm fits one 4 x 8 sheet this way and will not at full "
+                   "width; the inner web behind the joint is continuous and the "
+                   "back centre post sits under it")
+    for i, (x0, x1) in enumerate(((-TT, lam_mid), (lam_mid, W + TT))):
+        box("Back tongue", "box", 0xA07B16, x0, -TT, tz0, x1, 0, tz1,
+            d=f"{v['BACK_LAM_PIECE_L']:g} long, {v['T_BOX_TONGUE']:g} thick"
+              + D_LAM_PIECE)
     for x0 in (-TT, W):
         box("Side tongue", "box", 0xA07B16,
             x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, v["SIDE_TONGUE_END"], tz1)
@@ -704,8 +718,11 @@ def main() -> int:
     # it is hanging in midair. The fin's overhang now lands on the cap's top edge.
     cap_t = v["T_BOX_FRONT_CAP"]
     cap_z0 = -v["BOX_FRONT_CAP_H"]
-    box("Front cap", "box", 0xA07B16, -cap_t, D, cap_z0, W + cap_t, D + cap_t, 0,
-        d="25, flush with the top skin - the front has no tongue")
+    # Two pieces, the same as the back and for the same reason.
+    for x0, x1 in ((-cap_t, lam_mid), (lam_mid, W + cap_t)):
+        box("Front cap", "box", 0xA07B16, x0, D, cap_z0, x1, D + cap_t, 0,
+            d=f"{v['FRONT_CAP_PIECE_L']:g} long, {cap_t:g} thick, flush with "
+              f"the top skin - the front has no tongue" + D_LAM_PIECE)
     # FLAG: THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
     # lamination is cut as ONE piece, SIDE_LAM_L long and TONGUE_FULL_H tall,
     # and the proud portion forward of SIDE_LAM_PROUD_CUT is sawn away. It is
