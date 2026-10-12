@@ -1872,16 +1872,16 @@ note = "The side plate's top edge against the Y beam's top. NOW NEGATIVE at -0.3
 
 [[dim]]
 sym = "FLANGE_HEAD_D"
-value = 17.3
+value = 17.5
 provenance = "measured"
-note = "M8 flange head across the flange, THE BEAM-END BOLT - 17.3, measured on the bench 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. \U0001f534 THIS IS THE BOLT THAT GOES INTO A BEAM'S END, i.e. into the extrusion's lengthwise corner bores, and his rule 2026-10-08 is that THESE STAY THE OLD STYLE. Three places, all the same 8-per-beam-end pattern: the back plate and the two front fins onto the Y beam ends, and the two X end plates onto the X beam ends, eight bolts each. \u26a0 DO NOT CONFUSE IT WITH FLANGE_STRIP_D: the bolts that go into T-SLOTS on the beam's front face went to a smaller 13.8 head on 2026-10-08 so the encoder puck would fit, and for a few hours this symbol wrongly carried that 13.8 and took the beam-end bolt with it. Two fasteners, two symbols."
+note = "M8 flange head across the flange, THE NORMAL ONE - 17.5, his calipers 2026-10-11, superseding the 17.3 measured 2026-09-29. The flange is why these bolts need no counterbore and no washer: it spreads the load itself. 🔴 WHICH JOINTS TAKE IT IS NOW SETTLED - his list 2026-10-11: the T-slots in the BACK of the beams, the beam ENDS, the side and back plates into the 25 tongue, and the interposer bars into the top of X and the underside of Y. ⚠ DO NOT CONFUSE IT WITH FLANGE_STRIP_D, the LOW PROFILE head at 13.75 - and the two are a buy-two-bolts fact, not a preference."
 source = "measured on the bench 2026-09-29; scope confirmed by him 2026-10-08"
 
 [[dim]]
 sym = "FLANGE_HEAD_H"
-value = 4
+value = 5
 provenance = "measured"
-note = "TOTAL height the BEAM-END M8 head stands proud of the face, at its centre - 4 on the 17.3 bolt, his 2026-10-08. THESE ARE FLANGED BUTTON HEADS WITH A HEX SOCKET IN THE MIDDLE OF THE DOME, not hex-head flange bolts: there is NOTHING above this. \u26a0 THIS SYMBOL HAS NOW CARRIED FOUR FIGURES FOR ONE PART: 5, then 2.5 on 2026-10-03, then briefly 3 on 2026-10-08 when the strip bolt's height was wrongly written here, and now 4. The 5 came from believing a hex head sat on top of the dome and is simply wrong; 2.5 and 4 are both his own readings of the same 17.3 bolt five days apart and they have never been reconciled. \u2705 Nothing derives from it - dims.py deps returns nothing - so it is a recorded fact rather than a load-bearing one, and the clearances that matter around these heads are all lateral. The strip bolt's height is FLANGE_STRIP_H."
+note = "How far the NORMAL M8 flange head stands proud at the CENTRE OF ITS DOME - 5, his 2026-10-11. FLANGE_HEAD_RIM_H is the same head at the flange rim, 1. ✅ THE TWO FIGURES TOGETHER RECONCILE A SYMBOL THAT HAD CARRIED FOUR: 5, then 2.5 on 2026-10-03, then 3, then 4 on 2026-10-08. The head is a DOME on a flange, so a height reading depends entirely on where the caliper sat - the spread was never disagreement about the part. ⚠ THAT RECONCILIATION IS AN INTERPRETATION, not something he said; what he gave is the 5 and the 1. Flanged button head, hex socket in the dome, nothing above it."
 source = "his calipers and his choice, 2026-10-08"
 
 [[dim]]
@@ -1908,17 +1908,23 @@ expr = "FLANGE_M5_D / 2"
 note = "6.7. The number edge distance is really asking for - a radius, not a diameter. y-beam-support.md raised a false alarm once by comparing a head DIAMETER against an edge DISTANCE, and this symbol exists so that cannot happen twice."
 
 [[dim]]
-sym = "FLANGE_STRIP_D"
-value = 13.8
+sym = "FLANGE_HEAD_RIM_H"
+value = 1
 provenance = "measured"
-note = "M8 flange head across the flange, THE T-SLOT BOLT ON THE FRONT JOINING STRIP - 13.8, his choice 2026-10-08, superseding the 17.3 of FLANGE_HEAD_D on this joint only. \U0001f534 IT IS NOT A COSMETIC CHANGE AND THAT IS THE POINT: the AS5311 puck needs SENSOR_KEEPOUT_W of 15 mm centred over the tape, and the strip\u2019s bolt rows CANNOT move - they sit at 7.5 and 37.5 because the extrusion\u2019s T-slots are RAIL_SLOT_INSET either side of the seam. At a 17.3 head the clear channel between the two head rims is 12.7 and the puck DOES NOT FIT, short by 1.15 a side; at 13.8 the channel is 16.2 and it fits by 0.6. The head diameter was the only variable in that sum. \u26a0 THE BEAM-END BOLTS ARE NOT THIS BOLT - they stay at 17.3, see FLANGE_HEAD_D. \u26a0 OPEN: whether the OTHER T-slot joints (the Y back plates, the X back plate, the casting interposer bars) also take this head or keep the 17.3. Only the front strip is FORCED by the encoder; the rest is a buy-one-bolt question and has not been asked."
+note = "How far the NORMAL M8 flange head stands proud AT THE RIM OF ITS FLANGE - 1, his 2026-10-11, against FLANGE_HEAD_H's 5 at the dome centre. 🔴 IT IS THE FIGURE THAT MATTERS FOR ANYTHING SLIDING PAST, because the rim is the outermost part of the head and the only part a neighbour at full head diameter can meet. The model draws the head as a plain cylinder at the DOME height, which is conservative - it claims 4 mm of metal at the rim that is not there."
+
+[[dim]]
+sym = "FLANGE_STRIP_D"
+value = 13.75
+provenance = "measured"
+note = "M8 flange head across the flange, THE LOW PROFILE ONE - 13.75, his calipers 2026-10-11, superseding the 13.8 of 2026-10-08. 🔴 IT IS NOT A COSMETIC CHANGE AND THAT IS THE POINT: the AS5311 puck needs SENSOR_KEEPOUT_W of 15 mm centred over the tape, and the strip's bolt rows CANNOT move - they sit at 7.5 and 37.5 because the extrusion's T-slots are RAIL_SLOT_INSET either side of the seam. At a 17.5 head the clear channel between the two head rims is 12.5 and the puck DOES NOT FIT; at 13.75 it is 16.25 and it fits. The head diameter was the only variable in that sum. ✅ THE OPEN QUESTION THIS NOTE CARRIED IS CLOSED - his list 2026-10-11. It asked whether the OTHER T-slot joints take this head or keep the big one, and the answer is that they KEEP IT: the Y and X back plates and the interposer bars are all normal flange. The low head goes on exactly three joints - the inside joiner strips, the fin angle into the top skin and the fin, and the shelf block into the X end plate."
 source = "his calipers and his choice, 2026-10-08"
 
 [[dim]]
 sym = "FLANGE_STRIP_H"
 value = 3
 provenance = "measured"
-note = "TOTAL height the strip bolt\u2019s head stands proud of the face, at its centre - 3 on the 13.8 head, his 2026-10-08. Flanged button head, hex socket in the dome, nothing above it. \u2705 It is 0.8 to 1.1 ABOVE the chip\u2019s plane - tape 1.6 plus the AS5311\u2019s 0.3-0.6 air gap puts the chip face at 1.9-2.2 - so the head IS taller than the sensor rides. That decides nothing, because the heads are outside the lane laterally; see SENSOR_KEEPOUT_SLACK. If the puck ever has to cross a head, this is the number it has to clear."
+note = "How far the LOW PROFILE M8 head stands proud of the face - 3, his 2026-10-11, unchanged from 2026-10-08 and the one figure in this family that has never moved. Flanged button head, hex socket in the dome, nothing above it. ✅ It is 0.8 to 1.1 ABOVE the chip's plane - tape 1.6 plus the AS5311's 0.3-0.6 air gap puts the chip face at 1.9-2.2 - so the head IS taller than the sensor rides. That decides nothing, because the heads are outside the lane laterally; see SENSOR_KEEPOUT_SLACK. If the puck ever has to cross a head, this is the number it has to clear."
 source = "his calipers and his choice, 2026-10-08"
 
 [[dim]]
@@ -2862,15 +2868,13 @@ note = "1006.35 - where the saw cut falls on each side lamination: BEHIND it the
 
 [[dim]]
 sym = "M8_FLANGE_HEAD_D"
-value = 14
-provenance = "measured"
-note = "14 - the SMALL M8 flange bolt's head across the flange, his 2026-10-11, the ones holding each fin angle to the top skin. \U0001F534 IT IS NOT M8_HEAD_D's 13, WHICH IS A DIFFERENT FASTENER: that one is a plain hex at 13 across and M8_HEAD_H tall at 8. These are wider and far shallower - the flange spreads the bearing and the head sits almost flush. Keep the two apart; they are both M8 and both 'the bolt head' in conversation."
+expr = "FLANGE_STRIP_D"
+note = "13.75 - the LOW PROFILE M8 flange head, the ones holding each fin angle to the top skin. 🔴 IT IS THE SAME PART AS FLANGE_STRIP_D AND NOW DERIVES FROM IT. Both were added for one joint each - this for the fin angle on 2026-10-11, that for the front strip on 2026-10-08 - and neither knew about the other, so the registry carried 14 and 13.8 for one bolt. His list 2026-10-11 is what joined them up: the strip, the fin angle and the shelf block all take the low head. ⚠ M8_HEAD_D's 13 IS A DIFFERENT FASTENER: a plain socket head at 13 across and 8 tall. Three M8 heads, and all three are 'the bolt head' in conversation."
 
 [[dim]]
 sym = "M8_FLANGE_HEAD_H"
-value = 3
-provenance = "measured"
-note = "3 - how proud the small M8 flange head stands, his 2026-10-11. \u2705 THAT SHALLOWNESS IS WHY THEY SUIT THE FIN ANGLE: the heads sit on the angle's horizontal leg out on the apron, where anything tall is something to catch a workpiece or a hand on. Against M8_HEAD_H's 8 for the plain hex."
+expr = "FLANGE_STRIP_H"
+note = "3 - how proud the LOW PROFILE M8 flange head stands. Derives from FLANGE_STRIP_H, which is the same part; see M8_FLANGE_HEAD_D for why there were two."
 
 [[dim]]
 sym = "FIN_ANGLE_BOLT_PITCH"
