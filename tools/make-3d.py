@@ -2504,6 +2504,37 @@ const GY=new THREE.Group(), GX=new THREE.Group(), GZ=new THREE.Group();
 scene.add(GY); GY.add(GX); GX.add(GZ);
 const RIDE={Y:GY,YX:GX,YXZ:GZ};
 const byGroup={}, PICK=[];
+// A PRISM'S OUTLINE IS DRAWN FROM ITS OWN PROFILE, not from EdgesGeometry.
+// 🔴 EdgesGeometry on an extruded shape WITH HOLES draws the cap triangulator's
+// seams as if they were real edges. On the bottom skin that put a line straight
+// across the inside of the box, 1087 mm from the back of one front tenon hole
+// to the back of the other - he spotted it with the top skin switched off, and
+// the tooltip did not change over it because an edge overlay is not a part.
+// Measured in node against this very three.js: four such segments, two on each
+// face, at exactly y 1148, which is the tenon line.
+//
+// The loops ARE the outline, so drawing them needs no triangulator and cannot
+// invent an edge: each loop twice, once at each end of the extrusion, plus one
+// upright at every vertex.
+function prismEdges(p){
+  const xy=(p.pl==='xy');
+  const u=pt=>pt[0]-mid[0], w=pt=>xy?(pt[1]-mid[1]):(pt[1]-mid[2]);
+  const d=p.yb-p.ya, v=[];
+  for(const lp of [p.profile].concat(p.holes||[])){
+    for(let i=0;i<lp.length;i++){
+      const a=lp[i], b=lp[(i+1)%lp.length];
+      v.push(u(a),w(a),0, u(b),w(b),0);     // this end
+      v.push(u(a),w(a),d, u(b),w(b),d);     // the far end
+      v.push(u(a),w(a),0, u(a),w(a),d);     // and the corner between them
+    }
+  }
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+  // the same turn the mesh gets, because this rides on the mesh
+  if(xy)g.rotateX(-Math.PI/2);
+  return g;
+}
+
 for(const p of PARTS){
   let geom, ctr;
   if(p.t==='helix'){
@@ -2575,7 +2606,8 @@ for(const p of PARTS){
   }
   const g=new THREE.Mesh(geom,new THREE.MeshLambertMaterial({color:p.c,side:THREE.DoubleSide}));
   g.position.set(ctr[0],ctr[1],ctr[2]);
-  const e=new THREE.LineSegments(new THREE.EdgesGeometry(g.geometry),
+  const e=new THREE.LineSegments(
+    p.t==='prism'?prismEdges(p):new THREE.EdgesGeometry(g.geometry),
     new THREE.LineBasicMaterial({color:0x000000,opacity:0.35,transparent:true}));
   g.add(e); (RIDE[p.k]||scene).add(g);
   g.userData.part=p; PICK.push(g);
