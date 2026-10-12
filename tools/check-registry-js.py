@@ -60,7 +60,7 @@ function el(cls, data, id) {
 // --- build the stub from the page's real markup -----------------------
 const cards = [], sections = [];
 let cur = null;
-const re = /<section id="([a-z0-9-]+)"|<div class="sym (p-[A-Za-z]+)" id="([A-Z0-9_]+)" data-sym="([^"]*)" data-prov="([^"]*)" data-note="([^"]*)"/g;
+const re = /<section id="([a-z0-9-]+)"|<div class="sym (p-[A-Za-z]+)(?: retired)?" id="([A-Z0-9_]+)" data-sym="([^"]*)" data-prov="([^"]*)" data-retired="([^"]*)" data-note="([^"]*)"/g;
 let m;
 while ((m = re.exec(html))) {
   if (m[1]) {
@@ -70,7 +70,8 @@ while ((m = re.exec(html))) {
     sections.push(cur);
     continue;
   }
-  const e = el('sym ' + m[2], { sym: m[4], prov: m[5], note: m[6] }, m[3]);
+  const e = el('sym ' + m[2], { sym: m[4], prov: m[5], retired: m[6],
+                                note: m[7] }, m[3]);
   e.innerHTML = '<card>' + m[3] + '</card>';
   e.parentElement = cur;
   cards.push(e);
@@ -98,12 +99,18 @@ cards.forEach(c => byId.set(c.id, c));
 
 const location = { hash: '' };
 const winHandlers = {};
+const retiredChip = el('chip', { retired: '1' });
 const document = {
   getElementById: id => byId.get(id) || null,
+  querySelector(sel) {
+    if (sel === '.chip[data-retired]') return retiredChip;
+    return null;
+  },
   querySelectorAll(sel) {
     if (sel === '.sym') return cards;
     if (sel === 'section') return sections;
     if (sel === '.chip[data-prov]') return chips;
+    if (sel === '.chip') return [...chips, retiredChip];
     if (sel === 'nav a') return navLinks;
     return [];
   },
@@ -244,6 +251,15 @@ ok('peeking at a filtered-out symbol still works', peekEl.hidden, false);
 ok('and does NOT clear the filter', hiddenOne.has('hide'), true);
 winHandlers.pointerup();
 chips[0]._h.click();
+
+// the retired chip is its own category, not a provenance
+const nRet = cards.filter(c => c.dataset.retired === '1').length;
+ok('some symbols are retired', nRet > 0, true);
+retiredChip._h.click();
+ok('the retired chip shows only those', shown(), nRet);
+ok('counter says only retired', nEl.textContent.includes('only retired'), true);
+retiredChip._h.click();
+ok('and clicking it again restores', shown(), cards.length);
 
 console.log(JSON.stringify(out));
 """

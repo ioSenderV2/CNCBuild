@@ -58,8 +58,12 @@ machine-readable.
 | `part` | off a part's own geometry that is not in doubt |
 | `vendor` | off a datasheet committed to `manufacturer-assets/` |
 | `nominal` | ⚠️ a catalogue figure **not yet confirmed on the part** — the class that produced three of this session's five errors |
-| `derived` | computed here from other symbols |
+| `derived` | computed here from other symbols, and it RE-DERIVES when they move |
+| `alias` | another name for one other symbol &mdash; a rename, with no arithmetic to be wrong |
+| `pinned` | 📌 it came out of a calculation and was then FIXED. It does **not** follow its source: `XEP_W` is 154 from `BLOCK_BUTTED`&rsquo;s 154.18 rounded down, and stays 154. Re-check these by hand when the source moves |
 | `OPEN` | 🔴 not established. **A placeholder. Must not be cut to.** |
+
+Separately from provenance, a symbol may be **`retired = true`**: nothing uses it any more, and it is kept because it is the record of a reversal. `dims.py check` fails if anything still derives from one.
 
 ## Fusion
 

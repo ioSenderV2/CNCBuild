@@ -46,7 +46,17 @@ for _stream in (sys.stdout, sys.stderr):
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "dimensions" / "registry.toml"
 
-PROVENANCE = {"measured", "part", "vendor", "nominal", "derived", "alias", "OPEN"}
+PROVENANCE = {"measured", "part", "vendor", "nominal", "derived", "alias",
+              "pinned", "OPEN"}
+
+# 🔴 PINNED IS NOT DERIVED - his call, 2026-10-11. 51 symbols carry a literal
+# value while having come out of a calculation, and XEP_W says what that means:
+# "set by BLOCK_BUTTED at 154.18, rounded down. NOT RE-DERIVED." The difference
+# is the whole point of `deps`: a derived number FOLLOWS its source when the
+# source moves, and a pinned one does not. Calling both derived is how a number
+# goes stale without anything noticing - which is the exact failure that made
+# this registry exist. Pinned says: this came from somewhere, go and re-check it
+# by hand if that somewhere moves.
 
 # 🔴 AN ALIAS IS A RENAME, NOT A CALCULATION - his call, 2026-10-11, after
 # RAIL_LOW_Z read as "derived from RAIL_SLOT_INSET" when both are 15 and nothing
@@ -123,7 +133,14 @@ class Registry:
         self.dims: dict[str, dict] = {}
         self.order: list[str] = []
         self.errors: list[str] = []
-        self.pinned: list[str] = []      # value, but provenance says derived
+        # 🔴 RETIRED IS A FLAG, NOT A PROVENANCE - his, 2026-10-11. The two
+        # answer different questions: provenance is where the number came from,
+        # retired is whether anything still wants it. FIN_KERF is nominal AND
+        # retired, and folding one into the other would lose that it was never
+        # confirmed either. Kept rather than deleted because a retired symbol is
+        # usually the only record of a reversal - FIN_KERF is why FIN_TOP_W
+        # reads 100 again rather than 99.625.
+        self.retired: list[str] = []
 
         for d in raw.get("dim", []):
             sym = d.get("sym")
@@ -142,22 +159,18 @@ class Registry:
             p = d.get("provenance")
             if p not in PROVENANCE:
                 self.errors.append(f"{sym}: provenance {p!r} not one of {sorted(PROVENANCE)}")
-            # ⚠️ A LITERAL VALUE CALLING ITSELF DERIVED IS NOT AN ERROR HERE, and
-            # 51 entries do it. Reading them, they mean something real and
-            # different: computed once and then PINNED - XEP_W is "set by
-            # BLOCK_BUTTED at 154.18, rounded down. Not re-derived". That does
-            # NOT move when its source moves, which is the exact failure `deps`
-            # exists to catch, so it is worth a name of its own. Naming it is
-            # his call; until then they are counted rather than failed.
-            if not has_e and p == "alias":
+            # A `value` cannot be derived or an alias: both of those mean the
+            # number is computed from another symbol every time it is read. A
+            # value that CAME from a calculation is `pinned`.
+            if not has_e and p in ("derived", "alias"):
                 self.errors.append(
-                    f"{sym}: provenance 'alias' is for an `expr`, and this has "
-                    f"a `value`")
-            if not has_e and p == "derived":
-                self.pinned.append(sym)
+                    f"{sym}: provenance {p!r} is for an `expr`; a literal value "
+                    f"that came out of a calculation is 'pinned'")
             if not (sym[0].isalpha() and all(c.isalnum() or c == "_" for c in sym)):
                 self.errors.append(f"{sym}: not a Fusion-safe identifier")
             d.setdefault("unit", self.meta.get("units", "mm"))
+            if d.get("retired"):
+                self.retired.append(sym)
             self.dims[sym] = d
             self.order.append(sym)
 
@@ -183,6 +196,22 @@ class Registry:
             self._resolving.pop()
         self._values[sym] = v
         return v
+
+    def check_retired(self) -> list[str]:
+        """A retired symbol that something still derives from is not retired.
+
+        This is the whole value of the flag: it is a claim that nothing wants
+        this number any more, and a claim that can be checked is worth more than
+        a note saying the same thing - the note cannot notice when it stops
+        being true.
+        """
+        for sym in self.retired:
+            users = self.direct_dependents(sym)
+            if users:
+                self.errors.append(
+                    f"{sym}: marked retired, but {', '.join(users)} still "
+                    f"derive(s) from it")
+        return self.errors
 
     def evaluate_all(self) -> list[str]:
         """Resolve every symbol. Returns the error list (also appended to self.errors)."""
@@ -219,6 +248,7 @@ class Registry:
 def _load(strict: bool = True) -> Registry:
     reg = Registry()
     reg.evaluate_all()
+    reg.check_retired()
     if reg.errors and strict:
         print("REGISTRY ERRORS:", file=sys.stderr)
         for e in reg.errors:
@@ -235,8 +265,13 @@ def cmd_check(_args) -> int:
         for e in reg.errors:
             print(f"  {e}")
         return 1
-    unconfirmed = [s for s in reg.order if reg.dims[s]["provenance"] in UNCONFIRMED]
+    unconfirmed = [s for s in reg.order
+                   if reg.dims[s]["provenance"] in UNCONFIRMED
+                   and not reg.dims[s].get("retired")]
     print(f"OK - {len(reg.order)} symbols resolve, no cycles, no undefined references.")
+    if reg.retired:
+        print(f"{len(reg.retired)} retired and kept for the record: "
+              + ", ".join(reg.retired))
     if unconfirmed:
         print(f"\n{len(unconfirmed)} NOT confirmed on the real part - do not cut to these:")
         for s in unconfirmed:
@@ -287,7 +322,11 @@ def cmd_deps(args) -> int:
 
 def cmd_open(_args) -> int:
     reg = _load()
-    rows = [s for s in reg.order if reg.dims[s]["provenance"] in UNCONFIRMED]
+    # A RETIRED SYMBOL IS NOT A THING TO CUT TO, so it does not belong in a
+    # list of numbers nobody has confirmed - nobody is going to use it at all.
+    rows = [s for s in reg.order
+            if reg.dims[s]["provenance"] in UNCONFIRMED
+            and not reg.dims[s].get("retired")]
     if not rows:
         print("Nothing unconfirmed.")
         return 0
@@ -478,13 +517,16 @@ def cmd_html(args) -> int:
                       + "</div>")
             note = (f'<div class="n">{link(d.get("note", ""))}</div>'
                     if d.get("note") else "")
+            ret = bool(d.get("retired"))
+            tag = '<span class="retired-tag">retired</span>' if ret else ""
             rows.append(
-                f'<div class="sym p-{prov}" id="{s}" data-sym="{s.lower()}" '
-                f'data-prov="{prov}" '
+                f'<div class="sym p-{prov}{" retired" if ret else ""}" id="{s}" '
+                f'data-sym="{s.lower()}" '
+                f'data-prov="{prov}" data-retired="{"1" if ret else ""}" '
                 f'data-note="{_attr(d.get("note","")).lower()}">'
                 f'<div class="hd"><a class="name" href="#{s}">{s}</a>'
                 f'<span class="val">{reg.fmt(s)} {d["unit"]}</span>'
-                f'<span class="prov">{prov}</span></div>'
+                f'<span class="prov">{prov}</span>{tag}</div>'
                 f"{expr}{usedby}{src}{note}</div>")
         cards.append(
             f'<section id="{gid}"><h2>{_esc(g)}</h2>{"".join(rows)}</section>')
@@ -495,6 +537,10 @@ def cmd_html(args) -> int:
     chips = "".join(
         f'<button type="button" class="chip" data-prov="{p}">{p} '
         f'<span>{counts[p]}</span></button>' for p in sorted(counts))
+    nret = sum(1 for s in reg.order if reg.dims[s].get("retired"))
+    if nret:
+        chips += (f'<button type="button" class="chip" data-retired="1">retired '
+                  f'<span>{nret}</span></button>')
 
     html = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
@@ -566,6 +612,15 @@ def cmd_html(args) -> int:
  .p-part {{ border-left-color: #2e7fae; }}
  .p-derived {{ border-left-color: #b9c0c7; }}
  .p-alias {{ border-left-color: #8d7bb5; }}
+ /* PINNED CAME OUT OF A CALCULATION AND THEN STOPPED FOLLOWING IT, which is
+    worth seeing at a glance next to a derived one that still does. */
+ .p-pinned {{ border-left-color: #c77d3f; }}
+ /* A retired symbol is kept for the record only, so it reads as paper. */
+ .sym.retired {{ opacity: .62; border-left-color: #9aa3ab;
+   border-style: dashed; }}
+ .retired-tag {{ font-size: 11px; text-transform: uppercase;
+   letter-spacing: .05em; color: #fff; background: #9aa3ab;
+   border-radius: 999px; padding: 0 7px; }}
  .p-nominal {{ border-left-color: #d9a406; }}
  .p-OPEN {{ border-left-color: #d64545; }}
  .hide {{ display: none; }}
@@ -621,18 +676,21 @@ const syms=[...document.querySelectorAll('.sym')], q=document.getElementById('q'
 // chips make that six clicks and this makes it one. An EMPTY selection means
 // show everything, so the same click that isolates a provenance also clears it.
 const only=new Set();
+let onlyRetired=false;
 function apply(){{
   const t=q.value.trim().toLowerCase();
   let n=0;
   for(const s of syms){{
     const hit=(!t||s.dataset.sym.includes(t)||s.dataset.note.includes(t))
-            && (only.size===0||only.has(s.dataset.prov));
+            && (only.size===0||only.has(s.dataset.prov))
+            && (!onlyRetired||s.dataset.retired==='1');
     s.classList.toggle('hide',!hit);
     if(hit)n++;
   }}
   for(const sec of document.querySelectorAll('section'))
     sec.classList.toggle('hide',!sec.querySelector('.sym:not(.hide)'));
   const pick=[...only].sort();
+  if(onlyRetired)pick.push('retired');
   document.getElementById('n').textContent=
     n+' shown'+(pick.length?' · only '+pick.join(', '):'');
 }}
@@ -641,6 +699,12 @@ q.addEventListener('input',apply);
 // out - so if a click ever appears to do nothing again, the counter says which
 // half failed: unchanged text means the handler never ran, changed text with
 // nothing hidden means the CSS did not take.
+const rchip=document.querySelector('.chip[data-retired]');
+if(rchip)rchip.addEventListener('click',()=>{{
+  onlyRetired=!onlyRetired;
+  rchip.classList.toggle('on',onlyRetired);
+  apply();
+}});
 for(const c of document.querySelectorAll('.chip[data-prov]')){{
   c.addEventListener('click',()=>{{
     const p=c.dataset.prov;
@@ -698,8 +762,8 @@ function land(){{
   const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));
   if(!el||!el.classList.contains('sym'))return;
   if(el.classList.contains('hide')){{
-    only.clear(); q.value='';
-    for(const o of document.querySelectorAll('.chip[data-prov]'))
+    only.clear(); q.value=''; onlyRetired=false;
+    for(const o of document.querySelectorAll('.chip'))
       o.classList.remove('on');
     apply();
     el.scrollIntoView();

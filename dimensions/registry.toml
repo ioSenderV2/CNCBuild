@@ -224,20 +224,20 @@ source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 [[dim]]
 sym = "XEP_W"
 value = 154
-provenance = "derived"
+provenance = "pinned"
 note = "Set by BLOCK_BUTTED at 154.18, rounded down. Not re-derived: narrowing buys nothing back, the blocks reach the rail end regardless."
 source = "machine/end-plates-risers-and-spindle.md"
 
 [[dim]]
 sym = "XEP_TOP_ABOVE_BEAM"
 value = 60
-provenance = "derived"
+provenance = "pinned"
 note = "The plate stops at the top of the X beam's upper extrusion = EXT_W above the Y beam top"
 
 [[dim]]
 sym = "XEP_BOLT_REAR"
 value = 15
-provenance = "derived"
+provenance = "pinned"
 note = "Rear M8 pair from the plate's BACK EDGE. Beam back face flush with that edge, bolt EXT_BORE_INSET in."
 
 [[dim]]
@@ -346,7 +346,7 @@ source = "his, 2026-10-10"
 [[dim]]
 sym = "X_BLOCK_UPPER_CENTRE"
 value = 136
-provenance = "derived"
+provenance = "pinned"
 note = "136 - the upper pair of X-axis bearing blocks, centred between Sheet 3a's X1-X16 columns at 120 and 152. ⚠ THOSE TWO ARE 32 APART, WHICH IS BLOCK_PITCH_X, THE ACROSS-RAIL PITCH - not the along-rail 36. The X carriage plate hangs with its 407 VERTICAL, so the X beam's rails run along the plate's Y and each block extends BLOCK_W along the plate's X. Getting that backwards makes the block look 77 long up the plate instead of 44 wide, and it is an easy mistake: the Y values on that same sheet really are on the 36."
 
 [[dim]]
@@ -455,13 +455,13 @@ note = "Sole bracket's R1-R4 row, from the plate's INNER face. Centred in the do
 [[dim]]
 sym = "ROOT_BOLT_Y_FIRST"
 value = 32
-provenance = "derived"
+provenance = "pinned"
 note = "First of four Y stations across the 154 root, settled 2026-10-03. D1-D4, R1-R4 and R5-R8 all sit on the same stations, so one spread serves the doubler bolts and both sole-bracket rows."
 
 [[dim]]
 sym = "ROOT_BOLT_Y_PITCH"
 value = 30
-provenance = "derived"
+provenance = "pinned"
 note = "Pitch of those four stations: 32, 62, 92, 122. Leaves 32 of edge at each end of the 154."
 
 [[dim]]
@@ -477,7 +477,7 @@ note = "Seating width at the plate's bottom with the doubler on"
 [[dim]]
 sym = "DOUBLER_H"
 value = 45
-provenance = "derived"
+provenance = "pinned"
 note = "Doubler height. 45, so it can come out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW, whose bottom edge lands at 55.5 (the lower rail at 77.5 less half the block's measured 44), so anything under that clears. 45 clears by 10.5; the earlier 50 cleared by 5.5; 60 overlapped by 4.5 and is what the bound was found for. NOT gated on the Y beam underside - the doubler sits ~17 inboard of the beam's inside face. An earlier note rounded the 55.5 to 56 and the clearance to 6; the 55.5 is the computed figure and is the one to use. dims.py deps: nothing derives from this, so changing it is local - but see DOUBLER_BOLT_X, which STOPPED being the midpoint when this moved."
 
 # ---------------------------------------------------------------- the front fin
@@ -491,6 +491,7 @@ note = "Each front fin's stock height, 301.625 - PLATE_H, because the fin stands
 sym = "FIN_KERF"
 value = 2
 provenance = "nominal"
+retired = true
 note = "\U0001f534 RETIRED 2026-10-08 AND NOTHING DERIVES FROM IT. It was the bandsaw kerf of the single diagonal cut that nested both fins out of one 301.625 square. He put each fin on its own piece of plate instead, so there is no cut to allow for and FIN_TOP_W stopped being forced by it. Kept rather than deleted because it is the reason FIN_TOP_W reads 100 again rather than 99.625, and a bare deletion would leave that reversal with no record."
 
 [[dim]]
@@ -508,7 +509,7 @@ note = "100, his choice, and it is CHOSEN AGAIN rather than derived - 2026-10-08
 [[dim]]
 sym = "FIN_COL_OUTB"
 value = 35
-provenance = "derived"
+provenance = "pinned"
 note = "Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value."
 
 [[dim]]
@@ -529,14 +530,14 @@ note = "Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the de
 [[dim]]
 sym = "WINDOW_W"
 value = 60.5
-provenance = "derived"
+provenance = "pinned"
 note = "Clearance window for the cast stepper frame, in each front fin. 60.5 OVER A 60 CASTING - half a millimetre total, a slip fit and deliberately little, because the window's loose axis is its HEIGHT, not its width. Corrected from 62 on 2026-10-03 by tools/audit-prose.py: nine places in the prose said 60.5 and gave the reasoning, the registry said 62 with a one-line note and no source, and nothing had ever compared them."
 source = "machine/lateral-stiffness.md; machine/y-beam-support.md"
 
 [[dim]]
 sym = "WINDOW_H"
 value = 50
-provenance = "derived"
+provenance = "pinned"
 note = "Window height. This is the loose axis - it is what the casting's clearance actually consumes - which is why the width is allowed to be a 0.5 slip fit."
 
 [[dim]]
@@ -550,7 +551,7 @@ note = "Window's outboard edge from the fin's factory edge. Measured off the MDF
 [[dim]]
 sym = "SPACER_SKIM"
 value = 1.0
-provenance = "derived"
+provenance = "pinned"
 note = "1.0, THE AMOUNT ACTUALLY CUT - and it is deliberately LESS than the 1.3 step it is closing. 🔴 THE SKIM HAS TWO JOBS AND ONLY ONE OF THEM NEEDS A SKIM. Facing both spacers IN ONE SETUP is the only way to make the pair coplanar and flat, and that is what this cut is for. Closing the gap to the ball nut is the other job, and a shim does it better - see NUT_SHIM. It used to be 1.0 described as the whole step, which made a one-shot cut on the mill trip carry a number measured to about two tenths."
 
 [[dim]]
@@ -683,7 +684,7 @@ provenance = "vendor"
 [[dim]]
 sym = "CLAMP_CENTRES"
 value = 116
-provenance = "derived"
+provenance = "pinned"
 note = "Set by bringing the clamp centres in so the M5 counterbores clear the M8 column"
 
 [[dim]]
@@ -809,7 +810,7 @@ note = "1in, across the bar"
 [[dim]]
 sym = "SHELF_BAR_H"
 value = 50.8
-provenance = "derived"
+provenance = "pinned"
 note = "2in. Was 1in. The height exists to separate the two horizontal bolts in Z."
 
 [[dim]]
@@ -837,13 +838,13 @@ note = "BOTH horizontal bolts. The only free Y station - two M8 need ~12 between
 [[dim]]
 sym = "SHELF_HORIZ_Z_LOW"
 value = 15
-provenance = "derived"
+provenance = "pinned"
 note = "Z from the bar's underside. BLIND-TAPPED: through-drilling would break out where the lower Y bearing block sits."
 
 [[dim]]
 sym = "SHELF_HORIZ_Z_HIGH"
 value = 35
-provenance = "derived"
+provenance = "pinned"
 note = "15.8 to the bar's top"
 
 [[dim]]
@@ -854,7 +855,7 @@ note = "The lever resisting the bar's nose-down pitch about X. This is what the 
 [[dim]]
 sym = "SHELF_BAR_TOP"
 value = -60
-provenance = "derived"
+provenance = "pinned"
 note = "Z from the Y beam top - the underside of the X beam's bottom extrusion"
 
 [[dim]]
@@ -874,7 +875,7 @@ note = "The 1in shim strip on hand is exactly the bar's width, so a strip cut to
 [[dim]]
 sym = "BEAM_BOLT_CLEARANCE"
 value = 9
-provenance = "derived"
+provenance = "pinned"
 note = "9 mm clearance on M8 where a plate meets extrusion - the repo's deliberate figure, the joint working by friction"
 
 [[dim]]
@@ -941,7 +942,7 @@ note = "7, the BF12 casting's own offset from its base face to the first mountin
 [[dim]]
 sym = "BF12_ROW1_BARE"
 value = 127
-provenance = "derived"
+provenance = "pinned"
 note = "🔴 SUPERSEDED 2026-10-08 AND NOTHING DERIVES FROM IT. It was the first BF12 row measured DOWN from the plate's installed TOP edge - his number 2026-10-03, given when the plate was a nominal 304.8. Kept rather than deleted because the prose quotes it and because it records the shape of the mistake: a ball screw's mounting height referenced to a bought plate edge, which moved 3.175 the moment the plate was ordered at 11 7/8. BF12_ROW1_Y now runs on Y_BEAM_UNDERSIDE - T_INTERPOSER - BF12_BASE_TO_ROW1 instead. For the record the two land within 0.475 of each other, which is why the error survived three readings."
 
 [[dim]]
@@ -963,7 +964,7 @@ note = "147, the second BF12 row, same four columns. It SUBTRACTS the pitch: She
 [[dim]]
 sym = "XBOX_PITCH"
 value = 150
-provenance = "derived"
+provenance = "pinned"
 note = "Torsion-box bolt pitch along the rear plate, settled 2026-10-03. The side plates use 100 over 1000 - different plates, both correct."
 
 [[dim]]
@@ -1029,7 +1030,7 @@ note = "Where the corner cut starts up the far end of both X end plates - 60, an
 [[dim]]
 sym = "CORNER_CUT_X_END"
 value = 188
-provenance = "derived"
+provenance = "pinned"
 note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. The same number on BOTH plates - 2a cuts from (XEP_CUT, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that let the far end stay uncut. WAS 185.5 BRIEFLY, moved to 188 so the cut stops crowding the bearing block. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (176, 133.5), and the perpendicular distance to the cut is 19.9 mm on 2a and 23.4 on 2b, so a ~10 mm counterbore leaves about 15 mm of material on the tighter of the two. \u2705 BOTH GREW BY ABOUT 5 ON 2026-10-10 and nothing was done to them: the block came down 7.5 with XEP_CUT while this end stayed at 188, because 188 is measured from the plate's bottom edge and the block is measured from the beam. At the block's old (183.5, 133.5) they were 14.2 and 18.6, and at a 185.5 cut end before that, 12.3 and 17.3."
 
 
@@ -1064,7 +1065,7 @@ note = "19 - the BOTTOM skin, unchanged when the top went to 25 on 2026-10-11. N
 [[dim]]
 sym = "BOX_RIB_H"
 value = 100
-provenance = "derived"
+provenance = "pinned"
 note = "Egg-crate rib height between the skins. His, 2026-10-03."
 
 [[dim]]
@@ -1172,13 +1173,13 @@ note = "Third P-hole row, 97.545, drawn 97.5."
 [[dim]]
 sym = "DOUBLER_BOLT_X"
 value = 25
-provenance = "derived"
+provenance = "pinned"
 note = "Sheet 2a's D1-D4 column, and Sheet 2d's. One column in shear with full material around it. 🔴 IT IS NO LONGER THE DOUBLER'S MIDPOINT and must not be re-derived as one: at DOUBLER_H 45 the middle is 22.5, and 25 is deliberate. THE REASON IS R1-R4: they bore 20 deep from X 0 into the doubler's end face and clear the 5 mm D-bolt wall - the bolt spans 22.5 to 27.5 - by 2.5. Re-centre the column to 22.5 and the bolt spans 20 to 25, which a 20 deep hole arrives exactly on; the R row would have to shorten to about 17.5. His call: leave it at 25. Edge distances at 45 are 20 above and 25 below, which on a 5 mm hole is 17.5 and 22.5 of material. Moving it would also move D1-D4 on Sheets 2a and 2b, which share this column."
 
 [[dim]]
 sym = "FIN_TONGUE_BOLT_1"
 value = 25
-provenance = "derived"
+provenance = "pinned"
 note = "Sheet 1's T1, the outboard of the fin's two bolts. T2 is at 170. \u2705 MEASURED FROM THE FIN'S OUTBOARD (SQUARE) EDGE - confirmed by him 2026-10-11, and everything about the fin angle depends on it: FIN_ANGLE_L, FIN_ANGLE_T1_END and the taper clearances are all computed from that edge. The alternative reading, machine X, is self-refuting - it would put T2 0.17 from the tapered edge at the angle leg's top. \u26A0 THE NAME IS NOW WRONG AND IS LEFT ALONE DELIBERATELY: these stopped being TONGUE bolts on 2026-10-03 when the front tongue was deleted, and they are bracket bolts - renaming the symbol would break every sheet reference for no gain. Shares a value with DOUBLER_BOLT_X by coincidence and nothing else."
 
 # ---- the BF12 columns, which three sheets share
@@ -1235,13 +1236,13 @@ note = "1197.38 - Y2 end, inboard column. Provisional, same as RP_A_COL_3."
 [[dim]]
 sym = "Z_PLATE_L"
 value = 175
-provenance = "derived"
+provenance = "pinned"
 note = "Z plate long dimension. See z-carriage.md for why it is 175 and why the width went 154 to 164."
 
 [[dim]]
 sym = "Z_PLATE_W"
 value = 164
-provenance = "derived"
+provenance = "pinned"
 note = "164. 🔴 EVERY HOLE ON THIS PLATE IS NOW A WHOLE MILLIMETRE - all 28 of them - and that only works at 164. It briefly went to 165 to chase the C-hole columns, on the belief that the rail pitch was 115; the pitch is 114 (see Z_RAIL_COL), which puts the block bolt columns on whole offsets and makes an EVEN width the one that works. At 165 the nut and clamp holes land on half millimetres instead. The width was 154 before that, and 164 because on 154 the outer M5 counterbore broke through the edge by 1.5; at 164 it clears by 4.55 on the measured 8.9 bit."
 
 [[dim]]
@@ -1259,7 +1260,8 @@ note = "Third M5 row from the plate's centre, the first on the second block. Sam
 [[dim]]
 sym = "Z_BLOCK_GROUP_SHIFT"
 value = 0
-provenance = "derived"
+provenance = "pinned"
+retired = true
 note = "0 - 🔴 RETIRED. It was 0.3, a deliberate slide of the block group to force the C-hole rows onto whole millimetres, and it existed only because the rows were being built from four loose measurements that were not symmetric. Deriving them from Z_BLOCK_CENTRE_SEP instead makes the pattern symmetric about the plate and the rows come out whole on their own. Kept at zero rather than deleted because the prose refers to it."
 
 [[dim]]
@@ -1270,7 +1272,7 @@ note = "77.09, one HGH20 block along the rail - half the measured butted pair. �
 [[dim]]
 sym = "Z_BLOCK_CENTRE_SEP"
 value = 87
-provenance = "derived"
+provenance = "pinned"
 note = "87, the two Z block centres apart - CHOSEN, and the one number this whole pattern hangs on. It puts the four bolt rows on 26 / 62 / 113 / 149, all whole and symmetric about the plate, which is why the group shift that used to sit here is gone. 🔴 DO NOT SPECIFY THE GAP, SPECIFY THESE ROWS. The gap is not something you set - it is what happens when the blocks are bolted to rows that are already drilled."
 
 [[dim]]
@@ -1381,13 +1383,13 @@ note = "5.2, the counterbore's pilot, and therefore the size the hole must be WH
 [[dim]]
 sym = "Z_HOLE_D"
 value = 6
-provenance = "derived"
+provenance = "pinned"
 note = "6, the final clearance hole. It is opened from Z_PILOT_D with an END MILL and not a reamer - a reamer takes 0.1 to 0.3 and follows the hole it is given, so it can neither remove 0.8 nor move a hole. ⚠ IT MATCHES THE SPACERS, WHICH ARE ALREADY MADE WITH 6 mm CLEARANCE - his, 2026-10-08 - so this does not add float to the stack, it removes a step: the plate was the tight layer at 5.2 while the spacer beneath it was already 6. The cost is head bearing area, 35.2 mm2 down to 28.2, which takes the bearing stress under the head from about 59% to about 73% of 6061-T6 yield at a typical M5 8.8 preload. ESTIMATES, not spec - but the aluminium is the weak member in this joint, not the bolt, so do not torque these to what the fastener would take."
 
 [[dim]]
 sym = "Z_CBORE_WEB"
 value = 4
-provenance = "derived"
+provenance = "pinned"
 note = "4, the plate material left UNDER the head. 🔴 THE COUNTERBORE IS SPECIFIED AS A WEB AND NOT AS A DEPTH, which is the whole point: engagement is bolt minus web minus spacer, so a web target gives the same engagement whatever the plate turns out to measure. A depth dialled from the face does not - T_Z_PLATE is still an unmeasured nominal and the half-inch stock the X end plates came from measured 12.19, a 0.5 swing that is larger than the whole engagement budget. Same thinking as referencing every standing plate from its bottom edge, one layer down. Caliper the plate, subtract this, dial that depth."
 
 [[dim]]
@@ -1456,7 +1458,7 @@ note = "12, the working thread depth - NUT_TAP_REACH held back 2 mm so nothing c
 [[dim]]
 sym = "Z_NUT_CBORE_WEB"
 value = 6
-provenance = "derived"
+provenance = "pinned"
 note = "6, the plate left under the head on N1-N4 - DEEPER than the 4 the C-holes get, and his call 2026-10-08: 🔴 THE 4 mm WEB IS ONLY THE SPACER BOLTS' CONSTRAINT. C1-C16 cross the web AND the 15.2 spacer before they reach the block, so at a 6 web an M5 x 25 would engage 3.8, under a diameter - the 4 is forced there, not chosen. N1-N4 cross only the web and the shim, so they can afford a thicker one, and it buys 2 mm more material under the four heads that sit beneath the lower spindle clamp. ⚠ THE PLATE THEREFORE HAS TWO COUNTERBORE DEPTHS. I had claimed all twenty could share one setting, which was tidier and wrong."
 
 [[dim]]
@@ -1522,56 +1524,56 @@ source = "machine/drawings/shop-pack.html, Sheet 3c"
 [[dim]]
 sym = "Z_STOP_FACE_X"
 value = 310
-provenance = "derived"
+provenance = "pinned"
 note = "310, where the block's LOWER face sits up the carriage plate - and that face is the stop: it is what the Z ball nut lands on. The block runs from here up through Z_STOP_T."
 source = "machine/drawings/shop-pack.html, Sheets 3a and 3c"
 
 [[dim]]
 sym = "Z_STOP_BORE_D"
 value = 22
-provenance = "derived"
+provenance = "pinned"
 note = "\u00f822, the bore the Z screw runs on through, on the screw centreline. \U0001f534 NOT \u00f827: a 27 bore reaches 11.5 out from the axis and an M5 clearance hole 10 from the end sits 15 off it, so a 27 would cut into the hole. At 22 the bore wall is 14 out and the \u00f86 clears it by 1.0."
 source = "machine/drawings/shop-pack.html, Sheet 3c"
 
 [[dim]]
 sym = "Z_STOP_BORE_OUT"
 value = 25
-provenance = "derived"
+provenance = "pinned"
 note = "25, the bore axis out from the carriage plate's face. It is the middle of the 50 across, but NOT the middle of the 45 out - 25 of 45 leaves 20 beyond it, and it has to: the bore then runs 14 to 36 out from the plate, which is the span the \u00f86 clearance holes are argued against. It lands on the screw axis, which the model reaches independently through SCREW_AXIS_H, also 25."
 source = "machine/drawings/shop-pack.html, Sheet 3c"
 
 [[dim]]
 sym = "Z_STOP_BOLT_INSET"
 value = 10
-provenance = "derived"
+provenance = "pinned"
 note = "TS1 and TS2 are 10 in from each end of the 50, so 10 and 40 across it. On the carriage plate that lands them at Y 62 and 92 either side of the screw at 77, which is how Sheet 3a has them."
 source = "machine/drawings/shop-pack.html, Sheets 3a and 3c"
 
 [[dim]]
 sym = "Z_STOP_BOLT_Z"
 value = 12.7
-provenance = "derived"
+provenance = "pinned"
 note = "The two M5 run in halfway up the 25.4. With the stop face at Z_STOP_FACE_X that puts the tapped pair at X 322.7 on the carriage plate, which is what Sheet 3a drills."
 source = "machine/drawings/shop-pack.html, Sheets 3a and 3c"
 
 [[dim]]
 sym = "Z_STOP_HOLE_D"
 value = 6
-provenance = "derived"
+provenance = "pinned"
 note = "\u00f86 clearance for the two M5, drilled through the 45. It leaves 1.0 of wall to the \u00f822 bore, so it gets drilled straight."
 source = "machine/drawings/shop-pack.html, Sheet 3c"
 
 [[dim]]
 sym = "Z_STOP_CBORE_DEPTH"
 value = 6
-provenance = "derived"
+provenance = "pinned"
 note = "6 deep, counterbored from the block's outer face. It is what sets the engagement: 45 less 6 leaves 39 of block, so an M5 x 50 reaches 11 into the carriage plate."
 source = "machine/drawings/shop-pack.html, Sheet 3c"
 
 [[dim]]
 sym = "BOLT_Z_STOP"
 value = 50
-provenance = "derived"
+provenance = "pinned"
 note = "M5 x 50, two of them, holding the stop block to the carriage plate. \u26a0 THESE AND THE BLOCK ARE SACRIFICIAL - they fire only if the soft limit and the proximity sensor have both already failed, so do not size them by strength. If one is ever used, replace the block and the bolts."
 source = "machine/drawings/shop-pack.html, Sheet 3c; machine/z-carriage.md"
 
@@ -1607,7 +1609,7 @@ source = "his, 2026-10-09"
 [[dim]]
 sym = "BOX_TONGUE_PROUD"
 value = 60
-provenance = "derived"
+provenance = "pinned"
 note = "How far the box's laminated tongue stands proud of the top skin, on the back and both sides. The plates sit FLAT ON THE SKIN and the tongue laps them from OUTBOARD, so this is a simple bolted lap - there is no channel and nothing is captured. WAS 61 until 2026-10-03, changed by him for consistency, which makes the bolt line exactly central: BOX_TONGUE_BOLT_Y is 30 above the plate's bottom edge and now also 30 below the tongue's top. Named BOX_TONGUE to keep it clear of TONGUE_H and friends, which are the X end plate's BF12 tongue and a different part entirely."
 
 [[dim]]
@@ -1620,13 +1622,13 @@ note = "The one bolt line at 30 above each plate's bottom edge - side plates and
 [[dim]]
 sym = "TSLOT_X_FIRST"
 value = 50
-provenance = "derived"
+provenance = "pinned"
 note = "First bolt station along the 1000 on every bolt-on plate - Sheets 8, 9 and 10. His, 2026-10-03. With TSLOT_X_PITCH it gives seven per row at 50 to 950, symmetric with 50 clear at each end. The pitch had been written down for weeks; where the first one sat never had been."
 
 [[dim]]
 sym = "TSLOT_X_PITCH"
 value = 150
-provenance = "derived"
+provenance = "pinned"
 note = "Bolt pitch along the 1000 on Sheets 8, 9 and 10. NOT the same number as XBOX_PITCH, which is also 150 but is the rear plate's torsion-box row on a different part - they agree by choice, not by derivation."
 
 [[dim]]
@@ -1706,7 +1708,7 @@ note = "Bare top skin ahead of the side tongue. The front fin occupies the first
 [[dim]]
 sym = "T_BOX_TONGUE"
 value = 25
-provenance = "derived"
+provenance = "pinned"
 note = "25 - the box tongue, ONE lamination and NOT the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. \U0001F534 IT IS NOT A SEPARATE PART FROM THE OUTER WALL - torsion-box.md: 'inner web between the skins, outer lamination 180 mm tall standing on the bottom skin and 60 mm proud'. The tongue IS that outer lamination, so its thickness and the outer wall's are ONE DECISION and cannot be set apart. \u2705 25 SINCE 2026-10-11, up from 19, AND THE ARGUMENT IS BOLT BEARING RATHER THAN STIFFNESS: the standing plates bolt THROUGH this in a lap, M8 in a 9 hole, so bearing area is hole x thickness - 171 mm2 at 19 against 225 at 25, up 32%. lateral-stiffness.md makes those two through-bolts THE lateral load path, as a 145 mm couple, and plywood crushing under a bolt is a real limit where plywood shearing in a rib is not. \u2705 GEOMETRICALLY FREE: MACHINE_OUTER_W is plate to plate and the tongue laps the plates from OUTBOARD, so this only grows the box's outer envelope and nothing inside the machine moves. \u26A0 NOMINAL - caliper the sheet in hand, same warning as the skins."
 
 [[dim]]
@@ -1765,7 +1767,7 @@ note = "154, the X carriage plate across - same width as the X end plates, and S
 [[dim]]
 sym = "Z_RAIL_INSET"
 value = 20
-provenance = "derived"
+provenance = "pinned"
 note = "20, each Z rail's centreline in from the carriage plate's long edge - Sheet 3a's R1 at Y 20 and R2 at Y 134. It is set at assembly with a 10 mm stop against the plate edge, the rail being RAIL_W wide, so the stop is the thing that makes this repeatable rather than a measurement."
 
 [[dim]]
@@ -1794,19 +1796,19 @@ note = "Clamp footprint across the Z plate, where it lands on the face - HIS CAL
 [[dim]]
 sym = "WINDOW_Z_LOW"
 value = 132
-provenance = "derived"
+provenance = "pinned"
 note = "Window's lower edge, from the fin's BOTTOM edge - Sheet 1's X 132. The casting occupies 132 to 172.5 of it; the rest is clearance."
 
 [[dim]]
 sym = "WINDOW_OUTB_DRAWN"
 value = 20
-provenance = "derived"
+provenance = "pinned"
 note = "Window's outboard edge from the fin's outboard factory edge, AS DRAWN on Sheet 1 (Y 20). \u26a0 WINDOW_OUTB says 19, measured off the MDF template 2026-10-02, and open-items.md closed the strip widths at 19. The two disagree by 1. The 20 is almost certainly right and the 19 stale: at 20 the window's outboard edge lands on X 3.175 and 1207.555 in machine coordinates, which ARE the two Y beams' outer faces - exactly what Sheet 1's own note says it is aligned to. The 3D model uses 20. SETTLE IT before the fins are cut."
 
 [[dim]]
 sym = "INTERPOSER_L"
 value = 150
-provenance = "derived"
+provenance = "pinned"
 note = "Sheet 6's bar length. Its outboard end protrudes 30 past the fin's outer face, so measuring along the beam from the beam's end face it runs -40 to +110."
 
 [[dim]]
@@ -1829,14 +1831,14 @@ note = "4 - how far the screw's end stops SHORT of BF12's mounting face. \U0001f
 [[dim]]
 sym = "INTERPOSER_BOLT_ROW_1"
 value = 105
-provenance = "derived"
+provenance = "pinned"
 note = "105 - the first of the interposer bar's two T-nut rows, from the bar's OUTBOARD end, Sheet 6's T1 and T3. \U0001f534 IT WAS DRAWING-ONLY until 2026-10-10, the same gap SHELF_BOLT_LOW_X records: the number lived on one sheet and nowhere else, so nothing could check it. The pair used to be 82 / 110 / 138 and there used to be three: the bar slid back to meet the screw and the casting came back at 77 rather than 72.5, so 82 fouls its face outright and the other two moved in to 105 and 135."
 source = "shop-pack Sheet 6"
 
 [[dim]]
 sym = "INTERPOSER_BOLT_ROW_2"
 value = 135
-provenance = "derived"
+provenance = "pinned"
 note = "135 - the second T-nut row, Sheet 6's T2 and T4. \u2705 It leaves 15 to the bar's inboard end against the roughly 9 half-head of an M8 flange bolt, which is why there are no counterbores on this part. The first column clears the casting's face by 28, so its head clears by 19."
 source = "shop-pack Sheet 6"
 
@@ -2136,13 +2138,13 @@ note = "ALIAS OF T_SIDE_PLATE, collapsed 2026-10-07 - it is the same piece of st
 [[dim]]
 sym = "BOLT_FRONT_STRIP"
 value = 10
-provenance = "derived"
+provenance = "pinned"
 note = "M8 x 10 for the front joining strip, all three beams - 42 of them, and these are the ones that must be A4 / 316 austenitic because the magnetic tape runs between their rows. M8 x 12 IS WRONG HERE: it reaches 8.0 against BOLT_REACH_MAX's 7.2 and bottoms before the head seats. \u26a0 THE x 10 IS NO LONGER COMFORTABLE AND THAT IS NEW: it was chosen against a 4 mm strip, where reach is exactly TNUT_BODY_T's 6 with 1.2 spare to the slot floor. T_FRONT_STRIP is now open between 3.175 and 4.0, and at 3.175 the reach is 6.825 - inside the limit by 0.375, which is caliper noise. \U0001f534 IF THE STOCK CALIPERS AT 1/8in, DECIDE THIS BEFORE TIGHTENING ANYTHING: an M8 x 8, or a washer under the head the way BOLT_BACK_Y_WASHER solves the identical problem on the 3.175 back plate. A washer here must be A4 / 316 as well, for the same reason the bolts are."
 
 [[dim]]
 sym = "BOLT_BACK_X"
 value = 12
-provenance = "derived"
+provenance = "pinned"
 note = "M8 x 12 for the X back joining plate, 6.35 mm 6061 - 28 of them. Reach 5.65, so 5.65 of the available 6 engaged and 1.55 spare to the floor. The next size up, M8 x 16, would reach 9.65 and bottom."
 
 [[dim]]
@@ -2154,7 +2156,7 @@ note = "A plain M8 washer under the head on the Y back plate - NOT a stiffness o
 [[dim]]
 sym = "BOLT_BACK_Y"
 value = 10
-provenance = "derived"
+provenance = "pinned"
 note = "M8 x 10 for the Y back plate - the outboard steel plate, 28 per beam, 56 total - WITH the washer in BOLT_BACK_Y_WASHER. Same length as the front strip's bolts, so the buy is two lengths and not three: 98 of M8 x 10 (42 A4 / 316 for the front strips, 56 plain for the Y backs) and 28 of M8 x 12 for the X back. 126 bolts against 126 T-nuts."
 
 # ---------------------------------------------------------------- the ball screws
