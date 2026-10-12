@@ -27,6 +27,7 @@ import argparse
 import ast
 import csv
 import operator
+import re
 import sys
 import tomllib
 from pathlib import Path
@@ -349,6 +350,220 @@ def cmd_md(args) -> int:
     return 0
 
 
+
+# A SYMBOL NAME, for turning mentions in prose into links. Conservative on
+# purpose: underscores and digits are part of a name, so the boundaries have to
+# exclude them or TT_BED_T would match inside TT_BED_TOP.
+_SYM_RE = re.compile(r"(?<![A-Za-z0-9_])([A-Z][A-Z0-9_]{2,})(?![A-Za-z0-9_])")
+
+
+def _sections(path: Path) -> dict[str, str]:
+    """{symbol: the section heading it sits under}, read from the RAW file.
+
+    tomllib throws comments away, and the registry's structure lives entirely in
+    them - 84 headings written as `# ---- the front fin`. Parsing the text is the
+    only way to keep that structure, and it is why this reads the file a second
+    time rather than using the loaded table.
+    """
+    out, current = {}, "unsectioned"
+    for line in path.read_text(encoding="utf-8").splitlines():
+        m = re.match(r"^#\s*-{3,}\s*(.+?)\s*$", line)
+        if m:
+            current = m.group(1)
+            continue
+        m = re.match(r'^sym = "([^"]+)"', line)
+        if m:
+            out[m.group(1)] = current
+    return out
+
+
+def _esc(s: str) -> str:
+    return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
+
+
+def cmd_html(args) -> int:
+    reg = _load()
+    out = Path(args.output) if args.output else ROOT / "dimensions" / "registry.html"
+    sect = _sections(reg.path)
+    known = set(reg.dims)
+
+    def link(text: str) -> str:
+        """Every mention of a symbol becomes a jump to its card."""
+        return _SYM_RE.sub(
+            lambda m: (f'<a href="#{m.group(1)}">{m.group(1)}</a>'
+                       if m.group(1) in known else m.group(1)),
+            _esc(text))
+
+    # one ordered bucket per heading, in the order the registry introduces them
+    order, buckets = [], {}
+    for s in reg.order:
+        g = sect.get(s, "unsectioned")
+        if g not in buckets:
+            buckets[g] = []
+            order.append(g)
+        buckets[g].append(s)
+
+    counts = {}
+    for s in reg.order:
+        p = reg.dims[s]["provenance"]
+        counts[p] = counts.get(p, 0) + 1
+
+    def slug(g):
+        return re.sub(r"[^a-z0-9]+", "-", g.lower()).strip("-")
+
+    cards = []
+    for g in order:
+        gid = slug(g)
+        rows = []
+        for s in buckets[g]:
+            d = reg.dims[s]
+            prov = d["provenance"]
+            used = reg.direct_dependents(s)
+            expr = (f'<div class="r"><b>built from</b> <code>{link(d["expr"])}</code></div>'
+                    if d.get("expr") else "")
+            src = (f'<div class="r"><b>source</b> {link(d["source"])}</div>'
+                   if d.get("source") else "")
+            usedby = ("" if not used else
+                      '<div class="r"><b>used by</b> '
+                      + ", ".join(f'<a href="#{u}">{u}</a>' for u in used)
+                      + "</div>")
+            note = (f'<div class="n">{link(d.get("note", ""))}</div>'
+                    if d.get("note") else "")
+            rows.append(
+                f'<div class="sym p-{prov}" id="{s}" data-sym="{s.lower()}" '
+                f'data-prov="{prov}" data-note="{_esc(d.get("note","")).lower()}">'
+                f'<div class="hd"><a class="name" href="#{s}">{s}</a>'
+                f'<span class="val">{reg.fmt(s)} {d["unit"]}</span>'
+                f'<span class="prov">{prov}</span></div>'
+                f"{expr}{usedby}{src}{note}</div>")
+        cards.append(
+            f'<section id="{gid}"><h2>{_esc(g)}</h2>{"".join(rows)}</section>')
+
+    toc = "".join(
+        f'<a href="#{slug(g)}">{_esc(g)}<span>{len(buckets[g])}</span></a>'
+        for g in order)
+    chips = "".join(
+        f'<button class="chip" data-prov="{p}">{p} <span>{counts[p]}</span></button>'
+        for p in sorted(counts))
+
+    html = f"""<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CNCBuild &mdash; the dimension registry</title>
+<style>
+ :root {{ color-scheme: light dark; }}
+ * {{ box-sizing: border-box; }}
+ body {{ margin: 0; font: 14px/1.5 "Segoe UI", system-ui, sans-serif;
+   color: #1b1f23; background: #f6f7f8; }}
+ header {{ position: sticky; top: 0; z-index: 5; background: #fffffff2;
+   border-bottom: 1px solid #d8dde2; padding: 10px 16px;
+   backdrop-filter: blur(6px); }}
+ h1 {{ font-size: 15px; margin: 0 0 8px; }}
+ h1 small {{ font-weight: normal; color: #5b646d; }}
+ #q {{ width: min(420px, 60vw); padding: 6px 10px; font: inherit;
+   border: 1px solid #c3cbd2; border-radius: 6px; }}
+ .chip {{ font: inherit; font-size: 12.5px; padding: 4px 10px; margin-left: 6px;
+   border: 1px solid #c3cbd2; border-radius: 999px; background: #fff;
+   cursor: pointer; }}
+ .chip.off {{ opacity: .4; }}
+ .chip span {{ color: #5b646d; }}
+ .wrap {{ display: flex; align-items: flex-start; gap: 20px; padding: 16px; }}
+ nav {{ position: sticky; top: 86px; flex: 0 0 240px; max-height: 80vh;
+   overflow-y: auto; font-size: 12.5px; }}
+ nav a {{ display: flex; justify-content: space-between; gap: 8px;
+   padding: 2px 6px; color: #2b333a; text-decoration: none; border-radius: 4px; }}
+ nav a:hover {{ background: #e7ebef; }}
+ nav a span {{ color: #8a939b; }}
+ main {{ flex: 1 1 auto; min-width: 0; }}
+ section {{ margin: 0 0 22px; }}
+ h2 {{ font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
+   color: #5b646d; margin: 0 0 8px; padding-bottom: 4px;
+   border-bottom: 1px solid #dfe4e8; }}
+ .sym {{ background: #fff; border: 1px solid #e1e6ea; border-left: 4px solid #c3cbd2;
+   border-radius: 6px; padding: 8px 12px; margin: 0 0 8px; }}
+ .sym:target {{ border-color: #d99; box-shadow: 0 0 0 3px #f6dede; }}
+ .hd {{ display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }}
+ .name {{ font-weight: 700; font-family: Consolas, ui-monospace, monospace;
+   color: #11181f; text-decoration: none; }}
+ .val {{ font-family: Consolas, ui-monospace, monospace; color: #0a6b4e;
+   font-weight: 700; }}
+ .prov {{ font-size: 11px; text-transform: uppercase; letter-spacing: .05em;
+   color: #5b646d; border: 1px solid #d8dde2; border-radius: 999px;
+   padding: 0 7px; }}
+ .r {{ font-size: 12.5px; color: #39424a; margin-top: 3px; }}
+ .r b {{ color: #5b646d; font-weight: 600; }}
+ .n {{ font-size: 12.5px; color: #39424a; margin-top: 5px; }}
+ code {{ font-family: Consolas, ui-monospace, monospace; }}
+ a {{ color: #0b5fa5; }}
+ /* 🔴 PROVENANCE IS THE WHOLE POINT OF THE REGISTRY, so it is the one thing
+    carried in colour: measured and part are his, derived follows from them,
+    nominal is a catalogue figure nobody has put a caliper on. */
+ .p-measured {{ border-left-color: #2e9e6b; }}
+ .p-part {{ border-left-color: #2e7fae; }}
+ .p-derived {{ border-left-color: #b9c0c7; }}
+ .p-nominal {{ border-left-color: #d9a406; }}
+ .p-OPEN {{ border-left-color: #d64545; }}
+ .hide {{ display: none; }}
+ @media (prefers-color-scheme: dark) {{
+   body {{ color: #dfe4e8; background: #16191c; }}
+   header {{ background: #1c2024f2; border-color: #2c3237; }}
+   .sym {{ background: #1c2024; border-color: #2c3237; }}
+   nav a {{ color: #c3cbd2; }} nav a:hover {{ background: #252a2f; }}
+   .name {{ color: #eaeef2; }} .val {{ color: #5fd3a3; }}
+   .r, .n {{ color: #b4bdc5; }} a {{ color: #6cb6f5; }}
+   #q, .chip {{ background: #1c2024; color: inherit; border-color: #39414a; }}
+ }}
+ @media (max-width: 760px) {{ nav {{ display: none; }} .wrap {{ padding: 10px; }} }}
+</style></head><body>
+<header>
+  <h1>The dimension registry
+    <small>&mdash; {len(reg.order)} symbols, generated from registry.toml by
+    tools/dims.py html. Registry updated {reg.meta.get("updated", "unknown")}.</small></h1>
+  <input id="q" type="search" placeholder="filter by symbol or note&hellip;" autofocus>
+  {chips}
+  <span id="n" class="chip" style="cursor:default"></span>
+</header>
+<div class="wrap">
+  <nav>{toc}</nav>
+  <main>{"".join(cards)}</main>
+</div>
+<script>
+// Filter on the symbol name AND the note, because half of what this file is for
+// lives in the notes - searching "acorn" has to find ACORN_NUT_DEPTH and every
+// entry that talks about one.
+const syms=[...document.querySelectorAll('.sym')], q=document.getElementById('q');
+const off=new Set();
+function apply(){{
+  const t=q.value.trim().toLowerCase();
+  let n=0;
+  for(const s of syms){{
+    const hit=(!t||s.dataset.sym.includes(t)||s.dataset.note.includes(t))
+            && !off.has(s.dataset.prov);
+    s.classList.toggle('hide',!hit);
+    if(hit)n++;
+  }}
+  for(const sec of document.querySelectorAll('section'))
+    sec.classList.toggle('hide',!sec.querySelector('.sym:not(.hide)'));
+  document.getElementById('n').textContent=n+' shown';
+}}
+q.addEventListener('input',apply);
+for(const c of document.querySelectorAll('.chip[data-prov]'))
+  c.onclick=()=>{{
+    const p=c.dataset.prov;
+    off.has(p)?off.delete(p):off.add(p);
+    c.classList.toggle('off',off.has(p));
+    apply();
+  }};
+apply();
+</script>
+</body></html>
+"""
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(html, encoding="utf-8")
+    print(f"wrote {out.relative_to(ROOT)} - {len(reg.order)} symbols in "
+          f"{len(order)} sections")
+    return 0
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -362,6 +577,9 @@ def main() -> int:
     f.add_argument("-o", "--output")
     f.add_argument("--header", action="store_true", help="emit a header row")
     f.set_defaults(fn=cmd_fusion)
+    hh = sub.add_parser("html", help="browsable registry page")
+    hh.add_argument("-o", "--output")
+    hh.set_defaults(fn=cmd_html)
     m = sub.add_parser("md", help="generated markdown table")
     m.add_argument("-o", "--output")
     m.set_defaults(fn=cmd_md)

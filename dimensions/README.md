@@ -44,6 +44,7 @@ Run through [`../tools/dims.py`](../tools/dims.py). Stdlib only, Python 3.11+.
 | `dims.py table` | every symbol, value, provenance |
 | `dims.py fusion` | Fusion 360 parameters CSV |
 | `dims.py md` | regenerate [`VALUES.md`](VALUES.md) |
+| `dims.py html` | regenerate [`registry.html`](registry.html) &mdash; the whole registry to browse: grouped by its own section headings, every symbol mentioned in an expression or a note is a link to that symbol, each card lists what USES it, and the search box matches notes as well as names |
 
 ## Provenance is not decoration
 
