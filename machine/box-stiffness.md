@@ -31,7 +31,7 @@ move anyway.
 Y plate bolt line and the plate bottom edges **in bearing**. Asymmetric skins are fine in a torsion
 box, so **25 mm top over 19 mm bottom** is the sensible split if anything is spent.
 
-✅ **Settled 2026-10-11: 25 mm top, 19 mm bottom.** The box is **144 mm** deep rather than 138. The
+SETTLED: **Settled 2026-10-11: 25 mm top, 19 mm bottom.** The box is **144 mm** deep rather than 138. The
 underside of the top skin **does not move** - it is set by the post ledge, the bottom skin and the
 cavity - so the 6 mm is all on the outside and the machine simply stands 6 mm higher off the floor.
 Z 0 is the top skin, so nothing above the box moves at all.

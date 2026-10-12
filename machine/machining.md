@@ -10,11 +10,11 @@ Accurate holes are drilled on **a single visit to a friend's shop** - a Laguna m
 **manual X and Y**, DRO to be confirmed. **As of 2026-09-29 none of the 30 holes in the X carriage
 plate are drilled.**
 
-🔴 **Every plate needing accurate holes must be fully dimensioned before that trip**, including
+FLAG: **Every plate needing accurate holes must be fully dimensioned before that trip**, including
 assemblies that will not be built for months: **X carriage plate, Z plate, two X end plates**. One
 more plate on the visit costs an hour; a second trip costs a weekend.
 
-🔴 **The 2026-10-02 rework put three more parts on this trip.** The list had been shrinking; it is
+FLAG: **The 2026-10-02 rework put three more parts on this trip.** The list had been shrinking; it is
 not any more:
 
 | Part | Why the mill |
@@ -23,7 +23,7 @@ not any more:
 | **The 1210.73 mm rear plate**, 1/4" steel | two 8-bolt patterns a metre apart that must match extruded bores - and the part may exceed the machine's X travel |
 | **Interposer bars**, 60 × 150 × 3/8" - two for Y, plus X | six tapped M5 under a bearing face and six flange clearance holes, all in a small part |
 
-🔴 **The six bolt-on plates went ONTO the trip on 2026-10-09** - two **11 7/8" × 39 5/16" × 10
+FLAG: **The six bolt-on plates went ONTO the trip on 2026-10-09** - two **11 7/8" × 39 5/16" × 10
 gauge steel** outboard plates, three **45 mm × 1 m × 4 mm 6061** front strips, and the **4 11/16" ×
 39 5/16" × 1/4"** X back joining plate.
 
@@ -33,17 +33,17 @@ overrules it on a different one** - 14 holes on a strip and 28 on a back plate, 
 is more hand layout than comes out straight. A wandered row still bolts up and merely fights for an afternoon - the
 holes are not needed perfect for the joint, they are wanted perfect for the assembly.
 
-❌ **A sharper reason stood here for the front strips and the 2" stock removed it.** While they were
+REJECTED: **A sharper reason stood here for the front strips and the 2" stock removed it.** While they were
 45 wide they filled the block gap exactly, so a row wandering in Y drove the strip into a bearing
 block. At 50.8 the strip runs *under* the blocks and the next obstruction is the rail, 9.6 away.
 
-⚠️ **This is six more metre-long parts on a trip that already has an open question about X
+OPEN: **This is six more metre-long parts on a trip that already has an open question about X
 traverse** - the one gating the rear plate. If the answer comes back short, **reposition the two outboard plates or the X back
 plate** - there the T-nut reason that used to keep them home does make a shifted station cheap.
 **Not the front strips, and not the rear plate**: the strips because their Y is a clearance against a
 bearing block, the rear plate because its two patterns must meet extruded bores a metre apart.
 
-✅ **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
+SETTLED: **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
 
 **Triage - not everything needs the mill:**

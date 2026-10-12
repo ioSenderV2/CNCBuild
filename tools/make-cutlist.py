@@ -27,7 +27,7 @@ OUT = HERE.parent / "machine" / "drawings" / "box-cutlist.html"
 
 # Sheet sizes to test, in mm. The two Baltic birch formats he asked about.
 #
-# ✅ THE 4 x 8 IS A TRUE 48 x 96 FROM CROSSCUT - his, 2026-10-11, from having
+# SETTLED: THE 4 x 8 IS A TRUE 48 x 96 FROM CROSSCUT - his, 2026-10-11, from having
 # bought sheet goods there before. That matters more than it looks: the skins
 # clear the sheet's WIDTH by only 6.00 after his trim, so a board arriving
 # undersize is the one thing that breaks this plan. It is his supplier and his
@@ -41,7 +41,7 @@ SHEETS = [
 # question. A Festool track saw takes 1.6 off a Baltic birch factory edge and
 # that is ALL he removes - he does not trim an allowance on top of the kerf.
 #
-# 🔴 THESE WERE 3.0 AND 6.0 FOR ONE COMMIT AND BOTH WERE INVENTED. On that pair
+# FLAG: THESE WERE 3.0 AND 6.0 FOR ONE COMMIT AND BOTH WERE INVENTED. On that pair
 # a 4 x 8 sheet came out 2.8 SHORT of the skins and the tool reported 5 x 5 as
 # required. It is not: the 6 was a trim allowance nobody had asked for, and it
 # alone decided the answer. Defaults are his practice now, and both are
@@ -75,7 +75,7 @@ def parts(v):
         # part sawn off forward of SIDE_LAM_PROUD_CUT - so it is ordered at the
         # TALL height even though most of its length finishes flush.
         ("Side lamination", v["SIDE_LAM_L"], v["TONGUE_FULL_H"], 2, t_out),
-        # 🔴 THE BACK AND FRONT ARE EACH CUT IN TWO - his call 2026-10-11, and
+        # FLAG: THE BACK AND FRONT ARE EACH CUT IN TWO - his call 2026-10-11, and
         # it is what puts the whole 25 mm on ONE sheet instead of two. At full
         # length neither will sit beside the top skin on a 4 x 8; at half they
         # both will. Splitting only one of them does not do it.
@@ -89,7 +89,7 @@ def parts(v):
         # --- the egg crate ---------------------------------------------------
         ("Rib, fore-aft", D - 2 * web, h_cav, int(v["BOX_RIBS_FORE_AFT"]), rib),
         ("Rib, across", W - 2 * web, h_cav, int(v["BOX_RIBS_ACROSS"]), rib),
-        # 🔴 THE TWO BACK TENON BLOCKS ARE NOT HERE ON PURPOSE - they come from
+        # FLAG: THE TWO BACK TENON BLOCKS ARE NOT HERE ON PURPOSE - they come from
         # his scrap bin, 2026-10-11. They were the ONLY parts on a second sheet
         # of 19 mm, 1% used: a $245 board for 0.044 m2 of location blocking that
         # carries no load and whose thickness is free up to
@@ -106,7 +106,7 @@ def pack(pieces, sw, sl):
     than a count is what lets the nesting be DRAWN - a count can be believed or
     not, a picture can be checked.
 
-    🔴 IT WAS SHELF PACKING AND SHELF PACKING GOT A REAL ANSWER WRONG. Shelves
+    FLAG: IT WAS SHELF PACKING AND SHELF PACKING GOT A REAL ANSWER WRONG. Shelves
     run the full width of the sheet, so the skin - 1210 deep on a 1216 sheet -
     consumed a whole shelf and everything after it went to a second sheet. But
     the skin only uses 1211 of the shelf's 2435 LENGTH, and the 1222 x 1216

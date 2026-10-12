@@ -6,11 +6,11 @@
 
 ---
 
-✅ **Decided 2026-09-29, material changed 2026-10-02, size settled by the order 2026-10-08. One per Y beam, 11 7/8" × 39 5/16" × 10 gauge
+SETTLED: **Decided 2026-09-29, material changed 2026-10-02, size settled by the order 2026-10-08. One per Y beam, 11 7/8" × 39 5/16" × 10 gauge
 cold-rolled steel sheet**, replacing the existing 12" × 6" × 1/4" gusset - the dimensions rotate,
 from 12" along the beam to 12" tall and a metre long.
 
-## 🔴 It is steel now, and it is also the Y back joining plate
+## FLAG: It is steel now, and it is also the Y back joining plate
 
 **Both halves of that sentence matter, and the second is what makes the first a reversal.** On Y
 there is no separate 120 mm back joining plate - this plate *is* it, grown. So choosing steel here
@@ -35,10 +35,10 @@ right at "a couple of tenths".
 
 Two things point the same way:
 
-1. ✅ **9.2 mm equivalent is almost exactly the 3/8" (9.53 mm)** that
+1. SETTLED: **9.2 mm equivalent is almost exactly the 3/8" (9.53 mm)** that
    [`gantry-beam-joint.md`](../gantry-beam-joint.md) specifies for the Y back plate. So 1/8" steel is
    **sized right for the job it is taking over**, not merely adequate.
-2. ✅ **Thermal restraint force scales with E·A**, so 1/8" generates **half** the load at the end
+2. SETTLED: **Thermal restraint force scales with E·A**, so 1/8" generates **half** the load at the end
    T-nuts that 1/4" steel would. Against an objection that is specifically thermal, the thinner plate
    is the better answer.
 
@@ -46,7 +46,7 @@ The one argument for 1/4" steel is bolt bearing and durability as a chip barrier
 halving the live objection, and 18.4 mm of equivalent aluminium is roughly double what anything here
 asks for.
 
-📌 **Cold-rolled sheet is the tidier product at this thickness, but hot-rolled A36 is acceptable and
+NOTE: **Cold-rolled sheet is the tidier product at this thickness, but hot-rolled A36 is acceptable and
 is what was found.** Flatness does not bind here regardless: seven M8 along the bottom edge plus
 the bolted lap against the tongue pull 1/8" steel straight over a metre without argument, and the holes are 9 mm
 clearance into T-slots where the T-nut moves to meet the bolt.
@@ -60,18 +60,18 @@ clearance into T-slots where the T-nut moves to meet the bolt.
 | Price | **$81.99 each** - and **two are needed**, one plate per sheet |
 | Yield | 48" = 1219 mm against a 1000 mm plate, so a 219 mm offcut each |
 
-✅ **CLOSED 2026-10-08: neither. It was bought as 10 gauge, .135" = 3.429 mm.** The listing's two
+SETTLED: **CLOSED 2026-10-08: neither. It was bought as 10 gauge, .135" = 3.429 mm.** The listing's two
 numbers disagreed - "11 gauge" is 0.1196" (3.04) against 1/8" at 0.125" (3.175) - and the sheet
 actually ordered is thicker than both. Harmless for the structure either way: transformed area is
-still on the 3/8" target. ⚠️ **Record the caliper reading in T_SIDE_PLATE**, not here and not in
+still on the 3/8" target. OPEN: **Record the caliper reading in T_SIDE_PLATE**, not here and not in
 T_OUTBOARD_PLATE, because the riser-proud check at the
 front plates keys off this thickness.
 
-📌 **~$4/lb is retail.** A steel service centre is typically around half that; at $164 for the pair
+NOTE: **~$4/lb is retail.** A steel service centre is typically around half that; at $164 for the pair
 it is a judgement call whether the errand is worth it. **Mill scale comes off before paint** - and
 paint is not optional here, see the galvanic note above.
 
-### 🔴 Galvanic is the real cost of this change
+### FLAG: Galvanic is the real cost of this change
 
 Steel against aluminium, with **a metre of face-to-face contact** against the beam plus seven bolts
 - and this plate is the **chip barrier**, so it is the part that actually gets wet with swarf and
@@ -81,7 +81,7 @@ coolant. Aluminium is the anode and the extrusion is the part that cannot be rep
 ever run. This is a bigger exposure than the rear plate's two bolt patterns and it is the one
 downside that does not have a number attached.
 
-✅ ~~**The channel was dimensioned around a 6.35 mm plate and the plate went to 1/8"**~~
+SETTLED: ~~**The channel was dimensioned around a 6.35 mm plate and the plate went to 1/8"**~~
 **Dead - there is no channel**, and this warning outlived by a day the correction that killed it.
 The plate sits flat on the top skin and the tongue laps it from outboard; see "THERE IS NO CHANNEL"
 under "How it lands on the torsion box" below. Nothing to resize and nothing to rattle in.
@@ -117,7 +117,7 @@ gusset is a discrete triangle, this is a continuous one a metre long.
 
 ## Two things to get right - both now resolved
 
-✅ **Thermal - closed 2026-09-30, no slotting needed, and steel improved it.** A metre of plate
+SETTLED: **Thermal - closed 2026-09-30, no slotting needed, and steel improved it.** A metre of plate
 bolted along its length to a wooden box, against plywood that barely moves over a 15 °C swing:
 
 | Plate material | Differential over 1000 mm at 15 K |
@@ -131,7 +131,7 @@ float per hole - several times the whole differential - and the shop is climate 
 Baltic birch skins. The 9 mm hole *is* the slot. This follows the precedent set on the Y risers,
 reamed to 9 mm for the same reason.
 
-🔴 **Do not transfer this conclusion to the T-nut row.** It is a different joint with a different
+FLAG: **Do not transfer this conclusion to the T-nut row.** It is a different joint with a different
 duty, and conflating them is how the steel question gets waved through without being answered:
 
 | | Plate to box | Plate to extrusion |
@@ -147,7 +147,7 @@ The figure is kept because it is the one that had to be beaten, not because it i
 also that for plywood the larger term is **moisture, not temperature**; it is dismissed here on the
 climate-controlled shop, not on the thermal arithmetic.
 
-✅ **The box has a vertical face, because one is being built for it** - see the next section. The
+SETTLED: **The box has a vertical face, because one is being built for it** - see the next section. The
 warning this bullet used to carry stands, and it is the reason the interface took the shape it did:
 landing only on the box's top surface through an angle would reintroduce a bending element and give
 back much of the gain.
@@ -156,14 +156,14 @@ back much of the gain.
 plate, **in 6061**. All of this added weight - roughly **17 lb per Y beam** at 1/8" steel - is
 therefore static.
 
-📌 **The steel parts in absolute terms: ~17 lb per side plate and ~40 lb for the 1210.73 mm rear
+NOTE: **The steel parts in absolute terms: ~17 lb per side plate and ~40 lb for the 1210.73 mm rear
 plate**, so roughly **75 lb of steel** on the fixed frame. A delta against the old scheme is not
 quoted because the shear panel it absorbs was never sized. All static, all low down, against a
 figure that was always offered as a design budget rather than a limit.
 
 ## How it lands on the torsion box
 
-✅ **Decided 2026-09-30.** This is the plate's bottom fixing, and it is what closes the "does the
+SETTLED: **Decided 2026-09-30.** This is the plate's bottom fixing, and it is what closes the "does the
 box have a vertical face" question above: **one is built into the box for the purpose.**
 
 The box is a **25 mm Baltic birch top skin and a 19 mm bottom over a grid of 19 mm strips 100 mm
@@ -175,18 +175,18 @@ high**, so **144 mm** deep overall. Two changes make it the plate's foundation:
    between the skins. The outer one is **180 mm tall, standing on the bottom skin's top face**, glued
    to the inner web's outer face and to the edge of the top skin. It spans the 100 mm web plus the
    19 mm top skin and so **stands 60 mm proud** of the top surface as a **tongue, outboard of the plate.**
-   📌 **It is a tongue, not a curb.** The word "curb" is retired across the repo as of
+   NOTE: **It is a tongue, not a curb.** The word "curb" is retired across the repo as of
    2026-10-04 - it carried the dead implication of a face the plate drops in against, and the plate
    is bolted through a lap instead.
 
-🔴 **THERE IS NO CHANNEL - corrected 2026-10-03.** An earlier version of this section had the
+FLAG: **THERE IS NO CHANNEL - corrected 2026-10-03.** An earlier version of this section had the
 top skin stopping short of the tongue's inner face and the plate dropping into the groove between
 them. **It does not.** The plate sits **flat on the top skin** and the tongue laps it from
 **outboard**: tongue inner face against plate outer face, a plain bolted lap. The bottom edge still
 bears **directly over the wall** and never on skin spanning between grid members, which was the point
 of the original arrangement and survives unchanged.
 
-✅ **What that kills:** the open question about the channel's width. It was dimensioned around
+SETTLED: **What that kills:** the open question about the channel's width. It was dimensioned around
 6.35 when the plate was 1/4", the plate went to 1/8", and the groove was then 3 mm wider than the
 thing it was supposed to locate. With no groove there is nothing to size, and the plate is located
 by the tongue it is bolted through.
@@ -202,7 +202,7 @@ by the tongue it is bolted through.
 
 ### The plate is captured on three sides
 
-📌 **Unchanged by the no-channel correction** - all three still hold. The groove only ever did the same job the tongue does, from the other side.
+NOTE: **Unchanged by the no-channel correction** - all three still hold. The groove only ever did the same job the tongue does, from the other side.
 
 | Direction | What takes it |
 |---|---|
@@ -219,7 +219,7 @@ seven M8 is orders of magnitude clear, and this joint's real limits are geometri
 
 | | |
 |---|---|
-| Fastener | **M8 at 150 mm, first at 50** - seven per beam over the 1000 mm. 🔴 Was eleven at 100 until 2026-10-03; unified with the other bolt-on plates |
+| Fastener | **M8 at 150 mm, first at 50** - seven per beam over the 1000 mm. FLAG: Was eleven at 100 until 2026-10-03; unified with the other bolt-on plates |
 | Height | **Y 30** above the plate's bottom edge - the same row height as the front fin and the back plate |
 | Direction | From **outboard**: washer, **tongue**, plate, **M8 locknut** on the inboard face |
 | Holes | **9 mm clearance** in **tongue** and plate both - see the thermal bullet above |
@@ -240,22 +240,22 @@ interface is shaped this way instead of bolted flat to the box's top surface.
 
 ### Two things to get right when cutting
 
-⚠️ **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
+OPEN: **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
 **tongues'** inner faces, and a tongue's inner face is a hard bearing face with no float - the 9 mm
 holes let the *bolt* move, not the bearing. A millimetre or two **too wide** leaves a gap a shim
 fixes in minutes. **Too narrow and the plates will not fit between the tongues at all**, and planing
 a glued-up skin edge in place is a miserable job. The same cost at cut time, wildly different cost
 if you are out.
 
-📌 **"Fit between", not "drop between"** - the plates are not lowered into anything. They stand on
+NOTE: **"Fit between", not "drop between"** - the plates are not lowered into anything. They stand on
 the top skin and each is lapped from outboard by its tongue. The gap still has to be right, for the
 same reason and to the same tolerance; what is gone is the groove.
 
-⚠️ **The plate-to-tongue seam is a swarf trap** running the length of the machine - the plate is
+OPEN: **The plate-to-tongue seam is a swarf trap** running the length of the machine - the plate is
 the chip barrier and the tongue sits outboard of it. Either seal the top of the seam or leave it
 deliberately open at both ends so it can be blown through.
 
-### 🔴 The machine is the reference, not the box - so the box is built last
+### FLAG: The machine is the reference, not the box - so the box is built last
 
 **The box will not be built until the whole CNC is assembled on a flat surface and the width measured
 exactly.** That is the standing rule of this repo applied to a structural part: the machine is the
@@ -285,17 +285,17 @@ Two consequences worth holding on to:
 
 The **10 mm magnetic tape** for the AS5311 sensors runs on the face of the **45 mm front plate**,
 centred in the gap between its two rows of seven M8 flange bolts. Two rows at ±15 mm with **13.8 mm**
-flange heads leaves **16.2 mm clear**. 🔴 **What has to fit in that lane is the SENSOR PUCK, not the
-tape**: it needs **15 mm**, so the margin is **0.6 mm a side**. ⚠️ At the old 17.3 mm head the lane
+flange heads leaves **16.2 mm clear**. FLAG: **What has to fit in that lane is the SENSOR PUCK, not the
+tape**: it needs **15 mm**, so the margin is **0.6 mm a side**. OPEN: At the old 17.3 mm head the lane
 was 12.7 and the puck missed by 1.15 a side - the tape fitted and the thing that reads it did not,
 which is the trap in sizing this gap off the tape width.
 
-🔴 **Those bolts must be austenitic stainless.** They put ferromagnetic material about 1 mm from
+FLAG: **Those bolts must be austenitic stainless.** They put ferromagnetic material about 1 mm from
 the edge of a magnetic scale, repeating every 150 mm, and steel draws flux laterally. The failure
 mode is not a constant offset but a **periodic error at exactly the bolt spacing**, which would read
 as a scale or pitch fault while everything else about the axis looked healthy.
 
-🔴 **Checked 2026-09-29: the generic "stainless" bolts on hand ARE magnetic.** Sold as stainless,
+FLAG: **Checked 2026-09-29: the generic "stainless" bolts on hand ARE magnetic.** Sold as stainless,
 bought from Amazon, and a magnet grabs them. **Sourcing A4 / 316 from Tacoma Screw instead.**
 
 "Stainless" does not mean non-magnetic. A2 (304) and A4 (316) are austenitic and effectively
@@ -307,36 +307,36 @@ has already been wrong once.
 
 **Only the front strips need this**, since that is where the tape runs: 14 per strip.
 
-✅ **Settled 2026-10-02: all three beams carry tape**, X included. This file previously left X
+SETTLED: **Settled 2026-10-02: all three beams carry tape**, X included. This file previously left X
 conditional - "plus 14 more if the X beam's front plate carries tape the same way". It does. **So
 the count is 42 A4 / 316 flange bolts, not 28**, and the magnet-on-arrival check applies to all
 three sets.
 
-🔴 **A new magnetic object arrived with the stepper move.** A NEMA 23 permanent-magnet rotor now
+FLAG: **A new magnetic object arrived with the stepper move.** A NEMA 23 permanent-magnet rotor now
 sits at the **min-Y end** of both Y tapes. That is a far larger disturbance than a bolt head, and it
 is *not* the periodic error this section was written about - it is a localised one at one end of
 travel. **Read a sensor at that end against mid-travel before laying the tape.**
 
-📌 **If A4 flange bolts are awkward to source, socket heads are fine and slightly better.** A 13 mm
+NOTE: **If A4 flange bolts are awkward to source, socket heads are fine and slightly better.** A 13 mm
 socket head leaves 17 mm between rows against the flange's 12.7 mm; with an M8 washer, about 14 mm.
 More room for the tape either way - do not fight the supplier over head style.
 
-⚠️ **This is reasoning from principle, not a measurement.** The AS5311's sensitivity to lateral
+OPEN: **This is reasoning from principle, not a measurement.** The AS5311's sensitivity to lateral
 disturbance is not established here, and
 [`../linear-encoder/design-can-position-feedback.md`](../../linear-encoder/design-can-position-feedback.md)
 is the authority on the sensing side. To know rather than assume: fit a tape offcut and a sensor, and
 read across a bolt head against between bolt heads. Worth doing before 3 m of one-shot PSA goes down.
 
-⚠️ **Decide the application order.** 1 mm of margin each side over a metre. Either the bolts go in
+OPEN: **Decide the application order.** 1 mm of margin each side over a metre. Either the bolts go in
 first as a guide channel - appealing, but then PSA has to be threaded into a 12 mm slot - or the tape
 goes down first against a straightedge and the bolts follow.
 
-✅ **The X end plate's sensor bore lines up with this tape**, which runs on the Y beam's seam
+SETTLED: **The X end plate's sensor bore lines up with this tape**, which runs on the Y beam's seam
 centreline, placing the 35 mm bore in the gap between the upper and lower Y bearing block rows.
 **Measured: that gap is 45 mm**, so the bore fits with 5 mm each side. (An earlier estimate of 56 mm
 was optimistic.)
 
-⚠️ 5 mm is clearance and not much else - **no room for a flanged puck or an external clamp ring.**
+OPEN: 5 mm is clearance and not much else - **no room for a flanged puck or an external clamp ring.**
 Check that against the puck design in
 [`../linear-encoder/design-can-position-feedback.md`](../../linear-encoder/design-can-position-feedback.md).
 

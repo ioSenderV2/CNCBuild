@@ -11,13 +11,13 @@
 
 ### The ribs are egg crate - half-lapped both ways, not blocking
 
-> 📌 **"Blocking" means two different things in this repo and they are one section apart.** Here it
+> NOTE: **"Blocking" means two different things in this repo and they are one section apart.** Here it
 > is a **construction method for the grid** - full-length ribs one way with short pieces fitted
 > between them the other - and it was rejected. Elsewhere it means **local packing under a part that
 > bears on the skin**, which is a separate question, asked of the fins and the rear plate and
 > answered independently. Rejecting the first says nothing about the second.
 
-✅ **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
+SETTLED: **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
 The alternative considered was full-length ribs one way with blocking between them the other.
 
 **Why, for this box specifically:** the three support points put the back-centre post half a machine
@@ -33,13 +33,13 @@ the errors accumulating.
 
 #### Four things to get right
 
-1. ⚠️ **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
+1. OPEN: **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
    is commonly 18.2-18.5 and varies between sheets. Test-cut on scrap **from the same sheet**. Too
    tight splits the rib; too loose leaves no glue line.
-2. ⚠️ **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
+2. OPEN: **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
    contact with a skin **along its whole length** - which is the glue joint the whole sandwich
    depends on.
-3. 🔴 **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
+3. FLAG: **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
    egg crate seals every cell, so without this the sand cannot migrate and you need a **drain port
    per cell** instead of a few. Same cut, far fewer ports - see Transport.
 4. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich

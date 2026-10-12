@@ -40,7 +40,7 @@ err long rather than short.
 
 ## Stiffness and lost motion
 
-📋 **[`stiffness-test.md`](stiffness-test.md)** - the full procedure. Push the spindle nose with a
+PROCEDURE: **[`stiffness-test.md`](stiffness-test.md)** - the full procedure. Push the spindle nose with a
 known force and read six indicator positions, so the deflection can be attributed to a subassembly
 rather than lumped into one number.
 

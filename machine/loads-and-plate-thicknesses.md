@@ -8,7 +8,7 @@
 
 ## Cutting forces: 500-1000 N, not 250
 
-🔴 **Read this before using any deflection figure in this repo.** Much of the analysis on
+FLAG: **Read this before using any deflection figure in this repo.** Much of the analysis on
 2026-09-29 was done against an assumed **250 N** cutting force. That is a trim-router number and it
 is wrong for this machine.
 
@@ -20,7 +20,7 @@ available:
 | 18 000 rpm | 1.6 N·m | ~265 N | ~530 N |
 | 9 000 rpm | 3.2 N·m | ~530 N | ~1060 N |
 
-⚠️ **Two corrections, neither of which moves the design target - 2026-09-30:**
+OPEN: **Two corrections, neither of which moves the design target - 2026-09-30:**
 
 1. **The spindle is 2.2 kW, not 3 kW.** Rated torque at 400 Hz is ~1.17 N·m rather than 1.6.
 2. **The 9 000 rpm row assumes constant power below base speed, and a VFD spindle does not do
@@ -49,7 +49,7 @@ Current as of 2026-10-02.
 | Front strip, **all three beams** | 45 mm × 1000 mm × **4 mm** | **6061** - connector across the seam and the magnetic tape surface |
 | X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
 | **Y outboard / back joining plate** | 11 7/8" × 39 5/16" × **10 gauge** | **cold-rolled steel sheet**, as ordered - see the reversal above |
-| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 60.5 × 50 window. 🔴 **Measured stock, not 1/2" and not 3/8"** |
+| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 60.5 × 50 window. FLAG: **Measured stock, not 1/2" and not 3/8"** |
 | **Y rear plate**, one for both beams | 1210.73 mm × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, **quantity 3** - Y1, Y2 and the X stepper end. One drawing; X's BF12 end takes none, using a tongue off the end plate |
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, quantity 2 - identical below the top edge; the **right-hand one carries the BF12 tongue** above it, running to the stock's 300 |
@@ -58,7 +58,7 @@ Current as of 2026-10-02.
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
 
-⚠️ **Y and X back plates are no longer the same part in a different length.** Y's is steel, 12"
+OPEN: **Y and X back plates are no longer the same part in a different length.** Y's is steel, 12"
 tall and carries the box fixing; X's stays 6061 at 120 mm. Do not let the old "all three axes, 1/4"
 aluminium" line survive in anyone's head.
 
@@ -67,7 +67,7 @@ aluminium" line survive in anyone's head.
 Recorded because the reasoning still applies to anything cut later. 3/8" loses **58 %** of the
 weak-axis stiffness against only 25 % of the strong-axis, which would have been acceptable **only
 if the full-height plate took the fore-aft load in-plane**. The risers this was decided for went to
-1/2", so the coupling never had to be managed. ⚠️ **Those risers no longer exist** - all four were
+1/2", so the coupling never had to be managed. OPEN: **Those risers no longer exist** - all four were
 scrapped, and each Y beam end now carries a tapered front fin with the back plate behind both. The
 **reasoning** is what this section is for, and it is what [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md)
 checks the fins against.
@@ -94,12 +94,12 @@ claim, not a measurement.
 it.** That settles whether the beam plate should be 1/4" or 3/8", and the plate is bolt-on precisely
 so the swap stays cheap.
 
-📋 **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).**
-⚠️ **It is not a single number.** One reading on the nose is a *total*, and a total cannot say which
+PROCEDURE: **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).**
+OPEN: **It is not a single number.** One reading on the nose is a *total*, and a total cannot say which
 part of the stack is moving - which is the entire question. The procedure uses six indicator
 positions and subtracts.
 
-### ⚠️ Open: the X carriage plate goes to 5/8" if the stiffness test says it is the compliance
+### Openthe X carriage plate goes to 5/8" if the stiffness test says it is the compliance
 
 **Deferred on purpose 2026-10-02**, and recorded because "consider it in future if it is a problem"
 is the kind of intent that evaporates. The plate is **154 × 407 × 1/2"**, already cut and dyed, and
@@ -115,17 +115,17 @@ bending stiffness per unit width; this is a calculation, not a measurement):
 | Plus a 1/4" steel backer on **corner bolts only** | 1.36 | **2.45** |
 | **5/8" aluminium instead** | **1.95** | 1.25 |
 
-🔴 **A bolted-on steel backer is the wrong answer, and it is the one that looks obvious.** The gain
+FLAG: **A bolted-on steel backer is the wrong answer, and it is the one that looks obvious.** The gain
 depends entirely on whether the two plates transfer shear across the whole face: bolted on a grid
 they approach one section and ~5×, but **bolted at the corners they only share curvature and give
 1.36×** for 2.45× the mass. **Thicker aluminium beats it on both axes at once.**
 
-📌 **Where this came from, so the precedent is not misread later.** The Mega V's aftermarket 300 mm Z
+NOTE: **Where this came from, so the precedent is not misread later.** The Mega V's aftermarket 300 mm Z
 has a 154 × 310 × 12.7 mm carriage plate backed by 1/4" steel, which is why the idea came up at all.
 Its backer is held by **four M5 socket heads, one per corner**, so it cannot be acting compositely -
 whatever it is for, it is not buying bending stiffness. The owner's reading is that it provides the
 mounting for the **V-wheel axles**, which is a concentrated point load into a hole and a job steel
-genuinely does better than aluminium. ⚠️ **That does not explain why it covers the full plate** - the
+genuinely does better than aluminium. OPEN: **That does not explain why it covers the full plate** - the
 wheel axles are only 5" apart and would fit in the bottom 6" - and no explanation for the full
 coverage has been established. **None of it transfers to this build regardless**: HGR20 blocks spread
 their load over a bolt pattern, so there is no axle stub, no eccentric and no point load.

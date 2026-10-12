@@ -9,7 +9,7 @@ Status: **design sketch, 2026-08-25. Nothing ordered, nothing laid out.**
 
 ---
 
-## ⚠️ The jacks must NOT have integrated magnetics
+## OPEN: The jacks must NOT have integrated magnetics
 
 Most 4-port RJ45 assemblies sold for Ethernet are **MagJacks** - transformers inside. Transformers
 **block DC**, and every signal here is DC-coupled: `A`, `B`, `MagDECn` and the 3.3 V feed. With
@@ -66,7 +66,7 @@ contacts. The height has to come from somewhere else:
 **2.0 mm stacking/pass-through headers barely exist** - in 2.54 mm this would be a catalogue part. That
 absence is the whole reason this is awkward.
 
-> ⚠️ **The header is 2.0 mm pitch, not 2.54 mm.** Easy to order wrong; the wrong part is unusable.
+> OPEN: **The header is 2.0 mm pitch, not 2.54 mm.** Easy to order wrong; the wrong part is unusable.
 
 ## The ordered part
 

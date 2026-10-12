@@ -57,11 +57,11 @@ machine-readable.
 | `measured` | off the real machine or part, with an instrument |
 | `part` | off a part's own geometry that is not in doubt |
 | `vendor` | off a datasheet committed to `manufacturer-assets/` |
-| `nominal` | ⚠️ a catalogue figure **not yet confirmed on the part** — the class that produced three of this session's five errors |
+| `nominal` | OPEN: a catalogue figure **not yet confirmed on the part** — the class that produced three of this session's five errors |
 | `derived` | computed here from other symbols, and it RE-DERIVES when they move |
 | `alias` | another name for one other symbol &mdash; a rename, with no arithmetic to be wrong |
-| `pinned` | 📌 it came out of a calculation and was then FIXED. It does **not** follow its source: `XEP_W` is 154 from `BLOCK_BUTTED`&rsquo;s 154.18 rounded down, and stays 154. Re-check these by hand when the source moves |
-| `OPEN` | 🔴 not established. **A placeholder. Must not be cut to.** |
+| `pinned` | NOTE: it came out of a calculation and was then FIXED. It does **not** follow its source: `XEP_W` is 154 from `BLOCK_BUTTED`&rsquo;s 154.18 rounded down, and stays 154. Re-check these by hand when the source moves |
+| `OPEN` | FLAG: not established. **A placeholder. Must not be cut to.** |
 
 Separately from provenance, a symbol may be **`retired = true`**: nothing uses it any more, and it is kept because it is the record of a reversal. `dims.py check` fails if anything still derives from one.
 
@@ -70,21 +70,21 @@ Separately from provenance, a symbol may be **`retired = true`**: nothing uses i
 `dims.py fusion` writes [`fusion-parameters.csv`](fusion-parameters.csv) for **Modify → Change
 Parameters → Import**.
 
-⚠️ **Verify the first import rather than trusting it.** Fusion has shipped variations on whether it
+OPEN: **Verify the first import rather than trusting it.** Fusion has shipped variations on whether it
 wants a header row; `--header` adds one if yours does.
 
-🔴 **Every symbol exports as a plain number, never as its expression.** Fusion would accept the
+FLAG: **Every symbol exports as a plain number, never as its expression.** Fusion would accept the
 expression, but then two systems would own the same derivation and they would drift — which is the
 exact failure this registry exists to stop. **The registry derives; Fusion consumes.** Re-export and
 re-import after any registry change, because Fusion holds a copy and a copy goes stale.
 
 ## What this does not do yet
 
-⚠️ **Nothing enforces that a number quoted in prose matches the registry.** `deps` tells you what to
+OPEN: **Nothing enforces that a number quoted in prose matches the registry.** `deps` tells you what to
 go and check; it does not check it for you. A prose checker — tagging quoted numbers so they can be
 verified mechanically — is the obvious next step and is **not built**.
 
-⚠️ **Only the ten plate files split out of `end-plates-risers-and-spindle.md` on 2026-10-02
+OPEN: **Only the ten plate files split out of `end-plates-risers-and-spindle.md` on 2026-10-02
 have been mined for primitives** - see [`../machine/README.md`](../machine/README.md) for the list.
 The other `machine/*.md` files have numbers that are not in here.
 Key them in as they get touched rather than attempting a sweep, which is the version of this job that

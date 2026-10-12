@@ -12,19 +12,19 @@ out to be set by the spoilboard rather than by the machine.
 
 ---
 
-## ✅ The Mega V tee track spoilboard is carried over - settled 2026-10-11
+## SETTLED: The Mega V tee track spoilboard is carried over - settled 2026-10-11
 
 The 1 m square T-track spoilboard was a Mega V addon, and used listings split about evenly between
 machines with and without it, so parting with it costs nothing on the sale. The four **16 mm
 aluminium tee track extrusions** are the expensive part of it and the new machine needs a tee-slot
 fixturing surface regardless. There is no case for selling aluminium that would then be re-bought.
 
-🔴 **The profile is non-standard, so every figure for it is his.** 2026-10-11: **16 thick, 250 deep,
+FLAG: **The profile is non-standard, so every figure for it is his.** 2026-10-11: **16 thick, 250 deep,
 47" wide, eight slots, 8 mm opening.** Across the 250 that is **2 × 16 end flats, 7 × 22 inner flats
 and 8 × 8 slots**, which sums to exactly 250 - his breakdown, and `TT_PLATE_W_CHECK` is in the
 registry to hold it closed.
 
-⚠️ **Two figures in this profile were wrong before that breakdown arrived.** The plate was carried at
+OPEN: **Two figures in this profile were wrong before that breakdown arrived.** The plate was carried at
 **20 thick** for one commit, off his first description of the Mega V stack - the 4 mm comes straight
 off the bed's top. And the slot pitch was given as **40**, which needs 280 mm of span across a 250
 plate; the flats make it **30**. `TT_SLOT_PITCH` is therefore derived from the flats rather than
@@ -45,13 +45,13 @@ would re-create exactly the spans being got rid of.
 | **Layer sum** | **64.5** |
 | **Measured total, and the figure the Z chain uses** | **67.5** |
 
-⚠️ **The sum and the measurement are 3 mm apart and I cannot reconcile them.** The measured 67.5 is
+OPEN: **The sum and the measurement are 3 mm apart and I cannot reconcile them.** The measured 67.5 is
 the one the envelope runs on - it is the figure off the real board - but a 3 mm gap is more than MDF
 nominal-against-actual accounts for, so one of the layer figures is loose. It changes nothing that
 gets built, because the stack on this machine is made up in MDF to suit; it is recorded so nobody
 later reads the layer sum as a check on the total.
 
-## 🔴 The height trap - a thinner stack cannot be surfaced
+## FLAG: The height trap - a thinner stack cannot be surfaced
 
 Bed the tee tracks straight on the box and keep only the 19 mm strips and the surface lands at
 **39 mm** above the top skin. The tool tip floor is **45.2 mm**. The surface is then below the tool's
@@ -68,17 +68,17 @@ below is worked against.
 | **Ultra lite MDF, two sheets of 25, the upper one sacrificial** | **50** |
 | **A fresh surface above the box's top skin** | **66** |
 
-🔴 **Two sheets of 25 mm ultra lite MDF - his, 2026-10-11, and it replaces the 3/8" sheet plus two
+FLAG: **Two sheets of 25 mm ultra lite MDF - his, 2026-10-11, and it replaces the 3/8" sheet plus two
 19s this table carried before.** Ultra lite is about a third lighter than ordinary board and the
 stack covers a square metre, which is the reason for it: that weight sits on top of everything the
 posts carry. `MDF_LAYER_T`, `MDF_LAYERS` and `SPOIL_SURFACE` are in the registry and the 3D model
 draws both sheets.
 
-⚠️ **The surface is 66, and the Z envelope below is worked on 67.5 - so every figure in it that is
+OPEN: **The surface is 66, and the Z envelope below is worked on 67.5 - so every figure in it that is
 measured from the surface is 1.5 too high, and every spare 1.5 too generous.** It is the safe
 direction for the swept clearances and the costly one for reach, and reach has 20.8 mm to give: the
 tool tip floor is 45.2 and the interference check measures the tool biting 20.80 into the sacrificial
-sheet at the bottom of travel. 📌 **It only ever goes down from 66** - the top sheet is sacrificial
+sheet at the bottom of travel. NOTE: **It only ever goes down from 66** - the top sheet is sacrificial
 and the machine skims it, so there is no shimming to do and nothing to aim at.
 
 **Surface the MDF, never the aluminium.** Bedded on the box the remaining problem is flatness and
@@ -98,12 +98,12 @@ under it, so it is cut back on three sides:
 
 That puts it at X 153.43-1057.81 and 206.35-1006.35 fore-aft - **904.38 × 800**.
 
-✅ **It covers the sweep.** The tool tip runs X 192.62-1018.62, inside the board by **39.19 each
-side**, and reaches back to 221.95, inside by **15.60**. ⚠️ **The tool overruns the FRONT edge by
+SETTLED: **It covers the sweep.** The tool tip runs X 192.62-1018.62, inside the board by **39.19 each
+side**, and reaches back to 221.95, inside by **15.60**. OPEN: **The tool overruns the FRONT edge by
 45.00** - and that is the aluminium's own edge, so the bed stops there too. Work needing that last
 45 mm sits on the tee track with no sacrificial layer under it.
 
-🔴 **The setback also killed a clash the full-footprint board had.** Eight tongue bolt heads stand
+FLAG: **The setback also killed a clash the full-footprint board had.** Eight tongue bolt heads stand
 **4 mm proud of the bed's back edge** at z 21.35-38.65, which is straight through a lower sheet that
 runs to the back. The fix being considered was trimming 4 mm off that edge; 200 makes the question
 go away.
@@ -124,20 +124,20 @@ turn each bolt so its T lines up with its slot, let it drop and tighten.
 | Washer | **plain M8, 16 OD** - his, 2026-10-11, not the fender |
 | Nut | plain M8, finishing **at** the surface and never proud of it |
 
-🔴 **A MULTIPLE OF 30 ONLY WALKS SLOTS WITHIN ONE 250 PANEL** - his catch. Across a panel join the
+FLAG: **A MULTIPLE OF 30 ONLY WALKS SLOTS WITHIN ONE 250 PANEL** - his catch. Across a panel join the
 step is **40**: 16 of end flat, the 8 slot, 16 more. His rule - 20 in from the front corner, then
 back in multiples of 30 while staying 20 clear of the back edge - lands both rows on real slots
 anyway, and only because **25 × 30 is 750, which is also 3 × 250**: the back hole is the *same slot*
-three panels along. ✅ **`tools/make-3d.py` builds the real slot-centre list and fails the build** if
+three panels along. SETTLED: **`tools/make-3d.py` builds the real slot-centre list and fails the build** if
 either row misses one, or if the back row comes inside the 20. A coincidence that is checked every
 run can stop being one safely.
 
-⚠️ **The 50 is his pick, not a measurement.** A 40 photographed beside the sandwich tops out around
+OPEN: **The 50 is his pick, not a measurement.** A 40 photographed beside the sandwich tops out around
 the seam between the two sheets, dying inside the board with nothing to put a nut on. The rise, the
 washer thickness and the nut height are all still to be caliper'd - see the open item - and the
 counterbore moves with them.
 
-## ✅ Four corner bolts are enough, and the sheets are NOT glued - settled 2026-10-11
+## SETTLED: Four corner bolts are enough, and the sheets are NOT glued - settled 2026-10-11
 
 **There is no span to spring.** The MDF sits on aluminium over its whole footprint - the board runs
 X 153.43-1057.81 and 206.35-1006.35, the bed runs 8.72-1202.52 and 6.35-1006.35 - so the **largest
@@ -153,11 +153,11 @@ they do not cover**, both cheap to fix later because the slot grid takes a bolt 
 2. Anything **pulling up in the middle** - a workpiece clamped to the surface, a climb cut lifting -
    is resisted only by the board's own stiffness back to the corners.
 
-📌 **The first skim is the test.** If it cleans up over the whole board at a shallow depth, the
+NOTE: **The first skim is the test.** If it cleans up over the whole board at a shallow depth, the
 sheets were lying flat and four bolts is the answer. If it does not, add bolts rather than
 re-thinking the stack.
 
-🔴 **DO NOT GLUE THE TWO SHEETS TOGETHER.** Glued, they bend as one 50 and the stiffness goes up
+FLAG: **DO NOT GLUE THE TWO SHEETS TOGETHER.** Glued, they bend as one 50 and the stiffness goes up
 about fourfold - and that stiffness is doing **no work**, because the support underneath is
 continuous. What it costs is the whole reason for two sheets: the top one is sacrificial, and
 unglued it gets skimmed until it is used up and replaced on its own. Glued, replacing it means
@@ -172,44 +172,44 @@ span - there is nothing to cut off. **Two M5 screws into each end of each panel*
 side plate, each carrying **one 5 mm aluminium spacer** to fill the 5.29. That is **16 screws, eight
 through each side plate**.
 
-✅ **The ends are drilled and tapped M5, done 2026-10-11.** 4.2 drill, M5 tap, **15 mm of thread
+SETTLED: **The ends are drilled and tapped M5, done 2026-10-11.** 4.2 drill, M5 tap, **15 mm of thread
 engagement** gauged off the hole - three diameters, into real depth rather than through a skin, which
 closes the question of what the wall thickness at the panel end was. The Mega V's own fixing was two **M4 self-tapping**
 screws per end, and none of that carries over.
 
-🔴 **M4 was recommended here and M4 was wrong.** The advice was to drill 3.3 and tap M4, reasoning
+FLAG: **M4 was recommended here and M4 was wrong.** The advice was to drill 3.3 and tap M4, reasoning
 that three in-and-out cycles is light duty. **A 3.3 drill entered the existing hole with no
 resistance** - his measurement - so the hole was already at or above the M4 tapping size and an M4
 tap would have had almost nothing to cut. The cycle count was the wrong thing to judge it on; the
 hole size was, and it was measurable the whole time.
 
-✅ **Buy M5 × 20.** Each screw passes through 3.429 of side plate plus 5 of spacer before it reaches
+SETTLED: **Buy M5 × 20.** Each screw passes through 3.429 of side plate plus 5 of spacer before it reaches
 aluminium, so a 20 reaches 11.57 into a hole tapped 15 and clamps with 3.4 of hole to spare. **Not a
 25** - that wants 16.57 and would bottom out 1.57 short, tight to the wrist and holding nothing.
 
-📌 **An 18 was the answer an hour earlier, on a depth of 10 rather than 15.** The two
+NOTE: **An 18 was the answer an hour earlier, on a depth of 10 rather than 15.** The two
 recommendations are opposite off a 5 mm difference in one measurement, which is the argument for
 gauging the hole rather than taking the first figure for it.
 
-✅ **The gap and the part are different numbers on purpose.** The gap is 5.29 and the spacer is 5,
+SETTLED: **The gap and the part are different numbers on purpose.** The gap is 5.29 and the spacer is 5,
 which leaves **0.29 per end, 0.58 across the bed** - and that float does not matter, because the
-aluminium is not a reference surface and the MDF above it is surfaced in place. 🔴 **The gap was
+aluminium is not a reference surface and the MDF above it is surfaced in place. FLAG: **The gap was
 first written as a spacer thickness**, and 5.29 is not a flat bar anybody stocks, which is exactly
 how a part that cannot be bought gets onto a list. The standoff has one job: keep the bolt from
 drawing the side plate inward as it tightens.
 
-✅ **Those screws only stop it walking.** Bedded flat on the box, gravity holds the stack down and
+SETTLED: **Those screws only stop it walking.** Bedded flat on the box, gravity holds the stack down and
 the end fixing has no hold-down duty.
 
-🔴 **Nothing in the bed's fixing touches the torsion box.** Both ends land in the **side plates**,
-steel to aluminium, and the bed simply rests on the top skin. ⚠️ **This file claimed threaded
+FLAG: **Nothing in the bed's fixing touches the torsion box.** Both ends land in the **side plates**,
+steel to aluminium, and the bed simply rests on the top skin. OPEN: **This file claimed threaded
 inserts in the top skin until 2026-10-11** - an invented detail, from reading his "anchor in either
 end with bracket" as a bracket reaching down to the box. Once the scheme became screws through the
 side plate into the panel ends there was nothing landing in plywood, and the sentence should have
 gone with the bracket. It was then quoted back at him as an argument for a thicker top skin, which
 is how an invented detail earns compound interest.
 
-📌 **Hold the stack a few millimetres short of the side plates' inside faces** and the tongue bolt
+NOTE: **Hold the stack a few millimetres short of the side plates' inside faces** and the tongue bolt
 heads at Y 30 live in a relief gap, with no plate geometry changed. That is cheaper than moving the
 bolt line - see below.
 
@@ -222,11 +222,11 @@ independently puts the tip at Z 197.20 with the down stop 152 below, which is 45
 the same number. With that stickout the **collet nut face at the bottom of travel is at 96.0 mm**,
 and that is the figure that does not move with tool choice.
 
-🔴 **The travel to use here is 226 mm, not the rail-limited 235.91.** The 226 is what the two
+FLAG: **The travel to use here is 226 mm, not the rail-limited 235.91.** The 226 is what the two
 mechanical stops leave with the 5 mm standoffs he set on 2026-10-10 - the nut 5 above BF12's face
 going down, 5 below the stop block going up - and it is what an operator actually gets.
 `Z_TRAVEL`'s 235.91 is the rail-and-block figure, and it is the wrong one for an envelope question.
-⚠️ **An earlier pass of this file used the 235.91 and put the ceiling 9.7 mm too high**; every
+OPEN: **An earlier pass of this file used the 235.91 and put the ceiling 9.7 mm too high**; every
 figure below is on the 226.
 
 | | mm above the box top skin |
@@ -242,9 +242,9 @@ figure below is on the 226.
 **−182.5** from it, level with the inverted Y nut's mounting face, less the 1/4" plate. The spoilboard
 runs under it - the sole plate reaches outboard from the X end plate toward the side plate while the
 tracks span nearly plate to plate - so this is the swept clearance that matters: **45.65 mm** over a
-67.5 surface, or **~41 mm** allowing for the nut bolt heads on the plate's underside. ⚠️ **On the 66
+67.5 surface, or **~41 mm** allowing for the nut bolt heads on the plate's underside. OPEN: **On the 66
 surface it is 47.15**, and the same 1.5 is owed to every other figure here that is measured from the
-surface - the four cases below included, where each spare is 1.5 smaller than it says. ✅ **The
+surface - the four cases below included, where each spare is 1.5 smaller than it says. SETTLED: **The
 spoilboard no longer runs under the sole plate at all.** The brackets sit at X 7.43-105.62 and
 1105.62-1203.81 in the model; the MDF spans 153.43-1057.81, so they sweep over bare aluminium and
 the clearance that matters there is over the **16**, not over the surface.
@@ -255,7 +255,7 @@ is 27 below the barrel face against the collet nut's 60 - **33 mm above the nut 
 of travel that is 129.0, which is **15.85 mm higher than the sole plate**, so the shroud never
 becomes the low point.
 
-⚠️ **The sole plate also sets a ceiling on the stack.** The surface could rise to roughly 100 mm
+OPEN: **The sole plate also sets a ceiling on the stack.** The surface could rise to roughly 100 mm
 before the sole plate becomes the limit - well past anything the Z envelope wants, but it is the
 number to check against before thickening the stack.
 
@@ -268,27 +268,27 @@ number to check against before thickening the stack.
 | Machinist vice **on** the rotating base, 5.5" | Jaw tops at **207.2**; **64.0 mm** above them for stock and tool |
 | Machinist vice **off** the base, 4" | Jaw tops at **169.1**; **102.1 mm** above them |
 
-📌 **Two consequences of the shroud geometry, both checks rather than changes.** The brush skirt has
+NOTE: **Two consequences of the shroud geometry, both checks rather than changes.** The brush skirt has
 to reach **61 mm** down from the frame to seal on the surface at full Z down. And frame-to-tip is
 33 + 50.8 = **83.8 mm**, so the frame clears the top of any stock thinner than that - 33 mm to spare
 on the 2" wood case, and no clearance at all over the vice, which comes off with the shroud.
 
-## ✅ The X carriage does not move down - settled 2026-10-11
+## SETTLED: The X carriage does not move down - settled 2026-10-11
 
 Dropping the X carriage **20-25 mm** was on the table, which would have meant flipping the X doubler
 and fitting the X sole plate to its bottom edge **before** the carriage went onto its bearing blocks
 - an ordering that is irreversible once bolted up.
 
-🔴 **It is the wrong lever, and it makes the machine worse.** A 25 mm drop lowers the floor to 20.2
+FLAG: **It is the wrong lever, and it makes the machine worse.** A 25 mm drop lowers the floor to 20.2
 and the ceiling to 246.2. The floor gains nothing, because the deepest wood through-cut already
 clears by 28.65 mm. The ceiling loss takes vice headroom from **64.0 mm to 39.0 mm** - straight out
 of the one case the travel was built for, and 39 mm is not much once a tool is in the collet.
 
-✅ **The spoilboard is the adjustable element, and it moves in both directions.** Add layers if wood
+SETTLED: **The spoilboard is the adjustable element, and it moves in both directions.** Add layers if wood
 depth ever gets tight; strip the MDF and bolt a vice down to the tee track to get the jaws lower for
 metal. Reversible in an afternoon, where the doubler flip is not.
 
-## ✅ The Y 30 bolt line holds - settled 2026-10-11
+## SETTLED: The Y 30 bolt line holds - settled 2026-10-11
 
 Raising `BOX_TONGUE_BOLT_Y` to clear spoilboard work was considered and rejected.
 
@@ -302,7 +302,7 @@ is why the tongue came off 61 to 60. At 45 there would be 15 mm above a 9 mm hol
 under the 2 × D confirmed on the template for T2. 40 would still clear at 2.2 × D and buys almost
 nothing.
 
-📌 **The 145 mm couple is not in this at all.** T1 and T2 both sit at Y 30 and the 145 is **fore-aft,
+NOTE: **The 145 mm couple is not in this at all.** T1 and T2 both sit at Y 30 and the 145 is **fore-aft,
 in plan** - it is not a vertical lever, so the bolt height does not touch it.
 
 ## It is in the 3D model
@@ -315,53 +315,53 @@ is one 5 mm spacer per bolt, which has no footprint across the bed, and the mode
 
 **The slots are drawn as 8 x 10 pockets.** Each flat is a full-thickness bar and a bar
 `TT_BED_T` - `TT_SLOT_DEPTH` = 6 thick carries the plate's bottom across under each gap, so the
-slot reads as the pocket it is rather than a hole through the plate. ⚠️ **The undercut is still not
+slot reads as the pocket it is rather than a hole through the plate. OPEN: **The undercut is still not
 a figure we have**, so the lips that make it a tee slot are not drawn. The generator also checks the
 flats and slots sum to the plate's 250 and fails loudly if they ever stop.
 
 **The MDF and its four T-bolts are drawn too**, as the **MDF spoilboard** group - two 25 sheets on
 his footprint, and each bolt as five parts: the clearance hole, the counterbore, the bolt, the
-washer and the nut. 🔴 **The bolts are drawn on figures that are not measured yet** - the rise, the
+washer and the nut. FLAG: **The bolts are drawn on figures that are not measured yet** - the rise, the
 washer and the nut - so the counterbore in the model will move when they are. The hole POSITIONS are
 checked against the real slot grid on every run.
 
-✅ **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
+SETTLED: **The envelope sweep clears it at all eight corners of travel**, which is the check that the bed
 does not foul the gantry anywhere. (The model now reports NO overlaps at all at the drawn
 pose - the six block-against-front-strip pairs it used to carry were an artifact of drawing the
 bearing block as a solid box, closed 2026-10-11 with his gauge-block measurement of the 4.2 under
 the block's wings.)
 
-✅ **The bed is captured in both directions, and there is nothing to place.** Across the machine it
+SETTLED: **The bed is captured in both directions, and there is nothing to place.** Across the machine it
 fits the 1204.38 between the side plates. Fore-aft, the clear run from the **rear plate's front face
 at 6.35** to the **front fin's back face at 1006.35** is exactly **1000 - BEAM_LEN** - and four 250
 plates are exactly 1000. It butts the rear plate and finishes on the fin.
 
-⚠️ **This was briefly recorded as a free choice and it never was one.** `TT_BED_Y0` carried a note
+OPEN: **This was briefly recorded as a free choice and it never was one.** `TT_BED_Y0` carried a note
 saying he had not placed the bed fore-aft; his answer, 2026-10-11, is that the geometry had already
 placed it. `TT_BED_FORE_AFT_CHECK` now subtracts the bed's depth from the beam length and must read
 **zero**, so if either figure moves the registry says so rather than the drawing quietly going wrong.
 
-## ⚠️ The spacer may not clear the skin - open, being tested
+## OPEN: The spacer may not clear the skin - open, being tested
 
 The M5 hole centre in the panel end is **4 mm above the top skin**, and the spacer he is ordering is
 **8 mm OD with a 5.1 bore**, stainless. An 8 OD is a 4 radius, so **the spacer's bottom edge is
 tangent to the skin** - zero clearance.
 
-🔴 **That is a coincidence, not a fit, and it fails in the direction that matters.** Anything the
+FLAG: **That is a coincidence, not a fit, and it fails in the direction that matters.** Anything the
 wrong way by a tenth and the spacer rides **on** the skin, which lifts the panel end off its
 bedding - giving back exactly the continuous support that dropping the 2040s was for. Things that
 can go the wrong way: the hole centre on panels he did not drill, spacer OD tolerance, glue
 squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 panel.
 
-✅ **He is ordering spacers to test it**, 2026-10-11, so `TT_BED_SPACER_CLEAR` stays **OPEN** until a
+SETTLED: **He is ordering spacers to test it**, 2026-10-11, so `TT_BED_SPACER_CLEAR` stays **OPEN** until a
 real one is offered up to a real panel.
 
-**If it fouls, relieve the skin and not the spacer.** 📌 **The reason is that a relief in the skin
+**If it fouls, relieve the skin and not the spacer.** NOTE: **The reason is that a relief in the skin
 cannot lift the panel.** A filed spacer or a thinner one both can, and a 6 OD spacer - 1 mm of
 clearance on a 0.45 mm stainless wall, which these no-load screws would carry fine - also depends on
 sourcing a part, where cutting the skin depends on nothing.
 
-### ✅ How the relief gets cut: a router groove, not sixteen scallops
+### SETTLED: How the relief gets cut: a router groove, not sixteen scallops
 
 **His, 2026-10-11, and it is better than the scallops first proposed** for a reason beyond effort: a
 groove does not need the hole positions at all. It only has to be in the right **band**, so nothing
@@ -375,38 +375,38 @@ has.
 | Width, inboard from there | **about 12 mm** - anything from 8 to 15 works |
 | Length | the full fore-aft run the bed occupies, not stopping at the end spacers |
 
-✅ **The side plate stands flush with the box's top-skin edge**, so a router fence off the box edge is
+SETTLED: **The side plate stands flush with the box's top-skin edge**, so a router fence off the box edge is
 enough - no need to clamp the plate as a fence. The file agrees: BOX_W is measured **inside** the
 side tongues and the tongue's inside face is the plate's **outer** face, so there is no channel and
 the plate's outer face is the skin's edge.
 
-🔴 **The inset is 3.429, not 1/8".** The plate was ordered **10 gauge** and
+FLAG: **The inset is 3.429, not 1/8".** The plate was ordered **10 gauge** and
 [`../dimensions/VALUES.md`](../dimensions/VALUES.md) records that a nominal 1/8" was carried for it
 and was wrong. The 0.254 matters only because of which way it errs: insetting 3.175 starts the groove
 **0.254 under the plate's footprint**, undercutting the one edge PLATE_H calls the edge that bears on
 the top skin. **Inset 3.5 and let the error fall inboard**, where it costs nothing - the width is
 slack and the inset is not.
 
-⚠️ **Caliper the delivered sheet.** T_SIDE_PLATE's own note says 10 gauge is a gauge and the gauge is
+OPEN: **Caliper the delivered sheet.** T_SIDE_PLATE's own note says 10 gauge is a gauge and the gauge is
 the nominal, with a standing instruction to measure the real plate. The groove follows the plate in
 hand, not the catalogue.
 
-📌 **One thing to decide at the bench rather than here:** whether the groove is cut in the skin
+NOTE: **One thing to decide at the bench rather than here:** whether the groove is cut in the skin
 **before** it is glued to the ribs, or after the box is assembled with the plates dry-fitted.
 
 ## Still to measure
 
-- 🔴 **The 58 mm** that the whole 242.5 mm end-plate chain hangs on - an as-built measurement off the
+- FLAG: **The 58 mm** that the whole 242.5 mm end-plate chain hangs on - an as-built measurement off the
   Mega V, and the file already says the chain is only as good as it. The sole plate clearance above
   derives straight through it, so re-check it on the real gantry before a stack height spends the
   margin.
 - **Whether the four tee track plates' top faces come out coplanar** when laid on something flat, or
   need shimming where they meet the box.
 - **Whether the vice can bolt straight down to the tee track** with the MDF layers off.
-- ⚠️ **The T-bolt's rise above the aluminium, the washer thickness and the nut height** - three
+- OPEN: **The T-bolt's rise above the aluminium, the washer thickness and the nut height** - three
   caliper readings off the drawer. They set the counterbore depth, and the 50 the model draws is
   his pick rather than a measurement.
-- 📌 **Whether four corner bolts hold the sheets flat.** The first skim answers it: clean over the
+- NOTE: **Whether four corner bolts hold the sheets flat.** The first skim answers it: clean over the
   whole board at a shallow depth and four is enough. See the section above.
-- ⚠️ **Whether the 8 mm OD spacer clears the top skin** - ordered to test, and tangent on paper. See
+- OPEN: **Whether the 8 mm OD spacer clears the top skin** - ordered to test, and tangent on paper. See
   the section above.

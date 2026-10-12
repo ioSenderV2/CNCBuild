@@ -85,7 +85,7 @@ PHOTO_QUALITY = 82
 # deflection figure depends on, so it leads. The three cross-cutting files - tramming,
 # machining, open items - come last because the others refer to them.
 #
-# 🔴 SIX FILES LEFT THIS LIST ON 2026-10-11, into machine/archive/. They were walkthroughs of
+# FLAG: SIX FILES LEFT THIS LIST ON 2026-10-11, into machine/archive/. They were walkthroughs of
 # dimension chains the registry now owns - torsion-box, lateral-stiffness, x-gantry-end-plates,
 # z-carriage, y-beam-support, outboard-plate - and they kept going stale against it. The specific
 # failure: a sole plate position was read out of x-gantry-end-plates.md as -182.5 when the

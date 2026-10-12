@@ -18,7 +18,7 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 return are all one node - which is what makes a single GND per axis in the DB37 sufficient, and
 also what makes the next section matter.
 
-## ⚠️ Star the 48 V returns
+## OPEN: Star the 48 V returns
 
 **The one wiring order that decides whether the signals are clean.**
 
@@ -78,7 +78,7 @@ Wire colours: **brown = +V, black = output, blue = 0 V.**
 free to be pulled up to whatever rail the controller wants - which matters, because of the next
 part.
 
-### ⚠️ Do not copy the datasheet's MCU circuit
+### OPEN: Do not copy the datasheet's MCU circuit
 
 Page 3 of the datasheet shows the sensor driven into an Arduino as: **1 kΩ pull-up to +12 V**, then
 a **3.3 kΩ / 2.2 kΩ divider**, giving the **0-4.8 V** the drawing labels. That is sized for a 5 V
@@ -94,13 +94,13 @@ pull-up leaves it high-impedance next to Y Step
 ([see the adjacency](db37-axis-interconnect.md#-two-steplimit-adjacencies-known-and-accepted)).
 The sensor sinks 300 mA, so the resistor value is not remotely a constraint.
 
-### ⚠️ The 1.2 m captive cable does not reach
+### OPEN: The 1.2 m captive cable does not reach
 
 Each sensor ships with **1.2 m** of moulded-on lead. That is the axis end to somewhere near the
 axis end - not to the breakout box. Every limit needs a junction near its sensor, and that junction
 is then in the drag chain's environment. Not yet designed.
 
-## ⚠️ NPN-NO conflicts with the fail-closed argument
+## OPEN: NPN-NO conflicts with the fail-closed argument
 
 The sensors fitted are **normally open**. [`design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
 §3 settles the limit sense as **NC**, and the whole of its argument is fail direction:
@@ -142,7 +142,7 @@ scheduled to land in this folder and has not. Until it does, the memory note is 
 [`../manufacturer-assets/`](../manufacturer-assets/) yet, which this repo's own rule says it should
 be.
 
-### ⚠️ AL has no pull-up today, which is why it has never asserted
+### OPEN: AL has no pull-up today, which is why it has never asserted
 
 Pins 11/12 are **AL+ / AL-**, open collector, max pull-up 24 V / 100 mA. AL+ is the collector and
 AL- the emitter, so it is a **floating switch** - tying AL- to the shared GND at the connector is
@@ -152,7 +152,7 @@ what makes the single-GND scheme on this page work for it.
 build today, and that alone accounts for the alarm never having been seen to work. It needs one,
 and — exactly as for the limit sensors above — **not the manual's 24 V / 2 kΩ near a Teensy pin.**
 
-### ⚠️ AL fails open, so it is not a guard on its own
+### OPEN: AL fails open, so it is not a guard on its own
 
 Fault means the transistor conducts and the line goes low. But **a drive with no power, or a broken
 AL wire, leaves the transistor off** - the pull-up wins, the line reads high, and that reads as
@@ -166,7 +166,7 @@ it is a candidate for the seven spares in
 This is the same failure direction as the NO limit sensors above. Two of the three things that are
 supposed to stop this machine currently fail silent.
 
-### ⚠️ Do not daisy-chain the 48 V
+### OPEN: Do not daisy-chain the 48 V
 
 The manual is explicit: *"parallel connection should be adopted at the power supply, and chain
 connection from one driver to another is not allowed."* A chained rail makes both over- and
@@ -186,8 +186,7 @@ Keeping them separate in the connector is still the right call: the wiring is ne
 build and impossible to retrofit cheaply, and per-axis needs only a board-map edit later. Recorded
 so the gap is not mistaken for a wiring error.
 
-## ⚠️ Open
-
+## Open items
 1. **Controller draw on the 5 V rail.** The buck is rated 3 A; the actual draw, and the gauge of the
    5 V pair, are not established. Both are needed before the drop across that run means anything.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V

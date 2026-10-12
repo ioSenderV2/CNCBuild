@@ -22,7 +22,7 @@ hand-maintained summary drifts from what it summarises. That is not hypothetical
 
 | Build it with | What you get |
 |---|---|
-| `python tools/status.py all` | [`STATUS.md`](STATUS.md) - every open item, harvested from the ✅ ⚠️ 🔴 ❌ markers in the prose. [`INDEX.md`](INDEX.md) - every heading in the repo |
+| `python tools/status.py all` | [`STATUS.md`](STATUS.md) - every open item, harvested from the SETTLED: OPEN: FLAG: REJECTED: markers in the prose. [`INDEX.md`](INDEX.md) - every heading in the repo |
 | `tools\make-pdf.ps1` | **`build-document.pdf`** - the whole mechanical design as one printable file: the thirteen `machine/*.md` files in reading order, a clickable contents, all fifteen photographs embedded with their captions, and links into the shop pack. ~4.4 MB, 97 pages. **Untracked** - rebuild it, do not commit it |
 
 **If a generated file and a `.md` file disagree, the `.md` file wins** and the generated copy

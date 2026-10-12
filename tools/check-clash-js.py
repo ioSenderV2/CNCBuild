@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Does the viewer's live clash check agree with the generator's?
 
-🔴 WHY THIS EXISTS. The interference check in tools/make-3d.py is the one the
+FLAG: WHY THIS EXISTS. The interference check in tools/make-3d.py is the one the
 repo trusts, and the interactive model now runs a SECOND copy of it in
 JavaScript so the red boxes follow the carriages as you jog. Two
 implementations of one check is exactly the arrangement that drifts: a pair
@@ -114,7 +114,7 @@ def main():
             print(f"  agree  {tag:34s} {len(py)} overlap(s)")
             continue
         bad += 1
-        print(f"  🔴 DIFFER {tag}")
+        print(f"  FLAG: DIFFER {tag}")
         for row in [r for r in py if r not in js]:
             print(f"       python only: {row}")
         for row in [r for r in js if r not in py]:

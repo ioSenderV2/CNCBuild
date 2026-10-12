@@ -20,19 +20,19 @@ torsion box". Read that first; this file is everything below the top skin.
 | Fill | **Sand in the cavities** - filled **last**, on site |
 | Outer walls, **all four sides** | **25 mm outer + 19 mm inner web, 44 mm total**, the outer one standing **60 mm proud** of the top skin as the **tongue** - see the Y beam interface |
 
-✅ **Decided 2026-09-30: the doubled wall runs the whole perimeter, not just left and right.** It
+SETTLED: **Decided 2026-09-30: the doubled wall runs the whole perimeter, not just left and right.** It
 began as the left/right detail that captures the full-height outboard plates. The front and back now
 get it too, because the **front taper fins and the full-width back panel need the same backing face**
 - see [`lateral-stiffness.md`](lateral-stiffness.md). Three consequences, all good:
 
 - **One detail everywhere** instead of two. Inner web between the skins, outer lamination **204 mm
-  tall covering the end grain of both skins** and 60 mm proud, aluminium bolted through it. ✅ **It
+  tall covering the end grain of both skins** and 60 mm proud, aluminium bolted through it. SETTLED: **It
   caps the skins rather than standing on them** - his, 2026-10-11: the tongues are glued to the sides
   of the box, so running the bottom skin out underneath buys nothing and the capped end is cleaner.
-  (The 180 this carried never closed - 100 + 19 + 60 is 179.) 📌 **The outer lamination
+  (The 180 this carried never closed - 100 + 19 + 60 is 179.) NOTE: **The outer lamination
   IS the tongue** - one part, not two - which is why its thickness and the tongue's are a single
   decision.
-📌 **Each side's outer lamination is cut as ONE piece** - full box depth and full height - **and the
+NOTE: **Each side's outer lamination is cut as ONE piece** - full box depth and full height - **and the
 proud portion forward of the beam's end is sawn away.** His build call 2026-10-11. So the side
 tongue and the front side cap are the same part, there is no butt joint where the tongue stops being
 proud, and the step is a saw cut. It wants a piece **1203.65 × 204** per side, so nest it before the
@@ -41,28 +41,28 @@ sheet is cut.
 - **The front and back tongues are the continuous ones.** Each runs the full width and **19 mm past
   the front post tenon**, covering the end grain of the side tongue in a butt joint - so the side
   tongues die into them, not the other way round. That is what resolves the front-corner convergence
-  in the riser file. ⚠️ The butt joint itself is end grain onto face and is a weak glue joint; it is
+  in the riser file. OPEN: The butt joint itself is end grain onto face and is a weak glue joint; it is
   not load path, so do not make it one.
-- **It resolves the ⚠️ under "Ledge depth"** below, which anticipated exactly this. Every ledge
+- **It resolves the OPEN: under "Ledge depth"** below, which anticipated exactly this. Every ledge
   equals the wall standing on it - **44 mm** since 2026-10-11 - the tenons shrink accordingly, and the
   **back post's single-sided shoulder more than doubles**, which fixes the one wart in that section
   rather than working around it.
 - **It is the deep back-edge member** the sag section asks for. The back wall becomes a composite
   ~180 mm deep along the whole back edge, on the span that is supported only at its midpoint.
 
-⚠️ **The grid spacing is not decided.** Every tenon rises into the cavity, so no rib may cross
+OPEN: **The grid spacing is not decided.** Every tenon rises into the cavity, so no rib may cross
 one - but that lands differently for the front and back posts. See "What the tenons ask of the
 grid" below.
 
 ### The ribs are egg crate - half-lapped both ways, not blocking
 
-> 📌 **"Blocking" means two different things in this repo and they are one section apart.** Here it
+> NOTE: **"Blocking" means two different things in this repo and they are one section apart.** Here it
 > is a **construction method for the grid** - full-length ribs one way with short pieces fitted
 > between them the other - and it was rejected. Elsewhere it means **local packing under a part that
 > bears on the skin**, which is a separate question, asked of the fins and the rear plate and
 > answered independently. Rejecting the first says nothing about the second.
 
-✅ **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
+SETTLED: **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
 The alternative considered was full-length ribs one way with blocking between them the other.
 
 **Why, for this box specifically:** the three support points put the back-centre post half a machine
@@ -78,13 +78,13 @@ the errors accumulating.
 
 #### Four things to get right
 
-1. ⚠️ **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
+1. OPEN: **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
    is commonly 18.2-18.5 and varies between sheets. Test-cut on scrap **from the same sheet**. Too
    tight splits the rib; too loose leaves no glue line.
-2. ⚠️ **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
+2. OPEN: **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
    contact with a skin **along its whole length** - which is the glue joint the whole sandwich
    depends on.
-3. 🔴 **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
+3. FLAG: **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
    egg crate seals every cell, so without this the sand cannot migrate and you need a **drain port
    per cell** instead of a few. Same cut, far fewer ports - see Transport.
 4. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
@@ -129,12 +129,12 @@ move anyway.
 Y plate bolt line and the plate bottom edges **in bearing**. Asymmetric skins are fine in a torsion
 box, so **25 mm top over 19 mm bottom** is the sensible split if anything is spent.
 
-✅ **Settled 2026-10-11: 25 mm top, 19 mm bottom.** The box is **144 mm** deep rather than 138. The
+SETTLED: **Settled 2026-10-11: 25 mm top, 19 mm bottom.** The box is **144 mm** deep rather than 138. The
 underside of the top skin **does not move** - it is set by the post ledge, the bottom skin and the
 cavity - so the 6 mm is all on the outside and the machine simply stands 6 mm higher off the floor.
 Z 0 is the top skin, so nothing above the box moves at all.
 
-### ✅ The ribs stay 19 mm, and the surplus 25 goes to the back edge
+### SETTLED: The ribs stay 19 mm, and the surplus 25 goes to the back edge
 
 Going to a 25 mm top skin leaves surplus 25 mm stock, and the question was whether the ribs are a
 better home for it. **They are not.**
@@ -143,32 +143,32 @@ The skins are the flanges and carry the bending moment; **the ribs carry shear**
 Baltic birch is far past what the shear demands. That is the same reason rib height is the lever
 here and skin material is the weak one.
 
-🔴 **And the trade runs backwards.** Thicker ribs **displace sand**. Sand is about 1.5 g/cc against
+FLAG: **And the trade runs backwards.** Thicker ribs **displace sand**. Sand is about 1.5 g/cc against
 plywood's 0.68, so swapping rib volume for sand volume **reduces** total mass - paying plywood to
 remove ballast, on a box where mass is wanted for damping.
 
-✅ **The outer wall takes it, and the back edge after that.**
+SETTLED: **The outer wall takes it, and the back edge after that.**
 
-### ✅ The outer lamination goes to 25 mm, and that is the tongue
+### SETTLED: The outer lamination goes to 25 mm, and that is the tongue
 
 Settled 2026-10-11. **The tongue is not a separate part** - it is the outer wall lamination, 180 mm
 tall, standing on the bottom skin with 60 mm proud of the top skin. So the wall and the tongue are
 one decision, and the wall becomes **25 outer + 19 inner web = 44 mm** rather than 38.
 
-🔴 **The argument is bolt bearing, not stiffness.** The standing plates bolt **through** the tongue
+FLAG: **The argument is bolt bearing, not stiffness.** The standing plates bolt **through** the tongue
 in a lap - M8 in a 9 mm hole - so the bearing area is hole diameter × thickness: **171 mm² at 19
 against 225 at 25, up 32%**. [`lateral-stiffness.md`](lateral-stiffness.md) makes those two
 through-bolts **the** lateral load path, as a 145 mm couple. Plywood crushing under a bolt is a real
 limit, where plywood shearing in a rib is not - which is exactly why the ribs stayed 19 and this did
 not.
 
-✅ **Geometrically free.** MACHINE_OUTER_W is plate to plate and the tongue laps the plates from
+SETTLED: **Geometrically free.** MACHINE_OUTER_W is plate to plate and the tongue laps the plates from
 **outboard**, so the 6 mm grows the box's outer envelope and nothing inside the machine moves.
 
-✅ **The inner web stays 19**, because it is a perimeter rib and carries shear - the same argument as
+SETTLED: **The inner web stays 19**, because it is a perimeter rib and carries shear - the same argument as
 the ribs. Nothing bolts through it.
 
-📌 **The exposed end grain is chamfered.** The front fin stands 16.571 mm proud of the side plate, so
+NOTE: **The exposed end grain is chamfered.** The front fin stands 16.571 mm proud of the side plate, so
 it covers that much of the side tongue's front end grain and the rest shows. At 19 that was 2.4 mm
 and was deliberately left; at 25 it is **8.4 mm**, and his answer 2026-10-11 is a chamfer on it. No
 structural term either way.
@@ -179,21 +179,21 @@ It is a beam supported at its midpoint carrying both back corners, and those cor
 propped. Spanning problems eat material usefully - but depth beats thickness there, so it is third
 in line behind the top skin and the outer wall.
 
-✅ **And gross sag mostly does not matter.** Three points symmetric left-to-right means both Y beams
+SETTLED: **And gross sag mostly does not matter.** Three points symmetric left-to-right means both Y beams
 sag together, so they stay **coplanar** - the property that counts. A uniformly dished table is
 irrelevant on a router; the spoilboard gets surfaced. Twist arises only from the X carriage sitting
 at one end of its travel. Along each Y edge the stiffness is dominated by the 12" × 1 m × 1/4"
 plate bolted to the 44 mm wall every 100 mm, which is far deeper than the box - **the skins are not
 the main load path there.**
 
-🔴 **What does deserve the material is the back edge.** With posts at the front corners and the
+FLAG: **What does deserve the material is the back edge.** With posts at the front corners and the
 middle of the back, the back edge is a beam supported at its **midpoint**, carrying both back
 corners - and those corners cannot be propped, because the rear carcases sit right under them and
 letting the box land on one destroys the three-point mount. Skin thickness is a weak lever on a
 spanning problem; a **deep back-edge member**, running below the bottom skin if it has to, is the
 right spend.
 
-✅ **Partly answered 2026-09-30.** The doubled back wall is a 44 mm lamination ~204 mm deep running
+SETTLED: **Partly answered 2026-09-30.** The doubled back wall is a 44 mm lamination ~204 mm deep running
 the full back edge, which is a considerably deeper member than the 144 mm box. It was adopted for the
 back panel's sake, not for this, so treat it as a windfall rather than a solved problem - if the back
 edge still wants more, it now wants it **below the bottom skin**, since the wall has taken the space
@@ -233,7 +233,7 @@ The stack closes exactly:
 That 1 mm is stable: 118 mm along the grain of a vertical cedar post moves essentially nothing
 seasonally, so the gap will not close on its own.
 
-### 🔴 Ledge depth follows the wall above it - and it is not 19 mm everywhere
+### FLAG: Ledge depth follows the wall above it - and it is not 19 mm everywhere
 
 The ledges are cut on the **outward-facing** faces on purpose, so that the **perimeter wall lands
 directly over the shoulder**. The load then runs wall, skin, shoulder, post in a straight line with
@@ -244,9 +244,9 @@ Every outer wall is **two laminations, 44 mm** - 25 outer plus a 19 inner web. A
 one would put the tenon directly under that wall, leaving the wall with a hole where it needs to
 bear.
 
-✅ **Every ledge is 44 mm.** Since the perimeter was doubled on all four sides (2026-09-30) the
+SETTLED: **Every ledge is 44 mm.** Since the perimeter was doubled on all four sides (2026-09-30) the
 ledges have been equal all round; the depth moved from 38 to 44 on **2026-10-11** when the outer
-lamination went to 25. 🔴 **That is the consequence that was missed** when the 25 mm wall was called
+lamination went to 25. FLAG: **That is the consequence that was missed** when the 25 mm wall was called
 geometrically free - it is free inside the machine and not at the posts.
 
 | Post | Face | Ledge depth | Wall above it |
@@ -263,20 +263,20 @@ centre tenon is 86 × 42**.
 | Front corner tenon | 48 × 67 | 48 × 48 | **42 × 42** |
 | Back centre tenon | 86 × 67 | 86 × 48 | **86 × 42** |
 
-✅ **The smaller tenon is not a problem, and the question was asked and answered 2026-10-11.** The
+SETTLED: **The smaller tenon is not a problem, and the question was asked and answered 2026-10-11.** The
 tenon **carries no vertical load** - all of it is on the shoulder - so with 99 mm of engagement in
 cedar this is location duty only, and the corner tenons are located by both perimeter walls besides.
-📌 **And the shoulder grew, which is the half that matters:** the corner shoulder goes from about
+NOTE: **And the shoulder grew, which is the half that matters:** the corner shoulder goes from about
 5090 mm² to **5630**, and the back post's bearing centroid comes in from about 24 mm off the post
 axis to **21**. Every structural number improved.
 
 Two side effects of the deeper ledges, both welcome: the corner shoulder area rises, and each corner
 tenon ends up snug against both perimeter walls, so it is **laterally located by the walls themselves**.
 
-📌 **The smaller the tenon, the more a cutting error costs as a fraction of it** - but that is a
+NOTE: **The smaller the tenon, the more a cutting error costs as a fraction of it** - but that is a
 **fit** concern and not a capacity one, and it does not bite either, because the box's position on
 the posts is **not a machine reference**: the machine is referenced to the top skin, so slop in the
-tenon changes nothing. ✅ **And since 2026-10-11 the posts are dressed to 86 square** rather than
+tenon changes nothing. SETTLED: **And since 2026-10-11 the posts are dressed to 86 square** rather than
 taken as they come, so the tenons are exactly 42 and all three holes are the same.
 
 ### Bearing, and the shoulder that stopped being single-sided
@@ -289,15 +289,15 @@ taken as they come, so the tenons are exactly 42 and all three holes are the sam
 Both are far inside cedar loaded **parallel to the grain** - the ledge is a cross-cut, so the plywood
 bears on end grain in the post's strong direction.
 
-✅ **The back post's eccentricity complaint is largely answered by the 38 mm perimeter.** This section
+SETTLED: **The back post's eccentricity complaint is largely answered by the 38 mm perimeter.** This section
 used to note a small permanent moment from single-sided bearing and offer front-and-back ledging as a
 remedy, at the cost of wall-over-shoulder alignment. Doubling the back wall got most of the benefit
 without paying that price: twice the area, a third less eccentricity, and the wall still lands
 directly over the shoulder.
 
-✅ **Dress all three posts to 86 mm square**, settled 2026-10-11 — one size, so the three tenon holes
+SETTLED: **Dress all three posts to 86 mm square**, settled 2026-10-11 — one size, so the three tenon holes
 are identical. This previously read "cut each hole to its own post", because an S4S 4×4 commonly runs
-88.9 mm and cedar varies between sticks. 🔴 **Square faces matter more than the width**: the ledge is
+88.9 mm and cedar varies between sticks. FLAG: **Square faces matter more than the width**: the ledge is
 a cross-cut and the wall lands over it, so a face out of square bears on an edge.
 
 ---
@@ -347,7 +347,7 @@ The base locates the three posts, stiffens them against each other, and is the p
 **Two bolts minimum per post-to-frame joint.** A single bolt lets the post rotate about it, and a post
 that rotates lets its tenon walk in the skin hole.
 
-### 🔴 The 2x4 top frame must never touch the box
+### FLAG: The 2x4 top frame must never touch the box
 
 "Just shy" is the load-bearing phrase in the whole design. The moment that frame touches, there is a
 fourth and fifth contact point, **the mount is no longer three-point, and the failure is completely
@@ -380,13 +380,13 @@ This works better than it might appear. A carcase with one open face still contr
 **both** vertical planes - its back plus its two sides - so front-back and left-right racking are both
 resisted by each of the three. There is no direction gap.
 
-🔴 **Edge fastening is what makes a shear wall a shear wall.** A panel transfers load only through its
+FLAG: **Edge fastening is what makes a shear wall a shear wall.** A panel transfers load only through its
 perimeter connections: **glue plus screws at roughly 150 mm all the way round** - to the bottom frame,
 the top frame, the posts, and carcase-to-carcase where they meet. A carcase that merely sits in the
 void with screws in its corners contributes close to nothing, **and looks identical to one that
 works.**
 
-⚠️ **The left and right sides are the least-stiffened perimeter.** The rear carcases cover the back and
+OPEN: **The left and right sides are the least-stiffened perimeter.** The rear carcases cover the back and
 the front carcase covers the front; the sides get only carcase ends. That is where to add a panel if
 more is ever wanted - and it is also the least useful face for storage access, so it may be free.
 
@@ -426,9 +426,9 @@ use.
 
 - **Put the ports low in the front and back perimeter walls instead.** Still gravity-drains into a
   bucket, and reachable for the life of the machine.
-- ⚠️ **Keep them out of the laminated left and right walls.** Those are the 38 mm shear webs the Y beam
+- OPEN: **Keep them out of the laminated left and right walls.** Those are the 38 mm shear webs the Y beam
   plates bolt to; a 2 inch hole through one is a hole in the load path.
-- 🔴 **A rib grid makes closed cells, and each cell traps its own sand.** Either a port per cell, or
+- FLAG: **A rib grid makes closed cells, and each cell traps its own sand.** Either a port per cell, or
   **notch the ribs at the bottom** so sand can migrate to a few ports. The notches cost a little glue
   line to the bottom skin and nothing else.
 
@@ -436,14 +436,13 @@ Same deadline as everything else on this page: before the box is closed.
 
 ---
 
-## ⚠️ Open items
-
+## Open items
 - **The grid spacing**, subject to the first interior ribs clearing the two corner tenons and the
   back-centre tenon falling between two ribs.
 - **The box's deflection between the three points** under full sand load. This sets the minimum 2x4
   clearance above, and it needs the grid spacing and the sand mass first. **The one number on this page
   that a wrong guess would quietly cost accuracy for.**
-- ✅ **The box footprint is now DESIGNED, not measured** - closed 2026-10-03, then **corrected the
+- SETTLED: **The box footprint is now DESIGNED, not measured** - closed 2026-10-03, then **corrected the
   same day**. The first answer had the box tucking *inside* the plates at 1204.38 by 983.65. It does
   not: the plates sit **flat on the top skin** and the tongues lap them from **outboard**, so the box
   is the larger part, not the smaller. **1211.24 across** (inside the two side tongues, which is the

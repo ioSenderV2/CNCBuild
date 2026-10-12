@@ -9,7 +9,7 @@ Schematic for the daughter board described in [`../../controller-board.md`](../.
 | `netlist.txt` | The connection list, generated from the same source as the schematic. |
 | `generate.py` | **The seed that produced the first version - not the live source any more.** See the warning below before re-running it. |
 
-> 🔴 **`generate.py` is now a SEED, not the source of truth.**
+> FLAG: **`generate.py` is now a SEED, not the source of truth.**
 > The schematic has since been **opened and re-saved by KiCad 10**, which upgraded the file format and
 > may carry hand edits and layout work. **Re-running `generate.py` overwrites all of that.** Treat the
 > `.kicad_sch` as the live document from here on; keep `generate.py` only as the record of how the

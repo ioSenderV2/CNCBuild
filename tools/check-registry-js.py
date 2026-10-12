@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Does registry.html's own script actually filter and track?
 
-🔴 WHY THIS EXISTS. The page's chips and search are the only way to find
+FLAG: WHY THIS EXISTS. The page's chips and search are the only way to find
 anything in 515 symbols, and on 2026-10-11 he reported that none of the filter
 buttons did anything. There is no browser here to check in, so a claim that it
 works is worth nothing on its own - the page would be shipped broken twice.
@@ -218,7 +218,7 @@ ok('jumping to a symbol marks its section', marked().length, 1);
 ok('and flashes the card it landed on',
    cards[cards.length - 1].has('flash'), true);
 
-// 🔴 A LINK TO SOMETHING FILTERED OUT. Isolate one provenance, then follow a
+// FLAG: A LINK TO SOMETHING FILTERED OUT. Isolate one provenance, then follow a
 // link to a symbol of another - the jump used to land on a display:none card
 // and nothing moved at all.
 const pA = chips[0].dataset.prov;
@@ -254,7 +254,7 @@ ok('releasing hides it', peekEl.hidden, true);
 winHandlers.pointerdown({ target: { closest: () => null } });
 ok('pressing elsewhere leaves it hidden', peekEl.hidden, true);
 
-// 🔴 A PLAIN CLICK MUST NOT NAVIGATE - it peeked, and that is all it does
+// FLAG: A PLAIN CLICK MUST NOT NAVIGATE - it peeked, and that is all it does
 location.hash = '';
 let prevented = false;
 winHandlers.click({ target: anchor, preventDefault: () => { prevented = true; },
@@ -342,7 +342,7 @@ def main():
             print(f"  ok    {c['name']}")
         else:
             bad += 1
-            print(f"  🔴 FAIL {c['name']}: got {c['got']!r}, want {c['want']!r}")
+            print(f"  FLAG: FAIL {c['name']}: got {c['got']!r}, want {c['want']!r}")
     print(f"\n{len(res['checks'])} check(s), {bad} failure(s)")
     return 1 if bad else 0
 

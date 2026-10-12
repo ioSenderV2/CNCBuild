@@ -9,7 +9,7 @@ Schematic for the board described in [`../../sensor-board.md`](../../sensor-boar
 | `netlist.txt` | The connection list, generated from the same source as the schematic. |
 | `generate.py` | The seed that produced the first version. See the warning below. |
 
-> 🔴 **`generate.py` is already a SEED, not the source of truth - as of 2026-08-29.**
+> FLAG: **`generate.py` is already a SEED, not the source of truth - as of 2026-08-29.**
 > It took one `kicad-cli sch erc` run: the tool **re-saves the schematic**, upgrading it from the
 > `version 20231120` header the script writes to KiCad 10's own format (and to CRLF, which
 > `.gitattributes` normalises back to LF on commit). Nobody opened Eeschema; running the checks was

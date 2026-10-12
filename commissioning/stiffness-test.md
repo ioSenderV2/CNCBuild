@@ -8,7 +8,7 @@ figure in this repo**.
 
 **What it settles:**
 
-- 🔴 **Whether the X beam's joining plates should be 1/4" or 3/8".** That choice was made on the claim
+- FLAG: **Whether the X beam's joining plates should be 1/4" or 3/8".** That choice was made on the claim
   that the Z assembly is the largest compliance in the stack - **a claim, not a measurement**. The
   plates are bolt-on precisely so the swap stays cheap if this says otherwise.
 - **The gantry's torsional stiffness**, which cannot be computed - 8020 publish Ix and Iy for the
@@ -52,12 +52,12 @@ cannot.**
 **If you only do one, do the low one** - it is the worst case and it is where the machine cuts.
 Write the Z reading down either way; a deflection without its Z height is not a measurement.
 
-⚠️ **Move indicator 4 with the blocks.** The X carriage plate is 407 mm tall and the Z blocks travel
+OPEN: **Move indicator 4 with the blocks.** The X carriage plate is 407 mm tall and the Z blocks travel
 most of it. If indicator 4 stays at a fixed spot while the blocks move away from it, the (3−4)
 difference quietly starts including carriage-plate bending and stops meaning "the Z assembly". Put it
 beside wherever the blocks are for that run.
 
-### 🔴 Energise the drives, or the reading is nonsense
+### FLAG: Energise the drives, or the reading is nonsense
 
 With the steppers off, the Y ballscrew back-drives and the whole gantry simply rolls - you would be
 measuring the screw, not the structure. **Power the drives so they hold**, and note that motor and
@@ -68,7 +68,7 @@ rig it.
 
 **Load, release, re-zero, repeat. Three cycles. Push both directions.**
 
-⚠️ **Anything that does not come back to zero is LOST MOTION, not stiffness** - and it matters more.
+OPEN: **Anything that does not come back to zero is LOST MOTION, not stiffness** - and it matters more.
 A joint that slips 20 µm and stays slipped shows up in your parts; 20 µm of elastic deflection
 largely does not. Record it separately. Do not average it away.
 
@@ -85,7 +85,7 @@ the beam down to the nose, plus the entire Z stack.
 
 | # | Indicator contacts | Stem points | Reading is |
 |---|---|---|---|
-| **1** | **Spindle body, just below the lower clamp.** On the body's horizontal centreline | fore-aft | **Total** - beam, plates, carriage, Z stack, clamps. ⭐ **The primary number** |
+| **1** | **Spindle body, just below the lower clamp.** On the body's horizontal centreline | fore-aft | **Total** - beam, plates, carriage, Z stack, clamps.  **The primary number** |
 | **2** | **Spindle body, as near the nose as you can reach.** Same centreline, same side as #1 | fore-aft | Pairs with #1 to give **tilt** - see below |
 | **3** | **Z plate front face**, beside the lower clamp | fore-aft | Everything below the spindle and clamps |
 | **4** | **X carriage plate front face** - exposed above or below the 175 mm Z plate | fore-aft | Everything below the Z assembly |
@@ -102,14 +102,14 @@ is. Each difference is one subassembly:
 | 1 − 3 | Spindle body and the two clamps |
 | 3 − 4 | **The Z assembly** - rails, blocks, spacers, ball nut |
 | 4 − 5 | X carriage plate, X rails and blocks |
-| **5 − 6** | 🔴 **The X beam itself. This is the 1/4" vs 3/8" answer** |
+| **5 − 6** | FLAG: **The X beam itself. This is the 1/4" vs 3/8" answer** |
 | 6 | End plates, Y blocks, Y beams, risers, torsion box |
 
-⚠️ **Approximate, and knowingly so.** Points on different parts rotate as well as translate, so the
+OPEN: **Approximate, and knowingly so.** Points on different parts rotate as well as translate, so the
 differences mix bending and rotation. This is good for finding **which term dominates**, which is the
 question being asked. It is not a modal analysis.
 
-### 🔴 Indicators 1 and 2 are the pair that matters most
+### FLAG: Indicators 1 and 2 are the pair that matters most
 
 A nose reading mixes two things that matter very differently:
 
@@ -140,7 +140,7 @@ or the clamp's underside.
 |---|---|---|
 | 1 | Spindle nose shoulder, or collet nut bottom face | Total vertical |
 | 2 | Z plate bottom edge | Below the spindle |
-| 3 | **Beam front face, top edge** and **beam front face, bottom edge**, beside the carriage | ⭐ **The pair whose difference gives beam twist** |
+| 3 | **Beam front face, top edge** and **beam front face, bottom edge**, beside the carriage |  **The pair whose difference gives beam twist** |
 | 4 | X end plate, at a Y block | Everything but the beam |
 
 **Beam twist = (top reading − bottom reading) ÷ 120 mm**, the section height. That is the number
@@ -158,13 +158,13 @@ indicate the other instead - that is a different test.
 
 ## What to avoid
 
-- ❌ **Do not take the primary reading off the collet nut.** It is a threaded part that can shift
+- REJECTED: **Do not take the primary reading off the collet nut.** It is a threaded part that can shift
   independently of everything you are trying to measure. Use the spindle body.
-- ❌ **Do not indicate off a long tool in the collet** for the structural numbers - that adds collet
+- REJECTED: **Do not indicate off a long tool in the collet** for the structural numbers - that adds collet
   and tool compliance, which is real but is not the structure you are deciding about. Worth a
   *separate* reading on a short ground stub if you want the tool-holding contribution.
-- ❌ **Do not reference the indicator to any part of the machine.**
-- ❌ **Do not average out a failure to return to zero.** Record it as lost motion.
+- REJECTED: **Do not reference the indicator to any part of the machine.**
+- REJECTED: **Do not average out a failure to return to zero.** Record it as lost motion.
 
 ---
 
@@ -216,6 +216,6 @@ Beam twist = (3a − 3b) ÷ 120 mm = ______ rad
 | **comparable to the Z assembly** | 3/8" is worth the ~3 lb. The plates are bolt-on for exactly this |
 | **dominant** | Something is wrong with the joint, not the plate thickness. Check the T-nut preload before buying anything |
 
-⚠️ **Whatever this test says, go back and correct the computed figures in
+OPEN: **Whatever this test says, go back and correct the computed figures in
 [`../machine/gantry-beam-joint.md`](../machine/gantry-beam-joint.md).** They are estimates with a
 crude beam model behind them, and a note that contradicts its own correction is worse than no note.

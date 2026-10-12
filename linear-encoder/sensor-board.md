@@ -13,7 +13,7 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
 ---
 
-## ⚠️ The through-hole jack does not obviously fit
+## OPEN: The through-hole jack does not obviously fit
 
 The tape-facing side has a hard height budget, and it is small:
 

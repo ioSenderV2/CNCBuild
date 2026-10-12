@@ -8,7 +8,7 @@
 
 ## Y beam support
 
-### 🔴 Reworked 2026-10-02 - read this before anything below it
+### FLAG: Reworked 2026-10-02 - read this before anything below it
 
 **Cast stepper frames were bought, and they moved the steppers to the front of the machine.** That
 one part change cascaded through the whole Y end design, and several decisions recorded further down
@@ -21,7 +21,7 @@ this file were reversed on purpose. The short form:
 | Front plates | Tapered fins, 3/8" | Tapered fins, **10 mm** (measured stock, see below), with a **60.5 × 50 mm window** for the casting |
 | Rear plates | Two 3" risers, kept as built | **Scrapped.** One **1210.73 mm × 1/4" hot-rolled A36 steel** back plate replaces both risers *and* the separate shear panel |
 | Outboard plates | 12" × 1000 × 1/4" **6061** | **11 7/8" × 39 5/16" × 10 gauge cold-rolled steel sheet**, as ordered 2026-10-08 |
-| Front strips | 3/8" on Y, 1/4" on X | **2" (50.8) × 1/8" 6061 on all three beams**, X included. 🔴 Went 1/4" → 4 mm 2026-10-03: at 1/4" the bolt heads hit the bearing blocks |
+| Front strips | 3/8" on Y, 1/4" on X | **2" (50.8) × 1/8" 6061 on all three beams**, X included. FLAG: Went 1/4" → 4 mm 2026-10-03: at 1/4" the bolt heads hit the bearing blocks |
 
 Two reversals are deliberate and are recorded with their reasons where they occur: the
 **monolithic rear plate**, rejected on 2026-09-30 and adopted now because three of its four grounds
@@ -31,11 +31,11 @@ than avoided.
 
 ---
 
-✅ **Both Y beams are built** as described here - stacked pairs, rails, screws, BK12/BF12 and
+SETTLED: **Both Y beams are built** as described here - stacked pairs, rails, screws, BK12/BF12 and
 steppers. See [`photos/y-beam-end-plate-outer.jpg`](photos/y-beam-end-plate-outer.jpg) and the three
 beside it.
 
-🔴 **The end plates in those photographs are gone.** Each Y beam end now carries a **tapered front
+FLAG: **The end plates in those photographs are gone.** Each Y beam end now carries a **tapered front
 fin**, and a single **full-width, full-height back plate** serves both beams - Sheets 1a, 1b and 7.
 **What carries forward from what was there is the 8-bolt corner-bore pattern and the 9 mm hole**,
 and those carry forward because they are proven on real hardware rather than a first attempt, which
@@ -48,12 +48,12 @@ screw runs underneath the beam**, which is also why the outboard plate below mat
 
 | | **Front (2026-10-02)** | **Rear (2026-10-02)** |
 |---|---|---|
-| Size | **Tapered: 100 mm at the top, 200 mm at the base, 301.625 mm tall, 10 mm thick** | **One plate for both beams: 11 7/8" × a true 1/4" A36, ordered 47 21/32" (1210.47) long.** ⚠️ **The length is open** - the flush envelope at a 10 gauge side plate is 1211.238, so the bought plate is 0.77 short. Caliper it on arrival; see `open-items.md` |
+| Size | **Tapered: 100 mm at the top, 200 mm at the base, 301.625 mm tall, 10 mm thick** | **One plate for both beams: 11 7/8" × a true 1/4" A36, ordered 47 21/32" (1210.47) long.** OPEN: **The length is open** - the flush envelope at a 10 gauge side plate is 1211.238, so the bought plate is 0.77 short. Caliper it on arrival; see `open-items.md` |
 | To the beam | **8 × M8 × 35 mm flange bolts** - four per profile | Same 8-bolt pattern, **× 2 beams = 16 bolts** |
-| To the torsion box | **Two M8 at X 25 and 170, both on Y 30**, into the vertical legs of two L-brackets behind the fin, plus bottom-edge bearing. ⚠️ **There is no front tongue** - the box runs past the fins and the brackets tie it down | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full 1210.73 mm |
+| To the torsion box | **Two M8 at X 25 and 170, both on Y 30**, into the vertical legs of two L-brackets behind the fin, plus bottom-edge bearing. OPEN: **There is no front tongue** - the box runs past the fins and the brackets tie it down | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full 1210.73 mm |
 | Also carries | the **60.5 × 50 window** for the cast stepper frame | **BF12**, 4 × M5 tapped into the plate, one per beam |
 
-⚠️ **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
+OPEN: **The old rear column of this table is gone, not merged.** The two 3" rear risers are scrapped.
 Nothing in the rear column above is as-built hardware.
 
 The riser lands on the **same top skin** the full-height plate bears on, just inboard of it - see
@@ -65,7 +65,7 @@ what those bores exist for and the only way they are reachable.
 
 At 1/2" plate, an M8 × 35 leaves 22.3 mm in the extrusion; at 3/8" it leaves 25.5 mm.
 
-### 🔴 The holes are 9 mm, and that is deliberate
+### FLAG: The holes are 9 mm, and that is deliberate
 
 **As built the Y risers were laid out by hand, aimed at 8.2 mm, and reamed to 9 mm** to absorb
 position error. That is the right dimension and should be specified on purpose everywhere this
@@ -79,15 +79,15 @@ pattern is used, including the X end plates:
   friction across eight bolts**, against loads of one to two kN. The bolts never touch the hole walls.
 - **The float is wanted** if the shelves are to set roll. A close fit would fight the adjustment.
 
-⚠️ ~~**Do not remake the Y risers on cosmetics.**~~ **Overtaken 2026-10-02 - all four come off.**
+OPEN: ~~**Do not remake the Y risers on cosmetics.**~~ **Overtaken 2026-10-02 - all four come off.**
 The rule was right and it is not being abandoned on cosmetics: the front plates change shape *and*
 gain a window, and the rear pair is replaced by a single member that does a job neither of them
 could. The sentiment behind the rule still applies to anything else that is built and calibrated.
 
-📌 **What survives is the 8-bolt pattern and the 9 mm hole**, both of which carry straight into
+NOTE: **What survives is the 8-bolt pattern and the 9 mm hole**, both of which carry straight into
 the new plates.
 
-⚠️ **This used to add "so the pattern costs no mill time" and that is no longer true.** It was true
+OPEN: **This used to add "so the pattern costs no mill time" and that is no longer true.** It was true
 while the pattern lived in plates already drilled at home with a mag drill. Those plates are gone;
 the fins are new parts and the pattern has to be cut into them. See
 [`machining.md`](../machining.md) for what the trip now carries - it is no longer just the window and
@@ -97,14 +97,14 @@ the back plate's two patterns.
 
 ## The cast stepper frames
 
-✅ **Bought, in hand, and the reason the Y ends were reopened - 2026-10-02.** A one-piece cast
+SETTLED: **Bought, in hand, and the reason the Y ends were reopened - 2026-10-02.** A one-piece cast
 aluminium frame carrying the **NEMA 23 mounting face, the ball screw bearing housing and the coupler
 window** in a single part. It replaces **both** the BK12 support block and the four 18 mm stainless
 M5 standoffs the motor currently stands on - see
 [`photos/y-beam-stepper-mounted.jpg`](photos/y-beam-stepper-mounted.jpg) for the arrangement it
 supersedes.
 
-### 🔴 Every axis gets one - X, Y1, Y2 and Z
+### FLAG: Every axis gets one - X, Y1, Y2 and Z
 
 **Decided 2026-10-02, and for one reason on all four: get rid of the standoffs.** This started as a
 Y-axis change and is not one; it is now the machine's standard way of mounting a motor to a screw.
@@ -115,13 +115,13 @@ Y-axis change and is not one; it is now the machine's standard way of mounting a
 | **X** | On **top** of the beam, on a **3/8"** interposer, overhanging the end | **Face-mounted on a tongue off the right-hand X end plate** |
 | **Z** | On the **X carriage plate** - 1/2" aluminium, so **no interposer**, the casting taps straight in | At the bottom of the plate |
 
-🔴 **X and Y load that joint in opposite directions, and it is not a detail.** On **X** the bar sits
+FLAG: **X and Y load that joint in opposite directions, and it is not a detail.** On **X** the bar sits
 **on top** of the beam and is bolted down into T-nuts - the parts are in **compression**, stacked.
 On **Y1 and Y2** the bar hangs **underneath**, and everything below the beam is in **tension**:
 six M8 into T-nuts hold the bar up against the beam's underside, and the casting is bolted up into
 the bar and hangs from its own M5. **Nothing rests on anything at the Y ends.**
 
-✅ **Three interposers, and the count is now stated rather than left to be read off the table** -
+SETTLED: **Three interposers, and the count is now stated rather than left to be read off the table** -
 given 2026-10-02:
 
 | | Under the casting | Under BF12 | Total |
@@ -132,15 +132,15 @@ given 2026-10-02:
 | **Z** | — (straight onto the 1/2" X carriage plate) | — | **0** |
 | | | | **3** |
 
-📌 **Only Y and X need an interposer, and for the same reason**: the casting lands on an extrusion
+NOTE: **Only Y and X need an interposer, and for the same reason**: the casting lands on an extrusion
 face whose wall is 2.21 mm, which is 0.44 × D for an M5 and not a thread. **Z lands on 1/2" plate -
 2.5 × D - so it bolts direct.** **No axis needs a second one for BF12**: on Y it face-mounts on the
 1210.73 mm rear plate, and on X it face-mounts on a tongue off the right-hand end plate.
 
-✅ **ONE part, quantity 3 - decided 2026-10-02.** All three interposers are **identical**, X's
+SETTLED: **ONE part, quantity 3 - decided 2026-10-02.** All three interposers are **identical**, X's
 included, so there is one drawing and one setup:
 
-❌ ~~A fourth, 60 × 80, top-mounting BF12 on X.~~ **Dropped the same day it was specified**: X's BF12
+REJECTED: ~~A fourth, 60 × 80, top-mounting BF12 on X.~~ **Dropped the same day it was specified**: X's BF12
 face-mounts on a **tongue off the right-hand X end plate** instead, which uses a plate that already
 exists rather than adding a fifth part and four more T-nut bolts.
 
@@ -151,13 +151,13 @@ exists rather than adding a fifth part and four more T-nut bolts.
 | Top face | **6 × M5 tapped** for the casting, at bar coords 28-71 |
 | Counterbores | **none anywhere** |
 
-🔴 **X's casting bar inherits Y's bolt rows, and that is an assumption worth naming.** 82 / 110 / 138
+FLAG: **X's casting bar inherits Y's bolt rows, and that is an assumption worth naming.** 82 / 110 / 138
 were derived from *Y* geometry - the 30 mm protrusion past the fin, the 60.5 × 50 window, the casting's
 own tapped rows. Making the parts identical means X's bar carries those same rows; **the check
 nobody has run is whether all three rows land over beam on X**, where the bar sits on top and
 overhangs the end rather than reaching back under a fin.
 
-✅ **BF12's hole count depends on how it is mounted, and both numbers in this repo were right** -
+SETTLED: **BF12's hole count depends on how it is mounted, and both numbers in this repo were right** -
 resolved 2026-10-02:
 
 | Orientation | Holes | Where it is used |
@@ -165,22 +165,22 @@ resolved 2026-10-02:
 | **Top-mounted** - bolted down through its base onto a horizontal surface | **2 × M5** | The X interposer bar |
 | **Face-mounted** - bolted through its flange into a vertical plate | **4 × M5** | The Y rear plate, and anywhere BF12 lands on a plate face |
 
-📌 **This looked like a contradiction and was not.** The 2 and the 4 had been recorded in different
+NOTE: **This looked like a contradiction and was not.** The 2 and the 4 had been recorded in different
 sections describing different orientations, with neither saying which. Any BF12 figure in this repo
 now has to name the orientation it belongs to, or it means nothing.
 
-✅ **Every interposer is 3/8" 6061** - settled 2026-10-02, one thickness across the machine. M5 into
+SETTLED: **Every interposer is 3/8" 6061** - settled 2026-10-02, one thickness across the machine. M5 into
 9.525 mm is **1.9 × D**, inside the 1.5-2 band aluminium wants, and the thread shears near **18 kN**
 against an M5 class 8.8 bolt breaking near **11** - so the plate thread outlasts the fastener. It
 also takes a button-head counterbore with 6.5 mm left under it, which is what the bolts inside the
 casting's footprint need. **1/2" was available and buys only margin**; its one effect would be the
 screw axis sitting 3.2 mm lower, which increases nut-to-beam clearance rather than eating it.
 
-✅ **Z's travel budget is untouched - confirmed 2026-10-02.** The span between BF12 and the
+SETTLED: **Z's travel budget is untouched - confirmed 2026-10-02.** The span between BF12 and the
 casting's own bearing is still **272 mm**, so 246 mm rail-limited and ~26 mm of screw overrun both
 stand, and with them the 7 mm / 10 mm hard-stop working.
 
-✅ **And the casting-versus-hard-stop fit is resolved**: the single plate becomes **two blocks, one
+SETTLED: **And the casting-versus-hard-stop fit is resolved**: the single plate becomes **two blocks, one
 either side of the casting**, 47 mm wide each. See the Z travel section.
 
 ### Why it was worth reopening a built axis
@@ -189,7 +189,7 @@ Two complaints, and only one of them is a stiffness problem:
 
 1. **Stiffness.** Four thin standoffs in bending are the soft link in a path that runs stepper →
    coupler → screw.
-2. 🔴 **Squareness, and this is the one that cannot be fixed by buying better standoffs.** Nothing in
+2. FLAG: **Squareness, and this is the one that cannot be fixed by buying better standoffs.** Nothing in
    the standoff stack holds the motor face square to the plate except four standoffs being identical
    and four holes being true. Both are hand work. The casting makes motor face, bearing bore and
    coupler alignment **features of one part machined in one setup** - the error source is removed
@@ -197,12 +197,12 @@ Two complaints, and only one of them is a stiffness problem:
 
 ### How it mounts, and why that needs a bar
 
-🔴 **The casting never touches the extrusion. It bolts to an interposer, and the interposer bolts
+FLAG: **The casting never touches the extrusion. It bolts to an interposer, and the interposer bolts
 to an extrusion face.** That it lands on the beam at all - rather than on the end plate, where BK12
 went - is the whole difference, and it drives everything else. Its foot is **stepped, not one flat
 plane** - there is a ledge where the stepper mount begins.
 
-📌 **Corrected 2026-10-02 by the owner.** This section used to open "the casting bolts to a face of
+NOTE: **Corrected 2026-10-02 by the owner.** This section used to open "the casting bolts to a face of
 the extrusion", which is how an open item came to ask *which* face - a question with no answer,
 because the premise was wrong. **X, Y1 and Y2 all go casting → interposer → beam**: on top of the X
 beam, under the Y beams, held by **M8 flange bolts into slide-in T-nuts**. Z is the exception and
@@ -221,7 +221,7 @@ interposer carries them:
 | Counterbores | **none anywhere** |
 | Casting to bar | its 6 through holes, **tapped into 10 mm** = **2.0 × D** |
 
-✅ **The 10 mm is a thread-engagement decision as well as what the plate measured.** M5 into 10 mm
+SETTLED: **The 10 mm is a thread-engagement decision as well as what the plate measured.** M5 into 10 mm
 of 6061 sits at the top of the 1.5-2 × D band aluminium wants, and the thread shears near **18 kN**
 against an M5 class 8.8 bolt breaking near **11 kN** - stronger than the fastener it holds. Same
 thickness on X; Z needs none, landing on 1/2" plate.
@@ -243,7 +243,7 @@ Measuring along the beam from its end face, with the fin occupying 0 to −10 �
 | Bar's inboard end, at 150 long | **+123.5** |
 | **Bar length actually over the beam** | **123.5 mm** - the only part that can reach a T-nut |
 
-🔴 **That is why the bar went to 150 and why the counterbores disappeared.** At 120 the bolted
+FLAG: **That is why the bar went to 150 and why the counterbores disappeared.** At 120 the bolted
 length would have been 77 mm and **all four** counterbored bolts would have fallen off the beam -
 the rows at 14 and 43 landing at −28.7 and +0.3. The casting's footprint occupies bar coordinates
 **0 to 77**, so there is nowhere under the casting to put a T-nut bolt and the flange bolts all go
@@ -252,35 +252,35 @@ inboard of it. 150 is what makes room for them.
 **Why 105 and 135**, which are the two checks that bind:
 
 - **105 clears the casting's face at 77** by 28 mm, so an M8 flange's 8.65 half-head clears it by
-  19. 🔴 **There used to be a third row at 82 and it does not fit.** That row was laid out against
+  19. FLAG: **There used to be a third row at 82 and it does not fit.** That row was laid out against
   a casting believed to be 72.5 long and a bar standing 30 proud; the casting measured **77** and
   the bar slid back, which leaves an M8 flange centred at 82 sitting **0.85 mm** off the casting's
   face. The clearance that was being checked was to the casting's last *tapped row* at 71, not to
   the part.
 - **135 leaves 15 mm to the bar's inboard end**, against the **8.65 mm half-head** of an M8 flange
-  bolt - FLANGE_HALF, off a measured 17.3. ⚠️ **Which head this bar takes is open.** The 17.3 is the
+  bolt - FLANGE_HALF, off a measured 17.3. OPEN: **Which head this bar takes is open.** The 17.3 is the
   beam-end bolt and these six are T-slot bolts; the front strip's T-slot bolts went to a 13.8 head on
   2026-10-08 for the encoder puck, and whether the other T-slot joints follow has not been decided.
   **The check passes either way** - 15 against 8.65 clears, and a smaller head clears by more - which
-  is why it is not gating anything. 📌 **This line used to read "enough for an 11.8 mm flange
+  is why it is not gating anything. NOTE: **This line used to read "enough for an 11.8 mm flange
   head"** - the M5 head *diameter*, compared against an edge *distance*. That comparison was
   conservative by a factor of two and it survived the M5 → M8 change long enough to raise a false
   alarm. **Edge distance is a radius question**, which is why FLANGE_HALF and FLANGE_M5_HALF exist.
-  🔴 **Two numbers in that old sentence were also just wrong**, corrected 2026-10-03: the M8 head is
+  FLAG: **Two numbers in that old sentence were also just wrong**, corrected 2026-10-03: the M8 head is
   **17.3**, not 18, and the M5 flange is **13.4**, not 11.8. Neither changes the conclusion here -
   15 against 8.65 still clears - but both were being quoted elsewhere as if measured.
 
-✅ **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
+SETTLED: **Peel is comfortable.** Thrust acts 34.5 mm off the extrusion face, so ~700 N gives ~24 N·m;
 over the 56 mm spread of the bolt group that is about **400 N of uplift** against four M8 of
-clamp. ⚠️ **It was six until 2026-10-10** - the row at 82 came out, so the clamp is two bolts
+clamp. OPEN: **It was six until 2026-10-10** - the row at 82 came out, so the clamp is two bolts
 down and the spread along the bar is 30 rather than 56. The margin is still large, but this is the
 number to redo if the bar ever carries more.
 
-⚠️ **The casting cantilevers 26.5 mm past the beam's end**, carried by the bar alone. That is
+OPEN: **The casting cantilevers 26.5 mm past the beam's end**, carried by the bar alone. That is
 accepted, and it is the same call made on X: roughly 2.5 kg at that reach is under 2 N·m, and the
 thrust it carries runs **along** the beam rather than down.
 
-#### ✅ The ball nut clears the bar by 5 mm
+#### SETTLED: The ball nut clears the bar by 5 mm
 
 The bar hangs 9.525 mm below the beam's underside, directly in the screw's lane, so the nut has to
 pass beneath it for the whole 107 mm the bar is over the beam.
@@ -292,12 +292,12 @@ pass beneath it for the whole 107 mm the bar is over the beam.
 
 **So the bar's length does not limit Y travel**, which is what the question was.
 
-❌ **And it is not the ball nut tongue that had to clear it.** An earlier note here said the bar's
+REJECTED: **And it is not the ball nut tongue that had to clear it.** An earlier note here said the bar's
 inboard end was an input to the tongue's design. **Wrong** - the tongue is vertical, on the nut's
 **outboard face**, so it never passes under the beam where the bar is. The two are in different
 planes. What had to clear was the nut housing itself, and it does, by 5 mm.
 
-#### 📌 The clash that shaped the earlier design, and why it is now moot
+#### NOTE: The clash that shaped the earlier design, and why it is now moot
 
 Both hole patterns are **centred on the beam**, so there was never any lateral freedom:
 
@@ -316,19 +316,19 @@ face.
 At 8 mm a Ø10 M5 counterbore and a tapped M5 leave **0.5 mm of wall**, which is why an earlier
 design staggered four counterbored button heads along the bar to dodge the casting's rows.
 
-✅ **None of that survives, and the reason is worth keeping**: once the casting moved out to
+SETTLED: **None of that survives, and the reason is worth keeping**: once the casting moved out to
 protrude through the window, there was no bar-over-beam left underneath it, so the counterbores
 went away entirely rather than being made to fit. **The clash was solved by the layout moving, not
 by the stagger.** Keep the 8 mm figure though - it will recur on any other BK12-family part bolted
 to an extrusion face.
 
-📌 **The bar can only extend inboard.** At the stepper-mount end the casting's ledge hooks over the
+NOTE: **The bar can only extend inboard.** At the stepper-mount end the casting's ledge hooks over the
 front edge, so there is no room that way - which is why all six bolts are inboard of the casting
 rather than spread either side of it.
 
 **What the six bolts are for:** stopping the bar sliding, and holding it flat against the extrusion.
 
-⚠️ **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
+OPEN: **The step in the foot has to be matched or cleared.** If the bar sits under the stepped portion
 it either steps too or holds the casting off its intended bearing face.
 
 #### The casting's hole pattern, measured 2026-10-02
@@ -340,13 +340,13 @@ it either steps too or holds the casting off its intended bearing face.
 | **Screw axis above the casting's foot** | **25 mm** |
 | → **screw bottom above the casting's foot** | **17 mm** (25 − 8, the 1605 being ø16) |
 
-🔴 **Do not add the bar thickness to the 25 and call it a clearance.** An earlier version of this
+FLAG: **Do not add the bar thickness to the 25 and call it a clearance.** An earlier version of this
 file recorded "34.5 mm below the extrusion face" as *the* screw axis figure. That number is real -
 it is where the axis sits relative to the face - but it decides nothing, because **the bar lifts
 screw, BF12 and casting as one unit.** Every clearance that matters is internal to the casting and
 is unchanged by how thick the bar is. **17 mm is the number to carry.**
 
-### 🔴 The thrust path changed direction, and a block fixes it
+### FLAG: The thrust path changed direction, and a block fixes it
 
 **Observation:** BK12 bolts to the end plate with the screw axis **perpendicular** to its mounting
 face, so screw thrust is reacted in bolt tension one way and face bearing the other, into a plate
@@ -361,13 +361,13 @@ axis sees, so this is not expected to need designing around. It is recorded beca
 load path that genuinely changed character, and because friction is the kind of margin that is fine
 until it isn't.
 
-⚠️ **A positive stop at the casting end was discussed and is NOT currently in the design.** An
+OPEN: **A positive stop at the casting end was discussed and is NOT currently in the design.** An
 earlier draft of this file recorded "a block bolted to the plate with a 20 mm bore" as settled
 insurance. It was neither settled nor, as written, in the right place - the block that *was* settled
 is **BF12 at the far end**, which is a floating support and not a thrust stop. If the friction path
 above ever needs backing up, a stop at the casting end is the cheap way; nothing has been drawn.
 
-### ✅ The steppers move to the front
+### SETTLED: The steppers move to the front
 
 **Decided 2026-10-02, and it is the change with the widest reach.** Both Y steppers go to the front
 of the machine, with **BF12 bolted to the rear plate's inside face** at the other end.
@@ -377,18 +377,18 @@ of the machine, with **BF12 bolted to the rear plate's inside face** at the othe
 - **Maintenance is far easier** - the motors are at the operator's end rather than reached over the
   bed.
 
-⚠️ **Three consequences, all live:**
+OPEN: **Three consequences, all live:**
 
 1. The **60.5 × 50 window moves to the front plates**, which are the tapered fins about to be cut.
    See "The lateral fix" below.
 2. **Nothing passes through the rear plane any more**, which is part of why one monolithic rear plate
    became practical.
-3. 🔴 **A NEMA 23 permanent-magnet rotor now sits at the min-Y end of the magnetic tape.** That is a
+3. FLAG: **A NEMA 23 permanent-magnet rotor now sits at the min-Y end of the magnetic tape.** That is a
    far larger magnetic object than the bolt heads the austenitic-stainless rule in
    [`outboard-plate.md`](outboard-plate.md) exists for.
    **Fit a tape offcut and a sensor and read at that end before 3 m of one-shot PSA goes down.**
 
-### ✅ The screw height, and the clearance that actually matters - closed 2026-10-02
+### SETTLED: The screw height, and the clearance that actually matters - closed 2026-10-02
 
 **The as-built reference**, for comparison:
 
@@ -401,37 +401,37 @@ of the machine, with **BF12 bolted to the rear plate's inside face** at the othe
 its underside. It is the number any change to the screw height has to be checked against, not the
 axis position on its own.
 
-✅ **The new arrangement moves the screw down, so this clearance grows rather than shrinks** - the
+SETTLED: **The new arrangement moves the screw down, so this clearance grows rather than shrinks** - the
 casting hangs below the beam on the bar, where the current supports sit on the end plates.
 
 ### The ball nut is inverted, and it lands on a sole plate - not a tongue
 
-✅ **Decided 2026-10-02.** The ball nut housing runs **upside down on both Y beams**.
+SETTLED: **Decided 2026-10-02.** The ball nut housing runs **upside down on both Y beams**.
 
-🔴 **Superseded later the same day: there is no tongue.** The X end plate now runs down to
+FLAG: **Superseded later the same day: there is no tongue.** The X end plate now runs down to
 **−182.5**, level with the nut's downward-facing mounting face, and a **1/4" sole plate** bolts
 across its bottom. The nut's own fixing ties the two together. **Full working in the X end plate
 section - "The plate height: 242.5 mm".**
 
-❌ ~~"bolting to a **tongue coming off the bottom of the X carriage plate**"~~ - dead twice over. The
+REJECTED: ~~"bolting to a **tongue coming off the bottom of the X carriage plate**"~~ - dead twice over. The
 scheme is a sole plate, and the plate named was wrong or at best loose: the Y nut lands on the X
 **end** plate, which is the Y carriage. The 154 × 407 carriage plate rides the X beam and is nowhere
-near a Y screw. ⚠️ **Recorded rather than silently fixed**, because "carriage plate" may have meant
+near a Y screw. OPEN: **Recorded rather than silently fixed**, because "carriage plate" may have meant
 "the plate that is the Y carriage" - the sentence is gone either way, but if a drawing anywhere
 inherited that reading it needs checking.
 
-📌 **The reason is assembly access, and it is the kind of thing that is free to decide now and
+NOTE: **The reason is assembly access, and it is the kind of thing that is free to decide now and
 expensive later** - inverted, the nut's mounting bolts are reachable while the gantry is being put
 together. Right way up they are trapped between the nut and the plate.
 
-✅ **This also answers what the 120 mm bar was an open input to.** The bracket is a tongue off the
+SETTLED: **This also answers what the 120 mm bar was an open input to.** The bracket is a tongue off the
 carriage plate, not a wrap-around, so the bar's inboard end is something to draw the tongue clear
 of rather than an unknown. **Still true with the sole plate** - it is the sole plate rather than a
 tongue that has to be drawn clear of the bar's inboard end.
 
 ### BF12 goes straight onto the rear plate - no bar at that end
 
-✅ **Decided 2026-10-02.** BF12 bolts to the **inside face of the 1210.73 mm rear plate**. The bar
+SETTLED: **Decided 2026-10-02.** BF12 bolts to the **inside face of the 1210.73 mm rear plate**. The bar
 exists only because the casting lands on a 2.21 mm extrusion wall; BF12 lands on 1/4" steel and
 needs nothing.
 
@@ -440,7 +440,7 @@ needs nothing.
 | Fixing | **4 × M5 tapped into the 1/4" plate** - not through-bolted, for maximum engagement |
 | Engagement | 6.35 mm = **1.27 × D** |
 
-✅ **1.27 D is enough in steel, which is worth stating because the same figure would not be in
+SETTLED: **1.27 D is enough in steel, which is worth stating because the same figure would not be in
 aluminium.** The internal thread shears at roughly **14 kN** against an M5 class 8.8 bolt breaking
 near **11 kN** - so the plate thread is stronger than the bolt it holds, and the joint fails at the
 fastener as it should. The repo's "aluminium wants 1.5-2 × D" rule is about aluminium; do not carry

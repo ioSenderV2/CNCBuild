@@ -21,14 +21,14 @@ aluminium plates running the full 1000 mm, anchored with M8 T-nuts in the existi
 | | Back plate | Front plate |
 |---|---|---|
 | Width | **120 mm** — full section height, all four back slots | **45 mm** — the two slots flanking the seam |
-| Thickness | **1/4" (6.35 mm) on X**; on **Y** see the reversal below | **4 mm, all three beams** - 🔴 was 6.35 here until 2026-10-04 and that is the thickness that did not fit; see below |
+| Thickness | **1/4" (6.35 mm) on X**; on **Y** see the reversal below | **4 mm, all three beams** - FLAG: was 6.35 here until 2026-10-04 and that is the thickness that did not fit; see below |
 | Material | **6061 on X**; **1/8" steel on Y** | **6061, all three beams** |
 | Fasteners | M8 T-nuts, **150 mm** spacing, four rows. **M8 × 12 on X; M8 × 10 + washer on Y** | M8 **flange** bolts, two rows, no counterbore. **M8 × 10, A4 / 316** |
 | Also carries | drag chain — bolts pass **through** the plate into T-nuts in the outer slots | the **magnetic encoder tape**, all three beams |
 
 The plates' job is **shear connection and flange area, not modulus.**
 
-### 🔴 The steel rejection was reversed on 2026-10-02, for Y only
+### FLAG: The steel rejection was reversed on 2026-10-02, for Y only
 
 This file used to read:
 
@@ -49,13 +49,13 @@ took the decision over, in
 - At 1/8" steel presents **9.2 mm of equivalent aluminium** at the face — almost exactly the 3/8"
   this file asked for on Y. The flange term is satisfied, not overshot.
 
-⚠️ **This is the one joint where the thermal question is live rather than dismissed.** The
+OPEN: **This is the one joint where the thermal question is live rather than dismissed.** The
 plate-to-box bolt row takes up its own differential in 9 mm clearance because those bolts are
 retention, not load path. **These T-nuts are a preloaded friction joint doing shear transfer** —
 a different duty, and the two must not be waved through together because their numbers happen to
 be similar.
 
-❌ ~~**Buy 120 mm stock and rip the 45 mm front strips from it** — one thickness, one order.~~
+REJECTED: ~~**Buy 120 mm stock and rip the 45 mm front strips from it** — one thickness, one order.~~
 **Retired 2026-10-02.** Y's back is steel, so there is no 120 mm aluminium order to rip from. The
 three 2" × 1/8" 6061 strips need their own buy.
 
@@ -64,11 +64,11 @@ three 2" × 1/8" 6061 strips need their own buy.
 The Y beams **do not move** (measured: their end plates bolt to the torsion box), so weight there is
 static load and the stiffer plate is free. The X gantry moves, so its ~3 lb saving is real.
 
-📌 **The Y front strip came down to 1/4" on 2026-10-02**, and then to **4 mm on 2026-10-03**.
+NOTE: **The Y front strip came down to 1/4" on 2026-10-02**, and then to **4 mm on 2026-10-03**.
 All three beams carry an identical **2" (50.8) × 1/8" 6061** strip, which is also the magnetic tape
 surface — one part made three times, instead of two specifications.
 
-🔴 **✅ Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** ⚠️ **The clash this
+FLAG: **SETTLED: Closed 2026-10-03: 1/4" DOES NOT FIT, and the strip is 4 mm.** OPEN: **The clash this
 argument turns on is gone as of 2026-10-08, and the conclusion stands anyway** - at the 13.8 mm
 flange head the strip's bolts reach **21.9** from the seam (STRIP_HEAD_REACH) against a strip
 half-width of 22.5, so **nothing passes under the block any more**. The original, at the 17.3 head:
@@ -76,15 +76,15 @@ the heads reached **23.65** against a block inner edge near 23, so the head's ri
 bearing block**. There is **at most 6 mm of clearance** under it
 (BLOCK_OVERHANG_CLEAR). At 4 mm the stack is **5 and clears**; at 1/4" it is **7.35 and hits** —
 both **measured on a real beam with rails and blocks installed**, and both now predicted by the
-arithmetic. 📌 **That agreement is itself the evidence the 6 is right**: against the old 4.5 the
+arithmetic. NOTE: **That agreement is itself the evidence the 6 is right**: against the old 4.5 the
 4 mm case computed as a near miss while fitting in practice, and a clearance figure that contradicts
 a measurement is the figure to doubt.
 
-⚠️ **The stiffness table above no longer describes the build.** Its **+149 %** row is the 1/4"
+OPEN: **The stiffness table above no longer describes the build.** Its **+149 %** row is the 1/4"
 case. **No row evaluates 4 mm**, so the gain at 4 mm is not a number this repo has — it is smaller,
 and by how much is uncomputed. His call, 2026-10-03: *"take the stiffness hit, which in the grand
 scheme of the entire machine is probably irrelevant."* The constraint is hard and the stiffness was
-a preference, so the constraint wins. 📌 **If that gain ever matters, compute it rather than quoting
+a preference, so the constraint wins. NOTE: **If that gain ever matters, compute it rather than quoting
 the 149.**
 
 ---
@@ -113,7 +113,7 @@ So the joint is in the primary load path, not a refinement.
 Computed from 8020's **published** section properties (below), not estimated. Plate and extrusion
 are both aluminium at ~68.9 GPa, so no transformed-section correction is needed.
 
-⚠️ **That last sentence stopped being true for Y on 2026-10-02.** The Y back plate is steel, so the
+OPEN: **That last sentence stopped being true for Y on 2026-10-02.** The Y back plate is steel, so the
 table below reads correctly for **X only** as written. For Y, use the transformed area: 3.175 mm of
 steel at the face behaves as **9.2 mm of aluminium**, so the **3/8" row is the Y row** — about
 **+241% fore-aft**. The flange band that counts is only the 120 mm alongside the section; the rest
@@ -151,7 +151,7 @@ Two things fall out of this that are easy to get backwards:
   height (measured; 4.5 until 2026-10-03), so any extra width would have to be rebated thin — about
   14 % more area for a machining operation on a 1000 mm strip.
 
-### 🔴 Fore-aft is the soft axis, and it is pure aspect ratio
+### FLAG: Fore-aft is the soft axis, and it is pure aspect ratio
 
 **The section is 120 mm tall and 60 mm deep, so it is tall and narrow** - stiff in the direction
 gravity and the spindle's tipping couple load it, and comparatively soft fore-aft. That is not a flaw,
@@ -166,7 +166,7 @@ stiffness ratio is simply **(height / width)²**:
 | Two 6060s joined, no plates | 2.40 × 10⁶ | 7.27 × 10⁵ | **3.3×** |
 | **+ back 120 and front 45, 1/4"** | **3.37 × 10⁶** | **~1.71 × 10⁶** | **2.0×** |
 
-📌 **The plates halve the penalty, and that is their unadvertised second job.** They sit on the front
+NOTE: **The plates halve the penalty, and that is their unadvertised second job.** They sit on the front
 and back faces - the extreme fibres for *fore-aft* bending, which is exactly the direction short of
 depth. They add ~40% to vertical and ~135% to fore-aft. (The section above gives +149% from the same
 starting point; an independent recompute here gives +135%. Same conclusion, and neither is a measured
@@ -174,7 +174,7 @@ number.)
 
 #### Indicative deflections, and keep these apart from the dead-load figure
 
-⚠️ **A number already in this repo is a DEAD-LOAD sag and has been misread as a cutting deflection** -
+OPEN: **A number already in this repo is a DEAD-LOAD sag and has been misread as a cutting deflection** -
 the **0.022 mm** quoted in [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) is the gantry's own share of weight, not
 a response to cutting force. Under the **1000 N structural envelope**, mid-span, ~900 mm free span,
 end-supported:
@@ -189,7 +189,7 @@ of a gantry on four bearing blocks, and 900 mm is an assumed free span. They are
 and *order of magnitude*, which is what they are good for. 0.13 mm sounds alarming until you note it is
 the full crash-case envelope; the steady-cutting number is four times smaller.
 
-### ❌ A single 40×120 (40 Series) was compared and rejected, 2026-10-01
+### REJECTED: A single 40×120 (40 Series) was compared and rejected, 2026-10-01
 
 Raised because the stacked pair is a built-up section and a one-piece 40×120 looks like it should beat
 it. **It wins on two counts and loses decisively on the one that matters.**
@@ -210,17 +210,17 @@ it. **It wins on two counts and loses decisively on the one that matters.**
 one, and it would have deleted the entire joint - 42 T-nuts per beam, the slide-in trap, the
 clamp-share problem and the two dead schemes below.
 
-🔴 **Why it lost: its aspect ratio is 3:1, so it starts at 8.3× (published, Ix/Iy = 306.3/36.8 - which
+FLAG: **Why it lost: its aspect ratio is 3:1, so it starts at 8.3× (published, Ix/Iy = 306.3/36.8 - which
 independently confirms the (h/b)² reasoning above) and a single back plate on a 40 mm-deep core has
 too short a lever to pull it back.** Fore-aft deflection goes from ~0.13 mm to ~0.32 mm. Adding a front
 strip in its middle slot was checked too and still lands at 53% of the current section's fore-aft
 stiffness - **the 20 mm of extra core depth cannot be bought back with bolted plate.**
 
-📌 **Secondary:** its slot centrelines are at 20 / 60 / 100, so **80 mm** is the widest rail spacing
+NOTE: **Secondary:** its slot centrelines are at 20 / 60 / 100, so **80 mm** is the widest rail spacing
 available, against the **90 mm** actually used here. That is ~21% less carriage pitch stiffness and 12%
 more force per rail reacting the spindle's forward moment.
 
-📌 **The X beam was NOT built when this was raised** - only the rails were in the slots, loose. So the
+NOTE: **The X beam was NOT built when this was raised** - only the rails were in the slots, loose. So the
 decision was made on the engineering, not on sunk cost. **Recorded so it is not re-litigated.**
 
 ### Is the beam even the bottleneck?
@@ -230,7 +230,7 @@ X gantry the end plates are 1/2"; on the Y beams there is a **proposed** full-he
 that would remove the concern entirely - **proposed, not decided, nothing ordered**. See
 [`archive/outboard-plate.md`](archive/outboard-plate.md).
 
-🔴 **The percentages above are stiffness ratios and are force-independent, but any absolute
+FLAG: **The percentages above are stiffness ratios and are force-independent, but any absolute
 deflection quoted in this repo at 250 N is two to four times optimistic** - that was a router
 figure, and this machine takes 500-1000 N as its structural envelope. The force table is in
 that same file.
@@ -238,7 +238,7 @@ that same file.
 **The X plate choice is settled but testable.** Once the Z assembly exists, push on the spindle nose
 with a known force and indicate it. The plate is bolt-on precisely so that swap stays cheap.
 
-📋 **The procedure is written up:
+PROCEDURE: **The procedure is written up:
 [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md)** - every indicator
 position, which way its stem points, and the subtraction that turns the readings into per-subassembly
 contributions. **Do not improvise this at the machine**; a single reading on the nose gives a total,
@@ -253,12 +253,12 @@ Taken off the parts on the bench, 2026-09-29. These outrank anything derived.
 | | |
 |---|---|
 | Profile | 8020 `30-6060`, two stacked, **1000 mm** |
-| **Rail spacing, X** | ✅ **90 mm** - confirmed by the user 2026-10-01. The outermost of the four front slots, at 15 and 105 mm up the section. This is the widest the profile offers and it is what was used |
+| **Rail spacing, X** | SETTLED: **90 mm** - confirmed by the user 2026-10-01. The outermost of the four front slots, at 15 and 105 mm up the section. This is the widest the profile offers and it is what was used |
 | Clear gap between bearing blocks, front face | **46.7 mm** - [trial fit](photos/front-plate-trial-flange-bolts.jpg) |
 | Bearing block top, above extrusion face | **30 mm** |
-| Clearance under the block, above the rail surface | **at most 6 mm** 🔴 corrected from 4.5 on 2026-10-03 |
-| M8 flange head, **beam ends** | **17.3 mm** diameter × **4 mm** proud at the centre. The bolt that goes into a beam's lengthwise corner bores - back plate and both front fins onto the Y beam ends, both X end plates onto the X beam ends, eight each. ⚠️ **Its height has been read four ways** - 5, 2.5, 3, now 4 - and nothing derives from it. The **M5** equivalent is **13.4 × 2.4** |
-| M8 flange head, **front strip** | **13.8 mm** diameter × **3 mm** proud at the centre - his choice 2026-10-08, and it is what makes the encoder puck fit. 🔴 **A different bolt from the row above, not a replacement for it.** |
+| Clearance under the block, above the rail surface | **at most 6 mm** FLAG: corrected from 4.5 on 2026-10-03 |
+| M8 flange head, **beam ends** | **17.3 mm** diameter × **4 mm** proud at the centre. The bolt that goes into a beam's lengthwise corner bores - back plate and both front fins onto the Y beam ends, both X end plates onto the X beam ends, eight each. OPEN: **Its height has been read four ways** - 5, 2.5, 3, now 4 - and nothing derives from it. The **M5** equivalent is **13.4 × 2.4** |
+| M8 flange head, **front strip** | **13.8 mm** diameter × **3 mm** proud at the centre - his choice 2026-10-08, and it is what makes the encoder puck fit. FLAG: **A different bolt from the row above, not a replacement for it.** |
 | Both heads | **Flanged button heads driven by a hex socket in the middle of the dome**, so nothing sits above the dome |
 | Rails | HGR20, **17 × M5 at 60 mm** into T-nuts, one rail per profile, front face |
 | Ball screw | 1605, BK12 / BF12 supports, M5 into the end plates |
@@ -270,7 +270,7 @@ beams carry theirs **underneath**, because the top of Y1 must stay clear for the
 
 ### The observation that decided everything
 
-🔴 **At the centre of the face there is nothing behind the 2.21 mm skin. It is void.** 2.21 mm is
+FLAG: **At the centre of the face there is nothing behind the 2.21 mm skin. It is void.** 2.21 mm is
 the thickest section anywhere in the profile.
 
 This was checked by eye down the end of a real extrusion, and it **overrode a reading of the 8020
@@ -301,7 +301,7 @@ centreline from each edge · **`8.14` slot opening** · `16.51` slot channel · 
 The area and the weight-per-inch agree to about 2 % on aluminium density, which cross-checks both
 and confirms the mislabelled "Surface Area" field is really cross-sectional area.
 
-🔴 **The alloy is 6063-T6, not 6105-T5.** This repo carried 6105-T5 for a while as an unverified
+FLAG: **The alloy is 6063-T6, not 6105-T5.** This repo carried 6105-T5 for a while as an unverified
 recollection. 6063-T6 yields at 172 MPa, **softer than what was assumed** while the tapping schemes
 below were being argued. It changes no decision — every scheme that depended on aluminium thread
 strength was already dead — but it makes those kills more firmly right, not less.
@@ -341,18 +341,18 @@ side over the nut's 16 mm length.
 | Boss (E) | 7.80 | 8.14 mouth | 0.34 mm total |
 | Thickness (F) | **6.00** | 8.14 mouth | **2.14 mm spare** |
 
-⚠️ **That last row compares the wrong pair** - it reads the nut's thickness against the slot
+OPEN: **That last row compares the wrong pair** - it reads the nut's thickness against the slot
 *mouth*, which is a width, not a depth. The depth comparison is the one that decides bolt length and
 it is in the next section.
 
-### ✅ Bolt lengths, settled 2026-10-04 - and the slot depth is what settled them
+### SETTLED: Bolt lengths, settled 2026-10-04 - and the slot depth is what settled them
 
 **Measured 2026-10-04, his calipers.** Two numbers the published section does not give, and without
 them no bolt length on this joint could be computed:
 
 | | |
 |---|---|
-| **T-slot lip thickness** | **2.3 mm** (TSLOT_LIP_T) - the shoulder the T-nut bears against. 🔴 **Not** the drawing's `4.20` lip, which is the lip's reach inward |
+| **T-slot lip thickness** | **2.3 mm** (TSLOT_LIP_T) - the shoulder the T-nut bears against. FLAG: **Not** the drawing's `4.20` lip, which is the lip's reach inward |
 | **Beam face to slot floor** | **9.5 mm** (TSLOT_DEPTH) |
 | **T-nut body at the thread** | **6 mm** (TNUT_BODY_T) - his calipers, confirming the published F |
 
@@ -360,7 +360,7 @@ The nut's boss is 1.80 and the lip is 2.3, so **the boss does not reach the face
 on the lip underside and the boss top sits 0.5 recessed. The nut's back face is therefore at
 **8.3 mm** (TNUT_BACK_FACE), against a floor at 9.5.
 
-🔴 **So there is 1.2 mm of air behind the nut** (TNUT_BACK_CLEAR), and that is the whole
+FLAG: **So there is 1.2 mm of air behind the nut** (TNUT_BACK_CLEAR), and that is the whole
 protrusion budget. With 6 mm of thread in front of it, **a bolt may reach at most 7.2 mm past the
 back face of any plate** (BOLT_REACH_MAX).
 
@@ -370,21 +370,21 @@ back face of any plate** (BOLT_REACH_MAX).
 | **X back plate** | 6.35 mm 6061 | **M8 × 12** | 5.65 | 5.65 | 1.55 |
 | **Y back** - the outboard plate | 3.429 mm steel **+ M8 washer** | **M8 × 10** | 4.97 | 4.97 | 2.23 |
 
-🔴 **Engagement is capped at 6 mm by the nut, not by the bolt.** A longer bolt buys nothing and
+FLAG: **Engagement is capped at 6 mm by the nut, not by the bolt.** A longer bolt buys nothing and
 eventually bottoms. **M8 × 12 is wrong on the front strip** - it reaches 8.0 into a 7.2 limit and
 hits the slot floor before the head seats, which presents as a bolt that feels tight while the strip
 is still loose. That is the failure mode to recognise, because torque is not evidence of clamp here.
 
-✅ **The washer on the Y back is no longer load-bearing on the argument, and it stays anyway.** At
+SETTLED: **The washer on the Y back is no longer load-bearing on the argument, and it stays anyway.** At
 the **ordered 10 gauge (3.429)** the bare M8 × 10 reaches **6.571** against the 7.2 limit - clear by
-**0.629**, which is outside caliper noise. ⚠️ **That is not what this paragraph used to say**: at a
+**0.629**, which is outside caliper noise. OPEN: **That is not what this paragraph used to say**: at a
 nominal 3.175 the bare bolt reaches 6.83, and at the 11-gauge 3.04 the sheet was sourced as, 6.96 -
 a margin of 0.24 that *was* inside caliper noise, and that margin is why the washer was specified at
 all. Keep it for the reason it was wanted regardless: it spreads load on 3.4 mm steel. The washer
 moves the head out 1.6, and it
 spreads load on 3 mm steel anyway. **Measure the delivered sheet, and put the reading in T_SIDE_PLATE** - that is the symbol the rear plate's length, the box width and Sheet 7's hole columns all hang off. T_OUTBOARD_PLATE is an alias of it and feeds nothing.
 
-📌 **Two lengths, not three** - the front strips and the Y backs share M8 × 10:
+NOTE: **Two lengths, not three** - the front strips and the Y backs share M8 × 10:
 
 | Bolt | Count | Where |
 |---|---|---|
@@ -393,7 +393,7 @@ spreads load on 3 mm steel anyway. **Measure the delivered sheet, and put the re
 | **M8 × 12** | **28** | X back plate |
 | | **126** | one per T-nut |
 
-### 🔴 It is a slide-in nut. Load them before the end plates go on
+### FLAG: It is a slide-in nut. Load them before the end plates go on
 
 The `13025` **slides in from the end of the slot**. It does not roll in, and that is a deliberate
 choice rather than a limitation - roll-in nuts cost more and are weaker.
@@ -411,7 +411,7 @@ Seven per slot is 150 mm spacing over 1000 mm - first at 50 mm, then every 150.
 
 **All three beams - X, Y1 and Y2 - are stacked pairs**, so that is **126 T-nuts for the machine**.
 
-⚠️ **The front plate is the one that gets forgotten.** Its two slots are easy to overlook while
+OPEN: **The front plate is the one that gets forgotten.** Its two slots are easy to overlook while
 counting out the back, and they are just as closed once the end plates are on.
 
 **Test it with one nut before planning the build sequence.** Do not take the drawing's word for it —
@@ -440,7 +440,7 @@ rather than located, and the T-slot adds more float still. Tighten 17 bolts with
 freely and it is straight nowhere in particular - it snakes. **Every bolt must be biased the same
 way while it is tightened.**
 
-### 🔴 Bias both rails the same direction, not outward from each other
+### FLAG: Bias both rails the same direction, not outward from each other
 
 The four bearing blocks are locked together by the carriage plate, so what the assembly actually
 cares about is that **rail-to-rail spacing stays constant** along the metre.
@@ -452,7 +452,7 @@ cares about is that **rail-to-rail spacing stays constant** along the metre.
 
 Hand pressure repeats to a tenth or two. Common-mode that is harmless; differential it is not.
 
-📌 **As built 2026-09-29:** the X beam rails were mounted with an **opposed** bias - lower rail pulled
+NOTE: **As built 2026-09-29:** the X beam rails were mounted with an **opposed** bias - lower rail pulled
 toward the lower edge, upper rail toward the upper edge - each bolt biased consistently, which is far
 better than random, but in the direction that varies spacing. Recorded as-built rather than as a
 fault: **verify by feel before redoing 34 bolts** (see below).
@@ -486,7 +486,7 @@ revisiting.
 Recorded because each looked right for a while, and without the reasons written down the next
 session will re-derive them and travel the same distance before hitting the same wall.
 
-### ❌ Mid-span through-bolts tapped into the two touching walls
+### REJECTED: Mid-span through-bolts tapped into the two touching walls
 
 Bolt up from below, tapping M8 through the lower profile's top wall plus the upper profile's bottom
 wall — 4.42 mm of engagement.
@@ -500,7 +500,7 @@ the load. The other two thirds merely squeezes the lower profile. Flipping the b
 swaps which wall gets the good threads. Third and fatally: there is no material behind the centre
 land to react even that.
 
-### ❌ Through-bolt the full 120 mm with a nut on top
+### REJECTED: Through-bolt the full 120 mm with a nut on top
 
 The fix for the clamp-share problem: 9 mm clearance through all four walls, plain steel nut and
 washer on the top face, so 100 % of preload becomes interface clamp and nothing can strip.
@@ -513,7 +513,7 @@ yields long before a useful M8 preload is reached.
 The 12 mm clearance under the ball nut would have accommodated a nut and washer, and 140 mm bolts cut
 to ~135 mm were specified. None of that was the problem.
 
-### ❌ T-nut in the mating slot, reached by a bolt from below
+### REJECTED: T-nut in the mating slot, reached by a bolt from below
 
 Slide an M8 T-nut into the upper profile's bottom slot and bolt up into it, giving a steel thread and
 full clamp with no tapping.
@@ -522,12 +522,12 @@ full clamp with no tapping.
 to enter the bottom face exactly on a slot centreline, where there is no material to drill and no
 room for the drill body.
 
-### ❌ M8 rivnut in the slot floor
+### REJECTED: M8 rivnut in the slot floor
 
 **Died on access, not width.** The body would fit the 16.51 mm channel, but it cannot be got in
 through the 8.14 mm mouth and a setting tool cannot reach it.
 
-### ❌ Replacing the rail T-nuts with tapped holes
+### REJECTED: Replacing the rail T-nuts with tapped holes
 
 Considered, then rejected. **The rail bolts are loaded mainly in tension**, not shear — the spindle's
 forward offset pulls the upper carriage blocks away from the face. A T-nut bears on the slot lips,
@@ -539,7 +539,6 @@ the M5s if insurance against creep is wanted.
 
 ---
 
-## ⚠️ Open items
-
+## Open items
 - **Riser plate orientation**, which governs whether the 64× weak-axis concern applies as written.
   Unverified, and it decides whether the X plate thickness is worth revisiting.

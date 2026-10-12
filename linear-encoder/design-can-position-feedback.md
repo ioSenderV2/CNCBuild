@@ -163,7 +163,7 @@ plate's bore, so what a tape must span is **the range that bore sweeps** - not t
 the plate width. Every bit of end-of-travel dead zone is tape not bought — the plates stop well short
 of the extrusion ends.
 
-✅ **Closed 2026-10-09 - the travel is measured and the budget is real.** This table used to carry
+SETTLED: **Closed 2026-10-09 - the travel is measured and the budget is real.** This table used to carry
 upper bounds from the superseded Mega V XL geometry with a warning to re-derive it before cutting
 tape. That is done.
 
@@ -191,13 +191,13 @@ rail length. The stops are the X end plates meeting the back plate or a front fi
 | Z, on the same overrun rule | 295.91 |
 | **Left of the 3 m roll** | **64.09** |
 
-🔴 **The roll is the binding constraint on this whole layout, not the printer and not the beams.**
+FLAG: **The roll is the binding constraint on this whole layout, not the printer and not the beams.**
 64 mm of margin on a **one-shot** PSA consumable is thin, and it is why the carrier sections stop at
 220: at 230 the three beams come to 2760 and the roll goes negative once Z is counted. Anything that
 grows — a longer travel on one axis, a more generous overrun, a wider Z allowance — comes out of that
 64. **Buy more tape before changing any of them, not after.**
 
-⚠️ **Z's 295.91 is the softest number here.** Its tape runs on the *edge* of the Z gantry plate
+OPEN: **Z's 295.91 is the softest number here.** Its tape runs on the *edge* of the Z gantry plate
 rather than between rails, and that axis has never been laid out — §1.4 calls its reader allocation
 reserved rather than spent. `Z_TRAVEL` is firm; how much tape the edge mounting actually wants is not.
 
@@ -208,10 +208,10 @@ Two independent reasons, and either alone would justify it:
 1. **The datasheet forbids tape equal to travel.** Page 20 gives *maximum stroke = length of active
    area − length of Hall array*, the array being 2.0 mm, and "shorter poles at either edge of the
    magnet **must be excluded** from the active area". Usable stroke is therefore always less than the
-   tape laid. ❌ **4 × 205 was considered and rejected** for exactly this: it gives 820, which *is* the
+   tape laid. REJECTED: **4 × 205 was considered and rejected** for exactly this: it gives 820, which *is* the
    travel, leaving nothing for the array, nothing for the end poles, and no tolerance at all on
    landing a four-section run by hand.
-2. 🔴 **The hard stops are where the carriage ends up when something has gone wrong** — which is the
+2. FLAG: **The hard stops are where the carriage ends up when something has gone wrong** — which is the
    worst possible moment for the reader to be off the end of its scale. A magnetic reader that leaves
    the tape and comes back gives a **wrong count and does not complain**. Tape past the mechanical
    stops costs nothing here.
@@ -219,7 +219,7 @@ Two independent reasons, and either alone would justify it:
 At 30 mm a side the Hall array never approaches an end pole, so the end-pole exclusion stops being a
 number anyone has to respect — it is simply never reached.
 
-#### ⚠️ PROPOSAL - a printed carrier to lift the tape clear of the bolt heads
+#### OPEN: PROPOSAL - a printed carrier to lift the tape clear of the bolt heads
 
 **Nothing here is built.** It is recorded because the reasoning is long, several blind alleys were
 walked and closed on the way, and the alternative is re-walking them. **The tape-mounting text above
@@ -259,7 +259,7 @@ scallops buy beyond centring is width: the heads are only in the way *at* the st
 them the carrier can run out toward the 45 mm block gap, which is more material around the trench and
 far more bond area.
 
-🔴 **Why the bond to the aluminium is the whole design, and why plastic was nearly wrong.** §1.4's
+FLAG: **Why the bond to the aluminium is the whole design, and why plastic was nearly wrong.** §1.4's
 standing rule is *bond the full length* so the band is dragged by its substrate and the scale tracks
 the machine's real thermal growth — with an explicit "do not improve it into a one-end anchor later".
 That rule works because the substrate overwhelms the band: the 45 × 4 aluminium strip is of order
@@ -273,7 +273,7 @@ worse rather than better**.
 Bonded continuously to the aluminium, the stiffness order is restored and the carrier is a slave.
 Unbonded, this design is wrong no matter how the sections are joined.
 
-**⚠️ Open, and both are decisions rather than measurements:**
+**OPEN:, and both are decisions rather than measurements:**
 
 - **Carrier width.** 40 and 45 have both been said. The block gap is `BLOCK_ROW_GAP` = 45 *measured*,
   so 45 fills it exactly with nothing to spare; 40 leaves 2.5 a side. Four sections at either width

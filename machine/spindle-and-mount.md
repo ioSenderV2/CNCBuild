@@ -10,7 +10,7 @@
 |---|---|
 | Spindle | **Ø80 mm, 2.2 kW, water-cooled**, with matching VFD |
 | Vendor | **RATTMMOTOR**, kit with VFD, 80 mm clamp, ER20 collet and pump |
-| Nameplate | 🔴 **Φ80×213, 2.2 kW, 220 V, 8 A, 400 Hz** (24,000 rpm at 400 Hz) - **corrected 2026-10-02 from Φ80×200 and 8.5 A** |
+| Nameplate | FLAG: **Φ80×213, 2.2 kW, 220 V, 8 A, 400 Hz** (24,000 rpm at 400 Hz) - **corrected 2026-10-02 from Φ80×200 and 8.5 A** |
 | **Mass** | **5.2 kg** |
 | Body | **stainless steel**, 4 bearings, **P4 class**, grease lubricated |
 | Runout | **< 0.01 mm**; precision tapered bore **0.003-0.005 mm** |
@@ -24,7 +24,7 @@
 already carried in the project notes for a round-body spindle. Eight M8 holding the spindle is not
 where this assembly will be soft.
 
-## ✅ Closed: the body is 213, and the 199 is retired
+## SETTLED: Closed: the body is 213, and the 199 is retired
 
 **Settled 2026-10-03.** He confirmed **213**, which is what the vendor listing said all along: the
 nameplate designation is **Φ80×213** and its drawing carries a **213 mm** dimension spanning the
@@ -32,17 +32,17 @@ body to the rear end, plus a **27 mm** segment at the rear and a **33 mm** dimen
 collet nut. See
 [`../manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png`](../manufacturer-assets/Spindle-2.2kW-80mm-RATTMMOTOR-listing.png).
 
-🔴 **The 199 that this file used to carry is wrong and must not be reused.** It never
+FLAG: **The 199 that this file used to carry is wrong and must not be reused.** It never
 reconciled with anything - not with 213, and not as 199 + the 25 mm front cap, which gives 224. If
 199 turns up anywhere it is stale. The registry's SPINDLE_BODY_L is now simply another name for
 SPINDLE_BARREL_L.
 
-⚠️ **Read the listing's two vertical dimensions as DIAMETERS.** The 33 and the 80 are both
+OPEN: **Read the listing's two vertical dimensions as DIAMETERS.** The 33 and the 80 are both
 drawn vertically, so 33 is the ER20 nut's outside diameter and not a length. The drawing gives no
 axial figure for the nose or the nut at all, which is why the two numbers below had to come off a
 real spindle.
 
-✅ **Measured off the Mega V 2026-10-03** - the same part - both **from the end of the barrel**:
+SETTLED: **Measured off the Mega V 2026-10-03** - the same part - both **from the end of the barrel**:
 
 | | mm |
 |---|---|
@@ -52,13 +52,13 @@ real spindle.
 **The 60 is what places the tool.** Everything above it is a stack from the X beam; everything below
 it is stickout.
 
-📌 **The clamps were never at risk.** At 116 mm centres with 55 mm axial clamps the pair spans
+NOTE: **The clamps were never at risk.** At 116 mm centres with 55 mm axial clamps the pair spans
 171 mm, which fitted inside 199 as well as 213 - which is why the dispute, while it lasted, moved the
 *vertical* chain and nothing else.
 
 ## The body dimensions, off the vendor drawing
 
-⚠️ **Superseded - the body is 213, see the closed note above. Every 199 in this section is stale and kept only so the reasoning that used it can still be followed.**
+OPEN: **Superseded - the body is 213, see the closed note above. Every 199 in this section is stale and kept only so the reasoning that used it can still be followed.**
 
 The three dimensions on the product drawing are **sequential, not overlapping** - confirmed by the
 user 2026-09-30:
@@ -70,15 +70,15 @@ user 2026-09-30:
 | ~~Nose flange to the rear end - the Ø80 body~~ | ~~199 mm~~ → **213** |
 | Overall, collet nut face to rear | **276 mm** |
 
-📌 **The full barrel is Ø80 and clampable** (213, not the 199 this line used to say). The black bands at each end are finish, not steps - the
+NOTE: **The full barrel is Ø80 and clampable** (213, not the 199 this line used to say). The black bands at each end are finish, not steps - the
 Ø80 dimension line on the drawing is drawn across the rear band. Only the two Ø8 water fittings near
 the rear obstruct anything, and they sit above where the upper clamp goes.
 
-⚠️ **The 52 and 25 are read off a listing drawing, not measured.** The body length is the one that carries the
+OPEN: **The 52 and 25 are read off a listing drawing, not measured.** The body length is the one that carries the
 design and it has margin to spare (see the Z plate below), so this does not need confirming before the
 plate is cut - but mic the nose stack before anything depends on the *vertical* arm.
 
-## 📌 Why 2.2 kW and not 3 kW - the choice was made and reversed deliberately
+## NOTE: Why 2.2 kW and not 3 kW - the choice was made and reversed deliberately
 
 A Ø100 3 kW unit was considered on 2026-09-30 and **rejected**. It is recorded because the reasoning
 governs any future spindle change, not because the part is interesting:
@@ -101,7 +101,7 @@ pull 2 kW plus. If this machine's work shifts that way, that is the trigger to r
 
 ## The offset from the X beam to the spindle centreline: 109 mm
 
-🔴 **This is the moment arm.** It is the number that turns cutting force into gantry deflection, and
+FLAG: **This is the moment arm.** It is the number that turns cutting force into gantry deflection, and
 it was a placeholder in every calculation in this repo until now.
 
 **From the X carriage plate's front face:**
@@ -111,9 +111,9 @@ it was a placeholder in every calculation in this repo until now.
 | Z rails, bearing blocks and the spacers | 46.5 mm |
 | Z plate, 1/2" | 12.7 mm |
 | Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
-| **To the spindle centreline** | **109 mm** - ⚠️ **~108 after the spacer skim**, see [`archive/z-carriage.md`](archive/z-carriage.md) |
+| **To the spindle centreline** | **109 mm** - OPEN: **~108 after the spacer skim**, see [`archive/z-carriage.md`](archive/z-carriage.md) |
 
-⚠️ **That reference is the carriage plate, not the beam.** The X carriage plate is itself bolted to
+OPEN: **That reference is the carriage plate, not the beam.** The X carriage plate is itself bolted to
 the X-axis bearing blocks, so from the **X beam's front face** add the X rail-and-block stack
 (30 mm, measured) and the carriage plate (12.7 mm):
 
@@ -122,11 +122,11 @@ the X-axis bearing blocks, so from the **X beam's front face** add the X rail-an
 | X beam front face to spindle centreline | **~152 mm** |
 | X beam **neutral axis** to spindle centreline (add ~35 mm) | **~187 mm** |
 
-**~187 mm is the arm for gantry bending**, and at 1000 N that is **~187 N·m**. ⚠️ Confirm the
+**~187 mm is the arm for gantry bending**, and at 1000 N that is **~187 N·m**. OPEN: Confirm the
 reference before this is used for anything - the 109 mm and the 152 mm differ by a whole rail-block-
 plate stack and are easy to interchange.
 
-⚠️ **Still missing: the vertical arm.** The 109 mm converts a *vertical* cutting force into gantry
+OPEN: **Still missing: the vertical arm.** The 109 mm converts a *vertical* cutting force into gantry
 torsion; a *vertical* offset converts a fore-aft force into the same. That vertical figure is **the X
 beam centreline down to the spindle nose with Z retracted, plus Z travel** - not "tool tip", which
 moves with Z position, tool length and stickout and is not a machine dimension. Even with it, 8020

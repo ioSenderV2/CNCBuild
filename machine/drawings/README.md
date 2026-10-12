@@ -20,7 +20,7 @@ make deliberately rather than drift into.
 | [`box-cutlist.html`](box-cutlist.html) | The **torsion box** cut list and its sheet count | `tools/make-cutlist.py` |
 | [`fasteners.html`](fasteners.html) | Every bolted joint: size, count, grip stack, **length and engagement** | `tools/make-fasteners.py` |
 
-📌 **The box cut list is deliberately NOT in the shop pack.** The pack is for the
+NOTE: **The box cut list is deliberately NOT in the shop pack.** The pack is for the
 one machining trip - steel and aluminium, cut at somebody else's mill. The box is
 plywood in his own shop with no trip and no deadline, and merging them would mean
 carrying mill sheets to the bandsaw and box sheets to the mill.
@@ -62,7 +62,7 @@ panel. Every sheet in the pack has been brought up to that design.
 | 4 | Z plate | **164** × 175 — corrected from 154; at 154 eight M5 counterbores break through the plate edge |
 | 5 | Y nut doubler and sole bracket | Added 2026-10-02 |
 
-### ⚠️ Not drawn yet - two trip parts have no sheet
+### OPEN: Not drawn yet - two trip parts have no sheet
 
 - **The cast stepper frame interposer** - 60 × 150 × 3/8" 6061, **quantity 3** (Y1, Y2 and the X stepper
   end), one drawing. Six M8 clearance into slide-in T-nuts at rows 82 / 110 / 138, six M5 tapped for
@@ -71,13 +71,13 @@ panel. Every sheet in the pack has been brought up to that design.
 - **The 1200 mm rear plate** - 1200 × 12" × 1/4" A36 steel, one for both Y beams: the 16-bolt beam
   pattern, the 8-bolt box row at Y 30, and **BF12 face-mounted on 4 × M5** per beam.
 
-### 📋 In progress: a 1/2" baltic birch mockup
+### PROCEDURE: In progress: a 1/2" baltic birch mockup
 
 Being cut while the mill visit is a couple of weeks out, **Sheet 1 first**. It settles the window's
 height - the 50 mm is a budget and the casting projects only about 20 mm below the bar - and the
 spindle clearance that gates the taper cut, which is one bandsaw pass and cannot be put back.
 
-🔴 **Plywood is for fit, never for transfer.** Its thickness runs under 12 mm and varies, and an M5
+FLAG: **Plywood is for fit, never for transfer.** Its thickness runs under 12 mm and varies, and an M5
 threaded insert needs a far larger bore than a 4.2 mm tap drill - so anywhere the design has fought
 for edge distance or web, an insert will not sit where the real hole does. **A plywood plate must
 never go to the mill as a template**: this folder is derived-never-authoritative, and a physical part
@@ -85,7 +85,7 @@ is far more persuasive than a sheet.
 
 ### What still gates drilling
 
-⚠️ **No plate in this pack has a complete hole schedule yet**, and that is the pack's main finding.
+OPEN: **No plate in this pack has a complete hole schedule yet**, and that is the pack's main finding.
 What it does have is every dimension the repo actually holds, with the gaps named - which turns
 "design ahead of the build" from an instruction into a list. Two questions gate cuts that cannot be
 undone, and each needs a part or the mill in front of you - see
@@ -95,7 +95,7 @@ undone, and each needs a part or the mill in front of you - see
    low Z
 2. The mill's model, and whether its DRO is 2-axis or 3-axis
 
-📌 **The merged build document exists now** - `tools\make-pdf.ps1` builds `build-document.pdf`, the
+NOTE: **The merged build document exists now** - `tools\make-pdf.ps1` builds `build-document.pdf`, the
 thirteen `machine/*.md` in reading order with every photograph embedded. It links to the sheets here by
 their anchors. It does **not** contain them: the pack is regenerated on its own cycle, and that is
 deliberate.

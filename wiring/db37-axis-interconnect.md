@@ -76,7 +76,7 @@ noise work here; the returns are doing the referencing.
 
 Chosen deliberately, so it does not want re-arguing. What it costs is documented below.
 
-### ⚠️ Two Step/Limit adjacencies, known and accepted
+### OPEN: Two Step/Limit adjacencies, known and accepted
 
 The DB37's rows are staggered - **pin 20 sits physically between pins 1 and 2** - so a block in row
 B straddles two blocks in row A. Physical neighbours are diagonal, not numeric.
@@ -123,7 +123,7 @@ It also means the 5 V return runs in parallel with the five DB37 GND pins. That 
 plausible gauges it puts the two ground nodes tens of millivolts apart, against an opto threshold of
 about 1.2 V. The ground arrangement that *does* matter is in [`breakout-box.md`](breakout-box.md).
 
-## ⚠️ The connector no longer fails safe
+## OPEN: The connector no longer fails safe
 
 **This section previously claimed the opposite**, written while
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
@@ -139,8 +139,7 @@ Nothing about the pinout changes. What changes is that this connector is now a s
 failure is **silent** - so it wants screw locks at both ends, and a homing cycle treated as the test
 that it is seated.
 
-## ⚠️ Open
-
+## Open items
 Not guessed. Each needs an answer off the bench before the box is built.
 
 1. **Controller-side source current.** Common-cathode means the controller *sources* the opto

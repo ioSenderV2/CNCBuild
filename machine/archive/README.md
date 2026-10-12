@@ -1,6 +1,6 @@
 # Archived prose — read the registry instead
 
-🔴 **Nothing in this folder is current.** These six files were archived on 2026-10-11. They are
+FLAG: **Nothing in this folder is current.** These six files were archived on 2026-10-11. They are
 kept because they contain the reasoning behind decisions that are still live, and because one
 `git mv` brings any of them back — but **every dimension in them may be stale**, and several are
 known to be.
@@ -21,7 +21,7 @@ into a new document before anyone noticed. The prose had been superseded by the 
 from 3/8" to 10 mm and by the as-built 58 being retired — the file still described an arrangement
 that no longer existed.
 
-⚠️ **The prose audit cannot catch that class of drift.** `tools/audit-prose.py` looks for *near
+OPEN: **The prose audit cannot catch that class of drift.** `tools/audit-prose.py` looks for *near
 misses* — a literal close to a registry value but not equal to it. A 7.5 mm error does not read
 as a near miss, it reads as a different quantity. Widened far enough to see it, the report runs
 to **1,426 lines**, which is not a report anybody acts on.
@@ -37,7 +37,7 @@ Four arguments came out into files of their own, one each, in [`..`](..):
 | `egg-crate.md` | Continuous ribs both ways, not blocking |
 | `lateral-fix.md` | Widen the riser in its own plane |
 
-📌 **Their numbers are comparative, not specifications** — they weigh one option against another
+NOTE: **Their numbers are comparative, not specifications** — they weigh one option against another
 rather than defining a part, so they cannot go stale against the registry.
 
 ## The files here

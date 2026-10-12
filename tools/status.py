@@ -61,7 +61,12 @@ SOURCE_DIRS = ["machine", "linear-encoder", "commissioning", "wiring"]
 # Generated or index files - never harvested, or the output feeds itself.
 GENERATED = {"STATUS.md", "INDEX.md", "VALUES.md"}
 
-SETTLED, OPEN, FLAG, REJECTED, NOTE, PROC = "✅", "⚠️", "🔴", "❌", "📌", "📋"
+# The markers the prose carries, and they are PLAIN WORDS - his, 2026-10-11.
+# They used to be emoji, which read as decoration and are not: this tool
+# classifies every item in the repo by them, and STATUS.md is that
+# classification. A word says so on its face where a coloured circle does not.
+SETTLED, OPEN, FLAG, REJECTED, NOTE, PROC = (
+    "SETTLED:", "OPEN:", "FLAG:", "REJECTED:", "NOTE:", "PROCEDURE:")
 MARKERS = [SETTLED, OPEN, FLAG, REJECTED, NOTE, PROC]
 MARKER_RE = re.compile("|".join(re.escape(m) for m in MARKERS))
 
@@ -200,7 +205,7 @@ def load() -> list[Doc]:
         for p in sorted(base.rglob("*.md")):
             if p.name in GENERATED:
                 continue
-            # 🔴 THE ARCHIVE IS NOT CURRENT AND MUST NOT BE INDEXED AS IF IT
+            # FLAG: THE ARCHIVE IS NOT CURRENT AND MUST NOT BE INDEXED AS IF IT
             # WERE. machine/archive/ holds prose retired on 2026-10-11 because
             # its dimensions had drifted from the registry. Harvesting its open
             # markers into STATUS.md would resurrect settled questions, and
@@ -278,9 +283,9 @@ because a **hand-written** open-items list had drifted from the text it summaris
 entry claimed the three-point mount was undocumented while `torsion-box.md` described it
 in full, and another carried a dimension the body text had already corrected.
 
-⚠️ **Classification is a heuristic:** an item is open if it carries ⚠️ or 🔴 and is not
-also marked ✅. When that reads wrong, **fix the markers in the prose** — they are the
-interface, not this file."""
+OPEN: **Classification is a heuristic:** an item is open if it carries OPEN: or FLAG: and is
+not also marked SETTLED:. When that reads wrong, **fix the markers in the prose** — they are
+the interface, not this file."""
 
 BLURB_INDEX = """Every heading in the repo's prose, so a topic can be found without knowing which file
 it lives in. That was the real gap: on 2026-10-02 the torsion box's mounting was looked

@@ -12,7 +12,7 @@ disagree, the chapter wins.**
 [`drawings/shop-pack.html`](drawings/shop-pack.html), one sheet per part. This document says which
 parts meet, with what hardware, and when.
 
-⚠️ **Items marked Open are not yet specified anywhere in this repo.** They are not omissions from
+OPEN: **Items marked Open are not yet specified anywhere in this repo.** They are not omissions from
 this document — do not fill one in from a catalogue or from inference. [`open-items.md`](open-items.md)
 is the full list.
 
@@ -49,10 +49,10 @@ that sets a plate.
 **The box is cut from the standing machine, and the spindle goes on after the box.** Two ordering
 rules carry the whole sequence, and neither can be worked around:
 
-- 🔴 **The machine is assembled on a flat surface and its width measured off the standing
+- FLAG: **The machine is assembled on a flat surface and its width measured off the standing
   assembly.** That measurement is what the box skins are cut to — so the machine comes before the
   box, not after it.
-- 🔴 **The spindle and tram come last, after the machine is bolted to the box.** Tram is set in the
+- FLAG: **The spindle and tram come last, after the machine is bolted to the box.** Tram is set in the
   installed position or it is set against a reference the machine does not have yet.
 
 | | Stage |
@@ -94,7 +94,7 @@ for months.
 | Two **outboard plates**, 11 7/8" × 39 5/16" × 10 gauge steel | ~25 holes each, and steel runs several times longer than aluminium would |
 | Three **front strips**, 45 mm × 1 m × 4 mm | |
 
-🔴 **Five plates stand on the box and all five are 301.625 high: the two side plates, the back
+FLAG: **Five plates stand on the box and all five are 301.625 high: the two side plates, the back
 plate and the two front fins.** Measure all five against each other as they arrive, before any of
 them is drilled. **A part that is not 301.625 is misordered or mismade — send it back.** Two parts
 wrong by the same amount would still assemble, so check them against each other and not only
@@ -114,10 +114,10 @@ every hole from it, never chain dimensions.
 the plate**, so the holes are fixed and nothing is oversized at the mill — the float is the rail's
 own, **ø6 through under a ø9.5 counterbore** on an M5. **Lock rail one down completely.** Then work
 **along rail two, bolt by bolt**: set parallel at that station with an indicator on rail one's
-carriage, tighten that bolt, move to the next. ⚠️ **Never tighten rail two as a set** — it snakes,
+carriage, tighten that bolt, move to the next. OPEN: **Never tighten rail two as a set** — it snakes,
 and a bolt already home fights the next one you set.
 
-⚠️ **Open: whether the mill can hold one height reference across the 1210.73 mm rear plate.** Bed size is not
+OPEN: **Open: whether the mill can hold one height reference across the 1210.73 mm rear plate.** Bed size is not
 travel. The two 8-bolt patterns' relative height must land well inside 1 mm across the metre.
 If the part is repositioned mid-job, **indicate the first pattern back in before drilling the second**,
 and work from a scribed and indicated line rather than from a sawn edge.
@@ -130,7 +130,7 @@ Three identical stacked pairs — X, Y1 and Y2. Each is two `30-6060` × 1000 mm
 
 ### Load every T-nut first
 
-🔴 **The `13025` T-nut slides in from the end of the slot.** Once a joining plate or an end plate
+FLAG: **The `13025` T-nut slides in from the end of the slot.** Once a joining plate or an end plate
 closes the slot ends, the only way to add one is to take the beam apart.
 
 | Plate | Slots | Per slot | Per beam |
@@ -141,7 +141,7 @@ closes the slot ends, the only way to add one is to take the beam apart.
 
 **Seven per slot is first at 50 mm, then every 150.**
 
-⚠️ **The front strip's two slots are the ones that get forgotten** while counting out the back, and
+OPEN: **The front strip's two slots are the ones that get forgotten** while counting out the back, and
 they are just as closed once the ends are on. Count them twice.
 
 **Test the slide with one nut before planning the rest of the build.**
@@ -160,12 +160,12 @@ One HGR20 per profile, in that profile's **outside** T-slot — 15 mm in from ea
 | Fixing | **M5 × 16 into T-nuts**, 17 per rail at 60 mm |
 | Hole | ø6 through with a ø9.5 counterbore — M5 socket head. An M6 head will not enter a 9.5 counterbore |
 
-🔴 **Bias every bolt the same direction as you tighten it, and bias both rails the same way.** The
+FLAG: **Bias every bolt the same direction as you tighten it, and bias both rails the same way.** The
 hole is a clearance hole and the T-slot adds more float; tighten 17 bolts with the rail floating and
 it snakes. **Common mode — both rails pulled the same way.** Do not pull the two rails apart or
 together.
 
-📌 **The X beam's rails are already mounted with an opposed bias** — lower rail toward the lower
+NOTE: **The X beam's rails are already mounted with an opposed bias** — lower rail toward the lower
 edge, upper toward the upper. **Check by feel before redoing 34 bolts**: mount the four blocks to the
 carriage plate and slide the assembly the length of the beam. Smooth and even means leave it. A
 binding zone tells you roughly where, and only those bolts need revisiting. For a number, put an
@@ -182,7 +182,7 @@ indicator on the plate against a straightedge and sweep.
 | Holes | **9 mm clearance** | 9 mm clearance |
 | **Bolt** | **M8 × 12** on X · **M8 × 10 + plain washer** on Y | **M8 × 10**, bare |
 
-🔴 **The lengths are not interchangeable, and the long one fails silently.** There is
+FLAG: **The lengths are not interchangeable, and the long one fails silently.** There is
 **1.2 mm of air behind the T-nut** (slot floor measured at 9.5, nut back face at 8.3), so a bolt may
 reach at most **7.2 mm** past the back of a plate. **An M8 × 12 in the 4 mm front strip reaches 8.0
 and bottoms on the slot floor before its head seats** - it feels tight and the strip is still loose.
@@ -194,19 +194,19 @@ the 11-gauge it was sourced as. Full derivation in
 **The buy: 42 × M8 × 10 A4 / 316** (front strips) · **56 × M8 × 10 plain + 56 washers** (Y backs) ·
 **28 × M8 × 12** (X back). 126 bolts, 126 T-nuts.
 
-🔴 **The front strip is 4 mm, not 1/4".** At 1/4" the flange head rim passes under the bearing block
+FLAG: **The front strip is 4 mm, not 1/4".** At 1/4" the flange head rim passes under the bearing block
 and hits — there is at most 6 mm of clearance there, and the 1/4" stack is 7.35.
 
-🔴 **The front strip's 14 flange bolts must be austenitic stainless — A4 / 316.** The magnetic
+FLAG: **The front strip's 14 flange bolts must be austenitic stainless — A4 / 316.** The magnetic
 encoder tape runs on this strip's face, and ferromagnetic bolt heads 1 mm from a magnetic scale put a
 periodic error at the bolt spacing into the axis. **42 bolts across the three beams.**
 
-⚠️ **Put a magnet on them when they arrive.** Generic "stainless" bolts bought for this job were
+OPEN: **Put a magnet on them when they arrive.** Generic "stainless" bolts bought for this job were
 tested and **are magnetic**. 410, 416 and 430 are sold as stainless and are as bad as carbon steel
 here. **Ask for A4 rather than A2.** Socket heads are fine if A4 flange heads are awkward to source —
 a 13 mm socket head leaves more room for the tape than the flange does.
 
-### 🔴 Assemble the stack against a flat reference
+### FLAG: Assemble the stack against a flat reference
 
 Nothing indexes one profile to the other, and the joining plates lock in whatever they are bolted at.
 **Both front faces must end up flush**, or the rails are not coplanar and the carriage plate twists
@@ -220,21 +220,21 @@ before the joining plate bolts come up tight.** This is the moment the rail geom
 **10 mm tape on the face of the 45 mm front strip**, centred between the two bolt rows. Two rows at
 ±15 with **13.8 mm** flange heads leaves **16.2 mm clear**. **All three beams carry tape.**
 
-🔴 **The clear lane is sized by the SENSOR, not by the tape.** The AS5311 puck needs **15 mm**
+FLAG: **The clear lane is sized by the SENSOR, not by the tape.** The AS5311 puck needs **15 mm**
 kept clear centred over the tape - the PCB and its mounting points, not the chip - which leaves
-**0.6 mm each side**. ⚠️ **At the old 17.3 mm head the lane was 12.7 and the puck did not fit at
+**0.6 mm each side**. OPEN: **At the old 17.3 mm head the lane was 12.7 and the puck did not fit at
 all**, which is why the bolt changed. The bolt rows cannot move to help: they are at ±15 because
 that is where the extrusion's T-slots are.
 
-🔴 **Bias the strip bolts OUTBOARD as you tighten them.** The holes are ø9 clearance on M8 into
+FLAG: **Bias the strip bolts OUTBOARD as you tighten them.** The holes are ø9 clearance on M8 into
 sliding T-nuts, so nothing centres a bolt and ±0.5 is available - both rows drifting inboard takes
 the 0.6 down to **0.1**. It costs nothing to push them out, and it is not something to find out
 about after the tape is down.
 
-⚠️ **Before 3 m of one-shot PSA goes down:** fit a tape offcut and a sensor and **read at the stepper
+OPEN: **Before 3 m of one-shot PSA goes down:** fit a tape offcut and a sensor and **read at the stepper
 end against mid-travel.** A NEMA 23 permanent-magnet rotor sits at the min-Y end of both Y tapes.
 
-⚠️ **Open: the application order.** Either the bolts go in first as a guide channel and the PSA is
+OPEN: **Open: the application order.** Either the bolts go in first as a guide channel and the PSA is
 threaded into a 12 mm slot, or the tape goes down first against a straightedge and the bolts follow.
 Not decided.
 
@@ -251,23 +251,23 @@ support it along its length.
 
 | | |
 |---|---|
-| Bar to beam | **4 × M8 × 20 flange bolts into slide-in T-nuts** — two rows, two slots. 🔴 **Not six in three rows**, which this line said until 2026-10-11; the 3D model has always drawn four and he confirms four |
+| Bar to beam | **4 × M8 × 20 flange bolts into slide-in T-nuts** — two rows, two slots. FLAG: **Not six in three rows**, which this line said until 2026-10-11; the 3D model has always drawn four and he confirms four |
 | Position | the bar's **outboard end 30 mm past the fin's outer face**, so casting and bar protrude through the window together |
 | Casting to bar | its **6 through holes, M5 tapped into the 3/8"** — bar coordinates, columns 7 and 53, rows 28 / 58 / 71 |
 | Motor | NEMA 23 onto the casting's own flange |
 
-🔴 **At the Y ends everything below the beam is in tension.** Six M8 hold the bar **up** against the
+FLAG: **At the Y ends everything below the beam is in tension.** Six M8 hold the bar **up** against the
 beam's underside, and the casting is bolted **up** into the bar and hangs from its own M5. Nothing
 rests on anything.
 
-⚠️ **The casting's foot is stepped, not one flat plane.** Match or clear the step — if the bar sits
+OPEN: **The casting's foot is stepped, not one flat plane.** Match or clear the step — if the bar sits
 under the stepped portion it holds the casting off its bearing face.
 
-⚠️ **Open on X only: whether both bolt rows land over beam.** The rows come from Y geometry, and on
+OPEN: **Open on X only: whether both bolt rows land over beam.** The rows come from Y geometry, and on
 X the bar sits on top and overhangs the end. **Check before drilling X's bar** — it is the same
 part, so the check is on the position, not the drawing.
 
-🔴 **This read "all three bolt rows ... the 82 / 110 / 138 rows" until 2026-10-11, and that was
+FLAG: **This read "all three bolt rows ... the 82 / 110 / 138 rows" until 2026-10-11, and that was
 stale twice over.** There are **two** rows, not three, and the registry puts them at
 **105 and 135** — see INTERPOSER_BOLT_ROW_1 and _2. The 3D model has drawn two rows all along.
 
@@ -276,7 +276,7 @@ stale twice over.** There are **two** rows, not three, and the registry puts the
 **4 × M5 tapped into the inside face of the 1210.73 mm rear plate**, one set per beam. Not
 through-bolted.
 
-📌 **BF12's hole count depends on its orientation.** Face-mounted into a plate it is **4 × M5**;
+NOTE: **BF12's hole count depends on its orientation.** Face-mounted into a plate it is **4 × M5**;
 top-mounted down through its base onto a horizontal surface it is **2 × M5**. Any BF12 figure that
 does not name the orientation means nothing.
 
@@ -288,12 +288,12 @@ tall, 10 mm** 6061, with a **60.5 × 50 mm window** below the beam for the casti
 The two halves are **rotations of each other, not mirrors** — turn one 180° and the outline is
 identical. Left and right come from flipping one plate over.
 
-🔴 **Lay both hole patterns out from the factory vertical edge and the factory top edge.** Each half
+FLAG: **Lay both hole patterns out from the factory vertical edge and the factory top edge.** Each half
 keeps one uncut vertical edge and that is the **outboard** one, taper facing inboard. Laid out from
 the cut edge instead, the bandsaw kerf becomes a ~1.5 mm offset built into one plate's bolt pattern —
 and that pattern has to line up with formed threads in the beam.
 
-⚠️ **Flipping one plate swaps which face is outboard.** Harmless for through holes; check it before
+OPEN: **Flipping one plate swaps which face is outboard.** Harmless for through holes; check it before
 spot-facing or counterboring on one face only.
 
 | | |
@@ -305,25 +305,25 @@ spot-facing or counterboring on one face only.
 
 **M8 × 35 leaves 22.3 mm in the extrusion.**
 
-🔴 **There is no front tongue on the box.** The fin sits on the box's **top skin**, and **one
+FLAG: **There is no front tongue on the box.** The fin sits on the box's **top skin**, and **one
 170 mm length of 40 × 40 angle extrusion in FRONT of it** ties it down - two across the machine,
-bolting into **T1 at X 25 and T2 at X 170, tapped, at Y 20**. 🔴 **In front because the tee track
+bolting into **T1 at X 25 and T2 at X 170, tapped, at Y 20**. FLAG: **In front because the tee track
 bed leaves zero room behind**: the bed's front edge and the fin's back face are both at 1006.35.
 The box runs **193.65 mm past the fins**.
 
-✅ **Settled 2026-10-11: one 170 mm length of 40 × 40 angle extrusion per fin, in FRONT of it.** Two
+SETTLED: **Settled 2026-10-11: one 170 mm length of 40 × 40 angle extrusion per fin, in FRONT of it.** Two
 across the machine, not four. It starts flush with the box's side edge, the two M8 run into **tapped**
 holes in the fin — no nuts — and four bolts through its horizontal leg go into **prong-type threaded
 inserts in the top skin**.
 
-🔴 **The angle is in front because there is no room behind.** The tee track bed's front edge and the
+FLAG: **The angle is in front because there is no room behind.** The tee track bed's front edge and the
 fin's back face are both at 1006.35 — zero gap. The bed, settled the same day, is what closed that
 space.
 
-🔴 **The fin is tapped because of the bed too.** The bed's top face is at 16, so an M8 nut and washer
+FLAG: **The fin is tapped because of the bed too.** The bed's top face is at 16, so an M8 nut and washer
 at Y 20 would reach down to 11.5 and foul it by 4.5. Tapping puts nothing on the back face.
 
-🔴 **The inserts go in BEFORE the top skin is glued to the ribs.** They fit from underneath and there
+FLAG: **The inserts go in BEFORE the top skin is glued to the ribs.** They fit from underneath and there
 is no access afterwards — the same hard ordering as the screw into each post tenon, and the same
 consequence for missing it.
 
@@ -341,7 +341,7 @@ unwelcome.
 | To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full length |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped, one per beam |
 
-🔴 **1210.73 is a reference, not a dimension.** The plate runs flush with the outboard plates' outer
+FLAG: **1210.73 is a reference, not a dimension.** The plate runs flush with the outboard plates' outer
 faces, and Sheet 7's X coordinates are absolute from the plate's left edge. **Cut it over-long and
 the Y2 station is out by the excess.**
 
@@ -364,16 +364,16 @@ plate — there is no separate 120 mm plate on Y. It runs from the beam down to 
 | Holes | **9 mm clearance** in **tongue** and plate both |
 | Position | against the beam's outboard face at X 20, ending **1 mm shy of the beam's end** |
 
-✅ **Settled by the order, 2026-10-08: it is 10 gauge, .135" = 3.429 mm** - not 1/8" (3.175) and
+SETTLED: **Settled by the order, 2026-10-08: it is 10 gauge, .135" = 3.429 mm** - not 1/8" (3.175) and
 not the "11 gauge" (3.04) the listing also offered. That question stood open for weeks and was
 closed by buying the part. The riser-proud check keys off it, and the figure is now **16.571**.
-⚠️ **Still caliper what arrives**: a gauge is a nominal, and three nominals on this machine have
+OPEN: **Still caliper what arrives**: a gauge is a nominal, and three nominals on this machine have
 already come in wrong.
 
 **Powder coat or paint both faces.** This plate is the chip barrier and it is the part that gets wet
 with swarf — aluminium is the anode and the extrusion is what cannot be replaced.
 
-⚠️ **The plate-to-tongue seam is a swarf trap** running the length of the machine. Either seal the top
+OPEN: **The plate-to-tongue seam is a swarf trap** running the length of the machine. Either seal the top
 of it or leave it deliberately open at both ends so it can be blown through.
 
 ---
@@ -386,7 +386,7 @@ of it or leave it deliberately open at both ends so it can be blown through.
 below the top edge.** The **right-hand plate only** carries a **BF12 tongue** — 60 across, running to the stock's 300, left uncut — rising off the
 top edge, 60 mm wide, with **4 × M5 tapped**.
 
-⚠️ **They are not interchangeable at assembly.** Cut both outlines together and leave the tongue on
+OPEN: **They are not interchangeable at assembly.** Cut both outlines together and leave the tongue on
 one; nothing below the top edge moves.
 
 | | |
@@ -398,10 +398,10 @@ one; nothing below the top edge moves.
 **The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
 a shelf.
 
-⚠️ **The 15 mm to the back edge with a 9 mm hole leaves 10.5 mm of material** — the plate's tightest
+OPEN: **The 15 mm to the back edge with a 9 mm hole leaves 10.5 mm of material** — the plate's tightest
 edge distance. Do not let that hole drift outboard.
 
-📌 **Scribe and tick the 15/45 pattern**; the ø9 hole on an M8 carries the float.
+NOTE: **Scribe and tick the 15/45 pattern**; the ø9 hole on an M8 carries the float.
 
 ### The shelf
 
@@ -417,11 +417,11 @@ footprint at Y 0 to 60.
 | Horizontal | **30** | **15** | **M8 × 35** into the end plate |
 | Horizontal | **30** | **35** | **M8 × 35** into the end plate |
 
-🔴 **M8 × 35, not × 40.** Through 25.4 mm of bar into 12.7 mm of plate, an M8 × 35 gives ~9.6 mm of
+FLAG: **M8 × 35, not × 40.** Through 25.4 mm of bar into 12.7 mm of plate, an M8 × 35 gives ~9.6 mm of
 engagement and stops short of the far face. **An M8 × 40 protrudes ~1.6 mm onto the Y bearing block
 seat** — the one surface on this plate that has to be flat. **Check the length at assembly.**
 
-⚠️ **Check the counterbore diameter before cutting the bar to exactly 60.** The vertical at Y 15
+OPEN: **Check the counterbore diameter before cutting the bar to exactly 60.** The vertical at Y 15
 leaves only ~7.5 mm of wall outside a ø15 counterbore. **65 costs nothing** and still stops short of
 the joining plate.
 
@@ -430,13 +430,13 @@ the joining plate.
 **Bolt both end plates on, slide the T-nuts in, drop the beam onto the two shelves, then bolt down.**
 One person can do it that way.
 
-⚠️ **The back joining plate's bottom edge must be flush with the beam's underside, not proud.** The
+OPEN: **The back joining plate's bottom edge must be flush with the beam's underside, not proud.** The
 bar passes under where that plate lands.
 
 ### The X stepper end
 
 **Interposer on TOP of the beam**, overhanging the end — same 60 × 150 × 3/8" part as Y, same
-**four M8 × 20** into slide-in T-nuts. 🔴 **On X the parts are in compression, stacked** — the opposite of the Y ends.
+**four M8 × 20** into slide-in T-nuts. FLAG: **On X the parts are in compression, stacked** — the opposite of the Y ends.
 
 **BF12 face-mounts on the right-hand end plate's tongue**, 4 × M5.
 
@@ -445,7 +445,7 @@ bar passes under where that plate lands.
 **154 mm W × 407 mm H × 1/2"** 6061 — **30 holes**. It bolts to the four X-axis bearing blocks and
 carries the whole Z axis. The blue is layout dye, not a finish.
 
-🔴 **Do not make this joint adjustable.** No set screws over the bearing blocks. The bolt heads are
+FLAG: **Do not make this joint adjustable.** No set screws over the bearing blocks. The bolt heads are
 buried under the Z rails, the screw and the nut housing once assembled, and this joint carries
 everything. **Build it solid - everything else is set from it.**
 
@@ -463,7 +463,7 @@ their bolts are reachable.
 
 **The doubler gives the plate a 24.38 mm seating at its bottom; the sole bracket bolts up into that.**
 
-🔴 **Two rows of bolts across the 24.38, not one row down the middle.** A single row leaves the joint
+FLAG: **Two rows of bolts across the 24.38, not one row down the middle.** A single row leaves the joint
 nothing to resist rolling about Y.
 
 **The doubler's bolts pass through the end plate along X. The sole bracket's go into the doubler** —
@@ -473,10 +473,10 @@ M6 is correct there; nothing from the nut lands in the end plate's edge.
 at **±20 mm in X and ±12 mm in Y** about the nut face centre. The nut's mounting face is **40 × 52**,
 its long dimension running **along X**.
 
-⚠️ **If "block" in the source meant anything other than the ball nut housing, these four holes are
+OPEN: **If "block" in the source meant anything other than the ball nut housing, these four holes are
 90° out.** Confirm against the real part before drilling.
 
-⚠️ **Open: the doubler's upper bound is not yet checked on the machine** — the lower Y bearing
+OPEN: **Open: the doubler's upper bound is not yet checked on the machine** — the lower Y bearing
 block row's bottom edge, computed to land at about −127 from the Y beam top. Same measurement as the
 sixteen block holes. **At 45 there is 10.5 of slack against it**, so that measurement would have to
 be badly wrong to matter.
@@ -495,27 +495,27 @@ be badly wrong to matter.
 | Fixing | **one M5 per hole does the whole stack** — counterbored in the Z plate, through a 6 mm clearance hole in the spacer, into the bearing block's tapped M5 |
 | Travel | **246 mm**, blocks butted |
 
-🔴 **M5 × 35, not × 30.** An M5 × 30 leaves only ~5.9 mm in the bearing block.
+FLAG: **M5 × 35, not × 30.** An M5 × 30 leaves only ~5.9 mm in the bearing block.
 
-🔴 **The Z plate is 164 and the X carriage plate is 154. Do not "tidy" them into line.** At 154
+FLAG: **The Z plate is 164 and the X carriage plate is 154. Do not "tidy" them into line.** At 154
 eight of the Z plate's M5 counterbores break out of the edge.
 
 ### Face the spacers before assembly
 
-🔴 **The spacer blocks stand higher than the ball nut housing — between 1 and 1.3.** Skim **1 mm off
+FLAG: **The spacer blocks stand higher than the ball nut housing — between 1 and 1.3.** Skim **1 mm off
 the spacers, both in the same setup, at the mill**, so they come out identical.
 
-🔴 **Skim 1 mm and no more, even if the step measures 1.3.** The cut cannot be undone. Whatever is
+FLAG: **Skim 1 mm and no more, even if the step measures 1.3.** The cut cannot be undone. Whatever is
 left over gets closed with a shim at the nut, where it can be measured on the assembled machine
 instead of guessed at the mill.
 
-🔴 **A full-face shim, not washers.** The shim covers the nut housing's whole 40 × 52 mounting face.
+FLAG: **A full-face shim, not washers.** The shim covers the nut housing's whole 40 × 52 mounting face.
 **Washers bear at four points and tilt the housing, which becomes a side load on the screw.**
 
-⚠️ **Measure the step again before cutting**, and **take the ball nut housing to the mill** — the
+OPEN: **Measure the step again before cutting**, and **take the ball nut housing to the mill** — the
 step is measured against that part.
 
-🔴 **Re-mic both spacers after facing and write the number into the design record.** Everything
+FLAG: **Re-mic both spacers after facing and write the number into the design record.** Everything
 downstream of the spacer thickness moves with it, including the spindle offset.
 
 **Do not re-cut the spacers to match each other in length.** Matching matters in **thickness**.
@@ -535,7 +535,7 @@ the plate's top edge.
 
 **M4 not M5** — a 12.7 mm edge leaves 4.35 mm of wall each side of an M4.
 
-🔴 **These are sacrificial.** They fire only if the soft limit and the proximity sensor have both
+FLAG: **These are sacrificial.** They fire only if the soft limit and the proximity sensor have both
 failed. If one is ever used, replace the block and the bolts. Do not size them by strength.
 
 The block runs **7 mm past the rail end** before contact, against **10 mm** of the block carrying no
@@ -559,11 +559,11 @@ screw rather than being forced into position by its own bolts.
 4. **Leave the nut housing's four bolts finger-tight, run the carriage through full travel, then
    torque them.**
 
-🔴 **Never close that gap by tightening the nut's bolts.** The nut cannot move — it is captive on the
+FLAG: **Never close that gap by tightening the nut's bolts.** The nut cannot move — it is captive on the
 screw — so tightening across an open gap pulls the nut off the screw axis and holds it there for
 every move the axis makes.
 
-⚠️ **Open: the Z travel floor.** 246 mm is confirmed available, but where that 246 sits relative to
+OPEN: **Open: the Z travel floor.** 246 mm is confirmed available, but where that 246 sits relative to
 the spoilboard has never been set — material thickness plus tool length plus clearance over
 workholding. **This is the one that gets quietly eroded, and it is the one noticed every day.**
 It is a machine measurement, taken once the machine stands.
@@ -574,7 +574,7 @@ It is a machine measurement, taken once the machine stands.
 
 ## 7. Stand it up and measure it
 
-🔴 **The machine is the reference, not the drawing. The box is not built until the whole machine is
+FLAG: **The machine is the reference, not the drawing. The box is not built until the whole machine is
 assembled on a flat surface and its width measured.**
 
 The machine jigs itself for that measurement, so nothing has to be computed:
@@ -588,7 +588,7 @@ The machine jigs itself for that measurement, so nothing has to be computed:
 **Record the measured width in [`../commissioning/`](../commissioning/) before cutting skins.** Do
 not let a nominal or catalogue figure substitute for it.
 
-⚠️ **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
+OPEN: **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
 **tongues'** inner faces, and a tongue's inner face is a hard bearing face with no float. A
 millimetre or two too wide is a shim; **too narrow and the plates will not fit between the tongues
 at all.** They stand on the top skin and are lapped from outboard - nothing drops into a groove,
@@ -604,16 +604,16 @@ but the gap is still a hard dimension.
 | Grid | **19 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
 | Depth overall | **144 mm** (25 + 100 + 19) |
 | Outer walls, all four sides | **25 mm outer + 19 mm inner web, 44 mm total** — the outer one **204 mm tall, capping the end grain of both skins** and **60 mm proud** of the top skin as a **tongue**. The 25 is for **bolt bearing**, settled 2026-10-11 |
-| Footprint | **1211.24 across** by **1210 front to back** — square to within 1.24 mm. ⚠️ the width is derived, verify against the standing machine |
+| Footprint | **1211.24 across** by **1210 front to back** — square to within 1.24 mm. OPEN: the width is derived, verify against the standing machine |
 | Fill | **sand in the cavities, LAST, on site** |
 
 ### Four things to get right on the grid
 
-1. ⚠️ **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
+1. OPEN: **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
    is commonly 18.2-18.5 and varies between sheets. **Test-cut on scrap from the same sheet.**
-2. ⚠️ **Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin
+2. OPEN: **Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin
    along its whole length.
-3. 🔴 **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
+3. FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
    egg crate seals every cell; without this each cell traps its own sand and needs its own drain port.
 4. **Clamp the skins hard onto the rib edges.** Screws through the skins into the ribs give uniform
    pressure and can stay in.
@@ -621,36 +621,36 @@ but the gap is still a hard dimension.
 **Assemble the grid and check it flat on a reference before either skin goes on** — an egg crate
 self-jigs and holds its own spacing with no clamps.
 
-⚠️ **Open: the grid spacing.** Conventional is 200-300 mm. Two constraints: the **first interior rib
+OPEN: **Open: the grid spacing.** Conventional is 200-300 mm. Two constraints: the **first interior rib
 in from each perimeter must clear the front corner tenons**, and the **two front-to-back ribs either
 side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend to the back-centre
 tenon.
 
-✅ **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
+SETTLED: **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
 across-rib's front face is at **971.8** and the fin's base starts bearing at **1006.35**, so it is
 **34.55 mm** from a rib. At that distance a 25 mm top skin is not spanning anything; it is a short
 overhang off a support that is right there.
 
-📌 **The warning this replaces was written before any rib layout existed to check it against** —
+NOTE: **The warning this replaces was written before any rib layout existed to check it against** —
 "bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning
 between grid members", which is true in general and does not bite here. The fin angle's T-nuts are
 **67.55 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
 T-nut's own grip on the plywood, not the span.
 
-🔴 **If the fin's bearing is ever wanted harder, move a rib under it — do not add blocking.** A rib
+FLAG: **If the fin's bearing is ever wanted harder, move a rib under it — do not add blocking.** A rib
 is continuous and a block is not, and the grid is egg crate precisely because continuity is what
 gives the two-way plate action.
 
-✅ **And none under the rear plate either — closed 2026-10-11.** Its bottom edge occupies the first
+SETTLED: **And none under the rear plate either — closed 2026-10-11.** Its bottom edge occupies the first
 **6.35 mm** of the box's fore-aft run and the back perimeter web occupies the first **19 mm**, so the
 plate bears on skin backed by solid wall over its whole footprint, with **12.65 mm of web to spare**
 and the 25 mm tongue outboard of that as well. There is no span to block.
 
-🔴 **The back centre tenon does want blocking, and it is the only one that does.** The two front
+FLAG: **The back centre tenon does want blocking, and it is the only one that does.** The two front
 corner tenons are snug into the box corners and located by both perimeter walls for free; this one
 has the back wall behind it and nothing either side. **Two blocks, one against each of its
 across-machine faces at X 562.62 and 648.62**, running forward from the back web to the first
-across-rib so each is captured at both ends. 📌 **They are for location, not bearing** — the tenon
+across-rib so each is captured at both ends. NOTE: **They are for location, not bearing** — the tenon
 carries no vertical load, all of it is on the shoulder.
 
 ### The three posts
@@ -675,19 +675,19 @@ when the outer lamination went to 25.
 | Front left / front right | the **side** face and the **front** face | **42 × 42** |
 | Back centre | the **back** face | **86 × 42** |
 
-✅ **Dress all three posts to 86 mm square on the jointer/planer**, settled 2026-10-11 — so the three
+SETTLED: **Dress all three posts to 86 mm square on the jointer/planer**, settled 2026-10-11 — so the three
 tenon holes are **identical** and come off one setup. The older instruction to cut each hole to its
 own post is retired; it existed because an S4S 4×4 commonly runs 88.9 and cedar varies between
 sticks.
 
-🔴 **Square faces matter more here than the width.** The ledge is a cross-cut shoulder and the
+FLAG: **Square faces matter more here than the width.** The ledge is a cross-cut shoulder and the
 perimeter wall lands directly over it, so a post face out of square puts the bearing on an edge
 instead of a face.
 
-📌 **The holes stay 2 mm generous** — machining the posts makes them identical, not the assembly
+NOTE: **The holes stay 2 mm generous** — machining the posts makes them identical, not the assembly
 easier. A 565 lb box still has to be lowered onto three tenons.
 
-🔴 **Drive one screw at an angle into the side of each tenon, from inside the cavity, BEFORE the top
+FLAG: **Drive one screw at an angle into the side of each tenon, from inside the cavity, BEFORE the top
 skin is glued.** After that there is no access to those tenons ever again. Not a vertical bolt down
 through the shoulder — that is withdrawal from cedar end grain.
 
@@ -697,8 +697,8 @@ through the shoulder — that is withdrawal from cedar end grain.
 
 **Low in the front and back perimeter walls.** They gravity-drain into a bucket and stay reachable.
 
-🔴 **Not in the bottom skin** — the 2x4 frame and three carcases make it unreachable.
-⚠️ **Not in the laminated left and right walls** — those are the 44 mm walls the Y beam plates bolt to.
+FLAG: **Not in the bottom skin** — the 2x4 frame and three carcases make it unreachable.
+OPEN: **Not in the laminated left and right walls** — those are the 44 mm walls the Y beam plates bolt to.
 
 ### The base
 
@@ -709,7 +709,7 @@ through the shoulder — that is withdrawal from cedar end grain.
 | **2x4 top frame** | ties the post tops together, the top chord for the shear walls. Sits **just shy of the bottom of the box** |
 | **Shear walls** | three plywood cabinet carcases — rear left, rear right, and one across the front between the two front posts, all openings facing **out** |
 
-🔴 **The 2x4 top frame must never touch the box.** The moment it does there is a fourth and fifth
+FLAG: **The 2x4 top frame must never touch the box.** The moment it does there is a fourth and fifth
 contact point, the mount is no longer three-point, **and the failure is completely silent** — nothing
 but the Y beams drifting out of coplanar.
 
@@ -719,16 +719,16 @@ but the Y beams drifting out of coplanar.
 - For transport, use **removable packers** set on the 2x4 frame, taken out on arrival. Not a
   permanent catch.
 
-⚠️ **Open: the box's deflection between its three points under full sand load.** It sets the minimum
+OPEN: **Open: the box's deflection between its three points under full sand load.** It sets the minimum
 clearance and needs the grid spacing and the sand mass first. **The one number here that a wrong
 guess would quietly cost accuracy for.**
 
-🔴 **Edge fastening is what makes a shear wall a shear wall.** **Glue plus screws at roughly 150 mm
+FLAG: **Edge fastening is what makes a shear wall a shear wall.** **Glue plus screws at roughly 150 mm
 all the way round** — to the bottom frame, the top frame, the posts, and carcase to carcase where
 they meet. A carcase that merely sits in the void with screws in its corners contributes close to
 nothing **and looks identical to one that works.**
 
-⚠️ **Open: where the stabiliser legs go.** Whatever they are, they must be set **deliberately
+OPEN: **Open: where the stabiliser legs go.** Whatever they are, they must be set **deliberately
 short** — if they carry load it is no longer a three-point mount.
 
 ---
@@ -747,7 +747,7 @@ height and the two beams' coplanarity, so the fin is the reference for the pair 
 **The side tongue runs 1000 mm, starting 1/4" from the box's back edge** — so it spans exactly the
 beam and the side plate it laps, and ends where the fin begins.
 
-⚠️ **The front and back tongue arrangement is inconsistent between the design record and the shop
+OPEN: **The front and back tongue arrangement is inconsistent between the design record and the shop
 pack.** The shop pack (2026-10-03, the later of the two) says **there is no front tongue** and the
 fin is tied by L-brackets; [`archive/torsion-box.md`](archive/torsion-box.md) and
 [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) still describe a continuous front tongue lapping the
@@ -768,18 +768,18 @@ side tongues. **Resolve before the walls are glued up.**
 **Orientation: the clamp's 100 mm dimension is front-to-back**, with the 80 mm bore centred in it.
 55 mm is axial.
 
-🔴 **Torque the clamp bolts to ~15 N·m, NOT the ~25 N·m an M8 8.8 would take.** 10 mm of engagement
+FLAG: **Torque the clamp bolts to ~15 N·m, NOT the ~25 N·m an M8 8.8 would take.** 10 mm of engagement
 in 6061 is the limit, not the bolt. **Four M8 helicoils per clamp position** takes it to full spec if
 you would rather not have to remember.
 
-🔴 **Never shim the two clamps against each other.** They bore a round body and must stay coaxial.
+FLAG: **Never shim the two clamps against each other.** They bore a round body and must stay coaxial.
 
 **Measure on arrival:** where the water fittings and cable exit sit, the body diameter over the whole
 clamping length, and the weight.
 
-### 🔴 Tram here, with the machine bolted down
+### FLAG: Tram here, with the machine bolted down
 
-🔴 **Tram is set on the installed machine** — standing on the box, bolted to the tongues, in the
+FLAG: **Tram is set on the installed machine** — standing on the box, bolted to the tongues, in the
 position it will run in. Tramming a free-standing assembly sets it against a reference the machine
 does not have yet.
 
@@ -796,12 +796,12 @@ its two clamps.
 **Roll shim stock: 1" wide aluminium strip**, which is exactly the bar's 25.4 width — a strip cut to
 the bar's 60 mm length is a full-face shim. **0.03 mm of shim moves tram by 0.003 mm per 100 mm.**
 
-🔴 **Slot the roll shim open from one edge at Y 15 and Y 45**, so it slides in with the two vertical
+FLAG: **Slot the roll shim open from one edge at Y 15 and Y 45**, so it slides in with the two vertical
 M8 loosened rather than removed. A plain rectangle means pulling the beam off.
 
 **Order of work for roll: loosen the four M8, slide the shim in, re-torque.**
 
-⚠️ **Range is capped at about 0.5 mm by the 9 mm bolt clearance**, so the beam is deliberately not
+OPEN: **Range is capped at about 0.5 mm by the 9 mm bolt clearance**, so the beam is deliberately not
 centred in those holes once shimmed.
 
 **For nod, use a row and not a column**, and use the two outermost rows — angular resolution is jack
@@ -812,12 +812,12 @@ travel over row separation. **Every bolt above the hinge has to be free** while 
 **It pushes on the spindle nose, so it cannot run before this stage**, and it is run on the
 machine bolted down in its installed position — the condition worth measuring.
 
-📋 **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).** Six
+PROCEDURE: **Procedure: [`../commissioning/stiffness-test.md`](../commissioning/stiffness-test.md).** Six
 indicator positions and a subtraction — **do not improvise it at the machine.** One reading on the
 spindle nose is a total, and a total cannot say which part of the stack is moving.
 
 It settles two deferred decisions: whether the X gantry back plate goes from 1/4" to 3/8", and
-whether the X carriage plate goes from 1/2" to 5/8". ⚠️ **Do not act on either before the test.**
+whether the X carriage plate goes from 1/2" to 5/8". OPEN: **Do not act on either before the test.**
 If the carriage plate does move, it goes to **thicker aluminium, not a bolted-on steel backer.**
 
 ---
@@ -850,7 +850,7 @@ the single biggest lever on ever moving the machine.
 
 ## Still open
 
-Everything marked ⚠️ above, and in full in [`open-items.md`](open-items.md). The ones that gate
+Everything marked OPEN: above, and in full in [`open-items.md`](open-items.md). The ones that gate
 cutting or drilling:
 
 | | |

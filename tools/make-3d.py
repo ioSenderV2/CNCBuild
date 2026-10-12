@@ -159,7 +159,7 @@ def check_sheets(extra):
 
 # The fasteners.
 #
-# 🔴 A BOLT'S LENGTH IS READ OUT OF dimensions/fasteners.toml, BY JOINT ID. It
+# FLAG: A BOLT'S LENGTH IS READ OUT OF dimensions/fasteners.toml, BY JOINT ID. It
 # used to be typed here, and every one of these strings said LENGTH NOT RECORDED
 # because that was true when they were written - the schedule did not exist yet.
 # It does now, and the model went on telling anyone who hovered a bolt that
@@ -186,7 +186,7 @@ def blen(jid):
     return f" - M{j['size']:g} x {j['length']:g}"
 
 
-# 🔴 THE HEAD IS DESCRIBED FROM THE SCHEDULE TOO, not from a constant. There
+# FLAG: THE HEAD IS DESCRIBED FROM THE SCHEDULE TOO, not from a constant. There
 # was one M8_HEAD string saying "flanged button head" and it prefixed every M8
 # tooltip, including the shelf bar's socket-head pair - so the same tooltip said
 # flanged button head at the front and socket at the back. His catch came from
@@ -387,7 +387,7 @@ def main() -> int:
     # -T_BOX_TONGUE, the 44 wall (25 tongue + 19 web) sits squarely on the 44
     # shoulder, and the tenon occupies from the web's inner face inboard. No
     # number was chosen to make that happen.
-    # ✅ THE FRONT WALL AND THE TWO FRONT POSTS STAND AT THE BOX'S FRONT EDGE
+    # SETTLED: THE FRONT WALL AND THE TWO FRONT POSTS STAND AT THE BOX'S FRONT EDGE
     # AND MOVE WITH IT - his, 2026-10-11, closing BOX_FRONT_WALL_AT. Each front
     # post therefore reaches D - web + ledge, 25 past the skin's front edge,
     # exactly as it reaches 25 past the side edge at x = -25. Everything below
@@ -395,10 +395,10 @@ def main() -> int:
     # matters because the apron depth is a REMAINDER now, so the front edge
     # moves whenever the box is resized. It moved 53.65 forward the same day.
     #
-    # 📌 It also keeps the front tenons in a real corner, snug against both
+    # NOTE: It also keeps the front tenons in a real corner, snug against both
     # perimeter walls - the property TENON_CORNER's note leans on.
     #
-    # ⚠️ The model still draws no FRONT TONGUE, only the back and side ones.
+    # OPEN: The model still draws no FRONT TONGUE, only the back and side ones.
     # VALUES.md on BOX_FRONT_OVERHANG says the front has none: the box runs
     # past the fins and four L-brackets per fin tie it down. The front WALL is
     # here; a front tongue standing 60 proud is not, and that is on purpose.
@@ -438,7 +438,7 @@ def main() -> int:
     # ---- the perimeter inner webs ----------------------------------------
     # The INNER lamination of each wall, between the skins. It stays 19 while
     # the outer lamination went to 25: it is a perimeter rib and carries shear.
-    # 🔴 WHERE IT SITS IS THE OPEN QUESTION - see BOX_WALL_STANDS_ON. Drawn
+    # FLAG: WHERE IT SITS IS THE OPEN QUESTION - see BOX_WALL_STANDS_ON. Drawn
     # INBOARD of the skin edge, which is what this model already implied and
     # what the post arithmetic above closes on.
     for x0, y0, x1, y1 in ((0, 0, W, web), (0, D - web, W, D),
@@ -451,7 +451,7 @@ def main() -> int:
     # 2026-09-30, and the notches are not drawn: a half-depth notch removes no
     # envelope and drawing it would only hide the bay layout he wants to see.
     #
-    # ⚠️ THE COUNTS ARE PROVISIONAL. torsion-box.md still lists the grid
+    # OPEN: THE COUNTS ARE PROVISIONAL. torsion-box.md still lists the grid
     # spacing as open, and BOX_RIBS_FORE_AFT's note carries why four and not
     # five: an odd count puts a rib ON the centreline, where the back tenon is.
     def rib_centres(n, bay, lo):
@@ -464,7 +464,7 @@ def main() -> int:
     # box corners and located by both perimeter walls for free, while this one
     # has the back wall behind it and nothing either side.
     #
-    # 📌 FOR LOCATION, NOT BEARING - the tenon carries no vertical load, all of
+    # NOTE: FOR LOCATION, NOT BEARING - the tenon carries no vertical load, all of
     # it is on the shoulder, so these only stop the box walking across.
     #
     # They run forward from the back web to the first across-rib, so each is
@@ -490,7 +490,7 @@ def main() -> int:
     # runs the box's full thickness and stands BOX_TONGUE_PROUD above the top
     # skin: -BOX_THK to +60, which is TONGUE_FULL_H = 204 tall.
     #
-    # 🔴 IT USED TO READ -(BOX_THK - SKIN) AND THAT BECAME WRONG ON 2026-10-11.
+    # FLAG: IT USED TO READ -(BOX_THK - SKIN) AND THAT BECAME WRONG ON 2026-10-11.
     # With both skins at 19 that expression gave -119, which WAS the bottom
     # skin's top face, so the tongue stood on it as the prose said. When the
     # top skin went to 25 the expression still gave -119 BY COINCIDENCE - 144
@@ -499,14 +499,14 @@ def main() -> int:
     # through the TOP skin's symbol only worked while the two were equal.
     tz0, tz1 = -v["BOX_THK"], v["BOX_TONGUE_PROUD"]
     # THE BACK AND FRONT LAP THE SIDES, which is the file's original corner.
-    # 📌 IT WAS REVERSED FOR ONE COMMIT on 2026-10-11 - his preference, the
+    # NOTE: IT WAS REVERSED FOR ONE COMMIT on 2026-10-11 - his preference, the
     # side lapping the back - and reverted the same day for money: a 1235 side
     # will not sit beside the top skin on a 4 x 8 where a 1203.65 one will, and
     # that is a whole sheet of 25 mm at $245. The reversal also drove the side
     # through the rear plate's right end, which overhangs the box by 2.66;
     # SIDE_TONGUE_START's 6.35 exists to clear that plate.
     #
-    # 🔴 THE BACK AND FRONT ARE EACH CUT IN TWO PIECES, butted at mid-length.
+    # FLAG: THE BACK AND FRONT ARE EACH CUT IN TWO PIECES, butted at mid-length.
     # Not drawn as two here - a butt joint removes no envelope - but see
     # BACK_LAM_PIECE_L, which also records why the joint is sound: the inner
     # web behind it is continuous, and the joint lands over the back centre
@@ -692,13 +692,13 @@ def main() -> int:
     # skin instead of standing BOX_TONGUE_PROUD above it - his, 2026-10-11, so
     # the apron stays a clear work surface.
     #
-    # ✅ IT CLOSES ON THE POST WITHOUT ANYTHING BEING CHOSEN: the front post's
+    # SETTLED: IT CLOSES ON THE POST WITHOUT ANYTHING BEING CHOSEN: the front post's
     # full section reaches D - web + ledge = 1235, and the cap occupies D to
     # D + 25 = 1210 to 1235. The 44 wall is web (1191..1210) plus cap
     # (1210..1235), landing squarely on the 44 shoulder, exactly as at the sides.
     #
     # The SIDE CAPS run back from the front cap to where the side tongue ends.
-    # 🔴 That stretch was BARE - the side tongue stops at SIDE_TONGUE_END while
+    # FLAG: That stretch was BARE - the side tongue stops at SIDE_TONGUE_END while
     # the box runs on to BOX_FORE_AFT - and it is where the front fin overhangs
     # outboard by FIN_PROUD. His words: so the fin overhang will not look like
     # it is hanging in midair. The fin's overhang now lands on the cap's top edge.
@@ -706,7 +706,7 @@ def main() -> int:
     cap_z0 = -v["BOX_FRONT_CAP_H"]
     box("Front cap", "box", 0xA07B16, -cap_t, D, cap_z0, W + cap_t, D + cap_t, 0,
         d="25, flush with the top skin - the front has no tongue")
-    # 🔴 THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
+    # FLAG: THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
     # lamination is cut as ONE piece, SIDE_LAM_L long and TONGUE_FULL_H tall,
     # and the proud portion forward of SIDE_LAM_PROUD_CUT is sawn away. It is
     # drawn as two boxes here only because the elevation is an L - the same
@@ -781,7 +781,7 @@ def main() -> int:
     # rounded - it finishes 0.17 inside the taper and reads flush. That tightness
     # is the point: the failure here is cosmetic, and margin would show as a step.
     #
-    # ⚠️ FIN_ANGLE_T is a NOMINAL - the piece has not been calipered. It feeds
+    # OPEN: FIN_ANGLE_T is a NOMINAL - the piece has not been calipered. It feeds
     # nothing; it is here so the angle is not a zero-thickness plane.
     at = v["FIN_ANGLE_T"]
     aleg, alen = v["FIN_ANGLE_LEG"], v["FIN_ANGLE_L"]
@@ -1497,7 +1497,7 @@ def main() -> int:
     # measured figure the whole machine's offsets are built on.
     ride[0] = ""
     rw, st, bw, bl = v["RAIL_W"], v["RAIL_STACK"], v["BLOCK_W"], v["BLOCK_BUTTED"]
-    # 🔴 THE BLOCK DOES NOT REACH THE FACE. Its side wings stop BLOCK_FACE_CLEAR
+    # FLAG: THE BLOCK DOES NOT REACH THE FACE. Its side wings stop BLOCK_FACE_CLEAR
     # short of it - 4.2, his gauge-block measurement 2026-10-11 - and that gap is
     # what the front strips run through. Drawn as a solid box from the face, the
     # model reported six clashes against the strips that do not exist on the
@@ -1554,7 +1554,7 @@ def main() -> int:
 
     # ---- the 45 mm front joining strips, Sheet 8 --------------------------
     # One per beam, across the seam, RUNNING UNDER BOTH BEARING BLOCK ROWS.
-    # ⚠️ THIS COMMENT DESCRIBED THE OLD 45 STRIP until 2026-10-11 - one that sat
+    # OPEN: THIS COMMENT DESCRIBED THE OLD 45 STRIP until 2026-10-11 - one that sat
     # BETWEEN the rows with half a millimetre either side - and the registry had
     # moved to 50.8 on 2026-10-09 without it. At 50.8 the strip is wider than the
     # block gap ON PURPOSE and passes 2.4 under each block, which buys about ten
@@ -1583,7 +1583,7 @@ def main() -> int:
     # socket in the middle of the dome, so nothing sits above it. Drawn flat,
     # because the dome's fall to under 1 at the rim is a millimetre of relief.
     hd, hh = v["FLANGE_NORMAL_D"] / 2, v["FLANGE_NORMAL_H"]
-    # 🔴 THE STRIP BOLTS ARE A DIFFERENT HEAD AND THE MODEL DREW THEM AS THIS
+    # FLAG: THE STRIP BOLTS ARE A DIFFERENT HEAD AND THE MODEL DREW THEM AS THIS
     # ONE. FLANGE_LOW_D exists because the AS5311 puck has to pass between the
     # two head rows - at 17.5 the channel is 12.5 and the puck does not fit, at
     # 13.75 it is 16.25 and it does. Drawing the big head there contradicted the
@@ -1804,7 +1804,7 @@ def main() -> int:
         "posts": "The three posts, top 10in",
         "bed": "Tee track bed",
         "spoil": "MDF spoilboard (hide to see the track)",
-        # 🔴 NOT "M8 flange bolt heads", WHICH IS WHAT IT SAID. The hover line
+        # FLAG: NOT "M8 flange bolt heads", WHICH IS WHAT IT SAID. The hover line
         # ends with the part's group, so every socket-head bolt in the model was
         # reporting itself as a flange one - he caught it on the spindle clamp's
         # M8 x 90, whose own text has always said socket head cap. The group was
@@ -1842,7 +1842,7 @@ def main() -> int:
             p["d"] = ((p["d"] + " \u00b7 ") if p["d"] else "") + sheet_note(SHEETS[p["n"]])
     unused = check_sheets(("1a", "1b", "2a", "2b"))
 
-    # 🔴 A BOLT THE SCHEDULE HAS NEVER HEARD OF IS A BOLT NOBODY ORDERS. Now
+    # FLAG: A BOLT THE SCHEDULE HAS NEVER HEARD OF IS A BOLT NOBODY ORDERS. Now
     # that the tooltips read their length out of fasteners.toml, the ones that
     # come back empty are a list of real joints missing from it - so say so on
     # every run rather than leaving it to whoever happens to hover one.
@@ -1901,7 +1901,7 @@ def main() -> int:
 
 # Pairs that SHOULD interpenetrate, with the reason. Everything else that
 # overlaps is a real interference and gets printed.
-# 🔴 THE TOOL IN THE SACRIFICIAL SHEET IS NOT A FAULT, IT IS THE JOB. The
+# FLAG: THE TOOL IN THE SACRIFICIAL SHEET IS NOT A FAULT, IT IS THE JOB. The
 # spoilboard exists to be cut into, so a tool-in-MDF overlap is reported as a
 # BITE and drawn in a different colour from a clash. Only the MDF is listed:
 # the tool reaching the ALUMINIUM would be a real fault and must stay red.
@@ -1940,7 +1940,7 @@ ALLOWED = {
     # bay layout the interior was decomposed to show. So every crossing reads
     # as a 19 x 19 x 100 overlap, and all sixteen are intentional.
     #
-    # 🔴 THE PRICE IS NAMED RATHER THAN HIDDEN: this pair is now blind, so if a
+    # FLAG: THE PRICE IS NAMED RATHER THAN HIDDEN: this pair is now blind, so if a
     # rib ever moves onto a POST it will not be caught here. The checks that
     # still bite are rib-against-tenon and rib-against-web, both left live.
     frozenset({"Rib, fore-aft", "Rib, across"}),
@@ -2765,7 +2765,7 @@ addEventListener('pointermove',e=>{
 
 // --- the live clash check, ported from tools/make-3d.py ---------------
 // CLASH-CHECK-BEGIN
-// 🔴 THIS IS A SECOND IMPLEMENTATION OF A CHECK THAT ALREADY EXISTS, which is
+// FLAG: THIS IS A SECOND IMPLEMENTATION OF A CHECK THAT ALREADY EXISTS, which is
 // a thing this repo is right to be suspicious of. Three guards: the exclusion
 // list and the bite list are HANDED OVER from the generator rather than
 // retyped; every helper below is a line-for-line port with the same 0.05

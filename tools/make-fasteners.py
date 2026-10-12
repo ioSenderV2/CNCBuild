@@ -29,7 +29,7 @@ SRC = HERE.parent / "dimensions" / "fasteners.toml"
 OUT = HERE.parent / "machine" / "drawings" / "fasteners.html"
 
 # What each destination gives you, and how far a bolt may safely run past it.
-# 🔴 THESE ARE NOT ENGAGEMENT FIGURES AND MUST NOT BE READ AS ONE. They say
+# FLAG: THESE ARE NOT ENGAGEMENT FIGURES AND MUST NOT BE READ AS ONE. They say
 # whether running long is HARMLESS or DAMAGING, which is the half of the
 # question a length table usually omits:
 #   tapped - into a tapped hole in a part; running long may protrude somewhere
@@ -56,7 +56,7 @@ LONG_IS = {
 #
 # A joint names its own share of each group in `groups`, as [name, count]
 # pairs, because a joint usually spans two sides - the fourteen side plate
-# bolts are seven on Y1 and seven on Y2. 🔴 THE PAIRS DO NOT HAVE TO SUM TO THE
+# bolts are seven on Y1 and seven on Y2. FLAG: THE PAIRS DO NOT HAVE TO SUM TO THE
 # JOINT'S COUNT. What is left over is reported as unassigned, so a joint that
 # belongs partly to something he has not named stays VISIBLE rather than being
 # forced into the nearest group - which is how a wrong assignment would get
@@ -88,7 +88,7 @@ def by_group(rows):
         n = r.get("count", 0)
         placed = 0
         for g, c in r.get("groups", []):
-            # 🔴 ONE T-NUT PER BOLT, ON THE SAME LINE AS THE BOLT - his,
+            # FLAG: ONE T-NUT PER BOLT, ON THE SAME LINE AS THE BOLT - his,
             # 2026-10-11. The buy list totals them for the order; what this view
             # has to answer is what goes on the mat for ONE assembly, and a
             # T-slot bolt without its nut is a trip back to the drawer.
@@ -139,14 +139,14 @@ def main():
         grip, grip_txt = grip_of(j, v)
         L = j.get("length")
         eng = (L - grip) if (L is not None and grip is not None) else None
-        # 🔴 A T-NUT GIVES TNUT_THREAD_M8 WHATEVER THE BOLT IS. Reporting
+        # FLAG: A T-NUT GIVES TNUT_THREAD_M8 WHATEVER THE BOLT IS. Reporting
         # length-minus-grip for one overstates the engagement badly - a 50 bolt
         # read as 24.6 engaged when the nut can only hold 6, with the rest
         # standing through into the slot. So cap it, and carry the remainder as
         # `past` so a bolt running deep into a slot is visible rather than
         # flattered into looking well engaged.
         past = None
-        # 🔴 AN ACORN NUT IS THE ONE DESTINATION WHERE RUNNING LONG IS FATAL.
+        # FLAG: AN ACORN NUT IS THE ONE DESTINATION WHERE RUNNING LONG IS FATAL.
         # It gives ACORN_NUT_THREAD of thread and will swallow ACORN_NUT_DEPTH
         # of bolt; a bolt that wants more than the depth lands on the closed
         # dome and the joint NEVER CLAMPS, however hard the nut is turned. Both
@@ -195,7 +195,7 @@ def main():
         print(f"  {r['id']:22s} {sz:6s} {r.get('count','?'):>4} {L:>6s} "
               f"{r.get('head','?'):18s} {g:>7s} {e:>7s}{pa}")
 
-    # 🔴 ENGAGEMENT IS THE CHECK, and it caught two errors in the joints file the
+    # FLAG: ENGAGEMENT IS THE CHECK, and it caught two errors in the joints file the
     # first time it ran. Both were the same mistake: a TAPPED part listed in the
     # GRIP as well, so the bolt was counted as crossing the very thing it threads
     # into and engagement came out 0. A length table that cannot do this
@@ -210,7 +210,7 @@ def main():
             print(f"     {r['id']:24s} engages {r['eng']:g} "
                   f"on M{r.get('size', '?')}{tail}")
 
-    # 🔴 BOTTOMING IS A DIFFERENT FAULT FROM THIN ENGAGEMENT and gets its own
+    # FLAG: BOTTOMING IS A DIFFERENT FAULT FROM THIN ENGAGEMENT and gets its own
     # list: a thin joint holds less than you wanted, a bottomed one holds
     # NOTHING. It is also the quiet one - the nut spins up tight against the
     # dome and feels exactly like a joint that is clamped.
@@ -239,7 +239,7 @@ def main():
             continue
         sz = r["size"]
         if r.get("length") is not None:
-            # 🔴 THE HEAD IS PART OF THE PART, so it belongs on the line you
+            # FLAG: THE HEAD IS PART OF THE PART, so it belongs on the line you
             # order from - his spec, 2026-10-11. An M8 x 10 in normal flange and
             # an M8 x 10 in low profile are different bolts, and totalling them
             # together is how one of the two never gets bought.
@@ -270,14 +270,14 @@ def main():
                 print(f"      {'T-nut M%d' % r['size']:14s} {c:>4}   "
                       f"for the line above")
     if loose:
-        print("\n  ⚠ NOT IN ANY GROUP - these have no home in the list yet:")
+        print("\n  OPEN: NOT IN ANY GROUP - these have no home in the list yet:")
         for r, c in loose:
             print(f"      {r['id']:24s} {c:>4} of {r.get('count','?')}")
 
     print(f"\n  {len(rows)} joints, {total_pcs} pieces")
-    print(f"  🔴 {len(missing)} joints have NO LENGTH recorded")
+    print(f"  FLAG: {len(missing)} joints have NO LENGTH recorded")
     if nosize:
-        print(f"  ⚠️  {len(nosize)} have no SIZE either: "
+        print(f"  OPEN: {len(nosize)} have no SIZE either: "
               + ", ".join(r['id'] for r in nosize))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -379,9 +379,9 @@ inferences that read as facts.</div>
 </table>
 
 <h2>What to buy</h2>
-<p>🔴 <b>T-nuts are a separate line and the same count as the bolts.</b> Nothing
+<p>FLAG: <b>T-nuts are a separate line and the same count as the bolts.</b> Nothing
 else in the repo totals them, and forgetting them is a trip to the supplier.
-⚠️ These totals cover only the joints with a count recorded &mdash; the Z rails
+OPEN: These totals cover only the joints with a count recorded &mdash; the Z rails
 are a different kit and their hole count is not known yet.</p>
 
 <div class="buys">{buytables}</div>

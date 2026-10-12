@@ -3,7 +3,7 @@
 The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons.
 Measured values belong in [`../commissioning/`](../commissioning/).
 
-## 🔴 Two documents, split by register - read this first
+## FLAG: Two documents, split by register - read this first
 
 **[`assembly.md`](assembly.md) says what gets built. The thirteen chapters say why.** Keep them apart.
 A page that carries both is arguing with itself while somebody is holding a drill, which is how one
@@ -12,12 +12,12 @@ unusable document came about in the first place.
 | | Source | Printout | What belongs in it |
 |---|---|---|---|
 | **The build document** | [`assembly.md`](assembly.md) | `build-document.pdf`, ~18 pages | Parts, hardware, what bolts to what, in the order it is done. Imperative. No reasoning, no options weighed, no figure's history |
-| **The design record** | the thirteen chapters below | `design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every ⚠️ and 📌. Reference, never worked from |
+| **The design record** | the thirteen chapters below | `design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every OPEN: and NOTE:. Reference, never worked from |
 
-📋 **`tools\make-pdf.ps1`** from the repo root builds both. `-Doc build` or `-Doc record` for one.
+PROCEDURE: **`tools\make-pdf.ps1`** from the repo root builds both. `-Doc build` or `-Doc record` for one.
 Both are derived and untracked: **if either disagrees with a `.md` file, the `.md` file wins.**
 
-🔴 **A new decision goes in a chapter, and then into `assembly.md` if it changes what gets built.**
+FLAG: **A new decision goes in a chapter, and then into `assembly.md` if it changes what gets built.**
 Writing the reasoning into `assembly.md` is the failure this split exists to prevent.
 
 | File | What is in it |
@@ -36,7 +36,7 @@ Writing the reasoning into `assembly.md` is the failure this split exists to pre
 | [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One WCS origin per plate, one reference rail, and what mating hardware to take |
 | [`open-items.md`](open-items.md) | Everything still unmeasured, grouped by where it came from |
 
-## 🔴 The dimensional prose is archived
+## FLAG: The dimensional prose is archived
 
 Six files moved to [`archive/`](archive/) on 2026-10-11: **torsion-box**,
 **lateral-stiffness**, **x-gantry-end-plates**, **z-carriage**, **y-beam-support** and
@@ -45,11 +45,11 @@ Six files moved to [`archive/`](archive/) on 2026-10-11: **torsion-box**,
 against it.
 
 **The failure that settled it:** a sole plate position was read out of `x-gantry-end-plates.md`
-as −182.5 when the registry had moved it to −175 the week before. ⚠️ **The prose audit cannot
+as −182.5 when the registry had moved it to −175 the week before. OPEN: **The prose audit cannot
 catch that class of drift** - it looks for near misses, and a 7.5 mm error reads as a different
 quantity, not a stale one. At a tolerance wide enough to see it, the report runs to 1,426 lines.
 
-📌 **They are archived, not deleted.** One `git mv` brings any of them back. What was worth
+NOTE: **They are archived, not deleted.** One `git mv` brings any of them back. What was worth
 keeping is in the four argument files above, whose numbers are **comparative** - they weigh
 options rather than define parts, so they cannot go stale against the registry.
 
@@ -68,7 +68,7 @@ options rather than define parts, so they cannot go stale against the registry.
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
 | Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 60.5 × 50 window for the stepper frame. **Rear:** one **1210.73 mm × 12" × 1/4" A36 steel** plate for both beams. Ends only — the ball screw runs under the beam |
-| **Plate height** | 🔴 **The five plates that stand on the box are all 301.625 (11 7/8") high** — two side plates, the back plate, two front fins — and **every hole on them is measured from the bottom edge**, the edge that bears on the box's top skin. One height plus one reference edge is what lines the beam up without any plate knowing about another. **A part that is not 301.625 is misordered or mismade.** PLATE_H in the registry; the other three symbols derive from it so they cannot drift |
+| **Plate height** | FLAG: **The five plates that stand on the box are all 301.625 (11 7/8") high** — two side plates, the back plate, two front fins — and **every hole on them is measured from the bottom edge**, the edge that bears on the box's top skin. One height plus one reference edge is what lines the beam up without any plate knowing about another. **A part that is not 301.625 is misordered or mismade.** PLATE_H in the registry; the other three symbols derive from it so they cannot drift |
 | Plate materials | 6061 throughout **except** the two Y outboard plates (**10 gauge steel**) and the Y rear plate (**1/4" A36**) — see [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), [`archive/outboard-plate.md`](archive/outboard-plate.md) and [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) |
 
 **Axes:** X, plus a ganged **Y1 (Y) / Y2 (A)** pair, plus Z. `Y_GANGED` + `Y_AUTO_SQUARE` in the
@@ -79,7 +79,7 @@ firmware config, so the second Y motor is M3.
 Partly specified - see [`archive/y-beam-support.md`](archive/y-beam-support.md) and
 [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md). They bolt the Y beams to the torsion box.
 
-🔴 **Reworked 2026-10-02 and all four as-built Y risers are scrapped.** Cast stepper frames replaced
+FLAG: **Reworked 2026-10-02 and all four as-built Y risers are scrapped.** Cast stepper frames replaced
 BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one
 1210.73 mm steel plate that is also the rear shear panel. Four measurements gate cuts that cannot be
 undone — see [`open-items.md`](open-items.md) before ordering or cutting anything for the Y ends.

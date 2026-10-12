@@ -6,7 +6,7 @@
 
 ---
 
-⚠️ **Partly open - the nod adjustment is undecided and has a deadline** (see [`machining.md`](machining.md);
+OPEN: **Partly open - the nod adjustment is undecided and has a deadline** (see [`machining.md`](machining.md);
 hole sizes depend on it).
 
 ## The rule that constrains every option
@@ -22,7 +22,7 @@ it points:
 | Spacers / spindle clamps ↔ Z plate | Y | **nod** + yaw |
 | **X end plates ↔ Y carriage blocks** | X (across) | **roll** + yaw |
 
-## 🔴 Do not make the carriage plate joint adjustable
+## FLAG: Do not make the carriage plate joint adjustable
 
 Set screws over each bearing block is the usual arrangement and it is wrong here, for two reasons:
 
@@ -34,20 +34,20 @@ Set screws over each bearing block is the usual arrangement and it is wrong here
 
 **Build it solid - everything else is set from it.** Get it right at the mill.
 
-## ✅ Roll: SHIM THE SHELF - decided 2026-10-02
+## SETTLED: Roll: SHIM THE SHELF - decided 2026-10-02
 
 **Roll is adjusted by shimming between the shelf bar's top face and the X beam's bottom extrusion, at
 one end plate only.** Raising one end of the beam rotates it about Y, which leans the spindle
 left-right. Shim the low end.
 
-❌ ~~**Oversize the bearing block holes and add jack screws at the X end plate to Y carriage
+REJECTED: ~~**Oversize the bearing block holes and add jack screws at the X end plate to Y carriage
 interface.**~~ Same degree of freedom, worse joint:
 
 | | ~~Oversized block holes~~ | **Shim on the shelf** |
 |---|---|---|
 | What is loosened | the **four Y bearing blocks** - the interface carrying the whole gantry into the rails | nothing |
 | How the adjustment is held | friction at a deliberately sloppy precision mount | a shim **in compression** under a bearing joint |
-| Where the slop would live | 🔴 **designed into a precision mount**, and permanent | in a **shim**, which can be changed |
+| Where the slop would live | FLAG: **designed into a precision mount**, and permanent | in a **shim**, which can be changed |
 
 **The shelf was already a bearing joint** - this file records that it *"takes the vertical load
 directly in bearing rather than through bolt shear, which is better anyway."* A shim belongs in a
@@ -70,38 +70,38 @@ tilt is t/1000, so at a 100 mm tramming circle the correction is t/10:
 | 0.18 | 0.018 |
 | 0.23 | 0.023 |
 
-✅ **Resolution is a non-issue.** The thinnest strip moves tram by **0.003 mm per 100 mm**, several
+SETTLED: **Resolution is a non-issue.** The thinnest strip moves tram by **0.003 mm per 100 mm**, several
 times finer than a good tram, and the set combines in roughly 0.03 steps. **The problem will be
 measuring the error, not correcting it.**
 
-🔴 **Range is capped at about 0.5 mm by the bolt clearance, not by the shim stack.** The beam's
+FLAG: **Range is capped at about 0.5 mm by the bolt clearance, not by the shim stack.** The beam's
 four M8 run in **9 mm clearance holes**, giving ~0.5 mm of radial float before a bolt binds - about
 **0.05 mm per 100 mm** of correctable roll. Far more than tramming needs, but it is the ceiling, and
-it means the beam is deliberately **not** centred in those holes once shimmed. ⚠️ That float was
+it means the beam is deliberately **not** centred in those holes once shimmed. OPEN: That float was
 specified for a friction joint, not as an adjustment range; **confirm nothing else was relying on the
 beam sitting centred.**
 
 ### Two practical points
 
-🔴 **The shim needs clearance for the two vertical M8.** They pass up through the bar at **Y 15
+FLAG: **The shim needs clearance for the two vertical M8.** They pass up through the bar at **Y 15
 and Y 45** into the extrusion's underside T-nuts, straight through the shim plane. **Slot the shim
 open from one edge at both stations** so it slides in with those bolts loosened rather than removed -
 a plain rectangle would mean pulling the beam off.
 
-✅ **No creep concern.** The bearing area is 25.4 × 60, and the gantry's share per shelf puts the
+SETTLED: **No creep concern.** The bearing area is 25.4 × 60, and the gantry's share per shelf puts the
 shim at well under a tenth of a MPa. Aluminium shim extrudes under hundreds of times that.
 
 **Order of work:** loosen the four M8, slide the shim in, re-torque. The adjustment is held by the
 same friction joint that holds the beam, so nothing new carries load.
 
-## ✅ The X end plates no longer need anything built in for roll
+## SETTLED: The X end plates no longer need anything built in for roll
 
 **This closes an item that had been left deliberately open.** The previous scheme asked for oversized
 holes *"decided before they are drilled"* - a live constraint on a plate about to go to a one-shot
 mill. **With roll taken at the shelf, the bearing block holes go close-fit as normal** and the plate
 drawing is simpler, not more complex.
 
-## ⚠️ Open: nod
+## Opennod
 
 Every face that produces nod points forward, and they all end up buried. Two candidates, in order:
 
@@ -113,12 +113,12 @@ Every face that produces nod points forward, and they all end up buried. Two can
    137 mm**. So - **is the outer column of M5 counterbores within 17 mm of the plate edge?** (The
    6 mm clearance hole through the spacer itself is not the question - that is the layer underneath.)
 
-   🔴 **Superseded - see below. Permanent access turns out not to be worth having.**
+   FLAG: **Superseded - see below. Permanent access turns out not to be worth having.**
 2. **A tram sub-plate** between the Z plate and the clamps. Both clamps bolt to the sub-plate so
    they stay coaxial. Pivot low, jack screw high, accessible from the front. **Costs about 13 mm of
    moment arm** (109 → ~122) and inserts an extra joint directly in the spindle load path.
 
-## 🔴 Decided: tram at assembly. No sub-plate.
+## FLAG: Decided: tram at assembly. No sub-plate.
 
 **An accessible row is not sufficient, which was an error in an earlier version of this file.** To
 tilt the plate the gap must open *progressively* from the hinge - a little at the third row, more at

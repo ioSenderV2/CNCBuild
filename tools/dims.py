@@ -49,7 +49,7 @@ REGISTRY = ROOT / "dimensions" / "registry.toml"
 PROVENANCE = {"measured", "part", "vendor", "nominal", "derived", "alias",
               "pinned", "OPEN"}
 
-# 🔴 PINNED IS NOT DERIVED - his call, 2026-10-11. 51 symbols carry a literal
+# FLAG: PINNED IS NOT DERIVED - his call, 2026-10-11. 51 symbols carry a literal
 # value while having come out of a calculation, and XEP_W says what that means:
 # "set by BLOCK_BUTTED at 154.18, rounded down. NOT RE-DERIVED." The difference
 # is the whole point of `deps`: a derived number FOLLOWS its source when the
@@ -58,7 +58,7 @@ PROVENANCE = {"measured", "part", "vendor", "nominal", "derived", "alias",
 # this registry exist. Pinned says: this came from somewhere, go and re-check it
 # by hand if that somewhere moves.
 
-# 🔴 AN ALIAS IS A RENAME, NOT A CALCULATION - his call, 2026-10-11, after
+# FLAG: AN ALIAS IS A RENAME, NOT A CALCULATION - his call, 2026-10-11, after
 # RAIL_LOW_Z read as "derived from RAIL_SLOT_INSET" when both are 15 and nothing
 # happens in between. 31 of the registry's symbols are one symbol pointing
 # straight at another, and calling that derived hides the single most useful
@@ -133,7 +133,7 @@ class Registry:
         self.dims: dict[str, dict] = {}
         self.order: list[str] = []
         self.errors: list[str] = []
-        # 🔴 RETIRED IS A FLAG, NOT A PROVENANCE - his, 2026-10-11. The two
+        # FLAG: RETIRED IS A FLAG, NOT A PROVENANCE - his, 2026-10-11. The two
         # answer different questions: provenance is where the number came from,
         # retired is whether anything still wants it. FIN_KERF is nominal AND
         # retired, and folding one into the other would lose that it was never
@@ -397,7 +397,7 @@ def cmd_md(args) -> int:
         d = reg.dims[s]
         note = (d.get("note", "") or "").replace("|", "\\|")
         expr = d.get("expr", "")
-        flag = " 🔴" if d["provenance"] == "OPEN" else (" ⚠️" if d["provenance"] == "nominal" else "")
+        flag = " FLAG:" if d["provenance"] == "OPEN" else (" OPEN:" if d["provenance"] == "nominal" else "")
         lines.append(
             f"| **{s}**{flag} | {reg.fmt(s)} {d['unit']} | {d['provenance']} | {expr} | {note} |"
         )
@@ -405,7 +405,7 @@ def cmd_md(args) -> int:
         "",
         "## Not confirmed on the real part",
         "",
-        "🔴 **OPEN** values are placeholders and **must not be cut to.** ⚠️ **nominal** values are",
+        "FLAG: **OPEN** values are placeholders and **must not be cut to.** OPEN: **nominal** values are",
         "catalogue figures not yet checked against the part - the class that produced three wrong",
         "numbers in one session on 2026-10-02.",
         "",
@@ -456,7 +456,7 @@ def _esc(s: str) -> str:
 
 
 def _attr(s: str) -> str:
-    """🔴 FOR AN ATTRIBUTE VALUE, WHICH NEEDS THE QUOTES TOO. _esc was used for
+    """FLAG: FOR AN ATTRIBUTE VALUE, WHICH NEEDS THE QUOTES TOO. _esc was used for
     both and does not touch them, so the one registry note that quotes him -
     SCREW_AXIS_H, carrying footnote 3.8's "25 for the casting's axis" - closed
     its own data-note early and left the rest of the sentence parsed as junk
@@ -580,7 +580,7 @@ def cmd_html(args) -> int:
    border-bottom: 1px solid #dfe4e8; }}
  .sym {{ background: #fff; border: 1px solid #e1e6ea; border-left: 4px solid #c3cbd2;
    border-radius: 6px; padding: 8px 12px; margin: 0 0 8px;
-   /* 🔴 THE HEADER IS STICKY, so an anchor jump lands the card UNDERNEATH it
+   /* FLAG: THE HEADER IS STICKY, so an anchor jump lands the card UNDERNEATH it
       and it looks like the link did nothing. This is the room it needs. */
    scroll-margin-top: 104px; }}
  section {{ scroll-margin-top: 104px; }}
@@ -605,7 +605,7 @@ def cmd_html(args) -> int:
  .n {{ font-size: 12.5px; color: #39424a; margin-top: 5px; }}
  code {{ font-family: Consolas, ui-monospace, monospace; }}
  a {{ color: #0b5fa5; }}
- /* 🔴 PROVENANCE IS THE WHOLE POINT OF THE REGISTRY, so it is the one thing
+ /* FLAG: PROVENANCE IS THE WHOLE POINT OF THE REGISTRY, so it is the one thing
     carried in colour: measured and part are his, derived follows from them,
     nominal is a catalogue figure nobody has put a caliper on. */
  .p-measured {{ border-left-color: #2e9e6b; }}
@@ -624,7 +624,7 @@ def cmd_html(args) -> int:
  .p-nominal {{ border-left-color: #d9a406; }}
  .p-OPEN {{ border-left-color: #d64545; }}
  .hide {{ display: none; }}
- /* 🔴 PRESS AND HOLD A SYMBOL LINK TO PEEK AT IT - his, 2026-10-11. Following
+ /* FLAG: PRESS AND HOLD A SYMBOL LINK TO PEEK AT IT - his, 2026-10-11. Following
     the link answers "what is that?" by throwing away where you were, which on a
     page whose whole point is cross-references is the wrong trade. */
  #peek {{ position: fixed; z-index: 20; max-width: 420px; pointer-events: none;
@@ -672,7 +672,7 @@ def cmd_html(args) -> int:
 // lives in the notes - searching "acorn" has to find ACORN_NUT_DEPTH and every
 // entry that talks about one.
 const syms=[...document.querySelectorAll('.sym')], q=document.getElementById('q');
-// 🔴 THE CHIPS SELECT, THEY DO NOT EXCLUDE - his, 2026-10-11, off how he
+// FLAG: THE CHIPS SELECT, THEY DO NOT EXCLUDE - his, 2026-10-11, off how he
 // actually uses the page: hide everything, then turn one back on. Subtractive
 // chips make that six clicks and this makes it one. An EMPTY selection means
 // show everything, so the same click that isolates a provenance also clears it.
@@ -755,7 +755,7 @@ spy();
 // Clicking a symbol - or landing on one from a link in a note - moves the index
 // with it, which a plain #anchor jump does not do.
 //
-// 🔴 AND IT CLEARS THE FILTERS IF THE TARGET IS HIDDEN. Isolate one provenance,
+// FLAG: AND IT CLEARS THE FILTERS IF THE TARGET IS HIDDEN. Isolate one provenance,
 // click a link in a note to something of another, and the jump lands on a card
 // with display:none - the page does not move and the link looks broken. The
 // filter is a view, the link is an intent, and the intent wins.
@@ -779,7 +779,7 @@ addEventListener('hashchange',land);
 if(location.hash)land();
 
 // --- press and hold a symbol link to peek ------------------------------
-// 🔴 FOLLOWING A LINK ANSWERS "WHAT IS THAT?" BY LOSING WHERE YOU WERE, and on
+// FLAG: FOLLOWING A LINK ANSWERS "WHAT IS THAT?" BY LOSING WHERE YOU WERE, and on
 // a page that is mostly cross-references that is the wrong trade - his, and he
 // is right. Mouse down shows the card, mouse up puts it away, and a plain click
 // still navigates for when that IS what you want.
@@ -807,7 +807,7 @@ function showPeek(id,x,y){{
 const hidePeek=()=>{{peek.hidden=true;}};
 addEventListener('pointerdown',e=>{{
   const a=symLink(e.target);
-  // 🔴 CTRL IS THE ONE THAT GOES THERE. A plain press peeks and the peek dies
+  // FLAG: CTRL IS THE ONE THAT GOES THERE. A plain press peeks and the peek dies
   // on release, leaving you exactly where you were - his, 2026-10-11. The first
   // cut navigated on release, which is the opposite of a peek.
   if(!a||e.ctrlKey||e.metaKey)return;

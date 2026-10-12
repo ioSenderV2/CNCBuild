@@ -119,7 +119,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The 3/8" question is closed - at 1/2"](machine/loads-and-plate-thicknesses.md#the-38-question-is-closed---at-12)
   - [Why the X end plates are different](machine/loads-and-plate-thicknesses.md#why-the-x-end-plates-are-different)
 - [The measurement that would settle the 1/4" question](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question)
-  - [Open: the X carriage plate goes to 5/8" if the stiffness test says it is the compliance](machine/loads-and-plate-thicknesses.md#open-the-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance)
+  - [Openthe X carriage plate goes to 5/8" if the stiffness test says it is the compliance](machine/loads-and-plate-thicknesses.md#openthe-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance)
 
 ## [machine/machining.md](machine/machining.md)
 
@@ -182,7 +182,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [What the constraint actually is: whip, then the torque curve](machine/stepper-sizing.md#what-the-constraint-actually-is-whip-then-the-torque-curve)
 - [Why not 1.5 N·m](machine/stepper-sizing.md#why-not-15-nm)
 - [Why not 3.2 N·m](machine/stepper-sizing.md#why-not-32-nm)
-- [Open — the torque curve at 48 V](machine/stepper-sizing.md#open-the-torque-curve-at-48-v)
+- [Openthe torque curve at 48 V](machine/stepper-sizing.md#openthe-torque-curve-at-48-v)
 - [What would change the answer](machine/stepper-sizing.md#what-would-change-the-answer)
 
 ## [machine/three-point-mount.md](machine/three-point-mount.md)
@@ -197,7 +197,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The shim stock on hand, and what each step is worth](machine/tramming.md#the-shim-stock-on-hand-and-what-each-step-is-worth)
   - [Two practical points](machine/tramming.md#two-practical-points)
 - [The X end plates no longer need anything built in for roll](machine/tramming.md#the-x-end-plates-no-longer-need-anything-built-in-for-roll)
-- [Open: nod](machine/tramming.md#open-nod)
+- [Opennod](machine/tramming.md#opennod)
 - [Decided: tram at assembly. No sub-plate.](machine/tramming.md#decided-tram-at-assembly-no-sub-plate)
 - [Doing the tilt](machine/tramming.md#doing-the-tilt)
 - [Never tram the two clamps against each other](machine/tramming.md#never-tram-the-two-clamps-against-each-other)
@@ -336,7 +336,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [AL fails open, so it is not a guard on its own](wiring/breakout-box.md#al-fails-open-so-it-is-not-a-guard-on-its-own)
   - [Do not daisy-chain the 48 V](wiring/breakout-box.md#do-not-daisy-chain-the-48-v)
   - [Note on the five AL pins](wiring/breakout-box.md#note-on-the-five-al-pins)
-- [Open](wiring/breakout-box.md#open)
+- [Open items](wiring/breakout-box.md#open-items)
 
 ## [wiring/db37-axis-interconnect.md](wiring/db37-axis-interconnect.md)
 
@@ -352,7 +352,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The cable](wiring/db37-axis-interconnect.md#the-cable)
 - [The two cables that run beside it](wiring/db37-axis-interconnect.md#the-two-cables-that-run-beside-it)
 - [The connector no longer fails safe](wiring/db37-axis-interconnect.md#the-connector-no-longer-fails-safe)
-- [Open](wiring/db37-axis-interconnect.md#open)
+- [Open items](wiring/db37-axis-interconnect.md#open-items)
 
 ## [wiring/README.md](wiring/README.md)
 

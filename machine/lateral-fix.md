@@ -25,9 +25,9 @@ the riser as a cantilever over the ~185 mm between box top and beam underside:
 | **200 mm - chosen 2026-10-02** | **~9.2×** |
 | 12" | ~25× |
 
-📌 **At 1/2" the chosen figure is the full ~9.2×.** Stiffness scales linearly with thickness, and
+NOTE: **At 1/2" the chosen figure is the full ~9.2×.** Stiffness scales linearly with thickness, and
 as of 2026-10-02 the front plates are **1/2"**, the same as the as-built risers they are compared
 against. *(An earlier draft had them at 3/8" and derated this to ~9.5×; that no longer applies.)*
 
-⚠️ **Calculated, not measured.** Tapered cantilever, width varying linearly, load at the top, fixed
+OPEN: **Calculated, not measured.** Tapered cantilever, width varying linearly, load at the top, fixed
 base. The fixed-base assumption is doing real work - see the bolt note below.
