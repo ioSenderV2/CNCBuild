@@ -50,6 +50,8 @@ function el(cls, data, id) {
                                        height: 20 }; },
     getAttribute(n) { return this._attrs ? this._attrs[n] : undefined; },
     closest(sel) { return sel === 'section' ? this.parentElement : null; },
+    scrollIntoView() { this._scrolled = true; },
+    offsetWidth: 0,
     addEventListener(t, fn) { (this._h = this._h || {})[t] = fn; },
   };
 }
@@ -191,6 +193,23 @@ ok('it is the last one passed', marked()[0], '#' + sections[5].id);
 location.hash = '#' + cards[cards.length - 1].id;
 winHandlers.hashchange();
 ok('jumping to a symbol marks its section', marked().length, 1);
+ok('and flashes the card it landed on',
+   cards[cards.length - 1].has('flash'), true);
+
+// 🔴 A LINK TO SOMETHING FILTERED OUT. Isolate one provenance, then follow a
+// link to a symbol of another - the jump used to land on a display:none card
+// and nothing moved at all.
+const pA = chips[0].dataset.prov;
+const other = cards.find(c => c.dataset.prov !== pA);
+chips[0]._h.click();
+ok('target is hidden while a chip is lit', other.has('hide'), true);
+location.hash = '#' + other.id;
+winHandlers.hashchange();
+ok('following the link clears the filter', other.has('hide'), false);
+ok('and scrolls to it', other._scrolled, true);
+ok('and the chip goes out', chips[0].has('on'), false);
+ok('and everything is back', shown(), cards.length);
+ok('and it flashes', other.has('flash'), true);
 
 console.log(JSON.stringify(out));
 """

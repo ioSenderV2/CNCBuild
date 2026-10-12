@@ -493,8 +493,19 @@ def cmd_html(args) -> int:
    color: #5b646d; margin: 0 0 8px; padding-bottom: 4px;
    border-bottom: 1px solid #dfe4e8; }}
  .sym {{ background: #fff; border: 1px solid #e1e6ea; border-left: 4px solid #c3cbd2;
-   border-radius: 6px; padding: 8px 12px; margin: 0 0 8px; }}
+   border-radius: 6px; padding: 8px 12px; margin: 0 0 8px;
+   /* 🔴 THE HEADER IS STICKY, so an anchor jump lands the card UNDERNEATH it
+      and it looks like the link did nothing. This is the room it needs. */
+   scroll-margin-top: 104px; }}
+ section {{ scroll-margin-top: 104px; }}
  .sym:target {{ border-color: #d99; box-shadow: 0 0 0 3px #f6dede; }}
+ /* A jump inside the same screenful moves nothing, so the landing is what has
+    to be visible rather than the scroll. */
+ .sym.flash {{ animation: flash 1.1s ease-out; }}
+ @keyframes flash {{
+   from {{ background: #fdf0c8; box-shadow: 0 0 0 4px #f5d98a; }}
+   to {{ background: #fff; box-shadow: 0 0 0 4px #fff0; }}
+ }}
  .hd {{ display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }}
  .name {{ font-weight: 700; font-family: Consolas, ui-monospace, monospace;
    color: #11181f; text-decoration: none; }}
@@ -521,6 +532,10 @@ def cmd_html(args) -> int:
    body {{ color: #dfe4e8; background: #16191c; }}
    header {{ background: #1c2024f2; border-color: #2c3237; }}
    .sym {{ background: #1c2024; border-color: #2c3237; }}
+   @keyframes flash {{
+     from {{ background: #3d3621; box-shadow: 0 0 0 4px #6b5b22; }}
+     to {{ background: #1c2024; box-shadow: 0 0 0 4px #1c20240; }}
+   }}
    nav a {{ color: #c3cbd2; }} nav a:hover {{ background: #252a2f; }}
    nav a.cur {{ background: #1d3450; color: #cfe4fb; }}
    .name {{ color: #eaeef2; }} .val {{ color: #5fd3a3; }}
@@ -622,11 +637,29 @@ spy();
 
 // Clicking a symbol - or landing on one from a link in a note - moves the index
 // with it, which a plain #anchor jump does not do.
-addEventListener('hashchange',()=>{{
-  const el=document.getElementById(location.hash.slice(1));
-  const sec=el&&el.closest('section');
+//
+// 🔴 AND IT CLEARS THE FILTERS IF THE TARGET IS HIDDEN. Isolate one provenance,
+// click a link in a note to something of another, and the jump lands on a card
+// with display:none - the page does not move and the link looks broken. The
+// filter is a view, the link is an intent, and the intent wins.
+function land(){{
+  const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  if(!el||!el.classList.contains('sym'))return;
+  if(el.classList.contains('hide')){{
+    only.clear(); q.value='';
+    for(const o of document.querySelectorAll('.chip[data-prov]'))
+      o.classList.remove('on');
+    apply();
+    el.scrollIntoView();
+  }}
+  const sec=el.closest('section');
   if(sec)mark(sec.id);
-}});
+  el.classList.remove('flash');
+  void el.offsetWidth;            // restart the animation on a repeat click
+  el.classList.add('flash');
+}}
+addEventListener('hashchange',land);
+if(location.hash)land();
 </script>
 </body></html>
 """

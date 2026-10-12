@@ -73,7 +73,7 @@ source = "machine/gantry-beam-joint.md, measured table, confirmed 2026-10-01"
 [[dim]]
 sym = "RAIL_LOW_Z"
 expr = "RAIL_SLOT_INSET"
-note = "Lower rail centreline, from the beam's BOTTOM face. Beam-local, so it reads the same on X, Y1 and Y2."
+note = "Lower rail centreline, measured from the beam's BOTTOM face. Beam-local, so it reads the same on X, Y1 and Y2. ⚠ YES, IT IS A STRAIGHT COPY OF RAIL_SLOT_INSET and the two are both 15 - his question, 2026-10-11. The alias earns its place by naming a DIFFERENT THING that happens to share the value: RAIL_SLOT_INSET is how far a slot centre sits from the extrusion's outer face, and this is where the lower rail ends up measured from the beam's bottom. They coincide only because the bottom rail sits in the first slot up. ✅ ITS SIBLING IS WHY IT IS WORTH HAVING: RAIL_HIGH_Z is BEAM_H - RAIL_SLOT_INSET, and the pair then reads as two centrelines in one frame, so RAIL_PITCH is RAIL_HIGH_Z - RAIL_LOW_Z rather than a subtraction that mixes a beam height with a slot inset. 🔴 IT IS NOT FREE: if the bottom rail ever moves to another slot this has to stop being an alias, and the thing that would hide that is exactly how alike they look now."
 
 [[dim]]
 sym = "RAIL_HIGH_Z"
