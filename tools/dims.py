@@ -475,8 +475,10 @@ def cmd_html(args) -> int:
  .chip {{ font: inherit; font-size: 12.5px; padding: 4px 10px; margin-left: 6px;
    border: 1px solid #c3cbd2; border-radius: 999px; background: #fff;
    cursor: pointer; }}
- .chip.off {{ opacity: .4; }}
+ .chip.on {{ background: #2e7fae; border-color: #2e7fae; color: #fff; }}
+ .chip.on span {{ color: #d6e9f6; }}
  .chip span {{ color: #5b646d; }}
+ .hint {{ font-size: 11.5px; color: #6b747c; margin-top: 6px; }}
  .wrap {{ display: flex; align-items: flex-start; gap: 20px; padding: 16px; }}
  nav {{ position: sticky; top: 86px; flex: 0 0 240px; max-height: 80vh;
    overflow-y: auto; font-size: 12.5px; }}
@@ -534,6 +536,9 @@ def cmd_html(args) -> int:
   <input id="q" type="search" placeholder="filter by symbol or note&hellip;" autofocus>
   {chips}
   <span id="n" class="chip" style="cursor:default"></span>
+  <div class="hint">Chips show <b>only</b> what you pick &mdash; click one to
+    isolate it, click more to add, click again to drop. None picked shows
+    everything.</div>
 </header>
 <div class="wrap">
   <nav>{toc}</nav>
@@ -544,21 +549,25 @@ def cmd_html(args) -> int:
 // lives in the notes - searching "acorn" has to find ACORN_NUT_DEPTH and every
 // entry that talks about one.
 const syms=[...document.querySelectorAll('.sym')], q=document.getElementById('q');
-const off=new Set();
+// 🔴 THE CHIPS SELECT, THEY DO NOT EXCLUDE - his, 2026-10-11, off how he
+// actually uses the page: hide everything, then turn one back on. Subtractive
+// chips make that six clicks and this makes it one. An EMPTY selection means
+// show everything, so the same click that isolates a provenance also clears it.
+const only=new Set();
 function apply(){{
   const t=q.value.trim().toLowerCase();
   let n=0;
   for(const s of syms){{
     const hit=(!t||s.dataset.sym.includes(t)||s.dataset.note.includes(t))
-            && !off.has(s.dataset.prov);
+            && (only.size===0||only.has(s.dataset.prov));
     s.classList.toggle('hide',!hit);
     if(hit)n++;
   }}
   for(const sec of document.querySelectorAll('section'))
     sec.classList.toggle('hide',!sec.querySelector('.sym:not(.hide)'));
-  const hidden=[...off].sort();
+  const pick=[...only].sort();
   document.getElementById('n').textContent=
-    n+' shown'+(hidden.length?' · hiding '+hidden.join(', '):'');
+    n+' shown'+(pick.length?' · only '+pick.join(', '):'');
 }}
 q.addEventListener('input',apply);
 // addEventListener rather than .onclick, and the counter NAMES what is filtered
@@ -568,8 +577,9 @@ q.addEventListener('input',apply);
 for(const c of document.querySelectorAll('.chip[data-prov]')){{
   c.addEventListener('click',()=>{{
     const p=c.dataset.prov;
-    off.has(p)?off.delete(p):off.add(p);
-    c.classList.toggle('off',off.has(p));
+    only.has(p)?only.delete(p):only.add(p);
+    for(const o of document.querySelectorAll('.chip[data-prov]'))
+      o.classList.toggle('on',only.has(o.dataset.prov));
     apply();
   }});
 }}

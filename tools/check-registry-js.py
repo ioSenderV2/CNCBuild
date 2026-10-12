@@ -124,23 +124,32 @@ ok('counter set at load', nEl.textContent, cards.length + ' shown');
 const provs = [...new Set(cards.map(c => c.dataset.prov))].sort();
 ok('a chip for every provenance', chips.map(c => c.dataset.prov).sort(), provs);
 
+// THE CHIPS SELECT RATHER THAN EXCLUDE - one click isolates a provenance,
+// because that is how he uses the page.
 for (const c of chips) {
   const p = c.dataset.prov;
   const n = cards.filter(x => x.dataset.prov === p).length;
   c._h.click();
-  ok('clicking ' + p + ' hides its ' + n, shown(), cards.length - n);
-  ok('counter names ' + p, nEl.textContent.includes('hiding ' + p), true);
-  ok(p + ' chip marked off', c.has('off'), true);
+  ok('clicking ' + p + ' shows only its ' + n, shown(), n);
+  ok('and every one shown is ' + p,
+     cards.filter(x => !x.has('hide')).every(x => x.dataset.prov === p), true);
+  ok('counter says only ' + p, nEl.textContent.includes('only ' + p), true);
+  ok(p + ' chip lit', c.has('on'), true);
   c._h.click();
-  ok('clicking ' + p + ' again restores', shown(), cards.length);
+  ok('clicking ' + p + ' again shows everything', shown(), cards.length);
+  ok(p + ' chip unlit', c.has('on'), false);
 }
 
-// two at once
+// a second chip ADDS to the selection
 chips[0]._h.click(); chips[1]._h.click();
 const two = cards.filter(x => x.dataset.prov === chips[0].dataset.prov
                            || x.dataset.prov === chips[1].dataset.prov).length;
-ok('two chips stack', shown(), cards.length - two);
-chips[0]._h.click(); chips[1]._h.click();
+ok('two chips add up', shown(), two);
+chips[0]._h.click();
+ok('dropping one leaves the other',
+   shown(), cards.filter(x => x.dataset.prov === chips[1].dataset.prov).length);
+chips[1]._h.click();
+ok('dropping the last shows everything', shown(), cards.length);
 
 // the search box, on a name and on a note
 qEl.value = 'acorn_nut';
@@ -161,6 +170,17 @@ ok('and hides every section', sections.every(s => s.has('hide')), true);
 qEl.value = '';
 qEl._h.input();
 ok('clearing restores', shown(), cards.length);
+
+// search AND chip together, which is the pair that actually gets used
+chips[0]._h.click();
+qEl.value = 'a';
+qEl._h.input();
+const both = cards.filter(x => !x.has('hide'));
+ok('search and chip intersect',
+   both.every(x => x.dataset.prov === chips[0].dataset.prov
+                && (x.dataset.sym.includes('a') || x.dataset.note.includes('a'))),
+   true);
+chips[0]._h.click(); qEl.value = ''; qEl._h.input();
 
 // the index follows the page
 ok('a nav link for every section', navLinks.length, sections.length);

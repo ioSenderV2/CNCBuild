@@ -17,8 +17,10 @@
  .chip { font: inherit; font-size: 12.5px; padding: 4px 10px; margin-left: 6px;
    border: 1px solid #c3cbd2; border-radius: 999px; background: #fff;
    cursor: pointer; }
- .chip.off { opacity: .4; }
+ .chip.on { background: #2e7fae; border-color: #2e7fae; color: #fff; }
+ .chip.on span { color: #d6e9f6; }
  .chip span { color: #5b646d; }
+ .hint { font-size: 11.5px; color: #6b747c; margin-top: 6px; }
  .wrap { display: flex; align-items: flex-start; gap: 20px; padding: 16px; }
  nav { position: sticky; top: 86px; flex: 0 0 240px; max-height: 80vh;
    overflow-y: auto; font-size: 12.5px; }
@@ -76,6 +78,9 @@
   <input id="q" type="search" placeholder="filter by symbol or note&hellip;" autofocus>
   <button type="button" class="chip" data-prov="OPEN">OPEN <span>1</span></button><button type="button" class="chip" data-prov="derived">derived <span>285</span></button><button type="button" class="chip" data-prov="measured">measured <span>57</span></button><button type="button" class="chip" data-prov="nominal">nominal <span>32</span></button><button type="button" class="chip" data-prov="part">part <span>121</span></button><button type="button" class="chip" data-prov="vendor">vendor <span>19</span></button>
   <span id="n" class="chip" style="cursor:default"></span>
+  <div class="hint">Chips show <b>only</b> what you pick &mdash; click one to
+    isolate it, click more to add, click again to drop. None picked shows
+    everything.</div>
 </header>
 <div class="wrap">
   <nav><a href="#the-extrusion">the extrusion<span>3</span></a><a href="#linear-motion">linear motion<span>16</span></a><a href="#plate-thicknesses">plate thicknesses<span>9</span></a><a href="#x-end-plate">X end plate<span>8</span></a><a href="#the-y-ball-nut-chain">the Y ball nut chain<span>39</span></a><a href="#the-front-fin">the front fin<span>11</span></a><a href="#z-carriage">Z carriage<span>7</span></a><a href="#spindle">spindle<span>16</span></a><a href="#the-clamp-s-shape-his-2026-10-10">the clamp's shape, his 2026-10-10<span>17</span></a><a href="#the-shelf">the shelf<span>17</span></a><a href="#the-1210-73-rear-plate">the 1210.73 rear plate<span>14</span></a><a href="#the-bf12-tongue-sheet-2b">the BF12 tongue, Sheet 2b<span>13</span></a><a href="#the-torsion-box">the torsion box<span>7</span></a><a href="#sheet-2a-the-y-beam-top-in-the-end-plate-s-own-frame-and-what-hangs-off-it">Sheet 2a: the Y beam top in the end plate's own frame, and what hangs off it<span>4</span></a><a href="#sheet-2a-the-sixteen-bearing-block-holes">Sheet 2a: the sixteen bearing block holes<span>11</span></a><a href="#the-bf12-columns-which-three-sheets-share">the BF12 columns, which three sheets share<span>2</span></a><a href="#sheet-7-every-column-now-hung-off-the-two-extrusion-faces">Sheet 7: every column, now hung off the two extrusion faces<span>22</span></a><a href="#the-z-plate-ball-nut-standoff-measured-2026-10-08">the Z plate / ball nut standoff, measured 2026-10-08<span>4</span></a><a href="#the-z-carriage-bolt-stack-settled-2026-10-08">the Z carriage bolt stack, settled 2026-10-08<span>11</span></a><a href="#z-plate-to-ball-nut-added-2026-10-08-they-were-missing">Z plate to ball nut, added 2026-10-08 - they were MISSING<span>13</span></a><a href="#the-tool-for-the-3d-view-only">the tool, for the 3D view only<span>17</span></a><a href="#consistency-settled-2026-10-03">consistency, settled 2026-10-03<span>3</span></a><a href="#the-bolt-on-plates-settled-2026-10-03">the bolt-on plates, settled 2026-10-03<span>83</span></a><a href="#t-slot-bolt-lengths-2026-10-04">T-slot bolt lengths, 2026-10-04<span>12</span></a><a href="#the-ball-screws">the ball screws<span>15</span></a><a href="#bk12-the-casting-and-the-motors">BK12, the casting, and the motors<span>13</span></a><a href="#the-t-sections-bf12-and-the-casting-end">the T-sections, BF12 and the casting end<span>11</span></a><a href="#the-tongue-bolt-s-outboard-end">the tongue bolt's outboard end<span>117</span></a></nav>
@@ -86,21 +91,25 @@
 // lives in the notes - searching "acorn" has to find ACORN_NUT_DEPTH and every
 // entry that talks about one.
 const syms=[...document.querySelectorAll('.sym')], q=document.getElementById('q');
-const off=new Set();
+// 🔴 THE CHIPS SELECT, THEY DO NOT EXCLUDE - his, 2026-10-11, off how he
+// actually uses the page: hide everything, then turn one back on. Subtractive
+// chips make that six clicks and this makes it one. An EMPTY selection means
+// show everything, so the same click that isolates a provenance also clears it.
+const only=new Set();
 function apply(){
   const t=q.value.trim().toLowerCase();
   let n=0;
   for(const s of syms){
     const hit=(!t||s.dataset.sym.includes(t)||s.dataset.note.includes(t))
-            && !off.has(s.dataset.prov);
+            && (only.size===0||only.has(s.dataset.prov));
     s.classList.toggle('hide',!hit);
     if(hit)n++;
   }
   for(const sec of document.querySelectorAll('section'))
     sec.classList.toggle('hide',!sec.querySelector('.sym:not(.hide)'));
-  const hidden=[...off].sort();
+  const pick=[...only].sort();
   document.getElementById('n').textContent=
-    n+' shown'+(hidden.length?' · hiding '+hidden.join(', '):'');
+    n+' shown'+(pick.length?' · only '+pick.join(', '):'');
 }
 q.addEventListener('input',apply);
 // addEventListener rather than .onclick, and the counter NAMES what is filtered
@@ -110,8 +119,9 @@ q.addEventListener('input',apply);
 for(const c of document.querySelectorAll('.chip[data-prov]')){
   c.addEventListener('click',()=>{
     const p=c.dataset.prov;
-    off.has(p)?off.delete(p):off.add(p);
-    c.classList.toggle('off',off.has(p));
+    only.has(p)?only.delete(p):only.add(p);
+    for(const o of document.querySelectorAll('.chip[data-prov]'))
+      o.classList.toggle('on',only.has(o.dataset.prov));
     apply();
   });
 }
