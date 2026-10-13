@@ -85,11 +85,16 @@
   </tr>
 
   <tr>
-    <td><strong>SN04-N</strong></td>
+    <td><strong>SN04-N</strong><br>&rarr; <strong>SN04-N2</strong></td>
     <td>Handson Technology<br>(sold as Haldzemo)</td>
     <td>Inductive proximity sensor, 4&nbsp;mm, IP67 &mdash; the axis limit sensors.
-        <strong>NPN normally open, 6&ndash;36&nbsp;V, 300&nbsp;mA, 500&nbsp;Hz, 1.2&nbsp;m captive
-        cable.</strong> Page&nbsp;3 carries the terminal assignment (brown&nbsp;=&nbsp;+V,
+        <strong>6&ndash;36&nbsp;V, 300&nbsp;mA, 500&nbsp;Hz, 1.2&nbsp;m captive cable.</strong>
+        The datasheet covers the whole series &mdash; N (NPN&nbsp;NO) / N2 (NPN&nbsp;NC) /
+        P (PNP&nbsp;NO) / P2 (PNP&nbsp;NC) &mdash; so it is the page for both parts.
+        <strong>Fitted today: SN04-N, NPN normally open. Ordered 2026-10-12 and arriving
+        Wednesday 2026-10-14: SN04-N2, NPN normally closed</strong>, a drop-in that restores the
+        fail-closed limit sense &mdash; see <code>wiring/breakout-box.md</code>.
+        Page&nbsp;3 carries the terminal assignment (brown&nbsp;=&nbsp;+V,
         black&nbsp;=&nbsp;output, blue&nbsp;=&nbsp;0&nbsp;V) and page&nbsp;4 the NPN/PNP drawing that
         together prove the output is <em>open collector with no internal pull-up</em>.
         <span class="warn">Page&nbsp;3's Arduino circuit yields 4.8&nbsp;V and must not be copied

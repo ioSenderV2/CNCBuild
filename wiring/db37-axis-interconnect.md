@@ -123,21 +123,25 @@ It also means the 5 V return runs in parallel with the five DB37 GND pins. That 
 plausible gauges it puts the two ground nodes tens of millivolts apart, against an opto threshold of
 about 1.2 V. The ground arrangement that *does* matter is in [`breakout-box.md`](breakout-box.md).
 
-## OPEN: The connector no longer fails safe
+## The connector fails safe again once the NC sensors go in
 
-**This section previously claimed the opposite**, written while
-[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
-§3's **NC** decision was assumed to hold. The sensors actually fitted are **SN04-N: NPN, normally
-open** - see [`breakout-box.md`](breakout-box.md).
+SETTLED: **THE NC PART IS BOUGHT - SN04-N2, ordered 2026-10-12, arriving Wednesday 2026-10-14.**
+This section claimed the connector fails safe, then was corrected to claim it does not, and the
+purchase settles it in the original direction. The sensors fitted *today* are still **SN04-N: NPN,
+normally open** - see [`breakout-box.md`](breakout-box.md).
 
-With NC limits, pulling this connector opened every limit at once and faulted the machine, and
-concentrating five axes into one shell cost nothing. **With NO limits it does.** A DB37 that is
-unplugged, half-seated, or has a broken limit conductor reads *clear* on every axis at once, and the
-machine will drive into a stop.
+With NC limits, pulling this connector opens every limit at once and faults the machine, so
+concentrating five axes into one shell costs nothing. **With NO limits it costs a great deal.** A
+DB37 that is unplugged, half-seated, or has a broken limit conductor reads *clear* on every axis at
+once, and the machine will drive into a stop.
 
-Nothing about the pinout changes. What changes is that this connector is now a single point whose
-failure is **silent** - so it wants screw locks at both ends, and a homing cycle treated as the test
-that it is seated.
+Nothing about the pinout changes either way.
+
+FLAG: **BETWEEN NOW AND THE SWAP THIS CONNECTOR IS A SILENT SINGLE POINT OF FAILURE.** It wants
+screw locks at both ends regardless - that was never only about fail direction - and until the N2
+sensors are physically in, a homing cycle is **not** evidence the shell is seated: with NO limits a
+disconnected DB37 homes exactly like a connected one. After the swap it is evidence, which is the
+real gain here.
 
 ## Open items
 Not guessed. Each needs an answer off the bench before the box is built.

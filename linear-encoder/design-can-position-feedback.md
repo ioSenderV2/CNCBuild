@@ -427,14 +427,23 @@ A normally-closed switch is fail-closed: every way it can break is a way it stop
 encoder is fail-open - every way it breaks looks like "all is well, the axis is parked". That is the
 wrong direction to fail in for the one device whose job is preventing a crash.
 
-> **The sensors actually fitted are NO, recorded 2026-09-10.** They are **SN04-N** - NPN, normally
-> open - so the left-hand column of that table does not describe this machine. A broken wire, a dead
-> sensor or a pulled connector all read *clear*, and the machine drives on.
+> **The sensors fitted are NO, recorded 2026-09-10 - and the NC part is now bought.** The fitted
+> part is **SN04-N**, NPN normally open, so the left-hand column of that table does not describe
+> this machine *yet*: a broken wire, a dead sensor or a pulled connector all read *clear*, and the
+> machine drives on.
 >
-> **This does not change the conclusion of §3.** The switches still stay: the three reasons below
-> are each independently sufficient, and none of them is about fail direction. What it changes is
-> that the fail-closed argument above is currently an argument for a part that is not installed. The
-> drop-in NC variant is **SN04-N2** - same body, bracket, cable and wire colours.
+> **SN04-N2 ordered 2026-10-12, arriving Wednesday 2026-10-14** - his purchase. Same body, bracket,
+> cable and wire colours, NPN normally closed. That makes this table describe the machine again the
+> moment the four sensors are swapped, and the table is written for the part that is going in.
+>
+> **Until the swap is actually done, the NO column is the machine.** The sensors are mounted and
+> wired; nothing about this is finished by the box arriving. The commissioning check is a homing
+> cycle after the swap plus pulling one limit conductor and confirming the machine faults instead
+> of carrying on.
+>
+> **None of this ever changed the conclusion of §3.** The switches stay: the three reasons below are
+> each independently sufficient, and none of them is about fail direction. What the purchase changes
+> is that the fail-closed argument above stops being an argument for a part nobody owns.
 >
 > Consequences for the wiring are in [`../wiring/breakout-box.md`](../wiring/breakout-box.md); the
 > connector that inherited this property, and then lost it, is in

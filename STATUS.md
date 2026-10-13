@@ -218,6 +218,14 @@ the interface, not this file.
 - OPEN: [L108](commissioning/stiffness-test.md#the-subtraction---this-is-the-whole-point) — *Push 1 - fore-aft (Y). Do this one first. / The subtraction…*<br>Approximate, and knowingly so. Points on different parts rotate as well as translate, so the differences mix bending and rotation. This is good for finding which term dominates, which is the question being asked. It is not a modal analysis.
 - OPEN: [L219](commissioning/stiffness-test.md#then-what) — *The stiffness test: push the nose, find where it moves / Th…*<br>Whatever this test says, go back and correct the computed figures in ../machine/gantry-beam-joint.md. They are estimates with a crude beam model behind them, and a note that contradicts its own correction is worse than no note.
 
+## [wiring/breakout-box.md](wiring/breakout-box.md)  (1)
+
+- FLAG: [L122](wiring/breakout-box.md#the-fail-closed-conflict-is-resolved-by-buying-the-nc-part) — *The remote breakout box / The fail-closed conflict is resol…*<br>THE SWAP IS NOT DONE BY THE PARCEL ARRIVING, AND UNTIL IT IS THE MACHINE IS THE NO COLUMN. Four sensors have to come off, go back on and be re-tested. $5 inverts the sense in firmware so either part works and homing will look correct either way - which is exactly why the swap cannot be confirmed by homing alone. Pull one limit conductor and confirm the machine faults. That is the only check that tells the two parts apart, and it is a commissioning measurement, not a decision: it belongs in ../commissioning/ once taken.
+
+## [wiring/db37-axis-interconnect.md](wiring/db37-axis-interconnect.md)  (1)
+
+- FLAG: [L140](wiring/db37-axis-interconnect.md#the-connector-fails-safe-again-once-the-nc-sensors-go-in) — *The DB37 axis interconnect / The connector fails safe again…*<br>BETWEEN NOW AND THE SWAP THIS CONNECTOR IS A SILENT SINGLE POINT OF FAILURE. It wants screw locks at both ends regardless - that was never only about fail direction - and until the N2 sensors are physically in, a homing cycle is not evidence the shell is seated: with NO limits a disconnected DB37 homes exactly like a connected one. After the swap it is evidence, which is the real gain here.
+
 ---
 
-**159 open** across 28 files.
+**161 open** across 28 files.

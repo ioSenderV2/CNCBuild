@@ -58,13 +58,15 @@ is logic plus motor supply, not motor phases.
 
 **12 V, Limit, GND** - three-wire inductive proximity sensor, powered from the 12 V buck.
 
-The part is an **SN04-N** (Haldzemo, 4-pack). Datasheet in
+The part fitted is an **SN04-N** (Haldzemo, 4-pack). **SN04-N2, the NC variant, was ordered
+2026-10-12 and arrives Wednesday 2026-10-14** to replace it - see the fail-direction section below.
+Every row of this table except the output sense is common to both parts. Datasheet in
 [`../manufacturer-assets/`](../manufacturer-assets/) - read off the drawing, not the listing:
 
 | | |
 |---|---|
 | Supply | 6-36 V DC. **12 V is inside range** |
-| Output | **NPN, normally open.** Open collector - "switched negative" |
+| Output | **NPN.** Open collector - "switched negative". **Normally open as fitted; normally closed once the N2 parts go in** |
 | Max load | 300 mA |
 | Response frequency | **500 Hz** |
 | Detect range | 0-4 mm, non-shielded |
@@ -100,28 +102,33 @@ Each sensor ships with **1.2 m** of moulded-on lead. That is the axis end to som
 axis end - not to the breakout box. Every limit needs a junction near its sensor, and that junction
 is then in the drag chain's environment. Not yet designed.
 
-## OPEN: NPN-NO conflicts with the fail-closed argument
+## The fail-closed conflict is resolved by buying the NC part
 
-The sensors fitted are **normally open**. [`design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md)
-§3 settles the limit sense as **NC**, and the whole of its argument is fail direction:
+SETTLED: **SN04-N2 ORDERED 2026-10-12, ARRIVING WEDNESDAY 2026-10-14** - his purchase, and it closes
+the conflict that stood here. The sensors fitted today are **normally open**, while
+[`design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md) §3 settles the
+limit sense as **NC** on an argument that is entirely about fail direction:
 
-| | NPN-NC | NPN-NO (fitted) |
+| | NPN-NC (ordered) | NPN-NO (fitted today) |
 |---|---|---|
 | Broken signal wire | reads **triggered** - stops | reads clear - **drives on** |
 | Dead sensor / no 12 V | reads **triggered** - stops | reads clear - **drives on** |
 | Connector pulled | reads **triggered** - stops | reads clear - **drives on** |
 
-Recorded as fitted, not re-argued. `$5` inverts the sense in firmware so either part *works*; no
-setting recovers the fail direction. The consequence is written here so it is a known property of
-the machine rather than something discovered during a crash.
+The series runs N (NPN NO) / N2 (NPN NC) / P (PNP NO) / P2 (PNP NC), and the N2 is a drop-in: same
+body, same bracket, same captive cable, same wire colours. Swapping restores fail-closed and changes
+nothing else in this document - no pinout, no pull-up, no connector.
 
-**It also removes a property the DB37 was getting for free.** With NC limits, pulling the
-interconnect faulted the machine. With NO it does not.
+FLAG: **THE SWAP IS NOT DONE BY THE PARCEL ARRIVING, AND UNTIL IT IS THE MACHINE IS THE NO COLUMN.**
+Four sensors have to come off, go back on and be re-tested. `$5` inverts the sense in firmware so
+either part *works* and homing will look correct either way - which is exactly why the swap cannot
+be confirmed by homing alone. **Pull one limit conductor and confirm the machine faults.** That is
+the only check that tells the two parts apart, and it is a commissioning measurement, not a
+decision: it belongs in [`../commissioning/`](../commissioning/) once taken.
 
-**The drop-in NC part exists.** The same body, bracket, cable and wire colours are sold as
-**SN04-N2** - the series runs N (NPN NO) / N2 (NPN NC) / P (PNP NO) / P2 (PNP NC). Recorded so the
-option is known, not to reopen the choice: swapping restores fail-closed and changes nothing else
-in this document.
+**It also restores a property the DB37 was getting for free and then lost.** With NC limits, pulling
+the interconnect faults the machine; with NO it does not. See
+[`db37-axis-interconnect.md`](db37-axis-interconnect.md).
 
 ## Sensor response latency
 

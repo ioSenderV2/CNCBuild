@@ -330,7 +330,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Limit, 3P](wiring/breakout-box.md#limit-3p)
   - [Do not copy the datasheet's MCU circuit](wiring/breakout-box.md#do-not-copy-the-datasheets-mcu-circuit)
   - [The 1.2 m captive cable does not reach](wiring/breakout-box.md#the-12-m-captive-cable-does-not-reach)
-- [NPN-NO conflicts with the fail-closed argument](wiring/breakout-box.md#npn-no-conflicts-with-the-fail-closed-argument)
+- [The fail-closed conflict is resolved by buying the NC part](wiring/breakout-box.md#the-fail-closed-conflict-is-resolved-by-buying-the-nc-part)
 - [Sensor response latency](wiring/breakout-box.md#sensor-response-latency)
 - [The drives are HBT57C - and three things follow](wiring/breakout-box.md#the-drives-are-hbt57c---and-three-things-follow)
   - [AL has no pull-up today, which is why it has never asserted](wiring/breakout-box.md#al-has-no-pull-up-today-which-is-why-it-has-never-asserted)
@@ -352,7 +352,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Two Step/Limit adjacencies, known and accepted](wiring/db37-axis-interconnect.md#two-steplimit-adjacencies-known-and-accepted)
 - [The cable](wiring/db37-axis-interconnect.md#the-cable)
 - [The two cables that run beside it](wiring/db37-axis-interconnect.md#the-two-cables-that-run-beside-it)
-- [The connector no longer fails safe](wiring/db37-axis-interconnect.md#the-connector-no-longer-fails-safe)
+- [The connector fails safe again once the NC sensors go in](wiring/db37-axis-interconnect.md#the-connector-fails-safe-again-once-the-nc-sensors-go-in)
 - [Open items](wiring/db37-axis-interconnect.md#open-items)
 
 ## [wiring/README.md](wiring/README.md)
