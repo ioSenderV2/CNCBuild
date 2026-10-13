@@ -273,7 +273,44 @@ could be diagnosed by counting flashes; this one cannot, on the documentation av
 
 OPEN: **Ask the vendor for the missing section 11.** It is a named, numbered section of their own
 manual, which is a far easier thing to ask for than an explanation - and the alternative is diagnosing
-a stopped machine from one red LED.
+a stopped machine from one red LED. **Asked 2026-10-12; a real response is still outstanding.**
+
+### REJECTED: The flash codes an AI assistant produced for this question
+
+🔴 **DO NOT USE THESE, AND DO NOT RE-ASK AND BELIEVE THE ANSWER.** Asked for the missing section 11
+on 2026-10-12, Amazon's assistant returned a flash-code table. It is recorded here **so that the next
+person to ask the same question recognises the same answer and does not adopt it**, which is the only
+reason it is in the repo at all.
+
+**It disclaims itself.** Its own words: *"similar"* motors, *"comparable"* controllers, *"typical"*,
+*"most"*, and - decisively - *"I can't retrieve the complete Section 11 from your specific motor's
+manual."* It is a generic pattern, not this drive.
+
+**And it is not merely unsourced, it is contradicted by the one real table in this repo.** The
+HBT57C's codes were read off that drive's own manual, and the two disagree on every row they share:
+
+| Flashes | HBT57C, from its manual | The AI's generic table |
+|---|---|---|
+| 1 | **Over-current** | Overvoltage |
+| 2 | **Over-voltage** | Overcurrent |
+| 4 | — | Tracking error |
+| 7 | **Tracking error** | — |
+
+**So "most integrated closed-loop motors" demonstrably excludes the one family this build has real
+data for.** The first two rows are transposed and the tracking-error code moves from 7 to 4. If it
+were adopted, the most likely fault on this machine - tracking error, the only one the Mega V has
+ever thrown - would be read as a phase connection failure, and a genuine over-current would be read
+as over-voltage and chased toward regeneration and a brake resistor.
+
+FLAG: **THE DANGER IS THAT IT IS SHAPED EXACTLY LIKE THE MISSING SECTION.** It is a plausible table
+of the right form, arriving in answer to the right question, at the moment the real one is known to
+be absent. That is the shape of thing this repo's rules are about: a signal is not the event, and an
+answer is not a source.
+
+**The only real flash-code information this build will have until the vendor replies is what the LED
+is observed to do** - which is why
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md) records it while provoking a
+tracking fault on an uncoupled motor.
 
 ## Configuration - and a contradiction about whether it is even allowed
 

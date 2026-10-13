@@ -1,18 +1,29 @@
-# Stepper sizing — 2.2 N·m on all four axes
+# Stepper sizing — 2.2 N·m on the three working axes, 1.5 on Z
 
 | Axis | Motor |
 |---|---|
 | X | **2.2 N·m, NEMA 23** |
 | Y1 | **2.2 N·m, NEMA 23** |
 | Y2 | **2.2 N·m, NEMA 23** |
-| Z | **2.2 N·m, NEMA 23** |
+| **Z** | **1.5 N·m, NEMA 23** — his, 2026-10-12 |
+| **Spare** | **2.2 N·m** — covers X, Y1 and Y2 |
 
-**One motor type for the whole machine, so one spare covers every axis.** The candidates were
-1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 57 frame the cast stepper frames take —
-see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames themselves. The drives are
-**IG57** all-in-one closed-loop units on a **36 V** rail - see
+**The spare covers the three axes that do the work.** Four 2.2 were bought and three are fitted, so
+the fourth is on the shelf for the axes carrying the hours and the load. Z runs the 1.5, which is the
+lightest duty on the machine and the one least likely to need a spare. **This is a better
+arrangement than one spare covering all four**, which is what this file argued for until the Z motor
+was settled.
+
+The candidates were 1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 57 frame the cast
+stepper frames take — see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames
+themselves. The drives are **IG57** all-in-one closed-loop units on a **36 V** rail - see
 [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) - and that part of the machine is not reopened
 here.
+
+FLAG: **BOTH MOTORS MUST BE IG57.** The 1.5 on Z is an IG57, not one of the HBT57C spares. Those are
+the Mega V's family and their alarm asserts on **fault** where the IG57's asserts when **healthy** -
+and grblHAL's Teensy driver has a single combined motor-fault input, so one drive wired the opposite
+way disables the guard for the **whole machine**, not just its own axis.
 
 NOTE: **The part bought agrees with this file, which is worth saying plainly.** This document chose
 2.2 N·m before the drives were bought; the IG57 is 2.2 N·m. So the conclusion below needed no
@@ -131,18 +142,21 @@ chapter assumes. The conclusion that the axis is motor-limited rather than screw
 been recomputed. OPEN: **Do not quote a speed from this chapter as if it applied at 36 V.** The stall
 test below returns the one number that matters and it does not care what the rail is.
 
-## Why not 1.5 N·m
+## Why not 1.5 N·m — except on Z, where it is the motor
 
-Nothing in the analysis above rules it out: it clears the thrust envelope and the inertia by wide
-margins on every axis. It loses on two practical counts rather than an engineering one.
+SETTLED: **Z RUNS THE 1.5 - his decision, 2026-10-12.** X, Y1 and Y2 keep the 2.2. This section is
+kept because its reasoning is what the decision was taken against.
 
-1. **Z carries gravity continuously** as well as plunge force, and it is the one axis where a
+Nothing in the analysis above ever ruled the 1.5 out: it clears the thrust envelope and the inertia
+by wide margins on every axis. It lost on two practical counts rather than an engineering one, and
+**both of them failed on Z**:
+
+1. ~~**Z carries gravity continuously**~~ as well as plunge force, and it is the one axis where a
    derated holding torque is working all the time rather than only in a cut.
-2. **One motor type for four axes means one spare on the shelf.** Splitting the order to save on one
-   or two motors buys a second part number into the machine.
+2. ~~**One motor type for four axes means one spare on the shelf.**~~ Splitting the order to save on
+   one or two motors buys a second part number into the machine.
 
-OPEN: **BOTH OF THOSE REASONS ARE NOW CONTESTED, AND THE Z MOTOR IS AN OPEN QUESTION AS OF
-2026-10-12.** His question, and his evidence:
+**Why each failed:**
 
 - **On gravity:** the **Mega V runs 1.5 N·m on its Z and it has not been a problem** - his, and an
   operator's years of watching a machine outrank a concern written down here. The arithmetic agrees:
@@ -151,11 +165,19 @@ OPEN: **BOTH OF THOSE REASONS ARE NOW CONTESTED, AND THE Z MOTOR IS AN OPEN QUES
   **0.16** if the spindle and clamp block double the mass. Against 1.5 N·m that is not a derating
   worth the name.
 - **On the spare:** he has an **IG57 1.5 N·m**, same family as the four 2.2 - so the second part
-  number is already in the building, and fitting it to Z would leave a **spare 2.2 covering X, Y1 and
-  Y2**, the three axes that do the work. That is arguably a better spare than one covering all four,
-  because the fourth is the one least likely to need it.
+  number was already in the building, and fitting it to Z leaves a **spare 2.2 covering X, Y1 and
+  Y2**, the three axes that do the work. That is a better spare than one covering all four, because
+  the fourth is the one least likely to need it.
 
-**Not changed here pending his decision.**
+**What the 1.5 gives up, recorded because it is real:** 850 N of thrust at half rated torque against
+the 2.2's 1240 N, on a structural envelope of 500-1000 N - so on the heaviest plunge the design
+contemplates, the motor is nearer to being the limit than the structure is. And less torque through
+the speed band, which costs Z retract time.
+
+NOTE: **A CLOSED LOOP IS WHAT MAKES THAT ACCEPTABLE.** Under-torquing on these drives produces a
+**detected tracking fault**, not a silently mispositioned part - the machine stops and says so. The
+cost of being under-motored here is a stopped job, not a scrapped one, which is a different class of
+risk from the open-loop case this kind of decision is usually made in.
 
 ### The HBT spares are a limp-home, not a spare - and the difference is the alarm
 

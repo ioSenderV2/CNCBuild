@@ -163,14 +163,29 @@ Then try each in turn, watching the LED and the alarm output:
   controller**, so a reset does not reboot the Teensy mid-session. That is a cabinet change, cheap
   now and expensive once it is built.
 
-**Also record what the LED does.** The manual's section 11, Error Codes, is listed in its contents and
-missing from the document - so any pattern observed here is the only fault-code information this
-build has.
+## 7. Record what the LED does - it is the only fault-code source there is
 
-| | What the LED did |
-|---|---|
-| Healthy | |
-| Tracking fault | |
+The manual's section 11, Error Codes, is listed in its contents and **missing from the document**.
+The vendor has been asked for it and has not replied. **So whatever the LED is observed doing here is
+the fault-code information this build has**, and it is worth recording carefully rather than in
+passing.
+
+**Count the flashes and time the cycle.** Red and green separately, and note the gap - a code is
+usually a burst, a pause, then a repeat.
+
+| Condition | Green | Red | Flash count | Cycle |
+|---|---|---|---|---|
+| Powered, healthy | | | | |
+| Tracking fault, held shaft | | | | |
+| Supply below range | | | | |
+| Enable deasserted | | | | |
+
+🔴 **DO NOT FILL THIS FROM AN AI ANSWER OR A SIMILAR DRIVE'S MANUAL.** One generic table has already
+been offered for this and is recorded as rejected in
+[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md): it contradicts the one real flash-code table
+this repo holds on every row, transposing over-current and over-voltage and moving tracking error
+from 7 flashes to 4. **An observed blink is worth more than a plausible table**, and this is the
+session where observing it costs nothing.
 
 ---
 

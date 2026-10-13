@@ -29,7 +29,7 @@ Writing the reasoning into `assembly.md` is the failure this split exists to pre
 | [`egg-crate.md`](egg-crate.md) | Why the grid is **continuous both ways with half-depth notches** rather than ribs-plus-blocking, and the two meanings of "blocking" |
 | [`lateral-fix.md`](lateral-fix.md) | The lateral stiffness fix - **widening the riser in its own plane**, why width cubed beats a bolt-on outrigger |
 | [`spindle-and-mount.md`](spindle-and-mount.md) | The Ø80 2.2 kW water-cooled spindle, its body dimensions, and why not 3 kW |
-| [`stepper-sizing.md`](stepper-sizing.md) | **2.2 N·m NEMA 23 on all four axes**, and why neither 1.5 nor 3.2 - thrust is a non-term on a 5 mm lead, and the real ceiling is whip |
+| [`stepper-sizing.md`](stepper-sizing.md) | **2.2 N·m NEMA 23 on X, Y1 and Y2, 1.5 on Z**, and why not 3.2 - thrust is a non-term on a 5 mm lead, and the real ceiling is whip |
 | [`spoilboard.md`](spoilboard.md) | The spoilboard stack and **both ends of the Z envelope**: why a thinner stack loses cut depth, and why the X carriage does not move down |
 | [`assembly.md`](assembly.md) | The build sequence and its **ordering constraints** - the things that must happen before the top skin is glued, which no registry symbol can hold |
 | [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
@@ -63,7 +63,7 @@ options rather than define parts, so they cannot go stale against the registry.
 | Ball screws | **1605**. **Every axis drives through a cast stepper frame** — X, Y1, Y2 and Z — carrying motor face, bearing housing and coupler in one part, which is what retired the M5 standoffs. BF12 stays at each far end. Y ball nuts run **inverted**, on a tongue off the bottom of the carriage plate, so their bolts are reachable at assembly |
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
 | Y steppers | **At the FRONT of the machine** (2026-10-02) — one cast frame carries motor face, bearing housing and coupler |
-| Steppers | **2.2 N·m, NEMA 23, on X, Y1, Y2 and Z** — one type, so one spare covers every axis. Not 3.2: no thrust is needed and a higher-inductance motor in the same frame is worse above ~1200 rpm, which is where the rapids live. See [`stepper-sizing.md`](stepper-sizing.md) |
+| Steppers | **2.2 N·m, NEMA 23, on X, Y1 and Y2; 1.5 N·m on Z** — all IG57 all-in-one closed-loop, so the spare 2.2 covers the three axes that do the work. Not 3.2: no thrust is needed and a higher-inductance motor in the same frame is worse above ~1200 rpm, which is where the rapids live. See [`stepper-sizing.md`](stepper-sizing.md) |
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
