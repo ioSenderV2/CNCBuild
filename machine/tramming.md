@@ -101,7 +101,7 @@ holes *"decided before they are drilled"* - a live constraint on a plate about t
 mill. **With roll taken at the shelf, the bearing block holes go close-fit as normal** and the plate
 drawing is simpler, not more complex.
 
-## Opennod
+## OPEN: Nod
 
 Every face that produces nod points forward, and they all end up buried. Two candidates, in order:
 

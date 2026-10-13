@@ -37,20 +37,57 @@ From the manual's own tables, with the listing agreeing except where noted:
 | Control mode | **pulse + direction** |
 | Communication | **TTL over MicroUSB**, 9600 8N1 |
 
-FLAG: **THE WEIGHT IS STATED TWO WAYS AND THEY ARE NOT CLOSE.** The manual's table gives the 76P as
-**700 g**; the listing says **1.1 kg / 2.42 lb**. One of them is wrong by 400 g per motor and there
-are four of them. It matters to the Z carriage, which [`../commissioning/masses.md`](../commissioning/masses.md)
-records as weighed at 9 kg. **Put one on a scale** rather than picking a number.
+SETTLED: **THE MOTOR WEIGHS 1.1 kg - his scale, 2026-10-12, and THE MANUAL'S WEIGHT COLUMN IS
+WRONG.** The listing's 1.1 kg / 2.42 lb is right; the manual's table claims **700 g** for the 76P.
+
+FLAG: **IT IS THE WHOLE COLUMN, NOT ONE ROW.** He also weighed the **1.5 N·m at 724 g** against the
+manual's 460 g for the 56P. Two models, both heavy by roughly the same proportion, so this is a
+systematic error in that table rather than a typo in one cell. **Do not take any figure from the
+manual's weight column**, including for a model nobody has weighed.
+
+NOTE: **A useful cross-check from the parts he already owns.** A spare **HBT5756C at 1.5 N·m weighs
+736 g**, within about 1% of the TST57's 724 g at the same torque - two different vendors' NEMA 23
+integrated units landing in the same place, which is what makes the manual's 460 g the outlier rather
+than his scale.
+
+OPEN: **A spare HBT5776C at 2.0 N·m was given as "1.7" with the unit dropped**, and 1.7 kg against
+1.1 kg for a larger torque in the same frame does not sit easily with the other three readings.
+Recorded as given rather than converted. It is a Mega V spare and nothing here depends on it.
+
+**Four motors at 1.1 kg is 4.4 kg of the machine**, and the figure feeds the Z carriage weighed at
+9 kg in [`../commissioning/masses.md`](../commissioning/masses.md) - which was weighed with its motor
+on, so no correction is owed there.
 
 OPEN: **The 94 mm body and 21 mm shaft want checking against the cast stepper frames** before
 anything is bolted up - see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) for the
 frames. Nothing in [`../dimensions/`](../dimensions/) currently carries a motor length.
 
-## The supply voltage is the one real problem
+## The supply voltage - SETTLED at 36 V
 
-🔴 **THE PLANNED RAIL IS 48 V AND THE MANUAL'S LOWEST STATED MAXIMUM IS 48 V.** This is not a margin
-question that can be waved through, and it is the single thing on this page worth deciding before
-anything is powered.
+SETTLED: **THE RAIL IS 36 V - his decision, 2026-10-12.** That is the voltage the manual actually
+recommends, and it also means the Mega V's 48 V supply stays where it is rather than being dug out.
+Two reasons pointing the same way, one technical and one practical.
+
+**What that buys.** 36 V sits in the middle of every range the manual states rather than at the top
+of the lowest one, and it is comfortably clear of the over-voltage alarm above 50 V. Regeneration on
+decel of a 58 kg gantry now has roughly 14 V to climb through instead of 2 before anything alarms,
+which removes the failure mode entirely rather than managing it.
+
+FLAG: **IT COSTS TOP SPEED, AND THAT IS THE HONEST PRICE - but it may cost nothing reachable.** Corner
+speed scales with supply voltage, so a stepper's torque rolls off **earlier** at 36 V than at 48 V.
+[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) is written throughout against a 48 V
+rail, including its expectation that the 2.2 N·m beats a 3.2 above about 1200 rpm, and **those
+statements now carry an assumption that no longer holds.** OPEN: **Whether the rapid feed rate
+actually drops is a measurement, not an argument** - that file's own test is to command increasing
+rapids under real load, find the feed rate where the drive alarms, and back off 30%. Its working whip
+figure is 1510 rpm, which is a *screw* limit the motor may still clear at 36 V.
+
+The record of why this was a problem at 48 V is kept below, because the next person to find a cheap
+48 V supply will want to know why it was not taken.
+
+### The manual's own numbers, which is what settled it
+
+🔴 **AT 48 V THE RAIL WOULD HAVE SAT AT THE MANUAL'S LOWEST STATED MAXIMUM.**
 
 **The manual states the supply range five different ways:**
 
@@ -80,18 +117,15 @@ output must not exceed 50 V.
   that is a **different drive** rated 24-55 V. Its clean history is evidence about the HBT57C, not
   about this part.
 
-OPEN: **48 V, 36 V, or clamp - not decided, and it is his call.** 36 V is what the manual recommends
-and would need a supply that is not currently owned. 48 V is owned, is inside one of the five stated
-ranges and outside two of them, and would want the clamping §6.1 describes. The supply question in
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) - 600 W against 800 W - is now the
-*smaller* half of this decision.
+SETTLED: **So 36 V, and the 48 V option is closed.** It was never a comfortable 2 V - it was 2 V
+against a drive whose response to exceeding it is to stop mid-cut, on a manual that cannot state its
+own range consistently. **Do not reopen this for a 48 V supply that happens to be available**, which
+is the form the temptation will take.
 
-NOTE: **Lower voltage costs top speed, which is the honest trade.** Corner speed scales with supply
-voltage, so 36 V against 48 V gives up rapid feed rate at the high end. This machine's rapids are
-already set by ball-screw whip rather than by the motor - see the table in
-[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md), whose working figure is 1510 rpm -
-so the loss may cost nothing that is actually reachable. **That is the thing to check before
-assuming 48 V is needed.**
+OPEN: **The supply's rating at 36 V is not recorded.** The current budget follows from watts over
+volts and the volts have just changed, so
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md)'s 600-against-800 W question needs
+re-answering at the new rail rather than carried across.
 
 ## Inputs and outputs - what the manual settles
 
@@ -182,9 +216,31 @@ NOTE: **THE SOLID CONDUCTOR IS THE SIGNAL'S MINUS LEG, NOT A GROUND.** The manua
 differential, which is what that means: each pair is the two ends of an opto LED. Calling the minus
 leg a ground invites someone to tie the four together as a convenience.
 
-NOTE: **A pair per signal is the right cable for this part.** 300 kHz with a 2 µs minimum pulse width
-in a drag chain is exactly the case where loop area matters, and a twisted pair only helps if the
-return current flows in the other half of the pair.
+### SETTLED: The minus legs are independent - measured, and the seller was wrong
+
+**No continuity between any of the minus signals.** His meter, on the part, 2026-10-12.
+
+🔴 **THE SELLER SAID THEY WERE COMMONED INSIDE THE DRIVE, AND THEY ARE NOT.** That answer was written
+into this file as *a claim rather than a datum*, specifically so it would get checked. Checking it
+took under a minute and overturned it. The manual never stated it either way. **This is the reason a
+vendor's word does not go in as a fact** - the same vendor class answered the Mega V's enable-reset
+question both ways in a single message.
+
+**So the isolation is per signal, not per drive.** Each of PUL, DIR and EN is its own opto LED with
+its own anode and cathode, isolated from the others; AL is a separate isolated output whose minus leg
+is tied to none of them.
+
+FLAG: **THAT MAKES THE CAT 6 SCHEME EXACTLY RIGHT, AND NOT BY LUCK.** Current entering PU+ has
+**nowhere to leave except PU-** - there is no internal path to any other terminal - so each signal's
+return is *forced* into the other half of its own twisted pair. That is the entire mechanism by which
+a twisted pair rejects anything. A commoned drive would have let return current redistribute across
+the four solid conductors; an independent one cannot. 300 kHz with a 2 µs minimum pulse width in a
+drag chain is exactly the case where that matters.
+
+**Commoning the four minus legs at the CONTROLLER end does not break it**, because the separation
+that matters is at the drive end where there is no alternative path. That makes it a question of the
+cabinet's convenience rather than of signal integrity - see
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
 
 **18/2 is heavier than the manual asks for.** §7.1 recommends **AWG 20-24** for the supply
 connection; 18 AWG exceeds that, which is the right direction to err.

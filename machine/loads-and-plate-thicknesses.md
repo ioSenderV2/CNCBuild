@@ -129,7 +129,7 @@ OPEN: **It is not a single number.** One reading on the nose is a *total*, and a
 part of the stack is moving - which is the entire question. The procedure uses six indicator
 positions and subtracts.
 
-### Openthe X carriage plate goes to 5/8" if the stiffness test says it is the compliance
+### OPEN: The X carriage plate goes to 5/8" if the stiffness test says it is the compliance
 
 **Deferred on purpose 2026-10-02**, and recorded because "consider it in future if it is a problem"
 is the kind of intent that evaporates. The plate is **154 × 407 × 1/2"**, already cut and dyed, and

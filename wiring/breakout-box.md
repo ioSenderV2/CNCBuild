@@ -9,42 +9,48 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 
 | | |
 |---|---|
-| **48 V, 600 W** power supply | Motor power. 12.5 A across all axes |
+| **36 V** power supply | Motor power. SETTLED at 36 V 2026-10-12, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md). OPEN: the wattage is not recorded, so the current across all axes is not either |
 | **12 V, 3 A** buck | Limit sensors, and the relays in the controller box |
 | **5 V, 3 A** buck | The controller box's logic supply |
 | **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors |
 
-**The boxes share a common ground.** The 5 V and 12 V returns, the DB37 per-axis GNDs and the 48 V
-return are all one node - which is what makes a single GND per axis in the DB37 sufficient, and
-also what makes the next section matter.
+**The boxes share a common ground.** The 5 V and 12 V returns and the DB37 per-axis GNDs are one
+node, which is what makes a single GND per axis in the DB37 sufficient.
 
-## OPEN: Star the 48 V returns
+## Star the motor returns - the reason changed, the rule did not
 
-**The one wiring order that decides whether the signals are clean.**
+FLAG: **THE ORIGINAL REASON FOR THIS SECTION IS GONE, AND THE RULE SURVIVES ON A WEAKER ONE.** It was
+written when each axis's GND sat in the same 6-pin shell as its motor supply, so one conductor
+carried chopped motor current **and** served as the drive's opto reference. **Two measurements since
+have removed that:** the motor supply now runs on its own 18/2 shielded cable, and the drives' opto
+minus legs are **independent and isolated** - measured 2026-10-12, see
+[`ig57-drives.md`](ig57-drives.md). There is no longer a conductor doing both jobs.
 
-Each axis's GND sits in the same 6-pin shell as its 48 V, so that conductor carries motor return
-current - several amps, chopped by the drive - and it is *also* the reference the drive's optos are
-commoned to.
+**So what is left is the ordinary rule, and it still holds:**
 
-- **Right:** every stepper GND lands on the **PSU negative terminal directly**. Motor current never
-  crosses the signal reference.
-- **Wrong:** the stepper GNDs daisy-chain through the DB37 breakout board's ground terminals. Then
-  the IR drop from every axis's motor current appears as common mode on Step, Dir, AL and Limit.
+- **Right:** every drive's supply return lands on the **PSU negative terminal directly**.
+- **Wrong:** the returns daisy-chain from drive to drive, or through the breakout board's ground
+  terminals. Then each drive sees the IR drop of every drive downstream of it on its own supply.
 
-Same parts, same cost, same afternoon. Only the order the rings go onto the stud differs. Written
-down because the wrong version works fine on the bench with the motors idle.
+Same parts, same cost, same afternoon - only the order the rings go onto the stud differs. It is now
+about **supply quality at each drive** rather than about signal integrity, which matters because the
+drives alarm on both over- and under-voltage.
 
-For contrast, the controller's 5 V return *does* run in parallel with the five DB37 GND pins, and
-that is fine: at plausible gauges it puts the two ground nodes tens of millivolts apart, against an
-opto threshold of about 1.2 V. Not worth engineering around.
+NOTE: **The isolation is what demoted this from critical to ordinary**, and it is worth seeing why:
+with the opto minus legs independent, no amount of IR drop on a motor return appears as common mode
+on Step or Dir, because those signals do not reference it at all.
 
 ## Back panel - Molex Mini-Fit Jr, panel-mount female
 
 Two connectors per axis.
 
-### Stepper, 6P
+### SUPERSEDED: Stepper, 6P
 
-**AL, EN, Step, Dir, 48 V, GND** - on **18 AWG**, 6 conductor.
+FLAG: **THIS CONNECTOR IS NOT WHAT THE STEPPER RUN USES.** Kept for the open-loop note below, which is
+still worth having. The stepper run is now **Cat 6 for the four signal pairs plus 18/2 shielded for
+the motor supply** - see [`ig57-drives.md`](ig57-drives.md).
+
+**AL, EN, Step, Dir, motor supply, GND** - on **18 AWG**, 6 conductor.
 
 The steppers are **integrated closed-loop units**: the drive is at the motor, so what leaves the box
 is logic plus motor supply, not motor phases.
@@ -199,14 +205,17 @@ With this and the NC limit sensors on order, the two things that were failing si
 are both addressed - which is worth saying, because this page spent a long time recording that they
 were not.
 
-### Do not daisy-chain the 48 V
+### Do not daisy-chain the motor supply
 
-Each drive's 48 V runs from the PSU as its own leg, in parallel, never chained from one drive to the
-next. A chained rail makes both over- and under-voltage trips likelier at the far end, and the IG57's
-input range tops out at **50 V** against a 48 V rail - so there is less to give away here than there
-was on the drives this page used to describe.
+Each drive's supply runs from the PSU as its own leg, in parallel, never chained from one drive to
+the next. A chained rail makes both over- and under-voltage trips likelier at the far end.
 
-So the star rule above is **not only about the returns**: the 48 V positive is a per-drive leg too.
+NOTE: **At 36 V the under-voltage end is the one to watch, not the over-voltage end.** The manual
+warns that below 24 V the drive can alarm on an unstable supply and suggests a bulk capacitor at the
+input. A 36 V rail has plenty of room above and a chained return eats into the room below, so the
+per-drive leg is still the right build - the reason has just swapped ends.
+
+So the star rule above is **not only about the returns**: the supply positive is a per-drive leg too.
 Never verified against how the machine is actually wired today.
 
 ## Open items
@@ -215,20 +224,19 @@ Never verified against how the machine is actually wired today.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V
    direct, or 5 V if its inputs are buffered. The breakout box has 5 V but not 3.3 V, so this also
    decides whether the resistor sits in the breakout box or at the controller.
-3. 🔴 **THE RAIL VOLTAGE IS THE BIGGEST OPEN ITEM ON THIS PAGE.** The TST57 manual recommends
-   **36 V**, states the supply range five different ways with a lowest maximum of **48 V**, and puts
-   the **over-voltage alarm above 50 V** with clamping advised near it. A 48 V rail therefore sits at
-   the top of the lowest stated range with about **2 V** for regeneration on decel, and the drive's
-   response to exceeding it is to alarm and stop mid-job. The Mega V's clean regen history is about a
-   **different drive** rated to 55 V and does not transfer. Not decided - see
-   [`ig57-drives.md`](ig57-drives.md), where the five statements are set out.
-4. **Peak current per axis.** The IG57 is rated **5 A**; the drag-chain run length is unrecorded, so
-   the drop is uncomputed. The 48 V now runs on **18/2 shielded** rather than in a six-way shell.
-5. **Confirm the opto commoning with a meter, not with the seller.** The manual calls the inputs
-   optically isolated and **differential**, and the seller says the four minus legs are commoned
-   inside the drive. The manual does not say either way, so the commoning is still **a claim rather
-   than a datum**, and it is the assumption the grounding scheme rests on. Continuity between PU- and
-   DR- at the drive's terminal block, powered off, settles it in under a minute.
+3. SETTLED: ~~**The rail voltage.**~~ **36 V, his decision 2026-10-12** - the TST57 manual's
+   recommended voltage, and it leaves the Mega V's 48 V supply where it is. At 48 V the rail would
+   have sat at the manual's lowest stated maximum with about 2 V for regeneration on decel against a
+   drive that alarms and stops mid-job. See [`ig57-drives.md`](ig57-drives.md). OPEN: **the supply's
+   wattage is not recorded**, so the current across all four axes is not either.
+4. **Peak current per axis.** The IG57 is rated **5 A** phase current; the drag-chain run length is
+   unrecorded, so the drop is uncomputed. The supply now runs on **18/2 shielded** rather than in a
+   six-way shell. NOTE: the manual says supply input current is **smaller** than phase current and
+   declines to give a figure, so this is a clamp-meter reading rather than arithmetic.
+5. SETTLED: ~~**Confirm the opto commoning.**~~ **MEASURED 2026-10-12: no continuity between any of
+   the minus signals, so they are INDEPENDENT** - and the seller, who said they were commoned, was
+   wrong. Per-signal isolation is real and the Cat 6 pairing gives each signal a forced return in its
+   own twist. See [`ig57-drives.md`](ig57-drives.md).
 6. **How a fault is cleared.** The manual does not say. It describes the alarm output and the LED and
    never states what clears an alarm condition - so whether a power cycle is required, or the enable
    input does it, is unestablished. It decides whether the cabinet needs the drives' supply

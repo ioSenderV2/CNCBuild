@@ -4,24 +4,26 @@ Where the power comes in, how many supplies there are, and the one grounding arr
 signal integrity of everything else depends on.
 
 This is the cabinet. [`breakout-box.md`](breakout-box.md) is the box out at the machine and carries
-the star rule for the **48 V returns** specifically; this file is the layer above it - mains, the
+the star rule for the **motor supply returns** specifically; this file is the layer above it - mains, the
 separate logic supply, and the single point every ground meets at.
 
 ## The motor supply is not settled
 
-OPEN: **600 W OR 800 W IS AN OPEN CHOICE, 2026-10-12 - his, asked directly.** Both supplies exist.
-The 48 V is not in question; the current budget is.
+SETTLED: **THE RAIL IS 36 V - his decision, 2026-10-12.** It is the voltage the TST57 manual
+recommends, and it leaves the Mega V's 48 V supply in the Mega V instead of being dug out. The
+reasoning is in [`ig57-drives.md`](ig57-drives.md); the short version is that 48 V would have sat at
+the manual's lowest stated maximum with about 2 V of regeneration headroom.
 
-| Supply | At 48 V | Note |
-|---|---|---|
-| **48 V 600 W** | **12.5 A** | What the repo has been working to |
-| **48 V 800 W** | **16.7 A** | The Mega V's, swapped across when it is sold |
+OPEN: **WHICH SUPPLY, AND AT WHAT RATING.** The 600-against-800 W question was asked and answered
+"not decided" earlier the same day, **at 48 V** - and the volts have since changed, so the arithmetic
+has to be redone rather than carried across. Watts over volts is the whole calculation, and at 36 V
+the same wattage buys **more** current than it did at 48 V, not less.
 
-FLAG: **THIS IS THE ANSWER TO AN OPEN QUESTION ELSEWHERE, WHICH IS WHY IT IS WORTH DECIDING RATHER
-THAN DRIFTING.** [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) carries a standing
-item that rated phase current across four motors may exceed the 12.5 A budget, and its stated
-resolution is that *either the supply or the motor has to move*. The 800 W supply moves the supply,
-and it is a swap of a part that is already owned rather than a purchase.
+FLAG: **THE 12.5 A BUDGET IN [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) IS A
+48 V FIGURE AND IS NOW STALE.** That file carries a standing item that rated phase current across
+four motors may exceed it, with the resolution that *either the supply or the motor has to move*.
+**The rail moved instead**, and it moved in the helpful direction - so that item wants re-reading
+against 36 V rather than answering as written.
 
 NOTE: **DO NOT BUDGET FOUR MOTORS AT 5 A EACH - the manual says so directly, and then declines to
 give a number.** §6.2 explains that the supply input current is **smaller** than the motor phase
@@ -31,9 +33,11 @@ winding drive, and that the input current also depends on speed and load. Its co
 against**, and the right one is not in the documentation - which makes this a measurement to take
 with a clamp meter once one axis runs, not an arithmetic problem.
 
-FLAG: **THE VOLTAGE DECISION COMES FIRST AND MAY MOOT THIS ONE.** If the rail moves to the manual's
-recommended 36 V, both the 600 W and 800 W figures buy different currents than they do at 48 V. See
-[`ig57-drives.md`](ig57-drives.md).
+NOTE: **The under-voltage end now matters more than the over-voltage end.** The manual warns that
+below 24 V the drive can alarm on an unstable supply and recommends a bulk capacitor at the input. A
+36 V rail is well clear of both ends, but the margin below is smaller than the margin above - which
+is the opposite of how this page read at 48 V, and it is why the no-daisy-chaining rule in
+[`breakout-box.md`](breakout-box.md) is still worth following.
 
 PROCEDURE: **Commission on the final voltage and the final supply.** Every acceleration limit and
 every threshold that gets tuned is a function of the rail. Tuning on one supply and then swapping
@@ -42,7 +46,7 @@ measured and which were inherited.
 
 ## Separate the logic supply from the motor rail
 
-Today the Teensy runs off the **48 V stepper rail** through a 5 V regulator. The **VUSB pad is cut**,
+On the **Mega V** the Teensy runs off its **48 V stepper rail** through a 5 V regulator. The **VUSB pad is cut**,
 so there is no back-feed - that part is already right and should not be undone.
 
 For the new build: a **24 V supply of order 50 W for logic**, then **point-of-load regulation per
@@ -59,7 +63,7 @@ it: a probe is the one input where a false trigger costs a crash, and sharing a 
 that switches is how it gets one.
 
 FLAG: **CHECK THE 5 V REGULATOR'S ABSOLUTE MAXIMUM INPUT BEFORE TRUSTING ANY OF THIS, AND SIZE IT ON
-WHAT THE RAIL CAN REACH RATHER THAN ON 48 V.** The ceiling is whatever the drives tolerate before
+WHAT THE RAIL CAN REACH RATHER THAN ON ITS NOMINAL 36 V.** The ceiling is whatever the drives tolerate before
 they trip, and the TST57 manual puts the drives' **over-voltage alarm above 50 V** - see
 [`ig57-drives.md`](ig57-drives.md), where the rail voltage is now the largest open decision. A regulator
 chosen with no margin dies **taking the controller with it, mid-job**, which is the failure that
@@ -86,7 +90,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | PE in | from the supply cord |
 | Cabinet chassis | |
 | Machine frame | |
-| 48 V 0 V | |
+| Motor supply 0 V | the 36 V rail's return |
 | 24 V 0 V | |
 | VFD PE | **its own short heavy conductor** |
 | Cable shields | **one end only** |
@@ -94,7 +98,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal
 conductor is a ground that carries signal current - which is the same mistake as the daisy-chained
-48 V returns in [`breakout-box.md`](breakout-box.md), one level up.
+motor returns in [`breakout-box.md`](breakout-box.md), one level up.
 
 Shields at one end only is the rule that gets broken by instinct, because grounding both ends feels
 more thorough. It makes a loop.
@@ -120,7 +124,7 @@ spindle that was subsequently settled at Ø80 2.2 kW:
 | Load | Draw |
 |---|---|
 | 2.2 kW spindle | ~11 A |
-| 48 V PSU | ~4 A |
+| Motor PSU | ~4 A — **his figure, taken for the 48 V supply**; the mains draw follows the supply's wattage rather than its output voltage, so it moves only if the wattage does |
 | **Total** | **~15 A** against a **16 A** continuous limit |
 
 NOTE: **That margin is why the spindle decision and the circuit decision were the same decision.** A

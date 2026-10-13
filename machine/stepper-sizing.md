@@ -10,7 +10,7 @@
 **One motor type for the whole machine, so one spare covers every axis.** The candidates were
 1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 57 frame the cast stepper frames take —
 see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames themselves. The drives are
-**IG57** all-in-one closed-loop units on a 48 V rail - see
+**IG57** all-in-one closed-loop units on a **36 V** rail - see
 [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) - and that part of the machine is not reopened
 here.
 
@@ -36,7 +36,7 @@ the smaller motor is the better one.
 | Bearing-to-bearing span | **930 mm** | **measured** on the built Y beams |
 | Motor frame | **NEMA 23**, all four axes | given |
 | Drive | **IG57**, **24–50 V DC**, **5 A** | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) — OPEN: off a retail listing, no manual committed |
-| Supply | **48 V, 600 W — 12.5 A across all axes** | [`../wiring/breakout-box.md`](../wiring/breakout-box.md) |
+| Supply | **36 V** — SETTLED 2026-10-12, the manual's recommended voltage. OPEN: wattage not recorded, so the current across all axes is not either | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) |
 | Screw efficiency | **0.9 assumed** | OPEN: not from a sheet — a conventional ball-screw figure |
 | Screw root diameter | **13.5 mm assumed** | OPEN: the sheet gives only the 16 mm major — see below |
 
@@ -123,6 +123,14 @@ recompute** — not the motor choice.
 at or below the whip ceiling. **The axis is motor-limited, not screw-limited** — which is precisely
 the regime where the candidates differ.
 
+🔴 **THE RAIL IS 36 V NOW, NOT 48, AND THIS PARAGRAPH IS THE ONE MOST AFFECTED.** Settled 2026-10-12 -
+see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). Corner speed scales with supply voltage,
+so torque rolls off **earlier** at 36 V and the motor-limited regime starts **lower** than this
+chapter assumes. The conclusion that the axis is motor-limited rather than screw-limited is therefore
+**more** true, not less - but every rpm figure below was written against 48 V and none of them has
+been recomputed. OPEN: **Do not quote a speed from this chapter as if it applied at 36 V.** The stall
+test below returns the one number that matters and it does not care what the rail is.
+
 ## Why not 1.5 N·m
 
 Nothing in the analysis above rules it out: it clears the thrust envelope and the inertia by wide
@@ -133,6 +141,39 @@ margins on every axis. It loses on two practical counts rather than an engineeri
 2. **One motor type for four axes means one spare on the shelf.** Splitting the order to save on one
    or two motors buys a second part number into the machine.
 
+OPEN: **BOTH OF THOSE REASONS ARE NOW CONTESTED, AND THE Z MOTOR IS AN OPEN QUESTION AS OF
+2026-10-12.** His question, and his evidence:
+
+- **On gravity:** the **Mega V runs 1.5 N·m on its Z and it has not been a problem** - his, and an
+  operator's years of watching a machine outrank a concern written down here. The arithmetic agrees:
+  the Z carriage weighed **9 kg** in [`../commissioning/masses.md`](../commissioning/masses.md), which
+  through a 5 mm lead at the 0.9 efficiency assumed above needs about **0.08 N·m** to hold, or about
+  **0.16** if the spindle and clamp block double the mass. Against 1.5 N·m that is not a derating
+  worth the name.
+- **On the spare:** he has an **IG57 1.5 N·m**, same family as the four 2.2 - so the second part
+  number is already in the building, and fitting it to Z would leave a **spare 2.2 covering X, Y1 and
+  Y2**, the three axes that do the work. That is arguably a better spare than one covering all four,
+  because the fourth is the one least likely to need it.
+
+**Not changed here pending his decision.**
+
+### The HBT spares are a limp-home, not a spare - and the difference is the alarm
+
+He holds **three HBT57C spares: two at 2.0 N·m and one at 1.5 N·m** - his, 2026-10-12. They are the
+**Mega V's** family. Worth being exact about what they are and are not for this machine:
+
+- **As a motor they would turn a screw.** Same NEMA 23 frame, and 36 V suits both families, so
+  nothing stops one being bolted on to finish a job if an IG57 fails.
+- 🔴 **As a drive they break the alarm guard, and not only for their own axis.** The HBT57C's alarm
+  asserts **on fault**; the IG57's asserts when **healthy**. grblHAL's Teensy driver implements a
+  **single combined** motor-fault input, so the four alarms are one chain - and one drive wired the
+  opposite way does not degrade that axis, it **disables the guard for the whole machine**. See
+  [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md).
+
+**So they are a limp-home with a known cost**: fit one, accept that motor-fault detection is off
+until it comes out, and know that rather than discover it. They do **not** remove the case for an
+IG57 spare, which is what the paragraph above is actually about.
+
 ## Why not 3.2 N·m
 
 It is mechanically available — all four frames are NEMA 23 and the 3.2 comes in that frame — so this
@@ -141,7 +182,8 @@ is a choice, not a constraint.
 1. **No thrust is needed.** It buys 1130 N of stall thrust over the 2.2 in a machine whose envelope
    is 1000 N, against a screw whose static rating neither motor approaches.
 2. **It is worse where the machine runs.** A higher-torque motor in the same frame carries more
-   inductance, which rolls the torque curve off earlier. Above roughly 1200 rpm on a 48 V rail the
+   inductance, which rolls the torque curve off earlier. Above roughly 1200 rpm on a 48 V rail — the
+   rail this was written for, now 36 V, so the crossover sits lower — the
    2.2 is expected to deliver **more** torque than the 3.2, and 1200 rpm is inside the band this
    machine's rapids live in. OPEN: **Expected, from the shape of the curves — not measured.** This is
    the one claim in this chapter that a torque curve could overturn, and it is the claim the
@@ -150,14 +192,19 @@ is a choice, not a constraint.
    [`archive/x-gantry-end-plates.md`](archive/x-gantry-end-plates.md) and [`archive/y-beam-support.md`](archive/y-beam-support.md)
    accept the stepper-and-casting cantilever on the figure *"roughly 2.5 kg at that reach is under
    2 N·m"*. A 3.2 is a longer, heavier motor than that figure assumes. The 2.2 sits inside it.
-4. **The current budget is 12.5 A for all four axes.** OPEN: Rated phase current per motor is not in
-   this repo for any of the three candidates; it wants the motor datasheet before an order, and it
-   is the one place where the larger motor could fail outright rather than merely fail to help.
+4. ~~**The current budget is 12.5 A for all four axes.**~~ OPEN: **That was a 48 V figure and the
+   rail is now 36 V, so it is stale.** The phase current is also no longer unknown - the IG57 is
+   **5 A** - but the manual says the *supply* input current is smaller than the phase current and
+   declines to give a figure, so four motors is not 20 A either. The budget now wants the supply's
+   wattage, which is unrecorded, and a clamp meter once an axis runs.
 
-## Openthe torque curve at 48 V
+## OPEN: The torque curve at 36 V
 
 Everything above is settled except the figure that sets the **rapid feed rate in the firmware**: how
-much torque a 2.2 N·m IG57 actually has at 1200 and 1500 rpm on a 48 V rail.
+much torque a 2.2 N·m IG57 actually has at 1200 and 1500 rpm on a **36 V** rail. FLAG: **This heading
+read "Openthe torque curve at 48 V" until 2026-10-12** - a marker mangled when the emoji markers
+became words, which meant it was not being harvested into STATUS.md at all, and a voltage that has
+since changed.
 
 **Do not measure torque to get it.** A torque-speed curve needs a brake or a dynamometer, and the
 number it yields then has to be converted back into a feed rate through the same assumed efficiency
@@ -198,7 +245,7 @@ Stated plainly, because three of the figures above are assumptions rather than d
 |---|---|
 | **Ca / Coa are newtons, not kgf** | screw life drops by 9.6× and becomes a real term; recheck the 2490 N stall case |
 | **The 2.2 does not beat the 3.2 above 1200 rpm** on the actual curves | the "why not 3.2" argument loses its main leg and the choice is worth reopening |
-| **Rated phase current × 4 exceeds 12.5 A** | the supply or the motor has to move, whichever the budget favours |
+| **Four drives draw more than the supply can give at 36 V** | the supply has to move — the motor is bought, and the rail is settled at the manual's recommended voltage |
 | **Y travel is extended** | recompute whip — it goes as one over span squared, and 930 mm is the measured basis |
 
 **None of them is affected by the root diameter**, which is why it is left as an assumption.
