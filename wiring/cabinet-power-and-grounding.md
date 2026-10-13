@@ -54,12 +54,15 @@ chosen with no margin dies **taking the controller with it, mid-job**, which is 
 looks like a random crash and gets diagnosed as firmware. FLAG: **This paragraph said 55 V until
 2026-10-12**, from the Mega V's drives; do not reinstate that figure.
 
-OPEN: **WHETHER THE ISOLATION IS THERE TO LOSE.** On the Mega V's drives the step, dir and enable
-inputs were **optoisolated** and the alarm was an open-collector opto output - real galvanic
-isolation, free, already paid for in the drives. Four signals each with their own return on the Cat 6
-run is consistent with opto pairs here too, but it is **not confirmed for the IG57**. If it is there,
-it is lost by any of three ordinary-looking decisions: a **shared rail** between logic and motor
-supply, a **merged ground bus**, or a **USB
+FLAG: **THE ISOLATION IS THERE, AND IT IS EASY TO SHORT OUT BY ACCIDENT.** The IG57 brings its control
+signals out as plus/minus pairs - PU+/PU-, DR+/DR-, EN+/EN-, AL+/AL- - which is an opto input
+presented at its two ends, so the galvanic isolation is real. The four minus legs are commoned inside
+the drive on the seller's word, so it is **one isolated common per drive** rather than four isolated
+signals; the boundary that matters, between each drive and the controller, is the one that exists.
+See [`ig57-drives.md`](ig57-drives.md), where the meter check that confirms it is written down.
+
+It is free, already paid for in the drives, and lost by any of three ordinary-looking decisions: a
+**shared rail** between logic and motor supply, a **merged ground bus**, or a **USB
 cable to an earthed PC**.
 
 ## Grounds meet at one PE bus bar

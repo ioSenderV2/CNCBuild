@@ -83,37 +83,92 @@ The supply choice itself is in
 600-versus-800 W question. **The 5 A figure is per drive**; what four of them draw from the supply is
 not four times that, and is not established.
 
+## The terminals on the drive
+
+His, 2026-10-12. **Two separate terminal blocks**, and the separation is the drive's own, not a
+choice made in the cabinet:
+
+| Block | Carries | Sizing |
+|---|---|---|
+| **2P**, heavy | **48 V** | **size for 5 A** - his instruction |
+| small gauge | **5 control signal pairs** | signal-level only |
+
+**Four of the five signal pairs are used**: **PU+/PU-**, **DR+/DR-**, **EN+/EN-**, **AL+/AL-**, which
+are the first four. OPEN: **What the fifth pair is has not been recorded** - do not guess it from
+another vendor's pinout; it wants the documentation, and it is a spare input or output that may be
+worth having.
+
+FLAG: **THE 5 A IS THE NUMBER THE 48 V SIDE GETS SIZED TO - the terminal block, the conductor and the
+crimp.** It is the drive's rated current, and it is per drive. What four of them actually draw from
+the supply is not four times it and is not established - see
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) for the supply question.
+
 ## The cabling - Cat 6 for signals, 18/2 shielded for power
 
-His scheme, 2026-10-12. **One Cat 6 patch cable per stepper**, plus **18/2 shielded** carrying the
-48 V.
+**One Cat 6 patch cable per stepper**, plus **18/2 shielded** carrying the 48 V. The Cat 6's four
+twisted pairs land on the drive's four signal pairs, **plus on the striped conductor and minus on the
+solid**:
 
 | Cat 6 pair | Striped conductor | Solid conductor |
 |---|---|---|
-| 1 | **DR** - direction | its GND |
-| 2 | **PU** - pulse / step | its GND |
-| 3 | **EN** - enable | its GND |
-| 4 | **AL** - alarm out | its GND |
+| 1 | **PU+** - pulse / step | **PU-** |
+| 2 | **DR+** - direction | **DR-** |
+| 3 | **EN+** - enable | **EN-** |
+| 4 | **AL+** - alarm out | **AL-** |
 
-NOTE: **EACH SIGNAL GETS ITS OWN RETURN, IN ITS OWN TWISTED PAIR, AND THAT IS THE POINT OF THE
-SCHEME.** A twisted pair only does anything if the return current actually flows in the other half of
-that pair. Pairing each signal with its own ground is what makes a Cat 6 run appropriate for stepped
-pulses at up to 300 kHz over a drag chain - the loop area is tiny and the pair rejects common-mode.
+NOTE: **THE SOLID CONDUCTOR IS THE SIGNAL'S MINUS LEG, NOT A GROUND, and the distinction is worth
+keeping even though the wiring is identical either way.** A minus leg is one end of that signal's own
+circuit; a ground is a shared node. Calling it a ground invites someone to tie the four of them
+together as a convenience, and that is precisely the thing to decide deliberately rather than by
+habit.
 
-FLAG: **THIS SUPERSEDES THE SINGLE-GND-PER-AXIS SCHEME DESCRIBED IN
-[`breakout-box.md`](breakout-box.md).** That page argued that one GND per axis was sufficient because
-the boxes share a common ground, and its reasoning about opto commons was built on four minus-legs
-tied together at the connector. **Four separate returns is a different arrangement and a better one**,
-but it is not the one that page describes. OPEN: Where the four returns are commoned - at the drive,
-at the breakout board, or at the PSU negative - is the question the star rule on that page now has to
-be re-answered for.
+NOTE: **EACH SIGNAL TRAVELS AS A PAIR, WHICH IS WHAT MAKES CAT 6 THE RIGHT CABLE HERE.** A twisted
+pair only rejects anything if the return current actually flows in the other half of that pair. With
+plus and minus of one signal in one twist, the loop area is tiny - which is what 300 kHz of pulse
+train over a drag chain wants.
 
-OPEN: **Whether these inputs are optoisolated pairs, and what the AL output is.** The previous drives
-took PUL+/PUL-, DIR+/DIR-, EN+/EN- as opto pairs and gave AL as an open collector needing a pull-up -
-which is why AL had never once asserted on the old machine. **Four signals each with a dedicated GND
-is consistent with driving opto pairs**, but the AL direction is the one that matters most and it
-cannot be assumed: if it is an open collector it needs a pull-up, and if that pull-up is specified at
-24 V it must not go anywhere near a Teensy pin, which is 3.3 V and **not** 5 V tolerant.
+FLAG: **IT IS STILL NOT THE SIX-WIRE SHELL [`breakout-box.md`](breakout-box.md) DESCRIBES.** That page
+has one GND per axis in a 6-pin Mini-Fit Jr with the 48 V in the same shell; this is four pairs on
+Cat 6 with the 48 V on its own shielded cable. The **opto commoning** that page assumed turns out to
+be right - see below - but the connector, the conductor count and the power separation are all
+different.
+
+## The inputs are opto pairs - the remaining question is where the minus legs meet
+
+SETTLED: **THE PLUS/MINUS NAMING IS THE ANSWER TO WHETHER THESE ARE OPTOISOLATED INPUTS.** A drive
+that brings out PU+ and PU- as a pair is presenting the two ends of an opto LED, not a signal and a
+ground. So the galvanic isolation this folder keeps warning about is **real and is per signal**, and
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md)'s point stands: it is free, it is
+already paid for, and it is easy to short out by accident.
+
+**The four minus legs are commoned inside the drive - the seller says so, 2026-10-12.** That is
+ordinary common-cathode practice and is what [`breakout-box.md`](breakout-box.md) had assumed all
+along, so that page's opto reasoning was right about this drive even though it named the wrong one.
+
+FLAG: **SO THERE IS ONE ISOLATED COMMON PER DRIVE, NOT FOUR ISOLATED SIGNALS - and an earlier draft
+of this file said the opposite.** The isolation that matters is still there: it is between **each
+drive and the controller**, which is the boundary worth having. What is not there is per-signal
+isolation, because the four solid conductors land on the same node at the drive end.
+
+**It does not spoil the Cat 6 choice** - tight twists, one pair per signal and a short run are the
+right cable for a 300 kHz pulse train in a drag chain, and this is how common-cathode drives are
+normally wired. The thing to be clear-eyed about is that the four solid conductors are **in parallel
+between two nodes** once both ends are commoned, so return current redistributes across them rather
+than each one carrying only its own signal's return. The pair still helps; it just is not the clean
+per-signal loop the independent case would give.
+
+PROCEDURE: **Confirm it with a meter before the cabinet grounding is finalised - continuity between
+PU- and DR- at the drive's own terminal block, everything powered off.** Under a minute, and it is
+worth doing: this is the seller's word, which is the same class of source that
+answered the Mega V's enable-reset question **both ways in one message**. A seller's statement is a
+claim, not a datum, and this one decides a wiring scheme.
+
+OPEN: **AL is the one whose direction still matters most.** On the Mega V's drives the alarm was an
+open collector needing a pull-up, and having no pull-up is why it had never once asserted. If AL+/AL-
+here is also an open collector rather than an opto output, it needs a pull-up - and if the
+documentation specifies that pull-up at 24 V it **must not go anywhere near a Teensy pin**, which is
+3.3 V and **not** 5 V tolerant. Opto-isolate it or pull it to 3.3 V through a high value; see
+[`breakout-box.md`](breakout-box.md).
 
 **The 48 V on its own shielded pair, separate from the signals, is the right split** - it keeps the
 chopped motor current out of the Cat 6 entirely. Shield grounded **at one end only**; see

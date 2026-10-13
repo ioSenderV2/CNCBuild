@@ -147,17 +147,20 @@ MACHINE'S** - corrected by him on 2026-10-12. Four **IG57** all-in-one closed-lo
 [`ig57-drives.md`](ig57-drives.md); this section is only what the *cabinet* has to do about them.
 
 The drive is at the motor, so what leaves this box per axis is logic plus motor supply and never motor
-phases. **His cabling, 2026-10-12: one Cat 6 patch cable per stepper carrying DR, PU, EN and AL each
-on the striped conductor of its own pair with that signal's GND on the solid conductor, and 18/2
-shielded for the 48 V.**
+phases. **His cabling, 2026-10-12: one Cat 6 patch cable per stepper, each of PU, DR, EN and AL as a
+plus/minus pair in its own twist - plus on the striped conductor, minus on the solid - and 18/2
+shielded for the 48 V, sized for the drive's 5 A.** The drive presents these on two separate terminal
+blocks, a 2P for the 48 V and a small-gauge block of five signal pairs of which four are used.
 
-FLAG: **THAT REPLACES BOTH THE 6-PIN SHELL AND THE SINGLE-GND SCHEME DESCRIBED ON THIS PAGE.** Four
-signals with four dedicated returns is a different arrangement from one shared GND per axis - and a
-better one, because a twisted pair only rejects anything if the return runs in the other half of the
-pair. OPEN: **The star-ground argument above has to be re-answered for it.** Where the four returns
-are commoned - at the drive, at the breakout board, or on the PSU negative stud - is now the open
-question, and the reasoning in the star section still applies: motor current must not share a
-conductor with a signal reference.
+FLAG: **THAT REPLACES THE 6-PIN SHELL ON THIS PAGE, BUT THIS PAGE'S OPTO ASSUMPTION WAS RIGHT.** The
+four minus legs are commoned inside the drive - the seller's word, 2026-10-12 - which is the
+common-cathode arrangement the open items below had assumed. So **one isolated common per drive**,
+with the isolation sitting between each drive and the controller. What changes is the connector, the
+conductor count and that the 48 V no longer shares a shell with the signals.
+
+**The star rule above still applies and is now easier to honour**: the 48 V runs on its own shielded
+cable, so no signal reference shares a conductor with chopped motor current by construction. See
+[`ig57-drives.md`](ig57-drives.md).
 
 ### OPEN: Keep AL per axis in the cabling, whatever the firmware does today
 
@@ -208,12 +211,12 @@ Never verified against how the machine is actually wired today.
    supply question in [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
 4. **Peak current per axis.** The IG57 is rated **5 A**; the drag-chain run length is unrecorded, so
    the drop is uncomputed. The 48 V now runs on **18/2 shielded** rather than in a six-way shell.
-5. **Where the four signal returns are commoned.** Each of DR, PU, EN and AL has its own GND
-   conductor in its own Cat 6 pair, so the question is no longer "where do the minus legs tie" but
-   **where those four returns meet** - at the drive, at the breakout board, or on the PSU negative.
-   OPEN: Whether the IG57's inputs are opto pairs at all is unconfirmed; four dedicated returns are
-   consistent with it. **This is the assumption everything else here rests on.** Confirm against the
-   vendor documentation once it is committed.
+5. **Confirm the opto commoning with a meter, not with the seller.** The IG57's inputs are plus/minus
+   pairs, so they are opto inputs, and the seller says the four minus legs are commoned inside the
+   drive - which is what this page had assumed. **That makes it a claim rather than a datum, and it
+   is the assumption everything else here rests on.** Continuity between PU- and DR- at the drive's
+   terminal block, powered off, settles it in under a minute. Worth the minute: a vendor answered the
+   Mega V's equivalent question both ways in one message.
 6. **EN polarity and whether EN clears a fault.** Both were live questions on the Mega V's drives and
    neither answer transfers. An opto input where floating means no current can be described two
    opposite ways in one manual, so **measure, do not reason** - and establish separately whether a
