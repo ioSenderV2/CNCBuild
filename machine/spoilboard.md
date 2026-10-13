@@ -103,6 +103,16 @@ side**, and reaches back to 221.95, inside by **15.60**. OPEN: **The tool overru
 45.00** - and that is the aluminium's own edge, so the bed stops there too. Work needing that last
 45 mm sits on the tee track with no sacrificial layer under it.
 
+SETTLED: **The fore-aft travel is 829.4 in the model and 820 measured, and the 9.4 is not chased -
+his, 2026-10-13.** They are two different stops wearing one name. `CARRIAGE_TRAVEL` was measured on
+the rail with a bearing block at each end, its zerks against the end plates; the model's Y limits
+are **5 mm standoffs off parts** - the end plates' back edge off the rear plate at the back, and the
+**Z plate's front face** off the front fin at the front, which is what the envelope sweep found
+arrives first. 829.4 therefore sits between the measured 820 and `TRAVEL_RAIL_LIMITED`'s 845.82,
+which is where a plate-to-fin limit belongs. FLAG: **The Z plate only leads the X end plates by
+6.6**, so the margin being argued over is smaller than the thing that would stop the axis next.
+Nothing is bought by pursuing it and a wrong answer puts a plate into a fin.
+
 FLAG: **The setback also killed a clash the full-footprint board had.** Eight tongue bolt heads stand
 **4 mm proud of the bed's back edge** at z 21.35-38.65, which is straight through a lower sheet that
 runs to the back. The fix being considered was trimming 4 mm off that edge; 200 makes the question
