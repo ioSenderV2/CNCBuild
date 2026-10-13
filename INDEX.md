@@ -119,6 +119,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Plate and riser thicknesses](machine/loads-and-plate-thicknesses.md#plate-and-riser-thicknesses)
   - [The 3/8" question is closed - at 1/2"](machine/loads-and-plate-thicknesses.md#the-38-question-is-closed---at-12)
   - [Why the X end plates are different](machine/loads-and-plate-thicknesses.md#why-the-x-end-plates-are-different)
+  - [The weak-axis warning, stated here instead of cited](machine/loads-and-plate-thicknesses.md#the-weak-axis-warning-stated-here-instead-of-cited)
 - [The measurement that would settle the 1/4" question](machine/loads-and-plate-thicknesses.md#the-measurement-that-would-settle-the-14-question)
   - [Openthe X carriage plate goes to 5/8" if the stiffness test says it is the compliance](machine/loads-and-plate-thicknesses.md#openthe-x-carriage-plate-goes-to-58-if-the-stiffness-test-says-it-is-the-compliance)
 
@@ -189,6 +190,8 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/three-point-mount.md](machine/three-point-mount.md)
 
 - [The three load-bearing points](machine/three-point-mount.md#the-three-load-bearing-points)
+  - [Stiffen it against RACKING, which is not what it looks like](machine/three-point-mount.md#stiffen-it-against-racking-which-is-not-what-it-looks-like)
+- [It is one interface, and the risers are the other - do not conflate them](machine/three-point-mount.md#it-is-one-interface-and-the-risers-are-the-other---do-not-conflate-them)
 
 ## [machine/tramming.md](machine/tramming.md)
 

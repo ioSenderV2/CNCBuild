@@ -79,8 +79,38 @@ them for cost or machinability if you like; there is nothing to gain in weight.
 
 They carry the whole gantry into the Y carriage blocks, they take the full cutting moment as a
 couple, **they move**, and they get no full-height plate to lean on. The Y reasoning does not
-transfer. They are also the likeliest subject of the "riser plates far weaker along Y, gusset them"
-warning in the project notes.
+transfer. They are also the likeliest subject of the weak-axis warning in the next section.
+
+### The weak-axis warning, stated here instead of cited
+
+Folded in 2026-10-12 from the 2026-09-26 session notes, which this section used to point at. Written
+about the **Y risers**, which no longer exist - all four were scrapped on 2026-10-02 and the lateral
+fix went a different way, **widening the plate in its own plane** rather than bracing it, because
+width is cubed: see [`lateral-fix.md`](lateral-fix.md). The argument is kept because it still applies
+to **the X end plates above**, which did not get that treatment.
+
+A plate is **far stiffer in its own plane than across it, by the square of the width-to-thickness
+ratio** - for the 3" × 3/8" plate the warning was written about, a factor of **64**. So the plate's
+orientation decides which way the machine is soft, and nothing about the part looks different.
+
+OPEN: **THE WHOLE ARGUMENT RESTS ON AN ORIENTATION NOBODY HAS CONFIRMED.** It assumes the plate face
+bolts **flat to the beam end**, which puts the weak axis **along Y** - exactly where gantry
+acceleration reacts. **Turned the other way, the concern moves to a different axis and the fix changes
+with it.** This was never verified, and it is one look at the machine to settle.
+
+NOTE: **COMPUTED IN THAT SESSION, NOT MEASURED.** Roughly 100 N of acceleration reaction was put at
+about **0.15 mm of sway at the top of the plate, before any cutting load at all**. Comparative, like
+the rest of this file - it says the term is not negligible, not what the number is.
+
+FLAG: **AND THE ENCODERS CANNOT SEE IT.** The linear scales measure along each axis; a plate swaying
+across its weak axis moves the tool without moving the count. So this is not a term the position
+feedback in [`../linear-encoder/`](../linear-encoder/) will ever report, which is exactly why it has
+to be got right in metal.
+
+**If it is braced rather than widened, the rule is spacing and not count.** Moment capacity comes from
+**how far apart the bolts are**, so two M8 200 mm apart beat six clustered within 50 mm, and **a
+bracket on one or two bolts is a hinge, not a brace**. Brace the plate-to-beam corner too, where the
+moment arm is only the 120 mm beam depth.
 
 ---
 

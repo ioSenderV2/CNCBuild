@@ -375,6 +375,12 @@ Open, and worth settling before machining:
 - **Swarf.** The tape is an exposed magnet and collects ferrous debris, which reads as position noise or
   jams the gap. Wood and aluminium chips are harmless; steel is not. Prefer faces that point down or
   inward, and check whether the tape is available with a stainless cover strip.
+- OPEN: **WHICH WAY THE TAPE FACES ON X, Y1 AND Y2 IS NOT DECIDED - only Z is.** Z was confirmed
+  **vertical**, so debris falls off it. The other three are each a **metre** of exposed magnet, and
+  facing one of them upward is a metre of surface collecting dust for the life of the machine. The
+  rule above says prefer down or inward; this is the note that it has not actually been applied to
+  three of the four axes. Decide it before the tape is cut, because the tape is one-shot PSA and the
+  bracket design follows from the face.
 
 ## 2. Scope
 
