@@ -9,9 +9,17 @@
 
 **One motor type for the whole machine, so one spare covers every axis.** The candidates were
 1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 57 frame the cast stepper frames take —
-see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames themselves. The drives are TOSEASTARS
-HBT57C on a 48 V rail; that part of the machine is settled in
-[`../wiring/breakout-box.md`](../wiring/breakout-box.md) and is not reopened here.
+see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames themselves. The drives are
+**IG57** all-in-one closed-loop units on a 48 V rail - see
+[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) - and that part of the machine is not reopened
+here.
+
+NOTE: **The part bought agrees with this file, which is worth saying plainly.** This document chose
+2.2 N·m before the drives were bought; the IG57 is 2.2 N·m. So the conclusion below needed no
+revision when the drive was settled on 2026-10-12. FLAG: **This file previously named the HBT57C,
+which is the Mega V's drive and 3.2 N·m on X, Y1 and Y2** - corrected by him the same day. Where the
+reasoning below leans on a *drive* characteristic rather than a motor one, it is now carrying an
+assumption about a part this machine does not have.
 
 FLAG: **The size is not set by force, and the usual intuition is wrong on this machine.** A 5 mm lead
 gives so much mechanical advantage that all three candidates deliver several times the thrust the
@@ -27,7 +35,7 @@ the smaller motor is the better one.
 | Coa, static | **1790** | spec sheet — OPEN: units read as **kgf**, so 17 560 N |
 | Bearing-to-bearing span | **930 mm** | **measured** on the built Y beams |
 | Motor frame | **NEMA 23**, all four axes | given |
-| Drive | HBT57C, **24–55 V DC**, 36 V recommended | [`../wiring/breakout-box.md`](../wiring/breakout-box.md) |
+| Drive | **IG57**, **24–50 V DC**, **5 A** | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) — OPEN: off a retail listing, no manual committed |
 | Supply | **48 V, 600 W — 12.5 A across all axes** | [`../wiring/breakout-box.md`](../wiring/breakout-box.md) |
 | Screw efficiency | **0.9 assumed** | OPEN: not from a sheet — a conventional ball-screw figure |
 | Screw root diameter | **13.5 mm assumed** | OPEN: the sheet gives only the 16 mm major — see below |
@@ -149,7 +157,7 @@ is a choice, not a constraint.
 ## Openthe torque curve at 48 V
 
 Everything above is settled except the figure that sets the **rapid feed rate in the firmware**: how
-much torque a 2.2 N·m HBT57C-driven motor actually has at 1200 and 1500 rpm on a 48 V rail.
+much torque a 2.2 N·m IG57 actually has at 1200 and 1500 rpm on a 48 V rail.
 
 **Do not measure torque to get it.** A torque-speed curve needs a brake or a dynamometer, and the
 number it yields then has to be converted back into a feed rate through the same assumed efficiency
@@ -157,8 +165,10 @@ that already appears twice above. **Measure the feed rate directly instead** —
 the firmware wants, and the stall point is a sharper reading than any torque figure derived from it.
 
 **The test, once the axis runs:** command increasing rapid moves with the axis under its real load
-and find the feed rate at which the drive throws its tracking-error alarm — seven LED flashes on the
-HBT57C, per [`../wiring/breakout-box.md`](../wiring/breakout-box.md). Closed-loop drives make this
+and find the feed rate at which the drive throws its tracking-error alarm. OPEN: **How the IG57
+signals that is not established** - the HBT57C showed it as seven LED flashes, and whether this drive
+uses the same scheme wants the manual, not an assumption. See
+[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). Closed-loop drives make this
 easy, because the drive detects the loss of sync itself rather than leaving it to be inferred from a
 part cut wrong. **Back off 30% from the first alarm** and that is the rapid.
 

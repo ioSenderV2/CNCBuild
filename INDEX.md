@@ -343,11 +343,10 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The 1.2 m captive cable does not reach](wiring/breakout-box.md#the-12-m-captive-cable-does-not-reach)
 - [The fail-closed conflict is resolved by buying the NC part](wiring/breakout-box.md#the-fail-closed-conflict-is-resolved-by-buying-the-nc-part)
 - [Sensor response latency](wiring/breakout-box.md#sensor-response-latency)
-- [The drives are HBT57C - and three things follow](wiring/breakout-box.md#the-drives-are-hbt57c---and-three-things-follow)
-  - [AL has no pull-up today, which is why it has never asserted](wiring/breakout-box.md#al-has-no-pull-up-today-which-is-why-it-has-never-asserted)
-  - [AL fails open, so it is not a guard on its own](wiring/breakout-box.md#al-fails-open-so-it-is-not-a-guard-on-its-own)
+- [The drives are IG57, and the stepper run is Cat 6 plus 18/2](wiring/breakout-box.md#the-drives-are-ig57-and-the-stepper-run-is-cat-6-plus-182)
+  - [Keep AL per axis in the cabling, whatever the firmware does today](wiring/breakout-box.md#keep-al-per-axis-in-the-cabling-whatever-the-firmware-does-today)
+  - [An alarm output that fails open is not a guard, whichever drive it is](wiring/breakout-box.md#an-alarm-output-that-fails-open-is-not-a-guard-whichever-drive-it-is)
   - [Do not daisy-chain the 48 V](wiring/breakout-box.md#do-not-daisy-chain-the-48-v)
-  - [Note on the five AL pins](wiring/breakout-box.md#note-on-the-five-al-pins)
 - [Open items](wiring/breakout-box.md#open-items)
 
 ## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)
@@ -375,14 +374,15 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The connector fails safe again once the NC sensors go in](wiring/db37-axis-interconnect.md#the-connector-fails-safe-again-once-the-nc-sensors-go-in)
 - [Open items](wiring/db37-axis-interconnect.md#open-items)
 
-## [wiring/hbt57c-drives.md](wiring/hbt57c-drives.md)
+## [wiring/ig57-drives.md](wiring/ig57-drives.md)
 
-- [Count the flashes - that is the whole diagnosis](wiring/hbt57c-drives.md#count-the-flashes---that-is-the-whole-diagnosis)
-- [Clearing a fault - UNRESOLVED, and the vendor contradicted itself](wiring/hbt57c-drives.md#clearing-a-fault---unresolved-and-the-vendor-contradicted-itself)
-- [Configuring them - the RS232 port, and get the cable now](wiring/hbt57c-drives.md#configuring-them---the-rs232-port-and-get-the-cable-now)
-  - [DIP switches](wiring/hbt57c-drives.md#dip-switches)
-- [Two hardware cautions](wiring/hbt57c-drives.md#two-hardware-cautions)
-- [Provenance](wiring/hbt57c-drives.md#provenance)
+- [The part](wiring/ig57-drives.md#the-part)
+- ["Basically the same specs as the HBT57C" - his, 2026-10-12 - and the two places it is not](wiring/ig57-drives.md#basically-the-same-specs-as-the-hbt57c---his-2026-10-12---and-the-two-places-it-is-not)
+- [The over-voltage headroom is the first thing to establish](wiring/ig57-drives.md#the-over-voltage-headroom-is-the-first-thing-to-establish)
+- [The cabling - Cat 6 for signals, 18/2 shielded for power](wiring/ig57-drives.md#the-cabling---cat-6-for-signals-182-shielded-for-power)
+- [What the closed loop does and does not cover](wiring/ig57-drives.md#what-the-closed-loop-does-and-does-not-cover)
+- [grblHAL can take a motor fault input, and does not use it per axis](wiring/ig57-drives.md#grblhal-can-take-a-motor-fault-input-and-does-not-use-it-per-axis)
+- [Provenance](wiring/ig57-drives.md#provenance)
 
 ## [wiring/README.md](wiring/README.md)
 

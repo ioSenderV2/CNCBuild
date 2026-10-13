@@ -139,60 +139,59 @@ the encoder design doc uses for its own latency argument - 267 mm/s - the axis t
 Recorded because this repo cares about where travel numbers come from. It is not an objection: the
 sensor is the backstop, and 0.5 mm of it is the cost.
 
-## The drives are HBT57C - and three things follow
+## The drives are IG57, and the stepper run is Cat 6 plus 18/2
 
-**TOSEASTARS HBT57C**, 57 frame / NEMA 23, 24-55 V DC, 36 V recommended. The drive is at the motor,
-so what leaves this box per axis is logic plus motor supply.
+FLAG: **THIS SECTION WAS WRITTEN ABOUT THE HBT57C AND THOSE ARE THE MEGA V'S DRIVES, NOT THIS
+MACHINE'S** - corrected by him on 2026-10-12. Four **IG57** all-in-one closed-loop steppers, 2.2 N·m,
+**DC 24-50 V**. The part and everything known about it is
+[`ig57-drives.md`](ig57-drives.md); this section is only what the *cabinet* has to do about them.
 
-**The drive's own behaviour is [`hbt57c-drives.md`](hbt57c-drives.md)** - the LED fault codes, the
-unresolved ENA-reset question and its bench procedure, the over-voltage trip figure, and the RS232
-configuration port. This section is only what the *cabinet* has to do about them. OPEN: The manual is
-still not in [`../manufacturer-assets/`](../manufacturer-assets/), which this repo's own rule says it
-should be.
+The drive is at the motor, so what leaves this box per axis is logic plus motor supply and never motor
+phases. **His cabling, 2026-10-12: one Cat 6 patch cable per stepper carrying DR, PU, EN and AL each
+on the striped conductor of its own pair with that signal's GND on the solid conductor, and 18/2
+shielded for the 48 V.**
 
-### OPEN: AL has no pull-up today, which is why it has never asserted
+FLAG: **THAT REPLACES BOTH THE 6-PIN SHELL AND THE SINGLE-GND SCHEME DESCRIBED ON THIS PAGE.** Four
+signals with four dedicated returns is a different arrangement from one shared GND per axis - and a
+better one, because a twisted pair only rejects anything if the return runs in the other half of the
+pair. OPEN: **The star-ground argument above has to be re-answered for it.** Where the four returns
+are commoned - at the drive, at the breakout board, or on the PSU negative stud - is now the open
+question, and the reasoning in the star section still applies: motor current must not share a
+conductor with a signal reference.
 
-Pins 11/12 are **AL+ / AL-**, open collector, max pull-up 24 V / 100 mA. AL+ is the collector and
-AL- the emitter, so it is a **floating switch** - tying AL- to the shared GND at the connector is
-what makes the single-GND scheme on this page work for it.
-
-**An open collector with nothing pulling it up never shows a level.** There is no pull-up in the
-build today, and that alone accounts for the alarm never having been seen to work. It needs one,
-and — exactly as for the limit sensors above — **not the manual's 24 V / 2 kΩ near a Teensy pin.**
-
-### OPEN: AL fails open, so it is not a guard on its own
-
-Fault means the transistor conducts and the line goes low. But **a drive with no power, or a broken
-AL wire, leaves the transistor off** - the pull-up wins, the line reads high, and that reads as
-*healthy*. A dead or unplugged drive looks fine.
-
-It becomes a real guard only when paired with a **driver-power-present** input: *power present AND
-no alarm* = healthy. Neither half is sufficient. **There is no pin allocated for that signal** -
-it is a candidate for the seven spares in
-[`db37-axis-interconnect.md`](db37-axis-interconnect.md).
-
-This is the same failure direction as the NO limit sensors above. Two of the three things that are
-supposed to stop this machine currently fail silent.
-
-### OPEN: Do not daisy-chain the 48 V
-
-The manual is explicit: *"parallel connection should be adopted at the power supply, and chain
-connection from one driver to another is not allowed."* A chained rail makes both over- and
-under-voltage trips far likelier at the far end.
-
-So the star rule above is **not only about the returns** - the 48 V positive runs from the PSU to
-each drive as its own leg too. Never verified against how the machine is actually wired today.
-
-### Note on the five AL pins
+### OPEN: Keep AL per axis in the cabling, whatever the firmware does today
 
 grblHAL has **$744 / $745** and raises **Alarm 17, motor fault**, and the core defines *per-axis*
-fault inputs. But the Teensy driver implements only a **single combined** motor-fault pin across
-every board map - so five separate AL conductors are ahead of the firmware, and today they would
-have to be wire-ORed into one input.
+fault inputs - but the Teensy driver implements only a **single combined** motor-fault pin across
+every board map, so four separate AL conductors are ahead of the firmware and would be wire-ORed into
+one input today. Keeping them separate is still right: the wiring is nearly free during a build,
+expensive to retrofit, and per-axis needs only a board-map edit later. With AL on its own pair per
+stepper that wiring is already done.
 
-Keeping them separate in the connector is still the right call: the wiring is nearly free during a
-build and impossible to retrofit cheaply, and per-axis needs only a board-map edit later. Recorded
-so the gap is not mistaken for a wiring error.
+### FLAG: An alarm output that fails open is not a guard, whichever drive it is
+
+If the drive's alarm is an open-collector output then **a drive with no power, or a broken alarm wire,
+reads exactly like a healthy drive**. It becomes a real guard only paired with a
+**driver-power-present** input: *power present AND no alarm* = healthy, neither half sufficient.
+
+This is about fail direction rather than about a part, which is why it survived the change of drive
+intact. **There is still no pin allocated for the power-present signal** - it is a candidate for the
+seven spares in [`db37-axis-interconnect.md`](db37-axis-interconnect.md). OPEN: Whether the IG57's
+alarm is in fact open collector is not established - see [`ig57-drives.md`](ig57-drives.md).
+
+Same failure direction as the limit sensors above, and worth holding both in mind together: until the
+NC sensors are fitted and an alarm guard exists, **two of the three things that are supposed to stop
+this machine fail silent.**
+
+### Do not daisy-chain the 48 V
+
+Each drive's 48 V runs from the PSU as its own leg, in parallel, never chained from one drive to the
+next. A chained rail makes both over- and under-voltage trips likelier at the far end, and the IG57's
+input range tops out at **50 V** against a 48 V rail - so there is less to give away here than there
+was on the drives this page used to describe.
+
+So the star rule above is **not only about the returns**: the 48 V positive is a per-drive leg too.
+Never verified against how the machine is actually wired today.
 
 ## Open items
 1. **Controller draw on the 5 V rail.** The buck is rated 3 A; the actual draw, and the gauge of the
@@ -200,27 +199,32 @@ so the gap is not mistaken for a wiring error.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V
    direct, or 5 V if its inputs are buffered. The breakout box has 5 V but not 3.3 V, so this also
    decides whether the resistor sits in the breakout box or at the controller.
-3. **48 V against a 55 V over-voltage trip.** The manual states the trip three ways and the lowest
-   governs, so **design to 55 V** - see [`hbt57c-drives.md`](hbt57c-drives.md). A 48 V rail leaves
-   about **7 V** of headroom for regeneration on decel. No regen fault has ever been observed on the
-   Mega V, which runs the same drive family - but it is not recorded what supply voltage that history
-   was accumulated at. Establish the present rail voltage before treating the clean history as
-   applying, and see the supply question in
-   [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
-4. **Peak current per axis on 18 AWG.** 18 AWG is about 21 mΩ/m; the drag-chain run length and the
-   drive's peak draw are both unrecorded, so the drop is uncomputed.
-5. **Where the drives' opto commons sit.** The HBT57C signal pins are **pairs** - PUL+/PUL-,
-   DIR+/DIR-, EN+/EN-, AL+/AL-. The six-wire scheme on this page ties all four minus legs to the
-   shared GND at the connector, which is standard common-cathode practice and is what the AL
-   wire-OR already does. **It is still an assumption**, and it is the one everything else here
-   rests on. Confirm against the manual once that is committed.
-6. **EN polarity.** Genuinely ambiguous in the manual - the FAQ says a low enable prevents motion
-   and that it should be "pulled high or not connected", but it is an opto input where floating
-   means no current. **Measure, do not reason.** The manual also recommends leaving EN
-   unconnected, so they are probably floating on the machine today.
+3. **48 V against the IG57's 50 V input ceiling.** This item read "48 V against a 55 V over-voltage
+   trip" until 2026-10-12 and that was the Mega V's drive. The listing gives the IG57 as 24-50 V, and
+   the **trip point is a different number from the top of the range and is not known** - so the
+   headroom for regeneration on decel is somewhere between about 2 V and unknown, not the 7 V this
+   item used to assert. See [`ig57-drives.md`](ig57-drives.md). The Mega V's clean regen history was
+   accumulated on different drives with a higher ceiling and **does not transfer**. Also see the
+   supply question in [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
+4. **Peak current per axis.** The IG57 is rated **5 A**; the drag-chain run length is unrecorded, so
+   the drop is uncomputed. The 48 V now runs on **18/2 shielded** rather than in a six-way shell.
+5. **Where the four signal returns are commoned.** Each of DR, PU, EN and AL has its own GND
+   conductor in its own Cat 6 pair, so the question is no longer "where do the minus legs tie" but
+   **where those four returns meet** - at the drive, at the breakout board, or on the PSU negative.
+   OPEN: Whether the IG57's inputs are opto pairs at all is unconfirmed; four dedicated returns are
+   consistent with it. **This is the assumption everything else here rests on.** Confirm against the
+   vendor documentation once it is committed.
+6. **EN polarity and whether EN clears a fault.** Both were live questions on the Mega V's drives and
+   neither answer transfers. An opto input where floating means no current can be described two
+   opposite ways in one manual, so **measure, do not reason** - and establish separately whether a
+   fault clears by power cycle only or by a signal on enable, because that decides whether the
+   cabinet needs the drives' 48 V switchable independently of the controller. That is cheap now and
+   expensive later.
 7. **The limit sensor junction.** See the 1.2 m cable above - needed per axis, not yet designed.
 8. **Target plates.** 4 mm non-shielded sensing means something ferrous has to come within 4 mm at
    each end of travel. Not yet specified.
-9. **The HBT57C manual is not committed.** Per this repo's datasheets-committed rule it belongs in
-   [`../manufacturer-assets/`](../manufacturer-assets/), and several items above cannot be closed
-   without it.
+9. **No IG57 documentation is committed.** Everything known about the drive is off a retail listing.
+   Per this repo's datasheets-committed rule the manual or datasheet belongs in
+   [`../manufacturer-assets/`](../manufacturer-assets/), and **items 3, 5 and 6 above cannot be
+   closed without it** - between them they decide the rail voltage, the grounding scheme and whether
+   the cabinet needs switched motor power.

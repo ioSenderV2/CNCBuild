@@ -46,16 +46,20 @@ The probe having its own regulator and return is the point of the arrangement, n
 it: a probe is the one input where a false trigger costs a crash, and sharing a return with anything
 that switches is how it gets one.
 
-FLAG: **CHECK THE 5 V REGULATOR'S ABSOLUTE MAXIMUM INPUT BEFORE TRUSTING ANY OF THIS.** The motor
-rail can legitimately reach **55 V** before the drives trip - see
-[`hbt57c-drives.md`](hbt57c-drives.md) - so a part rated 50 V maximum will die **taking the
-controller with it, mid-job**. This is the failure that looks like a random crash and gets diagnosed
-as firmware.
+FLAG: **CHECK THE 5 V REGULATOR'S ABSOLUTE MAXIMUM INPUT BEFORE TRUSTING ANY OF THIS, AND SIZE IT ON
+WHAT THE RAIL CAN REACH RATHER THAN ON 48 V.** The ceiling is whatever the drives tolerate before
+they trip, and the IG57's stated input range tops at **50 V** - see
+[`ig57-drives.md`](ig57-drives.md), where the actual trip point is an open question. A regulator
+chosen with no margin dies **taking the controller with it, mid-job**, which is the failure that
+looks like a random crash and gets diagnosed as firmware. FLAG: **This paragraph said 55 V until
+2026-10-12**, from the Mega V's drives; do not reinstate that figure.
 
-FLAG: **THE ISOLATION IS ALREADY THERE AND IS EASY TO SHORT OUT BY ACCIDENT.** The HBT57C step, dir
-and enable inputs are **optoisolated**, and AL is an open-collector opto output. That is real
-galvanic isolation, free, already paid for in the drives. It is lost by any of three ordinary-looking
-decisions: a **shared rail** between logic and motor supply, a **merged ground bus**, or a **USB
+OPEN: **WHETHER THE ISOLATION IS THERE TO LOSE.** On the Mega V's drives the step, dir and enable
+inputs were **optoisolated** and the alarm was an open-collector opto output - real galvanic
+isolation, free, already paid for in the drives. Four signals each with their own return on the Cat 6
+run is consistent with opto pairs here too, but it is **not confirmed for the IG57**. If it is there,
+it is lost by any of three ordinary-looking decisions: a **shared rail** between logic and motor
+supply, a **merged ground bus**, or a **USB
 cable to an earthed PC**.
 
 ## Grounds meet at one PE bus bar
