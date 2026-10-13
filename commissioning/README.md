@@ -40,6 +40,29 @@ shifts the tape's *start* as well as its length.
 Budget: 3 m in stock, three long axes plus Z. **No long run can be recut** - cut the long axes first and
 err long rather than short.
 
+## Rail voltage, and what the drives draw
+
+PROCEDURE: **The motor supply is VARIABLE, so its 36 V is a setting and not a property.** That is the
+same shape as the $130 fault above - a figure believed from a configuration rather than read off the
+machine. The drives alarm and stop above 50 V.
+
+| | Reading | Taken | Notes |
+|---|---|---|---|
+| Rail at the supply terminals | | | set to **36 V** |
+| Rail at a drive's V+ / V- | | | the one that matters - drop over the 18/2 comes out here |
+
+**Mark the adjustment once it is set** so a knock is visible.
+
+The supply has an **LCD power display**, which is the instrument for the other open question - what
+four drives actually pull. The manual says supply current runs below phase current and declines to
+quantify it, so this is read rather than computed, against the **16.5 A** the supply can give:
+
+| Condition | Current | Taken |
+|---|---|---|
+| Idle, drives enabled | | |
+| Rapids, all axes | | |
+| Heavy pass | | |
+
 ## Stiffness and lost motion
 
 PROCEDURE: **[`stiffness-test.md`](stiffness-test.md)** - the full procedure. Push the spindle nose with a

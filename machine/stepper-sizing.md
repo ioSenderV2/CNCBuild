@@ -36,7 +36,7 @@ the smaller motor is the better one.
 | Bearing-to-bearing span | **930 mm** | **measured** on the built Y beams |
 | Motor frame | **NEMA 23**, all four axes | given |
 | Drive | **IG57**, **24–50 V DC**, **5 A** | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) — OPEN: off a retail listing, no manual committed |
-| Supply | **36 V** — SETTLED 2026-10-12, the manual's recommended voltage. OPEN: wattage not recorded, so the current across all axes is not either | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) |
+| Supply | **36 V, 600 W — 16.5 A across all axes** | nameplate, 2026-10-12. FLAG: **variable output**, so the 36 is a setting to verify with a meter — see [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md) |
 | Screw efficiency | **0.9 assumed** | OPEN: not from a sheet — a conventional ball-screw figure |
 | Screw root diameter | **13.5 mm assumed** | OPEN: the sheet gives only the 16 mm major — see below |
 
@@ -192,11 +192,12 @@ is a choice, not a constraint.
    [`archive/x-gantry-end-plates.md`](archive/x-gantry-end-plates.md) and [`archive/y-beam-support.md`](archive/y-beam-support.md)
    accept the stepper-and-casting cantilever on the figure *"roughly 2.5 kg at that reach is under
    2 N·m"*. A 3.2 is a longer, heavier motor than that figure assumes. The 2.2 sits inside it.
-4. ~~**The current budget is 12.5 A for all four axes.**~~ OPEN: **That was a 48 V figure and the
-   rail is now 36 V, so it is stale.** The phase current is also no longer unknown - the IG57 is
-   **5 A** - but the manual says the *supply* input current is smaller than the phase current and
-   declines to give a figure, so four motors is not 20 A either. The budget now wants the supply's
-   wattage, which is unrecorded, and a clamp meter once an axis runs.
+4. SETTLED: ~~**The current budget is 12.5 A for all four axes.**~~ **It is 16.5 A** - the 36 V 600 W
+   supply's nameplate, 2026-10-12. **The budget grew by 4 A as a side effect of dropping the rail to
+   36 V for over-voltage headroom**, which is the rare case of a safety decision paying for itself.
+   The phase current is known too - the IG57 is **5 A** - but the manual says *supply* current runs
+   below phase current and will not say by how much, so four motors is not 20 A either. OPEN: what
+   they actually draw is a reading off the supply's own LCD during a cut, not a calculation.
 
 ## OPEN: The torque curve at 36 V
 

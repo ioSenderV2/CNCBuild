@@ -314,6 +314,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 - [Travels, per axis](commissioning/README.md#travels-per-axis)
 - [Tape extents, per axis](commissioning/README.md#tape-extents-per-axis)
+- [Rail voltage, and what the drives draw](commissioning/README.md#rail-voltage-and-what-the-drives-draw)
 - [Stiffness and lost motion](commissioning/README.md#stiffness-and-lost-motion)
 - [Squaring and backlash](commissioning/README.md#squaring-and-backlash)
 
@@ -353,6 +354,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)
 
 - [The motor supply is not settled](wiring/cabinet-power-and-grounding.md#the-motor-supply-is-not-settled)
+  - [It is a VARIABLE supply with an LCD display - which cuts both ways](wiring/cabinet-power-and-grounding.md#it-is-a-variable-supply-with-an-lcd-display---which-cuts-both-ways)
 - [Separate the logic supply from the motor rail](wiring/cabinet-power-and-grounding.md#separate-the-logic-supply-from-the-motor-rail)
 - [Grounds meet at one PE bus bar](wiring/cabinet-power-and-grounding.md#grounds-meet-at-one-pe-bus-bar)
 - [USB is a ground path, and the cable stays plugged in](wiring/cabinet-power-and-grounding.md#usb-is-a-ground-path-and-the-cable-stays-plugged-in)

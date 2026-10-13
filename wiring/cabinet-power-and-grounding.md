@@ -14,24 +14,63 @@ recommends, and it leaves the Mega V's 48 V supply in the Mega V instead of bein
 reasoning is in [`ig57-drives.md`](ig57-drives.md); the short version is that 48 V would have sat at
 the manual's lowest stated maximum with about 2 V of regeneration headroom.
 
-OPEN: **WHICH SUPPLY, AND AT WHAT RATING.** The 600-against-800 W question was asked and answered
-"not decided" earlier the same day, **at 48 V** - and the volts have since changed, so the arithmetic
-has to be redone rather than carried across. Watts over volts is the whole calculation, and at 36 V
-the same wattage buys **more** current than it did at 48 V, not less.
+SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026-10-12.**
 
-FLAG: **THE 12.5 A BUDGET IN [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) IS A
-48 V FIGURE AND IS NOW STALE.** That file carries a standing item that rated phase current across
-four motors may exceed it, with the resolution that *either the supply or the motor has to move*.
-**The rail moved instead**, and it moved in the helpful direction - so that item wants re-reading
-against 36 V rather than answering as written.
+| | |
+|---|---|
+| Input | **220 V at 3.5 A** |
+| Output | **36 V DC at 16.5 A**, 600 W |
+
+**So the 600-against-800 W question is answered by nothing moving.** It was a 48 V question, and
+choosing 36 V dissolved it: the supply that was already here is the right one, and the Mega V keeps
+its 48 V 800 W.
+
+NOTE: **THE CURRENT BUDGET WENT UP, NOT DOWN - 16.5 A against the 12.5 A this repo worked to.** Watts
+over volts is the whole of it, and the same 600 W at a lower rail buys more current. The budget that
+[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) worried four motors might exceed has
+gained **4 A** as a side effect of a decision taken for over-voltage headroom.
+
+FLAG: **NAMEPLATE, NOT MEASURED.** This is the supply's own claim about itself.
+
+### It is a VARIABLE supply with an LCD display - which cuts both ways
+
+His, 2026-10-12. The output is adjustable and there is a power display on the top of the unit.
+
+🔴 **SO 36 V IS A SETTING, NOT A PROPERTY - AND THIS REPO HAS BEEN BITTEN BY EXACTLY THAT.** The
+standing rule at the top of the root README exists because $130 read 889 mm against a real 860 mm
+and quietly cost soft-limit protection. **A rail that can be turned is a rail that can be turned by
+accident**, and the drives alarm and stop above 50 V. PROCEDURE: **Set it, verify it with a meter at
+the drive end, record the reading in [`../commissioning/`](../commissioning/), and mark the
+adjustment** - a dab of paint or a note on the case. Do not take 36 V from this page; take it from
+the meter.
+
+NOTE: **The adjustment is also the fix if the rail is ever wrong.** Nothing has to be bought to move
+it, which is worth knowing before anyone orders a different supply over a voltage question.
+
+✅ **THE LCD CLOSES THE MEASUREMENT PROBLEM BELOW.** The open item about what four drives actually
+draw has been waiting on a clamp meter, and the supply reports its own output. **Read it during a
+real cut** - idle, rapids on all axes, and a heavy pass - and the three readings answer it without
+any instrument at all. Record them in [`../commissioning/`](../commissioning/) rather than here:
+they are measurements of the machine.
+
+NOTE: **THAT CLOSED A STANDING ITEM IN
+[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) WITHOUT ANSWERING IT.** That file
+carried a 12.5 A budget and a worry that four motors might exceed it, with the resolution that
+*either the supply or the motor has to move*. **Neither moved - the rail did**, and the budget went
+up 4 A as a side effect of a decision taken for over-voltage headroom.
 
 NOTE: **DO NOT BUDGET FOUR MOTORS AT 5 A EACH - the manual says so directly, and then declines to
 give a number.** §6.2 explains that the supply input current is **smaller** than the motor phase
 current, because the drive converts a high-voltage low-current input into a low-voltage high-current
 winding drive, and that the input current also depends on speed and load. Its conclusion is that
 *"users need to carry out specific analysis and estimation"*. So **20 A is the wrong figure to size
-against**, and the right one is not in the documentation - which makes this a measurement to take
-with a clamp meter once one axis runs, not an arithmetic problem.
+against**, and the right one is not in the documentation - which makes it a measurement rather than
+an arithmetic problem. **The supply's own LCD is the instrument**, so the measurement costs nothing
+but a cut to read it during.
+
+**What that leaves is a comparison, not a calculation:** 16.5 A available against four drives rated
+5 A phase each, with the manual saying supply current runs below phase current by an amount it will
+not quantify. That is probably comfortable and is **not** established.
 
 NOTE: **The under-voltage end now matters more than the over-voltage end.** The manual warns that
 below 24 V the drive can alarm on an unstable supply and recommends a bulk capacitor at the input. A
@@ -124,8 +163,8 @@ spindle that was subsequently settled at Ø80 2.2 kW:
 | Load | Draw |
 |---|---|
 | 2.2 kW spindle | ~11 A |
-| Motor PSU | ~4 A — **his figure, taken for the 48 V supply**; the mains draw follows the supply's wattage rather than its output voltage, so it moves only if the wattage does |
-| **Total** | **~15 A** against a **16 A** continuous limit |
+| Motor PSU | **3.5 A** — **nameplate**, 220 V in, 2026-10-12. Replaces a ~4 A estimate |
+| **Total** | **~14.5 A** against a **16 A** continuous limit |
 
 NOTE: **That margin is why the spindle decision and the circuit decision were the same decision.** A
 4.5 kW spindle would have drawn roughly 23-25 A and needed its own 30 A circuit on 10 AWG. The
@@ -141,5 +180,6 @@ is that the arithmetic is about *current*, not about noise.
 ## Provenance
 
 Decided in the 2026-09-26 design session, which ran in the **ioSender** repo rather than this one.
-Carried in a memory note until 2026-10-12 and now here. The 600-versus-800 W question above is the
-only part that was still open on the day it was folded in.
+Carried in a memory note until 2026-10-12 and now here. The 600-versus-800 W question it was folded
+in with was closed the same day, by choosing a 36 V rail - which made the supply already in the
+machine the right one.

@@ -9,7 +9,7 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 
 | | |
 |---|---|
-| **36 V** power supply | Motor power. SETTLED at 36 V 2026-10-12, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md). OPEN: the wattage is not recorded, so the current across all axes is not either |
+| **36 V, 600 W** power supply | Motor power. **16.5 A across all axes.** Nameplate, 2026-10-12 - mains 220 V at 3.5 A. SETTLED at 36 V, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md) |
 | **12 V, 3 A** buck | Limit sensors, and the relays in the controller box |
 | **5 V, 3 A** buck | The controller box's logic supply |
 | **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors |

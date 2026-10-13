@@ -122,10 +122,11 @@ against a drive whose response to exceeding it is to stop mid-cut, on a manual t
 own range consistently. **Do not reopen this for a 48 V supply that happens to be available**, which
 is the form the temptation will take.
 
-OPEN: **The supply's rating at 36 V is not recorded.** The current budget follows from watts over
-volts and the volts have just changed, so
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md)'s 600-against-800 W question needs
-re-answering at the new rail rather than carried across.
+SETTLED: **The supply is the 36 V 600 W already in the machine - 16.5 A out, 220 V at 3.5 A in,
+nameplate 2026-10-12.** So the 600-against-800 W question closed by nothing moving, and the current
+budget went **up** from the 12.5 A the repo had worked to. FLAG: **its output is VARIABLE**, which
+makes 36 V a setting to verify with a meter rather than a property to trust - see
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
 
 ## Inputs and outputs - what the manual settles
 
