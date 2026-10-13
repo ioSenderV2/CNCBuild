@@ -47,8 +47,15 @@ def refs_in_schedules(block):
     """First cell of every data row in every table.sched on this sheet."""
     out = []
     for table in re.findall(r'<table class="sched">(.*?)</table>', block, re.S):
-        for row in re.findall(r'<tr[^>]*>(.*?)</tr>', table, re.S):
+        for attrs, row in re.findall(r'<tr([^>]*)>(.*?)</tr>', table, re.S):
             if '<th' in row:
+                continue
+            # The generated TOTAL footer is a sum, not a feature, so it has no
+            # tag on the drawing and must not be asked for one. It is written by
+            # tools/build-hole-tally.py and carries class="tot". The class is in
+            # the ROW TAG, not its contents, which is why the attributes are
+            # captured here at all.
+            if 'tot' in attrs:
                 continue
             cell = re.match(r'\s*<td[^>]*>(.*?)</td>', row, re.S)
             if cell:
