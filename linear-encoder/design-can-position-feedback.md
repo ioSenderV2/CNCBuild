@@ -592,6 +592,68 @@ scratch, and it is the piece with no prior art here to copy.
 Note `src/encoder/` and `ENCODER_ENABLE` exist but are **not** reusable: that is spindle/MPG quadrature,
 not per-axis linear scales, and it hangs off different plumbing.
 
+### The core DOES have a CAN layer — and it is scaffolding
+
+Read in an ioSender session on 2026-09-26 and folded in here 2026-10-12. The paragraph above is about
+the **driver** and is correct; the **core** is a separate question and the answer is not "nothing".
+
+`core/canbus.c` and `canbus.h` — Jon Escombe 2022, Terje Io 2024-25, of order 200 lines, gated on
+**CANBUS_ENABLE**. Classic CAN only: id, len, `data[8]`, no FD. The API is `canbus_init`,
+`canbus_enabled`, `canbus_queue_tx`, `canbus_add_filter`, sitting on **five weak driver hooks** —
+`can_start`, `can_stop`, `can_set_baud`, `can_put`, `can_add_filter` — which **all return false in the
+core**. There is one setting, `Setting_CANbus_BaudRate`, as radio buttons 125k / 250k / 500k / 1M,
+**defaulting to index 0, which is 125k.**
+
+FLAG: **THE PUMP IS `task_add_systick`: EVERY 1 ms, ONE TX AND ONE RX MESSAGE PER TICK.** That is a hard
+ceiling of **1000 frames per second each way regardless of bus rate**, with RX callback latency of up to
+1 ms after the ISR queued it. The ring buffers are 8 deep. This is the single most important fact about
+the layer, because it is a *software* ceiling that no amount of bus bandwidth relieves.
+
+**What it means for the design in §2.** Four per-axis frames at 100 Hz is 400 frames/s, which is **40% of
+the core pump** — comfortable, but not by the margin the bus suggests. OPEN: **Do not exceed about 200 Hz
+per axis without bypassing `canbus.c` altogether.** At 1 Mbit/s the same traffic is only about **4% of
+the bus**, so anyone reasoning from bus load will conclude there is 25x headroom when there is 2.5x.
+
+OPEN: **NOBODY USES IT.** The only consumer in the tree is `report.c` calling `canbus_enabled()` to append
+"CAN," to the `$I` options string. **And the Teensy / iMXRT1062 driver implements none of the hooks** —
+only the copied weak stubs, and CANBUS_ENABLE is not offered in `my_machine.h`. On a Teensy 4.1 today CAN
+is a no-op: `can_start` returns false and the systick task never registers.
+
+FLAG: **THAT IS A READING OF ONE CLONE AT ONE MOMENT, AND IT IS THE KIND OF CLAIM THAT GOES STALE
+SILENTLY.** Core on `srw/combined` as of 2026-04-18 with `canbus.c` last touched 2025-01-10; iMXRT1062 on
+`srw/local-build-config` as of 2026-09-20. Upstream may have moved. Other MCUs likely have real
+implementations, which is **unverified**. Re-check before planning around the absence rather than citing
+this paragraph — an absence recorded once is not an absence now.
+
+The firmware itself lives in `stevenrwood/iMXRT1062`, so acting on any of this is a session in that repo.
+This is recorded here because it constrains **this** design.
+
+### The bit rate, and the two rates that are easy to confuse
+
+SETTLED: **1 Mbit/s on the CAN bus**, which is the top of the four `Setting_CANbus_BaudRate` options.
+The run is inside one machine, so the short-bus penalty that pushes industrial installations down to
+250k does not apply here.
+
+FLAG: **THE SETTING DEFAULTS TO 125k, WHICH IS INDEX 0 — SO THIS IS A CHANGE THAT HAS TO BE MADE, NOT A
+DEFAULT TO INHERIT.** At 125k the same 400 frames/s is roughly a third of the bus rather than 4% of it,
+which is survivable but leaves nothing for the heartbeat, the command IDs, or any later axis.
+
+**The bridge serial link is a different number and is not the constraint.** Of order 5 kB/s of position
+data crosses it, so **even 115200 carries it** comfortably. Three rates sit in this path — the CAN bus,
+the bridge's serial link, and the 1 ms core pump — and only the **pump** is actually tight. Confusing
+them is how a design ends up optimising the bus and hitting a software ceiling.
+
+### NEVER register the encoder UART as a grblHAL stream
+
+FLAG: **BINARY POSITION BYTES WOULD PASS THE REALTIME-CHARACTER SCANNER FIRST, AND THREE OF THOSE BYTE
+VALUES ARE COMMANDS.** `0x18` is a soft reset, `0x21` a feed hold, `0x7E` a cycle start. A stream of int32
+positions is a fresh roll of the dice on **every position value** — the failure is a machine that
+soft-resets or feed-holds mid-cut, at random, from data that is working perfectly.
+
+**The plugin must own the UART directly** and must not hand it to the stream layer. This costs nothing to
+get right at the start and is extremely confusing to diagnose afterwards, because the data path is
+healthy and the symptom is in the motion.
+
 ### Settings
 
 Plugin settings group, `$`-numbered in the plugin range:
