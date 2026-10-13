@@ -47,11 +47,13 @@ the meter.
 NOTE: **The adjustment is also the fix if the rail is ever wrong.** Nothing has to be bought to move
 it, which is worth knowing before anyone orders a different supply over a voltage question.
 
-✅ **THE LCD CLOSES THE MEASUREMENT PROBLEM BELOW.** The open item about what four drives actually
-draw has been waiting on a clamp meter, and the supply reports its own output. **Read it during a
-real cut** - idle, rapids on all axes, and a heavy pass - and the three readings answer it without
-any instrument at all. Record them in [`../commissioning/`](../commissioning/) rather than here:
-they are measurements of the machine.
+✅ **THE LCD CLOSES THE MEASUREMENT PROBLEM BELOW, AND IT DOES NOT NEED A MACHINE.** The open item
+about what four drives actually draw had been waiting on a clamp meter and a working axis; the supply
+reports its own output, and the readings that matter come off **four motors loose on a bench**.
+PROCEDURE: **[`../commissioning/bench-session.md`](../commissioning/bench-session.md)** - rail,
+power-on inrush with all four connected, idle draw, free-running draw. It also catches the one
+failure mode that is invisible when motors are tested singly: four input capacitor banks charging at
+once.
 
 NOTE: **THAT CLOSED A STANDING ITEM IN
 [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) WITHOUT ANSWERING IT.** That file

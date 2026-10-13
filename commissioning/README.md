@@ -5,6 +5,9 @@
 
 **Recorded so far:** [`masses.md`](masses.md) - the four moving assemblies, weighed 2026-09-26.
 
+**Do first:** [`bench-session.md`](bench-session.md) - it needs no machine, and it is the only item
+here that gets harder once the build moves on.
+
 Nothing else has been recorded. What needs measuring, and why it matters:
 
 ## Travels, per axis
@@ -42,26 +45,16 @@ err long rather than short.
 
 ## Rail voltage, and what the drives draw
 
-PROCEDURE: **The motor supply is VARIABLE, so its 36 V is a setting and not a property.** That is the
-same shape as the $130 fault above - a figure believed from a configuration rather than read off the
-machine. The drives alarm and stop above 50 V.
+PROCEDURE: **[`bench-session.md`](bench-session.md)** - the full procedure, and **it needs no
+assembled axis**. Four motors loose on the bench answer the supply-sizing question, the power-on
+inrush question, whether the alarm really asserts when healthy, and how a fault clears.
 
-| | Reading | Taken | Notes |
-|---|---|---|---|
-| Rail at the supply terminals | | | set to **36 V** |
-| Rail at a drive's V+ / V- | | | the one that matters - drop over the 18/2 comes out here |
+**Do it before the plates are machined.** An uncoupled motor is the best test rig this build will
+have and it exists now; provoking a fault later means moving a gantry to do it.
 
-**Mark the adjustment once it is set** so a knock is visible.
-
-The supply has an **LCD power display**, which is the instrument for the other open question - what
-four drives actually pull. The manual says supply current runs below phase current and declines to
-quantify it, so this is read rather than computed, against the **16.5 A** the supply can give:
-
-| Condition | Current | Taken |
-|---|---|---|
-| Idle, drives enabled | | |
-| Rapids, all axes | | |
-| Heavy pass | | |
+It also settles a figure that is a **setting rather than a property**: the motor supply's output is
+variable, so its 36 V is exactly the kind of number the $130 fault above was. Measured at a drive's
+own terminals, not read off the supply's label.
 
 ## Stiffness and lost motion
 

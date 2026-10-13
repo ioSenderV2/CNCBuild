@@ -161,7 +161,8 @@ asserted on fault, which meant an unpowered drive or a broken wire read as healt
 power, broken wire, or pulled connector all look like an alarm.** That is fail-safe in the direction
 a guard needs, by default, with no extra input required.
 
-OPEN: **Confirm the sense on the bench before relying on it**, because this is a machine-translated
+OPEN: **Confirm the sense on the bench before relying on it** - the procedure is
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md) - because this is a machine-translated
 manual and "normally closed, output when normal" is doing a lot of work in one sentence. The check is
 one meter reading: power a drive with nothing wrong and see whether the output is asserted.
 

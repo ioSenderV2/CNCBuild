@@ -237,7 +237,9 @@ Never verified against how the machine is actually wired today.
    the minus signals, so they are INDEPENDENT** - and the seller, who said they were commoned, was
    wrong. Per-signal isolation is real and the Cat 6 pairing gives each signal a forced return in its
    own twist. See [`ig57-drives.md`](ig57-drives.md).
-6. **How a fault is cleared.** The manual does not say. It describes the alarm output and the LED and
+6. **How a fault is cleared.** PROCEDURE:
+   [`../commissioning/bench-session.md`](../commissioning/bench-session.md), while the motors are
+   still loose. The manual does not say. It describes the alarm output and the LED and
    never states what clears an alarm condition - so whether a power cycle is required, or the enable
    input does it, is unestablished. It decides whether the cabinet needs the drives' supply
    switchable independently of the controller, which is cheap to build in now and expensive later.

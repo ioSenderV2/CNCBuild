@@ -305,6 +305,19 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Cable pinout - not a free choice](linear-encoder/sensor-board.md#cable-pinout---not-a-free-choice)
 - [Open](linear-encoder/sensor-board.md#open)
 
+## [commissioning/bench-session.md](commissioning/bench-session.md)
+
+- [Why on the bench, and not later](commissioning/bench-session.md#why-on-the-bench-and-not-later)
+- [Setup](commissioning/bench-session.md#setup)
+- [1. Set the rail and verify it](commissioning/bench-session.md#1-set-the-rail-and-verify-it)
+- [2. Power-on inrush - all four at once](commissioning/bench-session.md#2-power-on-inrush---all-four-at-once)
+- [3. Idle draw, enabled, all four](commissioning/bench-session.md#3-idle-draw-enabled-all-four)
+- [4. Free-running draw](commissioning/bench-session.md#4-free-running-draw)
+- [What the numbers mean](commissioning/bench-session.md#what-the-numbers-mean)
+- [5. Does the alarm assert when healthy?](commissioning/bench-session.md#5-does-the-alarm-assert-when-healthy)
+- [6. How a fault clears](commissioning/bench-session.md#6-how-a-fault-clears)
+- [While the motors are out](commissioning/bench-session.md#while-the-motors-are-out)
+
 ## [commissioning/masses.md](commissioning/masses.md)
 
 - [Why these were weighed](commissioning/masses.md#why-these-were-weighed)
