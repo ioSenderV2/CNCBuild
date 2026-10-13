@@ -140,14 +140,23 @@ def parse(path: Path) -> Doc:
 
     lines = path.read_text(encoding="utf-8").split("\n")
 
-    def continuation(start: int) -> str:
+    def continuation(start: int, skip_blank: bool = False) -> str:
         """A marked entry is nearly always a wrapped paragraph. Harvesting only its
         first line cut sentences in half - 'Much of the analysis on' - so take the rest
-        of the block, stopping at anything that starts something new."""
+        of the block, stopping at anything that starts something new.
+
+        skip_blank is for a marker carried by a HEADING, where the body is always one
+        blank line below. It is off by default because a marker line followed by a blank
+        has already finished its paragraph, and absorbing the next one would put text
+        under an entry that did not write it."""
         parts = []
         for look in lines[start:]:
             t = look.strip()
-            if not t or t.startswith(("#", "|", "```", ">")) or MARKER_RE.match(t):
+            if not t:
+                if skip_blank and not parts:
+                    continue
+                break
+            if t.startswith(("#", "|", "```", ">")) or MARKER_RE.match(t):
                 break
             if re.match(r"^([-*]|\d+\.)\s", t):
                 break
@@ -176,10 +185,19 @@ def parse(path: Path) -> Doc:
         # Only lines that OPEN with a marker are decisions. A marker mid-sentence is
         # emphasis inside an argument, and harvesting those buries the real ones.
         body = re.sub(r"^[-*]\s+", "", raw.strip())
+        # A MARKER IN A HEADING IS A DECISION TOO, and it was not harvested until now.
+        # The hashes are stripped before the match, not before the
+        # search, so "## OPEN: ..." counts while a marker further along a heading does
+        # not - the same rule the body lines get. Fixed 2026-10-12: 43 markers across 14
+        # files were being dropped, and EVERY open item in both wiring/ files was absent
+        # from STATUS.md, which is the one failure a rebuilt-not-maintained list is
+        # supposed to be incapable of. anchorise() had always stripped markers out of
+        # heading anchors, so the form was expected here and only the harvest missed it.
+        body = re.sub(r"^#{1,6}\s+", "", body)
         if not MARKER_RE.match(body):
             continue
         marker = MARKER_RE.match(body).group(0)
-        text = clean(body + " " + continuation(n))
+        text = clean(body + " " + continuation(n, skip_blank=bool(h)))
         if not text:
             continue
         doc.entries.append(
@@ -188,7 +206,10 @@ def parse(path: Path) -> Doc:
                 text=text,
                 file=doc.rel,
                 line=n,
-                heading=" / ".join(stack[-2:]) if stack else "",
+                # A heading-carried marker is already its own text, so the breadcrumb
+                # names its PARENTS and stops - stack[-1] is this very heading, and
+                # printing it in both columns read as a stutter.
+                heading=" / ".join((stack[-3:-1] if h else stack[-2:])) if stack else "",
                 anchor=doc.headings[-1][2] if doc.headings else "",
                 struck=body.lstrip(marker).strip().startswith("~~"),
             )
