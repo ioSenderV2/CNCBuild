@@ -1,217 +1,284 @@
 # The IG57 drives
 
-**Four IG57 all-in-one closed-loop steppers, one per axis.** His, 2026-10-12. The drive is built onto
-the motor, so there are no drives in the cabinet and no motor phases on any cable.
+**Four all-in-one closed-loop steppers, one per axis.** His, 2026-10-12. The drive is built onto the
+motor, so there are no drives in the cabinet and no motor phases on any cable.
+
+## Three names for one part
+
+| Where it appears | Name |
+|---|---|
+| The drive body | **IG57S series** |
+| The manual | **TST57** series |
+| The Amazon listing | **CNCTOPBAOS Integrated Nema23 Closed Loop Stepper Motor** |
+
+**The specific model is TST57-76P.** The manual's selection table gives that model a 94 mm body,
+2.2 N·m and 680 G·cm², which is what the listing sells. The series runs 41P / 56P / 76P / 100P / 112P
+at 1.0 / 1.5 / 2.2 / 2.8 / 3.2 N·m - **all five share the same 5 A drive**, so a torque figure alone
+does not identify the part.
+
+NOTE: **Call it the TST57-76P when reading the manual and the IG57 when looking at the machine.**
+Three names for one part is how a future session ends up believing there are two.
 
 ## The part
 
-**CNCTOPBAOS Integrated NEMA 23 Closed Loop Stepper Motor**, from the listing he bought from:
+From the manual's own tables, with the listing agreeing except where noted:
 
 | | |
 |---|---|
 | Holding torque | **2.2 N·m** |
-| Current | **5 A** |
-| Supply | **DC 24 V - 50 V** |
-| Shaft | **8 mm** |
-| Maximum speed | **3000 rpm** |
-| Pulse input | **300 kHz** |
-| Encoder | **1000-line** |
-| Microstepping | multi-microstep, set on the drive |
+| Drive output current | **5 A** (series range 0.2 - 5 A) |
+| Phase resistance | **0.6 Ω** |
+| Phase inductance | **2.5 mH** |
+| Moment of inertia | **680 G·cm²** |
+| Body length | **94 mm**, shaft **21 mm** beyond it |
+| Shaft | **8 mm**, with a flat |
+| Motor face | **56 mm** square, **4 × Ø5 mm** at **47 mm**, **38.1 mm** pilot boss |
+| Encoder | **1000 line** |
+| Control mode | **pulse + direction** |
+| Communication | **TTL over MicroUSB**, 9600 8N1 |
 
-NOTE: **2.2 N·m is what this repo had independently concluded.**
-[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) worked through 1.5, 2.2 and 3.2 N·m and
-chose 2.2 for all four axes, on torque in the 1000-1500 rpm band rather than on thrust. The part
-bought agrees with that file's answer. **Its reasoning is now partly beside the point** - it was
-choosing a motor to buy, and the motor is bought - but its *conclusion* needs no revision, and its
-open questions about the current budget now have a real 5 A to work with instead of an unknown.
+FLAG: **THE WEIGHT IS STATED TWO WAYS AND THEY ARE NOT CLOSE.** The manual's table gives the 76P as
+**700 g**; the listing says **1.1 kg / 2.42 lb**. One of them is wrong by 400 g per motor and there
+are four of them. It matters to the Z carriage, which [`../commissioning/masses.md`](../commissioning/masses.md)
+records as weighed at 9 kg. **Put one on a scale** rather than picking a number.
 
-OPEN: **NO DATASHEET OR MANUAL IS COMMITTED, AND THIS REPO'S RULE SAYS ONE MUST BE.** Everything above
-is off a retail listing, which is the weakest kind of source this repo accepts - the ESP32 header
-pinout had to be recovered from a schematic once because a link was treated as a copy. **Nothing below
-can be closed without the vendor documentation**, and several of the questions are the kind that cost
-a part if guessed.
+OPEN: **The 94 mm body and 21 mm shaft want checking against the cast stepper frames** before
+anything is bolted up - see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) for the
+frames. Nothing in [`../dimensions/`](../dimensions/) currently carries a motor length.
 
-## "Basically the same specs as the HBT57C" - his, 2026-10-12 - and the two places it is not
+## The supply voltage is the one real problem
 
-The Mega V runs **TOSEASTARS HBT57C**, also an integrated closed-loop NEMA 23, and he puts the IG57 as
-basically the same part by specification. That is useful: it makes the HBT57C's documented behaviour
-the **right first hypothesis** for this drive rather than a blank sheet.
+🔴 **THE PLANNED RAIL IS 48 V AND THE MANUAL'S LOWEST STATED MAXIMUM IS 48 V.** This is not a margin
+question that can be waved through, and it is the single thing on this page worth deciding before
+anything is powered.
 
-NOTE: **A full write-up of the HBT57C's behaviour is in this repo's history at commit 72df830** - the
-LED fault codes by flash count, the alarm output being an open collector with no pull-up, the
-unresolved question of whether the enable input clears a fault, the RS232 configuration port, and the
-no-reverse-polarity warning. It was removed because this repo documents the new machine and those are
-the Mega V's drives. **Read it as a set of things to look for in the IG57 documentation, never as a
-statement about the IG57.** Different vendor, and a flash-code table is exactly the kind of thing that
-differs between two parts built to the same shape.
+**The manual states the supply range five different ways:**
 
-FLAG: **TWO SPECIFICATIONS ARE NOT THE SAME, AND BOTH ARE LOAD-BEARING.**
+| Where | What it says |
+|---|---|
+| §1.1 Product Features | **DC24V ~ DC50V** |
+| §3 selection table | **24-48 VDC** |
+| §5.1 what to prepare | **a 24~48V DC power supply** |
+| §6.1 selecting the voltage | **"allowable maximum operating voltage range is 22VDC~50VDC"**, and **"performs best when powered by a 36V DC voltage"** |
+| §7.3 pin definitions, V+ | **DC24V~48V** |
 
-| | IG57, this machine | HBT57C, the Mega V |
+**And §6.1 is explicit about what happens at the top:** *"When the driver is powered by a regulated
+power supply and the supply voltage is close to 50VDC, it is recommended to take voltage clamping
+measures at the power input end to avoid the driver from overvoltage alarm and stopping working due
+to the supply voltage being higher than 50VDC."* For an unregulated supply it says the **no-load**
+output must not exceed 50 V.
+
+**Separating the observation from what it means**, because this repo's rules are explicit about it:
+
+- **Observed:** the over-voltage alarm is above **50 V**. The recommended voltage is **36 V**. The
+  lowest stated maximum is **48 V**. The manual contradicts itself on the range but **not** on the
+  alarm or the recommendation.
+- **Therefore:** a 48 V rail is at the top of the lowest stated range, with about **2 V** to the
+  alarm. Regeneration on decel of a 58 kg gantry has to fit in that 2 V, and the drive's response to
+  exceeding it is to **alarm and stop working** - mid-job.
+- **What does NOT transfer:** the Mega V has run 48 V for a long time with no over-voltage fault, but
+  that is a **different drive** rated 24-55 V. Its clean history is evidence about the HBT57C, not
+  about this part.
+
+OPEN: **48 V, 36 V, or clamp - not decided, and it is his call.** 36 V is what the manual recommends
+and would need a supply that is not currently owned. 48 V is owned, is inside one of the five stated
+ranges and outside two of them, and would want the clamping §6.1 describes. The supply question in
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) - 600 W against 800 W - is now the
+*smaller* half of this decision.
+
+NOTE: **Lower voltage costs top speed, which is the honest trade.** Corner speed scales with supply
+voltage, so 36 V against 48 V gives up rapid feed rate at the high end. This machine's rapids are
+already set by ball-screw whip rather than by the motor - see the table in
+[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md), whose working figure is 1510 rpm -
+so the loss may cost nothing that is actually reachable. **That is the thing to check before
+assuming 48 V is needed.**
+
+## Inputs and outputs - what the manual settles
+
+### The inputs take 3.3 V directly
+
+SETTLED: **PUL, DIR and EN are optically isolated, DIFFERENTIAL, and a high level can be
+3.3 - 24 VDC applied directly.** The manual says so in §1.1, §7.2 and the §7.3 pin table.
+
+FLAG: **THAT REMOVES THE LEVEL-SHIFTING PROBLEM THE PREVIOUS DRIVES CREATED.** The Mega V's drives
+wanted a 24 V pull-up that would destroy a Teensy pin, and this folder carries several warnings about
+it. **A 3.3 V controller output drives these inputs with nothing in between** - no divider, no
+pull-up, nothing to get the ratio wrong on.
+
+| Input | Minimum pulse width | Maximum frequency |
 |---|---|---|
-| Supply range | **24 - 50 V** | 24 - 55 V |
-| Current | **5 A** | the driver index read 4 A continuous |
-| Holding torque | **2.2 N·m**, all four axes | **3.2 N·m** on X, Y1, Y2 |
+| **PUL** | 2 µs | **300 kHz** |
+| **DIR** | 2 µs | 300 kHz |
+| **EN** | **100 µs** | **10 kHz** |
 
-The **50 V** is the one to carry forward - see the next section. The **5 A** matters to the supply
-sizing rather than to the motor, and it is a figure
-[`../machine/stepper-sizing.md`](../machine/stepper-sizing.md)'s open current-budget question has been
-waiting for. The torque difference is simply two different machines: 3.2 N·m was never this build's
-specification, and that file chose 2.2 deliberately.
+NOTE: **EN is a far slower input than the other two and that is by design.** 100 µs minimum against
+2 µs. It is not a signal to pulse quickly at.
 
-## The over-voltage headroom is the first thing to establish
+### The alarm output fails the RIGHT way
 
-FLAG: **THE INPUT RANGE TOPS OUT AT 50 V AND THE RAIL IS 48 V.** That is the figure from the listing,
-and it is **5 V lower than the drives this repo previously assumed**, where the planning figure was
-55 V. Every statement in this folder about regeneration headroom was written against the old number.
+SETTLED: **ALM is normally closed by default and outputs when normal** - the manual's §7.3, which
+also says it can be inverted in software or assigned another function. It is an **open collector**,
+**30 V maximum**, **50 mA maximum** sink or source.
 
-Keep the two apart, because they are different quantities and only one of them is known:
+🔴 **THIS REVERSES WHAT THIS FOLDER HAS BEEN SAYING, AND IT IS GOOD NEWS.** The Mega V's alarm
+asserted on fault, which meant an unpowered drive or a broken wire read as healthy - the failure
+[`breakout-box.md`](breakout-box.md) calls failing silent. **Asserting when healthy inverts that: no
+power, broken wire, or pulled connector all look like an alarm.** That is fail-safe in the direction
+a guard needs, by default, with no extra input required.
 
-- **Observation:** the listing states an input range of DC 24 V - 50 V.
-- **Not known:** the **over-voltage trip point**, which is a separate number from the top of the input
-  range and is normally above it. On the previous drives the range topped at 55 while the trip was
-  stated variously as 55, 60 and 65.
+OPEN: **Confirm the sense on the bench before relying on it**, because this is a machine-translated
+manual and "normally closed, output when normal" is doing a lot of work in one sentence. The check is
+one meter reading: power a drive with nothing wrong and see whether the output is asserted.
 
-So **48 V may leave 2 V of headroom, or it may leave more** - and nothing here can say which. OPEN:
-**Find the trip point in the vendor documentation before committing to a 48 V rail.** If it really is
-at or near 50 V, then decelerating a 58 kg gantry on a 5 mm lead is worth thinking about properly
-rather than assuming the previous machine's clean history transfers - it was accumulated on different
-drives with a different ceiling.
+FLAG: **IT IS AN OPEN COLLECTOR, SO IT STILL NEEDS A PULL-UP - and now the pull-up can be 3.3 V.**
+With a 30 V withstand and 50 mA capability, pulling up to the controller's own 3.3 V rail is well
+within it and keeps everything on one logic level. **Do not pull it to 24 V.**
 
-The supply choice itself is in
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md), which also carries the open
-600-versus-800 W question. **The 5 A figure is per drive**; what four of them draw from the supply is
-not four times that, and is not established.
+### The fifth pair is EX, in-place
 
-## The terminals on the drive
+The connector diagram labels pins 11 and 12 **EX+ / EX-**, *"positive signal in place"* and
+*"negative signal in place"* - an in-position output.
 
-His, 2026-10-12. **Two separate terminal blocks**, and the separation is the drive's own, not a
-choice made in the cabinet:
+OPEN: **The manual does not define EX anywhere.** §1.1 describes only *"1 group of independent
+digital output"*, and the §7.3 pin table stops at ALM-. So the diagram shows a tenth and eleventh
+signal that the text does not explain, and whether EX is a second independent output or a reassignment
+of the same one is **not established**. Not used today, and worth knowing before anything is designed
+around it.
 
-| Block | Carries | Sizing |
+## Connector pinout
+
+From the manual's §7.3 and the connector diagram. **Two separate terminal blocks** - a 2P for power
+and a small-gauge block for signals:
+
+| Pin | Name | |
 |---|---|---|
-| **2P**, heavy | **48 V** | **size for 5 A** - his instruction |
-| small gauge | **5 control signal pairs** | signal-level only |
+| 1 | **V+** | supply positive |
+| 2 | **V-** | supply negative |
+| 3 | **PU+** | pulse |
+| 4 | **PU-** | |
+| 5 | **DR+** | direction |
+| 6 | **DR-** | |
+| 7 | **EN+** | enable |
+| 8 | **EN-** | |
+| 9 | **AL+** | alarm out |
+| 10 | **AL-** | |
+| 11 | **EX+** | in place - undefined in the text, unused |
+| 12 | **EX-** | |
 
-**Four of the five signal pairs are used**: **PU+/PU-**, **DR+/DR-**, **EN+/EN-**, **AL+/AL-**, which
-are the first four. OPEN: **What the fifth pair is has not been recorded** - do not guess it from
-another vendor's pinout; it wants the documentation, and it is a spare input or output that may be
-worth having.
+## The cabling
 
-FLAG: **THE 5 A IS THE NUMBER THE 48 V SIDE GETS SIZED TO - the terminal block, the conductor and the
-crimp.** It is the drive's rated current, and it is per drive. What four of them actually draw from
-the supply is not four times it and is not established - see
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) for the supply question.
+**One Cat 6 patch cable per stepper**, plus **18/2 shielded** carrying the supply. His scheme,
+2026-10-12. Each signal travels as a plus/minus pair in its own twist, **plus on the striped
+conductor, minus on the solid**:
 
-## The cabling - Cat 6 for signals, 18/2 shielded for power
-
-**One Cat 6 patch cable per stepper**, plus **18/2 shielded** carrying the 48 V. The Cat 6's four
-twisted pairs land on the drive's four signal pairs, **plus on the striped conductor and minus on the
-solid**:
-
-| Cat 6 pair | Striped conductor | Solid conductor |
+| Cat 6 pair | Striped | Solid |
 |---|---|---|
-| 1 | **PU+** - pulse / step | **PU-** |
-| 2 | **DR+** - direction | **DR-** |
-| 3 | **EN+** - enable | **EN-** |
-| 4 | **AL+** - alarm out | **AL-** |
+| 1 | **PU+** | **PU-** |
+| 2 | **DR+** | **DR-** |
+| 3 | **EN+** | **EN-** |
+| 4 | **AL+** | **AL-** |
 
-NOTE: **THE SOLID CONDUCTOR IS THE SIGNAL'S MINUS LEG, NOT A GROUND, and the distinction is worth
-keeping even though the wiring is identical either way.** A minus leg is one end of that signal's own
-circuit; a ground is a shared node. Calling it a ground invites someone to tie the four of them
-together as a convenience, and that is precisely the thing to decide deliberately rather than by
-habit.
+NOTE: **THE SOLID CONDUCTOR IS THE SIGNAL'S MINUS LEG, NOT A GROUND.** The manual calls these inputs
+differential, which is what that means: each pair is the two ends of an opto LED. Calling the minus
+leg a ground invites someone to tie the four together as a convenience.
 
-NOTE: **EACH SIGNAL TRAVELS AS A PAIR, WHICH IS WHAT MAKES CAT 6 THE RIGHT CABLE HERE.** A twisted
-pair only rejects anything if the return current actually flows in the other half of that pair. With
-plus and minus of one signal in one twist, the loop area is tiny - which is what 300 kHz of pulse
-train over a drag chain wants.
+NOTE: **A pair per signal is the right cable for this part.** 300 kHz with a 2 µs minimum pulse width
+in a drag chain is exactly the case where loop area matters, and a twisted pair only helps if the
+return current flows in the other half of the pair.
 
-FLAG: **IT IS STILL NOT THE SIX-WIRE SHELL [`breakout-box.md`](breakout-box.md) DESCRIBES.** That page
-has one GND per axis in a 6-pin Mini-Fit Jr with the 48 V in the same shell; this is four pairs on
-Cat 6 with the 48 V on its own shielded cable. The **opto commoning** that page assumed turns out to
-be right - see below - but the connector, the conductor count and the power separation are all
-different.
+**18/2 is heavier than the manual asks for.** §7.1 recommends **AWG 20-24** for the supply
+connection; 18 AWG exceeds that, which is the right direction to err.
 
-## The inputs are opto pairs - the remaining question is where the minus legs meet
+FLAG: **IT IS STILL NOT THE SIX-WIRE SHELL [`breakout-box.md`](breakout-box.md) DESCRIBES**, and the
+supply no longer shares a shell with the signals.
 
-SETTLED: **THE PLUS/MINUS NAMING IS THE ANSWER TO WHETHER THESE ARE OPTOISOLATED INPUTS.** A drive
-that brings out PU+ and PU- as a pair is presenting the two ends of an opto LED, not a signal and a
-ground. So the galvanic isolation this folder keeps warning about is **real and is per signal**, and
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md)'s point stands: it is free, it is
-already paid for, and it is easy to short out by accident.
+## Fit an external 5 A fast-blow fuse per drive
 
-**The four minus legs are commoned inside the drive - the seller says so, 2026-10-12.** That is
-ordinary common-cathode practice and is what [`breakout-box.md`](breakout-box.md) had assumed all
-along, so that page's opto reasoning was right about this drive even though it named the wrong one.
+PROCEDURE: **§7.1 says the drive has an internal fuse in series with V+ that the user cannot
+replace, and recommends an external 5 A fast-blow fuse in series with the positive supply so there
+is a fuse that *can* be replaced.** Four drives, four fuses, fitted in the cabinet.
 
-FLAG: **SO THERE IS ONE ISOLATED COMMON PER DRIVE, NOT FOUR ISOLATED SIGNALS - and an earlier draft
-of this file said the opposite.** The isolation that matters is still there: it is between **each
-drive and the controller**, which is the boundary worth having. What is not there is per-signal
-isolation, because the four solid conductors land on the same node at the drive end.
+FLAG: **THERE IS NO REVERSE-POLARITY PROTECTION.** The listing is blunt: reversing the supply damages
+the internal circuit. Four identical 2P connectors assembled by hand - **check polarity per drive
+before the first power-on**, not after.
 
-**It does not spoil the Cat 6 choice** - tight twists, one pair per signal and a short run are the
-right cable for a 300 kHz pulse train in a drag chain, and this is how common-cathode drives are
-normally wired. The thing to be clear-eyed about is that the four solid conductors are **in parallel
-between two nodes** once both ends are commoned, so return current redistributes across them rather
-than each one carrying only its own signal's return. The pair still helps; it just is not the clean
-per-signal loop the independent case would give.
+## Diagnosis - there is no fault code table
 
-PROCEDURE: **Confirm it with a meter before the cabinet grounding is finalised - continuity between
-PU- and DR- at the drive's own terminal block, everything powered off.** Under a minute, and it is
-worth doing: this is the seller's word, which is the same class of source that
-answered the Mega V's enable-reset question **both ways in one message**. A seller's statement is a
-claim, not a datum, and this one decides a wiring scheme.
+🔴 **THE MANUAL PROMISES ONE AND DOES NOT CONTAIN IT.** Its table of contents lists **"11. Error
+Codes"**. The document ends at section 10, which says only:
 
-OPEN: **AL is the one whose direction still matters most.** On the Mega V's drives the alarm was an
-open collector needing a pull-up, and having no pull-up is why it had never once asserted. If AL+/AL-
-here is also an open collector rather than an opto output, it needs a pull-up - and if the
-documentation specifies that pull-up at 24 V it **must not go anywhere near a Teensy pin**, which is
-3.3 V and **not** 5 V tolerant. Opto-isolate it or pull it to 3.3 V through a high value; see
-[`breakout-box.md`](breakout-box.md).
+> *"TST57 uses a dual-colour patch LED (red/green) to display the status. The normal status is that
+> the green LED flashes. If the red LED flashes, it indicates an alarm or an error has occurred."*
 
-**The 48 V on its own shielded pair, separate from the signals, is the right split** - it keeps the
-chopped motor current out of the Cat 6 entirely. Shield grounded **at one end only**; see
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
+So **red flashing means something is wrong, and nothing distinguishes what.** The Mega V's drives
+could be diagnosed by counting flashes; this one cannot, on the documentation available.
+
+OPEN: **Ask the vendor for the missing section 11.** It is a named, numbered section of their own
+manual, which is a far easier thing to ask for than an explanation - and the alternative is diagnosing
+a stopped machine from one red LED.
+
+## Configuration - and a contradiction about whether it is even allowed
+
+The manual's §5.1 says to prepare **a PC running Windows and a matching MicroUSB cable**, and §9 gives
+the TTL parameters: **9600 baud, 8 data bits, 1 stop bit, no parity**. That reads as a user-facing
+configuration path.
+
+🔴 **THE LISTING SAYS THE OPPOSITE.** Its own photograph of the MicroUSB port is captioned
+*"For internal factory use only (firmware programming during the manufacturing process) and not for
+end-user configuration."*
+
+OPEN: **Which is true decides whether anything in this drive is adjustable at all** - including
+whatever threshold governs how readily the closed loop faults, and whether the alarm output can
+actually be inverted or reassigned as §7.3 claims. The manual describes a host-computer workflow;
+the seller says the port is not for users. **Settle it before assuming either.**
+
+### DIP switches
+
+Everything else is set on the body. SW1-4 select microstep from the manual's table; the listing adds
+SW5 and SW6, which the manual covers only partly.
+
+| Switch | Function |
+|---|---|
+| **SW1-4** | Microstep - 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 1000, 2000, 4000, 5000, 8000, 10000, 20000, 40000 |
+| **SW5** | Direction. **OFF = CCW, ON = CW** |
+| **SW6** | Current. **OFF = large, ON = low** - from the listing image; the manual does not mention SW6 |
+
+NOTE: **All four ON is 400 steps/rev, and the table is not in a sensible order** - it runs 400 up to
+51200 and then restarts at 1000. Read the row, do not infer the pattern.
 
 ## What the closed loop does and does not cover
 
-The drive has its own **1000-line encoder** on the motor shaft and corrects its own position. That
-means **lost steps at the motor are the drive's problem and are already handled** - which is one of
-the reasons the linear-encoder project narrowed its own justification away from motor-side step loss.
-See [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
+The drive has its own **1000-line encoder** and corrects its own position, so **lost steps at the
+motor are the drive's problem and are already handled** - one of the reasons the linear-encoder
+project narrowed its justification away from motor-side step loss. See
+[`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
 
 What a shaft encoder cannot see is anything **downstream of the shaft** - a coupling slipping, a grub
-screw backing out, backlash - and it cannot see **Y1 against Y2**, because the two drives have no
-knowledge of each other. Those are the linear scales' job and the reason that project exists.
-
-OPEN: **How this drive reports a fault, and how a fault is cleared.** Both were live questions on the
-previous drives and neither answer transfers. Specifically worth establishing from the documentation:
-whether there is an LED fault code scheme and what the codes are; whether a fault clears by power
-cycle only or by a signal on the enable input; and whether the drive exposes a tracking-error
-threshold that can be configured, which is what decides how twitchy a closed-loop fault is on a
-machine that cuts wood.
+screw backing out, backlash - and it cannot see **Y1 against Y2**, because the drives have no
+knowledge of each other. Those are the linear scales' job.
 
 ## grblHAL can take a motor fault input, and does not use it per axis
 
 grblHAL has **$744** and **$745** and raises **Alarm 17, motor fault**. The core defines *per-axis*
 fault inputs, but the Teensy driver implements only a **single combined** motor-fault pin across every
-board map - so four separate AL conductors are ahead of the firmware and would have to be wire-ORed
-into one input today.
+board map - so four separate AL conductors are ahead of the firmware and would be wire-ORed into one
+input today.
 
-Keeping them separate in the cabling is still right: the wiring is nearly free during a build and
-expensive to retrofit, and per-axis needs only a board-map edit later. With AL already on its own pair
-per stepper, that wiring is done.
+Keeping them separate in the cabling is still right: nearly free during a build, expensive to
+retrofit, and per-axis needs only a board-map edit later. With AL on its own pair per stepper that
+wiring is already done.
 
-FLAG: **AL ON ITS OWN IS NOT A GUARD, WHICHEVER DRIVE IT IS.** If the output is open collector then an
-unpowered drive and a broken wire both read the same as healthy, so it only becomes a real guard
-paired with a **driver-power-present** input: *power present AND no alarm* = healthy. That reasoning
-is about fail direction and not about a particular part, so it survived the change of drive. There is
-still no pin allocated for the power-present signal.
+FLAG: **WIRE-ORING AN ASSERT-WHEN-HEALTHY OUTPUT IS A SERIES CHAIN, NOT A PARALLEL ONE.** The Mega
+V's alarms asserted on fault, so paralleling them gave "any drive faulted". These assert when
+*healthy*, so the equivalent is all four in **series** - any drive dropping out breaks the chain. Easy
+to get backwards, and getting it backwards produces a guard that reads healthy when every drive is
+dead.
 
 ## Provenance
 
-The part and the cabling scheme are his, given 2026-10-12. **This file replaced one written the same
-day about the HBT57C**, which turned out to be the Mega V's drives and not this machine's - that error
-came from a memory note, and it is why the note is deleted and this is in the repo instead. The
-HBT57C material was removed rather than kept: this repo is the new machine.
+The part, the cabling and the correction that the HBT57C is the Mega V's drive are all his,
+2026-10-12. The manual is the TST57 series user manual he supplied the same day.
+
+OPEN: **The manual is not yet in [`../manufacturer-assets/`](../manufacturer-assets/)**, which this
+repo's datasheets-committed rule requires. Everything above was read out of it, and several items -
+the missing section 11, the EX pins, the MicroUSB contradiction - need it present to be chased.

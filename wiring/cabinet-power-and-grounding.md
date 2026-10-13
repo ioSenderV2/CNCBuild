@@ -23,6 +23,18 @@ item that rated phase current across four motors may exceed the 12.5 A budget, a
 resolution is that *either the supply or the motor has to move*. The 800 W supply moves the supply,
 and it is a swap of a part that is already owned rather than a purchase.
 
+NOTE: **DO NOT BUDGET FOUR MOTORS AT 5 A EACH - the manual says so directly, and then declines to
+give a number.** §6.2 explains that the supply input current is **smaller** than the motor phase
+current, because the drive converts a high-voltage low-current input into a low-voltage high-current
+winding drive, and that the input current also depends on speed and load. Its conclusion is that
+*"users need to carry out specific analysis and estimation"*. So **20 A is the wrong figure to size
+against**, and the right one is not in the documentation - which makes this a measurement to take
+with a clamp meter once one axis runs, not an arithmetic problem.
+
+FLAG: **THE VOLTAGE DECISION COMES FIRST AND MAY MOOT THIS ONE.** If the rail moves to the manual's
+recommended 36 V, both the 600 W and 800 W figures buy different currents than they do at 48 V. See
+[`ig57-drives.md`](ig57-drives.md).
+
 PROCEDURE: **Commission on the final voltage and the final supply.** Every acceleration limit and
 every threshold that gets tuned is a function of the rail. Tuning on one supply and then swapping
 the other in means doing it twice, and the second time nobody will remember which figures were
@@ -48,8 +60,8 @@ that switches is how it gets one.
 
 FLAG: **CHECK THE 5 V REGULATOR'S ABSOLUTE MAXIMUM INPUT BEFORE TRUSTING ANY OF THIS, AND SIZE IT ON
 WHAT THE RAIL CAN REACH RATHER THAN ON 48 V.** The ceiling is whatever the drives tolerate before
-they trip, and the IG57's stated input range tops at **50 V** - see
-[`ig57-drives.md`](ig57-drives.md), where the actual trip point is an open question. A regulator
+they trip, and the TST57 manual puts the drives' **over-voltage alarm above 50 V** - see
+[`ig57-drives.md`](ig57-drives.md), where the rail voltage is now the largest open decision. A regulator
 chosen with no margin dies **taking the controller with it, mid-job**, which is the failure that
 looks like a random crash and gets diagnosed as firmware. FLAG: **This paragraph said 55 V until
 2026-10-12**, from the Mega V's drives; do not reinstate that figure.

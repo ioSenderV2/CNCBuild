@@ -171,20 +171,33 @@ one input today. Keeping them separate is still right: the wiring is nearly free
 expensive to retrofit, and per-axis needs only a board-map edit later. With AL on its own pair per
 stepper that wiring is already done.
 
-### FLAG: An alarm output that fails open is not a guard, whichever drive it is
+### SETTLED: The alarm fails the right way on this drive, and no power-present partner is needed
 
-If the drive's alarm is an open-collector output then **a drive with no power, or a broken alarm wire,
-reads exactly like a healthy drive**. It becomes a real guard only paired with a
-**driver-power-present** input: *power present AND no alarm* = healthy, neither half sufficient.
+**The IG57's alarm output is normally closed by default and asserts when the drive is HEALTHY** - the
+TST57 manual's §7.3, see [`ig57-drives.md`](ig57-drives.md). An unpowered drive, a broken alarm wire
+or a pulled connector all stop the assertion, so all three read as a fault.
 
-This is about fail direction rather than about a part, which is why it survived the change of drive
-intact. **There is still no pin allocated for the power-present signal** - it is a candidate for the
-seven spares in [`db37-axis-interconnect.md`](db37-axis-interconnect.md). OPEN: Whether the IG57's
-alarm is in fact open collector is not established - see [`ig57-drives.md`](ig57-drives.md).
+FLAG: **THIS PAGE PREVIOUSLY SAID THE OPPOSITE AND IT WAS RIGHT ABOUT A DIFFERENT DRIVE.** The Mega
+V's alarm asserted on fault, so it needed a **driver-power-present** partner to become a real guard -
+*power present AND no alarm* = healthy. **That partner is not needed here**: asserting when healthy
+already carries the power-present information, because a drive with no power cannot assert anything.
+The spare pin that was being reserved for it in
+[`db37-axis-interconnect.md`](db37-axis-interconnect.md) is freed.
 
-Same failure direction as the limit sensors above, and worth holding both in mind together: until the
-NC sensors are fitted and an alarm guard exists, **two of the three things that are supposed to stop
-this machine fail silent.**
+FLAG: **SO THE WIRE-OR BECOMES A SERIES CHAIN.** Four alarms that assert on fault parallel together;
+four that assert when healthy go in **series**, and any one dropping out breaks it. Wiring it as a
+parallel OR out of habit produces a guard that reads healthy when every drive is dead.
+
+OPEN: **Confirm the sense with a meter before relying on it** - power one drive with nothing wrong
+and see whether the output is asserted. The manual is machine-translated and "normally closed by
+default, and output when normal" is one sentence carrying the whole guard.
+
+**It is an open collector - 30 V and 50 mA maximum - so it still needs a pull-up**, and that pull-up
+can now be **3.3 V**, keeping the whole path on one logic level. Do not pull it to 24 V.
+
+With this and the NC limit sensors on order, the two things that were failing silent on this machine
+are both addressed - which is worth saying, because this page spent a long time recording that they
+were not.
 
 ### Do not daisy-chain the 48 V
 
@@ -202,32 +215,34 @@ Never verified against how the machine is actually wired today.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V
    direct, or 5 V if its inputs are buffered. The breakout box has 5 V but not 3.3 V, so this also
    decides whether the resistor sits in the breakout box or at the controller.
-3. **48 V against the IG57's 50 V input ceiling.** This item read "48 V against a 55 V over-voltage
-   trip" until 2026-10-12 and that was the Mega V's drive. The listing gives the IG57 as 24-50 V, and
-   the **trip point is a different number from the top of the range and is not known** - so the
-   headroom for regeneration on decel is somewhere between about 2 V and unknown, not the 7 V this
-   item used to assert. See [`ig57-drives.md`](ig57-drives.md). The Mega V's clean regen history was
-   accumulated on different drives with a higher ceiling and **does not transfer**. Also see the
-   supply question in [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
+3. 🔴 **THE RAIL VOLTAGE IS THE BIGGEST OPEN ITEM ON THIS PAGE.** The TST57 manual recommends
+   **36 V**, states the supply range five different ways with a lowest maximum of **48 V**, and puts
+   the **over-voltage alarm above 50 V** with clamping advised near it. A 48 V rail therefore sits at
+   the top of the lowest stated range with about **2 V** for regeneration on decel, and the drive's
+   response to exceeding it is to alarm and stop mid-job. The Mega V's clean regen history is about a
+   **different drive** rated to 55 V and does not transfer. Not decided - see
+   [`ig57-drives.md`](ig57-drives.md), where the five statements are set out.
 4. **Peak current per axis.** The IG57 is rated **5 A**; the drag-chain run length is unrecorded, so
    the drop is uncomputed. The 48 V now runs on **18/2 shielded** rather than in a six-way shell.
-5. **Confirm the opto commoning with a meter, not with the seller.** The IG57's inputs are plus/minus
-   pairs, so they are opto inputs, and the seller says the four minus legs are commoned inside the
-   drive - which is what this page had assumed. **That makes it a claim rather than a datum, and it
-   is the assumption everything else here rests on.** Continuity between PU- and DR- at the drive's
-   terminal block, powered off, settles it in under a minute. Worth the minute: a vendor answered the
-   Mega V's equivalent question both ways in one message.
-6. **EN polarity and whether EN clears a fault.** Both were live questions on the Mega V's drives and
-   neither answer transfers. An opto input where floating means no current can be described two
-   opposite ways in one manual, so **measure, do not reason** - and establish separately whether a
-   fault clears by power cycle only or by a signal on enable, because that decides whether the
-   cabinet needs the drives' 48 V switchable independently of the controller. That is cheap now and
-   expensive later.
+5. **Confirm the opto commoning with a meter, not with the seller.** The manual calls the inputs
+   optically isolated and **differential**, and the seller says the four minus legs are commoned
+   inside the drive. The manual does not say either way, so the commoning is still **a claim rather
+   than a datum**, and it is the assumption the grounding scheme rests on. Continuity between PU- and
+   DR- at the drive's terminal block, powered off, settles it in under a minute.
+6. **How a fault is cleared.** The manual does not say. It describes the alarm output and the LED and
+   never states what clears an alarm condition - so whether a power cycle is required, or the enable
+   input does it, is unestablished. It decides whether the cabinet needs the drives' supply
+   switchable independently of the controller, which is cheap to build in now and expensive later.
+   **EN polarity is not the worry it was** on the previous drives: these inputs take 3.3-24 V
+   directly on a defined differential pair, so there is no floating-opto ambiguity to reason about.
 7. **The limit sensor junction.** See the 1.2 m cable above - needed per axis, not yet designed.
 8. **Target plates.** 4 mm non-shielded sensing means something ferrous has to come within 4 mm at
    each end of travel. Not yet specified.
-9. **No IG57 documentation is committed.** Everything known about the drive is off a retail listing.
-   Per this repo's datasheets-committed rule the manual or datasheet belongs in
-   [`../manufacturer-assets/`](../manufacturer-assets/), and **items 3, 5 and 6 above cannot be
-   closed without it** - between them they decide the rail voltage, the grounding scheme and whether
-   the cabinet needs switched motor power.
+9. **The TST57 manual is not yet committed.** He supplied it on 2026-10-12 and
+   [`ig57-drives.md`](ig57-drives.md) is written from it, but per the datasheets-committed rule the
+   PDF itself belongs in [`../manufacturer-assets/`](../manufacturer-assets/). **It does not close
+   items 3, 5 or 6** - the voltage is a decision, the commoning is not in the manual, and clearing a
+   fault is not described anywhere in it.
+10. **The manual's section 11 does not exist.** Its contents list "11. Error Codes" and the document
+    stops at section 10. So a red LED means something is wrong and nothing says what. Worth asking
+    the vendor for by number.
