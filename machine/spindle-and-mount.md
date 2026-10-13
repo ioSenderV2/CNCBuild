@@ -20,9 +20,11 @@
 | Clamp size | 120 mm × 55 mm × 100 mm |
 | Fixing | **4 × M8 × 80 mm socket head** per clamp, into the Z plate |
 
-**Two clamps at either end is the right arrangement** and matches the dual-clamp recommendation
-already carried in the project notes for a round-body spindle. Eight M8 holding the spindle is not
-where this assembly will be soft.
+**Two clamps at either end is the right arrangement**, and it is what a round body is *for*: tilt
+resistance scales with the **spacing** between the clamps, so two spaced clamps beat a single flange,
+and tram is easier because the mount block can be shimmed while rotation in the bore is irrelevant.
+The Mega V's weak mount was **one short 80 mm clamp** - a single clamp, not clamps as a concept.
+Eight M8 holding the spindle is not where this assembly will be soft.
 
 ## SETTLED: Closed: the body is 213, and the 199 is retired
 
