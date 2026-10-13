@@ -298,6 +298,11 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Cable pinout - not a free choice](linear-encoder/sensor-board.md#cable-pinout---not-a-free-choice)
 - [Open](linear-encoder/sensor-board.md#open)
 
+## [commissioning/masses.md](commissioning/masses.md)
+
+- [Why these were weighed](commissioning/masses.md#why-these-were-weighed)
+- [Provenance](commissioning/masses.md#provenance)
+
 ## [commissioning/README.md](commissioning/README.md)
 
 - [Travels, per axis](commissioning/README.md#travels-per-axis)

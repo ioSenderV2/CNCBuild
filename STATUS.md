@@ -232,6 +232,11 @@ the interface, not this file.
 
 - OPEN: [L16](linear-encoder/sensor-board.md#the-through-hole-jack-does-not-obviously-fit) — *Sensor board*<br>The through-hole jack does not obviously fit The tape-facing side has a hard height budget, and it is small:
 
+## [commissioning/masses.md](commissioning/masses.md)  (2)
+
+- OPEN: [L23](commissioning/masses.md#measured-masses) — *Measured masses*<br>The whole-machine and whole-installation figures are ESTIMATES, not weighings, and should not be quoted as measurements. From the 2026-09-26 session: the machine with spindle, risers and cabling at roughly 80 kg, and the whole installation - machine, torsion box, sand and timber base
+- FLAG: [L33](commissioning/masses.md#why-these-were-weighed) — *Measured masses / Why these were weighed*<br>Reflected inertia is why the gantry's mass nearly vanishes from the motor decision, and these are the numbers that showed it. Through a 5 mm lead, load mass reaches the motor shaft as mass x (lead / 2π)² - and ../machine/stepper-sizing.md works that to 6.3 x 10⁻⁷ kg·m² per kilogram, which puts the whole 58 kg below the screw's own inertia. So these masses settle the structural questions - what the risers carry, what the three-point mount carries, what has to be lifted - and are very nearly irrelevant to motor sizing. Reading them the other way round is the mistake they invite.
+
 ## [commissioning/stiffness-test.md](commissioning/stiffness-test.md)  (7)
 
 - FLAG: [L11](commissioning/stiffness-test.md#the-stiffness-test-push-the-nose-find-where-it-moves) — *The stiffness test: push the nose, find where it moves*<br>Whether the X beam's joining plates should be 1/4" or 3/8". That choice was made on the claim that the Z assembly is the largest compliance in the stack - a claim, not a measurement. The plates are bolt-on precisely so the swap stays cheap if this says otherwise.
@@ -259,4 +264,4 @@ the interface, not this file.
 
 ---
 
-**186 open** across 28 files.
+**188 open** across 29 files.

@@ -3,7 +3,9 @@
 **Measured from the machine.** This folder outranks any configuration file - see the standing rule in the
 [root README](../README.md).
 
-Nothing has been recorded yet. What needs measuring, and why it matters:
+**Recorded so far:** [`masses.md`](masses.md) - the four moving assemblies, weighed 2026-09-26.
+
+Nothing else has been recorded. What needs measuring, and why it matters:
 
 ## Travels, per axis
 
