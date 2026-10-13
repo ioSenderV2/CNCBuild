@@ -238,11 +238,11 @@ Never verified against how the machine is actually wired today.
 7. **The limit sensor junction.** See the 1.2 m cable above - needed per axis, not yet designed.
 8. **Target plates.** 4 mm non-shielded sensing means something ferrous has to come within 4 mm at
    each end of travel. Not yet specified.
-9. **The TST57 manual is not yet committed.** He supplied it on 2026-10-12 and
-   [`ig57-drives.md`](ig57-drives.md) is written from it, but per the datasheets-committed rule the
-   PDF itself belongs in [`../manufacturer-assets/`](../manufacturer-assets/). **It does not close
-   items 3, 5 or 6** - the voltage is a decision, the commoning is not in the manual, and clearing a
-   fault is not described anywhere in it.
+9. ~~**The TST57 manual is not yet committed.**~~ SETTLED: **Committed 2026-10-12** as
+   [`../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf`](../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf).
+   FLAG: **It does not close items 3, 5 or 6** - the voltage is a decision rather than a lookup, the
+   opto commoning is not stated in the manual at all, and how a fault is cleared is described
+   nowhere in it.
 10. **The manual's section 11 does not exist.** Its contents list "11. Error Codes" and the document
     stops at section 10. So a red LED means something is wrong and nothing says what. Worth asking
     the vendor for by number.

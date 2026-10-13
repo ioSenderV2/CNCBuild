@@ -279,6 +279,13 @@ dead.
 The part, the cabling and the correction that the HBT57C is the Mega V's drive are all his,
 2026-10-12. The manual is the TST57 series user manual he supplied the same day.
 
-OPEN: **The manual is not yet in [`../manufacturer-assets/`](../manufacturer-assets/)**, which this
-repo's datasheets-committed rule requires. Everything above was read out of it, and several items -
-the missing section 11, the EX pins, the MicroUSB contradiction - need it present to be chased.
+SETTLED: **The manual is committed** as
+[`../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf`](../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf),
+2026-10-12, which is what this repo's datasheets-committed rule requires. Everything above was read
+out of it and can be re-checked against it.
+
+OPEN: **The LISTING carries facts the manual does not, and the listing is not captured.** SW6's
+function, the weight of 1.1 kg, the "recommend 36VDC" on the specification image, and the MicroUSB
+caption that contradicts the manual all come from Amazon images rather than from the PDF. A listing
+is exactly the kind of source that disappears - which is why this folder exists. Worth saving those
+images alongside the manual.
