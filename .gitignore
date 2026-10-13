@@ -39,5 +39,10 @@ design-record.pdf
 machine/drawings/shop-pack.pdf
 build-photos/
 
+# The send-out bundle - four derived or already-tracked files in one attachment, built by
+# tools/make-bundle.ps1 at the end of a pack print. Every member is in the repo or
+# generated from it, so the zip is a convenience and never a source.
+machine/drawings/CNC Build.zip
+
 # tools/ gets imported as modules by the pack checks
 __pycache__/

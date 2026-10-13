@@ -10,6 +10,8 @@
     build-document.pdf   machine/assembly.md       HOW TO BUILD IT. Parts, hardware,
                                                    what bolts to what, in order. This is
                                                    the one that goes to the machine.
+    CNC Build.zip        four files in drawings/    WHAT GETS SENT OUT. Built after the
+                                                   pack prints - see tools/make-bundle.ps1.
     design-record.pdf    the thirteen machine/*.md  WHY IT IS THAT SHAPE. The reasoning,
                                                    the options weighed, the figures that
                                                    moved. Reference, not a work document.
@@ -148,5 +150,16 @@ foreach ($d in $docs) {
 }
 
 Write-Host "    Derived, never authoritative - if one disagrees with a .md file, the .md file wins." -ForegroundColor DarkGray
+
+# --- 3. the send-out bundle -------------------------------------------------------------
+# It carries shop-pack.pdf, so it is rebuilt whenever that is - a bundle holding
+# last week's pack is the stale-copy failure this repo generates STATUS.md to avoid.
+# Only on a clean print: zipping a PDF that failed to write would ship the old one.
+if (-not $failed -and ($docs | Where-Object Key -eq 'pack')) {
+    Write-Host "Bundling the send-out zip ..." -ForegroundColor Cyan
+    & pwsh -NoProfile -File (Join-Path $PSScriptRoot 'make-bundle.ps1')
+    if ($LASTEXITCODE -ne 0) { $failed++ }
+}
+
 if ($failed) { exit 1 }
 exit 0
