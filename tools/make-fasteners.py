@@ -80,6 +80,34 @@ GROUPS = [
 ]
 
 
+# A TOTAL OF WHAT, is the question a single number cannot answer here. A joint
+# of 42 M8 bolts is 42 bolts AND 42 T-nuts, so one figure for "M8 fasteners"
+# either double-counts the bolts or loses the nuts - and the T-nuts are the line
+# that gets forgotten. So the totals carry the four kinds separately and sum
+# them, and every item in the buy list sorts into exactly one of them.
+KINDS = ("bolt", "t-nut", "washer", "nut")
+
+
+def kind_of(item):
+    low = item.lower()
+    if low.startswith("bolt"):
+        return "bolt"
+    if low.startswith("t-nut"):
+        return "t-nut"
+    if "washer" in low:
+        return "washer"
+    return "nut"      # acorn nuts, and anything else named in `extras`
+
+
+def kinds(items):
+    """{bolt/t-nut/washer/nut: n, all: n} for one size's buy list."""
+    out = {k: 0 for k in KINDS}
+    for item, n in items.items():
+        out[kind_of(item)] += n
+    out["all"] = sum(out[k] for k in KINDS)
+    return out
+
+
 def by_group(rows):
     """{group: [(row, count), ...]}, plus what each joint left unassigned."""
     out = {g: [] for g in GROUPS}
@@ -257,6 +285,27 @@ def main():
         print(f"\n   --- M{sz} ---")
         for item in sorted(buy[sz], key=lambda i: (not i.startswith("bolt"), i)):
             print(f"      {item:24s} {buy[sz][item]:4d}")
+        k = kinds(buy[sz])
+        print(f"      {'M%d, ALL PIECES' % sz:24s} {k['all']:4d}"
+              f"   ({k['bolt']} bolts, {k['t-nut']} T-nuts, "
+              f"{k['washer']} washers, {k['nut']} nuts)")
+
+    print("\n  FASTENER TOTALS, by thread size")
+    print(f"      {'size':6s} {'bolts':>6s} {'T-nuts':>7s} {'washers':>8s} "
+          f"{'nuts':>5s} {'all':>6s}")
+    grand = {k: 0 for k in KINDS + ("all",)}
+    for sz in sorted(buy):
+        k = kinds(buy[sz])
+        for n in grand:
+            grand[n] += k[n]
+        print(f"      {'M%d' % sz:6s} {k['bolt']:>6d} {k['t-nut']:>7d} "
+              f"{k['washer']:>8d} {k['nut']:>5d} {k['all']:>6d}")
+    print(f"      {'ALL':6s} {grand['bolt']:>6d} {grand['t-nut']:>7d} "
+          f"{grand['washer']:>8d} {grand['nut']:>5d} {grand['all']:>6d}")
+    if nosize:
+        extra = sum(r.get("count", 0) for r in nosize)
+        print(f"      OPEN: {extra} more pieces have NO SIZE and are not in the "
+              f"totals: " + ", ".join(r['id'] for r in nosize))
 
     groups, loose = by_group(rows)
     print("\n  BY FUNCTION GROUP - what to have in front of you for one assembly")
@@ -281,13 +330,13 @@ def main():
               + ", ".join(r['id'] for r in nosize))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows, missing, total_pcs, buy, groups, loose),
+    OUT.write_text(render(rows, missing, total_pcs, buy, groups, loose, nosize),
                    encoding="utf-8")
     print("\nwrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, missing, total_pcs, buy, groups, loose):
+def render(rows, missing, total_pcs, buy, groups, loose, nosize):
     # One card per function group, in his order, each one a pick list for a
     # single sub-assembly. Same data as the schedule above it, cut the other way.
     cards = []
@@ -327,10 +376,39 @@ def render(rows, missing, total_pcs, buy, groups, loose):
         rws = "".join(
             f"<tr><td>{i}</td><td class=n>{buy[sz][i]}</td></tr>"
             for i in sorted(buy[sz], key=lambda i: (not i.startswith("bolt"), i)))
+        k = kinds(buy[sz])
+        rws += (f'<tr class="tot"><td><b>M{sz}, all pieces</b></td>'
+                f'<td class=n><b>{k["all"]}</b></td></tr>')
         tables.append(
             f'<div class="buy"><h3>M{sz}</h3><table>'
             f"<tr><th>Item</th><th class=n>Qty</th></tr>{rws}</table></div>")
     buytables = "".join(tables)
+
+    # THE SUMMARY IS THE WHOLE ORDER ON ONE LINE PER SIZE. The per-size tables
+    # above are what you tick off at the drawer; this is what you check a
+    # delivery against, and the column that matters is the T-nut one.
+    srows = []
+    grand = {x: 0 for x in KINDS + ("all",)}
+    for sz in sorted(buy):
+        k = kinds(buy[sz])
+        for n in grand:
+            grand[n] += k[n]
+        srows.append(f"<tr><td><b>M{sz}</b></td>"
+                     + "".join(f"<td class=n>{k[x]}</td>" for x in KINDS)
+                     + f"<td class=n><b>{k['all']}</b></td></tr>")
+    srows.append('<tr class="tot"><td><b>COMBINED</b></td>'
+                 + "".join(f"<td class=n><b>{grand[x]}</b></td>" for x in KINDS)
+                 + f"<td class=n><b>{grand['all']}</b></td></tr>")
+    nosize_pcs = sum(r.get("count", 0) for r in nosize)
+    summary = (
+        '<h3>Totals by thread size</h3>'
+        '<table style="width:auto">'
+        '<tr><th>Size</th><th class=n>Bolts</th><th class=n>T-nuts</th>'
+        '<th class=n>Washers</th><th class=n>Nuts</th><th class=n>All pieces</th></tr>'
+        + "".join(srows) + '</table>'
+        + (f'<p class=s>OPEN: a further <b>{nosize_pcs}</b> pieces have no size '
+           f'recorded and are in none of these figures &mdash; '
+           + ", ".join(r['what'] for r in nosize) + '.</p>' if nosize else ''))
     tr = []
     for r in rows:
         sz = f"M{r['size']}" if "size" in r else '<b class="bad">?</b>'
@@ -361,6 +439,7 @@ def render(rows, missing, total_pcs, buy, groups, loose):
  .buy table {{ width: auto; }}
  .buy h3 {{ font-size: 11pt; margin: 2mm 0 1mm; }}
  .note {{ background: #fff8e1; border-left: 3px solid #e0a800; padding: 2mm 3mm; }}
+ tr.tot td {{ background: #f2f2f2; border-top: 1.4px solid #111; }}
 </style></head><body>
 <h1>Fastener schedule</h1>
 <p>{len(rows)} joints, {total_pcs} pieces.
@@ -385,6 +464,8 @@ OPEN: These totals cover only the joints with a count recorded &mdash; the Z rai
 are a different kit and their hole count is not known yet.</p>
 
 <div class="buys">{buytables}</div>
+
+{summary}
 
 {grouped}
 </body></html>
