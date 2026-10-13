@@ -99,9 +99,16 @@ under it, so it is cut back on three sides:
 That puts it at X 153.43-1057.81 and 206.35-1006.35 fore-aft - **904.38 × 800**.
 
 SETTLED: **It covers the sweep.** The tool tip runs X 192.62-1018.62, inside the board by **39.19 each
-side**, and reaches back to 221.95, inside by **15.60**. OPEN: **The tool overruns the FRONT edge by
-45.00** - and that is the aluminium's own edge, so the bed stops there too. Work needing that last
-45 mm sits on the tee track with no sacrificial layer under it.
+side**, and reaches back to 221.95, inside by **15.60**. **The tool overruns the FRONT edge by
+45.00** - and that is the aluminium's own edge, so the bed stops there too.
+
+SETTLED: **The front overrun is the TOOLSETTER's approach, not lost cutting area - his, 2026-10-13,
+and it is not a worry.** Nothing is worked out there. The toolsetter is the only thing in front of
+the tee track, standing on the apron - `BOX_FRONT_OVERHANG`, 193.65 - and what the overrun has to
+buy is **reach to the probe's centre**. On the Mega V that centre sits **60 past the front**;
+**40 to centre works**, and the model's own DRO gives 49. FLAG: **THE FIGURE TO CHECK IS REACH TO
+THE PROBE CENTRE, NOT THE EDGE.** Whether the file's 45.00 or the DRO's 49 is right does not
+matter at this margin, and neither does the sacrificial layer stopping at the aluminium.
 
 SETTLED: **The fore-aft travel is 829.4 in the model and 820 measured, and the 9.4 is not chased -
 his, 2026-10-13.** They are two different stops wearing one name. `CARRIAGE_TRAVEL` was measured on
