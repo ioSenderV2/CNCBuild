@@ -141,13 +141,14 @@ sensor is the backstop, and 0.5 mm of it is the cost.
 
 ## The drives are HBT57C - and three things follow
 
-Added 2026-09-29, from notes written in an ioSender session on 2026-09-26. **Not yet folded in
-properly** - the full HBT57C material (LED fault codes, the ENA-reset question, $744/$745) is
-scheduled to land in this folder and has not. Until it does, the memory note is the fuller source.
+**TOSEASTARS HBT57C**, 57 frame / NEMA 23, 24-55 V DC, 36 V recommended. The drive is at the motor,
+so what leaves this box per axis is logic plus motor supply.
 
-**TOSEASTARS HBT57C**, 57 frame / NEMA 23, 24-55 V DC, 36 V recommended. The manual is not in
-[`../manufacturer-assets/`](../manufacturer-assets/) yet, which this repo's own rule says it should
-be.
+**The drive's own behaviour is [`hbt57c-drives.md`](hbt57c-drives.md)** - the LED fault codes, the
+unresolved ENA-reset question and its bench procedure, the over-voltage trip figure, and the RS232
+configuration port. This section is only what the *cabinet* has to do about them. OPEN: The manual is
+still not in [`../manufacturer-assets/`](../manufacturer-assets/), which this repo's own rule says it
+should be.
 
 ### OPEN: AL has no pull-up today, which is why it has never asserted
 
@@ -199,11 +200,13 @@ so the gap is not mistaken for a wiring error.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V
    direct, or 5 V if its inputs are buffered. The breakout box has 5 V but not 3.3 V, so this also
    decides whether the resistor sits in the breakout box or at the controller.
-3. **48 V against a 55 V over-voltage trip.** The drives trip on over-voltage at a figure the manual
-   states three ways; the memory note says design to **55 V**. A 48 V rail leaves about **7 V** of
-   headroom for regeneration on decel. No regen fault has ever been observed - but it is not
-   recorded what supply voltage that history was accumulated at, and 48 V is a swap-in. Establish
-   the present rail voltage before treating the clean history as applying.
+3. **48 V against a 55 V over-voltage trip.** The manual states the trip three ways and the lowest
+   governs, so **design to 55 V** - see [`hbt57c-drives.md`](hbt57c-drives.md). A 48 V rail leaves
+   about **7 V** of headroom for regeneration on decel. No regen fault has ever been observed on the
+   Mega V, which runs the same drive family - but it is not recorded what supply voltage that history
+   was accumulated at. Establish the present rail voltage before treating the clean history as
+   applying, and see the supply question in
+   [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
 4. **Peak current per axis on 18 AWG.** 18 AWG is about 21 mΩ/m; the drag-chain run length and the
    drive's peak draw are both unrecorded, so the drop is uncomputed.
 5. **Where the drives' opto commons sit.** The HBT57C signal pins are **pairs** - PUL+/PUL-,

@@ -344,6 +344,15 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Note on the five AL pins](wiring/breakout-box.md#note-on-the-five-al-pins)
 - [Open items](wiring/breakout-box.md#open-items)
 
+## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)
+
+- [The motor supply is not settled](wiring/cabinet-power-and-grounding.md#the-motor-supply-is-not-settled)
+- [Separate the logic supply from the motor rail](wiring/cabinet-power-and-grounding.md#separate-the-logic-supply-from-the-motor-rail)
+- [Grounds meet at one PE bus bar](wiring/cabinet-power-and-grounding.md#grounds-meet-at-one-pe-bus-bar)
+- [USB is a ground path, and the cable stays plugged in](wiring/cabinet-power-and-grounding.md#usb-is-a-ground-path-and-the-cable-stays-plugged-in)
+- [The mains circuit](wiring/cabinet-power-and-grounding.md#the-mains-circuit)
+- [Provenance](wiring/cabinet-power-and-grounding.md#provenance)
+
 ## [wiring/db37-axis-interconnect.md](wiring/db37-axis-interconnect.md)
 
 - [Six conductors per axis](wiring/db37-axis-interconnect.md#six-conductors-per-axis)
@@ -359,6 +368,15 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The two cables that run beside it](wiring/db37-axis-interconnect.md#the-two-cables-that-run-beside-it)
 - [The connector fails safe again once the NC sensors go in](wiring/db37-axis-interconnect.md#the-connector-fails-safe-again-once-the-nc-sensors-go-in)
 - [Open items](wiring/db37-axis-interconnect.md#open-items)
+
+## [wiring/hbt57c-drives.md](wiring/hbt57c-drives.md)
+
+- [Count the flashes - that is the whole diagnosis](wiring/hbt57c-drives.md#count-the-flashes---that-is-the-whole-diagnosis)
+- [Clearing a fault - UNRESOLVED, and the vendor contradicted itself](wiring/hbt57c-drives.md#clearing-a-fault---unresolved-and-the-vendor-contradicted-itself)
+- [Configuring them - the RS232 port, and get the cable now](wiring/hbt57c-drives.md#configuring-them---the-rs232-port-and-get-the-cable-now)
+  - [DIP switches](wiring/hbt57c-drives.md#dip-switches)
+- [Two hardware cautions](wiring/hbt57c-drives.md#two-hardware-cautions)
+- [Provenance](wiring/hbt57c-drives.md#provenance)
 
 ## [wiring/README.md](wiring/README.md)
 
