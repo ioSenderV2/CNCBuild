@@ -485,9 +485,15 @@ def main() -> int:
     # OPEN: THE COUNTS ARE PROVISIONAL. torsion-box.md still lists the grid
     # spacing as open, and BOX_RIBS_FORE_AFT's note carries why four and not
     # five: an odd count puts a rib ON the centreline, where the back tenon is.
-    def rib_centres(n, bay, lo):
-        """Centres of n ribs making n+1 equal bays, first bay starting at lo."""
-        return [lo + bay + v["T_BB_RIB"] / 2 + i * (bay + v["T_BB_RIB"])
+    def rib_centres(n, bay, end, lo):
+        """Centres of n ribs, from lo, with END bays outside and `bay` between.
+
+        The five bays are NOT equal since 2026-10-14: the inner ones are pinned
+        whole millimetres so a tape can walk them, and the remainder goes to the
+        two end bays, which keeps every notch offset a whole number. Symmetric,
+        so the middle bay still centres on the machine centreline.
+        """
+        return [lo + end + v["T_BB_RIB"] / 2 + i * (bay + v["T_BB_RIB"])
                 for i in range(int(n))]
 
     # ---- the two blocks beside the back centre tenon ----------------------
@@ -509,13 +515,15 @@ def main() -> int:
               "either side")
 
     bw, bf = v["BOX_BAY_W"], v["BOX_BAY_FORE_AFT"]
+    ew, ef = v["BOX_BAY_W_END"], v["BOX_BAY_FORE_AFT_END"]
     half = v["T_BB_RIB"] / 2
-    for cx_ in rib_centres(v["BOX_RIBS_FORE_AFT"], bw, web):
+    desc = f"{v['T_BB_RIB']:g} x {v['BOX_RIB_H']:g}, continuous"
+    for cx_ in rib_centres(v["BOX_RIBS_FORE_AFT"], bw, ew, web):
         box("Rib, fore-aft", "grid", 0xD4B24A, cx_ - half, web, cav_z0,
-            cx_ + half, D - web, cav_z1, d="19 x 100, continuous")
-    for cy_ in rib_centres(v["BOX_RIBS_ACROSS"], bf, web):
+            cx_ + half, D - web, cav_z1, d=desc)
+    for cy_ in rib_centres(v["BOX_RIBS_ACROSS"], bf, ef, web):
         box("Rib, across", "grid", 0xD4B24A, web, cy_ - half, cav_z0,
-            W - web, cy_ + half, cav_z1, d="19 x 100, continuous")
+            W - web, cy_ + half, cav_z1, d=desc)
 
     # THE TONGUE COVERS THE END GRAIN OF BOTH SKINS - his, 2026-10-11 - so it
     # runs the box's full thickness and stands BOX_TONGUE_PROUD above the top
@@ -548,15 +556,17 @@ def main() -> int:
     # material. It also lands over the back centre post, so both halves are
     # supported AT the joint rather than it floating between supports. See
     # BACK_LAM_PIECE_L.
-    lam_mid = (-TT + W + TT) / 2
-    D_LAM_PIECE = (" - ONE OF TWO PIECES, butted at the box's middle. The whole "
-                   "25 mm fits one 4 x 8 sheet this way and will not at full "
-                   "width; the inner web behind the joint is continuous and the "
-                   "back centre post sits under it")
-    for i, (x0, x1) in enumerate(((-TT, lam_mid), (lam_mid, W + TT))):
+    # The joint is at the long piece's end, NOT at the box's middle: the
+    # lamination is an odd length and the split goes on a whole millimetre, so
+    # the two pieces are 1 apart and the butt sits 0.5 off centre.
+    lam_mid = -TT + v["BACK_LAM_PIECE_L"]
+    D_LAM_PIECE = (" - ONE OF TWO PIECES, butted just off the box's middle. The "
+                   "whole thick sheet fits one 4 x 8 this way and will not at "
+                   "full width; the inner web behind the joint is continuous and "
+                   "the back centre post sits under it")
+    for x0, x1 in ((-TT, lam_mid), (lam_mid, W + TT)):
         box("Back tongue", "box", 0xA07B16, x0, -TT, tz0, x1, 0, tz1,
-            d=f"{v['BACK_LAM_PIECE_L']:g} long, {v['T_BOX_TONGUE']:g} thick"
-              + D_LAM_PIECE)
+            d=f"{x1 - x0:g} long, {v['T_BOX_TONGUE']:g} thick" + D_LAM_PIECE)
     for x0 in (-TT, W):
         box("Side tongue", "box", 0xA07B16,
             x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, v["SIDE_TONGUE_END"], tz1)
@@ -753,7 +763,7 @@ def main() -> int:
     # Two pieces, the same as the back and for the same reason.
     for x0, x1 in ((-cap_t, lam_mid), (lam_mid, W + cap_t)):
         box("Front cap", "box", 0xA07B16, x0, D, cap_z0, x1, D + cap_t, 0,
-            d=f"{v['FRONT_CAP_PIECE_L']:g} long, {cap_t:g} thick, flush with "
+            d=f"{x1 - x0:g} long, {cap_t:g} thick, flush with "
               f"the top skin - the front has no tongue" + D_LAM_PIECE)
     # FLAG: THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
     # lamination is cut as ONE piece, SIDE_LAM_L long and TONGUE_FULL_H tall,

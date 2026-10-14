@@ -80,8 +80,17 @@ def parts(v):
         # it is what puts the whole 25 mm on ONE sheet instead of two. At full
         # length neither will sit beside the top skin on a 4 x 8; at half they
         # both will. Splitting only one of them does not do it.
-        ("Back lamination half", v["BACK_LAM_PIECE_L"], v["TONGUE_FULL_H"], 2, t_out),
-        ("Front cap half", v["FRONT_CAP_PIECE_L"], v["BOX_FRONT_CAP_H"], 2, t_out),
+        # The two halves are 1 apart, not equal: the lamination is an odd length
+        # and the joint goes on a whole millimetre rather than on 0.5 - his
+        # instruction 2026-10-14. Listed separately so the saw gets both figures.
+        ("Back lamination, long half", v["BACK_LAM_PIECE_L"],
+         v["TONGUE_FULL_H"], 1, t_out),
+        ("Back lamination, short half", v["BACK_LAM_PIECE_SHORT"],
+         v["TONGUE_FULL_H"], 1, t_out),
+        ("Front cap, long half", v["FRONT_CAP_PIECE_L"],
+         v["BOX_FRONT_CAP_H"], 1, t_out),
+        ("Front cap, short half", v["FRONT_CAP_PIECE_SHORT"],
+         v["BOX_FRONT_CAP_H"], 1, t_out),
 
         # --- the inner webs, between the skins ------------------------------
         ("Web, back and front", W, h_cav, 2, web),
@@ -133,18 +142,25 @@ def notch_runs(v):
     """
     web, rib = v["T_BOX_WALL_WEB"], v["T_BB_RIB"]
     runs = []
-    for part, length, bay, n in (
+    for part, length, bay, end, n in (
         ("Rib, fore-aft", v["BOX_FORE_AFT"] - 2 * web, v["BOX_BAY_FORE_AFT"],
-         int(v["BOX_RIBS_ACROSS"])),
+         v["BOX_BAY_FORE_AFT_END"], int(v["BOX_RIBS_ACROSS"])),
         ("Rib, across", v["BOX_W"] - 2 * web, v["BOX_BAY_W"],
-         int(v["BOX_RIBS_FORE_AFT"])),
+         v["BOX_BAY_W_END"], int(v["BOX_RIBS_FORE_AFT"])),
     ):
-        starts = [(k + 1) * bay + k * rib for k in range(n)]
-        closes = starts[-1] + rib + bay
+        starts = [end + k * (bay + rib) for k in range(n)]
+        closes = starts[-1] + rib + end
         assert abs(closes - length) < 1e-6, (
-            f"{part}: {n} notches at {bay:.3f} bays run to {closes:.3f} on a "
-            f"{length:.3f} piece - the grid arithmetic no longer closes")
-        runs.append((part, length, bay, starts))
+            f"{part}: {n} notches, {end:.3f} end bays and {bay:.3f} inner, run "
+            f"to {closes:.3f} on a {length:.3f} piece - the grid no longer closes")
+        # HIS INSTRUCTION 2026-10-14, and it is the reason the bays are pinned
+        # whole rather than divided out: a dado offset of 697.944 cannot be read
+        # off a rule marked in millimetres. If a bay or a thickness ever moves
+        # and puts a fraction back into a start, the build fails HERE.
+        off = [s for s in starts if abs(s - round(s)) > 1e-9]
+        assert not off, (
+            f"{part}: notch starts not on whole millimetres - {off}")
+        runs.append((part, length, bay, end, starts))
     return runs
 
 
@@ -332,9 +348,10 @@ def main():
     runs = notch_runs(v)
     print(f"NOTCHES - {v['T_BB_RIB']:g} wide, "
           f"{v['BOX_RIB_H'] / 2:g} deep, from each end of the piece\n")
-    for part, length, bay, starts in runs:
-        print(f"  {part:16s} {length:8.2f} long, {bay:.2f} bays")
-        print("    starts  " + "  ".join(f"{s:8.2f}" for s in starts))
+    for part, length, bay, end, starts in runs:
+        print(f"  {part:16s} {length:7.0f} long, {end:g} end bays, "
+              f"{bay:g} inner")
+        print("    starts  " + "  ".join(f"{s:6.0f}" for s in starts))
     print()
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -362,20 +379,19 @@ def render(rows, summary, nests, drawn, v, runs):
 
     rib, half = v["T_BB_RIB"], v["BOX_RIB_H"] / 2
     nt = []
-    for part, length, bay, starts in runs:
+    for part, length, bay, end, starts in runs:
         hd = "".join(f"<th>{i + 1}</th>" for i in range(len(starts)))
-        st = "".join(f"<td class=n>{s:.2f}</td>" for s in starts)
-        en = "".join(f"<td class=n>{s + rib:.2f}</td>" for s in starts)
-        ct = "".join(f"<td class=n>{s + rib / 2:.2f}</td>" for s in starts)
+        st = "".join(f"<td class=n>{s:g}</td>" for s in starts)
+        en = "".join(f"<td class=n>{s + rib:g}</td>" for s in starts)
         nt.append(
-            f"<h3>{part} &mdash; {length:.2f} long, {len(starts)} notches</h3>"
+            f"<h3>{part} &mdash; {length:g} long, {len(starts)} notches</h3>"
             f"{notch_svg(length, starts, rib, v['BOX_RIB_H'])}"
             f"<table><tr><th>Notch</th>{hd}</tr>"
             f"<tr><td>Start</td>{st}</tr>"
-            f"<tr><td>Centre</td>{ct}</tr>"
             f"<tr><td>End</td>{en}</tr></table>"
-            f"<p>Bay at each end and between notches: <b>{bay:.2f}</b>. "
-            f"Notch <b>{rib:g}</b> wide, <b>{half:g}</b> deep.</p>")
+            f"<p>Bay at each end <b>{end:g}</b>, the three between notches "
+            f"<b>{bay:g}</b>. Notch <b>{rib:g}</b> wide, <b>{half:g}</b> deep. "
+            f"Every figure a whole millimetre.</p>")
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <title>CNCBuild &mdash; Torsion Box Cut List</title>

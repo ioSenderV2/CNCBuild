@@ -1084,8 +1084,9 @@ source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
 sym = "BOX_W"
-expr = "MACHINE_OUTER_W"
-note = "1211.238 - box top skin across the machine, measured INSIDE the two side tongues, which is the machine's own outer envelope. FLAG: THIS NOTE SAID 1210.73 UNTIL 2026-10-11 WHILE THE VALUE SAID 1211.238, and the two are DIFFERENT NUMBERS that the note conflated: 1210.73 is REAR_PLATE_L_ORDERED, the length the rear plate was BOUGHT at, and 1211.238 is MACHINE_OUTER_W, the flush envelope. They were the same figure under one name until T_SIDE_PLATE turned out to be 10 gauge rather than 1/8in, which grew the envelope by 0.508 and left the bought plate 0.77 short of it - see MACHINE_OUTER_W, whose own note records that carrying the envelope under the plate's name is what let Sheet 7 hang a beam station off a sheared edge. The prose across machine/ still says 1210.73 in two dozen places and nearly all of them are correctly about the REAR PLATE; only the box footprint was wrong, and it was fixed the same day. OPEN: THIS INVERTED on 2026-10-03 and the earlier reading is wrong: it was briefly recorded as 1204.38, the space INSIDE the side plates, on a reading that the box tucked between them. It does not. The side and back plates sit FLAT ON THE TOP SKIN and the tongues stand proud OUTBOARD of them, so the tongue's inside face is the plate's outer face. There is no channel and nothing is captured on two sides."
+value = 1211
+provenance = "pinned"
+note = "1211 - box top skin across the machine, measured INSIDE the two side tongues. SETTLED: IT IS MACHINE_OUTER_W's 1211.238 ROUNDED DOWN TO A WHOLE MILLIMETRE - his instruction 2026-10-14, that a figure laid out with a tape has to be readable on one. SETTLED: DOWN AND NOT UP, AND THAT IS THE LOAD PATH: the side tongue laps each plate from outboard and is BOLTED THROUGH it, so rounding UP would open 0.12 per side between the plate's outer face and the tongue's inner face - a gap in the bolted lap. Rounding down leaves the plate 0.12 proud of the skin's edge instead, the tongue beds hard on the plate where the bolts are, and the 0.24 total lands in the glue line at the skin's end grain where nothing bears. NOTE: THE ENVELOPE ITSELF HAS NOT MOVED - MACHINE_OUTER_W is still 1211.238 and is still what the plates and beams derive from; this is the SKIN, cut to a whole number. Historic note follows, and the 1211.238 in it is the envelope rather than this. FLAG: THIS NOTE SAID 1210.73 UNTIL 2026-10-11 WHILE THE VALUE SAID 1211.238, and the two are DIFFERENT NUMBERS that the note conflated: 1210.73 is REAR_PLATE_L_ORDERED, the length the rear plate was BOUGHT at, and 1211.238 is MACHINE_OUTER_W, the flush envelope. They were the same figure under one name until T_SIDE_PLATE turned out to be 10 gauge rather than 1/8in, which grew the envelope by 0.508 and left the bought plate 0.77 short of it - see MACHINE_OUTER_W, whose own note records that carrying the envelope under the plate's name is what let Sheet 7 hang a beam station off a sheared edge. The prose across machine/ still says 1210.73 in two dozen places and nearly all of them are correctly about the REAR PLATE; only the box footprint was wrong, and it was fixed the same day. OPEN: THIS INVERTED on 2026-10-03 and the earlier reading is wrong: it was briefly recorded as 1204.38, the space INSIDE the side plates, on a reading that the box tucked between them. It does not. The side and back plates sit FLAT ON THE TOP SKIN and the tongues stand proud OUTBOARD of them, so the tongue's inside face is the plate's outer face. There is no channel and nothing is captured on two sides."
 
 [[dim]]
 sym = "BOX_FORE_AFT"
@@ -2797,13 +2798,25 @@ note = "1118.35 - the cavity front to back, inside the perimeter inner webs. Sam
 
 [[dim]]
 sym = "BOX_BAY_W"
-expr = "(BOX_CAVITY_W - (BOX_RIBS_FORE_AFT * T_BB_RIB)) / (BOX_RIBS_FORE_AFT + 1)"
-note = "219.448 - the clear bay across the machine, five of them between four ribs. Inside the file's 200-300 convention band. SETTLED: THE CHECK THAT THE PARITY ARGUMENT IS RIGHT: with four ribs the middle bay runs 495.90 to 715.34, whose centre is 605.619 - the machine centreline, to three decimals. The 86 back tenon therefore sits mid-bay with about 67 clear each side."
+value = 219
+provenance = "pinned"
+note = "219 - the clear bay across the machine, the THREE INNER ones of the five. SETTLED: IT IS A WHOLE MILLIMETRE BECAUSE IT IS LAID OUT WITH A TAPE - his instruction 2026-10-14: a dado offset of 697.944 is not a reading anybody can take off a rule marked in millimetres, so the bays are chosen whole and the arithmetic is made to close on them rather than the other way round. FLAG: FIVE EQUAL WHOLE BAYS CANNOT CLOSE HERE - the cavity less four ribs is 1103, which is not divisible by five, so the grid is symmetric with slightly larger END bays instead: see BOX_BAY_W_END. Inside the file's 200-300 convention band. SETTLED: THE PARITY ARGUMENT STILL CHECKS OUT: the layout is symmetric about the cavity's centre, so the middle bay is centred on the machine centreline and the 86 back tenon sits mid-bay with BACK_TENON_BLOCK_T_MAX clear each side."
+
+[[dim]]
+sym = "BOX_BAY_W_END"
+expr = "(BOX_CAVITY_W - (3 * BOX_BAY_W) - (BOX_RIBS_FORE_AFT * T_BB_RIB)) / 2"
+note = "223 - the bay at EACH END across the machine, between a perimeter web and the first rib, and it is 4 wider than the three inner ones. SETTLED: THE REMAINDER GOES HERE ON PURPOSE: the inner bays are the ones a tape walks from rib to rib, so they are the ones that have to be round, and the end bay is a single reading off the web. It comes out whole as well - tools/make-cutlist.py asserts every notch start is a whole millimetre and fails the build otherwise."
 
 [[dim]]
 sym = "BOX_BAY_FORE_AFT"
-expr = "(BOX_CAVITY_FORE_AFT - (BOX_RIBS_ACROSS * T_BB_RIB)) / (BOX_RIBS_ACROSS + 1)"
-note = "208.47 - the clear bay front to back, five of them between four ribs. Also inside the 200-300 band."
+value = 220
+provenance = "pinned"
+note = "220 - the clear bay front to back, the THREE INNER ones of the five. Whole millimetre for the same reason as BOX_BAY_W, his instruction 2026-10-14. FLAG: FIVE EQUAL WHOLE BAYS DO NOT CLOSE HERE EITHER - the cavity less four ribs is 1102 - so the end bays carry the remainder, see BOX_BAY_FORE_AFT_END. Also inside the 200-300 band."
+
+[[dim]]
+sym = "BOX_BAY_FORE_AFT_END"
+expr = "(BOX_CAVITY_FORE_AFT - (3 * BOX_BAY_FORE_AFT) - (BOX_RIBS_ACROSS * T_BB_RIB)) / 2"
+note = "221 - the bay at EACH END front to back, 1 wider than the three inner ones. Same reasoning as BOX_BAY_W_END. NOTE: IT IS ALSO BACK_TENON_BLOCK_L, because the blocks run from the back web forward to the first across-rib, which is exactly this bay."
 
 [[dim]]
 sym = "TENON_HOLE_CLEAR"
@@ -2952,8 +2965,8 @@ note = "30 - the margin left at the angle's FAR end after the three bolts. SETTL
 
 [[dim]]
 sym = "RIB_LAST_FRONT"
-expr = "T_BOX_WALL_WEB + BOX_RIBS_ACROSS * (BOX_BAY_FORE_AFT + T_BB_RIB)"
-note = "971.8 - the front face of the LAST across-rib, the one nearest the fins. Named because three separate questions measure from it, and because walking the rib pitch inline each time is how the three would drift apart. It follows the bay count and bay size, so it moves when the grid does."
+expr = "T_BOX_WALL_WEB + BOX_BAY_FORE_AFT_END + (BOX_RIBS_ACROSS - 1) * (BOX_BAY_FORE_AFT + T_BB_RIB) + T_BB_RIB"
+note = "971 - the front face of the LAST across-rib, the one nearest the fins. FLAG: THE EXPRESSION CARRIES THE END BAY SEPARATELY since 2026-10-14, because the five bays are no longer equal: web, end bay, then three rib-and-bay steps, then the last rib's own thickness. Reading it as four equal pitches off the web gives 971.6 and is wrong by 0.6. Named because three separate questions measure from it, and because walking the rib pitch inline each time is how the three would drift apart. It follows the bay count and bay size, so it moves when the grid does."
 
 [[dim]]
 sym = "FIN_BASE_TO_RIB"
@@ -2982,8 +2995,8 @@ note = "648.62 - the inboard face of the second block beside the back centre ten
 
 [[dim]]
 sym = "BACK_TENON_BLOCK_L"
-expr = "BOX_BAY_FORE_AFT"
-note = "219.2 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. NOTE: THEY COME FROM THE SCRAP BIN and are not on the cut list - see BACK_TENON_BLOCK_T_MAX. SETTLED: THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_BACK_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. OPEN: HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end."
+expr = "BOX_BAY_FORE_AFT_END"
+note = "221 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. NOTE: THEY COME FROM THE SCRAP BIN and are not on the cut list - see BACK_TENON_BLOCK_T_MAX. SETTLED: THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_BACK_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. OPEN: HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end."
 
 [[dim]]
 sym = "BACK_LAM_L"
@@ -2997,13 +3010,25 @@ note = "1261.238 - the front cap, lapping the two side laminations and running t
 
 [[dim]]
 sym = "BACK_LAM_PIECE_L"
-expr = "BACK_LAM_L / 2"
-note = "630.619 - each of the TWO pieces the back lamination is cut from, butted end to end at the middle. SETTLED: HIS CALL 2026-10-11, AND IT IS WHAT PUTS THE WHOLE 25 mm ON ONE SHEET: at 1261.238 the back will not sit beside the top skin on a 4 x 8, where a 630.619 piece will, twice over. One sheet instead of two, $245. SETTLED: THE JOINT IS SOUND BECAUSE THE WALL IS TWO LAMINATIONS: the inner web behind it is ONE continuous 1211.238 piece, so the butt is staggered against solid material - which is what laminating a wall is for. SETTLED: AND IT LANDS BETWEEN BOLTS: mid-length is box X 605.619, with the rear plate's nearest bolt columns at 530.4 and 680.4, so 74.7 and 75.3 clear of each. NOTE: IT ALSO LANDS OVER THE BACK CENTRE POST, whose shoulder spans 562.6 to 648.6 - so both halves are directly supported AT the joint rather than the joint floating between supports. That is the better of the two places to put it, not the worse."
+value = 630
+provenance = "pinned"
+note = "630 - the LONGER of the TWO pieces the back lamination is cut from, butted end to end; the other is BACK_LAM_PIECE_SHORT at 629. SETTLED: THE JOINT IS ON A WHOLE MILLIMETRE, his instruction 2026-10-14 - the lamination is 1259 long, so an exact half would be 629.5 and neither piece could be cut to a tape reading. The pair are 1 apart and the joint moves 0.5 off centre, which changes nothing it was chosen for. SETTLED: HIS CALL 2026-10-11, AND IT IS WHAT PUTS THE WHOLE 25 mm ON ONE SHEET: at 1261.238 the back will not sit beside the top skin on a 4 x 8, where a 630.619 piece will, twice over. One sheet instead of two, $245. SETTLED: THE JOINT IS SOUND BECAUSE THE WALL IS TWO LAMINATIONS: the inner web behind it is ONE continuous 1211.238 piece, so the butt is staggered against solid material - which is what laminating a wall is for. SETTLED: AND IT LANDS BETWEEN BOLTS: mid-length is box X 605.619, with the rear plate's nearest bolt columns at 530.4 and 680.4, so 74.7 and 75.3 clear of each. NOTE: IT ALSO LANDS OVER THE BACK CENTRE POST, whose shoulder spans 562.6 to 648.6 - so both halves are directly supported AT the joint rather than the joint floating between supports. That is the better of the two places to put it, not the worse."
+
+[[dim]]
+sym = "BACK_LAM_PIECE_SHORT"
+expr = "BACK_LAM_L - BACK_LAM_PIECE_L"
+note = "629 - the shorter of the back lamination's two pieces. Derived so the pair cannot stop adding up to the lamination."
+
+[[dim]]
+sym = "FRONT_CAP_PIECE_SHORT"
+expr = "FRONT_CAP_L - FRONT_CAP_PIECE_L"
+note = "629 - the shorter of the front cap's two pieces, same split as the back."
 
 [[dim]]
 sym = "FRONT_CAP_PIECE_L"
-expr = "FRONT_CAP_L / 2"
-note = "630.619 - each of the TWO pieces the front cap is cut from. SETTLED: SPLITTING THE BACK ALONE DOES NOT SAVE THE SHEET and that was tested: with the back in two and the front still 1261.238, the front is the piece that will not sit beside the skin and the second sheet is still needed. BOTH have to be split, which is why the front is too. OPEN: IT IS THE EASIER OF THE TWO TO ACCEPT: the front cap carries no tongue, no bolt line and nothing bears through it - it caps end grain and keeps the apron clear."
+value = 630
+provenance = "pinned"
+note = "630 - the LONGER of the TWO pieces the front cap is cut from; the other is FRONT_CAP_PIECE_SHORT at 629. Same whole-millimetre split as the back lamination. SETTLED: SPLITTING THE BACK ALONE DOES NOT SAVE THE SHEET and that was tested: with the back in two and the front still 1261.238, the front is the piece that will not sit beside the skin and the second sheet is still needed. BOTH have to be split, which is why the front is too. OPEN: IT IS THE EASIER OF THE TWO TO ACCEPT: the front cap carries no tongue, no bolt line and nothing bears through it - it caps end grain and keeps the apron clear."
 
 [[dim]]
 sym = "BACK_TENON_BLOCK_T_MAX"
