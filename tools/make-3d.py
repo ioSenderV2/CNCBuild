@@ -784,12 +784,18 @@ def main() -> int:
     # same rule the fin's window followed - the casting is centred on the beam
     # at either end, so the station is the beam's and not the plate's.
     rpx = v["Y1_EXT_FACE_X"]
-    rp_wins = [[[x0, v["WINDOW_Z_LOW"]],
-                [x0 + v["WINDOW_W"], v["WINDOW_Z_LOW"]],
-                [x0 + v["WINDOW_W"], v["WINDOW_Z_LOW"] + v["WINDOW_H"]],
-                [x0, v["WINDOW_Z_LOW"] + v["WINDOW_H"]]]
-               for x0 in (v["Y1_EXT_FACE_X"],
-                          v["Y1_EXT_FACE_X"] + v["Y2_EXT_FACE_X"] - v["EXT_W"])]
+    # FLAG: THE TWO WINDOWS MIRROR, they do not repeat. Each one's OUTBOARD edge
+    # is on its own beam's outer face, and Y1's outer face is its low-X side
+    # while Y2's is its high-X side. Drawing both from the low-X side puts Y2's
+    # window 0.5 out - WINDOW_W is 60.5 over a 60 casting, so the clash check
+    # cannot see it and it would have reached the sheet as a real offset.
+    _rp_z0, _rp_z1 = v["WINDOW_Z_LOW"], v["WINDOW_Z_LOW"] + v["WINDOW_H"]
+    _y1x = v["Y1_EXT_FACE_X"]
+    _y2x = _y1x + v["Y2_EXT_FACE_X"] - v["EXT_W"]
+    rp_wins = [[[xa, _rp_z0], [xb, _rp_z0], [xb, _rp_z1], [xa, _rp_z1]]
+               for xa, xb in ((_y1x, _y1x + v["WINDOW_W"]),
+                              (_y2x + v["EXT_W"] - v["WINDOW_W"],
+                               _y2x + v["EXT_W"]))]
     prism("Rear plate", "plates", 0x8899AA,
           [[rpx, 0], [rpx + v["REAR_PLATE_L_ORDERED"], 0],
            [rpx + v["REAR_PLATE_L_ORDERED"], v["REAR_PLATE_W"]],
