@@ -178,8 +178,13 @@ ok('dropping the last shows everything', shown(), cards.length);
 // the search box, on a name and on a note
 qEl.value = 'acorn_nut';
 qEl._h.input();
+// The search matches NOTES as well as names, and several notes name an acorn
+// symbol in prose - FENDER_WASHER_T's does. So the assertion is that every hit
+// contains the term SOMEWHERE, not that every hit is an acorn symbol; the
+// stricter form failed on a note that was doing exactly what the search is for.
 ok('name search finds the acorn symbols',
-   cards.filter(c => !c.has('hide')).every(c => c.dataset.sym.includes('acorn_nut')),
+   cards.filter(c => !c.has('hide')).every(c => c.dataset.sym.includes('acorn_nut')
+                                             || c.dataset.note.includes('acorn_nut')),
    true);
 qEl.value = 'caliper';
 qEl._h.input();
