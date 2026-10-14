@@ -3054,3 +3054,49 @@ note = "8 - the least a counterbore can be and still bury an M8 socket head, whi
 sym = "SHELF_VERT_GRIP"
 expr = "SHELF_BAR_H - M8_SOCKET_CBORE"
 note = "42.8 - what the shelf bar's VERTICAL bolts cross: the bar's HEIGHT less the counterbore. FLAG: IT IS SHELF_BAR_H AND NOT SHELF_BAR_W, and the fastener schedule had the width. The verticals are counterbored FROM BELOW and run up through the 50.8 height into the beam's underside slot; it is the HORIZONTAL pair that cross the 25.4 width. Reading the wrong one made an M8 x 50 look 26.6 too long when it is right."
+
+# ---------------------------------------------------------------- limit sensors
+
+[[dim]]
+sym = "LIMIT_SENSOR_H"
+value = 17.75
+provenance = "measured"
+note = "The SN04-N's body height - his caliper 2026-10-13. SQUARE BODY, NOT A BARREL: these are the block type, so the mount clamps the body rather than threading an M18 nut either side, and there is no barrel length to trade against a lock nut. It is the height that sets how far the sensor stands above whatever it is bolted to, which is what the stepper frame's window has to clear."
+source = "measured 2026-10-13"
+
+[[dim]]
+sym = "LIMIT_SENSOR_W"
+value = 18.35
+provenance = "measured"
+note = "The SN04-N's body width - his caliper 2026-10-13."
+source = "measured 2026-10-13"
+
+[[dim]]
+sym = "LIMIT_SENSOR_D"
+value = 35
+provenance = "measured"
+note = "The SN04-N's body depth, SENSING FACE TO WIRE EXIT - his caliper 2026-10-13. FLAG: IT INCLUDES NO CABLE BEND RADIUS. The cable leaves the back face, so the space the part really occupies fore-aft is this plus whatever the wire needs to turn, and that is the figure a pocket or a window has to clear rather than the 35."
+source = "measured 2026-10-13"
+
+[[dim]]
+sym = "LIMIT_SENSOR_BRACKET_D"
+value = 20
+provenance = "measured"
+note = "20 - what the metal bracket adds to the sensor's own depth, his 2026-10-13. FLAG: IT IS ADDED DEPTH, NOT THE BRACKET'S OWN SIZE: the sensor overlaps it, so the pair occupy LIMIT_SENSOR_STACK_D rather than the two parts summed."
+
+[[dim]]
+sym = "LIMIT_SENSOR_ADJUST"
+value = 15
+provenance = "measured"
+note = "15 of fore-aft adjustment in the bracket's slots, his 2026-10-13. SETTLED: THIS IS WHAT MAKES THE TRIP POINT A SETTING RATHER THAN A DIMENSION - the M3 pair in the casting's top face are fixed at LIMIT_SENSOR_M3_PITCH, and the slot takes up where the target actually lands. Nothing on a drawing has to predict the trip point to better than this."
+
+[[dim]]
+sym = "LIMIT_SENSOR_M3_PITCH"
+value = 8
+provenance = "part"
+note = "8 - the centres of the two M3 tapped into the stepper frame's top face, matching the bracket's slots. His scheme 2026-10-13. The frame is ferrous, so these are tapped into cast iron rather than aluminium - see machine/assembly.md."
+
+[[dim]]
+sym = "LIMIT_SENSOR_STACK_D"
+expr = "LIMIT_SENSOR_D + LIMIT_SENSOR_BRACKET_D"
+note = "55 - sensor plus bracket, fore-aft. OPEN: IT STILL CARRIES NO CABLE BEND. LIMIT_SENSOR_D is measured to the WIRE EXIT, not to the back of a turned cable, so a pocket or a window sized on this is sized on the metal and not on the installation."
