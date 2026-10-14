@@ -3199,3 +3199,56 @@ sym = "SOLE_TIP_W"
 value = 46
 provenance = "pinned"
 note = "46 - the sole bracket's width at its TIP. FLAG: IT IS A FREE FIGURE AND SHEET 5 SAYS SO - nothing mates to the narrow end, so unlike the 98.19 reach it is chosen rather than derived. That is what makes a T-shaped bracket a question of preference rather than of fit: the root must stay XEP_W wide for DOUBLER_SEATING, because that is where the eight root bolts land on the end plate and doubler end faces, and everything past it is metal removal."
+
+# -------------------------------------------------- the nut sole brackets, as T
+# SETTLED: T-SHAPED, AND IN STEEL - his, 2026-10-13, replacing the 6061
+# trapezoid. Three of them: Y1, Y2 and the X nut sole plate, which Sheet 11
+# already describes as Sheet 5's outline with one root row deleted.
+#
+# WHY THE T RATHER THAN THE TAPER. Two reasons, and the second is the one that
+# decided it:
+#   - nothing of the plate then stands over the extrusion except at the nut,
+#     which is what he wanted and what the taper's triangles were doing;
+#   - THE TAPERED EDGE IS A BAD TARGET. The Y limit sensor reads this part's
+#     REAR face as the gantry comes home, and on a trapezoid that face is the
+#     angled one - a trip point that drifts with standoff. The T's base presents
+#     a FULL-WIDTH FLAT, square to the direction of travel.
+#
+# WHY STEEL. It makes the bracket its own ferrous target, so the 15 mm of 1/4in
+# square rod that was going to be screwed on is not a part any more. It also
+# buys back what the T gives up: steel's modulus is about three times 6061's, so
+# the narrower stem is stiffer than the wider aluminium taper it replaces.
+# OPEN: IT IS MOVING MASS. This part rides the Y carriage, so it sits inside the
+# 58 kg the gantry arguments were built on, and steel is about 2.9x the density
+# against an outline that loses area. The two have not been worked out against
+# each other.
+#
+# THICKNESS STAYS T_SOLE_BRACKET. Not for strength - because it is the same
+# 1/4in as the rear plate, so all three come off one sheet in one setup at the
+# plasma shop.
+
+[[dim]]
+sym = "SOLE_BASE_D"
+expr = "DOUBLER_SEATING"
+note = "24.38 - the T's base depth, outboard from the end plate's face. IT IS NOT A CHOICE: it is the X end plate's end face plus the doubler's behind it, which is the full seating the eight root bolts land on. His read off the model, 2026-10-13 - 'it's showing 24, that's all you need'."
+
+[[dim]]
+sym = "SOLE_STEM_W"
+expr = "SOLE_TIP_W"
+note = "46 - the T's stem width, carried straight out from the base rather than tapering. It is SOLE_TIP_W because the tip is what has to take the nut's four bolts and nothing else constrains it; the trapezoid arrived at the same 46 at the same place."
+
+[[dim]]
+sym = "SOLE_STEM_L"
+expr = "SOLE_REACH"
+note = "73.81 - how far the stem runs past the base to reach the nut. SOLE_BASE_D + SOLE_STEM_L closes on SOLE_BRACKET_L, which is the check that the T covers the same reach the trapezoid did."
+
+[[dim]]
+sym = "SOLE_FILLET_R"
+value = 6
+provenance = "pinned"
+note = "6 - the radius where the stem meets the base, both sides. His, 2026-10-13, for looks rather than for stress, and a plasma or waterjet path walks it for nothing. FLAG: THE 3D MODEL DRAWS THIS CORNER SQUARE. Its prism profile is a polygon and a fillet would be an approximation that then disagrees with the sheet; the radius lives here and on the drawing instead."
+
+[[dim]]
+sym = "SOLE_T_CHECK"
+expr = "SOLE_BRACKET_L - (SOLE_BASE_D + SOLE_STEM_L)"
+note = "0 - and it must stay 0. The T's base plus its stem has to reach exactly as far as the trapezoid did, because the reach is set by the nut and not by the outline."

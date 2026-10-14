@@ -1403,23 +1403,34 @@ def main() -> int:
         out = -1 if x0 == lx0 else +1               # and which way it reaches
         face_z = y_axis_z - v["NUT_AXIS_TO_FACE"]
         ride[0] = "Y"            # it hangs off the X end plate
-        # IT IS A TRAPEZOID, NOT A BOX - Sheet 5's outline, and drawing it as a
-        # box claimed 108 mm of aluminium at the tip that the part does not
-        # have. That is the exact failure prism()'s own docstring warns about,
-        # and it made the view look far more crowded at this end than it is.
+        # IT IS A STEEL T - his, 2026-10-13, replacing the 6061 trapezoid, and
+        # it is drawn as a PRISM rather than a box for the reason prism()'s own
+        # docstring gives: a box claims metal the part has not got. The box this
+        # replaced claimed 108 mm of aluminium at the tip and made this end look
+        # far more crowded than it is.
         #
-        # The root stays FULL WIDTH for DOUBLER_SEATING, so it covers both the
-        # X end plate's end face and the doubler's behind it - that is where the
-        # eight root bolts land. The taper starts only past them and runs out to
-        # SOLE_TIP_W, which Sheet 5 records as a FREE figure: nothing mates to
-        # the narrow end.
+        # The base stays FULL WIDTH for SOLE_BASE_D, covering both the X end
+        # plate's end face and the doubler's behind it - that is where the eight
+        # root bolts land, and his read off the model was that 24 is all it
+        # needs. The stem then runs straight out at SOLE_STEM_W, which covers
+        # the nut's 40 face with 3 a side.
+        #
+        # THE BASE'S REAR FACE IS THE LIMIT SENSOR'S TARGET: a full-width flat,
+        # square to the direction of travel. The trapezoid put an ANGLED face
+        # there, which is a trip point that drifts with standoff - his catch off
+        # the render, and it is what settled the T over the taper.
+        #
+        # SOLE_FILLET_R is NOT DRAWN. The stem-to-base corner is square here;
+        # the radius lives in the registry and on the sheet, because a polygon
+        # approximation of it would then disagree with both.
         tip = inner + out * v["SOLE_BRACKET_L"]
-        seat = inner + out * v["DOUBLER_SEATING"]
+        seat = inner + out * v["SOLE_BASE_D"]
         y_mid = (xep_back + xep_front) / 2
-        t_half = v["SOLE_TIP_W"] / 2
+        t_half = v["SOLE_STEM_W"] / 2
         prism("Y sole bracket", "gantry", 0xC9A227,
               [[inner, xep_back], [seat, xep_back],
-               [tip, y_mid - t_half], [tip, y_mid + t_half],
+               [seat, y_mid - t_half], [tip, y_mid - t_half],
+               [tip, y_mid + t_half], [seat, y_mid + t_half],
                [seat, xep_front], [inner, xep_front]],
               face_z - v["T_SOLE_BRACKET"], face_z, plane="xy")
 
