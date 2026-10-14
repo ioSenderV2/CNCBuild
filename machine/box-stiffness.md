@@ -27,11 +27,13 @@ ribs are cheap because there is very little rib material next to two full sheets
 taller ribs is **sand volume**, which is a choice at fill time and the part that gets drained for a
 move anyway.
 
-**Where 25 mm does earn its place is the top skin**, and not for sag: it takes the riser feet, the
-Y plate bolt line and the plate bottom edges **in bearing**. Asymmetric skins are fine in a torsion
-box, so **25 mm top over 19 mm bottom** is the sensible split if anything is spent.
+**Where the thicker sheet does earn its place is the top skin**, and not for sag: it takes the riser
+feet, the Y plate bolt line and the plate bottom edges **in bearing**. Asymmetric skins are fine in a
+torsion box, so **the thick sheet on top over the thin one below** is the sensible split if anything
+is spent.
 
-SETTLED: **Settled 2026-10-11: 25 mm top, 19 mm bottom.** The box is **144 mm** deep rather than 138. The
-underside of the top skin **does not move** - it is set by the post ledge, the bottom skin and the
-cavity - so the 6 mm is all on the outside and the machine simply stands 6 mm higher off the floor.
+SETTLED: **Settled 2026-10-11, and on the measured sheets it is 24 mm top, 18 mm bottom.** The box is
+**142 mm** deep, 6 more than it would be on two thin skins. The underside of the top skin **does not
+move** - it is set by the post ledge, the bottom skin and the cavity - so the 6 mm is all on the
+outside and the machine simply stands 6 mm higher off the floor.
 Z 0 is the top skin, so nothing above the box moves at all.

@@ -71,7 +71,7 @@ clamped**. That is the same false reading the 11 mm was measured to rule out, ar
 round, and it is the one you cannot see from outside.
 
 **Re-torque the tongue bolts instead.** What relaxes on that line is the plywood under the bolt, not
-the thread — it is why the tongue is 25 mm, for bearing area. Check them after the machine has run a
+the thread — it is why the tongue is the thick sheet, for bearing area. Check them after the machine has run a
 few hours and again after the first weeks. Locker does nothing about wood creeping and makes the
 re-check harder.
 
@@ -647,17 +647,18 @@ but the gap is still a hard dimension.
 
 | | |
 |---|---|
-| Skins | **25 mm Baltic birch top, 19 mm bottom** — settled 2026-10-11, and the 25 is for **bearing** not stiffness |
-| Grid | **19 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
-| Depth overall | **144 mm** (25 + 100 + 19) |
-| Outer walls, all four sides | **25 mm outer + 19 mm inner web, 44 mm total** — the outer one **204 mm tall, capping the end grain of both skins** and **60 mm proud** of the top skin as a **tongue**. The 25 is for **bolt bearing**, settled 2026-10-11 |
+| Skins | **24 mm Baltic birch top, 18 mm bottom** — the thick sheet on top is for **bearing** not stiffness |
+| Grid | **18 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
+| Depth overall | **142 mm** (24 + 100 + 18) |
+| Outer walls, all four sides | **24 mm outer + 18 mm inner web, 42 mm total** — the outer one **202 mm tall, capping the end grain of both skins** and **60 mm proud** of the top skin as a **tongue**. The thick sheet outboard is for **bolt bearing** |
 | Footprint | **1211.24 across** by **1210 front to back** — square to within 1.24 mm. OPEN: the width is derived, verify against the standing machine |
 | Fill | **sand in the cavities, LAST, on site** |
 
 ### Four things to get right on the grid
 
-1. OPEN: **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
-   is commonly 18.2-18.5 and varies between sheets. **Test-cut on scrap from the same sheet.**
+1. **Cut the notches to 18 mm — the sheets in hand mic 18, to five thousandths.** Baltic birch sold at
+   a nominal commonly runs under and varies between sheets, so **still test-cut on scrap from the same
+   sheet** before cutting the set.
 2. OPEN: **Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin
    along its whole length.
 3. FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
@@ -674,14 +675,14 @@ side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend
 tenon.
 
 SETTLED: **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
-across-rib's front face is at **971.8** and the fin's base starts bearing at **1006.35**, so it is
-**34.55 mm** from a rib. At that distance a 25 mm top skin is not spanning anything; it is a short
+across-rib's front face is at **971.6** and the fin's base starts bearing at **1006.35**, so it is
+**34.75 mm** from a rib. At that distance a 24 mm top skin is not spanning anything; it is a short
 overhang off a support that is right there.
 
 NOTE: **The warning this replaces was written before any rib layout existed to check it against** —
 "bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning
 between grid members", which is true in general and does not bite here. The fin angle's T-nuts are
-**67.55 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
+**67.75 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
 T-nut's own grip on the plywood, not the span.
 
 FLAG: **If the fin's bearing is ever wanted harder, move a rib under it — do not add blocking.** A rib
@@ -689,9 +690,9 @@ is continuous and a block is not, and the grid is egg crate precisely because co
 gives the two-way plate action.
 
 SETTLED: **And none under the rear plate either — closed 2026-10-11.** Its bottom edge occupies the first
-**6.35 mm** of the box's fore-aft run and the back perimeter web occupies the first **19 mm**, so the
-plate bears on skin backed by solid wall over its whole footprint, with **12.65 mm of web to spare**
-and the 25 mm tongue outboard of that as well. There is no span to block.
+**6.35 mm** of the box's fore-aft run and the back perimeter web occupies the first **18 mm**, so the
+plate bears on skin backed by solid wall over its whole footprint, with **11.65 mm of web to spare**
+and the 24 mm tongue outboard of that as well. There is no span to block.
 
 FLAG: **The back centre tenon does want blocking, and it is the only one that does.** The two front
 corner tenons are snug into the box corners and located by both perimeter walls for free; this one
@@ -703,19 +704,18 @@ carries no vertical load, all of it is on the shoulder.
 ### The three posts
 
 **Front left corner, front right corner, and the middle of the back.** Each an **86 mm square cedar
-post (4×4)**, reduced over its **top 118 mm** to a tenon that passes up through a hole in the bottom
+post (4×4)**, reduced over its **top 116 mm** to a tenon that passes up through a hole in the bottom
 skin. The bottom skin lands on the shoulder.
 
 | | |
 |---|---|
-| Ledge to top of post | 118 mm |
-| Bottom skin on the ledge | 19 mm |
+| Ledge to top of post | 116 mm |
+| Bottom skin on the ledge | 18 mm |
 | Cavity | 100 mm |
-| Underside of the top skin | **119 mm** — so the post top stops **1 mm shy** |
+| Underside of the top skin | **118 mm** — so the post top stops **2 mm shy** |
 
-**Every ledge is 44 mm, cut on the outward-facing faces**, so the perimeter wall lands directly over
-the shoulder. The ledge is as deep as the wall standing on it, which is why it went from 38 to 44
-when the outer lamination went to 25.
+**Every ledge is 42 mm, cut on the outward-facing faces**, so the perimeter wall lands directly over
+the shoulder. The ledge is as deep as the wall standing on it.
 
 | Post | Faces ledged | Tenon |
 |---|---|---|
@@ -745,7 +745,7 @@ through the shoulder — that is withdrawal from cedar end grain.
 **Low in the front and back perimeter walls.** They gravity-drain into a bucket and stay reachable.
 
 FLAG: **Not in the bottom skin** — the 2x4 frame and three carcases make it unreachable.
-OPEN: **Not in the laminated left and right walls** — those are the 44 mm walls the Y beam plates bolt to.
+OPEN: **Not in the laminated left and right walls** — those are the 42 mm walls the Y beam plates bolt to.
 
 ### The base
 

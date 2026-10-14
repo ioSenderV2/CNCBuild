@@ -33,9 +33,9 @@ the errors accumulating.
 
 #### Four things to get right
 
-1. OPEN: **Cut the notches to the measured sheet thickness, not to 19 mm.** Baltic birch sold as 19 mm
-   is commonly 18.2-18.5 and varies between sheets. Test-cut on scrap **from the same sheet**. Too
-   tight splits the rib; too loose leaves no glue line.
+1. **Cut the notches to 18 mm — the sheets in hand mic 18, to five thousandths.** Sheet sold at a
+   nominal commonly runs under and varies between sheets, so test-cut on scrap **from the same sheet**
+   before cutting the set. Too tight splits the rib; too loose leaves no glue line.
 2. OPEN: **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
    contact with a skin **along its whole length** - which is the glue joint the whole sandwich
    depends on.

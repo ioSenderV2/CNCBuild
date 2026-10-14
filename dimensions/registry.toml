@@ -3149,7 +3149,14 @@ note = "55 - sensor plus bracket, fore-aft. OPEN: IT STILL CARRIES NO CABLE BEND
 sym = "LIMIT_SENSOR_BRACKET_H"
 value = 10
 provenance = "measured"
-note = "10 - what the bracket adds in HEIGHT, his 2026-10-13, AS FLOPPED FOR THE FIRST TEST: the sensor sits ON TOP of the bracket rather than beneath it. FLAG: THE FLOP IS NOT SETTLED. It was made to get the sensing face away from the ferrous stepper frame, and whether that was necessary is the bench test - see machine/assembly.md. If the sensor goes back under the bracket this figure still applies but the stack height does not."
+note = "10 - what the bracket adds in HEIGHT, his 2026-10-13, AS FLOPPED FOR THE FIRST TEST: the sensor sits ON TOP of the bracket rather than beneath it. SETTLED: BOTH ORIENTATIONS MOUNT, his 2026-10-14 - right side up as photographed fouls nothing anywhere, and inverted, nestled down inside the stepper casting frame, works too provided the sensor is held LIMIT_SENSOR_BK12_SETBACK clear of the BK12. So the bench test decides on SENSING alone and not on fit. FLAG: THE FLOP ITSELF IS STILL NOT SETTLED - it was made to get the sensing face away from the ferrous stepper frame, and whether that was necessary is the bench test. If the sensor goes back under the bracket this figure still applies but the stack height does not."
+
+[[dim]]
+sym = "LIMIT_SENSOR_BK12_SETBACK"
+value = 10
+provenance = "pinned"
+note = "10 - the LEAST the sensor may stand back from the BACK side of the BK12 bearing, and it applies ONLY to the inverted mount: his, 2026-10-14. SETTLED: IT IS WHAT MAKES THE INVERTED OPTION REAL - turned upside down the sensor nestles down inside the stepper casting frame rather than standing LIMIT_SENSOR_STACK_H above it, and at 10 clear of the BK12 it still works. NOTE: RIGHT SIDE UP, AS PHOTOGRAPHED, HAS NO SUCH CONSTRAINT - it fouls nothing anywhere. So this is the price of the option that gives the window its height back, not a constraint on the design as drawn."
+source = "His, 2026-10-14"
 
 [[dim]]
 sym = "LIMIT_SENSOR_STACK_H"

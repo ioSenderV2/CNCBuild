@@ -387,7 +387,7 @@ has.
 
 | | |
 |---|---|
-| Depth | **1 mm** - turns the tangent into a clearance; nothing in a 25 mm skin |
+| Depth | **1 mm** - turns the tangent into a clearance; nothing in a 24 mm skin |
 | Outboard edge, inset from the box's skin edge | **3.429 mm**, the side plate's thickness |
 | Width, inboard from there | **about 12 mm** - anything from 8 to 15 works |
 | Length | the full fore-aft run the bed occupies, not stopping at the end spacers |
