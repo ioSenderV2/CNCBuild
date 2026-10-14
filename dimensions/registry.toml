@@ -1052,15 +1052,17 @@ note = "How much tongue there is past the floor BF12 needs - 25 on the 200 x 300
 
 [[dim]]
 sym = "T_BB_SKIN_TOP"
-value = 25
-provenance = "nominal"
-note = "25 - the TOP skin, and the thicker of the two. SETTLED: HIS CALL 2026-10-11, and torsion-box.md had already named it the one place 25 earns its place: the top skin takes the riser feet, the Y plate bolt line and the five standing plates' bottom edges IN BEARING. FLAG: IT IS NOT FOR STIFFNESS - 25 on both skins buys +46% against +100% for 19 skins on 150 ribs, and most of that 46% is only the box getting deeper. ASYMMETRIC SKINS ARE FINE IN A TORSION BOX, which is what lets the material go where the bearing is. OPEN: NOMINAL ON PURPOSE - torsion-box.md warns that sheet sold at a nominal commonly runs under, and that the rib notches must be cut to the measured thickness of the sheet in hand, not to this. NOTE: THE UNDERSIDE OF THE TOP SKIN DOES NOT MOVE: it is set by the post ledge, the bottom skin and the cavity, so this only makes the box 6 thicker and stands the machine 6 higher off the floor. Z 0 is the top skin, so nothing above the box moves at all."
+value = 24
+provenance = "measured"
+note = "24 - the TOP skin, and the thicker of the two. SETTLED: MEASURED ON THE SHEET IN HAND 2026-10-13 - his micrometer, sold as 24, and the registry carried 25 as a nominal until the board was bought. The 1 it lost is the whole of the change; the DECISION is still 'the thicker sheet goes on top'. SETTLED: HIS CALL 2026-10-11, and torsion-box.md had already named it the one place the thick sheet earns its place: the top skin takes the riser feet, the Y plate bolt line and the five standing plates' bottom edges IN BEARING. FLAG: IT IS NOT FOR STIFFNESS - the thick sheet on both skins buys +46% against +100% for thin skins on 150 ribs, and most of that 46% is only the box getting deeper. ASYMMETRIC SKINS ARE FINE IN A TORSION BOX, which is what lets the material go where the bearing is. NOTE: THE UNDERSIDE OF THE TOP SKIN DOES NOT MOVE: it is set by the post ledge, the bottom skin and the cavity, so this only makes the box thicker and stands the machine that much higher off the floor. Z 0 is the top skin, so nothing above the box moves at all. NOTE: THE RIB NOTCHES ARE CUT TO THIS, and it is now the sheet's own figure rather than a catalogue one."
+source = "His micrometer on the Crosscut Hardwoods sheet, 2026-10-13 - sold as 24, verified to 0.005"
 
 [[dim]]
 sym = "T_BB_SKIN_BOT"
-value = 19
-provenance = "nominal"
-note = "19 - the BOTTOM skin, unchanged when the top went to 25 on 2026-10-11. Nothing bears on it: it rests on the post ledges and works purely as the lower flange, where separation squared does the work rather than thickness. OPEN: NOMINAL ON PURPOSE, same warning as T_BB_SKIN_TOP - cut the rib notches to the sheet in hand."
+value = 18
+provenance = "measured"
+note = "18 - the BOTTOM skin, the thinner sheet, and it stayed the thinner one when the top went to the thick sheet on 2026-10-11. Nothing bears on it: it rests on the post ledges and works purely as the lower flange, where separation squared does the work rather than thickness. SETTLED: MEASURED 2026-10-13 - his micrometer, sold as 18, where the registry had carried 19 as a nominal."
+source = "His micrometer on the Crosscut Hardwoods sheet, 2026-10-13 - sold as 18, verified to 0.005"
 
 [[dim]]
 sym = "BOX_RIB_H"
@@ -1707,9 +1709,10 @@ note = "Bare top skin ahead of the side tongue. The front fin occupies the first
 
 [[dim]]
 sym = "T_BOX_TONGUE"
-value = 25
-provenance = "pinned"
-note = "25 - the box tongue, ONE lamination and NOT the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. FLAG: IT IS NOT A SEPARATE PART FROM THE OUTER WALL - torsion-box.md: 'inner web between the skins, outer lamination 180 mm tall standing on the bottom skin and 60 mm proud'. The tongue IS that outer lamination, so its thickness and the outer wall's are ONE DECISION and cannot be set apart. SETTLED: 25 SINCE 2026-10-11, up from 19, AND THE ARGUMENT IS BOLT BEARING RATHER THAN STIFFNESS: the standing plates bolt THROUGH this in a lap, M8 in a 9 hole, so bearing area is hole x thickness - 171 mm2 at 19 against 225 at 25, up 32%. lateral-stiffness.md makes those two through-bolts THE lateral load path, as a 145 mm couple, and plywood crushing under a bolt is a real limit where plywood shearing in a rib is not. SETTLED: GEOMETRICALLY FREE: MACHINE_OUTER_W is plate to plate and the tongue laps the plates from OUTBOARD, so this only grows the box's outer envelope and nothing inside the machine moves. OPEN: NOMINAL - caliper the sheet in hand, same warning as the skins."
+value = 24
+provenance = "measured"
+note = "24 - the box tongue, ONE lamination of the THICK sheet and NOT the two-lamination 38 the old walls had, because with no channel there is nothing for a second one to form. FLAG: IT IS NOT A SEPARATE PART FROM THE OUTER WALL - torsion-box.md: 'inner web between the skins, outer lamination 180 mm tall standing on the bottom skin and 60 mm proud'. The tongue IS that outer lamination, so its thickness and the outer wall's are ONE DECISION and cannot be set apart. SETTLED: MEASURED 2026-10-13 - his micrometer, sold as 24, where this had been carried at a nominal 25. SETTLED: IT IS THE THICK SHEET SINCE 2026-10-11, up from the thin one, AND THE ARGUMENT IS BOLT BEARING RATHER THAN STIFFNESS: the standing plates bolt THROUGH this in a lap, M8 in a 9 hole, so bearing area is hole x thickness - 162 mm2 on the thin sheet against 216 on the thick, up 33%. lateral-stiffness.md makes those two through-bolts THE lateral load path, as a 145 mm couple, and plywood crushing under a bolt is a real limit where plywood shearing in a rib is not. SETTLED: GEOMETRICALLY FREE: MACHINE_OUTER_W is plate to plate and the tongue laps the plates from OUTBOARD, so this only grows the box's outer envelope and nothing inside the machine moves."
+source = "His micrometer on the Crosscut Hardwoods sheet, 2026-10-13 - sold as 24, verified to 0.005"
 
 [[dim]]
 sym = "FIN_COVERS_TONGUE_END"
@@ -2573,8 +2576,9 @@ note = "0 - the slack the bed has fore-aft, and there is none. The clear run fro
 [[dim]]
 sym = "MDF_LAYER_T"
 value = 25
-provenance = "part"
-note = "25 - one sheet of the MDF stack over the aluminium. FLAG: ULTRA LITE MDF, about a third lighter than the ordinary board - his choice 2026-10-11, and the weight is the reason: the stack covers a square metre and it sits on top of everything the posts carry. TWO SHEETS, see MDF_LAYERS. It replaces the Mega V's 9.5 sheet plus two 19s; machine/spoilboard.md's stack table was rewritten on it the same day."
+provenance = "measured"
+note = "25 - one sheet of the MDF stack over the aluminium. SETTLED: THE ONE SHEET GOOD THAT CAME BACK AT ITS NOMINAL - measured 2026-10-13 on the board in hand, 25 as sold, where both plywood thicknesses came back a millimetre under. FLAG: ULTRA LITE MDF, about a third lighter than the ordinary board - his choice 2026-10-11, and the weight is the reason: the stack covers a square metre and it sits on top of everything the posts carry. TWO SHEETS, see MDF_LAYERS. It replaces the Mega V's 9.5 sheet plus two 19s; machine/spoilboard.md's stack table was rewritten on it the same day."
+source = "His micrometer on the Crosscut Hardwoods board, 2026-10-13 - 25, verified to 0.005"
 
 [[dim]]
 sym = "MDF_LAYERS"
@@ -2708,15 +2712,17 @@ note = "FLAG: ZERO. The spacer's bottom edge is TANGENT to the top skin - 4 of h
 
 [[dim]]
 sym = "T_BB_RIB"
-value = 19
-provenance = "nominal"
-note = "19 - the egg-crate ribs, and they STAY 19 even though going to a 25 top skin leaves surplus 25 stock. FLAG: ASKED AND ANSWERED 2026-10-11. The skins are the flanges and carry the bending moment; THE RIBS CARRY SHEAR, and 19 of Baltic birch is far past what the shear demands - which is the same reason torsion-box.md calls rib HEIGHT the lever and skin material the weak one. OPEN: AND THE TRADE RUNS BACKWARDS: thicker ribs DISPLACE SAND, and sand is about 1.5 g/cc against plywood's 0.68, so swapping rib volume for sand volume REDUCES total mass - paying plywood to remove ballast, on a box where mass is wanted for damping. SETTLED: THE SURPLUS 25 GOES TO THE BACK EDGE instead, which torsion-box.md names as the thing that deserves material: a beam supported at its midpoint carrying both back corners, which cannot be propped. The walls and tongues are the next best homes for it."
+value = 18
+provenance = "measured"
+note = "18 - the egg-crate ribs, cut from the THIN sheet, and they stay the thin sheet even though the thick top skin leaves surplus 24 stock. SETTLED: MEASURED 2026-10-13 - his micrometer, sold as 18, where this had been carried at a nominal 19. FLAG: ASKED AND ANSWERED 2026-10-11. The skins are the flanges and carry the bending moment; THE RIBS CARRY SHEAR, and 18 of Baltic birch is far past what the shear demands - which is the same reason torsion-box.md calls rib HEIGHT the lever and skin material the weak one. OPEN: AND THE TRADE RUNS BACKWARDS: thicker ribs DISPLACE SAND, and sand is about 1.5 g/cc against plywood's 0.68, so swapping rib volume for sand volume REDUCES total mass - paying plywood to remove ballast, on a box where mass is wanted for damping. SETTLED: THE SURPLUS 24 GOES TO THE BACK EDGE instead, which torsion-box.md names as the thing that deserves material: a beam supported at its midpoint carrying both back corners, which cannot be propped. The walls and tongues are the next best homes for it."
+source = "His micrometer on the Crosscut Hardwoods sheet, 2026-10-13 - sold as 18, verified to 0.005"
 
 [[dim]]
 sym = "T_BOX_WALL_WEB"
-value = 19
-provenance = "nominal"
-note = "19 - the INNER wall lamination, the web that sits between the two skins. It stays 19 while the outer lamination went to 25 on 2026-10-11, because it is effectively a PERIMETER RIB and carries shear - the same argument that keeps T_BB_RIB at 19. Nothing bolts through it: the plates bolt through the OUTER lamination, which is T_BOX_TONGUE. OPEN: NOMINAL - caliper the sheet."
+value = 18
+provenance = "measured"
+note = "18 - the INNER wall lamination, the web that sits between the two skins, cut from the THIN sheet. It stayed the thin sheet when the outer lamination went to the thick one on 2026-10-11, because it is effectively a PERIMETER RIB and carries shear - the same argument that keeps T_BB_RIB on the thin sheet. Nothing bolts through it: the plates bolt through the OUTER lamination, which is T_BOX_TONGUE. SETTLED: MEASURED 2026-10-13 - his micrometer, sold as 18, where this had been carried at a nominal 19."
+source = "His micrometer on the Crosscut Hardwoods sheet, 2026-10-13 - sold as 18, verified to 0.005"
 
 [[dim]]
 sym = "T_BOX_WALL"
