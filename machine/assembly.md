@@ -304,6 +304,12 @@ rests on anything.
 OPEN: **The casting's foot is stepped, not one flat plane.** Match or clear the step — if the bar sits
 under the stepped portion it holds the casting off its bearing face.
 
+FLAG: **The stepper frame is FERROUS — a magnet sticks to it.** His test, 2026-10-13, and it had been
+taken for cast aluminium. It matters because the **limit sensor mounts on the casting's top face**:
+an SN04 is non-shielded, so a ferrous host is the one material that can trigger it from the side or
+the back rather than off the target. **Whether it false-triggers there is a bench test, not a
+calculation** — wire one up on the real casting with BK12 in place before the mount is drilled.
+
 OPEN: **Open on X only: whether both bolt rows land over beam.** The rows come from Y geometry, and on
 X the bar sits on top and overhangs the end. **Check before drilling X's bar** — it is the same
 part, so the check is on the position, not the drawing.
