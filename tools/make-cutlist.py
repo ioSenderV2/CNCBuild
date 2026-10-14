@@ -286,6 +286,30 @@ def nest_svg(places, sw, sl, colours, s=0.105):
     return svgs
 
 
+def sand_ports(v):
+    """Centres of the sand ports, one per bay, as a list along one edge.
+
+    Both skins get the same grid and the box is square, so one row of figures
+    serves X and Y on both parts. The steps are not equal - the end bays are
+    wider - which is exactly the kind of thing that gets walked as a constant
+    pitch by hand and comes out wrong at the far end.
+    """
+    first, step, end = (v["SAND_PORT_FIRST"], v["SAND_PORT_STEP"],
+                        v["SAND_PORT_STEP_END"])
+    n = int(v["BOX_RIBS_FORE_AFT"]) + 1
+    at, pos = [first], first
+    for i in range(n - 1):
+        pos += end if i in (0, n - 2) else step
+        at.append(pos)
+    # The row is symmetric about the cavity's centre, so the last port must sit
+    # as far in from the far edge as the first does from the near one.
+    assert abs((v["BOX_W"] - at[-1]) - first) < 1e-6, (
+        f"sand ports run {at} on a {v['BOX_W']:g} skin - not symmetric")
+    off = [p for p in at if abs(p * 2 - round(p * 2)) > 1e-9]
+    assert not off, f"sand port centres not on a half millimetre - {off}"
+    return at
+
+
 def main():
     global KERF, EDGE_TRIM
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
@@ -354,14 +378,20 @@ def main():
         print("    starts  " + "  ".join(f"{s:6.0f}" for s in starts))
     print()
 
+    ports = sand_ports(v)
+    print(f"SAND PORTS - {v['SAND_PORT_D']:g} through both skins, "
+          f"{len(ports)} x {len(ports)} = {len(ports) ** 2} per skin\n")
+    print("  centres, same in X and Y  "
+          + "  ".join(f"{p:g}" for p in ports) + "\n")
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows_html, summary, nests, a.sheet, v, runs),
+    OUT.write_text(render(rows_html, summary, nests, a.sheet, v, runs, ports),
                    encoding="utf-8")
     print("wrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, summary, nests, drawn, v, runs):
+def render(rows, summary, nests, drawn, v, runs, ports):
     th, last_t = [], None
     for t, name, a, b, qty in rows:
         if t != last_t:
@@ -437,6 +467,27 @@ back together, so a careful nest can still do better.</p>
 <b>{EDGE_TRIM:g} mm</b> off each factory edge; everything sits inside it.
 Offcut is whatever stays white.</p>
 {''.join(ns)}
+
+<h2>Sand ports</h2>
+<p><b>{v['SAND_PORT_D']:g} through both skins, {len(ports)} &times; {len(ports)} =
+{len(ports) ** 2} in each</b>, one centred in every bay. Centres from the skin's
+edge, <b>the same figures in X and Y</b> &mdash; the box is square and the grid is
+the same both ways:</p>
+<table><tr><th>Port</th>{''.join(f'<th>{i + 1}</th>' for i in range(len(ports)))}</tr>
+<tr><td>Centre</td>{''.join(f'<td class=n>{p:g}</td>' for p in ports)}</tr></table>
+<p><b>The steps are not equal</b> &mdash; {v['SAND_PORT_STEP_END']:g} at each end of
+the row and {v['SAND_PORT_STEP']:g} through the middle, because the end bays are
+wider. Walking it as a constant pitch puts the far port in the wrong place.</p>
+<p>The bottom port takes a rubber cork with <b>{v['SAND_PORT_CHAIN_L']:g}</b> of
+<b>stainless or brass</b> chain, fitted <b>before the top skin goes on</b>. Fill
+through the top: fish the chain up with a magnet on a rod, tape it to the skin,
+pour the bay full, untape and let it fall on the sand. Drain by pushing the cork
+<b>up from below with a stick</b>, and reseat it from above with a
+<b>{v['SAND_PORT_DOWEL']:g}</b> dowel.</p>
+<p>The tee track bed covers all but the <b>front row</b> of five, which lands on
+the open apron. <b>{v['T_APRON_SKIN']:g} Baltic birch over the apron on
+double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off
+the day a port is used.</p>
 
 <h2>Not on this list</h2>
 <p><b>The two blocks beside the back centre tenon.</b> They are location pieces

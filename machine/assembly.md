@@ -663,7 +663,7 @@ but the gap is still a hard dimension.
 2. OPEN: **Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin
    along its whole length.
 3. FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
-   egg crate seals every cell; without this each cell traps its own sand and needs its own drain port.
+   egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
 4. **Clamp the skins hard onto the rib edges.** Screws through the skins into the ribs give uniform
    pressure and can stay in.
 
@@ -751,12 +751,39 @@ through the shoulder — that is withdrawal from cedar end grain.
 
 **The box is not otherwise fastened to the posts.** Gravity and 99 mm of tenon engagement hold it.
 
-### Drain ports
+### Sand ports — one per bay, through both skins
 
-**Low in the front and back perimeter walls.** They gravity-drain into a bucket and stay reachable.
+**25.4 through both skins, 5 × 5 in each, one centred in every bay.** Centres from the skin's edge,
+the same figures in X and Y because the box is square and the grid is the same both ways:
+**129.5, 368.5, 605.5, 842.5, 1081.5**. The steps are **239, 237, 237, 239** — not a constant
+pitch, because the end bays are wider.
 
-FLAG: **Not in the bottom skin** — the 2x4 frame and three carcases make it unreachable.
-OPEN: **Not in the laminated left and right walls** — those are the 42 mm walls the Y beam plates bolt to.
+Centred, and not for looks: dry sand stands at about a **34° repose angle**, so from a centre hole
+the drain crater reaches roughly 100 / tan 34° ≈ **150**, more than the 110 half-bay, and the bay
+empties to a shallow corner residue. A port in a corner would strand a wedge.
+
+| | |
+|---|---|
+| **Before the top skin goes on** | Fit each bottom port with a **rubber cork carrying 152.4 of stainless or brass chain** — not plain steel, which will be a rusted lump in a closed cavity by the time it is wanted |
+| **Filling** | Fish the chain up through the top port with a magnet on a rod, tape the end to the top skin, pour the bay full, then untape and let the end fall on the sand where a magnet finds it again |
+| **Draining** | **Push the cork up from below with a stick** — the chain comes with it, and a push does not depend on how tight a cork has gone after a year |
+| **Reseating** | Push the cork back down into the bottom skin from above with a **12.7 dowel** through the top port |
+
+**The front row of five lands on the open apron**, since the tee track bed runs to 1006.35 and that
+row is centred at 1081.5. **Skin the apron with 6.35 Baltic birch on double-sided tape** — a cover
+and not structure, so it comes off the day a port is used, and it gives the apron a sacrificial
+surface the bare top skin did not have.
+
+**Draining needs the carcases out, and they are built to come out** — pull them and the whole bottom
+is open to a tarp or a tray.
+
+FLAG: **This replaces ports low in the front and back perimeter walls, which would not have worked.**
+Sand does not walk sideways to a wall port: it would have needed the whole box tipped to a
+significant angle, and there is no way to do that to a 565 lb box standing on three posts.
+
+NOTE: **The bays stay connected by the bottom-edge rib notches.** Each bay has its own port now, so
+the notches are no longer what makes draining possible — they are kept because they cost one pass
+on the same dado setup and they let a corner residue find a neighbouring port.
 
 ### The base
 

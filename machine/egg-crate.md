@@ -40,8 +40,9 @@ the errors accumulating.
    contact with a skin **along its whole length** - which is the glue joint the whole sandwich
    depends on.
 3. FLAG: **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
-   egg crate seals every cell, so without this the sand cannot migrate and you need a **drain port
-   per cell** instead of a few. Same cut, far fewer ports - see Transport.
+   egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
+   Every bay has its own port now, so this is no longer what makes draining possible - it is kept
+   because it is the same cut and it lets a residue find a neighbouring port. See Transport.
 4. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
    action lives. Screws through the skins into the ribs are the simplest way to get uniform
    pressure, and they can stay in.

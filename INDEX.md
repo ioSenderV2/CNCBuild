@@ -45,7 +45,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [8. The torsion box](machine/assembly.md#8-the-torsion-box)
   - [Four things to get right on the grid](machine/assembly.md#four-things-to-get-right-on-the-grid)
   - [The three posts](machine/assembly.md#the-three-posts)
-  - [Drain ports](machine/assembly.md#drain-ports)
+  - [Sand ports — one per bay, through both skins](machine/assembly.md#sand-ports-one-per-bay-through-both-skins)
   - [The base](machine/assembly.md#the-base)
 - [9. Set the machine on the box](machine/assembly.md#9-set-the-machine-on-the-box)
 - [10. Fit the spindle and tram](machine/assembly.md#10-fit-the-spindle-and-tram)
