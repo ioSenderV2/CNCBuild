@@ -2,10 +2,11 @@
 """The torsion box cut list and sheet nesting, generated from the registry.
 
 WHY THIS IS GENERATED AND NOT TYPED: every part below is a plywood piece whose
-size depends on thicknesses that are still NOMINAL - the sheets have not been
-micced. When they are, the registry changes and this regenerates. A typed list
-would be stale the moment a sheet measured 18.4 instead of 19, and the places it
-would be wrong are the notch fits and the wall, which are the two that matter.
+size depends on the sheet thicknesses, and this is exactly what it was written
+for - the sheets were micced on 2026-10-13 and came back 24 and 18 against the
+nominal 25 and 19 the registry had carried. One number each in registry.toml and
+every part here followed. A typed list would have been wrong in the notch fits
+and in the wall, which are the two that matter.
 
 It also answers the sheet-size question, because that is not eyeballable: the
 skins are BOX_W x BOX_FORE_AFT and BOX_W is within 8 mm of a 4-foot sheet.
