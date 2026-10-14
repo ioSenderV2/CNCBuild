@@ -3149,3 +3149,47 @@ note = "10 - what the bracket adds in HEIGHT, his 2026-10-13, AS FLOPPED FOR THE
 sym = "LIMIT_SENSOR_STACK_H"
 expr = "LIMIT_SENSOR_BRACKET_H + LIMIT_SENSOR_H"
 note = "27.75 - how far the sensor's top stands above the surface the bracket bolts to, flopped. THIS IS THE FIGURE THE WINDOW HAS TO CLEAR if the sensor sits over the part of the casting that passes through the plate."
+
+# ---------------------------------------------------- the rear plate's windows
+# SETTLED: RECTANGLE WITH ROUNDED CORNERS, not a circle - his, 2026-10-13. A
+# round hole was the attractive option because it is the easy cut and the whole
+# assembly is at the back where nobody looks. It does not fit: the interposer's
+# top face is hard against the beam underside and the bar is 60 wide, so a Ø80
+# circle containing those top corners has its top at 195.5, and the lowest beam
+# bore row starts at 192.5 - it clips A1 and A2 by about 3. Ø96 would clear, by
+# the rise over a 60-wide opening falling as the circle grows, but that is a far
+# bigger bite out of what is also the rear shear panel. Radiused corners cost
+# nothing instead: the casting is 60 in a 60.5 opening, so the corners are empty.
+#
+# THE STEEL PARTS GO TO A PLASMA OR WATERJET SHOP - his, 2026-10-13, and not to
+# a router. That removes "which shape is easier to cut" from the argument
+# entirely: either process walks any profile, so the radius is a free choice and
+# is set by the bolt head below rather than by a tool.
+#
+# OPEN: IT PUTS THE TOLERANCE QUESTION IN ITS PLACE INSTEAD. WINDOW_W is 60.5
+# over a 60 casting - half a millimetre TOTAL, which WINDOW_W's own note calls
+# deliberately little. That is inside plasma's own kerf and taper on 1/4in
+# steel; waterjet holds it comfortably. If the shop is plasma, open the window
+# up rather than cut it to this figure and hope - the width has no job except
+# clearance, and nothing downstream reads it.
+
+[[dim]]
+sym = "WINDOW_CORNER_R"
+value = 10
+provenance = "pinned"
+note = "10 - the corner radius on each rear plate window. FLAG: THE BINDING FEATURE IS A BOLT HEAD, NOT THE CASTING. The M5 x 35 rails bolt's head sits nearest the bottom-outboard corner, and WINDOW_CORNER_MARGIN is what is left between them. OPEN: THE MARGIN SHRINKS AS THE RADIUS GROWS - 1.2 at this 10, about 2.6 at a 6 - so a smaller radius is the safer direction, not the tighter one. The geometric limit is about 13, where the head touches the fillet."
+
+[[dim]]
+sym = "CAST_HEAD_X_IN"
+expr = "BF12_COL_INB - (M5_HEAD_D / 2)"
+note = "2.76 - how far in from the window's OUTBOARD edge the M5 x 35 rails bolt's head starts. The column is 7 off the beam's outer face and the window's outboard edge is that same face, so the head's own radius is all that separates them."
+
+[[dim]]
+sym = "CAST_HEAD_Z_UP"
+expr = "Y_BEAM_UNDERSIDE - T_INTERPOSER - CASTING_RAIL_H - M5_HEAD_H - WINDOW_Z_LOW"
+note = "5 - how far the same head's underside sits above the window's BOTTOM edge. Beam underside, less the bar, less the casting's rail depth, less the head itself."
+
+[[dim]]
+sym = "WINDOW_CORNER_MARGIN"
+expr = "WINDOW_CORNER_R - (((WINDOW_CORNER_R - CAST_HEAD_X_IN) ** 2 + (WINDOW_CORNER_R - CAST_HEAD_Z_UP) ** 2) ** 0.5)"
+note = "1.2 - metal between the M5 x 35 head and the corner fillet, as the distance from the fillet's centre to the head's nearest point taken off the radius. FLAG: IT MUST NOT GO NEGATIVE. Negative means the fillet has eaten into the head's footprint and the bolt cannot be driven. Nothing bears here, so 1.2 is a clearance rather than a stress question - but it is the figure that moves if the radius, the bolt column or the head size changes, and it is checked rather than remembered."
