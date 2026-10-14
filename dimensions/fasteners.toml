@@ -98,7 +98,7 @@ note = "FLAG: THIS BAR SITS ON TOP OF THE X BEAM, so these drive DOWNWARD into t
 
 [[joint]]
 id = "y-interposer-to-beam"
-what = "Y1 and Y2 interposer bars UP into the beams' underside T-slots"
+what = "Y1 and Y2 interposer bars UP into the beams' underside T-slots, AT THE REAR"
 size = 8
 count = 8
 per = "4 per bar, two bars"
@@ -152,18 +152,18 @@ source = "his, 2026-10-11"
 
 [[joint]]
 id = "bf12-to-rear-plate"
-what = "BF12 face-mounted into the 1/4in rear plate, Y1 and Y2"
+what = "BF12 face-mounted into the front fin, Y1 and Y2"
 size = 5
 count = 8
 per = "4 per BF12, two BF12"
-length = 25
+length = 30
 groups = [["Interposer/stepper assembly/BF12 for Y1", 4], ["Interposer/stepper assembly/BF12 for Y2", 4]]
 head = "socket"
 into = "tapped"
 grip = ["BF12_BODY_AT_BOLT"]
 extras = []
-source = "his, 2026-10-11"
-note = "M5 x 25, giving 5 of engagement in the 6.35 plate - 1 x D in steel - and NOTHING PROTRUDES. FLAG: IT IS A DIFFERENT LENGTH FROM THE TONGUE'S for one reason: the same 30 bolt that stops 2.19 short in the 1/2in tongue runs 3.65 clean through a 1/4in plate. Shortening the bolt was taken over capping the stub with an acorn nut - one fewer part and one fewer step, and the stub was at the back of the machine where it did no harm anyway."
+source = "his, 2026-10-13 - the same fastener as X's"
+note = "M5 x 30, THE SAME BOLT AS THE X TONGUE'S - his call on the flip, 2026-10-13, and it makes one length serve all twelve BF12 bolts on the machine. FLAG: IT ENDS FLUSH RATHER THAN STOPPING SHORT. BF12_BODY_AT_BOLT is 20, so a 30 engages 10, and T_FIN is 10 - a tapped-through hole finishing level with the fin's outboard face. That is 2 x D in aluminium, against the 1 x D in steel the old arrangement had. FLAG: THE ID STILL SAYS REAR-PLATE. It is the joint's key, quoted by tools/make-3d.py, so renaming it is a two-file change and it is kept until the sheets are redrawn. Superseded: M5 x 25 into the 6.35 rear plate, which was chosen so nothing protruded at the back - the joint is at the FRONT now and the question does not arise."
 
 [[joint]]
 id = "bf12-to-x-tongue"
