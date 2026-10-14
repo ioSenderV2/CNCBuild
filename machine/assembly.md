@@ -672,9 +672,13 @@ self-jigs and holds its own spacing with no clamps.
 
 **The reference is two 4' square sheets of 3/4" MDF stacked, 38 mm thick, on the Festool plywood
 cart.** No seam anywhere under the box, and 38 mm of MDF does not sag between the cart's rails.
-The box is **1211 square** on a **1219.2** reference, so it lands with **4 mm a side** — there is
-no margin to clamp against from outside, so clamp the skins **down through the grid** rather than
-around the edges. Shim the cart, not the MDF.
+The box is **1211 square** on a **1219.2** reference, so it lands with **4 mm a side**. Shim the
+cart, not the MDF.
+
+**Clamp the perimeter with 52" parallel clamps laid across the top, one over each rib.** They reach
+the 1211 with room, and putting each bar on a rib line backs the pressure with structure instead of
+pinching unsupported skin. That takes the sides and the front and back; the skin-to-rib pressure is
+the screws in item 4 above.
 
 OPEN: **Open: the grid spacing.** Conventional is 200-300 mm. Two constraints: the **first interior rib
 in from each perimeter must clear the front corner tenons**, and the **two front-to-back ribs either
