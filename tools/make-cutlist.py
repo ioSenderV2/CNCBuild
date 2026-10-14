@@ -478,12 +478,12 @@ the same both ways:</p>
 <p><b>The steps are not equal</b> &mdash; {v['SAND_PORT_STEP_END']:g} at each end of
 the row and {v['SAND_PORT_STEP']:g} through the middle, because the end bays are
 wider. Walking it as a constant pitch puts the far port in the wrong place.</p>
-<p>The bottom port takes a rubber cork with <b>{v['SAND_PORT_CHAIN_L']:g}</b> of
-<b>stainless or brass</b> chain, fitted <b>before the top skin goes on</b>. Fill
-through the top: fish the chain up with a magnet on a rod, tape it to the skin,
-pour the bay full, untape and let it fall on the sand. Drain by pushing the cork
-<b>up from below with a stick</b>, and reseat it from above with a
-<b>{v['SAND_PORT_DOWEL']:g}</b> dowel.</p>
+<p>The bottom port takes a <b>rubber plug fitted from below with a pull tab
+underneath</b> &mdash; nothing goes in from above and nothing is attached to it.
+Pull it to drain, push it back to seal. The sand bearing on one plug is only
+<b>{v['SAND_PORT_PLUG_LOAD'] * 1000:.0f} grams</b>, so friction is all it needs.
+<b>Fill through the top ports once, at assembly, before the bed goes down</b>:
+the bed cannot come out of the assembled machine.</p>
 <p>The tee track bed covers all but the <b>front row</b> of five, which lands on
 the open apron. <b>{v['T_APRON_SKIN']:g} Baltic birch over the apron on
 double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off

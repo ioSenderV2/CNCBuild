@@ -166,6 +166,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Holding the MDF down - four M8 drop-in T-bolts](machine/spoilboard.md#holding-the-mdf-down---four-m8-drop-in-t-bolts)
 - [Four corner bolts are enough, and the sheets are NOT glued - settled 2026-10-11](machine/spoilboard.md#four-corner-bolts-are-enough-and-the-sheets-are-not-glued---settled-2026-10-11)
 - [How it is anchored](machine/spoilboard.md#how-it-is-anchored)
+- [A tee track panel cannot come out of the assembled machine](machine/spoilboard.md#a-tee-track-panel-cannot-come-out-of-the-assembled-machine)
 - [The Z envelope, both ends](machine/spoilboard.md#the-z-envelope-both-ends)
   - [The four fixturing cases](machine/spoilboard.md#the-four-fixturing-cases)
 - [The X carriage does not move down - settled 2026-10-11](machine/spoilboard.md#the-x-carriage-does-not-move-down---settled-2026-10-11)

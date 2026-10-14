@@ -1072,24 +1072,33 @@ note = "Egg-crate rib height between the skins. His, 2026-10-03."
 
 # ------------------------------------------------- the sand ports, one per bay
 # SETTLED: HIS SCHEME 2026-10-14, AND IT REPLACES THE PERIMETER WALL PORTS.
-# One hole through BOTH skins, centred in every bay: fill through the top,
-# drain through the bottom. The bottom hole carries a rubber cork with a
-# SAND_PORT_CHAIN_L chain on it, fitted BEFORE the top skin goes on.
+# One hole through BOTH skins, centred in every bay: FILL through the top, DRAIN
+# through the bottom, and the two are independent jobs.
 #
-# Filling: fish the chain up through the top hole with a magnet on a rod, tape
-# the end to the top skin, pour the bay full, then untape and let the end fall
-# onto the sand where a magnet can find it again.
+# Filling: pour the bay full through the top port. Once only, at assembly,
+# before the bed goes down - see the captured-bed flag below.
 #
-# Draining: push the cork UP from below with a stick - his, 2026-10-14, and it
-# is better than pulling, because a cork that has sat in a hole for a year is
-# unpredictable in friction and the push comes with the chain. Reseat it from
-# above with a SAND_PORT_DOWEL through the top hole.
+# Draining: the bottom port takes a rubber plug fitted FROM BELOW with a pull
+# tab underneath. Pull it out, the sand runs into a tray, push it back in. No
+# chain, no magnet, no dowel, and NO ACCESS FROM ABOVE - which is what makes a
+# drain a job you do lying under the machine with the CNC untouched.
+# SAND_PORT_PLUG_LOAD is why that holds.
 #
-# FLAG: THE OLD PLAN WAS NOT FUNCTIONAL AND THAT IS WHY THIS EXISTS - his, same
-# day. Ports low in the front and back perimeter walls would have needed the
-# whole box tipped to a significant angle to move sand towards them, and there
-# is no way to do that to a 565 lb box standing on three posts. Draining DOWN
-# needs no tipping at all.
+# FLAG: THE MAGNET AND CHAIN SCHEME IS RETIRED - see SAND_PORT_CHAIN_L and
+# SAND_PORT_DOWEL. It worked, but it pushed the cork UP into the bay, which made
+# reseating depend on reaching down through the top port, and the top ports turn
+# out to be the access that is not there.
+#
+# FLAG: THE BED IS CAPTURED ONCE THE MACHINE IS ASSEMBLED, his catch 2026-10-14,
+# and it is why the direction of the plug matters. A tee track panel is 1193.8
+# wide where the gap between the Y beams' inner faces is Y_BEAM_GAP, 1084.38, so
+# each edge sits about 55 under a beam; forward is blocked by the two fins and
+# back by the rear plate. See machine/spoilboard.md.
+#
+# FLAG: THE PERIMETER WALL PORTS WERE NOT FUNCTIONAL and that is why any of this
+# exists - his, same day. Ports low in the front and back walls would have needed
+# the whole box tipped to a significant angle to move sand towards them, and
+# there is no tipping a 565 lb box standing on three posts.
 
 [[dim]]
 sym = "SAND_PORT_D"
@@ -1098,16 +1107,24 @@ provenance = "pinned"
 note = "25.4 - 1in, the sand port through each skin, the same size in both. His, 2026-10-14. SETTLED: CENTRED IN THE BAY, and the centring is not for looks: dry sand stands at about a 34 degree repose angle, so from a centre hole the drain crater reaches roughly BOX_RIB_H / tan 34, about 150 - more than the 110 half-bay - and the bay empties to a shallow corner residue. A port in a corner would strand a wedge."
 
 [[dim]]
+sym = "SAND_PORT_PLUG_LOAD"
+expr = "(BOX_RIB_H / 1000) * 1.5 * (3.14159 * (SAND_PORT_D / 2) ** 2) / 1000"
+note = "0.076 - the weight of sand bearing on one plug, in KILOGRAMS: a BOX_RIB_H column of sand at about 1.5 g/cc over the port's own area. SETTLED: IT IS THE WHOLE REASON THE PLUG WORKS FROM BELOW - 76 grams is nothing against the friction of a rubber plug in a hole, so the plug does not need a taper seated from above, a chain, or any access from the top. Fit it FROM BELOW with a pull tab underneath: pull it out to drain, push it back in to seal. NOTE: THE UNIT IS kg AND NOT mm, the only symbol in this file that is not a length - it is here because a design decision rests on it and the arithmetic should not have to be redone to check it."
+unit = "kg"
+
+[[dim]]
 sym = "SAND_PORT_DOWEL"
 value = 12.7
-provenance = "pinned"
-note = "12.7 - 1/2in dowel, used through the TOP port to push the cork back into the bottom skin after a drain. His, 2026-10-14."
+provenance = "nominal"
+retired = true
+note = "FLAG: RETIRED 2026-10-14 AND NOTHING USES IT. It was the dowel that pushed a cork back into the bottom skin FROM ABOVE, in the scheme where the cork was pushed up into the bay to drain and had to be reseated through the top port. The plug is fitted from BELOW now - see SAND_PORT_PLUG_LOAD - so there is nothing to reach down and do. Kept because it is the reason the top ports stopped being needed for anything but filling, which is what made the captured bed survivable."
 
 [[dim]]
 sym = "SAND_PORT_CHAIN_L"
 value = 152.4
-provenance = "pinned"
-note = "152.4 - 6in of chain on each cork, his 2026-10-14. FLAG: STAINLESS OR BRASS, NOT PLAIN STEEL - it lives in a closed cavity with sand that will not always be dry, and a rusted lump is no use on the day the box has to be moved. NOTE: IT ONLY HAS TO REACH THE TOP PORT while the bay is empty, which is BOX_RIB_H, so 6in is 52 of slack."
+provenance = "nominal"
+retired = true
+note = "FLAG: RETIRED 2026-10-14 AND NOTHING USES IT. 6in of chain on each cork, whose job was to find the cork again after it was pushed up into the bay, fished with a magnet through the top port. The plug comes DOWNWARD out of the hole now and never enters the bay, so there is nothing to find. Kept because the chain is what the fill procedure was written around, and a bare deletion would leave that reversal with no record."
 
 [[dim]]
 sym = "T_APRON_SKIN"

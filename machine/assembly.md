@@ -764,10 +764,17 @@ empties to a shallow corner residue. A port in a corner would strand a wedge.
 
 | | |
 |---|---|
-| **Before the top skin goes on** | Fit each bottom port with a **rubber cork carrying 152.4 of stainless or brass chain** — not plain steel, which will be a rusted lump in a closed cavity by the time it is wanted |
-| **Filling** | Fish the chain up through the top port with a magnet on a rod, tape the end to the top skin, pour the bay full, then untape and let the end fall on the sand where a magnet finds it again |
-| **Draining** | **Push the cork up from below with a stick** — the chain comes with it, and a push does not depend on how tight a cork has gone after a year |
-| **Reseating** | Push the cork back down into the bottom skin from above with a **12.7 dowel** through the top port |
+| **The plug** | A **rubber plug fitted from below with a pull tab underneath**. Nothing goes in from above and nothing is attached to it |
+| **Filling** | Pour each bay full through its top port. **Once, at assembly, before the bed goes down** |
+| **Draining** | Lying under the machine: **pull the plug out**, the sand runs into a tray, **push it back in**. The CNC is untouched |
+
+**Why a plug needs nothing but friction.** The sand bearing on one plug is a 100 mm column at about
+1.5 g/cc over the port's own area — **76 grams**. That is nothing against the grip of a rubber plug
+in a hole, so the plug does not need a taper seated from above, a chain, or any access from the top.
+
+FLAG: **A magnet-and-chain scheme was carried for one commit and is retired.** It pushed the cork
+**up** into the bay to drain, which made reseating depend on reaching down through the top port —
+and the top ports turn out to be the access that is not there.
 
 **The front row of five lands on the open apron**, since the tee track bed runs to 1006.35 and that
 row is centred at 1081.5. **Skin the apron with 6.35 Baltic birch on double-sided tape** — a cover

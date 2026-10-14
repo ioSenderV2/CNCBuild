@@ -230,6 +230,31 @@ NOTE: **Hold the stack a few millimetres short of the side plates' inside faces*
 heads at Y 30 live in a relief gap, with no plate geometry changed. That is cheaper than moving the
 bolt line - see below.
 
+## FLAG: A tee track panel cannot come out of the assembled machine
+
+**His catch, 2026-10-14, and it is worth more than the question that found it.** The fixings come
+undone easily - four M8 T-bolts and sixteen M5 screws, nothing glued, nothing into the box - but the
+**panel has nowhere to go**:
+
+| Way out | What stops it |
+|---|---|
+| **Straight up** | Each panel is **1193.8** wide and the gap between the two Y beams' inner faces is **1084.38**, so about **55 of each edge sits under a beam**. There is 166 of air above the bed and none of it helps |
+| **Up, tilted** | Getting the panel's across-machine span down to 1084.38 takes **24.7°**, which leaves **zero** clearance and stands the far corner **499** up into the gantry |
+| **Forward** | The two fins stand on the skin at Y 1006.35, **200 wide** each, leaving about **811** between them |
+| **Back** | The rear plate, full width |
+
+**So the bed is single-fit, and a damaged panel means taking a Y beam off.** It also means the
+**sand ports in the top skin are fill-only**: they are used once, at assembly, before the bed goes
+down. Draining does not need them - the plug comes out downward, see
+[`assembly.md`](assembly.md#sand-ports--one-per-bay-through-both-skins).
+
+OPEN: **Whether to port the aluminium as well, 25.4 on the same grid, plugged flush.** It would make
+a refill a half-hour job - four T-bolts, lift the two MDF sheets, pull the plugs, pour - instead of
+a strip-down. The cost is that a 25.4 hole at an arbitrary X **cuts across the tee track slots**, so
+it comes out ragged and open to the slot either side, and each one wants a plug that actually seals
+or chips and sand find their way into the box. **His call, and the holes are easier to make before
+the panels are ever bedded.**
+
 ## The Z envelope, both ends
 
 Everything here hangs off one figure: **the tool tip's lowest point is 45.2 mm above the box's top
