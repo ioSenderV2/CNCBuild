@@ -286,6 +286,90 @@ def nest_svg(places, sw, sl, colours, s=0.105):
     return svgs
 
 
+def plan_svg(v, ports):
+    """Top-down plan of the grid with the bottom skin's ports, dimensioned.
+
+    Drawn in MILLIMETRES - the viewBox is the part - so every coordinate below
+    is the real figure and there is no scale factor to get wrong. Y runs down
+    the page the same way it runs forward on the machine, so the rear plate is
+    at the top of the drawing.
+    """
+    W = v["BOX_W"]
+    web, rib, r = v["T_BOX_WALL_WEB"], v["T_BB_RIB"], v["SAND_PORT_D"] / 2
+    starts = [web + s for s in
+              (v["BOX_BAY_W_END"] + i * (v["BOX_BAY_W"] + rib) for i in range(4))]
+    M = 150                                      # room for the dimension chains
+    g = [f'<rect x="0" y="0" width="{W:g}" height="{W:g}" fill="#fbfbf8" '
+         f'stroke="#333" stroke-width="2"/>']
+
+    # the four perimeter webs, then the ribs: same layout both ways
+    for x, y, w, h in ((0, 0, W, web), (0, W - web, W, web),
+                       (0, 0, web, W), (W - web, 0, web, W)):
+        g.append(f'<rect x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" '
+                 f'fill="#d8d2c4" stroke="#333" stroke-width="1.5"/>')
+    for s in starts:
+        g.append(f'<rect x="{s:g}" y="{web:g}" width="{rib:g}" '
+                 f'height="{W - 2 * web:g}" fill="#e8e0cc" stroke="#333" '
+                 f'stroke-width="1.5"/>')
+        g.append(f'<rect x="{web:g}" y="{s:g}" width="{W - 2 * web:g}" '
+                 f'height="{rib:g}" fill="#e8e0cc" stroke="#333" '
+                 f'stroke-width="1.5"/>')
+
+    # the tee track bed's front edge - what puts the front row on the apron
+    bed = v["TT_BED_Y0"] + v["TT_BED_FORE_AFT"]
+    g.append(f'<line x1="0" y1="{bed:g}" x2="{W:g}" y2="{bed:g}" stroke="#c00" '
+             f'stroke-width="3" stroke-dasharray="26 14"/>')
+    g.append(f'<text x="{W - 10:g}" y="{bed - 14:g}" text-anchor="end" '
+             f'font-size="26" fill="#c00">tee track bed ends {bed:g} - the row '
+             f'below it is on the apron</text>')
+
+    for cy in ports:
+        for cx in ports:
+            g.append(f'<circle cx="{cx:g}" cy="{cy:g}" r="{r:g}" fill="#fff" '
+                     f'stroke="#c00" stroke-width="3"/>')
+            g.append(f'<line x1="{cx - r - 10:g}" y1="{cy:g}" '
+                     f'x2="{cx + r + 10:g}" y2="{cy:g}" stroke="#c00" '
+                     f'stroke-width="1.5"/>')
+            g.append(f'<line x1="{cx:g}" y1="{cy - r - 10:g}" x2="{cx:g}" '
+                     f'y2="{cy + r + 10:g}" stroke="#c00" stroke-width="1.5"/>')
+
+    # ONE dimension chain, along the top, and a note that it serves both ways.
+    # The box is square and the grid is identical in X and Y, so a second chain
+    # down the side would be the same five numbers twice.
+    dy = -70
+    g.append(f'<line x1="0" y1="{dy:g}" x2="{W:g}" y2="{dy:g}" stroke="#444" '
+             f'stroke-width="2"/>')
+    edges = [0] + list(ports) + [W]
+    for p in edges:
+        g.append(f'<line x1="{p:g}" y1="{dy - 18:g}" x2="{p:g}" '
+                 f'y2="{dy + 18:g}" stroke="#444" stroke-width="2"/>')
+        if p not in (0, W):
+            # leader down to the port it dimensions, so the chain cannot be
+            # read against the wrong column
+            g.append(f'<line x1="{p:g}" y1="{dy:g}" x2="{p:g}" '
+                     f'y2="{ports[0]:g}" stroke="#888" stroke-width="1" '
+                     f'stroke-dasharray="8 8"/>')
+    for a, b in zip(edges, edges[1:]):
+        g.append(f'<text x="{(a + b) / 2:g}" y="{dy - 26:g}" '
+                 f'text-anchor="middle" font-size="30">{b - a:g}</text>')
+    g.append(f'<text x="{W / 2:g}" y="{dy - 80:g}" text-anchor="middle" '
+             f'font-size="32" font-weight="600">port centres - THE SAME IN BOTH '
+             f'DIRECTIONS</text>')
+
+    # the three figures that are not in the chain
+    g.append(f'<text x="{web + 12:g}" y="{W + 48:g}" font-size="28">'
+             f'web and ribs {rib:g} - bays {v["BOX_BAY_W_END"]:g} at the ends, '
+             f'{v["BOX_BAY_W"]:g} between - ports &#216;{v["SAND_PORT_D"]:g} '
+             f'through the bottom skin, one per bay, {len(ports) ** 2} of '
+             f'them</text>')
+    g.append(f'<text x="0" y="{dy - 80:g}" font-size="28" fill="#555">back</text>')
+    g.append(f'<text x="0" y="{W + 100:g}" font-size="28" fill="#555">front - '
+             f'apron beyond</text>')
+
+    return (f'<svg viewBox="{-M:g} {-M - 90:g} {W + 2 * M:g} {W + 2 * M + 90:g}" '
+            f'width="100%" style="max-width:185mm">{"".join(g)}</svg>')
+
+
 def sand_ports(v):
     """Centres of the sand ports, one per bay, as a list along one edge.
 
@@ -475,6 +559,9 @@ edge, <b>the same figures in X and Y</b> &mdash; the box is square and the grid 
 the same both ways:</p>
 <table><tr><th>Port</th>{''.join(f'<th>{i + 1}</th>' for i in range(len(ports)))}</tr>
 <tr><td>Centre</td>{''.join(f'<td class=n>{p:g}</td>' for p in ports)}</tr></table>
+
+<h3>The grid from above, with the bottom skin's ports</h3>
+{plan_svg(v, ports)}
 <p><b>The steps are not equal</b> &mdash; {v['SAND_PORT_STEP_END']:g} at each end of
 the row and {v['SAND_PORT_STEP']:g} through the middle, because the end bays are
 wider. Walking it as a constant pitch puts the far port in the wrong place.</p>
