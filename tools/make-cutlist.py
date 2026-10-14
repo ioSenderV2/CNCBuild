@@ -323,6 +323,54 @@ def plan_svg(v, ports):
              f'font-size="26" fill="#c00">tee track bed ends {bed:g} - the row '
              f'below it is on the apron</text>')
 
+    # ---- the three tenon holes, and the legs under them ------------------
+    # Same rectangles tools/make-3d.py cuts out of the bottom skin, built from
+    # the same symbols: the hole is the tenon plus TENON_HOLE_CLEAR a side, and
+    # the post around it is bigger than its hole because the ledge is cut on the
+    # OUTWARD faces - which is why the leg centres are not the hole centres.
+    ledge, hc = v["T_BOX_LEDGE"], v["TENON_HOLE_CLEAR"]
+    tc, tb, pw = v["TENON_CORNER"], v["TENON_BACK_DEPTH"], v["POST_W"]
+    legs = [
+        ("front left", (web, web + tc, W - web - tc, W - web),
+         (web - ledge, web + tc, W - web - tc, W - web + ledge)),
+        ("front right", (W - web - tc, W - web, W - web - tc, W - web),
+         (W - web - tc, W - web + ledge, W - web - tc, W - web + ledge)),
+        ("back centre", (W / 2 - pw / 2, W / 2 + pw / 2, web, web + tb),
+         (W / 2 - pw / 2, W / 2 + pw / 2, web - ledge, web + tb)),
+    ]
+    centres = []
+    for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in legs:
+        g.append(f'<rect x="{px0:g}" y="{py0:g}" width="{px1 - px0:g}" '
+                 f'height="{py1 - py0:g}" fill="none" stroke="#06c" '
+                 f'stroke-width="2.5" stroke-dasharray="20 12"/>')
+        g.append(f'<rect x="{tx0 - hc:g}" y="{ty0 - hc:g}" '
+                 f'width="{tx1 - tx0 + 2 * hc:g}" '
+                 f'height="{ty1 - ty0 + 2 * hc:g}" fill="#cfe0f5" '
+                 f'stroke="#06c" stroke-width="3"/>')
+        cx, cy = (px0 + px1) / 2, (py0 + py1) / 2
+        centres.append((cx, cy))
+        g.append(f'<line x1="{cx - 26:g}" y1="{cy:g}" x2="{cx + 26:g}" '
+                 f'y2="{cy:g}" stroke="#06c" stroke-width="2"/>')
+        g.append(f'<line x1="{cx:g}" y1="{cy - 26:g}" x2="{cx:g}" '
+                 f'y2="{cy + 26:g}" stroke="#06c" stroke-width="2"/>')
+
+    # the three leg-to-leg spans, on the centres
+    (flx, fly), (frx, fry), (bcx, bcy) = centres
+    g.append(f'<line x1="{flx:g}" y1="{fly + 100:g}" x2="{frx:g}" '
+             f'y2="{fry + 100:g}" stroke="#06c" stroke-width="2.5"/>')
+    g.append(f'<text x="{(flx + frx) / 2:g}" y="{fly + 140:g}" '
+             f'text-anchor="middle" font-size="32" fill="#06c">'
+             f'{v["POST_SPAN_FRONT"]:g} front leg to front leg</text>')
+    g.append(f'<line x1="{frx + 100:g}" y1="{bcy:g}" x2="{frx + 100:g}" '
+             f'y2="{fry:g}" stroke="#06c" stroke-width="2.5"/>')
+    g.append(f'<text x="{frx + 118:g}" y="{(bcy + fry) / 2:g}" font-size="32" '
+             f'fill="#06c">{v["POST_SPAN_FORE_AFT"]:g} front to back</text>')
+    g.append(f'<line x1="{bcx:g}" y1="{bcy:g}" x2="{flx:g}" y2="{fly:g}" '
+             f'stroke="#06c" stroke-width="1.5" stroke-dasharray="14 10"/>')
+    g.append(f'<text x="{(bcx + flx) / 2 - 20:g}" y="{(bcy + fly) / 2:g}" '
+             f'text-anchor="end" font-size="30" fill="#06c">'
+             f'{v["POST_SPAN_DIAG"]:.1f} back to each front</text>')
+
     for cy in ports:
         for cx in ports:
             g.append(f'<circle cx="{cx:g}" cy="{cy:g}" r="{r:g}" fill="#fff" '

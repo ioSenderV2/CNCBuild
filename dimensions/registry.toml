@@ -2848,6 +2848,21 @@ expr = "POST_W - T_BOX_LEDGE"
 note = "42 - the back centre tenon front-to-back, that post being ledged on ONE face only, so its tenon is POST_W x this: 86 x 42. Same arithmetic as TENON_CORNER and kept as its own symbol because the two are the same number for different reasons - one face ledged against two - and would part company the moment either post was ledged differently."
 
 [[dim]]
+sym = "POST_SPAN_FRONT"
+expr = "BOX_W + 2 * T_BOX_TONGUE - POST_W"
+note = "1173 - between the TWO FRONT LEGS, centre to centre. FLAG: IT IS WIDER THAN THE SKIN LESS A POST, which is the obvious wrong answer and was written here once: each post's OUTER face is flush with the tongue's outer face, so the two outer faces are BOX_W + 2 x T_BOX_TONGUE apart - 1259 - and the centres sit POST_W / 2 inside those. NOTE: THE TENON CENTRES ARE NOT THESE - the ledge is cut on the outward faces, so each tenon sits T_BOX_LEDGE / 2 inboard of its post's centre and the tenon centres are 1089 apart."
+
+[[dim]]
+sym = "POST_SPAN_FORE_AFT"
+expr = "BOX_FORE_AFT + 2 * T_BOX_TONGUE - POST_W"
+note = "1173 - from the FRONT leg line to the BACK leg, centre to centre. The same figure as POST_SPAN_FRONT because the box is square, and the front works out the same way even though the front has no tongue: T_BOX_FRONT_CAP is the same stock and the front posts are ledged the same T_BOX_LEDGE. Stated separately so a change to one direction cannot be read as applying to both."
+
+[[dim]]
+sym = "POST_SPAN_DIAG"
+expr = "(POST_SPAN_FORE_AFT ** 2 + (POST_SPAN_FRONT / 2) ** 2) ** 0.5"
+note = "1311.5 - from the back centre leg to either front leg, centre to centre: the triangle's legs are POST_SPAN_FORE_AFT and half POST_SPAN_FRONT. SETTLED: THIS IS THE THREE-POINT MOUNT'S REAL SHAPE - an isosceles triangle 1173 deep on an 1173 base, and it is what the base frame has to land a pad under. See machine/three-point-mount.md."
+
+[[dim]]
 sym = "POST_TENON_L"
 value = 116
 provenance = "pinned"

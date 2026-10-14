@@ -435,7 +435,11 @@ def main() -> int:
     # here; a front tongue standing 60 proud is not, and that is on purpose.
     ledge = v["T_BOX_LEDGE"]
     tc, tb = v["TENON_CORNER"], v["TENON_BACK_DEPTH"]
-    post_top = -SKIN - 1.0           # 1 shy of the top skin's underside
+    # The tenon is POST_TENON_L long from the shoulder, which leaves it shy of
+    # the top skin's underside by whatever that length does not reach. Derived
+    # and not stated: it was a literal 1.0 while the bottom skin was 19, and the
+    # measured 18 made the real clearance 0 until POST_TENON_L came down to 116.
+    post_top = -v["BOX_THK"] + v["POST_TENON_L"]
     post_bot = post_top - v["POST_STUB_L"]
     ledge_z = -v["BOX_THK"]          # the shoulder IS the bottom skin's underside
     hc = v["TENON_HOLE_CLEAR"]
