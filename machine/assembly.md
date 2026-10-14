@@ -765,7 +765,7 @@ empties to a shallow corner residue. A port in a corner would strand a wedge.
 | | |
 |---|---|
 | **The plug** | A **rubber plug fitted from below with a pull tab underneath**. Nothing goes in from above and nothing is attached to it |
-| **Filling** | Pour each bay full through its top port. **Once, at assembly, before the bed goes down** |
+| **Filling** | Pour each bay full through its top port. **Once, at assembly, before the bed goes down** — the bed cannot come out of the assembled machine and the plates are not to be drilled, so a refill means lifting a Y beam |
 | **Draining** | Lying under the machine: **pull the plug out**, the sand runs into a tray, **push it back in**. The CNC is untouched |
 
 **Why a plug needs nothing but friction.** The sand bearing on one plug is a 100 mm column at about

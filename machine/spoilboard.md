@@ -248,12 +248,13 @@ undone easily - four M8 T-bolts and sixteen M5 screws, nothing glued, nothing in
 down. Draining does not need them - the plug comes out downward, see
 [`assembly.md`](assembly.md#sand-ports--one-per-bay-through-both-skins).
 
-OPEN: **Whether to port the aluminium as well, 25.4 on the same grid, plugged flush.** It would make
-a refill a half-hour job - four T-bolts, lift the two MDF sheets, pull the plugs, pour - instead of
-a strip-down. The cost is that a 25.4 hole at an arbitrary X **cuts across the tee track slots**, so
-it comes out ragged and open to the slot either side, and each one wants a plug that actually seals
-or chips and sand find their way into the box. **His call, and the holes are easier to make before
-the panels are ever bedded.**
+SETTLED: **No holes in the tee track plates - his call 2026-10-14, flatly.** Porting the aluminium on
+the same grid would have made a refill a half-hour job instead of a strip-down, and it is rejected:
+a 25.4 hole at an arbitrary X cuts across the slots, and the plate is the fixturing surface the whole
+machine works against. **Do not raise it again.**
+
+**So the top ports are fill-once.** Fill every bay at assembly, before the bed goes down. A refill
+means lifting a Y beam, which is the price of keeping the plates whole.
 
 ## The Z envelope, both ends
 

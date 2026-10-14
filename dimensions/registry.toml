@@ -1093,7 +1093,9 @@ note = "Egg-crate rib height between the skins. His, 2026-10-03."
 # and it is why the direction of the plug matters. A tee track panel is 1193.8
 # wide where the gap between the Y beams' inner faces is Y_BEAM_GAP, 1084.38, so
 # each edge sits about 55 under a beam; forward is blocked by the two fins and
-# back by the rear plate. See machine/spoilboard.md.
+# back by the rear plate. See machine/spoilboard.md. SETTLED: AND THE PLATES ARE
+# NOT TO BE DRILLED to get at the ports from above - his call 2026-10-14. So the
+# top ports are FILL-ONCE and a refill means lifting a Y beam.
 #
 # FLAG: THE PERIMETER WALL PORTS WERE NOT FUNCTIONAL and that is why any of this
 # exists - his, same day. Ports low in the front and back walls would have needed
