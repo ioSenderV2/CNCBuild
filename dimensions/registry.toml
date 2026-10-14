@@ -3193,3 +3193,9 @@ note = "5 - how far the same head's underside sits above the window's BOTTOM edg
 sym = "WINDOW_CORNER_MARGIN"
 expr = "WINDOW_CORNER_R - (((WINDOW_CORNER_R - CAST_HEAD_X_IN) ** 2 + (WINDOW_CORNER_R - CAST_HEAD_Z_UP) ** 2) ** 0.5)"
 note = "1.2 - metal between the M5 x 35 head and the corner fillet, as the distance from the fillet's centre to the head's nearest point taken off the radius. FLAG: IT MUST NOT GO NEGATIVE. Negative means the fillet has eaten into the head's footprint and the bolt cannot be driven. Nothing bears here, so 1.2 is a clearance rather than a stress question - but it is the figure that moves if the radius, the bolt column or the head size changes, and it is checked rather than remembered."
+
+[[dim]]
+sym = "SOLE_TIP_W"
+value = 46
+provenance = "pinned"
+note = "46 - the sole bracket's width at its TIP. FLAG: IT IS A FREE FIGURE AND SHEET 5 SAYS SO - nothing mates to the narrow end, so unlike the 98.19 reach it is chosen rather than derived. That is what makes a T-shaped bracket a question of preference rather than of fit: the root must stay XEP_W wide for DOUBLER_SEATING, because that is where the eight root bolts land on the end plate and doubler end faces, and everything past it is metal removal."
