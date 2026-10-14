@@ -2769,9 +2769,9 @@ note = "42 - the back centre tenon front-to-back, that post being ledged on ONE 
 
 [[dim]]
 sym = "POST_TENON_L"
-value = 118
-provenance = "nominal"
-note = "118 - the length of post reduced to form the tenon, measured from the ledge to the post top. SETTLED: THE STACK CLOSES ON IT: 118 less the 19 bottom skin resting on the ledge less the 100 cavity leaves the post top 1 SHY of the top skin's underside at 119, and that 1 is stable because 118 along the grain of vertical cedar moves essentially nothing seasonally. NOTE: IT DOES NOT FOLLOW THE TOP SKIN: when the top skin went 19 to 25 on 2026-10-11 the underside stayed at 119, set by ledge plus bottom skin plus cavity, so this did not move."
+value = 116
+provenance = "pinned"
+note = "116 - the length of post reduced to form the tenon, measured from the ledge to the post top. SETTLED: THE STACK CLOSES ON IT: the top skin's underside is at 118 - the 18 bottom skin resting on the ledge plus the 100 cavity - so the post top finishes 2 SHY of it, and that 2 is stable because 116 along the grain of a vertical post moves essentially nothing seasonally. SETTLED: 116 IS HIS, 2026-10-14, and it is the measured bottom skin landing: at 118 the clearance had gone to ZERO and the post top would have borne directly on the top skin. NOTE: IT DOES NOT FOLLOW THE TOP SKIN: when the top skin went to the thick sheet on 2026-10-11 the underside did not move, because it is set by ledge plus bottom skin plus cavity."
 
 [[dim]]
 sym = "BOX_RIBS_FORE_AFT"
