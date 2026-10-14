@@ -773,9 +773,28 @@ def main() -> int:
     # REAR_PLATE_L_ORDERED, rather than at the flush envelope MACHINE_OUTER_W. The
     # side plate at each end is outboard of it, and the far end runs past the
     # machine's outer width by whatever the delivered piece gives.
+    #
+    # IT CARRIES THE TWO WINDOWS NOW - his flip, 2026-10-13. The casting and
+    # interposer pass through the REAR plane, which is the thing the 2026-10-02
+    # arrangement had stopped happening and is why one monolithic rear plate
+    # became practical in the first place. It stays monolithic: the windows are
+    # 60.5 apertures in a 1210.73 plate, nowhere near its ends.
+    #
+    # Each window's OUTBOARD edge lands on its Y beam's outer face, which is the
+    # same rule the fin's window followed - the casting is centred on the beam
+    # at either end, so the station is the beam's and not the plate's.
     rpx = v["Y1_EXT_FACE_X"]
-    box("Rear plate", "plates", 0x8899AA, rpx, 0, 0,
-        rpx + v["REAR_PLATE_L_ORDERED"], v["T_REAR_PLATE"], v["REAR_PLATE_W"])
+    rp_wins = [[[x0, v["WINDOW_Z_LOW"]],
+                [x0 + v["WINDOW_W"], v["WINDOW_Z_LOW"]],
+                [x0 + v["WINDOW_W"], v["WINDOW_Z_LOW"] + v["WINDOW_H"]],
+                [x0, v["WINDOW_Z_LOW"] + v["WINDOW_H"]]]
+               for x0 in (v["Y1_EXT_FACE_X"],
+                          v["Y1_EXT_FACE_X"] + v["Y2_EXT_FACE_X"] - v["EXT_W"])]
+    prism("Rear plate", "plates", 0x8899AA,
+          [[rpx, 0], [rpx + v["REAR_PLATE_L_ORDERED"], 0],
+           [rpx + v["REAR_PLATE_L_ORDERED"], v["REAR_PLATE_W"]],
+           [rpx, v["REAR_PLATE_W"]]],
+          0, v["T_REAR_PLATE"], holes=rp_wins, d=sheet_note("7"))
 
     sp = v["T_SIDE_PLATE"]
     y0, y1 = v["SIDE_TONGUE_START"], v["SIDE_TONGUE_END"]
@@ -807,14 +826,16 @@ def main() -> int:
         # The window's outboard edge lands on the Y beam's OUTER FACE - 3.175 and
         # 1208.575 - which is what Sheet 1 says it is aligned to, and the check
         # that WINDOW_OUTB_DRAWN's 20 is right where the measured 19 is not.
-        wa, wb = outer + sgn * wo, outer + sgn * (wo + ww)
+        # NO WINDOW IN THE FIN ANY MORE - his flip, 2026-10-13. It moved to the
+        # rear plate with the casting, and the fin instead carries BF12's four
+        # tapped M5. The plate is SOLID here: the holes are tapped and the bolts
+        # are drawn through them, which the pair list covers.
         # 1a is the Y1 end, 1b the Y2 end - and the pack calls Y1 the left,
         # which is the left of a view taken from BEHIND, the frame X runs in.
         prism("Front fin", "plates", 0x6FA8DC,
               [[outer, 0], [outer + sgn * fb, 0],
                [outer + sgn * ft, h], [outer, h]],
               y1, y1 + v["T_FIN"],
-              holes=[[[wa, wz0], [wb, wz0], [wb, wz1], [wa, wz1]]],
               d=sheet_note("1a" if sgn > 0 else "1b"))
 
     # ---- the angle that ties each front fin down --------------------------
@@ -906,12 +927,16 @@ def main() -> int:
                     seat, seat - up * ip_t,
                     v["BEAM_BOLT_CLEARANCE"] / 2 - 0.5, seg=10, d=D_TNUT(jid))
 
-    ip_front = y1 + v["T_FIN"] + v["INTERPOSER_PROUD"]
+    # ITS OUTBOARD END IS THE REAR ONE NOW. INTERPOSER_PROUD is measured past
+    # the rear plate's INSIDE face, going back, so the bar's outboard end lands
+    # at T_REAR_PLATE less that - which is negative, i.e. behind the plate's
+    # outer face, exactly as the casting's motor end is.
+    ip_rear = v["T_REAR_PLATE"] - v["INTERPOSER_PROUD"]
     for x0 in (lx0, rx0):
-        box("Interposer", "ybeams", 0xC0652A, x0, ip_front - v["INTERPOSER_L"],
-            ybot - ip_t, x0 + v["INTERPOSER_W"], ip_front, ybot)
+        box("Interposer", "ybeams", 0xC0652A, x0, ip_rear,
+            ybot - ip_t, x0 + v["INTERPOSER_W"], ip_rear + v["INTERPOSER_L"], ybot)
         # it HANGS under the beam, so these drive upward and the heads are below
-        interposer_bolts(+1, x0, ip_front, "y", ybot - ip_t, -1,
+        interposer_bolts(-1, x0, ip_rear, "y", ybot - ip_t, -1,
                          "y-interposer-to-beam")
 
     # ---- X gantry, at Y home ---------------------------------------------
@@ -1317,17 +1342,21 @@ def main() -> int:
     # ------------------------------------------------ Y1 and Y2
     y_axis_z = ybot - v["Y_SCREW_BELOW_BEAM"]
     y_seat_z = ybot - ip_t                      # the interposer's underside
-    # BF12 seats on the rear plate, but THE SCREW STOPS SCREW_END_IN_BF12
-    # SHORT OF IT - the bearing is centred in the block and the journal has to
-    # straddle the bearing, which centres the journal too.
-    bf12_y = v["T_REAR_PLATE"]
-    y_lo = bf12_y + v["SCREW_END_IN_BF12"]
-    y_hi = y_lo + v["SCREW_OAL_LONG"]
+    # THE Y DRIVE IS AT THE REAR - his, 2026-10-13. BF12 now face-mounts into
+    # the FRONT FIN's inner face and the casting, interposer and motor are at
+    # the back, which is the reverse of 2026-10-02. Everything below is the
+    # same chain running the other way: BF12 still stops the screw
+    # SCREW_END_IN_BF12 short of the plate, because the bearing is centred in
+    # the block and the journal has to straddle it.
+    bf12_y = v["SIDE_TONGUE_END"]               # the fin's INNER face
+    y_hi = v["SCREW_FRONT_END_Y"]
+    y_lo = v["SCREW_REAR_END_Y"]
     for x0 in (lx0, rx0):
         cx = x0 + v["EXT_W"] / 2
         ride[0] = ""
-        screw("y", cx, y_axis_z, y_lo, v["SCREW_OAL_LONG"], bf_low=True)
-        support("bf12", "y", cx, y_axis_z, bf12_y, +1, y_seat_z, -1)
+        # bf_low is FALSE now: the BF journal is at the HIGH end of the screw.
+        screw("y", cx, y_axis_z, y_lo, v["SCREW_OAL_LONG"], bf_low=False)
+        support("bf12", "y", cx, y_axis_z, bf12_y, -1, y_seat_z, -1)
         # ASSUMPTION: the nut is drawn at mid travel - it has no home position
         ride[0] = "Y"            # the nut is bolted to the gantry
         nut("y", cx, y_axis_z, (y_lo + y_hi) / 2, -1)
@@ -1341,20 +1370,20 @@ def main() -> int:
         # The interposer's leading edge is reached independently, off the fin
         # through INTERPOSER_PROUD, so if the two ever stop agreeing the lip
         # lifts off the bar in the view instead of the drift hiding.
-        cast_in = y_hi - v["SCREW_JOURNAL_CAST"]
-        support("casting", "y", cx, y_axis_z, cast_in, +1, y_seat_z, -1)
-        rails("y", cx, cast_in + v["BK12_L"], +1, y_seat_z, -1)
-        motor("y", cx, y_axis_z, cast_in + v["CASTING_FOOTPRINT_L"], +1)
+        cast_in = v["CASTING_INBOARD_Y"]
+        support("casting", "y", cx, y_axis_z, cast_in, -1, y_seat_z, -1)
+        rails("y", cx, cast_in - v["BK12_L"], -1, y_seat_z, -1)
+        motor("y", cx, y_axis_z, cast_in - v["CASTING_FOOTPRINT_L"], -1)
         # Six M5 up out of the casting into the tapped bar - Sheet 6's C1-C6,
         # three rows back from the casting's MOTOR end on the same two columns
         # BF12 uses. The head is under the casting, which is as deep as the
         # wing at the bearing end and as the rails further forward.
-        motor_end = cast_in + v["CASTING_FOOTPRINT_L"]
+        motor_end = cast_in - v["CASTING_FOOTPRINT_L"]
         for r, d, c in casting_rows(cx):
-            cyl("Casting bolt head", "bolts", 0x3C4248, c, motor_end - r,
+            cyl("Casting bolt head", "bolts", 0x3C4248, c, motor_end + r,
                 y_seat_z - d, y_seat_z - d - v["M5_HEAD_H"],
                 v["M5_HEAD_D"] / 2, seg=12, d=D_M5_BAR(cast_jid(d)))
-            cyl("Casting bolt", "bolts", 0x3C4248, c, motor_end - r,
+            cyl("Casting bolt", "bolts", 0x3C4248, c, motor_end + r,
                 y_seat_z - d, y_seat_z + ip_t, 2.5, seg=10, d=D_M5_BAR(cast_jid(d)))
 
         # ---- the Y nut sole bracket, under the X end plate at this end ----
@@ -1665,21 +1694,31 @@ def main() -> int:
             cyl("Flange head", "bolts", BOLT, col, z, 0.0, -hh, hd, axis="y",
                 seg=12, d=D_BEAM_END("rear-plate-to-beam-ends"))
 
-    # The BF12 bolts, four per Y beam. THEY RUN FORWARD, NOT BACKWARD - his,
-    # 2026-10-10: the rear plate is TAPPED M5 and the bolt is driven from the
-    # block side, so the head seats on BF12's own outer face and the bolt ends
-    # FLUSH with the plate's back face. From behind, the plate shows four tapped
-    # holes per beam and nothing proud. The block hangs upside down with its base
-    # level with the interposer's underside, which is what puts the rows at 165
-    # and 147. Head drawn as the M5 socket cap he is using, M5_HEAD_D / _H.
-    bf12_face = v["T_REAR_PLATE"] + v["T_BF12_BLOCK"]       # BF12's outer face
+    # The BF12 bolts, four per Y beam - AT THE FIN NOW, not the rear plate, and
+    # they run BACKWARD out of it. His flip, 2026-10-13. The fin is TAPPED M5
+    # and the bolt is driven from the block side, so the head seats on BF12's
+    # own rearward face and the bolt runs forward into the fin. The block still
+    # hangs upside down with its base level with the interposer's underside,
+    # which is what puts the rows at 165 and 147 - that chain is beam-referenced
+    # and did not move. Head drawn as the M5 socket cap he is using.
+    #
+    # FLAG: M5 x 30 ENDS FLUSH, where in the X tongue the same bolt stops 2.19
+    # short. BF12_BODY_AT_BOLT is 20, so a 30 engages 10, and T_FIN is 10 - it
+    # is a tapped-through hole, 2 x D in aluminium, finishing level with the
+    # fin's outboard face. His call, 2026-10-13: the same fastener as X's.
+    #
+    # OPEN: THE COLUMNS ARE STILL NAMED RP_F_COL_*. They are the right machine X
+    # either way, because the beams did not move and the columns are set by
+    # them - but the name says rear plate and the holes are in the fin now.
+    bf12_face = v["SIDE_TONGUE_END"] - v["T_BF12_BLOCK"]    # BF12's rear face
+    fin_outer = v["SIDE_TONGUE_END"] + v["T_FIN"]
     for col in (rp0 + v["RP_F_COL_1"], rp0 + v["RP_F_COL_2"],
                 rp0 + v["RP_F_COL_3"], rp0 + v["RP_F_COL_4"]):
         for z in (v["BF12_ROW1_Y"], v["BF12_ROW2_Y"]):
             cyl("BF12 bolt head", "bolts", BOLT, col, z,
-                bf12_face, bf12_face + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,
+                bf12_face, bf12_face - v["M5_HEAD_H"], v["M5_HEAD_D"] / 2,
                 axis="y", seg=12, d=D_M5_PLATE("bf12-to-rear-plate"))
-            cyl("BF12 bolt", "bolts", BOLT, col, z, 0.0, bf12_face, 2.5,
+            cyl("BF12 bolt", "bolts", BOLT, col, z, bf12_face, fin_outer, 2.5,
                 axis="y", seg=10, d=D_M5_PLATE("bf12-to-rear-plate"))
 
     # The eight M5 through the X sole plate, all driven DOWNWARD from above -
@@ -2107,6 +2146,10 @@ ALLOWED = {
     # a bolt inside them on purpose. Only the shank is listed: the head stands
     # proud of BF12's outer face and clashes with nothing, which is the check
     # confirming the stack is the right way round.
+    # SINCE THE FLIP IT IS THE FIN THEY THREAD INTO, not the rear plate - and
+    # the M5 x 30 ends FLUSH with the fin's outboard face rather than stopping
+    # short, because T_FIN is 10 and the bolt engages exactly 10.
+    frozenset({"Front fin", "BF12 bolt"}),
     frozenset({"Rear plate", "BF12 bolt"}),
     # the same joint on the X tongue and on the Z carriage plate
     frozenset({"BF12 tongue", "BF12 bolt"}),

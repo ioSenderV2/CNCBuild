@@ -1842,10 +1842,48 @@ provenance = "pinned"
 note = "135 - the second T-nut row, Sheet 6's T2 and T4. SETTLED: It leaves 15 to the bar's inboard end against the roughly 9 half-head of an M8 flange bolt, which is why there are no counterbores on this part. The first column clears the casting's face by 28, so its head clears by 19."
 source = "shop-pack Sheet 6"
 
+# ---- the Y screw's two ends, AT THE REAR NOW ------------------------------
+# SETTLED: THE Y MOTORS ARE AT THE REAR - his, 2026-10-13. The casting, the
+# interposer and the motor are at the BACK of the machine and BF12 face-mounts
+# into the FRONT FINS, which is the reverse of the 2026-10-02 arrangement.
+#
+# His three reasons, and the wiring one is the one that decided it:
+#   - the limit sensor has to be where the axis HOMES, which is the back, and
+#     the casting's top face is the one convenient tapped surface at that end;
+#   - 18/2, Cat 6 and 24/3 per Y motor stop landing at the operator's end;
+#   - the window moves into the 1/4in rear plate, which Garen cuts with square
+#     corners, instead of a routed window with rounded ones in the fin.
+#
+# THE BAR STILL FOLLOWS THE SCREW. That was the whole content of the old
+# expression and it is unchanged - only the end it does it at. The chain is
+# written out as four symbols now rather than one long expression, because the
+# one-liner could not be checked against anything and its note had drifted to
+# three different figures.
+
+[[dim]]
+sym = "SCREW_FRONT_END_Y"
+expr = "SIDE_TONGUE_END - SCREW_END_IN_BF12"
+note = "1002.35 - where the Y screw's FRONT end sits, now that BF12 is face-mounted into the fin. SIDE_TONGUE_END is the fin's INNER face; SCREW_END_IN_BF12 is how far into the block the shaft end stops, so the screw starts short of the plate rather than touching it."
+
+[[dim]]
+sym = "SCREW_REAR_END_Y"
+expr = "SCREW_FRONT_END_Y - SCREW_OAL_LONG"
+note = "2.35 - the Y screw's REAR end. FLAG: THAT IS 4 FORWARD OF THE REAR PLATE'S INNER FACE at 6.35, so the screw no longer reaches the rear plate at all - it stops inside the casting, which is the point of the flip. Nothing passes through the rear plane except the casting itself."
+
+[[dim]]
+sym = "CASTING_INBOARD_Y"
+expr = "SCREW_REAR_END_Y + SCREW_JOURNAL_CAST"
+note = "56.85 - the casting's INBOARD end, set by its bore containing the inner end of the long journal. This is the face the limit sensor's bracket runs back towards."
+
+[[dim]]
+sym = "CASTING_INBOARD_RUN"
+expr = "CASTING_INBOARD_Y - T_REAR_PLATE"
+note = "50.5 - how much casting lies INBOARD of the rear plate's inside face. FLAG: IT IS THE FIGURE THE SENSOR HAS TO FIT IN, and LIMIT_SENSOR_STACK_D is 55, so the stack is 4.5 longer than the run it sits on. Either the window takes the overhang or the bracket does - OPEN, and it is what the window's height and depth wait on. NOTE: IT IS NOT CASTING_OAL MINUS THE PROTRUSION: the 12.5 motor plate hangs OUTBOARD with the motor, so adding it to the inboard side overstates this by exactly that much. That mistake was made once on 2026-10-13 and gave 63."
+
 [[dim]]
 sym = "INTERPOSER_PROUD"
-expr = "T_REAR_PLATE + SCREW_END_IN_BF12 + SCREW_OAL_LONG - SCREW_JOURNAL_CAST + CASTING_FOOTPRINT_L - SIDE_TONGUE_END - T_FIN"
-note = "8 - how far the interposer's outboard end stands past the fin's outer face, so the casting and bar protrude through the window together. FLAG: IT WAS A CHOSEN 30 AND IS DERIVED NOW - his, 2026-10-10. THE BAR FOLLOWS THE SCREW, which is the whole reason it exists besides giving K1-K6 something solid to land in: the casting has to sit where its bearing contains the journal, and the bar slides back to meet it. Place the bar first and the screw ends up with 22 of bare shaft between its thread and the casting. SETTLED: THE EXPRESSION IS JUST THAT SENTENCE: the screw starts on the rear plate's inner face, runs SCREW_OAL_LONG, its bore takes the inner end of the long journal, and the footprint ends CASTING_FOOTPRINT_L later - measured past the fin's outer face, that is 8. y-beam-support.md's 30 is superseded."
+expr = "T_REAR_PLATE - (CASTING_INBOARD_Y - CASTING_FOOTPRINT_L)"
+note = "26.5 - how far the casting and interposer stand past the REAR PLATE'S INSIDE FACE, so the two protrude through the window together. OPEN: THE NAME IS NOW HALF WRONG and is kept only because the model and the prose use it: it reads as the bar's own overhang and it is really the protrusion through the plate. FLAG: IT IS MEASURED FROM THE INSIDE FACE, NOT THE OUTSIDE. Past the outer face it is 20.15, and the two differ by T_REAR_PLATE. The old figure was 16.5 past the FIN'S outer face, in the arrangement where the casting was at the front; it was carried in prose as 30 and in its own note as 8, neither of which its expression had produced for some time."
 
 [[dim]]
 sym = "Y_BEAM_UNDERSIDE"
