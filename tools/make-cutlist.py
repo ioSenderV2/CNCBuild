@@ -99,6 +99,55 @@ def parts(v):
     ]
 
 
+def notch_svg(length, starts, rib, h, s=0.15):
+    """The rib drawn to scale with its notches, cut from the TOP edge here.
+
+    True scale in both directions - no exaggeration - because the point of the
+    picture is to see at a glance that the notches are evenly spaced and that
+    the end bays are bigger than the gaps between them. A stretched drawing
+    would hide exactly the error it is there to catch.
+    """
+    W, H = length * s, h * s
+    body = [f'<rect x="0" y="0" width="{W:.1f}" height="{H:.1f}" '
+            f'fill="#f3f7fb" stroke="#333" stroke-width="0.4"/>']
+    for st in starts:
+        body.append(f'<rect x="{st * s:.2f}" y="0" width="{rib * s:.2f}" '
+                    f'height="{H / 2:.2f}" fill="#fff" stroke="#333" '
+                    f'stroke-width="0.3"/>')
+    return (f'<svg viewBox="-1 -1 {W + 2:.1f} {H + 2:.1f}" width="100%" '
+            f'style="max-width:180mm">{"".join(body)}</svg>')
+
+
+def notch_runs(v):
+    """The notch positions along each rib, as (part, length, bay, [starts]).
+
+    A rib is notched where the ribs of the OTHER direction cross it, so the run
+    is bay, notch, bay, notch ... bay - and the bay at each end is what holds the
+    rib off the perimeter web. Positions are measured from the END OF THE PIECE,
+    which is the inside face of the web it butts, so the same tape reading works
+    on either end: the run is symmetric.
+
+    It ASSERTS the run closes on the piece length. That is the whole reason this
+    is generated: if a bay or a thickness moves and the arithmetic stops closing,
+    the build fails here rather than on the bench with a set of ribs cut.
+    """
+    web, rib = v["T_BOX_WALL_WEB"], v["T_BB_RIB"]
+    runs = []
+    for part, length, bay, n in (
+        ("Rib, fore-aft", v["BOX_FORE_AFT"] - 2 * web, v["BOX_BAY_FORE_AFT"],
+         int(v["BOX_RIBS_ACROSS"])),
+        ("Rib, across", v["BOX_W"] - 2 * web, v["BOX_BAY_W"],
+         int(v["BOX_RIBS_FORE_AFT"])),
+    ):
+        starts = [(k + 1) * bay + k * rib for k in range(n)]
+        closes = starts[-1] + rib + bay
+        assert abs(closes - length) < 1e-6, (
+            f"{part}: {n} notches at {bay:.3f} bays run to {closes:.3f} on a "
+            f"{length:.3f} piece - the grid arithmetic no longer closes")
+        runs.append((part, length, bay, starts))
+    return runs
+
+
 def pack(pieces, sw, sl):
     """Guillotine-pack onto sheets. Returns (placements, failure).
 
@@ -280,13 +329,22 @@ def main():
         print(f"    total   : {total} sheet(s)" if ok else "    total   : n/a")
         print()
 
+    runs = notch_runs(v)
+    print(f"NOTCHES - {v['T_BB_RIB']:g} wide, "
+          f"{v['BOX_RIB_H'] / 2:g} deep, from each end of the piece\n")
+    for part, length, bay, starts in runs:
+        print(f"  {part:16s} {length:8.2f} long, {bay:.2f} bays")
+        print("    starts  " + "  ".join(f"{s:8.2f}" for s in starts))
+    print()
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(rows_html, summary, nests, a.sheet, v), encoding="utf-8")
+    OUT.write_text(render(rows_html, summary, nests, a.sheet, v, runs),
+                   encoding="utf-8")
     print("wrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, summary, nests, drawn, v):
+def render(rows, summary, nests, drawn, v, runs):
     th, last_t = [], None
     for t, name, a, b, qty in rows:
         if t != last_t:
@@ -301,6 +359,23 @@ def render(rows, summary, nests, drawn, v):
         sh.append(f"<tr><td>{label}</td><td class=n>{t:g} mm</td><td>{cell}</td></tr>")
     ns = [f'<div class="nest"><h3>{t:g} mm &mdash; sheet {num}</h3>{svg}</div>'
           for t, num, svg in nests]
+
+    rib, half = v["T_BB_RIB"], v["BOX_RIB_H"] / 2
+    nt = []
+    for part, length, bay, starts in runs:
+        hd = "".join(f"<th>{i + 1}</th>" for i in range(len(starts)))
+        st = "".join(f"<td class=n>{s:.2f}</td>" for s in starts)
+        en = "".join(f"<td class=n>{s + rib:.2f}</td>" for s in starts)
+        ct = "".join(f"<td class=n>{s + rib / 2:.2f}</td>" for s in starts)
+        nt.append(
+            f"<h3>{part} &mdash; {length:.2f} long, {len(starts)} notches</h3>"
+            f"{notch_svg(length, starts, rib, v['BOX_RIB_H'])}"
+            f"<table><tr><th>Notch</th>{hd}</tr>"
+            f"<tr><td>Start</td>{st}</tr>"
+            f"<tr><td>Centre</td>{ct}</tr>"
+            f"<tr><td>End</td>{en}</tr></table>"
+            f"<p>Bay at each end and between notches: <b>{bay:.2f}</b>. "
+            f"Notch <b>{rib:g}</b> wide, <b>{half:g}</b> deep.</p>")
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <title>CNCBuild &mdash; Torsion Box Cut List</title>
@@ -324,10 +399,10 @@ def render(rows, summary, nests, drawn, v):
 <p>Box <b>{v['BOX_W']:.2f}</b> across by <b>{v['BOX_FORE_AFT']:.0f}</b> front to
 back, <b>{v['BOX_THK']:.0f}</b> deep. All sizes in mm.</p>
 
-<div class="note"><b>Cut the rib notches to the sheet in hand, not to the number
-in this table.</b> The plywood thicknesses here are nominal until the sheets are
-micced; a sheet sold as 19 commonly measures 18.2&ndash;18.5. Test-cut on scrap
-from the same sheet.</div>
+<div class="note"><b>These are the sheets in hand</b> &mdash; {v['T_BB_SKIN_TOP']:g} and
+{v['T_BB_SKIN_BOT']:g}, micced to five thousandths. Sheet sold at a nominal
+commonly runs under and varies between sheets, so <b>still test-cut one notch on
+scrap from the same sheet</b> before cutting the set.</div>
 
 <h2>Parts</h2>
 <table><tr><th>Part</th><th>Long</th><th>Short</th><th>Off</th></tr>
@@ -356,10 +431,18 @@ tall</b> like a rib so both skins glue to them, and no thicker than
 the tenon.</p>
 
 <h2>Notches</h2>
-<p>Egg crate, continuous both ways, half-depth notches at every crossing. Notch
-depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and loses
-contact with a skin along its whole length. The fit is a slip fit, not a
+<p>Egg crate, continuous both ways, half-depth notches at every crossing. Every
+notch is <b>{rib:g} wide</b> and <b>{half:g} deep</b>, and all the ribs of one
+direction are identical &mdash; so the saw is set once per direction and the
+whole set runs through it.</p>
+<p>Notch depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and
+loses contact with a skin along its whole length. The fit is a slip fit, not a
 clearance: too tight splits the rib, too loose leaves no glue line.</p>
+<p><b>One direction is notched from the top edge and the other from the bottom</b>,
+and whichever way round you choose, keep it the same for every rib in that
+direction. Positions below are from either end of the piece &mdash; the run is
+symmetric, so a rib fitted backwards still fits.</p>
+{''.join(nt)}
 <p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
 20 &times; 15, so the sand can migrate between cells.</p>
 </body></html>
