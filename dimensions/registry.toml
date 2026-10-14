@@ -3100,3 +3100,14 @@ note = "8 - the centres of the two M3 tapped into the stepper frame's top face, 
 sym = "LIMIT_SENSOR_STACK_D"
 expr = "LIMIT_SENSOR_D + LIMIT_SENSOR_BRACKET_D"
 note = "55 - sensor plus bracket, fore-aft. OPEN: IT STILL CARRIES NO CABLE BEND. LIMIT_SENSOR_D is measured to the WIRE EXIT, not to the back of a turned cable, so a pocket or a window sized on this is sized on the metal and not on the installation."
+
+[[dim]]
+sym = "LIMIT_SENSOR_BRACKET_H"
+value = 10
+provenance = "measured"
+note = "10 - what the bracket adds in HEIGHT, his 2026-10-13, AS FLOPPED FOR THE FIRST TEST: the sensor sits ON TOP of the bracket rather than beneath it. FLAG: THE FLOP IS NOT SETTLED. It was made to get the sensing face away from the ferrous stepper frame, and whether that was necessary is the bench test - see machine/assembly.md. If the sensor goes back under the bracket this figure still applies but the stack height does not."
+
+[[dim]]
+sym = "LIMIT_SENSOR_STACK_H"
+expr = "LIMIT_SENSOR_BRACKET_H + LIMIT_SENSOR_H"
+note = "27.75 - how far the sensor's top stands above the surface the bracket bolts to, flopped. THIS IS THE FIGURE THE WINDOW HAS TO CLEAR if the sensor sits over the part of the casting that passes through the plate."
