@@ -203,3 +203,53 @@ Two more that want a loose motor and cost nothing extra now:
 | Body length | |
 | Shaft length and diameter | |
 | Mass, one motor | |
+
+---
+
+## The limit sensor on the stepper frame - not yet run
+
+**This is the one that holds the rear plate's window.** Everything else about the flip is settled;
+the window's height and the sensor's station wait on this, because the answer cannot be computed.
+
+**Why it is a bench test and not arithmetic.** The frame is **ferrous** - a magnet sticks to it, his
+test 2026-10-13, and it had been taken for cast aluminium. An SN04 is **non-shielded**, so the one
+material that can trip it off its own mount is the one it is bolted to. No datasheet figure settles
+whether it does; a wired sensor on the real casting does.
+
+### What to set up
+
+The casting, with **BK12 in place**, the bracket on the two M3 at `LIMIT_SENSOR_M3_PITCH`, and the
+sensor wired to 12 V. Nothing else needs to be real.
+
+### The three readings, in this order
+
+1. 🔴 **Does it trip with NO target present?** Run the bracket through the whole of
+   `LIMIT_SENSOR_ADJUST` with nothing approaching, and watch the LED. **This is the test** - a
+   sensor that reads its own mount is useless at any standoff.
+2. **Does flopping fix it?** The sensor sat under the bracket first and was flopped on top to get
+   the face away from the frame. If 1 passes flopped, try it under as well: the flop costs
+   `LIMIT_SENSOR_BRACKET_H` of window height and is worth giving back if it is not needed.
+3. **Where does it trip on a real target?** Bring a piece of the **steel sole bracket stock**
+   squarely at it and note the gap. The bracket is the target now - there is no separate tab.
+
+| | Flopped, sensor on top | Sensor under the bracket |
+|---|---|---|
+| Trips with no target | | |
+| Trips on BK12 alone | | |
+| Gap at trip, steel target | | |
+
+### What each outcome means
+
+| | |
+|---|---|
+| **No false trip either way** | Put the sensor **under** the bracket and take `LIMIT_SENSOR_BRACKET_H` back off the window |
+| **No false trip flopped only** | It stays flopped; the window carries `LIMIT_SENSOR_STACK_H` |
+| **False trips both ways** | The frame is the wrong mount. Get creative - off the rear plate's inner face, or a non-ferrous standoff |
+
+### The other one worth doing while a motor is loose
+
+**Fit a tape offcut and a reader and see what a NEMA 23 rotor does to the magnetic tape at that
+end** - [`../machine/archive/y-beam-support.md`](../machine/archive/y-beam-support.md) has carried
+this since 2026-10-02 and the flip does **not** retire it: moving the motor to the other end of the
+beam moves the magnet to the other end of the tape, and `TAPE_OVERRUN_END` is the same 30 at both.
+**Before 3 m of one-shot PSA goes down.**

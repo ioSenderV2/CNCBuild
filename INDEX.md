@@ -318,6 +318,11 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [6. How a fault clears](commissioning/bench-session.md#6-how-a-fault-clears)
 - [7. Record what the LED does - it is the only fault-code source there is](commissioning/bench-session.md#7-record-what-the-led-does---it-is-the-only-fault-code-source-there-is)
 - [While the motors are out](commissioning/bench-session.md#while-the-motors-are-out)
+- [The limit sensor on the stepper frame - not yet run](commissioning/bench-session.md#the-limit-sensor-on-the-stepper-frame---not-yet-run)
+  - [What to set up](commissioning/bench-session.md#what-to-set-up)
+  - [The three readings, in this order](commissioning/bench-session.md#the-three-readings-in-this-order)
+  - [What each outcome means](commissioning/bench-session.md#what-each-outcome-means)
+  - [The other one worth doing while a motor is loose](commissioning/bench-session.md#the-other-one-worth-doing-while-a-motor-is-loose)
 
 ## [commissioning/masses.md](commissioning/masses.md)
 
