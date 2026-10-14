@@ -670,6 +670,12 @@ but the gap is still a hard dimension.
 **Assemble the grid and check it flat on a reference before either skin goes on** — an egg crate
 self-jigs and holds its own spacing with no clamps.
 
+**The reference is two 4' square sheets of 3/4" MDF on the Festool plywood cart.** The box is
+**1211 square** and a 4' sheet is **1219.2**, so the whole box fits on **one** of them with 4 mm
+to spare each side — **keep it on one sheet and let the second be working space**, because a step
+at the seam between the two sheets prints straight into the glue-up. Check the cart flat under the
+sheet it sits on, and shim there rather than under the MDF.
+
 OPEN: **Open: the grid spacing.** Conventional is 200-300 mm. Two constraints: the **first interior rib
 in from each perimeter must clear the front corner tenons**, and the **two front-to-back ribs either
 side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend to the back-centre
