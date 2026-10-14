@@ -188,7 +188,8 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   rear plate and the front fins exactly.** FLAG: **That reading was WRONG and was corrected the same
   day** - the box is the larger part. **BOX_W = 1211** (inside the two side tongues, the machine's own
   outer envelope of 1211.238 rounded down to a whole millimetre) and **BOX_FORE_AFT = 1210**, his
-  figure 2026-10-11, picked to make the box square - the two now differ by 1. The front overhang is now what falls out of it, **193.65**, and
+  figure 2026-10-11, picked to make the box square - and since 2026-10-14 it IS square, both 1211.
+  The front overhang is what falls out of it, **194.65**, and
   the chain was inverted to say so: he sizes the box and the apron is the remainder. NOTE: **Still
   check it against the standing machine before cutting the skins** - the chain is nominal in its plate
   thicknesses, so this closes the *design* question, not the verification.

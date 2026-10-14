@@ -1090,9 +1090,9 @@ note = "1211 - box top skin across the machine, measured INSIDE the two side ton
 
 [[dim]]
 sym = "BOX_FORE_AFT"
-value = 1210
-provenance = "nominal"
-note = "1210 - box top skin front to back, from the back tongue's inside face to the front edge. SETTLED: HIS FIGURE 2026-10-11, CHOSEN TO MAKE THE BOX SQUARE: BOX_W is 1211.238, so the two differ by 1.24 and the box reads square while still giving a front work area. FLAG: THE CHAIN IS NOW INVERTED AND THAT IS DELIBERATE - it used to be BEAM_LEN + T_REAR_PLATE + T_FIN + BOX_FRONT_OVERHANG with the overhang stated at 140, and the overall size fell out of it. He picks the overall size, so the SIZE is stated here and BOX_FRONT_OVERHANG is what falls out: 193.65, or 7.62in of apron. OPEN: THE OLD 140 WAS NOT A CHOICE ANYBODY DEFENDED, it was a round number; the apron depth now follows the box, which is the direction he reasons in. Historic note follows. OPEN: ALSO INVERTED on 2026-10-03, same reason as BOX_W: it was 983.65 on the reading that the box tucked inside the plates. It does not; the machine stands ON it. So this ADDS the plate thicknesses the old one subtracted, and adds the front overhang on top. THE FRONT HAS NO TONGUE - the box simply runs past the fins and brackets behind each fin tie it down. FLAG: THAT LAST CLAUSE WAS WRONG TWICE AND THIS IS WHERE THE ERROR SPREAD FROM: the count was never four per fin - FIN_BRACKETS was two per fin, four across - and since 2026-10-11 nothing goes BEHIND the fin at all, because the tee track bed leaves zero room there. One angle per fin, in front."
+value = 1211
+provenance = "pinned"
+note = "1211 - box top skin front to back, from the back tongue's inside face to the front edge, and the SAME as BOX_W: the box is exactly square. SETTLED: HIS CALL 2026-10-14, once the width became a chosen 1211 rather than a derived 1211.238 - at 1210 the depth was as close to square as the derived width allowed, and there is no longer anything to be close to. SETTLED: IT MAKES THE WHOLE EGG CRATE ONE PART. Both cavities are now 1175, so all eight ribs are the same 1175 x 100 piece with the same four notch offsets, cut in ONE dado setup - where before the two directions differed by 1.24 and needed their own stop positions. The 1 it costs comes off nothing: it goes onto BOX_FRONT_OVERHANG, which is the remainder by design. FLAG: THE CHAIN IS NOW INVERTED AND THAT IS DELIBERATE - it used to be BEAM_LEN + T_REAR_PLATE + T_FIN + BOX_FRONT_OVERHANG with the overhang stated at 140, and the overall size fell out of it. He picks the overall size, so the SIZE is stated here and BOX_FRONT_OVERHANG is what falls out: 193.65, or 7.62in of apron. OPEN: THE OLD 140 WAS NOT A CHOICE ANYBODY DEFENDED, it was a round number; the apron depth now follows the box, which is the direction he reasons in. Historic note follows. OPEN: ALSO INVERTED on 2026-10-03, same reason as BOX_W: it was 983.65 on the reading that the box tucked inside the plates. It does not; the machine stands ON it. So this ADDS the plate thicknesses the old one subtracted, and adds the front overhang on top. THE FRONT HAS NO TONGUE - the box simply runs past the fins and brackets behind each fin tie it down. FLAG: THAT LAST CLAUSE WAS WRONG TWICE AND THIS IS WHERE THE ERROR SPREAD FROM: the count was never four per fin - FIN_BRACKETS was two per fin, four across - and since 2026-10-11 nothing goes BEHIND the fin at all, because the tee track bed leaves zero room there. One angle per fin, in front."
 
 # ================================================================ drilled coordinates
 #
@@ -2809,9 +2809,9 @@ note = "223 - the bay at EACH END across the machine, between a perimeter web an
 
 [[dim]]
 sym = "BOX_BAY_FORE_AFT"
-value = 220
+value = 219
 provenance = "pinned"
-note = "220 - the clear bay front to back, the THREE INNER ones of the five. Whole millimetre for the same reason as BOX_BAY_W, his instruction 2026-10-14. FLAG: FIVE EQUAL WHOLE BAYS DO NOT CLOSE HERE EITHER - the cavity less four ribs is 1102 - so the end bays carry the remainder, see BOX_BAY_FORE_AFT_END. Also inside the 200-300 band."
+note = "219 - the clear bay front to back, the THREE INNER ones of the five, and the SAME as BOX_BAY_W. SETTLED: THE TWO DIRECTIONS ARE ONE LAYOUT since the box went square on 2026-10-14: both cavities are 1175, so this and BOX_BAY_W are the same number and all eight ribs are the same part. Keeping them as two symbols is deliberate - they answer about different directions and a future change to one must not silently move the other. FLAG: FIVE EQUAL WHOLE BAYS DO NOT CLOSE - the cavity less four ribs is 1103 - so the end bays carry the remainder, see BOX_BAY_FORE_AFT_END. Inside the 200-300 band."
 
 [[dim]]
 sym = "BOX_BAY_FORE_AFT_END"

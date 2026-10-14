@@ -356,7 +356,7 @@ FLAG: **There is no front tongue on the box.** The fin sits on the box's **top s
 170 mm length of 40 × 40 angle extrusion in FRONT of it** ties it down - two across the machine,
 bolting into **T1 at X 25 and T2 at X 170, tapped, at Y 20**. FLAG: **In front because the tee track
 bed leaves zero room behind**: the bed's front edge and the fin's back face are both at 1006.35.
-The box runs **193.65 mm past the fins**.
+The box runs **194.65 mm past the fins**.
 
 SETTLED: **Settled 2026-10-11: one 170 mm length of 40 × 40 angle extrusion per fin, in FRONT of it.** Two
 across the machine, not four. It starts flush with the box's side edge, the two M8 run into **tapped**
@@ -651,7 +651,8 @@ but the gap is still a hard dimension.
 | Grid | **18 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
 | Depth overall | **142 mm** (24 + 100 + 18) |
 | Outer walls, all four sides | **24 mm outer + 18 mm inner web, 42 mm total** — the outer one **202 mm tall, capping the end grain of both skins** and **60 mm proud** of the top skin as a **tongue**. The thick sheet outboard is for **bolt bearing** |
-| Footprint | **1211 across** by **1210 front to back** — square to within 1 mm, and both whole millimetres so a tape can lay them out. The machine's own envelope is 1211.238 and the skin is cut 0.24 under it, so the plate stands a hair proud of the skin's edge and the tongue beds on the plate |
+| Footprint | **1211 square**, both whole millimetres so a tape can lay them out. The machine's own envelope is 1211.238 and the skin is cut 0.24 under it, so the plate stands a hair proud of the skin's edge and the tongue beds on the plate |
+| Grid, both ways | **223** from each web to the first rib, then **219** between ribs — the same layout in both directions, so **all eight ribs are one part**: 1175 × 100, notches at 223, 460, 697 and 934 |
 | Fill | **sand in the cavities, LAST, on site** |
 
 ### Four things to get right on the grid
@@ -675,14 +676,14 @@ side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend
 tenon.
 
 SETTLED: **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
-across-rib's front face is at **971** and the fin's base starts bearing at **1006.35**, so it is
-**35.35 mm** from a rib. At that distance a 24 mm top skin is not spanning anything; it is a short
+across-rib's front face is at **970** and the fin's base starts bearing at **1006.35**, so it is
+**36.35 mm** from a rib. At that distance a 24 mm top skin is not spanning anything; it is a short
 overhang off a support that is right there.
 
 NOTE: **The warning this replaces was written before any rib layout existed to check it against** —
 "bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning
 between grid members", which is true in general and does not bite here. The fin angle's T-nuts are
-**68.35 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
+**69.35 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
 T-nut's own grip on the plywood, not the span.
 
 FLAG: **If the fin's bearing is ever wanted harder, move a rib under it — do not add blocking.** A rib

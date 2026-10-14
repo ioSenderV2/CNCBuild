@@ -104,7 +104,7 @@ side**, and reaches back to 221.95, inside by **15.60**. **The tool overruns the
 
 SETTLED: **The front overrun is the TOOLSETTER's approach, not lost cutting area - his, 2026-10-13,
 and it is not a worry.** Nothing is worked out there. The toolsetter is the only thing in front of
-the tee track, standing on the apron - `BOX_FRONT_OVERHANG`, 193.65 - and what the overrun has to
+the tee track, standing on the apron - BOX_FRONT_OVERHANG, 194.65 - and what the overrun has to
 buy is **reach to the probe's centre**. On the Mega V that centre sits **60 past the front**;
 **40 to centre works**, and the model's own DRO gives 49. FLAG: **THE FIGURE TO CHECK IS REACH TO
 THE PROBE CENTRE, NOT THE EDGE.** Whether the file's 45.00 or the DRO's 49 is right does not
