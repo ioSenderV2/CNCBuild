@@ -22,6 +22,7 @@ hand-maintained summary drifts from what it summarises. That is not hypothetical
 
 | Build it with | What you get |
 |---|---|
+| **`tools\regen.ps1`** | **everything derived, in dependency order, ending with `CNC Build.zip`.** The registry check first, then VALUES/registry.html/fusion CSV, fasteners, the cut list, the 3D model, the shop pack tallies, STATUS and INDEX, the four checkers, then the PDFs - and `make-pdf` bundles the zip on a clean print. `-NoPdf` stops after the checkers and says plainly that the PDFs and the zip are then stale. **This is the one to run**; the rows below are what it calls |
 | `python tools/status.py all` | [`STATUS.md`](STATUS.md) - every open item, harvested from the SETTLED: OPEN: FLAG: REJECTED: markers in the prose. [`INDEX.md`](INDEX.md) - every heading in the repo |
 | `tools\make-pdf.ps1` | **`build-document.pdf`** - the whole mechanical design as one printable file: the thirteen `machine/*.md` files in reading order, a clickable contents, all fifteen photographs embedded with their captions, and links into the shop pack. ~4.4 MB, 97 pages. **Untracked** - rebuild it, do not commit it |
 
