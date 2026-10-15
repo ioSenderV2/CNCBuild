@@ -2919,7 +2919,7 @@ note = "100 - the grid member's DEPTH, standing on edge. His, 2026-10-15, with t
 sym = "GRID_MEMBER_T"
 value = 36
 provenance = "pinned"
-note = "36 - the grid member's THICKNESS, two 18 mm strips laminated. SETTLED: IT IS THE LEG'S MORTISE THAT SETS IT, not the other way round: the fore-aft rails pass through the legs in a slot left by omitting the middle two strips of a four-strip leg, and two strips are 36. That is also the reason the leg is four strips - 18 + 36 + 18 = 72."
+note = "36 - the grid member's THICKNESS, two 18 mm strips laminated. SETTLED: IT IS THE LEG'S MORTISE THAT SETS IT, not the other way round: the fore-aft rails pass through the legs in a slot left by omitting the middle two strips of a four-strip leg, and two strips are 36. That is also the reason the leg is four strips - 18 + 36 + 18 = 72. SETTLED: THE CENTRAL SHEAR WALL IS THE SAME 36 AND THAT IS THE POINT - his, 2026-10-15: the wall's two sheets CONTINUE as the middle two laminations of the rear middle leg, so the wall and that leg are one piece and there is no joint at the back of the base to design. FLAG: IT ALSO REORDERS THE BUILD - that leg cannot be laminated before the wall exists, because its middle two strips are the wall."
 
 [[dim]]
 sym = "BASE_VOLUME_H"

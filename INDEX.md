@@ -51,6 +51,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The base](machine/assembly.md#the-base)
     - [What the base is](machine/assembly.md#what-the-base-is)
     - [Two shear walls, and two volumes left free](machine/assembly.md#two-shear-walls-and-two-volumes-left-free)
+    - [How the three shear-wall joints actually go](machine/assembly.md#how-the-three-shear-wall-joints-actually-go)
     - [2x6 or a 36 × 100 plywood lamination](machine/assembly.md#2x6-or-a-36-100-plywood-lamination)
 - [9. Set the machine on the box](machine/assembly.md#9-set-the-machine-on-the-box)
 - [10. Fit the spindle and tram](machine/assembly.md#10-fit-the-spindle-and-tram)

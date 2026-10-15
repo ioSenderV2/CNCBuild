@@ -951,6 +951,27 @@ volumes completely open**. Those two volumes are **free for any use, independent
 box's function, and making them as large as possible is a stated goal** — which is what the member
 depth is really being chosen against.
 
+**The central wall is two sheets of 18 — 36, the same as a grid member.** That is not a coincidence
+and it is what makes the back joint disappear.
+
+#### How the three shear-wall joints actually go
+
+| | |
+|---|---|
+| **Central wall into the rear middle leg** | 🔴 **There is no joint.** The wall's **two sheets continue as the middle two laminations of that leg** — the leg's outer two strips sandwich them. One continuous piece from the front of the base into the leg |
+| **Back wall to the legs** | **Screwed to the back faces of all three rear legs.** A face joint, nothing let in |
+| **Central wall at the front** | **Notched at its front edge so it sits on the cross rail**, its **end face flush with the outside of the rail**, and **two long screws through the rail into the end of the wall** |
+
+FLAG: **The continuity at the back reorders the build, and it is the one thing here that cannot be
+fixed later.** The rear middle leg **cannot be laminated as a part before the wall exists** — its
+middle two strips *are* the wall. So that leg is built **with** the central wall rather than before
+it, and the "five legs, then the base" order holds for the other four only.
+
+NOTE: **The rail's through mortise and the wall both want the leg's middle two strips.** Where the
+fore-aft rail passes through the rear middle leg, the **wall** is what gets notched for it — the same
+cut as a rib notch, and for the same reason: whichever piece is continuous wins, and here that is the
+rail passing through.
+
 | Member | |
 |---|---|
 | **Grid members** | OPEN: **2x6 or a 36 × 100 plywood lamination** — see below. Either way the grid **locates the legs**, and the lower one is also the pallet |
