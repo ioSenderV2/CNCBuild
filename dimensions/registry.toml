@@ -2977,8 +2977,8 @@ note = "1223 - a fore-aft rail, four of them, two per grid. It runs between the 
 
 [[dim]]
 sym = "RAIL_CROSS_OUTER_L"
-expr = "BASE_W"
-note = "1259 - the FULL WIDTH outer lamination of a front cross rail, the half that is housed in the legs. Only the front has cross rails: at the back the shear wall replaces them."
+expr = "BASE_W - 2 * LEG_STRIP"
+note = "1223 - the outer lamination of a front cross rail, the half that is housed in the legs. SETTLED: IT STOPS ONE LAMINATION SHORT AT EACH END - his, 2026-10-15, so the front leg is treated exactly as the rear one: each leg's OUTERMOST strip stays its full POST_W_Y and covers the rail's end grain, and only the INNER strip is notched for it. FLAG: IT WAS BASE_W, running the full width through every leg, which left the rail's end grain showing at the base's outer faces. SETTLED: THE RULE IS NOW ONE RULE AT BOTH ENDS OF THE BASE: the outermost lamination of every leg stays whole, and whatever runs along that face - the cross rail at the front, the shear wall at the back - stops short and is covered by it. NOTE: FOUR DIFFERENT PARTS ARE NOW 1223 - this, RAIL_FORE_AFT_L, BACK_WALL_L and CENTRE_WALL_L - by four different routes. Only the front has cross rails: at the back the shear wall replaces them."
 
 [[dim]]
 sym = "RAIL_CROSS_INNER_L"

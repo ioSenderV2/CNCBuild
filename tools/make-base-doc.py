@@ -347,8 +347,15 @@ piece, so a nest that does not fit fails the build rather than printing.</p>
 upper rail, the filler between them, and in the rear middle leg the central
 wall</td></tr>
 <tr><td><b>Front cross rails to legs</b></td><td>Outer {v['GRID_MEMBER_T'] / 2:g}
-housed in a notch in the legs' front faces, full width; inner
-{v['GRID_MEMBER_T'] / 2:g} spanning between them, housed in nothing</td></tr>
+housed {v['GRID_MEMBER_T'] / 2:g} deep in the front faces of the legs' INNER
+strips, stopping <b>one lamination short at each end</b> so each leg's outermost
+strip covers its end grain; inner {v['GRID_MEMBER_T'] / 2:g} spanning between the
+legs, housed in nothing</td></tr>
+<tr><td>🔴 <b>Both ends of the base</b></td><td><b>The outermost lamination of
+every leg stays its full {v['POST_W_Y']:g}</b>, and whatever runs along that face
+&mdash; cross rail at the front, shear wall at the back &mdash; stops one strip
+short and is covered by it. <b>No end grain shows on the base's outer
+faces</b></td></tr>
 <tr><td><b>Fore-aft meets cross, inside a leg</b></td><td><b>The cross rail
 wins</b> and the fore-aft rails butt its inner face. The cross rail has to be
 continuous: the central wall's notch rides over it</td></tr>

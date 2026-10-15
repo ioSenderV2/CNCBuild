@@ -1041,12 +1041,18 @@ rails and two cross rails**, and the wall carries the middle.
 | Joint | How |
 |---|---|
 | **Fore-aft rails to the legs** | **The same as the wall: they fill the legs' middle slot** — the two centre laminations. One slot per leg, carrying the lower rail, the upper rail and, in the rear middle leg, the wall |
-| **Cross rails to the legs** | **A cross rail is its two laminations doing different jobs.** The **outer 18 runs the full width**, through a notch cut 18 deep in every leg it passes — the back of the rear legs, the front of the front legs — and finishes flush with their outer faces. The **inner 18 only spans between the legs**: it is not housed and passes through nothing. So the front rail has one inner segment and the back rail has two |
+| **Cross rails to the legs** | **A cross rail is its two laminations doing different jobs.** The **outer 18 is housed 18 deep in the front faces of the legs' INNER strips**, and it **stops one lamination short at each end** — each leg's outermost strip stays its full 86 and **covers the rail's end grain**. The **inner 18 only spans between the legs**: not housed, passing through nothing |
 | **Fore-aft rail to cross rail, inside a leg** | **The cross rail wins — his call** — and the fore-aft rails butt its inner face. Both want the leg's outer 18 of slot, and the cross rail is the one that has to be continuous across the whole width, since the central wall's front notch rides over it |
 
 So the fore-aft rails are **1223** between the cross rails rather than the base's full depth, and
 every rail is still whole: **it is the legs that take the notch**, which is the same rule as before
 with the leg in the wall's place.
+
+🔴 **One rule at both ends of the base: the outermost lamination of every leg stays its full 86, and
+whatever runs along that face stops one strip short and is covered by it** — the cross rail at the
+front, the shear wall at the back. **No end grain shows anywhere on the base's outer faces.** It is
+why four different parts come out at **1223**: both cross rail outer laminations, the fore-aft rails,
+the back wall and the central wall, by four different routes.
 
 #### How the three shear-wall joints actually go
 

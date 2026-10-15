@@ -510,15 +510,18 @@ def main() -> int:
             side = ("inner"
                     if abs(sx0 + strip / 2 - BW / 2) < abs(px0 + px1 - BW) / 2
                     else "outer")
-            # ON A REAR CORNER LEG ONLY THE INNER STRIP IS REBATED - his,
-            # 2026-10-15. The outermost lamination stays its full POST_W_Y, and
-            # the wall stops one strip short at each end so its END GRAIN butts
-            # the back of that lamination. The back centre leg has the wall
-            # passing right through it, so both of its strips are rebated.
+            # ONLY THE INNER STRIP IS EVER CUT BACK - his, 2026-10-15, and it is
+            # ONE RULE AT BOTH ENDS OF THE BASE: the OUTERMOST lamination of
+            # every leg stays its full POST_W_Y, and whatever runs along that
+            # face - the cross rail at the front, the shear wall at the back -
+            # stops one strip short and is covered by it. The back centre leg is
+            # the exception, because the wall passes right through it.
             nearer = abs(sx0 + strip / 2 - BW / 2) < abs(px0 + px1 - BW) / 2
-            cut = back and (notch == "back-both" or nearer)
-            by_a, by_b = ((py0 + housed, py1) if cut
-                          else (py0, py1 - housed) if not back else (py0, py1))
+            if not (notch == "back-both" or nearer):
+                box(f"{nm}, {side} strip", group, colour,
+                    sx0, py0, z0, sx0 + strip, py1, z1, d=d)
+                continue
+            by_a, by_b = (py0 + housed, py1) if back else (py0, py1 - housed)
             box(f"{nm}, {side} strip", group, colour,
                 sx0, by_a, z0, sx0 + strip, by_b, z1, d=d)
             if back:
@@ -641,10 +644,11 @@ def main() -> int:
         # there but the wall, which runs continuously past both grid levels.
         for nm, y0, side in (("front", by1 - gm_t, "front"),):
             box(f"Grid rail, {nm} outer lamination ({which})", "base", 0x3F8F5B,
-                bx0, y0 if nm == "back" else y0 + housed, z0,
-                bx1, y0 + housed if nm == "back" else y0 + gm_t, z1,
-                d=f"{housed:g} x {gm_h:g}, FULL WIDTH - this is the half that is "
-                  f"housed in the legs")
+                bx0 + strip, y0 if nm == "back" else y0 + housed, z0,
+                bx1 - strip, y0 + housed if nm == "back" else y0 + gm_t, z1,
+                d=f"{housed:g} x {gm_h:g} - the half housed in the legs. It "
+                  f"stops one lamination short at each end, so the legs' "
+                  f"outermost strips cover its end grain")
             on_this_side = sorted(r for r in leg_rects
                                   if (r[2] <= by0 + 1e-9) == (side == "rear"))
             spans = [bx0] + [x for r in on_this_side for x in (r[0], r[1])] + [bx1]
