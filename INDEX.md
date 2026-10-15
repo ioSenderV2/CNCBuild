@@ -44,6 +44,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [7. Stand it up and measure it](machine/assembly.md#7-stand-it-up-and-measure-it)
 - [8. The torsion box](machine/assembly.md#8-the-torsion-box)
   - [Cut the notches with all eight ribs clamped as one stack](machine/assembly.md#cut-the-notches-with-all-eight-ribs-clamped-as-one-stack)
+  - [What a millimetre of error actually costs](machine/assembly.md#what-a-millimetre-of-error-actually-costs)
   - [The three posts](machine/assembly.md#the-three-posts)
   - [Sand ports — one per bay, through both skins](machine/assembly.md#sand-ports-one-per-bay-through-both-skins)
   - [The base](machine/assembly.md#the-base)

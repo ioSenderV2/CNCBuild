@@ -683,6 +683,21 @@ offsets are symmetric end to end as well.
 
 **Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin along
 its whole length.
+
+### What a millimetre of error actually costs
+
+**The notches are the layout.** A rib does not sit at a measured position — it sits where the mating
+rib's notch puts it. That is why three of the four ways to be a millimetre out cost nothing.
+
+| Error | What happens |
+|---|---|
+| **A position off by 1, on all eight** — the stack shifted against the stop | **Nothing jams.** All eight are identical, so the grid is still self-consistent and that rib line simply lands 1 off the drawing. The bays either side go 220 and 218. Everything that measures off the last rib line has 36 of room, the sand ports are 25.4 in a 219 bay with 97 clear either side, and the back tenon blocks come out of the scrap bin and get cut to fit |
+| **One rib of the eight off** — it moved in the clamp | **That rib will not drop in.** Its notches fight the grid the other seven define, so it gets pared or recut. This is the error the stop block and the do-not-unclamp rule exist for |
+| **A notch too wide by 1** | Slop at every crossing, so the grid stops holding itself square. Not structural, and the glue fills it — square the grid on the reference before the skins go on. **Too narrow by 1 is worse**: it splits a rib, or the grid will not go together |
+| 🔴 **A notch too deep by 1** | **The only one that touches the structure.** That set sits low and loses the edge-to-face glue line to a skin along its whole length |
+
+**So the figure to get right at setup is the depth stop, with a test cut you then measure.** The stop
+block's position is forgiving; the depth is not.
 FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
 egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
 **This is the only cut that tells a rib which way up it goes**, so it is done after the notching, on

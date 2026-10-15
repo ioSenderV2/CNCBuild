@@ -667,6 +667,26 @@ screw.</p>
 <p>Notch depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and
 loses contact with a skin along its whole length. The fit is a slip fit, not a
 clearance: too tight splits the rib, too loose leaves no glue line.</p>
+<p><b>The notches are the layout</b> &mdash; a rib sits where the mating rib's
+notch puts it, not at a measured position &mdash; so of the four ways to be a
+millimetre out, only one touches the structure:</p>
+<table>
+<tr><th>Error</th><th>What happens</th></tr>
+<tr><td><b>A position off by 1, on all eight</b></td><td>Nothing jams. The eight
+are identical, so the grid stays self-consistent and that rib line lands 1 off
+the drawing. Bays go {bay + 1:g} and {bay - 1:g}</td></tr>
+<tr><td><b>One rib of the eight off</b></td><td>That rib will not drop in &mdash;
+pare or recut it. This is what the stop block and the do-not-unclamp rule are
+for</td></tr>
+<tr><td><b>A notch too wide by 1</b></td><td>Slop at every crossing, so the grid
+stops holding itself square. Square it on the reference before the skins go on.
+<b>Too narrow splits a rib</b></td></tr>
+<tr><td>&#128308; <b>A notch too deep by 1</b></td><td><b>The only structural
+one.</b> That set sits low and loses its glue line to a skin along the whole
+length</td></tr>
+</table>
+<p><b>So the figure to get right at setup is the depth stop.</b> The stop block's
+position is forgiving; the depth is not.</p>
 <p><b>Cut all eight from the same edge, then turn four of them over.</b> One
 direction has to be notched from the top edge and the other from the bottom, and
 that costs nothing here because the notch is <i>exactly</i> half of
