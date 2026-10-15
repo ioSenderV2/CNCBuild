@@ -812,6 +812,14 @@ on structure and not on unsupported skin.</li>
 </ol>
 
 <h2 id="not-here">6 &mdash; Not on this list</h2>
+<p><b>The five legs, and they come FIRST.</b> The base holds the three
+load-bearing legs in position, so it is built before the box and the legs before
+it. Each leg is laminated from <b>{v['T_BB_SKIN_BOT']:g} mm strips 4 ft long</b>,
+trimmed square after the glue dries and cut to length off the standing base. They
+come off a <b>second sheet of {v['T_BB_SKIN_BOT']:g}</b> &mdash; so the box and
+its legs together are one sheet of {v['T_BB_SKIN_TOP']:g} and <b>two</b> of
+{v['T_BB_SKIN_BOT']:g}, not the two sheets the Sheets chapter counts for the box
+alone. OPEN: the leg's finished section is not settled &mdash; see POST_W.</p>
 <p><b>The two blocks beside the back centre tenon.</b> They are location pieces
 inside the box, carry no load, and their thickness is free &mdash; so they come
 out of the scrap bin rather than off a sheet. They must be <b>{v['BOX_RIB_H']:.0f}

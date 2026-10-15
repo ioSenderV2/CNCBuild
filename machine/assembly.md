@@ -883,6 +883,21 @@ one more cut on the stack and they let a corner residue find a neighbouring port
 
 ### The base
 
+FLAG: **The base comes BEFORE the box, and the legs before the base.** His order, and it is a
+prerequisite chain rather than a preference: the base is what holds the three load-bearing legs in
+position, so the box cannot be lowered onto tenons that are not yet located. Build the five legs,
+build the base around them, then the box.
+
+**The legs are laminated from 18 mm Baltic birch strips** — his, 2026-10-15, replacing dressed cedar
+4x4. Strips are **4 ft long**, laminated face to face, and the leg is **trimmed square after the glue
+has dried** rather than relying on the stack coming out at size. **Legs are cut to length as needed**,
+which is the right way round: nothing in this repo sets their full height, and the length is taken
+from the standing base rather than predicted.
+
+OPEN: **The cross-section does not close and the strips are already cut.** Four strips of 18 is
+**72**, which cannot be trimmed to the 86 the tenons and ledges are all derived from. **Twenty strips
+are cut**, which is four per leg for five legs. See POST_W.
+
 | Member | |
 |---|---|
 | **2x6 bottom frame** | locates the posts, **5/16" bolts** through post and frame, **two minimum per joint**. It is also the pallet |
