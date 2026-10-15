@@ -979,10 +979,12 @@ real weakness, racking, where a bolt through a face does not. Three things to co
 3. **Keep every gap well clear of the top**, where the ledge and the tenon are cut and the geometry
    assumes solid material.
 
-NOTE: **In the 3D model every base piece has its own colour** — rear legs brown, fore-aft rails blue,
-cross rails green, the central wall tan, the back wall orange, the filler blocks purple — because
-nearly every part of this frame is the same 36 of the same plywood and the boundaries are the thing
-worth seeing. The wall's **lip shares the wall's colour**: it is the same sheet, not another piece.
+NOTE: **In the 3D model every base piece has its own colour** — legs brown, fore-aft rails blue,
+cross rails green, the central wall tan, the back wall orange — because nearly every part of this
+frame is the same 36 of the same plywood and the boundaries are the thing worth seeing. **Two things
+deliberately share a colour rather than taking their own**: the central wall's **lip**, which is the
+same sheet and not another piece, and each **filler block**, which takes its own leg's brown because
+it goes in at that leg's glue-up and is never a separate part on the bench.
 
 NOTE: **A leg is drawn as its two outer strips with the slot open between them**, so the rail at each
 grid, the filler and the wall are all seen sitting in it. **The cross rails' housing is drawn too** —

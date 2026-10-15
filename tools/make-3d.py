@@ -726,15 +726,19 @@ def main() -> int:
     #
     # The rear middle leg gets none: the central wall is in its slot already,
     # which is the same job done by a part that was going in anyway.
-    corner_legs = [r for i, r in enumerate(leg_rects) if i != 2]
+    # A FILLER IS PART OF ITS LEG, SO IT TAKES THAT LEG'S COLOUR - his,
+    # 2026-10-15. It goes in at the leg's own glue-up and is never a separate
+    # part on the bench, so giving it one of its own said otherwise.
+    corner_legs = [(r, 0x7A5230 if i < 2 else 0x8A5A2B)
+                   for i, r in enumerate(leg_rects) if i != 2]
     slot_in = (pwx - gm_t) / 2               # the slot is the middle two strips
-    for px0, px1, py0, py1 in corner_legs:
+    for (px0, px1, py0, py1), leg_colour in corner_legs:
         # IN A REAR LEG THE FILLER STOPS AT THE REBATE. The back shear wall runs
         # through the slot's back `housed`, so a filler cut to the leg's full
         # depth sits inside the wall - which is exactly what the clash list
         # reported, 36 x 18 x 564, once per rear corner leg.
         fy0 = py0 + housed if py0 <= by0 + 1e-9 else py0
-        box("Leg filler block", "base", 0x8E6FB0,
+        box("Leg filler block", "base", leg_colour,
             px0 + slot_in, fy0, grid_lo_bot + gm_h,
             px0 + slot_in + gm_t, py1, grid_hi_top - gm_h,
             d=f"{gm_t:g} x {py1 - fy0:g}, {v['BASE_VOLUME_H']:g} tall "
