@@ -688,8 +688,13 @@ def main() -> int:
           f"grids. It stops one lamination short at each end so its end grain "
           f"butts the back of the outer lamination, and {v['BASE_BOX_GAP']:g} "
           f"shy of the box. Glue plus screws at about 150 all the way round")
+    # IT STOPS SHORT AT BOTH ENDS so no end grain shows: the back wall covers it
+    # at the rear, the front cross rail's OUTER lamination covers it at the
+    # front. So the front notches only have to clear the rail's INNER lamination
+    # and are half as deep as they were.
     box("Shear wall, centreline", "base", 0xC9A66B,
-        BW / 2 - gm_t / 2, by0 + gm_t, sw_z0, BW / 2 + gm_t / 2, by1 - gm_t, sw_z1,
+        BW / 2 - gm_t / 2, by0 + bw, sw_z0,
+        BW / 2 + gm_t / 2, by1 - gm_t, sw_z1,
         d="fore-aft on the centreline, the base's full height, from the front "
           "back to the back centre leg - which is the box's own rear support, "
           "so it lands under the load it braces")
@@ -699,10 +704,11 @@ def main() -> int:
     # is left between them is this lip, which is exactly BASE_VOLUME_H tall.
     box("Shear wall lip, between the front rails", "base", 0xC9A66B,
         BW / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
-        BW / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
-        d="what the two front notches leave - it finishes flush with the front "
-          "rails' outer faces. The lower notch SITS ON its rail; two long screws "
-          "through each rail into the wall's end")
+        BW / 2 + gm_t / 2, by1 - housed, grid_hi_top - gm_h,
+        d=f"what the two front notches leave, each {housed:g} across now - it "
+          f"stops at the cross rails' OUTER lamination, which covers its end "
+          f"grain. The lower notch SITS ON its rail; two long screws through "
+          f"each rail into the wall's end")
 
     # FILLER BLOCKS in the four CORNER legs' slots, between the grids - his,
     # 2026-10-15. The slot is full height and carries a rail at each grid, so

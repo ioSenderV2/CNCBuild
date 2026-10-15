@@ -1031,7 +1031,7 @@ with the leg in the wall's place.
 |---|---|
 | **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
 | **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops one lamination short at each end** so its end grain butts the back of that lamination. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box** |
-| **Central wall at the front** | **A notch at EACH front corner, 36 across by 100, bottom and top** — one per grid, because a front cross rail wants that 36 at both levels. The **lower** notch's shoulder sits on its rail; what is left between the two notches is a **564 lip** finishing **flush with the rails' outer faces**. **Two long screws through each rail into the end of the wall.** The rails are not touched but for those holes |
+| **Central wall at the front** | **It stops 18 short**, at the front cross rails' **outer** lamination, which covers its end grain — the same move the back wall already makes at the other end. So each front corner takes a notch **18 across by 100**, one per grid, clearing only the rail's **inner** lamination. The **lower** notch's shoulder sits on its rail, the **564 lip** between the two notches finishes against the outer lamination, and **two long screws through each rail go into the wall's end** |
 
 **All five legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
 build order simple: nothing has to be inserted while the glue is wet, so "five legs, then the base"
@@ -1073,10 +1073,14 @@ joined only at top and bottom over the clear volume. The load is trivial — abo
 **The rear middle leg gets none**: the central wall is already in its slot, which is the same job done
 by a part that was going in anyway.
 
-**The same 36 is wanted at the front by both grids, so there are two notches** — his, and it is the
-consistent answer: the rails stay whole at both levels and the wall gives way twice. The lip between
-them is **564**, the same as the clear volume height, which is the check that the two notches are in
-the right places.
+**Both grids want the front at that corner, so there are two notches** — the rails stay whole at both
+levels and the wall gives way twice. The lip between them is **564**, the same as the clear volume
+height, which is the check that the two notches are in the right places.
+
+**No end grain shows on the central wall at either end**, and that is one rule applied twice: the
+back wall covers it at the rear, the front cross rails' outer lamination covers it at the front, and
+it is 18 short at each. **It comes out 1223 — the same length as the back wall and as a fore-aft
+rail**, by three different routes.
 
 NOTE: **Two screws through the upper rail as well**, on the same reasoning as the lower one. The
 lower notch also **bears** on its rail; the upper one only locates.

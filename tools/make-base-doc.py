@@ -77,6 +77,65 @@ def parts(v):
     ]
 
 
+def notches(v, name, L, H):
+    """Notch rectangles in a piece's OWN coordinates, L along, H across.
+
+    Only the central wall carries any: everything else on these sheets is a
+    plain rectangle, because the legs' housings and rebates are cut after
+    lamination and never appear on a sheet.
+    """
+    if not name.startswith("Shear wall, central"):
+        return []
+    n, d = v["GRID_MEMBER_T"] / 2, v["GRID_MEMBER_H"]
+    return [(L - n, 0, n, d), (L - n, H - d, n, d)]      # both front corners
+
+
+def nest_svg(v, places, sw, sl, colours, s=0.105):
+    """Same picture as the box document's, with the notches dotted on.
+
+    A notch is drawn rather than left to the parts table because it is the one
+    thing on a cut list that is easy to forget until the piece is already cut -
+    and it is at the END of the longest piece on the sheet.
+    """
+    by_sheet = {}
+    for sheet, x, y, w, h, name in places:
+        by_sheet.setdefault(sheet, []).append((x, y, w, h, name))
+    out = []
+    for sheet in sorted(by_sheet):
+        pw, ph, t = sl * s, sw * s, boxdoc.EDGE_TRIM * s
+        body = [f'<rect x="0" y="0" width="{pw:.1f}" height="{ph:.1f}" '
+                f'fill="#fcfcfc" stroke="#777"/>',
+                f'<rect x="{t:.1f}" y="{t:.1f}" width="{pw - 2 * t:.1f}" '
+                f'height="{ph - 2 * t:.1f}" fill="none" stroke="#c00" '
+                f'stroke-dasharray="4 3" stroke-width="0.7"/>']
+        for x, y, w, h, name in sorted(by_sheet[sheet], key=lambda p: (p[1], p[0])):
+            px, py, ww, hh = t + x * s, t + y * s, w * s, h * s
+            body.append(f'<rect x="{px:.1f}" y="{py:.1f}" width="{ww:.1f}" '
+                        f'height="{hh:.1f}" fill="{colours[name]}" '
+                        f'stroke="#333" stroke-width="0.6"/>')
+            # the piece's own L is whichever of w/h is its long side as cut
+            L, H = (w, h) if w >= h else (h, w)
+            for nx, ny, nw, nh in notches(v, name, L, H):
+                # map part coords onto the sheet, allowing for the packer
+                # having turned the piece to make it fit
+                ax, ay, aw, ah = ((nx, ny, nw, nh) if w >= h
+                                  else (ny, nx, nh, nw))
+                body.append(
+                    f'<rect x="{px + ax * s:.2f}" y="{py + ay * s:.2f}" '
+                    f'width="{aw * s:.2f}" height="{ah * s:.2f}" fill="none" '
+                    f'stroke="#c00" stroke-width="0.8" stroke-dasharray="3 2"/>')
+            if hh > 9 and ww > 40:
+                body.append(
+                    f'<text x="{px + ww / 2:.1f}" y="{py + hh / 2 + 2.6:.1f}" '
+                    f'text-anchor="middle" font-size="7">{name}'
+                    f'<tspan font-size="5.5" fill="#555">  {w:.0f}&#215;{h:.0f}'
+                    f'</tspan></text>')
+        out.append((sheet + 1,
+                    f'<svg viewBox="0 0 {pw:.1f} {ph:.1f}" width="100%" '
+                    f'style="max-width:{pw:.0f}px">{"".join(body)}</svg>'))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--kerf", type=float, default=boxdoc.KERF)
@@ -104,8 +163,10 @@ def main():
 
     print(f"SHEETS FOR THE REST - kerf {boxdoc.KERF:g}, edge trim "
           f"{boxdoc.EDGE_TRIM:g} (guillotine-packed, an UPPER bound)\n")
-    summary = []
+    summary, nests = [], []
     pieces = [(n, lng, shrt, qty, v["T_BB_SKIN_BOT"]) for n, lng, shrt, qty, _ in to_cut]
+    colours = {p[0]: boxdoc.PALETTE[i % len(boxdoc.PALETTE)]
+               for i, p in enumerate(pieces)}
     for label, sw, sl in SHEETS:
         places, fail = boxdoc.pack(pieces, sw, sl)
         if places is None:
@@ -117,15 +178,17 @@ def main():
         print(f"  {label} ({sw:g} x {sl:g}) : {n} sheet(s)   tightest "
               f"{tight:.2f} spare  ({part})")
         summary.append((label, n, None))
+        if label == "4 x 8":
+            nests = nest_svg(v, places, sw, sl, colours)
     print()
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(render(all_parts, summary, v), encoding="utf-8")
+    OUT.write_text(render(all_parts, summary, v, nests), encoding="utf-8")
     print("wrote", OUT.relative_to(HERE.parent))
     return 0
 
 
-def render(rows, summary, v):
+def render(rows, summary, v, nests):
     pr = "".join(
         f"<tr><td>{n}</td><td class=n>{lng:g}</td><td class=n>{shrt:g}</td>"
         f"<td class=n>{qty}</td><td class=s>{note}</td></tr>"
@@ -183,7 +246,16 @@ filler comes from, which is why three sheets covers the whole base.</p>
 they come under about 1216 long</b>, and the central one is
 {v['CENTRE_WALL_L']:g}.</p>
 
-<h2>3 &mdash; How it goes together</h2>
+<h2>3 &mdash; The cuts, sheet by sheet</h2>
+<p>To scale, sheet length left to right, on the 4 &times; 8. The dashed red
+border is the <b>{boxdoc.EDGE_TRIM:g}</b> off each factory edge; everything sits
+inside it, and offcut is whatever stays white. <b>Notches are drawn as dotted
+rectangles</b> &mdash; they are the one thing on a cut list that is easy to miss
+until the piece is already cut, and on this sheet they sit at the far END of the
+longest piece.</p>
+{''.join(f'<h3>Sheet {n}</h3>{svg}' for n, svg in nests)}
+
+<h2>4 &mdash; How it goes together</h2>
 <table>
 <tr><th>Joint</th><th>How</th></tr>
 <tr><td><b>Fore-aft rails to legs</b></td><td>They fill the legs' middle slot
@@ -211,7 +283,7 @@ grain butts the back of it</td></tr>
 <p>🔴 <b>One rule covers all of it: every rail stays whole and whatever meets it
 gives way.</b> The only cutting a rail ever takes is screw holes.</p>
 
-<h2>4 &mdash; Order</h2>
+<h2>5 &mdash; Order</h2>
 <ol>
 <li><b>Laminate all five legs, with a spacer in every slot.</b> Cut each spacer
 from the stock that will fill that slot, wax or tape it so it does not glue in,

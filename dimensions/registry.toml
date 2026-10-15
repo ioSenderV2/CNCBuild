@@ -2997,8 +2997,8 @@ note = "764 - the height of BOTH shear walls: floor clearance up to BASE_BOX_GAP
 
 [[dim]]
 sym = "CENTRE_WALL_L"
-expr = "BASE_W - T_BACK_WALL"
-note = "1241 - the central shear wall's length, from the back wall's inner face to the front of the base. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot. FLAG: IT IS NOTCHED AT BOTH FRONT CORNERS, GRID_MEMBER_T across by GRID_MEMBER_H up, for the front cross rail at each grid."
+expr = "BASE_W - T_BACK_WALL - GRID_MEMBER_T / 2"
+note = "1223 - the central shear wall's length. SETTLED: IT STOPS SHORT AT BOTH ENDS SO NO END GRAIN SHOWS - his, 2026-10-15, and the rear end already worked this way: the back wall covers it there, and at the front the cross rail's OUTER lamination covers it. The same move twice, which is why it is the same 18 at each end. FLAG: SO THE FRONT NOTCHES ARE HALF AS DEEP - the wall now only has to clear the rail's INNER lamination, so each notch is GRID_MEMBER_T / 2 across rather than the full GRID_MEMBER_T. NOTE: IT COMES OUT THE SAME 1223 AS BACK_WALL_L AND RAIL_FORE_AFT_L, which is worth knowing at the saw even though the three get there by different routes. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot."
 
 [[dim]]
 sym = "BASE_FLOOR_CLEAR"
