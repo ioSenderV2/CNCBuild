@@ -388,6 +388,14 @@ def main() -> int:
                   "ya": lo, "yb": hi, "p": p, "q": q})
 
     W = v["MACHINE_OUTER_W"]         # 1211.238, side plate face to side plate face
+    # 🔴 THE BOX IS NOT THE ENVELOPE. BOX_W was an alias of MACHINE_OUTER_W until
+    # the grid went to whole millimetres, and is a chosen 1211 since - so every
+    # part whose position is set by the BOX (skins, webs, ribs, legs, the base,
+    # the walls) uses this, and only the machine's own parts use W. Drawing the
+    # box at the envelope put it 0.238 wide, which is where the back tenon
+    # block's 0.12 overlap came from: the blocks are placed off BOX_W in the
+    # registry and the tenon they flank was placed off W here.
+    BW = v["BOX_W"]                  # 1211, the skins' actual width
     D = v["BOX_FORE_AFT"]            # 1156.35
     TT = v["T_BOX_TONGUE"]           # 19
     # THE TOP SKIN, which is the one this is used for - the back and side tongues
@@ -408,7 +416,7 @@ def main() -> int:
     cav_z0, cav_z1 = skin_bot_top, -SKIN                  # -125 .. -25
     web = v["T_BOX_WALL_WEB"]
 
-    box("Top skin", "topskin", 0xC9A227, 0, 0, -SKIN, W, D, 0,
+    box("Top skin", "topskin", 0xC9A227, 0, 0, -SKIN, BW, D, 0,
         d="25 Baltic birch - hide this group to see the bays and tenons")
 
     # ---- the three posts, and the tenon holes they need in the bottom skin --
@@ -472,10 +480,10 @@ def main() -> int:
     posts = [
         ("Post, front left", (web, web + beyond, D - web - tcy, D - web),
          (web - ledge, web + beyond, D - web - tcy, D - web + ledge)),
-        ("Post, front right", (W - web - beyond, W - web, D - web - tcy, D - web),
-         (W - web - beyond, W - web + ledge, D - web - tcy, D - web + ledge)),
-        ("Post, back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web, web + tb),
-         (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
+        ("Post, front right", (BW - web - beyond, BW - web, D - web - tcy, D - web),
+         (BW - web - beyond, BW - web + ledge, D - web - tcy, D - web + ledge)),
+        ("Post, back centre", (BW / 2 - pwx / 2, BW / 2 + pwx / 2, web, web + tb),
+         (BW / 2 - pwx / 2, BW / 2 + pwx / 2, web - ledge, web + tb)),
     ]
     # A LEG IS DRAWN AS ITS TWO OUTER STRIPS, NOT AS A SOLID. The middle two
     # laminations are a SLOT, and everything fore-aft lives in it: a rail at each
@@ -500,14 +508,14 @@ def main() -> int:
         # naming the pair outer-then-inner got it backwards over there.
         for sx0 in (px0, px1 - strip):
             side = ("inner"
-                    if abs(sx0 + strip / 2 - W / 2) < abs(px0 + px1 - W) / 2
+                    if abs(sx0 + strip / 2 - BW / 2) < abs(px0 + px1 - BW) / 2
                     else "outer")
             # ON A REAR CORNER LEG ONLY THE INNER STRIP IS REBATED - his,
             # 2026-10-15. The outermost lamination stays its full POST_W_Y, and
             # the wall stops one strip short at each end so its END GRAIN butts
             # the back of that lamination. The back centre leg has the wall
             # passing right through it, so both of its strips are rebated.
-            nearer = abs(sx0 + strip / 2 - W / 2) < abs(px0 + px1 - W) / 2
+            nearer = abs(sx0 + strip / 2 - BW / 2) < abs(px0 + px1 - BW) / 2
             cut = back and (notch == "back-both" or nearer)
             by_a, by_b = ((py0 + housed, py1) if cut
                           else (py0, py1 - housed) if not back else (py0, py1))
@@ -549,7 +557,7 @@ def main() -> int:
                              [sx0 + strip + hc, ty1 + hc], [sx0 - hc, ty1 + hc]])
 
     prism("Bottom skin", "box", 0xB08A1E,
-          [[0, 0], [W, 0], [W, D], [0, D]], skin_bot_top, -v["BOX_THK"],
+          [[0, 0], [BW, 0], [BW, D], [0, D]], skin_bot_top, -v["BOX_THK"],
           holes=holes_xy, plane="xy",
           d="19 Baltic birch, resting on the three post shoulders - the holes "
             "are the tenons plus 1 a side")
@@ -577,7 +585,7 @@ def main() -> int:
     # to land right; when the full-height slot took the corner tenon to 18 these
     # two legs quietly became 60 wide.
     for nm, x0, x1 in (("Leg, rear left", web - ledge, web - ledge + pwx),
-                       ("Leg, rear right", W - web + ledge - pwx, W - web + ledge)):
+                       ("Leg, rear right", BW - web + ledge - pwx, BW - web + ledge)):
         leg_strips(nm, "base", 0x8A5A2B, x0, x1, web - ledge, web + tb,
                    floor_z, -v["BOX_THK"], "back-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
@@ -596,7 +604,7 @@ def main() -> int:
     # through tenon left open at glue-up. The cross rails run BETWEEN them: a
     # cross rail cannot also pass through a leg at the same height, because the
     # leg has one slot and the fore-aft rail is in it.
-    bx0, bx1 = web - ledge, W - web + ledge          # the base's outer envelope
+    bx0, bx1 = web - ledge, BW - web + ledge          # the base's outer envelope
     by0, by1 = web - ledge, D - web + ledge
     housed = gm_t / 2                                # the rail's outer 18
     # THE CROSS RAILS ARE THE CONTINUOUS ONES AT A CORNER - his, 2026-10-15. Each
@@ -681,7 +689,7 @@ def main() -> int:
           f"butts the back of the outer lamination, and {v['BASE_BOX_GAP']:g} "
           f"shy of the box. Glue plus screws at about 150 all the way round")
     box("Shear wall, centreline", "base", 0xC9A66B,
-        W / 2 - gm_t / 2, by0 + gm_t, sw_z0, W / 2 + gm_t / 2, by1 - gm_t, sw_z1,
+        BW / 2 - gm_t / 2, by0 + gm_t, sw_z0, BW / 2 + gm_t / 2, by1 - gm_t, sw_z1,
         d="fore-aft on the centreline, the base's full height, from the front "
           "back to the back centre leg - which is the box's own rear support, "
           "so it lands under the load it braces")
@@ -690,8 +698,8 @@ def main() -> int:
     # notched gm_t x gm_h at the bottom front and again at the top front. What
     # is left between them is this lip, which is exactly BASE_VOLUME_H tall.
     box("Shear wall lip, between the front rails", "base", 0xC9A66B,
-        W / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
-        W / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
+        BW / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
+        BW / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
         d="what the two front notches leave - it finishes flush with the front "
           "rails' outer faces. The lower notch SITS ON its rail; two long screws "
           "through each rail into the wall's end")
@@ -707,10 +715,15 @@ def main() -> int:
     corner_legs = [r for i, r in enumerate(leg_rects) if i != 2]
     slot_in = (pwx - gm_t) / 2               # the slot is the middle two strips
     for px0, px1, py0, py1 in corner_legs:
+        # IN A REAR LEG THE FILLER STOPS AT THE REBATE. The back shear wall runs
+        # through the slot's back `housed`, so a filler cut to the leg's full
+        # depth sits inside the wall - which is exactly what the clash list
+        # reported, 36 x 18 x 564, once per rear corner leg.
+        fy0 = py0 + housed if py0 <= by0 + 1e-9 else py0
         box("Leg filler block", "base", 0x8E6FB0,
-            px0 + slot_in, py0, grid_lo_bot + gm_h,
+            px0 + slot_in, fy0, grid_lo_bot + gm_h,
             px0 + slot_in + gm_t, py1, grid_hi_top - gm_h,
-            d=f"{gm_t:g} x {py1 - py0:g}, {v['BASE_VOLUME_H']:g} tall "
+            d=f"{gm_t:g} x {py1 - fy0:g}, {v['BASE_VOLUME_H']:g} tall "
               f"- it closes the leg's slot between the grids so the two outer "
               f"strips act as one section")
 
@@ -720,8 +733,8 @@ def main() -> int:
     # FLAG: WHERE IT SITS IS THE OPEN QUESTION - see BOX_WALL_STANDS_ON. Drawn
     # INBOARD of the skin edge, which is what this model already implied and
     # what the post arithmetic above closes on.
-    for x0, y0, x1, y1 in ((0, 0, W, web), (0, D - web, W, D),
-                           (0, web, web, D - web), (W - web, web, W, D - web)):
+    for x0, y0, x1, y1 in ((0, 0, BW, web), (0, D - web, BW, D),
+                           (0, web, web, D - web), (BW - web, web, BW, D - web)):
         box("Perimeter web", "grid", 0xA8822C, x0, y0, cav_z0, x1, y1, cav_z1,
             d="19 inner wall lamination - a perimeter rib, carries shear")
 
@@ -771,7 +784,7 @@ def main() -> int:
             cx_ + half, D - web, cav_z1, d=desc)
     for cy_ in rib_centres(v["BOX_RIBS_ACROSS"], bf, ef, web):
         box("Rib, across", "grid", 0xD4B24A, web, cy_ - half, cav_z0,
-            W - web, cy_ + half, cav_z1, d=desc)
+            BW - web, cy_ + half, cav_z1, d=desc)
 
     # THE TONGUE COVERS THE END GRAIN OF BOTH SKINS - his, 2026-10-11 - so it
     # runs the box's full thickness and stands BOX_TONGUE_PROUD above the top

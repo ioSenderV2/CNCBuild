@@ -977,6 +977,7 @@ is to hold five legs in position, three of which the box lands on.
 
 | | |
 |---|---|
+| **Box width** | **1211** — and note it is **not** the machine's 1211.238 envelope. The skin is cut 0.24 under, the plate stands 0.12 proud of its edge, and the tongue beds on the plate. Anything positioned off the box uses 1211 |
 | **Top of the box** | **1016 — 40"**, his, and it is the figure the base's whole height hangs off. The work surface lands **66 above that at 1082**, because the tee track and two MDF sheets stand on the skin |
 | **Legs below the box** | **874** from the box's underside to the floor |
 | **Lower grid** | its **underside 100 above the floor** — set by the pallet jack and nothing else, so the forks go under it with the jack lowered |
@@ -1063,7 +1064,8 @@ back rails rather than threading between them.
 
 #### A filler block in each corner leg
 
-**Four of them, 36 × 86 × 564, out of the leftover strip material.** The slot runs the leg's full
+**Four of them, 564 tall and 36 wide, out of the leftover strip material** — **86 deep in the front
+legs and 68 in the rear ones**, where the back shear wall takes the slot's back 18. The slot runs the leg's full
 height and carries a rail at each grid, so without a filler each corner leg is two 18 planks 36 apart
 joined only at top and bottom over the clear volume. The load is trivial — about 190 lb a leg — but
 **two unconnected planks buckle independently where a built-up section does not.**
