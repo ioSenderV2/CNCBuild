@@ -960,9 +960,17 @@ way up to the top of the upper one**, so it is the centreline member at both gri
 between them: **764 tall**, against a rail's 100. So each grid is a plain rectangle of **two fore-aft
 rails and two cross rails**, and the wall carries the middle.
 
-**The fore-aft rails run full length and pass through the legs; the cross rails run between them.** A
-cross rail cannot also pass through a leg at that height — the leg has one slot and the fore-aft rail
-is in it.
+#### Rail to leg, all three cases
+
+| Joint | How |
+|---|---|
+| **Fore-aft rails to the legs** | **The same as the wall: they fill the legs' middle slot** — the two centre laminations. One slot per leg, carrying the lower rail, the upper rail and, in the rear middle leg, the wall |
+| **Cross rails to the legs** | **Notch the legs' OUTER faces** — the back of the rear legs, the front of the front legs — **18 deep**, so the rail's **outer 18 fills the notch and its inner 18 spans between the legs**. The rail runs the base's full width and its outer face finishes flush with the legs' |
+| **Fore-aft rail to cross rail, inside a leg** | **The cross rail wins; the fore-aft rails butt its inner face.** Both want the leg's outer 18 of slot, and the cross rail is the one that has to be continuous across the whole width — the central wall's front notch rides over it |
+
+So the fore-aft rails are **1223** between the cross rails rather than the base's full depth, and
+every rail is still whole: **it is the legs that take the notch**, which is the same rule as before
+with the leg in the wall's place.
 
 #### How the three shear-wall joints actually go
 
@@ -987,11 +995,18 @@ fore-aft rail passes through the rear middle leg, the **wall** is what gets notc
 cut as a rib notch, and for the same reason: whichever piece is continuous wins, and here that is the
 rail passing through.
 
-**So the rule across the whole base is one rule: the rails stay whole and the wall gives way.** At the
-front the wall is notched to sit on the rail; where a rail crosses the rear middle leg the wall is
-notched to let it through; the only cutting a rail ever takes is two screw holes. That is worth
-stating as a rule rather than three times as a detail, because it is what makes the frame a frame —
-every rail is continuous end to end in both grids.
+**So the rule across the whole base is one rule: every rail stays whole, and whatever meets it gives
+way.** The wall is notched to ride over the front rails; the wall is notched where a rail crosses the
+rear middle leg; the legs are notched to house the cross rails; the fore-aft rails butt the cross
+rails rather than crossing them. **The only cutting a rail ever takes is screw holes.** That is worth
+stating once as a rule rather than five times as a detail, because it is what makes the frame a frame
+— every cross rail runs the full width and every fore-aft rail runs between them, in both grids.
+
+OPEN: **A full-height slot leaves each corner leg as two 18 planks over the clear volume.** The slot
+carries a rail at each grid and nothing in the 564 between, so there each leg is two strips 36 apart
+joined only at top and bottom. The load is trivial — about 190 lb a leg — but two unconnected planks
+buckle independently where a built-up section would not. **A filler block in the slot between the
+grids closes it, out of the leftover strip material**, and it costs nothing but deciding to do it.
 
 **The same 36 is wanted at the front by both grids, so there are two notches** — his, and it is the
 consistent answer: the rails stay whole at both levels and the wall gives way twice. The lip between

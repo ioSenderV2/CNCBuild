@@ -523,17 +523,28 @@ def main() -> int:
     # leg has one slot and the fore-aft rail is in it.
     bx0, bx1 = web - ledge, W - web + ledge          # the base's outer envelope
     by0, by1 = web - ledge, D - web + ledge
+    housed = gm_t / 2                                # the rail's outer 18
+    # THE CROSS RAILS ARE THE CONTINUOUS ONES AT A CORNER - his, 2026-10-15. Each
+    # runs the base's full width with its OUTER 18 housed in a notch in the legs'
+    # outer faces (the back of the rear legs, the front of the front legs) and
+    # its INNER 18 spanning between them. So the fore-aft rails butt their inner
+    # faces rather than crossing them, which is what stops two rails wanting the
+    # same space inside a leg.
+    #
+    # The leg notches are not drawn, for the same reason the rib notches are not:
+    # an 18-deep housing removes no envelope, and drawing it would only clutter
+    # the one view that shows the frame's layout.
     for which, z0, z1 in grids:
         for x0, x1 in ((bx0, bx0 + gm_t), (bx1 - gm_t, bx1)):
             box(f"Grid rail, fore-aft ({which})", "base", 0x8B6A3A,
-                x0, by0, z0, x1, by1, z1,
-                d=f"{gm_t:g} x {gm_h:g} plywood lamination on edge, full length "
-                  f"- it passes THROUGH the legs")
+                x0, by0 + housed, z0, x1, by1 - housed, z1,
+                d=f"{gm_t:g} x {gm_h:g} on edge - it fills the legs' middle slot "
+                  f"and butts the cross rails' inner faces")
         for nm, y0, y1 in (("back", by0, by0 + gm_t), ("front", by1 - gm_t, by1)):
             box(f"Grid rail, {nm} ({which})", "base", 0x8B6A3A,
-                bx0 + gm_t, y0, z0, bx1 - gm_t, y1, z1,
-                d=f"{gm_t:g} x {gm_h:g} on edge, between the two fore-aft rails "
-                  f"- the central wall's notched end sits on the front one")
+                bx0, y0, z0, bx1, y1, z1,
+                d=f"{gm_t:g} x {gm_h:g} on edge, FULL WIDTH - outer {housed:g} "
+                  f"housed in the legs, inner {housed:g} spanning between them")
 
     # The two shear walls, a T in plan: the centreline one runs back to the back
     # centre leg, which is the box's own rear support, so the wall lands under
