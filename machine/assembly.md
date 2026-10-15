@@ -1082,6 +1082,12 @@ back wall covers it at the rear, the front cross rails' outer lamination covers 
 it is 18 short at each. **It comes out 1223 — the same length as the back wall and as a fore-aft
 rail**, by three different routes.
 
+**It is also 6 shorter than the back wall, and that is a sheet decision rather than a structural
+one**: at **758** both of its laminations come off **one 5 × 5**, where at the back wall's 764 they
+take two. The 6 comes off the **top**, where the wall is free. A 5 × 5 trims to 1520.8 and the kerf
+between the two pieces leaves **759.6** each, so the cut is on the right side of the line with 1.6
+to spare.
+
 NOTE: **Two screws through the upper rail as well**, on the same reasoning as the lower one. The
 lower notch also **bears** on its rail; the upper one only locates.
 

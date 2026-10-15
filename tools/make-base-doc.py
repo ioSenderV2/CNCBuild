@@ -37,6 +37,7 @@ SHEETS = boxdoc.SHEETS
 # His, 2026-10-15: the legs are already cut, so they are listed for the record
 # but they are NOT in the sheet count - that sheet is spent.
 STRIPS_CUT = 20
+ON_5x5 = "5 x 5"                  # the two central wall laminations, and only those
 
 
 def parts(v):
@@ -64,10 +65,11 @@ def parts(v):
         ("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"], 1,
          f"ONE sheet {t:g} thick - it replaces the back cross rails at both "
          "grids, so it must not be cut into strips"),
-        ("Shear wall, central", v["CENTRE_WALL_L"], v["WALL_H"], 2,
+        ("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
          f"2 laminations - it fills the rear middle leg's slot, so it is "
-         f"{gm_t:g}. Notched at BOTH front corners, {gm_t:g} across by "
-         f"{gm_h:g} up"),
+         f"{gm_t:g}. Notched at BOTH front corners, {gm_t / 2:g} across by "
+         f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
+         f"the back wall so both come off ONE 5 x 5"),
         ("Leg filler, front legs", v["BASE_VOLUME_H"], v["POST_W_Y"], 4,
          "2 laminations each, 2 legs - it closes the slot between the grids"),
         ("Leg filler, rear legs", v["BASE_VOLUME_H"],
@@ -163,23 +165,33 @@ def main():
 
     print(f"SHEETS FOR THE REST - kerf {boxdoc.KERF:g}, edge trim "
           f"{boxdoc.EDGE_TRIM:g} (guillotine-packed, an UPPER bound)\n")
+    # EACH PIECE IS ASSIGNED TO A SHEET SIZE, not packed against both - his
+    # plan, 2026-10-15: the two central laminations come off one 5 x 5, which is
+    # what shrinking them by 6 bought, and everything else off 4 x 8s.
     summary, nests = [], []
-    pieces = [(n, lng, shrt, qty, v["T_BB_SKIN_BOT"]) for n, lng, shrt, qty, _ in to_cut]
+    t = v["T_BB_SKIN_BOT"]
+    groups = {}
+    for n, lng, shrt, qty, _ in to_cut:
+        groups.setdefault(ON_5x5 if n.startswith("Shear wall, central")
+                          else "4 x 8", []).append((n, lng, shrt, qty, t))
     colours = {p[0]: boxdoc.PALETTE[i % len(boxdoc.PALETTE)]
-               for i, p in enumerate(pieces)}
+               for i, p in enumerate(to_cut)}
     for label, sw, sl in SHEETS:
+        pieces = groups.get(label)
+        if not pieces:
+            continue
         places, fail = boxdoc.pack(pieces, sw, sl)
         if places is None:
             print(f"  {label}: DOES NOT FIT - {fail}")
-            summary.append((label, None, fail))
+            summary.append((label, None, fail, []))
             continue
         n = max(p[0] for p in places) + 1
         tight, part = boxdoc.tightest(pieces, sw, sl)
         print(f"  {label} ({sw:g} x {sl:g}) : {n} sheet(s)   tightest "
               f"{tight:.2f} spare  ({part})")
-        summary.append((label, n, None))
-        if label == "4 x 8":
-            nests = nest_svg(v, places, sw, sl, colours)
+        summary.append((label, n, None, [p[0] for p in pieces]))
+        nests += [(f"{label}, sheet {i}", svg)
+                  for i, svg in nest_svg(v, places, sw, sl, colours)]
     print()
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -194,8 +206,10 @@ def render(rows, summary, v, nests):
         f"<td class=n>{qty}</td><td class=s>{note}</td></tr>"
         for n, lng, shrt, qty, note in rows)
     sh = "".join(
-        f"<tr><td>{label}</td><td>{f'{n} sheet(s)' if n else f'<b class=bad>will not fit</b> &mdash; {fail}'}</td></tr>"
-        for label, n, fail in summary)
+        f"<tr><td>{label}</td>"
+        f"<td>{f'{n} sheet(s)' if n else f'<b class=bad>will not fit</b> &mdash; {fail}'}</td>"
+        f"<td class=s>{', '.join(sorted(set(names)))}</td></tr>"
+        for label, n, fail, names in summary)
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <title>CNCBuild &mdash; Base Construction</title>
@@ -234,26 +248,28 @@ here as the {v['T_BB_SKIN_BOT']:g} pieces that actually get cut. The
 which is the middle two laminations of a four-strip leg.</p>
 
 <h2>2 &mdash; Sheets for the rest</h2>
-<table><tr><th>Sheet</th><th>Needs</th></tr>{sh}</table>
-<p>🔴 <b>Three sheets, and it is the walls that decide it &mdash; not waste,
-geometry.</b> Each wall is {v['WALL_H']:g} wide, so it has to lie with its length
-along the sheet. <b>Two of them want {v['CENTRE_WALL_L'] * 2:g} of a
-2435 sheet and come up 47 short</b>, and the back wall will not share either, by
-29. So each of the three wall pieces takes its own sheet &mdash; and the
-{1216 - v['WALL_H']:g} &times; 2435 left beside each one is where every rail and
-filler comes from, which is why three sheets covers the whole base.</p>
-<p>The figure to know if this is ever re-cut: <b>two walls share a sheet only if
-they come under about 1216 long</b>, and the central one is
-{v['CENTRE_WALL_L']:g}.</p>
+<p><b>Each piece is assigned to a sheet size rather than packed against both.</b></p>
+<table><tr><th>Sheet</th><th>Needs</th><th>Carrying</th></tr>{sh}</table>
+<p>🔴 <b>The two central laminations come off ONE 5 &times; 5, and that is what
+cutting them {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than the back wall
+buys.</b> A 5 &times; 5 trims to <b>1520.8</b>, and with the
+<b>{boxdoc.KERF:g}</b> kerf between the two pieces each may be at most
+<b>759.6</b> tall. At the back wall's {v['WALL_H']:g} they take two sheets; at
+{v['CENTRE_WALL_H']:g} they take one, with 1.6 to spare. <b>Four would have
+missed it by 0.4</b> &mdash; the kerf is the whole margin here.</p>
+<p>On the 4 &times; 8 it is the back wall that sets the count: it is
+{v['WALL_H']:g} wide so it lies along the sheet, and nothing else that long will
+share the remaining {2435 - v['BACK_WALL_L']:g}. <b>The fore-aft rails and the
+rest come out of the {1216 - v['WALL_H']:g} &times; 2435 beside it.</b></p>
 
 <h2>3 &mdash; The cuts, sheet by sheet</h2>
-<p>To scale, sheet length left to right, on the 4 &times; 8. The dashed red
+<p>To scale, sheet length left to right. The dashed red
 border is the <b>{boxdoc.EDGE_TRIM:g}</b> off each factory edge; everything sits
 inside it, and offcut is whatever stays white. <b>Notches are drawn as dotted
 rectangles</b> &mdash; they are the one thing on a cut list that is easy to miss
 until the piece is already cut, and on this sheet they sit at the far END of the
 longest piece.</p>
-{''.join(f'<h3>Sheet {n}</h3>{svg}' for n, svg in nests)}
+{''.join(f'<h3>{n}</h3>{svg}' for n, svg in nests)}
 
 <h2>4 &mdash; How it goes together</h2>
 <table>

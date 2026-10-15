@@ -2996,6 +2996,11 @@ expr = "LEG_BELOW_BOX - BASE_FLOOR_CLEAR - BASE_BOX_GAP"
 note = "764 - the height of BOTH shear walls: floor clearance up to BASE_BOX_GAP shy of the box. SETTLED: IT IS NOT BASE_VOLUME_H - the walls run past both grids rather than sitting between them, which is the whole reason they can replace rails."
 
 [[dim]]
+sym = "CENTRE_WALL_H"
+expr = "WALL_H - 6"
+note = "758 - the central shear wall's height, 6 under the back wall's. SETTLED: IT IS CUT TO A SHEET, his 2026-10-15 - at this height BOTH central laminations come off ONE 5 x 5, where at the full WALL_H they take two. FLAG: THE BINDING FIGURE IS 759.6: a 5 x 5 trims to 1520.8 and the 1.6 kerf between the two pieces leaves 759.6 each, so 4 would have missed by 0.4. His 6 clears it by 1.6, which is a margin rather than a fit. SETTLED: IT COMES OFF THE TOP, where the wall is free - it just stands further below the box, and nothing bears on it there. The back wall keeps the full WALL_H: different sheet, different size."
+
+[[dim]]
 sym = "CENTRE_WALL_L"
 expr = "BASE_W - T_BACK_WALL - GRID_MEMBER_T / 2"
 note = "1223 - the central shear wall's length. SETTLED: IT STOPS SHORT AT BOTH ENDS SO NO END GRAIN SHOWS - his, 2026-10-15, and the rear end already worked this way: the back wall covers it there, and at the front the cross rail's OUTER lamination covers it. The same move twice, which is why it is the same 18 at each end. FLAG: SO THE FRONT NOTCHES ARE HALF AS DEEP - the wall now only has to clear the rail's INNER lamination, so each notch is GRID_MEMBER_T / 2 across rather than the full GRID_MEMBER_T. NOTE: IT COMES OUT THE SAME 1223 AS BACK_WALL_L AND RAIL_FORE_AFT_L, which is worth knowing at the saw even though the three get there by different routes. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot."

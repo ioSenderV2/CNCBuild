@@ -692,9 +692,13 @@ def main() -> int:
     # at the rear, the front cross rail's OUTER lamination covers it at the
     # front. So the front notches only have to clear the rail's INNER lamination
     # and are half as deep as they were.
+    # CUT SHORTER THAN THE BACK WALL, and the reason is a sheet rather than the
+    # structure: at CENTRE_WALL_H both of its laminations come off one 5 x 5,
+    # where at the back wall's height they take two. The difference comes off
+    # the TOP, where the wall is free and nothing bears on it.
     box("Shear wall, centreline", "base", 0xC9A66B,
         BW / 2 - gm_t / 2, by0 + bw, sw_z0,
-        BW / 2 + gm_t / 2, by1 - gm_t, sw_z1,
+        BW / 2 + gm_t / 2, by1 - gm_t, sw_z0 + v["CENTRE_WALL_H"],
         d="fore-aft on the centreline, the base's full height, from the front "
           "back to the back centre leg - which is the box's own rear support, "
           "so it lands under the load it braces")
