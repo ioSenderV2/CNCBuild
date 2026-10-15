@@ -72,6 +72,11 @@ def parts(v):
          f"{gm_t:g}. Notched at BOTH front corners, {gm_t / 2:g} across by "
          f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
          f"the back wall so both come off ONE 5 x 5"),
+        ("Leg foot spacer", v["FOOT_SPACER_H"], v["POST_W_Y"], 10, "offcut",
+         "2 laminations each, all FIVE legs - glued to the inside of the outer "
+         "lamination, closing the slot from the floor up to the lower rail. "
+         f"Its {v['FOOT_SPACER_H']:g} is BASE_FLOOR_CLEAR, which is exactly "
+         "what the slot leaves open down there. It is what the leg stands on"),
         ("Leg filler", v["BASE_VOLUME_H"], v["POST_W_Y"], 8, "offcut",
          f"2 laminations each, 4 legs - {v['POST_W_Y']:g} deep in the front "
          f"legs and {v['POST_W_Y'] - v['T_BACK_WALL']:g} in the rear ones. "

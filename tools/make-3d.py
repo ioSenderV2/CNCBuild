@@ -729,8 +729,22 @@ def main() -> int:
     # A FILLER IS PART OF ITS LEG, SO IT TAKES THAT LEG'S COLOUR - his,
     # 2026-10-15. It goes in at the leg's own glue-up and is never a separate
     # part on the bench, so giving it one of its own said otherwise.
-    corner_legs = [(r, 0x7A5230 if i < 2 else 0x8A5A2B)
-                   for i, r in enumerate(leg_rects) if i != 2]
+    all_legs = [(r, 0x7A5230 if i < 3 else 0x8A5A2B)
+                for i, r in enumerate(leg_rects)]
+    corner_legs = [(r, c) for i, (r, c) in enumerate(all_legs) if i != 2]
+
+    # A SPACER AT THE FOOT OF ALL FIVE, glued to the inside of the outer
+    # lamination - his, 2026-10-15. The slot runs the leg's full height, so
+    # below the lower grid exactly BASE_FLOOR_CLEAR of it is open, and this
+    # fills it. Without it a leg stands on the floor as two 18 strips with a 36
+    # gap between them.
+    for (px0, px1, py0, py1), leg_colour in all_legs:
+        box("Leg foot spacer", "legs", leg_colour,
+            px0 + (pwx - gm_t) / 2, py0, floor_z,
+            px0 + (pwx - gm_t) / 2 + gm_t, py1, floor_z + v["FOOT_SPACER_H"],
+            d=f"{gm_t:g} x {py1 - py0:g} x {v['FOOT_SPACER_H']:g} - it closes "
+              f"the slot from the floor up to the lower rail, and it is what "
+              f"the leg actually stands on")
     slot_in = (pwx - gm_t) / 2               # the slot is the middle two strips
     for (px0, px1, py0, py1), leg_colour in corner_legs:
         # IN A REAR LEG THE FILLER STOPS AT THE REBATE. The back shear wall runs

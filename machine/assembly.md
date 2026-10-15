@@ -1108,6 +1108,14 @@ joined only at top and bottom over the clear volume. The load is trivial — abo
 **The rear middle leg gets none**: the central wall is already in its slot, which is the same job done
 by a part that was going in anyway.
 
+#### And a spacer at the foot of all five
+
+**36 × 86 × 100, glued to the inside of the outer lamination.** The slot runs the leg's full height,
+so below the lower grid exactly **100** of it is open — the floor clearance — and this fills it.
+**Without it a leg stands on the floor as two 18 strips with a 36 gap between them.**
+
+The 100 is not a separate figure to remember: it **is** the floor clearance, so the two cannot drift.
+
 **Both grids want the front at that corner, so there are two notches** — the rails stay whole at both
 levels and the wall gives way twice. The lip between them is **564**, the same as the clear volume
 height, which is the check that the two notches are in the right places.
