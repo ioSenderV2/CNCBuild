@@ -812,8 +812,15 @@ through the shoulder — that is withdrawal from cedar end grain.
 ### Glue up — the order, and the two steps that cannot be undone
 
 The six glue joints and what each one carries are in
-[`drawings/torsion-box-construction.html`](drawings/torsion-box-construction.html), chapter 5. The
-order is here because getting it wrong is not recoverable:
+[`drawings/torsion-box-construction.html`](drawings/torsion-box-construction.html), chapter 5, with
+the Domino stations. **Two per web corner, eight in all**, and **a few per side on the outer
+laminations** — those are the two joints with nothing else locating them. FLAG: **No Dominos in the
+rib ends.** Each rib is already located by its notches and by the bottom skin, so pinning its ends
+as well is a third constraint that has to agree with the other two across sixteen rib ends and
+sixteen crossings. A rib end half a millimetre shy is harmless now and would be a part that will not
+seat.
+
+The order is here because getting it wrong is not recoverable:
 
 1. **Dry-assemble the grid on the flat reference** — four ribs each way into the perimeter webs.
    Press every crossing flat and check it seats. An egg crate self-jigs, so this is the squareness
@@ -823,7 +830,8 @@ order is here because getting it wrong is not recoverable:
 3. 🔴 **Drive the screw into each post tenon, and fit the fin angles' T-nuts into the top skin from
    underneath — both BEFORE the top skin goes down.** There is no access to either afterwards, ever,
    and the only fix then is a hole in the box.
-4. **Glue the perimeter webs and the outer laminations**, the tongues capping the skins' end grain.
+4. **Glue the perimeter webs, two Dominos at each corner**, then the **outer laminations** on their
+   own pins, the tongues capping the skins' end grain.
 5. **Glue the top skin on and clamp it hard onto the rib edges.** Screws through the skin into the
    ribs give uniform pressure and can stay in; the 52" parallel clamps go across the top, **one over
    each rib**, so the pressure lands on structure rather than on unsupported skin.
