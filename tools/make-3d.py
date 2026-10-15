@@ -458,11 +458,15 @@ def main() -> int:
     # Each post: (tenon rect, full-section rect) in machine x/y. The two REAR
     # CORNER legs carry no tenon - the box lands on three legs only - so they
     # have no entry here and are drawn with the base below.
+    # The first rect is the leg's UN-LEDGED region - what stands proud of the
+    # shoulder before the slot is taken out of it. NOT the tenon: with a
+    # full-height slot the tenon is whichever STRIPS fall inside this band.
+    beyond = pwx - ledge                     # 30 across, on a leg ledged in X
     posts = [
-        ("Post, front left", (web, web + tcx, D - web - tcy, D - web),
-         (web - ledge, web + tcx, D - web - tcy, D - web + ledge)),
-        ("Post, front right", (W - web - tcx, W - web, D - web - tcy, D - web),
-         (W - web - tcx, W - web + ledge, D - web - tcy, D - web + ledge)),
+        ("Post, front left", (web, web + beyond, D - web - tcy, D - web),
+         (web - ledge, web + beyond, D - web - tcy, D - web + ledge)),
+        ("Post, front right", (W - web - beyond, W - web, D - web - tcy, D - web),
+         (W - web - beyond, W - web + ledge, D - web - tcy, D - web + ledge)),
         ("Post, back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web, web + tb),
          (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
     ]
@@ -482,15 +486,25 @@ def main() -> int:
     holes_xy = []
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
-        box(nm + " tenon", "posts", 0x9C6B3C, tx0, ty0, ledge_z, tx1, ty1, post_top,
-            d="location only - carries no vertical load, that is all on the shoulder")
         leg_strips(nm, "posts", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
                      f"middle laminations are the slot. The shoulder bears the box")
         leg_rects.append((px0, px1, py0, py1))
-        # the hole the tenon passes through, cut TENON_HOLE_CLEAR generous a side
-        holes_xy.append([[tx0 - hc, ty0 - hc], [tx1 + hc, ty0 - hc],
-                         [tx1 + hc, ty1 + hc], [tx0 - hc, ty1 + hc]])
+        # THE SLOT RUNS FULL HEIGHT, so it passes through the tenon as well: a
+        # tenon tab is a STRIP's top, never the leg's. A strip standing inside
+        # the leg's outward ledge has a tab; one swallowed by the ledge has none.
+        # So a corner leg has ONE tab and the back centre leg has TWO, with 36 of
+        # slot between them.
+        for sx0 in (px0, px1 - strip):
+            if not (tx0 - 1e-9 <= sx0 and sx0 + strip <= tx1 + 1e-9):
+                continue                       # this strip is inside the ledge
+            box(nm + " tenon tab", "posts", 0x9C6B3C,
+                sx0, ty0, ledge_z, sx0 + strip, ty1, post_top,
+                d=f"{strip:g} x {ty1 - ty0:g} - location only, it carries no "
+                  f"vertical load. All of that is on the shoulder")
+            # the hole it passes through, TENON_HOLE_CLEAR generous a side
+            holes_xy.append([[sx0 - hc, ty0 - hc], [sx0 + strip + hc, ty0 - hc],
+                             [sx0 + strip + hc, ty1 + hc], [sx0 - hc, ty1 + hc]])
 
     prism("Bottom skin", "box", 0xB08A1E,
           [[0, 0], [W, 0], [W, D], [0, D]], skin_bot_top, -v["BOX_THK"],

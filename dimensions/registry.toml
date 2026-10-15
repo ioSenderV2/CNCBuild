@@ -2872,14 +2872,37 @@ expr = "T_BOX_WALL"
 note = "44 - the ledge depth at every post, on every ledged face. FLAG: IT IS THE WALL THICKNESS BY RULE, NOT BY COINCIDENCE - torsion-box.md: 'each ledge must be as deep as the wall standing on it'. The ledges are cut on the OUTWARD-FACING faces so the perimeter wall lands directly over the shoulder and the load runs wall, skin, shoulder, post in a straight line with no plate bending. A ledge shallower than the wall would put the tenon under the wall, leaving the wall a hole where it needs to bear. SETTLED: 44 SINCE 2026-10-11, up from 38, and it moved because T_BOX_TONGUE went 19 to 25 - THIS IS THE CONSEQUENCE THAT WAS MISSED when that change was called 'geometrically free'. It is free inside the machine and not at the posts. SETTLED: EXPRESSED RATHER THAN STATED so it can never go stale against the wall again: it was 38 in three files while the wall was 44."
 
 [[dim]]
+sym = "LEG_STRIP"
+expr = "(POST_W_X - GRID_MEMBER_T) / 2"
+note = "18 - one outer strip of a leg, which is what is left either side of the slot. SETTLED: THE SLOT RUNS THE LEG'S FULL HEIGHT - his call 2026-10-15, and his reason is the good one: stopping it at the upper grid would leave a 10 mm bridge of laminated plywood spanning the slot and pretending to be the surface the box bears on. FLAG: SO THE SLOT PASSES THROUGH THE SHOULDER AND THE TENON TOO, and this symbol is what the tenon tabs and the bearing areas are now built from - not POST_W_X, which is the leg's overall width and no longer a bearing dimension anywhere."
+
+[[dim]]
 sym = "TENON_CORNER_X"
-expr = "POST_W_X - T_BOX_LEDGE"
-note = "30 - a front corner tenon ACROSS the machine, the leg's lamination direction less the ledge cut on its outboard face. SETTLED: THE CORNER TENON IS NOT SQUARE since the leg stopped being square, 2026-10-15: it is 30 x TENON_CORNER_Y's 44, where it was 44 square on the cedar post. FLAG: THE TENON CARRIES NO VERTICAL LOAD, all of it is on the shoulder, so this is location duty and 30 is ample for it - the corner tenons are located by both perimeter walls besides. The shoulder is what matters and it is larger than the cedar post's, because the ledge takes the same 42 off a leg that is 72 x 86 rather than 86 square."
+expr = "LEG_STRIP"
+note = "18 - a front corner tenon ACROSS the machine. SETTLED: IT IS ONE TAB ON THE INNER STRIP ONLY, 2026-10-15. The ledge takes the outboard 42, which swallows the outer strip whole, and the slot takes the middle 36 - so what is left standing proud is the inner strip and nothing else. FLAG: IT WAS 30 WHILE THE SLOT STOPPED SHORT, and 44 square before that on the cedar post. FLAG: THE TENON CARRIES NO VERTICAL LOAD, all of it is on the shoulder, so this is location duty: an 18 x 44 tab locates as well as a 30 x 44 one, and the corner tenons are located by both perimeter walls besides."
 
 [[dim]]
 sym = "TENON_CORNER_Y"
 expr = "POST_W_Y - T_BOX_LEDGE"
-note = "44 - a front corner tenon FORE AND AFT, the leg's strip-width direction less the ledge on its front face. The same arithmetic as TENON_BACK_DEPTH and the same figure, because both are POST_W_Y less the ledge; they are separate symbols because they are different faces of different legs."
+note = "44 - a front corner tenon FORE AND AFT, the leg's strip-width direction less the ledge on its front face. The same arithmetic as TENON_BACK_DEPTH and the same figure, because both are POST_W_Y less the ledge; they are separate symbols because they are different faces of different legs. NOTE: THIS AXIS DID NOT MOVE when the slot went full height - the slot runs fore-aft, so it takes nothing off the tenon's DEPTH, only off its width."
+
+[[dim]]
+sym = "TENON_BACK_TABS"
+value = 2
+provenance = "part"
+note = "2 - the back centre leg's tenon is TWO tabs, not one. SETTLED: THE SLOT SPLITS IT, 2026-10-15: that leg is ledged on its back face only, so both strips stand proud, and the full-height slot between them makes the tenon a pair of LEG_STRIP x TENON_BACK_DEPTH tabs with 36 of air between. FLAG: THE HOLE IN THE BOTTOM SKIN FOLLOWS - either two holes or one spanning both, and the island between them bears nothing because it sits over the slot."
+
+[[dim]]
+sym = "SHOULDER_CORNER"
+expr = "LEG_STRIP * POST_W_Y + LEG_STRIP * T_BOX_LEDGE"
+unit = "mm2"
+note = "2304 mm2 - a front corner leg's BEARING AREA under the box: the outer strip's full 18 x 86 plus the inner strip's 18 x 42, the slot contributing nothing. SETTLED: IT IS WHY THE FULL-HEIGHT SLOT IS FINE - about 190 lb a leg over this is roughly 0.4 MPa, against plywood loaded edge-on which takes tens. The shoulder stopped being a continuous L when the slot went through it and the load never noticed."
+
+[[dim]]
+sym = "SHOULDER_BACK"
+expr = "TENON_BACK_TABS * LEG_STRIP * T_BOX_LEDGE"
+unit = "mm2"
+note = "1512 mm2 - the back centre leg's bearing area, two strips of 18 x 42. FLAG: IT IS THE SMALLEST OF THE THREE and it carries the whole back of the box, because that leg is ledged on ONE face so its shoulder is only the 42 band. Still about 0.6 MPa, which is nothing."
 
 [[dim]]
 sym = "TENON_CORNER"

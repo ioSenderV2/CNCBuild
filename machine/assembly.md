@@ -806,6 +806,11 @@ shoulder. That is why a 30 × 44 tenon raised no eyebrow when the leg stopped be
 carries it directly rather than through the box.** The skins never run out under the tongue: they
 **butt its inner face** and it caps their end grain.
 
+**The slot takes a 36 bite out of all of that**, so the shoulder is two strips 18 wide rather than one
+continuous band. On about 190 lb a leg that is roughly **0.4 MPa** at a corner and **0.6** at the back
+centre, against plywood loaded edge-on which takes tens — the shoulder stopped being continuous and
+the load never noticed.
+
 **And the tongue is not a facing.** It is the wall's outer lamination: the standing plates bolt
 **through** it in a lap, it is the lateral load path, and it is the piece that makes the wall 42. The
 word fascia undersells it.
@@ -815,10 +820,19 @@ Glue the grid to the bottom skin, then the webs and the outer laminations, then 
 only then is the finished box lowered onto three tenons. There is never a moment when a tenon is
 standing up through a half-built box.
 
-| Post | Faces ledged | Tenon, across × fore-aft |
-|---|---|---|
-| Front left / front right | the **side** face and the **front** face | **30 × 44** |
-| Back centre | the **back** face | **72 × 44** |
+| Leg | Faces ledged | Tenon | Bearing |
+|---|---|---|---|
+| Front left / front right | the **side** face and the **front** face | **one 18 × 44 tab**, on the inner strip | **2304 mm²** — outer strip 18 × 86, inner strip 18 × 42 |
+| Back centre | the **back** face | **two 18 × 44 tabs**, 36 apart | **1512 mm²** — two strips of 18 × 42 |
+
+🔴 **The slot runs the leg's full height, so it passes through the shoulder and the tenon too.** That
+is deliberate: stopping it at the upper grid would leave a **10 mm bridge** of laminated plywood
+spanning the slot and pretending to be the surface the box bears on. So a tenon is whichever **strips**
+stand inside the ledge — one on a corner leg, two at the back centre, never the leg's full width.
+
+**Four holes in the bottom skin, not three**, each a tab plus 1 a side: **20 × 46**. The back centre's
+pair have a 36 island between them which bears nothing, since it sits over the slot — one hole
+spanning both would work as well and be easier to cut straight.
 
 **Trim all five legs to the same 72 × 86 after the glue dries** — so the two corner tenon holes are
 identical and come off one setup, and the back one differs only in being the full 72 wide. The older
