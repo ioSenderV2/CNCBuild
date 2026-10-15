@@ -47,7 +47,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [What a millimetre of error actually costs](machine/assembly.md#what-a-millimetre-of-error-actually-costs)
   - [The three posts](machine/assembly.md#the-three-posts)
     - [What the shoulder carries, and what the tenon carries](machine/assembly.md#what-the-shoulder-carries-and-what-the-tenon-carries)
-  - [Glue up — the order, and the one step that cannot be undone](machine/assembly.md#glue-up-the-order-and-the-one-step-that-cannot-be-undone)
+  - [Glue up — the order, and why the top stays loose](machine/assembly.md#glue-up-the-order-and-why-the-top-stays-loose)
   - [Sand ports — one per bay, through both skins](machine/assembly.md#sand-ports-one-per-bay-through-both-skins)
   - [The base](machine/assembly.md#the-base)
     - [What the base is](machine/assembly.md#what-the-base-is)

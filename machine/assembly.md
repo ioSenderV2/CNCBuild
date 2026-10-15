@@ -856,7 +856,7 @@ into the tenons.** Gravity and 99 mm of engagement hold the box, and the strap h
 
 **The box is not otherwise fastened to the posts.** Gravity and 99 mm of tenon engagement hold it.
 
-### Glue up — the order, and the one step that cannot be undone
+### Glue up — the order, and why the top stays loose
 
 The six glue joints and what each one carries are in
 [`drawings/torsion-box-construction.html`](drawings/torsion-box-construction.html), chapter 5, with
@@ -867,17 +867,21 @@ as well is a third constraint that has to agree with the other two across sixtee
 sixteen crossings. A rib end half a millimetre shy is harmless now and would be a part that will not
 seat.
 
-The order is here because getting it wrong is not recoverable:
+🔴 **The top skin is not glued until the whole machine is proven.** That is the shape of this order
+and it is his: everything up to the top goes together permanently, the top is laid in on **four
+temporary screws**, and the box is **not sealed** until the entire assembly — the CNC on top of it
+included — has been verified. Nothing before that point is a gamble, and the one step that used to be
+irreversible stops being one.
 
 1. **Dry-assemble the grid on the flat reference** — four ribs each way into the perimeter webs.
    Press every crossing flat and check it seats. An egg crate self-jigs, so this is the squareness
    check as well.
-2. **Glue the grid to the bottom skin**, standing on the reference. That skin's three tenon holes
-   are already cut.
-3. 🔴 **Fit the fin angles' T-nuts into the top skin from underneath, BEFORE the top skin goes
-   down.** There is no access afterwards, ever, and the only fix then is a hole in the box.
-4. **Glue the perimeter webs, two Dominos at each corner**, then the **outer laminations** on their
-   own pins, the tongues capping the skins' end grain. **Pull each lamination down with 1½"
+2. **Glue the egg crate and the perimeter webs as one assembly**, two Dominos at each corner.
+3. **Glue and screw the bottom skin on**, with the assembly still on the reference. That skin's four
+   tenon holes are already cut.
+4. **When it is dry, flip the box over** so the bottom is down and the open side is up.
+5. **Glue the outer laminations on**, the tongues capping the bottom skin's end grain and standing
+   proud of where the top skin will sit. **Pull each lamination down with 1½"
    countersunk screws driven from inside the cavity**, through the 18 web into the 24 tongue — they
    are the clamping pressure while the glue dries, on all four walls.
 
@@ -886,11 +890,21 @@ The order is here because getting it wrong is not recoverable:
    the standing plates bolt against. A 1¾" would come **through** it by 2.5.
 
    The screws cannot foul the plate bolts: these sit in the **cavity**, between the skins, and the
-   tongue's bolt line is **30 above the top skin**.
-5. **Glue the top skin on and clamp it hard onto the rib edges.** Screws through the skin into the
-   ribs give uniform pressure and can stay in; the 52" parallel clamps go across the top, **one over
-   each rib**, so the pressure lands on structure rather than on unsupported skin.
-6. **Sand last, on site**, through the top ports.
+   tongue's bolt line is **30 above the top skin**. **The cavity is open at this stage**, which is
+   what makes driving them from inside straightforward.
+6. **Lay the top skin in and hold it with four temporary screws.** It drops between the tongues,
+   which stand 60 proud of it. **Do not glue it.**
+7. **Build the machine on it and verify the whole assembly.** Everything above the box is reversible
+   while the top is only screwed.
+8. **Only then seal it**: fit the fin angles' T-nuts into the top skin from underneath, glue the top
+   on and clamp it hard onto the rib edges — screws through the skin into the ribs for uniform
+   pressure, and the 52" parallel clamps across the top **one over each rib**, so the pressure lands
+   on structure rather than on unsupported skin.
+9. **Sand last**, through the top ports.
+
+**The T-nuts stop being a trap.** They still have to go in before the top skin is **glued**, but with
+the top only screwed down they can be fitted at any point up to that — lift it, drop them in, put it
+back. That was the single step in this build with no way back, and this order removes it.
 
 ### Sand ports — one per bay, through both skins
 
