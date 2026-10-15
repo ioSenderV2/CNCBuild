@@ -877,7 +877,16 @@ The order is here because getting it wrong is not recoverable:
 3. 🔴 **Fit the fin angles' T-nuts into the top skin from underneath, BEFORE the top skin goes
    down.** There is no access afterwards, ever, and the only fix then is a hole in the box.
 4. **Glue the perimeter webs, two Dominos at each corner**, then the **outer laminations** on their
-   own pins, the tongues capping the skins' end grain.
+   own pins, the tongues capping the skins' end grain. **Pull each lamination down with 1½"
+   countersunk screws driven from inside the cavity**, through the 18 web into the 24 tongue — they
+   are the clamping pressure while the glue dries, on all four walls.
+
+   **1½" is the right length and nothing longer is.** Head flush with the web's inner face, a 38.1
+   screw puts **20.1 into the 24 tongue and leaves 3.9** before the outer face — which is the face
+   the standing plates bolt against. A 1¾" would come **through** it by 2.5.
+
+   The screws cannot foul the plate bolts: these sit in the **cavity**, between the skins, and the
+   tongue's bolt line is **30 above the top skin**.
 5. **Glue the top skin on and clamp it hard onto the rib edges.** Screws through the skin into the
    ribs give uniform pressure and can stay in; the 52" parallel clamps go across the top, **one over
    each rib**, so the pressure lands on structure rather than on unsupported skin.

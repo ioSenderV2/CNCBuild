@@ -805,7 +805,13 @@ TOP SKIN GOES DOWN.</b> There is no access afterwards &mdash; ever &mdash; and t
 only fix then is a hole in the box. <b>It is the one step here that cannot be
 undone.</b> Nothing goes into the post tenons</li>
 <li><b>Glue the perimeter webs</b>, two Dominos at each corner, <b>then the outer
-laminations</b> on their own pins, the tongues capping the skins' end grain.</li>
+laminations</b> on their own pins, the tongues capping the skins' end grain.
+<b>Pull each lamination down with 1&frac12;" countersunk screws from inside the
+cavity</b>, through the {web:g} web into the {v['T_BOX_TONGUE']:g} tongue &mdash;
+that is the clamping pressure while the glue dries, on all four walls.
+<b>Nothing longer</b>: head flush with the web, 38.1 leaves <b>3.9</b> before the
+tongue's outer face, which is the face the standing plates bolt against, and a
+1&frac34;" comes through it by 2.5</li>
 <li><b>Glue the top skin on and clamp it hard onto the rib edges.</b> Screws
 through the skin into the ribs give uniform pressure and can stay in; the 52 inch
 parallel clamps go across the top, <b>one over each rib</b>, so the pressure lands
