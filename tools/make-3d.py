@@ -503,7 +503,7 @@ def main() -> int:
     # the back shear wall. Drawn at the same stations as the front pair.
     for nm, x0, x1 in (("Leg, rear left", web - ledge, web + tcx),
                        ("Leg, rear right", W - web - tcx, W - web + ledge)):
-        box(nm, "base", 0x7A5230, x0, web - ledge, floor_z, x1, web + tb,
+        box(nm, "base", 0x8A5A2B, x0, web - ledge, floor_z, x1, web + tb,
             -v["BOX_THK"],
             d=f"laminated plywood leg, {pwx:g} x {pwy:g} - carries the grids and "
               f"the back shear wall, NOT the box")
@@ -534,14 +534,18 @@ def main() -> int:
     # The leg notches are not drawn, for the same reason the rib notches are not:
     # an 18-deep housing removes no envelope, and drawing it would only clutter
     # the one view that shows the frame's layout.
+    # EVERY PIECE ITS OWN COLOUR - his, 2026-10-15, so the boundaries read in a
+    # frame where almost everything is the same 36 of the same plywood. The
+    # wall's lip is the ONE exception: it shares the wall's colour because it is
+    # the same sheet, not a separate piece.
     for which, z0, z1 in grids:
         for x0, x1 in ((bx0, bx0 + gm_t), (bx1 - gm_t, bx1)):
-            box(f"Grid rail, fore-aft ({which})", "base", 0x8B6A3A,
+            box(f"Grid rail, fore-aft ({which})", "base", 0x3C7DA5,
                 x0, by0 + housed, z0, x1, by1 - housed, z1,
                 d=f"{gm_t:g} x {gm_h:g} on edge - it fills the legs' middle slot "
                   f"and butts the cross rails' inner faces")
         for nm, y0, y1 in (("back", by0, by0 + gm_t), ("front", by1 - gm_t, by1)):
-            box(f"Grid rail, {nm} ({which})", "base", 0x8B6A3A,
+            box(f"Grid rail, {nm} ({which})", "base", 0x3F8F5B,
                 bx0, y0, z0, bx1, y1, z1,
                 d=f"{gm_t:g} x {gm_h:g} on edge, FULL WIDTH - outer {housed:g} "
                   f"housed in the legs, inner {housed:g} spanning between them")
@@ -560,7 +564,7 @@ def main() -> int:
     # the wall's end face finishes flush with the rail's outer face. Drawn as
     # the body plus the lip over the rail, which is what the notch leaves.
     sw_z0, sw_z1 = grid_lo_bot, grid_hi_top
-    box("Shear wall, back", "base", 0xC9A66B,
+    box("Shear wall, back", "base", 0xD4793B,
         bx0, by0, sw_z0, bx1, by0 + gm_t, sw_z1,
         d="rear left leg to rear right leg, taking in the back centre one - "
           "screwed to the back faces of all three")
@@ -579,6 +583,24 @@ def main() -> int:
         d="what the two front notches leave - it finishes flush with the front "
           "rails' outer faces. The lower notch SITS ON its rail; two long screws "
           "through each rail into the wall's end")
+
+    # FILLER BLOCKS in the four CORNER legs' slots, between the grids - his,
+    # 2026-10-15. The slot is full height and carries a rail at each grid, so
+    # without these the leg is two 18 planks BASE_VOLUME_H tall joined only top
+    # and bottom, and two unconnected planks buckle independently where a
+    # built-up section does not. Out of the leftover strip material.
+    #
+    # The rear middle leg gets none: the central wall is in its slot already,
+    # which is the same job done by a part that was going in anyway.
+    corner_legs = [r for i, r in enumerate(leg_rects) if i != 2]
+    slot_in = (pwx - gm_t) / 2               # the slot is the middle two strips
+    for px0, px1, py0, py1 in corner_legs:
+        box("Leg filler block", "base", 0x8E6FB0,
+            px0 + slot_in, py0, grid_lo_bot + gm_h,
+            px0 + slot_in + gm_t, py1, grid_hi_top - gm_h,
+            d=f"{gm_t:g} x {py1 - py0:g}, {v['BASE_VOLUME_H']:g} tall "
+              f"- it closes the leg's slot between the grids so the two outer "
+              f"strips act as one section")
 
     # ---- the perimeter inner webs ----------------------------------------
     # The INNER lamination of each wall, between the skins. It stays 19 while

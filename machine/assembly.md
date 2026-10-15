@@ -917,6 +917,11 @@ real weakness, racking, where a bolt through a face does not. Three things to co
 3. **Keep every gap well clear of the top**, where the ledge and the tenon are cut and the geometry
    assumes solid material.
 
+NOTE: **In the 3D model every base piece has its own colour** — rear legs brown, fore-aft rails blue,
+cross rails green, the central wall tan, the back wall orange, the filler blocks purple — because
+nearly every part of this frame is the same 36 of the same plywood and the boundaries are the thing
+worth seeing. The wall's **lip shares the wall's colour**: it is the same sheet, not another piece.
+
 #### What the base is
 
 **Two grids that locate and constrain all five legs** — his, 2026-10-15. That is the whole
@@ -1002,11 +1007,15 @@ rails rather than crossing them. **The only cutting a rail ever takes is screw h
 stating once as a rule rather than five times as a detail, because it is what makes the frame a frame
 — every cross rail runs the full width and every fore-aft rail runs between them, in both grids.
 
-OPEN: **A full-height slot leaves each corner leg as two 18 planks over the clear volume.** The slot
-carries a rail at each grid and nothing in the 564 between, so there each leg is two strips 36 apart
-joined only at top and bottom. The load is trivial — about 190 lb a leg — but two unconnected planks
-buckle independently where a built-up section would not. **A filler block in the slot between the
-grids closes it, out of the leftover strip material**, and it costs nothing but deciding to do it.
+#### A filler block in each corner leg
+
+**Four of them, 36 × 86 × 564, out of the leftover strip material.** The slot runs the leg's full
+height and carries a rail at each grid, so without a filler each corner leg is two 18 planks 36 apart
+joined only at top and bottom over the clear volume. The load is trivial — about 190 lb a leg — but
+**two unconnected planks buckle independently where a built-up section does not.**
+
+**The rear middle leg gets none**: the central wall is already in its slot, which is the same job done
+by a part that was going in anyway.
 
 **The same 36 is wanted at the front by both grids, so there are two notches** — his, and it is the
 consistent answer: the rails stay whole at both levels and the wall gives way twice. The lip between
