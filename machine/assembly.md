@@ -954,18 +954,33 @@ depth is really being chosen against.
 **The central wall is two sheets of 18 — 36, the same as a grid member.** That is not a coincidence
 and it is what makes the back joint disappear.
 
+🔴 **The central wall IS the centreline fore-aft member, and there is no rail there at either level.**
+It **starts at the bottom of the lower grid — where a centre rail would have been — and runs all the
+way up to the top of the upper one**, so it is the centreline member at both grids and everything
+between them: **764 tall**, against a rail's 100. So each grid is a plain rectangle of **two fore-aft
+rails and two cross rails**, and the wall carries the middle.
+
+**The fore-aft rails run full length and pass through the legs; the cross rails run between them.** A
+cross rail cannot also pass through a leg at that height — the leg has one slot and the fore-aft rail
+is in it.
+
 #### How the three shear-wall joints actually go
 
 | | |
 |---|---|
-| **Central wall into the rear middle leg** | 🔴 **There is no joint.** The wall's **two sheets continue as the middle two laminations of that leg** — the leg's outer two strips sandwich them. One continuous piece from the front of the base into the leg |
+| **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
 | **Back wall to the legs** | **Screwed to the back faces of all three rear legs.** A face joint, nothing let in |
-| **Central wall at the front** | **The WALL'S END IS NOTCHED and the rail is not touched** — his, and it settles which piece gives way. The notch lets the wall sit on the cross rail, the wall's end face finishes **flush with the outside of the rail**, and **two long screws go through the rail into the end of the wall**. The only work on the rail is drilling for those two screws |
+| **Central wall at the front** | **A notch in the wall's front LOWER corner, 36 across by 100 up**, so it goes over the front rail: the notch shoulder sits on the rail's top edge and the wall's end face finishes **flush with the outside of the rail**. **Two long screws through the rail into the end of the wall.** The rail is not touched but for those two holes |
 
-FLAG: **The continuity at the back reorders the build, and it is the one thing here that cannot be
-fixed later.** The rear middle leg **cannot be laminated as a part before the wall exists** — its
-middle two strips *are* the wall. So that leg is built **with** the central wall rather than before
-it, and the "five legs, then the base" order holds for the other four only.
+**All five legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
+build order simple: nothing has to be inserted while the glue is wet, so "five legs, then the base"
+holds for all five.
+
+| | |
+|---|---|
+| **Cut each spacer from the stock that will fill that slot** | an offcut of the rail, an offcut of the wall. Then the slot fits what goes in it by construction, rather than by measurement |
+| **Keep glue off the spacer** | wax or tape it. A spacer glued into its own slot turns a 20-minute job into a chisel job |
+| **Spacer the full depth of the slot** | a short spacer lets the outer strips bow inward under clamp pressure, and the slot closes where nothing was holding it |
 
 NOTE: **The rail's through mortise and the wall both want the leg's middle two strips.** Where the
 fore-aft rail passes through the rear middle leg, the **wall** is what gets notched for it — the same
@@ -978,10 +993,11 @@ notched to let it through; the only cutting a rail ever takes is two screw holes
 stating as a rule rather than three times as a detail, because it is what makes the frame a frame —
 every rail is continuous end to end in both grids.
 
-OPEN: **The front notch is not in the 3D model yet.** The model draws the central wall as a plain
-sheet between the two grids, which is right in plan and wrong at the front end. **It needs one figure
-— how far up the notch goes** — and then the wall, its lip over the rail and the two screws can all be
-drawn.
+OPEN: **The same 36 is wanted twice at the front, and only the bottom is settled.** At the lower grid
+the notch sorts it out. At the **upper** grid the wall and the **upper front cross rail** both want
+that front 36 — so either the wall takes a second notch at its front top corner, or the upper front
+rail stops at the wall and butts it either side. The model draws the lip **stopping under the upper
+grid** rather than inventing one of those.
 
 | Member | |
 |---|---|

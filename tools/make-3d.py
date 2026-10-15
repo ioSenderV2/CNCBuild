@@ -509,43 +509,65 @@ def main() -> int:
               f"the back shear wall, NOT the box")
         leg_rects.append((x0, x1, web - ledge, web + tb))
 
-    # Grid members, on edge. THE THREE FORE-AFT RAILS RUN FULL LENGTH because
-    # they pass THROUGH the legs as a through tenon left open at glue-up; the
-    # cross rails therefore come in SEGMENTS between them, which is what a real
-    # frame does and what stops this drawing solids inside each other.
+    # Grid members, on edge: TWO fore-aft rails and TWO cross rails, a plain
+    # rectangle. FLAG: THERE IS NO CENTRE FORE-AFT RAIL - his correction
+    # 2026-10-15, and it is the right one: the central SHEAR WALL is the
+    # centreline fore-aft member, and standing the full BASE_VOLUME_H between
+    # the grids it is a far deeper beam than a gm_h rail could ever be. A rail
+    # there would be a second member doing a job already done, in the one place
+    # the wall has to pass.
+    #
+    # The fore-aft rails run FULL LENGTH because they pass THROUGH the legs as a
+    # through tenon left open at glue-up. The cross rails run BETWEEN them: a
+    # cross rail cannot also pass through a leg at the same height, because the
+    # leg has one slot and the fore-aft rail is in it.
     bx0, bx1 = web - ledge, W - web + ledge          # the base's outer envelope
     by0, by1 = web - ledge, D - web + ledge
-    fore_aft = ((bx0, bx0 + gm_t), (W / 2 - gm_t / 2, W / 2 + gm_t / 2),
-                (bx1 - gm_t, bx1))
     for which, z0, z1 in grids:
-        for x0, x1 in fore_aft:
+        for x0, x1 in ((bx0, bx0 + gm_t), (bx1 - gm_t, bx1)):
             box(f"Grid rail, fore-aft ({which})", "base", 0x8B6A3A,
                 x0, by0, z0, x1, by1, z1,
                 d=f"{gm_t:g} x {gm_h:g} plywood lamination on edge, full length "
                   f"- it passes THROUGH the legs")
-        for (_, xa), (xb, _) in zip(fore_aft, fore_aft[1:]):
-            for nm, y0, y1 in (("back", by0, by0 + gm_t),
-                               ("front", by1 - gm_t, by1)):
-                box(f"Grid rail, {nm} ({which})", "base", 0x8B6A3A,
-                    xa, y0, z0, xb, y1, z1,
-                    d=f"{gm_t:g} x {gm_h:g} on edge, between the fore-aft rails")
+        for nm, y0, y1 in (("back", by0, by0 + gm_t), ("front", by1 - gm_t, by1)):
+            box(f"Grid rail, {nm} ({which})", "base", 0x8B6A3A,
+                bx0 + gm_t, y0, z0, bx1 - gm_t, y1, z1,
+                d=f"{gm_t:g} x {gm_h:g} on edge, between the two fore-aft rails "
+                  f"- the central wall's notched end sits on the front one")
 
     # The two shear walls, a T in plan: the centreline one runs back to the back
     # centre leg, which is the box's own rear support, so the wall lands under
     # the load it braces. They are what leaves the left and right volumes open.
-    # The walls sit BETWEEN the grids in Z, so they never overlap a rail. The
-    # centreline one stops at the back wall's inner face rather than running
-    # through it - the T is a joint, not two solids in the same place.
-    sw_z0, sw_z1 = grid_lo_bot + gm_h, grid_hi_top - gm_h
+    # THE CENTRELINE WALL RUNS THE BASE'S WHOLE HEIGHT - his, 2026-10-15: it
+    # starts at the BOTTOM of the lower grid, where a centre rail would have
+    # been, and goes all the way up to the top of the upper one. That is why
+    # there is no centre rail at either level: the wall IS the centreline member
+    # at both grids and everything between them.
+    #
+    # It is NOTCHED AT ITS FRONT LOWER CORNER to go over the front rail - gm_t
+    # across by gm_h up, so the notch shoulder sits on the rail's top edge and
+    # the wall's end face finishes flush with the rail's outer face. Drawn as
+    # the body plus the lip over the rail, which is what the notch leaves.
+    sw_z0, sw_z1 = grid_lo_bot, grid_hi_top
     box("Shear wall, back", "base", 0xC9A66B,
         bx0, by0, sw_z0, bx1, by0 + gm_t, sw_z1,
         d="rear left leg to rear right leg, taking in the back centre one - "
-          "glue plus screws at about 150 all the way round")
+          "screwed to the back faces of all three")
     box("Shear wall, centreline", "base", 0xC9A66B,
-        W / 2 - gm_t / 2, by0 + gm_t, sw_z0, W / 2 + gm_t / 2, by1, sw_z1,
-        d="fore-aft on the centreline, from the front back to the back centre "
-          "leg - which is the box's own rear support, so it lands under the "
-          "load it braces")
+        W / 2 - gm_t / 2, by0 + gm_t, sw_z0, W / 2 + gm_t / 2, by1 - gm_t, sw_z1,
+        d="fore-aft on the centreline, the base's full height, from the front "
+          "back to the back centre leg - which is the box's own rear support, "
+          "so it lands under the load it braces")
+    # OPEN: THE LIP STOPS UNDER THE UPPER GRID. The front 36 is wanted by the
+    # wall AND by the upper front rail, exactly as it is at the bottom, and only
+    # the bottom notch has been specified - so this is drawn short rather than
+    # inventing a second notch.
+    box("Shear wall lip, over the front rail", "base", 0xC9A66B,
+        W / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
+        W / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
+        d="what the front lower notch leaves - it sits on the front rail and "
+          "finishes flush with its outer face. Two long screws through the rail "
+          "into the wall's end")
 
     # ---- the perimeter inner webs ----------------------------------------
     # The INNER lamination of each wall, between the skins. It stays 19 while
