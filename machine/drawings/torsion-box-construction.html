@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>CNCBuild &mdash; Torsion Box Construction</title>
+<style>
+ @page { size: letter portrait; margin: 14mm; }
+ body { font: 10.5pt "Segoe UI", sans-serif; color: #111; max-width: 190mm; }
+ h1 { font-size: 15pt; margin: 0 0 2mm; }
+ h2 { font-size: 12pt; margin: 7mm 0 2mm; border-bottom: 1px solid #bbb; }
+ h3 { font-size: 10pt; margin: 4mm 0 1mm; color: #444; }
+ table { border-collapse: collapse; width: 100%; margin: 2mm 0 4mm; }
+ td, th { border: 1px solid #ccc; padding: 1.4mm 2.2mm; }
+ th { background: #eee; text-align: left; }
+ td.n { text-align: right; font-variant-numeric: tabular-nums; }
+ tr.grp td { background: #f3f3f3; font-weight: 600; }
+ .bad { color: #a00; }
+ .note { background: #fff8e1; border-left: 3px solid #e0a800;
+          padding: 2mm 3mm; margin: 3mm 0; }
+ .nest { page-break-inside: avoid; margin: 0 0 4mm; }
+ ol.toc { margin: 2mm 0 5mm; padding-left: 6mm; }
+ ol.toc a { color: #06c; }
+</style></head><body>
+<h1>Torsion Box Construction</h1>
+<p>Box <b>1211</b> square by <b>142</b> deep. All sizes
+in mm. <b>Every figure on this sheet is generated from the dimension registry</b>
+&mdash; if one disagrees with the registry, this sheet is stale and gets rebuilt
+rather than edited.</p>
+<ol class="toc">
+<li><a href="#parts">Parts</a></li>
+<li><a href="#sheets">Sheets</a> and <a href="#nesting">nesting</a></li>
+<li><a href="#notches">Notches</a></li>
+<li><a href="#ports">Sand ports</a></li>
+<li><a href="#glue">Glue up</a></li>
+<li><a href="#not-here">Not on this list</a></li>
+</ol>
+
+<div class="note"><b>These are the sheets in hand</b> &mdash; 24 and
+18, micced to five thousandths. Sheet sold at a nominal
+commonly runs under and varies between sheets, so <b>still test-cut one notch on
+scrap from the same sheet</b> before cutting the set.</div>
+
+<h2 id="parts">1 &mdash; Parts</h2>
+<table><tr><th>Part</th><th>Long</th><th>Short</th><th>Off</th></tr>
+<tr class="grp"><td colspan="4">24 mm</td></tr><tr><td>Top skin</td><td class=n>1211.0</td><td class=n>1211.0</td><td class=n>1</td></tr><tr><td>Side lamination</td><td class=n>1204.7</td><td class=n>202.0</td><td class=n>2</td></tr><tr><td>Back lamination, long half</td><td class=n>630.0</td><td class=n>202.0</td><td class=n>1</td></tr><tr><td>Back lamination, short half</td><td class=n>629.0</td><td class=n>202.0</td><td class=n>1</td></tr><tr><td>Front cap, long half</td><td class=n>630.0</td><td class=n>142.0</td><td class=n>1</td></tr><tr><td>Front cap, short half</td><td class=n>629.0</td><td class=n>142.0</td><td class=n>1</td></tr><tr class="grp"><td colspan="4">18 mm</td></tr><tr><td>Bottom skin</td><td class=n>1211.0</td><td class=n>1211.0</td><td class=n>1</td></tr><tr><td>Web, back and front</td><td class=n>1211.0</td><td class=n>100.0</td><td class=n>2</td></tr><tr><td>Web, sides</td><td class=n>1175.0</td><td class=n>100.0</td><td class=n>2</td></tr><tr><td>Rib, fore-aft</td><td class=n>1175.0</td><td class=n>100.0</td><td class=n>4</td></tr><tr><td>Rib, across</td><td class=n>1175.0</td><td class=n>100.0</td><td class=n>4</td></tr></table>
+
+<h2 id="sheets">2 &mdash; Sheets</h2>
+<p>Guillotine-packed with a <b>1.6 mm</b> kerf and <b>1.6 mm</b> off
+each factory edge &mdash; a Festool track saw on Baltic birch, which is all that
+gets removed. <b>The counts are an upper bound</b>: offcuts are never merged
+back together, so a careful nest can still do better.</p>
+<table><tr><th>Sheet</th><th>Thickness</th><th>Needs</th></tr>
+<tr><td>4 x 8</td><td class=n>24 mm</td><td>1 sheet(s)</td></tr><tr><td>4 x 8</td><td class=n>18 mm</td><td>1 sheet(s)</td></tr><tr><td>5 x 5</td><td class=n>24 mm</td><td>2 sheet(s)</td></tr><tr><td>5 x 5</td><td class=n>18 mm</td><td>2 sheet(s)</td></tr></table>
+
+<h2 id="nesting">Nesting &mdash; 4 x 8</h2>
+<p>To scale, sheet length left to right. The dashed red line is the
+<b>1.6 mm</b> off each factory edge; everything sits inside it.
+Offcut is whatever stays white.</p>
+<div class="nest"><h3>24 mm &mdash; sheet 1</h3><svg viewBox="0 0 256.0 128.0" width="100%" style="max-width:256px"><rect x="0" y="0" width="256.0" height="128.0" fill="#fcfcfc" stroke="#777"/><rect x="0.2" y="0.2" width="255.7" height="127.7" fill="none" stroke="#c00" stroke-dasharray="4 3" stroke-width="0.7"/><rect x="0.2" y="0.2" width="127.2" height="127.2" fill="#cfe3f7" stroke="#333" stroke-width="0.6"/><text x="63.7" y="66.3" text-anchor="middle" font-size="7">Top skin<tspan font-size="5.5" fill="#555">  1211&#215;1211</tspan></text><rect x="127.5" y="0.2" width="21.2" height="126.5" fill="#fbe3cd" stroke="#333" stroke-width="0.6"/><rect x="148.9" y="0.2" width="21.2" height="126.5" fill="#fbe3cd" stroke="#333" stroke-width="0.6"/><rect x="170.2" y="0.2" width="66.1" height="21.2" fill="#e8dcf2" stroke="#333" stroke-width="0.6"/><text x="203.3" y="13.4" text-anchor="middle" font-size="7">Back lamination, long half<tspan font-size="5.5" fill="#555">  630&#215;202</tspan></text><rect x="170.2" y="21.5" width="66.0" height="21.2" fill="#fdf0c4" stroke="#333" stroke-width="0.6"/><text x="203.3" y="34.8" text-anchor="middle" font-size="7">Back lamination, short half<tspan font-size="5.5" fill="#555">  629&#215;202</tspan></text><rect x="170.2" y="42.9" width="14.9" height="66.1" fill="#d6eef0" stroke="#333" stroke-width="0.6"/><rect x="185.3" y="42.9" width="14.9" height="66.0" fill="#f6d8de" stroke="#333" stroke-width="0.6"/></svg></div><div class="nest"><h3>18 mm &mdash; sheet 1</h3><svg viewBox="0 0 256.0 128.0" width="100%" style="max-width:256px"><rect x="0" y="0" width="256.0" height="128.0" fill="#fcfcfc" stroke="#777"/><rect x="0.2" y="0.2" width="255.7" height="127.7" fill="none" stroke="#c00" stroke-dasharray="4 3" stroke-width="0.7"/><rect x="0.2" y="0.2" width="127.2" height="127.2" fill="#d8efd4" stroke="#333" stroke-width="0.6"/><text x="63.7" y="66.3" text-anchor="middle" font-size="7">Bottom skin<tspan font-size="5.5" fill="#555">  1211&#215;1211</tspan></text><rect x="127.5" y="0.2" width="10.5" height="127.2" fill="#dfe3e8" stroke="#333" stroke-width="0.6"/><rect x="138.2" y="0.2" width="10.5" height="127.2" fill="#dfe3e8" stroke="#333" stroke-width="0.6"/><rect x="148.8" y="0.2" width="10.5" height="123.4" fill="#e9f0cf" stroke="#333" stroke-width="0.6"/><rect x="159.5" y="0.2" width="10.5" height="123.4" fill="#e9f0cf" stroke="#333" stroke-width="0.6"/><rect x="170.2" y="0.2" width="10.5" height="123.4" fill="#f2ded0" stroke="#333" stroke-width="0.6"/><rect x="180.8" y="0.2" width="10.5" height="123.4" fill="#f2ded0" stroke="#333" stroke-width="0.6"/><rect x="191.5" y="0.2" width="10.5" height="123.4" fill="#f2ded0" stroke="#333" stroke-width="0.6"/><rect x="202.2" y="0.2" width="10.5" height="123.4" fill="#f2ded0" stroke="#333" stroke-width="0.6"/><rect x="212.8" y="0.2" width="10.5" height="123.4" fill="#cfe3f7" stroke="#333" stroke-width="0.6"/><rect x="223.5" y="0.2" width="10.5" height="123.4" fill="#cfe3f7" stroke="#333" stroke-width="0.6"/><rect x="234.2" y="0.2" width="10.5" height="123.4" fill="#cfe3f7" stroke="#333" stroke-width="0.6"/><rect x="244.8" y="0.2" width="10.5" height="123.4" fill="#cfe3f7" stroke="#333" stroke-width="0.6"/></svg></div>
+
+<h2 id="notches">3 &mdash; Notches</h2>
+<p>Egg crate, continuous both ways, half-depth notches at every crossing. Every
+notch is <b>18 wide</b> and <b>50 deep</b>, and <b>all eight ribs are
+the same part</b> &mdash; same length, same four offsets.</p>
+
+<h3>Cut all eight at once, on the sliding miter saw</h3>
+<p>Stack the eight ribs face to face <b>on edge</b> &mdash; 144 across
+&mdash; clamp them as one block, set the depth stop to <b>50</b>, and
+nibble each notch out in overlapping slides. Four notch positions, six or seven
+passes each.</p>
+<ol>
+<li><b>Register the ends against a stop block, and do not unclamp until all four
+notches are cut.</b> The stack is one part for as long as it is clamped; the
+moment a rib shifts, that rib's notches move and nothing tells you.</li>
+<li><b>A sacrificial piece of the same stock on each face of the stack.</b> It
+takes the blade's exit tear-out, and it gives the clamps something to crush
+instead of a finished rib.</li>
+<li><b>Plywood sub-base on the saw table</b>, so the 50 is measured from a
+continuous flat surface and not across the saw's own kerf slot.</li>
+<li><b>Tall fence.</b> The ribs stand 100 on edge, which is taller
+than the saw's own fence.</li>
+<li><b>Cut a test notch in an offcut first and try a real rib in it.</b> That
+sets the width &mdash; nibbling means 18 is where you <i>stop</i>, so it is
+the one thing on this page that does not depend on a blade being the right
+thickness. Check the same test notch for a <b>flat floor</b>: the cut must be
+50 deep all the way across, and a floor that comes out dished means the
+blade is dropping rather than sliding through the cut.</li>
+<li><b>Overlap each pass by about a millimetre</b> and the floor needs no
+cleanup.</li>
+</ol>
+<p>Set the depth stop against a <b>test cut that you then measure</b>, not off the
+screw.</p>
+<p><b>Prove the depth on a practice pair first.</b> Cut two offcuts the way the
+eight will be cut, flip one, turn it 90&deg; and cross them at <b>every</b>
+station &mdash; <b>pressed flat against the reference</b>, because a released rib
+bows enough to lift a station off the table and show a step that is not in the
+part. Pressed flat, a correct pair reads even at every station: both bottom edges
+down, both top edges flush, notch floors just meeting.</p>
+<p>Notch depth <b>half, and err over rather than under</b>. The fit across the
+notch is a slip fit, not a clearance: too tight splits the rib, too loose leaves
+no glue line.</p>
+<p><b>The notches are the layout</b> &mdash; a rib sits where the mating rib's
+notch puts it, not at a measured position &mdash; so of the four ways to be a
+millimetre out, only one touches the structure:</p>
+<table>
+<tr><th>Error</th><th>What happens</th></tr>
+<tr><td><b>A position off by 1, on all eight</b></td><td>Nothing jams. The eight
+are identical, so the grid stays self-consistent and that rib line lands 1 off
+the drawing. Bays go 220 and 218</td></tr>
+<tr><td><b>One rib of the eight off</b></td><td>That rib will not drop in &mdash;
+pare or recut it. This is what the stop block and the do-not-unclamp rule are
+for</td></tr>
+<tr><td><b>A notch too wide by 1</b></td><td>Slop at every crossing, so the grid
+stops holding itself square. Square it on the reference before the skins go on.
+<b>Too narrow splits a rib</b></td></tr>
+<tr><td><b>A notch too deep by 1</b></td><td><b>Harmless, and the side to err
+on.</b> The rib stands on the bottom skin so it cannot sink - both edges still
+reach both skins, and all that is lost is notch floor to notch floor, which
+carries nothing</td></tr>
+<tr><td>&#128308; <b>A notch too shallow by 1</b></td><td><b>The only structural
+one.</b> It holds its mating rib up off the bottom skin, so the top skin bears on
+that set and sits clear of the rest of the grid</td></tr>
+<tr><td><b>A step that closes when you press the rib flat</b></td><td>Not an
+error - the rib's own bow lifting it off the reference. Check every station
+pressed flat, and measure depth on a <b>released</b> rib, never on the clamped
+stack</td></tr>
+</table>
+<p><b>So the figure to get right at setup is the depth stop &mdash; and only in
+one direction.</b> The stop block's position is forgiving, over-depth is
+forgiving, under-depth is not. <b>Aim half a millimetre over</b> and let the
+rib's bow live inside it.</p>
+<p><b>Cut all eight from the same edge, then turn four of them over.</b> One
+direction has to be notched from the top edge and the other from the bottom, and
+that costs nothing here because the notch is <i>exactly</i> half of
+100: a rib turned upside down is a rib notched from the other
+edge. The offsets do not care either &mdash; the run is symmetric end to end, so
+a rib fitted backwards still fits.</p>
+<p>So the eight stay one part right through the notching, and the only cut that
+tells a rib which way up it goes is the <b>sand relief at the bottom edge</b>,
+done afterwards on whichever edge ends up down.</p>
+<h3>Rib, fore-aft &mdash; 1175 long, 4 notches</h3><svg viewBox="-1 -1 178.2 17.0" width="100%" style="max-width:180mm"><rect x="0" y="0" width="176.2" height="15.0" fill="#f3f7fb" stroke="#333" stroke-width="0.4"/><rect x="33.45" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/><rect x="69.00" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/><rect x="104.55" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/><rect x="140.10" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/></svg><table><tr><th>Notch</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Start</td><td class=n>223</td><td class=n>460</td><td class=n>697</td><td class=n>934</td></tr><tr><td>End</td><td class=n>241</td><td class=n>478</td><td class=n>715</td><td class=n>952</td></tr></table><p>Bay at each end <b>223</b>, the three between notches <b>219</b>. Notch <b>18</b> wide, <b>50</b> deep. Every figure a whole millimetre.</p><h3>Rib, across &mdash; 1175 long, 4 notches</h3><svg viewBox="-1 -1 178.2 17.0" width="100%" style="max-width:180mm"><rect x="0" y="0" width="176.2" height="15.0" fill="#f3f7fb" stroke="#333" stroke-width="0.4"/><rect x="33.45" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/><rect x="69.00" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/><rect x="104.55" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/><rect x="140.10" y="0" width="2.70" height="7.50" fill="#fff" stroke="#333" stroke-width="0.3"/></svg><table><tr><th>Notch</th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><td>Start</td><td class=n>223</td><td class=n>460</td><td class=n>697</td><td class=n>934</td></tr><tr><td>End</td><td class=n>241</td><td class=n>478</td><td class=n>715</td><td class=n>952</td></tr></table><p>Bay at each end <b>223</b>, the three between notches <b>219</b>. Notch <b>18</b> wide, <b>50</b> deep. Every figure a whole millimetre.</p>
+<p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
+20 &times; 15, so the sand can migrate between cells.</p>
+
+<h2 id="ports">4 &mdash; Sand ports</h2>
+<p><b>25.4 through both skins, 5 &times; 5 =
+25 in each</b>, one centred in every bay. Centres from the skin's
+edge, <b>the same figures in X and Y</b> &mdash; the box is square and the grid is
+the same both ways:</p>
+<table><tr><th>Port</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+<tr><td>Centre</td><td class=n>129.5</td><td class=n>368.5</td><td class=n>605.5</td><td class=n>842.5</td><td class=n>1081.5</td></tr></table>
+
+<h3>The grid from above, with the bottom skin's ports</h3>
+<svg viewBox="-150 -240 1511 1601" width="100%" style="max-width:185mm"><rect x="0" y="0" width="1211" height="1211" fill="#fbfbf8" stroke="#333" stroke-width="2"/><rect x="0" y="0" width="1211" height="18" fill="#d8d2c4" stroke="#333" stroke-width="1.5"/><rect x="0" y="1193" width="1211" height="18" fill="#d8d2c4" stroke="#333" stroke-width="1.5"/><rect x="0" y="0" width="18" height="1211" fill="#d8d2c4" stroke="#333" stroke-width="1.5"/><rect x="1193" y="0" width="18" height="1211" fill="#d8d2c4" stroke="#333" stroke-width="1.5"/><rect x="241" y="18" width="18" height="1175" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="18" y="241" width="1175" height="18" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="478" y="18" width="18" height="1175" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="18" y="478" width="1175" height="18" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="715" y="18" width="18" height="1175" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="18" y="715" width="1175" height="18" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="952" y="18" width="18" height="1175" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><rect x="18" y="952" width="1175" height="18" fill="#e8e0cc" stroke="#333" stroke-width="1.5"/><line x1="0" y1="1006.35" x2="1211" y2="1006.35" stroke="#c00" stroke-width="3" stroke-dasharray="26 14"/><text x="1201" y="992.35" text-anchor="end" font-size="26" fill="#c00">tee track bed ends 1006.35 - the row below it is on the apron</text><rect x="-24" y="1149" width="86" height="86" fill="none" stroke="#06c" stroke-width="2.5" stroke-dasharray="20 12"/><rect x="17" y="1148" width="46" height="46" fill="#cfe0f5" stroke="#06c" stroke-width="3"/><line x1="-7" y1="1192" x2="45" y2="1192" stroke="#06c" stroke-width="2"/><line x1="19" y1="1166" x2="19" y2="1218" stroke="#06c" stroke-width="2"/><rect x="1149" y="1149" width="86" height="86" fill="none" stroke="#06c" stroke-width="2.5" stroke-dasharray="20 12"/><rect x="1148" y="1148" width="46" height="46" fill="#cfe0f5" stroke="#06c" stroke-width="3"/><line x1="1166" y1="1192" x2="1218" y2="1192" stroke="#06c" stroke-width="2"/><line x1="1192" y1="1166" x2="1192" y2="1218" stroke="#06c" stroke-width="2"/><rect x="562.5" y="-24" width="86" height="86" fill="none" stroke="#06c" stroke-width="2.5" stroke-dasharray="20 12"/><rect x="561.5" y="17" width="88" height="46" fill="#cfe0f5" stroke="#06c" stroke-width="3"/><line x1="579.5" y1="19" x2="631.5" y2="19" stroke="#06c" stroke-width="2"/><line x1="605.5" y1="-7" x2="605.5" y2="45" stroke="#06c" stroke-width="2"/><line x1="19" y1="1292" x2="1192" y2="1292" stroke="#06c" stroke-width="2.5"/><text x="605.5" y="1332" text-anchor="middle" font-size="32" fill="#06c">1173 front leg to front leg</text><line x1="1292" y1="19" x2="1292" y2="1192" stroke="#06c" stroke-width="2.5"/><text x="1310" y="605.5" font-size="32" fill="#06c">1173 front to back</text><line x1="605.5" y1="19" x2="19" y2="1192" stroke="#06c" stroke-width="1.5" stroke-dasharray="14 10"/><text x="292.25" y="605.5" text-anchor="end" font-size="30" fill="#06c">1311.5 back to each front</text><circle cx="129.5" cy="129.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="106.8" y1="129.5" x2="152.2" y2="129.5" stroke="#c00" stroke-width="1.5"/><line x1="129.5" y1="106.8" x2="129.5" y2="152.2" stroke="#c00" stroke-width="1.5"/><circle cx="368.5" cy="129.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="345.8" y1="129.5" x2="391.2" y2="129.5" stroke="#c00" stroke-width="1.5"/><line x1="368.5" y1="106.8" x2="368.5" y2="152.2" stroke="#c00" stroke-width="1.5"/><circle cx="605.5" cy="129.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="582.8" y1="129.5" x2="628.2" y2="129.5" stroke="#c00" stroke-width="1.5"/><line x1="605.5" y1="106.8" x2="605.5" y2="152.2" stroke="#c00" stroke-width="1.5"/><circle cx="842.5" cy="129.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="819.8" y1="129.5" x2="865.2" y2="129.5" stroke="#c00" stroke-width="1.5"/><line x1="842.5" y1="106.8" x2="842.5" y2="152.2" stroke="#c00" stroke-width="1.5"/><circle cx="1081.5" cy="129.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="1058.8" y1="129.5" x2="1104.2" y2="129.5" stroke="#c00" stroke-width="1.5"/><line x1="1081.5" y1="106.8" x2="1081.5" y2="152.2" stroke="#c00" stroke-width="1.5"/><circle cx="129.5" cy="368.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="106.8" y1="368.5" x2="152.2" y2="368.5" stroke="#c00" stroke-width="1.5"/><line x1="129.5" y1="345.8" x2="129.5" y2="391.2" stroke="#c00" stroke-width="1.5"/><circle cx="368.5" cy="368.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="345.8" y1="368.5" x2="391.2" y2="368.5" stroke="#c00" stroke-width="1.5"/><line x1="368.5" y1="345.8" x2="368.5" y2="391.2" stroke="#c00" stroke-width="1.5"/><circle cx="605.5" cy="368.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="582.8" y1="368.5" x2="628.2" y2="368.5" stroke="#c00" stroke-width="1.5"/><line x1="605.5" y1="345.8" x2="605.5" y2="391.2" stroke="#c00" stroke-width="1.5"/><circle cx="842.5" cy="368.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="819.8" y1="368.5" x2="865.2" y2="368.5" stroke="#c00" stroke-width="1.5"/><line x1="842.5" y1="345.8" x2="842.5" y2="391.2" stroke="#c00" stroke-width="1.5"/><circle cx="1081.5" cy="368.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="1058.8" y1="368.5" x2="1104.2" y2="368.5" stroke="#c00" stroke-width="1.5"/><line x1="1081.5" y1="345.8" x2="1081.5" y2="391.2" stroke="#c00" stroke-width="1.5"/><circle cx="129.5" cy="605.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="106.8" y1="605.5" x2="152.2" y2="605.5" stroke="#c00" stroke-width="1.5"/><line x1="129.5" y1="582.8" x2="129.5" y2="628.2" stroke="#c00" stroke-width="1.5"/><circle cx="368.5" cy="605.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="345.8" y1="605.5" x2="391.2" y2="605.5" stroke="#c00" stroke-width="1.5"/><line x1="368.5" y1="582.8" x2="368.5" y2="628.2" stroke="#c00" stroke-width="1.5"/><circle cx="605.5" cy="605.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="582.8" y1="605.5" x2="628.2" y2="605.5" stroke="#c00" stroke-width="1.5"/><line x1="605.5" y1="582.8" x2="605.5" y2="628.2" stroke="#c00" stroke-width="1.5"/><circle cx="842.5" cy="605.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="819.8" y1="605.5" x2="865.2" y2="605.5" stroke="#c00" stroke-width="1.5"/><line x1="842.5" y1="582.8" x2="842.5" y2="628.2" stroke="#c00" stroke-width="1.5"/><circle cx="1081.5" cy="605.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="1058.8" y1="605.5" x2="1104.2" y2="605.5" stroke="#c00" stroke-width="1.5"/><line x1="1081.5" y1="582.8" x2="1081.5" y2="628.2" stroke="#c00" stroke-width="1.5"/><circle cx="129.5" cy="842.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="106.8" y1="842.5" x2="152.2" y2="842.5" stroke="#c00" stroke-width="1.5"/><line x1="129.5" y1="819.8" x2="129.5" y2="865.2" stroke="#c00" stroke-width="1.5"/><circle cx="368.5" cy="842.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="345.8" y1="842.5" x2="391.2" y2="842.5" stroke="#c00" stroke-width="1.5"/><line x1="368.5" y1="819.8" x2="368.5" y2="865.2" stroke="#c00" stroke-width="1.5"/><circle cx="605.5" cy="842.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="582.8" y1="842.5" x2="628.2" y2="842.5" stroke="#c00" stroke-width="1.5"/><line x1="605.5" y1="819.8" x2="605.5" y2="865.2" stroke="#c00" stroke-width="1.5"/><circle cx="842.5" cy="842.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="819.8" y1="842.5" x2="865.2" y2="842.5" stroke="#c00" stroke-width="1.5"/><line x1="842.5" y1="819.8" x2="842.5" y2="865.2" stroke="#c00" stroke-width="1.5"/><circle cx="1081.5" cy="842.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="1058.8" y1="842.5" x2="1104.2" y2="842.5" stroke="#c00" stroke-width="1.5"/><line x1="1081.5" y1="819.8" x2="1081.5" y2="865.2" stroke="#c00" stroke-width="1.5"/><circle cx="129.5" cy="1081.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="106.8" y1="1081.5" x2="152.2" y2="1081.5" stroke="#c00" stroke-width="1.5"/><line x1="129.5" y1="1058.8" x2="129.5" y2="1104.2" stroke="#c00" stroke-width="1.5"/><circle cx="368.5" cy="1081.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="345.8" y1="1081.5" x2="391.2" y2="1081.5" stroke="#c00" stroke-width="1.5"/><line x1="368.5" y1="1058.8" x2="368.5" y2="1104.2" stroke="#c00" stroke-width="1.5"/><circle cx="605.5" cy="1081.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="582.8" y1="1081.5" x2="628.2" y2="1081.5" stroke="#c00" stroke-width="1.5"/><line x1="605.5" y1="1058.8" x2="605.5" y2="1104.2" stroke="#c00" stroke-width="1.5"/><circle cx="842.5" cy="1081.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="819.8" y1="1081.5" x2="865.2" y2="1081.5" stroke="#c00" stroke-width="1.5"/><line x1="842.5" y1="1058.8" x2="842.5" y2="1104.2" stroke="#c00" stroke-width="1.5"/><circle cx="1081.5" cy="1081.5" r="12.7" fill="#fff" stroke="#c00" stroke-width="3"/><line x1="1058.8" y1="1081.5" x2="1104.2" y2="1081.5" stroke="#c00" stroke-width="1.5"/><line x1="1081.5" y1="1058.8" x2="1081.5" y2="1104.2" stroke="#c00" stroke-width="1.5"/><line x1="0" y1="-70" x2="1211" y2="-70" stroke="#444" stroke-width="2"/><line x1="0" y1="-88" x2="0" y2="-52" stroke="#444" stroke-width="2"/><line x1="129.5" y1="-88" x2="129.5" y2="-52" stroke="#444" stroke-width="2"/><line x1="129.5" y1="-70" x2="129.5" y2="129.5" stroke="#888" stroke-width="1" stroke-dasharray="8 8"/><line x1="368.5" y1="-88" x2="368.5" y2="-52" stroke="#444" stroke-width="2"/><line x1="368.5" y1="-70" x2="368.5" y2="129.5" stroke="#888" stroke-width="1" stroke-dasharray="8 8"/><line x1="605.5" y1="-88" x2="605.5" y2="-52" stroke="#444" stroke-width="2"/><line x1="605.5" y1="-70" x2="605.5" y2="129.5" stroke="#888" stroke-width="1" stroke-dasharray="8 8"/><line x1="842.5" y1="-88" x2="842.5" y2="-52" stroke="#444" stroke-width="2"/><line x1="842.5" y1="-70" x2="842.5" y2="129.5" stroke="#888" stroke-width="1" stroke-dasharray="8 8"/><line x1="1081.5" y1="-88" x2="1081.5" y2="-52" stroke="#444" stroke-width="2"/><line x1="1081.5" y1="-70" x2="1081.5" y2="129.5" stroke="#888" stroke-width="1" stroke-dasharray="8 8"/><line x1="1211" y1="-88" x2="1211" y2="-52" stroke="#444" stroke-width="2"/><text x="64.75" y="-96" text-anchor="middle" font-size="30">129.5</text><text x="249" y="-96" text-anchor="middle" font-size="30">239</text><text x="487" y="-96" text-anchor="middle" font-size="30">237</text><text x="724" y="-96" text-anchor="middle" font-size="30">237</text><text x="962" y="-96" text-anchor="middle" font-size="30">239</text><text x="1146.25" y="-96" text-anchor="middle" font-size="30">129.5</text><text x="605.5" y="-150" text-anchor="middle" font-size="32" font-weight="600">port centres - THE SAME IN BOTH DIRECTIONS</text><text x="30" y="1259" font-size="28">web and ribs 18 - bays 223 at the ends, 219 between - ports &#216;25.4 through the bottom skin, one per bay, 25 of them</text><text x="0" y="-150" font-size="28" fill="#555">back</text><text x="0" y="1311" font-size="28" fill="#555">front - apron beyond</text></svg>
+<p><b>The steps are not equal</b> &mdash; 239 at each end of
+the row and 237 through the middle, because the end bays are
+wider. Walking it as a constant pitch puts the far port in the wrong place.</p>
+<p>The bottom port takes a <b>rubber plug fitted from below with a pull tab
+underneath</b> &mdash; nothing goes in from above and nothing is attached to it.
+Pull it to drain, push it back to seal. The sand bearing on one plug is only
+<b>76 grams</b>, so friction is all it needs.
+<b>Fill through the top ports once, at assembly, before the bed goes down</b>:
+the bed cannot come out of the assembled machine.</p>
+<p>The tee track bed covers all but the <b>front row</b> of five, which lands on
+the open apron. <b>6.35 Baltic birch over the apron on
+double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off
+the day a port is used.</p>
+
+<h2 id="glue">5 &mdash; Glue up</h2>
+<p><b>Six joints, and only the first two carry the sandwich.</b></p>
+<table>
+<tr><th>Joint</th><th>Where</th><th>What it carries</th></tr>
+<tr><td><b>Rib edge to skin</b></td><td>every rib's top edge to the top skin and
+bottom edge to the bottom skin, the full 1175 &times; 18 of
+each, both ends of all eight</td><td><b>This is the box.</b> The skins are the
+flanges and the ribs carry shear between them. Starve it anywhere and the section
+is locally gone</td></tr>
+<tr><td><b>Web edge to skin</b></td><td>the four perimeter webs, same joint, top
+and bottom edges</td><td>the same, round the perimeter</td></tr>
+<tr><td><b>Notch cheek to rib face</b></td><td>the sixteen crossings, face to
+face, 18 wide &times; 50 deep on each side of every notch</td><td>the
+<b>two-way plate action</b> &mdash; the reason this is an egg crate and not
+blocking. Face-to-face plywood, the strong orientation</td></tr>
+<tr><td><b>Tongue to web face</b></td><td>the outer lamination glued flat to the
+inner web over the whole 202 height and full length, back and
+both sides, and the front cap doing the same</td><td>makes the
+42 wall one piece, which is what lets the standing plates bolt
+through it in bearing. The biggest area in the box</td></tr>
+<tr><td><b>Tongue to skin end grain</b></td><td>the tongue caps the end grain of
+both skins rather than standing on them</td><td>closes the edge; not a load
+path</td></tr>
+<tr><td><b>Rib end to web face</b></td><td>each rib's 18 &times;
+100 end butting a perimeter web's inner face, sixteen of
+them</td><td><b>Weak by nature</b> &mdash; plywood edge onto face &mdash; and
+nothing relies on it. It is the joint the blocking scheme would have had at
+<i>every</i> junction, which is why blocking was rejected</td></tr>
+</table>
+<p><b>Two things that look like joints and are not.</b> <b>Notch floor to notch
+floor</b> &mdash; no glue reaches it and nothing asks it to carry anything, which
+is why over-depth there is free. And <b>the post tenons</b>, which are not glued
+at all: the box is lowered onto three tenons and the shoulder carries it.</p>
+
+<h3>The order, and two steps that cannot be undone</h3>
+<ol>
+<li><b>Dry-assemble the grid on the flat reference</b> &mdash; four ribs one way,
+four the other, into the perimeter webs. Press every crossing flat and check it
+seats. An egg crate self-jigs, so this is also the squareness check.</li>
+<li><b>Glue the grid to the bottom skin</b>, standing on the reference. The tenon
+holes are already cut in that skin.</li>
+<li>🔴 <b>Drive a screw into each post tenon, and fit the fin angles' T-nuts into
+the top skin from underneath. BOTH BEFORE THE TOP SKIN GOES DOWN.</b> There is no
+access to either afterwards &mdash; ever &mdash; and the only fix then is a hole
+in the box.</li>
+<li><b>Glue the perimeter webs and the outer laminations</b>, the tongues capping
+the skins' end grain.</li>
+<li><b>Glue the top skin on and clamp it hard onto the rib edges.</b> Screws
+through the skin into the ribs give uniform pressure and can stay in; the 52 inch
+parallel clamps go across the top, <b>one over each rib</b>, so the pressure lands
+on structure and not on unsupported skin.</li>
+<li><b>Sand last, on site</b>, through the top ports.</li>
+</ol>
+
+<h2 id="not-here">6 &mdash; Not on this list</h2>
+<p><b>The two blocks beside the back centre tenon.</b> They are location pieces
+inside the box, carry no load, and their thickness is free &mdash; so they come
+out of the scrap bin rather than off a sheet. They must be <b>100
+tall</b> like a rib so both skins glue to them, and no thicker than
+<b>66.5</b>, which is the clear space each side of
+the tenon.</p>
+</body></html>

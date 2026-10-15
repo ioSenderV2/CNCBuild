@@ -1,19 +1,30 @@
 #!/usr/bin/env python3
-"""The torsion box cut list and sheet nesting, generated from the registry.
+"""Torsion Box Construction - the whole build of the box, generated from the registry.
 
-WHY THIS IS GENERATED AND NOT TYPED: every part below is a plywood piece whose
-size depends on the sheet thicknesses, and this is exactly what it was written
-for - the sheets were micced on 2026-10-13 and came back 24 and 18 against the
-nominal 25 and 19 the registry had carried. One number each in registry.toml and
-every part here followed. A typed list would have been wrong in the notch fits
-and in the wall, which are the two that matter.
+It was the cut list alone and the cut list is now its first chapter - his call
+2026-10-15, because the sheet sizes turned out to be the smallest part of what the
+sheet has to say. The chapters:
+
+    1  Parts            every plywood piece, sized off the registry
+    2  Sheets           what it takes, and the nesting drawn to scale
+    3  Notches          the sliding-miter-saw procedure and what a millimetre costs
+    4  Sand ports       the grid from above, dimensioned
+    5  Glue up          the six joints, what each carries, and the order
+    6  Not on this list
+
+WHY THIS IS GENERATED AND NOT TYPED: every part is a plywood piece whose size
+depends on the sheet thicknesses, and this is exactly what it was written for -
+the sheets were micced on 2026-10-13 and came back 24 and 18 against the nominal
+25 and 19 the registry had carried. One number each in registry.toml and every
+part here followed. A typed list would have been wrong in the notch fits and in
+the wall, which are the two that matter.
 
 It also answers the sheet-size question, because that is not eyeballable: the
 skins are BOX_W x BOX_FORE_AFT and BOX_W is within 8 mm of a 4-foot sheet.
 
-    python tools/make-cutlist.py [--kerf 1.6] [--trim 1.6] [--sheet "4 x 8"]
+    python tools/make-box-doc.py [--kerf 1.6] [--trim 1.6] [--sheet "4 x 8"]
 
-Writes machine/drawings/box-cutlist.html and prints the sheet summary.
+Writes machine/drawings/torsion-box-construction.html and prints the summary.
 No third-party imports, same as every other tool here.
 """
 import argparse
@@ -24,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dims import Registry                                    # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE.parent / "machine" / "drawings" / "box-cutlist.html"
+OUT = HERE.parent / "machine" / "drawings" / "torsion-box-construction.html"
 
 # Sheet sizes to test, in mm. The two Baltic birch formats he asked about.
 #
@@ -556,7 +567,7 @@ def render(rows, summary, nests, drawn, v, runs, ports):
             f"Every figure a whole millimetre.</p>")
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
-<title>CNCBuild &mdash; Torsion Box Cut List</title>
+<title>CNCBuild &mdash; Torsion Box Construction</title>
 <style>
  @page {{ size: letter portrait; margin: 14mm; }}
  body {{ font: 10.5pt "Segoe UI", sans-serif; color: #111; max-width: 190mm; }}
@@ -572,21 +583,33 @@ def render(rows, summary, nests, drawn, v, runs, ports):
  .note {{ background: #fff8e1; border-left: 3px solid #e0a800;
           padding: 2mm 3mm; margin: 3mm 0; }}
  .nest {{ page-break-inside: avoid; margin: 0 0 4mm; }}
+ ol.toc {{ margin: 2mm 0 5mm; padding-left: 6mm; }}
+ ol.toc a {{ color: #06c; }}
 </style></head><body>
-<h1>Torsion box &mdash; cut list</h1>
-<p>Box <b>{v['BOX_W']:.2f}</b> across by <b>{v['BOX_FORE_AFT']:.0f}</b> front to
-back, <b>{v['BOX_THK']:.0f}</b> deep. All sizes in mm.</p>
+<h1>Torsion Box Construction</h1>
+<p>Box <b>{v['BOX_W']:.0f}</b> square by <b>{v['BOX_THK']:.0f}</b> deep. All sizes
+in mm. <b>Every figure on this sheet is generated from the dimension registry</b>
+&mdash; if one disagrees with the registry, this sheet is stale and gets rebuilt
+rather than edited.</p>
+<ol class="toc">
+<li><a href="#parts">Parts</a></li>
+<li><a href="#sheets">Sheets</a> and <a href="#nesting">nesting</a></li>
+<li><a href="#notches">Notches</a></li>
+<li><a href="#ports">Sand ports</a></li>
+<li><a href="#glue">Glue up</a></li>
+<li><a href="#not-here">Not on this list</a></li>
+</ol>
 
 <div class="note"><b>These are the sheets in hand</b> &mdash; {v['T_BB_SKIN_TOP']:g} and
 {v['T_BB_SKIN_BOT']:g}, micced to five thousandths. Sheet sold at a nominal
 commonly runs under and varies between sheets, so <b>still test-cut one notch on
 scrap from the same sheet</b> before cutting the set.</div>
 
-<h2>Parts</h2>
+<h2 id="parts">1 &mdash; Parts</h2>
 <table><tr><th>Part</th><th>Long</th><th>Short</th><th>Off</th></tr>
 {''.join(th)}</table>
 
-<h2>Sheets</h2>
+<h2 id="sheets">2 &mdash; Sheets</h2>
 <p>Guillotine-packed with a <b>{KERF:g} mm</b> kerf and <b>{EDGE_TRIM:g} mm</b> off
 each factory edge &mdash; a Festool track saw on Baltic birch, which is all that
 gets removed. <b>The counts are an upper bound</b>: offcuts are never merged
@@ -594,45 +617,13 @@ back together, so a careful nest can still do better.</p>
 <table><tr><th>Sheet</th><th>Thickness</th><th>Needs</th></tr>
 {''.join(sh)}</table>
 
-<h2>Nesting &mdash; {drawn}</h2>
+<h2 id="nesting">Nesting &mdash; {drawn}</h2>
 <p>To scale, sheet length left to right. The dashed red line is the
 <b>{EDGE_TRIM:g} mm</b> off each factory edge; everything sits inside it.
 Offcut is whatever stays white.</p>
 {''.join(ns)}
 
-<h2>Sand ports</h2>
-<p><b>{v['SAND_PORT_D']:g} through both skins, {len(ports)} &times; {len(ports)} =
-{len(ports) ** 2} in each</b>, one centred in every bay. Centres from the skin's
-edge, <b>the same figures in X and Y</b> &mdash; the box is square and the grid is
-the same both ways:</p>
-<table><tr><th>Port</th>{''.join(f'<th>{i + 1}</th>' for i in range(len(ports)))}</tr>
-<tr><td>Centre</td>{''.join(f'<td class=n>{p:g}</td>' for p in ports)}</tr></table>
-
-<h3>The grid from above, with the bottom skin's ports</h3>
-{plan_svg(v, ports)}
-<p><b>The steps are not equal</b> &mdash; {v['SAND_PORT_STEP_END']:g} at each end of
-the row and {v['SAND_PORT_STEP']:g} through the middle, because the end bays are
-wider. Walking it as a constant pitch puts the far port in the wrong place.</p>
-<p>The bottom port takes a <b>rubber plug fitted from below with a pull tab
-underneath</b> &mdash; nothing goes in from above and nothing is attached to it.
-Pull it to drain, push it back to seal. The sand bearing on one plug is only
-<b>{v['SAND_PORT_PLUG_LOAD'] * 1000:.0f} grams</b>, so friction is all it needs.
-<b>Fill through the top ports once, at assembly, before the bed goes down</b>:
-the bed cannot come out of the assembled machine.</p>
-<p>The tee track bed covers all but the <b>front row</b> of five, which lands on
-the open apron. <b>{v['T_APRON_SKIN']:g} Baltic birch over the apron on
-double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off
-the day a port is used.</p>
-
-<h2>Not on this list</h2>
-<p><b>The two blocks beside the back centre tenon.</b> They are location pieces
-inside the box, carry no load, and their thickness is free &mdash; so they come
-out of the scrap bin rather than off a sheet. They must be <b>{v['BOX_RIB_H']:.0f}
-tall</b> like a rib so both skins glue to them, and no thicker than
-<b>{v['BACK_TENON_BLOCK_T_MAX']:.1f}</b>, which is the clear space each side of
-the tenon.</p>
-
-<h2>Notches</h2>
+<h2 id="notches">3 &mdash; Notches</h2>
 <p>Egg crate, continuous both ways, half-depth notches at every crossing. Every
 notch is <b>{rib:g} wide</b> and <b>{half:g} deep</b>, and <b>all eight ribs are
 the same part</b> &mdash; same length, same four offsets.</p>
@@ -715,6 +706,92 @@ done afterwards on whichever edge ends up down.</p>
 {''.join(nt)}
 <p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
 20 &times; 15, so the sand can migrate between cells.</p>
+
+<h2 id="ports">4 &mdash; Sand ports</h2>
+<p><b>{v['SAND_PORT_D']:g} through both skins, {len(ports)} &times; {len(ports)} =
+{len(ports) ** 2} in each</b>, one centred in every bay. Centres from the skin's
+edge, <b>the same figures in X and Y</b> &mdash; the box is square and the grid is
+the same both ways:</p>
+<table><tr><th>Port</th>{''.join(f'<th>{i + 1}</th>' for i in range(len(ports)))}</tr>
+<tr><td>Centre</td>{''.join(f'<td class=n>{p:g}</td>' for p in ports)}</tr></table>
+
+<h3>The grid from above, with the bottom skin's ports</h3>
+{plan_svg(v, ports)}
+<p><b>The steps are not equal</b> &mdash; {v['SAND_PORT_STEP_END']:g} at each end of
+the row and {v['SAND_PORT_STEP']:g} through the middle, because the end bays are
+wider. Walking it as a constant pitch puts the far port in the wrong place.</p>
+<p>The bottom port takes a <b>rubber plug fitted from below with a pull tab
+underneath</b> &mdash; nothing goes in from above and nothing is attached to it.
+Pull it to drain, push it back to seal. The sand bearing on one plug is only
+<b>{v['SAND_PORT_PLUG_LOAD'] * 1000:.0f} grams</b>, so friction is all it needs.
+<b>Fill through the top ports once, at assembly, before the bed goes down</b>:
+the bed cannot come out of the assembled machine.</p>
+<p>The tee track bed covers all but the <b>front row</b> of five, which lands on
+the open apron. <b>{v['T_APRON_SKIN']:g} Baltic birch over the apron on
+double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off
+the day a port is used.</p>
+
+<h2 id="glue">5 &mdash; Glue up</h2>
+<p><b>Six joints, and only the first two carry the sandwich.</b></p>
+<table>
+<tr><th>Joint</th><th>Where</th><th>What it carries</th></tr>
+<tr><td><b>Rib edge to skin</b></td><td>every rib's top edge to the top skin and
+bottom edge to the bottom skin, the full {v['BOX_CAVITY_W']:g} &times; {rib:g} of
+each, both ends of all eight</td><td><b>This is the box.</b> The skins are the
+flanges and the ribs carry shear between them. Starve it anywhere and the section
+is locally gone</td></tr>
+<tr><td><b>Web edge to skin</b></td><td>the four perimeter webs, same joint, top
+and bottom edges</td><td>the same, round the perimeter</td></tr>
+<tr><td><b>Notch cheek to rib face</b></td><td>the sixteen crossings, face to
+face, {rib:g} wide &times; {half:g} deep on each side of every notch</td><td>the
+<b>two-way plate action</b> &mdash; the reason this is an egg crate and not
+blocking. Face-to-face plywood, the strong orientation</td></tr>
+<tr><td><b>Tongue to web face</b></td><td>the outer lamination glued flat to the
+inner web over the whole {v['TONGUE_FULL_H']:g} height and full length, back and
+both sides, and the front cap doing the same</td><td>makes the
+{v['T_BOX_WALL']:g} wall one piece, which is what lets the standing plates bolt
+through it in bearing. The biggest area in the box</td></tr>
+<tr><td><b>Tongue to skin end grain</b></td><td>the tongue caps the end grain of
+both skins rather than standing on them</td><td>closes the edge; not a load
+path</td></tr>
+<tr><td><b>Rib end to web face</b></td><td>each rib's {rib:g} &times;
+{v['BOX_RIB_H']:g} end butting a perimeter web's inner face, sixteen of
+them</td><td><b>Weak by nature</b> &mdash; plywood edge onto face &mdash; and
+nothing relies on it. It is the joint the blocking scheme would have had at
+<i>every</i> junction, which is why blocking was rejected</td></tr>
+</table>
+<p><b>Two things that look like joints and are not.</b> <b>Notch floor to notch
+floor</b> &mdash; no glue reaches it and nothing asks it to carry anything, which
+is why over-depth there is free. And <b>the post tenons</b>, which are not glued
+at all: the box is lowered onto three tenons and the shoulder carries it.</p>
+
+<h3>The order, and two steps that cannot be undone</h3>
+<ol>
+<li><b>Dry-assemble the grid on the flat reference</b> &mdash; four ribs one way,
+four the other, into the perimeter webs. Press every crossing flat and check it
+seats. An egg crate self-jigs, so this is also the squareness check.</li>
+<li><b>Glue the grid to the bottom skin</b>, standing on the reference. The tenon
+holes are already cut in that skin.</li>
+<li>🔴 <b>Drive a screw into each post tenon, and fit the fin angles' T-nuts into
+the top skin from underneath. BOTH BEFORE THE TOP SKIN GOES DOWN.</b> There is no
+access to either afterwards &mdash; ever &mdash; and the only fix then is a hole
+in the box.</li>
+<li><b>Glue the perimeter webs and the outer laminations</b>, the tongues capping
+the skins' end grain.</li>
+<li><b>Glue the top skin on and clamp it hard onto the rib edges.</b> Screws
+through the skin into the ribs give uniform pressure and can stay in; the 52 inch
+parallel clamps go across the top, <b>one over each rib</b>, so the pressure lands
+on structure and not on unsupported skin.</li>
+<li><b>Sand last, on site</b>, through the top ports.</li>
+</ol>
+
+<h2 id="not-here">6 &mdash; Not on this list</h2>
+<p><b>The two blocks beside the back centre tenon.</b> They are location pieces
+inside the box, carry no load, and their thickness is free &mdash; so they come
+out of the scrap bin rather than off a sheet. They must be <b>{v['BOX_RIB_H']:.0f}
+tall</b> like a rib so both skins glue to them, and no thicker than
+<b>{v['BACK_TENON_BLOCK_T_MAX']:.1f}</b>, which is the clear space each side of
+the tenon.</p>
 </body></html>
 """
 

@@ -1137,7 +1137,7 @@ note = "6.35 - 1/4in Baltic birch laid over the part of the top skin the tee tra
 [[dim]]
 sym = "SAND_PORT_FIRST"
 expr = "T_BOX_WALL_WEB + BOX_BAY_W_END / 2"
-note = "129.5 - the first port's centre, in from the box's edge: the perimeter web plus half an end bay. The box is square and the grid is the same both ways, so this is the same figure in X and Y. The remaining centres step by SAND_PORT_STEP_END then SAND_PORT_STEP, and tools/make-cutlist.py prints the whole row."
+note = "129.5 - the first port's centre, in from the box's edge: the perimeter web plus half an end bay. The box is square and the grid is the same both ways, so this is the same figure in X and Y. The remaining centres step by SAND_PORT_STEP_END then SAND_PORT_STEP, and tools/make-box-doc.py prints the whole row."
 
 [[dim]]
 sym = "SAND_PORT_STEP_END"
@@ -2919,7 +2919,7 @@ note = "219 - the clear bay across the machine, the THREE INNER ones of the five
 [[dim]]
 sym = "BOX_BAY_W_END"
 expr = "(BOX_CAVITY_W - (3 * BOX_BAY_W) - (BOX_RIBS_FORE_AFT * T_BB_RIB)) / 2"
-note = "223 - the bay at EACH END across the machine, between a perimeter web and the first rib, and it is 4 wider than the three inner ones. SETTLED: THE REMAINDER GOES HERE ON PURPOSE: the inner bays are the ones a tape walks from rib to rib, so they are the ones that have to be round, and the end bay is a single reading off the web. It comes out whole as well - tools/make-cutlist.py asserts every notch start is a whole millimetre and fails the build otherwise."
+note = "223 - the bay at EACH END across the machine, between a perimeter web and the first rib, and it is 4 wider than the three inner ones. SETTLED: THE REMAINDER GOES HERE ON PURPOSE: the inner bays are the ones a tape walks from rib to rib, so they are the ones that have to be round, and the end bay is a single reading off the web. It comes out whole as well - tools/make-box-doc.py asserts every notch start is a whole millimetre and fails the build otherwise."
 
 [[dim]]
 sym = "BOX_BAY_FORE_AFT"

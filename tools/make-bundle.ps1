@@ -13,7 +13,9 @@
                              per-sheet totals
     fasteners.html           what to buy and what goes where, with the totals by
                              thread size
-    box-cutlist.html         the torsion box cut list
+    torsion-box-construction.html
+                             the whole build of the torsion box - parts, sheets,
+                             notches, sand ports and the glue-up order
 
   NOTHING HERE IS A SOURCE FILE. Every member is derived or tracked elsewhere,
   the zip itself is gitignored, and it is rebuilt rather than edited.
@@ -45,7 +47,7 @@ $members = @(
     'Interactive_Model.html'
     'shop-pack.pdf'
     'fasteners.html'
-    'box-cutlist.html'
+    'torsion-box-construction.html'
 )
 
 $paths = @()

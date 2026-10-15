@@ -809,6 +809,26 @@ through the shoulder — that is withdrawal from cedar end grain.
 
 **The box is not otherwise fastened to the posts.** Gravity and 99 mm of tenon engagement hold it.
 
+### Glue up — the order, and the two steps that cannot be undone
+
+The six glue joints and what each one carries are in
+[`drawings/torsion-box-construction.html`](drawings/torsion-box-construction.html), chapter 5. The
+order is here because getting it wrong is not recoverable:
+
+1. **Dry-assemble the grid on the flat reference** — four ribs each way into the perimeter webs.
+   Press every crossing flat and check it seats. An egg crate self-jigs, so this is the squareness
+   check as well.
+2. **Glue the grid to the bottom skin**, standing on the reference. That skin's three tenon holes
+   are already cut.
+3. 🔴 **Drive the screw into each post tenon, and fit the fin angles' T-nuts into the top skin from
+   underneath — both BEFORE the top skin goes down.** There is no access to either afterwards, ever,
+   and the only fix then is a hole in the box.
+4. **Glue the perimeter webs and the outer laminations**, the tongues capping the skins' end grain.
+5. **Glue the top skin on and clamp it hard onto the rib edges.** Screws through the skin into the
+   ribs give uniform pressure and can stay in; the 52" parallel clamps go across the top, **one over
+   each rib**, so the pressure lands on structure rather than on unsupported skin.
+6. **Sand last, on site**, through the top ports.
+
 ### Sand ports — one per bay, through both skins
 
 **25.4 through both skins, 5 × 5 in each, one centred in every bay.** Centres from the skin's edge,
