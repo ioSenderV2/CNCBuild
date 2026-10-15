@@ -1683,9 +1683,9 @@ note = "102.5. Second nut column."
 
 [[dim]]
 sym = "FRONT_STRIP_W"
-value = 50.8
-provenance = "part"
-note = "The front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. 50.8 - 2in flat bar, 6061, bought 4ft long and cut to 1000. FLAG: IT IS WIDER THAN THE GAP BETWEEN THE BEARING BLOCK ROWS, ON PURPOSE, AND THAT IS THE CHANGE. It used to be 45, chosen as BLOCK_ROW_GAP so the strip sat BETWEEN the block rows with about half a millimetre either side. At 50.8 it runs 2.4 UNDER each block instead, which a thin strip may do: he proved it with 60 x 60 x 4 test pieces that clear with 7.0 of overlap a side. SETTLED: THE Y TOLERANCE GOES FROM ABOUT NOTHING TO ABOUT TEN MILLIMETRES - the next thing in the strip's way is the RAIL, 9.6 from the strip edge - which retires the clash this part used to be gated by. OPEN: 2in STOCK MAY ARRIVE AT 50, NOT 50.8: metric and SAE intermix unpredictably on this supplier's aluminium. It does not matter PROVIDED Sheet 8's two rows are dimensioned symmetric about the strip's own centreline, 30 apart, rather than off an edge - then a narrower strip still self-centres on the seam. Dimension it off an edge and the stock's width tolerance lands straight in the hole positions."
+value = 50
+provenance = "measured"
+note = "50 - the front joining strip across the seam, identical on X, Y1 and Y2, and also the magnetic tape surface. SETTLED: MEASURED ON THE STRIPS IN HAND 2026-10-14 - they came 1000 x 50 x 3, metric, where this was carried at a nominal 50.8 for 2in bar. THE WARNING BELOW CALLED IT AND THE PRECAUTION PAID: Sheet 8's two rows are dimensioned symmetric about the strip's own centreline and 30 apart, so the narrower strip self-centres on the seam and the row positions simply move in 0.4 to STRIP_ROW_LOW and STRIP_ROW_HIGH. Nothing has to be re-chosen. NOTE: AND THEY NEED NO CUTTING - 1000 is BEAM_LEN exactly. FLAG: IT IS WIDER THAN THE GAP BETWEEN THE BEARING BLOCK ROWS, ON PURPOSE, AND THAT IS THE CHANGE. It used to be 45, chosen as BLOCK_ROW_GAP so the strip sat BETWEEN the block rows with about half a millimetre either side. At 50.8 it runs 2.4 UNDER each block instead, which a thin strip may do: he proved it with 60 x 60 x 4 test pieces that clear with 7.0 of overlap a side. SETTLED: THE Y TOLERANCE GOES FROM ABOUT NOTHING TO ABOUT TEN MILLIMETRES - the next thing in the strip's way is the RAIL, 9.6 from the strip edge - which retires the clash this part used to be gated by. OPEN: 2in STOCK MAY ARRIVE AT 50, NOT 50.8: metric and SAE intermix unpredictably on this supplier's aluminium. It does not matter PROVIDED Sheet 8's two rows are dimensioned symmetric about the strip's own centreline, 30 apart, rather than off an edge - then a narrower strip still self-centres on the seam. Dimension it off an edge and the stock's width tolerance lands straight in the hole positions."
 source = "his, 2026-10-09"
 
 [[dim]]
@@ -2204,10 +2204,20 @@ note = "What has to pass under the block where the bolt head reaches past the st
 
 [[dim]]
 sym = "T_FRONT_STRIP"
-value = 3.175
-provenance = "nominal"
-note = "The front joining strip, all three beams. OPEN: OPEN AND BOUNDED RATHER THAN KNOWN: ordered as 1/8in 6061 flat bar, but metric and SAE intermix unpredictably on this supplier's aluminium, so it may arrive at 3.175 OR at 4.0 - his warning 2026-10-09. 3.175 is carried here because it is the conservative end for the consequence that actually bites. FLAG: CALIPER IT ON ARRIVAL AND PUT THE READING HERE, which is the fourth time this repo has had a nominal turn out wrong - a 5/8in spacer that measured 16.41, a 1/2in plate whose stock is 10 mm, a 1/2in end plate at 12.19. SETTLED: BOTH ENDS ARE SAFE ON BLOCK CLEARANCE: STRIP_STACK is 4.175 at 3.175 and 5.0 at 4.0, against BLOCK_OVERHANG_CLEAR's 6, and the 5.0 case is the one his 60 mm test pieces already proved. OPEN: THE BOLT IS WHERE IT BITES: see BOLT_FRONT_STRIP - an M8 x 10 reaches 6.0 through a 4.0 strip and 6.825 through a 3.175 one, against a 7.2 limit, so the margin falls from 1.2 to 0.375. FLAG: WAS 1/4in (6.35) UNTIL 2026-10-03 AND THAT DID NOT FIT: the bolt heads fouled the bearing blocks, confirmed on the real beam. The strip is NOT T_BACK_JOIN_PLATE - they shared 6.35 once and are different parts with different constraints; the back plate is sized for stiffness, the strip by what clears a block overhang. See gantry-beam-joint.md for the stiffness given up."
-source = "ordered 1/8in; CALIPER ON ARRIVAL"
+value = 3
+provenance = "measured"
+note = "3 - the front joining strip, all three beams, MEASURED ON THE STRIPS IN HAND. SETTLED: THEY ARRIVED METRIC - 1000 x 50 x 3, his reading 2026-10-14. Ordered as 1/8in 6061 flat bar and the file carried 3.175 while warning it might come as 4.0; it came as neither, which is the fifth nominal on this machine to turn out metric. SETTLED: THEY NEED NO CUTTING - 1000 is BEAM_LEN exactly, where the note here used to say 4ft stock cut to length. SETTLED: BLOCK CLEARANCE IS THE SAFE END: STRIP_STACK is 4.0, against BLOCK_OVERHANG_CLEAR's 6, and that is better than either figure this was carried at. FLAG: THE BOLT IS WHERE IT BITES AND THIS IS THE TIGHTEST OF THE THREE CASES - STRIP_BOLT_SLACK is 0.2, against 0.375 at 3.175 and 1.2 at 4.0, because a thinner strip lets the same M8 x 10 reach FURTHER into the T-slot. It still fits; see STRIP_BOLT_REACH, which is now tracked rather than argued in prose. FLAG: WAS 1/4in (6.35) UNTIL 2026-10-03 AND THAT DID NOT FIT: the bolt heads fouled the bearing blocks, confirmed on the real beam. The strip is NOT T_BACK_JOIN_PLATE - they shared 6.35 once and are different parts with different constraints; the back plate is sized for stiffness, the strip by what clears a block overhang. See gantry-beam-joint.md for the stiffness given up."
+source = "his measurement of the strips in hand, 2026-10-14"
+
+[[dim]]
+sym = "STRIP_BOLT_REACH"
+expr = "BOLT_FRONT_STRIP - T_FRONT_STRIP"
+note = "7 - how far the front strip's M8 x 10 reaches PAST the strip, which is what goes into the T-slot. It follows the strip thickness, so a thinner strip reaches further - the opposite of the intuition, and the reason the measured 3 is tighter here than the 3.175 it replaced."
+
+[[dim]]
+sym = "STRIP_BOLT_SLACK"
+expr = "BOLT_REACH_MAX - STRIP_BOLT_REACH"
+note = "0.2 - what is left before the front strip's bolt bottoms in the T-slot: BOLT_REACH_MAX less STRIP_BOLT_REACH. FLAG: IT IS THE TIGHTEST FIGURE ON THIS JOINT and it was 0.375 on a 3.175 strip and 1.2 on a 4.0 one. It is positive, so the M8 x 10 stands. SETTLED: EXPRESSED RATHER THAN ARGUED - the same arithmetic was prose in T_FRONT_STRIP's note and had to be redone by hand every time the strip thickness moved."
 
 # ------------------------------------------------- T-slot bolt lengths, 2026-10-04
 
