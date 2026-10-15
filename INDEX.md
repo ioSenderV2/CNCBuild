@@ -94,6 +94,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Why the slot lips are the limit, not the thread](machine/gantry-beam-joint.md#why-the-slot-lips-are-the-limit-not-the-thread)
   - [Fit against the slot](machine/gantry-beam-joint.md#fit-against-the-slot)
   - [Bolt lengths, settled 2026-10-04 - and the slot depth is what settled them](machine/gantry-beam-joint.md#bolt-lengths-settled-2026-10-04---and-the-slot-depth-is-what-settled-them)
+  - [🔴 The engagement figures below were wrong for ten days, and every one of them read too high](machine/gantry-beam-joint.md#-the-engagement-figures-below-were-wrong-for-ten-days-and-every-one-of-them-read-too-high)
   - [It is a slide-in nut. Load them before the end plates go on](machine/gantry-beam-joint.md#it-is-a-slide-in-nut-load-them-before-the-end-plates-go-on)
   - [No load rating is published, and that is accepted](machine/gantry-beam-joint.md#no-load-rating-is-published-and-that-is-accepted)
 - [Assembling the stack](machine/gantry-beam-joint.md#assembling-the-stack)

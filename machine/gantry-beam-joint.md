@@ -358,29 +358,50 @@ them no bolt length on this joint could be computed:
 
 The nut's boss is 1.80 and the lip is 2.3, so **the boss does not reach the face**: the shoulders bear
 on the lip underside and the boss top sits 0.5 recessed. The nut's back face is therefore at
-**8.3 mm** (TNUT_BACK_FACE), against a floor at 9.5.
+**8.3 mm** (TNUT_BACK_FACE), against a floor at **9.3** - his calipers again 2026-10-14, replacing the
+9.5 first read, and the 0.2 comes straight off the air behind the nut.
 
-FLAG: **So there is 1.2 mm of air behind the nut** (TNUT_BACK_CLEAR), and that is the whole
-protrusion budget. With 6 mm of thread in front of it, **a bolt may reach at most 7.2 mm past the
-back face of any plate** (BOLT_REACH_MAX).
+FLAG: **So there is 1.0 mm of air behind the nut** (TNUT_BACK_CLEAR), and that is the protrusion
+budget.
 
-| Joint | Plate | Bolt | Reach | Engagement | Spare to floor |
-|---|---|---|---|---|---|
-| **Front strip**, all three beams | 4 mm 6061 | **M8 × 10** | 6.0 | **6.0 - full** | 1.2 |
-| **X back plate** | 6.35 mm 6061 | **M8 × 12** | 5.65 | 5.65 | 1.55 |
-| **Y back** - the outboard plate | 3.429 mm steel **+ M8 washer** | **M8 × 10** | 4.97 | 4.97 | 2.23 |
+### 🔴 The engagement figures below were wrong for ten days, and every one of them read too high
 
-FLAG: **Engagement is capped at 6 mm by the nut, not by the bolt.** A longer bolt buys nothing and
-eventually bottoms. **M8 × 12 is wrong on the front strip** - it reaches 8.0 into a 7.2 limit and
-hits the slot floor before the head seats, which presents as a bolt that feels tight while the strip
-is still loose. That is the failure mode to recognise, because torque is not evidence of clamp here.
+**His catch, 2026-10-14.** This section said a bolt may reach at most **7.2 mm past the back face of
+any plate**. That 7.2 is 6 of thread plus the air behind the nut - measured **from the nut's front
+face**. It was then compared against reach past the **plate**, and those two faces are **2.3 apart**:
+the bolt crosses the lip, and the boss inside it, before it meets any usable thread. From the plate's
+back face the stack is
+
+| From the plate's back face | |
+|---|---|
+| 0 to **2.3** | the lip, with the nut's boss inside it - **no usable thread** |
+| 2.3 to **8.3** | the T-nut's **6 of thread** (BOLT_FULL_ENGAGE) |
+| 8.3 to **9.3** | air, then the **slot floor** (BOLT_REACH_MAX) |
+
+**So a bolt wants to reach between 8.3 and 9.3 past its plate** - the full thread, still clear of the
+floor - and the window's width is just the 1.0 behind the nut. The old 7.2 ceiling was not a ceiling
+at all; it sat **below** the floor of that window, so every length chosen against it is **short**.
+
+| Joint | Plate stack | Bolt | Reach | Engagement | Spare to floor | Wants |
+|---|---|---|---|---|---|---|
+| **Front strip**, all three beams | **3 mm** measured | **M8 × 10** | 7.0 | **4.7** of 6 | 2.3 | **M8 × 12** |
+| **X back plate** | 6.35 mm 6061 | **M8 × 12** | 5.65 | **3.35** of 6 | 3.65 | **M8 × 15** |
+| **Y back** - the outboard plate | 3.429 steel **+ 1.6 washer** | **M8 × 10** | 4.97 | **2.67** of 6 | 4.33 | **M8 × 14** |
+
+OPEN: **Those three lengths are his call, not a correction to apply quietly** - it is a fastener order
+across every bolt-on plate on the machine, and the joints work as they stand, just with less thread
+than the nut has to give.
+
+FLAG: **Engagement is still capped at 6 mm by the nut, not by the bolt.** Past the nut's back face the
+extra buys nothing and eventually bottoms - at **9.3** past the plate, not 7.2. A bolt that bottoms
+presents as a bolt that feels tight while the plate is still loose, which is the failure mode to
+recognise, because torque is not evidence of clamp here.
 
 SETTLED: **The washer on the Y back is no longer load-bearing on the argument, and it stays anyway.** At
-the **ordered 10 gauge (3.429)** the bare M8 × 10 reaches **6.571** against the 7.2 limit - clear by
-**0.629**, which is outside caliper noise. OPEN: **That is not what this paragraph used to say**: at a
-nominal 3.175 the bare bolt reaches 6.83, and at the 11-gauge 3.04 the sheet was sourced as, 6.96 -
-a margin of 0.24 that *was* inside caliper noise, and that margin is why the washer was specified at
-all. Keep it for the reason it was wanted regardless: it spreads load on 3.4 mm steel. The washer
+the **ordered 10 gauge (3.429)** the bare M8 × 10 reaches **6.571**, which engages **4.27** of the 6
+and is **2.73 clear of the floor**. OPEN: **The whole argument this paragraph used to make is void with
+the 7.2** - it weighed margins of 0.629 and 0.24 against a ceiling that was 2.3 too low, so the
+"caliper noise" it worried about was never there. Keep it for the reason it was wanted regardless: it spreads load on 3.4 mm steel. The washer
 moves the head out 1.6, and it
 spreads load on 3 mm steel anyway. **Measure the delivered sheet, and put the reading in T_SIDE_PLATE** - that is the symbol the rear plate's length, the box width and Sheet 7's hole columns all hang off. T_OUTBOARD_PLATE is an alias of it and feeds nothing.
 

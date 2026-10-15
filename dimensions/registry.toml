@@ -2210,14 +2210,24 @@ note = "3 - the front joining strip, all three beams, MEASURED ON THE STRIPS IN 
 source = "his measurement of the strips in hand, 2026-10-14"
 
 [[dim]]
+sym = "BOLT_FULL_ENGAGE"
+expr = "TSLOT_LIP_T + TNUT_THREAD_M8"
+note = "8.3 - how far a bolt must reach PAST A PLATE to take all the thread a T-nut has: across the lip, then the nut's full 6. SETTLED: WITH BOLT_REACH_MAX IT IS A WINDOW RATHER THAN A LIMIT, 8.3 to 9.5 past the plate, and its width is exactly TNUT_BACK_CLEAR. So the right bolt for a plate of thickness t is between t + 8.3 and t + 9.3, and under t + 8.3 the joint is simply giving away engagement. FLAG: IT IS THE SAME NUMBER AS TNUT_BACK_FACE and that is not a coincidence - full engagement means the bolt tip reaches the nut's back face. It carries its own name because the two answer different questions and a reader looking for bolt length will not go looking at where a nut's back face sits."
+
+[[dim]]
 sym = "STRIP_BOLT_REACH"
 expr = "BOLT_FRONT_STRIP - T_FRONT_STRIP"
-note = "7 - how far the front strip's M8 x 10 reaches PAST the strip, which is what goes into the T-slot. It follows the strip thickness, so a thinner strip reaches further - the opposite of the intuition, and the reason the measured 3 is tighter here than the 3.175 it replaced."
+note = "7 - how far the front strip's M8 x 10 reaches PAST the strip. It follows the strip thickness, so a thinner strip reaches further."
+
+[[dim]]
+sym = "STRIP_BOLT_ENGAGE"
+expr = "STRIP_BOLT_REACH - TSLOT_LIP_T"
+note = "4.7 - the thread the front strip's M8 x 10 actually engages: its reach past the strip, less the lip it crosses first. Against TNUT_THREAD_M8's 6 available, so it is giving away 1.3. FLAG: THIS IS THE FIGURE THAT WAS WRONG IN PROSE AND IS NOW EXPRESSED - the sheets and fasteners.toml compared reach past the plate against a 7.2 ceiling, which double-counted the lip and made a 10 look nearly too long when it is actually SHORT. OPEN: AN M8 x 12 PUTS IT AT 6.0, the full thread, with 0.3 still clear of the slot floor - inside the BOLT_FULL_ENGAGE window where the 10 is under it. HIS CALL, and the head is unchanged so nothing about block clearance moves."
 
 [[dim]]
 sym = "STRIP_BOLT_SLACK"
 expr = "BOLT_REACH_MAX - STRIP_BOLT_REACH"
-note = "0.2 - what is left before the front strip's bolt bottoms in the T-slot: BOLT_REACH_MAX less STRIP_BOLT_REACH. FLAG: IT IS THE TIGHTEST FIGURE ON THIS JOINT and it was 0.375 on a 3.175 strip and 1.2 on a 4.0 one. It is positive, so the M8 x 10 stands. SETTLED: EXPRESSED RATHER THAN ARGUED - the same arithmetic was prose in T_FRONT_STRIP's note and had to be redone by hand every time the strip thickness moved."
+note = "2.3 - what is left before the front strip's bolt bottoms on the slot floor. SETTLED: IT IS NOT TIGHT, and it read 0.2 for one commit on the wrong BOLT_REACH_MAX. Bottoming is not the constraint on this joint; engagement is - see STRIP_BOLT_ENGAGE."
 
 # ------------------------------------------------- T-slot bolt lengths, 2026-10-04
 
@@ -2229,9 +2239,9 @@ note = "Thickness of the T-slot lip on the 30-6060 - the shoulder a slide-in T-n
 
 [[dim]]
 sym = "TSLOT_DEPTH"
-value = 9.5
+value = 9.3
 provenance = "measured"
-note = "Beam face to T-slot FLOOR on the 30-6060. His calipers, 2026-10-04. The other half of the bolt-length calculation, and the figure the published section does not give: the drawing dimensions the slot's mouth (8.14) and channel width (16.51) but never its depth, which is why bolt lengths could not be computed before this was taken."
+note = "9.3 - beam face to T-slot FLOOR on the 30-6060. SETTLED: HIS CALIPERS AGAIN 2026-10-14, re-taken while the bolt-length error was being corrected, and it replaces the 9.5 he read on 2026-10-04. The 0.2 matters here in a way it would not elsewhere: it comes straight off TNUT_BACK_CLEAR, which is the whole width of the bolt-length window between BOLT_FULL_ENGAGE and BOLT_REACH_MAX, so the window narrows from 1.2 to 1.0. Original note: the other half of the bolt-length calculation, and the figure the published section does not give. The other half of the bolt-length calculation, and the figure the published section does not give: the drawing dimensions the slot's mouth (8.14) and channel width (16.51) but never its depth, which is why bolt lengths could not be computed before this was taken."
 
 [[dim]]
 sym = "TSLOT_MOUTH_W"
@@ -2258,8 +2268,8 @@ note = "Air behind the T-nut, between its back face and the slot floor: 1.2. THI
 
 [[dim]]
 sym = "BOLT_REACH_MAX"
-expr = "TNUT_BODY_T + TNUT_BACK_CLEAR"
-note = "7.2 - the most a bolt may reach past the back face of any plate bolted to a beam. Bolt length minus plate thickness must not exceed this. It is what rules M8 x 12 OUT on the 4 mm front strip (reach 8.0) while leaving it correct on the 6.35 back plate (reach 5.65)."
+expr = "TSLOT_DEPTH"
+note = "9.5 - the most a bolt may reach past the back face of any plate bolted to a beam before it BOTTOMS ON THE SLOT FLOOR. Bolt length minus plate thickness must not exceed this. FLAG: IT WAS 7.2 AND THAT WAS WRONG - his catch 2026-10-14. The old expression was TNUT_BODY_T + TNUT_BACK_CLEAR, which is the reach measured from the T-NUT'S FRONT FACE, and it was then compared against reach past the PLATE. Those two faces are TSLOT_LIP_T apart: a bolt crosses the lip, and the nut's boss inside it, before it meets any usable thread. Measured from the plate's back face the stack is 2.3 of lip, then 6 of thread to TNUT_BACK_FACE, then TNUT_BACK_CLEAR of air to the floor at 9.3. FLAG: THE OLD FIGURE RULED OUT BOLTS THAT FIT - this note itself said M8 x 12 was out on a 4 mm strip at a reach of 8.0, when 8.0 is 1.5 clear of the floor and gives 5.7 of the 6 available thread. Anything chosen against the 7.2 is too SHORT rather than too long, and short costs engagement. SETTLED: USE THE WINDOW, NOT THE CEILING: see BOLT_FULL_ENGAGE - a bolt wants to reach between 8.3 and 9.3 past the plate, and the window's width is exactly TNUT_BACK_CLEAR - 1.0 on the re-measured slot depth."
 
 [[dim]]
 sym = "T_OUTBOARD_PLATE"
