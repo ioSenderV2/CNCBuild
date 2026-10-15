@@ -41,42 +41,105 @@ ON_5x5 = "5 x 5"                  # the two central wall laminations, and only t
 
 
 def parts(v):
-    """Every piece of the base, as (name, long, short, qty, note).
+    """Every piece of the base, as (name, long, short, qty, sheet, note).
 
     Sizes are registry expressions, never literals. Where a piece is one
     lamination of a 36 member it is listed as 18, because that is what gets cut.
+
+    `sheet` is WHICH SHEET IT COMES OFF - his nest, 2026-10-15, not the packer's.
+    A piece marked "cut" or "offcut" needs no sheet at all.
     """
     t = v["T_BB_SKIN_BOT"]                      # 18, the sheet everything is
     gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
-    strip = v["LEG_STRIP"]
     return [
-        ("Leg strip, box legs", v["LEG_L_BOX"], 90, 12,
+        ("Leg strip, box legs", v["LEG_L_BOX"], 90, 12, "cut",
          "4 per leg, 3 legs - laminate then trim to "
          f"{v['POST_W_X']:g} x {v['POST_W_Y']:g}"),
-        ("Leg strip, rear corner legs", v["LEG_L_REAR"], 90, 8,
+        ("Leg strip, rear corner legs", v["LEG_L_REAR"], 90, 8, "cut",
          "4 per leg, 2 legs - same trim, no tenon"),
-        ("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8,
-         f"2 laminations each, 4 rails - it fills the legs' {gm_t:g} slot"),
-        ("Rail, front cross - outer", v["RAIL_CROSS_OUTER_L"], gm_h, 2,
-         "one per grid, FULL WIDTH - this is the half housed in the legs"),
-        ("Rail, front cross - inner", v["RAIL_CROSS_INNER_L"], gm_h, 2,
-         "one per grid - it spans between the front legs and is housed in "
-         "nothing"),
-        ("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"], 1,
+        ("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"], 1, "1",
          f"ONE sheet {t:g} thick - it replaces the back cross rails at both "
          "grids, so it must not be cut into strips"),
-        ("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
+        ("Rail, front cross - outer", v["RAIL_CROSS_OUTER_L"], gm_h, 2, "1",
+         "one per grid, FULL WIDTH - this is the half housed in the legs"),
+        ("Rail, front cross - inner", v["RAIL_CROSS_INNER_L"], gm_h, 2, "1",
+         "one per grid - it spans between the front legs and is housed in "
+         "nothing"),
+        ("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8, "2",
+         f"2 laminations each, 4 rails - it fills the legs' {gm_t:g} slot"),
+        ("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2, "3",
          f"2 laminations - it fills the rear middle leg's slot, so it is "
          f"{gm_t:g}. Notched at BOTH front corners, {gm_t / 2:g} across by "
          f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
          f"the back wall so both come off ONE 5 x 5"),
-        ("Leg filler, front legs", v["BASE_VOLUME_H"], v["POST_W_Y"], 4,
-         "2 laminations each, 2 legs - it closes the slot between the grids"),
-        ("Leg filler, rear legs", v["BASE_VOLUME_H"],
-         v["POST_W_Y"] - v["T_BACK_WALL"], 4,
-         "2 laminations each, 2 legs - shallower, because the back wall takes "
-         f"the slot's back {v['T_BACK_WALL']:g}"),
+        ("Leg filler", v["BASE_VOLUME_H"], v["POST_W_Y"], 8, "offcut",
+         f"2 laminations each, 4 legs - {v['POST_W_Y']:g} deep in the front "
+         f"legs and {v['POST_W_Y'] - v['T_BACK_WALL']:g} in the rear ones. "
+         "HIS, and it costs no sheet: the leg strips are already 90 wide and "
+         "long enough to give these out of what is left past the leg lengths"),
     ]
+
+
+# Which sheet is which, and his reason for each. Sheets 1 and 2 are deliberately
+# loaded on the LEFT ONLY so the right of each stays one whole offcut rather
+# than a fringe of strips - that is worth more than a tighter nest.
+SHEET_PLAN = [
+    ("0", "4 x 8", "20 leg strips - ALREADY CUT, and the fillers and spacers "
+                   "come out of what is left"),
+    ("1", "4 x 8", "the back wall and both front cross rails"),
+    ("2", "4 x 8", "the eight fore-aft rail laminations"),
+    ("3", "5 x 5", "both central wall laminations"),
+]
+
+
+def layout(v, num, sw, sl):
+    """HIS nest, placed explicitly rather than packed.
+
+    A packer optimises for area and will scatter pieces down a sheet to save a
+    few millimetres; he wants each sheet loaded from the LEFT so what is left is
+    one whole offcut. On sheet 1 the packer put the two inner rails out at
+    x 1260 and left 60 of length - the same pieces stacked under the outer rails
+    leave 1176 in one piece. So the placements are stated, and checked instead.
+
+    Returns [(sheet, x, y, w, h, name)] in the packer's own format, with x along
+    the sheet's LENGTH, both measured from inside the trim.
+    """
+    k, usable_w = boxdoc.KERF, sw - 2 * boxdoc.EDGE_TRIM
+    gm_h = v["GRID_MEMBER_H"]
+    out, y = [], 0.0
+
+    def row(name, w, h, n=1, x=0.0):
+        nonlocal y
+        for _ in range(n):
+            out.append((0, x, y, w, h, name))
+            y += h + k
+
+    if num == "0":
+        for i in range(STRIPS_CUT):
+            out.append((0, i * (90 + k), 0.0, 90.0, usable_w, "Leg strip"))
+    elif num == "1":
+        row("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"])
+        row("Rail, front cross - outer", v["RAIL_CROSS_OUTER_L"], gm_h, 2)
+        row("Rail, front cross - inner", v["RAIL_CROSS_INNER_L"], gm_h, 2)
+    elif num == "2":
+        row("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8)
+    elif num == "3":
+        row("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2)
+
+    # CHECKED, because a stated nest has no packer to prove it fits. Bounds
+    # first, then every pair - the whole point of writing the placements down
+    # is that the arithmetic can be wrong and look fine on a drawing.
+    usable_l = sl - 2 * boxdoc.EDGE_TRIM
+    for _, x, yy, w, h, name in out:
+        assert x + w <= usable_l + 1e-9 and yy + h <= usable_w + 1e-9, (
+            f"sheet {num}: {name} at {x:.1f},{yy:.1f} runs off a "
+            f"{usable_l:.1f} x {usable_w:.1f} sheet")
+    for i, (_, ax, ay, aw, ah, an) in enumerate(out):
+        for _, bx, by, bw, bh, bn in out[i + 1:]:
+            if ax < bx + bw - 1e-9 and bx < ax + aw - 1e-9 \
+               and ay < by + bh - 1e-9 and by < ay + ah - 1e-9:
+                raise AssertionError(f"sheet {num}: {an} overlaps {bn}")
+    return out
 
 
 def notches(v, name, L, H):
@@ -153,45 +216,36 @@ def main():
     v = {s: reg.value(s) for s in reg.order}
 
     all_parts = parts(v)
-    # The legs are already cut from a sheet that is spent, so they are shown
-    # and then set aside - counting them again would ask for a sheet he has.
-    to_cut = [p for p in all_parts if not p[0].startswith("Leg strip")]
 
     print("BASE CONSTRUCTION\n")
-    for name, lng, shrt, qty, _ in all_parts:
-        print(f"  {name:30s} {lng:8.0f} x {shrt:6.0f}   x{qty}")
+    for name, lng, shrt, qty, sheet, _ in all_parts:
+        where = {"cut": "already cut", "offcut": "from the leg offcut"}.get(
+            sheet, f"sheet {sheet}")
+        print(f"  {name:30s} {lng:8.0f} x {shrt:6.0f}   x{qty:<3} {where}")
     print(f"\n  {STRIPS_CUT} leg strips are ALREADY CUT from a sheet of "
-          f"{v['T_BB_SKIN_BOT']:g} - that sheet is spent.\n")
+          f"{v['T_BB_SKIN_BOT']:g} - that sheet is spent, and the fillers come "
+          f"out of what is left past the leg lengths.\n")
 
-    print(f"SHEETS FOR THE REST - kerf {boxdoc.KERF:g}, edge trim "
-          f"{boxdoc.EDGE_TRIM:g} (guillotine-packed, an UPPER bound)\n")
-    # EACH PIECE IS ASSIGNED TO A SHEET SIZE, not packed against both - his
-    # plan, 2026-10-15: the two central laminations come off one 5 x 5, which is
-    # what shrinking them by 6 bought, and everything else off 4 x 8s.
+    print(f"SHEETS - kerf {boxdoc.KERF:g}, edge trim {boxdoc.EDGE_TRIM:g}\n")
+    # ONE PACK PER NAMED SHEET, not one pack across all of them. The nest is
+    # HIS, 2026-10-15, and packing each sheet alone is what keeps the right of
+    # sheets 1 and 2 as a single whole offcut instead of a fringe of strips.
     summary, nests = [], []
     t = v["T_BB_SKIN_BOT"]
-    groups = {}
-    for n, lng, shrt, qty, _ in to_cut:
-        groups.setdefault(ON_5x5 if n.startswith("Shear wall, central")
-                          else "4 x 8", []).append((n, lng, shrt, qty, t))
+    sizes = {label: (sw, sl) for label, sw, sl in SHEETS}
     colours = {p[0]: boxdoc.PALETTE[i % len(boxdoc.PALETTE)]
-               for i, p in enumerate(to_cut)}
-    for label, sw, sl in SHEETS:
-        pieces = groups.get(label)
-        if not pieces:
-            continue
-        places, fail = boxdoc.pack(pieces, sw, sl)
-        if places is None:
-            print(f"  {label}: DOES NOT FIT - {fail}")
-            summary.append((label, None, fail, []))
-            continue
-        n = max(p[0] for p in places) + 1
-        tight, part = boxdoc.tightest(pieces, sw, sl)
-        print(f"  {label} ({sw:g} x {sl:g}) : {n} sheet(s)   tightest "
-              f"{tight:.2f} spare  ({part})")
-        summary.append((label, n, None, [p[0] for p in pieces]))
-        nests += [(f"{label}, sheet {i}", svg)
-                  for i, svg in nest_svg(v, places, sw, sl, colours)]
+               for i, p in enumerate(all_parts)}
+    colours["Leg strip"] = boxdoc.PALETTE[2]
+    for num, size, why in SHEET_PLAN:
+        sw, sl = sizes[size]
+        places = layout(v, num, sw, sl)
+        used = max(x + w for _, x, _, w, _, _ in places)
+        left = sl - 2 * boxdoc.EDGE_TRIM - used
+        print(f"  sheet {num} ({size}, {sw:g} x {sl:g}): {why}")
+        print(f"      {left:.0f} of length left whole")
+        summary.append((num, size, why, left, None))
+        nests += [(f"Sheet {num} &mdash; {size}", svg)
+                  for _, svg in nest_svg(v, places, sw, sl, colours)]
     print()
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -201,15 +255,17 @@ def main():
 
 
 def render(rows, summary, v, nests):
+    where = {"cut": "<b>already cut</b>", "offcut": "<b>leg offcut</b>"}
     pr = "".join(
         f"<tr><td>{n}</td><td class=n>{lng:g}</td><td class=n>{shrt:g}</td>"
-        f"<td class=n>{qty}</td><td class=s>{note}</td></tr>"
-        for n, lng, shrt, qty, note in rows)
+        f"<td class=n>{qty}</td><td>{where.get(sheet, f'sheet {sheet}')}</td>"
+        f"<td class=s>{note}</td></tr>"
+        for n, lng, shrt, qty, sheet, note in rows)
     sh = "".join(
-        f"<tr><td>{label}</td>"
-        f"<td>{f'{n} sheet(s)' if n else f'<b class=bad>will not fit</b> &mdash; {fail}'}</td>"
-        f"<td class=s>{', '.join(sorted(set(names)))}</td></tr>"
-        for label, n, fail, names in summary)
+        f"<tr><td><b>{num}</b></td><td>{size}</td><td>{why}</td>"
+        f"<td class=n>{f'{left:.0f}' if bad is None else '&mdash;'}</td>"
+        f"<td class=s>{'' if bad is None else f'<b class=bad>{bad}</b>'}</td></tr>"
+        for num, size, why, left, bad in summary)
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <title>CNCBuild &mdash; Base Construction</title>
@@ -240,35 +296,47 @@ lengths is the test material and the slot spacers</b> &mdash; a spacer cut from
 the stock that will fill the slot is a slot that fits by construction.</div>
 
 <h2>1 &mdash; Parts</h2>
-<table><tr><th>Piece</th><th>Long</th><th>Short</th><th>Off</th><th>Notes</th></tr>
+<table><tr><th>Piece</th><th>Long</th><th>Short</th><th>Off</th><th>From</th>
+<th>Notes</th></tr>
 {pr}</table>
 <p><b>Every 36 member is two laminations of {v['T_BB_SKIN_BOT']:g}</b>, listed
 here as the {v['T_BB_SKIN_BOT']:g} pieces that actually get cut. The
 {v['GRID_MEMBER_T']:g} is not a choice &mdash; it is what fills a leg's slot,
 which is the middle two laminations of a four-strip leg.</p>
 
-<h2>2 &mdash; Sheets for the rest</h2>
-<p><b>Each piece is assigned to a sheet size rather than packed against both.</b></p>
-<table><tr><th>Sheet</th><th>Needs</th><th>Carrying</th></tr>{sh}</table>
+<h2>2 &mdash; Three sheets</h2>
+<p><b>Each piece is assigned to a named sheet, and each sheet is packed on its
+own.</b> Sheets 1 and 2 are loaded from the <b>left only</b>, so what is left of
+each stays <b>one whole offcut</b> rather than a fringe of strips &mdash; worth
+more than a tighter nest.</p>
+<table><tr><th>Sheet</th><th>Size</th><th>Carrying</th>
+<th>Length left whole</th><th></th></tr>{sh}</table>
 <p>🔴 <b>The two central laminations come off ONE 5 &times; 5, and that is what
 cutting them {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than the back wall
 buys.</b> A 5 &times; 5 trims to <b>1520.8</b>, and with the
 <b>{boxdoc.KERF:g}</b> kerf between the two pieces each may be at most
-<b>759.6</b> tall. At the back wall's {v['WALL_H']:g} they take two sheets; at
-{v['CENTRE_WALL_H']:g} they take one, with 1.6 to spare. <b>Four would have
-missed it by 0.4</b> &mdash; the kerf is the whole margin here.</p>
-<p>On the 4 &times; 8 it is the back wall that sets the count: it is
-{v['WALL_H']:g} wide so it lies along the sheet, and nothing else that long will
-share the remaining {2435 - v['BACK_WALL_L']:g}. <b>The fore-aft rails and the
-rest come out of the {1216 - v['WALL_H']:g} &times; 2435 beside it.</b></p>
+<b>759.6</b> tall. At the back wall's {v['WALL_H']:g} they would take two sheets;
+at {v['CENTRE_WALL_H']:g} they take one. <b>Four off would have missed it by
+0.4</b> &mdash; the kerf is the whole margin there.</p>
+<p><b>Anything else that turns out to be wanted comes out of sheet 3's waste</b>
+&mdash; his call. Worth knowing when reaching for it: sheet 3 leaves
+<b>298 &times; 1521</b>, where <b>sheet 2 leaves 1212 &times; 1216</b> and sheet 1
+<b>1176 &times; 1216</b>, so sheet 3's is the one to spend and the other two are
+the ones to keep whole.</p>
+<p><b>Sheet 0 is the one already cut</b>, drawn so the record is complete: 20
+strips of 90 taken across its width, leaving <b>605</b> of length. That remainder
+is the test material, the slot spacers and all eight leg fillers.</p>
 
 <h2>3 &mdash; The cuts, sheet by sheet</h2>
-<p>To scale, sheet length left to right. The dashed red
-border is the <b>{boxdoc.EDGE_TRIM:g}</b> off each factory edge; everything sits
-inside it, and offcut is whatever stays white. <b>Notches are drawn as dotted
-rectangles</b> &mdash; they are the one thing on a cut list that is easy to miss
-until the piece is already cut, and on this sheet they sit at the far END of the
-longest piece.</p>
+<p>To scale, sheet length left to right. The dashed red border is the
+<b>{boxdoc.EDGE_TRIM:g}</b> off each factory edge; everything sits inside it, and
+offcut is whatever stays white. <b>Every sheet is loaded from the left</b>, so
+the white is one piece. <b>Notches are drawn as dotted rectangles</b> &mdash;
+they are the one thing on a cut list easy to miss until the piece is already cut,
+and here they sit at the far END of the longest piece on sheet 3.</p>
+<p>These placements are <b>stated, not packed</b>, and they are <b>checked</b>:
+every piece is tested against the sheet's usable size and against every other
+piece, so a nest that does not fit fails the build rather than printing.</p>
 {''.join(f'<h3>{n}</h3>{svg}' for n, svg in nests)}
 
 <h2>4 &mdash; How it goes together</h2>
