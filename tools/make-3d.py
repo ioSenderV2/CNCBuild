@@ -434,7 +434,10 @@ def main() -> int:
     # past the fins and four L-brackets per fin tie it down. The front WALL is
     # here; a front tongue standing 60 proud is not, and that is on purpose.
     ledge = v["T_BOX_LEDGE"]
-    tc, tb = v["TENON_CORNER"], v["TENON_BACK_DEPTH"]
+    # The leg is 72 x 86 since 2026-10-15, not square, so the corner tenon has
+    # its own figure on each axis: tcx across the machine, tcy fore and aft.
+    tcx, tcy = v["TENON_CORNER_X"], v["TENON_CORNER_Y"]
+    tb, pwx = v["TENON_BACK_DEPTH"], v["POST_W_X"]
     # The tenon is POST_TENON_L long from the shoulder, which leaves it shy of
     # the top skin's underside by whatever that length does not reach. Derived
     # and not stated: it was a literal 1.0 while the bottom skin was 19, and the
@@ -446,13 +449,12 @@ def main() -> int:
 
     # Each post: (tenon rect, full-section rect) in machine x/y.
     posts = [
-        ("Post, front left", (web, web + tc, D - web - tc, D - web),
-         (web - ledge, web + tc, D - web - tc, D - web + ledge)),
-        ("Post, front right", (W - web - tc, W - web, D - web - tc, D - web),
-         (W - web - tc, W - web + ledge, D - web - tc, D - web + ledge)),
-        ("Post, back centre", (W / 2 - v["POST_W"] / 2,
-                               W / 2 + v["POST_W"] / 2, web, web + tb),
-         (W / 2 - v["POST_W"] / 2, W / 2 + v["POST_W"] / 2, web - ledge, web + tb)),
+        ("Post, front left", (web, web + tcx, D - web - tcy, D - web),
+         (web - ledge, web + tcx, D - web - tcy, D - web + ledge)),
+        ("Post, front right", (W - web - tcx, W - web, D - web - tcy, D - web),
+         (W - web - tcx, W - web + ledge, D - web - tcy, D - web + ledge)),
+        ("Post, back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web, web + tb),
+         (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
     ]
     holes_xy = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:

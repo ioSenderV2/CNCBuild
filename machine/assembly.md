@@ -30,7 +30,7 @@ is the full list.
 | Steppers | **2.2 N·m, NEMA 23 — four, one per axis.** **Y steppers at the FRONT** of the machine |
 | Y beams | Fixed — their end plates bolt to the torsion box. Only X, Y-carriage and Z move |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled**, 5.2 kg, on two 80 mm clamps |
-| Stands on | A sand-filled **torsion box** on **three cedar posts**, on a 2x6 base frame that is also the pallet |
+| Stands on | A sand-filled **torsion box** on **three of five laminated plywood legs**, on a 2x6 base frame that is also the pallet |
 
 ### Rails come from two suppliers
 
@@ -772,9 +772,13 @@ carries no vertical load, all of it is on the shoulder.
 
 ### The three posts
 
-**Front left corner, front right corner, and the middle of the back.** Each an **86 mm square cedar
-post (4×4)**, reduced over its **top 116 mm** to a tenon that passes up through a hole in the bottom
-skin. The bottom skin lands on the shoulder.
+**Front left corner, front right corner, and the middle of the back.** Each a **laminated plywood leg,
+72 across the machine by 86 fore and aft**, reduced over its **top 116 mm** to a tenon that passes up
+through a hole in the bottom skin. The bottom skin lands on the shoulder.
+
+The **72 is the lamination** — four 18 mm strips face to face — and it runs **across the machine** so
+the base's fore-aft rails can pass through as a through tenon formed by leaving the middle two strips
+out at glue-up. The **86 is the strip's width**, ripped at 90 and trimmed after the glue dries.
 
 | | |
 |---|---|
@@ -786,15 +790,15 @@ skin. The bottom skin lands on the shoulder.
 **Every ledge is 42 mm, cut on the outward-facing faces**, so the perimeter wall lands directly over
 the shoulder. The ledge is as deep as the wall standing on it.
 
-| Post | Faces ledged | Tenon |
+| Post | Faces ledged | Tenon, across × fore-aft |
 |---|---|---|
-| Front left / front right | the **side** face and the **front** face | **42 × 42** |
-| Back centre | the **back** face | **86 × 42** |
+| Front left / front right | the **side** face and the **front** face | **30 × 44** |
+| Back centre | the **back** face | **72 × 44** |
 
-SETTLED: **Dress all three posts to 86 mm square on the jointer/planer**, settled 2026-10-11 — so the three
-tenon holes are **identical** and come off one setup. The older instruction to cut each hole to its
-own post is retired; it existed because an S4S 4×4 commonly runs 88.9 and cedar varies between
-sticks.
+**Trim all five legs to the same 72 × 86 after the glue dries** — so the two corner tenon holes are
+identical and come off one setup, and the back one differs only in being the full 72 wide. The older
+instruction to cut each hole to its own post is retired; it existed when the posts were cedar sticks
+that varied.
 
 FLAG: **Square faces matter more here than the width.** The ledge is a cross-cut shoulder and the
 perimeter wall lands directly over it, so a post face out of square puts the bearing on an edge
@@ -894,9 +898,24 @@ has dried** rather than relying on the stack coming out at size. **Legs are cut 
 which is the right way round: nothing in this repo sets their full height, and the length is taken
 from the standing base rather than predicted.
 
-OPEN: **The cross-section does not close and the strips are already cut.** Four strips of 18 is
-**72**, which cannot be trimmed to the 86 the tenons and ledges are all derived from. **Twenty strips
-are cut**, which is four per leg for five legs. See POST_W.
+SETTLED: **72 × 86 — his, 2026-10-15.** Four strips of 18 is **72**, and that is the lamination
+direction, running **across the machine**; the other axis is the strip's own width, ripped at 90 and
+trimmed to **86**. **Twenty strips are cut**, four per leg for five legs.
+
+FLAG: **The fore-aft rails pass THROUGH the legs as a through tenon formed at glue-up**, by leaving the
+middle two strips out at rail height. 18 + 36 + 18 = 72 exactly, so the rail is two laminations thick
+and the gap is two strips — which is why the leg is four strips and not five. It goes at the base's
+real weakness, racking, where a bolt through a face does not. Three things to control:
+
+1. 🔴 **The mortise height has to agree across the legs** or the frame sits twisted. Lay all five up
+   on **one flat surface with the mortise blocks set off a single stop**, then **cut each leg to
+   length measuring from the mortise** and let the floor end take the error. The legs are cut to
+   length after glue-up anyway, so that correction is free.
+2. **Two mortises at one height in the same leg would intersect.** A leg taking both a fore-aft and a
+   cross-machine rail cannot have both as through tenons at the same height — offset them vertically,
+   or make one a stub.
+3. **Keep every gap well clear of the top**, where the ledge and the tenon are cut and the geometry
+   assumes solid material.
 
 | Member | |
 |---|---|

@@ -11,8 +11,11 @@
 
 ## The three load-bearing points
 
-**Front left corner, front right corner, and the middle of the back.** Each is an **86 mm square
-cedar post** (4×4).
+**Front left corner, front right corner, and the middle of the back.** Each is a **laminated plywood
+leg, 72 across the machine by 86 fore and aft** — four 18 mm strips, the lamination running across
+the machine so the base's fore-aft rails pass through it. It replaced a dressed cedar 4×4 on
+2026-10-15, and the three-point argument below is indifferent to which: it is about the number of
+contact points, not the material.
 
 Three points, not four, and the reason is the whole argument: a three-point mount is statically
 determinate, so **the box cannot be racked by a twisted floor or a twisted base**. That matters

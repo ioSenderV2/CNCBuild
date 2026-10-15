@@ -340,14 +340,16 @@ def plan_svg(v, ports):
     # the post around it is bigger than its hole because the ledge is cut on the
     # OUTWARD faces - which is why the leg centres are not the hole centres.
     ledge, hc = v["T_BOX_LEDGE"], v["TENON_HOLE_CLEAR"]
-    tc, tb, pw = v["TENON_CORNER"], v["TENON_BACK_DEPTH"], v["POST_W"]
+    # 72 x 86 leg, so the corner tenon is 30 across the machine by 44 fore-aft
+    tcx, tcy = v["TENON_CORNER_X"], v["TENON_CORNER_Y"]
+    tb, pwx = v["TENON_BACK_DEPTH"], v["POST_W_X"]
     legs = [
-        ("front left", (web, web + tc, W - web - tc, W - web),
-         (web - ledge, web + tc, W - web - tc, W - web + ledge)),
-        ("front right", (W - web - tc, W - web, W - web - tc, W - web),
-         (W - web - tc, W - web + ledge, W - web - tc, W - web + ledge)),
-        ("back centre", (W / 2 - pw / 2, W / 2 + pw / 2, web, web + tb),
-         (W / 2 - pw / 2, W / 2 + pw / 2, web - ledge, web + tb)),
+        ("front left", (web, web + tcx, W - web - tcy, W - web),
+         (web - ledge, web + tcx, W - web - tcy, W - web + ledge)),
+        ("front right", (W - web - tcx, W - web, W - web - tcy, W - web),
+         (W - web - tcx, W - web + ledge, W - web - tcy, W - web + ledge)),
+        ("back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web, web + tb),
+         (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
     ]
     centres = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in legs:
@@ -819,7 +821,10 @@ trimmed square after the glue dries and cut to length off the standing base. The
 come off a <b>second sheet of {v['T_BB_SKIN_BOT']:g}</b> &mdash; so the box and
 its legs together are one sheet of {v['T_BB_SKIN_TOP']:g} and <b>two</b> of
 {v['T_BB_SKIN_BOT']:g}, not the two sheets the Sheets chapter counts for the box
-alone. OPEN: the leg's finished section is not settled &mdash; see POST_W.</p>
+alone. Each leg finishes <b>{v['POST_W_X']:g} across the machine by {v['POST_W_Y']:g}
+fore and aft</b> &mdash; the {v['POST_W_X']:g} is the lamination, and it runs
+across the machine so the base's fore-aft rails can pass through the leg as a
+through tenon left open at glue-up.</p>
 <p><b>The two blocks beside the back centre tenon.</b> They are location pieces
 inside the box, carry no load, and their thickness is free &mdash; so they come
 out of the scrap bin rather than off a sheet. They must be <b>{v['BOX_RIB_H']:.0f}
