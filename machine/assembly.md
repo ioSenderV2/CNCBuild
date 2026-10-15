@@ -960,7 +960,7 @@ and it is what makes the back joint disappear.
 |---|---|
 | **Central wall into the rear middle leg** | 🔴 **There is no joint.** The wall's **two sheets continue as the middle two laminations of that leg** — the leg's outer two strips sandwich them. One continuous piece from the front of the base into the leg |
 | **Back wall to the legs** | **Screwed to the back faces of all three rear legs.** A face joint, nothing let in |
-| **Central wall at the front** | **Notched at its front edge so it sits on the cross rail**, its **end face flush with the outside of the rail**, and **two long screws through the rail into the end of the wall** |
+| **Central wall at the front** | **The WALL'S END IS NOTCHED and the rail is not touched** — his, and it settles which piece gives way. The notch lets the wall sit on the cross rail, the wall's end face finishes **flush with the outside of the rail**, and **two long screws go through the rail into the end of the wall**. The only work on the rail is drilling for those two screws |
 
 FLAG: **The continuity at the back reorders the build, and it is the one thing here that cannot be
 fixed later.** The rear middle leg **cannot be laminated as a part before the wall exists** — its
@@ -971,6 +971,17 @@ NOTE: **The rail's through mortise and the wall both want the leg's middle two s
 fore-aft rail passes through the rear middle leg, the **wall** is what gets notched for it — the same
 cut as a rib notch, and for the same reason: whichever piece is continuous wins, and here that is the
 rail passing through.
+
+**So the rule across the whole base is one rule: the rails stay whole and the wall gives way.** At the
+front the wall is notched to sit on the rail; where a rail crosses the rear middle leg the wall is
+notched to let it through; the only cutting a rail ever takes is two screw holes. That is worth
+stating as a rule rather than three times as a detail, because it is what makes the frame a frame —
+every rail is continuous end to end in both grids.
+
+OPEN: **The front notch is not in the 3D model yet.** The model draws the central wall as a plain
+sheet between the two grids, which is right in plan and wrong at the front end. **It needs one figure
+— how far up the notch goes** — and then the wall, its lip over the rail and the two screws can all be
+drawn.
 
 | Member | |
 |---|---|
