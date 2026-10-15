@@ -966,7 +966,7 @@ rails and two cross rails**, and the wall carries the middle.
 |---|---|
 | **Fore-aft rails to the legs** | **The same as the wall: they fill the legs' middle slot** — the two centre laminations. One slot per leg, carrying the lower rail, the upper rail and, in the rear middle leg, the wall |
 | **Cross rails to the legs** | **Notch the legs' OUTER faces** — the back of the rear legs, the front of the front legs — **18 deep**, so the rail's **outer 18 fills the notch and its inner 18 spans between the legs**. The rail runs the base's full width and its outer face finishes flush with the legs' |
-| **Fore-aft rail to cross rail, inside a leg** | **The cross rail wins; the fore-aft rails butt its inner face.** Both want the leg's outer 18 of slot, and the cross rail is the one that has to be continuous across the whole width — the central wall's front notch rides over it |
+| **Fore-aft rail to cross rail, inside a leg** | **The cross rail wins — his call** — and the fore-aft rails butt its inner face. Both want the leg's outer 18 of slot, and the cross rail is the one that has to be continuous across the whole width, since the central wall's front notch rides over it |
 
 So the fore-aft rails are **1223** between the cross rails rather than the base's full depth, and
 every rail is still whole: **it is the legs that take the notch**, which is the same rule as before
