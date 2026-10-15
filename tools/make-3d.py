@@ -441,6 +441,7 @@ def main() -> int:
     # The grid member's section, needed up here because the leg's SLOT is the
     # same 36: a rail fills it, which is the whole joint.
     gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
+    housed = gm_t / 2                        # the cross rail's outer 18
     # The tenon is POST_TENON_L long from the shoulder, which leaves it shy of
     # the top skin's underside by whatever that length does not reach. Derived
     # and not stated: it was a literal 1.0 while the bottom skin was 19, and the
@@ -451,6 +452,12 @@ def main() -> int:
     # in the registry as the old drawing length and is no longer used here.
     floor_z = -v["BOX_THK"] - v["LEG_BELOW_BOX"]
     post_bot = floor_z
+    # The two grids' Z bands, needed up here because the legs are NOTCHED to
+    # house the cross rails and the notch only exists where a rail is.
+    grid_hi_top = -v["BOX_THK"] - v["BASE_BOX_GAP"]
+    grid_lo_bot = floor_z + v["BASE_FLOOR_CLEAR"]
+    rail_bands = ((grid_lo_bot, grid_lo_bot + gm_h),
+                  (grid_hi_top - gm_h, grid_hi_top))
     ledge_z = -v["BOX_THK"]          # the shoulder IS the bottom skin's underside
     hc = v["TENON_HOLE_CLEAR"]
     pwy = v["POST_W_Y"]
@@ -478,15 +485,34 @@ def main() -> int:
     # screenshot, and it also hid the joint this model exists to show.
     strip = (pwx - gm_t) / 2             # one outer strip, 18 of the 72
 
-    def leg_strips(nm, group, colour, px0, px1, py0, py1, z0, z1, d=""):
+    def leg_strips(nm, group, colour, px0, px1, py0, py1, z0, z1, notch, d=""):
+        """Both outer strips of a leg, with the cross rail's housing cut out.
+
+        `notch` is which face is notched - "front" on a front leg, "back" on a
+        rear one. The housing is only `housed` deep and only where a cross rail
+        actually is, so that face is drawn as the Z segments BETWEEN the two
+        rail bands. Drawing the strip whole instead put the rail's outer
+        lamination inside the leg, which is what he caught in the model.
+        """
+        ny0, ny1 = (py1 - housed, py1) if notch == "front" else (py0, py0 + housed)
         for side, sx0 in (("outer", px0), ("inner", px1 - strip)):
+            by_a, by_b = (py0, py1 - housed) if notch == "front" else (py0 + housed, py1)
             box(f"{nm}, {side} strip", group, colour,
-                sx0, py0, z0, sx0 + strip, py1, z1, d=d)
+                sx0, by_a, z0, sx0 + strip, by_b, z1, d=d)
+            edges = [z0] + [z for band in rail_bands for z in band] + [z1]
+            for za, zb in zip(edges[0::2], edges[1::2]):
+                if zb - za < 1e-9:
+                    continue
+                box(f"{nm}, {side} strip at the housing", group, colour,
+                    sx0, ny0, za, sx0 + strip, ny1, zb,
+                    d=f"the {housed:g} the cross rail is housed into - present "
+                      f"only where there is no rail")
 
     holes_xy = []
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         leg_strips(nm, "posts", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
+                   "back" if "back" in nm else "front",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
                      f"middle laminations are the slot. The shoulder bears the box")
         leg_rects.append((px0, px1, py0, py1))
@@ -533,7 +559,7 @@ def main() -> int:
     for nm, x0, x1 in (("Leg, rear left", web - ledge, web + tcx),
                        ("Leg, rear right", W - web - tcx, W - web + ledge)):
         leg_strips(nm, "base", 0x8A5A2B, x0, x1, web - ledge, web + tb,
-                   floor_z, -v["BOX_THK"],
+                   floor_z, -v["BOX_THK"], "back",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
                      f"the grids and the back shear wall, NOT the box")
         leg_rects.append((x0, x1, web - ledge, web + tb))
@@ -577,11 +603,28 @@ def main() -> int:
                 x0, by0 + housed, z0, x1, by1 - housed, z1,
                 d=f"{gm_t:g} x {gm_h:g} on edge - it fills the legs' middle slot "
                   f"and butts the cross rails' inner faces")
-        for nm, y0, y1 in (("back", by0, by0 + gm_t), ("front", by1 - gm_t, by1)):
-            box(f"Grid rail, {nm} ({which})", "base", 0x3F8F5B,
-                bx0, y0, z0, bx1, y1, z1,
-                d=f"{gm_t:g} x {gm_h:g} on edge, FULL WIDTH - outer {housed:g} "
-                  f"housed in the legs, inner {housed:g} spanning between them")
+        # A CROSS RAIL IS ITS TWO LAMINATIONS DOING DIFFERENT JOBS - his catch
+        # on the model, 2026-10-15. The OUTER 18 runs the full width, through the
+        # notch in every leg it passes. The INNER 18 only spans BETWEEN the legs:
+        # it is not housed and it does not pass through anything. Drawn as one
+        # 36 block it ran the whole rail through the legs, which is not the joint.
+        for nm, y0, side in (("back", by0, "rear"), ("front", by1 - gm_t, "front")):
+            box(f"Grid rail, {nm} outer lamination ({which})", "base", 0x3F8F5B,
+                bx0, y0 if nm == "back" else y0 + housed, z0,
+                bx1, y0 + housed if nm == "back" else y0 + gm_t, z1,
+                d=f"{housed:g} x {gm_h:g}, FULL WIDTH - this is the half that is "
+                  f"housed in the legs")
+            on_this_side = sorted(r for r in leg_rects
+                                  if (r[2] <= by0 + 1e-9) == (side == "rear"))
+            spans = [bx0] + [x for r in on_this_side for x in (r[0], r[1])] + [bx1]
+            for xa, xb in zip(spans[0::2], spans[1::2]):
+                if xb - xa < 1e-9:
+                    continue
+                box(f"Grid rail, {nm} inner lamination ({which})", "base", 0x2F6F47,
+                    xa, y0 if nm == "front" else y0 + housed, z0,
+                    xb, y0 + housed if nm == "front" else y0 + gm_t, z1,
+                    d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs and is "
+                      f"not housed in any of them")
 
     # The two shear walls, a T in plan: the centreline one runs back to the back
     # centre leg, which is the box's own rear support, so the wall lands under

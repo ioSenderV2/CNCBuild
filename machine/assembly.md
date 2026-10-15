@@ -962,9 +962,12 @@ nearly every part of this frame is the same 36 of the same plywood and the bound
 worth seeing. The wall's **lip shares the wall's colour**: it is the same sheet, not another piece.
 
 NOTE: **A leg is drawn as its two outer strips with the slot open between them**, so the rail at each
-grid, the filler and the wall are all seen sitting in it. **The cross rails' 18 of housing is not
-drawn** — the same as the rib notches, which the model has never drawn either, because a housing
-removes no envelope.
+grid, the filler and the wall are all seen sitting in it. **The cross rails' housing is drawn too** —
+each strip's notched face is cut into the segments between the two rail bands, so the rail's outer
+lamination passes through real holes rather than through solid leg.
+
+NOTE: **The housing takes nothing off the shoulder.** It is only as tall as a rail, and the nearest
+rail's top is 10 below the box, so the leg is full depth where the box lands on it.
 
 #### What the base is
 
@@ -1014,7 +1017,7 @@ rails and two cross rails**, and the wall carries the middle.
 | Joint | How |
 |---|---|
 | **Fore-aft rails to the legs** | **The same as the wall: they fill the legs' middle slot** — the two centre laminations. One slot per leg, carrying the lower rail, the upper rail and, in the rear middle leg, the wall |
-| **Cross rails to the legs** | **Notch the legs' OUTER faces** — the back of the rear legs, the front of the front legs — **18 deep**, so the rail's **outer 18 fills the notch and its inner 18 spans between the legs**. The rail runs the base's full width and its outer face finishes flush with the legs' |
+| **Cross rails to the legs** | **A cross rail is its two laminations doing different jobs.** The **outer 18 runs the full width**, through a notch cut 18 deep in every leg it passes — the back of the rear legs, the front of the front legs — and finishes flush with their outer faces. The **inner 18 only spans between the legs**: it is not housed and passes through nothing. So the front rail has one inner segment and the back rail has two |
 | **Fore-aft rail to cross rail, inside a leg** | **The cross rail wins — his call** — and the fore-aft rails butt its inner face. Both want the leg's outer 18 of slot, and the cross rail is the one that has to be continuous across the whole width, since the central wall's front notch rides over it |
 
 So the fore-aft rails are **1223** between the cross rails rather than the base's full depth, and
