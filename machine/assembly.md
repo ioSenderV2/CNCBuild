@@ -925,8 +925,11 @@ is to hold five legs in position, three of which the box lands on.
 
 | | |
 |---|---|
+| **Top of the box** | **1016 — 40"**, his, and it is the figure the base's whole height hangs off. The work surface lands **66 above that at 1082**, because the tee track and two MDF sheets stand on the skin |
+| **Legs below the box** | **874** from the box's underside to the floor |
 | **Lower grid** | its **underside 100 above the floor** — set by the pallet jack and nothing else, so the forks go under it with the jack lowered |
 | **Upper grid** | its **top 10 below the box's underside** |
+| **The two side volumes** | **564 of clear height** between the grids. On 2x6 members it would be 484 |
 | **Both grids together** | have to carry **800 lb** on a pallet jack: box, sand, machine and base at once. His budget, offered with a question mark, so it is a figure to design past |
 | **Five legs** | three at the back — left, centre, right — and two at the front. The box sits on **front left, front right and back centre**; the two rear corner legs carry the grids and the back shear wall |
 

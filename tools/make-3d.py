@@ -443,11 +443,18 @@ def main() -> int:
     # and not stated: it was a literal 1.0 while the bottom skin was 19, and the
     # measured 18 made the real clearance 0 until POST_TENON_L came down to 116.
     post_top = -v["BOX_THK"] + v["POST_TENON_L"]
-    post_bot = post_top - v["POST_STUB_L"]
+    # THE LEGS RUN TO THE FLOOR NOW, not to a drawing stub. The floor's Z comes
+    # off SURFACE_H, which is a PLACEHOLDER - see its note. POST_STUB_L is left
+    # in the registry as the old drawing length and is no longer used here.
+    floor_z = -v["BOX_THK"] - v["LEG_BELOW_BOX"]
+    post_bot = floor_z
     ledge_z = -v["BOX_THK"]          # the shoulder IS the bottom skin's underside
     hc = v["TENON_HOLE_CLEAR"]
+    pwy = v["POST_W_Y"]
 
-    # Each post: (tenon rect, full-section rect) in machine x/y.
+    # Each post: (tenon rect, full-section rect) in machine x/y. The two REAR
+    # CORNER legs carry no tenon - the box lands on three legs only - so they
+    # have no entry here and are drawn with the base below.
     posts = [
         ("Post, front left", (web, web + tcx, D - web - tcy, D - web),
          (web - ledge, web + tcx, D - web - tcy, D - web + ledge)),
@@ -457,11 +464,14 @@ def main() -> int:
          (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
     ]
     holes_xy = []
+    leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         box(nm + " tenon", "posts", 0x9C6B3C, tx0, ty0, ledge_z, tx1, ty1, post_top,
             d="location only - carries no vertical load, that is all on the shoulder")
         box(nm, "posts", 0x7A5230, px0, py0, post_bot, px1, py1, ledge_z,
-            d="cedar 4x4, top 10in drawn - the shoulder bears the whole box")
+            d=f"laminated plywood leg, {pwx:g} x {pwy:g} - four 18 strips, the "
+              f"lamination across the machine. The shoulder bears the whole box")
+        leg_rects.append((px0, px1, py0, py1))
         # the hole the tenon passes through, cut TENON_HOLE_CLEAR generous a side
         holes_xy.append([[tx0 - hc, ty0 - hc], [tx1 + hc, ty0 - hc],
                          [tx1 + hc, ty1 + hc], [tx0 - hc, ty1 + hc]])
@@ -471,6 +481,71 @@ def main() -> int:
           holes=holes_xy, plane="xy",
           d="19 Baltic birch, resting on the three post shoulders - the holes "
             "are the tenons plus 1 a side")
+
+    # ---- the base: two grids holding five legs ---------------------------
+    # HIS SPEC 2026-10-15, and the definition is the point: the base is not a
+    # table that happens to have legs, it is TWO GRIDS whose job is holding five
+    # legs in position - three of which the box lands on.
+    #
+    # 🔴 THE UPPER GRID MUST NEVER TOUCH THE BOX. BASE_BOX_GAP is the whole
+    # three-point mount: the box contacts three leg tops and nothing else, and
+    # the moment the grid touches it there is a fourth and fifth contact point
+    # and the failure is SILENT - nothing shows but the Y beams going out of
+    # coplanar. The gap is drawn so the model shows it rather than implying it.
+    gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
+    grid_hi_top = -v["BOX_THK"] - v["BASE_BOX_GAP"]
+    grid_lo_bot = floor_z + v["BASE_FLOOR_CLEAR"]
+    grids = (("upper", grid_hi_top - gm_h, grid_hi_top),
+             ("lower", grid_lo_bot, grid_lo_bot + gm_h))
+
+    # The two REAR CORNER legs. They carry no tenon - the box lands on three
+    # legs only - so they stop at the box's underside and hold up the grids and
+    # the back shear wall. Drawn at the same stations as the front pair.
+    for nm, x0, x1 in (("Leg, rear left", web - ledge, web + tcx),
+                       ("Leg, rear right", W - web - tcx, W - web + ledge)):
+        box(nm, "base", 0x7A5230, x0, web - ledge, floor_z, x1, web + tb,
+            -v["BOX_THK"],
+            d=f"laminated plywood leg, {pwx:g} x {pwy:g} - carries the grids and "
+              f"the back shear wall, NOT the box")
+        leg_rects.append((x0, x1, web - ledge, web + tb))
+
+    # Grid members, on edge. THE THREE FORE-AFT RAILS RUN FULL LENGTH because
+    # they pass THROUGH the legs as a through tenon left open at glue-up; the
+    # cross rails therefore come in SEGMENTS between them, which is what a real
+    # frame does and what stops this drawing solids inside each other.
+    bx0, bx1 = web - ledge, W - web + ledge          # the base's outer envelope
+    by0, by1 = web - ledge, D - web + ledge
+    fore_aft = ((bx0, bx0 + gm_t), (W / 2 - gm_t / 2, W / 2 + gm_t / 2),
+                (bx1 - gm_t, bx1))
+    for which, z0, z1 in grids:
+        for x0, x1 in fore_aft:
+            box(f"Grid rail, fore-aft ({which})", "base", 0x8B6A3A,
+                x0, by0, z0, x1, by1, z1,
+                d=f"{gm_t:g} x {gm_h:g} plywood lamination on edge, full length "
+                  f"- it passes THROUGH the legs")
+        for (_, xa), (xb, _) in zip(fore_aft, fore_aft[1:]):
+            for nm, y0, y1 in (("back", by0, by0 + gm_t),
+                               ("front", by1 - gm_t, by1)):
+                box(f"Grid rail, {nm} ({which})", "base", 0x8B6A3A,
+                    xa, y0, z0, xb, y1, z1,
+                    d=f"{gm_t:g} x {gm_h:g} on edge, between the fore-aft rails")
+
+    # The two shear walls, a T in plan: the centreline one runs back to the back
+    # centre leg, which is the box's own rear support, so the wall lands under
+    # the load it braces. They are what leaves the left and right volumes open.
+    # The walls sit BETWEEN the grids in Z, so they never overlap a rail. The
+    # centreline one stops at the back wall's inner face rather than running
+    # through it - the T is a joint, not two solids in the same place.
+    sw_z0, sw_z1 = grid_lo_bot + gm_h, grid_hi_top - gm_h
+    box("Shear wall, back", "base", 0xC9A66B,
+        bx0, by0, sw_z0, bx1, by0 + gm_t, sw_z1,
+        d="rear left leg to rear right leg, taking in the back centre one - "
+          "glue plus screws at about 150 all the way round")
+    box("Shear wall, centreline", "base", 0xC9A66B,
+        W / 2 - gm_t / 2, by0 + gm_t, sw_z0, W / 2 + gm_t / 2, by1, sw_z1,
+        d="fore-aft on the centreline, from the front back to the back centre "
+          "leg - which is the box's own rear support, so it lands under the "
+          "load it braces")
 
     # ---- the perimeter inner webs ----------------------------------------
     # The INNER lamination of each wall, between the skins. It stays 19 while
@@ -1941,7 +2016,8 @@ def main() -> int:
         "box": "Torsion box: bottom skin and tongues",
         "topskin": "Torsion box: TOP SKIN (hide to see the bays)",
         "grid": "Torsion box: ribs and perimeter webs",
-        "posts": "The three posts, top 10in",
+        "posts": "The three legs the box lands on",
+        "base": "The base: two grids, the rear legs, the two shear walls",
         "bed": "Tee track bed",
         "spoil": "MDF spoilboard (hide to see the track)",
         # FLAG: NOT "M8 flange bolt heads", WHICH IS WHAT IT SAID. The hover line
