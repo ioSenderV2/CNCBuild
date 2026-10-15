@@ -558,16 +558,16 @@ def main() -> int:
         d="fore-aft on the centreline, the base's full height, from the front "
           "back to the back centre leg - which is the box's own rear support, "
           "so it lands under the load it braces")
-    # OPEN: THE LIP STOPS UNDER THE UPPER GRID. The front 36 is wanted by the
-    # wall AND by the upper front rail, exactly as it is at the bottom, and only
-    # the bottom notch has been specified - so this is drawn short rather than
-    # inventing a second notch.
-    box("Shear wall lip, over the front rail", "base", 0xC9A66B,
+    # TWO NOTCHES, ONE AT EACH FRONT CORNER - his, 2026-10-15. The front 36 is
+    # wanted by the wall and by a front cross rail at BOTH grids, so the wall is
+    # notched gm_t x gm_h at the bottom front and again at the top front. What
+    # is left between them is this lip, which is exactly BASE_VOLUME_H tall.
+    box("Shear wall lip, between the front rails", "base", 0xC9A66B,
         W / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
         W / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
-        d="what the front lower notch leaves - it sits on the front rail and "
-          "finishes flush with its outer face. Two long screws through the rail "
-          "into the wall's end")
+        d="what the two front notches leave - it finishes flush with the front "
+          "rails' outer faces. The lower notch SITS ON its rail; two long screws "
+          "through each rail into the wall's end")
 
     # ---- the perimeter inner webs ----------------------------------------
     # The INNER lamination of each wall, between the skins. It stays 19 while

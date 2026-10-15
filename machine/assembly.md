@@ -970,7 +970,7 @@ is in it.
 |---|---|
 | **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
 | **Back wall to the legs** | **Screwed to the back faces of all three rear legs.** A face joint, nothing let in |
-| **Central wall at the front** | **A notch in the wall's front LOWER corner, 36 across by 100 up**, so it goes over the front rail: the notch shoulder sits on the rail's top edge and the wall's end face finishes **flush with the outside of the rail**. **Two long screws through the rail into the end of the wall.** The rail is not touched but for those two holes |
+| **Central wall at the front** | **A notch at EACH front corner, 36 across by 100, bottom and top** — one per grid, because a front cross rail wants that 36 at both levels. The **lower** notch's shoulder sits on its rail; what is left between the two notches is a **564 lip** finishing **flush with the rails' outer faces**. **Two long screws through each rail into the end of the wall.** The rails are not touched but for those holes |
 
 **All five legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
 build order simple: nothing has to be inserted while the glue is wet, so "five legs, then the base"
@@ -993,11 +993,13 @@ notched to let it through; the only cutting a rail ever takes is two screw holes
 stating as a rule rather than three times as a detail, because it is what makes the frame a frame —
 every rail is continuous end to end in both grids.
 
-OPEN: **The same 36 is wanted twice at the front, and only the bottom is settled.** At the lower grid
-the notch sorts it out. At the **upper** grid the wall and the **upper front cross rail** both want
-that front 36 — so either the wall takes a second notch at its front top corner, or the upper front
-rail stops at the wall and butts it either side. The model draws the lip **stopping under the upper
-grid** rather than inventing one of those.
+**The same 36 is wanted at the front by both grids, so there are two notches** — his, and it is the
+consistent answer: the rails stay whole at both levels and the wall gives way twice. The lip between
+them is **564**, the same as the clear volume height, which is the check that the two notches are in
+the right places.
+
+NOTE: **Two screws through the upper rail as well**, on the same reasoning as the lower one. The
+lower notch also **bears** on its rail; the upper one only locates.
 
 | Member | |
 |---|---|
