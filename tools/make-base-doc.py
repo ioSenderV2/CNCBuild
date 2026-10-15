@@ -379,7 +379,25 @@ grain butts the back of it</td></tr>
 <p>🔴 <b>One rule covers all of it: every rail stays whole and whatever meets it
 gives way.</b> The only cutting a rail ever takes is screw holes.</p>
 
-<h2>5 &mdash; Order</h2>
+<h2>5 &mdash; The two side openings</h2>
+<p>Each side of the base is open between the grids. Standing at one side, the
+rectangle is:</p>
+<table>
+<tr><th>Fore-aft</th><td><b>{v['BAY_OPEN_FORE_AFT']:g}</b> &mdash; rear leg's back
+face to front leg's front face. <b>The rails take nothing off it</b>: they run
+the full length inside the legs' slots, so it is the legs that bound it</td></tr>
+<tr><th>Height</th><td><b>{v['BASE_VOLUME_H']:g}</b> &mdash; lower rail's top to
+upper rail's underside</td></tr>
+<tr><th>Depth in</th><td><b>{v['BAY_OPEN_DEPTH']:g}</b> &mdash; legs' inner faces
+to the near face of the central wall</td></tr>
+</table>
+<p>🔴 <b>The central wall is a backstop, so these are two separate volumes and
+not one through-space.</b> The back wall closes the rear face as well, so a
+carcase goes in from the side only.</p>
+<p>Keep the carcases removable: the bottom skin's sand ports drain downward and
+have to be reachable.</p>
+
+<h2>6 &mdash; Order</h2>
 <ol>
 <li><b>Laminate all five legs, with a spacer in every slot.</b> Cut each spacer
 from the stock that will fill that slot, wax or tape it so it does not glue in,

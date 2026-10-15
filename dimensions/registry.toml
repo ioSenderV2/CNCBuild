@@ -2961,6 +2961,16 @@ expr = "LEG_BELOW_BOX - BASE_BOX_GAP - GRID_MEMBER_H - BASE_FLOOR_CLEAR - GRID_M
 note = "564 - the CLEAR HEIGHT of the two side volumes, between the upper grid's underside and the lower grid's top. SETTLED: IT IS THE FIGURE THE MEMBER CHOICE WAS MADE ON - he wants these volumes as large as possible, the two grids eat 2 x GRID_MEMBER_H of the available height, and that is why 100 beat a 2x6's 140 by 80. On 2x6 members this would be 484 instead."
 
 [[dim]]
+sym = "BAY_OPEN_FORE_AFT"
+expr = "POST_SPAN_FORE_AFT - POST_W_Y"
+note = "1087 - the fore-aft length of the OPENING in each side of the base, from the rear leg's back face to the front leg's front face. His question 2026-10-15: standing at one side, what is the rectangle a cabinet slides into. SETTLED: THE LEGS ARE WHAT BOUND IT, NOT THE RAILS - the rails run the base's full length inside the legs' slots, so they take nothing off this; the legs' POST_W_Y does. NOTE: THE CARCASES ARE MEANT TO COME OUT - see the sand-port drain plan, which needs the bottom skin reachable."
+
+[[dim]]
+sym = "BAY_OPEN_DEPTH"
+expr = "(BASE_W - GRID_MEMBER_T) / 2 - POST_W_X"
+note = "539.5 - how far into each side opening a cabinet can go: from the legs' inner faces to the near face of the central shear wall. FLAG: THE WALL IS THE BACKSTOP, so the two openings are separate volumes and not one through-space. The .5 is real and comes from the central wall straddling the centreline on an even BASE_W."
+
+[[dim]]
 sym = "BASE_W"
 expr = "BOX_W + 2 * T_BOX_TONGUE"
 note = "1259 - the base's outer envelope, and the same figure both ways because the box is square. SETTLED: IT IS THE LEGS' OUTER FACES, which stand flush with the tongues' outer faces - so it is the same number as BACK_LAM_L and for the same reason, not by coincidence."
