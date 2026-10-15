@@ -2894,6 +2894,25 @@ expr = "POST_W_Y - T_BOX_LEDGE"
 note = "42 - the back centre tenon front-to-back, that post being ledged on ONE face only, so its tenon is POST_W x this: 86 x 42. Same arithmetic as TENON_CORNER and kept as its own symbol because the two are the same number for different reasons - one face ledged against two - and would part company the moment either post was ledged differently."
 
 [[dim]]
+sym = "BASE_FLOOR_CLEAR"
+value = 100
+provenance = "pinned"
+note = "100 - the UNDERSIDE of the base's lower grid above the floor. His, 2026-10-15. SETTLED: IT IS SET BY THE PALLET JACK and nothing else: the forks have to go under the grid with the jack lowered, so this must beat the jack's lowered fork height. OPEN: A STANDARD HAND JACK LOWERS TO ABOUT 85 and a low-profile one to about 51, but those are catalogue figures - CALIPER HIS OWN JACK and put the reading here, because the whole clearance is spent on it."
+
+[[dim]]
+sym = "BASE_BOX_GAP"
+value = 10
+provenance = "pinned"
+note = "10 - the air between the TOP of the base's upper grid and the UNDERSIDE of the torsion box. His, 2026-10-15, and it agrees with what assembly.md already demanded. FLAG: THIS GAP IS THE THREE-POINT MOUNT. The box touches the base at three leg tops and NOWHERE else; the moment the upper grid touches the box there is a fourth and fifth contact point, the mount stops being determinate, AND THE FAILURE IS SILENT - nothing shows but the two Y beams drifting out of coplanar. NOTE: KEEP IT INSPECTABLE - a feeler or a paper strip has to slide between grid and box anywhere along it, which is why the figure is 10 and not 1."
+
+[[dim]]
+sym = "BASE_LIFT_BUDGET"
+value = 800
+provenance = "nominal"
+unit = "lb"
+note = "800 lb - what the base's grids have to carry when a pallet jack lifts the lot: box, sand, machine and base together. HIS BUDGET 2026-10-15, offered with a question mark, so it is a figure to design past rather than one to design to. NOTE: THE UNIT IS lb, not mm - it is here because the grid members are sized against it and the comparison should not have to be re-done from scratch."
+
+[[dim]]
 sym = "POST_SPAN_FRONT"
 expr = "BOX_W + 2 * T_BOX_TONGUE - POST_W_X"
 note = "1173 - between the TWO FRONT LEGS, centre to centre. FLAG: IT IS WIDER THAN THE SKIN LESS A POST, which is the obvious wrong answer and was written here once: each post's OUTER face is flush with the tongue's outer face, so the two outer faces are BOX_W + 2 x T_BOX_TONGUE apart - 1259 - and the centres sit POST_W / 2 inside those. NOTE: THE TENON CENTRES ARE NOT THESE - the ledge is cut on the outward faces, so each tenon sits T_BOX_LEDGE / 2 inboard of its post's centre and the tenon centres are 1089 apart."

@@ -30,7 +30,7 @@ is the full list.
 | Steppers | **2.2 N·m, NEMA 23 — four, one per axis.** **Y steppers at the FRONT** of the machine |
 | Y beams | Fixed — their end plates bolt to the torsion box. Only X, Y-carriage and Z move |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled**, 5.2 kg, on two 80 mm clamps |
-| Stands on | A sand-filled **torsion box** on **three of five laminated plywood legs**, on a 2x6 base frame that is also the pallet |
+| Stands on | A sand-filled **torsion box** on **three of five laminated plywood legs**, held by **two grids** whose lower one is also the pallet |
 
 ### Rails come from two suppliers
 
@@ -917,21 +917,75 @@ real weakness, racking, where a bolt through a face does not. Three things to co
 3. **Keep every gap well clear of the top**, where the ledge and the tenon are cut and the geometry
    assumes solid material.
 
+#### What the base is
+
+**Two grids that locate and constrain all five legs** — his, 2026-10-15. That is the whole
+definition: the base is not a table that happens to have legs, it is two horizontal grids whose job
+is to hold five legs in position, three of which the box lands on.
+
+| | |
+|---|---|
+| **Lower grid** | its **underside 100 above the floor** — set by the pallet jack and nothing else, so the forks go under it with the jack lowered |
+| **Upper grid** | its **top 10 below the box's underside** |
+| **Both grids together** | have to carry **800 lb** on a pallet jack: box, sand, machine and base at once. His budget, offered with a question mark, so it is a figure to design past |
+| **Five legs** | three at the back — left, centre, right — and two at the front. The box sits on **front left, front right and back centre**; the two rear corner legs carry the grids and the back shear wall |
+
+🔴 **The 10 is the three-point mount.** The box touches three leg tops and nothing else. The moment
+the upper grid touches the box there is a fourth and fifth contact point, the mount stops being
+determinate, **and the failure is silent** — nothing shows but the two Y beams drifting out of
+coplanar. Keep the gap **inspectable**: a feeler or a paper strip has to slide between grid and box
+anywhere along it, which is why it is 10 and not 1.
+
+#### Two shear walls, and two volumes left free
+
+| | |
+|---|---|
+| **Fore-aft wall** | on the **centreline**, from the front of the base back to the **back centre leg** — which is the box's rear support, so the wall lands under the load it braces |
+| **Back wall** | across the back, **left rear leg to right rear leg**, taking in the back centre leg on the way |
+
+They make a **T** in plan, which braces both directions, and that is what leaves the **left and right
+volumes completely open**. Those two volumes are **free for any use, independent of the base's and the
+box's function, and making them as large as possible is a stated goal** — which is what the member
+depth is really being chosen against.
+
 | Member | |
 |---|---|
-| **2x6 bottom frame** | locates the posts, **5/16" bolts** through post and frame, **two minimum per joint**. It is also the pallet |
-| Clearance beneath | high enough for a **pallet jack to enter and lift** |
-| **2x4 top frame** | ties the post tops together, the top chord for the shear walls. Sits **just shy of the bottom of the box** |
-| **Shear walls** | three plywood cabinet carcases — rear left, rear right, and one across the front between the two front posts, all openings facing **out** |
+| **Grid members** | OPEN: **2x6 or a 36 × 100 plywood lamination** — see below. Either way the grid **locates the legs**, and the lower one is also the pallet |
+| **Shear walls** | **two**, the T above. OPEN: the three cabinet carcases this file carried are superseded by the two walls and the two free volumes — what fills those volumes is now his to choose |
 
-FLAG: **The 2x4 top frame must never touch the box.** The moment it does there is a fourth and fifth
-contact point, the mount is no longer three-point, **and the failure is completely silent** — nothing
-but the Y beams drifting out of coplanar.
+#### 2x6 or a 36 × 100 plywood lamination
+
+**On section alone the 2x6 wins and it is not close.** A 2x6 is 38 × 140, so against a 36 × 100
+lamination it has about **2.9 times the second moment** and **2.1 times the section modulus** in
+bending. The two materials' stiffness along the member is close enough to call a wash — Doug fir and
+Baltic birch loaded in the plane of its plies are both of order 10 GPa — so the geometry is the
+answer.
+
+**And it does not matter, because neither member is working hard.** On the 800 lb budget, with a rail
+spanning about 1100 and taking half the lift as a point load, the bending stress comes out near
+**4 MPa** in the 2x6 and **8 MPa** in the lamination, against ultimates in the tens of MPa either
+way, and the mid-span sag is **under 0.6 mm** against **under 1.8 mm**. A base that is three-point
+mounted cannot pass its own sag to the box in any case — that is what the mount is for.
+
+So the choice goes on the three things that do bite:
+
+| | |
+|---|---|
+| 🔴 **The leg's mortise is already 36** | Two omitted strips leave a **36** slot. A 2x6 is **38** — so a 2x6 rail cannot pass through the leg without chopping the mortise wider, which gives up the whole reason the tenon was free |
+| **The side volumes** | 100 deep instead of 140 returns **40 per grid, 80 over the two** of clear height to the volumes he wants maximised |
+| **Dimensional behaviour** | Plywood does not crown, cup or twist. A 2x6 does, and **a twisted member in a grid whose only job is locating five legs is precisely the wrong failure** — the same argument that put the box on three points, except here the grid's own stability is the deliverable rather than something the mount protects against |
+
+**So: the lamination**, unless something else wants the depth. The 2x6's advantage is real and sits in
+a part of the design that has nothing to spend it on.
+
+FLAG: **Neither grid may ever touch the box.** The moment one does there is a fourth and fifth contact
+point, the mount is no longer three-point, **and the failure is completely silent** — nothing but the
+Y beams drifting out of coplanar.
 
 - **Clearance 10 mm or more**, not 1 mm.
-- **Keep the gap inspectable** — a feeler or a strip of paper must slide between box and frame at
+- **Keep the gap inspectable** — a feeler or a strip of paper must slide between box and grid at
   several points, years from now.
-- For transport, use **removable packers** set on the 2x4 frame, taken out on arrival. Not a
+- For transport, use **removable packers** set on the upper grid, taken out on arrival. Not a
   permanent catch.
 
 OPEN: **Open: the box's deflection between its three points under full sand load.** It sets the minimum
@@ -1050,14 +1104,14 @@ the single biggest lever on ever moving the machine.
 | **Posts to box** | **gravity and 99 mm of tenon** — the only non-positive joint in the stack |
 | Carcases to frames and posts | glued and screwed — positive |
 
-- **Two straps over the box, down to the 2x6 frame.** This is the restraint, and it is the only one —
+- **Two straps over the box, down to the lower grid.** This is the restraint, and it is the only one —
   nothing fastens the box to the posts. It is what covers both road shock and a lift taken under the
   box instead of the frame.
 - **Put the fork positions under or very near the three posts.** Add a cross member where the forks
   land if the layout does not cooperate.
 - **Drain the sand.** ~240 lb box becomes ~73 lb.
 - **The CG is high.** Long axis fore-aft, strapped. **Tipping is the hazard, not weight.**
-- **Set the removable packers on the 2x4 frame** before the move; take them out on arrival.
+- **Set the removable packers on the upper grid** before the move; take them out on arrival.
 
 **Weigh the assembly on a weighing pallet jack** when it is built, and put the figure in
 [`../commissioning/`](../commissioning/).
@@ -1074,7 +1128,7 @@ cutting or drilling:
 | The **4 × HGH20 block hole pattern** measured on the **X/Y** kit — not the Z kit | gates the sixteen M5 in each X end plate |
 | Whether the mill holds one height reference across **1210.73 mm** | gates the rear plate |
 | Whether X's **two** interposer rows at **105 and 135** both land over beam | gates X's bar |
-| The **grid spacing**, and the box's deflection between its three points | gates the skins and the 2x4 clearance |
+| The **grid spacing**, and the box's deflection between its three points | gates the skins and the upper grid's clearance |
 | The front/back **tongue** inconsistency | gates the box walls |
 | The **L-bracket** specification | gates the fin fixing |
 | How far past the front riser plane the **spindle** reaches | gates the fin's taper cut |
