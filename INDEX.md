@@ -74,7 +74,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [machine/egg-crate.md](machine/egg-crate.md)
 
   - [The ribs are egg crate - half-lapped both ways, not blocking](machine/egg-crate.md#the-ribs-are-egg-crate---half-lapped-both-ways-not-blocking)
-    - [Four things to get right](machine/egg-crate.md#four-things-to-get-right)
+    - [Five things to get right](machine/egg-crate.md#five-things-to-get-right)
     - [What the tenons ask of the grid](machine/egg-crate.md#what-the-tenons-ask-of-the-grid)
 
 ## [machine/gantry-beam-joint.md](machine/gantry-beam-joint.md)

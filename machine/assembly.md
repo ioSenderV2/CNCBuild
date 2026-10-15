@@ -676,13 +676,29 @@ seven passes each.
 5. **Overlap each pass by about a millimetre** and the floor needs no cleanup. Set the depth stop
    against a test cut **that you then measure**, not off the screw.
 
+**Prove the depth on a practice pair before the eight go in the clamp.** Cut two offcuts exactly the
+way the eight will be cut, then flip one, turn it 90° and cross the two at **every** station in turn:
+
+- **Press the rib down flat against the reference while you look.** A released rib bows slightly in
+  its own plane, enough to lift a station a millimetre off the table and show a step that is not
+  there. The box will press it far harder than your hand does.
+- Pressed flat, a correct pair reads **even at every station** — both bottom edges down, both top
+  edges flush, and the notch floors just meeting.
+- **Measure the notch depth on a released rib, never on the clamped stack.** 144 of plywood clamped
+  is stiff enough to read straight whatever the ribs do when they come out.
+
+**Bias the stop a touch deep.** The bottom skin is the reference the grid stands on, so a notch a
+few tenths over cannot lift anything — the rib still stands on the skin, both its edges still reach
+both skins, and all that is lost is contact notch floor to notch floor, which carries nothing. A
+notch a few tenths **under** holds its mating rib up off the skin, and that is a glue line you
+cannot get back. Aim half a millimetre over and let the rib's own bow live inside that.
+
 **Cut all eight from the same edge, then turn four of them over.** One direction has to be notched
 from the top edge and the other from the bottom, and that is free here because the notch is
 *exactly* half of 100: a rib turned upside down is a rib notched from the other edge, and the
 offsets are symmetric end to end as well.
 
-**Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin along
-its whole length.
+**Notch depth half, and err over rather than under** — see the bias above.
 
 ### What a millimetre of error actually costs
 
@@ -694,10 +710,13 @@ rib's notch puts it. That is why three of the four ways to be a millimetre out c
 | **A position off by 1, on all eight** — the stack shifted against the stop | **Nothing jams.** All eight are identical, so the grid is still self-consistent and that rib line simply lands 1 off the drawing. The bays either side go 220 and 218. Everything that measures off the last rib line has 36 of room, the sand ports are 25.4 in a 219 bay with 97 clear either side, and the back tenon blocks come out of the scrap bin and get cut to fit |
 | **One rib of the eight off** — it moved in the clamp | **That rib will not drop in.** Its notches fight the grid the other seven define, so it gets pared or recut. This is the error the stop block and the do-not-unclamp rule exist for |
 | **A notch too wide by 1** | Slop at every crossing, so the grid stops holding itself square. Not structural, and the glue fills it — square the grid on the reference before the skins go on. **Too narrow by 1 is worse**: it splits a rib, or the grid will not go together |
-| 🔴 **A notch too deep by 1** | **The only one that touches the structure.** That set sits low and loses the edge-to-face glue line to a skin along its whole length |
+| **A notch too deep by 1** | **Harmless, and it is the side to err on.** The rib stands on the bottom skin, so it cannot sink: both its edges still reach both skins, and all that is lost is contact notch floor to notch floor, which carries nothing |
+| 🔴 **A notch too shallow by 1** | **The only one that touches the structure.** It holds its mating rib 1 up off the bottom skin, so the top skin bears on that set while sitting clear of the other four and of the perimeter webs |
+| **A step at one station that closes when you press the rib flat** | Not an error at all — the rib's own bow lifting it off the reference. Check every station pressed flat |
 
-**So the figure to get right at setup is the depth stop, with a test cut you then measure.** The stop
-block's position is forgiving; the depth is not.
+**So the figure to get right at setup is the depth stop, with a test cut you then measure** — and it
+only has to be right in **one direction**. The stop block's position is forgiving, over-depth is
+forgiving, under-depth is not.
 FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
 egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
 **This is the only cut that tells a rib which way up it goes**, so it is done after the notching, on

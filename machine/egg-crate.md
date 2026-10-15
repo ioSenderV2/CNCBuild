@@ -31,7 +31,7 @@ spacing with no clamps, so the whole grid can be checked flat on a reference bef
 on; and only the notch positions are critical, where blocking needs every piece cut to length with
 the errors accumulating.
 
-#### Four things to get right
+#### Five things to get right
 
 1. **Cut the notches to 18 mm — the sheets in hand mic 18, to five thousandths.** Sheet sold at a
    nominal commonly runs under and varies between sheets, so test-cut on scrap **from the same sheet**
@@ -39,17 +39,31 @@ the errors accumulating.
    set by where the nibbling stops rather than by a cutter's thickness** - see the notch procedure in
    [`assembly.md`](assembly.md#cut-the-notches-with-all-eight-ribs-clamped-as-one-stack), which cuts
    all eight ribs as one clamped stack on the sliding miter saw.
-2. OPEN: **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
-   contact with a skin **along its whole length** - which is the glue joint the whole sandwich
-   depends on. **Exactly half is also what makes the eight ribs one part**: at 50 of 100 a rib turned
-   upside down is a rib notched from the other edge, so one stack serves both directions.
-3. FLAG: **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
+2. **Notch depth half, and the two directions of error are not symmetric - err DEEP.** SETTLED:
+   **This read the other way round until 2026-10-15 and it was wrong.** It said a set cut slightly
+   deep "sits low and loses contact with a skin along its whole length". It cannot: **the ribs stand
+   on the bottom skin**, so an over-deep notch leaves the rib exactly where it was and only opens a
+   gap notch floor to notch floor, which carries nothing - the structural glue lines are rib edge to
+   skin. It is **under**-depth that holds a mating rib up off the bottom skin and leaves the top skin
+   bearing on half the grid. FLAG: **The claim survived because nothing had tested it** - it was
+   written from the shape of the joint rather than from a part, and his practice pair is what closed
+   it. **Exactly half is still what makes the eight ribs one part**: at 50 of 100 a rib turned upside
+   down is a rib notched from the other edge, so one stack serves both directions.
+3. **A step at a crossing that closes when the rib is pressed flat is the rib's bow, not the saw.**
+   SETTLED: **His test, 2026-10-15.** A released rib bows slightly in its own plane - plausibly from
+   the notching itself, which unbalances the sheet's locked-in stresses toward the notched edge -
+   and that lifts a station off the reference and shows a step that is not in the part. Two
+   consequences: **check every crossing pressed flat**, and **measure notch depth on a released rib
+   rather than on the clamped stack**, because 144 of plywood in clamps reads straight whatever the
+   ribs do when they come out. NOTE: **The bow does not survive assembly** - 32 crossings and two
+   perimeter webs pull every rib straight, and then both skins lock it.
+4. FLAG: **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
    egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
    Every bay has its own port now, so this is no longer what makes draining possible - it is kept
    because it is one more cut on the stack and it lets a residue find a neighbouring port. **It is
    also the only cut that tells a rib which way up it goes**, so it comes after the notching. See
    Transport.
-4. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
+5. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
    action lives. Screws through the skins into the ribs are the simplest way to get uniform
    pressure, and they can stay in.
 
