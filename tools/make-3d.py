@@ -538,7 +538,7 @@ def main() -> int:
     holes_xy = []
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
-        leg_strips(nm, "posts", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
+        leg_strips(nm, "legs", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
                    "back-both" if "back" in nm else "front",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
                      f"middle laminations are the slot. The shoulder bears the box")
@@ -551,7 +551,7 @@ def main() -> int:
         for sx0 in (px0, px1 - strip):
             if not (tx0 - 1e-9 <= sx0 and sx0 + strip <= tx1 + 1e-9):
                 continue                       # this strip is inside the ledge
-            box(nm + " tenon tab", "posts", 0x9C6B3C,
+            box(nm + " tenon tab", "legs", 0x9C6B3C,
                 sx0, ty0, ledge_z, sx0 + strip, ty1, post_top,
                 d=f"{strip:g} x {ty1 - ty0:g} - location only, it carries no "
                   f"vertical load. All of that is on the shoulder")
@@ -589,7 +589,7 @@ def main() -> int:
     # two legs quietly became 60 wide.
     for nm, x0, x1 in (("Leg, rear left", web - ledge, web - ledge + pwx),
                        ("Leg, rear right", BW - web + ledge - pwx, BW - web + ledge)):
-        leg_strips(nm, "base", 0x8A5A2B, x0, x1, web - ledge, web + tb,
+        leg_strips(nm, "legs", 0x8A5A2B, x0, x1, web - ledge, web + tb,
                    floor_z, -v["BOX_THK"], "back-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
                      f"the grids and the back shear wall, NOT the box")
@@ -630,7 +630,7 @@ def main() -> int:
     for which, z0, z1 in grids:
         for x0, x1 in ((bx0 + strip, bx0 + strip + gm_t),
                        (bx1 - strip - gm_t, bx1 - strip)):
-            box(f"Grid rail, fore-aft ({which})", "base", 0x3C7DA5,
+            box(f"Grid rail, fore-aft ({which})", "rails", 0x3C7DA5,
                 x0, by0 + housed, z0, x1, by1 - housed, z1,
                 d=f"{gm_t:g} x {gm_h:g} on edge - it fills the legs' middle slot "
                   f"and butts the cross rails' inner faces")
@@ -643,7 +643,7 @@ def main() -> int:
         # them at both grids - his, 2026-10-15 - so there is nothing to draw
         # there but the wall, which runs continuously past both grid levels.
         for nm, y0, side in (("front", by1 - gm_t, "front"),):
-            box(f"Grid rail, {nm} outer lamination ({which})", "base", 0x3F8F5B,
+            box(f"Grid rail, {nm} outer lamination ({which})", "rails", 0x3F8F5B,
                 bx0 + strip, y0 if nm == "back" else y0 + housed, z0,
                 bx1 - strip, y0 + housed if nm == "back" else y0 + gm_t, z1,
                 d=f"{housed:g} x {gm_h:g} - the half housed in the legs. It "
@@ -655,7 +655,7 @@ def main() -> int:
             for xa, xb in zip(spans[0::2], spans[1::2]):
                 if xb - xa < 1e-9:
                     continue
-                box(f"Grid rail, {nm} inner lamination ({which})", "base", 0x2F6F47,
+                box(f"Grid rail, {nm} inner lamination ({which})", "rails", 0x2F6F47,
                     xa, y0 if nm == "front" else y0 + housed, z0,
                     xb, y0 + housed if nm == "front" else y0 + gm_t, z1,
                     d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs and is "
@@ -686,7 +686,7 @@ def main() -> int:
     # BASE_BOX_GAP shy of the box, and the back cross rails present only their
     # INNER lamination, butting it.
     bw = v["T_BACK_WALL"]
-    box("Shear wall, back", "base", 0xD4793B,
+    box("Shear wall, back", "walls", 0xD4793B,
         bx0 + strip, by0, sw_z0, bx1 - strip, by0 + bw, sw_z1,
         d=f"{bw:g} thick, ONE sheet - IT REPLACES THE BACK CROSS RAILS at both "
           f"grids. It stops one lamination short at each end so its end grain "
@@ -700,7 +700,7 @@ def main() -> int:
     # structure: at CENTRE_WALL_H both of its laminations come off one 5 x 5,
     # where at the back wall's height they take two. The difference comes off
     # the TOP, where the wall is free and nothing bears on it.
-    box("Shear wall, centreline", "base", 0xC9A66B,
+    box("Shear wall, centreline", "walls", 0xC9A66B,
         BW / 2 - gm_t / 2, by0 + bw, sw_z0,
         BW / 2 + gm_t / 2, by1 - gm_t, sw_z0 + v["CENTRE_WALL_H"],
         d="fore-aft on the centreline, the base's full height, from the front "
@@ -710,7 +710,7 @@ def main() -> int:
     # wanted by the wall and by a front cross rail at BOTH grids, so the wall is
     # notched gm_t x gm_h at the bottom front and again at the top front. What
     # is left between them is this lip, which is exactly BASE_VOLUME_H tall.
-    box("Shear wall lip, between the front rails", "base", 0xC9A66B,
+    box("Shear wall lip, between the front rails", "walls", 0xC9A66B,
         BW / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
         BW / 2 + gm_t / 2, by1 - housed, grid_hi_top - gm_h,
         d=f"what the two front notches leave, each {housed:g} across now - it "
@@ -738,7 +738,7 @@ def main() -> int:
         # depth sits inside the wall - which is exactly what the clash list
         # reported, 36 x 18 x 564, once per rear corner leg.
         fy0 = py0 + housed if py0 <= by0 + 1e-9 else py0
-        box("Leg filler block", "base", leg_colour,
+        box("Leg filler block", "legs", leg_colour,
             px0 + slot_in, fy0, grid_lo_bot + gm_h,
             px0 + slot_in + gm_t, py1, grid_hi_top - gm_h,
             d=f"{gm_t:g} x {py1 - fy0:g}, {v['BASE_VOLUME_H']:g} tall "
@@ -2214,8 +2214,9 @@ def main() -> int:
         "box": "Torsion box: bottom skin and tongues",
         "topskin": "Torsion box: TOP SKIN (hide to see the bays)",
         "grid": "Torsion box: ribs and perimeter webs",
-        "posts": "The three legs the box lands on",
-        "base": "The base: two grids, the rear legs, the two shear walls",
+        "legs": "Legs: all five, with their tenons and fillers",
+        "rails": "Base: the grid rails",
+        "walls": "Base: the two shear walls",
         "bed": "Tee track bed",
         "spoil": "MDF spoilboard (hide to see the track)",
         # FLAG: NOT "M8 flange bolt heads", WHICH IS WHAT IT SAID. The hover line

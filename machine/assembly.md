@@ -986,6 +986,10 @@ deliberately share a colour rather than taking their own**: the central wall's *
 same sheet and not another piece, and each **filler block**, which takes its own leg's brown because
 it goes in at that leg's glue-up and is never a separate part on the bench.
 
+NOTE: **The base hides in three parts — legs, rails, walls** — so any one of them can be taken away
+to see what the other two are doing. The **legs** group holds all five, their tenons and their
+fillers, because a filler goes in at its leg's glue-up and is not a separate thing.
+
 NOTE: **A leg is drawn as its two outer strips with the slot open between them**, so the rail at each
 grid, the filler and the wall are all seen sitting in it. **The cross rails' housing is drawn too** —
 each strip's notched face is cut into the segments between the two rail bands, so the rail's outer
