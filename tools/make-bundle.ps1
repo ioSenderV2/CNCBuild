@@ -16,6 +16,8 @@
     torsion-box-construction.html
                              the whole build of the torsion box - parts, sheets,
                              notches, sand ports and the glue-up order
+    base-construction.html   the base that holds it up, which is built FIRST -
+                             parts, sheets, the joints and the order
 
   NOTHING HERE IS A SOURCE FILE. Every member is derived or tracked elsewhere,
   the zip itself is gitignored, and it is rebuilt rather than edited.
@@ -48,6 +50,7 @@ $members = @(
     'shop-pack.pdf'
     'fasteners.html'
     'torsion-box-construction.html'
+    'base-construction.html'
 )
 
 $paths = @()

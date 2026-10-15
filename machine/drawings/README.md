@@ -18,6 +18,7 @@ make deliberately rather than drift into.
 | [`shop-pack.html`](shop-pack.html) | One sheet per metal plate, for the **machining trip** | hand-authored |
 | [`Interactive_Model.html`](Interactive_Model.html) | The whole machine as solids, with an interference check and an envelope sweep | `tools/make-3d.py` |
 | [`torsion-box-construction.html`](torsion-box-construction.html) | The whole build of the **torsion box** - parts, sheets and nesting, the notch procedure, the sand ports, and the glue-up order. The cut list is its first chapter | `tools/make-box-doc.py` |
+| [`base-construction.html`](base-construction.html) | The **base** that holds the box up, and it is built **first** - parts, sheets, every rail and wall joint, and the order | `tools/make-base-doc.py` |
 | [`fasteners.html`](fasteners.html) | Every bolted joint: size, count, grip stack, **length and engagement** | `tools/make-fasteners.py` |
 
 NOTE: **The box cut list is deliberately NOT in the shop pack.** The pack is for the

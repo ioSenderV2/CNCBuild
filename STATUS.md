@@ -95,9 +95,9 @@ the interface, not this file.
 
 ## [machine/drawings/README.md](machine/drawings/README.md)  (3)
 
-- OPEN: [L65](machine/drawings/README.md#not-drawn-yet---two-trip-parts-have-no-sheet) — *Drawings / Status*<br>Not drawn yet - two trip parts have no sheet
-- FLAG: [L80](machine/drawings/README.md#in-progress-a-12-baltic-birch-mockup) — *Status / In progress: a 1/2" baltic birch mockup*<br>Plywood is for fit, never for transfer. Its thickness runs under 12 mm and varies, and an M5 threaded insert needs a far larger bore than a 4.2 mm tap drill - so anywhere the design has fought for edge distance or web, an insert will not sit where the real hole does. A plywood plate must never go to the mill as a template: this folder is derived-never-authoritative, and a physical part is far more persuasive than a sheet.
-- OPEN: [L88](machine/drawings/README.md#what-still-gates-drilling) — *Status / What still gates drilling*<br>No plate in this pack has a complete hole schedule yet, and that is the pack's main finding. What it does have is every dimension the repo actually holds, with the gaps named - which turns "design ahead of the build" from an instruction into a list. Two questions gate cuts that cannot be undone, and each needs a part or the mill in front of you - see ../open-items.md:
+- OPEN: [L66](machine/drawings/README.md#not-drawn-yet---two-trip-parts-have-no-sheet) — *Drawings / Status*<br>Not drawn yet - two trip parts have no sheet
+- FLAG: [L81](machine/drawings/README.md#in-progress-a-12-baltic-birch-mockup) — *Status / In progress: a 1/2" baltic birch mockup*<br>Plywood is for fit, never for transfer. Its thickness runs under 12 mm and varies, and an M5 threaded insert needs a far larger bore than a 4.2 mm tap drill - so anywhere the design has fought for edge distance or web, an insert will not sit where the real hole does. A plywood plate must never go to the mill as a template: this folder is derived-never-authoritative, and a physical part is far more persuasive than a sheet.
+- OPEN: [L89](machine/drawings/README.md#what-still-gates-drilling) — *Status / What still gates drilling*<br>No plate in this pack has a complete hole schedule yet, and that is the pack's main finding. What it does have is every dimension the repo actually holds, with the gaps named - which turns "design ahead of the build" from an instruction into a list. Two questions gate cuts that cannot be undone, and each needs a part or the mill in front of you - see ../open-items.md:
 
 ## [machine/gantry-beam-joint.md](machine/gantry-beam-joint.md)  (18)
 

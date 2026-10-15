@@ -2956,6 +2956,51 @@ expr = "LEG_BELOW_BOX - BASE_BOX_GAP - GRID_MEMBER_H - BASE_FLOOR_CLEAR - GRID_M
 note = "564 - the CLEAR HEIGHT of the two side volumes, between the upper grid's underside and the lower grid's top. SETTLED: IT IS THE FIGURE THE MEMBER CHOICE WAS MADE ON - he wants these volumes as large as possible, the two grids eat 2 x GRID_MEMBER_H of the available height, and that is why 100 beat a 2x6's 140 by 80. On 2x6 members this would be 484 instead."
 
 [[dim]]
+sym = "BASE_W"
+expr = "BOX_W + 2 * T_BOX_TONGUE"
+note = "1259 - the base's outer envelope, and the same figure both ways because the box is square. SETTLED: IT IS THE LEGS' OUTER FACES, which stand flush with the tongues' outer faces - so it is the same number as BACK_LAM_L and for the same reason, not by coincidence."
+
+[[dim]]
+sym = "LEG_L_BOX"
+expr = "LEG_BELOW_BOX + POST_TENON_L"
+note = "990 - the cut length of each of the THREE legs the box lands on: floor to shoulder, plus the tenon above it. NOTE: IT FITS A 4 FT STRIP with 229 to spare, which is where the test pieces and the slot spacers come from."
+
+[[dim]]
+sym = "LEG_L_REAR"
+expr = "LEG_BELOW_BOX"
+note = "874 - the cut length of each of the TWO rear corner legs. They carry no tenon, so they stop at the box's underside: they hold the grids and the back wall, not the box."
+
+[[dim]]
+sym = "RAIL_FORE_AFT_L"
+expr = "BASE_W - GRID_MEMBER_T"
+note = "1223 - a fore-aft rail, four of them, two per grid. It runs between the cross rails' inner faces rather than the base's full depth, because at a corner leg the cross rail is the one that stays continuous."
+
+[[dim]]
+sym = "RAIL_CROSS_OUTER_L"
+expr = "BASE_W"
+note = "1259 - the FULL WIDTH outer lamination of a front cross rail, the half that is housed in the legs. Only the front has cross rails: at the back the shear wall replaces them."
+
+[[dim]]
+sym = "RAIL_CROSS_INNER_L"
+expr = "BASE_W - 2 * POST_W_X"
+note = "1115 - the inner lamination of a front cross rail, which only SPANS between the two front legs and is housed in nothing."
+
+[[dim]]
+sym = "BACK_WALL_L"
+expr = "BASE_W - 2 * LEG_STRIP"
+note = "1223 - the back shear wall's length. It stops one lamination short at each end so its end grain butts the back of each corner leg's outermost strip, which is left at its full POST_W_Y."
+
+[[dim]]
+sym = "WALL_H"
+expr = "LEG_BELOW_BOX - BASE_FLOOR_CLEAR - BASE_BOX_GAP"
+note = "764 - the height of BOTH shear walls: floor clearance up to BASE_BOX_GAP shy of the box. SETTLED: IT IS NOT BASE_VOLUME_H - the walls run past both grids rather than sitting between them, which is the whole reason they can replace rails."
+
+[[dim]]
+sym = "CENTRE_WALL_L"
+expr = "BASE_W - T_BACK_WALL"
+note = "1241 - the central shear wall's length, from the back wall's inner face to the front of the base. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot. FLAG: IT IS NOTCHED AT BOTH FRONT CORNERS, GRID_MEMBER_T across by GRID_MEMBER_H up, for the front cross rail at each grid."
+
+[[dim]]
 sym = "BASE_FLOOR_CLEAR"
 value = 100
 provenance = "pinned"

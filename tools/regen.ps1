@@ -10,6 +10,7 @@
     2. dims.py md/html/fusion VALUES.md, registry.html, fusion-parameters.csv
     3. make-fasteners.py      fasteners.html          <- zip member
     4. make-box-doc.py        torsion-box-construction.html  <- zip member
+       make-base-doc.py       base-construction.html         <- zip member
     5. make-3d.py             Interactive_Model.html  <- zip member
     6. build-hole-tally.py    the tallies inside shop-pack.html
     7. status.py all          STATUS.md and INDEX.md
@@ -80,6 +81,7 @@ try {
         @('tools/dims.py', 'fusion', '-o', 'dimensions/fusion-parameters.csv')
     Step 'fasteners.html' @('tools/make-fasteners.py')
     Step 'torsion-box-construction.html' @('tools/make-box-doc.py')
+    Step 'base-construction.html' @('tools/make-base-doc.py')
     Step 'Interactive_Model.html' @('tools/make-3d.py')
     Step 'shop pack hole tallies' @('tools/build-hole-tally.py')
     Step 'STATUS.md and INDEX.md' @('tools/status.py', 'all')
