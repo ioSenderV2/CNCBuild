@@ -790,6 +790,31 @@ out at glue-up. The **86 is the strip's width**, ripped at 90 and trimmed after 
 **Every ledge is 42 mm, cut on the outward-facing faces**, so the perimeter wall lands directly over
 the shoulder. The ledge is as deep as the wall standing on it.
 
+#### What the shoulder carries, and what the tenon carries
+
+🔴 **The tenon carries nothing.** It is location only — every bit of vertical load is on the
+shoulder. That is why a 30 × 44 tenon raised no eyebrow when the leg stopped being square.
+
+**The shoulder's 42 is two different jobs side by side, and that is why it is 42:**
+
+| Across the shoulder, from the outside in | Carries |
+|---|---|
+| the outer **24** | **the tongue, directly.** Its underside is at the box's underside, the same plane as the shoulder, so it stands on the leg — not on the box |
+| the inner **18** | **the bottom skin**, which in turn carries the web and everything above it |
+
+24 + 18 = 42, which is the wall, which is the ledge. **So yes — the leg carries the fascia, and it
+carries it directly rather than through the box.** The skins never run out under the tongue: they
+**butt its inner face** and it caps their end grain.
+
+**And the tongue is not a facing.** It is the wall's outer lamination: the standing plates bolt
+**through** it in a lap, it is the lateral load path, and it is the piece that makes the wall 42. The
+word fascia undersells it.
+
+**On the order: the tongues go on while the box is being built, and the box meets the legs last.**
+Glue the grid to the bottom skin, then the webs and the outer laminations, then the top skin — and
+only then is the finished box lowered onto three tenons. There is never a moment when a tenon is
+standing up through a half-built box.
+
 | Post | Faces ledged | Tenon, across × fore-aft |
 |---|---|---|
 | Front left / front right | the **side** face and the **front** face | **30 × 44** |
