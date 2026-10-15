@@ -154,7 +154,7 @@ def notch_runs(v):
             f"{part}: {n} notches, {end:.3f} end bays and {bay:.3f} inner, run "
             f"to {closes:.3f} on a {length:.3f} piece - the grid no longer closes")
         # HIS INSTRUCTION 2026-10-14, and it is the reason the bays are pinned
-        # whole rather than divided out: a dado offset of 697.944 cannot be read
+        # whole rather than divided out: a notch offset of 697.944 cannot be read
         # off a rule marked in millimetres. If a bay or a thickness ever moves
         # and puts a fraction back into a start, the build fails HERE.
         off = [s for s in starts if abs(s - round(s)) > 1e-9]
@@ -634,16 +634,48 @@ the tenon.</p>
 
 <h2>Notches</h2>
 <p>Egg crate, continuous both ways, half-depth notches at every crossing. Every
-notch is <b>{rib:g} wide</b> and <b>{half:g} deep</b>, and all the ribs of one
-direction are identical &mdash; so the saw is set once per direction and the
-whole set runs through it.</p>
+notch is <b>{rib:g} wide</b> and <b>{half:g} deep</b>, and <b>all eight ribs are
+the same part</b> &mdash; same length, same four offsets.</p>
+
+<h3>Cut all eight at once, on the sliding miter saw</h3>
+<p>Stack the eight ribs face to face <b>on edge</b> &mdash; {rib * 8:g} across
+&mdash; clamp them as one block, set the depth stop to <b>{half:g}</b>, and
+nibble each notch out in overlapping slides. Four notch positions, six or seven
+passes each.</p>
+<ol>
+<li><b>Register the ends against a stop block, and do not unclamp until all four
+notches are cut.</b> The stack is one part for as long as it is clamped; the
+moment a rib shifts, that rib's notches move and nothing tells you.</li>
+<li><b>A sacrificial piece of the same stock on each face of the stack.</b> It
+takes the blade's exit tear-out, and it gives the clamps something to crush
+instead of a finished rib.</li>
+<li><b>Plywood sub-base on the saw table</b>, so the {half:g} is measured from a
+continuous flat surface and not across the saw's own kerf slot.</li>
+<li><b>Tall fence.</b> The ribs stand {v['BOX_RIB_H']:g} on edge, which is taller
+than the saw's own fence.</li>
+<li><b>Cut a test notch in an offcut first and try a real rib in it.</b> That
+sets the width &mdash; nibbling means {rib:g} is where you <i>stop</i>, so it is
+the one thing on this page that does not depend on a blade being the right
+thickness. Check the same test notch for a <b>flat floor</b>: the cut must be
+{half:g} deep all the way across, and a floor that comes out dished means the
+blade is dropping rather than sliding through the cut.</li>
+<li><b>Overlap each pass by about a millimetre</b> and the floor needs no
+cleanup.</li>
+</ol>
+<p>Set the depth stop against a <b>test cut that you then measure</b>, not off the
+screw.</p>
 <p>Notch depth <b>exactly half</b> &mdash; a set cut slightly deep sits low and
 loses contact with a skin along its whole length. The fit is a slip fit, not a
 clearance: too tight splits the rib, too loose leaves no glue line.</p>
-<p><b>One direction is notched from the top edge and the other from the bottom</b>,
-and whichever way round you choose, keep it the same for every rib in that
-direction. Positions below are from either end of the piece &mdash; the run is
-symmetric, so a rib fitted backwards still fits.</p>
+<p><b>Cut all eight from the same edge, then turn four of them over.</b> One
+direction has to be notched from the top edge and the other from the bottom, and
+that costs nothing here because the notch is <i>exactly</i> half of
+{v['BOX_RIB_H']:g}: a rib turned upside down is a rib notched from the other
+edge. The offsets do not care either &mdash; the run is symmetric end to end, so
+a rib fitted backwards still fits.</p>
+<p>So the eight stay one part right through the notching, and the only cut that
+tells a rib which way up it goes is the <b>sand relief at the bottom edge</b>,
+done afterwards on whichever edge ends up down.</p>
 {''.join(nt)}
 <p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
 20 &times; 15, so the sand can migrate between cells.</p>

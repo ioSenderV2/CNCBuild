@@ -655,17 +655,41 @@ but the gap is still a hard dimension.
 | Grid, both ways | **223** from each web to the first rib, then **219** between ribs — the same layout in both directions, so **all eight ribs are one part**: 1175 × 100, notches at 223, 460, 697 and 934 |
 | Fill | **sand in the cavities, LAST, on site** |
 
-### Four things to get right on the grid
+### Cut the notches with all eight ribs clamped as one stack
 
-1. **Cut the notches to 18 mm — the sheets in hand mic 18, to five thousandths.** Baltic birch sold at
-   a nominal commonly runs under and varies between sheets, so **still test-cut on scrap from the same
-   sheet** before cutting the set.
-2. OPEN: **Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin
-   along its whole length.
-3. FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
-   egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
-4. **Clamp the skins hard onto the rib edges.** Screws through the skins into the ribs give uniform
-   pressure and can stay in.
+**On the sliding miter saw.** The eight ribs are one part — same length, same four offsets — so they
+get notched together: stack them face to face **on edge**, 144 across, clamp them as one block, set
+the depth stop to **50**, and nibble each notch out in overlapping slides. Four positions, six or
+seven passes each.
+
+1. **Register the ends against a stop block and do not unclamp until all four notches are cut.** The
+   stack is one part for as long as it is clamped; the moment a rib shifts, that rib's notches move
+   and nothing tells you.
+2. **A sacrificial piece of the same stock on each face of the stack.** It takes the blade's exit
+   tear-out and gives the clamps something to crush instead of a finished rib.
+3. **Plywood sub-base on the saw table**, so the 50 comes off a continuous flat surface rather than
+   across the saw's own kerf slot. **Tall fence** too — the ribs stand 100 on edge.
+4. **Cut a test notch in an offcut and try a real rib in it.** Nibbling means **18 is where you
+   stop**, so the width does not depend on a blade being the right thickness — which is the whole
+   advantage over a stacked cutter. Check that same test notch for a **flat floor**: 50 all the way
+   across. A dished floor means the blade is dropping rather than sliding through the cut.
+5. **Overlap each pass by about a millimetre** and the floor needs no cleanup. Set the depth stop
+   against a test cut **that you then measure**, not off the screw.
+
+**Cut all eight from the same edge, then turn four of them over.** One direction has to be notched
+from the top edge and the other from the bottom, and that is free here because the notch is
+*exactly* half of 100: a rib turned upside down is a rib notched from the other edge, and the
+offsets are symmetric end to end as well.
+
+**Notch depth exactly half.** A set cut slightly deep sits low and loses contact with a skin along
+its whole length.
+FLAG: **Notch the bottom edge of every rib where it meets the bottom skin, roughly 20 × 15 mm.** An
+egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
+**This is the only cut that tells a rib which way up it goes**, so it is done after the notching, on
+whichever edge ends up down.
+
+**Clamp the skins hard onto the rib edges.** Screws through the skins into the ribs give uniform
+pressure and can stay in.
 
 **Assemble the grid and check it flat on a reference before either skin goes on** — an egg crate
 self-jigs and holds its own spacing with no clamps.
@@ -790,7 +814,7 @@ significant angle, and there is no way to do that to a 565 lb box standing on th
 
 NOTE: **The bays stay connected by the bottom-edge rib notches.** Each bay has its own port now, so
 the notches are no longer what makes draining possible — they are kept because they cost one pass
-on the same dado setup and they let a corner residue find a neighbouring port.
+one more cut on the stack and they let a corner residue find a neighbouring port.
 
 ### The base
 

@@ -35,14 +35,20 @@ the errors accumulating.
 
 1. **Cut the notches to 18 mm — the sheets in hand mic 18, to five thousandths.** Sheet sold at a
    nominal commonly runs under and varies between sheets, so test-cut on scrap **from the same sheet**
-   before cutting the set. Too tight splits the rib; too loose leaves no glue line.
+   before cutting the set. Too tight splits the rib; too loose leaves no glue line. **The width is
+   set by where the nibbling stops rather than by a cutter's thickness** - see the notch procedure in
+   [`assembly.md`](assembly.md#cut-the-notches-with-all-eight-ribs-clamped-as-one-stack), which cuts
+   all eight ribs as one clamped stack on the sliding miter saw.
 2. OPEN: **Notch depth exactly half.** If one set goes slightly deep, that set sits low and loses
    contact with a skin **along its whole length** - which is the glue joint the whole sandwich
-   depends on.
+   depends on. **Exactly half is also what makes the eight ribs one part**: at 50 of 100 a rib turned
+   upside down is a rib notched from the other edge, so one stack serves both directions.
 3. FLAG: **Notch the bottom edge of every rib** where it meets the bottom skin, roughly 20 × 15 mm. An
    egg crate seals every cell, so without this a corner residue has nowhere to go but its own port.
    Every bay has its own port now, so this is no longer what makes draining possible - it is kept
-   because it is the same cut and it lets a residue find a neighbouring port. See Transport.
+   because it is one more cut on the stack and it lets a residue find a neighbouring port. **It is
+   also the only cut that tells a rib which way up it goes**, so it comes after the notching. See
+   Transport.
 4. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
    action lives. Screws through the skins into the ribs are the simplest way to get uniform
    pressure, and they can stay in.

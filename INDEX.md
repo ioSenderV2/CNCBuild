@@ -43,7 +43,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Assembly order](machine/assembly.md#assembly-order)
 - [7. Stand it up and measure it](machine/assembly.md#7-stand-it-up-and-measure-it)
 - [8. The torsion box](machine/assembly.md#8-the-torsion-box)
-  - [Four things to get right on the grid](machine/assembly.md#four-things-to-get-right-on-the-grid)
+  - [Cut the notches with all eight ribs clamped as one stack](machine/assembly.md#cut-the-notches-with-all-eight-ribs-clamped-as-one-stack)
   - [The three posts](machine/assembly.md#the-three-posts)
   - [Sand ports — one per bay, through both skins](machine/assembly.md#sand-ports-one-per-bay-through-both-skins)
   - [The base](machine/assembly.md#the-base)
