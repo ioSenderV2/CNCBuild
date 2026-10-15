@@ -922,6 +922,11 @@ cross rails green, the central wall tan, the back wall orange, the filler blocks
 nearly every part of this frame is the same 36 of the same plywood and the boundaries are the thing
 worth seeing. The wall's **lip shares the wall's colour**: it is the same sheet, not another piece.
 
+NOTE: **A leg is drawn as its two outer strips with the slot open between them**, so the rail at each
+grid, the filler and the wall are all seen sitting in it. **The cross rails' 18 of housing is not
+drawn** — the same as the rib notches, which the model has never drawn either, because a housing
+removes no envelope.
+
 #### What the base is
 
 **Two grids that locate and constrain all five legs** — his, 2026-10-15. That is the whole

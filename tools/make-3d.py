@@ -438,6 +438,9 @@ def main() -> int:
     # its own figure on each axis: tcx across the machine, tcy fore and aft.
     tcx, tcy = v["TENON_CORNER_X"], v["TENON_CORNER_Y"]
     tb, pwx = v["TENON_BACK_DEPTH"], v["POST_W_X"]
+    # The grid member's section, needed up here because the leg's SLOT is the
+    # same 36: a rail fills it, which is the whole joint.
+    gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
     # The tenon is POST_TENON_L long from the shoulder, which leaves it shy of
     # the top skin's underside by whatever that length does not reach. Derived
     # and not stated: it was a literal 1.0 while the bottom skin was 19, and the
@@ -463,14 +466,27 @@ def main() -> int:
         ("Post, back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web, web + tb),
          (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
     ]
+    # A LEG IS DRAWN AS ITS TWO OUTER STRIPS, NOT AS A SOLID. The middle two
+    # laminations are a SLOT, and everything fore-aft lives in it: a rail at each
+    # grid, the filler between them, and in the rear middle leg the shear wall.
+    # Drawn solid, every one of those sat inside the leg with coincident faces -
+    # which is what put the striped z-fighting patch on the front leg in his
+    # screenshot, and it also hid the joint this model exists to show.
+    strip = (pwx - gm_t) / 2             # one outer strip, 18 of the 72
+
+    def leg_strips(nm, group, colour, px0, px1, py0, py1, z0, z1, d=""):
+        for side, sx0 in (("outer", px0), ("inner", px1 - strip)):
+            box(f"{nm}, {side} strip", group, colour,
+                sx0, py0, z0, sx0 + strip, py1, z1, d=d)
+
     holes_xy = []
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         box(nm + " tenon", "posts", 0x9C6B3C, tx0, ty0, ledge_z, tx1, ty1, post_top,
             d="location only - carries no vertical load, that is all on the shoulder")
-        box(nm, "posts", 0x7A5230, px0, py0, post_bot, px1, py1, ledge_z,
-            d=f"laminated plywood leg, {pwx:g} x {pwy:g} - four 18 strips, the "
-              f"lamination across the machine. The shoulder bears the whole box")
+        leg_strips(nm, "posts", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
+                   d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
+                     f"middle laminations are the slot. The shoulder bears the box")
         leg_rects.append((px0, px1, py0, py1))
         # the hole the tenon passes through, cut TENON_HOLE_CLEAR generous a side
         holes_xy.append([[tx0 - hc, ty0 - hc], [tx1 + hc, ty0 - hc],
@@ -492,7 +508,6 @@ def main() -> int:
     # the moment the grid touches it there is a fourth and fifth contact point
     # and the failure is SILENT - nothing shows but the Y beams going out of
     # coplanar. The gap is drawn so the model shows it rather than implying it.
-    gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
     grid_hi_top = -v["BOX_THK"] - v["BASE_BOX_GAP"]
     grid_lo_bot = floor_z + v["BASE_FLOOR_CLEAR"]
     grids = (("upper", grid_hi_top - gm_h, grid_hi_top),
@@ -503,10 +518,10 @@ def main() -> int:
     # the back shear wall. Drawn at the same stations as the front pair.
     for nm, x0, x1 in (("Leg, rear left", web - ledge, web + tcx),
                        ("Leg, rear right", W - web - tcx, W - web + ledge)):
-        box(nm, "base", 0x8A5A2B, x0, web - ledge, floor_z, x1, web + tb,
-            -v["BOX_THK"],
-            d=f"laminated plywood leg, {pwx:g} x {pwy:g} - carries the grids and "
-              f"the back shear wall, NOT the box")
+        leg_strips(nm, "base", 0x8A5A2B, x0, x1, web - ledge, web + tb,
+                   floor_z, -v["BOX_THK"],
+                   d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
+                     f"the grids and the back shear wall, NOT the box")
         leg_rects.append((x0, x1, web - ledge, web + tb))
 
     # Grid members, on edge: TWO fore-aft rails and TWO cross rails, a plain
@@ -538,8 +553,12 @@ def main() -> int:
     # frame where almost everything is the same 36 of the same plywood. The
     # wall's lip is the ONE exception: it shares the wall's colour because it is
     # the same sheet, not a separate piece.
+    # The fore-aft rails sit IN THE LEGS' SLOT, which is the middle 36 of a leg -
+    # NOT at the base's outer edge. Drawn at the edge they ran through the legs'
+    # outer strips instead of between them.
     for which, z0, z1 in grids:
-        for x0, x1 in ((bx0, bx0 + gm_t), (bx1 - gm_t, bx1)):
+        for x0, x1 in ((bx0 + strip, bx0 + strip + gm_t),
+                       (bx1 - strip - gm_t, bx1 - strip)):
             box(f"Grid rail, fore-aft ({which})", "base", 0x3C7DA5,
                 x0, by0 + housed, z0, x1, by1 - housed, z1,
                 d=f"{gm_t:g} x {gm_h:g} on edge - it fills the legs' middle slot "
