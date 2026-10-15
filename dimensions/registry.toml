@@ -2899,10 +2899,16 @@ unit = "mm2"
 note = "2304 mm2 - a front corner leg's BEARING AREA under the box: the outer strip's full 18 x 86 plus the inner strip's 18 x 42, the slot contributing nothing. SETTLED: IT IS WHY THE FULL-HEIGHT SLOT IS FINE - about 190 lb a leg over this is roughly 0.4 MPa, against plywood loaded edge-on which takes tens. The shoulder stopped being a continuous L when the slot went through it and the load never noticed."
 
 [[dim]]
+sym = "T_BACK_WALL"
+value = 18
+provenance = "pinned"
+note = "18 - the BACK shear wall, one sheet, where the central wall is two. SETTLED: 18 IS ENOUGH AND THE REASON IS THE FASTENING - a shear panel is governed by what holds its edges, not by its thickness, which is why this file's standing instruction about shear walls is glue plus screws at about 150 all the way round. Doubling the panel without doubling the fastening buys almost nothing. SETTLED: THE CENTRAL WALL IS 36 FOR A GEOMETRIC REASON THAT DOES NOT APPLY HERE - it has to FILL the leg slot. This one screws to faces, so nothing forces its thickness. SETTLED: IT SITS IN A FULL-HEIGHT REBATE, his 2026-10-15 - the back 18 comes off the whole length of all three rear legs, and that band then carries the wall over most of its height and the back cross rails' outer laminations at the two grids. NOTE: IT STOPS BASE_BOX_GAP SHY OF THE BOX, same 10 and same reason as the grids: nothing of the base may touch the box."
+
+[[dim]]
 sym = "SHOULDER_BACK"
-expr = "TENON_BACK_TABS * LEG_STRIP * T_BOX_LEDGE"
+expr = "TENON_BACK_TABS * LEG_STRIP * (T_BOX_LEDGE - T_BACK_WALL)"
 unit = "mm2"
-note = "1512 mm2 - the back centre leg's bearing area, two strips of 18 x 42. FLAG: IT IS THE SMALLEST OF THE THREE and it carries the whole back of the box, because that leg is ledged on ONE face so its shoulder is only the 42 band. Still about 0.6 MPa, which is nothing."
+note = "864 mm2 - the back centre leg's bearing area, two strips of 18 x 24. FLAG: THE REBATE EATS 18 OF THE 42, which is what takes this from 1512 to 864 and makes it much the smallest of the three - and it carries the whole back of the box, because that leg is ledged on ONE face so its shoulder was only the 42 band to begin with. Still about 1 MPa against plywood edge-on, so it is a figure to know rather than a problem."
 
 [[dim]]
 sym = "TENON_CORNER"

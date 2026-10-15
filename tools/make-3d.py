@@ -486,25 +486,41 @@ def main() -> int:
     strip = (pwx - gm_t) / 2             # one outer strip, 18 of the 72
 
     def leg_strips(nm, group, colour, px0, px1, py0, py1, z0, z1, notch, d=""):
-        """Both outer strips of a leg, with the cross rail's housing cut out.
+        """Both outer strips of a leg, with its outer face cut back.
 
-        `notch` is which face is notched - "front" on a front leg, "back" on a
-        rear one. The housing is only `housed` deep and only where a cross rail
-        actually is, so that face is drawn as the Z segments BETWEEN the two
-        rail bands. Drawing the strip whole instead put the rail's outer
-        lamination inside the leg, which is what he caught in the model.
+        FRONT legs lose `housed` only where a cross rail is, so that face comes
+        out as the Z segments BETWEEN the two rail bands. REAR legs lose it over
+        the WHOLE height - his, 2026-10-15 - because the back shear wall sits in
+        the same rebate, and the band then carries the wall over most of its
+        height and the rails' outer laminations at the two grids.
         """
-        ny0, ny1 = (py1 - housed, py1) if notch == "front" else (py0, py0 + housed)
-        for side, sx0 in (("outer", px0), ("inner", px1 - strip)):
-            by_a, by_b = (py0, py1 - housed) if notch == "front" else (py0 + housed, py1)
+        back = notch.startswith("back")
+        # NAMED BY WHICH SIDE OF THE MACHINE THEY ARE ON, not by whether they
+        # come first: on a right-hand leg px0 is the one nearer the centre, so
+        # naming the pair outer-then-inner got it backwards over there.
+        for sx0 in (px0, px1 - strip):
+            side = ("inner"
+                    if abs(sx0 + strip / 2 - W / 2) < abs(px0 + px1 - W) / 2
+                    else "outer")
+            # ON A REAR CORNER LEG ONLY THE INNER STRIP IS REBATED - his,
+            # 2026-10-15. The outermost lamination stays its full POST_W_Y, and
+            # the wall stops one strip short at each end so its END GRAIN butts
+            # the back of that lamination. The back centre leg has the wall
+            # passing right through it, so both of its strips are rebated.
+            nearer = abs(sx0 + strip / 2 - W / 2) < abs(px0 + px1 - W) / 2
+            cut = back and (notch == "back-both" or nearer)
+            by_a, by_b = ((py0 + housed, py1) if cut
+                          else (py0, py1 - housed) if not back else (py0, py1))
             box(f"{nm}, {side} strip", group, colour,
                 sx0, by_a, z0, sx0 + strip, by_b, z1, d=d)
+            if back:
+                continue                 # the rebate runs the full height
             edges = [z0] + [z for band in rail_bands for z in band] + [z1]
             for za, zb in zip(edges[0::2], edges[1::2]):
                 if zb - za < 1e-9:
                     continue
                 box(f"{nm}, {side} strip at the housing", group, colour,
-                    sx0, ny0, za, sx0 + strip, ny1, zb,
+                    sx0, py1 - housed, za, sx0 + strip, py1, zb,
                     d=f"the {housed:g} the cross rail is housed into - present "
                       f"only where there is no rail")
 
@@ -512,7 +528,7 @@ def main() -> int:
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         leg_strips(nm, "posts", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
-                   "back" if "back" in nm else "front",
+                   "back-both" if "back" in nm else "front",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
                      f"middle laminations are the slot. The shoulder bears the box")
         leg_rects.append((px0, px1, py0, py1))
@@ -556,10 +572,14 @@ def main() -> int:
     # The two REAR CORNER legs. They carry no tenon - the box lands on three
     # legs only - so they stop at the box's underside and hold up the grids and
     # the back shear wall. Drawn at the same stations as the front pair.
-    for nm, x0, x1 in (("Leg, rear left", web - ledge, web + tcx),
-                       ("Leg, rear right", W - web - tcx, W - web + ledge)):
+    # FLAG: THEIR X SPAN IS THE LEG'S OWN WIDTH, not the corner tenon's. It was
+    # written as web + tcx back when tcx happened to be 30 and the sum happened
+    # to land right; when the full-height slot took the corner tenon to 18 these
+    # two legs quietly became 60 wide.
+    for nm, x0, x1 in (("Leg, rear left", web - ledge, web - ledge + pwx),
+                       ("Leg, rear right", W - web + ledge - pwx, W - web + ledge)):
         leg_strips(nm, "base", 0x8A5A2B, x0, x1, web - ledge, web + tb,
-                   floor_z, -v["BOX_THK"], "back",
+                   floor_z, -v["BOX_THK"], "back-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
                      f"the grids and the back shear wall, NOT the box")
         leg_rects.append((x0, x1, web - ledge, web + tb))
@@ -608,7 +628,10 @@ def main() -> int:
         # notch in every leg it passes. The INNER 18 only spans BETWEEN the legs:
         # it is not housed and it does not pass through anything. Drawn as one
         # 36 block it ran the whole rail through the legs, which is not the joint.
-        for nm, y0, side in (("back", by0, "rear"), ("front", by1 - gm_t, "front")):
+        # ONLY THE FRONT HAS A CROSS RAIL. At the back the shear wall replaces
+        # them at both grids - his, 2026-10-15 - so there is nothing to draw
+        # there but the wall, which runs continuously past both grid levels.
+        for nm, y0, side in (("front", by1 - gm_t, "front"),):
             box(f"Grid rail, {nm} outer lamination ({which})", "base", 0x3F8F5B,
                 bx0, y0 if nm == "back" else y0 + housed, z0,
                 bx1, y0 + housed if nm == "back" else y0 + gm_t, z1,
@@ -640,10 +663,23 @@ def main() -> int:
     # the wall's end face finishes flush with the rail's outer face. Drawn as
     # the body plus the lip over the rail, which is what the notch leaves.
     sw_z0, sw_z1 = grid_lo_bot, grid_hi_top
+    # THE BACK WALL IS ONE SHEET, NOT TWO, and it lives in the same full-height
+    # rebate as the back rails' outer laminations - so it is drawn in the Z
+    # segments between them. A shear panel is governed by its edge fastening
+    # rather than its thickness, which is why 18 does the job here while the
+    # central wall is 36 for the geometric reason that it has to fill a slot.
+    # 🔴 IT IS ONE CONTINUOUS SHEET and that is why it owns the rebate outright:
+    # a shear panel cut into three horizontal strips by the rails is no longer a
+    # shear panel. So the wall fills the back 18 from the lower grid up to
+    # BASE_BOX_GAP shy of the box, and the back cross rails present only their
+    # INNER lamination, butting it.
+    bw = v["T_BACK_WALL"]
     box("Shear wall, back", "base", 0xD4793B,
-        bx0, by0, sw_z0, bx1, by0 + gm_t, sw_z1,
-        d="rear left leg to rear right leg, taking in the back centre one - "
-          "screwed to the back faces of all three")
+        bx0 + strip, by0, sw_z0, bx1 - strip, by0 + bw, sw_z1,
+        d=f"{bw:g} thick, ONE sheet - IT REPLACES THE BACK CROSS RAILS at both "
+          f"grids. It stops one lamination short at each end so its end grain "
+          f"butts the back of the outer lamination, and {v['BASE_BOX_GAP']:g} "
+          f"shy of the box. Glue plus screws at about 150 all the way round")
     box("Shear wall, centreline", "base", 0xC9A66B,
         W / 2 - gm_t / 2, by0 + gm_t, sw_z0, W / 2 + gm_t / 2, by1 - gm_t, sw_z1,
         d="fore-aft on the centreline, the base's full height, from the front "

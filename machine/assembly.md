@@ -996,7 +996,7 @@ anywhere along it, which is why it is 10 and not 1.
 | | |
 |---|---|
 | **Fore-aft wall** | on the **centreline**, from the front of the base back to the **back centre leg** — which is the box's rear support, so the wall lands under the load it braces |
-| **Back wall** | across the back, **left rear leg to right rear leg**, taking in the back centre leg on the way |
+| **Back wall** | across the back, **one continuous 18 sheet that REPLACES the back cross rails** at both grids — so the back of each grid is the wall, not a rail |
 
 They make a **T** in plan, which braces both directions, and that is what leaves the **left and right
 volumes completely open**. Those two volumes are **free for any use, independent of the base's and the
@@ -1029,7 +1029,7 @@ with the leg in the wall's place.
 | | |
 |---|---|
 | **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
-| **Back wall to the legs** | **Screwed to the back faces of all three rear legs.** A face joint, nothing let in |
+| **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops one lamination short at each end** so its end grain butts the back of that lamination. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box** |
 | **Central wall at the front** | **A notch at EACH front corner, 36 across by 100, bottom and top** — one per grid, because a front cross rail wants that 36 at both levels. The **lower** notch's shoulder sits on its rail; what is left between the two notches is a **564 lip** finishing **flush with the rails' outer faces**. **Two long screws through each rail into the end of the wall.** The rails are not touched but for those holes |
 
 **All five legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
@@ -1053,6 +1053,13 @@ rear middle leg; the legs are notched to house the cross rails; the fore-aft rai
 rails rather than crossing them. **The only cutting a rail ever takes is screw holes.** That is worth
 stating once as a rule rather than five times as a detail, because it is what makes the frame a frame
 — every cross rail runs the full width and every fore-aft rail runs between them, in both grids.
+
+**Why the back wall is 18 where the central one is 36.** A shear panel is governed by **what holds its
+edges**, not by its thickness — doubling the sheet without doubling the fastening buys almost nothing.
+The central wall is 36 for a geometric reason that does not apply here: it has to **fill the leg
+slot**. This one screws to faces, so nothing forces it. **And it must stay one continuous sheet** —
+cut into horizontal strips by rails it would stop being a shear panel, which is why it replaces the
+back rails rather than threading between them.
 
 #### A filler block in each corner leg
 
