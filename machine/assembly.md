@@ -371,8 +371,8 @@ FLAG: **The fin is tapped because of the bed too.** The bed's top face is at 16,
 at Y 20 would reach down to 11.5 and foul it by 4.5. Tapping puts nothing on the back face.
 
 FLAG: **The inserts go in BEFORE the top skin is glued to the ribs.** They fit from underneath and there
-is no access afterwards — the same hard ordering as the screw into each post tenon, and the same
-consequence for missing it.
+is no access afterwards, and the only fix then is a hole in the box. **It is the one step of the
+glue-up that cannot be undone.**
 
 **Use a steel backing strip or large fender washers on both faces** where these bolts land in
 plywood, not plain washers.
@@ -803,13 +803,17 @@ instead of a face.
 NOTE: **The holes stay 2 mm generous** — machining the posts makes them identical, not the assembly
 easier. A 565 lb box still has to be lowered onto three tenons.
 
-FLAG: **Drive one screw at an angle into the side of each tenon, from inside the cavity, BEFORE the top
-skin is glued.** After that there is no access to those tenons ever again. Not a vertical bolt down
-through the shoulder — that is withdrawal from cedar end grain.
+SETTLED: **No screw into the tenons — his call 2026-10-15.** One angled screw per tenon was carried
+for the two cases that can separate box from post: road shock above 1 g, which momentarily unloads a
+gravity-only joint, and being picked up under the **box** instead of the frame, which leaves the
+posts hanging from their tenons. **The strap over the box to the base frame covers both**, it was
+always the restraint to rely on rather than the screws, and the screws bought their small margin at
+the price of being one of only two steps in the whole glue-up that cannot be undone. **Nothing goes
+into the tenons.** Gravity and 99 mm of engagement hold the box, and the strap holds it for a move.
 
 **The box is not otherwise fastened to the posts.** Gravity and 99 mm of tenon engagement hold it.
 
-### Glue up — the order, and the two steps that cannot be undone
+### Glue up — the order, and the one step that cannot be undone
 
 The six glue joints and what each one carries are in
 [`drawings/torsion-box-construction.html`](drawings/torsion-box-construction.html), chapter 5, with
@@ -827,9 +831,8 @@ The order is here because getting it wrong is not recoverable:
    check as well.
 2. **Glue the grid to the bottom skin**, standing on the reference. That skin's three tenon holes
    are already cut.
-3. 🔴 **Drive the screw into each post tenon, and fit the fin angles' T-nuts into the top skin from
-   underneath — both BEFORE the top skin goes down.** There is no access to either afterwards, ever,
-   and the only fix then is a hole in the box.
+3. 🔴 **Fit the fin angles' T-nuts into the top skin from underneath, BEFORE the top skin goes
+   down.** There is no access afterwards, ever, and the only fix then is a hole in the box.
 4. **Glue the perimeter webs, two Dominos at each corner**, then the **outer laminations** on their
    own pins, the tongues capping the skins' end grain.
 5. **Glue the top skin on and clamp it hard onto the rib edges.** Screws through the skin into the
@@ -1013,8 +1016,9 @@ the single biggest lever on ever moving the machine.
 | **Posts to box** | **gravity and 99 mm of tenon** — the only non-positive joint in the stack |
 | Carcases to frames and posts | glued and screwed — positive |
 
-- **Two straps over the box, down to the 2x6 frame.** This is the restraint to rely on, not the
-  tenon screws.
+- **Two straps over the box, down to the 2x6 frame.** This is the restraint, and it is the only one —
+  nothing fastens the box to the posts. It is what covers both road shock and a lift taken under the
+  box instead of the frame.
 - **Put the fork positions under or very near the three posts.** Add a cross member where the forks
   land if the layout does not cooperate.
 - **Drain the sand.** ~240 lb box becomes ~73 lb.

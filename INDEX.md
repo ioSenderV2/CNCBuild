@@ -46,7 +46,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Cut the notches with all eight ribs clamped as one stack](machine/assembly.md#cut-the-notches-with-all-eight-ribs-clamped-as-one-stack)
   - [What a millimetre of error actually costs](machine/assembly.md#what-a-millimetre-of-error-actually-costs)
   - [The three posts](machine/assembly.md#the-three-posts)
-  - [Glue up — the order, and the two steps that cannot be undone](machine/assembly.md#glue-up-the-order-and-the-two-steps-that-cannot-be-undone)
+  - [Glue up — the order, and the one step that cannot be undone](machine/assembly.md#glue-up-the-order-and-the-one-step-that-cannot-be-undone)
   - [Sand ports — one per bay, through both skins](machine/assembly.md#sand-ports-one-per-bay-through-both-skins)
   - [The base](machine/assembly.md#the-base)
 - [9. Set the machine on the box](machine/assembly.md#9-set-the-machine-on-the-box)

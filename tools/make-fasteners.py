@@ -198,8 +198,12 @@ def main():
         rows.append(dict(j, grip=grip, grip_txt=grip_txt, eng=eng, past=past,
                          over=over))
 
-    missing = [r for r in rows if r.get("length") is None]
-    nosize = [r for r in rows if "size" not in r]
+    # A joint at count 0 is RETIRED - kept in the schedule so it does not look
+    # forgotten, but it has no size or length to be missing and reporting it as
+    # a gap is noise that makes the real gaps harder to see.
+    live = [r for r in rows if r.get("count", 0) > 0]
+    missing = [r for r in live if r.get("length") is None]
+    nosize = [r for r in live if "size" not in r]
     total_pcs = sum(r.get("count", 0) for r in rows)
 
     if a.gaps:

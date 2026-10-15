@@ -343,8 +343,8 @@ note = "THREADED INTO THE NUT BODY. FLAG: THE LENGTH WAS IN THE REGISTRY ALL ALO
 
 [[joint]]
 id = "post-tenon-screw"
-what = "One angled screw into the side of each post tenon"
-count = 3
+what = "RETIRED - nothing fastens the box to the posts"
+count = 0
 into = "wood"
-source = "assembly.md: 'Drive one screw at an angle into the side of each tenon, from inside the cavity'"
-note = "BEFORE THE TOP SKIN IS GLUED - there is no access afterwards. Size and length never stated."
+source = "his call 2026-10-15"
+note = "SETTLED: ELIMINATED 2026-10-15. One angled screw per tenon was carried for two cases that can separate box from post - road shock above 1 g, which momentarily unloads a gravity-only joint, and a lift taken under the BOX instead of the frame, which leaves the posts hanging from their tenons. THE STRAP OVER THE BOX TO THE BASE FRAME COVERS BOTH and was always the restraint to rely on; the screws added a small margin at the price of being an irreversible step inside the glue-up, and the size and length were never settled in all the time they were carried. Kept at count 0 rather than deleted so the schedule does not look like it simply forgot the joint."

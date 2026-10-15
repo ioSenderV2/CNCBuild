@@ -791,17 +791,17 @@ the mating web's <b>face</b> is cutting into {web:g} of thickness &mdash; so kee
 that side shallow and leave material behind it, because the tongue glues to that
 outer face. And the two depths together have to exceed the tenon's length.</p>
 
-<h3>The order, and two steps that cannot be undone</h3>
+<h3>The order, and the one step that cannot be undone</h3>
 <ol>
 <li><b>Dry-assemble the grid on the flat reference</b> &mdash; four ribs one way,
 four the other, into the perimeter webs. Press every crossing flat and check it
 seats. An egg crate self-jigs, so this is also the squareness check.</li>
 <li><b>Glue the grid to the bottom skin</b>, standing on the reference. The tenon
 holes are already cut in that skin.</li>
-<li>🔴 <b>Drive a screw into each post tenon, and fit the fin angles' T-nuts into
-the top skin from underneath. BOTH BEFORE THE TOP SKIN GOES DOWN.</b> There is no
-access to either afterwards &mdash; ever &mdash; and the only fix then is a hole
-in the box.</li>
+<li>🔴 <b>Fit the fin angles' T-nuts into the top skin from underneath, BEFORE THE
+TOP SKIN GOES DOWN.</b> There is no access afterwards &mdash; ever &mdash; and the
+only fix then is a hole in the box. <b>It is the one step here that cannot be
+undone.</b> Nothing goes into the post tenons</li>
 <li><b>Glue the perimeter webs</b>, two Dominos at each corner, <b>then the outer
 laminations</b> on their own pins, the tongues capping the skins' end grain.</li>
 <li><b>Glue the top skin on and clamp it hard onto the rib edges.</b> Screws
