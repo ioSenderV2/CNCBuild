@@ -49,7 +49,7 @@
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('build', 'record', 'pack', 'all', 'both')]
+    [ValidateSet('build', 'record', 'pack', 'dxf', 'all', 'both')]
     [string] $Doc = 'all',
     [switch] $KeepHtml = $true
 )
@@ -66,6 +66,9 @@ $docs = @(
     [pscustomobject]@{ Key = 'record'; Html = 'design-record.html';  Pdf = 'design-record.pdf'  }
     [pscustomobject]@{ Key = 'pack';   Html = 'machine/drawings/shop-pack.html'
                                        Pdf  = 'machine/drawings/shop-pack.pdf' }
+    # The quote DXFs drawn back from their own bytes - what the shop receives.
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/preview.html'
+                                       Pdf  = 'machine/drawings/dxf/dxf-preview.pdf' }
 )
 # 'both' still means the two root documents, so an older command line keeps working
 if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }
@@ -112,6 +115,12 @@ function Invoke-EdgePrint {
 
 # --- 1. markdown -> HTML, both generated documents in one pass --------------------------
 # The shop pack is hand-authored HTML and is not touched by this step.
+if ($docs | Where-Object Key -eq 'dxf') {
+    Write-Host "Drawing the quote DXFs back from their own bytes ..." -ForegroundColor Cyan
+    & python (Join-Path $PSScriptRoot 'dxf-preview.py')
+    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: dxf-preview.py failed" -ForegroundColor Red; exit 1 }
+}
+
 if ($docs | Where-Object Key -in 'build', 'record') {
     Write-Host "Rendering from machine/*.md ..." -ForegroundColor Cyan
     & python (Join-Path $PSScriptRoot 'md2html.py')
