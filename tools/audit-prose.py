@@ -47,6 +47,26 @@ SCAN = ["machine/**/*.md", "machine/**/*.html", "commissioning/**/*.md", "*.md"]
 # Rebuilt from the prose, so a hit here is a duplicate of one in the source file.
 GENERATED = {"STATUS.md", "INDEX.md", "VALUES.md", "README.md"}
 
+# 🔴 TWO KINDS OF FILE THIS REPORT WAS CRYING WOLF ABOUT, and together they were
+# more than half of every hit - which is what made the report unreadable and so
+# unread.
+#
+# A GENERATED DRAWING IS NOT PROSE. Its figures come from a .py, so a near miss
+# there is either correct or a literal in the generator; either way the file is
+# the wrong place to look and rewriting it is undone on the next run.
+#
+# ARCHIVE RECORDS WHAT WAS COMPUTED THEN. A figure that no longer matches today
+# is the point of the file, not a defect in it.
+#
+# Both are still scannable with --all, because a literal hiding in a generator
+# is worth finding on purpose.
+GENERATED_HTML = {
+    "machine/drawings/Interactive_Model.html": "tools/make-3d.py",
+    "machine/drawings/torsion-box-construction.html": "tools/make-box-doc.py",
+    "machine/drawings/base-construction.html": "tools/make-base-doc.py",
+    "machine/drawings/fasteners.html": "tools/make-fasteners.py",
+}
+
 NUM = re.compile(r"(?<![\w.\-])(\d{1,5}(?:\.\d{1,3})?)(?![\w.]|-\w)")
 SKIP_LINE = re.compile(r"https?://|\bcommit\b|\d{4}-\d{2}-\d{2}", re.I)
 
@@ -180,6 +200,9 @@ def main() -> int:
     ap.add_argument("--loose", action="store_true", help="drop the name gate")
     ap.add_argument("--uncaptured", action="store_true",
                     help="opposite direction: drilled coordinates with no registry symbol behind them")
+    ap.add_argument("--all", action="store_true",
+                    help="also scan generated drawings and archive, which are "
+                         "skipped because a hit in either is not stale prose")
     args = ap.parse_args()
 
     rows = load()
@@ -201,10 +224,18 @@ def main() -> int:
     for pat in SCAN:
         files.extend(sorted(ROOT.glob(pat)))
 
-    hits = 0
+    hits, skipped = 0, {"generated": 0, "archive": 0}
     for f in files:
         if f.name in GENERATED:
             continue
+        rel_early = f.relative_to(ROOT).as_posix()
+        if not args.all:
+            if rel_early in GENERATED_HTML:
+                skipped["generated"] += 1
+                continue
+            if "/archive/" in rel_early:
+                skipped["archive"] += 1
+                continue
         try:
             text = f.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError):
@@ -235,8 +266,12 @@ def main() -> int:
                     print(f"    {ctx}")
                     break
 
-    print(f"\n{hits} near miss(es), tol={args.tol}"
+    print(f"\n{hits} near miss(es) in hand-written prose, tol={args.tol}"
           f"{'' if args.loose else ', name-gated'}. Each needs judgement.")
+    if not args.all and (skipped["generated"] or skipped["archive"]):
+        print(f"Skipped {skipped['generated']} generated drawing(s) and "
+              f"{skipped['archive']} archive file(s) - a near miss in either "
+              f"is not stale prose. --all to scan them.")
     return 0
 
 
