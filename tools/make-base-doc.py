@@ -603,6 +603,311 @@ ledge will be cut, is his call.</p>
 """
 
 
+# ---- the shoulder, top down -------------------------------------------------
+# HIS ASK: show the three legs the box lands on from above, and show HOW THE
+# SHOULDER GETS CUT. It is one cut repeated - a band the width of the wall taken
+# off the top of every outward-facing face, down to the shoulder - and what is
+# left standing is the tenon. Nothing is laid out as a tenon: the tenon is a
+# RESIDUE, which is why a full-height slot could pass straight through it
+# without anybody having to redraw anything.
+#
+# THE GEOMETRY IS THE MODEL'S, NOT A RECONSTRUCTION. make-3d.py gives each post
+# as (un-ledged band, full section), and the two agree: the 42 band off a front
+# leg's side face swallows the whole outer strip plus 24 of slot, so the only
+# material left inside the band is the inner strip - 18 x 44, one tab. On the
+# back centre leg the band comes off the back face alone, so both strips stand
+# and the slot leaves 36 between them.
+SHOULDER_TONGUE, SHOULDER_SKIN = "#e7d2a8", "#cfe0ee"
+TENON_BROWN = "#9C6B3C"
+
+
+def shoulder_legs(v):
+    """The three legs the box lands on: which faces are ledged, and the residue.
+
+    `ledged` is the set of leg-local faces the band comes off, drawn with the
+    machine's left at the left and the box's FRONT at the bottom. `inner` says
+    which strip is the one nearer the machine's centreline, because that is the
+    strip the tab is on and it swaps sides between the two front legs.
+    """
+    return [
+        ("Front left", {"left", "front"}, "right",
+         f"one tab, on the strip nearer the machine's centre"),
+        ("Front right", {"right", "front"}, "left",
+         f"the same leg mirrored &mdash; the tab swaps sides"),
+        ("Back centre", {"back"}, None,
+         f"two tabs, {v['GRID_MEMBER_T']:g} apart, one on each strip"),
+    ]
+
+
+SHOULDER_S = 1.15                    # one scale for the plan and the section
+
+
+def _shoulder_w(v):
+    """The plan's drawn width, which the section matches.
+
+    THE TWO DRAWINGS MUST SHARE A viewBox WIDTH. Rendered at width 100% the
+    browser stretches each to the page, so a narrower viewBox is drawn LARGER -
+    the section came out at four times the plan's scale with its labels
+    overlapping, which looked like a font bug and was a units bug.
+    """
+    return 15.0 + (v["POST_W_X"] * SHOULDER_S + 44) * 3
+
+
+def shoulder_plan_svg(v, s=SHOULDER_S):
+    """All three in one plan, to one scale, so the mirroring is visible.
+
+    Drawn as: the leg's full 72 x 86 outline, the two strips and the slot, the
+    LEDGE BAND shaded in its two jobs - the outer 24 the tongue bears on and the
+    inner 18 the bottom skin bears on - and whatever stands inside the band
+    hatched as the tenon.
+    """
+    pwx, pwy, strip = v["POST_W_X"], v["POST_W_Y"], v["LEG_STRIP"]
+    gm_t, ledge, tong = v["GRID_MEMBER_T"], v["T_BOX_LEDGE"], v["T_BOX_TONGUE"]
+    skin = ledge - tong                      # the inner 18 of the 42
+    stand = pwx - ledge                      # 30 across, on a leg ledged in X
+    legs = shoulder_legs(v)
+    pad_l, pad_t, pad_b, pitch = 15.0, 22.0, 28.0, pwx * s + 44
+    w, h = _shoulder_w(v), pad_t + pwy * s + pad_b
+    body = []
+
+    for i, (name, ledged, inner, _note) in enumerate(legs):
+        ox = pad_l + i * pitch
+        oy = pad_t
+
+        def px(x):
+            return ox + x * s
+
+        def py(y):
+            return oy + y * s
+
+        # the ledge bands, outer 24 then inner 18, one per ledged face. Drawn
+        # FIRST so the strips and the slot sit over them and a reader sees
+        # which of the two the shoulder actually is.
+        for face in sorted(ledged):
+            for depth0, depth1, fill in ((0.0, tong, SHOULDER_TONGUE),
+                                         (tong, ledge, SHOULDER_SKIN)):
+                if face == "left":
+                    r = (depth0, 0.0, depth1 - depth0, pwy)
+                elif face == "right":
+                    r = (pwx - depth1, 0.0, depth1 - depth0, pwy)
+                elif face == "front":
+                    r = (0.0, pwy - depth1, pwx, depth1 - depth0)
+                else:                                            # back
+                    r = (0.0, depth0, pwx, depth1 - depth0)
+                body.append(
+                    f'<rect x="{px(r[0]):.2f}" y="{py(r[1]):.2f}" '
+                    f'width="{r[2] * s:.2f}" height="{r[3] * s:.2f}" '
+                    f'fill="{fill}" stroke="none"/>')
+
+        # the two strips and the slot, over the shading
+        for sx in (0.0, pwx - strip):
+            body.append(f'<rect x="{px(sx):.2f}" y="{py(0):.2f}" '
+                        f'width="{strip * s:.2f}" height="{pwy * s:.2f}" '
+                        f'fill="none" stroke="#333" stroke-width="0.6"/>')
+        body.append(f'<rect x="{px(strip):.2f}" y="{py(0):.2f}" '
+                    f'width="{gm_t * s:.2f}" height="{pwy * s:.2f}" '
+                    f'fill="#fff" stroke="#a00" stroke-width="0.6" '
+                    f'stroke-dasharray="3 2"/>')
+        body.append(f'<text x="{px(strip + gm_t / 2):.1f}" '
+                    f'y="{py(pwy / 2):.1f}" text-anchor="middle" '
+                    f'font-size="5" fill="#a00">{gm_t:g}</text>')
+
+        # WHAT STANDS: the un-ledged band intersected with the strips, which is
+        # the tenon. Computed rather than stated, so it cannot disagree with
+        # the bands drawn above it.
+        bx0 = ledge if "left" in ledged else 0.0
+        bx1 = pwx - ledge if "right" in ledged else pwx
+        by0 = ledge if "back" in ledged else 0.0
+        by1 = pwy - ledge if "front" in ledged else pwy
+        for sx0, sx1 in ((0.0, strip), (pwx - strip, pwx)):
+            tx0, tx1 = max(sx0, bx0), min(sx1, bx1)
+            if tx1 - tx0 < 1e-9:
+                continue
+            body.append(
+                f'<rect x="{px(tx0):.2f}" y="{py(by0):.2f}" '
+                f'width="{(tx1 - tx0) * s:.2f}" height="{(by1 - by0) * s:.2f}" '
+                f'fill="{TENON_BROWN}" stroke="#222" stroke-width="0.7"/>')
+            body.append(
+                f'<text x="{px((tx0 + tx1) / 2):.1f}" '
+                f'y="{py((by0 + by1) / 2) + 1.6:.1f}" text-anchor="middle" '
+                f'font-size="4.6" fill="#fff" font-weight="bold">'
+                f'{tx1 - tx0:g}&#215;{by1 - by0:g}</text>')
+
+        # the outline last, so it is unbroken
+        body.append(f'<rect x="{px(0):.2f}" y="{py(0):.2f}" '
+                    f'width="{pwx * s:.2f}" height="{pwy * s:.2f}" '
+                    f'fill="none" stroke="#111" stroke-width="1"/>')
+
+        # WHICH FACES THE BAND COMES OFF, marked on the faces themselves - the
+        # one fact a reader needs before picking the leg up, and the one that
+        # differs between the three.
+        for face in sorted(ledged):
+            if face == "left":
+                tx, ty, rot = px(-3.5), py(pwy / 2), -90
+            elif face == "right":
+                tx, ty, rot = px(pwx + 7), py(pwy / 2), -90
+            elif face == "front":
+                tx, ty, rot = px(pwx / 2), py(pwy) + 8, 0
+            else:
+                tx, ty, rot = px(pwx / 2), py(0) - 4, 0
+            body.append(
+                f'<text x="{tx:.1f}" y="{ty:.1f}" text-anchor="middle" '
+                f'font-size="4.4" fill="#a00"'
+                + (f' transform="rotate({rot} {tx:.1f} {ty:.1f})"' if rot else '')
+                + f'>ledged {ledge:g}</text>')
+
+        body.append(f'<text x="{px(pwx / 2):.1f}" y="{pad_t - 13:.1f}" '
+                    f'text-anchor="middle" font-size="6" '
+                    f'font-weight="bold">{name}</text>')
+        body.append(f'<text x="{px(pwx / 2):.1f}" y="{h - 7:.1f}" '
+                    f'text-anchor="middle" font-size="4.4" fill="#555">'
+                    f'{pwx:g} &times; {pwy:g}, front at the bottom</text>')
+    # NO KEY INSIDE THE DRAWING. Set as a row of three it landed one swatch
+    # under each leg and read as three per-leg captions. The colours are named
+    # in the prose instead, where a swatch can sit in the sentence that
+    # explains it.
+    assert skin == v["T_BB_SKIN_BOT"], "the inner band is the bottom skin's own 18"
+    return (f'<svg viewBox="0 0 {w:.1f} {h:.1f}" width="100%" '
+            f'style="max-width:100%">{"".join(body)}</svg>')
+
+
+def shoulder_section_svg(v, s=SHOULDER_S):
+    """The depth of the cut, in section through a front leg, TO SCALE both ways.
+
+    The plan says where the band is; this says how deep and what comes down on
+    it. They are the two halves of one cut and a reader needs both before
+    reaching for a saw - so they are drawn to ONE scale, in one viewBox width.
+    """
+    pwx, strip, ledge = v["POST_W_X"], v["LEG_STRIP"], v["T_BOX_LEDGE"]
+    tong, skin, tl = v["T_BOX_TONGUE"], v["T_BB_SKIN_BOT"], v["POST_TENON_L"]
+    cav, hc = 100.0, v["TENON_HOLE_CLEAR"]
+    pad_l, pad_t = 15.0, 10.0
+    below = 40.0                               # how much leg to show under it
+    w = _shoulder_w(v)
+    pad_r = w - pad_l - (pwx + 34) * s
+    h = pad_t + (tl + below) * s + 10
+    body = []
+
+    def px(x):
+        return pad_l + x * s
+
+    def py(z):                                 # z measured UP from the shoulder
+        return pad_t + (tl - z) * s
+
+    # the leg under the shoulder: two strips with the slot void between them
+    for sx in (0.0, pwx - strip):
+        body.append(f'<rect x="{px(sx):.2f}" y="{py(0):.2f}" '
+                    f'width="{strip * s:.2f}" height="{below * s:.2f}" '
+                    f'fill="#7A5230" stroke="#222" stroke-width="0.6"/>')
+    body.append(f'<text x="{px(pwx / 2):.1f}" y="{py(0) + below * s / 2:.1f}" '
+                f'text-anchor="middle" font-size="4.2" fill="#a00">slot</text>')
+    # the tenon standing out of the inner strip
+    body.append(f'<rect x="{px(pwx - strip):.2f}" y="{py(tl):.2f}" '
+                f'width="{strip * s:.2f}" height="{tl * s:.2f}" '
+                f'fill="{TENON_BROWN}" stroke="#222" stroke-width="0.7"/>')
+    # the shoulder itself, drawn as the line the band leaves
+    body.append(f'<line x1="{px(0):.2f}" y1="{py(0):.2f}" '
+                f'x2="{px(pwx - strip):.2f}" y2="{py(0):.2f}" stroke="#111" '
+                f'stroke-width="1.1"/>')
+    # what lands on it: the tongue on the outer 24, the bottom skin on the
+    # inner 18 and running inboard past the tenon through its own hole
+    # The tongue runs on up past the top skin; drawn to the leg's top and no
+    # further, because above that it is the box's business and not this cut's.
+    body.append(f'<rect x="{px(0):.2f}" y="{py(tl):.2f}" '
+                f'width="{tong * s:.2f}" height="{tl * s:.2f}" '
+                f'fill="{SHOULDER_TONGUE}" stroke="#444" stroke-width="0.5"/>')
+    body.append(f'<text x="{px(tong / 2):.1f}" y="{py(tl / 2):.1f}" '
+                f'text-anchor="middle" font-size="4" fill="#5a4a20" '
+                f'transform="rotate(-90 {px(tong / 2):.1f} {py(tl / 2):.1f})">'
+                f'tongue {tong:g}</text>')
+    body.append(f'<rect x="{px(tong):.2f}" y="{py(skin):.2f}" '
+                f'width="{(pwx - strip - hc - tong) * s:.2f}" '
+                f'height="{skin * s:.2f}" fill="{SHOULDER_SKIN}" stroke="#444" '
+                f'stroke-width="0.5"/>')
+    body.append(f'<rect x="{px(pwx + hc):.2f}" y="{py(skin):.2f}" '
+                f'width="{(34 - hc) * s:.2f}" height="{skin * s:.2f}" '
+                f'fill="{SHOULDER_SKIN}" stroke="#444" stroke-width="0.5"/>')
+    body.append(f'<text x="{px(pwx + 18):.1f}" y="{py(skin / 2) + 1.4:.1f}" '
+                f'text-anchor="middle" font-size="4" fill="#2a4458">'
+                f'bottom skin</text>')
+    # SAME LABEL COLLISION AS THE ELEVATION: the leg top and the top skin's
+    # underside are TENON_HOLE_CLEAR x 2 apart, which is a millimetre of drawing.
+    # The rule stays on its height; only the text is pushed clear.
+    marks = [(skin + cav, f"top skin underside at {skin + cav:g} &mdash; the "
+                          f"leg stops {skin + cav - tl:g} shy of it"),
+             (tl, "leg top"),
+             (skin, f"bottom skin {skin:g} rests on it"),
+             (0, f"the shoulder &mdash; cut {tl:g} down from the leg's top")]
+    prev = None
+    for z, txt in marks:
+        y = py(z)
+        ty = y if prev is None else max(y, prev + 5.2)
+        prev = ty
+        body.append(f'<line x1="{px(0) - 3:.2f}" y1="{y:.2f}" '
+                    f'x2="{w - pad_r + 4:.2f}" y2="{y:.2f}" stroke="#bbb" '
+                    f'stroke-width="0.4" stroke-dasharray="2 2"/>')
+        body.append(f'<text x="{w - pad_r + 6:.1f}" y="{ty + 1.4:.1f}" '
+                    f'font-size="4.4" fill="#444">{txt}</text>')
+    return (f'<svg viewBox="0 0 {w:.1f} {h:.1f}" width="100%" '
+            f'style="max-width:100%">{"".join(body)}</svg>')
+
+
+def shoulder_html(v):
+    """Chapter 5: top down on the three legs the box lands on."""
+    rows = "".join(
+        f"<tr><td><b>{name}</b></td>"
+        f"<td>{'the side face and the front face' if 'front' in ledged else 'the back face only'}</td>"
+        f"<td>{note}</td></tr>"
+        for name, ledged, inner, note in shoulder_legs(v))
+    return f"""
+<h2>5 &mdash; Top down on the three legs the box lands on</h2>
+<p><b>One cut, repeated: a band {v['T_BOX_LEDGE']:g} wide is taken off the top of
+every outward-facing face, down to the shoulder. What is left standing is the
+tenon.</b> Nothing is set out as a tenon &mdash; the tenon is what the band does
+not reach, which is why the slot can run straight through it.</p>
+<table><tr><th>Leg</th><th>Faces the band comes off</th><th>What stands</th></tr>
+{rows}</table>
+<p>🔴 <b>The {v['T_BOX_LEDGE']:g} is not one number, it is two jobs side by
+side</b>, and that is why it is {v['T_BOX_LEDGE']:g}:
+<span style="background:{SHOULDER_TONGUE};padding:0 3px">the outer
+<b>{v['T_BOX_TONGUE']:g}</b></span> is where the tongue stands, directly on the
+leg and not on the box, and
+<span style="background:{SHOULDER_SKIN};padding:0 3px">the inner
+<b>{v['T_BOX_LEDGE'] - v['T_BOX_TONGUE']:g}</b></span> is where the bottom skin
+rests. <b>So the band is as wide as the wall that lands on it.</b> On the plans
+below those are the two shades of the cut-away band, and
+<span style="background:{TENON_BROWN};color:#fff;padding:0 3px">what is left
+standing</span> is the tenon.</p>
+{shoulder_plan_svg(v)}
+<p><b>On a front leg the band off the side face swallows the whole outer strip
+and {v['T_BOX_TONGUE']:g} of the slot</b>, so the only material left inside the
+band is the inner strip &mdash; <b>one tab,
+{v['LEG_STRIP']:g} &times; {v['TENON_CORNER']:g}</b>. On the back centre leg the
+band comes off the back face alone, both strips stand, and the slot leaves
+<b>{v['GRID_MEMBER_T']:g} between the two tabs</b>. That island bears nothing,
+since it sits over the slot.</p>
+<p>🔴 <b>The tenon carries nothing.</b> Every bit of vertical load is on the
+shoulder, and the tenon is location only. <b>Which is why the slot passing
+through it costs nothing</b> &mdash; a tenon is whichever strips stand inside
+the band, never the leg's full width.</p>
+
+<h3>How deep, and what lands on it</h3>
+{shoulder_section_svg(v)}
+<p><b>Cut all five legs to {v['POST_W_X']:g} &times; {v['POST_W_Y']:g} first,
+then cut the shoulders.</b> The two front legs are the same leg mirrored, so
+trimmed to one size their tenon holes are identical and come off one setup, and
+the back centre one differs only in standing the full {v['POST_W_X']:g} wide.</p>
+<p>🔴 <b>Square faces matter more here than the width.</b> The shoulder is a
+cross-cut and the wall lands directly over it, so a face out of square puts the
+bearing on an edge instead of on a face.</p>
+<p><b>Keep the holes {v['TENON_HOLE_CLEAR']:g} generous a side</b> &mdash;
+{v['LEG_STRIP'] + 2 * v['TENON_HOLE_CLEAR']:g} &times;
+{v['TENON_CORNER'] + 2 * v['TENON_HOLE_CLEAR']:g}. Trimming the legs to one size
+makes them identical, not the assembly easy: a loaded box still has to be
+lowered onto three tenons.</p>
+"""
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--kerf", type=float, default=boxdoc.KERF)
@@ -741,7 +1046,8 @@ every piece is tested against the sheet's usable size and against every other
 piece, so a nest that does not fit fails the build rather than printing.</p>
 {''.join(f'<h3>{n}</h3>{svg}' for n, svg in nests)}
 {legs_html(v)}
-<h2>5 &mdash; How it goes together</h2>
+{shoulder_html(v)}
+<h2>6 &mdash; How it goes together</h2>
 <table>
 <tr><th>Joint</th><th>How</th></tr>
 <tr><td><b>Fore-aft rails to legs</b></td><td>They fill the legs' middle slot
@@ -776,7 +1082,7 @@ grain butts the back of it</td></tr>
 <p>🔴 <b>One rule covers all of it: every rail stays whole and whatever meets it
 gives way.</b> The only cutting a rail ever takes is screw holes.</p>
 
-<h2>6 &mdash; The two side openings</h2>
+<h2>7 &mdash; The two side openings</h2>
 <p>Each side of the base is open between the grids. Standing at one side, the
 rectangle is:</p>
 <table>
@@ -794,7 +1100,7 @@ carcase goes in from the side only.</p>
 <p>Keep the carcases removable: the bottom skin's sand ports drain downward and
 have to be reachable.</p>
 
-<h2>7 &mdash; Order</h2>
+<h2>8 &mdash; Order</h2>
 <ol>
 <li><b>Laminate all five legs, with a spacer in every slot.</b> Cut each spacer
 from the stock that will fill that slot, wax or tape it so it does not glue in,
