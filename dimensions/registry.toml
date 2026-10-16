@@ -193,9 +193,9 @@ source = "measured 2026-10-02"
 
 [[dim]]
 sym = "T_SIDE_PLATE"
-value = 3.429
-provenance = "part"
-note = "FLAG: ORDERED 10 GAUGE, NOT 1/8in - 3.429, and the sales order is the authority. The line reads CSH 10GA(.135) x 11-7/8in x 39-5/16in CR, two pieces, cold-rolled carbon sheet, and .135in x 25.4 is 3.429. SETTLED: THAT CLOSES THE OPEN: this symbol carried a nominal 1/8in (3.175) with a standing question about the listing also saying 11 gauge (3.04), and a 3.36 had been floated and withdrawn as a guess. None of the three was right and the question is now answered by a part that has been bought rather than by a better reading of a listing. OPEN: IT FEEDS 17 SYMBOLS and the 0.254 it moved is not cosmetic in two of them: MACHINE_OUTER_W is the flush-envelope width - REAR_PLATE_L as it was called then - and it grows by 0.508 to 1211.238, while the back plate was ORDERED at 47 21/32in = 1210.47, so the plate does not reach flush. SETTLED: THAT GAP IS CLOSED, 2026-10-10: the plate is placed by its left edge on the Y1 extrusion's outboard face and its length feeds nothing, so the shortfall costs a recessed corner and no hole. FIN_PROUD comes down to 16.571. Still caliper the delivered sheet: 10 gauge sheet is a gauge, and the gauge is the nominal."
+value = 3.39
+provenance = "measured"
+note = "3.39 - MICROMETER, the delivered sheet. It supersedes the sales order, which read CSH 10GA(.135) and gave 3.429: 10 gauge is a gauge, the gauge is a nominal, and this one came in 0.039 under it. FLAG: IT FEEDS 14 SYMBOLS and the two that matter are MACHINE_OUTER_W, the flush envelope, which is two of these wide, and the tee-track bed chain, where TT_BED_FLOAT has the least room of anything it touches. OPEN: T_OUTBOARD_PLATE IS AN ALIAS OF THIS. If the outboard plates came off a different sheet they need their own reading rather than inheriting one taken on this one."
 source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
@@ -1163,9 +1163,9 @@ note = "The box's vertical thickness, 144. FLAG: IT WAS 138 ON TWO EQUAL 19 SKIN
 
 [[dim]]
 sym = "T_REAR_PLATE"
-value = 6.35
-provenance = "part"
-note = "1/4in A36 hot-rolled, the Sheet 7 plate - and it is ORDERED as a true 1/4in, his word 2026-10-08. The sales order line reads CPL 1/4in x 11-7/8in x 47.6562in HR, one piece. SETTLED: The nominal stands and that is worth saying rather than assuming: three nominals in this registry have already turned out wrong by being taken off what a part was SOLD as - a 5/8in spacer that measured 16.41, a 1/2in plate whose stock is 10 mm, a 1/2in end plate that micrometers 12.19. This one is ordered true rather than inferred from a label. Still caliper it with the side plate on arrival: ordered true is not the same as delivered true."
+value = 6.19
+provenance = "measured"
+note = "6.19 - MICROMETER, the delivered plate, against the sales order line CPL 1/4in x 11-7/8in x 47.6562in HR which a true 1/4in puts at 6.35. 🔴 OPEN: THE WEIGHT SAYS OTHERWISE AND IT IS NOT A SMALL DISAGREEMENT. His scale puts the plate at 80 lb; the registry outline at 6.19 gives 39.1, a ratio of 2.05, and 80 lb over that outline implies 12.66 - which is 0.498in, half-inch to three decimals. The same arithmetic on the two side plates gives 35.3 against a measured 37, so the method is not what is wrong. ONE OF THE TWO READINGS IS NOT OF THIS PLATE. Settle it before the mill trip: the thickness feeds the tongue and bearing figures, and the weight feeds the lift budget. NOTE: WHAT IT DOES NOT CHANGE EITHER WAY - the plate is placed by its LEFT EDGE and nothing is laid out from its far end or its thickness."
 source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
