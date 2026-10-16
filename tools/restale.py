@@ -38,17 +38,24 @@ _spec.loader.exec_module(audit)
 
 ROOT = HERE.parent
 
-# ONLY FILES THE SUBSTITUTION PASS ACTUALLY READS. md2html.py and status.py run
-# prose through tools/subst.py; nothing else does, so a {{SYMBOL}} written
-# anywhere else would print as braces. machine/drawings/shop-pack.html is
-# hand-authored and printed directly - it has its own stale copies and needs
-# subst extended to it before this can touch it.
+# ONLY FILES THE SUBSTITUTION PASS READS. md2html.py and status.py run prose
+# through tools/subst.py, and make-pdf.ps1 prints the shop pack from a
+# substituted copy - so all three can carry symbols. Anywhere else the braces
+# would print.
 #
 # ARCHIVE IS EXCLUDED ON PURPOSE. Those files record what was computed at the
 # time; replacing their figures with today's rewrites the record rather than
 # correcting it.
-SCAN = ["machine/*.md", "commissioning/*.md", "wiring/*.md"]
+SCAN = ["machine/*.md", "commissioning/*.md", "wiring/*.md",
+        "machine/drawings/shop-pack.html"]
 WINDOW = 6
+
+# 🔴 NEVER INSIDE A SCHEDULE'S NUMERIC CELL. Those are machining coordinates,
+# and tools/build-hole-tally.py reads them as numbers - a symbol there breaks
+# the tally and the counts that gate the pack. A coordinate with no symbol
+# behind it is a real problem, but it is audit-prose's --uncaptured problem,
+# not this one.
+CELL = re.compile(r'<td class="n"[^>]*>.*?</td>', re.S)
 
 # file:line that must keep its literal, with the reason. A number can equal a
 # symbol's old value and still not be a citation of it - most often because the
@@ -116,9 +123,12 @@ def main():
         text = f.read_text(encoding="utf-8")
         out, changed = [], False
         for ln, line in enumerate(text.split("\n"), 1):
+            cells = [m.span() for m in CELL.finditer(line)]
             new, last = [], 0
             for m in re.finditer(r"(?<![\w.\-{])(\d{1,5}(?:\.\d{1,4})?)"
                                  r"(?![\w.]|\s*\}\})", line):
+                if any(a <= m.start() and m.end() <= b for a, b in cells):
+                    continue                    # a machining coordinate
                 lit = fmt(float(m.group(1)))
                 cands = old_lit.get(lit, [])
                 if not cands:

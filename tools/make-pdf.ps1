@@ -141,7 +141,26 @@ foreach ($d in $docs) {
         continue
     }
 
-    $size = Invoke-EdgePrint -HtmlPath $htmlPath -PdfPath $pdfPath -Label $d.Pdf
+    # THE PACK IS HAND-AUTHORED AND PRINTS DIRECTLY, so it never passed through
+    # tools/subst.py the way md2html runs the prose through it. It is printed
+    # from a substituted copy instead - written BESIDE it so Edge resolves any
+    # relative path the same way - which is what lets the pack cite a registry
+    # symbol without the braces reaching paper.
+    $printPath = $htmlPath
+    $temp = $null
+    if ($d.Key -eq 'pack') {
+        $temp = Join-Path (Split-Path $htmlPath) 'shop-pack.print.html'
+        & python (Join-Path $PSScriptRoot 'subst.py') '--render' $htmlPath $temp
+        if ($LASTEXITCODE -ne 0) {
+            Write-Host "ERROR: the pack has an unknown symbol" -ForegroundColor Red
+            $failed++
+            continue
+        }
+        $printPath = $temp
+    }
+
+    $size = Invoke-EdgePrint -HtmlPath $printPath -PdfPath $pdfPath -Label $d.Pdf
+    if ($temp -and (Test-Path $temp)) { Remove-Item $temp -Force }
     if ($size -lt 0) { $failed++; continue }
 
     if (-not $KeepHtml -and $d.Key -ne 'pack') { Remove-Item $htmlPath -Force }   # the pack's HTML is a source file

@@ -90,7 +90,28 @@ def read(path: Path) -> str:
     return text
 
 
+def render_file(src: Path, dst: Path) -> int:
+    """Substitute one file into another, for a document printed directly.
+
+    machine/drawings/shop-pack.html is hand-authored and goes straight to the
+    printer, so it cannot be rendered through md2html the way the prose is.
+    make-pdf.ps1 prints a substituted copy of it instead, which is what lets
+    the pack cite symbols without the braces reaching paper.
+    """
+    text, unknown = resolve(src.read_text(encoding="utf-8"), str(src))
+    if unknown:
+        print("\n".join(["unknown symbol in prose:"] + unknown),
+              file=sys.stderr)
+        return 1
+    dst.write_text(text, encoding="utf-8", newline="")
+    n = len(SUB_RE.findall(src.read_text(encoding="utf-8")))
+    print(f"{n} substitution(s): {src.name} -> {dst.name}")
+    return 0
+
+
 def main() -> int:
+    if len(sys.argv) == 4 and sys.argv[1] == "--render":
+        return render_file(Path(sys.argv[2]), Path(sys.argv[3]))
     files = sorted(list((ROOT / "machine").rglob("*.md"))
                    + list((ROOT / "wiring").rglob("*.md")))
     used: dict[str, int] = {}
