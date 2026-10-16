@@ -104,7 +104,7 @@ side**, and reaches back to 221.95, inside by **15.60**. **The tool overruns the
 
 SETTLED: **The front overrun is the TOOLSETTER's approach, not lost cutting area - his, 2026-10-13,
 and it is not a worry.** Nothing is worked out there. The toolsetter is the only thing in front of
-the tee track, standing on the apron - BOX_FRONT_OVERHANG, 194.65 - and what the overrun has to
+the tee track, standing on the apron - BOX_FRONT_OVERHANG, {{BOX_FRONT_OVERHANG}} - and what the overrun has to
 buy is **reach to the probe's centre**. On the Mega V that centre sits **60 past the front**;
 **40 to centre works**, and the model's own DRO gives 49. FLAG: **THE FIGURE TO CHECK IS REACH TO
 THE PROBE CENTRE, NOT THE EDGE.** Whether the file's 45.00 or the DRO's 49 is right does not
@@ -200,7 +200,7 @@ resistance** - his measurement - so the hole was already at or above the M4 tapp
 tap would have had almost nothing to cut. The cycle count was the wrong thing to judge it on; the
 hole size was, and it was measurable the whole time.
 
-SETTLED: **Buy M5 × 20.** Each screw passes through 3.429 of side plate plus 5 of spacer before it reaches
+SETTLED: **Buy M5 × 20.** Each screw passes through {{T_SIDE_PLATE}} of side plate plus 5 of spacer before it reaches
 aluminium, so a 20 reaches 11.57 into a hole tapped 15 and clamps with 3.4 of hole to spare. **Not a
 25** - that wants 16.57 and would bottom out 1.57 short, tight to the wrist and holding nothing.
 
@@ -423,7 +423,7 @@ enough - no need to clamp the plate as a fence. The file agrees: BOX_W is measur
 side tongues and the tongue's inside face is the plate's **outer** face, so there is no channel and
 the plate's outer face is the skin's edge.
 
-FLAG: **The inset is 3.429, not 1/8".** The plate was ordered **10 gauge** and
+FLAG: **The inset is {{TT_BED_GROOVE_INSET}}, not 1/8".** The plate was ordered **10 gauge** and
 [`../dimensions/VALUES.md`](../dimensions/VALUES.md) records that a nominal 1/8" was carried for it
 and was wrong. The 0.254 matters only because of which way it errs: insetting 3.175 starts the groove
 **0.254 under the plate's footprint**, undercutting the one edge PLATE_H calls the edge that bears on

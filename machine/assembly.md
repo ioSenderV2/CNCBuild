@@ -361,7 +361,7 @@ FLAG: **There is no front tongue on the box.** The fin sits on the box's **top s
 170 mm length of 40 × 40 angle extrusion in FRONT of it** ties it down - two across the machine,
 bolting into **T1 at X 25 and T2 at X 170, tapped, at Y 20**. FLAG: **In front because the tee track
 bed leaves zero room behind**: the bed's front edge and the fin's back face are both at 1006.35.
-The box runs **194.65 mm past the fins**.
+The box runs **{{BOX_FRONT_OVERHANG}} mm past the fins**.
 
 SETTLED: **Settled 2026-10-11: one 170 mm length of 40 × 40 angle extrusion per fin, in FRONT of it.** Two
 across the machine, not four. It starts flush with the box's side edge, the two M8 run into **tapped**
@@ -661,7 +661,7 @@ but the gap is still a hard dimension.
 | Grid | **18 mm strips, 100 mm high**, **egg crate** — continuous both ways, half-depth notches at every crossing |
 | Depth overall | **142 mm** (24 + 100 + 18) |
 | Outer walls, all four sides | **24 mm outer + 18 mm inner web, 42 mm total** — the outer one **202 mm tall, capping the end grain of both skins** and **60 mm proud** of the top skin as a **tongue**. The thick sheet outboard is for **bolt bearing** |
-| Footprint | **1211 square**, both whole millimetres so a tape can lay them out. The machine's own envelope is 1211.238 and the skin is cut 0.24 under it, so the plate stands a hair proud of the skin's edge and the tongue beds on the plate |
+| Footprint | **1211 square**, both whole millimetres so a tape can lay them out. The machine's own envelope is {{MACHINE_OUTER_W}} and the skin is cut 0.24 under it, so the plate stands a hair proud of the skin's edge and the tongue beds on the plate |
 | Grid, both ways | **223** from each web to the first rib, then **219** between ribs — the same layout in both directions, so **all eight ribs are one part**: 1175 × 100, notches at 223, 460, 697 and 934 |
 | Fill | **sand in the cavities, LAST, on site** |
 
@@ -755,13 +755,13 @@ tenon.
 
 SETTLED: **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
 across-rib's front face is at **970** and the fin's base starts bearing at **1006.35**, so it is
-**36.35 mm** from a rib. At that distance a 24 mm top skin is not spanning anything; it is a short
+**{{FIN_BASE_TO_RIB}} mm** from a rib. At that distance a 24 mm top skin is not spanning anything; it is a short
 overhang off a support that is right there.
 
 NOTE: **The warning this replaces was written before any rib layout existed to check it against** —
 "bottom-edge bearing is only worth having if it lands on structure rather than on skin spanning
 between grid members", which is true in general and does not bite here. The fin angle's T-nuts are
-**69.35 mm** from the same rib and pull *up* rather than bear down; the weak link there is the
+**{{FIN_TNUT_TO_RIB}} mm** from the same rib and pull *up* rather than bear down; the weak link there is the
 T-nut's own grip on the plywood, not the span.
 
 FLAG: **If the fin's bearing is ever wanted harder, move a rib under it — do not add blocking.** A rib
@@ -1052,7 +1052,7 @@ is to hold five legs in position, three of which the box lands on.
 
 | | |
 |---|---|
-| **Box width** | **1211** — and note it is **not** the machine's 1211.238 envelope. The skin is cut 0.24 under, the plate stands 0.12 proud of its edge, and the tongue beds on the plate. Anything positioned off the box uses 1211 |
+| **Box width** | **1211** — and note it is **not** the machine's {{MACHINE_OUTER_W}} envelope. The skin is cut 0.24 under, the plate stands 0.12 proud of its edge, and the tongue beds on the plate. Anything positioned off the box uses 1211 |
 | **Top of the box** | **1016 — 40"**, his, and it is the figure the base's whole height hangs off. The work surface lands **66 above that at 1082**, because the tee track and two MDF sheets stand on the skin |
 | **Legs below the box** | **874** from the box's underside to the floor |
 | **Lower grid** | its **underside 100 above the floor** — set by the pallet jack and nothing else, so the forks go under it with the jack lowered |
