@@ -137,18 +137,17 @@ thread it is for named alongside.
 through onto a bearing block seat.
 </p>
 
-<p style="margin:0 0 .6rem; border:3px solid #b00; background:#fff2f2; padding:.6rem .8rem">
-<b>&#128308; DO NOT MACHINE SHEETS 1a, 1b OR 7 FROM THIS COPY. The Y drive has moved to the
-REAR and these three sheets still show the old arrangement.</b>
+<p style="margin:0 0 .6rem; border:3px solid #0a6; background:#f2fff8; padding:.6rem .8rem">
+<b>THE Y DRIVE IS AT THE REAR, and every sheet now shows it.</b>
 <br><br>
-The casting, interposer and motor are now at the <b>back</b> of the machine and BF12 face-mounts
-into the <b>front fins</b>. So the <b>60.5 &times; 50 window moves out of the fins and into the rear
-plate</b>, and BF12's four tapped M5 per beam move the other way. The registry, the fastener
-schedule and the 3D model carry the new arrangement; <b>these three drawings do not yet</b>.
+The casting, interposer and motor are at the <b>back</b> of the machine; BF12 face-mounts into the
+<b>front fins</b>. So the <b>60.5 &times; 50 window is in the rear plate</b> &mdash; Sheet 7, W1 and
+W2 &mdash; and BF12's four tapped M5 per beam are on the <b>fins</b>, Sheets 1a and 1b, F1&ndash;F4
+each. The fins are solid otherwise.
 <br><br>
-<b>What is wrong on each, specifically:</b> Sheets 1a and 1b no longer draw the window &mdash; the
-fin is solid on both &mdash; but still <b>omit BF12's four holes</b>. Sheet 7 carries F1&ndash;F8
-for a BF12 that is no longer on this plate, and <b>shows no windows</b>.
+<b>Both ends are not alike on Sheet 7.</b> W1 runs out to the plate's left edge, because the
+casting's outboard face and that edge are the same face &mdash; the Y1 extrusion's outboard face,
+which is also X 0. W2 is a closed window with about 6 of plate past it.
 <br><br>
 <b>SHEETS 5 AND 11 ARE CURRENT.</b> The nut sole brackets are a <b>steel T</b>, not a 6061
 trapezoid: a base <b>154 &times; 24.38</b> carrying the root bolts, then a <b>40</b> wide stem out
@@ -338,7 +337,18 @@ beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
 
   <!-- NO WINDOW. The fin is solid - the opening was clearance for the cast
        stepper frame and the steppers are at the back. -->
-  <text class="lbl" x="23" y="145" fill="#0a6">SOLID &#8212; no window</text>
+  <text class="lbl" x="23" y="240" fill="#0a6">SOLID &#8212; no window</text>
+  <!-- F1-F4: BF12 face-mounts into the fin. X 7 and 53 off the beam's
+       outboard face, which is fin X 20. Y 165 and 147 are beam-referenced
+       and read the same here as everywhere else. -->
+  <circle cx="27" cy="136.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <circle cx="73" cy="136.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <circle cx="27" cy="154.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <circle cx="73" cy="154.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <text class="ref" x="27" y="132.625" fill="#b06000" text-anchor="middle">F1</text>
+  <text class="ref" x="73" y="132.625" fill="#b06000" text-anchor="middle">F2</text>
+  <text class="ref" x="27" y="150.625" fill="#b06000" text-anchor="middle">F3</text>
+  <text class="ref" x="73" y="150.625" fill="#b06000" text-anchor="middle">F4</text>
 
   <!-- T1 and T2, the L-bracket holes, both on Y 30 -->
   <circle cx="25" cy="271.625" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
@@ -406,7 +416,6 @@ beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
   <text class="ref" x="65.00" y="38.62" fill="#0a6" text-anchor="middle">B6</text>
   <text class="ref" x="35.00" y="8.62" fill="#0a6" text-anchor="middle">B7</text>
   <text class="ref" x="65.00" y="8.62" fill="#0a6" text-anchor="middle">B8</text>
-  <text class="ref" x="68.00" y="127.00" fill="#b06000" text-anchor="middle">W</text>
 </svg>
 <figcaption>Laid out as the part sits on the mill table, <b>standing up: the 301.625 runs vertically and the
 straight outboard edge is the left-hand one</b>. Every feature is dimensioned off the bottom-left
@@ -419,11 +428,11 @@ hand them. As drawn is the view from the FRONT of the machine.<sup class="f">1.7
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
-<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">20 &rarr; 80.5</td><td class="n">132 &rarr; 182</td><td class="d">60.5&times;50</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
+<tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; upper row F1, F2 &middot; lower row F3, F4</td><td>4</td><td><b>27, 73</b></td><td><b>165</b> / <b>147</b></td><td>4.2</td><td><b>DRILL THROUGH</b> &middot; tap M5 at home</td></tr>
 <tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
 <tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>10 &times; &oslash;9</td><td><b>10</b></td><td colspan="4" class="tn">plus 1 cut-out, not counted as holes</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 10 &times; &oslash;9</td><td><b>14</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
@@ -472,7 +481,18 @@ beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
 
   <!-- NO WINDOW. The fin is solid - the opening was clearance for the cast
        stepper frame and the steppers are at the back. -->
-  <text class="lbl" x="23" y="145" fill="#0a6">SOLID &#8212; no window</text>
+  <text class="lbl" x="23" y="240" fill="#0a6">SOLID &#8212; no window</text>
+  <!-- F1-F4: BF12 face-mounts into the fin. X 7 and 53 off the beam's
+       outboard face, which is fin X 20. Y 165 and 147 are beam-referenced
+       and read the same here as everywhere else. -->
+  <circle cx="27" cy="136.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <circle cx="73" cy="136.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <circle cx="27" cy="154.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <circle cx="73" cy="154.625" r="2.1" fill="#fff" stroke="#b06000" stroke-width="1.2"/>
+  <text class="ref" x="27" y="132.625" fill="#b06000" text-anchor="middle">F1</text>
+  <text class="ref" x="73" y="132.625" fill="#b06000" text-anchor="middle">F2</text>
+  <text class="ref" x="27" y="150.625" fill="#b06000" text-anchor="middle">F3</text>
+  <text class="ref" x="73" y="150.625" fill="#b06000" text-anchor="middle">F4</text>
 
   <!-- T1 and T2, the L-bracket holes, both on Y 30 -->
   <circle cx="25" cy="271.625" r="4.5" fill="#fff" stroke="#111" stroke-width="0.9"/>
@@ -540,7 +560,6 @@ beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
   <text class="ref" x="65.00" y="38.62" fill="#0a6" text-anchor="middle">B6</text>
   <text class="ref" x="35.00" y="8.62" fill="#0a6" text-anchor="middle">B7</text>
   <text class="ref" x="65.00" y="8.62" fill="#0a6" text-anchor="middle">B8</text>
-  <text class="ref" x="68.00" y="127.00" fill="#b06000" text-anchor="middle">W</text>
 </svg>
 <figcaption>Laid out as the part sits on the mill table, <b>standing up: the 301.625 runs vertically and the
 straight outboard edge is the left-hand one</b>. Every feature is dimensioned off the bottom-left
@@ -553,11 +572,11 @@ hand them. As drawn is the view from the REAR of the machine.<sup class="f">1.7<
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
-<tr><td><b>W</b></td><td><b>Window</b> for the cast stepper frame</td><td>1</td><td class="n">20 &rarr; 80.5</td><td class="n">132 &rarr; 182</td><td class="d">60.5&times;50</td><td class="op">Through cut-out<sup class="f">1.3</sup></td></tr>
+<tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; upper row F1, F2 &middot; lower row F3, F4</td><td>4</td><td><b>27, 73</b></td><td><b>165</b> / <b>147</b></td><td>4.2</td><td><b>DRILL THROUGH</b> &middot; tap M5 at home</td></tr>
 <tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
 <tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>10 &times; &oslash;9</td><td><b>10</b></td><td colspan="4" class="tn">plus 1 cut-out, not counted as holes</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 10 &times; &oslash;9</td><td><b>14</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
@@ -1992,17 +2011,17 @@ before drilling.</b><sup class="f">6.4</sup></p>
 bottom edge is the reference because it bears on the box's top skin &mdash; the same edge every
 other plate on this machine is dimensioned from.<sup class="f">7.6</sup><br>
 &#128308; <b>The beam bores do NOT depend on this plate's height.</b> They sit 182 above the box's
-top skin because the FIN's window puts the beam there, so A1&ndash;A16 read the same
+top skin because that is where the fin carries it, so A1&ndash;A16 read the same
 <b>197 / 227 / 257 / 287</b> that Sheets 1a and 1b carry for the fin.<sup class="f">7.6</sup><br>
-<b>F1&ndash;F8 are beam-referenced, like everything else on this sheet.</b> The beam's underside is
-182 above the box's top skin, the interposer takes 10 off that and BF12's own base-to-first-row
-takes 7 more, so the rows are 165 and 147. <b>Nothing about the delivered plate can move them</b>,
-which was not true while they were converted down from the installed top edge.<sup class="f">7.4</sup><br>
+<b>W1 and W2 are beam-referenced, like everything else on this sheet.</b> Their top edge is the
+beam's underside, 182 above the box's top skin, and they run 50 down to 132. <b>Nothing about the
+delivered plate can move them.</b> BF12 is not on this plate &mdash; it face-mounts into the front
+fins, Sheets 1a and 1b.<sup class="f">7.4</sup><sup class="f">7.7</sup><br>
 <b>X 0 is the plate's LEFT EDGE, set flush with the Y1 extrusion's OUTBOARD FACE</b> &mdash;
 the side plate is not in it and stands proud of the plate's end by its own thickness.<br>
 &#128308; <b>The Y1 holes are exact and the Y2 holes are not.</b> Everything at the Y1 end is
-measured straight off that face, which is why A1&ndash;A8 land on a round 15 and 45 and BF12 on
-7 and 53. The Y2 end is <b>1204.38 away by the beam spacing</b>, not by this plate's length, so
+measured straight off that face, which is why A1&ndash;A8 land on a round 15 and 45 and W1 starts
+on X 0. The Y2 end is <b>1204.38 away by the beam spacing</b>, not by this plate's length, so
 <b>measure the built spacing before drilling that end</b> and treat the Y2 numbers below as
 provisional. The delivered plate runs about 6 past Y2's face, so there is material either
 way.<sup class="f">7.1</sup>
@@ -2028,6 +2047,16 @@ way.<sup class="f">7.1</sup>
        Y1 STARTS ON X 0: its outboard face is what the plate's edge is set to. -->
   <rect x="0" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
   <rect x="411.98" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
+
+  <!-- THE TWO WINDOWS: clearance for the cast stepper frame and the
+       interposer, which pass through this plate. 60.5 x 50, top edge
+       on the beam underside at 182. Y1 END RUNS TO THE PLATE EDGE -
+       the casting's outboard face and the plate's left edge are the same
+       face, so the slip falls inboard. -->
+  <rect x="0.00" y="43.06" width="21.78" height="18.00" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <rect x="411.80" y="43.06" width="21.78" height="18.00" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <text class="ref" x="2" y="70.1" fill="#b06000">W1</text>
+  <text class="ref" x="413.8" y="70.1" fill="#b06000">W2</text>
   <text class="lbl" x="2" y="53" fill="#c0c">Y1 BEAM</text>
   <text class="lbl" x="400" y="53" fill="#c0c">Y2 BEAM</text>
 
@@ -2049,24 +2078,24 @@ way.<sup class="f">7.1</sup>
   <text class="q" x="448" y="56" fill="#c0c">Beam stations in X are FIXED:</text>
   <text class="q" x="448" y="68" fill="#c0c">Y1's extrusion face IS X 0; Y2's is at</text>
   <text class="q" x="448" y="80" fill="#c0c">X 1204.38, by the beams not this plate.</text>
-  <text class="q" x="448" y="98" fill="#b06000">BF12 Y carries the interposer, and it is</text>
-  <text class="q" x="448" y="110" fill="#b06000">BEAM-REFERENCED: the beam underside at 182,</text>
-  <text class="q" x="448" y="122" fill="#b06000">less the 10 bar, less BF12's 7 = 165, 147.</text>
-  <text class="q" x="448" y="140" fill="#b06000">F1&#8211;F8 no longer hang off the plate's</text>
-  <text class="q" x="448" y="152" fill="#b06000">TOP edge. They are measured from the beam</text>
-  <text class="q" x="448" y="164" fill="#b06000">like everything else here, so the delivered</text>
-  <text class="q" x="448" y="176" fill="#b06000">plate's width cannot move them.</text>
+  <text class="q" x="448" y="98" fill="#b06000">W1, W2 clear the casting and the interposer,</text>
+  <text class="q" x="448" y="110" fill="#b06000">which pass THROUGH this plate. Top edge on</text>
+  <text class="q" x="448" y="122" fill="#b06000">the beam underside at 182, 50 down to 132.</text>
+  <text class="q" x="448" y="140" fill="#b06000">W1 RUNS OUT TO THE LEFT EDGE: the casting's</text>
+  <text class="q" x="448" y="152" fill="#b06000">outboard face and that edge are the same face.</text>
+  <text class="q" x="448" y="164" fill="#b06000">W2 is closed, with about 6 of plate past it.</text>
+  <text class="q" x="448" y="176" fill="#b06000">BF12 is on the FINS now - Sheets 1a, 1b.</text>
 
   <!-- ================= DETAIL: LEFT STATION, scale 1.2 ================= -->
   <text class="lbl" x="0" y="200">DETAIL &#8212; Y1 STATION, scale 1.2, drawn in the installed orientation. The Y2 station is this MIRRORED about X 602.19: read X&prime; = 1204.38 &minus; X.</text>
 
   <!-- detail: the BEAM'S OWN lower-left corner at SVG (20, 376) - that corner is plate
-       station X 3.175, Y 182. Local dimensions are off the beam; the sheet-frame Y of
+       station X 0, Y 182. Local dimensions are off the beam; the sheet-frame Y of
        every hole is listed beside it. SVG x = 20 + Xlocal*1.2 ; SVG y = 376 - Ylocal*1.2 -->
   <rect x="20" y="232" width="3.81" height="144" fill="#d8d8d8" stroke="#555" stroke-width="0.6"/>
   <rect x="23.81" y="232" width="72" height="144" fill="#fff" stroke="#c0c" stroke-width="1.4"/>
   <text class="lbl" x="100" y="306" fill="#c0c">Y1 BEAM 60 &#215; 120</text>
-  <text class="lbl" x="100" y="318" fill="#555">the 3.175 at X 0 is the side plate</text>
+  <text class="lbl" x="100" y="318" fill="#555">the side plate sits outboard of X 0</text>
 
   <!-- A1-A8 corner bores: X 15 / 45 off the extrusion face, 15 / 45 / 75 / 105 up the beam -->
   <circle cx="41.81" cy="358" r="3.2" fill="#fff" stroke="#111" stroke-width="1.2"/>
@@ -2081,13 +2110,6 @@ way.<sup class="f">7.1</sup>
   <text class="lbl" x="100" y="258">X 15 / 45</text>
   <text class="lbl" x="100" y="270">Y 197 / 227 / 257 / 287 &#8212; as Sheets 1a / 1b</text>
 
-  <!-- F holes: X 7 / 53 off the extrusion face, BELOW the beam's bottom face -->
-  <circle cx="32.21" cy="395.83" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
-  <circle cx="87.41" cy="395.83" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
-  <circle cx="32.21" cy="417.43" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
-  <circle cx="87.41" cy="417.43" r="2.8" fill="#fff" stroke="#c00" stroke-width="1.3"/>
-  <text class="lbl" x="100" y="393" fill="#c00">F1, F2 &#8212; Y 165</text>
-  <text class="lbl" x="100" y="415" fill="#c00">F5, F6 &#8212; Y 147 &middot; both on X 7 and 53</text>
 
   <!-- detail dimensions -->
   <line x1="23.81" y1="434" x2="41.81" y2="434" stroke="#06c" stroke-width="0.5"/>
@@ -2095,25 +2117,25 @@ way.<sup class="f">7.1</sup>
   <line x1="23.81" y1="448" x2="77.81" y2="448" stroke="#06c" stroke-width="0.5"/>
   <text class="dim" x="46" y="457">45</text>
   <line x1="20" y1="462" x2="23.81" y2="462" stroke="#555" stroke-width="0.5"/>
-  <text class="dim" x="26" y="470" fill="#555">3.175 side plate</text>
+  <text class="dim" x="26" y="470" fill="#555">side plate, outboard of this edge</text>
   <line x1="8" y1="376" x2="8" y2="358" stroke="#06c" stroke-width="0.5"/>
   <text class="dim" x="-12" y="370">15</text>
   <line x1="8" y1="376" x2="8" y2="232" stroke="#06c" stroke-width="0.5"/>
   <text class="dim" x="-20" y="306">120</text>
   <circle cx="20" cy="376" r="3.0" fill="#c00"/>
-  <text class="dim" x="-22" y="388" fill="#c00">X 3.175, Y 182</text>
+  <text class="dim" x="-22" y="388" fill="#c00">X 0, Y 182</text>
 
-  <text class="q" x="268" y="252" fill="#c0c">THE SIDE PLATE PUSHES THE BEAM OFF X 0.</text>
-  <text class="q" x="268" y="264" fill="#c0c">The plate runs flush with the side plates' outer</text>
-  <text class="q" x="268" y="276" fill="#c0c">faces, so Y1's extrusion face is at X 3.175 and</text>
-  <text class="q" x="268" y="288" fill="#c0c">every X here is the extrusion pattern + 3.175.</text>
+  <text class="q" x="268" y="252" fill="#c0c">X 0 IS THE Y1 EXTRUSION'S OUTBOARD FACE.</text>
+  <text class="q" x="268" y="264" fill="#c0c">The side plate is NOT in this plate - it stands</text>
+  <text class="q" x="268" y="276" fill="#c0c">proud of its end by its own thickness - so every</text>
+  <text class="q" x="268" y="288" fill="#c0c">X here is the extrusion pattern, unshifted.</text>
   <text class="q" x="268" y="310">A-holes are &oslash;9 on an M8 &#8212; the joint works by</text>
   <text class="q" x="268" y="322">friction, not bearing, so there is a millimetre of</text>
   <text class="q" x="268" y="334">float by design. Scribe two lines, tick four stations</text>
   <text class="q" x="268" y="346">along each.</text>
-  <text class="q" x="268" y="368" fill="#c00">F-holes are &oslash;4.2 DRILLED THROUGH, tapped M5 at</text>
-  <text class="q" x="268" y="380" fill="#c00">home. Face-mounted BF12 takes 4; top-mounted</text>
-  <text class="q" x="268" y="392" fill="#c00">takes 2 &#8212; this is the face-mounted count.</text>
+  <text class="q" x="268" y="368" fill="#b06000">BF12 IS NOT ON THIS PLATE. It face-mounts into</text>
+  <text class="q" x="268" y="380" fill="#b06000">the front fins - Sheets 1a and 1b, F1-F4 each.</text>
+  <text class="q" x="268" y="392" fill="#b06000">What this plate takes instead is the window.</text>
   <!-- X1-X8 into the back tongue, and every schedule ref tagged -->
   <circle cx="28.93" cy="97.78" r="1.7" fill="#dff3e8" stroke="#0a6" stroke-width="0.9"/>
   <circle cx="82.93" cy="97.78" r="1.7" fill="#dff3e8" stroke="#0a6" stroke-width="0.9"/>
@@ -2157,15 +2179,7 @@ way.<sup class="f">7.1</sup>
   <text class="ref" x="77.81" y="279.55" text-anchor="middle">A6</text>
   <text class="ref" x="41.81" y="243.55" text-anchor="middle">A7</text>
   <text class="ref" x="77.81" y="243.55" text-anchor="middle">A8</text>
-  <text class="ref" x="32.21" y="428.43" fill="#06c" text-anchor="middle">F1</text>
-  <text class="ref" x="32.21" y="389.83" fill="#06c" text-anchor="middle">F5</text>
-  <text class="ref" x="87.41" y="428.43" fill="#06c" text-anchor="middle">F2</text>
-  <text class="ref" x="87.41" y="389.83" fill="#06c" text-anchor="middle">F6</text>
   <text class="ref" x="423.92" y="21.46" text-anchor="middle">A9&#8211;A16</text>
-  <text class="ref" x="414.92" y="63.63" fill="#06c" text-anchor="middle">F3</text>
-  <text class="ref" x="432.92" y="63.63" fill="#06c" text-anchor="middle">F4</text>
-  <text class="ref" x="414.92" y="44.15" fill="#06c" text-anchor="middle">F7</text>
-  <text class="ref" x="432.92" y="44.15" fill="#06c" text-anchor="middle">F8</text>
   <text class="ref" x="11.94" y="21.46" text-anchor="middle">A1&#8211;A8</text>
 </svg>
 <figcaption>Main view to scale along both axes, <b>plate clamped right side up</b> so the WCS is
@@ -2181,11 +2195,10 @@ explicitly rather than making anyone do that subtraction at the mill.</figcaptio
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;0, Y&nbsp;182</td><td>8</td><td class="n"><b>15, 45</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
 <tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1204.38, Y&nbsp;182 &middot; <b>PROVISIONAL</b></td><td>8</td><td class="n"><b>1159.38, 1189.38</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>F5&ndash;F8</b></td><td><b>BF12</b>, face-mounted &mdash; the upper row</td><td>4</td><td class="n"><b>7, 53,<br>1151.38, 1197.38</b></td><td class="n"><b>165</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
-<tr><td><b>F1&ndash;F4</b></td><td><b>BF12</b>, face-mounted &mdash; the lower row</td><td>4</td><td class="n"><b>7, 53,<br>1151.38, 1197.38</b></td><td class="n"><b>147</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">7.4</sup><br><b>includes the interposer</b><sup class="f">7.7</sup></td></tr>
+<tr><td><b>W1, W2</b></td><td><b>Window</b> for the cast stepper frame and the interposer, which pass through this plate</td><td>2</td><td><b>0 &rarr; 60.5</b>, <b>1143.89 &rarr; 1204.39</b></td><td><b>132 &rarr; 182</b></td><td>60.5&times;50</td><td>Through cut-out</td></tr>
 <tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>50, 200, 350, 500,<br>650, 800, 950, 1100</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1210.73 plate</b> &mdash; 80.365 clear at each end<sup class="f">7.3</sup><br><b>This plate IS the drill guide for the back tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup><br><b>M8 &times; 35</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b><sup class="f">7.9</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;4.2 &middot; 24 &times; &oslash;9</td><td><b>32</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;9</td><td><b>24</b></td><td colspan="4" class="tn">plus 2 cut-outs, not counted as holes</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
@@ -2720,7 +2733,7 @@ unsupported plate; above it, longer buys nothing but edge distance.</p>
 <p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1084.38</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken flush with the side plates' outer faces would be <b>1210.73</b> &mdash; which is NOT how it is placed any more. &#128308; <b>Its left edge goes on the Y1 extrusion's outboard face instead</b>, his call 2026-10-10, so the side plate is proud of the plate at that end and the far end falls where the bought <b>1210.47</b> puts it. The stackup still sets the holes; it no longer sets the edge. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1204.38 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is the WCS origin now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1210.73 before clamping or add the excess to every right-hand X.</p>
 <p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint.</b> 16 bolts, 8 per beam. <b>Lay it out by scribing:</b> two lines at the column positions, four stations ticked along each. <b>A scribed line beats working off an extruded bore</b>, whose own position error would come along with it &mdash; and these holes are &oslash;9 on an M8 in any case, about a millimetre of float, which this joint wants because it works by friction rather than bearing.</p>
 <p><b>7.3</b> &mdash; <b>Y 30, the same number the side plates and the front fin carry.</b> One bolt line across every plate that lands on the box, and from the installed bottom edge it reads as itself with no arithmetic. It took two reframings to get here: it was a round <b>270</b> measured from the installed top, which put the row 34.8 up and 4.8 off every other plate while a note called the difference <i>deliberate</i> &mdash; <b>it was not</b> &mdash; then 271.625 once the plate height was corrected, and now simply 30. <b>The pitch no longer differs</b>: 150 here over the 1210.73, and the side plates run 150 from 50 as well. Eight at 150 span 1050, so centring them on the plate leaves <b>80.365 clear at each end</b>. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
-<p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 here.</b> Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
+<p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 into the FIN</b>, Sheets 1a and 1b &mdash; not into this plate. Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
 <p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1210.73 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
 <p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part. Sheet 9 has been dimensioned from it since the side plate's T-slot rows were corrected, and this sheet now matches. <b>It costs nothing to do so</b>, which is worth stating because the sheet was drawn upside down until 2026-10-07 on the belief that it did. &#128308; <b>The beam bores are located by the FIN, not by this plate.</b> Y_BEAM_UNDERSIDE is 182 above the box skin because the fin's window puts the beam there &mdash; the fin is the riser that actually carries it, settled 2026-10-03 after the side plate was ruled out as the reference. So every plate standing on that skin sees the beam's corner bores at the same four heights, <b>197 / 227 / 257 / 287</b>, whatever height that plate happened to be bought at. Sheets 1a and 1b carry exactly those numbers for the fin, and Sheet 1 did before them. &#9888; <b>The old inverted frame was 2.8 mm out and nobody had caught it.</b> It listed the A-holes at Y 15 / 45 / 75 / 105 from the installed top edge and called the beam's corner Y 0, which only holds if the beam's top face is flush with the plate's top edge. On a 304.8 plate it stood <i>2.8 proud</i> of the beam top, so those bores were a plate-height error of the same size and from the same 2026-10-03 correction that left Sheet 9's lines behind. Re-referencing to the bottom edge removes the error rather than rescaling it. <b>The four Y values live in the registry</b> as RP_BEAM_ROW_1 to RP_BEAM_ROW_4, on the same expression as SIDE_TSLOT_ROW_1, so the two plates cannot drift apart. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
 <p><b>7.7</b> &mdash; <b>The BF12 rows carry the interposer, and the full thickness applies.</b> The screw's near end is carried by the cast stepper frame, which sits <i>on</i> the 10 mm interposer and is therefore LOWER than bare metal. BF12 at the far end has to drop by the same amount or the screw is not parallel to its own beam. This sheet is clamped inverted, so lower is a <b>larger</b> Y. <b>It is the full 10, not 5.</b> The registry's NUT_FACE_BELOW_BEAM does subtract a 5 mm standoff, but only because its base figure was <i>measured</i> on a machine that still had one. <b>The standoff no longer exists in the design</b>, so there is nothing here to take back off. &#9989; <b>T_INTERPOSER is a measured 10</b> &mdash; his micrometer, and a metric plate rather than the 3/8&quot; this chain once assumed. These two rows follow it automatically if it ever changes again.</p>
