@@ -14,8 +14,10 @@
     5. make-3d.py             Interactive_Model.html  <- zip member
     6. build-hole-tally.py    the tallies inside shop-pack.html
     7. status.py all          STATUS.md and INDEX.md
-    8. the five checkers      prism edges, clash, registry JS, shop pack refs,
-                              and subst - every {{SYMBOL}} in the prose resolves
+    8. the six checkers       prism edges, clash, registry JS, shop pack refs,
+                              subst - every {{SYMBOL}} resolves - and restale,
+                              which fails if a registry value moved and prose
+                              still quotes the old one
     9. make-pdf.ps1           the two documents and shop-pack.pdf, and make-pdf
                               then rebuilds "CNC Build.zip" itself - the zip
                               carries the pack, so it is bundled whenever the
@@ -94,10 +96,16 @@ try {
     # subst is a GATE and audit-prose is not, which is the difference worth
     # knowing: a symbol either exists or it does not, so there is no judgement
     # to apply and no reason to let a document print with {{TYPO}} in it.
+    # restale is the one that catches the failure this repo keeps hitting: a
+    # registry value moves and the prose quoting it does not. It compares the
+    # working tree against the registry AT HEAD, so it has to run BEFORE the
+    # change is committed - which is where this sits.
     foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-registry-js',
-                   'check-shop-pack-refs', 'subst') {
+                   'check-shop-pack-refs', 'subst', 'restale') {
         Write-Host "-- $c" -ForegroundColor Cyan
-        & $py "tools/$c.py" @(if ($c -eq 'subst') { '--check' })
+        & $py "tools/$c.py" @(
+            if ($c -eq 'subst') { '--check' }
+            elseif ($c -eq 'restale') { '--since-git'; '--gate' })
         if ($LASTEXITCODE -ne 0) { $bad++; Write-Host "  FAILED" -ForegroundColor Red }
     }
     if ($Audit) {

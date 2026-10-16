@@ -84,11 +84,48 @@ def near(line, at):
     return set(before) | set(after)
 
 
+def from_git(rev):
+    """The registry's values as of a commit, so no snapshot has to be taken.
+
+    A snapshot you must remember to take before editing is a step that gets
+    skipped on the day it matters. git already holds the previous registry, so
+    this evaluates THAT and diffs against the working tree.
+    """
+    import subprocess
+    import tempfile
+    rel = "dimensions/registry.toml"
+    r = subprocess.run(["git", "-C", str(ROOT), "show", f"{rev}:{rel}"],
+                       capture_output=True)
+    if r.returncode != 0:
+        print(f"cannot read {rel} at {rev}: "
+              f"{r.stderr.decode(errors='replace').strip()}", file=sys.stderr)
+        return None
+    with tempfile.TemporaryDirectory() as td:
+        p = Path(td) / "registry.toml"
+        p.write_bytes(r.stdout)
+        try:
+            old = Registry(p)
+            old.evaluate_all()
+        except Exception as exc:
+            print(f"the registry at {rev} does not evaluate: {exc}",
+                  file=sys.stderr)
+            return None
+        if old.errors:
+            print(f"the registry at {rev} does not evaluate", file=sys.stderr)
+            return None
+        return {s: old.value(s) for s in old.order}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--since")
+    ap.add_argument("--since-git", metavar="REV", nargs="?", const="HEAD",
+                    help="previous values from a committed registry.toml; "
+                         "no snapshot to remember to take")
     ap.add_argument("--snapshot")
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--gate", action="store_true",
+                    help="exit non-zero if any prose is still on an old value")
     a = ap.parse_args()
 
     reg = Registry()
@@ -99,11 +136,16 @@ def main():
         Path(a.snapshot).write_text(json.dumps(now, indent=0), encoding="utf-8")
         print(f"snapshot of {len(now)} symbols -> {a.snapshot}")
         return 0
-    if not a.since:
-        print("need --since BEFORE.json or --snapshot OUT.json", file=sys.stderr)
+    if a.since_git:
+        before = from_git(a.since_git)
+        if before is None:
+            return 2
+    elif a.since:
+        before = json.loads(Path(a.since).read_text(encoding="utf-8"))
+    else:
+        print("need --since-git [REV], --since FILE or --snapshot OUT",
+              file=sys.stderr)
         return 2
-
-    before = json.loads(Path(a.since).read_text(encoding="utf-8"))
     moved = {s: (before[s], now[s]) for s in now
              if s in before and abs(now[s] - before[s]) > 1e-9}
     if not moved:
@@ -155,6 +197,11 @@ def main():
         if a.apply and changed:
             f.write_text("\n".join(out), encoding="utf-8", newline="")
 
+    if a.gate and hits:
+        print(f"\n{hits} line(s) still quote a value the registry has moved "
+              f"away from.\nRun: python tools/restale.py --since-git --apply",
+              file=sys.stderr)
+        return 1
     print(f"\n{hits} stale quotation(s)"
           f"{' rewritten' if a.apply else ' (dry run)'}")
     return 0
