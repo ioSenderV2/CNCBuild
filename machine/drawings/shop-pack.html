@@ -618,139 +618,142 @@ back.<sup class="f">1.5</sup></p>
 <div class="plate pg-s2">
 <h2 id="sheet-2">Sheet 2a &mdash; X gantry end plate, LEFT-HAND (quantity 1)</h2>
 <div class="stock">
-<b>235 long &times; 154 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b>, out of a 200 &times; 300 piece.
+<b>245 long &times; 154 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b>, out of a 200 &times; 300 piece.
 </div>
 
 <figure>
 <svg viewBox="-58 -44 580 240" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- X GANTRY END PLATE, machining coordinates 2026-10-03. 235 along mill X.
+  <!-- X GANTRY END PLATE, machining coordinates 2026-10-03. 245 along mill X.
        X 0 at the plate&apos;s bottom end; Y 0 at the plate&apos;s back edge. -->
   <!-- the plate. svg x = X ; svg y = 154 - Y. The far-front corner is CUT:
-       a straight line from (X 235, Y 60) to (X 188, Y 154). -->
-  <path d="M 0,0 L 188,0 L 235,94 L 235,154 L 0,154 Z"
+       a straight line from (X 245, Y 60) to (X 198, Y 154). -->
+  <path d="M 0,0 L 198,0 L 245,94 L 245,154 L 0,154 Z"
         fill="#e8f0fa" stroke="#111" stroke-width="1.6" stroke-linejoin="miter"/>
   <!-- what the cut removes, for orientation only -->
-  <path d="M 188,0 L 235,0 L 235,94 Z" fill="none" stroke="#999"
+  <path d="M 198,0 L 245,0 L 245,94 Z" fill="none" stroke="#999"
         stroke-width="0.6" stroke-dasharray="3 3"/>
-  <text class="dim" x="205" y="34" fill="#999">cut off</text>
-  <line x1="0" y1="-12" x2="188" y2="-12" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="84" y="-16">188 to the cut</text>
-  <line x1="244.5" y1="94" x2="244.5" y2="154" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="250" y="126">60</text>
+  <text class="dim" x="215" y="34" fill="#999">cut off</text>
+  <line x1="0" y1="-12" x2="198" y2="-12" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="89" y="-16">198 to the cut</text>
+  <line x1="254.5" y1="94" x2="254.5" y2="154" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="260" y="126">60</text>
 
-  <!-- X beam: TOP extrusion X 175-235, LOWER X 115-175, both Y 0-60 -->
-  <rect x="175.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <rect x="115.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="180.5" y="90.0" fill="#0a6">X TOP</text>
-  <text class="lbl" x="120.5" y="90.0" fill="#0a6">X LOWER</text>
+  <!-- X beam: TOP extrusion X 185-245, LOWER X 125-185, both Y 0-60 -->
+  <rect x="185.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <rect x="125.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="190.5" y="90.0" fill="#0a6">X TOP</text>
+  <text class="lbl" x="130.5" y="90.0" fill="#0a6">X LOWER</text>
 
-  <!-- shelf bar X 64.2-115, Y 0-60 -->
-  <rect x="64.8" y="94.6" width="49.599999999999994" height="58.8" fill="none" stroke="#b06000" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="70.5" y="90.0" fill="#b06000">SHELF</text>
+  <!-- shelf bar X 74.2-125, Y 0-60 -->
+  <rect x="74.8" y="94.6" width="49.599999999999994" height="58.8" fill="none" stroke="#b06000" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="80.5" y="90.0" fill="#b06000">SHELF</text>
 
-  <!-- doubler footprint, far face: X 0-60, full width -->
-  <rect x="0" y="0" width="45" height="154.0" fill="none" stroke="#b06000" stroke-width="1.1" stroke-dasharray="3 2"/>
-  <text class="lbl" x="4" y="84.0" fill="#b06000">DOUBLER 154 &#215; 45</text>
+  <!-- doubler footprint, far face: X 10-55 - its end face is the nut
+       plane and the plate reaches XEP_SOLE_TAB past it -->
+  <rect x="10" y="0" width="45" height="154.0" fill="none" stroke="#b06000" stroke-width="1.1" stroke-dasharray="3 2"/>
+  <text class="lbl" x="14" y="84.0" fill="#b06000">DOUBLER 154 &#215; 45</text>
 
-  <rect x="48" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="48" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="138" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="138" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <!-- doubler attachment, one column at X 25 -->
-  <circle cx="25" cy="122.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <circle cx="25" cy="92.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <circle cx="25" cy="62.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <circle cx="25" cy="32.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <!-- sole bracket: bored INTO the X 0 end edge, on the plate/doubler seam.
-       A face view can only show them as holes running in from that end. -->
-  <line x1="0" y1="122.0" x2="20" y2="122.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <line x1="0" y1="92.0" x2="20" y2="92.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <line x1="0" y1="62.0" x2="20" y2="62.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <line x1="0" y1="32.0" x2="20" y2="32.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <text class="q" x="2" y="16.0" fill="#c00">sole bracket: 2 rows in from this end, 20 deep MAX (2.5 clear)</text>
+  <rect x="58" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="58" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="148" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="148" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <!-- doubler attachment, one column at X 35 - DOUBLER_BOLT_X_PLATE,
+       which is 25 up the doubler plus the tab below it -->
+  <circle cx="35" cy="122.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="35" cy="92.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="35" cy="62.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="35" cy="32.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <!-- sole bracket: bored INTO THE DOUBLER'S end edge at X 10, not the
+       plate's own end - the plate runs XEP_SOLE_TAB past it to back the
+       bracket's base. A face view can only show them running in. -->
+  <line x1="10" y1="122.0" x2="30" y2="122.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="10" y1="92.0" x2="30" y2="92.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="10" y1="62.0" x2="30" y2="62.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="10" y1="32.0" x2="30" y2="32.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <text class="q" x="12" y="16.0" fill="#c00">sole plate: one row into the doubler's end face, 20 deep MAX</text>
 
-  <!-- four HGH20 blocks, centred on the rails at X 70 and 160 (outside T-slots, 90 apart):
-       upper row X 138-182, lower X 48-92; two butted in Y -->
-    <circle cx="144.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="144.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="144.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="144.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <!-- four HGH20 blocks, centred on the rails at X 80 and 170 (outside T-slots, 90 apart):
+       upper row X 148-192, lower X 58-102; two butted in Y -->
+    <circle cx="154.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
 
   <!-- E1-E4 into the top extrusion corner bores -->
   <g fill="#fff" stroke="#111" stroke-width="0.9">
-    <circle cx="190" cy="139.0" r="4.5"/>
-    <circle cx="190" cy="109.0" r="4.5"/>
-    <circle cx="220" cy="139.0" r="4.5"/>
-    <circle cx="220" cy="109.0" r="4.5"/>
+    <circle cx="200" cy="139.0" r="4.5"/>
+    <circle cx="200" cy="109.0" r="4.5"/>
+    <circle cx="230" cy="139.0" r="4.5"/>
+    <circle cx="230" cy="109.0" r="4.5"/>
   </g>
 
   <!-- H1, H2 shelf-to-plate, and C2 the encoder bore -->
-  <circle cx="99.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="79.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <text class="ref" x="95.2" y="132.0">H2</text>
-  <text class="ref" x="75.2" y="132.0">H1</text>
-  <circle cx="115" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <text class="lbl" x="102.5" y="54.0">&#248;35 C2</text>
+  <circle cx="109.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="89.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <text class="ref" x="105.2" y="132.0">H2</text>
+  <text class="ref" x="85.2" y="132.0">H1</text>
+  <circle cx="125" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <text class="lbl" x="112.5" y="54.0">&#248;35 C2</text>
 
-  <line x1="0" y1="166.0" x2="235" y2="166.0" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="104" y="176.0">235</text>
+  <line x1="0" y1="166.0" x2="245" y2="166.0" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="109" y="176.0">245</text>
   <line x1="-12" y1="0" x2="-12" y2="154.0" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="-40" y="77.0">154</text>
   <circle cx="0" cy="154.0" r="3.4" fill="#c00"/>
   <text class="dim" x="-34" y="164.0" fill="#c00">WCS 0,0</text>
 
   <text class="q" x="282" y="14">X 0 at the plate&#8217;s BOTTOM end &#183; Y 0 at its BACK edge</text>
-  <text class="q" x="282" y="30" fill="#06c">E1&#8211;E4 &#248;9 &#183; X 190, 220 &#183; Y 15, 45</text>
-  <text class="q" x="282" y="42" fill="#06c">H1 X 79.2 &#183; H2 X 99.2 &#183; both Y 30</text>
-  <text class="q" x="282" y="54">C2 &#248;35 at X 115, Y 77 &#8212; the beam SEAM</text>
+  <text class="q" x="282" y="30" fill="#06c">E1&#8211;E4 &#248;9 &#183; X 200, 230 &#183; Y 15, 45</text>
+  <text class="q" x="282" y="42" fill="#06c">H1 X 89.2 &#183; H2 X 109.2 &#183; both Y 30</text>
+  <text class="q" x="282" y="54">C2 &#248;35 at X 125, Y 77 &#8212; the beam SEAM</text>
   <text class="q" x="282" y="70" fill="#c0c">the four blocks and their 16 M5 are placed</text>
-  <text class="q" x="282" y="82" fill="#c0c">X 54, 86, 144, 176 &#183; Y 20.5, 56.5, 97.5, 133.5</text>
+  <text class="q" x="282" y="82" fill="#c0c">X 64, 96, 154, 186 &#183; Y 20.5, 56.5, 97.5, 133.5</text>
   <text class="q" x="282" y="98" fill="#b06000">amber = parts on other sheets</text>
   <text class="q" x="282" y="110" fill="#0a6">green = the X beam extrusions</text>
   <text class="q" x="282" y="126" fill="#555">reference outlines are drawn INSET 0.6 so</text>
   <text class="q" x="282" y="138" fill="#555">butting parts show as two lines, not one</text>
   <!-- schedule ref tags -->
   <!-- schedule ref tags -->
-  <text class="ref" x="54.00" y="127.50" fill="#06c" text-anchor="middle">P1</text>
-  <text class="ref" x="86.00" y="127.50" fill="#06c" text-anchor="middle">P2</text>
-  <text class="ref" x="144.00" y="127.50" fill="#06c" text-anchor="middle">P3</text>
-  <text class="ref" x="176.00" y="127.50" fill="#06c" text-anchor="middle">P4</text>
-  <text class="ref" x="54.00" y="109.50" fill="#06c" text-anchor="middle">P5</text>
-  <text class="ref" x="86.00" y="109.50" fill="#06c" text-anchor="middle">P6</text>
-  <text class="ref" x="144.00" y="109.50" fill="#06c" text-anchor="middle">P7</text>
-  <text class="ref" x="176.00" y="109.50" fill="#06c" text-anchor="middle">P8</text>
-  <text class="ref" x="54.00" y="50.50" fill="#06c" text-anchor="middle">P9</text>
-  <text class="ref" x="86.00" y="50.50" fill="#06c" text-anchor="middle">P10</text>
-  <text class="ref" x="144.00" y="50.50" fill="#06c" text-anchor="middle">P11</text>
-  <text class="ref" x="176.00" y="50.50" fill="#06c" text-anchor="middle">P12</text>
-  <text class="ref" x="54.00" y="32.50" fill="#06c" text-anchor="middle">P13</text>
-  <text class="ref" x="86.00" y="32.50" fill="#06c" text-anchor="middle">P14</text>
-  <text class="ref" x="144.00" y="32.50" fill="#06c" text-anchor="middle">P15</text>
-  <text class="ref" x="176.00" y="32.50" fill="#06c" text-anchor="middle">P16</text>
-  <text class="ref" x="190.00" y="151.00" fill="#b06000" text-anchor="middle">E1</text>
-  <text class="ref" x="220.00" y="151.00" fill="#b06000" text-anchor="middle">E2</text>
-  <text class="ref" x="190.00" y="103.00" fill="#b06000" text-anchor="middle">E3</text>
-  <text class="ref" x="220.00" y="103.00" fill="#b06000" text-anchor="middle">E4</text>
-  <text class="ref" x="115.00" y="80.00" fill="#111" text-anchor="middle">C2</text>
-  <text class="ref" x="38.00" y="125.00" fill="#0a6" text-anchor="middle">D1</text>
+  <text class="ref" x="64.00" y="127.50" fill="#06c" text-anchor="middle">P1</text>
+  <text class="ref" x="96.00" y="127.50" fill="#06c" text-anchor="middle">P2</text>
+  <text class="ref" x="154.00" y="127.50" fill="#06c" text-anchor="middle">P3</text>
+  <text class="ref" x="186.00" y="127.50" fill="#06c" text-anchor="middle">P4</text>
+  <text class="ref" x="64.00" y="109.50" fill="#06c" text-anchor="middle">P5</text>
+  <text class="ref" x="96.00" y="109.50" fill="#06c" text-anchor="middle">P6</text>
+  <text class="ref" x="154.00" y="109.50" fill="#06c" text-anchor="middle">P7</text>
+  <text class="ref" x="186.00" y="109.50" fill="#06c" text-anchor="middle">P8</text>
+  <text class="ref" x="64.00" y="50.50" fill="#06c" text-anchor="middle">P9</text>
+  <text class="ref" x="96.00" y="50.50" fill="#06c" text-anchor="middle">P10</text>
+  <text class="ref" x="154.00" y="50.50" fill="#06c" text-anchor="middle">P11</text>
+  <text class="ref" x="186.00" y="50.50" fill="#06c" text-anchor="middle">P12</text>
+  <text class="ref" x="64.00" y="32.50" fill="#06c" text-anchor="middle">P13</text>
+  <text class="ref" x="96.00" y="32.50" fill="#06c" text-anchor="middle">P14</text>
+  <text class="ref" x="154.00" y="32.50" fill="#06c" text-anchor="middle">P15</text>
+  <text class="ref" x="186.00" y="32.50" fill="#06c" text-anchor="middle">P16</text>
+  <text class="ref" x="200.00" y="151.00" fill="#b06000" text-anchor="middle">E1</text>
+  <text class="ref" x="230.00" y="151.00" fill="#b06000" text-anchor="middle">E2</text>
+  <text class="ref" x="200.00" y="103.00" fill="#b06000" text-anchor="middle">E3</text>
+  <text class="ref" x="230.00" y="103.00" fill="#b06000" text-anchor="middle">E4</text>
+  <text class="ref" x="125.00" y="80.00" fill="#111" text-anchor="middle">C2</text>
+  <text class="ref" x="48.00" y="125.00" fill="#0a6" text-anchor="middle">D1</text>
   <text class="ref" x="-9.00" y="125.00" fill="#c00" text-anchor="middle">B1</text>
-  <text class="ref" x="38.00" y="95.00" fill="#0a6" text-anchor="middle">D2</text>
+  <text class="ref" x="48.00" y="95.00" fill="#0a6" text-anchor="middle">D2</text>
   <text class="ref" x="-9.00" y="95.00" fill="#c00" text-anchor="middle">B2</text>
-  <text class="ref" x="38.00" y="65.00" fill="#0a6" text-anchor="middle">D3</text>
+  <text class="ref" x="48.00" y="65.00" fill="#0a6" text-anchor="middle">D3</text>
   <text class="ref" x="-9.00" y="65.00" fill="#c00" text-anchor="middle">B3</text>
-  <text class="ref" x="38.00" y="35.00" fill="#0a6" text-anchor="middle">D4</text>
+  <text class="ref" x="48.00" y="35.00" fill="#0a6" text-anchor="middle">D4</text>
   <text class="ref" x="-9.00" y="35.00" fill="#c00" text-anchor="middle">B4</text>
 </svg>
 <figcaption>
@@ -764,20 +767,20 @@ the M5 holes that fix them &middot;
 <b>Dashed = not this plate</b>, or on its far face.
 <br><br>
 Outer face, seen from outboard. <b>The drawing's horizontal is machine X</b> &mdash; the plate's
-235 from its bottom end, left to right. <b>The vertical is Y across the 154</b>, Y 0 at the back
+245 from its bottom end, left to right. <b>The vertical is Y across the 154</b>, Y 0 at the back
 edge, running <b>up</b> the page. The beam's back face is <b>flush with the plate's back edge</b>.<sup class="f">2.14</sup></figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 235</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">115</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">190, 220</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
-<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">79.2</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">99.2</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>54, 86, 144, 176</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
-<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">25</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler gets the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
-<tr><td>B1&ndash;B4</td><td><b>Sole bracket</b> &mdash; into the X 0 end edge of the <b>DOUBLER only</b></td><td>4</td><td class="n">from X 0, <b>20 deep MAX</b></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &#248;5 doubler bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>the END PLATE's row is NOT drilled here</b> &mdash; transferred at home<sup class="f">2.7</sup></td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 245</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">{{BEAM_SEAM_XEP}}</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
+<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
+<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
+<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler gets the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
+<tr><td>B1&ndash;B4</td><td><b>Sole plate</b> &mdash; into the <b>DOUBLER's</b> end edge, at X {{DOUBLER_BOTTOM_X}}</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &#248;5 doubler bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>ONE ROW, and it is the only edge drilling on this plate</b> &mdash; the sole plate's base butts the plate's outer face and takes no bolts into it<sup class="f">2.7</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
 <tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 2 &times; &oslash;6.8 &middot; 4 &times; &oslash;9 &middot; 1 &times; &oslash;35</td><td><b>31</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
@@ -793,85 +796,88 @@ edge, running <b>up</b> the page. The beam's back face is <b>flush with the plat
 <figure>
 <svg viewBox="-58 -48 440 402" width="190mm" xmlns="http://www.w3.org/2000/svg">
   <!-- the plate. svg x = X ; svg y = 154 - Y, so Y runs UP the page.
-       ONE diagonal from (X 300, Y 60) to (X 188, Y 154) does the whole far end:
-       there is NO step at X 235 on this plate. That is the cut that was saved. -->
-  <path d="M 0,0 L 188,0 L 300,94 L 300,154 L 0,154 Z"
+       ONE diagonal from (X 300, Y 60) to (X 198, Y 154) does the whole far end:
+       there is NO step at X 245 on this plate. That is the cut that was saved. -->
+  <path d="M 0,0 L 198,0 L 300,94 L 300,154 L 0,154 Z"
         fill="#e8f0fa" stroke="#111" stroke-width="1.6" stroke-linejoin="miter"/>
-  <path d="M 188,0 L 300,0 L 300,94 Z" fill="none" stroke="#999"
+  <path d="M 198,0 L 300,0 L 300,94 Z" fill="none" stroke="#999"
         stroke-width="0.6" stroke-dasharray="3 3"/>
   <text class="dim" x="250" y="48" fill="#999">cut off &#8212; this IS the step</text>
-  <line x1="0" y1="-14" x2="188" y2="-14" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="80" y="-18">188 to the cut</text>
+  <line x1="0" y1="-14" x2="198" y2="-14" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="85" y="-18">198 to the cut</text>
 
-  <!-- X GANTRY END PLATE, machining coordinates 2026-10-03. 235 along mill X.
+  <!-- X GANTRY END PLATE, machining coordinates 2026-10-03. 245 along mill X.
        X 0 at the plate&apos;s bottom end; Y 0 at the plate&apos;s back edge. -->
   
 
-  <!-- X beam: TOP extrusion X 175-235, LOWER X 115-175, both Y 0-60 -->
-  <rect x="175.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <rect x="115.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="180.5" y="90.0" fill="#0a6">X TOP</text>
-  <text class="lbl" x="120.5" y="90.0" fill="#0a6">X LOWER</text>
+  <!-- X beam: TOP extrusion X 185-245, LOWER X 125-185, both Y 0-60 -->
+  <rect x="185.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <rect x="125.6" y="94.6" width="58.8" height="58.8" fill="none" stroke="#0a6" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="190.5" y="90.0" fill="#0a6">X TOP</text>
+  <text class="lbl" x="130.5" y="90.0" fill="#0a6">X LOWER</text>
 
-  <!-- shelf bar X 64.2-115, Y 0-60 -->
-  <rect x="64.8" y="94.6" width="49.599999999999994" height="58.8" fill="none" stroke="#b06000" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
-  <text class="lbl" x="70.5" y="90.0" fill="#b06000">SHELF</text>
+  <!-- shelf bar X 74.2-125, Y 0-60 -->
+  <rect x="74.8" y="94.6" width="49.599999999999994" height="58.8" fill="none" stroke="#b06000" stroke-width="1.3" stroke-dasharray="2.5 2.5"/>
+  <text class="lbl" x="80.5" y="90.0" fill="#b06000">SHELF</text>
 
-  <!-- doubler footprint, far face: X 0-60, full width -->
-  <rect x="0" y="0" width="45" height="154.0" fill="none" stroke="#b06000" stroke-width="1.1" stroke-dasharray="3 2"/>
-  <text class="lbl" x="4" y="84.0" fill="#b06000">DOUBLER 154 &#215; 45</text>
+  <!-- doubler footprint, far face: X 10-55 - its end face is the nut
+       plane and the plate reaches XEP_SOLE_TAB past it -->
+  <rect x="10" y="0" width="45" height="154.0" fill="none" stroke="#b06000" stroke-width="1.1" stroke-dasharray="3 2"/>
+  <text class="lbl" x="14" y="84.0" fill="#b06000">DOUBLER 154 &#215; 45</text>
 
-  <rect x="48" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="48" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="138" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="138" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <!-- doubler attachment, one column at X 25 -->
-  <circle cx="25" cy="122.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <circle cx="25" cy="92.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <circle cx="25" cy="62.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <circle cx="25" cy="32.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
-  <!-- sole bracket: bored INTO the X 0 end edge, on the plate/doubler seam.
-       A face view can only show them as holes running in from that end. -->
-  <line x1="0" y1="122.0" x2="20" y2="122.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <line x1="0" y1="92.0" x2="20" y2="92.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <line x1="0" y1="62.0" x2="20" y2="62.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <line x1="0" y1="32.0" x2="20" y2="32.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
-  <text class="q" x="2" y="16.0" fill="#c00">sole bracket: 2 rows in from this end, 20 deep MAX (2.5 clear)</text>
+  <rect x="58" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="58" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="148" y="90.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <rect x="148" y="13.25" width="44" height="50.5" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
+  <!-- doubler attachment, one column at X 35 - DOUBLER_BOLT_X_PLATE,
+       which is 25 up the doubler plus the tab below it -->
+  <circle cx="35" cy="122.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="35" cy="92.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="35" cy="62.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <circle cx="35" cy="32.0" r="3.4" fill="#fff4d6" stroke="#b06000" stroke-width="1"/>
+  <!-- sole bracket: bored INTO THE DOUBLER'S end edge at X 10, not the
+       plate's own end - the plate runs XEP_SOLE_TAB past it to back the
+       bracket's base. A face view can only show them running in. -->
+  <line x1="10" y1="122.0" x2="30" y2="122.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="10" y1="92.0" x2="30" y2="92.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="10" y1="62.0" x2="30" y2="62.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line x1="10" y1="32.0" x2="30" y2="32.0" stroke="#c00" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <text class="q" x="12" y="16.0" fill="#c00">sole plate: one row into the doubler's end face, 20 deep MAX</text>
 
-  <!-- four HGH20 blocks, centred on the rails at X 70 and 160 (outside T-slots, 90 apart):
-       upper row X 138-182, lower X 48-92; two butted in Y -->
-    <circle cx="144.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="144.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="144.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="144.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="176.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="54.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="86.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+  <!-- four HGH20 blocks, centred on the rails at X 80 and 170 (outside T-slots, 90 apart):
+       upper row X 148-192, lower X 58-102; two butted in Y -->
+    <circle cx="154.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
 
   <!-- E1-E4 into the top extrusion corner bores -->
   <g fill="#fff" stroke="#111" stroke-width="0.9">
-    <circle cx="190" cy="139.0" r="4.5"/>
-    <circle cx="190" cy="109.0" r="4.5"/>
-    <circle cx="220" cy="139.0" r="4.5"/>
-    <circle cx="220" cy="109.0" r="4.5"/>
+    <circle cx="200" cy="139.0" r="4.5"/>
+    <circle cx="200" cy="109.0" r="4.5"/>
+    <circle cx="230" cy="139.0" r="4.5"/>
+    <circle cx="230" cy="109.0" r="4.5"/>
   </g>
 
   <!-- H1, H2 shelf-to-plate, and C2 the encoder bore -->
-  <circle cx="99.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <circle cx="79.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <text class="ref" x="95.2" y="132.0">H2</text>
-  <text class="ref" x="75.2" y="132.0">H1</text>
-  <circle cx="115" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <text class="lbl" x="102.5" y="54.0">&#248;35 C2</text>
+  <circle cx="109.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <circle cx="89.2" cy="124.0" r="4" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
+  <text class="ref" x="105.2" y="132.0">H2</text>
+  <text class="ref" x="85.2" y="132.0">H1</text>
+  <circle cx="125" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <text class="lbl" x="112.5" y="54.0">&#248;35 C2</text>
 
   
   
@@ -882,22 +888,22 @@ edge, running <b>up</b> the page. The beam's back face is <b>flush with the plat
 
 
   <!-- NOT a step on this plate: it is where the LEFT-HAND plate's far edge falls -->
-  <line x1="235" y1="94" x2="235" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
-  <text class="lbl" x="180" y="172" fill="#b06000">X 235 &#8212; where the LEFT-HAND plate ends</text>
+  <line x1="245" y1="94" x2="245" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="5 3"/>
+  <text class="lbl" x="190" y="172" fill="#b06000">X 245 &#8212; where the LEFT-HAND plate ends</text>
 
-  <!-- G1-G4, BF12 face-mount: X 252.0 and 270.0, Y 7 and 53 -->
+  <!-- G1-G4, BF12 face-mount: X 262.0 and 280.0, Y 7 and 53 -->
   <g fill="#fff" stroke="#c00" stroke-width="1.3">
-    <circle cx="252" cy="147" r="3.4"/>
-    <circle cx="252" cy="101" r="3.4"/>
-    <circle cx="270" cy="147" r="3.4"/>
-    <circle cx="270" cy="101" r="3.4"/>
+    <circle cx="262" cy="147" r="3.4"/>
+    <circle cx="262" cy="101" r="3.4"/>
+    <circle cx="280" cy="147" r="3.4"/>
+    <circle cx="280" cy="101" r="3.4"/>
   </g>
-  <text class="lbl" x="245" y="126" fill="#c00">BF12</text>
-  <text class="lbl" x="243" y="136" fill="#c00">4 &#215; M5</text>
+  <text class="lbl" x="255" y="126" fill="#c00">BF12</text>
+  <text class="lbl" x="253" y="136" fill="#c00">4 &#215; M5</text>
 
   <!-- the tongue's far end is the STOCK's end, uncut -->
-  <line x1="270" y1="112" x2="300" y2="112" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="274" y="122">30</text>
+  <line x1="280" y1="112" x2="300" y2="112" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="284" y="122">20</text>
   <line x1="308" y1="94" x2="308" y2="154" stroke="#06c" stroke-width="0.6"/>
   <text class="dim" x="312" y="126">60</text>
 
@@ -909,47 +915,47 @@ edge, running <b>up</b> the page. The beam's back face is <b>flush with the plat
   <text class="q" x="0" y="224" fill="#0a6">green = the X beam extrusions</text>
   <text class="q" x="0" y="240" fill="#555">reference outlines are drawn INSET 0.6 so</text>
   <text class="q" x="0" y="252" fill="#555">butting parts show as two lines, not one</text>
-  <text class="q" x="0" y="272" fill="#c00">ONE CUT DOES THE WHOLE FAR END. There is no step to cut at X 235 and</text>
+  <text class="q" x="0" y="272" fill="#c00">ONE CUT DOES THE WHOLE FAR END. There is no step to cut at X 245 and</text>
   <text class="q" x="0" y="284" fill="#c00">no end to trim &#8212; the diagonal is the step, and the stock's end is the tongue's.</text>
-  <text class="q" x="0" y="302" fill="#c00">G1&#8211;G4 do NOT move with the tongue. X 235 is the TOP OF THE X BEAM, and they sit 7 and 25</text>
+  <text class="q" x="0" y="302" fill="#c00">G1&#8211;G4 do NOT move with the tongue. X 245 is the TOP OF THE X BEAM, and they sit 7 and 25</text>
   <text class="q" x="0" y="314" fill="#c00">above it PLUS the 10 interposer that goes under the casting &#8212; so a longer tongue buys</text>
   <text class="q" x="0" y="326" fill="#c00">edge distance and nothing else.</text>
   <text class="q" x="0" y="344" fill="#c00">T_INTERPOSER is a measured 10, not the 3/8&quot; once assumed; both rows follow it.</text>
   <!-- schedule ref tags -->
   <!-- schedule ref tags -->
-  <text class="ref" x="54.00" y="127.50" fill="#06c" text-anchor="middle">P1</text>
-  <text class="ref" x="86.00" y="127.50" fill="#06c" text-anchor="middle">P2</text>
-  <text class="ref" x="144.00" y="127.50" fill="#06c" text-anchor="middle">P3</text>
-  <text class="ref" x="176.00" y="127.50" fill="#06c" text-anchor="middle">P4</text>
-  <text class="ref" x="54.00" y="109.50" fill="#06c" text-anchor="middle">P5</text>
-  <text class="ref" x="86.00" y="109.50" fill="#06c" text-anchor="middle">P6</text>
-  <text class="ref" x="144.00" y="109.50" fill="#06c" text-anchor="middle">P7</text>
-  <text class="ref" x="176.00" y="109.50" fill="#06c" text-anchor="middle">P8</text>
-  <text class="ref" x="54.00" y="50.50" fill="#06c" text-anchor="middle">P9</text>
-  <text class="ref" x="86.00" y="50.50" fill="#06c" text-anchor="middle">P10</text>
-  <text class="ref" x="144.00" y="50.50" fill="#06c" text-anchor="middle">P11</text>
-  <text class="ref" x="176.00" y="50.50" fill="#06c" text-anchor="middle">P12</text>
-  <text class="ref" x="54.00" y="32.50" fill="#06c" text-anchor="middle">P13</text>
-  <text class="ref" x="86.00" y="32.50" fill="#06c" text-anchor="middle">P14</text>
-  <text class="ref" x="144.00" y="32.50" fill="#06c" text-anchor="middle">P15</text>
-  <text class="ref" x="176.00" y="32.50" fill="#06c" text-anchor="middle">P16</text>
-  <text class="ref" x="190.00" y="151.00" fill="#b06000" text-anchor="middle">E1</text>
-  <text class="ref" x="220.00" y="151.00" fill="#b06000" text-anchor="middle">E2</text>
-  <text class="ref" x="190.00" y="103.00" fill="#b06000" text-anchor="middle">E3</text>
-  <text class="ref" x="220.00" y="103.00" fill="#b06000" text-anchor="middle">E4</text>
-  <text class="ref" x="115.00" y="80.00" fill="#111" text-anchor="middle">C2</text>
-  <text class="ref" x="38.00" y="125.00" fill="#0a6" text-anchor="middle">D1</text>
+  <text class="ref" x="64.00" y="127.50" fill="#06c" text-anchor="middle">P1</text>
+  <text class="ref" x="96.00" y="127.50" fill="#06c" text-anchor="middle">P2</text>
+  <text class="ref" x="154.00" y="127.50" fill="#06c" text-anchor="middle">P3</text>
+  <text class="ref" x="186.00" y="127.50" fill="#06c" text-anchor="middle">P4</text>
+  <text class="ref" x="64.00" y="109.50" fill="#06c" text-anchor="middle">P5</text>
+  <text class="ref" x="96.00" y="109.50" fill="#06c" text-anchor="middle">P6</text>
+  <text class="ref" x="154.00" y="109.50" fill="#06c" text-anchor="middle">P7</text>
+  <text class="ref" x="186.00" y="109.50" fill="#06c" text-anchor="middle">P8</text>
+  <text class="ref" x="64.00" y="50.50" fill="#06c" text-anchor="middle">P9</text>
+  <text class="ref" x="96.00" y="50.50" fill="#06c" text-anchor="middle">P10</text>
+  <text class="ref" x="154.00" y="50.50" fill="#06c" text-anchor="middle">P11</text>
+  <text class="ref" x="186.00" y="50.50" fill="#06c" text-anchor="middle">P12</text>
+  <text class="ref" x="64.00" y="32.50" fill="#06c" text-anchor="middle">P13</text>
+  <text class="ref" x="96.00" y="32.50" fill="#06c" text-anchor="middle">P14</text>
+  <text class="ref" x="154.00" y="32.50" fill="#06c" text-anchor="middle">P15</text>
+  <text class="ref" x="186.00" y="32.50" fill="#06c" text-anchor="middle">P16</text>
+  <text class="ref" x="200.00" y="151.00" fill="#b06000" text-anchor="middle">E1</text>
+  <text class="ref" x="230.00" y="151.00" fill="#b06000" text-anchor="middle">E2</text>
+  <text class="ref" x="200.00" y="103.00" fill="#b06000" text-anchor="middle">E3</text>
+  <text class="ref" x="230.00" y="103.00" fill="#b06000" text-anchor="middle">E4</text>
+  <text class="ref" x="125.00" y="80.00" fill="#111" text-anchor="middle">C2</text>
+  <text class="ref" x="48.00" y="125.00" fill="#0a6" text-anchor="middle">D1</text>
   <text class="ref" x="-9.00" y="125.00" fill="#c00" text-anchor="middle">B1</text>
-  <text class="ref" x="38.00" y="95.00" fill="#0a6" text-anchor="middle">D2</text>
+  <text class="ref" x="48.00" y="95.00" fill="#0a6" text-anchor="middle">D2</text>
   <text class="ref" x="-9.00" y="95.00" fill="#c00" text-anchor="middle">B2</text>
-  <text class="ref" x="38.00" y="65.00" fill="#0a6" text-anchor="middle">D3</text>
+  <text class="ref" x="48.00" y="65.00" fill="#0a6" text-anchor="middle">D3</text>
   <text class="ref" x="-9.00" y="65.00" fill="#c00" text-anchor="middle">B3</text>
-  <text class="ref" x="38.00" y="35.00" fill="#0a6" text-anchor="middle">D4</text>
+  <text class="ref" x="48.00" y="35.00" fill="#0a6" text-anchor="middle">D4</text>
   <text class="ref" x="-9.00" y="35.00" fill="#c00" text-anchor="middle">B4</text>
-  <text class="ref" x="252.00" y="157.00" fill="#c00" text-anchor="middle">G1</text>
-  <text class="ref" x="270.00" y="157.00" fill="#c00" text-anchor="middle">G2</text>
-  <text class="ref" x="252.00" y="97.00" fill="#c00" text-anchor="middle">G3</text>
-  <text class="ref" x="270.00" y="97.00" fill="#c00" text-anchor="middle">G4</text>
+  <text class="ref" x="262.00" y="157.00" fill="#c00" text-anchor="middle">G1</text>
+  <text class="ref" x="280.00" y="157.00" fill="#c00" text-anchor="middle">G2</text>
+  <text class="ref" x="262.00" y="97.00" fill="#c00" text-anchor="middle">G3</text>
+  <text class="ref" x="280.00" y="97.00" fill="#c00" text-anchor="middle">G4</text>
 </svg>
 <figcaption>
 <b>Key:</b>
@@ -972,15 +978,15 @@ back edge</b>.<sup class="f">2.14</sup></figcaption>
 <h3>Hole schedule &mdash; machining coordinates, the complete plate</h3>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 300</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">115</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">190, 220</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
-<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">79.2</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">99.2</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>54, 86, 144, 176</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
-<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">25</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler carries the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
-<tr><td>B1&ndash;B4</td><td><b>Sole bracket</b> &mdash; into the X 0 end edge of the <b>DOUBLER only</b></td><td>4</td><td class="n">from X 0, <b>20 deep MAX</b></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &#248;5 doubler bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>the END PLATE's row is NOT drilled here</b> &mdash; transferred at home<sup class="f">2.7</sup></td></tr>
-<tr><td><b>G1, G2</b></td><td><b>BF12</b> face-mount on the tongue, first row</td><td>2</td><td class="n"><b>252.0</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>includes the 10 interposer</b> under the casting<sup class="f">2.13</sup></td></tr>
-<tr><td><b>G3, G4</b></td><td><b>BF12</b> face-mount on the tongue, second row</td><td>2</td><td class="n"><b>270.0</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>30 to the tongue's end</b><sup class="f">2.13</sup></td></tr>
+<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">{{BEAM_SEAM_XEP}}</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
+<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
+<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
+<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
+<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler carries the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
+<tr><td>B1&ndash;B4</td><td><b>Sole plate</b> &mdash; into the <b>DOUBLER's</b> end edge, at X {{DOUBLER_BOTTOM_X}}</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>20 DEEP MAX</b> &mdash; clears the &#248;5 doubler bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>ONE ROW, and it is the only edge drilling on this plate</b> &mdash; the sole plate's base butts the plate's outer face and takes no bolts into it<sup class="f">2.7</sup></td></tr>
+<tr><td><b>G1, G2</b></td><td><b>BF12</b> face-mount on the tongue, first row</td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW1}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>includes the 10 interposer</b> under the casting<sup class="f">2.13</sup></td></tr>
+<tr><td><b>G3, G4</b></td><td><b>BF12</b> face-mount on the tongue, second row</td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW2}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>{{TONGUE_EDGE_MARGIN}} to the tongue's end</b><sup class="f">2.13</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
 <tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 2 &times; &oslash;6.8 &middot; 4 &times; &oslash;9 &middot; 1 &times; &oslash;35</td><td><b>35</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->

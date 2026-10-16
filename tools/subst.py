@@ -112,8 +112,13 @@ def render_file(src: Path, dst: Path) -> int:
 def main() -> int:
     if len(sys.argv) == 4 and sys.argv[1] == "--render":
         return render_file(Path(sys.argv[2]), Path(sys.argv[3]))
+    # THE SHOP PACK IS IN THE GATE. It is hand-authored HTML, substituted into
+    # a temporary copy at print time, so a typo in one of its symbols used to
+    # surface only when Edge was already running - and it now carries more
+    # symbols than any .md, because its hole schedules cite them directly.
     files = sorted(list((ROOT / "machine").rglob("*.md"))
-                   + list((ROOT / "wiring").rglob("*.md")))
+                   + list((ROOT / "wiring").rglob("*.md"))
+                   + [ROOT / "machine" / "drawings" / "shop-pack.html"])
     used: dict[str, int] = {}
     bad: list[str] = []
     for f in files:
