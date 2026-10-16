@@ -531,6 +531,7 @@ note = "Fin proud of the side plate's outer face. WAS RECORDED AS 1.8 off the de
 sym = "WINDOW_W"
 value = 60.5
 provenance = "pinned"
+retired = true
 note = "Clearance window for the cast stepper frame, in each front fin. 60.5 OVER A 60 CASTING - half a millimetre total, a slip fit and deliberately little, because the window's loose axis is its HEIGHT, not its width. Corrected from 62 on 2026-10-03 by tools/audit-prose.py: nine places in the prose said 60.5 and gave the reasoning, the registry said 62 with a one-line note and no source, and nothing had ever compared them."
 source = "machine/lateral-stiffness.md; machine/y-beam-support.md"
 
@@ -538,12 +539,14 @@ source = "machine/lateral-stiffness.md; machine/y-beam-support.md"
 sym = "WINDOW_H"
 value = 50
 provenance = "pinned"
-note = "Window height. This is the loose axis - it is what the casting's clearance actually consumes - which is why the width is allowed to be a 0.5 slip fit."
+retired = true
+note = "RETIRED: THERE IS NO WINDOW. The fins are solid - his call, confirmed against the model, which draws no opening in either. The window was clearance for the cast stepper frame and the steppers are at the BACK. Nothing derives from this now: Y_BEAM_UNDERSIDE was its only dependant and is pinned."
 
 [[dim]]
 sym = "WINDOW_OUTB"
 value = 19
 provenance = "measured"
+retired = true
 note = "Window's outboard edge from the fin's factory edge. Measured off the MDF template; the fear had been 7."
 
 # ---------------------------------------------------------------- Z carriage
@@ -1886,7 +1889,7 @@ note = "Clamp footprint across the Z plate, where it lands on the face - HIS CAL
 sym = "WINDOW_Z_LOW"
 value = 132
 provenance = "pinned"
-note = "Window's lower edge, from the fin's BOTTOM edge - Sheet 1's X 132. The casting occupies 132 to 172.5 of it; the rest is clearance."
+note = "132 above the fin's bottom edge - where the casting's bottom sits. OPEN: IT IS NAMED FOR A WINDOW THAT NO LONGER EXISTS and the casting it measures is at the BACK, while the fins are at the front. The height is still used by CAST_HEAD_Z_UP, which is the clearance under the casting's M5 heads, so the figure is doing work under a name that now misleads. Needs renaming against whatever the back end actually references - his call, not a guess."
 
 [[dim]]
 sym = "WINDOW_OUTB_DRAWN"
@@ -1976,8 +1979,9 @@ note = "26.5 - how far the casting and interposer stand past the REAR PLATE'S IN
 
 [[dim]]
 sym = "Y_BEAM_UNDERSIDE"
-expr = "WINDOW_Z_LOW + WINDOW_H"
-note = "The Y beam's underside above the torsion box's top skin, 182 - and it comes from the FIN, which is the riser that actually carries the beam. It is the top edge of the fin's window: the casting and interposer fill the window up to the beam, so the window's top IS the beam's underside. Settled 2026-10-03 after the side plate was ruled out as the reference."
+value = 182
+provenance = "pinned"
+note = "The Y beam's underside above the torsion box's top skin, and the height the whole vertical chain hangs off - 15 symbols re-derive from it. PINNED AND NOT DERIVED: it was the top edge of the fin's window, and there is no window. The figure did not move, its expression lost its basis, so it is pinned by the contract pinned exists for - it came out of a calculation, re-check it by hand if what set it moves. What would move it: the fin is the riser that carries the beam, so a change to the fin's geometry or to what fills the gap between fin and beam is a reason to re-derive this."
 
 [[dim]]
 sym = "Y_BEAM_TOP_Z"

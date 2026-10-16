@@ -19,7 +19,7 @@ not any more:
 
 | Part | Why the mill |
 |---|---|
-| **Two Y front plates**, 1/2" | the 8-bolt corner-bore pattern *and* the 60.5 × 50 window |
+| **Two Y front plates**, 1/2" | the 8-bolt corner-bore pattern. **No window** — they are solid |
 | **The rear plate**, 1/4" steel, {{REAR_PLATE_L_ORDERED}} long | two 8-bolt patterns a metre apart that must match extruded bores - and the part may exceed the machine's X travel |
 | **Interposer bars**, 60 × 150 × 3/8" - two for Y, plus X | six tapped M5 under a bearing face and six flange clearance holes, all in a small part |
 

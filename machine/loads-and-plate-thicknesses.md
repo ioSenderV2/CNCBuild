@@ -49,7 +49,7 @@ Current as of 2026-10-02.
 | Front strip, **all three beams** | 45 mm × 1000 mm × **4 mm** | **6061** - connector across the seam and the magnetic tape surface |
 | X back joining plate | 120 mm × 1000 mm × **1/4"** | **6061** - X moves, so weight is real |
 | **Y outboard / back joining plate** | 11 7/8" × 39 5/16" × **10 gauge** | **cold-rolled steel sheet**, as ordered - see the reversal above |
-| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, with the 60.5 × 50 window. FLAG: **Measured stock, not 1/2" and not 3/8"** |
+| **Y front plate / Z riser** | tapered 100→200 mm × 302 mm × **10 mm** | 6061, **solid, no window**. FLAG: **Measured stock, not 1/2" and not 3/8"** |
 | **Y rear plate**, one for both beams | {{REAR_PLATE_L_ORDERED}} × 12" × **1/4"** | **hot-rolled A36 steel**, P&O if preferred |
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, **quantity 3** - Y1, Y2 and the X stepper end. One drawing; X's BF12 end takes none, using a tongue off the end plate |
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, quantity 2 - identical below the top edge; the **right-hand one carries the BF12 tongue** above it, running to the stock's 300 |

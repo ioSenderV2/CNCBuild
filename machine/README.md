@@ -67,7 +67,7 @@ options rather than define parts, so they cannot go stale against the registry.
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled** with matching VFD, on two 80 mm clamps |
-| Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, with a 60.5 × 50 window for the stepper frame. **Rear:** one **12" × 1/4" A36 steel** plate for both beams, **{{REAR_PLATE_L_ORDERED}}** long. Ends only — the ball screw runs under the beam |
+| Y beam support | **Front:** a tapered 100→200 mm × 302 mm × 1/2" plate per beam, **solid — no window**. **Rear:** one **12" × 1/4" A36 steel** plate for both beams, **{{REAR_PLATE_L_ORDERED}}** long. Ends only — the ball screw runs under the beam |
 | **Plate height** | FLAG: **The five plates that stand on the box are all 301.625 (11 7/8") high** — two side plates, the back plate, two front fins — and **every hole on them is measured from the bottom edge**, the edge that bears on the box's top skin. One height plus one reference edge is what lines the beam up without any plate knowing about another. **A part that is not 301.625 is misordered or mismade.** PLATE_H in the registry; the other three symbols derive from it so they cannot drift |
 | Plate materials | 6061 throughout **except** the two Y outboard plates (**10 gauge steel**) and the Y rear plate (**1/4" A36**) — see [`loads-and-plate-thicknesses.md`](loads-and-plate-thicknesses.md), [`archive/outboard-plate.md`](archive/outboard-plate.md) and [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) |
 

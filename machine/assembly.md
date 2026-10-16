@@ -120,7 +120,7 @@ for months.
 
 | On the mill | |
 |---|---|
-| Two **Y front plates / fins**, 10 mm | the 8-bolt corner-bore pattern and the 60.5 × 50 window |
+| Two **Y front plates / fins**, 10 mm | the 8-bolt corner-bore pattern. **Solid — no window** |
 | The **rear plate**, 1/4" steel, **{{REAR_PLATE_L_ORDERED}}** long | two 8-bolt patterns a metre apart |
 | Two **X gantry end plates**, 1/2" | one drawing, right-hand variant carries the BF12 tongue |
 | **X carriage plate**, 1/2" | 30 holes |
@@ -293,7 +293,7 @@ support it along its length.
 | | |
 |---|---|
 | Bar to beam | **4 × M8 × 20 flange bolts into slide-in T-nuts** — two rows, two slots. FLAG: **Not six in three rows**, which this line said until 2026-10-11; the 3D model has always drawn four and he confirms four |
-| Position | OPEN: **this read "30 mm past the fin's outer face, so casting and bar protrude through the window together" and that is the FRONT-stepper arrangement.** The casting is at the back now and the fins stayed at the front, so what the bar's outboard end is set 30 past needs restating against the back end — and whether the fin still wants its 60.5 × 50 window at all is his call |
+| Position | OPEN: **the bar runs ~30 mm past the casting**, which is what puts the four T-nut bolts in the overhang clear of the casting's own columns. **What that 30 is measured from at the back end is not established** — it read "past the fin's outer face, so casting and bar protrude through the window together", and there is no window and the fins are at the other end |
 | Casting to bar | its **6 through holes, M5 tapped into the 3/8"** — bar coordinates, columns 7 and 53, rows 28 / 58 / 71 |
 | Motor | NEMA 23 onto the casting's own flange |
 
@@ -330,7 +330,10 @@ does not name the orientation means nothing.
 ### The front plate — the fin
 
 **Two off, each on its own piece of plate** - they used to nest out of one square: **tapered 100 mm at the top to 200 mm at the base, 301.625 mm
-tall, 10 mm** 6061, with a **60.5 × 50 mm window** below the beam for the casting.
+tall, 10 mm** 6061, **solid**.
+
+🔴 **No window.** It was clearance for the cast stepper frame and the steppers are at the back, so
+the fin is a plain tapered plate with the 8-bolt pattern in it and nothing else.
 
 The two halves are **rotations of each other, not mirrors** — turn one 180° and the outline is
 identical. Left and right come from flipping one plate over.
