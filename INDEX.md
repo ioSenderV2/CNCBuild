@@ -25,7 +25,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [Assemble the stack against a flat reference](machine/assembly.md#assemble-the-stack-against-a-flat-reference)
   - [The magnetic tape](machine/assembly.md#the-magnetic-tape)
 - [3. The Y beam ends](machine/assembly.md#3-the-y-beam-ends)
-  - [The interposer bar and the cast stepper frame — front end](machine/assembly.md#the-interposer-bar-and-the-cast-stepper-frame-front-end)
+  - [The interposer bar and the cast stepper frame — back end](machine/assembly.md#the-interposer-bar-and-the-cast-stepper-frame-back-end)
   - [BF12 — rear end](machine/assembly.md#bf12-rear-end)
   - [The front plate — the fin](machine/assembly.md#the-front-plate-the-fin)
   - [The rear plate](machine/assembly.md#the-rear-plate)

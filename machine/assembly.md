@@ -27,7 +27,7 @@ is the full list.
 | Rails | **HGR20**, one per profile, in the **outside** T-slot — rails 90 mm apart on each beam. **Y rails face each other**, on the beams' inside faces |
 | Ball screws | **1605** on every axis, through a **cast stepper frame** at one end and **BF12** at the other |
 | Screw position | **X on top** of its beam; **both Y underneath** theirs |
-| Steppers | **2.2 N·m, NEMA 23 — four, one per axis.** **Y steppers at the FRONT** of the machine |
+| Steppers | **2.2 N·m, NEMA 23 — four, one per axis.** **Y steppers at the BACK** of the machine, which is what keeps their cable runs off the front |
 | Y beams | Fixed — their end plates bolt to the torsion box. Only X, Y-carriage and Z move |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled**, 5.2 kg, on two 80 mm clamps |
 | Stands on | A sand-filled **torsion box** on **three of five laminated plywood legs**, held by **two grids** whose lower one is also the pallet |
@@ -286,14 +286,14 @@ Not decided.
 Each Y beam is carried **at its two ends only** — the ball screw runs underneath it, so nothing can
 support it along its length.
 
-### The interposer bar and the cast stepper frame — front end
+### The interposer bar and the cast stepper frame — back end
 
 **One part, quantity 3** (Y1, Y2, X): **60 × 150 × 3/8" 6061**, no counterbores anywhere.
 
 | | |
 |---|---|
 | Bar to beam | **4 × M8 × 20 flange bolts into slide-in T-nuts** — two rows, two slots. FLAG: **Not six in three rows**, which this line said until 2026-10-11; the 3D model has always drawn four and he confirms four |
-| Position | the bar's **outboard end 30 mm past the fin's outer face**, so casting and bar protrude through the window together |
+| Position | OPEN: **this read "30 mm past the fin's outer face, so casting and bar protrude through the window together" and that is the FRONT-stepper arrangement.** The casting is at the back now and the fins stayed at the front, so what the bar's outboard end is set 30 past needs restating against the back end — and whether the fin still wants its 60.5 × 50 window at all is his call |
 | Casting to bar | its **6 through holes, M5 tapped into the 3/8"** — bar coordinates, columns 7 and 53, rows 28 / 58 / 71 |
 | Motor | NEMA 23 onto the casting's own flange |
 

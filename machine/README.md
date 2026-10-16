@@ -62,7 +62,7 @@ options rather than define parts, so they cannot go stale against the registry.
 | Bearing blocks | **77.09 mm** each, measured - two butted read **154.18 mm**, which is what sets the 154 mm plate width. Of that, only the **51.15 mm machined pad** bears; a butted pair spans **128.24 mm** of pad, and that is the real floor for any carriage plate |
 | Ball screws | **1605**. **Every axis drives through a cast stepper frame** — X, Y1, Y2 and Z — carrying motor face, bearing housing and coupler in one part, which is what retired the M5 standoffs. BF12 stays at each far end. Y ball nuts run **inverted**, on a tongue off the bottom of the carriage plate, so their bolts are reachable at assembly |
 | Ball screw position | **X on top** (preserves vertical milling height); **both Y underneath** (Y1's top must stay clear for the X stepper) |
-| Y steppers | **At the FRONT of the machine** (2026-10-02) — one cast frame carries motor face, bearing housing and coupler |
+| Y steppers | **At the BACK of the machine** — one cast frame carries motor face, bearing housing and coupler. FLAG: **this said FRONT until 2026-10-15**; the model has them at the back, hanging off the back edge, and the whole point of putting them there was to keep the cable runs off the front |
 | Steppers | **2.2 N·m, NEMA 23, on X, Y1 and Y2; 1.5 N·m on Z** — all IG57 all-in-one closed-loop, so the spare 2.2 covers the three axes that do the work. Not 3.2: no thrust is needed and a higher-inductance motor in the same frame is worse above ~1200 rpm, which is where the rapids live. See [`stepper-sizing.md`](stepper-sizing.md) |
 | Y beams | **Do not move** — their end plates bolt to the torsion box |
 | Y axis assembly mass | **37 lb** each, before the joining plates |
@@ -80,7 +80,7 @@ Partly specified - see [`archive/y-beam-support.md`](archive/y-beam-support.md) 
 [`archive/lateral-stiffness.md`](archive/lateral-stiffness.md). They bolt the Y beams to the torsion box.
 
 FLAG: **Reworked 2026-10-02 and all four as-built Y risers are scrapped.** Cast stepper frames replaced
-BK12 and the M5 standoffs, the Y steppers moved to the front, and the two rear risers became one
+BK12 and the M5 standoffs, the Y steppers went to the back, and the two rear risers became one
 steel plate, REAR_PLATE_L_ORDERED long, that is also the rear shear panel. Four measurements gate cuts that cannot be
 undone — see [`open-items.md`](open-items.md) before ordering or cutting anything for the Y ends.
 
