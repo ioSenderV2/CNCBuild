@@ -74,6 +74,8 @@ try {
     # 1. the registry first. Everything below reads it, so a registry that does
     #    not resolve would otherwise be discovered four generators later.
     Step 'registry resolves' @('tools/dims.py', 'check')
+    # the quote DXFs read the same hole schedules, so they go stale the same way
+    Step 'quote DXFs' @('tools/make-dxf.py')
 
     # 2-7. the generators, in the order their outputs feed each other
     Step 'VALUES.md' @('tools/dims.py', 'md', '-o', 'dimensions/VALUES.md')
