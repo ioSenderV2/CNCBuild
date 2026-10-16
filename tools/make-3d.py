@@ -546,6 +546,7 @@ def main() -> int:
 
     holes_xy = []
     corner_notch = {}            # front leg -> the skin corner it opens out to
+    back_notch = []              # the back centre's, out to the BACK edge
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         leg_strips(nm, "legs", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
@@ -607,27 +608,35 @@ def main() -> int:
             corner_notch["left" if left else "right"] = (inx, ty0 - hc)
 
         if "back" in nm:
-            # the back centre's ONE slot: the width of the tab pair, which is
-            # the leg's own POST_W_X, plus the clearance a side
-            holes_xy.append([[px0 - hc, ty0 - hc], [px1 + hc, ty0 - hc],
-                             [px1 + hc, ty1 + hc], [px0 - hc, ty1 + hc]])
+            # 🔴 AND IT OPENS TO THE BACK EDGE TOO - his, 2026-10-15, on seeing
+            # the detail: as a closed rectangle in the field of the sheet it
+            # needed a start hole and a jigsaw. The skin left between it and
+            # the edge was T_BOX_WALL_WEB less the clearance, and ALL of that
+            # sits under the back perimeter web with the back tongue outside
+            # it, so none of it shows. Opened out, every one of the three
+            # tenon cuts is a saw cut from an edge.
+            back_notch.append((px0 - hc, px1 + hc, ty1 + hc))
 
-    # The outline, anticlockwise from the back left, with the two FRONT corners
-    # spliced out: along the right edge to the notch, in, forward to the front
-    # edge, across to the other notch, back out to the left edge. The back
-    # centre's pair stay a closed opening, because that leg's tabs butt the back
-    # web with no gap and there is nothing to open out to.
+    # The outline, anticlockwise from the back left, with ALL THREE tenon cuts
+    # spliced out of it: along the back edge and into the back centre's notch,
+    # up the right edge into that corner, forward and across the front edge to
+    # the other corner, and back out to the left edge. NOTHING is a hole in this
+    # skin any more, which is the point - every cut reaches an edge, so every
+    # cut is a saw cut.
     nl, nr = corner_notch.get("left"), corner_notch.get("right")
-    outline = [[0, 0], [BW, 0]]
+    outline = [[0, 0]]
+    for bx0, bx1, by in sorted(back_notch):
+        outline += [[bx0, 0], [bx0, by], [bx1, by], [bx1, 0]]
+    outline += [[BW, 0]]
     outline += ([[BW, nr[1]], [nr[0], nr[1]], [nr[0], D]] if nr else [[BW, D]])
     outline += ([[nl[0], D], [nl[0], nl[1]], [0, nl[1]]] if nl else [[0, D]])
     prism("Bottom skin", "box", 0xB08A1E,
           outline, skin_bot_top, -v["BOX_THK"],
           holes=holes_xy, plane="xy",
-          d="19 Baltic birch, resting on the three post shoulders. The back "
-            "centre's two tenons pass through ONE slot, 1 generous a side "
-            "around the pair; the two FRONT ones take a corner out of the skin "
-            "instead, so the outer 18 goes with it and nothing wraps the corner")
+          d="19 Baltic birch, resting on the three post shoulders. NONE of the "
+            "three tenon cuts is a hole: the two front ones take a corner and "
+            "the back centre's takes a notch out of the back edge, so every one "
+            "of them is a saw cut and the skin under the webs goes with it")
 
     # ---- the base: two grids holding five legs ---------------------------
     # HIS SPEC 2026-10-15, and the definition is the point: the base is not a

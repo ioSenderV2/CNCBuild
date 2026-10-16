@@ -335,19 +335,24 @@ def tenon_cuts(v):
 def cut_region(v, name, leg, tabs, corner):
     """What actually gets cut, as (x0, x1, y0, y1) in the skin's coordinates.
 
-    A FRONT cut runs out to both of the skin's edges. The back centre's is ONE
-    slot spanning both tabs - his, 2026-10-15: the island between them BEARS
-    NOTHING, since it sits over the leg's slot, so cutting round it buys nothing
-    and a straight cut is easier. The slot is the width of the leg itself, which
-    is what the tab pair spans, plus TENON_HOLE_CLEAR a side.
+    NONE OF THE THREE IS A HOLE. A front cut runs out to both of the skin's
+    edges; the back centre's runs out to the BACK edge. Two decisions of his,
+    2026-10-15, and they are the same decision twice:
 
-    Returned as a list so the caller does not care which kind it is.
+      - ONE slot spanning both tabs, not two, because the island between them
+        BEARS NOTHING - it sits over the leg's own slot;
+      - and open to the edge, because as a closed rectangle in the field of the
+        sheet it needed a start hole and a jigsaw. The skin between it and the
+        edge is all under the back perimeter web with the tongue outside, so
+        none of it shows.
+
+    So every tenon cut is a saw cut from an edge. Returned as a list so the
+    caller does not care which kind it is.
     """
     W, hc, gap = v["BOX_W"], v["TENON_HOLE_CLEAR"], v["TENON_SPACER_GAP"]
     if not corner:
-        ty0 = min(t[2] for t in tabs)
         ty1 = max(t[3] for t in tabs)
-        return [(leg[0] - hc, leg[1] + hc, ty0 - hc, ty1 + hc)]
+        return [(leg[0] - hc, leg[1] + hc, 0, ty1 + hc)]
     tx0, tx1, ty0, ty1 = tabs[0]
     sx0, sx1 = (tx0 - gap, tx0) if corner == "left" else (tx1, tx1 + gap)
     lo, hi = min(tx0, sx0), max(tx1, sx1)
@@ -382,7 +387,7 @@ def cutout_detail_svg(v, s=1.0):
     # PAD_T IS ITS OWN FIGURE. At one margin all round the panel title sat on
     # the top dimension line, and on the back centre it sat on the skin's back
     # edge - the one line in that panel everything is measured from.
-    PW, PH, PAD, PAD_T, F = 104.0, 98.0, 14.0, 26.0, 4.4
+    PW, PH, PAD, PAD_T, F = 104.0, 102.0, 14.0, 21.0, 4.4
     body, x_off = [], 0.0
 
     def dim(x0, y0, x1, y1, txt, above=True):
@@ -412,7 +417,11 @@ def cutout_detail_svg(v, s=1.0):
         cy0 = min(c[2] for c in cuts)
         cy1 = max(c[3] for c in cuts)
         ox = x_off + PAD + (PW - 2 * PAD - (cx1 - cx0)) / 2 - cx0
-        oy = PAD_T - cy0 + ((PH - PAD_T - PAD - (cy1 - cy0)) if corner else 4)
+        # A FRONT CUT HANGS FROM THE BOTTOM and the back centre's from the top,
+        # because each is drawn against the skin edge it opens out to. PAD_T is
+        # the room the back one needs above it for the title; the front ones
+        # take whatever is left after their own dimension row at the bottom.
+        oy = ((PH - PAD - (cy1 - cy0)) if corner else PAD_T) - cy0
 
         def px(x):
             return ox + x * s
@@ -492,7 +501,6 @@ def cutout_detail_svg(v, s=1.0):
             dim(px(tabs[0][1]), py(b1) + 17, px(tabs[1][0]), py(b1) + 17,
                 f"{tabs[1][0] - tabs[0][1]:g}")
             dim(px(W / 2), py(b0) - 5, px(a1), py(b0) - 5, f"{a1 - W / 2:g}")
-            dim(px(a0) - 7, py(0), px(a0) - 7, py(b0), f"{b0:g}")
             dim(px(a1) + 7, py(b0), px(a1) + 7, py(b1), f"{b1 - b0:g}")
             # the centreline the slot is set out from
             body.append(f'<line x1="{px(W / 2):.2f}" y1="{py(0) - 7:.2f}" '
@@ -947,30 +955,32 @@ double-sided tape</b> covers those &mdash; a cover, not structure, so it comes o
 the day a port is used.</p>
 
 <h2 id="cutouts">5 &mdash; The tenon cutouts in the bottom skin</h2>
-<p><b>Three legs land in this skin and they are cut two different ways.</b> The
-back centre leg's two tabs pass through <b>one slot</b>; the two front legs take
-a <b>corner</b> out of the skin instead, open to both edges.</p>
+<p>🔴 <b>Not one of these is a hole.</b> Every tenon cut reaches an edge of the
+skin, so <b>every one of them is a saw cut</b> &mdash; no start hole, no jigsaw
+in the field of the sheet. The two front legs take a <b>corner</b>, open to both
+edges; the back centre's pair take <b>one notch out of the back edge</b>.</p>
 <p>🔴 <b>Every figure on these panels is the CUT, not the tenon.</b> The
 <b>{v['TENON_HOLE_CLEAR']:g} a side</b> is already in it &mdash; cut to what is
 drawn.</p>
 <p><b>And every figure is off the skin's own edges</b>, which is what the sheet
-gives you to work from. The back centre's slot is the one exception and it is
-set out from the <b>centreline</b>, marked in red.</p>
+gives you to work from. The back centre's notch is set out from the
+<b>centreline</b> as well, marked in red, because it straddles it.</p>
 {cutout_detail_svg(v)}
 <p><b>The blue is what comes out.</b> Standing in each front opening are the
 <b>tenon tab</b> and the <b>{v['TENON_SPACER_GAP']:g} spacer</b> glued to its
 outer face: together they fill the leg's un-ledged band, and the band's outer
 edge is the perimeter web's inner face. In the back centre panel the two tabs
 are <b>dotted</b>, because nothing is cut around them.</p>
-<p><b>Where the {v['TENON_HOLE_CLEAR']:g} a side applies.</b> On the back centre
-it is all four faces. On a front corner it is only the <b>two inboard</b>
-faces &mdash; the other two are not faces at all, they run out to the skin's
-edges.</p>
-<p>🔴 <b>Why the front two run out to the edges.</b> A closed hole would leave
-the outer {v['T_BOX_WALL_WEB']:g} of skin wrapped around the corner between the
-tenon and the skin's edge. That band goes with the cut, and <b>all of it is
-covered by the {v['T_BOX_TONGUE']:g} laminations</b>, which stand outside the
-skin's edge there. Nothing of the cut shows on the finished box.</p>
+<p><b>Where the {v['TENON_HOLE_CLEAR']:g} a side applies:</b> only on the faces
+that have skin beside them. On the back centre that is <b>three</b> &mdash;
+both sides and the inboard end. On a front corner it is <b>two</b>, the inboard
+ones. The rest are not faces at all; they run out to an edge.</p>
+<p>🔴 <b>Why they all run out to an edge.</b> A closed cut leaves a band of skin
+about {v['T_BOX_WALL_WEB']:g} wide between the tenon and the skin's own edge, and
+<b>every bit of that band sits under a perimeter web with a
+{v['T_BOX_TONGUE']:g} lamination standing outside it</b>. It shows nowhere on
+the finished box. <b>Letting it go with the cut turns three jigsaw jobs into
+three saw cuts</b> &mdash; that is the whole of the reason.</p>
 <p>🔴 <b>Why the back centre is one slot and not two.</b> The island between the
 two tabs <b>bears nothing</b> &mdash; it sits over the leg's own slot. So there
 is nothing to be had by cutting round it, and <b>a straight cut to be had by not

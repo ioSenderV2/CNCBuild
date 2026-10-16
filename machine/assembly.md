@@ -830,10 +830,15 @@ is deliberate: stopping it at the upper grid would leave a **10 mm bridge** of l
 spanning the slot and pretending to be the surface the box bears on. So a tenon is whichever **strips**
 stand inside the ledge — one on a corner leg, two at the back centre, never the leg's full width.
 
-**One slot in the bottom skin and two corners.** The back centre's pair of tabs pass through **one
-slot, 74 × 46** — the leg's own 72 across and the tabs' 44 deep, each plus 1 a side. 🔴 **Not two
-holes:** the 36 island between the tabs **bears nothing**, since it sits over the leg's own slot, so
-cutting round it buys nothing and a straight cut is got by not bothering.
+🔴 **No tenon cut in this skin is a hole.** All three reach an edge, so **all three are saw cuts** —
+no start hole, no jigsaw in the field of the sheet. The two front legs take a corner; the back
+centre's pair take **one notch out of the back edge, 74 × 63**.
+
+**Two decisions got it there and they are the same decision twice.** One opening and not two, because
+the 36 island between the tabs **bears nothing** — it sits over the leg's own slot. And open to the
+edge, because the band of skin left between a closed cut and the skin's own edge is **all** under a
+perimeter web with a 24 lamination standing outside it: it shows nowhere, and letting it go with the
+cut is what turns a jigsaw job into a saw cut.
 
 🔴 **The two FRONT tenons take a corner out of the skin instead of a hole** — his, and what it buys
 is the corner itself. **The cut runs out to both of the skin's edges**, so the outer 18 that would

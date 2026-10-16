@@ -979,15 +979,14 @@ other lamination is {v['LEG_STRIP']:g}. So the leg and its slot sit
 wall would put them: <b>{v['LEG_STRIP']:g} + {v['GRID_MEMBER_T']:g}</b> of leg
 against <b>{v['T_BOX_TONGUE']:g} + {v['T_BOX_WALL_WEB']:g}</b> of wall leaves
 <b>{v['TENON_SPACER_GAP']:g}</b>. <b>It moves if any of those four do.</b></p>
-<p>🔴 <b>So the two front tenons take a CORNER out of the bottom skin, not a
-hole.</b> The cut runs out to both of the skin's edges and the outer
-{v['T_BOX_WALL_WEB']:g} that would wrap the corner goes with it &mdash; in from
-the corner to the tenon's two <b>inboard</b> faces plus the same
-{v['TENON_HOLE_CLEAR']:g} a side. <b>All of it is covered by the
-{v['T_BOX_TONGUE']:g} laminations</b>, which stand outside the skin's edge
-there. <b>The back centre leg gets one closed slot</b> spanning both its tabs
-&mdash; the island between them bears nothing, since it sits over the leg's own
-slot.</p>
+<p>🔴 <b>So no tenon cut in the bottom skin is a hole.</b> Each one reaches an
+edge, which makes every one of them a saw cut. The two front tenons take a
+<b>corner</b>, in from it to the tenon's two inboard faces plus the
+{v['TENON_HOLE_CLEAR']:g} a side; the back centre's pair take <b>one notch out
+of the back edge</b>, the island between them bearing nothing since it sits over
+the leg's own slot. <b>The band of skin that goes with each cut is all under a
+perimeter web</b>, with a {v['T_BOX_TONGUE']:g} lamination standing outside it,
+so none of it shows.</p>
 
 <h3>How deep, and what lands on it</h3>
 {shoulder_section_svg(v)}
