@@ -867,10 +867,10 @@ def main() -> int:
                    "full width; the inner web behind the joint is continuous and "
                    "the back centre post sits under it")
     for x0, x1 in ((-TT, lam_mid), (lam_mid, W + TT)):
-        box("Back tongue", "box", 0xA07B16, x0, -TT, tz0, x1, 0, tz1,
+        box("Back tongue", "tongues", 0xA07B16, x0, -TT, tz0, x1, 0, tz1,
             d=f"{x1 - x0:g} long, {v['T_BOX_TONGUE']:g} thick" + D_LAM_PIECE)
     for x0 in (-TT, W):
-        box("Side tongue", "box", 0xA07B16,
+        box("Side tongue", "tongues", 0xA07B16,
             x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, v["SIDE_TONGUE_END"], tz1)
 
     # ---- the tee track bed -----------------------------------------------
@@ -1064,7 +1064,7 @@ def main() -> int:
     cap_z0 = -v["BOX_FRONT_CAP_H"]
     # Two pieces, the same as the back and for the same reason.
     for x0, x1 in ((-cap_t, lam_mid), (lam_mid, W + cap_t)):
-        box("Front cap", "box", 0xA07B16, x0, D, cap_z0, x1, D + cap_t, 0,
+        box("Front cap", "tongues", 0xA07B16, x0, D, cap_z0, x1, D + cap_t, 0,
             d=f"{x1 - x0:g} long, {cap_t:g} thick, flush with "
               f"the top skin - the front has no tongue" + D_LAM_PIECE)
     # FLAG: THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
@@ -1074,7 +1074,7 @@ def main() -> int:
     # convention as the post tenon standing out of its stub, or the BF12 wing
     # and boss. There is no butt joint at 1006.35 on the sides.
     for x0 in (-cap_t, W):
-        box("Side cap", "box", 0xA07B16, x0, v["BOX_SIDE_CAP_START"], cap_z0,
+        box("Side cap", "tongues", 0xA07B16, x0, v["BOX_SIDE_CAP_START"], cap_z0,
             x0 + cap_t, D, 0,
             d="same piece as the side tongue, proud portion sawn off - "
               "carries the fin's outboard overhang")
@@ -2234,7 +2234,12 @@ def main() -> int:
     home = {"X": jog["X"][1], "Y": jog["Y"][0], "Z": jog["Z"][1]}
 
     groups = {
-        "box": "Torsion box: bottom skin and tongues",
+        "box": "Torsion box: bottom skin",
+        # THEIR OWN CHECKBOX - his, off the Parts dialog. The four 24 pieces are
+        # what covers every joint at the box's edge: hide them and the tenons,
+        # the skin's corners and the shoulder are all visible at once, and with
+        # them in the box group that meant hiding the bottom skin as well.
+        "tongues": "Torsion box: the 24 outer laminations",
         "topskin": "Torsion box: TOP SKIN (hide to see the bays)",
         "grid": "Torsion box: ribs and perimeter webs",
         "legs": "Legs: all five, with their tenons and fillers",
