@@ -111,7 +111,9 @@ def collect(src):
                 skip = set(text_of(re.match(r'\s*<td[^>]*>(.*?)</td>', r, re.S).group(1))
                            for r in re.findall(r'<tr[^>]*>(.*?)</tr>', first, re.S)
                            if '<th' not in r and re.match(r'\s*<td', r, re.S))
-            own, cutouts, repeated = {}, 0, 0
+            # `own` is every hole the table lists; `contrib` is what it adds to
+            # the trip, which differs where a table repeats refs from another.
+            own, contrib, cutouts, repeated = {}, {}, 0, 0
             for r in re.findall(r'<tr[^>]*>(.*?)</tr>', t, re.S):
                 if '<th' in r:
                     continue
@@ -130,10 +132,26 @@ def collect(src):
                     continue
                 per_part[dia] = per_part.get(dia, 0) + n
                 trip[dia] = trip.get(dia, 0) + n * made
+                contrib[dia] = contrib.get(dia, 0) + n
             tables.append(dict(sheet=name, ti=ti, part=part, made=made,
-                               own=own, cutouts=cutouts, repeated=repeated,
-                               cols=len(hdr)))
+                               own=own, contrib=contrib, cutouts=cutouts,
+                               repeated=repeated, cols=len(hdr)))
     return per_part, trip, unknown, tables
+
+
+def by_size(tables):
+    """dia -> [(sheet, part, per-part count, copies)], in sheet order.
+
+    The trip figure for a sheet is its own count TIMES the copies made, which
+    is the thing worth printing beside the drill: set the size up once and this
+    is how many go through it on that part.
+    """
+    out = {}
+    for t in tables:
+        for dia, n in t['contrib'].items():
+            out.setdefault(dia, []).append(
+                (t['sheet'], t['part'], n, t['made']))
+    return out
 
 
 def strip_sheet_totals(src):
@@ -188,30 +206,62 @@ def insert_sheet_totals(src, tables, nl):
     return src, len(cuts)
 
 
-def render(per_part, trip):
+def render(per_part, trip, sized):
+    """One block per drill size, listing the sheets that use it.
+
+    Set a size up once and work every sheet under it. Where a part is made more
+    than once the qty is its sheet count times the copies, and the sum is shown
+    so the figure can be checked against the sheet without arithmetic.
+    """
     key = dia_key
     out = [START,
-           '<h3 style="margin-top:6mm">What gets drilled &mdash; the whole trip by drill size</h3>',
-           '<p style="margin:0 0 .4rem;font-size:9.5pt"><b>Generated from the hole schedules</b> by '
-           'tools/build-hole-tally.py, so it cannot drift from them. <b>Per part</b> is one piece; '
-           '<b>on the trip</b> counts every piece that gets made.</p>',
+           '<h3 style="margin-top:6mm">What gets drilled &mdash; by drill size, '
+           'and which sheets use it</h3>',
+           '<p style="margin:0 0 .4rem;font-size:9.5pt"><b>Generated from the hole '
+           'schedules</b> by tools/build-hole-tally.py, so it cannot drift from them. '
+           '<b>Qty is for the trip</b>: the sheet\'s own count times the number of that '
+           'part made, and where that is more than one the sum is shown.</p>',
            '<table class="sched">',
-           '<tr><th>&oslash;</th><th class="d">Per part</th><th class="d">On the trip</th>'
+           '<tr><th>&oslash;</th><th>Sheet</th><th class="d">Qty</th>'
            '<th>What it is for</th></tr>']
-    tp = tt = 0
+    tt = 0
     for d in sorted(per_part, key=key):
-        tp += per_part[d]
-        tt += trip[d]
-        label = '&oslash;' + d
-        why = PURPOSE.get(d, '&#9888; <b>not described</b> &mdash; add it to tools/build-hole-tally.py')
-        out.append('<tr><td><b>%s</b></td><td class="d">%d</td><td class="d"><b>%d</b></td><td>%s</td></tr>'
-                   % (label, per_part[d], trip[d], why))
-    out.append('<tr><td><b>TOTAL</b></td><td class="d"><b>%d</b></td><td class="d"><b>%d</b></td>'
-               '<td>Window cut-outs are not holes and are not counted &mdash; there are two, '
-               'one per riser</td></tr>' % (tp, tt))
+        rows = sorted(sized.get(d, []), key=lambda r: sheet_key(r[0]))
+        why = PURPOSE.get(d, '&#9888; <b>not described</b> &mdash; add it to '
+                             'tools/build-hole-tally.py')
+        span = max(1, len(rows))
+        for i, (sheet, part, n, made) in enumerate(rows):
+            qty = n * made
+            tt += qty
+            cell = ('%d <span class="tn">(%d&times;%d)</span>' % (qty, made, n)
+                    if made > 1 else '%d' % qty)
+            cells = []
+            if i == 0:
+                cells.append('<td rowspan="%d"><b>&oslash;%s</b><br>'
+                             '<span class="tn">%d in all</span></td>'
+                             % (span, d, trip[d]))
+            cells.append('<td>%s <span class="tn">&mdash; %s</span></td>'
+                         % (sheet_label(sheet), part))
+            cells.append('<td class="d">%s</td>' % cell)
+            if i == 0:
+                cells.append('<td rowspan="%d">%s</td>' % (span, why))
+            out.append('<tr>%s</tr>' % ''.join(cells))
+    out.append('<tr><td colspan="2"><b>TOTAL ON THE TRIP</b></td>'
+               '<td class="d"><b>%d</b></td>'
+               '<td>Cut-outs are not holes and are not counted</td></tr>' % tt)
     out.append('</table>')
     out.append(END)
     return '\n'.join(out)
+
+
+def sheet_key(s):
+    """Sort s1a, s2, s10 the way a human reads them, not asciibetically."""
+    m = re.match(r's(\d+)([a-z]*)', s)
+    return (int(m.group(1)), m.group(2)) if m else (99, s)
+
+
+def sheet_label(s):
+    return 'Sheet ' + s[1:]
 
 
 def main():
@@ -223,7 +273,7 @@ def main():
         print('schedules with no part mapping, NOT counted: %s' % ', '.join(unknown))
         return 1
     src, nfoot = insert_sheet_totals(src, tables, nl)
-    table = render(per_part, trip).replace('\n', nl)
+    table = render(per_part, trip, by_size(tables)).replace('\n', nl)
 
     if START in src and END in src:
         lo = src.index(START)
