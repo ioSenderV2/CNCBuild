@@ -3111,6 +3111,18 @@ provenance = "nominal"
 note = "1 per side, so every tenon hole in the bottom skin is cut 2 LARGER THAN THE TENON. His, 2026-10-11, asking whether the holes are generous - and they should be. SETTLED: THE TENON IS LOCATION ONLY and a 565 lb box is being lowered onto three of them: zero clearance makes assembly impossible, and 1 per side is nothing against a job that is only stopping the box walking. The box's position on the posts is NOT a machine reference - the machine is referenced to the top skin. FLAG: WHAT MUST NOT BE GENEROUS IS THE LEDGE DEPTH, which is the bearing surface and is T_BOX_LEDGE. The hole size is free; the shoulder is not."
 
 [[dim]]
+sym = "TENON_SPACER_GAP"
+expr = "GRID_MEMBER_T + LEG_STRIP - T_BOX_TONGUE - T_BOX_WALL_WEB"
+note = "12 - the air between a front leg's tenon tab and the inner face of the perimeter web beside it. SETTLED: IT IS 12 AND NOT 18 - his question off the model, 2026-10-15, answered by measuring the model: the tab's outer face is the slot's inner edge and the web's inner face is T_BOX_WALL_WEB in from the skin's edge, so the gap is what the leg's own 18 + 36 leaves after the wall's 24 + 18. THE 24 IS WHY: the leg's outer face stands flush with the TONGUE's outer face, and the tongue is 24 where every other lamination is 18, so the leg and its slot sit 6 further outboard than an all-18 wall would put them. Expect 18, get 12. FLAG: IT IS A RESIDUE, NOT A CHOICE - nothing was set to make it 12, so it MOVES if the tongue, the web, the slot or the strip does. The spacer that fills it is T_TENON_SPACER."
+
+[[dim]]
+sym = "T_TENON_SPACER"
+value = 12.003
+provenance = "measured"
+unit = "mm"
+note = "12.003 - micrometer, his 12 Baltic birch scrap, 2026-10-15. It fills TENON_SPACER_GAP, glued to the OUTER face of each front leg's tenon tab, POST_TENON_L tall by TENON_CORNER_Y deep. SETTLED: WHAT IT BUYS IS A CORNER AND NOT A FACE - his words. Without it the box's corner is located in one direction only: the tenon butts the front web and has 12 of air to the side web. With it the composite tenon's outer face lands ON the side web's inner face, so the tongue corner is captured both ways. NOTE: THE STOCK IS THE GAP - a nominal 12 sheet mikes at 12.003, which is why the scrap is the right thing to use rather than a piece planed to fit. FLAG: THE TWO FRONT LEGS ONLY. The back centre leg's tabs already butt the back web with no gap at all."
+
+[[dim]]
 sym = "POST_STUB_L"
 value = 254
 provenance = "nominal"

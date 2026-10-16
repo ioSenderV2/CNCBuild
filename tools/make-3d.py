@@ -545,6 +545,7 @@ def main() -> int:
                       f"only where there is no rail")
 
     holes_xy = []
+    corner_notch = {}            # front leg -> the skin corner it opens out to
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         leg_strips(nm, "legs", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
@@ -564,15 +565,60 @@ def main() -> int:
                 sx0, ty0, ledge_z, sx0 + strip, ty1, post_top,
                 d=f"{strip:g} x {ty1 - ty0:g} - location only, it carries no "
                   f"vertical load. All of that is on the shoulder")
-            # the hole it passes through, TENON_HOLE_CLEAR generous a side
-            holes_xy.append([[sx0 - hc, ty0 - hc], [sx0 + strip + hc, ty0 - hc],
-                             [sx0 + strip + hc, ty1 + hc], [sx0 - hc, ty1 + hc]])
+            if "back" in nm:
+                # the hole it passes through, TENON_HOLE_CLEAR generous a side
+                holes_xy.append(
+                    [[sx0 - hc, ty0 - hc], [sx0 + strip + hc, ty0 - hc],
+                     [sx0 + strip + hc, ty1 + hc], [sx0 - hc, ty1 + hc]])
+                continue
+            # ---- the two FRONT tabs: a spacer, and a corner instead of a hole
+            # 🔴 A SPACER ON THE TAB'S OUTER FACE - his, 2026-10-15, and the
+            # reason is the one worth keeping: WITHOUT IT THE BOX IS LOCATED ON
+            # A FACE AND NOT ON A CORNER. The tab butts the front web with
+            # nothing to spare and has TENON_SPACER_GAP of air to the side web,
+            # so the corner is captured one way only. Fill that gap and the
+            # composite tenon's outer face lands ON the side web's inner face.
+            #
+            # DRAWN AT THE GAP, NOT AT THE STOCK. T_TENON_SPACER mikes at 12.003
+            # on his 12 scrap - 0.003 over, which is the glue line and not
+            # geometry. The measurement is recorded on that symbol; the model
+            # draws the hole it fills.
+            gap = v["TENON_SPACER_GAP"]
+            left = sx0 + strip / 2 < BW / 2          # which way is OUTBOARD
+            sp0 = sx0 - gap if left else sx0 + strip
+            box(nm + " tenon corner spacer", "legs", 0xB5894F,
+                sp0, ty0, ledge_z, sp0 + gap, ty1, post_top,
+                d=f"{gap:g} x {ty1 - ty0:g} x {post_top - ledge_z:g}, from 12 "
+                  f"scrap - glued to the OUTER face of the tenon so the "
+                  f"composite lands on the web's inner face. It locates the "
+                  f"box's tongue CORNER, not just a face")
+            # 🔴 AND THE SKIN TAKES A CORNER, NOT A HOLE - his, same day. A
+            # closed rectangle leaves the outer 18 of skin wrapped around the
+            # corner between the tenon and the skin's own edge; he wants that
+            # 18 gone and the cutout open to both edges, all of it covered by
+            # the 24 laminations. So this corner is spliced out of the skin's
+            # OUTLINE rather than added to `holes_xy`: a hole whose edge lands
+            # on the outline is not a hole, and the triangulator's seams are
+            # exactly what check-prism-edges.py exists to catch.
+            inx = (sx0 + strip + hc) if left else (sx0 - hc)
+            corner_notch["left" if left else "right"] = (inx, ty0 - hc)
 
+    # The outline, anticlockwise from the back left, with the two FRONT corners
+    # spliced out: along the right edge to the notch, in, forward to the front
+    # edge, across to the other notch, back out to the left edge. The back
+    # centre's two tabs are still closed holes, because that leg's tabs butt the
+    # back web with no gap and there is nothing to open out to.
+    nl, nr = corner_notch.get("left"), corner_notch.get("right")
+    outline = [[0, 0], [BW, 0]]
+    outline += ([[BW, nr[1]], [nr[0], nr[1]], [nr[0], D]] if nr else [[BW, D]])
+    outline += ([[nl[0], D], [nl[0], nl[1]], [0, nl[1]]] if nl else [[0, D]])
     prism("Bottom skin", "box", 0xB08A1E,
-          [[0, 0], [BW, 0], [BW, D], [0, D]], skin_bot_top, -v["BOX_THK"],
+          outline, skin_bot_top, -v["BOX_THK"],
           holes=holes_xy, plane="xy",
-          d="19 Baltic birch, resting on the three post shoulders - the holes "
-            "are the tenons plus 1 a side")
+          d="19 Baltic birch, resting on the three post shoulders. The back "
+            "centre's two tenons pass through holes 1 generous a side; the two "
+            "FRONT ones take a corner out of the skin instead, so the outer 18 "
+            "goes with it and nothing wraps the corner")
 
     # ---- the base: two grids holding five legs ---------------------------
     # HIS SPEC 2026-10-15, and the definition is the point: the base is not a
