@@ -116,7 +116,7 @@ note = "Facing edges of the upper and lower Y block rows, measured. OPEN: IT DOE
 sym = "BLOCK_FACE_CLEAR"
 value = 4.2
 provenance = "measured"
-note = "4.2 - the gap under the HGH20 block's SIDE WINGS, from their bottom edge to the face of the extrusion the rail is bolted to. SETTLED: HIS MEASUREMENT 2026-10-11, taken with precision steel setup gauge blocks, and it replaces the 4 that was known only as 'a 4 mm test piece slides under'. FLAG: IT IS WHAT LETS THE FRONT STRIP RUN UNDER THE BLOCKS: T_FRONT_STRIP is 3.175, so a strip passes with 1.025 to spare and FRONT_STRIP_W's 50.8 can be wider than the block gap on purpose. OPEN: THE MODEL DREW THE BLOCK AS A SOLID BOX filling all RAIL_STACK from the face until this figure arrived, which is why the interference check reported six front-strip clashes that are not real. A thicker strip would foul, and the check will say so."
+note = "4.2 - the gap under the HGH20 block's SIDE WINGS, from their bottom edge to the face of the extrusion the rail is bolted to. SETTLED: HIS MEASUREMENT 2026-10-11, taken with precision steel setup gauge blocks, and it replaces the 4 that was known only as 'a 4 mm test piece slides under'. FLAG: IT IS WHAT LETS THE FRONT STRIP RUN UNDER THE BLOCKS: T_FRONT_STRIP is 3 measured, so a strip passes with 1.2 to spare and FRONT_STRIP_W's 50.8 can be wider than the block gap on purpose. OPEN: THE MODEL DREW THE BLOCK AS A SOLID BOX filling all RAIL_STACK from the face until this figure arrived, which is why the interference check reported six front-strip clashes that are not real. A thicker strip would foul, and the check will say so."
 
 [[dim]]
 sym = "BLOCK_W"

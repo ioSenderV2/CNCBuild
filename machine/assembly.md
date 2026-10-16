@@ -235,8 +235,10 @@ the 11-gauge it was sourced as. Full derivation in
 **The buy: 42 × M8 × 10 A4 / 316** (front strips) · **56 × M8 × 10 plain + 56 washers** (Y backs) ·
 **28 × M8 × 12** (X back). 126 bolts, 126 T-nuts.
 
-FLAG: **The front strip is 4 mm, not 1/4".** At 1/4" the flange head rim passes under the bearing block
-and hits — there is at most 6 mm of clearance there, and the 1/4" stack is 7.35.
+FLAG: **The front strip is {{T_FRONT_STRIP}} mm, not 1/4".** At 1/4" the flange head rim passes under
+the bearing block and hits — there is at most 6 mm of clearance there, and the 1/4" stack is 7.35.
+**Measured**: each of the three strips reads {{T_FRONT_STRIP}}, and the three stacked read 9, which
+is what rules out a caliper offset on a single thin reading.
 
 FLAG: **The front strip's 14 flange bolts must be austenitic stainless — A4 / 316.** The magnetic
 encoder tape runs on this strip's face, and ferromagnetic bolt heads 1 mm from a magnetic scale put a
