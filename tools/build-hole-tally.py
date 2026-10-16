@@ -37,28 +37,35 @@ SROW_END = '<!-- SHEETTOTAL:END -->'
 PLATE_RE = r'<div class="plate pg-(s[0-9a-z]+)">(.*?)(?=\n<div class="plate )'
 SCHED_RE = r'<table class="sched">(.*?)</table>'
 
-# (sheet, table index) -> (part, how many of that part get made).
-# Sheet 2 carries four parts on one page, and its second table is the first one's
-# plate drawn complete with the tongue - the same two plates, one also getting G1-G4.
+# (plate div, table index) -> (sheet label, part, how many get made).
+#
+# THE LABEL IS NOT THE DIV. One plate div can hold several sheets: pg-s2 carries
+# 2a, 2b, 2c and 2d, and calling them all "Sheet 2" sends somebody to a page
+# with four parts on it.
+#
+# 2a AND 2b ARE THE TWO END PLATES, one each - his, and 2b's schedule is the
+# whole plate, 2a's set plus the tongue's G holes. So each is drilled once and
+# nothing is shared between them: the trip count is unchanged either way, but
+# the attribution is now true to what gets clamped on the table.
 PARTS = {
-    ('s1a', 0): ('Front Y1 riser', 1),
-    ('s1b', 0): ('Front Y2 riser', 1),
-    ('s2', 0): ('X gantry end plate', 2),
-    ('s2', 1): ('X gantry end plate, tongue', 1),
-    ('s2', 2): ('Shelf bar', 2),
-    ('s2', 3): ('Nut doubler block', 3),
-    ('s3a', 0): ('X carriage plate', 1),
-    ('s3b', 0): ('Z spacer bar', 2),
-    ('s3c', 0): ('Z top stop block', 1),
-    ('s3c', 1): ('Z top stop block', 1),
-    ('s4', 0): ('Z plate', 1),
-    ('s5', 0): ('Y nut sole bracket', 2),
-    ('s6', 0): ('Interposer', 3),
-    ('s7', 0): ('Rear plate', 1),
-    ('s8', 0): ('Front joining strip', 3),
-    ('s9', 0): ('Outboard plate', 2),
-    ('s10', 0): ('X back joining plate', 1),
-    ('s11', 0): ('X nut sole plate', 1),
+    ('s1a', 0): ('1a', 'Front Y1 riser', 1),
+    ('s1b', 0): ('1b', 'Front Y2 riser', 1),
+    ('s2', 0): ('2a', 'X gantry end plate, left-hand', 1),
+    ('s2', 1): ('2b', 'X gantry end plate, right-hand with the tongue', 1),
+    ('s2', 2): ('2c', 'Shelf bar', 2),
+    ('s2', 3): ('2d', 'Nut doubler block', 3),
+    ('s3a', 0): ('3a', 'X carriage plate', 1),
+    ('s3b', 0): ('3b', 'Z spacer bar', 2),
+    ('s3c', 0): ('3c', 'Z top stop block', 1),
+    ('s3c', 1): ('3c', 'Z top stop block', 1),
+    ('s4', 0): ('4', 'Z plate', 1),
+    ('s5', 0): ('5', 'Y nut sole bracket', 2),
+    ('s6', 0): ('6', 'Interposer', 3),
+    ('s7', 0): ('7', 'Rear plate', 1),
+    ('s8', 0): ('8', 'Front joining strip', 3),
+    ('s9', 0): ('9', 'Outboard plate', 2),
+    ('s10', 0): ('10', 'X back joining plate', 1),
+    ('s11', 0): ('11', 'X nut sole plate', 1),
 }
 
 # What each diameter is FOR. Keyed by diameter; the pack has one job per size.
@@ -100,17 +107,14 @@ def collect(src):
         for ti, t in enumerate(re.findall(SCHED_RE, blk, re.S)):
             hdr = [text_of(x) for x in re.findall(r'<th[^>]*>(.*?)</th>', t, re.S)]
             dcol = hdr.index('o') if 'o' in hdr else None
-            part, made = PARTS.get((name, ti), (None, 1))
+            label, part, made = PARTS.get((name, ti), (None, None, 1))
             if part is None:
                 unknown.append('%s table %d' % (name, ti))
                 continue
-            # sheet 2's second table repeats the first; only its new refs count
+            # NOTHING IS SHARED BETWEEN SCHEDULES ANY MORE. 2b used to be read
+            # as 2a's plate drawn complete, so its repeated refs were counted
+            # once; it is its own plate now and drills its own full set.
             skip = set()
-            if (name, ti) == ('s2', 1):
-                first = re.findall(SCHED_RE, blk, re.S)[0]
-                skip = set(text_of(re.match(r'\s*<td[^>]*>(.*?)</td>', r, re.S).group(1))
-                           for r in re.findall(r'<tr[^>]*>(.*?)</tr>', first, re.S)
-                           if '<th' not in r and re.match(r'\s*<td', r, re.S))
             # `own` is every hole the table lists; `contrib` is what it adds to
             # the trip, which differs where a table repeats refs from another.
             own, contrib, cutouts, repeated = {}, {}, 0, 0
@@ -133,9 +137,10 @@ def collect(src):
                 per_part[dia] = per_part.get(dia, 0) + n
                 trip[dia] = trip.get(dia, 0) + n * made
                 contrib[dia] = contrib.get(dia, 0) + n
-            tables.append(dict(sheet=name, ti=ti, part=part, made=made,
-                               own=own, contrib=contrib, cutouts=cutouts,
-                               repeated=repeated, cols=len(hdr)))
+            tables.append(dict(sheet=name, ti=ti, label=label, part=part,
+                               made=made, own=own, contrib=contrib,
+                               cutouts=cutouts, repeated=repeated,
+                               cols=len(hdr)))
     return per_part, trip, unknown, tables
 
 
@@ -150,7 +155,7 @@ def by_size(tables):
     for t in tables:
         for dia, n in t['contrib'].items():
             out.setdefault(dia, []).append(
-                (t['sheet'], t['part'], n, t['made']))
+                (t['label'], t['part'], n, t['made']))
     return out
 
 
@@ -255,13 +260,13 @@ def render(per_part, trip, sized):
 
 
 def sheet_key(s):
-    """Sort s1a, s2, s10 the way a human reads them, not asciibetically."""
-    m = re.match(r's(\d+)([a-z]*)', s)
+    """Sort 1a, 2, 10 the way a human reads them, not asciibetically."""
+    m = re.match(r'(\d+)([a-z]*)', s)
     return (int(m.group(1)), m.group(2)) if m else (99, s)
 
 
 def sheet_label(s):
-    return 'Sheet ' + s[1:]
+    return 'Sheet ' + s
 
 
 def main():
@@ -287,7 +292,7 @@ def main():
         src = src.replace(anchor, table + nl + nl + anchor, 1)
     io.open(PACK, 'w', encoding='utf-8', newline='').write(src)
 
-    print('%d sizes, %d holes per part, %d on the trip'
+    print('%d sizes, %d holes across the schedules, %d on the trip'
           % (len(per_part), sum(per_part.values()), sum(trip.values())))
     print('%d sheet schedules carry a TOTAL footer' % nfoot)
     for t in tables:
