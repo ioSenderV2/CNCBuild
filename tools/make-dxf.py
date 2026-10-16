@@ -43,7 +43,7 @@ SETUPS = [
      'steel', 1),
     ('4-inside-joiners', 'Inside joining strip', 's8', 1000.0, 50.0, 3.0,
      'steel', 3),
-    ('5-front-fins', 'Y front fin', 's1a', 302.0, 302.0, 12.13,
+    ('5-front-fins', 'Y front fin', 's1a', 302.0, 302.0, 10.0,
      '6061', 2),
 ]
 
