@@ -914,7 +914,11 @@ irreversible stops being one.
 1. **Dry-assemble the grid on the flat reference** — four ribs each way into the perimeter webs.
    Press every crossing flat and check it seats. An egg crate self-jigs, so this is the squareness
    check as well.
-2. **Glue the egg crate and the perimeter webs as one assembly**, two Dominos at each corner.
+2. **Glue the egg crate and the perimeter webs as one assembly**, two Dominos at each web corner.
+   🔴 **Glue the rib ENDS onto the webs' inside faces and nothing at the notches.** Two crossing
+   ribs are already joined along their whole length by the skins — about 513,000 mm² of skin bond
+   against 28,800 at the sixteen crossings — and the notch is a mechanical key either way. The end
+   glue is there to hold the crate square while the skins go on, which is all it is asked to do.
 3. **Glue and screw the bottom skin on**, with the assembly still on the reference. That skin's four
    tenon holes are already cut.
 4. **When it is dry, flip the box over** so the bottom is down and the open side is up.
