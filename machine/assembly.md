@@ -830,9 +830,10 @@ is deliberate: stopping it at the upper grid would leave a **10 mm bridge** of l
 spanning the slot and pretending to be the surface the box bears on. So a tenon is whichever **strips**
 stand inside the ledge — one on a corner leg, two at the back centre, never the leg's full width.
 
-**Two holes in the bottom skin and two corners.** The back centre's pair are holes, a tab plus 1 a
-side: **20 × 46**, with a 36 island between them which bears nothing since it sits over the slot —
-one hole spanning both would work as well and be easier to cut straight.
+**One slot in the bottom skin and two corners.** The back centre's pair of tabs pass through **one
+slot, 74 × 46** — the leg's own 72 across and the tabs' 44 deep, each plus 1 a side. 🔴 **Not two
+holes:** the 36 island between the tabs **bears nothing**, since it sits over the leg's own slot, so
+cutting round it buys nothing and a straight cut is got by not bothering.
 
 🔴 **The two FRONT tenons take a corner out of the skin instead of a hole** — his, and what it buys
 is the corner itself. **The cut runs out to both of the skin's edges**, so the outer 18 that would

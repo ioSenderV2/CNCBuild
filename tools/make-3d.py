@@ -566,10 +566,13 @@ def main() -> int:
                 d=f"{strip:g} x {ty1 - ty0:g} - location only, it carries no "
                   f"vertical load. All of that is on the shoulder")
             if "back" in nm:
-                # the hole it passes through, TENON_HOLE_CLEAR generous a side
-                holes_xy.append(
-                    [[sx0 - hc, ty0 - hc], [sx0 + strip + hc, ty0 - hc],
-                     [sx0 + strip + hc, ty1 + hc], [sx0 - hc, ty1 + hc]])
+                # 🔴 ONE SLOT SPANNING BOTH TABS, NOT TWO - his, 2026-10-15,
+                # and it is the file's own advice taken: the island between the
+                # tabs BEARS NOTHING, because it sits over the leg's slot. So
+                # there is nothing to be gained by cutting round it and a
+                # straight cut to gain, which is why it is one opening the
+                # width of the pair plus TENON_HOLE_CLEAR a side. Appended
+                # once, after the tabs, rather than per tab.
                 continue
             # ---- the two FRONT tabs: a spacer, and a corner instead of a hole
             # 🔴 A SPACER ON THE TAB'S OUTER FACE - his, 2026-10-15, and the
@@ -603,11 +606,17 @@ def main() -> int:
             inx = (sx0 + strip + hc) if left else (sx0 - hc)
             corner_notch["left" if left else "right"] = (inx, ty0 - hc)
 
+        if "back" in nm:
+            # the back centre's ONE slot: the width of the tab pair, which is
+            # the leg's own POST_W_X, plus the clearance a side
+            holes_xy.append([[px0 - hc, ty0 - hc], [px1 + hc, ty0 - hc],
+                             [px1 + hc, ty1 + hc], [px0 - hc, ty1 + hc]])
+
     # The outline, anticlockwise from the back left, with the two FRONT corners
     # spliced out: along the right edge to the notch, in, forward to the front
     # edge, across to the other notch, back out to the left edge. The back
-    # centre's two tabs are still closed holes, because that leg's tabs butt the
-    # back web with no gap and there is nothing to open out to.
+    # centre's pair stay a closed opening, because that leg's tabs butt the back
+    # web with no gap and there is nothing to open out to.
     nl, nr = corner_notch.get("left"), corner_notch.get("right")
     outline = [[0, 0], [BW, 0]]
     outline += ([[BW, nr[1]], [nr[0], nr[1]], [nr[0], D]] if nr else [[BW, D]])
@@ -616,9 +625,9 @@ def main() -> int:
           outline, skin_bot_top, -v["BOX_THK"],
           holes=holes_xy, plane="xy",
           d="19 Baltic birch, resting on the three post shoulders. The back "
-            "centre's two tenons pass through holes 1 generous a side; the two "
-            "FRONT ones take a corner out of the skin instead, so the outer 18 "
-            "goes with it and nothing wraps the corner")
+            "centre's two tenons pass through ONE slot, 1 generous a side "
+            "around the pair; the two FRONT ones take a corner out of the skin "
+            "instead, so the outer 18 goes with it and nothing wraps the corner")
 
     # ---- the base: two grids holding five legs ---------------------------
     # HIS SPEC 2026-10-15, and the definition is the point: the base is not a

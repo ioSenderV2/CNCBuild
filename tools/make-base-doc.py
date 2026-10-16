@@ -985,7 +985,9 @@ hole.</b> The cut runs out to both of the skin's edges and the outer
 the corner to the tenon's two <b>inboard</b> faces plus the same
 {v['TENON_HOLE_CLEAR']:g} a side. <b>All of it is covered by the
 {v['T_BOX_TONGUE']:g} laminations</b>, which stand outside the skin's edge
-there. The back centre leg keeps two closed holes.</p>
+there. <b>The back centre leg gets one closed slot</b> spanning both its tabs
+&mdash; the island between them bears nothing, since it sits over the leg's own
+slot.</p>
 
 <h3>How deep, and what lands on it</h3>
 {shoulder_section_svg(v)}

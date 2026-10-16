@@ -335,14 +335,19 @@ def tenon_cuts(v):
 def cut_region(v, name, leg, tabs, corner):
     """What actually gets cut, as (x0, x1, y0, y1) in the skin's coordinates.
 
-    A FRONT cut runs out to both of the skin's edges; the back centre's are two
-    plain holes, each a tab plus TENON_HOLE_CLEAR a side. Returned as a list so
-    the caller does not care which kind it is.
+    A FRONT cut runs out to both of the skin's edges. The back centre's is ONE
+    slot spanning both tabs - his, 2026-10-15: the island between them BEARS
+    NOTHING, since it sits over the leg's slot, so cutting round it buys nothing
+    and a straight cut is easier. The slot is the width of the leg itself, which
+    is what the tab pair spans, plus TENON_HOLE_CLEAR a side.
+
+    Returned as a list so the caller does not care which kind it is.
     """
     W, hc, gap = v["BOX_W"], v["TENON_HOLE_CLEAR"], v["TENON_SPACER_GAP"]
     if not corner:
-        return [(tx0 - hc, tx1 + hc, ty0 - hc, ty1 + hc)
-                for tx0, tx1, ty0, ty1 in tabs]
+        ty0 = min(t[2] for t in tabs)
+        ty1 = max(t[3] for t in tabs)
+        return [(leg[0] - hc, leg[1] + hc, ty0 - hc, ty1 + hc)]
     tx0, tx1, ty0, ty1 = tabs[0]
     sx0, sx1 = (tx0 - gap, tx0) if corner == "left" else (tx1, tx1 + gap)
     lo, hi = min(tx0, sx0), max(tx1, sx1)
@@ -407,7 +412,7 @@ def cutout_detail_svg(v, s=1.0):
         cy0 = min(c[2] for c in cuts)
         cy1 = max(c[3] for c in cuts)
         ox = x_off + PAD + (PW - 2 * PAD - (cx1 - cx0)) / 2 - cx0
-        oy = PAD_T - cy0 + ((PH - PAD_T - PAD - (cy1 - cy0)) if corner else 8)
+        oy = PAD_T - cy0 + ((PH - PAD_T - PAD - (cy1 - cy0)) if corner else 4)
 
         def px(x):
             return ox + x * s
@@ -470,14 +475,26 @@ def cutout_detail_svg(v, s=1.0):
                 px(a0) - 9 if corner == "left" else px(a1) + 9, py(ty1),
                 f"{ty1 - ty0:g}")
         else:
-            (a0, a1, b0, b1), (c0, c1, _, _) = cuts
-            dim(px(a0), py(b1) + 6, px(a1), py(b1) + 6, f"{a1 - a0:g}")
-            dim(px(a1), py(b1) + 13, px(c0), py(b1) + 13, f"{c0 - a1:g}")
-            dim(px(a1) + (c0 - a1) / 2, py(b0) - 5, px(c1), py(b0) - 5,
-                f"{c1 - (a1 + c0) / 2:g}")
-            dim(px(a0) - 6, py(0), px(a0) - 6, py(b0), f"{b0:g}")
-            dim(px(c1) + 6, py(b0), px(c1) + 6, py(b1), f"{b1 - b0:g}")
-            # the centreline the pair is set out from
+            a0, a1, b0, b1 = cuts[0]
+            # THE TABS IT CLEARS, DOTTED. One slot only makes sense once you can
+            # see that the island between them was never carrying anything - it
+            # sits over the leg's own slot - so they are drawn inside it.
+            for tx0, tx1, ty0, ty1 in tabs:
+                body.append(
+                    f'<rect x="{px(tx0):.2f}" y="{py(ty0):.2f}" '
+                    f'width="{(tx1 - tx0) * s:.2f}" '
+                    f'height="{(ty1 - ty0) * s:.2f}" fill="#c9a66b" '
+                    f'stroke="#333" stroke-width="0.5" '
+                    f'stroke-dasharray="2.5 1.5"/>')
+            dim(px(a0), py(b1) + 10, px(a1), py(b1) + 10, f"{a1 - a0:g}")
+            dim(px(tabs[0][0]), py(b1) + 17, px(tabs[0][1]), py(b1) + 17,
+                f"{tabs[0][1] - tabs[0][0]:g}")
+            dim(px(tabs[0][1]), py(b1) + 17, px(tabs[1][0]), py(b1) + 17,
+                f"{tabs[1][0] - tabs[0][1]:g}")
+            dim(px(W / 2), py(b0) - 5, px(a1), py(b0) - 5, f"{a1 - W / 2:g}")
+            dim(px(a0) - 7, py(0), px(a0) - 7, py(b0), f"{b0:g}")
+            dim(px(a1) + 7, py(b0), px(a1) + 7, py(b1), f"{b1 - b0:g}")
+            # the centreline the slot is set out from
             body.append(f'<line x1="{px(W / 2):.2f}" y1="{py(0) - 7:.2f}" '
                         f'x2="{px(W / 2):.2f}" y2="{py(b1) + 4:.2f}" '
                         f'stroke="#a00" stroke-width="0.4" '
@@ -931,26 +948,33 @@ the day a port is used.</p>
 
 <h2 id="cutouts">5 &mdash; The tenon cutouts in the bottom skin</h2>
 <p><b>Three legs land in this skin and they are cut two different ways.</b> The
-back centre leg's two tabs pass through <b>holes</b>; the two front legs take a
-<b>corner</b> out of the skin instead, open to both edges.</p>
-<p><b>Every figure below is off the skin's own edges</b>, which is what the sheet
-gives you to work from &mdash; the back centre's pair are the one exception and
-they are set out from the <b>centreline</b>, marked in red.</p>
+back centre leg's two tabs pass through <b>one slot</b>; the two front legs take
+a <b>corner</b> out of the skin instead, open to both edges.</p>
+<p>🔴 <b>Every figure on these panels is the CUT, not the tenon.</b> The
+<b>{v['TENON_HOLE_CLEAR']:g} a side</b> is already in it &mdash; cut to what is
+drawn.</p>
+<p><b>And every figure is off the skin's own edges</b>, which is what the sheet
+gives you to work from. The back centre's slot is the one exception and it is
+set out from the <b>centreline</b>, marked in red.</p>
 {cutout_detail_svg(v)}
 <p><b>The blue is what comes out.</b> Standing in each front opening are the
 <b>tenon tab</b> and the <b>{v['TENON_SPACER_GAP']:g} spacer</b> glued to its
 outer face: together they fill the leg's un-ledged band, and the band's outer
-edge is the perimeter web's inner face. <b>Every opening is cut
-{v['TENON_HOLE_CLEAR']:g} generous a side</b> on the faces that have skin beside
-them &mdash; the inboard ones.</p>
+edge is the perimeter web's inner face. In the back centre panel the two tabs
+are <b>dotted</b>, because nothing is cut around them.</p>
+<p><b>Where the {v['TENON_HOLE_CLEAR']:g} a side applies.</b> On the back centre
+it is all four faces. On a front corner it is only the <b>two inboard</b>
+faces &mdash; the other two are not faces at all, they run out to the skin's
+edges.</p>
 <p>🔴 <b>Why the front two run out to the edges.</b> A closed hole would leave
 the outer {v['T_BOX_WALL_WEB']:g} of skin wrapped around the corner between the
 tenon and the skin's edge. That band goes with the cut, and <b>all of it is
 covered by the {v['T_BOX_TONGUE']:g} laminations</b>, which stand outside the
 skin's edge there. Nothing of the cut shows on the finished box.</p>
-<p><b>The back centre's island bears nothing</b> &mdash; it sits over the leg's
-slot, so one hole spanning both tabs works as well and is easier to cut
-straight.</p>
+<p>🔴 <b>Why the back centre is one slot and not two.</b> The island between the
+two tabs <b>bears nothing</b> &mdash; it sits over the leg's own slot. So there
+is nothing to be had by cutting round it, and <b>a straight cut to be had by not
+bothering</b>.</p>
 
 <h2 id="glue">6 &mdash; Glue up</h2>
 <p><b>Six joints, and only the first two carry the sandwich.</b></p>

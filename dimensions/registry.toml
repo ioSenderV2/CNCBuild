@@ -2890,7 +2890,7 @@ note = "44 - a front corner tenon FORE AND AFT, the leg's strip-width direction 
 sym = "TENON_BACK_TABS"
 value = 2
 provenance = "part"
-note = "2 - the back centre leg's tenon is TWO tabs, not one. SETTLED: THE SLOT SPLITS IT, 2026-10-15: that leg is ledged on its back face only, so both strips stand proud, and the full-height slot between them makes the tenon a pair of LEG_STRIP x TENON_BACK_DEPTH tabs with 36 of air between. FLAG: THE HOLE IN THE BOTTOM SKIN FOLLOWS - either two holes or one spanning both, and the island between them bears nothing because it sits over the slot."
+note = "2 - the back centre leg's tenon is TWO tabs, not one. SETTLED: THE SLOT SPLITS IT, 2026-10-15: that leg is ledged on its back face only, so both strips stand proud, and the full-height slot between them makes the tenon a pair of LEG_STRIP x TENON_BACK_DEPTH tabs with 36 of air between. SETTLED: THE SKIN GETS ONE SLOT, NOT TWO HOLES - his, 2026-10-15, taking the file's own advice: the island between the tabs BEARS NOTHING because it sits over the leg's slot, so cutting round it buys nothing and a straight cut is got by not bothering. The slot is POST_W_X across and TENON_BACK_DEPTH deep, each plus TENON_HOLE_CLEAR a side."
 
 [[dim]]
 sym = "SHOULDER_CORNER"
