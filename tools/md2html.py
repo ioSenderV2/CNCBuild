@@ -74,6 +74,9 @@ try:
 except ModuleNotFoundError:
     sys.exit("ERROR: the markdown package is missing - run:  python -m pip install markdown")
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import subst                                                  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 PHOTO_CACHE = ROOT / "build-photos"   # print-sized copies; gitignored, rebuilt on demand
 
@@ -392,7 +395,10 @@ def render(key: str, md_dir: Path, captions: dict[str, str], on_disk: list[str],
         if not src.exists():
             sys.exit(f"ERROR: {src} not found - DOCS[{key!r}] is out of date")
 
-        text = src.read_text(encoding="utf-8")
+        # subst.read, not read_text: {{SYMBOL}} resolves to the registry's
+        # value here, so the printed document carries the number and the .md
+        # carries only the name. An unknown symbol raises rather than printing.
+        text = subst.read(src)
         text, dropped = PROVENANCE_RE.subn("", text, count=1)
 
         slug = chapters[name]

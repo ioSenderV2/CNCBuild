@@ -49,6 +49,9 @@ from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import subst                                                  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 
 # Directories whose prose carries decisions.
@@ -138,7 +141,9 @@ def parse(path: Path) -> Doc:
     stack: list[str] = []
     in_fence = False
 
-    lines = path.read_text(encoding="utf-8").split("\n")
+    # Substituted, so a harvested marker reads with its number in it rather
+    # than with {{SYMBOL}}. STATUS.md is the view people scan for open items.
+    lines = subst.read(path).split("\n")
 
     def continuation(start: int, skip_blank: bool = False) -> str:
         """A marked entry is nearly always a wrapped paragraph. Harvesting only its

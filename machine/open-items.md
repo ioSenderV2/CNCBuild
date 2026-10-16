@@ -40,7 +40,7 @@
 - SETTLED: ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
   line both check out against the physical template - photo committed. **The front fin's geometry
   is fully settled.**
-- FLAG: **Whether the Laguna can hold the HEIGHT REFERENCE across a REAR_PLATE_L_ORDERED part.** Bed size is not travel,
+- FLAG: **Whether the Laguna can hold the HEIGHT REFERENCE across a {{REAR_PLATE_L_ORDERED}} part.** Bed size is not travel,
   and the question is not whether the part fits - it is whether the two 8-bolt patterns' relative
   height survives a reposition. **The budget is well inside 1 mm**, that being the float the 9 mm
   holes give; past it the plate wins and a beam end has to be jacked. Gated on the mill model and
@@ -102,7 +102,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   dimensioned from the **plate's back edge**, which is the actual fix - the beam front was never something to measure from.
 - OPEN: **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
-- SETTLED: ~~**Rib under the full REAR_PLATE_L_ORDERED of rear bottom-edge bearing.**~~ **Closed 2026-10-11: not
+- SETTLED: ~~**Rib under the full {{REAR_PLATE_L_ORDERED}} of rear bottom-edge bearing.**~~ **Closed 2026-10-11: not
   needed.** The plate's 6.35 footprint sits wholly inside the 19 back web, with the 25 tongue
   outboard of that - backed by solid wall over its whole length, so there is no span.
 - OPEN: **The two blocks beside the back centre tenon** - position settled at X 562.62 and 648.62,
@@ -185,7 +185,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   It was going to be measured off the assembled CNC, which could not happen until the machine stood up.
   Then the rear plate's length stopped being a window and became **1210.73 derived** — the envelope as
   it stood that day, with a 1/8" side plate, and the one literal on this page that must NOT become
-  REAR_PLATE_L_ORDERED: it is what the figure was then, not what the plate is — and his rule
+  {{REAR_PLATE_L_ORDERED}}: it is what the figure was then, not what the plate is — and his rule
   settles the rest: **the box with its laminated tongues fills the space inside the side plates, the
   rear plate and the front fins exactly.** FLAG: **That reading was WRONG and was corrected the same
   day** - the box is the larger part. **BOX_W = 1211** (inside the two side tongues, the machine's own
@@ -232,7 +232,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   **14.1 mm centre-to-centre**, about 5 mm of web. **No tram sub-plate, no added moment arm.** Full
   working in the Z plate section.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
-- FLAG: **Can Garen's mill traverse ~1212 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a REAR_PLATE_L_ORDERED plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height reference between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
+- FLAG: **Can Garen's mill traverse ~1212 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a {{REAR_PLATE_L_ORDERED}} plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height reference between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
 - SETTLED: ~~**Z travel floor** - where the confirmed travel sits relative to the spoilboard.~~
   **Closed 2026-10-11, and it was not a machine measurement.** The tip floor is **45.2 mm** above the
   box's top skin and the spoilboard surface is at **67.5 mm**; the gantry fixes the reach and the

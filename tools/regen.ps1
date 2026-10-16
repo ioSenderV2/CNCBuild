@@ -14,7 +14,8 @@
     5. make-3d.py             Interactive_Model.html  <- zip member
     6. build-hole-tally.py    the tallies inside shop-pack.html
     7. status.py all          STATUS.md and INDEX.md
-    8. the four checkers      prism edges, clash, registry JS, shop pack refs
+    8. the five checkers      prism edges, clash, registry JS, shop pack refs,
+                              and subst - every {{SYMBOL}} in the prose resolves
     9. make-pdf.ps1           the two documents and shop-pack.pdf, and make-pdf
                               then rebuilds "CNC Build.zip" itself - the zip
                               carries the pack, so it is bundled whenever the
@@ -88,10 +89,13 @@ try {
 
     # 8. the checkers. Cheap, and they are the reason to stop before printing.
     $bad = 0
+    # subst is a GATE and audit-prose is not, which is the difference worth
+    # knowing: a symbol either exists or it does not, so there is no judgement
+    # to apply and no reason to let a document print with {{TYPO}} in it.
     foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-registry-js',
-                   'check-shop-pack-refs') {
+                   'check-shop-pack-refs', 'subst') {
         Write-Host "-- $c" -ForegroundColor Cyan
-        & $py "tools/$c.py"
+        & $py "tools/$c.py" @(if ($c -eq 'subst') { '--check' })
         if ($LASTEXITCODE -ne 0) { $bad++; Write-Host "  FAILED" -ForegroundColor Red }
     }
     if ($Audit) {

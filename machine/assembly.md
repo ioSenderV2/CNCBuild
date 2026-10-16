@@ -121,7 +121,7 @@ for months.
 | On the mill | |
 |---|---|
 | Two **Y front plates / fins**, 10 mm | the 8-bolt corner-bore pattern and the 60.5 × 50 window |
-| The **rear plate**, 1/4" steel, **REAR_PLATE_L_ORDERED** long | two 8-bolt patterns a metre apart |
+| The **rear plate**, 1/4" steel, **{{REAR_PLATE_L_ORDERED}}** long | two 8-bolt patterns a metre apart |
 | Two **X gantry end plates**, 1/2" | one drawing, right-hand variant carries the BF12 tongue |
 | **X carriage plate**, 1/2" | 30 holes |
 | **Z plate**, 1/2" | |
@@ -158,7 +158,7 @@ own, **ø6 through under a ø9.5 counterbore** on an M5. **Lock rail one down co
 carriage, tighten that bolt, move to the next. OPEN: **Never tighten rail two as a set** — it snakes,
 and a bolt already home fights the next one you set.
 
-OPEN: **Open: whether the mill can hold one height reference across the rear plate's REAR_PLATE_L_ORDERED.** Bed size is not
+OPEN: **Open: whether the mill can hold one height reference across the rear plate's {{REAR_PLATE_L_ORDERED}}.** Bed size is not
 travel. The two 8-bolt patterns' relative height must land well inside 1 mm across the metre.
 If the part is repositioned mid-job, **indicate the first pattern back in before drilling the second**,
 and work from a scribed and indicated line rather than from a sawn edge.
@@ -379,7 +379,7 @@ plywood, not plain washers.
 
 ### The rear plate
 
-**One plate for both beams: 12" × 1/4" hot-rolled A36 steel, REAR_PLATE_L_ORDERED long**, P&O if mill
+**One plate for both beams: 12" × 1/4" hot-rolled A36 steel, {{REAR_PLATE_L_ORDERED}} long**, P&O if mill
 scale is unwelcome.
 
 | | |
@@ -388,10 +388,9 @@ scale is unwelcome.
 | To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full length |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped, one per beam |
 
-🔴 **The plate's length is a reference, not a dimension, and it does NOT reach flush.** It was ordered
-to the nearest 1/32" under the envelope as that stood with a 1/8" side plate; the plate came in 10
-gauge, the envelope grew, and **REAR_PLATE_L_ORDERED now falls 0.77 short of MACHINE_OUTER_W**. That
-shortfall is settled and costs a recessed corner and no hole — see REAR_PLATE_L_ORDERED.
+🔴 **The plate's length is a reference, not a dimension, and it does NOT reach flush.** The plate is
+**{{REAR_PLATE_L_ORDERED}}**, the envelope is **{{MACHINE_OUTER_W}}**, so it falls
+**{{REAR_PLATE_SHORTFALL}}** short. That costs a recessed corner and no hole.
 
 **So the plate is placed by its LEFT EDGE on the Y1 extrusion's outboard face** and its far end falls
 where that puts it. Sheet 7's X coordinates are absolute from that left edge. **Nothing is derived
@@ -1235,7 +1234,7 @@ height and the two beams' coplanarity, so the fin is the reference for the pair 
 |---|---|
 | **Front fin** | bottom edge **bearing on the top skin**; **one 170 mm 40 × 40 angle in front of it**, tapped M8 into T1 and T2 at Y 20, four bolts into skin inserts |
 | **Outboard plate** | bottom edge bearing on the top skin directly over the wall; outer face **bearing against the side tongue's inner face**; **seven M8 from outboard** into locknuts |
-| **Rear plate** | bottom edge bearing over its full REAR_PLATE_L_ORDERED; **eight bolts through the back tongue at Y 30** |
+| **Rear plate** | bottom edge bearing over its full {{REAR_PLATE_L_ORDERED}}; **eight bolts through the back tongue at Y 30** |
 
 **The side tongue runs 1000 mm, starting 1/4" from the box's back edge** — so it spans exactly the
 beam and the side plate it laps, and ends where the fin begins.
@@ -1350,7 +1349,7 @@ cutting or drilling:
 | | |
 |---|---|
 | The **4 × HGH20 block hole pattern** measured on the **X/Y** kit — not the Z kit | gates the sixteen M5 in each X end plate |
-| Whether the mill holds one height reference across **REAR_PLATE_L_ORDERED** | gates the rear plate |
+| Whether the mill holds one height reference across **{{REAR_PLATE_L_ORDERED}}** | gates the rear plate |
 | Whether X's **two** interposer rows at **105 and 135** both land over beam | gates X's bar |
 | The **grid spacing**, and the box's deflection between its three points | gates the skins and the upper grid's clearance |
 | The front/back **tongue** inconsistency | gates the box walls |
