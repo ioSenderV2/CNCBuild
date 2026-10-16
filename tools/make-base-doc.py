@@ -39,6 +39,15 @@ SHEETS = boxdoc.SHEETS
 STRIPS_CUT = 20
 ON_5x5 = "5 x 5"                  # the two central wall laminations, and only those
 
+# A STRIP'S OWN LENGTH: it is cut across the 4 x 8's WIDTH, inside the trim, so
+# this is where the offcut past each leg length comes from. His point,
+# 2026-10-15: only two strips per leg are laminated into it, so ten strips stay
+# whole as well - that, and not the sheet's 605 remainder, is the slot stock.
+# A FUNCTION AND NOT A CONSTANT: --trim is overridden in main(), after import,
+# so a module-level value would quietly be the default one.
+def strip_length():
+    return boxdoc.SHEETS[0][1] - 2 * boxdoc.EDGE_TRIM
+
 
 def parts(v):
     """Every piece of the base, as (name, long, short, qty, sheet, note).
@@ -53,10 +62,12 @@ def parts(v):
     gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
     return [
         ("Leg strip, box legs", v["LEG_L_BOX"], 90, 12, "cut",
-         "4 per leg, 3 legs - laminate then trim to "
-         f"{v['POST_W_X']:g} x {v['POST_W_Y']:g}"),
+         "4 per leg, 3 legs - but only 2 per leg are laminated into it, so 6 of "
+         "these stay whole. Trim the leg to "
+         f"{v['POST_W_X']:g} x {v['POST_W_Y']:g} after the glue dries"),
         ("Leg strip, rear corner legs", v["LEG_L_REAR"], 90, 8, "cut",
-         "4 per leg, 2 legs - same trim, no tenon"),
+         "4 per leg, 2 legs - same trim, no tenon, and the same again: 4 of "
+         "these stay whole"),
         ("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"], 1, "1",
          f"ONE sheet {t:g} thick - it replaces the back cross rails at both "
          "grids, so it must not be cut into strips"),
@@ -80,8 +91,15 @@ def parts(v):
         ("Leg filler", v["BASE_VOLUME_H"], v["POST_W_Y"], 8, "offcut",
          f"2 laminations each, 4 legs - {v['POST_W_Y']:g} deep in the front "
          f"legs and {v['POST_W_Y'] - v['T_BACK_WALL']:g} in the rear ones. "
-         "HIS, and it costs no sheet: the leg strips are already 90 wide and "
-         "long enough to give these out of what is left past the leg lengths"),
+         "HIS, and it costs no sheet: a spare full-length strip is already 90 "
+         "wide and gives a filler and a foot spacer with length to spare"),
+        ("Glue-up spacer, rail band", gm_h, v["POST_W_Y"], 16, "offcut",
+         "2 laminations each, 2 per leg, 4 legs - it holds the slot open at "
+         "glue-up and COMES OUT. Cut it from rail stock, wax or tape it"),
+        ("Glue-up spacer, central wall", v["WALL_H"], v["POST_W_Y"], 2,
+         "offcut",
+         "2 laminations, the back centre leg's whole slot above the foot "
+         "spacer - it COMES OUT and the two walls take its place"),
     ]
 
 
@@ -89,8 +107,9 @@ def parts(v):
 # loaded on the LEFT ONLY so the right of each stays one whole offcut rather
 # than a fringe of strips - that is worth more than a tighter nest.
 SHEET_PLAN = [
-    ("0", "4 x 8", "20 leg strips - ALREADY CUT, and the fillers and spacers "
-                   "come out of what is left"),
+    ("0", "4 x 8", "20 leg strips - ALREADY CUT. Only 10 are laminated into "
+                   "legs, and everything that fills a slot comes out of the "
+                   "other 10 and the offcut past each leg length"),
     ("1", "4 x 8", "the back wall and both front cross rails"),
     ("2", "4 x 8", "the eight fore-aft rail laminations"),
     ("3", "5 x 5", "both central wall laminations"),
@@ -926,12 +945,14 @@ def main():
 
     print("BASE CONSTRUCTION\n")
     for name, lng, shrt, qty, sheet, _ in all_parts:
-        where = {"cut": "already cut", "offcut": "from the leg offcut"}.get(
+        where = {"cut": "already cut", "offcut": "spare strip"}.get(
             sheet, f"sheet {sheet}")
         print(f"  {name:30s} {lng:8.0f} x {shrt:6.0f}   x{qty:<3} {where}")
     print(f"\n  {STRIPS_CUT} leg strips are ALREADY CUT from a sheet of "
-          f"{v['T_BB_SKIN_BOT']:g} - that sheet is spent, and the fillers come "
-          f"out of what is left past the leg lengths.\n")
+          f"{v['T_BB_SKIN_BOT']:g} - that sheet is spent. Only 10 are laminated "
+          f"into legs, so the slot stock is the other {STRIPS_CUT - 10} plus "
+          f"{strip_length() - v['LEG_L_BOX']:g} past each box leg and "
+          f"{strip_length() - v['LEG_L_REAR']:g} past each rear one.\n")
 
     print(f"SHEETS - kerf {boxdoc.KERF:g}, edge trim {boxdoc.EDGE_TRIM:g}\n")
     # ONE PACK PER NAMED SHEET, not one pack across all of them. The nest is
@@ -962,7 +983,7 @@ def main():
 
 
 def render(rows, summary, v, nests):
-    where = {"cut": "<b>already cut</b>", "offcut": "<b>leg offcut</b>"}
+    where = {"cut": "<b>already cut</b>", "offcut": "<b>spare strip</b>"}
     pr = "".join(
         f"<tr><td>{n}</td><td class=n>{lng:g}</td><td class=n>{shrt:g}</td>"
         f"<td class=n>{qty}</td><td>{where.get(sheet, f'sheet {sheet}')}</td>"
@@ -997,10 +1018,14 @@ the box cannot be lowered onto tenons that are not located yet. All sizes in mm,
 all generated from the dimension registry.</p>
 
 <div class="note"><b>One sheet of {v['T_BB_SKIN_BOT']:g} is already cut into
-{20} strips of 90</b>, which is exactly the five legs. <b>That sheet is spent</b>
-and the sheet count below is for everything else. <b>The offcut past the leg
-lengths is the test material and the slot spacers</b> &mdash; a spacer cut from
-the stock that will fill the slot is a slot that fits by construction.</div>
+{STRIPS_CUT} strips of 90</b>, which is {STRIPS_CUT // 5} per leg. <b>That sheet
+is spent</b> and the sheet count below is for everything else.
+<b>{STRIPS_CUT // 5 - 2} of those {STRIPS_CUT // 5} are not laminated into the
+leg</b> &mdash; a leg is its two outer strips and a slot &mdash; so there are
+<b>{STRIPS_CUT - 10} spare full-length strips</b> on top of the offcut past each
+leg length. <b>Everything that fills a slot comes out of those</b>, test
+material and glue-up spacers included, and a spacer cut from the stock that will
+fill the slot is a slot that fits by construction.</div>
 
 <h2>1 &mdash; Parts</h2>
 <table><tr><th>Piece</th><th>Long</th><th>Short</th><th>Off</th><th>From</th>
@@ -1030,9 +1055,13 @@ at {v['CENTRE_WALL_H']:g} they take one. <b>Four off would have missed it by
 <b>298 &times; 1521</b>, where <b>sheet 2 leaves 1212 &times; 1216</b> and sheet 1
 <b>1176 &times; 1216</b>, so sheet 3's is the one to spend and the other two are
 the ones to keep whole.</p>
-<p><b>Sheet 0 is the one already cut</b>, drawn so the record is complete: 20
-strips of 90 taken across its width, leaving <b>605</b> of length. That remainder
-is the test material, the slot spacers and all eight leg fillers.</p>
+<p><b>Sheet 0 is the one already cut</b>, drawn so the record is complete:
+{STRIPS_CUT} strips of 90 taken across its width, leaving <b>605</b> of length.
+<b>The slot stock is not that remainder</b> &mdash; it is the
+<b>{STRIPS_CUT - 10} spare strips</b>, plus
+<b>{strip_length() - v['LEG_L_BOX']:g}</b> past each box leg and
+<b>{strip_length() - v['LEG_L_REAR']:g}</b> past each rear one. The 605 is over and
+above all of it.</p>
 
 <h2>3 &mdash; The cuts, sheet by sheet</h2>
 <p>To scale, sheet length left to right. The dashed red border is the
