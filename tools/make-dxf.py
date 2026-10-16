@@ -40,9 +40,9 @@ SETUPS = [
     ('2-side-plates', 'Y outboard / side plate', 's9', 1000.0, 302.0, 3.39,
      'steel', 2),
     ('3-x-back-joiner', 'X back joining plate', 's10', 1000.0, 120.0, 6.42,
-     'steel', 1),
+     '6061', 1),
     ('4-inside-joiners', 'Inside joining strip', 's8', 1000.0, 50.0, 3.0,
-     'steel', 3),
+     '6061', 3),
     ('5-front-fins', 'Y front fin', 's1a', 302.0, 302.0, 10.0,
      '6061', 2),
 ]
