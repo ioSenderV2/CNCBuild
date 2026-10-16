@@ -297,6 +297,200 @@ def nest_svg(places, sw, sl, colours, s=0.105):
     return svgs
 
 
+def tenon_cuts(v):
+    """The three legs' cutouts in the bottom skin, in the skin's own coordinates.
+
+    ONE SOURCE FOR THE PLAN AND THE DETAILS, because this is the exact pair that
+    already drifted once: the plan went on drawing web + TENON_CORNER_X - right
+    while the corner tenon was a solid 30 standing at the web's inner face -
+    after the full-height slot moved the tab out to the INNER STRIP and
+    make-3d.py was corrected for it. Each front leg printed 60 wide with an 18
+    hole in the wrong place, and because the leg centres come off these
+    rectangles the front-leg span was drawn 12 long as well.
+
+    Returns (name, leg rect, [tab rects], corner) where `corner` is the skin
+    corner a FRONT cut opens out to, or None for the back centre's two holes.
+    The tab is one LEG_STRIP of the un-ledged band; the rest of that band is
+    slot, and the spacer fills it.
+    """
+    W = v["BOX_W"]
+    web, ledge, strip = v["T_BOX_WALL_WEB"], v["T_BOX_LEDGE"], v["LEG_STRIP"]
+    tcy, tb, pwx = v["TENON_CORNER_Y"], v["TENON_BACK_DEPTH"], v["POST_W_X"]
+    beyond = pwx - ledge                         # 30, the un-ledged band
+    return [
+        ("front left", (web - ledge, web + beyond,
+                        W - web - tcy, W - web + ledge),
+         [(web + beyond - strip, web + beyond, W - web - tcy, W - web)],
+         "left"),
+        ("front right", (W - web - beyond, W - web + ledge,
+                         W - web - tcy, W - web + ledge),
+         [(W - web - beyond, W - web - beyond + strip,
+           W - web - tcy, W - web)], "right"),
+        ("back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb),
+         [(W / 2 - pwx / 2, W / 2 - pwx / 2 + strip, web, web + tb),
+          (W / 2 + pwx / 2 - strip, W / 2 + pwx / 2, web, web + tb)], None),
+    ]
+
+
+def cut_region(v, name, leg, tabs, corner):
+    """What actually gets cut, as (x0, x1, y0, y1) in the skin's coordinates.
+
+    A FRONT cut runs out to both of the skin's edges; the back centre's are two
+    plain holes, each a tab plus TENON_HOLE_CLEAR a side. Returned as a list so
+    the caller does not care which kind it is.
+    """
+    W, hc, gap = v["BOX_W"], v["TENON_HOLE_CLEAR"], v["TENON_SPACER_GAP"]
+    if not corner:
+        return [(tx0 - hc, tx1 + hc, ty0 - hc, ty1 + hc)
+                for tx0, tx1, ty0, ty1 in tabs]
+    tx0, tx1, ty0, ty1 = tabs[0]
+    sx0, sx1 = (tx0 - gap, tx0) if corner == "left" else (tx1, tx1 + gap)
+    lo, hi = min(tx0, sx0), max(tx1, sx1)
+    return [((0, hi + hc) if corner == "left" else (lo - hc, W))
+            + (ty0 - hc, W)]
+
+
+def spacer_rect(v, tabs, corner):
+    """The 12 spacer standing against the tab's outer face, or None."""
+    if not corner:
+        return None
+    gap = v["TENON_SPACER_GAP"]
+    tx0, tx1, ty0, ty1 = tabs[0]
+    return ((tx0 - gap, tx0) if corner == "left" else (tx1, tx1 + gap)) \
+        + (ty0, ty1)
+
+
+def cutout_detail_svg(v, s=1.0):
+    """A dimensioned plan of EACH tenon cutout, to one scale, in millimetres.
+
+    The whole-skin plan shows them in context and at that size a 1 clearance is
+    a hairline. These are the setting-out views: every figure is measured from
+    the skin's OWN EDGES, because that is what the sheet gives you to work from
+    - no centre marks, nothing taken off a part that is not cut yet.
+
+    Drawn in true orientation, the same as the plan: x runs right, y runs down
+    the page the way it runs forward on the machine. So a front cut sits at the
+    bottom of its panel and the back centre's holes at the top of theirs.
+    """
+    W, hc = v["BOX_W"], v["TENON_HOLE_CLEAR"]
+    gap, strip = v["TENON_SPACER_GAP"], v["LEG_STRIP"]
+    # PAD_T IS ITS OWN FIGURE. At one margin all round the panel title sat on
+    # the top dimension line, and on the back centre it sat on the skin's back
+    # edge - the one line in that panel everything is measured from.
+    PW, PH, PAD, PAD_T, F = 104.0, 98.0, 14.0, 26.0, 4.4
+    body, x_off = [], 0.0
+
+    def dim(x0, y0, x1, y1, txt, above=True):
+        """One dimension: a line with end ticks and the figure beside it."""
+        body.append(f'<line x1="{x0:.2f}" y1="{y0:.2f}" x2="{x1:.2f}" '
+                    f'y2="{y1:.2f}" stroke="#06c" stroke-width="0.35"/>')
+        for px, py in ((x0, y0), (x1, y1)):
+            dx, dy = (0, 1.4) if y0 == y1 else (1.4, 0)
+            body.append(f'<line x1="{px - dx:.2f}" y1="{py - dy:.2f}" '
+                        f'x2="{px + dx:.2f}" y2="{py + dy:.2f}" '
+                        f'stroke="#06c" stroke-width="0.35"/>')
+        mx, my = (x0 + x1) / 2, (y0 + y1) / 2
+        if y0 == y1:
+            body.append(f'<text x="{mx:.2f}" y="{my + (-1.4 if above else F):.2f}" '
+                        f'text-anchor="middle" font-size="{F}" fill="#06c">'
+                        f'{txt}</text>')
+        else:
+            body.append(f'<text x="{mx + 1.6:.2f}" y="{my + F / 3:.2f}" '
+                        f'font-size="{F}" fill="#06c">{txt}</text>')
+
+    for nm, leg, tabs, corner in tenon_cuts(v):
+        cuts = cut_region(v, nm, leg, tabs, corner)
+        sp = spacer_rect(v, tabs, corner)
+        # the region this panel covers, and where the skin's edges fall in it
+        cx0 = min(c[0] for c in cuts)
+        cx1 = max(c[1] for c in cuts)
+        cy0 = min(c[2] for c in cuts)
+        cy1 = max(c[3] for c in cuts)
+        ox = x_off + PAD + (PW - 2 * PAD - (cx1 - cx0)) / 2 - cx0
+        oy = PAD_T - cy0 + ((PH - PAD_T - PAD - (cy1 - cy0)) if corner else 8)
+
+        def px(x):
+            return ox + x * s
+
+        def py(y):
+            return oy + y * s
+
+        # the skin's edges that this cutout is set out from, drawn heavy
+        edges = ([(0, "v"), (W, "h")] if corner == "left" else
+                 [(W, "v"), (W, "h")] if corner == "right" else [(0, "h")])
+        for at, kind in edges:
+            if kind == "v":
+                body.append(f'<line x1="{px(at):.2f}" y1="{py(cy0) - 6:.2f}" '
+                            f'x2="{px(at):.2f}" y2="{py(cy1):.2f}" '
+                            f'stroke="#333" stroke-width="1.1"/>')
+            else:
+                body.append(f'<line x1="{px(cx0) - 8:.2f}" y1="{py(at):.2f}" '
+                            f'x2="{px(cx1) + 8:.2f}" y2="{py(at):.2f}" '
+                            f'stroke="#333" stroke-width="1.1"/>')
+        # the opening, then what stands in it
+        for a0, a1, b0, b1 in cuts:
+            body.append(f'<rect x="{px(a0):.2f}" y="{py(b0):.2f}" '
+                        f'width="{(a1 - a0) * s:.2f}" '
+                        f'height="{(b1 - b0) * s:.2f}" fill="#cfe0f5" '
+                        f'stroke="#06c" stroke-width="0.6"/>')
+        if sp:
+            body.append(f'<rect x="{px(sp[0]):.2f}" y="{py(sp[2]):.2f}" '
+                        f'width="{gap * s:.2f}" '
+                        f'height="{(sp[3] - sp[2]) * s:.2f}" fill="#f6d8de" '
+                        f'stroke="#a00" stroke-width="0.5"/>')
+        for tx0, tx1, ty0, ty1 in (tabs if corner else []):
+            body.append(f'<rect x="{px(tx0):.2f}" y="{py(ty0):.2f}" '
+                        f'width="{(tx1 - tx0) * s:.2f}" '
+                        f'height="{(ty1 - ty0) * s:.2f}" fill="#c9a66b" '
+                        f'stroke="#333" stroke-width="0.6"/>')
+
+        # ---- the figures, all of them off the skin's edges
+        if corner:
+            a0, a1, b0, b1 = cuts[0]
+            edge_x = 0.0 if corner == "left" else W
+            far = a1 if corner == "left" else a0
+            # THE WHOLE CUT GOES BELOW THE SKIN'S EDGE, which is a real line to
+            # measure from and the one place in the panel nothing else wants.
+            # Above the opening it collided with the tab's own across-figure -
+            # the two are a millimetre apart on the part - and then with the
+            # panel title when it was moved clear of that.
+            dim(px(min(edge_x, far)), py(W) + 7, px(max(edge_x, far)),
+                py(W) + 7, f"{abs(far - edge_x):g}")
+            dim(px(a1) + 10 if corner == "left" else px(a0) - 10, py(b0),
+                px(a1) + 10 if corner == "left" else px(a0) - 10, py(W),
+                f"{W - b0:g}")
+            tx0, tx1, ty0, ty1 = tabs[0]
+            near = tx0 if corner == "left" else tx1
+            dim(px(min(edge_x, near)), py(ty1) + 4, px(max(edge_x, near)),
+                py(ty1) + 4, f"{abs(near - edge_x):g}", above=False)
+            dim(px(tx0), py(ty0) - 4, px(tx1), py(ty0) - 4, f"{tx1 - tx0:g}")
+            dim(px(sp[0]), py(sp[3]) + 9, px(sp[1]), py(sp[3]) + 9,
+                f"{gap:g}", above=False)
+            dim(px(a0) - 9 if corner == "left" else px(a1) + 9, py(ty0),
+                px(a0) - 9 if corner == "left" else px(a1) + 9, py(ty1),
+                f"{ty1 - ty0:g}")
+        else:
+            (a0, a1, b0, b1), (c0, c1, _, _) = cuts
+            dim(px(a0), py(b1) + 6, px(a1), py(b1) + 6, f"{a1 - a0:g}")
+            dim(px(a1), py(b1) + 13, px(c0), py(b1) + 13, f"{c0 - a1:g}")
+            dim(px(a1) + (c0 - a1) / 2, py(b0) - 5, px(c1), py(b0) - 5,
+                f"{c1 - (a1 + c0) / 2:g}")
+            dim(px(a0) - 6, py(0), px(a0) - 6, py(b0), f"{b0:g}")
+            dim(px(c1) + 6, py(b0), px(c1) + 6, py(b1), f"{b1 - b0:g}")
+            # the centreline the pair is set out from
+            body.append(f'<line x1="{px(W / 2):.2f}" y1="{py(0) - 7:.2f}" '
+                        f'x2="{px(W / 2):.2f}" y2="{py(b1) + 4:.2f}" '
+                        f'stroke="#a00" stroke-width="0.4" '
+                        f'stroke-dasharray="6 2 1.5 2"/>')
+
+        body.append(f'<text x="{x_off + PW / 2:.1f}" y="8" '
+                    f'text-anchor="middle" font-size="5.6" '
+                    f'font-weight="bold">{nm}</text>')
+        x_off += PW
+    return (f'<svg viewBox="0 0 {x_off:.1f} {PH:.1f}" width="100%" '
+            f'style="max-width:100%">{"".join(body)}</svg>')
+
+
 def plan_svg(v, ports):
     """Top-down plan of the grid with the bottom skin's ports, dimensioned.
 
@@ -334,66 +528,33 @@ def plan_svg(v, ports):
              f'font-size="26" fill="#c00">tee track bed ends {bed:g} - the row '
              f'below it is on the apron</text>')
 
-    # ---- the three tenon holes, and the legs under them ------------------
-    # Same rectangles tools/make-3d.py cuts out of the bottom skin, built from
-    # the same symbols: the hole is the tenon plus TENON_HOLE_CLEAR a side, and
-    # the post around it is bigger than its hole because the ledge is cut on the
-    # OUTWARD faces - which is why the leg centres are not the hole centres.
+    # ---- the three tenon cutouts, and the legs under them -----------------
     ledge, hc = v["T_BOX_LEDGE"], v["TENON_HOLE_CLEAR"]
-    tcy, tb, pwx = v["TENON_CORNER_Y"], v["TENON_BACK_DEPTH"], v["POST_W_X"]
-    # FLAG: THE LEG IS POST_W_X ACROSS AND THE TAB IS LEG_STRIP - this read
-    # web + TENON_CORNER_X, which drew each front leg 60 wide with an 18 hole
-    # sitting against the web's inner face. It was right while the corner tenon
-    # was a solid 30 standing at that face; the full-height slot moved the tab
-    # out to the INNER STRIP and make-3d.py was corrected for it and this was
-    # not. The leg centres come off these rectangles, so the front-leg span was
-    # being drawn 12 long as well.
     strip, gap = v["LEG_STRIP"], v["TENON_SPACER_GAP"]
-    beyond = pwx - ledge                         # 30, the un-ledged band
-    legs = [
-        ("front left", (web - ledge, web + beyond,
-                        W - web - tcy, W - web + ledge),
-         [(web + beyond - strip, web + beyond, W - web - tcy, W - web)],
-         "left"),
-        ("front right", (W - web - beyond, W - web + ledge,
-                         W - web - tcy, W - web + ledge),
-         [(W - web - beyond, W - web - beyond + strip,
-           W - web - tcy, W - web)], "right"),
-        ("back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb),
-         [(W / 2 - pwx / 2, W / 2 - pwx / 2 + strip, web, web + tb),
-          (W / 2 + pwx / 2 - strip, W / 2 + pwx / 2, web, web + tb)], None),
-    ]
+    legs = tenon_cuts(v)
     centres = []
     for nm, (px0, px1, py0, py1), tabs, corner in legs:
         g.append(f'<rect x="{px0:g}" y="{py0:g}" width="{px1 - px0:g}" '
                  f'height="{py1 - py0:g}" fill="none" stroke="#06c" '
                  f'stroke-width="2.5" stroke-dasharray="20 12"/>')
-        if corner:
-            # A CORNER, NOT A HOLE - his, 2026-10-15. The cut runs out to both
-            # of the skin's edges, so the outer web-width of skin goes with it
-            # and nothing wraps the corner. Drawn as the opening plus the two
-            # pieces standing in it: the tab, and the spacer that fills the gap
-            # to the web.
+        # A FRONT CUT IS A CORNER AND NOT A HOLE - his, 2026-10-15. It runs out
+        # to both of the skin's edges, so the outer web-width of skin goes with
+        # it and nothing wraps the corner. Same rectangles as the details in
+        # chapter 5, from the same two functions.
+        for cx0, cx1, cy0, cy1 in cut_region(v, nm, (px0, px1, py0, py1),
+                                             tabs, corner):
+            g.append(f'<rect x="{cx0:g}" y="{cy0:g}" width="{cx1 - cx0:g}" '
+                     f'height="{cy1 - cy0:g}" fill="#cfe0f5" stroke="#06c" '
+                     f'stroke-width="3"/>')
+        sp = spacer_rect(v, tabs, corner)
+        if sp:
+            g.append(f'<rect x="{sp[0]:g}" y="{sp[2]:g}" '
+                     f'width="{sp[1] - sp[0]:g}" height="{sp[3] - sp[2]:g}" '
+                     f'fill="#f6d8de" stroke="#a00" stroke-width="2"/>')
             tx0, tx1, ty0, ty1 = tabs[0]
-            sx0, sx1 = ((tx0 - gap, tx0) if corner == "left"
-                        else (tx1, tx1 + gap))
-            ox0 = 0 if corner == "left" else min(tx0, sx0) - hc
-            ox1 = max(tx1, sx1) + hc if corner == "left" else W
-            g.append(f'<rect x="{ox0:g}" y="{ty0 - hc:g}" '
-                     f'width="{ox1 - ox0:g}" height="{W - (ty0 - hc):g}" '
-                     f'fill="#cfe0f5" stroke="#06c" stroke-width="3"/>')
-            g.append(f'<rect x="{sx0:g}" y="{ty0:g}" width="{gap:g}" '
-                     f'height="{ty1 - ty0:g}" fill="#f6d8de" stroke="#a00" '
-                     f'stroke-width="2"/>')
             g.append(f'<rect x="{tx0:g}" y="{ty0:g}" width="{tx1 - tx0:g}" '
                      f'height="{ty1 - ty0:g}" fill="#c9a66b" stroke="#333" '
                      f'stroke-width="2"/>')
-        else:
-            for tx0, tx1, ty0, ty1 in tabs:
-                g.append(f'<rect x="{tx0 - hc:g}" y="{ty0 - hc:g}" '
-                         f'width="{tx1 - tx0 + 2 * hc:g}" '
-                         f'height="{ty1 - ty0 + 2 * hc:g}" fill="#cfe0f5" '
-                         f'stroke="#06c" stroke-width="3"/>')
         cx, cy = (px0 + px1) / 2, (py0 + py1) / 2
         centres.append((cx, cy))
         g.append(f'<line x1="{cx - 26:g}" y1="{cy:g}" x2="{cx + 26:g}" '
@@ -632,6 +793,7 @@ rather than edited.</p>
 <li><a href="#sheets">Sheets</a> and <a href="#nesting">nesting</a></li>
 <li><a href="#notches">Notches</a></li>
 <li><a href="#ports">Sand ports</a></li>
+<li><a href="#cutouts">Tenon cutouts</a></li>
 <li><a href="#glue">Glue up</a></li>
 <li><a href="#not-here">Not on this list</a></li>
 </ol>
@@ -767,7 +929,30 @@ the open apron. <b>{v['T_APRON_SKIN']:g} Baltic birch over the apron on
 double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off
 the day a port is used.</p>
 
-<h2 id="glue">5 &mdash; Glue up</h2>
+<h2 id="cutouts">5 &mdash; The tenon cutouts in the bottom skin</h2>
+<p><b>Three legs land in this skin and they are cut two different ways.</b> The
+back centre leg's two tabs pass through <b>holes</b>; the two front legs take a
+<b>corner</b> out of the skin instead, open to both edges.</p>
+<p><b>Every figure below is off the skin's own edges</b>, which is what the sheet
+gives you to work from &mdash; the back centre's pair are the one exception and
+they are set out from the <b>centreline</b>, marked in red.</p>
+{cutout_detail_svg(v)}
+<p><b>The blue is what comes out.</b> Standing in each front opening are the
+<b>tenon tab</b> and the <b>{v['TENON_SPACER_GAP']:g} spacer</b> glued to its
+outer face: together they fill the leg's un-ledged band, and the band's outer
+edge is the perimeter web's inner face. <b>Every opening is cut
+{v['TENON_HOLE_CLEAR']:g} generous a side</b> on the faces that have skin beside
+them &mdash; the inboard ones.</p>
+<p>🔴 <b>Why the front two run out to the edges.</b> A closed hole would leave
+the outer {v['T_BOX_WALL_WEB']:g} of skin wrapped around the corner between the
+tenon and the skin's edge. That band goes with the cut, and <b>all of it is
+covered by the {v['T_BOX_TONGUE']:g} laminations</b>, which stand outside the
+skin's edge there. Nothing of the cut shows on the finished box.</p>
+<p><b>The back centre's island bears nothing</b> &mdash; it sits over the leg's
+slot, so one hole spanning both tabs works as well and is easier to cut
+straight.</p>
+
+<h2 id="glue">6 &mdash; Glue up</h2>
 <p><b>Six joints, and only the first two carry the sandwich.</b></p>
 <table>
 <tr><th>Joint</th><th>Where</th><th>What it carries</th></tr>
@@ -867,7 +1052,7 @@ skin is <b>glued</b>, but with the top only screwed they can be fitted any time 
 to that &mdash; lift it, drop them in, put it back. That was the one step in this
 build with no way back.</p>
 
-<h2 id="not-here">6 &mdash; Not on this list</h2>
+<h2 id="not-here">7 &mdash; Not on this list</h2>
 <p><b>The five legs, and they come FIRST.</b> The base holds the three
 load-bearing legs in position, so it is built before the box and the legs before
 it. Each leg is laminated from <b>{v['T_BB_SKIN_BOT']:g} mm strips 4 ft long</b>,
