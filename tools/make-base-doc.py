@@ -318,8 +318,10 @@ def leg_kinds(v):
         ("front", "Front left, front right", 2, v["LEG_L_BOX"], LEG_BROWN,
          f"one {strip:g} &times; {v['TENON_CORNER']:g} tab, on the inner strip",
          f"ledged {v['T_BOX_LEDGE']:g} on the side face and the front face",
-         f"front face of the INNER strip notched {bw:g} deep at both rail "
-         f"bands, for the cross rail's outer lamination"),
+         f"front face of the INNER strip notched {bw:g} deep for the cross "
+         f"rail's outer lamination &mdash; and the notch runs on UP from the "
+         f"upper rail to the top of the tenon, so no ear is left standing "
+         f"over the rail"),
         ("rear-corner", "Rear left, rear right", 2, v["LEG_L_REAR"], REAR_BROWN,
          "none &mdash; the box does not land on it", "no ledge",
          f"back face of the INNER strip rebated {bw:g} deep its whole height, "

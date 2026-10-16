@@ -822,7 +822,7 @@ standing up through a half-built box.
 
 | Leg | Faces ledged | Tenon | Bearing |
 |---|---|---|---|
-| Front left / front right | the **side** face and the **front** face | **one 18 × 44 tab**, on the inner strip | **2304 mm²** — outer strip 18 × 86, inner strip 18 × 42 |
+| Front left / front right | the **side** face and the **front** face | **one 18 × 44 tab**, on the inner strip | **1980 mm²** — outer strip 18 × 86, inner strip 18 × 24, the cross rail's housing taking the front 18 of it |
 | Back centre | the **back** face | **two 18 × 44 tabs**, 36 apart | **1512 mm²** — two strips of 18 × 42 |
 
 🔴 **The slot runs the leg's full height, so it passes through the shoulder and the tenon too.** That
@@ -992,11 +992,13 @@ fillers, because a filler goes in at its leg's glue-up and is not a separate thi
 
 NOTE: **A leg is drawn as its two outer strips with the slot open between them**, so the rail at each
 grid, the filler and the wall are all seen sitting in it. **The cross rails' housing is drawn too** —
-each strip's notched face is cut into the segments between the two rail bands, so the rail's outer
+each strip's notched face is cut into the segments below the upper rail band, so the rail's outer
 lamination passes through real holes rather than through solid leg.
 
-NOTE: **The housing takes nothing off the shoulder.** It is only as tall as a rail, and the nearest
-rail's top is 10 below the box, so the leg is full depth where the box lands on it.
+🔴 **The housing runs on up from the upper rail to the top of the tenon** — his, off the model. It
+used to stop at that rail's top, which left a 10 × 18 × 18 **ear** standing over the rail's housing
+with the shoulder cut away right above it. **Nothing bears on it and nothing covers it**, so the
+cutout goes all the way up and the face stays cut back.
 
 #### What the base is
 

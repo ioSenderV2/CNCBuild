@@ -496,11 +496,12 @@ def main() -> int:
     def leg_strips(nm, group, colour, px0, px1, py0, py1, z0, z1, notch, d=""):
         """Both outer strips of a leg, with its outer face cut back.
 
-        FRONT legs lose `housed` only where a cross rail is, so that face comes
-        out as the Z segments BETWEEN the two rail bands. REAR legs lose it over
-        the WHOLE height - his, 2026-10-15 - because the back shear wall sits in
-        the same rebate, and the band then carries the wall over most of its
-        height and the rails' outer laminations at the two grids.
+        FRONT legs lose `housed` where a cross rail is AND EVERYWHERE ABOVE THE
+        TOP ONE, so the face comes out as the Z segments below the upper rail
+        band only - the housing runs clear up to the top of the tenon. REAR legs
+        lose it over the WHOLE height - his, 2026-10-15 - because the back shear
+        wall sits in the same rebate, and the band then carries the wall over
+        most of its height and the rails' outer laminations at the two grids.
         """
         back = notch.startswith("back")
         # NAMED BY WHICH SIDE OF THE MACHINE THEY ARE ON, not by whether they
@@ -526,7 +527,15 @@ def main() -> int:
                 sx0, by_a, z0, sx0 + strip, by_b, z1, d=d)
             if back:
                 continue                 # the rebate runs the full height
-            edges = [z0] + [z for band in rail_bands for z in band] + [z1]
+            # 🔴 NO SEGMENT ABOVE THE TOP RAIL BAND - his, from the model:
+            # "that little ear that sticks out over where the front rail comes
+            # in should go away, so the cutout for the rail is all the way up to
+            # the top of the tenon". It was BASE_BOX_GAP tall, 18 deep and 18
+            # wide, standing over the rail's housing with the shoulder cut away
+            # right above it. The list simply STOPS at the top band rather than
+            # closing on z1: with z1 on the end, [0::2]/[1::2] pairs one last
+            # gap from the top band up to the leg's top, and that gap is the ear.
+            edges = [z0] + [z for band in rail_bands for z in band]
             for za, zb in zip(edges[0::2], edges[1::2]):
                 if zb - za < 1e-9:
                     continue

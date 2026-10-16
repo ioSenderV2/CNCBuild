@@ -2894,9 +2894,9 @@ note = "2 - the back centre leg's tenon is TWO tabs, not one. SETTLED: THE SLOT 
 
 [[dim]]
 sym = "SHOULDER_CORNER"
-expr = "LEG_STRIP * POST_W_Y + LEG_STRIP * T_BOX_LEDGE"
+expr = "LEG_STRIP * POST_W_Y + LEG_STRIP * (T_BOX_LEDGE - GRID_MEMBER_T / 2)"
 unit = "mm2"
-note = "2304 mm2 - a front corner leg's BEARING AREA under the box: the outer strip's full 18 x 86 plus the inner strip's 18 x 42, the slot contributing nothing. SETTLED: IT IS WHY THE FULL-HEIGHT SLOT IS FINE - about 190 lb a leg over this is roughly 0.4 MPa, against plywood loaded edge-on which takes tens. The shoulder stopped being a continuous L when the slot went through it and the load never noticed."
+note = "1980 mm2 - a front corner leg's BEARING AREA under the box: the outer strip's full 18 x 86 plus what is left of the inner strip's shoulder, the slot contributing nothing. SETTLED: IT IS WHY THE FULL-HEIGHT SLOT IS FINE - about 190 lb a leg over this is roughly 0.4 MPa, against plywood loaded edge-on which takes tens. The shoulder stopped being a continuous L when the slot went through it and the load never noticed. FLAG: IT WAS 2304 UNTIL THE CROSS RAIL'S HOUSING RAN FULL HEIGHT - his, off the model: the housing used to stop at the upper rail's top and left an ear standing over it, and taking that ear away takes the inner strip's shoulder from T_BOX_LEDGE deep to that less the housing's GRID_MEMBER_T / 2. The 18 x 18 it costs is under the TONGUE, not under the bottom skin, and at 0.4 MPa nothing noticed."
 
 [[dim]]
 sym = "T_BACK_WALL"
