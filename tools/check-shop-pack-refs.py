@@ -183,7 +183,14 @@ def breakout_tags(block):
 
 
 def main():
-    src = io.open(PACK, encoding='utf-8').read()
+    # THROUGH subst, because what has to fit the viewBox is the RENDERED line.
+    # A cell reading {{NUT_FACE_Y}} is eleven characters of braces that print
+    # as two, so measuring the raw text reports a sheet as overflowing when
+    # the page it produces is fine.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import subst
+    from pathlib import Path
+    src = subst.read(Path(PACK))
     sheets = re.findall(r'<div class="plate pg-(s[0-9a-z]+)">(.*?)(?=\n<div class="plate )',
                         src, re.S)
     if not sheets:

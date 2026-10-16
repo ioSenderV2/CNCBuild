@@ -516,11 +516,11 @@ their bolts are reachable.
 | Part | Size | Qty |
 |---|---|---|
 | **Doubler block** | **154 × 45 × 1/2"** 6061, on the end plate's **outer** face at the bottom | 2 |
-| **Sole bracket** | **1/4" steel T** — **154 root × {{SOLE_BASE_D}}**, **{{SOLE_STEM_W}} stem × {{SOLE_STEM_L}}**, {{SOLE_BRACKET_L}} overall | 2 |
+| **Sole plate** | **1/4" steel T** — **154 root × {{SOLE_BASE_D}}**, **{{SOLE_STEM_W}} stem × {{SOLE_STEM_L}}**, {{SOLE_BRACKET_L}} overall | **3** |
 
-**The doubler gives the plate a 24.38 mm seating at its bottom; the sole bracket bolts up into that.**
+**The doubler's end face is the seating — {{SOLE_BASE_D}} of it — and the sole plate bolts up into its edge.**
 
-FLAG: **Two rows of bolts across the 24.38, not one row down the middle.** A single row leaves the joint
+FLAG: **The base BUTTS the end plate's strip, and takes no bolts into it.** One row into the doubler leaves the joint
 nothing to resist rolling about Y.
 
 **The doubler's bolts pass through the end plate along X. The sole bracket's go into the doubler** —

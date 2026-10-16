@@ -66,10 +66,13 @@ FIN_GAP = 1.0           # between the two nested fins
 # plate, and the material goes on the drawing as a note for them to quote rather
 # than as an outline he hands over. Everything about the shape comes out of the
 # registry, which is why it is read rather than written down here again.
-#   (sheet, title, the symbol for its root-to-tip length, its base depth)
+# ONE PART, THREE COPIES - Y1, Y2 and the X carriage. They were two drawings
+# while the Y pair bolted into a plate's and a doubler's stacked end faces and
+# so ran 12.19 longer; the Y joint is the X one inverted now and every
+# coordinate agrees, which SOLE_SAME_AS_X_CHECK holds to.
+#   (sheet, title, the symbol for its root-to-tip length, its base depth, copies)
 SOLE_PARTS = [
-    ('s5', 'Y nut sole bracket', 'SOLE_BRACKET_L', 'SOLE_BASE_D', 2),
-    ('s11', 'X nut sole plate', 'X_SOLE_BRACKET_L', 'T_X_ENDPLATE', 1),
+    ('s5', 'Nut sole plate', 'SOLE_BRACKET_L', 'SOLE_BASE_D', 3),
 ]
 SOLE_FILE = '6-sole-plates'
 SOLE_MATERIAL = '1/4in HR A36 STEEL - SHOP TO SUPPLY'

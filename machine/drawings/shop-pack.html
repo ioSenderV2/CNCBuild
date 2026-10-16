@@ -122,8 +122,8 @@ into the material. All coordinates positive in X and Y, <b>absolute, never chain
 Each sheet states only what X&nbsp;0 and Y&nbsp;0 mean <i>on that part</i>. <b>Three sheets override
 this and say so in their own header:</b> Sheets&nbsp;1a and&nbsp;1b stand the plate <b>up</b>, so X runs
 across the 200 and <b>Y up the 301.625</b>; Sheet&nbsp;2d is clamped <b>the short way</b> on 2a&rsquo;s
-origin. <b>Sheet&nbsp;5 overrides it as well</b> &mdash; machine X runs the short way, over the 98.19
-&mdash; but says so in its figcaption rather than its header.
+origin. <b>Sheet&nbsp;5 overrides it as well</b> &mdash; machine X runs the short way, over the
+{{SOLE_BRACKET_L}} &mdash; but says so in its figcaption rather than its header.
 </p>
 
 <p style="margin:0 0 .6rem; border:1.5px solid #d9b45e; background:#fff9ec; padding:.5rem .7rem"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>AN AMBER ROW IN ANY HOLE SCHEDULE IS A DIMENSION THAT DOES NOT EXIST ANYWHERE IN THE REPO.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
@@ -149,10 +149,11 @@ each. The fins are solid otherwise.
 casting's outboard face and that edge are the same face &mdash; the Y1 extrusion's outboard face,
 which is also X 0. W2 is a closed window with about 6 of plate past it.
 <br><br>
-<b>SHEETS 5 AND 11 ARE CURRENT.</b> The nut sole brackets are a <b>steel T</b>, not a 6061
-trapezoid: a base <b>154 &times; 24.38</b> carrying the root bolts, then a <b>40</b> wide stem out
-to the nut &mdash; the nut's own width, leaving <b>8</b> to the M5 centres &mdash; with a <b>6</b>
-radius where the stem meets the base. <b>Both sheets draw the T.</b>
+<b>THE THREE NUT SOLE PLATES ARE ONE PART.</b> Y1, Y2 and the X carriage all take the same
+<b>steel T</b>: a base <b>154 &times; {{SOLE_BASE_D}}</b> on the doubler's end face carrying the four
+root bolts, then a <b>{{SOLE_STEM_W}}</b> wide stem out to the nut &mdash; the nut's own width,
+leaving <b>8</b> to the M5 centres &mdash; with a <b>{{SOLE_FILLET_R}}</b> radius where the stem
+meets the base. <b>Sheet 5 is the part; Sheet 11 says where the X one goes.</b>
 <b>Steel because the bracket is then its own ferrous target</b> for the Y limit sensor &mdash; and
 because the tapered edge was the face that sensor had to read, which is a trip point that drifts
 with standoff. All three brackets are 1/4", the same sheet as this plate.
@@ -179,15 +180,14 @@ a bench test. The sensor stack is 55 deep against CASTING_INBOARD_RUN's 50.5.
 <tr><td rowspan="3"><b>&oslash;5.2</b><br><span class="tn">48 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">16</td><td rowspan="3">M5 clearance, <b>counterbore pilot</b> &mdash; stays 5.2 on 2a and 3a</td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">16</td></tr>
 <tr><td>Sheet 3a <span class="tn">&mdash; X carriage plate</span></td><td class="d">16</td></tr>
-<tr><td rowspan="9"><b>&oslash;6</b><br><span class="tn">98 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">4</td><td rowspan="9">M5 clearance, <b>one size throughout</b> &middot; plus the three &oslash;6 hex-driver access holes</td></tr>
+<tr><td rowspan="8"><b>&oslash;6</b><br><span class="tn">90 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">4</td><td rowspan="8">M5 clearance, <b>one size throughout</b> &middot; plus the three &oslash;6 hex-driver access holes</td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">4</td></tr>
 <tr><td>Sheet 2d <span class="tn">&mdash; Nut doubler block</span></td><td class="d">12 <span class="tn">(3&times;4)</span></td></tr>
 <tr><td>Sheet 3a <span class="tn">&mdash; X carriage plate</span></td><td class="d">4</td></tr>
 <tr><td>Sheet 3b <span class="tn">&mdash; Z spacer bar</span></td><td class="d">18 <span class="tn">(2&times;9)</span></td></tr>
 <tr><td>Sheet 3c <span class="tn">&mdash; Z top stop block</span></td><td class="d">2</td></tr>
 <tr><td>Sheet 4 <span class="tn">&mdash; Z plate</span></td><td class="d">22</td></tr>
-<tr><td>Sheet 5 <span class="tn">&mdash; Y nut sole bracket</span></td><td class="d">24 <span class="tn">(2&times;12)</span></td></tr>
-<tr><td>Sheet 11 <span class="tn">&mdash; X nut sole plate</span></td><td class="d">8</td></tr>
+<tr><td>Sheet 5 <span class="tn">&mdash; Nut sole plate</span></td><td class="d">24 <span class="tn">(3&times;8)</span></td></tr>
 <tr><td rowspan="3"><b>&oslash;6.8</b><br><span class="tn">12 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">2</td><td rowspan="3">M8 tap drill &mdash; drilled through, <b>tapped at home</b></td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">2</td></tr>
 <tr><td>Sheet 4 <span class="tn">&mdash; Z plate</span></td><td class="d">8</td></tr>
@@ -205,7 +205,7 @@ a bench test. The sensor stack is 55 deep against CASTING_INBOARD_RUN's 50.5.
 <tr><td rowspan="3"><b>&oslash;35</b><br><span class="tn">3 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">1</td><td rowspan="3">Encoder sensor bore</td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">1</td></tr>
 <tr><td>Sheet 3a <span class="tn">&mdash; X carriage plate</span></td><td class="d">1</td></tr>
-<tr><td colspan="2"><b>TOTAL ON THE TRIP</b></td><td class="d"><b>448</b></td><td>Cut-outs are not holes and are not counted</td></tr>
+<tr><td colspan="2"><b>TOTAL ON THE TRIP</b></td><td class="d"><b>440</b></td><td>Cut-outs are not holes and are not counted</td></tr>
 </table>
 <!-- TALLY:END -->
 
@@ -223,13 +223,13 @@ its own amber rows:</p>
 <tr><td><a href="#sheet-3b">3b</a></td><td>Z spacer bar &mdash; <b>new stock</b></td><td>160 &times; 50 &times; 5/8"</td><td>2</td></tr>
 <tr><td><b><a href="#sheet-3c">3c</a></b></td><td><b>Z top stop block</b> <span style="font-weight:400">&mdash; the Z ball nut lands on it</span></td><td>50 &times; 25.4 &times; 45, <b>1" 6061</b></td><td>1</td></tr>
 <tr><td><a href="#sheet-4">4</a></td><td>Z plate</td><td>164 &times; 175 &times; 1/2"</td><td>1</td></tr>
-<tr><td><a href="#sheet-5">5</a></td><td>Y nut sole bracket</td><td>steel T, 154 root &times; 24.38, 40 stem &times; 73.81, 1/4"</td><td>2</td></tr>
+<tr><td><a href="#sheet-5">5</a></td><td><b>Nut sole plate</b> <span style="font-weight:400">&mdash; Y1, Y2 and the X carriage, one part</span></td><td>steel T, 154 root &times; {{SOLE_BASE_D}}, {{SOLE_STEM_W}} stem &times; {{SOLE_STEM_L}}, over {{SOLE_BRACKET_L}}, 1/4"</td><td><b>3</b></td></tr>
 <tr><td><a href="#sheet-6">6</a></td><td>Cast stepper frame interposer</td><td>150 &times; 60 &times; 3/8" 6061</td><td>3</td></tr>
 <tr><td><a href="#sheet-7">7</a></td><td>Rear plate</td><td>1210.47 &times; 301.625 &times; 1/4" hot-rolled A36 steel</td><td>1</td></tr>
 <tr><td><a href="#sheet-8">8</a></td><td>Front joining strip</td><td>1000 &times; 50 &times; 3 6061 <span style="font-weight:400">&mdash; measured, in hand</span></td><td>3</td></tr>
 <tr><td><a href="#sheet-9">9</a></td><td>Full-height outboard plate</td><td>998.54 &times; 301.625 &times; 10 gauge ({{T_OUTBOARD_PLATE}}) cold-rolled steel</td><td>2</td></tr>
 <tr><td><a href="#sheet-10">10</a></td><td>X back joining plate</td><td>998.54 &times; 119.06 &times; 1/4" 6061-T651</td><td>1</td></tr>
-<tr><td><b><a href="#sheet-11">11</a></b></td><td><b>X nut sole plate</b> <span style="font-weight:400">&mdash; Sheet 5&apos;s shape, one root row</span></td><td>steel T, 154 root, 40 stem, over <b>86</b>, 1/4"</td><td>1</td></tr>
+<tr><td><a href="#sheet-11">11</a></td><td>Sole plate on the X carriage <span style="font-weight:400">&mdash; where it goes, not what to cut</span></td><td class="tn">no part of its own &mdash; see Sheet 5</td><td class="tn">&mdash;</td></tr>
 </table>
 <p style="margin:0 0 .7rem;font-size:9.5pt"><b>Every sheet number above is a link</b> to its own sheet. The sheet count in the page furniture is the cross-check:
 if the printed pack has sheets this table does not name, this table is the stale one.</p>
@@ -303,7 +303,7 @@ are not the same thickness.<sup class="f">7.9</sup></li>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 235</b></td><td><b>Yes</b></td><td>The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2a</td></tr>
 <tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Four holes, all dimensioned &mdash; Sheet 2c</td></tr>
 <tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 45</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Drill it clamped to the end plate &mdash; <b>Sheet 2d</b></td></tr>
-<tr><td><b>Y nut sole bracket</b></td><td>2</td><td>steel T, 154 root &times; 24.38, 40 stem &times; 73.81, 1/4"</td><td>T profile + 4 holes</td><td>Fully dimensioned &mdash; Sheet 5</td></tr>
+<tr><td><b>Nut sole plate</b></td><td><b>3</b></td><td>steel T, 154 root &times; {{SOLE_BASE_D}}, {{SOLE_STEM_W}} stem &times; {{SOLE_STEM_L}}, 1/4"</td><td>T profile + 8 holes</td><td>Fully dimensioned &mdash; Sheet 5. <b>Y1, Y2 and the X carriage are the same part</b>; the X one is installed inverted<sup class="f">11.1</sup></td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
 <tr><td><b>Z spacer blocks &mdash; face 1 mm</b></td><td>2</td><td>Existing 2" bar, 16.41/16.43 measured</td><td><b>Yes</b> &mdash; facing, not drilling</td><td>Face both in <b>one setup</b>; drops the stack 1 mm and makes the pair identical</td></tr>
 <tr><td>Z plate</td><td>1</td><td>1/2" alu, <b>164 &times; 175 mm</b></td><td><b>Yes</b></td><td>Cut and drill schedule on Sheet 4</td></tr>
@@ -311,7 +311,6 @@ are not the same thickness.<sup class="f">7.9</sup></li>
 <tr><td><b>Full-height outboard plate</b></td><td>2</td><td>11 7/8" &times; 39 5/16" &times; 10 gauge steel</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>35 holes each &mdash; Sheet 9. <b>Steel, so budget the time</b><sup class="f">8.4</sup></td></tr>
 <tr><td><b>X back joining plate</b></td><td>1</td><td>4 11/16" &times; 39 5/16" &times; 1/4" 6061</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>28 holes in four rows &mdash; Sheet 10<sup class="f">8.4</sup></td></tr>
 <tr><td><b>Nut doubler block</b></td><td><b>3</b></td><td>1/2" alu, 154 &times; 45</td><td>Drill only</td><td>Was 2 &mdash; <b>the X axis needs one too</b>, installed inverted. Sheet 2d<sup class="f">11.1</sup></td></tr>
-<tr><td><b>X nut sole plate</b></td><td>1</td><td>1/4" steel, Sheet 5&apos;s T</td><td>T profile + 8 holes</td><td>Sheet 5 with one root row deleted &mdash; Sheet 11<sup class="f">11.1</sup></td></tr>
 <tr><td><b>Z top stop block</b></td><td>1</td><td><b>1" 6061</b>, a 50 &times; 45 piece off a 25.4 slab</td><td><b>Yes</b> &mdash; a &oslash;22 bore and two cross-drilled M5</td><td><b>Three holes in two setups</b> &mdash; Sheet 3c<sup class="f">3c.1</sup></td></tr>
 </table>
 
@@ -1060,28 +1059,30 @@ Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><b
 </table>
 
 <h3 id="sheet-2d" style="margin-top:7mm">Sheet 2d &mdash; the nut doubler block (quantity 3)
-<span style="font-weight:400;font-size:10pt">&mdash; machined on its own, on the <b>same WCS</b> as 2a</span></h3>
+<span style="font-weight:400;font-size:10pt">&mdash; machined on its own, Y on <b>2a&apos;s origin</b>, X on its own end face</span></h3>
 <div class="stock">
 <b>154 long &times; 45 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b><br>
 &#128308; <b>THREE OF THEM, AND THE THIRD IS NOT LIKE THE OTHER TWO.</b> The block is identical;
 where it goes is not.<br>
 <b>Two for the Y ends.</b> Cut from the <b>45 mm offcut</b> left when an end plate is taken out of a
 200 mm wide piece. Each bolts to the end plate's <b>OUTER face at the bottom</b>, the same face the
-bearing blocks are on, giving a <b>24.38 mm seating</b> across the stacked end faces for the sole
-bracket of Sheet 5.<br>
+bearing blocks are on, with its <b>end face level with the ball nut's mounting face</b>. That end
+face is the whole seating &mdash; <b>{{SOLE_BASE_D}}</b> &mdash; and the sole plate of Sheet 5 lies
+across it and bolts into its edge.<br>
 <b>One for the X axis.</b> &#9888; <b>There is no offcut for it</b> &mdash; it wants its own piece of
 the same 1/2" stock. It bolts to the X carriage plate's <b>REAR face, the other way up</b>, with its
-<b>bottom edge at 161</b> and its tapped end face at the TOP, carrying the X ball nut through the sole
-plate of Sheet&nbsp;11. Its seating there is <b>12.19, not 24.38</b>, because nothing stands behind
-it.<sup class="f">11.1</sup><br>
-<span class="wcs">CLAMP IT THE SHORT WAY, ON 2a&apos;S WCS.</span> <b>X runs along this block&apos;s 45</b>
-and <b>Y along its 154</b>, origin on the same corner 2a uses &mdash; the plate&apos;s bottom end and back
-edge. Held that way <b>every coordinate below is the same number 2a carries</b>, which is the whole
-point: the two parts are machined <b>separately</b> and the shared origin is what makes them
+<b>bottom edge at 161</b> and its tapped end face at the TOP, carrying the X ball nut through the same
+sole plate. <b>All three joints are now the same joint</b>, the Y pair being the X one
+inverted.<sup class="f">11.1</sup><br>
+<span class="wcs">CLAMP IT THE SHORT WAY, ON ITS OWN CORNER.</span> <b>X runs along this block&apos;s 45</b>
+from its tapped end face, and <b>Y along its 154</b> from the same back edge 2a uses. <b>Every Y below
+is the number 2a carries; every X is {{DOUBLER_BOTTOM_X}} less</b>, because the end plate reaches that
+far past this block's end face to back the sole plate. The two parts are machined <b>separately</b>
+and it is the shared Y origin plus that one known offset that makes them
 agree.<sup class="f">2.6</sup><br>
-<b>The height has an upper bound of 55.5</b>, and 45 is well inside it. The doubler shares this face
-with the <b>lower Y bearing block row</b>, whose bottom edge lands at <b>X 55.5</b> &mdash; the lower
-rail at 77.5 less half the block's measured 44. <b>45 clears it by 10.5.</b> A 60 would overlap by 4.5.<br>
+<b>The height has an upper bound</b>, and 45 is inside it. The doubler shares this face with the
+<b>lower Y bearing block row</b>, and the gap to that row's bottom edge is
+<b>{{DOUBLER_BLOCK_CLEAR}}</b>. Nothing bears across it. A 60 would overlap.<br>
 &#128308; <b>D1&ndash;D4 are NOT centred in the 45, and must not be re-centred.</b> They stay at
 <b>X 25</b>, which leaves 20 above and 25 below. <b>R1&ndash;R4 depend on it</b>: they bore 20 deep
 from X 0 and clear the &oslash;5 bolt wall at 22.5 by 2.5. Centre the column and that clearance is
@@ -1100,6 +1101,14 @@ gone.<sup class="f">2.7</sup>
   <line x1="74" y1="0" x2="74" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="2 3"/>
   <text class="q" x="80" y="12">end plate (2a),</text>
   <text class="q" x="80" y="22">on to X 235</text>
+
+  <!-- and it also reaches XEP_SOLE_TAB the OTHER way, past this block's end
+       face - that strip is what the sole plate's base butts against -->
+  <line x1="-10" y1="0" x2="0" y2="0" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="-10" y1="154" x2="0" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="-10" y1="0" x2="-10" y2="154" stroke="#b06000" stroke-width="1" stroke-dasharray="2 3"/>
+  <text class="q" x="-52" y="172" fill="#b06000">the plate reaches {{DOUBLER_BOTTOM_X}} past this end face &#8212;</text>
+  <text class="q" x="-52" y="182" fill="#b06000">the sole plate&#8217;s base butts that strip</text>
 
   <!-- the block -->
   <rect x="0" y="0" width="45" height="154" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
@@ -1168,9 +1177,9 @@ gone.<sup class="f">2.7</sup>
   <text class="q" x="0" y="216" fill="#c00">red = R1&#8211;R4, which enter the X 0 face shown at the left, 20 deep MAX</text>
   <text class="q" x="0" y="228" fill="#c00">&#8212; the only row on this part that needs the mill</text>
   <text class="q" x="0" y="240">amber = the end plate, drawn on 2a</text>
-  <text class="q" x="0" y="256">They are &#248;4.2 centred in the 12.19, tapped M5 at home. On Sheet 5&#8217;s frame the same row reads</text>
-  <text class="q" x="0" y="268">X 18.285 &#8212; measured across the stacked 24.38, not a second decision.</text>
-  <text class="q" x="0" y="284">&#9888; the lower Y bearing block row&#8217;s bottom edge lands at X 55.5 on this same face, so the 45</text>
+  <text class="q" x="0" y="256">They are &#248;4.2 centred in the {{T_DOUBLER}}, tapped M5 at home &#8212; and on Sheet 5&#8217;s</text>
+  <text class="q" x="0" y="268">frame the same row reads the same {{ROOT_BOLT_X_DOUBLER}}, because both start at this face.</text>
+  <text class="q" x="0" y="284">&#9888; the lower Y bearing block row is on this same face, and the gap to it is {{DOUBLER_BLOCK_CLEAR}} &#8212; so the 45</text>
   <text class="q" x="0" y="296">clears it by 10.5. A 60 would have overlapped by 4.5.</text>
   <!-- schedule ref tags -->
   <!-- schedule ref tags -->
@@ -1186,7 +1195,7 @@ gone.<sup class="f">2.7</sup>
 <figcaption><b>The four Y stations are the point of this drawing, and they are not this part&#8217;s
 numbers &#8212; they are 2a&#8217;s.</b> D1&ndash;D4 at <b>Y 32, 62, 92, 122</b> are the same four values the
 end plate carries in its own schedule, and R1&ndash;R4 into the end face sit on the same four again, so
-one spread serves all three rows across 2a, 2d and Sheet&nbsp;5. <b>Nothing is clamped together at the
+one spread serves every row across 2a, 2d and Sheet&nbsp;5. <b>Nothing is clamped together at the
 mill</b> &mdash; the parts are machined separately and it is the shared WCS that makes them agree,
 which is why the block is clamped the short way on 2a&#8217;s origin rather than on its own long edge.
 <b>Held that way, every number above is a number already on Sheet 2a.</b><br><br>
@@ -1205,9 +1214,10 @@ not land on its partner in the other, the error is in this drawing and not in th
 
 <div class="warn">
 <b>Three parts whose holes must agree across an assembly</b> &mdash; end plate (2a), this doubler
-(2d) and the sole bracket (Sheet&nbsp;5). They are machined <b>separately</b>, and the <b>shared
-origin is what makes them agree</b> &mdash; nothing is clamped together at the mill. The one row that
-is <b>not</b> machined is the end plate&apos;s, and it is transferred at home.<sup class="f">2.7</sup>
+(2d) and the sole plate (Sheet&nbsp;5). They are machined <b>separately</b>, and the <b>shared
+Y origin is what makes them agree</b> &mdash; nothing is clamped together at the mill. On X the
+doubler and the plate differ by {{DOUBLER_BOTTOM_X}}, the strip the plate reaches past
+it.<sup class="f">2.7</sup>
 </div>
 </div>
 
@@ -1802,59 +1812,62 @@ deliberately NOT moved to buy hole clearance.<sup class="f">4.9</sup></p>
 </div>
 
 <div class="plate pg-s5">
-<h2 id="sheet-5">Sheet 5 &mdash; the Y nut sole bracket (quantity 2)</h2>
-<p class="sub">Two new parts per gantry end, both flat plate &middot; they
-carry the inverted Y ball nut into the bottom of the X end plate</p>
+<h2 id="sheet-5">Sheet 5 &mdash; the nut sole plate (quantity 3)</h2>
+<p class="sub">One part, three copies &middot; <b>Y1, Y2 and the X carriage</b> &middot; it carries
+the ball nut into the end of a doubler, and the same joint serves all three
+<span class="tn">&mdash; the X one is installed inverted, Sheet 11</span></p>
 
 <div class="info">
-<b>Why these exist.</b> The X end plate now runs down to <b>&minus;182.5</b>, level with the
-downward-facing mounting face of the Y ball nut. The <b>doubler</b> bolts to the plate's outer face
-to give a 24.38&nbsp;mm wide seating at the bottom; the <b>sole bracket</b> bolts up into that
-seating and reaches outboard to the nut. The screw axis is <b>72.19&nbsp;mm</b> from the plate's inner
-face &mdash; 12.19 plate + 30 rail stack + 30 half beam &mdash; so the nut's flange never comes near
-the plate and this is a cantilever, not a strip. That leaves <b>21.81 of clear air</b> between the
-doubler's outer face and the nut's side, against a <b>20&nbsp;mm minimum measured off the built Y
-beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what keeps them agreeing.
+<b>Why these exist, and why there is only one of them.</b> A <b>doubler</b> bolts to the face of a
+plate with its <b>end face level with the ball nut's mounting face</b>; this plate lies across that
+end face, bolts into its edge, and reaches out to the nut. The plate it is bolted beside carries on
+<b>{{XEP_SOLE_TAB}}</b> past the doubler, and the base <b>butts that strip</b> &mdash; which is what
+locates it, so no bolts go into the plate itself.<br>
+<b>On Y the nut hangs under the beam</b>, its mounting face pointing DOWN, so the joint is upside
+down and the bolts go up into the nut. <b>On X the screw sits on top of the beam</b> and it is the
+right way up. Nothing else differs, which is why the three are one drawing.<br>
+The Y screw axis is <b>{{SCREW_AXIS_X}}&nbsp;mm</b> from the end plate's inner face &mdash;
+{{T_X_ENDPLATE}} plate + 30 rail stack + 30 half beam &mdash; so the nut's flange never comes near the
+plate and this is a cantilever, not a strip. That leaves <b>{{NUT_AIR_CLEAR}} of clear air</b> between
+the doubler's outer face and the nut's side, against a <b>{{NUT_AIR_MIN}}&nbsp;mm minimum measured off
+the built Y beam</b>.
 </div>
 
 <figure>
-<svg viewBox="-128 -26 700 182" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- PLAN view of the sole bracket, looking at its face.
+<svg viewBox="-92 -26 400 285" width="178mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- PLAN view of the sole plate, looking at its face.
        WCS 0,0 is the ROOT's left corner, bottom-left of the frame - a real stock corner.
-       SVG y runs 98.19 at the root (bottom) to 0 at the tip (top), so machine X grows UPWARD.
+       SVG y runs 86 at the root (bottom) to 0 at the tip (top), so machine X grows UPWARD.
        SVG x IS machine Y, 0 to 154 across the plate.
-       The root is PARALLEL-SIDED at 154 for the whole 24.38 of seating, so the full-width
-       plate and doubler ends are entirely covered; the taper starts only past them. -->
+       The root is PARALLEL-SIDED at 154 for the whole 12.19 of seating, so the doubler's
+       end face is covered corner to corner; the stem starts only past it. -->
 
-  <polygon points="0,98.19 154,98.19 154,73.81 97,73.81 97,0 57,0 57,73.81 0,73.81"
+  <polygon points="0,86 154,86 154,73.81 97,73.81 97,0 57,0 57,73.81 0,73.81"
            fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the 24.38 seating IS the stacked end faces of the two plates, which the bracket covers -->
-  <rect x="0" y="73.81" width="154" height="24.38" fill="#fde9c8" stroke="none"/>
+  <!-- the 12.19 seating IS the doubler's end face, which this plate covers -->
+  <rect x="0" y="73.81" width="154" height="12.19" fill="#fde9c8" stroke="none"/>
   <line x1="0" y1="73.81" x2="154" y2="73.81" stroke="#b06000" stroke-width="1.0" stroke-dasharray="4 3"/>
-  <polygon points="0,98.19 154,98.19 154,73.81 97,73.81 97,0 57,0 57,73.81 0,73.81"
+  <polygon points="0,86 154,86 154,73.81 97,73.81 97,0 57,0 57,73.81 0,73.81"
            fill="none" stroke="#111" stroke-width="1.6"/>
 
-  <!-- the two plates behind it, dashed: hidden by the bracket, drawn on Sheet 2 -->
-  <rect x="0" y="86.0" width="154" height="12.19" fill="none" stroke="#111" stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
+  <!-- the doubler behind it, dashed: hidden by this plate, drawn on Sheet 2d -->
   <rect x="0" y="73.81" width="154" height="12.19" fill="none" stroke="#b06000" stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
+  <!-- and the end plate's strip past the doubler, which the root BUTTS -->
+  <rect x="0" y="86" width="154" height="10" fill="#f2f2f2" stroke="#111"
+        stroke-width="1.0" stroke-dasharray="2.5 2.5"/>
+  <text class="q" x="4" y="93.2" fill="#111">END PLATE &#8212; the root BUTTS this</text>
 
-  <!-- R5-R8: into the END PLATE's end face, centred in its 12.19 -> X 6.095.
-       Transferred at home off the bracket itself, never drilled at the mill. -->
-  <circle cx="32"  cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="62"  cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="92"  cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="122" cy="92.35" r="2.7" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <!-- R1-R4: into the DOUBLER's end face, centred in its 12.19 -> X 18.285.
+  <!-- R1-R4: into the DOUBLER's end face, centred in its 12.19 -> X 6.095.
        These are Sheet 2's B1-B4, the only edge holes that need the mill. -->
-  <circle cx="32"  cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
-  <circle cx="62"  cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
-  <circle cx="92"  cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
-  <circle cx="122" cy="79.65" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="32"  cy="79.905" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="62"  cy="79.905" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="92"  cy="79.905" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
+  <circle cx="122" cy="79.905" r="2.7" fill="#fff" stroke="#b06000" stroke-width="1.3"/>
 
-  <text class="lbl" x="40" y="62">SOLE BRACKET 1/4&quot;</text>
+  <text class="lbl" x="-2" y="68">SOLE PLATE 1/4&quot;</text>
 
-  <!-- the ball nut, 46.7 to 98.19 from the plate's inner face -->
+  <!-- the ball nut, its far edge flush with the tip -->
   <rect x="57" y="0" width="40" height="52" fill="none" stroke="#c00" stroke-width="1.1" stroke-dasharray="3 2"/>
   <text class="lbl" x="104" y="14" fill="#c00">Y BALL NUT</text>
   <circle cx="65" cy="46.0" r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
@@ -1863,68 +1876,63 @@ beam</b> &mdash; the two agree, and NUT_AIR_CLEAR against NUT_AIR_MIN is what ke
   <circle cx="89" cy="6.0"  r="2.6" fill="#fff" stroke="#c00" stroke-width="1.1"/>
 
   <!-- dimensions, all on the left so nothing crosses the part -->
-  <line x1="-16" y1="0"    x2="-16" y2="98.19" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-54" y="51">98.19</text>
-  <line x1="-36" y1="73.81" x2="-36" y2="98.19" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="-78" y="88">24.38</text>
+  <line x1="-16" y1="0"    x2="-16" y2="86" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-54" y="45">{{SOLE_BRACKET_L}}</text>
+  <line x1="-36" y1="73.81" x2="-36" y2="86" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="-78" y="82">{{SOLE_BASE_D}}</text>
   <line x1="-36" y1="52.0" x2="-36" y2="73.81" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="-78" y="65">21.81</text>
+  <text class="dim" x="-78" y="65">{{NUT_AIR_CLEAR}}</text>
   <line x1="168" y1="0"    x2="168" y2="52.0" stroke="#06c" stroke-width="0.6"/>
   <text class="dim" x="172" y="28">52</text>
-  <line x1="0"   y1="124"  x2="154" y2="124" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="66"  y="132">154</text>
+  <line x1="0"   y1="112"  x2="154" y2="112" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="66"  y="120">154</text>
+  <line x1="168" y1="86" x2="196" y2="86" stroke="#06c" stroke-width="0.5"/>
+  <line x1="168" y1="96" x2="196" y2="96" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="199" y="95.0" fill="#111">{{XEP_SOLE_TAB}} PLATE</text>
   <line x1="57"  y1="-12"  x2="97" y2="-12" stroke="#06c" stroke-width="0.6"/>
   <text class="dim" x="68"  y="-15">{{SOLE_STEM_W}}</text>
-  <!-- the two bolt rows, X forced by each plate's own mid-thickness -->
-  <line x1="162" y1="92.35" x2="196" y2="92.35" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="199" y="94.5">6.095 END PLATE</text>
-  <line x1="162" y1="79.65" x2="196" y2="79.65" stroke="#06c" stroke-width="0.5"/>
-  <text class="dim" x="199" y="81.8" fill="#b06000">18.285 DOUBLER</text>
+  <!-- the one bolt row, X forced by the doubler's own mid-thickness -->
+  <line x1="162" y1="79.905" x2="196" y2="79.905" stroke="#06c" stroke-width="0.5"/>
+  <text class="dim" x="199" y="82.0" fill="#b06000">{{ROOT_BOLT_X_DOUBLER}} DOUBLER</text>
 
-  <circle cx="0" cy="98.19" r="3.4" fill="#c00"/>
-  <text class="dim" x="-34" y="107" fill="#c00">WCS 0,0</text>
+  <circle cx="0" cy="86" r="3.4" fill="#c00"/>
+  <text class="dim" x="-34" y="102" fill="#c00">WCS 0,0</text>
 
-  <text class="q" x="268" y="12">LENGTH 98.19, and it derives:</text>
-  <text class="q" x="268" y="24">72.19 screw axis + 26 half the nut = 98.19</text>
-  <text class="q" x="268" y="42" fill="#b06000">ROOT IS PARALLEL FOR THE WHOLE 24.38.</text>
-  <text class="q" x="268" y="54" fill="#b06000">154 wide until the plates end, then 40 stem &#8212;</text>
-  <text class="q" x="268" y="66" fill="#b06000">so the sandwich is covered corner to corner.</text>
-  <text class="q" x="268" y="84" fill="#c00">nut face 40 &#215; 52, pattern 24 &#215; 40</text>
-  <text class="q" x="268" y="96" fill="#c00">nut 46.7 to 98.19 &#8212; tip flush with its far edge</text>
-  <text class="q" x="268" y="108" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
-  <text class="q" x="268" y="126">21.81 of air clears the 20 minimum by 1.81</text>
+  <text class="q" x="-88" y="140">LENGTH {{SOLE_BRACKET_L}}, and it derives:</text>
+  <text class="q" x="-88" y="152">{{X_SCREW_AXIS}} screw axis + 26 half the nut</text>
+  <text class="q" x="-88" y="170" fill="#b06000">ROOT IS PARALLEL FOR THE WHOLE {{SOLE_BASE_D}}.</text>
+  <text class="q" x="-88" y="182" fill="#b06000">154 wide until the doubler ends, then {{SOLE_STEM_W}} stem &#8212;</text>
+  <text class="q" x="-88" y="194" fill="#b06000">so its end face is covered corner to corner.</text>
+  <text class="q" x="-88" y="212" fill="#c00">nut face {{NUT_FACE_Y}} &#215; {{NUT_FACE_X}}, pattern {{NUT_PATTERN_Y}} &#215; {{NUT_PATTERN_X}}</text>
+  <text class="q" x="-88" y="224" fill="#c00">tip flush with the nut face&#8217;s far edge</text>
+  <text class="q" x="-88" y="236" fill="#c00">M5 CLEARANCE &#8212; the threads are in the nut</text>
+  <text class="q" x="-88" y="254">{{NUT_AIR_CLEAR}} of air against a {{NUT_AIR_MIN}} minimum</text>
   <!-- schedule ref tags -->
-  <!-- schedule ref tags -->
-  <text class="ref" x="44.00" y="82.65" fill="#b06000" text-anchor="middle">R1</text>
-  <text class="ref" x="44.00" y="95.35" fill="#111" text-anchor="middle">R5</text>
-  <text class="ref" x="74.00" y="82.65" fill="#b06000" text-anchor="middle">R2</text>
-  <text class="ref" x="74.00" y="95.35" fill="#111" text-anchor="middle">R6</text>
-  <text class="ref" x="104.00" y="82.65" fill="#b06000" text-anchor="middle">R3</text>
-  <text class="ref" x="104.00" y="95.35" fill="#111" text-anchor="middle">R7</text>
-  <text class="ref" x="134.00" y="82.65" fill="#b06000" text-anchor="middle">R4</text>
-  <text class="ref" x="134.00" y="95.35" fill="#111" text-anchor="middle">R8</text>
+  <text class="ref" x="44.00" y="83.0" fill="#b06000" text-anchor="middle">R1</text>
+  <text class="ref" x="74.00" y="83.0" fill="#b06000" text-anchor="middle">R2</text>
+  <text class="ref" x="104.00" y="83.0" fill="#b06000" text-anchor="middle">R3</text>
+  <text class="ref" x="134.00" y="83.0" fill="#b06000" text-anchor="middle">R4</text>
   <text class="ref" x="65.00" y="39.00" fill="#c00" text-anchor="middle">N1</text>
   <text class="ref" x="65.00" y="19.00" fill="#c00" text-anchor="middle">N2</text>
   <text class="ref" x="89.00" y="39.00" fill="#c00" text-anchor="middle">N3</text>
   <text class="ref" x="89.00" y="19.00" fill="#c00" text-anchor="middle">N4</text>
 </svg>
-<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) the <b>doubler's</b> four root holes are drilled and tapped <b>as part of machining the doubler</b>, at Y 32, 62, 92, 122 &mdash; Sheet 2d's R1&ndash;R4; (2) bolt the doubler to the end plate; (3) bolt <b>this bracket</b> up into the doubler through that row; (4) the bracket's <b>other</b> row is now four <b>empty</b> holes sitting on the end plate's end face &mdash; <b>drill through them</b> to spot the end plate, and tap. <b>Only the doubler's row needs the mill.</b> The end plate's is transferred at home off the bracket itself and needs no coordinate at all.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The two bolt rows sit at <b>{{ROOT_BOLT_X_ENDPLATE}}</b> and <b>{{ROOT_BOLT_X_DOUBLER}}</b>, each centred in its own {{T_X_ENDPLATE}} plate, and on <b>Y 32, 62, 92, 122</b> &mdash; D1&ndash;D4's stations, so one spread serves all three rows. None of those four numbers is a free choice. The trapezoid's tip is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
+<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) the <b>doubler's</b> four root holes are drilled and tapped <b>as part of machining the doubler</b>, at Y 32, 62, 92, 122 &mdash; Sheet 2d's R1&ndash;R4; (2) bolt the doubler to the plate; (3) bolt <b>this plate</b> into the doubler through that one row, its base hard against the end plate's strip. <b>That strip is what squares it</b> &mdash; there is no second row to pull it true, and none needed.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The bolt row sits at <b>{{ROOT_BOLT_X_DOUBLER}}</b>, centred in the doubler's {{T_DOUBLER}}, and on <b>Y 32, 62, 92, 122</b> &mdash; D1&ndash;D4's stations, so one spread serves both rows. Neither number is a free choice. The stem is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
 </figure>
 
 <h3>The part</h3>
 <table>
 <tr><th>Part</th><th>Qty</th><th>Size</th><th>Material</th><th>Mill needed?</th></tr>
-<tr><td><b>Sole bracket</b></td><td>2</td><td><b>T</b>, 154 root &times; 24.38, <b>40</b> stem &times; 73.81, <b>1/4"</b></td><td>A36 steel</td><td>T profile plus 4 &times; M5 clearance</td></tr>
+<tr><td><b>Sole plate</b></td><td><b>3</b></td><td><b>T</b>, 154 root &times; {{SOLE_BASE_D}}, <b>{{SOLE_STEM_W}}</b> stem &times; {{SOLE_STEM_L}}, <b>1/4"</b></td><td>A36 steel</td><td>T profile plus 4 &times; M5 clearance</td></tr>
 </table>
 
-<h3>Hole schedule &mdash; WCS origin: <b>the root's left corner</b>, X outboard from the plate's inner face</h3>
+<h3>Hole schedule &mdash; WCS origin: <b>the root's left corner</b>, X outboard from the doubler's inner face</h3>
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the plate's inner face</th><th>Y</th><th class="d">&oslash;</th><th>Note</th></tr>
-<tr><td>N1&ndash;N4</td><td>M5 clearance, bracket up into the nut</td><td>4</td><td class="n"><b>52.19</b>, <b>92.19</b></td><td class="n"><b>65</b>, <b>89</b></td><td class="d">6</td><td>&plusmn;12 about the nut centre at Y 77. The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern 24 &times; 40 centred on a 40 &times; 52 face: insets 8 across the 40, 6 across the 52</td></tr>
-<tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the only edge holes that need the mill. Same holes as Sheet 2a's <b>B1&ndash;B4</b>, drawn on <b>Sheet 2d</b></td><td>4</td><td class="n"><b>{{ROOT_BOLT_X_DOUBLER}}</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td>Centred in the doubler's {{T_DOUBLER}}. &oslash;6 clearance through the bracket; <b>M5 tapped into the doubler's edge, 20 deep MAX</b>, which clears the &oslash;5 D-bolt wall by 2.5. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations<sup class="f">2.7</sup></td></tr>
-<tr><td>R5&ndash;R8</td><td><b>Into the END PLATE's end face</b> &mdash; <b>never drilled at the mill</b></td><td>4</td><td class="n"><b>{{ROOT_BOLT_X_ENDPLATE}}</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td>Centred in the end plate's {{T_X_ENDPLATE}}. Spotted at home <b>through the bracket itself</b>, which is the drill guide, so these need no coordinate at all &mdash; the numbers are for drawing it, not for setting a mill<sup class="f">2.7</sup></td></tr>
+<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the root</th><th>Y</th><th class="d">&oslash;</th><th>Note</th></tr>
+<tr><td>N1&ndash;N4</td><td>M5 clearance, plate into the nut</td><td>4</td><td class="n"><b>{{NUT_BOLT_X_NEAR}}</b>, <b>{{NUT_BOLT_X_FAR}}</b></td><td class="n"><b>65</b>, <b>89</b></td><td class="d">6</td><td>The nut's own {{NUT_PATTERN_Y}} pattern, centred on Y 77. The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern {{NUT_PATTERN_Y}} &times; {{NUT_PATTERN_X}} centred on a {{NUT_FACE_Y}} &times; {{NUT_FACE_X}} face: insets {{NUT_INSET_Y}} across the {{NUT_FACE_Y}}, {{NUT_INSET_X}} across the {{NUT_FACE_X}}</td></tr>
+<tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the only edge holes that need the mill. Same holes as Sheet 2a's <b>B1&ndash;B4</b>, drawn on <b>Sheet 2d</b></td><td>4</td><td class="n"><b>{{ROOT_BOLT_X_DOUBLER}}</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td>Centred in the doubler's {{T_DOUBLER}}. &oslash;6 clearance through this plate; <b>M5 tapped into the doubler's edge, 20 deep MAX</b>, which clears the &oslash;5 D-bolt wall by 2.5. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations<sup class="f">2.7</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>12 &times; &oslash;6</td><td><b>12</b></td><td colspan="4" class="tn">2 of this part get made &mdash; <b>24 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;6</td><td><b>8</b></td><td colspan="4" class="tn">3 of this part get made &mdash; <b>24 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
@@ -2617,77 +2625,40 @@ is a bought 12" rather than the beam's own 120.</figcaption>
 
 <!-- ============================================================ -->
 <div class="plate pg-s11">
-<h2 id="sheet-11">Sheet 11 &mdash; the X nut sole plate (quantity 1)</h2>
+<h2 id="sheet-11">Sheet 11 &mdash; the sole plate on the X carriage</h2>
+<p class="sub"><b>The part is Sheet 5</b>, and this is the third of its three
+copies &middot; nothing here is a dimension to cut to</p>
+
 <div class="stock">
-<b>Sheet&nbsp;5&apos;s T shortened to 86, 1/4" steel</b> &mdash; <b>154 wide at the root</b>, stem
-<b>40</b>, the nut&apos;s own width.<br>
-<b>Why it exists.</b> The X ball screw runs on TOP of the X beam, so the nut is above the carriage
-and something has to reach up and over to it. The <b>doubler of Sheet&nbsp;2d</b> bolts to the back
-of the X carriage plate with its top edge level with the nut&apos;s mounting face; this plate lies
-across that top edge and bolts down into both the doubler and the nut.<sup class="f">11.1</sup><br>
+<b>Why it is on top.</b> The X ball screw runs on TOP of the X beam, so the nut is above the
+carriage and something has to reach up and over to it. The <b>doubler of Sheet&nbsp;2d</b> bolts to
+the back of the X carriage plate with its <b>top edge level with the nut&apos;s mounting face</b>;
+the sole plate lies across that top edge and bolts down into it, then down into the
+nut.<sup class="f">11.1</sup><br>
 &#128308; <b>The bolts go in from ABOVE</b>, which is the whole reason the plate is on top &mdash;
-they stay reachable while the gantry is being assembled. Same call as the inverted Y nut.<br>
-<span class="wcs">ONE root row, not two.</span> Sheet&nbsp;5 has a second row into the X end
-plate&apos;s end face; there is no second plate here, so that row is <b>deleted</b> rather than left
-blank.<sup class="f">11.1</sup>
+they stay reachable while the gantry is being assembled.<br>
+<span class="wcs">THE Y PAIR IS THIS JOINT UPSIDE DOWN.</span> There the nut hangs under the beam
+with its face pointing down, so the doubler&apos;s end face is at the <b>bottom</b> and the bolts
+go up. The part does not change, and neither does a single one of its
+coordinates.<sup class="f">11.2</sup>
 </div>
 
-<figure>
-<svg viewBox="-62 -30 650 262" width="185mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- Sheet 5's outline with 12.19 taken off the ROOT, drawn at 2.2x.
-       WCS 0,0 is the root's left corner, bottom-left here. Machine X grows UPWARD;
-       SVG x IS machine Y, 0 to 154 across the plate. -->
-  <polygon points="0,189.2 338.8,189.2 338.8,162.382 213.4,162.382 213.4,0 125.4,0 125.4,162.382 0,162.382" fill="#e8f0fa" stroke="#111" stroke-width="1.8"/>
-  <line x1="0" y1="162.38" x2="338.8" y2="162.38" stroke="#888" stroke-width="0.7" stroke-dasharray="5 4"/>
-  <circle cx="143" cy="101.2" r="6" fill="#fee" stroke="#c00" stroke-width="1.6"/>
-  <circle cx="143" cy="13.2" r="6" fill="#fee" stroke="#c00" stroke-width="1.6"/>
-  <circle cx="195.8" cy="101.2" r="6" fill="#fee" stroke="#c00" stroke-width="1.6"/>
-  <circle cx="195.8" cy="13.2" r="6" fill="#fee" stroke="#c00" stroke-width="1.6"/>
-  <circle cx="70.4" cy="175.79" r="6" fill="#fff" stroke="#111" stroke-width="1.3"/>
-  <circle cx="136.4" cy="175.79" r="6" fill="#fff" stroke="#111" stroke-width="1.3"/>
-  <circle cx="202.4" cy="175.79" r="6" fill="#fff" stroke="#111" stroke-width="1.3"/>
-  <circle cx="268.4" cy="175.79" r="6" fill="#fff" stroke="#111" stroke-width="1.3"/>
-  <line x1="-18" y1="189.2" x2="-18" y2="0" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-44" y="94.6">86</text>
-  <line x1="0" y1="211.2" x2="338.8" y2="211.2" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="157.4" y="223.2">154</text>
-  <text class="dim" x="159.4" y="-12">{{SOLE_STEM_W}}</text>
-  <circle cx="0" cy="189.2" r="3.4" fill="#c00"/>
-  <text class="dim" x="-52" y="205.2" fill="#c00">WCS 0,0</text>
-  <text class="q" x="364.8" y="18">R1&#8211;R4 at X 6.095 &#8212; into the</text>
-  <text class="q" x="364.8" y="30">DOUBLER&#8217;s top edge, tapped M5</text>
-  <text class="q" x="364.8" y="52" fill="#c00">N1&#8211;N4 at X 40 and 80, down</text>
-  <text class="q" x="364.8" y="64" fill="#c00">into the nut&#8217;s own threads</text>
-  <text class="q" x="364.8" y="86">The root runs parallel-sided for</text>
-  <text class="q" x="364.8" y="98">12.19, the doubler&#8217;s thickness,</text>
-  <text class="q" x="364.8" y="110">then a 40 stem to the tip.</text>
-  <text class="q" x="364.8" y="132">86 &#8722; 80 = 6 = the nut&#8217;s own inset,</text>
-  <text class="q" x="364.8" y="144">so the tip finishes flush with it.</text>
-  <!-- schedule ref tags -->
-  <text class="ref" x="143.00" y="88.80" fill="#c00" text-anchor="middle">N1</text>
-  <text class="ref" x="143.00" y="0.80" fill="#c00" text-anchor="middle">N2</text>
-  <text class="ref" x="195.80" y="88.80" fill="#c00" text-anchor="middle">N3</text>
-  <text class="ref" x="195.80" y="0.80" fill="#c00" text-anchor="middle">N4</text>
-  <text class="ref" x="70.40" y="163.39" fill="#111" text-anchor="middle">R1</text>
-  <text class="ref" x="136.40" y="163.39" fill="#111" text-anchor="middle">R2</text>
-  <text class="ref" x="202.40" y="163.39" fill="#111" text-anchor="middle">R3</text>
-  <text class="ref" x="268.40" y="163.39" fill="#111" text-anchor="middle">R4</text>
-</svg>
-<figcaption>Sheet&nbsp;5&apos;s outline with <b>12.19 taken off the root</b>. That is the X end
-plate&apos;s share of the seating, and there is no end plate here &mdash; so the row that bolted into
-it goes, and every machine X comes down by the same 12.19.<sup class="f">11.2</sup></figcaption>
-</figure>
-
-<h3>Hole schedule &mdash; machining coordinates</h3>
-<table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">from the root</span></th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>N1&ndash;N4</td><td><b>M5 clearance, plate down into the nut</b> &mdash; the nut&apos;s own threads, pattern <b>40 &times; 24</b></td><td>4</td><td class="n"><b>40, 80</b></td><td class="n"><b>65, 89</b></td><td class="d">6</td><td class="op">Through &middot; &#128308; <b>the nut has no float</b> &mdash; these tap into its own threads<sup class="f">11.2</sup></td></tr>
-<tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER&apos;s top edge</b> &mdash; the same four taps as Sheet 2d</td><td>4</td><td class="n"><b>6.095</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td class="op">Through &middot; M5 into the doubler&apos;s edge, <b>20 deep MAX</b></td></tr>
-<!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;6</td><td><b>8</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
-<!-- SHEETTOTAL:END -->
+<h3>Where it goes</h3>
+<table>
+<tr><th>What</th><th>Figure</th><th>Why that</th></tr>
+<tr><td>Doubler&apos;s <b>bottom</b> edge on the carriage plate</td><td class="n">{{X_DOUBLER_BOTTOM}}</td><td>Its top edge is the nut&apos;s mounting face; the block is {{DOUBLER_H}} tall</td></tr>
+<tr><td>Doubler&apos;s <b>top</b> edge &mdash; the sole plate lands here</td><td class="n">{{X_NUT_FACE_Z}}</td><td>The nut&apos;s own mounting face, which sets everything above</td></tr>
+<tr><td>D column through the carriage plate</td><td class="n">{{X_DOUBLER_BOLT_XC}}</td><td>{{DOUBLER_BOLT_X}} up the doubler, measured in the carriage plate&apos;s frame</td></tr>
+<tr><td>Gap to the bearing block row above</td><td class="n">{{X_DOUBLER_BLOCK_CLEAR}}</td><td>Nothing bears across it &mdash; it must not go negative</td></tr>
+<tr><td>Screw axis out from the carriage plate&apos;s rear face</td><td class="n">{{X_SCREW_AXIS}}</td><td>Rail stack + half the beam, and <b>the plate&apos;s own thickness is not in it</b><sup class="f">11.2</sup></td></tr>
 </table>
 
+<div class="note">
+<b>&#9989; The holes are on Sheet 5 and there are none here.</b> All three copies carry the same
+four root bolts at X {{ROOT_BOLT_X_DOUBLER}} and the same four nut bolts at
+X {{NUT_BOLT_X_NEAR}} and {{NUT_BOLT_X_FAR}}, on Y 32, 62, 92, 122 and Y 65, 89. Cut three, drill
+three the same, and install one here and one at each Y end.
+</div>
 </div>
 
 <div class="plate pg-nt">
@@ -2704,10 +2675,10 @@ it goes, and every machine X comes down by the same 12.19.<sup class="f">11.2</s
 <p><b>1.7</b> &mdash; <b>1a and 1b are the same part, and the sheets are separate anyway.</b> Every feature on this plate goes through &mdash; eight clearance holes, a window, two bracket holes &mdash; and the outline is a right trapezoid whose straight edge is the outboard one. Turning the plate over about that straight edge maps it onto itself and leaves every feature at the same distance from it. So <b>one pattern, drilled twice</b>; Y1 presents one face outboard and Y2 the other. &#128308; <b>Do not mirror the pattern.</b> Mirroring it within a fixed frame is a different part and would put the bolt columns 125 and 155 from the outboard edge instead of 35 and 65. The sheets are split per beam because what differs is <b>which way the part is installed</b>, and that is worth a page each at the machine rather than a parenthesis on one. <b>1a as drawn is the view from the front; 1b as drawn is the view from the rear.</b></p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 2</b></p>
 <p><b>2.3</b> &mdash; <b>The plate's tightest edge distance.</b> The beam's back face is flush with the plate's back edge, so the 15 is anchored and the 45 follows from the corner bores being symmetric in a 60 &times; 60. <b>15 mm of edge leaves 10.5 mm of material beside a &oslash;9</b> - do not let it drift.</p>
-<p><b>2.4</b> &mdash; <b>Bore it first, but it no longer sets anything.</b> Its height is the Y beam's <b>seam</b> centreline, which the vertical chain puts at <b>115</b> - the plate's bottom end is 55 below the beam, and the beam is 120 - so the 115 drawn here is that number exactly, not an independent choice. It sits in the gap between the block rows, which is <b>46</b> by geometry. That gap is a <b>KEEP-OUT, not something to lay holes out from</b>: the magnetic linear encoder tape runs down it and this &oslash;35 sensor rides over the tape, both centred on the seam. The <b>measured 45 is kept as the conservative figure</b> for it &mdash; under-stating a keep-out is safe &mdash; and at 45 there is <b>5 each side of the sensor, so no room for a flange or clamp ring</b>. Y 77 is half of 154, so it is centred on the plate as well as on the block pattern.</p>
+<p><b>2.4</b> &mdash; <b>Bore it first, but it no longer sets anything.</b> Its height is the Y beam's <b>seam</b> centreline, which the vertical chain puts at <b>{{BEAM_SEAM_XEP}}</b> &mdash; the plate's bottom end {{XEP_SOLE_TAB}} below the nut plane, the nut face 55 below the beam, and the seam {{EXT_W}} up from the beam's underside &mdash; so the number drawn here is that chain exactly, not an independent choice. It sits in the gap between the block rows, which is <b>46</b> by geometry. That gap is a <b>KEEP-OUT, not something to lay holes out from</b>: the magnetic linear encoder tape runs down it and this &oslash;35 sensor rides over the tape, both centred on the seam. The <b>measured 45 is kept as the conservative figure</b> for it &mdash; under-stating a keep-out is safe &mdash; and at 45 there is <b>5 each side of the sensor, so no room for a flange or clamp ring</b>. Y 77 is half of 154, so it is centred on the plate as well as on the block pattern.</p>
 <p><b>2.5</b> &mdash; <b>Where the sixteen come from.</b> They used to be laid out off the <b>measured 45 mm gap</b> between the block rows, which put their centres 44.5 either side of X 115. <b>That was the wrong driver.</b> The blocks sit on the rails, and both rails go in the beam's <b>outside T-slot</b> - 15 in from each outer face of a 120 beam, so <b>90 apart</b>, centres at the seam &plusmn;45 = X <b>70 and 160</b>. The gap that follows is 46, not 45; the 45 was a measurement off the machine and is only conservative, never wrong, for the clearance it is used for in 2.4. <b>The correction moved all sixteen holes 0.5</b>, which an &oslash;5.2 clearance on an M5 cannot absorb, so it had to be made. The 32 &times; 36 bolt pattern is the kit's own, measured. The butted pair reads 154.18 against a 154 plate - that 0.09 of overhang at each end is <b>end cap</b>, which carries nothing, so the pattern is centred on the plate and the Y values are round. <b>Measure the X/Y kit, not the Z kit</b>: they are different suppliers and have only happened to agree so far.</p>
-<p><b>2.6</b> &mdash; <b>Machined separately, aligned by a common WCS.</b> The doubler is <i>not</i> clamped to the plate and drilled through &mdash; each part is machined on its own and the <b>shared origin</b> is what makes the two D rows line up. Hold the doubler <b>the short way</b>: X along its 45, Y along its 154, origin on the plate's bottom end and back edge, and its coordinates are then literally the same numbers 2a carries. These bolts run along X through the plate, in shear. The doubler is 154 &times; 45. Its height has an upper bound of 55.5 - the lower bearing block row's bottom edge, on this same face - and 45 sits well inside it, which is also the width of the offcut the pair comes out of. 60 overlapped that row by 4.5.</p>
-<p><b>2.7</b> &mdash; <b>One root row is machined, the other is transferred.</b> The <b>doubler's</b> four root holes are drilled and tapped as part of machining the doubler &mdash; Sheet 2d's R1&ndash;R4, the only edge holes that need the mill. The <b>end plate's</b> four are never set up at all: bolt the doubler to the plate, bolt the sole bracket up into the doubler through that first row, and the bracket's second row is then four <b>empty</b> holes sitting on the end plate's end face. Drill through them. A hole you transfer needs no coordinate and fits better than one you compute.<br><b>20 deep max</b>: a &oslash;5 doubler bolt at X 25 spans 22.5 to 27.5, so a 20 mm hole clears its wall by 2.5.</p>
+<p><b>2.6</b> &mdash; <b>Machined separately, aligned on Y and offset on X.</b> The doubler is <i>not</i> clamped to the plate and drilled through &mdash; each part is machined on its own. Hold the doubler <b>the short way</b>: X along its 45 from its tapped end face, Y along its 154 from the plate's back edge. <b>Its Y values are the same numbers 2a carries; its X values are {{DOUBLER_BOTTOM_X}} less</b>, because the plate reaches that far past the block's end face to back the sole plate &mdash; so the D column is {{DOUBLER_BOLT_X}} here and {{DOUBLER_BOLT_X_PLATE}} on 2a. These bolts run along X through the plate, in shear. The doubler is 154 &times; 45, which is the width of the offcut the pair comes out of; its gap to the lower bearing block row is {{DOUBLER_BLOCK_CLEAR}} and a 60 would overlap.</p>
+<p><b>2.7</b> &mdash; <b>One root row, into the doubler, and nothing into the plate.</b> The <b>doubler's</b> four root holes are drilled and tapped as part of machining the doubler &mdash; Sheet 2d's R1&ndash;R4, the only edge holes on this assembly that need the mill. The plate itself takes <b>no</b> bolts from the sole plate: it reaches <b>{{XEP_SOLE_TAB}}</b> past the doubler's end face, and the sole plate's base <b>butts that strip</b>. A face it sits against locates it better than a second row of bolts would, and it is the X carriage's joint the right way up.<br><b>20 deep max</b>: a &oslash;5 doubler bolt at X {{DOUBLER_BOLT_X}} spans 22.5 to 27.5, so a 20 mm hole clears its wall by 2.5.</p>
 <p><b>2.8</b> &mdash; <b>M8 &times; 35, not &times; 40.</b> These break out onto the face the <b>lower Y bearing block row</b> seats against, and a protruding bolt there would hold a block off its mounting face - the one surface on this plate that must be flat. Through 25.4 of shelf bar into 12.7 of plate, an M8 &times; 35 gives ~9.6 mm of engagement and stops short; an M8 &times; 40 protrudes ~1.6 mm. Blind-tapping used to make that impossible by construction; with a through hole the <b>bolt length is the safeguard</b>.</p>
 <p><b>2.9</b> &mdash; <b>The two plates are no longer interchangeable.</b> Everything below the top edge is one drawing - outline, block holes, encoder bore, shelf, sole plate and doubler all common. Only the right-hand plate carries the BF12 tongue, which is the stock's own far end left uncut over the upper extrusion's end, with the same 4 &times; M5 pattern the Y end plates use.</p>
 <p><b>2.10</b> &mdash; <b>60 long, and the change deleted a hazard.</b> The bar was 76.2 to span "the beam's 60 mm depth plus the back plate". With the beam flush, its back face <b>is</b> the plate's back edge, so the joining plate now sits entirely behind the plate in air. The old sheet warned that the joining plate's bottom edge had to be flush, never proud, or the gantry would sit on a plate edge in line contact. <b>That risk existed only because the bar reached under it.</b> Ending at Y 0 removes the failure mode by construction.</p>
@@ -2732,7 +2703,7 @@ point: they are one assembly on one shim.<br>
 <b>The tongue's own length is not in that chain.</b> It has a floor and no target: it must reach both rows of
 BF12's mounting bolts, which is <b>40</b>, and the 300 stock gives <b>65</b>. Below that floor the block overhangs
 unsupported plate; above it, longer buys nothing but edge distance.</p>
-<p><b>2.14</b> &mdash; <b>The corner cut.</b> Both plates lose the far-front corner on a straight line ending at <b>X 188, Y 154</b> &mdash; 2a from <b>X 235, Y 60</b>, 2b from <b>X 300, Y 60</b>. <b>Y 60 is where it has to start:</b> below that is the upper extrusion's end and the plate must stay full length to cover it; above it the corner carries nothing. <b>Clearance, computed and not measured:</b> the nearest feature to either line is the far-upper bearing block M5 at <b>X 176, Y 133.5</b> &mdash; <b>19.9 mm</b> from 2a's line and 23.4 from 2b's, so a ~&oslash;10 counterbore leaves about <b>15 mm</b> of material on the tighter one. The cut's end at X 188 did not move when the holes came down 7.5, so both figures grew by about 5. Nothing else comes near: E1&ndash;E4 are all at Y 45 or below, and the &oslash;35 bore is 100 clear.</p>
+<p><b>2.14</b> &mdash; <b>The corner cut.</b> Both plates lose the far-front corner on a straight line ending at <b>X {{CORNER_CUT_X_END}}, Y {{XEP_W}}</b> &mdash; 2a from <b>X {{XEP_CUT}}, Y {{CORNER_CUT_Y}}</b>, 2b from <b>X 300, Y {{CORNER_CUT_Y}}</b>. <b>Y {{CORNER_CUT_Y}} is where it has to start:</b> below that is the upper extrusion's end and the plate must stay full length to cover it; above it the corner carries nothing. <b>Clearance, computed and not measured:</b> the nearest feature to either line is the far-upper bearing block M5 at <b>X {{BLOCK_HIGH_COL_B}}, Y 133.5</b> &mdash; <b>19.9 mm</b> from 2a's line and 23.4 from 2b's, so a ~&oslash;10 counterbore leaves about <b>15 mm</b> of material on the tighter one. The cut's end and that block both sit on the beam, so both carry the plate's {{XEP_SOLE_TAB}} and those two figures hold. Nothing else comes near: E1&ndash;E4 are all at Y 45 or below, and the &oslash;35 bore is 100 clear.</p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3</b></p>
 <p><b>3.1</b> &mdash; <b>Both rails are tapped M5, fixed.</b> Seven holes each at a 60 pitch, <b>20 from each end of the 400 mm rail</b>. The rails are set flush with the plate's bottom edge, so they finish 7 short of its top - that is just what 407 minus 400 leaves, and the rail outlines on the drawing show it.</p>
 <p><b>3.2</b> &mdash; <b>These cannot be adjusted later.</b> Their heads are buried under the Z rails once assembled. <b>Tram is set here, once, at build.</b></p>
@@ -2773,7 +2744,7 @@ unsupported plate; above it, longer buys nothing but edge distance.</p>
 <p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1210.73 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
 <p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part. Sheet 9 has been dimensioned from it since the side plate's T-slot rows were corrected, and this sheet now matches. <b>It costs nothing to do so</b>, which is worth stating because the sheet was drawn upside down until 2026-10-07 on the belief that it did. &#128308; <b>The beam bores are located by the FIN, not by this plate.</b> Y_BEAM_UNDERSIDE is 182 above the box skin because the fin's window puts the beam there &mdash; the fin is the riser that actually carries it, settled 2026-10-03 after the side plate was ruled out as the reference. So every plate standing on that skin sees the beam's corner bores at the same four heights, <b>197 / 227 / 257 / 287</b>, whatever height that plate happened to be bought at. Sheets 1a and 1b carry exactly those numbers for the fin, and Sheet 1 did before them. &#9888; <b>The old inverted frame was 2.8 mm out and nobody had caught it.</b> It listed the A-holes at Y 15 / 45 / 75 / 105 from the installed top edge and called the beam's corner Y 0, which only holds if the beam's top face is flush with the plate's top edge. On a 304.8 plate it stood <i>2.8 proud</i> of the beam top, so those bores were a plate-height error of the same size and from the same 2026-10-03 correction that left Sheet 9's lines behind. Re-referencing to the bottom edge removes the error rather than rescaling it. <b>The four Y values live in the registry</b> as RP_BEAM_ROW_1 to RP_BEAM_ROW_4, on the same expression as SIDE_TSLOT_ROW_1, so the two plates cannot drift apart. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
 <p><b>7.7</b> &mdash; <b>The BF12 rows carry the interposer, and the full thickness applies.</b> The screw's near end is carried by the cast stepper frame, which sits <i>on</i> the 10 mm interposer and is therefore LOWER than bare metal. BF12 at the far end has to drop by the same amount or the screw is not parallel to its own beam. This sheet is clamped inverted, so lower is a <b>larger</b> Y. <b>It is the full 10, not 5.</b> The registry's NUT_FACE_BELOW_BEAM does subtract a 5 mm standoff, but only because its base figure was <i>measured</i> on a machine that still had one. <b>The standoff no longer exists in the design</b>, so there is nothing here to take back off. &#9989; <b>T_INTERPOSER is a measured 10</b> &mdash; his micrometer, and a metric plate rather than the 3/8&quot; this chain once assumed. These two rows follow it automatically if it ever changes again.</p>
-<p><b>7.8</b> &mdash; <b>The plywood tongues are never drilled to a coordinate, and the drill guide is always the plate being secured.</b> Not a template, not a story stick, and not a set of numbers off these sheets: <b>the plate itself</b>. Assemble the machine, set it on the torsion box, and spot each tongue through the holes of the plate that bolts to it &mdash; <b>this rear plate drills the back tongue</b> (X1&ndash;X8), and <b>each outboard plate drills its own side tongue</b> (K1&ndash;K7 on Sheet&nbsp;9). That holds for every tongue on the box without exception, which is why the rule also sits in the standing-rules box at the front of the pack rather than only here. So the eight X stations here only have to clear obstructions and spread the load &mdash; nothing downstream has to agree with them, because the mating holes do not exist until the steel is bolted up and sitting in place. That is why 150 is a decision rather than a measurement, and why a hole landing a millimetre off costs nothing. It is the same logic as R5&ndash;R8 on Sheet&nbsp;5: <b>a hole you transfer needs no coordinate and fits better than one you compute.</b></p>
+<p><b>7.8</b> &mdash; <b>The plywood tongues are never drilled to a coordinate, and the drill guide is always the plate being secured.</b> Not a template, not a story stick, and not a set of numbers off these sheets: <b>the plate itself</b>. Assemble the machine, set it on the torsion box, and spot each tongue through the holes of the plate that bolts to it &mdash; <b>this rear plate drills the back tongue</b> (X1&ndash;X8), and <b>each outboard plate drills its own side tongue</b> (K1&ndash;K7 on Sheet&nbsp;9). That holds for every tongue on the box without exception, which is why the rule also sits in the standing-rules box at the front of the pack rather than only here. So the eight X stations here only have to clear obstructions and spread the load &mdash; nothing downstream has to agree with them, because the mating holes do not exist until the steel is bolted up and sitting in place. That is why 150 is a decision rather than a measurement, and why a hole landing a millimetre off costs nothing. <b>A hole you transfer needs no coordinate and fits better than one you compute.</b></p>
 
 <p><b>7.9</b> &mdash; <b>The tongue fastener, and it is the same stack at every tongue hole.</b> From the plate side: an <b>M8 flange bolt</b>, then the <b>plate</b>, then the <b>19 mm baltic birch tongue</b>, then an <b>M8 fender washer</b>, then an <b>M8 acorn nut</b>. The &oslash;9 holes in plate and tongue both are clearance, so this is a clamped joint, not a bearing one, and the two washer faces do the work: the <b>bolt's own flange</b> bears on the steel, and the <b>fender washer</b> spreads the clamp over enough plywood face that the nut cannot pull into it.
 <br><br>
@@ -2830,8 +2801,8 @@ OPEN: <b>It puts six more metre-long parts on a trip whose X traverse is still a
 <p><b>10.2</b> &mdash; <b>Same X stations as Sheets 8 and 9</b> &mdash; 50 then 150, seven per row. See 8.3.</p>
 <p><b>3.8</b> &mdash; <b>The X ball nut had nothing to attach to, and this column is it.</b> The X screw runs on TOP of the beam, so the nut is above the carriage and the drive has to reach up and over. The <b>doubler of Sheet&nbsp;2d</b> &mdash; the same block the Y ends use, now made three times &mdash; bolts to this plate&rsquo;s rear face with its bottom edge at <b>161</b> and its top edge at <b>206</b>, which is the nut&rsquo;s mounting face: 151 to the beam top, 10 for the interposer, 25 for the casting&rsquo;s axis, 20 for the nut&rsquo;s own h off the DSG1605 page. The column lands at <b>186</b> because it sits 25 up the block, the same DOUBLER_BOLT_X the Y side uses. <b>Sheet&nbsp;11</b> is the plate that lies across the top. &#9888; <b>This plate already exists, dyed and undrilled</b>, and nothing in its schedule put a doubler on it before 2026-10-09 &mdash; these four are genuinely new, not a correction.</p>
 <p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 11</b></p>
-<p><b>11.1</b> &mdash; <b>It is Sheet&nbsp;5 with one row taken out, and the same part at the other end of the machine.</b> On Y the ball nut hangs under the beam, its mounting face points DOWN, and the sole bracket bolts UP into it off a doubler on the X end plate. On X the screw sits on TOP of the beam, so everything inverts: the face points up and the plate lies over it. The root seating is the reason the row count differs &mdash; Sheet&nbsp;5 bolts into a doubler AND the end plate behind it, a 24.38 stack, and takes a row into each. Here the doubler stands on the carriage plate&apos;s back face with nothing behind it, so there is one row.</p>
-<p><b>11.2</b> &mdash; <b>&#9989; Sheet&nbsp;5&apos;s shape with 12.19 off the root, and every X on the sheet comes down by that same 12.19.</b> On Y the sole bracket wraps a 24.38 seating &mdash; the X end plate&apos;s 12.19 plus the doubler&apos;s 12.19 &mdash; and takes a bolt row into each. Here the doubler stands on the carriage plate&apos;s rear face with nothing behind it, so the end plate&apos;s share of the root is removed and its row with it.<br><b>&#128308; The carriage plate&apos;s thickness is then NOT in the chain at all, and that is the point.</b> SCREW_AXIS_X is 72.19 on Y because it measures from the end plate&apos;s INNER face and so carries that plate&apos;s 12.19. X_SCREW_AXIS measures from the REAR face and is just <b>rail stack + half beam = 60</b>. So T_X_CARRIAGE_PLATE &mdash; still a nominal 12.7 flagged to caliper &mdash; cannot move a single number on this sheet, where on Y the equivalent would have moved all of them.<br><b>It closes on the nut rather than on a chosen length:</b> X_SOLE_BRACKET_L is 86, the far nut row is at 80, and 86 &minus; 80 = 6 = NUT_INSET_X &mdash; so the tip finishes flush with the nut face&apos;s edge. &#9888; <b>Do not read R1&ndash;R4&apos;s 6.095 as Sheet&nbsp;5&apos;s 6.095.</b> There it is centred in the END PLATE with the doubler behind at 18.285; here it is the doubler&apos;s own mid-thickness, first thing at the root.</p>
+<p><b>11.1</b> &mdash; <b>One part, three copies, and the X one is simply inverted.</b> On Y the ball nut hangs under the beam, its mounting face points DOWN, and the sole plate bolts UP into it off a doubler on the X end plate. On X the screw sits on TOP of the beam and everything turns over: the face points up and the plate lies on it. <b>The doubler is the same block and the plate is the same plate.</b> Each bolts into the doubler&apos;s end face alone, and in both cases the plate carrying the doubler runs {{XEP_SOLE_TAB}} past that face so the sole plate&apos;s base has something to butt.</p>
+<p><b>11.2</b> &mdash; <b>&#9989; Why the two ends land on identical numbers.</b> Both plates are measured from the face the doubler bolts to, and <b>neither carries the thickness of the plate behind it</b>. SCREW_AXIS_X is {{SCREW_AXIS_X}} on Y because it measures from the end plate&apos;s INNER face; take that plate&apos;s {{T_X_ENDPLATE}} off and it is {{X_SCREW_AXIS}}, which is what X_SCREW_AXIS already reads from the carriage plate&apos;s REAR face. <b>Rail stack + half beam, on both axes.</b> So T_X_CARRIAGE_PLATE &mdash; still a nominal 12.7 flagged to caliper &mdash; cannot move a number on either sheet, and SOLE_SAME_AS_X_CHECK holds the two chains to one answer.<br><b>It closes on the nut rather than on a chosen length:</b> the length is {{SOLE_BRACKET_L}}, the far nut row is at {{NUT_BOLT_X_FAR}}, and the difference is {{NUT_INSET_X}} &mdash; NUT_INSET_X &mdash; so the tip finishes flush with the nut face&apos;s edge.</p>
 <p><b>10.3</b> &mdash; <b>Ordered 4 11/16" &times; 39 5/16", and the sheet draws 120 &times; 1000.</b> The 120 was never arbitrary: it is the stacked pair's full section height, so the plate reaches all four back slots. The sheared piece is 119.06, <b>0.94 short</b>. &#9989; <b>It costs nothing, and the reason is the reference edge.</b> This sheet measures Y <i>down from the top edge</i>, which is the beam's top face, so the four rows at 15 / 45 / 75 / 105 are fixed against the beam and the shortfall falls off the bottom &mdash; 14.06 below the last row where 15 was intended, against a &oslash;9 clearance hole. &#128308; <b>Do not re-reference this sheet to its bottom edge.</b> Sheets 1a, 1b, 7 and 9 all measure from their bottom edges because those edges <i>bear on the torsion box</i>; this plate bolts to a moving beam and its bottom edge bears on nothing. The two conventions are each right for their own part, and footnote 9.3 is the argument for the other one. The 1.46 of length is the same slack as Sheet 9 &mdash; see 9.5.</p>
 </div>
 

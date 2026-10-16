@@ -59,13 +59,14 @@ PARTS = {
     ('s3c', 0): ('3c', 'Z top stop block', 1),
     ('s3c', 1): ('3c', 'Z top stop block', 1),
     ('s4', 0): ('4', 'Z plate', 1),
-    ('s5', 0): ('5', 'Y nut sole bracket', 2),
+    ('s5', 0): ('5', 'Nut sole plate', 3),
     ('s6', 0): ('6', 'Interposer', 3),
     ('s7', 0): ('7', 'Rear plate', 1),
     ('s8', 0): ('8', 'Front joining strip', 3),
     ('s9', 0): ('9', 'Outboard plate', 2),
     ('s10', 0): ('10', 'X back joining plate', 1),
-    ('s11', 0): ('11', 'X nut sole plate', 1),
+    # No s11: Sheet 11 is an installation page, not a part. All three sole
+    # plates are Sheet 5's one drawing, so its copies carry the X one too.
 }
 
 # What each diameter is FOR. Keyed by diameter; the pack has one job per size.

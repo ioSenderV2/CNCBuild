@@ -1072,10 +1072,15 @@ expr = "EXT_W"
 note = "Where the corner cut starts up the far end of both X end plates - 60, and it is EXT_W because that is the beam's footprint off the back edge. Below it the plate must stay full width to cover the upper extrusion's end; above it there is nothing but plate. His cut, 2026-10-04."
 
 [[dim]]
-sym = "CORNER_CUT_X_END"
+sym = "CORNER_CUT_ABOVE_NUT"
 value = 188
 provenance = "pinned"
-note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W. The same number on BOTH plates - 2a cuts from (XEP_CUT, 60) and 2b from (XEP_STOCK_L, 60), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X 242.5 and then across Y 60, which is the 'one less cut' that let the far end stay uncut. WAS 185.5 BRIEFLY, moved to 188 so the cut stops crowding the bearing block. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (176, 133.5), and the perpendicular distance to the cut is 19.9 mm on 2a and 23.4 on 2b, so a ~10 mm counterbore leaves about 15 mm of material on the tighter of the two. SETTLED: BOTH GREW BY ABOUT 5 ON 2026-10-10 and nothing was done to them: the block came down 7.5 with XEP_CUT while this end stayed at 188, because 188 is measured from the plate's bottom edge and the block is measured from the beam. At the block's old (183.5, 133.5) they were 14.2 and 18.6, and at a 185.5 cut end before that, 12.3 and 17.3."
+note = "Where the corner cut lands on the front edge, measured from the NUT PLANE rather than from the plate's bottom edge. FLAG: THE NUT PLANE IS THE RIGHT REFERENCE because the thing this clearance is against - the far-upper bearing block - is fixed to the beam, and so is the plane. Pinned where it is so the cut stops crowding that block."
+
+[[dim]]
+sym = "CORNER_CUT_X_END"
+expr = "XEP_SOLE_TAB + CORNER_CUT_ABOVE_NUT"
+note = "Where the corner cut lands on the plate's FRONT edge, at Y = XEP_W, in each plate's own machining frame. The same number on BOTH plates - 2a cuts from (XEP_CUT, CORNER_CUT_Y) and 2b from (XEP_STOCK_L, CORNER_CUT_Y), and they meet here. ON 2B THE CUT REPLACES THE STEP rather than following it: one diagonal instead of cutting along X and then across Y, which is the 'one less cut' that lets the far end stay uncut. CHECKED, computed not measured: the nearest feature is the far-upper bearing block M5 at (BLOCK_HIGH_COL_B, 133.5), and the perpendicular distance to the cut is 19.9 mm on 2a and 23.4 on 2b, so a ~10 mm counterbore leaves about 15 mm of material on the tighter of the two. FLAG: THE CUT AND THAT BLOCK MOVE TOGETHER, both carrying XEP_SOLE_TAB, which is what keeps those two figures true."
 
 
 [[dim]]

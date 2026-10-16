@@ -86,9 +86,10 @@
   72.19 mm** - 12.7 plate + 30 rail stack + 30 half beam. It is the **cantilever case**: ~100 mm of
   reach, thrust 60 mm outboard of the plate's outer face.
 - SETTLED: ~~**The sole bracket's form - flat foot or an L**~~ **Closed 2026-10-02: a doubler block.** A
-  154 × 45 × 1/2" block on the plate's outer face gives a 24.38 mm seating, and the sole bracket is a
-  **1/4" steel T**, 154 at the root and **{{SOLE_STEM_W}}** across the stem. **Two rows of bolts
-  across the 24.38.**
+  154 × 45 × 1/2" block on the plate's outer face, its end face level with the nut, gives the
+  **{{SOLE_BASE_D}}** seating; the sole plate is a **1/4" steel T**, 154 at the root and
+  **{{SOLE_STEM_W}}** across the stem. **One row of bolts into that end face**, the base butting the
+  strip of plate past it.
 - SETTLED: ~~**The doubler's 60 mm height**~~ **Closed at 45 mm, and 60 would have clashed.**
 The height was always gated on the **lower bearing block row's bottom edge** - the
   same unmeasured pattern as the 16 holes. It is *not* gated on the Y beam underside, which an earlier
@@ -104,7 +105,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - OPEN: **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
 - SETTLED: ~~**Rib under the full {{REAR_PLATE_L_ORDERED}} of rear bottom-edge bearing.**~~ **Closed 2026-10-11: not
-  needed.** The plate's 6.35 footprint sits wholly inside the 19 back web, with the 25 tongue
+  needed.** The plate's 6.35 footprint sits wholly inside the 19 back web, with the {{TONGUE_CLEAR}} tongue
   outboard of that - backed by solid wall over its whole length, so there is no span.
 - OPEN: **The two blocks beside the back centre tenon** - position settled at X 562.62 and 648.62,
   running forward from the back web. **Length is his call**; drawn to the first across-rib so each is

@@ -99,7 +99,7 @@ DETAIL = {
     "Acorn nut": "M8 acorn nut, on the tongue bolt's outboard end",
     "Rail counterbore": "counterbore in the rail, for an M5 x 16 rail bolt",
     "Z spacer": "spacer bar, sandwiched between the bearing blocks and the Z plate",
-    "Y nut doubler": "doubler on the X end plate's outboard face, carrying the Y nut sole bracket",
+    "Y nut doubler": "doubler on the X end plate's outboard face, carrying the Y nut sole plate",
     "X nut doubler": "doubler on the carriage plate's back face, carrying the X sole plate",
     "Shelf bar": "the bar the X beam's underside rests on",
     "BF12 tongue": "the tongue that carries the X axis BF12, on the MIN X end plate only",
@@ -123,12 +123,12 @@ SHEETS = {
     "Z spacer": "3b",
     "Z stop block": "3c",
     "Z plate": "4",
-    "Y sole bracket": "5",
+    "Y sole plate": "5",
     "Interposer": "6",
     "Rear plate": "7",
     "Front strip": "8",
     "Side plate": "9",
-    "X sole plate": "11",
+    "X sole plate": "5",
 }
 SHOP_PACK = ROOT / "machine" / "drawings" / "shop-pack.html"
 
@@ -1768,66 +1768,62 @@ def main() -> int:
             cyl("Casting bolt", "bolts", 0x3C4248, c, motor_end + r,
                 y_seat_z - d, y_seat_z + ip_t, 2.5, seg=10, d=D_M5_BAR(cast_jid(d)))
 
-        # ---- the Y nut sole bracket, under the X end plate at this end ----
-        # The nut hangs below the beam with its face DOWN, so the bracket lies
-        # under it and bolts UP - into the nut at the tip, and into the END
-        # FACES of the X end plate and its doubler at the root. Its top is put
-        # on the NUT'S face rather than on the plate's bottom edge, so that if
-        # XEP_CUT ever drifts off XEP_H again the plate shows it instead of the
-        # bracket quietly missing the nut.
-        inner = xb_x0 if x0 == lx0 else xb_x1       # the plate face it starts at
+        # ---- the nut sole plate, under the X end plate at this end --------
+        # The nut hangs below the beam with its face DOWN, so the plate lies
+        # under it and bolts UP - into the nut at the tip and into the DOUBLER'S
+        # end face at the root, and into nothing else. The end plate carries on
+        # XEP_SOLE_TAB past that face and the base BUTTS it. Its top is put on
+        # the NUT'S face rather than on the plate's bottom edge, so a cut that
+        # drifts off XEP_H shows as the plate moving, not as this quietly
+        # missing the nut.
+        inner = xb_x0 if x0 == lx0 else xb_x1       # the end plate's INNER face
         out = -1 if x0 == lx0 else +1               # and which way it reaches
+        root = inner + out * v["T_X_ENDPLATE"]      # its OUTER face: the root
         face_z = y_axis_z - v["NUT_AXIS_TO_FACE"]
         ride[0] = "Y"            # it hangs off the X end plate
-        # IT IS A STEEL T - his, 2026-10-13, replacing the 6061 trapezoid, and
-        # it is drawn as a PRISM rather than a box for the reason prism()'s own
-        # docstring gives: a box claims metal the part has not got. The box this
-        # replaced claimed 108 mm of aluminium at the tip and made this end look
-        # far more crowded than it is.
+        # IT IS A STEEL T, drawn as a PRISM rather than a box for the reason
+        # prism()'s own docstring gives: a box claims metal the part has not
+        # got, and at the tip that misreads how crowded this end is.
         #
-        # The base stays FULL WIDTH for SOLE_BASE_D, covering both the X end
-        # plate's end face and the doubler's behind it - that is where the eight
-        # root bolts land, and his read off the model was that 24 is all it
-        # needs. The stem then runs straight out at SOLE_STEM_W, which covers
-        # the nut's 40 face with 3 a side.
+        # The base stays FULL WIDTH for SOLE_BASE_D, which is the doubler's end
+        # face and the whole of what the four root bolts land on. The stem then
+        # runs straight out at SOLE_STEM_W, covering the nut's face.
         #
         # THE BASE'S REAR FACE IS THE LIMIT SENSOR'S TARGET: a full-width flat,
-        # square to the direction of travel. The trapezoid put an ANGLED face
-        # there, which is a trip point that drifts with standoff - his catch off
-        # the render, and it is what settled the T over the taper.
+        # square to the direction of travel, which is what settled the T over a
+        # taper - an angled face is a trip point that drifts with standoff.
         #
         # SOLE_FILLET_R is NOT DRAWN. The stem-to-base corner is square here;
         # the radius lives in the registry and on the sheet, because a polygon
         # approximation of it would then disagree with both.
-        tip = inner + out * v["SOLE_BRACKET_L"]
-        seat = inner + out * v["SOLE_BASE_D"]
+        tip = root + out * v["SOLE_BRACKET_L"]
+        seat = root + out * v["SOLE_BASE_D"]
         y_mid = (xep_back + xep_front) / 2
         t_half = v["SOLE_STEM_W"] / 2
-        prism("Y sole bracket", "gantry", 0xC9A227,
-              [[inner, xep_back], [seat, xep_back],
+        prism("Y sole plate", "gantry", 0xC9A227,
+              [[root, xep_back], [seat, xep_back],
                [seat, y_mid - t_half], [tip, y_mid - t_half],
                [tip, y_mid + t_half], [seat, y_mid + t_half],
-               [seat, xep_front], [inner, xep_front]],
+               [seat, xep_front], [root, xep_front]],
               face_z - v["T_SOLE_BRACKET"], face_z, plane="xy")
 
-        # Twelve M5 up through it: R5-R8 into the end plate's end face, R1-R4
-        # into the doubler's behind it, then four into the nut on its own
-        # pattern. ASSUMPTION: the root bolts are drawn BOLT_Z_NUT long like
-        # the nut ones - no length is given for them.
+        # Eight M5 up through it: R1-R4 into the doubler's end face, then four
+        # into the nut on its own pattern. Nothing goes into the end plate -
+        # the base butts its strip instead. ASSUMPTION: the root bolts are
+        # drawn BOLT_Z_NUT long like the nut ones; no length is given for them.
         nut_mid = (y_lo + y_hi) / 2
-        cols = [(inner + out * v["ROOT_BOLT_X_ENDPLATE"], j) for j in range(4)]
-        cols += [(inner + out * v["ROOT_BOLT_X_DOUBLER"], j) for j in range(4)]
+        cols = [(root + out * v["ROOT_BOLT_X_DOUBLER"], j) for j in range(4)]
         pts = [(bx, xep_back + v["ROOT_BOLT_Y_FIRST"] + j * v["ROOT_BOLT_Y_PITCH"],
                 D_M5_END(None)) for bx, j in cols]
         for bx in (v["NUT_BOLT_X_NEAR"], v["NUT_BOLT_X_FAR"]):
             for dy in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-                pts.append((inner + out * bx, nut_mid + dy, D_M5_NUT("y-nut-to-sole")))
+                pts.append((root + out * bx, nut_mid + dy, D_M5_NUT("y-nut-to-sole")))
         for bx, by, det in pts:
-            cyl("Y sole bolt head", "bolts", 0x3C4248, bx, by,
+            cyl("Y sole plate bolt head", "bolts", 0x3C4248, bx, by,
                 face_z - v["T_SOLE_BRACKET"],
                 face_z - v["T_SOLE_BRACKET"] - v["M5_HEAD_H"],
                 v["M5_HEAD_D"] / 2, seg=12, d=det)
-            cyl("Y sole bolt", "bolts", 0x3C4248, bx, by,
+            cyl("Y sole plate bolt", "bolts", 0x3C4248, bx, by,
                 face_z - v["T_SOLE_BRACKET"],
                 face_z - v["T_SOLE_BRACKET"] + v["BOLT_Z_NUT"], 2.5, seg=10,
                 d=det)
@@ -2615,17 +2611,18 @@ ALLOWED = {
     frozenset({"Shelf bar", "Shelf bolt"}),
     frozenset({"X end plate", "Shelf bolt"}),
     frozenset({"X beam", "Shelf bolt"}),
-    # The Y sole bracket laps the end plate and doubler end faces and the nut's
-    # face, and its twelve bolts cross it into all three. Only the shanks are
-    # listed; the heads hang below the bracket and clash with nothing.
-    frozenset({"Y sole bracket", "X end plate"}),
-    frozenset({"Y sole bracket", "Y nut doubler"}),
-    frozenset({"Y sole bracket", "Nut bolt face"}),
-    frozenset({"Y sole bracket", "Y sole bolt"}),
-    frozenset({"X end plate", "Y sole bolt"}),
-    frozenset({"Y nut doubler", "Y sole bolt"}),
-    frozenset({"Ball nut", "Y sole bolt"}),
-    frozenset({"Nut bolt face", "Y sole bolt"}),
+    # The Y sole plate laps the doubler's end face and the nut's face, and its
+    # eight bolts cross it into both. Only the shanks are listed; the heads hang
+    # below the plate and clash with nothing. It also BUTTS the end plate's
+    # strip, which is a touching face rather than an overlap - listed because
+    # two coplanar faces still register.
+    frozenset({"Y sole plate", "X end plate"}),
+    frozenset({"Y sole plate", "Y nut doubler"}),
+    frozenset({"Y sole plate", "Nut bolt face"}),
+    frozenset({"Y sole plate", "Y sole plate bolt"}),
+    frozenset({"Y nut doubler", "Y sole plate bolt"}),
+    frozenset({"Ball nut", "Y sole plate bolt"}),
+    frozenset({"Nut bolt face", "Y sole plate bolt"}),
     # The doubler is bolted flat to the plate's back face and the sole plate
     # lands on the doubler's top edge and on the nut's bolting face - those are
     # the same plane, which is the whole point of X_NUT_FACE_Z.
