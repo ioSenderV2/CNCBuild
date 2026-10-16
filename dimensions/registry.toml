@@ -176,7 +176,7 @@ note = "The doubler IS the end plate's offcut - 200 wide stock less the plate's 
 sym = "T_SOLE_BRACKET"
 value = 6.35
 provenance = "nominal"
-note = "1/4in STEEL, not the 6061 this note used to read - the part went to steel 2026-10-13 when it became a T, and the material line was left behind. NOMINAL AND IT HAS TO STAY NOMINAL: the shop supplies this plate, so there is nothing to micrometer the way T_REAR_PLATE's own 1/4in came back 6.19. If a 6.19 ever gets substituted here it only lengthens BOLT_Y_NUT_ENGAGE, which is slack in the safe direction."
+note = "1/4in STEEL. NOMINAL AND IT HAS TO STAY NOMINAL: the shop supplies this plate, so there is nothing to micrometer the way T_REAR_PLATE's 1/4in came back 6.19. A 6.19 here would only lengthen BOLT_Y_NUT_ENGAGE, which is slack in the safe direction."
 
 [[dim]]
 sym = "T_INTERPOSER"
@@ -233,6 +233,16 @@ sym = "XEP_TOP_ABOVE_BEAM"
 value = 60
 provenance = "pinned"
 note = "The plate stops at the top of the X beam's upper extrusion = EXT_W above the Y beam top"
+
+[[dim]]
+sym = "XEP_E_COL_LOW"
+expr = "XEP_BEAM_TOP_X + EXT_BORE_INSET"
+note = "200 - Sheet 2a's and 2b's E1/E3 column, up the plate. The X beam's TOP extrusion stands between XEP_BEAM_TOP_X and the plate's top edge, and the corner bores sit EXT_BORE_INSET in from each of its faces."
+
+[[dim]]
+sym = "XEP_E_COL_HIGH"
+expr = "XEP_CUT - EXT_BORE_INSET"
+note = "230 - the E2/E4 column, inset the same EXT_BORE_INSET from the plate's TOP edge, which is the top extrusion's own top face. The pair spans EXT_W less twice the inset, so the two columns are 30 apart by construction and not by choice."
 
 [[dim]]
 sym = "XEP_BOLT_REAR"
@@ -292,13 +302,13 @@ note = "235 - the MINIMUM height the X end plate has to reach, its bottom level 
 [[dim]]
 sym = "XEP_CUT_CHECK"
 expr = "XEP_CUT - (XEP_H + XEP_SOLE_TAB)"
-note = "0 - and it must stay 0. The plate is cut to the nut plane plus the tab; nothing else is a legal length. XEP_CUT's own note had carried the OPEN warning that nothing checked this, and twice the sheet and the registry drifted apart because the relationship was only written down. A NEGATIVE means the plate no longer reaches the nut face at all."
+note = "0 - and it must stay 0. The plate is cut to the nut plane plus the tab; nothing else is a legal length. NEGATIVE means the plate does not reach the nut face at all."
 
 [[dim]]
 sym = "XEP_SOLE_TAB"
 value = 10
 provenance = "pinned"
-note = "10 - how far the X end plate reaches PAST the doubler's end face, so the sole plate's base has a face to sit against. His, 2026-10-16, making the Y nut joint the X carriage's joint upside down: the doubler's end face is level with the nut's mounting face, the sole plate lies across that face and bolts into its edge, and the plate carries on past so the base has something to butt. FLAG: IT IS WHY THE PLATE'S BOTTOM EDGE IS NO LONGER THE NUT PLANE, and every coordinate measured up the plate carries this term because of it. Set it to 0 and the sole plate has nothing to locate against; it does not change DOUBLER_BLOCK_CLEAR, because the doubler and the block row both shift up with it."
+note = "10 - how far the X end plate reaches PAST the doubler's end face, so the sole plate's base has a face to sit against. His. The Y nut joint is the X carriage's upside down: the doubler's end face is level with the nut's mounting face, the sole plate lies across that face and bolts into its edge, and the plate carries on past to back the base. FLAG: THE PLATE'S BOTTOM EDGE IS THEREFORE NOT THE NUT PLANE, and every coordinate measured up the plate carries this term. At 0 the sole plate has nothing to locate against. It does not change DOUBLER_BLOCK_CLEAR - the doubler and the block row both shift up with it."
 
 [[dim]]
 sym = "XEP_BOTTOM"
@@ -425,12 +435,12 @@ note = "Closes exactly at 8. A 7 was given first and corrected. SETTLED: Still 8
 [[dim]]
 sym = "NUT_BOLT_X_NEAR"
 expr = "(SCREW_AXIS_X - (NUT_PATTERN_X / 2)) - T_X_ENDPLATE"
-note = "40 - inboard M5 column, from the sole bracket's root at the end plate's OUTER face. It read 52.19 off the inner face until the bracket's root moved there; the hole did not move, and it is the same 40 the X sole plate carries."
+note = "40 - inboard M5 column, from the sole bracket's root at the end plate's OUTER face. The same 40 the X sole plate carries, because both nuts stand the same distance out from the face the doubler bolts to."
 
 [[dim]]
 sym = "NUT_BOLT_X_FAR"
 expr = "(SCREW_AXIS_X + (NUT_PATTERN_X / 2)) - T_X_ENDPLATE"
-note = "80 - outboard M5 column, same frame. 86 less 80 is 6, which is NUT_INSET_X, so the tip finishes flush with the nut face's edge - the same closure the X sole plate's note records."
+note = "80 - outboard M5 column, same frame. SOLE_BRACKET_L less this is 6, which is NUT_INSET_X, so the tip finishes flush with the nut face's edge rather than at a chosen number."
 
 [[dim]]
 sym = "SOLE_REACH"
@@ -451,23 +461,23 @@ note = "Actual clear air, doubler's outer face to the nut's near edge. Comes out
 [[dim]]
 sym = "SOLE_BRACKET_L"
 expr = "(SCREW_AXIS_X + (NUT_FACE_X / 2)) - T_X_ENDPLATE"
-note = "86 - sole bracket root to tip, from the plate's OUTER face, which is where the doubler starts and so where the bracket's root now is. FLAG: IT WAS 98.19 OFF THE INNER FACE and the part changed, not just the frame: the base used to span the plate's and the doubler's stacked end faces with a row of bolts into each, and it lands on the doubler alone now - the X carriage's joint upside down, his 2026-10-16. The plate carries on past it by XEP_SOLE_TAB to give the base a face to sit against. A 107.4 drawn 2026-10-02 added the seating twice."
+note = "86 - sole bracket root to tip, from the plate's OUTER face, which is where the doubler starts and so where the bracket's root is. The base lands on the doubler's end face alone and the plate carries on past it by XEP_SOLE_TAB to back it. FLAG: THE BASE IS INSIDE THIS LENGTH, not added to it."
 
 [[dim]]
 sym = "SOLE_SAME_AS_X_CHECK"
 expr = "SOLE_BRACKET_L - X_SOLE_BRACKET_L"
-note = "0 - and it must stay 0, because the Y sole bracket and the X sole plate are ONE PART in three copies now. It is not an alias on purpose: each keeps its own chain, the Y off SCREW_AXIS_X less the plate and the X off X_SCREW_AXIS, and this proves they land on the same number rather than asserting it. They do because both nuts stand the same distance out from the face the doubler bolts to - SCREW_AXIS_X less T_X_ENDPLATE IS X_SCREW_AXIS. The root row and both nut rows coincide for the same reason: 6.095, 40 and 80 on either part."
+note = "0 - and it must stay 0: the Y sole bracket and the X sole plate are ONE PART in three copies. NOT an alias on purpose - each keeps its own chain, the Y off SCREW_AXIS_X less the plate and the X off X_SCREW_AXIS, so this proves they land on one number rather than asserting it. They do because SCREW_AXIS_X less T_X_ENDPLATE IS X_SCREW_AXIS: both nuts stand the same distance out from the face the doubler bolts to. The root row and both nut rows coincide for the same reason."
 
 [[dim]]
 sym = "ROOT_BOLT_X_ENDPLATE"
 expr = "T_X_ENDPLATE / 2"
 retired = true
-note = "FLAG: RETIRED 2026-10-16. It was the sole bracket's R5-R8 row, into the END PLATE's end face, spotted at home through the bracket itself. The Y joint became the X carriage's joint upside down and the X has no such row - the sole plate bolts into the doubler's edge only, and the plate's extra XEP_SOLE_TAB gives the base a face to butt instead of a second row of bolts. Kept rather than deleted because it is why Sheet 5 ever had two root rows, and why the Y bracket was 12.19 longer than the X one."
+note = "RETIRED. The sole bracket's second root row, into the END PLATE's end face. The sole plate bolts into the doubler's edge only now, and XEP_SOLE_TAB backs the base instead. Kept because a retired symbol is the record that the row existed."
 
 [[dim]]
 sym = "ROOT_BOLT_X_DOUBLER"
 expr = "T_DOUBLER / 2"
-note = "6.095 - the sole bracket's single root row, from the bracket's root, centred in the doubler's own thickness. FORCED, not chosen: a row off its plate's mid-thickness breaks out of it. These are the only edge holes that need the mill - Sheet 2 carries them as B1-B4. It read 18.285 while the root was at the plate's INNER face and there were two rows; see ROOT_BOLT_X_ENDPLATE for the one that went."
+note = "6.095 - the sole bracket's single root row, from the bracket's root, centred in the doubler's thickness. FORCED, not chosen: a row off its plate's mid-thickness breaks out of it. These are the only edge holes that need the mill - Sheet 2 carries them as B1-B4."
 
 [[dim]]
 sym = "ROOT_BOLT_Y_FIRST"
@@ -495,17 +505,17 @@ note = "Seating width at the plate's bottom with the doubler on"
 sym = "DOUBLER_H"
 value = 45
 provenance = "pinned"
-note = "Doubler height. 45, so it can come out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW, and anything that stops below that row's bottom edge clears. DOUBLER_BLOCK_CLEAR is that gap and it is 3 - his question, 2026-10-16. FLAG: THIS NOTE SAID 10.5 AND IT WAS STALE BY THE SAME 7.5 AS EVERYTHING ELSE. It quoted the block edge at 55.5 off a lower rail at 77.5; RAIL_LOW_XEP came to 70 on 2026-10-10 and the edge with it, which is the whole reason the clearance is now a derived symbol rather than a sentence. Nothing bears here, so 3 is a clearance and not a stress question, and 42 would still come out of the same offcut if margin is wanted. NOT gated on the Y beam underside - the doubler sits ~17 inboard of the beam's inside face."
+note = "Doubler height. 45, so it comes out of OFFCUTS - his reason, and the only one it needs: nothing requires a particular height here. THE CONSTRAINT IS AN UPPER BOUND, NOT A FIT: the doubler shares a face with the LOWER Y BEARING BLOCK ROW, and anything stopping below that row's bottom edge clears. DOUBLER_BLOCK_CLEAR is that gap, and nothing bears across it. 42 would still come out of the same offcut if more margin is wanted. NOT gated on the Y beam underside - the doubler sits ~17 inboard of the beam's inside face."
 
 [[dim]]
 sym = "DOUBLER_BOTTOM_X"
 expr = "XEP_SOLE_TAB"
-note = "The doubler's end face in the END PLATE's machining frame. Its end face is level with the nut's mounting face, and the plate reaches XEP_SOLE_TAB past that, so the doubler starts that far up the plate rather than at the plate's own end. It WAS the plate's end, which is why Sheet 2a's B row used to read 'into the X 0 end edge'."
+note = "The doubler's end face in the END PLATE's machining frame. That face is level with the nut's mounting face and the plate reaches XEP_SOLE_TAB past it, so the doubler starts that far up the plate rather than at the plate's own end. Sheet 2a's B row bores in from here, not from X 0."
 
 [[dim]]
 sym = "DOUBLER_BLOCK_CLEAR"
 expr = "(RAIL_LOW_XEP - (BLOCK_W / 2)) - (DOUBLER_BOTTOM_X + DOUBLER_H)"
-note = "3 - doubler top to the LOWER Y bearing block row's bottom edge, both in the end plate's frame. FLAG: IT MUST NOT GO NEGATIVE; negative means the doubler holds a block off its mounting face, which is the one surface on this plate that has to be flat. XEP_SOLE_TAB does not move it - the doubler and the block row both shift up by it. It is derived because the sentence that used to carry it went stale: see DOUBLER_H."
+note = "3 - doubler top to the LOWER Y bearing block row's bottom edge, both in the end plate's frame. FLAG: IT MUST NOT GO NEGATIVE. Negative means the doubler holds a block off its mounting face, which is the one surface on this plate that has to be flat. XEP_SOLE_TAB does not move it - the doubler and the block row both shift up by it."
 
 # ---------------------------------------------------------------- the front fin
 
@@ -1222,7 +1232,7 @@ note = "1211 - box top skin front to back, from the back tongue's inside face to
 [[dim]]
 sym = "XEP_BEAM_TOP_X"
 expr = "XEP_CUT - XEP_TOP_ABOVE_BEAM"
-note = "The Y beam's TOP face in the end plate's machining frame, measured from the plate's bottom end. The bridge between machine Z (measured from the beam top, negative downwards) and this sheet's X. Everything the shelf bar and the beam contribute to Sheet 2a comes through here. FLAG: IT IS OFF THE CUT, NOT OFF XEP_H, and that is the point - the plate's top edge is XEP_TOP_ABOVE_BEAM above the beam whatever the bottom does, so taking it off the floor was only right while the floor WAS the bottom edge. XEP_SOLE_TAB broke that, and off XEP_H this read 175 against a real 185."
+note = "The Y beam's TOP face in the end plate's machining frame, measured from the plate's bottom end. The bridge between machine Z (from the beam top, negative downwards) and this sheet's X - everything the shelf bar and the beam contribute to Sheet 2a comes through here. FLAG: OFF THE CUT, NOT OFF XEP_H. The plate's top edge is XEP_TOP_ABOVE_BEAM above the beam whatever its bottom does; taking this off the floor is only right while the floor IS the bottom edge, and XEP_SOLE_TAB means it is not."
 
 [[dim]]
 sym = "SHELF_BOLT_HIGH_Z"
@@ -1289,7 +1299,7 @@ note = "Third P-hole row, 97.545, drawn 97.5."
 [[dim]]
 sym = "DOUBLER_BOLT_X_PLATE"
 expr = "DOUBLER_BOTTOM_X + DOUBLER_BOLT_X"
-note = "35 - Sheet 2a's and 2b's D1-D4 column, in the END PLATE's frame. FLAG: IT IS NOT THE SAME NUMBER AS DOUBLER_BOLT_X ANY MORE. They were one symbol while the doubler's end face was the plate's own end; XEP_SOLE_TAB put 10 between them, so the doubler is drilled at 25 up its own 45 and the plate at 35 up its 245. Drill the plate off this and the doubler off that, and they meet."
+note = "35 - Sheet 2a's and 2b's D1-D4 column, in the END PLATE's frame. FLAG: NOT THE SAME NUMBER AS DOUBLER_BOLT_X, which is the same column in the DOUBLER's frame. XEP_SOLE_TAB is the difference: the doubler is drilled at 25 up its own 45, the plate at 35 up its 245. Drill each off its own and they meet."
 
 [[dim]]
 sym = "DOUBLER_BOLT_X"
@@ -2579,7 +2589,7 @@ note = "35 - the Y screw centreline below the Y beam's underside, and HIS FIGURE
 sym = "XEP_CUT"
 value = 245
 provenance = "part"
-note = "245 - what the X gantry end plate is actually CUT to, as drawn on Sheet 2a, out of a 300 piece. It is XEP_H's floor plus XEP_SOLE_TAB: the plate reaches 10 past the nut plane so the sole plate's base has a face to sit against, which is the X carriage's joint upside down - his, 2026-10-16. FLAG: THE BOTTOM EDGE IS THEREFORE NOT THE NUT PLANE ANY MORE. It was, while the sole bracket bolted into the plate's and the doubler's stacked end faces, and every coordinate up the plate was measured straight off the nut plane because of it. They all carry XEP_SOLE_TAB now. FLAG: IT IS A SEPARATE SYMBOL FROM XEP_H ON PURPOSE. XEP_H is the floor the plate has to reach and it moves whenever the nut or the interposer moves; the cut is a decision about a piece of metal and should only move when somebody decides to cut differently. Keeping one symbol for both meant the sheet quietly disagreed with the registry twice - by 0.5 when T_INTERPOSER went 9.525 to 10, and by 8 more when NUT_FACE_BELOW_BEAM was rebuilt on the screw axis. SETTLED: XEP_CUT_CHECK now enforces the relationship that used to be remembered."
+note = "245 - what the X gantry end plate is CUT to, as drawn on Sheet 2a, out of a 300 piece. XEP_H's floor plus XEP_SOLE_TAB: the plate reaches 10 past the nut plane so the sole plate's base has a face to sit against. FLAG: ITS BOTTOM EDGE IS NOT THE NUT PLANE - every coordinate up the plate carries XEP_SOLE_TAB. FLAG: A SEPARATE SYMBOL FROM XEP_H ON PURPOSE. XEP_H is the floor the plate must reach and moves whenever the nut or the interposer moves; the cut is a decision about a piece of metal and should move only when somebody decides to cut differently. XEP_CUT_CHECK enforces the relationship."
 
 # ------------------------------------------------- the tongue bolt's outboard end
 # The washer and the nut on the far side of every plywood tongue. Mostly standard
@@ -3613,12 +3623,12 @@ note = "The sole bracket's width at its tip, and at its stem - the T is carried 
 [[dim]]
 sym = "SOLE_BASE_D"
 expr = "T_DOUBLER"
-note = "12.19 - the T's base depth, outboard from the end plate's OUTER face. IT IS NOT A CHOICE: it is the doubler's end face, which is the whole of what the root bolts land on. FLAG: IT WAS DOUBLER_SEATING's 24.38, the plate's end face plus the doubler's, back when a row of bolts went into each. One row now, into the doubler, and the plate's XEP_SOLE_TAB backs the base instead of carrying bolts."
+note = "12.19 - the T's base depth, outboard from the end plate's OUTER face. NOT A CHOICE: it is the doubler's end face, which is the whole of what the root bolts land on."
 
 [[dim]]
 sym = "SOLE_STEM_W"
 expr = "SOLE_TIP_W"
-note = "40 - the T's stem width, carried straight out from the base rather than tapering. It is SOLE_TIP_W because the tip is what has to take the nut's four bolts and nothing else constrains it. FLAG: THIS NOTE SAID 46 WHILE THE EXPRESSION GAVE 40, which is the exact shape of staleness the registry exists to stop - SOLE_TIP_W was pinned at 46 as a free choice, then derived to the nut's own NUT_FACE_Y of 40, and the two notes downstream of it were not swept. The 40 leaves 8 to the edge beside an M5 at plus or minus 12, which is plenty in steel - his, 2026-10-15."
+note = "40 - the T's stem width, carried straight out from the base rather than tapering. It is SOLE_TIP_W because the tip takes the nut's four bolts and nothing else constrains it. That leaves 8 to the edge beside an M5 at plus or minus 12, which is plenty in steel - his."
 
 [[dim]]
 sym = "SOLE_STEM_L"

@@ -100,8 +100,12 @@ try {
     # registry value moves and the prose quoting it does not. It compares the
     # working tree against the registry AT HEAD, so it has to run BEFORE the
     # change is committed - which is where this sits.
+    # check-note-history is a RATCHET, not an audit: it reads only the notes
+    # this working tree changed, so it never argues with the existing corpus.
+    # Like restale it compares against HEAD, so it also has to run uncommitted.
     foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-registry-js',
-                   'check-shop-pack-refs', 'subst', 'restale') {
+                   'check-shop-pack-refs', 'subst', 'restale',
+                   'check-note-history') {
         Write-Host "-- $c" -ForegroundColor Cyan
         & $py "tools/$c.py" @(
             if ($c -eq 'subst') { '--check' }
