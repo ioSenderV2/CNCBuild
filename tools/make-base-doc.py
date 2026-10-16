@@ -49,6 +49,22 @@ def strip_length():
     return boxdoc.SHEETS[0][1] - 2 * boxdoc.EDGE_TRIM
 
 
+def source_of(sheet, bold=False):
+    """Where a piece comes from, from the parts table's `sheet` field.
+
+    ONE FUNCTION FOR BOTH THE PRINTOUT AND THE PAGE. They were two dicts with
+    the same keys and the same f"sheet {sheet}" fallback, so a source that is
+    not a sheet number and not one of the two known words - "12 scrap", say -
+    printed as "sheet 12 scrap" in both. A bare number is a sheet; anything
+    else names itself.
+    """
+    named = {"cut": "already cut", "offcut": "spare strip"}
+    if sheet.isdigit():
+        return f"sheet {sheet}"                  # never bold: it is just a number
+    txt = named.get(sheet, sheet)
+    return f"<b>{txt}</b>" if bold else txt
+
+
 def parts(v):
     """Every piece of the base, as (name, long, short, qty, sheet, note).
 
@@ -100,6 +116,12 @@ def parts(v):
          "offcut",
          "2 laminations, the back centre leg's whole slot above the foot "
          "spacer - it COMES OUT and the two walls take its place"),
+        ("Tenon corner spacer", v["POST_TENON_L"], v["TENON_CORNER_Y"], 2,
+         "12 scrap",
+         f"{v['TENON_SPACER_GAP']:g} thick, the two FRONT legs - glued to the "
+         "OUTER face of the tenon tab, so the composite lands on the perimeter "
+         "web's inner face and the box's tongue corner is located both ways. "
+         "Out of 12 Baltic birch, which mikes at 12.003"),
     ]
 
 
@@ -639,7 +661,7 @@ ledge will be cut, is his call.</p>
 # back centre leg the band comes off the back face alone, so both strips stand
 # and the slot leaves 36 between them.
 SHOULDER_TONGUE, SHOULDER_SKIN = "#e7d2a8", "#cfe0ee"
-TENON_BROWN = "#9C6B3C"
+TENON_BROWN, SPACER_PINK = "#9C6B3C", "#f6d8de"
 
 
 def shoulder_legs(v):
@@ -684,6 +706,7 @@ def shoulder_plan_svg(v, s=SHOULDER_S):
     """
     pwx, pwy, strip = v["POST_W_X"], v["POST_W_Y"], v["LEG_STRIP"]
     gm_t, ledge, tong = v["GRID_MEMBER_T"], v["T_BOX_LEDGE"], v["T_BOX_TONGUE"]
+    gap = v["TENON_SPACER_GAP"]
     skin = ledge - tong                      # the inner 18 of the 42
     stand = pwx - ledge                      # 30 across, on a leg ledged in X
     legs = shoulder_legs(v)
@@ -753,6 +776,22 @@ def shoulder_plan_svg(v, s=SHOULDER_S):
                 f'y="{py((by0 + by1) / 2) + 1.6:.1f}" text-anchor="middle" '
                 f'font-size="4.6" fill="#fff" font-weight="bold">'
                 f'{tx1 - tx0:g}&#215;{by1 - by0:g}</text>')
+            # THE SPACER FILLS THE REST OF THE BAND. On a front leg the band is
+            # POST_W_X - T_BOX_LEDGE across and the tab is one strip of it; the
+            # rest is slot, and that is the gap to the web. Drawn against the
+            # tab's outer face, which is whichever side the ledge is on.
+            if ledged & {"left", "right"}:
+                gx0 = tx0 - gap if "left" in ledged else tx1
+                body.append(
+                    f'<rect x="{px(gx0):.2f}" y="{py(by0):.2f}" '
+                    f'width="{gap * s:.2f}" height="{(by1 - by0) * s:.2f}" '
+                    f'fill="{SPACER_PINK}" stroke="#a00" stroke-width="0.7"/>')
+                body.append(
+                    f'<text x="{px(gx0 + gap / 2):.1f}" '
+                    f'y="{py((by0 + by1) / 2) + 1.4:.1f}" text-anchor="middle" '
+                    f'font-size="4" fill="#a00" '
+                    f'transform="rotate(-90 {px(gx0 + gap / 2):.1f} '
+                    f'{py((by0 + by1) / 2) + 1.4:.1f})">spacer {gap:g}</text>')
 
         # the outline last, so it is unbroken
         body.append(f'<rect x="{px(0):.2f}" y="{py(0):.2f}" '
@@ -912,6 +951,42 @@ shoulder, and the tenon is location only. <b>Which is why the slot passing
 through it costs nothing</b> &mdash; a tenon is whichever strips stand inside
 the band, never the leg's full width.</p>
 
+<h3>A {v['TENON_SPACER_GAP']:g} spacer on each front tenon</h3>
+<p><b>{v['TENON_SPACER_GAP']:g} &times; {v['TENON_CORNER_Y']:g} &times;
+{v['POST_TENON_L']:g}, glued to the OUTER face of the tab</b>, out of
+{v['TENON_SPACER_GAP']:g} Baltic birch scrap. <b>The two front legs only</b>
+&mdash; the back centre leg's tabs butt the back wall's web with no gap at
+all.</p>
+<p>🔴 <b>Without it the box is located on a face and not on a corner.</b> A front
+tab butts the front perimeter web with nothing to spare and has
+<b>{v['TENON_SPACER_GAP']:g} of air to the side web</b>. Fill that, and the
+composite tenon's outer face lands <b>on</b> the side web's inner face, so the
+box's tongue corner is held both ways.</p>
+<p>🔴 <b>Put another way, the spacer makes the composite tenon fill the whole
+un-ledged band.</b> That band is {v['POST_W_X']:g} &minus;
+{v['T_BOX_LEDGE']:g} = <b>{v['POST_W_X'] - v['T_BOX_LEDGE']:g}</b> across, the
+tab is the one {v['LEG_STRIP']:g} of it that is solid, and the other
+<b>{v['TENON_SPACER_GAP']:g} is slot</b> &mdash; which is the gap. <b>And the
+band's inner edge IS the web's inner face</b>, because the ledge is as wide as
+the wall and the leg's outer face is flush with the wall's. So filling the band
+and landing on the web are the same thing.</p>
+<p><b>Where the {v['TENON_SPACER_GAP']:g} comes from the long way round</b>, which
+is the answer to why it is not {v['LEG_STRIP']:g}: the leg's outer face stands
+flush with the
+<b>tongue's</b> outer face, and the tongue is {v['T_BOX_TONGUE']:g} where every
+other lamination is {v['LEG_STRIP']:g}. So the leg and its slot sit
+{v['T_BOX_TONGUE'] - v['LEG_STRIP']:g} further outboard than an all-{v['LEG_STRIP']:g}
+wall would put them: <b>{v['LEG_STRIP']:g} + {v['GRID_MEMBER_T']:g}</b> of leg
+against <b>{v['T_BOX_TONGUE']:g} + {v['T_BOX_WALL_WEB']:g}</b> of wall leaves
+<b>{v['TENON_SPACER_GAP']:g}</b>. <b>It moves if any of those four do.</b></p>
+<p>🔴 <b>So the two front tenons take a CORNER out of the bottom skin, not a
+hole.</b> The cut runs out to both of the skin's edges and the outer
+{v['T_BOX_WALL_WEB']:g} that would wrap the corner goes with it &mdash; in from
+the corner to the tenon's two <b>inboard</b> faces plus the same
+{v['TENON_HOLE_CLEAR']:g} a side. <b>All of it is covered by the
+{v['T_BOX_TONGUE']:g} laminations</b>, which stand outside the skin's edge
+there. The back centre leg keeps two closed holes.</p>
+
 <h3>How deep, and what lands on it</h3>
 {shoulder_section_svg(v)}
 <p><b>Cut all five legs to {v['POST_W_X']:g} &times; {v['POST_W_Y']:g} first,
@@ -947,9 +1022,8 @@ def main():
 
     print("BASE CONSTRUCTION\n")
     for name, lng, shrt, qty, sheet, _ in all_parts:
-        where = {"cut": "already cut", "offcut": "spare strip"}.get(
-            sheet, f"sheet {sheet}")
-        print(f"  {name:30s} {lng:8.0f} x {shrt:6.0f}   x{qty:<3} {where}")
+        print(f"  {name:30s} {lng:8.0f} x {shrt:6.0f}   x{qty:<3} "
+              f"{source_of(sheet)}")
     print(f"\n  {STRIPS_CUT} leg strips are ALREADY CUT from a sheet of "
           f"{v['T_BB_SKIN_BOT']:g} - that sheet is spent. Only 10 are laminated "
           f"into legs, so the slot stock is the other {STRIPS_CUT - 10} plus "
@@ -985,10 +1059,9 @@ def main():
 
 
 def render(rows, summary, v, nests):
-    where = {"cut": "<b>already cut</b>", "offcut": "<b>spare strip</b>"}
     pr = "".join(
         f"<tr><td>{n}</td><td class=n>{lng:g}</td><td class=n>{shrt:g}</td>"
-        f"<td class=n>{qty}</td><td>{where.get(sheet, f'sheet {sheet}')}</td>"
+        f"<td class=n>{qty}</td><td>{source_of(sheet, bold=True)}</td>"
         f"<td class=s>{note}</td></tr>"
         for n, lng, shrt, qty, sheet, note in rows)
     sh = "".join(

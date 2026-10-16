@@ -830,11 +830,35 @@ is deliberate: stopping it at the upper grid would leave a **10 mm bridge** of l
 spanning the slot and pretending to be the surface the box bears on. So a tenon is whichever **strips**
 stand inside the ledge — one on a corner leg, two at the back centre, never the leg's full width.
 
-**Four holes in the bottom skin, not three**, each a tab plus 1 a side: **20 × 46**. The back centre's
-pair have a 36 island between them which bears nothing, since it sits over the slot — one hole
-spanning both would work as well and be easier to cut straight.
+**Two holes in the bottom skin and two corners.** The back centre's pair are holes, a tab plus 1 a
+side: **20 × 46**, with a 36 island between them which bears nothing since it sits over the slot —
+one hole spanning both would work as well and be easier to cut straight.
 
-**Trim all five legs to the same 72 × 86 after the glue dries** — so the two corner tenon holes are
+🔴 **The two FRONT tenons take a corner out of the skin instead of a hole** — his, and what it buys
+is the corner itself. **The cut runs out to both of the skin's edges**, so the outer 18 that would
+otherwise wrap around the corner goes with it: in from the corner to the tenon's two **inboard**
+faces plus the same 1 a side. **It is all covered by the 24 laminations**, which stand outside the
+skin's edge there, so nothing of it shows.
+
+#### A 12 spacer on each front tenon's outer face
+
+**12 × 44 × 116, glued to the OUTER face of the tab** — out of 12 mm Baltic birch scrap, which mikes
+at **12.003**, so the stock is the gap.
+
+🔴 **Without it the box is located on a face and not on a corner.** A front tab butts the front
+perimeter web with nothing to spare and has **12 of air to the side web**. Fill that and the
+composite tenon's outer face lands **on** the side web's inner face, so the tongue corner is captured
+both ways.
+
+**The 12 is a residue and not a choice**, which is why it is worth knowing where it comes from: the
+leg's outer face stands flush with the **tongue's** outer face, and the tongue is 24 where every
+other lamination is 18, so the leg and its slot sit 6 further outboard than an all-18 wall would put
+them. 18 + 36 of leg against 24 + 18 of wall leaves 12. **It moves if any of those four do** — see
+TENON_SPACER_GAP.
+
+**The back centre leg gets none.** Its tabs butt the back web with no gap at all.
+
+**Trim all five legs to the same 72 × 86 after the glue dries** — so the two front corner cuts are
 identical and come off one setup, and the back one differs only in being the full 72 wide. The older
 instruction to cut each hole to its own post is retired; it existed when the posts were cedar sticks
 that varied.
