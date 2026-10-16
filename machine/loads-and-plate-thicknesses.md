@@ -54,7 +54,7 @@ Current as of 2026-10-02.
 | Cast stepper frame interposer bar | 60 × **150** × **3/8"** | 6061, **quantity 3** - Y1, Y2 and the X stepper end. One drawing; X's BF12 end takes none, using a tongue off the end plate |
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, quantity 2 - identical below the top edge; the **right-hand one carries the BF12 tongue** above it, running to the stock's 300 |
 | **Y nut doubler block** | 154 × 45 × **1/2"** | 6061, quantity 2 - on the end plate's outer face, giving a 24.38 mm seating |
-| **Y nut sole bracket** | trapezoid **154 → 46** over **98.19** × **1/4"** | 6061, quantity 2 - carries the inverted Y ball nut |
+| **Y nut sole bracket** | **T**, 154 root × {{SOLE_BASE_D}}, **{{SOLE_STEM_W}}** stem × {{SOLE_STEM_L}}, × **1/4"** | **A36 steel**, quantity 2 - carries the inverted Y ball nut. Same sheet as the rear plate |
 | X carriage plate | 154 × 407 × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
 

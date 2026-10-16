@@ -3542,9 +3542,8 @@ note = "1.2 - metal between the M5 x 35 head and the corner fillet, as the dista
 
 [[dim]]
 sym = "SOLE_TIP_W"
-value = 46
-provenance = "pinned"
-note = "46 - the sole bracket's width at its TIP. FLAG: IT IS A FREE FIGURE AND SHEET 5 SAYS SO - nothing mates to the narrow end, so unlike the 98.19 reach it is chosen rather than derived. That is what makes a T-shaped bracket a question of preference rather than of fit: the root must stay XEP_W wide for DOUBLER_SEATING, because that is where the eight root bolts land on the end plate and doubler end faces, and everything past it is metal removal."
+expr = "NUT_FACE_Y"
+note = "The sole bracket's width at its tip, and at its stem - the T is carried straight out. IT IS THE NUT'S OWN WIDTH, his call: the tip takes the nut's four M5 and nothing else is on it, so the plate is as wide as the thing it bolts to. The M5 pattern is NUT_PATTERN_Y across this, which leaves 8 to the edge. FLAG: IT WAS PINNED AT 46 AS A FREE CHOICE and is derived now, so it FOLLOWS the nut if the nut ever changes."
 
 # -------------------------------------------------- the nut sole brackets, as T
 # SETTLED: T-SHAPED, AND IN STEEL - his, 2026-10-13, replacing the 6061

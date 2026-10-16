@@ -87,7 +87,8 @@
   reach, thrust 60 mm outboard of the plate's outer face.
 - SETTLED: ~~**The sole bracket's form - flat foot or an L**~~ **Closed 2026-10-02: a doubler block.** A
   154 × 45 × 1/2" block on the plate's outer face gives a 24.38 mm seating, and the sole bracket is a
-  1/4" trapezoid, 154 at the root to ~46 over the nut. **Two rows of bolts across the 24.38.**
+  **1/4" steel T**, 154 at the root and **{{SOLE_STEM_W}}** across the stem. **Two rows of bolts
+  across the 24.38.**
 - SETTLED: ~~**The doubler's 60 mm height**~~ **Closed at 45 mm, and 60 would have clashed.**
 The height was always gated on the **lower bearing block row's bottom edge** - the
   same unmeasured pattern as the 16 holes. It is *not* gated on the Y beam underside, which an earlier
