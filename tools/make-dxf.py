@@ -13,9 +13,15 @@ its X list and its Y list, so that is how they are read, and the generated count
 is checked against tools/build-hole-tally.py's independent count of the same
 tables - if those two disagree the parse is wrong and the run fails.
 
-DXF R12 ASCII, LINE and CIRCLE only. No splines, no polylines, no blocks: every
-machine shop's software reads R12, and an outline made of lines cannot be
-misread the way a fitted curve can.
+DXF R12 ASCII, LINE, CIRCLE and ARC only. No splines, no polylines, no blocks:
+every machine shop's software reads R12, and an outline made of lines cannot be
+misread the way a fitted curve can. The ARC is there for the sole plates' two
+fillets and is as old as the format.
+
+The pack is read through tools/subst.py, so a schedule cell may cite a registry
+symbol and the coordinate that reaches the DXF is still a number. Reading the
+raw file instead would silently parse '{{ROOT_BOLT_X_DOUBLER}}' as no X at all
+and write a part with holes missing.
 """
 from __future__ import annotations
 
@@ -23,10 +29,15 @@ import math
 import os
 import re
 import sys
+from pathlib import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PACK = os.path.join(HERE, '..', 'machine', 'drawings', 'shop-pack.html')
 OUT = os.path.join(HERE, '..', 'machine', 'drawings', 'dxf')
+
+sys.path.insert(0, HERE)
+import subst                                                     # noqa: E402
+from dims import Registry                                        # noqa: E402
 
 MM_IN = 25.4
 PLATE_RE = r'<div class="plate pg-(s[0-9a-z]+)">(.*?)(?=\n<div class="plate )'
@@ -49,6 +60,20 @@ SETUPS = [
 
 FIN_BASE, FIN_TOP, FIN_H = 200.0, 100.0, 301.625
 FIN_GAP = 1.0           # between the two nested fins
+
+# THE ONE SETUP WHERE THE SHOP SUPPLIES THE METAL - his, 2026-10-16. So there is
+# no stock rectangle: these are three part profiles cut from the shop's own
+# plate, and the material goes on the drawing as a note for them to quote rather
+# than as an outline he hands over. Everything about the shape comes out of the
+# registry, which is why it is read rather than written down here again.
+#   (sheet, title, the symbol for its root-to-tip length, its base depth)
+SOLE_PARTS = [
+    ('s5', 'Y nut sole bracket', 'SOLE_BRACKET_L', 'SOLE_BASE_D', 2),
+    ('s11', 'X nut sole plate', 'X_SOLE_BRACKET_L', 'T_X_ENDPLATE', 1),
+]
+SOLE_FILE = '6-sole-plates'
+SOLE_MATERIAL = '1/4in HR A36 STEEL - SHOP TO SUPPLY'
+SOLE_GAP = 12.0         # between the three profiles on the one drawing
 
 
 def text_of(html):
@@ -121,6 +146,15 @@ def circle(x, y, d, layer):
             '40', f'{d / 2:.4f}']
 
 
+def arc(x, y, r, a0, a1, layer):
+    """R12 ARC. ALWAYS COUNTERCLOCKWISE from code 50 to code 51 - the format has
+    no direction flag, so swapping the two angles draws the other three quarters
+    of the circle rather than reversing the same arc."""
+    return ['0', 'ARC', '8', layer,
+            '10', f'{x:.4f}', '20', f'{y:.4f}', '30', '0.0',
+            '40', f'{r:.4f}', '50', f'{a0:.4f}', '51', f'{a1:.4f}']
+
+
 def text(x, y, h, s, layer):
     return ['0', 'TEXT', '8', layer,
             '10', f'{x:.4f}', '20', f'{y:.4f}', '30', '0.0',
@@ -182,6 +216,85 @@ def build(name, title, sheet, L, W, T, material, qty, src):
     return n, len(cutouts), used, sizes
 
 
+def sole_T(ox, L, D, W, S, R):
+    """One sole plate's T profile, root along the bottom.
+
+    DXF x is the part's WIDTH (machine Y, across the 154) and DXF y is its
+    LENGTH (machine X, root to tip), so the drawing stands up the way Sheets 5
+    and 11 draw it. Returns the entities and the two fillet centres.
+
+    The stem is CENTRED on the root, which is Y 77 on both sheets - the plate's
+    own fore-aft mid. The two re-entrant corners carry SOLE_FILLET_R, and the
+    straight edges stop at the tangent points rather than running into it.
+    """
+    lo, hi = (W - S) / 2, (W + S) / 2          # the stem's two sides, 57 and 97
+    ents = []
+    for a, b in (((ox, 0), (ox + W, 0)),               # the root face
+                 ((ox + W, 0), (ox + W, D)),           # base, far end
+                 ((ox + W, D), (ox + hi + R, D)),      # base top, past the stem
+                 ((ox + hi, D + R), (ox + hi, L)),     # stem, far side
+                 ((ox + hi, L), (ox + lo, L)),         # the tip
+                 ((ox + lo, L), (ox + lo, D + R)),     # stem, near side
+                 ((ox + lo - R, D), (ox, D)),          # base top, near the stem
+                 ((ox, D), (ox, 0))):                  # base, near end
+        ents += line(a, b, 'OUTLINE')
+    ents += arc(ox + hi + R, D + R, R, 180, 270, 'OUTLINE')
+    ents += arc(ox + lo - R, D + R, R, 270, 360, 'OUTLINE')
+    return ents
+
+
+def build_sole(src, reg):
+    """The three nut sole plates on one drawing, PROFILES AND NO STOCK.
+
+    The shop supplies this plate, so there is no rectangle to cut them out of -
+    the outline on the page IS the part. Three of them side by side on their
+    roots, which is also the order the sheets read.
+    """
+    W = reg.value('XEP_W')
+    S = reg.value('SOLE_STEM_W')
+    R = reg.value('SOLE_FILLET_R')
+    T = reg.value('T_SOLE_BRACKET')
+
+    ents, ox, tall, per_sheet, sizes, n = [], 0.0, 0.0, {}, {}, 0
+    for sheet, title, l_sym, d_sym, copies in SOLE_PARTS:
+        L, D = reg.value(l_sym), reg.value(d_sym)
+        holes, cutouts = holes_for(src, sheet)
+        if cutouts:
+            raise SystemExit(f'{sheet}: a cut-out on a sole plate is not drawn')
+        for _ in range(copies):
+            ents += sole_T(ox, L, D, W, S, R)
+            for x, y, d in holes:
+                ents += circle(ox + y, x, d, 'HOLES')
+                sizes[d] = sizes.get(d, 0) + 1
+                n += 1
+            # LAYER 'PARTS', not 'NOTES': three Ts that look alike are not
+            # reviewable without a name on each, so dxf-preview draws this one
+            # on the figure, and it tells it from the title block by the layer
+            ents += text(ox + 4, L + 6, 4.5, f'{title.upper()}  {L:g} LONG',
+                         'PARTS')
+            ox += W + SOLE_GAP
+            tall = max(tall, L)
+        per_sheet[sheet] = {}
+        for _, _, d in holes:
+            per_sheet[sheet][d] = per_sheet[sheet].get(d, 0) + 1
+
+    used = ox - SOLE_GAP
+    bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
+    ty = tall + 24
+    ents += text(0, ty + 20, 7, 'NUT SOLE PLATES  -  QTY 3', 'NOTES')
+    ents += text(0, ty + 10, 5, f'MATERIAL {both_units(T)} {SOLE_MATERIAL}',
+                 'NOTES')
+    ents += text(0, ty, 5, f'HOLES {bom}  -  ALL THROUGH', 'NOTES')
+    ents += text(0, ty - 10, 5,
+                 f'PROFILE TO CUT, NO STOCK OUTLINE  -  FILLETS R{R:g}  -  '
+                 f'UNITS mm', 'NOTES')
+
+    path = os.path.join(OUT, SOLE_FILE + '.dxf')
+    with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
+        fh.write('\n'.join(dxf_head() + ents + dxf_tail()) + '\n')
+    return n, used, tall, sizes, per_sheet
+
+
 def tally_counts():
     """What build-hole-tally.py counts on each sheet, per drill size.
 
@@ -206,8 +319,15 @@ def tally_counts():
 
 
 def main():
-    with open(PACK, encoding='utf-8') as fh:
-        src = fh.read()
+    # THROUGH subst, so a schedule cell may cite a registry symbol - see the
+    # module docstring. It raises on an unknown one rather than writing a part
+    # with a hole quietly missing.
+    src = subst.read(Path(PACK).resolve())
+    reg = Registry()
+    reg.evaluate_all()
+    if reg.errors:
+        print('registry does not evaluate; fix that first', file=sys.stderr)
+        return 2
     if not os.path.isdir(OUT):
         os.makedirs(OUT)
     expect = tally_counts()
@@ -229,13 +349,27 @@ def main():
         if sheet == 's1a':
             print(f'  {"":18s} nest {used:g} across a {302:g} square, '
                   f'{spare:g} spare')
+
+    n, used, tall, sizes, per_sheet = build_sole(src, reg)
+    total += n
+    for sheet, got in per_sheet.items():
+        if got != expect.get(sheet):
+            bad.append(f'{sheet}: this file {got} against the tally '
+                       f'{expect.get(sheet)}')
+    print(f'  {SOLE_FILE:18s} sheets '
+          + '+'.join(s for s, *_ in SOLE_PARTS)
+          + f' {n:3d} hole(s)   '
+          + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
+    print(f'  {"":18s} 3 profiles over {used:g} x {tall:g}, '
+          f'NO STOCK - the shop supplies the plate')
+
     if bad:
         print('\nHOLE COUNTS DISAGREE WITH tools/build-hole-tally.py:',
               file=sys.stderr)
         for b in bad:
             print('    ' + b, file=sys.stderr)
         return 1
-    print(f'\n{len(SETUPS)} file(s), {total} hole(s), '
+    print(f'\n{len(SETUPS) + 1} file(s), {total} hole(s), '
           f'every count agreeing with the tally -> '
           f'{os.path.relpath(OUT, os.path.dirname(HERE))}')
     return 0

@@ -176,7 +176,7 @@ note = "The doubler IS the end plate's offcut - 200 wide stock less the plate's 
 sym = "T_SOLE_BRACKET"
 value = 6.35
 provenance = "nominal"
-note = "1/4in 6061"
+note = "1/4in STEEL, not the 6061 this note used to read - the part went to steel 2026-10-13 when it became a T, and the material line was left behind. NOMINAL AND IT HAS TO STAY NOMINAL: the shop supplies this plate, so there is nothing to micrometer the way T_REAR_PLATE's own 1/4in came back 6.19. If a 6.19 ever gets substituted here it only lengthens BOLT_Y_NUT_ENGAGE, which is slack in the safe direction."
 
 [[dim]]
 sym = "T_INTERPOSER"
@@ -3505,17 +3505,17 @@ note = "27.75 - how far the sensor's top stands above the surface the bracket bo
 # bigger bite out of what is also the rear shear panel. Radiused corners cost
 # nothing instead: the casting is 60 in a 60.5 opening, so the corners are empty.
 #
-# THE STEEL PARTS GO TO A PLASMA OR WATERJET SHOP - his, 2026-10-13, and not to
-# a router. That removes "which shape is easier to cut" from the argument
-# entirely: either process walks any profile, so the radius is a free choice and
-# is set by the bolt head below rather than by a tool.
+# THE STEEL PARTS GO TO A WATERJET SHOP - his, 2026-10-13, confirmed waterjet
+# rather than plasma 2026-10-16, and not to a router. That removes "which shape
+# is easier to cut" from the argument entirely: it walks any profile, so the
+# radius is a free choice and is set by the bolt head below rather than by a
+# tool.
 #
-# OPEN: IT PUTS THE TOLERANCE QUESTION IN ITS PLACE INSTEAD. WINDOW_W is 60.5
+# SETTLED: AND IT SETTLES THE TOLERANCE QUESTION THE SAME WAY. WINDOW_W is 60.5
 # over a 60 casting - half a millimetre TOTAL, which WINDOW_W's own note calls
-# deliberately little. That is inside plasma's own kerf and taper on 1/4in
-# steel; waterjet holds it comfortably. If the shop is plasma, open the window
-# up rather than cut it to this figure and hope - the width has no job except
-# clearance, and nothing downstream reads it.
+# deliberately little. Waterjet holds that comfortably; it was only plasma's
+# kerf and taper on 1/4in steel that would have made the window worth opening
+# up, and the process is not plasma.
 
 [[dim]]
 sym = "WINDOW_CORNER_R"
@@ -3567,8 +3567,16 @@ note = "The sole bracket's width at its tip, and at its stem - the T is carried 
 # each other.
 #
 # THICKNESS STAYS T_SOLE_BRACKET. Not for strength - because it is the same
-# 1/4in as the rear plate, so all three come off one sheet in one setup at the
-# plasma shop.
+# 1/4in as the rear plate, so all three are one material and one setup at the
+# waterjet shop.
+#
+# SETTLED: THE SHOP SUPPLIES THE METAL FOR THESE THREE - his, 2026-10-16, and
+# they are the only parts on the quote where it does. Every other setup is his
+# own stock with holes put in it, so its outline is the piece he hands over;
+# these are profiles cut from the shop's plate and have no stock rectangle.
+# THAT IS WHY T_SOLE_BRACKET IS NOMINAL AND NOT MEASURED, where T_REAR_PLATE is
+# measured at 6.19: nobody has this plate in hand to put a micrometer on, so the
+# figure on the quote drawing has to be the 1/4in the shop will buy.
 
 [[dim]]
 sym = "SOLE_BASE_D"
@@ -3578,7 +3586,7 @@ note = "24.38 - the T's base depth, outboard from the end plate's face. IT IS NO
 [[dim]]
 sym = "SOLE_STEM_W"
 expr = "SOLE_TIP_W"
-note = "46 - the T's stem width, carried straight out from the base rather than tapering. It is SOLE_TIP_W because the tip is what has to take the nut's four bolts and nothing else constrains it; the trapezoid arrived at the same 46 at the same place."
+note = "40 - the T's stem width, carried straight out from the base rather than tapering. It is SOLE_TIP_W because the tip is what has to take the nut's four bolts and nothing else constrains it. FLAG: THIS NOTE SAID 46 WHILE THE EXPRESSION GAVE 40, which is the exact shape of staleness the registry exists to stop - SOLE_TIP_W was pinned at 46 as a free choice, then derived to the nut's own NUT_FACE_Y of 40, and the two notes downstream of it were not swept. The 40 leaves 8 to the edge beside an M5 at plus or minus 12, which is plenty in steel - his, 2026-10-15."
 
 [[dim]]
 sym = "SOLE_STEM_L"
@@ -3589,7 +3597,7 @@ note = "73.81 - how far the stem runs past the base to reach the nut. SOLE_BASE_
 sym = "SOLE_FILLET_R"
 value = 6
 provenance = "pinned"
-note = "6 - the radius where the stem meets the base, both sides. His, 2026-10-13, for looks rather than for stress, and a plasma or waterjet path walks it for nothing. FLAG: THE 3D MODEL DRAWS THIS CORNER SQUARE. Its prism profile is a polygon and a fillet would be an approximation that then disagrees with the sheet; the radius lives here and on the drawing instead."
+note = "6 - the radius where the stem meets the base, both sides. His, 2026-10-13, for looks rather than for stress, and a waterjet path walks it for nothing. FLAG: THE 3D MODEL DRAWS THIS CORNER SQUARE. Its prism profile is a polygon and a fillet would be an approximation that then disagrees with the sheet; the radius lives here and on the drawing instead."
 
 [[dim]]
 sym = "SOLE_T_CHECK"
