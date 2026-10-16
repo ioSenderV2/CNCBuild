@@ -340,26 +340,60 @@ def plan_svg(v, ports):
     # the post around it is bigger than its hole because the ledge is cut on the
     # OUTWARD faces - which is why the leg centres are not the hole centres.
     ledge, hc = v["T_BOX_LEDGE"], v["TENON_HOLE_CLEAR"]
-    # 72 x 86 leg, so the corner tenon is 30 across the machine by 44 fore-aft
-    tcx, tcy = v["TENON_CORNER_X"], v["TENON_CORNER_Y"]
-    tb, pwx = v["TENON_BACK_DEPTH"], v["POST_W_X"]
+    tcy, tb, pwx = v["TENON_CORNER_Y"], v["TENON_BACK_DEPTH"], v["POST_W_X"]
+    # FLAG: THE LEG IS POST_W_X ACROSS AND THE TAB IS LEG_STRIP - this read
+    # web + TENON_CORNER_X, which drew each front leg 60 wide with an 18 hole
+    # sitting against the web's inner face. It was right while the corner tenon
+    # was a solid 30 standing at that face; the full-height slot moved the tab
+    # out to the INNER STRIP and make-3d.py was corrected for it and this was
+    # not. The leg centres come off these rectangles, so the front-leg span was
+    # being drawn 12 long as well.
+    strip, gap = v["LEG_STRIP"], v["TENON_SPACER_GAP"]
+    beyond = pwx - ledge                         # 30, the un-ledged band
     legs = [
-        ("front left", (web, web + tcx, W - web - tcy, W - web),
-         (web - ledge, web + tcx, W - web - tcy, W - web + ledge)),
-        ("front right", (W - web - tcx, W - web, W - web - tcy, W - web),
-         (W - web - tcx, W - web + ledge, W - web - tcy, W - web + ledge)),
-        ("back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web, web + tb),
-         (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb)),
+        ("front left", (web - ledge, web + beyond,
+                        W - web - tcy, W - web + ledge),
+         [(web + beyond - strip, web + beyond, W - web - tcy, W - web)],
+         "left"),
+        ("front right", (W - web - beyond, W - web + ledge,
+                         W - web - tcy, W - web + ledge),
+         [(W - web - beyond, W - web - beyond + strip,
+           W - web - tcy, W - web)], "right"),
+        ("back centre", (W / 2 - pwx / 2, W / 2 + pwx / 2, web - ledge, web + tb),
+         [(W / 2 - pwx / 2, W / 2 - pwx / 2 + strip, web, web + tb),
+          (W / 2 + pwx / 2 - strip, W / 2 + pwx / 2, web, web + tb)], None),
     ]
     centres = []
-    for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in legs:
+    for nm, (px0, px1, py0, py1), tabs, corner in legs:
         g.append(f'<rect x="{px0:g}" y="{py0:g}" width="{px1 - px0:g}" '
                  f'height="{py1 - py0:g}" fill="none" stroke="#06c" '
                  f'stroke-width="2.5" stroke-dasharray="20 12"/>')
-        g.append(f'<rect x="{tx0 - hc:g}" y="{ty0 - hc:g}" '
-                 f'width="{tx1 - tx0 + 2 * hc:g}" '
-                 f'height="{ty1 - ty0 + 2 * hc:g}" fill="#cfe0f5" '
-                 f'stroke="#06c" stroke-width="3"/>')
+        if corner:
+            # A CORNER, NOT A HOLE - his, 2026-10-15. The cut runs out to both
+            # of the skin's edges, so the outer web-width of skin goes with it
+            # and nothing wraps the corner. Drawn as the opening plus the two
+            # pieces standing in it: the tab, and the spacer that fills the gap
+            # to the web.
+            tx0, tx1, ty0, ty1 = tabs[0]
+            sx0, sx1 = ((tx0 - gap, tx0) if corner == "left"
+                        else (tx1, tx1 + gap))
+            ox0 = 0 if corner == "left" else min(tx0, sx0) - hc
+            ox1 = max(tx1, sx1) + hc if corner == "left" else W
+            g.append(f'<rect x="{ox0:g}" y="{ty0 - hc:g}" '
+                     f'width="{ox1 - ox0:g}" height="{W - (ty0 - hc):g}" '
+                     f'fill="#cfe0f5" stroke="#06c" stroke-width="3"/>')
+            g.append(f'<rect x="{sx0:g}" y="{ty0:g}" width="{gap:g}" '
+                     f'height="{ty1 - ty0:g}" fill="#f6d8de" stroke="#a00" '
+                     f'stroke-width="2"/>')
+            g.append(f'<rect x="{tx0:g}" y="{ty0:g}" width="{tx1 - tx0:g}" '
+                     f'height="{ty1 - ty0:g}" fill="#c9a66b" stroke="#333" '
+                     f'stroke-width="2"/>')
+        else:
+            for tx0, tx1, ty0, ty1 in tabs:
+                g.append(f'<rect x="{tx0 - hc:g}" y="{ty0 - hc:g}" '
+                         f'width="{tx1 - tx0 + 2 * hc:g}" '
+                         f'height="{ty1 - ty0 + 2 * hc:g}" fill="#cfe0f5" '
+                         f'stroke="#06c" stroke-width="3"/>')
         cx, cy = (px0 + px1) / 2, (py0 + py1) / 2
         centres.append((cx, cy))
         g.append(f'<line x1="{cx - 26:g}" y1="{cy:g}" x2="{cx + 26:g}" '
