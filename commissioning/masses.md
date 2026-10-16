@@ -12,6 +12,20 @@ figure computed from a drawing.
 | Y2 assembly | **17 kg** | |
 | **Four moving assemblies** | **58 kg** | |
 
+**Weighed, 2026-10-16** — the two steel plates, on his scale.
+
+| Part | Mass | As weighed |
+|---|---|---|
+| Rear plate, 1/4" A36 | **38 lb 10 oz** | the whole plate, undrilled |
+| Side plate, 10 gauge | **18 lb** | one of the two |
+
+🔴 **These were weighed to settle a disagreement, and they settled it.** The order sheet's weight
+column put the rear plate at **80 lb**, which would need half-inch stock over that outline. The
+scale says otherwise and so does the micrometer: computed from the registry outline at the measured
+6.19 the plate is **39.11 lb**, against **38.625** on the scale — **1.2% apart**. The side plate
+comes out **17.67** computed against **18** weighed, **1.9%**. **The plates are what they were
+ordered as; the order sheet's weight figure is the thing that was wrong.**
+
 NOTE: **The Z figure is the one that goes stale first, and it is the one most used.** It was weighed
 without the spindle, so every use of it has to say whether the spindle is in or out. The spindle
 settled after this weighing - Ø80 2.2 kW water-cooled, see
