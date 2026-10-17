@@ -51,18 +51,17 @@ GROUPS = [
         "lead": "One drawing: the <b>X back joining plate</b>, 28 holes in a "
                 "supplied length of 6061 flat bar. The material is "
                 "<b>supplied</b> - the job is the holes.",
-        "files": ["5-x-back-joiner.dxf"],
+        "files": ["4-x-back-joiner.dxf"],
     },
     {
         "out": "quote-3-aluminium.html",
-        "title": "Waterjet quote - 6061 strips, fins and end plates",
-        "lead": "Four drawings in <b>6061</b>: the three inside joining "
-                "strips, the two Y front fins, and the two X gantry end "
-                "plates. <b>All material is supplied</b> and the outline "
-                "drawn is the piece handed over, so the job is the holes and "
-                "the profiles cut out of each piece.",
-        "files": ["4-inside-joiners.dxf", "6-front-fins.dxf",
-                  "7-x-end-plate-left.dxf", "8-x-end-plate-right.dxf"],
+        "title": "Waterjet quote - 6061 fins and end plates",
+        "lead": "Three drawings in <b>6061</b>: the two Y front fins and the "
+                "two X gantry end plates. <b>All material is supplied</b> and "
+                "the outline drawn is the piece handed over, so the job is "
+                "the holes and the profiles cut out of each piece.",
+        "files": ["5-front-fins.dxf", "6-x-end-plate-left.dxf",
+                  "7-x-end-plate-right.dxf"],
     },
 ]
 
