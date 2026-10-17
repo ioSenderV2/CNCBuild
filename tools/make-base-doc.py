@@ -111,13 +111,20 @@ def parts(v):
          f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
          f"the back wall so both come off ONE 5 x 5, which is CUT - that sheet "
          "is spent too"),
-        ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 6, "offcut",
+        ("Wall pad, central - lower band", v["CENTRE_WALL_PAD_L"], gm_h, 2,
+         "0",
+         f"one each side of the central wall, flush with its bottom edge, off "
+         f"the leg sheet's remainder. It brings the wall out to "
+         f"{v['POST_W_X']:g} for the centre caster's plate, and its top edge "
+         "is level with the lower grid's top - a ledger down the centreline "
+         "for a shelf or a cabinet"),
+        ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"],
+         int(v["CASTER_COUNT"]), "offcut",
          "one per caster, a shim in compression between the structure and the "
          "plate. Four bear on a lower rail's underside against a corner leg's "
-         "face; the two at the back centre bear on the back wall's bottom edge "
-         "either side of the leg. THICKNESS IS CUT TO FIT and all six come off "
-         f"one piece so they match: {v['CASTER_H']:g} in a "
-         f"{v['BASE_FLOOR_CLEAR']:g} band leaves "
+         "face; the fifth on the central wall's bottom edge. THICKNESS IS CUT "
+         f"TO FIT and all {v['CASTER_COUNT']:g} come off one piece so they "
+         f"match: {v['CASTER_H']:g} in a {v['BASE_FLOOR_CLEAR']:g} band leaves "
          f"{v['CASTER_BLOCK_MIN']:.1f} before the wheel even touches"),
         ("Leg foot spacer", v["FOOT_SPACER_H"], v["POST_W_Y"], 10, "offcut",
          "2 laminations each, all FIVE legs - glued to the inside of the outer "
@@ -185,6 +192,12 @@ def layout(v, num, sw, sl):
     if num == "0":
         for i in range(STRIPS_CUT):
             out.append((0, i * (90 + k), 0.0, 90.0, usable_w, "Leg strip"))
+        # THE TWO CENTRAL WALL PADS, out of the 605 this sheet leaves past the
+        # strips. They lie across the sheet: the pad is longer than the 605.
+        x_pad = STRIPS_CUT * (90 + k)
+        for i in range(2):
+            out.append((0, x_pad + i * (gm_h + k), 0.0, gm_h,
+                        v["CENTRE_WALL_PAD_L"], "Wall pad, central - lower band"))
     elif num == "1":
         # THE RIP BANK FIRST, at the left end: ten pieces at the long rail
         # length, 100 wide, all grain along the sheet. That is 1014.4 of the
@@ -968,12 +981,13 @@ def casters_html(v):
     margin = (v["BAY_OPEN_FORE_AFT"] - v["FORK_CHANNEL_W"]) / 2
     return f"""
 <h2>5a &mdash; The casters and the fork channel</h2>
-<p><b>{v['CASTER_COUNT']:g} leveling casters, all of them INSIDE the
+<p><b>{v['CASTER_COUNT']:g} leveling casters, one per leg, all of them INSIDE the
 {v['BASE_FLOOR_CLEAR']:g} floor clearance rather than under the legs</b> &mdash;
-which is what keeps the base's height exactly as drawn. One beside each of the
-four corner legs, under the lower fore-aft rail, and <b>two straddling the back
-centre leg</b>, which has no fore-aft rail to sit on and would otherwise put its
-adjuster behind the leg.</p>
+which is what keeps the base's height exactly as drawn. Four sit beside a corner
+leg under the lower fore-aft rail. <b>The fifth sits on the central shear wall's
+bottom edge, just forward of the back centre leg</b>, which has no fore-aft rail
+of its own: a lamination each side of the wall's bottom band brings it out to
+{v['POST_W_X']:g} and the plate lands on that.</p>
 <table><tr><th></th><th></th></tr>
 <tr><td><b>Plate</b></td><td>{v['CASTER_PLATE']:g} square, four holes at 7
 &mdash; which is why the lower rails are brought out to {v['POST_W_X']:g}</td></tr>
@@ -991,15 +1005,15 @@ cut the six blocks so they land within a couple of mm of each other</b> &mdash;
 the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
 <p><b>A block is a shim in compression</b>, not a hanger: the structure bears
 down on it and the caster bears up, so its screws locate it and carry nothing.
-Four of them bear on a <b>lower rail's underside</b>, hard against a corner leg's
-face. The two at the back centre bear on the <b>back wall's bottom edge</b>
-either side of the leg &mdash; the leg itself fills the band there, so nothing
-can pass under its foot and still reach the same plane as the other four.</p>
+Four bear on a <b>lower rail's underside</b>, hard against a corner leg's face;
+the fifth on the <b>central wall's bottom edge</b>. Nothing passes under a leg's
+foot &mdash; the legs fill the band, which is what lets all five plates sit on
+one plane.</p>
 <p><b>The machine stands on the feet.</b> There is not enough travel to lift the
 wheels clear and set the legs back down, so the leg bottoms hang a few mm off the
 floor either way.</p>
-<p><b>Level on three things</b> &mdash; the two front corners and the centre pair
-as one point. <b>The two rear corners come down to touch</b>, not to lift: they
+<p><b>Level on three</b> &mdash; the two front corners and the centre.
+<b>The two rear corners come down to touch</b>, not to lift: they
 carry nothing standing, and they are what stops the thing tipping about a line
 from a front corner to the back centre.</p>
 <p><b>The fork channel is {v['FORK_CHANNEL_W']:g} wide, centred in the

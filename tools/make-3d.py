@@ -739,6 +739,19 @@ def main() -> int:
     # passes through the legs' slot; these two cannot, so they butt a leg's face
     # at each end. They bring the rail out to POST_W_X so a caster's plate lands
     # on a full face. The upper grid keeps two.
+    # A LAMINATION EACH SIDE OF THE CENTRAL WALL'S BOTTOM BAND, flush with its
+    # bottom edge. It brings the wall out to POST_W_X so the centre caster's
+    # plate lands on a full face, and its TOP EDGE is level with the lower
+    # grid's top - a ledger down the centreline for a shelf or a cabinet.
+    # It runs from the back centre leg's front face to the front cross rail.
+    for sx0 in (BW / 2 - pwx / 2, BW / 2 + gm_t / 2):
+        box("Wall pad, central - lower band", "walls", 0xD9BE8A,
+            sx0, by0 + pwy, grid_lo_bot,
+            sx0 + strip, by1 - gm_t, grid_lo_bot + gm_h,
+            d=f"{strip:g} x {gm_h:g} x {v['CENTRE_WALL_PAD_L']:g}, flush with "
+              f"the wall's bottom - it carries the centre caster's plate and "
+              f"its top edge is a ledger level with the lower grid")
+
     cp, ch = v["CASTER_PLATE"], v["CASTER_H"]
     blk = v["CASTER_BLOCK_MIN"]
     pad_y0, pad_y1 = by0 + pwy, by1 - pwy          # between the legs' faces
@@ -776,9 +789,12 @@ def main() -> int:
     half = (cp - pwx) / 2                      # the plate stands 0.5 proud
     for lx0, lx1, ly0, ly1 in leg_rects:
         if abs(lx0 - (BW - pwx) / 2) < 1e-9:           # the back centre leg
-            for sx in (lx0 - cp, lx1):
-                caster(sx, ly0, "it bears on the back wall's bottom edge "
-                                "beside the leg, one of the straddling pair")
+            # ON THE CENTRAL WALL, just forward of the leg: that leg has no
+            # fore-aft rail, and the wall's bottom band is brought out to
+            # POST_W_X by a lamination each side.
+            caster(lx0 - half, ly1,
+                   "on the central wall's bottom edge, forward of the back "
+                   "centre leg")
         else:
             cy0 = ly1 if ly0 <= by0 + 1e-9 else ly0 - cp
             caster(lx0 - half, cy0, "under the lower rail, hard against the "

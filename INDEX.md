@@ -56,7 +56,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
     - [Rail to leg, all three cases](machine/assembly.md#rail-to-leg-all-three-cases)
     - [How the three shear-wall joints actually go](machine/assembly.md#how-the-three-shear-wall-joints-actually-go)
     - [A filler block in each corner leg](machine/assembly.md#a-filler-block-in-each-corner-leg)
-    - [Six leveling casters, inside the floor clearance](machine/assembly.md#six-leveling-casters-inside-the-floor-clearance)
+    - [Five leveling casters, inside the floor clearance](machine/assembly.md#five-leveling-casters-inside-the-floor-clearance)
     - [And a spacer at the foot of all five](machine/assembly.md#and-a-spacer-at-the-foot-of-all-five)
     - [2x6 or a 36 × 100 plywood lamination](machine/assembly.md#2x6-or-a-36-100-plywood-lamination)
 - [9. Set the machine on the box](machine/assembly.md#9-set-the-machine-on-the-box)

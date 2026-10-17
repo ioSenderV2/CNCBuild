@@ -1192,12 +1192,18 @@ joined only at top and bottom over the clear volume. The load is trivial — abo
 **The rear middle leg gets none**: the central wall is already in its slot, which is the same job done
 by a part that was going in anyway.
 
-#### Six leveling casters, inside the floor clearance
+#### Five leveling casters, inside the floor clearance
 
-**All six sit in the 100 band beside the legs, not under them** — so nothing about the base's height
-changes. One beside each of the four corner legs, under the lower fore-aft rail, and **two straddling
-the back centre leg**, which has no fore-aft rail under it and would otherwise put its adjuster
-behind the leg.
+**All five sit in the 100 band beside the legs, not under them** — so nothing about the base's height
+changes. One per leg: four beside a corner leg under the lower fore-aft rail, and **the fifth on the
+central shear wall's bottom edge**, just forward of the back centre leg, which has no fore-aft rail
+of its own.
+
+**The central wall's bottom band gets a lamination on each side** — 18 × 100 × **1137**, flush with
+the wall's bottom edge, running from the back centre leg's front face to the front cross rail. It
+brings the wall out to **72** so the caster's plate lands on a full face, and **its top edge is level
+with the lower grid's top** — a ledger down the centreline for a shelf or a cabinet in either side
+volume. Both come off the leg sheet's 605 remainder.
 
 **The lower fore-aft rails are four laminations, not two.** The inner two pass through the legs'
 36 slots as before; an **18 is added on each side, 1087 × 100**, butting a leg's face at each end
@@ -1213,16 +1219,16 @@ casters.
 
 **A block is a shim in compression**, not a hanger — the structure bears down on it and the caster
 bears up, so its screws locate it and carry nothing. **Four bear on a lower rail's underside**, hard
-against a corner leg's face. **The two at the back centre bear on the back wall's bottom edge**,
-either side of the leg: the leg fills the band there, so nothing can pass under its foot and still
-reach the same plane as the other four. **Cut all six blocks off one piece** so they match.
+against a corner leg's face; **the fifth on the central wall's bottom edge**. Nothing passes under a
+leg's foot — the legs fill the band, which is what lets all five plates sit on one plane. **Cut all
+five blocks off one piece** so they match.
 
 **The machine stands on the feet.** 7 is not enough to lift the wheels clear and set the legs back
 down, so the leg bottoms hang a few mm off the floor either way.
 
-**Levelling:** measure the slab under the six positions, cut the six blocks so they land within a
-couple of mm of each other, and let the 7 trim the rest. **Level on three things** — the two front
-corners and the centre pair as one point. **The two rear corners come down to touch**, not to lift:
+**Levelling:** measure the slab under the five positions, cut the five blocks so they land within a
+couple of mm of each other, and let the 7 trim the rest. **Level on three** — the two front
+corners and the centre. **The two rear corners come down to touch**, not to lift:
 they carry nothing standing, and they are what stops the thing tipping about a line from a front
 corner to the back centre.
 
@@ -1428,7 +1434,7 @@ that, not the plywood itself, is the thing the shellac coat is guarding against.
   nothing fastens the box to the posts. It is what covers both road shock and a lift taken under the
   box instead of the frame.
 - **The forks go in the 700 channel**, which the two guard rails under the lower grid hold them to.
-- **Across the shop, the casters do it.** Screw the six feet up, roll it, screw them back down and
+- **Across the shop, the casters do it.** Screw the five feet up, roll it, screw them back down and
   re-level. The 50 nylon wheels will cross a smooth slab and will stop at a cord or a crack, so the
   jack is still what a real move uses.
 - **Drain the sand.** ~240 lb box becomes ~73 lb.
