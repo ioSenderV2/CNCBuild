@@ -617,6 +617,23 @@ provenance = "pinned"
 note = "6 - radius at all four of the notch's corners, the two at its mouth as well as the two at its bottom. His. FLAG: THE BOTTOM PAIR IS THE ONE THAT MATTERS. There the metal wraps around the end of the notch, which is the stress raiser - this plate is the rear shear panel and that is where a crack would start. The pair at the mouth is a protruding corner of metal rather than a notch tip, so rounding it is tidiness. It is deliberately smaller than WINDOW_CORNER_R: a 10 in a 25-wide notch leaves only 5 of flat across its bottom, where this leaves 13."
 
 [[dim]]
+sym = "WINDOW_TOP_OVER"
+value = 0.5
+provenance = "pinned"
+note = "0.5 - how far the window's top edge is cut ABOVE the Y beam's underside. His. FLAG: IT IS AN OVERCUT ON PURPOSE AND MUST NOT GO TO ZERO. Cut level with the underside, any tolerance in the cut or in the plate's placement leaves a tongue of steel hanging below the beam's bottom face, where the casting and the interposer have to pass. Over-cutting costs nothing: the metal above the window is backed by the beam itself."
+source = "his, 2026-10-17"
+
+[[dim]]
+sym = "WINDOW_TOP_Y"
+expr = "Y_BEAM_UNDERSIDE + WINDOW_TOP_OVER"
+note = "182.5 - the window's top edge in the rear plate's own frame, WINDOW_TOP_OVER proud of the beam's underside so no steel can stand below it. Beam-referenced, so nothing about the delivered plate moves it."
+
+[[dim]]
+sym = "WINDOW_H_CUT"
+expr = "WINDOW_TOP_Y - WINDOW_BOTTOM_Y"
+note = "55.5 - the full-width opening's height AS CUT, top edge to bottom edge. It is not WINDOW_H: that is the clearance measured down from the beam's underside, and this is the same opening plus the overcut above it. The shop cuts this one."
+
+[[dim]]
 sym = "WINDOW_CLEAR_TOTAL"
 expr = "WINDOW_H + PROBE_NOTCH_H"
 note = "85 below the Y beam's underside, the full depth of clearance at each window. This is the figure the probe body and the slide-in assembly are measured against, not WINDOW_H on its own."
