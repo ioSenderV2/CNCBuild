@@ -144,7 +144,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   included, so the side plate stands proud of it there and the far end falls where the bought
   length puts it. **The plate's length now feeds nothing.** Sheet 7's near-end holes come out on a
   round 15 and 45 and 7 and 53, the Y2 station mirrors about the **beam spacing** at 1204.38
-  rather than about the plate, and the eight torsion-box bolts start at **50** on the same 150
+  rather than about the plate, and the eight torsion-box bolts start at **75** on the same 150
   pitch the other bolt-on plates use instead of being centred on the plate.
   **The envelope figure kept its meaning and lost the plate's name:** it is `MACHINE_OUTER_W` now,
   the width `BOX_W` takes and the ceiling lateral-stiffness.md names. `REAR_PLATE_L` is retired.

@@ -390,7 +390,7 @@ scale is unwelcome.
 | | |
 |---|---|
 | To the beams | **8 × M8 into each beam's corner bores** — 16 bolts total |
-| To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 80.365, plus bottom-edge bearing over the full length |
+| To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 75, plus bottom-edge bearing over the full length |
 | Also carries | **BF12 on its inside face**, 4 × M5 tapped, one per beam |
 
 🔴 **The plate's length is a reference, not a dimension, and it does NOT reach flush.** The plate is
