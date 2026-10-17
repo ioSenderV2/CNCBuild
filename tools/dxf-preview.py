@@ -96,7 +96,7 @@ def extent(lines, circles, arcs):
     return min(xs), max(xs), min(ys), max(ys)
 
 
-def page(path: Path, bad: list) -> str:
+def page(path: Path, bad: list, toc: list) -> str:
     lines, circles, arcs, texts = parse(path)
     x0, x1, y0, y1 = extent(lines, circles, arcs)
     for p in open_ends(lines, arcs):
@@ -185,6 +185,14 @@ def page(path: Path, bad: list) -> str:
     if cut:
         bom += " &middot; <b>" + cut.split("+", 1)[1].strip() + "</b>"
     svg_w, svg_h = PAGE_W, max(h / scale + pad * 1.4, 60)
+    toc.append({
+        "file": path.name,
+        "title": title,
+        "stock": next((t for t in notes if t.startswith(("STOCK ", "MATERIAL "))),
+                      ""),
+        "bom": bom,
+        "size": f"{w:g} &times; {h:g}",
+    })
     return (f'<section><h2>{title}</h2>'
             + "".join(f"<p class=n>{t}</p>" for t in notes)
             + f'<p class=n><b>Holes</b> {bom}</p>'
@@ -194,13 +202,69 @@ def page(path: Path, bad: list) -> str:
               f'width="{svg_w:.0f}mm">{"".join(g)}</svg></section>')
 
 
+def intro(toc: list) -> str:
+    """The front page: what the package is, what is in it, how to read it.
+
+    EVERY FIGURE HERE COMES OFF THE PARSED FILES, not from a list written
+    beside them - the contents table cannot disagree with the drawings it
+    indexes, because it is built from the same bytes on the same pass.
+    """
+    rows = "".join(
+        f'<tr><td class=f>{t["file"]}</td><td>{t["title"]}</td>'
+        f'<td class=t>{t["stock"]}</td><td class=t>{t["size"]} mm</td>'
+        f'<td class=t>{t["bom"]}</td></tr>' for t in toc)
+    return f'''<section><h1>Waterjet quote package</h1>
+<p class=lead>{len(toc)} drawings, grouped by material and setup: the three
+<b>steel</b> jobs first, then the <b>6061 joining plates</b>, then the front
+fins and the gantry end plates. <b>Every drawing is a separate DXF</b> and the
+file name is printed on its page.</p>
+
+<h2>What is in it</h2>
+<table class=toc>
+<tr><th>File</th><th>Part</th><th>Material</th><th>Overall</th><th>Holes</th></tr>
+{rows}
+</table>
+
+<h2>How to read the drawings</h2>
+<ul>
+<li><b>Units are millimetres</b> and the origin is the lower-left corner of
+every drawing. Inch equivalents are printed alongside for reference only
+&mdash; work to the millimetre figures.</li>
+<li><b>R12 DXF, lines, circles and arcs only.</b> No polylines, no splines, no
+blocks. Outlines are closed.</li>
+<li><b>Layers:</b> OUTLINE is the cut profile, HOLES are the holes, NOTES and
+PARTS are text and are not to be cut.</li>
+<li><b>Where a drawing says STOCK, the material is supplied</b> and the outline
+drawn IS that piece &mdash; the job is the holes, and any excess falls outside
+them. Where it says MATERIAL, the shop supplies the plate and the outline is
+the part to cut.</li>
+<li><b>Holes called out as edge-bored are not drawn.</b> They run into a part's
+end face rather than through it, and are drilled here.</li>
+<li><b>Where two parts share one piece</b>, both are drawn in position on it
+with the kerf allowed between them.</li>
+</ul>
+
+<h2>What would help on the quote</h2>
+<ul>
+<li>Price <b>per drawing</b>, and separately the material where you are
+supplying it.</li>
+<li>Say if any hole is <b>below your minimum for the thickness</b> &mdash; a
+pilot that gets opened out here is fine, and so is a scribed mark, so tell us
+which you would rather cut.</li>
+<li>Note any outline you would rather nest differently. Nesting is yours to
+choose; the drawings do not assume one.</li>
+</ul>
+</section>'''
+
+
 def main() -> int:
     files = sorted(SRC.glob("*.dxf"))
     if not files:
         print("no DXFs; run tools/make-dxf.py first", file=sys.stderr)
         return 1
     bad: list[str] = []
-    body = "".join(page(f, bad) for f in files)
+    toc: list = []
+    body = "".join(page(f, bad, toc) for f in files)
     if bad:
         print("OPEN PROFILE - these cannot go to the shop:", file=sys.stderr)
         for b in bad:
@@ -213,10 +277,25 @@ def main() -> int:
         "body{font:10pt 'Segoe UI',sans-serif;color:#111;margin:0}"
         "section{page-break-after:always;padding:0 0 4mm}"
         "section:last-child{page-break-after:auto}"
+        "h1{font-size:19pt;margin:0 0 2mm}"
         "h2{font-size:13pt;margin:0 0 1mm}"
+        "section h2{margin-top:5mm}section:first-child h2:first-of-type"
+        "{margin-top:3mm}"
+        "p.lead{margin:0 0 3mm;font-size:10pt}"
+        "table.toc{border-collapse:collapse;width:100%;font-size:8.5pt;"
+        "margin:0 0 2mm}"
+        "table.toc th{text-align:left;border-bottom:1px solid #111;"
+        "padding:1mm 2mm 1mm 0}"
+        "table.toc td{border-bottom:1px solid #ddd;padding:1mm 2mm 1mm 0;"
+        "vertical-align:top}"
+        "td.f{font-family:ui-monospace,Consolas,monospace;white-space:nowrap}"
+        "td.t{font-size:8pt;color:#333}"
+        "ul{margin:0 0 3mm;padding-left:5mm;font-size:9.5pt}"
+        "li{margin:0 0 1.2mm}"
         "p.n{margin:0 0 1mm;font-size:9pt}"
         "p.s{margin:0 0 2mm;font-size:8pt;color:#555}"
-        "svg{display:block}</style></head><body>" + body + "</body></html>",
+        "svg{display:block}</style></head><body>" + intro(toc) + body
+        + "</body></html>",
         encoding="utf-8", newline="")
     print(f"{len(files)} part(s), every profile closing -> "
           f"{OUT.relative_to(ROOT)}")

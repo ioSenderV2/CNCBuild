@@ -1341,7 +1341,7 @@ note = "9.81 of thread in the doubler, 1.96 x D in 6061. These bolts run through
 [[dim]]
 sym = "DOUBLER_BOLT_BREAKOUT"
 expr = "T_DOUBLER - DOUBLER_BOLT_ENGAGE"
-note = "2.19 of doubler left beyond the D bolt's thread. FLAG: IT MUST STAY POSITIVE - the doubler's far face is what the sole plate's base sits against at the end and what the bearing blocks sit beside above, and a bolt tip standing proud of it holds a part off its own mounting face. It is measured off the bolt that is actually recorded, so a longer one shows here."
+note = "2.38 of doubler left beyond the D bolt's tip. The hole is tapped THROUGH, so this is bolt length and not hole depth: the thread runs the full T_DOUBLER and the bolt simply stops short of the far face. Nothing mounts on that face - the Y beam's inside face is about 17 outboard of it - so a tip standing proud would be untidy rather than a clash. It is measured off the bolt that is actually recorded, so a longer one shows here."
 
 [[dim]]
 sym = "DOUBLER_BOLT_X"

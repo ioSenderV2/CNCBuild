@@ -5,6 +5,22 @@
 
 ---
 
+## The waterjet quote
+
+- OPEN: **Which small holes the waterjet should pilot rather than cut to size** - waiting on the
+  shop's own recommendation before anything goes in the DXFs. The guideline that raises it is
+  theirs: minimum hole diameter roughly equal to material thickness, which the **8 × ø4.2** on the
+  front fins (0.42 × the 10 mm) and nearly every hole on the **end plates** (only the ø35 bore beats
+  their 12.19) fall under.
+  **The scope is decided and the diameter is not: pilot the holes that get TAPPED plus the
+  counterbored P row, and cut the clearance holes full size** - 40 holes across the two end plates
+  and the fins. His call: float is wanted in the ø9 into extrusion bores and the ø5.2 block bolts,
+  so jet taper costs nothing there, where a tapped or counterbored hole wants a clean wall.
+  **A ø3 pilot opened out here was the working figure**; the shop may prefer a different size, a
+  scribed mark, or to cut them as drawn. The intro page of the quote package asks them directly.
+  ⚠ **A magdrill is not the tool for these** - every ø4.2 in the build is in 6061, so a magnetic
+  base has nothing to grip unless the part is clamped on a steel plate.
+
 ## From the 2026-10-02 stepper frame rework - all unmeasured
 
 - SETTLED: ~~**The as-built BK12 screw axis height**~~ **Closed 2026-10-02**, and reframed: the number

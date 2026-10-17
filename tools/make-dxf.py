@@ -43,20 +43,40 @@ MM_IN = 25.4
 PLATE_RE = r'<div class="plate pg-(s[0-9a-z]+)">(.*?)(?=\n<div class="plate )'
 SCHED_RE = r'<table class="sched">(.*?)</table>'
 
-# HIS STOCK, given 2026-10-16. (file, title, sheet, stock L, stock W, thickness,
-# material, how many pieces the one drawing is for)
-SETUPS = [
-    ('1-back-plate', 'Y rear plate', 's7', 1211.0, 302.0, 6.19,
-     'steel', 1),
-    ('2-side-plates', 'Y outboard / side plate', 's9', 1000.0, 302.0, 3.39,
-     'steel', 2),
-    ('3-x-back-joiner', 'X back joining plate', 's10', 1000.0, 120.0, 6.42,
-     '6061', 1),
-    ('4-inside-joiners', 'Inside joining strip', 's8', 1000.0, 50.0, 3.0,
-     '6061', 3),
-    ('5-front-fins', 'Y front fin', 's1a', 302.0, 302.0, 10.0,
-     '6061', 2),
+# THE FOLDER'S ORDER IS HIS, and the numeric prefix comes from position in this
+# list rather than being part of a name: the three STEEL jobs first, then the
+# aluminium joiners, then the fins, then the end plates. Renaming a file is
+# therefore a matter of moving its line.
+#
+#   kind 'stock' - he supplies the piece, so the outline IS the stock and the
+#                  job is holes. payload: (sheet, L, W, thickness, material,
+#                  how many pieces the one drawing is for)
+#   kind 'fins'  - two profiles nested in one square
+#   kind 'sole'  - profiles only, the shop supplies the plate
+#   kind 'xep'   - an end plate with its doubler in the strip beside it
+ORDER = [
+    ('back-plate', 'stock', ('Y rear plate', 's7', 1211.0, 302.0, 6.19,
+                             'steel', 1)),
+    ('side-plates', 'stock', ('Y outboard / side plate', 's9', 1000.0, 302.0,
+                              3.39, 'steel', 2)),
+    ('sole-plates', 'sole', None),
+    ('inside-joiners', 'stock', ('Inside joining strip', 's8', 1000.0, 50.0,
+                                 3.0, '6061', 3)),
+    ('x-back-joiner', 'stock', ('X back joining plate', 's10', 1000.0, 120.0,
+                                6.42, '6061', 1)),
+    ('front-fins', 'fins', ('Y front fin', 's1a', 302.0, 302.0, 10.0,
+                            '6061', 2)),
+    ('x-end-plate-left', 'xep', ('X gantry end plate, LEFT-HAND', 0,
+                                 'XEP_CUT')),
+    ('x-end-plate-right', 'xep', ('X gantry end plate, RIGHT-HAND with the '
+                                  'tongue', 1, 'XEP_STOCK_L')),
 ]
+
+
+def filename(slug):
+    """1-back-plate, 2-side-plates, ... - the prefix is the position."""
+    return f'{[s for s, _, _ in ORDER].index(slug) + 1}-{slug}'
+
 
 FIN_BASE, FIN_TOP, FIN_H = 200.0, 100.0, 301.625
 FIN_GAP = 1.0           # between the two nested fins
@@ -74,9 +94,16 @@ FIN_GAP = 1.0           # between the two nested fins
 SOLE_PARTS = [
     ('s5', 'Nut sole plate', 'SOLE_BRACKET_L', 'SOLE_BASE_D', 3),
 ]
-SOLE_FILE = '6-sole-plates'
 SOLE_MATERIAL = '1/4in HR A36 STEEL - SHOP TO SUPPLY'
 SOLE_GAP = 12.0         # between the three profiles on the one drawing
+
+# THE TWO X END PLATES, each with its own doubler nested beside it - his,
+# 2026-10-16: one 300 x 200 piece per plate. The plate is XEP_W wide out of the
+# 200, which leaves a strip down one side, and DOUBLER_H is 45 precisely
+# because that is what the strip holds. The doubler runs along the strip.
+#   The titles, table indexes and length symbols live in ORDER.
+XEP_DOUBLER_TI = 3      # Sheet 2d's schedule, the fourth in the same div
+XEP_KERF = 1.0          # between the plate and the doubler in the strip
 
 
 def text_of(html):
@@ -93,39 +120,60 @@ def numbers(cell):
     return [float(x) for x in re.findall(r'-?\d+(?:\.\d+)?', cell)]
 
 
-def holes_for(src, sheet):
+def holes_for(src, sheet, ti=None):
     """(x, y, diameter) for every drilled hole on a sheet.
 
     Each row is an X list crossed with a Y list - that is how these tables are
     built and what the Qty column already counts. A row whose diameter is not a
     plain number is a cut-out and is handled separately.
+
+    `ti` PICKS ONE SCHEDULE OUT OF A SHEET THAT HOLDS SEVERAL. Sheets 2a, 2b, 2c
+    and 2d all live in one pg-s2 div, so without it the two end plates would
+    each come back carrying the other's holes and the shelf bar's as well - the
+    same index build-hole-tally.py keys its PARTS map on.
     """
-    out, cutouts = [], []
+    out, cutouts, edge = [], [], {}
     for name, blk in re.findall(PLATE_RE, src, re.S):
         if name != sheet:
             continue
-        for t in re.findall(SCHED_RE, blk, re.S):
+        for i, t in enumerate(re.findall(SCHED_RE, blk, re.S)):
+            if ti is not None and i != ti:
+                continue
             hdr = [text_of(x) for x in re.findall(r'<th[^>]*>(.*?)</th>', t, re.S)]
             if 'o' not in hdr:
                 continue
             dcol = hdr.index('o')
-            for r in re.findall(r'<tr[^>]*>(.*?)</tr>', t, re.S):
+            for tag, r in re.findall(r'(<tr[^>]*>)(.*?)</tr>', t, re.S):
                 if '<th' in r or 'TOTAL' in r:
                     continue
+                # AN EDGE-BORED HOLE IS NOT A WATERJET FEATURE. The jet cuts
+                # through the face; a hole run into a part's end face cannot be
+                # made that way at all. The pack marks those rows, so they are
+                # taken out of the drawing and returned separately - the count
+                # check then still reconciles against the sheet's own total.
                 c = [text_of(x) for x in re.findall(r'<td[^>]*>(.*?)</td>', r, re.S)]
                 if len(c) <= dcol:
                     continue
                 dia = c[dcol].strip()
+                if 'class="edge"' in tag:
+                    # Its X cell is a DEPTH, not a coordinate, so there is
+                    # nothing to cross against Y - take the Qty column, which
+                    # is what the tally counts off too.
+                    if re.match(r'^\d+(\.\d+)?$', dia):
+                        edge[float(dia)] = (edge.get(float(dia), 0)
+                                            + int(numbers(c[2])[0]))
+                    continue
                 xs, ys = numbers(c[3]), numbers(c[4])
                 if not re.match(r'^\d+(\.\d+)?$', dia):
-                    # a cut-out: the X cell holds pairs, the Y cell one pair
-                    for i in range(0, len(xs), 2):
-                        cutouts.append((xs[i], xs[i + 1], ys[0], ys[1]))
+                    # a cut-out: the X cell holds pairs, the Y cell one pair.
+                    # NOT `i` - that is the table index the ti filter reads.
+                    for k in range(0, len(xs), 2):
+                        cutouts.append((xs[k], xs[k + 1], ys[0], ys[1]))
                     continue
                 for x in xs:
                     for y in ys:
                         out.append((x, y, float(dia)))
-    return out, cutouts
+    return out, cutouts, edge
 
 
 # ---- DXF R12 -------------------------------------------------------------
@@ -176,7 +224,7 @@ def both_units(mm):
 
 
 def build(name, title, sheet, L, W, T, material, qty, src):
-    ents, holes, cutouts = [], *holes_for(src, sheet)
+    ents, holes, cutouts, _edge = [], *holes_for(src, sheet)
     fins = sheet == 's1a'
 
     if fins:
@@ -261,7 +309,7 @@ def build_sole(src, reg):
     ents, ox, tall, per_sheet, sizes, n = [], 0.0, 0.0, {}, {}, 0
     for sheet, title, l_sym, d_sym, copies in SOLE_PARTS:
         L, D = reg.value(l_sym), reg.value(d_sym)
-        holes, cutouts = holes_for(src, sheet)
+        holes, cutouts, _edge = holes_for(src, sheet)
         if cutouts:
             raise SystemExit(f'{sheet}: a cut-out on a sole plate is not drawn')
         for _ in range(copies):
@@ -292,10 +340,89 @@ def build_sole(src, reg):
                  f'PROFILE TO CUT, NO STOCK OUTLINE  -  FILLETS R{R:g}  -  '
                  f'UNITS mm', 'NOTES')
 
-    path = os.path.join(OUT, SOLE_FILE + '.dxf')
+    path = os.path.join(OUT, filename('sole-plates') + '.dxf')
     with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
         fh.write('\n'.join(dxf_head() + ents + dxf_tail()) + '\n')
     return n, used, tall, sizes, per_sheet
+
+
+def build_xep(name, title, ti, l_sym, src, reg):
+    """One X end plate on its 300 x 200 piece, its doubler in the strip.
+
+    Stock frame: X along the 300, Y across the 200 - the same frame Sheet 2a's
+    schedule uses for the plate, so its coordinates go in untouched. The plate
+    takes XEP_W of the 200 and the doubler lies in what is left, turned so its
+    154 runs along the sheet's X. That turn is why its own schedule's X and Y
+    swap over here, and it is called out on the drawing.
+    """
+    L = reg.value(l_sym)
+    W, SW = reg.value('XEP_STOCK_L'), reg.value('XEP_STOCK_W')
+    pw = reg.value('XEP_W')
+    cut_y, cut_x = reg.value('CORNER_CUT_Y'), reg.value('CORNER_CUT_X_END')
+    dh, dl = reg.value('DOUBLER_H'), reg.value('XEP_W')
+    t = reg.value('T_X_ENDPLATE')
+
+    ents = []
+    ents += poly([(0, 0), (L, 0), (L, cut_y), (cut_x, pw), (0, pw)], 'OUTLINE')
+    dy = pw + XEP_KERF                      # the strip starts past the plate
+    ents += poly([(0, dy), (dl, dy), (dl, dy + dh), (0, dy + dh)], 'OUTLINE')
+
+    sizes, n = {}, 0
+    holes, cutouts, edge = holes_for(src, 's2', ti)
+    if cutouts:
+        raise SystemExit(f'{name}: a cut-out on an end plate is not drawn')
+    for x, y, d in holes:
+        ents += circle(x, y, d, 'HOLES')
+        sizes[d] = sizes.get(d, 0) + 1
+        n += 1
+    plate_sizes = dict(sizes)
+
+    # THE DOUBLER IS TURNED. Its schedule reads X up its 45 and Y along its 154;
+    # laid in the strip, that 154 runs along the sheet's X, so the two swap.
+    dh_holes, dcut, dedge = holes_for(src, 's2', XEP_DOUBLER_TI)
+    if dcut:
+        raise SystemExit(f'{name}: a cut-out on the doubler is not drawn')
+    doub_sizes, dn = {}, 0
+    for x, y, d in dh_holes:
+        ents += circle(y, dy + x, d, 'HOLES')
+        doub_sizes[d] = doub_sizes.get(d, 0) + 1
+        sizes[d] = sizes.get(d, 0) + 1
+        dn += 1
+
+    ents += text(0, dy + dh + 6, 4.5,
+                 f'DOUBLER {dl:g} x {dh:g} - TURNED, ITS 154 ALONG THIS SHEET'
+                 f"'S X", 'PARTS')
+    ents += text(0, -10, 4.5, f'{title.upper()} - {L:g} LONG', 'PARTS')
+
+    bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
+    ty = SW + 14
+    ents += text(0, ty + 20, 7, f'{title.upper()}  -  QTY 1 + 1 DOUBLER',
+                 'NOTES')
+    ents += text(0, ty + 10, 5,
+                 f'STOCK {both_units(W)} x {both_units(SW)} x '
+                 f'{both_units(t)} 6061', 'NOTES')
+    ents += text(0, ty, 5, f'HOLES {bom}', 'NOTES')
+    ents += text(0, ty - 10, 5,
+                 'UNITS mm  -  ORIGIN LOWER LEFT  -  BOTH PARTS OFF ONE PIECE',
+                 'NOTES')
+    nedge = sum(edge.values()) + sum(dedge.values())
+    if nedge:
+        ents += text(0, ty - 20, 5,
+                     f'{nedge} EDGE-BORED HOLE(S) ARE NOT DRAWN - they run '
+                     f'into an end face and are drilled here', 'NOTES')
+
+    # what the sheet's own total counts, which includes the edge rows
+    check = dict(plate_sizes)
+    for d, c in edge.items():
+        check[d] = check.get(d, 0) + c
+    dcheck = dict(doub_sizes)
+    for d, c in dedge.items():
+        dcheck[d] = dcheck.get(d, 0) + c
+
+    path = os.path.join(OUT, name + '.dxf')
+    with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
+        fh.write('\n'.join(dxf_head() + ents + dxf_tail()) + '\n')
+    return n + dn, sizes, check, dcheck
 
 
 def tally_counts():
@@ -316,8 +443,10 @@ def tally_counts():
     _, _, _, tables = bht.collect(src)
     out = {}
     for t in tables:
-        if t['ti'] == 0:
-            out[t['sheet']] = {float(k): v for k, v in t['own'].items()}
+        # KEYED BY (sheet, table index), because pg-s2 holds four schedules and
+        # the two end plates and the doubler are three of them.
+        out[(t['sheet'], t['ti'])] = {float(k): v
+                                      for k, v in t['own'].items()}
     return out
 
 
@@ -335,36 +464,62 @@ def main():
         os.makedirs(OUT)
     expect = tally_counts()
 
+    # Anything from an earlier order would otherwise sit in the folder under its
+    # old number and reach the shop as a ninth drawing.
+    keep = {filename(s) + '.dxf' for s, _, _ in ORDER}
+    for f in sorted(os.listdir(OUT)):
+        if f.endswith('.dxf') and f not in keep:
+            os.remove(os.path.join(OUT, f))
+            print(f'  removed {f}, not in this order')
+
     print('STOCK IS HIS, holes are the shop pack\'s\n')
     total, bad = 0, []
-    for name, title, sheet, L, W, T, mat, qty in SETUPS:
-        n, nc, used, sizes = build(name, title, sheet, L, W, T, mat, qty, src)
-        total += n
-        per_part = {d: c // (2 if sheet == 's1a' else 1)
-                    for d, c in sizes.items()}
-        if per_part != expect.get(sheet):
-            bad.append(f'{sheet}: this file {per_part} against the tally '
-                       f'{expect.get(sheet)}')
-        spare = (302.0 - used) if sheet == 's1a' else (L - used)
-        print(f'  {name:18s} sheet {sheet:4s} {n:3d} hole(s)'
-              + (f' + {nc} cut-out(s)' if nc else '')
-              + f'   {", ".join(f"{sizes[d]}x o{d:g}" for d in sorted(sizes))}')
-        if sheet == 's1a':
-            print(f'  {"":18s} nest {used:g} across a {302:g} square, '
-                  f'{spare:g} spare')
+    for slug, kind, payload in ORDER:
+        name = filename(slug)
 
-    n, used, tall, sizes, per_sheet = build_sole(src, reg)
-    total += n
-    for sheet, got in per_sheet.items():
-        if got != expect.get(sheet):
-            bad.append(f'{sheet}: this file {got} against the tally '
-                       f'{expect.get(sheet)}')
-    print(f'  {SOLE_FILE:18s} sheets '
-          + '+'.join(s for s, *_ in SOLE_PARTS)
-          + f' {n:3d} hole(s)   '
-          + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
-    print(f'  {"":18s} 3 profiles over {used:g} x {tall:g}, '
-          f'NO STOCK - the shop supplies the plate')
+        if kind in ('stock', 'fins'):
+            title, sheet, L, W, T, mat, qty = payload
+            n, nc, used, sizes = build(name, title, sheet, L, W, T, mat, qty,
+                                       src)
+            per_part = {d: c // (2 if kind == 'fins' else 1)
+                        for d, c in sizes.items()}
+            if per_part != expect.get((sheet, 0)):
+                bad.append(f'{name}: this file {per_part} against the tally '
+                           f'{expect.get((sheet, 0))}')
+            print(f'  {name:20s} sheet {sheet:4s} {n:3d} hole(s)'
+                  + (f' + {nc} cut-out(s)' if nc else '')
+                  + '   ' + ', '.join(f'{sizes[d]}x o{d:g}'
+                                      for d in sorted(sizes)))
+            if kind == 'fins':
+                print(f'  {"":20s} nest {used:g} across a {W:g} square, '
+                      f'{W - used:g} spare')
+
+        elif kind == 'sole':
+            n, used, tall, sizes, per_sheet = build_sole(src, reg)
+            for sheet, got in per_sheet.items():
+                if got != expect.get((sheet, 0)):
+                    bad.append(f'{name}: this file {got} against the tally '
+                               f'{expect.get((sheet, 0))}')
+            print(f'  {name:20s} sheet '
+                  + '+'.join(s for s, *_ in SOLE_PARTS)
+                  + f'   {n:3d} hole(s)   '
+                  + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
+            print(f'  {"":20s} 3 profiles over {used:g} x {tall:g}, '
+                  f'NO STOCK - the shop supplies the plate')
+
+        else:                                               # 'xep'
+            title, ti, l_sym = payload
+            n, sizes, plate, doub = build_xep(name, title, ti, l_sym, src, reg)
+            for got, want_ti, what in ((plate, ti, 'plate'),
+                                       (doub, XEP_DOUBLER_TI, 'doubler')):
+                if got != expect.get(('s2', want_ti)):
+                    bad.append(f'{name} {what}: this file {got} against the '
+                               f'tally {expect.get(("s2", want_ti))}')
+            print(f'  {name:20s} sheet s2/{ti}  {n:3d} hole(s)   '
+                  + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
+            print(f'  {"":20s} plus its doubler, both off one 300 x 200 piece')
+
+        total += n
 
     if bad:
         print('\nHOLE COUNTS DISAGREE WITH tools/build-hole-tally.py:',
@@ -372,7 +527,7 @@ def main():
         for b in bad:
             print('    ' + b, file=sys.stderr)
         return 1
-    print(f'\n{len(SETUPS) + 1} file(s), {total} hole(s), '
+    print(f'\n{len(ORDER)} file(s), {total} hole(s), '
           f'every count agreeing with the tally -> '
           f'{os.path.relpath(OUT, os.path.dirname(HERE))}')
     return 0

@@ -365,7 +365,7 @@ head = "socket"
 into = "tapped"
 grip = ["T_X_ENDPLATE"]
 source = "registry BOLT_DOUBLER_TO_PLATE = 22"
-note = "These run through the plate in SHEAR and tap into the doubler's thickness. SETTLED: HIS CHECK AGAINST THE PARTS - an M5 x 25 just reaches the doubler's far face, so 25 is where it breaks through and a stock 22 is the size under it, leaving DOUBLER_BOLT_BREAKOUT. FLAG: THAT FAR FACE IS A MOUNTING FACE - the sole plate's base sits against it at the end and the bearing blocks sit beside it above, so a proud bolt tip holds a part off its own seat. The X carriage plate is 12.7 against the end plate's 12.19, so on X the half millimetre comes off engagement rather than off that margin."
+note = "These run through the plate in SHEAR and thread into the doubler. CLEARANCE IN THE PLATE, TAPPED THROUGH IN THE DOUBLER - Sheet 2a drills ø6 and Sheet 2d ø4.2 and taps it right through, which is easier than a blind hole and leaves the bolt length as the only thing stopping the tip short. SETTLED: HIS CHECK AGAINST THE PARTS - an M5 x 25 just reaches the doubler's far face, so a stock 22 is the size under it, leaving DOUBLER_BOLT_BREAKOUT. The X carriage plate is 12.7 against the end plate's 12.19, so on X the half millimetre comes off engagement rather than off that margin."
 
 [[joint]]
 id = "post-tenon-screw"

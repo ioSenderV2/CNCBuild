@@ -143,6 +143,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 ## [machine/open-items.md](machine/open-items.md)
 
+- [The waterjet quote](machine/open-items.md#the-waterjet-quote)
 - [From the 2026-10-02 stepper frame rework - all unmeasured](machine/open-items.md#from-the-2026-10-02-stepper-frame-rework---all-unmeasured)
 - [From the 2026-10-08 order - the back plate's length](machine/open-items.md#from-the-2026-10-08-order---the-back-plates-length)
 - [From the 2026-10-08 datasheet pass](machine/open-items.md#from-the-2026-10-08-datasheet-pass)
