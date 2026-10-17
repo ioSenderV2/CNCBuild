@@ -71,10 +71,10 @@ PARTS = {
 
 # What each diameter is FOR. Keyed by diameter; the pack has one job per size.
 PURPOSE = {
-    '4.2': 'M5 tap drill &mdash; drilled through at the mill, <b>tapped at home</b>',
+    '4.2': 'Pilot for M5 &mdash; <b>drilled through</b> &middot; see the tap appendix',
     '5.2': 'M5 clearance, <b>counterbore pilot</b> &mdash; stays 5.2 on 2a and 3a',
     '6': 'M5 clearance, <b>one size throughout</b> &middot; plus the three &oslash;6 hex-driver access holes',
-    '6.8': 'M8 tap drill &mdash; drilled through, <b>tapped at home</b>',
+    '6.8': 'Pilot for M8 &mdash; <b>drilled through</b> &middot; see the tap appendix',
     '8.4': 'M8 <b>close fit</b> &mdash; the shelf bar only, where the roll shim bears and float is <b>not</b> wanted',
     '9': 'M8 clearance &mdash; into extrusion T-nuts and beam corner bores, <b>float is wanted</b>',
     '22': 'The Z screw passes through the top stop block',
@@ -113,7 +113,8 @@ def collect(src):
             # reads these tables under. Qty was hardcoded at index 2, which
             # held only while every schedule carried the same columns in the
             # same order.
-            qcol = hdr.index('Qty') if 'Qty' in hdr else 2
+            qcol = next((i for i, h in enumerate(hdr)
+                         if h.split()[:1] == ['Qty']), 2)
             label, part, made = PARTS.get((name, ti), (None, None, 1))
             if part is None:
                 unknown.append('%s table %d' % (name, ti))

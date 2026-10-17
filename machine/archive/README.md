@@ -1,6 +1,7 @@
 # Archived prose — read the registry instead
 
-FLAG: **Nothing in this folder is current.** These six files were archived on 2026-10-11. They are
+FLAG: **Nothing in this folder is current.** Six of these files were archived on 2026-10-11, and
+the shop pack's notes on 2026-10-17. They are
 kept because they contain the reasoning behind decisions that are still live, and because one
 `git mv` brings any of them back — but **every dimension in them may be stale**, and several are
 known to be.
@@ -50,3 +51,4 @@ rather than defining a part, so they cannot go stale against the registry.
 | [`z-carriage.md`](z-carriage.md) | The Z plate, spacer blocks, clamp geometry, travel budget |
 | [`y-beam-support.md`](y-beam-support.md) | How each Y beam is held: end plate, castings, thrust block, BF12 |
 | [`outboard-plate.md`](outboard-plate.md) | The full-height outboard plate, its sourcing and galvanic cost |
+| [`shop-pack-notes.md`](shop-pack-notes.md) | The shop pack's 71 footnotes and its front matter, moved out when the pack became a drilling document |

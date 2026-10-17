@@ -95,83 +95,57 @@
 </head>
 <body>
 
-<h1>CNCBuild — Shop Pack</h1>
-<p class="sub">
-Plates for the one machining visit. Generated from <b>machine/*.md</b>, which remain the source of
-truth — <b>revision 2026-10-04</b>. If a sheet here and a .md file disagree, the .md file
-wins and the sheet is the stale one.
-</p>
+<h1>CNCBuild &mdash; Shop Pack</h1>
+<p class="sub"><b>Drilling only.</b> Millimetres throughout. Every threaded hole
+is drilled here at its tap drill and <b>tapped at home</b> &mdash; the taps are
+listed once, in the appendix, and are not repeated on the sheets.</p>
 
-<div style="border:1px solid #c9c9c9; border-left:5px solid #555; background:#fafafa; padding:1rem 1.2rem; margin:1rem 0; color:#000">
-<p style="margin:0 0 .6rem; font-weight:700; font-size:1.05em">
-Status &mdash; what is missing and what is in progress
-</p>
+<h2>What is in it</h2>
+<table class="toc">
+<tr><th>Sheet</th><th>Stock</th><th class="d">Holes</th></tr>
+<tr><td><a href="#sheet-1a">Sheet 1a - front Y1 end plate / Z riser, LEFT (quantity 1)</a></td><td>301.625 tall * tapered 200 at the base -> 100 at the top * 10 mm aluminium</td><td class="d">14</td></tr>
+<tr><td><a href="#sheet-1b">Sheet 1b - front Y2 end plate / Z riser, RIGHT (quantity 1)</a></td><td>301.625 tall * tapered 200 at the base -> 100 at the top * 10 mm aluminium</td><td class="d">14</td></tr>
+<tr><td><a href="#sheet-2">Sheet 2a - X gantry end plate, LEFT-HAND (quantity 1)</a></td><td>245 long * 154 wide * 1/2" stock, measured 12.19 6061</td><td class="d">31</td></tr>
+<tr><td><a href="#sheet-2b">Sheet 2b - X gantry end plate, RIGHT-HAND, with the BF12 tongue (quantity 1)</a></td><td>300 long * 154 wide * 1/2" stock, measured 12.19 6061</td><td class="d">35</td></tr>
+<tr><td><a href="#sheet-2c">Sheet 2c - the shelf bar (quantity 2) - mates with this plate, drill together</a></td><td>60 long * 25.4 W * 50.8 H - 1" * 2" aluminium bar</td><td class="d">4</td></tr>
+<tr><td><a href="#sheet-2d">Sheet 2d - the nut doubler block (quantity 3) - machined on its own, Y on 2a's origin, X on its own end face</a></td><td>154 long * 45 wide * 1/2" stock, measured 12.19 6061</td><td class="d">8</td></tr>
+<tr><td><a href="#sheet-3a">Sheet 3a — X carriage plate (quantity 1)</a></td><td>407 long * 154 wide * 1/2" aluminium</td><td class="d">45</td></tr>
+<tr><td><a href="#sheet-3b">Sheet 3b - Z spacer bar (quantity 2)</a></td><td>160 long * 50 wide * 5/8" aluminium bar</td><td class="d">9</td></tr>
+<tr><td><a href="#sheet-3c">Sheet 3c - the Z top stop block (quantity 1)</a></td><td>50 * 25.4 * 45, cut from 1" 6061</td><td class="d">3</td></tr>
+<tr><td><a href="#sheet-4">Sheet 4 - Z plate (quantity 1)</a></td><td>175 long * 164 wide * 1/2" aluminium</td><td class="d">30</td></tr>
+<tr><td><a href="#sheet-5">Sheet 5 - the nut sole plate (quantity 3)</a></td><td></td><td class="d">8</td></tr>
+<tr><td><a href="#sheet-6">Sheet 6 - cast stepper frame interposer (quantity 3)</a></td><td>150 long * 60 wide * 10 mm 6061</td><td class="d">10</td></tr>
+<tr><td><a href="#sheet-7">Sheet 7 - the 1210.47 mm rear plate (quantity 1)</a></td><td>1210.47 long * 11 7/8" (301.625) wide * 1/4" hot-rolled A36 steel</td><td class="d">24</td></tr>
+<tr><td><a href="#sheet-8">Sheet 8 - the 50 * 3 front joining strip (quantity 3)</a></td><td>1000 long * 50 wide * 3 thick, 6061 flat bar</td><td class="d">14</td></tr>
+<tr><td><a href="#sheet-9">Sheet 9 - the full-height outboard plate (quantity 2)</a></td><td>39 5/16" (998.54) long * 11 7/8" (301.625) wide * 10 gauge (3.429) cold-rolled steel</td><td class="d">11</td></tr>
+<tr><td><a href="#sheet-10">Sheet 10 - the 120 mm X back joining plate (quantity 1)</a></td><td>39 5/16" (998.54) long * 4 11/16" (119.06) wide * a true 1/4" (6.35) 6061-T651</td><td class="d">4</td></tr>
+</table>
 
-<p style="margin:0 0 .5rem">
-The pack reflects the Y end rework: cast stepper frames replaced BK12 and the M5
-standoffs, the Y steppers moved to the <b>front</b>, each Y beam end carries a <b>tapered front fin</b>,
-and one <b>full-width, full-height back plate</b> serves both beams. <b>Every sheet below has been
-brought up to that design.</b>
-</p>
-
-<p style="margin:0 0 .6rem; border:1.5px solid #555; background:#f6f6f6; padding:.5rem .7rem">
-<b>WCS ORIGIN &mdash; THE SAME ON EVERY SHEET, unless that sheet says otherwise.</b><br>
-<b>It is the FRONT-LEFT-TOP corner of the part as clamped.</b>
-<b>X</b> along the longest dimension, <b>Y</b> across it, <b>Z = 0 at the top face</b> and negative
-into the material. All coordinates positive in X and Y, <b>absolute, never chained</b>.<br>
-Each sheet states only what X&nbsp;0 and Y&nbsp;0 mean <i>on that part</i>. <b>Three sheets override
-this and say so in their own header:</b> Sheets&nbsp;1a and&nbsp;1b stand the plate <b>up</b>, so X runs
-across the 200 and <b>Y up the 301.625</b>; Sheet&nbsp;2d is clamped <b>the short way</b> on 2a&rsquo;s
-origin. <b>Sheet&nbsp;5 overrides it as well</b> &mdash; machine X runs the short way, over the
-{{SOLE_BRACKET_L}} &mdash; but says so in its figcaption rather than its header.
-</p>
-
-<p style="margin:0 0 .6rem; border:1.5px solid #d9b45e; background:#fff9ec; padding:.5rem .7rem"><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span> <b>AN AMBER ROW IN ANY HOLE SCHEDULE IS A DIMENSION THAT DOES NOT EXIST ANYWHERE IN THE REPO.</b> It has not been invented here. <b>Do not drill an amber row</b> &mdash; measure or decide it first, and the pre-trip checklist says which.</p>
-
-<p style="margin:0 0 .6rem; border:1.5px solid #b00; background:#fff2f2; padding:.5rem .7rem">
-<b>FLAG: AT THE MILL YOU DRILL. EVERY THREADED HOLE GOES THROUGH.</b> Nothing here is tapped on the
-trip &mdash; each threaded feature is listed as its <b>tap drill, drilled through</b>, with the
-thread it is for named alongside.
-<br><br>
-<b>OPEN: Sheet 2, H1 and H2: use M8 &times; 35. NOT M8 &times; 40</b> &mdash; a longer bolt breaks
-through onto a bearing block seat.
-</p>
-
-<p style="margin:0 0 .6rem; border:3px solid #0a6; background:#f2fff8; padding:.6rem .8rem">
-<b>THE Y DRIVE IS AT THE REAR, and every sheet now shows it.</b>
-<br><br>
-The casting, interposer and motor are at the <b>back</b> of the machine; BF12 face-mounts into the
-<b>front fins</b>. So the <b>window is in the rear plate</b> &mdash; Sheet 7, W1 and
-W2, a <b>{{WINDOW_W}} &times; {{WINDOW_H_CUT}}</b> opening with a {{PROBE_NOTCH_W}} notch carrying on
-below it, {{WINDOW_CLEAR_TOTAL}} in all &mdash; and BF12's four tapped M5 per beam are on the
-<b>fins</b>, Sheets 1a and 1b, F1&ndash;F4 each. The fins are solid otherwise.
-<br><br>
-<b>Both ends are not alike on Sheet 7.</b> W1 runs out to the plate's left edge, because the
-casting's outboard face and that edge are the same face &mdash; the Y1 extrusion's outboard face,
-which is also X 0. W2 is a closed window with about 6 of plate past it.
-<br><br>
-<b>THE THREE NUT SOLE PLATES ARE ONE PART.</b> Y1, Y2 and the X carriage all take the same
-<b>steel T</b>: a base <b>154 &times; {{SOLE_BASE_D}}</b> on the doubler's end face carrying the four
-root bolts, then a <b>{{SOLE_STEM_W}}</b> wide stem out to the nut &mdash; the nut's own width,
-leaving <b>8</b> to the M5 centres &mdash; with a <b>{{SOLE_FILLET_R}}</b> radius where the stem
-meets the base. <b>Sheet 5 is the part; Sheet 11 says where the X one goes.</b>
-<b>Steel because the bracket is then its own ferrous target</b> for the Y limit sensor &mdash; and
-because the tapered edge was the face that sensor had to read, which is a trip point that drifts
-with standoff. All three brackets are 1/4", the same sheet as this plate.
-<br><br>
-Every other sheet in this pack is unaffected.
-<br><br>
-<b>The window's HEIGHT is not settled either</b> &mdash; the limit sensor mounts on the casting's
-top face and stands LIMIT_SENSOR_STACK_H above it, and whether the window has to clear it waits on
-a bench test. The sensor stack is 55 deep against CASTING_INBOARD_RUN's 50.5.
-</p>
+<h2>How to read the sheets</h2>
+<ul>
+<li><b>WCS origin is the FRONT-LEFT-TOP corner of the part as clamped</b>, X
+along the longest dimension, Y across it, Z 0 at the top face. Each sheet
+states what X&nbsp;0 and Y&nbsp;0 mean on that part, and the three sheets that
+override this say so in their own heading.</li>
+<li><b>Coordinates are absolute, never chained.</b> A row with several figures
+in X and several in Y is that grid crossed &mdash; the Qty column is the count.</li>
+<li><b>The &oslash; column is the drill.</b> The Op column carries depth,
+counterbore and anything about how the hole is set out.</li>
+<li><b>Refs tie the table to the drawing</b> &mdash; every ref in a schedule is
+tagged on that sheet's figure.</li>
+<li><span style="background:#fff4d6;padding:0 .4em;border:1px solid #d9b45e">&nbsp;&nbsp;&nbsp;</span>
+<b>An amber row is a dimension that does not exist yet. Do not drill it</b>
+&mdash; the checklist at the back says what it waits on.</li>
+<li><b>Edge-bored rows are not on the drawing.</b> They run into an end face;
+their X cell is a depth.</li>
+</ul>
 
 <!-- TALLY:BEGIN - generated by tools/build-hole-tally.py, do not hand-edit -->
 <h3 style="margin-top:6mm">What gets drilled &mdash; by drill size, and which sheets use it</h3>
 <p style="margin:0 0 .4rem;font-size:9.5pt"><b>Generated from the hole schedules</b> by tools/build-hole-tally.py, so it cannot drift from them. <b>Qty is for the trip</b>: the sheet's own count times the number of that part made, and where that is more than one the sum is shown.</p>
 <table class="sched">
 <tr><th>&oslash;</th><th>Sheet</th><th class="d">Qty</th><th>What it is for</th></tr>
-<tr><td rowspan="7"><b>&oslash;4.2</b><br><span class="tn">86 in all</span></td><td>Sheet 1a <span class="tn">&mdash; Front Y1 riser</span></td><td class="d">4</td><td rowspan="7">M5 tap drill &mdash; drilled through at the mill, <b>tapped at home</b></td></tr>
+<tr><td rowspan="7"><b>&oslash;4.2</b><br><span class="tn">86 in all</span></td><td>Sheet 1a <span class="tn">&mdash; Front Y1 riser</span></td><td class="d">4</td><td rowspan="7">Pilot for M5 &mdash; <b>drilled through</b> &middot; see the tap appendix</td></tr>
 <tr><td>Sheet 1b <span class="tn">&mdash; Front Y2 riser</span></td><td class="d">4</td></tr>
 <tr><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">4</td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">8</td></tr>
@@ -188,7 +162,7 @@ a bench test. The sensor stack is 55 deep against CASTING_INBOARD_RUN's 50.5.
 <tr><td>Sheet 3c <span class="tn">&mdash; Z top stop block</span></td><td class="d">2</td></tr>
 <tr><td>Sheet 4 <span class="tn">&mdash; Z plate</span></td><td class="d">22</td></tr>
 <tr><td>Sheet 5 <span class="tn">&mdash; Nut sole plate</span></td><td class="d">24 <span class="tn">(3&times;8)</span></td></tr>
-<tr><td rowspan="3"><b>&oslash;6.8</b><br><span class="tn">12 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">2</td><td rowspan="3">M8 tap drill &mdash; drilled through, <b>tapped at home</b></td></tr>
+<tr><td rowspan="3"><b>&oslash;6.8</b><br><span class="tn">12 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">2</td><td rowspan="3">Pilot for M8 &mdash; <b>drilled through</b> &middot; see the tap appendix</td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">2</td></tr>
 <tr><td>Sheet 4 <span class="tn">&mdash; Z plate</span></td><td class="d">8</td></tr>
 <tr><td rowspan="1"><b>&oslash;8.4</b><br><span class="tn">8 in all</span></td><td>Sheet 2c <span class="tn">&mdash; Shelf bar</span></td><td class="d">8 <span class="tn">(2&times;4)</span></td><td rowspan="1">M8 <b>close fit</b> &mdash; the shelf bar only, where the roll shim bears and float is <b>not</b> wanted</td></tr>
@@ -208,137 +182,18 @@ a bench test. The sensor stack is 55 deep against CASTING_INBOARD_RUN's 50.5.
 <tr><td colspan="2"><b>TOTAL ON THE TRIP</b></td><td class="d"><b>440</b></td><td>Cut-outs are not holes and are not counted</td></tr>
 </table>
 <!-- TALLY:END -->
-
-<p style="margin:0 0 .35rem"><b>Sheets that exist and are drawable</b> &mdash; each still subject to
-its own amber rows:</p>
-<table style="margin:0 0 .7rem">
-<tr><th>Sheet</th><th>Part</th><th>Size</th><th>Qty</th></tr>
-<tr><td><a href="#sheet-1a">1a</a></td><td>Front <b>Y1</b> end plate / Z riser, <b>left</b></td><td>301.625 tall, tapered 200 base &rarr; 100 top &times; 10 mm</td><td>1</td></tr>
-<tr><td><a href="#sheet-1b">1b</a></td><td>Front <b>Y2</b> end plate / Z riser, <b>right</b> &mdash; <b>the same part as 1a</b>, turned over</td><td>301.625 tall, tapered 200 base &rarr; 100 top &times; 10 mm</td><td>1</td></tr>
-<tr><td><a href="#sheet-2">2a</a></td><td>X gantry end plate</td><td>154 &times; 235 &times; 1/2"</td><td>2</td></tr>
-<tr><td><a href="#sheet-2b">2b</a></td><td>X gantry end plate, <b>right-hand</b>, with the BF12 tongue &mdash; drawn complete</td><td>300 &times; 154 &times; 1/2", <b>the stock length, uncut</b></td><td>1</td></tr>
-<tr><td><a href="#sheet-2c">2c</a></td><td>Shelf bar</td><td>25.4 &times; 50.8 &times; 60</td><td>2</td></tr>
-<tr><td><a href="#sheet-2d">2d</a></td><td>Y nut doubler block</td><td>154 &times; 45 &times; 1/2"</td><td>2</td></tr>
-<tr><td><a href="#sheet-3a">3a</a></td><td>X carriage plate</td><td>154 &times; 407 &times; 1/2"</td><td>1</td></tr>
-<tr><td><a href="#sheet-3b">3b</a></td><td>Z spacer bar &mdash; <b>new stock</b></td><td>160 &times; 50 &times; 5/8"</td><td>2</td></tr>
-<tr><td><b><a href="#sheet-3c">3c</a></b></td><td><b>Z top stop block</b> <span style="font-weight:400">&mdash; the Z ball nut lands on it</span></td><td>50 &times; 25.4 &times; 45, <b>1" 6061</b></td><td>1</td></tr>
-<tr><td><a href="#sheet-4">4</a></td><td>Z plate</td><td>164 &times; 175 &times; 1/2"</td><td>1</td></tr>
-<tr><td><a href="#sheet-5">5</a></td><td><b>Nut sole plate</b> <span style="font-weight:400">&mdash; Y1, Y2 and the X carriage, one part</span></td><td>steel T, 154 root &times; {{SOLE_BASE_D}}, {{SOLE_STEM_W}} stem &times; {{SOLE_STEM_L}}, over {{SOLE_BRACKET_L}}, 1/4"</td><td><b>3</b></td></tr>
-<tr><td><a href="#sheet-6">6</a></td><td>Cast stepper frame interposer</td><td>150 &times; 60 &times; 3/8" 6061</td><td>3</td></tr>
-<tr><td><a href="#sheet-7">7</a></td><td>Rear plate</td><td>1210.47 &times; 301.625 &times; 1/4" hot-rolled A36 steel</td><td>1</td></tr>
-<tr><td><a href="#sheet-8">8</a></td><td>Front joining strip</td><td>1000 &times; 50 &times; 3 6061 <span style="font-weight:400">&mdash; measured, in hand</span></td><td>3</td></tr>
-<tr><td><a href="#sheet-9">9</a></td><td>Full-height outboard plate</td><td>998.54 &times; 301.625 &times; 10 gauge ({{T_OUTBOARD_PLATE}}) cold-rolled steel</td><td>2</td></tr>
-<tr><td><a href="#sheet-10">10</a></td><td>X back joining plate</td><td>998.54 &times; 119.06 &times; 1/4" 6061-T651</td><td>1</td></tr>
-<tr><td><a href="#sheet-11">11</a></td><td>Sole plate on the X carriage <span style="font-weight:400">&mdash; where it goes, not what to cut</span></td><td class="tn">no part of its own &mdash; see Sheet 5</td><td class="tn">&mdash;</td></tr>
-</table>
-<p style="margin:0 0 .7rem;font-size:9.5pt"><b>Every sheet number above is a link</b> to its own sheet. The sheet count in the page furniture is the cross-check:
-if the printed pack has sheets this table does not name, this table is the stale one.</p>
-<p style="margin:0 0 .7rem;font-size:9.5pt"><b>Only the right-hand X end plate carries the BF12
-tongue</b>, so the two are not interchangeable at assembly.</p>
-
-
-<p style="margin:0 0 .35rem"><b>In progress &mdash; a 1/2" baltic birch mockup</b>, being cut while
-the mill visit is a couple of weeks out. Sheet&nbsp;1 first: it settles the window's height (the
-50&nbsp;mm is a budget, and the casting projects only about 20&nbsp;mm below the bar) and the spindle
-clearance that gates the taper cut. <b>Plywood is for fit, never for transfer</b> &mdash; its
-thickness runs under 12&nbsp;mm and M5 inserts need a far bigger bore than a 4.2&nbsp;mm tap drill,
-so insert positions are representative, not a clearance test.</p>
-
-<p style="margin:0 0 .35rem"><b>Two questions still gate drilling</b>, and each needs a part or the
-mill in front of you:</p>
-<ol style="margin:0 0 .5rem 1.2rem">
-<li>How far past the front riser plane the spindle reaches, and whether it fouls the widened fin at
-low Z &mdash; gates Sheet&nbsp;1's taper, which is one bandsaw pass and cannot be put back</li>
-<li>The mill's model, and whether its DRO is 2-axis or 3-axis</li>
-</ol>
-
-<p style="margin:0">
-<b>Derived, never authoritative.</b> The source of truth is <b>machine/*.md</b> &mdash; start at
-<b>machine/README.md</b>. If a sheet here and a .md file disagree, <b>the .md file wins</b>.
-</p>
-</div>
-
-<div class="note">
-<b>This pack is deliberately incomplete, and the gaps are the point.</b> Rows shaded amber are
-dimensions that <b>do not exist anywhere in the repo</b>. They have not been invented here. Every
-amber row is a thing to measure or decide before the trip, and the plate it sits on cannot be drilled
-until it is filled in.
-</div>
-
-<div class="info">
-<b>Standing rules for every plate in this pack</b>
-<ul>
-<li><b>One WCS origin per plate, never chain dimensions.</b> Each drawing names its origin corner; every hole
-is an absolute X/Y from it. On a manual mill with a DRO the operator types absolute coordinates, and
-chained dimensions accumulate error.</li>
-<li><b>Lay the extrusion bolt patterns out by scribing.</b> Two lines, four stations ticked along
-each &mdash; that is the eight-hole pattern at a beam end.</li>
-<li><b>M5 clearance is &oslash;6 throughout.</b> One size, every sheet, whether the joint wants float or not &mdash; it is one drill on the trip instead of three, and no hole in this pack is positioned by being a tight fit on its bolt. The counterbored M5 on Sheet 4 still get there the long way, 5.2 for the pilot and opened to 6 after, which is the same finished hole.</li>
-<li><b>9 mm clearance on M8 wherever a plate meets extrusion.</b> That is the repo's deliberate
-figure — the joint works by friction, not bearing, and the float is wanted.</li>
-<li><b>Every hole in a schedule is tagged on the drawing, and the numbering runs ACROSS X,
-THEN UP IN Y.</b> One rule for the whole pack: finish a row left to right before starting the
-row above it. So on a four-by-four pattern, <b>1 to 4 is the whole bottom row</b> across every
-block it passes through &mdash; not the first block's four. A single column numbers upward; a
-single row numbers left to right. <b>Run tools/check-shop-pack-refs.py</b> &mdash; it fails if
-any schedule Ref has no matching tag on its own sheet.</li>
-<li><b>The plate is the drill guide for its own plywood tongue.</b> No tongue on the torsion box is
-ever drilled to a coordinate. Bolt the machine up, set it on the box, and <b>spot every tongue hole
-through the plate that secures it</b> &mdash; the rear plate drills the back tongue, each outboard
-plate drills its own side tongue. Nothing downstream has to agree with the coordinates on these
-sheets, because the mating hole does not exist until the steel is in place.<sup class="f">7.8</sup></li>
-<li><b>One fastener through every plywood tongue</b>, the same stack everywhere: an <b>M8 flange
-bolt</b>, head on the plate &mdash; <b>through the plate</b>, <b>through the 19 mm baltic birch
-tongue</b>, <b>through an M8 fender washer</b>, into an <b>M8 acorn nut</b>. <b>Head inside, nut
-outside</b>, so one wrench sits on the nut out in the open while the bolt is driven from inside.
-<b>M8 &times; 35 at the rear plate, M8 &times; 30 at the outboard plates</b> &mdash; the two plates
-are not the same thickness.<sup class="f">7.9</sup></li>
-</ul>
-</div>
-
-<h3>What is on the trip</h3>
-<table>
-<tr><th>Plate</th><th>Qty</th><th>Material</th><th>Mill needed?</th><th>Status</th></tr>
-<tr><td>Front Y end plate / Z riser</td><td>2</td><td><b>10 mm</b> alu (measured), <b>each on its own piece</b></td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance. <b>1a and 1b are the same part</b> — Sheets 1a, 1b</td></tr>
-<tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 235</b></td><td><b>Yes</b></td><td>The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2a</td></tr>
-<tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Four holes, all dimensioned &mdash; Sheet 2c. <b>&oslash;8.4, not &oslash;9</b>, and drill it before the plate's two blind taps</td></tr>
-<tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 45</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Drill it clamped to the end plate &mdash; <b>Sheet 2d</b></td></tr>
-<tr><td><b>Nut sole plate</b></td><td><b>3</b></td><td>steel T, 154 root &times; {{SOLE_BASE_D}}, {{SOLE_STEM_W}} stem &times; {{SOLE_STEM_L}}, 1/4"</td><td>T profile + 8 holes</td><td>Fully dimensioned &mdash; Sheet 5. <b>Y1, Y2 and the X carriage are the same part</b>; the X one is installed inverted<sup class="f">11.1</sup></td></tr>
-<tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
-<tr><td><b>Z spacer blocks &mdash; face 1 mm</b></td><td>2</td><td>Existing 2" bar, 16.41/16.43 measured</td><td><b>Yes</b> &mdash; facing, not drilling</td><td>Face both in <b>one setup</b>; drops the stack 1 mm and makes the pair identical</td></tr>
-<tr><td>Z plate</td><td>1</td><td>1/2" alu, <b>164 &times; 175 mm</b></td><td><b>Yes</b></td><td>Cut and drill schedule on Sheet 4</td></tr>
-<tr><td><b>Front joining strip</b></td><td>3</td><td>45 &times; 1000 &times; 4 mm 6061</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>14 holes each, two T-slot rows &mdash; Sheet 8<sup class="f">8.4</sup></td></tr>
-<tr><td><b>Full-height outboard plate</b></td><td>2</td><td>11 7/8" &times; 39 5/16" &times; 10 gauge steel</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>35 holes each &mdash; Sheet 9. <b>Steel, so budget the time</b><sup class="f">8.4</sup></td></tr>
-<tr><td><b>X back joining plate</b></td><td>1</td><td>4 11/16" &times; 39 5/16" &times; 1/4" 6061</td><td><b>Yes</b> &mdash; added 2026-10-09</td><td>28 holes in four rows &mdash; Sheet 10<sup class="f">8.4</sup></td></tr>
-<tr><td><b>Nut doubler block</b></td><td><b>3</b></td><td>1/2" alu, 154 &times; 45</td><td>Drill only</td><td>Was 2 &mdash; <b>the X axis needs one too</b>, installed inverted. Sheet 2d<sup class="f">11.1</sup></td></tr>
-<tr><td><b>Z top stop block</b></td><td>1</td><td><b>1" 6061</b>, a 50 &times; 45 piece off a 25.4 slab</td><td><b>Yes</b> &mdash; a &oslash;22 bore and two cross-drilled M5</td><td><b>Three holes in two setups</b> &mdash; Sheet 3c<sup class="f">3c.1</sup></td></tr>
-</table>
-
-<div class="warn">
-<b>FLAG: EVERY PART IN THIS PACK IS ON THE TRIP.</b> Nothing is held back for the home drill
-press.<br><br>
-The six bolt-on plates came on last &mdash; the three 45 mm front strips, the two full-height
-outboard plates and the X back joining plate. They had been
-excluded on the grounds that every hole is &oslash;9 clearance into a T-slot where the nut slides to
-meet the bolt, so position hardly matters. <b>That argument is sound, and 126 holes of hand layout across the six
-plates is what overrules it.</b> A plate whose rows have wandered still bolts up, and fights you for
-an afternoon while it does.<sup class="f">8.4</sup>
-</div>
-
 <!-- ============================================================ -->
 <div class="plate pg-s1a">
 <h2 id="sheet-1a">Sheet 1a &mdash; front Y1 end plate / Z riser, LEFT (quantity 1)</h2>
+
 <div class="stock">
 <b>301.625 tall &times; tapered 200 at the base &rarr; 100 at the top &times; 10 mm aluminium</b><br>
-<b>Its own piece of plate.</b> Stock <b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
+<b>Its own piece of plate.</b> Stock <b>measured at 10 mm</b>.<br>
 <span class="wcs">WCS ORIGIN: the plate&apos;s <b>BOTTOM-LEFT</b> corner &mdash; the straight outboard
-edge meeting the bearing bottom edge. Both real stock corners.</span><br>
-&#128308; <b>Y 0 is the BEARING BOTTOM edge</b> and Y runs up to <b>301.625</b>. That edge bears on the
-torsion box&apos;s top skin, which is why every plate standing on that skin is dimensioned from
-it &mdash; and it is why B1&ndash;B8 read the same <b>197 / 227 / 257 / 287</b> as Sheet 7&apos;s
-beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
+edge meeting the bearing bottom edge.</span><br>
+&#128308; <b>Y 0 is the BEARING BOTTOM edge</b> and Y runs up to <b>301.625</b>.<br>
 <b>X 0 is the straight OUTBOARD edge</b>, X runs inboard, and the taper falls away to the right.<br>
-&#128308; <b>As drawn is the view from the FRONT of the machine.</b> Y1 is the left-hand beam, so its outboard edge faces the machine&apos;s left &mdash; the drawing&apos;s left. <sup class="f">1.7</sup>
+&#128308; <b>As drawn is the view from the FRONT of the machine.</b> Y1 is the left-hand beam, so its outboard edge faces the machine&apos;s left &mdash; the drawing&apos;s left. 
 </div>
 
 <figure>
@@ -446,43 +301,38 @@ beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
   <text class="ref" x="65.00" y="8.62" fill="#0a6" text-anchor="middle">B8</text>
 </svg>
 <figcaption>Laid out as the part sits on the mill table, <b>standing up: the 301.625 runs vertically and the
-straight outboard edge is the left-hand one</b>. Every feature is dimensioned off the bottom-left
-corner, and every feature goes through &mdash; which is why
-<b>Sheet 1a and Sheet 1b are the same part</b>, drilled from one pattern and simply turned over to
-hand them. As drawn is the view from the FRONT of the machine.<sup class="f">1.7</sup></figcaption>
+straight outboard edge is the left-hand one</b>.</figcaption>
+<p style="font-size:9.5pt;margin:1.5mm 0 0;border:1.5px solid #b00;background:#fff2f2;padding:.4rem .6rem">
+&#9888; <b>DO NOT CUT THE TAPER LINE</b> &mdash; it is one bandsaw pass that cannot be put back, and
+it waits on checklist item 1.</p>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
-<tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; upper row F1, F2 &middot; lower row F3, F4</td><td>4</td><td><b>27, 73</b></td><td><b>165</b> / <b>147</b></td><td>4.2</td><td><b>DRILL THROUGH</b> &middot; tap M5 at home</td></tr>
-<tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
-<tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>B1&ndash;B8</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
+<tr><td>F1&ndash;F4</td><td>4</td><td><b>27, 73</b></td><td><b>165</b> / <b>147</b></td><td>4.2</td><td><b>DRILL THROUGH</b></td></tr>
+<tr><td>T1</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
+<tr><td>T2</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 10 &times; &oslash;9</td><td><b>14</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 10 &times; &oslash;9</td><td><b>14</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<p style="font-size:9.5pt;margin:0 0 3mm"><b>&#9888; Do not cut the taper line yet</b> &mdash; the
-spindle clearance is unsettled and the cut is one bandsaw pass that cannot be put
-back.<sup class="f">1.5</sup></p>
 </div>
 
 <!-- ============================================================ -->
 <div class="plate pg-s1b">
 <h2 id="sheet-1b">Sheet 1b &mdash; front Y2 end plate / Z riser, RIGHT (quantity 1)</h2>
+
 <div class="stock">
 <b>301.625 tall &times; tapered 200 at the base &rarr; 100 at the top &times; 10 mm aluminium</b><br>
-<b>Its own piece of plate.</b> Stock <b>measured at 10 mm</b>.<sup class="f">1.1</sup><br>
+<b>Its own piece of plate.</b> Stock <b>measured at 10 mm</b>.<br>
 <span class="wcs">WCS ORIGIN: the plate&apos;s <b>BOTTOM-LEFT</b> corner &mdash; the straight outboard
-edge meeting the bearing bottom edge. Both real stock corners.</span><br>
-&#128308; <b>Y 0 is the BEARING BOTTOM edge</b> and Y runs up to <b>301.625</b>. That edge bears on the
-torsion box&apos;s top skin, which is why every plate standing on that skin is dimensioned from
-it &mdash; and it is why B1&ndash;B8 read the same <b>197 / 227 / 257 / 287</b> as Sheet 7&apos;s
-beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
+edge meeting the bearing bottom edge.</span><br>
+&#128308; <b>Y 0 is the BEARING BOTTOM edge</b> and Y runs up to <b>301.625</b>.<br>
 <b>X 0 is the straight OUTBOARD edge</b>, X runs inboard, and the taper falls away to the right.<br>
-&#128308; <b>As drawn is the view from the REAR of the machine.</b> Y2 is the right-hand beam, so its outboard edge faces the machine&apos;s right. Seen from the front its taper falls the other way; drawn here outboard-edge-left like 1a, which is the same part turned over. <sup class="f">1.7</sup>
+&#128308; <b>As drawn is the view from the REAR of the machine.</b> Y2 is the right-hand beam, so its outboard edge faces the machine&apos;s right. Seen from the front its taper falls the other way; drawn here outboard-edge-left like 1a, which is the same part turned over. 
 </div>
 
 <figure>
@@ -590,32 +440,30 @@ beam bores and Sheet 9&apos;s T-slot rows.<sup class="f">1.6</sup><br>
   <text class="ref" x="65.00" y="8.62" fill="#0a6" text-anchor="middle">B8</text>
 </svg>
 <figcaption>Laid out as the part sits on the mill table, <b>standing up: the 301.625 runs vertically and the
-straight outboard edge is the left-hand one</b>. Every feature is dimensioned off the bottom-left
-corner, and every feature goes through &mdash; which is why
-<b>Sheet 1a and Sheet 1b are the same part</b>, drilled from one pattern and simply turned over to
-hand them. As drawn is the view from the REAR of the machine.<sup class="f">1.7</sup></figcaption>
+straight outboard edge is the left-hand one</b>.</figcaption>
+<p style="font-size:9.5pt;margin:1.5mm 0 0;border:1.5px solid #b00;background:#fff2f2;padding:.4rem .6rem">
+&#9888; <b>DO NOT CUT THE TAPER LINE</b> &mdash; it is one bandsaw pass that cannot be put back, and
+it waits on checklist item 1.</p>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>B1&ndash;B8</td><td>Clearance, M8 &times; 35 into beam corner bores</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">1.2</sup></td></tr>
-<tr><td>F1&ndash;F4</td><td><b>BF12</b>, face-mounted &mdash; upper row F1, F2 &middot; lower row F3, F4</td><td>4</td><td><b>27, 73</b></td><td><b>165</b> / <b>147</b></td><td>4.2</td><td><b>DRILL THROUGH</b> &middot; tap M5 at home</td></tr>
-<tr><td>T1</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
-<tr><td>T2</td><td><b>L-bracket</b> to the fin &mdash; clearance, M8</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through<sup class="f">1.4</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">across, from the outboard edge</span></th><th>Y <span style="font-weight:400">up, from the bottom edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>B1&ndash;B8</td><td>8</td><td class="n">35, 65</td><td class="n">197, 227, 257, 287</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
+<tr><td>F1&ndash;F4</td><td>4</td><td><b>27, 73</b></td><td><b>165</b> / <b>147</b></td><td>4.2</td><td><b>DRILL THROUGH</b></td></tr>
+<tr><td>T1</td><td>1</td><td class="n">25</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
+<tr><td>T2</td><td>1</td><td class="n">170</td><td class="n">30</td><td class="d">9</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 10 &times; &oslash;9</td><td><b>14</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 10 &times; &oslash;9</td><td><b>14</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<p style="font-size:9.5pt;margin:0 0 3mm"><b>&#9888; Do not cut the taper line yet</b> &mdash; the
-spindle clearance is unsettled and the cut is one bandsaw pass that cannot be put
-back.<sup class="f">1.5</sup></p>
 </div>
 
 <!-- ============================================================ -->
 <div class="plate pg-s2">
 <h2 id="sheet-2">Sheet 2a &mdash; X gantry end plate, LEFT-HAND (quantity 1)</h2>
+
 <div class="stock">
 <b>245 long &times; 154 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b>, out of a 200 &times; 300 piece.
 </div>
@@ -762,34 +610,32 @@ back.<sup class="f">1.5</sup></p>
 <span style="color:#c0c">&#9679; magenta</span> = the four HGH20 bearing blocks &middot;
 <span style="color:#b06000">&#9679; amber</span> = parts on other sheets (shelf bar, doubler) and
 the M5 holes that fix them &middot;
-<span style="color:#06c">&#9679; blue</span> = dimensions.
-<b>Dashed = not this plate</b>, or on its far face.
-<br><br>
-Outer face, seen from outboard. <b>The drawing's horizontal is machine X</b> &mdash; the plate's
-245 from its bottom end, left to right. <b>The vertical is Y across the 154</b>, Y 0 at the back
-edge, running <b>up</b> the page. The beam's back face is <b>flush with the plate's back edge</b>.<sup class="f">2.14</sup></figcaption>
+<span style="color:#06c">&#9679; blue</span> = dimensions &middot;
+<b>dashed = not this plate, or on its far face.</b> Outer face, seen from outboard.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 245</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">{{BEAM_SEAM_XEP}}</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
-<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
-<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler gets the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
-<tr class="edge"><td>B1&ndash;B4</td><td><b>Sole plate</b> &mdash; into the <b>DOUBLER's</b> end edge, at X {{DOUBLER_BOTTOM_X}}</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>{{SOLE_ROOT_TAP_DEPTH}} DEEP MAX</b> &mdash; leaves {{SOLE_ROOT_WALL}} to the &#248;{{M5_D}} doubler bolt it points at<br>tap M5 at home<br>&#9989; <b>ONE ROW, and it is the only edge drilling on this plate</b> &mdash; the sole plate's base butts the plate's outer face and takes no bolts into it<sup class="f">2.7</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 245</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>C2</b></td><td>1</td><td class="n">{{BEAM_SEAM_XEP}}</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b></td></tr>
+<tr><td>E1&ndash;E4</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
+<tr><td>H1</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>H2</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>P1&ndash;P16</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b></td></tr>
+<tr><td>D1&ndash;D4</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler gets the same numbers on Sheet 2d</td></tr>
+<tr class="edge"><td>B1&ndash;B4</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 2 &times; &oslash;6.8 &middot; 4 &times; &oslash;9 &middot; 1 &times; &oslash;35</td><td><b>31</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 2 &times; &oslash;6.8 &middot; 4 &times; &oslash;9 &middot; 1 &times; &oslash;35</td><td><b>31</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
 <h3 id="sheet-2b" style="margin-top:7mm">Sheet 2b &mdash; X gantry end plate, RIGHT-HAND, with the BF12 tongue (quantity 1)</h3>
+
 <div class="stock">
 <b>300 long &times; 154 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b> &mdash; a <b>200 &times; 300</b> piece cut to
 154 wide. <b>Keep the 45 mm offcut</b>: it is the doubler of Sheet 2d.<br>
-&#9888; <b>Not interchangeable with its pair</b> &mdash; the left-hand plate stops at X 235.<sup class="f">2.9</sup>
+&#9888; <b>Not interchangeable with its pair</b> &mdash; the left-hand plate stops at X 235.
 </div>
 
 <figure>
@@ -964,41 +810,34 @@ edge, running <b>up</b> the page. The beam's back face is <b>flush with the plat
 <span style="color:#b06000">&#9679; amber</span> = parts on other sheets (shelf bar, doubler) and
 the M5 holes that fix them &middot;
 <span style="color:#c00">&#9679; red</span> = the tongue's BF12 pattern and the sole-bracket row &middot;
-<span style="color:#06c">&#9679; blue</span> = dimensions.
-<b>Dashed = not this plate</b>, or on its far face.
-<br><br>
-Outer face, seen from outboard. <b>The drawing's horizontal is machine X</b> &mdash; the plate's
-300 from its bottom end, left to right. <b>The vertical is Y across the 154</b>, Y 0 at the back
-edge, running <b>up</b> the page. <b>The whole plate is drawn, tongue included</b>, so this sheet can
-be cut and drilled without a second one beside it. The beam's back face is <b>flush with the plate's
-back edge</b>.<sup class="f">2.14</sup></figcaption>
+<span style="color:#06c">&#9679; blue</span> = dimensions &middot;
+<b>dashed = not this plate, or on its far face.</b> Outer face, seen from outboard.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates, the complete plate</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 300</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>C2</b></td><td><b>Encoder sensor bore</b> &mdash; on the Y beam's seam</td><td>1</td><td class="n">{{BEAM_SEAM_XEP}}</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b><sup class="f">2.4</sup></td></tr>
-<tr><td>E1&ndash;E4</td><td>Clearance into the <b>top</b> extrusion corner bores</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">2.3</sup></td></tr>
-<tr><td>H1</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>H2</td><td>Shelf bar to plate</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M8 at home<br>&#128308; <b>M8 &times; 35, not 40</b><sup class="f">2.8</sup></td></tr>
-<tr><td>P1&ndash;P16</td><td>4 &times; HGH20 bearing block, outer face</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><sup class="f">2.5</sup></td></tr>
-<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler carries the same numbers on Sheet 2d<sup class="f">2.6</sup></td></tr>
-<tr class="edge"><td>B1&ndash;B4</td><td><b>Sole plate</b> &mdash; into the <b>DOUBLER's</b> end edge, at X {{DOUBLER_BOTTOM_X}}</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">&#128308; <b>{{SOLE_ROOT_TAP_DEPTH}} DEEP MAX</b> &mdash; leaves {{SOLE_ROOT_WALL}} to the &#248;{{M5_D}} doubler bolt it points at<br>tap M5 at home<br>&#9989; <b>ONE ROW, and it is the only edge drilling on this plate</b> &mdash; the sole plate's base butts the plate's outer face and takes no bolts into it<sup class="f">2.7</sup></td></tr>
-<tr><td><b>G1, G2</b></td><td><b>BF12</b> face-mount on the tongue, first row</td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW1}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>includes the 10 interposer</b> under the casting<sup class="f">2.13</sup></td></tr>
-<tr><td><b>G3, G4</b></td><td><b>BF12</b> face-mount on the tongue, second row</td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW2}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>{{TONGUE_EDGE_MARGIN}} to the tongue's end</b><sup class="f">2.13</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 300</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>C2</b></td><td>1</td><td class="n">{{BEAM_SEAM_XEP}}</td><td class="n">77</td><td class="d">35</td><td class="op">Through &middot; <b>BORE THIS FIRST</b></td></tr>
+<tr><td>E1&ndash;E4</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
+<tr><td>H1</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>H2</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>P1&ndash;P16</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b></td></tr>
+<tr><td>D1&ndash;D4</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler carries the same numbers on Sheet 2d</td></tr>
+<tr class="edge"><td>B1&ndash;B4</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">Through</td></tr>
+<tr><td><b>G1, G2</b></td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW1}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td><b>G3, G4</b></td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW2}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 2 &times; &oslash;6.8 &middot; 4 &times; &oslash;9 &middot; 1 &times; &oslash;35</td><td><b>35</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 2 &times; &oslash;6.8 &middot; 4 &times; &oslash;9 &middot; 1 &times; &oslash;35</td><td><b>35</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
-
 <h3 id="sheet-2c" style="margin-top:7mm">Sheet 2c &mdash; the shelf bar (quantity 2)
 <span style="font-weight:400;font-size:10pt">&mdash; mates with this plate, drill together</span></h3>
+
 <div class="stock">
 <b>60 long &times; 25.4 W &times; 50.8 H &middot; 1" &times; 2" aluminium bar</b><br>
-Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><br>
-&#128308; <b>All four holes are &oslash;8.4, the close fit &mdash; NOT the &oslash;9 used everywhere else on
-M8.</b> This is the one part on the trip where the float is not wanted.<sup class="f">2.13</sup><br>
+Spans <b>exactly the beam's footprint, Y 0 to 60</b>.
 </div>
 
 <figure>
@@ -1050,47 +889,22 @@ M8.</b> This is the one part on the trip where the float is not wanted.<sup clas
 </figure>
 
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y</th><th>Z</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>V1</td><td>M8 <b>up</b> into a T-nut, bottom extrusion underside slot</td><td>1</td><td class="n">15</td><td class="n">&mdash;</td><td class="d">8.4</td><td class="op">Through &middot; <b>c'bored from BELOW</b><sup class="f">2.11</sup></td></tr>
-<tr><td>V2</td><td>M8 <b>up</b> into the second underside slot</td><td>1</td><td class="n">45</td><td class="n">&mdash;</td><td class="d">8.4</td><td class="op">Through &middot; c'bored from below</td></tr>
-<tr><td>P1</td><td>Horizontal, bar to plate &mdash; mates H1</td><td>1</td><td class="n">30</td><td class="n">15</td><td class="d">8.4</td><td class="op">Through the bar<sup class="f">2.12</sup></td></tr>
-<tr><td>P2</td><td>Horizontal, bar to plate &mdash; mates H2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">8.4</td><td class="op">Through the bar</td></tr>
+<tr><th>Ref</th><th>Qty</th><th>Y</th><th>Z</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>V1</td><td>1</td><td class="n">15</td><td class="n">&mdash;</td><td class="d">8.4</td><td class="op">Through &middot; <b>c'bored from BELOW</b></td></tr>
+<tr><td>V2</td><td>1</td><td class="n">45</td><td class="n">&mdash;</td><td class="d">8.4</td><td class="op">Through &middot; c'bored from below</td></tr>
+<tr><td>P1</td><td>1</td><td class="n">30</td><td class="n">15</td><td class="d">8.4</td><td class="op">Through the bar</td></tr>
+<tr><td>P2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">8.4</td><td class="op">Through the bar</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;8.4</td><td><b>4</b></td><td colspan="4" class="tn">2 of this part get made &mdash; <b>8 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;8.4</td><td><b>4</b></td><td colspan="3" class="tn">2 of this part get made &mdash; <b>8 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
 <h3 id="sheet-2d" style="margin-top:7mm">Sheet 2d &mdash; the nut doubler block (quantity 3)
 <span style="font-weight:400;font-size:10pt">&mdash; machined on its own, Y on <b>2a&apos;s origin</b>, X on its own end face</span></h3>
+
 <div class="stock">
 <b>154 long &times; 45 wide &times; 1/2" stock, <span class="warn">measured 12.19</span> 6061</b><br>
-&#128308; <b>THREE OF THEM, AND THE THIRD IS NOT LIKE THE OTHER TWO.</b> The block is identical;
-where it goes is not.<br>
-<b>Two for the Y ends.</b> Cut from the <b>45 mm offcut</b> left when an end plate is taken out of a
-200 mm wide piece. Each bolts to the end plate's <b>OUTER face at the bottom</b>, the same face the
-bearing blocks are on, with its <b>end face level with the ball nut's mounting face</b>. That end
-face is the whole seating &mdash; <b>{{SOLE_BASE_D}}</b> &mdash; and the sole plate of Sheet 5 lies
-across it and bolts into its edge.<br>
-<b>One for the X axis.</b> It comes out of the <b>{{XEP_WASTE_L}} &times; {{XEP_STOCK_W}} left past the
-LEFT plate's end</b> &mdash; that plate is cut to {{XEP_CUT}} of the 300, so the remainder takes this
-block turned 90&deg;, its 154 across the width. <b>All three come off the two end plate pieces and
-nothing is bought for them.</b> It bolts to the X carriage plate's <b>REAR face, the other way up</b>, with its
-<b>bottom edge at 161</b> and its tapped end face at the TOP, carrying the X ball nut through the same
-sole plate. <b>All three joints are now the same joint</b>, the Y pair being the X one
-inverted.<sup class="f">11.1</sup><br>
-<span class="wcs">CLAMP IT THE SHORT WAY, ON ITS OWN CORNER.</span> <b>X runs along this block&apos;s 45</b>
-from its tapped end face, and <b>Y along its 154</b> from the same back edge 2a uses. <b>Every Y below
-is the number 2a carries; every X is {{DOUBLER_BOTTOM_X}} less</b>, because the end plate reaches that
-far past this block's end face to back the sole plate. The two parts are machined <b>separately</b>
-and it is the shared Y origin plus that one known offset that makes them
-agree.<sup class="f">2.6</sup><br>
-<b>The height has an upper bound</b>, and 45 is inside it. The doubler shares this face with the
-<b>lower Y bearing block row</b>, and the gap to that row's bottom edge is
-<b>{{DOUBLER_BLOCK_CLEAR}}</b>. Nothing bears across it. A 60 would overlap.<br>
-&#128308; <b>D1&ndash;D4 are NOT centred in the 45, and must not be re-centred.</b> They stay at
-<b>X 25</b>, which leaves 20 above and 25 below. <b>R1&ndash;R4 depend on it</b>: they bore in from the end face on
-these same four Y stations, straight at these bolts, and stop with {{SOLE_ROOT_WALL}} of aluminium
-left. Centre the column and that margin shrinks.<sup class="f">2.7</sup>
+<span class="wcs">CLAMP IT THE SHORT WAY, ON ITS OWN CORNER.</span>
 </div>
 
 <figure>
@@ -1197,42 +1011,26 @@ left. Centre the column and that margin shrinks.<sup class="f">2.7</sup>
   <text class="ref" x="-8.00" y="35.00" fill="#c00" text-anchor="middle">R4</text>
 </svg>
 <figcaption><b>The four Y stations are the point of this drawing, and they are not this part&#8217;s
-numbers &#8212; they are 2a&#8217;s.</b> D1&ndash;D4 at <b>Y 32, 62, 92, 122</b> are the same four values the
-end plate carries in its own schedule, and R1&ndash;R4 into the end face sit on the same four again, so
-one spread serves every row across 2a, 2d and Sheet&nbsp;5. <b>Nothing is clamped together at the
-mill</b> &mdash; the parts are machined separately and it is the shared WCS that makes them agree,
-which is why the block is clamped the short way on 2a&#8217;s origin rather than on its own long edge.
-<b>Held that way, every number above is a number already on Sheet 2a.</b><br><br>
-The grey projection lines carry the stations across to the end-face view: if a hole in one view does
-not land on its partner in the other, the error is in this drawing and not in the schedule.</figcaption>
+numbers &#8212; they are 2a&#8217;s.</b></figcaption>
 </figure>
 
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">from the plate's bottom end</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>D1&ndash;D4</td><td><b>Doubler to plate</b> &mdash; one column, in shear with full material around them</td><td>4</td><td class="n"><b>25</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; <b>tap M5 THROUGH</b> &middot; <b>drilled in this part alone</b>, to the same numbers 2a uses. The bolt is clearance in the plate and threaded in here &mdash; an M5 &times; {{BOLT_DOUBLER_TO_PLATE}} takes {{DOUBLER_BOLT_ENGAGE}} of it and stops {{DOUBLER_BOLT_BREAKOUT}} short of the far face<sup class="f">2.6</sup></td></tr>
-<tr class="edge"><td>R1&ndash;R4</td><td><b>Into this block's bottom end face</b> &mdash; Sheet 2a's B1&ndash;B4, the only edge holes that need the mill</td><td>4</td><td class="n">from <b>X 0</b>, <b>{{SOLE_ROOT_TAP_DEPTH}} deep MAX</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">4.2</td><td class="op">&#128308; <b>{{SOLE_ROOT_TAP_DEPTH}} DEEP MAX</b> &mdash; clears the &oslash;5 D-bolt wall by <b>2.5</b><br>tap M5 at home<br>&#9989; <b>part of machining THIS block</b> &mdash; the only root row that needs the mill<sup class="f">2.7</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">from the plate's bottom end</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>D1&ndash;D4</td><td>4</td><td class="n"><b>25</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; <b>drilled in this part alone</b>, to the same numbers 2a uses. The bolt is clearance in the plate and threaded in here &mdash; an M5 &times; {{BOLT_DOUBLER_TO_PLATE}} takes {{DOUBLER_BOLT_ENGAGE}} of it and stops {{DOUBLER_BOLT_BREAKOUT}} short of the far face</td></tr>
+<tr class="edge"><td>R1&ndash;R4</td><td>4</td><td class="n">from <b>X 0</b>, <b>{{SOLE_ROOT_TAP_DEPTH}} deep MAX</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">4.2</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;4.2</td><td><b>8</b></td><td colspan="4" class="tn">3 of this part get made &mdash; <b>24 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;4.2</td><td><b>8</b></td><td colspan="3" class="tn">3 of this part get made &mdash; <b>24 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<div class="warn">
-<b>Three parts whose holes must agree across an assembly</b> &mdash; end plate (2a), this doubler
-(2d) and the sole plate (Sheet&nbsp;5). They are machined <b>separately</b>, and the <b>shared
-Y origin is what makes them agree</b> &mdash; nothing is clamped together at the mill. On X the
-doubler and the plate differ by {{DOUBLER_BOTTOM_X}}, the strip the plate reaches past
-it.<sup class="f">2.7</sup>
-</div>
 </div>
 
 <!-- ============================================================ -->
 <div class="plate pg-s3a">
 <h2 id="sheet-3a">Sheet 3a — X carriage plate (quantity 1)</h2>
+
 <div class="stock">
 <b>407 long &times; 154 wide &times; 1/2" aluminium</b><br>
-<b>The plate already exists</b>, sprayed with layout dye.<br>
-<b>X 0 is the BOTTOM of the carriage as it hangs on the machine.</b> The bottom ~150 is over the X gantry; the rest stands above it.<sup class="f">3.6</sup><br>
-<b>Fully dimensioned &mdash; 45 features.</b> The top stop is now <b>a bolt-on block, <a href="#sheet-3c">Sheet 3c</a></b>, and the two holes it needs are in the schedule below.<sup class="f">3.3</sup>
+<b>X 0 is the BOTTOM of the carriage as it hangs on the machine.</b>
 </div>
 
 <figure>
@@ -1415,41 +1213,33 @@ it.<sup class="f">2.7</sup>
 </svg>
 <figcaption>The plate is <b>407</b> and each rail is <b>400</b>, set flush with the bottom edge
 &mdash; so the rails finish 7 short of the top, which the drawing shows and nothing has to say
-twice. <b>Every hole carries its schedule ref</b>, and the numbering runs <b>across X, then up in
-Y</b>: R1&ndash;R7 is the whole lower rail before R8 starts the upper one, and X1&ndash;X4 is the
-whole Y 20 row across both bearing blocks.</figcaption>
+twice.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 407</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>R1&ndash;R7</b></td><td><b>HGR20 rail 1</b> &mdash; the reference rail</td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
-<tr><td><b>R8&ndash;R14</b></td><td><b>HGR20 rail 2</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.1</sup></td></tr>
-<tr><td>F1, F2</td><td><b>BF12</b> screw support</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">3.5</sup></td></tr>
-<tr><td>K1&ndash;K6</td><td><b>Z cast stepper frame</b> (the BK12 end)</td><td>6</td><td class="n">355.5, 368.5, 398.5</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>X 398.5 leaves 8.5 mm to the end</b><sup class="f">3.7</sup></td></tr>
-<tr><td><b>S1</b></td><td><b>Sensor bore</b> &mdash; centred on the block pattern</td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
-<tr><td>X1&ndash;X16</td><td><b>Four X-axis bearing blocks</b>, far face</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n">20, 56, 98, 134</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b><sup class="f">3.2</sup></td></tr>
-<tr><td><b>XD1&ndash;XD4</b></td><td><b>Nut doubler to this plate</b> &mdash; one column, rear face<sup class="f">3.8</sup></td><td>4</td><td class="n"><b>186</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td class="op">Through &middot; the doubler of Sheet 2d bolts here, carrying the X ball nut &mdash; <b>new 2026-10-09</b><sup class="f">3.8</sup></td></tr>
-<tr><td><b>TS1, TS2</b></td><td><b>Z top stop block</b> &mdash; <a href="#sheet-3c">Sheet 3c</a> bolts on here<sup class="f">3.4</sup></td><td>2</td><td class="n"><b>322.7</b></td><td class="n"><b>62, 92</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<br><b>322.7 is the block&apos;s mid-thickness</b> &mdash; its stop face is at 310<sup class="f">3c.2</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 407</span></th><th>Y <span style="font-weight:400">across the 154</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>R1&ndash;R7</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">20</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td><b>R8&ndash;R14</b></td><td>7</td><td class="n">20, 80, 140, 200, 260, 320, 380</td><td class="n">134</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>F1, F2</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>K1&ndash;K6</td><td>6</td><td class="n">355.5, 368.5, 398.5</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td><b>S1</b></td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
+<tr><td>X1&ndash;X16</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n">20, 56, 98, 134</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b></td></tr>
+<tr><td><b>XD1&ndash;XD4</b></td><td>4</td><td class="n"><b>186</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td class="op">Through &middot; the doubler of Sheet 2d bolts here, carrying the X ball nut &mdash; <b>new 2026-10-09</b></td></tr>
+<tr><td><b>TS1, TS2</b></td><td>2</td><td class="n"><b>322.7</b></td><td class="n"><b>62, 92</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 1 &times; &oslash;35</td><td><b>45</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;4.2 &middot; 16 &times; &oslash;5.2 &middot; 4 &times; &oslash;6 &middot; 1 &times; &oslash;35</td><td><b>45</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
 </div>
 
 <!-- ============================================================ -->
 <div class="plate pg-s3b">
 <h2 id="sheet-3b">Sheet 3b &mdash; Z spacer bar (quantity 2)</h2>
+
 <div class="stock">
-<b>160 long &times; 50 wide &times; 5/8" aluminium bar</b> &mdash; <b>new stock</b>, two off<br>
-<b>It sits between the Z bearing blocks and the Z plate</b>, one per rail, each spanning that
-rail's pair of blocks.<br>
-&#9888; <b>5/8" is a nominal and this bar has been wrong twice before</b> &mdash; 15.875 as a
-fraction, 16.41 on calipers, 16.22 on a micrometer. <b>Mic the new bar on arrival and write the
-number down before the Z plate is counterbored.</b><sup class="f">3b.1</sup><br>
-&#128308; <b>Face 1 mm off both bars in ONE setup.</b> That is the only operation that makes the
-pair coplanar, and it is the reason the cut exists.<sup class="f">3b.2</sup>
+<b>160 long &times; 50 wide &times; 5/8" aluminium bar</b> &mdash; <b>new stock</b>, two off
 </div>
 
 <figure>
@@ -1504,48 +1294,29 @@ pair coplanar, and it is the reason the cut exists.<sup class="f">3b.2</sup>
   <text class="ref" x="141.50" y="19.00" fill="#111" text-anchor="middle">P8</text>
   <text class="ref" x="68.00" y="28.00" fill="#b06000" text-anchor="middle">A1</text>
 </svg>
-<figcaption>Drawn 1:1, laid out as the bar sits on the mill table. <b>The four &oslash;6 holes carry
-the M5 that bolt the Z plate through this bar into the bearing blocks</b> &mdash; they are clearance
-at both ends, with the counterbore in the Z plate and the thread in the block. The fifth hole is
-driver access and meets nothing.</figcaption>
+<figcaption>Drawn 1:1, laid out as the bar sits on the mill table.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 160</span></th><th>Y <span style="font-weight:400">across the 50</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>P1&ndash;P8</td><td>Clearance for the M5 into the bearing blocks</td><td>8</td><td class="n">18.5, 54.5, 105.5, 141.5</td><td class="n">9, 41</td><td class="d">6</td><td class="op">Through<sup class="f">3b.3</sup></td></tr>
-<tr><td><b>A1</b></td><td><b>Driver access</b> &mdash; meets nothing</td><td>1</td><td class="n">80</td><td class="n">25</td><td class="d">6</td><td class="op">Through</td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 160</span></th><th>Y <span style="font-weight:400">across the 50</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>P1&ndash;P8</td><td>8</td><td class="n">18.5, 54.5, 105.5, 141.5</td><td class="n">9, 41</td><td class="d">6</td><td class="op">Through</td></tr>
+<tr><td><b>A1</b></td><td>1</td><td class="n">80</td><td class="n">25</td><td class="d">6</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>9 &times; &oslash;6</td><td><b>9</b></td><td colspan="4" class="tn">2 of this part get made &mdash; <b>18 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>9 &times; &oslash;6</td><td><b>9</b></td><td colspan="3" class="tn">2 of this part get made &mdash; <b>18 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<div class="warn">
-&#9888; <b>Three numbers on this sheet are open.</b> The bar's <b>thickness</b> is a nominal until
-the new stock is miked. <b>BF12's width</b> has not been caliper'd, and it is what the 50 mm width
-has to clear &mdash; about 1.9 mm each side by the current reckoning. And the X positions carry
-<b>half millimetres</b>, because a 160 bar puts the symmetric hole pattern on .5; <b>a 161 bar
-would read 19, 55, 106 and 142.</b>
 </div>
 
-</div>
-
-<!-- ============================================================ -->
 <!-- ============================================================ -->
 <div class="plate pg-s3c">
 <h2 id="sheet-3c">Sheet 3c &mdash; the Z top stop block (quantity 1)</h2>
+
 <div class="stock">
 <b>50 &times; 25.4 &times; 45, cut from 1" 6061</b> &mdash; the <b>25.4 is the stock thickness</b>, so
 the block is one 50 &times; 45 piece off a 1" slab and no face needs machining.<br>
-<b>What it does.</b> It bolts to the <b>front face of the X carriage plate</b> and the <b>Z ball nut
-lands on its lower face</b>. The Z screw runs on past it through the <b>&oslash;22 bore</b>, so the
-block stops the nut and nothing else.<sup class="f">3c.1</sup><br>
-<span class="wcs">THREE HOLES, TWO SETUPS.</span> <b>SB1</b>, the &oslash;22 bore, runs <b>up</b> the block
-through the 25.4. <b>TS1 and TS2</b> run <b>in toward the plate</b> through the 45. They are at right
-angles to each other, so the block gets turned once.<sup class="f">3c.3</sup><br>
-<b>Installed:</b> <b>50 across the carriage</b>, centred on the screw at Y&nbsp;77 &middot;
-<b>25.4 up the carriage</b>, stop face at X&nbsp;310 &middot; <b>45 standing out</b> from the plate
-face. It bolts to <b>TS1 and TS2 on <a href="#sheet-3a">Sheet 3a</a></b>.<sup class="f">3c.2</sup>
+<span class="wcs">THREE HOLES, TWO SETUPS.</span>
 </div>
 
 <figure>
@@ -1617,45 +1388,35 @@ face. It bolts to <b>TS1 and TS2 on <a href="#sheet-3a">Sheet 3a</a></b>.<sup cl
   <text class="q" x="0" y="238" fill="#c00">THE COUNTERBORE IS 6 DEEP. That is what sets the thread engagement:</text>
   <text class="q" x="0" y="250" fill="#c00">45 &#8722; 6 = 39 of block left, so an M5 &#215; 50 reaches 11 into the carriage plate.</text>
 </svg>
-<figcaption>Both views at 2.6&times;. <b>View A is the one to read before drilling</b> &mdash; it is the
-only place the &oslash;22 bore and the two M5 runs appear together, and the whole reason the bore is 22
-rather than 27.<sup class="f">3c.3</sup></figcaption>
+<figcaption>Both views at 2.6&times;.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; two setups, and the block is turned between them</h3>
-<p style="margin:0 0 1.5mm;font-size:9.5pt"><b>Setup 1 &mdash; the 50 &times; 45 face up.</b> One hole,
-down through the 25.4.</p>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Across <span style="font-weight:400">the 50</span></th><th>Out <span style="font-weight:400">from the plate face</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>SB1</b></td><td><b>Z screw bore</b> &mdash; the screw runs on through</td><td>1</td><td class="n"><b>25</b></td><td class="n"><b>25</b></td><td class="d">22</td><td class="op">Through the 25.4 &middot; <b>on the Z screw centreline</b><sup class="f">3c.2</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>Across <span style="font-weight:400">the 50</span></th><th>Out <span style="font-weight:400">from the plate face</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>SB1</b></td><td>1</td><td class="n"><b>25</b></td><td class="n"><b>25</b></td><td class="d">22</td><td class="op">Through the 25.4 &middot; <b>on the Z screw centreline</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>1 &times; &oslash;22</td><td><b>1</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>1 &times; &oslash;22</td><td><b>1</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-<p style="margin:2.5mm 0 1.5mm;font-size:9.5pt"><b>Setup 2 &mdash; the 50 &times; 25.4 outer face up.</b>
-Two holes, in toward the plate through the 45.</p>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Across <span style="font-weight:400">the 50</span></th><th>Up <span style="font-weight:400">the 25.4</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>TS1, TS2</b></td><td><b>M5 clearance into the carriage plate</b></td><td>2</td><td class="n"><b>10, 40</b></td><td class="n"><b>12.7</b></td><td class="d">6</td><td class="op">Through the 45 &middot; <b>C&rsquo;BORED 6 DEEP</b> from this face<br>&#9888; <b>1.0 of wall to the bore</b> &mdash; drill it straight<sup class="f">3c.3</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>Across <span style="font-weight:400">the 50</span></th><th>Up <span style="font-weight:400">the 25.4</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>TS1, TS2</b></td><td>2</td><td class="n"><b>10, 40</b></td><td class="n"><b>12.7</b></td><td class="d">6</td><td class="op">Through the 45 &middot; <b>C&rsquo;BORED 6 DEEP</b> from this face<br>&#9888; <b>1.0 of wall to the bore</b> &mdash; drill it straight</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>2 &times; &oslash;6</td><td><b>2</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>2 &times; &oslash;6</td><td><b>2</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-<p style="font-size:9.5pt;margin:2.5mm 0 0"><b>The fastener:</b> <b>M5 &times; 50</b>, counterbored, two
-of them &mdash; through the 45 of block and about <b>11 into the carriage plate</b>, which TS1 and TS2
-on <a href="#sheet-3a">Sheet 3a</a> are drilled and tapped for.<sup class="f">3c.3</sup></p>
 </div>
 
+<!-- ============================================================ -->
 <div class="plate pg-s4">
 <h2 id="sheet-4">Sheet 4 &mdash; Z plate (quantity 1)</h2>
+
 <div class="stock">
 <b>175 long &times; 164 wide &times; 1/2" aluminium</b><br>
-<b>X 0 is the BOTTOM of the plate as it hangs on the machine</b>, Y 0 the left edge.<br>
-&#128308; <b>All twenty-eight holes are whole millimetres.</b> That holds only at 164 wide with the
-Z rails on a 114 pitch &mdash; see Sheet 3a, R1 at Y 20 and R2 at Y 134.<sup class="f">4.1</sup><br>
-&#128308; <b>Twenty counterbores, TWO depths.</b> C1&ndash;C16 and N1&ndash;N4 share the 5.2 pilot
-and the &oslash;8.9 bore, but the web differs &mdash; <b>4 mm on the C holes, 6 mm on the N
-holes</b>. The 4 is forced only where the bolt also has to cross the spacer.<sup class="f">4.5</sup>
+<b>X 0 is the BOTTOM of the plate as it hangs on the machine</b>, Y 0 the left edge.
 </div>
 
 <figure>
@@ -1779,63 +1540,26 @@ holes</b>. The 4 is forced only where the bolt also has to cross the spacer.<sup
   <text class="ref" x="52.00" y="75.00" fill="#c00" text-anchor="middle">N4</text>
 </svg>
 <figcaption>Laid out as the part sits on the mill table: <b>the 175 runs along X</b>, origin at the
-lower-left corner, which is also the plate's installed bottom-left. The dashed outlines are what
-sits behind or in front &mdash; the two spindle clamps on the front face, the ball nut's mounting
-face and the two bearing-block pairs on the back.</figcaption>
+lower-left corner, which is also the plate's installed bottom-left.</figcaption>
 </figure>
 
-<div class="warn">
-<b>Every hole on this plate is a whole millimetre</b> &mdash; all twenty-eight. It holds because the
-Z rails are on a <b>114 pitch</b> (Sheet 3a, Y 20 and 134), which puts the block bolt columns on
-&plusmn;73 and &plusmn;41 rather than &plusmn;73.5 and &plusmn;41.5. On an odd plate width the nut
-and clamp holes land on half millimetres instead, so <b>the 164 and the 114 go together</b>.
-<br><br>
-&#9888; <b>Two things on this sheet are still open, and both are thicknesses.</b> The <b>plate's</b>
-is a nominal 12.7 while the half-inch stock elsewhere on this machine came in at 12.19 &mdash; it
-sets the counterbore depth through the 4 mm web. The <b>new spacer bar's</b> is unmeasured, and it
-sets how much of the M5 reaches the bearing block. <b>Neither moves a hole on this
-sheet.</b><sup class="f">4.7</sup>
-</div>
-
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 175</span></th><th>Y <span style="font-weight:400">across the 164</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>M1&ndash;M8</td><td><b>Clamp bolts</b> &mdash; M8 &times; 1.25</td><td>8</td><td class="n">17, 42, 133, 158</td><td class="n">32, 132</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b><br>tap M8 &times; 1.25 at home<sup class="f">4.2</sup></td></tr>
-<tr><td>C1&ndash;C16</td><td>To the bearing blocks, through the spacer</td><td>16</td><td class="n">26, 62, 113, 149</td><td class="n">9, 41, 123, 155</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 4 mm WEB &#8594; open to 6</b><br>M5 &times; 25<sup class="f">4.5</sup></td></tr>
-<tr><td>N1&ndash;N4</td><td><b>Into the ball nut</b> &mdash; same counterbore as C &middot; <b>M5 &times; 16</b></td><td>4</td><td class="n">28, 52</td><td class="n">62, 102</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 6 mm WEB &#8594; open to 6</b><br>M5 &times; 16 &middot; the lower clamp sits over these<sup class="f">4.6</sup></td></tr>
-<tr><td>A1, A2</td><td><b>Driver access</b> &mdash; meets nothing</td><td>2</td><td class="n">87.5</td><td class="n">25, 139</td><td class="d">6</td><td class="op">Through<sup class="f">4.8</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 175</span></th><th>Y <span style="font-weight:400">across the 164</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>M1&ndash;M8</td><td>8</td><td class="n">17, 42, 133, 158</td><td class="n">32, 132</td><td class="d">6.8</td><td class="op">Through</td></tr>
+<tr><td>C1&ndash;C16</td><td>16</td><td class="n">26, 62, 113, 149</td><td class="n">9, 41, 123, 155</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 4 mm WEB &#8594; open to 6</b><br>M5 &times; 25</td></tr>
+<tr><td>N1&ndash;N4</td><td>4</td><td class="n">28, 52</td><td class="n">62, 102</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 6 mm WEB &#8594; open to 6</b><br>M5 &times; 16 &middot; the lower clamp sits over these</td></tr>
+<tr><td>A1, A2</td><td>2</td><td class="n">87.5</td><td class="n">25, 139</td><td class="d">6</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>22 &times; &oslash;6 &middot; 8 &times; &oslash;6.8</td><td><b>30</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>22 &times; &oslash;6 &middot; 8 &times; &oslash;6.8</td><td><b>30</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<p style="font-size:9.5pt;margin:0 0 3mm"><b>Clamp footprint 122 &times; 55</b>, centred on X 29.5 and
-X 145.5, with the 100 &times; 25 bolt pattern centred in each &mdash; which leaves <b>2 mm of relief
-at each end of the plate</b>. <b>116 and never 144</b><sup class="f">4.3</sup>, and the clamps are
-deliberately NOT moved to buy hole clearance.<sup class="f">4.9</sup></p>
 </div>
 
+<!-- ============================================================ -->
 <div class="plate pg-s5">
 <h2 id="sheet-5">Sheet 5 &mdash; the nut sole plate (quantity 3)</h2>
-<p class="sub">One part, three copies &middot; <b>Y1, Y2 and the X carriage</b> &middot; it carries
-the ball nut into the end of a doubler, and the same joint serves all three
-<span class="tn">&mdash; the X one is installed inverted, Sheet 11</span></p>
-
-<div class="info">
-<b>Why these exist, and why there is only one of them.</b> A <b>doubler</b> bolts to the face of a
-plate with its <b>end face level with the ball nut's mounting face</b>; this plate lies across that
-end face, bolts into its edge, and reaches out to the nut. The plate it is bolted beside carries on
-<b>{{XEP_SOLE_TAB}}</b> past the doubler, and the base <b>butts that strip</b> &mdash; which is what
-locates it, so no bolts go into the plate itself.<br>
-<b>On Y the nut hangs under the beam</b>, its mounting face pointing DOWN, so the joint is upside
-down and the bolts go up into the nut. <b>On X the screw sits on top of the beam</b> and it is the
-right way up. Nothing else differs, which is why the three are one drawing.<br>
-The Y screw axis is <b>{{SCREW_AXIS_X}}&nbsp;mm</b> from the end plate's inner face &mdash;
-{{T_X_ENDPLATE}} plate + 30 rail stack + 30 half beam &mdash; so the nut's flange never comes near the
-plate and this is a cantilever, not a strip. That leaves <b>{{NUT_AIR_CLEAR}} of clear air</b> between
-the doubler's outer face and the nut's side, against a <b>{{NUT_AIR_MIN}}&nbsp;mm minimum measured off
-the built Y beam</b>.
-</div>
 
 <figure>
 <svg viewBox="-92 -26 400 285" width="178mm" xmlns="http://www.w3.org/2000/svg">
@@ -1921,60 +1645,31 @@ the built Y beam</b>.
   <text class="ref" x="89.00" y="39.00" fill="#c00" text-anchor="middle">N3</text>
   <text class="ref" x="89.00" y="19.00" fill="#c00" text-anchor="middle">N4</text>
 </svg>
-<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) the <b>doubler's</b> four root holes are drilled and tapped <b>as part of machining the doubler</b>, at Y 32, 62, 92, 122 &mdash; Sheet 2d's R1&ndash;R4; (2) bolt the doubler to the plate; (3) bolt <b>this plate</b> into the doubler through that one row, its base hard against the end plate's strip. <b>That strip is what squares it</b> &mdash; there is no second row to pull it true, and none needed.<br><br>Plan view, <b>WCS 0,0 on the root's left corner</b> &mdash; a real stock corner. Machine X runs <b>up</b> the page from the root to the tip, machine Y across the 154. The bolt row sits at <b>{{ROOT_BOLT_X_DOUBLER}}</b>, centred in the doubler's {{T_DOUBLER}}, and on <b>Y 32, 62, 92, 122</b> &mdash; D1&ndash;D4's stations, so one spread serves both rows. Neither number is a free choice. The stem is centred on the plate's fore-aft mid (Y&nbsp;77), a free choice made for symmetry &mdash; thrust runs <i>along</i> Y, so an offset in Y produces no moment. The four red holes are the nut's M5 clearance holes.</figcaption>
+<figcaption><b>ASSEMBLY ORDER, and it takes work off the trip:</b> (1) the <b>doubler's</b> four root holes are drilled and tapped <b>as part of machining the doubler</b>, at Y 32, 62, 92, 122 &mdash; Sheet 2d's R1&ndash;R4; (2) bolt the doubler to the plate; (3) bolt <b>this plate</b> into the doubler through that one row, its base hard against the end plate's strip.</figcaption>
 </figure>
 
 <h3>The part</h3>
-<table>
-<tr><th>Part</th><th>Qty</th><th>Size</th><th>Material</th><th>Mill needed?</th></tr>
-<tr><td><b>Sole plate</b></td><td><b>3</b></td><td><b>T</b>, 154 root &times; {{SOLE_BASE_D}}, <b>{{SOLE_STEM_W}}</b> stem &times; {{SOLE_STEM_L}}, <b>1/4"</b></td><td>A36 steel</td><td>T profile plus 4 &times; M5 clearance</td></tr>
-</table>
 
 <h3>Hole schedule &mdash; WCS origin: <b>the root's left corner</b>, X outboard from the doubler's inner face</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X from the root</th><th>Y</th><th class="d">&oslash;</th><th>Note</th></tr>
-<tr><td>N1&ndash;N4</td><td>M5 clearance, plate into the nut</td><td>4</td><td class="n"><b>{{NUT_BOLT_X_NEAR}}</b>, <b>{{NUT_BOLT_X_FAR}}</b></td><td class="n"><b>65</b>, <b>89</b></td><td class="d">6</td><td>The nut's own {{NUT_PATTERN_Y}} pattern, centred on Y 77. The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern {{NUT_PATTERN_Y}} &times; {{NUT_PATTERN_X}} centred on a {{NUT_FACE_Y}} &times; {{NUT_FACE_X}} face: insets {{NUT_INSET_Y}} across the {{NUT_FACE_Y}}, {{NUT_INSET_X}} across the {{NUT_FACE_X}}</td></tr>
-<tr><td>R1&ndash;R4</td><td><b>Into the DOUBLER's end face</b> &mdash; the only edge holes that need the mill. Same holes as Sheet 2a's <b>B1&ndash;B4</b>, drawn on <b>Sheet 2d</b></td><td>4</td><td class="n"><b>{{ROOT_BOLT_X_DOUBLER}}</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td>Centred in the doubler's {{T_DOUBLER}}. &oslash;6 clearance through this plate; <b>M5 tapped into the doubler's edge, {{SOLE_ROOT_TAP_DEPTH}} deep MAX</b>, which leaves {{SOLE_ROOT_WALL}} to the &oslash;{{M5_D}} D bolt it points at. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations<sup class="f">2.7</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X from the root</th><th>Y</th><th class="d">&oslash;</th><th>Note</th></tr>
+<tr><td>N1&ndash;N4</td><td>4</td><td class="n"><b>{{NUT_BOLT_X_NEAR}}</b>, <b>{{NUT_BOLT_X_FAR}}</b></td><td class="n"><b>65</b>, <b>89</b></td><td class="d">6</td><td>The nut's own {{NUT_PATTERN_Y}} pattern, centred on Y 77. The nut's own threads &mdash; <b>M5 tapped into the nut body, not through-holes</b>. Pattern {{NUT_PATTERN_Y}} &times; {{NUT_PATTERN_X}} centred on a {{NUT_FACE_Y}} &times; {{NUT_FACE_X}} face: insets {{NUT_INSET_Y}} across the {{NUT_FACE_Y}}, {{NUT_INSET_X}} across the {{NUT_FACE_X}}</td></tr>
+<tr><td>R1&ndash;R4</td><td>4</td><td class="n"><b>{{ROOT_BOLT_X_DOUBLER}}</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td>Centred in the doubler's {{T_DOUBLER}}. &oslash;6 clearance through this plate; <b>M5 tapped into the doubler's edge, {{SOLE_ROOT_TAP_DEPTH}} deep MAX</b>, which leaves {{SOLE_ROOT_WALL}} to the &oslash;{{M5_D}} D bolt it points at. <b>Both the X and the Y are forced</b> &mdash; the X by the doubler's own mid-thickness, the Y by D1&ndash;D4's stations</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;6</td><td><b>8</b></td><td colspan="4" class="tn">3 of this part get made &mdash; <b>24 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;6</td><td><b>8</b></td><td colspan="3" class="tn">3 of this part get made &mdash; <b>24 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<div class="warn">
-<b>Three parts whose holes must agree across an assembly.</b> The end plate, the doubler and this
-bracket are each machined <b>on their own</b>, held on a <b>common WCS</b> &mdash; that shared origin
-is what makes them agree, not clamping them together. Take the <b>ball nut housing itself</b> to the
-mill &mdash; the N1&ndash;N4 pattern gets checked against the real flange before anything is cut.
 </div>
-
-<div class="note">
-<b>&#9888; The tip is the nut's own width. The 98.19 is derived.</b> The tip and the stem are
-<b>{{SOLE_STEM_W}}</b>, which is <b>{{NUT_FACE_Y}}</b> &mdash; the nut's mounting face. Nothing else
-is on that end, so the plate is as wide as the thing it bolts to, and the M5 at &plusmn;12 leaves
-<b>8&nbsp;mm</b> of edge, which is plenty in 1/4" steel. The <b>98.19 is derived</b> &mdash; 72.19 screw
-axis + 26 for half the nut &mdash; and it <b>includes the 24.38 seating</b>, which is the two plate end
-faces the bracket covers rather than length added beyond them. &#9888; A <b>107.4</b> counts that seating twice and is wrong. The numbers that are <b>not</b> free are the
-four M5 at <b>&plusmn;20 in X</b> and <b>&plusmn;12 in Y</b>, and the root's <b>154</b>.
-</div>
-
-<div class="note">
-<b>&#9989; The doubler is 45 tall.</b> Its upper bound is the bottom edge of
-the <b>lower Y bearing block row</b>, which shares the same face in the same X band. With the
-block's measured 44 width that edge lands at <b>X 55.5</b> &mdash; the lower rail at 77.5 less 22
-&mdash; so <b>45 clears it by 10.5</b>, where a <b>60 would overlap by 4.5</b>. It is <i>not</i> gated on the Y beam underside &mdash; the doubler
-sits ~17&nbsp;mm inboard of the beam's inside face.
-</div>
-</div>
-
 
 <!-- ============================================================ -->
 <div class="plate pg-s6">
 <h2 id="sheet-6">Sheet 6 &mdash; cast stepper frame interposer (quantity 3)</h2>
+
 <div class="stock">
 <b>150 long &times; 60 wide &times; 10 mm 6061</b><br>
-<b>One drawing, quantity 3</b> &mdash; Y1, Y2 and the X stepper end are the same part.<br>
 <span class="wcs">X 0 IS THE BAR'S OUTBOARD END</span> &mdash; the end that protrudes
-through the front plate's window. Y across the 60.<sup class="f">6.1</sup>
+through the front plate's window.
 </div>
 
 <figure>
@@ -2030,54 +1725,32 @@ through the front plate's window. Y across the 60.<sup class="f">6.1</sup>
   <text class="ref" x="135.00" y="28.00" fill="#111" text-anchor="middle">T4</text>
 </svg>
 <figcaption>The bar hangs <b>under</b> the Y beam, bolted up into slide-in T-nuts; the casting then
-bolts up into the bar. <b>Nothing rests on anything.</b> On X the same part sits on <i>top</i> of the
-beam instead.</figcaption>
+bolts up into the bar.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 150</span></th><th>Y <span style="font-weight:400">across the 60</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>C1&ndash;C6</td><td><b>The casting</b> bolts up into these</td><td>6</td><td class="n">28, 58, 71</td><td class="n">7, 53</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b> &middot; tap M5 at home<sup class="f">6.2</sup></td></tr>
-<tr><td>T1&ndash;T4</td><td>Clearance, M8 flange into <b>slide-in T-nuts</b></td><td>4</td><td class="n">105, 135</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b><sup class="f">6.3</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 150</span></th><th>Y <span style="font-weight:400">across the 60</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>C1&ndash;C6</td><td>6</td><td class="n">28, 58, 71</td><td class="n">7, 53</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
+<tr><td>T1&ndash;T4</td><td>4</td><td class="n">105, 135</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>6 &times; &oslash;4.2 &middot; 4 &times; &oslash;9</td><td><b>10</b></td><td colspan="4" class="tn">3 of this part get made &mdash; <b>30 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>6 &times; &oslash;4.2 &middot; 4 &times; &oslash;9</td><td><b>10</b></td><td colspan="3" class="tn">3 of this part get made &mdash; <b>30 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<p style="font-size:9.5pt;margin:0 0 3mm">FLAG: <b>X's bar inherits these rows from Y geometry.</b> On X
-the bar sits on top of the beam and overhangs its end &mdash; <b>check both rows land over beam
-before drilling.</b><sup class="f">6.4</sup></p>
 </div>
 
+<!-- ============================================================ -->
 <div class="plate pg-s7">
 <h2 id="sheet-7">Sheet 7 &mdash; the 1210.47 mm rear plate (quantity 1)</h2>
+
 <div class="stock">
 <b>1210.47 long &times; 11 7/8" (301.625) wide &times; 1/4" hot-rolled A36 steel</b><br>
-<b>One plate carries both Y beams</b> and is also the rear shear panel.<br>
 <span class="wcs">WCS ORIGIN: the plate's installed <b>LOWER-LEFT</b> corner, clamped right side up.</span><br>
-&#128308; <b>Y 0 is the installed BOTTOM edge</b> and Y runs up to <b>301.625</b> at the top. The
-bottom edge is the reference because it bears on the box's top skin &mdash; the same edge every
-other plate on this machine is dimensioned from.<sup class="f">7.6</sup><br>
-&#128308; <b>The beam bores do NOT depend on this plate's height.</b> They sit 182 above the box's
-top skin because that is where the fin carries it, so A1&ndash;A16 read the same
-<b>197 / 227 / 257 / 287</b> that Sheets 1a and 1b carry for the fin.<sup class="f">7.6</sup><br>
-<b>W1 and W2 are beam-referenced, like everything else on this sheet.</b> Their top edge is cut
-<b>{{WINDOW_TOP_OVER}} above the beam's underside</b>, at {{WINDOW_TOP_Y}} &mdash; the underside
-itself is {{Y_BEAM_UNDERSIDE}} above the box's top skin, and the overcut is there so that
-<b>no steel can stand below the beam's bottom face</b>. The opening runs
-{{WINDOW_H}} below that underside to {{WINDOW_BOTTOM_Y}}, and a <b>{{PROBE_NOTCH_W}} wide notch centred on it</b>
-carries on another {{PROBE_NOTCH_H}} to {{PROBE_NOTCH_BOTTOM_Y}} &mdash; <b>{{WINDOW_CLEAR_TOTAL}} of
-clearance in all</b>.<sup class="f">7.10</sup> <b>Nothing about the
-delivered plate can move them.</b> BF12 is not on this plate &mdash; it face-mounts into the front
-fins, Sheets 1a and 1b.<sup class="f">7.4</sup><sup class="f">7.7</sup><br>
+&#128308; <b>Y 0 is the installed BOTTOM edge</b> and Y runs up to <b>301.625</b> at the top.<br>
 <b>X 0 is the plate's LEFT EDGE, set flush with the Y1 extrusion's OUTBOARD FACE</b> &mdash;
 the side plate is not in it and stands proud of the plate's end by its own thickness.<br>
-&#128308; <b>The Y1 holes are exact and the Y2 holes are not.</b> Everything at the Y1 end is
-measured straight off that face, which is why A1&ndash;A8 land on a round 15 and 45 and W1 starts
-on X 0. The Y2 end is <b>1204.38 away by the beam spacing</b>, not by this plate's length, so
-<b>measure the built spacing before drilling that end</b> and treat the Y2 numbers below as
-provisional. The delivered plate runs about 6 past Y2's face, so there is material either
-way.<sup class="f">7.1</sup>
+&#128308; <b>The Y1 holes are exact and the Y2 holes are not.</b>
 </div>
 
 <figure>
@@ -2240,11 +1913,7 @@ way.<sup class="f">7.1</sup>
   <text class="ref" x="11.94" y="21.46" text-anchor="middle">A1&#8211;A8</text>
 </svg>
 <figcaption>Main view to scale along both axes, <b>plate clamped right side up</b> so the WCS is
-its installed lower-left corner and Y runs up from the installed bottom edge. Both beams sit at
-the plate's top. At plate scale the two stations are a few millimetres wide, so the <b>Y1 station
-is drawn again at 1.2&times;</b> below; <b>the Y2 station is its mirror</b> about X&nbsp;602.19, so
-every Y2 coordinate is 1204.38&nbsp;&minus;&nbsp;X &mdash; the beam spacing, not this plate's length. The schedule carries all sixteen A-holes
-explicitly rather than making anyone do that subtraction at the mill.</figcaption>
+its installed lower-left corner and Y runs up from the installed bottom edge.</figcaption>
 </figure>
 
 <figure>
@@ -2290,53 +1959,32 @@ explicitly rather than making anyone do that subtraction at the mill.</figcaptio
 </svg>
 <figcaption><b>The casting and the interposer are installed through here</b>, from behind the
 machine, <b>BK12 end first</b> &mdash; which is what the {{WINDOW_CLEAR_TOTAL}} is for as much as
-the probe is.<sup class="f">7.10</sup></figcaption>
+the probe is.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates, Y from the installed bottom edge</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;0, Y&nbsp;182</td><td>8</td><td class="n"><b>15, 45</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1204.38, Y&nbsp;182 &middot; <b>PROVISIONAL</b></td><td>8</td><td class="n"><b>1159.38, 1189.38</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>W1, W2</b></td><td><b>Window</b> for the cast stepper frame and the interposer, which pass through this plate &mdash; and the route they are <b>installed</b> by<sup class="f">7.10</sup></td><td>2</td><td><b>0 &rarr; {{WINDOW_W}}</b>, <b>1143.89 &rarr; 1204.39</b></td><td><b>{{WINDOW_BOTTOM_Y}} &rarr; {{WINDOW_TOP_Y}}</b></td><td>{{WINDOW_W}}&times;{{WINDOW_H_CUT}}</td><td>Through cut-out &middot; <b>the top edge is cut {{WINDOW_TOP_OVER}} ABOVE the beam's underside</b> so no steel stands below the beam<sup class="f">7.10</sup></td></tr>
-<tr class="merge"><td><b>W1n, W2n</b></td><td><b>Probe notch</b> &mdash; centred on its window, carrying on below the opening</td><td>2</td><td><b>17.75 &rarr; 42.75</b>, <b>1161.64 &rarr; 1186.64</b></td><td><b>{{PROBE_NOTCH_BOTTOM_Y}} &rarr; {{WINDOW_BOTTOM_Y}}</b></td><td>{{PROBE_NOTCH_W}}&times;{{PROBE_NOTCH_H}}</td><td>Through cut-out, <b>one opening with its window</b> &middot; R{{PROBE_NOTCH_R}} at all four corners<sup class="f">7.10</sup></td></tr>
-<tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>75, 225, 375, 525,<br>675, 825, 975, 1125</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch from X 75</b> &mdash; 75 clear at the left edge, 85.47 at the right<sup class="f">7.3</sup><br><b>This plate IS the drill guide for the back tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup><br><b>M8 &times; 35</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b><sup class="f">7.9</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td><b>A1&ndash;A8</b></td><td>8</td><td class="n"><b>15, 45</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
+<tr><td><b>A9&ndash;A16</b></td><td>8</td><td class="n"><b>1159.38, 1189.38</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
+<tr><td><b>W1, W2</b></td><td>2</td><td><b>0 &rarr; {{WINDOW_W}}</b>, <b>1143.89 &rarr; 1204.39</b></td><td><b>{{WINDOW_BOTTOM_Y}} &rarr; {{WINDOW_TOP_Y}}</b></td><td>{{WINDOW_W}}&times;{{WINDOW_H_CUT}}</td><td>Through cut-out &middot; <b>the top edge is cut {{WINDOW_TOP_OVER}} ABOVE the beam's underside</b> so no steel stands below the beam</td></tr>
+<tr class="merge"><td><b>W1n, W2n</b></td><td>2</td><td><b>17.75 &rarr; 42.75</b>, <b>1161.64 &rarr; 1186.64</b></td><td><b>{{PROBE_NOTCH_BOTTOM_Y}} &rarr; {{WINDOW_BOTTOM_Y}}</b></td><td>{{PROBE_NOTCH_W}}&times;{{PROBE_NOTCH_H}}</td><td>Through cut-out, <b>one opening with its window</b> &middot; R{{PROBE_NOTCH_R}} at all four corners</td></tr>
+<tr><td>X1&ndash;X8</td><td>8</td><td class="n"><b>75, 225, 375, 525,<br>675, 825, 975, 1125</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch from X 75</b> &mdash; 75 clear at the left edge, 85.47 at the right<br><b>This plate IS the drill guide for the back tongue</b> &mdash; nothing pre-exists to meet<br><b>M8 &times; 35</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;9</td><td><b>24</b></td><td colspan="4" class="tn">plus 4 cut-outs, not counted as holes</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;9</td><td><b>24</b></td><td colspan="3" class="tn">plus 4 cut-outs, not counted as holes</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
-
-<p style="font-size:9.5pt;margin:0 0 3mm">&#128308; <b>Whether the Laguna can hold the height reference across
-1210.47 mm is still open</b>, and it gates this plate more than any hole on it.<sup class="f">7.5</sup></p>
 </div>
 
+<!-- ============================================================ -->
 <div class="plate pg-s8">
 <h2 id="sheet-8">Sheet 8 &mdash; the 50 &times; 3 front joining strip (quantity 3)</h2>
+
 <div class="stock">
 <b>1000 long &times; 50 wide &times; 3 thick, 6061 flat bar</b> &mdash; <b>measured on the strips in
 hand</b>, and they came metric. <b>No cutting: 1000 is the beam length exactly.</b><br>
-&#9989; <b>THE THICKNESS IS SETTLED AT 3.</b> Ordered as 1/8" and the sheet warned it might come
-3.175 or 4.0; it came as neither. <b>The M8 &times; 10 still stands, and this is the tightest of the
-three cases</b> &mdash; it reaches <b>7.0</b> past the strip against a <b>7.2</b> limit, so
-<b>0.2</b> of slack, where 1/8" would have given 0.375 and 4 mm 1.2. A thinner strip lets the same
-bolt reach <i>further</i> into the slot, which is the opposite of the intuition.<sup class="f">8.5</sup><br>
-&#9989; <b>THE WIDTH CAME IN AT 50, NOT 50.8 &mdash; AND THE PRECAUTION PAID.</b> Because both rows
-are laid out from the strip's centreline rather than from an edge, the strip self-centres on the seam
-and the rows simply move in to <b>10 and 40</b> from an edge. Nothing had to be re-chosen, and the
-old contradiction on this sheet is gone with it &mdash; the schedule used to be headed for a
-<b>45</b> strip with rows at 7.5 and 37.5, which matched neither the stock line nor the drawing.s centred in that. <b>Settle the width before drilling</b>: on a 50.8 strip the schedule's own Y values put the rows 7.5 and 13.3 from the two edges rather than centred.<br>
-<b>One part made three times</b> &mdash; X, Y1 and Y2 carry an identical strip. It ties the two
-stacked extrusions across the seam on the FRONT face, and it is also the <b>magnetic encoder tape
-surface</b>.<sup class="f">8.1</sup><br>
-<span class="wcs">ON THE TRIP.</span> <b>14 holes per strip, three strips</b>, and they want to be
-straight.<sup class="f">8.4</sup><br>
-&#128308; <b>DIMENSION BOTH ROWS FROM THE STRIP'S CENTRELINE, 30 APART &mdash; NOT FROM AN EDGE.</b>
-The rows are &plusmn;15 from the beam's seam because that is where the T-slots are, and the stock came
-in at 50 rather than the 50.8 it was ordered as &mdash; which is exactly the case this rule was
-written for. Measured from the centre, a narrower strip still self-centres on the seam. Measured from
-an edge, the stock's width tolerance lands straight in the hole positions.<sup class="f">8.2</sup><br>
-<b>This strip runs UNDER the bearing blocks, not between them</b> &mdash; 2.0 of overlap each side,
-and that is what buys the Y tolerance.<sup class="f">8.2</sup>
+<span class="wcs">ON THE TRIP.</span>
 </div>
 
 <figure>
@@ -2404,42 +2052,29 @@ and that is what buys the Y tolerance.<sup class="f">8.2</sup>
   <circle cx="399.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="402.89" y="7.2" fill="#b06000">S14</text>
 </svg>
-<figcaption>Full length at 0.42&times;, with the section at 4&times;. <b>Both rows run the whole
-1000</b>, 30 apart, centred on the seam. <b>The strip is wider than the gap between the bearing
-block rows and runs underneath them</b> &mdash; 2.0 of overlap each side &mdash; which is what gives
-it room to sit off-centre without touching anything. The red line is the strip&#8217;s centreline and
-the seam at once; <b>lay the two rows out from it, not from an edge</b>.<sup class="f">8.2</sup></figcaption>
+<figcaption>Full length at 0.42&times;, with the section at 4&times;.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">across the 50</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>S1&ndash;S7</td><td><b>Lower slot row</b> &mdash; M8 into the slot below the seam</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>10</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange<sup class="f">8.3</sup></td></tr>
-<tr><td>S8&ndash;S14</td><td><b>Upper slot row</b> &mdash; M8 into the slot above the seam</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>40</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange<sup class="f">8.3</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">across the 50</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>S1&ndash;S7</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>10</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange</td></tr>
+<tr><td>S8&ndash;S14</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>40</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>14 &times; &oslash;9</td><td><b>14</b></td><td colspan="4" class="tn">3 of this part get made &mdash; <b>42 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>14 &times; &oslash;9</td><td><b>14</b></td><td colspan="3" class="tn">3 of this part get made &mdash; <b>42 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 </div>
 
+<!-- ============================================================ -->
 <div class="plate pg-s9">
 <h2 id="sheet-9">Sheet 9 &mdash; the full-height outboard plate (quantity 2)</h2>
+
 <div class="stock">
 <b>39 5/16" (998.54) long &times; 11 7/8" (301.625) wide &times; 10 gauge (3.429) cold-rolled steel</b><br>
-<b>Y beams only</b> &mdash; one per beam, outboard. It is <b>also the Y back joining plate</b>, grown
-rather than added alongside, which is why it carries the beam's four T-slot rows as well as the
-bolt row into the torsion box.<sup class="f">9.1</sup><br>
 <span class="wcs">ON THE TRIP &mdash; reversed 2026-10-09.</span> <b>35 holes per plate</b> &mdash; 28 in the
-four T-slot rows plus the 7 into the torsion box &mdash; and two plates of it.<sup class="f">8.4</sup><br>
-&#128308; <b>Y IS MEASURED FROM THE BOTTOM EDGE</b>, not the top. The bottom edge is the reference
-because it bears on the box's top skin, so every row stays correct even if the plate comes out
-slightly short of the Y beam's top face.<sup class="f">9.3</sup><br>
-&#128308; <b>10 GAUGE AS ORDERED &mdash; 3.429, and it is neither the 1/4" an old cross-section
-table said nor the 1/8" that replaced it.</b> The sheet bought is 10 GA (.135) cold-rolled.
-<b>Caliper it on arrival</b>: a gauge is a nominal.<sup class="f">9.2</sup><br>
-&#9888; <b>The plate is 998.54, not 1000 &mdash; 1.46 shorter than the beam.</b> It costs nothing: the
-seven T-slot stations run 50 to 950, so the slack lands in the margin past the last hole. <b>Lay out
-from the left edge</b> and all of it falls at the right.<sup class="f">9.5</sup>
+four T-slot rows plus the 7 into the torsion box &mdash; and two plates of it.
 </div>
 
 <figure>
@@ -2555,41 +2190,28 @@ from the left edge</b> and all of it falls at the right.<sup class="f">9.5</sup>
   <text class="ref" x="402.89" y="117.08" fill="#0a6">K7</text>
 </svg>
 <figcaption>Full length at 0.42&times;, <b>Y 0 at the plate's BOTTOM edge</b> &mdash; the edge that
-bears on the box's top skin, and the reason every row on this sheet is dimensioned from it. The four
-orange rows are the beam's own back slots, 197 to 287; the green row is the bolt line into the
-plywood tongue at 30, the same line the front fin and the rear plate use. <b>Cut the plate a little
-short and nothing moves</b> &mdash; it loses material at the top, where there is nothing.</figcaption>
+bears on the box's top skin, and the reason every row on this sheet is dimensioned from it.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">from the BOTTOM edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>W1&ndash;W28</td><td><b>Beam T-slot rows</b> &mdash; four, one per back slot</td><td>4 &times; 7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>197, 227,<br>257, 287</b></td><td class="d">9</td><td class="op">Through &middot; M8 into T-nuts<br><b>off the BOTTOM edge</b>, so a short plate costs nothing<sup class="f">9.3</sup></td></tr>
-<tr><td>K1&ndash;K7</td><td><b>Into the plywood tongue</b> &mdash; the box fixing</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>the 9 IS the slot</b>, 1 mm of float per hole<sup class="f">9.4</sup><br><b>This plate IS the drill guide for its side tongue</b> &mdash; spot the plywood through these<sup class="f">7.8</sup><br><b>M8 &times; 30</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b><sup class="f">7.9</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">from the BOTTOM edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>W1&ndash;W28</td><td>4 &times; 7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>197, 227,<br>257, 287</b></td><td class="d">9</td><td class="op">Through &middot; M8 into T-nuts<br><b>off the BOTTOM edge</b>, so a short plate costs nothing</td></tr>
+<tr><td>K1&ndash;K7</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>the 9 IS the slot</b>, 1 mm of float per hole<br><b>This plate IS the drill guide for its side tongue</b> &mdash; spot the plywood through these<br><b>M8 &times; 30</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>35 &times; &oslash;9</td><td><b>35</b></td><td colspan="4" class="tn">2 of this part get made &mdash; <b>70 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>35 &times; &oslash;9</td><td><b>35</b></td><td colspan="3" class="tn">2 of this part get made &mdash; <b>70 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 </div>
 
+<!-- ============================================================ -->
 <div class="plate pg-s10">
 <h2 id="sheet-10">Sheet 10 &mdash; the 120 mm X back joining plate (quantity 1)</h2>
+
 <div class="stock">
 <b>39 5/16" (998.54) long &times; 4 11/16" (119.06) wide &times; a true 1/4" (6.35) 6061-T651</b><br>
-<b>X gantry only.</b> The Y beams do not need one &mdash; Sheet 9's full-height plate <i>is</i> their
-back joining plate. The X beam moves and has nothing to bolt down to, so it keeps the plain
-120.<sup class="f">10.1</sup><br>
-<span class="wcs">ON THE TRIP &mdash; reversed 2026-10-09.</span> <b>28 holes</b> in four rows.<sup class="f">8.4</sup><br>
-&#9888; <b>119.06 AS ORDERED, against the section's 120.</b> The intent was the full section height
-&mdash; width beats thickness on the back face, and 120 is the widest the section offers &mdash; and
-the sheared piece is <b>0.94 shy</b> of it. It costs nothing <b>because this sheet is referenced to
-the TOP edge</b>, which is the beam's top face: the four rows at 15 / 45 / 75 / 105 do not move and
-the shortfall lands at the bottom, 14.06 below the last row instead of 15. &#128308; <b>Do not
-re-reference this sheet to its bottom edge to "fix" that</b> &mdash; the top edge is the reference
-because it is the face that registers against the beam, and the bottom edge registers against
-nothing.<sup class="f">10.3</sup><br>
-&#9888; <b>998.54 long, not 1000</b> &mdash; same shear length as the side plates, and harmless for
-the same reason.<sup class="f">10.3</sup>
+<span class="wcs">ON THE TRIP &mdash; reversed 2026-10-09.</span> <b>28 holes</b> in four rows.
 </div>
 
 <figure>
@@ -2667,174 +2289,51 @@ the same reason.<sup class="f">10.3</sup>
   <circle cx="399.00" cy="44.10" r="1.89" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="402.89" y="47.10" fill="#b06000">J28</text>
 </svg>
-<figcaption>Full length at 0.42&times;, <b>Y 0 at the top edge</b>, which is the beam's top face. The
-four rows are the extrusion's own back slots on a 30 grid, so this plate's Y needs no derivation at
-all. Sheet 9 reaches the same four slots from the other end, off its bottom edge, because its height
-is a bought 12" rather than the beam's own 120.</figcaption>
+<figcaption>Full length at 0.42&times;, <b>Y 0 at the top edge</b>, which is the beam's top face.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
+
 <table class="sched">
-<tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">across the 120</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>J1&ndash;J28</td><td><b>Four T-slot rows</b> &mdash; M8 into T-nuts, the whole length</td><td>4 &times; 7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; M8 T-nuts<sup class="f">10.2</sup></td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">across the 120</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>J1&ndash;J28</td><td>4 &times; 7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>15, 45, 75, 105</b></td><td class="d">9</td><td class="op">Through &middot; M8 T-nuts</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>28 &times; &oslash;9</td><td><b>28</b></td><td colspan="4" class="tn">holes in this one part</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>28 &times; &oslash;9</td><td><b>28</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 </div>
 
 <!-- ============================================================ -->
-<div class="plate pg-s11">
-<h2 id="sheet-11">Sheet 11 &mdash; the sole plate on the X carriage</h2>
-<p class="sub"><b>The part is Sheet 5</b>, and this is the third of its three
-copies &middot; nothing here is a dimension to cut to</p>
-
-<div class="stock">
-<b>Why it is on top.</b> The X ball screw runs on TOP of the X beam, so the nut is above the
-carriage and something has to reach up and over to it. The <b>doubler of Sheet&nbsp;2d</b> bolts to
-the back of the X carriage plate with its <b>top edge level with the nut&apos;s mounting face</b>;
-the sole plate lies across that top edge and bolts down into it, then down into the
-nut.<sup class="f">11.1</sup><br>
-&#128308; <b>The bolts go in from ABOVE</b>, which is the whole reason the plate is on top &mdash;
-they stay reachable while the gantry is being assembled.<br>
-<span class="wcs">THE Y PAIR IS THIS JOINT UPSIDE DOWN.</span> There the nut hangs under the beam
-with its face pointing down, so the doubler&apos;s end face is at the <b>bottom</b> and the bolts
-go up. The part does not change, and neither does a single one of its
-coordinates.<sup class="f">11.2</sup>
-</div>
-
-<h3>Where it goes</h3>
-<table>
-<tr><th>What</th><th>Figure</th><th>Why that</th></tr>
-<tr><td>Doubler&apos;s <b>bottom</b> edge on the carriage plate</td><td class="n">{{X_DOUBLER_BOTTOM}}</td><td>Its top edge is the nut&apos;s mounting face; the block is {{DOUBLER_H}} tall</td></tr>
-<tr><td>Doubler&apos;s <b>top</b> edge &mdash; the sole plate lands here</td><td class="n">{{X_NUT_FACE_Z}}</td><td>The nut&apos;s own mounting face, which sets everything above</td></tr>
-<tr><td>D column through the carriage plate</td><td class="n">{{X_DOUBLER_BOLT_XC}}</td><td>{{DOUBLER_BOLT_X}} up the doubler, measured in the carriage plate&apos;s frame</td></tr>
-<tr><td>Gap to the bearing block row above</td><td class="n">{{X_DOUBLER_BLOCK_CLEAR}}</td><td>Nothing bears across it &mdash; it must not go negative</td></tr>
-<tr><td>Screw axis out from the carriage plate&apos;s rear face</td><td class="n">{{X_SCREW_AXIS}}</td><td>Rail stack + half the beam, and <b>the plate&apos;s own thickness is not in it</b><sup class="f">11.2</sup></td></tr>
+<div class="plate pg-tap">
+<h2 id="taps">Appendix &mdash; the taps, to do at home</h2>
+<p class="sub">Every hole below is <b>drilled through on the trip</b> at the
+&oslash; shown. Nothing on this list is tapped at the mill.</p>
+<table class="sched">
+<tr><th>Sheet</th><th>Ref</th><th class="d">Qty</th><th class="d">Drilled &oslash;</th><th class="d">Tap</th></tr>
+<tr><td>Sheet 1a</td><td>F1-F4</td><td class="d">4</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 1b</td><td>F1-F4</td><td class="d">4</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 2a</td><td>H1</td><td class="d">1</td><td class="d">6.8</td><td class="d">M8</td></tr>
+<tr><td>Sheet 2a</td><td>H2</td><td class="d">1</td><td class="d">6.8</td><td class="d">M8</td></tr>
+<tr><td>Sheet 2a</td><td>B1-B4</td><td class="d">4</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 2b</td><td>H1</td><td class="d">1</td><td class="d">6.8</td><td class="d">M8</td></tr>
+<tr><td>Sheet 2b</td><td>H2</td><td class="d">1</td><td class="d">6.8</td><td class="d">M8</td></tr>
+<tr><td>Sheet 2b</td><td>B1-B4</td><td class="d">4</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 2b</td><td>G1, G2</td><td class="d">2</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 2b</td><td>G3, G4</td><td class="d">2</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 2d</td><td>D1-D4</td><td class="d">4</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 2d</td><td>R1-R4</td><td class="d">4</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 3a</td><td>R1-R7</td><td class="d">7</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 3a</td><td>R8-R14</td><td class="d">7</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 3a</td><td>F1, F2</td><td class="d">2</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 3a</td><td>K1-K6</td><td class="d">6</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 3a</td><td>TS1, TS2</td><td class="d">2</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr><td>Sheet 4</td><td>M1-M8</td><td class="d">8</td><td class="d">6.8</td><td class="d">M8</td></tr>
+<tr><td>Sheet 6</td><td>C1-C6</td><td class="d">6</td><td class="d">4.2</td><td class="d">M5</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td></td><td class="d"><b>70</b></td><td colspan="2" class="tn">holes to tap at home</td></tr>
 </table>
-
-<div class="note">
-<b>&#9989; The holes are on Sheet 5 and there are none here.</b> All three copies carry the same
-four root bolts at X {{ROOT_BOLT_X_DOUBLER}} and the same four nut bolts at
-X {{NUT_BOLT_X_NEAR}} and {{NUT_BOLT_X_FAR}}, on Y 32, 62, 92, 122 and Y 65, 89. Cut three, drill
-three the same, and install one here and one at each Y end.
-</div>
 </div>
 
-<div class="plate pg-nt">
-<h2 id="notes">Notes</h2>
-<p class="sub">The reasoning behind the sheets. <b>Nothing here is a dimension to work from</b> &mdash; every number that gets drilled is on its own sheet. These explain why, and record what was tried and rejected, so neither has to sit on a page someone is working from.</p>
-<div class="fn">
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 1</b></p>
-<p><b>1.1</b> &mdash; <b>The stock is 10 mm, measured.</b> Not 3/8" (9.525) and not 1/2". <b>Each fin is its own piece of plate.</b> &#9888; <b>They used to nest, and that is why the top width was 99.625 rather than 100.</b> Both came out of a single 301.625 square on one diagonal bandsaw cut, which only closed because top + base + kerf had to equal the square: 99.625 + 200 + 2. The base is the reference end &mdash; it is the one that bolts down and bears &mdash; so it stayed a fixed 200 and the top absorbed the remainder. On its own piece nothing couples the two widths and <b>the top is a chosen 100 again</b>. &#128308; <b>The square was never 302 either</b>: it measures 301.625, the same 11 7/8" as the side plates and the back plate, and that common height is what lets all five parts be dimensioned off one bearing bottom edge.</p>
-<p><b>1.2</b> &mdash; <b>&oslash;9, not 8.2, and punched rather than measured.</b> The bolts land in <i>extruded</i> corner bores, whose positions carry looser tolerance than anything drilled in plate, so a close fit is impossible in principle. The joint works by <b>friction, not bearing</b> - about 36 kN across eight bolts against loads of one to two kN - so the bolts never touch the hole walls. The nominal pattern is 15 and 45 in from each face; a stacked pair gives 15 / 45 / 75 / 105.</p>
-<p><b>1.3</b> &mdash; <b>The window is two stacked clearances, not one opening.</b> The upper 10 is the <b>interposer bar</b> passing through; the lower 40 is for the <b>casting, 27 tall</b>. The 13 surplus is the room the casting is <b>rotated</b> into - it does not drop straight in. The rotation is <b>fore and aft</b>, about an axis across the window, so the clearance it consumes is HEIGHT. The width, 60.5 over a 60 mm casting, is a slip fit and nothing more: if it binds, the remedy is height.<br>&#9989; <b>The sheet standing up is what makes that readable.</b> The bar band is the window's <b>Y 172&ndash;182</b> top, sitting directly under the beam's underside at 182 &mdash; which is where the bar physically is, bolted up to that face &mdash; and the casting hangs below it at Y 132&ndash;172. Drawn on its side the stack ran along X and the word "upper" contradicted the drawing.<br><b>Assembly:</b> from behind the fin, casting upside down, stepper-bracket top into the window first, then rotate CCW until the casting lands flat on the bar.<br>The outboard edge is <b>aligned on the beam face at X 20</b> rather than centred on the beam, which puts all the clearance inboard where the taper has already provided room, and makes the window edge flush with the side plate's inner face. &#9888; <b>That side plate is {{T_SIDE_PLATE}}, not 3.175</b> &mdash; ordered 10 gauge &mdash; so the fin now stands <b>{{FIN_PROUD}}</b> proud of its outer face rather than 16.825. The window edge does not move: it is on the beam face, and the side plate is outboard of it.</p>
-<p><b>1.4</b> &mdash; <b>These two are L-bracket holes, and the coordinates did not move when they became them.</b> They used to pass through the fin into a front tongue on the torsion box. <b>There is no front tongue any more</b> &mdash; the box runs 140 past the fins instead, the fin sits on its top skin, and <b>two L-brackets behind each fin</b> tie it down. These are the holes their vertical legs bolt to, so the part changed and the pattern did not. <b>T2's perpendicular edge distance is 19.1</b>, checked against the physical MDF template, and <b>the 145 mm couple with T1 is still the moment restraint</b> &mdash; which is the reason to keep the pattern rather than re-pick it for a bracket. <b>Y 30</b> also still holds the one bolt height shared with the side plates' and the back plate's rows &mdash; it reads as a height now rather than as an X, which is the point of standing the sheet up.<sup class="f">1.6</sup></p>
-<p><b>1.5</b> &mdash; <b>The taper is gated on spindle clearance.</b> The spindle is confirmed to pass this plate's plane; the risk is a corner-of-envelope case - low Z, minimum Y, X near the beam. Four numbers decide it and three are unmeasured. <b>One bandsaw pass, and it cannot be put back.</b></p>
-<p><b>1.6</b> &mdash; <b>The sheet stands up now, and that is what put it on the same numbers as Sheets 7 and 9.</b> It used to be drawn with the 302 lying along the mill X and the width measured off the outboard factory edge, so the eight beam-bore holes read X 197 / 227 / 257 / 287 and Y 35 / 65. Those are the same eight holes; the frame turned. Standing the plate up with <b>Y measured from the bearing bottom edge</b> makes them read <b>Y 197 / 227 / 257 / 287</b> &mdash; which is literally the set Sheet 7 carries for the rear plate's beam bores and Sheet 9 carries for its T-slot rows, because all three plates stand on the same top skin and the beam's height comes from <b>this plate's window</b> rather than from any plate edge. The two L-bracket holes land on <b>X 25 and 170, both at Y 30</b>, which is how y-beam-support.md had always written them. <b>Nothing moved. Three sheets now say the same numbers the same way round</b>, and that is the whole value of the change.</p>
-<p><b>1.7</b> &mdash; <b>1a and 1b are the same part, and the sheets are separate anyway.</b> Every feature on this plate goes through &mdash; eight clearance holes, a window, two bracket holes &mdash; and the outline is a right trapezoid whose straight edge is the outboard one. Turning the plate over about that straight edge maps it onto itself and leaves every feature at the same distance from it. So <b>one pattern, drilled twice</b>; Y1 presents one face outboard and Y2 the other. &#128308; <b>Do not mirror the pattern.</b> Mirroring it within a fixed frame is a different part and would put the bolt columns 125 and 155 from the outboard edge instead of 35 and 65. The sheets are split per beam because what differs is <b>which way the part is installed</b>, and that is worth a page each at the machine rather than a parenthesis on one. <b>1a as drawn is the view from the front; 1b as drawn is the view from the rear.</b></p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 2</b></p>
-<p><b>2.3</b> &mdash; <b>The plate's tightest edge distance.</b> The beam's back face is flush with the plate's back edge, so the 15 is anchored and the 45 follows from the corner bores being symmetric in a 60 &times; 60. <b>15 mm of edge leaves 10.5 mm of material beside a &oslash;9</b> - do not let it drift.</p>
-<p><b>2.4</b> &mdash; <b>Bore it first, but it no longer sets anything.</b> Its height is the Y beam's <b>seam</b> centreline, which the vertical chain puts at <b>{{BEAM_SEAM_XEP}}</b> &mdash; the plate's bottom end {{XEP_SOLE_TAB}} below the nut plane, the nut face 55 below the beam, and the seam {{EXT_W}} up from the beam's underside &mdash; so the number drawn here is that chain exactly, not an independent choice. It sits in the gap between the block rows, which is <b>46</b> by geometry. That gap is a <b>KEEP-OUT, not something to lay holes out from</b>: the magnetic linear encoder tape runs down it and this &oslash;35 sensor rides over the tape, both centred on the seam. The <b>measured 45 is kept as the conservative figure</b> for it &mdash; under-stating a keep-out is safe &mdash; and at 45 there is <b>5 each side of the sensor, so no room for a flange or clamp ring</b>. Y 77 is half of 154, so it is centred on the plate as well as on the block pattern.</p>
-<p><b>2.5</b> &mdash; <b>Where the sixteen come from.</b> They used to be laid out off the <b>measured 45 mm gap</b> between the block rows, which put their centres 44.5 either side of X 115. <b>That was the wrong driver.</b> The blocks sit on the rails, and both rails go in the beam's <b>outside T-slot</b> - 15 in from each outer face of a 120 beam, so <b>90 apart</b>, centres at the seam &plusmn;45 = X <b>70 and 160</b>. The gap that follows is 46, not 45; the 45 was a measurement off the machine and is only conservative, never wrong, for the clearance it is used for in 2.4. <b>The correction moved all sixteen holes 0.5</b>, which an &oslash;5.2 clearance on an M5 cannot absorb, so it had to be made. The 32 &times; 36 bolt pattern is the kit's own, measured. The butted pair reads 154.18 against a 154 plate - that 0.09 of overhang at each end is <b>end cap</b>, which carries nothing, so the pattern is centred on the plate and the Y values are round. <b>Measure the X/Y kit, not the Z kit</b>: they are different suppliers and have only happened to agree so far.</p>
-<p><b>2.6</b> &mdash; <b>Machined separately, aligned on Y and offset on X.</b> The doubler is <i>not</i> clamped to the plate and drilled through &mdash; each part is machined on its own. Hold the doubler <b>the short way</b>: X along its 45 from its tapped end face, Y along its 154 from the plate's back edge. <b>Its Y values are the same numbers 2a carries; its X values are {{DOUBLER_BOTTOM_X}} less</b>, because the plate reaches that far past the block's end face to back the sole plate &mdash; so the D column is {{DOUBLER_BOLT_X}} here and {{DOUBLER_BOLT_X_PLATE}} on 2a. These bolts run along X through the plate, in shear. The doubler is 154 &times; 45, which is the width of the offcut the pair comes out of; its gap to the lower bearing block row is {{DOUBLER_BLOCK_CLEAR}} and a 60 would overlap.</p>
-<p><b>2.7</b> &mdash; <b>One root row, into the doubler, and nothing into the plate.</b> The <b>doubler's</b> four root holes are drilled and tapped as part of machining the doubler &mdash; Sheet 2d's R1&ndash;R4, the only edge holes on this assembly that need the mill. The plate itself takes <b>no</b> bolts from the sole plate: it reaches <b>{{XEP_SOLE_TAB}}</b> past the doubler's end face, and the sole plate's base <b>butts that strip</b>. A face it sits against locates it better than a second row of bolts would, and it is the X carriage's joint the right way up.<br><b>20 deep max</b>: a &oslash;{{M5_D}} doubler bolt at X {{DOUBLER_BOLT_X}} spans 22.5 to 27.5, and R1&ndash;R4 stop at {{SOLE_ROOT_TAP_DEPTH}} &mdash; {{SOLE_ROOT_WALL}} short of it. {{SOLE_ROOT_ENGAGE}} of thread is all the bolt needs, so the cap costs nothing.</p>
-<p><b>2.8</b> &mdash; <b>M8 &times; 35, not &times; 40.</b> These break out onto the face the <b>lower Y bearing block row</b> seats against, and a protruding bolt there would hold a block off its mounting face - the one surface on this plate that must be flat. Through 25.4 of shelf bar into 12.7 of plate, an M8 &times; 35 gives ~9.6 mm of engagement and stops short; an M8 &times; 40 protrudes ~1.6 mm. Blind-tapping used to make that impossible by construction; with a through hole the <b>bolt length is the safeguard</b>.</p>
-<p><b>2.9</b> &mdash; <b>The two plates are no longer interchangeable.</b> Everything below the top edge is one drawing - outline, block holes, encoder bore, shelf, sole plate and doubler all common. Only the right-hand plate carries the BF12 tongue, which is the stock's own far end left uncut over the upper extrusion's end, with the same 4 &times; M5 pattern the Y end plates use.</p>
-<p><b>2.10</b> &mdash; <b>60 long, and the change deleted a hazard.</b> The bar was 76.2 to span "the beam's 60 mm depth plus the back plate". With the beam flush, its back face <b>is</b> the plate's back edge, so the joining plate now sits entirely behind the plate in air. The old sheet warned that the joining plate's bottom edge had to be flush, never proud, or the gantry would sit on a plate edge in line contact. <b>That risk existed only because the bar reached under it.</b> Ending at Y 0 removes the failure mode by construction.</p>
-<p><b>2.11</b> &mdash; <b>&#9888; Check the counterbore diameter before cutting to exactly 60.</b> V1 at Y 15 leaves 15 mm to the bar's end, which is only ~7.5 mm of wall outside a &oslash;15 counterbore. If it reads tight on the real counterbore, 65 costs nothing and still stops short of the joining plate.</p>
-<p><b>2.12</b> &mdash; <b>Separated in Z, not in Y, and that is the better axis.</b> Both sit at Y 30 because the vertical T-nut bolts hold Y 15 and Y 45 and two M8 need ~12 mm between centres - so Y 30 is the only free station. Stacking them 20 mm apart in Z resists the bar pitching nose-down, which is the load that matters.</p>
-<p><b>2.13</b> &mdash; <b>&oslash;8.4 on all four, and the reason is the shim.</b> Roll is trammed by shimming
-between this bar's <b>top face</b> and the X beam's bottom extrusion, so the bar is the platform that
-shim bears against. The bar carries its share of the gantry into the end plate by friction and bolt
-shear, and if that joint ever slips the bar drops by whatever radial clearance the holes have &mdash;
-<b>0.5 mm on a &oslash;9, which is the whole roll adjustment, against 0.2 mm on a &oslash;8.4.</b> It costs
-no adjustment range, because the shim goes above the bar and these bolts do not move when roll is set.
-<b>Drill the bar's P1 and P2 first and spot the plate's H1 and H2 off the bar</b> &mdash; the bar's are
-through and the plate's are blind, and at this fit the two pairs have to agree closely across the 20 mm
-between them. The verticals get the same fit for the opposite reason: they are <b>slackened</b> to slide
-a shim in, and a loose hole would let the bar shift in Y on re-torque and walk off the T-nuts.</p>
-<p><b>2.13</b> &mdash; <b>The tongue's X carries the interposer, because the interposer is under the casting.</b>
-<b>X 235 is the top of the X beam's upper extrusion</b>, and both rows are measured up from it. The cast stepper
-frame at this end <b>does not land on the beam</b>: a <b>10 mm interposer sits between beam and casting</b>, so
-the frame and the screw it carries both stand 10 higher, and the holes that mount BF12 must be drilled where the
-screw actually ends up. So the X is two terms, both forced &mdash; <b>7 and 25 above the beam top</b> give 242 and
-260 bare, <b>plus 10</b> for the interposer, giving <b>252.0 and 270.0</b>. The 7 and 25 are Sheet 7's own
-offsets before <i>it</i> took the interposer; there are <b>three interposers &mdash; Y1, Y2 and this end</b> &mdash; so
-the same screw has the same arrangement at all three.<br>
-<b>The sign is an addition on both sheets, for opposite physical reasons:</b> the Y stepper frames hang <i>below</i>
-their beam and the interposer drops them further, while this tongue sits <i>above</i> its beam and the interposer
-lifts it. On each sheet's own frame, measured from its own beam face, both are +10.<br>
-<b>The Y columns are forced too.</b> BF12's 46 mm column spacing centred in the tongue's 60 gives <b>7 and 53</b>
-&mdash; the same two columns Sheet 7 uses, and the same 7 / 53 measured on the cast stepper frame.<br>
-<b>T_INTERPOSER is a measured 10</b> &mdash; a metric plate, not the 3/8&quot; this chain once assumed. If it
-ever reads otherwise, <b>both rows move by the difference and so does the casting</b>, together, which is the
-point: they are one assembly on one shim.<br>
-<b>The tongue's own length is not in that chain.</b> It has a floor and no target: it must reach both rows of
-BF12's mounting bolts, which is <b>40</b>, and the 300 stock gives <b>65</b>. Below that floor the block overhangs
-unsupported plate; above it, longer buys nothing but edge distance.</p>
-<p><b>2.14</b> &mdash; <b>The corner cut.</b> Both plates lose the far-front corner on a straight line ending at <b>X {{CORNER_CUT_X_END}}, Y {{XEP_W}}</b> &mdash; 2a from <b>X {{XEP_CUT}}, Y {{CORNER_CUT_Y}}</b>, 2b from <b>X 300, Y {{CORNER_CUT_Y}}</b>. <b>Y {{CORNER_CUT_Y}} is where it has to start:</b> below that is the upper extrusion's end and the plate must stay full length to cover it; above it the corner carries nothing. <b>Clearance, computed and not measured:</b> the nearest feature to either line is the far-upper bearing block M5 at <b>X {{BLOCK_HIGH_COL_B}}, Y 133.5</b> &mdash; <b>19.9 mm</b> from 2a's line and 23.4 from 2b's, so a ~&oslash;10 counterbore leaves about <b>15 mm</b> of material on the tighter one. The cut's end and that block both sit on the beam, so both carry the plate's {{XEP_SOLE_TAB}} and those two figures hold. Nothing else comes near: E1&ndash;E4 are all at Y 45 or below, and the &oslash;35 bore is 100 clear.</p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3</b></p>
-<p><b>3.1</b> &mdash; <b>Both rails are tapped M5, fixed.</b> Seven holes each at a 60 pitch, <b>20 from each end of the 400 mm rail</b>. The rails are set flush with the plate's bottom edge, so they finish 7 short of its top - that is just what 407 minus 400 leaves, and the rail outlines on the drawing show it.</p>
-<p><b>3.2</b> &mdash; <b>These cannot be adjusted later.</b> Their heads are buried under the Z rails once assembled. <b>Tram is set here, once, at build.</b></p>
-<p><b>3.3</b> &mdash; The plate exists and is dyed. Rails, BF12, the four X blocks, the Z casting and the sensor bore are all dimensioned; <b>only the top stop is open</b>.</p>
-<p><b>3.4</b> &mdash; <b>The top stop is a bolt-on block now, not a plate with a lip.</b> The idea of a stop plate overhanging the carriage is dropped. In its place is a <b>1" 6061 block, Sheet&nbsp;3c</b>, bored &oslash;22 so the Z screw passes through it and bolted flat to the carriage plate&apos;s front face by two M5. All this sheet carries for it is TS1 and TS2 &mdash; two tapped holes at X&nbsp;322.7, Y&nbsp;62 and 92. <b>Nothing else on the plate is near them</b>: the closest rail holes are at X&nbsp;320 and 380 but out at Y&nbsp;20 and 134, and the Z casting pattern does not start until X&nbsp;360.</p>
-<p><b>3.5</b> &mdash; <b>X 10 puts the support flush with the plate's X 0 end.</b> The two holes are 46 apart, centred on Y 77 - the plate's mid - so 54 and 100.</p>
-<p><b>3.6</b> &mdash; <b>The cantilever is deliberate.</b> The bottom ~150 is over the X gantry and the rest stands above it, which is how the owner's Mega V is built: 300 mm rails there give 150 over and 150 in air, and the 400 mm rails here add the height.</p>
-<p><b>3.7</b> &mdash; <b>X 398.5 leaves 8.5 mm to the plate's end</b>, so a &oslash;4.2 drill leaves about 6.4 mm of wall. It used to be 403 with 4 mm, and the 4.5 it moved is what the casting gained when it was remeasured at 77. The pattern is the casting's own - spacings 13 and 30 along X, 46 across - the same six holes the interposer carries on Sheet 6, and those spacings matching is how the shift was caught: both sheets drew the same pattern from different ends and only one had been corrected.</p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3b</b></p>
-<p><b>3b.1</b> &mdash; <b>Mic the bar, do not trust the fraction.</b> This part has been wrong twice already: the repo called it 5/8" (15.875) when it was not, then calipers read 16.41 and 16.43, then a micrometer read 16.22 on the existing bar. &#128308; <b>The new stock is a different bar and inherits none of that.</b> Its thickness sets the Z bolt engagement through Z_CBORE_WEB, and the Z plate counterbore is a one-way door &mdash; so the number has to exist before that counterbore is cut, not after.</p>
-<p><b>3b.2</b> &mdash; <b>One setup, both bars.</b> Facing them together is the only thing that makes the pair coplanar, and a pair that is not coplanar twists the Z plate across the two rails. The 1 mm is deliberately LESS than the measured step down to the ball nut housing &mdash; the remainder is closed with a full-face shim at the nut, where it can be feeler-gauged on the assembled stack instead of guessed at the mill. See z-carriage.md.</p>
-<p><b>3b.3</b> &mdash; <b>Clearance at both ends.</b> These eight holes carry the M5 that run from a counterbore in the Z plate, through this bar, into the bearing block's own tapped M5 &mdash; so nothing here is a located feature and the &oslash;6 is deliberate float. The 32 mm across matches the block's own bolt pitch, which on a 50 wide bar leaves 9 mm either side. &#9888; <b>The X positions are half millimetres because a 160 bar puts a symmetric pattern on .5.</b> A 161 bar would read 19, 55, 106 and 142.</p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 3c</b></p>
-<p><b>3c.1</b> &mdash; <b>A block with the screw through it, because a stop has to let the screw past.</b> The Z nut travels up the screw; whatever stops it has to sit in the nut&apos;s path and still leave the screw somewhere to go. A block bored &oslash;22 does both &mdash; the <b>nut&apos;s face lands on the ring of material around the bore</b> and the screw runs on up through it. The 1" stock is the reason there is no machining beyond three holes: 25.4 is the thickness as bought, so the part is a 50 &times; 45 rectangle sawn off a slab.</p>
-<p><b>3c.2</b> &mdash; <b>Three numbers place it, and each answers to something already on the machine.</b> <b>Across:</b> the 50 is centred on the <b>Z screw at Y&nbsp;77</b>, the plate&apos;s mid and the same centre BF12 sits on at F1/F2, so the block spans Y&nbsp;52 to 102 and the two M5 land at <b>Y&nbsp;62 and 92</b>. <b>Out:</b> the bore sits <b>25 off the plate face</b>, where the Z screw centreline runs &mdash; his figure, and nothing in the repo contradicts it: BF12_H&apos;s 43 is the block&apos;s standing height, not its centre height. <b>Up:</b> the <b>stop face is at X&nbsp;310</b>, so the block occupies X&nbsp;310 to 335.4 and its bolts, central in the 25.4, go in at <b>X&nbsp;322.7</b>. 310 is the travel limit itself: with the nut against it the <b>bearing blocks finish at the end of the 400 mm rail</b>, which is what the stop is for.</p>
-<p><b>3c.3</b> &mdash; <b>&#8960;22 is a clearance decision, not a screw-fit one, and &#8960;27 did not survive it.</b> The bore only has to let a 1605 screw pass, so its size is free above about 17 &mdash; and what sets it is the two M5 running past it. Those are 10 from either end of the 50, so <b>15 off the bore axis</b>. A &oslash;6 clearance hole needs the bore wall further out than 13.5 &plus; 3; a &oslash;27 bore puts the wall at exactly 13.5 and <b>the holes cut into it</b>. &#9989; <b>At 22 the wall is at 11, the &oslash;6 clears by 1.0, and the counterbore is clear by a wider margin still</b> &mdash; the bore spans 14 to 36 out from the plate, leaving <b>9 mm of solid above it</b> for a counterbore that only goes 6. The 1.0 is thin and it is accepted, so <b>drill those two straight</b>; <b>if it ever proves too thin the bore can come down to &oslash;20</b>, which returns the wall to 2.0 and still clears a 1605 screw by 2 all round; it is a clearance hole in a block whose load runs down the bolts, not a bearing wall.
-<br><br>
-<b>The counterbore is 6 deep, and that is a dimension rather than a preference, because it is what sets the thread engagement.</b> A standard 6 leaves <b>45 &minus; 6 = 39</b> of block under the head, so an <b>M5 &times; 50</b> carries on <b>11 into the carriage plate</b> &mdash; most of its 12.7, which TS1 and TS2 on Sheet&nbsp;3a are drilled through and tapped for like every other threaded hole in the pack. <b>Deeper counterbore, deeper engagement, one for one:</b> at 7.7 the bolt reaches the back face of the plate, and past 9 it breaks into the bore. Neither is a reason to go deeper than 6.</p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 4</b></p>
-<p><b>4.1</b> &mdash; <b>Edge distance and the rail pitch together set the 164.</b> The outer M5 column sits <b>73</b> from plate centre and the counterbore is a measured &oslash;8.9, so it reaches 77.45; at 164 the half-width is 82 and they clear by <b>4.55</b>. &#128308; <b>The 73 is the reason the width is EVEN.</b> It is the rail column (57) plus half the block's own bolt pitch (16), and the rail column is 57 because Sheet 3a insets both rails 20 from the plate edges - a 114 pitch. On a 115 pitch the columns would be &plusmn;73.5 and &plusmn;41.5, and then an odd width is needed for the C-holes while the nut and clamp holes go to half millimetres. <b>164 and 114 go together, and 165 and 115 went together; the sets cannot be mixed.</b> The plate also has to cover the spacers, which needs 164 on its own. &#9888; The plate was briefly specified at 165 while the pitch was believed to be 115.</p>
-<p><b>4.2</b> &mdash; <b>Clamp bolts.</b> They pass through the clamp, where the clearance is, and thread into this plate - ~15 N&middot;m, 10 mm of engagement, which is 1.25 diameters and develops roughly ten times the margin the clamp reaction needs. The footprint is 122 &times; 55 centred on &plusmn;58, with the 100 &times; 25 pattern centred in it, which is what leaves 2 mm of relief at each plate end.</p>
-<p><b>4.3</b> &mdash; <b>Why the clamp centres are 116 and never 144.</b> Spread the clamps far enough and an M8 column walks into an M5 column until the two features physically overlap - there is no counterbore depth that fixes a hole in the same place as another hole. The specific numbers that first showed this are dead (they were computed on the &plusmn;41.5 columns and a ~&oslash;10 counterbore), but the shape of the constraint is not: <b>the clamp bolt columns and the block bolt columns share this plate and the clamps are the ones free to move.</b> See 4.9 for where that freedom was deliberately not spent.</p>
-<p><b>4.5</b> &mdash; &#128308; <b>Drill 5.2, counterbore, then open to 6 &mdash; and the order is forced.</b> The counterbore is piloted 5.2, so the hole must BE 5.2 while it is bored; open it first and the pilot has nothing to steer on. &#128308; <b>It is also a one-way door:</b> once a hole is 6 the pilot no longer fits, so there is no second attempt at the depth. Prove the depth on the first hole of a group, do that group's counterbores, and only then open them. The 6 is cut with an <b>end mill, not a reamer</b> - a reamer takes 0.1 to 0.3 and follows the hole it is given, so it can neither remove 0.8 nor move a hole. &#9888; <b>TWO WEBS, SO TWO DEPTH SETTINGS: 4 mm on C1&ndash;C16, 6 mm on N1&ndash;N4.</b> The 4 is forced only where the bolt also crosses the 15.2 spacer - at a 6 web an M5 &times; 25 would engage 3.8 in the block, under a diameter. The N bolts cross only the web and the shim, so they can afford the thicker one, and it leaves 2 mm more material under the four heads that sit beneath the lower clamp. <b>The web is specified rather than the depth</b> because engagement is bolt less web less what lies between, so a web target holds whatever the plate measures - caliper the plate, subtract the web, dial that depth.</p>
-<p><b>4.6</b> &mdash; <b>The four N holes must be counterbored, and it is not for the look of it.</b> They thread into the ball nut housing, which is behind the plate, so their heads land on the FRONT face - and the lower spindle clamp's footprint runs X 2 to 57, which contains all four. <b>Proud heads would hold the clamp off the plate.</b> They take the same 5.2 pilot and &oslash;8.9 bore as C1&ndash;C16 but a <b>6 mm web</b>, not 4. <b>The housing is ALUMINIUM and gets tapped from its as-supplied 8 mm to 12</b>, then takes <b>M5 &times; 16</b> for 9.7 of engagement. <b>The 12 is measured:</b> a spare housing was tapped as deep as the tap would go, an M5 &times; 30 run in until it bottomed, and 16 left standing out - so a bolt reaches <b>14</b>, and 12 holds it 2 clear. That 14 is the <b>plug tap's</b> limit, not the hole's. &#9888; <b>The deeper tap is margin, not a requirement.</b> This joint is loaded in SHEAR and a bolted joint carries shear by friction, so what it needs is preload - and at the as-supplied 8 mm thread the aluminium already stripped at a higher load than the bolt itself could reach. <b>Torquing these four properly matters more than the last few millimetres of thread</b>, because their holes are 6 mm clearance on M5 and a joint that slips gives up to a millimetre of Z lost motion. &#9888; <b>M5 &times; 20 is too long even on the tapped housing</b>, reaching 13.7. &#9888; <b>And these are NOT the M5 &times; 25 that C1&ndash;C16 take</b> - two lengths, two webs, holes that look alike from the front.</p>
-<p><b>4.7</b> &mdash; &#9888; <b>Two numbers on this sheet are open, and both are thicknesses.</b> <b>The plate's</b> is a nominal 12.7 while the half-inch stock for the X end plates measured 12.19 - it is absorbed by both webs, so caliper the plate and subtract. <b>The new spacer bar's</b> is unmeasured and sets how much of the M5 &times; 25 reaches the bearing block - mic the FACED pair, since both bars are skimmed in one setup and the starting thickness feeds nothing. <b>Neither moves a hole on this sheet; both move a depth or a bolt.</b> &#128308; <b>The two tapped holes this plate bolts into read identically and are different problems.</b> Both are M5 with 8 mm of thread as supplied. The <b>bearing block is STEEL</b> and its hole is 8.7 deep - 0.7 of chip space, nothing to tap into, and nothing needed, because 5.8 mm is 1.16 diameters and steel is content with about one. The <b>nut housing is ALUMINIUM</b> and its hole is 16 deep - so it gets tapped to 12, because aluminium wants about two. &#9888; <b>The 8 mm of plain hole below a thread is NOT usable travel</b>: it is tap-drill diameter, about 4.2 on an M5, so a 5 mm thread cannot enter it and a longer bolt simply jams. Chip space is not depth.</p>
-<p><b>4.8</b> &mdash; <b>The access holes are the reason the bearing blocks are spread at all.</b> A 4 mm hex driver passes through here and through the spacer into the 9.91 gap between each rail's pair of blocks, to reach a rail bolt beneath; slide the carriage to bring each rail bolt under it in turn. That lets the Z plate, spacers, blocks and rails be built as one sub-assembly on the bench and then bolted to the X carriage plate by fastening the rails LAST - and lets the whole assembly come off again. They sit on the rail centrelines, at Y 25 and 139, and on X 87.5 which is the gap's own centre. <b>The driver needs about 36 mm of reach past the handle</b>: 12 of plate, 15 of bar, 8.5 of rail counterbore. It costs 9.91 mm of Z travel, 245.82 down to 235.91.</p>
-<p><b>4.9</b> &mdash; <b>The clamps were deliberately not moved to buy hole clearance.</b> The tightest counterbore-to-tap bridge on this plate is <b>4.88 mm</b>, between a C-hole and the outermost M8. Spreading the clamp pair 2 mm - spending the end relief - would take it to about 6, and that was nearly done. &#128308; <b>It would have been the wrong trade.</b> The clamps already sit 12.5 mm outboard of the block centres, and z-carriage.md wants them OVER the block centres because then the load goes straight into the blocks and the plate does no bending - it says plainly that plate bending is the soft thing, so alignment matters more than spread. The overhang is cube law: 12.5 to 14.5 is 56% more on that term, to gain wall that 4.88 does not need. <b>The clearance came from the rail pitch instead, which cost nothing.</b></p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 6</b></p>
-<p><b>6.1</b> &mdash; <b>X 0 is the bar's outboard end</b> - the end that protrudes past the fin's outer face and goes through the window. How far it protrudes is not chosen: the bar slides along the beam until the casting's bearing contains the screw's journal, and INTERPOSER_PROUD is whatever that leaves, currently 16.5. 123.5 of the bar then sits over beam, which is the only part that can reach a T-nut.</p>
-<p><b>6.2</b> &mdash; <b>The casting's own six holes</b>, tapped into 10 mm = 2.0 diameters of engagement, at the top of the 1.5-2 band aluminium wants. The thread shears near 18 kN against an M5 class 8.8 bolt breaking near 11, so the plate thread outlasts the fastener.</p>
-<p><b>6.3</b> &mdash; <b>No counterbores anywhere.</b> Row 135 leaves 15 mm to the bar's inboard end, against the ~9 mm half-head of an M8 flange bolt.</p>
-<p><b>6.4</b> &mdash; <b>X inherits these rows from Y geometry, and there are two of them now.</b> They were 82 / 110 / 138 when the bar stood 30 past the fin and the casting was thought to be 72.5 long. <b>The 82 row is gone and the other two moved in to 105 and 135:</b> the bar slid back to meet the screw, the casting measured 77, and an M8 flange centred at 82 lands on its face. 105 clears that face by 28, so its flange clears by 19. On X the bar sits on <i>top</i> of the beam and overhangs its end. <b>Check both land over beam before drilling.</b></p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 7</b></p>
-<p><b>7.1</b> &mdash; <b>The length is a stackup, not a window, and that is what sets every X on this sheet.</b> His stackup: the X beam is 1000, and each side adds a 12.7 end plate and a 30 rail-and-block stack, so the beams' inboard faces are <b>1084.38</b> apart. Each beam as assembled is <b>60 + 1/8" = 63.175</b> across, the side plate being outboard, so the rear plate taken flush with the side plates' outer faces would be <b>1210.73</b> &mdash; which is NOT how it is placed any more. &#128308; <b>Its left edge goes on the Y1 extrusion's outboard face instead</b>, his call 2026-10-10, so the side plate is proud of the plate at that end and the far end falls where the bought <b>1210.47</b> puts it. The stackup still sets the holes; it no longer sets the edge. That is the same ~1212 that <b>lateral-stiffness.md already named as the MAXIMUM</b> &mdash; past it the rear plate becomes the proud member at the corner, the one direction the side tongue&apos;s face bearing cannot take &mdash; so this length is pinned to its upper bound, not pushed through it. Butting the plate between the side plates instead would give a rounder 1204.38 and put Y1's corner back on X&nbsp;0, but it lands A1 and A9 exactly on their 15 mm edge-distance minimum with nothing left for a short cut; the overlap buys <b>3.175 of margin at the eight most loaded holes</b>, and the beam ties both plates anyway, so the corner joint carries nothing either way. <b>The consequence to respect: the plate's left edge is the WCS origin now, not just an edge.</b> A9&ndash;A16 and F3/F4/F7/F8 are absolute from it, so if the stock comes back over-long, trim it to 1210.73 before clamping or add the excess to every right-hand X.</p>
-<p><b>7.2</b> &mdash; <b>The same 8-bolt corner-bore pattern as every other beam joint.</b> 16 bolts, 8 per beam. <b>Lay it out by scribing:</b> two lines at the column positions, four stations ticked along each. <b>A scribed line beats working off an extruded bore</b>, whose own position error would come along with it &mdash; and these holes are &oslash;9 on an M8 in any case, about a millimetre of float, which this joint wants because it works by friction rather than bearing.</p>
-<p><b>7.3</b> &mdash; <b>Y 30, the same number the side plates and the front fin carry.</b> One bolt line across every plate that lands on the box, and from the installed bottom edge it reads as itself with no arithmetic. It took two reframings to get here: it was a round <b>270</b> measured from the installed top, which put the row 34.8 up and 4.8 off every other plate while a note called the difference <i>deliberate</i> &mdash; <b>it was not</b> &mdash; then 271.625 once the plate height was corrected, and now simply 30. <b>The pitch no longer differs</b>: 150 here, and the side plates run 150 from 50 as well. Eight at 150 span 1050, and from <b>X 75</b> they run to <b>1125</b> &mdash; 75 clear at the left edge, 85.47 at the right on the 1210.47 plate. The fractions cost nothing &mdash; see 7.8, these eight are a drill guide with no mating pattern to miss &mdash; so round them at the mill if it is easier.</p>
-<p><b>7.4</b> &mdash; <b>BF12 face-mounts on 4 &times; M5 into the FIN</b>, Sheets 1a and 1b &mdash; not into this plate. Face-mounted takes 4; top-mounted takes 2. Any BF12 hole count in this repo has to name its orientation or it means nothing.</p>
-<p><b>7.5</b> &mdash; <b>&#9888; This gates the plate more than any hole on it.</b> Bed size is not travel: the question is whether the two 8-bolt patterns' relative HEIGHT survives a reposition across 1210.73 mm. The budget is well inside 1 mm - the float the 9 mm holes give - and past it the plate wins and a beam end has to be jacked.</p>
-<p><b>7.6</b> &mdash; <b>One reference edge across every plate, and it is the bottom one.</b> The bottom edge bears on the box's top skin, so it is the edge that locates the part. Sheet 9 has been dimensioned from it since the side plate's T-slot rows were corrected, and this sheet now matches. <b>It costs nothing to do so</b>, which is worth stating because the sheet was drawn upside down until 2026-10-07 on the belief that it did. &#128308; <b>The beam bores are located by the FIN, not by this plate.</b> Y_BEAM_UNDERSIDE is 182 above the box skin because the fin's window puts the beam there &mdash; the fin is the riser that actually carries it, settled 2026-10-03 after the side plate was ruled out as the reference. So every plate standing on that skin sees the beam's corner bores at the same four heights, <b>197 / 227 / 257 / 287</b>, whatever height that plate happened to be bought at. Sheets 1a and 1b carry exactly those numbers for the fin, and Sheet 1 did before them. &#9888; <b>The old inverted frame was 2.8 mm out and nobody had caught it.</b> It listed the A-holes at Y 15 / 45 / 75 / 105 from the installed top edge and called the beam's corner Y 0, which only holds if the beam's top face is flush with the plate's top edge. On a 304.8 plate it stood <i>2.8 proud</i> of the beam top, so those bores were a plate-height error of the same size and from the same 2026-10-03 correction that left Sheet 9's lines behind. Re-referencing to the bottom edge removes the error rather than rescaling it. <b>The four Y values live in the registry</b> as RP_BEAM_ROW_1 to RP_BEAM_ROW_4, on the same expression as SIDE_TSLOT_ROW_1, so the two plates cannot drift apart. <b>In X nothing changed</b>: the bores still carry the 3.175 offset of the side plate the rear plate runs flush with (7.1), and Y2's are the same pattern mirrored off X 1210.73.</p>
-<p><b>7.7</b> &mdash; <b>The BF12 rows carry the interposer, and the full thickness applies.</b> The screw's near end is carried by the cast stepper frame, which sits <i>on</i> the 10 mm interposer and is therefore LOWER than bare metal. BF12 at the far end has to drop by the same amount or the screw is not parallel to its own beam. This sheet is clamped inverted, so lower is a <b>larger</b> Y. <b>It is the full 10, not 5.</b> The registry's NUT_FACE_BELOW_BEAM does subtract a 5 mm standoff, but only because its base figure was <i>measured</i> on a machine that still had one. <b>The standoff no longer exists in the design</b>, so there is nothing here to take back off. &#9989; <b>T_INTERPOSER is a measured 10</b> &mdash; his micrometer, and a metric plate rather than the 3/8&quot; this chain once assumed. These two rows follow it automatically if it ever changes again.</p>
-<p><b>7.8</b> &mdash; <b>The plywood tongues are never drilled to a coordinate, and the drill guide is always the plate being secured.</b> Not a template, not a story stick, and not a set of numbers off these sheets: <b>the plate itself</b>. Assemble the machine, set it on the torsion box, and spot each tongue through the holes of the plate that bolts to it &mdash; <b>this rear plate drills the back tongue</b> (X1&ndash;X8), and <b>each outboard plate drills its own side tongue</b> (K1&ndash;K7 on Sheet&nbsp;9). That holds for every tongue on the box without exception, which is why the rule also sits in the standing-rules box at the front of the pack rather than only here. So the eight X stations here only have to clear obstructions and spread the load &mdash; nothing downstream has to agree with them, because the mating holes do not exist until the steel is bolted up and sitting in place. That is why 150 is a decision rather than a measurement, and why a hole landing a millimetre off costs nothing. <b>A hole you transfer needs no coordinate and fits better than one you compute.</b></p>
-
-<p><b>7.9</b> &mdash; <b>The tongue fastener, and it is the same stack at every tongue hole.</b> From the plate side: an <b>M8 flange bolt</b>, then the <b>plate</b>, then the <b>19 mm baltic birch tongue</b>, then an <b>M8 fender washer</b>, then an <b>M8 acorn nut</b>. The &oslash;9 holes in plate and tongue both are clearance, so this is a clamped joint, not a bearing one, and the two washer faces do the work: the <b>bolt's own flange</b> bears on the steel, and the <b>fender washer</b> spreads the clamp over enough plywood face that the nut cannot pull into it.
-<br><br>
-<b>Head inside, acorn nut outside</b>, and that is the way round to assemble it: the nut sits out in the open where a wrench reaches it easily, and the bolt is driven from inside. The acorn nut is for <b>appearance</b> on the face of the machine you see.
-<br><br>
-<b>LENGTH IS PER PLATE, BECAUSE A CLOSED NUT CUTS BOTH WAYS.</b> A flange bolt's length is measured <b>under the flange</b>, and an acorn nut is capped &mdash; too short and the thread does not reach, <b>too long and the bolt bottoms out in the dome and never clamps.</b>
-</p>
-<table class="sched" style="margin:0 0 2mm">
-<tr><th>Through</th><th>Plate</th><th>+ tongue</th><th>Bolt</th><th>Thread left for the nut</th></tr>
-<tr><td><b>Outboard plate</b> &mdash; Sheet 9, K1&ndash;K7</td><td class="n">3.429</td><td class="n">19</td><td class="n"><b>M8 &times; 30</b></td><td class="n">30 &minus; 22.43 &minus; washer</td></tr>
-<tr><td><b>Rear plate</b> &mdash; Sheet 7, X1&ndash;X8</td><td class="n">6.35</td><td class="n">19</td><td class="n"><b>M8 &times; 35</b></td><td class="n">35 &minus; 25.35 &minus; washer</td></tr>
-</table>
-<p>&#9888; <b>TWO MEASUREMENTS CLOSE THIS, AND NEITHER IS A CALCULATION.</b> <b>The fender washer's thickness</b>, off the washer; and <b>how deep the acorn nut's thread actually runs</b>, off the nut &mdash; no spec has been found for it. Put a nut on a bolt by hand and read how much thread it swallows before it stops. <b>That figure is what confirms 30 at the outboard plate and 35 at the rear plate</b>, and it is the only number here that can send both the wrong way at once.</p>
-<p><b>7.10</b> &mdash; <b>The window is a T, and the notch does two jobs.</b> The full-width opening is <b>{{WINDOW_W}} &times; {{WINDOW_H_CUT}}</b> as cut, its top edge <b>{{WINDOW_TOP_OVER}} above the beam's underside at Y {{WINDOW_TOP_Y}}</b> so that no steel can stand below the beam's bottom face, and a <b>{{PROBE_NOTCH_W}}</b> wide notch centred on it carries on <b>{{PROBE_NOTCH_H}}</b> further, to {{PROBE_NOTCH_BOTTOM_Y}}. That is <b>{{WINDOW_CLEAR_TOTAL}} below the beam face in all</b>.<br>
-<b>It clears the back of the proximity probe body</b>, which is narrower than the casting the opening above it is cut for &mdash; so the plate keeps its full width either side of the probe rather than losing it across the whole window.<br>
-&#9989; <b>And it is how the casting and interposer go in.</b> They are fitted from <b>behind the machine</b>, slid through the window <b>BK12 end first</b>, which this depth is what makes possible &mdash; there is no need to get at them from the front or to part the beam.<br>
-&#128308; <b>R{{PROBE_NOTCH_R}} at all four of the notch's corners</b>, the two where it meets the window's bottom edge as well as the two at its own bottom. <b>The bottom pair is the one that matters:</b> there the metal wraps around the end of the notch, and this plate is the rear shear panel &mdash; that is where a crack would start. The pair at the mouth is a protruding corner of metal rather than a notch tip, so rounding it is tidiness. It is smaller than the window's own {{WINDOW_CORNER_R}} on purpose &mdash; a {{WINDOW_CORNER_R}} in a {{PROBE_NOTCH_W}} wide notch leaves 5 of flat across its bottom where this leaves 13.</p>
-<p class="src">Full reasoning, and the decisions these summarise, live in <b>machine/*.md</b>. If a note hereand a .md file disagree, <b>the .md file wins</b>.</p>
-</div>
-</div>
+<!-- ============================================================ -->
 <div class="plate pg-ck">
 <h2 id="checklist">Before the trip — checklist</h2>
 
@@ -2859,26 +2358,6 @@ unsupported plate; above it, longer buys nothing but edge distance.</p>
 <b>The marginal cost of one more plate on the visit is an hour; a second trip is a weekend across the
 state.</b> That is the whole reason this pack exists — so take anything plausible, drilled or not.
 </div>
-<p><b>8.1</b> &mdash; <b>One part made three times, and it is 4 mm not 1/4".</b> The Y front strip came down to 1/4", breaking the old "same as its back plate" rule, and that is what made all three beams identical. &#128308; <b>It came down again to 4 mm, because 1/4" does not fit</b>: the bolt heads reach past the strip's edge and have to pass under the bearing block, which leaves at most 6 mm. At 4 mm the stack is 5 and clears; at 1/4" it is 7.35 and hits, both measured on a real beam. The stiffness gain quoted in gantry-beam-joint.md is the 1/4" figure and no longer applies. It is also the magnetic encoder tape surface, so its face finish matters more than its edges do.</p>
-<p><b>8.2</b> &mdash; <b>&#128308; The strip is now WIDER than the gap it used to fit, and runs under the blocks.</b> It was 45, chosen as BLOCK_ROW_GAP so it sat <i>between</i> the bearing block rows with about half a millimetre either side &mdash; 46 is the geometric gap, the 90 rail pitch less a 44 block, and 45 was the conservative measured figure. At 50.8 it overlaps each block by <b>2.4 and passes beneath it</b>, which a thin strip may do: he proved it with 60 &times; 60 &times; 4 test pieces, which overlap 7.0 a side at a <i>thicker</i> stack and clear. <b>The gain is Y tolerance.</b> At 45 the strip had essentially nowhere to go sideways; at 50.8 the next thing in its way is the <b>rail, 9.6 from the strip edge</b>. &#9888; <b>Which is why the rows must be dimensioned from the centreline.</b> The two rows sit &plusmn;15 from the seam because the T-slots put them there &mdash; that separation is 30 whatever the strip's width &mdash; so centre-referenced holes absorb a 50-versus-50.8 stock variation and edge-referenced ones do not. <b>The encoder lane is unaffected by any of this</b>: it is the row separation less the head, 30 &minus; 13.8 = 16.2, and the strip's width is not in that sum.</p>
-<p><b>8.4</b> &mdash; <b>&#128308; The six bolt-on plates are on the trip, and the reason that kept them off was not wrong.</b> Sheets 8, 9 and 10 were home drill-press work because every hole on them is a &oslash;9 clearance into a T-slot and <b>the T-nut slides to meet the bolt</b>, so an individual hole’s position hardly matters. That is still true. <b>His call 2026-10-09 overrules it on a different argument:</b> 14 holes on a front strip and 28 on a back plate, across six plates, is 126 holes of hand layout, and small errors creep in. A plate whose rows have wandered still bolts up &mdash; and fights for an afternoon while it does, because every bolt needs its nut nudged to a different place. <b>On Sheets 9 and 10 that is the whole of it: perfect holes are not needed for the joint, they are wanted for the assembly.</b><br>
-REJECTED: <b>A clash argument stood here and the 2" strip removed it.</b> While the strip was 45 wide it sat in the block gap with nothing either side, so a row wandering in Y drove it into a bearing block &mdash; the nut slides <i>along</i> its slot, forgiving X and forgiving nothing in Y, so a hole off in Y moves the strip rather than being taken up. All of that is still true except the part that mattered: at 50.8 the strip runs <i>under</i> the blocks and the next obstruction is the rail, <b>9.6 away</b>. <b>So Sheet 8 is on the trip for the same reason as the rest &mdash; 14 holes a strip, three strips, and they want to be straight.</b><br>
-OPEN: <b>It puts six more metre-long parts on a trip whose X traverse is still an open question</b> &mdash; the same one gating the 1210.47 rear plate, "can the mill traverse ~1212 in X". <b>If something has to be repositioned mid-job for want of travel, take it out of Sheets 9 and 10</b>, where the T-nut genuinely does forgive a shifted station. <b>Not Sheet 8, and not the rear plate</b> &mdash; the strips because Y is a clearance, the rear plate because its two patterns must meet extruded bores a metre apart.</p>
-<p><b>8.5</b> &mdash; <b>&#9989; The stock measured 3, and the bolt is what that decides.</b> Ordered as 1/8" 6061 flat bar and this sheet warned it might come 3.175 or 4.0; it came <b>metric at 3</b>. &#9989; <b>Block clearance is the best of the three cases</b> &mdash; the strip plus a flange rim is 4.0 against the 6 mm under a block. &#128308; <b>THE M8 &times; 10 IS TOO SHORT, NOT TOO LONG &mdash; AND THIS SHEET HAD THE SUM BACKWARDS.</b> It said the bolt must not reach more than 7.2 past the plate. That 7.2 is measured from the <b>T-nut's front face</b>, and the bolt does not start there: from the plate's back face it crosses <b>2.3 of lip</b> first, then meets <b>6 of thread</b>, and the <b>slot floor is 9.3</b> past the plate. So a bolt wants to reach <b>between 8.3 and 9.3</b> past the plate &mdash; full thread, still clear of the floor. The M8 &times; 10 in this 3 strip reaches 7.0: it engages <b>4.7 of the 6</b> and sits <b>2.3 clear of the floor</b>. Nothing bottoms and nothing projects. <b>An M8 &times; 12 reaches 9.0 &mdash; the full 6 of thread, 0.3 clear of the floor</b>, and the head is unchanged so nothing about block clearance moves. <b>A washer here must be A4 / 316</b>, for the same reason these bolts are: the magnetic tape runs between their rows.</p>
-<p><b>8.3</b> &mdash; <b>&#9989; First hole at 50, then 150 pitch, on all three bolt-on plates.</b> That is <b>seven per row</b>, 50 to 950, with 50 clear at each end. The pitch had been in gantry-beam-joint.md for weeks &mdash; M8 T-nuts at 150, four rows on the back and two on the front &mdash; but where along the 1000 the first one sat had never been written anywhere, which is why these rows were amber rather than wrong. Eight at 150 would have spanned 1050 and not fitted at all. Nothing was ever blocked by it: these are &oslash;9 clearance holes into T-slots and the T-nut slides to meet the bolt.</p>
-<p><b>9.1</b> &mdash; <b>This plate replaced two parts.</b> It is the full-height outboard plate and the Y back joining plate at once, grown rather than bolted alongside, which is why it carries the beam's four T-slot rows. That is also why the Y beams have no Sheet 10 part and the X beam does.</p>
-<p><b>9.2</b> &mdash; <b>10 gauge, and this plate's thickness has now been wrong twice in prose.</b> outboard-plate.md's cross-section said 6.35 mm (1/4") in three places, left behind when the plate went to 1/8" steel; the 1/8" was then itself a nominal, with the listing also offering 11 gauge (3.04) and a 3.36 floated and withdrawn as a guess. &#9989; <b>The order ends it</b>: 10 GA (.135) cold-rolled, which is 3.429. None of the three earlier numbers was right, and the question was closed by buying the part rather than by reading the listing again. <b>It does not drop into a channel</b> &mdash; that question is dead, not open: the plate stands flat on the box&apos;s top skin and the 60 mm proud outer lamination, the <b>tongue</b>, laps it from outboard on a plain bolted lap. The channel had been dimensioned around 6.35 and there is nothing left to size. The delivered thickness still matters, but for the riser-proud check, not for a groove.</p>
-<p><b>9.3</b> &mdash; <b>&#9989; The reference edge is the BOTTOM one, and that is what closed this sheet.</b> The four T-slot rows were first drawn as 15 / 45 / 75 / 105 from the top edge, which is the extrusion's own slot grid measured down from the beam's top face. That was only right if the plate's top edge finished <i>flush</i> with that face &mdash; and 304.8 is a <b>bought 12" size</b>, not a derived one, so there was nothing guaranteeing it. Dimensioned from the bottom instead the rows become <b>197 / 227 / 257 / 287</b>, the same four holes, but now <b>a plate that comes out short loses material at the top and nothing moves</b>. &#128308; <b>199.8 / 229.8 / 259.8 / 289.8 is the wrong set &mdash; 2.8 too high</b> &mdash; computed as if the plate's 304.8 finished flush with the beam top, which is the very assumption dimensioning off the bottom exists to avoid. The beam's height comes from the FIN: the window's top edge is the beam's underside at 182, and 182 + 120 puts the beam's top face at <b>302</b>. &#9888; <b>The fin itself is 301.625, not 302</b> &mdash; it is the same ordered 11 7/8" as this plate &mdash; so the beam top stands <b>0.375 proud</b> of every one of these plates. That is SIDE_PLATE_PROUD, and it is harmless for exactly the reason this footnote exists: nothing is measured from a top edge. The bottom edge earns the job because it is the one that bears, on the box's top skin. Sheet 10 never had this problem: at 120 tall its top edge IS the beam top by construction.</p>
-<p><b>9.5</b> &mdash; <b>The plate is shorter than the beam, and which end gets the slack is a layout choice.</b> Ordered 39 5/16" = 998.54 against a 1000 beam. The seven T-slot stations are absolute from the plate's left edge and run 50 to 950, leaving 48.54 past the last hole, so 1.46 of it simply disappears from that margin. <b>Lay out from the left edge and the shortfall all lands at the right.</b> Sheet 10 is the same length and the same argument. &#9888; This is the benign version of the problem the back plate has: there, the stations also run from the left edge, but the plate's length sets where the <i>second beam</i> goes, so a shortfall is not margin &mdash; it is error. See checklist row 3.</p>
-<p><b>9.4</b> &mdash; <b>The 9 mm hole is the slot.</b> An earlier draft wanted the holes slotted progressively toward the ends for thermal differential. Unnecessary: &oslash;9 on M8 is 1 mm of float per hole, several times the whole differential across a metre of plywood in a climate-controlled shop, and the Y risers were reamed to 9 for the same reason. <b>Do not transfer that conclusion to the T-nut rows</b> &mdash; those are a preloaded friction joint whose whole job is shear transfer, and they are a different argument.</p>
-<p><b>10.1</b> &mdash; <b>X only, and that asymmetry is deliberate.</b> The Y beams do not move and bolt to the torsion box, so their outboard plate reaches all the way down and does this job on the way past. The X beam moves and has nothing to bolt down to, so it keeps a plain 120 back plate and nothing more.</p>
-<p><b>10.2</b> &mdash; <b>Same X stations as Sheets 8 and 9</b> &mdash; 50 then 150, seven per row. See 8.3.</p>
-<p><b>3.8</b> &mdash; <b>The X ball nut had nothing to attach to, and this column is it.</b> The X screw runs on TOP of the beam, so the nut is above the carriage and the drive has to reach up and over. The <b>doubler of Sheet&nbsp;2d</b> &mdash; the same block the Y ends use, now made three times &mdash; bolts to this plate&rsquo;s rear face with its bottom edge at <b>161</b> and its top edge at <b>206</b>, which is the nut&rsquo;s mounting face: 151 to the beam top, 10 for the interposer, 25 for the casting&rsquo;s axis, 20 for the nut&rsquo;s own h off the DSG1605 page. The column lands at <b>186</b> because it sits 25 up the block, the same DOUBLER_BOLT_X the Y side uses. <b>Sheet&nbsp;11</b> is the plate that lies across the top. &#9888; <b>This plate already exists, dyed and undrilled</b>, and nothing in its schedule put a doubler on it before 2026-10-09 &mdash; these four are genuinely new, not a correction.</p>
-<p style="break-inside:avoid;margin:3mm 0 1mm"><b style="font-size:10pt">SHEET 11</b></p>
-<p><b>11.1</b> &mdash; <b>One part, three copies, and the X one is simply inverted.</b> On Y the ball nut hangs under the beam, its mounting face points DOWN, and the sole plate bolts UP into it off a doubler on the X end plate. On X the screw sits on TOP of the beam and everything turns over: the face points up and the plate lies on it. <b>The doubler is the same block and the plate is the same plate.</b> Each bolts into the doubler&apos;s end face alone, and in both cases the plate carrying the doubler runs {{XEP_SOLE_TAB}} past that face so the sole plate&apos;s base has something to butt.</p>
-<p><b>11.2</b> &mdash; <b>&#9989; Why the two ends land on identical numbers.</b> Both plates are measured from the face the doubler bolts to, and <b>neither carries the thickness of the plate behind it</b>. SCREW_AXIS_X is {{SCREW_AXIS_X}} on Y because it measures from the end plate&apos;s INNER face; take that plate&apos;s {{T_X_ENDPLATE}} off and it is {{X_SCREW_AXIS}}, which is what X_SCREW_AXIS already reads from the carriage plate&apos;s REAR face. <b>Rail stack + half beam, on both axes.</b> So T_X_CARRIAGE_PLATE &mdash; still a nominal 12.7 flagged to caliper &mdash; cannot move a number on either sheet, and SOLE_SAME_AS_X_CHECK holds the two chains to one answer.<br><b>It closes on the nut rather than on a chosen length:</b> the length is {{SOLE_BRACKET_L}}, the far nut row is at {{NUT_BOLT_X_FAR}}, and the difference is {{NUT_INSET_X}} &mdash; NUT_INSET_X &mdash; so the tip finishes flush with the nut face&apos;s edge.</p>
-<p><b>10.3</b> &mdash; <b>Ordered 4 11/16" &times; 39 5/16", and the sheet draws 120 &times; 1000.</b> The 120 was never arbitrary: it is the stacked pair's full section height, so the plate reaches all four back slots. The sheared piece is 119.06, <b>0.94 short</b>. &#9989; <b>It costs nothing, and the reason is the reference edge.</b> This sheet measures Y <i>down from the top edge</i>, which is the beam's top face, so the four rows at 15 / 45 / 75 / 105 are fixed against the beam and the shortfall falls off the bottom &mdash; 14.06 below the last row where 15 was intended, against a &oslash;9 clearance hole. &#128308; <b>Do not re-reference this sheet to its bottom edge.</b> Sheets 1a, 1b, 7 and 9 all measure from their bottom edges because those edges <i>bear on the torsion box</i>; this plate bolts to a moving beam and its bottom edge bears on nothing. The two conventions are each right for their own part, and footnote 9.3 is the argument for the other one. The 1.46 of length is the same slack as Sheet 9 &mdash; see 9.5.</p>
 </div>
-
 </body>
 </html>

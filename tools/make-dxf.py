@@ -128,8 +128,16 @@ def cols(hdr):
     without any error: the cells still parse as numbers, so the DXF would come
     out wrong rather than refusing to build. The header is the contract.
     """
-    return tuple(hdr.index(k) if k in hdr else d
-                 for k, d in (('Qty', 2), ('X', 3), ('Y', 4)))
+    # MATCH THE FIRST WORD, not the whole cell. An X or Y header carries the
+    # edge it is measured from - "X across, from the outboard edge" - so an
+    # equality test finds nothing and silently falls back to a position.
+    def find(key, default):
+        for i, h in enumerate(hdr):
+            if h.split()[:1] == [key]:
+                return i
+        return default
+
+    return tuple(find(k, d) for k, d in (('Qty', 2), ('X', 3), ('Y', 4)))
 
 
 def holes_for(src, sheet, ti=None):
