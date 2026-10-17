@@ -138,6 +138,39 @@ def notch_svg(length, starts, rib, h, s=0.15):
             f'style="max-width:180mm">{"".join(body)}</svg>')
 
 
+def side_lam_svg(v, s=0.15):
+    """Each side's outer lamination in elevation, the step drawn to scale.
+
+    True scale both ways, the same rule as notch_svg: the step is 60 of a 202
+    tall piece and it has to read as that, not as a symbol.
+    """
+    L, tall = v["SIDE_LAM_L"], v["TONGUE_FULL_H"]
+    short, cut = v["BOX_FRONT_CAP_H"], v["SIDE_LAM_PROUD_CUT"]
+    W, H, xc = L * s, tall * s, cut * s
+    drop = (tall - short) * s
+    body = [
+        # the piece as it comes off the saw, stepped: back portion full height
+        f'<polygon points="0,0 {xc:.1f},0 {xc:.1f},{drop:.1f} {W:.1f},'
+        f'{drop:.1f} {W:.1f},{H:.1f} 0,{H:.1f}" fill="#f3f7fb" stroke="#333" '
+        f'stroke-width="0.4"/>',
+        # what the saw takes off, dashed
+        f'<rect x="{xc:.1f}" y="0" width="{W - xc:.1f}" height="{drop:.1f}" '
+        f'fill="#fff" stroke="#b00" stroke-width="0.4" '
+        f'stroke-dasharray="4 3"/>',
+        # the top skin's top face, which is what the short portion finishes at
+        f'<line x1="0" y1="{drop:.1f}" x2="{W:.1f}" y2="{drop:.1f}" '
+        f'stroke="#b00" stroke-width="0.3" stroke-dasharray="2 2"/>',
+        f'<text x="{xc / 2:.1f}" y="{drop + 9:.1f}" font-size="7" '
+        f'text-anchor="middle" fill="#333">{v["BOX_TONGUE_PROUD"]:g} proud</text>',
+        f'<text x="{(W + xc) / 2:.1f}" y="{drop - 3:.1f}" font-size="7" '
+        f'text-anchor="middle" fill="#b00">sawn off</text>',
+        f'<text x="{xc + 3:.1f}" y="{H - 4:.1f}" font-size="7" fill="#333">'
+        f'cut at {cut:g} from the BACK edge</text>',
+    ]
+    return (f'<svg viewBox="-2 -10 {W + 4:.1f} {H + 16:.1f}" width="100%" '
+            f'style="max-width:180mm">{"".join(body)}</svg>')
+
+
 def notch_runs(v):
     """The notch positions along each rib, as (part, length, bay, [starts]).
 
@@ -816,6 +849,7 @@ rather than edited.</p>
 <ol class="toc">
 <li><a href="#parts">Parts</a></li>
 <li><a href="#sheets">Sheets</a> and <a href="#nesting">nesting</a></li>
+<li><a href="#side-step">The step in each side lamination</a></li>
 <li><a href="#notches">Notches</a></li>
 <li><a href="#ports">Sand ports</a></li>
 <li><a href="#cutouts">Tenon cutouts</a></li>
@@ -846,7 +880,33 @@ back together, so a careful nest can still do better.</p>
 Offcut is whatever stays white.</p>
 {''.join(ns)}
 
-<h2 id="notches">3 &mdash; Notches</h2>
+<h2 id="side-step">3 &mdash; The step in each side lamination</h2>
+<p><b>Each side's outer lamination is ONE piece</b>, cut
+<b>{v['SIDE_LAM_L']:.2f} long</b> and <b>{v['TONGUE_FULL_H']:g} tall</b>, and the
+proud part is <b>sawn off forward of {v['SIDE_LAM_PROUD_CUT']:.2f}</b>, measured
+from the box's BACK edge.</p>
+{side_lam_svg(v)}
+<table><tr><th></th><th></th></tr>
+<tr><td><b>Behind the cut</b></td><td>{v['TONGUE_FULL_H']:g} tall &mdash; it
+covers the end grain of both skins and stands <b>{v['BOX_TONGUE_PROUD']:g}
+proud</b> of the top skin. That proud band is what the side plate bolts
+through</td></tr>
+<tr><td><b>Forward of the cut</b></td><td>{v['BOX_FRONT_CAP_H']:g} tall &mdash;
+flush with the top skin, so the apron stays a clear work surface. It carries the
+front fin's outboard overhang</td></tr>
+<tr><td><b>The step</b></td><td>{v['BOX_TONGUE_PROUD']:g}, square, at
+{v['SIDE_LAM_PROUD_CUT']:.2f} from the back edge</td></tr>
+</table>
+<p>🔴 <b>Order and cut it at the TALL height for its whole length</b>, then take
+the step out. The parts list gives {v['SIDE_LAM_L']:.2f} &times;
+{v['TONGUE_FULL_H']:g} for that reason, even though most of the piece finishes
+flush.</p>
+<p><b>There is no butt joint at {v['SIDE_LAM_PROUD_CUT']:.2f}.</b> It is one
+board with a step in its top edge, and the cut falls where the side tongue ends
+&mdash; which is the figure the front fin's clearance is set from, so it is a
+position to cut to, not one to eyeball.</p>
+
+<h2 id="notches">4 &mdash; Notches</h2>
 <p>Egg crate, continuous both ways, half-depth notches at every crossing. Every
 notch is <b>{rib:g} wide</b> and <b>{half:g} deep</b>, and <b>all eight ribs are
 the same part</b> &mdash; same length, same four offsets.</p>
@@ -930,7 +990,7 @@ done afterwards on whichever edge ends up down.</p>
 <p>Notch the bottom edge of every rib where it meets the bottom skin, roughly
 20 &times; 15, so the sand can migrate between cells.</p>
 
-<h2 id="ports">4 &mdash; Sand ports</h2>
+<h2 id="ports">5 &mdash; Sand ports</h2>
 <p><b>{v['SAND_PORT_D']:g} through both skins, {len(ports)} &times; {len(ports)} =
 {len(ports) ** 2} in each</b>, one centred in every bay. Centres from the skin's
 edge, <b>the same figures in X and Y</b> &mdash; the box is square and the grid is
@@ -954,7 +1014,7 @@ the open apron. <b>{v['T_APRON_SKIN']:g} Baltic birch over the apron on
 double-sided tape</b> covers those &mdash; a cover, not structure, so it comes off
 the day a port is used.</p>
 
-<h2 id="cutouts">5 &mdash; The tenon cutouts in the bottom skin</h2>
+<h2 id="cutouts">6 &mdash; The tenon cutouts in the bottom skin</h2>
 <p>🔴 <b>Not one of these is a hole.</b> Every tenon cut reaches an edge of the
 skin, so <b>every one of them is a saw cut</b> &mdash; no start hole, no jigsaw
 in the field of the sheet. The two front legs take a <b>corner</b>, open to both
@@ -986,7 +1046,7 @@ two tabs <b>bears nothing</b> &mdash; it sits over the leg's own slot. So there
 is nothing to be had by cutting round it, and <b>a straight cut to be had by not
 bothering</b>.</p>
 
-<h2 id="glue">6 &mdash; Glue up</h2>
+<h2 id="glue">7 &mdash; Glue up</h2>
 <p><b>Six joints, and only the first two carry the sandwich.</b></p>
 <p>🔴 <b>Nothing is glued at the egg-crate notches</b> &mdash; his call. Every rib
 is bonded to both skins along its whole length, so two crossing ribs are already
@@ -1100,7 +1160,7 @@ skin is <b>glued</b>, but with the top only screwed they can be fitted any time 
 to that &mdash; lift it, drop them in, put it back. That was the one step in this
 build with no way back.</p>
 
-<h2 id="not-here">7 &mdash; Not on this list</h2>
+<h2 id="not-here">8 &mdash; Not on this list</h2>
 <p><b>The five legs, and they come FIRST.</b> The base holds the three
 load-bearing legs in position, so it is built before the box and the legs before
 it. Each leg is laminated from <b>{v['T_BB_SKIN_BOT']:g} mm strips 4 ft long</b>,
