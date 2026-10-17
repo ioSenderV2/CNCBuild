@@ -125,6 +125,12 @@ if ($docs | Where-Object Key -eq 'dxf') {
     Write-Host "Drawing the quote DXFs back from their own bytes ..." -ForegroundColor Cyan
     & python (Join-Path $PSScriptRoot 'dxf-preview.py')
     if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: dxf-preview.py failed" -ForegroundColor Red; exit 1 }
+    # The offsets printed on each page, checked back against the holes.
+    & python (Join-Path $PSScriptRoot 'check-dxf-offsets.py')
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "ERROR: a printed offset is not a hole centre - do not send these" -ForegroundColor Red
+        exit 1
+    }
 }
 
 if ($docs | Where-Object Key -in 'build', 'record') {

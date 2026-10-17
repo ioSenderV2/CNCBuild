@@ -143,6 +143,79 @@ def extent(lines, circles, arcs):
     return min(xs), max(xs), min(ys), max(ys)
 
 
+def spread(pos: list, lo: float, hi: float, sep: float):
+    """Label positions that do not collide, each as near its tick as it can be.
+
+    THE TICK STAYS ON THE HOLE AND ONLY THE LABEL MOVES, which is what the
+    leader line is for. Neighbouring hole centres come as close as 1.0 mm on
+    paper - the two ø9 rows flanking the beam seam are 5 mm apart on a 1:5
+    part - and a label is 2.4 mm wide, so a row of labels sitting on their own
+    coordinates would overlap into mush exactly where the reader most needs to
+    tell two holes apart.
+
+    A single left-to-right push, then a clamp back from the far end if the
+    block ran off the paper. Where there is room nothing moves at all, so the
+    common case stays a straight tick with the number directly above it.
+
+    Returns the positions and whether the row is too crowded to separate even
+    using the whole band - the caller says so rather than printing a row that
+    is quietly illegible.
+    """
+    if not pos:
+        return [], False
+    out = list(pos)
+    for i in range(1, len(out)):
+        out[i] = max(out[i], out[i - 1] + sep)
+    if out[-1] > hi:
+        out = [p - (out[-1] - hi) for p in out]
+        for i in range(len(out) - 2, -1, -1):
+            out[i] = min(out[i], out[i + 1] - sep)
+    if out[0] < lo:
+        n = len(out)
+        if n > 1 and (hi - lo) / (n - 1) < sep:
+            return out, True
+        step = (hi - lo) / (n - 1) if n > 1 else 0.0
+        out = [lo + step * i for i in range(n)]
+    return out, False
+
+
+def cutouts(lines, arcs):
+    """Bounding box of each shape on the HOLES layer that is not a circle.
+
+    A SLOT HAS NO CENTRE TO PUT IN AN ORDINATE ROW, so the rows below are
+    built from circles only - and the back plate's two cut-outs would then be
+    the one feature on the one page with no position on it at all. They get
+    their extents instead, which is what a cut needs anyway.
+
+    Shapes are separated by walking connected endpoints; the profiles are
+    closed, which open_ends has already proved by the time this runs.
+    """
+    segs = [(seg[0], seg[1]) for seg in lines if seg[2] == "HOLES"]
+    segs += [(arc_ends(*a[:5])[0], arc_ends(*a[:5])[1])
+             for a in arcs if a[5] == "HOLES"]
+    boxes = []
+    while segs:
+        pts = list(segs.pop(0))
+        moved = True
+        while moved:
+            moved = False
+            for s in list(segs):
+                for p in s:
+                    if any(abs(p[0] - q[0]) < 1e-6 and abs(p[1] - q[1]) < 1e-6
+                           for q in pts):
+                        pts += list(s)
+                        segs.remove(s)
+                        moved = True
+                        break
+                else:
+                    continue
+                break
+        xs = [p[0] for p in pts]
+        ys = [p[1] for p in pts]
+        boxes.append((min(xs), max(xs), min(ys), max(ys)))
+    return sorted(boxes)
+
+
 def page(path: Path, bad: list, toc: list) -> str:
     lines, circles, arcs, texts = parse(path)
     x0, x1, y0, y1 = extent(lines, circles, arcs)
@@ -150,8 +223,6 @@ def page(path: Path, bad: list, toc: list) -> str:
         bad.append(f"{path.name}: {p} does not close")
     w, h = x1 - x0, y1 - y0
     pad = 26.0                                   # mm for dimensions and labels
-    scale = next((s for s in SCALES
-                  if w / s + pad <= PAGE_W and h / s + pad <= PAGE_H), 10)
 
     title = next((t[3] for t in texts if "QTY " in t[3]), path.stem)
     # THE LAYER SAYS WHICH TEXT IS PART OF THE PICTURE. A label on PARTS belongs
@@ -165,6 +236,33 @@ def page(path: Path, bad: list, toc: list) -> str:
     notes = [t[3] for t in texts
              if "QTY " not in t[3] and not t[3].startswith("HOLES ")
              and t[4] != "PARTS"]
+
+    # THE TITLE BLOCK IS PART OF THE PAGE AND MUST BE COUNTED, which the first
+    # cut of this did not do - it sized the drawing against the full 180 mm,
+    # so every part spilled onto a second sheet with its heading left behind on
+    # the first. A drawing whose title is on another page is not a drawing.
+    # Heading, one line per note, the holes line, a cut-outs line where there
+    # is one, the caption, and the gap down to the figure.
+    nlines = len(notes) + 1 + (1 if any("cut-out" in t[3] for t in texts)
+                               else 0)
+    header = 9.0 + 4.3 * nlines + 6.5
+    # 16.1 above for the X offsets, about 10 below for the width dimension.
+    VPAD = 27.0
+
+    def below(s):
+        """Paper mm of PART LABEL hanging under the part, at scale s.
+
+        The end plates name themselves below their own bottom edge, where the
+        overall width dimension also goes - and the two were printed on top of
+        each other. The dimension moves down past the label, so the page has
+        to budget for it before the scale is picked.
+        """
+        return max([0.0] + [(y0 - t[1] + t[2]) / s for t in texts
+                            if t[4] == "PARTS" and t[1] < y0])
+
+    scale = next((s for s in SCALES
+                  if w / s + pad <= PAGE_W
+                  and header + h / s + VPAD + below(s) <= PAGE_H), 10)
 
     def X(v):
         return (v - x0) / scale + pad * 0.62
@@ -211,8 +309,11 @@ def page(path: Path, bad: list, toc: list) -> str:
                  f'font-size="{max(th / scale, 2.4):.2f}" fill="#444">'
                  f'{s}</text>')
 
-    # overall dimensions, outside the part
-    bx, by = X(x1) + 5, Y(y0) + 5
+    # overall dimensions, outside the part - and below any label hanging under
+    # it, which is what below() reserved the room for
+    bx = X(x1) + 5
+    by = max([Y(y0) + 5] + [Y(t[1]) + 1.6 for t in texts
+                            if t[4] == "PARTS" and t[1] < y0])
     g.append(f'<line x1="{X(x0):.2f}" y1="{by:.2f}" x2="{X(x1):.2f}" '
              f'y2="{by:.2f}" stroke="#06c" stroke-width="0.3"/>')
     g.append(f'<text x="{(X(x0) + X(x1)) / 2:.2f}" y="{by + 3.4:.2f}" '
@@ -228,6 +329,57 @@ def page(path: Path, bad: list, toc: list) -> str:
              f'transform="rotate(-90 {bx + 3.2:.2f} {my:.2f})">'
              f'{h:g} mm ({h / 25.4:.3f} in)</text>')
 
+    # --- where the holes are: the origin, then X across the top, Y down the
+    # left. THE NUMBERS ARE THE PARSED CIRCLE CENTRES, so a row cannot
+    # disagree with the holes drawn beside it - the same reason this whole
+    # page is redrawn from the written bytes instead of from make-dxf's data.
+    if round(x0, 6) or round(y0, 6):
+        bad.append(f"{path.name}: geometry starts at ({x0:g}, {y0:g}), not "
+                   f"the origin - the origin dot would be in the wrong place")
+    g.append(f'<circle cx="{X(0.0):.2f}" cy="{Y(0.0):.2f}" r="1.1" '
+             f'fill="#c00"/>')
+    g.append(f'<text x="{X(0.0) - 1.6:.2f}" y="{Y(0.0) + 4.2:.2f}" '
+             f'text-anchor="end" font-size="2.6" fill="#c00">0,0</text>')
+
+    OFS, LBL = 2.1, 2.6          # font size, and the room one label needs
+    crowded = False
+
+    xs = sorted({round(c[0], 2) for c in circles})
+    lx, over = spread([X(v) for v in xs], 2.0, PAGE_W - 2.0, LBL)
+    crowded = crowded or over
+    # START THE ROW ABOVE ANY PART LABEL, not at the part's top edge. The sole
+    # plates name each of the three profiles just over that edge, and ticks
+    # taken from the edge upward ruled straight through the words.
+    top = min([Y(y1)] + [Y(t[1]) - t[2] / scale - 0.8 for t in texts
+                         if t[4] == "PARTS" and t[1] + t[2] > y1])
+    for v, p in zip(xs, lx):
+        g.append(f'<line x1="{X(v):.2f}" y1="{top:.2f}" x2="{X(v):.2f}" '
+                 f'y2="{top - 2.6:.2f}" stroke="#06c" stroke-width="0.25"/>')
+        g.append(f'<line x1="{X(v):.2f}" y1="{top - 2.6:.2f}" x2="{p:.2f}" '
+                 f'y2="{top - 4.6:.2f}" stroke="#06c" stroke-width="0.18"/>')
+        g.append(f'<text x="{p:.2f}" y="{top - 5.4:.2f}" font-size="{OFS}" '
+                 f'fill="#06c" transform="rotate(-90 {p:.2f} '
+                 f'{top - 5.4:.2f})">{v:g}</text>')
+
+    ys = sorted({round(c[1], 2) for c in circles})
+    ly, over = spread([Y(v) for v in reversed(ys)], 2.0, PAGE_H - 2.0, LBL)
+    crowded = crowded or over
+    left = X(x0)
+    for v, p in zip(reversed(ys), ly):
+        g.append(f'<line x1="{left:.2f}" y1="{Y(v):.2f}" '
+                 f'x2="{left - 2.6:.2f}" y2="{Y(v):.2f}" stroke="#06c" '
+                 f'stroke-width="0.25"/>')
+        g.append(f'<line x1="{left - 2.6:.2f}" y1="{Y(v):.2f}" '
+                 f'x2="{left - 4.6:.2f}" y2="{p:.2f}" stroke="#06c" '
+                 f'stroke-width="0.18"/>')
+        g.append(f'<text x="{left - 5.4:.2f}" y="{p + 0.75:.2f}" '
+                 f'text-anchor="end" font-size="{OFS}" fill="#06c">'
+                 f'{v:g}</text>')
+
+    if crowded:
+        bad.append(f"{path.name}: the offset rows cannot be separated - "
+                   f"{len(xs)} X and {len(ys)} Y values do not fit the page")
+
     bom = " &middot; ".join(f"{n} &times; &oslash;{d:g} mm "
                             f"({d / 25.4:.3f} in)"
                             for d, n in sorted(sizes.items()))
@@ -236,7 +388,7 @@ def page(path: Path, bad: list, toc: list) -> str:
     cut = next((t[3] for t in texts if "cut-out" in t[3]), "")
     if cut:
         bom += " &middot; <b>" + cut.split("+", 1)[1].strip() + "</b>"
-    svg_w, svg_h = PAGE_W, max(h / scale + pad * 1.4, 60)
+    svg_w, svg_h = PAGE_W, max(h / scale + VPAD + below(scale), 60)
     toc.append({
         "file": path.name,
         "title": title,
@@ -245,11 +397,22 @@ def page(path: Path, bad: list, toc: list) -> str:
         "bom": bom,
         "size": f"{w:g} &times; {h:g}",
     })
+    # The cut-outs are lines and arcs, so they are in neither ordinate row -
+    # give their extents, which is what a cut needs in any case.
+    boxes = cutouts(lines, arcs)
+    cutline = ""
+    if boxes:
+        cutline = ('<p class=n><b>Cut-outs</b> ' + " &middot; ".join(
+            f"X {a:g} to {b:g}, Y {c:g} to {d:g}" for a, b, c, d in boxes)
+            + '</p>')
+
     return (f'<section><h2>{title}</h2>'
             + "".join(f"<p class=n>{t}</p>" for t in notes)
             + f'<p class=n><b>Holes</b> {bom}</p>'
+            + cutline
             + f'<p class=s>Drawn at 1:{scale:g} from the DXF itself &middot; '
-              f'{path.name}</p>'
+              f'{path.name} &middot; offsets are HOLE CENTRES from the red '
+              f'0,0 dot - X across the top, Y down the left side</p>'
             + f'<svg viewBox="0 0 {svg_w:.1f} {svg_h:.1f}" '
               f'width="{svg_w:.0f}mm">{"".join(g)}</svg></section>')
 
@@ -279,8 +442,12 @@ file name is printed on its page.</p>
 <h2>How to read the drawings</h2>
 <ul>
 <li><b>Units are millimetres</b> and the origin is the lower-left corner of
-every drawing. Inch equivalents are printed alongside for reference only
-&mdash; work to the millimetre figures.</li>
+every drawing, marked with a <b>red dot</b>. Inch equivalents are printed
+alongside for reference only &mdash; work to the millimetre figures.</li>
+<li><b>Hole offsets from that origin are printed on each page</b> &mdash; the
+<b>X</b> values across the top, the <b>Y</b> values down the left side, each on
+a leader from its own tick. They are there to read the drawing by; the
+<b>DXF is the authority</b> and the offsets are taken from it.</li>
 <li><b>R12 DXF, lines, circles and arcs only.</b> No polylines, no splines, no
 blocks. Outlines are closed.</li>
 <li><b>Layers:</b> OUTLINE is the cut profile, HOLES are the holes, NOTES and
