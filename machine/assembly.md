@@ -916,6 +916,29 @@ irreversible stops being one.
 1. **Dry-assemble the grid on the flat reference** — four ribs each way into the perimeter webs.
    Press every crossing flat and check it seats. An egg crate self-jigs, so this is the squareness
    check as well.
+
+   🔴 **The bottom skin is the authority for square, not the drawing.** Both its diagonals measure
+   **1712**, so the crate is built to the panel:
+
+   1. **Mark the rib lines on the skin**, each station measured from the **same edge** with a long
+      rule. Never cumulatively — the error walks across eight ribs.
+   2. **Screw two cleats to the skin**, one along an edge and one along the edge next to it, just
+      outside where the webs will sit. That is a square corner fence, and it is square because the
+      panel is.
+   3. **Dry-fit the crate into that corner**, webs tight to both cleats. The perimeter webs' outer
+      faces land flush with the skin's edges — the tongues go on later, outside the skin's end
+      grain — so registering the webs to the edges *is* the squaring.
+   4. **Check the crate's own diagonals before any glue**, web outer corner to web outer corner.
+      They should read the skin's 1712. If one is long, **rack it with a clamp across the long
+      diagonal** until the pair match, and hold it there.
+   5. Then glue, and **screw through the skin into every rib and web**. The screws are the clamping,
+      and they stop squeeze-out floating the crate out of position while you work down the panel.
+
+   🔴 **Square and flat are two different checks and the diagonals only cover one.** A crate can read
+   1712 both ways and still be wound. It stays on the flat reference and weighted for the glue-up,
+   and **before the top skin goes anywhere near it, run a straightedge across the rib edges both
+   ways** — that face is what the top skin glues to, and it is the one the diagonals say nothing
+   about.
 2. **Glue the egg crate and the perimeter webs as one assembly**, two Dominos at each web corner.
    🔴 **Glue the rib ENDS onto the webs' inside faces and nothing at the notches.** Two crossing
    ribs are already joined along their whole length by the skins — about 513,000 mm² of skin bond

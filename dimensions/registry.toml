@@ -1275,6 +1275,13 @@ note = "6.19 - MICROMETER, the delivered plate. The sales order line reads CPL 1
 source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
+sym = "BOX_SKIN_DIAG"
+value = 1712
+provenance = "measured"
+source = "his tape across the cut bottom skin"
+note = "1712 - BOTH diagonals of the bottom skin, equal to the tape. SETTLED: IT IS WHAT THE EGG CRATE IS SQUARED TO - the crate's own diagonals, web outer corner to web outer corner, are checked against this number and racked to it before the glue grabs. FLAG: EQUAL DIAGONALS PROVE THE CORNERS, NOT THE SIDES - a panel with unequal sides reads two equal diagonals just as happily, so this is a squareness figure and not a size one. On a square panel it works back to a side of 1210.6, where BOX_W draws 1211. FLAG: IT SAYS NOTHING ABOUT TWIST - a crate can read this both ways and still be wound, which is why the glue-up stays on the flat reference and the rib edges get a straightedge before the top skin."
+
+[[dim]]
 sym = "BOX_W"
 value = 1211
 provenance = "pinned"
