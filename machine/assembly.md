@@ -940,11 +940,24 @@ irreversible stops being one.
    which stand 60 proud of it. **Do not glue it.**
 7. **Build the machine on it and verify the whole assembly.** Everything above the box is reversible
    while the top is only screwed.
-8. **Only then seal it**: fit the fin angles' T-nuts into the top skin from underneath, glue the top
+8. **Shellac the inside, with the top skin lifted off.** This is the last time anything can reach
+   the cavities. **One thin coat of dewaxed shellac** — SealCoat thinned about half with denatured
+   alcohol — brushed on the **rib faces, the insides of the walls, and the inner face of both
+   skins**. One coat, dry in 20 minutes. The cavity never gets to dry out once the sand is in, and
+   these are the only faces in the box that nothing can reach again.
+
+   🔴 **Keep it off every glue line and every bearing face.** Hold a brush-width back from the **rib
+   edges, the wall tops, and the matching ring on the top skin's underside** — a coated surface is a
+   dead glue joint. Nothing on the **three posts' bearing faces**, and nothing where a plate beds
+   down on plywood: the film creeps under the bolts and the joint loses its torque. Shellac is the
+   one to use here because it sands straight back off if it goes somewhere it should not.
+
+   **The outer faces wait** — wipe-on poly, two coats, once the machine runs.
+9. **Only then seal it**: fit the fin angles' T-nuts into the top skin from underneath, glue the top
    on and clamp it hard onto the rib edges — screws through the skin into the ribs for uniform
    pressure, and the 52" parallel clamps across the top **one over each rib**, so the pressure lands
    on structure rather than on unsupported skin.
-9. **Sand last**, through the top ports.
+10. **Sand last**, through the top ports.
 
 **The T-nuts stop being a trap.** They still have to go in before the top skin is **glued**, but with
 the top only screwed down they can be fitted at any point up to that — lift it, drop them in, put it
@@ -1164,6 +1177,10 @@ so below the lower grid exactly **100** of it is open — the floor clearance �
 
 The 100 is not a separate figure to remember: it **is** the floor clearance, so the two cannot drift.
 
+🔴 **Shellac the bottom end grain of all five legs before they ever stand on the floor.** A concrete
+slab wicks, and plywood end grain is what drinks it. One coat on the foot, brushed on before the leg
+goes anywhere near the ground.
+
 **Both grids want the front at that corner, so there are two notches** — the rails stay whole at both
 levels and the wall gives way twice. The lip between them is **564**, the same as the clear volume
 height, which is the check that the two notches are in the right places.
@@ -1330,6 +1347,10 @@ If the carriage plate does move, it goes to **thicker aluminium, not a bolted-on
 
 **Last, on site.** Roughly 165 lb. Everything above it has to be finished first, and dumping it is
 the single biggest lever on ever moving the machine.
+
+🔴 **It goes in bone dry.** Kiln-dried bagged sand, or spread it on a tarp in the sun first. A closed
+bay has no way to dry out, so damp sand sits against the plywood for the life of the machine — and
+that, not the plywood itself, is the thing the shellac coat is guarding against.
 
 ### If the machine is moved
 
