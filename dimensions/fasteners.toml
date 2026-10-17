@@ -329,17 +329,43 @@ into = "tapped"
 source = "registry BOLT_SPINDLE_CLAMP = 90"
 
 [[joint]]
-id = "y-nut-to-sole"
-what = "Y ball nut up into the sole bracket"
+id = "sole-to-nut"
+what = "Sole plate into the ball nut's own threads - Y1, Y2 and X"
 size = 5
-count = 8
-per = "4 per nut"
+count = 12
+per = "4 per nut, three nuts"
 length = 16
 head = "socket"
 into = "tapped"
 grip = ["T_SOLE_BRACKET"]
 source = "registry BOLT_Z_NUT = 16"
-note = "THREADED INTO THE NUT BODY. FLAG: THE LENGTH WAS IN THE REGISTRY ALL ALONG as BOLT_Z_NUT and was simply not linked here - the schedule reported it as a gap when the figure existed. SETTLED: THE SAME M5 x 16 SERVES ALL FOUR NUTS, which was chosen over an M5 x 12 on Y precisely so one length and one tap setting cover the build. OPEN: THE HOUSING MUST BE TAPPED DEEPER FIRST - see NUT_TAP_DEPTH, and note that his recollection of the as-supplied thread (6, tapped to 11) does not match the file (8, tapped to 12 working). It changes nothing: 9.65 of engagement fits under either."
+note = "THE BOLT PASSES THROUGH THE SOLE PLATE AND THREADS INTO THE NUT BODY - his correction: the nut is what is tapped, so it is not bolted to anything, the plate is bolted to it. On Y that is upward into a face pointing down; on X downward into one pointing up. SETTLED: THE SAME M5 x 16 SERVES ALL FOUR NUTS - chosen over an M5 x 12 on Y so one length and one tap setting cover the build. OPEN: THE HOUSING MUST BE TAPPED DEEPER FIRST - see NUT_TAP_DEPTH; his recollection of the as-supplied thread (6, tapped to 11) does not match the file (8, tapped to 12 working), and 9.65 of engagement fits under either."
+
+[[joint]]
+id = "sole-to-doubler"
+what = "Sole plate into the doubler's end edge - R1-R4, three plates"
+size = 5
+count = 12
+per = "4 per plate, three plates"
+length = 16
+head = "socket"
+into = "tapped"
+grip = ["T_SOLE_BRACKET"]
+source = "registry BOLT_SOLE_ROOT = BOLT_Z_NUT = 16"
+note = "THE ONLY EDGE DRILLING ON THIS ASSEMBLY, and the one row that holds the sole plate on - the base butts the strip of plate past the doubler and takes nothing into it. FLAG: IT BORES STRAIGHT AT THE D BOLT. D1-D4 sit at DOUBLER_BOLT_X on these same four Y stations, so each hole points at one of them and is capped at SOLE_ROOT_TAP_DEPTH with SOLE_ROOT_WALL of aluminium left. SOLE_ROOT_ENGAGE is 9.65, so the cap costs nothing. Same bolt as the nut row, so this whole joint is one length."
+
+[[joint]]
+id = "doubler-to-plate"
+what = "Doubler to the plate it backs, through the plate - D1-D4"
+size = 5
+count = 12
+per = "4 per doubler, three doublers"
+length = 22
+head = "socket"
+into = "tapped"
+grip = ["T_X_ENDPLATE"]
+source = "registry BOLT_DOUBLER_TO_PLATE = 22.19, rounded to a stock 22"
+note = "These run through the plate in SHEAR and tap into the doubler's thickness. OPEN: NO LENGTH WAS EVER GIVEN FOR THEM - BOLT_DOUBLER_TO_PLATE computes 22.19 as the plate plus NUT_TAP_DEPTH_ALU, and a stock M5 x 22 is the nearest under it; check one against the real parts before ordering. FLAG: IT MUST NOT BREAK OUT OF THE DOUBLER'S FAR FACE - DOUBLER_BOLT_BREAKOUT is what is left, and that face is what the sole plate's base sits against. The X carriage plate is 12.7 against the end plate's 12.19, so on X the half millimetre comes off engagement rather than off that margin."
 
 [[joint]]
 id = "post-tenon-screw"

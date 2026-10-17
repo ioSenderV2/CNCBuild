@@ -1819,10 +1819,10 @@ def main() -> int:
         nut_mid = (y_lo + y_hi) / 2
         cols = [(root + out * v["ROOT_BOLT_X_DOUBLER"], j) for j in range(4)]
         pts = [(bx, xep_back + v["ROOT_BOLT_Y_FIRST"] + j * v["ROOT_BOLT_Y_PITCH"],
-                D_M5_END(None)) for bx, j in cols]
+                D_M5_END("sole-to-doubler")) for bx, j in cols]
         for bx in (v["NUT_BOLT_X_NEAR"], v["NUT_BOLT_X_FAR"]):
             for dy in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-                pts.append((root + out * bx, nut_mid + dy, D_M5_NUT("y-nut-to-sole")))
+                pts.append((root + out * bx, nut_mid + dy, D_M5_NUT("sole-to-nut")))
         for bx, by, det in pts:
             cyl("Y sole plate bolt head", "bolts", 0x3C4248, bx, by,
                 face_z - v["T_SOLE_BRACKET"],
@@ -2142,7 +2142,7 @@ def main() -> int:
     x_nut_mid = (x_lo + x_hi) / 2
     for ry in (v["X_NUT_BOLT_NEAR"], v["X_NUT_BOLT_FAR"]):
         for dx in (-v["NUT_PATTERN_Y"] / 2, +v["NUT_PATTERN_Y"] / 2):
-            sole_bolts.append((x_nut_mid + dx, cp_back - ry, D_M5_NUT("y-nut-to-sole")))
+            sole_bolts.append((x_nut_mid + dx, cp_back - ry, D_M5_NUT("sole-to-nut")))
     for bx, by, det in sole_bolts:
         cyl("X sole bolt head", "bolts", BOLT, bx, by,
             sole_top, sole_top + v["M5_HEAD_H"], v["M5_HEAD_D"] / 2, seg=12,
