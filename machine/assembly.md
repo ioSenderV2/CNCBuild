@@ -1103,15 +1103,17 @@ with the leg in the wall's place.
 🔴 **One rule at both ends of the base: the outermost lamination of every leg stays its full 86, and
 whatever runs along that face stops one strip short and is covered by it** — the cross rail at the
 front, the shear wall at the back. **No end grain shows anywhere on the base's outer faces.** It is
-why four different parts come out at **1223**: both cross rail outer laminations, the fore-aft rails,
-the back wall and the central wall, by four different routes.
+why three different parts come out at **1223**: both cross rail outer laminations, the fore-aft rails
+and the central wall, by three different routes. **The back wall is 1220** — it is cut to the full
+width of its own sheet, so it stops 19.5 short of each outer face rather than 18 and leaves 1.5 of
+air at each end, behind the lamination that covers it.
 
 #### How the three shear-wall joints actually go
 
 | | |
 |---|---|
 | **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
-| **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops one lamination short at each end** so its end grain butts the back of that lamination. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box** |
+| **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops 19.5 short at each end** — it is cut to its sheet at **1220**, so it finishes just behind that lamination with 1.5 of air. The ends carry nothing: the wall is screwed through its **face** in the rebate, and the 1.5 shows as a shadow line at the two rear corners, not from the front. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box** |
 | **Central wall at the front** | **It stops 18 short**, at the front cross rails' **outer** lamination, which covers its end grain — the same move the back wall already makes at the other end. So each front corner takes a notch **18 across by 100**, one per grid, clearing only the rail's **inner** lamination. The **lower** notch's shoulder sits on its rail, the **564 lip** between the two notches finishes against the outer lamination, and **two long screws through each rail go into the wall's end** |
 
 **All five legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
@@ -1168,8 +1170,8 @@ height, which is the check that the two notches are in the right places.
 
 **No end grain shows on the central wall at either end**, and that is one rule applied twice: the
 back wall covers it at the rear, the front cross rails' outer lamination covers it at the front, and
-it is 18 short at each. **It comes out 1223 — the same length as the back wall and as a fore-aft
-rail**, by three different routes.
+it is 18 short at each. **It comes out 1223 — the same length as a fore-aft rail**, by two different
+routes. The back wall is **1220**, cut to its own sheet, and this wall was already cut at 1223.
 
 **It is also 6 shorter than the back wall, and that is a sheet decision rather than a structural
 one**: at **758** both of its laminations come off **one 5 × 5**, where at the back wall's 764 they
