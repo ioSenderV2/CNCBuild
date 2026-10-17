@@ -536,6 +536,196 @@ def leg_elevation_svg(v, s=0.165):
             f'style="max-width:100%">{"".join(body)}</svg>')
 
 
+def leg_faces(v, kind):
+    """The two outer laminations of one leg, as finished shapes.
+
+    Each is returned as (which, top, cuts) where a cut is (points, label) and
+    the points outline material TAKEN OFF the face, in the leg's own frame: x
+    is fore-and-aft with the machine's FRONT at 0 and the back at POST_W_Y, y
+    is height off the floor. The piece is what is left of POST_W_Y x top once
+    they come out.
+
+    ONE OUTLINE PER CONTIGUOUS REMOVAL, which is why these are polygons and
+    not rectangles. On a front leg the ledge sits directly on top of the
+    notch, and drawn as two rectangles they shared an edge and printed a
+    double dashed line across the shoulder - where the reader is trying to
+    see one step.
+
+    EVERY FIGURE IS A REGISTRY SYMBOL. The ledge depth, the tab, the rebate
+    and the notch are each stated once in the dimensions and read here - this
+    function decides nothing, it only says which of them lands on which strip.
+    """
+    pwy, strip, ledge = v["POST_W_Y"], v["LEG_STRIP"], v["T_BOX_LEDGE"]
+    bw, tenon = v["T_BACK_WALL"], v["POST_TENON_L"]
+    box, rear = v["LEG_L_BOX"], v["LEG_L_REAR"]
+    rail_under = rear - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"]
+
+    shoulder = box - tenon
+    if kind == "front":
+        # THE SIDE LEDGE SWALLOWS THE OUTER STRIP WHOLE: it is 42 deep across
+        # a leg whose outer lamination is 18, so above the shoulder there is
+        # no outer strip left to draw. Its top face IS the bearing shoulder.
+        #
+        # On the inner strip the notch for the cross rail's outer lamination
+        # runs up from the rail and the front ledge continues off the top of
+        # it, so the two come off as one L down the leg's front face.
+        tab = pwy - v["TENON_CORNER_Y"]
+        return [
+            ("outer", shoulder, []),
+            ("inner", box, [
+                ([(0, rail_under), (bw, rail_under), (bw, shoulder),
+                  (tab, shoulder), (tab, box), (0, box)],
+                 f"ledge {ledge:g} &middot; notch {bw:g}, front face"),
+            ]),
+        ]
+    if kind == "rear-corner":
+        return [
+            ("outer", rear, []),
+            ("inner", rear, [
+                ([(pwy - bw, 0), (pwy, 0), (pwy, rear), (pwy - bw, rear)],
+                 f"rebate {bw:g}, back face, full height"),
+            ]),
+        ]
+    # the back centre leg: ledged on its back face only, so BOTH strips stand
+    # proud and the full-height slot makes the tenon a pair of tabs. The
+    # ledge is deeper than the rebate and sits on top of it - one L again.
+    return [
+        (which, box, [
+            ([(pwy - bw, 0), (pwy, 0), (pwy, box), (pwy - ledge, box),
+              (pwy - ledge, shoulder), (pwy - bw, shoulder)],
+             f"ledge {ledge:g} &middot; rebate {bw:g}, back face"),
+        ]) for which in ("outer", "inner")
+    ]
+
+
+def shoulder_of(v, kind):
+    """Where the tenon starts on this kind of leg - its top if it has none."""
+    if kind == "rear-corner":
+        return v["LEG_L_REAR"]
+    return v["LEG_L_BOX"] - v["POST_TENON_L"]
+
+
+def inside(px, pz, pts):
+    """Is this point inside the polygon - the usual ray cast."""
+    hit = False
+    for (ax, az), (bx, bz) in zip(pts, pts[1:] + pts[:1]):
+        if (az > pz) != (bz > pz) and \
+                px < ax + (pz - az) / (bz - az) * (bx - ax):
+            hit = not hit
+    return hit
+
+
+def leg_faces_svg(v, s=0.165):
+    """The same elevation, each leg turned a quarter turn about its own axis.
+
+    WHY IT EXISTS: the slot elevation looks at the leg's 72 face, so both
+    outer laminations are seen EDGE ON and every cut into a face - the tenon
+    tab, the cross rail's notch, the back wall's rebate - is invisible. Turned
+    90 degrees each lamination shows its POST_W_Y face, which is the face all
+    of those are cut into.
+
+    WHY THE TWO ARE DRAWN SIDE BY SIDE rather than one behind the other: at a
+    quarter turn the inner strip stands directly behind the outer one and
+    hides it, and the two are not the same shape in any of the three kinds of
+    leg. His, and it is the whole reason for the drawing.
+
+    Same scale and the same height stations as the slot elevation, so the two
+    read against each other.
+    """
+    pwy = v["POST_W_Y"]
+    kinds = leg_kinds(v)
+    names = ["Front left", "Front right", "Rear left", "Rear right",
+             "Back centre"]
+    legs = list(zip(names, [k for kind, _, n, *_ in kinds
+                            for k in [kind] * n]))
+
+    tall = max(v["LEG_L_BOX"], v["LEG_L_REAR"])
+    face_pitch = pwy * s + 10               # the two faces of one leg
+    leg_pitch = 2 * face_pitch + 16         # and the gap to the next leg
+    pad_l, pad_r, pad_t, pad_b = 15.0, 48.0, 13.0, 21.0
+    w = pad_l + leg_pitch * len(legs) + pad_r
+    h = pad_t + tall * s + pad_b
+    body = []
+
+    def y_of(z):
+        return pad_t + (tall - z) * s
+
+    stations = [(0, "floor"), (v["FOOT_SPACER_H"], "lower grid under"),
+                (v["FOOT_SPACER_H"] + v["GRID_MEMBER_H"], "lower grid top"),
+                (v["LEG_L_REAR"] - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"],
+                 "upper grid under"),
+                (v["LEG_L_REAR"] - v["BASE_BOX_GAP"], "upper grid top"),
+                (v["LEG_L_REAR"], "box underside"),
+                (v["LEG_L_BOX"], "leg top")]
+    # the same push-apart the slot elevation uses, for the two stations that
+    # are BASE_BOX_GAP apart and would otherwise print on each other
+    label_y, floor_y = {}, None
+    for z, _ in sorted(stations, key=lambda p: -p[0]):
+        y = y_of(z)
+        if floor_y is not None and y < floor_y + 5.2:
+            y = floor_y + 5.2
+        label_y[z] = floor_y = y
+    for z, what in stations:
+        y = y_of(z)
+        body.append(f'<line x1="{pad_l:.1f}" y1="{y:.1f}" '
+                    f'x2="{w - pad_r + 6:.1f}" y2="{y:.1f}" stroke="#ccc" '
+                    f'stroke-width="0.4" stroke-dasharray="2 2"/>')
+        body.append(f'<text x="{pad_l - 1.5:.1f}" y="{label_y[z] + 1.7:.1f}" '
+                    f'text-anchor="end" font-size="4.6" fill="#555">'
+                    f'{z:g}</text>')
+        body.append(f'<text x="{w - pad_r + 8:.1f}" y="{label_y[z] + 1.4:.1f}" '
+                    f'font-size="3.8" fill="#888">{what}</text>')
+
+    colour = dict((k, c) for k, _, _, _, c, *_ in kinds)
+    for i, (name, kind) in enumerate(legs):
+        for j, (which, top, cuts) in enumerate(leg_faces(v, kind)):
+            x0 = pad_l + i * leg_pitch + j * face_pitch
+            body.append(
+                f'<rect x="{x0:.2f}" y="{y_of(top):.2f}" '
+                f'width="{pwy * s:.2f}" height="{top * s:.2f}" '
+                f'fill="{colour[kind]}" stroke="#333" stroke-width="0.5"/>')
+            for pts, _label in cuts:
+                d = " ".join(f'{x0 + px * s:.2f},{y_of(pz):.2f}'
+                             for px, pz in pts)
+                body.append(
+                    f'<polygon points="{d}" fill="#fff" stroke="#a00" '
+                    f'stroke-width="0.5" stroke-dasharray="2.5 1.5"/>')
+            # NAME THE TAB, which is the thing the ledge leaves standing and
+            # the reason a leg the box lands on is drawn at all. Anything
+            # still solid above the shoulder is tab.
+            if top > shoulder_of(v, kind):
+                sh = shoulder_of(v, kind)
+                solid = [x for x in range(0, int(pwy))
+                         if not any(inside(x + 0.5, (sh + top) / 2, pts)
+                                    for pts, _ in cuts)]
+                if solid:
+                    body.append(
+                        f'<text x="{x0 + (solid[0] + solid[-1]) / 2 * s:.2f}" '
+                        f'y="{y_of((sh + top) / 2) + 1.4:.2f}" '
+                        f'text-anchor="middle" font-size="3.4" '
+                        f'fill="#333">tab</text>')
+            body.append(f'<text x="{x0 + pwy * s / 2:.1f}" '
+                        f'y="{h - 13.5:.1f}" text-anchor="middle" '
+                        f'font-size="4.0" fill="#444">{which}</text>')
+        xc = pad_l + i * leg_pitch + face_pitch
+        body.append(f'<text x="{xc:.1f}" y="{h - 7.6:.1f}" '
+                    f'text-anchor="middle" font-size="4.6">{name}</text>')
+        notes = [lab for _w, _t, cuts in leg_faces(v, kind)
+                 for _pts, lab in cuts]
+        body.append(f'<text x="{xc:.1f}" y="{h - 2.6:.1f}" '
+                    f'text-anchor="middle" font-size="3.4" fill="#666">'
+                    f'{" &middot; ".join(dict.fromkeys(notes)) or "no cuts"}'
+                    f'</text>')
+    # FRONT OF THE MACHINE TO THE LEFT on every face, so the notch and the
+    # rebate land on opposite sides of the drawing and cannot be confused.
+    body.append(f'<text x="{pad_l:.1f}" y="{pad_t - 4.5:.1f}" '
+                f'font-size="3.8" fill="#888">front of the machine to the '
+                f'LEFT, back to the right &mdash; each face {pwy:g} wide'
+                f'</text>')
+    return (f'<svg viewBox="0 0 {w:.1f} {h:.1f}" width="100%" '
+            f'style="max-width:100%">{"".join(body)}</svg>')
+
+
 def leg_section_svg(v, kind, s=0.62):
     """One leg's cross-section: four strips of 18, the middle two left out.
 
@@ -677,6 +867,12 @@ are the base's own elevation</b>, and every leg is set out from them. A band wit
 a <b>dashed red outline is a spacer that comes out</b>; a solid one is glued in
 for good; grey is slot that stays empty.</p>
 {leg_elevation_svg(v)}
+<p>The same legs <b>turned a quarter turn</b>, so each outer lamination shows
+the {v['POST_W_Y']:g} face instead of its edge &mdash; which is the face the
+tenon, the notch and the rebate are all cut into. <b>The two are drawn side by
+side because at a quarter turn one stands behind the other</b>, and they are
+not the same shape. A <b>dashed red outline is material taken off</b>.</p>
+{leg_faces_svg(v)}
 <table><tr><th></th><th>What is in the slot</th><th>Tall</th><th>Deep</th>
 <th>In which legs</th><th>Fate</th><th></th></tr>{''.join(key)}</table>
 <p><b>The stack sums to the leg, and that is the check</b>:
