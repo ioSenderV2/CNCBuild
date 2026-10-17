@@ -86,19 +86,23 @@ def parts(v):
          "these stay whole"),
         ("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"], 1, "1",
          f"ONE sheet {t:g} thick - it replaces the back cross rails at both "
-         "grids, so it must not be cut into strips"),
+         "grids, so it must not be cut into strips. It takes the sheet's whole "
+         "WIDTH, so the two cuts that trim the long edges are its two ends"),
         ("Rail, front cross - outer", v["RAIL_CROSS_OUTER_L"], gm_h, 2, "1",
          "one per grid, FULL WIDTH - this is the half housed in the legs"),
         ("Rail, front cross - inner", v["RAIL_CROSS_INNER_L"], gm_h, 2, "1",
          "one per grid - it spans between the front legs and is housed in "
-         "nothing"),
-        ("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8, "2",
+         "nothing. The two of them lie ACROSS the sheet past the wall, which "
+         "is what keeps the rip bank down to ten"),
+        ("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8, "1",
          f"2 laminations each, 4 rails - it fills the legs' {gm_t:g} slot"),
-        ("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2, "3",
+        ("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
+         "cut",
          f"2 laminations - it fills the rear middle leg's slot, so it is "
          f"{gm_t:g}. Notched at BOTH front corners, {gm_t / 2:g} across by "
          f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
-         f"the back wall so both come off ONE 5 x 5"),
+         f"the back wall so both come off ONE 5 x 5, which is CUT - that sheet "
+         "is spent too"),
         ("Leg foot spacer", v["FOOT_SPACER_H"], v["POST_W_Y"], 10, "offcut",
          "2 laminations each, all FIVE legs - glued to the inside of the outer "
          "lamination, closing the slot from the floor up to the lower rail. "
@@ -125,16 +129,17 @@ def parts(v):
     ]
 
 
-# Which sheet is which, and his reason for each. Sheets 1 and 2 are deliberately
-# loaded on the LEFT ONLY so the right of each stays one whole offcut rather
-# than a fringe of strips - that is worth more than a tighter nest.
+# Which sheet is which, and his reason for each. Sheet 1 is the ONLY ONE LEFT TO
+# CUT: the leg strips and both central wall laminations are already off their
+# sheets. It is loaded from the LEFT so what is left stays one whole offcut
+# rather than a fringe of strips - that is worth more than a tighter nest.
 SHEET_PLAN = [
     ("0", "4 x 8", "20 leg strips - ALREADY CUT. Only 10 are laminated into "
                    "legs, and everything that fills a slot comes out of the "
                    "other 10 and the offcut past each leg length"),
-    ("1", "4 x 8", "the back wall and both front cross rails"),
-    ("2", "4 x 8", "the eight fore-aft rail laminations"),
-    ("3", "5 x 5", "both central wall laminations"),
+    ("1", "4 x 8", "the back wall and all twelve rail laminations - the only "
+                   "sheet left to cut"),
+    ("2", "5 x 5", "both central wall laminations - ALREADY CUT"),
 ]
 
 
@@ -164,12 +169,28 @@ def layout(v, num, sw, sl):
         for i in range(STRIPS_CUT):
             out.append((0, i * (90 + k), 0.0, 90.0, usable_w, "Leg strip"))
     elif num == "1":
-        row("Shear wall, back", v["BACK_WALL_L"], v["WALL_H"])
+        # THE RIP BANK FIRST, at the left end: ten pieces at the long rail
+        # length, 100 wide, all grain along the sheet. That is 1014.4 of the
+        # 1216 usable width, so the bank clears it with 200 to spare.
         row("Rail, front cross - outer", v["RAIL_CROSS_OUTER_L"], gm_h, 2)
-        row("Rail, front cross - inner", v["RAIL_CROSS_INNER_L"], gm_h, 2)
-    elif num == "2":
         row("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8)
-    elif num == "3":
+        # THEN THE WALL, TURNED: its length is the sheet's WIDTH, so it is
+        # placed 1216 across by WALL_H along. This is the one orientation that
+        # works - past the 1223 bank only about 1212 of length is left, and the
+        # wall is longer than that.
+        x_wall = v["RAIL_FORE_AFT_L"] + k
+        out.append((0, x_wall, 0.0, v["WALL_H"], v["BACK_WALL_L"],
+                    "Shear wall, back"))
+        # AND THE TWO SHORT INNER RAILS CROSSWISE in what is left past the
+        # wall, 100 along the sheet by their own length across it. Twelve
+        # 100 rips in one bank would want 1217.6 of a 1216 usable width and
+        # miss, so these two come off the end instead - they are the pair
+        # that is housed in nothing and spans only between the front legs.
+        x_inner = x_wall + v["WALL_H"] + k
+        for i in range(2):
+            out.append((0, x_inner + i * (gm_h + k), 0.0, gm_h,
+                        v["RAIL_CROSS_INNER_L"], "Rail, front cross - inner"))
+    elif num == "2":
         row("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2)
 
     # CHECKED, because a stated nest has no packer to prove it fits. Bounds
@@ -1070,6 +1091,7 @@ def render(rows, summary, v, nests):
         f"<td class=n>{f'{left:.0f}' if bad is None else '&mdash;'}</td>"
         f"<td class=s>{'' if bad is None else f'<b class=bad>{bad}</b>'}</td></tr>"
         for num, size, why, left, bad in summary)
+    sheet_w = SHEETS[0][1] - 2 * boxdoc.EDGE_TRIM      # a 4 x 8's usable width
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <title>CNCBuild &mdash; Base Construction</title>
@@ -1112,25 +1134,43 @@ here as the {v['T_BB_SKIN_BOT']:g} pieces that actually get cut. The
 {v['GRID_MEMBER_T']:g} is not a choice &mdash; it is what fills a leg's slot,
 which is the middle two laminations of a four-strip leg.</p>
 
-<h2>2 &mdash; Three sheets</h2>
-<p><b>Each piece is assigned to a named sheet, and each sheet is packed on its
-own.</b> Sheets 1 and 2 are loaded from the <b>left only</b>, so what is left of
-each stays <b>one whole offcut</b> rather than a fringe of strips &mdash; worth
-more than a tighter nest.</p>
+<h2>2 &mdash; The sheets</h2>
+<p>🔴 <b>Sheet 1 is the only one left to cut</b> &mdash; the leg strips and both
+central wall laminations are already off their sheets. It carries the back wall
+and <b>all twelve rail laminations</b>. It is loaded from the <b>left only</b>,
+so what is left stays <b>one whole offcut</b> rather than a fringe of strips
+&mdash; worth more than a tighter nest.</p>
+<p><b>The order on sheet 1 is: rip bank, wall, then the two short rails.</b> Ten
+pieces at <b>{v['RAIL_FORE_AFT_L']:g} &times; {v['GRID_MEMBER_H']:g}</b> come off
+the left end as one bank of rips &mdash; the eight fore-aft laminations and both
+front cross rail outers, all the same length, all grain along the sheet. That
+bank is <b>1014.4</b> of the <b>{sheet_w:g}</b> usable width, so it clears with
+<b>200</b> to spare. <b>Twelve rips in that bank would not</b>: twelve
+{v['GRID_MEMBER_H']:g} strips and eleven {boxdoc.KERF:g} kerfs want
+<b>1217.6</b>, which misses by 1.6 and leaves nothing for either trim cut. So
+the two <b>{v['RAIL_CROSS_INNER_L']:g}</b> inner rails come off the far end
+instead, lying <b>across</b> the sheet &mdash; they are the pair housed in
+nothing, spanning only between the front legs.</p>
+<p><b>The wall is turned.</b> Its {v['BACK_WALL_L']:g} is the sheet's own width,
+so it lies across and its {v['WALL_H']:g} runs along &mdash; the two cuts that
+trim the sheet's long edges <b>are its two ends</b>, and the panel takes no rip
+at all. That is the only orientation that fits: past the
+{v['RAIL_FORE_AFT_L']:g} bank there is about <b>1212</b> of length left, and the
+wall is longer than that.</p>
 <table><tr><th>Sheet</th><th>Size</th><th>Carrying</th>
 <th>Length left whole</th><th></th></tr>{sh}</table>
-<p>🔴 <b>The two central laminations come off ONE 5 &times; 5, and that is what
+<p><b>The two central laminations come off ONE 5 &times; 5, and that is what
 cutting them {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than the back wall
 buys.</b> A 5 &times; 5 trims to <b>1520.8</b>, and with the
 <b>{boxdoc.KERF:g}</b> kerf between the two pieces each may be at most
 <b>759.6</b> tall. At the back wall's {v['WALL_H']:g} they would take two sheets;
-at {v['CENTRE_WALL_H']:g} they take one. <b>Four off would have missed it by
-0.4</b> &mdash; the kerf is the whole margin there.</p>
-<p><b>Anything else that turns out to be wanted comes out of sheet 3's waste</b>
-&mdash; his call. Worth knowing when reaching for it: sheet 3 leaves
-<b>298 &times; 1521</b>, where <b>sheet 2 leaves 1212 &times; 1216</b> and sheet 1
-<b>1176 &times; 1216</b>, so sheet 3's is the one to spend and the other two are
-the ones to keep whole.</p>
+at {v['CENTRE_WALL_H']:g} they take one. <b>Four off would miss it by 0.4</b>
+&mdash; the kerf is the whole margin there.</p>
+<p><b>Anything else that turns out to be wanted comes out of sheet 2's waste</b>
+&mdash; his call. Worth knowing when reaching for it: sheet 2 leaves
+<b>298 &times; 1521</b>, where <b>sheet 1 leaves 243 &times; {sheet_w:g}</b> at its
+right end plus a <b>200 &times; {v['RAIL_FORE_AFT_L']:g}</b> band alongside the rip
+bank. Sheet 2's is the one to spend.</p>
 <p><b>Sheet 0 is the one already cut</b>, drawn so the record is complete:
 {STRIPS_CUT} strips of 90 taken across its width, leaving <b>605</b> of length.
 <b>The slot stock is not that remainder</b> &mdash; it is the
@@ -1145,7 +1185,7 @@ above all of it.</p>
 offcut is whatever stays white. <b>Every sheet is loaded from the left</b>, so
 the white is one piece. <b>Notches are drawn as dotted rectangles</b> &mdash;
 they are the one thing on a cut list easy to miss until the piece is already cut,
-and here they sit at the far END of the longest piece on sheet 3.</p>
+and here they sit at the far END of the longest piece on sheet 2.</p>
 <p>These placements are <b>stated, not packed</b>, and they are <b>checked</b>:
 every piece is tested against the sheet's usable size and against every other
 piece, so a nest that does not fit fails the build rather than printing.</p>
