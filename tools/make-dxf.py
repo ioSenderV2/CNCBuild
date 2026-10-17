@@ -132,7 +132,7 @@ def holes_for(src, sheet, ti=None):
     each come back carrying the other's holes and the shelf bar's as well - the
     same index build-hole-tally.py keys its PARTS map on.
     """
-    out, cutouts, edge = [], [], {}
+    out, cutouts, edge, merges = [], [], {}, []
     for name, blk in re.findall(PLATE_RE, src, re.S):
         if name != sheet:
             continue
@@ -167,13 +167,54 @@ def holes_for(src, sheet, ti=None):
                 if not re.match(r'^\d+(\.\d+)?$', dia):
                     # a cut-out: the X cell holds pairs, the Y cell one pair.
                     # NOT `i` - that is the table index the ti filter reads.
+                    #
+                    # A ROW MARKED 'merge' IS NOT ITS OWN OPENING. The rear
+                    # plate's probe notch is scheduled separately because it
+                    # has its own dimensions, but it is cut as one path with
+                    # the window above it - drawn as two rectangles the shop
+                    # would get a line straight across the notch's mouth.
+                    tgt = merges if 'class="merge"' in tag else cutouts
                     for k in range(0, len(xs), 2):
-                        cutouts.append((xs[k], xs[k + 1], ys[0], ys[1]))
+                        tgt.append((xs[k], xs[k + 1], ys[0], ys[1]))
                     continue
                 for x in xs:
                     for y in ys:
                         out.append((x, y, float(dia)))
-    return out, cutouts, edge
+    return out, cutouts, edge, merges
+
+
+def notched_window(w, n, r, layer='HOLES'):
+    """One closed path: a rectangular opening with a notch off its bottom edge.
+
+    w and n are (x0, x1, ylo, yhi). The notch's top IS the window's bottom, so
+    the shared edge is not drawn - that line would be cut straight across the
+    notch's mouth. Four arcs, radius r:
+
+      - at the notch's MOUTH the metal forms a protruding corner, so the arc
+        breaks that corner off and its centre sits in the metal;
+      - at the notch's BOTTOM the metal wraps around the end of the notch, so
+        the arc is a fillet into the metal and its centre sits in the void.
+        That pair is the one that matters - this plate is a shear panel.
+    """
+    x0, x1, y0, y1 = w[0], w[1], w[2], w[3]
+    a, b, ny0 = n[0], n[1], n[2]
+    ents = []
+    for p, q in (((x0, y1), (x1, y1)),            # top
+                 ((x1, y1), (x1, y0)),            # far side
+                 ((x1, y0), (b + r, y0)),         # bottom, past the notch
+                 ((b, y0 - r), (b, ny0 + r)),     # notch, far side
+                 ((b - r, ny0), (a + r, ny0)),    # notch bottom
+                 ((a, ny0 + r), (a, y0 - r)),     # notch, near side
+                 ((a - r, y0), (x0, y0)),         # bottom, near the notch
+                 ((x0, y0), (x0, y1))):           # near side
+        ents += line(p, q, layer)
+    # mouth corners: centre in the metal, the quarter nearest the corner
+    ents += arc(b + r, y0 - r, r, 90, 180, layer)
+    ents += arc(a - r, y0 - r, r, 0, 90, layer)
+    # notch bottom: centre in the void, the quarter nearest the corner
+    ents += arc(b - r, ny0 + r, r, 270, 360, layer)
+    ents += arc(a + r, ny0 + r, r, 180, 270, layer)
+    return ents
 
 
 # ---- DXF R12 -------------------------------------------------------------
@@ -223,8 +264,8 @@ def both_units(mm):
     return f'{mm:g} mm ({mm / MM_IN:.3f} in)'
 
 
-def build(name, title, sheet, L, W, T, material, qty, src):
-    ents, holes, cutouts, _edge = [], *holes_for(src, sheet)
+def build(name, title, sheet, L, W, T, material, qty, src, reg):
+    ents, holes, cutouts, _edge, merges = [], *holes_for(src, sheet)
     fins = sheet == 's1a'
 
     if fins:
@@ -242,8 +283,23 @@ def build(name, title, sheet, L, W, T, material, qty, src):
         ents += poly([(0, 0), (L, 0), (L, W), (0, W)], 'OUTLINE')
         for x, y, d in holes:
             ents += circle(x, y, d, 'HOLES')
-        for x0, x1, y0, y1 in cutouts:
-            ents += poly([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], 'HOLES')
+        for cut in cutouts:
+            x0, x1, y0, y1 = cut
+            # a notch scheduled on its own row still belongs to this opening if
+            # it hangs off the bottom edge, inside the span - the rear plate's
+            # probe notch is the one, and PROBE_NOTCH_R rounds the four corners
+            notch = next((m for m in merges
+                          if abs(m[3] - y0) < 1e-6 and x0 <= m[0] and m[1] <= x1),
+                         None)
+            if notch:
+                ents += notched_window(cut, notch, reg.value('PROBE_NOTCH_R'))
+            else:
+                ents += poly([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], 'HOLES')
+        if len(merges) != sum(
+                1 for c in cutouts
+                if any(abs(m[3] - c[2]) < 1e-6 and c[0] <= m[0] and m[1] <= c[1]
+                       for m in merges)):
+            raise SystemExit(f'{name}: a merge row found no window to join')
         used = L
 
     n = len(holes) * (2 if fins else 1)
@@ -309,7 +365,7 @@ def build_sole(src, reg):
     ents, ox, tall, per_sheet, sizes, n = [], 0.0, 0.0, {}, {}, 0
     for sheet, title, l_sym, d_sym, copies in SOLE_PARTS:
         L, D = reg.value(l_sym), reg.value(d_sym)
-        holes, cutouts, _edge = holes_for(src, sheet)
+        holes, cutouts, _edge, _m = holes_for(src, sheet)
         if cutouts:
             raise SystemExit(f'{sheet}: a cut-out on a sole plate is not drawn')
         for _ in range(copies):
@@ -368,7 +424,7 @@ def build_xep(name, title, ti, l_sym, src, reg):
     ents += poly([(0, dy), (dl, dy), (dl, dy + dh), (0, dy + dh)], 'OUTLINE')
 
     sizes, n = {}, 0
-    holes, cutouts, edge = holes_for(src, 's2', ti)
+    holes, cutouts, edge, _m = holes_for(src, 's2', ti)
     if cutouts:
         raise SystemExit(f'{name}: a cut-out on an end plate is not drawn')
     for x, y, d in holes:
@@ -379,7 +435,7 @@ def build_xep(name, title, ti, l_sym, src, reg):
 
     # THE DOUBLER IS TURNED. Its schedule reads X up its 45 and Y along its 154;
     # laid in the strip, that 154 runs along the sheet's X, so the two swap.
-    dh_holes, dcut, dedge = holes_for(src, 's2', XEP_DOUBLER_TI)
+    dh_holes, dcut, dedge, _m = holes_for(src, 's2', XEP_DOUBLER_TI)
     if dcut:
         raise SystemExit(f'{name}: a cut-out on the doubler is not drawn')
     doub_sizes, dn = {}, 0
@@ -480,7 +536,7 @@ def main():
         if kind in ('stock', 'fins'):
             title, sheet, L, W, T, mat, qty = payload
             n, nc, used, sizes = build(name, title, sheet, L, W, T, mat, qty,
-                                       src)
+                                       src, reg)
             per_part = {d: c // (2 if kind == 'fins' else 1)
                         for d, c in sizes.items()}
             if per_part != expect.get((sheet, 0)):

@@ -141,9 +141,10 @@ through onto a bearing block seat.
 <b>THE Y DRIVE IS AT THE REAR, and every sheet now shows it.</b>
 <br><br>
 The casting, interposer and motor are at the <b>back</b> of the machine; BF12 face-mounts into the
-<b>front fins</b>. So the <b>60.5 &times; 50 window is in the rear plate</b> &mdash; Sheet 7, W1 and
-W2 &mdash; and BF12's four tapped M5 per beam are on the <b>fins</b>, Sheets 1a and 1b, F1&ndash;F4
-each. The fins are solid otherwise.
+<b>front fins</b>. So the <b>window is in the rear plate</b> &mdash; Sheet 7, W1 and
+W2, a <b>{{WINDOW_W}} &times; {{WINDOW_H}}</b> opening with a {{PROBE_NOTCH_W}} notch carrying on
+below it, {{WINDOW_CLEAR_TOTAL}} in all &mdash; and BF12's four tapped M5 per beam are on the
+<b>fins</b>, Sheets 1a and 1b, F1&ndash;F4 each. The fins are solid otherwise.
 <br><br>
 <b>Both ends are not alike on Sheet 7.</b> W1 runs out to the plate's left edge, because the
 casting's outboard face and that edge are the same face &mdash; the Y1 extrusion's outboard face,
@@ -2057,7 +2058,10 @@ other plate on this machine is dimensioned from.<sup class="f">7.6</sup><br>
 top skin because that is where the fin carries it, so A1&ndash;A16 read the same
 <b>197 / 227 / 257 / 287</b> that Sheets 1a and 1b carry for the fin.<sup class="f">7.6</sup><br>
 <b>W1 and W2 are beam-referenced, like everything else on this sheet.</b> Their top edge is the
-beam's underside, 182 above the box's top skin, and they run 50 down to 132. <b>Nothing about the
+beam's underside, {{Y_BEAM_UNDERSIDE}} above the box's top skin. The full-width opening runs
+{{WINDOW_H}} down to {{WINDOW_BOTTOM_Y}}, and a <b>{{PROBE_NOTCH_W}} wide notch centred on it</b>
+carries on another {{PROBE_NOTCH_H}} to {{PROBE_NOTCH_BOTTOM_Y}} &mdash; <b>{{WINDOW_CLEAR_TOTAL}} of
+clearance in all</b>.<sup class="f">7.10</sup> <b>Nothing about the
 delivered plate can move them.</b> BF12 is not on this plate &mdash; it face-mounts into the front
 fins, Sheets 1a and 1b.<sup class="f">7.4</sup><sup class="f">7.7</sup><br>
 <b>X 0 is the plate's LEFT EDGE, set flush with the Y1 extrusion's OUTBOARD FACE</b> &mdash;
@@ -2092,14 +2096,17 @@ way.<sup class="f">7.1</sup>
   <rect x="411.98" y="0" width="21.6" height="43.07" fill="#fff" stroke="#c0c" stroke-width="1.2"/>
 
   <!-- THE TWO WINDOWS: clearance for the cast stepper frame and the
-       interposer, which pass through this plate. 60.5 x 50, top edge
-       on the beam underside at 182. Y1 END RUNS TO THE PLATE EDGE -
+       interposer, which pass through this plate - and the route they go IN
+       by, from behind, BK12 end first. A T: the opening is WINDOW_W x
+       WINDOW_H with its top edge on the beam underside, and PROBE_NOTCH_W
+       carries on PROBE_NOTCH_H below it. Y1 END RUNS TO THE PLATE EDGE -
        the casting's outboard face and the plate's left edge are the same
        face, so the slip falls inboard. -->
-  <rect x="0.00" y="43.06" width="21.78" height="18.00" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
-  <rect x="411.80" y="43.06" width="21.78" height="18.00" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
-  <text class="ref" x="2" y="70.1" fill="#b06000">W1</text>
-  <text class="ref" x="413.8" y="70.1" fill="#b06000">W2</text>
+  <path d="M 0.00,43.06 L 21.78,43.06 L 21.78,62.86 L 15.39,62.86 L 15.39,73.66 L 6.39,73.66 L 6.39,62.86 L 0.00,62.86 Z" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <path d="M 411.80,43.06 L 433.58,43.06 L 433.58,62.86 L 427.19,62.86 L 427.19,73.66 L 418.19,73.66 L 418.19,62.86 L 411.80,62.86 Z" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <text class="ref" x="2" y="78.5" fill="#b06000">W1</text>
+  <text class="ref" x="413.8" y="78.5" fill="#b06000">W2</text>
+  <text class="ref" x="418.5" y="86.5" fill="#b06000">W2n</text>
   <text class="lbl" x="2" y="53" fill="#c0c">Y1 BEAM</text>
   <text class="lbl" x="400" y="53" fill="#c0c">Y2 BEAM</text>
 
@@ -2123,11 +2130,12 @@ way.<sup class="f">7.1</sup>
   <text class="q" x="448" y="80" fill="#c0c">X 1204.38, by the beams not this plate.</text>
   <text class="q" x="448" y="98" fill="#b06000">W1, W2 clear the casting and the interposer,</text>
   <text class="q" x="448" y="110" fill="#b06000">which pass THROUGH this plate. Top edge on</text>
-  <text class="q" x="448" y="122" fill="#b06000">the beam underside at 182, 50 down to 132.</text>
-  <text class="q" x="448" y="140" fill="#b06000">W1 RUNS OUT TO THE LEFT EDGE: the casting's</text>
-  <text class="q" x="448" y="152" fill="#b06000">outboard face and that edge are the same face.</text>
-  <text class="q" x="448" y="164" fill="#b06000">W2 is closed, with about 6 of plate past it.</text>
-  <text class="q" x="448" y="176" fill="#b06000">BF12 is on the FINS now - Sheets 1a, 1b.</text>
+  <text class="q" x="448" y="122" fill="#b06000">the beam underside at {{Y_BEAM_UNDERSIDE}}, {{WINDOW_H}} down to {{WINDOW_BOTTOM_Y}},</text>
+  <text class="q" x="448" y="134" fill="#b06000">then a {{PROBE_NOTCH_W}} notch on to {{PROBE_NOTCH_BOTTOM_Y}} &#8212; {{WINDOW_CLEAR_TOTAL}} in all.</text>
+  <text class="q" x="448" y="152" fill="#b06000">W1 RUNS OUT TO THE LEFT EDGE: the casting's</text>
+  <text class="q" x="448" y="164" fill="#b06000">outboard face and that edge are the same face.</text>
+  <text class="q" x="448" y="176" fill="#b06000">W2 is closed, with about 6 of plate past it.</text>
+  <text class="q" x="448" y="188" fill="#b06000">BF12 is on the FINS now - Sheets 1a, 1b.</text>
 
   <!-- ================= DETAIL: LEFT STATION, scale 1.2 ================= -->
   <text class="lbl" x="0" y="200">DETAIL &#8212; Y1 STATION, scale 1.2, drawn in the installed orientation. The Y2 station is this MIRRORED about X 602.19: read X&prime; = 1204.38 &minus; X.</text>
@@ -2233,15 +2241,62 @@ every Y2 coordinate is 1204.38&nbsp;&minus;&nbsp;X &mdash; the beam spacing, not
 explicitly rather than making anyone do that subtraction at the mill.</figcaption>
 </figure>
 
+<figure>
+<svg viewBox="-16 0 510 214" width="186mm" xmlns="http://www.w3.org/2000/svg">
+  <text class="ttl" x="0" y="12">DETAIL &#8212; THE WINDOW, scale 1.4, drawn in the installed orientation. <tspan class="q">W2 is this mirrored; read X&prime; = 1204.38 &minus; X.</tspan></text>
+
+  <!-- plate around the opening, and the beam sitting on its top edge -->
+  <rect x="26" y="20.00" width="153" height="26"
+        fill="#f4e9f6" stroke="#c0c" stroke-width="1.0" stroke-dasharray="3 2"/>
+  <text class="lbl" x="183" y="36.00" fill="#c0c">Y BEAM above</text>
+  <rect x="26" y="46.00" width="153" height="153"
+        fill="#e8f0fa" stroke="none"/>
+  <path d="M 60.00,46.00 L 144.70,46.00 L 144.70,123.00 L 128.25,123.00 A 8.40,30.40 0 0 0 119.85,131.40 L 119.85,156.60 A 8.40,30.40 0 0 1 111.45,165.00 L 93.25,165.00 A 8.40,30.40 0 0 1 84.85,156.60 L 84.85,131.40 A 8.40,30.40 0 0 0 76.45,123.00 L 60.00,123.00 Z" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <line x1="26" y1="46.00" x2="179" y2="46.00"
+        stroke="#c0c" stroke-width="1.2"/>
+
+  <text class="ref" x="66" y="64.00" fill="#b06000">W1</text>
+  <text class="ref" x="87" y="159.00" fill="#b06000">W1n</text>
+
+  <!-- dimensions, left and below -->
+  <line x1="46" y1="46.00" x2="46" y2="123.00" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="18" y="84.00">{{WINDOW_H}}</text>
+  <line x1="30" y1="46.00" x2="30" y2="165.00" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="2" y="120.00">{{WINDOW_CLEAR_TOTAL}}</text>
+  <line x1="46" y1="123.00" x2="46" y2="165.00" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="18" y="148.00">{{PROBE_NOTCH_H}}</text>
+  <line x1="60" y1="181.00" x2="145" y2="181.00" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="94" y="191.00">{{WINDOW_W}}</text>
+  <line x1="85" y1="169.00" x2="120" y2="169.00" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="91" y="178.00">{{PROBE_NOTCH_W}}</text>
+
+  <text class="q" x="185" y="60.00">TOP EDGE IS THE BEAM&#8217;S UNDERSIDE, Y {{Y_BEAM_UNDERSIDE}}.</text>
+  <text class="q" x="185" y="72.00">Opening bottom Y {{WINDOW_BOTTOM_Y}} &#183; notch bottom Y {{PROBE_NOTCH_BOTTOM_Y}}.</text>
+  <text class="q" x="185" y="90.00" fill="#c00">R{{PROBE_NOTCH_R}} AT ALL FOUR NOTCH CORNERS.</text>
+  <text class="q" x="185" y="102.00" fill="#c00">The bottom pair is the one that matters: the metal</text>
+  <text class="q" x="185" y="114.00" fill="#c00">wraps the end of the notch there, and this plate is</text>
+  <text class="q" x="185" y="126.00" fill="#c00">the rear shear panel.</text>
+  <text class="q" x="185" y="144.00">The notch is centred on the window, so it sits</text>
+  <text class="q" x="185" y="156.00">17.75 in from each side of it. The Y2 end is W2n.</text>
+  <text class="q" x="185" y="174.00" fill="#b06000">ONE OPENING, cut as one path &#8212; the notch is</text>
+  <text class="q" x="185" y="186.00" fill="#b06000">not a separate cut-out.</text>
+  <text class="q" x="26" y="209.00">W1 RUNS OUT TO THE PLATE&#8217;S LEFT EDGE at X 0 &#8212; its left side is not cut. W2 is closed.</text>
+</svg>
+<figcaption><b>The casting and the interposer are installed through here</b>, from behind the
+machine, <b>BK12 end first</b> &mdash; which is what the {{WINDOW_CLEAR_TOTAL}} is for as much as
+the probe is.<sup class="f">7.10</sup></figcaption>
+</figure>
+
 <h3>Hole schedule &mdash; machining coordinates, Y from the installed bottom edge</h3>
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>X</th><th>Y</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
 <tr><td><b>A1&ndash;A8</b></td><td><b>Y1 beam</b> corner bores &mdash; its lower-left corner is X&nbsp;0, Y&nbsp;182</td><td>8</td><td class="n"><b>15, 45</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
 <tr><td><b>A9&ndash;A16</b></td><td><b>Y2 beam</b> corner bores &mdash; its lower-<b>right</b> corner is X&nbsp;1204.38, Y&nbsp;182 &middot; <b>PROVISIONAL</b></td><td>8</td><td class="n"><b>1159.38, 1189.38</b></td><td class="n"><b>197, 227, 257, 287</b></td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b><sup class="f">7.2</sup></td></tr>
-<tr><td><b>W1, W2</b></td><td><b>Window</b> for the cast stepper frame and the interposer, which pass through this plate</td><td>2</td><td><b>0 &rarr; 60.5</b>, <b>1143.89 &rarr; 1204.39</b></td><td><b>132 &rarr; 182</b></td><td>60.5&times;50</td><td>Through cut-out</td></tr>
+<tr><td><b>W1, W2</b></td><td><b>Window</b> for the cast stepper frame and the interposer, which pass through this plate &mdash; and the route they are <b>installed</b> by<sup class="f">7.10</sup></td><td>2</td><td><b>0 &rarr; {{WINDOW_W}}</b>, <b>1143.89 &rarr; 1204.39</b></td><td><b>{{WINDOW_BOTTOM_Y}} &rarr; {{Y_BEAM_UNDERSIDE}}</b></td><td>{{WINDOW_W}}&times;{{WINDOW_H}}</td><td>Through cut-out</td></tr>
+<tr class="merge"><td><b>W1n, W2n</b></td><td><b>Probe notch</b> &mdash; centred on its window, carrying on below the opening</td><td>2</td><td><b>17.75 &rarr; 42.75</b>, <b>1161.64 &rarr; 1186.64</b></td><td><b>{{PROBE_NOTCH_BOTTOM_Y}} &rarr; {{WINDOW_BOTTOM_Y}}</b></td><td>{{PROBE_NOTCH_W}}&times;{{PROBE_NOTCH_H}}</td><td>Through cut-out, <b>one opening with its window</b> &middot; R{{PROBE_NOTCH_R}} at all four corners<sup class="f">7.10</sup></td></tr>
 <tr><td>X1&ndash;X8</td><td>Through the back tongue, into the torsion box</td><td>8</td><td class="n"><b>50, 200, 350, 500,<br>650, 800, 950, 1100</b></td><td class="n"><b>30</b></td><td class="d">9</td><td class="op">Through &middot; <b>150 pitch, centred on the 1210.73 plate</b> &mdash; 80.365 clear at each end<sup class="f">7.3</sup><br><b>This plate IS the drill guide for the back tongue</b> &mdash; nothing pre-exists to meet<sup class="f">7.8</sup><br><b>M8 &times; 35</b> flange bolt &middot; plate &middot; 19 ply &middot; fender washer &middot; <b>acorn nut outboard</b><sup class="f">7.9</sup></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;9</td><td><b>24</b></td><td colspan="4" class="tn">plus 2 cut-outs, not counted as holes</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>24 &times; &oslash;9</td><td><b>24</b></td><td colspan="4" class="tn">plus 4 cut-outs, not counted as holes</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
@@ -2757,7 +2812,11 @@ unsupported plate; above it, longer buys nothing but edge distance.</p>
 <tr><td><b>Rear plate</b> &mdash; Sheet 7, X1&ndash;X8</td><td class="n">6.35</td><td class="n">19</td><td class="n"><b>M8 &times; 35</b></td><td class="n">35 &minus; 25.35 &minus; washer</td></tr>
 </table>
 <p>&#9888; <b>TWO MEASUREMENTS CLOSE THIS, AND NEITHER IS A CALCULATION.</b> <b>The fender washer's thickness</b>, off the washer; and <b>how deep the acorn nut's thread actually runs</b>, off the nut &mdash; no spec has been found for it. Put a nut on a bolt by hand and read how much thread it swallows before it stops. <b>That figure is what confirms 30 at the outboard plate and 35 at the rear plate</b>, and it is the only number here that can send both the wrong way at once.</p>
-<p class="src">Full reasoning, and the decisions these summarise, live in <b>machine/*.md</b>. If a note here and a .md file disagree, <b>the .md file wins</b>.</p>
+<p><b>7.10</b> &mdash; <b>The window is a T, and the notch does two jobs.</b> The full-width opening is <b>{{WINDOW_W}} &times; {{WINDOW_H}}</b> with its top edge on the beam's underside, and a <b>{{PROBE_NOTCH_W}}</b> wide notch centred on it carries on <b>{{PROBE_NOTCH_H}}</b> further, to {{PROBE_NOTCH_BOTTOM_Y}}. That is <b>{{WINDOW_CLEAR_TOTAL}} below the beam face in all</b>.<br>
+<b>It clears the back of the proximity probe body</b>, which is narrower than the casting the opening above it is cut for &mdash; so the plate keeps its full width either side of the probe rather than losing it across the whole window.<br>
+&#9989; <b>And it is how the casting and interposer go in.</b> They are fitted from <b>behind the machine</b>, slid through the window <b>BK12 end first</b>, which this depth is what makes possible &mdash; there is no need to get at them from the front or to part the beam.<br>
+&#128308; <b>R{{PROBE_NOTCH_R}} at all four of the notch's corners</b>, the two where it meets the window's bottom edge as well as the two at its own bottom. <b>The bottom pair is the one that matters:</b> there the metal wraps around the end of the notch, and this plate is the rear shear panel &mdash; that is where a crack would start. The pair at the mouth is a protruding corner of metal rather than a notch tip, so rounding it is tidiness. It is smaller than the window's own {{WINDOW_CORNER_R}} on purpose &mdash; a {{WINDOW_CORNER_R}} in a {{PROBE_NOTCH_W}} wide notch leaves 5 of flat across its bottom where this leaves 13.</p>
+<p class="src">Full reasoning, and the decisions these summarise, live in <b>machine/*.md</b>. If a note hereand a .md file disagree, <b>the .md file wins</b>.</p>
 </div>
 </div>
 <div class="plate pg-ck">

@@ -594,9 +594,42 @@ source = "machine/lateral-stiffness.md; machine/y-beam-support.md"
 
 [[dim]]
 sym = "WINDOW_H"
-value = 50
+value = 55
 provenance = "pinned"
-note = "Window height, and the loose axis - it is what the casting's clearance consumes, which is why the width is allowed to be a 0.5 slip fit. FLAG: THE WINDOW IS IN THE REAR PLATE, NOT THE FINS - it went there with the Y drive, the fins are solid, and BF12 face-mounts into them instead. OPEN: THE HEIGHT IS NOT SETTLED - the limit sensor mounts on the casting's top face and stands LIMIT_SENSOR_STACK_H above it, and whether the window must clear that waits on a bench test."
+note = "Height of the window's full-width opening, measured DOWN from the Y beam's underside. His, and the loose axis - it is what the casting's clearance consumes, which is why the width is allowed to be a 0.5 slip fit. FLAG: THE WINDOW IS IN THE REAR PLATE, NOT THE FINS - the fins are solid and BF12 face-mounts into them instead. FLAG: THE OPENING IS NOT THE WHOLE CLEARANCE - PROBE_NOTCH_H carries on below it and WINDOW_CLEAR_TOTAL is the figure that matters to the probe."
+
+[[dim]]
+sym = "PROBE_NOTCH_W"
+value = 25
+provenance = "pinned"
+note = "25 - width of the notch that runs on below the window's full-width opening, centred on the window. His. It clears the back of the proximity probe body, which is narrower than the casting the opening above it is cut for."
+
+[[dim]]
+sym = "PROBE_NOTCH_H"
+value = 30
+provenance = "pinned"
+note = "30 - how far the notch runs on past WINDOW_H. His. Two things need it: the back of the proximity probe body, and getting the casting and interposer in from BEHIND the machine - they slide through the window BK12 end first, which this is what makes possible."
+
+[[dim]]
+sym = "PROBE_NOTCH_R"
+value = 6
+provenance = "pinned"
+note = "6 - radius at all four of the notch's corners, the two at its mouth as well as the two at its bottom. His. FLAG: THE BOTTOM PAIR IS THE ONE THAT MATTERS. There the metal wraps around the end of the notch, which is the stress raiser - this plate is the rear shear panel and that is where a crack would start. The pair at the mouth is a protruding corner of metal rather than a notch tip, so rounding it is tidiness. It is deliberately smaller than WINDOW_CORNER_R: a 10 in a 25-wide notch leaves only 5 of flat across its bottom, where this leaves 13."
+
+[[dim]]
+sym = "WINDOW_CLEAR_TOTAL"
+expr = "WINDOW_H + PROBE_NOTCH_H"
+note = "85 below the Y beam's underside, the full depth of clearance at each window. This is the figure the probe body and the slide-in assembly are measured against, not WINDOW_H on its own."
+
+[[dim]]
+sym = "WINDOW_BOTTOM_Y"
+expr = "Y_BEAM_UNDERSIDE - WINDOW_H"
+note = "127 - where the window's full-width opening ends, in the rear plate's own frame. Beam-referenced like everything else on Sheet 7, so nothing about the delivered plate can move it."
+
+[[dim]]
+sym = "PROBE_NOTCH_BOTTOM_Y"
+expr = "Y_BEAM_UNDERSIDE - WINDOW_CLEAR_TOTAL"
+note = "97 - the bottom of the probe notch, in the rear plate's frame. FLAG: IT IS THE LOWEST CUT ON THIS PLATE and sits 67 above the installed bottom edge that bears on the box, so there is plate below it either way."
 
 [[dim]]
 sym = "WINDOW_OUTB"

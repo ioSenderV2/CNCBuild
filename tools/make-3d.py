@@ -1165,10 +1165,22 @@ def main() -> int:
     # while Y2's is its high-X side. Drawing both from the low-X side puts Y2's
     # window 0.5 out - WINDOW_W is 60.5 over a 60 casting, so the clash check
     # cannot see it and it would have reached the sheet as a real offset.
-    _rp_z0, _rp_z1 = v["WINDOW_Z_LOW"], v["WINDOW_Z_LOW"] + v["WINDOW_H"]
+    # EACH WINDOW IS A T, and it hangs from the BEAM'S UNDERSIDE rather than
+    # standing on a bottom edge: the full-width opening runs WINDOW_H down from
+    # there, and PROBE_NOTCH_W carries on PROBE_NOTCH_H below it. The notch
+    # clears the back of the proximity probe body, and it is also how the
+    # casting and interposer go in - through the window from behind, BK12 end
+    # first. PROBE_NOTCH_R is NOT DRAWN, the same call as SOLE_FILLET_R: a
+    # polygon approximation of it would then disagree with the sheet.
+    _rp_top = v["Y_BEAM_UNDERSIDE"]
+    _rp_mid = v["WINDOW_BOTTOM_Y"]
+    _rp_bot = v["PROBE_NOTCH_BOTTOM_Y"]
     _y1x = v["Y1_EXT_FACE_X"]
     _y2x = _y1x + v["Y2_EXT_FACE_X"] - v["EXT_W"]
-    rp_wins = [[[xa, _rp_z0], [xb, _rp_z0], [xb, _rp_z1], [xa, _rp_z1]]
+    _nin = (v["WINDOW_W"] - v["PROBE_NOTCH_W"]) / 2
+    rp_wins = [[[xa, _rp_top], [xb, _rp_top], [xb, _rp_mid],
+                [xb - _nin, _rp_mid], [xb - _nin, _rp_bot],
+                [xa + _nin, _rp_bot], [xa + _nin, _rp_mid], [xa, _rp_mid]]
                for xa, xb in ((_y1x, _y1x + v["WINDOW_W"]),
                               (_y2x + v["EXT_W"] - v["WINDOW_W"],
                                _y2x + v["EXT_W"]))]
