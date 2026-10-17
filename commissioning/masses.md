@@ -19,6 +19,26 @@ figure computed from a drawing.
 | Rear plate, 1/4" A36 | **38 lb 10 oz** | the whole plate, undrilled |
 | Side plate, 10 gauge | **18 lb** | one of the two |
 
+**Weighed, 2026-10-16** — the torsion box's plywood, on his scale, before assembly.
+
+| Part | Mass | As weighed |
+|---|---|---|
+| Web and rib strip, 100 | **3 lb 3 oz** | each, 12 of them |
+| Front laminations, 24 | **6 lb 9 oz** | the pair |
+| Back laminations, 24 | **9 lb 3 oz** | the pair |
+| Side laminations, 24 | **8 lb 12 oz** | each, before the proud strip is sawn off |
+| **The box less its skins and the sand** | **71 lb 8 oz** | the four rows above |
+
+Two corrections pull against each other and neither reaches a pound: the **front and back webs are
+each 36 longer** than the strip that was weighed, which adds about **3 oz** across the two, and the
+**60 strip sawn off each side lamination** is about 4.9% of that board, which takes about **14 oz**
+back off. **Call it 71 lb.**
+
+**The skins are not in it** — they need a different scale — and neither is the sand.
+
+NOTE: **This is the first real number under the 565 lb estimate below.** The box less skins and sand
+was never weighed before, so the installation figure has had nothing measured in it at all.
+
 🔴 **These were weighed to settle a disagreement, and they settled it.** The order sheet's weight
 column put the rear plate at **80 lb**, which would need half-inch stock over that outline. The
 scale says otherwise and so does the micrometer: computed from the registry outline at the measured

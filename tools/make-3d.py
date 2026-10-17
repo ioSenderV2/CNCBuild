@@ -1016,9 +1016,24 @@ def main() -> int:
     for x0, x1 in ((-TT, lam_mid), (lam_mid, W + TT)):
         box("Back tongue", "tongues", 0xA07B16, x0, -TT, tz0, x1, 0, tz1,
             d=f"{x1 - x0:g} long, {v['T_BOX_TONGUE']:g} thick" + D_LAM_PIECE)
+    # EACH SIDE IS ONE BOARD WITH A STEP IN ITS TOP EDGE, and it is split here
+    # along the TOP SKIN'S TOP FACE rather than across the board at the saw cut:
+    # the full-length piece is what the board is, and the proud band is what
+    # stands above the skin behind SIDE_LAM_PROUD_CUT. Split the other way it
+    # drew a butt joint at 1006 that does not exist.
     for x0 in (-TT, W):
-        box("Side tongue", "tongues", 0xA07B16,
-            x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, v["SIDE_TONGUE_END"], tz1)
+        box("Side lamination", "tongues", 0xA07B16,
+            x0, v["SIDE_TONGUE_START"], tz0, x0 + TT, D, 0,
+            d=f"ONE board, {v['SIDE_LAM_L']:.2f} long and "
+              f"{v['TONGUE_FULL_H']:g} tall as cut. This is the part of it "
+              f"that runs the box's full depth, flush with the top skin")
+        box("Side lamination, proud band", "tongues", 0xA07B16,
+            x0, v["SIDE_TONGUE_START"], 0, x0 + TT,
+            v["SIDE_LAM_PROUD_CUT"], tz1,
+            d=f"the same board's top {v['BOX_TONGUE_PROUD']:g}, standing proud "
+              f"behind the saw cut at {v['SIDE_LAM_PROUD_CUT']:.2f}. Forward of "
+              f"that it is sawn away so the apron stays clear - there is NO "
+              f"joint there")
 
     # ---- the tee track bed -----------------------------------------------
     # The four Mega V tee track plates, 20 thick, BEDDED DIRECTLY ON THE TOP SKIN.
@@ -1202,11 +1217,10 @@ def main() -> int:
     # D + 25 = 1210 to 1235. The 44 wall is web (1191..1210) plus cap
     # (1210..1235), landing squarely on the 44 shoulder, exactly as at the sides.
     #
-    # The SIDE CAPS run back from the front cap to where the side tongue ends.
-    # FLAG: That stretch was BARE - the side tongue stops at SIDE_TONGUE_END while
-    # the box runs on to BOX_FORE_AFT - and it is where the front fin overhangs
-    # outboard by FIN_PROUD. His words: so the fin overhang will not look like
-    # it is hanging in midair. The fin's overhang now lands on the cap's top edge.
+    # The front fin overhangs outboard by FIN_PROUD where the side lamination
+    # runs flush with the skin, and lands on its top edge rather than hanging in
+    # midair - his words. That stretch is part of the side lamination itself,
+    # drawn with it above.
     cap_t = v["T_BOX_FRONT_CAP"]
     cap_z0 = -v["BOX_FRONT_CAP_H"]
     # Two pieces, the same as the back and for the same reason.
@@ -1214,17 +1228,10 @@ def main() -> int:
         box("Front cap", "tongues", 0xA07B16, x0, D, cap_z0, x1, D + cap_t, 0,
             d=f"{x1 - x0:g} long, {cap_t:g} thick, flush with "
               f"the top skin - the front has no tongue" + D_LAM_PIECE)
-    # FLAG: THE SIDE CAP IS NOT A SEPARATE PART - his, 2026-10-11. Each side's outer
-    # lamination is cut as ONE piece, SIDE_LAM_L long and TONGUE_FULL_H tall,
-    # and the proud portion forward of SIDE_LAM_PROUD_CUT is sawn away. It is
-    # drawn as two boxes here only because the elevation is an L - the same
-    # convention as the post tenon standing out of its stub, or the BF12 wing
-    # and boss. There is no butt joint at 1006.35 on the sides.
-    for x0 in (-cap_t, W):
-        box("Side cap", "tongues", 0xA07B16, x0, v["BOX_SIDE_CAP_START"], cap_z0,
-            x0 + cap_t, D, 0,
-            d="same piece as the side tongue, proud portion sawn off - "
-              "carries the fin's outboard overhang")
+    # FLAG: THERE IS NO SEPARATE SIDE CAP. Each side's outer lamination is ONE
+    # piece, SIDE_LAM_L long and TONGUE_FULL_H tall, with the proud portion
+    # forward of SIDE_LAM_PROUD_CUT sawn away - it is drawn with the tongues
+    # above, split along the top skin's face so no joint appears at the cut.
 
     # ---- the plates that stand on the skin -------------------------------
     # ITS LEFT EDGE IS ON THE Y1 EXTRUSION'S OUTBOARD FACE, not on the side
@@ -2572,7 +2579,8 @@ ALLOWED = {
     # The perimeter web is one lamination of a wall whose other lamination is
     # the tongue. They are laminated face to face, so they touch by design.
     frozenset({"Perimeter web", "Back tongue"}),
-    frozenset({"Perimeter web", "Side tongue"}),
+    frozenset({"Perimeter web", "Side lamination"}),
+    frozenset({"Perimeter web", "Side lamination, proud band"}),
     frozenset({"Perimeter web", "Rib, fore-aft"}),  # ribs die into the webs
     frozenset({"Perimeter web", "Rib, across"}),
     frozenset({"Perimeter web", "Back tenon block"}),   # it dies into the web
@@ -2587,27 +2595,25 @@ ALLOWED = {
     # The post's outer face is FLUSH with the tongue's outer face and the 44
     # wall lands on the 44 shoulder - that is the whole ledge detail, so the
     # wall standing on the shoulder is contact by design, not a clash.
-    frozenset({"Post, front left", "Side tongue"}),
+    frozenset({"Post, front left", "Side lamination"}),
     frozenset({"Post, front left", "Back tongue"}),
-    frozenset({"Post, front right", "Side tongue"}),
+    frozenset({"Post, front right", "Side lamination"}),
     frozenset({"Post, front right", "Back tongue"}),
     frozenset({"Post, back centre", "Back tongue"}),
     frozenset({"Post, front left", "Perimeter web"}),
     frozenset({"Post, front right", "Perimeter web"}),
     frozenset({"Post, back centre", "Perimeter web"}),
 
-    frozenset({"Back tongue", "Side tongue"}),      # meet at the corner
-    # The caps are the front's wall lamination - they laminate to the web and
-    # bear on the post shoulder exactly as the tongues do.
-    frozenset({"Front cap", "Side cap"}),           # meet at the front corner
+    frozenset({"Back tongue", "Side lamination"}),       # meet at the corner
+    frozenset({"Back tongue", "Side lamination, proud band"}),
+    # The front cap is the front's wall lamination - it laminates to the web and
+    # bears on the post shoulder exactly as the tongues do.
+    frozenset({"Front cap", "Side lamination"}),    # meet at the front corner
     frozenset({"Front cap", "Perimeter web"}),
-    frozenset({"Side cap", "Perimeter web"}),
     frozenset({"Front cap", "Post, front left"}),
     frozenset({"Front cap", "Post, front right"}),
-    frozenset({"Side cap", "Post, front left"}),
-    frozenset({"Side cap", "Post, front right"}),
-    frozenset({"Front cap", "Side tongue"}),
-    frozenset({"Side cap", "Side tongue"}),
+    # One board with a step: the full-depth piece and the proud band above it.
+    frozenset({"Side lamination", "Side lamination, proud band"}),
     # One part drawn as two boxes, the same convention as the BF12 wing/boss.
     frozenset({"Fin angle", "Fin angle"}),
     frozenset({"Fin angle", "Front fin"}),          # it bolts to its face
@@ -2670,7 +2676,8 @@ ALLOWED = {
     frozenset({"BF12 wing", "BF12 bolt"}),
     frozenset({"Back tongue", "Tongue bolt"}),
     frozenset({"Side plate", "Tongue bolt"}),
-    frozenset({"Side tongue", "Tongue bolt"}),
+    frozenset({"Side lamination", "Tongue bolt"}),
+    frozenset({"Side lamination, proud band", "Tongue bolt"}),
     # barrel, nose, shaft and nut are one spindle drawn as four cylinders
     frozenset({"Spindle barrel", "Spindle nose"}),
     frozenset({"Spindle nose", "Spindle shaft"}),
