@@ -1081,10 +1081,20 @@ provenance = "measured"
 note = "The 1/2in plate stock for the X end plates: 200 x 300, his. THE LENGTH THE RIGHT-HAND PLATE ENDS AT, because its far end is not cut - see TONGUE_TOP. FLAG: WAS RECORDED AS 304.5 AND THAT WAS WRONG: a 304.5 x 154 piece was written down as the stock, the tongue was built on it, and the real stock is 200 x 300. Every number on Sheet 2b past X 242.5 moved when it was corrected. It is the repo's own README warning twice over - a stock dimension taken from the conversation rather than from the part, and then derived from."
 
 [[dim]]
+sym = "XEP_WASTE_L"
+expr = "XEP_STOCK_L - XEP_CUT"
+note = "55 - what is left of the 300 past the LEFT plate's end, running the full XEP_STOCK_W. The third doubler is cut from it, turned so its 154 runs across the width and its DOUBLER_H along this. FLAG: IT MUST STAY AT OR ABOVE DOUBLER_H plus a kerf either side, or the third doubler needs its own piece of plate. It shrinks if the plate is ever cut longer."
+
+[[dim]]
+sym = "XEP_WASTE_SPARE"
+expr = "XEP_WASTE_L - DOUBLER_H"
+note = "10 across, what is left after the third doubler is taken out of the waste. The kerf comes out of this, so it is the margin on that nest rather than free metal."
+
+[[dim]]
 sym = "XEP_STOCK_W"
 value = 200
 provenance = "measured"
-note = "Width of the same stock. The plate is XEP_W (154) wide, so cutting one out leaves a 45 strip - and THAT is where DOUBLER_H's 45 comes from. The doubler is the offcut, which is the whole reason it is 45 rather than the 50 it used to be."
+note = "Width of the same stock. The plate is XEP_W (154) wide, so cutting one out leaves a 45 strip - and THAT is where DOUBLER_H's 45 comes from. The doubler is the offcut, which is the whole reason it is 45 rather than a round 50. SETTLED: ALL THREE DOUBLERS COME OUT OF THESE TWO PIECES - his. One strip per piece gives two, and the LEFT plate is cut to XEP_CUT out of the 300, so XEP_WASTE_L x this width is left past its end - the third, the X carriage's, is turned 90 degrees into that. Nothing has to be bought for it."
 
 [[dim]]
 sym = "TONGUE_TOP"

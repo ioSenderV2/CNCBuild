@@ -41,13 +41,14 @@ def parse(path: Path):
                 j += 2
             if kind == "LINE":
                 lines.append(((float(d["10"]), float(d["20"])),
-                              (float(d["11"]), float(d["21"]))))
+                              (float(d["11"]), float(d["21"])),
+                              d.get("8", "")))
             elif kind == "CIRCLE":
                 circles.append((float(d["10"]), float(d["20"]),
                                 float(d["40"]) * 2))
             elif kind == "ARC":
                 arcs.append((float(d["10"]), float(d["20"]), float(d["40"]),
-                             float(d["50"]), float(d["51"])))
+                             float(d["50"]), float(d["51"]), d.get("8", "")))
             else:
                 texts.append((float(d["10"]), float(d["20"]),
                               float(d["40"]), d.get("1", ""),
@@ -76,20 +77,25 @@ def open_ends(lines, arcs):
     paper, and the shop's software either refuses the file or quietly cuts the
     hole as an open path. Every outline here is closed by construction, so each
     endpoint must be shared by exactly two entities - no more, no less.
+
+    COUNTED BY LAYER. A profile closes within its own layer, and the stock
+    outline on the end plates shares its lower-left corner with the plate cut
+    out of it - counted together that corner meets three other ends and reads
+    as a defect when both shapes are perfectly closed.
     """
-    pts = [p for seg in lines for p in seg]
-    pts += [p for a in arcs for p in arc_ends(*a)[:2]]
+    pts = [(p, seg[2]) for seg in lines for p in seg[:2]]
+    pts += [(p, a[5]) for a in arcs for p in arc_ends(*a[:5])[:2]]
     seen = {}
-    for x, y in pts:
-        k = (round(x, 6), round(y, 6))
+    for (x, y), layer in pts:
+        k = (layer, round(x, 6), round(y, 6))
         seen[k] = seen.get(k, 0) + 1
-    return sorted(p for p, n in seen.items() if n != 2)
+    return sorted((x, y) for (_, x, y), n in seen.items() if n != 2)
 
 
 def extent(lines, circles, arcs):
-    xs = [p[0] for seg in lines for p in seg] + [c[0] for c in circles]
-    ys = [p[1] for seg in lines for p in seg] + [c[1] for c in circles]
-    for cx, cy, r, a0, a1 in arcs:
+    xs = [p[0] for seg in lines for p in seg[:2]] + [c[0] for c in circles]
+    ys = [p[1] for seg in lines for p in seg[:2]] + [c[1] for c in circles]
+    for cx, cy, r, a0, a1, _layer in arcs:
         for p in arc_ends(cx, cy, r, a0, a1)[:2]:
             xs.append(p[0])
             ys.append(p[1])
@@ -126,13 +132,18 @@ def page(path: Path, bad: list, toc: list) -> str:
         return (y1 - v) / scale + pad * 0.62
 
     g = []
-    for a, b in lines:
+    # THE STOCK OUTLINE IS NOT A CUT LINE, so it must not look like one: it is
+    # the piece he hands over, drawn to show the waste the extra parts come out
+    # of. Dashed and grey, where every cut path is solid black.
+    for a, b, layer in lines:
+        dash = ' stroke-dasharray="2.2 1.6"' if layer == 'STOCK' else ''
+        col = '#999' if layer == 'STOCK' else '#111'
         g.append(f'<line x1="{X(a[0]):.2f}" y1="{Y(a[1]):.2f}" '
                  f'x2="{X(b[0]):.2f}" y2="{Y(b[1]):.2f}" '
-                 f'stroke="#111" stroke-width="0.5"/>')
+                 f'stroke="{col}" stroke-width="0.5"{dash}/>')
     # SVG's arc sweep flag is in SCREEN space, and Y is flipped here, so a
     # counterclockwise DXF arc is a clockwise SVG one: sweep-flag 0, not 1.
-    for cx, cy, r, a0, a1 in arcs:
+    for cx, cy, r, a0, a1, _layer in arcs:
         p0, p1, sweep = arc_ends(cx, cy, r, a0, a1)
         g.append(f'<path d="M {X(p0[0]):.2f} {Y(p0[1]):.2f} '
                  f'A {r / scale:.3f} {r / scale:.3f} 0 '

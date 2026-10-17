@@ -419,9 +419,25 @@ def build_xep(name, title, ti, l_sym, src, reg):
     t = reg.value('T_X_ENDPLATE')
 
     ents = []
+    # THE STOCK OUTLINE IS NOT A CUT LINE. It is the piece he hands over, drawn
+    # so the waste past the plate's end is visible - which is where the third
+    # doubler comes from. Its own layer, and the preview dashes it.
+    ents += poly([(0, 0), (W, 0), (W, SW), (0, SW)], 'STOCK')
     ents += poly([(0, 0), (L, 0), (L, cut_y), (cut_x, pw), (0, pw)], 'OUTLINE')
     dy = pw + XEP_KERF                      # the strip starts past the plate
     ents += poly([(0, dy), (dl, dy), (dl, dy + dh), (0, dy + dh)], 'OUTLINE')
+
+    # THE LEFT PLATE IS CUT SHORT OF THE STOCK, so 55 x 200 is left past its
+    # end - his catch. The THIRD doubler, the X carriage's, goes there turned
+    # the other way from the strip one: its 154 runs across the sheet, along
+    # the 200, and its 45 along what is left of the 300.
+    spare = W - L
+    third = None
+    if spare >= dh + 2 * XEP_KERF and SW >= dl:
+        tx = L + XEP_KERF
+        third = (tx, 0.0)
+        ents += poly([(tx, 0), (tx + dh, 0), (tx + dh, dl), (tx, dl)],
+                     'OUTLINE')
 
     sizes, n = {}, 0
     holes, cutouts, edge, _m = holes_for(src, 's2', ti)
@@ -444,16 +460,29 @@ def build_xep(name, title, ti, l_sym, src, reg):
         doub_sizes[d] = doub_sizes.get(d, 0) + 1
         sizes[d] = sizes.get(d, 0) + 1
         dn += 1
+        if third:
+            # turned the other way: its 45 along the sheet's X, 154 up the Y
+            ents += circle(third[0] + x, third[1] + y, d, 'HOLES')
+            sizes[d] = sizes.get(d, 0) + 1
+            dn += 1
 
     ents += text(0, dy + dh + 6, 4.5,
-                 f'DOUBLER {dl:g} x {dh:g} - TURNED, ITS 154 ALONG THIS SHEET'
-                 f"'S X", 'PARTS')
-    ents += text(0, -10, 4.5, f'{title.upper()} - {L:g} LONG', 'PARTS')
+                 f'DOUBLER {dl:g} x {dh:g} - TURNED, ITS {dl:g} ALONG THIS '
+                 f"SHEET'S X", 'PARTS')
+    if third:
+        ents += text(dl + 12, dl + 26, 4.5,
+                     f'DOUBLER {dl:g} x {dh:g} - THE X CARRIAGE ONE,', 'PARTS')
+        ents += text(dl + 12, dl + 18, 4.5,
+                     f'OUT OF THE WASTE PAST THIS PLATE. TURNED THE', 'PARTS')
+        ents += text(dl + 12, dl + 10, 4.5,
+                     f"OTHER WAY: ITS {dl:g} RUNS UP THIS SHEET'S Y", 'PARTS')
+    ents += text(0, -16, 4.5, f'{title.upper()} - {L:g} LONG', 'PARTS')
 
     bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
     ty = SW + 14
-    ents += text(0, ty + 20, 7, f'{title.upper()}  -  QTY 1 + 1 DOUBLER',
-                 'NOTES')
+    ents += text(0, ty + 20, 7,
+                 f'{title.upper()}  -  QTY 1 + '
+                 f'{2 if third else 1} DOUBLER{"S" if third else ""}', 'NOTES')
     ents += text(0, ty + 10, 5,
                  f'STOCK {both_units(W)} x {both_units(SW)} x '
                  f'{both_units(t)} 6061', 'NOTES')
@@ -573,7 +602,10 @@ def main():
                                f'tally {expect.get(("s2", want_ti))}')
             print(f'  {name:20s} sheet s2/{ti}  {n:3d} hole(s)   '
                   + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
-            print(f'  {"":20s} plus its doubler, both off one 300 x 200 piece')
+            nd = 2 if l_sym == 'XEP_CUT' else 1
+            print(f'  {"":20s} plus {nd} doubler(s), all off one 300 x 200 '
+                  f'piece' + (' - the third comes out of the waste past this '
+                              'plate\'s end' if nd == 2 else ''))
 
         total += n
 
