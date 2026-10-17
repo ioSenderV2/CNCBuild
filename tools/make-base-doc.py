@@ -96,6 +96,14 @@ def parts(v):
          "is what keeps the rip bank down to ten"),
         ("Rail, fore-aft", v["RAIL_FORE_AFT_L"], gm_h, 8, "1",
          f"2 laminations each, 4 rails - it fills the legs' {gm_t:g} slot"),
+        ("Rail, lower fore-aft - outer pad", v["RAIL_LOWER_PAD_L"], gm_h, 2,
+         "1",
+         f"one each side of each LOWER rail, butting a leg's face at each end "
+         f"- it brings the rail out to {v['POST_W_X']:g} so a "
+         f"{v['CASTER_PLATE']:g} caster plate lands on a full face. Two here "
+         "and two off sheet 2"),
+        ("Rail, lower fore-aft - outer pad", v["RAIL_LOWER_PAD_L"], gm_h, 2,
+         "2", "the other two, out of the 5 x 5's waste"),
         ("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
          "cut",
          f"2 laminations - it fills the rear middle leg's slot, so it is "
@@ -103,6 +111,17 @@ def parts(v):
          f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
          f"the back wall so both come off ONE 5 x 5, which is CUT - that sheet "
          "is spent too"),
+        ("Caster block, corner", v["CASTER_PLATE"], v["POST_W_X"], 4, "offcut",
+         "one beside each corner leg, under the lower rail and hard against "
+         "the leg's face, screwed into both. THICKNESS IS CUT TO FIT: it has "
+         f"to bring the wheel just below the leg bottoms, and {v['CASTER_H']:g} "
+         f"in a {v['BASE_FLOOR_CLEAR']:g} band leaves "
+         f"{v['BASE_FLOOR_CLEAR'] - v['CASTER_H']:.1f} to make up"),
+        ("Caster block, back centre",
+         2 * v["CASTER_PLATE"] + v["POST_W_X"], v["POST_W_Y"], 1, "offcut",
+         "ONE block for the straddling pair, screwed to the back centre leg's "
+         "foot and to the back wall above it. Both plates land on one face, so "
+         "the two casters are the same height by construction"),
         ("Leg foot spacer", v["FOOT_SPACER_H"], v["POST_W_Y"], 10, "offcut",
          "2 laminations each, all FIVE legs - glued to the inside of the outer "
          "lamination, closing the slot from the floor up to the lower rail. "
@@ -137,9 +156,10 @@ SHEET_PLAN = [
     ("0", "4 x 8", "20 leg strips - ALREADY CUT. Only 10 are laminated into "
                    "legs, and everything that fills a slot comes out of the "
                    "other 10 and the offcut past each leg length"),
-    ("1", "4 x 8", "the back wall and all twelve rail laminations - the only "
-                   "sheet left to cut"),
-    ("2", "5 x 5", "both central wall laminations - ALREADY CUT"),
+    ("1", "4 x 8", "the back wall, all twelve rail laminations and two of the "
+                   "four lower pads - the only sheet left to cut"),
+    ("2", "5 x 5", "both central wall laminations, ALREADY CUT, and the other "
+                   "two lower pads out of the waste beside them"),
 ]
 
 
@@ -190,8 +210,20 @@ def layout(v, num, sw, sl):
         for i in range(2):
             out.append((0, x_inner + i * (gm_h + k), 0.0, gm_h,
                         v["RAIL_CROSS_INNER_L"], "Rail, front cross - inner"))
+        # TWO OF THE FOUR LOWER PADS: one in the band left alongside the rip
+        # bank, one crosswise in the right-hand offcut. The other two come off
+        # sheet 2's waste.
+        pad = "Rail, lower fore-aft - outer pad"
+        out.append((0, 0.0, 10 * (gm_h + k), v["RAIL_LOWER_PAD_L"], gm_h, pad))
+        out.append((0, x_inner + 2 * (gm_h + k), 0.0, gm_h,
+                    v["RAIL_LOWER_PAD_L"], pad))
     elif num == "2":
         row("Shear wall, central", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2)
+        # THE OTHER TWO PADS, standing in the strip of 5 x 5 beside the walls.
+        x_pad = v["CENTRE_WALL_L"] + k
+        for i in range(2):
+            out.append((0, x_pad + i * (gm_h + k), 0.0, gm_h,
+                        v["RAIL_LOWER_PAD_L"], "Rail, lower fore-aft - outer pad"))
 
     # CHECKED, because a stated nest has no packer to prove it fits. Bounds
     # first, then every pair - the whole point of writing the placements down
@@ -933,6 +965,53 @@ def shoulder_section_svg(v, s=SHOULDER_S):
             f'style="max-width:100%">{"".join(body)}</svg>')
 
 
+def casters_html(v):
+    """Chapter 5a: the six leveling casters and the fork channel."""
+    gap = v["BASE_FLOOR_CLEAR"] - v["CASTER_H"]
+    margin = (v["BAY_OPEN_FORE_AFT"] - v["FORK_CHANNEL_W"]) / 2
+    return f"""
+<h2>5a &mdash; The casters and the fork channel</h2>
+<p><b>{v['CASTER_COUNT']:g} leveling casters, all of them INSIDE the
+{v['BASE_FLOOR_CLEAR']:g} floor clearance rather than under the legs</b> &mdash;
+which is what keeps the base's height exactly as drawn. One beside each of the
+four corner legs, under the lower fore-aft rail, and <b>two straddling the back
+centre leg</b>, which has no fore-aft rail to sit on and would otherwise put its
+adjuster behind the leg.</p>
+<table><tr><th></th><th></th></tr>
+<tr><td><b>Plate</b></td><td>{v['CASTER_PLATE']:g} square, four holes at 7
+&mdash; which is why the lower rails are brought out to {v['POST_W_X']:g}</td></tr>
+<tr><td><b>Overall height</b></td><td>{v['CASTER_H']:g}, plate face to the
+bottom of the wheel</td></tr>
+<tr><td><b>Leveling travel</b></td><td>{v['CASTER_LEVEL_TRAVEL']:g} &mdash; the
+whole leveling authority of the base</td></tr>
+</table>
+<p>🔴 <b>Every caster sits on a drop block, and the block's thickness is cut to
+fit.</b> {v['CASTER_H']:g} in a {v['BASE_FLOOR_CLEAR']:g} band leaves
+<b>{gap:.1f}</b> between the wheel and the floor, and
+{v['CASTER_LEVEL_TRAVEL']:g} of foot cannot make that up. The block brings the
+wheel just below the leg bottoms. <b>Measure the slab under the six positions and
+cut the six blocks so they land within a couple of mm of each other</b> &mdash;
+the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
+<p><b>The machine stands on the feet.</b> There is not enough travel to lift the
+wheels clear and set the legs back down, so the leg bottoms hang a few mm off the
+floor either way. <b>Screw each block to the leg as well as to the rail</b>, hard
+against the leg's face: the load then runs leg to block to caster, and the leg's
+housing joints in the grid never carry the machine in shear.</p>
+<p><b>Level on three things</b> &mdash; the two front corners and the centre pair
+as one point. <b>The two rear corners come down to touch</b>, not to lift: they
+carry nothing standing, and they are what stops the thing tipping about a line
+from a front corner to the back centre.</p>
+<p><b>The fork channel is {v['FORK_CHANNEL_W']:g} wide, centred in the
+{v['BAY_OPEN_FORE_AFT']:g} opening</b>, with a guard rail each side screwed under
+the lower grid. That leaves <b>{margin:.0f}</b> at each end of the opening, which
+is where the casters and their blocks sit. The rails keep the jack centred and
+stop a fork ever reaching a caster. OPEN: <b>How far they hang below the grid is
+not set</b> &mdash; deep enough to guide a fork, and they are <b>guides and not
+bearing surfaces</b>: as the jack lifts, the forks rise inside the channel until
+they bear on the grid's underside.</p>
+"""
+
+
 def shoulder_html(v):
     """Chapter 5: top down on the three legs the box lands on."""
     rows = "".join(
@@ -1135,8 +1214,9 @@ here as the {v['T_BB_SKIN_BOT']:g} pieces that actually get cut. The
 which is the middle two laminations of a four-strip leg.</p>
 
 <h2>2 &mdash; The sheets</h2>
-<p>🔴 <b>Sheet 1 is the only one left to cut</b> &mdash; the leg strips and both
-central wall laminations are already off their sheets. It carries the back wall
+<p>🔴 <b>Sheet 1 is the only one with a cut list left</b> &mdash; the leg strips and
+both central wall laminations are already off their sheets, and sheet 2 gives up
+two lower pads out of its waste. It carries the back wall
 and <b>all twelve rail laminations</b>. It is loaded from the <b>left only</b>,
 so what is left stays <b>one whole offcut</b> rather than a fringe of strips
 &mdash; worth more than a tighter nest.</p>
@@ -1145,7 +1225,7 @@ pieces at <b>{v['RAIL_FORE_AFT_L']:g} &times; {v['GRID_MEMBER_H']:g}</b> come of
 the left end as one bank of rips &mdash; the eight fore-aft laminations and both
 front cross rail outers, all the same length, all grain along the sheet. That
 bank is <b>1014.4</b> of the <b>{sheet_w:g}</b> usable width, so it clears with
-<b>200</b> to spare. <b>Twelve rips in that bank would not</b>: twelve
+<b>200</b> to spare, and one of the four lower pads goes in that band. <b>Twelve rips in that bank would not</b>: twelve
 {v['GRID_MEMBER_H']:g} strips and eleven {boxdoc.KERF:g} kerfs want
 <b>1217.6</b>, which misses by 1.6 and leaves nothing for either trim cut. So
 the two <b>{v['RAIL_CROSS_INNER_L']:g}</b> inner rails come off the far end
@@ -1166,11 +1246,10 @@ buys.</b> A 5 &times; 5 trims to <b>1520.8</b>, and with the
 <b>759.6</b> tall. At the back wall's {v['WALL_H']:g} they would take two sheets;
 at {v['CENTRE_WALL_H']:g} they take one. <b>Four off would miss it by 0.4</b>
 &mdash; the kerf is the whole margin there.</p>
-<p><b>Anything else that turns out to be wanted comes out of sheet 2's waste</b>
-&mdash; his call. Worth knowing when reaching for it: sheet 2 leaves
-<b>298 &times; 1521</b>, where <b>sheet 1 leaves 243 &times; {sheet_w:g}</b> at its
-right end plus a <b>200 &times; {v['RAIL_FORE_AFT_L']:g}</b> band alongside the rip
-bank. Sheet 2's is the one to spend.</p>
+<p><b>The four lower pads come out of what the other pieces leave.</b> Two off
+sheet 1 &mdash; one in the band alongside the rip bank, one crosswise in the
+right-hand offcut &mdash; and two standing in the strip of 5 &times; 5 beside the
+central walls. <b>No sheet is bought for them.</b></p>
 <p><b>Sheet 0 is the one already cut</b>, drawn so the record is complete:
 {STRIPS_CUT} strips of 90 taken across its width, leaving <b>605</b> of length.
 <b>The slot stock is not that remainder</b> &mdash; it is the
@@ -1192,6 +1271,7 @@ piece, so a nest that does not fit fails the build rather than printing.</p>
 {''.join(f'<h3>{n}</h3>{svg}' for n, svg in nests)}
 {legs_html(v)}
 {shoulder_html(v)}
+{casters_html(v)}
 <h2>6 &mdash; How it goes together</h2>
 <table>
 <tr><th>Joint</th><th>How</th></tr>

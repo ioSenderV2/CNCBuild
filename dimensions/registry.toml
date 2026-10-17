@@ -3175,6 +3175,44 @@ provenance = "pinned"
 note = "10 - the air between the TOP of the base's upper grid and the UNDERSIDE of the torsion box. His, 2026-10-15, and it agrees with what assembly.md already demanded. FLAG: THIS GAP IS THE THREE-POINT MOUNT. The box touches the base at three leg tops and NOWHERE else; the moment the upper grid touches the box there is a fourth and fifth contact point, the mount stops being determinate, AND THE FAILURE IS SILENT - nothing shows but the two Y beams drifting out of coplanar. NOTE: KEEP IT INSPECTABLE - a feeler or a paper strip has to slide between grid and box anywhere along it, which is why the figure is 10 and not 1."
 
 [[dim]]
+sym = "RAIL_LOWER_PAD_L"
+expr = "BAY_OPEN_FORE_AFT"
+note = "1087 - an outer lamination on a LOWER fore-aft rail, four of them: one each side of each of the two lower rails. It butts a leg's face at each end, because it cannot pass through the leg's GRID_MEMBER_T slot the way the inner two laminations do. SETTLED: ITS JOB IS THE CASTER PAD - the inner pair is GRID_MEMBER_T wide and a caster plate is CASTER_PLATE, so the rail is brought out to POST_W_X and the plate lands on a full-width face. It is flush with the leg's faces either side, so it takes nothing off BAY_OPEN_DEPTH. NOTE: THE UPPER GRID DOES NOT GET THESE - the lower rails are what feed the casters."
+
+[[dim]]
+sym = "CASTER_COUNT"
+value = 6
+provenance = "pinned"
+note = "6 - leveling casters. One beside each of the four corner legs, on the lower fore-aft rail, and TWO straddling the back centre leg, which has no fore-aft rail to sit on. SETTLED: THE PAIR AT THE CENTRE IS FOR ACCESS - a single caster under that leg puts its adjuster behind the leg. SETTLED: LEVEL ON THREE THINGS - the two front corners and the centre PAIR as one point; the two rear corners come down to touch and act against tipping."
+
+[[dim]]
+sym = "CASTER_PLATE"
+value = 73
+provenance = "part"
+source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
+note = "73 square - the caster's top plate, four holes at 7. It lands on a POST_W_X rail face with 0.5 proud each side."
+
+[[dim]]
+sym = "CASTER_H"
+value = 86.6
+provenance = "part"
+source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
+note = "86.6 - plate face to the bottom of the wheel, foot up. FLAG: IT IS SHORTER THAN BASE_FLOOR_CLEAR, so a plate bolted flat to the lower grid leaves the wheel 13.4 clear of the floor and CASTER_LEVEL_TRAVEL cannot make that up - each caster sits on a drop block that brings the wheel just below the leg bottoms."
+
+[[dim]]
+sym = "CASTER_LEVEL_TRAVEL"
+value = 7
+provenance = "part"
+source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
+note = "7 - the leveling foot's whole range, and the whole leveling authority of the base. SETTLED: THE DROP BLOCKS DO THE GROSS LEVELLING - measure the slab under the six positions, cut each block so the six are within a couple of mm, and this trims the rest. FLAG: THE MACHINE STANDS ON THE FEET, NOT ON THE LEGS. 7 is not enough to lift the wheels clear AND set the legs back down, so the leg bottoms hang a few mm off the floor in both states."
+
+[[dim]]
+sym = "FORK_CHANNEL_W"
+value = 700
+provenance = "pinned"
+note = "700 - the fore-aft width of the channel the pallet jack's forks run in, centred in BAY_OPEN_FORE_AFT's 1087 and bounded by a guard rail each side. His figure for the jack. NOTE: WHAT THE 387 LEFT OVER IS FOR - about 193 at each end, which is where the casters and their blocks sit, clear of the forks."
+
+[[dim]]
 sym = "BASE_LIFT_BUDGET"
 value = 800
 provenance = "nominal"

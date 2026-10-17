@@ -1105,7 +1105,7 @@ rails and two cross rails**, and the wall carries the middle.
 
 | Joint | How |
 |---|---|
-| **Fore-aft rails to the legs** | **The same as the wall: they fill the legs' middle slot** — the two centre laminations. One slot per leg, carrying the lower rail, the upper rail and, in the rear middle leg, the wall |
+| **Fore-aft rails to the legs** | **The same as the wall: they fill the legs' middle slot** — the two centre laminations. One slot per leg, carrying the lower rail, the upper rail and, in the rear middle leg, the wall. The **lower** rails carry an extra 18 on each side as well, butting the leg faces, which is what the casters bolt to |
 | **Cross rails to the legs** | **A cross rail is its two laminations doing different jobs.** The **outer 18 is housed 18 deep in the front faces of the legs' INNER strips**, and it **stops one lamination short at each end** — each leg's outermost strip stays its full 86 and **covers the rail's end grain**. The **inner 18 only spans between the legs**: not housed, passing through nothing |
 | **Fore-aft rail to cross rail, inside a leg** | **The cross rail wins — his call** — and the fore-aft rails butt its inner face. Both want the leg's outer 18 of slot, and the cross rail is the one that has to be continuous across the whole width, since the central wall's front notch rides over it |
 
@@ -1169,6 +1169,45 @@ joined only at top and bottom over the clear volume. The load is trivial — abo
 **The rear middle leg gets none**: the central wall is already in its slot, which is the same job done
 by a part that was going in anyway.
 
+#### Six leveling casters, inside the floor clearance
+
+**All six sit in the 100 band beside the legs, not under them** — so nothing about the base's height
+changes. One beside each of the four corner legs, under the lower fore-aft rail, and **two straddling
+the back centre leg**, which has no fore-aft rail under it and would otherwise put its adjuster
+behind the leg.
+
+**The lower fore-aft rails are four laminations, not two.** The inner two pass through the legs'
+36 slots as before; an **18 is added on each side, 1087 × 100**, butting a leg's face at each end
+because it cannot pass through the slot. That brings the rail out to **72**, so a **73** caster plate
+lands on a full face. **The upper grid keeps two laminations** — the lower rails are what feed the
+casters.
+
+| | |
+|---|---|
+| **Caster** | 73 plate, four holes at 7; **86.6** overall; **7** of leveling travel; 50 nylon wheel |
+| **Drop block** | One under every caster, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** to the floor and 7 of foot cannot make it up |
+| **Back centre** | **One block** for both casters, screwed to the leg's foot and to the back wall above it — both plates on one face, so the pair is the same height by construction |
+
+🔴 **Screw each block to the leg as well as to the rail**, hard against the leg's face. The load then
+runs leg to block to caster, and the leg's housing joints in the grid never carry the machine in
+shear.
+
+**The machine stands on the feet.** 7 is not enough to lift the wheels clear and set the legs back
+down, so the leg bottoms hang a few mm off the floor either way.
+
+**Levelling:** measure the slab under the six positions, cut the six blocks so they land within a
+couple of mm of each other, and let the 7 trim the rest. **Level on three things** — the two front
+corners and the centre pair as one point. **The two rear corners come down to touch**, not to lift:
+they carry nothing standing, and they are what stops the thing tipping about a line from a front
+corner to the back centre.
+
+**The fork channel is 700 wide, centred in the 1087 opening**, with a guard rail each side screwed
+under the lower grid. That leaves **193** at each end, which is where the casters and their blocks
+sit. The rails keep the jack centred and stop a fork reaching a caster. Open: **how far they hang
+below the grid is not set** — deep enough to guide a fork, and they are **guides, not bearing
+surfaces**: as the jack lifts, the forks rise inside the channel until they bear on the grid's
+underside.
+
 #### And a spacer at the foot of all five
 
 **36 × 86 × 100, glued to the inside of the outer lamination.** The slot runs the leg's full height,
@@ -1177,9 +1216,9 @@ so below the lower grid exactly **100** of it is open — the floor clearance �
 
 The 100 is not a separate figure to remember: it **is** the floor clearance, so the two cannot drift.
 
-🔴 **Shellac the bottom end grain of all five legs before they ever stand on the floor.** A concrete
-slab wicks, and plywood end grain is what drinks it. One coat on the foot, brushed on before the leg
-goes anywhere near the ground.
+🔴 **Shellac the bottom end grain of all five legs**, one coat on the foot. The legs hang clear of
+the floor once the casters are under it, so this is for splashes rather than for wicking — and it
+goes on **after** anything is glued to the foot, never under a glue line.
 
 **Both grids want the front at that corner, so there are two notches** — the rails stay whole at both
 levels and the wall gives way twice. The lip between them is **564**, the same as the clear volume
@@ -1363,8 +1402,10 @@ that, not the plywood itself, is the thing the shellac coat is guarding against.
 - **Two straps over the box, down to the lower grid.** This is the restraint, and it is the only one —
   nothing fastens the box to the posts. It is what covers both road shock and a lift taken under the
   box instead of the frame.
-- **Put the fork positions under or very near the three posts.** Add a cross member where the forks
-  land if the layout does not cooperate.
+- **The forks go in the 700 channel**, which the two guard rails under the lower grid hold them to.
+- **Across the shop, the casters do it.** Screw the six feet up, roll it, screw them back down and
+  re-level. The 50 nylon wheels will cross a smooth slab and will stop at a cord or a crack, so the
+  jack is still what a real move uses.
 - **Drain the sand.** ~240 lb box becomes ~73 lb.
 - **The CG is high.** Long axis fore-aft, strapped. **Tipping is the hazard, not weight.**
 - **Set the removable packers on the upper grid** before the move; take them out on arrival.
