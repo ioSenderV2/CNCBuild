@@ -53,6 +53,11 @@ interface.**~~ Same degree of freedom, worse joint:
 directly in bearing rather than through bolt shear, which is better anyway."* A shim belongs in a
 joint like that; slop does not belong in the block mounting.
 
+SETTLED: **That last clause now has a number: all four of the bar's own holes are ø8.4, the close fit.**
+If the bar's mounting ever slips it drops by the radial clearance - **0.5 mm at a 9 mm hole, which is
+the entire roll budget below, against 0.2 mm at 8.4.** It costs no range, because the shim goes on
+the bar's **top** face and the bar's own bolts do not move when roll is set.
+
 ### The shim stock on hand, and what each step is worth
 
 **1" wide aluminium strip**, which is **exactly the bar's 25.4 width** - so a strip cut to the bar's

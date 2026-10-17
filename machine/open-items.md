@@ -119,6 +119,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - SETTLED: ~~**The shelf's rear bolt is at Y 0, off the plate**~~ **Closed 2026-10-02.** The shelf becomes a
   **2" bar** with **two M8 at Y 30, stacked at Z 15 and Z 35**, blind-tapped. All four holes are now
   dimensioned from the **plate's back edge**, which is the actual fix - the beam front was never something to measure from.
+- SETTLED: **The shelf bar's own four holes are ø8.4, the close fit, not the ø9 used into extrusion.**
+  The bar is the platform the roll shim bears against, so its mounting is the one joint that must not
+  be sloppy - and the close fit costs no adjustment range, because the shim sits on the bar's top
+  face. **Drill the bar first and spot the plate's two blind taps off it.**
 - OPEN: **Confirm the lower shelf bolt against the block pattern** once measured. Blind-tapping should
   make it moot; this is a check that the skin left is sane, not a gate.
 - SETTLED: ~~**Rib under the full {{REAR_PLATE_L_ORDERED}} of rear bottom-edge bearing.**~~ **Closed 2026-10-11: not

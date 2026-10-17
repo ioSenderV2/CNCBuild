@@ -469,10 +469,19 @@ footprint at Y 0 to 60.
 
 | Hole | Y | Z | |
 |---|---|---|---|
-| Vertical, counterbored from below | **15** | — | M8 up into a T-nut in the bottom extrusion's underside slot |
-| Vertical, counterbored from below | **45** | — | M8 up into the second underside slot |
-| Horizontal | **30** | **15** | **M8 × 35** into the end plate |
-| Horizontal | **30** | **35** | **M8 × 35** into the end plate |
+| Vertical, **ø8.4**, counterbored from below | **15** | — | M8 up into a T-nut in the bottom extrusion's underside slot |
+| Vertical, **ø8.4**, counterbored from below | **45** | — | M8 up into the second underside slot |
+| Horizontal, **ø8.4** | **30** | **15** | **M8 × 35** into the end plate |
+| Horizontal, **ø8.4** | **30** | **35** | **M8 × 35** into the end plate |
+
+**All four holes are ø8.4, the close fit — not the 9 mm clearance used where a plate meets
+extrusion.** The shim on the bar's top face is the roll adjustment, so the bar is the platform it
+shims against and nothing in its own mounting should move. The shim goes above the bar, so the close
+fit takes no adjustment away.
+
+NOTE: **Drill the bar's two horizontal holes first and use the bar to spot the plate's two taps.** The
+bar's are through and the plate's are blind, and at ø8.4 the two pairs have to agree closely across
+the 20 mm between them.
 
 FLAG: **M8 × 35, not × 40.** Through 25.4 mm of bar into 12.7 mm of plate, an M8 × 35 gives ~9.6 mm of
 engagement and stops short of the far face. **An M8 × 40 protrudes ~1.6 mm onto the Y bearing block
