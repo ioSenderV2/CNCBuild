@@ -191,11 +191,11 @@ a bench test. The sensor stack is 55 deep against CASTING_INBOARD_RUN's 50.5.
 <tr><td rowspan="3"><b>&oslash;6.8</b><br><span class="tn">12 in all</span></td><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">2</td><td rowspan="3">M8 tap drill &mdash; drilled through, <b>tapped at home</b></td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">2</td></tr>
 <tr><td>Sheet 4 <span class="tn">&mdash; Z plate</span></td><td class="d">8</td></tr>
-<tr><td rowspan="10"><b>&oslash;9</b><br><span class="tn">212 in all</span></td><td>Sheet 1a <span class="tn">&mdash; Front Y1 riser</span></td><td class="d">10</td><td rowspan="10">M8 clearance &mdash; into extrusion T-nuts and beam corner bores, <b>float is wanted</b></td></tr>
+<tr><td rowspan="1"><b>&oslash;8.4</b><br><span class="tn">8 in all</span></td><td>Sheet 2c <span class="tn">&mdash; Shelf bar</span></td><td class="d">8 <span class="tn">(2&times;4)</span></td><td rowspan="1">M8 <b>close fit</b> &mdash; the shelf bar only, where the roll shim bears and float is <b>not</b> wanted</td></tr>
+<tr><td rowspan="9"><b>&oslash;9</b><br><span class="tn">204 in all</span></td><td>Sheet 1a <span class="tn">&mdash; Front Y1 riser</span></td><td class="d">10</td><td rowspan="9">M8 clearance &mdash; into extrusion T-nuts and beam corner bores, <b>float is wanted</b></td></tr>
 <tr><td>Sheet 1b <span class="tn">&mdash; Front Y2 riser</span></td><td class="d">10</td></tr>
 <tr><td>Sheet 2a <span class="tn">&mdash; X gantry end plate, left-hand</span></td><td class="d">4</td></tr>
 <tr><td>Sheet 2b <span class="tn">&mdash; X gantry end plate, right-hand with the tongue</span></td><td class="d">4</td></tr>
-<tr><td>Sheet 2c <span class="tn">&mdash; Shelf bar</span></td><td class="d">8 <span class="tn">(2&times;4)</span></td></tr>
 <tr><td>Sheet 6 <span class="tn">&mdash; Interposer</span></td><td class="d">12 <span class="tn">(3&times;4)</span></td></tr>
 <tr><td>Sheet 7 <span class="tn">&mdash; Rear plate</span></td><td class="d">24</td></tr>
 <tr><td>Sheet 8 <span class="tn">&mdash; Front joining strip</span></td><td class="d">42 <span class="tn">(3&times;14)</span></td></tr>
@@ -301,7 +301,7 @@ are not the same thickness.<sup class="f">7.9</sup></li>
 <tr><th>Plate</th><th>Qty</th><th>Material</th><th>Mill needed?</th><th>Status</th></tr>
 <tr><td>Front Y end plate / Z riser</td><td>2</td><td><b>10 mm</b> alu (measured), <b>each on its own piece</b></td><td><b>Probably not</b> — mag drill at home</td><td>Outline settled; taper line gated by spindle clearance. <b>1a and 1b are the same part</b> — Sheets 1a, 1b</td></tr>
 <tr><td>X gantry end plate</td><td>2</td><td>1/2" alu, <b>154 &times; 235</b></td><td><b>Yes</b></td><td>The RIGHT-HAND one also carries the BF12 tongue. The &oslash;35 bore locates the blocks &mdash; Sheet 2a</td></tr>
-<tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Four holes, all dimensioned &mdash; Sheet 2c</td></tr>
+<tr><td><b>Shelf bar</b></td><td>2</td><td>1" &times; 2" alu bar, 25.4 &times; 50.8 &times; <b>60</b> long</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Four holes, all dimensioned &mdash; Sheet 2c. <b>&oslash;8.4, not &oslash;9</b>, and drill it before the plate's two blind taps</td></tr>
 <tr><td><b>Y nut doubler block</b></td><td>2</td><td>1/2" alu, 154 &times; 45</td><td>Drill only &mdash; on 2a&apos;s WCS, held the short way</td><td>Drill it clamped to the end plate &mdash; <b>Sheet 2d</b></td></tr>
 <tr><td><b>Nut sole plate</b></td><td><b>3</b></td><td>steel T, 154 root &times; {{SOLE_BASE_D}}, {{SOLE_STEM_W}} stem &times; {{SOLE_STEM_L}}, 1/4"</td><td>T profile + 8 holes</td><td>Fully dimensioned &mdash; Sheet 5. <b>Y1, Y2 and the X carriage are the same part</b>; the X one is installed inverted<sup class="f">11.1</sup></td></tr>
 <tr><td>X carriage plate</td><td>1</td><td>1/2" alu, 407 mm tall</td><td><b>Yes</b> — 30 holes</td><td>Exists, dyed, undrilled</td></tr>
@@ -997,6 +997,8 @@ back edge</b>.<sup class="f">2.14</sup></figcaption>
 <div class="stock">
 <b>60 long &times; 25.4 W &times; 50.8 H &middot; 1" &times; 2" aluminium bar</b><br>
 Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><br>
+&#128308; <b>All four holes are &oslash;8.4, the close fit &mdash; NOT the &oslash;9 used everywhere else on
+M8.</b> This is the one part on the trip where the float is not wanted.<sup class="f">2.13</sup><br>
 </div>
 
 <figure>
@@ -1049,12 +1051,12 @@ Spans <b>exactly the beam's footprint, Y 0 to 60</b>.<sup class="f">2.10</sup><b
 
 <table class="sched">
 <tr><th>Ref</th><th>Feature</th><th>Qty</th><th>Y</th><th>Z</th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>V1</td><td>M8 <b>up</b> into a T-nut, bottom extrusion underside slot</td><td>1</td><td class="n">15</td><td class="n">&mdash;</td><td class="d">9</td><td class="op">Through &middot; <b>c'bored from BELOW</b><sup class="f">2.11</sup></td></tr>
-<tr><td>V2</td><td>M8 <b>up</b> into the second underside slot</td><td>1</td><td class="n">45</td><td class="n">&mdash;</td><td class="d">9</td><td class="op">Through &middot; c'bored from below</td></tr>
-<tr><td>P1</td><td>Horizontal, bar to plate &mdash; mates H1</td><td>1</td><td class="n">30</td><td class="n">15</td><td class="d">9</td><td class="op">Through the bar<sup class="f">2.12</sup></td></tr>
-<tr><td>P2</td><td>Horizontal, bar to plate &mdash; mates H2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">9</td><td class="op">Through the bar</td></tr>
+<tr><td>V1</td><td>M8 <b>up</b> into a T-nut, bottom extrusion underside slot</td><td>1</td><td class="n">15</td><td class="n">&mdash;</td><td class="d">8.4</td><td class="op">Through &middot; <b>c'bored from BELOW</b><sup class="f">2.11</sup></td></tr>
+<tr><td>V2</td><td>M8 <b>up</b> into the second underside slot</td><td>1</td><td class="n">45</td><td class="n">&mdash;</td><td class="d">8.4</td><td class="op">Through &middot; c'bored from below</td></tr>
+<tr><td>P1</td><td>Horizontal, bar to plate &mdash; mates H1</td><td>1</td><td class="n">30</td><td class="n">15</td><td class="d">8.4</td><td class="op">Through the bar<sup class="f">2.12</sup></td></tr>
+<tr><td>P2</td><td>Horizontal, bar to plate &mdash; mates H2</td><td>1</td><td class="n">30</td><td class="n">35</td><td class="d">8.4</td><td class="op">Through the bar</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
-<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;9</td><td><b>4</b></td><td colspan="4" class="tn">2 of this part get made &mdash; <b>8 holes</b> in all</td></tr>
+<tr class="tot"><td><b>TOTAL</b></td><td>4 &times; &oslash;8.4</td><td><b>4</b></td><td colspan="4" class="tn">2 of this part get made &mdash; <b>8 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
 
@@ -2742,6 +2744,16 @@ three the same, and install one here and one at each Y end.
 <p><b>2.10</b> &mdash; <b>60 long, and the change deleted a hazard.</b> The bar was 76.2 to span "the beam's 60 mm depth plus the back plate". With the beam flush, its back face <b>is</b> the plate's back edge, so the joining plate now sits entirely behind the plate in air. The old sheet warned that the joining plate's bottom edge had to be flush, never proud, or the gantry would sit on a plate edge in line contact. <b>That risk existed only because the bar reached under it.</b> Ending at Y 0 removes the failure mode by construction.</p>
 <p><b>2.11</b> &mdash; <b>&#9888; Check the counterbore diameter before cutting to exactly 60.</b> V1 at Y 15 leaves 15 mm to the bar's end, which is only ~7.5 mm of wall outside a &oslash;15 counterbore. If it reads tight on the real counterbore, 65 costs nothing and still stops short of the joining plate.</p>
 <p><b>2.12</b> &mdash; <b>Separated in Z, not in Y, and that is the better axis.</b> Both sit at Y 30 because the vertical T-nut bolts hold Y 15 and Y 45 and two M8 need ~12 mm between centres - so Y 30 is the only free station. Stacking them 20 mm apart in Z resists the bar pitching nose-down, which is the load that matters.</p>
+<p><b>2.13</b> &mdash; <b>&oslash;8.4 on all four, and the reason is the shim.</b> Roll is trammed by shimming
+between this bar's <b>top face</b> and the X beam's bottom extrusion, so the bar is the platform that
+shim bears against. The bar carries its share of the gantry into the end plate by friction and bolt
+shear, and if that joint ever slips the bar drops by whatever radial clearance the holes have &mdash;
+<b>0.5 mm on a &oslash;9, which is the whole roll adjustment, against 0.2 mm on a &oslash;8.4.</b> It costs
+no adjustment range, because the shim goes above the bar and these bolts do not move when roll is set.
+<b>Drill the bar's P1 and P2 first and spot the plate's H1 and H2 off the bar</b> &mdash; the bar's are
+through and the plate's are blind, and at this fit the two pairs have to agree closely across the 20 mm
+between them. The verticals get the same fit for the opposite reason: they are <b>slackened</b> to slide
+a shim in, and a loose hole would let the bar shift in Y on re-torque and walk off the T-nuts.</p>
 <p><b>2.13</b> &mdash; <b>The tongue's X carries the interposer, because the interposer is under the casting.</b>
 <b>X 235 is the top of the X beam's upper extrusion</b>, and both rows are measured up from it. The cast stepper
 frame at this end <b>does not land on the beam</b>: a <b>10 mm interposer sits between beam and casting</b>, so

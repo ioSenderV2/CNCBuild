@@ -75,6 +75,7 @@ PURPOSE = {
     '5.2': 'M5 clearance, <b>counterbore pilot</b> &mdash; stays 5.2 on 2a and 3a',
     '6': 'M5 clearance, <b>one size throughout</b> &middot; plus the three &oslash;6 hex-driver access holes',
     '6.8': 'M8 tap drill &mdash; drilled through, <b>tapped at home</b>',
+    '8.4': 'M8 <b>close fit</b> &mdash; the shelf bar only, where the roll shim bears and float is <b>not</b> wanted',
     '9': 'M8 clearance &mdash; into extrusion T-nuts and beam corner bores, <b>float is wanted</b>',
     '22': 'The Z screw passes through the top stop block',
     '35': 'Encoder sensor bore',
