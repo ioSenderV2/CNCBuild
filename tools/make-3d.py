@@ -1346,14 +1346,19 @@ def main() -> int:
             # 2a is both plates; 2b is the min X one, which carries the tongue
             d=sheet_note("2a and 2b" if x0 < xb_x0 else "2a"))
         # It runs the plate's FULL 154 fore-aft, not DOUBLER_H - the four
-        # stations D1-D4 that bolt it on are spread across that 154, and so
-        # are the sole bracket's two rows. DOUBLER_H is its 45 UP the plate,
-        # the offcut width, and it had been standing in for both.
+        # stations D1-D4 that bolt it on are spread across that 154. DOUBLER_H
+        # is its 45 UP the plate, the offcut width.
+        #
+        # ITS END FACE IS THE NUT PLANE, NOT THE PLATE'S BOTTOM EDGE. The plate
+        # reaches XEP_SOLE_TAB further down so the sole plate's base has a face
+        # to butt, so the block starts DOUBLER_BOTTOM_X up from xep_bot - and
+        # that is the whole 10 mm of difference the joint was changed for.
+        doub_bot = xep_bot + v["DOUBLER_BOTTOM_X"]
         box("Y nut doubler", "gantry", 0xB06000,
             x0 - v["T_DOUBLER"] if x0 < xb_x0 else x0 + xep_t, xep_back,
-            xep_bot,
+            doub_bot,
             x0 if x0 < xb_x0 else x0 + xep_t + v["T_DOUBLER"],
-            xep_front, xep_bot + v["DOUBLER_H"])
+            xep_front, doub_bot + v["DOUBLER_H"])
 
         # ---- four M8 into the X beam's TOP extrusion end bores ----------
         # The plate bolts to the beam's end, and the bores are EXT_BORE_INSET
