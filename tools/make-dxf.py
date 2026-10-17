@@ -51,7 +51,7 @@ SCHED_RE = r'<table class="sched">(.*?)</table>'
 #   kind 'stock' - he supplies the piece, so the outline IS the stock and the
 #                  job is holes. payload: (sheet, L, W, thickness, material,
 #                  how many pieces the one drawing is for)
-#   kind 'fins'  - two profiles nested in one square
+#   kind 'fins'  - one profile on its own square, cut twice
 #   kind 'sole'  - profiles only, the shop supplies the plate
 #   kind 'xep'   - an end plate with its doubler in the strip beside it
 ORDER = [
@@ -79,7 +79,6 @@ def filename(slug):
 
 
 FIN_BASE, FIN_TOP, FIN_H = 200.0, 100.0, 301.625
-FIN_GAP = 1.0           # between the two nested fins
 
 # THE ONE SETUP WHERE THE SHOP SUPPLIES THE METAL - his, 2026-10-16. So there is
 # no stock rectangle: these are three part profiles cut from the shop's own
@@ -269,16 +268,17 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
     fins = sheet == 's1a'
 
     if fins:
-        # two nested head to tail, the straight outboard edge on the outside
-        a = [(0, 0), (FIN_BASE, 0), (FIN_TOP, FIN_H), (0, FIN_H)]
-        dx = FIN_BASE + FIN_TOP + FIN_GAP
-        b = [(dx - x, FIN_H - y) for x, y in a]
-        for pts in (a, b):
-            ents += poly(pts, 'OUTLINE')
+        # ONE FIN PER PIECE OF PLATE, which is what Sheet 1a says and what put
+        # FIN_TOP_W back to a chosen 100: while the two nested head to tail out
+        # of a single square, top plus base plus kerf had to equal the square
+        # and the top absorbed the remainder. The stock outline is drawn so the
+        # square is visible, and the same drawing is cut twice.
+        ents += poly([(0, 0), (W, 0), (W, L), (0, L)], 'STOCK')
+        ents += poly([(0, 0), (FIN_BASE, 0), (FIN_TOP, FIN_H), (0, FIN_H)],
+                     'OUTLINE')
         for x, y, d in holes:
             ents += circle(x, y, d, 'HOLES')
-            ents += circle(dx - x, FIN_H - y, d, 'HOLES')
-        used = dx
+        used = FIN_BASE
     else:
         ents += poly([(0, 0), (L, 0), (L, W), (0, W)], 'OUTLINE')
         for x, y, d in holes:
@@ -302,10 +302,10 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
             raise SystemExit(f'{name}: a merge row found no window to join')
         used = L
 
-    n = len(holes) * (2 if fins else 1)
+    n = len(holes)
     sizes = {}
     for _, _, d in holes:
-        sizes[d] = sizes.get(d, 0) + (2 if fins else 1)
+        sizes[d] = sizes.get(d, 0) + 1
     bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
 
     ty = W + 14
@@ -566,8 +566,7 @@ def main():
             title, sheet, L, W, T, mat, qty = payload
             n, nc, used, sizes = build(name, title, sheet, L, W, T, mat, qty,
                                        src, reg)
-            per_part = {d: c // (2 if kind == 'fins' else 1)
-                        for d, c in sizes.items()}
+            per_part = dict(sizes)
             if per_part != expect.get((sheet, 0)):
                 bad.append(f'{name}: this file {per_part} against the tally '
                            f'{expect.get((sheet, 0))}')
@@ -576,8 +575,8 @@ def main():
                   + '   ' + ', '.join(f'{sizes[d]}x o{d:g}'
                                       for d in sorted(sizes)))
             if kind == 'fins':
-                print(f'  {"":20s} nest {used:g} across a {W:g} square, '
-                      f'{W - used:g} spare')
+                print(f'  {"":20s} one fin on its own {W:g} square, '
+                      f'{W - used:g} spare across the base')
 
         elif kind == 'sole':
             n, used, tall, sizes, per_sheet = build_sole(src, reg)
