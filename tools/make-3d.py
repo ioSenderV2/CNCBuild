@@ -734,6 +734,71 @@ def main() -> int:
                     d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs and is "
                       f"not housed in any of them")
 
+    # ---- the lower rails' outer pads, the casters and the fork channel -----
+    # THE LOWER fore-aft rails are FOUR laminations, not two. The inner pair
+    # passes through the legs' slot; these two cannot, so they butt a leg's face
+    # at each end. They bring the rail out to POST_W_X so a caster's plate lands
+    # on a full face. The upper grid keeps two.
+    cp, ch = v["CASTER_PLATE"], v["CASTER_H"]
+    blk = v["CASTER_BLOCK_MIN"]
+    pad_y0, pad_y1 = by0 + pwy, by1 - pwy          # between the legs' faces
+    for x0, x1 in ((bx0 + strip, bx0 + strip + gm_t),
+                   (bx1 - strip - gm_t, bx1 - strip)):
+        for px0, px1 in ((x0 - strip, x0), (x1, x1 + strip)):
+            box("Rail pad, lower fore-aft", "rails", 0x4E97C4,
+                px0, pad_y0, grid_lo_bot, px1, pad_y1, grid_lo_bot + gm_h,
+                d=f"{strip:g} x {gm_h:g} x {pad_y1 - pad_y0:g} - it butts a "
+                  f"leg's face at each end and brings the rail out to "
+                  f"{pwx:g}, which is what a caster plate lands on")
+
+    # SIX LEVELLING CASTERS, all of them INSIDE the floor clearance rather than
+    # under the legs, which is what keeps the base's height as drawn. Four
+    # beside the corner legs under the lower rail, two straddling the back
+    # centre leg - that one has no fore-aft rail and a single caster under it
+    # would put its adjuster behind the leg.
+    #
+    # DRAWN AS THE ENVELOPE AND NOT AS A CASTER: the listing gives the plate,
+    # the overall height and the travel, and nothing about the body, the wheel's
+    # width or its offset. What is drawn is what is known.
+    def caster(cx0, cy0, note):
+        box("Caster block", "rails", 0x8C6A3F,
+            cx0, cy0, grid_lo_bot - blk, cx0 + cp, cy0 + cp, grid_lo_bot,
+            d=f"the drop block, drawn at its minimum {blk:g}. CUT TO FIT: it "
+              f"has to put the wheel below the leg bottoms, and the six of "
+              f"them are what level the base against the slab")
+        box("Levelling caster", "rails", 0x999999,
+            cx0, cy0, grid_lo_bot - blk - ch, cx0 + cp, cy0 + cp,
+            grid_lo_bot - blk,
+            d=f"{cp:g} plate, {ch:g} overall, "
+              f"{v['CASTER_LEVEL_TRAVEL']:g} of levelling travel, 50 nylon "
+              f"wheel. Drawn as its envelope - {note}")
+
+    half = (cp - pwx) / 2                      # the plate stands 0.5 proud
+    for lx0, lx1, ly0, ly1 in leg_rects:
+        if abs(lx0 - (BW - pwx) / 2) < 1e-9:           # the back centre leg
+            for sx in (lx0 - cp, lx1):
+                caster(sx, ly0, "it bears on the back wall's bottom edge "
+                                "beside the leg, one of the straddling pair")
+        else:
+            cy0 = ly1 if ly0 <= by0 + 1e-9 else ly0 - cp
+            caster(lx0 - half, cy0, "under the lower rail, hard against the "
+                                    "leg's face")
+
+    # TWO GUARD RAILS, a dressed 2x3 each, hanging below the lower grid and
+    # FORK_CHANNEL_W apart. They keep the jack centred and stop a fork reaching
+    # a caster. GUIDES AND NOT BEARING SURFACES: as the jack lifts, the forks
+    # rise inside the channel until they bear on the grid's underside.
+    chan_c = (pad_y0 + pad_y1) / 2
+    for gy0 in (chan_c - v["FORK_CHANNEL_W"] / 2 - v["GUARD_RAIL_T"],
+                chan_c + v["FORK_CHANNEL_W"] / 2):
+        box("Fork guard rail", "rails", 0xB07A3C,
+            bx0 + pwx, gy0, grid_lo_bot - v["GUARD_RAIL_DROP"],
+            bx1 - pwx, gy0 + v["GUARD_RAIL_T"], grid_lo_bot,
+            d=f"dressed 2x3, hanging {v['GUARD_RAIL_DROP']:g} below the grid "
+              f"and leaving {v['BASE_FLOOR_CLEAR'] - v['GUARD_RAIL_DROP']:g} "
+              f"under it. The two are {v['FORK_CHANNEL_W']:g} apart, which is "
+              f"the channel the forks run in")
+
     # The two shear walls, a T in plan: the centreline one runs back to the back
     # centre leg, which is the box's own rear support, so the wall lands under
     # the load it braces. They are what leaves the left and right volumes open.

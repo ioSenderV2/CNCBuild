@@ -3214,6 +3214,23 @@ source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
 note = "7 - the leveling foot's whole range, and the whole leveling authority of the base. SETTLED: THE DROP BLOCKS DO THE GROSS LEVELLING - measure the slab under the six positions, cut each block so the six are within a couple of mm, and this trims the rest. FLAG: THE MACHINE STANDS ON THE FEET, NOT ON THE LEGS. 7 is not enough to lift the wheels clear AND set the legs back down, so the leg bottoms hang a few mm off the floor in both states."
 
 [[dim]]
+sym = "CASTER_BLOCK_MIN"
+expr = "BASE_FLOOR_CLEAR - CASTER_H"
+note = "13.4 - the THINNEST a caster's drop block can be: at this the wheel just touches the floor plane with the legs still on it. SETTLED: THE BLOCK IS CUT TO FIT AND IS THICKER THAN THIS - it has to put the wheel below the leg bottoms, and it is what levels the six positions against the slab. This figure is the floor under that, and the model draws it. FLAG: THE BLOCK IS A SHIM IN COMPRESSION, not a hanger - the structure bears down on it and the caster bears up, so its screws locate it and carry nothing."
+
+[[dim]]
+sym = "GUARD_RAIL_T"
+value = 38.1
+provenance = "part"
+note = "38.1 - a dressed 2x3 on edge, which is what each of the two fork guard rails is. His call."
+
+[[dim]]
+sym = "GUARD_RAIL_DROP"
+value = 63.5
+provenance = "part"
+note = "63.5 - how far a guard rail hangs below the lower grid, the dressed 2x3's other face. It leaves 36.5 of the floor clearance open under the rail, which is why this depth guides a fork without being something the base can catch on."
+
+[[dim]]
 sym = "FORK_CHANNEL_W"
 value = 700
 provenance = "pinned"

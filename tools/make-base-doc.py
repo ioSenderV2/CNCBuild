@@ -111,17 +111,14 @@ def parts(v):
          f"{gm_h:g} up. Cut {v['WALL_H'] - v['CENTRE_WALL_H']:g} shorter than "
          f"the back wall so both come off ONE 5 x 5, which is CUT - that sheet "
          "is spent too"),
-        ("Caster block, corner", v["CASTER_PLATE"], v["POST_W_X"], 4, "offcut",
-         "one beside each corner leg, under the lower rail and hard against "
-         "the leg's face, screwed into both. THICKNESS IS CUT TO FIT: it has "
-         f"to bring the wheel just below the leg bottoms, and {v['CASTER_H']:g} "
-         f"in a {v['BASE_FLOOR_CLEAR']:g} band leaves "
-         f"{v['BASE_FLOOR_CLEAR'] - v['CASTER_H']:.1f} to make up"),
-        ("Caster block, back centre",
-         2 * v["CASTER_PLATE"] + v["POST_W_X"], v["POST_W_Y"], 1, "offcut",
-         "ONE block for the straddling pair, screwed to the back centre leg's "
-         "foot and to the back wall above it. Both plates land on one face, so "
-         "the two casters are the same height by construction"),
+        ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 6, "offcut",
+         "one per caster, a shim in compression between the structure and the "
+         "plate. Four bear on a lower rail's underside against a corner leg's "
+         "face; the two at the back centre bear on the back wall's bottom edge "
+         "either side of the leg. THICKNESS IS CUT TO FIT and all six come off "
+         f"one piece so they match: {v['CASTER_H']:g} in a "
+         f"{v['BASE_FLOOR_CLEAR']:g} band leaves "
+         f"{v['CASTER_BLOCK_MIN']:.1f} before the wheel even touches"),
         ("Leg foot spacer", v["FOOT_SPACER_H"], v["POST_W_Y"], 10, "offcut",
          "2 laminations each, all FIVE legs - glued to the inside of the outer "
          "lamination, closing the slot from the floor up to the lower rail. "
@@ -992,11 +989,15 @@ fit.</b> {v['CASTER_H']:g} in a {v['BASE_FLOOR_CLEAR']:g} band leaves
 wheel just below the leg bottoms. <b>Measure the slab under the six positions and
 cut the six blocks so they land within a couple of mm of each other</b> &mdash;
 the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
+<p><b>A block is a shim in compression</b>, not a hanger: the structure bears
+down on it and the caster bears up, so its screws locate it and carry nothing.
+Four of them bear on a <b>lower rail's underside</b>, hard against a corner leg's
+face. The two at the back centre bear on the <b>back wall's bottom edge</b>
+either side of the leg &mdash; the leg itself fills the band there, so nothing
+can pass under its foot and still reach the same plane as the other four.</p>
 <p><b>The machine stands on the feet.</b> There is not enough travel to lift the
 wheels clear and set the legs back down, so the leg bottoms hang a few mm off the
-floor either way. <b>Screw each block to the leg as well as to the rail</b>, hard
-against the leg's face: the load then runs leg to block to caster, and the leg's
-housing joints in the grid never carry the machine in shear.</p>
+floor either way.</p>
 <p><b>Level on three things</b> &mdash; the two front corners and the centre pair
 as one point. <b>The two rear corners come down to touch</b>, not to lift: they
 carry nothing standing, and they are what stops the thing tipping about a line
@@ -1004,11 +1005,12 @@ from a front corner to the back centre.</p>
 <p><b>The fork channel is {v['FORK_CHANNEL_W']:g} wide, centred in the
 {v['BAY_OPEN_FORE_AFT']:g} opening</b>, with a guard rail each side screwed under
 the lower grid. That leaves <b>{margin:.0f}</b> at each end of the opening, which
-is where the casters and their blocks sit. The rails keep the jack centred and
-stop a fork ever reaching a caster. OPEN: <b>How far they hang below the grid is
-not set</b> &mdash; deep enough to guide a fork, and they are <b>guides and not
-bearing surfaces</b>: as the jack lifts, the forks rise inside the channel until
-they bear on the grid's underside.</p>
+is where the casters and their blocks sit. Each rail is a <b>dressed 2x3 on
+edge</b>, hanging <b>{v['GUARD_RAIL_DROP']:g}</b> below the grid and leaving
+<b>{v['BASE_FLOOR_CLEAR'] - v['GUARD_RAIL_DROP']:g}</b> under itself. They keep
+the jack centred and stop a fork ever reaching a caster, and they are <b>guides
+and not bearing surfaces</b>: as the jack lifts, the forks rise inside the
+channel until they bear on the grid's underside.</p>
 """
 
 

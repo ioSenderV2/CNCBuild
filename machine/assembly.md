@@ -1208,12 +1208,14 @@ casters.
 | | |
 |---|---|
 | **Caster** | 73 plate, four holes at 7; **86.6** overall; **7** of leveling travel; 50 nylon wheel |
-| **Drop block** | One under every caster, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** to the floor and 7 of foot cannot make it up |
-| **Back centre** | **One block** for both casters, screwed to the leg's foot and to the back wall above it — both plates on one face, so the pair is the same height by construction |
+| **Drop block** | One under every caster, 73 × 73, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** before the wheel even touches, and 7 of foot cannot make that up |
+| **Guard rail** | A dressed 2x3 each, hanging **63.5** and leaving 36.5 under it |
 
-🔴 **Screw each block to the leg as well as to the rail**, hard against the leg's face. The load then
-runs leg to block to caster, and the leg's housing joints in the grid never carry the machine in
-shear.
+**A block is a shim in compression**, not a hanger — the structure bears down on it and the caster
+bears up, so its screws locate it and carry nothing. **Four bear on a lower rail's underside**, hard
+against a corner leg's face. **The two at the back centre bear on the back wall's bottom edge**,
+either side of the leg: the leg fills the band there, so nothing can pass under its foot and still
+reach the same plane as the other four. **Cut all six blocks off one piece** so they match.
 
 **The machine stands on the feet.** 7 is not enough to lift the wheels clear and set the legs back
 down, so the leg bottoms hang a few mm off the floor either way.
@@ -1225,11 +1227,11 @@ they carry nothing standing, and they are what stops the thing tipping about a l
 corner to the back centre.
 
 **The fork channel is 700 wide, centred in the 1087 opening**, with a guard rail each side screwed
-under the lower grid. That leaves **193** at each end, which is where the casters and their blocks
-sit. The rails keep the jack centred and stop a fork reaching a caster. Open: **how far they hang
-below the grid is not set** — deep enough to guide a fork, and they are **guides, not bearing
-surfaces**: as the jack lifts, the forks rise inside the channel until they bear on the grid's
-underside.
+under the lower grid, each a **dressed 2x3 on edge hanging 63.5** and running between the side legs.
+That leaves **193** at each end of the opening, which is where the casters and their blocks sit, and
+**36.5** of clearance under the rails themselves. They keep the jack centred and stop a fork reaching
+a caster, and they are **guides, not bearing surfaces**: as the jack lifts, the forks rise inside the
+channel until they bear on the grid's underside.
 
 #### And a spacer at the foot of all five
 
