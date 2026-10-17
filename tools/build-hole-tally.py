@@ -109,6 +109,11 @@ def collect(src):
         for ti, t in enumerate(re.findall(SCHED_RE, blk, re.S)):
             hdr = [text_of(x) for x in re.findall(r'<th[^>]*>(.*?)</th>', t, re.S)]
             dcol = hdr.index('o') if 'o' in hdr else None
+            # BY HEADER NAME, not by position - the same contract make-dxf.py
+            # reads these tables under. Qty was hardcoded at index 2, which
+            # held only while every schedule carried the same columns in the
+            # same order.
+            qcol = hdr.index('Qty') if 'Qty' in hdr else 2
             label, part, made = PARTS.get((name, ti), (None, None, 1))
             if part is None:
                 unknown.append('%s table %d' % (name, ti))
@@ -126,7 +131,7 @@ def collect(src):
                 c = [text_of(x) for x in re.findall(r'<td[^>]*>(.*?)</td>', r, re.S)]
                 if len(c) < 4 or dcol is None or len(c) <= dcol:
                     continue
-                m = re.search(r'\d+', c[2].replace('4 * 7', '28'))
+                m = re.search(r'\d+', c[qcol].replace('4 * 7', '28'))
                 n = int(m.group()) if m else 1
                 dia = c[dcol].strip()
                 if not re.match(r'^\d+(\.\d+)?$', dia):

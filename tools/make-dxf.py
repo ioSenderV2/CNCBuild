@@ -119,6 +119,19 @@ def numbers(cell):
     return [float(x) for x in re.findall(r'-?\d+(?:\.\d+)?', cell)]
 
 
+def cols(hdr):
+    """(Qty, X, Y) column indices, BY HEADER NAME and not by position.
+
+    These used to be hardcoded 2, 3 and 4, which held only while every
+    schedule carried the same seven columns in the same order. Dropping one
+    column from the pack would then have shifted X and Y under the reader
+    without any error: the cells still parse as numbers, so the DXF would come
+    out wrong rather than refusing to build. The header is the contract.
+    """
+    return tuple(hdr.index(k) if k in hdr else d
+                 for k, d in (('Qty', 2), ('X', 3), ('Y', 4)))
+
+
 def holes_for(src, sheet, ti=None):
     """(x, y, diameter) for every drilled hole on a sheet.
 
@@ -142,6 +155,7 @@ def holes_for(src, sheet, ti=None):
             if 'o' not in hdr:
                 continue
             dcol = hdr.index('o')
+            qcol, xcol, ycol = cols(hdr)
             for tag, r in re.findall(r'(<tr[^>]*>)(.*?)</tr>', t, re.S):
                 if '<th' in r or 'TOTAL' in r:
                     continue
@@ -160,9 +174,9 @@ def holes_for(src, sheet, ti=None):
                     # is what the tally counts off too.
                     if re.match(r'^\d+(\.\d+)?$', dia):
                         edge[float(dia)] = (edge.get(float(dia), 0)
-                                            + int(numbers(c[2])[0]))
+                                            + int(numbers(c[qcol])[0]))
                     continue
-                xs, ys = numbers(c[3]), numbers(c[4])
+                xs, ys = numbers(c[xcol]), numbers(c[ycol])
                 if not re.match(r'^\d+(\.\d+)?$', dia):
                     # a cut-out: the X cell holds pairs, the Y cell one pair.
                     # NOT `i` - that is the table index the ti filter reads.
