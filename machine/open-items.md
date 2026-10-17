@@ -17,7 +17,8 @@
   and the fins. His call: float is wanted in the ø9 into extrusion bores and the ø5.2 block bolts,
   so jet taper costs nothing there, where a tapped or counterbored hole wants a clean wall.
   **A ø3 pilot opened out here was the working figure**; the shop may prefer a different size, a
-  scribed mark, or to cut them as drawn. The intro page of the quote package asks them directly.
+  scribed mark, or to cut them as drawn. The intro page of each quote request asks them directly,
+  and this question lands in **quote 3** - the fins and the end plates are both in that one.
   ⚠ **A magdrill is not the tool for these** - every ø4.2 in the build is in 6061, so a magnetic
   base has nothing to grip unless the part is clamped on a steel plate.
 

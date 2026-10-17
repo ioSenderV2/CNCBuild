@@ -67,8 +67,14 @@ $docs = @(
     [pscustomobject]@{ Key = 'pack';   Html = 'machine/drawings/shop-pack.html'
                                        Pdf  = 'machine/drawings/shop-pack.pdf' }
     # The quote DXFs drawn back from their own bytes - what the shop receives.
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/preview.html'
-                                       Pdf  = 'machine/drawings/dxf/dxf-preview.pdf' }
+    # THREE REQUESTS, QUOTED SEPARATELY, so three PDFs. They share the key so
+    # -Doc dxf still means all of them and the generator still runs once.
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-1-steel.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-1-steel.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-x-back-joiner.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-2-x-back-joiner.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-3-aluminium.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-3-aluminium.pdf' }
 )
 # 'both' still means the two root documents, so an older command line keeps working
 if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }

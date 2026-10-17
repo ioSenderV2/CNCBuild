@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
-"""Draw the quote DXFs into one reviewable page, one part per sheet.
+"""Draw the quote DXFs into three quote requests, one part per sheet.
 
     python tools/dxf-preview.py
 
-Writes machine/drawings/dxf/preview.html; make-pdf.ps1 prints it.
+Writes one HTML per group in GROUPS below, into machine/drawings/dxf/;
+make-pdf.ps1 prints them.
 
 IT PARSES THE WRITTEN BYTES, not make-dxf.py's own data. That is the whole
 value: a mistake in the writer shows up here as a wrong picture instead of
-agreeing with itself. What this page shows is what the shop receives.
+agreeing with itself. What these pages show is what the shop receives.
+
+THREE REQUESTS, NOT ONE, AND EACH IS SELF-CONTAINED. They go to shops
+separately, so neither the how-to-read notes nor the quoting instructions can
+be shared between them - every file carries a full copy. Quoting one group does
+not require the others to be in the envelope.
 
 To scale, with the scale stated, the outline dimensioned and every hole size
 called out. Letter landscape - a 1211 part at 1:5 is 242 mm, which fits the
@@ -22,7 +28,43 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "machine" / "drawings" / "dxf"
-OUT = SRC / "preview.html"
+
+# THE SPLIT IS HIS, BY WHAT GETS QUOTED TOGETHER - not by material, which is
+# why group 3 is "everything else" rather than "the aluminium": group 2 is
+# aluminium too and is quoted on its own. Every DXF in the folder must appear
+# in exactly one group; main() fails if one is missing or named twice, so a
+# ninth drawing cannot drop silently out of all three requests.
+GROUPS = [
+    {
+        "out": "quote-1-steel.html",
+        "title": "Waterjet quote - steel plates",
+        "lead": "Three drawings, all <b>steel</b>: the rear plate, the two "
+                "side plates, and the three nut sole plates. The rear and "
+                "side plate material is <b>supplied</b>; the sole plates are "
+                "cut from <b>1/4in HR A36 the shop supplies</b>.",
+        "files": ["1-back-plate.dxf", "2-side-plates.dxf",
+                  "3-sole-plates.dxf"],
+    },
+    {
+        "out": "quote-2-x-back-joiner.html",
+        "title": "Waterjet quote - X back joining plate",
+        "lead": "One drawing: the <b>X back joining plate</b>, 28 holes in a "
+                "supplied length of 6061 flat bar. The material is "
+                "<b>supplied</b> - the job is the holes.",
+        "files": ["5-x-back-joiner.dxf"],
+    },
+    {
+        "out": "quote-3-aluminium.html",
+        "title": "Waterjet quote - 6061 strips, fins and end plates",
+        "lead": "Four drawings in <b>6061</b>: the three inside joining "
+                "strips, the two Y front fins, and the two X gantry end "
+                "plates. <b>All material is supplied</b> and the outline "
+                "drawn is the piece handed over, so the job is the holes and "
+                "the profiles cut out of each piece.",
+        "files": ["4-inside-joiners.dxf", "6-front-fins.dxf",
+                  "7-x-end-plate-left.dxf", "8-x-end-plate-right.dxf"],
+    },
+]
 
 PAGE_W, PAGE_H = 272.0, 180.0        # mm of usable letter landscape
 SCALES = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10]
@@ -213,21 +255,20 @@ def page(path: Path, bad: list, toc: list) -> str:
               f'width="{svg_w:.0f}mm">{"".join(g)}</svg></section>')
 
 
-def intro(toc: list) -> str:
-    """The front page: what the package is, what is in it, how to read it.
+def intro(toc: list, group: dict) -> str:
+    """The front page: what the request is, what is in it, how to read it.
 
     EVERY FIGURE HERE COMES OFF THE PARSED FILES, not from a list written
     beside them - the contents table cannot disagree with the drawings it
-    indexes, because it is built from the same bytes on the same pass.
+    indexes, because it is built from the same bytes on the same pass. Only the
+    title and the lead sentence come from GROUPS.
     """
     rows = "".join(
         f'<tr><td class=f>{t["file"]}</td><td>{t["title"]}</td>'
         f'<td class=t>{t["stock"]}</td><td class=t>{t["size"]} mm</td>'
         f'<td class=t>{t["bom"]}</td></tr>' for t in toc)
-    return f'''<section><h1>Waterjet quote package</h1>
-<p class=lead>{len(toc)} drawings, grouped by material and setup: the three
-<b>steel</b> jobs first, then the <b>6061 joining plates</b>, then the front
-fins and the gantry end plates. <b>Every drawing is a separate DXF</b> and the
+    return f'''<section><h1>{group["title"]}</h1>
+<p class=lead>{group["lead"]} <b>Every drawing is a separate DXF</b> and the
 file name is printed on its page.</p>
 
 <h2>What is in it</h2>
@@ -268,22 +309,10 @@ choose; the drawings do not assume one.</li>
 </section>'''
 
 
-def main() -> int:
-    files = sorted(SRC.glob("*.dxf"))
-    if not files:
-        print("no DXFs; run tools/make-dxf.py first", file=sys.stderr)
-        return 1
-    bad: list[str] = []
-    toc: list = []
-    body = "".join(page(f, bad, toc) for f in files)
-    if bad:
-        print("OPEN PROFILE - these cannot go to the shop:", file=sys.stderr)
-        for b in bad:
-            print("    " + b, file=sys.stderr)
-        return 1
-    OUT.write_text(
+def shell(title: str, body: str) -> str:
+    return (
         "<!DOCTYPE html><html lang=en><head><meta charset=utf-8>"
-        "<title>CNCBuild &mdash; quote DXF preview</title><style>"
+        f"<title>CNCBuild &mdash; {title}</title><style>"
         "@page{size:letter landscape;margin:10mm}"
         "body{font:10pt 'Segoe UI',sans-serif;color:#111;margin:0}"
         "section{page-break-after:always;padding:0 0 4mm}"
@@ -305,11 +334,48 @@ def main() -> int:
         "li{margin:0 0 1.2mm}"
         "p.n{margin:0 0 1mm;font-size:9pt}"
         "p.s{margin:0 0 2mm;font-size:8pt;color:#555}"
-        "svg{display:block}</style></head><body>" + intro(toc) + body
-        + "</body></html>",
-        encoding="utf-8", newline="")
-    print(f"{len(files)} part(s), every profile closing -> "
-          f"{OUT.relative_to(ROOT)}")
+        "svg{display:block}</style></head><body>" + body + "</body></html>")
+
+
+def main() -> int:
+    files = sorted(SRC.glob("*.dxf"))
+    if not files:
+        print("no DXFs; run tools/make-dxf.py first", file=sys.stderr)
+        return 1
+
+    # EVERY DRAWING IN EXACTLY ONE REQUEST. A new DXF that nobody added to a
+    # group would otherwise be quoted by nobody, and the only symptom would be
+    # a part that never arrives.
+    grouped = [f for g in GROUPS for f in g["files"]]
+    have = {f.name for f in files}
+    missing = sorted(have - set(grouped))
+    unknown = sorted(set(grouped) - have)
+    twice = sorted({f for f in grouped if grouped.count(f) > 1})
+    if missing or unknown or twice:
+        print("GROUPS does not match the folder:", file=sys.stderr)
+        for f in missing:
+            print(f"    {f} is in no group - add it to GROUPS", file=sys.stderr)
+        for f in unknown:
+            print(f"    {f} is grouped but not written", file=sys.stderr)
+        for f in twice:
+            print(f"    {f} is in more than one group", file=sys.stderr)
+        return 1
+
+    for g in GROUPS:
+        bad: list[str] = []
+        toc: list = []
+        body = "".join(page(SRC / f, bad, toc) for f in g["files"])
+        if bad:
+            print("OPEN PROFILE - these cannot go to the shop:",
+                  file=sys.stderr)
+            for b in bad:
+                print("    " + b, file=sys.stderr)
+            return 1
+        out = SRC / g["out"]
+        out.write_text(shell(g["title"], intro(toc, g) + body),
+                       encoding="utf-8", newline="")
+        print(f"{len(g['files'])} part(s), every profile closing -> "
+              f"{out.relative_to(ROOT)}")
     return 0
 
 
