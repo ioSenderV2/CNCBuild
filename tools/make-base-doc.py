@@ -1021,7 +1021,14 @@ from a front corner to the back centre.</p>
 the lower grid. That leaves <b>{margin:.0f}</b> at each end of the opening, which
 is where the casters and their blocks sit. Each rail is a <b>dressed 2x3 on
 edge</b>, hanging <b>{v['GUARD_RAIL_DROP']:g}</b> below the grid and leaving
-<b>{v['BASE_FLOOR_CLEAR'] - v['GUARD_RAIL_DROP']:g}</b> under itself. They keep
+<b>{v['BASE_FLOOR_CLEAR'] - v['GUARD_RAIL_DROP']:g}</b> under itself.</p>
+<p>🔴 <b>Both ends run under a lower fore-aft rail and are screwed up into
+it.</b> That is the anchorage, and it is what takes a sideways hit from a fork.
+Each rail is <b>{v['GUARD_RAIL_L']:g}</b> &mdash; one lamination short at each
+end, so it covers the fore-aft rail's inner three strips, <b>54</b> of overlap,
+and its own ends sit 18 in from the base's outer faces. <b>The central wall
+catches it again at mid-span</b>, which halves the length it has to resist a hit
+over. They keep
 the jack centred and stop a fork ever reaching a caster, and they are <b>guides
 and not bearing surfaces</b>: as the jack lifts, the forks rise inside the
 channel until they bear on the grid's underside.</p>

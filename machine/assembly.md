@@ -1233,11 +1233,18 @@ they carry nothing standing, and they are what stops the thing tipping about a l
 corner to the back centre.
 
 **The fork channel is 700 wide, centred in the 1087 opening**, with a guard rail each side screwed
-under the lower grid, each a **dressed 2x3 on edge hanging 63.5** and running between the side legs.
-That leaves **193** at each end of the opening, which is where the casters and their blocks sit, and
-**36.5** of clearance under the rails themselves. They keep the jack centred and stop a fork reaching
-a caster, and they are **guides, not bearing surfaces**: as the jack lifts, the forks rise inside the
-channel until they bear on the grid's underside.
+under the lower grid, each a **dressed 2x3 on edge hanging 63.5**. That leaves **193** at each end of
+the opening, which is where the casters and their blocks sit, and **36.5** of clearance under the
+rails themselves.
+
+🔴 **Both ends run under a lower fore-aft rail and are screwed up into it** — that is the anchorage,
+and it is what takes a sideways hit from a fork. Each rail is **1223**, one lamination short at each
+end, so it covers the fore-aft rail's **inner three strips, 54 of overlap**, with its own ends set 18
+in from the base's outer faces. **The central wall catches it again at mid-span.**
+
+They keep the jack centred and stop a fork reaching a caster, and they are **guides, not bearing
+surfaces**: as the jack lifts, the forks rise inside the channel until they bear on the grid's
+underside.
 
 #### And a spacer at the foot of all five
 

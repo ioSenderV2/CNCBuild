@@ -3230,6 +3230,11 @@ provenance = "part"
 note = "38.1 - a dressed 2x3 on edge, which is what each of the two fork guard rails is. His call."
 
 [[dim]]
+sym = "GUARD_RAIL_L"
+expr = "BASE_W - 2 * LEG_STRIP"
+note = "1223 - a fork guard rail's length. SETTLED: IT RUNS UNDER THE LOWER FORE-AFT RAILS AT BOTH ENDS AND IS SCREWED UP INTO THEM - that is the anchorage, and without it a sideways hit from a fork has nothing to push against. Stopping one lamination short at each end leaves it covering the rail's inner three strips, 54 of overlap, with its own ends set 18 in from the base's outer faces. NOTE: THE CENTRAL WALL IS A THIRD FIXING at mid-span - the rail passes under the wall's bottom band, which halves the span it has to resist a hit over."
+
+[[dim]]
 sym = "GUARD_RAIL_DROP"
 value = 63.5
 provenance = "part"

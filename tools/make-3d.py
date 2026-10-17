@@ -808,12 +808,14 @@ def main() -> int:
     for gy0 in (chan_c - v["FORK_CHANNEL_W"] / 2 - v["GUARD_RAIL_T"],
                 chan_c + v["FORK_CHANNEL_W"] / 2):
         box("Fork guard rail", "rails", 0xB07A3C,
-            bx0 + pwx, gy0, grid_lo_bot - v["GUARD_RAIL_DROP"],
-            bx1 - pwx, gy0 + v["GUARD_RAIL_T"], grid_lo_bot,
+            bx0 + strip, gy0, grid_lo_bot - v["GUARD_RAIL_DROP"],
+            bx1 - strip, gy0 + v["GUARD_RAIL_T"], grid_lo_bot,
             d=f"dressed 2x3, hanging {v['GUARD_RAIL_DROP']:g} below the grid "
               f"and leaving {v['BASE_FLOOR_CLEAR'] - v['GUARD_RAIL_DROP']:g} "
               f"under it. The two are {v['FORK_CHANNEL_W']:g} apart, which is "
-              f"the channel the forks run in")
+              f"the channel the forks run in. BOTH ENDS RUN UNDER A LOWER "
+              f"FORE-AFT RAIL and are screwed up into it - that is what takes "
+              f"a sideways hit - and the central wall catches it at mid-span")
 
     # The two shear walls, a T in plan: the centreline one runs back to the back
     # centre leg, which is the box's own rear support, so the wall lands under
