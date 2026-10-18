@@ -769,11 +769,14 @@ def main() -> int:
     # bottom edge. It brings the wall out to POST_W_X so the centre caster's
     # plate lands on a full face, and its TOP EDGE is level with the lower
     # grid's top - a ledger down the centreline for a shelf or a cabinet.
-    # It runs from the back centre leg's front face to the front cross rail.
+    # 🔴 IT RUNS BETWEEN THE TWO CENTRE LEGS - from the back one's front face
+    # to the front one's BACK face. It used to run on to the front cross rail,
+    # there being no leg in the way; drawn that way with the sixth leg in
+    # place it lapped 50 INTO that leg, one overlap per pad.
     for sx0 in (BW / 2 - pwx / 2, BW / 2 + gm_t / 2):
         box("Wall pad, central - lower band", "walls", 0xD9BE8A,
             sx0, by0 + pwy, grid_lo_bot,
-            sx0 + strip, by1 - gm_t, grid_lo_bot + gm_h,
+            sx0 + strip, by1 - pwy, grid_lo_bot + gm_h,
             d=f"{strip:g} x {gm_h:g} x {v['CENTRE_WALL_PAD_L']:g}, flush with "
               f"the wall's bottom - it carries the centre caster's plate and "
               f"its top edge is a ledger level with the lower grid")
@@ -920,7 +923,17 @@ def main() -> int:
     # part on the bench, so giving it one of its own said otherwise.
     all_legs = [(r, 0x7A5230 if i < 3 else 0x8A5A2B)
                 for i, r in enumerate(leg_rects)]
-    corner_legs = [(r, c) for i, (r, c) in enumerate(all_legs) if i != 2]
+    # 🔴 A FILLER GOES IN THE FOUR CORNER LEGS ONLY. NEITHER CENTRE LEG TAKES
+    # ONE - the central wall is in both their slots already, which is the same
+    # job done by a part that was going in anyway. Written as "every leg but
+    # index 2" it excluded the back centre one by position, so when the sixth
+    # leg arrived at the front centre it was handed a filler that ran straight
+    # through the wall: the generator's interference check caught it as
+    # "Shear wall, centreline <-> Leg filler block", 36 x 68 x 564.
+    centred = [i for i, (r, _c) in enumerate(all_legs)
+               if abs(r[0] + r[1] - BW) < 1e-9]
+    corner_legs = [(r, c) for i, (r, c) in enumerate(all_legs)
+                   if i not in centred]
 
     # A SPACER AT THE FOOT OF ALL FIVE, glued to the inside of the outer
     # lamination - his, 2026-10-15. The slot runs the leg's full height, so
@@ -3014,7 +3027,18 @@ def report_overlaps(P) -> int:
     print(f"\ninterference check: {len(bad)} OVERLAP(S)")
     for n1, n2, ov in bad:
         print(f"  {n1} <-> {n2}   by {ov[0]:.2f} x {ov[1]:.2f} x {ov[2]:.2f} mm")
-    return 0
+    # 🔴 A STATIC OVERLAP IS A BUILD FAILURE, NOT A PRINT. It returned 0 and
+    # regen went on to print the PDFs, so two parts in the same space only
+    # surfaced if somebody read this line in the log - and three of them rode
+    # through a whole session that way, past a run that was checked by grepping
+    # for the ENVELOPE sweep's wording instead. The envelope sweep is a
+    # different question and the tool-into-sacrificial-sheet pair it reports is
+    # deliberate; THIS check has no deliberate members, so it can be a gate.
+    # If a pair ever is intended, it belongs in ALLOWED, which is the whole
+    # point of that set.
+    print("  FAILED - two parts occupy the same space. Put a pair in ALLOWED "
+          "only if the overlap is intended.")
+    return 1
 
 
 def sweep_envelope(P, jog, home) -> int:
