@@ -3364,7 +3364,7 @@ note = "800 lb - what the base's grids have to carry when a pallet jack lifts th
 [[dim]]
 sym = "POST_SPAN_FRONT"
 expr = "BOX_W + 2 * T_BOX_TONGUE - POST_W_X"
-note = "1173 - between the TWO FRONT LEGS, centre to centre. FLAG: IT IS WIDER THAN THE SKIN LESS A POST, which is the obvious wrong answer and was written here once: each post's OUTER face is flush with the tongue's outer face, so the two outer faces are BOX_W + 2 x T_BOX_TONGUE apart - 1259 - and the centres sit POST_W / 2 inside those. NOTE: THE TENON CENTRES ARE NOT THESE - the ledge is cut on the outward faces, so each tenon sits T_BOX_LEDGE / 2 inboard of its post's centre and the tenon centres are 1089 apart."
+note = "1173 - between the TWO FRONT LEGS, centre to centre. FLAG: IT IS WIDER THAN THE SKIN LESS A POST, which is the obvious wrong answer and was written here once: each post's OUTER face is flush with the tongue's outer face, so the two outer faces are BOX_W + 2 x T_BOX_TONGUE apart - 1259 - and the centres sit POST_W / 2 inside those. NOTE: THE TENON CENTRES ARE NOT THESE, AND NOT BY THE LEDGE EITHER. A front post is ledged on TWO faces, so across the machine its tenon is the inner strip alone - TENON_CORNER_X of the POST_W_X - and that tab's centre sits (POST_W_X - TENON_CORNER_X) / 2, which is 27, inboard of the post's centre. So the front TENON centres are 1133 apart, not 1187. FLAG: THE HALF-LEDGE RULE IS THE OTHER DIRECTION. Fore and aft every tenon IS T_BOX_LEDGE / 2 inboard of its post centre, front pair and back centre alike, because there each is ledged on one face only - which is why the two rules get confused."
 
 [[dim]]
 sym = "POST_SPAN_FORE_AFT"
