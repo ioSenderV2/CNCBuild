@@ -38,6 +38,12 @@ _spec.loader.exec_module(boxdoc)
 OUT = HERE.parent / "machine" / "drawings" / "base-cutlist.html"
 
 STRIP_W = 90.0          # a leg strip is RIPPED at 90 and trimmed to 86 dry
+
+# How much of a band's depth a piece must use before it may ride in that band
+# rather than wait for one of its own. See the fill loop in bands() for what
+# this is worth - at 1.0 nothing shares a band with anything shorter, at 0.0
+# the first deep band swallows the width every later piece needed.
+BAND_FILL = 0.7
 SHEET_48 = ("4 x 8", 1219.2, 2438.4)
 SHEET_55 = ("5 x 5", 1524.0, 1524.0)
 
@@ -141,6 +147,16 @@ def groups(v):
            "one each side, flush with the wall's bottom edge. It brings the "
            f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "
            "its top edge is level with the lower grid's top"),
+          ("Front cheek", v["CENTRE_WALL_CHEEK_H"],
+           v["CENTRE_WALL_CHEEK_W"], 2,
+           "one each side of the wall's front end, glued and screwed to the "
+           "back of the front cross rails and bolted through the wall. "
+           f"Notched {v['CENTRE_WALL_NOTCH_D']:g} x "
+           f"{v['CENTRE_WALL_NOTCH_H']:g} at each grid, OUT of the "
+           f"{v['CENTRE_WALL_CHEEK_W']:g}, leaving "
+           f"{v['CENTRE_WALL_CHEEK_BEHIND']:g} behind the rail. Captured it is "
+           f"{v['CENTRE_WALL_CHEEK_T']:g} + {v['GRID_MEMBER_T']:g} + "
+           f"{v['CENTRE_WALL_CHEEK_T']:g}, the leg's own {v['POST_W_X']:g}"),
           ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 1,
            "the fifth block, bearing on this wall's bottom edge just forward "
            "of the back centre leg")]),
@@ -189,11 +205,19 @@ def bands(pieces, usable_l, usable_w, reserve_first=None):
         band_h, x = lng, 0.0
         placed.append((x, y, wide, band_h, name))
         x += wide + k
-        # fill across the width with anything that fits the band
+        # fill across the width - but only with pieces that nearly FILL the
+        # band's depth. A band costs its leader's whole length, so a piece
+        # much shorter than that spends full width to use part of the depth
+        # and the difference is dead. One 564 filler riding in an 864 band
+        # that way cost a whole fourth sheet: it took the width a leg strip
+        # wanted, and the eighth filler then had no band deep enough left.
+        # Below the threshold a piece waits and leads a band of its own, where
+        # its own kind packs beside it at full efficiency.
         i = 0
         while i < len(queue):
             n2, l2, w2 = queue[i]
-            if l2 <= band_h + 1e-9 and x + w2 <= usable_w + 1e-9:
+            if (l2 >= BAND_FILL * band_h and l2 <= band_h + 1e-9
+                    and x + w2 <= usable_w + 1e-9):
                 placed.append((x, y, w2, l2, n2))
                 x += w2 + k
                 queue.pop(i)
@@ -234,26 +258,38 @@ def nest(v, gs):
     if over55:
         raise SystemExit("the 5 x 5 will not take both wall laminations")
 
-    reserve = take(lambda p: p[0].endswith("Wall, one sheet"))
-    # LONGEST FIRST, ONE SORT OVER EVERYTHING. It was longest-first WITHIN each
-    # width class - all the 100-wide rails, then the 90-wide strips - and that
-    # is what put two cheeks alone on a fourth sheet: a deep band filled up
-    # with 100-wide pieces across its whole width and locked out the strips
-    # that would have fitted the same band, so every later band had to be
-    # opened on a piece that no longer had a sheet deep enough for it. Sorting
-    # by length alone makes the band depths step DOWN the sheet and lets
-    # anything shorter ride along in the band above it.
-    queue = sorted(flat, key=lambda p: -p[1])
+    # THE 4 x 8s GO THROUGH make-box-doc.py's GUILLOTINE PACKER, not through
+    # bands(). Bands load from one end and leave the remainder in one piece,
+    # which is what he wants - but this set is mixed enough that bands cost a
+    # WHOLE EXTRA SHEET for it, and the sheet is the expensive thing. Measured:
+    # the guillotine packs it on two, bands wanted three plus a near-empty one.
+    # bands() is kept for the 5 x 5, where two pieces make the question moot.
+    #
+    # WHAT IS GIVEN UP, and it is worth saying: the offcut is no longer a
+    # single rectangle. A nest placed by hand can have both - that is how the
+    # old one did it - and this is the honest machine answer rather than a
+    # claim to match it.
+    counted = {}
+    for name, a, b in flat:
+        counted[(name, a, b)] = counted.get((name, a, b), 0) + 1
+    pieces = [(n, a, b, q, "") for (n, a, b), q in counted.items()]
     flat.clear()
+    out, err = boxdoc.pack(pieces, w48, l48)
+    if err:
+        raise SystemExit("a 4 x 8 will not take it: %s" % err)
 
+    # AXES SWAP ON THE WAY IN, and the nest checker is what caught it missing.
+    # boxdoc.pack works with x along the sheet's LENGTH and y across its WIDTH;
+    # everything here is the other way round, x across the width and y along
+    # the length, because that is how these sheets are drawn. Taken straight,
+    # a 1223 rail came back at x 765.6 on a 1216-wide sheet - off the edge, and
+    # the drawing looked plausible.
     sheets = []
-    first = (reserve[0][0], reserve[0][1], reserve[0][2]) if reserve else None
-    while queue or first is not None:
-        placed, left, queue = bands(queue, ul48, uw48, reserve_first=first)
-        sheets.append((placed, left))
-        first = None
-        if not queue:
-            break
+    for si in range(max(p[0] for p in out) + 1):
+        placed = [(fy, fx, h, w, name)
+                  for s_i, fx, fy, w, h, name in out if s_i == si]
+        used = max(y + ph for _x, y, _pw, ph, _n in placed)
+        sheets.append((placed, ul48 - used))
     return (s55, left55), sheets, (uw48, ul48), (uw55, ul55)
 
 
@@ -275,7 +311,7 @@ def sheet_svg(placed, usable_w, usable_l, left, s=0.072):
         out.append(f'<text x="{pad + usable_w * s / 2:.1f}" '
                    f'y="{pad + (usable_l - left / 2) * s:.1f}" '
                    f'text-anchor="middle" font-size="7" fill="#476">'
-                   f'offcut {left:.0f} x {usable_w:.0f}, one piece</text>')
+                   f'{left:.0f} x {usable_w:.0f} past the last cut</text>')
     for x, y, pw, ph, name in placed:
         short = name.split(" / ")[-1]
         out.append(f'<rect x="{pad + x * s:.2f}" y="{pad + y * s:.2f}" '
@@ -346,11 +382,11 @@ def render(v, gs, five, fours, u48, u55):
 </style>
 </head><body>
 
-<h1>Base &mdash; cutlist and sheet layout</h1>
-<p class="sub"><b>{total} pieces, {1 + len(fours)} sheets of
-{v["T_BB_SKIN_BOT"]:g} mm Baltic birch.</b> Millimetres throughout. Grouped the
-way the base goes together, so a group is one assembly and carries everything
-that goes into it.</p>
+<h1>Base &mdash; sheet layout</h1>
+<p class="sub"><b>{total} pieces off {1 + len(fours)} sheets of
+{v["T_BB_SKIN_BOT"]:g} mm Baltic birch.</b> Millimetres throughout. <b>Which
+sheet each piece comes off</b>, and nothing else &mdash; the parts list is
+chapter 1 of <a href="base-construction.html">base-construction.html</a>.</p>
 
 <div class="box">
 <b>Leg strips are ripped at {STRIP_W:g} and trimmed to {v["POST_W_Y"]:g} once
@@ -367,16 +403,17 @@ off a factory edge and nothing more, so a usable 4 &times; 8 is
 {u48[0]:g} &times; {u48[1]:g}.
 </div>
 
-<h2>The cutlist, by assembly group</h2>
-<table>
-<tr><th>Piece</th><th class="n">Size</th><th class="n">Qty</th><th>Notes</th></tr>
-{''.join(rows)}
-</table>
+<p><b>The parts list is not here</b> &mdash; it is chapter 1 of
+<a href="base-construction.html">base-construction.html</a>, grouped by
+assembly, because that is where it gets read. <b>This document is the sheets</b>:
+which one each piece comes off.</p>
 
 <h2>How it divides across the sheets</h2>
-<p>Each sheet is loaded from one end, longest pieces first, <b>so what is left
-over is one whole offcut rather than a fringe of strips</b>. A band is as deep
-as the longest piece in it and gets filled across the sheet's width.</p>
+<p><b>Packed for the fewest sheets, not for a tidy offcut.</b> Loading each
+sheet from one end keeps the remainder in a single piece, which is worth having
+&mdash; but on this mix it cost <b>a whole extra sheet</b>, and the sheet is the
+expensive thing. So the placements below are the packer's, the offcut comes back
+as several pieces rather than one, and <b>a nest you place by hand can beat both</b>.</p>
 <p>&#128308; <b>The rear shear wall takes a band of its own with nothing beside
 it.</b> Its {v["BACK_WALL_L"]:g} length IS the sheet's usable width, so there
 is no room for a neighbour and its two ends are the trim cuts.</p>
@@ -410,7 +447,7 @@ def main():
           % (OUT.name, pieces, 1 + len(fours), SHEET_55[0], len(fours),
              SHEET_48[0]))
     for i, (placed, left) in enumerate(fours, start=2):
-        print("    sheet %d: %2d pieces, offcut %.0f x %.0f in one piece"
+        print("    sheet %d: %2d pieces, %.0f x %.0f past the last cut"
               % (i, len(placed), left, u48[0]))
     return 0
 

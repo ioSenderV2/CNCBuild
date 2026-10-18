@@ -31,6 +31,15 @@ _spec = importlib.util.spec_from_file_location("boxdoc", HERE / "make-box-doc.py
 boxdoc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(boxdoc)
 
+# THE PART DATA LIVES IN ONE PLACE and this document borrows it. The cutlist
+# tool owns groups() - what gets made, under the assembly it belongs to - and
+# the sheet layout stays over there. A second copy of the list here is exactly
+# the duplicate that drifts.
+_cspec = importlib.util.spec_from_file_location(
+    "cutdoc", HERE / "make-cutlist-doc.py")
+cutdoc = importlib.util.module_from_spec(_cspec)
+_cspec.loader.exec_module(cutdoc)
+
 OUT = HERE.parent / "machine" / "drawings" / "base-construction.html"
 SHEETS = boxdoc.SHEETS
 
@@ -530,6 +539,49 @@ def leg_section_svg(v, kind, s=0.62):
     # caption it was wider than the section itself and clipped at both ends.
     return (f'<svg viewBox="0 0 {w:.1f} {h:.1f}" width="100%" '
             f'style="max-width:{w * 2.1:.0f}px">{"".join(body)}</svg>')
+
+
+def parts_html(v):
+    """Chapter 1: what gets made, under the assembly it belongs to.
+
+    The rows come from make-cutlist-doc.py's groups(), which is the one place
+    the part data lives. THE SHEET LAYOUT IS NOT HERE - it is read standing at
+    a sheet, where this is read standing at the frame.
+    """
+    rows, total = [], 0
+    for gname, qty, why, pieces in cutdoc.groups(v):
+        n = sum(p[3] for p in pieces)
+        total += n
+        rows.append(
+            f'<tr class="g"><td colspan="4"><b>{gname}</b>'
+            + (f' &mdash; {qty} of them' if qty > 1 else '')
+            + f'<div class="why">{why}</div></td></tr>')
+        for name, a, b, q, note in pieces:
+            rows.append(f'<tr><td>{name}</td>'
+                        f'<td class=n>{a:g} &times; {b:g}</td>'
+                        f'<td class=n><b>{q}</b></td>'
+                        f'<td class=s>{note}</td></tr>')
+    return f"""
+<h2>1 &mdash; Parts</h2>
+<p><b>{total} pieces of {v['T_BB_SKIN_BOT']:g} mm Baltic birch</b>, grouped the
+way the base goes together &mdash; <b>a group here is one assembly</b> and
+carries everything that goes into it, so the legs bring their own fillers and
+foot spacers and the rails bring the caster blocks that bear on them.</p>
+<p><b>Leg strips are ripped at {cutdoc.STRIP_W:g} and trimmed to
+{v['POST_W_Y']:g} once the lamination is dry</b>, so everything cut from strip
+stock is listed at {cutdoc.STRIP_W:g} wide. <b>Every
+{v['GRID_MEMBER_T']:g} member is two laminations</b>, listed here as the
+{v['T_BB_SKIN_BOT']:g} pieces that actually get cut &mdash; the
+{v['GRID_MEMBER_T']:g} is not a choice, it is what fills a leg's slot.</p>
+<p><b>The glue-up spacers are not a part.</b> One set holds a leg's slot open
+while it is clamped and comes straight back out for the next leg, so it is one
+set off rail offcut, waxed or taped.</p>
+<table><tr><th>Piece</th><th class=n>Size</th><th class=n>Qty</th>
+<th>Notes</th></tr>
+{''.join(rows)}</table>
+<p><b>Which sheet each piece comes off is a separate document</b> &mdash;
+<a href="base-cutlist.html">base-cutlist.html</a>.</p>
+"""
 
 
 def legs_html(v):
@@ -1276,13 +1328,9 @@ box lands on. <b>It is built BEFORE the box, and the legs before it</b> &mdash;
 the box cannot be lowered onto tenons that are not located yet. All sizes in mm,
 all generated from the dimension registry.</p>
 
-<div class="note"><b>The cutlist and the sheet layout are their own document</b>
-&mdash; <a href="base-cutlist.html">base-cutlist.html</a>. It lists every piece
-under the assembly it belongs to and shows how they divide across the sheets.
-<b>This document is about how the base goes together</b>, and the two get read
-at different moments: one standing at a sheet, this one standing at the
-frame.</div>
+<div class="note"><b>The sheet layout is its own document</b> &mdash; <a href="base-cutlist.html">base-cutlist.html</a>, which shows which sheet each piece comes off. <b>The parts are here</b>, in chapter 1, because they are read standing at the frame rather than at a sheet.</div>
 
+{parts_html(v)}
 {legs_html(v)}
 {shoulder_html(v)}
 {casters_html(v)}
