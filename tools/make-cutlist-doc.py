@@ -235,14 +235,18 @@ def nest(v, gs):
         raise SystemExit("the 5 x 5 will not take both wall laminations")
 
     reserve = take(lambda p: p[0].endswith("Wall, one sheet"))
-    # LONGEST FIRST WITHIN EACH WIDTH CLASS, which is what keeps a band full.
-    rails = sorted(take(lambda p: p[2] == v["GRID_MEMBER_H"]),
-                   key=lambda p: -p[1])
-    strips = sorted(take(lambda p: p[2] == STRIP_W), key=lambda p: -p[1])
-    rest = sorted(flat, key=lambda p: -p[1])
+    # LONGEST FIRST, ONE SORT OVER EVERYTHING. It was longest-first WITHIN each
+    # width class - all the 100-wide rails, then the 90-wide strips - and that
+    # is what put two cheeks alone on a fourth sheet: a deep band filled up
+    # with 100-wide pieces across its whole width and locked out the strips
+    # that would have fitted the same band, so every later band had to be
+    # opened on a piece that no longer had a sheet deep enough for it. Sorting
+    # by length alone makes the band depths step DOWN the sheet and lets
+    # anything shorter ride along in the band above it.
+    queue = sorted(flat, key=lambda p: -p[1])
     flat.clear()
 
-    sheets, queue = [], rails + strips + rest
+    sheets = []
     first = (reserve[0][0], reserve[0][1], reserve[0][2]) if reserve else None
     while queue or first is not None:
         placed, left, queue = bands(queue, ul48, uw48, reserve_first=first)

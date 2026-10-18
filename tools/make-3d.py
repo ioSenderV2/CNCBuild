@@ -871,8 +871,32 @@ def main() -> int:
         BW / 2 + gm_t / 2, by1 - housed, grid_hi_top - gm_h,
         d=f"what the two front notches leave, each {housed:g} across now - it "
           f"stops at the cross rails' OUTER lamination, which covers its end "
-          f"grain. The lower notch SITS ON its rail; two long screws through "
-          f"each rail into the wall's end")
+          f"grain. The lower notch SITS ON its rail, and the two cheeks "
+          f"capture it either side")
+
+    # THE FRONT END IS A SOCKET, NOT TWO SCREWS - his. A pair of cheeks glued
+    # and screwed to the BACK faces of both inner front cross rail laminations
+    # straddle the wall, so 18 + gm_t + 18 is POST_W_X and the front end is the
+    # same captured, bolted joint as the back centre leg's slot: same grip,
+    # same bolt, same three-at-a-quarter-point pattern.
+    #
+    # 🔴 IT STOPS AT grid_hi_top LIKE EVERYTHING ELSE AT THIS END. A cheek
+    # proud of the upper grid's top is a fourth contact under the box and the
+    # three-point mount stops being determinate - the failure nothing shows but
+    # the two Y beams drifting out of coplanar.
+    cheek_t, cheek_w = v["CENTRE_WALL_CHEEK_T"], v["CENTRE_WALL_CHEEK_W"]
+    cheek_front = by1 - gm_t                 # the inner lamination's back face
+    for side, x0 in (("left", BW / 2 - gm_t / 2 - cheek_t),
+                     ("right", BW / 2 + gm_t / 2)):
+        box(f"Centre wall front cheek, {side}", "walls", 0xB08D57,
+            x0, cheek_front - cheek_w, sw_z0,
+            x0 + cheek_t, cheek_front, sw_z1,
+            d=f"{cheek_t:g} x {cheek_w:g} x {v['CENTRE_WALL_CHEEK_H']:g}, "
+              f"glued and screwed to the BACK of both inner front cross rail "
+              f"laminations - it laps the full {gm_h:g} of each. With its pair "
+              f"it makes a {cheek_t:g} + {gm_t:g} + {cheek_t:g} socket, the "
+              f"leg's own {v['POST_W_X']:g}, and the wall is bolted through it "
+              f"on the same pattern as the back centre leg")
 
     # FILLER BLOCKS in the four CORNER legs' slots, between the grids - his,
     # 2026-10-15. The slot is full height and carries a rail at each grid, so

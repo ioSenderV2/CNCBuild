@@ -3288,12 +3288,32 @@ note = "72 - what a bolt crosses at EVERY bolted slot joint: one leg strip, the 
 sym = "CENTRE_WALL_BOLT_COUNT"
 value = 3
 provenance = "pinned"
-note = "3 - bolts through the back centre leg's two outer strips and the central shear wall between them, spaced vertically. His. SETTLED: THREE IS ENOUGH BECAUSE THE BACK WALL ALREADY TIES THAT LEG. Glued and screwed to all three rear legs, with BOTH strips of the back centre leg rebated so it runs straight through, the back wall connects that leg's outer strips across the slot's back 18 - so these bolts are the second line, not the first. What they add is the degree of freedom the housing leaves open: the wall creeping down in the slot or working forward out of it."
+note = "3 - bolts through the central shear wall, spaced vertically, AT EACH END: through the back centre leg's two outer strips at the rear, and through the two CENTRE_WALL_CHEEK_T cheeks at the front. Six in all. His. SETTLED: THREE IS ENOUGH AT THE REAR BECAUSE THE BACK WALL ALREADY TIES THAT LEG. Glued and screwed to all three rear legs, with BOTH strips of the back centre leg rebated so it runs straight through, the back wall connects that leg's outer strips across the slot's back 18 - so those bolts are the second line, not the first. What they add is the degree of freedom the housing leaves open: the wall creeping down in the slot or working forward out of it. AT THE FRONT THEY ARE THE FIRST LINE and the cheeks' glue is the second, which is the opposite way round - see CENTRE_WALL_CHEEK_H."
 
 [[dim]]
 sym = "CENTRE_WALL_BOLT_PITCH"
 expr = "BASE_VOLUME_H / 4"
 note = "141 - the vertical pitch of the central wall's three bolts, on the quarter points of the 564 clear band between the grids. The three sit at 141, 282 and 423 up from the LOWER rail's top face, which keeps every one of them 141 clear of both rails - and clear of the notch the wall takes where a fore-aft rail crosses it in that leg."
+
+[[dim]]
+sym = "CENTRE_WALL_CHEEK_T"
+expr = "T_BB_SKIN_BOT"
+note = "18 - one cheek of the socket that captures the central wall's FRONT end. TWO OF THEM, one each side, glued and screwed to the BACK faces of both inner front cross rail laminations, so the wall arrives into a channel exactly as it does at the leg. FLAG: THE POINT IS THAT 18 + GRID_MEMBER_T + 18 IS POST_W_X - the captured wall is the same 72 as the leg slot, so the front end takes the same bolt, the same TONGUE_BOLT_GRIP and the same three-bolt pattern as the back. His, and the reason is that the front end was otherwise held by TWO SCREWS INTO END GRAIN against bolts at the centre leg and glue plus screws down the whole back wall."
+
+[[dim]]
+sym = "CENTRE_WALL_CHEEK_H"
+expr = "WALL_H"
+note = "764 - a cheek's height, the wall's own. It laps the full GRID_MEMBER_H of the lower inner cross rail at the bottom and the full GRID_MEMBER_H of the upper one at the top, with BASE_VOLUME_H of clear band between them where the bolts go. FLAG: DO NOT MAKE IT TALLER. At 764 off the floor clearance its top finishes at 864, level with the upper grid's top - anything proud of that becomes a fourth contact under the box, the mount stops being determinate and the failure is silent. Same ceiling the rear corner legs and both shear walls answer to. NOTE: THE GLUE IS THE STRENGTH HERE, NOT THE BOLTS - two laps of GRID_MEMBER_H against a rail's back face, times two cheeks, is four long-grain joints where the old joint had two screws into the wall's end."
+
+[[dim]]
+sym = "CENTRE_WALL_CHEEK_W"
+expr = "GRID_MEMBER_H"
+note = "100 - how far a cheek projects BACK from the cross rail's face, along the wall. His. It is the grid member's own depth, so the cheek reaches as far back as the rail is deep and no further."
+
+[[dim]]
+sym = "CENTRE_WALL_CHEEK_BOLT_Y"
+expr = "CENTRE_WALL_CHEEK_W / 2"
+note = "50 - where the front cheek's bolts sit in the cheek's 100 of projection, measured from the cross rail's back face. One column of CENTRE_WALL_BOLT_COUNT bolts at that station, at the CENTRE_WALL_BOLT_PITCH quarter points up the clear band - the same three heights as the back centre leg, so both ends of the wall drill the same."
 
 [[dim]]
 sym = "CASTER_BLOCK_MIN"
