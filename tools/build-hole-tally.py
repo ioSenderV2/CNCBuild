@@ -9,7 +9,8 @@ only thing that writes it.
 
 It writes TWO things, and both are regenerated from the schedules every run:
 
-  - the trip-wide tally between the TALLY markers at the front of the pack;
+  - the trip-wide tally between the TALLY markers, which sit in the pack's
+    appendices - the splice is by marker, so the table moves with them;
   - a TOTAL footer row on EVERY sheet's own hole schedule, between SHEETTOTAL
     markers, giving that sheet's count per drill size and its overall hole
     count. The front tally answers "what do I order and set up"; the footer
@@ -228,8 +229,7 @@ def render(per_part, trip, sized):
     """
     key = dia_key
     out = [START,
-           '<h3 style="margin-top:6mm">What gets drilled &mdash; by drill size, '
-           'and which sheets use it</h3>',
+           '<h2 id="drills">Appendix &mdash; what gets drilled, by drill size</h2>',
            '<p style="margin:0 0 .4rem;font-size:9.5pt"><b>Generated from the hole '
            'schedules</b> by tools/build-hole-tally.py, so it cannot drift from them. '
            '<b>Qty is for the trip</b>: the sheet\'s own count times the number of that '
