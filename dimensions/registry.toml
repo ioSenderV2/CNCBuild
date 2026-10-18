@@ -3247,6 +3247,60 @@ expr = "BASE_W - POST_W_Y - GRID_MEMBER_T"
 note = "1137 - a lamination on the central shear wall's bottom band, one each side, flush with the wall's bottom edge and GRID_MEMBER_H tall. It runs from the back centre leg's FRONT FACE to the front cross rail, which is what the two subtractions are. SETTLED: IT DOES TWO JOBS - it brings the wall's bottom out to POST_W_X so the centre caster's plate lands on a full face, and its TOP EDGE sits level with the lower grid's top, which makes it a ledger down the centreline for a shelf or a cabinet in either side volume."
 
 [[dim]]
+sym = "BASE_BOLT_D"
+value = 7.94
+provenance = "part"
+note = "7.94 - 5/16in, the bolt through every dry joint in the base: both fore-aft rail tongues where they pass through a leg, and the central shear wall in the back centre leg's slot. His call, over a 1/4in dowel through the same joints - a dowel is glued in once, where a bolt with a washer and a lock nut can be snugged again after the first season's movement. FLAG: THESE DO NOT GO IN fasteners.toml. That schedule renders every size as M-something by construction, so an imperial entry would print as a metric bolt that does not exist."
+
+[[dim]]
+sym = "BASE_BOLT_WASHER"
+value = 0
+provenance = "OPEN"
+note = "OPEN: FENDER WASHERS BOTH ENDS, DIAMETER NOT PICKED. A plain 5/16in washer dishes into plywood face at torque, and once it dishes the joint is loose again - which defeats the whole point of choosing a bolt that can be re-snugged. The clamp wanted is snug plus the lock nut, not crushed. Size it off what is on the shelf."
+
+[[dim]]
+sym = "TONGUE_BOLT_COUNT"
+value = 2
+provenance = "pinned"
+note = "2 - bolts through each fore-aft rail tongue where it passes through a leg's slot. SETTLED: TWO, NOT ONE - his question. ONE BOLT IS A PIN: it carries withdrawal but the rail can still rotate about it, and the only thing resisting that is the housed fit in a DRY slot that has to survive seasonal movement and the base being rolled. Two spaced along the tongue make the joint non-rotating on its own and halve the bearing load per hole, which is what matters in plywood - the limit is the hole wall crushing, not the bolt."
+
+[[dim]]
+sym = "TONGUE_BOLT_A"
+expr = "POST_W_Y / 4"
+note = "21.5 - the first tongue bolt, from the leg's face, along the leg's 86 fore-aft. Quarter points, so the pair is symmetric in the leg and each end of the tongue keeps 21.5 of edge - about 2.7 x BASE_BOLT_D, which Baltic birch takes."
+
+[[dim]]
+sym = "TONGUE_BOLT_B"
+expr = "POST_W_Y - TONGUE_BOLT_A"
+note = "64.5 - the second tongue bolt, the other quarter point. The two are 43 apart, and that spacing is what stops the rail rotating about a single bolt."
+
+[[dim]]
+sym = "TONGUE_BOLT_Z"
+expr = "GRID_MEMBER_H / 2"
+note = "50 - both tongue bolts sit at the rail's MID-HEIGHT, in its 100. FLAG: SPACED ALONG THE TONGUE, NOT STACKED VERTICALLY. The mortise shoulders already stop the rail rotating in the vertical plane by bearing, so a vertical pair buys little and puts the upper bolt near the rail's top edge."
+
+[[dim]]
+sym = "TONGUE_BOLT_GRIP_UPPER"
+expr = "POST_W_X"
+note = "72 - what a bolt crosses at an UPPER rail tongue, and at the central wall: one leg strip, the 36 in the slot, the far leg strip. The same 72 the leg is wide."
+
+[[dim]]
+sym = "TONGUE_BOLT_GRIP_LOWER"
+expr = "POST_W_X + 2 * LEG_STRIP"
+note = "108 - what a bolt crosses at a LOWER rail tongue. The lower rails are FOUR laminations: the inner 36 passes through the slot and an 18 is added each side, butting the leg's face because it cannot pass through. SETTLED: RUN THE BOLT THROUGH ALL FOUR - those outer 18s are what the 73 caster plate lands on, so this pins them to the leg, and the caster hardware is all on the rail's underside where nothing fouls. OPEN: THE BOLT LENGTH IS HIS, off what is on the shelf - this is the grip, before washers and the lock nut."
+
+[[dim]]
+sym = "CENTRE_WALL_BOLT_COUNT"
+value = 3
+provenance = "pinned"
+note = "3 - bolts through the back centre leg's two outer strips and the central shear wall between them, spaced vertically. His. SETTLED: THREE IS ENOUGH BECAUSE THE BACK WALL ALREADY TIES THAT LEG. Glued and screwed to all three rear legs, with BOTH strips of the back centre leg rebated so it runs straight through, the back wall connects that leg's outer strips across the slot's back 18 - so these bolts are the second line, not the first. What they add is the degree of freedom the housing leaves open: the wall creeping down in the slot or working forward out of it."
+
+[[dim]]
+sym = "CENTRE_WALL_BOLT_PITCH"
+expr = "BASE_VOLUME_H / 4"
+note = "141 - the vertical pitch of the central wall's three bolts, on the quarter points of the 564 clear band between the grids. The three sit at 141, 282 and 423 up from the LOWER rail's top face, which keeps every one of them 141 clear of both rails - and clear of the notch the wall takes where a fore-aft rail crosses it in that leg."
+
+[[dim]]
 sym = "CASTER_BLOCK_MIN"
 expr = "BASE_FLOOR_CLEAR - CASTER_H"
 note = "13.4 - the THINNEST a caster's drop block can be: at this the wheel just touches the floor plane with the legs still on it. SETTLED: THE BLOCK IS CUT TO FIT AND IS THICKER THAN THIS - it has to put the wheel below the leg bottoms, and it is what levels the six positions against the slab. This figure is the floor under that, and the model draws it. FLAG: THE BLOCK IS A SHIM IN COMPRESSION, not a hanger - the structure bears down on it and the caster bears up, so its screws locate it and carry nothing."

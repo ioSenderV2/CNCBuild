@@ -1165,6 +1165,43 @@ trimmed width of its own sheet, so it stops 21.5 short of each outer face rather
 build order simple: nothing has to be inserted while the glue is wet, so "five legs, then the base"
 holds for all five.
 
+#### The slot joints are bolted, not glued
+
+**Every joint that lands in a leg slot is a dry fit held by {{BASE_BOLT_D}} bolts** — washer, bolt,
+fender washer, lock nut — **run across the leg's {{POST_W_X}}**, through one outer strip, through
+whatever fills the slot, and out through the far strip.
+
+**The base goes together as two assemblies and then ties them.** The two front legs are glued to the
+front rails; the back wall is glued and screwed to all three rear legs. **The fore-aft rails and the
+central wall join those two assemblies**, and every one of those joints is bolted.
+
+| | |
+|---|---|
+| **Each fore-aft rail tongue** | **Two bolts**, at **{{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}}** from the leg's face along its {{POST_W_Y}}, both at the rail's mid-height, **{{TONGUE_BOLT_Z}}** in its {{GRID_MEMBER_H}} |
+| **Central wall in the back centre leg** | **Three bolts**, spaced **{{CENTRE_WALL_BOLT_PITCH}}** apart up the {{BASE_VOLUME_H}} clear band — so **{{CENTRE_WALL_BOLT_PITCH}}, 282 and 423** above the lower rail's top face |
+
+**Spaced along the tongue, not stacked up it.** The mortise shoulders already stop a rail rotating in
+the vertical plane by bearing on them, so a vertical pair buys little and puts the upper bolt near the
+rail's top edge. Spread along the leg's depth the pair stops the rail rotating about a single bolt,
+which the dry slot on its own does not.
+
+🔴 **The lower rail tongues take a longer bolt than the upper ones.** An upper tongue is
+{{TONGUE_BOLT_GRIP_UPPER}} across; a lower one is **{{TONGUE_BOLT_GRIP_LOWER}}**, because the lower
+rails are four laminations and the added 18 each side butts the leg's face rather than passing through
+the slot. **Run the bolt through all four** — those outer strips are what the 73 caster plate lands on,
+so this pins them to the leg, and the caster hardware is all on the rail's underside.
+
+OPEN: **Bolt lengths are not picked.** The two grips are {{TONGUE_BOLT_GRIP_UPPER}} and
+{{TONGUE_BOLT_GRIP_LOWER}}, before washers and the lock nut.
+
+NOTE: **Fender washers both ends, and snug rather than hard.** A plain washer dishes into plywood face
+at torque, and a dished washer is a loose joint again — which is the whole reason for choosing a bolt
+that can be re-snugged over a dowel that cannot.
+
+NOTE: **Drill each hole through the assembled stack, with the part dry-fitted where it finally sits.**
+Then the hole registers the part rather than fighting it, which matters at the central wall: its bottom
+edge has to land right, because the fifth caster bears on it.
+
 | | |
 |---|---|
 | **Cut each spacer from the stock that will fill that slot** | an offcut of the rail, an offcut of the wall. Then the slot fits what goes in it by construction, rather than by measurement |

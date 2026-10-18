@@ -55,6 +55,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
     - [Two shear walls, and two volumes left free](machine/assembly.md#two-shear-walls-and-two-volumes-left-free)
     - [Rail to leg, all three cases](machine/assembly.md#rail-to-leg-all-three-cases)
     - [How the three shear-wall joints actually go](machine/assembly.md#how-the-three-shear-wall-joints-actually-go)
+    - [The slot joints are bolted, not glued](machine/assembly.md#the-slot-joints-are-bolted-not-glued)
     - [A filler block in each corner leg](machine/assembly.md#a-filler-block-in-each-corner-leg)
     - [Five leveling casters, inside the floor clearance](machine/assembly.md#five-leveling-casters-inside-the-floor-clearance)
     - [And a spacer at the foot of all five](machine/assembly.md#and-a-spacer-at-the-foot-of-all-five)
