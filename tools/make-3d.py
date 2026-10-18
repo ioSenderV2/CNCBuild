@@ -868,11 +868,12 @@ def main() -> int:
     # is left between them is this lip, which is exactly BASE_VOLUME_H tall.
     box("Shear wall lip, between the front rails", "walls", 0xC9A66B,
         BW / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
-        BW / 2 + gm_t / 2, by1 - housed, grid_hi_top - gm_h,
-        d=f"what the two front notches leave, each {housed:g} across now - it "
-          f"stops at the cross rails' OUTER lamination, which covers its end "
-          f"grain. The lower notch SITS ON its rail, and the two cheeks "
-          f"capture it either side")
+        BW / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
+        d=f"what the two front notches leave, each now the rail's full "
+          f"{gm_t:g} across - so the lip reaches the base's FRONT PLANE and "
+          f"its end grain shows there, between the legs. The lower notch's "
+          f"shoulder SITS DOWN on the rail's top face across its whole "
+          f"{gm_t:g}, and the two cheeks take the same notch either side")
 
     # THE FRONT END IS A SOCKET, NOT TWO SCREWS - his. A pair of cheeks glued
     # and screwed to the BACK faces of both inner front cross rail laminations
@@ -884,19 +885,35 @@ def main() -> int:
     # proud of the upper grid's top is a fourth contact under the box and the
     # three-point mount stops being determinate - the failure nothing shows but
     # the two Y beams drifting out of coplanar.
+    # DRAWN AS A BODY PLUS A LIP, which is how this model already says "notch":
+    # the body is the CENTRE_WALL_CHEEK_W behind the rail and runs the cheek's
+    # whole height; the lip is the GRID_MEMBER_T in front of it and exists only
+    # in the clear band, because at each grid that is exactly what the
+    # CENTRE_WALL_NOTCH_D x CENTRE_WALL_NOTCH_H notch takes out. Same two boxes
+    # as the wall beside it, and for the same reason.
     cheek_t, cheek_w = v["CENTRE_WALL_CHEEK_T"], v["CENTRE_WALL_CHEEK_W"]
-    cheek_front = by1 - gm_t                 # the inner lamination's back face
+    rail_back = by1 - gm_t                   # the inner lamination's back face
     for side, x0 in (("left", BW / 2 - gm_t / 2 - cheek_t),
                      ("right", BW / 2 + gm_t / 2)):
         box(f"Centre wall front cheek, {side}", "walls", 0xB08D57,
-            x0, cheek_front - cheek_w, sw_z0,
-            x0 + cheek_t, cheek_front, sw_z1,
-            d=f"{cheek_t:g} x {cheek_w:g} x {v['CENTRE_WALL_CHEEK_H']:g}, "
-              f"glued and screwed to the BACK of both inner front cross rail "
-              f"laminations - it laps the full {gm_h:g} of each. With its pair "
-              f"it makes a {cheek_t:g} + {gm_t:g} + {cheek_t:g} socket, the "
-              f"leg's own {v['POST_W_X']:g}, and the wall is bolted through it "
-              f"on the same pattern as the back centre leg")
+            x0, rail_back - cheek_w, sw_z0,
+            x0 + cheek_t, rail_back, sw_z1,
+            d=f"{cheek_t:g} x {v['CENTRE_WALL_CHEEK_D']:g} x "
+              f"{v['CENTRE_WALL_CHEEK_H']:g} as cut, notched "
+              f"{v['CENTRE_WALL_NOTCH_D']:g} x {v['CENTRE_WALL_NOTCH_H']:g} at "
+              f"each grid. This is the {cheek_w:g} BEHIND the rail, glued and "
+              f"screwed to it, running the full height. With its pair it makes "
+              f"a {cheek_t:g} + {gm_t:g} + {cheek_t:g} socket, the leg's own "
+              f"{v['POST_W_X']:g}, and the wall is bolted through on the same "
+              f"pattern as the back centre leg")
+        box(f"Centre wall front cheek lip, {side}", "walls", 0xB08D57,
+            x0, rail_back, grid_lo_bot + gm_h,
+            x0 + cheek_t, by1, grid_hi_top - gm_h,
+            d=f"the cheek's leading {gm_t:g}, flush with the base's FRONT "
+              f"PLANE - what the two notches leave. Its lower shoulder bears "
+              f"down on the front rail's top face, and the wall's own lip does "
+              f"the same beside it: {v['POST_W_X']:g} by {gm_t:g} of bearing on "
+              f"the rail, centred on it")
 
     # FILLER BLOCKS in the four CORNER legs' slots, between the grids - his,
     # 2026-10-15. The slot is full height and carries a rail at each grid, so

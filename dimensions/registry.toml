@@ -3194,8 +3194,8 @@ note = "758 - the central shear wall's height, 6 under the back wall's. SETTLED:
 
 [[dim]]
 sym = "CENTRE_WALL_L"
-expr = "BASE_W - T_BACK_WALL - GRID_MEMBER_T / 2"
-note = "1223 - the central shear wall's length. SETTLED: IT STOPS SHORT AT BOTH ENDS SO NO END GRAIN SHOWS - his, and the rear end already worked this way: the back wall covers it there, and at the front the cross rail's OUTER lamination covers it. The same move twice, which is why it is the same 18 at each end. FLAG: SO THE FRONT NOTCHES ARE HALF AS DEEP - the wall now only has to clear the rail's INNER lamination, so each notch is GRID_MEMBER_T / 2 across rather than the full GRID_MEMBER_T. NOTE: IT COMES OUT THE SAME 1223 AS RAIL_FORE_AFT_L, which is worth knowing at the saw even though the two get there by different routes. FLAG: THE BACK WALL IS NOT ONE OF THEM - BACK_WALL_L is 1216, cut to the full width of its own 4 x 8, where this wall is cut at 1223 off a 5 x 5. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot."
+expr = "BASE_W - T_BACK_WALL"
+note = "1241 - the central shear wall's length. SETTLED: IT RUNS FLUSH TO THE BASE'S FRONT PLANE - his call, and it is the choice that makes the front end a real joint: the wall and both CENTRE_WALL_CHEEK_T cheeks finish on one plane, all three notched CENTRE_WALL_NOTCH_D deep at each grid, so all three bear DOWN on the front rail's full GRID_MEMBER_T instead of on its inner lamination alone. FLAG: SO THREE END GRAINS SHOW AT THE FRONT, between the legs, and that is the one place on the base where they do - he was shown the trade and took it. The REAR end still stops short and is covered by the back wall, which is where the T_BACK_WALL subtraction comes from. FLAG: IT IS NOT RAIL_FORE_AFT_L'S 1223, which is the near miss to watch for at the saw. FLAG: THE BACK WALL IS NOT THIS - BACK_WALL_L is 1216, cut to the full width of its own 4 x 8, where this wall comes off a 5 x 5. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot."
 
 [[dim]]
 sym = "BASE_FLOOR_CLEAR"
@@ -3303,12 +3303,27 @@ note = "18 - one cheek of the socket that captures the central wall's FRONT end.
 [[dim]]
 sym = "CENTRE_WALL_CHEEK_H"
 expr = "WALL_H"
-note = "764 - a cheek's height, the wall's own. It laps the full GRID_MEMBER_H of the lower inner cross rail at the bottom and the full GRID_MEMBER_H of the upper one at the top, with BASE_VOLUME_H of clear band between them where the bolts go. FLAG: DO NOT MAKE IT TALLER. At 764 off the floor clearance its top finishes at 864, level with the upper grid's top - anything proud of that becomes a fourth contact under the box, the mount stops being determinate and the failure is silent. Same ceiling the rear corner legs and both shear walls answer to. NOTE: THE GLUE IS THE STRENGTH HERE, NOT THE BOLTS - two laps of GRID_MEMBER_H against a rail's back face, times two cheeks, is four long-grain joints where the old joint had two screws into the wall's end."
+note = "764 - a cheek's height, the wall's own. It laps the full GRID_MEMBER_H of the lower inner cross rail at the bottom and the full GRID_MEMBER_H of the upper one at the top, with BASE_VOLUME_H of clear band between them where the bolts go. FLAG: DO NOT MAKE IT TALLER. At 764 off the floor clearance its top finishes at 864, level with the upper grid's top - anything proud of that becomes a fourth contact under the box, the mount stops being determinate and the failure is silent. Same ceiling the rear corner legs and both shear walls answer to. FLAG: THE BOLTS AND THE BEARING CARRY THIS JOINT, NOT THE GLUE, and an earlier note here had that the wrong way round. A cheek's big faces - CENTRE_WALL_CHEEK_D x CENTRE_WALL_CHEEK_H - are against the WALL, which is where the bolts clamp and where the area is; what touches the rail is only the cheek's front EDGE, CENTRE_WALL_CHEEK_T x GRID_MEMBER_H at each grid, which is a small joint and partly end grain. So the three pieces are bolted into one section and that section SITS DOWN on the rail's top face across POST_W_X by GRID_MEMBER_T; the glue and the screws into the rail locate it rather than hold it."
 
 [[dim]]
 sym = "CENTRE_WALL_CHEEK_W"
 expr = "GRID_MEMBER_H"
-note = "100 - how far a cheek projects BACK from the cross rail's face, along the wall. His. It is the grid member's own depth, so the cheek reaches as far back as the rail is deep and no further."
+note = "100 - how far a cheek reaches BACK past the front rail, along the wall. His. It is the grid member's own depth, so the cheek runs as far behind the rail as the rail is deep and no further. NOTE: THIS IS THE PART BEHIND THE RAIL, NOT THE WHOLE PIECE - the notch adds GRID_MEMBER_T of lip in front of it, so the piece cut is CENTRE_WALL_CHEEK_D. His 100 was given while the cheek sat wholly behind the rail, and making the leading face flush put material in FRONT of it rather than taking any away."
+
+[[dim]]
+sym = "CENTRE_WALL_CHEEK_D"
+expr = "CENTRE_WALL_CHEEK_W + GRID_MEMBER_T"
+note = "136 - a cheek's overall depth, which is what gets cut: CENTRE_WALL_CHEEK_W behind the rail plus the GRID_MEMBER_T of lip that reaches forward to the base's front plane. The CENTRE_WALL_NOTCH_D x CENTRE_WALL_NOTCH_H notch comes out of that lip at each grid, so the 100 behind the rail is continuous for the cheek's whole height and only the front 36 is interrupted."
+
+[[dim]]
+sym = "CENTRE_WALL_NOTCH_D"
+expr = "GRID_MEMBER_T"
+note = "36 - how deep the notch is in the leading edge of the wall AND of both cheeks: the front cross rail's full thickness, so the piece drops past the rail and its leading face finishes flush with the base's front plane. FLAG: IT IS THE FULL GRID_MEMBER_T AND NOT HALF OF IT - half would only clear the rail's inner lamination and leave the leading face behind the outer one. SETTLED: ALL THREE PIECES TAKE THE SAME NOTCH - his, which is what lets the three be bolted into one section and set down on the rail as one."
+
+[[dim]]
+sym = "CENTRE_WALL_NOTCH_H"
+expr = "GRID_MEMBER_H"
+note = "100 - the notch's height, the rail's own. Two notches in each of the three pieces, one at each grid, and what is left between them is BASE_VOLUME_H of uninterrupted lip. The notch's TOP shoulder is what bears down on the lower rail."
 
 [[dim]]
 sym = "CENTRE_WALL_CHEEK_BOLT_Y"
