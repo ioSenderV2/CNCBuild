@@ -3158,8 +3158,8 @@ note = "990 - the cut length of each of the THREE legs the box lands on: floor t
 
 [[dim]]
 sym = "LEG_L_REAR"
-expr = "LEG_BELOW_BOX"
-note = "874 - the cut length of each of the TWO rear corner legs. They carry no tenon, so they stop at the box's underside: they hold the grids and the back wall, not the box."
+expr = "LEG_BELOW_BOX - BASE_BOX_GAP"
+note = "864 - the cut length of each of the TWO rear corner legs. They carry no tenon and the box must NOT land on them, so they stop level with the UPPER GRID'S TOP and the BASE_BOX_GAP of air carries on over them. FLAG: IT IS NOT LEG_BELOW_BOX, AND A REAR CORNER LEG THAT REACHES 874 BREAKS THE MOUNT - the box touches the base at three leg tops and nowhere else, so a leg top on the box's underside is a fourth and fifth contact, the mount stops being determinate, and the failure is silent. THE GAP IS AIR ABOVE THE GRID, NOT LEG MATERIAL: the stack is foot spacer + lower rail + filler + upper rail and it closes here, where on the three legs the box lands on the gap IS leg because those carry on up through it. It agrees with WALL_H, which tops the back wall out at this same 864. NOTE: LEG_BELOW_BOX IS THE BOX UNDERSIDE, a station and not a leg - anything drawing that elevation reads it and not this."
 
 [[dim]]
 sym = "RAIL_FORE_AFT_L"

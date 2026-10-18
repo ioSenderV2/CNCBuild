@@ -323,9 +323,10 @@ def nest_svg(v, places, sw, sl, colours, s=0.105):
 # is derived, read back the other way, so it sums to the leg's own length
 # exactly and `leg_bands` asserts that it does:
 #
-#     100 foot spacer + 100 lower rail + 564 filler + 100 upper rail + 10 gap
-#       = 874 = LEG_L_REAR, a rear corner leg
-#     ... + 116 tenon = 990 = LEG_L_BOX, a leg the box lands on
+#     100 foot spacer + 100 lower rail + 564 filler + 100 upper rail
+#       = 864 = LEG_L_REAR, a rear corner leg, which stops there
+#     ... + 10 gap = 874, the box underside, which only a leg the box
+#         lands on reaches ... + 116 tenon = 990 = LEG_L_BOX
 #
 # Colours are the 3D MODEL'S colours, deliberately: a reader with the model open
 # should see the same brown leg, blue fore-aft rail and tan central wall here.
@@ -373,9 +374,14 @@ def leg_bands(v, kind):
                  rail("upper"), gap, tenon]
         total = v["LEG_L_BOX"]
     elif kind == "rear-corner":
+        # NO GAP BAND: this leg STOPS at the upper grid's top. The gap is air
+        # between the grid and the box, and on the three legs the box lands on
+        # it is leg material because they carry on up through it - here there
+        # is no leg above the grid at all, which is the whole point of the
+        # three-point mount.
         bands = [foot, rail("lower"),
                  ("C", v["BASE_VOLUME_H"], "Leg filler", deep_rear, "stays", ""),
-                 rail("upper"), gap]
+                 rail("upper")]
         total = v["LEG_L_REAR"]
     else:                                        # the rear centre leg
         bands = [foot,
@@ -470,10 +476,14 @@ def leg_elevation_svg(v, s=0.165):
     # stays on the station; only the label moves.
     stations = [(0, "floor"), (v["FOOT_SPACER_H"], "lower grid under"),
                 (v["FOOT_SPACER_H"] + v["GRID_MEMBER_H"], "lower grid top"),
-                (v["LEG_L_REAR"] - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"],
+                # OFF LEG_BELOW_BOX, NOT OFF A LEG. These are elevations of
+                # the base, and a rear corner leg stops BASE_BOX_GAP below the
+                # box - reading them off that leg put every one of them 10 low
+                # the moment the leg was corrected.
+                (v["LEG_BELOW_BOX"] - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"],
                  "upper grid under"),
-                (v["LEG_L_REAR"] - v["BASE_BOX_GAP"], "upper grid top"),
-                (v["LEG_L_REAR"], "box underside"),
+                (v["LEG_BELOW_BOX"] - v["BASE_BOX_GAP"], "upper grid top"),
+                (v["LEG_BELOW_BOX"], "box underside"),
                 (v["LEG_L_BOX"], "leg top")]
     label_y, floor_y = {}, None
     for z, _ in sorted(stations, key=lambda p: -p[0]):      # top of the leg down
@@ -662,10 +672,14 @@ def leg_faces_svg(v, s=0.165):
 
     stations = [(0, "floor"), (v["FOOT_SPACER_H"], "lower grid under"),
                 (v["FOOT_SPACER_H"] + v["GRID_MEMBER_H"], "lower grid top"),
-                (v["LEG_L_REAR"] - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"],
+                # OFF LEG_BELOW_BOX, NOT OFF A LEG. These are elevations of
+                # the base, and a rear corner leg stops BASE_BOX_GAP below the
+                # box - reading them off that leg put every one of them 10 low
+                # the moment the leg was corrected.
+                (v["LEG_BELOW_BOX"] - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"],
                  "upper grid under"),
-                (v["LEG_L_REAR"] - v["BASE_BOX_GAP"], "upper grid top"),
-                (v["LEG_L_REAR"], "box underside"),
+                (v["LEG_BELOW_BOX"] - v["BASE_BOX_GAP"], "upper grid top"),
+                (v["LEG_BELOW_BOX"], "box underside"),
                 (v["LEG_L_BOX"], "leg top")]
     # the same push-apart the slot elevation uses, for the two stations that
     # are BASE_BOX_GAP apart and would otherwise print on each other
@@ -887,9 +901,11 @@ not the same shape. A <b>dashed red outline is material taken off</b>.</p>
 <th>In which legs</th><th>Fate</th><th></th></tr>{''.join(key)}</table>
 <p><b>The stack sums to the leg, and that is the check</b>:
 {v['FOOT_SPACER_H']:g} + {v['GRID_MEMBER_H']:g} + {v['BASE_VOLUME_H']:g} +
-{v['GRID_MEMBER_H']:g} + {v['BASE_BOX_GAP']:g} = <b>{v['LEG_L_REAR']:g}</b>, a
-rear corner leg, and {v['POST_TENON_L']:g} more of tenon makes
-<b>{v['LEG_L_BOX']:g}</b> for a leg the box lands on. The back centre leg gets
+{v['GRID_MEMBER_H']:g} = <b>{v['LEG_L_REAR']:g}</b>, a rear corner leg, which
+stops level with the upper grid's top. <b>The {v['BASE_BOX_GAP']:g} gap is air,
+not leg</b> &mdash; only a leg the box lands on carries on through it, to the
+box underside at {v['LEG_BELOW_BOX']:g}, and {v['POST_TENON_L']:g} more of
+tenon makes <b>{v['LEG_L_BOX']:g}</b>. The back centre leg gets
 there the other way: {v['FOOT_SPACER_H']:g} + {v['WALL_H']:g} +
 {v['BASE_BOX_GAP']:g} + {v['POST_TENON_L']:g}. <b>If a leg does not add up, the
 mortise heights will not agree across the five and the frame sits twisted.</b></p>
