@@ -1241,11 +1241,13 @@ by a part that was going in anyway.
 #### Five leveling casters, inside the floor clearance
 
 **All five sit in the 100 band beside the legs, not under them** — so nothing about the base's height
-changes. One per leg: four beside a corner leg under the lower fore-aft rail, and **the fifth on the
-central shear wall's bottom edge**, just forward of the back centre leg, which has no fore-aft rail
-of its own.
+changes. Four beside a corner leg under the lower fore-aft rail, and **the fifth on the
+central shear wall's bottom edge**, behind the front centre leg.
 
-**The central wall's bottom band gets a lamination on each side** — 18 × 100 × **1137**, flush with
+**Five casters, six legs** — the two centre legs share this one and the back centre leg has none.
+Neither has a fore-aft rail of its own, which is why it bears on the wall.
+
+**The central wall's bottom band gets a lamination on each side** — 18 × 100 × **{{CENTRE_WALL_PAD_L}}**, flush with
 the wall's bottom edge, running from the back centre leg's front face to the front cross rail. It
 brings the wall out to **72** so the caster's plate lands on a full face, and **its top edge is level
 with the lower grid's top** — a ledger down the centreline for a shelf or a cabinet in either side
@@ -1273,10 +1275,14 @@ five blocks off one piece** so they match.
 down, so the leg bottoms hang a few mm off the floor either way.
 
 **Levelling:** measure the slab under the five positions, cut the five blocks so they land within a
-couple of mm of each other, and let the 7 trim the rest. **Level on three** — the two front
-corners and the centre. **The two rear corners come down to touch**, not to lift:
-they carry nothing standing, and they are what stops the thing tipping about a line from a front
-corner to the back centre.
+couple of mm of each other, and let the 7 trim the rest. **Level on three** — the two **rear**
+corners and the front centre. **The two front corners come down to touch**, not to lift:
+they carry nothing standing, and they are what stops the thing tipping about a line from a rear
+corner to the front centre.
+
+🔴 **The trio is the rear pair because the fifth caster sits behind the front centre leg.** Level on
+the two front corners instead and all three points lie in a line across the front, which defines no
+plane — the base would rock about it.
 
 **The fork channel is 700 wide, centred in the 1087 opening**, with a guard rail each side screwed
 under the lower grid, each a **dressed 2x3 on edge hanging 63.5**. That leaves **193** at each end of

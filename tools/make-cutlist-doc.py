@@ -49,7 +49,7 @@ SHEET_55 = ("5 x 5", 1524.0, 1524.0)
 
 
 def groups(v):
-    """His eight assembly groups, each with every piece that goes into it.
+    """His assembly groups, each with every piece that goes into it.
 
     Sizes are registry values, never literals. A piece that is one lamination
     of a 36 member is listed at 18, because that is what gets cut.
@@ -93,6 +93,19 @@ def groups(v):
           ("Tenon corner spacer", v["POST_TENON_L"], v["TENON_CORNER_Y"], 2,
            f"the two FRONT legs, and it is {v['TENON_SPACER_GAP']:g} stock, "
            "not 18 - glued to the OUTER face of the tenon tab")]),
+        ("Front centre leg", 1,
+         "The sixth leg, and what holds the central wall's front end. Same "
+         "profile as the back centre leg - the wall straight through its slot "
+         "- but no tenon, so it stops level with the upper grid's top like the "
+         "rear corner pair. It takes NO FILLER, because the wall fills its "
+         "slot. It is what let every notch come out of the wall: the front "
+         "cross rail's inner lamination butts this leg in two spans instead "
+         "of running past the wall.",
+         [("Leg strip", v["LEG_L_REAR"], STRIP_W, 2,
+           f"BOTH notched {v['T_BACK_WALL']:g} deep at each grid in the FRONT "
+           "face, for the cross rail's outer lamination running through"),
+          ("Foot spacer", v["FOOT_SPACER_H"], STRIP_W, 2,
+           "closing the slot from the floor up to the lower rail")]),
         ("Lower fore-aft rails", 2,
          "Four laminations, not two: the inner pair passes through the legs' "
          "slot and a pad is added each side, butting the leg's face because "
@@ -119,13 +132,16 @@ def groups(v):
            "full width, housed 18 deep in the front faces of the legs' inner "
            "strips, and it stops one lamination short at each end so the "
            "outermost strip covers its end grain"),
-          ("Inner, spans between", v["RAIL_CROSS_INNER_L"], gm_h, 1,
-           "between the front legs, housed in nothing")]),
+          ("Inner, in two spans", v["RAIL_CROSS_INNER_SPAN"], gm_h, 2,
+           "TWO pieces, not one: the front centre leg stands in the middle of "
+           "this lamination's run, so each piece goes from a corner leg to "
+           "that leg. Housed in nothing - it butts a leg's face at each "
+           "end")]),
         ("Front cross rail, upper", 1,
          "The same two pieces again.",
          [("Outer, housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
            "as the lower"),
-          ("Inner, spans between", v["RAIL_CROSS_INNER_L"], gm_h, 1,
+          ("Inner, in two spans", v["RAIL_CROSS_INNER_SPAN"], gm_h, 2,
            "as the lower")]),
         ("Rear shear wall", 1,
          "It replaces the back cross rails at BOTH grids, so it must not be "
@@ -147,16 +163,6 @@ def groups(v):
            "one each side, flush with the wall's bottom edge. It brings the "
            f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "
            "its top edge is level with the lower grid's top"),
-          ("Front cheek", v["CENTRE_WALL_CHEEK_H"],
-           v["CENTRE_WALL_CHEEK_W"], 2,
-           "one each side of the wall's front end, glued and screwed to the "
-           "back of the front cross rails and bolted through the wall. "
-           f"Notched {v['CENTRE_WALL_NOTCH_D']:g} x "
-           f"{v['CENTRE_WALL_NOTCH_H']:g} at each grid, OUT of the "
-           f"{v['CENTRE_WALL_CHEEK_W']:g}, leaving "
-           f"{v['CENTRE_WALL_CHEEK_BEHIND']:g} behind the rail. Captured it is "
-           f"{v['CENTRE_WALL_CHEEK_T']:g} + {v['GRID_MEMBER_T']:g} + "
-           f"{v['CENTRE_WALL_CHEEK_T']:g}, the leg's own {v['POST_W_X']:g}"),
           ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 1,
            "the fifth block, bearing on this wall's bottom edge just forward "
            "of the back centre leg")]),

@@ -518,7 +518,11 @@ def main() -> int:
             # stops one strip short and is covered by it. The back centre leg is
             # the exception, because the wall passes right through it.
             nearer = abs(sx0 + strip / 2 - BW / 2) < abs(px0 + px1 - BW) / 2
-            if not (notch == "back-both" or nearer):
+            # "-both" means the piece runs STRAIGHT THROUGH this leg, so there
+            # is no outermost strip left whole to cover an end: the back wall
+            # does that at the back centre leg, the cross rail at the front
+            # centre one.
+            if not (notch.endswith("both") or nearer):
                 box(f"{nm}, {side} strip", group, colour,
                     sx0, py0, z0, sx0 + strip, py1, z1, d=d)
                 continue
@@ -660,13 +664,35 @@ def main() -> int:
     # written as web + tcx back when tcx happened to be 30 and the sum happened
     # to land right; when the full-height slot took the corner tenon to 18 these
     # two legs quietly became 60 wide.
+    # 🔴 THEY STOP AT grid_hi_top, NOT AT THE BOX'S UNDERSIDE. A leg with no
+    # tenon must finish BASE_BOX_GAP below the box or it becomes a fourth and
+    # fifth contact and the three-point mount stops being determinate. This was
+    # drawn to -BOX_THK, which put both leg tops ON the box.
     for nm, x0, x1 in (("Leg, rear left", web - ledge, web - ledge + pwx),
                        ("Leg, rear right", BW - web + ledge - pwx, BW - web + ledge)):
         leg_strips(nm, "legs", 0x8A5A2B, x0, x1, web - ledge, web + tb,
-                   floor_z, -v["BOX_THK"], "back-inner",
+                   floor_z, grid_hi_top, "back-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
                      f"the grids and the back shear wall, NOT the box")
         leg_rects.append((x0, x1, web - ledge, web + tb))
+
+    # THE SIXTH LEG, AT THE FRONT CENTRE - his, and it is what holds the
+    # central wall's front end. Same profile as the back centre leg, the wall
+    # straight through its slot, but no tenon: it stops at grid_hi_top like the
+    # rear corner pair. It replaced a pair of bolted cheeks with a notch in
+    # every piece, and took the notches away with them - the front cross rail's
+    # inner lamination now butts this leg in two spans rather than running past
+    # the wall, so nothing crosses the wall at all.
+    fc_x0, fc_x1 = BW / 2 - pwx / 2, BW / 2 + pwx / 2
+    # the same front plane the front corner posts are set out from - by1 is
+    # not in scope yet, and it is this expression
+    fc_y1 = D - web + ledge
+    fc_y0 = fc_y1 - pwy
+    leg_strips("Leg, front centre", "legs", 0x8A5A2B, fc_x0, fc_x1,
+               fc_y0, fc_y1, floor_z, grid_hi_top, "front-both",
+               d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it holds "
+                 f"the central wall's front end and the grids, NOT the box")
+    leg_rects.append((fc_x0, fc_x1, fc_y0, fc_y1))
 
     # Grid members, on edge: TWO fore-aft rails and TWO cross rails, a plain
     # rectangle. FLAG: THERE IS NO CENTRE FORE-AFT RAIL - his correction
@@ -788,12 +814,22 @@ def main() -> int:
 
     half = (cp - pwx) / 2                      # the plate stands 0.5 proud
     for lx0, lx1, ly0, ly1 in leg_rects:
-        if abs(lx0 - (BW - pwx) / 2) < 1e-9:           # the back centre leg
-            # ON THE CENTRAL WALL, just forward of the leg: that leg has no
-            # fore-aft rail, and the wall's bottom band is brought out to
-            # POST_W_X by a lamination each side.
-            caster(lx0 - half, ly1,
-                   "on the central wall's bottom edge, forward of the back "
+        if abs(lx0 - (BW - pwx) / 2) < 1e-9:           # either centre leg
+            # THE FIFTH CASTER IS BEHIND THE FRONT CENTRE LEG - his, and it
+            # moved there when that leg arrived. It bears on the central
+            # wall's bottom edge, which is the only full face on the
+            # centreline: neither centre leg has a fore-aft rail, and the
+            # wall's bottom band is brought out to POST_W_X by a lamination
+            # each side.
+            #
+            # 🔴 ONE CASTER BETWEEN THE TWO CENTRE LEGS, NOT ONE EACH. This
+            # test matches any leg centred on BW / 2, so when the sixth leg
+            # arrived it quietly drew a SIXTH caster against a CASTER_COUNT of
+            # five - the back centre leg gets none.
+            if ly0 <= by0 + 1e-9:
+                continue                               # the BACK centre leg
+            caster(lx0 - half, ly0 - cp,
+                   "on the central wall's bottom edge, BEHIND the front "
                    "centre leg")
         else:
             cy0 = ly1 if ly0 <= by0 + 1e-9 else ly0 - cp
@@ -858,64 +894,18 @@ def main() -> int:
     # the TOP, where the wall is free and nothing bears on it.
     box("Shear wall, centreline", "walls", 0xC9A66B,
         BW / 2 - gm_t / 2, by0 + bw, sw_z0,
-        BW / 2 + gm_t / 2, by1 - gm_t, sw_z0 + v["CENTRE_WALL_H"],
-        d="fore-aft on the centreline, the base's full height, from the front "
-          "back to the back centre leg - which is the box's own rear support, "
-          "so it lands under the load it braces")
-    # TWO NOTCHES, ONE AT EACH FRONT CORNER - his, 2026-10-15. The front 36 is
-    # wanted by the wall and by a front cross rail at BOTH grids, so the wall is
-    # notched gm_t x gm_h at the bottom front and again at the top front. What
-    # is left between them is this lip, which is exactly BASE_VOLUME_H tall.
-    box("Shear wall lip, between the front rails", "walls", 0xC9A66B,
-        BW / 2 - gm_t / 2, by1 - gm_t, grid_lo_bot + gm_h,
-        BW / 2 + gm_t / 2, by1, grid_hi_top - gm_h,
-        d=f"what the two front notches leave, each now the rail's full "
-          f"{gm_t:g} across - so the lip reaches the base's FRONT PLANE and "
-          f"its end grain shows there, between the legs. The lower notch's "
-          f"shoulder SITS DOWN on the rail's top face across its whole "
-          f"{gm_t:g}, and the two cheeks take the same notch either side")
-
-    # THE FRONT END IS A SOCKET, NOT TWO SCREWS - his. A pair of cheeks glued
-    # and screwed to the BACK faces of both inner front cross rail laminations
-    # straddle the wall, so 18 + gm_t + 18 is POST_W_X and the front end is the
-    # same captured, bolted joint as the back centre leg's slot: same grip,
-    # same bolt, same three-at-a-quarter-point pattern.
-    #
-    # 🔴 IT STOPS AT grid_hi_top LIKE EVERYTHING ELSE AT THIS END. A cheek
-    # proud of the upper grid's top is a fourth contact under the box and the
-    # three-point mount stops being determinate - the failure nothing shows but
-    # the two Y beams drifting out of coplanar.
-    # DRAWN AS A BODY PLUS A LIP, which is how this model already says "notch":
-    # the body is the CENTRE_WALL_CHEEK_W behind the rail and runs the cheek's
-    # whole height; the lip is the GRID_MEMBER_T in front of it and exists only
-    # in the clear band, because at each grid that is exactly what the
-    # CENTRE_WALL_NOTCH_D x CENTRE_WALL_NOTCH_H notch takes out. Same two boxes
-    # as the wall beside it, and for the same reason.
-    cheek_t, cheek_w = v["CENTRE_WALL_CHEEK_T"], v["CENTRE_WALL_CHEEK_W"]
-    behind = v["CENTRE_WALL_CHEEK_BEHIND"]
-    rail_back = by1 - gm_t                   # the inner lamination's back face
-    for side, x0 in (("left", BW / 2 - gm_t / 2 - cheek_t),
-                     ("right", BW / 2 + gm_t / 2)):
-        box(f"Centre wall front cheek, {side}", "walls", 0xB08D57,
-            x0, rail_back - behind, sw_z0,
-            x0 + cheek_t, rail_back, sw_z1,
-            d=f"{cheek_t:g} x {cheek_w:g} x {v['CENTRE_WALL_CHEEK_H']:g} as "
-              f"cut, notched {v['CENTRE_WALL_NOTCH_D']:g} x "
-              f"{v['CENTRE_WALL_NOTCH_H']:g} at each grid OUT OF that 100. "
-              f"This is the {behind:g} left BEHIND the rail, glued and screwed "
-              f"to it, running the full height - about the 68 the back centre "
-              f"leg gives the wall's other end. With its pair it makes a "
-              f"{cheek_t:g} + {gm_t:g} + {cheek_t:g} socket, the leg's own "
-              f"{v['POST_W_X']:g}, and the wall is bolted through on the same "
-              f"pattern as the back centre leg")
-        box(f"Centre wall front cheek lip, {side}", "walls", 0xB08D57,
-            x0, rail_back, grid_lo_bot + gm_h,
-            x0 + cheek_t, by1, grid_hi_top - gm_h,
-            d=f"the cheek's leading {gm_t:g}, flush with the base's FRONT "
-              f"PLANE - what the two notches leave. Its lower shoulder bears "
-              f"down on the front rail's top face, and the wall's own lip does "
-              f"the same beside it: {v['POST_W_X']:g} by {gm_t:g} of bearing on "
-              f"the rail, centred on it")
+        BW / 2 + gm_t / 2, by1 - housed, sw_z0 + v["CENTRE_WALL_H"],
+        d="fore-aft on the centreline, the base's full height, from the back "
+          "centre leg to the FRONT centre leg - a plain rectangle with NO "
+          "NOTCHES. It slides into a slot at each end, and at each end the "
+          "piece running through that leg covers its end grain: the back wall "
+          "at the rear, the cross rail's housed outer lamination at the front")
+    # NO LIP AND NO CHEEKS. Both existed to get the wall past a front cross
+    # rail that crossed its path, first as a notched lip and then as a pair of
+    # bolted cheeks either side of it. THE SIXTH LEG REMOVED THE PROBLEM
+    # RATHER THAN SOLVING IT - his: with a leg at the front centre the inner
+    # lamination butts that leg in two spans instead of running past, so
+    # nothing crosses the wall and nothing needs notching.
 
     # FILLER BLOCKS in the four CORNER legs' slots, between the grids - his,
     # 2026-10-15. The slot is full height and carries a rail at each grid, so

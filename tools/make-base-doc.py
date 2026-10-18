@@ -110,6 +110,14 @@ def leg_bands(v, kind):
                  ("C", v["BASE_VOLUME_H"], "Leg filler", deep_rear, "stays", ""),
                  rail("upper")]
         total = v["LEG_L_REAR"]
+    elif kind == "front-centre":
+        # THE WALL FILLS THE WHOLE SLOT ABOVE THE FOOT SPACER, and there is no
+        # gap band and no tenon: this leg stops at the upper grid's top like a
+        # rear corner one, because the box must not land on it.
+        bands = [foot,
+                 ("D", v["WALL_H"], "Glue-up spacer", pwy, "out",
+                  f"the central wall, all {pwy:g} of the slot's depth")]
+        total = v["LEG_L_REAR"]
     else:                                        # the rear centre leg
         bands = [foot,
                  ("D", v["WALL_H"], "Glue-up spacer", pwy, "out",
@@ -125,11 +133,18 @@ def leg_bands(v, kind):
 
 
 def leg_kinds(v):
-    """The five legs as the three kinds they actually come in.
+    """The six legs as the four kinds they actually come in.
 
     Named by where they stand, because that is how they get picked up off the
     bench. The box lands on front left, front right and back centre; the two
-    rear corner legs carry the grids and the back wall and NOT the box.
+    rear corner legs and the front centre one carry the grids and the walls
+    and NOT the box.
+
+    THE FRONT CENTRE LEG IS WHAT HOLDS THE CENTRAL WALL'S FRONT END - his, and
+    it replaced a pair of bolted cheeks that did the same job with a notch in
+    every piece. A leg does it with no notch anywhere: the wall slides into its
+    slot exactly as it does at the back, and the cross rail's housed outer
+    lamination covers the wall's end the way the back wall covers the other.
     """
     pwy, bw, strip = v["POST_W_Y"], v["T_BACK_WALL"], v["LEG_STRIP"]
     return [
@@ -150,11 +165,16 @@ def leg_kinds(v):
          f"ledged {v['T_BOX_LEDGE']:g} on the back face only",
          f"BOTH strips rebated {bw:g} deep their whole height &mdash; the back "
          f"wall runs straight through this leg"),
+        ("front-centre", "Front centre", 1, v["LEG_L_REAR"], REAR_BROWN,
+         "none &mdash; the box does not land on it", "no ledge",
+         f"BOTH strips notched {bw:g} deep at each grid for the cross rail's "
+         f"outer lamination &mdash; that rail runs straight through this leg, "
+         f"the same way the back wall runs through the back centre one"),
     ]
 
 
 def leg_elevation_svg(v, s=0.165):
-    """All five legs in one elevation, floor at the bottom, to one scale.
+    """All six legs in one elevation, floor at the bottom, to one scale.
 
     WHY ONE DRAWING AND NOT FIVE: the band heights are the same across the
     legs, so five separate drawings would repeat one height axis five times and
@@ -173,10 +193,10 @@ def leg_elevation_svg(v, s=0.165):
     # where it stands, and "front, 2 off" is the one label that does not help
     # when four of the five look identical.
     names = ["Front left", "Front right", "Rear left", "Rear right",
-             "Back centre"]
+             "Back centre", "Front centre"]
     legs = list(zip(names, [k for kind, _, n, *_ in kinds
                             for k in [kind] * n]))
-    assert len(legs) == len(names), "five legs, and the kinds must cover them"
+    assert len(legs) == len(names), "the names and the kinds must cover the same legs"
 
     # THE PITCH IS IN DRAWN UNITS, NOT IN MILLIMETRES OF LEG. Written as
     # pwx + 46 it spaced five 9-unit legs 118 units apart and they came out as
@@ -333,6 +353,22 @@ def leg_faces(v, kind):
                  f"rebate {bw:g}, back face, full height"),
             ]),
         ]
+    if kind == "front-centre":
+        # BOTH STRIPS THE SAME, and both notched where the cross rail passes.
+        # The rail is continuous through this leg, so unlike a front CORNER
+        # leg there is no outermost strip left whole to cover its end grain -
+        # there is no end grain here, the rail runs on.
+        lo_a, lo_b = v["FOOT_SPACER_H"], v["FOOT_SPACER_H"] + v["GRID_MEMBER_H"]
+        hi_b = rear
+        hi_a = rear - v["GRID_MEMBER_H"]
+        return [
+            (which, rear, [
+                ([(0, lo_a), (bw, lo_a), (bw, lo_b), (0, lo_b)],
+                 f"notch {bw:g}, front face, at the lower grid"),
+                ([(0, hi_a), (bw, hi_a), (bw, hi_b), (0, hi_b)],
+                 f"notch {bw:g}, front face, at the upper grid"),
+            ]) for which in ("outer", "inner")
+        ]
     # the back centre leg: ledged on its back face only, so BOTH strips stand
     # proud and the full-height slot makes the tenon a pair of tabs. The
     # ledge is deeper than the rebate and sits on top of it - one L again.
@@ -347,7 +383,7 @@ def leg_faces(v, kind):
 
 def shoulder_of(v, kind):
     """Where the tenon starts on this kind of leg - its top if it has none."""
-    if kind == "rear-corner":
+    if kind in ("rear-corner", "front-centre"):
         return v["LEG_L_REAR"]
     return v["LEG_L_BOX"] - v["POST_TENON_L"]
 
@@ -382,7 +418,7 @@ def leg_faces_svg(v, s=0.165):
     pwy = v["POST_W_Y"]
     kinds = leg_kinds(v)
     names = ["Front left", "Front right", "Rear left", "Rear right",
-             "Back centre"]
+             "Back centre", "Front centre"]
     legs = list(zip(names, [k for kind, _, n, *_ in kinds
                             for k in [kind] * n]))
 
@@ -499,9 +535,13 @@ def leg_section_svg(v, kind, s=0.62):
     # one strip. Drawn stopping at the outer strip, which is the rule: the
     # outermost lamination of every leg keeps its full POST_W_Y and covers the
     # wall's end grain.
+    # (across the leg from, to, WHICH FACE, what sits in it). The face matters:
+    # the two rear kinds take the back wall in their BACK face, and the front
+    # centre leg takes the cross rail's outer lamination in its FRONT one.
     rebate = {"front": None,
-              "rear-corner": (strip, pwx - strip),        # slot + inner strip
-              "rear-centre": (0.0, pwx)}[kind]            # straight through
+              "rear-corner": (strip, pwx - strip, "back", "wall"),
+              "rear-centre": (0.0, pwx, "back", "wall"),
+              "front-centre": (0.0, pwx, "front", "rail")}[kind]
     for sx in (0.0, pwx - strip):
         body.append(
             f'<rect x="{pad + sx * s:.2f}" y="{pad:.2f}" '
@@ -513,15 +553,16 @@ def leg_section_svg(v, kind, s=0.62):
                 f'fill="{OPEN_GREY}" stroke="#a00" stroke-width="0.6" '
                 f'stroke-dasharray="3 2"/>')
     if rebate:
-        rx0, rx1 = rebate
+        rx0, rx1, face, what = rebate
+        ry = pad if face == "back" else pad + (pwy - bw) * s
         body.append(
-            f'<rect x="{pad + rx0 * s:.2f}" y="{pad:.2f}" '
+            f'<rect x="{pad + rx0 * s:.2f}" y="{ry:.2f}" '
             f'width="{(rx1 - rx0) * s:.2f}" height="{bw * s:.2f}" '
             f'fill="{BACK_ORANGE}" opacity="0.6" stroke="#a00" '
             f'stroke-width="0.6"/>')
         body.append(f'<text x="{pad + (rx0 + rx1) / 2 * s:.1f}" '
-                    f'y="{pad + bw * s / 2 + 1.4:.1f}" text-anchor="middle" '
-                    f'font-size="3.6" fill="#5a2a00">wall {bw:g}</text>')
+                    f'y="{ry + bw * s / 2 + 1.4:.1f}" text-anchor="middle" '
+                    f'font-size="3.6" fill="#5a2a00">{what} {bw:g}</text>')
     # WHERE THE TWO LEFT-OUT STRIPS WOULD HAVE BEEN. Without this line the
     # section shows two strips and a hole, and the leg reads as a 2-piece
     # lamination - which is the thing this chapter exists to correct.
@@ -585,7 +626,7 @@ set off rail offcut, waxed or taped.</p>
 
 
 def legs_html(v):
-    """Chapter 4: the five legs, strip by strip."""
+    """Chapter 4: the six legs, strip by strip."""
     kinds = leg_kinds(v)
     sections = "".join(
         # THE <br> IS LOAD-BEARING: an svg is inline, so without it the caption
@@ -620,7 +661,7 @@ def legs_html(v):
             "out": "<b class=bad>COMES OUT</b> at base assembly",
             "open": "nothing ever fills it",
         }[fate]
-        legs = ("all five" if len(which) == len(kinds)
+        legs = ("all six" if len(which) == len(kinds)
                 else "; ".join(which).lower())
         key.append(
             f"<tr><td style='text-align:center'><b>{code}</b></td>"
@@ -629,7 +670,7 @@ def legs_html(v):
             f"<td>{fate_txt}</td>"
             f"<td class=s>{becomes and 'replaced by ' + becomes}</td></tr>")
     return f"""
-<h2>4 &mdash; The five legs, strip by strip</h2>
+<h2>4 &mdash; The six legs, strip by strip</h2>
 <p><b>Every leg is four strips of {v['LEG_STRIP']:g} laminated face to face
 &mdash; {v['POST_W_X']:g} across &mdash; and the middle two are left out to make
 a {v['GRID_MEMBER_T']:g} slot the full height of the leg.</b> The lamination runs
@@ -656,7 +697,7 @@ the front legs lose nothing at all.</p>
 <table><tr>{sections}</tr></table>
 
 <h3>The slot, floor up</h3>
-<p>All five legs to one scale, floor at the bottom. The <b>stations down the left
+<p>All six legs to one scale, floor at the bottom. The <b>stations down the left
 are the base's own elevation</b>, and every leg is set out from them. A band with
 a <b>dashed red outline is a spacer that comes out</b>; a solid one is glued in
 for good; grey is slot that stays empty.</p>
@@ -967,168 +1008,41 @@ def shoulder_section_svg(v, s=SHOULDER_S):
             f'style="max-width:100%">{"".join(body)}</svg>')
 
 
-def front_joint_svg(v, s=0.19):
-    """The three front pieces in PROFILE, so the notches read.
+def ends_html(v):
+    """Chapter 5b: how the central wall is held at both ends.
 
-    WHY PROFILE AND NOT ELEVATION: these notches are cut into the piece's
-    LEADING EDGE, which an elevation of the base sees end on - exactly the
-    problem leg_faces_svg exists to solve for the legs. Turned to look along
-    the machine's X, each piece shows its depth against its height, which is
-    the face both notches are cut into.
-
-    DRAWN SIDE BY SIDE, front edge to the LEFT, on one height scale with the
-    base's own stations - so the two notches line up with the two grids and
-    the reader can see that the cheek's upper notch runs out at its top while
-    the wall's stops 6 short, the wall being that much lower.
-
-    A dashed red outline is material taken off, the same as every other
-    drawing in this document.
+    IT USED TO BE A DRAWING OF NOTCHES. The wall took two at each end and the
+    front end was a pair of bolted cheeks either side of it; the sixth leg
+    removed all of that, so what is left to say is short and there is no
+    profile to draw - the piece is a plain rectangle.
     """
-    gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
-    notch_d, notch_h = v["CENTRE_WALL_NOTCH_D"], v["CENTRE_WALL_NOTCH_H"]
-    cheek_w, cheek_h = v["CENTRE_WALL_CHEEK_W"], v["CENTRE_WALL_CHEEK_H"]
-    wall_h = v["CENTRE_WALL_H"]
-    behind = v["CENTRE_WALL_CHEEK_BEHIND"]
-    base = v["BASE_FLOOR_CLEAR"]                 # the pieces' bottom, off floor
-
-    # The wall is 1241 long, so it is drawn BROKEN: its front `shown` and a
-    # ragged edge, because what this view is about is the end.
-    shown = 210.0
-    pieces = [
-        ("Cheek, left", cheek_w, cheek_h, 0xB08D57),
-        ("Central wall", shown, wall_h, 0xC9A66B),
-        ("Cheek, right", cheek_w, cheek_h, 0xB08D57),
-    ]
-    tall = cheek_h
-    pitch = max(p[1] for p in pieces) * s + 26
-    pad_l, pad_r, pad_t, pad_b = 46.0, 54.0, 15.0, 24.0
-    w = pad_l + sum(p[1] * s + 26 for p in pieces) + pad_r
-    h = pad_t + tall * s + pad_b
-    body = []
-
-    def y_of(z):                                 # z measured off the PIECES' feet
-        return pad_t + (tall - z) * s
-
-    # the two grid bands, as the stations the notches answer to
-    for z0, z1, what in ((0, notch_h, "lower rail"),
-                         (tall - notch_h, tall, "upper rail")):
-        body.append(f'<rect x="{pad_l - 6:.1f}" y="{y_of(z1):.1f}" '
-                    f'width="{w - pad_l - pad_r + 12:.1f}" '
-                    f'height="{(z1 - z0) * s:.1f}" fill="#f2f6f2" '
-                    f'stroke="none"/>')
-        body.append(f'<text x="{pad_l - 9:.1f}" y="{y_of((z0 + z1) / 2) + 1.6:.1f}" '
-                    f'text-anchor="end" font-size="4.2" fill="#476">{what}</text>')
-    for z, what in ((0, "%g, lower rail under" % base),
-                    (notch_h, "%g, lower rail top" % (base + gm_h)),
-                    (tall - notch_h, "%g, upper rail under"
-                     % (base + gm_h + v["BASE_VOLUME_H"])),
-                    (wall_h, "%g, wall top" % (base + wall_h)),
-                    (tall, "%g, cheek top" % (base + tall))):
-        body.append(f'<line x1="{pad_l - 6:.1f}" y1="{y_of(z):.1f}" '
-                    f'x2="{w - pad_r + 4:.1f}" y2="{y_of(z):.1f}" '
-                    f'stroke="#bbb" stroke-width="0.4" stroke-dasharray="2 2"/>')
-        body.append(f'<text x="{w - pad_r + 6:.1f}" y="{y_of(z) + 1.4:.1f}" '
-                    f'font-size="3.8" fill="#888">{what}</text>')
-
-    x = pad_l
-    for name, depth, height, colour in pieces:
-        pw = depth * s
-        body.append(f'<rect x="{x:.2f}" y="{y_of(height):.2f}" '
-                    f'width="{pw:.2f}" height="{height * s:.2f}" '
-                    f'fill="#{colour:06X}" stroke="#333" stroke-width="0.5"/>')
-        # THE TWO NOTCHES, each open at an edge - so each is a STEP, not a
-        # closed mortise, and a saw can reach both.
-        for z0, z1 in ((0, notch_h), (tall - notch_h, height)):
-            if z1 <= z0:
-                continue
-            body.append(
-                f'<rect x="{x:.2f}" y="{y_of(z1):.2f}" '
-                f'width="{notch_d * s:.2f}" height="{(z1 - z0) * s:.2f}" '
-                f'fill="#fff" stroke="#a00" stroke-width="0.5" '
-                f'stroke-dasharray="2.5 1.5"/>')
-        if name == "Central wall":
-            # the ragged break: this piece runs on to CENTRE_WALL_L
-            zig = []
-            steps = 14
-            for i in range(steps + 1):
-                zz = height * i / steps
-                zig.append(f"{x + pw + (2.2 if i % 2 else -2.2):.2f},"
-                           f"{y_of(zz):.2f}")
-            body.append(f'<polyline points="{" ".join(zig)}" fill="none" '
-                        f'stroke="#fff" stroke-width="2.4"/>')
-            body.append(f'<polyline points="{" ".join(zig)}" fill="none" '
-                        f'stroke="#333" stroke-width="0.5"/>')
-        body.append(f'<text x="{x + pw / 2:.1f}" y="{h - 15:.1f}" '
-                    f'text-anchor="middle" font-size="4.6">{name}</text>')
-        body.append(
-            f'<text x="{x + pw / 2:.1f}" y="{h - 9.5:.1f}" '
-            f'text-anchor="middle" font-size="3.8" fill="#666">'
-            f'{"%g deep, runs on" % depth if name == "Central wall" else "%g deep" % depth}'
-            f' &#183; {height:g} tall</text>')
-        # the notch depth, called out once on the left-hand piece
-        if name == "Cheek, left":
-            body.append(
-                f'<text x="{x + notch_d * s / 2:.1f}" '
-                f'y="{y_of(notch_h / 2) + 1.4:.1f}" text-anchor="middle" '
-                f'font-size="3.6" fill="#a00">{notch_d:g}</text>')
-            body.append(
-                f'<text x="{x + notch_d * s + (depth - notch_d) * s / 2:.1f}" '
-                f'y="{y_of(notch_h / 2) + 1.4:.1f}" text-anchor="middle" '
-                f'font-size="3.6" fill="#333">{behind:g}</text>')
-        x += pw + 26
-
-    body.append(f'<text x="{pad_l:.1f}" y="{h - 3:.1f}" font-size="3.8" '
-                f'fill="#555">front of the base is to the LEFT &#183; '
-                f'dashed red is material taken off &#183; the shaded bands are '
-                f'where the two front cross rails pass</text>')
-    return (f'<svg viewBox="0 0 {w:.0f} {h:.0f}" width="100%" '
-            f'style="max-width:100%">{"".join(body)}</svg>')
-
-
-def front_joint_html(v):
-    """Chapter 5b: how the central wall's front end is held."""
     return f"""
-<h2>5b &mdash; The central wall's front end</h2>
-<p><b>The wall's front end is a socket, not a pair of screws.</b> Two cheeks of
-{v['CENTRE_WALL_CHEEK_T']:g}, one each side, are glued and screwed to the back
-of the front cross rails and bolted through the wall between them. Captured that
-is <b>{v['CENTRE_WALL_CHEEK_T']:g} + {v['GRID_MEMBER_T']:g} +
-{v['CENTRE_WALL_CHEEK_T']:g} = {v['POST_W_X']:g}</b>, the leg's own width, so the
-front end is the same joint as the back centre leg's slot and takes the same
-bolt on the same pattern.</p>
-<p>🔴 <b>All three pieces take the same notch &mdash;
-{v['CENTRE_WALL_NOTCH_D']:g} deep by {v['CENTRE_WALL_NOTCH_H']:g} tall, one at
-each grid.</b> That is the front rail's full thickness, so every leading face
-finishes <b>flush with the base's front plane</b> and all three shoulders bear
-down on the rail's whole {v['GRID_MEMBER_T']:g}, centred on it:
-<b>{v['POST_W_X']:g} by {v['GRID_MEMBER_T']:g} of bearing</b>.</p>
-<p><b>Each notch is open at an edge, so each is a step rather than a closed
-mortise</b> &mdash; the lower one runs out at the piece's bottom, the upper one
-at its top. A saw reaches both.</p>
-{front_joint_svg(v)}
+<h2>5b &mdash; The central wall, at both ends</h2>
+<p><b>The same joint twice.</b> The wall slides into a leg's slot at each end
+&mdash; the back centre leg at the rear, the front centre leg at the front
+&mdash; and is bolted through with {v['CENTRE_WALL_BOLT_COUNT']:g} bolts a side
+on the {v['CENTRE_WALL_BOLT_PITCH']:g} quarter points of the clear band.</p>
+<p>🔴 <b>The wall is a plain rectangle: {v['CENTRE_WALL_L']:g} &times;
+{v['CENTRE_WALL_H']:g}, no notches anywhere.</b> It used to take two at the
+front, to clear a cross rail lamination that ran past it. <b>With a leg there
+that lamination butts the leg instead</b>, in two spans, so nothing crosses the
+wall and there is nothing to cut.</p>
+<p><b>No end grain shows at either end, and for the same reason both times:</b>
+the piece running straight through that leg covers it &mdash; the back wall at
+the rear, the front cross rail's housed outer lamination at the front. The wall
+stops {v['GRID_MEMBER_T'] / 2:g} shy of the front plane, which is exactly that
+housing's depth.</p>
 <table><tr><th></th><th></th></tr>
-<tr><td><b>Cheek</b></td><td>{v['CENTRE_WALL_CHEEK_T']:g} &times;
-{v['CENTRE_WALL_CHEEK_W']:g} &times; {v['CENTRE_WALL_CHEEK_H']:g}, two of them.
-The notch comes <b>out of</b> that {v['CENTRE_WALL_CHEEK_W']:g}, leaving
-<b>{v['CENTRE_WALL_CHEEK_BEHIND']:g}</b> behind the rail</td></tr>
-<tr><td><b>Why {v['CENTRE_WALL_CHEEK_BEHIND']:g}</b></td><td>it is about the
-<b>{v['POST_W_Y'] - v['T_BACK_WALL']:g}</b> of leg holding each side of the
-wall's REAR end, so the wall is supported to about the same depth at both
-ends</td></tr>
-<tr><td><b>Bolts</b></td><td>{v['CENTRE_WALL_BOLT_COUNT']:g} through the stack,
-at {v['CENTRE_WALL_CHEEK_BOLT_Y']:g} back from the leading face and on the
-{v['CENTRE_WALL_BOLT_PITCH']:g} quarter points up the clear band &mdash; the
-same three heights as the back centre leg</td></tr>
-<tr><td><b>Cheek height</b></td><td>{v['CENTRE_WALL_CHEEK_H']:g}, and
-<b>not a millimetre more</b>: its top finishes level with the upper grid, and
-anything proud of that is a fourth contact under the box</td></tr>
+<tr><td><b>Front centre leg</b></td><td>{v['LEG_L_REAR']:g} tall, the same as a
+rear corner leg &mdash; <b>no tenon, so the box must not land on it</b>. Both
+strips notched {v['T_BACK_WALL']:g} deep at each grid in the front face, where
+the cross rail's outer lamination runs through</td></tr>
+<tr><td><b>No filler</b></td><td>the wall fills this leg's slot, the same as at
+the back centre leg</td></tr>
+<tr><td><b>What it cost</b></td><td>the front cross rails' inner lamination
+becomes <b>two spans of {v['RAIL_CROSS_INNER_SPAN']:g}</b> per grid instead of
+one piece of {v['RAIL_CROSS_INNER_L']:g}</td></tr>
 </table>
-<p><b>What carries this joint is the bolts and the bearing, not the glue.</b> A
-cheek's big faces are against the <b>wall</b>, which is where the bolts clamp and
-where the area is; what touches the rail is only the cheek's front edge,
-{v['CENTRE_WALL_CHEEK_T']:g} by {v['GRID_MEMBER_H']:g} at each grid. So the three
-are bolted into one section and that section sits down on the rail &mdash; the
-glue and the screws into the rail locate it.</p>
 """
 
 
@@ -1142,9 +1056,11 @@ def casters_html(v):
 {v['BASE_FLOOR_CLEAR']:g} floor clearance rather than under the legs</b> &mdash;
 which is what keeps the base's height exactly as drawn. Four sit beside a corner
 leg under the lower fore-aft rail. <b>The fifth sits on the central shear wall's
-bottom edge, just forward of the back centre leg</b>, which has no fore-aft rail
-of its own: a lamination each side of the wall's bottom band brings it out to
-{v['POST_W_X']:g} and the plate lands on that.</p>
+bottom edge, BEHIND the front centre leg</b> &mdash; neither centre leg has a
+fore-aft rail of its own, so a lamination each side of the wall's bottom band
+brings it out to {v['POST_W_X']:g} and the plate lands on that.</p>
+<p><b>Five casters, six legs.</b> The two centre legs share this one between
+them, so the back centre leg has none.</p>
 <table><tr><th></th><th></th></tr>
 <tr><td><b>Plate</b></td><td>{v['CASTER_PLATE']:g} square, four holes at 7
 &mdash; which is why the lower rails are brought out to {v['POST_W_X']:g}</td></tr>
@@ -1164,15 +1080,20 @@ the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
 down on it and the caster bears up, so its screws locate it and carry nothing.
 Four bear on a <b>lower rail's underside</b>, hard against a corner leg's face;
 the fifth on the <b>central wall's bottom edge</b>. Nothing passes under a leg's
-foot &mdash; the legs fill the band, which is what lets all five plates sit on
+foot &mdash; the legs fill the band, which is what lets all five caster plates sit on
 one plane.</p>
 <p><b>The machine stands on the feet.</b> There is not enough travel to lift the
 wheels clear and set the legs back down, so the leg bottoms hang a few mm off the
 floor either way.</p>
-<p><b>Level on three</b> &mdash; the two front corners and the centre.
-<b>The two rear corners come down to touch</b>, not to lift: they
+<p><b>Level on three</b> &mdash; the two <b>REAR</b> corners and the front
+centre. <b>The two front corners come down to touch</b>, not to lift: they
 carry nothing standing, and they are what stops the thing tipping about a line
-from a front corner to the back centre.</p>
+from a rear corner to the front centre.</p>
+<p>🔴 <b>The trio changed when the fifth caster moved behind the front centre
+leg.</b> It used to be the two FRONT corners and a centre caster near the back.
+Level on the two front corners now and all three points sit in a line across
+the front, which defines no plane at all &mdash; the base would rock about
+it.</p>
 <p><b>The fork channel is {v['FORK_CHANNEL_W']:g} wide, centred in the
 {v['BAY_OPEN_FORE_AFT']:g} opening</b>, with a guard rail each side screwed under
 the lower grid. That leaves <b>{margin:.0f}</b> at each end of the opening, which
@@ -1270,7 +1191,7 @@ so none of it shows.</p>
 
 <h3>How deep, and what lands on it</h3>
 {shoulder_section_svg(v)}
-<p><b>Cut all five legs to {v['POST_W_X']:g} &times; {v['POST_W_Y']:g} first,
+<p><b>Cut all six legs to {v['POST_W_X']:g} &times; {v['POST_W_Y']:g} first,
 then cut the shoulders.</b> The two front legs are the same leg mirrored, so
 trimmed to one size their tenon holes are identical and come off one setup, and
 the back centre one differs only in standing the full {v['POST_W_X']:g} wide.</p>
@@ -1323,7 +1244,7 @@ def render(v):
           padding: 2mm 3mm; margin: 3mm 0; }}
 </style></head><body>
 <h1>Base Construction</h1>
-<p><b>Two grids that locate and constrain all five legs</b>, three of which the
+<p><b>Two grids that locate and constrain all six legs</b>, three of which the
 box lands on. <b>It is built BEFORE the box, and the legs before it</b> &mdash;
 the box cannot be lowered onto tenons that are not located yet. All sizes in mm,
 all generated from the dimension registry.</p>
@@ -1334,7 +1255,7 @@ all generated from the dimension registry.</p>
 {legs_html(v)}
 {shoulder_html(v)}
 {casters_html(v)}
-{front_joint_html(v)}
+{ends_html(v)}
 <h2>6 &mdash; How it goes together</h2>
 <table>
 <tr><th>Joint</th><th>How</th></tr>
@@ -1390,7 +1311,7 @@ have to be reachable.</p>
 
 <h2>8 &mdash; Order</h2>
 <ol>
-<li><b>Laminate all five legs, with a spacer in every slot.</b> Cut each spacer
+<li><b>Laminate all six legs, with a spacer in every slot.</b> Cut each spacer
 from the stock that will fill that slot, wax or tape it so it does not glue in,
 and run it the full depth so the outer strips cannot bow inward under clamps.</li>
 <li><b>Trim the legs to {v['POST_W_X']:g} &times; {v['POST_W_Y']:g}</b> after the
@@ -1401,7 +1322,7 @@ from an end, so the floor end takes the error.</li>
 <li><b>Only then the box.</b></li>
 </ol>
 <p><b>The mortise heights have to agree across the legs</b> or the frame sits
-twisted &mdash; lay all five up on one flat surface with the spacers set off a
+twisted &mdash; lay them all up on one flat surface with the spacers set off a
 single stop.</p>
 </body></html>
 """
