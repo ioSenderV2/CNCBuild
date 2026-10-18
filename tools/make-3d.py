@@ -892,18 +892,20 @@ def main() -> int:
     # CENTRE_WALL_NOTCH_D x CENTRE_WALL_NOTCH_H notch takes out. Same two boxes
     # as the wall beside it, and for the same reason.
     cheek_t, cheek_w = v["CENTRE_WALL_CHEEK_T"], v["CENTRE_WALL_CHEEK_W"]
+    behind = v["CENTRE_WALL_CHEEK_BEHIND"]
     rail_back = by1 - gm_t                   # the inner lamination's back face
     for side, x0 in (("left", BW / 2 - gm_t / 2 - cheek_t),
                      ("right", BW / 2 + gm_t / 2)):
         box(f"Centre wall front cheek, {side}", "walls", 0xB08D57,
-            x0, rail_back - cheek_w, sw_z0,
+            x0, rail_back - behind, sw_z0,
             x0 + cheek_t, rail_back, sw_z1,
-            d=f"{cheek_t:g} x {v['CENTRE_WALL_CHEEK_D']:g} x "
-              f"{v['CENTRE_WALL_CHEEK_H']:g} as cut, notched "
-              f"{v['CENTRE_WALL_NOTCH_D']:g} x {v['CENTRE_WALL_NOTCH_H']:g} at "
-              f"each grid. This is the {cheek_w:g} BEHIND the rail, glued and "
-              f"screwed to it, running the full height. With its pair it makes "
-              f"a {cheek_t:g} + {gm_t:g} + {cheek_t:g} socket, the leg's own "
+            d=f"{cheek_t:g} x {cheek_w:g} x {v['CENTRE_WALL_CHEEK_H']:g} as "
+              f"cut, notched {v['CENTRE_WALL_NOTCH_D']:g} x "
+              f"{v['CENTRE_WALL_NOTCH_H']:g} at each grid OUT OF that 100. "
+              f"This is the {behind:g} left BEHIND the rail, glued and screwed "
+              f"to it, running the full height - about the 68 the back centre "
+              f"leg gives the wall's other end. With its pair it makes a "
+              f"{cheek_t:g} + {gm_t:g} + {cheek_t:g} socket, the leg's own "
               f"{v['POST_W_X']:g}, and the wall is bolted through on the same "
               f"pattern as the back centre leg")
         box(f"Centre wall front cheek lip, {side}", "walls", 0xB08D57,
