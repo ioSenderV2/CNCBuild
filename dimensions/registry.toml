@@ -3212,8 +3212,9 @@ note = "758 - what the central wall's height was DRAWN at, and what the sheet re
 [[dim]]
 sym = "CENTRE_WALL_H"
 value = 756
-provenance = "pinned"
-note = "756 - the central wall's height AS BUILT, and it is 2 under CENTRE_WALL_NOMINAL_H. THE TWO PANELS CAME OFF THE SAW AS QUADRILATERALS, not rectangles - his, measured at the corners - and 756 is the tallest rectangle that fits BOTH at once. The binding edge is the second panel's top, which falls from 761 at one end to 756 at the other. SETTLED: THE 2 COMES OFF THE TOP, where the wall is free and nothing bears on it - the same place the nominal already took 6 from. THE BOTTOM EDGE STAYS THE BOTTOM: it carries the centre caster through CENTRE_WALL_PAD_L, so it is the edge that may not move."
+provenance = "measured"
+source = "his tape on the trimmed panel"
+note = "756 - the central wall's height, MEASURED ON THE TRIMMED PANEL, 2 under CENTRE_WALL_NOMINAL_H. THE TWO PANELS CAME OFF THE SAW AS QUADRILATERALS, not rectangles - his, measured at the corners - and 756 is the tallest rectangle that fits BOTH at once. The binding edge is the second panel's top, which falls from 761 at one end to 756 at the other. SETTLED: THE 2 COMES OFF THE TOP, where the wall is free and nothing bears on it - the same place the nominal already took 6 from. THE BOTTOM EDGE STAYS THE BOTTOM: it carries the centre caster through CENTRE_WALL_PAD_L, so it is the edge that may not move."
 
 [[dim]]
 sym = "CENTRE_WALL_NOMINAL_L"
@@ -3223,8 +3224,9 @@ note = "1223 - what the central wall's LENGTH was drawn at: short at both ends s
 [[dim]]
 sym = "CENTRE_WALL_L"
 value = 1218
-provenance = "pinned"
-note = "1218 - the central wall's length AS BUILT, 5 under CENTRE_WALL_NOMINAL_L. THE TWO PANELS CAME OFF THE SAW AS QUADRILATERALS - his, measured at the corners - and 1218 is the longest rectangle that fits BOTH at once once they are laid together. The binding edge is the FIRST panel's right-hand one, which leans in from 1223 at the bottom to 1218 at the top; the second panel's top edge is what sets CENTRE_WALL_H. Turning either panel over was tested and does not help - the two errors are not complementary. SETTLED: THE 5 GOES INSIDE THE FRONT CENTRE LEG'S SLOT. The wall was to stop GRID_MEMBER_T / 2 shy of the front plane, at the rail housing's floor; at 1218 it stops 23 shy and is still POST_W_Y - 23 deep into an 86 slot. Its end no longer touches the rail, and nothing was bearing there - the wall is bolted through the leg. TAKES NO NOTCHES: see the sixth leg."
+provenance = "measured"
+source = "his tape on the trimmed panel"
+note = "1218 - the central wall's length, MEASURED ON THE TRIMMED PANEL, 5 under CENTRE_WALL_NOMINAL_L. THE TWO PANELS CAME OFF THE SAW AS QUADRILATERALS - his, measured at the corners - and 1218 is the longest rectangle that fits BOTH at once once they are laid together. The binding edge is the FIRST panel's right-hand one, which leans in from 1223 at the bottom to 1218 at the top; the second panel's top edge is what sets CENTRE_WALL_H. Turning either panel over was tested and does not help - the two errors are not complementary. SETTLED: THE 5 GOES INSIDE THE FRONT CENTRE LEG'S SLOT. The wall was to stop GRID_MEMBER_T / 2 shy of the front plane, at the rail housing's floor; at 1218 it stops 23 shy and is still POST_W_Y - 23 deep into an 86 slot. Its end no longer touches the rail, and nothing was bearing there - the wall is bolted through the leg. TAKES NO NOTCHES: see the sixth leg."
 
 [[dim]]
 sym = "BASE_FLOOR_CLEAR"
