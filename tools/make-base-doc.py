@@ -915,6 +915,171 @@ def shoulder_section_svg(v, s=SHOULDER_S):
             f'style="max-width:100%">{"".join(body)}</svg>')
 
 
+def front_joint_svg(v, s=0.19):
+    """The three front pieces in PROFILE, so the notches read.
+
+    WHY PROFILE AND NOT ELEVATION: these notches are cut into the piece's
+    LEADING EDGE, which an elevation of the base sees end on - exactly the
+    problem leg_faces_svg exists to solve for the legs. Turned to look along
+    the machine's X, each piece shows its depth against its height, which is
+    the face both notches are cut into.
+
+    DRAWN SIDE BY SIDE, front edge to the LEFT, on one height scale with the
+    base's own stations - so the two notches line up with the two grids and
+    the reader can see that the cheek's upper notch runs out at its top while
+    the wall's stops 6 short, the wall being that much lower.
+
+    A dashed red outline is material taken off, the same as every other
+    drawing in this document.
+    """
+    gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
+    notch_d, notch_h = v["CENTRE_WALL_NOTCH_D"], v["CENTRE_WALL_NOTCH_H"]
+    cheek_w, cheek_h = v["CENTRE_WALL_CHEEK_W"], v["CENTRE_WALL_CHEEK_H"]
+    wall_h = v["CENTRE_WALL_H"]
+    behind = v["CENTRE_WALL_CHEEK_BEHIND"]
+    base = v["BASE_FLOOR_CLEAR"]                 # the pieces' bottom, off floor
+
+    # The wall is 1241 long, so it is drawn BROKEN: its front `shown` and a
+    # ragged edge, because what this view is about is the end.
+    shown = 210.0
+    pieces = [
+        ("Cheek, left", cheek_w, cheek_h, 0xB08D57),
+        ("Central wall", shown, wall_h, 0xC9A66B),
+        ("Cheek, right", cheek_w, cheek_h, 0xB08D57),
+    ]
+    tall = cheek_h
+    pitch = max(p[1] for p in pieces) * s + 26
+    pad_l, pad_r, pad_t, pad_b = 46.0, 54.0, 15.0, 24.0
+    w = pad_l + sum(p[1] * s + 26 for p in pieces) + pad_r
+    h = pad_t + tall * s + pad_b
+    body = []
+
+    def y_of(z):                                 # z measured off the PIECES' feet
+        return pad_t + (tall - z) * s
+
+    # the two grid bands, as the stations the notches answer to
+    for z0, z1, what in ((0, notch_h, "lower rail"),
+                         (tall - notch_h, tall, "upper rail")):
+        body.append(f'<rect x="{pad_l - 6:.1f}" y="{y_of(z1):.1f}" '
+                    f'width="{w - pad_l - pad_r + 12:.1f}" '
+                    f'height="{(z1 - z0) * s:.1f}" fill="#f2f6f2" '
+                    f'stroke="none"/>')
+        body.append(f'<text x="{pad_l - 9:.1f}" y="{y_of((z0 + z1) / 2) + 1.6:.1f}" '
+                    f'text-anchor="end" font-size="4.2" fill="#476">{what}</text>')
+    for z, what in ((0, "%g, lower rail under" % base),
+                    (notch_h, "%g, lower rail top" % (base + gm_h)),
+                    (tall - notch_h, "%g, upper rail under"
+                     % (base + gm_h + v["BASE_VOLUME_H"])),
+                    (wall_h, "%g, wall top" % (base + wall_h)),
+                    (tall, "%g, cheek top" % (base + tall))):
+        body.append(f'<line x1="{pad_l - 6:.1f}" y1="{y_of(z):.1f}" '
+                    f'x2="{w - pad_r + 4:.1f}" y2="{y_of(z):.1f}" '
+                    f'stroke="#bbb" stroke-width="0.4" stroke-dasharray="2 2"/>')
+        body.append(f'<text x="{w - pad_r + 6:.1f}" y="{y_of(z) + 1.4:.1f}" '
+                    f'font-size="3.8" fill="#888">{what}</text>')
+
+    x = pad_l
+    for name, depth, height, colour in pieces:
+        pw = depth * s
+        body.append(f'<rect x="{x:.2f}" y="{y_of(height):.2f}" '
+                    f'width="{pw:.2f}" height="{height * s:.2f}" '
+                    f'fill="#{colour:06X}" stroke="#333" stroke-width="0.5"/>')
+        # THE TWO NOTCHES, each open at an edge - so each is a STEP, not a
+        # closed mortise, and a saw can reach both.
+        for z0, z1 in ((0, notch_h), (tall - notch_h, height)):
+            if z1 <= z0:
+                continue
+            body.append(
+                f'<rect x="{x:.2f}" y="{y_of(z1):.2f}" '
+                f'width="{notch_d * s:.2f}" height="{(z1 - z0) * s:.2f}" '
+                f'fill="#fff" stroke="#a00" stroke-width="0.5" '
+                f'stroke-dasharray="2.5 1.5"/>')
+        if name == "Central wall":
+            # the ragged break: this piece runs on to CENTRE_WALL_L
+            zig = []
+            steps = 14
+            for i in range(steps + 1):
+                zz = height * i / steps
+                zig.append(f"{x + pw + (2.2 if i % 2 else -2.2):.2f},"
+                           f"{y_of(zz):.2f}")
+            body.append(f'<polyline points="{" ".join(zig)}" fill="none" '
+                        f'stroke="#fff" stroke-width="2.4"/>')
+            body.append(f'<polyline points="{" ".join(zig)}" fill="none" '
+                        f'stroke="#333" stroke-width="0.5"/>')
+        body.append(f'<text x="{x + pw / 2:.1f}" y="{h - 15:.1f}" '
+                    f'text-anchor="middle" font-size="4.6">{name}</text>')
+        body.append(
+            f'<text x="{x + pw / 2:.1f}" y="{h - 9.5:.1f}" '
+            f'text-anchor="middle" font-size="3.8" fill="#666">'
+            f'{"%g deep, runs on" % depth if name == "Central wall" else "%g deep" % depth}'
+            f' &#183; {height:g} tall</text>')
+        # the notch depth, called out once on the left-hand piece
+        if name == "Cheek, left":
+            body.append(
+                f'<text x="{x + notch_d * s / 2:.1f}" '
+                f'y="{y_of(notch_h / 2) + 1.4:.1f}" text-anchor="middle" '
+                f'font-size="3.6" fill="#a00">{notch_d:g}</text>')
+            body.append(
+                f'<text x="{x + notch_d * s + (depth - notch_d) * s / 2:.1f}" '
+                f'y="{y_of(notch_h / 2) + 1.4:.1f}" text-anchor="middle" '
+                f'font-size="3.6" fill="#333">{behind:g}</text>')
+        x += pw + 26
+
+    body.append(f'<text x="{pad_l:.1f}" y="{h - 3:.1f}" font-size="3.8" '
+                f'fill="#555">front of the base is to the LEFT &#183; '
+                f'dashed red is material taken off &#183; the shaded bands are '
+                f'where the two front cross rails pass</text>')
+    return (f'<svg viewBox="0 0 {w:.0f} {h:.0f}" width="100%" '
+            f'style="max-width:100%">{"".join(body)}</svg>')
+
+
+def front_joint_html(v):
+    """Chapter 5b: how the central wall's front end is held."""
+    return f"""
+<h2>5b &mdash; The central wall's front end</h2>
+<p><b>The wall's front end is a socket, not a pair of screws.</b> Two cheeks of
+{v['CENTRE_WALL_CHEEK_T']:g}, one each side, are glued and screwed to the back
+of the front cross rails and bolted through the wall between them. Captured that
+is <b>{v['CENTRE_WALL_CHEEK_T']:g} + {v['GRID_MEMBER_T']:g} +
+{v['CENTRE_WALL_CHEEK_T']:g} = {v['POST_W_X']:g}</b>, the leg's own width, so the
+front end is the same joint as the back centre leg's slot and takes the same
+bolt on the same pattern.</p>
+<p>🔴 <b>All three pieces take the same notch &mdash;
+{v['CENTRE_WALL_NOTCH_D']:g} deep by {v['CENTRE_WALL_NOTCH_H']:g} tall, one at
+each grid.</b> That is the front rail's full thickness, so every leading face
+finishes <b>flush with the base's front plane</b> and all three shoulders bear
+down on the rail's whole {v['GRID_MEMBER_T']:g}, centred on it:
+<b>{v['POST_W_X']:g} by {v['GRID_MEMBER_T']:g} of bearing</b>.</p>
+<p><b>Each notch is open at an edge, so each is a step rather than a closed
+mortise</b> &mdash; the lower one runs out at the piece's bottom, the upper one
+at its top. A saw reaches both.</p>
+{front_joint_svg(v)}
+<table><tr><th></th><th></th></tr>
+<tr><td><b>Cheek</b></td><td>{v['CENTRE_WALL_CHEEK_T']:g} &times;
+{v['CENTRE_WALL_CHEEK_W']:g} &times; {v['CENTRE_WALL_CHEEK_H']:g}, two of them.
+The notch comes <b>out of</b> that {v['CENTRE_WALL_CHEEK_W']:g}, leaving
+<b>{v['CENTRE_WALL_CHEEK_BEHIND']:g}</b> behind the rail</td></tr>
+<tr><td><b>Why {v['CENTRE_WALL_CHEEK_BEHIND']:g}</b></td><td>it is about the
+<b>{v['POST_W_Y'] - v['T_BACK_WALL']:g}</b> of leg holding each side of the
+wall's REAR end, so the wall is supported to about the same depth at both
+ends</td></tr>
+<tr><td><b>Bolts</b></td><td>{v['CENTRE_WALL_BOLT_COUNT']:g} through the stack,
+at {v['CENTRE_WALL_CHEEK_BOLT_Y']:g} back from the leading face and on the
+{v['CENTRE_WALL_BOLT_PITCH']:g} quarter points up the clear band &mdash; the
+same three heights as the back centre leg</td></tr>
+<tr><td><b>Cheek height</b></td><td>{v['CENTRE_WALL_CHEEK_H']:g}, and
+<b>not a millimetre more</b>: its top finishes level with the upper grid, and
+anything proud of that is a fourth contact under the box</td></tr>
+</table>
+<p><b>What carries this joint is the bolts and the bearing, not the glue.</b> A
+cheek's big faces are against the <b>wall</b>, which is where the bolts clamp and
+where the area is; what touches the rail is only the cheek's front edge,
+{v['CENTRE_WALL_CHEEK_T']:g} by {v['GRID_MEMBER_H']:g} at each grid. So the three
+are bolted into one section and that section sits down on the rail &mdash; the
+glue and the screws into the rail locate it.</p>
+"""
+
+
 def casters_html(v):
     """Chapter 5a: the six leveling casters and the fork channel."""
     gap = v["BASE_FLOOR_CLEAR"] - v["CASTER_H"]
@@ -1121,6 +1286,7 @@ frame.</div>
 {legs_html(v)}
 {shoulder_html(v)}
 {casters_html(v)}
+{front_joint_html(v)}
 <h2>6 &mdash; How it goes together</h2>
 <table>
 <tr><th>Joint</th><th>How</th></tr>
