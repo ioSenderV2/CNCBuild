@@ -325,7 +325,14 @@ def leg_faces(v, kind):
     pwy, strip, ledge = v["POST_W_Y"], v["LEG_STRIP"], v["T_BOX_LEDGE"]
     bw, tenon = v["T_BACK_WALL"], v["POST_TENON_L"]
     box, rear = v["LEG_L_BOX"], v["LEG_L_REAR"]
-    rail_under = rear - v["BASE_BOX_GAP"] - v["GRID_MEMBER_H"]
+    gm_h = v["GRID_MEMBER_H"]
+    # OFF LEG_BELOW_BOX, NOT OFF A LEG. These are elevations of the base: a
+    # leg with no tenon stops BASE_BOX_GAP below the box, so reading the upper
+    # rail's underside off LEG_L_REAR put it 10 low the moment that leg was
+    # corrected to 864.
+    rail_under = v["LEG_BELOW_BOX"] - v["BASE_BOX_GAP"] - gm_h
+    rail_lo_a = v["FOOT_SPACER_H"]                  # the LOWER rail's band
+    rail_lo_b = rail_lo_a + gm_h
 
     shoulder = box - tenon
     if kind == "front":
@@ -334,15 +341,25 @@ def leg_faces(v, kind):
         # no outer strip left to draw. Its top face IS the bearing shoulder.
         #
         # On the inner strip the notch for the cross rail's outer lamination
-        # runs up from the rail and the front ledge continues off the top of
-        # it, so the two come off as one L down the leg's front face.
+        # runs up from the UPPER rail and the front ledge continues off the top
+        # of it, so those two come off as one L down the leg's front face.
+        #
+        # 🔴 AND THERE IS A SECOND NOTCH, AT THE LOWER GRID. The front cross
+        # rail exists at BOTH grids and its outer lamination is housed in the
+        # leg at each - this drawing showed only the upper one, so a front
+        # corner leg read as needing one notch when it needs two. The 3D model
+        # had both all along.
         tab = pwy - v["TENON_CORNER_Y"]
         return [
             ("outer", shoulder, []),
             ("inner", box, [
+                ([(0, rail_lo_a), (bw, rail_lo_a), (bw, rail_lo_b),
+                  (0, rail_lo_b)],
+                 f"notch {bw:g}, front face, at the lower grid"),
                 ([(0, rail_under), (bw, rail_under), (bw, shoulder),
                   (tab, shoulder), (tab, box), (0, box)],
-                 f"ledge {ledge:g} &middot; notch {bw:g}, front face"),
+                 f"ledge {ledge:g} &middot; notch {bw:g}, front face, "
+                 f"at the upper grid"),
             ]),
         ]
     if kind == "rear-corner":
