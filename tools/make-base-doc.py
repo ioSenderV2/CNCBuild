@@ -428,8 +428,11 @@ def leg_elevation_svg(v, s=0.165):
     make the one real difference - the back centre leg carrying a wall where
     the others carry two rails and a filler - the hardest thing to see.
 
-    A leg is drawn as its FOUR STRIPS: the outer pair full height, and the
-    middle 36 drawn as the slot stack. Hatched, dashed-outline bands come out.
+    A leg is drawn as its FOUR STRIPS: the outer pair, each to ITS OWN top,
+    and the middle 36 drawn as the slot stack. Hatched, dashed-outline bands
+    come out. The outer pair is drawn in leg_faces order - the outboard strip
+    on the left, the inner one on the right - and they are not always the same
+    height: a front leg's outboard strip stops at the shoulder.
     """
     pwx, strip, gm_t = v["POST_W_X"], v["LEG_STRIP"], v["GRID_MEMBER_T"]
     kinds = leg_kinds(v)
@@ -494,12 +497,19 @@ def leg_elevation_svg(v, s=0.165):
         bands = leg_bands(v, kind)
         total = sum(b[1] for b in bands)
         top = y_of(total)
-        # the two outer strips, full height, which is what makes them the pieces
-        # that get trimmed to length and ledged
-        for sx in (0.0, pwx - strip):
+        # THE TWO OUTER STRIPS ARE NOT THE SAME HEIGHT, and the tops come from
+        # leg_faces so this drawing cannot disagree with the quarter-turn one.
+        # They were both drawn at the leg's full length, which is right for a
+        # rear corner and for the back centre leg and WRONG for a front leg:
+        # there the side ledge is 42 deep across an 18 outer strip, so it
+        # swallows that strip whole and its top face IS the bearing shoulder.
+        # The front elevation showed it running past the shoulder to the leg
+        # top, against the profile view's 874, which is the one that was right.
+        for sx, (_which, s_top, _cuts) in zip((0.0, pwx - strip),
+                                              leg_faces(v, kind)):
             body.append(
-                f'<rect x="{x0 + sx * s:.2f}" y="{top:.2f}" '
-                f'width="{strip * s:.2f}" height="{total * s:.2f}" '
+                f'<rect x="{x0 + sx * s:.2f}" y="{y_of(s_top):.2f}" '
+                f'width="{strip * s:.2f}" height="{s_top * s:.2f}" '
                 f'fill="{dict(((k, c) for k, _, _, _, c, *_ in kinds))[kind]}" '
                 f'stroke="#333" stroke-width="0.4"/>')
         # the middle 36: the slot, band by band, floor up
