@@ -1179,14 +1179,17 @@ trimmed separately they would not match. **Screws at {{CENTRE_WALL_SCREW_L}} —
 {{GRID_MEMBER_T}} stack** leave about 14 of bite in the second ply and stop short of the far face.
 
 The same screws then come out and go back into their own holes as the clamps for the glue-up, so the
-holes put the panels back in the alignment they were trimmed in.
+holes put the panels back into the alignment the trim gave them.
+
+**It is glued and screwed, and the screws stay in: {{CENTRE_WALL_SCREW_COUNT}} of them —
+14 round the perimeter and 4 up the middle.**
 
 | | |
 |---|---|
 | **Clearance hole in the top ply** | so the screw spins free in it and **pulls the plies together**. Biting in both, it can jack them apart instead — and that is invisible once there is glue in the joint |
 | **Snug only on the dry run** | the threads cut in the second ply are effectively single-use, and glue lubricates the second drive |
-| **Add more screws for the glue-up** | the ones that register the panels are few for clamping this area, and the extra holes cost nothing once the cutting is done. They all come out again |
-| 🔴 **Scrape the squeeze-out off both faces while it is wet** | and keep glue back a few mm from the two ends. **The wall's ends enter a {{GRID_MEMBER_T}} slot and the panel IS {{GRID_MEMBER_T}} — there is no clearance at all**, so a set bead on a face is a wall that will not go in |
+| 🔴 **The perimeter screws at either end sit inside a leg slot** | the wall's last {{POST_W_Y}} at each end enters a {{GRID_MEMBER_T}} slot in a {{GRID_MEMBER_T}} panel. **Those heads must be dead flush or just below**, and they have to miss the {{CENTRE_WALL_BOLT_COUNT}} bolts a side, which run through that same zone |
+| 🔴 **Scrape the squeeze-out off both faces while it is wet** | and keep glue back a few mm from the two ends, for the same reason: **there is no clearance at all in that slot**, so a set bead on a face is a wall that will not go in |
 
 NOTE: **A dry patch in the middle matters less here than it would elsewhere.** This wall's loads are
 in its own plane — it is the centreline fore-aft member as well as a shear panel — and two

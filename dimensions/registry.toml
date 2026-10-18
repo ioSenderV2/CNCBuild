@@ -3193,6 +3193,12 @@ expr = "LEG_BELOW_BOX - BASE_FLOOR_CLEAR - BASE_BOX_GAP"
 note = "764 - the height of BOTH shear walls: floor clearance up to BASE_BOX_GAP shy of the box. SETTLED: IT IS NOT BASE_VOLUME_H - the walls run past both grids rather than sitting between them, which is the whole reason they can replace rails."
 
 [[dim]]
+sym = "CENTRE_WALL_SCREW_COUNT"
+value = 18
+provenance = "part"
+note = "18 - the screws holding the central wall's two laminations, AS BUILT: 14 round the perimeter and 4 up the middle, his. GLUED AND SCREWED, so they stay in - they are not just the glue-up's clamps. FLAG: THE PERIMETER ONES AT EITHER END SIT INSIDE A LEG SLOT. The wall's last POST_W_Y at each end enters a GRID_MEMBER_T slot in a GRID_MEMBER_T panel, so a head standing even slightly proud there is a wall that will not go in - those have to be dead flush or just below. FLAG: AND THEY MUST MISS THE BOLTS - CENTRE_WALL_BOLT_COUNT at each end, on the CENTRE_WALL_BOLT_PITCH quarter points, run through exactly that zone."
+
+[[dim]]
 sym = "CENTRE_WALL_SCREW_L"
 value = 31.75
 provenance = "part"
