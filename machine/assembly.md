@@ -1159,11 +1159,38 @@ trimmed width of its own sheet, so it stops 21.5 short of each outer face rather
 |---|---|
 | **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
 | **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops 21.5 short at each end** — it is cut to its sheet at **1216**, the full width of a 4 × 8 inside the trim, so it finishes just behind that lamination with 3.5 of air. The ends carry nothing: the wall is screwed through its **face** in the rebate, and the 3.5 shows as a shadow line at the two rear corners, not from the front. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box** |
-| **Central wall at the front** | **It stops 18 short**, at the front cross rails' **outer** lamination, which covers its end grain — the same move the back wall already makes at the other end. So each front corner takes a notch **18 across by 100**, one per grid, clearing only the rail's **inner** lamination. The **lower** notch's shoulder sits on its rail, the **564 lip** between the two notches finishes against the outer lamination, and **two long screws through each rail go into the wall's end** |
+| **Central wall at the front** | **The same joint as the rear: it slides into the front centre leg's slot** and is bolted through. **It stops {{GRID_MEMBER_T}} shy of the front plane** nominally, where the cross rail's **outer** lamination is housed over its end and covers the end grain — the same move the back wall makes at the other end. **It takes no notches**: with a leg at the front centre, the rail's inner lamination butts that leg in two spans rather than running past the wall, so nothing crosses it |
 
-**All five legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
-build order simple: nothing has to be inserted while the glue is wet, so "five legs, then the base"
-holds for all five.
+**All six legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
+build order simple: nothing has to be inserted while the glue is wet, so "legs, then the base"
+holds for all of them.
+
+#### Laminating the central wall — screw it, trim it, then glue it
+
+**The two panels came off the saw as quadrilaterals rather than rectangles**, so the wall is
+**{{CENTRE_WALL_L}} × {{CENTRE_WALL_H}}** — the largest rectangle that fits both at once, against a
+drawn {{CENTRE_WALL_NOMINAL_L}} × {{CENTRE_WALL_NOMINAL_H}}. **Both shortfalls land where nothing
+bears:** the 5 goes inside the front leg's slot, and the 2 comes off the **top**, which is already
+the free end.
+
+**Lay them together on the one square corner and the two edges meeting it, screw them, and trim the
+other two sides as one pair.** That is what makes the two identical, which is the whole difficulty —
+trimmed separately they would not match. **Screws at {{CENTRE_WALL_SCREW_L}} — 1.25" — into a
+{{GRID_MEMBER_T}} stack** leave about 14 of bite in the second ply and stop short of the far face.
+
+The same screws then come out and go back into their own holes as the clamps for the glue-up, so the
+holes put the panels back in the alignment they were trimmed in.
+
+| | |
+|---|---|
+| **Clearance hole in the top ply** | so the screw spins free in it and **pulls the plies together**. Biting in both, it can jack them apart instead — and that is invisible once there is glue in the joint |
+| **Snug only on the dry run** | the threads cut in the second ply are effectively single-use, and glue lubricates the second drive |
+| **Add more screws for the glue-up** | the ones that register the panels are few for clamping this area, and the extra holes cost nothing once the cutting is done. They all come out again |
+| 🔴 **Scrape the squeeze-out off both faces while it is wet** | and keep glue back a few mm from the two ends. **The wall's ends enter a {{GRID_MEMBER_T}} slot and the panel IS {{GRID_MEMBER_T}} — there is no clearance at all**, so a set bead on a face is a wall that will not go in |
+
+NOTE: **A dry patch in the middle matters less here than it would elsewhere.** This wall's loads are
+in its own plane — it is the centreline fore-aft member as well as a shear panel — and two
+laminations carry in-plane shear and bending in parallel whether or not every square inch bonded.
 
 #### The slot joints are bolted, not glued
 

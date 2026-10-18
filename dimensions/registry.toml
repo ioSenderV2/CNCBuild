@@ -3193,14 +3193,32 @@ expr = "LEG_BELOW_BOX - BASE_FLOOR_CLEAR - BASE_BOX_GAP"
 note = "764 - the height of BOTH shear walls: floor clearance up to BASE_BOX_GAP shy of the box. SETTLED: IT IS NOT BASE_VOLUME_H - the walls run past both grids rather than sitting between them, which is the whole reason they can replace rails."
 
 [[dim]]
-sym = "CENTRE_WALL_H"
+sym = "CENTRE_WALL_SCREW_L"
+value = 31.75
+provenance = "part"
+note = "31.75 - 1.25in, the screws that hold the central wall's two laminations together. His. They do the job TWICE: first as a dry fix so the mis-cut pair can be trimmed as one, then out and back into their own holes as the clamps for the glue-up, which is what puts the panels back into the alignment the trim gave them. FLAG: THE TOP PLY WANTS A CLEARANCE HOLE so the screw pulls the plies together - biting in both it can jack them apart, and that is invisible once there is glue in the joint. It leaves about 14 of bite in the second ply and stops 4.25 short of the far face, so nothing breaks through."
+
+[[dim]]
+sym = "CENTRE_WALL_NOMINAL_H"
 expr = "WALL_H - 6"
-note = "758 - the central shear wall's height, 6 under the back wall's. SETTLED: IT IS CUT TO A SHEET, his 2026-10-15 - at this height BOTH central laminations come off ONE 5 x 5, where at the full WALL_H they take two. FLAG: THE BINDING FIGURE IS 759.6: a 5 x 5 trims to 1520.8 and the 1.6 kerf between the two pieces leaves 759.6 each, so 4 would have missed by 0.4. His 6 clears it by 1.6, which is a margin rather than a fit. SETTLED: IT COMES OFF THE TOP, where the wall is free - it just stands further below the box, and nothing bears on it there. The back wall keeps the full WALL_H: different sheet, different size."
+note = "758 - what the central wall's height was DRAWN at, and what the sheet reasoning was done on: at this height both laminations come off ONE 5 x 5, where at the full WALL_H they take two. FLAG: THE BINDING FIGURE WAS 759.6 - a 5 x 5 trims to 1520.8 and the 1.6 kerf between the two pieces leaves 759.6 each, so 4 under would have missed by 0.4. The 6 clears it by 1.6, a margin rather than a fit. NOTE: THE PART IS CENTRE_WALL_H AND IT IS SMALLER - kept because the drawings and the nest were worked out on this one, so a reader meeting 758 somewhere has a symbol to find it under."
+
+[[dim]]
+sym = "CENTRE_WALL_H"
+value = 756
+provenance = "pinned"
+note = "756 - the central wall's height AS BUILT, and it is 2 under CENTRE_WALL_NOMINAL_H. THE TWO PANELS CAME OFF THE SAW AS QUADRILATERALS, not rectangles - his, measured at the corners - and 756 is the tallest rectangle that fits BOTH at once. The binding edge is the second panel's top, which falls from 761 at one end to 756 at the other. SETTLED: THE 2 COMES OFF THE TOP, where the wall is free and nothing bears on it - the same place the nominal already took 6 from. THE BOTTOM EDGE STAYS THE BOTTOM: it carries the centre caster through CENTRE_WALL_PAD_L, so it is the edge that may not move."
+
+[[dim]]
+sym = "CENTRE_WALL_NOMINAL_L"
+expr = "BASE_W - T_BACK_WALL - GRID_MEMBER_T / 2"
+note = "1223 - what the central wall's LENGTH was drawn at: short at both ends so no end grain shows, the back wall covering it at the rear and the front cross rail's housed outer lamination at the front, which is where the GRID_MEMBER_T / 2 comes from. NOTE: THE PART IS CENTRE_WALL_L AND IT IS SHORTER - this is kept because the drawings and the sheet layout were worked out on it, and because it is still the figure the joint was DESIGNED to, so it says what the 5 was given up against. NOTE: IT IS THE SAME 1223 AS RAIL_FORE_AFT_L by a different route, which is worth knowing at the saw."
 
 [[dim]]
 sym = "CENTRE_WALL_L"
-expr = "BASE_W - T_BACK_WALL - GRID_MEMBER_T / 2"
-note = "1223 - the central shear wall's length. SETTLED: IT STOPS SHORT AT BOTH ENDS SO NO END GRAIN SHOWS, and it takes NO NOTCHES AT ALL - the back wall covers it at the rear, and at the front the cross rail's OUTER lamination covers it, housed GRID_MEMBER_T / 2 deep across the FRONT CENTRE LEG's face. FLAG: THE NOTCHES WENT WITH THE SIXTH LEG - his. They existed because the front cross rail's inner lamination spanned the whole way between the corner legs and so crossed the wall's path; with a leg at the front centre that lamination butts it instead, in two spans, and nothing crosses the wall any more. So the piece is a plain rectangle. NOTE: IT COMES OUT THE SAME 1223 AS RAIL_FORE_AFT_L, which is worth knowing at the saw even though the two get there by different routes. FLAG: THE BACK WALL IS NOT THIS - BACK_WALL_L is 1216, cut to the full width of its own 4 x 8, where this wall comes off a 5 x 5. Two laminations of 18 make its GRID_MEMBER_T, because it has to fill a leg slot."
+value = 1218
+provenance = "pinned"
+note = "1218 - the central wall's length AS BUILT, 5 under CENTRE_WALL_NOMINAL_L. THE TWO PANELS CAME OFF THE SAW AS QUADRILATERALS - his, measured at the corners - and 1218 is the longest rectangle that fits BOTH at once once they are laid together. The binding edge is the FIRST panel's right-hand one, which leans in from 1223 at the bottom to 1218 at the top; the second panel's top edge is what sets CENTRE_WALL_H. Turning either panel over was tested and does not help - the two errors are not complementary. SETTLED: THE 5 GOES INSIDE THE FRONT CENTRE LEG'S SLOT. The wall was to stop GRID_MEMBER_T / 2 shy of the front plane, at the rail housing's floor; at 1218 it stops 23 shy and is still POST_W_Y - 23 deep into an 86 slot. Its end no longer touches the rail, and nothing was bearing there - the wall is bolted through the leg. TAKES NO NOTCHES: see the sixth leg."
 
 [[dim]]
 sym = "BASE_FLOOR_CLEAR"

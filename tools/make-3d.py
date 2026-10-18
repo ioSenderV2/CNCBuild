@@ -895,14 +895,24 @@ def main() -> int:
     # structure: at CENTRE_WALL_H both of its laminations come off one 5 x 5,
     # where at the back wall's height they take two. The difference comes off
     # the TOP, where the wall is free and nothing bears on it.
+    # 🔴 DRAWN FROM ITS REAR END FORWARD BY CENTRE_WALL_L, not by position.
+    # Written as by0 + bw to by1 - housed it was 1223 long by construction and
+    # could not show the as-built part at all: the two panels came off the saw
+    # as quadrilaterals and the rectangle salvaged from both is 5 shorter. The
+    # REAR end is the fixed one - it butts up behind the back wall - so the 5
+    # lands at the front, inside the leg slot, where it is 23 shy of the front
+    # plane instead of 18 and nothing bears either way.
     box("Shear wall, centreline", "walls", 0xC9A66B,
         BW / 2 - gm_t / 2, by0 + bw, sw_z0,
-        BW / 2 + gm_t / 2, by1 - housed, sw_z0 + v["CENTRE_WALL_H"],
-        d="fore-aft on the centreline, the base's full height, from the back "
-          "centre leg to the FRONT centre leg - a plain rectangle with NO "
-          "NOTCHES. It slides into a slot at each end, and at each end the "
-          "piece running through that leg covers its end grain: the back wall "
-          "at the rear, the cross rail's housed outer lamination at the front")
+        BW / 2 + gm_t / 2, by0 + bw + v["CENTRE_WALL_L"],
+        sw_z0 + v["CENTRE_WALL_H"],
+        d=f"{v['CENTRE_WALL_L']:g} x {v['CENTRE_WALL_H']:g} AS BUILT, a plain "
+          f"rectangle with NO NOTCHES - salvaged from two panels that came off "
+          f"the saw as quadrilaterals, so it is 5 short of the drawn length "
+          f"and 2 short of the height. It slides into a leg slot at each end, "
+          f"and at each end the piece running through that leg covers its end "
+          f"grain: the back wall at the rear, the cross rail's housed outer "
+          f"lamination at the front")
     # NO LIP AND NO CHEEKS. Both existed to get the wall past a front cross
     # rail that crossed its path, first as a notched lip and then as a pair of
     # bolted cheeks either side of it. THE SIXTH LEG REMOVED THE PROBLEM
