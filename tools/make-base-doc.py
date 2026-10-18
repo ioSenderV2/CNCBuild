@@ -556,7 +556,15 @@ def leg_section_svg(v, kind, s=0.62):
     # the two rear kinds take the back wall in their BACK face, and the front
     # centre leg takes the cross rail's outer lamination in its FRONT one.
     rebate = {"front": None,
-              "rear-corner": (strip, pwx - strip, "back", "wall"),
+              # SLOT + INNER STRIP, so LEG_STRIP to POST_W_X - 54 across, not
+              # 36. Written as pwx - strip it drew the slot alone and stopped
+              # at the inner strip's outer face, which is a rebate the wall
+              # could not sit in: the wall comes from the machine's centre, so
+              # it covers the inner strip FIRST and runs out to the back of
+              # the slot, stopping against the un-notched outer strip - the
+              # one that covers its end grain. Caught by his tape, which read
+              # 53 of overlap where this said 36.
+              "rear-corner": (strip, pwx, "back", "wall"),
               "rear-centre": (0.0, pwx, "back", "wall"),
               "front-centre": (0.0, pwx, "front", "rail")}[kind]
     for sx in (0.0, pwx - strip):
