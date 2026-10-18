@@ -1030,6 +1030,38 @@ def main() -> int:
         box("Rib, across", "grid", 0xD4B24A, web, cy_ - half, cav_z0,
             BW - web, cy_ + half, cav_z1, d=desc)
 
+    # ---- the sand ports, one per bay, through BOTH skins -------------------
+    # DRAWN AS SOLIDS BECAUSE THE MODEL CANNOT SUBTRACT, the same convention
+    # the spoilboard's bolt holes already use - so each port is declared in
+    # ALLOWED against the skin it passes through rather than cluttering the
+    # clash list red.
+    #
+    # CENTRED IN ITS BAY, and SAND_PORT_D's note says why that is not for
+    # looks: dry sand stands at about 34 degrees, so the drain crater from a
+    # centre hole reaches past the half-bay and the bay empties to a shallow
+    # residue. A port in a corner would strand a wedge.
+    def bay_centres(n, bay, end, lo, hi):
+        """The middle of each bay, including the two end bays."""
+        edges = [lo]
+        for c in rib_centres(n, bay, end, lo):
+            edges += [c - half, c + half]
+        edges.append(hi)
+        return [(a + b) / 2 for a, b in zip(edges[0::2], edges[1::2])]
+
+    port_r = v["SAND_PORT_D"] / 2
+    port_cx = bay_centres(v["BOX_RIBS_FORE_AFT"], bw, ew, web, BW - web)
+    port_cy = bay_centres(v["BOX_RIBS_ACROSS"], bf, ef, web, D - web)
+    for cx_ in port_cx:
+        for cy_ in port_cy:
+            cyl("Sand port, top skin", "topskin", HOLE, cx_, cy_,
+                cav_z1, 0, port_r, seg=16,
+                d=f"{v['SAND_PORT_D']:g} through the top skin, centred in its "
+                  f"bay - the one sand goes IN through")
+            cyl("Sand port, bottom skin", "box", HOLE, cx_, cy_,
+                -v["BOX_THK"], cav_z0, port_r, seg=16,
+                d=f"{v['SAND_PORT_D']:g} through the bottom skin, under the "
+                  f"port above it - the one the bay drains through")
+
     # THE TONGUE COVERS THE END GRAIN OF BOTH SKINS - his, 2026-10-11 - so it
     # runs the box's full thickness and stands BOX_TONGUE_PROUD above the top
     # skin: -BOX_THK to +60, which is TONGUE_FULL_H = 204 tall.
@@ -2603,6 +2635,12 @@ ALLOWED = {
     # subtracted from the board, so every one of these pairs is a part sharing
     # space with the hole it lives in. Declared rather than left to clutter the
     # clash list red.
+    # The sand ports, one per bay through each skin. A port is a HOLE drawn as
+    # a solid, for the same reason the bolt holes below are: the model has no
+    # way to subtract one shape from another, so the absence is drawn and then
+    # declared here.
+    frozenset({"Sand port, top skin", "Top skin"}),
+    frozenset({"Sand port, bottom skin", "Bottom skin"}),
     frozenset({"Spoilboard T-bolt", "MDF sheet"}),
     frozenset({"Spoilboard T-bolt", "MDF sacrificial sheet"}),
     frozenset({"Spoilboard T-bolt", "Spoilboard bolt hole"}),
