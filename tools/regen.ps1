@@ -87,6 +87,7 @@ try {
     Step 'fasteners.html' @('tools/make-fasteners.py')
     Step 'torsion-box-construction.html' @('tools/make-box-doc.py')
     Step 'base-construction.html' @('tools/make-base-doc.py')
+    Step 'base-cutlist.html' @('tools/make-cutlist-doc.py')
     Step 'Interactive_Model.html' @('tools/make-3d.py')
     Step 'shop pack hole tallies' @('tools/build-hole-tally.py')
     Step 'STATUS.md and INDEX.md' @('tools/status.py', 'all')
@@ -104,8 +105,8 @@ try {
     # this working tree changed, so it never argues with the existing corpus.
     # Like restale it compares against HEAD, so it also has to run uncommitted.
     foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-registry-js',
-                   'check-shop-pack-refs', 'subst', 'restale',
-                   'check-note-history') {
+                   'check-shop-pack-refs', 'check-cutlist-nest', 'subst',
+                   'restale', 'check-note-history') {
         Write-Host "-- $c" -ForegroundColor Cyan
         & $py "tools/$c.py" @(
             if ($c -eq 'subst') { '--check' }

@@ -1185,14 +1185,14 @@ the vertical plane by bearing on them, so a vertical pair buys little and puts t
 rail's top edge. Spread along the leg's depth the pair stops the rail rotating about a single bolt,
 which the dry slot on its own does not.
 
-🔴 **The lower rail tongues take a longer bolt than the upper ones.** An upper tongue is
-{{TONGUE_BOLT_GRIP_UPPER}} across; a lower one is **{{TONGUE_BOLT_GRIP_LOWER}}**, because the lower
-rails are four laminations and the added 18 each side butts the leg's face rather than passing through
-the slot. **Run the bolt through all four** — those outer strips are what the 73 caster plate lands on,
-so this pins them to the leg, and the caster hardware is all on the rail's underside.
+**One bolt length does every one of these joints.** Every tongue is {{GRID_MEMBER_T}} wide and fills
+the slot, so an upper rail, a lower rail and the central wall all cross the same
+**{{TONGUE_BOLT_GRIP}}** — strip, tongue, strip. **The lower rail's two outboard laminations are not
+part of the tongue**: they butt the leg's face at each end, so they stop against it and are never in
+the bolt's path.
 
-OPEN: **Bolt lengths are not picked.** The two grips are {{TONGUE_BOLT_GRIP_UPPER}} and
-{{TONGUE_BOLT_GRIP_LOWER}}, before washers and the lock nut.
+OPEN: **The bolt length is not picked.** The grip is {{TONGUE_BOLT_GRIP}} and the rest is a fender
+washer each end, the lock nut, and a thread or two proud.
 
 NOTE: **Fender washers both ends, and snug rather than hard.** A plain washer dishes into plywood face
 at torque, and a dished washer is a loose joint again — which is the whole reason for choosing a bolt

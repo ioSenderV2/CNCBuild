@@ -3280,14 +3280,9 @@ expr = "GRID_MEMBER_H / 2"
 note = "50 - both tongue bolts sit at the rail's MID-HEIGHT, in its 100. FLAG: SPACED ALONG THE TONGUE, NOT STACKED VERTICALLY. The mortise shoulders already stop the rail rotating in the vertical plane by bearing, so a vertical pair buys little and puts the upper bolt near the rail's top edge."
 
 [[dim]]
-sym = "TONGUE_BOLT_GRIP_UPPER"
+sym = "TONGUE_BOLT_GRIP"
 expr = "POST_W_X"
-note = "72 - what a bolt crosses at an UPPER rail tongue, and at the central wall: one leg strip, the 36 in the slot, the far leg strip. The same 72 the leg is wide."
-
-[[dim]]
-sym = "TONGUE_BOLT_GRIP_LOWER"
-expr = "POST_W_X + 2 * LEG_STRIP"
-note = "108 - what a bolt crosses at a LOWER rail tongue. The lower rails are FOUR laminations: the inner 36 passes through the slot and an 18 is added each side, butting the leg's face because it cannot pass through. SETTLED: RUN THE BOLT THROUGH ALL FOUR - those outer 18s are what the 73 caster plate lands on, so this pins them to the leg, and the caster hardware is all on the rail's underside where nothing fouls. OPEN: THE BOLT LENGTH IS HIS, off what is on the shelf - this is the grip, before washers and the lock nut."
+note = "72 - what a bolt crosses at EVERY bolted slot joint: one leg strip, the GRID_MEMBER_T in the slot, the far leg strip. The same 72 the leg is wide. FLAG: THERE IS ONLY ONE GRIP ON THIS WHOLE JOINT FAMILY - every tongue is 36 wide and fills the slot to 36, his, so an upper rail, a lower rail and the central wall all cross the same stack. THE LOWER RAIL'S TWO OUTBOARD LAMINATIONS ARE NOT PART OF THE TONGUE: they BUTT the leg's face at each end, which means they stop against it and are never in the bolt's path."
 
 [[dim]]
 sym = "CENTRE_WALL_BOLT_COUNT"

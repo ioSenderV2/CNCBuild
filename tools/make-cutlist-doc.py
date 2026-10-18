@@ -1,0 +1,415 @@
+#!/usr/bin/env python3
+"""The base's cutlist and its sheet layout, as their own document.
+
+    python tools/make-cutlist-doc.py
+
+Writes machine/drawings/base-cutlist.html.
+
+WHY IT IS SEPARATE from base-construction.html: that document is about how the
+base GOES TOGETHER, and a cutlist is read at a different moment, by somebody
+standing at a sheet rather than at the frame. They were one document and the
+nest pages sat in the middle of the assembly order.
+
+EACH GROUP IS AN ASSEMBLY GROUP - his. A group therefore carries every piece
+that goes INTO that assembly, internals included, rather than every piece that
+happens to share a shape: the rear corner legs' fillers and foot spacers are
+listed under the legs, the caster blocks under the two things they bear on.
+
+NOTHING IS TREATED AS ALREADY CUT. The sheet count is worked out from zero.
+
+THE ONE FIXED SHEET IS HIS: one 5 x 5 carries the two central shear wall
+laminations and nothing else, because at CENTRE_WALL_H both come off one.
+"""
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+from dims import Registry                                    # noqa: E402
+
+_spec = importlib.util.spec_from_file_location("boxdoc", HERE / "make-box-doc.py")
+boxdoc = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(boxdoc)
+
+OUT = HERE.parent / "machine" / "drawings" / "base-cutlist.html"
+
+STRIP_W = 90.0          # a leg strip is RIPPED at 90 and trimmed to 86 dry
+SHEET_48 = ("4 x 8", 1219.2, 2438.4)
+SHEET_55 = ("5 x 5", 1524.0, 1524.0)
+
+
+def groups(v):
+    """His eight assembly groups, each with every piece that goes into it.
+
+    Sizes are registry values, never literals. A piece that is one lamination
+    of a 36 member is listed at 18, because that is what gets cut.
+    """
+    gm_h = v["GRID_MEMBER_H"]
+    shoulder = v["LEG_L_BOX"] - v["POST_TENON_L"]
+    return [
+        ("Rear corner legs", 2,
+         "They carry no tenon and the box must NOT land on them: each stops "
+         "level with the upper grid's top, and the back wall sits in a "
+         "full-height rebate in the inner strip only.",
+         [("Leg strip", v["LEG_L_REAR"], STRIP_W, 4,
+           "2 per leg. Inner strip takes an 18 x 18 rebate down its back "
+           "edge, full height; the outboard strip stays whole"),
+          ("Leg filler", v["BASE_VOLUME_H"], STRIP_W, 4,
+           "2 per leg, closing the slot between the grids. Trim to "
+           f"{v['POST_W_Y'] - v['T_BACK_WALL']:g} deep here - the back wall "
+           "takes the slot's back 18"),
+          ("Foot spacer", v["FOOT_SPACER_H"], STRIP_W, 4,
+           "2 per leg, closing the slot from the floor up to the lower rail. "
+           "It is what the leg stands on")]),
+        ("Three bearing legs", 3,
+         "The box lands on these and nowhere else. TWO KINDS UNDER ONE "
+         "HEADING: a front leg is ledged on two faces, so its outboard strip "
+         "stops at the shoulder and its tenon is one tab on the inner strip; "
+         "the back centre leg is ledged on its back face only, so both strips "
+         "run full length and the slot splits its tenon into two tabs.",
+         [("Leg strip, full length", v["LEG_L_BOX"], STRIP_W, 4,
+           "both strips of the back centre leg, and the INNER strip of each "
+           "front leg"),
+          ("Leg strip, front outboard", shoulder, STRIP_W, 2,
+           "one per front leg, and it is shorter: the side ledge is "
+           f"{v['T_BOX_LEDGE']:g} deep across an {v['LEG_STRIP']:g} strip, so "
+           "it swallows that strip whole and its top face IS the bearing "
+           "shoulder"),
+          ("Leg filler, front legs", v["BASE_VOLUME_H"], STRIP_W, 4,
+           f"2 per front leg, {v['POST_W_Y']:g} deep. The back centre leg "
+           "gets none - the central wall fills its slot"),
+          ("Foot spacer", v["FOOT_SPACER_H"], STRIP_W, 6,
+           "2 per leg, all three"),
+          ("Tenon corner spacer", v["POST_TENON_L"], v["TENON_CORNER_Y"], 2,
+           f"the two FRONT legs, and it is {v['TENON_SPACER_GAP']:g} stock, "
+           "not 18 - glued to the OUTER face of the tenon tab")]),
+        ("Lower fore-aft rails", 2,
+         "Four laminations, not two: the inner pair passes through the legs' "
+         "slot and a pad is added each side, butting the leg's face because "
+         "it cannot pass through. The pads are what the caster plates land "
+         "on.",
+         [("Rail lamination", v["RAIL_FORE_AFT_L"], gm_h, 4,
+           "2 per rail, filling the legs' "
+           f"{v['GRID_MEMBER_T']:g} slot"),
+          ("Outer pad", v["RAIL_LOWER_PAD_L"], gm_h, 4,
+           "one each side of each rail, bringing it out to "
+           f"{v['POST_W_X']:g} so a {v['CASTER_PLATE']:g} caster plate lands "
+           "on a full face"),
+          ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 4,
+           "one per corner caster, bearing on the rail's underside hard "
+           "against a corner leg's face. THICKNESS IS CUT TO FIT, and all "
+           "five blocks come off one piece so they match")]),
+        ("Upper fore-aft rails", 2,
+         "Two laminations only - the pads are what feed the casters and "
+         "there are none up here.",
+         [("Rail lamination", v["RAIL_FORE_AFT_L"], gm_h, 4, "2 per rail")]),
+        ("Front cross rail, lower", 1,
+         "One rail, two laminations doing different jobs.",
+         [("Outer, housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
+           "full width, housed 18 deep in the front faces of the legs' inner "
+           "strips, and it stops one lamination short at each end so the "
+           "outermost strip covers its end grain"),
+          ("Inner, spans between", v["RAIL_CROSS_INNER_L"], gm_h, 1,
+           "between the front legs, housed in nothing")]),
+        ("Front cross rail, upper", 1,
+         "The same two pieces again.",
+         [("Outer, housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
+           "as the lower"),
+          ("Inner, spans between", v["RAIL_CROSS_INNER_L"], gm_h, 1,
+           "as the lower")]),
+        ("Rear shear wall", 1,
+         "It replaces the back cross rails at BOTH grids, so it must not be "
+         "cut into strips - and it is glued and screwed to all three rear "
+         "legs, which is what makes the back a single assembly.",
+         [("Wall, one sheet", v["BACK_WALL_L"], v["WALL_H"], 1,
+           "CUT TO THE SHEET: its length is the sheet's full usable width, so "
+           "the two cuts that trim the long edges are its two ends. It stops "
+           f"{v['BASE_BOX_GAP']:g} shy of the box")]),
+        ("Central shear wall", 1,
+         "Two laminations filling the back centre leg's slot, dry-fitted and "
+         "bolted. It ties the front and back assemblies together with the "
+         "fore-aft rails.",
+         [("Wall lamination", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
+           "notched at BOTH front corners, "
+           f"{v['GRID_MEMBER_T'] / 2:g} across by {gm_h:g} up, to ride over "
+           "the front cross rails' inner lamination"),
+          ("Lower band pad", v["CENTRE_WALL_PAD_L"], gm_h, 2,
+           "one each side, flush with the wall's bottom edge. It brings the "
+           f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "
+           "its top edge is level with the lower grid's top"),
+          ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 1,
+           "the fifth block, bearing on this wall's bottom edge just forward "
+           "of the back centre leg")]),
+    ]
+
+
+# ---------------------------------------------------------------- the nest
+
+def bands(pieces, usable_l, usable_w, reserve_first=None):
+    """Left-loaded bands: fill across the width, then step along the length.
+
+    NOT A PACKER'S NEST, DELIBERATELY. A packer sorts by area and scatters
+    pieces down a sheet to save a few millimetres; what is wanted is each
+    sheet loaded from ONE END so the remainder is one whole offcut rather than
+    a fringe of strips. So pieces go down in the order given, a band is as
+    deep as the longest piece in it, and a band closes when the next piece
+    will not fit across what is left of the width.
+
+    `reserve_first` is a piece that must have a band of its own with nothing
+    beside it - the rear shear wall, whose length IS the sheet's usable width
+    and so leaves no room for a neighbour.
+
+    Returns (placed, leftover_length) where placed is
+    [(x, y, w, h, name)] with y along the sheet's LENGTH.
+    """
+    k = boxdoc.KERF
+    placed, y = [], 0.0
+
+    def fits(length):
+        return y + length <= usable_l + 1e-9
+
+    if reserve_first is not None:
+        name, lng, wide = reserve_first
+        if not (wide <= usable_l + 1e-9 and lng <= usable_w + 1e-9):
+            raise SystemExit("%s does not fit a bare sheet" % name)
+        placed.append((0.0, y, lng, wide, name))
+        y += wide + k
+
+    queue = list(pieces)
+    while queue:
+        # open a band on the longest piece still waiting that will fit
+        lead = next((i for i, p in enumerate(queue) if fits(p[1])), None)
+        if lead is None:
+            return placed, usable_l - y, queue
+        name, lng, wide = queue.pop(lead)
+        band_h, x = lng, 0.0
+        placed.append((x, y, wide, band_h, name))
+        x += wide + k
+        # fill across the width with anything that fits the band
+        i = 0
+        while i < len(queue):
+            n2, l2, w2 = queue[i]
+            if l2 <= band_h + 1e-9 and x + w2 <= usable_w + 1e-9:
+                placed.append((x, y, w2, l2, n2))
+                x += w2 + k
+                queue.pop(i)
+            else:
+                i += 1
+        y += band_h + k
+    return placed, usable_l - y, []
+
+
+def nest(v, gs):
+    """The three sheets, and which pieces fall on each.
+
+    ORDER IS THE WHOLE DESIGN HERE: the wall takes its reserved band, then the
+    long rail-width pieces, then the leg strips and the short stuff, so the
+    offcut that survives is at one end and in one piece.
+    """
+    trim = boxdoc.EDGE_TRIM
+    _n48, w48, l48 = SHEET_48
+    _n55, w55, l55 = SHEET_55
+    uw48, ul48 = w48 - 2 * trim, l48 - 2 * trim
+    uw55, ul55 = w55 - 2 * trim, l55 - 2 * trim
+
+    flat = []
+    for gname, _qty, _why, rows in gs:
+        for name, a, b, q, _note in rows:
+            for _ in range(q):
+                flat.append(("%s / %s" % (gname, name), a, b))
+
+    def take(pred):
+        got = [p for p in flat if pred(p)]
+        for p in got:
+            flat.remove(p)
+        return got
+
+    # the 5 x 5, and only the two wall laminations
+    wall_lams = take(lambda p: p[0].endswith("Wall lamination"))
+    s55, left55, over55 = bands(wall_lams, ul55, uw55)
+    if over55:
+        raise SystemExit("the 5 x 5 will not take both wall laminations")
+
+    reserve = take(lambda p: p[0].endswith("Wall, one sheet"))
+    # LONGEST FIRST WITHIN EACH WIDTH CLASS, which is what keeps a band full.
+    rails = sorted(take(lambda p: p[2] == v["GRID_MEMBER_H"]),
+                   key=lambda p: -p[1])
+    strips = sorted(take(lambda p: p[2] == STRIP_W), key=lambda p: -p[1])
+    rest = sorted(flat, key=lambda p: -p[1])
+    flat.clear()
+
+    sheets, queue = [], rails + strips + rest
+    first = (reserve[0][0], reserve[0][1], reserve[0][2]) if reserve else None
+    while queue or first is not None:
+        placed, left, queue = bands(queue, ul48, uw48, reserve_first=first)
+        sheets.append((placed, left))
+        first = None
+        if not queue:
+            break
+    return (s55, left55), sheets, (uw48, ul48), (uw55, ul55)
+
+
+# ---------------------------------------------------------------- rendering
+
+def sheet_svg(placed, usable_w, usable_l, left, s=0.072):
+    """One sheet, pieces drawn where they fall, offcut shaded."""
+    pad = 16.0
+    w = pad * 2 + usable_w * s
+    h = pad * 2 + usable_l * s
+    out = [f'<rect x="{pad}" y="{pad}" width="{usable_w * s:.1f}" '
+           f'height="{usable_l * s:.1f}" fill="#fff" stroke="#111" '
+           f'stroke-width="1"/>']
+    if left > 1:
+        out.append(f'<rect x="{pad}" y="{pad + (usable_l - left) * s:.1f}" '
+                   f'width="{usable_w * s:.1f}" height="{left * s:.1f}" '
+                   f'fill="#eef3ee" stroke="#9b9" stroke-width="0.6" '
+                   f'stroke-dasharray="4 3"/>')
+        out.append(f'<text x="{pad + usable_w * s / 2:.1f}" '
+                   f'y="{pad + (usable_l - left / 2) * s:.1f}" '
+                   f'text-anchor="middle" font-size="7" fill="#476">'
+                   f'offcut {left:.0f} x {usable_w:.0f}, one piece</text>')
+    for x, y, pw, ph, name in placed:
+        short = name.split(" / ")[-1]
+        out.append(f'<rect x="{pad + x * s:.2f}" y="{pad + y * s:.2f}" '
+                   f'width="{pw * s:.2f}" height="{ph * s:.2f}" '
+                   f'fill="#dfe8f4" stroke="#36506e" stroke-width="0.5"/>')
+        if pw * s > 7 and ph * s > 16:
+            out.append(
+                f'<text x="{pad + (x + pw / 2) * s:.2f}" '
+                f'y="{pad + (y + ph / 2) * s:.2f}" text-anchor="middle" '
+                f'font-size="5.2" transform="rotate(-90 '
+                f'{pad + (x + pw / 2) * s:.2f} '
+                f'{pad + (y + ph / 2) * s:.2f})">{short}</text>')
+    return (f'<svg viewBox="0 0 {w:.0f} {h:.0f}" width="{w * 1.6:.0f}" '
+            f'style="max-width:100%">{"".join(out)}</svg>')
+
+
+def render(v, gs, five, fours, u48, u55):
+    s55, left55 = five
+    rows = []
+    total = 0
+    for gname, qty, why, pieces in gs:
+        n = sum(p[3] for p in pieces)
+        total += n
+        rows.append(
+            f'<tr class="g"><td colspan="4"><b>{gname}</b>'
+            + (f' &mdash; {qty} of them' if qty > 1 else '')
+            + f'<div class="why">{why}</div></td></tr>')
+        for name, a, b, q, note in pieces:
+            rows.append(
+                f'<tr><td>{name}</td>'
+                f'<td class="n">{a:g} &times; {b:g}</td>'
+                f'<td class="n"><b>{q}</b></td>'
+                f'<td class="note">{note}</td></tr>')
+
+    sheet_blocks = [
+        '<h2>Sheet 1 &mdash; 5 &times; 5, the central wall and nothing else</h2>'
+        '<p>Both laminations come off one sheet, which is the reason the '
+        f'central wall is cut {v["WALL_H"] - v["CENTRE_WALL_H"]:g} shorter '
+        'than the rear one.</p>'
+        + sheet_svg(s55, u55[0], u55[1], left55)]
+    for i, (placed, left) in enumerate(fours, start=2):
+        sheet_blocks.append(
+            f'<h2>Sheet {i} &mdash; 4 &times; 8</h2>'
+            + sheet_svg(placed, u48[0], u48[1], left))
+
+    return f'''<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<title>CNCBuild &mdash; Base cutlist and sheet layout</title>
+<style>
+ @page {{ size: letter portrait; margin: 14mm; }}
+ body {{ font: 10.5pt/1.4 "Segoe UI", system-ui, sans-serif; color: #111;
+        max-width: 190mm; margin: 0 auto; }}
+ h1 {{ font-size: 19pt; margin: 0 0 1mm; }}
+ h2 {{ font-size: 13pt; margin: 7mm 0 1mm; border-bottom: 2px solid #111;
+       padding-bottom: 1mm; page-break-after: avoid; }}
+ .sub {{ color: #555; margin: 0 0 4mm; }}
+ table {{ border-collapse: collapse; width: 100%; font-size: 9.5pt;
+          margin: 2mm 0 4mm; }}
+ th, td {{ border: 1px solid #999; padding: 1.3mm 2mm; text-align: left;
+           vertical-align: top; }}
+ td.n {{ text-align: right; white-space: nowrap; }}
+ td.note {{ color: #444; font-size: 9pt; }}
+ tr.g td {{ background: #eef1f5; }}
+ .why {{ color: #444; font-weight: 400; font-size: 9pt; margin-top: 0.7mm; }}
+ .box {{ border: 1px solid #c9c9c9; border-left: 5px solid #555;
+         background: #fafafa; padding: .7rem .9rem; margin: 3mm 0; }}
+ svg {{ margin: 2mm 0 4mm; }}
+</style>
+</head><body>
+
+<h1>Base &mdash; cutlist and sheet layout</h1>
+<p class="sub"><b>{total} pieces, {1 + len(fours)} sheets of
+{v["T_BB_SKIN_BOT"]:g} mm Baltic birch.</b> Millimetres throughout. Grouped the
+way the base goes together, so a group is one assembly and carries everything
+that goes into it.</p>
+
+<div class="box">
+<b>Leg strips are ripped at {STRIP_W:g} and trimmed to {v["POST_W_Y"]:g} once
+the lamination is dry</b>, so every piece cut from strip stock &mdash; fillers
+and foot spacers included &mdash; is listed at {STRIP_W:g} wide.
+<br><br>
+<b>The glue-up spacers are not in this list.</b> One set holds a leg's slot
+open while it is clamped and comes straight back out to be used on the next
+leg, so it is one set cut from rail offcut, waxed or taped, not a part of the
+base.
+<br><br>
+<b>Kerf {boxdoc.KERF:g}, edge trim {boxdoc.EDGE_TRIM:g}</b> &mdash; one pass
+off a factory edge and nothing more, so a usable 4 &times; 8 is
+{u48[0]:g} &times; {u48[1]:g}.
+</div>
+
+<h2>The cutlist, by assembly group</h2>
+<table>
+<tr><th>Piece</th><th class="n">Size</th><th class="n">Qty</th><th>Notes</th></tr>
+{''.join(rows)}
+</table>
+
+<h2>How it divides across the sheets</h2>
+<p>Each sheet is loaded from one end, longest pieces first, <b>so what is left
+over is one whole offcut rather than a fringe of strips</b>. A band is as deep
+as the longest piece in it and gets filled across the sheet's width.</p>
+<p>&#128308; <b>The rear shear wall takes a band of its own with nothing beside
+it.</b> Its {v["BACK_WALL_L"]:g} length IS the sheet's usable width, so there
+is no room for a neighbour and its two ends are the trim cuts.</p>
+
+{''.join(sheet_blocks)}
+
+</body></html>
+'''
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap.add_argument("--kerf", type=float, default=boxdoc.KERF)
+    ap.add_argument("--trim", type=float, default=boxdoc.EDGE_TRIM)
+    a = ap.parse_args()
+    boxdoc.KERF, boxdoc.EDGE_TRIM = a.kerf, a.trim
+
+    reg = Registry()
+    reg.evaluate_all()
+    if reg.errors:
+        print("registry does not evaluate; fix that first", file=sys.stderr)
+        return 2
+    v = {s: reg.value(s) for s in reg.order}
+
+    gs = groups(v)
+    five, fours, u48, u55 = nest(v, gs)
+    OUT.write_text(render(v, gs, five, fours, u48, u55), encoding="utf-8")
+
+    pieces = sum(p[3] for _g, _q, _w, rows in gs for p in rows)
+    print("OK  %s  %d pieces, %d sheet(s): one %s and %d x %s"
+          % (OUT.name, pieces, 1 + len(fours), SHEET_55[0], len(fours),
+             SHEET_48[0]))
+    for i, (placed, left) in enumerate(fours, start=2):
+        print("    sheet %d: %2d pieces, offcut %.0f x %.0f in one piece"
+              % (i, len(placed), left, u48[0]))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

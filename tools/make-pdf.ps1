@@ -49,7 +49,7 @@
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('build', 'record', 'pack', 'dxf', 'all', 'both')]
+    [ValidateSet('build', 'record', 'pack', 'cutlist', 'dxf', 'all', 'both')]
     [string] $Doc = 'all',
     [switch] $KeepHtml = $true
 )
@@ -66,6 +66,8 @@ $docs = @(
     [pscustomobject]@{ Key = 'record'; Html = 'design-record.html';  Pdf = 'design-record.pdf'  }
     [pscustomobject]@{ Key = 'pack';   Html = 'machine/drawings/shop-pack.html'
                                        Pdf  = 'machine/drawings/shop-pack.pdf' }
+    [pscustomobject]@{ Key = 'cutlist'; Html = 'machine/drawings/base-cutlist.html'
+                                        Pdf  = 'machine/drawings/base-cutlist.pdf' }
     # The quote DXFs drawn back from their own bytes - what the shop receives.
     # THREE REQUESTS, QUOTED SEPARATELY, so three PDFs. They share the key so
     # -Doc dxf still means all of them and the generator still runs once.
