@@ -2673,26 +2673,26 @@ ALLOWED = {
     frozenset({"Perimeter web", "Side lamination, proud band"}),
     frozenset({"Perimeter web", "Rib, fore-aft"}),  # ribs die into the webs
     frozenset({"Perimeter web", "Rib, across"}),
-    frozenset({"Perimeter web", "Back tenon block"}),   # it dies into the web
-    frozenset({"Back tenon block", "Rib, across"}),     # and into the first rib
-    frozenset({"Back tenon block", "Post, back centre tenon"}),  # it beds against it
+    frozenset({"Perimeter web", "Mid tenon block"}),    # it dies into the web
+    frozenset({"Mid tenon block", "Rib, across"}),      # and into the first rib
+    frozenset({"Mid tenon block", "Post, front centre tenon"}),  # it beds against it
 
     # Each post is drawn as a tenon standing out of a full-section stub - one
     # part, two boxes, the same convention as the BF12 wing and boss below.
-    frozenset({"Post, front left", "Post, front left tenon"}),
-    frozenset({"Post, front right", "Post, front right tenon"}),
-    frozenset({"Post, back centre", "Post, back centre tenon"}),
+    frozenset({"Post, rear left", "Post, rear left tenon"}),
+    frozenset({"Post, rear right", "Post, rear right tenon"}),
+    frozenset({"Post, front centre", "Post, front centre tenon"}),
     # The post's outer face is FLUSH with the tongue's outer face and the 44
     # wall lands on the 44 shoulder - that is the whole ledge detail, so the
     # wall standing on the shoulder is contact by design, not a clash.
-    frozenset({"Post, front left", "Side lamination"}),
-    frozenset({"Post, front left", "Back tongue"}),
-    frozenset({"Post, front right", "Side lamination"}),
-    frozenset({"Post, front right", "Back tongue"}),
-    frozenset({"Post, back centre", "Back tongue"}),
-    frozenset({"Post, front left", "Perimeter web"}),
-    frozenset({"Post, front right", "Perimeter web"}),
-    frozenset({"Post, back centre", "Perimeter web"}),
+    frozenset({"Post, rear left", "Side lamination"}),
+    frozenset({"Post, rear left", "Back tongue"}),
+    frozenset({"Post, rear right", "Side lamination"}),
+    frozenset({"Post, rear right", "Back tongue"}),
+    frozenset({"Post, front centre", "Back tongue"}),
+    frozenset({"Post, rear left", "Perimeter web"}),
+    frozenset({"Post, rear right", "Perimeter web"}),
+    frozenset({"Post, front centre", "Perimeter web"}),
 
     frozenset({"Back tongue", "Side lamination"}),       # meet at the corner
     frozenset({"Back tongue", "Side lamination, proud band"}),
@@ -2700,8 +2700,7 @@ ALLOWED = {
     # bears on the post shoulder exactly as the tongues do.
     frozenset({"Front cap", "Side lamination"}),    # meet at the front corner
     frozenset({"Front cap", "Perimeter web"}),
-    frozenset({"Front cap", "Post, front left"}),
-    frozenset({"Front cap", "Post, front right"}),
+    frozenset({"Front cap", "Post, front centre"}),
     # One board with a step: the full-depth piece and the proud band above it.
     frozenset({"Side lamination", "Side lamination, proud band"}),
     # One part drawn as two boxes, the same convention as the BF12 wing/boss.

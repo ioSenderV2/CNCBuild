@@ -1188,14 +1188,14 @@ shoulder, and the tenon is location only. <b>Which is why the slot passing
 through it costs nothing</b> &mdash; a tenon is whichever strips stand inside
 the band, never the leg's full width.</p>
 
-<h3>A {v['TENON_SPACER_GAP']:g} spacer on each front tenon</h3>
+<h3>A {v['TENON_SPACER_GAP']:g} spacer on each corner tenon</h3>
 <p><b>{v['TENON_SPACER_GAP']:g} &times; {v['TENON_CORNER_Y']:g} &times;
 {v['POST_TENON_L']:g}, glued to the OUTER face of the tab</b>, out of
-{v['TENON_SPACER_GAP']:g} Baltic birch scrap. <b>The two front legs only</b>
-&mdash; the back centre leg's tabs butt the back wall's web with no gap at
+{v['TENON_SPACER_GAP']:g} Baltic birch scrap. <b>The two rear legs only</b>
+&mdash; the front centre leg's tabs butt the front wall's web with no gap at
 all.</p>
-<p>🔴 <b>Without it the box is located on a face and not on a corner.</b> A front
-tab butts the front perimeter web with nothing to spare and has
+<p>🔴 <b>Without it the box is located on a face and not on a corner.</b> A rear
+tab butts the back perimeter web with nothing to spare and has
 <b>{v['TENON_SPACER_GAP']:g} of air to the side web</b>. Fill that, and the
 composite tenon's outer face lands <b>on</b> the side web's inner face, so the
 box's tongue corner is held both ways.</p>
@@ -1228,9 +1228,9 @@ so none of it shows.</p>
 <h3>How deep, and what lands on it</h3>
 {shoulder_section_svg(v)}
 <p><b>Cut all six legs to {v['POST_W_X']:g} &times; {v['POST_W_Y']:g} first,
-then cut the shoulders.</b> The two front legs are the same leg mirrored, so
+then cut the shoulders.</b> The two rear legs are the same leg mirrored, so
 trimmed to one size their tenon holes are identical and come off one setup, and
-the back centre one differs only in standing the full {v['POST_W_X']:g} wide.</p>
+the front centre one differs only in standing the full {v['POST_W_X']:g} wide.</p>
 <p>🔴 <b>Square faces matter more here than the width.</b> The shoulder is a
 cross-cut and the wall lands directly over it, so a face out of square puts the
 bearing on an edge instead of on a face.</p>

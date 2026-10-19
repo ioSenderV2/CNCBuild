@@ -110,7 +110,7 @@ def parts(v):
         # --- the egg crate ---------------------------------------------------
         ("Rib, fore-aft", D - 2 * web, h_cav, int(v["BOX_RIBS_FORE_AFT"]), rib),
         ("Rib, across", W - 2 * web, h_cav, int(v["BOX_RIBS_ACROSS"]), rib),
-        # FLAG: THE TWO BACK TENON BLOCKS ARE NOT HERE ON PURPOSE - they come from
+        # FLAG: THE TWO CENTRE TENON BLOCKS ARE NOT HERE ON PURPOSE - they come from
         # his scrap bin, 2026-10-11. They were the ONLY parts on a second sheet
         # of 19 mm, 1% used: a $245 board for 0.044 m2 of location blocking that
         # carries no load and whose thickness is free up to

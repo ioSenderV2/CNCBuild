@@ -1201,7 +1201,7 @@ laminations carry in-plane shear and bending in parallel whether or not every sq
 fender washer, lock nut — **run across the leg's {{POST_W_X}}**, through one outer strip, through
 whatever fills the slot, and out through the far strip.
 
-**The base goes together as two assemblies and then ties them.** The two front legs are glued to the
+**The base goes together as two assemblies and then ties them.** The three front legs are glued to the
 front rails; the back wall is glued and screwed to all three rear legs. **The fore-aft rails and the
 central wall join those two assemblies**, and every one of those joints is bolted.
 
