@@ -96,36 +96,37 @@ def leg_bands(v, kind):
                 f"the {which} fore-aft rail")
 
     if kind == "front":
-        bands = [foot, rail("lower"),
-                 ("C", v["BASE_VOLUME_H"], "Leg filler", pwy, "stays", ""),
-                 rail("upper"), gap, tenon]
-        total = v["LEG_L_BOX"]
-    elif kind == "rear-corner":
         # NO GAP BAND: this leg STOPS at the upper grid's top. The gap is air
         # between the grid and the box, and on the three legs the box lands on
         # it is leg material because they carry on up through it - here there
         # is no leg above the grid at all, which is the whole point of the
         # three-point mount.
         bands = [foot, rail("lower"),
-                 ("C", v["BASE_VOLUME_H"], "Leg filler", deep_rear, "stays", ""),
+                 ("C", v["BASE_VOLUME_H"], "Leg filler", pwy, "stays", ""),
                  rail("upper")]
-        total = v["LEG_L_REAR"]
+        total = v["LEG_L_SHORT"]
+    elif kind == "rear-corner":
+        bands = [foot, rail("lower"),
+                 ("C", v["BASE_VOLUME_H"], "Leg filler", deep_rear, "stays", ""),
+                 rail("upper"), gap, tenon]
+        total = v["LEG_L_BOX"]
     elif kind == "front-centre":
-        # THE WALL FILLS THE WHOLE SLOT ABOVE THE FOOT SPACER, and there is no
-        # gap band and no tenon: this leg stops at the upper grid's top like a
-        # rear corner one, because the box must not land on it.
+        # THE WALL FILLS THE SLOT FROM THE FOOT SPACER UP, and the gap and the
+        # tenon carry on above it: this is the box's third point.
         bands = [foot,
                  ("D", v["WALL_H"], "Glue-up spacer", pwy, "out",
-                  f"the central wall, all {pwy:g} of the slot's depth")]
-        total = v["LEG_L_REAR"]
+                  f"the central wall, all {pwy:g} of the slot's depth"),
+                 gap, tenon]
+        total = v["LEG_L_BOX"]
     else:                                        # the rear centre leg
+        # No gap band and no tenon: it stops at the upper grid's top like a
+        # front corner one, because the box must not land on it.
         bands = [foot,
                  ("D", v["WALL_H"], "Glue-up spacer", pwy, "out",
                   "the central wall in the front "
                   f"{deep_rear:g}, the back wall in the back "
-                  f"{v['T_BACK_WALL']:g}"),
-                 gap, tenon]
-        total = v["LEG_L_BOX"]
+                  f"{v['T_BACK_WALL']:g}")]
+        total = v["LEG_L_SHORT"]
     assert abs(sum(b[1] for b in bands) - total) < 1e-9, (
         f"{kind}: the slot stack sums to {sum(b[1] for b in bands):g} and the "
         f"leg is {total:g} - one of the two is wrong")
@@ -136,8 +137,8 @@ def leg_kinds(v):
     """The six legs as the four kinds they actually come in.
 
     Named by where they stand, because that is how they get picked up off the
-    bench. The box lands on front left, front right and back centre; the two
-    rear corner legs and the front centre one carry the grids and the walls
+    bench. The box lands on rear left, rear right and front centre; the two
+    front corner legs and the back centre one carry the grids and the walls
     and NOT the box.
 
     THE FRONT CENTRE LEG IS WHAT HOLDS THE CENTRAL WALL'S FRONT END - his, and
@@ -148,25 +149,27 @@ def leg_kinds(v):
     """
     pwy, bw, strip = v["POST_W_Y"], v["T_BACK_WALL"], v["LEG_STRIP"]
     return [
-        ("front", "Front left, front right", 2, v["LEG_L_BOX"], LEG_BROWN,
-         f"one {strip:g} &times; {v['TENON_CORNER']:g} tab, on the inner strip",
-         f"ledged {v['T_BOX_LEDGE']:g} on the side face and the front face",
+        ("front", "Front left, front right", 2, v["LEG_L_SHORT"], REAR_BROWN,
+         "none &mdash; the box does not land on it", "no ledge",
          f"front face of the INNER strip notched {bw:g} deep for the cross "
          f"rail's outer lamination &mdash; and the notch runs on UP from the "
-         f"upper rail to the top of the tenon, so no ear is left standing "
+         f"upper rail to the leg's top, so no ear is left standing "
          f"over the rail"),
-        ("rear-corner", "Rear left, rear right", 2, v["LEG_L_REAR"], REAR_BROWN,
-         "none &mdash; the box does not land on it", "no ledge",
+        ("rear-corner", "Rear left, rear right", 2, v["LEG_L_BOX"], LEG_BROWN,
+         f"one {strip:g} &times; {v['TENON_CORNER']:g} tab, on the inner strip",
+         f"ledged {v['T_BOX_LEDGE']:g} on the side face and the back face",
          f"back face of the INNER strip rebated {bw:g} deep its whole height, "
-         f"for the back wall"),
-        ("rear-centre", "Back centre", 1, v["LEG_L_BOX"], LEG_BROWN,
-         f"two {strip:g} &times; {v['TENON_CORNER']:g} tabs, "
-         f"{v['GRID_MEMBER_T']:g} apart",
-         f"ledged {v['T_BOX_LEDGE']:g} on the back face only",
+         f"for the back wall &mdash; and the ledge above takes "
+         f"{v['T_BOX_LEDGE']:g} off that same face, so the rebate runs out "
+         f"into it at the shoulder"),
+        ("rear-centre", "Back centre", 1, v["LEG_L_SHORT"], REAR_BROWN,
+         "none &mdash; the box does not land on it", "no ledge",
          f"BOTH strips rebated {bw:g} deep their whole height &mdash; the back "
          f"wall runs straight through this leg"),
-        ("front-centre", "Front centre", 1, v["LEG_L_REAR"], REAR_BROWN,
-         "none &mdash; the box does not land on it", "no ledge",
+        ("front-centre", "Front centre", 1, v["LEG_L_BOX"], LEG_BROWN,
+         f"two {strip:g} &times; {v['TENON_CORNER']:g} tabs, "
+         f"{v['GRID_MEMBER_T']:g} apart",
+         f"ledged {v['T_BOX_LEDGE']:g} on the front face only",
          f"BOTH strips notched {bw:g} deep at each grid for the cross rail's "
          f"outer lamination &mdash; that rail runs straight through this leg, "
          f"the same way the back wall runs through the back centre one"),
@@ -201,7 +204,7 @@ def leg_elevation_svg(v, s=0.165):
     # THE PITCH IS IN DRAWN UNITS, NOT IN MILLIMETRES OF LEG. Written as
     # pwx + 46 it spaced five 9-unit legs 118 units apart and they came out as
     # hairlines with a page of white between them.
-    tall = max(v["LEG_L_BOX"], v["LEG_L_REAR"])
+    tall = max(v["LEG_L_BOX"], v["LEG_L_SHORT"])
     pitch, pad_l, pad_r, pad_t, pad_b = pwx * s + 32, 15.0, 48.0, 13.0, 15.0
     w = pad_l + pitch * len(legs) + pad_r
     h = pad_t + tall * s + pad_b
@@ -324,11 +327,11 @@ def leg_faces(v, kind):
     """
     pwy, strip, ledge = v["POST_W_Y"], v["LEG_STRIP"], v["T_BOX_LEDGE"]
     bw, tenon = v["T_BACK_WALL"], v["POST_TENON_L"]
-    box, rear = v["LEG_L_BOX"], v["LEG_L_REAR"]
+    box, short = v["LEG_L_BOX"], v["LEG_L_SHORT"]
     gm_h = v["GRID_MEMBER_H"]
     # OFF LEG_BELOW_BOX, NOT OFF A LEG. These are elevations of the base: a
     # leg with no tenon stops BASE_BOX_GAP below the box, so reading the upper
-    # rail's underside off LEG_L_REAR put it 10 low the moment that leg was
+    # rail's underside off LEG_L_SHORT put it 10 low the moment that leg was
     # corrected to 864.
     rail_under = v["LEG_BELOW_BOX"] - v["BASE_BOX_GAP"] - gm_h
     rail_lo_a = v["FOOT_SPACER_H"]                  # the LOWER rail's band
@@ -336,38 +339,39 @@ def leg_faces(v, kind):
 
     shoulder = box - tenon
     if kind == "front":
+        # NO LEDGE AND NO TENON: this leg stops at the upper grid's top, so
+        # both strips run to the same height and the only cuts are the two
+        # housings for the cross rail's outer lamination.
+        #
+        # 🔴 THERE ARE TWO NOTCHES, ONE AT EACH GRID. The front cross rail
+        # exists at BOTH grids and its outer lamination is housed in the leg
+        # at each - this drawing showed only the upper one, so a front corner
+        # leg read as needing one notch when it needs two. The 3D model had
+        # both all along.
+        return [
+            ("outer", short, []),
+            ("inner", short, [
+                ([(0, rail_lo_a), (bw, rail_lo_a), (bw, rail_lo_b),
+                  (0, rail_lo_b)],
+                 f"notch {bw:g}, front face, at the lower grid"),
+                ([(0, rail_under), (bw, rail_under), (bw, short), (0, short)],
+                 f"notch {bw:g}, front face, at the upper grid"),
+            ]),
+        ]
+    if kind == "rear-corner":
         # THE SIDE LEDGE SWALLOWS THE OUTER STRIP WHOLE: it is 42 deep across
         # a leg whose outer lamination is 18, so above the shoulder there is
         # no outer strip left to draw. Its top face IS the bearing shoulder.
         #
-        # On the inner strip the notch for the cross rail's outer lamination
-        # runs up from the UPPER rail and the front ledge continues off the top
-        # of it, so those two come off as one L down the leg's front face.
-        #
-        # 🔴 AND THERE IS A SECOND NOTCH, AT THE LOWER GRID. The front cross
-        # rail exists at BOTH grids and its outer lamination is housed in the
-        # leg at each - this drawing showed only the upper one, so a front
-        # corner leg read as needing one notch when it needs two. The 3D model
-        # had both all along.
-        tab = pwy - v["TENON_CORNER_Y"]
+        # On the inner strip the back wall's full-height rebate and the back
+        # ledge above it come off the same face at different depths, so they
+        # draw as one L - the ledge is the deeper of the two and sits on top.
         return [
             ("outer", shoulder, []),
             ("inner", box, [
-                ([(0, rail_lo_a), (bw, rail_lo_a), (bw, rail_lo_b),
-                  (0, rail_lo_b)],
-                 f"notch {bw:g}, front face, at the lower grid"),
-                ([(0, rail_under), (bw, rail_under), (bw, shoulder),
-                  (tab, shoulder), (tab, box), (0, box)],
-                 f"ledge {ledge:g} &middot; notch {bw:g}, front face, "
-                 f"at the upper grid"),
-            ]),
-        ]
-    if kind == "rear-corner":
-        return [
-            ("outer", rear, []),
-            ("inner", rear, [
-                ([(pwy - bw, 0), (pwy, 0), (pwy, rear), (pwy - bw, rear)],
-                 f"rebate {bw:g}, back face, full height"),
+                ([(pwy - bw, 0), (pwy, 0), (pwy, box), (pwy - ledge, box),
+                  (pwy - ledge, shoulder), (pwy - bw, shoulder)],
+                 f"ledge {ledge:g} &middot; rebate {bw:g}, back face"),
             ]),
         ]
     if kind == "front-centre":
@@ -375,33 +379,36 @@ def leg_faces(v, kind):
         # The rail is continuous through this leg, so unlike a front CORNER
         # leg there is no outermost strip left whole to cover its end grain -
         # there is no end grain here, the rail runs on.
+        #
+        # Ledged on the FRONT face only, so both strips stand proud and the
+        # full-height slot makes the tenon a pair of tabs. The upper notch and
+        # the ledge come off that same face and are run together, so no ear is
+        # left standing over the rail.
         lo_a, lo_b = v["FOOT_SPACER_H"], v["FOOT_SPACER_H"] + v["GRID_MEMBER_H"]
-        hi_b = rear
-        hi_a = rear - v["GRID_MEMBER_H"]
         return [
-            (which, rear, [
+            (which, box, [
                 ([(0, lo_a), (bw, lo_a), (bw, lo_b), (0, lo_b)],
                  f"notch {bw:g}, front face, at the lower grid"),
-                ([(0, hi_a), (bw, hi_a), (bw, hi_b), (0, hi_b)],
-                 f"notch {bw:g}, front face, at the upper grid"),
+                ([(0, rail_under), (bw, rail_under), (bw, shoulder),
+                  (ledge, shoulder), (ledge, box), (0, box)],
+                 f"ledge {ledge:g} &middot; notch {bw:g}, front face, "
+                 f"at the upper grid"),
             ]) for which in ("outer", "inner")
         ]
-    # the back centre leg: ledged on its back face only, so BOTH strips stand
-    # proud and the full-height slot makes the tenon a pair of tabs. The
-    # ledge is deeper than the rebate and sits on top of it - one L again.
+    # the back centre leg: no ledge and no tenon, and BOTH strips rebated
+    # their whole height because the back wall runs straight through it.
     return [
-        (which, box, [
-            ([(pwy - bw, 0), (pwy, 0), (pwy, box), (pwy - ledge, box),
-              (pwy - ledge, shoulder), (pwy - bw, shoulder)],
-             f"ledge {ledge:g} &middot; rebate {bw:g}, back face"),
+        (which, short, [
+            ([(pwy - bw, 0), (pwy, 0), (pwy, short), (pwy - bw, short)],
+             f"rebate {bw:g}, back face, full height"),
         ]) for which in ("outer", "inner")
     ]
 
 
 def shoulder_of(v, kind):
     """Where the tenon starts on this kind of leg - its top if it has none."""
-    if kind in ("rear-corner", "front-centre"):
-        return v["LEG_L_REAR"]
+    if kind in ("front", "rear-centre"):
+        return v["LEG_L_SHORT"]
     return v["LEG_L_BOX"] - v["POST_TENON_L"]
 
 
@@ -439,7 +446,7 @@ def leg_faces_svg(v, s=0.165):
     legs = list(zip(names, [k for kind, _, n, *_ in kinds
                             for k in [kind] * n]))
 
-    tall = max(v["LEG_L_BOX"], v["LEG_L_REAR"])
+    tall = max(v["LEG_L_BOX"], v["LEG_L_SHORT"])
     face_pitch = pwy * s + 10               # the two faces of one leg
     leg_pitch = 2 * face_pitch + 16         # and the gap to the next leg
     pad_l, pad_r, pad_t, pad_b = 15.0, 48.0, 13.0, 21.0
@@ -737,14 +744,14 @@ not the same shape. A <b>dashed red outline is material taken off</b>.</p>
 <th>In which legs</th><th>Fate</th><th></th></tr>{''.join(key)}</table>
 <p><b>The stack sums to the leg, and that is the check</b>:
 {v['FOOT_SPACER_H']:g} + {v['GRID_MEMBER_H']:g} + {v['BASE_VOLUME_H']:g} +
-{v['GRID_MEMBER_H']:g} = <b>{v['LEG_L_REAR']:g}</b>, a rear corner leg, which
+{v['GRID_MEMBER_H']:g} = <b>{v['LEG_L_SHORT']:g}</b>, a front corner leg, which
 stops level with the upper grid's top. <b>The {v['BASE_BOX_GAP']:g} gap is air,
 not leg</b> &mdash; only a leg the box lands on carries on through it, to the
 box underside at {v['LEG_BELOW_BOX']:g}, and {v['POST_TENON_L']:g} more of
-tenon makes <b>{v['LEG_L_BOX']:g}</b>. The back centre leg gets
+tenon makes <b>{v['LEG_L_BOX']:g}</b>. The front centre leg gets
 there the other way: {v['FOOT_SPACER_H']:g} + {v['WALL_H']:g} +
 {v['BASE_BOX_GAP']:g} + {v['POST_TENON_L']:g}. <b>If a leg does not add up, the
-mortise heights will not agree across the five and the frame sits twisted.</b></p>
+mortise heights will not agree across the six and the frame sits twisted.</b></p>
 <p>🔴 <b>The back centre leg's slot carries the walls, not rails and a filler.</b>
 The central wall fills the front {v['POST_W_Y'] - v['T_BACK_WALL']:g} of it and
 runs {v['CENTRE_WALL_H']:g} tall, {v['WALL_H'] - v['CENTRE_WALL_H']:g} shy at the
@@ -791,14 +798,14 @@ def shoulder_legs(v):
     `ledged` is the set of leg-local faces the band comes off, drawn with the
     machine's left at the left and the box's FRONT at the bottom. `inner` says
     which strip is the one nearer the machine's centreline, because that is the
-    strip the tab is on and it swaps sides between the two front legs.
+    strip the tab is on and it swaps sides between the two rear legs.
     """
     return [
-        ("Front left", {"left", "front"}, "right",
+        ("Rear left", {"left", "back"}, "right",
          f"one tab, on the strip nearer the machine's centre"),
-        ("Front right", {"right", "front"}, "left",
+        ("Rear right", {"right", "back"}, "left",
          f"the same leg mirrored &mdash; the tab swaps sides"),
-        ("Back centre", {"back"}, None,
+        ("Front centre", {"front"}, None,
          f"two tabs, {v['GRID_MEMBER_T']:g} apart, one on each strip"),
     ]
 
@@ -1058,12 +1065,16 @@ the rear, the front cross rail's housed outer lamination at the front. The wall
 stops {v['GRID_MEMBER_T'] / 2:g} shy of the front plane, which is exactly that
 housing's depth.</p>
 <table><tr><th></th><th></th></tr>
-<tr><td><b>Front centre leg</b></td><td>{v['LEG_L_REAR']:g} tall, the same as a
-rear corner leg &mdash; <b>no tenon, so the box must not land on it</b>. Both
-strips notched {v['T_BACK_WALL']:g} deep at each grid in the front face, where
-the cross rail's outer lamination runs through</td></tr>
-<tr><td><b>No filler</b></td><td>the wall fills this leg's slot, the same as at
-the back centre leg</td></tr>
+<tr><td><b>Front centre leg</b></td><td>{v['LEG_L_BOX']:g} tall &mdash; <b>it is
+one of the three the box lands on</b>, ledged {v['T_BOX_LEDGE']:g} on its front
+face with the tenon above. Both strips notched {v['T_BACK_WALL']:g} deep at
+each grid in the front face, where the cross rail's outer lamination runs
+through, and the upper notch runs on up into the ledge</td></tr>
+<tr><td><b>Back centre leg</b></td><td>{v['LEG_L_SHORT']:g} tall &mdash; <b>no
+tenon, so the box must not land on it</b>. Both strips rebated
+{v['T_BACK_WALL']:g} deep their whole height in the back face, where the back
+wall runs through</td></tr>
+<tr><td><b>No filler</b></td><td>the wall fills both centre legs' slots</td></tr>
 <tr><td><b>What it cost</b></td><td>the front cross rails' inner lamination
 becomes <b>two spans of {v['RAIL_CROSS_INNER_SPAN']:g}</b> per grid instead of
 one piece of {v['RAIL_CROSS_INNER_L']:g}</td></tr>

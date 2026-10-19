@@ -3154,12 +3154,12 @@ note = "1259 - the base's outer envelope, and the same figure both ways because 
 [[dim]]
 sym = "LEG_L_BOX"
 expr = "LEG_BELOW_BOX + POST_TENON_L"
-note = "990 - the cut length of each of the THREE legs the box lands on: floor to shoulder, plus the tenon above it. NOTE: IT FITS A 4 FT STRIP with 229 to spare, which is where the test pieces and the slot spacers come from."
+note = "990 - the cut length of each of the THREE legs the box lands on: floor to shoulder, plus the tenon above it. SETTLED: THEY ARE THE TWO REAR CORNERS AND THE FRONT CENTRE - the box's three points sit over the base's three levelling casters, and the rear steel plate, the heaviest single part, lands almost over the rear pair instead of on the one edge supported at its midpoint. NOTE: IT FITS A 4 FT STRIP with 229 to spare, which is where the test pieces and the slot spacers come from."
 
 [[dim]]
-sym = "LEG_L_REAR"
+sym = "LEG_L_SHORT"
 expr = "LEG_BELOW_BOX - BASE_BOX_GAP"
-note = "864 - the cut length of each of the TWO rear corner legs. They carry no tenon and the box must NOT land on them, so they stop level with the UPPER GRID'S TOP and the BASE_BOX_GAP of air carries on over them. FLAG: IT IS NOT LEG_BELOW_BOX, AND A REAR CORNER LEG THAT REACHES 874 BREAKS THE MOUNT - the box touches the base at three leg tops and nowhere else, so a leg top on the box's underside is a fourth and fifth contact, the mount stops being determinate, and the failure is silent. THE GAP IS AIR ABOVE THE GRID, NOT LEG MATERIAL: the stack is foot spacer + lower rail + filler + upper rail and it closes here, where on the three legs the box lands on the gap IS leg because those carry on up through it. It agrees with WALL_H, which tops the back wall out at this same 864. NOTE: LEG_BELOW_BOX IS THE BOX UNDERSIDE, a station and not a leg - anything drawing that elevation reads it and not this."
+note = "864 - the cut length of each of the THREE legs the box does NOT land on: the two FRONT corners and the BACK CENTRE. They carry no tenon and the box must NOT touch them, so they stop level with the UPPER GRID'S TOP and the BASE_BOX_GAP of air carries on over them. FLAG: IT IS NOT LEG_BELOW_BOX, AND ONE OF THESE REACHING 874 BREAKS THE MOUNT - the box touches the base at three leg tops and nowhere else, so a leg top on the box's underside is a fourth and fifth contact, the mount stops being determinate, and the failure is silent. THE GAP IS AIR ABOVE THE GRID, NOT LEG MATERIAL: the stack is foot spacer + lower rail + filler + upper rail and it closes here, where on the three legs the box lands on the gap IS leg because those carry on up through it. It agrees with WALL_H, which tops the back wall out at this same 864. NOTE: LEG_BELOW_BOX IS THE BOX UNDERSIDE, a station and not a leg - anything drawing that elevation reads it and not this."
 
 [[dim]]
 sym = "RAIL_FORE_AFT_L"

@@ -57,53 +57,53 @@ def groups(v):
     gm_h = v["GRID_MEMBER_H"]
     shoulder = v["LEG_L_BOX"] - v["POST_TENON_L"]
     return [
-        ("Rear corner legs", 2,
+        ("Front corner legs", 2,
          "They carry no tenon and the box must NOT land on them: each stops "
-         "level with the upper grid's top, and the back wall sits in a "
-         "full-height rebate in the inner strip only.",
-         [("Leg strip", v["LEG_L_REAR"], STRIP_W, 4,
-           "2 per leg. Inner strip takes an 18 x 18 rebate down its back "
-           "edge, full height; the outboard strip stays whole"),
+         "level with the upper grid's top, and the front cross rail's outer "
+         "lamination is housed in the inner strip at each grid.",
+         [("Leg strip", v["LEG_L_SHORT"], STRIP_W, 4,
+           f"2 per leg. Inner strip takes an {v['T_BACK_WALL']:g} x "
+           f"{v['GRID_MEMBER_H']:g} notch in its front edge at each grid; the "
+           "outboard strip stays whole"),
           ("Leg filler", v["BASE_VOLUME_H"], STRIP_W, 4,
-           "2 per leg, closing the slot between the grids. Trim to "
-           f"{v['POST_W_Y'] - v['T_BACK_WALL']:g} deep here - the back wall "
-           "takes the slot's back 18"),
+           f"2 per leg, closing the slot between the grids, "
+           f"{v['POST_W_Y']:g} deep"),
           ("Foot spacer", v["FOOT_SPACER_H"], STRIP_W, 4,
            "2 per leg, closing the slot from the floor up to the lower rail. "
            "It is what the leg stands on")]),
         ("Three bearing legs", 3,
          "The box lands on these and nowhere else. TWO KINDS UNDER ONE "
-         "HEADING: a front leg is ledged on two faces, so its outboard strip "
-         "stops at the shoulder and its tenon is one tab on the inner strip; "
-         "the back centre leg is ledged on its back face only, so both strips "
-         "run full length and the slot splits its tenon into two tabs.",
+         "HEADING: a rear corner leg is ledged on two faces, so its outboard "
+         "strip stops at the shoulder and its tenon is one tab on the inner "
+         "strip; the front centre leg is ledged on its front face only, so "
+         "both strips run full length and the slot splits its tenon into two "
+         "tabs.",
          [("Leg strip, full length", v["LEG_L_BOX"], STRIP_W, 4,
-           "both strips of the back centre leg, and the INNER strip of each "
-           "front leg"),
-          ("Leg strip, front outboard", shoulder, STRIP_W, 2,
-           "one per front leg, and it is shorter: the side ledge is "
+           "both strips of the front centre leg, and the INNER strip of each "
+           "rear leg"),
+          ("Leg strip, rear outboard", shoulder, STRIP_W, 2,
+           "one per rear leg, and it is shorter: the side ledge is "
            f"{v['T_BOX_LEDGE']:g} deep across an {v['LEG_STRIP']:g} strip, so "
            "it swallows that strip whole and its top face IS the bearing "
            "shoulder"),
-          ("Leg filler, front legs", v["BASE_VOLUME_H"], STRIP_W, 4,
-           f"2 per front leg, {v['POST_W_Y']:g} deep. The back centre leg "
-           "gets none - the central wall fills its slot"),
+          ("Leg filler, rear legs", v["BASE_VOLUME_H"], STRIP_W, 4,
+           f"2 per rear leg. Trim to "
+           f"{v['POST_W_Y'] - v['T_BACK_WALL']:g} deep - the back wall takes "
+           "the slot's back 18. The front centre leg gets none, the central "
+           "wall fills its slot"),
           ("Foot spacer", v["FOOT_SPACER_H"], STRIP_W, 6,
            "2 per leg, all three"),
           ("Tenon corner spacer", v["POST_TENON_L"], v["TENON_CORNER_Y"], 2,
-           f"the two FRONT legs, and it is {v['TENON_SPACER_GAP']:g} stock, "
+           f"the two REAR legs, and it is {v['TENON_SPACER_GAP']:g} stock, "
            "not 18 - glued to the OUTER face of the tenon tab")]),
-        ("Front centre leg", 1,
-         "The sixth leg, and what holds the central wall's front end. Same "
-         "profile as the back centre leg - the wall straight through its slot "
-         "- but no tenon, so it stops level with the upper grid's top like the "
-         "rear corner pair. It takes NO FILLER, because the wall fills its "
-         "slot. It is what let every notch come out of the wall: the front "
-         "cross rail's inner lamination butts this leg in two spans instead "
-         "of running past the wall.",
-         [("Leg strip", v["LEG_L_REAR"], STRIP_W, 2,
-           f"BOTH notched {v['T_BACK_WALL']:g} deep at each grid in the FRONT "
-           "face, for the cross rail's outer lamination running through"),
+        ("Back centre leg", 1,
+         "What holds the central wall's back end, and the back wall runs "
+         "straight through it. No tenon, so it stops level with the upper "
+         "grid's top like the front corner pair. It takes NO FILLER, because "
+         "the wall fills its slot.",
+         [("Leg strip", v["LEG_L_SHORT"], STRIP_W, 2,
+           f"BOTH rebated {v['T_BACK_WALL']:g} deep their whole height in the "
+           "BACK face, for the back wall running through"),
           ("Foot spacer", v["FOOT_SPACER_H"], STRIP_W, 2,
            "closing the slot from the floor up to the lower rail")]),
         ("Lower fore-aft rails", 2,
