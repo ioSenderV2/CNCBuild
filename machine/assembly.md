@@ -1104,7 +1104,7 @@ is to hold five legs in position, three of which the box lands on.
 | **Upper grid** | its **top 10 below the box's underside** |
 | **The two side volumes** | **564 of clear height** between the grids. On 2x6 members it would be 484 |
 | **Both grids together** | have to carry **800 lb** on a pallet jack: box, sand, machine and base at once. His budget, offered with a question mark, so it is a figure to design past |
-| **Five legs** | three at the back — left, centre, right — and two at the front. The box sits on **front left, front right and back centre**; the two rear corner legs carry the grids and the back shear wall |
+| **Six legs** | three at the back — left, centre, right — and three at the front. The box sits on **front left, front right and back centre**; the two rear corner legs carry the grids and the back shear wall, and the front centre leg carries the central wall's front end |
 
 🔴 **The 10 is the three-point mount.** The box touches three leg tops and nothing else. The moment
 the upper grid touches the box there is a fourth and fifth contact point, the mount stops being
