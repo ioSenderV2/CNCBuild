@@ -128,8 +128,8 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - SETTLED: ~~**Rib under the full {{REAR_PLATE_L_ORDERED}} of rear bottom-edge bearing.**~~ **Closed 2026-10-11: not
   needed.** The plate's 6.35 footprint sits wholly inside the 19 back web, with the {{TONGUE_CLEAR}} tongue
   outboard of that - backed by solid wall over its whole length, so there is no span.
-- OPEN: **The two blocks beside the back centre tenon** - position settled at X 562.62 and 648.62,
-  running forward from the back web. **Length is his call**; drawn to the first across-rib so each is
+- OPEN: **The two blocks beside the front centre tenon** - position settled at X 562.62 and 648.62,
+  running back from the front web. **Length is his call**; drawn to the first across-rib so each is
   captured at both ends.
 - SETTLED: ~~**Blocking under the front fin bases and the fin angle's T-nuts.**~~ **Closed 2026-10-11: not
   needed.** The fin base is **34.55 mm** from the last across-rib and the T-nuts **67.55 mm** - short
@@ -222,9 +222,10 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   and this item was stale - corrected 2026-10-02.** They are not pads. Each post is reduced over its
   top 116 mm to a tenon, and the **42 mm ledge** left behind is cut on the **outward-facing** faces
   **precisely so the perimeter wall lands on it** - which is exactly what this item was asking for.
-  Front posts carry a ledge on their outside *and* front edges, taking the side and front walls plus
-  their laminated tongues; the back-centre post has a single-sided ledge under the back wall and its
-  tongue. The two rear corner legs have no tenon and stand ~2 mm shy, so the box never touches them.
+  Rear posts carry a ledge on their outside *and* back edges, taking the side and back walls plus
+  their laminated tongues; the front-centre post has a single-sided ledge under the front wall. The
+  two front corner legs and the back centre one have no tenon and stop level with the upper grid's
+  top, so the box never touches them.
   FLAG: **The claim that the scheme was "only in the project notes, not in this repo" was simply
   wrong** - [`archive/torsion-box.md`](archive/torsion-box.md) carries the mount, the tenons, the ledge depth, the
   back post's single-sided shoulder and what the tenons ask of the rib grid. **It was repeated twice

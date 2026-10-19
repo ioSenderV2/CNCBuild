@@ -20,8 +20,8 @@
 SETTLED: **Decided 2026-09-30.** Continuous ribs in both directions, half-depth notches at every crossing.
 The alternative considered was full-length ribs one way with blocking between them the other.
 
-**Why, for this box specifically:** the three support points put the back-centre post half a machine
-width inboard of the back corners, so load has to travel **diagonally** to reach it. That needs
+**Why, for this box specifically:** the three support points put the front-centre post half a machine
+width inboard of the front corners, so load has to travel **diagonally** to reach it. That needs
 two-way plate action, and only continuous ribs both ways give it. Blocking would make one axis a
 proper continuous web and the other a row of **butt joints** - plywood edge glued to face, at every
 junction - leaving a strong axis and a weak one.
@@ -73,12 +73,12 @@ Less than it first appears, and the two cases are different:
 
 | Post | Where its tenon sits | What the grid must do |
 |---|---|---|
-| **Front left / front right** | **Hard in the box corner**, snug against both perimeter walls - the ledges put its outer faces exactly on the walls' inner faces | Only that the **first interior rib in from each perimeter clears it**. It is not a mid-cell case at all |
-| **Back centre** | Against the back wall, **mid-span along it** | The two front-to-back ribs either side must **clear the 86 mm width**. This is the only mid-cell case |
+| **Rear left / rear right** | **Hard in the box corner**, snug against both perimeter walls - the ledges put its outer faces exactly on the walls' inner faces | Only that the **first interior rib in from each perimeter clears it**. It is not a mid-cell case at all |
+| **Front centre** | Against the front wall, **mid-span along it** | The two front-to-back ribs either side must **clear the 86 mm width**. This is the only mid-cell case |
 
 So the corner tenons constrain nothing but the first rib offset, and they are **laterally located by
-the two walls** for free. Only the back-centre tenon has to be placed between ribs deliberately - and
+the two walls** for free. Only the front-centre tenon has to be placed between ribs deliberately - and
 it is also the only one wanting blocking, since the corners already have walls on two sides.
 
 Conventional torsion-box spacing is 200-300 mm; that is convention rather than calculation, and it
-should bend to the back-centre tenon rather than the other way round.
+should bend to the front-centre tenon rather than the other way round.

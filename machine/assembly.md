@@ -30,7 +30,7 @@ is the full list.
 | Steppers | **2.2 N·m, NEMA 23 — four, one per axis.** **Y steppers at the BACK** of the machine, which is what keeps their cable runs off the front |
 | Y beams | Fixed — their end plates bolt to the torsion box. Only X, Y-carriage and Z move |
 | Spindle | **Ø80 mm, 2.2 kW water-cooled**, 5.2 kg, on two 80 mm clamps |
-| Stands on | A sand-filled **torsion box** on **three of five laminated plywood legs**, held by **two grids** whose lower one is also the pallet |
+| Stands on | A sand-filled **torsion box** on **three of six laminated plywood legs**, held by **two grids** whose lower one is also the pallet |
 
 ### Rails come from two suppliers
 
@@ -726,7 +726,7 @@ rib's notch puts it. That is why three of the four ways to be a millimetre out c
 
 | Error | What happens |
 |---|---|
-| **A position off by 1, on all eight** — the stack shifted against the stop | **Nothing jams.** All eight are identical, so the grid is still self-consistent and that rib line simply lands 1 off the drawing. The bays either side go 220 and 218. Everything that measures off the last rib line has 36 of room, the sand ports are 25.4 in a 219 bay with 97 clear either side, and the back tenon blocks come out of the scrap bin and get cut to fit |
+| **A position off by 1, on all eight** — the stack shifted against the stop | **Nothing jams.** All eight are identical, so the grid is still self-consistent and that rib line simply lands 1 off the drawing. The bays either side go 220 and 218. Everything that measures off the last rib line has 36 of room, the sand ports are 25.4 in a 219 bay with 97 clear either side, and the centre tenon blocks come out of the scrap bin and get cut to fit |
 | **One rib of the eight off** — it moved in the clamp | **That rib will not drop in.** Its notches fight the grid the other seven define, so it gets pared or recut. This is the error the stop block and the do-not-unclamp rule exist for |
 | **A notch too wide by 1** | Slop at every crossing, so the grid stops holding itself square. Not structural, and the glue fills it — square the grid on the reference before the skins go on. **Too narrow by 1 is worse**: it splits a rib, or the grid will not go together |
 | **A notch too deep by 1** | **Harmless, and it is the side to err on.** The rib stands on the bottom skin, so it cannot sink: both its edges still reach both skins, and all that is lost is contact notch floor to notch floor, which carries nothing |
@@ -758,8 +758,8 @@ pinching unsupported skin. That takes the sides and the front and back; the skin
 the screws in item 4 above.
 
 OPEN: **Open: the grid spacing.** Conventional is 200-300 mm. Two constraints: the **first interior rib
-in from each perimeter must clear the front corner tenons**, and the **two front-to-back ribs either
-side of the back-centre tenon must clear its 86 mm width**. Let the spacing bend to the back-centre
+in from each perimeter must clear the rear corner tenons**, and the **two front-to-back ribs either
+side of the front-centre tenon must clear its 86 mm width**. Let the spacing bend to the front-centre
 tenon.
 
 SETTLED: **No blocking under the front fins — closed 2026-10-11 on the measurement.** The last
@@ -782,16 +782,16 @@ SETTLED: **And none under the rear plate either — closed 2026-10-11.** Its bot
 plate bears on skin backed by solid wall over its whole footprint, with **11.65 mm of web to spare**
 and the 24 mm tongue outboard of that as well. There is no span to block.
 
-FLAG: **The back centre tenon does want blocking, and it is the only one that does.** The two front
+FLAG: **The front centre tenon does want blocking, and it is the only one that does.** The two rear
 corner tenons are snug into the box corners and located by both perimeter walls for free; this one
-has the back wall behind it and nothing either side. **Two blocks, one against each of its
-across-machine faces at X 562.62 and 648.62**, running forward from the back web to the first
+has the front wall in front of it and nothing either side. **Two blocks, one against each of its
+across-machine faces at X 562.62 and 648.62**, running back from the front web to the first
 across-rib so each is captured at both ends. NOTE: **They are for location, not bearing** — the tenon
 carries no vertical load, all of it is on the shoulder.
 
 ### The three posts
 
-**Front left corner, front right corner, and the middle of the back.** Each a **laminated plywood leg,
+**Rear left corner, rear right corner, and the middle of the front.** Each a **laminated plywood leg,
 72 across the machine by 86 fore and aft**, reduced over its **top 116 mm** to a tenon that passes up
 through a hole in the bottom skin. The bottom skin lands on the shoulder.
 
@@ -841,17 +841,17 @@ standing up through a half-built box.
 
 | Leg | Faces ledged | Tenon | Bearing |
 |---|---|---|---|
-| Front left / front right | the **side** face and the **front** face | **one 18 × 44 tab**, on the inner strip | **1980 mm²** — outer strip 18 × 86, inner strip 18 × 24, the cross rail's housing taking the front 18 of it |
-| Back centre | the **back** face | **two 18 × 44 tabs**, 36 apart | **1512 mm²** — two strips of 18 × 42 |
+| Rear left / rear right | the **side** face and the **back** face | **one 18 × 42 tab**, on the inner strip | **1980 mm²** — outer strip 18 × 86, inner strip 18 × 24, the back wall's rebate taking the back 18 of it |
+| Front centre | the **front** face | **two 18 × 42 tabs**, 36 apart | **864 mm²** — two strips of 18 × 24, the cross rail's housing taking the front 18 |
 
 🔴 **The slot runs the leg's full height, so it passes through the shoulder and the tenon too.** That
 is deliberate: stopping it at the upper grid would leave a **10 mm bridge** of laminated plywood
 spanning the slot and pretending to be the surface the box bears on. So a tenon is whichever **strips**
-stand inside the ledge — one on a corner leg, two at the back centre, never the leg's full width.
+stand inside the ledge — one on a corner leg, two at the front centre, never the leg's full width.
 
 🔴 **No tenon cut in this skin is a hole.** All three reach an edge, so **all three are saw cuts** —
-no start hole, no jigsaw in the field of the sheet. The two front legs take a corner; the back
-centre's pair take **one notch out of the back edge, 74 × 63**.
+no start hole, no jigsaw in the field of the sheet. The two rear legs take a corner; the front
+centre's pair take **one notch out of the front edge, 74 × 63**.
 
 **Two decisions got it there and they are the same decision twice.** One opening and not two, because
 the 36 island between the tabs **bears nothing** — it sits over the leg's own slot. And open to the
@@ -859,18 +859,18 @@ edge, because the band of skin left between a closed cut and the skin's own edge
 perimeter web with a 24 lamination standing outside it: it shows nowhere, and letting it go with the
 cut is what turns a jigsaw job into a saw cut.
 
-🔴 **The two FRONT tenons take a corner out of the skin instead of a hole** — his, and what it buys
+🔴 **The two REAR tenons take a corner out of the skin instead of a hole** — his, and what it buys
 is the corner itself. **The cut runs out to both of the skin's edges**, so the outer 18 that would
 otherwise wrap around the corner goes with it: in from the corner to the tenon's two **inboard**
 faces plus the same 1 a side. **It is all covered by the 24 laminations**, which stand outside the
 skin's edge there, so nothing of it shows.
 
-#### A 12 spacer on each front tenon's outer face
+#### A 12 spacer on each rear tenon's outer face
 
 **12 × 44 × 116, glued to the OUTER face of the tab** — out of 12 mm Baltic birch scrap, which mikes
 at **12.003**, so the stock is the gap.
 
-🔴 **Without it the box is located on a face and not on a corner.** A front tab butts the front
+🔴 **Without it the box is located on a face and not on a corner.** A rear tab butts the back
 perimeter web with nothing to spare and has **12 of air to the side web**. Fill that and the
 composite tenon's outer face lands **on** the side web's inner face, so the tongue corner is captured
 both ways.
@@ -881,10 +881,10 @@ other lamination is 18, so the leg and its slot sit 6 further outboard than an a
 them. 18 + 36 of leg against 24 + 18 of wall leaves 12. **It moves if any of those four do** — see
 TENON_SPACER_GAP.
 
-**The back centre leg gets none.** Its tabs butt the back web with no gap at all.
+**The front centre leg gets none.** Its tabs butt the front web with no gap at all.
 
-**Trim all five legs to the same 72 × 86 after the glue dries** — so the two front corner cuts are
-identical and come off one setup, and the back one differs only in being the full 72 wide. The older
+**Trim all six legs to the same 72 × 86 after the glue dries** — so the two rear corner cuts are
+identical and come off one setup, and the front centre one differs only in being the full 72 wide. The older
 instruction to cut each hole to its own post is retired; it existed when the posts were cedar sticks
 that varied.
 
@@ -1040,7 +1040,7 @@ one more cut on the stack and they let a corner residue find a neighbouring port
 
 FLAG: **The base comes BEFORE the box, and the legs before the base.** His order, and it is a
 prerequisite chain rather than a preference: the base is what holds the three load-bearing legs in
-position, so the box cannot be lowered onto tenons that are not yet located. Build the five legs,
+position, so the box cannot be lowered onto tenons that are not yet located. Build the six legs,
 build the base around them, then the box.
 
 **The legs are laminated from 18 mm Baltic birch strips** — his, 2026-10-15, replacing dressed cedar
@@ -1051,14 +1051,14 @@ from the standing base rather than predicted.
 
 SETTLED: **72 × 86 — his, 2026-10-15.** Four strips of 18 is **72**, and that is the lamination
 direction, running **across the machine**; the other axis is the strip's own width, ripped at 90 and
-trimmed to **86**. **Twenty strips are cut**, four per leg for five legs.
+trimmed to **86**. **Twenty-four strips are cut**, four per leg for six legs.
 
 FLAG: **The fore-aft rails pass THROUGH the legs as a through tenon formed at glue-up**, by leaving the
 middle two strips out at rail height. 18 + 36 + 18 = 72 exactly, so the rail is two laminations thick
 and the gap is two strips — which is why the leg is four strips and not five. It goes at the base's
 real weakness, racking, where a bolt through a face does not. Three things to control:
 
-1. 🔴 **The mortise height has to agree across the legs** or the frame sits twisted. Lay all five up
+1. 🔴 **The mortise height has to agree across the legs** or the frame sits twisted. Lay all six up
    on **one flat surface with the mortise blocks set off a single stop**, then **cut each leg to
    length measuring from the mortise** and let the floor end take the error. The legs are cut to
    length after glue-up anyway, so that correction is free.
@@ -1076,7 +1076,7 @@ same sheet and not another piece, and each **filler block**, which takes its own
 it goes in at that leg's glue-up and is never a separate part on the bench.
 
 NOTE: **The base hides in three parts — legs, rails, walls** — so any one of them can be taken away
-to see what the other two are doing. The **legs** group holds all five, their tenons and their
+to see what the other two are doing. The **legs** group holds all six, their tenons and their
 fillers, because a filler goes in at its leg's glue-up and is not a separate thing.
 
 NOTE: **A leg is drawn as its two outer strips with the slot open between them**, so the rail at each
@@ -1084,16 +1084,16 @@ grid, the filler and the wall are all seen sitting in it. **The cross rails' hou
 each strip's notched face is cut into the segments below the upper rail band, so the rail's outer
 lamination passes through real holes rather than through solid leg.
 
-🔴 **The housing runs on up from the upper rail to the top of the tenon** — his, off the model. It
-used to stop at that rail's top, which left a 10 × 18 × 18 **ear** standing over the rail's housing
-with the shoulder cut away right above it. **Nothing bears on it and nothing covers it**, so the
+🔴 **The housing runs on up from the upper rail to the leg's top** — his, off the model — and on the
+front centre leg it carries on into the ledge above. It used to stop at that rail's top, which
+left a 10 × 18 × 18 **ear** standing over the rail's housing with the shoulder cut away right above it. **Nothing bears on it and nothing covers it**, so the
 cutout goes all the way up and the face stays cut back.
 
 #### What the base is
 
-**Two grids that locate and constrain all five legs** — his, 2026-10-15. That is the whole
+**Two grids that locate and constrain all six legs** — his, 2026-10-15. That is the whole
 definition: the base is not a table that happens to have legs, it is two horizontal grids whose job
-is to hold five legs in position, three of which the box lands on.
+is to hold six legs in position, three of which the box lands on.
 
 | | |
 |---|---|
@@ -1104,7 +1104,7 @@ is to hold five legs in position, three of which the box lands on.
 | **Upper grid** | its **top 10 below the box's underside** |
 | **The two side volumes** | **564 of clear height** between the grids. On 2x6 members it would be 484 |
 | **Both grids together** | have to carry **800 lb** on a pallet jack: box, sand, machine and base at once. His budget, offered with a question mark, so it is a figure to design past |
-| **Six legs** | three at the back — left, centre, right — and three at the front. The box sits on **front left, front right and back centre**; the two rear corner legs carry the grids and the back shear wall, and the front centre leg carries the central wall's front end |
+| **Six legs** | three at the back — left, centre, right — and three at the front. The box sits on **rear left, rear right and front centre**; the two front corner legs carry the grids and the front cross rails, and the back centre leg carries the central wall's back end and the back shear wall |
 
 🔴 **The 10 is the three-point mount.** The box touches three leg tops and nothing else. The moment
 the upper grid touches the box there is a fourth and fifth contact point, the mount stops being
@@ -1116,7 +1116,7 @@ anywhere along it, which is why it is 10 and not 1.
 
 | | |
 |---|---|
-| **Fore-aft wall** | on the **centreline**, from the front of the base back to the **back centre leg** — which is the box's rear support, so the wall lands under the load it braces |
+| **Fore-aft wall** | on the **centreline**, from the back of the base forward to the **front centre leg** — which is the box's front support, so the wall lands under the load it braces |
 | **Back wall** | across the back, **one continuous 18 sheet that REPLACES the back cross rails** at both grids — so the back of each grid is the wall, not a rail |
 
 They make a **T** in plan, which braces both directions, and that is what leaves the **left and right
@@ -1158,7 +1158,7 @@ trimmed width of its own sheet, so it stops 21.5 short of each outer face rather
 | | |
 |---|---|
 | **Central wall into the rear middle leg** | **The wall slides into the leg's middle slot** — the space its two laminations would have occupied, held open at glue-up by a spacer. A housed joint, with the leg's outer two strips either side of it |
-| **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops 21.5 short at each end** — it is cut to its sheet at **1216**, the full width of a 4 × 8 inside the trim, so it finishes just behind that lamination with 3.5 of air. The ends carry nothing: the wall is screwed through its **face** in the rebate, and the 3.5 shows as a shadow line at the two rear corners, not from the front. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box** |
+| **Back wall to the legs** | **18 thick, in a full-height rebate 18 deep in the back of the rear legs** — but only in the strips the wall passes through. The **outermost lamination of each corner leg stays its full 86**, and the wall **stops 21.5 short at each end** — it is cut to its sheet at **1216**, the full width of a 4 × 8 inside the trim, so it finishes just behind that lamination with 3.5 of air. The ends carry nothing: the wall is screwed through its **face** in the rebate, and the 3.5 shows as a shadow line at the two rear corners, not from the front. The back centre leg has both strips rebated, since the wall runs straight through it. **Glue plus screws at about 150 all the way round**, and it stops **10 shy of the box**. 🔴 **On a rear corner leg the rebate runs out into the ledge at the shoulder** — the same face takes 18 for the wall below and 42 for the ledge above, so the wall's top edge and the start of the ledge are 10 apart with untouched face between them |
 | **Central wall at the front** | **The same joint as the rear: it slides into the front centre leg's slot** and is bolted through. **It stops {{GRID_MEMBER_T}} shy of the front plane** nominally, where the cross rail's **outer** lamination is housed over its end and covers the end grain — the same move the back wall makes at the other end. **It takes no notches**: with a leg at the front centre, the rail's inner lamination butts that leg in two spans rather than running past the wall, so nothing crosses it |
 
 **All six legs are glued up in advance, with a spacer in every slot** — his, and it is what keeps the
@@ -1265,7 +1265,7 @@ height and carries a rail at each grid, so without a filler each corner leg is t
 joined only at top and bottom over the clear volume. The load is trivial — about 190 lb a leg — but
 **two unconnected planks buckle independently where a built-up section does not.**
 
-**The rear middle leg gets none**: the central wall is already in its slot, which is the same job done
+**Neither centre leg gets one**: the central wall is already in both slots, which is the same job done
 by a part that was going in anyway.
 
 #### Five leveling casters, inside the floor clearance
@@ -1336,7 +1336,7 @@ so below the lower grid exactly **100** of it is open — the floor clearance �
 
 The 100 is not a separate figure to remember: it **is** the floor clearance, so the two cannot drift.
 
-🔴 **Shellac the bottom end grain of all five legs**, one coat on the foot. The legs hang clear of
+🔴 **Shellac the bottom end grain of all six legs**, one coat on the foot. The legs hang clear of
 the floor once the casters are under it, so this is for splashes rather than for wicking — and it
 goes on **after** anything is glued to the foot, never under a glue line.
 
@@ -1384,7 +1384,7 @@ So the choice goes on the three things that do bite:
 |---|---|
 | 🔴 **The leg's mortise is already 36** | Two omitted strips leave a **36** slot. A 2x6 is **38** — so a 2x6 rail cannot pass through the leg without chopping the mortise wider, which gives up the whole reason the tenon was free |
 | **The side volumes** | 100 deep instead of 140 returns **40 per grid, 80 over the two** of clear height to the volumes he wants maximised |
-| **Dimensional behaviour** | Plywood does not crown, cup or twist. A 2x6 does, and **a twisted member in a grid whose only job is locating five legs is precisely the wrong failure** — the same argument that put the box on three points, except here the grid's own stability is the deliverable rather than something the mount protects against |
+| **Dimensional behaviour** | Plywood does not crown, cup or twist. A 2x6 does, and **a twisted member in a grid whose only job is locating six legs is precisely the wrong failure** — the same argument that put the box on three points, except here the grid's own stability is the deliverable rather than something the mount protects against |
 
 **So: the lamination**, unless something else wants the depth. The 2x6's advantage is real and sits in
 a part of the design that has nothing to spend it on.

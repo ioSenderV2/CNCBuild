@@ -11,11 +11,18 @@
 
 ## The three load-bearing points
 
-**Front left corner, front right corner, and the middle of the back.** Each is a **laminated plywood
+**Rear left corner, rear right corner, and the middle of the front.** Each is a **laminated plywood
 leg, 72 across the machine by 86 fore and aft** — four 18 mm strips, the lamination running across
 the machine so the base's fore-aft rails pass through it. It replaced a dressed cedar 4×4 on
 2026-10-15, and the three-point argument below is indifferent to which: it is about the number of
 contact points, not the material.
+
+**Why these three and not the other three.** Two things, and the first is the load. The rear steel
+plate is the heaviest single part on the machine and it bears on the box's back edge over its whole
+footprint — so that edge wants two points under it, not one. The second is that the base already
+levels on the two rear corners and the front centre: each pad now stands over a levelling caster, so
+the path is pad, leg, caster in one line at all three. The other arrangement put two pads on legs
+whose casters only come down to touch.
 
 Three points, not four, and the reason is the whole argument: a three-point mount is statically
 determinate, so **the box cannot be racked by a twisted floor or a twisted base**. That matters
