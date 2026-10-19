@@ -114,7 +114,7 @@ def parts(v):
         # his scrap bin, 2026-10-11. They were the ONLY parts on a second sheet
         # of 19 mm, 1% used: a $245 board for 0.044 m2 of location blocking that
         # carries no load and whose thickness is free up to
-        # BACK_TENON_BLOCK_T_MAX. Leaving them on the list bought nothing and
+        # MID_TENON_BLOCK_T_MAX. Leaving them on the list bought nothing and
         # cost a sheet.
     ]
 
@@ -348,7 +348,7 @@ def tenon_cuts(v):
     """
     W = v["BOX_W"]
     web, ledge, strip = v["T_BOX_WALL_WEB"], v["T_BOX_LEDGE"], v["LEG_STRIP"]
-    tcy, tb, pwx = v["TENON_CORNER_Y"], v["TENON_BACK_DEPTH"], v["POST_W_X"]
+    tcy, tb, pwx = v["TENON_CORNER_Y"], v["TENON_MID_DEPTH"], v["POST_W_X"]
     beyond = pwx - ledge                         # 30, the un-ledged band
     return [
         ("front left", (web - ledge, web + beyond,
@@ -1176,7 +1176,7 @@ through tenon left open at glue-up.</p>
 inside the box, carry no load, and their thickness is free &mdash; so they come
 out of the scrap bin rather than off a sheet. They must be <b>{v['BOX_RIB_H']:.0f}
 tall</b> like a rib so both skins glue to them, and no thicker than
-<b>{v['BACK_TENON_BLOCK_T_MAX']:.1f}</b>, which is the clear space each side of
+<b>{v['MID_TENON_BLOCK_T_MAX']:.1f}</b>, which is the clear space each side of
 the tenon.</p>
 </body></html>
 """

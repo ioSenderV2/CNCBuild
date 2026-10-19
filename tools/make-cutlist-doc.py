@@ -152,13 +152,13 @@ def groups(v):
            "the two cuts that trim the long edges are its two ends. It stops "
            f"{v['BASE_BOX_GAP']:g} shy of the box")]),
         ("Central shear wall", 1,
-         "Two laminations filling the back centre leg's slot, dry-fitted and "
+         "Two laminations filling both centre legs' slots, dry-fitted and "
          "bolted. It ties the front and back assemblies together with the "
          "fore-aft rails.",
          [("Wall lamination", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
-           "notched at BOTH front corners, "
-           f"{v['GRID_MEMBER_T'] / 2:g} across by {gm_h:g} up, to ride over "
-           "the front cross rails' inner lamination"),
+           "a plain rectangle, no notches anywhere - the front cross rail's "
+           "inner lamination butts the front centre leg in two spans instead "
+           "of running past the wall"),
           ("Lower band pad", v["CENTRE_WALL_PAD_L"], gm_h, 2,
            "one each side, flush with the wall's bottom edge. It brings the "
            f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "

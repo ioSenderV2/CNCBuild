@@ -3060,13 +3060,13 @@ note = "18 - a front corner tenon ACROSS the machine. SETTLED: IT IS ONE TAB ON 
 [[dim]]
 sym = "TENON_CORNER_Y"
 expr = "POST_W_Y - T_BOX_LEDGE"
-note = "44 - a front corner tenon FORE AND AFT, the leg's strip-width direction less the ledge on its front face. The same arithmetic as TENON_BACK_DEPTH and the same figure, because both are POST_W_Y less the ledge; they are separate symbols because they are different faces of different legs. NOTE: THIS AXIS DID NOT MOVE when the slot went full height - the slot runs fore-aft, so it takes nothing off the tenon's DEPTH, only off its width."
+note = "44 - a front corner tenon FORE AND AFT, the leg's strip-width direction less the ledge on its front face. The same arithmetic as TENON_MID_DEPTH and the same figure, because both are POST_W_Y less the ledge; they are separate symbols because they are different faces of different legs. NOTE: THIS AXIS DID NOT MOVE when the slot went full height - the slot runs fore-aft, so it takes nothing off the tenon's DEPTH, only off its width."
 
 [[dim]]
-sym = "TENON_BACK_TABS"
+sym = "TENON_MID_TABS"
 value = 2
 provenance = "part"
-note = "2 - the back centre leg's tenon is TWO tabs, not one. SETTLED: THE SLOT SPLITS IT, 2026-10-15: that leg is ledged on its back face only, so both strips stand proud, and the full-height slot between them makes the tenon a pair of LEG_STRIP x TENON_BACK_DEPTH tabs with 36 of air between. SETTLED: THE SKIN GETS ONE NOTCH IN ITS BACK EDGE, NOT TWO HOLES - his, 2026-10-15, in two steps and they are the same step twice. One opening rather than two, because the island between the tabs BEARS NOTHING: it sits over the leg's slot. Then open to the edge, because a closed rectangle in the field of the sheet needs a start hole and a jigsaw - and the band of skin between it and the edge is all under the back perimeter web with the back tongue outside it, so none of it shows. It is POST_W_X across plus TENON_HOLE_CLEAR a side, and TENON_BACK_DEPTH plus the clearance plus T_BOX_WALL_WEB deep - the whole way to the edge. NOTE: ALL THREE TENON CUTS ARE SAW CUTS NOW, the two front ones being corners for the same reason."
+note = "2 - the back centre leg's tenon is TWO tabs, not one. SETTLED: THE SLOT SPLITS IT, 2026-10-15: that leg is ledged on its back face only, so both strips stand proud, and the full-height slot between them makes the tenon a pair of LEG_STRIP x TENON_MID_DEPTH tabs with 36 of air between. SETTLED: THE SKIN GETS ONE NOTCH IN ITS BACK EDGE, NOT TWO HOLES - his, 2026-10-15, in two steps and they are the same step twice. One opening rather than two, because the island between the tabs BEARS NOTHING: it sits over the leg's slot. Then open to the edge, because a closed rectangle in the field of the sheet needs a start hole and a jigsaw - and the band of skin between it and the edge is all under the back perimeter web with the back tongue outside it, so none of it shows. It is POST_W_X across plus TENON_HOLE_CLEAR a side, and TENON_MID_DEPTH plus the clearance plus T_BOX_WALL_WEB deep - the whole way to the edge. NOTE: ALL THREE TENON CUTS ARE SAW CUTS NOW, the two front ones being corners for the same reason."
 
 [[dim]]
 sym = "SHOULDER_CORNER"
@@ -3081,8 +3081,8 @@ provenance = "pinned"
 note = "18 - the BACK shear wall, one sheet, where the central wall is two. SETTLED: 18 IS ENOUGH AND THE REASON IS THE FASTENING - a shear panel is governed by what holds its edges, not by its thickness, which is why this file's standing instruction about shear walls is glue plus screws at about 150 all the way round. Doubling the panel without doubling the fastening buys almost nothing. SETTLED: THE CENTRAL WALL IS 36 FOR A GEOMETRIC REASON THAT DOES NOT APPLY HERE - it has to FILL the leg slot. This one screws to faces, so nothing forces its thickness. SETTLED: IT SITS IN A FULL-HEIGHT REBATE, his 2026-10-15 - the back 18 comes off the whole length of all three rear legs, and that band then carries the wall over most of its height and the back cross rails' outer laminations at the two grids. NOTE: IT STOPS BASE_BOX_GAP SHY OF THE BOX, same 10 and same reason as the grids: nothing of the base may touch the box."
 
 [[dim]]
-sym = "SHOULDER_BACK"
-expr = "TENON_BACK_TABS * LEG_STRIP * (T_BOX_LEDGE - T_BACK_WALL)"
+sym = "SHOULDER_MID"
+expr = "TENON_MID_TABS * LEG_STRIP * (T_BOX_LEDGE - T_BACK_WALL)"
 unit = "mm2"
 note = "864 mm2 - the back centre leg's bearing area, two strips of 18 x 24. FLAG: THE REBATE EATS 18 OF THE 42, which is what takes this from 1512 to 864 and makes it much the smallest of the three - and it carries the whole back of the box, because that leg is ledged on ONE face so its shoulder was only the 42 band to begin with. Still about 1 MPa against plywood edge-on, so it is a figure to know rather than a problem."
 
@@ -3094,7 +3094,7 @@ retired = true
 note = "FLAG: RETIRED 2026-10-15 AND NOTHING DERIVES FROM IT. It was the corner tenon as a SINGLE figure, correct only while the post was square. The laminated leg is 72 x 86 so the corner tenon is 30 x 44 - see TENON_CORNER_X and TENON_CORNER_Y. Kept because a reader who finds 44 in an old drawing needs to know which axis it was. Historic note follows. 42 - the front corner tenons, square, because those posts are ledged on TWO adjacent faces. SETTLED: THE SHRINK FROM 48 IS NOT A PROBLEM and the question was asked and answered 2026-10-11: THE TENON CARRIES NO VERTICAL LOAD - all of it is on the shoulder - so with 99 of engagement in cedar this is location duty only, and the corner tenons are located by both perimeter walls besides. SETTLED: AND THE SHOULDER GREW, which is the half that matters: the corner shoulder goes from about 5090 mm2 to 5630, and the back post's bearing centroid comes in from about 24 off the post axis to 21. EVERY STRUCTURAL NUMBER IMPROVED. OPEN: torsion-box.md's warning that '48 is where the corner tenons stop being generous' is about FIT - a cutting error is a larger fraction of a smaller tenon - and not about capacity. It does not bite either, because the box's position on the posts is NOT a machine reference: the machine is referenced to the top skin, so slop in the tenon changes nothing."
 
 [[dim]]
-sym = "TENON_BACK_DEPTH"
+sym = "TENON_MID_DEPTH"
 expr = "POST_W_Y - T_BOX_LEDGE"
 note = "42 - the back centre tenon front-to-back, that post being ledged on ONE face only, so its tenon is POST_W x this: 86 x 42. Same arithmetic as TENON_CORNER and kept as its own symbol because the two are the same number for different reasons - one face ledged against two - and would part company the moment either post was ledged differently."
 
@@ -3408,7 +3408,7 @@ note = "1118.35 - the cavity front to back, inside the perimeter inner webs. Sam
 sym = "BOX_BAY_W"
 value = 219
 provenance = "pinned"
-note = "219 - the clear bay across the machine, the THREE INNER ones of the five. SETTLED: IT IS A WHOLE MILLIMETRE BECAUSE IT IS LAID OUT WITH A TAPE - his instruction 2026-10-14: a notch offset of 697.944 is not a reading anybody can take off a rule marked in millimetres, so the bays are chosen whole and the arithmetic is made to close on them rather than the other way round. FLAG: FIVE EQUAL WHOLE BAYS CANNOT CLOSE HERE - the cavity less four ribs is 1103, which is not divisible by five, so the grid is symmetric with slightly larger END bays instead: see BOX_BAY_W_END. Inside the file's 200-300 convention band. SETTLED: THE PARITY ARGUMENT STILL CHECKS OUT: the layout is symmetric about the cavity's centre, so the middle bay is centred on the machine centreline and the 86 back tenon sits mid-bay with BACK_TENON_BLOCK_T_MAX clear each side."
+note = "219 - the clear bay across the machine, the THREE INNER ones of the five. SETTLED: IT IS A WHOLE MILLIMETRE BECAUSE IT IS LAID OUT WITH A TAPE - his instruction 2026-10-14: a notch offset of 697.944 is not a reading anybody can take off a rule marked in millimetres, so the bays are chosen whole and the arithmetic is made to close on them rather than the other way round. FLAG: FIVE EQUAL WHOLE BAYS CANNOT CLOSE HERE - the cavity less four ribs is 1103, which is not divisible by five, so the grid is symmetric with slightly larger END bays instead: see BOX_BAY_W_END. Inside the file's 200-300 convention band. SETTLED: THE PARITY ARGUMENT STILL CHECKS OUT: the layout is symmetric about the cavity's centre, so the middle bay is centred on the machine centreline and the 86 back tenon sits mid-bay with MID_TENON_BLOCK_T_MAX clear each side."
 
 [[dim]]
 sym = "BOX_BAY_W_END"
@@ -3424,7 +3424,7 @@ note = "219 - the clear bay front to back, the THREE INNER ones of the five, and
 [[dim]]
 sym = "BOX_BAY_FORE_AFT_END"
 expr = "(BOX_CAVITY_FORE_AFT - (3 * BOX_BAY_FORE_AFT) - (BOX_RIBS_ACROSS * T_BB_RIB)) / 2"
-note = "221 - the bay at EACH END front to back, 1 wider than the three inner ones. Same reasoning as BOX_BAY_W_END. NOTE: IT IS ALSO BACK_TENON_BLOCK_L, because the blocks run from the back web forward to the first across-rib, which is exactly this bay."
+note = "221 - the bay at EACH END front to back, 1 wider than the three inner ones. Same reasoning as BOX_BAY_W_END. NOTE: IT IS ALSO MID_TENON_BLOCK_L, because the blocks run from the back web forward to the first across-rib, which is exactly this bay."
 
 [[dim]]
 sym = "TENON_HOLE_CLEAR"
@@ -3604,19 +3604,19 @@ expr = "T_BOX_WALL_WEB - T_REAR_PLATE"
 note = "12.65 - how much of the back perimeter web is still INBOARD of the rear plate's footprint. SETTLED: THIS IS WHAT CLOSED THE REAR PLATE'S BLOCKING QUESTION, 2026-10-11, and it closed it as NOT NEEDED. The plate's bottom edge occupies the first T_REAR_PLATE of the box's fore-aft run, and the web occupies the first T_BOX_WALL_WEB - so the plate bears on skin that is backed by solid wall over its WHOLE footprint, with 12.65 of web to spare and the 25 tongue outboard of that as well. It is not spanning between grid members; there is no span. SETTLED: HIS REASONING, and it is stronger than he put it - he said the plate rests on the skin over the back of the box, which is true, and the figure says the footprint is wholly inside the wall rather than merely over it."
 
 [[dim]]
-sym = "BACK_TENON_BLOCK_X1"
+sym = "MID_TENON_BLOCK_X1"
 expr = "BOX_W / 2 - POST_W_X / 2"
 note = "562.62 - the inboard face of the first block beside the back centre tenon, which is the tenon's own left face. SETTLED: THE BACK CENTRE TENON IS THE ONLY ONE WANTING BLOCKING and torsion-box.md already said so: the two front corner tenons are snug into the box corners and are located by both perimeter walls for free, while this one has only the back wall behind it and nothing either side. FLAG: THE BLOCKS ARE FOR LOCATION, NOT BEARING - the tenon carries no vertical load, all of that is on the shoulder, so these stop the box walking across the machine and do nothing else. SETTLED: IT SITS MID-BAY WITH 66.72 CLEAR EACH SIDE, which is why two symmetric blocks were chosen over distorting the grid to bring a rib against it - see BOX_RIBS_FORE_AFT, whose even count put the centreline mid-bay on purpose."
 
 [[dim]]
-sym = "BACK_TENON_BLOCK_X2"
+sym = "MID_TENON_BLOCK_X2"
 expr = "BOX_W / 2 + POST_W_X / 2"
-note = "648.62 - the inboard face of the second block beside the back centre tenon, the tenon's right face. Symmetric with BACK_TENON_BLOCK_X1 about the machine centreline at 605.619, which is where the tenon is centred."
+note = "648.62 - the inboard face of the second block beside the back centre tenon, the tenon's right face. Symmetric with MID_TENON_BLOCK_X1 about the machine centreline at 605.619, which is where the tenon is centred."
 
 [[dim]]
-sym = "BACK_TENON_BLOCK_L"
+sym = "MID_TENON_BLOCK_L"
 expr = "BOX_BAY_FORE_AFT_END"
-note = "221 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. NOTE: THEY COME FROM THE SCRAP BIN and are not on the cut list - see BACK_TENON_BLOCK_T_MAX. SETTLED: THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_BACK_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. OPEN: HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end."
+note = "221 - how far each block runs forward from the back perimeter web: to the FIRST ACROSS-RIB, so it is captured at both ends rather than floating. NOTE: THEY COME FROM THE SCRAP BIN and are not on the cut list - see MID_TENON_BLOCK_T_MAX. SETTLED: THAT LENGTH IS THE ONLY NON-ARBITRARY ONE AVAILABLE - the tenon itself only needs cover to TENON_MID_DEPTH of 42, so anything between 42 and this would do the location job, and running to the rib makes each block a short rib instead of a loose packer. OPEN: HIS CALL IF HE WANTS THEM SHORTER: nothing structural is given up, only the capture at the forward end."
 
 [[dim]]
 sym = "BACK_LAM_L"
@@ -3651,7 +3651,7 @@ provenance = "pinned"
 note = "630 - the LONGER of the TWO pieces the front cap is cut from; the other is FRONT_CAP_PIECE_SHORT at 629. Same whole-millimetre split as the back lamination. SETTLED: SPLITTING THE BACK ALONE DOES NOT SAVE THE SHEET and that was tested: with the back in two and the front still 1261.238, the front is the piece that will not sit beside the skin and the second sheet is still needed. BOTH have to be split, which is why the front is too. OPEN: IT IS THE EASIER OF THE TWO TO ACCEPT: the front cap carries no tongue, no bolt line and nothing bears through it - it caps end grain and keeps the apron clear."
 
 [[dim]]
-sym = "BACK_TENON_BLOCK_T_MAX"
+sym = "MID_TENON_BLOCK_T_MAX"
 expr = "(BOX_BAY_W - POST_W_X) / 2"
 note = "66.72 - the most a back tenon block can be thick, which is the clear space each side of the tenon in its bay. SETTLED: THE THICKNESS IS FREE ANYWHERE UNDER THIS and that is the point: the blocks are CUT FROM HIS SCRAP BIN, not off a sheet - his call 2026-10-11 - because they are location pieces inside the box and nothing about them is structural. They carry no vertical load, all of it is on the post shoulder. FLAG: IT IS WHAT SAVED THE THIRD SHEET: the two blocks were the ONLY parts on a second sheet of 19 mm, 1% used, a $245 board for 0.044 m2 of plywood. Cutting them at 25 off the other sheet was offered and his answer was better - the scrap bin costs nothing and constrains nothing. OPEN: THE HEIGHT IS NOT FREE: they must be BOX_RIB_H tall like a rib, so both skins glue to them."
 

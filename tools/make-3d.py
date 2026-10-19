@@ -445,7 +445,7 @@ def main() -> int:
     # The leg is 72 x 86 since 2026-10-15, not square, so the corner tenon has
     # its own figure on each axis: tcx across the machine, tcy fore and aft.
     tcx, tcy = v["TENON_CORNER_X"], v["TENON_CORNER_Y"]
-    tb, pwx = v["TENON_BACK_DEPTH"], v["POST_W_X"]
+    tb, pwx = v["TENON_MID_DEPTH"], v["POST_W_X"]
     # The grid member's section, needed up here because the leg's SLOT is the
     # same 36: a rail fills it, which is the whole joint.
     gm_h, gm_t = v["GRID_MEMBER_H"], v["GRID_MEMBER_T"]
@@ -470,7 +470,7 @@ def main() -> int:
     hc = v["TENON_HOLE_CLEAR"]
     pwy = v["POST_W_Y"]
 
-    # Each post: (tenon rect, full-section rect) in machine x/y. The two REAR
+    # Each post: (tenon rect, full-section rect) in machine x/y. The two FRONT
     # CORNER legs carry no tenon - the box lands on three legs only - so they
     # have no entry here and are drawn with the base below.
     # The first rect is the leg's UN-LEDGED region - what stands proud of the
@@ -478,12 +478,13 @@ def main() -> int:
     # full-height slot the tenon is whichever STRIPS fall inside this band.
     beyond = pwx - ledge                     # 30 across, on a leg ledged in X
     posts = [
-        ("Post, front left", (web, web + beyond, D - web - tcy, D - web),
-         (web - ledge, web + beyond, D - web - tcy, D - web + ledge)),
-        ("Post, front right", (BW - web - beyond, BW - web, D - web - tcy, D - web),
-         (BW - web - beyond, BW - web + ledge, D - web - tcy, D - web + ledge)),
-        ("Post, back centre", (BW / 2 - pwx / 2, BW / 2 + pwx / 2, web, web + tb),
-         (BW / 2 - pwx / 2, BW / 2 + pwx / 2, web - ledge, web + tb)),
+        ("Post, rear left", (web, web + beyond, web, web + tcy),
+         (web - ledge, web + beyond, web - ledge, web + tcy)),
+        ("Post, rear right", (BW - web - beyond, BW - web, web, web + tcy),
+         (BW - web - beyond, BW - web + ledge, web - ledge, web + tcy)),
+        ("Post, front centre",
+         (BW / 2 - pwx / 2, BW / 2 + pwx / 2, D - web - tb, D - web),
+         (BW / 2 - pwx / 2, BW / 2 + pwx / 2, D - web - tb, D - web + ledge)),
     ]
     # A LEG IS DRAWN AS ITS TWO OUTER STRIPS, NOT AS A SOLID. The middle two
     # laminations are a SLOT, and everything fore-aft lives in it: a rail at each
@@ -498,10 +499,11 @@ def main() -> int:
 
         FRONT legs lose `housed` where a cross rail is AND EVERYWHERE ABOVE THE
         TOP ONE, so the face comes out as the Z segments below the upper rail
-        band only - the housing runs clear up to the top of the tenon. REAR legs
-        lose it over the WHOLE height - his, 2026-10-15 - because the back shear
-        wall sits in the same rebate, and the band then carries the wall over
-        most of its height and the rails' outer laminations at the two grids.
+        band only - the housing runs clear up to the leg's top, and on the front
+        centre leg on up into the ledge. REAR legs lose it over the WHOLE height
+        - his, 2026-10-15 - because the back shear wall sits in the same rebate,
+        and the band then carries the wall over most of its height and the
+        rails' outer laminations at the two grids.
         """
         back = notch.startswith("back")
         # NAMED BY WHICH SIDE OF THE MACHINE THEY ARE ON, not by whether they
@@ -549,20 +551,20 @@ def main() -> int:
                       f"only where there is no rail")
 
     holes_xy = []
-    corner_notch = {}            # front leg -> the skin corner it opens out to
-    back_notch = []              # the back centre's, out to the BACK edge
+    corner_notch = {}            # rear leg -> the skin corner it opens out to
+    front_notch = []             # the front centre's, out to the FRONT edge
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
         leg_strips(nm, "legs", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
-                   "back-both" if "back" in nm else "front",
+                   "front-both" if "centre" in nm else "back-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
                      f"middle laminations are the slot. The shoulder bears the box")
         leg_rects.append((px0, px1, py0, py1))
         # THE SLOT RUNS FULL HEIGHT, so it passes through the tenon as well: a
         # tenon tab is a STRIP's top, never the leg's. A strip standing inside
         # the leg's outward ledge has a tab; one swallowed by the ledge has none.
-        # So a corner leg has ONE tab and the back centre leg has TWO, with 36 of
-        # slot between them.
+        # So a corner leg has ONE tab and the front centre leg has TWO, with 36
+        # of slot between them.
         for sx0 in (px0, px1 - strip):
             if not (tx0 - 1e-9 <= sx0 and sx0 + strip <= tx1 + 1e-9):
                 continue                       # this strip is inside the ledge
@@ -570,7 +572,7 @@ def main() -> int:
                 sx0, ty0, ledge_z, sx0 + strip, ty1, post_top,
                 d=f"{strip:g} x {ty1 - ty0:g} - location only, it carries no "
                   f"vertical load. All of that is on the shoulder")
-            if "back" in nm:
+            if "centre" in nm:
                 # 🔴 ONE SLOT SPANNING BOTH TABS, NOT TWO - his, 2026-10-15,
                 # and it is the file's own advice taken: the island between the
                 # tabs BEARS NOTHING, because it sits over the leg's slot. So
@@ -579,10 +581,10 @@ def main() -> int:
                 # width of the pair plus TENON_HOLE_CLEAR a side. Appended
                 # once, after the tabs, rather than per tab.
                 continue
-            # ---- the two FRONT tabs: a spacer, and a corner instead of a hole
+            # ---- the two REAR tabs: a spacer, and a corner instead of a hole
             # 🔴 A SPACER ON THE TAB'S OUTER FACE - his, 2026-10-15, and the
             # reason is the one worth keeping: WITHOUT IT THE BOX IS LOCATED ON
-            # A FACE AND NOT ON A CORNER. The tab butts the front web with
+            # A FACE AND NOT ON A CORNER. The tab butts the back web with
             # nothing to spare and has TENON_SPACER_GAP of air to the side web,
             # so the corner is captured one way only. Fill that gap and the
             # composite tenon's outer face lands ON the side web's inner face.
@@ -609,38 +611,37 @@ def main() -> int:
             # on the outline is not a hole, and the triangulator's seams are
             # exactly what check-prism-edges.py exists to catch.
             inx = (sx0 + strip + hc) if left else (sx0 - hc)
-            corner_notch["left" if left else "right"] = (inx, ty0 - hc)
+            corner_notch["left" if left else "right"] = (inx, ty1 + hc)
 
-        if "back" in nm:
-            # 🔴 AND IT OPENS TO THE BACK EDGE TOO - his, 2026-10-15, on seeing
+        if "centre" in nm:
+            # 🔴 AND IT OPENS TO THE FRONT EDGE TOO - his, 2026-10-15, on seeing
             # the detail: as a closed rectangle in the field of the sheet it
             # needed a start hole and a jigsaw. The skin left between it and
             # the edge was T_BOX_WALL_WEB less the clearance, and ALL of that
-            # sits under the back perimeter web with the back tongue outside
-            # it, so none of it shows. Opened out, every one of the three
-            # tenon cuts is a saw cut from an edge.
-            back_notch.append((px0 - hc, px1 + hc, ty1 + hc))
+            # sits under the front perimeter web, so none of it shows. Opened
+            # out, every one of the three tenon cuts is a saw cut from an edge.
+            front_notch.append((px0 - hc, px1 + hc, ty0 - hc))
 
     # The outline, anticlockwise from the back left, with ALL THREE tenon cuts
-    # spliced out of it: along the back edge and into the back centre's notch,
-    # up the right edge into that corner, forward and across the front edge to
-    # the other corner, and back out to the left edge. NOTHING is a hole in this
-    # skin any more, which is the point - every cut reaches an edge, so every
-    # cut is a saw cut.
+    # spliced out of it: out of the back left corner, along the back edge into
+    # the back right corner, up the right edge, back along the front edge and
+    # into the front centre's notch, and out to the left edge. NOTHING is a hole
+    # in this skin any more, which is the point - every cut reaches an edge, so
+    # every cut is a saw cut.
     nl, nr = corner_notch.get("left"), corner_notch.get("right")
-    outline = [[0, 0]]
-    for bx0, bx1, by in sorted(back_notch):
-        outline += [[bx0, 0], [bx0, by], [bx1, by], [bx1, 0]]
-    outline += [[BW, 0]]
-    outline += ([[BW, nr[1]], [nr[0], nr[1]], [nr[0], D]] if nr else [[BW, D]])
-    outline += ([[nl[0], D], [nl[0], nl[1]], [0, nl[1]]] if nl else [[0, D]])
+    outline = ([[0, nl[1]], [nl[0], nl[1]], [nl[0], 0]] if nl else [[0, 0]])
+    outline += ([[nr[0], 0], [nr[0], nr[1]], [BW, nr[1]]] if nr else [[BW, 0]])
+    outline += [[BW, D]]
+    for fx0, fx1, fy in sorted(front_notch, reverse=True):
+        outline += [[fx1, D], [fx1, fy], [fx0, fy], [fx0, D]]
+    outline += [[0, D]]
     prism("Bottom skin", "box", 0xB08A1E,
           outline, skin_bot_top, -v["BOX_THK"],
           holes=holes_xy, plane="xy",
           d="19 Baltic birch, resting on the three post shoulders. NONE of the "
-            "three tenon cuts is a hole: the two front ones take a corner and "
-            "the back centre's takes a notch out of the back edge, so every one "
-            "of them is a saw cut and the skin under the webs goes with it")
+            "three tenon cuts is a hole: the two rear ones take a corner and "
+            "the front centre's takes a notch out of the front edge, so every "
+            "one of them is a saw cut and the skin under the webs goes with it")
 
     # ---- the base: two grids holding five legs ---------------------------
     # HIS SPEC 2026-10-15, and the definition is the point: the base is not a
@@ -657,9 +658,9 @@ def main() -> int:
     grids = (("upper", grid_hi_top - gm_h, grid_hi_top),
              ("lower", grid_lo_bot, grid_lo_bot + gm_h))
 
-    # The two REAR CORNER legs. They carry no tenon - the box lands on three
-    # legs only - so they stop at the box's underside and hold up the grids and
-    # the back shear wall. Drawn at the same stations as the front pair.
+    # The two FRONT CORNER legs. They carry no tenon - the box lands on three
+    # legs only - so they stop below the box's underside and hold up the grids
+    # and the front cross rails. Drawn at the same stations as the rear pair.
     # FLAG: THEIR X SPAN IS THE LEG'S OWN WIDTH, not the corner tenon's. It was
     # written as web + tcx back when tcx happened to be 30 and the sum happened
     # to land right; when the full-height slot took the corner tenon to 18 these
@@ -668,31 +669,26 @@ def main() -> int:
     # tenon must finish BASE_BOX_GAP below the box or it becomes a fourth and
     # fifth contact and the three-point mount stops being determinate. This was
     # drawn to -BOX_THK, which put both leg tops ON the box.
-    for nm, x0, x1 in (("Leg, rear left", web - ledge, web - ledge + pwx),
-                       ("Leg, rear right", BW - web + ledge - pwx, BW - web + ledge)):
-        leg_strips(nm, "legs", 0x8A5A2B, x0, x1, web - ledge, web + tb,
-                   floor_z, grid_hi_top, "back-inner",
+    fy1 = D - web + ledge
+    fy0 = fy1 - pwy
+    for nm, x0, x1 in (("Leg, front left", web - ledge, web - ledge + pwx),
+                       ("Leg, front right", BW - web + ledge - pwx, BW - web + ledge)):
+        leg_strips(nm, "legs", 0x8A5A2B, x0, x1, fy0, fy1,
+                   floor_z, grid_hi_top, "front-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it carries "
-                     f"the grids and the back shear wall, NOT the box")
-        leg_rects.append((x0, x1, web - ledge, web + tb))
+                     f"the grids and the front cross rails, NOT the box")
+        leg_rects.append((x0, x1, fy0, fy1))
 
-    # THE SIXTH LEG, AT THE FRONT CENTRE - his, and it is what holds the
-    # central wall's front end. Same profile as the back centre leg, the wall
-    # straight through its slot, but no tenon: it stops at grid_hi_top like the
-    # rear corner pair. It replaced a pair of bolted cheeks with a notch in
-    # every piece, and took the notches away with them - the front cross rail's
-    # inner lamination now butts this leg in two spans rather than running past
-    # the wall, so nothing crosses the wall at all.
-    fc_x0, fc_x1 = BW / 2 - pwx / 2, BW / 2 + pwx / 2
-    # the same front plane the front corner posts are set out from - by1 is
-    # not in scope yet, and it is this expression
-    fc_y1 = D - web + ledge
-    fc_y0 = fc_y1 - pwy
-    leg_strips("Leg, front centre", "legs", 0x8A5A2B, fc_x0, fc_x1,
-               fc_y0, fc_y1, floor_z, grid_hi_top, "front-both",
+    # THE BACK CENTRE LEG holds the central wall's back end, and the back wall
+    # runs straight through it. No tenon: it stops at grid_hi_top like the front
+    # corner pair, because the box must not land on it.
+    bc_x0, bc_x1 = BW / 2 - pwx / 2, BW / 2 + pwx / 2
+    bc_y0, bc_y1 = web - ledge, web + tb
+    leg_strips("Leg, back centre", "legs", 0x8A5A2B, bc_x0, bc_x1,
+               bc_y0, bc_y1, floor_z, grid_hi_top, "back-both",
                d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - it holds "
-                 f"the central wall's front end and the grids, NOT the box")
-    leg_rects.append((fc_x0, fc_x1, fc_y0, fc_y1))
+                 f"the central wall's back end and the grids, NOT the box")
+    leg_rects.append((bc_x0, bc_x1, bc_y0, bc_y1))
 
     # Grid members, on edge: TWO fore-aft rails and TWO cross rails, a plain
     # rectangle. FLAG: THERE IS NO CENTRE FORE-AFT RAIL - his correction
@@ -1001,22 +997,22 @@ def main() -> int:
         return [lo + end + v["T_BB_RIB"] / 2 + i * (bay + v["T_BB_RIB"])
                 for i in range(int(n))]
 
-    # ---- the two blocks beside the back centre tenon ----------------------
-    # THE ONLY TENON THAT WANTS THEM: the front corner tenons are snug into the
+    # ---- the two blocks beside the front centre tenon ---------------------
+    # THE ONLY TENON THAT WANTS THEM: the rear corner tenons are snug into the
     # box corners and located by both perimeter walls for free, while this one
-    # has the back wall behind it and nothing either side.
+    # has the front web in front of it and nothing either side.
     #
     # NOTE: FOR LOCATION, NOT BEARING - the tenon carries no vertical load, all of
     # it is on the shoulder, so these only stop the box walking across.
     #
-    # They run forward from the back web to the first across-rib, so each is
-    # captured at both ends rather than floating. BACK_TENON_BLOCK_L's note
+    # They run back from the front web to the first across-rib, so each is
+    # captured at both ends rather than floating. MID_TENON_BLOCK_L's note
     # records that the length is his to shorten; the position is settled.
-    for bx, sgn_b in ((v["BACK_TENON_BLOCK_X1"], -1), (v["BACK_TENON_BLOCK_X2"], +1)):
-        box("Back tenon block", "grid", 0xC2A23F,
-            bx, web, cav_z0, bx + sgn_b * v["T_BB_RIB"],
-            web + v["BACK_TENON_BLOCK_L"], cav_z1,
-            d="location only - the back centre tenon is the one with no wall "
+    for bx, sgn_b in ((v["MID_TENON_BLOCK_X1"], -1), (v["MID_TENON_BLOCK_X2"], +1)):
+        box("Mid tenon block", "grid", 0xC2A23F,
+            bx, D - web - v["MID_TENON_BLOCK_L"], cav_z0,
+            bx + sgn_b * v["T_BB_RIB"], D - web, cav_z1,
+            d="location only - the front centre tenon is the one with no wall "
               "either side")
 
     bw, bf = v["BOX_BAY_W"], v["BOX_BAY_FORE_AFT"]
