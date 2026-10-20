@@ -186,9 +186,15 @@ def leg_elevation_svg(v, s=0.165):
 
     A leg is drawn as its FOUR STRIPS: the outer pair, each to ITS OWN top,
     and the middle 36 drawn as the slot stack. Hatched, dashed-outline bands
-    come out. The outer pair is drawn in leg_faces order - the outboard strip
-    on the left, the inner one on the right - and they are not always the same
-    height: a front leg's outboard strip stops at the shoulder.
+    come out. They are not always the same height: a rear corner leg's
+    outboard strip stops at the shoulder.
+
+    🔴 THE PAIR IS DRAWN WHERE IT ACTUALLY STANDS, not in leg_faces order. The
+    drawing is in true orientation with the machine's left at the left, so on a
+    RIGHT-HAND leg the inner strip is the one on the LEFT - and leg_faces
+    returns outer first, which drew both right-hand legs mirrored and put the
+    tenon on the wrong side of them. His, off the drawing. make-3d.py carries
+    the same correction on leg_strips, for the same reason.
     """
     pwx, strip, gm_t = v["POST_W_X"], v["LEG_STRIP"], v["GRID_MEMBER_T"]
     kinds = leg_kinds(v)
@@ -265,8 +271,11 @@ def leg_elevation_svg(v, s=0.165):
         # swallows that strip whole and its top face IS the bearing shoulder.
         # The front elevation showed it running past the shoulder to the leg
         # top, against the profile view's 874, which is the one that was right.
-        for sx, (_which, s_top, _cuts) in zip((0.0, pwx - strip),
-                                              leg_faces(v, kind)):
+        # outer, then inner - swapped on a right-hand leg, where the inner
+        # strip is the one standing on the LEFT.
+        offsets = ((pwx - strip, 0.0) if name.endswith("right")
+                   else (0.0, pwx - strip))
+        for sx, (_which, s_top, _cuts) in zip(offsets, leg_faces(v, kind)):
             body.append(
                 f'<rect x="{x0 + sx * s:.2f}" y="{y_of(s_top):.2f}" '
                 f'width="{strip * s:.2f}" height="{s_top * s:.2f}" '
