@@ -1291,7 +1291,7 @@ feed the casters.
 
 | | |
 |---|---|
-| **Caster** | Plate **{{CASTER_PLATE_L}}** along the rail × **{{CASTER_PLATE_W}}** across, four holes at 7; **86.6** overall; **7** of leveling travel; **{{CASTER_SWIVEL}}°** swivel with the ratchet in after 90°; 50 nylon wheel |
+| **Caster** | Plate **{{CASTER_PLATE_L}}** along the rail × **{{CASTER_PLATE_W}}** across × **{{CASTER_PLATE_T}}** thick, four holes at 7; **86.6** overall; **7** of leveling travel; **{{CASTER_SWIVEL}}°** swivel with the ratchet in after 90°; 50 nylon wheel |
 | **Where it sits** | **Butted against the back of the leg**, which leaves **{{CASTER_PLATE_END_GAP}}** at the far end before the fork guard rail. The plate is wider than the 72 face and stands **7 proud each side** — the bolts are in the 72, the overhang is plate and not bearing |
 | **Drop block** | One under every caster, **{{CASTER_PLATE_L}} × {{CASTER_PLATE_W}}**, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** before the wheel even touches, and 7 of foot cannot make that up |
 | **Guard rail** | A dressed 2x3 each, hanging **63.5** and leaving 36.5 under it |
@@ -1301,6 +1301,10 @@ bears up, so its screws locate it and carry nothing. **Four bear on a lower rail
 butted against a corner leg's face; **the fifth on the central wall's bottom edge**. Nothing passes under a
 leg's foot — the legs fill the band, which is what lets all five plates sit on one plane. **Cut all
 five blocks off one piece** so they match.
+
+🔴 **Caliper the caster before cutting a single block.** The 13.4 holds only if the 86.6 is from the
+plate's **top** face. From **under** the plate it is **{{CASTER_PLATE_T}} + 86.6 = 104.6** in a band
+of 100 — no room for a block at all, and the wheel could not reach the floor.
 
 **The machine stands on the feet.** 7 is not enough to lift the wheels clear and set the legs back
 down, so the leg bottoms hang a few mm off the floor either way.

@@ -3272,6 +3272,13 @@ source = "his, 2026-10-21"
 note = "86 - the caster's mounting plate ACROSS the machine. FLAG: IT IS WIDER THAN THE FACE IT LANDS ON. The lower rail is brought out to POST_W_X of 72 by a pad lamination each side, so an 86 plate stands 7 proud of it on each side - where the 73 square it replaced stood 0.5 proud. The four bolts still land in the 72, which is what carries it; what is proud is plate, not bearing."
 
 [[dim]]
+sym = "CASTER_PLATE_T"
+value = 18
+provenance = "part"
+source = "his"
+note = "18 - the mounting plate's own thickness. FLAG: WHETHER IT COMES OUT OF THE DROP BLOCK DEPENDS ON WHERE CASTER_H IS MEASURED FROM, and that is why CASTER_H is OPEN. Read from the plate's TOP face the 18 is already inside the 86.6 and CASTER_BLOCK_MIN's 13.4 stands; read from under the plate the stack is 18 + 86.6 = 104.6 in a BASE_FLOOR_CLEAR of 100 and there is no room for a block at all, let alone one thick enough to put the wheel below the leg bottoms. CALIPER THE PLATE FACE TO THE WHEEL and the question closes. NOTE: IT IS ALSO THE BOLT GRIP - a bolt through this plate into the rail has 18 of plate before it reaches wood."
+
+[[dim]]
 sym = "CASTER_PLATE_END_GAP"
 expr = "(BAY_OPEN_FORE_AFT - FORK_CHANNEL_W) / 2 - GUARD_RAIL_T - CASTER_PLATE_L"
 note = "5.4 - the air at the FAR end of a caster's mounting plate, between it and the fork guard rail's near face. SETTLED: THE PLATE BUTTS THE LEG, his call - it goes hard against the back of the leg at the near end, so whatever slack there is lands at this end, and this is the figure that says the 150 plate clears the guard rail. FLAG: IT IS A RESIDUE, NOT A CHOICE - nothing is set to make it 5.4, so it MOVES with the plate's length, the channel width or the guard rail's thickness, and it is the first figure to go negative when any of the three grows. OPEN: THE 30 CLEARANCE HE GAVE WITH THE PLATE IS NOT THIS and is deliberately not in the registry - it belongs to the 73 square plate measured from the back of the leg, or it is 30 off the end of a plate. Ask before anything derives from it."
@@ -3288,7 +3295,7 @@ sym = "CASTER_H"
 value = 86.6
 provenance = "part"
 source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
-note = "86.6 - plate face to the bottom of the wheel, foot up. OPEN: THIS AND CASTER_LEVEL_TRAVEL ARE STILL THE LISTING'S FIGURES while the plate is now a measured 200 x 86 - a 73 square plate and a 200 x 86 one are not the same part, so CALIPER THE HEIGHT AND THE FOOT'S RANGE off the caster in hand and put the readings here. Everything about the drop blocks hangs off this one. FLAG: IT IS SHORTER THAN BASE_FLOOR_CLEAR, so a plate bolted flat to the lower grid leaves the wheel 13.4 clear of the floor and CASTER_LEVEL_TRAVEL cannot make that up - each caster sits on a drop block that brings the wheel just below the leg bottoms."
+note = "86.6 - plate face to the bottom of the wheel, foot up. OPEN: THIS AND CASTER_LEVEL_TRAVEL ARE THE LISTING'S FIGURES while the plate is a measured 150 x 86 x CASTER_PLATE_T - a 73 square plate and a 150 x 86 one are not the same part, so CALIPER THE HEIGHT AND THE FOOT'S RANGE off the caster in hand and put the readings here. Everything about the drop blocks hangs off this one. OPEN: AND SAY WHICH FACE THE HEIGHT IS FROM - the plate's top face or its underside. The difference is CASTER_PLATE_T's 18 in a band of 100, which is the whole drop block and more. FLAG: IT IS SHORTER THAN BASE_FLOOR_CLEAR, so a plate bolted flat to the lower grid leaves the wheel 13.4 clear of the floor and CASTER_LEVEL_TRAVEL cannot make that up - each caster sits on a drop block that brings the wheel just below the leg bottoms."
 
 [[dim]]
 sym = "CASTER_LEVEL_TRAVEL"

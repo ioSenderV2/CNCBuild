@@ -1116,6 +1116,8 @@ leaves <b>{v['CASTER_PLATE_END_GAP']:g}</b> at the far end before the fork guard
 rail</td></tr>
 <tr><td><b>Swivel</b></td><td>{v['CASTER_SWIVEL']:g}&deg;, with the ratchet
 engaging after 90&deg;</td></tr>
+<tr><td><b>Plate thickness</b></td><td>{v['CASTER_PLATE_T']:g} &mdash; which is
+also the grip a bolt passes through before it reaches wood</td></tr>
 <tr><td><b>Overall height</b></td><td>{v['CASTER_H']:g}, plate face to the
 bottom of the wheel</td></tr>
 <tr><td><b>Leveling travel</b></td><td>{v['CASTER_LEVEL_TRAVEL']:g} &mdash; the
@@ -1129,6 +1131,13 @@ wheel just below the leg bottoms. <b>Measure the slab under the five positions
 and cut the five blocks so they land within a couple of mm of each other</b>
 &mdash;
 the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
+<p>🔴 <b>Caliper the caster before cutting a single block.</b> That
+{gap:.1f} holds only if the {v['CASTER_H']:g} is measured from the plate's
+<b>top</b> face. Measured from <b>under</b> the plate it is
+{v['CASTER_PLATE_T']:g} + {v['CASTER_H']:g} =
+<b>{v['CASTER_PLATE_T'] + v['CASTER_H']:.1f}</b> in a band of
+{v['BASE_FLOOR_CLEAR']:g} &mdash; no room for a block at all, and the wheel
+could not reach the floor.</p>
 <p><b>A block is a shim in compression</b>, not a hanger: the structure bears
 down on it and the caster bears up, so its screws locate it and carry nothing.
 Four bear on a <b>lower rail's underside</b>, butted against a corner leg's face;

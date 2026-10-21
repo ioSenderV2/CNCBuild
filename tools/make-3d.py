@@ -809,7 +809,8 @@ def main() -> int:
         box("Levelling caster", "rails", 0x999999,
             cx0, cy0, grid_lo_bot - blk - ch, cx0 + cpw, cy0 + cpl,
             grid_lo_bot - blk,
-            d=f"{cpl:g} x {cpw:g} plate, {ch:g} overall, "
+            d=f"{cpl:g} x {cpw:g} x {v['CASTER_PLATE_T']:g} plate, {ch:g} "
+              f"overall, "
               f"{v['CASTER_LEVEL_TRAVEL']:g} of levelling travel, "
               f"{v['CASTER_SWIVEL']:g} deg swivel with the ratchet in after "
               f"90. Drawn as its envelope - {note}")
