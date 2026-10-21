@@ -322,4 +322,4 @@ the interface, not this file.
 
 ---
 
-**234 open** across 32 files.
+**234 open** across 33 files.

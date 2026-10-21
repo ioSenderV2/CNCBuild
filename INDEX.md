@@ -322,6 +322,13 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Cable pinout - not a free choice](linear-encoder/sensor-board.md#cable-pinout---not-a-free-choice)
 - [Open](linear-encoder/sensor-board.md#open)
 
+## [commissioning/base-as-built.md](commissioning/base-as-built.md)
+
+- [What was measured](commissioning/base-as-built.md#what-was-measured)
+- [The dry fit settles it, and it outranks the arithmetic](commissioning/base-as-built.md#the-dry-fit-settles-it-and-it-outranks-the-arithmetic)
+- [What the remaining parts get cut to](commissioning/base-as-built.md#what-the-remaining-parts-get-cut-to)
+- [Two consequences that cost nothing](commissioning/base-as-built.md#two-consequences-that-cost-nothing)
+
 ## [commissioning/bench-session.md](commissioning/bench-session.md)
 
 - [Why on the bench, and not later](commissioning/bench-session.md#why-on-the-bench-and-not-later)

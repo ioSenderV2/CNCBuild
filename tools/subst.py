@@ -116,8 +116,18 @@ def main() -> int:
     # a temporary copy at print time, so a typo in one of its symbols used to
     # surface only when Edge was already running - and it now carries more
     # symbols than any .md, because its hole schedules cite them directly.
+    # 🔴 EVERY DIRECTORY status.py RENDERS THROUGH subst.read BELONGS HERE.
+    # The gate listed machine and wiring while status.py's SOURCE_DIRS also
+    # carries commissioning and linear-encoder - so those two were substituted
+    # at render time but never checked, and a typo'd symbol in one would print
+    # as braces in STATUS.md with nothing failing first. restale.py also scans
+    # commissioning and will REWRITE a stale literal there into {{SYMBOL}},
+    # which is the tool putting symbols into a directory the gate was not
+    # watching.
     files = sorted(list((ROOT / "machine").rglob("*.md"))
                    + list((ROOT / "wiring").rglob("*.md"))
+                   + list((ROOT / "commissioning").rglob("*.md"))
+                   + list((ROOT / "linear-encoder").rglob("*.md"))
                    + [ROOT / "machine" / "drawings" / "shop-pack.html"])
     used: dict[str, int] = {}
     bad: list[str] = []
