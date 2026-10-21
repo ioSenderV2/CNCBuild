@@ -943,11 +943,13 @@ irreversible stops being one.
    5. Then glue, and **screw through the skin into every rib and web**. The screws are the clamping,
       and they stop squeeze-out floating the crate out of position while you work down the panel.
       **{{SKIN_SCREW_L}} countersunk, one in the middle of every cell side — a shared side takes one
-      and not two, so {{SKIN_SCREW_COUNT}} for the skin.** Mark them off two lists: the lines at
-      **9, 250, 487, 724, 961, 1202** and the bay centres at **129.5, 368.5, 605.5, 842.5, 1081.5**,
-      the same both ways; a screw sits on a line at a bay centre. 🔴 **One of the 60 has no skin
-      under it** — the front web's middle screw at 605.5 across, 1202 in, which is inside the front
-      centre tenon notch. Move it or leave it out.
+      and not two, so {{SKIN_SCREW_COUNT}} for the top skin and {{SKIN_SCREW_COUNT_BOT}} for the
+      bottom.** Mark them off two lists: the lines at **9, 250, 487, 724, 961, 1202** and the bay
+      centres at **129.5, 368.5, 605.5, 842.5, 1081.5**, the same both ways; a screw sits on a line at
+      a bay centre. 🔴 **The front centre tenon notch gets two screws instead of one**, on the front
+      web line at **532** and **679** rather than one at 605.5 — the notch spans 568.5 to 642.5 and
+      runs out to the front edge, and those two are the middles of the 72.5 of skin left either side
+      of it.
 
    🔴 **Square and flat are two different checks and the diagonals only cover one.** A crate can read
    1712 both ways and still be wound. It stays on the flat reference and weighted for the glue-up,

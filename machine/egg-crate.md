@@ -66,12 +66,16 @@ the errors accumulating.
 5. **Clamp the skins hard onto the rib edges.** That edge-to-face glue line is where the sandwich
    action lives. Screws through the skins into the ribs are the simplest way to get uniform
    pressure, and they can stay in. **{{SKIN_SCREW_L}} countersunk, one in the middle of every cell
-   side, and a shared side takes one screw and not two — {{SKIN_SCREW_COUNT}} for a skin.** Mark them
-   off two lists: the lines at **9, 250, 487, 724, 961, 1202** and the bay centres at **129.5, 368.5,
-   605.5, 842.5, 1081.5**, the same both ways. A screw sits on a line at a bay centre.
-   - FLAG: **One of the 60 has no skin under it.** The front perimeter web's middle screw is at
-     605.5 across and 1202 in, and the front centre tenon notch spans 568.5 to 642.5 and runs out to
-     the front edge. **Move it or leave it out** — the two either side of it are 237 away.
+   side, and a shared side takes one screw and not two — {{SKIN_SCREW_COUNT}} for the top skin,
+   {{SKIN_SCREW_COUNT_BOT}} for the bottom.** Mark them off two lists: the lines at
+   **9, 250, 487, 724, 961, 1202** and the bay centres at **129.5, 368.5, 605.5, 842.5, 1081.5**, the
+   same both ways. A screw sits on a line at a bay centre.
+   - 🔴 **The front centre tenon notch takes one screw position and gets two instead**, one each side
+     of the opening. On the front web line at 1202, at **532** and **679** rather than one at 605.5 —
+     the notch spans 568.5 to 642.5 and runs out to the front edge, so those two are the middles of
+     the 72.5 of skin left either side of it. **That is the extra screw in the bottom skin's 61.**
+   - **The two corner cutouts cost nothing** — they reach 49 across and 63 in, and the nearest screw
+     on either perimeter web is at 129.5.
    - FLAG: **Keep the drainage notches off the bay centres**, which is where these screws now land.
    - **Through the bottom skin's 18 that leaves 20.1 in an 18 rib edge**, so the pilot hole is what
      keeps the screw off the rib's faces.

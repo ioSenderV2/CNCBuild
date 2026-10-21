@@ -3436,7 +3436,12 @@ note = "38.1 - 1-1/2in, the countersunk screw holding a skin down onto the rib e
 [[dim]]
 sym = "SKIN_SCREW_COUNT"
 expr = "(BOX_RIBS_FORE_AFT + 2) * (BOX_RIBS_ACROSS + 1) + (BOX_RIBS_ACROSS + 2) * (BOX_RIBS_FORE_AFT + 1)"
-note = "60 - the screws holding ONE skin down, at ONE in the middle of every cell side. SETTLED: A SHARED SIDE TAKES ONE SCREW, NOT TWO, his scheme - 25 cells at four sides each is 100, and the 40 interior sides counted twice bring it to 60. The arithmetic here says the same thing the other way round: six lines run each way, a rib or a perimeter web, and each is cut into five by the ribs crossing it. FLAG: ONE OF THE 60 FALLS IN THE FRONT CENTRE TENON NOTCH - the front web's middle screw is at 605.5 along and 1202 in, and that cut spans 568.5 to 642.5 across and reaches the front edge. There is no skin there to screw. NOTE: THEY DO NOT FOUL THE SAND PORTS - a port is at a bay centre in BOTH directions and a screw is at a bay centre in one and on a line in the other."
+note = "60 - the screws holding a skin down, at ONE in the middle of every cell side. SETTLED: A SHARED SIDE TAKES ONE SCREW, NOT TWO, his scheme - 25 cells at four sides each is 100, and the 40 interior sides counted twice bring it to 60. The arithmetic here says the same thing the other way round: six lines run each way, a rib or a perimeter web, and each is cut into five by the ribs crossing it. SETTLED: IT IS THE TOP SKIN'S FIGURE EXACTLY and the bottom skin's base - the bottom one has the tenon cutouts in it, see SKIN_SCREW_COUNT_BOT. NOTE: THEY DO NOT FOUL THE SAND PORTS - a port is at a bay centre in BOTH directions and a screw is at a bay centre in one and on a line in the other."
+
+[[dim]]
+sym = "SKIN_SCREW_COUNT_BOT"
+expr = "SKIN_SCREW_COUNT + 1"
+note = "61 - the BOTTOM skin's screws, one more than the top's. SETTLED: THE FRONT CENTRE TENON NOTCH TAKES THE MIDDLE SCREW OFF THE FRONT WEB AND HIS ANSWER IS TWO, one each side of the opening - the notch spans 568.5 to 642.5 across and runs out to the front edge, so there is no skin at the bay centre of 605.5 to screw into. FLAG: THE TWO CORNER CUTOUTS COST NOTHING - they reach 49 across and 63 in, and the nearest screw on either perimeter web is at a bay centre of 129.5, so only the front centre one lands in a cut. NOTE: THE POSITIONS ARE THE MIDDLE OF WHAT IS LEFT - the middle bay's run along the front web is 496 to 715, the notch takes 72.5 off each end of it, and the two remaining runs have their middles at 532.25 and 678.75, marked 532 and 679 for a tape."
 
 [[dim]]
 sym = "BOX_CAVITY_W"
