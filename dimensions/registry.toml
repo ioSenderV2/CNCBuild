@@ -3337,7 +3337,19 @@ note = "90 - the M8 flange bolt through every bolted slot joint in the base. SET
 [[dim]]
 sym = "BASE_BOLT_SPARE"
 expr = "BASE_BOLT_L - TONGUE_BOLT_GRIP - 2 * FENDER_WASHER_T"
-note = "15.8 - what stands past the far face with the bolt home: the 90 less the 72 of grip and less the two FENDER_WASHER_T, one under the flange bolt and one under the flange lock nut. OPEN: THE FLANGE LOCK NUT'S HEIGHT IS NOT RECORDED, so this is the budget and not the clearance - caliper the nut, and if it is a nylon-insert type check the thread reaches the insert at the TOP of the nut rather than stopping in the metal below it. FLAG: IT IS THE FIGURE THAT MOVES IF A WASHER IS ADDED OR DROPPED - two washers at 1.1 are only 2.2 of the 18 spare, so the length is not tight either way."
+note = "15.8 - what stands past the far face with the bolt home: the 90 less the 72 of grip and less the two FENDER_WASHER_T, one under the flange bolt and one under the flange lock nut. SETTLED: THE NUT TAKES BASE_BOLT_NUT_H OF IT and BASE_BOLT_PROUD is what stands past - the budget closes with room. FLAG: IT IS THE FIGURE THAT MOVES IF A WASHER IS ADDED OR DROPPED - two washers at 1.1 are only 2.2 of it, so the length is not tight either way."
+
+[[dim]]
+sym = "BASE_BOLT_NUT_H"
+value = 11
+provenance = "part"
+source = "his"
+note = "11 - the M8 flange lock nut's height. FLAG: IT IS NOT M8_NUT_H, which is a plain hex nut at 6.5 and belongs to the spoilboard's counterbore. A flange lock nut is the taller part, and this joint family uses nothing else."
+
+[[dim]]
+sym = "BASE_BOLT_PROUD"
+expr = "BASE_BOLT_SPARE - BASE_BOLT_NUT_H"
+note = "4.8 - the thread standing past the flange lock nut with the bolt home. SETTLED: IT CLOSES THE LENGTH, and the 90 is right: 72 of grip, 2.2 of washers, 11 of nut, and this left over. SETTLED: AND IT ANSWERS THE NYLON-INSERT QUESTION - the insert sits at the TOP of the nut, and the thread runs 4.8 past the top, so it reaches the insert with the nut's full height engaged rather than stopping in the metal below it. FLAG: IT IS WHAT A SHORTER BOLT SPENDS FIRST - an M8 x 85 would leave nothing proud at all, which is why 90 is the size to buy."
 
 [[dim]]
 sym = "BASE_BOLT_WASHER"

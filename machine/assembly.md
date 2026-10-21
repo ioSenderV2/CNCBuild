@@ -1232,10 +1232,9 @@ the bolt's path.
 
 **The length is {{BASE_BOLT_L}}, and one length does all 22 of them.** The grip is
 {{TONGUE_BOLT_GRIP}}, the two fender washers are {{FENDER_WASHER_T}} each, and that leaves
-**{{BASE_BOLT_SPARE}}** standing past the far washer for the flange lock nut and a thread or two
-proud. OPEN: **the flange lock nut's height is not recorded** — caliper it against that
-{{BASE_BOLT_SPARE}}, and on a nylon-insert nut check the thread reaches the insert at the top of the
-nut rather than stopping in the metal below it.
+**{{BASE_BOLT_SPARE}}** standing past the far washer. The flange lock nut is
+**{{BASE_BOLT_NUT_H}}** high, so **{{BASE_BOLT_PROUD}}** of thread stands past it — and past the top
+of the nut, which is where a nylon insert sits.
 
 NOTE: **One M8 fender washer at each end, and snug rather than hard. The bolt's own flange does not
 replace it.** A plain washer — or a flange on its own — dishes into plywood face at torque, and a
