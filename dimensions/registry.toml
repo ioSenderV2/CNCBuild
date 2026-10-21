@@ -3427,6 +3427,18 @@ provenance = "nominal"
 note = "SETTLED: FOUR, AND IT IS HIS CALL 2026-10-11. Interior ribs RUNNING across the machine, therefore SPACED fore-aft, giving five bays. His figure 2026-10-11. Nothing constrains the parity here - the centre tenon is only 42 deep and sits against the front wall, so the first across-rib in from the front clears it with the whole first bay to spare."
 
 [[dim]]
+sym = "SKIN_SCREW_L"
+value = 38.1
+provenance = "part"
+source = "his"
+note = "38.1 - 1-1/2in, the countersunk screw holding a skin down onto the rib edges. SETTLED: THE SCREWS ARE THE CLAMPING and they stay in - egg-crate.md item 5: the edge-to-face glue line is where the sandwich action lives, and uniform pressure is what the screw pattern buys. NOTE: THROUGH THE BOTTOM SKIN IT LEAVES 20.1 IN THE RIB EDGE - T_BB_SKIN_BOT of 18 off the 38.1 - which is a screw standing in the middle of an 18 edge, so the pilot hole is what keeps it off the rib's faces."
+
+[[dim]]
+sym = "SKIN_SCREW_COUNT"
+expr = "(BOX_RIBS_FORE_AFT + 2) * (BOX_RIBS_ACROSS + 1) + (BOX_RIBS_ACROSS + 2) * (BOX_RIBS_FORE_AFT + 1)"
+note = "60 - the screws holding ONE skin down, at ONE in the middle of every cell side. SETTLED: A SHARED SIDE TAKES ONE SCREW, NOT TWO, his scheme - 25 cells at four sides each is 100, and the 40 interior sides counted twice bring it to 60. The arithmetic here says the same thing the other way round: six lines run each way, a rib or a perimeter web, and each is cut into five by the ribs crossing it. FLAG: ONE OF THE 60 FALLS IN THE FRONT CENTRE TENON NOTCH - the front web's middle screw is at 605.5 along and 1202 in, and that cut spans 568.5 to 642.5 across and reaches the front edge. There is no skin there to screw. NOTE: THEY DO NOT FOUL THE SAND PORTS - a port is at a bay centre in BOTH directions and a screw is at a bay centre in one and on a line in the other."
+
+[[dim]]
 sym = "BOX_CAVITY_W"
 expr = "BOX_W - (2 * T_BOX_WALL_WEB)"
 note = "1173.238 - the cavity across the machine, inside the two perimeter inner webs. FLAG: IT ASSUMES THE WEB SITS INBOARD OF THE SKIN EDGE, with the tongue outboard of it - 25 out, 19 in, 44 total. That is what the committed 3D model's geometry already implies and what makes a 44 wall land over a 44 ledge, and the post arithmetic closes on it exactly: the post's outer face lands flush with the tongue's outer face and the 44 shoulder sits under the 44 wall. OPEN: BUT SEE BOX_WALL_STANDS_ON - torsion-box.md says the outer lamination STANDS ON THE BOTTOM SKIN, and the model draws it alongside the skin rather than on it. Every bay figure below hangs on this, and notch positions are the critical dimension in this box."

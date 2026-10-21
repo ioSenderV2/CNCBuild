@@ -942,6 +942,12 @@ irreversible stops being one.
       diagonal** until the pair match, and hold it there.
    5. Then glue, and **screw through the skin into every rib and web**. The screws are the clamping,
       and they stop squeeze-out floating the crate out of position while you work down the panel.
+      **{{SKIN_SCREW_L}} countersunk, one in the middle of every cell side — a shared side takes one
+      and not two, so {{SKIN_SCREW_COUNT}} for the skin.** Mark them off two lists: the lines at
+      **9, 250, 487, 724, 961, 1202** and the bay centres at **129.5, 368.5, 605.5, 842.5, 1081.5**,
+      the same both ways; a screw sits on a line at a bay centre. 🔴 **One of the 60 has no skin
+      under it** — the front web's middle screw at 605.5 across, 1202 in, which is inside the front
+      centre tenon notch. Move it or leave it out.
 
    🔴 **Square and flat are two different checks and the diagonals only cover one.** A crate can read
    1712 both ways and still be wound. It stays on the flat reference and weighted for the glue-up,
@@ -953,8 +959,8 @@ irreversible stops being one.
    ribs are already joined along their whole length by the skins — about 513,000 mm² of skin bond
    against 28,800 at the sixteen crossings — and the notch is a mechanical key either way. The end
    glue is there to hold the crate square while the skins go on, which is all it is asked to do.
-3. **Glue and screw the bottom skin on**, with the assembly still on the reference. That skin's four
-   tenon holes are already cut.
+3. **Glue and screw the bottom skin on**, with the assembly still on the reference. That skin's three
+   tenon cutouts are already cut.
 4. **When it is dry, flip the box over** so the bottom is down and the open side is up.
 5. **Glue the outer laminations on**, the tongues capping the bottom skin's end grain and standing
    proud of where the top skin will sit. **Pull each lamination down with 1½"
