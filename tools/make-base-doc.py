@@ -156,7 +156,7 @@ def leg_kinds(v):
          f"upper rail to the leg's top, so no ear is left standing "
          f"over the rail"),
         ("rear-corner", "Rear left, rear right", 2, v["LEG_L_BOX"], LEG_BROWN,
-         f"one {strip:g} &times; {v['TENON_CORNER']:g} tab, on the inner strip",
+         f"one {strip:g} &times; {v['TENON_CORNER_Y']:g} tab, on the inner strip",
          f"ledged {v['T_BOX_LEDGE']:g} on the side face and the back face",
          f"back face of the INNER strip rebated {bw:g} deep its whole height, "
          f"for the back wall &mdash; and the ledge above takes "
@@ -167,7 +167,7 @@ def leg_kinds(v):
          f"BOTH strips rebated {bw:g} deep their whole height &mdash; the back "
          f"wall runs straight through this leg"),
         ("front-centre", "Front centre", 1, v["LEG_L_BOX"], LEG_BROWN,
-         f"two {strip:g} &times; {v['TENON_CORNER']:g} tabs, "
+         f"two {strip:g} &times; {v['TENON_MID_DEPTH']:g} tabs, "
          f"{v['GRID_MEMBER_T']:g} apart",
          f"ledged {v['T_BOX_LEDGE']:g} on the front face only",
          f"BOTH strips notched {bw:g} deep at each grid for the cross rail's "
@@ -792,11 +792,11 @@ ledge will be cut, is his call.</p>
 # without anybody having to redraw anything.
 #
 # THE GEOMETRY IS THE MODEL'S, NOT A RECONSTRUCTION. make-3d.py gives each post
-# as (un-ledged band, full section), and the two agree: the 42 band off a front
-# leg's side face swallows the whole outer strip plus 24 of slot, so the only
-# material left inside the band is the inner strip - 18 x 44, one tab. On the
-# back centre leg the band comes off the back face alone, so both strips stand
-# and the slot leaves 36 between them.
+# as (un-ledged band, full section), and the two agree: the 42 band off a rear
+# corner leg's side face swallows the whole outer strip plus 24 of slot, so the
+# only material left inside the band is the inner strip - 18 x 44, one tab. On
+# the front centre leg the band comes off the front face alone, so both strips
+# stand and the slot leaves 36 between them.
 SHOULDER_TONGUE, SHOULDER_SKIN = "#e7d2a8", "#cfe0ee"
 TENON_BROWN, SPACER_PINK = "#9C6B3C", "#f6d8de"
 
@@ -1185,11 +1185,11 @@ below those are the two shades of the cut-away band, and
 <span style="background:{TENON_BROWN};color:#fff;padding:0 3px">what is left
 standing</span> is the tenon.</p>
 {shoulder_plan_svg(v)}
-<p><b>On a front leg the band off the side face swallows the whole outer strip
-and {v['T_BOX_TONGUE']:g} of the slot</b>, so the only material left inside the
-band is the inner strip &mdash; <b>one tab,
-{v['LEG_STRIP']:g} &times; {v['TENON_CORNER']:g}</b>. On the back centre leg the
-band comes off the back face alone, both strips stand, and the slot leaves
+<p><b>On a rear corner leg the band off the side face swallows the whole outer
+strip and {v['T_BOX_TONGUE']:g} of the slot</b>, so the only material left
+inside the band is the inner strip &mdash; <b>one tab,
+{v['LEG_STRIP']:g} &times; {v['TENON_CORNER_Y']:g}</b>. On the front centre leg
+the band comes off the front face alone, both strips stand, and the slot leaves
 <b>{v['GRID_MEMBER_T']:g} between the two tabs</b>. That island bears nothing,
 since it sits over the slot.</p>
 <p>🔴 <b>The tenon carries nothing.</b> Every bit of vertical load is on the
@@ -1226,10 +1226,10 @@ wall would put them: <b>{v['LEG_STRIP']:g} + {v['GRID_MEMBER_T']:g}</b> of leg
 against <b>{v['T_BOX_TONGUE']:g} + {v['T_BOX_WALL_WEB']:g}</b> of wall leaves
 <b>{v['TENON_SPACER_GAP']:g}</b>. <b>It moves if any of those four do.</b></p>
 <p>🔴 <b>So no tenon cut in the bottom skin is a hole.</b> Each one reaches an
-edge, which makes every one of them a saw cut. The two front tenons take a
+edge, which makes every one of them a saw cut. The two rear tenons take a
 <b>corner</b>, in from it to the tenon's two inboard faces plus the
-{v['TENON_HOLE_CLEAR']:g} a side; the back centre's pair take <b>one notch out
-of the back edge</b>, the island between them bearing nothing since it sits over
+{v['TENON_HOLE_CLEAR']:g} a side; the front centre's pair take <b>one notch out
+of the front edge</b>, the island between them bearing nothing since it sits over
 the leg's own slot. <b>The band of skin that goes with each cut is all under a
 perimeter web</b>, with a {v['T_BOX_TONGUE']:g} lamination standing outside it,
 so none of it shows.</p>
@@ -1245,7 +1245,7 @@ cross-cut and the wall lands directly over it, so a face out of square puts the
 bearing on an edge instead of on a face.</p>
 <p><b>Keep the holes {v['TENON_HOLE_CLEAR']:g} generous a side</b> &mdash;
 {v['LEG_STRIP'] + 2 * v['TENON_HOLE_CLEAR']:g} &times;
-{v['TENON_CORNER'] + 2 * v['TENON_HOLE_CLEAR']:g}. Trimming the legs to one size
+{v['TENON_CORNER_Y'] + 2 * v['TENON_HOLE_CLEAR']:g}. Trimming the legs to one size
 makes them identical, not the assembly easy: a loaded box still has to be
 lowered onto three tenons.</p>
 """
