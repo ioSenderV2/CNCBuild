@@ -1097,18 +1097,25 @@ def casters_html(v):
     margin = (v["BAY_OPEN_FORE_AFT"] - v["FORK_CHANNEL_W"]) / 2
     return f"""
 <h2>5a &mdash; The casters and the fork channel</h2>
-<p><b>{v['CASTER_COUNT']:g} leveling casters, one per leg, all of them INSIDE the
+<p><b>{v['CASTER_COUNT']:g} leveling casters, all of them INSIDE the
 {v['BASE_FLOOR_CLEAR']:g} floor clearance rather than under the legs</b> &mdash;
 which is what keeps the base's height exactly as drawn. Four sit beside a corner
 leg under the lower fore-aft rail. <b>The fifth sits on the central shear wall's
 bottom edge, BEHIND the front centre leg</b> &mdash; neither centre leg has a
 fore-aft rail of its own, so a lamination each side of the wall's bottom band
-brings it out to {v['POST_W_X']:g} and the plate lands on that.</p>
+brings it out to {v['POST_W_X']:g} and the plate bolts into that.</p>
 <p><b>Five casters, six legs.</b> The two centre legs share this one between
 them, so the back centre leg has none.</p>
 <table><tr><th></th><th></th></tr>
-<tr><td><b>Plate</b></td><td>{v['CASTER_PLATE']:g} square, four holes at 7
-&mdash; which is why the lower rails are brought out to {v['POST_W_X']:g}</td></tr>
+<tr><td><b>Plate</b></td><td>{v['CASTER_PLATE_L']:g} along the rail &times;
+{v['CASTER_PLATE_W']:g} across, four holes at 7. The lower rails are brought out
+to {v['POST_W_X']:g}, so all four bolts land in solid rail and the plate stands
+<b>7 proud each side</b></td></tr>
+<tr><td><b>Where it sits</b></td><td>Butted against the back of the leg, which
+leaves <b>{v['CASTER_PLATE_END_GAP']:g}</b> at the far end before the fork guard
+rail</td></tr>
+<tr><td><b>Swivel</b></td><td>{v['CASTER_SWIVEL']:g}&deg;, with the ratchet
+engaging after 90&deg;</td></tr>
 <tr><td><b>Overall height</b></td><td>{v['CASTER_H']:g}, plate face to the
 bottom of the wheel</td></tr>
 <tr><td><b>Leveling travel</b></td><td>{v['CASTER_LEVEL_TRAVEL']:g} &mdash; the
@@ -1118,12 +1125,13 @@ whole leveling authority of the base</td></tr>
 fit.</b> {v['CASTER_H']:g} in a {v['BASE_FLOOR_CLEAR']:g} band leaves
 <b>{gap:.1f}</b> between the wheel and the floor, and
 {v['CASTER_LEVEL_TRAVEL']:g} of foot cannot make that up. The block brings the
-wheel just below the leg bottoms. <b>Measure the slab under the six positions and
-cut the six blocks so they land within a couple of mm of each other</b> &mdash;
+wheel just below the leg bottoms. <b>Measure the slab under the five positions
+and cut the five blocks so they land within a couple of mm of each other</b>
+&mdash;
 the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
 <p><b>A block is a shim in compression</b>, not a hanger: the structure bears
 down on it and the caster bears up, so its screws locate it and carry nothing.
-Four bear on a <b>lower rail's underside</b>, hard against a corner leg's face;
+Four bear on a <b>lower rail's underside</b>, butted against a corner leg's face;
 the fifth on the <b>central wall's bottom edge</b>. Nothing passes under a leg's
 foot &mdash; the legs fill the band, which is what lets all five caster plates sit on
 one plane.</p>
@@ -1141,10 +1149,17 @@ the front, which defines no plane at all &mdash; the base would rock about
 it.</p>
 <p><b>The fork channel is {v['FORK_CHANNEL_W']:g} wide, centred in the
 {v['BAY_OPEN_FORE_AFT']:g} opening</b>, with a guard rail each side screwed under
-the lower grid. That leaves <b>{margin:.0f}</b> at each end of the opening, which
+the lower grid. That leaves <b>{margin:.1f}</b> at each end of the opening, which
 is where the casters and their blocks sit. Each rail is a <b>dressed 2x3 on
 edge</b>, hanging <b>{v['GUARD_RAIL_DROP']:g}</b> below the grid and leaving
 <b>{v['BASE_FLOOR_CLEAR'] - v['GUARD_RAIL_DROP']:g}</b> under itself.</p>
+<p>🔴 <b>The plate goes hard against the leg, and what is left over is at the
+other end.</b> {v['CASTER_PLATE_L']:g} of plate off a leg face reaches
+{v['CASTER_PLATE_L']:g}, the guard rail's near face is at
+<b>{margin - v['GUARD_RAIL_T']:.1f}</b>, and the air between them is
+<b>{v['CASTER_PLATE_END_GAP']:g}</b>. <b>That gap is the first thing to go
+negative</b> if the plate, the channel or the guard rail's thickness moves &mdash;
+check it before changing any of the three.</p>
 <p>🔴 <b>Both ends run under a lower fore-aft rail and are screwed up into
 it.</b> That is the anchorage, and it is what takes a sideways hit from a fork.
 Each rail is <b>{v['GUARD_RAIL_L']:g}</b> &mdash; one lamination short at each

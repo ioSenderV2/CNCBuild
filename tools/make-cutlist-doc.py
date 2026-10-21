@@ -109,17 +109,18 @@ def groups(v):
         ("Lower fore-aft rails", 2,
          "Four laminations, not two: the inner pair passes through the legs' "
          "slot and a pad is added each side, butting the leg's face because "
-         "it cannot pass through. The pads are what the caster plates land "
-         "on.",
+         "it cannot pass through. The pads are what the caster plates bolt "
+         "into.",
          [("Rail lamination", v["RAIL_FORE_AFT_L"], gm_h, 4,
            "2 per rail, filling the legs' "
            f"{v['GRID_MEMBER_T']:g} slot"),
           ("Outer pad", v["RAIL_LOWER_PAD_L"], gm_h, 4,
            "one each side of each rail, bringing it out to "
-           f"{v['POST_W_X']:g} so a {v['CASTER_PLATE']:g} caster plate lands "
-           "on a full face"),
-          ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 4,
-           "one per corner caster, bearing on the rail's underside hard "
+           f"{v['POST_W_X']:g} so all four bolts of a "
+           f"{v['CASTER_PLATE_L']:g} x {v['CASTER_PLATE_W']:g} caster plate "
+           "land in solid rail, the plate standing 7 proud each side"),
+          ("Caster block", v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], 4,
+           "one per corner caster, bearing on the rail's underside and butted "
            "against a corner leg's face. THICKNESS IS CUT TO FIT, and all "
            "five blocks come off one piece so they match")]),
         ("Upper fore-aft rails", 2,
@@ -163,9 +164,9 @@ def groups(v):
            "one each side, flush with the wall's bottom edge. It brings the "
            f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "
            "its top edge is level with the lower grid's top"),
-          ("Caster block", v["CASTER_PLATE"], v["CASTER_PLATE"], 1,
-           "the fifth block, bearing on this wall's bottom edge just forward "
-           "of the back centre leg")]),
+          ("Caster block", v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], 1,
+           "the fifth block, bearing on this wall's bottom edge and butted "
+           "against the back of the front centre leg")]),
     ]
 
 

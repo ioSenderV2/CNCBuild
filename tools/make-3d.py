@@ -777,7 +777,8 @@ def main() -> int:
               f"the wall's bottom - it carries the centre caster's plate and "
               f"its top edge is a ledger level with the lower grid")
 
-    cp, ch = v["CASTER_PLATE"], v["CASTER_H"]
+    cpl, cpw, ch = v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], v["CASTER_H"]
+    end_gap = v["CASTER_PLATE_END_GAP"]
     blk = v["CASTER_BLOCK_MIN"]
     pad_y0, pad_y1 = by0 + pwy, by1 - pwy          # between the legs' faces
     for x0, x1 in ((bx0 + strip, bx0 + strip + gm_t),
@@ -787,7 +788,7 @@ def main() -> int:
                 px0, pad_y0, grid_lo_bot, px1, pad_y1, grid_lo_bot + gm_h,
                 d=f"{strip:g} x {gm_h:g} x {pad_y1 - pad_y0:g} - it butts a "
                   f"leg's face at each end and brings the rail out to "
-                  f"{pwx:g}, which is what a caster plate lands on")
+                  f"{pwx:g}, which is what a caster plate bolts into")
 
     # SIX LEVELLING CASTERS, all of them INSIDE the floor clearance rather than
     # under the legs, which is what keeps the base's height as drawn. Four
@@ -800,18 +801,20 @@ def main() -> int:
     # width or its offset. What is drawn is what is known.
     def caster(cx0, cy0, note):
         box("Caster block", "rails", 0x8C6A3F,
-            cx0, cy0, grid_lo_bot - blk, cx0 + cp, cy0 + cp, grid_lo_bot,
-            d=f"the drop block, drawn at its minimum {blk:g}. CUT TO FIT: it "
-              f"has to put the wheel below the leg bottoms, and the six of "
-              f"them are what level the base against the slab")
+            cx0, cy0, grid_lo_bot - blk, cx0 + cpw, cy0 + cpl, grid_lo_bot,
+            d=f"the drop block, {cpl:g} x {cpw:g} under the plate and drawn at "
+              f"its minimum {blk:g} thick. CUT TO FIT: it has to put the wheel "
+              f"below the leg bottoms, and the five of them are what level the "
+              f"base against the slab")
         box("Levelling caster", "rails", 0x999999,
-            cx0, cy0, grid_lo_bot - blk - ch, cx0 + cp, cy0 + cp,
+            cx0, cy0, grid_lo_bot - blk - ch, cx0 + cpw, cy0 + cpl,
             grid_lo_bot - blk,
-            d=f"{cp:g} plate, {ch:g} overall, "
-              f"{v['CASTER_LEVEL_TRAVEL']:g} of levelling travel, 50 nylon "
-              f"wheel. Drawn as its envelope - {note}")
+            d=f"{cpl:g} x {cpw:g} plate, {ch:g} overall, "
+              f"{v['CASTER_LEVEL_TRAVEL']:g} of levelling travel, "
+              f"{v['CASTER_SWIVEL']:g} deg swivel with the ratchet in after "
+              f"90. Drawn as its envelope - {note}")
 
-    half = (cp - pwx) / 2                      # the plate stands 0.5 proud
+    half = (cpw - pwx) / 2                     # the plate stands 7 proud
     for lx0, lx1, ly0, ly1 in leg_rects:
         if abs(lx0 - (BW - pwx) / 2) < 1e-9:           # either centre leg
             # THE FIFTH CASTER IS BEHIND THE FRONT CENTRE LEG - his, and it
@@ -827,13 +830,14 @@ def main() -> int:
             # five - the back centre leg gets none.
             if ly0 <= by0 + 1e-9:
                 continue                               # the BACK centre leg
-            caster(lx0 - half, ly0 - cp,
+            caster(lx0 - half, ly0 - cpl,
                    "on the central wall's bottom edge, BEHIND the front "
-                   "centre leg")
+                   "centre leg and butted against it")
         else:
-            cy0 = ly1 if ly0 <= by0 + 1e-9 else ly0 - cp
-            caster(lx0 - half, cy0, "under the lower rail, hard against the "
-                                    "leg's face")
+            cy0 = ly1 if ly0 <= by0 + 1e-9 else ly0 - cpl
+            caster(lx0 - half, cy0, "under the lower rail, butted against the "
+                                    f"leg's face and clearing the fork guard "
+                                    f"rail by {end_gap:g}")
 
     # TWO GUARD RAILS, a dressed 2x3 each, hanging below the lower grid and
     # FORK_CHANNEL_W apart. They keep the jack centred and stop a fork reaching

@@ -3243,7 +3243,7 @@ note = "10 - the air between the TOP of the base's upper grid and the UNDERSIDE 
 [[dim]]
 sym = "RAIL_LOWER_PAD_L"
 expr = "BAY_OPEN_FORE_AFT"
-note = "1087 - an outer lamination on a LOWER fore-aft rail, four of them: one each side of each of the two lower rails. It butts a leg's face at each end, because it cannot pass through the leg's GRID_MEMBER_T slot the way the inner two laminations do. SETTLED: ITS JOB IS THE CASTER PAD - the inner pair is GRID_MEMBER_T wide and a caster plate is CASTER_PLATE, so the rail is brought out to POST_W_X and the plate lands on a full-width face. It is flush with the leg's faces either side, so it takes nothing off BAY_OPEN_DEPTH. NOTE: THE UPPER GRID DOES NOT GET THESE - the lower rails are what feed the casters."
+note = "1087 - an outer lamination on a LOWER fore-aft rail, four of them: one each side of each of the two lower rails. It butts a leg's face at each end, because it cannot pass through the leg's GRID_MEMBER_T slot the way the inner two laminations do. SETTLED: ITS JOB IS THE CASTER PAD - the inner pair is GRID_MEMBER_T wide and a caster plate is CASTER_PLATE_W across, so the rail is brought out to POST_W_X and the plate's four bolts all land in solid rail. FLAG: THE PLATE IS WIDER THAN THE FACE - 86 on a 72 face stands 7 proud each side, which the 73 square plate did not; the pad is still what the caster bears on, and what is proud is plate rather than bearing. It is flush with the leg's faces either side, so it takes nothing off BAY_OPEN_DEPTH. NOTE: THE UPPER GRID DOES NOT GET THESE - the lower rails are what feed the casters."
 
 [[dim]]
 sym = "CASTER_COUNT"
@@ -3254,16 +3254,41 @@ note = "5 - leveling casters. Four sit beside a corner leg on the lower fore-aft
 [[dim]]
 sym = "CASTER_PLATE"
 value = 73
+provenance = "pinned"
+note = "FLAG: RETIRED, AND NOTHING DERIVES FROM IT. It is the plate as a SINGLE figure, 73 square, which is right only for a square plate - the caster's is CASTER_PLATE_L by CASTER_PLATE_W, 150 along the rail by 86 across. Kept rather than deleted because four places derive from it and two of them use it for BOTH axes of the drop block, so a reader who finds 73 on a drawing or a cut list is looking at a square block that the build does not contain. 73 square, four holes at 7, landing on a POST_W_X face with 0.5 proud each side."
+
+[[dim]]
+sym = "CASTER_PLATE_L"
+value = 150
 provenance = "part"
-source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
-note = "73 square - the caster's top plate, four holes at 7. It lands on a POST_W_X rail face with 0.5 proud each side."
+source = "his, 2026-10-21"
+note = "150 - the caster's mounting plate ALONG the rail, which is fore-aft. SETTLED: THE PLATE IS CUT TO THIS, his call - the caster's own plate is longer, and 150 is what the rail underside has room for between a leg and the fork guard rail. SETTLED: IT IS THE SHORTENED PLATE THAT GIVES, not the fork channel, which is the pallet jack's figure, and not the guard rails, whose ends under the lower rails are their whole anchorage. SETTLED: THAT IS THE AXIS - the plate runs with the lower fore-aft rail rather than across it, so it bears on one rail for its whole length and needs nothing spanning between the two. SETTLED: IT BUTTS THE BACK OF THE LEG, so it runs 0 to 150 off the leg's face and clears the guard rail by CASTER_PLATE_END_GAP. FLAG: 150 IS WHAT THE MARGIN TAKES - the margin each end of the channel is 193.5, less GUARD_RAIL_T is 155.4, so the plate cannot grow more than 5.4 without the channel or the guard rail moving."
+
+[[dim]]
+sym = "CASTER_PLATE_W"
+value = 86
+provenance = "part"
+source = "his, 2026-10-21"
+note = "86 - the caster's mounting plate ACROSS the machine. FLAG: IT IS WIDER THAN THE FACE IT LANDS ON. The lower rail is brought out to POST_W_X of 72 by a pad lamination each side, so an 86 plate stands 7 proud of it on each side - where the 73 square it replaced stood 0.5 proud. The four bolts still land in the 72, which is what carries it; what is proud is plate, not bearing."
+
+[[dim]]
+sym = "CASTER_PLATE_END_GAP"
+expr = "(BAY_OPEN_FORE_AFT - FORK_CHANNEL_W) / 2 - GUARD_RAIL_T - CASTER_PLATE_L"
+note = "5.4 - the air at the FAR end of a caster's mounting plate, between it and the fork guard rail's near face. SETTLED: THE PLATE BUTTS THE LEG, his call - it goes hard against the back of the leg at the near end, so whatever slack there is lands at this end, and this is the figure that says the 150 plate clears the guard rail. FLAG: IT IS A RESIDUE, NOT A CHOICE - nothing is set to make it 5.4, so it MOVES with the plate's length, the channel width or the guard rail's thickness, and it is the first figure to go negative when any of the three grows. OPEN: THE 30 CLEARANCE HE GAVE WITH THE PLATE IS NOT THIS and is deliberately not in the registry - it belongs to the 73 square plate measured from the back of the leg, or it is 30 off the end of a plate. Ask before anything derives from it."
+
+[[dim]]
+sym = "CASTER_SWIVEL"
+value = 360
+provenance = "part"
+source = "his, 2026-10-21"
+note = "360 - the swivel's full range in degrees. FLAG: THE RATCHET ENGAGES AFTER 90, his - the wheel turns freely through a quarter turn and then the ratchet is in. Nothing in the base is dimensioned from it; it is here because it governs how the base steers, not how it is built."
 
 [[dim]]
 sym = "CASTER_H"
 value = 86.6
 provenance = "part"
 source = "VEVOR leveling caster, 2200 lb, 2 in nylon wheel"
-note = "86.6 - plate face to the bottom of the wheel, foot up. FLAG: IT IS SHORTER THAN BASE_FLOOR_CLEAR, so a plate bolted flat to the lower grid leaves the wheel 13.4 clear of the floor and CASTER_LEVEL_TRAVEL cannot make that up - each caster sits on a drop block that brings the wheel just below the leg bottoms."
+note = "86.6 - plate face to the bottom of the wheel, foot up. OPEN: THIS AND CASTER_LEVEL_TRAVEL ARE STILL THE LISTING'S FIGURES while the plate is now a measured 200 x 86 - a 73 square plate and a 200 x 86 one are not the same part, so CALIPER THE HEIGHT AND THE FOOT'S RANGE off the caster in hand and put the readings here. Everything about the drop blocks hangs off this one. FLAG: IT IS SHORTER THAN BASE_FLOOR_CLEAR, so a plate bolted flat to the lower grid leaves the wheel 13.4 clear of the floor and CASTER_LEVEL_TRAVEL cannot make that up - each caster sits on a drop block that brings the wheel just below the leg bottoms."
 
 [[dim]]
 sym = "CASTER_LEVEL_TRAVEL"
@@ -3275,7 +3300,7 @@ note = "7 - the leveling foot's whole range, and the whole leveling authority of
 [[dim]]
 sym = "CENTRE_WALL_PAD_L"
 expr = "BASE_W - 2 * POST_W_Y"
-note = "1087 - a lamination on the central shear wall's bottom band, one each side, flush with the wall's bottom edge and GRID_MEMBER_H tall. It runs BETWEEN THE TWO CENTRE LEGS, from the back one's front face to the front one's back face, which is what the two POST_W_Y subtractions are. FLAG: IT STOPS AT THE FRONT CENTRE LEG, NOT AT THE FRONT CROSS RAIL - the sixth leg stands in its way, which is POST_W_Y rather than GRID_MEMBER_T of it. SETTLED: IT DOES TWO JOBS - it brings the wall's bottom out to POST_W_X so the centre caster's plate lands on a full face, and its TOP EDGE sits level with the lower grid's top, which makes it a ledger down the centreline for a shelf or a cabinet in either side volume."
+note = "1087 - a lamination on the central shear wall's bottom band, one each side, flush with the wall's bottom edge and GRID_MEMBER_H tall. It runs BETWEEN THE TWO CENTRE LEGS, from the back one's front face to the front one's back face, which is what the two POST_W_Y subtractions are. FLAG: IT STOPS AT THE FRONT CENTRE LEG, NOT AT THE FRONT CROSS RAIL - the sixth leg stands in its way, which is POST_W_Y rather than GRID_MEMBER_T of it. SETTLED: IT DOES TWO JOBS - it brings the wall's bottom out to POST_W_X so the centre caster's four bolts all land in solid wall, the plate standing 7 proud each side as it does on a rail, and its TOP EDGE sits level with the lower grid's top, which makes it a ledger down the centreline for a shelf or a cabinet in either side volume."
 
 [[dim]]
 sym = "BASE_BOLT_D"

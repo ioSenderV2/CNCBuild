@@ -1285,19 +1285,20 @@ volume. Both come off the leg sheet's 605 remainder.
 
 **The lower fore-aft rails are four laminations, not two.** The inner two pass through the legs'
 36 slots as before; an **18 is added on each side, 1087 × 100**, butting a leg's face at each end
-because it cannot pass through the slot. That brings the rail out to **72**, so a **73** caster plate
-lands on a full face. **The upper grid keeps two laminations** — the lower rails are what feed the
-casters.
+because it cannot pass through the slot. That brings the rail out to **72**, so all four bolts of the
+caster plate land in solid rail. **The upper grid keeps two laminations** — the lower rails are what
+feed the casters.
 
 | | |
 |---|---|
-| **Caster** | 73 plate, four holes at 7; **86.6** overall; **7** of leveling travel; 50 nylon wheel |
-| **Drop block** | One under every caster, 73 × 73, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** before the wheel even touches, and 7 of foot cannot make that up |
+| **Caster** | Plate **{{CASTER_PLATE_L}}** along the rail × **{{CASTER_PLATE_W}}** across, four holes at 7; **86.6** overall; **7** of leveling travel; **{{CASTER_SWIVEL}}°** swivel with the ratchet in after 90°; 50 nylon wheel |
+| **Where it sits** | **Butted against the back of the leg**, which leaves **{{CASTER_PLATE_END_GAP}}** at the far end before the fork guard rail. The plate is wider than the 72 face and stands **7 proud each side** — the bolts are in the 72, the overhang is plate and not bearing |
+| **Drop block** | One under every caster, **{{CASTER_PLATE_L}} × {{CASTER_PLATE_W}}**, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** before the wheel even touches, and 7 of foot cannot make that up |
 | **Guard rail** | A dressed 2x3 each, hanging **63.5** and leaving 36.5 under it |
 
 **A block is a shim in compression**, not a hanger — the structure bears down on it and the caster
-bears up, so its screws locate it and carry nothing. **Four bear on a lower rail's underside**, hard
-against a corner leg's face; **the fifth on the central wall's bottom edge**. Nothing passes under a
+bears up, so its screws locate it and carry nothing. **Four bear on a lower rail's underside**,
+butted against a corner leg's face; **the fifth on the central wall's bottom edge**. Nothing passes under a
 leg's foot — the legs fill the band, which is what lets all five plates sit on one plane. **Cut all
 five blocks off one piece** so they match.
 
@@ -1315,9 +1316,14 @@ the two front corners instead and all three points lie in a line across the fron
 plane — the base would rock about it.
 
 **The fork channel is 700 wide, centred in the 1087 opening**, with a guard rail each side screwed
-under the lower grid, each a **dressed 2x3 on edge hanging 63.5**. That leaves **193** at each end of
-the opening, which is where the casters and their blocks sit, and **36.5** of clearance under the
+under the lower grid, each a **dressed 2x3 on edge hanging 63.5**. That leaves **193.5** at each end
+of the opening, which is where the casters and their blocks sit, and **36.5** of clearance under the
 rails themselves.
+
+🔴 **The plate goes hard against the leg and the slack lands at the other end.** **{{CASTER_PLATE_L}}**
+of plate off a leg face reaches 150, the guard rail's near face is at **155.4**, and the air between
+them is **{{CASTER_PLATE_END_GAP}}**. **That gap is the first figure to go negative** if the plate,
+the channel or the guard rail's thickness moves — check it before changing any of the three.
 
 🔴 **Both ends run under a lower fore-aft rail and are screwed up into it** — that is the anchorage,
 and it is what takes a sideways hit from a fork. Each rail is **1223**, one lamination short at each
