@@ -119,10 +119,10 @@ def groups(v):
            f"{v['POST_W_X']:g} so all four bolts of a "
            f"{v['CASTER_PLATE_L']:g} x {v['CASTER_PLATE_W']:g} caster plate "
            "land in solid rail, the plate standing 7 proud each side"),
-          ("Caster block", v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], 4,
+          ("Caster plate", v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], 4,
            "one per corner caster, bearing on the rail's underside and butted "
-           "against a corner leg's face. THICKNESS IS CUT TO FIT, and all "
-           "five blocks come off one piece so they match")]),
+           f"against a corner leg's face. {v['CASTER_PLATE_T']:g} THICK, all "
+           "five the same piece - the caster's own plate bolts to it")]),
         ("Upper fore-aft rails", 2,
          "Two laminations only - the pads are what feed the casters and "
          "there are none up here.",
@@ -164,8 +164,8 @@ def groups(v):
            "one each side, flush with the wall's bottom edge. It brings the "
            f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "
            "its top edge is level with the lower grid's top"),
-          ("Caster block", v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], 1,
-           "the fifth block, bearing on this wall's bottom edge and butted "
+          ("Caster plate", v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], 1,
+           "the fifth plate, bearing on this wall's bottom edge and butted "
            "against the back of the front centre leg")]),
     ]
 

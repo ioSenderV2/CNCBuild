@@ -1116,29 +1116,32 @@ leaves <b>{v['CASTER_PLATE_END_GAP']:g}</b> at the far end before the fork guard
 rail</td></tr>
 <tr><td><b>Swivel</b></td><td>{v['CASTER_SWIVEL']:g}&deg;, with the ratchet
 engaging after 90&deg;</td></tr>
-<tr><td><b>Plate thickness</b></td><td>{v['CASTER_PLATE_T']:g} &mdash; which is
-also the grip a bolt passes through before it reaches wood</td></tr>
-<tr><td><b>Overall height</b></td><td>{v['CASTER_H']:g}, plate face to the
-bottom of the wheel</td></tr>
+<tr><td><b>Plate thickness</b></td><td>{v['CASTER_PLATE_T']:g}, the same on all
+five &mdash; which is also the grip a bolt passes through before it reaches
+wood</td></tr>
+<tr><td><b>The caster's own plate</b></td><td>{v['CASTER_PLATE']:g} square, and
+it bolts to the plate above it. <b>It is inside the height below</b></td></tr>
+<tr><td><b>Overall height</b></td><td>{v['CASTER_H']:g}, from the top face of its
+own {v['CASTER_PLATE']:g} square to the bottom of the wheel</td></tr>
 <tr><td><b>Leveling travel</b></td><td>{v['CASTER_LEVEL_TRAVEL']:g} &mdash; the
 whole leveling authority of the base</td></tr>
 </table>
-<p>🔴 <b>Every caster sits on a drop block, and the block's thickness is cut to
-fit.</b> {v['CASTER_H']:g} in a {v['BASE_FLOOR_CLEAR']:g} band leaves
-<b>{gap:.1f}</b> between the wheel and the floor, and
-{v['CASTER_LEVEL_TRAVEL']:g} of foot cannot make that up. The block brings the
-wheel just below the leg bottoms. <b>Measure the slab under the five positions
-and cut the five blocks so they land within a couple of mm of each other</b>
-&mdash;
-the {v['CASTER_LEVEL_TRAVEL']:g} trims what is left.</p>
-<p>🔴 <b>Caliper the caster before cutting a single block.</b> That
-{gap:.1f} holds only if the {v['CASTER_H']:g} is measured from the plate's
-<b>top</b> face. Measured from <b>under</b> the plate it is
-{v['CASTER_PLATE_T']:g} + {v['CASTER_H']:g} =
-<b>{v['CASTER_PLATE_T'] + v['CASTER_H']:.1f}</b> in a band of
-{v['BASE_FLOOR_CLEAR']:g} &mdash; no room for a block at all, and the wheel
-could not reach the floor.</p>
-<p><b>A block is a shim in compression</b>, not a hanger: the structure bears
+<p>🔴 <b>The plate is not a shim cut to fit &mdash; all five are
+{v['CASTER_PLATE_T']:g} and that is deliberate.</b> The caster on its own stands
+{v['CASTER_H']:g} in a {v['BASE_FLOOR_CLEAR']:g} band and would hang
+<b>{gap:.1f}</b> clear of the floor, which
+{v['CASTER_LEVEL_TRAVEL']:g} of foot could not make up. With the plate the stack
+is <b>{v['CASTER_STACK']:g}</b>, which overshoots the band by
+<b>{v['CASTER_LIFT']:g}</b> &mdash; so wheels down, <b>every leg bottom is
+{v['CASTER_LIFT']:g} off the floor</b> and the assembly rolls on five wheels
+rather than dragging a leg.</p>
+<p>🔴 <b>The foot spends that {v['CASTER_LIFT']:g} before it levels
+anything.</b> Of the {v['CASTER_LEVEL_TRAVEL']:g}, {v['CASTER_LIFT']:g} goes just
+bringing the leg bottoms down to the floor plane, which leaves
+<b>{v['CASTER_LEVEL_TRAVEL'] - v['CASTER_LIFT']:.1f}</b> for the slab. <b>Caliper
+the foot's range</b> &mdash; the {v['CASTER_LEVEL_TRAVEL']:g} is the listing's
+figure and this is what it has to cover.</p>
+<p><b>A plate is in compression</b>, not hanging: the structure bears
 down on it and the caster bears up, so its screws locate it and carry nothing.
 Four bear on a <b>lower rail's underside</b>, butted against a corner leg's face;
 the fifth on the <b>central wall's bottom edge</b>. Nothing passes under a leg's

@@ -1299,20 +1299,26 @@ feed the casters.
 
 | | |
 |---|---|
-| **Caster** | Plate **{{CASTER_PLATE_L}}** along the rail × **{{CASTER_PLATE_W}}** across × **{{CASTER_PLATE_T}}** thick, four holes at 7; **86.6** overall; **7** of leveling travel; **{{CASTER_SWIVEL}}°** swivel with the ratchet in after 90°; 50 nylon wheel |
+| **Caster** | Its own **{{CASTER_PLATE}}** square steel plate, four holes at 7; **86.6** from that plate's top face to the bottom of the wheel; **7** of leveling travel; **{{CASTER_SWIVEL}}°** swivel with the ratchet in after 90°; 50 nylon wheel |
+| **Plate under it** | **{{CASTER_PLATE_L}}** along the rail × **{{CASTER_PLATE_W}}** across × **{{CASTER_PLATE_T}}** thick, all five the same piece. The caster's own plate bolts to it |
 | **Where it sits** | **Butted against the back of the leg**, which leaves **{{CASTER_PLATE_END_GAP}}** at the far end before the fork guard rail. The plate is wider than the 72 face and stands **7 proud each side** — the bolts are in the 72, the overhang is plate and not bearing |
-| **Drop block** | One under every caster, **{{CASTER_PLATE_L}} × {{CASTER_PLATE_W}}**, **thickness cut to fit**. 86.6 in a 100 band leaves **13.4** before the wheel even touches, and 7 of foot cannot make that up |
+| **The stack** | **{{CASTER_STACK}}** rail underside to wheel bottom, in a **100** band — so wheels down, every leg bottom is **{{CASTER_LIFT}}** off the floor |
 | **Guard rail** | A dressed 2x3 each, hanging **63.5** and leaving 36.5 under it |
 
-**A block is a shim in compression**, not a hanger — the structure bears down on it and the caster
+**A plate is in compression**, not hanging — the structure bears down on it and the caster
 bears up, so its screws locate it and carry nothing. **Four bear on a lower rail's underside**,
 butted against a corner leg's face; **the fifth on the central wall's bottom edge**. Nothing passes under a
 leg's foot — the legs fill the band, which is what lets all five plates sit on one plane. **Cut all
-five blocks off one piece** so they match.
+five off one piece** so they match.
 
-🔴 **Caliper the caster before cutting a single block.** The 13.4 holds only if the 86.6 is from the
-plate's **top** face. From **under** the plate it is **{{CASTER_PLATE_T}} + 86.6 = 104.6** in a band
-of 100 — no room for a block at all, and the wheel could not reach the floor.
+🔴 **The plate is not cut to fit — all five are {{CASTER_PLATE_T}}, and the overshoot is the point.**
+The caster alone would hang **13.4** clear of the floor and 7 of foot could not make that up. With
+the plate the stack is **{{CASTER_STACK}}**, which beats the 100 band by **{{CASTER_LIFT}}** — so the
+wheels carry the whole assembly and no leg drags.
+
+🔴 **The foot spends that {{CASTER_LIFT}} before it levels anything.** Of the 7, **{{CASTER_LIFT}}**
+goes just bringing the leg bottoms down to the floor plane, leaving **2.4** for the slab. **Caliper
+the foot's range** — the 7 is the listing's figure and this is what it has to cover.
 
 **The machine stands on the feet.** 7 is not enough to lift the wheels clear and set the legs back
 down, so the leg bottoms hang a few mm off the floor either way.

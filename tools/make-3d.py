@@ -779,7 +779,7 @@ def main() -> int:
 
     cpl, cpw, ch = v["CASTER_PLATE_L"], v["CASTER_PLATE_W"], v["CASTER_H"]
     end_gap = v["CASTER_PLATE_END_GAP"]
-    blk = v["CASTER_BLOCK_MIN"]
+    blk = v["CASTER_PLATE_T"]
     pad_y0, pad_y1 = by0 + pwy, by1 - pwy          # between the legs' faces
     for x0, x1 in ((bx0 + strip, bx0 + strip + gm_t),
                    (bx1 - strip - gm_t, bx1 - strip)):
@@ -800,12 +800,13 @@ def main() -> int:
     # the overall height and the travel, and nothing about the body, the wheel's
     # width or its offset. What is drawn is what is known.
     def caster(cx0, cy0, note):
-        box("Caster block", "rails", 0x8C6A3F,
+        box("Caster plate", "rails", 0x8C6A3F,
             cx0, cy0, grid_lo_bot - blk, cx0 + cpw, cy0 + cpl, grid_lo_bot,
-            d=f"the drop block, {cpl:g} x {cpw:g} under the plate and drawn at "
-              f"its minimum {blk:g} thick. CUT TO FIT: it has to put the wheel "
-              f"below the leg bottoms, and the five of them are what level the "
-              f"base against the slab")
+            d=f"{cpl:g} x {cpw:g} x {blk:g}, between the rail and the caster's "
+              f"own {v['CASTER_PLATE']:g} square. All five are the same piece: "
+              f"the 18 puts the stack at {v['CASTER_STACK']:g} in a "
+              f"{v['BASE_FLOOR_CLEAR']:g} band, so the wheels hold the leg "
+              f"bottoms {v['CASTER_LIFT']:g} off the floor")
         box("Levelling caster", "rails", 0x999999,
             cx0, cy0, grid_lo_bot - blk - ch, cx0 + cpw, cy0 + cpl,
             grid_lo_bot - blk,
