@@ -374,3 +374,18 @@ count = 0
 into = "wood"
 source = "his call 2026-10-15"
 note = "SETTLED: ELIMINATED 2026-10-15. One angled screw per tenon was carried for two cases that can separate box from post - road shock above 1 g, which momentarily unloads a gravity-only joint, and a lift taken under the BOX instead of the frame, which leaves the posts hanging from their tenons. THE STRAP OVER THE BOX TO THE BASE FRAME COVERS BOTH and was always the restraint to rely on; the screws added a small margin at the price of being an irreversible step inside the glue-up, and the size and length were never settled in all the time they were carried. Kept at count 0 rather than deleted so the schedule does not look like it simply forgot the joint."
+
+[[joint]]
+id = "base-slot-bolt"
+what = "Every dry joint that lands in a leg slot - the fore-aft rail tongues and the central wall's two ends"
+size = 8
+count = 22
+per = "two per rail tongue, eight tongues; three per wall end, two ends"
+length = 90
+groups = [["Fore-aft rail tongues", 16], ["Central wall ends", 6]]
+head = "flange"
+into = "nut"
+grip = ["TONGUE_BOLT_GRIP", "FENDER_WASHER_T", "FENDER_WASHER_T"]
+extras = ["M8 fender washer", "M8 fender washer", "M8 flange lock nut"]
+source = "his"
+note = "FLANGE BOLT ONE END, FLANGE LOCK NUT THE OTHER, with ONE M8 fender washer under each - his. ONE LENGTH DOES THE WHOLE FAMILY: every tongue is 36 and fills its slot, so a lower rail, an upper rail and the central wall all cross the same TONGUE_BOLT_GRIP of 72 - strip, tongue, far strip. The 90 leaves BASE_BOLT_SPARE past the far washer. OPEN: THE FLANGE LOCK NUT'S HEIGHT IS NOT RECORDED - caliper it against that spare, and on a nylon-insert nut check the thread reaches the insert at the top rather than stopping in the metal below. FLAG: THE FENDER IS NOT OPTIONAL BECAUSE THE BOLT HAS A FLANGE. The clamp goes into plywood face, where a flange alone dishes in at torque and the joint is loose again - which is the whole reason this family is bolted rather than dowelled. NOTE: THE LOWER RAIL'S TWO OUTBOARD LAMINATIONS ARE NOT IN THE PATH - they butt a leg's face at each end rather than passing through the slot."

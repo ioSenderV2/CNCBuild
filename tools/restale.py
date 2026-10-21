@@ -156,8 +156,18 @@ def main():
 
     names = {s: audit.name_words(s) for s in moved}
     # old value as it would have been written, -> symbols that had it
+    #
+    # 🔴 AN OLD VALUE OF ZERO IS NEVER A CITATION. A symbol sitting at 0 is an
+    # OPEN placeholder - nothing in prose was ever quoting it - and a bare 0 is
+    # in every stroke-width, coordinate and count on the page, so the moment
+    # such a symbol gets a real value this tool reports the whole file. It fired
+    # three times on shop-pack.html's SVG the day BASE_BOLT_WASHER went 0 to 25,
+    # and all three were rects. Skipped rather than KEEPed one line at a time,
+    # because the next placeholder to be filled would do it again somewhere new.
     old_lit = {}
     for s, (b, _) in moved.items():
+        if abs(b) < 1e-9:
+            continue
         old_lit.setdefault(fmt(b), []).append(s)
 
     hits, files = 0, sorted({p for pat in SCAN for p in ROOT.glob(pat)})

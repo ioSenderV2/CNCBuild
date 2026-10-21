@@ -1205,9 +1205,10 @@ laminations carry in-plane shear and bending in parallel whether or not every sq
 
 #### The slot joints are bolted, not glued
 
-**Every joint that lands in a leg slot is a dry fit held by {{BASE_BOLT_D}} bolts** — washer, bolt,
-fender washer, lock nut — **run across the leg's {{POST_W_X}}**, through one outer strip, through
-whatever fills the slot, and out through the far strip.
+**Every joint that lands in a leg slot is a dry fit held by M8 × {{BASE_BOLT_L}} flange bolts** —
+fender washer, flange bolt, through the joint, fender washer, **flange lock nut** — **run across the
+leg's {{POST_W_X}}**, through one outer strip, through whatever fills the slot, and out through the
+far strip.
 
 **The base goes together as two assemblies and then ties them.** The three front legs are glued to the
 front rails; the back wall is glued and screwed to all three rear legs. **The fore-aft rails and the
@@ -1229,12 +1230,17 @@ the slot, so an upper rail, a lower rail and the central wall all cross the same
 part of the tongue**: they butt the leg's face at each end, so they stop against it and are never in
 the bolt's path.
 
-OPEN: **The bolt length is not picked.** The grip is {{TONGUE_BOLT_GRIP}} and the rest is a fender
-washer each end, the lock nut, and a thread or two proud.
+**The length is {{BASE_BOLT_L}}, and one length does all 22 of them.** The grip is
+{{TONGUE_BOLT_GRIP}}, the two fender washers are {{FENDER_WASHER_T}} each, and that leaves
+**{{BASE_BOLT_SPARE}}** standing past the far washer for the flange lock nut and a thread or two
+proud. OPEN: **the flange lock nut's height is not recorded** — caliper it against that
+{{BASE_BOLT_SPARE}}, and on a nylon-insert nut check the thread reaches the insert at the top of the
+nut rather than stopping in the metal below it.
 
-NOTE: **Fender washers both ends, and snug rather than hard.** A plain washer dishes into plywood face
-at torque, and a dished washer is a loose joint again — which is the whole reason for choosing a bolt
-that can be re-snugged over a dowel that cannot.
+NOTE: **One M8 fender washer at each end, and snug rather than hard. The bolt's own flange does not
+replace it.** A plain washer — or a flange on its own — dishes into plywood face at torque, and a
+dished washer is a loose joint again, which is the whole reason for choosing a bolt that can be
+re-snugged over a dowel that cannot.
 
 NOTE: **Drill each hole through the assembled stack, with the part dry-fitted where it finally sits.**
 Then the hole registers the part rather than fighting it, which matters at the central wall: its bottom

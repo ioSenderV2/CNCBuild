@@ -3322,15 +3322,27 @@ note = "1087 - a lamination on the central shear wall's bottom band, one each si
 
 [[dim]]
 sym = "BASE_BOLT_D"
-value = 7.94
+value = 8
 provenance = "part"
-note = "7.94 - 5/16in, the bolt through every dry joint in the base: both fore-aft rail tongues where they pass through a leg, and the central shear wall in the back centre leg's slot. His call, over a 1/4in dowel through the same joints - a dowel is glued in once, where a bolt with a washer and a lock nut can be snugged again after the first season's movement. FLAG: THESE DO NOT GO IN fasteners.toml. That schedule renders every size as M-something by construction, so an imperial entry would print as a metric bolt that does not exist."
+source = "his"
+note = "8 - M8, the bolt through every dry joint in the base: both fore-aft rail tongues where they pass through a leg, and the central shear wall at each end. SETTLED: A FLANGE BOLT WITH A FLANGE LOCK NUT ON THE FAR END, his, and BASE_BOLT_L long. SETTLED: IT IS A BOLT AND NOT A DOWEL - his call over a 1/4in dowel through the same joints: a dowel is glued in once, where a bolt with a washer and a lock nut can be snugged again after the first season's movement. NOTE: SO THEY DO GO IN fasteners.toml NOW, as the base-slot-bolt joint - the only thing that had kept them out was that the schedule renders every size as M-something and an imperial entry would have printed as a metric bolt that does not exist."
+
+[[dim]]
+sym = "BASE_BOLT_L"
+value = 90
+provenance = "part"
+source = "his"
+note = "90 - the M8 flange bolt through every bolted slot joint in the base. SETTLED: ONE LENGTH DOES ALL OF THEM, because TONGUE_BOLT_GRIP is one figure for the whole family - strip, tongue, far strip. FLAG: WHAT IS LEFT PAST THE GRIP IS BASE_BOLT_SPARE, and the flange lock nut has to fit inside it."
+
+[[dim]]
+sym = "BASE_BOLT_SPARE"
+expr = "BASE_BOLT_L - TONGUE_BOLT_GRIP - 2 * FENDER_WASHER_T"
+note = "15.8 - what stands past the far face with the bolt home: the 90 less the 72 of grip and less the two FENDER_WASHER_T, one under the flange bolt and one under the flange lock nut. OPEN: THE FLANGE LOCK NUT'S HEIGHT IS NOT RECORDED, so this is the budget and not the clearance - caliper the nut, and if it is a nylon-insert type check the thread reaches the insert at the TOP of the nut rather than stopping in the metal below it. FLAG: IT IS THE FIGURE THAT MOVES IF A WASHER IS ADDED OR DROPPED - two washers at 1.1 are only 2.2 of the 18 spare, so the length is not tight either way."
 
 [[dim]]
 sym = "BASE_BOLT_WASHER"
-value = 0
-provenance = "OPEN"
-note = "OPEN: FENDER WASHERS BOTH ENDS, DIAMETER NOT PICKED. A plain 5/16in washer dishes into plywood face at torque, and once it dishes the joint is loose again - which defeats the whole point of choosing a bolt that can be re-snugged. The clamp wanted is snug plus the lock nut, not crushed. Size it off what is on the shelf."
+expr = "FENDER_WASHER_D"
+note = "25 - ONE M8 FENDER WASHER AT EACH END, his: under the flange bolt's head and under the flange lock nut. SETTLED: IT IS THE SAME WASHER THE GANTRY USES, which is why this is expressed off FENDER_WASHER_D rather than carrying its own figure. FLAG: A FENDER AND NOT A PLAIN WASHER, and the flange is not a substitute for it - a plain washer, or a flange on its own, dishes into plywood face at torque, and once it dishes the joint is loose again, which defeats the whole point of choosing a bolt that can be re-snugged. The clamp wanted is snug plus the lock nut, not crushed. NOTE: FENDER_WASHER_D IS STILL A CATALOGUE 25 - it carries its own OPEN asking for a caliper reading, and the thickness is the only measured half of that washer."
 
 [[dim]]
 sym = "TONGUE_BOLT_COUNT"
