@@ -1135,12 +1135,13 @@ is <b>{v['CASTER_STACK']:g}</b>, which overshoots the band by
 <b>{v['CASTER_LIFT']:g}</b> &mdash; so wheels down, <b>every leg bottom is
 {v['CASTER_LIFT']:g} off the floor</b> and the assembly rolls on five wheels
 rather than dragging a leg.</p>
-<p>🔴 <b>The foot spends that {v['CASTER_LIFT']:g} before it levels
-anything.</b> Of the {v['CASTER_LEVEL_TRAVEL']:g}, {v['CASTER_LIFT']:g} goes just
-bringing the leg bottoms down to the floor plane, which leaves
-<b>{v['CASTER_LEVEL_TRAVEL'] - v['CASTER_LIFT']:.1f}</b> for the slab. <b>Caliper
-the foot's range</b> &mdash; the {v['CASTER_LEVEL_TRAVEL']:g} is the listing's
-figure and this is what it has to cover.</p>
+<p>🔴 <b>{v['CASTER_LIFT']:g} is the LEAST the legs ever clear, and the foot only
+adds to it.</b> Screwing a foot down lifts the frame, so a leg bottom rises with
+it &mdash; at a foot extension of e it stands {v['CASTER_LIFT']:g} + e off the
+floor. <b>Nothing ever sets a leg down</b>, which is what standing on the feet
+means. So the {v['CASTER_LEVEL_TRAVEL']:g} is spent lifting the wheel clear and
+then on the slab, and <b>{v['CASTER_LIFT']:g} is what a leg has to clear while
+rolling</b> &mdash; a hump in the slab, or a cord under one leg.</p>
 <p><b>A plate is in compression</b>, not hanging: the structure bears
 down on it and the caster bears up, so its screws locate it and carry nothing.
 Four bear on a <b>lower rail's underside</b>, butted against a corner leg's face;

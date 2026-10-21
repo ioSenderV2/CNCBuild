@@ -1316,9 +1316,11 @@ The caster alone would hang **13.4** clear of the floor and 7 of foot could not 
 the plate the stack is **{{CASTER_STACK}}**, which beats the 100 band by **{{CASTER_LIFT}}** — so the
 wheels carry the whole assembly and no leg drags.
 
-🔴 **The foot spends that {{CASTER_LIFT}} before it levels anything.** Of the 7, **{{CASTER_LIFT}}**
-goes just bringing the leg bottoms down to the floor plane, leaving **2.4** for the slab. **Caliper
-the foot's range** — the 7 is the listing's figure and this is what it has to cover.
+🔴 **{{CASTER_LIFT}} is the least the legs ever clear, and the foot only adds to it.** Screwing a foot
+down lifts the frame, so a leg bottom rises with it. **Nothing ever sets a leg down** — that is what
+standing on the feet means. So the 7 goes on lifting the wheel clear and then on the slab, and
+**{{CASTER_LIFT}} is what a leg has to clear while rolling** — a hump in the slab, or a cord under
+one leg.
 
 **The machine stands on the feet.** 7 is not enough to lift the wheels clear and set the legs back
 down, so the leg bottoms hang a few mm off the floor either way.
