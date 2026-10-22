@@ -13,6 +13,16 @@ parts get cut to — the registry's figures are what the base was drawn at.
 | Rear tenon tabs, outside to outside | **1148** | 1151 |
 | Rear tenon tabs, inboard face to inboard face | **1112** — the 1148 less the two tabs' {{TENON_CORNER_X}} | 1115 |
 | Front cross rail outer laminations, as cut | **1225** | {{RAIL_CROSS_OUTER_L}} |
+| Fore-aft rails, as cut | **1225** | {{RAIL_FORE_AFT_L}} |
+| Central wall's reach forward of the back wall's INNER face, at its TOP edge, bolted to the rear middle leg with its back edge tight | **1217**, three times | — |
+
+**The central wall's 1217 is the part, not a fit problem.** {{CENTRE_WALL_L}} is the panel measured
+at that same top edge, and the binding edge **leans** — about 1223 at the bottom falling to 1218 at
+the top — so the bottom reads longer than the top by design and the front end is not square. It costs
+nothing: that end only has to stay well inside the front centre leg's {{POST_W_Y}} slot, and at 1217
+it is about 62 deep there with nothing bearing on it. 🔴 **The edge that is NOT free is the bottom
+one** — the fifth caster bears on it through {{CENTRE_WALL_PAD_L}} — and that is not the edge this
+figure came off.
 
 **The three readings agree to about a millimetre:** the outer width is 2 under, the wall fitting
 tight says the span between the rear legs' outermost strips is 1220 against a drawn 1221 to 1223, and
@@ -36,6 +46,8 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 | | |
 |---|---|
 | **Front cross rail outer laminations** | 🔴 **Cut to the measured span, NOT to {{BASE_W}} less two leg strips.** Go straight at the distance between the two FRONT corner legs' outermost strips' inner faces and cut to that. If the front matches the back it is about 1220, which makes the 1225 as cut four or five long rather than two. **This is the mistake the back wall caught** — the derived figure and the part disagreed by 3 |
+| **Fore-aft rails** | 🔴 **Cut to the back wall's inner face to the front leg's notch face, measured ALONG EACH RAIL'S OWN LINE, and cut BOTH to the same mark.** These are what tie the front assembly to the back one, so their length SETS the base's fore-aft depth: the absolute figure is nearly free — a rail 1 short just brings the front leg back 1 and nothing bottoms out — but **two rails differing by 1 rack the base**, which is the one thing these members exist to prevent. Equal beats individually perfect. Check the diagonals before the bolts go hard. **The central wall is NOT a third member of this group:** it runs to the front centre leg's slot, not to the cross rail, and matching the rails to it is a coincidence of two numbers rather than a shared rule |
+| **The central wall** | **Nothing.** Tight at the back is what is wanted; the front end disappearing into the leg slot is the design |
 | **The two rear corner tenon spacers** | **Fit each to its own gap**, which is about 13.5 rather than the drawn {{T_TENON_SPACER}}. Each rear tab has moved about 1.5 inboard, so a 12 spacer leaves 1.5 of air to the side web's inner face — and killing that slop is the entire job of the part. The 12.003 came from a stock 12 sheet miking at it, and that reason is gone once the gap is not 12 |
 | **The back shear wall** | **Nothing. Tight is fine.** Its ends carry no load — it sits in a full-height rebate in all three rear legs and is screwed through its face — so the air it was drawn with was only ever a shadow line at the two rear corners |
 
