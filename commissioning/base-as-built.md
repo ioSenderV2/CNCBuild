@@ -112,39 +112,32 @@ tongue's end face sits at {{T_BACK_WALL}} — it breaks out of the tongue's end 
 scallop. The front face is also the face that is uppermost and reachable with a rule while the leg
 lies on the wall; the back face is buried under it.
 
-## One pattern at all eight tongues, and the cross rail's inner lamination gets notched
+## One pattern at all eight tongues, and nothing else to do
 
-**His call: the same {{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}} at a front leg as at a rear one**, off
-the back face there, which is that tongue's free end. A front leg has the same {{TONGUE_IN_LEG}} to
-work in — the front cross rail's housed lamination takes the other end where the back wall does at
-the rear — so the wood is the same joint twice and one pattern marks out both.
+**The same {{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}} at a front leg as at a rear one**, off the back
+face there, which is that tongue's free end. A front leg has the same {{TONGUE_IN_LEG}} to work in —
+the front cross rail's housed lamination takes the other end where the back wall does at the rear —
+so the wood is the same joint twice and one pattern marks out both. **No leg needs anything relieved
+and no rail needs shortening.**
 
-**Only the LOWER front cross rail has an inner lamination, his** — the upper one is the housed 18
-alone, so its front joints are fine exactly as the rear ones are. That halves what follows: **two
-bolts affected, not four.** 🔴 **The cut list and the 3D model both still give the UPPER front cross
-rail two laminations.** Building it as a single housed 18 takes 2 pieces off the cut list and the
-upper grid's front member from {{GRID_MEMBER_T}} to {{T_BACK_WALL}} — say the word and both get
-swept. Nothing else moves with it: {{RAIL_FORE_AFT_L}} lands on the OUTER lamination's rear face
-either way.
+**The ONLY laminations on this base are the caster pads, his.** Four
+{{T_BACK_WALL}} × {{GRID_MEMBER_H}} outboard pads on the two LOWER fore-aft rails,
+{{RAIL_LOWER_PAD_L}} long, and two on the central wall at {{CENTRE_WALL_PAD_L}}. Their job is the
+caster plate: they bring each member out to {{POST_W_X}} so a plate lands on a full face and its
+screws go into something solid. They butt a leg's face at each end and are **nowhere near a tongue
+bolt**, which sits at the rail's mid-height inside the leg. **The upper rails get none** — there are
+no casters up there.
 
-🔴 **The LOWER cross rail's INNER laminations get cut about 6 SHORT at each end — 12 off the length —
-and that is the whole of it.** It is a piece not cut yet, which is why nothing shows on the legs as they
-stand. That half is housed in nothing: it spans between the legs and butts each leg's across-machine
-face, and the bolt head stands {{FENDER_WASHER_T}} + {{BASE_BOLT_HEAD_H}} proud of exactly that face
-as a {{BASE_BOLT_WASHER}} disc. Butted hard, its end lands on the washer and is held off the leg.
+🔴 **The cut list and the 3D model carry a SECOND lamination on the front cross rail that this build
+does not have** — an inner {{T_BACK_WALL}} spanning between the legs, housed in nothing. A clash
+against the front legs' bolt heads was reported against THAT piece, so it was a disagreement between
+the model and the build rather than a problem in either. **His call whether the front cross rail is a
+single housed {{T_BACK_WALL}} or the drawn {{GRID_MEMBER_T}}**, and nothing else moves either way:
+{{RAIL_FORE_AFT_L}} lands on the HOUSED lamination's rear face in both cases.
 
-**Short, not notched** — one saw setting against four notches, and it clears the hardware outright.
-
-**It costs nothing.** That piece carries the base's depth nowhere: its butt was only ever taking
-compression in parallel with the **housed outer lamination**, which runs continuously across the
-base and does that job properly.
-
-**And the hardware is not what clamps it.** The nut and washer compress the leg's two strips and the
-tongue between them, ACROSS the machine; the inner lamination runs perpendicular to that, so nothing
-holds it against the leg whatever its end does.
-
-**The rear legs need nothing:** no cross rail there at all, the back wall sits in the leg's back, and
-nothing butts the across-machine faces at rail height.
+NOTE: **A "lamination" means two different parts in these files and that is what crossed the wires** —
+the caster pads above, and the cross rail's inner half in the model. Say which when the word is used
+on its own.
 
 ## Two consequences that cost nothing
 
