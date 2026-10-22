@@ -3386,7 +3386,7 @@ note = "69 - the second tongue bolt, the other quarter point of TONGUE_IN_LEG, w
 [[dim]]
 sym = "TONGUE_BOLT_Z"
 expr = "GRID_MEMBER_H / 2"
-note = "50 - both tongue bolts sit at the rail's MID-HEIGHT, in its 100. FLAG: SPACED ALONG THE TONGUE, NOT STACKED VERTICALLY. The mortise shoulders already stop the rail rotating in the vertical plane by bearing, so a vertical pair buys little and puts the upper bolt near the rail's top edge."
+note = "50 - the rail's MID-HEIGHT, in its 100, which is where a horizontal pair sits. 🔴 THE OLD REASON FOR KEEPING THE PAIR OFF THE VERTICAL WAS WRONG AND IT IS WORTH KNOWING WHY: it said the mortise shoulders already stop the rail rotating in the vertical plane by bearing, so a vertical spread bought little. There ARE no such shoulders - the slot runs the leg's FULL HEIGHT, so inside the leg there is no material above or below the rail and nothing but the bolts resists the rail tipping in that plane. The claim predates the full-height slot. FLAG: SO VERTICAL SPREAD IS WORTH AS MUCH AS HORIZONTAL, and more of it is available: the rail's 100 of height against the tongue's TONGUE_IN_LEG of 68, with the horizontal end limited further by edge distance at the tongue's ends. NOTE: WHAT STILL BEARS is the lower rail's outboard pad laminations against the leg's faces, and they stop the rail travelling further THROUGH the slot - not rotating in it."
 
 [[dim]]
 sym = "TONGUE_BOLT_GRIP"
