@@ -3307,12 +3307,12 @@ note = "10 - the caster plate screws in total, two at each of the five positions
 [[dim]]
 sym = "CASTER_STACK"
 expr = "CASTER_PLATE_T + CASTER_H"
-note = "104.6 - the whole stack under a lower rail, from the rail's underside to the bottom of the wheel: his plate plus the caster. SETTLED: 104.6 IS WHAT IS WANTED, his - it is 4.6 MORE than BASE_FLOOR_CLEAR on purpose, and that overshoot is what puts the wheels rather than the leg bottoms on the floor. See CASTER_LIFT. NOTE: NOTHING IS ADDED FOR THE CASTER'S OWN PLATE - CASTER_H is measured from the top face of its 73 square, so that plate is inside the 86.6."
+note = "110.6 - the whole stack under a lower rail, from the rail's underside to the bottom of the wheel: his plate plus the caster. SETTLED: 110.6 IS WHAT IS WANTED, his - it is 10.6 MORE than BASE_FLOOR_CLEAR on purpose, and that overshoot is what puts the wheels rather than the leg bottoms on the floor. See CASTER_LIFT. NOTE: NOTHING IS ADDED FOR THE CASTER'S OWN PLATE - CASTER_H is measured from the top face of its 73 square, so that plate is inside the 86.6."
 
 [[dim]]
 sym = "CASTER_LIFT"
 expr = "CASTER_STACK - BASE_FLOOR_CLEAR"
-note = "4.6 - how far the wheels hold the leg bottoms off the floor, wheels down and the feet up. SETTLED: IT IS DELIBERATE AND IT IS THE POINT OF THE 18 PLATE, his - the assembly rolls on five wheels with every leg clear, rather than dragging a leg. FLAG: IT IS THE SMALLEST THE LEG CLEARANCE EVER GETS, AND THE FOOT ONLY INCREASES IT. Screwing a foot down lifts the frame, so the leg bottoms rise with it: at a foot extension of e they stand 4.6 + e off the floor. NOTHING EVER BRINGS A LEG TO THE FLOOR - which is what assembly.md means by the machine standing on its feet, and why CASTER_LEVEL_TRAVEL is spent on lifting the wheel clear and levelling rather than on reaching the leg bottoms. NOTE: SO 4.6 IS WHAT A LEG HAS TO CLEAR WHILE ROLLING - a hump in the slab, a cord or a chip under one leg is what eats it, and a thicker plate is the only thing that buys more."
+note = "10.6 - how far the wheels hold the leg bottoms off the floor, wheels down and the feet up. SETTLED: IT IS DELIBERATE AND IT IS THE POINT OF THE 24 PLATE, his - the assembly rolls on five wheels with every leg clear, rather than dragging a leg. FLAG: IT IS THE SMALLEST THE LEG CLEARANCE EVER GETS, AND THE FOOT ONLY INCREASES IT. Screwing a foot down lifts the frame, so the leg bottoms rise with it: at a foot extension of e they stand 10.6 + e off the floor. NOTHING EVER BRINGS A LEG TO THE FLOOR - which is what assembly.md means by the machine standing on its feet, and why CASTER_LEVEL_TRAVEL is spent on lifting the wheel clear and levelling rather than on reaching the leg bottoms. NOTE: SO 10.6 IS WHAT A LEG HAS TO CLEAR WHILE ROLLING - a hump in the slab, a cord or a chip under one leg is what eats it, and a thicker plate is the only thing that buys more."
 
 [[dim]]
 sym = "CASTER_PLATE_END_GAP"
@@ -3447,7 +3447,7 @@ note = "141 - the vertical pitch of the central wall's three bolts, on the quart
 [[dim]]
 sym = "CASTER_BLOCK_MIN"
 expr = "BASE_FLOOR_CLEAR - CASTER_H"
-note = "13.4 - the THINNEST a plate under a caster can be: at this the wheel just touches the floor plane with the legs still on it. FLAG: IT IS A FLOOR AND NOT THE PART - the plate is CASTER_PLATE_T's 18, which clears this by 4.6, and that overshoot is CASTER_LIFT. Nothing is cut to this figure; it is here to say which way the error has to go. FLAG: THE PLATE IS IN COMPRESSION, not hanging - the structure bears down on it and the caster bears up, so its screws locate it and carry nothing."
+note = "13.4 - the THINNEST a plate under a caster can be: at this the wheel just touches the floor plane with the legs still on it. FLAG: IT IS A FLOOR AND NOT THE PART - the plate is CASTER_PLATE_T's 24, which clears this by 10.6, and that overshoot is CASTER_LIFT. Nothing is cut to this figure; it is here to say which way the error has to go. FLAG: THE PLATE IS IN COMPRESSION, not hanging - the structure bears down on it and the caster bears up, so its screws locate it and carry nothing."
 
 [[dim]]
 sym = "GUARD_RAIL_T"
