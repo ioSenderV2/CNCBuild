@@ -128,12 +128,17 @@ screws go into something solid. They butt a leg's face at each end and are **now
 bolt**, which sits at the rail's mid-height inside the leg. **The upper rails get none** — there are
 no casters up there.
 
-🔴 **The cut list and the 3D model carry a SECOND lamination on the front cross rail that this build
-does not have** — an inner {{T_BACK_WALL}} spanning between the legs, housed in nothing. A clash
-against the front legs' bolt heads was reported against THAT piece, so it was a disagreement between
-the model and the build rather than a problem in either. **His call whether the front cross rail is a
-single housed {{T_BACK_WALL}} or the drawn {{GRID_MEMBER_T}}**, and nothing else moves either way:
-{{RAIL_FORE_AFT_L}} lands on the HOUSED lamination's rear face in both cases.
+**The front cross rail's INNER lamination is kept and cut short, his** — it stops
+**{{RAIL_CROSS_INNER_END_CLEAR}}** shy of every leg face it meets, so each of the four pieces is
+**{{RAIL_CROSS_INNER_SPAN}}** rather than butting. 🔴 **The NUT side is what sets that, not the
+head.** A low-profile socket head stands only about 4.5 proud, but the far end of the same bolt
+carries a washer, the {{BASE_BOLT_NUT_H}} flange lock nut and {{BASE_BOLT_PROUD}} of thread past it —
+**{{RAIL_CROSS_INNER_END_MIN}}** in total — and which end a lamination meets depends on which way the
+bolt went in, so the clearance covers the worse one. A clearance of 12 was tried and the model's
+clash check refused it: the nut by 0.1 and the thread by 4.8, at all four pieces.
+
+**The clearance is DRAWN, not declared**, so every rebuild of the model proves it instead of
+tolerating it. If those pieces ever show up in the clash list again, the clearance has gone.
 
 NOTE: **A "lamination" means two different parts in these files and that is what crossed the wires** —
 the caster pads above, and the cross rail's inner half in the model. Say which when the word is used

@@ -754,14 +754,24 @@ def main() -> int:
             on_this_side = sorted(r for r in leg_rects
                                   if (r[2] <= by0 + 1e-9) == (side == "rear"))
             spans = [bx0] + [x for r in on_this_side for x in (r[0], r[1])] + [bx1]
+            # 🔴 IT STOPS SHORT OF EVERY LEG IT MEETS, by
+            # RAIL_CROSS_INNER_END_CLEAR - his. Butted hard, its end lands on a
+            # bolt head's fender washer standing proud of that leg face and is
+            # held off the leg. BOTH ends need it: the tongue bolt at a corner
+            # leg, and the central wall's bolts at the front centre one, whose
+            # washers reach into this lamination's band even though their centres
+            # sit behind it. The clearance is drawn rather than declared in
+            # ALLOWED, so the clash check PROVES it instead of tolerating it.
+            ic = v["RAIL_CROSS_INNER_END_CLEAR"]
             for xa, xb in zip(spans[0::2], spans[1::2]):
                 if xb - xa < 1e-9:
                     continue
                 box(f"Grid rail, {nm} inner lamination ({which})", "rails", 0x2F6F47,
-                    xa, y0 if nm == "front" else y0 + housed, z0,
-                    xb, y0 + housed if nm == "front" else y0 + gm_t, z1,
-                    d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs and is "
-                      f"not housed in any of them")
+                    xa + ic, y0 if nm == "front" else y0 + housed, z0,
+                    xb - ic, y0 + housed if nm == "front" else y0 + gm_t, z1,
+                    d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs, is "
+                      f"not housed in any of them, and stops {ic:g} short of "
+                      f"each leg's face to clear the bolt hardware")
 
     # ---- the bolts through every slot joint -------------------------------
     # 🔴 THE BASE'S OWN BOLTS, WHICH THIS MODEL DID NOT HAVE - his catch on the
@@ -2742,20 +2752,11 @@ ALLOWED = {
     # tongue at a corner leg, the central wall at a centre one - and their own
     # head, nut and thread meeting the shank. The model has no way to subtract a
     # hole, so the bolt is drawn solid and the pass-through is declared.
-    # THE FRONT CROSS RAIL'S INNER LAMINATION IS NOTCHED FOR THE HARDWARE at the
-    # four ends that meet a corner leg - about BASE_BOLT_WASHER wide and 5 deep.
-    # The notch is the resolution and the model cannot subtract it, so it is
-    # declared here like every other hole drawn as a solid. That piece is housed
-    # in nothing and carries the base's depth nowhere: the HOUSED outer
-    # lamination is the pair that does.
-    frozenset({"Slot bolt head", "Grid rail, front inner lamination (lower)"}),
-    frozenset({"Slot bolt head", "Grid rail, front inner lamination (upper)"}),
-    frozenset({"Slot bolt nut", "Grid rail, front inner lamination (lower)"}),
-    frozenset({"Slot bolt nut", "Grid rail, front inner lamination (upper)"}),
-    frozenset({"Slot bolt thread", "Grid rail, front inner lamination (lower)"}),
-    frozenset({"Slot bolt thread", "Grid rail, front inner lamination (upper)"}),
-    frozenset({"Slot bolt", "Grid rail, front inner lamination (lower)"}),
-    frozenset({"Slot bolt", "Grid rail, front inner lamination (upper)"}),
+    # 🔴 THE FRONT CROSS RAIL'S INNER LAMINATION IS NOT DECLARED HERE, ON PURPOSE.
+    # It stops RAIL_CROSS_INNER_END_CLEAR short of every leg face it meets, which
+    # is DRAWN - so the clash check proves that clearance on every rebuild rather
+    # than tolerating an overlap. If it ever reappears in the clash list, the
+    # clearance has gone, and that is exactly the report wanted.
     frozenset({"Slot bolt", "Leg, front left, outer strip"}),
     frozenset({"Slot bolt", "Leg, front left, inner strip"}),
     frozenset({"Slot bolt", "Leg, front right, outer strip"}),
