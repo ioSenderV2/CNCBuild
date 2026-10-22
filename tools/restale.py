@@ -177,8 +177,15 @@ def main():
         for ln, line in enumerate(text.split("\n"), 1):
             cells = [m.span() for m in CELL.finditer(line)]
             new, last = [], 0
+            # 🔴 A NUMBER GLUED TO A HYPHEN AND A WORD IS PART OF A NAME, not a
+            # citation: 25-series extrusion, 30-6060, 2x3. The leading lookbehind
+            # already refused a hyphen BEFORE the digits and the trailing one did
+            # not, so "25-series" matched and the day BASE_BOLT_WASHER went 25 to
+            # 24 it was reported as stale prose in three-point-mount.md - on a
+            # line whose subject is which extrusion NOT to rebuild the base in.
+            # The name words matched only because that line says "base".
             for m in re.finditer(r"(?<![\w.\-{])(\d{1,5}(?:\.\d{1,4})?)"
-                                 r"(?![\w.]|\s*\}\})", line):
+                                 r"(?![\w.]|-\w|\s*\}\})", line):
                 if any(a <= m.start() and m.end() <= b for a, b in cells):
                     continue                    # a machining coordinate
                 lit = fmt(float(m.group(1)))

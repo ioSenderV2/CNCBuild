@@ -51,6 +51,34 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 | **The two rear corner tenon spacers** | **Fit each to its own gap**, which is about 13.5 rather than the drawn {{T_TENON_SPACER}}. Each rear tab has moved about 1.5 inboard, so a 12 spacer leaves 1.5 of air to the side web's inner face — and killing that slop is the entire job of the part. The 12.003 came from a stock 12 sheet miking at it, and that reason is gone once the gap is not 12 |
 | **The back shear wall** | **Nothing. Tight is fine.** Its ends carry no load — it sits in a full-height rebate in all three rear legs and is screwed through its face — so the air it was drawn with was only ever a shadow line at the two rear corners |
 
+## The tongue bolt holes
+
+🔴 **SET OUT FROM THE TONGUE'S END — the back wall's inner face — NEVER from the leg's back face.**
+The two references are {{T_BACK_WALL}} apart and that 18 is the whole error. An 8 hole centred 21.5
+from the LEG's back face spans 17.5 to 25.5 while the tongue's end face sits at 18, so it breaks out
+of the tongue's end by half a millimetre and the bolt lands in a scallop rather than a hole. The
+tongue's end is also a face a rule can bear on, which the leg's back face is not once the wall is in.
+
+**The drawn pair** is {{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}} off the leg's back face, which is 17 and
+51 into the tongue's {{TONGUE_IN_LEG}} — 17 of edge at each end, {{TONGUE_BOLT_Z}} up the rail.
+
+**Two limits bound any pair, and they pull opposite ways:**
+
+| | |
+|---|---|
+| **Edge** at each end of the tongue's {{TONGUE_IN_LEG}} | as much as can be had — the drawn pair keeps 17 |
+| **Separation**, centre to centre | at least **{{TONGUE_BOLT_SEP_MIN}}**, his — the {{FENDER_WASHER_D}} washers touch below that, and two washers riding on each other neither bear flat nor spread the clamp, which is the whole reason for a fender |
+
+Widening the edge brings the pair together and narrowing it pushes them apart, so a pair has to clear
+both at once. The drawn 34 apart clears the separation limit by 9.
+
+OPEN: **THE AS-DRILLED POSITIONS ARE NOT RECORDED YET.** Holes are already in the two right-hand
+legs' joints and the figures reaching this file disagreed about their reference — one reading put a
+pair at 21.5 and 50 into the tongue, another put a single hole 40 clear of the back wall. **Measure
+one joint and write the two distances here, taken from the back wall's inner face along the rail.**
+Anything inside the tongue's 68 with real edge at both ends does the job; what must not be guessed is
+which face the existing holes were set out from.
+
 ## Two consequences that cost nothing
 
 - **The box's tongues will stand about 1 proud of each leg's outer face** instead of flush. Cosmetic:

@@ -2726,9 +2726,10 @@ note = "245 - what the X gantry end plate is CUT to, as drawn on Sheet 2a, out o
 
 [[dim]]
 sym = "FENDER_WASHER_D"
-value = 25
-provenance = "nominal"
-note = "M8 fender washer, outside diameter. OPEN: A CATALOGUE FIGURE AND NOT HIS - caliper the washers actually bought. It spreads the clamp into 19 mm plywood, so the diameter is the whole point of choosing a fender over a plain washer; a plain M8 washer is about 16 and would be most of the way to pulling through."
+value = 24
+provenance = "measured"
+source = "his caliper, off the washers in hand"
+note = "24 - M8 fender washer, outside diameter, 12 radius. SETTLED: HIS CALIPER CLOSES THE OPEN THIS CARRIED, which asked for exactly this reading rather than the catalogue's 25. It spreads the clamp into plywood, so the diameter is the whole point of choosing a fender over a plain washer; a plain M8 washer is about 16 and would be most of the way to pulling through. NOTE: THE 12 RADIUS IS WHAT A HOLE POSITION HAS TO CLEAR - a bolt centred less than 12 from any face would hang its washer off the edge, which no position on this base does."
 
 [[dim]]
 sym = "FENDER_WASHER_T"
@@ -3371,6 +3372,11 @@ note = "68 - how much of a leg's POST_W_Y the fore-aft rail's tongue actually oc
 sym = "TONGUE_BOLT_A"
 expr = "T_BACK_WALL + TONGUE_IN_LEG / 4"
 note = "35 - the first tongue bolt, from the leg's BACK face, which is 17 into the tongue. SETTLED: THE QUARTER POINTS ARE OF TONGUE_IN_LEG'S 68, NOT OF THE LEG'S 86 - his catch at the bench. Set out on the leg's full depth the first bolt lands 21.5 from the back face, which is only 3.5 past the back wall's inner face and 3.5 from the tongue's own end: it would split out. On the 68 the pair keeps 17 of edge at each end of the tongue, about 2.1 x BASE_BOLT_D. FLAG: 17 IS LESS EDGE THAN THE 86 VERSION CLAIMED and it is the most a symmetric pair can keep while staying on the quarter points - widening the edge means bringing the pair closer together, which is the anti-rotation leverage the second bolt exists for. This bolt is location duty, not withdrawal, so the leverage is worth more than the extra edge. NOTE: AT A FRONT LEG MEASURE FROM THE FRONT FACE instead, the face the cross rail's lamination is housed in - the geometry is the same end-for-end."
+
+[[dim]]
+sym = "TONGUE_BOLT_SEP_MIN"
+expr = "FENDER_WASHER_D + 1"
+note = "25 - the CLOSEST two tongue bolt centres may be, his: the washers touch at FENDER_WASHER_D and this leaves a millimetre of air. SETTLED: IT IS A WASHER LIMIT AND NOT A WOOD ONE - the wood's limit is edge distance at the tongue's two ends, and this one bites in the middle instead, which is why both have to be checked. FLAG: IT RULES OUT A CLOSE PAIR. The drawn TONGUE_BOLT_A to TONGUE_BOLT_B is 34 and clears it; anything under 25 apart stacks one fender washer on the other and neither then bears flat on the leg's face, which is the whole reason for choosing a fender over a plain washer."
 
 [[dim]]
 sym = "TONGUE_BOLT_B"
