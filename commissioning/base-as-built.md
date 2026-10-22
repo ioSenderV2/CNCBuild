@@ -66,6 +66,22 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 Widening the edge brings the pair together and narrowing it pushes them apart, so a pair has to clear
 both at once. The drawn 34 apart clears the separation limit by 9.
 
+## The corner legs' slots are filled, leaving a mortise at each grid
+
+**Both corner legs have the slot filled with glued-in filler, with only a
+{{GRID_MEMBER_H}} × {{GRID_MEMBER_T}} mortise left for the top and bottom rails** — his, as built,
+and it is what the design asks for: the slot is CUT full height so no thin bridge of plywood is left
+pretending to be the surface the box bears on, then closed by the foot spacer below the grids and the
+filler block between them.
+
+**So each rail sits in a true mortise with shoulders above and below it**, and those shoulders — the
+blocks' end faces — are what stop the rail rotating in the vertical plane, by bearing rather than
+through any bolt. That is why the bolt pair is spread **along** the tongue and not stacked up it, and
+why a vertical or triangular pattern buys little here however good its arithmetic looks.
+
+**The central wall is already bolted** in both centre legs, which is the same job done by a part that
+was going in anyway — neither centre leg gets a filler.
+
 ## The pair as drilled, off the leg's FRONT face
 
 **His, and it is the pattern the base is built to.** Both holes are set out from the leg's **front**
