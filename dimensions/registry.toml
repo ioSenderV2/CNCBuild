@@ -3353,6 +3353,13 @@ expr = "BASE_BOLT_L - TONGUE_BOLT_GRIP - 2 * FENDER_WASHER_T"
 note = "15.8 - what stands past the far face with the bolt home: the 90 less the 72 of grip and less the two FENDER_WASHER_T, one under the flange bolt and one under the flange lock nut. SETTLED: THE NUT TAKES BASE_BOLT_NUT_H OF IT and BASE_BOLT_PROUD is what stands past - the budget closes with room. FLAG: IT IS THE FIGURE THAT MOVES IF A WASHER IS ADDED OR DROPPED - two washers at 1.1 are only 2.2 of it, so the length is not tight either way."
 
 [[dim]]
+sym = "BASE_BOLT_HEAD_H"
+value = 3.4
+provenance = "part"
+source = "his"
+note = "3.4 - how far the low-profile hex socket head stands proud of the face it bears on, before the FENDER_WASHER_T under it. FLAG: IT IS NOT FLANGE_LOW_H, which is 3 and belongs to the low-profile FLANGE head the gantry uses - a different part. OPEN: THE HEAD'S DIAMETER IS NOT MEASURED, which is why the model draws head and washer as ONE disc at BASE_BOLT_WASHER: the washer is wider than any M8 head, so the envelope is right and no invented figure goes in. Caliper it if a counterbore is ever wanted."
+
+[[dim]]
 sym = "BASE_BOLT_NUT_H"
 value = 11
 provenance = "part"
@@ -3382,8 +3389,15 @@ note = "68 - how much of a leg's POST_W_Y the fore-aft rail's tongue actually oc
 
 [[dim]]
 sym = "TONGUE_BOLT_A"
-expr = "T_BACK_WALL + TONGUE_IN_LEG / 4"
-note = "35 - the first tongue bolt, from the leg's BACK face, which is 17 into the tongue. SETTLED: THE QUARTER POINTS ARE OF TONGUE_IN_LEG'S 68, NOT OF THE LEG'S 86 - his catch at the bench. Set out on the leg's full depth the first bolt lands 21.5 from the back face, which is only 3.5 past the back wall's inner face and 3.5 from the tongue's own end: it would split out. On the 68 the pair keeps 17 of edge at each end of the tongue, about 2.1 x BASE_BOLT_D. FLAG: 17 IS LESS EDGE THAN THE 86 VERSION CLAIMED and it is the most a symmetric pair can keep while staying on the quarter points - widening the edge means bringing the pair closer together, which is the anti-rotation leverage the second bolt exists for. This bolt is location duty, not withdrawal, so the leverage is worth more than the extra edge. NOTE: AT A FRONT LEG MEASURE FROM THE FRONT FACE instead, the face the cross rail's lamination is housed in - the geometry is the same end-for-end."
+value = 21.5
+provenance = "part"
+source = "his, as drilled"
+note = "21.5 - the first tongue bolt, measured along the tongue from ITS FREE END, which is 21.5 of edge. 🔴 THE REFERENCE IS THE TONGUE'S FREE END AND NOTHING ELSE. That is the leg face NOT occupied: the FRONT face at a rear leg, where the back wall takes the other end, and the BACK face at a front leg, where the front cross rail's housed lamination does. It is also the face that is uppermost and reachable with a rule while the leg lies on the wall. FLAG: SET OUT FROM THE OCCUPIED FACE INSTEAD AND AN 8 HOLE BREAKS OUT OF THE TONGUE - centred 21.5 from that face it spans 17.5 to 25.5 against a tongue end at T_BACK_WALL's 18, so the bolt lands in a scallop. The two references are 18 apart and that 18 is the whole error. SETTLED: 21.5 OF EDGE IS ABOUT 2.7 x BASE_BOLT_D, which Baltic birch takes."
+
+[[dim]]
+sym = "TONGUE_BOLT_SEP"
+expr = "TONGUE_BOLT_B - TONGUE_BOLT_A"
+note = "28.5 - between the two tongue bolt centres. FLAG: IT MUST BEAT TONGUE_BOLT_SEP_MIN and it does, by 3.5 - below that the two fender washers touch. NOTE: THE OTHER LIMIT PULLS THE OPPOSITE WAY - edge distance at the tongue's two ends wants the pair closer to the middle and this wants them apart, so a pair has to clear both at once."
 
 [[dim]]
 sym = "TONGUE_BOLT_SEP_MIN"
@@ -3392,8 +3406,10 @@ note = "25 - the CLOSEST two tongue bolt centres may be, his: the washers touch 
 
 [[dim]]
 sym = "TONGUE_BOLT_B"
-expr = "POST_W_Y - TONGUE_IN_LEG / 4"
-note = "69 - the second tongue bolt, the other quarter point of TONGUE_IN_LEG, which lands 17 from the leg's FRONT face because that face is the tongue's other end. The two are 34 apart, and that spacing is what stops the rail rotating about a single bolt. FLAG: IT IS NOT POST_W_Y - TONGUE_BOLT_A - that mirrors the pair about the LEG's centre, which is only the same thing while the tongue fills the whole depth. It does not: see TONGUE_IN_LEG."
+value = 50
+provenance = "part"
+source = "his, as drilled"
+note = "50 - the second tongue bolt, along the tongue from the same free end as TONGUE_BOLT_A, which leaves TONGUE_IN_LEG - 50 = 18 of edge at the far end against the wall. The two are TONGUE_BOLT_SEP apart and that spacing is what stops the rail rotating about a single bolt. FLAG: IT IS NOT MIRRORED FROM THE OTHER END - A and B are both measured from the SAME face, which is how a pair gets marked off one rule setting rather than two, and the edges they leave are deliberately unequal at 21.5 and 18."
 
 [[dim]]
 sym = "TONGUE_BOLT_Z"

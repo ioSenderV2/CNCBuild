@@ -258,6 +258,10 @@ the interface, not this file.
 
 - OPEN: [L16](linear-encoder/sensor-board.md#the-through-hole-jack-does-not-obviously-fit) — *Sensor board*<br>The through-hole jack does not obviously fit The tape-facing side has a hard height budget, and it is small:
 
+## [commissioning/base-as-built.md](commissioning/base-as-built.md)  (1)
+
+- OPEN: [L115](commissioning/base-as-built.md#the-front-legs-cannot-use-the-same-pair-and-the-model-is-what-found-it) — *The base, as built*<br>the FRONT legs cannot use the same pair, and the model is what found it 🔴 Run the rear pattern at a front corner leg and the second bolt's head and nut hit the front cross rail's inner lamination. That piece is housed in nothing: it spans between the legs and butts each leg's face, which is the exact space the hardware stands proud into. The bolt at 50 along the tongue lands on the lamination's rear face, and the head reaches 1.1 + 3.4 into it.
+
 ## [commissioning/masses.md](commissioning/masses.md)  (2)
 
 - OPEN: [L57](commissioning/masses.md#measured-masses) — *Measured masses*<br>The whole-machine and whole-installation figures are ESTIMATES, not weighings, and should not be quoted as measurements. From the 2026-09-26 session: the machine with spindle, risers and cabling at roughly 80 kg, and the whole installation - machine, torsion box, sand and timber base
@@ -322,4 +326,4 @@ the interface, not this file.
 
 ---
 
-**234 open** across 33 files.
+**235 open** across 33 files.

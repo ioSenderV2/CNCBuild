@@ -213,6 +213,7 @@ HEAD_PROSE = {
     "flange, low profile": "LOW PROFILE flanged button head, hex socket in the dome",
     "socket": "socket head cap",
     "socket, counterbored": "socket head cap, counterbored",
+    "socket, low profile": "LOW PROFILE socket head cap, hex socket",
 }
 
 
@@ -261,6 +262,12 @@ def D_SHELF_H(jid):
 def D_TONGUE(jid):
     return (M8_HEAD(jid) + " - through plate and tongue to a fender washer and an "
             "acorn nut" + blen(jid))
+
+
+def D_SLOT_BOLT(jid):
+    return (M8_HEAD(jid) + " - across a leg's width through its two outer strips "
+            "and whatever fills the slot between them, to a fender washer and a "
+            "flange lock nut" + blen(jid))
 
 
 def D_M5_PLATE(jid):
@@ -755,6 +762,94 @@ def main() -> int:
                     xb, y0 + housed if nm == "front" else y0 + gm_t, z1,
                     d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs and is "
                       f"not housed in any of them")
+
+    # ---- the bolts through every slot joint -------------------------------
+    # 🔴 THE BASE'S OWN BOLTS, WHICH THIS MODEL DID NOT HAVE - his catch on the
+    # drawn model. The 22 parts named "Tongue bolt" in here are the BOX's, where
+    # the standing plates bolt through its tongue onto acorn nuts; the base's 22
+    # existed only as positions in the registry and were never drawn.
+    #
+    # Two per fore-aft rail tongue at each grid, eight tongues, plus three up
+    # each centre leg for the central wall. Each one crosses the leg's POST_W_X:
+    # one outer strip, the GRID_MEMBER_T in the slot, the far strip.
+    #
+    # THE PAIR IS MEASURED FROM THE TONGUE'S FREE END, not from the leg. That is
+    # the face NOT occupied - the front at a rear leg where the back wall takes
+    # the other end, the back at a front leg where the cross rail's housed
+    # lamination does. Set out from the occupied face instead and the hole breaks
+    # out of the tongue's end: see TONGUE_BOLT_A.
+    bd, wt, wd = v["BASE_BOLT_D"], v["FENDER_WASHER_T"], v["BASE_BOLT_WASHER"] / 2
+    hh, nh = v["BASE_BOLT_HEAD_H"], v["BASE_BOLT_NUT_H"]
+    SBOLT, SHEAD = 0x3C4248, 0x6E7479
+
+    def slot_bolt(lx0, lx1, by, bz, what):
+        """One bolt across a leg's width, socket head left, lock nut right.
+
+        🔴 HEAD-AND-WASHER AND NUT-AND-WASHER ARE EACH ONE DISC, at the washer's
+        diameter. Neither the head's nor the nut's width is a figure we have, and
+        the washer is wider than any M8 head or flange nut - so the envelope is
+        right and nothing invented goes in. See BASE_BOLT_HEAD_H's OPEN.
+        """
+        d = (D_SLOT_BOLT("base-slot-bolt") + f" &middot; {what}. The head stands "
+             f"{hh:g} and the nut {nh:g}, on one {v['BASE_BOLT_WASHER']:g} fender "
+             f"washer each, over a grip of {v['TONGUE_BOLT_GRIP']:g}, with "
+             f"{v['BASE_BOLT_PROUD']:g} of thread proud. Head and nut are drawn "
+             f"as the washer-wide ENVELOPE, not as their own shapes")
+        for nm, c, a, b, r in (
+                ("Slot bolt head", SHEAD, lx0 - wt - hh, lx0, wd),
+                ("Slot bolt", SBOLT, lx0 - wt, lx1 + wt, bd / 2),
+                ("Slot bolt nut", SHEAD, lx1, lx1 + wt + nh, wd),
+                ("Slot bolt thread", SBOLT, lx1 + wt + nh,
+                 lx1 + wt + nh + v["BASE_BOLT_PROUD"], bd / 2)):
+            cyl(nm, "bolts", c, by, bz, a, b, r, axis="x", seg=12, d=d)
+
+    for which, z0, z1 in grids:
+        for rx0, rx1 in ((bx0 + strip, bx0 + strip + gm_t),
+                         (bx1 - strip - gm_t, bx1 - strip)):
+            for lx0, lx1, ly0, ly1 in leg_rects:
+                if not (lx0 <= rx0 + 1e-9 and rx1 <= lx1 + 1e-9):
+                    continue                 # not a leg this rail passes through
+                if abs((lx0 + lx1) / 2 - BW / 2) < 1e-9:
+                    continue                 # a centre leg carries no fore-aft rail
+                # 🔴 ONLY THE REAR LEGS ARE DRAWN, AND THE FRONT PAIR IS AN OPEN
+                # ITEM THIS MODEL IS WHAT FOUND. Run the same pattern at a front
+                # leg and the second bolt's head and nut hit the front cross
+                # rail's INNER lamination: that piece is housed in nothing, it
+                # spans between the legs and BUTTS each leg's face, which is the
+                # exact space the head stands proud into. The bolt at
+                # TONGUE_BOLT_B lands on the lamination's rear face and the head
+                # reaches FENDER_WASHER_T + BASE_BOLT_HEAD_H into it.
+                #
+                # It cannot be fixed by sliding the pair back either: the
+                # hardware must stay a washer's radius clear of the lamination,
+                # which caps a bolt at about 38 along the tongue, and a pair
+                # inside 21.5 to 38 is closer than TONGUE_BOLT_SEP_MIN. The front
+                # legs want a different arrangement - a VERTICAL pair has the
+                # rail's whole GRID_MEMBER_H to work in and no conflict at all -
+                # and that is his call, not this model's. See
+                # commissioning/base-as-built.md.
+                if ly0 > by0 + 1e-9:
+                    continue
+                # the tongue's free end, and the direction it runs from there
+                free, step = ly1, -1
+                for off in (v["TONGUE_BOLT_A"], v["TONGUE_BOLT_B"]):
+                    slot_bolt(lx0, lx1, free + step * off, (z0 + z1) / 2,
+                              f"a fore-aft rail tongue in the {which} grid, "
+                              f"{off:g} along the tongue from its free end")
+
+    # THE CENTRAL WALL'S THREE, AT EACH END, AND THEY ARE THE OTHER ARRANGEMENT:
+    # vertical, on the quarter points of the clear band. It is the one place a
+    # stack up the joint is right, because the leg slot is all that holds the
+    # wall there and the wall has no shoulder bearing on anything.
+    for lx0, lx1, ly0, ly1 in leg_rects:
+        if abs((lx0 + lx1) / 2 - BW / 2) > 1e-9:
+            continue
+        for i in (1, 2, 3):
+            slot_bolt(lx0, lx1, (ly0 + ly1) / 2,
+                      grid_lo_bot + gm_h + i * v["CENTRE_WALL_BOLT_PITCH"],
+                      f"the central wall in a centre leg, {i} of "
+                      f"{v['CENTRE_WALL_BOLT_COUNT']:g} at "
+                      f"{v['CENTRE_WALL_BOLT_PITCH']:g} pitch")
 
     # ---- the lower rails' outer pads, the casters and the fork channel -----
     # THE LOWER fore-aft rails are FOUR laminations, not two. The inner pair
@@ -2643,6 +2738,26 @@ ALLOWED = {
     # declared here.
     frozenset({"Sand port, top skin", "Top skin"}),
     frozenset({"Sand port, bottom skin", "Bottom skin"}),
+    # The base's slot bolts, which are SUPPOSED to cross everything here: a leg's
+    # two outer strips, whatever fills the slot between them - a fore-aft rail's
+    # tongue at a corner leg, the central wall at a centre one - and their own
+    # head, nut and thread meeting the shank. The model has no way to subtract a
+    # hole, so the bolt is drawn solid and the pass-through is declared.
+    # 🔴 NOT DECLARED, DELIBERATELY: the front cross rail's inner lamination
+    # against this bolt's head and nut. That one is a REAL interference and the
+    # reason the front legs' pair is still open - see the comment where the
+    # bolts are drawn.
+    frozenset({"Slot bolt", "Grid rail, fore-aft (lower)"}),
+    frozenset({"Slot bolt", "Grid rail, fore-aft (upper)"}),
+    frozenset({"Slot bolt", "Shear wall, centreline"}),
+    frozenset({"Slot bolt", "Leg, back centre, outer strip"}),
+    frozenset({"Slot bolt", "Post, front centre, outer strip"}),
+    frozenset({"Slot bolt", "Post, rear left, outer strip"}),
+    frozenset({"Slot bolt", "Post, rear left, inner strip"}),
+    frozenset({"Slot bolt", "Post, rear right, outer strip"}),
+    frozenset({"Slot bolt", "Post, rear right, inner strip"}),
+    frozenset({"Slot bolt", "Slot bolt head"}),
+    frozenset({"Slot bolt", "Slot bolt nut"}),
     frozenset({"Spoilboard T-bolt", "MDF sheet"}),
     frozenset({"Spoilboard T-bolt", "MDF sacrificial sheet"}),
     frozenset({"Spoilboard T-bolt", "Spoilboard bolt hole"}),
