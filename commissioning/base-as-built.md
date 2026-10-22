@@ -206,9 +206,13 @@ So the rails carry the back's spacing forward and the front legs inherit it.
    edge, so the tenon moving forward has nothing to foul; moving it back has only about
    {{TENON_HOLE_CLEAR}} before the tab meets the notch's back edge. The dry fit dropped in at the
    leg's present position — mark where it sits and only ever take it forward from there.
-7. **Cut the inner lamination pieces to fit last.** They butt a leg's face at each end and are housed
-   in nothing — two spans either side of the front centre leg — so they follow everything else rather
-   than setting anything.
+7. **Cut the four inner lamination pieces last** — two per grid, one either side of the front centre
+   leg, housed in nothing, so they follow everything else rather than setting anything.
+   🔴 **THEY DO NOT BUTT THE LEG FACES.** Each end stops **{{RAIL_CROSS_INNER_END_CLEAR}}** shy of the
+   face it meets, both ends, so **cut each piece to its own measured gap less 36** — the drawn figure
+   is {{RAIL_CROSS_INNER_SPAN}} and the base is 2 to 3 narrow, so the gap is what to work off, not
+   that number. Butted hard a piece lands on a bolt's washer and is held off the leg, which is the
+   clearance's whole reason: see the {{RAIL_CROSS_INNER_END_MIN}} the nut side needs.
 
 🔴 **If step 4 reads anything much off 1220, do not cut.** The diagonals are saying the base is not
 square, and that is the whole reason for measuring at that point instead of trusting the figure.

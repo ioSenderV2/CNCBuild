@@ -3192,7 +3192,7 @@ note = "18 - how far short of a leg's face each end of a front cross rail's INNE
 [[dim]]
 sym = "RAIL_CROSS_INNER_SPAN"
 expr = "(RAIL_CROSS_INNER_L - POST_W_X) / 2 - 2 * RAIL_CROSS_INNER_END_CLEAR"
-note = "497.5 - one piece of a front cross rail's inner lamination: between a front corner leg and the FRONT CENTRE leg, stopping RAIL_CROSS_INNER_END_CLEAR short of each. Two per grid, four in all, and they are housed in nothing. SETTLED: THE SIXTH LEG SPLIT THIS LAMINATION IN TWO and that is the whole cost of it, against a notch in three pieces the other way. The OUTER lamination is untouched: it still runs the base's full width at RAIL_CROSS_OUTER_L, housed GRID_MEMBER_T / 2 deep in every leg it passes, this one included."
+note = "485.5 - one piece of a front cross rail's inner lamination: between a front corner leg and the FRONT CENTRE leg, stopping RAIL_CROSS_INNER_END_CLEAR short of each. Two per grid, four in all, and they are housed in nothing. SETTLED: THE SIXTH LEG SPLIT THIS LAMINATION IN TWO and that is the whole cost of it, against a notch in three pieces the other way. The OUTER lamination is untouched: it still runs the base's full width at RAIL_CROSS_OUTER_L, housed GRID_MEMBER_T / 2 deep in every leg it passes, this one included."
 
 [[dim]]
 sym = "BACK_WALL_L"
