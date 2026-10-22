@@ -72,11 +72,17 @@ both at once. The drawn 34 apart clears the separation limit by 9.
 face — the face uppermost while the leg lies on its back on the wall, and the one the fore-aft rail
 drops past into the slot.
 
-| | From the leg's FRONT face | Into the tongue's {{TONGUE_IN_LEG}} | Edge left |
-|---|---|---|---|
-| First, drilled | **21.5** | 46.5 | **21.5** at the front end |
-| Second | **50** | 18 | **18** at the back end, against the wall |
-| Apart | **28.5** | | clears {{TONGUE_BOLT_SEP_MIN}} by 3.5 |
+The tongue runs **from** that face: its front end is the leg's front face and its back end is
+{{TONGUE_IN_LEG}} in, against the wall.
+
+| | Along the tongue, from the front face | To the tongue's back end |
+|---|---|---|
+| First, drilled | **21.5** | 46.5 |
+| Second | **50** | **18** |
+| Apart | **28.5** — clears {{TONGUE_BOLT_SEP_MIN}} by 3.5 | |
+
+**So the nearer edge is 21.5 for the first hole and 18 for the second**, at opposite ends of the
+tongue.
 
 Both at {{TONGUE_BOLT_Z}} up the rail's {{GRID_MEMBER_H}}, which is the other axis and does not move.
 
