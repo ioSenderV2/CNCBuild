@@ -119,14 +119,29 @@ the back face there, which is that tongue's free end. A front leg has the same {
 work in — the front cross rail's housed lamination takes the other end where the back wall does at
 the rear — so the wood is the same joint twice and one pattern marks out both.
 
-🔴 **What has to be notched is the cross rail's INNER lamination**, and it is a piece not cut yet,
-which is why nothing shows on the legs as they stand. That half is housed in nothing: it spans
-between the legs and **butts each leg's across-machine face**, which is where the bolt head stands
-{{FENDER_WASHER_T}} + {{BASE_BOLT_HEAD_H}} proud. **Four notches, one at each lamination end that
-meets a corner leg**, about {{BASE_BOLT_WASHER}} wide and 5 deep.
+**Only the LOWER front cross rail has an inner lamination, his** — the upper one is the housed 18
+alone, so its front joints are fine exactly as the rear ones are. That halves what follows: **two
+bolts affected, not four.** 🔴 **The cut list and the 3D model both still give the UPPER front cross
+rail two laminations.** Building it as a single housed 18 takes 2 pieces off the cut list and the
+upper grid's front member from {{GRID_MEMBER_T}} to {{T_BACK_WALL}} — say the word and both get
+swept. Nothing else moves with it: {{RAIL_FORE_AFT_L}} lands on the OUTER lamination's rear face
+either way.
 
-**The notch costs only the cutting.** That piece carries the base's depth nowhere — the HOUSED outer
-lamination is the pair that does — and it is cut to fit between the legs anyway.
+🔴 **The LOWER cross rail's INNER laminations get cut about 6 SHORT at each end — 12 off the length —
+and that is the whole of it.** It is a piece not cut yet, which is why nothing shows on the legs as they
+stand. That half is housed in nothing: it spans between the legs and butts each leg's across-machine
+face, and the bolt head stands {{FENDER_WASHER_T}} + {{BASE_BOLT_HEAD_H}} proud of exactly that face
+as a {{BASE_BOLT_WASHER}} disc. Butted hard, its end lands on the washer and is held off the leg.
+
+**Short, not notched** — one saw setting against four notches, and it clears the hardware outright.
+
+**It costs nothing.** That piece carries the base's depth nowhere: its butt was only ever taking
+compression in parallel with the **housed outer lamination**, which runs continuously across the
+base and does that job properly.
+
+**And the hardware is not what clamps it.** The nut and washer compress the leg's two strips and the
+tongue between them, ACROSS the machine; the inner lamination runs perpendicular to that, so nothing
+holds it against the leg whatever its end does.
 
 **The rear legs need nothing:** no cross rail there at all, the back wall sits in the leg's back, and
 nothing butts the across-machine faces at rail height.
