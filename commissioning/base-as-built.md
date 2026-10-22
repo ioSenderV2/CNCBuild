@@ -13,7 +13,7 @@ parts get cut to — the registry's figures are what the base was drawn at.
 | Rear tenon tabs, outside to outside | **1148** | 1151 |
 | Rear tenon tabs, inboard face to inboard face | **1112** — the 1148 less the two tabs' {{TENON_CORNER_X}} | 1115 |
 | Front cross rail outer laminations, as cut | **1225** | {{RAIL_CROSS_OUTER_L}} |
-| Fore-aft rails, as cut | **1225** | {{RAIL_FORE_AFT_L}} |
+| Fore-aft rails, as cut | **1225**, trimmed to **1223** | {{RAIL_FORE_AFT_L}} |
 | Central wall's reach forward of the back wall's INNER face, at its TOP edge, bolted to the rear middle leg with its back edge tight | **1217**, three times | — |
 
 **The central wall's 1217 is the part, not a fit problem.** {{CENTRE_WALL_L}} is the panel measured
@@ -46,7 +46,7 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 | | |
 |---|---|
 | **Front cross rail outer laminations** | 🔴 **Cut to the span the BACK WALL occupies — about 1220 — and NOT to {{BASE_W}} less two leg strips.** The cross rail is housed in the legs' inner strips and stops one strip short at each end so the outermost strip covers its end grain, which is **exactly** how the back wall is rebated. Cut it to the same span and the front and back legs' outer faces end up the same distance apart, so the base is a rectangle by construction. That makes the 1225 as cut four or five long rather than two. **This is the mistake the back wall caught** — the derived figure and the part disagreed by 3. **Verify it by measuring before cutting**, per the order below |
-| **Fore-aft rails** | 🔴 **Cut to the back wall's inner face to the front leg's notch face, measured ALONG EACH RAIL'S OWN LINE, and cut BOTH to the same mark.** These are what tie the front assembly to the back one, so their length SETS the base's fore-aft depth: the absolute figure is nearly free — a rail 1 short just brings the front leg back 1 and nothing bottoms out — but **two rails differing by 1 rack the base**, which is the one thing these members exist to prevent. Equal beats individually perfect. Check the diagonals before the bolts go hard. **The central wall is NOT a third member of this group:** it runs to the front centre leg's slot, not to the cross rail, and matching the rails to it is a coincidence of two numbers rather than a shared rule |
+| **Fore-aft rails** | **ALL FOUR TRIMMED TO 1223, his call** — 2 off the 1225 as cut, and back onto {{RAIL_FORE_AFT_L}}. **What mattered was that the four are identical, not the figure:** their length SETS the base's fore-aft depth, so the absolute number is nearly free — all four 1 short just brings the front legs back 1 and nothing bottoms out — while **two rails differing by 1 rack the base**, which is the one thing these members exist to prevent. One number for all four settles it in a way four individual measurements could not. **The central wall is NOT a fifth member of this group:** it runs to the front centre leg's slot, not to the cross rail, and matching the rails to it is a coincidence of two numbers rather than a shared rule |
 | **The central wall** | **Nothing.** Tight at the back is what is wanted; the front end disappearing into the leg slot is the design |
 | **The two rear corner tenon spacers** | **Fit each to its own gap**, which is about 13.5 rather than the drawn {{T_TENON_SPACER}}. Each rear tab has moved about 1.5 inboard, so a 12 spacer leaves 1.5 of air to the side web's inner face — and killing that slop is the entire job of the part. The 12.003 came from a stock 12 sheet miking at it, and that reason is gone once the gap is not 12 |
 | **The back shear wall** | **Nothing. Tight is fine.** Its ends carry no load — it sits in a full-height rebate in all three rear legs and is screwed through its face — so the air it was drawn with was only ever a shadow line at the two rear corners |
@@ -67,8 +67,8 @@ across the machine by ITS OWN fore-aft rail, because the rail fills the leg's {{
 the rails are located at the back by the rear legs' slots, which the back assembly has already fixed.
 So the rails carry the back's spacing forward and the front legs inherit it.
 
-1. **Cut both fore-aft rails to one mark** — the back wall's inner face to the front leg's cross-rail
-   notch face.
+1. **Trim all four fore-aft rails to 1223.** One number for all four, which is what keeps the base
+   from racking.
 2. **Dry-assemble**: rails through the rear legs' slots, front legs onto the rails' front ends, bolts
    loose. 🔴 **BOTH grids' fore-aft rails go in, not just the upper.** A leg is held vertical by being
    captured at two heights in the same slot — square on the top rails alone and the bottom is still
