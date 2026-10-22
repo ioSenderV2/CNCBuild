@@ -69,18 +69,34 @@ So the rails carry the back's spacing forward and the front legs inherit it.
 
 1. **Cut both fore-aft rails to one mark** — the back wall's inner face to the front leg's cross-rail
    notch face.
-2. **Dry-assemble**: rails through the rear legs' slots, front legs onto the rails' front ends.
+2. **Dry-assemble**: rails through the rear legs' slots, front legs onto the rails' front ends, bolts
+   loose. 🔴 **BOTH grids' fore-aft rails go in, not just the upper.** A leg is held vertical by being
+   captured at two heights in the same slot — square on the top rails alone and the bottom is still
+   free to be out, and then the lower rail either will not go home or forces the leg when you make it.
    🔴 **Nothing glued at the front yet.** That reverses assembly.md's order, which has the three front
    legs pre-glued to the front cross rails — and it has to reverse, because the rail cannot be cut
    until the legs it will hold have told you the span.
-3. **Square it.** Set the two front legs so the front span matches the back, then check both diagonals
-   corner to corner.
+3. **Square it AND plumb it — the diagonals cannot see vertical.** A leg can be plumb or leaning and
+   the plan diagonals read the same. Set the two front legs so the front span matches the back, then
+   take **diagonals at the lower grid and at the upper grid**, and put a level on the leg faces. Two
+   rectangles at two heights plus plumb legs is the whole check.
+   **Ignore the front centre leg here** — the rectangle is a four-corner job and that leg is located
+   fore-aft by the central wall, not by the frame.
 4. **Measure the front span** between the two front legs' outermost strips' inner faces. It should
    read about **1220**, the same span the back wall occupies.
-5. **Cut the cross rail's outer lamination to that**, house it, and only then glue the front legs
-   to it.
-6. **Cut the two inner lamination pieces to fit afterwards.** They butt a leg's face at each end and
-   are housed in nothing, so they follow the outer rather than setting anything.
+5. **Cut the cross rails' outer laminations to that** — **there are two, lower and upper, and they
+   want the same span, so cut them together off one mark** — house them, and only then glue and screw
+   the two front CORNER legs to them.
+6. **Then bring the front centre leg up.** It slides fore-aft on the central wall, whose front end
+   stops about 23 shy of the rail housing inside the leg's {{POST_W_Y}} slot — **that slack IS the
+   adjustment**. Move the leg until its face meets the front cross rail, then fix it.
+   🔴 **FORWARD IS FREE, BACKWARD IS NOT.** The bottom skin's front notch runs out to the skin's front
+   edge, so the tenon moving forward has nothing to foul; moving it back has only about
+   {{TENON_HOLE_CLEAR}} before the tab meets the notch's back edge. The dry fit dropped in at the
+   leg's present position — mark where it sits and only ever take it forward from there.
+7. **Cut the inner lamination pieces to fit last.** They butt a leg's face at each end and are housed
+   in nothing — two spans either side of the front centre leg — so they follow everything else rather
+   than setting anything.
 
 🔴 **If step 4 reads anything much off 1220, do not cut.** The diagonals are saying the base is not
 square, and that is the whole reason for measuring at that point instead of trusting the figure.
