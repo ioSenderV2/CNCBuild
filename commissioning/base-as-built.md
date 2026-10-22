@@ -45,7 +45,7 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 
 | | |
 |---|---|
-| **Front cross rail outer laminations** | 🔴 **Cut to the measured span, NOT to {{BASE_W}} less two leg strips.** Go straight at the distance between the two FRONT corner legs' outermost strips' inner faces and cut to that. If the front matches the back it is about 1220, which makes the 1225 as cut four or five long rather than two. **This is the mistake the back wall caught** — the derived figure and the part disagreed by 3 |
+| **Front cross rail outer laminations** | 🔴 **Cut to the span the BACK WALL occupies — about 1220 — and NOT to {{BASE_W}} less two leg strips.** The cross rail is housed in the legs' inner strips and stops one strip short at each end so the outermost strip covers its end grain, which is **exactly** how the back wall is rebated. Cut it to the same span and the front and back legs' outer faces end up the same distance apart, so the base is a rectangle by construction. That makes the 1225 as cut four or five long rather than two. **This is the mistake the back wall caught** — the derived figure and the part disagreed by 3. **Verify it by measuring before cutting**, per the order below |
 | **Fore-aft rails** | 🔴 **Cut to the back wall's inner face to the front leg's notch face, measured ALONG EACH RAIL'S OWN LINE, and cut BOTH to the same mark.** These are what tie the front assembly to the back one, so their length SETS the base's fore-aft depth: the absolute figure is nearly free — a rail 1 short just brings the front leg back 1 and nothing bottoms out — but **two rails differing by 1 rack the base**, which is the one thing these members exist to prevent. Equal beats individually perfect. Check the diagonals before the bolts go hard. **The central wall is NOT a third member of this group:** it runs to the front centre leg's slot, not to the cross rail, and matching the rails to it is a coincidence of two numbers rather than a shared rule |
 | **The central wall** | **Nothing.** Tight at the back is what is wanted; the front end disappearing into the leg slot is the design |
 | **The two rear corner tenon spacers** | **Fit each to its own gap**, which is about 13.5 rather than the drawn {{T_TENON_SPACER}}. Each rear tab has moved about 1.5 inboard, so a 12 spacer leaves 1.5 of air to the side web's inner face — and killing that slop is the entire job of the part. The 12.003 came from a stock 12 sheet miking at it, and that reason is gone once the gap is not 12 |
@@ -59,3 +59,28 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 - **The rear tenon centres are about 1130 apart** rather than the drawn {{POST_SPAN_CORNERS}} less its
   two offsets. It matters nowhere — the box's position on the posts is not a machine reference, since
   the machine is referenced to the top skin.
+
+## The order the front span gets set in
+
+🔴 **There is no front span to measure until the fore-aft rails are in.** Each front leg is located
+across the machine by ITS OWN fore-aft rail, because the rail fills the leg's {{GRID_MEMBER_T}} slot;
+the rails are located at the back by the rear legs' slots, which the back assembly has already fixed.
+So the rails carry the back's spacing forward and the front legs inherit it.
+
+1. **Cut both fore-aft rails to one mark** — the back wall's inner face to the front leg's cross-rail
+   notch face.
+2. **Dry-assemble**: rails through the rear legs' slots, front legs onto the rails' front ends.
+   🔴 **Nothing glued at the front yet.** That reverses assembly.md's order, which has the three front
+   legs pre-glued to the front cross rails — and it has to reverse, because the rail cannot be cut
+   until the legs it will hold have told you the span.
+3. **Square it.** Set the two front legs so the front span matches the back, then check both diagonals
+   corner to corner.
+4. **Measure the front span** between the two front legs' outermost strips' inner faces. It should
+   read about **1220**, the same span the back wall occupies.
+5. **Cut the cross rail's outer lamination to that**, house it, and only then glue the front legs
+   to it.
+6. **Cut the two inner lamination pieces to fit afterwards.** They butt a leg's face at each end and
+   are housed in nothing, so they follow the outer rather than setting anything.
+
+🔴 **If step 4 reads anything much off 1220, do not cut.** The diagonals are saying the base is not
+square, and that is the whole reason for measuring at that point instead of trusting the figure.

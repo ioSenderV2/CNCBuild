@@ -1214,6 +1214,13 @@ far strip.
 front rails; the back wall is glued and screwed to all three rear legs. **The fore-aft rails and the
 central wall join those two assemblies**, and every one of those joints is bolted.
 
+🔴 **As built, that order reverses at the front.** The base measured 2 to 3 narrow, so the front cross
+rail is cut to the span the parts give rather than to a drawn figure — and the rail cannot be cut until
+the legs it will hold have been dry-assembled onto the fore-aft rails and told you that span. **So the
+three front legs go on dry and are glued to the cross rail last.** The order and the figures are in
+[`../commissioning/base-as-built.md`](../commissioning/base-as-built.md), which is what the remaining
+base parts get cut to.
+
 | | |
 |---|---|
 | **Each fore-aft rail tongue** | **Two bolts**, at **{{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}}** from the leg's face along its {{POST_W_Y}}, both at the rail's mid-height, **{{TONGUE_BOLT_Z}}** in its {{GRID_MEMBER_H}} |
