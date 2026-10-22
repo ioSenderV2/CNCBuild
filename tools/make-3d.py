@@ -814,27 +814,23 @@ def main() -> int:
                     continue                 # not a leg this rail passes through
                 if abs((lx0 + lx1) / 2 - BW / 2) < 1e-9:
                     continue                 # a centre leg carries no fore-aft rail
-                # 🔴 ONLY THE REAR LEGS ARE DRAWN, AND THE FRONT PAIR IS AN OPEN
-                # ITEM THIS MODEL IS WHAT FOUND. Run the same pattern at a front
-                # leg and the second bolt's head and nut hit the front cross
-                # rail's INNER lamination: that piece is housed in nothing, it
-                # spans between the legs and BUTTS each leg's face, which is the
-                # exact space the head stands proud into. The bolt at
-                # TONGUE_BOLT_B lands on the lamination's rear face and the head
-                # reaches FENDER_WASHER_T + BASE_BOLT_HEAD_H into it.
+                # ONE PATTERN AT ALL EIGHT TONGUES - his call. A front leg has
+                # the same TONGUE_IN_LEG of 68 to work in as a rear one, the
+                # front cross rail's housed lamination taking the other end
+                # where the back wall does at the rear.
                 #
-                # It cannot be fixed by sliding the pair back either: the
-                # hardware must stay a washer's radius clear of the lamination,
-                # which caps a bolt at about 38 along the tongue, and a pair
-                # inside 21.5 to 38 is closer than TONGUE_BOLT_SEP_MIN. The front
-                # legs want a different arrangement - a VERTICAL pair has the
-                # rail's whole GRID_MEMBER_H to work in and no conflict at all -
-                # and that is his call, not this model's. See
-                # commissioning/base-as-built.md.
-                if ly0 > by0 + 1e-9:
-                    continue
+                # 🔴 AT A FRONT LEG THE HEAD LANDS WHERE THE CROSS RAIL'S INNER
+                # LAMINATION WILL BUTT, and that piece gets NOTCHED for it. The
+                # inner half is housed in nothing: it spans between the legs and
+                # butts each leg's across-machine face, so the head standing
+                # FENDER_WASHER_T + BASE_BOLT_HEAD_H proud is in its way. Four
+                # notches, one at each lamination end that meets a corner leg,
+                # about BASE_BOLT_WASHER wide and 5 deep. It bears nothing in
+                # that direction - the pair that carries the base's depth is the
+                # HOUSED outer lamination - so the notch costs only the cutting.
+                # Declared in ALLOWED because the model cannot subtract it.
                 # the tongue's free end, and the direction it runs from there
-                free, step = ly1, -1
+                free, step = (ly1, -1) if ly0 <= by0 + 1e-9 else (ly0, +1)
                 for off in (v["TONGUE_BOLT_A"], v["TONGUE_BOLT_B"]):
                     slot_bolt(lx0, lx1, free + step * off, (z0 + z1) / 2,
                               f"a fore-aft rail tongue in the {which} grid, "
@@ -2746,10 +2742,24 @@ ALLOWED = {
     # tongue at a corner leg, the central wall at a centre one - and their own
     # head, nut and thread meeting the shank. The model has no way to subtract a
     # hole, so the bolt is drawn solid and the pass-through is declared.
-    # 🔴 NOT DECLARED, DELIBERATELY: the front cross rail's inner lamination
-    # against this bolt's head and nut. That one is a REAL interference and the
-    # reason the front legs' pair is still open - see the comment where the
-    # bolts are drawn.
+    # THE FRONT CROSS RAIL'S INNER LAMINATION IS NOTCHED FOR THE HARDWARE at the
+    # four ends that meet a corner leg - about BASE_BOLT_WASHER wide and 5 deep.
+    # The notch is the resolution and the model cannot subtract it, so it is
+    # declared here like every other hole drawn as a solid. That piece is housed
+    # in nothing and carries the base's depth nowhere: the HOUSED outer
+    # lamination is the pair that does.
+    frozenset({"Slot bolt head", "Grid rail, front inner lamination (lower)"}),
+    frozenset({"Slot bolt head", "Grid rail, front inner lamination (upper)"}),
+    frozenset({"Slot bolt nut", "Grid rail, front inner lamination (lower)"}),
+    frozenset({"Slot bolt nut", "Grid rail, front inner lamination (upper)"}),
+    frozenset({"Slot bolt thread", "Grid rail, front inner lamination (lower)"}),
+    frozenset({"Slot bolt thread", "Grid rail, front inner lamination (upper)"}),
+    frozenset({"Slot bolt", "Grid rail, front inner lamination (lower)"}),
+    frozenset({"Slot bolt", "Grid rail, front inner lamination (upper)"}),
+    frozenset({"Slot bolt", "Leg, front left, outer strip"}),
+    frozenset({"Slot bolt", "Leg, front left, inner strip"}),
+    frozenset({"Slot bolt", "Leg, front right, outer strip"}),
+    frozenset({"Slot bolt", "Leg, front right, inner strip"}),
     frozenset({"Slot bolt", "Grid rail, fore-aft (lower)"}),
     frozenset({"Slot bolt", "Grid rail, fore-aft (upper)"}),
     frozenset({"Slot bolt", "Shear wall, centreline"}),

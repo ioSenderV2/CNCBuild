@@ -112,27 +112,24 @@ tongue's end face sits at {{T_BACK_WALL}} — it breaks out of the tongue's end 
 scallop. The front face is also the face that is uppermost and reachable with a rule while the leg
 lies on the wall; the back face is buried under it.
 
-## OPEN: the FRONT legs cannot use the same pair, and the model is what found it
+## One pattern at all eight tongues, and the cross rail's inner lamination gets notched
 
-🔴 **Run the rear pattern at a front corner leg and the second bolt's head and nut hit the front
-cross rail's inner lamination.** That piece is housed in nothing: it spans between the legs and
-**butts each leg's face**, which is the exact space the hardware stands proud into. The bolt at
-{{TONGUE_BOLT_B}} along the tongue lands on the lamination's rear face, and the head reaches
-{{FENDER_WASHER_T}} + {{BASE_BOLT_HEAD_H}} into it.
+**His call: the same {{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}} at a front leg as at a rear one**, off
+the back face there, which is that tongue's free end. A front leg has the same {{TONGUE_IN_LEG}} to
+work in — the front cross rail's housed lamination takes the other end where the back wall does at
+the rear — so the wood is the same joint twice and one pattern marks out both.
 
-**Sliding the pair back does not rescue it.** The hardware has to stay a washer's radius —
-{{BASE_BOLT_WASHER}} across, so 12 — clear of the lamination, which caps a bolt at about **38** along
-the tongue. A pair inside 21.5 and 38 is **16.5** apart, under the {{TONGUE_BOLT_SEP_MIN}} the
-washers themselves demand. Both limits cannot be met with a pair spread along the tongue.
+🔴 **What has to be notched is the cross rail's INNER lamination**, and it is a piece not cut yet,
+which is why nothing shows on the legs as they stand. That half is housed in nothing: it spans
+between the legs and **butts each leg's across-machine face**, which is where the bolt head stands
+{{FENDER_WASHER_T}} + {{BASE_BOLT_HEAD_H}} proud. **Four notches, one at each lamination end that
+meets a corner leg**, about {{BASE_BOLT_WASHER}} wide and 5 deep.
 
-**So the front legs want a different arrangement, and the obvious one is a VERTICAL pair** — the
-rail's whole {{GRID_MEMBER_H}} to work in, no lamination anywhere near it, and the mortise shoulders
-make the vertical spread redundant for rotation but it is not needed for rotation here, only for a
-second fixing. **His call.** Until it is made, the model draws the rear legs' bolts and the central
-wall's six and leaves the front four undrawn.
+**The notch costs only the cutting.** That piece carries the base's depth nowhere — the HOUSED outer
+lamination is the pair that does — and it is cut to fit between the legs anyway.
 
-**What this does NOT affect:** the rear corner legs, where there is no cross rail at all — the back
-wall sits in the leg's back and nothing butts the across-machine faces at rail height.
+**The rear legs need nothing:** no cross rail there at all, the back wall sits in the leg's back, and
+nothing butts the across-machine faces at rail height.
 
 ## Two consequences that cost nothing
 

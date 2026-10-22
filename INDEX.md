@@ -330,7 +330,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The tongue bolt holes](commissioning/base-as-built.md#the-tongue-bolt-holes)
 - [The corner legs' slots are filled, leaving a mortise at each grid](commissioning/base-as-built.md#the-corner-legs-slots-are-filled-leaving-a-mortise-at-each-grid)
 - [The pair as drilled, off the leg's FRONT face](commissioning/base-as-built.md#the-pair-as-drilled-off-the-legs-front-face)
-- [the FRONT legs cannot use the same pair, and the model is what found it](commissioning/base-as-built.md#the-front-legs-cannot-use-the-same-pair-and-the-model-is-what-found-it)
+- [One pattern at all eight tongues, and the cross rail's inner lamination gets notched](commissioning/base-as-built.md#one-pattern-at-all-eight-tongues-and-the-cross-rails-inner-lamination-gets-notched)
 - [Two consequences that cost nothing](commissioning/base-as-built.md#two-consequences-that-cost-nothing)
 - [The order the front span gets set in](commissioning/base-as-built.md#the-order-the-front-span-gets-set-in)
 
