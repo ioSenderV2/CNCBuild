@@ -3275,10 +3275,22 @@ note = "86 - the caster's mounting plate ACROSS the machine. FLAG: IT IS WIDER T
 
 [[dim]]
 sym = "CASTER_PLATE_T"
-value = 18
+value = 24
+provenance = "part"
+source = "his, cut"
+note = "24 - the thickness of HIS plate, the one between the caster's own 73 square and the rail. SETTLED: ALL FIVE ARE CUT AT 150 x 86 x 24 and none is fitted to its position. SETTLED: IT IS THE DROP BLOCK, AT A KNOWN THICKNESS RATHER THAN CUT TO FIT - the caster on its own hangs CASTER_BLOCK_MIN shy of the floor, and the plate under it overshoots that on purpose: the stack comes to CASTER_STACK and the wheels carry the assembly CASTER_LIFT clear. SETTLED: 24 OVER 18 IS HIS CALL and what it buys is leg clearance while rolling - CASTER_LIFT goes from 4.6 to 10.6, which is what a hump in the slab or a cord under one leg has to be got over. The cost is the same 6 added to the standing height, since the foot's range is fixed and the plate raises the whole of it. FLAG: IT IS WHAT MAKES THE PLATE LOAD-BEARING - it takes the whole corner through its own thickness, where a shim cut to fit was only ever making up a gap. NOTE: IT IS ALSO THE BOLT GRIP - a bolt through it into the rail crosses the full 24 before it reaches wood."
+
+[[dim]]
+sym = "CASTER_PLATE_SCREW_L"
+value = 63.5
 provenance = "part"
 source = "his"
-note = "18 - the thickness of HIS plate, the one between the caster's own 73 square and the rail. SETTLED: IT IS THE DROP BLOCK, AT A KNOWN THICKNESS RATHER THAN CUT TO FIT - the caster on its own hangs 13.4 shy of the floor, and 18 of plate under it overshoots that on purpose: the stack comes to CASTER_STACK and the wheels carry the assembly CASTER_LIFT clear. SETTLED: SO ALL FIVE ARE THE SAME PIECE, 150 x 86 x 18, and none of them is fitted to its position. FLAG: IT IS WHAT MAKES THE 18 LOAD-BEARING - the plate takes the whole corner through its own thickness, where a shim cut to fit was only ever making up a gap. NOTE: IT IS ALSO THE BOLT GRIP - a bolt through it into the rail has 18 of plate before it reaches wood."
+note = "63.5 - 2-1/2in, the COUNTERSUNK #8 WOOD SCREW holding a caster plate up against a lower rail's underside. TWO PER PLATE, his, driven up through the plate into the rail. FLAG: THE GAUGE IS #8 AND IT IS NOT AN M8 - it stays out of fasteners.toml for exactly that reason: that schedule renders every size as M-something by construction, which is the same trap BASE_BOLT_D's imperial figure would have fallen into. SETTLED: TWO SCREWS IS ENOUGH BECAUSE THE PLATE IS IN COMPRESSION - the structure bears down on it and the caster bears up, so these locate it and carry nothing. NOTE: THEY GO INTO THE RAIL'S BOTTOM EDGE, which is plywood edge grain rather than face - fine for a locating screw, and the reason not to ask them to carry load. NOTE: THROUGH CASTER_PLATE_T's 24 they leave 39.5 in the rail's GRID_MEMBER_H of depth."
+
+[[dim]]
+sym = "CASTER_PLATE_SCREW_COUNT"
+expr = "2 * CASTER_COUNT"
+note = "10 - the caster plate screws in total, two at each of the five positions. NOTE: FOUR GO INTO A LOWER RAIL'S UNDERSIDE and two into the central wall's bottom edge, which is the same joint either way: a plate held up against a face it bears on."
 
 [[dim]]
 sym = "CASTER_STACK"
