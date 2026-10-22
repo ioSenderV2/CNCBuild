@@ -53,12 +53,6 @@ tenons is the instrument that answers the question. **The front pair wiggling is
 
 ## The tongue bolt holes
 
-🔴 **SET OUT FROM THE TONGUE'S END — the back wall's inner face — NEVER from the leg's back face.**
-The two references are {{T_BACK_WALL}} apart and that 18 is the whole error. An 8 hole centred 21.5
-from the LEG's back face spans 17.5 to 25.5 while the tongue's end face sits at 18, so it breaks out
-of the tongue's end by half a millimetre and the bolt lands in a scallop rather than a hole. The
-tongue's end is also a face a rule can bear on, which the leg's back face is not once the wall is in.
-
 **The drawn pair** is {{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}} off the leg's back face, which is 17 and
 51 into the tongue's {{TONGUE_IN_LEG}} — 17 of edge at each end, {{TONGUE_BOLT_Z}} up the rail.
 
@@ -72,12 +66,29 @@ tongue's end is also a face a rule can bear on, which the leg's back face is not
 Widening the edge brings the pair together and narrowing it pushes them apart, so a pair has to clear
 both at once. The drawn 34 apart clears the separation limit by 9.
 
-OPEN: **THE AS-DRILLED POSITIONS ARE NOT RECORDED YET.** Holes are already in the two right-hand
-legs' joints and the figures reaching this file disagreed about their reference — one reading put a
-pair at 21.5 and 50 into the tongue, another put a single hole 40 clear of the back wall. **Measure
-one joint and write the two distances here, taken from the back wall's inner face along the rail.**
-Anything inside the tongue's 68 with real edge at both ends does the job; what must not be guessed is
-which face the existing holes were set out from.
+## The pair as drilled, off the leg's FRONT face
+
+**His, and it is the pattern the base is built to.** Both holes are set out from the leg's **front**
+face — the face uppermost while the leg lies on its back on the wall, and the one the fore-aft rail
+drops past into the slot.
+
+| | From the leg's FRONT face | Into the tongue's {{TONGUE_IN_LEG}} | Edge left |
+|---|---|---|---|
+| First, drilled | **21.5** | 46.5 | **21.5** at the front end |
+| Second | **50** | 18 | **18** at the back end, against the wall |
+| Apart | **28.5** | | clears {{TONGUE_BOLT_SEP_MIN}} by 3.5 |
+
+Both at {{TONGUE_BOLT_Z}} up the rail's {{GRID_MEMBER_H}}, which is the other axis and does not move.
+
+**It clears both limits at once**, which is the thing worth checking and the reason to write it down:
+21.5 and 18 of edge against the drawn pair's 17 and 17, for 28.5 of separation against 34. More edge,
+less leverage, and both comfortable for a bolt doing location duty.
+
+🔴 **The reference is the FRONT face, and getting that wrong is an 18 error in the dangerous
+direction.** Set out 21.5 from the leg's BACK face instead and an 8 hole spans 17.5 to 25.5 while the
+tongue's end face sits at {{T_BACK_WALL}} — it breaks out of the tongue's end and the bolt lands in a
+scallop. The front face is also the face that is uppermost and reachable with a rule while the leg
+lies on the wall; the back face is buried under it.
 
 ## Two consequences that cost nothing
 

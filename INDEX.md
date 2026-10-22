@@ -328,6 +328,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The dry fit settles it, and it outranks the arithmetic](commissioning/base-as-built.md#the-dry-fit-settles-it-and-it-outranks-the-arithmetic)
 - [What the remaining parts get cut to](commissioning/base-as-built.md#what-the-remaining-parts-get-cut-to)
 - [The tongue bolt holes](commissioning/base-as-built.md#the-tongue-bolt-holes)
+- [The pair as drilled, off the leg's FRONT face](commissioning/base-as-built.md#the-pair-as-drilled-off-the-legs-front-face)
 - [Two consequences that cost nothing](commissioning/base-as-built.md#two-consequences-that-cost-nothing)
 - [The order the front span gets set in](commissioning/base-as-built.md#the-order-the-front-span-gets-set-in)
 

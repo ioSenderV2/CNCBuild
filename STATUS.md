@@ -258,10 +258,6 @@ the interface, not this file.
 
 - OPEN: [L16](linear-encoder/sensor-board.md#the-through-hole-jack-does-not-obviously-fit) — *Sensor board*<br>The through-hole jack does not obviously fit The tape-facing side has a hard height budget, and it is small:
 
-## [commissioning/base-as-built.md](commissioning/base-as-built.md)  (1)
-
-- OPEN: [L75](commissioning/base-as-built.md#the-tongue-bolt-holes) — *The base, as built / The tongue bolt holes*<br>THE AS-DRILLED POSITIONS ARE NOT RECORDED YET. Holes are already in the two right-hand legs' joints and the figures reaching this file disagreed about their reference — one reading put a pair at 21.5 and 50 into the tongue, another put a single hole 40 clear of the back wall. Measure one joint and write the two distances here, taken from the back wall's inner face along the rail. Anything inside the tongue's 68 with real edge at both ends does the job; what must not be guessed is which face the existing holes were set out from.
-
 ## [commissioning/masses.md](commissioning/masses.md)  (2)
 
 - OPEN: [L57](commissioning/masses.md#measured-masses) — *Measured masses*<br>The whole-machine and whole-installation figures are ESTIMATES, not weighings, and should not be quoted as measurements. From the 2026-09-26 session: the machine with spindle, risers and cabling at roughly 80 kg, and the whole installation - machine, torsion box, sand and timber base
@@ -326,4 +322,4 @@ the interface, not this file.
 
 ---
 
-**235 open** across 33 files.
+**234 open** across 33 files.
