@@ -780,7 +780,10 @@ def main() -> int:
     # out of the tongue's end: see TONGUE_BOLT_A.
     bd, wt, wd = v["BASE_BOLT_D"], v["FENDER_WASHER_T"], v["BASE_BOLT_WASHER"] / 2
     hh, nh = v["BASE_BOLT_HEAD_H"], v["BASE_BOLT_NUT_H"]
-    SBOLT, SHEAD = 0x3C4248, 0x6E7479
+    # BLACK, NOT GREY - his, off the drawn model: the grey head and nut were
+    # lost against the plywood at any distance, and these are the parts a reader
+    # is looking for when they open the base up.
+    SBOLT, SHEAD = 0x101214, 0x101214
 
     def slot_bolt(lx0, lx1, by, bz, what):
         """One bolt across a leg's width, socket head left, lock nut right.
