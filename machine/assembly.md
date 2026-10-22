@@ -1223,13 +1223,16 @@ base parts get cut to.
 
 | | |
 |---|---|
-| **Each fore-aft rail tongue** | **Two bolts**, at **{{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}}** from the leg's face along its {{POST_W_Y}}, both at the rail's mid-height, **{{TONGUE_BOLT_Z}}** in its {{GRID_MEMBER_H}} |
+| **Each fore-aft rail tongue** | **Two bolts**, at **{{TONGUE_BOLT_A}} and {{TONGUE_BOLT_B}}** from the leg's BACK face — the quarter points of the tongue's **{{TONGUE_IN_LEG}}**, not of the leg's {{POST_W_Y}} — both at the rail's mid-height, **{{TONGUE_BOLT_Z}}** in its {{GRID_MEMBER_H}}. 🔴 **The tongue does not fill the leg's depth:** the back wall takes {{T_BACK_WALL}} of it at a rear leg and the front cross rail's housed lamination the same at a front one, so set out on the leg's {{POST_W_Y}} the first bolt lands 3.5 from the tongue's own end |
 | **Central wall in the back centre leg** | **Three bolts**, spaced **{{CENTRE_WALL_BOLT_PITCH}}** apart up the {{BASE_VOLUME_H}} clear band — so **{{CENTRE_WALL_BOLT_PITCH}}, 282 and 423** above the lower rail's top face |
 
 **Spaced along the tongue, not stacked up it.** The mortise shoulders already stop a rail rotating in
 the vertical plane by bearing on them, so a vertical pair buys little and puts the upper bolt near the
-rail's top edge. Spread along the leg's depth the pair stops the rail rotating about a single bolt,
-which the dry slot on its own does not.
+rail's top edge. Spread along the tongue the pair stops the rail rotating about a single bolt,
+which the dry slot on its own does not. **That leaves 17 of edge at each end of the tongue** — the
+most a symmetric pair can keep while staying on the quarter points, and the trade is deliberate:
+widening the edge means bringing the pair closer together, which is the anti-rotation leverage the
+second bolt exists for. These bolts are location duty, not withdrawal.
 
 **One bolt length does every one of these joints.** Every tongue is {{GRID_MEMBER_T}} wide and fills
 the slot, so an upper rail, a lower rail and the central wall all cross the same

@@ -3363,14 +3363,19 @@ provenance = "pinned"
 note = "2 - bolts through each fore-aft rail tongue where it passes through a leg's slot. SETTLED: TWO, NOT ONE - his question. ONE BOLT IS A PIN: it carries withdrawal but the rail can still rotate about it, and the only thing resisting that is the housed fit in a DRY slot that has to survive seasonal movement and the base being rolled. Two spaced along the tongue make the joint non-rotating on its own and halve the bearing load per hole, which is what matters in plywood - the limit is the hole wall crushing, not the bolt."
 
 [[dim]]
+sym = "TONGUE_IN_LEG"
+expr = "POST_W_Y - T_BACK_WALL"
+note = "68 - how much of a leg's POST_W_Y the fore-aft rail's tongue actually occupies, which is NOT the leg's full depth. 🔴 AT A REAR LEG THE BACK WALL TAKES THE OTHER 18, sitting in a full-height rebate in the leg's back, and at a FRONT leg the front cross rail's housed outer lamination takes the same 18 at the other end - so the tongue has 68 either way and the bolt pattern comes off THIS and not off POST_W_Y. FLAG: IT IS THE SPAN THE TONGUE BOLTS ARE SET OUT IN - see TONGUE_BOLT_A."
+
+[[dim]]
 sym = "TONGUE_BOLT_A"
-expr = "POST_W_Y / 4"
-note = "21.5 - the first tongue bolt, from the leg's face, along the leg's 86 fore-aft. Quarter points, so the pair is symmetric in the leg and each end of the tongue keeps 21.5 of edge - about 2.7 x BASE_BOLT_D, which Baltic birch takes."
+expr = "T_BACK_WALL + TONGUE_IN_LEG / 4"
+note = "35 - the first tongue bolt, from the leg's BACK face, which is 17 into the tongue. SETTLED: THE QUARTER POINTS ARE OF TONGUE_IN_LEG'S 68, NOT OF THE LEG'S 86 - his catch at the bench. Set out on the leg's full depth the first bolt lands 21.5 from the back face, which is only 3.5 past the back wall's inner face and 3.5 from the tongue's own end: it would split out. On the 68 the pair keeps 17 of edge at each end of the tongue, about 2.1 x BASE_BOLT_D. FLAG: 17 IS LESS EDGE THAN THE 86 VERSION CLAIMED and it is the most a symmetric pair can keep while staying on the quarter points - widening the edge means bringing the pair closer together, which is the anti-rotation leverage the second bolt exists for. This bolt is location duty, not withdrawal, so the leverage is worth more than the extra edge. NOTE: AT A FRONT LEG MEASURE FROM THE FRONT FACE instead, the face the cross rail's lamination is housed in - the geometry is the same end-for-end."
 
 [[dim]]
 sym = "TONGUE_BOLT_B"
-expr = "POST_W_Y - TONGUE_BOLT_A"
-note = "64.5 - the second tongue bolt, the other quarter point. The two are 43 apart, and that spacing is what stops the rail rotating about a single bolt."
+expr = "POST_W_Y - TONGUE_IN_LEG / 4"
+note = "69 - the second tongue bolt, the other quarter point of TONGUE_IN_LEG, which lands 17 from the leg's FRONT face because that face is the tongue's other end. The two are 34 apart, and that spacing is what stops the rail rotating about a single bolt. FLAG: IT IS NOT POST_W_Y - TONGUE_BOLT_A - that mirrors the pair about the LEG's centre, which is only the same thing while the tongue fills the whole depth. It does not: see TONGUE_IN_LEG."
 
 [[dim]]
 sym = "TONGUE_BOLT_Z"
