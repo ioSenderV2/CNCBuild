@@ -1205,10 +1205,11 @@ laminations carry in-plane shear and bending in parallel whether or not every sq
 
 #### The slot joints are bolted, not glued
 
-**Every joint that lands in a leg slot is a dry fit held by M8 × {{BASE_BOLT_L}} flange bolts** —
-fender washer, flange bolt, through the joint, fender washer, **flange lock nut** — **run across the
-leg's {{POST_W_X}}**, through one outer strip, through whatever fills the slot, and out through the
-far strip.
+**Every joint that lands in a leg slot is a dry fit held by M8 × {{BASE_BOLT_L}} bolts** — fender
+washer, **low-profile hex socket head**, through the joint, fender washer, **flange lock nut** —
+**run across the leg's {{POST_W_X}}**, through one outer strip, through whatever fills the slot, and
+out through the far strip. The head is the furniture fastener, 3.4 thick: it looks finished and leaves
+no sharp edge where a hand goes.
 
 **The base goes together as two assemblies and then ties them.** The three front legs are glued to the
 front rails; the back wall is glued and screwed to all three rear legs. **The fore-aft rails and the
