@@ -171,10 +171,29 @@ So the rails carry the back's spacing forward and the front legs inherit it.
    until the legs it will hold have told you the span.
 3. **Square it AND plumb it — the diagonals cannot see vertical.** A leg can be plumb or leaning and
    the plan diagonals read the same. Set the two front legs so the front span matches the back, then
-   take **diagonals at the lower grid and at the upper grid**, and put a level on the leg faces. Two
-   rectangles at two heights plus plumb legs is the whole check.
+   take the **diagonals across the top of the upper grid**, and put a level on the leg faces. One
+   rectangle plus plumb legs is the whole check.
    **Ignore the front centre leg here** — the rectangle is a four-corner job and that leg is located
    fore-aft by the central wall, not by the frame.
+
+   🔴 **Lay the tape FLAT ON THE UPPER FORE-AFT RAILS and read corner to corner off the four corner
+   legs' OUTER corners.** That plane is the only one that is clear, and it is clear by about 10 either
+   way:
+
+   | | Height off the floor |
+   |---|---|
+   | Central wall's top edge | 856 — the tape bridges over it |
+   | **Upper fore-aft rails' top face — the tape lies here** | **864** |
+   | The ledge, where every tenon starts | 874 — the tape passes under all three |
+
+   At 864 each corner leg is still its full {{POST_W_X}} × {{POST_W_Y}} section with a square outer
+   corner to hook on; the ledge and the tenon above it are cut {{BASE_BOX_GAP}} higher.
+
+   🔴 **THE DIAGONAL AT THE LOWER GRID CANNOT BE TAKEN AND IS NOT WANTED.** The central wall runs
+   from {{BASE_FLOOR_CLEAR}} up to its own top edge, so it crosses the lower grid plane and every plan
+   diagonal in it. **What catches a leaning leg is the level on the leg faces**, not a second
+   rectangle — which is why both halves of this step are listed, and the check is not weaker for
+   having one diagonal pair instead of two.
 4. **Measure the front span** between the two front legs' outermost strips' inner faces. It should
    read about **1220**, the same span the back wall occupies.
 5. **Cut the cross rails' outer laminations to that** — **there are two, lower and upper, and they
