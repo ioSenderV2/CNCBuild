@@ -57,11 +57,11 @@
 - SETTLED: ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
   line both check out against the physical template - photo committed. **The front fin's geometry
   is fully settled.**
-- FLAG: **Whether the Laguna can hold the HEIGHT REFERENCE across a {{REAR_PLATE_L_ORDERED}} part.** Bed size is not travel,
-  and the question is not whether the part fits - it is whether the two 8-bolt patterns' relative
-  height survives a reposition. **The budget is well inside 1 mm**, that being the float the 9 mm
-  holes give; past it the plate wins and a beam end has to be jacked. Gated on the mill model and
-  DRO item below.
+- SETTLED: ~~**Whether the Laguna can hold the HEIGHT REFERENCE across a {{REAR_PLATE_L_ORDERED}} part.**~~
+  **Moot - the plate never goes on the mill.** The waterjet cut both 8-bolt patterns in one setup,
+  so there is no reposition to lose the height reference across. The budget that mattered is
+  unchanged - **well inside 1 mm**, the float the 9 mm holes give, and past it the plate wins and a
+  beam end has to be jacked - but it is now a fit-up check on the Y2 end, not a machining question.
 - OPEN: **A sensor reading at the min-Y end of the tape**, with the stepper in place, against
   mid-travel. Before 3 m of one-shot PSA goes down.
 - SETTLED: ~~**Which extrusion face the casting bolts to**~~ **Closed 2026-10-02 - the question had no
@@ -152,8 +152,13 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   pitch the other bolt-on plates use instead of being centred on the plate.
   **The envelope figure kept its meaning and lost the plate's name:** it is `MACHINE_OUTER_W` now,
   the width `BOX_W` takes and the ceiling lateral-stiffness.md names. `REAR_PLATE_L` is retired.
-  OPEN: **The Y2-end holes are provisional** - measure the built beam spacing before drilling that
-  end.
+  OPEN: **The Y2-end holes are provisional** - and they are cut, not pending: the waterjet cut
+  both patterns, so the check is a fit-up rather than a measurement taken before drilling.
+  SETTLED: **The near-end pattern fits. Measured off the delivered plate: all eight bolts enter one
+  Y beam end cleanly, with the extrusion's bottom face flush with the opening cut for the casting.**
+  That is two features agreeing off one fit-up - the 8-bolt pattern against the extruded corner
+  bores, and the opening's vertical position against the beam underside. **The Y2 end is still
+  untried**, and it is the one carrying the beam-spacing assumption.
 
 ## From the 2026-10-08 datasheet pass
 
@@ -256,7 +261,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   **14.1 mm centre-to-centre**, about 5 mm of web. **No tram sub-plate, no added moment arm.** Full
   working in the Z plate section.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
-- FLAG: **Can Garen's mill traverse ~1212 mm in X?** The direct question, and the one the rear plate waits on: the M8 patterns sit at **both ends of a {{REAR_PLATE_L_ORDERED}} plate**, so either the machine reaches both or the part is repositioned mid-job - and a reposition is where the height reference between the two patterns gets lost. Ask the travel, not the model number; the model is only a proxy for it.
+- SETTLED: ~~**Can Garen's mill traverse ~1212 mm in X?**~~ **Dead - nothing a metre long is going on it.** The question existed because the rear plate's M8 patterns sit at **both ends of a {{REAR_PLATE_L_ORDERED}} plate**; the waterjet cut both, and the two steel outboard plates and the steel X back joining plate came cut as well. Ask the travel again only if a metre-long part goes back on the list.
 - SETTLED: ~~**Z travel floor** - where the confirmed travel sits relative to the spoilboard.~~
   **Closed 2026-10-11, and it was not a machine measurement.** The tip floor is **45.2 mm** above the
   box's top skin and the spoilboard surface is at **67.5 mm**; the gantry fixes the reach and the

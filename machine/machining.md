@@ -20,7 +20,7 @@ not any more:
 | Part | Why the mill |
 |---|---|
 | **Two Y front plates**, 1/2" | the 8-bolt corner-bore pattern. **No window** — they are solid |
-| **The rear plate**, 1/4" steel, {{REAR_PLATE_L_ORDERED}} long | two 8-bolt patterns a metre apart that must match extruded bores - and the part may exceed the machine's X travel |
+| ~~**The rear plate**, 1/4" steel, {{REAR_PLATE_L_ORDERED}} long~~ **OFF THE TRIP - the waterjet cut it** | It was here for two 8-bolt patterns a metre apart that must match extruded bores, and because the part may exceed the machine's X travel. **Both patterns came cut, and the near one fits: all eight bolts enter a Y beam end with the extrusion's bottom face flush with the casting opening.** The Y2 end is untried |
 | **Interposer bars**, 60 × 150 × 3/8" - two for Y, plus X | six tapped M5 under a bearing face and six flange clearance holes, all in a small part |
 
 FLAG: **The six bolt-on plates went ONTO the trip on 2026-10-09** - two **11 7/8" × 39 5/16" × 10
@@ -37,11 +37,11 @@ REJECTED: **A sharper reason stood here for the front strips and the 2" stock re
 45 wide they filled the block gap exactly, so a row wandering in Y drove the strip into a bearing
 block. At 50.8 the strip runs *under* the blocks and the next obstruction is the rail, 9.6 away.
 
-OPEN: **This is six more metre-long parts on a trip that already has an open question about X
-traverse** - the one gating the rear plate. If the answer comes back short, **reposition the two outboard plates or the X back
-plate** - there the T-nut reason that used to keep them home does make a shifted station cheap.
-**Not the front strips, and not the rear plate**: the strips because their Y is a clearance against a
-bearing block, the rear plate because its two patterns must meet extruded bores a metre apart.
+SETTLED: **Three of those six are off the trip - the waterjet cut them.** The two **steel** outboard
+plates and the **steel** X back joining plate came back with every hole cut, and an M8 passes a
+random sample of them. **Only the three 6061 front strips remain on the list from this group**, and
+the X-traverse question that used to gate the group is dead with the rear plate: nothing steel is
+going to the mill.
 
 SETTLED: **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.
