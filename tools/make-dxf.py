@@ -58,7 +58,7 @@ ORDER = [
     ('back-plate', 'stock', ('Y rear plate', 's7', 1211.0, 302.0, 6.19,
                              'steel', 1)),
     ('side-plates', 'stock', ('Y outboard / side plate', 's9', 1000.0, 302.0,
-                              3.39, 'steel', 2)),
+                              3.45, 'steel', 2)),
     ('sole-plates', 'sole', None),
     # The three INSIDE JOINING STRIPS were here and are not quoted: he drilled
     # them by hand. Sheet s8 still specifies the part - it just does not go out.

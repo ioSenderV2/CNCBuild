@@ -193,9 +193,9 @@ source = "measured 2026-10-02"
 
 [[dim]]
 sym = "T_SIDE_PLATE"
-value = 3.39
+value = 3.45
 provenance = "measured"
-note = "3.39 - MICROMETER, the delivered sheet. It supersedes the sales order, which read CSH 10GA(.135) and gave 3.429: 10 gauge is a gauge, the gauge is a nominal, and this one came in 0.039 under it. FLAG: IT FEEDS 14 SYMBOLS and the two that matter are MACHINE_OUTER_W, the flush envelope, which is two of these wide, and the tee-track bed chain, where TT_BED_FLOAT has the least room of anything it touches. OPEN: T_OUTBOARD_PLATE IS AN ALIAS OF THIS. If the outboard plates came off a different sheet they need their own reading rather than inheriting one taken on this one."
+note = "3.45 - MICROMETER, the delivered sheet, and it is HIS CHOSEN NOMINAL ACROSS A SPREAD rather than one reading. The sheet reads 3.39 to 3.46 and once 3.5 depending where it is miked, so a single figure to three places is not honest about this part. FLAG: THE SCALE AGREES INDEPENDENTLY - the plate weighs 18 lb, which this thickness computes within about a percent of, where 3.39 left it 1.9 percent heavy. Two instruments on the plate itself; see ../commissioning/masses.md. FLAG: IT IS OVER ITS GAUGE, not under - the sales order reads CSH 10GA(.135), which is 3.429. A gauge is a nominal and this sheet beats it. OPEN: A 3.646 DOES NOT REPRODUCE and is read as a transposed 3.46 - noted because the figure reached the prose, and a reading nobody can repeat is not a measurement. FLAG: IT FEEDS 14 SYMBOLS and the two that matter are MACHINE_OUTER_W, the flush envelope, which is two of these wide, and the tee-track bed chain, where TT_BED_FLOAT has the least room of anything it touches. OPEN: T_OUTBOARD_PLATE IS AN ALIAS OF THIS. If the outboard plates came off a different sheet they need their own reading rather than inheriting one taken on this one."
 source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 
 [[dim]]
@@ -1038,7 +1038,7 @@ source = "Specialty Metals Corp sales order W053768, 2026-10-08"
 sym = "REAR_PLATE_SHORTFALL"
 expr = "MACHINE_OUTER_W - REAR_PLATE_L_ORDERED"
 unit = "mm"
-note = "How far the bought back plate falls short of the flush envelope. It costs a recessed corner and no hole: the plate is placed by its LEFT EDGE on the Y1 extrusion's outboard face and its far end falls where that puts it, so nothing is laid out from the far end. FLAG: IT MOVES WITH T_SIDE_PLATE, which is a gauge and not yet calipered - the envelope is two side plates wide and the plate's own length is fixed, so every thou the sheet comes in over nominal lands here, doubled."
+note = "How far the bought back plate falls short of the flush envelope. It costs a recessed corner and no hole: the plate is placed by its LEFT EDGE on the Y1 extrusion's outboard face and its far end falls where that puts it, so nothing is laid out from the far end. FLAG: IT MOVES WITH T_SIDE_PLATE, which is MIKED NOW AND CAME IN OVER ITS GAUGE - the envelope is two side plates wide and the plate's own length is fixed, so every thou of that lands here, doubled."
 
 [[dim]]
 sym = "MACHINE_OUTER_W"
