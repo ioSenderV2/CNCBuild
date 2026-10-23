@@ -260,7 +260,7 @@ the interface, not this file.
 
 ## [commissioning/base-as-built.md](commissioning/base-as-built.md)  (1)
 
-- OPEN: [L213](commissioning/base-as-built.md#it-rolls-on-five-wheels-with-every-leg-clear) — *The base, as built / It rolls on five wheels with every leg…*<br>Which of the two explanations it is has not been settled, and one move settles it — roll the base a few feet and read the same two legs again. Numbers that travel with the base are the parts, and then 10.6 is wrong everywhere it is quoted: the stack is 110.6 against the lower grid's 100, and one of those three figures is not what the parts give. Numbers that change are the slab, and 4 over the fore-aft span is an ordinary garage fall toward the door.
+- OPEN: [L230](commissioning/base-as-built.md#it-rolls-on-five-wheels-with-every-leg-clear) — *The base, as built / It rolls on five wheels with every leg…*<br>Which of the two explanations it is has not been settled, and one move settles it — roll the base a few feet and read the same two legs again. Numbers that travel with the base are the parts, and then 10.6 is wrong everywhere it is quoted: the stack is 110.6 against the lower grid's 100, and one of those three figures is not what the parts give. Numbers that change are the slab, and 4 over the fore-aft span is an ordinary garage fall toward the door.
 
 ## [commissioning/masses.md](commissioning/masses.md)  (2)
 

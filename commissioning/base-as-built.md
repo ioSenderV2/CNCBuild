@@ -170,6 +170,23 @@ top, with no way to feel whether it seated; left on the leg it is there waiting 
 it. It carries its load in pure compression, so a screw into the leg top is location only, and it
 stays clear of the slot between the two tabs.
 
+🔴 **THE SHOULDERS ARE 10 LOWER THAN DRAWN, AND THAT IS THE ROOM THE BAR SITS IN.** The model stands
+the front centre leg's two {{LEG_STRIP}} shoulders **10 proud of the front cross rail's top face**;
+his are **flush with it** — found off the model with the outer laminations hidden. So the bar is not
+stacked on a correct shoulder, it **replaces the 10 of leg that is not there**, and its top lands
+within a fraction of the plane the drawing puts the shoulder at.
+
+**That is also why the front cap does not fight it.** The cap's bottom edge runs at the box's
+underside, which is that same plane, so over the 6 where the two meet the cap lands ON the bar
+instead of into it.
+
+**And it is why the box's own weight holds the bar down.** The skin's front notch is only
+{{POST_W_X}} + 2 wide and the bar is 110, so the skin either side of the notch sits on the bar's two
+ends — which is what the length past the leg was for.
+
+**The ledge pair measures 20 × 18 each, 720 mm² for the two** — his, against the {{SHOULDER_MID}}
+the registry computes from a drawn 24-deep band. **720 is what that leg has.**
+
 🔴 **AND THE BAR IS NOT A STOPGAP FOR AN UNFINISHED BOX.** tools/check-bearing.py reads the drawn
 geometry with every lamination in place and still gives this leg **216 mm² of the
 {{SHOULDER_MID}}** it is credited with, all of it under the front cap: the skin's notch runs out to
