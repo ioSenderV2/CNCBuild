@@ -152,9 +152,14 @@ skin's front notch **runs out to the skin's front edge**, which is what made it 
 two holes, and that leaves no skin standing over those strips. The two rear corners were never in
 question: they sit inside closed cutouts with skin all round.
 
-**His fix, in the part: a 110 × 20 × 10 bar of 6061, laid across the leg to bridge its two tenon
+**His fix, in the part: a 110 × 20 × 10.2 bar of 6061, laid across the leg to bridge its two tenon
 tabs.** The skin's front band lands on the bar instead of on air, and at 110 it reaches past the
 leg's {{POST_W_X}} at both ends so the bearing is outside the slot rather than over it.
+
+**It stands 0.7 proud of the two rear shoulders**, which measure about 9.5 against the bar's 10.2.
+Nothing is done about it: three points cannot rock, so the box lands on all three and sits that much
+nose-up over the fore-aft span, and the machine is referenced to the TOP skin rather than to how the
+box sits on the legs.
 
 **Aluminium is the right material here and not an indulgence** — the band it replaces is plywood
 edge-on at about 1 MPa, and a 10 bar in compression over that span is nowhere near anything.
