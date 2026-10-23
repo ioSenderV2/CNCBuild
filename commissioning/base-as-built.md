@@ -164,6 +164,24 @@ box sits on the legs.
 **Aluminium is the right material here and not an indulgence** — the band it replaces is plywood
 edge-on at about 1 MPa, and a 10 bar in compression over that span is nowhere near anything.
 
+## The box closes the gap by hand, and the top skin is why
+
+**Measured, his: with the box on its three points and NO TOP SKIN, moderate hand pressure on the
+front left corner takes it down onto the top of the front left leg** — so it crosses the whole
+{{BASE_BOX_GAP}}. The feet were all on the floor, so nothing was rocking; it is deflection in the box.
+
+**That is the missing skin and not the box.** A torsion box works as two skins in tension and
+compression with the ribs carrying shear between them; with one skin off it is an open tray, and
+almost none of the designed stiffness is there yet. 🔴 **FOUR TEMPORARY SCREWS DO NOT MAKE A SKIN
+EITHER** — the top works by being glued across the whole rib grid, so the box stays this flexible
+until that glue-up, however firmly the sheet is held down at its corners.
+
+🔴 **So this reading does NOT say anything about the finished mount, and must not be quoted as if it
+did.** What it does say is that the check is worth repeating: **once the top skin is GLUED, lean on
+each front corner again and watch the gap to the front corner leg.** If a corner can still reach a
+leg top, the mount has a fourth and fifth point under load and assembly.md's silent failure is live —
+the Y beams drift out of coplanar and nothing else shows it. If it cannot, the gap is doing its job.
+
 ## Two consequences that cost nothing
 
 - **The box's tongues will stand about 1 proud of each leg's outer face** instead of flush. Cosmetic:
