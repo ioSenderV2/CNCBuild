@@ -73,10 +73,10 @@ $docs = @(
     # -Doc dxf still means all of them and the generator still runs once.
     [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-1-steel.html'
                                        Pdf  = 'machine/drawings/dxf/quote-1-steel.pdf' }
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-x-back-joiner.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-2-x-back-joiner.pdf' }
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-3-aluminium.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-3-aluminium.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-front-fins.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-2-front-fins.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-3-x-end-plates.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-3-x-end-plates.pdf' }
 )
 # 'both' still means the two root documents, so an older command line keeps working
 if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }

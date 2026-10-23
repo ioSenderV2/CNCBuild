@@ -62,8 +62,9 @@ ORDER = [
     ('sole-plates', 'sole', None),
     # The three INSIDE JOINING STRIPS were here and are not quoted: he drilled
     # them by hand. Sheet s8 still specifies the part - it just does not go out.
-    ('x-back-joiner', 'stock', ('X back joining plate', 's10', 1000.0, 120.0,
-                                6.42, '6061', 1)),
+    # THE X BACK JOINING PLATE WENT THE SAME WAY, 2026-10-23: machined at home
+    # and installed on the beam, so it has no drawing in the folder either.
+    # Sheet s10 still specifies it. All six bolt-on plates are done.
     ('front-fins', 'fins', ('Y front fin', 's1a', 302.0, 302.0, 10.0,
                             '6061', 2)),
     ('x-end-plate-left', 'xep', ('X gantry end plate, LEFT-HAND', 0,

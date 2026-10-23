@@ -30,8 +30,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "machine" / "drawings" / "dxf"
 
 # THE SPLIT IS HIS, BY WHAT GETS QUOTED TOGETHER - not by material, which is
-# why group 3 is "everything else" rather than "the aluminium": group 2 is
-# aluminium too and is quoted on its own. Every DXF in the folder must appear
+# why groups 2 and 3 are both 6061 and go out separately: the fins are being
+# sent on their own to price one part. Every DXF in the folder must appear
 # in exactly one group; main() fails if one is missing or named twice, so a
 # ninth drawing cannot drop silently out of all three requests.
 GROUPS = [
@@ -45,23 +45,24 @@ GROUPS = [
         "files": ["1-back-plate.dxf", "2-side-plates.dxf",
                   "3-sole-plates.dxf"],
     },
+    # THE X BACK JOINING PLATE HAD ITS OWN REQUEST and does not any more - he
+    # machined it at home, 2026-10-23, and its drawing left the folder with it.
     {
-        "out": "quote-2-x-back-joiner.html",
-        "title": "Waterjet quote - X back joining plate",
-        "lead": "One drawing: the <b>X back joining plate</b>, 28 holes in a "
-                "supplied length of 6061 flat bar. The material is "
-                "<b>supplied</b> - the job is the holes.",
-        "files": ["4-x-back-joiner.dxf"],
+        "out": "quote-2-front-fins.html",
+        "title": "Waterjet quote - Y front fins",
+        "lead": "One drawing, <b>6061</b>: the <b>two Y front fins</b>, both "
+                "out of one square of plate.",
+        "files": ["4-front-fins.dxf"],
     },
     {
-        "out": "quote-3-aluminium.html",
-        "title": "Waterjet quote - 6061 fins and end plates",
-        "lead": "Three drawings in <b>6061</b>: the two Y front fins and the "
-                "two X gantry end plates. <b>All material is supplied</b> and "
-                "the outline drawn is the piece handed over, so the job is "
-                "the holes and the profiles cut out of each piece.",
-        "files": ["5-front-fins.dxf", "6-x-end-plate-left.dxf",
-                  "7-x-end-plate-right.dxf"],
+        "out": "quote-3-x-end-plates.html",
+        "title": "Waterjet quote - X gantry end plates",
+        "lead": "Two drawings in <b>6061</b>: the two <b>X gantry end "
+                "plates</b>, each with its doubler nested in the strip "
+                "beside it. <b>All material is supplied</b> and the outline "
+                "drawn is the piece handed over, so the job is the holes and "
+                "the profiles cut out of each piece.",
+        "files": ["5-x-end-plate-left.dxf", "6-x-end-plate-right.dxf"],
     },
 ]
 
