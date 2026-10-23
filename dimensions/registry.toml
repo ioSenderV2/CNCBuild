@@ -3213,12 +3213,19 @@ sym = "RAIL_CROSS_INNER_END_CLEAR"
 value = 18
 provenance = "part"
 source = "his"
-note = "18 - how far short of a leg's face each end of a front cross rail's INNER lamination stops, so it clears the bolt hardware standing proud of that face. SETTLED: IT STOPS SHORT RATHER THAN BUTTING, his - the lamination butted hard would land on a bolt's washer and be held off the leg. SETTLED: 18 OVER THE RAIL_CROSS_INNER_END_MIN of 16.9, which leaves 1.1 and is a mark that can be set on a saw. FLAG: BOTH ENDS NEED IT, not just the corner one. At the corner leg it is the tongue bolt at TONGUE_BOLT_B; at the FRONT CENTRE leg it is the central wall's bolts, whose washers reach into this lamination's band even though the bolt centres sit behind it. NOTE: WHAT IT COSTS IS THE BUTT, and that was only ever taking compression in parallel with the HOUSED outer lamination, which runs the base's full width and does that job properly."
+note = "18 - how far short of a leg's face each end of a front cross rail's INNER lamination stops, so it clears the bolt hardware standing proud of that face. SETTLED: IT STOPS SHORT RATHER THAN BUTTING, his - the lamination butted hard would land on a bolt's washer and be held off the leg. SETTLED: 18 OVER THE RAIL_CROSS_INNER_END_MIN of 16.9, which leaves 1.1 and is a mark that can be set on a saw. FLAG: BOTH ENDS NEED IT, not just the corner one. At the corner leg it is the tongue bolt at TONGUE_BOLT_B; at the FRONT CENTRE leg it is the central wall's bolts, whose washers reach into this lamination's band even though the bolt centres sit behind it. FLAG: AND THE TWO ENDS ARE NO LONGER THE SAME - this is the CORNER leg's figure now, and the front centre leg's is RAIL_CROSS_INNER_END_CLEAR_MID. NOTE: WHAT IT COSTS IS THE BUTT, and that was only ever taking compression in parallel with the HOUSED outer lamination, which runs the base's full width and does that job properly."
+
+[[dim]]
+sym = "RAIL_CROSS_INNER_END_CLEAR_MID"
+value = 21
+provenance = "part"
+source = "his"
+note = "21 - how far short of the FRONT CENTRE leg's face each inner lamination stops, where the corner end stops RAIL_CROSS_INNER_END_CLEAR. SETTLED: IT IS THE SHOULDER BAR'S OVERHANG THAT SETS IT, his - SHOULDER_BAR_L is 110 against the leg's POST_W_X, so the bar reaches 19 past the leg face at each end, and an 18 clearance left the bar's last 1 landing on the lamination's END. 🔴 THE BAR MUST BEAR ON THE LEG AND NOTHING ELSE. Flush in the drawing, that 1 is harmless - but a lamination glued into a housing sits a few tenths proud as often as not, and then it holds the bar off its ledges, which is the fault the bar was fitted to cure arriving by the back door. 21 leaves 2 of air. NOTE: IT ONLY EVER HELPS THE OTHER CONSTRAINT - the 18 at this end was for the central wall's bolt washers, and more clearance is more room. NOTE: CUT, NOT NOTCHED: the four pieces were not cut when this was found, so it is a mark on a saw rather than a triangle off a glued part."
 
 [[dim]]
 sym = "RAIL_CROSS_INNER_SPAN"
-expr = "(RAIL_CROSS_INNER_L - POST_W_X) / 2 - 2 * RAIL_CROSS_INNER_END_CLEAR"
-note = "485.5 - one piece of a front cross rail's inner lamination: between a front corner leg and the FRONT CENTRE leg, stopping RAIL_CROSS_INNER_END_CLEAR short of each. Two per grid, four in all, and they are housed in nothing. SETTLED: THE SIXTH LEG SPLIT THIS LAMINATION IN TWO and that is the whole cost of it, against a notch in three pieces the other way. The OUTER lamination is untouched: it still runs the base's full width at RAIL_CROSS_OUTER_L, housed GRID_MEMBER_T / 2 deep in every leg it passes, this one included."
+expr = "(RAIL_CROSS_INNER_L - POST_W_X) / 2 - RAIL_CROSS_INNER_END_CLEAR - RAIL_CROSS_INNER_END_CLEAR_MID"
+note = "482.5 - one piece of a front cross rail's inner lamination: between a front corner leg and the FRONT CENTRE leg, stopping RAIL_CROSS_INNER_END_CLEAR short of the corner one and RAIL_CROSS_INNER_END_CLEAR_MID short of the centre one. Two per grid, four in all, and they are housed in nothing. SETTLED: THE SIXTH LEG SPLIT THIS LAMINATION IN TWO and that is the whole cost of it, against a notch in three pieces the other way. The OUTER lamination is untouched: it still runs the base's full width at RAIL_CROSS_OUTER_L, housed GRID_MEMBER_T / 2 deep in every leg it passes, this one included."
 
 [[dim]]
 sym = "BACK_WALL_L"

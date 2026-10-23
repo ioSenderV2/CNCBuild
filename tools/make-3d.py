@@ -805,16 +805,43 @@ def main() -> int:
             # washers reach into this lamination's band even though their centres
             # sit behind it. The clearance is drawn rather than declared in
             # ALLOWED, so the clash check PROVES it instead of tolerating it.
+            # 🔴 AND THE TWO ENDS ARE NOT THE SAME CLEARANCE. At the FRONT
+            # CENTRE leg the shoulder bar overhangs SHOULDER_BAR_L past
+            # POST_W_X, which is 19 each side against an 18 clearance - so the
+            # bar's last 1 was landing on this lamination's END. Flush in the
+            # drawing and harmless there, but a lamination glued into a housing
+            # sits a few tenths proud as often as not, and then it holds the
+            # bar off its ledges: the exact fault the bar was fitted to cure,
+            # arriving by the back door. RAIL_CROSS_INNER_END_CLEAR_MID leaves
+            # 2 of air at that end. The corner ends are unchanged.
             ic = v["RAIL_CROSS_INNER_END_CLEAR"]
+            ic_mid = v["RAIL_CROSS_INNER_END_CLEAR_MID"]
+
+            def end_clear(x, edge):
+                """The clearance for an end landing at x, where `edge` is 0 if
+                it meets a leg's near face and 1 if it meets the far one.
+
+                It is the CENTRE leg that gets the wider figure, found by the
+                leg straddling the machine centreline rather than by name -
+                the rects arrive here as geometry, not as labelled posts."""
+                if nm != "front":
+                    return ic
+                for r in on_this_side:
+                    if abs(r[edge] - x) < 1e-9 and r[0] < BW / 2 < r[1]:
+                        return ic_mid
+                return ic
+
             for xa, xb in zip(spans[0::2], spans[1::2]):
                 if xb - xa < 1e-9:
                     continue
+                ca, cb = end_clear(xa, 1), end_clear(xb, 0)
                 box(f"Grid rail, {nm} inner lamination ({which})", "rails", 0x2F6F47,
-                    xa + ic, y0 if nm == "front" else y0 + housed, z0,
-                    xb - ic, y0 + housed if nm == "front" else y0 + gm_t, z1,
+                    xa + ca, y0 if nm == "front" else y0 + housed, z0,
+                    xb - cb, y0 + housed if nm == "front" else y0 + gm_t, z1,
                     d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs, is "
-                      f"not housed in any of them, and stops {ic:g} short of "
-                      f"each leg's face to clear the bolt hardware")
+                      f"not housed in any of them, and stops {ca:g} short of "
+                      f"the leg at one end and {cb:g} at the other, to clear "
+                      f"the bolt hardware and the shoulder bar's overhang")
 
     # ---- the bolts through every slot joint -------------------------------
     # 🔴 THE BASE'S OWN BOLTS, WHICH THIS MODEL DID NOT HAVE - his catch on the
