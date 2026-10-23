@@ -164,6 +164,24 @@ box sits on the legs.
 **Aluminium is the right material here and not an indulgence** — the band it replaces is plywood
 edge-on at about 1 MPa, and a 10 bar in compression over that span is nowhere near anything.
 
+**It is held by the weight of the box, and if it gets fixed it gets fixed to the LEG** — never to
+the box's underside. Fixed to the box it becomes a 10.2 projection being lowered blind into a leg
+top, with no way to feel whether it seated; left on the leg it is there waiting and the box finds
+it. It carries its load in pure compression, so a screw into the leg top is location only, and it
+stays clear of the slot between the two tabs.
+
+🔴 **AND THE BAR IS NOT A STOPGAP FOR AN UNFINISHED BOX.** tools/check-bearing.py reads the drawn
+geometry with every lamination in place and still gives this leg **216 mm² of the
+{{SHOULDER_MID}}** it is credited with, all of it under the front cap: the skin's notch runs out to
+the sheet's edge whether the laminations are on or not, so the shortfall is permanent and the bar
+makes up the rest.
+
+**None of the outer {{T_BOX_TONGUE}} laminations are on yet** — tongue, sides and front cap all wait
+on the steel coming back from the water jet. So the bearing the check reports at all three points is
+what the box **will** have, not what it has today, and **the mount is not in its designed state until
+they are glued on.** Nothing about the mount — the front corner clearance included — should be judged
+before then.
+
 ## The box closes the gap by hand, and the top skin is why
 
 **Measured, his: with the box on its three points and NO TOP SKIN, moderate hand pressure on the
