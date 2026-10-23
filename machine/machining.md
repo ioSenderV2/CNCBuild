@@ -14,6 +14,11 @@ FLAG: **Every plate needing accurate holes must be fully dimensioned before that
 assemblies that will not be built for months: **X carriage plate, Z plate, two X end plates**. One
 more plate on the visit costs an hour; a second trip costs a weekend.
 
+🔴 **The trip is ALUMINIUM ONLY now. Only steel went to the waterjet service.** Everything still on
+the list is 6061: the X carriage plate, the Z plate, the two X end plates, the two Y front plates
+and the interposer bars. Nothing on it is a metre long, so bed size and X traverse have stopped
+being questions - see the two closed items in [`open-items.md`](open-items.md).
+
 FLAG: **The 2026-10-02 rework put three more parts on this trip.** The list had been shrinking; it is
 not any more:
 
@@ -23,9 +28,11 @@ not any more:
 | ~~**The rear plate**, 1/4" steel, {{REAR_PLATE_L_ORDERED}} long~~ **OFF THE TRIP - the waterjet cut it** | It was here for two 8-bolt patterns a metre apart that must match extruded bores, and because the part may exceed the machine's X travel. **Both patterns came cut, and the near one fits: all eight bolts enter a Y beam end with the extrusion's bottom face flush with the casting opening.** The Y2 end is untried |
 | **Interposer bars**, 60 × 150 × 3/8" - two for Y, plus X | six tapped M5 under a bearing face and six flange clearance holes, all in a small part |
 
-FLAG: **The six bolt-on plates went ONTO the trip on 2026-10-09** - two **11 7/8" × 39 5/16" × 10
+SETTLED: **All six bolt-on plates are DONE and off the trip.** Two **11 7/8" × 39 5/16" × 10
 gauge steel** outboard plates, three **45 mm × 1 m × 4 mm 6061** front strips, and the **4 11/16" ×
-39 5/16" × 1/4"** X back joining plate.
+39 5/16" × 1/4"** X back joining plate. **The three front strips and the X back joiner were
+machined at home and are installed on their beams.** The two steel outboard plates came back from
+the waterjet with every hole cut, and an M8 passes a random sample of them.
 
 They had been "no mill needed" on a sound argument: every hole is a ø9 clearance into a T-slot and
 the nut slides to meet the bolt, so an individual hole's position hardly matters. **His call
@@ -37,11 +44,10 @@ REJECTED: **A sharper reason stood here for the front strips and the 2" stock re
 45 wide they filled the block gap exactly, so a row wandering in Y drove the strip into a bearing
 block. At 50.8 the strip runs *under* the blocks and the next obstruction is the rail, 9.6 away.
 
-SETTLED: **Three of those six are off the trip - the waterjet cut them.** The two **steel** outboard
-plates and the **steel** X back joining plate came back with every hole cut, and an M8 passes a
-random sample of them. **Only the three 6061 front strips remain on the list from this group**, and
-the X-traverse question that used to gate the group is dead with the rear plate: nothing steel is
-going to the mill.
+SETTLED: **The X-traverse question that gated this group is dead**, along with the rear plate's.
+**Nothing a metre long is going on the mill.** The hand-layout worry the group was put on the trip
+for - 126 holes across the six, more than comes out straight by hand - was answered the other way:
+the strips and the joiner came out at home, and the jet did the rest.
 
 SETTLED: **The two X end plates are specified** - one drawing, one setup, with the stepper holes omitted
 on the idle end.

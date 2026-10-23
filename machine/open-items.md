@@ -261,7 +261,7 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   **14.1 mm centre-to-centre**, about 5 mm of web. **No tram sub-plate, no added moment arm.** Full
   working in the Z plate section.
 - **The mill's model number and whether it has a DRO** (2-axis or 3-axis) - expected ~2026-10-04. If there is no DRO, the drawings want dimensioning differently.
-- SETTLED: ~~**Can Garen's mill traverse ~1212 mm in X?**~~ **Dead - nothing a metre long is going on it.** The question existed because the rear plate's M8 patterns sit at **both ends of a {{REAR_PLATE_L_ORDERED}} plate**; the waterjet cut both, and the two steel outboard plates and the steel X back joining plate came cut as well. Ask the travel again only if a metre-long part goes back on the list.
+- SETTLED: ~~**Can Garen's mill traverse ~1212 mm in X?**~~ **Dead - nothing a metre long is going on it.** The question existed because the rear plate's M8 patterns sit at **both ends of a {{REAR_PLATE_L_ORDERED}} plate**; the waterjet cut both, the two steel outboard plates came cut as well, and the three front strips and the X back joiner were machined at home and installed. Ask the travel again only if a metre-long part goes back on the list.
 - SETTLED: ~~**Z travel floor** - where the confirmed travel sits relative to the spoilboard.~~
   **Closed 2026-10-11, and it was not a machine measurement.** The tip floor is **45.2 mm** above the
   box's top skin and the spoilboard surface is at **67.5 mm**; the gantry fixes the reach and the
