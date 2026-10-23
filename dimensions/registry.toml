@@ -542,8 +542,9 @@ note = "3 - doubler top to the LOWER Y bearing block row's bottom edge, both in 
 
 [[dim]]
 sym = "FIN_STOCK"
-expr = "PLATE_H"
-note = "Each front fin's stock height, 301.625 - PLATE_H, because the fin stands as high as the other four plates and is dimensioned off the same bottom edge. It is 11 7/8in, his piece 2026-10-07; it had been carried as a measured 302 and it is not 302, nor the nominal 12in it was already corrected away from once. OPEN: THE NAME SAYS SQUARE AND IT IS NO LONGER ONE: both fins came out of a SINGLE 301.625 square on one diagonal cut until 2026-10-08, when he put each fin on its OWN piece of 10 mm plate. That is what released FIN_TOP_W back to a chosen 100 and retired FIN_KERF - top plus base plus kerf no longer has to close on anything. Kept under this name because every sheet and both documents refer to it."
+value = 302.0
+provenance = "measured"
+note = "302 - the fin square, HIS PRECISION RULER ON THE PIECE ITSELF, both directions. FLAG: IT DOES NOT DERIVE FROM PLATE_H ANY MORE and that is deliberate: the listing promised 11 7/8in (301.625) and quotes no tolerance, and his instruction is to IGNORE THE LISTING AND USE THE PART. This is a separate buy of 10 mm metric plate, not a piece of the 11 7/8in steel order, so there is nothing holding the two to one number. FLAG: A SECOND CHAIN LANDS ON 302 FROM A COMPLETELY DIFFERENT DIRECTION - the fin is flush with the beam top, which is Y_BEAM_UNDERSIDE plus the 120 beam, and FIN_TOP_Z records that cross-check. Two independent arrivals at the same figure is why this is a value rather than a reading with a question mark on it. OPEN: FIN_H IS STILL 301.625 IN tools/make-dxf.py while the stock and the beam-top chain both say 302 - the fin's own height has not been reconciled with its square, and PLATE_H's note still counts the fins among the five parts standing 301.625. OPEN: BOTH FINS NEST IN THIS ONE SQUARE AGAIN, head to tail, so FIN_TOP_W is coupled to it once more: top plus base has to close on the square less whatever the cut between them takes."
 
 [[dim]]
 sym = "FIN_KERF"

@@ -65,12 +65,14 @@ ORDER = [
     # THE X BACK JOINING PLATE WENT THE SAME WAY, 2026-10-23: machined at home
     # and installed on the beam, so it has no drawing in the folder either.
     # Sheet s10 still specifies it. All six bolt-on plates are done.
-    # THE SQUARE IS FIN_STOCK AND NOT 302 - the two Nones are filled from the
-    # registry in build(). It was carried here as 302, which is the figure
-    # FIN_STOCK's own note says it is NOT: the ordered piece is 11 7/8in,
-    # 301.625, the same height as the side plates and the back plate. Hardcoded
-    # it was 0.375 generous, which does not matter for one fin on its own piece
-    # and matters a great deal for two nested in the square.
+    # THE SQUARE IS FIN_STOCK, A MEASURED 302 - the Nones are filled in build().
+    # His instruction: IGNORE THE 11 7/8in THE LISTING PROMISED and use the 302
+    # he reads off the piece with a precision ruler. FIN_TOP_Z arrives at the
+    # same 302 off the beam top, from a different direction entirely.
+    #   THE SQUARE IS STILL NOMINAL ON THE DRAWING: each fin's base edge indexes
+    # on a real plate edge, opposite edges, so any shortfall lands in the gap
+    # rather than on a base. His call - a fin a hair narrow is acceptable, a
+    # base edge off the plate is not.
     ('front-fins', 'fins', ('Y front fin', 's1a', None, None, 10.0,
                             '6061', 2)),
     ('x-end-plate-left', 'xep', ('X gantry end plate, LEFT-HAND', 0,
@@ -361,6 +363,12 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
         ents += text(0, ty - 20, 5,
                      'BOTH PARTS NEST IN THE ONE SQUARE, HEAD TO TAIL  -  '
                      f'{W - used:g} mm BETWEEN THE TAPERED EDGES', 'NOTES')
+        ents += text(0, ty - 30, 5,
+                     'THE SQUARE IS NOMINAL.  INDEX EACH PART\'S WIDE BASE '
+                     'EDGE ON A REAL PLATE EDGE, OPPOSITE EDGES', 'NOTES')
+        ents += text(0, ty - 40, 5,
+                     'ANY SHORTFALL IN THE PLATE COMES OFF THE GAP BETWEEN '
+                     'THE TAPERS, NOT OFF A BASE EDGE', 'NOTES')
 
     path = os.path.join(OUT, name + '.dxf')
     with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
@@ -623,7 +631,7 @@ def main():
                 sq = reg.value('FIN_STOCK')
                 print(f'  {"":20s} BOTH fins nested in one {sq:g} square, '
                       f'{n * 2} holes drawn, {sq - used:g} between the two '
-                      f'tapered edges')
+                      f'tapered edges at that square')
 
         elif kind == 'sole':
             n, used, tall, sizes, per_sheet = build_sole(src, reg)

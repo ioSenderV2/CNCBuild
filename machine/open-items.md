@@ -36,10 +36,24 @@
   2026-10-23, for the waterjet quote. They were split onto a piece each on 2026-10-08, which is what
   released the top width from 99.625 to a chosen 100; the base is the reference end at a fixed 200,
   so the top absorbed the remainder. **Nested again, the two widths are coupled again**, and at a
-  top of 100 the two tapered edges are **1.625 apart** across a 301.625 square. FLAG: **That is the
-  margin the whole nesting rests on and it has not been priced by anyone yet** - the old 2 mm was a
-  bandsaw figure, this is a waterjet kerf plus whatever lead-in it wants. Either the shop accepts
-  1.625, or the top goes back to 99.625, or the square gets bigger.
+  top of 100 the two tapered edges are **2 apart**.
+  SETTLED: **The square is a MEASURED 302 - his precision ruler on the piece, and the listing is
+  ignored.** The Amazon listing promised 11 7/8 and quotes no tolerance, which is his reason for
+  taking the part over the paperwork. **A second chain arrives at the same 302** from a different
+  direction entirely - the fin is flush with the beam top, 182 plus the 120 beam - and FIN_TOP_Z
+  records that cross-check.
+  SETTLED: **The square is NOMINAL on the drawing** - each fin's base edge indexes on a real plate
+  edge, opposite edges, so any shortfall lands in the gap rather than on a base. His call: a fin a
+  hair narrow is acceptable and a base edge off the plate is not. **The base is the edge that bolts
+  down and bears.**
+  FLAG: **2 mm of web between two separate cuts in 10 mm plate is the thing to settle with the
+  shop.** Each cut takes its own kerf out of the gap, so the sliver left between them is thinner
+  than 2 and can wash or deflect. The alternative is **one shared cut** - top width to 102, so top
+  plus base closes on the square exactly and a single straight pass separates both parts, which is
+  what the bandsaw version did. The drawing asks them.
+  OPEN: **FIN_H is still on PLATE_H's height while the stock and the beam-top chain both say 302.**
+  The fin's own height has not been reconciled with its square, and PLATE_H's note still counts the
+  fins among the five parts standing that high.
 - SETTLED: ~~**The window's horizontal position does not reconcile**~~ **Closed 2026-10-02, and the window
   was then realigned on 2026-10-03.** The original non-reconciliation was arithmetic off a wrong
   column position; with the M8 columns at **35 and 65** the beam spans X 20-80 and nothing about the
