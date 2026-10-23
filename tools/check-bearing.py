@@ -183,34 +183,37 @@ def main():
               "to follow it", file=sys.stderr)
         return 2
 
-    # THE SHOULDER PLANE COMES OFF THE PARTS, not off the registry: it is the
-    # surface the question is about, and a figure fetched from elsewhere could
-    # disagree with what is drawn. The tenon tabs STAND on the shoulder, so the
-    # plane is where their undersides are - and they exist at every mount point
-    # by definition, because a post without one is not a mount point.
-    tabs = [p for p in parts if "tenon tab" in p["n"]]
-    if not tabs:
-        print("no tenon tabs in the model", file=sys.stderr)
-        return 2
-    plane = min(p["p"][2] for p in tabs)
-
-    # 🔴 A VOID IS NOT SUPPORT. Holes and pockets are drawn as solids in the
-    # dark HOLE colour so they read in the viewer - the sand ports through the
-    # bottom skin are two dozen of them at exactly this plane. Counting one as
-    # something a post bears on is the same error this check exists to find,
-    # arriving from the other side.
-    landing = [p for p in parts
-               if not post_of(p["n"]) and p.get("c") != HOLE
-               and abs(p["p"][2] - plane) <= TOL]
-
+    # THE SHOULDER PLANE IS PER POST AND COMES OFF THE PARTS, not off the
+    # registry: it is the surface the question is about, and a figure fetched
+    # from elsewhere could disagree with what is drawn. The tenon tabs STAND on
+    # the shoulder, so a post's plane is where ITS OWN tabs' undersides are -
+    # and every mount point has one by definition, because a post without a tab
+    # is not a mount point.
+    #
+    # 🔴 ONE PLANE ACROSS THE MODEL IS WRONG, AND IT WAS WRONG HERE. The front
+    # centre leg's ledges are cut SHOULDER_MID_DROP lower than the other two,
+    # so a single plane taken over all the tabs missed both rear posts and
+    # reported them bearing on nothing. A figure that is shared only because
+    # nothing has differed yet is not a shared figure.
     bad = []
-    print(f"The shoulder plane is z = {plane:g}, where the tenon tabs stand.")
-    names = sorted({p["n"] for p in landing})
-    print(f"{len(landing)} part(s) have their underside on it: "
-          + ", ".join(names) + "\n")
-
     reg = None
     for post in posts:
+        tabs = [p for p in parts
+                if post_of(p["n"]) == post and "tenon tab" in p["n"]]
+        if not tabs:
+            print(f"  {post}: no tenon tab, so it is not a mount point\n")
+            continue
+        plane = min(p["p"][2] for p in tabs)
+
+        # 🔴 A VOID IS NOT SUPPORT. Holes and pockets are drawn as solids in
+        # the dark HOLE colour so they read in the viewer - the sand ports
+        # through the bottom skin are two dozen of them at exactly the rear
+        # posts' plane. Counting one as something a post bears on is the same
+        # error this check exists to find, arriving from the other side.
+        landing = [p for p in parts
+                   if not post_of(p["n"]) and p.get("c") != HOLE
+                   and abs(p["p"][2] - plane) <= TOL]
+
         rects, blockers = [], []
         for p in parts:
             if p.get("t") != "box" or post_of(p["n"]) != post:
@@ -232,7 +235,7 @@ def main():
         on = sorted({p["n"] for p in landing
                      for r in rects if walk(r, [footprint(p)], blockers, True) > TOL})
 
-        print(f"  {post}")
+        print(f"  {post}   shoulder plane z = {plane:g}")
         print(f"      shoulder drawn   {available:9.1f} mm2")
         print(f"      borne on         {bears:9.1f} mm2   ({pct:.0f}%)")
         if on:

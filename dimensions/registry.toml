@@ -3085,7 +3085,33 @@ note = "18 - the BACK shear wall, one sheet, where the central wall is two. SETT
 sym = "SHOULDER_MID"
 expr = "TENON_MID_TABS * LEG_STRIP * (T_BOX_LEDGE - T_BACK_WALL)"
 unit = "mm2"
-note = "864 mm2 - the front centre leg's bearing area, two strips of 18 x 24. FLAG: THE CROSS RAIL'S HOUSING EATS 18 OF THE 42, which is what takes this from 1512 to 864 and makes it much the smallest of the three - and it carries the whole front of the box, because that leg is ledged on ONE face so its shoulder was only the 42 band to begin with. Still about 1 MPa against plywood edge-on, so it is a figure to know rather than a problem. FLAG: A 6061 BAR CARRIES THIS NOW AND THIS FIGURE IS NOT WHAT BEARS - his, as built: the bottom skin's front notch runs out to the skin's edge, so in the part there was no skin standing over these two strips at all and the computed area was bearing on nothing. A 110 x 20 x 10 bar bridges the two tabs and the skin lands on it. See commissioning/base-as-built.md."
+note = "864 mm2 - the front centre leg's bearing area, two strips of 18 x 24. FLAG: THE CROSS RAIL'S HOUSING EATS 18 OF THE 42, which is what takes this from 1512 to 864 and makes it much the smallest of the three - and it carries the whole front of the box, because that leg is ledged on ONE face so its shoulder was only the 42 band to begin with. Still about 1 MPa against plywood edge-on, so it is a figure to know rather than a problem. FLAG: A 6061 BAR CARRIES THIS NOW AND THIS FIGURE IS NOT WHAT BEARS - his, as built: the bottom skin's front notch runs out to the skin's edge, so in the part there was no skin standing over these two strips at all and the computed area was bearing on nothing. A 110 x 20 x 10 bar bridges the two tabs and the skin lands on it. See commissioning/base-as-built.md. FLAG: THE LEDGE PAIR MEASURES 20 x 18 EACH, 720 FOR THE TWO - his, off the part, against the 24-deep band this expression uses. The model still draws the 24 and this symbol still computes 864; what BEARS is SHOULDER_BAR_L x SHOULDER_BAR_W of aluminium on top of it."
+
+[[dim]]
+sym = "SHOULDER_MID_DROP"
+expr = "BASE_BOX_GAP"
+note = "10 - how far BELOW the drawn shoulder plane the front centre leg's two ledges actually sit: FLUSH WITH THE FRONT CROSS RAIL'S TOP FACE, his, found off the model with the outer laminations hidden. SETTLED: IT IS BASE_BOX_GAP AND THAT IS NOT A COINCIDENCE - the drawn shoulder stands exactly the mount gap proud of the upper grid, because that gap IS the three-point mount. 🔴 SO FLUSH SHOULDERS MEAN NO GAP AT THAT LEG and the box would have come down on the upper grid's front cross rail - the fourth-and-fifth-point failure assembly.md names, which shows up as nothing but the Y beams drifting out of coplanar. SHOULDER_BAR_T is what puts the gap back. NOTE: ONLY THIS LEG. The two rear shoulders measure about 9.5 proud, so they are as drawn. NOTE: THE POST TOP DID NOT MOVE - only the ledge was cut lower, so that leg's tenon is this much longer than POST_TENON_L."
+
+[[dim]]
+sym = "SHOULDER_BAR_L"
+value = 110
+provenance = "part"
+source = "his, cut"
+note = "110 - the 6061 bar ACROSS the machine, bridging the front centre leg's two tenon tabs. SETTLED: IT IS LONGER THAN POST_W_X ON PURPOSE, and the overhang is what carries the box: the bottom skin's front notch is POST_W_X + 2 wide, so a bar only as long as the leg would sit entirely inside the notch with no skin over it. At 110 it reaches 19 past the leg at each end, where there IS skin - which is why the box's own weight holds it down."
+
+[[dim]]
+sym = "SHOULDER_BAR_W"
+value = 20
+provenance = "part"
+source = "his, cut"
+note = "20 - the bar FORE AND AFT, sitting on the ledge against the leg's front face. It matches the 20 the ledge pair measures, so the bar covers the whole of what that leg has to offer."
+
+[[dim]]
+sym = "SHOULDER_BAR_T"
+value = 10.2
+provenance = "measured"
+source = "his, calipers"
+note = "10.2 - the bar's thickness, and what puts the mount gap back at the front centre leg. SETTLED: IT REPLACES THE 10 OF LEG THAT IS NOT THERE rather than stacking on a correct shoulder - see SHOULDER_MID_DROP. FLAG: SO IT STANDS 0.2 PROUD OF THE DRAWN PLANE, and his measurement the other way round says the same thing: 10.2 of bar against rear shoulders reading about 9.5, so 0.7 proud of those. Nothing is done about it - three points cannot rock, the box lands on all three and sits that much nose-up over the fore-aft span, and the machine is referenced to the TOP skin. NOTE: THE CLASH CHECK SEES THE 0.2 and carries it in ALLOWED with this reason, rather than the bar being drawn thinner than the part."
 
 [[dim]]
 sym = "TENON_CORNER"

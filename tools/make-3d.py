@@ -562,7 +562,16 @@ def main() -> int:
     front_notch = []             # the front centre's, out to the FRONT edge
     leg_rects = []
     for nm, (tx0, tx1, ty0, ty1), (px0, px1, py0, py1) in posts:
-        leg_strips(nm, "legs", 0x7A5230, px0, px1, py0, py1, post_bot, ledge_z,
+        # 🔴 THE FRONT CENTRE LEG'S LEDGES ARE CUT LOWER THAN THE OTHER TWO -
+        # his, as built, found off this model with the outer laminations
+        # hidden: they are FLUSH WITH THE FRONT CROSS RAIL'S TOP FACE, where
+        # the drawing stands them SHOULDER_MID_DROP proud of it. That drop is
+        # BASE_BOX_GAP and the coincidence is not one - the drawn shoulder
+        # stands exactly the mount gap proud of the upper grid, because the gap
+        # IS the three-point mount. Flush means no gap at this leg, and the box
+        # comes down on the grid. SHOULDER_BAR_T below is what puts it back.
+        lz = ledge_z - (v["SHOULDER_MID_DROP"] if "centre" in nm else 0)
+        leg_strips(nm, "legs", 0x7A5230, px0, px1, py0, py1, post_bot, lz,
                    "front-both" if "centre" in nm else "back-inner",
                    d=f"{strip:g} of a {pwx:g} x {pwy:g} laminated leg - the two "
                      f"middle laminations are the slot. The shoulder bears the box")
@@ -576,7 +585,7 @@ def main() -> int:
             if not (tx0 - 1e-9 <= sx0 and sx0 + strip <= tx1 + 1e-9):
                 continue                       # this strip is inside the ledge
             box(nm + " tenon tab", "legs", 0x9C6B3C,
-                sx0, ty0, ledge_z, sx0 + strip, ty1, post_top,
+                sx0, ty0, lz, sx0 + strip, ty1, post_top,
                 d=f"{strip:g} x {ty1 - ty0:g} - location only, it carries no "
                   f"vertical load. All of that is on the shoulder")
             if "centre" in nm:
@@ -628,6 +637,40 @@ def main() -> int:
             # sits under the front perimeter web, so none of it shows. Opened
             # out, every one of the three tenon cuts is a saw cut from an edge.
             front_notch.append((px0 - hc, px1 + hc, ty0 - hc))
+            # 🔴 AND THE BAR THAT PUTS THE MOUNT BACK, his, as built. It lies on
+            # the two lowered ledges and bridges the slot between the tabs, and
+            # SHOULDER_BAR_T brings the bearing plane back to within 0.2 of
+            # where the drawing has the shoulder. Three things make it the right
+            # part and all three are geometry, not opinion:
+            #   - it is SHOULDER_BAR_L and not POST_W_X, so it reaches past the
+            #     skin's notch at each end onto skin that EXISTS - which is what
+            #     the box's weight bears on and what holds the bar down;
+            #   - it is SHOULDER_BAR_W, the depth the ledge pair measures, so it
+            #     covers all this leg has to offer;
+            #   - it stands against the leg's FRONT face, where the front cap
+            #     comes down - so the cap lands ON it rather than into it.
+            # 🔴 ITS TOP IS 0.2 ABOVE THE SKIN'S UNDERSIDE and the clash check
+            # sees that. It is carried in ALLOWED with the reason rather than
+            # drawn thinner than the part: the bar really is 10.2 into a 10 gap,
+            # three points cannot rock, and the box sits that much nose-up.
+            # 🔴 IT STANDS AT THE LEDGE'S FRONT EDGE, NOT THE LEG'S. The leg
+            # runs on forward another `housed` past this, and that band is
+            # where the cross rail sits - at the shoulder plane it is rail, not
+            # leg. Taking the bar off py1 put it 18 too far forward, sitting on
+            # the housing with air under it, and the bottom skin then missed it
+            # in the clash check because it had been pushed past the skin's
+            # front edge entirely.
+            bx = (px0 + px1) / 2
+            bw = v["SHOULDER_BAR_W"]
+            ledge_front = py1 - housed
+            box("Front shoulder bar", "legs", 0xA8B0B8,
+                bx - v["SHOULDER_BAR_L"] / 2, ledge_front - bw, lz,
+                bx + v["SHOULDER_BAR_L"] / 2, ledge_front,
+                lz + v["SHOULDER_BAR_T"],
+                d=f"{v['SHOULDER_BAR_L']:g} x {bw:g} x "
+                  f"{v['SHOULDER_BAR_T']:g} 6061, lying on the two lowered "
+                  f"ledges and bridging the slot. It is the bearing surface "
+                  f"this leg has - see commissioning/base-as-built.md")
 
     # The outline, anticlockwise from the back left, with ALL THREE tenon cuts
     # spliced out of it: out of the back left corner, along the back edge into
@@ -2736,6 +2779,19 @@ BITE = {
 }
 
 ALLOWED = {
+    # 🔴 THE FRONT SHOULDER BAR STANDS 0.2 PROUD, AND THAT IS THE PART, NOT A
+    # DRAWING ERROR. The front centre leg's ledges are cut SHOULDER_MID_DROP
+    # low - flush with the front cross rail's top - and SHOULDER_BAR_T of 10.2
+    # puts the bearing plane back, overshooting the drawn one by 0.2. So the
+    # skin's underside and the front cap's bottom edge both meet it that much
+    # early. Nothing is done about it and nothing can be: three points cannot
+    # rock, the box lands on all three and sits 0.2 nose-up over the fore-aft
+    # span, and the machine is referenced to the TOP skin rather than to how
+    # the box sits on its legs.
+    # DECLARED RATHER THAN DRAWN AWAY. Thinning the bar to 10 in the model
+    # would clear the list and make the model lie about a part in the shop.
+    frozenset({"Front shoulder bar", "Bottom skin"}),
+    frozenset({"Front shoulder bar", "Front cap"}),
     # The spoilboard's four T-bolts: the shank crosses both MDF sheets and the
     # nut and washer sit in a counterbore that is DRAWN AS A SOLID rather than
     # subtracted from the board, so every one of these pairs is a part sharing
