@@ -779,11 +779,26 @@ def main() -> int:
                 x0, by0 + housed, z0, x1, by1 - housed, z1,
                 d=f"{gm_t:g} x {gm_h:g} on edge - it fills the legs' middle slot "
                   f"and butts the cross rails' inner faces")
-        # A CROSS RAIL IS ITS TWO LAMINATIONS DOING DIFFERENT JOBS - his catch
-        # on the model, 2026-10-15. The OUTER 18 runs the full width, through the
-        # notch in every leg it passes. The INNER 18 only spans BETWEEN the legs:
-        # it is not housed and it does not pass through anything. Drawn as one
-        # 36 block it ran the whole rail through the legs, which is not the joint.
+        # 🔴 A CROSS RAIL IS ONE LAMINATION NOW, NOT TWO - his call. The inner
+        # 18 is gone from both grids.
+        #
+        # It spanned BETWEEN the legs, was housed in nothing, and once both its
+        # ends were held clear of the leg faces it reached the frame only
+        # through its glue line to the outer lamination. The question that
+        # retired it is the one worth keeping: WHAT BEARS ON IT? Nothing. No
+        # caster - those are on the lower FORE-AFT rails and the central wall.
+        # No box leg - the box lands on three posts. Nothing butts its inboard
+        # face either, which the model was asked directly and answered with an
+        # empty list. The cross rails only hold the legs' spacing, and spacing
+        # is an axial job: it goes with AREA, which the outer lamination has in
+        # abundance, not with the section depth the inner one was adding.
+        # A shelf was the last argument for it, and that is gone too - a cabinet
+        # in a side volume lands on the central wall's pad and a fore-aft rail,
+        # neither of which is this part.
+        #
+        # THE OUTER LAMINATION IS THE MEMBER: it runs the base's full width
+        # through the notch in every leg it passes, and it is what carries the
+        # spacing into the joints.
         # ONLY THE FRONT HAS A CROSS RAIL. At the back the shear wall replaces
         # them at both grids - his, 2026-10-15 - so there is nothing to draw
         # there but the wall, which runs continuously past both grid levels.
@@ -793,55 +808,9 @@ def main() -> int:
                 bx1 - strip, y0 + housed if nm == "back" else y0 + gm_t, z1,
                 d=f"{housed:g} x {gm_h:g} - the half housed in the legs. It "
                   f"stops one lamination short at each end, so the legs' "
-                  f"outermost strips cover its end grain")
-            on_this_side = sorted(r for r in leg_rects
-                                  if (r[2] <= by0 + 1e-9) == (side == "rear"))
-            spans = [bx0] + [x for r in on_this_side for x in (r[0], r[1])] + [bx1]
-            # 🔴 IT STOPS SHORT OF EVERY LEG IT MEETS, by
-            # RAIL_CROSS_INNER_END_CLEAR - his. Butted hard, its end lands on a
-            # bolt head's fender washer standing proud of that leg face and is
-            # held off the leg. BOTH ends need it: the tongue bolt at a corner
-            # leg, and the central wall's bolts at the front centre one, whose
-            # washers reach into this lamination's band even though their centres
-            # sit behind it. The clearance is drawn rather than declared in
-            # ALLOWED, so the clash check PROVES it instead of tolerating it.
-            # 🔴 AND THE TWO ENDS ARE NOT THE SAME CLEARANCE. At the FRONT
-            # CENTRE leg the shoulder bar overhangs SHOULDER_BAR_L past
-            # POST_W_X, which is 19 each side against an 18 clearance - so the
-            # bar's last 1 was landing on this lamination's END. Flush in the
-            # drawing and harmless there, but a lamination glued into a housing
-            # sits a few tenths proud as often as not, and then it holds the
-            # bar off its ledges: the exact fault the bar was fitted to cure,
-            # arriving by the back door. RAIL_CROSS_INNER_END_CLEAR_MID leaves
-            # 2 of air at that end. The corner ends are unchanged.
-            ic = v["RAIL_CROSS_INNER_END_CLEAR"]
-            ic_mid = v["RAIL_CROSS_INNER_END_CLEAR_MID"]
-
-            def end_clear(x, edge):
-                """The clearance for an end landing at x, where `edge` is 0 if
-                it meets a leg's near face and 1 if it meets the far one.
-
-                It is the CENTRE leg that gets the wider figure, found by the
-                leg straddling the machine centreline rather than by name -
-                the rects arrive here as geometry, not as labelled posts."""
-                if nm != "front":
-                    return ic
-                for r in on_this_side:
-                    if abs(r[edge] - x) < 1e-9 and r[0] < BW / 2 < r[1]:
-                        return ic_mid
-                return ic
-
-            for xa, xb in zip(spans[0::2], spans[1::2]):
-                if xb - xa < 1e-9:
-                    continue
-                ca, cb = end_clear(xa, 1), end_clear(xb, 0)
-                box(f"Grid rail, {nm} inner lamination ({which})", "rails", 0x2F6F47,
-                    xa + ca, y0 if nm == "front" else y0 + housed, z0,
-                    xb - cb, y0 + housed if nm == "front" else y0 + gm_t, z1,
-                    d=f"{housed:g} x {gm_h:g} - it spans BETWEEN the legs, is "
-                      f"not housed in any of them, and stops {ca:g} short of "
-                      f"the leg at one end and {cb:g} at the other, to clear "
-                      f"the bolt hardware and the shoulder bar's overhang")
+                  f"outermost strips cover its end grain. It is the WHOLE "
+                  f"member - the inner lamination that used to sit behind it "
+                  f"is gone")
 
     # ---- the bolts through every slot joint -------------------------------
     # 🔴 THE BASE'S OWN BOLTS, WHICH THIS MODEL DID NOT HAVE - his catch on the

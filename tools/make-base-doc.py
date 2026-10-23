@@ -1084,9 +1084,10 @@ tenon, so the box must not land on it</b>. Both strips rebated
 {v['T_BACK_WALL']:g} deep their whole height in the back face, where the back
 wall runs through</td></tr>
 <tr><td><b>No filler</b></td><td>the wall fills both centre legs' slots</td></tr>
-<tr><td><b>What it cost</b></td><td>the front cross rails' inner lamination
-becomes <b>two spans of {v['RAIL_CROSS_INNER_SPAN']:g}</b> per grid instead of
-one piece of {v['RAIL_CROSS_INNER_L']:g}</td></tr>
+<tr><td><b>What it cost</b></td><td><b>nothing.</b> It used to split the front
+cross rails' inner lamination into two spans per grid &mdash; and that
+lamination is gone, because nothing bears on a cross rail and holding the
+legs' spacing goes with area rather than section depth</td></tr>
 </table>
 """
 

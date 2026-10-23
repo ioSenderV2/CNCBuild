@@ -128,21 +128,16 @@ def groups(v):
          "there are none up here.",
          [("Rail lamination", v["RAIL_FORE_AFT_L"], gm_h, 4, "2 per rail")]),
         ("Front cross rail, lower", 1,
-         "One rail, two laminations doing different jobs.",
-         [("Outer, housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
+         "One lamination, housed through the legs. There is no inner one: "
+         "nothing bears on a cross rail, and holding the legs' spacing is an "
+         "axial job that goes with area rather than section depth.",
+         [("Housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
            "full width, housed 18 deep in the front faces of the legs' inner "
            "strips, and it stops one lamination short at each end so the "
-           "outermost strip covers its end grain"),
-          ("Inner, in two spans", v["RAIL_CROSS_INNER_SPAN"], gm_h, 2,
-           "TWO pieces, not one: the front centre leg stands in the middle of "
-           "this lamination's run, so each piece goes from a corner leg to "
-           "that leg. Housed in nothing - it butts a leg's face at each "
-           "end")]),
+           "outermost strip covers its end grain")]),
         ("Front cross rail, upper", 1,
-         "The same two pieces again.",
-         [("Outer, housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
-           "as the lower"),
-          ("Inner, in two spans", v["RAIL_CROSS_INNER_SPAN"], gm_h, 2,
+         "The same piece again.",
+         [("Housed in the legs", v["RAIL_CROSS_OUTER_L"], gm_h, 1,
            "as the lower")]),
         ("Rear shear wall", 1,
          "It replaces the back cross rails at BOTH grids, so it must not be "
@@ -157,9 +152,8 @@ def groups(v):
          "bolted. It ties the front and back assemblies together with the "
          "fore-aft rails.",
          [("Wall lamination", v["CENTRE_WALL_L"], v["CENTRE_WALL_H"], 2,
-           "a plain rectangle, no notches anywhere - the front cross rail's "
-           "inner lamination butts the front centre leg in two spans instead "
-           "of running past the wall"),
+           "a plain rectangle, no notches anywhere - nothing runs past the "
+           "wall at the front, the cross rail stopping at the legs"),
           ("Lower band pad", v["CENTRE_WALL_PAD_L"], gm_h, 2,
            "one each side, flush with the wall's bottom edge. It brings the "
            f"wall out to {v['POST_W_X']:g} for the centre caster's plate, and "

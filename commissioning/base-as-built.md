@@ -128,17 +128,19 @@ screws go into something solid. They butt a leg's face at each end and are **now
 bolt**, which sits at the rail's mid-height inside the leg. **The upper rails get none** — there are
 no casters up there.
 
-**The front cross rail's INNER lamination is kept and cut short, his** — it stops
-**{{RAIL_CROSS_INNER_END_CLEAR}}** shy of every leg face it meets, so each of the four pieces is
-**{{RAIL_CROSS_INNER_SPAN}}** rather than butting. 🔴 **The NUT side is what sets that, not the
-head.** A low-profile socket head stands only about 4.5 proud, but the far end of the same bolt
-carries a washer, the {{BASE_BOLT_NUT_H}} flange lock nut and {{BASE_BOLT_PROUD}} of thread past it —
-**{{RAIL_CROSS_INNER_END_MIN}}** in total — and which end a lamination meets depends on which way the
-bolt went in, so the clearance covers the worse one. A clearance of 12 was tried and the model's
-clash check refused it: the nut by 0.1 and the thread by 4.8, at all four pieces.
+🔴 **THE FRONT CROSS RAILS HAVE NO INNER LAMINATION — his call, and the four pieces were never
+cut.** A cross rail is its outer lamination alone, housed through every leg it passes.
 
-**The clearance is DRAWN, not declared**, so every rebuild of the model proves it instead of
-tolerating it. If those pieces ever show up in the clash list again, the clearance has gone.
+**What retired it is the question nothing had asked: what BEARS on it?** Nothing does. Not a
+caster — those are on the lower fore-aft rails and the central wall. Not a leg of the box — the box
+lands on three posts. Nothing butts its inboard face either. **A cross rail only holds the legs'
+spacing, and spacing is an AXIAL job** — it goes with area, which the housed lamination has in
+abundance, not with the section depth this piece was adding. The last argument for it was a shelf,
+and **a cabinet in a side volume lands on the central wall's pad and a fore-aft rail**, neither of
+which is this part.
+
+**Nothing else moves with it.** A fore-aft rail butts the OUTER lamination's inboard face and was
+never near this one, so {{RAIL_FORE_AFT_L}} stands.
 
 NOTE: **A "lamination" means two different parts in these files and that is what crossed the wires** —
 the caster pads above, and the cross rail's inner half in the model. Say which when the word is used
@@ -299,24 +301,7 @@ So the rails carry the back's spacing forward and the front legs inherit it.
    edge, so the tenon moving forward has nothing to foul; moving it back has only about
    {{TENON_HOLE_CLEAR}} before the tab meets the notch's back edge. The dry fit dropped in at the
    leg's present position — mark where it sits and only ever take it forward from there.
-7. **Cut the four inner lamination pieces last** — two per grid, one either side of the front centre
-   leg, housed in nothing, so they follow everything else rather than setting anything.
-   🔴 **THEY DO NOT BUTT THE LEG FACES, AND THE TWO ENDS ARE NOT THE SAME.**
-
-   | End | Stops short by | Because |
-   |---|---|---|
-   | At a **corner** leg | **{{RAIL_CROSS_INNER_END_CLEAR}}** | the tongue bolt's nut side, which needs {{RAIL_CROSS_INNER_END_MIN}} |
-   | At the **front centre** leg | **{{RAIL_CROSS_INNER_END_CLEAR_MID}}** | the shoulder bar overhangs the leg by 19, and at 18 the bar's last 1 lands on this piece's end |
-
-   So **cut each piece to its own measured gap less 39** — the drawn figure is
-   {{RAIL_CROSS_INNER_SPAN}} and the base is 2 to 3 narrow, so the gap is what to work off, not that
-   number. **All four are still one length off one mark**: lower and upper get the same treatment
-   even though only the upper has a bar over it.
-
-   🔴 **THE BAR MUST BEAR ON THE LEG AND NOTHING ELSE.** A piece ending 18 from the face touches the
-   bar flush and does no harm on paper — but a lamination glued into a housing sits a few tenths
-   proud as often as not, and then it holds the bar off its ledges. That is the fault the bar was
-   fitted to cure, arriving by the back door.
+**That is the last of the woodwork** — there is no inner lamination to fit after it.
 
 🔴 **If step 4 reads anything much off 1220, do not cut.** The diagonals are saying the base is not
 square, and that is the whole reason for measuring at that point instead of trusting the figure.
