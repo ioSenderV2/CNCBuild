@@ -331,8 +331,10 @@ does not name the orientation means nothing.
 
 ### The front plate — the fin
 
-**Two off, each on its own piece of plate** - they used to nest out of one square: **tapered 100 mm at the top to 200 mm at the base, 301.625 mm
-tall, 10 mm** 6061, **solid**.
+**Two off, both out of one 301.625 square** - head to tail, the second a 180° rotation of the
+first: **tapered 100 mm at the top to 200 mm at the base, 301.625 mm tall, 10 mm** 6061, **solid**.
+They were on a piece each between 2026-10-08 and 2026-10-23, which is the only reason the top width
+reads a round 100.
 
 🔴 **No window.** It was clearance for the cast stepper frame and the steppers are at the back, so
 the fin is a plain tapered plate with the 8-bolt pattern in it and nothing else.

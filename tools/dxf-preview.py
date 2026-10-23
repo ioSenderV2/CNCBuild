@@ -51,7 +51,12 @@ GROUPS = [
         "out": "quote-2-front-fins.html",
         "title": "Waterjet quote - Y front fins",
         "lead": "One drawing, <b>6061</b>: the <b>two Y front fins</b>, both "
-                "out of one square of plate.",
+                "nested head to tail in <b>one square</b> of 10 mm plate. "
+                "<b>The material is supplied</b> and the square drawn is the "
+                "piece handed over, so the job is the holes and the two "
+                "profiles cut out of it. <b>The gap between the two tapered "
+                "edges is called out on the drawing</b> - please say if it is "
+                "too tight for your kerf.",
         "files": ["4-front-fins.dxf"],
     },
     {

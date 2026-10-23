@@ -32,10 +32,14 @@
   the bar runs ~30 mm past the casting and the four T-nut bolts live in the overhang.
 - SETTLED: ~~**The two strip widths either side of the window**~~ **Measured 2026-10-02 at 19 mm outboard
   on the MDF template; the design moved to 20 on 2026-10-03** when the window was realigned onto the
-  beam face. The measurement confirmed the approach, not this number. The fins are **100 / 200 over 301.625**, and SETTLED: **each is now on its own piece of plate** -
-  settled 2026-10-08. They used to nest out of one square with 2 mm for the kerf, which is the only
-  reason the top width was ever 99.625 rather than 100; the base is the reference end at a fixed 200,
-  so the top absorbed the remainder. On its own piece nothing couples the two widths.
+  beam face. The measurement confirmed the approach, not this number. The fins are **100 / 200 over 301.625**, and OPEN: **both are back in ONE square** -
+  2026-10-23, for the waterjet quote. They were split onto a piece each on 2026-10-08, which is what
+  released the top width from 99.625 to a chosen 100; the base is the reference end at a fixed 200,
+  so the top absorbed the remainder. **Nested again, the two widths are coupled again**, and at a
+  top of 100 the two tapered edges are **1.625 apart** across a 301.625 square. FLAG: **That is the
+  margin the whole nesting rests on and it has not been priced by anyone yet** - the old 2 mm was a
+  bandsaw figure, this is a waterjet kerf plus whatever lead-in it wants. Either the shop accepts
+  1.625, or the top goes back to 99.625, or the square gets bigger.
 - SETTLED: ~~**The window's horizontal position does not reconcile**~~ **Closed 2026-10-02, and the window
   was then realigned on 2026-10-03.** The original non-reconciliation was arithmetic off a wrong
   column position; with the M8 columns at **35 and 65** the beam spans X 20-80 and nothing about the

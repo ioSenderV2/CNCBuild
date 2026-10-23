@@ -65,7 +65,13 @@ ORDER = [
     # THE X BACK JOINING PLATE WENT THE SAME WAY, 2026-10-23: machined at home
     # and installed on the beam, so it has no drawing in the folder either.
     # Sheet s10 still specifies it. All six bolt-on plates are done.
-    ('front-fins', 'fins', ('Y front fin', 's1a', 302.0, 302.0, 10.0,
+    # THE SQUARE IS FIN_STOCK AND NOT 302 - the two Nones are filled from the
+    # registry in build(). It was carried here as 302, which is the figure
+    # FIN_STOCK's own note says it is NOT: the ordered piece is 11 7/8in,
+    # 301.625, the same height as the side plates and the back plate. Hardcoded
+    # it was 0.375 generous, which does not matter for one fin on its own piece
+    # and matters a great deal for two nested in the square.
+    ('front-fins', 'fins', ('Y front fin', 's1a', None, None, 10.0,
                             '6061', 2)),
     ('x-end-plate-left', 'xep', ('X gantry end plate, LEFT-HAND', 0,
                                  'XEP_CUT')),
@@ -291,17 +297,28 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
     fins = sheet == 's1a'
 
     if fins:
-        # ONE FIN PER PIECE OF PLATE, which is what Sheet 1a says and what put
-        # FIN_TOP_W back to a chosen 100: while the two nested head to tail out
-        # of a single square, top plus base plus kerf had to equal the square
-        # and the top absorbed the remainder. The stock outline is drawn so the
-        # square is visible, and the same drawing is cut twice.
+        L = W = reg.value('FIN_STOCK')
+        # BOTH FINS OUT OF ONE SQUARE, HEAD TO TAIL - his, 2026-10-23, for the
+        # one-part quote. The second fin is the first ROTATED 180 degrees about
+        # the square's centre, which is what the two halves are: assembly.md
+        # says rotations of each other and not mirrors, so left and right come
+        # off one profile and the pair tiles the square.
+        #
+        # THE 2 MM BETWEEN THE TWO TAPERED EDGES IS THE WHOLE NESTING MARGIN,
+        # and it is what used to put FIN_TOP_W at 99.625 rather than a chosen
+        # 100 - base plus top plus kerf had to close on the square. It closes
+        # at 100 for a WATERJET, whose kerf is about a millimetre; it did not
+        # close for a bandsaw at home, which is why the parts were split onto
+        # their own pieces in the first place. It is printed on the drawing and
+        # on every run, so it cannot shrink quietly if FIN_TOP or FIN_BASE move.
         ents += poly([(0, 0), (W, 0), (W, L), (0, L)], 'STOCK')
-        ents += poly([(0, 0), (FIN_BASE, 0), (FIN_TOP, FIN_H), (0, FIN_H)],
-                     'OUTLINE')
+        profile = [(0, 0), (FIN_BASE, 0), (FIN_TOP, FIN_H), (0, FIN_H)]
+        ents += poly(profile, 'OUTLINE')
+        ents += poly([(W - x, L - y) for x, y in profile], 'OUTLINE')
         for x, y, d in holes:
             ents += circle(x, y, d, 'HOLES')
-        used = FIN_BASE
+            ents += circle(W - x, L - y, d, 'HOLES')
+        used = FIN_BASE + FIN_TOP
     else:
         ents += poly([(0, 0), (L, 0), (L, W), (0, W)], 'OUTLINE')
         for x, y, d in holes:
@@ -337,8 +354,13 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
                  f'STOCK {both_units(L)} x {both_units(W)} x '
                  f'{both_units(T)} {material}', 'NOTES')
     ents += text(0, ty, 5, f'HOLES {bom}'
+                 + ('  PER PART, BOTH PARTS DRAWN' if fins else '')
                  + (f'  +{len(cutouts)} cut-out' if cutouts else ''), 'NOTES')
     ents += text(0, ty - 10, 5, 'UNITS mm  -  ORIGIN LOWER LEFT', 'NOTES')
+    if fins:
+        ents += text(0, ty - 20, 5,
+                     'BOTH PARTS NEST IN THE ONE SQUARE, HEAD TO TAIL  -  '
+                     f'{W - used:g} mm BETWEEN THE TAPERED EDGES', 'NOTES')
 
     path = os.path.join(OUT, name + '.dxf')
     with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
@@ -598,8 +620,10 @@ def main():
                   + '   ' + ', '.join(f'{sizes[d]}x o{d:g}'
                                       for d in sorted(sizes)))
             if kind == 'fins':
-                print(f'  {"":20s} one fin on its own {W:g} square, '
-                      f'{W - used:g} spare across the base')
+                sq = reg.value('FIN_STOCK')
+                print(f'  {"":20s} BOTH fins nested in one {sq:g} square, '
+                      f'{n * 2} holes drawn, {sq - used:g} between the two '
+                      f'tapered edges')
 
         elif kind == 'sole':
             n, used, tall, sizes, per_sheet = build_sole(src, reg)
