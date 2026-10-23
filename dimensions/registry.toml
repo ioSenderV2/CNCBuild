@@ -3085,7 +3085,7 @@ note = "18 - the BACK shear wall, one sheet, where the central wall is two. SETT
 sym = "SHOULDER_MID"
 expr = "TENON_MID_TABS * LEG_STRIP * (T_BOX_LEDGE - T_BACK_WALL)"
 unit = "mm2"
-note = "864 mm2 - the front centre leg's bearing area, two strips of 18 x 24. FLAG: THE CROSS RAIL'S HOUSING EATS 18 OF THE 42, which is what takes this from 1512 to 864 and makes it much the smallest of the three - and it carries the whole front of the box, because that leg is ledged on ONE face so its shoulder was only the 42 band to begin with. Still about 1 MPa against plywood edge-on, so it is a figure to know rather than a problem."
+note = "864 mm2 - the front centre leg's bearing area, two strips of 18 x 24. FLAG: THE CROSS RAIL'S HOUSING EATS 18 OF THE 42, which is what takes this from 1512 to 864 and makes it much the smallest of the three - and it carries the whole front of the box, because that leg is ledged on ONE face so its shoulder was only the 42 band to begin with. Still about 1 MPa against plywood edge-on, so it is a figure to know rather than a problem. FLAG: A 6061 BAR CARRIES THIS NOW AND THIS FIGURE IS NOT WHAT BEARS - his, as built: the bottom skin's front notch runs out to the skin's edge, so in the part there was no skin standing over these two strips at all and the computed area was bearing on nothing. A 110 x 20 x 10 bar bridges the two tabs and the skin lands on it. See commissioning/base-as-built.md."
 
 [[dim]]
 sym = "TENON_CORNER"

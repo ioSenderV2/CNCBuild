@@ -144,6 +144,21 @@ NOTE: **A "lamination" means two different parts in these files and that is what
 the caster pads above, and the cross rail's inner half in the model. Say which when the word is used
 on its own.
 
+## The front centre leg bears through a 6061 bar
+
+🔴 **There was no skin over that leg's shoulder, so the computed bearing area was bearing on
+nothing.** {{SHOULDER_MID}} counts two strips of {{LEG_STRIP}} × 24 behind the tenon — but the bottom
+skin's front notch **runs out to the skin's front edge**, which is what made it one opening instead of
+two holes, and that leaves no skin standing over those strips. The two rear corners were never in
+question: they sit inside closed cutouts with skin all round.
+
+**His fix, in the part: a 110 × 20 × 10 bar of 6061, laid across the leg to bridge its two tenon
+tabs.** The skin's front band lands on the bar instead of on air, and at 110 it reaches past the
+leg's {{POST_W_X}} at both ends so the bearing is outside the slot rather than over it.
+
+**Aluminium is the right material here and not an indulgence** — the band it replaces is plywood
+edge-on at about 1 MPa, and a 10 bar in compression over that span is nowhere near anything.
+
 ## Two consequences that cost nothing
 
 - **The box's tongues will stand about 1 proud of each leg's outer face** instead of flush. Cosmetic:
