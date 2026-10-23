@@ -104,8 +104,13 @@ try {
     # check-note-history is a RATCHET, not an audit: it reads only the notes
     # this working tree changed, so it never argues with the existing corpus.
     # Like restale it compares against HEAD, so it also has to run uncommitted.
-    foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-registry-js',
-                   'check-shop-pack-refs', 'check-cutlist-nest', 'subst',
+    # check-bearing is the INVERSE of check-clash-js: that one finds solids
+    # that overlap and must not, this one finds surfaces that must meet and do
+    # not. It is here because the front centre leg's shoulder was carrying
+    # nothing in the drawn geometry and no check was asking.
+    foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-bearing',
+                   'check-registry-js', 'check-shop-pack-refs',
+                   'check-cutlist-nest', 'subst',
                    'restale', 'check-note-history') {
         Write-Host "-- $c" -ForegroundColor Cyan
         & $py "tools/$c.py" @(
