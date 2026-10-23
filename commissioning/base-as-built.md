@@ -182,6 +182,17 @@ each front corner again and watch the gap to the front corner leg.** If a corner
 leg top, the mount has a fourth and fifth point under load and assembly.md's silent failure is live —
 the Y beams drift out of coplanar and nothing else shows it. If it cannot, the gap is doing its job.
 
+## It rolls on five wheels with every leg clear
+
+**Caster plates and casters in final position, and with the feet retracted the base rolls smoothly on
+all five — his.** That is what {{CASTER_PLATE_T}} was taken from 18 to 24 to buy: the stack comes to
+{{CASTER_STACK}} against the lower grid's {{BASE_FLOOR_CLEAR}}, so the wheels carry the whole
+assembly and no leg bottom touches the slab.
+
+OPEN: **{{CASTER_LIFT}} has never been measured against the parts** — read the gap under a leg bottom
+with the feet up. It is the smallest the leg clearance ever gets, and it is what a hump in the slab
+or a cord under one leg has to be got over.
+
 ## Two consequences that cost nothing
 
 - **The box's tongues will stand about 1 proud of each leg's outer face** instead of flush. Cosmetic:

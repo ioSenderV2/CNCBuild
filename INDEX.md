@@ -333,6 +333,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [One pattern at all eight tongues, and nothing else to do](commissioning/base-as-built.md#one-pattern-at-all-eight-tongues-and-nothing-else-to-do)
 - [The front centre leg bears through a 6061 bar](commissioning/base-as-built.md#the-front-centre-leg-bears-through-a-6061-bar)
 - [The box closes the gap by hand, and the top skin is why](commissioning/base-as-built.md#the-box-closes-the-gap-by-hand-and-the-top-skin-is-why)
+- [It rolls on five wheels with every leg clear](commissioning/base-as-built.md#it-rolls-on-five-wheels-with-every-leg-clear)
 - [Two consequences that cost nothing](commissioning/base-as-built.md#two-consequences-that-cost-nothing)
 - [The order the front span gets set in](commissioning/base-as-built.md#the-order-the-front-span-gets-set-in)
 

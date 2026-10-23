@@ -258,6 +258,10 @@ the interface, not this file.
 
 - OPEN: [L16](linear-encoder/sensor-board.md#the-through-hole-jack-does-not-obviously-fit) — *Sensor board*<br>The through-hole jack does not obviously fit The tape-facing side has a hard height budget, and it is small:
 
+## [commissioning/base-as-built.md](commissioning/base-as-built.md)  (1)
+
+- OPEN: [L192](commissioning/base-as-built.md#it-rolls-on-five-wheels-with-every-leg-clear) — *The base, as built / It rolls on five wheels with every leg…*<br>10.6 has never been measured against the parts — read the gap under a leg bottom with the feet up. It is the smallest the leg clearance ever gets, and it is what a hump in the slab or a cord under one leg has to be got over.
+
 ## [commissioning/masses.md](commissioning/masses.md)  (2)
 
 - OPEN: [L57](commissioning/masses.md#measured-masses) — *Measured masses*<br>The whole-machine and whole-installation figures are ESTIMATES, not weighings, and should not be quoted as measurements. From the 2026-09-26 session: the machine with spindle, risers and cabling at roughly 80 kg, and the whole installation - machine, torsion box, sand and timber base
@@ -322,4 +326,4 @@ the interface, not this file.
 
 ---
 
-**234 open** across 33 files.
+**235 open** across 33 files.
