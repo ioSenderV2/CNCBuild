@@ -189,9 +189,18 @@ all five — his.** That is what {{CASTER_PLATE_T}} was taken from 18 to 24 to b
 {{CASTER_STACK}} against the lower grid's {{BASE_FLOOR_CLEAR}}, so the wheels carry the whole
 assembly and no leg bottom touches the slab.
 
-OPEN: **{{CASTER_LIFT}} has never been measured against the parts** — read the gap under a leg bottom
-with the feet up. It is the smallest the leg clearance ever gets, and it is what a hump in the slab
-or a cord under one leg has to be got over.
+**Measured with the feet up, his: 9 under the FRONT legs and 5 under the REAR.** Both are under the
+derived {{CASTER_LIFT}}, and they differ by 4 front to rear.
+
+OPEN: **Which of the two explanations it is has not been settled, and one move settles it** — roll
+the base a few feet and read the same two legs again. **Numbers that travel with the base are the
+parts**, and then {{CASTER_LIFT}} is wrong everywhere it is quoted: the stack is {{CASTER_STACK}}
+against the lower grid's {{BASE_FLOOR_CLEAR}}, and one of those three figures is not what the parts
+give. **Numbers that change are the slab**, and 4 over the fore-aft span is an ordinary garage fall
+toward the door.
+
+**Nothing has to be done either way.** 5 is still clearance, no leg drags, and
+{{CASTER_LEVEL_TRAVEL}} of foot is untouched by it.
 
 ## Two consequences that cost nothing
 
