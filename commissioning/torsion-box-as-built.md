@@ -147,6 +147,33 @@ the Z pair.
 
 SETTLED: **{{RAIL_STACK}} is right - BOTH stacks calipered at 30.** That candidate is gone.
 
+## 🔴 THE TAPE READS ABOUT 2 SHORT ON AN INSIDE MEASUREMENT - and that was the whole discrepancy
+
+**The same span, two instruments.** Side plate inner face to inner face, taken at the FRONT, 60 mm
+above the skin, against the plates' own edges rather than as a hooked inside measurement:
+
+| Instrument | Reading |
+|---|---|
+| Tape | **1201** |
+| 50 inch steel ruler | **1203** |
+| The chain, on a 1210 skin | **1203.1** |
+
+**The ruler and the arithmetic agree to a tenth, and the tape is 2 light.** Every tape reading taken
+during this is carrying that offset. Corrected: beam inner faces about **1083**, block faces about
+**1023** - not the 1081 and 1020.5 that were taped.
+
+**So the real shortfall against the X assembly's 1024.38 is about 1.4, not 3.4 - and 1 mm of it is
+the 1210 skin against the drawn 1211.** It comes off the X end plates, 0.7 a face, on plates that are
+uncut and have to be faced anyway.
+
+🔴 **DO NOT BUY A LASER MEASURE FOR THIS.** A laser distance meter runs about plus or minus 1.5 to 2,
+which is worse than the ruler and nowhere near what this needs. **The instrument order here, worst to
+best: tape, ruler, then the X beam itself between the block faces with feeler gauges reading the
+leftover** - which contains no absolute measurement at all and is the one to use for the end plates.
+
+NOTE: **This is the general lesson, not a one-off.** Every figure that came off a caliper, a gauge
+panel, a triangle or a ruler held up. The only ones that moved were the tape's.
+
 🔴 **Which leaves exactly one unverified link in the chain, and it is the tape.** Everything else is
 now measured with a better instrument: the stacks with calipers, the box with a gauge panel, the
 plates with a precision triangle, the bore stations by sixteen bolts spinning in. **The only figure
