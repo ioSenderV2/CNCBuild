@@ -275,6 +275,10 @@ the interface, not this file.
 - FLAG: [L112](commissioning/stiffness-test.md#indicators-1-and-2-are-the-pair-that-matters-most) — *The stiffness test: push the nose, find where it moves / Pu…*<br>Indicators 1 and 2 are the pair that matters most A nose reading mixes two things that matter very differently:
 - OPEN: [L219](commissioning/stiffness-test.md#then-what) — *The stiffness test: push the nose, find where it moves / Th…*<br>Whatever this test says, go back and correct the computed figures in ../machine/gantry-beam-joint.md. They are estimates with a crude beam model behind them, and a note that contradicts its own correction is worse than no note.
 
+## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)  (1)
+
+- FLAG: [L41](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
+
 ## [wiring/breakout-box.md](wiring/breakout-box.md)  (12)
 
 - FLAG: [L22](wiring/breakout-box.md#star-the-motor-returns---the-reason-changed-the-rule-did-not) — *The remote breakout box / Star the motor returns - the reas…*<br>THE ORIGINAL REASON FOR THIS SECTION IS GONE, AND THE RULE SURVIVES ON A WEAKER ONE. It was written when each axis's GND sat in the same 6-pin shell as its motor supply, so one conductor carried chopped motor current and served as the drive's opto reference. Two measurements since have removed that: the motor supply now runs on its own 18/2 shielded cable, and the drives' opto minus legs are independent and isolated - measured 2026-10-12, see ig57-drives.md. There is no longer a conductor doing both jobs.
@@ -324,4 +328,4 @@ the interface, not this file.
 
 ---
 
-**233 open** across 33 files.
+**234 open** across 34 files.

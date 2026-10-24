@@ -385,6 +385,12 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Results](commissioning/stiffness-test.md#results)
 - [Then what](commissioning/stiffness-test.md#then-what)
 
+## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)
+
+- [The back outer lamination is 1211, and the corner is reversed](commissioning/torsion-box-as-built.md#the-back-outer-lamination-is-1211-and-the-corner-is-reversed)
+- [The two back pieces become the second side](commissioning/torsion-box-as-built.md#the-two-back-pieces-become-the-second-side)
+- [Check the rear plate's overhang before the side laminations go on](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on)
+
 ## [wiring/breakout-box.md](wiring/breakout-box.md)
 
 - [What is in it](wiring/breakout-box.md#what-is-in-it)

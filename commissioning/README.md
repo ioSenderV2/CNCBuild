@@ -3,9 +3,11 @@
 **Measured from the machine.** This folder outranks any configuration file - see the standing rule in the
 [root README](../README.md).
 
-**Recorded so far:** [`masses.md`](masses.md) - the four moving assemblies, weighed 2026-09-26, and
+**Recorded so far:** [`masses.md`](masses.md) - the four moving assemblies, weighed 2026-09-26,
 [`base-as-built.md`](base-as-built.md) - the base's measured width, wall, tenon span and the bottom
-skin's dry fit. **The remaining base parts get cut to that file, not to the registry.**
+skin's dry fit, and [`torsion-box-as-built.md`](torsion-box-as-built.md) - the back lamination's
+length, the reversed back corner and what the remaining wall pieces get cut to. **The remaining
+base and box parts get cut to those files, not to the registry.**
 
 **Do first:** [`bench-session.md`](bench-session.md) - it needs no machine, and it is the only item
 here that gets harder once the build moves on.
