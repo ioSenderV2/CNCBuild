@@ -79,6 +79,8 @@ ORDER = [
                                  'XEP_CUT')),
     ('x-end-plate-right', 'xep', ('X gantry end plate, RIGHT-HAND with the '
                                   'tongue', 1, 'XEP_STOCK_L')),
+    #   kind 'doubler' - the three doubler blanks on one sheet, holes only
+    ('doublers', 'doubler', None),
 ]
 
 
@@ -451,6 +453,70 @@ def sole_T(ox, L, D, W, S, R):
     return ents
 
 
+DOUBLER_GAP = 14.0      # between the three blanks on the one drawing
+
+
+def build_doubler(name, src, reg):
+    """The three doubler blocks on one drawing, BLANKS AND HOLES.
+
+    THEY LOST THEIR DRAWING WHEN THE END PLATES BECAME FINISHED PARTS. Each
+    doubler used to be nested in the strip beside its plate, so taking the nest
+    off the end plate drawings took the only picture of their hole positions
+    with it - and the blanks are sawn but not drilled. Sheet 2's schedule still
+    specified them the whole time; this puts them back on a sheet of their own.
+
+    THE OUTLINE IS REFERENCE, NOT A CUT LINE, same as the end plates: the blanks
+    exist. Drawn 154 along the sheet's X and 45 up its Y, which is the turn the
+    strip version used, so the schedule's X and Y swap here - its X reads up the
+    45 and its Y along the 154.
+    """
+    W, H = reg.value('XEP_W'), reg.value('DOUBLER_H')
+    t = reg.value('T_DOUBLER')
+
+    holes, cutouts, edge, _m = holes_for(src, 's2', XEP_DOUBLER_TI)
+    if cutouts:
+        raise SystemExit(f'{name}: a cut-out on a doubler is not drawn')
+
+    ents, oy, sizes, n = [], 0.0, {}, 0
+    for i in range(3):
+        ents += poly([(0, oy), (W, oy), (W, oy + H), (0, oy + H)], 'STOCK')
+        for x, y, d in holes:
+            ents += circle(y, oy + x, d, 'HOLES')
+            sizes[d] = sizes.get(d, 0) + 1
+            n += 1
+        oy += H + DOUBLER_GAP
+
+    tall = oy - DOUBLER_GAP
+    bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
+    ty = tall + 24
+    ents += text(0, ty + 20, 7, 'DOUBLER BLOCKS  -  QTY 3', 'NOTES')
+    ents += text(0, ty + 10, 5,
+                 f'PART {both_units(W)} x {both_units(H)} x {both_units(t)} '
+                 f'6061  -  ALREADY SAWN TO SIZE', 'NOTES')
+    ents += text(0, ty, 5, f'HOLES {bom}  -  PER BLOCK, ALL THREE DRAWN',
+                 'NOTES')
+    ents += text(0, ty - 10, 5,
+                 'UNITS mm  -  ORIGIN LOWER LEFT OF EACH BLOCK  -  THE '
+                 'OUTLINE IS REFERENCE, NOT A CUT LINE', 'NOTES')
+    nedge = sum(edge.values())
+    if nedge:
+        ents += text(0, ty - 20, 5,
+                     f'{nedge} EDGE-BORED HOLE(S) PER BLOCK ARE NOT DRAWN - '
+                     f'they run into an end face and are drilled there',
+                     'NOTES')
+
+    check = {}
+    for _, _, d in holes:
+        check[d] = check.get(d, 0) + 1
+    for d, c in edge.items():
+        check[d] = check.get(d, 0) + c
+
+    path = os.path.join(OUT, name + '.dxf')
+    with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
+        fh.write('\n'.join(dxf_head() + ents + dxf_tail()) + '\n')
+    return n, sizes, check, W, tall
+
+
 def build_sole(src, reg):
     """The three nut sole plates on one drawing, PROFILES AND NO STOCK.
 
@@ -657,6 +723,16 @@ def main():
                   + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
             print(f'  {"":20s} 3 profiles over {used:g} x {tall:g}, '
                   f'NO STOCK - the shop supplies the plate')
+
+        elif kind == 'doubler':
+            n, sizes, got, w, tall = build_doubler(name, src, reg)
+            if got != expect.get(('s2', XEP_DOUBLER_TI)):
+                bad.append(f'{name}: this file {got} against the tally '
+                           f'{expect.get(("s2", XEP_DOUBLER_TI))}')
+            print(f'  {name:20s} sheet s2/{XEP_DOUBLER_TI}  {n:3d} hole(s)   '
+                  + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
+            print(f'  {"":20s} 3 blanks over {w:g} x {tall:g}, holes only - '
+                  f'they are already sawn')
 
         else:                                               # 'xep'
             title, ti, l_sym = payload

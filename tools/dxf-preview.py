@@ -61,13 +61,15 @@ GROUPS = [
     },
     {
         "out": "quote-3-x-end-plates.html",
-        "title": "Waterjet quote - X gantry end plates",
-        "lead": "Two drawings in <b>6061</b>: the two <b>X gantry end "
-                "plates</b>. <b>Both parts are already cut to finished size "
-                "and the job is the holes only</b> - the outline is drawn to "
-                "register against and is <b>not</b> a cut line. The origin is "
-                "on each part's factory long edge, not the sawn one.",
-        "files": ["5-x-end-plate-left.dxf", "6-x-end-plate-right.dxf"],
+        "title": "Waterjet quote - X gantry end plates and doublers",
+        "lead": "Three drawings in <b>6061</b>: the two <b>X gantry end "
+                "plates</b> and the three <b>doubler blocks</b>. <b>Every part "
+                "is already cut to finished size and the job is the holes "
+                "only</b> - each outline is drawn to register against and is "
+                "<b>not</b> a cut line. On the end plates the origin is on the "
+                "part's factory long edge, not the sawn one.",
+        "files": ["5-x-end-plate-left.dxf", "6-x-end-plate-right.dxf",
+                  "7-doublers.dxf"],
     },
 ]
 
