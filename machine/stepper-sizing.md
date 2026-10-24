@@ -196,6 +196,20 @@ He holds **three HBT57C spares: two at 2.0 N·m and one at 1.5 N·m** - his, 202
 until it comes out, and know that rather than discover it. They do **not** remove the case for an
 IG57 spare, which is what the paragraph above is actually about.
 
+🔴 **The same argument kills a Mega V motor swap, and that is worth stating because the motors are
+attractive.** The Mega V runs **HBT57C at 3.2 N·m on X, Y1 and Y2 and 1.5 on Z**, they have been
+trouble-free in service, and they are drop-in on power and control. **The alarm is where it falls
+down.** Bringing three across puts three inverted alarms into a chain the driver reads as one input,
+which switches the guard off for the **whole machine** rather than for those axes. Bringing all four
+across makes the chain consistent again but inverted against what the firmware expects - workable
+with a firmware invert, and a deliberate change rather than a cabling swap.
+
+**So a working fault guard is the thing being traded**, against a torque advantage this machine's
+envelope does not need and which the section below expects to be a *disadvantage* where the rapids
+live. OPEN: **The 3.2 vs 2.2 stall comparison is still worth taking if both sets are on the bench
+together** - it is the one reading that could overturn the claim the sizing decision leans on
+hardest. It is curiosity now, not a decision input.
+
 ## Why not 3.2 N·m
 
 It is mechanically available — all four frames are NEMA 23 and the 3.2 comes in that frame — so this

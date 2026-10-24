@@ -217,8 +217,8 @@ the interface, not this file.
 - OPEN: [L54](machine/stepper-sizing.md#the-inputs-and-where-each-came-from) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on…*<br>The kgf reading is an inference, not a datum. 780 / 1790 are the standard pair for a 1605 and the units column was not captured. If they turn out to be newtons rather than kgf the life calculation below collapses by a factor of 9.6 and the screw becomes a term in the decision instead of a non-term. Worth one glance at the sheet's column header.
 - FLAG: [L102](machine/stepper-sizing.md#nor-is-inertia) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on…*<br>The screw and the rotor are the inertia; the moving mass is a rounding error. That inverts the usual sizing instinct, which reaches for a bigger motor when the gantry is heavy. Here a bigger motor mostly accelerates its own rotor.
 - OPEN: [L124](machine/stepper-sizing.md#what-the-constraint-actually-is-whip-then-the-torque-curve) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on…*<br>Use the 1510 rpm row as the working figure and treat the other as headroom that may or may not be there.
-- OPEN: [L224](machine/stepper-sizing.md#the-torque-curve-at-36-v) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on Z*<br>The torque curve at 36 V Everything above is settled except the figure that sets the rapid feed rate in the firmware: how much torque a 2.2 N·m IG57 actually has at 1200 and 1500 rpm on a 36 V rail. This heading read "Openthe torque curve at 48 V" until 2026-10-12 - a marker mangled when the emoji markers became words, which meant it was not being harvested into STATUS.md at all, and a voltage that has since changed.
-- OPEN: [L249](machine/stepper-sizing.md#the-torque-curve-at-36-v) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on…*<br>Two cross-checks belong with that test and are not yet done:
+- OPEN: [L238](machine/stepper-sizing.md#the-torque-curve-at-36-v) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on Z*<br>The torque curve at 36 V Everything above is settled except the figure that sets the rapid feed rate in the firmware: how much torque a 2.2 N·m IG57 actually has at 1200 and 1500 rpm on a 36 V rail. This heading read "Openthe torque curve at 48 V" until 2026-10-12 - a marker mangled when the emoji markers became words, which meant it was not being harvested into STATUS.md at all, and a voltage that has since changed.
+- OPEN: [L263](machine/stepper-sizing.md#the-torque-curve-at-36-v) — *Stepper sizing — 2.2 N·m on the three working axes, 1.5 on…*<br>Two cross-checks belong with that test and are not yet done:
 
 ## [machine/three-point-mount.md](machine/three-point-mount.md)  (2)
 
@@ -277,7 +277,7 @@ the interface, not this file.
 
 ## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)  (1)
 
-- FLAG: [L41](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
+- FLAG: [L56](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
 
 ## [wiring/breakout-box.md](wiring/breakout-box.md)  (12)
 
