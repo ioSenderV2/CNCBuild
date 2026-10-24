@@ -87,7 +87,11 @@ def filename(slug):
     return f'{[s for s, _, _ in ORDER].index(slug) + 1}-{slug}'
 
 
-FIN_BASE, FIN_TOP, FIN_H = 200.0, 100.0, 301.625
+# THE FIN'S THREE DIMENSIONS COME FROM THE REGISTRY, read in build(). They were
+# hardcoded here as 200, 100 and 301.625, and the height is how the divergence
+# showed itself: tools/make-3d.py has always taken the fin's height from
+# FIN_STOCK, so the 3D model stood the fin as tall as its square while this
+# writer drew it 0.375 shorter. Two tools, one part, two heights.
 
 # THE ONE SETUP WHERE THE SHOP SUPPLIES THE METAL - his, 2026-10-16. So there is
 # no stock rectangle: these are three part profiles cut from the shop's own
@@ -283,9 +287,15 @@ def text(x, y, h, s, layer):
             '40', f'{h:.2f}', '1', s]
 
 
-def poly(pts, layer):
+def poly(pts, layer, close=True):
+    """The run of edges through pts, closed back to the first unless told not.
+
+    close=False IS FOR A SHARED EDGE, which the two front fins have: the second
+    fin's taper is the first fin's taper, so its outline is drawn as an open run
+    and the segment it is missing is the one already in the file.
+    """
     out = []
-    for i in range(len(pts)):
+    for i in range(len(pts) - (0 if close else 1)):
         out += line(pts[i], pts[(i + 1) % len(pts)], layer)
     return out
 
@@ -300,27 +310,56 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
 
     if fins:
         L = W = reg.value('FIN_STOCK')
-        # BOTH FINS OUT OF ONE SQUARE, HEAD TO TAIL - his, 2026-10-23, for the
-        # one-part quote. The second fin is the first ROTATED 180 degrees about
-        # the square's centre, which is what the two halves are: assembly.md
-        # says rotations of each other and not mirrors, so left and right come
-        # off one profile and the pair tiles the square.
+        base, top = reg.value('FIN_BASE_W'), reg.value('FIN_TOP_W')
+        # BOTH FINS OUT OF ONE SQUARE, HEAD TO TAIL, ON ONE SHARED DIAGONAL.
+        # The second fin is the first ROTATED 180 degrees about the square's
+        # centre, which is what the two halves are: assembly.md says rotations
+        # of each other and not mirrors, so left and right come off one profile
+        # and the pair tiles the square with no waste.
         #
-        # THE 2 MM BETWEEN THE TWO TAPERED EDGES IS THE WHOLE NESTING MARGIN,
-        # and it is what used to put FIN_TOP_W at 99.625 rather than a chosen
-        # 100 - base plus top plus kerf had to close on the square. It closes
-        # at 100 for a WATERJET, whose kerf is about a millimetre; it did not
-        # close for a bandsaw at home, which is why the parts were split onto
-        # their own pieces in the first place. It is printed on the drawing and
-        # on every run, so it cannot shrink quietly if FIN_TOP or FIN_BASE move.
+        # THE TAPER IS A SINGLE CUT SERVING BOTH PARTS, and that is only true
+        # because base plus top closes on the square EXACTLY and the fin stands
+        # as tall as the square. Break either and the two tapers stop being the
+        # same line: at a 100 top they sit 2 mm apart with a sliver of 10 mm
+        # plate between two separate passes, and at a fin shorter than its
+        # square they are skew rather than parallel. The rotation maps the
+        # diagonal onto itself, which is what SHARED_TAPER_CHECK holds to.
         ents += poly([(0, 0), (W, 0), (W, L), (0, L)], 'STOCK')
-        profile = [(0, 0), (FIN_BASE, 0), (FIN_TOP, FIN_H), (0, FIN_H)]
-        ents += poly(profile, 'OUTLINE')
-        ents += poly([(W - x, L - y) for x, y in profile], 'OUTLINE')
+        profile = [(0, 0), (base, 0), (top, L), (0, L)]
+        rot = [(W - x, L - y) for x, y in profile]
+        if abs((base + top) - W) > 1e-6:
+            raise SystemExit(
+                f'{name}: the fins do not share one taper - base {base:g} plus '
+                f'top {top:g} is {base + top:g} against a {W:g} square. '
+                f'Either close it, or the drawing needs two tapers and a web '
+                f'the shop has agreed to.')
+        if sorted(profile[1:3]) != sorted(rot[1:3]):
+            raise SystemExit(f'{name}: the rotated taper is not the same line')
+        # THE TAPER GOES IN THE FILE ONCE, AND IT GOES IN LAST.
+        #
+        # ONCE, because drawing both profiles whole would put the shared segment
+        # in twice, exactly overlapping, and a CAM package that takes the file
+        # at its word cuts it twice - a second pass down an open kerf, which is
+        # how an edge gets washed out.
+        #
+        # LAST, because it is the ONLY cut that separates the two parts. Until
+        # it runs the plate is one piece and everything is held; the moment it
+        # runs, both halves are loose and can tip or shift. So the order in the
+        # file is holes, then the two perimeters, then the diagonal - and the
+        # same order is stated in plain words on the drawing, because entity
+        # order in a DXF is a HINT and not a contract. The operator programs
+        # the machine; the note is what he reads.
+        #
+        # profile[1] -> profile[2] IS the taper, so rot's copy is rot[1] ->
+        # rot[2]. Starting each open run at index 2 walks the other three edges
+        # and leaves the shared one out of both.
         for x, y, d in holes:
             ents += circle(x, y, d, 'HOLES')
             ents += circle(W - x, L - y, d, 'HOLES')
-        used = FIN_BASE + FIN_TOP
+        ents += poly(profile[2:] + profile[:2], 'OUTLINE', close=False)
+        ents += poly(rot[2:] + rot[:2], 'OUTLINE', close=False)
+        ents += line(profile[1], profile[2], 'OUTLINE')
+        used = base + top
     else:
         ents += poly([(0, 0), (L, 0), (L, W), (0, W)], 'OUTLINE')
         for x, y, d in holes:
@@ -361,14 +400,23 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
     ents += text(0, ty - 10, 5, 'UNITS mm  -  ORIGIN LOWER LEFT', 'NOTES')
     if fins:
         ents += text(0, ty - 20, 5,
-                     'BOTH PARTS NEST IN THE ONE SQUARE, HEAD TO TAIL  -  '
-                     f'{W - used:g} mm BETWEEN THE TAPERED EDGES', 'NOTES')
+                     'BOTH PARTS NEST IN THE ONE SQUARE, HEAD TO TAIL.  THE '
+                     'TAPER IS ONE SHARED CUT - NOT TWO', 'NOTES')
+        ents += text(0, ty - 60, 5,
+                     'CUT ORDER:  HOLES FIRST, THEN BOTH PERIMETERS, THEN THE '
+                     'SHARED DIAGONAL LAST', 'NOTES')
+        ents += text(0, ty - 70, 5,
+                     'THE DIAGONAL IS THE CUT THAT PARTS THEM - UNTIL IT RUNS '
+                     'THE PLATE IS ONE PIECE AND NOTHING CAN SHIFT', 'NOTES')
         ents += text(0, ty - 30, 5,
+                     'THE KERF COMES OFF BOTH PARTS AT THE TAPER.  THAT IS '
+                     'ACCEPTED - DO NOT ADD A WEB BETWEEN THEM', 'NOTES')
+        ents += text(0, ty - 40, 5,
                      'THE SQUARE IS NOMINAL.  INDEX EACH PART\'S WIDE BASE '
                      'EDGE ON A REAL PLATE EDGE, OPPOSITE EDGES', 'NOTES')
-        ents += text(0, ty - 40, 5,
-                     'ANY SHORTFALL IN THE PLATE COMES OFF THE GAP BETWEEN '
-                     'THE TAPERS, NOT OFF A BASE EDGE', 'NOTES')
+        ents += text(0, ty - 50, 5,
+                     'ANY SHORTFALL IN THE PLATE COMES OFF THE TAPERED ENDS, '
+                     'NOT OFF A BASE EDGE', 'NOTES')
 
     path = os.path.join(OUT, name + '.dxf')
     with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
@@ -630,8 +678,9 @@ def main():
             if kind == 'fins':
                 sq = reg.value('FIN_STOCK')
                 print(f'  {"":20s} BOTH fins nested in one {sq:g} square, '
-                      f'{n * 2} holes drawn, {sq - used:g} between the two '
-                      f'tapered edges at that square')
+                      f'{n * 2} holes drawn, ONE shared taper - '
+                      f'{reg.value("FIN_BASE_W"):g} base + '
+                      f'{reg.value("FIN_TOP_W"):g} top closes on it')
 
         elif kind == 'sole':
             n, used, tall, sizes, per_sheet = build_sole(src, reg)

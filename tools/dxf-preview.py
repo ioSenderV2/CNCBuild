@@ -117,18 +117,30 @@ def arc_ends(cx, cy, r, a0, a1):
 
 
 def open_ends(lines, arcs):
-    """Endpoints that do not meet exactly one other endpoint.
+    """DEAD ENDS - endpoints that only one entity touches.
 
     AN OPEN PROFILE IS THE FAILURE THAT MATTERS AND IT IS INVISIBLE AT 1:5. A
     gap of a hundredth where an arc meets its line looks like a closed part on
     paper, and the shop's software either refuses the file or quietly cuts the
-    hole as an open path. Every outline here is closed by construction, so each
-    endpoint must be shared by exactly two entities - no more, no less.
+    hole as an open path. THAT GAP'S SIGNATURE IS A DEGREE OF ONE: the two ends
+    either side of it round to different keys and each is left touching nothing.
+
+    THE RULE IS NOT 'EXACTLY TWO', WHICH IS WHAT IT USED TO BE, because a point
+    where cut paths MEET is legitimately higher. The two front fins nest on ONE
+    SHARED TAPER - the segment appears in the file once, so a CAM package
+    cannot cut it twice - and each of its ends is touched by three entities:
+    the taper plus a base edge from each fin. Three is correct there and two is
+    impossible.
+
+    IT IS NECESSARY RATHER THAN SUFFICIENT, which the old rule was too. Degree
+    alone cannot tell a figure-of-eight from two separate loops; it catches the
+    gap, which is the failure that actually happens here, and these outlines are
+    closed by construction in make-dxf.py.
 
     COUNTED BY LAYER. A profile closes within its own layer, and the stock
     outline on the end plates shares its lower-left corner with the plate cut
-    out of it - counted together that corner meets three other ends and reads
-    as a defect when both shapes are perfectly closed.
+    out of it - counted together that corner reads as a defect when both shapes
+    are perfectly closed.
     """
     pts = [(p, seg[2]) for seg in lines for p in seg[:2]]
     pts += [(p, a[5]) for a in arcs for p in arc_ends(*a[:5])[:2]]
@@ -136,7 +148,7 @@ def open_ends(lines, arcs):
     for (x, y), layer in pts:
         k = (layer, round(x, 6), round(y, 6))
         seen[k] = seen.get(k, 0) + 1
-    return sorted((x, y) for (_, x, y), n in seen.items() if n != 2)
+    return sorted((x, y) for (_, x, y), n in seen.items() if n < 2)
 
 
 def extent(lines, circles, arcs):

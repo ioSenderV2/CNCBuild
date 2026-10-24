@@ -87,7 +87,7 @@ DOUBLER_BLOCK_CLEAR,mm,3,"[derived] 3 - doubler top to the LOWER Y bearing block
 FIN_STOCK,mm,302,"[measured] 302 - the fin square, HIS PRECISION RULER ON THE PIECE ITSELF, both directions. FLAG: IT DOES NOT DERIVE FROM PLATE_H ANY MORE and that is deliberate: the listing promised 11 7/8in (301.625) and quotes no tolerance, and his instruction is "
 FIN_KERF,mm,2,"[nominal] FLAG: RETIRED 2026-10-08 AND NOTHING DERIVES FROM IT. It was the bandsaw kerf of the single diagonal cut that nested both fins out of one 301.625 square. He put each fin on its own piece of plate instead, so there is no cut to allow for and"
 FIN_BASE_W,mm,200,"[part] THE BASE IS THE REFERENCE, his call 2026-10-07 - so it is a fixed 200 and the top absorbs whatever the square leaves. The base is the end that bolts down and bears, which is why it gets to be the round number. It was the other way round until "
-FIN_TOP_W,mm,100,"[part] 100, his choice, and it is CHOSEN AGAIN rather than derived - 2026-10-08. It was forced to 99.625 for as long as both fins nested out of one 301.625 square, because top plus base plus kerf had to close on the square or the two halves did not f"
+FIN_TOP_W,mm,102,"[derived] 102 - DERIVED, and the derivation is the point: top plus base closes on the square EXACTLY, which is what makes the two fins share ONE diagonal cut instead of needing two passes with a web between them. FLAG: THAT WEB IS WHY IT IS NOT A CHO"
 FIN_COL_OUTB,mm,35,[pinned] Outboard M8 column from the fin's outboard factory edge. CORRECTED from 20 - the 1.8 mm proud figure was computed off that dead value.
 FIN_COL_INB,mm,65,[derived] Inboard M8 column. 65.
 FIN_OVERHANG,mm,20,[derived] Fin overhanging the Y beam's outboard face

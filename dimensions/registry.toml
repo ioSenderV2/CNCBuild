@@ -561,9 +561,8 @@ note = "THE BASE IS THE REFERENCE, his call 2026-10-07 - so it is a fixed 200 an
 
 [[dim]]
 sym = "FIN_TOP_W"
-value = 100
-provenance = "part"
-note = "100, his choice, and it is CHOSEN AGAIN rather than derived - 2026-10-08. It was forced to 99.625 for as long as both fins nested out of one 301.625 square, because top plus base plus kerf had to close on the square or the two halves did not fit. Each fin is its own piece of plate now, so nothing couples the top width to the base width and the round number comes back. FIN_BASE_W stays the reference end at 200 for the reason it always was: it is the end that bolts down and bears."
+expr = "FIN_STOCK - FIN_BASE_W"
+note = "102 - DERIVED, and the derivation is the point: top plus base closes on the square EXACTLY, which is what makes the two fins share ONE diagonal cut instead of needing two passes with a web between them. FLAG: THAT WEB IS WHY IT IS NOT A CHOSEN 100. At 100 the two tapered edges sit 2 mm apart, each pass takes its own kerf out of that 2, and what is left is a sliver of 10 mm plate thinner than the plate - the stream wanders into it and washes the edge on both parts. Nesting guidance is a web at least as wide as the material is thick, which would be 10 here. SETTLED: THE KERF COMES OFF THE PARTS INSTEAD, about half a millimetre at the taper on each, which is acceptable where a bad edge is not - his call. FLAG: IT ONLY SHARES IF THE FIN IS AS TALL AS THE SQUARE. At a 302 square and a 301.625 fin the two tapers are SKEW by 0.12 rather than collinear, so the single pass is not available; the fin's height is FIN_STOCK for that reason and for the beam-top chain in FIN_TOP_Z. FIN_BASE_W stays the reference end at 200 because it is the end that bolts down and bears, so the top is the end that absorbs whatever the square leaves."
 
 [[dim]]
 sym = "FIN_COL_OUTB"
