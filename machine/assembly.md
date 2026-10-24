@@ -1031,7 +1031,7 @@ FLAG: **A magnet-and-chain scheme was carried for one commit and is retired.** I
 and the top ports turn out to be the access that is not there.
 
 **The front row of five lands on the open apron**, since the tee track bed runs to 1006.35 and that
-row is centred at 1081.5. **Skin the apron with 6.35 Baltic birch on double-sided tape** — a cover
+row is centred at 1081.5. **Skin the apron with {{T_APRON_SKIN}} Baltic birch on double-sided tape** — a cover
 and not structure, so it comes off the day a port is used, and it gives the apron a sacrificial
 surface the bare top skin did not have.
 
