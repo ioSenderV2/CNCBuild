@@ -63,10 +63,10 @@ GROUPS = [
         "out": "quote-3-x-end-plates.html",
         "title": "Waterjet quote - X gantry end plates",
         "lead": "Two drawings in <b>6061</b>: the two <b>X gantry end "
-                "plates</b>, each with its doubler nested in the strip "
-                "beside it. <b>All material is supplied</b> and the outline "
-                "drawn is the piece handed over, so the job is the holes and "
-                "the profiles cut out of each piece.",
+                "plates</b>. <b>Both parts are already cut to finished size "
+                "and the job is the holes only</b> - the outline is drawn to "
+                "register against and is <b>not</b> a cut line. The origin is "
+                "on each part's factory long edge, not the sawn one.",
         "files": ["5-x-end-plate-left.dxf", "6-x-end-plate-right.dxf"],
     },
 ]

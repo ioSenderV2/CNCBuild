@@ -504,111 +504,74 @@ def build_sole(src, reg):
 
 
 def build_xep(name, title, ti, l_sym, src, reg):
-    """One X end plate on its 300 x 200 piece, its doubler in the strip.
+    """One X end plate, FINISHED SIZE, holes only.
 
-    Stock frame: X along the 300, Y across the 200 - the same frame Sheet 2a's
-    schedule uses for the plate, so its coordinates go in untouched. The plate
-    takes XEP_W of the 200 and the doubler lies in what is left, turned so its
-    154 runs along the sheet's X. That turn is why its own schedule's X and Y
-    swap over here, and it is called out on the drawing.
+    BOTH PLATES ARE ALREADY CUT and their doubler blocks are already sawn out of
+    them - his, 2026-10-24. So there is no stock rectangle, no profile to cut and
+    no doubler nested in a strip: the part exists, and the only job left on it is
+    the holes. The outline is drawn on the STOCK layer, which the preview dashes,
+    because it is there to register the holes against and NOT to be cut.
+
+    MIRRORED IN Y. His instruction: as the nest was drawn, the origin corner fell
+    on the edge his bandsaw made when the doubler strip came off, and the holes
+    have to be laid out from a FACTORY edge. Flipping about the horizontal axis
+    moves the origin to the uncut long edge. The reference edge is called out in
+    words on the drawing, so a flip in the wrong direction shows up on the print
+    instead of in the metal - which on a part that cannot be re-cut is the whole
+    precaution.
     """
     L = reg.value(l_sym)
-    W, SW = reg.value('XEP_STOCK_L'), reg.value('XEP_STOCK_W')
     pw = reg.value('XEP_W')
     cut_y, cut_x = reg.value('CORNER_CUT_Y'), reg.value('CORNER_CUT_X_END')
-    dh, dl = reg.value('DOUBLER_H'), reg.value('XEP_W')
     t = reg.value('T_X_ENDPLATE')
 
-    ents = []
-    # THE STOCK OUTLINE IS NOT A CUT LINE. It is the piece he hands over, drawn
-    # so the waste past the plate's end is visible - which is where the third
-    # doubler comes from. Its own layer, and the preview dashes it.
-    ents += poly([(0, 0), (W, 0), (W, SW), (0, SW)], 'STOCK')
-    ents += poly([(0, 0), (L, 0), (L, cut_y), (cut_x, pw), (0, pw)], 'OUTLINE')
-    dy = pw + XEP_KERF                      # the strip starts past the plate
-    ents += poly([(0, dy), (dl, dy), (dl, dy + dh), (0, dy + dh)], 'OUTLINE')
+    def fy(y):
+        """Mirror about the plate's own mid-height."""
+        return pw - y
 
-    # THE LEFT PLATE IS CUT SHORT OF THE STOCK, so 55 x 200 is left past its
-    # end - his catch. The THIRD doubler, the X carriage's, goes there turned
-    # the other way from the strip one: its 154 runs across the sheet, along
-    # the 200, and its 45 along what is left of the 300.
-    spare = W - L
-    third = None
-    if spare >= dh + 2 * XEP_KERF and SW >= dl:
-        tx = L + XEP_KERF
-        third = (tx, 0.0)
-        ents += poly([(tx, 0), (tx + dh, 0), (tx + dh, dl), (tx, dl)],
-                     'OUTLINE')
+    ents = []
+    ents += poly([(0, fy(0)), (L, fy(0)), (L, fy(cut_y)), (cut_x, fy(pw)),
+                  (0, fy(pw))], 'STOCK')
 
     sizes, n = {}, 0
     holes, cutouts, edge, _m = holes_for(src, 's2', ti)
     if cutouts:
         raise SystemExit(f'{name}: a cut-out on an end plate is not drawn')
     for x, y, d in holes:
-        ents += circle(x, y, d, 'HOLES')
+        ents += circle(x, fy(y), d, 'HOLES')
         sizes[d] = sizes.get(d, 0) + 1
         n += 1
-    plate_sizes = dict(sizes)
 
-    # THE DOUBLER IS TURNED. Its schedule reads X up its 45 and Y along its 154;
-    # laid in the strip, that 154 runs along the sheet's X, so the two swap.
-    dh_holes, dcut, dedge, _m = holes_for(src, 's2', XEP_DOUBLER_TI)
-    if dcut:
-        raise SystemExit(f'{name}: a cut-out on the doubler is not drawn')
-    doub_sizes, dn = {}, 0
-    for x, y, d in dh_holes:
-        ents += circle(y, dy + x, d, 'HOLES')
-        doub_sizes[d] = doub_sizes.get(d, 0) + 1
-        sizes[d] = sizes.get(d, 0) + 1
-        dn += 1
-        if third:
-            # turned the other way: its 45 along the sheet's X, 154 up the Y
-            ents += circle(third[0] + x, third[1] + y, d, 'HOLES')
-            sizes[d] = sizes.get(d, 0) + 1
-            dn += 1
-
-    ents += text(0, dy + dh + 6, 4.5,
-                 f'DOUBLER {dl:g} x {dh:g} - TURNED, ITS {dl:g} ALONG THIS '
-                 f"SHEET'S X", 'PARTS')
-    if third:
-        ents += text(dl + 12, dl + 26, 4.5,
-                     f'DOUBLER {dl:g} x {dh:g} - THE X CARRIAGE ONE,', 'PARTS')
-        ents += text(dl + 12, dl + 18, 4.5,
-                     f'OUT OF THE WASTE PAST THIS PLATE. TURNED THE', 'PARTS')
-        ents += text(dl + 12, dl + 10, 4.5,
-                     f"OTHER WAY: ITS {dl:g} RUNS UP THIS SHEET'S Y", 'PARTS')
     ents += text(0, -16, 4.5, f'{title.upper()} - {L:g} LONG', 'PARTS')
 
     bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
-    ty = SW + 14
-    ents += text(0, ty + 20, 7,
-                 f'{title.upper()}  -  QTY 1 + '
-                 f'{2 if third else 1} DOUBLER{"S" if third else ""}', 'NOTES')
+    ty = pw + 14
+    ents += text(0, ty + 20, 7, f'{title.upper()}  -  QTY 1', 'NOTES')
     ents += text(0, ty + 10, 5,
-                 f'STOCK {both_units(W)} x {both_units(SW)} x '
-                 f'{both_units(t)} 6061', 'NOTES')
+                 f'PART {both_units(L)} x {both_units(pw)} x '
+                 f'{both_units(t)} 6061  -  ALREADY CUT TO SIZE', 'NOTES')
     ents += text(0, ty, 5, f'HOLES {bom}', 'NOTES')
     ents += text(0, ty - 10, 5,
-                 'UNITS mm  -  ORIGIN LOWER LEFT  -  BOTH PARTS OFF ONE PIECE',
-                 'NOTES')
-    nedge = sum(edge.values()) + sum(dedge.values())
+                 'UNITS mm  -  ORIGIN LOWER LEFT  -  THE OUTLINE IS '
+                 'REFERENCE, NOT A CUT LINE', 'NOTES')
+    ents += text(0, ty - 20, 5,
+                 'ORIGIN IS ON THE FACTORY LONG EDGE - the UNCUT one, NOT the '
+                 'sawn edge the doubler came off', 'NOTES')
+    nedge = sum(edge.values())
     if nedge:
-        ents += text(0, ty - 20, 5,
+        ents += text(0, ty - 30, 5,
                      f'{nedge} EDGE-BORED HOLE(S) ARE NOT DRAWN - they run '
                      f'into an end face and are drilled here', 'NOTES')
 
     # what the sheet's own total counts, which includes the edge rows
-    check = dict(plate_sizes)
+    check = dict(sizes)
     for d, c in edge.items():
         check[d] = check.get(d, 0) + c
-    dcheck = dict(doub_sizes)
-    for d, c in dedge.items():
-        dcheck[d] = dcheck.get(d, 0) + c
 
     path = os.path.join(OUT, name + '.dxf')
     with open(path, 'w', encoding='ascii', newline='\r\n') as fh:
         fh.write('\n'.join(dxf_head() + ents + dxf_tail()) + '\n')
-    return n + dn, sizes, check, dcheck
+    return n, sizes, check
 
 
 def tally_counts():
@@ -697,18 +660,14 @@ def main():
 
         else:                                               # 'xep'
             title, ti, l_sym = payload
-            n, sizes, plate, doub = build_xep(name, title, ti, l_sym, src, reg)
-            for got, want_ti, what in ((plate, ti, 'plate'),
-                                       (doub, XEP_DOUBLER_TI, 'doubler')):
-                if got != expect.get(('s2', want_ti)):
-                    bad.append(f'{name} {what}: this file {got} against the '
-                               f'tally {expect.get(("s2", want_ti))}')
+            n, sizes, plate = build_xep(name, title, ti, l_sym, src, reg)
+            if plate != expect.get(('s2', ti)):
+                bad.append(f'{name} plate: this file {plate} against the '
+                           f'tally {expect.get(("s2", ti))}')
             print(f'  {name:20s} sheet s2/{ti}  {n:3d} hole(s)   '
                   + ', '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes)))
-            nd = 2 if l_sym == 'XEP_CUT' else 1
-            print(f'  {"":20s} plus {nd} doubler(s), all off one 300 x 200 '
-                  f'piece' + (' - the third comes out of the waste past this '
-                              'plate\'s end' if nd == 2 else ''))
+            print(f'  {"":20s} finished size, holes only, MIRRORED IN Y - '
+                  f'origin on the factory long edge')
 
         total += n
 
