@@ -102,8 +102,30 @@ block faces. The **widest** reading is 1022, at the back, which is exactly where
 bores fix the spacing and where sixteen bolts just went in without binding. **2.38 short, and the
 tongue line will not find it.**
 
-OPEN: **The measurement that separates the causes has not been taken: the gap between the two Y
-beams' INNER FACES, at the back.** {{Y_BEAM_GAP}} is the chain's figure.
+SETTLED: **The BOX is not tapered, and that was the expensive possibility.** A plywood gauge panel
+cut to fit between the two side plates at the FRONT slides the whole way back and gains **a
+millimetre at most, probably less** - measured at skin level. An 18 inch precision triangle reads
+**both side plates square, and the back plate square to the extrusion.** So the plates are parallel
+and not leaning, and no bolt order or box rework is going to be the answer.
+
+FLAG: **That leaves the block-face tape readings disagreeing with two better instruments.** A tape
+hooked on a block face, read to the millimetre across a metre at three stations, can manufacture a
+2 mm spread on its own. The gauge panel and the triangle outrank it.
+
+OPEN: **The remaining candidate is the RAILS, not the beams or the box.** A rail bolts into a T-slot
+and a T-nut gives lateral float, so nothing forces a rail to sit where its beam's face says - that
+has to be set, and it has not been.
+
+OPEN: **The measurement that settles it is the carriages themselves**, not another tape reading: a
+temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
+resting against the other and marked. Push the pair the full travel and the change at the free end
+IS the non-parallelism - sign, amount and station in one pass. Do not cut the real X end plates for
+it. If it binds, the adjustment is the rails in their slots, one locked and the other set along its
+length, which is the procedure [`../machine/machining.md`](../machine/machining.md) already gives for
+the Z pair.
+
+OPEN: **The gap between the two Y beams' INNER FACES has still not been taken.** {{Y_BEAM_GAP}} is
+the chain's figure, and it would say whether {{RAIL_STACK}} is the number that moved.
 
 - Read 1084 and {{RAIL_STACK}} is wrong - a 31.19 stack accounts for the whole 2.38 across both sides.
 - Read 1082 and the beams sit closer than the chain says, despite the bores fitting, which the 9 mm
