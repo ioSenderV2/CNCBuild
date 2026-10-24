@@ -112,6 +112,37 @@ beams' INNER FACES, at the back.** {{Y_BEAM_GAP}} is the chain's figure.
 NOTE: **Nothing on the X gantry is cut**, so a correction is still cheap - but the X beam is not free
 either: it is {{BEAM_LEN}} and the three front joining strips arrived at exactly that to match it.
 
+## The tongue line is M8 LOCK NUTS, not acorns
+
+**The acorn nuts bottomed out on their thread before seating**, with M8 fender washers under both
+head and nut. He went to **M8 lock nuts**, which is what the outboard plate's own table in
+[`../machine/assembly.md`](../machine/assembly.md) already called for: from outboard, washer, tongue,
+plate, lock nut on the inboard face.
+
+**That retires the acorn arithmetic on this line.** {{ACORN_NUT_DEPTH}} is a hard ceiling - past it
+the bolt lands on the dome and the joint never clamps however hard the nut is turned, which is the
+failure you cannot see from outside. A lock nut has no dome, so the ceiling and everything derived
+from it stops applying.
+
+SETTLED: **The rear plate's THIRD fender washer comes off.** It existed only to lift an acorn far
+enough that an M8 x 45 would not bottom. With a lock nut there is nothing to bottom on, and the bolt
+length comes back as protrusion past the nut, which is what a nylon collar wants.
+
+**Two fender washers stay**, head and nut. That is the bearing-area reason, not a locking one - this
+is the line whose plywood creeps under the bolt, and the standing answer to that is re-torque.
+
+## Drilling the tongue holes: go in from outside
+
+**A 9 mm bit cannot be brought in square from inside** - the hole sits 30 mm above the skin and no
+drill that holds a 9 mm bit gets that low, so it enters at a downward angle and shaves the entry
+edge. It does not wander, and the angle costs nothing: this line is a CLAMP and not a locator, so
+the hole is pure clearance and nothing bears on its wall. The locating is the T-slot line against
+the beam and the sixteen bores at the beam ends.
+
+**The tongue is the outboard layer, so its outside face is in free air.** Transfer-punch through the
+plate's hole, then drill the 9 mm from outside, square, with the whole drill clear. Or pilot small
+from inside - a stubby 3 mm in a hex holder fits where a 9 mm will not - and open out from outside.
+
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 
 The sides were cut **1211**, where the drawing has them start {{SIDE_TONGUE_START}} forward of the
