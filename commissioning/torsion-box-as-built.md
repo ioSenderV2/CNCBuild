@@ -72,10 +72,45 @@ sanding the tongues' inner faces back where the plates land.
 into T-slot nuts. Clamps were used and were not needed, which says the plate seats on the tongue
 rather than being pulled to it.
 
-OPEN: **The back plate's Y2-end pattern can now be tried** - the one hole position left on the
-machine with anything riding on it. The near end was checked against a single beam; the far end
-carries the beam-spacing assumption, since the plate's stations mirror about the beam spacing rather
-than about the plate.
+SETTLED: **Both of the back plate's 8-bolt patterns fit.** All sixteen M8 x 35 flange bolts went
+into the extrusion ends with no binding. That was the last hole position on the machine with
+anything riding on it.
+
+## FLAG: The Y block gap comes out under what the X assembly needs
+
+**Measured between the two Y bearing blocks' faces, tape hooked magnetically on one block so the
+reading is repeatable single-handed.** All 28 T-slot bolts torqued, all sixteen rear bolts in, **no
+tongue bolts yet**.
+
+| Station | Gap |
+|---|---|
+| Back | **1022** |
+| Middle | **1021** |
+| Front | **1020** |
+
+**Two separate findings, and only one of them is slack.**
+
+**The taper is 2 mm and it is LINEAR**, which is toe rather than bow - a bowed plate reads high at
+the ends and low in the middle, or the reverse. It was 4 mm with the plates on a clamp at each end
+and halved when the T-slot line came down, so the tongue line should take more out of it. 🔴 **It has
+to end near nothing: an HG20 block has fractions of a tenth of internal clearance, so a taper over
+the travel is a bind, not a tolerance.**
+
+🔴 **The absolute is the one that is not slack.** The X assembly is two end plates at
+{{T_X_ENDPLATE}} plus the {{BEAM_LEN}} beam - **1024.38** - and that is what must fit between the
+block faces. The **widest** reading is 1022, at the back, which is exactly where the back plate's
+bores fix the spacing and where sixteen bolts just went in without binding. **2.38 short, and the
+tongue line will not find it.**
+
+OPEN: **The measurement that separates the causes has not been taken: the gap between the two Y
+beams' INNER FACES, at the back.** {{Y_BEAM_GAP}} is the chain's figure.
+
+- Read 1084 and {{RAIL_STACK}} is wrong - a 31.19 stack accounts for the whole 2.38 across both sides.
+- Read 1082 and the beams sit closer than the chain says, despite the bores fitting, which the 9 mm
+  clearance on M8 allows by about a millimetre each.
+
+NOTE: **Nothing on the X gantry is cut**, so a correction is still cheap - but the X beam is not free
+either: it is {{BEAM_LEN}} and the three front joining strips arrived at exactly that to match it.
 
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 

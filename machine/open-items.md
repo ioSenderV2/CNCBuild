@@ -172,11 +172,16 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   the width `BOX_W` takes and the ceiling lateral-stiffness.md names. `REAR_PLATE_L` is retired.
   OPEN: **The Y2-end holes are provisional** - and they are cut, not pending: the waterjet cut
   both patterns, so the check is a fit-up rather than a measurement taken before drilling.
-  SETTLED: **The near-end pattern fits. Measured off the delivered plate: all eight bolts enter one
-  Y beam end cleanly, with the extrusion's bottom face flush with the opening cut for the casting.**
-  That is two features agreeing off one fit-up - the 8-bolt pattern against the extruded corner
-  bores, and the opening's vertical position against the beam underside. **The Y2 end is still
-  untried**, and it is the one carrying the beam-spacing assumption.
+  SETTLED: **BOTH patterns fit, and the beam-spacing assumption is confirmed by the parts.** All
+  **sixteen** M8 x 35 flange bolts went into the extrusion ends with no binding - they spun in.
+  The near end was checked first off the delivered plate, with the extrusion's bottom face flush
+  with the opening cut for the casting, which put two features together off one fit-up: the 8-bolt
+  pattern against the extruded corner bores, and the opening's vertical position against the beam
+  underside. The Y2 end then went in the same way with both beams standing.
+  FLAG: **The bolts fitting does NOT pin the beam spacing to the hundredth** - the holes are 9 mm
+  clearance on M8, so about a millimetre of float each. See the block-face gap readings in
+  [`../commissioning/torsion-box-as-built.md`](../commissioning/torsion-box-as-built.md), which come
+  out under what the X assembly needs even at the back where this plate fixes the spacing.
 
 ## From the 2026-10-08 datasheet pass
 
