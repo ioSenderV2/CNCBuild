@@ -53,6 +53,30 @@ is for.
 cannot reach the middle of a side with the box on edge. Jug weight held the back lamination down
 while the screws went in and **a 4 ft level lays flat on it**, so that glue line closed.
 
+## SETTLED: The top skin is 1210, and the plates fit between the tongues
+
+| | As built | Drawn |
+|---|---|---|
+| Top skin, both ways | **1210** | {{BOX_W}} |
+| Side plates between the tongues | **they fit** | the span had to beat {{MACHINE_OUTER_W}} |
+
+**The skin came out 1 under the drawn box and that was the live risk.** A tongue's inner face is a
+hard bearing face with no float, the span between the tongues *is* the skin's width, and the machine's
+outer width — plate outer face to plate outer face, set by the beam spacing the rear plate's bores
+already fix — is {{MACHINE_OUTER_W}}. On paper that was 1.28 too narrow and the remedy would have been
+sanding the tongues' inner faces back where the plates land.
+
+**It did not bite. Both plates went in.** Nothing was removed from the plywood.
+
+**Both Y beams are up** on one bolt into each extrusion end plus three or four through the side plate
+into T-slot nuts. Clamps were used and were not needed, which says the plate seats on the tongue
+rather than being pulled to it.
+
+OPEN: **The back plate's Y2-end pattern can now be tried** - the one hole position left on the
+machine with anything riding on it. The near end was checked against a single beam; the far end
+carries the beam-spacing assumption, since the plate's stations mirror about the beam spacing rather
+than about the plate.
+
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 
 The sides were cut **1211**, where the drawing has them start {{SIDE_TONGUE_START}} forward of the

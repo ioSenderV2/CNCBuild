@@ -275,9 +275,10 @@ the interface, not this file.
 - FLAG: [L112](commissioning/stiffness-test.md#indicators-1-and-2-are-the-pair-that-matters-most) — *The stiffness test: push the nose, find where it moves / Pu…*<br>Indicators 1 and 2 are the pair that matters most A nose reading mixes two things that matter very differently:
 - OPEN: [L219](commissioning/stiffness-test.md#then-what) — *The stiffness test: push the nose, find where it moves / Th…*<br>Whatever this test says, go back and correct the computed figures in ../machine/gantry-beam-joint.md. They are estimates with a crude beam model behind them, and a note that contradicts its own correction is worse than no note.
 
-## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)  (1)
+## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)  (2)
 
-- FLAG: [L56](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
+- OPEN: [L75](commissioning/torsion-box-as-built.md#the-top-skin-is-1210-and-the-plates-fit-between-the-tongues) — *The torsion box, as built / The top skin is 1210, and the p…*<br>The back plate's Y2-end pattern can now be tried - the one hole position left on the machine with anything riding on it. The near end was checked against a single beam; the far end carries the beam-spacing assumption, since the plate's stations mirror about the beam spacing rather than about the plate.
+- FLAG: [L80](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
 
 ## [wiring/breakout-box.md](wiring/breakout-box.md)  (12)
 
@@ -328,4 +329,4 @@ the interface, not this file.
 
 ---
 
-**234 open** across 34 files.
+**235 open** across 34 files.
