@@ -38,6 +38,21 @@ end to end** and cut to length. The front cap keeps its own pair.
 continuous piece, so the joint is staggered against solid material, which is what laminating a wall
 is for.
 
+## The order the walls actually went on
+
+1. **Back**, the 1211 piece, flush at both ends.
+2. **Left side**, from the two back pieces butted, with a **1/4 gap at the back** set off a
+   waterjet sole plate used as the spacer against a backer board. Rearmost piece first, second piece
+   cut to fit flush with the front.
+3. **Right side**, the remaining 1211 piece, same 1/4 gap at the back. **It therefore stands about 6
+   proud at the box's front edge and gets trimmed off that end before glue-up** — the front cap beds
+   on that face.
+4. **Front cap**, the 630 and 629 pieces, 142 tall against the back and sides' 202.
+
+**Clamping is screws from inside the cavity**, not clamps across the box — a 52" parallel clamp
+cannot reach the middle of a side with the box on edge. Jug weight held the back lamination down
+while the screws went in and **a 4 ft level lays flat on it**, so that glue line closed.
+
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 
 The sides were cut **1211**, where the drawing has them start {{SIDE_TONGUE_START}} forward of the
