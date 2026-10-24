@@ -82,11 +82,18 @@ anything riding on it.
 reading is repeatable single-handed.** All 28 T-slot bolts torqued, all sixteen rear bolts in, **no
 tongue bolts yet**.
 
-| Station | Gap |
-|---|---|
-| Back | **1022** |
-| Middle | **1021** |
-| Front | **1020** |
+| Station | All 28 T-slot bolts, no tongue bolts | ALL tongue bolts in and torqued |
+|---|---|---|
+| Back | **1022** | **1021** |
+| Middle | **1021** | — |
+| Front | **1020** | **1020.5** |
+
+SETTLED: **The taper is closed. 4 mm with the plates on clamps, 2 mm once the T-slot line came down,
+0.5 mm with every tongue bolt in.** Half a millimetre over a metre is at the resolution of a tape
+hooked on a block face, and the bolted joints will absorb it. **Stop chasing it.**
+
+🔴 **The ABSOLUTE has not moved through any of it.** Every reading taken at any stage sits between
+1018 and 1022 and none has ever reached the 1024.38 the X assembly needs. It is not slack.
 
 **Two separate findings, and only one of them is slack.**
 
@@ -112,9 +119,23 @@ FLAG: **That leaves the block-face tape readings disagreeing with two better ins
 hooked on a block face, read to the millimetre across a metre at three stations, can manufacture a
 2 mm spread on its own. The gauge panel and the triangle outrank it.
 
-OPEN: **The remaining candidate is the RAILS, not the beams or the box.** A rail bolts into a T-slot
-and a T-nut gives lateral float, so nothing forces a rail to sit where its beam's face says - that
-has to be set, and it has not been.
+SETTLED: **The rails are NOT the remaining candidate, and cannot be moved.** {{RAIL_SLOT_INSET}}
+puts the Y rails in the outside T-slot on the beams' INNER FACES, so a rail's across-machine
+position IS the beam face - the slot's float there is vertical, not lateral. Nothing slides outboard.
+
+## What to do about the 3.4, in order
+
+1. 🔴 **Try the free thing first, before anything is machined.** The sixteen rear bolts are 9 mm
+   clearance on M8 - about half a millimetre per side per beam. Loosen them, push both beams
+   outboard as hard as the clearance allows, hold, re-tighten, re-measure. That could recover 2 of
+   the 3.4 and costs an hour.
+2. **Absorb the rest in the X END PLATES, which are uncut.** The X beam is {{BEAM_LEN}} and cannot
+   shrink without orphaning the three front joining strips, which arrived at exactly that length to
+   match it. So the end plates are the adjustable member in this chain. **Make them to the gap that
+   is measured, not to the drawn {{T_X_ENDPLATE}}.**
+
+NOTE: **This is the standing rule working, not a failure.** 1024.38 was always going to be checked
+against a real gap, and the check happened before anything was cut.
 
 OPEN: **The measurement that settles it is the carriages themselves**, not another tape reading: a
 temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
@@ -124,15 +145,24 @@ it. If it binds, the adjustment is the rails in their slots, one locked and the 
 length, which is the procedure [`../machine/machining.md`](../machine/machining.md) already gives for
 the Z pair.
 
-OPEN: **The gap between the two Y beams' INNER FACES has still not been taken.** {{Y_BEAM_GAP}} is
-the chain's figure, and it would say whether {{RAIL_STACK}} is the number that moved.
+SETTLED: **{{RAIL_STACK}} is right - BOTH stacks calipered at 30.** That candidate is gone.
 
-- Read 1084 and {{RAIL_STACK}} is wrong - a 31.19 stack accounts for the whole 2.38 across both sides.
-- Read 1082 and the beams sit closer than the chain says, despite the bores fitting, which the 9 mm
-  clearance on M8 allows by about a millimetre each.
+🔴 **Which leaves exactly one unverified link in the chain, and it is the tape.** Everything else is
+now measured with a better instrument: the stacks with calipers, the box with a gauge panel, the
+plates with a precision triangle, the bore stations by sixteen bolts spinning in. **The only figure
+resting on a tape hooked across a metre is the block gap itself.**
 
-NOTE: **Nothing on the X gantry is cut**, so a correction is still cheap - but the X beam is not free
-either: it is {{BEAM_LEN}} and the three front joining strips arrived at exactly that to match it.
+OPEN: **So take the one measurement nobody has taken: the gap between the two Y beams' INNER FACES.**
+A shorter reach, onto flat extrusion faces, and it decides the whole question.
+
+- **Reads 1084** - the chain is right, the block-gap readings were the error, there is no shortfall,
+  and nothing needs machining.
+- **Reads 1081** - the beams really do sit 3.38 closer than {{Y_BEAM_GAP}}, which is more than the
+  9 mm clearance on the rear bores can account for, so the back plate's bore stations are not where
+  they are drawn.
+
+NOTE: **Nothing on the X gantry is cut**, so a correction is still cheap either way - but the X beam
+is not free: it is {{BEAM_LEN}} and the three front joining strips arrived at exactly that to match it.
 
 ## The tongue line is M8 LOCK NUTS, not acorns
 
