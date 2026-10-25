@@ -478,9 +478,12 @@ NOTE: **Err shallow on the depth.** The plate stands on the top skin; a cut into
 and the corner where the new face meets the skin is a chisel job anyway.
 
 SETTLED: **THE REAR PLATE STAYS BOLTED ON** - his, 2026-10-25, which stops the router short of the
-tongue's rear end by roughly a router base. **It is the cheapest band on the tongue to lose:** the cut
-is 1.37 over {{SIDE_TONGUE_L}}, so it asks **0.137 per 100 mm** forward of the rear end - about 0.12
-over a 90 band and zero at the end itself. 🔴 **WHAT IT LEAVES IS A STEP, NOT A TAPER**, because the
+tongue's rear end. **MEASURED, NOT GUESSED: the Festool 2200's bit centre reaches 57 from the back
+wall**, his dry run with the router walked along the strip before the bit arrived, and the 3/4" bit's
+9.525 radius carries the cut 9.5 further - **so the band is 47.5, not the 90 this note first
+guessed.** It is the cheapest band on the tongue to lose: at 1.4 over {{SIDE_TONGUE_L}} the cut asks
+0.14 per 100 mm forward of the rear end, so the band carries **0.067** at its forward edge and
+nothing at the end itself. 🔴 **WHAT IT LEAVES IS A STEP, NOT A TAPER**, because the
 pass simply stops, and a flat plate bears on a step where it would ride a taper. Feather the band out
 by hand; a tenth needs no precision, only no edge. **And step 7's jig reading is the check** - a band
 holding the plate's rear end off shows up there as a reading above 1.13.

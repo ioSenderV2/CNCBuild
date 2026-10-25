@@ -1540,13 +1540,14 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
    it costs nothing. **Err shallow** — the plate stands on that skin and a cut into it cannot be
    undone. At the front end the bit runs off into the {{BOX_FRONT_OVERHANG}} of clear skin.
 6. **Hand-finish two places the bit cannot reach.**
-   - **The band at the tongue's rear end**, where the rear plate and the router's own base stop the
-     pass short. **The cut runs 1.37 over the tongue's {{SIDE_TONGUE_L}}, so it asks for 0.137 per
-     100 mm forward of the rear end** — about 0.12 across a 90 band, and nothing at all at the very
-     end. That is the point of taking the rear plate off the critical list: the unreachable end is
-     the end that wants nothing. **But left untouched it is a STEP at the band's forward edge, not a
-     taper**, and a flat plate bears on a step. Feather it out with a block plane or a sanding block
-     — a tenth needs no precision, only no edge.
+   - **The band at the tongue's rear end**, where the rear plate stops the pass short. **The cut asks
+     for the front offset per {{SIDE_TONGUE_L}}, so 0.14 per 100 mm forward of the rear end** on a 1.4
+     offset — and nothing at all at the very end. That is the point of taking the rear plate off the
+     critical list: the unreachable end is the end that wants nothing. **Measured on the Festool 2200
+     with the 3/4" bit: the bit centre reaches 57 from the back wall, so the cut reaches 47.5 and the
+     band carries 0.067 at its forward edge.** Left untouched that is a **STEP, not a taper**, and a
+     flat plate bears on a step — so feather it out with a sanding block. Seven hundredths needs no
+     precision, only no edge.
    - **The inside corner where the new face meets the top skin**, where the bit leaves a fillet that
      will hold the plate's bottom edge off and let it rock. Chisel it and check with a square.
 7. **Plate and beam back on, then read it on the jig.** One tongue cut takes the span out by **the
