@@ -280,12 +280,18 @@ tongue's {{SIDE_TONGUE_L}}. So the per-side figure is 1.125 x {{SIDE_TONGUE_L}} 
 the travel - which is a bind, not a tolerance, by this file's own note on block clearance.
 
 SETTLED: **Y1 IS CUT FIRST AND THE MACHINE GOES BACK TOGETHER BEFORE Y2 IS MARKED** - his,
-2026-10-25, and it turns the first cut into the measurement of the second. One tongue cut should drop
-the jig from 2.25 to about **1.13**: it takes out 1.37 x {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}} =
-1.12. **Y2's front mark is then that reading x 1.22**, which is the same scaling run off what the
-machine gave instead of what it was meant to give. 🔴 **Nothing else in this thread has ever had a
-check like that** - every number so far has been an instrument pointed at the error, and this is the
-error answering back.
+2026-10-25, and it turns the first cut into the measurement of the second. A tongue cut drops the jig
+reading by **the front offset x {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}}**, which is x0.82. **Y2's
+front mark is then the remaining reading x 1.22**, the same scaling run off what the machine gave
+instead of what it was meant to give. 🔴 **Nothing else in this thread has ever had a check like
+that** - every number so far has been an instrument pointed at the error, and this is the error
+answering back.
+
+SETTLED: **AS SET ON Y1 THE FRONT OFFSET IS 1.4, NOT 1.37** - his, with a **1.4 steel gauge block**
+standing the strip's front end off the tongue's inner face and the rear end **flush** where it meets
+the back wall. A gauge block beats a scribed line on a plywood face and the 0.03 of overshoot goes
+**toward a wider span**, which is the one direction with room. So the cut should take out 1.4 x 0.82
+= **1.15, leaving the jig at about 1.10**.
 
 NOTE: **Pivoting the cut about the tongue's REAR END opens the rear travel station a little too.**
 The rear extreme of travel stands about 90 forward of the tongue's rear end, so it gains about 0.12

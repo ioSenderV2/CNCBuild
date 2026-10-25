@@ -1525,8 +1525,9 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
    long edge sawn straight — **that edge becomes the finished face**, so it is the only thing in this
    job that has to be right. The same strip does both tongues: the taper is where it is screwed down,
    not in the strip.
-3. **Mark the line on the tongue's TOP face**, measuring in from the tongue's inner edge: **0 at the
-   rear end, 1.37 at the front end.** Scribe between the two marks.
+3. **Set the strip's edge off the tongue's inner face**, flush at the rear end and **1.37 in at the
+   front end** — a **1.4 steel gauge block** stands the front end off directly and is near enough: it
+   errs 0.03 toward a wider span, which is the direction with room.
 4. **Screw the strip down on that line**, straight edge to the line, screws through the strip into
    the {{T_BOX_TONGUE}} of tongue beneath it. Nothing bears on that top face, so the holes cost
    nothing.
@@ -1548,9 +1549,10 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
      — a tenth needs no precision, only no edge.
    - **The inside corner where the new face meets the top skin**, where the bit leaves a fillet that
      will hold the plate's bottom edge off and let it rock. Chisel it and check with a square.
-7. **Plate and beam back on, then read it on the jig.** One tongue cut takes out
-   1.37 × {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}} = **1.12 of the 2.25**, so it should read about
-   **1.13**, still front-narrow. That reading is the check on the whole method.
+7. **Plate and beam back on, then read it on the jig.** One tongue cut takes the span out by **the
+   front offset × {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}}** — ×0.82. On the 1.4 gauge block that is
+   **1.15 of the 2.25**, so it should read about **1.10**, still front-narrow. That reading is the
+   check on the whole method.
 8. **Y2's front mark is step 7's reading × 1.22** — the same {{SIDE_TONGUE_L}} / {{CARRIAGE_TRAVEL}}
    scaling, worked off what the machine gave rather than what it was meant to give. Then steps 2 to 7
    again on Y2.
