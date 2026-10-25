@@ -254,7 +254,9 @@ between faces, and the readout is a gap that a caliper reads directly.
 | To the Y rails | **8 x M5 clearance**, one HGH20 block per rail |
 | Block hole heights | **{{BLOCK_LOW_COL_A}} / {{BLOCK_LOW_COL_B}} / {{BLOCK_HIGH_COL_A}} / {{BLOCK_HIGH_COL_B}}** from the plate's bottom end - 122 of span on a 300 plate |
 | To the X beam | **M8 in 9 mm clearance** into the beam's corner bores |
-| Ledge | a **24 deep** ledge under the beam's end, set low and shimmed up to contact |
+| Beam support | **the REAL shelf bars**, {{SHELF_BAR_L}} x {{SHELF_BAR_W}} x {{SHELF_BAR_H}}, the same parts that go on the real end plates |
+| Shelf fixing | the **horizontal pair**, {{SHELF_HORIZ_CLEARANCE}} close fit through the plate into **blind taps in the bar** - stations {{SHELF_BOLT_LOW_X}} and {{SHELF_BOLT_HIGH_X}} |
+| Readout | **precision steel metric gauge blocks**, in hand |
 
 NOTE: **Nothing about the hole heights is a free choice and none of them has to be worked out.** They
 are the real plate's own schedule - the real plate is cut to {{XEP_CUT}} out of a 300 piece, so a 300
@@ -275,23 +277,50 @@ on a shelf. Eight only if both extrusion ends are actually flush.
 4. **Push the pair the full travel.** The change in the gap IS the non-parallelism - sign, amount and
    station, one to one, no amplification.
 
-🔴 **THE LEDGE IS WHAT MAKES THE LOOSE END HONEST.** Without it the beam hangs on the loose bolts and
-cantilevers off the tight plate. On the ledges it is simply supported at both ends and slides freely
-along its own axis, which is the one freedom the measurement needs and the only one it needs.
-**Set the ledge low and shim to contact, or slot its fixing holes** - the beam's bolt holes are ø9 on
-M8, so about half a millimetre of float is all there is before a high ledge lifts the beam and the
-holes stop lining up.
+🔴 **THE SHELF BAR IS WHAT MAKES THE LOOSE END HONEST.** Without it the beam hangs on the backed-off
+bolts and cantilevers off the tight plate. Sitting on a bar at each end it is simply supported and
+slides freely along its own axis, which is the one freedom the measurement needs and the only one it
+needs.
+
+SETTLED: **Using the REAL shelf bars puts the beam at its real height by construction.** That is not
+a convenience, it is the bar's actual job - {{SHELF_BAR_TOP}} from the Y beam's top IS the underside
+of the X beam's bottom extrusion. So the jig's beam sits exactly where the built machine will put it
+and the M8 bores line up with nothing to set. **Leave the two VERTICAL M8 out at the loose end** -
+they go up into the beam's underside slots, and tightened they would clamp the slide the measurement
+depends on.
+
+🔴 **THE SHELF FIXING IS THE CLOSE FIT, NOT THE ø9 USED EVERYWHERE ELSE.**
+{{SHELF_HORIZ_CLEARANCE}} through the plate into blind taps in the bar, and the registry's reason is
+the one that matters here too: **the block mounting is the one joint that must not be sloppy.** There
+is therefore **no float in it to use as a height adjustment** - the adjustment is the shim between
+the bar's top face and the beam's bottom extrusion, which
+[`../machine/tramming.md`](../machine/tramming.md) already specifies for roll and for which
+{{SHELF_SHIM_W}} is a strip on hand.
+
+NOTE: **Both shelf bolt stations fall inside the real plate's {{XEP_CUT}} cut**, so the 300's extra
+height is spare rather than needed - provided the jig's bottom edge is set level with the real
+plate's.
 
 NOTE: **Read the gap at two heights at each station.** Not because the end face tilting matters in
 itself - a constant tilt cancels in the change the way the tape's offset does - but because a tilt
 that CHANGES as the pair travels is what binding looks like, and one reading hides it.
+
+🔴 **WORK BY FIT, NOT BY READING A SCALE.** Find the stack that just drags at the front station,
+travel, find the stack that just drags at the rear. **The difference between the two stacks is the
+toe**, to 0.01, with no scale read anywhere in the measurement and no absolute in it either. That is
+a better instrument than anything else that has been pointed at this question - every earlier reading
+was a number taken off a tape or a rule by eye.
+
+SETTLED: **Which makes this the number the tongue cut is made to**, not a confirmation of the 2.0.
+The span reading got the size and the diagonals got the shape; this gets the figure the router works
+from.
 
 ### What the 6 mm costs against a thicker plate
 
 | | |
 |---|---|
 | Float across the pair | 1000 beam plus two 6s is **1012** against a block gap of about **1023** - so about **11**, where 10 mm plates would have left 3 |
-| Readout | 11 is past a feeler-gauge stack: **caliper depth jaw or a stack of parallels** |
+| Readout | **unaffected** - gauge blocks stack to any value, which is what retires this as a worry |
 | Loose-end M8 | long enough to **stand the plate off 11 and still hold thread** in the extrusion bore |
 | Block screws | **M5 x 12 and nothing longer** |
 
@@ -399,6 +428,8 @@ uncut and have to be faced anyway.
 which is worse than the ruler and nowhere near what this needs. **The instrument order here, worst to
 best: tape, ruler, then the X beam itself between the block faces with feeler gauges reading the
 leftover** - which contains no absolute measurement at all and is the one to use for the end plates.
+**Above all of them: the carriage jig's gap read with gauge blocks by fit**, which has no absolute
+and no scale read either.
 
 NOTE: **This is the general lesson, not a one-off.** Every figure that came off a caliper, a gauge
 panel, a triangle or a ruler held up. The only ones that moved were the tape's.
