@@ -212,6 +212,8 @@ XEP_BEAM_TOP_X,mm,185,"[derived] The Y beam's TOP face in the end plate's machin
 SHELF_BOLT_HIGH_Z,mm,-75.8,"[derived] Machine Z of the UPPER horizontal shelf bolt, -75.8. Pairs with SHELF_BOLT_LOW_Z; the 20 between them is SHELF_Z_COUPLE, which is the whole reason the bar is 2in and not 1in."
 SHELF_BOLT_LOW_X,mm,89.2,"[derived] Sheet 2a's H1, 79.2, drawn and scheduled at 79.2. They are 7.5 less than the sheet used to print, because XEP_CUT came down from 242.5 to 235 on 2026-10-10 and that edge is what they are measured from. The hole did not move. THIS WAS DRAWIN"
 SHELF_BOLT_HIGH_X,mm,109.2,"[derived] Sheet 2a's H2, 99.2, drawn and scheduled at 99.2. Same reference, the same 7.5, and the same history as SHELF_BOLT_LOW_X."
+SHELF_BAR_BOTTOM_X,mm,74.2,[derived] The shelf bar's UNDERSIDE from the plate's bottom end - WHERE THE BAR GETS SET so its holes can be marked through onto the plate. SETTLED: IT IS THE SETTING FIGURE AND THAT IS WHY IT EXISTS. The bar's position on the plate was an instructio
+SHELF_BAR_TOP_X,mm,125,"[derived] The shelf bar's TOP FACE from the plate's bottom end - the surface the X beam's bottom extrusion lands on, and the surface the roll shim goes under. Pairs with SHELF_BAR_BOTTOM_X, which is the one to set the bar by: an underside sits on a r"
 BLOCK_BOLT_HALF_X,mm,16,"[derived] Half the block's across-rail bolt pitch, 16 - the offset of each bolt column from its rail centreline."
 BLOCK_BOLT_HALF_Y,mm,18,"[derived] Half the block's along-rail bolt pitch, 18."
 BLOCK_CENTRE_OFFSET_Y,mm,38.545,"[derived] Each block's centre from the butted pair's centroid, 38.545. Two blocks butted span BLOCK_BUTTED, so each centre sits a quarter of that either side."

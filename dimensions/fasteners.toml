@@ -231,7 +231,7 @@ head = "flange, low profile"
 into = "tapped"
 grip = ["SHELF_BAR_W"]
 source = "assembly.md: 'M8 x 35 into the end plate' and 'M8 x 35, not x 40'"
-note = "Through 25.4 of bar into 12.7 of plate gives ~9.6 of engagement. AN M8 x 40 PROTRUDES ~1.6 ONTO THE Y BEARING BLOCK. THE BAR'S HOLE IS SHELF_HORIZ_CLEARANCE, the close fit, NOT the 9 used into extrusion - the bar is the platform the roll shim bears against. Drill the bar first, then mark the plate's two through the bar's own holes so the pair agrees. Both drilled through, so the M8 x 35 length is what keeps the tip off the block seat."
+note = "Through 25.4 of bar into 12.7 of plate gives ~9.6 of engagement. AN M8 x 40 PROTRUDES ~1.6 ONTO THE Y BEARING BLOCK. THE BAR'S HOLE IS SHELF_HORIZ_CLEARANCE, the close fit, NOT the 9 used into extrusion - the bar is the platform the roll shim bears against. Drill the bar first, then mark the plate through the bar's own holes so the pair agrees - bar on the plate's INBOARD face, rear end flush with the plate's BACK EDGE, underside SHELF_BAR_BOTTOM_X up from the plate's bottom end, clamped. SHELF_BOLT_LOW_X and SHELF_BOLT_HIGH_X are the check on the marks, not the layout. Both drilled through, so the M8 x 35 length is what keeps the tip off the block seat."
 
 [[joint]]
 id = "shelf-bar-vertical"

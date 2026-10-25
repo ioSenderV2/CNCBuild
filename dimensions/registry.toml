@@ -980,7 +980,7 @@ note = "Machine Z of the lower bolt. Near the lower bearing block row - which is
 sym = "SHELF_HORIZ_CLEARANCE"
 value = 8.4
 provenance = "pinned"
-note = "8.4 - the clearance hole through the bar for the two HORIZONTAL M8, the standard close fit, NOT the BEAM_BOLT_CLEARANCE 9 used everywhere a plate meets extrusion. SETTLED: THE BLOCK MOUNTING IS THE ONE JOINT THAT MUST NOT BE SLOPPY, which is the argument tramming.md already made for shimming the shelf over oversizing the bearing block holes: the shim is the adjustment, so the bar is the platform. The bar carries the gantry's share into the plate by friction and bolt shear, so if that joint slips the bar drops by the RADIAL clearance - 0.5 at 9, the whole roll budget, against 0.2 here. This costs no adjustment range: the shim goes on TOP of the bar, so these two bolts do not move when roll is set. Going further to 8.2 buys 0.1 and leaves the bar's two holes 0.2 total to agree with the plate's two taps across the 20 of SHELF_Z_COUPLE - a bind risk on a manual mill, and a forced bolt is the worse joint. DRILL THE BAR FIRST, THEN MARK THE PLATE THROUGH THE BAR'S OWN HOLES - that way the plate's two match the holes the bar actually came out with, rather than both being laid out to the same numbers separately and the errors adding up. Both are drilled through; every threaded hole in the pack is, for a plug tap at home. What stops short is the BOLT, not the hole: see SHELF_HORIZ_Z_LOW for the M8 x 35."
+note = "8.4 - the clearance hole through the bar for the two HORIZONTAL M8, the standard close fit, NOT the BEAM_BOLT_CLEARANCE 9 used everywhere a plate meets extrusion. SETTLED: THE BLOCK MOUNTING IS THE ONE JOINT THAT MUST NOT BE SLOPPY, which is the argument tramming.md already made for shimming the shelf over oversizing the bearing block holes: the shim is the adjustment, so the bar is the platform. The bar carries the gantry's share into the plate by friction and bolt shear, so if that joint slips the bar drops by the RADIAL clearance - 0.5 at 9, the whole roll budget, against 0.2 here. This costs no adjustment range: the shim goes on TOP of the bar, so these two bolts do not move when roll is set. Going further to 8.2 buys 0.1 and leaves the bar's two holes 0.2 total to agree with the plate's two taps across the 20 of SHELF_Z_COUPLE - a bind risk on a manual mill, and a forced bolt is the worse joint. DRILL THE BAR FIRST, THEN MARK THE PLATE THROUGH THE BAR'S OWN HOLES - that way the plate's two match the holes the bar actually came out with, rather than both being laid out to the same numbers separately and the errors adding up. WHERE THE BAR GOES WHILE YOU MARK: plate's INBOARD face, rear end flush with the plate's BACK EDGE, underside SHELF_BAR_BOTTOM_X up from the plate's bottom end, clamped - and SHELF_BOLT_LOW_X and SHELF_BOLT_HIGH_X are then the CHECK on the marks rather than the layout. Both are drilled through; every threaded hole in the pack is, for a plug tap at home. What stops short is the BOLT, not the hole: see SHELF_HORIZ_Z_LOW for the M8 x 35."
 
 [[dim]]
 sym = "SHELF_VERT_CLEARANCE"
@@ -1352,6 +1352,16 @@ note = "Sheet 2a's H1, 79.2, drawn and scheduled at 79.2. They are 7.5 less than
 sym = "SHELF_BOLT_HIGH_X"
 expr = "XEP_BEAM_TOP_X + SHELF_BOLT_HIGH_Z"
 note = "Sheet 2a's H2, 99.2, drawn and scheduled at 99.2. Same reference, the same 7.5, and the same history as SHELF_BOLT_LOW_X."
+
+[[dim]]
+sym = "SHELF_BAR_BOTTOM_X"
+expr = "XEP_BEAM_TOP_X + SHELF_BAR_BOTTOM"
+note = "The shelf bar's UNDERSIDE from the plate's bottom end - WHERE THE BAR GETS SET so its holes can be marked through onto the plate. SETTLED: IT IS THE SETTING FIGURE AND THAT IS WHY IT EXISTS. The bar's position on the plate was an instruction with no number behind it: the fore-aft is an edge, the bar's rear end flush with the plate's BACK EDGE, but the height had nothing to work to and the only published figures were the two hole stations - which cannot locate the bar, because marking through its holes is the whole point of putting it there. FLAG: USE IT WITH THE BAR'S REAR END ON THE BACK EDGE, both or neither. SHELF_HORIZ_Y and the two verticals are all measured from that edge, so a bar set square but shifted fore-aft puts every hole out together and nothing in the marking catches it. NOTE: THE HOLE STATIONS BECOME THE CHECK rather than the layout - mark through, then confirm the marks land on SHELF_BOLT_LOW_X and SHELF_BOLT_HIGH_X."
+
+[[dim]]
+sym = "SHELF_BAR_TOP_X"
+expr = "XEP_BEAM_TOP_X + SHELF_BAR_TOP"
+note = "The shelf bar's TOP FACE from the plate's bottom end - the surface the X beam's bottom extrusion lands on, and the surface the roll shim goes under. Pairs with SHELF_BAR_BOTTOM_X, which is the one to set the bar by: an underside sits on a rule or a gauge stack off the plate's bottom end, where a top face has to be reached over the bar. SETTLED: IT IS SHELF_BAR_H ABOVE ITS SIBLING and must stay so - if these two ever disagree by anything but the bar's own height, one of them has stopped coming off XEP_BEAM_TOP_X."
 
 # ---- Sheet 2a: the sixteen bearing block holes
 

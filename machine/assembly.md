@@ -491,9 +491,22 @@ extrusion.** The shim on the bar's top face is the roll adjustment, so the bar i
 shims against and nothing in its own mounting should move. The shim goes above the bar, so the close
 fit takes no adjustment away.
 
-NOTE: **Drill the bar's two horizontal holes first, then hold the bar on the plate and mark the
-plate's two through its holes** - the plate's pair then matches the holes the bar actually came out
-with, instead of both being laid out to the same numbers separately and the errors adding up. The
+**Drill the bar's two holes first, then mark the plate through them.** The plate's pair then matches
+the holes the bar actually came out with, instead of both being laid out separately to the same
+numbers and the errors adding up.
+
+| | |
+|---|---|
+| 1 | Drill the bar to **its own** numbers - **Y {{SHELF_HORIZ_Y}}** from its rear end, **{{SHELF_HORIZ_Z_LOW}} and {{SHELF_HORIZ_Z_HIGH}}** up from its underside |
+| 2 | Set it on the plate's **inboard** face: **rear end flush with the plate's BACK EDGE**, underside **{{SHELF_BAR_BOTTOM_X}}** up from the plate's bottom end |
+| 3 | **Clamp**, then mark the plate through the bar's two holes |
+| 4 | **Check the marks land on {{SHELF_BOLT_LOW_X}} and {{SHELF_BOLT_HIGH_X}}** up from the bottom end. If they do not, the bar is not where it should be - do not drill |
+
+FLAG: **The back edge and the height go together, both or neither.** {{SHELF_HORIZ_Y}} and both
+verticals are measured from that edge, so a bar set square but shifted fore-aft puts every hole out
+by the same amount and nothing in the marking catches it.
+
+The
 **both are drilled through** - every threaded hole in the pack is, because the tapping happens at home
 with a plug tap - and at ø8.4 the two pairs have to agree closely across the 20 mm between them. What
 stops short is the bolt, not the hole.
