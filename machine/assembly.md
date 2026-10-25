@@ -1526,8 +1526,8 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
    job that has to be right. The same strip does both tongues: the taper is where it is screwed down,
    not in the strip.
 3. **Set the strip's edge off the tongue's inner face**, flush at the rear end and **1.37 in at the
-   front end** — a **1.4 steel gauge block** stands the front end off directly and is near enough: it
-   errs 0.03 toward a wider span, which is the direction with room.
+   front end**. **The nearest gauge bar stands the front end off directly** — 1.4 on this machine.
+   Round up rather than down: over opens the span, which is the direction with room.
 4. **Screw the strip down on that line**, straight edge to the line, screws through the strip into
    the {{T_BOX_TONGUE}} of tongue beneath it. Nothing bears on that top face, so the holes cost
    nothing.
