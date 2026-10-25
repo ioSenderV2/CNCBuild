@@ -241,11 +241,73 @@ OPEN: **Repeat the pair before anything irreversible happens.** This is one pair
 person, and plywood does not go back on. Taking front and rear twice more costs minutes and converts
 a single differential into a repeatability figure, which is the one thing the number still lacks.
 
-OPEN: **The measurement that settles it is the carriages themselves**, not another tape reading: a
-temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
-resting against the other and marked. Push the pair the full travel and the change at the free end
-IS the non-parallelism - sign, amount and station in one pass. Do not cut the real X end plates for
-it. **Nothing gets cut until this reads a number** - that is the whole point of taking it.
+## The carriage jig - two temporary end plates, and the gap is the readout
+
+**This replaces the scrap-bar idea this section used to carry.** It measures what the machine
+actually has to do - the carriages' separation over the travel - rather than what the beams measure
+between faces, and the readout is a gap that a caliper reads directly.
+
+**Stock: two pieces of 6061, 300 x 3 inch x 6 mm, in hand.** Used at the full 300, uncut.
+
+| | |
+|---|---|
+| To the Y rails | **8 x M5 clearance**, one HGH20 block per rail |
+| Block hole heights | **{{BLOCK_LOW_COL_A}} / {{BLOCK_LOW_COL_B}} / {{BLOCK_HIGH_COL_A}} / {{BLOCK_HIGH_COL_B}}** from the plate's bottom end - 122 of span on a 300 plate |
+| To the X beam | **M8 in 9 mm clearance** into the beam's corner bores |
+| Ledge | a **24 deep** ledge under the beam's end, set low and shimmed up to contact |
+
+NOTE: **Nothing about the hole heights is a free choice and none of them has to be worked out.** They
+are the real plate's own schedule - the real plate is cut to {{XEP_CUT}} out of a 300 piece, so a 300
+jig takes every height off it unscaled. One block per rail is enough: two per rail on the real plate
+is moment capacity, not location.
+
+OPEN: **Four M8 into the TOP extrusion, or eight into both?** Four is what the real plate uses, and
+it is enough here - the real design does not bolt the bottom extrusion to the plate at all, it sits
+on a shelf. Eight only if both extrusion ends are actually flush.
+
+### Setting it up and reading it
+
+1. **One plate bolted hard** - to its blocks and to the beam end both.
+2. **The other bolted hard to its blocks only**, its M8 backed off so the plate is not clamped. **The
+   gap between that beam end and that plate's face is the reading.**
+3. **Start at the FRONT**, where the span is tightest, with the gap nearly shut. Travelling rearward
+   opens it, which is the direction the room is in.
+4. **Push the pair the full travel.** The change in the gap IS the non-parallelism - sign, amount and
+   station, one to one, no amplification.
+
+🔴 **THE LEDGE IS WHAT MAKES THE LOOSE END HONEST.** Without it the beam hangs on the loose bolts and
+cantilevers off the tight plate. On the ledges it is simply supported at both ends and slides freely
+along its own axis, which is the one freedom the measurement needs and the only one it needs.
+**Set the ledge low and shim to contact, or slot its fixing holes** - the beam's bolt holes are ø9 on
+M8, so about half a millimetre of float is all there is before a high ledge lifts the beam and the
+holes stop lining up.
+
+NOTE: **Read the gap at two heights at each station.** Not because the end face tilting matters in
+itself - a constant tilt cancels in the change the way the tape's offset does - but because a tilt
+that CHANGES as the pair travels is what binding looks like, and one reading hides it.
+
+### What the 6 mm costs against a thicker plate
+
+| | |
+|---|---|
+| Float across the pair | 1000 beam plus two 6s is **1012** against a block gap of about **1023** - so about **11**, where 10 mm plates would have left 3 |
+| Readout | 11 is past a feeler-gauge stack: **caliper depth jaw or a stack of parallels** |
+| Loose-end M8 | long enough to **stand the plate off 11 and still hold thread** in the extrusion bore |
+| Block screws | **M5 x 12 and nothing longer** |
+
+🔴 **M5 x 16 WOULD READ TIGHT WITHOUT CLAMPING ANYTHING.** The HGH20 block has
+{{BLOCK_TAP_DEPTH}} of thread in a {{BLOCK_HOLE_DEPTH}} hole. Through a 6 mm plate, M5 x 12 lands
+exactly {{BLOCK_TAP_DEPTH}} in - full engagement, nothing wasted. A 16 drives 10 into a 6 mm thread,
+jams, and holds the head off its seat. **That is the acorn-nut failure from the tongue line arriving
+from the other direction**, and it is invisible from outside either way.
+
+NOTE: **Plate flex does not enter, so it is not worth designing around.** 6 against the real
+{{T_X_ENDPLATE}} will visibly deflect under the beam - but nothing loads these plates laterally,
+because the loose end has 11 mm of air in front of it. Whatever it deflects is the same at every
+station and cancels in the change.
+
+🔴 **NOTHING GETS CUT UNTIL THIS READS A NUMBER** - not the tongues, not the real X end plates. That
+is the whole point of taking it.
 
 FLAG: **This item used to end by pointing at the Z pair's rail procedure, and that was wrong.** The Z
 rails tap M5 straight into a plate through ø6 under a ø9.5 counterbore, which is about a millimetre of
