@@ -1518,6 +1518,9 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
 
 1. **One side at a time, Y1 first** — beam off, outboard plate off, that side only. The first cut is
    also the test of the method, so the second tongue is not marked until the first has been measured.
+   **The rear plate stays bolted on**, to the box's back tongue and to the other beam, which leaves it
+   located and saves sixteen bolts. It costs the router the last stretch of the tongue's rear end —
+   see step 6.
 2. **Cut a 3 inch strip of 18 mm plywood**, a little longer than the tongue's {{SIDE_TONGUE_L}}. One
    long edge sawn straight — **that edge becomes the finished face**, so it is the only thing in this
    job that has to be right. The same strip does both tongues: the taper is where it is screwed down,
@@ -1535,10 +1538,16 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
    cutter trims the strip's bottom 3.5 as it passes and the bearing runs on the band above that, so
    it costs nothing. **Err shallow** — the plate stands on that skin and a cut into it cannot be
    undone. At the front end the bit runs off into the {{BOX_FRONT_OVERHANG}} of clear skin.
-6. **Two chisel jobs.** The rear corner where the side tongue meets the back tongue — the last half a
-   bit diameter — and the inside corner where the new face meets the top skin, where the bit leaves a
-   fillet that will hold the plate's bottom edge off and let it rock. Chisel both and check the
-   corner with a square.
+6. **Hand-finish two places the bit cannot reach.**
+   - **The band at the tongue's rear end**, where the rear plate and the router's own base stop the
+     pass short. **The cut runs 1.37 over the tongue's {{SIDE_TONGUE_L}}, so it asks for 0.137 per
+     100 mm forward of the rear end** — about 0.12 across a 90 band, and nothing at all at the very
+     end. That is the point of taking the rear plate off the critical list: the unreachable end is
+     the end that wants nothing. **But left untouched it is a STEP at the band's forward edge, not a
+     taper**, and a flat plate bears on a step. Feather it out with a block plane or a sanding block
+     — a tenth needs no precision, only no edge.
+   - **The inside corner where the new face meets the top skin**, where the bit leaves a fillet that
+     will hold the plate's bottom edge off and let it rock. Chisel it and check with a square.
 7. **Plate and beam back on, then read it on the jig.** One tongue cut takes out
    1.37 × {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}} = **1.12 of the 2.25**, so it should read about
    **1.13**, still front-narrow. That reading is the check on the whole method.

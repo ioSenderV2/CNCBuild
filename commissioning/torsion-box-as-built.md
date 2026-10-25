@@ -471,6 +471,14 @@ nothing - the band the bearing runs on is above it.
 NOTE: **Err shallow on the depth.** The plate stands on the top skin; a cut into it cannot be undone,
 and the corner where the new face meets the skin is a chisel job anyway.
 
+SETTLED: **THE REAR PLATE STAYS BOLTED ON** - his, 2026-10-25, which stops the router short of the
+tongue's rear end by roughly a router base. **It is the cheapest band on the tongue to lose:** the cut
+is 1.37 over {{SIDE_TONGUE_L}}, so it asks **0.137 per 100 mm** forward of the rear end - about 0.12
+over a 90 band and zero at the end itself. 🔴 **WHAT IT LEAVES IS A STEP, NOT A TAPER**, because the
+pass simply stops, and a flat plate bears on a step where it would ride a taper. Feather the band out
+by hand; a tenth needs no precision, only no edge. **And step 7's jig reading is the check** - a band
+holding the plate's rear end off shows up there as a reading above 1.13.
+
 🔴 **THE STRIP'S INBOARD EDGE IS THE FINISHED FACE**, because a top-bearing pattern bit cuts flush
 to it. That retires the two things that could have put this cut on the wrong end: there is no router
 offset to find and no shim whose direction can be read backwards. Mark the line on the tongue's top
