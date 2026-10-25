@@ -266,6 +266,31 @@ on the beam underside, which is why the interposer bar going to 1/2in would not 
 
 NOTE: **Paint the ground edges.** Bare steel in a corner that gets wet, next to aluminium.
 
+## The tee track bed's end fixing, as it will actually be built
+
+SETTLED: **FOUR screws a side, not eight.** Those screws only stop the bed walking - it is bedded
+flat on the box and gravity holds the stack down - so the count was never structural. **The thing
+that settles it is the access hole**, below.
+
+SETTLED: **M5 x 20 SOCKET HEAD.** His, off the parts: button head and flange head both foul the top
+skin. The hole centre is {{TT_BED_END_HOLE_Z}} above the skin and the head sits over the plate's
+bottom edge, so anything wider than the {{TT_BED_SPACER_OD}} spacer starts to interfere. Length is
+unchanged - 20 reaches 11.57 into a hole tapped 15.
+
+🔴 **EVERY SCREW NEEDS A 14 mm ACCESS HOLE THROUGH THE 24 mm TONGUE.** The tongue is the outermost
+layer, so the screw goes tongue, plate, spacer, panel end - and nothing can be driven without a bore
+to reach through. This had not been noticed anywhere. Eight access holes is acceptable; sixteen is
+not, which is why the count came down.
+
+**The order is forced:** the hole stations are not known until the bed is in, and the bores have to
+be made before the side plate goes on with its beam attached.
+
+SETTLED: **Measure once, lay out twice, and skip the transfer.** With the bed in and the side plates
+OFF, each panel's tapped holes are visible from outside. Measure their stations along the length -
+that is the only unknown - then lay out BOTH the tongue's 14 mm access and the plate's clearance hole
+from the same numbers. Nothing is spotted through anything and nothing depends on sighting down a
+24 mm bore; the float in the plate's clearance hole is what buys that.
+
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 
 The sides were cut **1211**, where the drawing has them start {{SIDE_TONGUE_START}} forward of the
