@@ -158,6 +158,48 @@ plane a metre away is still an absolute measurement taken by eye. Three methods 
 and disagreeing on the SIZE - 4, then 2, then 0.5, then 2 again on different faces - is the signature
 of a question being asked with the wrong kind of instrument.
 
+## Both diagonals read 1564 - which clears racking and is blind to the toe
+
+**His, with the beams up: outside top corner of one Y extrusion to the opposite rear outside top
+corner, both ways. 1564 and 1564**, on the 12 foot tape.
+
+SETTLED: **The absolute agrees with the drawn machine.** {{Y2_EXT_FACE_X}} outer face to outer face
+and a {{BEAM_LEN}} beam put the diagonal at **1565.42**. He read 1564 on the tape already established
+as about 2 light, so the outer-width chain closes to well under a millimetre. That is an independent
+confirmation that the beam spacing is where Sheet 7 puts it.
+
+SETTLED: **The EQUALITY is what carries the finding, not the absolute - and it is immune to the
+tape.** Two readings, same tape, same hook, same kind of corner: the systematic offset is in both
+numbers and drops out of the difference. The usable precision here is the repeatability of the hook,
+not the tape's accuracy over a metre and a half, which is why this reading is worth more than its
+instrument suggests. **It is the first differential measurement taken on this question with a tape.**
+
+🔴 **BUT IT CANNOT SEE THE TOE, AND THAT IS GEOMETRY RATHER THAN PRECISION.** A symmetric trapezoid
+has **equal diagonals**. If both beams converge equally toward the front, both diagonals read
+identical at any toe whatever - zero difference at 0.5 and zero at 3. Diagonal difference per
+millimetre of error:
+
+| Error | Diagonal difference |
+|---|---|
+| Racking - one beam shifted fore-aft | **1.54** |
+| One-sided toe - one beam angled, one straight | **0.77** |
+| Symmetric toe - both converging equally | **0.00** |
+
+SETTLED: **Two candidates are therefore gone.** Equal to the millimetre puts **racking under about
+0.65** and **one-sided toe under about 1.3**. Neither had been checked before and racking was never
+on the list.
+
+OPEN: **The symmetric case is untouched, and it is the likely shape.** Both the candidate causes -
+the skin cut 1 under the envelope, and the tongues' inner faces - act on both sides equally, which is
+exactly the error this measurement is blind to.
+
+OPEN: **So take the front span and the rear span between the SAME outside top corners.** Across the
+machine at the front, then across at the rear, same tape, same hook. The difference IS the toe, and
+the tape's offset cancels exactly as it does in the diagonals. It is a better feature than any of the
+three failed attempts used - a square extrusion corner to hook on, not a rail face sighted a metre
+away and not a bearing block's side - and it is the only cheap reading left that can see a symmetric
+toe. **Run it before the carriage bar**, because it needs nothing built.
+
 OPEN: **The measurement that settles it is the carriages themselves**, not another tape reading: a
 temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
 resting against the other and marked. Push the pair the full travel and the change at the free end
