@@ -62,6 +62,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
     - [And a spacer at the foot of all five](machine/assembly.md#and-a-spacer-at-the-foot-of-all-five)
     - [2x6 or a 36 × 100 plywood lamination](machine/assembly.md#2x6-or-a-36-100-plywood-lamination)
 - [9. Set the machine on the box](machine/assembly.md#9-set-the-machine-on-the-box)
+  - [Skim both side tongues before the plates go back on](machine/assembly.md#skim-both-side-tongues-before-the-plates-go-back-on)
 - [10. Fit the spindle and tram](machine/assembly.md#10-fit-the-spindle-and-tram)
   - [Tram here, with the machine bolted down](machine/assembly.md#tram-here-with-the-machine-bolted-down)
   - [Then run the stiffness test](machine/assembly.md#then-run-the-stiffness-test)

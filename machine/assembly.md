@@ -1516,25 +1516,40 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
 | At its **front** end | **1.37** |
 | Sides | **both**, the same cut |
 
-1. **Beams off, outboard plates off**, both sides.
-2. **Cut a 3 inch strip of 1/2" Baltic birch**, a little longer than the tongue's
-   {{SIDE_TONGUE_L}}. One long edge sawn straight — **that edge becomes the finished face**, so it is
-   the only thing in this job that has to be right.
+1. **One side at a time, Y1 first** — beam off, outboard plate off, that side only. The first cut is
+   also the test of the method, so the second tongue is not marked until the first has been measured.
+2. **Cut a 3 inch strip of 18 mm plywood**, a little longer than the tongue's {{SIDE_TONGUE_L}}. One
+   long edge sawn straight — **that edge becomes the finished face**, so it is the only thing in this
+   job that has to be right. The same strip does both tongues: the taper is where it is screwed down,
+   not in the strip.
 3. **Mark the line on the tongue's TOP face**, measuring in from the tongue's inner edge: **0 at the
    rear end, 1.37 at the front end.** Scribe between the two marks.
 4. **Screw the strip down on that line**, straight edge to the line, screws through the strip into
    the {{T_BOX_TONGUE}} of tongue beneath it. Nothing bears on that top face, so the holes cost
    nothing.
-5. **Route it in one pass with a top-bearing pattern bit**, bearing riding the strip's edge, base on
-   the strip. The bit needs **{{BOX_TONGUE_PROUD}} of cut below the bearing** to take the tongue's
-   full standing height in one go. At the front end it runs off into the {{BOX_FRONT_OVERHANG}} of
-   clear skin.
+5. **Route it in one pass with a top-bearing pattern bit, 2.5" of cutting length.** Bearing riding
+   the strip's edge, base on the strip, and set the depth so the cutter **just kisses the top skin and
+   takes none of it**. 63.5 of cutter against the tongue's {{BOX_TONGUE_PROUD}} standing height puts
+   the bearing's bottom **14.5 below the strip's top face** — which is why the strip is 18 and not
+   1/2": at 12.7 the bearing hangs below the strip and rides the old face instead of the pattern. The
+   cutter trims the strip's bottom 3.5 as it passes and the bearing runs on the band above that, so
+   it costs nothing. **Err shallow** — the plate stands on that skin and a cut into it cannot be
+   undone. At the front end the bit runs off into the {{BOX_FRONT_OVERHANG}} of clear skin.
 6. **Two chisel jobs.** The rear corner where the side tongue meets the back tongue — the last half a
    bit diameter — and the inside corner where the new face meets the top skin, where the bit leaves a
    fillet that will hold the plate's bottom edge off and let it rock. Chisel both and check the
    corner with a square.
-7. **Plates and beams back on, then read it on the jig again** before anything is cut to the new
-   span.
+7. **Plate and beam back on, then read it on the jig.** One tongue cut takes out
+   1.37 × {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}} = **1.12 of the 2.25**, so it should read about
+   **1.13**, still front-narrow. That reading is the check on the whole method.
+8. **Y2's front mark is step 7's reading × 1.22** — the same {{SIDE_TONGUE_L}} / {{CARRIAGE_TRAVEL}}
+   scaling, worked off what the machine gave rather than what it was meant to give. Then steps 2 to 7
+   again on Y2.
+
+FLAG: **If step 7 comes back a long way off 1.13, stop and find out why before cutting Y2.** The cut
+is the one thing in the chain that can be measured directly — scribe to the strip, strip to the cut —
+so a reading that disagrees is saying something else moved, most likely the plate not seating on the
+new face or the corner fillet holding its bottom edge out.
 
 NOTE: **Adding the same amount to both marks is width, not toe.** The **difference** between the two
 ends is the whole of the toe correction. A constant on top of it only opens the span, and the span is

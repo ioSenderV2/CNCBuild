@@ -279,6 +279,14 @@ tongue's {{SIDE_TONGUE_L}}. So the per-side figure is 1.125 x {{SIDE_TONGUE_L}} 
 {{CARRIAGE_TRAVEL}} = **1.37**, and cutting 1.1 over the tongue would leave about 0.45 of toe across
 the travel - which is a bind, not a tolerance, by this file's own note on block clearance.
 
+SETTLED: **Y1 IS CUT FIRST AND THE MACHINE GOES BACK TOGETHER BEFORE Y2 IS MARKED** - his,
+2026-10-25, and it turns the first cut into the measurement of the second. One tongue cut should drop
+the jig from 2.25 to about **1.13**: it takes out 1.37 x {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}} =
+1.12. **Y2's front mark is then that reading x 1.22**, which is the same scaling run off what the
+machine gave instead of what it was meant to give. 🔴 **Nothing else in this thread has ever had a
+check like that** - every number so far has been an instrument pointed at the error, and this is the
+error answering back.
+
 NOTE: **Pivoting the cut about the tongue's REAR END opens the rear travel station a little too.**
 The rear extreme of travel stands about 90 forward of the tongue's rear end, so it gains about 0.12
 a side. It goes the helpful way against the shortfall and is too small to set anything to.
@@ -441,16 +449,27 @@ through where the plate and beam now are.
 
 **A router with a long straight bit.** A saw is out on the offcut alone: a 1 mm sliver
 {{BOX_TONGUE_PROUD}} tall and {{SIDE_TONGUE_L}} long will flex into the blade and pinch, and that
-sliver is what would set the finished face. A router takes the same millimetre off as chips. The bit
-needs **{{BOX_TONGUE_PROUD}} of cut below its bearing** to take the tongue's full standing height in
-one pass, and bits exist that long.
+sliver is what would set the finished face. A router takes the same millimetre off as chips. **The
+bit in hand has 2.5 inches of cutting length - 63.5 against the tongue's {{BOX_TONGUE_PROUD}}
+standing height**, so it takes the full height in one pass with 3.5 to spare.
 
-**The straightedge is a 3 inch strip of 1/2 inch Baltic birch, screwed down to the tongue's TOP
-face** - his, 2026-10-25, and it replaces the track-saw rail this section used to call for. It does
-three jobs at once: its inboard edge is the pattern the bit's bearing follows, its 3 inches carry the
-router base over a tongue only {{T_BOX_TONGUE}} wide, and screwed into the tongue it cannot creep
-mid-cut. The bit sits at the strip's edge, so about half the base is on the strip and half over the
+**The straightedge is a 3 inch strip of 18 mm plywood, screwed down to the tongue's TOP face** - his,
+2026-10-25, and it replaces the track-saw rail this section used to call for. It does three jobs at
+once: its inboard edge is the pattern the bit's bearing follows, its 3 inches carry the router base
+over a tongue only {{T_BOX_TONGUE}} wide, and screwed into the tongue it cannot creep mid-cut. The
+bit sits at the strip's edge, so about half the base is on the strip and half over the
 {{BOX_TONGUE_PROUD}} drop to the skin - the 3 inches is the half that has to be there.
+
+🔴 **18 AND NOT 1/2 INCH, AND THE 3.5 OF SPARE CUTTER IS WHY.** With the depth set so the cutter just
+kisses the top skin and takes none of it, the cutter's top - and therefore the bearing's bottom - sits
+**14.5 below the strip's top face**. An 18 strip has 14.5 of thickness above that and the bearing runs
+entirely on plywood. A 12.7 strip is **1.8 short**: the bearing would hang below the strip and ride
+the tongue's OLD face, which is the face being removed, and the cut would come out parallel to the
+error instead of correcting it. The cutter trims the strip's bottom 3.5 as it passes and that costs
+nothing - the band the bearing runs on is above it.
+
+NOTE: **Err shallow on the depth.** The plate stands on the top skin; a cut into it cannot be undone,
+and the corner where the new face meets the skin is a chisel job anyway.
 
 🔴 **THE STRIP'S INBOARD EDGE IS THE FINISHED FACE**, because a top-bearing pattern bit cuts flush
 to it. That retires the two things that could have put this cut on the wrong end: there is no router
