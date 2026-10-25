@@ -195,30 +195,26 @@ cutting. The tongue stands {{BOX_TONGUE_PROUD}} proud; the outboard plate agains
 and the beam is above that, so any tool riding on the tongue's top face has its body swinging
 through where the plate and beam now are.
 
-**A router, not the track saw.** Two reasons the saw loses:
-
-- **Depth.** A TSC 55 cuts 55 at 90 degrees and about 51 on the rail, the rail's own thickness coming
-  off the stroke. OPEN: **catalogue figures - caliper the saw.** Either way it is short of
-  {{BOX_TONGUE_PROUD}}. A 75 reaches.
-- **The offcut.** A 1 mm sliver 60 tall and 1000 long will flex into the blade and pinch, and that
-  sliver is what sets the finished face. A router takes the same millimetre off as chips. Straight
-  bits exist with cut lengths past 60.
+**A router with a long straight bit**, riding on the track-saw rail. A saw is out on the offcut
+alone: a 1 mm sliver {{BOX_TONGUE_PROUD}} tall and {{SIDE_TONGUE_L}} long will flex into the blade
+and pinch, and that sliver is what would set the finished face. A router takes the same millimetre
+off as chips. Bits exist with cut lengths past {{BOX_TONGUE_PROUD}}.
 
 **The taper is free, and it is just where you put the rail.** Set the track-saw rail against the
 tongue's inner face **at the rear** and shimmed out **at the front** by what the carriage bar says.
 Rail parallel removes a constant millimetre and fixes the width; rail skewed removes a taper and
-fixes the toe. Same setup either way, and the rail is the guide whether a saw or a router runs on it.
+fixes the toe. Same setup either way - the rail is the straightedge and the router rides it.
 
 **Chisel the inside corner last.** The plate stands ON the top skin and the tongue laps it, so
 anything left in the corner where the new face meets the skin holds the plate's bottom edge out and
 it rocks. A straight bit leaves a fillet there whatever you do. Chisel it, check with a square, and
 the plate then beds over the full {{BOX_TONGUE_PROUD}}.
 
-NOTE: **The blade or bit ramps in at the ends, and that lands the right way round.** A circular blade
-at 55 deep needs roughly 76 mm of run before it reaches full depth - arithmetic off a nominal blade
-size, so check it. At the front there is {{BOX_FRONT_OVERHANG}} of clear skin to overrun into. At the
-rear the side tongue runs into the back tongue and there is nowhere to overrun - but the rear is the
-**wide** end, where the taper wants nothing removed anyway.
+NOTE: **A bit cuts full depth the whole run, and the one end it cannot reach is the end that wants
+nothing.** There is no entry ramp to work around - the bit goes to depth and stays there. At the
+front it runs off into {{BOX_FRONT_OVERHANG}} of clear skin. At the rear the side tongue runs into
+the back tongue, so the last half a bit diameter in that corner is a chisel job - and the rear is
+the **wide** end, where the taper is already at nothing.
 
 NOTE: **What it costs, in one line.** A millimetre off the inner face takes the lap's bolt bearing
 from {{T_BOX_TONGUE}} to 23 and moves the ø9 hole's edge a millimetre nearer the face. Neither
