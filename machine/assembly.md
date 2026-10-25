@@ -1497,6 +1497,12 @@ height and the two beams' coplanarity, so the fin is the reference for the pair 
 **The side tongue runs 1000 mm, starting 1/4" from the box's back edge** — so it spans exactly the
 beam and the side plate it laps, and ends where the fin begins.
 
+OPEN: **The front and back tongue arrangement is inconsistent between the design record and the shop
+pack.** The shop pack (2026-10-03, the later of the two) says **there is no front tongue** and the
+fin is tied by L-brackets; [`archive/torsion-box.md`](archive/torsion-box.md) and
+[`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) still describe a continuous front tongue lapping the
+side tongues. **Resolve before the walls are glued up.**
+
 ### Skim both side tongues before the plates go back on
 
 The two Y beams toe in: the span between the carriages is **2.25 narrower at the front than at the
@@ -1534,12 +1540,6 @@ NOTE: **Adding the same amount to both marks is width, not toe.** The **differen
 ends is the whole of the toe correction. A constant on top of it only opens the span, and the span is
 short rather than wide — so it comes off what the X gantry end plates were going to give up. Going
 narrower is the one direction with nothing to spare.
-
-OPEN: **The front and back tongue arrangement is inconsistent between the design record and the shop
-pack.** The shop pack (2026-10-03, the later of the two) says **there is no front tongue** and the
-fin is tied by L-brackets; [`archive/torsion-box.md`](archive/torsion-box.md) and
-[`archive/lateral-stiffness.md`](archive/lateral-stiffness.md) still describe a continuous front tongue lapping the
-side tongues. **Resolve before the walls are glued up.**
 
 ## 10. Fit the spindle and tram
 
