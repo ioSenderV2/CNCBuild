@@ -224,10 +224,16 @@ from inside - a stubby 3 mm in a hex holder fits where a 9 mm will not - and ope
 
 ## Both casting windows are open-sided - one by accident, one on purpose
 
-**The casting went in at the RIGHT rear corner with the proximity sensor already attached.** That
-window has no outboard side: it fell at the plate's own end, where the bought plate is
-{{REAR_PLATE_SHORTFALL}} short of the flush envelope, so the strip outboard of it was never there.
-With the side plate coming in alongside there is still enough slop for the casting to pass.
+**The casting went in at the RIGHT rear corner.** That window has no outboard side: it fell at the
+plate's own end, where the bought plate is {{REAR_PLATE_SHORTFALL}} short of the flush envelope, so
+the strip outboard of it was never there. With the side plate coming in alongside there is still
+enough slop for the casting to pass.
+
+SETTLED: **The SENSOR goes on after the casting is in, not before - and the order is forced.** The
+casting has to go through with the interposer bar as one unit, because screwing the casting to the
+bar in place means driving its six M5 upside down from inside, which is not a job anybody wants. The
+bar-and-casting unit passes; the unit **with the sensor already mounted does not**. So the sensor
+mounts separately once the casting is in, which is what it was designed for.
 
 **The LEFT rear window is enclosed and the casting will not pass it** - only just, but it will not.
 SETTLED: **The vertical bar outboard of that window gets cut out**, making both ends alike.
