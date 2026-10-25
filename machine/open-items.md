@@ -140,7 +140,8 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
 - SETTLED: **The shelf bar's own four holes are ø8.4, the close fit, not the ø9 used into extrusion.**
   The bar is the platform the roll shim bears against, so its mounting is the one joint that must not
   be sloppy - and the close fit costs no adjustment range, because the shim sits on the bar's top
-  face. **Drill the bar first and spot the plate's two taps off it** - both drilled through.
+  face. **Drill the bar first, then mark the plate's two through the bar's own holes** - both drilled
+  through.
 - OPEN: **Confirm the lower shelf bolt against the block pattern** once measured. **The M8 × 35 is what
   makes it moot, not a stopped hole** - every threaded hole in the pack is drilled through, so the bolt
   length is the only thing keeping the tip off the block seat. Check the length at assembly.

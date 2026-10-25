@@ -491,7 +491,9 @@ extrusion.** The shim on the bar's top face is the roll adjustment, so the bar i
 shims against and nothing in its own mounting should move. The shim goes above the bar, so the close
 fit takes no adjustment away.
 
-NOTE: **Drill the bar's two horizontal holes first and use the bar to spot the plate's two taps.** The
+NOTE: **Drill the bar's two horizontal holes first, then hold the bar on the plate and mark the
+plate's two through its holes** - the plate's pair then matches the holes the bar actually came out
+with, instead of both being laid out to the same numbers separately and the errors adding up. The
 **both are drilled through** - every threaded hole in the pack is, because the tapping happens at home
 with a plug tap - and at ø8.4 the two pairs have to agree closely across the 20 mm between them. What
 stops short is the bolt, not the hole.
