@@ -180,6 +180,7 @@ SHEETS = [
     ("sheet-3b", "Sheet 3b - Z spacer bar"),
     ("sheet-4", "Sheet 4 - Z plate"),
     ("sheet-5", "Sheet 5 - Y nut doubler block and sole bracket"),
+    ("sheet-12", "Sheet 12 - Parallelism jig end plate (made at home)"),
     ("checklist", "Before the trip - checklist"),
 ]
 

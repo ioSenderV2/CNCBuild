@@ -68,6 +68,11 @@ PARTS = {
     ('s10', 0): ('10', 'X back joining plate', 1),
     # No s11: Sheet 11 is an installation page, not a part. All three sole
     # plates are Sheet 5's one drawing, so its copies carry the X one too.
+    #
+    # s12 IS MADE AT HOME, hence the False. It is the parallelism jig, built to
+    # measure the Y rail toe before anything on the real gantry is cut, so it
+    # must not add a single hole to the mill trip.
+    ('s12', 0): ('12', 'Parallelism jig end plate', 2, False),
 }
 
 # What each diameter is FOR. Keyed by diameter; the pack has one job per size.
@@ -116,7 +121,17 @@ def collect(src):
             # same order.
             qcol = next((i for i, h in enumerate(hdr)
                          if h.split()[:1] == ['Qty']), 2)
-            label, part, made = PARTS.get((name, ti), (None, None, 1))
+            # A PARTS value is (label, part, made) or (label, part, made,
+            # on_trip). ON_TRIP IS WHAT LETS A HOME-DRILLED SHEET LIVE IN THE
+            # PACK: the parallelism jig is drilled at home, so its holes must
+            # not reach the trip tally, which exists to answer "what do I set up
+            # at the mill". It still gets its own footer, because "have I
+            # drilled everything on this page" is the same question wherever the
+            # drill is - and it still carries its own `made`, because two jig
+            # plates get cut and the footer should say so.
+            spec = PARTS.get((name, ti), (None, None, 1, True))
+            label, part, made = spec[0], spec[1], spec[2]
+            on_trip = spec[3] if len(spec) > 3 else True
             if part is None:
                 unknown.append('%s table %d' % (name, ti))
                 continue
@@ -143,13 +158,15 @@ def collect(src):
                 if c[0] in skip:
                     repeated += n
                     continue
+                if not on_trip:
+                    continue
                 per_part[dia] = per_part.get(dia, 0) + n
                 trip[dia] = trip.get(dia, 0) + n * made
                 contrib[dia] = contrib.get(dia, 0) + n
             tables.append(dict(sheet=name, ti=ti, label=label, part=part,
                                made=made, own=own, contrib=contrib,
                                cutouts=cutouts, repeated=repeated,
-                               cols=len(hdr)))
+                               cols=len(hdr), on_trip=on_trip))
     return per_part, trip, unknown, tables
 
 
@@ -194,6 +211,9 @@ def sheet_total_row(t, nl):
     if t['made'] > 1:
         tail.append('%d of this part get made &mdash; <b>%d holes</b> in all'
                     % (t['made'], n * t['made']))
+    if not t.get('on_trip', True):
+        tail.append('<b>made at home</b> &mdash; deliberately absent from the '
+                    'drill appendix, which is the mill trip')
     note = ' &mdash; '.join(tail) if tail else 'holes in this one part'
     span = max(1, t['cols'] - 3)
     return nl.join([

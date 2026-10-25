@@ -33,7 +33,7 @@
   @page s9 { @bottom-left { content: "Shop Pack — SHEET 9, full-height outboard plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   @page s10 { @bottom-left { content: "Shop Pack — SHEET 10, 120 mm X back joining plate"; font: 8.5pt "Segoe UI", sans-serif; color: #666; } }
   .pg-s5 { page: s5 } .pg-s6 { page: s6 } .pg-s7 { page: s7 } .pg-ck { page: sck }
-  .pg-s8 { page: s8 } .pg-s9 { page: s9 } .pg-s10 { page: s10 }
+  .pg-s8 { page: s8 } .pg-s9 { page: s9 } .pg-s10 { page: s10 } .pg-s12 { page: s12 }
   .pg-dr { page: sdr } .pg-tap { page: stap }
   body { font: 11pt/1.45 "Segoe UI", system-ui, sans-serif; color: #111; max-width: 190mm; margin: 0 auto; }
   h1 { font-size: 20pt; margin: 0 0 2mm; }
@@ -2259,6 +2259,124 @@ bears on the box's top skin, and the reason every row on this sheet is dimension
 <tr class="tot"><td><b>TOTAL</b></td><td>28 &times; &oslash;9</td><td><b>28</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->
 </table>
+</div>
+
+<!-- ============================================================ -->
+<div class="plate pg-s12">
+<h2 id="sheet-12">Sheet 12 &mdash; the parallelism jig end plate (quantity 2)</h2>
+
+<div class="stock">
+<b>300 long &times; 3" (76.2) wide &times; 6 mm 6061</b> &mdash; <b>in hand</b>, two pieces, used at the full 300 uncut<br>
+<span class="wcs">NOT ON THE TRIP &mdash; made at home.</span> A temporary fixture, built to measure the
+Y rail toe before anything on the real gantry is cut.
+</div>
+
+<figure>
+<svg viewBox="-45 -60 400 215" width="185mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- PARALLELISM JIG END PLATE, 300 x 76.2, drawn 1:1. Origin at the lower-left
+       corner: X along the 300, up the plate from its BOTTOM END; Y across the
+       76.2 from the plate's BACK EDGE, which is the lower edge as drawn. -->
+  <rect x="0" y="0" width="300" height="76.2" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+
+  <!-- the two HGH20 block footprints behind, one per rail, 44 wide -->
+  <rect x="46" y="16.1" width="36" height="44" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <rect x="136" y="16.1" width="36" height="44" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
+  <text class="lbl" x="46" y="-6" fill="#c0c">ONE BLOCK PER RAIL BEHIND, 44 wide &#8212; rails {{RAIL_PITCH}} apart</text>
+
+  <!-- 8 x o6 clearance for the M5 x 12 into the blocks -->
+  <circle cx="64" cy="20.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="64" cy="56.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="96" cy="20.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="96" cy="56.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="154" cy="20.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="154" cy="56.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="186" cy="20.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="186" cy="56.1" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+
+  <!-- THE OPEN ZONE: beam bolts and shelf bar, both waiting on one decision -->
+  <rect x="196" y="2" width="100" height="72.2" fill="#fff4d6" stroke="#b06000"
+        stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text class="lbl" x="200" y="24" fill="#b06000">X BEAM BOLTS + SHELF BAR</text>
+  <text class="lbl" x="200" y="38" fill="#b06000">NOT DIMENSIONED YET</text>
+  <text class="lbl" x="200" y="52" fill="#b06000">see the note below</text>
+
+  <!-- dimensions along the 300 -->
+  <line x1="0" y1="90" x2="300" y2="90" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="146" y="100">300</text>
+  <line x1="0" y1="-20" x2="64" y2="-20" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="26" y="-24">64</text>
+  <line x1="0" y1="-34" x2="96" y2="-34" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="58" y="-38">96</text>
+  <line x1="0" y1="-48" x2="154" y2="-48" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="116" y="-52">154</text>
+  <line x1="0" y1="110" x2="186" y2="110" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="148" y="120">186</text>
+
+  <!-- dimensions across the 76.2 -->
+  <line x1="-14" y1="0" x2="-14" y2="76.2" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-40" y="40">76.2</text>
+  <line x1="-28" y1="56.1" x2="-28" y2="76.2" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-42" y="70">20.1</text>
+  <line x1="-36" y1="20.1" x2="-36" y2="76.2" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="-44" y="16">56.1</text>
+
+  <circle cx="0" cy="76.2" r="2.6" fill="#c00"/>
+  <text class="dim" x="-30" y="88" fill="#c00">WCS 0,0</text>
+  <text class="dim" x="150" y="86" fill="#c00">BACK EDGE &#8212; Y measures from here</text>
+
+  <text class="q" x="0" y="132">Both plates identical. The block holes are the only ones</text>
+  <text class="q" x="0" y="144">fixed: the Y rails put them there and nothing else can.</text>
+
+  <!-- schedule ref tags -->
+  <text class="ref" x="64.00" y="31.00" fill="#111" text-anchor="middle">P1</text>
+  <text class="ref" x="96.00" y="31.00" fill="#111" text-anchor="middle">P2</text>
+  <text class="ref" x="154.00" y="31.00" fill="#111" text-anchor="middle">P3</text>
+  <text class="ref" x="186.00" y="31.00" fill="#111" text-anchor="middle">P4</text>
+  <text class="ref" x="64.00" y="67.00" fill="#111" text-anchor="middle">P5</text>
+  <text class="ref" x="96.00" y="67.00" fill="#111" text-anchor="middle">P6</text>
+  <text class="ref" x="154.00" y="67.00" fill="#111" text-anchor="middle">P7</text>
+  <text class="ref" x="186.00" y="67.00" fill="#111" text-anchor="middle">P8</text>
+</svg>
+<figcaption>Drawn 1:1, laid out as the plate sits on the drill press table.</figcaption>
+</figure>
+
+<h3>Hole schedule &mdash; machining coordinates</h3>
+
+<table class="sched">
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">up the plate from the bottom end</span></th><th>Y <span style="font-weight:400">from the back edge</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>P1&ndash;P8</td><td>8</td><td class="n">64, 96, 154, 186</td><td class="n">20.1, 56.1</td><td class="d">6</td><td class="op">Through</td></tr>
+<!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
+<tr class="tot"><td><b>TOTAL</b></td><td>8 &times; &oslash;6</td><td><b>8</b></td><td colspan="3" class="tn">2 of this part get made &mdash; <b>16 holes</b> in all &mdash; <b>made at home</b> &mdash; deliberately absent from the drill appendix, which is the mill trip</td></tr>
+<!-- SHEETTOTAL:END -->
+</table>
+
+<p class="q"><b>What the four X stations are.</b> They are the real X end plate's own block
+columns &mdash; {{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}} and
+{{BLOCK_HIGH_COL_B}} &mdash; and they are not a choice. The blocks ride the Y rails, which sit
+{{RAIL_PITCH}} apart in the beams' outside T-slots, so the pattern follows the rails or the
+plate does not go on. The two Y values are {{BLOCK_PITCH_Y}} apart, centred across the 76.2.</p>
+
+<p class="q"><b>One block per rail is enough.</b> Two per rail on the real plate is moment
+capacity, not location &mdash; a single HGH20 block is already a fully constrained carriage.</p>
+
+<p class="q" style="color:#b06000"><b>OPEN &mdash; the X beam bolts and the shelf bar are not
+dimensioned.</b> Both wait on one number: how far up the plate the X beam's bottom face sits.
+Once that is set the beam's corner bores and the shelf bar's two horizontal holes both follow
+it. The pattern has to clear the block columns above: a block hole at Y 20.1 and a beam bore at
+Y 15 are 5.1 apart, and &oslash;6 against &oslash;9 needs 7.5, so they cannot share a height.
+A four-bore pattern into the top extrusion alone is 30 tall; eight into both extrusions is 90.</p>
+
+<p class="q"><b>Why the heights are deliberately NOT the real plate's.</b> Spreading the beam
+bolts and the shelf clear of each other means every piece can be bolted in any order with every
+hole still reachable, so the assembly order is one less thing to hold in mind while taking a
+measurement. The real plate is fine as drawn and goes together in a known order; this is a
+convenience for a temporary fixture.</p>
+
+<p class="q"><b>Fastener lengths that are not obvious.</b> <b>M5 &times; 12</b> into the blocks
+and nothing longer &mdash; the HGH20 block has {{BLOCK_TAP_DEPTH}} of thread in a
+{{BLOCK_HOLE_DEPTH}} hole, so a 12 lands exactly {{BLOCK_TAP_DEPTH}} in and a 16 drives 10 into
+a 6 mm thread, jams, and holds the head off its seat. The loose end's M8 have to stand the plate
+off about 11 and still hold thread in the extrusion bore.</p>
 </div>
 
 <!-- ============================================================ -->
