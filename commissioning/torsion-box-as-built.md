@@ -253,6 +253,19 @@ set on the Y1 extrusion's outboard face, and every hole on the plate is absolute
 window's own height only - take the full height of the plate and the thing the whole drawing is
 dimensioned from is gone.
 
+SETTLED: **Done, and BOTH sides of the left window had to come back.** The outboard bar was cut out
+with a 3 inch metal cut-off wheel, and the **inboard** edge then had to be ground back as well,
+because with the bar gone the **side plate** does the blocking the bar used to. The casting is in.
+**It is a very tight fit and that is accepted.**
+
+🔴 **The window's WIDTH now has no margin left.** It is an as-built limit rather than a drawn
+clearance: there is little steel outboard of it and the side plate is hard against the other side. So
+anything that later changes the casting's width or its position across the machine needs the window
+opened again, and there is not much left to open. **The window's HEIGHT is unaffected** - it is set
+on the beam underside, which is why the interposer bar going to 1/2in would not move it.
+
+NOTE: **Paint the ground edges.** Bare steel in a corner that gets wet, next to aluminium.
+
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 
 The sides were cut **1211**, where the drawing has them start {{SIDE_TONGUE_START}} forward of the
