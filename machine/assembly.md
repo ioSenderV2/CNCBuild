@@ -50,7 +50,7 @@ joints that have nothing but thread holding them:
 | Where | |
 |---|---|
 | Fin into its angle | M8 into the tapped fin |
-| Shelf bar into the X end plate | the horizontal pair, into blind taps |
+| Shelf bar into the X end plate | the horizontal pair, into **through** taps - the **bolt** stops short, see the M8 × 35 below |
 | BF12 into the fin and into the X tongue | M5 |
 | Cast stepper frame into the interposer | M5, both rows |
 | Spindle clamps into the Z plate | M8 x 90 |
@@ -492,8 +492,9 @@ shims against and nothing in its own mounting should move. The shim goes above t
 fit takes no adjustment away.
 
 NOTE: **Drill the bar's two horizontal holes first and use the bar to spot the plate's two taps.** The
-bar's are through and the plate's are blind, and at ø8.4 the two pairs have to agree closely across
-the 20 mm between them.
+**both are drilled through** - every threaded hole in the pack is, because the tapping happens at home
+with a plug tap - and at ø8.4 the two pairs have to agree closely across the 20 mm between them. What
+stops short is the bolt, not the hole.
 
 FLAG: **M8 × 35, not × 40.** Through 25.4 mm of bar into 12.7 mm of plate, an M8 × 35 gives ~9.6 mm of
 engagement and stops short of the far face. **An M8 × 40 protrudes ~1.6 mm onto the Y bearing block

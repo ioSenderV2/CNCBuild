@@ -149,12 +149,12 @@ SHELF_BAR_L,mm,60,"[alias] 60 - exactly the beam's footprint. Was 76.2 (3in), wh
 SHELF_VERT_REAR,mm,15,"[part] Vertical M8 into the extrusion's underside slot, Y from the PLATE'S BACK EDGE. Pinned by the 30-6060 slot centrelines."
 SHELF_VERT_FRONT,mm,45,[part] The second underside slot
 SHELF_HORIZ_Y,mm,30,"[derived] BOTH horizontal bolts. The only free Y station - two M8 need ~12 between centres and the verticals occupy 15 and 45, leaving Y 27-33."
-SHELF_HORIZ_Z_LOW,mm,15,[pinned] Z from the bar's underside. BLIND-TAPPED: through-drilling would break out where the lower Y bearing block sits.
+SHELF_HORIZ_Z_LOW,mm,15,"[pinned] Z from the bar's underside. TAPPED THROUGH, AND THE BOLT LENGTH IS THE SAFEGUARD: the plate's far face at this height is where the lower Y bearing block seats, so a bolt breaking out would hold a block off its mounting face - the one surface"
 SHELF_HORIZ_Z_HIGH,mm,35,[pinned] 15.8 to the bar's top
 SHELF_Z_COUPLE,mm,20,[derived] The lever resisting the bar's nose-down pitch about X. This is what the 2in bar buys.
 SHELF_BAR_TOP,mm,-60,[pinned] Z from the Y beam top - the underside of the X beam's bottom extrusion
 SHELF_BAR_BOTTOM,mm,-110.8,[derived]
-SHELF_BOLT_LOW_Z,mm,-95.8,[derived] Machine Z of the lower bolt. Near the lower bearing block row - hence the blind tap.
+SHELF_BOLT_LOW_Z,mm,-95.8,[derived] Machine Z of the lower bolt. Near the lower bearing block row - which is why the BOLT LENGTH is specified rather than the hole being stopped: the tap runs through and an M8 x 35 stops short of the block seat. See SHELF_HORIZ_Z_LOW.
 SHELF_HORIZ_CLEARANCE,mm,8.4,"[pinned] 8.4 - the clearance hole through the bar for the two HORIZONTAL M8, the standard close fit, NOT the BEAM_BOLT_CLEARANCE 9 used everywhere a plate meets extrusion. SETTLED: THE BLOCK MOUNTING IS THE ONE JOINT THAT MUST NOT BE SLOPPY, which is"
 SHELF_VERT_CLEARANCE,mm,8.4,"[alias] Same close fit for the two VERTICAL M8, and for the same reason read the other way round: these pass through the shim plane and get SLACKENED to slide a shim in, so a free-fit hole would let the bar shift in Y on re-torque and walk off the T-"
 SHELF_SHIM_W,mm,25.4,"[alias] The 1in shim strip on hand is exactly the bar's width, so a strip cut to SHELF_BAR_L is a full-face shim. Slot it open at Y 15 and Y 45 to clear the vertical M8."

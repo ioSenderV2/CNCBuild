@@ -255,15 +255,15 @@ between faces, and the readout is a gap that a caliper reads directly.
 | Block hole heights | **{{BLOCK_LOW_COL_A}} / {{BLOCK_LOW_COL_B}} / {{BLOCK_HIGH_COL_A}} / {{BLOCK_HIGH_COL_B}}** from the plate's bottom end - 122 of span on a 300 plate |
 | To the X beam | **M8 in 9 mm clearance** into the beam's corner bores |
 | Beam support | **the REAL shelf bars**, {{SHELF_BAR_L}} x {{SHELF_BAR_W}} x {{SHELF_BAR_H}}, the same parts that go on the real end plates |
-| Shelf fixing | the **horizontal pair**, {{SHELF_HORIZ_CLEARANCE}} close fit through the plate into **blind taps in the bar** - stations set to where the jig puts the beam |
+| Shelf fixing | the **horizontal pair**, {{SHELF_HORIZ_CLEARANCE}} close fit - stations set to where the jig puts the beam |
 | Readout | **precision steel metric gauge blocks**, in hand |
 
 🔴 **THE JIG DELIBERATELY DOES NOT COPY THE REAL PLATE'S HEIGHTS, AND THAT IS THE POINT OF THE 300.**
 His instruction. Only the BLOCK heights are fixed - the rails set those and nothing else can. **The
 beam bolts go in the MIDDLE with space around them, and the shelf bar follows wherever the beam
-lands.** Spread out like that, every piece can be bolted in any order with every hole still reachable,
-which is what the real plate cannot do. One block per rail is enough: two per rail on the real plate
-is moment capacity, not location.
+lands.** Spread out like that, every piece can be bolted in any order with every hole still reachable
+- so the assembly order is one less thing to hold in mind while taking a measurement. One block per
+rail is enough: two per rail on the real plate is moment capacity, not location.
 
 | Height | Free? |
 |---|---|
@@ -298,22 +298,18 @@ at the loose end** - they go up into the beam's underside slots, and tightened t
 slide the measurement depends on.
 
 🔴 **THE SHELF FIXING IS THE CLOSE FIT, NOT THE ø9 USED EVERYWHERE ELSE.**
-{{SHELF_HORIZ_CLEARANCE}} through the plate into blind taps in the bar, and the registry's reason is
+{{SHELF_HORIZ_CLEARANCE}}, and the registry's reason is
 the one that matters here too: **the block mounting is the one joint that must not be sloppy.** There
 is therefore **no float in it to use as a height adjustment** - the adjustment is the shim between
 the bar's top face and the beam's bottom extrusion, which
 [`../machine/tramming.md`](../machine/tramming.md) already specifies for roll and for which
 {{SHELF_SHIM_W}} is a strip on hand.
 
-🔴 **OPEN - AND IT IS ABOUT THE REAL PLATE, NOT THE JIG. ONE SET OF HOLES CANNOT BE REACHED ONCE THE
-OTHER PIECE IS IN.** His, and it is why the jig spreads everything out. On the real end plate as
-drawn the pieces have to go on in one order or a driver cannot get to a fastener. **The likely pair
-is the shelf bar's horizontal bolts against the lower Y bearing block** - {{SHELF_HORIZ_Z_LOW}} is
-blind-tapped precisely because a through hole there would break out where that block sits, which puts
-the bolt head and the block on the same patch of plate.
-
-**The plates are still uncut, so this is the cheap moment.** Either the layout moves or the assembly
-order becomes a written step with no slack in it.
+SETTLED: **The real plate is fine and nothing about it needs revisiting** - his, and it closes the
+question the jig's layout raises. The real plate goes together in a known order with no bolt
+inaccessible at the point access is needed. **The jig spreads out so that order does not have to be
+remembered while measuring**, which is a convenience for a temporary fixture and not a fault in the
+part it stands in for.
 
 NOTE: **Read the gap at two heights at each station.** Not because the end face tilting matters in
 itself - a constant tilt cancels in the change the way the tape's offset does - but because a tilt

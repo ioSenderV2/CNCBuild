@@ -256,7 +256,7 @@ def D_SHELF_V(jid):
 
 
 def D_SHELF_H(jid):
-    return M8_HEAD(jid) + " - into a BLIND tap in the X end plate" + blen(jid)
+    return M8_HEAD(jid) + " - into a THROUGH tap in the X end plate, the bolt stopping short of the far face" + blen(jid)
 
 
 def D_TONGUE(jid):
@@ -1720,9 +1720,9 @@ def main() -> int:
         # It stands INBOARD off the plate's face with the beam's underside
         # resting on its top, 60 fore-aft so it covers the beam's footprint
         # exactly. Two M8 up into the extrusion's two underside slots, two
-        # more horizontally into the bar's side through the plate - those are
-        # BLIND-tapped, because through-drilling would break out where the
-        # lower Y bearing block sits.
+        # more horizontally into the bar's side through the plate - the plate
+        # is tapped THROUGH and the BOLT stops short, because a bolt breaking
+        # out would land where the lower Y bearing block sits.
         inb = +1 if x0 < xb_x0 else -1
         bar_face = x0 + xep_t if x0 < xb_x0 else x0
         bar_top = ytop + v["SHELF_BAR_TOP"]
@@ -1740,13 +1740,13 @@ def main() -> int:
                 bar_bottom, bar_top, shank8, seg=10, d=D_SHELF_V("shelf-bar-vertical"))
         # The horizontal pair are driven from the BAR side, head on the bar's
         # inboard face and the shank running back through it into the plate.
-        # They cannot come the other way: Sheet 2a's H1 and H2 are blind-
-        # tapped precisely because through-drilling breaks out on the plate's
-        # outboard face, and that is where the lower Y bearing block sits -
-        # the model showed the head inside the block when it was drawn that
-        # way round.
-        # ASSUMPTION: drawn to the plate's mid-thickness. The registry gives
-        # the stations but no blind-tap depth.
+        # They cannot come the other way: Sheet 2a's H1 and H2 come out on the
+        # plate's outboard face, and that is where the lower Y bearing block
+        # sits - the model showed the head inside the block when it was drawn
+        # that way round.
+        # ASSUMPTION: drawn to the plate's mid-thickness. The tap runs through
+        # and the BOLT LENGTH is what keeps the tip off the block seat, so
+        # there is no tap depth for the registry to give.
         plate_mid = (x0 + x0 + xep_t) / 2
         bar_out = bar_face + inb * v["SHELF_BAR_W"]
         for sz in (v["SHELF_HORIZ_Z_LOW"], v["SHELF_HORIZ_Z_HIGH"]):
