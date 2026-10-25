@@ -394,6 +394,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The Y block gap comes out under what the X assembly needs](commissioning/torsion-box-as-built.md#the-y-block-gap-comes-out-under-what-the-x-assembly-needs)
 - [What to do about the 3.4, in order](commissioning/torsion-box-as-built.md#what-to-do-about-the-34-in-order)
 - [Both diagonals read 1564 - which clears racking and is blind to the toe](commissioning/torsion-box-as-built.md#both-diagonals-read-1564---which-clears-racking-and-is-blind-to-the-toe)
+- [🔴 THE TOE IS 2.0 AND IT IS SYMMETRIC - front span against rear span](commissioning/torsion-box-as-built.md#-the-toe-is-20-and-it-is-symmetric---front-span-against-rear-span)
 - [If the toe is real, the side tongue is the only thing that can move](commissioning/torsion-box-as-built.md#if-the-toe-is-real-the-side-tongue-is-the-only-thing-that-can-move)
   - [How the material comes off](commissioning/torsion-box-as-built.md#how-the-material-comes-off)
 - [🔴 THE TAPE READS ABOUT 2 SHORT ON AN INSIDE MEASUREMENT - and that was the whole discrepancy](commissioning/torsion-box-as-built.md#-the-tape-reads-about-2-short-on-an-inside-measurement---and-that-was-the-whole-discrepancy)

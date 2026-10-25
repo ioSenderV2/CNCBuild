@@ -88,9 +88,13 @@ tongue bolts yet**.
 | Middle | **1021** | — |
 | Front | **1020** | **1020.5** |
 
-SETTLED: **The taper is closed. 4 mm with the plates on clamps, 2 mm once the T-slot line came down,
+~~SETTLED: **The taper is closed. 4 mm with the plates on clamps, 2 mm once the T-slot line came down,
 0.5 mm with every tongue bolt in.** Half a millimetre over a metre is at the resolution of a tape
-hooked on a block face, and the bolted joints will absorb it. **Stop chasing it.**
+hooked on a block face, and the bolted joints will absorb it. **Stop chasing it.**~~
+
+🔴 **CORRECTED - THE TAPER IS NOT CLOSED, IT IS 2.0.** The 0.5 that closed it came off BLOCK FACES,
+which this file's own next note already calls the worst instrument in play. The slot-edge span below
+reads 2.0 and the 52 inch rule read 2 before it. **"Stop chasing it" was wrong.**
 
 🔴 **The ABSOLUTE has not moved through any of it.** Every reading taken at any stage sits between
 1018 and 1022 and none has ever reached the 1024.38 the X assembly needs. It is not slack.
@@ -158,6 +162,11 @@ plane a metre away is still an absolute measurement taken by eye. Three methods 
 and disagreeing on the SIZE - 4, then 2, then 0.5, then 2 again on different faces - is the signature
 of a question being asked with the wrong kind of instrument.
 
+NOTE: **The rule's 2 was right, and it is the 0.5 that was the outlier.** The slot-edge span below
+agrees with this reading exactly. What was wrong was not the rule but the conclusion drawn from the
+spread - the diagnosis that no absolute method could resolve it held up, and the answer was to stop
+taking absolutes rather than to distrust every number.
+
 ## Both diagonals read 1564 - which clears racking and is blind to the toe
 
 **His, with the beams up: outside top corner of one Y extrusion to the opposite rear outside top
@@ -193,12 +202,44 @@ OPEN: **The symmetric case is untouched, and it is the likely shape.** Both the 
 the skin cut 1 under the envelope, and the tongues' inner faces - act on both sides equally, which is
 exactly the error this measurement is blind to.
 
-OPEN: **So take the front span and the rear span between the SAME outside top corners.** Across the
-machine at the front, then across at the rear, same tape, same hook. The difference IS the toe, and
-the tape's offset cancels exactly as it does in the diagonals. It is a better feature than any of the
-three failed attempts used - a square extrusion corner to hook on, not a rail face sighted a metre
-away and not a bearing block's side - and it is the only cheap reading left that can see a symmetric
-toe. **Run it before the carriage bar**, because it needs nothing built.
+## 🔴 THE TOE IS 2.0 AND IT IS SYMMETRIC - front span against rear span
+
+**His, hooking and referencing the OUTSIDE T-SLOT EDGE at both ends** - solid and repeatable front
+and back, where the extrusions' outer faces now carry the steel side plates and cannot be hooked
+single-handed.
+
+| Station | Outside slot edge to outside slot edge |
+|---|---|
+| Front | **1163.5** |
+| Rear | **1165.5** |
+| **Taper** | **2.0, front narrower** |
+
+NOTE: **The absolute is not checked against anything, deliberately.** The extrusion's T-slot opening
+width is not in this registry, so there is no drawn figure to compare a slot-edge span to without
+inventing one. The DIFFERENCE is the finding and it needs no absolute.
+
+SETTLED: **The SIZE is corroborated now, not just the sign.** The 52 inch rule on the rail faces
+read 1046 / 1048. This reads 1163.5 / 1165.5. **Two methods, two different features, both 2.0** -
+the first time any two of the five readings have agreed on the size rather than only the sign.
+
+SETTLED: **And it is SYMMETRIC, which the diagonals establish.** A one-sided toe of 2 would have put
+1.54 of difference between the two diagonals and they read equal. So the 2.0 splits close to evenly:
+**about 1 per side, within a third of a millimetre either way.** The two readings together pin the
+shape, which neither does alone - the span sees the size and is blind to the split, the diagonals see
+the split and are blind to the size.
+
+🔴 **WHICH MAKES THE RECOVERY NUMBER 1 MM PER TONGUE.** A millimetre off each tongue's inner face at
+the FRONT, tapering to nothing at the rear - which is the figure he chose before the measurement
+existed.
+
+SETTLED: **The correction helps the absolute rather than hurting it.** Opening the front to match
+the rear puts the whole span at the REAR value, which is the wider end. So the X end plates get made
+to the rear gap, and that is also where the 1.4 shortfall is measured - the smallest of the
+shortfalls rather than the largest.
+
+OPEN: **Repeat the pair before anything irreversible happens.** This is one pair of readings by one
+person, and plywood does not go back on. Taking front and rear twice more costs minutes and converts
+a single differential into a repeatability figure, which is the one thing the number still lacks.
 
 OPEN: **The measurement that settles it is the carriages themselves**, not another tape reading: a
 temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
