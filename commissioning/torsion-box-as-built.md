@@ -255,13 +255,21 @@ between faces, and the readout is a gap that a caliper reads directly.
 | Block hole heights | **{{BLOCK_LOW_COL_A}} / {{BLOCK_LOW_COL_B}} / {{BLOCK_HIGH_COL_A}} / {{BLOCK_HIGH_COL_B}}** from the plate's bottom end - 122 of span on a 300 plate |
 | To the X beam | **M8 in 9 mm clearance** into the beam's corner bores |
 | Beam support | **the REAL shelf bars**, {{SHELF_BAR_L}} x {{SHELF_BAR_W}} x {{SHELF_BAR_H}}, the same parts that go on the real end plates |
-| Shelf fixing | the **horizontal pair**, {{SHELF_HORIZ_CLEARANCE}} close fit through the plate into **blind taps in the bar** - stations {{SHELF_BOLT_LOW_X}} and {{SHELF_BOLT_HIGH_X}} |
+| Shelf fixing | the **horizontal pair**, {{SHELF_HORIZ_CLEARANCE}} close fit through the plate into **blind taps in the bar** - stations set to where the jig puts the beam |
 | Readout | **precision steel metric gauge blocks**, in hand |
 
-NOTE: **Nothing about the hole heights is a free choice and none of them has to be worked out.** They
-are the real plate's own schedule - the real plate is cut to {{XEP_CUT}} out of a 300 piece, so a 300
-jig takes every height off it unscaled. One block per rail is enough: two per rail on the real plate
+🔴 **THE JIG DELIBERATELY DOES NOT COPY THE REAL PLATE'S HEIGHTS, AND THAT IS THE POINT OF THE 300.**
+His instruction. Only the BLOCK heights are fixed - the rails set those and nothing else can. **The
+beam bolts go in the MIDDLE with space around them, and the shelf bar follows wherever the beam
+lands.** Spread out like that, every piece can be bolted in any order with every hole still reachable,
+which is what the real plate cannot do. One block per rail is enough: two per rail on the real plate
 is moment capacity, not location.
+
+| Height | Free? |
+|---|---|
+| Block holes - {{BLOCK_LOW_COL_A}} / {{BLOCK_LOW_COL_B}} / {{BLOCK_HIGH_COL_A}} / {{BLOCK_HIGH_COL_B}} | **No** - the rails fix them |
+| X beam bolts | **Yes** - middle of the plate, with room |
+| Shelf bar | **Yes** - set to the beam |
 
 OPEN: **Four M8 into the TOP extrusion, or eight into both?** Four is what the real plate uses, and
 it is enough here - the real design does not bolt the bottom extrusion to the plate at all, it sits
@@ -282,12 +290,12 @@ bolts and cantilevers off the tight plate. Sitting on a bar at each end it is si
 slides freely along its own axis, which is the one freedom the measurement needs and the only one it
 needs.
 
-SETTLED: **Using the REAL shelf bars puts the beam at its real height by construction.** That is not
-a convenience, it is the bar's actual job - {{SHELF_BAR_TOP}} from the Y beam's top IS the underside
-of the X beam's bottom extrusion. So the jig's beam sits exactly where the built machine will put it
-and the M8 bores line up with nothing to set. **Leave the two VERTICAL M8 out at the loose end** -
-they go up into the beam's underside slots, and tightened they would clamp the slide the measurement
-depends on.
+SETTLED: **The bars are the real parts, but they sit where the JIG's beam sits, not at
+{{SHELF_BAR_TOP}}.** The bar's own job on the real plate is to carry the X beam's bottom extrusion at
+that height; on the jig the beam has been moved to the middle for access, so the bar goes with it.
+Its fixing stations are laid out to the bar, not lifted off Sheet 2a. **Leave the two VERTICAL M8 out
+at the loose end** - they go up into the beam's underside slots, and tightened they would clamp the
+slide the measurement depends on.
 
 🔴 **THE SHELF FIXING IS THE CLOSE FIT, NOT THE ø9 USED EVERYWHERE ELSE.**
 {{SHELF_HORIZ_CLEARANCE}} through the plate into blind taps in the bar, and the registry's reason is
@@ -297,9 +305,15 @@ the bar's top face and the beam's bottom extrusion, which
 [`../machine/tramming.md`](../machine/tramming.md) already specifies for roll and for which
 {{SHELF_SHIM_W}} is a strip on hand.
 
-NOTE: **Both shelf bolt stations fall inside the real plate's {{XEP_CUT}} cut**, so the 300's extra
-height is spare rather than needed - provided the jig's bottom edge is set level with the real
-plate's.
+🔴 **OPEN - AND IT IS ABOUT THE REAL PLATE, NOT THE JIG. ONE SET OF HOLES CANNOT BE REACHED ONCE THE
+OTHER PIECE IS IN.** His, and it is why the jig spreads everything out. On the real end plate as
+drawn the pieces have to go on in one order or a driver cannot get to a fastener. **The likely pair
+is the shelf bar's horizontal bolts against the lower Y bearing block** - {{SHELF_HORIZ_Z_LOW}} is
+blind-tapped precisely because a through hole there would break out where that block sits, which puts
+the bolt head and the block on the same patch of plate.
+
+**The plates are still uncut, so this is the cheap moment.** Either the layout moves or the assembly
+order becomes a written step with no slack in it.
 
 NOTE: **Read the gap at two heights at each station.** Not because the end face tilting matters in
 itself - a constant tilt cancels in the change the way the tape's offset does - but because a tilt
