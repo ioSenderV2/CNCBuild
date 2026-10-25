@@ -228,18 +228,59 @@ SETTLED: **And it is SYMMETRIC, which the diagonals establish.** A one-sided toe
 shape, which neither does alone - the span sees the size and is blind to the split, the diagonals see
 the split and are blind to the size.
 
-🔴 **WHICH MAKES THE RECOVERY NUMBER 1 MM PER TONGUE.** A millimetre off each tongue's inner face at
-the FRONT, tapering to nothing at the rear - which is the figure he chose before the measurement
-existed.
+🔴 **WHICH PUT THE RECOVERY NEAR 1 MM PER TONGUE** - the figure he chose before any measurement
+existed. **SUPERSEDED, slightly: the jig reads 2.25 at the carriages, so it is about 1.1 a side.**
+Same cut, same direction, and his millimetre was the right call on the wrong decimal.
 
 SETTLED: **The correction helps the absolute rather than hurting it.** Opening the front to match
 the rear puts the whole span at the REAR value, which is the wider end. So the X end plates get made
 to the rear gap, and that is also where the 1.4 shortfall is measured - the smallest of the
 shortfalls rather than the largest.
 
-OPEN: **Repeat the pair before anything irreversible happens.** This is one pair of readings by one
-person, and plywood does not go back on. Taking front and rear twice more costs minutes and converts
-a single differential into a repeatability figure, which is the one thing the number still lacks.
+NOTE: **The repeat this note used to ask for is no longer the gate** - the jig has since read 2.25 at
+the carriages, which is a better instrument on a better surface and agrees with this to 0.25. Worth
+having if the plates are ever off again, but nothing waits on it.
+
+## 🔴 THE JIG IS BUILT AND IT READS 2.25, FRONT NARROWER - at the carriages
+
+**His, with the temporary end plates made and the X gantry on the real blocks and the real rails.**
+One end of the beam snugged tight to its plate. At the other end the M8 run through the plate and
+**30 into the extrusion**, with the plate standing off, so the bolt's flange sits proud of the
+plate's back face.
+
+| Gantry at | Bolt flange to the plate's BACK FACE |
+|---|---|
+| Fully **rear** | **2.55** |
+| Fully **front** | **4.8** |
+| **Taper** | **2.25, front narrower** |
+
+SETTLED: **The bolt is fixed in the beam and the plate rides the rails, which is what sets the
+sign.** The bolt threads into the beam end, so its flange sits a fixed distance outboard of that
+end face. The plate's across-machine position is its blocks on the rails - the span itself. A
+NARROWER span therefore carries the plate inboard, AWAY from the flange, and the gap OPENS. Bigger
+gap at the front means the front is narrower, which is what the other five readings say.
+
+SETTLED: **2.25 is the TOTAL taper across the machine, not per side.** The beam and the tight plate
+are one rigid body located by that side's blocks; the loose plate is located by the other side's. So
+the gap is the whole span change, measured once.
+
+🔴 **THIS IS THE NUMBER THE TONGUE SKIM WORKS FROM**, and it outranks everything above it: it is
+taken at the carriages, on the blocks and rails the machine will actually run on, rather than
+between faces that only stand in for them. It agrees in sign with all five earlier readings and in
+size with the two worth anything - the 52 inch rule's 2 and the slot edges' 2.0.
+
+SETTLED: **With the diagonals saying symmetric, that is about 1.1 off each tongue's inner face at
+the front**, tapering to nothing at the rear.
+
+SETTLED: **Nothing bound anywhere in the travel.** Both gaps are positive at both extremes, so the
+gantry traverses fully on the jig. **The real end plates would not have managed it** - two at
+{{T_X_ENDPLATE}} make 1024.38 against a span of about 1023, which is the shortfall this whole thread
+started from.
+
+FLAG: **The sign reads backwards until you see where the bolt is anchored**, and it was read
+backwards here first - as a fixed-width assembly leaving a bigger leftover in a wider span, which
+would have put the skim on the wrong end of the machine. **The bolt is in the BEAM, not in the
+plate.** Anyone reaching for this reading again should check that before trusting the direction.
 
 ## The carriage jig - two temporary end plates, and the gap is the readout
 
@@ -325,6 +366,13 @@ SETTLED: **Which makes this the number the tongue cut is made to**, not a confir
 The span reading got the size and the diagonals got the shape; this gets the figure the router works
 from.
 
+🔴 **AS BUILT HE READ A BETTER SURFACE THAN THIS SECTION FIRST PROPOSED.** The gap taken is not beam
+end to plate face - it is the **loose bolt's FLANGE to the plate's BACK face**, with the bolt run
+**30 into the extrusion**. Two reasons it wins: both surfaces are machined
+rather than a sawn beam end, and the whole gap is **outboard of the plate**, so a gauge stack reaches
+it from outside the machine with nothing to lean past. The sign inverts with it - see the jig result
+above, and read that before trusting any direction here.
+
 ### What the 6 mm costs against a thicker plate
 
 | | |
@@ -345,8 +393,9 @@ NOTE: **Plate flex does not enter, so it is not worth designing around.** 6 agai
 because the loose end has 11 mm of air in front of it. Whatever it deflects is the same at every
 station and cancels in the change.
 
-🔴 **NOTHING GETS CUT UNTIL THIS READS A NUMBER** - not the tongues, not the real X end plates. That
-is the whole point of taking it.
+SETTLED: **The gate is cleared. It read 2.25.** Nothing was to be cut until it did - not the tongues,
+not the real X end plates - and that was the whole point of taking it. **The tongue skim and the end
+plate thickness both now have a measured number to work from.**
 
 FLAG: **This item used to end by pointing at the Z pair's rail procedure, and that was wrong.** The Z
 rails tap M5 straight into a plate through ø6 under a ø9.5 counterbore, which is about a millimetre of

@@ -395,6 +395,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [What to do about the 3.4, in order](commissioning/torsion-box-as-built.md#what-to-do-about-the-34-in-order)
 - [Both diagonals read 1564 - which clears racking and is blind to the toe](commissioning/torsion-box-as-built.md#both-diagonals-read-1564---which-clears-racking-and-is-blind-to-the-toe)
 - [🔴 THE TOE IS 2.0 AND IT IS SYMMETRIC - front span against rear span](commissioning/torsion-box-as-built.md#-the-toe-is-20-and-it-is-symmetric---front-span-against-rear-span)
+- [🔴 THE JIG IS BUILT AND IT READS 2.25, FRONT NARROWER - at the carriages](commissioning/torsion-box-as-built.md#-the-jig-is-built-and-it-reads-225-front-narrower---at-the-carriages)
 - [The carriage jig - two temporary end plates, and the gap is the readout](commissioning/torsion-box-as-built.md#the-carriage-jig---two-temporary-end-plates-and-the-gap-is-the-readout)
   - [Setting it up and reading it](commissioning/torsion-box-as-built.md#setting-it-up-and-reading-it)
   - [What the 6 mm costs against a thicker plate](commissioning/torsion-box-as-built.md#what-the-6-mm-costs-against-a-thicker-plate)
