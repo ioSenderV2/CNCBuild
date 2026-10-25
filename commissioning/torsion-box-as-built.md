@@ -137,6 +137,16 @@ position IS the beam face - the slot's float there is vertical, not lateral. Not
 NOTE: **This is the standing rule working, not a failure.** 1024.38 was always going to be checked
 against a real gap, and the check happened before anything was cut.
 
+FLAG: **A THIRD method, and the third time the sign comes out the same.** Butt end of a 52 inch rule
+on one top rail's face, read where it crosses the plane of the opposite top rail's face:
+**1046 at the front, 1048 at the rear** - his, with the rear reading acknowledged as hard to take.
+Front narrower again.
+
+**None of the three can resolve it, including this one**, because reading where a rule crosses a
+plane a metre away is still an absolute measurement taken by eye. Three methods agreeing on the SIGN
+and disagreeing on the SIZE - 4, then 2, then 0.5, then 2 again on different faces - is the signature
+of a question being asked with the wrong kind of instrument.
+
 OPEN: **The measurement that settles it is the carriages themselves**, not another tape reading: a
 temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
 resting against the other and marked. Push the pair the full travel and the change at the free end
