@@ -229,8 +229,9 @@ shape, which neither does alone - the span sees the size and is blind to the spl
 the split and are blind to the size.
 
 🔴 **WHICH PUT THE RECOVERY NEAR 1 MM PER TONGUE** - the figure he chose before any measurement
-existed. **SUPERSEDED, slightly: the jig reads 2.25 at the carriages, so it is about 1.1 a side.**
-Same cut, same direction, and his millimetre was the right call on the wrong decimal.
+existed. **SUPERSEDED: the jig reads 2.25 at the carriages, which is 1.125 a side across the
+{{CARRIAGE_TRAVEL}} of travel it was read over - and 1.37 a side across the tongue the cut runs on.**
+Same cut, same direction, and his millimetre was the right call on the wrong baseline.
 
 SETTLED: **The correction helps the absolute rather than hurting it.** Opening the front to match
 the rear puts the whole span at the REAR value, which is the wider end. So the X end plates get made
@@ -269,8 +270,18 @@ taken at the carriages, on the blocks and rails the machine will actually run on
 between faces that only stand in for them. It agrees in sign with all five earlier readings and in
 size with the two worth anything - the 52 inch rule's 2 and the slot edges' 2.0.
 
-SETTLED: **With the diagonals saying symmetric, that is about 1.1 off each tongue's inner face at
-the front**, tapering to nothing at the rear.
+SETTLED: **With the diagonals saying symmetric, that is 1.37 off each tongue's inner face at its
+FRONT END**, tapering to nothing at its rear end.
+
+🔴 **1.37 AND NOT 1.125, BECAUSE A TAPER IS AN ANGLE AND THE TWO LENGTHS ARE DIFFERENT.** The 2.25
+was read between the gantry's two travel extremes, {{CARRIAGE_TRAVEL}} apart. The cut runs the side
+tongue's {{SIDE_TONGUE_L}}. So the per-side figure is 1.125 x {{SIDE_TONGUE_L}} /
+{{CARRIAGE_TRAVEL}} = **1.37**, and cutting 1.1 over the tongue would leave about 0.45 of toe across
+the travel - which is a bind, not a tolerance, by this file's own note on block clearance.
+
+NOTE: **Pivoting the cut about the tongue's REAR END opens the rear travel station a little too.**
+The rear extreme of travel stands about 90 forward of the tongue's rear end, so it gains about 0.12
+a side. It goes the helpful way against the shortfall and is too small to set anything to.
 
 SETTLED: **Nothing bound anywhere in the travel.** Both gaps are positive at both extremes, so the
 gantry traverses fully on the jig. **The real end plates would not have managed it** - two at
@@ -428,15 +439,29 @@ cutting. The tongue stands {{BOX_TONGUE_PROUD}} proud; the outboard plate agains
 and the beam is above that, so any tool riding on the tongue's top face has its body swinging
 through where the plate and beam now are.
 
-**A router with a long straight bit**, riding on the track-saw rail. A saw is out on the offcut
-alone: a 1 mm sliver {{BOX_TONGUE_PROUD}} tall and {{SIDE_TONGUE_L}} long will flex into the blade
-and pinch, and that sliver is what would set the finished face. A router takes the same millimetre
-off as chips. Bits exist with cut lengths past {{BOX_TONGUE_PROUD}}.
+**A router with a long straight bit.** A saw is out on the offcut alone: a 1 mm sliver
+{{BOX_TONGUE_PROUD}} tall and {{SIDE_TONGUE_L}} long will flex into the blade and pinch, and that
+sliver is what would set the finished face. A router takes the same millimetre off as chips. The bit
+needs **{{BOX_TONGUE_PROUD}} of cut below its bearing** to take the tongue's full standing height in
+one pass, and bits exist that long.
 
-**The taper is free, and it is just where you put the rail.** Set the track-saw rail against the
-tongue's inner face **at the rear** and shimmed out **at the front** by what the carriage bar says.
-Rail parallel removes a constant millimetre and fixes the width; rail skewed removes a taper and
-fixes the toe. Same setup either way - the rail is the straightedge and the router rides it.
+**The straightedge is a 3 inch strip of 1/2 inch Baltic birch, screwed down to the tongue's TOP
+face** - his, 2026-10-25, and it replaces the track-saw rail this section used to call for. It does
+three jobs at once: its inboard edge is the pattern the bit's bearing follows, its 3 inches carry the
+router base over a tongue only {{T_BOX_TONGUE}} wide, and screwed into the tongue it cannot creep
+mid-cut. The bit sits at the strip's edge, so about half the base is on the strip and half over the
+{{BOX_TONGUE_PROUD}} drop to the skin - the 3 inches is the half that has to be there.
+
+🔴 **THE STRIP'S INBOARD EDGE IS THE FINISHED FACE**, because a top-bearing pattern bit cuts flush
+to it. That retires the two things that could have put this cut on the wrong end: there is no router
+offset to find and no shim whose direction can be read backwards. Mark the line on the tongue's top
+face off the tongue's own inner arris - **nothing at the rear end, 1.37 in at the front end** - screw
+the strip to it, and the taper is the cut.
+
+**Whatever is added to BOTH marks is width, not toe.** The difference between the two ends is the
+whole of the toe correction; a constant on top of it only opens the span, which is the direction the
+absolute wants and comes off what the X end plates were going to give up. The strip's edge wants to
+be a sawn or jointed edge, because it is now the only reference in the job.
 
 **Chisel the inside corner last.** The plate stands ON the top skin and the tongue laps it, so
 anything left in the corner where the new face meets the skin holds the plate's bottom edge out and

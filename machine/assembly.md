@@ -1497,6 +1497,44 @@ height and the two beams' coplanarity, so the fin is the reference for the pair 
 **The side tongue runs 1000 mm, starting 1/4" from the box's back edge** — so it spans exactly the
 beam and the side plate it laps, and ends where the fin begins.
 
+### Skim both side tongues before the plates go back on
+
+The two Y beams toe in: the span between the carriages is **2.25 narrower at the front than at the
+rear**. A tongue's inner face is what sets its beam's line across the machine, so the correction is a
+tapered skim of that face on both sides. It is a **beams-off, plates-off** job. The measurement is in
+[`../commissioning/torsion-box-as-built.md`](../commissioning/torsion-box-as-built.md).
+
+| Off the tongue's inner face | |
+|---|---|
+| At its **rear** end | **nothing** |
+| At its **front** end | **1.37** |
+| Sides | **both**, the same cut |
+
+1. **Beams off, outboard plates off**, both sides.
+2. **Cut a 3 inch strip of 1/2" Baltic birch**, a little longer than the tongue's
+   {{SIDE_TONGUE_L}}. One long edge sawn straight — **that edge becomes the finished face**, so it is
+   the only thing in this job that has to be right.
+3. **Mark the line on the tongue's TOP face**, measuring in from the tongue's inner edge: **0 at the
+   rear end, 1.37 at the front end.** Scribe between the two marks.
+4. **Screw the strip down on that line**, straight edge to the line, screws through the strip into
+   the {{T_BOX_TONGUE}} of tongue beneath it. Nothing bears on that top face, so the holes cost
+   nothing.
+5. **Route it in one pass with a top-bearing pattern bit**, bearing riding the strip's edge, base on
+   the strip. The bit needs **{{BOX_TONGUE_PROUD}} of cut below the bearing** to take the tongue's
+   full standing height in one go. At the front end it runs off into the {{BOX_FRONT_OVERHANG}} of
+   clear skin.
+6. **Two chisel jobs.** The rear corner where the side tongue meets the back tongue — the last half a
+   bit diameter — and the inside corner where the new face meets the top skin, where the bit leaves a
+   fillet that will hold the plate's bottom edge off and let it rock. Chisel both and check the
+   corner with a square.
+7. **Plates and beams back on, then read it on the jig again** before anything is cut to the new
+   span.
+
+NOTE: **Adding the same amount to both marks is width, not toe.** The **difference** between the two
+ends is the whole of the toe correction. A constant on top of it only opens the span, and the span is
+short rather than wide — so it comes off what the X gantry end plates were going to give up. Going
+narrower is the one direction with nothing to spare.
+
 OPEN: **The front and back tongue arrangement is inconsistent between the design record and the shop
 pack.** The shop pack (2026-10-03, the later of the two) says **there is no front tongue** and the
 fin is tied by L-brackets; [`archive/torsion-box.md`](archive/torsion-box.md) and
