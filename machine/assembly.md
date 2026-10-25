@@ -1537,8 +1537,7 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
    the top skin and takes none of it**. 63.5 of cutter against the tongue's {{BOX_TONGUE_PROUD}}
    standing height puts the bearing's bottom **14.5 below the strip's top face** — which is why the
    strip is 18 and not 1/2": at 12.7 the bearing hangs below the strip and rides the old face instead
-   of the pattern. **Eyeball the bearing once the depth is set** and confirm it is bearing on plywood
-   over its full height, because nothing downstream will tell you it was not. The
+   of the pattern. The
    cutter trims the strip's bottom 3.5 as it passes and the bearing runs on the band above that, so
    it costs nothing. **Err shallow** — the plate stands on that skin and a cut into it cannot be
    undone. At the front end the bit runs off into the {{BOX_FRONT_OVERHANG}} of clear skin.

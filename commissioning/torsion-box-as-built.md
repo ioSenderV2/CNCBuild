@@ -469,7 +469,8 @@ over a tongue only {{T_BOX_TONGUE}} wide, and screwed into the tongue it cannot 
 bit sits at the strip's edge, so about half the base is on the strip and half over the
 {{BOX_TONGUE_PROUD}} drop to the skin - the 3 inches is the half that has to be there.
 
-🔴 **18 AND NOT 1/2 INCH, AND THE 3.5 OF SPARE CUTTER IS WHY.** With the depth set so the cutter just
+🔴 **18 AND NOT 1/2 INCH, HIS CALL AND FOR EXACTLY THIS REASON - the bearing has to land wholly on
+the strip.** The arithmetic corroborates it rather than discovering it. With the depth set so the cutter just
 kisses the top skin and takes none of it, the cutter's top - and therefore the bearing's bottom - sits
 **14.5 below the strip's top face**. An 18 strip has 14.5 of thickness above that and the bearing runs
 entirely on plywood. A 12.7 strip is **1.8 short**: the bearing would hang below the strip and ride
