@@ -3904,8 +3904,9 @@ note = "10 of M5 thread into the X end plate's tongue, his 2026-10-11 - 2 x D in
 
 [[dim]]
 sym = "BF12_FACE_PROTRUDE_REAR"
-expr = "BF12_FACE_BOLT_L - BF12_BODY_AT_BOLT - T_REAR_PLATE"
-note = "3.65 - how far a face-mount M5 x 30 stands through the back of the 1/4in rear plate. His figure was 'about 4' and this is it exactly. OPEN: IT IS THE SAME BOLT AS THE TONGUE'S and that is the whole point: one length, two plate thicknesses, and only one of them stops short. NOTE: IF THE STUB IS UNWANTED, SHORTEN THE BOLT RATHER THAN CAP IT - an M5 x 25 leaves 5 of engagement in the 6.35 plate, which is 1 x D in steel, and nothing protrudes."
+expr = "BF12_FACE_BOLT_L - BF12_BODY_AT_BOLT - T_FIN"
+retired = true
+note = "RETIRED AS A REAR-PLATE FIGURE - the Y BF12 is on the FIN, not the rear plate. BF12 is always OPPOSITE THE CASTING, so it moved to the front when the steppers moved to the back; the 3D model and the quote pack both had it there and only the prose lagged. SETTLED: THE FIN IS THE BETTER HOST. The same M5 x 30 crosses BF12_BODY_AT_BOLT of body and leaves 10 of bolt, so a 10 mm fin takes exactly 2 x D of engagement with NOTHING protruding, where the rear plate had the stub this symbol was created to measure. FLAG: TAP THROUGH RATHER THAN BLIND - a bolt wanting the full 10 must not bottom in a hole only 10 deep. Kept under this name rather than deleted because the prose referred to it."
 
 [[dim]]
 sym = "M8_SOCKET_CBORE"

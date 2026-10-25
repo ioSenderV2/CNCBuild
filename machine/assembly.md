@@ -51,7 +51,7 @@ joints that have nothing but thread holding them:
 |---|---|
 | Fin into its angle | M8 into the tapped fin |
 | Shelf bar into the X end plate | the horizontal pair, into blind taps |
-| BF12 into the rear plate and into the X tongue | M5 |
+| BF12 into the fin and into the X tongue | M5 |
 | Cast stepper frame into the interposer | M5, both rows |
 | Spindle clamps into the Z plate | M8 x 90 |
 | Ball nut, all four | M5 into the nut housing |
@@ -320,10 +320,20 @@ FLAG: **This read "all three bolt rows ... the 82 / 110 / 138 rows" until 2026-1
 stale twice over.** There are **two** rows, not three, and the registry puts them at
 **105 and 135** — see INTERPOSER_BOLT_ROW_1 and _2. The 3D model has drawn two rows all along.
 
-### BF12 — rear end
+### BF12 — front end, on the fin
 
-**4 × M5 tapped into the inside face of the rear plate**, one set per beam. Not
-through-bolted.
+**4 × M5 tapped into the fin's back face**, one set per beam. Not through-bolted.
+
+🔴 **BF12 IS ALWAYS OPPOSITE THE CASTING, so it moved to the front when the steppers moved to the
+back.** His, and it is simply the dynamics of the thing — the driven end takes the casting and the
+floating support takes the other end. The 3D model and the quote pack both have it on the fin; it was
+the prose that lagged, in four places.
+
+**The 10 mm fin suits it better than the rear plate did.** An M5 × 30 crosses {{BF12_BODY_AT_BOLT}} of
+BF12 body and leaves 10 of bolt, so in a {{T_FIN}} fin that is **2 × D of engagement with nothing
+protruding** — where the {{T_REAR_PLATE}} rear plate had the same bolt standing proud of its back
+face. **Tap through rather than blind**, so a bolt wanting the full 10 cannot bottom in a hole that
+is only 10 deep.
 
 NOTE: **BF12's hole count depends on its orientation.** Face-mounted into a plate it is **4 × M5**;
 top-mounted down through its base onto a horizontal surface it is **2 × M5**. Any BF12 figure that
@@ -393,7 +403,7 @@ scale is unwelcome.
 |---|---|
 | To the beams | **8 × M8 into each beam's corner bores** — 16 bolts total |
 | To the box | **8 bolts through the back tongue at Y 30**, 150 mm pitch from X 75, plus bottom-edge bearing over the full length |
-| Also carries | **BF12 on its inside face**, 4 × M5 tapped, one per beam |
+| Also carries | **Nothing else.** BF12 is at the FRONT, on the fin — it is always opposite the casting, and the casting is at this end |
 
 🔴 **The plate's length is a reference, not a dimension, and it does NOT reach flush.** The plate is
 **{{REAR_PLATE_L_ORDERED}}**, the envelope is **{{MACHINE_OUTER_W}}**, so it falls
