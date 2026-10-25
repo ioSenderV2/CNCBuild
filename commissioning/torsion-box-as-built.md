@@ -115,6 +115,14 @@ millimetre at most, probably less** - measured at skin level. An 18 inch precisi
 **both side plates square, and the back plate square to the extrusion.** So the plates are parallel
 and not leaning, and no bolt order or box rework is going to be the answer.
 
+FLAG: **The gauge panel may be a FOURTH measurement of the taper rather than an exoneration.** It
+gains going AFT, which is the same sign as all three rail readings, and "a millimetre at most" is
+the same order of size. It is also the best instrument of the four - the panel is its own gauge, so
+nothing about it is an absolute metre span read by eye, which is what the other three are.
+OPEN: **Was it read at one place, or is there a front number and a back number?** A single "gains a
+millimetre" cannot be told apart from a taper of a millimetre. Until that is answered this note's
+heading above is not safe to lean on.
+
 FLAG: **That leaves the block-face tape readings disagreeing with two better instruments.** A tape
 hooked on a block face, read to the millimetre across a metre at three stations, can manufacture a
 2 mm spread on its own. The gauge panel and the triangle outrank it.
@@ -125,10 +133,13 @@ position IS the beam face - the slot's float there is vertical, not lateral. Not
 
 ## What to do about the 3.4, in order
 
-1. 🔴 **Try the free thing first, before anything is machined.** The sixteen rear bolts are 9 mm
+1. ~~🔴 **Try the free thing first, before anything is machined.** The sixteen rear bolts are 9 mm
    clearance on M8 - about half a millimetre per side per beam. Loosen them, push both beams
    outboard as hard as the clearance allows, hold, re-tighten, re-measure. That could recover 2 of
-   the 3.4 and costs an hour.
+   the 3.4 and costs an hour.~~ **DEAD - a beam cannot move outboard at all**, for the reason in
+   the tongue section below: the lateral chain is FACE BEARING at every step, and a clearance hole
+   only floats in a direction where no face is already in contact. Loosening bolts of any kind -
+   the sixteen rear, the 28 T-slot - buys nothing across the machine.
 2. **Absorb the rest in the X END PLATES, which are uncut.** The X beam is {{BEAM_LEN}} and cannot
    shrink without orphaning the three front joining strips, which arrived at exactly that length to
    match it. So the end plates are the adjustable member in this chain. **Make them to the gap that
@@ -151,11 +162,78 @@ OPEN: **The measurement that settles it is the carriages themselves**, not anoth
 temporary bar from scrap spanning both carriages, bolted rigidly to ONE of them, with the free end
 resting against the other and marked. Push the pair the full travel and the change at the free end
 IS the non-parallelism - sign, amount and station in one pass. Do not cut the real X end plates for
-it. If it binds, the adjustment is the rails in their slots, one locked and the other set along its
-length, which is the procedure [`../machine/machining.md`](../machine/machining.md) already gives for
-the Z pair.
+it. **Nothing gets cut until this reads a number** - that is the whole point of taking it.
+
+FLAG: **This item used to end by pointing at the Z pair's rail procedure, and that was wrong.** The Z
+rails tap M5 straight into a plate through ø6 under a ø9.5 counterbore, which is about a millimetre of
+lateral float - so "lock rail one, set rail two along its length" works there. The Y rails have no
+lateral float whatever, per the SETTLED note above: they bolt to T-nuts and bear on the beam's inner
+face. The Y recovery is the tongue, below.
 
 SETTLED: **{{RAIL_STACK}} is right - BOTH stacks calipered at 30.** That candidate is gone.
+
+## If the toe is real, the side tongue is the only thing that can move
+
+**The lateral chain across the machine is face bearing at every step**, which is why no amount of
+bolt loosening helps:
+
+| | |
+|---|---|
+| Tongue inner face | **bears on** the outboard plate's outer face |
+| Plate inner face | **bears on** the Y beam's outboard face |
+
+{{BOX_W}} was rounded DOWN from the {{MACHINE_OUTER_W}} envelope *for* this - so the tongue beds
+hard on the plate where the bolts are rather than opening a gap in the lap. A ø9 hole on M8 floats
+only in a direction where no face is already in contact, and across the machine there is one at
+every joint. **The tongue is the stop, and taking material off its inner face is the only way a beam
+front goes outboard.**
+
+### How the material comes off
+
+🔴 **It is a beams-off, plates-off job**, and that is the gate on the whole thing rather than the
+cutting. The tongue stands {{BOX_TONGUE_PROUD}} proud; the outboard plate against it is 301.625 tall
+and the beam is above that, so any tool riding on the tongue's top face has its body swinging
+through where the plate and beam now are.
+
+**A router, not the track saw.** Two reasons the saw loses:
+
+- **Depth.** A TSC 55 cuts 55 at 90 degrees and about 51 on the rail, the rail's own thickness coming
+  off the stroke. OPEN: **catalogue figures - caliper the saw.** Either way it is short of
+  {{BOX_TONGUE_PROUD}}. A 75 reaches.
+- **The offcut.** A 1 mm sliver 60 tall and 1000 long will flex into the blade and pinch, and that
+  sliver is what sets the finished face. A router takes the same millimetre off as chips. Straight
+  bits exist with cut lengths past 60.
+
+**The taper is free, and it is just where you put the rail.** Set the track-saw rail against the
+tongue's inner face **at the rear** and shimmed out **at the front** by what the carriage bar says.
+Rail parallel removes a constant millimetre and fixes the width; rail skewed removes a taper and
+fixes the toe. Same setup either way, and the rail is the guide whether a saw or a router runs on it.
+
+**Chisel the inside corner last.** The plate stands ON the top skin and the tongue laps it, so
+anything left in the corner where the new face meets the skin holds the plate's bottom edge out and
+it rocks. A straight bit leaves a fillet there whatever you do. Chisel it, check with a square, and
+the plate then beds over the full {{BOX_TONGUE_PROUD}}.
+
+NOTE: **The blade or bit ramps in at the ends, and that lands the right way round.** A circular blade
+at 55 deep needs roughly 76 mm of run before it reaches full depth - arithmetic off a nominal blade
+size, so check it. At the front there is {{BOX_FRONT_OVERHANG}} of clear skin to overrun into. At the
+rear the side tongue runs into the back tongue and there is nowhere to overrun - but the rear is the
+**wide** end, where the taper wants nothing removed anyway.
+
+NOTE: **What it costs, in one line.** A millimetre off the inner face takes the lap's bolt bearing
+from {{T_BOX_TONGUE}} to 23 and moves the ø9 hole's edge a millimetre nearer the face. Neither
+matters at that size, and the 145 mm couple into the box is untouched because it is the lap that
+carries it.
+
+FLAG: **Two things that are NOT the recovery**, both ruled out on the geometry:
+
+- **A tapered shim under a Y rail.** A shim can only add thickness, and thickness under a Y rail
+  pushes that rail inboard. The front is the narrow end, so the taper would have to come out by
+  shimming the REAR - closing the gap everywhere, when the absolute is already short. It fixes the
+  taper by making the harder problem worse.
+- **Cutting the tongues off and replacing them.** Nothing replaces them: they are the lateral load
+  path into the box and the only thing locating the plates across the machine. The cut is a skim of
+  the face, not a removal of the part.
 
 ## 🔴 THE TAPE READS ABOUT 2 SHORT ON AN INSIDE MEASUREMENT - and that was the whole discrepancy
 

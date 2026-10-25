@@ -393,6 +393,8 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The top skin is 1210, and the plates fit between the tongues](commissioning/torsion-box-as-built.md#the-top-skin-is-1210-and-the-plates-fit-between-the-tongues)
 - [The Y block gap comes out under what the X assembly needs](commissioning/torsion-box-as-built.md#the-y-block-gap-comes-out-under-what-the-x-assembly-needs)
 - [What to do about the 3.4, in order](commissioning/torsion-box-as-built.md#what-to-do-about-the-34-in-order)
+- [If the toe is real, the side tongue is the only thing that can move](commissioning/torsion-box-as-built.md#if-the-toe-is-real-the-side-tongue-is-the-only-thing-that-can-move)
+  - [How the material comes off](commissioning/torsion-box-as-built.md#how-the-material-comes-off)
 - [🔴 THE TAPE READS ABOUT 2 SHORT ON AN INSIDE MEASUREMENT - and that was the whole discrepancy](commissioning/torsion-box-as-built.md#-the-tape-reads-about-2-short-on-an-inside-measurement---and-that-was-the-whole-discrepancy)
 - [The tongue line is M8 LOCK NUTS, not acorns](commissioning/torsion-box-as-built.md#the-tongue-line-is-m8-lock-nuts-not-acorns)
 - [Drilling the tongue holes: go in from outside](commissioning/torsion-box-as-built.md#drilling-the-tongue-holes-go-in-from-outside)
