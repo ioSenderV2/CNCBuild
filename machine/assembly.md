@@ -1531,11 +1531,14 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
 4. **Screw the strip down on that line**, straight edge to the line, screws through the strip into
    the {{T_BOX_TONGUE}} of tongue beneath it. Nothing bears on that top face, so the holes cost
    nothing.
-5. **Route it in one pass with a top-bearing pattern bit, 2.5" of cutting length.** Bearing riding
-   the strip's edge, base on the strip, and set the depth so the cutter **just kisses the top skin and
-   takes none of it**. 63.5 of cutter against the tongue's {{BOX_TONGUE_PROUD}} standing height puts
-   the bearing's bottom **14.5 below the strip's top face** — which is why the strip is 18 and not
-   1/2": at 12.7 the bearing hangs below the strip and rides the old face instead of the pattern. The
+5. **Route it in one pass with a top-bearing pattern bit — 3/4" diameter, 2.5" of cutting length.**
+   The bearing matches the cutter, so the cut face lands on the strip's edge with no offset in it.
+   Bearing riding the strip's edge, base on the strip, and set the depth so the cutter **just kisses
+   the top skin and takes none of it**. 63.5 of cutter against the tongue's {{BOX_TONGUE_PROUD}}
+   standing height puts the bearing's bottom **14.5 below the strip's top face** — which is why the
+   strip is 18 and not 1/2": at 12.7 the bearing hangs below the strip and rides the old face instead
+   of the pattern. **Eyeball the bearing once the depth is set** and confirm it is bearing on plywood
+   over its full height, because nothing downstream will tell you it was not. The
    cutter trims the strip's bottom 3.5 as it passes and the bearing runs on the band above that, so
    it costs nothing. **Err shallow** — the plate stands on that skin and a cut into it cannot be
    undone. At the front end the bit runs off into the {{BOX_FRONT_OVERHANG}} of clear skin.

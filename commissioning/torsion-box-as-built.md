@@ -456,8 +456,11 @@ through where the plate and beam now are.
 **A router with a long straight bit.** A saw is out on the offcut alone: a 1 mm sliver
 {{BOX_TONGUE_PROUD}} tall and {{SIDE_TONGUE_L}} long will flex into the blade and pinch, and that
 sliver is what would set the finished face. A router takes the same millimetre off as chips. **The
-bit in hand has 2.5 inches of cutting length - 63.5 against the tongue's {{BOX_TONGUE_PROUD}}
-standing height**, so it takes the full height in one pass with 3.5 to spare.
+bit in hand is a 3/4 inch straight-flute pattern bit with a TOP BEARING and 2.5 inches of cutting
+length** - 63.5 against the tongue's {{BOX_TONGUE_PROUD}} standing height, so it takes the full height
+in one pass with 3.5 to spare. **The bearing matches the cutter at 3/4**, which is what makes the
+strip's edge the finished face with no offset anywhere in the chain - a guide bushing would have put a
+constant between the two and the rear end is precisely where a constant cannot be tolerated.
 
 **The straightedge is a 3 inch strip of 18 mm plywood, screwed down to the tongue's TOP face** - his,
 2026-10-25, and it replaces the track-saw rail this section used to call for. It does three jobs at
