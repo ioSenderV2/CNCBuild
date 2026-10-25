@@ -222,6 +222,31 @@ the beam and the sixteen bores at the beam ends.
 plate's hole, then drill the 9 mm from outside, square, with the whole drill clear. Or pilot small
 from inside - a stubby 3 mm in a hex holder fits where a 9 mm will not - and open out from outside.
 
+## Both casting windows are open-sided - one by accident, one on purpose
+
+**The casting went in at the RIGHT rear corner with the proximity sensor already attached.** That
+window has no outboard side: it fell at the plate's own end, where the bought plate is
+{{REAR_PLATE_SHORTFALL}} short of the flush envelope, so the strip outboard of it was never there.
+With the side plate coming in alongside there is still enough slop for the casting to pass.
+
+**The LEFT rear window is enclosed and the casting will not pass it** - only just, but it will not.
+SETTLED: **The vertical bar outboard of that window gets cut out**, making both ends alike.
+
+**It costs nothing, for three reasons:**
+
+- **The window was never a locating feature.** The casting is held by its six M5 into the interposer
+  bar; the opening is clearance. The original fin window's note already said the width was a slip fit
+  and nothing more, and that if it binds the remedy is height.
+- **The right-hand end is already open** and was accepted, so this is symmetry rather than a new
+  compromise.
+- **Nothing loaded is in that strip.** Y1's beam bores are inboard of it at columns 15 and 45, the
+  torsion-box bolts run along the bottom edge, and BF12 taps into the inside face.
+
+🔴 **Keep the plate's LEFT EDGE continuous above and below the window.** Sheet 7's X 0 is that edge,
+set on the Y1 extrusion's outboard face, and every hole on the plate is absolute from it. Cut the
+window's own height only - take the full height of the plate and the thing the whole drawing is
+dimensioned from is gone.
+
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 
 The sides were cut **1211**, where the drawing has them start {{SIDE_TONGUE_START}} forward of the
