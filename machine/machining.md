@@ -6,8 +6,11 @@
 
 ---
 
-Accurate holes are drilled on **a single visit to a friend's shop** - a Laguna mill, 4' × 1' bed,
-**manual X and Y**, DRO to be confirmed. **As of 2026-09-29 none of the 30 holes in the X carriage
+Accurate holes are drilled on **a single visit to a friend's shop** - a **Lagun** mill, 4' × 1' bed,
+**manual X and Y**, DRO to be confirmed. **Not Laguna**, which is a woodworking brand and is what
+this file said until the maker's plate was photographed: **Republic Lagun Machine Tool Co, 1000 E.
+Carson, Carson CA 90749, and the casting says MADE IN SPAIN** - a Spanish knee mill assembled or
+distributed out of Carson. Recorded because the name is what a future session would search on. **As of 2026-09-29 none of the 30 holes in the X carriage
 plate are drilled.**
 
 FLAG: **Every plate needing accurate holes must be fully dimensioned before that trip**, including

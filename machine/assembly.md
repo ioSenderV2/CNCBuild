@@ -114,7 +114,7 @@ rules carry the whole sequence, and neither can be worked around:
 
 ## 1. The mill trip
 
-Accurate holes are drilled on **one visit** — a Laguna mill, 4' × 1' bed, **manual X and Y**.
+Accurate holes are drilled on **one visit** — a **Lagun** mill, 4' × 1' bed, **manual X and Y**.
 Every plate must be fully dimensioned before the trip, including assemblies that will not be built
 for months.
 

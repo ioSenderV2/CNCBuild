@@ -75,7 +75,7 @@
 - SETTLED: ~~**T2's edge distance, on the template**~~ **Closed 2026-10-02.** X 25 and 170 on the Y 30
   line both check out against the physical template - photo committed. **The front fin's geometry
   is fully settled.**
-- SETTLED: ~~**Whether the Laguna can hold the HEIGHT REFERENCE across a {{REAR_PLATE_L_ORDERED}} part.**~~
+- SETTLED: ~~**Whether the Lagun can hold the HEIGHT REFERENCE across a {{REAR_PLATE_L_ORDERED}} part.**~~
   **Moot - the plate never goes on the mill.** The waterjet cut both 8-bolt patterns in one setup,
   so there is no reposition to lose the height reference across. The budget that mattered is
   unchanged - **well inside 1 mm**, the float the 9 mm holes give, and past it the plate wins and a
