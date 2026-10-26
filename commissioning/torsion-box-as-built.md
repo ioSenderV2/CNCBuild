@@ -96,8 +96,12 @@ hooked on a block face, and the bolted joints will absorb it. **Stop chasing it.
 which this file's own next note already calls the worst instrument in play. The slot-edge span below
 reads 2.0 and the 52 inch rule read 2 before it. **"Stop chasing it" was wrong.**
 
-🔴 **The ABSOLUTE has not moved through any of it.** Every reading taken at any stage sits between
-1018 and 1022 and none has ever reached the 1024.38 the X assembly needs. It is not slack.
+~~🔴 **The ABSOLUTE has not moved through any of it.** Every reading taken at any stage sits between
+1018 and 1022 and none has ever reached the 1024.38 the X assembly needs. It is not slack.~~
+
+SETTLED: **OVERTAKEN - the tongue skim moved it.** With Y1's tongue cut and the jig plates on the
+blocks the bearing faces read **1025** against the 1024.38 needed. See the Y1 result below; this
+paragraph is kept because it is what every instrument said for six weeks and it was true then.
 
 **Two separate findings, and only one of them is slack.**
 
@@ -236,7 +240,8 @@ Same cut, same direction, and his millimetre was the right call on the wrong bas
 SETTLED: **The correction helps the absolute rather than hurting it.** Opening the front to match
 the rear puts the whole span at the REAR value, which is the wider end. So the X end plates get made
 to the rear gap, and that is also where the 1.4 shortfall is measured - the smallest of the
-shortfalls rather than the largest.
+shortfalls rather than the largest. **SETTLED: and the rear gap turned out to beat the X assembly
+outright - there is no shortfall left to make up.**
 
 NOTE: **The repeat this note used to ask for is no longer the gate** - the jig has since read 2.25 at
 the carriages, which is a better instrument on a better surface and agrees with this to 0.25. Worth
@@ -287,6 +292,60 @@ instead of what it was meant to give. 🔴 **Nothing else in this thread has eve
 that** - every number so far has been an instrument pointed at the error, and this is the error
 answering back.
 
+## 🔴 Y1 IS CUT AND THE JIG READS 0.75 - and the span now BEATS what the X assembly needs
+
+**His, with the tongue routed, the plate and beam back on and the gantry on the real blocks.** The
+reference is set rather than read: the bolt was adjusted at the FRONT station until a **5 mm gauge
+block exactly fit** between its flange and the plate's back face, then the gantry travelled rearward.
+
+| Gantry at | Flange to the plate's back face |
+|---|---|
+| Fully **front** | **5.00**, set |
+| Fully **rear** | **4.25** |
+| **Taper** | **0.75, front still narrower** |
+
+FLAG: **THE MEASUREMENT MOVED FROM THE REAR BLOCK OF EACH PAIR TO THE FRONT ONE** - his, and it is
+the one thing besides the cut that changed between 2.25 and this. On a straight taper it cannot
+matter: either block sweeps the same {{CARRIAGE_TRAVEL}} and the difference between the two stations
+is the same. It matters only if the span is not linear, which nothing has ever suggested. Recorded
+because a reading taken two ways is not one instrument, and this is where to look first if the next
+reading disagrees with itself.
+
+🔴 **THE CUT OVER-DELIVERED AND THAT IS AN OBSERVATION, NOT A DIAGNOSIS.** 2.25 less 0.75 is **1.50
+of span taken out**, where 1.4 at the front of a {{SIDE_TONGUE_L}} tongue predicted 1.15. To do 1.50
+the cut's front-to-rear difference had to be about 1.83 rather than 1.4. **What would distinguish the
+candidates:** a router that took a constant extra everywhere is width and cannot do this, so either
+the strip was not flush at its rear end, or the plate was not bedding on the OLD face as well as it
+beds on the new one - in which case part of the original 2.25 was bedding rather than geometry, and
+no cut could have been sized for it in advance.
+
+SETTLED: **IT DOES NOT MATTER, AND THAT IS THE WHOLE POINT OF CUTTING ONE SIDE FIRST.** Y2's offset
+comes off the measured remainder rather than off the model: **0.75 x {{SIDE_TONGUE_L}} /
+{{CARRIAGE_TRAVEL}} = 0.92 at the front of Y2's tongue**, flush at its rear. Whatever made Y1
+over-deliver is already inside the 0.75.
+
+### 🔴 THE 1.4 SHORTFALL IS GONE - 1025 against the 1024.38 the X assembly needs
+
+**His, with the temporary end plates bolted to the bearing blocks and properly spaced**, measured
+between the two plates' **bearing faces** - the block faces, which is exactly the gap the X assembly
+has to fill.
+
+| | |
+|---|---|
+| Measured, bearing face to bearing face | **1025** |
+| Needed - two {{T_X_ENDPLATE}} plates plus the {{BEAM_LEN}} beam | **1024.38** |
+| **Clearance** | **0.62** |
+
+SETTLED: **AND IT HOLDS AT EVERY STATION ONCE Y2 IS CUT**, which is why the station of the 1025 does
+not have to be established. The correction only ever opens the FRONT, so the finished span sits at
+today's **rear** value - and the rear is the wide end, at or above the 1025. There is no station
+where the finished span is less than what was just measured.
+
+🔴 **SO THE X END PLATES DO NOT GET FACED.** The 0.7 a face this file has carried since the tape was
+caught reading 2 light is retired: there is nothing to make up. **Every reading in the whole thread
+sat between 1018 and 1022 and none ever reached 1024.38** - that sentence is now history, and what
+moved it was the tongue skim rather than any instrument.
+
 SETTLED: **AS SET ON Y1 THE FRONT OFFSET IS 1.4, NOT 1.37** - his, with a **1.4 steel gauge block**
 standing the strip's front end off the tongue's inner face and the rear end **flush** where it meets
 the back wall. **1.4 is the nearest bar in the set, not a chosen figure** - a block beats a scribed
@@ -300,7 +359,8 @@ a side. It goes the helpful way against the shortfall and is too small to set an
 SETTLED: **Nothing bound anywhere in the travel.** Both gaps are positive at both extremes, so the
 gantry traverses fully on the jig. **The real end plates would not have managed it** - two at
 {{T_X_ENDPLATE}} make 1024.38 against a span of about 1023, which is the shortfall this whole thread
-started from.
+started from. **SETTLED: they would manage it now - the same faces read 1025 after Y1's tongue was
+cut.**
 
 FLAG: **The sign reads backwards until you see where the bolt is anchored**, and it was read
 backwards here first - as a fixed-width assembly leaving a bigger leftover in a wider span, which
@@ -545,8 +605,12 @@ during this is carrying that offset. Corrected: beam inner faces about **1083**,
 **1023** - not the 1081 and 1020.5 that were taped.
 
 **So the real shortfall against the X assembly's 1024.38 is about 1.4, not 3.4 - and 1 mm of it is
-the 1210 skin against the drawn 1211.** It comes off the X end plates, 0.7 a face, on plates that are
-uncut and have to be faced anyway.
+the 1210 skin against the drawn 1211.** ~~It comes off the X end plates, 0.7 a face, on plates that
+are uncut and have to be faced anyway.~~
+
+🔴 **AND THEN IT CAME OFF THE TONGUE INSTEAD, AS A SIDE EFFECT OF THE TOE CUT.** The bearing faces
+read 1025 with Y1 done, so **nothing comes off the X end plates** - the 0.7 a face is retired and the
+plates stay as cut. The 1.4 was real; the cut that fixed the toe happened to spend it.
 
 🔴 **DO NOT BUY A LASER MEASURE FOR THIS.** A laser distance meter runs about plus or minus 1.5 to 2,
 which is worse than the ruler and nowhere near what this needs. **The instrument order here, worst to
@@ -563,8 +627,12 @@ now measured with a better instrument: the stacks with calipers, the box with a 
 plates with a precision triangle, the bore stations by sixteen bolts spinning in. **The only figure
 resting on a tape hooked across a metre is the block gap itself.**
 
-OPEN: **So take the one measurement nobody has taken: the gap between the two Y beams' INNER FACES.**
-A shorter reach, onto flat extrusion faces, and it decides the whole question.
+SETTLED: ~~**So take the one measurement nobody has taken: the gap between the two Y beams' INNER
+FACES.**~~ **Answered from the other end, and better.** The question was which of the tape's readings
+to trust; it is retired because **the block faces themselves got measured directly at 1025** with the
+jig plates bolted on - no tape, no reach across a metre, and the faces that actually matter rather
+than a proxy two steps away. The two branches below are kept because they are what the answer would
+have had to choose between.
 
 - **Reads 1084** - the chain is right, the block-gap readings were the error, there is no shortfall,
   and nothing needs machining.
