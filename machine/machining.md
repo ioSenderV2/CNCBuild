@@ -9,8 +9,19 @@
 Accurate holes are drilled on **a single visit to a friend's shop** - a **Lagun** mill, 4' × 1' bed,
 **manual X and Y**, DRO to be confirmed. **Not Laguna**, which is a woodworking brand and is what
 this file said until the maker's plate was photographed: **Republic Lagun Machine Tool Co, 1000 E.
-Carson, Carson CA 90749, and the casting says MADE IN SPAIN** - a Spanish knee mill assembled or
-distributed out of Carson. Recorded because the name is what a future session would search on. **As of 2026-09-29 none of the 30 holes in the X carriage
+Carson, Carson CA 90749, and the casting says MADE IN SPAIN** - a Spanish knee mill badged by the US
+arm. Recorded because the name is what a future session would search on.
+
+**Two different companies carry the name and only one built this machine.** Lagun Machine Tools SL of
+Azkoitia, in the Basque country, has been building milling machines since 1954 and is part of the
+Maher group; Republic Lagun was founded in California in 1968 as the US arm and trades today as Lagun
+Engineering. The castings are Spanish, the badge is American.
+
+**The FTV-2 manual and the FTV-2F brochure are committed**, not linked - see
+[`../manufacturer-assets/index.html`](../manufacturer-assets/index.html). OPEN: **Garen's exact model
+is not confirmed and the two differ in travel** - the FTV-2F is 977 x 406 of X by Y manual, the plain
+FTV-2 is listed at 838 of X. Nothing on the trip needs either figure while the list stays aluminium
+and under a metre, which is why this is recorded rather than chased. **As of 2026-09-29 none of the 30 holes in the X carriage
 plate are drilled.**
 
 FLAG: **Every plate needing accurate holes must be fully dimensioned before that trip**, including
