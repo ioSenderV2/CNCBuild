@@ -397,9 +397,15 @@ rail is enough: two per rail on the real plate is moment capacity, not location.
 | X beam bolts | **Yes** - middle of the plate, with room |
 | Shelf bar | **Yes** - set to the beam |
 
-OPEN: **Four M8 into the TOP extrusion, or eight into both?** Four is what the real plate uses, and
-it is enough here - the real design does not bolt the bottom extrusion to the plate at all, it sits
-on a shelf. Eight only if both extrusion ends are actually flush.
+SETTLED: ~~**Four M8 into the TOP extrusion, or eight into both?**~~ **As built it is FOUR, SPREAD
+OVER BOTH EXTRUSIONS - two into each - and only at the TIGHT end.** His, 2026-10-26. So both ends of
+both extrusions were flush enough to pull up, and the four go where the measurement needs the beam
+and the plate to be one rigid body.
+
+🔴 **AND THE LOOSE END IS ONE BOLT, WHICH IS THE GAUGE BOLT ITSELF.** That is the whole fixture in a
+line: four bolts hold the beam to the right plate, one bolt stands proud of the left plate, and the
+gap under its flange is the reading. Nothing else ties the left plate to the beam - it is located by
+its own blocks on the rails, which is exactly what makes the gap the span.
 
 ### Setting it up and reading it
 
