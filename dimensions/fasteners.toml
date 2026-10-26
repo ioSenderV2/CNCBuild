@@ -17,6 +17,23 @@
 #     not known, leave it out rather than approximate it.
 #   - `into` says what carries the thread: tapped, t-nut, nut, or bore.
 #
+# PART THREAD, NOT FULL THREAD, ON EVERY o9 JOINT - his, 2026-10-26, and the
+# reason is assembly rather than strength: a thread crest will not slide through
+# a o9 hole, let alone through a plywood tongue's o9 and a steel plate's o9 at
+# once, where a plain 8 mm shank drops in. It bears better in the hole too.
+#   THE SHANK LENGTH IS NOT A CHOICE. An M8 part-thread carries 22 mm of thread
+# at EVERY length up to 125 - ISO 4014 / DIN 931, which is the part-thread
+# standard where DIN 933 is the full-thread one - so the plain shank is simply
+# (length - 22) and it has to end inside the grip.
+#   WHICH MAKES IT RIGHT ON THE NUT JOINTS AND WRONG ON THE BORE JOINTS, with
+# the lengths already specified here:
+#       M8 x 40, grip 29.529   shank 18   fits
+#       M8 x 45, grip 33.55    shank 23   fits
+#       M8 x 90, grip 72       shank 68   fits
+#       M8 x 35, grip 12.19    shank 13   DOES NOT - see the bore joints
+# A flanged head in part thread is hard to buy at M8; a hex cap screw on the
+# M8 fender washer these joints already carry does the same job.
+#
 # Read with tools/make-fasteners.py.
 
 [[joint]]
@@ -218,7 +235,7 @@ head = "flange"
 into = "bore"
 grip = ["T_X_ENDPLATE"]
 source = "his, 2026-10-11; assembly.md: '4 x M8 into the top extrusion's corner bores, 9 mm clearance'"
-note = "Flange head, same 35 as the other two bore joints."
+note = "Flange head, same 35 as the other two bore joints. 🔴 KEEP THIS ONE FULL THREAD - it is the exception to the part-thread rule in this file's header, and the reason is that the extrusion's lengthwise corner bore is o6.65. An 8 mm plain shank cannot enter it at all, so any shank reaching past the plate bottoms on the beam's end face and holds the flange off - the acorn-nut failure arriving a third way. A part-thread M8 x 35 leaves 13 of shank against a T_X_ENDPLATE of 12.19 and misses by 0.81. NOTE: AND THE SLIDING PROBLEM IS NOT HERE ANYWAY - this is one plate on one bore, not a plywood o9 and a steel o9 to line up at once."
 
 [[joint]]
 id = "shelf-bar-horizontal"
@@ -273,6 +290,7 @@ into = "acorn"
 grip = ["T_BOX_TONGUE", "T_SIDE_PLATE", "FENDER_WASHER_T"]
 extras = ["M8 fender washer", "M8 acorn nut"]
 source = "assembly.md: 'M8 at 150 mm, first at 50 - seven per beam, at Y 30'"
+note = "🔴 THIS IS THE JOINT THE PART-THREAD RULE WAS WRITTEN FOR - his, 2026-10-26, after taking the Y1 plate off and putting it back for the tongue skim. Fourteen bolts have to find a o9 in 24 of plywood and a o9 in the plate together, and a full thread catches on both. The 40 leaves 18 of shank against 29.529 of grip, so the shank is wholly inside the stack and 22 of thread crosses the rest and the nut. OPEN: THE NUT ON THIS LINE IS A LOCK NUT, NOT AN ACORN - ../commissioning/torsion-box-as-built.md records him going to M8 lock nuts when the acorns bottomed before seating, and this entry's `into` and `extras` still say acorn."
 
 [[joint]]
 id = "fin-to-angle"
