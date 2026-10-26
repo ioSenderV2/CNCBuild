@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw the quote DXFs into three quote requests, one part per sheet.
+"""Draw the quote DXFs into one quote request per group, one part per sheet.
 
     python tools/dxf-preview.py
 
@@ -10,10 +10,10 @@ IT PARSES THE WRITTEN BYTES, not make-dxf.py's own data. That is the whole
 value: a mistake in the writer shows up here as a wrong picture instead of
 agreeing with itself. What these pages show is what the shop receives.
 
-THREE REQUESTS, NOT ONE, AND EACH IS SELF-CONTAINED. They go to shops
-separately, so neither the how-to-read notes nor the quoting instructions can
-be shared between them - every file carries a full copy. Quoting one group does
-not require the others to be in the envelope.
+EACH REQUEST IS SELF-CONTAINED. They go to shops separately, so neither the
+how-to-read notes nor the quoting instructions can be shared between them -
+every file carries a full copy. Quoting one group does not require the others
+to be in the envelope.
 
 To scale, with the scale stated, the outline dimensioned and every hole size
 called out. Letter landscape - a 1211 part at 1:5 is 242 mm, which fits the
@@ -29,11 +29,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "machine" / "drawings" / "dxf"
 
-# THE SPLIT IS HIS, BY WHAT GETS QUOTED TOGETHER - not by material, which is
-# why groups 2 and 3 are both 6061 and go out separately: the fins are being
-# sent on their own to price one part. Every DXF in the folder must appear
-# in exactly one group; main() fails if one is missing or named twice, so a
-# ninth drawing cannot drop silently out of all three requests.
+# THE SPLIT IS HIS, BY WHAT GETS QUOTED TOGETHER - and it now falls on material
+# because the reason it did not has gone: the fins were sent on their own to
+# price one part, and they carry a minimum order instead, so everything in 6061
+# travels together. Every DXF in the folder must appear in exactly one group;
+# main() fails if one is missing or named twice, so a new drawing cannot drop
+# silently out of every request.
 GROUPS = [
     {
         "out": "quote-1-steel.html",
@@ -47,29 +48,30 @@ GROUPS = [
     },
     # THE X BACK JOINING PLATE HAD ITS OWN REQUEST and does not any more - he
     # machined it at home, 2026-10-23, and its drawing left the folder with it.
+    #
+    # THE FINS AND THE END PLATES WERE TWO REQUESTS AND ARE NOW ONE, 2026-10-26.
+    # They were split so the fins could be priced on their own; the fins carry a
+    # minimum order instead, so everything in 6061 goes in the one envelope and
+    # the X carriage plate came off the mill trip to fill it.
     {
-        "out": "quote-2-front-fins.html",
-        "title": "Waterjet quote - Y front fins",
-        "lead": "One drawing, <b>6061</b>: the <b>two Y front fins</b>, both "
-                "nested head to tail in <b>one square</b> of 10 mm plate. "
-                "<b>The material is supplied</b> and the square drawn is the "
-                "piece handed over, so the job is the holes and the two "
-                "profiles cut out of it. <b>The gap between the two tapered "
-                "edges is called out on the drawing</b> - please say if it is "
-                "too tight for your kerf.",
-        "files": ["4-front-fins.dxf"],
-    },
-    {
-        "out": "quote-3-x-end-plates.html",
-        "title": "Waterjet quote - X gantry end plates and doublers",
-        "lead": "Three drawings in <b>6061</b>: the two <b>X gantry end "
-                "plates</b> and the three <b>doubler blocks</b>. <b>Every part "
-                "is already cut to finished size and the job is the holes "
-                "only</b> - each outline is drawn to register against and is "
-                "<b>not</b> a cut line. On the end plates the origin is on the "
-                "part's factory long edge, not the sawn one.",
-        "files": ["5-x-end-plate-left.dxf", "6-x-end-plate-right.dxf",
-                  "7-doublers.dxf"],
+        "out": "quote-2-aluminium.html",
+        "title": "Waterjet quote - 6061 plates",
+        "lead": "Four drawings, all <b>6061</b>: the <b>two Y front fins</b> "
+                "nested in one square of 10 mm plate, the <b>two X gantry end "
+                "plates</b>, the <b>three doubler blocks</b>, and the <b>X "
+                "carriage plate</b>. <b>The material is supplied throughout</b> "
+                "- every outline is the piece handed over, drawn to register "
+                "against, and only the fins' two profiles are a cut. "
+                "<b>On the fins the gap between the two tapered edges is called "
+                "out on the drawing</b> - please say if it is too tight for your "
+                "kerf. On the end plates the origin is on the part's factory "
+                "long edge, not the sawn one. <b>The X carriage plate's sixteen "
+                "&oslash;5.2 holes are counterbored and that is not part of this "
+                "job</b> - cut them through at 5.2 and the counterbores are done "
+                "here.",
+        "files": ["4-front-fins.dxf", "5-x-end-plate-left.dxf",
+                  "6-x-end-plate-right.dxf", "7-doublers.dxf",
+                  "8-x-carriage-plate.dxf"],
     },
 ]
 

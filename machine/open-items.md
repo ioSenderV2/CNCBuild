@@ -18,7 +18,11 @@
   so jet taper costs nothing there, where a tapped or counterbored hole wants a clean wall.
   **A ø3 pilot opened out here was the working figure**; the shop may prefer a different size, a
   scribed mark, or to cut them as drawn. The intro page of each quote request asks them directly,
-  and this question lands in **quote 3** - the fins and the end plates are both in that one.
+  and this question lands in **quote 2**, the 6061 request - the fins, both end plates, the doublers
+  and the X carriage plate are all in that one now.
+  **The 40 is the end plates and the fins alone and now understates it:** the X carriage plate joined
+  the same request on 2026-10-26 with **24 × ø4.2** tapped and **16 × ø5.2** counterbored, on 12.7
+  stock where every one of them is under the thickness.
   ⚠ **A magdrill is not the tool for these** - every ø4.2 in the build is in 6061, so a magnetic
   base has nothing to grip unless the part is clamped on a steel plate.
 

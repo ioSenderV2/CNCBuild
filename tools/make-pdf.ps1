@@ -69,14 +69,15 @@ $docs = @(
     [pscustomobject]@{ Key = 'cutlist'; Html = 'machine/drawings/base-cutlist.html'
                                         Pdf  = 'machine/drawings/base-cutlist.pdf' }
     # The quote DXFs drawn back from their own bytes - what the shop receives.
-    # THREE REQUESTS, QUOTED SEPARATELY, so three PDFs. They share the key so
-    # -Doc dxf still means all of them and the generator still runs once.
+    # TWO REQUESTS, QUOTED SEPARATELY, so two PDFs - one steel, one 6061. They
+    # share the key so -Doc dxf still means both and the generator runs once.
+    # THE LIST MUST MATCH dxf-preview.py's GROUPS: it is the one place the page
+    # names are written twice, so a group renamed there and not here prints a
+    # stale PDF from an HTML that no longer exists.
     [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-1-steel.html'
                                        Pdf  = 'machine/drawings/dxf/quote-1-steel.pdf' }
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-front-fins.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-2-front-fins.pdf' }
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-3-x-end-plates.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-3-x-end-plates.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-aluminium.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-2-aluminium.pdf' }
 )
 # 'both' still means the two root documents, so an older command line keeps working
 if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }

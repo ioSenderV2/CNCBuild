@@ -81,6 +81,15 @@ ORDER = [
                                   'tongue', 1, 'XEP_STOCK_L')),
     #   kind 'doubler' - the three doubler blanks on one sheet, holes only
     ('doublers', 'doubler', None),
+    # THE X CARRIAGE PLATE JOINED THE WATERJET LIST, 2026-10-26 - it was on the
+    # mill trip and came off it when the fins' minimum order left room. Sheet
+    # s3a's stock line is the piece he hands over, so it is the same 'stock'
+    # kind as the steel plates: the outline registers, the job is the holes.
+    # 12.7 IS THE NOMINAL and T_X_CARRIAGE_PLATE still carries CALIPER IT - the
+    # end plates' half-inch stock came in at 12.19. Nothing on the drawing
+    # depends on it; it is a note for the shop.
+    ('x-carriage-plate', 'stock', ('X carriage plate', 's3a', 407.0, 154.0,
+                                   12.7, '6061', 1)),
 ]
 
 
