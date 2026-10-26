@@ -142,8 +142,8 @@ the interface, not this file.
 
 ## [machine/machining.md](machine/machining.md)  (2)
 
-- FLAG: [L16](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>Every plate needing accurate holes must be fully dimensioned before that trip, including assemblies that will not be built for months: X carriage plate, Z plate, two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
-- FLAG: [L25](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The 2026-10-02 rework put three more parts on this trip. The list had been shrinking; it is not any more:
+- FLAG: [L27](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>Every plate needing accurate holes must be fully dimensioned before that trip, including assemblies that will not be built for months: X carriage plate, Z plate, two X end plates. One more plate on the visit costs an hour; a second trip costs a weekend.
+- FLAG: [L36](machine/machining.md#machining-one-trip-so-design-ahead-of-the-build) — *Machining: one trip, so design ahead of the build*<br>The 2026-10-02 rework put three more parts on this trip. The list had been shrinking; it is not any more:
 
 ## [machine/open-items.md](machine/open-items.md)  (20)
 
