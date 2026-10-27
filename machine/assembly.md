@@ -1556,9 +1556,10 @@ tapered skim of that face on both sides. It is a **beams-off, plates-off** job. 
    front offset × {{CARRIAGE_TRAVEL}} / {{SIDE_TONGUE_L}}** — ×0.82. On the 1.4 gauge block that is
    **1.15 of the 2.25**, so it should read about **1.10**, still front-narrow. That reading is the
    check on the whole method.
-8. **Y2's front mark is step 7's reading × 1.22** — the same {{SIDE_TONGUE_L}} / {{CARRIAGE_TRAVEL}}
-   scaling, worked off what the machine gave rather than what it was meant to give. Then steps 2 to 7
-   again on Y2.
+8. **Only if step 7 still reads: Y2's front mark is that reading × 1.22** — the same
+   {{SIDE_TONGUE_L}} / {{CARRIAGE_TRAVEL}} scaling, worked off what the machine gave rather than what
+   it was meant to give. Then steps 2 to 7 again on Y2. **On this machine it did not come to that —
+   one tongue closed it and Y2 is uncut**, so read step 7 before reaching for the router.
 
 FLAG: **If step 7 comes back a long way off 1.13, stop and find out why before cutting Y2.** The cut
 is the one thing in the chain that can be measured directly — scribe to the strip, strip to the cut —

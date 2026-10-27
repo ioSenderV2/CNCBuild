@@ -292,7 +292,60 @@ instead of what it was meant to give. 🔴 **Nothing else in this thread has eve
 that** - every number so far has been an instrument pointed at the error, and this is the error
 answering back.
 
-## 🔴 Y1 IS CUT AND THE JIG READS 0.75 - and the span now BEATS what the X assembly needs
+## 🔴 THE TOE IS CLOSED ON ONE TONGUE - three readings, and Y2 is not cut
+
+**His, 2026-10-26, after replacing the gauge bolt.** The old one was threaded where it passed through
+the plate's ø9. The new one is an **M8 x 65 part thread with 22 of thread**, all 22 turned into the
+extrusion, so what crosses the plate is **plain shank**.
+
+| What was measured | Gantry front | Gantry rear |
+|---|---|---|
+| A line scribed on the shank where it leaves the plate | — | **did not move** |
+| Plate's front face to the lower rail's end, by gauge block | **12.45** | **12.50** |
+| Plate bearing face to plate bearing face | **1024.5** | **1024.5** |
+
+🔴 **THE THIRD ONE IS THE STRONGEST AND IT HAS NO BOLT IN IT.** It is the span itself, read at both
+stations, and it does not change. The first has no scale in it at all. **So the gantry's separation
+is constant across the travel to better than a tenth**, and that is what the whole thread was for.
+
+SETTLED: **Y2's TONGUE IS NOT CUT. His call, and the readings carry it.** One tongue did the job.
+Nothing is gained by taking 0.92 off the other side and a cut cannot be undone.
+
+🔴 **BUT 0.05 AND THE 0.75 BELOW DISAGREE, AND THAT IS RECORDED RATHER THAN EXPLAINED.** Both were
+taken after the same cut on the same machine; what changed between them is the bolt and the pair of
+faces the gap is read across. **What would distinguish the candidates:** a thread dragging in the ø9
+makes a plate slow to follow the span, which would HIDE taper rather than invent it - so that is the
+wrong way round and the easy answer is not available. The honest position is that the method that
+disagrees with the other three is the one that was replaced for being poor, and all three survivors
+are reading machined flats with gauge blocks, which this file's own instrument order puts at the top.
+
+🔴 **THE SHANK BOTTOMS ON THE EXTRUSION'S END FACE AND THAT IS WHY THE NEW BOLT IS A GOOD GAUGE PIN.**
+An 8 mm shank cannot enter a ø6.65 bore, so the shoulder stops hard against the beam's end face and
+the pin is positively located rather than set by feel - where the old one was positioned by turning it
+until a 5 mm block fitted. **It is the same geometry that disqualifies part thread on the real bore
+joints**, used here as the feature instead of the fault; see the header of
+[`../dimensions/fasteners.toml`](../dimensions/fasteners.toml).
+
+NOTE: **His figure was dictated as 1224.5 and is read here as 1024.5** - it is the plate-back to
+plate-back span he called 1025 before, and 1224.5 is not that dimension on this machine.
+
+### The fit against the X assembly is positive, and the margin is not established
+
+| | |
+|---|---|
+| Needed - two {{T_X_ENDPLATE}} plates plus the {{BEAM_LEN}} beam | **1024.38** |
+| Measured, first reading | **1025** |
+| Measured, second reading | **1024.5** |
+
+🔴 **BOTH CLEAR IT AND THEY DIFFER BY MORE THAN THE SMALLER MARGIN.** 0.5 between two readings against
+0.12 of clearance on the tighter one. **So "it fits" is established and "it fits by 0.12" is not** -
+do not size anything to the margin.
+
+NOTE: **The thing that settles it is a fit-up, not another measurement**, and it is cheap: the X
+assembly either drops between the block faces or it does not. The X end plates are still faceable if
+it does not, which is the fallback this file carried for weeks as the plan.
+
+## Y1 CUT, FIRST READING - the jig read 0.75 on the old gauge bolt
 
 **His, with the tongue routed, the plate and beam back on and the gantry on the real blocks.** The
 reference is set rather than read: the bolt was adjusted at the FRONT station until a **5 mm gauge
@@ -319,10 +372,14 @@ the strip was not flush at its rear end, or the plate was not bedding on the OLD
 beds on the new one - in which case part of the original 2.25 was bedding rather than geometry, and
 no cut could have been sized for it in advance.
 
-SETTLED: **IT DOES NOT MATTER, AND THAT IS THE WHOLE POINT OF CUTTING ONE SIDE FIRST.** Y2's offset
-comes off the measured remainder rather than off the model: **0.75 x {{SIDE_TONGUE_L}} /
-{{CARRIAGE_TRAVEL}} = 0.92 at the front of Y2's tongue**, flush at its rear. Whatever made Y1
-over-deliver is already inside the 0.75.
+~~SETTLED: **IT DOES NOT MATTER, AND THAT IS THE WHOLE POINT OF CUTTING ONE SIDE FIRST.** Y2's offset
+comes off the measured remainder rather than off the model: 0.75 x {{SIDE_TONGUE_L}} /
+{{CARRIAGE_TRAVEL}} = **0.92 at the front of Y2's tongue**, flush at its rear.~~
+
+SETTLED: **THE 0.92 WAS NEVER CUT AND IS NOT GOING TO BE** - the three readings in the section above
+put the taper at 0.05 or less on better surfaces. **Cutting one side first is still what saved it**,
+just not the way this paragraph expected: it bought a second look before an irreversible cut, and the
+second look said stop.
 
 ### 🔴 THE 1.4 SHORTFALL IS GONE - 1025 against the 1024.38 the X assembly needs
 
@@ -336,10 +393,9 @@ has to fill.
 | Needed - two {{T_X_ENDPLATE}} plates plus the {{BEAM_LEN}} beam | **1024.38** |
 | **Clearance** | **0.62** |
 
-SETTLED: **AND IT HOLDS AT EVERY STATION ONCE Y2 IS CUT**, which is why the station of the 1025 does
-not have to be established. The correction only ever opens the FRONT, so the finished span sits at
-today's **rear** value - and the rear is the wide end, at or above the 1025. There is no station
-where the finished span is less than what was just measured.
+SETTLED: **AND IT HOLDS AT EVERY STATION, which the later reading established directly** rather than
+by the argument this note first used. 1024.5 came back the same front and rear, so there is no station
+to worry about and no second cut standing between the measurement and the finished machine.
 
 🔴 **SO THE X END PLATES DO NOT GET FACED.** The 0.7 a face this file has carried since the tape was
 caught reading 2 light is retired: there is nothing to make up. **Every reading in the whole thread
