@@ -665,9 +665,9 @@ note = "0 - SETTLED: THE SPACERS ARE NOT BEING SURFACED, his call 2026-10-26, an
 
 [[dim]]
 sym = "SPACER_T"
-value = 15.2
-provenance = "OPEN"
-note = "FLAG: THE ONLY SPACER THICKNESS THIS FILE CARRIES, and it is the thickness AFTER FACING - his call 2026-10-08. The two as-found symbols are gone: both bars are faced in one setup, so the starting thickness feeds nothing and recording it only invited the wrong number to be used. OPEN: 15.2 IS A PLACEHOLDER so the arithmetic resolves - it is the previous bar's micrometer reading less the skim, and the new 160 x 50 stock is a different bar. MIC THE FACED PAIR AND PUT THAT NUMBER HERE, with provenance measured. It feeds Z_BOLT_ENGAGE, which is bounded at both ends by the block's 8 mm tapped depth, and SPINDLE_OFFSET - so both are provisional until it is real. This part has been wrong twice already, once as a fraction (5/8in, 15.875) and once by instrument (16.41 on calipers against 16.22 on a micrometer), which is why it is not being guessed a third time."
+value = 16.08
+provenance = "measured"
+note = "16.08 - HIS MICROMETER, 2026-10-26, and it closes the OPEN this symbol carried from 2026-10-08. FLAG: THE PAIR IS NOT ONE THICKNESS. The two bars read 16.08 and 15.96, a spread of 0.12, and they are NOT being faced - SPACER_SKIM went to 0 on the same day. 🔴 THE THICKER BAR IS THE FIGURE BECAUSE IT IS THE WORST CASE FOR Z_BOLT_ENGAGE: thickness comes straight off the bolt's reach into the bearing block, so designing to 15.96 would leave the other eight bolts 0.12 shorter than the number says. The thin column simply gains 0.12 of engagement. 🔴 AND IT LANDS OUTSIDE THE WINDOW Z_BOLT_ENGAGE NAMES - that note asks for 15.0 to 16.0 on a 4 mm web, so the web is what has to move, which is exactly what it said to do. OPEN: MIC EACH BAR ALONG ITS OWN LENGTH before treating 0.12 as a step that a single shim could close - a bar that tapers along itself is a different problem from two bars of different thickness. This part has been wrong twice before, once as a fraction (5/8in, 15.875) and once by instrument (16.41 on calipers against 16.22 on a micrometer), which is why it was not guessed a third time."
 
 [[dim]]
 sym = "T_Z_PLATE"

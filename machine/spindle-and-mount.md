@@ -115,6 +115,13 @@ it was a placeholder in every calculation in this repo until now.
 | Clamp mounting face to the 80 mm bore centre (half of 100 mm) | 50 mm |
 | **To the spindle centreline** | **109 mm** - SETTLED: **the 108 is withdrawn, the spacers are not being skimmed** and the standoff goes to a shim at the nut instead, which is behind the Z plate and does not move this face. See [`assembly.md`](assembly.md) |
 
+SETTLED: **The two routes to this number now agree, and they did not before.** This table adds up a
+**measured** 46.5 for the rails, blocks and spacers; the registry builds {{SPINDLE_OFFSET}} out of
+{{RAIL_STACK}} plus {{SPACER_T}} plus the plate. Against the old placeholder spacer those two were
+1.3 apart. With the spacers mic'd at 16.08 they close to about four tenths - **so the micrometer
+reading is corroborated by a stack height measured on the assembled carriage**, which is the one
+check this chain never had.
+
 OPEN: **That reference is the carriage plate, not the beam.** The X carriage plate is itself bolted to
 the X-axis bearing blocks, so from the **X beam's front face** add the X rail-and-block stack
 (30 mm, measured) and the carriage plate (12.7 mm):
