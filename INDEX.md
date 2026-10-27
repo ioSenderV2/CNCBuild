@@ -38,7 +38,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The X carriage plate](machine/assembly.md#the-x-carriage-plate)
 - [5. The Y ball nuts](machine/assembly.md#5-the-y-ball-nuts)
 - [6. The Z axis](machine/assembly.md#6-the-z-axis)
-  - [Face the spacers before assembly](machine/assembly.md#face-the-spacers-before-assembly)
+  - [Shim the nut, do not face the spacers](machine/assembly.md#shim-the-nut-do-not-face-the-spacers)
   - [The top stop](machine/assembly.md#the-top-stop)
   - [Assembly order](machine/assembly.md#assembly-order)
 - [7. Stand it up and measure it](machine/assembly.md#7-stand-it-up-and-measure-it)
