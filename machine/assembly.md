@@ -607,9 +607,18 @@ steps, which resolves this joint finer than the step can be measured beforehand.
 tenths is the failure this joint has** — see the next flag — so a 1 mm shim under a 1.3 gap is not
 done.
 
-OPEN: **Mic both spacers against each other.** Facing the pair in one setup was the only thing making
-them coplanar, and nothing does that now. A difference between the two sits the Z plate on a twist,
-which is the part of the skim no shim gives back.
+SETTLED: **The two spacers are 16.08 and 15.96, and each is flat within 0.02** — four micrometer
+readings along each. So the 0.12 between them is a step, not a taper.
+
+🔴 **Shim the thinner spacer, do not pull the plate down onto it.** The two bars' faces sit in
+parallel planes 0.12 apart, so a flat plate lands on the thicker one and stands off the other —
+tightening bends the Z plate across the 114 between the rails and the reaction goes into the bearing
+blocks. **A 0.1 shim under the thinner bar** brings the pair inside the bars' own 0.02. It is the same
+rule as the nut standoff: close it with metal.
+
+NOTE: **That shim costs 0.1 of thread on those eight bolts**, 4.92 down to 4.82 into the block. The
+thread there is in steel, where the bolt is the weaker part, so it is a cheap trade against forcing
+the plate.
 
 FLAG: **A full-face shim, not washers.** The shim covers the nut housing's whole 40 × 52 mounting face.
 **Washers bear at four points and tilt the housing, which becomes a side load on the screw.**
