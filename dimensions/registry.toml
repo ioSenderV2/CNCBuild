@@ -659,9 +659,9 @@ note = "RETIRED: 19 is from the FIN's factory edge, measured off the MDF templat
 
 [[dim]]
 sym = "SPACER_SKIM"
-value = 1.0
+value = 0
 provenance = "pinned"
-note = "1.0, THE AMOUNT ACTUALLY CUT - and it is deliberately LESS than the 1.3 step it is closing. FLAG: THE SKIM HAS TWO JOBS AND ONLY ONE OF THEM NEEDS A SKIM. Facing both spacers IN ONE SETUP is the only way to make the pair coplanar and flat, and that is what this cut is for. Closing the gap to the ball nut is the other job, and a shim does it better - see NUT_SHIM. It used to be 1.0 described as the whole step, which made a one-shot cut on the mill trip carry a number measured to about two tenths."
+note = "0 - SETTLED: THE SPACERS ARE NOT BEING SURFACED, his call 2026-10-26, and the whole step goes to NUT_SHIM instead. It is 'for now' in his words, which is the point: a shim is reversible and a cut is not, the step can be measured on the ASSEMBLED machine rather than guessed at the mill, and it takes a mill operation off a build that is otherwise ready to go together. FLAG: THE SKIM HAD TWO JOBS AND THE SHIM ONLY DOES ONE. Facing both spacers IN ONE SETUP was the only way to make the pair coplanar and flat; a shim at the nut closes the gap but leaves the pair's thickness match as-supplied. OPEN: SO MIC BOTH SPACERS - nothing faces them now, and a difference between the two puts the Z plate on a twist, which is the half of this cut that no shim can give back. It was 1.0 while the cut was the plan; if it ever goes back on the mill that is the figure, deliberately less than the step."
 
 [[dim]]
 sym = "SPACER_T"
@@ -1598,7 +1598,7 @@ note = "1.3, the gap between the Z plate's back face and the ball nut's mounting
 [[dim]]
 sym = "NUT_SHIM"
 expr = "NUT_STANDOFF_STEP - SPACER_SKIM"
-note = "0.3 NOMINAL, and the real one is measured on the assembled stack - feeler-gauge the gap at the nut with the plate already tight on the spacers and blocks, then shim to what you read. Solid shim, steel or brass, which comes in 0.05 steps and so resolves the joint far finer than the step could be measured beforehand. FLAG: THE FOUR M5 CLEARANCE HOLES ALREADY GIVE THE NUT THE FLOAT IT NEEDS - 0.5 radial at Z_HOLE_D - so it self-centres on the screw as it is tightened. The only thing missing was the standoff, and that is all this shim sets: free where it needs to float, rigid where it drives. OPEN: The shim adds to the grip length of those four bolts, so it comes off their engagement into the nut."
+note = "1.3 NOMINAL since SPACER_SKIM went to 0 - the shim now carries the WHOLE standoff, and the real one is measured on the assembled stack: feeler-gauge the gap at the nut with the plate already tight on the spacers and blocks, then shim to what you read. 🔴 HE IS STARTING FROM A 1 mm SHIM, his 2026-10-26, which is the stock on hand and 0.3 under this figure - and 0.3 is precisely the amount NUT_STANDOFF_STEP calls 0.43 degrees of tilt across the nut's 40 mm bolt span. OPEN: SO SHIM TO THE MEASURED GAP, NOT TO THE 1 - the 1.3 itself is a difference of two readings good to about two tenths, so the only figure worth trusting is the feeler gauge on the built stack, and that is the whole advantage this route has over the cut. Solid shim, steel or brass, which comes in 0.05 steps and so resolves the joint far finer than the step could be measured beforehand. FLAG: THE FOUR M5 CLEARANCE HOLES ALREADY GIVE THE NUT THE FLOAT IT NEEDS - 0.5 radial at Z_HOLE_D - so it self-centres on the screw as it is tightened. The only thing missing was the standoff, and that is all this shim sets: free where it needs to float, rigid where it drives. OPEN: The shim adds to the grip length of those four bolts, so it comes off their engagement into the nut."
 
 # ------------------------------------ the Z carriage bolt stack, settled 2026-10-08
 # Sixteen M5 cross the Z plate, the spacer and thread into the bearing block. Every term below

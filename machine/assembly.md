@@ -312,9 +312,9 @@ an SN04 is non-shielded, so a ferrous host is the one material that can trigger 
 the back rather than off the target. **Whether it false-triggers there is a bench test, not a
 calculation** — wire one up on the real casting with BK12 in place before the mount is drilled.
 
-OPEN: **Open on X only: whether both bolt rows land over beam.** The rows come from Y geometry, and on
-X the bar sits on top and overhangs the end. **Check before drilling X's bar** — it is the same
-part, so the check is on the position, not the drawing.
+SETTLED: ~~**Open on X only: whether both bolt rows land over beam.**~~ **X mounts with no problem** —
+his, 2026-10-26, with the bar on the machine. The rows came from Y geometry and the worry was that on
+X the bar sits on top and overhangs the end; it does not cost either row. All three bars are in.
 
 FLAG: **This read "all three bolt rows ... the 82 / 110 / 138 rows" until 2026-10-11, and that was
 stale twice over.** There are **two** rows, not three, and the registry puts them at
@@ -594,23 +594,32 @@ FLAG: **M5 × 35, not × 30.** An M5 × 30 leaves only ~5.9 mm in the bearing bl
 FLAG: **The Z plate is 164 and the X carriage plate is 154. Do not "tidy" them into line.** At 154
 eight of the Z plate's M5 counterbores break out of the edge.
 
-### Face the spacers before assembly
+### Shim the nut, do not face the spacers
 
-FLAG: **The spacer blocks stand higher than the ball nut housing — between 1 and 1.3.** Skim **1 mm off
-the spacers, both in the same setup, at the mill**, so they come out identical.
+FLAG: **The spacer blocks stand higher than the ball nut housing — between 1 and 1.3.** It is closed
+with a **shim on the ball nut's mounting face**, and the spacers are left as they are. A shim is
+reversible, the cut is not, and the gap can be **measured on the assembled machine** rather than
+guessed at the mill.
 
-FLAG: **Skim 1 mm and no more, even if the step measures 1.3.** The cut cannot be undone. Whatever is
-left over gets closed with a shim at the nut, where it can be measured on the assembled machine
-instead of guessed at the mill.
+🔴 **Shim to the gap you measure, not to a nominal.** Feeler-gauge it at the nut with the Z plate
+already tight on the spacers and the blocks, then make the shim that reads. Solid shim comes in 0.05
+steps, which resolves this joint finer than the step can be measured beforehand. **Leaving a few
+tenths is the failure this joint has** — see the next flag — so a 1 mm shim under a 1.3 gap is not
+done.
+
+OPEN: **Mic both spacers against each other.** Facing the pair in one setup was the only thing making
+them coplanar, and nothing does that now. A difference between the two sits the Z plate on a twist,
+which is the part of the skim no shim gives back.
 
 FLAG: **A full-face shim, not washers.** The shim covers the nut housing's whole 40 × 52 mounting face.
 **Washers bear at four points and tilt the housing, which becomes a side load on the screw.**
 
-OPEN: **Measure the step again before cutting**, and **take the ball nut housing to the mill** — the
-step is measured against that part.
+FLAG: **The shim comes off those four bolts' engagement into the nut**, since it adds to their grip.
+At 1.3 they still reach 8.7 into the housing, 1.74 × D in tapped aluminium, against a thread that
+strips well above the bolt's own proof load. It costs nothing here.
 
-FLAG: **Re-mic both spacers after facing and write the number into the design record.** Everything
-downstream of the spacer thickness moves with it, including the spindle offset.
+**The spacers keep their as-supplied thickness, so write it into the design record.** Everything
+downstream moves with it, including the spindle offset.
 
 **Do not re-cut the spacers to match each other in length.** Matching matters in **thickness**.
 150.5 and 151.6 both cover the M8 rows at ±70.5.
