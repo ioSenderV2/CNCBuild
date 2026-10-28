@@ -1,7 +1,9 @@
 # Steel prep: scale off, paint on
 
-What gets cleaned, in what order, and what goes on it afterwards. **Paint is not optional on this
-machine's steel** — every steel part lands against 6061, and the aluminium is the anode.
+What gets cleaned, in what order, and what goes on it afterwards. **No steel face is left bare** —
+every steel part lands against 6061 and the aluminium is the anode, and the plate that faces out is
+the one the wet chips land on. The scheme is **self-etch primer on the mating faces, 2K poly clear
+on the show faces**, which keeps the raw steel look on everything that is visible.
 
 ## The parts
 
@@ -14,9 +16,8 @@ machine's steel** — every steel part lands against 6061, and the aluminium is 
 Every one of them is already cut — the steel went to the waterjet and none of it is on the mill
 trip — so prep and paint happen before any of it is bolted up.
 
-OPEN: **Powder coat out, or paint at home.** Powder is baked, so it is a shop errand and the parts
-come back finished; paint is steps 5 and 6 below with a gun or a can. The prep in steps 1 to 4 is
-the same either way, and a powder shop will want the parts clean and dry.
+SETTLED: **It is done at home, in a can, not sent out for powder.** Powder would come back finished
+and opaque, and the show faces are staying raw steel.
 
 ## 1 — Degrease before the first abrasive touches it
 
@@ -84,25 +85,69 @@ bloom comes through the film.
 
 ## 5 — Prime inside the hour
 
-Freshly abraded steel flash rusts in hours, faster in a cool shop. The window is short enough that
-the primer wants to be open and stirred before step 4, not after.
+Freshly abraded steel flash rusts in hours. The window is short enough that the can wants to be
+shaken and ready before step 4, not after.
 
-- **Two-part epoxy primer** is the right one here. It is the best moisture barrier of the three and
-  it is **non-conductive**, which is the property that actually breaks the steel-to-aluminium cell.
-- **Self-etching primer** from a can is the easy version and is adequate.
-- A **rust converting primer** goes on first anywhere pitting is left after step 2.
+**Rust-Oleum Automotive Self Etching Primer, dark grey.** A rust converting primer goes on first
+anywhere pitting is left after step 2.
+
+| | |
+|---|---|
+| Coats | **2 or 3 thin**, 2 minutes apart |
+| Dry to touch | 10 min |
+| Dry to handle | 15–30 min |
+| Before the topcoat | **30 min minimum** |
+| Before dry sanding | 3–4 hours |
+| Conditions | 50–90 °F, humidity under 85 % |
+| Coverage | **10–12 sq ft a can** — the mating faces and edges alone are about a canful, so have three |
+
+FLAG: **It is a tie coat, not a finish.** Self-etch is thin and porous by design — it bites bare
+metal and gives the next layer something to hold. Dark grey looks finished enough to stop at, and
+on its own it is not the moisture barrier that is the whole job at these joints. Something goes
+over it, even cheap enamel on a face nobody sees.
+
+FLAG: **Nothing gets sprayed in a room with the mining rigs running.** They move enough air to lay
+dust into wet primer through the ten minutes it takes to flash, and an aerosol puts a solvent vapour
+cloud around energised electronics with fans in it. Spray elsewhere, or shut them down and
+ventilate first.
 
 FLAG: **A sacrificial zinc-rich primer is the wrong choice at these joints.** What is wanted between
 steel and aluminium is an insulating film, not a more active metal put deliberately into the
 circuit.
 
-## 6 — Both faces, two thin coats
+## 6 — Two finishes, and no bare metal left anywhere
 
-**Both faces of every plate.** The outboard plate is the chip barrier, so it is the part that
-actually gets wet, and it has a metre of face contact with the beam behind it.
+The show faces stay raw steel under **2K poly clear**. The mating faces get the primer. Nothing is
+left bare: the outboard plate is the chip barrier, so it is the part that actually gets wet.
 
-Edges and hole walls take the thinnest film and are where failure starts, so two thin coats beat one
-heavy one — a heavy coat pulls away from an edge as it flows.
+| Face | What goes on it |
+|---|---|
+| **Mating face** — against the beam | Self-etch primer, then anything over it. Nobody sees it, so cheap enamel does |
+| **Show face** | 2K poly clear, straight onto the bare steel |
+| **Edges and hole walls** | **Clear, not primer.** They take the thinnest film and are where failure starts |
+
+**The edges go to the clear and the primer stops at the mating face.** Wrapping grey primer round
+onto a show face leaves a band you can see through the clear, and the clear seals the edge just as
+well. Two thin coats beat one heavy one either way — a heavy coat pulls away from an edge as it
+flows.
+
+FLAG: **Nothing goes under the clear that you are not keeping.** Every stain, fingerprint and bit of
+flash rust left on a show face is sealed in and permanent, and there is no second attempt. Settle
+step 2 on those faces before the can is opened. This is the one place the stains stop being
+cosmetic.
+
+FLAG: **There is no primer under the clear, so the clear is the only thing holding.** Bare steel is
+the weakest substrate a 2K urethane gets asked to grip — the sanding key is all it has, and a breach
+lets rust creep under the film where it cannot be reached. Which is the price of the raw look, and
+it is paid in keeping the surface clean before spraying rather than in anything added afterwards.
+
+**Order it so the clear is one session.** Prime every mating face first and leave them to cure. A 2K
+can is activated once, has a pot life measured in a day or two, and cannot be saved — so every show
+face gets done in one go, after the primer is hard.
+
+FLAG: **2K hardener is isocyanate.** It is a respiratory sensitiser, the kind of exposure that makes
+the next one worse rather than the kind you get used to. Cartridge respirator at the absolute
+minimum, strong ventilation, and nowhere near the mining rigs.
 
 ## Bare-metal protectants are not primer
 
