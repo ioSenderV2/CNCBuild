@@ -42,6 +42,32 @@ clean.
 A phosphoric acid metal prep gel is the alternative to the grinder on the scale, and it leaves a
 phosphate layer the primer likes. Slower, and it has to be rinsed and dried.
 
+### The stains a maroon pad will not take out
+
+A pad or a sander leaves the faces clean except for the odd mark that looks like a water stain and
+stays. **Three different things look identical, so test before working on them:**
+
+| Test | What it means |
+|---|---|
+| **Acetone on a white rag** — if the rag colours, or the mark's edge moves | It is **oil residue**, not oxide. Denatured alcohol is weak on rolling oil, and a maroon pad burnishes a ring rather than lifting it. This is the one that kills paint adhesion |
+| **150–180 grit on a hard block**, a dozen strokes — if it clears | It was only on the surface. A maroon pad is non-woven, so it conforms, polishes the high spots and rides over anything sitting below them. A rigid backing cuts flat and reaches it |
+| **It survives both** | It is **in a shallow pit**. Water sat there and the oxide went in below the surface |
+
+FLAG: **Stop sanding a pitted stain.** Reaching the bottom of the pit means taking all the metal
+around it down to that depth, which is real thickness off the panel for a mark that paint covers.
+
+**Those go to phosphoric acid instead** — naval jelly for spot work because the gel stays where it
+is put, Ospho or a prep-and-etch for a wipe-on, or Evapo-Rust and citric acid, which chelate rather
+than etch and so leave the good metal alone. For a stain in the middle of a face that is already
+good, soak a paper towel, lay it on, and cover it with plastic so it cannot dry out.
+
+The acid turns the oxide into iron phosphate — a grey-black inert layer, and **a better primer
+substrate than the bright steel beside it.** So treating a stain improves the panel rather than
+repairing it, and the patch staying darker than its surround does not matter under primer.
+
+FLAG: **Rinsed with water, it flash rusts in minutes.** Either use a product meant to be left to
+dry, or rinse, heat gun it dry straight away, and prime the same day.
+
 ## 3 — Deburr while it is still bare
 
 The waterjet leaves a lip on the exit side of a hole. Hand countersink or a deburring tool, both

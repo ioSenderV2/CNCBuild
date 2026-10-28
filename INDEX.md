@@ -198,6 +198,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The parts](machine/steel-prep.md#the-parts)
 - [1 — Degrease before the first abrasive touches it](machine/steel-prep.md#1-degrease-before-the-first-abrasive-touches-it)
 - [2 — Take the surface down](machine/steel-prep.md#2-take-the-surface-down)
+  - [The stains a maroon pad will not take out](machine/steel-prep.md#the-stains-a-maroon-pad-will-not-take-out)
 - [3 — Deburr while it is still bare](machine/steel-prep.md#3-deburr-while-it-is-still-bare)
 - [4 — Solvent wipe, then gloves](machine/steel-prep.md#4-solvent-wipe-then-gloves)
 - [5 — Prime inside the hour](machine/steel-prep.md#5-prime-inside-the-hour)

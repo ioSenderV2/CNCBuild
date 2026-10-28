@@ -210,13 +210,15 @@ the interface, not this file.
 - OPEN: [L449](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>The T-bolt's rise above the aluminium, the washer thickness and the nut height - three caliper readings off the drawer. They set the counterbore depth, and the 50 the model draws is his pick rather than a measurement.
 - OPEN: [L454](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>Whether the 8 mm OD spacer clears the top skin - ordered to test, and tangent on paper. See the section above.
 
-## [machine/steel-prep.md](machine/steel-prep.md)  (5)
+## [machine/steel-prep.md](machine/steel-prep.md)  (7)
 
 - OPEN: [L17](machine/steel-prep.md#the-parts) — *Steel prep: scale off, paint on / The parts*<br>Powder coat out, or paint at home. Powder is baked, so it is a shop errand and the parts come back finished; paint is steps 5 and 6 below with a gun or a can. The prep in steps 1 to 4 is the same either way, and a powder shop will want the parts clean and dry.
 - FLAG: [L23](machine/steel-prep.md#1-degrease-before-the-first-abrasive-touches-it) — *Steel prep: scale off, paint on / 1 — Degrease before the f…*<br>Oil first, abrasive second, and not the other way round. Cold-rolled sheet ships with a rust-preventive oil on it. Sand it first and the oil is driven into the surface, nothing bonds to it afterwards, and there is nothing to see — the plate looks the same as one that was done properly.
-- FLAG: [L50](machine/steel-prep.md#3-deburr-while-it-is-still-bare) — *Steel prep: scale off, paint on / 3 — Deburr while it is st…*<br>Do it now. A hole opened out or an edge filed after the paint is on is bare steel in the one place that is hardest to reach again.
-- FLAG: [L69](machine/steel-prep.md#5-prime-inside-the-hour) — *Steel prep: scale off, paint on / 5 — Prime inside the hour*<br>A sacrificial zinc-rich primer is the wrong choice at these joints. What is wanted between steel and aluminium is an insulating film, not a more active metal put deliberately into the circuit.
-- FLAG: [L104](machine/steel-prep.md#one-that-belongs-at-assembly) — *Steel prep: scale off, paint on / One that belongs at assem…*<br>Paint creeps under sustained bolt load, so a painted joint loses bolt tension. Re-check the torque on the outboard plates and the rear plate a few weeks after they go on.
+- FLAG: [L56](machine/steel-prep.md#the-stains-a-maroon-pad-will-not-take-out) — *2 — Take the surface down / The stains a maroon pad will no…*<br>Stop sanding a pitted stain. Reaching the bottom of the pit means taking all the metal around it down to that depth, which is real thickness off the panel for a mark that paint covers.
+- FLAG: [L68](machine/steel-prep.md#the-stains-a-maroon-pad-will-not-take-out) — *2 — Take the surface down / The stains a maroon pad will no…*<br>Rinsed with water, it flash rusts in minutes. Either use a product meant to be left to dry, or rinse, heat gun it dry straight away, and prime the same day.
+- FLAG: [L76](machine/steel-prep.md#3-deburr-while-it-is-still-bare) — *Steel prep: scale off, paint on / 3 — Deburr while it is st…*<br>Do it now. A hole opened out or an edge filed after the paint is on is bare steel in the one place that is hardest to reach again.
+- FLAG: [L95](machine/steel-prep.md#5-prime-inside-the-hour) — *Steel prep: scale off, paint on / 5 — Prime inside the hour*<br>A sacrificial zinc-rich primer is the wrong choice at these joints. What is wanted between steel and aluminium is an insulating film, not a more active metal put deliberately into the circuit.
+- FLAG: [L130](machine/steel-prep.md#one-that-belongs-at-assembly) — *Steel prep: scale off, paint on / One that belongs at assem…*<br>Paint creeps under sustained bolt load, so a painted joint loses bolt tension. Re-check the torque on the outboard plates and the rear plate a few weeks after they go on.
 
 ## [machine/stepper-sizing.md](machine/stepper-sizing.md)  (7)
 
@@ -346,4 +348,4 @@ the interface, not this file.
 
 ---
 
-**249 open** across 35 files.
+**251 open** across 35 files.
