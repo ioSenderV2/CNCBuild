@@ -34,6 +34,7 @@ Writing the reasoning into `assembly.md` is the failure this split exists to pre
 | [`assembly.md`](assembly.md) | The build sequence and its **ordering constraints** - the things that must happen before the top skin is glued, which no registry symbol can hold |
 | [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
 | [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One WCS origin per plate, one reference rail, and what mating hardware to take |
+| [`steel-prep.md`](steel-prep.md) | **Scale off, paint on** - cleaning the three steel parts and coating them. Its own printable sheet, [`steel-prep.html`](steel-prep.html), because it is read standing over the parts |
 | [`open-items.md`](open-items.md) | Everything still unmeasured, grouped by where it came from |
 
 ## FLAG: The dimensional prose is archived

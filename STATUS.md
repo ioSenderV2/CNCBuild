@@ -169,8 +169,8 @@ the interface, not this file.
 
 - FLAG: [L6](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine*<br>Two documents, split by register - read this first assembly.md says what gets built. The thirteen chapters say why. Keep them apart. A page that carries both is arguing with itself while somebody is holding a drill, which is how one unusable document came about in the first place.
 - FLAG: [L20](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine / Two documents, split by register - read this…*<br>A new decision goes in a chapter, and then into assembly.md if it changes what gets built. Writing the reasoning into assembly.md is the failure this split exists to prevent.
-- FLAG: [L39](machine/README.md#the-dimensional-prose-is-archived) — *The machine*<br>The dimensional prose is archived Six files moved to archive/ on 2026-10-11: torsion-box, lateral-stiffness, x-gantry-end-plates, z-carriage, y-beam-support and outboard-plate. They were walkthroughs of dimension chains that ../dimensions/registry.toml now owns, and they kept drifting against it.
-- FLAG: [L82](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers went to the back, and the two rear risers became one steel plate, 1210.47 long, that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
+- FLAG: [L40](machine/README.md#the-dimensional-prose-is-archived) — *The machine*<br>The dimensional prose is archived Six files moved to archive/ on 2026-10-11: torsion-box, lateral-stiffness, x-gantry-end-plates, z-carriage, y-beam-support and outboard-plate. They were walkthroughs of dimension chains that ../dimensions/registry.toml now owns, and they kept drifting against it.
+- FLAG: [L83](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers went to the back, and the two rear risers became one steel plate, 1210.47 long, that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
 
 ## [machine/spindle-and-mount.md](machine/spindle-and-mount.md)  (7)
 
@@ -209,6 +209,14 @@ the interface, not this file.
 - FLAG: [L442](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>The 58 mm that the whole 242.5 mm end-plate chain hangs on - an as-built measurement off the Mega V, and the file already says the chain is only as good as it. The sole plate clearance above derives straight through it, so re-check it on the real gantry before a stack height spends the margin.
 - OPEN: [L449](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>The T-bolt's rise above the aluminium, the washer thickness and the nut height - three caliper readings off the drawer. They set the counterbore depth, and the 50 the model draws is his pick rather than a measurement.
 - OPEN: [L454](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>Whether the 8 mm OD spacer clears the top skin - ordered to test, and tangent on paper. See the section above.
+
+## [machine/steel-prep.md](machine/steel-prep.md)  (5)
+
+- OPEN: [L17](machine/steel-prep.md#the-parts) — *Steel prep: scale off, paint on / The parts*<br>Powder coat out, or paint at home. Powder is baked, so it is a shop errand and the parts come back finished; paint is steps 5 and 6 below with a gun or a can. The prep in steps 1 to 4 is the same either way, and a powder shop will want the parts clean and dry.
+- FLAG: [L23](machine/steel-prep.md#1-degrease-before-the-first-abrasive-touches-it) — *Steel prep: scale off, paint on / 1 — Degrease before the f…*<br>Oil first, abrasive second, and not the other way round. Cold-rolled sheet ships with a rust-preventive oil on it. Sand it first and the oil is driven into the surface, nothing bonds to it afterwards, and there is nothing to see — the plate looks the same as one that was done properly.
+- FLAG: [L50](machine/steel-prep.md#3-deburr-while-it-is-still-bare) — *Steel prep: scale off, paint on / 3 — Deburr while it is st…*<br>Do it now. A hole opened out or an edge filed after the paint is on is bare steel in the one place that is hardest to reach again.
+- FLAG: [L69](machine/steel-prep.md#5-prime-inside-the-hour) — *Steel prep: scale off, paint on / 5 — Prime inside the hour*<br>A sacrificial zinc-rich primer is the wrong choice at these joints. What is wanted between steel and aluminium is an insulating film, not a more active metal put deliberately into the circuit.
+- FLAG: [L104](machine/steel-prep.md#one-that-belongs-at-assembly) — *Steel prep: scale off, paint on / One that belongs at assem…*<br>Paint creeps under sustained bolt load, so a painted joint loses bolt tension. Re-check the torque on the outboard plates and the rear plate a few weeks after they go on.
 
 ## [machine/stepper-sizing.md](machine/stepper-sizing.md)  (7)
 
@@ -338,4 +346,4 @@ the interface, not this file.
 
 ---
 
-**244 open** across 34 files.
+**249 open** across 35 files.

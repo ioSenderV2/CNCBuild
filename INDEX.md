@@ -193,6 +193,19 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [How the relief gets cut: a router groove, not sixteen scallops](machine/spoilboard.md#how-the-relief-gets-cut-a-router-groove-not-sixteen-scallops)
 - [Still to measure](machine/spoilboard.md#still-to-measure)
 
+## [machine/steel-prep.md](machine/steel-prep.md)
+
+- [The parts](machine/steel-prep.md#the-parts)
+- [1 — Degrease before the first abrasive touches it](machine/steel-prep.md#1-degrease-before-the-first-abrasive-touches-it)
+- [2 — Take the surface down](machine/steel-prep.md#2-take-the-surface-down)
+- [3 — Deburr while it is still bare](machine/steel-prep.md#3-deburr-while-it-is-still-bare)
+- [4 — Solvent wipe, then gloves](machine/steel-prep.md#4-solvent-wipe-then-gloves)
+- [5 — Prime inside the hour](machine/steel-prep.md#5-prime-inside-the-hour)
+- [6 — Both faces, two thin coats](machine/steel-prep.md#6-both-faces-two-thin-coats)
+- [Bare-metal protectants are not primer](machine/steel-prep.md#bare-metal-protectants-are-not-primer)
+- [While they wait](machine/steel-prep.md#while-they-wait)
+- [One that belongs at assembly](machine/steel-prep.md#one-that-belongs-at-assembly)
+
 ## [machine/stepper-sizing.md](machine/stepper-sizing.md)
 
 - [The inputs, and where each came from](machine/stepper-sizing.md#the-inputs-and-where-each-came-from)
