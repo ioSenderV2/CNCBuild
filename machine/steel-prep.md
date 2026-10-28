@@ -165,6 +165,35 @@ for a metre needs, and the film has to come off again before primer would stick 
 | **Paste wax** | dry to the touch and the easiest to take off again, with mineral spirits |
 | **Lanolin** | longest hold, messiest |
 
+## Where the coating stops
+
+Steel meets aluminium in three places on this machine and only one of them gets coated. **The cell
+needs a liquid path bridging the two metals** — without one, the metals being far apart does
+nothing. So the joints rank by wet and by crevice, not by the pairing:
+
+| Joint | What it gets |
+|---|---|
+| **Outboard plate to beam** | **Coated.** A metre of face contact forming a crevice, on the part the wet chips land on, with a seam that traps swarf its whole length |
+| **Casting foot to interposer bar** | **Nothing at the face.** It hangs under the beam at the Y end — sheltered, small, and the foot is a bearing face |
+| **HG blocks to gantry plates** | **Nothing, ever.** Dry, enclosed, and oiled by the rail they ride |
+
+FLAG: 🔴 **Never put a coating between a bearing block and its plate, or under the casting's foot.**
+Those mounting faces are ground reference surfaces and the machine's geometry is set off them. A
+film creeps under bolt load, is never the same thickness twice, and tilts the block — trading a
+corrosion risk that is not there for a geometry error that cannot be found afterwards. The casting's
+foot is worse again: it is stepped, and whether the bar holds it off its bearing face is still open.
+
+**Where something is wanted at one of those joints, seal the perimeter after assembly.** Torque it
+metal to metal, then run paint or sealant round the outside of the seam. That stops water reaching
+the crevice, which is the actual mechanism, and it touches nothing that locates anything.
+
+**Coat the cast iron everywhere except the faces that seat and the motor register.** Not for the
+dissimilar metals — bare cast iron rusts on its own, and rust takes more room than the metal it grew
+from, so a rusting edge can jack a joint open from outside. Mask the foot, spray the rest.
+
+**The control on all of it is that this stays a dry-or-mist machine.** Nothing above changes unless
+that does, and then the mating faces get isolated as well as coated.
+
 ## While they wait
 
 Store the plates **on edge, off the concrete.** A slab wicks moisture into anything laid flat on it,

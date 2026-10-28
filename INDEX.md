@@ -204,6 +204,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [5 — Prime inside the hour](machine/steel-prep.md#5-prime-inside-the-hour)
 - [6 — Two finishes, and no bare metal left anywhere](machine/steel-prep.md#6-two-finishes-and-no-bare-metal-left-anywhere)
 - [Bare-metal protectants are not primer](machine/steel-prep.md#bare-metal-protectants-are-not-primer)
+- [Where the coating stops](machine/steel-prep.md#where-the-coating-stops)
 - [While they wait](machine/steel-prep.md#while-they-wait)
 - [One that belongs at assembly](machine/steel-prep.md#one-that-belongs-at-assembly)
 

@@ -210,7 +210,7 @@ the interface, not this file.
 - OPEN: [L449](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>The T-bolt's rise above the aluminium, the washer thickness and the nut height - three caliper readings off the drawer. They set the counterbore depth, and the 50 the model draws is his pick rather than a measurement.
 - OPEN: [L454](machine/spoilboard.md#still-to-measure) — *The spoilboard and the Z envelope / Still to measure*<br>Whether the 8 mm OD spacer clears the top skin - ordered to test, and tangent on paper. See the section above.
 
-## [machine/steel-prep.md](machine/steel-prep.md)  (11)
+## [machine/steel-prep.md](machine/steel-prep.md)  (12)
 
 - FLAG: [L24](machine/steel-prep.md#1-degrease-before-the-first-abrasive-touches-it) — *Steel prep: scale off, paint on / 1 — Degrease before the f…*<br>Oil first, abrasive second, and not the other way round. Cold-rolled sheet ships with a rust-preventive oil on it. Sand it first and the oil is driven into the surface, nothing bonds to it afterwards, and there is nothing to see — the plate looks the same as one that was done properly.
 - FLAG: [L57](machine/steel-prep.md#the-stains-a-maroon-pad-will-not-take-out) — *2 — Take the surface down / The stains a maroon pad will no…*<br>Stop sanding a pitted stain. Reaching the bottom of the pit means taking all the metal around it down to that depth, which is real thickness off the panel for a mark that paint covers.
@@ -222,7 +222,8 @@ the interface, not this file.
 - FLAG: [L134](machine/steel-prep.md#6-two-finishes-and-no-bare-metal-left-anywhere) — *Steel prep: scale off, paint on / 6 — Two finishes, and no…*<br>Nothing goes under the clear that you are not keeping. Every stain, fingerprint and bit of flash rust left on a show face is sealed in and permanent, and there is no second attempt. Settle step 2 on those faces before the can is opened. This is the one place the stains stop being cosmetic.
 - FLAG: [L139](machine/steel-prep.md#6-two-finishes-and-no-bare-metal-left-anywhere) — *Steel prep: scale off, paint on / 6 — Two finishes, and no…*<br>There is no primer under the clear, so the clear is the only thing holding. Bare steel is the weakest substrate a 2K urethane gets asked to grip — the sanding key is all it has, and a breach lets rust creep under the film where it cannot be reached. Which is the price of the raw look, and it is paid in keeping the surface clean before spraying rather than in anything added afterwards.
 - FLAG: [L148](machine/steel-prep.md#6-two-finishes-and-no-bare-metal-left-anywhere) — *Steel prep: scale off, paint on / 6 — Two finishes, and no…*<br>2K hardener is isocyanate. It is a respiratory sensitiser, the kind of exposure that makes the next one worse rather than the kind you get used to. Cartridge respirator at the absolute minimum, strong ventilation, and nowhere near the mining rigs.
-- FLAG: [L175](machine/steel-prep.md#one-that-belongs-at-assembly) — *Steel prep: scale off, paint on / One that belongs at assem…*<br>Paint creeps under sustained bolt load, so a painted joint loses bolt tension. Re-check the torque on the outboard plates and the rear plate a few weeks after they go on.
+- FLAG: [L180](machine/steel-prep.md#where-the-coating-stops) — *Steel prep: scale off, paint on / Where the coating stops*<br>🔴 Never put a coating between a bearing block and its plate, or under the casting's foot. Those mounting faces are ground reference surfaces and the machine's geometry is set off them. A film creeps under bolt load, is never the same thickness twice, and tilts the block — trading a corrosion risk that is not there for a geometry error that cannot be found afterwards. The casting's foot is worse again: it is stepped, and whether the bar holds it off its bearing face is still open.
+- FLAG: [L204](machine/steel-prep.md#one-that-belongs-at-assembly) — *Steel prep: scale off, paint on / One that belongs at assem…*<br>Paint creeps under sustained bolt load, so a painted joint loses bolt tension. Re-check the torque on the outboard plates and the rear plate a few weeks after they go on.
 
 ## [machine/stepper-sizing.md](machine/stepper-sizing.md)  (7)
 
@@ -352,4 +353,4 @@ the interface, not this file.
 
 ---
 
-**255 open** across 35 files.
+**256 open** across 35 files.
