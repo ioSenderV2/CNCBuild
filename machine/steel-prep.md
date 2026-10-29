@@ -113,8 +113,12 @@ just been stripped chemically clean. Towel, heat gun until it is dry through and
 top, and coat it the same session. **Do not rinse a face you are not ready to coat.**
 
 FLAG: **Gloves on anything bare, and that includes carrying a panel to the bench.** A hand mark
-etches into clean steel and comes back as a cluster of finger-sized blotches that the pad will not
-lift. Once a face is handled bare it keeps making new ones.
+etches into clean steel and comes back as a cluster of finger-sized blotches the pad will not lift.
+
+**The etch outlasts the oil, so a mark is not evidence of how the part was handled here.** The oil
+that caused it wipes off long before the mark does — a solvent wipe neither removes one nor shows
+whether one happened, and these plates passed through a waterjet shop and a steel supplier first.
+Gloves are for the faces that are still clean, not a reading of the ones that are marked.
 
 ### When a face will not come uniform, go uniform instead of brighter
 
