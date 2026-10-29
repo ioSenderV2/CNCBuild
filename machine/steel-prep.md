@@ -33,23 +33,41 @@ in minutes.
 
 | Part | Tool |
 |---|---|
-| **1/4" hot-rolled** — rear plate, sole brackets | 60–80 grit flap disc on an angle grinder, or a wire cup brush. Scale is harder than the steel under it and kills sandpaper |
+| **1/4" hot-rolled** — rear plate, sole brackets | **80 grit, and abrasive only.** 80 on the orbital dry is the controllable version; a 60–80 flap disc on an angle grinder is the fast one, and it will dish the plate if you lean on it |
 | **10 gauge cold-rolled** — outboard plates | 120–180 grit, or a maroon abrasive pad. There is no scale here; you are only putting tooth on it for the primer |
 | **Every waterjet edge and hole wall** | abrasive pad or a nylon brush, and get inside the holes |
 
 The waterjet cuts wet, so the edges and hole walls carry light flash rust even when the faces look
 clean.
 
-A phosphoric acid metal prep gel is the alternative to the grinder on the scale, and it leaves a
-phosphate layer the primer likes. Slower, and it has to be rinsed and dried.
+FLAG: 🔴 **Nothing but abrasive takes mill scale off, and both of the easy routes fail in a way that
+wastes an afternoon.** Phosphoric acid — naval jelly, prep gel — attacks rust readily and scale
+hardly at all; scale is mostly magnetite, and it is pickled industrially with hydrochloric or
+sulfuric for exactly that reason. A maroon pad cannot win either: the scale is harder than the steel
+around it and a non-woven pad conforms, so it polishes the soft surround and rides over the hard
+patches. **The result of trying both is a face that is 80 % bare with dark grey islands left in
+it**, and neither tool will shift those islands no matter how long it is given.
+
+**Go coarse enough to cut.** 120 and 150 burnish scale and load up, which reads as the scale being
+invincible. 80 cuts it.
+
+FLAG: **Take the whole face to one grit, not just the patches.** Spot-treating is what produces the
+patchwork. A face worked three different ways reads as three different surfaces under clear, and the
+sheen still changes under primer.
+
+**And it all has to come off whichever face it is.** Self-etch primer is specified for bare metal —
+it works by etching the substrate and cannot etch scale, so primer over a scale patch is sitting on
+something that is itself only mechanically attached. Under clear it is worse: moisture gets beneath
+scale eventually and lifts it.
 
 ### The stains a maroon pad will not take out
 
 A pad or a sander leaves the faces clean except for the odd mark that looks like a water stain and
-stays. **Three different things look identical, so test before working on them:**
+stays. **Four different things look identical, so test before working on them:**
 
 | Test | What it means |
 |---|---|
+| **Is the mark dark grey, hard, and on a hot-rolled part?** | **Mill scale.** Abrasive only — see above. Nothing in this section applies to it |
 | **Acetone on a white rag** — if the rag colours, or the mark's edge moves | It is **oil residue**, not oxide. Denatured alcohol is weak on rolling oil, and a maroon pad burnishes a ring rather than lifting it. This is the one that kills paint adhesion |
 | **150–180 grit on a hard block**, a dozen strokes — if it clears | It was only on the surface. A maroon pad is non-woven, so it conforms, polishes the high spots and rides over anything sitting below them. A rigid backing cuts flat and reaches it |
 | **It survives both** | It is **in a shallow pit**. Water sat there and the oxide went in below the surface |
@@ -66,8 +84,15 @@ The acid turns the oxide into iron phosphate — a grey-black inert layer, and *
 substrate than the bright steel beside it.** So treating a stain improves the panel rather than
 repairing it, and the patch staying darker than its surround does not matter under primer.
 
-FLAG: **Rinsed with water, it flash rusts in minutes.** Either use a product meant to be left to
-dry, or rinse, heat gun it dry straight away, and prime the same day.
+FLAG: **Naval jelly comes off at 5 to 10 minutes, and 15 is the label maximum.** Longer does not
+dissolve more — it just leaves a heavier, darker phosphate layer, which is invisible under primer
+and a visible patch under clear. If it has hardened on the surface, **fresh jelly on top of the hard
+stuff softens it**; do not dry-scrape it off a face you intend to show. Rinse with plenty of fresh
+water, and repeat the whole cycle rather than leaving one application on longer.
+
+FLAG: **Rinsed with water, it flash rusts in minutes** — faster than before, because the surface has
+just been stripped chemically clean. Towel, heat gun until it is dry through and not just dry on
+top, and coat it the same session. **Do not rinse a face you are not ready to coat.**
 
 ## 3 — Deburr while it is still bare
 
