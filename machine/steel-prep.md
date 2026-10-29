@@ -33,23 +33,41 @@ in minutes.
 
 | Part | Tool |
 |---|---|
-| **1/4" hot-rolled** — rear plate, sole brackets | **80 grit, and abrasive only.** 80 on the orbital dry is the controllable version; a 60–80 flap disc on an angle grinder is the fast one, and it will dish the plate if you lean on it |
+| **1/4" hot-rolled** — rear plate, sole brackets | **Jelly to loosen it, then abrasive at 60–80.** 80 on the orbital dry is the controllable version; 60 in a geared mode or a 60–80 flap disc is the fast one, and the grinder will dish the plate if you lean on it |
 | **10 gauge cold-rolled** — outboard plates | 120–180 grit, or a maroon abrasive pad. There is no scale here; you are only putting tooth on it for the primer |
 | **Every waterjet edge and hole wall** | abrasive pad or a nylon brush, and get inside the holes |
 
 The waterjet cuts wet, so the edges and hole walls carry light flash rust even when the faces look
 clean.
 
-FLAG: 🔴 **Nothing but abrasive takes mill scale off, and both of the easy routes fail in a way that
-wastes an afternoon.** Phosphoric acid — naval jelly, prep gel — attacks rust readily and scale
-hardly at all; scale is mostly magnetite, and it is pickled industrially with hydrochloric or
-sulfuric for exactly that reason. A maroon pad cannot win either: the scale is harder than the steel
-around it and a non-woven pad conforms, so it polishes the soft surround and rides over the hard
-patches. **The result of trying both is a face that is 80 % bare with dark grey islands left in
-it**, and neither tool will shift those islands no matter how long it is given.
+**Mill scale does not dissolve, but it can be loosened first.** Phosphoric acid — naval jelly, prep
+gel — barely touches the scale itself, which is mostly magnetite and is pickled industrially with
+hydrochloric or sulfuric for that reason. What it does instead is get through the cracks in the
+scale and attack **the steel underneath**, undercutting it. The scale loses its grip and the bulk
+then comes away under a maroon pad that could not have touched it dry.
+
+So on a heavily scaled face the order is **jelly first, pad to take the bulk, abrasive for what is
+left** — the acid is a softener for the abrasive, never a substitute for it.
+
+FLAG: **What the acid and the pad leave behind is the hard part, and neither will shift it.** The
+remaining islands are scale the acid did not get under, and a maroon pad cannot win against them:
+the scale is harder than the steel around it, and a non-woven pad conforms, so it polishes the soft
+surround and rides over the patch. **That is the 80 % bare face with dark grey islands in it**, and
+more of either tool does not change it.
 
 **Go coarse enough to cut.** 120 and 150 burnish scale and load up, which reads as the scale being
-invincible. 80 cuts it.
+invincible. 80 cuts it; 60 in a geared mode cuts it fast.
+
+**On a dual-mode sander, come back up out of the aggressive mode.** Geared forced rotation leaves
+deep swirls that are glaring under clear. 60 to break the scale, then 80, 120, 180 — the whole face
+at each step, and the finishing grits in plain random-orbit.
+
+FLAG: **Use a ceramic or zirconia disc on steel, not wood abrasive.** Ordinary aluminium oxide
+glazes almost at once at 60, which reads as the scale winning again.
+
+FLAG: 🔴 **Empty the dust extractor before sanding steel, or fit a fresh bag.** Coarse grit in a
+geared mode throws hot particles, and hot steel into a bag holding fine wood dust is a vacuum fire.
+Steel dust is conductive and abrasive as well, so it is hard on the extractor either way.
 
 FLAG: **Take the whole face to one grit, not just the patches.** Spot-treating is what produces the
 patchwork. A face worked three different ways reads as three different surfaces under clear, and the
@@ -67,7 +85,7 @@ stays. **Four different things look identical, so test before working on them:**
 
 | Test | What it means |
 |---|---|
-| **Is the mark dark grey, hard, and on a hot-rolled part?** | **Mill scale.** Abrasive only — see above. Nothing in this section applies to it |
+| **Is the mark dark grey, hard, and on a hot-rolled part?** | **Mill scale**, and it is the one case the rest of this table does not fit — it ends at abrasive, whatever loosened it first. See above |
 | **Acetone on a white rag** — if the rag colours, or the mark's edge moves | It is **oil residue**, not oxide. Denatured alcohol is weak on rolling oil, and a maroon pad burnishes a ring rather than lifting it. This is the one that kills paint adhesion |
 | **150–180 grit on a hard block**, a dozen strokes — if it clears | It was only on the surface. A maroon pad is non-woven, so it conforms, polishes the high spots and rides over anything sitting below them. A rigid backing cuts flat and reaches it |
 | **It survives both** | It is **in a shallow pit**. Water sat there and the oxide went in below the surface |
