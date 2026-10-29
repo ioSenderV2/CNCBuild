@@ -112,6 +112,24 @@ FLAG: **Rinsed with water, it flash rusts in minutes** — faster than before, b
 just been stripped chemically clean. Towel, heat gun until it is dry through and not just dry on
 top, and coat it the same session. **Do not rinse a face you are not ready to coat.**
 
+FLAG: **Gloves on anything bare, and that includes carrying a panel to the bench.** A hand mark
+etches into clean steel and comes back as a cluster of finger-sized blotches that the pad will not
+lift. Once a face is handled bare it keeps making new ones.
+
+### When a face will not come uniform, go uniform instead of brighter
+
+A metre-long panel hand-sanded does not come up evenly bright, and chasing that is what eats the
+evenings. **What makes raw steel look deliberate under clear is a consistent surface, not a clean
+one** — the marks stop reading as marks when there is no polished field for them to contrast
+against.
+
+| | |
+|---|---|
+| **One grit, directional, whole face** | Finish everything at 180 with the strokes running the same way along the panel's length |
+| **Blasting** | Glass bead or fine aluminium oxide gives an even matte grey and pulls oxide out of pits that no abrasive reaches. The textbook substrate for coating, and it ends the question — at the cost of equipment, mess, and steel that flash rusts faster than anything else here, so coat it at once |
+
+**On a mating face none of this matters.** It only matters where the clear is going.
+
 ## 3 — Deburr while it is still bare
 
 The waterjet leaves a lip on the exit side of a hole. Hand countersink or a deburring tool, both
