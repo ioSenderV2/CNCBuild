@@ -374,68 +374,42 @@ pose - the six block-against-front-strip pairs it used to carry were an artifact
 bearing block as a solid box, closed 2026-10-11 with his gauge-block measurement of the 4.2 under
 the block's wings.)
 
-SETTLED: **The bed is captured in both directions, and there is nothing to place.** Across the machine it
-fits the 1204.38 between the side plates. Fore-aft, the clear run from the **rear plate's front face
-at 6.35** to the **front fin's back face at 1006.35** is exactly **1000 - BEAM_LEN** - and four 250
-plates are exactly 1000. It butts the rear plate and finishes on the fin.
+SETTLED: **The bed is captured in both directions, and there is nothing to place.** Fore-aft that is
+exact and free: the clear run from the **rear plate's front face at 6.35** to the **front fin's back
+face at 1006.35** is exactly **1000 - BEAM_LEN** - and four 250 plates are exactly 1000. It butts the
+rear plate and finishes on the fin.
+
+FLAG: **Across the machine the capture is a part, not the geometry.** The bed is **1193.8** into the
+**1204.38** between the side plates, so there is {{TT_BED_SPACER}} a side and the two directions are
+not the same kind of fit. **A {{TT_BED_BAR_T}} hard maple bar per side fills it** - see the as-built
+note. Reading the across fit as free the way fore-aft is free is the mistake this flag exists to
+stop.
 
 OPEN: **This was briefly recorded as a free choice and it never was one.** `TT_BED_Y0` carried a note
 saying he had not placed the bed fore-aft; his answer, 2026-10-11, is that the geometry had already
 placed it. `TT_BED_FORE_AFT_CHECK` now subtracts the bed's depth from the beam length and must read
 **zero**, so if either figure moves the registry says so rather than the drawing quietly going wrong.
 
-## OPEN: The spacer may not clear the skin - open, being tested
+## SETTLED: The end gap is a maple bar, and that closed three things at once
 
-The M5 hole centre in the panel end is **4 mm above the top skin**, and the spacer he is ordering is
-**8 mm OD with a 5.1 bore**, stainless. An 8 OD is a 4 radius, so **the spacer's bottom edge is
-tangent to the skin** - zero clearance.
+**One continuous hard maple bar per side** - {{TT_BED_BAR_T}} thick, {{TT_BED_T}} tall, running the
+bed's {{TT_BED_FORE_AFT}} - standing on the top skin between the bed's end and the side plate's
+inside face. His, 2026-10-31. It replaces sixteen M5 screws through the side plates, each on a 5 mm
+aluminium spacer.
 
-FLAG: **That is a coincidence, not a fit, and it fails in the direction that matters.** Anything the
-wrong way by a tenth and the spacer rides **on** the skin, which lifts the panel end off its
-bedding - giving back exactly the continuous support that dropping the 2040s was for. Things that
-can go the wrong way: the hole centre on panels he did not drill, spacer OD tolerance, glue
-squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 panel.
-
-SETTLED: **He is ordering spacers to test it**, 2026-10-11, so `TT_BED_SPACER_CLEAR` stays **OPEN** until a
-real one is offered up to a real panel.
-
-**If it fouls, relieve the skin and not the spacer.** NOTE: **The reason is that a relief in the skin
-cannot lift the panel.** A filed spacer or a thinner one both can, and a 6 OD spacer - 1 mm of
-clearance on a 0.45 mm stainless wall, which these no-load screws would carry fine - also depends on
-sourcing a part, where cutting the skin depends on nothing.
-
-### SETTLED: How the relief gets cut: a router groove, not sixteen scallops
-
-**His, 2026-10-11, and it is better than the scallops first proposed** for a reason beyond effort: a
-groove does not need the hole positions at all. It only has to be in the right **band**, so nothing
-gets marked off the panels - and the panels own the hole spacing, which is not a figure this repo
-has.
-
-| | |
+| What it replaced | Why it is gone |
 |---|---|
-| Depth | **1 mm** - turns the tangent into a clearance; nothing in a 24 mm skin |
-| Outboard edge, inset from the box's skin edge | **3.429 mm**, the side plate's thickness |
-| Width, inboard from there | **about 12 mm** - anything from 8 to 15 works |
-| Length | the full fore-aft run the bed occupies, not stopping at the end spacers |
+| **Sixteen M5 screws** | They only stopped the bed walking. A bar does that on the same axis without fastening anything to anything |
+| **Sixteen 14 mm access bores** through the {{T_BOX_TONGUE}} tongue | The tongue is the outermost layer, so no screw could be driven without one - and the bores had to be cut before the side plate went on with its beam attached. The whole forced order goes with them |
+| **A 1 mm relief groove** routed in the top skin | It existed because an 8 OD spacer on a hole centred 4 above the skin was exactly tangent to it, and a spacer riding on the skin lifts the panel end off its bedding. A bar stands ON the skin, so there is nothing to clear |
 
-SETTLED: **The side plate stands flush with the box's top-skin edge**, so a router fence off the box edge is
-enough - no need to clamp the plate as a fence. The file agrees: BOX_W is measured **inside** the
-side tongues and the tongue's inside face is the plate's **outer** face, so there is no channel and
-the plate's outer face is the skin's edge.
+**The bar is milled, not bought**, which is what reopened an option already rejected: the objection
+to a bar was that 5.29 is not a stocked flat-bar thickness. A ripped maple strip has no stock
+thickness to miss. **Grain along the length** - the 5 is across the grain, where seasonal movement is
+a few hundredths, and a bar that swells only wedges tighter.
 
-FLAG: **The inset is {{TT_BED_GROOVE_INSET}}, not 1/8".** The plate was ordered **10 gauge** and
-[`../dimensions/VALUES.md`](../dimensions/VALUES.md) records that a nominal 1/8" was carried for it
-and was wrong. The 0.254 matters only because of which way it errs: insetting 3.175 starts the groove
-**0.254 under the plate's footprint**, undercutting the one edge PLATE_H calls the edge that bears on
-the top skin. **Inset 3.5 and let the error fall inboard**, where it costs nothing - the width is
-slack and the inset is not.
-
-OPEN: **Caliper the delivered sheet.** T_SIDE_PLATE's own note says 10 gauge is a gauge and the gauge is
-the nominal, with a standing instruction to measure the real plate. The groove follows the plate in
-hand, not the catalogue.
-
-NOTE: **One thing to decide at the bench rather than here:** whether the groove is cut in the skin
-**before** it is glued to the ribs, or after the box is assembled with the plates dry-fitted.
+**The bed ends stay drilled 4.2 and tapped M5, {{TT_BED_END_ENGAGE}} deep.** Nothing uses them. They
+are recorded so finding them later does not start an investigation.
 
 ## Still to measure
 

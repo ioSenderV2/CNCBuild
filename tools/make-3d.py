@@ -1433,11 +1433,25 @@ def main() -> int:
                          "worst - it must never stand proud of a sheet the "
                          "machine skims")
 
-    # THE TT_BED_SPACER GAP AT EACH END IS NOT DRAWN, and that is right rather
-    # than missing: it is taken up by a WASHER STACK ON EACH BOLT - his, 2026-10-11
-    # - so there is no part with a footprint here to draw. It was briefly modelled
-    # as a 5.29 x 1000 x 16 bar at each end, which both invented a part and implied
-    # a flat bar in a thickness nobody stocks.
+    # THE TT_BED_SPACER GAP AT EACH END IS A MAPLE BAR, and it IS drawn - his,
+    # 2026-10-31. This was the one case the model deliberately left empty, on the
+    # reasoning that the gap was taken up on each bolt and there was no part with a
+    # footprint; a bar had been considered and rejected because 5.29 is not a
+    # flat-bar thickness anybody stocks. A MILLED bar escapes that, so the part is
+    # real and the sixteen bolts it replaces are gone.
+    #
+    # It is drawn at TT_BED_BAR_T and not at the TT_BED_SPACER gap: the 0.29 a side
+    # left over is TT_BED_FLOAT, which is the bed's slack and must stay visible as
+    # slack rather than being closed in the drawing.
+    bar_t, bar_h = v["TT_BED_BAR_T"], v["TT_BED_T"]
+    bar_y1 = bed_y0 + v["TT_BED_FORE_AFT"]
+    for x0 in (v["T_SIDE_PLATE"], bed_x1 + v["TT_BED_FLOAT"]):
+        box("Bed end bar", "bed", 0xC8A87A, x0, bed_y0, 0.0,
+            x0 + bar_t, bar_y1, bar_h,
+            d=f"hard maple, {bar_t:g} x {bar_y1 - bed_y0:g} x {bar_h:g} - it "
+              f"fills the end gap so the bed is captured ACROSS the machine the "
+              f"way it is already captured fore-aft, and closes the chip seam "
+              f"along the side plate")
 
     # ---- the front cap and the two side caps ------------------------------
     # The front has NO TONGUE: this cap is the same 25 stock and the same 44

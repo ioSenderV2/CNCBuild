@@ -782,28 +782,35 @@ NOTE: **Paint the ground edges.** Bare steel in a corner that gets wet, next to 
 
 ## The tee track bed's end fixing, as it will actually be built
 
-SETTLED: **FOUR screws a side, not eight.** Those screws only stop the bed walking - it is bedded
-flat on the box and gravity holds the stack down - so the count was never structural. **The thing
-that settles it is the access hole**, below.
+SETTLED: **NO SCREWS. One continuous hard maple bar per side**, {{TT_BED_BAR_T}} thick,
+{{TT_BED_T}} tall, running the bed's {{TT_BED_FORE_AFT}} fore-aft. It stands on the top skin and
+fills the gap between the bed's end and the side plate's inside face.
 
-SETTLED: **M5 x 20 SOCKET HEAD.** His, off the parts: button head and flange head both foul the top
-skin. The hole centre is {{TT_BED_END_HOLE_Z}} above the skin and the head sits over the plate's
-bottom edge, so anything wider than the {{TT_BED_SPACER_OD}} spacer starts to interfere. Length is
-unchanged - 20 reaches 11.57 into a hole tapped 15.
+**What it is for:** the bed is captured fore-aft exactly - the clear run from the rear plate's front
+face to the fin's back face is {{BEAM_LEN}} and four plates are {{TT_BED_FORE_AFT}}, so
+TT_BED_FORE_AFT_CHECK is zero. **Across the machine it is not captured**, and that is the only axis
+with any freedom: {{TT_BED_SPACER}} a side. The bars make across match fore-aft, and the bed is then
+pinned both ways by the parts around it with nothing fastening it to anything.
 
-🔴 **EVERY SCREW NEEDS A 14 mm ACCESS HOLE THROUGH THE 24 mm TONGUE.** The tongue is the outermost
-layer, so the screw goes tongue, plate, spacer, panel end - and nothing can be driven without a bore
-to reach through. This had not been noticed anywhere. Eight access holes is acceptable; sixteen is
-not, which is why the count came down.
+**Nothing here is structural and nothing holds the bed down.** It beds flat on the box and gravity
+holds the stack. The bars only stop it walking, which is what the screws did.
 
-**The order is forced:** the hole stations are not known until the bed is in, and the bores have to
-be made before the side plate goes on with its beam attached.
+FLAG: **This deletes the sixteen 14 mm access bores through the {{T_BOX_TONGUE}} tongue**, and with
+them the assembly order they forced. The tongue is the outermost layer, so every screw had to be
+reachable through a bore made before the side plate went on with its beam attached - which meant the
+bed in, the hole stations measured, the bores cut, and only then the plate. None of that applies to a
+bar that drops into a gap.
 
-SETTLED: **Measure once, lay out twice, and skip the transfer.** With the bed in and the side plates
-OFF, each panel's tapped holes are visible from outside. Measure their stations along the length -
-that is the only unknown - then lay out BOTH the tongue's 14 mm access and the plate's clearance hole
-from the same numbers. Nothing is spotted through anything and nothing depends on sighting down a
-24 mm bore; the float in the plate's clearance hole is what buys that.
+FLAG: **The bed ends are already drilled 4.2 and tapped M5, {{TT_BED_END_ENGAGE}} deep.** They are
+from the screw scheme and nothing uses them now. Leave them - they are harmless and they are
+recorded so that finding them later does not start an investigation.
+
+**Grain along the length.** The {{TT_BED_BAR_T}} is across the grain, where seasonal movement is a
+few hundredths on a dimension that small, and a bar that swells only wedges tighter. TT_BED_FLOAT is
+the {{TT_BED_FLOAT}} a side the 5 leaves against the {{TT_BED_SPACER}} gap.
+
+NOTE: **Coat the side plate's inside face where the bar lands.** Wood against bare steel holds
+moisture against it; the band under the bar is the one place on that face something sits.
 
 ## FLAG: Check the rear plate's overhang before the side laminations go on
 

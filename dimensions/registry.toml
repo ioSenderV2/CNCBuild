@@ -2803,7 +2803,7 @@ note = "1204.38 - the clear span between the two side plates' INSIDE faces, whic
 [[dim]]
 sym = "TT_BED_SPACER"
 expr = "(TT_BED_CLEAR - TT_BED_L) / 2"
-note = "5.29 - THE GAP AT EACH END OF THE BED, not a part to obtain. FLAG: IT WAS WORDED AS A SPACER THICKNESS AND THAT IS HOW A 5.29 FLAT BAR GETS ORDERED, which does not exist - his point, 2026-10-11. SETTLED: TAKEN UP BY ONE 5 mm M5-BORE ALUMINIUM SPACER PER SCREW - his, 2026-10-11, and he can buy them, which is what settled it over the washer stack considered first. The standoff only has to keep the bolt from drawing the side plate inward as it tightens, so it needs AXIAL STIFFNESS UNDER THE HEAD and nothing else - no fit and no thickness to hit. TT_BED_FLOAT is what the 5 leaves. The bed carries no hold-down duty either: it beds flat on the top skin and gravity holds it, so these bolts only stop it walking. OPEN: NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
+note = "5.29 - THE GAP AT EACH END OF THE BED. SETTLED: TAKEN UP BY ONE CONTINUOUS 5 mm HARD MAPLE BAR PER SIDE - his. See TT_BED_BAR_T; TT_BED_FLOAT is what the 5 leaves. FLAG: THE GAP IS ACROSS THE MACHINE AND IT IS THE ONLY DIRECTION THE BED IS NOT ALREADY CAPTURED - fore-aft it is held exactly, TT_BED_FORE_AFT_CHECK is zero, and that capture does nothing for this axis. The bars make across match fore-aft. FLAG: THIS IS A GAP AND NOT A PART THICKNESS - read as a thickness it is how a 5.29 flat bar gets ordered, and no such stock exists. A MILLED bar escapes that entirely, which is why one is viable where a bought spacer was not. The bed carries no hold-down duty: it beds flat on the top skin and gravity holds it, so nothing here does more than stop it walking. OPEN: NOTHING SHOULD DERIVE A PART SIZE FROM THIS - it is a clearance, and the only thing it must not be is negative."
 
 [[dim]]
 sym = "TT_BED_FORE_AFT"
@@ -2937,65 +2937,117 @@ provenance = "measured"
 note = "M5 - the screws into the tee track sections' ends, TWO PER END. SETTLED: HE DRILLED AND TAPPED THEM 2026-10-11, so this is a finished hole and not a plan: 4.2 drill, M5 tap, TT_BED_END_ENGAGE of thread. FLAG: M4 WAS RECOMMENDED AND M4 WAS WRONG. The Mega V used two M4 SELF-TAPPING screws per end - not machine screws in a tapped hole, which this file called them until he corrected it - and the advice was to drill 3.3 and tap M4 on the reasoning that three in-and-out cycles is light duty. His measurement killed it: A 3.3 DRILL ENTERED THE EXISTING HOLE WITH NO RESISTANCE, so the hole was already at or above the M4 tapping size and an M4 tap would have had almost nothing to cut. THE CYCLE COUNT WAS THE WRONG THING TO JUDGE IT ON; the hole size was, and it was measurable all along."
 
 [[dim]]
-sym = "TT_BED_SPACER_PART"
+sym = "TT_BED_BAR_T"
 value = 5
 provenance = "part"
-note = "5 - the aluminium spacer, one per screw, and it is an M5 BORE now that the ends are tapped M5 - it was specified M4 before the holes were drilled out. His, 2026-10-11. FLAG: THE PART IS 5 AND THE GAP IS TT_BED_SPACER'S 5.29 - they are different numbers on purpose, and the difference is TT_BED_FLOAT. Do not 'correct' either to match the other."
+note = "5 - the HARD MAPLE FILLER BAR at each end of the bed, one per side, and the thickness is the whole of its specification. His. SETTLED: IT IS MILLED, NOT BOUGHT, which is what lets the number be anything: a bar here only works because a ripped maple strip has no stock thickness to miss, where a bought flat bar in 5.29 does not exist. FLAG: THE PART IS 5 AND THE GAP IS TT_BED_SPACER'S 5.29 - they are different numbers on purpose, and the difference is TT_BED_FLOAT. Do not 'correct' either to match the other. The bar stands TT_BED_T tall and runs TT_BED_FORE_AFT, so it fills the end gap over the bed's whole length and closes the chip seam along the side plate. SETTLED: IT REPLACES SIXTEEN M5 SCREWS AND THEIR SPACERS - see the retired TT_BED_END_SCREWS for what that scheme cost, which was sixteen access bores through the tongue and the assembly order they forced. NOTE: GRAIN ALONG THE LENGTH. The 5 is across the grain, where seasonal movement on a dimension that small is a few hundredths and a bar that swells only wedges tighter."
 
 [[dim]]
 sym = "TT_BED_FLOAT"
-expr = "TT_BED_SPACER - TT_BED_SPACER_PART"
-note = "0.29 per end, 0.58 across the bed - how far the bed can shift before a spacer touches. SETTLED: IT DOES NOT MATTER AND THAT IS THE POINT OF RECORDING IT: the aluminium is not a reference surface, the MDF above it is surfaced in place by the machine, and nothing is laid out from the bed's position. A number small enough to ignore is still worth naming, so that nobody later reads the 0.29 as an error to chase."
-
-[[dim]]
-sym = "TT_BED_END_SCREWS_PER_END"
-value = 2
-provenance = "part"
-note = "Two M4 self-tapping screws into each end of each 250 panel - the Mega V's own arrangement, carried over. His, 2026-10-11."
-
-[[dim]]
-sym = "TT_BED_END_SCREWS"
-expr = "TT_BED_END_SCREWS_PER_END * 2 * TT_BED_PLATES"
-note = "16 screws holding the bed against walking - two per end, both ends, four panels, so EIGHT THROUGH EACH SIDE PLATE. That is the hole count the side plate has to carry at bed height, and the reason to know it is the side plate's drilling rather than the bed's."
-
-[[dim]]
-sym = "TT_BED_SCREW_STACK"
-expr = "T_SIDE_PLATE + TT_BED_SPACER_PART"
-note = "8.429 - what each screw passes through before it reaches aluminium: the 3.429 side plate plus the 5 spacer. SETTLED: THE MEGA V SCREWS DO NOT CARRY OVER AT ALL - they were self-tappers and the ends are now tapped M5 - so the length comes from this plus the engagement wanted, which is TT_BED_END_SCREW_L. On the Mega V the panel end lands against the frame with neither the plate nor the spacer in the way, which is why nothing in that drawer is long enough."
+expr = "TT_BED_SPACER - TT_BED_BAR_T"
+note = "0.29 per end, 0.58 across the bed - how far the bed can shift before a bar touches. SETTLED: IT DOES NOT MATTER AND THAT IS THE POINT OF RECORDING IT: the aluminium is not a reference surface, the MDF above it is surfaced in place by the machine, and nothing is laid out from the bed's position. A number small enough to ignore is still worth naming, so that nobody later reads the 0.29 as an error to chase."
 
 [[dim]]
 sym = "TT_BED_END_ENGAGE"
 value = 15
 provenance = "measured"
-note = "15 of M5 thread in each panel end - his, 2026-10-11, measured off the tapped hole. SETTLED: IT WAS BRIEFLY RECORDED AS 10, which was his first figure before he put a gauge in it; the 15 is the tested depth and is the one to use. SETTLED: THAT IS 3 x D AND IT CLOSES THE LAST WORRY ABOUT THIS JOINT: the question asked was the wall thickness at the panel end, because a thin web would have left 2-3 mm, and 15 says the screw goes into real depth rather than through a skin. These screws only stop the bed walking, so 3 x D is far more than the duty - but it is measured, and the earlier concern was not. NOTE: THE 5 IT MOVED IS WHAT MAKES AN M5 x 20 THE RIGHT PART instead of an 18 - see TT_BED_END_SCREW_L."
+note = "15 of M5 thread in each panel end - his, gauged on the tapped hole. SETTLED: THE HOLES ARE TAPPED AND NOTHING USES THEM, which is why this stays: a future session finding M5 threads in the bed ends should not have to work out what they are for. They belong to the retired screw scheme - see TT_BED_END_SCREWS - and they are harmless, so they stay as they are. SETTLED: THAT IS 3 x D, which answers the one worry the joint raised: the question asked was the wall thickness at the panel end, because a thin web would leave 2-3 mm, and 15 says the hole goes into real depth rather than through a skin."
+
+# ------------------------------------------- the bed's screw scheme, retired
+# RETIRED TOGETHER 2026-10-31, when one maple bar per side replaced the lot -
+# see TT_BED_BAR_T. They are kept rather than deleted because the scheme is
+# re-proposable: the tapped holes are still in the bed ends, the tangency that
+# forced a groove in the top skin is a real trap, and a bare deletion would
+# leave a future session to rediscover both.
+#
+# EVERY ONE CARRIES A LITERAL VALUE, including the four that had an expr. A
+# retired symbol must not depend on another retired symbol - dims.py counts
+# that as something still wanting the number - and a frozen scheme should not
+# track live figures anyway.
+
+[[dim]]
+sym = "TT_BED_SPACER_PART"
+value = 5
+provenance = "part"
+retired = true
+note = "RETIRED. The 5 mm M5-bore aluminium spacer, one per screw, standing the side plate off the bed's end so the screw could not draw it inward. Superseded by the maple bar, which does the same job in one piece per side and needs no screw to retain it."
+
+[[dim]]
+sym = "TT_BED_END_SCREWS_PER_END"
+value = 2
+provenance = "part"
+retired = true
+note = "RETIRED. Two screws into each end of each 250 panel, carried over from the Mega V's own arrangement."
+
+[[dim]]
+sym = "TT_BED_END_SCREWS"
+value = 16
+provenance = "pinned"
+retired = true
+note = "RETIRED. Sixteen screws - two per end, both ends, four panels, eight through each side plate. FLAG: THE COUNT IS WHY THE SCHEME DIED. Each one needed a 14 mm access bore through the 24 mm tongue to be driven at all, and sixteen bores forced the whole assembly order: bed in, stations measured, bores cut, only then the side plate with its beam on it."
+
+[[dim]]
+sym = "TT_BED_SCREW_STACK"
+value = 8.429
+provenance = "pinned"
+retired = true
+note = "RETIRED. What each screw passed through before reaching aluminium - the 3.429 side plate plus the 5 spacer."
 
 [[dim]]
 sym = "TT_BED_END_SCREW_L"
-expr = "TT_BED_SCREW_STACK + TT_BED_END_ENGAGE"
-note = "23.43 - the M5 screw length that would use the whole tapped depth: 3.429 side plate + 5 spacer + 15 of thread. SETTLED: BUY M5 x 20. It reaches 11.57 into a hole tapped 15, which clamps with 3.4 of hole to spare. OPEN: DO NOT BUY 25 - it wants 16.57 and would bottom out 1.57 short of clamping, FEELING tight while holding nothing. FLAG: AN 18 WAS THE ANSWER UNTIL THE DEPTH WAS GAUGED: on the first figure of 10 a 20 was the part that would have bottomed, and the two recommendations are opposite. THAT IS WHY THIS SYMBOL IS NOT THE PART NUMBER - it is the ceiling, the bought screw sits under it, and the depth it depends on is measured rather than assumed."
+value = 23.429
+provenance = "pinned"
+retired = true
+note = "RETIRED. The M5 length that would have used the whole tapped depth. The part actually chosen was an M5 x 20, reaching 11.57 into a hole tapped 15."
 
 [[dim]]
 sym = "TT_BED_END_HOLE_Z"
 value = 4
 provenance = "measured"
-note = "4 - the M5 hole centre in the panel end, above the torsion box's top skin. His, 2026-10-11. FLAG: IT IS WHAT MAKES THE SPACER A CLEARANCE PROBLEM: an 8 OD spacer has a 4 radius, so its bottom edge lands exactly ON the skin. See TT_BED_SPACER_CLEAR."
+retired = true
+note = "RETIRED as a design input, but STILL TRUE OF THE PART: the tapped M5 holes are 4 above the top skin and they are still in the bed ends. FLAG: IT IS THE HALF OF THE TANGENCY TRAP WORTH REMEMBERING - a 4 hole centre against an 8 OD spacer's 4 radius put the spacer's bottom edge exactly on the skin. Anyone re-proposing a spacer here meets it again."
 
 [[dim]]
 sym = "TT_BED_SPACER_OD"
 value = 8
 provenance = "part"
-note = "8 - the stainless spacer's outside diameter, the one he is ordering to test. His, 2026-10-11."
+retired = true
+note = "RETIRED. The stainless spacer's outside diameter. See TT_BED_END_HOLE_Z for why the 8 was the problem."
 
 [[dim]]
 sym = "TT_BED_SPACER_ID"
 value = 5.1
 provenance = "part"
-note = "5.1 - the spacer's bore, 0.1 over the M5 screw. His, 2026-10-11. Stainless."
+retired = true
+note = "RETIRED. The spacer's bore, 0.1 over the M5 screw."
 
 [[dim]]
 sym = "TT_BED_SPACER_CLEAR"
-expr = "TT_BED_END_HOLE_Z - (TT_BED_SPACER_OD / 2)"
-note = "FLAG: ZERO. The spacer's bottom edge is TANGENT to the top skin - 4 of hole centre against a 4 radius - and that is a coincidence rather than a fit. OPEN: IT FAILS IN THE DIRECTION THAT MATTERS: if anything goes the wrong way by a tenth the spacer rides ON the skin and LIFTS THE PANEL END OFF ITS BEDDING, which gives back the continuous support that dropping the 2040s was for. Things that can go the wrong way: the hole centre on panels he did not drill, spacer OD tolerance, glue squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 panel. SETTLED: HE IS ORDERING SPACERS TO TEST THE FIT, 2026-10-11 - UNVERIFIED UNTIL A REAL ONE IS OFFERED UP TO A REAL PANEL. OPEN: IT CANNOT BE MARKED provenance OPEN because it has an expr, and dims.py rightly forbids that pair - the ARITHMETIC is certain and it is the CONSEQUENCE that is open, so machine/spoilboard.md carries the open item and this note carries the warning. IF IT FOULS, the fix is to RELIEVE THE SKIN and not the spacer: sixteen scallops about 10 across and 1.5 deep, one under each screw, marked off the panels at assembly. A relief in the skin cannot lift the panel; a filed spacer or a thinner one both can. A 6 OD spacer would give 1 of clearance on a 0.45 stainless wall, which these no-load screws would carry, but it depends on sourcing a part where the relief does not."
+value = 0
+provenance = "pinned"
+retired = true
+note = "RETIRED, AND IT IS THE ONE WORTH READING BEFORE RE-PROPOSING A SPACER. ZERO - the spacer's bottom edge tangent to the top skin, 4 of hole centre against a 4 radius, a coincidence rather than a fit. It fails in the direction that matters: anything the wrong way by a tenth and the spacer rides ON the skin and LIFTS THE PANEL END OFF ITS BEDDING, which gives back the continuous support that dropping the Mega V's 2040s was for. Hole-centre variation on panels he did not drill, spacer OD tolerance, glue squeeze-out, a proud veneer patch, and the skin not being flat under a 1193.8 panel could all take it the wrong way. The fix was a relief groove in the skin; the maple bar removes the problem instead, because a bar stands ON the skin and has nothing to clear."
+
+[[dim]]
+sym = "TT_BED_GROOVE_D"
+value = 1
+provenance = "nominal"
+retired = true
+note = "RETIRED with the spacer that needed it. A 1 mm relief routed into the top skin to turn TT_BED_SPACER_CLEAR's tangent into a clearance."
+
+[[dim]]
+sym = "TT_BED_GROOVE_INSET"
+value = 3.429
+provenance = "pinned"
+retired = true
+note = "RETIRED. The groove's outboard edge, inset by the side plate's thickness. The live lesson in it survives in T_SIDE_PLATE: a nominal 1/8in was carried for that plate and was wrong, and insetting on 3.175 would have undercut the plate's bearing edge by 0.254."
+
+[[dim]]
+sym = "TT_BED_GROOVE_W"
+value = 12
+provenance = "nominal"
+retired = true
+note = "RETIRED. The groove's width, a round number inside a band from about 8 to 15 rather than a fit."
 
 [[dim]]
 sym = "T_BB_RIB"
@@ -3015,23 +3067,6 @@ source = "His micrometer on the Crosscut Hardwoods sheet, 2026-10-13 - sold as 1
 sym = "T_BOX_WALL"
 expr = "T_BOX_TONGUE + T_BOX_WALL_WEB"
 note = "44 - the outer wall's full thickness, both laminations. FLAG: IT WAS 38 ON TWO EQUAL 19s and it is 44 since the outer lamination went to 25 on 2026-10-11 - if 38 appears in the prose as a wall thickness it is stale. The two laminations are summed separately BECAUSE THEY ARE NO LONGER THE SAME, the same reason BOX_THK stopped doubling one skin symbol. SETTLED: The 6 it grew is all OUTBOARD: the plates sit on the top skin and the tongue laps them from outside, so the box's outer envelope grows and nothing inside the machine moves."
-
-[[dim]]
-sym = "TT_BED_GROOVE_D"
-value = 1
-provenance = "nominal"
-note = "1 - how deep the relief groove is cut into the top skin, under the line of the bed's end spacers. His, 2026-10-11. SETTLED: IT TURNS A TANGENT INTO A CLEARANCE: TT_BED_SPACER_CLEAR is zero, so 1 is what absorbs hole-centre variation on panels he did not drill, spacer OD tolerance, glue squeeze-out or a proud veneer patch, and the skin not being flat under a 1193.8 panel. In a 25 top skin it is structurally nothing."
-
-[[dim]]
-sym = "TT_BED_GROOVE_INSET"
-expr = "T_SIDE_PLATE"
-note = "3.429 - the groove's OUTBOARD edge, inset from the box's top-skin edge. SETTLED: THE SIDE PLATE STANDS FLUSH WITH THAT EDGE, which is what makes a router fence off the box edge sufficient - no need to clamp the plate as a fence. His, 2026-10-11, and it matches the file: BOX_W is measured INSIDE the side tongues and the tongue's inside face is the plate's OUTER face, so there is no channel and the plate's outer face IS the skin's edge. FLAG: IT IS T_SIDE_PLATE AND NOT 1/8in. He said 1/8, and the plate was ORDERED 10 GAUGE at 3.429 - the entry for T_SIDE_PLATE records that a nominal 1/8 was carried there and was wrong. The 0.254 matters only because of WHICH WAY IT ERRS: insetting 3.175 starts the groove 0.254 UNDER the plate's footprint, undercutting the one edge PLATE_H calls the edge that bears on the top skin. Inset 3.5 and let the error fall inboard, where it costs nothing. OPEN: CALIPER THE DELIVERED SHEET - T_SIDE_PLATE's own note says 10 gauge is a gauge and the gauge is the nominal; the groove follows the plate in hand, not this."
-
-[[dim]]
-sym = "TT_BED_GROOVE_W"
-value = 12
-provenance = "nominal"
-note = "12 - the groove's width, measured inboard from TT_BED_GROOVE_INSET. The spacer is TT_BED_SPACER_OD across and TT_BED_SPACER_PART long, so anything from about 8 to 15 works and WIDER IS FREE: the panel is 250 deep and bears across all of it, so a few millimetres of relief under its outer edge is nothing. 12 is a round number inside that band rather than a fit. OPEN: THE WIDTH IS SLACK AND THE INSET IS NOT - error inboard costs nothing, error outboard undercuts the side plate's bearing edge."
 
 [[dim]]
 sym = "POST_W_X"

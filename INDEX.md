@@ -189,8 +189,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [The X carriage does not move down - settled 2026-10-11](machine/spoilboard.md#the-x-carriage-does-not-move-down---settled-2026-10-11)
 - [The Y 30 bolt line holds - settled 2026-10-11](machine/spoilboard.md#the-y-30-bolt-line-holds---settled-2026-10-11)
 - [It is in the 3D model](machine/spoilboard.md#it-is-in-the-3d-model)
-- [The spacer may not clear the skin - open, being tested](machine/spoilboard.md#the-spacer-may-not-clear-the-skin---open-being-tested)
-  - [How the relief gets cut: a router groove, not sixteen scallops](machine/spoilboard.md#how-the-relief-gets-cut-a-router-groove-not-sixteen-scallops)
+- [The end gap is a maple bar, and that closed three things at once](machine/spoilboard.md#the-end-gap-is-a-maple-bar-and-that-closed-three-things-at-once)
 - [Still to measure](machine/spoilboard.md#still-to-measure)
 
 ## [machine/steel-prep.md](machine/steel-prep.md)

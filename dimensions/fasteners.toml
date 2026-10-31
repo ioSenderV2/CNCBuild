@@ -322,20 +322,6 @@ source = "his, 2026-10-11"
 note = "THE T-NUT'S THREAD IS IN THE BOTTOM 10 OF THE SKIN, so the grip includes the empty 15 above it - see FIN_ANGLE_BOLT_DEAD. An M8 x 25 was specified first and would have engaged 4."
 
 [[joint]]
-id = "bed-to-side-plate"
-what = "Tee track bed ends, through the side plates"
-size = 5
-count = 16
-per = "2 per panel end, four panels"
-length = 20
-groups = [["Y1 Side Plate", 8], ["Y2 Side Plate", 8]]
-head = "socket"
-into = "tapped"
-grip = ["T_SIDE_PLATE", "TT_BED_SPACER_PART"]
-source = "his, 2026-10-11"
-note = "The panel ends were drilled 4.2 and tapped M5, 15 deep."
-
-[[joint]]
 id = "spindle-clamp"
 what = "Spindle clamps to the Z plate"
 size = 8
