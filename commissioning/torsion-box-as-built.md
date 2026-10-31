@@ -841,9 +841,8 @@ bearings. **Take it out at the Y rails, not at the gantry:** the rail holes are 
 and the rails are set one fastener at a time against a locked first rail, which is where a spread of
 this size belongs.
 
-OPEN: **This reads "bearing block faces" as the MOUNTING faces the end plates bolt to.** The
-measurement only lands near the design figure on that reading, which is evidence for it rather than
-proof - say so if it was taken somewhere else.
+SETTLED: **The faces are the MOUNTING faces the end plates bolt to** - his, confirmed, so the
+measurement and the designed span are the same pair of surfaces and the comparison above holds.
 
 NOTE: **Coat the side plate's inside face where the bar lands.** Wood against bare steel holds
 moisture against it; the band under the bar is the one place on that face something sits.

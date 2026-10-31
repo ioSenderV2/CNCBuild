@@ -293,7 +293,7 @@ the interface, not this file.
 - FLAG: [L112](commissioning/stiffness-test.md#indicators-1-and-2-are-the-pair-that-matters-most) — *The stiffness test: push the nose, find where it moves / Pu…*<br>Indicators 1 and 2 are the pair that matters most A nose reading mixes two things that matter very differently:
 - OPEN: [L219](commissioning/stiffness-test.md#then-what) — *The stiffness test: push the nose, find where it moves / Th…*<br>Whatever this test says, go back and correct the computed figures in ../machine/gantry-beam-joint.md. They are estimates with a crude beam model behind them, and a note that contradicts its own correction is worse than no note.
 
-## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)  (17)
+## [commissioning/torsion-box-as-built.md](commissioning/torsion-box-as-built.md)  (16)
 
 - FLAG: [L79](commissioning/torsion-box-as-built.md#the-y-block-gap-comes-out-under-what-the-x-assembly-needs) — *The torsion box, as built*<br>The Y block gap comes out under what the X assembly needs Measured between the two Y bearing blocks' faces, tape hooked magnetically on one block so the reading is repeatable single-handed. All 28 T-slot bolts torqued, all sixteen rear bolts in, no tongue bolts yet.
 - FLAG: [L126](commissioning/torsion-box-as-built.md#the-y-block-gap-comes-out-under-what-the-x-assembly-needs) — *The torsion box, as built / The Y block gap comes out under…*<br>The gauge panel may be a FOURTH measurement of the taper rather than an exoneration. It gains going AFT, which is the same sign as all three rail readings, and "a millimetre at most" is the same order of size. It is also the best instrument of the four - the panel is its own gauge, so nothing about it is an absolute metre span read by eye, which is what the other three are.
@@ -310,8 +310,7 @@ the interface, not this file.
 - FLAG: [L814](commissioning/torsion-box-as-built.md#the-tee-track-beds-end-fixing-as-it-will-actually-be-built) — *The torsion box, as built / The tee track bed's end fixing,…*<br>The bed ends are already drilled 4.2 and tapped M5, 15 deep. They are from the screw scheme and nothing uses them now. Leave them - they are harmless and they are recorded so that finding them later does not start an investigation.
 - OPEN: [L834](commissioning/torsion-box-as-built.md#the-span-between-the-y-bearing-block-faces-measured-with-the-bar-in) — *The tee track bed's end fixing, as it will actually be buil…*<br>The reading is to the millimetre, so the 0.62 is the most the spread can be and may be none of it. Take it again to a tenth before treating it as real.
 - FLAG: [L837](commissioning/torsion-box-as-built.md#the-span-between-the-y-bearing-block-faces-measured-with-the-bar-in) — *The tee track bed's end fixing, as it will actually be buil…*<br>If it is real, it is slack the gantry has to pull out. The X beam and its end plates are 1024.38; bolted to blocks further apart than that they draw the two blocks together, which pulls the Y rails toward each other - the ordinary way a gantry ends up fighting its own bearings. Take it out at the Y rails, not at the gantry: the rail holes are clearance on an M5 and the rails are set one fastener at a time against a locked first rail, which is where a spread of this size belongs.
-- OPEN: [L844](commissioning/torsion-box-as-built.md#the-span-between-the-y-bearing-block-faces-measured-with-the-bar-in) — *The tee track bed's end fixing, as it will actually be buil…*<br>This reads "bearing block faces" as the MOUNTING faces the end plates bolt to. The measurement only lands near the design figure on that reading, which is evidence for it rather than proof - say so if it was taken somewhere else.
-- FLAG: [L851](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
+- FLAG: [L850](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on) — *The torsion box, as built*<br>Check the rear plate's overhang before the side laminations go on The sides were cut 1211, where the drawing has them start 6.19 forward of the box's back edge. That offset exists for one reason: the rear plate's end overhangs the box by 2.66, and a side lamination running all the way back to the back face runs into it.
 
 ## [wiring/breakout-box.md](wiring/breakout-box.md)  (12)
 
@@ -362,4 +361,4 @@ the interface, not this file.
 
 ---
 
-**265 open** across 35 files.
+**264 open** across 35 files.
