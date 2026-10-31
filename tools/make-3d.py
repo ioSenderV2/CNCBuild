@@ -1276,8 +1276,10 @@ def main() -> int:
     # there is nothing under them - see machine/spoilboard.md.
     #
     # They run ACROSS the machine at 1193.8, which is SHORTER than the 1204.38
-    # between the side plates' inside faces, so TT_BED_SPACER sits at each end
-    # rather than the plates being cut. The MDF above them is NOT drawn: it is
+    # between the side plates' inside faces. THE BED BUTTS THE Y1 PLATE and the
+    # whole TT_BED_END_GAP is at Y2, taken by one maple bar drawn below - so the
+    # bed starts at the Y1 plate's inside face with nothing before it, rather
+    # than being centred with a gap each side. The MDF above them is NOT drawn: it is
     # sacrificial, it gets skimmed, and its thickness is a choice at build time.
     #
     # The fore-aft placement is a PLACEHOLDER - TT_BED_Y0's note says so.
@@ -1291,7 +1293,7 @@ def main() -> int:
     #
     # His breakdown of the 250: 2 x 16 end flats + 7 x 22 inner flats + 8 x 8
     # slots. TT_PLATE_W_CHECK sums it and closes on TT_BED_PLATE_W exactly.
-    bed_x0 = v["T_SIDE_PLATE"] + v["TT_BED_SPACER"]
+    bed_x0 = v["T_SIDE_PLATE"]
     bed_x1 = bed_x0 + v["TT_BED_L"]
     bed_y0, bed_pw = v["TT_BED_Y0"], v["TT_BED_PLATE_W"]
     n_slots, sw = int(v["TT_SLOTS"]), v["TT_SLOT_W"]
@@ -1433,25 +1435,27 @@ def main() -> int:
                          "worst - it must never stand proud of a sheet the "
                          "machine skims")
 
-    # THE TT_BED_SPACER GAP AT EACH END IS A MAPLE BAR, and it IS drawn - his,
-    # 2026-10-31. This was the one case the model deliberately left empty, on the
-    # reasoning that the gap was taken up on each bolt and there was no part with a
-    # footprint; a bar had been considered and rejected because 5.29 is not a
-    # flat-bar thickness anybody stocks. A MILLED bar escapes that, so the part is
-    # real and the sixteen bolts it replaces are gone.
+    # THE END GAP IS ONE MAPLE BAR ON THE Y2 SIDE, and it IS drawn. This was the
+    # one case the model deliberately left empty, on the reasoning that the gap
+    # was taken up on each of sixteen bolts and no part had a footprint here; a
+    # bar had been considered and rejected because the gap is not a flat-bar
+    # thickness anybody stocks. A MILLED bar escapes that, so the part is real
+    # and the bolts it replaces are gone.
     #
-    # It is drawn at TT_BED_BAR_T and not at the TT_BED_SPACER gap: the 0.29 a side
-    # left over is TT_BED_FLOAT, which is the bed's slack and must stay visible as
-    # slack rather than being closed in the drawing.
-    bar_t, bar_h = v["TT_BED_BAR_T"], v["TT_BED_T"]
+    # DRAWN AT THE GAP, NOT AT THE STOCK. TT_BED_BAR_T is 10.6 against a gap of
+    # 10.58 because the bar is CUT TO FIT and starts a hair proud - drawing the
+    # 10.6 would overlap the side plate by 0.02 and read as a clash rather than
+    # as the planing allowance it is.
+    bar_x0, bar_h = bed_x1, v["TT_BED_T"]
+    bar_x1 = bar_x0 + v["TT_BED_END_GAP"]
     bar_y1 = bed_y0 + v["TT_BED_FORE_AFT"]
-    for x0 in (v["T_SIDE_PLATE"], bed_x1 + v["TT_BED_FLOAT"]):
-        box("Bed end bar", "bed", 0xC8A87A, x0, bed_y0, 0.0,
-            x0 + bar_t, bar_y1, bar_h,
-            d=f"hard maple, {bar_t:g} x {bar_y1 - bed_y0:g} x {bar_h:g} - it "
-              f"fills the end gap so the bed is captured ACROSS the machine the "
-              f"way it is already captured fore-aft, and closes the chip seam "
-              f"along the side plate")
+    box("Bed end bar", "bed", 0xC8A87A, bar_x0, bed_y0, 0.0,
+        bar_x1, bar_y1, bar_h,
+        d=f"hard maple, cut to fit - {v['TT_BED_END_GAP']:g} x "
+          f"{bar_y1 - bed_y0:g} x {bar_h:g}, milled from TT_BED_BAR_T's 10.6. "
+          f"The bed butts the Y1 plate and this takes the whole gap at Y2, so "
+          f"the bed is captured ACROSS the machine the way it is already "
+          f"captured fore-aft, and the chip seam along this plate is closed")
 
     # ---- the front cap and the two side caps ------------------------------
     # The front has NO TONGUE: this cap is the same 25 stock and the same 44

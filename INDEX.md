@@ -426,6 +426,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Drilling the tongue holes: go in from outside](commissioning/torsion-box-as-built.md#drilling-the-tongue-holes-go-in-from-outside)
 - [Both casting windows are open-sided - one by accident, one on purpose](commissioning/torsion-box-as-built.md#both-casting-windows-are-open-sided---one-by-accident-one-on-purpose)
 - [The tee track bed's end fixing, as it will actually be built](commissioning/torsion-box-as-built.md#the-tee-track-beds-end-fixing-as-it-will-actually-be-built)
+  - [The span between the Y bearing block faces, measured with the bar in](commissioning/torsion-box-as-built.md#the-span-between-the-y-bearing-block-faces-measured-with-the-bar-in)
 - [Check the rear plate's overhang before the side laminations go on](commissioning/torsion-box-as-built.md#check-the-rear-plates-overhang-before-the-side-laminations-go-on)
 
 ## [wiring/breakout-box.md](wiring/breakout-box.md)

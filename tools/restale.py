@@ -184,8 +184,15 @@ def main():
             # 24 it was reported as stale prose in three-point-mount.md - on a
             # line whose subject is which extrusion NOT to rebuild the base in.
             # The name words matched only because that line says "base".
-            for m in re.finditer(r"(?<![\w.\-{])(\d{1,5}(?:\.\d{1,4})?)"
-                                 r"(?![\w.]|-\w|\s*\}\})", line):
+            # A FRACTION IS NOT TWO NUMBERS. The day TT_BED_BAR_T went 5 to 10.6
+            # this reported the 5 in `5/8" aluminium bar` on the Z spacer bar
+            # sheet - a part with no connection to the bed at all, matched
+            # because that line also says "bar". --apply would have written
+            # 10.6/8". This repo quotes imperial fractions constantly, so a
+            # numerator or denominator is excluded outright: a digit touching a
+            # slash is part of a fraction or a path, never a quoted value.
+            for m in re.finditer(r"(?<![\w.\-{/])(\d{1,5}(?:\.\d{1,4})?)"
+                                 r"(?![\w./]|-\w|\s*\}\})", line):
                 if any(a <= m.start() and m.end() <= b for a, b in cells):
                     continue                    # a machining coordinate
                 lit = fmt(float(m.group(1)))

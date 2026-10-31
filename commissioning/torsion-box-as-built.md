@@ -782,18 +782,28 @@ NOTE: **Paint the ground edges.** Bare steel in a corner that gets wet, next to 
 
 ## The tee track bed's end fixing, as it will actually be built
 
-SETTLED: **NO SCREWS. One continuous hard maple bar per side**, {{TT_BED_BAR_T}} thick,
-{{TT_BED_T}} tall, running the bed's {{TT_BED_FORE_AFT}} fore-aft. It stands on the top skin and
-fills the gap between the bed's end and the side plate's inside face.
+SETTLED: **NO SCREWS. The bed butts the Y1 side plate, and ONE hard maple bar takes the whole gap at
+Y2** - {{TT_BED_END_GAP}} of it, {{TT_BED_T}} tall, running the bed's {{TT_BED_FORE_AFT}} fore-aft.
+It stands on the top skin between the bed's end and that plate's inside face.
+
+🔴 **The bar is CUT TO FIT.** {{TT_BED_BAR_T}} is where to start - the gap rounded up, so the bar
+begins a hair proud and is planed in against the real parts. It is not a dimension to work to.
 
 **What it is for:** the bed is captured fore-aft exactly - the clear run from the rear plate's front
 face to the fin's back face is {{BEAM_LEN}} and four plates are {{TT_BED_FORE_AFT}}, so
 TT_BED_FORE_AFT_CHECK is zero. **Across the machine it is not captured**, and that is the only axis
-with any freedom: {{TT_BED_SPACER}} a side. The bars make across match fore-aft, and the bed is then
-pinned both ways by the parts around it with nothing fastening it to anything.
+with any freedom. Butting one side and filling the other makes across match fore-aft, and the bed is
+then pinned both ways by the parts around it with nothing fastening it to anything.
+
+**One bar and not two**, because butting gives the bed a definite position rather than leaving two
+fits to get right.
 
 **Nothing here is structural and nothing holds the bed down.** It beds flat on the box and gravity
-holds the stack. The bars only stop it walking, which is what the screws did.
+holds the stack. The bar only stops it walking, which is what the screws did.
+
+FLAG: **Driven in hard the bar spreads the side plates, and the side plates carry the Y beams.**
+That is the one way this part can reach the machine's geometry. Y_BLOCK_FACE_SPAN_MEAS is the
+measurement that watches it - see below.
 
 FLAG: **This deletes the sixteen 14 mm access bores through the {{T_BOX_TONGUE}} tongue**, and with
 them the assembly order they forced. The tongue is the outermost layer, so every screw had to be
@@ -806,8 +816,34 @@ from the screw scheme and nothing uses them now. Leave them - they are harmless 
 recorded so that finding them later does not start an investigation.
 
 **Grain along the length.** The {{TT_BED_BAR_T}} is across the grain, where seasonal movement is a
-few hundredths on a dimension that small, and a bar that swells only wedges tighter. TT_BED_FLOAT is
-the {{TT_BED_FLOAT}} a side the 5 leaves against the {{TT_BED_SPACER}} gap.
+few hundredths on a dimension that small, and a bar that swells only wedges tighter.
+
+### The span between the Y bearing block faces, measured with the bar in
+
+| | |
+|---|---|
+| Designed | **{{Y_BLOCK_FACE_SPAN}}** - Y_BEAM_GAP less a rail-and-block stack each side |
+| Measured, bed and bar inserted | **{{Y_BLOCK_FACE_SPAN_MEAS}}** |
+| Spread | **{{Y_BLOCK_FACE_SPAN_SPREAD}}** |
+
+**This is the one span the drawing has no opinion left on.** The gantry fills it by construction -
+{{BEAM_LEN}} of X beam plus two end plates is the same {{Y_BLOCK_FACE_SPAN}}, which is
+Y_BEAM_GAP's own chain read inward instead of outward - so paper cannot disagree with itself here
+and only the parts can answer.
+
+OPEN: **The reading is to the millimetre, so the {{Y_BLOCK_FACE_SPAN_SPREAD}} is the most the spread
+can be and may be none of it.** Take it again to a tenth before treating it as real.
+
+FLAG: **If it is real, it is slack the gantry has to pull out.** The X beam and its end plates are
+{{Y_BLOCK_FACE_SPAN}}; bolted to blocks further apart than that they draw the two blocks together,
+which pulls the Y rails toward each other - the ordinary way a gantry ends up fighting its own
+bearings. **Take it out at the Y rails, not at the gantry:** the rail holes are clearance on an M5
+and the rails are set one fastener at a time against a locked first rail, which is where a spread of
+this size belongs.
+
+OPEN: **This reads "bearing block faces" as the MOUNTING faces the end plates bolt to.** The
+measurement only lands near the design figure on that reading, which is evidence for it rather than
+proof - say so if it was taken somewhere else.
 
 NOTE: **Coat the side plate's inside face where the bar lands.** Wood against bare steel holds
 moisture against it; the band under the bar is the one place on that face something sits.

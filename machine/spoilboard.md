@@ -380,10 +380,10 @@ face at 1006.35** is exactly **1000 - BEAM_LEN** - and four 250 plates are exact
 rear plate and finishes on the fin.
 
 FLAG: **Across the machine the capture is a part, not the geometry.** The bed is **1193.8** into the
-**1204.38** between the side plates, so there is {{TT_BED_SPACER}} a side and the two directions are
-not the same kind of fit. **A {{TT_BED_BAR_T}} hard maple bar per side fills it** - see the as-built
-note. Reading the across fit as free the way fore-aft is free is the mistake this flag exists to
-stop.
+**1204.38** between the side plates, so there is {{TT_BED_END_GAP}} spare and the two directions are
+not the same kind of fit. **The bed butts the Y1 plate and one cut-to-fit hard maple bar takes the
+whole gap at Y2** - see the as-built note. Reading the across fit as free the way fore-aft is free is
+the mistake this flag exists to stop.
 
 OPEN: **This was briefly recorded as a free choice and it never was one.** `TT_BED_Y0` carried a note
 saying he had not placed the bed fore-aft; his answer, 2026-10-11, is that the geometry had already
@@ -392,9 +392,10 @@ placed it. `TT_BED_FORE_AFT_CHECK` now subtracts the bed's depth from the beam l
 
 ## SETTLED: The end gap is a maple bar, and that closed three things at once
 
-**One continuous hard maple bar per side** - {{TT_BED_BAR_T}} thick, {{TT_BED_T}} tall, running the
-bed's {{TT_BED_FORE_AFT}} - standing on the top skin between the bed's end and the side plate's
-inside face. His, 2026-10-31. It replaces sixteen M5 screws through the side plates, each on a 5 mm
+**The bed butts the Y1 side plate, and ONE hard maple bar takes the whole gap at Y2** -
+{{TT_BED_END_GAP}} of it, {{TT_BED_T}} tall, running the bed's {{TT_BED_FORE_AFT}}, standing on the
+top skin. His. 🔴 **Cut to fit:** {{TT_BED_BAR_T}} is the gap rounded up, so the bar starts a hair
+proud and is planed in. It replaces sixteen M5 screws through the side plates, each on a 5 mm
 aluminium spacer.
 
 | What it replaced | Why it is gone |
