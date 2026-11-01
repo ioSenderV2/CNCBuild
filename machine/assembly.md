@@ -460,7 +460,13 @@ one; nothing below the top edge moves.
 
 | | |
 |---|---|
-| To the X beam | **4 × M8** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
+| To the X beam | **4 × M8 LOW PROFILE flange** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
+
+🔴 **Low profile flange, not standard, and it is the head that decides it.** The bottom two of the
+four sit directly over the bearing blocks. **A standard M8 flange will not go** — the flange is too
+big around and fouls the block. A low profile one clears by about a millimetre. Buy one head for all
+four rather than mixing two: the top pair is unconstrained, and a split pattern is how the wrong
+bolt ends up in the wrong hole at assembly.
 | To the Y rails | **four bearing blocks** in a 2 × 2 grid across the full 154 mm — two butted in Y by two rows 90 mm apart |
 | ø35 encoder bore | **Y 77, 60 mm below the Y beam top** |
 
@@ -571,10 +577,9 @@ SETTLED: **The pattern is right.** "Block" meant the ball nut housing - the nut 
 plate on Y1 and the four holes took it, which is the part itself answering rather than a reading of
 the source.
 
-OPEN: **Open: the doubler's upper bound is not yet checked on the machine** — the lower Y bearing
-block row's bottom edge, computed to land at about −127 from the Y beam top. Same measurement as the
-sixteen block holes. **At 45 there is 10.5 of slack against it**, so that measurement would have to
-be badly wrong to matter.
+SETTLED: **The doubler clears the lower bearing block row** — at least 10 mm of daylight above it on
+the assembled Y1, against a computed 10.5 of slack at a doubler height of 45. The computation was
+right and the bound is not close.
 
 ---
 

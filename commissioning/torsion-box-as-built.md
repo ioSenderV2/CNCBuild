@@ -831,15 +831,20 @@ few hundredths on a dimension that small, and a bar that swells only wedges tigh
 Y_BEAM_GAP's own chain read inward instead of outward - so paper cannot disagree with itself here
 and only the parts can answer.
 
-OPEN: **The reading is to the millimetre, so the {{Y_BLOCK_FACE_SPAN_SPREAD}} is the most the spread
-can be and may be none of it.** Take it again to a tenth before treating it as real.
+SETTLED: **There is no spread, and the gantry is what settled it.** The X beam went in between the
+two end plates as an exact fit - wiggled slightly to enter and otherwise perfect - so the real span
+is at the gantry's own {{Y_BLOCK_FACE_SPAN}} and the {{Y_BLOCK_FACE_SPAN_SPREAD}} is the resolution
+of a reading taken to the millimetre.
 
-FLAG: **If it is real, it is slack the gantry has to pull out.** The X beam and its end plates are
-{{Y_BLOCK_FACE_SPAN}}; bolted to blocks further apart than that they draw the two blocks together,
-which pulls the Y rails toward each other - the ordinary way a gantry ends up fighting its own
-bearings. **Take it out at the Y rails, not at the gantry:** the rail holes are clearance on an M5
-and the rails are set one fastener at a time against a locked first rail, which is where a spread of
-this size belongs.
+FLAG: **A part that fits is a finer instrument than a tape across the same faces, and that is the
+general lesson.** The gantry is a go gauge of exactly the designed length: whether it enters answers
+the span far closer than the millimetre the tape could offer. **The tape bounded it; the part
+settled it.**
+
+NOTE: **What it would have meant had it been real** - slack the gantry pulls out, drawing the two
+blocks together and the Y rails toward each other, which is the ordinary way a gantry ends up
+fighting its own bearings. The place to take that out is the Y rails, whose holes are clearance on
+an M5 and which are set one fastener at a time against a locked first rail.
 
 SETTLED: **The faces are the MOUNTING faces the end plates bolt to** - his, confirmed, so the
 measurement and the designed span are the same pair of surfaces and the comparison above holds.
