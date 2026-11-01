@@ -567,8 +567,9 @@ M6 is correct there; nothing from the nut lands in the end plate's edge.
 at **±20 mm in X and ±12 mm in Y** about the nut face centre. The nut's mounting face is **40 × 52**,
 its long dimension running **along X**.
 
-OPEN: **If "block" in the source meant anything other than the ball nut housing, these four holes are
-90° out.** Confirm against the real part before drilling.
+SETTLED: **The pattern is right.** "Block" meant the ball nut housing - the nut is bolted to the sole
+plate on Y1 and the four holes took it, which is the part itself answering rather than a reading of
+the source.
 
 OPEN: **Open: the doubler's upper bound is not yet checked on the machine** — the lower Y bearing
 block row's bottom edge, computed to land at about −127 from the Y beam top. Same measurement as the
