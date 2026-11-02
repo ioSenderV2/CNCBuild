@@ -272,6 +272,37 @@ provenance = "pinned"
 note = "80, the two Y block centres apart along the rail - CHOSEN, his, and the one number the P pattern hangs on. 🔴 IT IS NOT A MEASUREMENT AND MUST NEVER BECOME ONE. A pattern taken off BLOCK_BUTTED / 4 demands a block pitch of 77.0, which is tighter than two butted blocks can physically reach, and a plate cut to it will not take its second block. FLAG: DO NOT SPECIFY THE GAP, SPECIFY THE ROWS. The gap is not something you set; it is what happens once the blocks are bolted to rows that are already drilled. Same rule as Z_BLOCK_CENTRE_SEP, which this now matches in kind - Z chose 87 and Y chooses 80. It puts the four rows on 19 / 55 / 99 / 135, all whole and symmetric about the plate."
 
 [[dim]]
+sym = "X_BLOCK_CENTRE_SEP"
+value = 78
+provenance = "pinned"
+note = "78, the two X carriage block centres apart along the rail - AS CUT. Read out of the DXF that went to the waterjet: the sixteen o5.2 sit on Y rows 20 / 56 / 98 / 134, so 36 within a block and 42 between them. FLAG: IT IS A MILLIMETRE CLEARER THAN THE Y END PLATE'S OLD PATTERN, which demanded 77.0 and would not assemble. Against a block body read at 77.0 to 77.5 this leaves 0.5 to 1.0 of air, so it goes together as drawn. 🔴 THE PLATE HAS NO FALLBACK IF IT DOES NOT. Each block's four outer holes sit under a Z rail and must stay counterbored cap screws, so only four of its eight could ever take a flange head - and a joint where half the holes can float and half cannot still jams. Offer the blocks up before opening the pilots. NOTE: THE PILOTS ARE 2 mm, so the separation is still a choice until they are opened; a row moved by 1 would swallow its pilot inside the new o5.2 rather than leave a figure-eight, but a twist drill pulls into an off-centre pilot and it would want an end mill."
+
+[[dim]]
+sym = "X_BLOCK_ROW_Y1"
+expr = "BLOCK_CENTROID_Y - (X_BLOCK_CENTRE_SEP / 2) - BLOCK_BOLT_HALF_Y"
+note = "20 - first of the X carriage plate's four block rows. It shares BLOCK_CENTROID_Y with the end plate because both plates are XEP_W across the rail."
+
+[[dim]]
+sym = "X_BLOCK_ROW_Y2"
+expr = "X_BLOCK_ROW_Y1 + BLOCK_PITCH_Y"
+note = "56 - second block row, the far hole of the near block."
+
+[[dim]]
+sym = "X_BLOCK_ROW_Y3"
+expr = "BLOCK_CENTROID_Y + (X_BLOCK_CENTRE_SEP / 2) - BLOCK_BOLT_HALF_Y"
+note = "98 - third block row, the near hole of the far block."
+
+[[dim]]
+sym = "X_BLOCK_ROW_Y4"
+expr = "X_BLOCK_ROW_Y3 + BLOCK_PITCH_Y"
+note = "134 - fourth block row. These four exist so Sheet 3a can cite them instead of carrying four literals, which is how the end plate's rows went wrong in the same file."
+
+[[dim]]
+sym = "X_BLOCK_GAP"
+expr = "X_BLOCK_CENTRE_SEP - BLOCK_BODY_L"
+note = "0.91 - the clear air between the two X carriage block bodies on the nominal body length. FLAG: IT IS THE TIGHTEST BLOCK GAP ON THE MACHINE - Y has Y_BLOCK_GAP and Z has Z_BLOCK_GAP, both far looser. It is positive and the plate is cut, so it stands; it is recorded because it is the one of the three that a slightly long block body would close."
+
+[[dim]]
 sym = "Y_BLOCK_GAP"
 expr = "Y_BLOCK_CENTRE_SEP - BLOCK_BODY_L"
 note = "2.91, the clear air between the two Y block bodies. It is an OUTCOME, not a specification - see Y_BLOCK_CENTRE_SEP. What it buys is that the pattern no longer depends on the blocks touching, so a block body anywhere in the range the calipers can actually resolve still bolts up."

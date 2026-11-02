@@ -1051,7 +1051,13 @@ numbers &#8212; they are 2a&#8217;s.</b></figcaption>
   <circle cx="380.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="380.00" y="16.0" fill="#b06000" text-anchor="middle">R14</text>
 
-  <!-- X1-X16, ACROSS X THEN UP IN Y: X1-X4 is the whole Y 20 row across both blocks. -->
+  <!-- X1-X16, ACROSS X THEN UP IN Y: X1-X4 is the whole Y 20 row across both blocks.
+       THE cy VALUES HERE ARE FLIPPED - drawn cy is 154 less the part's Y, so cy 134 is
+       row Y 20. That is why these are literals while the schedule below cites
+       X_BLOCK_ROW_Y1..Y4: substituting here would need four more symbols existing only
+       for the flip. THE SCHEDULE IS THE AUTHORITY and the DXF reads it, not this picture.
+       Safe only because the plate is CUT and X_BLOCK_CENTRE_SEP is pinned as-cut; if that
+       ever moves, these eight circles have to be re-flipped by hand. -->
   <circle cx="30.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
   <circle cx="30.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
   <text class="ref" x="30.00" y="129.5" fill="#06c" text-anchor="middle">X1</text>
@@ -1183,7 +1189,7 @@ twice.</figcaption>
 <tr><td>F1, F2</td><td>2</td><td class="n">10</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <tr><td>K1&ndash;K6</td><td>6</td><td class="n">355.5, 368.5, 398.5</td><td class="n">54, 100</td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <tr><td><b>S1</b></td><td>1</td><td class="n">91</td><td class="n">77</td><td class="d">35</td><td class="op">Through</td></tr>
-<tr><td>X1&ndash;X16</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n">20, 56, 98, 134</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b></td></tr>
+<tr><td>X1&ndash;X16</td><td>16</td><td class="n">30, 62, 120, 152</td><td class="n"><b>{{X_BLOCK_ROW_Y1}}, {{X_BLOCK_ROW_Y2}}, {{X_BLOCK_ROW_Y3}}, {{X_BLOCK_ROW_Y4}}</b></td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b><br>&#128308; <b>NOT adjustable later</b></td></tr>
 <tr><td><b>XD1&ndash;XD4</b></td><td>4</td><td class="n"><b>186</b></td><td class="n"><b>32, 62, 92, 122</b></td><td class="d">6</td><td class="op">Through &middot; the doubler of Sheet 2d bolts here, carrying the X ball nut &mdash; <b>new 2026-10-09</b></td></tr>
 <tr><td><b>TS1, TS2</b></td><td>2</td><td class="n"><b>322.7</b></td><td class="n"><b>62, 92</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
