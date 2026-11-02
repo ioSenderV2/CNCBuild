@@ -461,14 +461,28 @@ one; nothing below the top edge moves.
 | | |
 |---|---|
 | To the X beam | **4 × M8 LOW PROFILE flange** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
-
-🔴 **Low profile flange, not standard, and it is the head that decides it.** The bottom two of the
-four sit directly over the bearing blocks. **A standard M8 flange will not go** — the flange is too
-big around and fouls the block. A low profile one clears by about a millimetre. Buy one head for all
-four rather than mixing two: the top pair is unconstrained, and a split pattern is how the wrong
-bolt ends up in the wrong hole at assembly.
 | To the Y rails | **four bearing blocks** in a 2 × 2 grid across the full 154 mm — two butted in Y by two rows 90 mm apart |
 | ø35 encoder bore | **Y 77, 60 mm below the Y beam top** |
+
+🔴 **Low profile flange on the four M8, not standard, and it is the head that decides it.** The bottom
+two of the four sit directly over the bearing blocks. **A standard M8 flange will not go** — the
+flange is too big around and fouls the block. A low profile one clears by about a millimetre. Buy
+one head for all four rather than mixing two: the top pair is unconstrained, and a split pattern is
+how the wrong bolt ends up in the wrong hole at assembly.
+
+🔴 **The sixteen P holes in both cut plates are 0.09 narrow between the two blocks' groups, and the
+holes get opened.** The blocks butt hard and the second group still will not reach. The rows belong
+at **{{BLOCK_ROW_Y1}}, {{BLOCK_ROW_Y2}}, {{BLOCK_ROW_Y3}}, {{BLOCK_ROW_Y4}}** — a span of
+{{BLOCK_ROW_SPAN}} — and both plates were cut on a sheet that had rounded the outer rows inboard to
+20.5 and 97.5, giving 113.0. **Open the clearance holes rather than touching the blocks:** these
+thread into tapped M5 in the block, nothing is located by them, and the plate is positioned by its
+seating on the block faces and by the beam. The plate has to come off to do it — the blocks are
+behind the holes.
+
+OPEN: **The opened diameter is not chosen.** ø5.5 gives 0.25 of radial float against the 0.1 a ø5.2
+leaves, which takes the 0.09 with room over and keeps full head bearing under an M5 socket cap. ø6
+has precedent on this machine at the Z top stop. **Only the group that misses strictly needs it** —
+8 holes a plate, not 16 — though opening all four groups means not remembering which is which.
 
 **The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
 a shelf.

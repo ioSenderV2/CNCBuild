@@ -479,22 +479,22 @@ it waits on checklist item 1.</p>
 
   <!-- four HGH20 blocks, centred on the rails at X 80 and 170 (outside T-slots, 90 apart):
        upper row X 148-192, lower X 58-102; two butted in Y -->
-    <circle cx="154.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="154.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="154.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="154.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
 
   <!-- E1-E4 into the top extrusion corner bores -->
   <g fill="#fff" stroke="#111" stroke-width="0.9">
@@ -524,7 +524,7 @@ it waits on checklist item 1.</p>
   <text class="q" x="282" y="42" fill="#06c">H1 X 89.2 &#183; H2 X 109.2 &#183; both Y 30</text>
   <text class="q" x="282" y="54">C2 &#248;35 at X 125, Y 77 &#8212; the beam SEAM</text>
   <text class="q" x="282" y="70" fill="#c0c">the four blocks and their 16 M5 are placed</text>
-  <text class="q" x="282" y="82" fill="#c0c">X 64, 96, 154, 186 &#183; Y 20.5, 56.5, 97.5, 133.5</text>
+  <text class="q" x="282" y="82" fill="#c0c">X 64, 96, 154, 186 &#183; Y {{BLOCK_ROW_Y1}}, {{BLOCK_ROW_Y2}}, {{BLOCK_ROW_Y3}}, {{BLOCK_ROW_Y4}}</text>
   <text class="q" x="282" y="98" fill="#b06000">amber = parts on other sheets</text>
   <text class="q" x="282" y="110" fill="#0a6">green = the X beam extrusions</text>
   <text class="q" x="282" y="126" fill="#555">reference outlines are drawn INSET 0.6 so</text>
@@ -580,7 +580,7 @@ the M5 holes that fix them &middot;
 <tr><td>E1&ndash;E4</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
 <tr><td>H1</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <tr><td>H2</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
-<tr><td>P1&ndash;P16</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b></td></tr>
+<tr><td>P1&ndash;P16</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n"><b>{{BLOCK_ROW_Y1}}, {{BLOCK_ROW_Y2}}, {{BLOCK_ROW_Y3}}, {{BLOCK_ROW_Y4}}</b></td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b></td></tr>
 <tr><td>D1&ndash;D4</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler gets the same numbers on Sheet 2d</td></tr>
 <tr class="edge"><td>B1&ndash;B4</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
@@ -649,22 +649,22 @@ the M5 holes that fix them &middot;
 
   <!-- four HGH20 blocks, centred on the rails at X 80 and 170 (outside T-slots, 90 apart):
        upper row X 148-192, lower X 58-102; two butted in Y -->
-    <circle cx="154.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="154.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="154.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="154.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="186.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="133.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="97.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="64.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="56.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
-    <circle cx="96.00" cy="20.50" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="154.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="186.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y4}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y3}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="64.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y2}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
+    <circle cx="96.00" cy="{{BLOCK_ROW_Y1}}" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/>
 
   <!-- E1-E4 into the top extrusion corner bores -->
   <g fill="#fff" stroke="#111" stroke-width="0.9">
@@ -780,7 +780,7 @@ the M5 holes that fix them &middot;
 <tr><td>E1&ndash;E4</td><td>4</td><td class="n">{{XEP_E_COL_LOW}}, {{XEP_E_COL_HIGH}}</td><td class="n">15, 45</td><td class="d">9</td><td class="op">Through &middot; <b>scribed layout</b></td></tr>
 <tr><td>H1</td><td>1</td><td class="n">{{SHELF_BOLT_LOW_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
 <tr><td>H2</td><td>1</td><td class="n">{{SHELF_BOLT_HIGH_X}}</td><td class="n">30</td><td class="d">6.8</td><td class="op"><b>DRILL THROUGH</b></td></tr>
-<tr><td>P1&ndash;P16</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n">20.5, 56.5, 97.5, 133.5</td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b></td></tr>
+<tr><td>P1&ndash;P16</td><td>16</td><td class="n"><b>{{BLOCK_LOW_COL_A}}, {{BLOCK_LOW_COL_B}}, {{BLOCK_HIGH_COL_A}}, {{BLOCK_HIGH_COL_B}}</b></td><td class="n"><b>{{BLOCK_ROW_Y1}}, {{BLOCK_ROW_Y2}}, {{BLOCK_ROW_Y3}}, {{BLOCK_ROW_Y4}}</b></td><td class="d">5.2</td><td class="op">Through &middot; <b>C&rsquo;BORED</b></td></tr>
 <tr><td>D1&ndash;D4</td><td>4</td><td class="n">{{DOUBLER_BOLT_X_PLATE}}</td><td class="n">32, 62, 92, 122</td><td class="d">6</td><td class="op">Through &middot; <b>drilled in this plate alone</b> &mdash; the doubler carries the same numbers on Sheet 2d</td></tr>
 <tr class="edge"><td>B1&ndash;B4</td><td>4</td><td class="n">{{DOUBLER_BOTTOM_X}} <span class="tn">the doubler's end face</span></td><td class="n">32, 62, 92, 122</td><td class="d">4.2</td><td class="op">Through</td></tr>
 <tr><td><b>G1, G2</b></td><td>2</td><td class="n"><b>{{TONGUE_BF12_ROW1}}</b></td><td class="n"><b>7, 53</b></td><td class="d">4.2</td><td class="op"><b>DRILL THROUGH</b></td></tr>
