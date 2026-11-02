@@ -56,10 +56,9 @@ GROUPS = [
     {
         "out": "quote-2-aluminium.html",
         "title": "Waterjet quote - 6061 plates",
-        "lead": "Five drawings, all <b>6061</b>: the <b>two Y front fins</b> "
+        "lead": "Four drawings, all <b>6061</b>: the <b>two Y front fins</b> "
                 "nested in one square of 10 mm plate, the <b>two X gantry end "
-                "plates</b>, the <b>three doubler blocks</b>, the <b>X "
-                "carriage plate</b> and the <b>Z plate</b>. "
+                "plates</b> and the <b>three doubler blocks</b>. "
                 "<b>The material is supplied throughout</b> "
                 "- every outline is the piece handed over, drawn to register "
                 "against, and only the fins' two profiles are a cut. "
@@ -67,13 +66,33 @@ GROUPS = [
                 "out on the drawing</b> - please say if it is too tight for your "
                 "kerf. On the end plates the origin is on the part's factory "
                 "long edge, not the sawn one. <b>The X carriage plate's sixteen "
-                "&oslash;5.2 holes are counterbored and that is not part of this "
                 "job</b> - cut them through at 5.2 and the counterbores are done "
-                "here. <b>The Z plate is the same: its sixteen &oslash;6 C-holes "
-                "are drawn at final size and their counterbores are done here.</b>",
+                "here.",
         "files": ["4-front-fins.dxf", "5-x-end-plate-left.dxf",
-                  "6-x-end-plate-right.dxf", "7-doublers.dxf",
-                  "8-x-carriage-plate.dxf", "9-z-plate.dxf"],
+                  "6-x-end-plate-right.dxf", "7-doublers.dxf"],
+    },
+    # THE TWO PLATES THE SHOP SUPPLIES THE METAL FOR - his, and it is why they
+    # are their own request rather than two more drawings in quote 2. Every
+    # other 6061 part is a piece he hands over, so there the outline registers
+    # the holes and is not cut; on these the outline IS a cut. One envelope
+    # cannot say both without the shop having to work out which line is which.
+    {
+        "out": "quote-3-carriage-and-z.html",
+        "title": "Waterjet quote - X carriage and Z plates, material supplied by the shop",
+        "lead": "Two drawings, both <b>1/2in 6061</b>: the <b>X carriage "
+                "plate</b> and the <b>Z plate</b>. 🔴 <b>Please supply the "
+                "material for these two</b> - unlike our other requests, "
+                "nothing is being handed over, so <b>the outline on each "
+                "drawing is a CUT line</b>: profile and holes both. "
+                "<b>Neither part has been made before</b>, so there is no "
+                "existing piece to match. "
+                "<b>The counterbores are not part of this job</b> - the X "
+                "carriage plate's sixteen &oslash;5.2 and the Z plate's "
+                "sixteen &oslash;6 are drawn at the size to cut them, and "
+                "they are counterbored here afterwards. "
+                "Origin is the lower-left corner on both, which is also each "
+                "plate's installed bottom-left.",
+        "files": ["8-x-carriage-plate.dxf", "9-z-plate.dxf"],
     },
 ]
 

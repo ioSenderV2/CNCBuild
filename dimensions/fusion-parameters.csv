@@ -36,6 +36,10 @@ BEAM_FRONT_FROM_BACK_EDGE,mm,60,"[alias] The X beam's front face, from the plate
 BLOCK_CENTROID_Y,mm,77,"[derived] Y block group centroid, from the plate's back edge"
 Y_BLOCK_CENTRE_SEP,mm,80,"[pinned] 80, the two Y block centres apart along the rail - CHOSEN, his, and the one number the P pattern hangs on. 🔴 IT IS NOT A MEASUREMENT AND MUST NEVER BECOME ONE. A pattern taken off BLOCK_BUTTED / 4 demands a block pitch of 77.0, which is tigh"
 X_BLOCK_CENTRE_SEP,mm,80,"[pinned] 80, the two X carriage block centres apart along the rail - CHOSEN, his, and the same number Y uses so the machine carries one. Against the measured BLOCK_BODY_L_XZ it leaves X_BLOCK_GAP of air. 🔴 IT MUST EXCEED BLOCK_BODY_L_XZ AND 78 DOES N"
+Z_RAIL_INSET_FAR,mm,143,"[derived] 143 - the FAR Z rail's centreline, measured from the same edge as everything else on the plate. 🔴 IT IS NOT THE NEAR INSET RE-CENTRED. Sheet 3a's R rows carried 20 and 134, and re-centring those on a wider plate gives 28 and 142 - a 114 pit"
+K_COL_1,mm,402,"[derived] 402 - K3 and K6, the casting's first bolt row in the plate's frame. 🔴 THE PLATE IS MEASURED FROM ITS BOTTOM AND THE CASTING HANGS OFF THE TOP, so every K column is the plate's length less a casting row. That is the whole reason this is deri"
+K_COL_2,mm,372,[derived] 372 - K2 and K5.
+K_COL_3,mm,359,"[derived] 359 - K1 and K4, the lowest of the three."
 X_BLOCK_ROW_Y1,mm,27,"[derived] 27 - first of the X carriage plate's four block rows, and 27 of edge distance with it. It takes X_CARRIAGE_CENTROID_Y, this plate's own centre - see that symbol for why it is not the end plate's."
 X_BLOCK_ROW_Y2,mm,63,"[derived] 63 - second block row, the far hole of the near block."
 X_BLOCK_ROW_Y3,mm,107,"[derived] 107 - third block row, the near hole of the far block."

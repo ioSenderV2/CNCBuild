@@ -453,7 +453,21 @@ NOTES
 40
 5.00
 1
-STOCK 180 mm (7.087 in) x 170 mm (6.693 in) x 12.7 mm (0.500 in) 6061
+PART 180 mm (7.087 in) x 170 mm (6.693 in) x 12.7 mm (0.500 in) 6061  -  SHOP TO SUPPLY THE MATERIAL
+0
+TEXT
+8
+NOTES
+10
+0.0000
+20
+164.0000
+30
+0.0
+40
+5.00
+1
+THE OUTLINE IS A CUT LINE ON THIS DRAWING - profile and holes both
 0
 TEXT
 8

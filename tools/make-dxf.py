@@ -102,6 +102,15 @@ ORDER = [
 ]
 
 
+# THE PARTS THE SHOP CUTS FROM ITS OWN PLATE. Everything else in ORDER is a
+# piece he hands over, where the outline registers the holes and is not cut.
+# These two have never been made, so there is no piece to hand over.
+SUPPLY = {
+    'x-carriage-plate': True,
+    'z-plate': True,
+}
+
+
 def filename(slug):
     """1-back-plate, 2-side-plates, ... - the prefix is the position."""
     return f'{[s for s, _, _ in ORDER].index(slug) + 1}-{slug}'
@@ -440,9 +449,24 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
 
     ty = W + 14
     ents += text(0, ty + 20, 7, f'{title.upper()}  -  QTY {qty}', 'NOTES')
-    ents += text(0, ty + 10, 5,
-                 f'STOCK {both_units(L)} x {both_units(W)} x '
-                 f'{both_units(T)} {material}', 'NOTES')
+    # WHO SUPPLIES THE PLATE CHANGES WHAT THE OUTLINE MEANS. On a piece he hands
+    # over it is a line to register the holes against; on one the shop cuts from
+    # its own stock it is a profile to cut. Saying 'stock' over a shop-supplied
+    # part invites a quote for holes only.
+    # `name` arrives with its position prefix - 8-x-carriage-plate - and SUPPLY
+    # is keyed on the slug, which is the thing ORDER actually names.
+    if SUPPLY.get(name.split('-', 1)[1] if '-' in name else name):
+        ents += text(0, ty + 10, 5,
+                     f'PART {both_units(L)} x {both_units(W)} x '
+                     f'{both_units(T)} {material}  -  SHOP TO SUPPLY '
+                     f'THE MATERIAL', 'NOTES')
+        ents += text(0, ty - 20, 5,
+                     'THE OUTLINE IS A CUT LINE ON THIS DRAWING - profile and '
+                     'holes both', 'NOTES')
+    else:
+        ents += text(0, ty + 10, 5,
+                     f'STOCK {both_units(L)} x {both_units(W)} x '
+                     f'{both_units(T)} {material}', 'NOTES')
     ents += text(0, ty, 5, f'HOLES {bom}'
                  + ('  PER PART, BOTH PARTS DRAWN' if fins else '')
                  + (f'  +{len(cutouts)} cut-out' if cutouts else ''), 'NOTES')

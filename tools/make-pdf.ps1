@@ -78,6 +78,10 @@ $docs = @(
                                        Pdf  = 'machine/drawings/dxf/quote-1-steel.pdf' }
     [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-aluminium.html'
                                        Pdf  = 'machine/drawings/dxf/quote-2-aluminium.pdf' }
+    # The third request is the two plates the SHOP supplies the metal for, so
+    # their outlines are cuts rather than registration lines - see dxf-preview.
+    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-3-carriage-and-z.html'
+                                       Pdf  = 'machine/drawings/dxf/quote-3-carriage-and-z.pdf' }
 )
 # 'both' still means the two root documents, so an older command line keeps working
 if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }
