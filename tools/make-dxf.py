@@ -231,10 +231,29 @@ def holes_for(src, sheet, ti=None):
                     for k in range(0, len(xs), 2):
                         tgt.append((xs[k], xs[k + 1], ys[0], ys[1]))
                     continue
-                for x in xs:
-                    for y in ys:
-                        out.append((x, y, float(dia)))
+                # THE REF NUMBERING IS ACROSS X THEN UP IN Y, which is NOT the
+                # order these are appended in. Sheet 3a says it outright: X1-X4
+                # is one whole Y row across both blocks. The DXF does not care
+                # about order, but the sheet figure labels each hole and must
+                # agree with the schedule, so the rule is computed here once
+                # rather than reproduced in the drawing tool.
+                pre, start = ref_label(c[0])
+                for i, x in enumerate(xs):
+                    for j, y in enumerate(ys):
+                        n = j * len(xs) + i
+                        ref = f'{pre}{start + n}' if pre else ''
+                        out.append((x, y, float(dia), ref))
     return out, cutouts, edge, merges
+
+
+def ref_label(cell):
+    """('P', 1) out of 'P1-P16', 'P1' or 'A1, A2'. ('', 0) if it is not a ref.
+
+    The prefix is whatever letters lead the cell and the start is the first
+    number after them, so a single-hole row and a range read the same way.
+    """
+    m = re.match(r'\s*([A-Za-z]+)\s*([0-9]+)', text_of(cell))
+    return (m.group(1), int(m.group(2))) if m else ('', 0)
 
 
 def notched_window(w, n, r, layer='HOLES'):
@@ -383,7 +402,7 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
         # profile[1] -> profile[2] IS the taper, so rot's copy is rot[1] ->
         # rot[2]. Starting each open run at index 2 walks the other three edges
         # and leaves the shared one out of both.
-        for x, y, d in holes:
+        for x, y, d, *_ in holes:
             ents += circle(x, y, d, 'HOLES')
             ents += circle(W - x, L - y, d, 'HOLES')
         ents += poly(profile[2:] + profile[:2], 'OUTLINE', close=False)
@@ -392,7 +411,7 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
         used = base + top
     else:
         ents += poly([(0, 0), (L, 0), (L, W), (0, W)], 'OUTLINE')
-        for x, y, d in holes:
+        for x, y, d, *_ in holes:
             ents += circle(x, y, d, 'HOLES')
         for cut in cutouts:
             x0, x1, y0, y1 = cut
@@ -415,7 +434,7 @@ def build(name, title, sheet, L, W, T, material, qty, src, reg):
 
     n = len(holes)
     sizes = {}
-    for _, _, d in holes:
+    for _, _, d, *_r in holes:
         sizes[d] = sizes.get(d, 0) + 1
     bom = ' '.join(f'{sizes[d]}x o{d:g}' for d in sorted(sizes))
 
@@ -508,7 +527,7 @@ def build_doubler(name, src, reg):
     ents, oy, sizes, n = [], 0.0, {}, 0
     for i in range(3):
         ents += poly([(0, oy), (W, oy), (W, oy + H), (0, oy + H)], 'STOCK')
-        for x, y, d in holes:
+        for x, y, d, *_ in holes:
             ents += circle(y, oy + x, d, 'HOLES')
             sizes[d] = sizes.get(d, 0) + 1
             n += 1
@@ -534,7 +553,7 @@ def build_doubler(name, src, reg):
                      'NOTES')
 
     check = {}
-    for _, _, d in holes:
+    for _, _, d, *_r in holes:
         check[d] = check.get(d, 0) + 1
     for d, c in edge.items():
         check[d] = check.get(d, 0) + c
@@ -565,7 +584,7 @@ def build_sole(src, reg):
             raise SystemExit(f'{sheet}: a cut-out on a sole plate is not drawn')
         for _ in range(copies):
             ents += sole_T(ox, L, D, W, S, R)
-            for x, y, d in holes:
+            for x, y, d, *_ in holes:
                 ents += circle(ox + y, x, d, 'HOLES')
                 sizes[d] = sizes.get(d, 0) + 1
                 n += 1
@@ -577,7 +596,7 @@ def build_sole(src, reg):
             ox += W + SOLE_GAP
             tall = max(tall, L)
         per_sheet[sheet] = {}
-        for _, _, d in holes:
+        for _, _, d, *_r in holes:
             per_sheet[sheet][d] = per_sheet[sheet].get(d, 0) + 1
 
     used = ox - SOLE_GAP
@@ -631,7 +650,7 @@ def build_xep(name, title, ti, l_sym, src, reg):
     holes, cutouts, edge, _m = holes_for(src, 's2', ti)
     if cutouts:
         raise SystemExit(f'{name}: a cut-out on an end plate is not drawn')
-    for x, y, d in holes:
+    for x, y, d, *_ in holes:
         ents += circle(x, fy(y), d, 'HOLES')
         sizes[d] = sizes.get(d, 0) + 1
         n += 1

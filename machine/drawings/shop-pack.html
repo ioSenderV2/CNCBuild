@@ -986,12 +986,11 @@ numbers &#8212; they are 2a&#8217;s.</b></figcaption>
 <div class="plate pg-s3a">
 <h2 id="sheet-3a">Sheet 3a — X carriage plate (quantity 1)</h2>
 
-<div class="note">🔴 <b>THE FIGURE ON THIS SHEET IS STALE. The hole schedule and the DXF are
-not.</b> The plate is now <b>{{X_CARRIAGE_L}} long &times; {{X_CARRIAGE_W}} wide</b> with its
-block rows on <b>{{X_BLOCK_ROW_Y1}}, {{X_BLOCK_ROW_Y2}}, {{X_BLOCK_ROW_Y3}},
-{{X_BLOCK_ROW_Y4}}</b>; the drawing below still shows the plate the first one was cut to.
-<b>Work from the schedule and from <code>8-x-carriage-plate.dxf</code>, not from the
-picture.</b></div>
+<div class="info">🔴 <b>A FIRST PLATE WAS CUT TO A PATTERN THE BLOCKS CANNOT TAKE</b> and this
+sheet is the replacement. The blocks butt at <b>{{BLOCK_BODY_L_XZ}}</b>, so the separation is a
+chosen <b>{{X_BLOCK_CENTRE_SEP}}</b> and never a measurement &mdash; see the rows below. <b>Check
+the span {{X_BLOCK_ROW_Y1}} to {{X_BLOCK_ROW_Y4}} on the plate before anything is bolted to
+it.</b></div>
 
 <div class="stock">
 <b>{{X_CARRIAGE_L}} long &times; {{X_CARRIAGE_W}} wide &times; 1/2" aluminium</b><br>
@@ -999,196 +998,122 @@ picture.</b></div>
 </div>
 
 <figure>
-<svg viewBox="-54 -30 640 370" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- X CARRIAGE PLATE, machining coordinates. svg y = {{X_CARRIAGE_W}} - machine Y.
-       🔴 THIS FIGURE IS STALE AND THE BANNER ABOVE IT SAYS SO. It draws the plate the
-       first one was cut to. The SCHEDULE below and 8-x-carriage-plate.dxf carry the
-       current geometry; this picture does not, because 146 hand-authored elements with
-       a flip base that itself moved cannot be hand-edited safely. -->
-  <rect x="0" y="0" width="407.0" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-
-  <!-- HGR20 rails, 400 long x RAIL_W 20 wide, centred on Y {{Z_RAIL_INSET}} and Y 143. Their ends
-       at X 400 are what shows the last 7 of the plate carries no rail. -->
-  <rect x="0.00" y="124.0" width="400.00" height="20.00" fill="#c0c" fill-opacity="0.10" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <rect x="0.00" y="10.0" width="400.00" height="20.00" fill="#c0c" fill-opacity="0.10" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <text class="lbl" x="403" y="162.0" fill="#c0c" text-anchor="middle">400</text>
-  <!-- the four machined pads under the X bearing blocks, 50.5 x 44 -->
-  <rect x="20.75" y="94.0" width="50.50" height="44.00" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="20.75" y="16.0" width="50.50" height="44.00" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="110.75" y="94.0" width="50.50" height="44.00" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <rect x="110.75" y="16.0" width="50.50" height="44.00" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="3 2"/>
-  <!-- BF12 base, 60 x 20: the 20 along X flush with the X 0 end puts F1/F2 at X 10,
-       and the 60 across centres on Y 77, which lands them 7 and 53 off its edges -->
-  <rect x="0.00" y="47.0" width="20.00" height="60.00" fill="none" stroke="#06c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <!-- Z stepper casting, 60 x 77. Its last hole column sits 6 in from the left
-       edge, so the casting runs X 349.5 to 426.5 and OVERHANGS the plate. Drawn
-       whole: the overhang is unsupported, and K3/K6 at X 398.5 are in material. -->
-  <rect x="349.50" y="47.0" width="77.00" height="60.00" fill="none" stroke="#b06000" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-  <line x1="407.0" y1="107.0" x2="407.0" y2="47.0" stroke="#b06000" stroke-width="0.7"/>
-  <text class="lbl" x="411.0" y="43.0" fill="#b06000">unsupported past 407</text>
-  <!-- nut doubler on the REAR face, Sheet 2d -->
-  <rect x="161.00" y="0.0" width="45.00" height="154.00" fill="none" stroke="#0a6" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <!-- Z top stop block, Sheet 3c. It ends at 335.4 and the casting starts at 350. -->
-  <rect x="310.00" y="52.0" width="25.40" height="50.00" fill="none" stroke="#c00" stroke-width="0.9" stroke-dasharray="4 2.5"/>
-
-  <!-- R1-R14, the same rule: R1-R7 across the Y {{Z_RAIL_INSET}} rail, then R8-R14 on Y 143.
-       Tags run OUTBOARD, away from the X block tags that share those two lines. -->
-  <circle cx="20.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="20.00" y="144.0" fill="#b06000" text-anchor="middle">R1</text>
-  <circle cx="80.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="80.00" y="144.0" fill="#b06000" text-anchor="middle">R2</text>
-  <circle cx="140.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="140.00" y="144.0" fill="#b06000" text-anchor="middle">R3</text>
-  <circle cx="200.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="200.00" y="144.0" fill="#b06000" text-anchor="middle">R4</text>
-  <circle cx="260.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="260.00" y="144.0" fill="#b06000" text-anchor="middle">R5</text>
-  <circle cx="320.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="320.00" y="144.0" fill="#b06000" text-anchor="middle">R6</text>
-  <circle cx="380.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="380.00" y="144.0" fill="#b06000" text-anchor="middle">R7</text>
-  <circle cx="20.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="20.00" y="16.0" fill="#b06000" text-anchor="middle">R8</text>
-  <circle cx="80.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="80.00" y="16.0" fill="#b06000" text-anchor="middle">R9</text>
-  <circle cx="140.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="140.00" y="16.0" fill="#b06000" text-anchor="middle">R10</text>
-  <circle cx="200.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="200.00" y="16.0" fill="#b06000" text-anchor="middle">R11</text>
-  <circle cx="260.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="260.00" y="16.0" fill="#b06000" text-anchor="middle">R12</text>
-  <circle cx="320.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="320.00" y="16.0" fill="#b06000" text-anchor="middle">R13</text>
-  <circle cx="380.00" cy="20.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="380.00" y="16.0" fill="#b06000" text-anchor="middle">R14</text>
-
-  <!-- X1-X16, ACROSS X THEN UP IN Y: X1-X4 is the whole Y 20 row across both blocks.
-       THE cy VALUES HERE ARE FLIPPED - drawn cy is 154 less the part's Y, so cy 134 is
-       row Y 20. That is why these are literals while the schedule below cites
-       X_BLOCK_ROW_Y1..Y4: substituting here would need four more symbols existing only
-       for the flip. THE SCHEDULE IS THE AUTHORITY and the DXF reads it, not this picture.
-       Safe only because the plate is CUT and X_BLOCK_CENTRE_SEP is pinned as-cut; if that
-       ever moves, these eight circles have to be re-flipped by hand. -->
-  <circle cx="30.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="129.5" fill="#06c" text-anchor="middle">X1</text>
-  <circle cx="62.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="129.5" fill="#06c" text-anchor="middle">X2</text>
-  <circle cx="120.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="120.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="129.5" fill="#06c" text-anchor="middle">X3</text>
-  <circle cx="152.00" cy="134.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="152.00" cy="134.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="129.5" fill="#06c" text-anchor="middle">X4</text>
-  <circle cx="30.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="108.5" fill="#06c" text-anchor="middle">X5</text>
-  <circle cx="62.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="108.5" fill="#06c" text-anchor="middle">X6</text>
-  <circle cx="120.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="120.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="108.5" fill="#06c" text-anchor="middle">X7</text>
-  <circle cx="152.00" cy="98.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="152.00" cy="98.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="108.5" fill="#06c" text-anchor="middle">X8</text>
-  <circle cx="30.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="51.5" fill="#06c" text-anchor="middle">X9</text>
-  <circle cx="62.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="51.5" fill="#06c" text-anchor="middle">X10</text>
-  <circle cx="120.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="120.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="51.5" fill="#06c" text-anchor="middle">X11</text>
-  <circle cx="152.00" cy="56.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="152.00" cy="56.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="51.5" fill="#06c" text-anchor="middle">X12</text>
-  <circle cx="30.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="30.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="30.00" y="30.5" fill="#06c" text-anchor="middle">X13</text>
-  <circle cx="62.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="62.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="62.00" y="30.5" fill="#06c" text-anchor="middle">X14</text>
-  <circle cx="120.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="120.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="120.00" y="30.5" fill="#06c" text-anchor="middle">X15</text>
-  <circle cx="152.00" cy="20.0" r="4.0" fill="none" stroke="#06c" stroke-width="0.8"/>
-  <circle cx="152.00" cy="20.0" r="2.2" fill="#d8e6f7" stroke="#06c" stroke-width="1.0"/>
-  <text class="ref" x="152.00" y="30.5" fill="#06c" text-anchor="middle">X16</text>
-
-  <!-- S1, the o35 sensor bore -->
-  <circle cx="91.0" cy="77.0" r="17.5" fill="#fff" stroke="#111" stroke-width="1.2"/>
-  <text class="ref" x="91.00" y="78.0" fill="#111" text-anchor="middle">S1</text>
-  <text class="lbl" x="91" y="87.0" text-anchor="middle">&#248;35</text>
-
-  <!-- F1, F2 inside the BF12 base, tags toward its middle -->
-  <circle cx="10.00" cy="100.0" r="3.0" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <text class="ref" x="10.00" y="95.0" fill="#06c" text-anchor="middle">F1</text>
-  <circle cx="10.00" cy="54.0" r="3.0" fill="#d8e6f7" stroke="#06c" stroke-width="1.1"/>
-  <text class="ref" x="10.00" y="65.0" fill="#06c" text-anchor="middle">F2</text>
-
-  <!-- K1-K6, same rule: across X on Y 54, then up to Y 100 -->
-  <circle cx="355.50" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="360.00" y="95.0" fill="#b06000" text-anchor="middle">K1</text>
-  <circle cx="368.50" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="373.00" y="95.0" fill="#b06000" text-anchor="middle">K2</text>
-  <circle cx="398.50" cy="100.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="403.00" y="95.0" fill="#b06000" text-anchor="middle">K3</text>
-  <circle cx="355.50" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="355.50" y="65.0" fill="#b06000" text-anchor="middle">K4</text>
-  <circle cx="368.50" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="368.50" y="65.0" fill="#b06000" text-anchor="middle">K5</text>
-  <circle cx="398.50" cy="54.0" r="2.6" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="398.50" y="65.0" fill="#b06000" text-anchor="middle">K6</text>
-
-  <!-- XD1-XD4, one column at X 186 into the doubler behind, up in Y -->
-  <circle cx="186.00" cy="122.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
-  <text class="ref" x="174" y="125.0" fill="#0a6" text-anchor="middle">XD1</text>
-  <circle cx="186.00" cy="92.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
-  <text class="ref" x="174" y="95.0" fill="#0a6" text-anchor="middle">XD2</text>
-  <circle cx="186.00" cy="62.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
-  <text class="ref" x="174" y="65.0" fill="#0a6" text-anchor="middle">XD3</text>
-  <circle cx="186.00" cy="32.0" r="4.0" fill="#fff" stroke="#0a6" stroke-width="1.5"/>
-  <text class="ref" x="174" y="35.0" fill="#0a6" text-anchor="middle">XD4</text>
-
-  <!-- TS1, TS2 inside the stop block outline, up in Y -->
-  <circle cx="322.70" cy="92.0" r="3.0" fill="#fee" stroke="#c00" stroke-width="1.3"/>
-  <text class="ref" x="322.70" y="103.0" fill="#c00" text-anchor="middle">TS1</text>
-  <circle cx="322.70" cy="62.0" r="3.0" fill="#fee" stroke="#c00" stroke-width="1.3"/>
-  <text class="ref" x="322.70" y="57.0" fill="#c00" text-anchor="middle">TS2</text>
-
-  <line x1="0" y1="166.0" x2="407.0" y2="166.0" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="192" y="176.0">407</text>
-  <line x1="-12" y1="0" x2="-12" y2="154.0" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-40" y="77.0">154</text>
-  <circle cx="0" cy="154.0" r="3.4" fill="#c00"/>
-  <text class="dim" x="-32" y="164.0" fill="#c00">WCS 0,0</text>
-
-  <text class="q" x="0" y="206" fill="#b06000">R1&#8211;R14 &#183; HGR20 RAILS &#8212; 14 &#215; &#248;4.2</text>
-  <text class="q" x="0" y="218">X 20, 80, 140, 200, 260, 320, 380 &#183; R1&#8211;R7 on Y 20, R8&#8211;R14 on Y 134</text>
-  <text class="q" x="0" y="230">tap M5 at home &#183; dotted = the 400 &#215; 20 rail itself</text>
-  <text class="q" x="0" y="254" fill="#06c">F1, F2 &#183; BF12 &#8212; 2 &#215; &#248;4.2 at X 10, Y 54 and 100</text>
-  <text class="q" x="0" y="266">dotted = its 60 &#215; 20 base, flush with the X 0 end</text>
-  <text class="q" x="0" y="290" fill="#06c">X1&#8211;X16 &#183; X BEARING BLOCKS &#8212; 16 &#215; &#248;5.2 C&#8217;BORED</text>
-  <text class="q" x="0" y="302">X 30, 62, 120, 152 &#183; Y 20, 56, 98, 134</text>
-  <text class="q" x="0" y="314">dotted = the 50.5 &#215; 44 MACHINED PAD</text>
-  <text class="q" x="0" y="338">S1 &#183; &#248;35 SENSOR BORE at X 91, Y 77</text>
-  <text class="q" x="300" y="206" fill="#0a6">XD1&#8211;XD4 &#183; NUT DOUBLER &#8212; 4 &#215; &#248;5</text>
-  <text class="q" x="300" y="218">X 186 &#183; Y 32, 62, 92, 122 &#183; dashed = the doubler behind</text>
-  <text class="q" x="300" y="242" fill="#b06000">K1&#8211;K6 &#183; Z STEPPER CASTING &#8212; 6 &#215; &#248;4.2</text>
-  <text class="q" x="300" y="254">X 355.5, 368.5, 398.5 &#183; Y 54 and 100</text>
-  <text class="q" x="300" y="266">Its 60 &#215; 77 base runs X 349.5 to 426.5, so it overhangs the</text>
-  <text class="q" x="300" y="278">plate by 19.5. That overhang carries nothing &#8212; but K3 and K6</text>
-  <text class="q" x="300" y="290">at X 398.5 are in material by 8.5, which is the part that matters.</text>
-  <text class="q" x="300" y="314" fill="#c00">TS1, TS2 &#183; Z TOP STOP BLOCK &#8212; 2 &#215; &#248;4.2</text>
-  <text class="q" x="300" y="326">X 322.7 &#183; Y 62, 92 &#183; dashed = the block, Sheet 3c</text>
-  <text class="q" x="300" y="338">It ends at 335.4 and the casting starts at 350 &#8212; a 14.6 gap.</text>
+<!-- FIGURE:BEGIN s3a - generated by tools/build-sheet-figures.py from 8-x-carriage-plate.dxf, do not hand-edit -->
+<svg viewBox="-34 -34 498 238" width="186mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- s3a: outline 430 x 170, svg y = 170 - part Y -->
+  <line x1="0.00" y1="170.00" x2="430.00" y2="170.00" stroke="#111" stroke-width="1.6"/>
+  <line x1="430.00" y1="170.00" x2="430.00" y2="0.00" stroke="#111" stroke-width="1.6"/>
+  <line x1="430.00" y1="0.00" x2="0.00" y2="0.00" stroke="#111" stroke-width="1.6"/>
+  <line x1="0.00" y1="0.00" x2="0.00" y2="170.00" stroke="#111" stroke-width="1.6"/>
+  <circle cx="20.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="20.00" y="146.30" fill="#b06000" text-anchor="middle">R1</text>
+  <circle cx="80.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="80.00" y="146.30" fill="#b06000" text-anchor="middle">R2</text>
+  <circle cx="140.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="140.00" y="146.30" fill="#b06000" text-anchor="middle">R3</text>
+  <circle cx="200.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="200.00" y="146.30" fill="#b06000" text-anchor="middle">R4</text>
+  <circle cx="260.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="260.00" y="146.30" fill="#b06000" text-anchor="middle">R5</text>
+  <circle cx="320.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="320.00" y="146.30" fill="#b06000" text-anchor="middle">R6</text>
+  <circle cx="380.00" cy="150.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="380.00" y="146.30" fill="#b06000" text-anchor="middle">R7</text>
+  <circle cx="20.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="20.00" y="32.30" fill="#b06000" text-anchor="middle">R8</text>
+  <circle cx="80.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="80.00" y="32.30" fill="#b06000" text-anchor="middle">R9</text>
+  <circle cx="140.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="140.00" y="32.30" fill="#b06000" text-anchor="middle">R10</text>
+  <circle cx="200.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="200.00" y="32.30" fill="#b06000" text-anchor="middle">R11</text>
+  <circle cx="260.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="260.00" y="32.30" fill="#b06000" text-anchor="middle">R12</text>
+  <circle cx="320.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="320.00" y="32.30" fill="#b06000" text-anchor="middle">R13</text>
+  <circle cx="380.00" cy="36.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="380.00" y="32.30" fill="#b06000" text-anchor="middle">R14</text>
+  <circle cx="10.00" cy="116.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="10.00" y="112.30" fill="#b06000" text-anchor="middle">F1</text>
+  <circle cx="10.00" cy="70.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="10.00" y="66.30" fill="#b06000" text-anchor="middle">F2</text>
+  <circle cx="355.50" cy="116.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="355.50" y="112.30" fill="#b06000" text-anchor="middle">K1</text>
+  <circle cx="355.50" cy="70.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="355.50" y="66.30" fill="#b06000" text-anchor="middle">K4</text>
+  <circle cx="368.50" cy="116.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="368.50" y="112.30" fill="#b06000" text-anchor="middle">K2</text>
+  <circle cx="368.50" cy="70.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="368.50" y="66.30" fill="#b06000" text-anchor="middle">K5</text>
+  <circle cx="398.50" cy="116.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="398.50" y="112.30" fill="#b06000" text-anchor="middle">K3</text>
+  <circle cx="398.50" cy="70.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="398.50" y="66.30" fill="#b06000" text-anchor="middle">K6</text>
+  <circle cx="91.00" cy="93.00" r="17.50" fill="none" stroke="#c0c" stroke-width="0.9"/>
+  <text class="ref" x="91.00" y="73.90" fill="#c0c" text-anchor="middle">S1</text>
+  <circle cx="30.00" cy="143.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="30.00" y="138.80" fill="#06c" text-anchor="middle">X1</text>
+  <circle cx="30.00" cy="107.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="30.00" y="102.80" fill="#06c" text-anchor="middle">X5</text>
+  <circle cx="30.00" cy="63.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="30.00" y="58.80" fill="#06c" text-anchor="middle">X9</text>
+  <circle cx="30.00" cy="27.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="30.00" y="22.80" fill="#06c" text-anchor="middle">X13</text>
+  <circle cx="62.00" cy="143.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="62.00" y="138.80" fill="#06c" text-anchor="middle">X2</text>
+  <circle cx="62.00" cy="107.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="62.00" y="102.80" fill="#06c" text-anchor="middle">X6</text>
+  <circle cx="62.00" cy="63.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="62.00" y="58.80" fill="#06c" text-anchor="middle">X10</text>
+  <circle cx="62.00" cy="27.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="62.00" y="22.80" fill="#06c" text-anchor="middle">X14</text>
+  <circle cx="120.00" cy="143.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="120.00" y="138.80" fill="#06c" text-anchor="middle">X3</text>
+  <circle cx="120.00" cy="107.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="120.00" y="102.80" fill="#06c" text-anchor="middle">X7</text>
+  <circle cx="120.00" cy="63.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="120.00" y="58.80" fill="#06c" text-anchor="middle">X11</text>
+  <circle cx="120.00" cy="27.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="120.00" y="22.80" fill="#06c" text-anchor="middle">X15</text>
+  <circle cx="152.00" cy="143.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="138.80" fill="#06c" text-anchor="middle">X4</text>
+  <circle cx="152.00" cy="107.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="102.80" fill="#06c" text-anchor="middle">X8</text>
+  <circle cx="152.00" cy="63.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="58.80" fill="#06c" text-anchor="middle">X12</text>
+  <circle cx="152.00" cy="27.00" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="22.80" fill="#06c" text-anchor="middle">X16</text>
+  <circle cx="186.00" cy="138.00" r="3.00" fill="none" stroke="#0a7" stroke-width="0.9"/>
+  <text class="ref" x="186.00" y="133.40" fill="#0a7" text-anchor="middle">XD1</text>
+  <circle cx="186.00" cy="108.00" r="3.00" fill="none" stroke="#0a7" stroke-width="0.9"/>
+  <text class="ref" x="186.00" y="103.40" fill="#0a7" text-anchor="middle">XD2</text>
+  <circle cx="186.00" cy="78.00" r="3.00" fill="none" stroke="#0a7" stroke-width="0.9"/>
+  <text class="ref" x="186.00" y="73.40" fill="#0a7" text-anchor="middle">XD3</text>
+  <circle cx="186.00" cy="48.00" r="3.00" fill="none" stroke="#0a7" stroke-width="0.9"/>
+  <text class="ref" x="186.00" y="43.40" fill="#0a7" text-anchor="middle">XD4</text>
+  <circle cx="322.70" cy="108.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="322.70" y="104.30" fill="#b06000" text-anchor="middle">TS1</text>
+  <circle cx="322.70" cy="78.00" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="322.70" y="74.30" fill="#b06000" text-anchor="middle">TS2</text>
+  <text class="dim" x="215.0" y="183.0" text-anchor="middle">430</text>
+  <text class="dim" x="-9" y="85.0" text-anchor="middle" transform="rotate(-90 -9 85.0)">170</text>
+  <circle cx="4" cy="-26.0" r="2.10" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="lbl" x="12" y="-23.0" fill="#b06000">24 &#215; &oslash;4.2</text>
+  <circle cx="4" cy="-17.0" r="2.60" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="lbl" x="12" y="-14.0" fill="#06c">16 &#215; &oslash;5.2</text>
+  <circle cx="4" cy="-8.0" r="3.00" fill="none" stroke="#0a7" stroke-width="0.9"/>
+  <text class="lbl" x="12" y="-5.0" fill="#0a7">4 &#215; &oslash;6</text>
+  <circle cx="4" cy="1.0" r="17.50" fill="none" stroke="#c0c" stroke-width="0.9"/>
+  <text class="lbl" x="12" y="4.0" fill="#c0c">1 &#215; &oslash;35</text>
+  <text class="q" x="430.0" y="-23.0" text-anchor="end">drawn from 8-x-carriage-plate.dxf</text>
 </svg>
-<figcaption>The plate is <b>407</b> and each rail is <b>400</b>, set flush with the bottom edge
-&mdash; so the rails finish 7 short of the top, which the drawing shows and nothing has to say
-twice.</figcaption>
+<!-- FIGURE:END s3a -->
+<figcaption><b>Outline and holes only, drawn from the DXF the shop cuts</b> &mdash; so the
+picture cannot disagree with the part. The rails, the machined pads, the BF12 footprint and the
+hole reference letters are not on it; the schedule below carries those. The plate is
+<b>{{X_CARRIAGE_L}}</b> and each rail is <b>{{Z_RAIL_L}}</b>, set flush with the bottom edge, so
+the rails finish 30 short of the top and that spare is what the Z stepper casting
+sits on.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>
@@ -1389,11 +1314,10 @@ the block is one 50 &times; 45 piece off a 1" slab and no face needs machining.<
 <div class="plate pg-s4">
 <h2 id="sheet-4">Sheet 4 &mdash; Z plate (quantity 1)</h2>
 
-<div class="note">🔴 <b>THE FIGURE ON THIS SHEET IS STALE. The hole schedule and the DXF are
-not.</b> The plate is now <b>{{Z_PLATE_L}} long &times; {{Z_PLATE_W}} wide</b> and the resize
-was symmetric, so every group re-centred; the drawing below still shows the old size and
-positions. <b>Work from the schedule and from <code>9-z-plate.dxf</code>, not from the
-picture.</b></div>
+<div class="info">🔴 <b>THE SPACER BAR IS DRILLED FROM ITS OWN EDGE, NOT THIS PLATE'S.</b> Sheet
+3b's four clearance holes are these C-hole rows less <b>{{SPACER_OFFSET_X}}</b>, the bar being
+centred on the plate. Get that one offset wrong and both parts are individually correct and will
+not bolt together.</div>
 
 <div class="stock">
 <b>{{Z_PLATE_L}} long &times; {{Z_PLATE_W}} wide &times; 1/2" aluminium</b><br>
@@ -1401,127 +1325,87 @@ picture.</b></div>
 </div>
 
 <figure>
-<svg viewBox="-54 -40 470 262" width="186mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- Z PLATE, machining coordinates. 175 along mill X, 164 across.
-       Origin is the LOWER-LEFT corner as the part sits on the table, which is also
-       the plate's installed BOTTOM-left.  SVG y = 164 - Y -->
-  <rect x="0" y="0" width="175" height="164" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
-
-  <!-- the two spindle clamp footprints, 122 x 55, centred on X 29.5 and 145.5 -->
-  <rect x="2" y="21" width="55" height="122" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
-  <rect x="118" y="21" width="55" height="122" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="3 2"/>
-  <text class="lbl" x="4" y="18" fill="#555">CLAMP 122 &#215; 55</text>
-  <text class="lbl" x="120" y="18" fill="#555">CLAMP 122 &#215; 55</text>
-
-  <!-- the ball nut's 40 x 52 mounting face behind the plate, X 20-60 -->
-  <rect x="20" y="56" width="40" height="52" fill="#fff4d6" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
-  <text class="lbl" x="22" y="53" fill="#b06000">BALL NUT FACE BEHIND, 40 &#215; 52</text>
-
-  <!-- the two bearing-block pairs behind, 73 long each, gap {{Z_BLOCK_GAP}} between them -->
-  <rect x="7.5" y="142" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
-  <rect x="94.5" y="142" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
-  <rect x="7.5" y="0" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
-  <rect x="94.5" y="0" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
-  <text class="lbl" x="82" y="86" fill="#c0c">{{Z_BLOCK_GAP}} GAP</text>
-
-  <!-- 16 x M5 clearance to the blocks, counterbored 8.9 -->
-  <g>
-    <circle cx="26" cy="155" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="26" cy="155" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="26" cy="123" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="26" cy="123" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="26" cy="41"  r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="26" cy="41"  r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="26" cy="9"   r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="26" cy="9"   r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="62" cy="155" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="62" cy="155" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="62" cy="123" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="62" cy="123" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="62" cy="41"  r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="62" cy="41"  r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="62" cy="9"   r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="62" cy="9"   r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="113" cy="155" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="113" cy="155" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="113" cy="123" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="113" cy="123" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="113" cy="41"  r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="113" cy="41"  r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="113" cy="9"   r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="113" cy="9"   r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="149" cy="155" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="149" cy="155" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="149" cy="123" r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="149" cy="123" r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="149" cy="41"  r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="149" cy="41"  r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-    <circle cx="149" cy="9"   r="4.45" fill="#fff4d6" stroke="#b06000" stroke-width="0.8"/><circle cx="149" cy="9"   r="3" fill="#fff" stroke="#b06000" stroke-width="0.6"/>
-  </g>
-
-  <!-- 4 x M5 clearance into the ball nut, SAME counterbore -->
-  <g>
-    <circle cx="28" cy="102" r="4.45" fill="#ffe9c8" stroke="#c00" stroke-width="1.0"/><circle cx="28" cy="102" r="3" fill="#fff" stroke="#c00" stroke-width="0.7"/>
-    <circle cx="28" cy="62"  r="4.45" fill="#ffe9c8" stroke="#c00" stroke-width="1.0"/><circle cx="28" cy="62"  r="3" fill="#fff" stroke="#c00" stroke-width="0.7"/>
-    <circle cx="52" cy="102" r="4.45" fill="#ffe9c8" stroke="#c00" stroke-width="1.0"/><circle cx="52" cy="102" r="3" fill="#fff" stroke="#c00" stroke-width="0.7"/>
-    <circle cx="52" cy="62"  r="4.45" fill="#ffe9c8" stroke="#c00" stroke-width="1.0"/><circle cx="52" cy="62"  r="3" fill="#fff" stroke="#c00" stroke-width="0.7"/>
-  </g>
-
-  <!-- 8 x o6.8 drilled through, tapped M8 at home -->
-  <g fill="#d8e6f7" stroke="#06c" stroke-width="1.1">
-    <circle cx="17" cy="132" r="3.4"/><circle cx="17" cy="32" r="3.4"/>
-    <circle cx="42" cy="132" r="3.4"/><circle cx="42" cy="32" r="3.4"/>
-    <circle cx="133" cy="132" r="3.4"/><circle cx="133" cy="32" r="3.4"/>
-    <circle cx="158" cy="132" r="3.4"/><circle cx="158" cy="32" r="3.4"/>
-  </g>
-
-  <!-- 2 x o6 driver access, on the rail centrelines, in the block gap -->
-  <circle cx="87.5" cy="139" r="3" fill="#eef4ee" stroke="#0a6" stroke-width="1.4"/>
-  <circle cx="87.5" cy="25"  r="3" fill="#eef4ee" stroke="#0a6" stroke-width="1.4"/>
-  <text class="ref" x="92" y="141" fill="#0a6">A1</text>
-  <text class="ref" x="92" y="27" fill="#0a6">A2</text>
-
-  <line x1="0" y1="176" x2="175" y2="176" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="80" y="186">175</text>
-  <line x1="-12" y1="0" x2="-12" y2="164" stroke="#06c" stroke-width="0.7"/>
-  <text class="dim" x="-38" y="82">164</text>
-  <circle cx="0" cy="164" r="3.4" fill="#c00"/>
-  <text class="dim" x="-30" y="174" fill="#c00">WCS 0,0</text>
-
-  <text class="q" x="196" y="12" fill="#b06000">16 &#215; C &#8212; to the bearing blocks</text>
-  <text class="q" x="196" y="24">X 26, 62, 113, 149 &middot; Y 9, 41, 123, 155</text>
-  <text class="q" x="196" y="40" fill="#c00">4 &#215; N &#8212; into the ball nut</text>
-  <text class="q" x="196" y="52">X 28, 52 &middot; Y 62, 102</text>
-  <text class="q" x="196" y="64" fill="#c00">counterbored because the lower clamp</text>
-  <text class="q" x="196" y="76" fill="#c00">sits over them &#8212; heads must go below</text>
-  <text class="q" x="196" y="88" fill="#c00">the face<tspan baseline-shift="super" font-size="70%">4.6</tspan></text>
-  <text class="q" x="196" y="104" fill="#06c">8 &#215; M &#8212; &oslash;6.8, tapped M8 at home</text>
-  <text class="q" x="196" y="116">X 17, 42, 133, 158 &middot; Y 32, 132</text>
-  <text class="q" x="196" y="132" fill="#0a6">2 &#215; A &#8212; driver access, meets nothing</text>
-  <text class="q" x="196" y="144">X 87.5 &middot; Y 25, 139</text>
-  <text class="q" x="196" y="166" fill="#c00">&#9888; DRILL 5.2 &#8594; COUNTERBORE &#8594; OPEN TO 6.</text>
-  <text class="q" x="196" y="178" fill="#c00">The order is forced and it is one-way.<tspan baseline-shift="super" font-size="70%">4.5</tspan></text>
-  <text class="q" x="196" y="190" fill="#c00">TWO WEBS: 4 on C, 6 on N.</text>
-  <text class="q" x="196" y="206">4.88 mm of metal at the tightest</text>
-  <text class="q" x="196" y="218">counterbore-to-tap bridge</text>
-  <!-- schedule ref tags -->
-  <!-- schedule ref tags -->
-  <text class="ref" x="26.00" y="148.00" fill="#b06000" text-anchor="middle">C1</text>
-  <text class="ref" x="62.00" y="148.00" fill="#b06000" text-anchor="middle">C2</text>
-  <text class="ref" x="113.00" y="148.00" fill="#b06000" text-anchor="middle">C3</text>
-  <text class="ref" x="149.00" y="148.00" fill="#b06000" text-anchor="middle">C4</text>
-  <text class="ref" x="26.00" y="116.00" fill="#b06000" text-anchor="middle">C5</text>
-  <text class="ref" x="62.00" y="116.00" fill="#b06000" text-anchor="middle">C6</text>
-  <text class="ref" x="113.00" y="116.00" fill="#b06000" text-anchor="middle">C7</text>
-  <text class="ref" x="149.00" y="116.00" fill="#b06000" text-anchor="middle">C8</text>
-  <text class="ref" x="26.00" y="54.00" fill="#b06000" text-anchor="middle">C9</text>
-  <text class="ref" x="62.00" y="54.00" fill="#b06000" text-anchor="middle">C10</text>
-  <text class="ref" x="113.00" y="54.00" fill="#b06000" text-anchor="middle">C11</text>
-  <text class="ref" x="149.00" y="54.00" fill="#b06000" text-anchor="middle">C12</text>
-  <text class="ref" x="26.00" y="22.00" fill="#b06000" text-anchor="middle">C13</text>
-  <text class="ref" x="62.00" y="22.00" fill="#b06000" text-anchor="middle">C14</text>
-  <text class="ref" x="113.00" y="22.00" fill="#b06000" text-anchor="middle">C15</text>
-  <text class="ref" x="149.00" y="22.00" fill="#b06000" text-anchor="middle">C16</text>
-  <text class="ref" x="7.00" y="135.00" fill="#111" text-anchor="middle">M1</text>
-  <text class="ref" x="32.00" y="135.00" fill="#111" text-anchor="middle">M2</text>
-  <text class="ref" x="123.00" y="135.00" fill="#111" text-anchor="middle">M3</text>
-  <text class="ref" x="148.00" y="135.00" fill="#111" text-anchor="middle">M4</text>
-  <text class="ref" x="7.00" y="35.00" fill="#111" text-anchor="middle">M5</text>
-  <text class="ref" x="32.00" y="35.00" fill="#111" text-anchor="middle">M6</text>
-  <text class="ref" x="123.00" y="35.00" fill="#111" text-anchor="middle">M7</text>
-  <text class="ref" x="148.00" y="35.00" fill="#111" text-anchor="middle">M8</text>
-  <text class="ref" x="28.00" y="95.00" fill="#c00" text-anchor="middle">N1</text>
-  <text class="ref" x="52.00" y="95.00" fill="#c00" text-anchor="middle">N2</text>
-  <text class="ref" x="28.00" y="75.00" fill="#c00" text-anchor="middle">N3</text>
-  <text class="ref" x="52.00" y="75.00" fill="#c00" text-anchor="middle">N4</text>
+<!-- FIGURE:BEGIN s4 - generated by tools/build-sheet-figures.py from 9-z-plate.dxf, do not hand-edit -->
+<svg viewBox="-34 -34 248 238" width="186mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- s4: outline 180 x 170, svg y = 170 - part Y -->
+  <line x1="0.00" y1="170.00" x2="180.00" y2="170.00" stroke="#111" stroke-width="1.6"/>
+  <line x1="180.00" y1="170.00" x2="180.00" y2="0.00" stroke="#111" stroke-width="1.6"/>
+  <line x1="180.00" y1="0.00" x2="0.00" y2="0.00" stroke="#111" stroke-width="1.6"/>
+  <line x1="0.00" y1="0.00" x2="0.00" y2="170.00" stroke="#111" stroke-width="1.6"/>
+  <circle cx="19.50" cy="135.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="19.50" y="130.00" fill="#06c" text-anchor="middle">M1</text>
+  <circle cx="19.50" cy="35.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="19.50" y="30.00" fill="#06c" text-anchor="middle">M5</text>
+  <circle cx="44.50" cy="135.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="44.50" y="130.00" fill="#06c" text-anchor="middle">M2</text>
+  <circle cx="44.50" cy="35.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="44.50" y="30.00" fill="#06c" text-anchor="middle">M6</text>
+  <circle cx="135.50" cy="135.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="135.50" y="130.00" fill="#06c" text-anchor="middle">M3</text>
+  <circle cx="135.50" cy="35.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="135.50" y="30.00" fill="#06c" text-anchor="middle">M7</text>
+  <circle cx="160.50" cy="135.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="160.50" y="130.00" fill="#06c" text-anchor="middle">M4</text>
+  <circle cx="160.50" cy="35.00" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="ref" x="160.50" y="30.00" fill="#06c" text-anchor="middle">M8</text>
+  <circle cx="28.00" cy="159.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="28.00" y="154.40" fill="#b06000" text-anchor="middle">C1</text>
+  <circle cx="28.00" cy="127.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="28.00" y="122.40" fill="#b06000" text-anchor="middle">C5</text>
+  <circle cx="28.00" cy="43.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="28.00" y="38.40" fill="#b06000" text-anchor="middle">C9</text>
+  <circle cx="28.00" cy="11.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="28.00" y="6.40" fill="#b06000" text-anchor="middle">C13</text>
+  <circle cx="64.00" cy="159.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="64.00" y="154.40" fill="#b06000" text-anchor="middle">C2</text>
+  <circle cx="64.00" cy="127.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="64.00" y="122.40" fill="#b06000" text-anchor="middle">C6</text>
+  <circle cx="64.00" cy="43.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="64.00" y="38.40" fill="#b06000" text-anchor="middle">C10</text>
+  <circle cx="64.00" cy="11.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="64.00" y="6.40" fill="#b06000" text-anchor="middle">C14</text>
+  <circle cx="116.00" cy="159.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="116.00" y="154.40" fill="#b06000" text-anchor="middle">C3</text>
+  <circle cx="116.00" cy="127.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="116.00" y="122.40" fill="#b06000" text-anchor="middle">C7</text>
+  <circle cx="116.00" cy="43.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="116.00" y="38.40" fill="#b06000" text-anchor="middle">C11</text>
+  <circle cx="116.00" cy="11.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="116.00" y="6.40" fill="#b06000" text-anchor="middle">C15</text>
+  <circle cx="152.00" cy="159.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="154.40" fill="#b06000" text-anchor="middle">C4</text>
+  <circle cx="152.00" cy="127.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="122.40" fill="#b06000" text-anchor="middle">C8</text>
+  <circle cx="152.00" cy="43.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="38.40" fill="#b06000" text-anchor="middle">C12</text>
+  <circle cx="152.00" cy="11.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="152.00" y="6.40" fill="#b06000" text-anchor="middle">C16</text>
+  <circle cx="30.50" cy="105.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="30.50" y="100.40" fill="#b06000" text-anchor="middle">N1</text>
+  <circle cx="30.50" cy="65.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="30.50" y="60.40" fill="#b06000" text-anchor="middle">N3</text>
+  <circle cx="54.50" cy="105.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="54.50" y="100.40" fill="#b06000" text-anchor="middle">N2</text>
+  <circle cx="54.50" cy="65.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="54.50" y="60.40" fill="#b06000" text-anchor="middle">N4</text>
+  <circle cx="90.00" cy="142.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="90.00" y="137.40" fill="#b06000" text-anchor="middle">A1</text>
+  <circle cx="90.00" cy="28.00" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="90.00" y="23.40" fill="#b06000" text-anchor="middle">A2</text>
+  <text class="dim" x="90.0" y="183.0" text-anchor="middle">180</text>
+  <text class="dim" x="-9" y="85.0" text-anchor="middle" transform="rotate(-90 -9 85.0)">170</text>
+  <circle cx="4" cy="-26.0" r="3.00" fill="none" stroke="#b06000" stroke-width="0.9"/>
+  <text class="lbl" x="12" y="-23.0" fill="#b06000">22 &#215; &oslash;6</text>
+  <circle cx="4" cy="-17.0" r="3.40" fill="none" stroke="#06c" stroke-width="0.9"/>
+  <text class="lbl" x="12" y="-14.0" fill="#06c">8 &#215; &oslash;6.8</text>
+  <text class="q" x="180.0" y="-23.0" text-anchor="end">drawn from 9-z-plate.dxf</text>
 </svg>
-<figcaption>Laid out as the part sits on the mill table: <b>the 175 runs along X</b>, origin at the
-lower-left corner, which is also the plate's installed bottom-left.</figcaption>
+<!-- FIGURE:END s4 -->
+<figcaption><b>Outline and holes only, drawn from the DXF the shop cuts</b> &mdash; so the
+picture cannot disagree with the part. The clamp footprints, the ball nut's mounting face and the
+hole reference letters are not on it; the schedule below carries those. Laid out as the part sits
+on the mill table: <b>the {{Z_PLATE_L}} runs along X</b>, origin at the lower-left corner, which is
+also the plate's installed bottom-left.</figcaption>
 </figure>
 
 <h3>Hole schedule &mdash; machining coordinates</h3>

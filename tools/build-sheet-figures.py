@@ -33,12 +33,25 @@ HERE = Path(__file__).resolve().parent
 PACK = HERE.parent / "machine" / "drawings" / "shop-pack.html"
 DXF = HERE.parent / "machine" / "drawings" / "dxf"
 
-# The DXF parser lives in dxf-preview.py, whose name has a hyphen and so cannot
-# be imported by name. One parser, loaded the awkward way, beats two parsers.
-_spec = importlib.util.spec_from_file_location("dxfprev", HERE / "dxf-preview.py")
-_dxfprev = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_dxfprev)
-parse = _dxfprev.parse
+def _load(stem, name):
+    """Import a tools/ module whose filename has a hyphen in it."""
+    spec = importlib.util.spec_from_file_location(name, HERE / f"{stem}.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+# One DXF parser and one hole reader, both borrowed rather than reimplemented.
+# dxf-preview reads the geometry the shop cuts; make-dxf reads the schedule the
+# geometry came from. Taking the outline and circles from the first and the REF
+# LABELS from the second means the figure can only be drawn if those two agree -
+# a hole the DXF has and the schedule does not stops this script dead.
+parse = _load("dxf-preview", "dxfprev").parse
+_mk = _load("make-dxf", "makedxf")
+holes_for = _mk.holes_for
+
+sys.path.insert(0, str(HERE))
+import subst                                                     # noqa: E402
 
 # sheet id -> the DXF it is cut from. Only sheets listed here get a generated
 # figure; the rest keep their hand-authored ones until they are moved over.
@@ -61,13 +74,28 @@ def fmt(v: float) -> str:
     return f"{v:g}"
 
 
+def refs_for(sheet: str) -> dict:
+    """{(x, y, d): 'C7'} for a sheet, read from the schedule make-dxf reads.
+
+    The pack goes through subst first for the same reason make-dxf does: a cell
+    may cite a registry symbol, and the raw file would parse '{{SYMBOL}}' as no
+    coordinate at all.
+    """
+    src = subst.read(PACK)
+    holes, _c, _e, _m = holes_for(src, sheet)
+    return {(round(x, 3), round(y, 3), round(d, 3)): ref
+            for x, y, d, ref in holes}
+
+
 def figure(sheet: str, dxf_name: str) -> str:
     """One sheet's SVG, in the pack's own convention: svg y = height - part Y."""
     lines, circles, arcs, _texts = parse(DXF / dxf_name)
+    refs = refs_for(sheet)
 
-    # The outline is whatever sits on STOCK. Every part this runs on is a plate
-    # the shop registers against rather than cuts, so STOCK is the whole figure.
-    stock = [(a, b) for a, b, layer in lines if layer == "STOCK"]
+    # The outline layer is NOT one name. make-dxf's 'stock' kind writes OUTLINE
+    # and its 'xep' kind writes STOCK, for the same thing - a border the shop
+    # registers against rather than cuts. Accept both rather than pick a side.
+    stock = [(a, b) for a, b, layer in lines if layer in ("STOCK", "OUTLINE")]
     if not stock:
         raise SystemExit(f"{dxf_name}: no STOCK outline to draw")
 
@@ -92,18 +120,34 @@ def figure(sheet: str, dxf_name: str) -> str:
                    f'x2="{sx(bx):.2f}" y2="{sy(by):.2f}" '
                    f'stroke="#111" stroke-width="1.6"/>')
     for cx, cy, r, a0, a1, layer in arcs:
-        if layer != "STOCK":
+        if layer not in ("STOCK", "OUTLINE"):
             continue
         out.append(f'  <circle cx="{sx(cx):.2f}" cy="{sy(cy):.2f}" r="{r:.2f}" '
                    f'fill="none" stroke="#111" stroke-width="1.0" '
                    f'stroke-dasharray="2 2"/>')
 
     sizes = sorted({round(d, 3) for _, _, d in circles})
+    missing = []
     for cx, cy, d in circles:
         ink = INK[sizes.index(round(d, 3)) % len(INK)]
         out.append(f'  <circle cx="{sx(cx):.2f}" cy="{sy(cy):.2f}" '
                    f'r="{d / 2:.2f}" fill="none" stroke="{ink}" '
                    f'stroke-width="0.9"/>')
+        ref = refs.get((round(cx, 3), round(cy, 3), round(d, 3)))
+        if not ref:
+            missing.append((cx, cy, d))
+            continue
+        # Above the hole, clear of its own circle. check-shop-pack-refs wants
+        # every ref in a schedule to appear on the drawing, and it is right to:
+        # a schedule that says C7 with no C7 on the picture is no use at a mill.
+        out.append(f'  <text class="ref" x="{sx(cx):.2f}" '
+                   f'y="{sy(cy) - d / 2 - 1.6:.2f}" fill="{ink}" '
+                   f'text-anchor="middle">{ref}</text>')
+    if missing:
+        raise SystemExit(
+            f"{dxf_name}: {len(missing)} hole(s) in the DXF that the schedule "
+            f"does not name, first at {missing[0]} - the picture and the cut "
+            f"file disagree, which is the whole thing this script prevents")
 
     # The overall size, called out on the two edges it belongs to.
     out.append(f'  <text class="dim" x="{w / 2:.1f}" y="{h + 13:.1f}" '

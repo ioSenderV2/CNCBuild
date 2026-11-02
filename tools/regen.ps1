@@ -90,6 +90,10 @@ try {
     Step 'base-cutlist.html' @('tools/make-cutlist-doc.py')
     Step 'Interactive_Model.html' @('tools/make-3d.py')
     Step 'shop pack hole tallies' @('tools/build-hole-tally.py')
+    # AFTER THE DXFs, because it draws from them. A sheet figure used to be
+    # hand-authored SVG beside a generated cut file, which is a disagreement
+    # waiting to happen - and one that is read at the bench.
+    Step 'shop pack sheet figures' @('tools/build-sheet-figures.py')
     Step 'STATUS.md and INDEX.md' @('tools/status.py', 'all')
 
     # 8. the checkers. Cheap, and they are the reason to stop before printing.
