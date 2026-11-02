@@ -1663,6 +1663,26 @@ expr = "(Z_PLATE_W / 2) - Z_M5_COL_OUTB"
 note = "Sheet 4's C-holes, first column in plate coordinates - 9 on the 165 width, and whole only because the width is odd. The next is this plus BLOCK_PITCH_X."
 
 [[dim]]
+sym = "Z_M5_X_2"
+expr = "Z_M5_X_1 + BLOCK_PITCH_Y"
+note = "64 - second C-hole row, the far hole of the near block. Added so Sheet 4 can cite all four rows instead of carrying literals - the same gap that let the end plate's rows go stale."
+
+[[dim]]
+sym = "Z_M5_X_4"
+expr = "Z_M5_X_3 + BLOCK_PITCH_Y"
+note = "152 - fourth C-hole row, and 28 of edge distance beyond it on the 180 plate."
+
+[[dim]]
+sym = "Z_M5_Y_2"
+expr = "Z_M5_Y_1 + BLOCK_PITCH_X"
+note = "43 - second C-hole column. The across-rail pitch applies here, not the along-rail one: these two straddle a rail."
+
+[[dim]]
+sym = "Z_M5_Y_4"
+expr = "Z_M5_Y_3 + BLOCK_PITCH_X"
+note = "159 - fourth C-hole column, 11 from the plate's far edge, which matches Z_M5_Y_1's inset exactly because the group is symmetric about the plate."
+
+[[dim]]
 sym = "Z_M5_Y_3"
 expr = "(Z_PLATE_W / 2) + Z_M5_COL_INB"
 note = "Third C-hole column, 124. The fourth is this plus BLOCK_PITCH_X."

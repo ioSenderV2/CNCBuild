@@ -113,7 +113,7 @@ listed once, in the appendix, and are not repeated on the sheets.</p>
 <tr><td><a href="#sheet-3a">Sheet 3a — X carriage plate (quantity 1)</a></td><td>{{X_CARRIAGE_L}} long * {{X_CARRIAGE_W}} wide * 1/2" aluminium</td><td class="d">45</td></tr>
 <tr><td><a href="#sheet-3b">Sheet 3b - Z spacer bar (quantity 2)</a></td><td>160 long * 50 wide * 5/8" aluminium bar</td><td class="d">9</td></tr>
 <tr><td><a href="#sheet-3c">Sheet 3c - the Z top stop block (quantity 1)</a></td><td>50 * 25.4 * 45, cut from 1" 6061</td><td class="d">3</td></tr>
-<tr><td><a href="#sheet-4">Sheet 4 - Z plate (quantity 1)</a></td><td>175 long * 164 wide * 1/2" aluminium</td><td class="d">30</td></tr>
+<tr><td><a href="#sheet-4">Sheet 4 - Z plate (quantity 1)</a></td><td>{{Z_PLATE_L}} long * {{Z_PLATE_W}} wide * 1/2" aluminium</td><td class="d">30</td></tr>
 <tr><td><a href="#sheet-5">Sheet 5 - the nut sole plate (quantity 3)</a></td><td></td><td class="d">8</td></tr>
 <tr><td><a href="#sheet-6">Sheet 6 - cast stepper frame interposer (quantity 3)</a></td><td>150 long * 60 wide * 10 mm 6061</td><td class="d">10</td></tr>
 <tr><td><a href="#sheet-7">Sheet 7 - the 1210.47 mm rear plate (quantity 1)</a></td><td>1210.47 long * 11 7/8" (301.625) wide * 1/4" hot-rolled A36 steel</td><td class="d">24</td></tr>
@@ -1379,7 +1379,7 @@ the block is one 50 &times; 45 piece off a 1" slab and no face needs machining.<
 <h2 id="sheet-4">Sheet 4 &mdash; Z plate (quantity 1)</h2>
 
 <div class="stock">
-<b>175 long &times; 164 wide &times; 1/2" aluminium</b><br>
+<b>{{Z_PLATE_L}} long &times; {{Z_PLATE_W}} wide &times; 1/2" aluminium</b><br>
 <b>X 0 is the BOTTOM of the plate as it hangs on the machine</b>, Y 0 the left edge.
 </div>
 
@@ -1510,11 +1510,11 @@ lower-left corner, which is also the plate's installed bottom-left.</figcaption>
 <h3>Hole schedule &mdash; machining coordinates</h3>
 
 <table class="sched">
-<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 175</span></th><th>Y <span style="font-weight:400">across the 164</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>M1&ndash;M8</td><td>8</td><td class="n">17, 42, 133, 158</td><td class="n">32, 132</td><td class="d">6.8</td><td class="op">Through</td></tr>
-<tr><td>C1&ndash;C16</td><td>16</td><td class="n">26, 62, 113, 149</td><td class="n">9, 41, 123, 155</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 4 mm WEB &#8594; open to 6</b><br>M5 &times; 25</td></tr>
-<tr><td>N1&ndash;N4</td><td>4</td><td class="n">28, 52</td><td class="n">62, 102</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 6 mm WEB &#8594; open to 6</b><br>M5 &times; 16 &middot; the lower clamp sits over these</td></tr>
-<tr><td>A1, A2</td><td>2</td><td class="n">87.5</td><td class="n">25, 139</td><td class="d">6</td><td class="op">Through</td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the {{Z_PLATE_L}}</span></th><th>Y <span style="font-weight:400">across the {{Z_PLATE_W}}</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>M1&ndash;M8</td><td>8</td><td class="n">19.5, 44.5, 135.5, 160.5</td><td class="n">35, 135</td><td class="d">6.8</td><td class="op">Through</td></tr>
+<tr><td>C1&ndash;C16</td><td>16</td><td class="n"><b>{{Z_M5_X_1}}, {{Z_M5_X_2}}, {{Z_M5_X_3}}, {{Z_M5_X_4}}</b></td><td class="n"><b>{{Z_M5_Y_1}}, {{Z_M5_Y_2}}, {{Z_M5_Y_3}}, {{Z_M5_Y_4}}</b></td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 4 mm WEB &#8594; open to 6</b><br>M5 &times; 25</td></tr>
+<tr><td>N1&ndash;N4</td><td>4</td><td class="n">30.5, 54.5</td><td class="n">65, 105</td><td class="d">6</td><td class="op"><b>5.2 &#8594; C&rsquo;BORE &oslash;8.9 to a 6 mm WEB &#8594; open to 6</b><br>M5 &times; 16 &middot; the lower clamp sits over these</td></tr>
+<tr><td>A1, A2</td><td>2</td><td class="n">90</td><td class="n">28, 142</td><td class="d">6</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
 <tr class="tot"><td><b>TOTAL</b></td><td>22 &times; &oslash;6 &middot; 8 &times; &oslash;6.8</td><td><b>30</b></td><td colspan="3" class="tn">holes in this one part</td></tr>
 <!-- SHEETTOTAL:END -->

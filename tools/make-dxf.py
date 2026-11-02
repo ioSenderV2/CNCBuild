@@ -93,6 +93,12 @@ ORDER = [
     # entries keep their literals because those pieces are already in his hands.
     ('x-carriage-plate', 'stock', ('X carriage plate', 's3a', 'X_CARRIAGE_L',
                                    'X_CARRIAGE_W', 12.7, '6061', 1)),
+    # THE Z PLATE HAD NO DXF AT ALL. It was always going to be cut later, the
+    # later never came, and nothing noticed the folder was one part short - so
+    # it could not be ordered even though every hole on it was scheduled.
+    # Symbols for the same reason as the carriage plate: it has never been cut.
+    ('z-plate', 'stock', ('Z plate', 's4', 'Z_PLATE_L', 'Z_PLATE_W',
+                          12.7, '6061', 1)),
 ]
 
 
