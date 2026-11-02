@@ -986,14 +986,25 @@ numbers &#8212; they are 2a&#8217;s.</b></figcaption>
 <div class="plate pg-s3a">
 <h2 id="sheet-3a">Sheet 3a — X carriage plate (quantity 1)</h2>
 
+<div class="note">🔴 <b>THE FIGURE ON THIS SHEET IS STALE. The hole schedule and the DXF are
+not.</b> The plate is now <b>{{X_CARRIAGE_L}} long &times; {{X_CARRIAGE_W}} wide</b> with its
+block rows on <b>{{X_BLOCK_ROW_Y1}}, {{X_BLOCK_ROW_Y2}}, {{X_BLOCK_ROW_Y3}},
+{{X_BLOCK_ROW_Y4}}</b>; the drawing below still shows the plate the first one was cut to.
+<b>Work from the schedule and from <code>8-x-carriage-plate.dxf</code>, not from the
+picture.</b></div>
+
 <div class="stock">
-<b>407 long &times; 154 wide &times; 1/2" aluminium</b><br>
+<b>{{X_CARRIAGE_L}} long &times; {{X_CARRIAGE_W}} wide &times; 1/2" aluminium</b><br>
 <b>X 0 is the BOTTOM of the carriage as it hangs on the machine.</b>
 </div>
 
 <figure>
 <svg viewBox="-54 -30 640 370" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- X CARRIAGE PLATE, machining coordinates. svg y = {{X_CARRIAGE_W}} - machine Y. -->
+  <!-- X CARRIAGE PLATE, machining coordinates. svg y = {{X_CARRIAGE_W}} - machine Y.
+       🔴 THIS FIGURE IS STALE AND THE BANNER ABOVE IT SAYS SO. It draws the plate the
+       first one was cut to. The SCHEDULE below and 8-x-carriage-plate.dxf carry the
+       current geometry; this picture does not, because 146 hand-authored elements with
+       a flip base that itself moved cannot be hand-edited safely. -->
   <rect x="0" y="0" width="407.0" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
   <!-- HGR20 rails, 400 long x RAIL_W 20 wide, centred on Y {{Z_RAIL_INSET}} and Y 143. Their ends
@@ -1377,6 +1388,12 @@ the block is one 50 &times; 45 piece off a 1" slab and no face needs machining.<
 <!-- ============================================================ -->
 <div class="plate pg-s4">
 <h2 id="sheet-4">Sheet 4 &mdash; Z plate (quantity 1)</h2>
+
+<div class="note">🔴 <b>THE FIGURE ON THIS SHEET IS STALE. The hole schedule and the DXF are
+not.</b> The plate is now <b>{{Z_PLATE_L}} long &times; {{Z_PLATE_W}} wide</b> and the resize
+was symmetric, so every group re-centred; the drawing below still shows the old size and
+positions. <b>Work from the schedule and from <code>9-z-plate.dxf</code>, not from the
+picture.</b></div>
 
 <div class="stock">
 <b>{{Z_PLATE_L}} long &times; {{Z_PLATE_W}} wide &times; 1/2" aluminium</b><br>
