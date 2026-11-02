@@ -33,6 +33,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [4. The X gantry](machine/assembly.md#4-the-x-gantry)
   - [The end plates](machine/assembly.md#the-end-plates)
   - [The two blocks on a rail are NOT butted — the pitch is chosen](machine/assembly.md#the-two-blocks-on-a-rail-are-not-butted-the-pitch-is-chosen)
+  - [The two plates already cut: a repair, and it is not the design](machine/assembly.md#the-two-plates-already-cut-a-repair-and-it-is-not-the-design)
   - [The shelf](machine/assembly.md#the-shelf)
   - [Hang the beam](machine/assembly.md#hang-the-beam)
   - [The X stepper end](machine/assembly.md#the-x-stepper-end)

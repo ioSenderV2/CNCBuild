@@ -487,13 +487,41 @@ asks the plate for a pitch tighter than two blocks can physically reach, and the
 not land. **Never derive a hole pattern from two parts touching** — a contact dimension is whatever
 the softest thing in the stack is that day.
 
-🔴 **The two plates in hand are cut to the old pattern and get SLOTTED, not re-drilled.** Their span
-is 113.0 against this {{BLOCK_ROW_SPAN}}, so every row is 1.5 out and a fresh hole would merge into
-the existing one rather than drill. **Slot one block group along the rail and leave the other round:**
-the plate stays located on the round pair and the second block floats, which is the standard answer
-for two parts whose separation is not controlled. A millimetre of slot covers the whole caliper
-spread. **Washers under the heads on the slotted group.** The plate has to come off to do it — the
-blocks are behind the holes.
+**The fastening does not change: M5 cap screws in ø5.2 holes, counterbored.** Only the pitch moved.
+
+**Why the counterbore is not optional, by hole.** On the rear block station six of the eight heads
+are buried once the machine goes together:
+
+| Rear station heads | What lands on them |
+|---|---|
+| Top four | **the X beam's end** |
+| Next pair | **the shelf block** |
+| Bottom pair | nothing — these two stay reachable |
+
+FLAG: **Those six are captive the moment the X beam and the shelf go on.** They cannot be reached
+again without taking both back off, so they are torqued and checked before either part is fitted.
+
+**The forward station's eight are clear** — nothing lands on them at all.
+
+### The two plates already cut: a repair, and it is not the design
+
+Their row span is 113.0 against this {{BLOCK_ROW_SPAN}}, so the forward station misses. A fresh hole
+1.5 from an existing one does not drill, it merges, so the holes get opened rather than moved.
+
+**The forward eight take M5 FLANGE heads in an opened through hole.** The flange is about 11 to 12
+across, so it covers the hole and the existing counterbore both, and the float comes from the hole
+alone — **the counterbore stops being the limit, which is the whole point.** At ø5.2 and a ø8.9 bore
+on an ø8.5 head the float was 0.1 and 0.2; opening the hole without opening the bore moves the limit
+from one to the other and buys a tenth.
+
+- **Use the forward station only.** The rear eight are the located pair and stay as drawn.
+- **A fender washer under the flange** if a flat bearing face is wanted — an ordinary ø10 washer
+  bridges the counterbore exactly as the flange does, so it adds nothing.
+- The plate has to come off: the blocks are behind the holes.
+
+🔴 **Do not carry this onto a new plate.** It works because those eight heads are exposed, and it is
+a repair to a pattern that should not have been cut. A plate made to {{BLOCK_ROW_SPAN}} needs none of
+it.
 
 **The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
 a shelf.
