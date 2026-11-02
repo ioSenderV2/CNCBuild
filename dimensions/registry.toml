@@ -864,6 +864,39 @@ provenance = "pinned"
 note = "Set by bringing the clamp centres in so the M5 counterbores clear the M8 column"
 
 [[dim]]
+sym = "XD_RAIL_EDGE"
+expr = "Z_RAIL_INSET + (RAIL_W / 2)"
+note = "37 - the near Z rail's inboard edge across the carriage plate. It is what the outer XD bolts have to live beside, so it moves with Z_RAIL_PITCH and is named rather than left as an arithmetic step."
+
+[[dim]]
+sym = "XD_HEAD_OVERLAP"
+expr = "(M5_SOCKET_HEAD_D / 2) - (XD1_Y - XD_RAIL_EDGE)"
+note = "1.25 - how far an M5 socket head on XD1 would stand OVER the rail. 🔴 POSITIVE MEANS IT FOULS, which is why XD1 and XD4 are counterbored and XD2 and XD3 are not - his catch off the parts. The bolt sits 3 clear of the rail edge and the head wants 4.25. FLAG: IT GOES NEGATIVE IF THE RAIL PITCH WIDENS, which would retire the counterbore; it goes further positive if the pitch narrows. Either way the check is here rather than in somebody's head."
+
+[[dim]]
+sym = "XD1_Y"
+value = 40
+provenance = "pinned"
+note = "40 - the first XD bolt across the carriage plate, the group running 40 / 70 / 100 / 130 on a 30 pitch and symmetric about the plate. Named because XD_HEAD_OVERLAP needs it; the other three are the same group and only the outer pair is close to anything."
+
+[[dim]]
+sym = "M5_SOCKET_HEAD_D"
+value = 8.5
+provenance = "nominal"
+note = "8.5 - an M5 socket cap head across, the ISO 4762 figure. Used for clearance questions only: what a head fouls, and how much room a counterbore has to give it. CALIPER ONE if a figure ever has to be tight - this is a catalogue number and the repo's standing rule prefers the part."
+
+[[dim]]
+sym = "CLAMP_FOOTPRINT_W"
+value = 122
+provenance = "part"
+note = "122 - the spindle clamp ACROSS, where it sits on the Z plate. His, off the part. With CLAMP_AXIAL's 55 that is the whole footprint, which is what Sheet 4 draws as a dotted rectangle so the C-holes under each clamp can be seen to be under it. FLAG: IT IS THE SEATING FOOTPRINT, not the clamp's widest point - CLAMP_SHOULDER_W and CLAMP_MID_W are elsewhere on the casting and stand off the plate."
+
+[[dim]]
+sym = "CLAMP_FOOTPRINT_Y0"
+expr = "(Z_PLATE_W / 2) - (CLAMP_FOOTPRINT_W / 2)"
+note = "24 - the clamp footprint's near edge across the Z plate, the pair being centred on the plate. It leaves the same 24 at the far edge, which is the check that the clamps are centred rather than merely placed."
+
+[[dim]]
 sym = "CLAMP_AXIAL"
 value = 55
 provenance = "vendor"

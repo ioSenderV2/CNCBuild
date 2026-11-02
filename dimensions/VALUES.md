@@ -152,6 +152,12 @@ Registry updated: **2026-10-04**
 | **SPINDLE_NOSE_TO_COLLET** | 45 mm | derived | SPINDLE_COLLET_END - SPINDLE_SHOULDER_DROP | 45 - shoulder to the collet nut’s outer end. FLAG: IT IS NOT THE NUT’S OWN LENGTH, which is SPINDLE_NUT_L at 33, and it used to say it was: the nut does not start at the shoulder, it starts where the shaft’s thread does, 12 further down. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps. |
 | **SPINDLE_MASS_KG** | 5.2 kg | vendor |  |  |
 | **CLAMP_CENTRES** | 116 mm | pinned |  | Set by bringing the clamp centres in so the M5 counterbores clear the M8 column |
+| **XD_RAIL_EDGE** | 37 mm | derived | Z_RAIL_INSET + (RAIL_W / 2) | 37 - the near Z rail's inboard edge across the carriage plate. It is what the outer XD bolts have to live beside, so it moves with Z_RAIL_PITCH and is named rather than left as an arithmetic step. |
+| **XD_HEAD_OVERLAP** | 1.25 mm | derived | (M5_SOCKET_HEAD_D / 2) - (XD1_Y - XD_RAIL_EDGE) | 1.25 - how far an M5 socket head on XD1 would stand OVER the rail. 🔴 POSITIVE MEANS IT FOULS, which is why XD1 and XD4 are counterbored and XD2 and XD3 are not - his catch off the parts. The bolt sits 3 clear of the rail edge and the head wants 4.25. FLAG: IT GOES NEGATIVE IF THE RAIL PITCH WIDENS, which would retire the counterbore; it goes further positive if the pitch narrows. Either way the check is here rather than in somebody's head. |
+| **XD1_Y** | 40 mm | pinned |  | 40 - the first XD bolt across the carriage plate, the group running 40 / 70 / 100 / 130 on a 30 pitch and symmetric about the plate. Named because XD_HEAD_OVERLAP needs it; the other three are the same group and only the outer pair is close to anything. |
+| **M5_SOCKET_HEAD_D** OPEN: | 8.5 mm | nominal |  | 8.5 - an M5 socket cap head across, the ISO 4762 figure. Used for clearance questions only: what a head fouls, and how much room a counterbore has to give it. CALIPER ONE if a figure ever has to be tight - this is a catalogue number and the repo's standing rule prefers the part. |
+| **CLAMP_FOOTPRINT_W** | 122 mm | part |  | 122 - the spindle clamp ACROSS, where it sits on the Z plate. His, off the part. With CLAMP_AXIAL's 55 that is the whole footprint, which is what Sheet 4 draws as a dotted rectangle so the C-holes under each clamp can be seen to be under it. FLAG: IT IS THE SEATING FOOTPRINT, not the clamp's widest point - CLAMP_SHOULDER_W and CLAMP_MID_W are elsewhere on the casting and stand off the plate. |
+| **CLAMP_FOOTPRINT_Y0** | 24 mm | derived | (Z_PLATE_W / 2) - (CLAMP_FOOTPRINT_W / 2) | 24 - the clamp footprint's near edge across the Z plate, the pair being centred on the plate. It leaves the same 24 at the far edge, which is the check that the clamps are centred rather than merely placed. |
 | **CLAMP_AXIAL** | 55 mm | vendor |  | Clamp's axial dimension |
 | **CLAMP_SHOULDER_W** | 116 mm | measured |  | Across the clamp from CLAMP_STEP_OUT upward, the shoulders included - his calipers, 2026-10-10, against a first reading of 115. SETTLED: THE SECOND READING IS THE TIDIER NUMBER FOR A REASON: at 116 each shoulder is exactly 18 wide beside the 80 middle, where 115 gave 17.5. |
 | **CLAMP_STEP_OUT** | 25.4 mm | measured |  | 1in out from the Z plate's face, where the clamp narrows from CLAMP_W to CLAMP_SHOULDER_W - his calipers, 2026-10-10. It is well below the slit at CLAMP_GAP_START, so the step is in solid metal and has nothing to do with the jaw. |
@@ -734,6 +740,7 @@ numbers in one session on 2026-10-02.
 - **FIN_KERF** (nominal) = 2 mm - nothing depends on it
 - **T_Z_PLATE** (nominal) = 12.7 mm - feeds 4: GANTRY_ARM, SPINDLE_OFFSET, Z_CBORE_DEPTH, Z_NUT_CBORE_DEPTH
 - **T_X_CARRIAGE_PLATE** (nominal) = 12.7 mm - feeds 1: GANTRY_ARM
+- **M5_SOCKET_HEAD_D** (nominal) = 8.5 mm - feeds 1: XD_HEAD_OVERLAP
 - **M8_HEAD_D** (nominal) = 13 mm - nothing depends on it
 - **M8_HEAD_H** (nominal) = 8 mm - nothing depends on it
 - **SHELF_BAR_W** (nominal) = 25.4 mm - feeds 1: SHELF_SHIM_W
