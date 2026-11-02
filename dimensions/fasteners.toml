@@ -218,10 +218,10 @@ count = 16
 per = "8 per fin, two fins"
 length = 35
 groups = [["Y1 Front fin", 8], ["Y2 Front fin", 8]]
-head = "flange"
+head = "button flange"
 into = "bore"
-source = "his, 2026-10-11; assembly.md: '8 x M8 x 35 flange bolts into the o6.65 lengthwise corner bores'"
-note = "Flange head. M8 x 35 leaves 22.3 in the extrusion. FLAG: THIS WAS ENTERED AS 'Y beams into the end plates' - MY MISLABEL. The section it came from is the FRONT FIN's, which is why its M8 columns are at 35 and 65 from the factory edge. Same bolts, wrong name, and a wrong name is how a joint gets counted twice or missed."
+source = "his, naming the part; assembly.md: '8 x M8 x 35 flange bolts into the o6.65 lengthwise corner bores'"
+note = "🔴 M8 x 35 BUTTON FLANGE - his, naming the part he has. Eight through each front fin into the end of a Y beam, sixteen across the two. M8 x 35 leaves 22.3 in the extrusion. FLAG: THIS WAS ENTERED AS 'Y beams into the end plates' - MY MISLABEL. The section it came from is the FRONT FIN's, which is why its M8 columns are at 35 and 65 from the factory edge. Same bolts, wrong name, and a wrong name is how a joint gets counted twice or missed."
 
 [[joint]]
 id = "xep-to-xbeam"
@@ -229,13 +229,13 @@ what = "X end plates to the X beam's top extrusion corner bores"
 size = 8
 count = 8
 per = "4 per plate"
-length = 35
+length = 30
 groups = [["Left X endplate", 4], ["Right X endplate", 4]]
-head = "button flange"
+head = "flange, low profile"
 into = "bore"
 grip = ["T_X_ENDPLATE"]
 source = "his, off the assembled Y1; assembly.md: '4 x M8 into the top extrusion's corner bores, 9 mm clearance'"
-note = "🔴 M8 x 35 BUTTON FLANGE - his, naming the part he has. The head is what decides it: THE BOTTOM TWO OF THE FOUR SIT DIRECTLY OVER THE BEARING BLOCKS. A standard M8 flange is too big around and fouls the block; the button flange clears by about a millimetre. Off the assembled part rather than off the drawing. ONE HEAD FOR ALL FOUR rather than mixing - the top pair is unconstrained, and a split pattern is how the wrong bolt reaches the wrong hole at assembly. EIGHT IN ALL, four per plate across the two. Same 35 as the other two bore joints. 🔴 KEEP THIS ONE FULL THREAD - it is the exception to the part-thread rule in this file's header, and the reason is that the extrusion's lengthwise corner bore is o6.65. An 8 mm plain shank cannot enter it at all, so any shank reaching past the plate bottoms on the beam's end face and holds the flange off - the acorn-nut failure arriving a third way. A part-thread M8 x 35 leaves 13 of shank against a T_X_ENDPLATE of 12.19 and misses by 0.81. NOTE: AND THE SLIDING PROBLEM IS NOT HERE ANYWAY - this is one plate on one bore, not a plywood o9 and a steel o9 to line up at once."
+note = "🔴 M8 x 30 LOW PROFILE FLANGE - his, naming the part. The head is what decides it: THE BOTTOM TWO OF THE FOUR SIT DIRECTLY OVER THE BEARING BLOCKS. A standard M8 flange is too big around and fouls the block; the low profile one clears by about a millimetre. Off the assembled part rather than off the drawing. ONE HEAD FOR ALL FOUR rather than mixing - the top pair is unconstrained, and a split pattern is how the wrong bolt reaches the wrong hole at assembly. EIGHT IN ALL, four per end. FLAG: 30 AND NOT 35 - at 30 it reaches 17.81 into the extrusion, still clear of the 2 x D a thread in 6061 wants before the bolt becomes the weaker part, with less forming drag than a 35. The corner bore runs the full length of the extrusion so there is nothing to bottom on either way. Same 35 as the other two bore joints. 🔴 KEEP THIS ONE FULL THREAD - it is the exception to the part-thread rule in this file's header, and the reason is that the extrusion's lengthwise corner bore is o6.65. An 8 mm plain shank cannot enter it at all, so any shank reaching past the plate bottoms on the beam's end face and holds the flange off - the acorn-nut failure arriving a third way. A part-thread M8 x 35 leaves 13 of shank against a T_X_ENDPLATE of 12.19 and misses by 0.81. NOTE: AND THE SLIDING PROBLEM IS NOT HERE ANYWAY - this is one plate on one bore, not a plywood o9 and a steel o9 to line up at once."
 
 [[joint]]
 id = "shelf-bar-horizontal"

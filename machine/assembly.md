@@ -362,7 +362,7 @@ spot-facing or counterboring on one face only.
 
 | | |
 |---|---|
-| To the beam | **8 × M8 × 35 flange bolts** into the ø6.65 lengthwise corner bores — four per profile |
+| To the beam | **8 × M8 × 35 BUTTON FLANGE bolts** into the ø6.65 lengthwise corner bores — four per profile, sixteen across the two fins |
 | Hole | **9 mm**, deliberately. The bores are extruded features and a close fit is impossible in principle |
 | M8 columns | **35 and 65 mm** from the factory edge, so the beam spans X 20 to 80 |
 | To the box | **two M8 at X 25 and X 170, Y 20** above the plate's bottom edge — **TAPPED**, for the angle in front |
@@ -460,16 +460,19 @@ one; nothing below the top edge moves.
 
 | | |
 |---|---|
-| To the X beam | **4 × M8 × 35 BUTTON FLANGE** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
+| To the X beam | **4 × M8 × 30 LOW PROFILE FLANGE** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
 | To the Y rails | **four bearing blocks** in a 2 × 2 grid across the full 154 mm — two butted in Y by two rows 90 mm apart |
 | ø35 encoder bore | **Y 77, 60 mm below the Y beam top** |
 
-🔴 **M8 × 35 BUTTON FLANGE on all four, not a standard flange, and it is the head that decides it.**
-The bottom two of the four sit directly over the bearing blocks. **A standard M8 flange will not
-go** — the flange is too big around and fouls the block. The button flange clears by about a
+🔴 **M8 × 30 LOW PROFILE FLANGE on all four, not a standard flange, and it is the head that decides
+it.** The bottom two of the four sit directly over the bearing blocks. **A standard M8 flange will
+not go** — the flange is too big around and fouls the block. The low profile one clears by about a
 millimetre. One head for all four rather than mixing two: the top pair is unconstrained, and a split
-pattern is how the wrong bolt ends up in the wrong hole at assembly. **Eight in all**, four per
-plate.
+pattern is how the wrong bolt ends up in the wrong hole at assembly. **Eight in all**, four per end.
+
+**30 and not 35.** At 30 the bolt reaches 17.81 into the extrusion, still past the 2 × D a thread in
+6061 wants before the bolt becomes the weaker part, with less thread-forming drag. The corner bore
+runs the full length of the extrusion, so nothing bottoms at either length.
 
 ### The two blocks on a rail are NOT butted — the pitch is chosen
 
