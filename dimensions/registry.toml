@@ -864,6 +864,23 @@ provenance = "pinned"
 note = "Set by bringing the clamp centres in so the M5 counterbores clear the M8 column"
 
 [[dim]]
+sym = "BLOCK_BOLT_REACH"
+expr = "BOLT_XEP_TO_BLOCK - T_X_ENDPLATE"
+note = "7.81 - how far an M5 x 20 reaches past the end plate into a bearing block, with a FLANGE head sitting on the plate's face rather than down a counterbore. It takes the block's whole BLOCK_TAP_DEPTH of 6 and stops BLOCK_BOLT_SPARE short of the hole bottom. 🔴 A COUNTERBORED HEAD CHANGES THIS, because the head sinks and the bolt reaches further - the rear eight per plate are cap screws in counterbores and their length is not the same question."
+
+[[dim]]
+sym = "BOLT_XEP_TO_BLOCK"
+value = 20
+provenance = "part"
+note = "20 - the M5 low profile flange bolt through the end plate into a Y bearing block. His, naming what is in P9-P16. The flange head is the repair for a plate cut to a block pitch the blocks cannot reach: it spans the opened-out hole and takes its float from the hole rather than from a counterbore."
+source = "His, off the assembled plate - P9-P16 are M5 x 20 low profile flange"
+
+[[dim]]
+sym = "BLOCK_BOLT_SPARE"
+expr = "BLOCK_HOLE_DEPTH - BLOCK_BOLT_REACH"
+note = "0.89 - what is left of the bearing block's drilled depth past the bolt's tip. POSITIVE, so nothing bottoms: the bolt engages all 6 of thread and still stops short of the hole's floor. FLAG: IT IS THE CHECK THAT MATTERS ON THIS JOINT, not the thread count. A bolt that bottoms in a blind hole feels tight while the joint stays loose, which is the failure the acorn nuts and the front strip both arrived at by different routes."
+
+[[dim]]
 sym = "JET_PILOT_D"
 value = 2
 provenance = "part"
