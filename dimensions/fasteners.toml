@@ -231,11 +231,11 @@ count = 8
 per = "4 per plate"
 length = 35
 groups = [["Left X endplate", 4], ["Right X endplate", 4]]
-head = "flange, low profile"
+head = "button flange"
 into = "bore"
 grip = ["T_X_ENDPLATE"]
 source = "his, off the assembled Y1; assembly.md: '4 x M8 into the top extrusion's corner bores, 9 mm clearance'"
-note = "🔴 LOW PROFILE FLANGE, NOT STANDARD, and the head is what decides it: THE BOTTOM TWO OF THE FOUR SIT DIRECTLY OVER THE BEARING BLOCKS. A standard M8 flange is too big around and fouls the block; a low profile one clears by about a millimetre. His, off the assembled part rather than off the drawing. ONE HEAD FOR ALL FOUR rather than mixing - the top pair is unconstrained, and a split pattern is how the wrong bolt reaches the wrong hole at assembly. Same 35 as the other two bore joints. 🔴 KEEP THIS ONE FULL THREAD - it is the exception to the part-thread rule in this file's header, and the reason is that the extrusion's lengthwise corner bore is o6.65. An 8 mm plain shank cannot enter it at all, so any shank reaching past the plate bottoms on the beam's end face and holds the flange off - the acorn-nut failure arriving a third way. A part-thread M8 x 35 leaves 13 of shank against a T_X_ENDPLATE of 12.19 and misses by 0.81. NOTE: AND THE SLIDING PROBLEM IS NOT HERE ANYWAY - this is one plate on one bore, not a plywood o9 and a steel o9 to line up at once."
+note = "🔴 M8 x 35 BUTTON FLANGE - his, naming the part he has. The head is what decides it: THE BOTTOM TWO OF THE FOUR SIT DIRECTLY OVER THE BEARING BLOCKS. A standard M8 flange is too big around and fouls the block; the button flange clears by about a millimetre. Off the assembled part rather than off the drawing. ONE HEAD FOR ALL FOUR rather than mixing - the top pair is unconstrained, and a split pattern is how the wrong bolt reaches the wrong hole at assembly. EIGHT IN ALL, four per plate across the two. Same 35 as the other two bore joints. 🔴 KEEP THIS ONE FULL THREAD - it is the exception to the part-thread rule in this file's header, and the reason is that the extrusion's lengthwise corner bore is o6.65. An 8 mm plain shank cannot enter it at all, so any shank reaching past the plate bottoms on the beam's end face and holds the flange off - the acorn-nut failure arriving a third way. A part-thread M8 x 35 leaves 13 of shank against a T_X_ENDPLATE of 12.19 and misses by 0.81. NOTE: AND THE SLIDING PROBLEM IS NOT HERE ANYWAY - this is one plate on one bore, not a plywood o9 and a steel o9 to line up at once."
 
 [[joint]]
 id = "shelf-bar-horizontal"

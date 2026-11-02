@@ -460,15 +460,16 @@ one; nothing below the top edge moves.
 
 | | |
 |---|---|
-| To the X beam | **4 × M8 LOW PROFILE flange** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
+| To the X beam | **4 × M8 × 35 BUTTON FLANGE** into the **top** extrusion's corner bores, **9 mm clearance**, both pairs **15 and 45 mm from the plate's back edge** |
 | To the Y rails | **four bearing blocks** in a 2 × 2 grid across the full 154 mm — two butted in Y by two rows 90 mm apart |
 | ø35 encoder bore | **Y 77, 60 mm below the Y beam top** |
 
-🔴 **Low profile flange on the four M8, not standard, and it is the head that decides it.** The bottom
-two of the four sit directly over the bearing blocks. **A standard M8 flange will not go** — the
-flange is too big around and fouls the block. A low profile one clears by about a millimetre. Buy
-one head for all four rather than mixing two: the top pair is unconstrained, and a split pattern is
-how the wrong bolt ends up in the wrong hole at assembly.
+🔴 **M8 × 35 BUTTON FLANGE on all four, not a standard flange, and it is the head that decides it.**
+The bottom two of the four sit directly over the bearing blocks. **A standard M8 flange will not
+go** — the flange is too big around and fouls the block. The button flange clears by about a
+millimetre. One head for all four rather than mixing two: the top pair is unconstrained, and a split
+pattern is how the wrong bolt ends up in the wrong hole at assembly. **Eight in all**, four per
+plate.
 
 ### The two blocks on a rail are NOT butted — the pitch is chosen
 

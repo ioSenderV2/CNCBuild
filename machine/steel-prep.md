@@ -16,6 +16,10 @@ on the show faces**, which keeps the raw steel look on everything that is visibl
 Every one of them is already cut — the steel went to the waterjet and none of it is on the mill
 trip — so prep and paint happen before any of it is bolted up.
 
+SETTLED: **The two side panels are done — cleaned and coated before they went on.** Nothing on this
+sheet is outstanding for those two, including the stain tests below. What is left is the **rear
+plate** and the **two sole brackets**.
+
 SETTLED: **It is done at home, in a can, not sent out for powder.** Powder would come back finished
 and opaque, and the show faces are staying raw steel.
 
