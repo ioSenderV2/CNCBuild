@@ -55,7 +55,7 @@ Current as of 2026-10-02.
 | **X gantry end plates** | 154 × **242.5** × **1/2"** | 6061, quantity 2 - identical below the top edge; the **right-hand one carries the BF12 tongue** above it, running to the stock's 300 |
 | **Y nut doubler block** | 154 × 45 × **1/2"** | 6061, quantity 2 - on the end plate's outer face, giving a 24.38 mm seating |
 | **Y nut sole bracket** | **T**, 154 root × {{SOLE_BASE_D}}, **{{SOLE_STEM_W}}** stem × {{SOLE_STEM_L}}, × **1/4"** | **A36 steel**, quantity 2 - carries the inverted Y ball nut. Same sheet as the rear plate |
-| X carriage plate | 154 × 407 × **1/2"** | 6061 |
+| X carriage plate | {{X_CARRIAGE_W}} × {{X_CARRIAGE_L}} × **1/2"** | 6061 |
 | Z plate | **164** × 175 × **1/2"** | 6061 |
 
 OPEN: **Y and X back plates are no longer the same part in a different length.** Y's is steel, 12"

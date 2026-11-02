@@ -268,7 +268,8 @@ and that is the figure that does not move with tool choice.
 FLAG: **The travel to use here is 226 mm, not the rail-limited 235.91.** The 226 is what the two
 mechanical stops leave with the 5 mm standoffs he set on 2026-10-10 - the nut 5 above BF12's face
 going down, 5 below the stop block going up - and it is what an operator actually gets.
-`Z_TRAVEL`'s 235.91 is the rail-and-block figure, and it is the wrong one for an envelope question.
+`Z_TRAVEL`'s {{Z_TRAVEL}} is the rail-and-block figure, and it is the wrong one for an envelope
+question.
 OPEN: **An earlier pass of this file used the 235.91 and put the ceiling 9.7 mm too high**; every
 figure below is on the 226.
 

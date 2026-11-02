@@ -73,6 +73,34 @@ KEEP = {
                                  "are computed from it and are literals too",
 }
 
+# A SECOND KEY, file:LITERAL rather than file:line, for a number that collides with
+# a symbol's old value ANYWHERE in a file that is not about that symbol at all.
+# Line keys rot: anything inserted above shifts them silently, and the entry then
+# whitelists an innocent line while the real one fires again. These do not move.
+# Use this form only where the file genuinely never cites the symbol - a coincidence
+# of digits, not a judgement about staleness.
+KEEP_LITERAL = {
+    "wiring/db37-axis-interconnect.md:20": "a DB37 PIN NUMBER. The line says "
+                                           "'block in row', which is what drags "
+                                           "a block symbol into range",
+    "machine/gantry-beam-joint.md:20": "the extrusion's slot centrelines are "
+                                       "20 / 60 / 100 - a profile feature, and "
+                                       "this file never cites a rail inset",
+    "machine/spoilboard.md:20": "SPOIL_BOLT_INSET is its own 20, named on the "
+                                "line, and has nothing to do with the Z rails",
+    "machine/drawings/shop-pack.html:20": "RAIL_W - the HGR20 rail is 20 WIDE, "
+                                          "and the sheet says so next to its "
+                                          "400 length. Not a rail inset",
+    "machine/assembly.md:20": "RAIL_W again - '20 of rail' is the rail's own "
+                              "section in a stack-up. An HGR20 is 20 wide and "
+                              "Z_RAIL_INSET was 20 until the pitch was chosen, "
+                              "so these two collide across the whole repo",
+    "machine/loads-and-plate-thicknesses.md:154": "the Mega V's own 154 x 310 "
+                                                  "carriage plate, quoted as the "
+                                                  "comparison this build moved away "
+                                                  "from - a different machine",
+}
+
 
 def fmt(x):
     return f"{x:g}"
@@ -203,9 +231,14 @@ def main():
                 fit = [s for s in cands if names[s] and names[s] & close]
                 if len(fit) != 1:
                     continue
-                where = f"{f.relative_to(ROOT).as_posix()}:{ln}"
+                rel = f.relative_to(ROOT).as_posix()
+                where = f"{rel}:{ln}"
                 if where in KEEP:
                     print(f"  KEPT {where}  {m.group(1)}  -  {KEEP[where]}")
+                    continue
+                by_lit = f"{rel}:{m.group(1)}"
+                if by_lit in KEEP_LITERAL:
+                    print(f"  KEPT {where}  {m.group(1)}  -  {KEEP_LITERAL[by_lit]}")
                     continue
                 sym = fit[0]
                 new.append(line[last:m.start()])

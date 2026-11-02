@@ -110,7 +110,7 @@ listed once, in the appendix, and are not repeated on the sheets.</p>
 <tr><td><a href="#sheet-2b">Sheet 2b - X gantry end plate, RIGHT-HAND, with the BF12 tongue (quantity 1)</a></td><td>300 long * 154 wide * 1/2" stock, measured 12.19 6061</td><td class="d">35</td></tr>
 <tr><td><a href="#sheet-2c">Sheet 2c - the shelf bar (quantity 2) - mates with this plate, drill together</a></td><td>60 long * 25.4 W * 50.8 H - 1" * 2" aluminium bar</td><td class="d">4</td></tr>
 <tr><td><a href="#sheet-2d">Sheet 2d - the nut doubler block (quantity 3) - machined on its own, Y on 2a's origin, X on its own end face</a></td><td>154 long * 45 wide * 1/2" stock, measured 12.19 6061</td><td class="d">8</td></tr>
-<tr><td><a href="#sheet-3a">Sheet 3a — X carriage plate (quantity 1)</a></td><td>407 long * 154 wide * 1/2" aluminium</td><td class="d">45</td></tr>
+<tr><td><a href="#sheet-3a">Sheet 3a — X carriage plate (quantity 1)</a></td><td>{{X_CARRIAGE_L}} long * {{X_CARRIAGE_W}} wide * 1/2" aluminium</td><td class="d">45</td></tr>
 <tr><td><a href="#sheet-3b">Sheet 3b - Z spacer bar (quantity 2)</a></td><td>160 long * 50 wide * 5/8" aluminium bar</td><td class="d">9</td></tr>
 <tr><td><a href="#sheet-3c">Sheet 3c - the Z top stop block (quantity 1)</a></td><td>50 * 25.4 * 45, cut from 1" 6061</td><td class="d">3</td></tr>
 <tr><td><a href="#sheet-4">Sheet 4 - Z plate (quantity 1)</a></td><td>175 long * 164 wide * 1/2" aluminium</td><td class="d">30</td></tr>
@@ -993,10 +993,10 @@ numbers &#8212; they are 2a&#8217;s.</b></figcaption>
 
 <figure>
 <svg viewBox="-54 -30 640 370" width="190mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- X CARRIAGE PLATE, machining coordinates. svg y = 154 - machine Y. -->
+  <!-- X CARRIAGE PLATE, machining coordinates. svg y = {{X_CARRIAGE_W}} - machine Y. -->
   <rect x="0" y="0" width="407.0" height="154.0" fill="#e8f0fa" stroke="#111" stroke-width="1.6"/>
 
-  <!-- HGR20 rails, 400 long x RAIL_W 20 wide, centred on Y 20 and Y 134. Their ends
+  <!-- HGR20 rails, 400 long x RAIL_W 20 wide, centred on Y {{Z_RAIL_INSET}} and Y 143. Their ends
        at X 400 are what shows the last 7 of the plate carries no rail. -->
   <rect x="0.00" y="124.0" width="400.00" height="20.00" fill="#c0c" fill-opacity="0.10" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
   <rect x="0.00" y="10.0" width="400.00" height="20.00" fill="#c0c" fill-opacity="0.10" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 2.5"/>
@@ -1020,7 +1020,7 @@ numbers &#8212; they are 2a&#8217;s.</b></figcaption>
   <!-- Z top stop block, Sheet 3c. It ends at 335.4 and the casting starts at 350. -->
   <rect x="310.00" y="52.0" width="25.40" height="50.00" fill="none" stroke="#c00" stroke-width="0.9" stroke-dasharray="4 2.5"/>
 
-  <!-- R1-R14, the same rule: R1-R7 across the Y 20 rail, then R8-R14 on Y 134.
+  <!-- R1-R14, the same rule: R1-R7 across the Y {{Z_RAIL_INSET}} rail, then R8-R14 on Y 143.
        Tags run OUTBOARD, away from the X block tags that share those two lines. -->
   <circle cx="20.00" cy="134.0" r="3.0" fill="#fff4d6" stroke="#b06000" stroke-width="0.9"/>
   <text class="ref" x="20.00" y="144.0" fill="#b06000" text-anchor="middle">R1</text>
@@ -1400,12 +1400,12 @@ the block is one 50 &times; 45 piece off a 1" slab and no face needs machining.<
   <rect x="20" y="56" width="40" height="52" fill="#fff4d6" stroke="#b06000" stroke-width="1" stroke-dasharray="4 3"/>
   <text class="lbl" x="22" y="53" fill="#b06000">BALL NUT FACE BEHIND, 40 &#215; 52</text>
 
-  <!-- the two bearing-block pairs behind, 73 long each, gap 9.91 between them -->
+  <!-- the two bearing-block pairs behind, 73 long each, gap {{Z_BLOCK_GAP}} between them -->
   <rect x="7.5" y="142" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
   <rect x="94.5" y="142" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
   <rect x="7.5" y="0" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
   <rect x="94.5" y="0" width="73" height="22" fill="none" stroke="#c0c" stroke-width="0.9" stroke-dasharray="4 3"/>
-  <text class="lbl" x="82" y="86" fill="#c0c">9.91 GAP</text>
+  <text class="lbl" x="82" y="86" fill="#c0c">{{Z_BLOCK_GAP}} GAP</text>
 
   <!-- 16 x M5 clearance to the blocks, counterbored 8.9 -->
   <g>

@@ -88,8 +88,11 @@ ORDER = [
     # 12.7 IS THE NOMINAL and T_X_CARRIAGE_PLATE still carries CALIPER IT - the
     # end plates' half-inch stock came in at 12.19. Nothing on the drawing
     # depends on it; it is a note for the shop.
-    ('x-carriage-plate', 'stock', ('X carriage plate', 's3a', 407.0, 154.0,
-                                   12.7, '6061', 1)),
+    # SYMBOLS, NOT LITERALS, because this plate is being REMADE - the first one
+    # was cut to a block separation the blocks cannot reach. The other stock
+    # entries keep their literals because those pieces are already in his hands.
+    ('x-carriage-plate', 'stock', ('X carriage plate', 's3a', 'X_CARRIAGE_L',
+                                   'X_CARRIAGE_W', 12.7, '6061', 1)),
 ]
 
 
@@ -316,6 +319,16 @@ def both_units(mm):
 
 
 def build(name, title, sheet, L, W, T, material, qty, src, reg):
+    # L AND W MAY BE SYMBOL NAMES, and on a part still being made they must be.
+    # The X carriage plate was caught with its HOLES moved by the registry and
+    # its OUTLINE still the literal 407 x 154 this table used to carry - correct
+    # holes in a wrong-sized blank, which is the one file that gets sent out and
+    # cut. A literal is defensible only for stock already in his hands.
+    if isinstance(L, str):
+        L = reg.value(L)
+    if isinstance(W, str):
+        W = reg.value(W)
+
     ents, holes, cutouts, _edge, merges = [], *holes_for(src, sheet)
     fins = sheet == 's1a'
 

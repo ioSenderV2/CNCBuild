@@ -273,34 +273,34 @@ note = "80, the two Y block centres apart along the rail - CHOSEN, his, and the 
 
 [[dim]]
 sym = "X_BLOCK_CENTRE_SEP"
-value = 78
+value = 80
 provenance = "pinned"
-note = "78, the two X carriage block centres apart along the rail - AS CUT. Read out of the DXF that went to the waterjet: the sixteen o5.2 sit on Y rows 20 / 56 / 98 / 134, so 36 within a block and 42 between them. FLAG: IT IS A MILLIMETRE CLEARER THAN THE Y END PLATE'S OLD PATTERN, which demanded 77.0 and would not assemble. Against a block body read at 77.0 to 77.5 this leaves 0.5 to 1.0 of air, so it goes together as drawn. 🔴 THE PLATE HAS NO FALLBACK IF IT DOES NOT. Each block's four outer holes sit under a Z rail and must stay counterbored cap screws, so only four of its eight could ever take a flange head - and a joint where half the holes can float and half cannot still jams. Offer the blocks up before opening the pilots. NOTE: THE PILOTS ARE 2 mm, so the separation is still a choice until they are opened; a row moved by 1 would swallow its pilot inside the new o5.2 rather than leave a figure-eight, but a twist drill pulls into an off-centre pilot and it would want an end mill."
+note = "80, the two X carriage block centres apart along the rail - CHOSEN, his, and the same number Y uses so the machine carries one. Against the measured BLOCK_BODY_L_XZ it leaves X_BLOCK_GAP of air. 🔴 IT MUST EXCEED BLOCK_BODY_L_XZ AND 78 DOES NOT. The blocks butt at 78.5, so a plate asking for 78 is half a millimetre short of what two blocks can physically reach and will not take its second block. The plate cut to 78 is being remade rather than opened out - sixteen holes off-pilot on the part everything else is set from is not worth it. FLAG: THIS PLATE HAS NO FALLBACK, which is the other half of the reason. Each block's four outer holes sit under a Z rail and must stay counterbored cap screws, so only four of its eight could ever take a flange head - and a joint where half the holes float and half cannot still jams. The end plate escaped only because a whole block group was exposed."
 
 [[dim]]
 sym = "X_BLOCK_ROW_Y1"
-expr = "BLOCK_CENTROID_Y - (X_BLOCK_CENTRE_SEP / 2) - BLOCK_BOLT_HALF_Y"
-note = "20 - first of the X carriage plate's four block rows. It shares BLOCK_CENTROID_Y with the end plate because both plates are XEP_W across the rail."
+expr = "X_CARRIAGE_CENTROID_Y - (X_BLOCK_CENTRE_SEP / 2) - BLOCK_BOLT_HALF_Y"
+note = "27 - first of the X carriage plate's four block rows, and 27 of edge distance with it. It takes X_CARRIAGE_CENTROID_Y, this plate's own centre - see that symbol for why it is not the end plate's."
 
 [[dim]]
 sym = "X_BLOCK_ROW_Y2"
 expr = "X_BLOCK_ROW_Y1 + BLOCK_PITCH_Y"
-note = "56 - second block row, the far hole of the near block."
+note = "63 - second block row, the far hole of the near block."
 
 [[dim]]
 sym = "X_BLOCK_ROW_Y3"
-expr = "BLOCK_CENTROID_Y + (X_BLOCK_CENTRE_SEP / 2) - BLOCK_BOLT_HALF_Y"
-note = "98 - third block row, the near hole of the far block."
+expr = "X_CARRIAGE_CENTROID_Y + (X_BLOCK_CENTRE_SEP / 2) - BLOCK_BOLT_HALF_Y"
+note = "107 - third block row, the near hole of the far block."
 
 [[dim]]
 sym = "X_BLOCK_ROW_Y4"
 expr = "X_BLOCK_ROW_Y3 + BLOCK_PITCH_Y"
-note = "134 - fourth block row. These four exist so Sheet 3a can cite them instead of carrying four literals, which is how the end plate's rows went wrong in the same file."
+note = "143 - fourth block row, and 27 of edge distance beyond it on the 170 plate. These four exist so Sheet 3a can cite them instead of carrying four literals, which is how the end plate's rows went wrong in the same file."
 
 [[dim]]
 sym = "X_BLOCK_GAP"
-expr = "X_BLOCK_CENTRE_SEP - BLOCK_BODY_L"
-note = "0.91 - the clear air between the two X carriage block bodies on the nominal body length. FLAG: IT IS THE TIGHTEST BLOCK GAP ON THE MACHINE - Y has Y_BLOCK_GAP and Z has Z_BLOCK_GAP, both far looser. It is positive and the plate is cut, so it stands; it is recorded because it is the one of the three that a slightly long block body would close."
+expr = "X_BLOCK_CENTRE_SEP - BLOCK_BODY_L_XZ"
+note = "1.5 - the clear air between the two X carriage block bodies. 🔴 IT TAKES BLOCK_BODY_L_XZ AND NOTHING ELSE. Computed on BLOCK_BODY_L, the Y pair's figure, it overstates the air by 1.41 and can read positive on a separation that is physically negative - the X blocks are not the Y blocks."
 
 [[dim]]
 sym = "Y_BLOCK_GAP"
@@ -1575,15 +1575,15 @@ note = "1197.38 - Y2 end, inboard column. Provisional, same as RP_A_COL_3."
 
 [[dim]]
 sym = "Z_PLATE_L"
-value = 175
+value = 180
 provenance = "pinned"
-note = "Z plate long dimension. See z-carriage.md for why it is 175 and why the width went 154 to 164."
+note = "180, the Z plate's VERTICAL dimension - the Z blocks travel up and down, so this is the direction their separation runs in. CHOSEN, his. 🔴 AN EVEN HEIGHT NEEDS AN EVEN SEPARATION. The four block rows are the half-height less half of Z_BLOCK_CENTRE_SEP less half of BLOCK_PITCH_Y, so 180 against the old odd 87 put all four on half millimetres; at 88 they come back to 28 / 64 / 116 / 152, whole, with 28 of edge distance at both ends. NOTE: 'LONG' IS A MISLEADING NAME and the symbol keeps it only because renaming costs more than it buys - this is the height, and Z_PLATE_W is the across."
 
 [[dim]]
 sym = "Z_PLATE_W"
-value = 164
+value = 170
 provenance = "pinned"
-note = "164. FLAG: EVERY HOLE ON THIS PLATE IS NOW A WHOLE MILLIMETRE - all 28 of them - and that only works at 164. It briefly went to 165 to chase the C-hole columns, on the belief that the rail pitch was 115; the pitch is 114 (see Z_RAIL_COL), which puts the block bolt columns on whole offsets and makes an EVEN width the one that works. At 165 the nut and clamp holes land on half millimetres instead. The width was 154 before that, and 164 because on 154 the outer M5 counterbore broke through the edge by 1.5; at 164 it clears by 4.55 on the measured 8.9 bit."
+note = "170, and the same width as the X carriage plate so both come off one bar. FLAG: EVERY HOLE ON THIS PLATE IS A WHOLE MILLIMETRE - all 28 - and an EVEN width is what that needs: the half-width is whole, and the block bolt columns sit on whole offsets off the chosen Z_RAIL_PITCH. An odd width puts the nut and clamp holes on half millimetres. FLAG: THE OUTER M5 COUNTERBORE IS WHAT SETS THE FLOOR. On 154 it broke through the edge by 1.5; the width has to keep Z_M5_Y_1 clear of half the 8.9 bit, and at 170 against a 116 pitch Z_M5_Y_1 is 11, so it clears by 6.55. NOTE: MATCHING THE CARRIAGE PLATE IS DELIBERATE HERE and is not the tidying machine/assembly.md warns against: what that forbids is bringing this plate DOWN to a narrower one, because the counterbore is what breaks out."
 
 [[dim]]
 sym = "Z_M5_ROW_OFF_1"
@@ -1607,23 +1607,35 @@ note = "0 - FLAG: RETIRED. It was 0.3, a deliberate slide of the block group to 
 [[dim]]
 sym = "BLOCK_BODY_L"
 expr = "BLOCK_BUTTED / 2"
-note = "77.09, one HGH20 block along the rail - half the measured butted pair. FLAG: TRUST THIS OVER THE ROW MEASUREMENTS. Z_M5_ROW_OFF_1 and _3 imply the two block centres sit 80 apart when butted, which contradicts this by 2.91, and BLOCK_BUTTED is one direct reading of the pair where the rows are four separate readings. Same looseness the Y block rows already carry a warning about."
+note = "77.09, one Y-axis block along the rail - half the butted pair. 🔴 IT IS THE Y BLOCKS ONLY, AND IT IS A WEAK NUMBER. BLOCK_BUTTED is a caliper reading across rubber end seals with a 1.1 spread behind it, so this inherits that. The X and Z blocks are a DIFFERENT PART - see BLOCK_BODY_L_XZ, measured properly - and anything on those axes that reaches for this figure is wrong. OPEN: THE Y BLOCKS HAVE NOT HAD THE BOLT-SPAN TREATMENT. Two M5 in corresponding holes, one span across the shanks, less one shank diameter, gives the butted separation off hard metal; that is how 78.5 was got on the X pair and it is what this still needs."
+
+[[dim]]
+sym = "BLOCK_BODY_L_XZ"
+value = 78.5
+provenance = "measured"
+note = "78.5 - one X or Z axis block along the rail, and the two axes share a part. HIS BOLT-SPAN READING: an M5 screwed into the corresponding hole of each butted block, span measured across the outsides at 83.5, less one shank. 🔴 THIS IS THE METHOD, NOT JUST THE NUMBER. Butted centre-to-centre IS the body length, and taken this way it comes off hard metal at both ends instead of across a compliant seal - which is the whole reason the Y figure is untrustworthy and this one is not. FLAG: IT IS A MILLIMETRE AND A HALF OVER THE Y BLOCK'S 77.09. Any X or Z figure computed on that one overstates its clearance by exactly that much, which is enough to read a negative separation as a positive one."
+source = "His bolt-span measurement on the butted X pair - 83.5 outside, less one M5 shank"
 
 [[dim]]
 sym = "Z_BLOCK_CENTRE_SEP"
-value = 87
+value = 88
 provenance = "pinned"
-note = "87, the two Z block centres apart - CHOSEN, and the one number this whole pattern hangs on. It puts the four bolt rows on 26 / 62 / 113 / 149, all whole and symmetric about the plate, which is why the group shift that used to sit here is gone. FLAG: DO NOT SPECIFY THE GAP, SPECIFY THESE ROWS. The gap is not something you set - it is what happens when the blocks are bolted to rows that are already drilled."
+note = "88, the two Z block centres apart - CHOSEN, and the one number this whole pattern hangs on. It puts the four bolt rows on 28 / 64 / 116 / 152, all whole and symmetric about the plate, so no group shift is needed to bring them onto integers. 🔴 DO NOT SPECIFY THE GAP, SPECIFY THESE ROWS. The gap is not something you set - it is what happens when the blocks are bolted to rows that are already drilled. THIS NOTE IS THE RULE THE OTHER TWO AXES LEARNED LATE: Y took it after a plate would not assemble, X after one was cut 0.5 short. FLAG: IT IS EVEN BECAUSE Z_PLATE_L IS - an odd separation against an even height puts all four rows on half millimetres. The 1 it grew costs 1 mm of Z travel and buys a millimetre of block air."
 
 [[dim]]
 sym = "Z_BLOCK_GAP"
-expr = "Z_BLOCK_CENTRE_SEP - BLOCK_BODY_L"
-note = "9.91, the clear gap between the two block bodies. FLAG: THE GAP IS THE WHOLE REASON THE BLOCKS ARE SPREAD AT ALL - his, 2026-10-08: a 4 mm hex driver passes through the Z plate and the spacer into this gap to reach a rail bolt beneath, so the Z plate, spacers, blocks and rails can be built as one sub-assembly and then bolted to the X carriage plate by fastening the rails last. At 9.91 a 4 mm shaft has 2.96 mm of slop, which is the difference between a job and a fight. It costs 9.91 mm of Z travel, and the blocks were butted before precisely to spend none."
+expr = "Z_BLOCK_CENTRE_SEP - BLOCK_BODY_L_XZ"
+note = "9.5, the clear gap between the two block bodies, on the MEASURED X/Z body. FLAG: THE GAP IS THE WHOLE REASON THE BLOCKS ARE SPREAD AT ALL - his: a 4 mm hex driver passes through the Z plate and the spacer into this gap to reach a rail bolt beneath, so the Z plate, spacers, blocks and rails can be built as one sub-assembly and then bolted to the X carriage plate by fastening the rails last. At 9.5 a 4 mm shaft has 2.75 mm of slop, which is the difference between a job and a fight. 🔴 IT TAKES BLOCK_BODY_L_XZ. On the Y pair's body it reports 9.91 and the driver gets 0.41 less room than the number promises."
 
 [[dim]]
 sym = "Z_TRAVEL"
-expr = "Z_RAIL_L - BLOCK_BUTTED - Z_BLOCK_GAP"
-note = "235.91 mm of Z travel, down from the 245.82 the butted blocks gave. Every millimetre of gap is a millimetre of travel - that is the honest trade and z-carriage.md already said so in the other direction."
+expr = "Z_RAIL_L - Z_BLOCK_GROUP_L"
+note = "233.5 mm of Z travel - the 400 rail less what the carriage occupies on it. 🔴 THE TERM IS Z_BLOCK_GROUP_L AND NOT A BUTTED PAIR. Written as BLOCK_BUTTED plus a gap it reaches for the Y pair's figure on an axis whose blocks are a different part, and reports 2.4 more travel than the rail has. Every millimetre of block separation is a millimetre of travel - that is the honest trade, and spreading the blocks is the only thing on this axis that spends it."
+
+[[dim]]
+sym = "Z_BLOCK_GROUP_L"
+expr = "Z_BLOCK_CENTRE_SEP + BLOCK_BODY_L_XZ"
+note = "166.5 - the two Z blocks plus their air, end to end, which is what the carriage occupies on the rail. The same shape as Y_BLOCK_GROUP_L, and it exists for the same reason: the thing that comes off the travel is the GROUP, and writing it as a butted pair plus a gap invited the butted pair to be the wrong part's."
 
 [[dim]]
 sym = "Z_M5_X_1"
@@ -1765,12 +1777,12 @@ note = "60.08 across, HIS CALIPERS 2026-10-08. BF12 is bolted to the X carriage 
 [[dim]]
 sym = "Z_SPACER_CHANNEL"
 expr = "(2 * Z_RAIL_COL) - SPACER_W"
-note = "64, the clear channel between the two spacers' inner edges, which is what BF12 passes through."
+note = "66, the clear channel between the two spacers' inner edges, which is what BF12 passes through. It follows the chosen Z_RAIL_PITCH, so widening the pitch is how the nut gets room."
 
 [[dim]]
 sym = "BF12_SIDE_CLEAR"
 expr = "(Z_SPACER_CHANNEL - BF12_W) / 2"
-note = "1.96 mm each side of BF12. FLAG: HIS CATCH, 2026-10-08, and it nearly sank the rail pitch: bringing the rails in to 114 brings the spacers with them and closes this channel by 1. The new bar being 50 wide rather than 2in gives 0.8 of it back, which lands this within four hundredths of the ~2 mm the as-built carriage has. OPEN: If the spacers are ever ordered at 2in again this drops to 1.5. For more margin than the as-built, a 48 wide bar gives 2.9 and still covers the 44 block by 2 each side."
+note = "2.96 mm each side of BF12, and this is what the chosen Z_RAIL_PITCH of 116 is FOR - his, to give the ball screw nut room. A millimetre a side more than the 114 pitch gave. FLAG: THE SPACER WIDTH IS THE OTHER TERM and it is the one that can take it away: at 50 wide this is 2.96, and spacers ordered at 2in instead drop it to 2.5. OPEN: A 48 wide bar would give 3.96 and still cover the 44 block by 2 each side, if the nut ever wants more than this."
 
 [[dim]]
 sym = "T_BF12_BLOCK"
@@ -2107,20 +2119,36 @@ note = "HGR20 rail width - the 20 in the designation. For the 3D model he settle
 
 [[dim]]
 sym = "X_CARRIAGE_W"
-value = 154
-provenance = "part"
-note = "154, the X carriage plate across - same width as the X end plates, and Sheet 3a's Y axis."
+value = 170
+provenance = "pinned"
+note = "170, the X carriage plate across - Sheet 3a's Y axis. CHOSEN, his, and no longer tied to the end plates: the old 154 was the width of a 6 x 16 offcut he happened to have, which is a stock size rather than a design intent. FLAG: IT IS WHAT THE Z RAILS SIT IN - Z_RAIL_COL takes the half-width less Z_RAIL_INSET, so this width and the chosen Z_RAIL_PITCH together set the inset. 🔴 IT IS NOT XEP_W. The two plates are independent, and anything wanting the END PLATE's width must say XEP_W - they share no reason to agree, only a history of being cut from the same offcut."
+
+[[dim]]
+sym = "X_CARRIAGE_L"
+value = 430
+provenance = "pinned"
+note = "430, the X carriage plate up the machine - CHOSEN, his, and it carries the Z rails. 🔴 THE 23 IT GREW GOES AT THE TOP and every existing feature keeps its distance from the BOTTOM edge, so nothing below moves and no Z clearance to the spoilboard is spent. What it buys is full support under the Z stepper casting, where the old length left it overhanging. FLAG: IT DOES NOT BUY Z TRAVEL - Z_RAIL_L is a bought 400 mm part, not a function of this plate, so the extra length is spare plate past the rails rather than more rail. It takes that spare from 7 to 30, which retires the 'forced, not chosen' 7 that z-carriage.md complains about. NOTE: IT HAD NO SYMBOL AT ALL and lived as the number 407 inside two notes, which is why it could grow without anything noticing."
+
+[[dim]]
+sym = "X_CARRIAGE_CENTROID_Y"
+expr = "X_CARRIAGE_W / 2"
+note = "85 - the X carriage plate's own across-rail centre, which its four block rows are symmetric about. 🔴 TWO PLATES, TWO CENTROIDS. The X carriage rows take THIS one and the end plate rows take BLOCK_CENTROID_Y; hanging either off the other is right only while the two plates happen to share a width, and goes silently wrong the moment they part."
+
+[[dim]]
+sym = "Z_RAIL_PITCH"
+value = 116
+provenance = "pinned"
+note = "116, the two Z rail centrelines apart - CHOSEN, his, and what the ball screw nut gets its room from. 🔴 THE PITCH IS STATED AND THE INSET FOLLOWS, never the reverse. Pin the inset instead and widening the carriage plate silently spreads the rails, which drags the Z plate's whole C-hole pattern with it; the pitch is the term with a reason behind it, so it is the one that is chosen. It takes Z_SPACER_CHANNEL to 66 and BF12_SIDE_CLEAR to 2.96, a millimetre a side more than the 114 gave. FLAG: IT IS ALSO A STIFFNESS NUMBER - the same couple-arm argument RAIL_PITCH carries on the Y beams - so it is not free to shrink for convenience."
 
 [[dim]]
 sym = "Z_RAIL_INSET"
-value = 20
-provenance = "pinned"
-note = "20, each Z rail's centreline in from the carriage plate's long edge - Sheet 3a's R1 at Y 20 and R2 at Y 134. It is set at assembly with a 10 mm stop against the plate edge, the rail being RAIL_W wide, so the stop is the thing that makes this repeatable rather than a measurement."
+expr = "X_CARRIAGE_CENTROID_Y - (Z_RAIL_PITCH / 2)"
+note = "27, each Z rail's centreline in from the carriage plate's long edge. DERIVED from the chosen pitch and the plate's own width, not pinned. NOTE: IT IS STILL SET WITH A STOP BLOCK against the plate edge at assembly, which is what makes it repeatable rather than a measurement - the rail is RAIL_W wide, so the block is this less half the rail. A different plate width or pitch changes the block, not the method."
 
 [[dim]]
 sym = "Z_RAIL_COL"
-expr = "(X_CARRIAGE_W / 2) - Z_RAIL_INSET"
-note = "57, the Z rail centrelines either side of the carriage plate's centre, so a pitch of 114. FLAG: IT WAS CARRIED AS A MEASURED 57.5 AND SHEET 3a HAS ALWAYS DRAWN 57. The sheet puts R1a-g on Y 20 and R2a-g on Y 134 of a 154 plate - inset 20 from each long edge, which is 57 from the centre - and nobody had noticed the registry disagreeing by half a millimetre. The sheet wins: 20 from the edge is a design intent set with a stop block, where 57.5 was a reading off a carriage. That half millimetre is not cosmetic - it is what decides whether the block bolt columns land on whole numbers, and therefore the whole plate."
+expr = "Z_RAIL_PITCH / 2"
+note = "58, each Z rail centreline either side of the carriage plate's centre - simply half the chosen Z_RAIL_PITCH. 🔴 A RAIL COLUMN IS A DESIGN INTENT SET WITH A STOP BLOCK, never a reading taken off a carriage. A measured figure here once disagreed with the sheet by half a millimetre and nothing caught it, and half a millimetre is not cosmetic: it decides whether the block bolt columns land on whole numbers, and therefore the whole plate."
 
 [[dim]]
 sym = "SPACER_L"
@@ -2449,7 +2477,7 @@ note = "7 on the 400 Z rail. Also exact, on the same pattern."
 sym = "Z_RAIL_L"
 value = 400
 provenance = "part"
-note = "Z rail length, on a 407 carriage plate - which is where the 7 mm at one end that z-carriage.md calls 'forced, not chosen' comes from."
+note = "400 - Z rail length, and a BOUGHT PART rather than a function of the plate it sits on. 🔴 LENGTHENING THE CARRIAGE PLATE DOES NOT BUY Z TRAVEL, which is the obvious-looking inference and the wrong one: travel is this rail less Z_BLOCK_GROUP_L, and the plate does not appear. What a longer plate buys is spare material past the rail - 30 on the 430 plate against 7 on the old one - which is what supports the Z stepper casting and retires the 7 that z-carriage.md calls 'forced, not chosen'."
 
 [[dim]]
 sym = "BLOCK_OVERHANG_CLEAR"

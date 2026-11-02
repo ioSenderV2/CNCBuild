@@ -204,9 +204,12 @@ The height was always gated on the **lower bearing block row's bottom edge** - t
   with the button heads touching reads 154, which makes each head 1.32 proud — but the over-head
   reading was 76.24, which makes it 0.56. The two differ by 0.76 and it sets how much room the
   driver has between the blocks. **It does not move a hole**: the C-hole rows derive from the
-  chosen 87 centre separation and the block’s own 36 bolt pitch.
-- OPEN: **The C-hole row offsets imply the block centres sit 80 apart** where the closest they can
-  physically sit is 77. The button heads account for 1.32 of that, not 3.
+  chosen {{Z_BLOCK_CENTRE_SEP}} centre separation and the block's own {{BLOCK_PITCH_Y}} bolt pitch.
+- SETTLED: ~~**The C-hole row offsets imply the block centres sit 80 apart** where the closest they
+  can physically sit is 77~~ **- the row offsets were right and the 77 was wrong.** The X and Z
+  blocks measure {{BLOCK_BODY_L_XZ}} butted, by bolt span across hard metal; the 77 came from
+  halving a caliper reading taken across the Y blocks' rubber end seals, on a different part. This
+  item spent weeks treating the good measurement as the suspect one.
 
 ## From the 2026-10-11 spoilboard pass
 
