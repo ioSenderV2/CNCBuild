@@ -470,19 +470,30 @@ flange is too big around and fouls the block. A low profile one clears by about 
 one head for all four rather than mixing two: the top pair is unconstrained, and a split pattern is
 how the wrong bolt ends up in the wrong hole at assembly.
 
-🔴 **The sixteen P holes in both cut plates are 0.09 narrow between the two blocks' groups, and the
-holes get opened.** The blocks butt hard and the second group still will not reach. The rows belong
-at **{{BLOCK_ROW_Y1}}, {{BLOCK_ROW_Y2}}, {{BLOCK_ROW_Y3}}, {{BLOCK_ROW_Y4}}** — a span of
-{{BLOCK_ROW_SPAN}} — and both plates were cut on a sheet that had rounded the outer rows inboard to
-20.5 and 97.5, giving 113.0. **Open the clearance holes rather than touching the blocks:** these
-thread into tapped M5 in the block, nothing is located by them, and the plate is positioned by its
-seating on the block faces and by the beam. The plate has to come off to do it — the blocks are
-behind the holes.
+### The two blocks on a rail are NOT butted — the pitch is chosen
 
-OPEN: **The opened diameter is not chosen.** ø5.5 gives 0.25 of radial float against the 0.1 a ø5.2
-leaves, which takes the 0.09 with room over and keeps full head bearing under an M5 socket cap. ø6
-has precedent on this machine at the Z top stop. **Only the group that misses strictly needs it** —
-8 holes a plate, not 16 — though opening all four groups means not remembering which is which.
+🔴 **{{Y_BLOCK_CENTRE_SEP}} centre to centre along the rail**, which leaves {{Y_BLOCK_GAP}} of air
+between the block bodies. The rows that follow are **{{BLOCK_ROW_Y1}}, {{BLOCK_ROW_Y2}},
+{{BLOCK_ROW_Y3}}, {{BLOCK_ROW_Y4}}** — a span of {{BLOCK_ROW_SPAN}}.
+
+🔴 **Do not specify the gap and do not butt them. Specify the rows.** The gap is not something you
+set — it is what happens once the blocks are bolted to rows that are already drilled. Nothing locates
+the two blocks but this plate, so the pitch was always a choice. The Z axis works the same way at
+{{Z_BLOCK_CENTRE_SEP}}.
+
+**Why it is not derived from the butted pair:** the block ends are dense rubber seals. Calipers
+across them read 153.9, 154.38 and 155 on the same pair, so a pattern taken off a quarter of that
+asks the plate for a pitch tighter than two blocks can physically reach, and the second block will
+not land. **Never derive a hole pattern from two parts touching** — a contact dimension is whatever
+the softest thing in the stack is that day.
+
+🔴 **The two plates in hand are cut to the old pattern and get SLOTTED, not re-drilled.** Their span
+is 113.0 against this {{BLOCK_ROW_SPAN}}, so every row is 1.5 out and a fresh hole would merge into
+the existing one rather than drill. **Slot one block group along the rail and leave the other round:**
+the plate stays located on the round pair and the second block floats, which is the standard answer
+for two parts whose separation is not controlled. A millimetre of slot covers the whole caliper
+spread. **Washers under the heads on the slotted group.** The plate has to come off to do it — the
+blocks are behind the holes.
 
 **The bottom extrusion is not bolted to the plate at all.** It sits alongside the Y beam, carried on
 a shelf.

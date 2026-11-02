@@ -96,8 +96,8 @@ source = "measured 2026-10-02, X/Y kit"
 sym = "BLOCK_BUTTED"
 value = 154.18
 provenance = "measured"
-note = "Two HGH20 blocks butted, full body. Sets the X end plate width."
-source = "machine/photos/y-bearing-blocks-butted-154.jpg, calipers 2026-10-02"
+note = "Two HGH20 blocks butted, full body. 🔴 IT LAYS OUT NO HOLE AND IT MUST NOT BE MADE TO AGAIN. The faces it is taken across are DENSE RUBBER END SEALS, which are compliant, so the reading moves with how hard the calipers are closed: repeat readings on the real pair came back 153.9, 154.38 and 155, a spread of 1.1 against a figure recorded to two decimal places. The P pattern was derived from a quarter of it and asked the plate for a block pitch of 77.0, under what two blocks can physically reach, and neither end plate would take its second block. Y_BLOCK_CENTRE_SEP is a CHOSEN 80 instead. 🔴 THE RULE IS GENERAL: NEVER DERIVE A HOLE PATTERN FROM TWO PARTS TOUCHING. A contact dimension is not a controlled one - it is whatever the softest thing in the stack happens to be that day - and the pitch was always ours to pick rather than measure. Z_BLOCK_CENTRE_SEP had already said so one axis over. WHAT IT IS STILL GOOD FOR: a rough body length through BLOCK_BODY_L, and clearance questions where a millimetre does not decide anything."
+source = "machine/photos/y-bearing-blocks-butted-154.jpg, calipers 2026-10-02; re-read on the assembled pair as 153.9 / 154.38 / 155"
 
 [[dim]]
 sym = "BLOCK_PADS"
@@ -264,6 +264,22 @@ note = "The X beam's front face, from the plate's back edge. THE SHELF HOLES KEY
 sym = "BLOCK_CENTROID_Y"
 expr = "XEP_W / 2"
 note = "Y block group centroid, from the plate's back edge"
+
+[[dim]]
+sym = "Y_BLOCK_CENTRE_SEP"
+value = 80
+provenance = "pinned"
+note = "80, the two Y block centres apart along the rail - CHOSEN, his, and the one number the P pattern hangs on. 🔴 IT IS NOT A MEASUREMENT AND MUST NEVER BECOME ONE. A pattern taken off BLOCK_BUTTED / 4 demands a block pitch of 77.0, which is tighter than two butted blocks can physically reach, and a plate cut to it will not take its second block. FLAG: DO NOT SPECIFY THE GAP, SPECIFY THE ROWS. The gap is not something you set; it is what happens once the blocks are bolted to rows that are already drilled. Same rule as Z_BLOCK_CENTRE_SEP, which this now matches in kind - Z chose 87 and Y chooses 80. It puts the four rows on 19 / 55 / 99 / 135, all whole and symmetric about the plate."
+
+[[dim]]
+sym = "Y_BLOCK_GAP"
+expr = "Y_BLOCK_CENTRE_SEP - BLOCK_BODY_L"
+note = "2.91, the clear air between the two Y block bodies. It is an OUTCOME, not a specification - see Y_BLOCK_CENTRE_SEP. What it buys is that the pattern no longer depends on the blocks touching, so a block body anywhere in the range the calipers can actually resolve still bolts up."
+
+[[dim]]
+sym = "Y_BLOCK_GROUP_L"
+expr = "Y_BLOCK_CENTRE_SEP + BLOCK_BODY_L"
+note = "157.09 - the two Y blocks plus their air, end to end, which is what the carriage occupies on the rail and therefore what comes off the travel. FLAG: IT REPLACES BLOCK_BUTTED IN THE TRAVEL CHAIN. Butted blocks were the shortest possible group and spending none of the travel was the reason for butting them; the 2.91 is what that saving actually cost to keep."
 
 [[dim]]
 sym = "BEAM_CENTRELINE_Y"
@@ -1394,8 +1410,8 @@ note = "Half the block's along-rail bolt pitch, 18."
 
 [[dim]]
 sym = "BLOCK_CENTRE_OFFSET_Y"
-expr = "BLOCK_BUTTED / 4"
-note = "Each block's centre from the butted pair's centroid, 38.545. Two blocks butted span BLOCK_BUTTED, so each centre sits a quarter of that either side."
+expr = "Y_BLOCK_CENTRE_SEP / 2"
+note = "40 - each block's centre from the group centroid, half the CHOSEN Y_BLOCK_CENTRE_SEP. FLAG: IT IS NO LONGER BLOCK_BUTTED / 4 and must not go back. Deriving it from the butted pair is what asked the plate for a 77.0 pitch that two blocks cannot reach, and the reading it rested on cannot be taken - see BLOCK_BUTTED."
 
 [[dim]]
 sym = "BLOCK_LOW_COL_A"
@@ -1420,27 +1436,27 @@ note = "Upper rail, far column, 176. Same reference and the same 7.5 as BLOCK_LO
 [[dim]]
 sym = "BLOCK_ROW_Y1"
 expr = "BLOCK_CENTROID_Y - BLOCK_CENTRE_OFFSET_Y - BLOCK_BOLT_HALF_Y"
-note = "20.455 - first of the four P-hole rows across the plate. 🔴 DO NOT ROUND THIS INBOARD. The shop pack printed 20.5 against 97.5 at the other end, and BOTH of those move toward the plate's centre, so the pattern came out 0.09 narrower between the two blocks' hole groups than the butted blocks actually are - 41.0 against 41.09 - and the second group would not reach on either plate. 🔴 A BOLT PATTERN ROUNDS OUTWARD OR NOT AT ALL: too large is swallowed by the clearance hole, too small jams, and the two are not symmetric however small the figure looks. FLAG: THE REAL GUARD IS TO CITE THE SYMBOL. The pack substituted the X columns and hardcoded the Y rows, which is the whole reason a rounded copy could sit next to a correct number without anything noticing."
+note = "19 - first of the four P-hole rows across the plate, and whole because Y_BLOCK_CENTRE_SEP was chosen rather than measured. 🔴 A BOLT PATTERN ROUNDS OUTWARD OR NOT AT ALL, if it rounds: too large is swallowed by the clearance hole, too small jams, and the two are not symmetric however small the figure looks. FLAG: CITE THE SYMBOL, DO NOT COPY THE NUMBER. The shop pack substituted the X columns and hardcoded these rows, which is how a stale copy sat beside a live value with nothing noticing - in the one drawing file that is hand-authored."
 
 [[dim]]
 sym = "BLOCK_ROW_Y2"
 expr = "BLOCK_ROW_Y1 + BLOCK_PITCH_Y"
-note = "56.455 - second P-hole row, the far hole of the near block. It exists so the shop pack can cite all four rows as symbols rather than hardcoding any of them."
+note = "55 - second P-hole row, the far hole of the near block. It exists so the shop pack can cite all four rows as symbols rather than hardcoding any of them."
 
 [[dim]]
 sym = "BLOCK_ROW_Y3"
 expr = "BLOCK_CENTROID_Y + BLOCK_CENTRE_OFFSET_Y - BLOCK_BOLT_HALF_Y"
-note = "97.545 - third P-hole row, the near hole of the far block. See BLOCK_ROW_Y1: this is the end that was rounded DOWN to 97.5 while the other was rounded UP, and the two together are what shrank the pattern."
+note = "99 - third P-hole row, the near hole of the far block. Symmetric with BLOCK_ROW_Y2 about the plate's centroid, which is what a chosen separation buys."
 
 [[dim]]
 sym = "BLOCK_ROW_Y4"
 expr = "BLOCK_ROW_Y3 + BLOCK_PITCH_Y"
-note = "133.545 - fourth P-hole row. BLOCK_ROW_SPAN is this less BLOCK_ROW_Y1."
+note = "135 - fourth P-hole row. BLOCK_ROW_SPAN is this less BLOCK_ROW_Y1."
 
 [[dim]]
 sym = "BLOCK_ROW_SPAN"
 expr = "BLOCK_ROW_Y4 - BLOCK_ROW_Y1"
-note = "113.09 - the P pattern's full span, outer row to outer row, and the figure to caliper a cut plate against. FLAG: BOTH PLATES IN HAND MEASURE TO A SHEET THAT PRINTED 113.0 and their holes are opened to take the difference - see machine/assembly.md. It is 2 x (BLOCK_CENTRE_OFFSET_Y + BLOCK_BOLT_HALF_Y) - the butted pair's own pattern and nothing else, so it depends on no plate dimension and cannot be adjusted by moving the plate. NOTE: THE SPAN IS WHAT TO CHECK, not the individual rows - a row position can absorb a layout error that the span cannot hide."
+note = "116 - the P pattern's full span, outer row to outer row, and the figure to caliper a plate against. FLAG: THE TWO PLATES IN HAND ARE NOT THIS. Their span is 113.0, off the butted derivation, and they are slotted to take the difference - see machine/assembly.md. NOTE: CHECK THE SPAN, NOT THE INDIVIDUAL ROWS - a row position can absorb a layout error that the span cannot hide."
 
 [[dim]]
 sym = "DOUBLER_BOLT_X_PLATE"
@@ -2288,13 +2304,13 @@ source = "his calipers, 2026-10-09"
 
 [[dim]]
 sym = "TRAVEL_RAIL_LIMITED"
-expr = "BEAM_LEN - BLOCK_BUTTED"
-note = "845.82 - what the travel WOULD be if the rail ends alone stopped the carriage. SETTLED: IT IS A CROSS-CHECK, NOT THE FIGURE TO USE: CARRIAGE_TRAVEL is measured at 820 and that is what sizes the tape. The two agree to 25.82, which is TRAVEL_LOST_TO_STOPS - the end plates standing inboard of the rail ends plus the zerks\u2019 own protrusion. OPEN: It takes BEAM_LEN as a stand-in for rail length; the rails are 17 x M5 at 60 pitch, so about a metre, not exactly it. Close enough to confirm the measurement is the right size and nowhere near good enough to replace it."
+expr = "BEAM_LEN - Y_BLOCK_GROUP_L"
+note = "842.91 - what the travel WOULD be if the rail ends alone stopped the carriage. FLAG: IT TAKES THE BLOCK GROUP WITH ITS AIR, not the butted pair - spreading the blocks to a chosen pitch is what costs the difference, and the margin below is where it is paid from. SETTLED: IT IS A CROSS-CHECK, NOT THE FIGURE TO USE: CARRIAGE_TRAVEL is measured at 820 and that is what sizes the tape. The two agree to 25.82, which is TRAVEL_LOST_TO_STOPS - the end plates standing inboard of the rail ends plus the zerks\u2019 own protrusion. OPEN: It takes BEAM_LEN as a stand-in for rail length; the rails are 17 x M5 at 60 pitch, so about a metre, not exactly it. Close enough to confirm the measurement is the right size and nowhere near good enough to replace it."
 
 [[dim]]
 sym = "TRAVEL_LOST_TO_STOPS"
 expr = "TRAVEL_RAIL_LIMITED - CARRIAGE_TRAVEL"
-note = "25.82 - what the end plates take off the rail-limited travel, about 13 a side. Recorded because it is the number that moves if a stop face ever changes: the fin gets thicker, the back plate moves, or a zerk is swapped for a flush fitting. Nothing derives from it today."
+note = "22.91 - what the end plates take off the rail-limited travel, about 11 a side. Recorded because it is the number that moves if a stop face ever changes: the fin gets thicker, the back plate moves, or a zerk is swapped for a flush fitting. It is also where the Y block air is paid from - spreading the blocks to a chosen pitch spends Y_BLOCK_GAP of this margin and none of CARRIAGE_TRAVEL. Nothing derives from it today."
 
 [[dim]]
 sym = "TAPE_STOCK"
