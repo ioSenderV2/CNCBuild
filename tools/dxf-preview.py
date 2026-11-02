@@ -86,10 +86,14 @@ GROUPS = [
                 "drawing is a CUT line</b>: profile and holes both. "
                 "<b>Neither part has been made before</b>, so there is no "
                 "existing piece to match. "
-                "<b>The counterbores are not part of this job</b> - the X "
-                "carriage plate's sixteen &oslash;5.2 and the Z plate's "
-                "sixteen &oslash;6 are drawn at the size to cut them, and "
-                "they are counterbored here afterwards. "
+                "🔴 <b>Every hole that gets counterbored is drawn at "
+                "&oslash;5.2 and must be cut at 5.2, not opened out</b> - "
+                "sixteen on the X carriage plate and twenty on the Z plate. "
+                "<b>The counterboring is done here with a piloted bit whose "
+                "pilot is 5.2</b>, so a hole cut any larger leaves the pilot "
+                "nothing to steer on and the counterbore cannot be made. The "
+                "holes that are NOT counterbored are drawn at their finished "
+                "size. "
                 "Origin is the lower-left corner on both, which is also each "
                 "plate's installed bottom-left.",
         "files": ["8-x-carriage-plate.dxf", "9-z-plate.dxf"],

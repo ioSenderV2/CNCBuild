@@ -152,6 +152,8 @@ Registry updated: **2026-10-04**
 | **SPINDLE_NOSE_TO_COLLET** | 45 mm | derived | SPINDLE_COLLET_END - SPINDLE_SHOULDER_DROP | 45 - shoulder to the collet nut’s outer end. FLAG: IT IS NOT THE NUT’S OWN LENGTH, which is SPINDLE_NUT_L at 33, and it used to say it was: the nut does not start at the shoulder, it starts where the shaft’s thread does, 12 further down. Only the 80 cylinder can be clamped, so nothing below the shoulder is available to the clamps. |
 | **SPINDLE_MASS_KG** | 5.2 kg | vendor |  |  |
 | **CLAMP_CENTRES** | 116 mm | pinned |  | Set by bringing the clamp centres in so the M5 counterbores clear the M8 column |
+| **Z_HOLE_FLOAT** | 0.5 mm | derived | (Z_HOLE_D - M5_D) / 2 | 0.5 - how far the SHANK can move in the Z plate's finished hole. 🔴 IT IS NOT THE JOINT'S FLOAT and reading it as such is the mistake that cost an end plate: the head sits in the counterbore, so Z_HEAD_FLOAT is what actually governs and it is less than half of this. Opening a through hole while the counterbore stays put buys almost nothing. |
+| **Z_HEAD_FLOAT** | 0.2 mm | derived | (Z_CBORE_D - M5_SOCKET_HEAD_D) / 2 | 0.2 - how far the bolt can actually move: an 8.5 socket head in an 8.9 counterbore. 🔴 THIS IS THE JOINT'S WHOLE BUDGET, and the Z plate spends it across THREE parts that are each drilled from their own edge - plate, spacer, block. OPEN: 0.2 IS THIN FOR A THREE-PART STACK. The pattern itself is sound, so nothing known has to be absorbed; this is the margin for everything unknown. A larger piloted counterbore on the same 5.2 pilot would raise it - at 10 it becomes 0.75 - and costs nothing but the tool. FLAG: THE END PLATE FAILED ON EXACTLY THIS NUMBER, where a 5.2 hole and an 8.9 bore gave 0.1 and 0.2 and opening the hole to 6 bought a tenth. |
 | **XD_RAIL_EDGE** | 37 mm | derived | Z_RAIL_INSET + (RAIL_W / 2) | 37 - the near Z rail's inboard edge across the carriage plate. It is what the outer XD bolts have to live beside, so it moves with Z_RAIL_PITCH and is named rather than left as an arithmetic step. |
 | **XD_HEAD_OVERLAP** | 1.25 mm | derived | (M5_SOCKET_HEAD_D / 2) - (XD1_Y - XD_RAIL_EDGE) | 1.25 - how far an M5 socket head on XD1 would stand OVER the rail. 🔴 POSITIVE MEANS IT FOULS, which is why XD1 and XD4 are counterbored and XD2 and XD3 are not - his catch off the parts. The bolt sits 3 clear of the rail edge and the head wants 4.25. FLAG: IT GOES NEGATIVE IF THE RAIL PITCH WIDENS, which would retire the counterbore; it goes further positive if the pitch narrows. Either way the check is here rather than in somebody's head. |
 | **XD1_Y** | 40 mm | pinned |  | 40 - the first XD bolt across the carriage plate, the group running 40 / 70 / 100 / 130 on a 30 pitch and symmetric about the plate. Named because XD_HEAD_OVERLAP needs it; the other three are the same group and only the outer pair is close to anything. |
@@ -740,13 +742,13 @@ numbers in one session on 2026-10-02.
 - **FIN_KERF** (nominal) = 2 mm - nothing depends on it
 - **T_Z_PLATE** (nominal) = 12.7 mm - feeds 4: GANTRY_ARM, SPINDLE_OFFSET, Z_CBORE_DEPTH, Z_NUT_CBORE_DEPTH
 - **T_X_CARRIAGE_PLATE** (nominal) = 12.7 mm - feeds 1: GANTRY_ARM
-- **M5_SOCKET_HEAD_D** (nominal) = 8.5 mm - feeds 1: XD_HEAD_OVERLAP
+- **M5_SOCKET_HEAD_D** (nominal) = 8.5 mm - feeds 2: XD_HEAD_OVERLAP, Z_HEAD_FLOAT
 - **M8_HEAD_D** (nominal) = 13 mm - nothing depends on it
 - **M8_HEAD_H** (nominal) = 8 mm - nothing depends on it
 - **SHELF_BAR_W** (nominal) = 25.4 mm - feeds 1: SHELF_SHIM_W
 - **SAND_PORT_DOWEL** (nominal) = 12.7 mm - nothing depends on it
 - **SAND_PORT_CHAIN_L** (nominal) = 152.4 mm - nothing depends on it
-- **M5_D** (nominal) = 5 mm - feeds 1: SOLE_ROOT_WALL
+- **M5_D** (nominal) = 5 mm - feeds 2: SOLE_ROOT_WALL, Z_HOLE_FLOAT
 - **TOOL_D** (nominal) = 6.35 mm - nothing depends on it
 - **TOOL_L** (nominal) = 50.8 mm - nothing depends on it
 - **BOLT_BACK_Y_WASHER** (nominal) = 1.6 mm - nothing depends on it
