@@ -1229,14 +1229,14 @@ twice.</figcaption>
   <text class="lbl" x="4" y="-4" fill="#c0c">BLOCK BEHIND, 44 wide</text>
 
   <!-- 4 x o6 clearance for the M5 into the blocks -->
-  <circle cx="18.5" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="18.5" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="54.5" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="54.5" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="105.5" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="105.5" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="141.5" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
-  <circle cx="141.5" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_1}}" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_1}}" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_2}}" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_2}}" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_3}}" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_3}}" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_4}}" cy="9" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
+  <circle cx="{{SPACER_HOLE_X_4}}" cy="41" r="3" fill="#fff" stroke="#111" stroke-width="1.1"/>
 
   <!-- the access hole, on the rail centreline at the bar's own centre -->
   <circle cx="80" cy="25" r="3" fill="#fff4d6" stroke="#b06000" stroke-width="1.4"/>
@@ -1259,14 +1259,14 @@ twice.</figcaption>
   <text class="q" x="0" y="188" fill="#c00">the handle: 12 of plate, 15 of bar, 8.5</text>
   <text class="q" x="0" y="200" fill="#c00">of rail counterbore.</text>
   <!-- schedule ref tags -->
-  <text class="ref" x="18.50" y="37.00" fill="#111" text-anchor="middle">P1</text>
-  <text class="ref" x="54.50" y="37.00" fill="#111" text-anchor="middle">P2</text>
-  <text class="ref" x="105.50" y="37.00" fill="#111" text-anchor="middle">P3</text>
-  <text class="ref" x="141.50" y="37.00" fill="#111" text-anchor="middle">P4</text>
-  <text class="ref" x="18.50" y="19.00" fill="#111" text-anchor="middle">P5</text>
-  <text class="ref" x="54.50" y="19.00" fill="#111" text-anchor="middle">P6</text>
-  <text class="ref" x="105.50" y="19.00" fill="#111" text-anchor="middle">P7</text>
-  <text class="ref" x="141.50" y="19.00" fill="#111" text-anchor="middle">P8</text>
+  <text class="ref" x="{{SPACER_HOLE_X_1}}" y="37.00" fill="#111" text-anchor="middle">P1</text>
+  <text class="ref" x="{{SPACER_HOLE_X_2}}" y="37.00" fill="#111" text-anchor="middle">P2</text>
+  <text class="ref" x="{{SPACER_HOLE_X_3}}" y="37.00" fill="#111" text-anchor="middle">P3</text>
+  <text class="ref" x="{{SPACER_HOLE_X_4}}" y="37.00" fill="#111" text-anchor="middle">P4</text>
+  <text class="ref" x="{{SPACER_HOLE_X_1}}" y="19.00" fill="#111" text-anchor="middle">P5</text>
+  <text class="ref" x="{{SPACER_HOLE_X_2}}" y="19.00" fill="#111" text-anchor="middle">P6</text>
+  <text class="ref" x="{{SPACER_HOLE_X_3}}" y="19.00" fill="#111" text-anchor="middle">P7</text>
+  <text class="ref" x="{{SPACER_HOLE_X_4}}" y="19.00" fill="#111" text-anchor="middle">P8</text>
   <text class="ref" x="68.00" y="28.00" fill="#b06000" text-anchor="middle">A1</text>
 </svg>
 <figcaption>Drawn 1:1, laid out as the bar sits on the mill table.</figcaption>
@@ -1276,7 +1276,7 @@ twice.</figcaption>
 
 <table class="sched">
 <tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 160</span></th><th>Y <span style="font-weight:400">across the 50</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>P1&ndash;P8</td><td>8</td><td class="n">18.5, 54.5, 105.5, 141.5</td><td class="n">9, 41</td><td class="d">6</td><td class="op">Through</td></tr>
+<tr><td>P1&ndash;P8</td><td>8</td><td class="n"><b>{{SPACER_HOLE_X_1}}, {{SPACER_HOLE_X_2}}, {{SPACER_HOLE_X_3}}, {{SPACER_HOLE_X_4}}</b></td><td class="n">9, 41</td><td class="d">6</td><td class="op">Through</td></tr>
 <tr><td><b>A1</b></td><td>1</td><td class="n">80</td><td class="n">25</td><td class="d">6</td><td class="op">Through</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
 <tr class="tot"><td><b>TOTAL</b></td><td>9 &times; &oslash;6</td><td><b>9</b></td><td colspan="3" class="tn">2 of this part get made &mdash; <b>18 holes</b> in all</td></tr>
@@ -1305,7 +1305,7 @@ the block is one 50 &times; 45 piece off a 1" slab and no face needs machining.<
   <circle cx="65" cy="52" r="28.6" fill="#fff" stroke="#c00" stroke-width="1.8"/>
   <text class="ref" x="55" y="50" fill="#c00">SB1</text>
   <text class="dim" x="54" y="62" fill="#c00">&#8960;22</text>
-  <rect x="18.50" y="0" width="15.6" height="117" fill="#cfe0f5" stroke="#06c" stroke-width="1.1"/>
+  <rect x="{{SPACER_HOLE_X_1}}" y="0" width="15.6" height="117" fill="#cfe0f5" stroke="#06c" stroke-width="1.1"/>
   <rect x="96.50" y="0" width="15.6" height="117" fill="#cfe0f5" stroke="#06c" stroke-width="1.1"/>
   <line x1="26" y1="0" x2="26" y2="117" stroke="#06c" stroke-width="0.7" stroke-dasharray="5 3"/>
   <line x1="104" y1="0" x2="104" y2="117" stroke="#06c" stroke-width="0.7" stroke-dasharray="5 3"/>

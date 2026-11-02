@@ -2174,7 +2174,32 @@ note = "58, each Z rail centreline either side of the carriage plate's centre - 
 sym = "SPACER_L"
 value = 160
 provenance = "part"
-note = "160, NEW STOCK ordered 2026-10-08 - the existing pair at 150.5 and 151.6 cannot span the spread blocks. It carries the four clearance holes at 18.5 / 54.5 / 105.5 / 141.5 and the driver access hole at its centre. OPEN: 160 puts a symmetric hole pattern on half millimetres; a 161 bar would read 19 / 55 / 106 / 142. Sheet 3b."
+note = "160, the bar ordered to span the spread blocks - the older pair at 150.5 and 151.6 cannot. It carries four clearance holes, SPACER_HOLE_X_1 to _4, and the driver access hole at its centre. SETTLED: THE HALF-MILLIMETRE PATTERN IS GONE AND THE 160 BAR IS RIGHT. A symmetric pattern on this length lands on whole millimetres whenever the Z plate's height is even, which it is - so the 161 bar once wanted to fix it buys nothing. Sheet 3b."
+
+[[dim]]
+sym = "SPACER_OFFSET_X"
+expr = "(Z_PLATE_L - SPACER_L) / 2"
+note = "10 - how far the spacer's own X 0 sits above the Z plate's, the bar being centred on the plate. 🔴 IT IS THE ONLY THING BETWEEN THE TWO FRAMES. The spacer's clearance holes must line up with the plate's C-holes, and each part is drilled from its own edge, so every spacer hole is a plate row less this. Get it wrong and both parts are individually correct and will not bolt together."
+
+[[dim]]
+sym = "SPACER_HOLE_X_1"
+expr = "Z_M5_X_1 - SPACER_OFFSET_X"
+note = "18 - the spacer's first clearance hole, in the SPACER's frame. It is the Z plate's first C-hole row seen from the bar's own edge."
+
+[[dim]]
+sym = "SPACER_HOLE_X_2"
+expr = "Z_M5_X_2 - SPACER_OFFSET_X"
+note = "54 - second spacer clearance hole."
+
+[[dim]]
+sym = "SPACER_HOLE_X_3"
+expr = "Z_M5_X_3 - SPACER_OFFSET_X"
+note = "106 - third spacer clearance hole."
+
+[[dim]]
+sym = "SPACER_HOLE_X_4"
+expr = "Z_M5_X_4 - SPACER_OFFSET_X"
+note = "142 - fourth spacer clearance hole, 18 from the bar's far end, matching the first's inset because the group is centred."
 
 [[dim]]
 sym = "SPACER_W"
