@@ -46,6 +46,28 @@ carrying mill sheets to the bandsaw and box sheets to the mill.
 |---|---|
 | [`shop-pack.html`](shop-pack.html) | Four plate sheets plus a pre-trip checklist and pack list. Open in a browser, print to PDF |
 
+## What has been sent out, and at which commit
+
+🔴 **A QUOTE THAT HAS GONE OUT IS A FROZEN DRAWING, and the repo keeps moving.** Record the commit
+with the request, because the only question anybody asks later is *what did we actually send* — and
+answering it from the working tree gives the wrong answer the moment anything is regenerated.
+
+| Request | Parts | Sent at commit |
+|---|---|---|
+| Quote 2, 6061 | fins, two X end plates, three doublers | `9657b73` |
+| Quote 3, carriage and Z plate | X carriage plate, Z plate — **shop supplies the material** | `ed3083d` |
+
+**What quote 3 asks them to hold**, so a later disagreement is checkable:
+
+| Drawn | Means |
+|---|---|
+| ø2 | a pilot, opened and tapped here — their size does not matter, only their position |
+| ø6 | cut at 6 and **not** opened out |
+| ø6.8, ø35 | finished sizes, the two they hold well |
+
+FLAG: **Changing either of those two plates now changes an order in flight.** The drawings will
+regenerate happily and say nothing about it.
+
 ## Status
 
 **Regenerated through 2026-10-02**, after the Y end rework: cast stepper frames replaced BK12 and

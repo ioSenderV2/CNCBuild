@@ -81,6 +81,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [What is in here](machine/drawings/README.md#what-is-in-here)
 - [The rules this folder follows](machine/drawings/README.md#the-rules-this-folder-follows)
 - [Files](machine/drawings/README.md#files)
+- [What has been sent out, and at which commit](machine/drawings/README.md#what-has-been-sent-out-and-at-which-commit)
 - [Status](machine/drawings/README.md#status)
   - [What is in the pack](machine/drawings/README.md#what-is-in-the-pack)
   - [Not drawn yet - two trip parts have no sheet](machine/drawings/README.md#not-drawn-yet---two-trip-parts-have-no-sheet)
