@@ -510,9 +510,9 @@ Their row span is 113.0 against this {{BLOCK_ROW_SPAN}}, so the forward station 
 
 **The forward eight take M5 FLANGE heads in an opened through hole.** The flange is about 11 to 12
 across, so it covers the hole and the existing counterbore both, and the float comes from the hole
-alone — **the counterbore stops being the limit, which is the whole point.** At ø5.2 and a ø8.9 bore
-on an ø8.5 head the float was 0.1 and 0.2; opening the hole without opening the bore moves the limit
-from one to the other and buys a tenth.
+alone — **the counterbore stops being the limit, which is the whole point.** A ø{{CBORE_PILOT_SM}}
+hole gives the shank 0.1 and a ø{{CBORE_BORE_SM}} bore gives the head {{XEP_HEAD_FLOAT}}, so opening
+the hole without opening the bore moves the limit from one to the other and buys a tenth.
 
 - **Use the forward station only.** The rear eight are the located pair and stay as drawn.
 - **A fender washer under the flange** if a flat bearing face is wanted — an ordinary ø10 washer

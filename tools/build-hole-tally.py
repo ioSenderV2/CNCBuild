@@ -150,7 +150,7 @@ def collect(src):
                     continue
                 m = re.search(r'\d+', c[qcol].replace('4 * 7', '28'))
                 n = int(m.group()) if m else 1
-                dia = c[dcol].strip()
+                dia = resolve_dia(c[dcol].strip())
                 if not re.match(r'^\d+(\.\d+)?$', dia):
                     cutouts += n  # the riser windows are cut-outs, not a drill size
                     continue
@@ -291,6 +291,25 @@ def sheet_key(s):
     """Sort 1a, 2, 10 the way a human reads them, not asciibetically."""
     m = re.match(r'(\d+)([a-z]*)', s)
     return (int(m.group(1)), m.group(2)) if m else (99, s)
+
+
+def resolve_dia(cell):
+    """A diameter cell may CITE A SYMBOL, so resolve one before reading it.
+
+    🔴 AN UNRESOLVED CELL WAS COUNTED AS A CUT-OUT, not as a missing hole. The
+    numeric test below treats anything non-numeric as a riser window, so the Z
+    plate's twenty holes became twenty cut-outs the moment its diameter cell
+    started citing Z_PILOT_D - and the count still looked plausible. make-dxf
+    reads the pack through subst for exactly this reason; this tool reads it
+    raw because it WRITES the file back and must not bake the symbols in.
+    """
+    m = re.fullmatch(r'\{\{([A-Z0-9_]+)\}\}', cell)
+    if not m:
+        return cell
+    sys.path.insert(0, HERE)
+    import subst                                      # noqa: PLC0415
+    v = subst.values().get(m.group(1))
+    return subst.fmt(v) if v is not None else cell
 
 
 def sheet_label(s):
