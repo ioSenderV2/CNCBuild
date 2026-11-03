@@ -64,9 +64,9 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
    | Position | Part | Qty |
    |---|---|---|
    | RJ45 vertical (J1-J5) | Amphenol **69255-004LF** - same jack as the sensor board, unshielded, no magnetics, drawing notes in manufacturer-assets | 5 |
-   | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock | 7 |
-   | 4P dual row 2x2 (J15) | Molex **5566-04A2** family - vertical; his datasheet pick (SD-5566-002 in manufacturer-assets); exact 39- part number per his order | 1 |
-   | 2P dual row (J13, J14) | Molex **39-31-0027** - 5566, vertical, 2 ckt, no peg, GOLD contacts; his pick off Mouser. NOTE: gold header against tin 5556 terminals is a mixed-finish mate Molex advises against - swap one side to match | 2 |
+   | 3P single row (J6-J12) | Molex **46999-0621** - single-row vertical family, tin, 10 ordered 2026-11-02 (Mouser order 40971389); circuit count to confirm against the delivered part - the catalog listing truncates | 7 |
+   | 4P dual row 2x2 (J15) | **Not in the 2026-11-02 Mouser order** - 5566-04A2 family per the SD-5566-002 drawing, part number open | 1 |
+   | 2P dual row (J13, J14) | Molex **39-29-9027** (with peg) and **39-31-0027** (no peg) - both 2 ckt vertical, tin, 10 of each ordered 2026-11-02, Mouser order 40971389 | 2 |
 
    Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
    **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
