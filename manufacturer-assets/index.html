@@ -91,6 +91,42 @@
   </tr>
 
   <tr>
+    <td><strong>RP23U5XBB V2.02</strong></td>
+    <td>Brookwood Design<br>(Phil Barrett, RP23CNC)</td>
+    <td>User manual, 48&nbsp;pages &mdash; <strong>the grblHAL controller board the termination
+        board feeds</strong>. RP2354B, five axes. The facts the termination board is built on:
+        <strong>J20</strong> carries Step/Dir/Enable/GND for all five axes on a 2&times;10 header
+        (ships unpopulated &mdash; the schematic, not this manual, has its pin numbers); the
+        <strong>Servo Alarm header</strong> takes five 12/24&nbsp;V open-collector sinking inputs,
+        all joined to one grblHAL input (EStop by default, Door or Feed Hold via solder jumper);
+        limit, control and probe inputs are opto-isolated and 12/24&nbsp;V powered, NPN-prox
+        compatible; 0-10&nbsp;V spindle output; board takes 12&nbsp;V or 24&nbsp;V in and
+        generates its own 5&nbsp;V. Firmware: grblHAL RP2040 driver repo, board map RP23U5XBB.</td>
+    <td><code>RP23U5XBB-V2-User-Manual.pdf</code></td>
+    <td><a href="https://github.com/phil-barrett/RP23CNC/blob/main/Documentation/RP23CNC%20V2%20user%20manual%20-%20final.pdf">github.com/phil-barrett/RP23CNC &mdash; Documentation</a></td>
+    <td>2026-11-02</td>
+  </tr>
+
+  <tr>
+    <td><strong>RP23U5XBB V2.02</strong><br>schematic</td>
+    <td>Brookwood Design</td>
+    <td>Board schematic, 10&nbsp;sheets, KiCad-plotted PDF &mdash; <strong>the authority for J20 and
+        the alarm header pin numbering</strong>, which the manual's photos only gesture at.
+        <strong>J20 (Conn_02x10_Odd_Even, pin&nbsp;1 at the X end):</strong> odds are Dir then Step
+        per axis (1&nbsp;DIRX, 3&nbsp;STPX, 5&nbsp;DIRY, 7&nbsp;STPY, 9&nbsp;DIRZ, 11&nbsp;STPZ,
+        13&nbsp;DIRA, 15&nbsp;STPA, 17&nbsp;DIRB, 19&nbsp;STPB); evens are Enable per axis
+        (2&nbsp;X, 6&nbsp;Y, 10&nbsp;Z, 14&nbsp;A, 18&nbsp;B) with <strong>4, 8, 12, 16, 20 =
+        GND</strong>. <strong>Servo alarm header J24 (2&times;3): pin&nbsp;2 = GND</strong>, alarms
+        on 1, 3, 4, 5, 6 through 1K5 + LED each into one net.
+        <span class="warn">Which alarm pin is which axis LED is not labelled</span> &mdash;
+        electrically they are one net, so it only decides which LED lights; read the board
+        silkscreen when wiring.</td>
+    <td><code>RP23U5XBB-V2.02-Schematic.pdf</code></td>
+    <td><a href="https://github.com/phil-barrett/RP23CNC/blob/main/Schematic/V2.02%20schematic.pdf">github.com/phil-barrett/RP23CNC &mdash; Schematic</a></td>
+    <td>2026-11-02</td>
+  </tr>
+
+  <tr>
     <td><strong>69255-004LF</strong></td>
     <td>Amphenol ICC (FCI)</td>
     <td>RJ45 modular jack, 8P8C &mdash; <strong>vertical, unshielded, through-hole, no integrated
