@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "interface-board")(type "KiCad")(uri "${KIPRJMOD}/interface-board.pretty")(options "")(descr "Interface board project footprints - patterns taken from the committed Molex drawings"))
+)
