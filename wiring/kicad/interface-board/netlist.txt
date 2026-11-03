@@ -1,0 +1,41 @@
+Interface board - net list
+generated from the same source as the schematic
+============================================================
+
+AL_A       J17.5  J3.7
+AL_B       J17.6  J5.7
+AL_X       J1.7  J17.1
+AL_Y       J17.3  J2.7
+AL_Z       J17.4  J4.7
+DIR_A      J16.13  J3.5
+DIR_B      J16.17  J5.5
+DIR_X      J1.5  J16.1
+DIR_Y      J16.5  J2.5
+DIR_Z      J16.9  J4.5
+DOOR       J12.2  J23.2
+EN_A       J16.14  J3.3
+EN_B       J16.18  J5.3
+EN_X       J1.3  J16.2
+EN_Y       J16.6  J2.3
+EN_Z       J16.10  J4.3
+LIM_A      J21.3  J8.2
+LIM_B      J10.2  J21.5
+LIM_X      J21.1  J6.2
+LIM_Y      J21.2  J7.2
+LIM_Z      J21.4  J9.2
+PROBE      J11.2  J13.1  J14.1  J23.1
+SPIN_EN    J15.1  J22.1
+SPIN_PWM   J15.4  J22.4
+STEP_A     J16.15  J3.1
+STEP_B     J16.19  J5.1
+STEP_X     J1.1  J16.3
+STEP_Y     J16.7  J2.1
+STEP_Z     J16.11  J4.1
++12V       J10.1  J11.1  J12.1  J18.1  J19.1  J6.1  J7.1  J8.1  J9.1
+GND        J1.2  J1.4  J1.6  J1.8  J10.3  J11.3  J12.3  J13.2  J14.2  J15.2  J15.3  J16.12  J16.16  J16.20  J16.4  J16.8  J17.2  J18.2  J19.2  J2.2  J2.4  J2.6  J2.8  J22.2  J22.3  J3.2  J3.4  J3.6  J3.8  J4.2  J4.4  J4.6  J4.8  J5.2  J5.4  J5.6  J5.8  J6.3  J7.3  J8.3  J9.3
+
+J16 ribbon is 1:1 to RP23 J20 (odds Dir/Step, evens Enable, 4/8/12/16/20 GND, X at pin 1).
+J17 ribbon is 1:1 to RP23 J24 (alarms on 1,3,4,5,6; GND on 2). Which alarm pin
+  lights which RP23 LED is unlabelled in its schematic - electrically one net.
+J20 is a skipped reference: on this bench J20 means the RP23's stepper header.
+RJ45 pin/pair and 3P pin-order assignments are recorded in the sheet text.
