@@ -58,8 +58,19 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
 1. **J17 alarm pin -> RP23 LED mapping.** All five alarm pins join one net on the RP23,
    so the wiring works regardless; which pin lights which axis LED is unlabelled in the
    RP23 schematic. Read the board silkscreen when making the ribbon.
-2. **Footprints.** Schematic only so far. RJ45 vertical part (and so its footprint and
-   the lid opening heights), Mini-Fit Jr single-row headers (39-30-10xx), IDC shrouded
-   headers and TB pitch are picked at PCB time.
+2. **Footprints.** Schematic only so far; the connector parts are picked, the IDC
+   shrouded headers and terminal block pitch still are not. Board-side parts:
+
+   | Position | Part | Qty |
+   |---|---|---|
+   | RJ45 vertical (J1-J5) | Amphenol **69255-004LF** - same jack as the sensor board, unshielded, no magnetics, drawing notes in manufacturer-assets | 5 |
+   | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock | 7 |
+   | 4P single row (J15) | Molex **39-30-1049** - 5566, vertical, peg lock | 1 |
+   | 2P dual row (J13, J14) | Molex **39-31-0027** - 5566, vertical, 2 ckt, no peg, GOLD contacts; his pick off Mouser. NOTE: gold header against tin 5556 terminals is a mixed-finish mate Molex advises against - swap one side to match | 2 |
+
+   Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
+   **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
+   There is no 2P in the 5566 single-row range - it starts at 3 circuits, which is why
+   the touch probes are dual-row and self-key by shape against the 3P sockets.
 3. **The RP23's J20 and J24 headers ship unpopulated** - a 2x10 and a 2x3 get soldered
    onto the controller as part of this build.
