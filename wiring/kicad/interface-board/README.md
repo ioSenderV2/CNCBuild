@@ -7,6 +7,9 @@ the 12 V arrives regulated from the existing 36 V -> 12 V buck in the same enclo
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
+| `interface-board.kicad_pcb` | The board: 220 x 95 mm, two layers, GND pour both sides, M3 mounting holes in the corners. The lid gets cut to match the board. |
+| `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
+| `route.py` | Regenerates ALL copper (tracks, vias, GND pours) from the placed footprints - a channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. |
 | `interface-board.kicad_pro` | Project wrapper. |
 | `netlist.txt` | The connection list, generated from the same source as the schematic. |
 | `generate.py` | **The seed that produced the first version - not the live source once KiCad has touched the file.** See the warning below. |
@@ -45,12 +48,14 @@ two J20s in one enclosure invites miswiring.
 |---|---|
 | ERC, error severity | **0 violations** |
 | Netlist matches `netlist.txt` | **Exactly** - all 31 nets, node for node, from the kicad-cli export |
+| PCB DRC with schematic parity, error severity | **0 violations, 0 unconnected, 0 parity issues** |
 
 Reproduce with:
 
 ```
 kicad-cli sch erc --severity-error --exit-code-violations interface-board.kicad_sch
 kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net interface-board.kicad_sch
+kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --refill-zones --save-board interface-board.kicad_pcb
 ```
 
 ## Open items
@@ -58,8 +63,10 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
 1. **J17 alarm pin -> RP23 LED mapping.** All five alarm pins join one net on the RP23,
    so the wiring works regardless; which pin lights which axis LED is unlabelled in the
    RP23 schematic. Read the board silkscreen when making the ribbon.
-2. **Footprints.** Schematic only so far; the connector parts are picked, the IDC
-   shrouded headers and terminal block pitch still are not. Board-side parts:
+2. **Footprints.** All 22 assigned and the board is placed and routed. The IDC headers
+   are the standard shrouded 2.54 mm pattern (any vendor fits); the terminal blocks are
+   5.08 mm screw blocks on the CUI TB007-508 pattern, which any KF301-class block fits.
+   Board-side parts:
 
    | Position | Part | Qty |
    |---|---|---|
