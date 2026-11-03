@@ -64,9 +64,9 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
    | Position | Part | Qty |
    |---|---|---|
    | RJ45 vertical (J1-J5) | Amphenol **69255-004LF** - same jack as the sensor board, unshielded, no magnetics, drawing notes in manufacturer-assets | 5 |
-   | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. **Not in the 2026-11-02 Mouser order** | 7 |
+   | 3P single row (J6-J12) | Molex **39-30-1039** (Mouser 538-39-30-1039) - 5566, vertical, peg lock. **STILL TO ORDER**: the 2026-11-02 order's 39-31-0027 line (2 ckt) was meant to be this part | 7 |
    | 4P dual row 2x2 (J15) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389 | 1 |
-   | 2P dual row (J13, J14) | Molex **39-29-9027** (with peg) and **39-31-0027** (no peg) - both 2 ckt vertical, tin, 10 of each ordered 2026-11-02, Mouser order 40971389 | 2 |
+   | 2P dual row (J13, J14) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt, ordered in error for the 3P) | 2 |
 
    Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
    **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
