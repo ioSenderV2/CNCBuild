@@ -65,7 +65,7 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
    |---|---|---|
    | RJ45 vertical (J1-J5) | Amphenol **69255-004LF** - same jack as the sensor board, unshielded, no magnetics, drawing notes in manufacturer-assets | 5 |
    | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock | 7 |
-   | 4P single row (J15) | Molex **39-30-1049** - 5566, vertical, peg lock | 1 |
+   | 4P dual row 2x2 (J15) | Molex **5566-04A2** family - vertical; his datasheet pick (SD-5566-002 in manufacturer-assets); exact 39- part number per his order | 1 |
    | 2P dual row (J13, J14) | Molex **39-31-0027** - 5566, vertical, 2 ckt, no peg, GOLD contacts; his pick off Mouser. NOTE: gold header against tin 5556 terminals is a mixed-finish mate Molex advises against - swap one side to match | 2 |
 
    Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
