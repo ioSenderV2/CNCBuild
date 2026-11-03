@@ -2635,7 +2635,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-05_1x05_P5.08mm_Horizontal"
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x05_P3.50mm_Horizontal"
 			(at 240.03 119.38 0)
 			(effects
 				(font
@@ -2695,7 +2695,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-04_1x04_P5.08mm_Horizontal"
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x04_P3.50mm_Horizontal"
 			(at 240.03 165.1 0)
 			(effects
 				(font
@@ -2752,7 +2752,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal"
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal"
 			(at 240.03 204.47 0)
 			(effects
 				(font
