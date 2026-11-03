@@ -12,6 +12,10 @@ base and box parts get cut to those files, not to the registry.**
 **Do first:** [`bench-session.md`](bench-session.md) - it needs no machine, and it is the only item
 here that gets harder once the build moves on.
 
+**Before the Y axes first move:** [`first-power-up.md`](first-power-up.md) - the cast stepper
+frames reversed which end drives each Y screw, so direction and homing must be proven before
+the first jog or the ganged pair drives into the hard stops.
+
 Nothing else has been recorded. What needs measuring, and why it matters:
 
 ## Travels, per axis
