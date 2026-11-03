@@ -63,8 +63,8 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
 
    | Position | Part | Qty |
    |---|---|---|
-   | RJ45 vertical (J1-J5) | Amphenol **69255-004LF** - same jack as the sensor board, unshielded, no magnetics, drawing notes in manufacturer-assets | 5 |
-   | 3P single row (J6-J12) | Molex **39-30-1039** (Mouser 538-39-30-1039) - 5566, vertical, peg lock. Ordered 2026-11-02, follow-up to order 40971389 (whose 39-31-0027 line was this slot's mis-order) | 7 |
+   | RJ45 vertical (J1-J5) | Molex **85508-5001** - top entry, THT, Cat5e, shielded (tab to GND; the patch cables are UTP so it carries nothing), no magnetics, 16.85 mm tall. 10 ordered 2026-11-03, Mouser order 40971773. NOT the sensor board's jack - that stays the unshielded 69255-004LF, whose end must float | 5 |
+   | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. 20 ordered 2026-11-03, Mouser order 40971773 | 7 |
    | 4P dual row 2x2 (J15) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389 | 1 |
    | 2P dual row (J13, J14) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt, ordered in error for the 3P) | 2 |
 
