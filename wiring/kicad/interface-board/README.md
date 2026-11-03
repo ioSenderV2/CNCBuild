@@ -10,6 +10,7 @@ the 12 V arrives regulated from the existing 36 V -> 12 V buck in the same enclo
 | `interface-board.kicad_pcb` | The board: 220 x 95 mm, two layers, GND pour both sides, M3 mounting holes in the corners. The lid gets cut to match the board. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper (tracks, vias, GND pours) from the placed footprints - a channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. |
+| `fab/pcbway/` | Manufacturing outputs for **PCBWay**: gerbers (Protel extensions), Excellon drill, and `interface-board-pcbway.zip` - the one file their upload takes. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
 | `interface-board.kicad_pro` | Project wrapper. |
 | `netlist.txt` | The connection list, generated from the same source as the schematic. |
 | `generate.py` | **The seed that produced the first version - not the live source once KiCad has touched the file.** See the warning below. |
