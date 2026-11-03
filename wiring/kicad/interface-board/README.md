@@ -72,5 +72,8 @@ kicad-cli sch export netlist --format kicadsexpr --output kicad-export.net inter
    **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
    There is no 2P in the 5566 single-row range - it starts at 3 circuits, which is why
    the touch probes are dual-row and self-key by shape against the 3P sockets.
-3. **The RP23's J20 and J24 headers ship unpopulated** - a 2x10 and a 2x3 get soldered
-   onto the controller as part of this build.
+3. **RP23 header state, from his board in hand:** J24 already carries a bare 2x3 header;
+   J20 is open with plenty of room, so it gets a **shrouded** 2x10 (Digi-Key: CNC Tech /
+   On Shore class, 2.54 mm vertical THT). The alarm ribbon's RP23 end therefore lands on
+   an unkeyed header - mark pin 1 against the silkscreen; this board's J17 can still be
+   shrouded so the interface end is foolproof.
