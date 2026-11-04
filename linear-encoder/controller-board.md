@@ -185,6 +185,8 @@ it is the reason for this specific assignment rather than a tidier-looking one.
   belongs at this end, where the line is read.
 - **12 x 330 pF - 1 nF to ground**, one per signal, forming the RC with the series resistors at the
   sensor. At ~10 kHz there is enormous timing margin, so filter hard.
+- **Bulk decoupling at P1 pin 1: `C13` 10 µF + `C14` 100 nF**, +3V3 to GND, before the fan-out.
+  Decided 2026-11-04 — see the settled item 0 below.
 - **Shield link.** Tie all four jack shells together and to GND at **one** point. Fit it as a 0 Ω pad
   with an alternative 1 nF ‖ 1 MΩ position, so the strategy can change without cutting traces.
 - **Ground pour** under the signal fan-out. The return path matters more than trace width here.
@@ -226,14 +228,12 @@ the module *plus* ~90 mA, not for the module alone.
 
 ## Open - check before layout
 
-0. **There is no bulk decoupling on this board's `3V3`, and there probably should be.** The netlist's
-   twelve capacitors are all 330 pF-1 nF RC filters on *signal* lines; `+3V3` carries only
-   `J1.4 J2.4 J3.4 J4.4 J5.1` and the four pull-up tops - **not one capacitor**. Four cables fan out
-   from a single header pin with nothing local to supply a transient, and each sensor's own
-   `100 nF + 10 µF` sits 2.4 m away at the far end of its cable, which is exactly where it *cannot*
-   help this end. Proposed: **10 µF + 100 nF at P1 pin 1**, before the fan-out. Cheap, two parts, and
-   the alternative is finding out on a bench with four sensors hot-plugging one at a time.
-   Not yet in the schematic - decide, then add it there and to `netlist.txt` together.
+0. ~~There is no bulk decoupling on this board's `3V3`~~ **Settled 2026-11-04: added.** `C13` 10 µF
+   + `C14` 100 nF, +3V3 to GND at P1 pin 1, before the fan-out - in the schematic and `netlist.txt`
+   together, ERC clean, both pins verified on the right nets in the KiCad netlist export. The
+   argument that decided it: four cables fan out from a single header pin, and each sensor's own
+   `100 nF + 10 µF` sits 2.4 m away at the far end of its cable, exactly where it cannot help this
+   end.
 
 1. ~~Does the 20 mm width constraint relax at 12 mm?~~ **Moot - the board stays 20 mm** (decided
    2026-08-25, matching the module) and the 18.2 mm jack depth fits inside it. See *Board outline*.

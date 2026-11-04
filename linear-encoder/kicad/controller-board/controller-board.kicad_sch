@@ -4503,6 +4503,204 @@
 			)
 		)
 	)
+	(symbol
+		(lib_id "cnc:C")
+		(at 265.43 290.83 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4b5bfe9d-ff45-44d3-840b-9cd4d7000e5b")
+		(property "Reference" "C13"
+			(at 265.43 295.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10u"
+			(at 265.43 285.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 265.43 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 265.43 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 265.43 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "73367530-86d8-415f-bb25-a19dc6ac6078")
+		)
+		(pin "2"
+			(uuid "7082d37d-9ee3-4038-b20e-065b4081dfdf")
+		)
+		(instances
+			(project "controller-board"
+				(path "/8112f0b4-6db6-4c5b-a8aa-69a53aeed102"
+					(reference "C13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "cnc:C")
+		(at 287.02 290.83 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8bdcdbf0-1bf4-4d12-b438-7def72a0c705")
+		(property "Reference" "C14"
+			(at 287.02 295.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100n"
+			(at 287.02 285.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 287.02 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 287.02 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 287.02 290.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a0a9ceee-35cd-45bf-8235-06dadb72ce3c")
+		)
+		(pin "2"
+			(uuid "8bbf0bb3-3725-4901-8c1e-d2243b5d7a49")
+		)
+		(instances
+			(project "controller-board"
+				(path "/8112f0b4-6db6-4c5b-a8aa-69a53aeed102"
+					(reference "C14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(label "+3V3"
+		(at 265.43 287.02 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5c59ee23-3d60-4a88-a88d-f234651be081")
+	)
+	(label "GND"
+		(at 265.43 294.64 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "15dca256-5ace-480e-bcd2-aed75006f30f")
+	)
+	(label "+3V3"
+		(at 287.02 287.02 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "369c500b-6eb0-48c9-b2ad-a02f37cf9a80")
+	)
+	(label "GND"
+		(at 287.02 294.64 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5bfc66d1-1127-4c42-ad97-b9a10907fd5e")
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
