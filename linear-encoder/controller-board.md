@@ -31,6 +31,7 @@ board level. Their back faces slope away, so the usable length grows with height
 
 67-68 mm was measured at 12 mm and is a **floor, not a ceiling** - the terminal blocks' backs slope
 away, so the 14 mm standoff gives slightly more. Kept at 67-68 mm as the conservative figure.
+**Settled 2026-11-04 by measurement: the board maximum is 67 x 19.5** - see *Board outline*.
 
 **Four discrete jacks, 15.6 mm wide, on a 16 mm pitch = 64 mm** (ordered 2026-08-25). A ganged 1x4 in a
 single shielded housing was looked for and **not found**, so discrete it is. 64 mm against the 67-68 mm
@@ -126,24 +127,24 @@ the footprint will have to be measured off the parts themselves.
 
 ## Orientation
 
-**Jacks lie across the 20 mm width, openings facing out one long side. The module's terminal blocks
+**Jacks lie across the 19.5 mm width, openings facing out one long side. The module's terminal blocks
 face out the two ends.** So the two never conflict, and check 5 is closed.
 
-The consequence is that **jack depth is now spent against the 20 mm width**, not the length. The
+The consequence is that **jack depth is now spent against the 19.5 mm width**, not the length. The
 listing's 16 mm is the *width* (4 x 16 = 64 mm along the board); depth is unpublished and right-angle
 RJ45s commonly run ~21 mm - hence check 7. Cables also exit sideways now, so there must be room beyond
 the module's long edge for the plug, its boot and the cable's bend radius.
 
 ## Board outline
 
-**67-68 mm x 20 mm.** The width is fixed at 20 mm to match the module rather than chase extra room -
-and it does not need to grow, because the jack is **18.2 mm deep** and fits inside it with 1.8 mm to
-spare. No overhang, though up to ~1 mm would have been accepted if it had come to that.
+**67 mm x 19.5 mm - his measurement, 2026-11-04: the maximum that fits between the two terminal
+blocks.** This supersedes the earlier 67-68 x 20 working figure. The jack is **18.2 mm deep** and
+fits inside the 19.5 with 1.3 mm to spare. No overhang.
 
 | | |
 |---|---|
-| Four jacks at 16 mm | 64 mm, against 67-68 mm of length |
-| Jack depth 18.2 mm | against 20 mm of width, **1.8 mm spare** |
+| Four jacks at 16 mm | 64 mm, against 67 mm of length - 1.5 mm per end |
+| Jack depth 18.2 mm | against 19.5 mm of width, **1.3 mm spare** |
 
 The jack body does sit over the header's area - the header starts 16 mm from the back edge, i.e. 4 mm
 from the front, and an 18.2 mm deep jack reaches to 1.8 mm from the back. That is harmless: the header
