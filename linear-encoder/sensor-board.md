@@ -28,6 +28,18 @@ Layout facts worth knowing:
 - OSH Park sells boards in threes and the machine wants three pucks - one order covers it
   exactly. The Z sensor's board gets decided with its bracket.
 
+## Assembly sequence
+
+1. Paste and hot-plate the **AS5311 side** first, board flat on the plate. The chip reflows
+   once; surface tension centers it on the pads, and the pads carry the Hall-array offset.
+2. Flip, paste and reflow the **top passives** with the board sitting on a short metal pipe
+   so the chip hangs clear of the plate. The pipe is mechanical clearance only - the copper
+   pours still carry the heat everywhere, and the chip's joints re-melting while it hangs
+   is normal double-sided reflow. Face the pipe end flat so the board sits level.
+3. The **jack goes on last with the iron** - eight 1.27 mm pads and two shell tabs; the
+   brass shell wants a big tip. Its plastic is the one part that minds a long hot soak,
+   which is why it stays off the plate.
+
 KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
 ---
