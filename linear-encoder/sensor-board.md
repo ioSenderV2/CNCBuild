@@ -18,8 +18,9 @@ Layout facts worth knowing:
 - Every component sits inside the 27 mm bore circle; the jack body covers nearly all of
   it, so the top-side parts live in the thin crescents beyond its courtyard. **D1
   (SRV05-4) rides the bottom** south of the tape corridor - at 1.1 mm tall it is no
-  prouder than the AS5311 itself - and **TP1 (CLK) rides the bottom too**, in the north
-  crescent, because the top had no room left inside the bore.
+  prouder than the AS5311 itself - and **both test pads ride the bottom**, side by side
+  in the north crescent, so the bench check is all one face: tape over the chip, probes
+  on CLK and DO, everything in view at once.
 - The mounting holes are **o3.2 at (0, +/-15.5) from center**, on the axis across the
   tape run, matching M3 taps centered in the rod's 4 mm wall. Past each hole only
   0.4 mm of board remains - snug the bolts, don't crank them.
@@ -150,7 +151,9 @@ Everything here is on the jack side, so none of it competes for the height budge
 controller, with the RC, so the long line is held stiffly where it is read.
 
 Test pads: `TP1` `CLK`, `TP2` `DO` - they cost no GPIO and make the board interrogable over SSI on
-the bench, which beats the two hardware flags as a diagnostic.
+the bench, which beats the two hardware flags as a diagnostic. Both sit on the **tape-facing side**,
+next to each other north of the corridor: wave the tape over the chip with the probes on, and the
+pads, the chip and the tape all face you.
 
 ## Cable pinout - not a free choice
 

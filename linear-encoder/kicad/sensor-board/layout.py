@@ -22,9 +22,9 @@ Geometry (board center C = (100,100); the tape runs along x):
     flange west.
   - D1 (TVS) sits on the BOTTOM south of the corridor - at 1.1 mm tall it is
     no prouder than the AS5311 itself.
-  - Passives and test pads: series Rs south, decoupling and R4 north on TOP;
-    TP1 rides the BOTTOM north crescent (the top crescents are full and the
-    seat ring is off limits).
+  - Passives: series Rs south, decoupling and R4 north, all on TOP. Both test
+    pads ride the BOTTOM north crescent - the bench check (tape over the chip,
+    probes on CLK/DO) is then all one face, and the top had no room anyway.
   - U1 escapes run on B.Cu out of the corridor to vias; input lanes to the
     series Rs on B.Cu south; the A/B/MagDECn and +3V3 runs are F.Cu.
 
@@ -69,8 +69,8 @@ PLACE = {
     "R4":  (99.5, 90.3, 0, False),      # CSn tie (pad1 west = CSn)
     "C1":  (92.9, 90.3, 180, False),    # pad1 east = +3V3
     "C2":  (96.2, 90.3, 180, False),
-    "TP1": (98.16, 92.0, 0, True),      # CLK - bottom north crescent, straight down its escape
-    "TP2": (87.9, 100.6, 0, False),     # DO - west sliver, clear of the jack courtyard
+    "TP1": (98.16, 92.0, 0, True),      # CLK - bottom north crescent, straight up its escape
+    "TP2": (95.3, 92.0, 0, True),       # DO - beside it, so the bench check is all one face
     "MH1": (100.0, 84.5, 0, False),     # M3 into the rod wall, flanking the corridor
     "MH2": (100.0, 115.5, 0, False),
 }
@@ -389,8 +389,7 @@ def main():
     r.path([(97.51, 103.95), (96.6, 103.95), (96.3, 104.9)], "GND", B)
     r.via(96.3, 104.9, "GND")
 
-    r.path([(97.51, 97), (97.51, 96.1), (95.8, 96.1), (95.8, 96.35)], "DO", B)
-    r.via(95.8, 96.35, "DO")
+    r.path([(97.51, 97), (97.51, 96.1), (95.3, 96.1), (95.3, 92.0)], "DO", B)
     # (TP3 / MagINCn deleted - the crescents have no room and the doc calls it optional)
     # CLK runs straight up its own escape to TP1 on the bottom - no via
     r.path([(98.16, 97), (98.16, 92.0)], "CLK", B)
@@ -442,8 +441,6 @@ def main():
     r.path([(100.775, 112.45), (101.9, 112.45)], "B", F)
     r.path([(111.3, 105.65), (111.3, 101.905), (109.3, 101.905)], "B", F)
 
-    # DO to its test pad, skirting the jack's west shield flange
-    r.path([(95.8, 96.35), (95.8, 96.65), (87.9, 96.65), (87.9, 100.6)], "DO", F)
     # CSn to R4
     r.path([(98.81, 94.9), (98.81, 91.0), (98.725, 91.0), (98.725, 90.3)], "CSN", F)
     # +3V3: north over the parts to the decoupling pair, east run to J1.4 + tap
