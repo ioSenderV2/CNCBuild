@@ -104,7 +104,7 @@
 				)
 			)
 		)
-		(property "Value" "RJ45 Y - NO MAGNETICS"
+		(property "Value" "RJ45 Y"
 			(at 0 9.3 270)
 			(layer "F.Fab")
 			(uuid "3e724464-47af-4fdf-8843-860db6241e01")
@@ -340,7 +340,7 @@
 				)
 			)
 		)
-		(property "Value" "RJ45 A - NO MAGNETICS"
+		(property "Value" "RJ45 A"
 			(at 0 9.3 270)
 			(layer "F.Fab")
 			(uuid "e0ff1cbc-794f-41ab-ae81-ce7788741a62")
@@ -576,7 +576,7 @@
 				)
 			)
 		)
-		(property "Value" "RJ45 X - NO MAGNETICS"
+		(property "Value" "RJ45 X"
 			(at 0 9.3 270)
 			(layer "F.Fab")
 			(uuid "4275232e-fbb5-461a-82d4-e045a4aaad55")
@@ -812,7 +812,7 @@
 				)
 			)
 		)
-		(property "Value" "RJ45 Z - NO MAGNETICS"
+		(property "Value" "RJ45 Z"
 			(at 0 9.3 270)
 			(layer "F.Fab")
 			(uuid "aeaff0ba-e451-4d40-93de-754cc36d037a")

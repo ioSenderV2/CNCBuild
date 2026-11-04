@@ -143,7 +143,7 @@ AXES = [("J1", "X", "IO3", "IO4", "IO5", 45),
 
 caps = []
 for i, (ref, axis, a, b_, mag, y) in enumerate(AXES):
-    place("cnc:RJ45_8", ref, "RJ45 %s - NO MAGNETICS" % axis, 170, y,
+    place("cnc:RJ45_8", ref, "RJ45 %s" % axis, 170, y,
           {1: a, 2: "GND", 3: b_, 4: "+3V3", 5: "GND", 6: "GND", 7: mag, 8: "GND", "SH": "SHLD"})
     place("cnc:R", "R%d" % (i + 1), "2k2", 225, y, {1: "+3V3", 2: mag})
     for j, net in enumerate((a, b_, mag)):
