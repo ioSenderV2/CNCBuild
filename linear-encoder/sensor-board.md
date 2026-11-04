@@ -73,6 +73,12 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 - Working distance at Y1: **39.3 mm from the X end plate face to the Y1 beam face** that
   carries the tape; the **tape is 1.6 mm thick** with its adhesive. The rod's length and
   retention set the sensor somewhere inside that.
+- Measured on the beam: the tape's lane sits between **low-profile flange bolt heads, o14,
+  3.0 mm tall at the center and 2.3 at the edge, 16 mm between heads**. Anything on the
+  puck that comes within 3 mm of the beam face must stay inside that 16 mm window - which
+  a 35 mm disc riding at tape height cannot. Gap-setting is therefore coupled to the
+  design doc's riser proposal (tape in a milled trench on an aluminum bar that stands
+  proud of the bolt heads); still OPEN.
 - OPEN: the rod's **retention mechanism** - whatever it is, it must allow setting **1-2 mm of
   separation** between the AS5311 and the magnetic tape on the beam face between the rails.
 - **The 35 mm hole is not symmetric in use** (seen on the drilled X end plate): the **forward
