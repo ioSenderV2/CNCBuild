@@ -43,24 +43,25 @@ the shells seat rather than fouling each other.
 
 | Stack | |
 |---|---|
-| Daughter board underside | **14 mm** |
+| Daughter board underside | **~12.9 mm** (the three-socket totem below; 14 was the old working figure) |
 | PCB | 1.6 mm |
 | RJ45 jack | ~13.5 mm |
-| **Total above the module** | **~29 mm** |
+| **Total above the module** | **~28 mm** |
 
-The board underside sits 1 mm below the top of the 15 mm terminal blocks, and the jacks stand ~14 mm
-proud of them, so cable access is clear.
+The jacks stand well proud of the 15 mm terminal blocks, so cable access is clear.
 
-### The interconnect problem: 5 mm pins, 14 mm standoff
+### The interconnect problem: 5 mm pins, a ~13 mm standoff
 
-The male header stands only **5 mm** proud; the board must sit at **14 mm** to clear the tallest
-blocks. **A taller socket does not solve this** - a socket's contact springs are near its mating face,
-so a tall socket still grips only in its first few millimetres and the pins fall **9 mm** short of the
-contacts. The height has to come from somewhere else:
+The male header stands only **5 mm** proud; the board must sit high enough to clear the tallest
+component (**10.5 mm, measured** - the relay-looking isolation brick). **A taller socket does not
+solve this** - a socket's contact springs are near its mating face, so a tall socket still grips
+only in its first few millimetres and the pins fall far short of the contacts. The height has to
+come from somewhere else. **Settled 2026-11-04: the three-socket totem below.** The options it
+beat, kept for the record:
 
 | Option | Verdict |
 |---|---|
-| **Riser PCB** - male 2.0 mm down, female up, **14 mm** standoffs | **Preferred.** Keeps everything inside the measured footprint, which matters when recessed between two 15 mm walls. One more small board on an order already being placed. |
+| **Riser PCB** - socket down onto P1, male up, standoffs | Was the preference until the totem replaced it - the totem is the same idea with the PCB deleted. Falls back here only if the totem fails its bench checks. |
 | **Ribbon jumper** - 2x10 2.0 mm IDC each end, board on standoffs | Works, and frees the jacks to be **panel-mounted** so cables plug in from outside the enclosure. But the ribbon has to escape the slot between the terminal blocks and be anchored. |
 | Replace the module's header with taller pins | 20 pins of desoldering at 2.0 mm pitch on a board that is not easily replaced. Only if the stacked form factor is mandatory. |
 
@@ -79,30 +80,52 @@ Both Sullins, both in stock at Digi-Key, drawings in
 | **NPPN102AFCN-RC** | 2x10 female socket, 2.0 mm, through-hole | insulator **4.30** tall, tail 2.40, accepts 0.50 sq posts, ~$1.56 |
 | **NRPN102PAEN-RC** | 2x10 male header, 2.0 mm, through-hole | insulator **2.00**, mating post **3.60±0.20**, tail 2.80, 0.50 sq, ~$0.69 |
 
-The two series mate with each other by the female drawing's own note 11. Per assembly: two
-sockets, one male, plus the riser PCB (a ~24 x 8 mm board with 20 plated holes on the 2.0 mm
-grid) and the four standoffs.
+The two series mate with each other by the female drawing's own note 11.
 
-**The stack arithmetic, worked from the drawings** (P1's pins stand 5 mm, measured; the female's
-contact point reads as ~1.45 below its top face off the drawing - *interpreted, not measured*,
-and worth one bench mate of two parts before the riser is ordered):
+### The plan: a three-socket totem, no riser PCB - his, 2026-11-04
 
-- **Riser bottom = female socket onto P1.** 5 mm of pin into a 4.3 mm body: seats fully only if
-  the pin tips pass into the riser's plated holes (0.5 sq into ø0.8 - they should). Riser PCB
-  bottom face lands at 4.3-5.0.
-- **Top joint, male on the riser / female under the daughter board: does NOT reach at 14 mm.**
-  The daughter's socket hangs 4.3 below the board and eats the gap before the pin starts - post
-  tips land ~0.35 short of the contact point. This is the arrangement the table above implied,
-  and the numbers kill it at 14; it only closes if the standoff drops to ~13.
-- **Top joint flipped, female on the riser top / male under the daughter board: works at 14 mm.**
-  The male hangs only 2.0 of insulator before 3.6 of post, so the tips pass the riser socket's
-  contact point by ~0.35-1.05 nominal. Thin at worst case - half a millimetre of washer tune at
-  assembly absorbs it, and 13.5 mm standoffs give ~1 mm of engagement margin while still
-  clearing the 12 mm brick by 1.5.
+Three NPPN102AFCN-RC stacked, all receptacle-down. The first plugs onto P1; each next one plugs
+onto the 2.40 mm tails of the one below (tails are 0.50 sq - exactly the post the socket is rated
+for, so the socket-on-socket joints are within the part's own spec); the third one's tails solder
+into this board. No riser PCB, no male header, one part number. Three butted 4.30 bodies put the
+board's underside at **12.9**, clear of the tallest component on the module - **10.5, the
+relay-looking isolation brick, his measurement** - by 2.4. The NRPN male header stays in the
+table above only as the fallback part if the totem fails its bench checks.
 
-> OPEN: which side of the top joint gets the male. The arithmetic favours male-under-the-board
-> (keeps the 14 mm standoff); female-on-the-board matches the original sketch but costs a
-> millimetre of standoff. Decides the J5 footprint, so it gates layout.
+**P1 as measured, 2026-11-04 - and the one joint that is out of spec:**
+
+| | |
+|---|---|
+| Pitch | **2.0 mm confirmed**: ten-pin span 18.46 mm |
+| Pin size | **0.6 (caliper) / 0.67 (micrometer)** square |
+| Pin length proud | 5 mm |
+
+The socket is rated to accept **0.50 ± 0.05 sq**, so the bottom joint - the socket that grips
+P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are unaffected.
+
+> OPEN: **the bench test decides the bottom joint.** A couple of extra sockets are being ordered
+> to try on the real pins (his call - "easy enough to order a couple just to see how they work").
+> What the test has to show, on the module with the header supported so insertion force does not
+> work the header's own solder joints: the entry funnel admits the 0.64 pin at all, the socket
+> seats, continuity on all 20, and it still grips on a second mating. A socket that takes a set
+> on P1's fat pins is acceptable - that socket lives on P1 forever - but it must not need enough
+> force to damage the module. If it fails: either a 2 mm female from the same ecosystem as the
+> module's header (the no-name 2x10s sold alongside these modules will be sized for these pins -
+> measured on arrival, like the FMHXG), or a small riser PCB with ø1.0 holes soldered permanently
+> onto P1's pins (the 0.64 pin's diagonal is ~0.9, so the earlier ø0.8 figure does not clear),
+> with the separable Sullins joint moved to its top.
+
+> OPEN: **two more bench checks before the board is committed.** (1) Tail engagement: the 2.40
+> tail against a contact point that reads as ~1.45 below the mating face on the drawing -
+> interpreted, not measured - so mate two sockets, continuity plus a tug. (2) The third socket's
+> tails solder on the board's top face, and P1's position puts those 20 fillets under jack 1's
+> body: with an SMT jack at 0.1 mm standoff that is a collision unless the jack's underside is
+> recessed - check the jack drawing at layout, or trim and dress the tails flush.
+
+The stack height is measured off the standing totem before the standoffs are cut: if P1's 5 mm
+pins cannot pass out the tail side of the first socket, the whole totem rides 0.7 proud (board
+at ~13.6 instead of 12.9). Either way clears the brick; the standoffs just get cut to what is
+measured.
 
 ## The ordered part
 
@@ -271,14 +294,15 @@ the module *plus* ~90 mA, not for the module alone.
    `100 nF + 10 µF` sits 2.4 m away at the far end of its cable, exactly where it cannot help this
    end.
 
-1. ~~Does the 20 mm width constraint relax at 12 mm?~~ **Moot - the board stays 20 mm** (decided
-   2026-08-25, matching the module) and the 18.2 mm jack depth fits inside it. See *Board outline*.
+1. ~~Does the 20 mm width constraint relax at 12 mm?~~ **Moot - and superseded 2026-11-04: the
+   measured maximum is 19.5 wide.** See *Board outline*.
 2. ~~Do the terminal blocks' screws face up?~~ **No - they are accessed from the ENDS of the module,
    not the sides or top** (confirmed 2026-08-25). Overhanging their sloped backs blocks nothing, so the
    board can take the full 67-68 mm without giving any length back.
-3. ~~Tallest component / standoff height~~ **Settled 2026-08-25.** Tallest component in the footprint
-   is **12 mm** (the 15 mm terminal blocks sit outside it, at the ends); **standoff set to 14 mm**, so
-   2 mm of clearance. Costs nothing - the sloped backs mean more height gives more length, not less.
+3. ~~Tallest component / standoff height~~ **Settled 2026-08-25, numbers superseded 2026-11-04.**
+   The 2026-08-25 figures were 12 mm tallest and a 14 mm standoff; the tallest component now
+   measures **10.5** and the board rides the three-socket totem at **~12.9** - see *The
+   interconnect problem*. Still ~2.4 of clearance, same conclusion.
 4. ~~Confirm no integrated magnetics~~ **Confirmed 2026-08-25: none.** The listing's photographs show
    **eight signal pins plus two shield tabs and nothing else**. Magnetics cannot hide - transformers
    need centre-tap pins - so a bare 8+2 pin field settles it.
