@@ -7,7 +7,8 @@ described in [`design-can-position-feedback.md`](design-can-position-feedback.md
 
 Status: **in layout, 2026-11-04.** Schematic verified with bulk decoupling in; jack settled
 (CRJ068-1-SMT vertical, same as the puck); interconnect settled (three-socket totem, pending its
-bench test); board maximum 67 x 19.5 measured. Open: the hold-down, the totem bench checks.
+bench test); outline 66.5 x 22 placed, DRC clean, unrouted. Hold-down settled: the 3D-printed
+enclosure captures the assembly. Open: the totem bench checks, then routing.
 
 ---
 
@@ -185,10 +186,10 @@ What vertical entry costs: **unplugging a cable pulls the board up**, and the ja
 puts insertion/withdrawal force as high as 6.12 kgf. Three friction joints in the totem do not
 hold that.
 
-> OPEN: **what holds the board down.** Nothing on file names a mounting point on the module or
-> the enclosure for standoffs or a clamp, and with vertical jacks this is now load-bearing, not
-> tidiness. It may also add mounting holes to this board, so it should be settled before the
-> layout is sent out.
+**What holds the board down - settled 2026-11-04: the 3D-printed enclosure captures the whole
+assembly.** The module's two holes are for plastic registration pins, not screws, so nothing
+screws to the module - the printed enclosure takes the plug-withdrawal load instead. This board
+carries no mounting holes, and the enclosure design is where that constraint now lives.
 
 ## Board outline
 
