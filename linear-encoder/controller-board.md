@@ -103,8 +103,9 @@ table above only as the fallback part if the totem fails its bench checks.
 The socket is rated to accept **0.50 ± 0.05 sq**, so the bottom joint - the socket that grips
 P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are unaffected.
 
-> OPEN: **the bench test decides the bottom joint.** Four sockets ordered 2026-11-04, $16.50,
-> to try on the real pins (his call - "easy enough to order a couple just to see how they work").
+> OPEN: **the bench test decides the bottom joint.** Four sockets ordered and delivered
+> 2026-11-04, $16.50 - the test can run any time (his call - "easy enough to order a couple
+> just to see how they work").
 > What the test has to show, on the module with the header supported so insertion force does not
 > work the header's own solder joints: the entry funnel admits the 0.64 pin at all, the socket
 > seats, continuity on all 20, and it still grips on a second mating. A socket that takes a set
