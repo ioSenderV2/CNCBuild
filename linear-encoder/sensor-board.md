@@ -13,6 +13,22 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
 ---
 
+## The puck
+
+- The board is a **30 mm diameter disc**.
+- Across the tape-facing side runs an **8 mm keep-out strip**, full width: no copper, no parts,
+  nothing proud - the tape corridor. The **AS5311 sits in the middle of it**, the only thing
+  inside the strip.
+- The **RJ45 stands vertically on the other side** and the chip's signals route to its 8 pins
+  (cable pinout below).
+- **Two 4 mm screw holes**, one each side of the strip, fasten the disc to the bottom of a
+  **35 mm 3D-printed tube**. The tube inserts into a 35 mm hole in each X end plate and in the
+  X carriage plate.
+- OPEN: the tube's **retention mechanism** - whatever it is, it must allow setting **1-2 mm of
+  separation** between the AS5311 and the magnetic tape on the beam face between the rails.
+
+---
+
 ## OPEN: The through-hole jack does not obviously fit
 
 The tape-facing side has a hard height budget, and it is small:
