@@ -210,6 +210,10 @@ clearing the jack's signal feet past J5's outer pin row forces the board ~1.4 to
 the board's back edge sits **1.4 inside the module's back edge**, and the front edge overhangs
 the module's front by **3.4**.
 
+**The board file carries one deliberate DRC override:** pth_inside_courtyard is set to ignore in
+the project. KiCad flags J5's twenty through-holes under the jack bodies, and that condition is
+exactly the design - the clip-flush plan above. Everything else stays at stock severity.
+
 **Everything but the jacks goes on the BOTTOM face.** The jack bodies at 0.1 mm standoff cover
 all but ~1 mm strips of the top, so the 19 passives live underneath, where there is 2.4 mm of
 air over the tallest component on the module. The totem socket is there too; its clipped-flush

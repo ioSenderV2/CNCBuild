@@ -3681,7 +3681,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_2x10_P2.00mm_Vertical"
+		(property "Footprint" "controller-board:PinSocket_2x10_P2.00mm_Vertical_UnderBoard"
 			(at 59.69 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
