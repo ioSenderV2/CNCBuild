@@ -8,24 +8,37 @@ Regenerate everything here with `tools/export-fab.ps1`; do not hand-edit these f
 
 | | |
 |---|---|
-| Size | **66.5 × 22.0 mm** rectangle |
+| Size | **66.5 × 22.0 mm** rectangle, 2.27 sq in |
 | Layers | **2** |
-| Thickness | **1.6 mm** — not a free choice; the stack above the module depends on it |
-| Quantity | *set at quote* |
+| Thickness | **1.6 mm** (0.062 in) — not a free choice; the stack above the module depends on it |
+| Copper | 1 oz is ample for ~90 mA |
+| Quantity | **3 minimum** on the Advanced Circuits prototype deal |
 
-Everything below is inside standard spec at every house — no fine-feature surcharge
-should apply:
+## It fits the Advanced Circuits $33 prototype spec
 
-| Constraint | Design value |
+Run `tools/check-4pcb-33.ps1` after any layout change. It measures the board and
+the generated drill file, so it checks what will actually be sent.
+
+| Their limit | This board |
 |---|---|
-| Minimum trace width | 0.2 mm |
-| Minimum clearance | 0.2 mm |
-| Minimum drill | 0.3 mm |
-| Minimum annular ring | 0.15 mm |
-| Copper to board edge | 0.5 mm |
+| 2 layers, FR-4, 0.062 in, 1 oz | 2 layers, 1.6 mm |
+| Min 0.006 in line/space | **0.0079 in** (0.2 mm) both |
+| Min 0.010 in hole | **0.0118 in** (0.3 mm) |
+| **Max 35 drilled holes per sq in** | **29.1** — 66 holes in 2.27 sq in |
+| Max 60 sq in | 2.27 sq in |
+| No blind/buried vias | all vias go F.Cu to B.Cu |
+| No slots or overlapping drill hits | no oval drills; 0.25 mm minimum hole to hole |
+| No internal routing, no scoring | outline is four lines, a plain rectangle |
 
-Not fixed by the design — choose at quote: copper weight (1 oz is ample for ~90 mA),
-surface finish, solder mask and silkscreen colour.
+Hole density is the only one with real margin to lose. It is 66 holes against a
+budget of 79, and the stitching vias are the only discretionary holes on the board
+— **adding stitching back is what will break it.**
+
+Two ordering constraints that are not board properties: **one part number per order**,
+so do not panelise, and **three boards minimum**.
+
+Finish is their choice — lead-free HAL, or ENIG or silver at no extra charge.
+Any of the three solders fine by hand.
 
 ## Assembly — bottom side only
 
