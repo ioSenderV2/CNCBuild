@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "sensor-board")(type "KiCad")(uri "${KIPRJMOD}/sensor-board.pretty")(options "")(descr "Puck project footprints - AS5311 Hall-centered land pattern, CRJ068 SMT jack, SRV05-4 with symbol pin numbering"))
+)

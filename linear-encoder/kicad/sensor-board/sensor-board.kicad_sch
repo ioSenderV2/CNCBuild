@@ -2027,7 +2027,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 39.37 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2105,7 +2105,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 149.86 95.25 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2172,7 +2172,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TVS array 4ch"
+		(property "Value" "SRV05-4"
 			(at 257.19 105.88 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2183,7 +2183,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "sensor-board:SOT-23-6_SRV05-4_sym"
 			(at 250.19 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2270,7 +2270,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 144.78 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2345,7 +2345,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 129.54 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2420,7 +2420,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "sensor-board:RJ45_SameSky_CRJ068-1-SMT_Vertical"
 			(at 209.55 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2516,7 +2516,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 90.17 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2594,7 +2594,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 149.86 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2672,7 +2672,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 160.02 185.42 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2747,7 +2747,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 59.69 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2825,7 +2825,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "sensor-board:AS5311_TSSOP-20_HallCentered"
 			(at 90.17 119.38 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2957,7 +2957,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 149.86 144.78 0)
 			(show_name no)
 			(do_not_autoplace no)
