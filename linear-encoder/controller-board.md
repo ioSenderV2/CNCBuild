@@ -116,12 +116,19 @@ P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are 
 > onto P1's pins (the 0.64 pin's diagonal is ~0.9, so the earlier ø0.8 figure does not clear),
 > with the separable Sullins joint moved to its top.
 
-> OPEN: **two more bench checks before the board is committed.** (1) Tail engagement: the 2.40
+> OPEN: **one more bench check before the board is committed.** Tail engagement: the 2.40
 > tail against a contact point that reads as ~1.45 below the mating face on the drawing -
-> interpreted, not measured - so mate two sockets, continuity plus a tug. (2) The third socket's
-> tails solder on the board's top face, and P1's position puts those 20 fillets under jack 1's
-> body: with an SMT jack at 0.1 mm standoff that is a collision unless the jack's underside is
-> recessed - check the jack drawing at layout, or trim and dress the tails flush.
+> interpreted, not measured - so mate two sockets, continuity plus a tug.
+
+**The fillets under jack 1: clipped flush - his call, 2026-11-04.** The third socket's tails
+solder on the board's top face, and P1's position puts those 20 joints under jack 1's body,
+which stands off the board only 0.1 mm. Resolution: solder the socket, clip the joints flush
+with flush cutters, re-wet each sheared face with the iron, dress proud ones with a file -
+target is below the plane of the jack's own pads. The assembly order makes it checkable:
+socket first, straightedge across the area (if it rocks, dress again), jack last by iron, same
+order as the puck. Joint strength lives in the plated barrel, so the clipped dome costs
+nothing. A look at a real jack's underside is still worth taking when one is in hand - a
+recess there is free margin - but it no longer gates anything.
 
 The stack height is measured off the standing totem before the standoffs are cut: if P1's 5 mm
 pins cannot pass out the tail side of the first socket, the whole totem rides 0.7 proud (board
