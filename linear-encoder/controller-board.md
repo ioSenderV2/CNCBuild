@@ -104,6 +104,7 @@ table above only as the fallback part if the totem fails its bench checks.
 | Pin length proud | 5 mm |
 | Last pin to terminal-block face, along the length | **2.0** - a 2 mm gauge block just slides in |
 | Header start from the back edge, across the width | **15.62** - measured 2026-11-04 with the third hand steadying it; earlier freehand readings were 16 (2026-08-25) and 15.5 |
+| Pin 1 location | **pins 1 and 2 are the pair nearest the POWER terminal block** (the 2 mm-gauge-block end); **pin 1 is the inside row** (toward the module's middle), **pin 2 the outside row** (toward the front edge) |
 
 The socket is rated to accept **0.50 ± 0.05 sq**, so the bottom joint - the socket that grips
 P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are unaffected.

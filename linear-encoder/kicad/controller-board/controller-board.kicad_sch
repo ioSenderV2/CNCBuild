@@ -2682,7 +2682,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 287.02 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2760,7 +2760,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 265.43 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2838,7 +2838,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 59.69 250.19 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2916,7 +2916,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
 			(at 170.18 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3015,7 +3015,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 224.79 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3093,7 +3093,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 308.61 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3171,7 +3171,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 308.61 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3249,7 +3249,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 265.43 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3327,7 +3327,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 308.61 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3405,7 +3405,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
 			(at 170.18 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3504,7 +3504,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
 			(at 170.18 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3603,7 +3603,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 224.79 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3681,7 +3681,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinSocket_2.00mm:PinSocket_2x10_P2.00mm_Vertical"
 			(at 59.69 149.86 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3813,7 +3813,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 265.43 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3891,7 +3891,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 308.61 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3969,7 +3969,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 287.02 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4047,7 +4047,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 265.43 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4125,7 +4125,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 224.79 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4203,7 +4203,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 287.02 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4281,7 +4281,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
 			(at 170.18 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4380,7 +4380,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 287.02 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4458,7 +4458,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 224.79 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4534,7 +4534,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 265.43 290.83 0)
 			(hide yes)
 			(show_name no)
@@ -4613,7 +4613,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 287.02 290.83 0)
 			(hide yes)
 			(show_name no)
