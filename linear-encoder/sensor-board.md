@@ -9,9 +9,13 @@ the chip rather than a breakout is in
 [`design-can-position-feedback.md`](design-can-position-feedback.md) § *The sensor board: carry the
 chip, not a breakout*; this file is the board itself.
 
-Status: **laid out and routed, DRC clean with schematic parity; regrown to 35 mm 2026-11-04**
-for the bored-rod mount below. The jack is the SMT CRJ068-1-SMT, which removed the through-hole
+Status: **ordered from OSH Park 2026-11-04** - 6 boards (2 sets of 3), $27.50 delivered, order
+nonwzU9u, invoice in [`kicad/sensor-board/fab/oshpark/`](kicad/sensor-board/fab/oshpark/). Three
+go on the machine, three are spares. Laid out and routed at 35 mm for the bored-rod mount below,
+DRC clean with schematic parity. The jack is the SMT CRJ068-1-SMT, which removed the through-hole
 height problem entirely. `kicad/sensor-board/layout.py` regenerates all placement and copper.
+Before first fit: dress the edge where OSH Park's panel tabs leave their small nubs - the rim
+seats against the rod and passes through the 35 mm hole.
 
 Layout facts worth knowing:
 
