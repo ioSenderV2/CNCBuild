@@ -6,8 +6,8 @@ rather than a breakout is in
 [`design-can-position-feedback.md`](design-can-position-feedback.md) § *The sensor board: carry the
 chip, not a breakout*; this file is the board itself.
 
-Status: **schematic drawn and verified, 2026-08-29. No layout. The connector footprint is open** -
-see below, because it is the one thing that can force a different part.
+Status: **schematic drawn and verified 2026-08-29; jack settled 2026-11-03 - the SMT
+CRJ068-1-SMT, which removes the through-hole height problem entirely.** Layout is unblocked.
 
 KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
@@ -29,7 +29,18 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
 ---
 
-## OPEN: The through-hole jack does not obviously fit
+## The jack: Same Sky CRJ068-1-SMT
+
+**SMT, vertical, 8P8C, reflow-mount, no magnetics - nothing penetrates the board**, so the
+tape-facing side carries the AS5311 and nothing else. Drawing committed as
+[`SameSky-CRJ068-1-SMT-RJ45-SMT-Vertical.pdf`](../manufacturer-assets/SameSky-CRJ068-1-SMT-RJ45-SMT-Vertical.pdf):
+body 16.1 x 19.5, 13.0 tall, 8 gull-wing pads (1.27 pitch, 8.89 row), solder flange tabs
+opposite, 0.1 mm standoff. It has a **brass shield shell; the shell's tabs get solder pads and
+NO net**, so a shielded plug's screen still floats at this end - the unshielded rule's intent,
+met by netlist instead of by part. The 69255-004LF stays the record of the through-hole
+attempt below; it is no longer the plan.
+
+## SUPERSEDED: The through-hole jack does not obviously fit
 
 The tape-facing side has a hard height budget, and it is small:
 
