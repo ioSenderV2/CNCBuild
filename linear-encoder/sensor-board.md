@@ -9,17 +9,24 @@ the chip rather than a breakout is in
 [`design-can-position-feedback.md`](design-can-position-feedback.md) § *The sensor board: carry the
 chip, not a breakout*; this file is the board itself.
 
-Status: **laid out and routed 2026-11-03, DRC clean with schematic parity.** The jack is the
-SMT CRJ068-1-SMT, which removed the through-hole height problem entirely. `kicad/sensor-board/layout.py`
-regenerates all placement and copper; the board is 30 mm per the puck spec below.
+Status: **laid out and routed, DRC clean with schematic parity; regrown to 35 mm 2026-11-04**
+for the bored-rod mount below. The jack is the SMT CRJ068-1-SMT, which removed the through-hole
+height problem entirely. `kicad/sensor-board/layout.py` regenerates all placement and copper.
 
 Layout facts worth knowing:
 
-- The jack body covers nearly the whole disc, so every top-side part lives in the thin
-  crescents beyond its courtyard. **D1 (SRV05-4) rides the bottom** south of the tape
-  corridor - at 1.1 mm tall it is no prouder than the AS5311 itself.
-- The 4 mm screw holes sit diagonal at (+4.5, -11) and (-6, +10.8) from board center,
-  both outside the corridor and the jack courtyard - the printed tube's bosses go there.
+- Every component sits inside the 27 mm bore circle; the jack body covers nearly all of
+  it, so the top-side parts live in the thin crescents beyond its courtyard. **D1
+  (SRV05-4) rides the bottom** south of the tape corridor - at 1.1 mm tall it is no
+  prouder than the AS5311 itself - and **TP1 (CLK) rides the bottom too**, in the north
+  crescent, because the top had no room left inside the bore.
+- The mounting holes are **o3.2 at (0, +/-15.5) from center**, on the axis across the
+  tape run, matching M3 taps centered in the rod's 4 mm wall. Past each hole only
+  0.4 mm of board remains - snug the bolts, don't crank them.
+- **The top copper pour stops at r 13.4**, inside the bore, so the rod's end face seats
+  on bare FR4 - no grounded copper against the machine frame through worn mask. The
+  bottom GND patch is notched away from where the south bolt head lands for the same
+  reason, and the script's clearance checker enforces both.
 - **One flat 3.3 V trace crosses the corridor on the tape-facing side** (and the chip's
   own escapes exit through it). Copper under mask is ~0.05 mm proud against the 1-2 mm
   gap; the corridor keep-out is about parts and protrusions, and nothing stands in it.
@@ -46,16 +53,25 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
 ## The puck
 
-- The board is a **30 mm diameter disc**.
+- The board is a **35 mm diameter disc** - as large as it can be and still insert through the
+  35 mm hole in each X end plate and in the X carriage plate.
 - Across the tape-facing side runs an **8 mm keep-out strip**, full width: no copper, no parts,
   nothing proud - the tape corridor. The **AS5311 sits in the middle of it**, the only thing
   inside the strip.
 - The **RJ45 stands vertically on the other side** and the chip's signals route to its 8 pins
   (cable pinout below).
-- **Two 4 mm screw holes**, one each side of the strip, fasten the disc to the bottom of a
-  **35 mm 3D-printed tube**. The tube inserts into a 35 mm hole in each X end plate and in the
-  X carriage plate.
-- OPEN: the tube's **retention mechanism** - whatever it is, it must allow setting **1-2 mm of
+- The board bolts to the end of a **35 mm solid aluminum rod bored with the 1-1/16" annular
+  cutter (26.99 mm)**, which leaves a **4 mm wall**. Everything on the board lives inside the
+  27 mm bore; the **outer 4 mm ring of the top face is the rod's seat** - bare FR4, nothing on
+  it but the two mounting holes. The rod goes through the 35 mm plate hole.
+- **Two o3.2 holes at +/-15.5 mm from center**, on the axis across the tape run, match **M3
+  taps centered in the rod's wall**. The bolts come in from the tape side; a button head
+  stands ~1.65 mm off that face, inside the 3.8 mm minimum between board face and beam face
+  (1.2 chip + 1 minimum gap + 1.6 tape).
+- Working distance at Y1: **39.3 mm from the X end plate face to the Y1 beam face** that
+  carries the tape; the **tape is 1.6 mm thick** with its adhesive. The rod's length and
+  retention set the sensor somewhere inside that.
+- OPEN: the rod's **retention mechanism** - whatever it is, it must allow setting **1-2 mm of
   separation** between the AS5311 and the magnetic tape on the beam face between the rails.
 - **The 35 mm hole is not symmetric in use** (seen on the drilled X end plate): the **forward
   third is a keep-out**, because the Z spacer plate covers it at the limit of travel. The cat6

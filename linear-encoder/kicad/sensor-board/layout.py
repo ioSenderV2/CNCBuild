@@ -4,19 +4,27 @@ Run with KiCad's bundled Python:
   & 'C:\\Program Files\\KiCad\\10.0\\bin\\python.exe' layout.py          (layout + route + save)
   & 'C:\\Program Files\\KiCad\\10.0\\bin\\python.exe' layout.py dump     (placement only, print pads)
 
-Owns the whole board: places every footprint, draws the 30 mm circular outline
+Owns the whole board: places every footprint, draws the 35 mm circular outline
 and the tape-corridor marks, strips and regenerates all copper.
 
 Geometry (board center C = (100,100); the tape runs along x):
+  - The board is 35 mm so it passes through the 35 mm plate hole; it bolts to
+    the end of a 35 mm solid aluminum rod bored 1-1/16" (26.99), leaving a
+    4 mm wall. Everything lives inside the 27 mm bore (r 13.5); the outer
+    4 mm ring is the rod's seat - bare FR4 on top, no copper, no parts.
+    Two o3.2 holes at (100, 100+/-15.5) match M3 taps centered in the wall;
+    the bolts come in from the tape side.
   - The tape corridor is the 8 mm band |y-100| <= 4, bottom side: nothing there
     but the AS5311 (and flat copper). Its edges are drawn on B.SilkS.
   - U1 sits on the BOTTOM at exactly C: the footprint's origin is the Hall
     array center, so the array lands on the puck axis.
   - J1 stands on the TOP at C, signal pads east (x+9.15), floating shield
-    flange west. The 4 mm screw holes are at (100, 100+/-11).
+    flange west.
   - D1 (TVS) sits on the BOTTOM south of the corridor - at 1.1 mm tall it is
     no prouder than the AS5311 itself.
-  - Passives and test pads on TOP: series Rs south, decoupling and R4 north.
+  - Passives and test pads: series Rs south, decoupling and R4 north on TOP;
+    TP1 rides the BOTTOM north crescent (the top crescents are full and the
+    seat ring is off limits).
   - U1 escapes run on B.Cu out of the corridor to vias; input lanes to the
     series Rs on B.Cu south; the A/B/MagDECn and +3V3 runs are F.Cu.
 
@@ -31,7 +39,10 @@ import pcbnew
 BOARD = r"C:\github\CNCBuild\linear-encoder\kicad\sensor-board\sensor-board.kicad_pcb"
 
 CX, CY = 100.0, 100.0
-R_EDGE = 15.0
+R_EDGE = 17.5
+R_SEAT = 13.5   # the 26.99 bore: beyond this the rod's end face seats on the top
+HOLES = ((100.0, 84.5), (100.0, 115.5))   # M3 taps centered in the 4 mm wall
+HEAD_KEEPOUT = 3.3   # bolt head o5.7 on the bottom + margin: no bottom copper
 SIG_W = 0.25
 CLEAR = 0.2
 VIA_SIZE = 0.6
@@ -44,8 +55,9 @@ def to_mm(v):
     return pcbnew.ToMM(v)
 
 
-# The jack body is 16.1 x 19.5 on a 30 mm disc: every top-side part lives in
-# the thin crescents beyond its courtyard (|y-100| > 8.6). D1 rides the bottom.
+# The jack body is 16.1 x 19.5 inside a 27 mm circle: every top-side part lives
+# in the thin crescents beyond its courtyard (|y-100| > 8.6). D1 and TP1 ride
+# the bottom.
 PLACE = {
     # ref: (x, y, rot, back?)
     "U1":  (100.0, 100.0, 180, True),
@@ -57,10 +69,10 @@ PLACE = {
     "R4":  (99.5, 90.3, 0, False),      # CSn tie (pad1 west = CSn)
     "C1":  (92.9, 90.3, 180, False),    # pad1 east = +3V3
     "C2":  (96.2, 90.3, 180, False),
-    "TP1": (88.0, 94.9, 0, False),      # CLK - west sliver, clear of the jack courtyard
-    "TP2": (87.9, 100.6, 0, False),     # DO
-    "MH1": (104.5, 89.0, 0, False),     # 4mm screws into the printed tube, flanking the corridor
-    "MH2": (94.0, 110.8, 0, False),
+    "TP1": (98.16, 92.0, 0, True),      # CLK - bottom north crescent, straight down its escape
+    "TP2": (87.9, 100.6, 0, False),     # DO - west sliver, clear of the jack courtyard
+    "MH1": (100.0, 84.5, 0, False),     # M3 into the rod wall, flanking the corridor
+    "MH2": (100.0, 115.5, 0, False),
 }
 
 
@@ -197,12 +209,26 @@ class Router:
                 d = ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5 - VIA_SIZE
                 if d < CLEAR - 0.03:
                     problems.append(f"via {a[2]} vs via {b[2]} gap {d:.3f}")
-        # board edge: everything inside r 14.3
+        # board edge, and the seat ring: top copper stays inside the 27 mm bore
+        # (the rod's end face seats on bare FR4), bottom copper stays out from
+        # under the two bolt heads
         for (x1, y1, x2, y2, w, layer, net) in self.segs:
             for (px, py) in ((x1, y1), (x2, y2)):
                 rr = ((px - CX) ** 2 + (py - CY) ** 2) ** 0.5
                 if rr > R_EDGE - 0.7:
                     problems.append(f"seg {net} endpoint ({px:.2f},{py:.2f}) r={rr:.2f} too close to edge")
+                if layer == pcbnew.F_Cu and rr + w / 2.0 > R_SEAT - 0.05:
+                    problems.append(f"seg {net} endpoint ({px:.2f},{py:.2f}) r={rr:.2f} under the rod seat")
+            if layer == pcbnew.B_Cu:
+                for (hx, hy) in HOLES:
+                    d = self._pt_seg_dist(hx, hy, x1, y1, x2, y2)
+                    if d < HEAD_KEEPOUT:
+                        problems.append(f"seg {net} ({x1:.2f},{y1:.2f})-({x2:.2f},{y2:.2f}) "
+                                        f"under the bolt head at ({hx},{hy}), d={d:.2f}")
+        for (vx, vy, vnet) in self.vias:
+            rr = ((vx - CX) ** 2 + (vy - CY) ** 2) ** 0.5
+            if rr + VIA_SIZE / 2.0 > R_SEAT - 0.05:
+                problems.append(f"via {vnet} ({vx:.2f},{vy:.2f}) r={rr:.2f} under the rod seat")
         return problems
 
     def netcode(self, name):
@@ -293,13 +319,19 @@ def place(board):
                         pad.SetZoneConnection(pcbnew.ZONE_CONNECTION_FULL)
         if ref.startswith("MH"):
             # bare holes: shrink the ring to the drill so neither copper nor a
-            # mask aperture reaches near the board edge, and keep the pour off
+            # mask aperture reaches near the board edge, and keep the pour off;
+            # drop the library courtyard too - it is drawn for a screw head on
+            # the component side, and here the holes deliberately crowd the rim
             for pad in fp.Pads():
                 try:
-                    pad.SetSize(pcbnew.VECTOR2I(mm(4.2), mm(4.2)))
+                    pad.SetSize(pcbnew.VECTOR2I(mm(3.2), mm(3.2)))
                 except TypeError:
-                    pad.SetSize(pcbnew.PADSTACK.ALL_LAYERS, pcbnew.VECTOR2I(mm(4.2), mm(4.2)))
+                    pad.SetSize(pcbnew.PADSTACK.ALL_LAYERS, pcbnew.VECTOR2I(mm(3.2), mm(3.2)))
                 pad.SetLocalClearance(mm(0.7))
+            for g in list(fp.GraphicalItems()):
+                if g.GetLayer() in (pcbnew.F_CrtYd, pcbnew.B_CrtYd):
+                    fp.Remove(g)
+            fp.Reference().SetVisible(False)   # no silk ridge on the rod's seat
 
 
 def graphics(board):
@@ -360,8 +392,8 @@ def main():
     r.path([(97.51, 97), (97.51, 96.1), (95.8, 96.1), (95.8, 96.35)], "DO", B)
     r.via(95.8, 96.35, "DO")
     # (TP3 / MagINCn deleted - the crescents have no room and the doc calls it optional)
-    r.path([(98.16, 97), (98.16, 95.5)], "CLK", B)
-    r.via(98.16, 95.5, "CLK")
+    # CLK runs straight up its own escape to TP1 on the bottom - no via
+    r.path([(98.16, 97), (98.16, 92.0)], "CLK", B)
     r.path([(98.81, 97), (98.81, 94.9)], "CSN", B)
     r.via(98.81, 94.9, "CSN")
     r.path([(102.06, 97), (102.06, 95.6), (101.41, 95.6)], "+3V3", B)
@@ -383,7 +415,11 @@ def main():
     # connects through the pad itself
     r.path([(106.8, 106.2), (106.8, 105.1)], "GND", B)
     r.via(106.8, 105.1, "GND")
-    r.via(100.0, 113.6, "GND")   # second stitch out on the open south rim
+    r.via(103.3, 111.75, "GND")   # second stitch, inside the bore and off the bolt head
+    # With the pour stopping at r 13.4 the rim no longer ties its lobes
+    # together; the southeast lobe reaches the rest only through the bottom
+    # patch, so link patch and main pour where they overlap under the jack body
+    r.via(102.5, 105.0, "GND")
 
     # B's east journey runs on the bottom so the top pour stays in one piece;
     # the TVS channel taps straight off its diagonal
@@ -406,9 +442,8 @@ def main():
     r.path([(100.775, 112.45), (101.9, 112.45)], "B", F)
     r.path([(111.3, 105.65), (111.3, 101.905), (109.3, 101.905)], "B", F)
 
-    # DO / CLK to the test pads, both skirting the jack's west shield flange
+    # DO to its test pad, skirting the jack's west shield flange
     r.path([(95.8, 96.35), (95.8, 96.65), (87.9, 96.65), (87.9, 100.6)], "DO", F)
-    r.path([(98.16, 95.5), (98.16, 94.3), (88.0, 94.3), (88.0, 94.9)], "CLK", F)
     # CSn to R4
     r.path([(98.81, 94.9), (98.81, 91.0), (98.725, 91.0), (98.725, 90.3)], "CSN", F)
     # +3V3: north over the parts to the decoupling pair, east run to J1.4 + tap
@@ -416,7 +451,6 @@ def main():
     r.path([(96.975, 89.2), (96.975, 90.3)], "+3V3", F)
     r.path([(101.41, 95.0), (101.41, 94.8), (112.1, 94.8), (112.1, 100.635),
             (109.3, 100.635)], "+3V3", F)
-    r.path([(112.1, 100.635), (112.1, 106.6)], "+3V3", F)
 
     # ---------------- GND pours: full top, small bottom patch under D1 --------
     # The corridor stays bare on the bottom; the south patch gives D1's GND pin
@@ -442,16 +476,22 @@ def main():
         except TypeError:
             pass
         z.SetMinThickness(mm(0.2))
+        z.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
         z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
         z.SetThermalReliefGap(mm(0.35))
         z.SetThermalReliefSpokeWidth(mm(0.4))
         board.Add(z)
 
+    # Top pour stops at r 13.4: the seat ring beyond the 27 mm bore stays bare
+    # FR4 so the grounded pour never touches the aluminum rod (frame) through
+    # worn mask. The bottom patch is notched at its SW corner for the same
+    # reason - the south bolt head lands there.
     gnd_zone(pcbnew.F_Cu,
-             [(CX + 14.6 * math.cos(k * math.pi / 18), CY + 14.6 * math.sin(k * math.pi / 18))
+             [(CX + 13.4 * math.cos(k * math.pi / 18), CY + 13.4 * math.sin(k * math.pi / 18))
               for k in range(36)])
     gnd_zone(pcbnew.B_Cu, [(99.5, 104.7), (110.6, 104.7), (110.6, 110.8),
-                           (105.5, 113.9), (99.6, 113.9), (99.5, 110.5)])
+                           (105.5, 113.9), (103.4, 113.9), (103.4, 112.3),
+                           (99.6, 112.3), (99.5, 110.5)])
 
     problems = r.check()
     if problems:

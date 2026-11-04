@@ -328,6 +328,13 @@ alarms out of geometry that was chosen deliberately.
 
 #### The sensor mount: a clamped puck in a 35 mm bore
 
+> **Superseded in part, 2026-11-04** - the shape survived, the details moved: the rod is bored
+> through with the 1-1/16" annular cutter (26.99 mm, leaving a 4 mm wall) and the board grew to
+> 35 mm and **bolts to the rod's end face** - two M3 into taps in the wall - instead of sitting
+> inside the bore. The gap is still set by sliding the rod and confirmed by the sensor as below.
+> Current mount facts live in [`sensor-board.md`](sensor-board.md) § *The puck*. The jack-height
+> table below describes the abandoned through-hole jack; the SMT jack is 13.0 mm tall.
+
 Each endplate and the X gantry plate already has a **35 mm hole**. The mount is a 35 mm aluminium round,
 bored at the bottom to clear the RJ45 jack and drilled up the middle for the cable, sliding in that hole
 and locked with a band clamp. The custom board (§14) is two-sided: **AS5311 on the tape-facing side**,

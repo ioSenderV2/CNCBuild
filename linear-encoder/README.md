@@ -20,11 +20,11 @@ stay untracked and `../manufacturer-assets/index.html` records how to fetch each
 
 ## What is not here yet
 
-- **Both PCB layouts.** Two schematics exist and both pass ERC, but nothing has been placed or routed,
-  and every symbol is still a placeholder carrying the netlist rather than a real part.
+- **The controller-board layout.** Its schematic passes ERC but nothing is placed or routed. The
+  sensor board is done - laid out, routed, DRC-clean, fab files under `kicad/sensor-board/fab/`.
 - **The ESP32-S3 firmware**, and the grblHAL plugin at the other end of the CAN link.
-- **The puck-mount mechanical drawings** - the 35 mm round, the 30 mm bore, and the anti-rotation
-  fix that §1.4 leaves open.
+- **The puck-mount mechanical drawings** - the 35 mm rod, its 1-1/16" (26.99 mm) through-bore, the
+  M3 taps in the wall, and the retention/anti-rotation fix that §1.4 leaves open.
 
 An earlier note here said that when the first of these landed the work would probably want its own
 repo, away from the firmware fork. That has happened: this **is** that repo.
