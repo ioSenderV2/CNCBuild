@@ -5,10 +5,12 @@ Four shielded RJ45 jacks fanned out to the ESP32-S3's GPIOs, on a board that sit
 described in [`design-can-position-feedback.md`](design-can-position-feedback.md) §14; the sensor end is
 §14's *sensor board*.
 
-Status: **in layout, 2026-11-04.** Schematic verified with bulk decoupling in; jack settled
+Status: **routed, 2026-11-04.** Schematic verified with bulk decoupling in; jack settled
 (CRJ068-1-SMT vertical, same as the puck); interconnect settled (three-socket totem, pending its
-bench test); outline 66.5 x 22 placed, DRC clean, unrouted. Hold-down settled: the 3D-printed
-enclosure captures the assembly. Open: the totem bench checks, then routing.
+bench test); outline 66.5 x 22 placed. **All 15 nets routed, with ground poured on both layers and
+45 stitching vias - 0 DRC violations, 0 unconnected, 0 schematic parity issues.** Hold-down
+settled: the 3D-printed enclosure captures the assembly. Open: the totem bench checks, then a
+review of the layout before it is sent out.
 
 ---
 
