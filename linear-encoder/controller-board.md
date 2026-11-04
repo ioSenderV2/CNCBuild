@@ -5,11 +5,13 @@ Four shielded RJ45 jacks fanned out to the ESP32-S3's GPIOs, on a board that sit
 described in [`design-can-position-feedback.md`](design-can-position-feedback.md) §14; the sensor end is
 §14's *sensor board*.
 
-Status: **design sketch, 2026-08-25. Nothing ordered, nothing laid out.**
+Status: **in layout, 2026-11-04.** Schematic verified with bulk decoupling in; jack settled
+(CRJ068-1-SMT vertical, same as the puck); interconnect settled (three-socket totem, pending its
+bench test); board maximum 67 x 19.5 measured. Open: the hold-down, the totem bench checks.
 
 ---
 
-## OPEN: The jacks must NOT have integrated magnetics
+## SETTLED: The jacks must NOT have integrated magnetics - the CRJ068 has none
 
 Most 4-port RJ45 assemblies sold for Ethernet are **MagJacks** - transformers inside. Transformers
 **block DC**, and every signal here is DC-coupled: `A`, `B`, `MagDECn` and the 3.3 V feed. With
@@ -33,20 +35,21 @@ board level. Their back faces slope away, so the usable length grows with height
 away, so the 14 mm standoff gives slightly more. Kept at 67-68 mm as the conservative figure.
 **Settled 2026-11-04 by measurement: the board maximum is 67 x 19.5** - see *Board outline*.
 
-**Four discrete jacks, 15.6 mm wide, on a 16 mm pitch = 64 mm** (ordered 2026-08-25). A ganged 1x4 in a
-single shielded housing was looked for and **not found**, so discrete it is. 64 mm against the 67-68 mm
-budget leaves ~1.7 mm of board edge at each end - comfortable for fab clearance.
+**Four discrete vertical jacks (CRJ068-1-SMT, 16.1 mm wide bodies) occupy 64 mm** - his
+measurement of the real parts, 2026-11-04. A ganged 1x4 in a single shielded housing was looked
+for in August and **not found**, so discrete it is. 64 mm against the 67 mm maximum leaves
+~1.5 mm of board edge at each end.
 
-At 16 mm pitch the metal shells sit **0.4 mm apart**. Electrically that is a non-event: all four shields
-are the same net, so contact changes nothing. Mechanically, check the footprint's recommended spacing so
-the shells seat rather than fouling each other.
+Shells touching is electrically a non-event: all four shields are the same net. The exact pitch
+is set at layout off the real bodies - 16.1 nominal butted, a hair more if they want breathing
+room to seat.
 
 | Stack | |
 |---|---|
 | Daughter board underside | **~12.9 mm** (the three-socket totem below; 14 was the old working figure) |
 | PCB | 1.6 mm |
-| RJ45 jack | ~13.5 mm |
-| **Total above the module** | **~28 mm** |
+| RJ45 jack (CRJ068, vertical) | 13.0 mm |
+| **Total above the module** | **~27.5 mm** |
 
 The jacks stand well proud of the 15 mm terminal blocks, so cable access is clear.
 
@@ -99,6 +102,8 @@ table above only as the fallback part if the totem fails its bench checks.
 | Pitch | **2.0 mm confirmed**: ten-pin span 18.46 mm |
 | Pin size | **0.6 (caliper) / 0.67 (micrometer)** square |
 | Pin length proud | 5 mm |
+| Last pin to terminal-block face, along the length | **2.0** - a 2 mm gauge block just slides in |
+| Header start from the back edge, across the width | **15.62** - measured 2026-11-04 with the third hand steadying it; earlier freehand readings were 16 (2026-08-25) and 15.5 |
 
 The socket is rated to accept **0.50 ± 0.05 sq**, so the bottom joint - the socket that grips
 P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are unaffected.
@@ -135,7 +140,20 @@ pins cannot pass out the tail side of the first socket, the whole totem rides 0.
 at ~13.6 instead of 12.9). Either way clears the brick; the standoffs just get cut to what is
 measured.
 
-## The ordered part
+## The jack: SameSky CRJ068-1-SMT, vertical - settled 2026-11-04
+
+**The same jack as the puck**, so both ends of every cable land on the one part - shielded, no
+magnetics (confirmed when the puck chose it), 16.1 wide x 19.5 deep x 13.0 tall, SMT with a 0.1 mm
+standoff, drawing in [`../manufacturer-assets/`](../manufacturer-assets/index.html) and the proven
+footprint already in the puck's library. His reasons, in order: **vertical entry for the cables**,
+and the FMHXG's through-board retention pegs and shield tabs would have fouled the totem's socket
+under the board - SMT leaves the underside clean. Four verticals occupy 64 mm (his measurement of
+the real parts). The body is 19.5 deep - the full board width.
+
+One spec note to carry: the CRJ068 is rated 0-70 C operating. The pucks already accepted that on
+the machine, so this board adds no new exposure.
+
+## The superseded part - FMHXG right-angles, on hand as spares
 
 **FMHXG `RJ45NMCCFC-90D-10`** (ASIN `B0BRQ2R8HW`), ordered 2026-08-25 as a 10-pack:
 *"Shielded RJ45 8P8C 90 Degree Angle Network Modular Connector for PCB, CAT5/5e/6"*. 16 mm listed
@@ -156,51 +174,46 @@ check 1, and it makes the facing direction a decision (check 5).
 There is **no manufacturer datasheet** for this part, only the marketplace listing, so dimensions and
 the footprint will have to be measured off the parts themselves.
 
-## Orientation
+## Orientation - vertical, settled 2026-11-04 with the jack
 
-**Jacks lie across the 19.5 mm width, openings facing out one long side. The module's terminal blocks
-face out the two ends.** So the two never conflict, and check 5 is closed.
+**Jacks stand vertical, openings facing up; cables plug in from above.** The module's terminal
+blocks face out the two ends, so nothing conflicts sideways, and no room is needed beyond the
+long edges for plugs and boots.
 
-The consequence is that **jack depth is now spent against the 19.5 mm width**, not the length. The
-listing's 16 mm is the *width* (4 x 16 = 64 mm along the board); depth is unpublished and right-angle
-RJ45s commonly run ~21 mm - hence check 7. Cables also exit sideways now, so there must be room beyond
-the module's long edge for the plug, its boot and the cable's bend radius.
+What vertical entry costs: **unplugging a cable pulls the board up**, and the jack's own spec
+puts insertion/withdrawal force as high as 6.12 kgf. Three friction joints in the totem do not
+hold that.
+
+> OPEN: **what holds the board down.** Nothing on file names a mounting point on the module or
+> the enclosure for standoffs or a clamp, and with vertical jacks this is now load-bearing, not
+> tidiness. It may also add mounting holes to this board, so it should be settled before the
+> layout is sent out.
 
 ## Board outline
 
-**67 mm x 19.5 mm - his measurement, 2026-11-04: the maximum that fits between the two terminal
-blocks.** This supersedes the earlier 67-68 x 20 working figure. The jack is **18.2 mm deep** and
-fits inside the 19.5 with 1.3 mm to spare. No overhang.
+**67 mm x 19.5 mm maximum - his measurement, 2026-11-04: what fits between the two terminal
+blocks.** This supersedes the earlier 67-68 x 20 working figure. The CRJ068 body is 19.5 deep,
+so the jacks span the full width edge to edge.
 
 | | |
 |---|---|
-| Four jacks at 16 mm | 64 mm, against 67 mm of length - 1.5 mm per end |
-| Jack depth 18.2 mm | against 19.5 mm of width, **1.3 mm spare** |
+| Four vertical jacks | 64 mm (his measurement), against 67 mm of length |
+| Jack depth 19.5 mm | the full width - the jack row IS the board |
 
-The jack body does sit over the header's area - the header starts 16 mm from the back edge, i.e. 4 mm
-from the front, and an 18.2 mm deep jack reaches to 1.8 mm from the back. That is harmless: the header
-is on the **bottom** face and the jacks on the **top**, so only the through-hole pin fields have to
-clear each other, and they do by 3 mm (below).
+## The old header-versus-jack collision - dissolved 2026-11-04
 
-## The header-versus-jack collision
+The FMHXG analysis below solved a problem the design no longer has: with through-hole jacks, the
+jack pin field and the 2x10 field had to miss each other in X-Y. The SMT jack puts nothing
+through the board, and the totem's socket solders where P1 is - under jack 1 - with its joints
+clipped flush (above). Kept for the record:
 
-Four jacks at 16 mm pitch use 64 mm of the 67-68 mm length. That leaves **3-4 mm total**, nowhere near
-enough to place the 2x10 header beside them - so the header has to sit **underneath** the jacks: female
-header on the bottom, jacks on top. Fine in principle, except **both are through-hole**, so their pin
-fields must not overlap in X-Y.
-
-And the header's position is not a free choice: it must align with **P1, which sits in a corner** of the
-free area - exactly where jack 1 wants to be.
-
-### Resolved by measurement, 2026-08-25 - there is no collision
-
-Measured across the 20 mm width, from the back edge:
+Measured across the 20 mm width, from the back edge (FMHXG, 2026-08-25):
 
 | Feature | Distance from back edge |
 |---|---|
 | RJ45 eight signal pins | at the **back** of the jack, well clear |
 | RJ45 shield tabs - the nearest feature | **13 mm max** |
-| 2x10 header begins | **16 mm** |
+| 2x10 header begins | **16 mm** (remeasured 2026-11-04: **15.62**) |
 | **Clearance** | **3 mm** |
 
 The header sits in the front ~4 mm strip, flush with one corner, and every RJ45 through-hole feature
