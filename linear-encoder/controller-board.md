@@ -192,14 +192,28 @@ hold that.
 
 ## Board outline
 
-**67 mm x 19.5 mm maximum - his measurement, 2026-11-04: what fits between the two terminal
-blocks.** This supersedes the earlier 67-68 x 20 working figure. The CRJ068 body is 19.5 deep,
-so the jacks span the full width edge to edge.
+**66.5 x 22.0, drawn 2026-11-04.** The width story, in order: 19.5 was measured as the old
+enclosure's limit; the CRJ068's land pattern then turned out to be **21.0 wide** - 2.70 shield
+pads + 15.20 + 3.10 signal pads, the gull feet landing outside the 19.5 body on both sides - so
+the jack cannot stand on a 19.5 board. His call: the old enclosure was already dead for this
+board, a 3D-printed one replaces it, "21, 22 is fine." Drawn at **22.0** = the 21.0 pattern plus
+0.5 of copper-to-edge margin each side (OSH Park wants >= 0.38). Length drawn at **66.5** inside
+the measured 67 gap, 0.25 of float per end.
 
 | | |
 |---|---|
-| Four vertical jacks | 64 mm (his measurement), against 67 mm of length |
-| Jack depth 19.5 mm | the full width - the jack row IS the board |
+| Four vertical jacks at 16.2 pitch | 64.7, against 66.5 of length - 0.9 per end |
+| Jack land pattern 21.0 | against 22.0 of width, 0.5 margin each side |
+
+**Where the board sits over the module** (for the enclosure design): J5 must land on P1, and
+clearing the jack's signal feet past J5's outer pin row forces the board ~1.4 toward the front -
+the board's back edge sits **1.4 inside the module's back edge**, and the front edge overhangs
+the module's front by **3.4**.
+
+**Everything but the jacks goes on the BOTTOM face.** The jack bodies at 0.1 mm standoff cover
+all but ~1 mm strips of the top, so the 19 passives live underneath, where there is 2.4 mm of
+air over the tallest component on the module. The totem socket is there too; its clipped-flush
+joints are the only thing on top besides the jacks.
 
 ## The old header-versus-jack collision - dissolved 2026-11-04
 
