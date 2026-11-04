@@ -11,7 +11,8 @@ CSN       R4.1  U1.14
 DO        TP2.1  U1.12
 MAGD      D1.3  J1.7  R3.2
 MAGD_SRC  R3.1  U1.3
-MAGI      TP3.1  U1.2
+MAGI      U1.2  (TP3 deleted at layout - no room in the crescents, and the
+          doc already called the MagINCn pad an optional judgement call)
 +3V3      C1.1  C2.1  D1.4  J1.4  U1.18  U1.19
 GND       C1.2  C2.2  D1.5  J1.2  J1.5  J1.6  J1.8  R4.2  U1.8  U1.9
 

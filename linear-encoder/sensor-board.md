@@ -6,8 +6,24 @@ rather than a breakout is in
 [`design-can-position-feedback.md`](design-can-position-feedback.md) § *The sensor board: carry the
 chip, not a breakout*; this file is the board itself.
 
-Status: **schematic drawn and verified 2026-08-29; jack settled 2026-11-03 - the SMT
-CRJ068-1-SMT, which removes the through-hole height problem entirely.** Layout is unblocked.
+Status: **laid out and routed 2026-11-03, DRC clean with schematic parity.** The jack is the
+SMT CRJ068-1-SMT, which removed the through-hole height problem entirely. `kicad/sensor-board/layout.py`
+regenerates all placement and copper; the board is 30 mm per the puck spec below.
+
+Layout facts worth knowing:
+
+- The jack body covers nearly the whole disc, so every top-side part lives in the thin
+  crescents beyond its courtyard. **D1 (SRV05-4) rides the bottom** south of the tape
+  corridor - at 1.1 mm tall it is no prouder than the AS5311 itself.
+- The 4 mm screw holes sit diagonal at (+4.5, -11) and (-6, +10.8) from board center,
+  both outside the corridor and the jack courtyard - the printed tube's bosses go there.
+- **One flat 3.3 V trace crosses the corridor on the tape-facing side** (and the chip's
+  own escapes exit through it). Copper under mask is ~0.05 mm proud against the 1-2 mm
+  gap; the corridor keep-out is about parts and protrusions, and nothing stands in it.
+- **TP3 (MagINCn) was deleted at layout** - no room in the crescents, and this file
+  already called that pad an optional judgement call.
+- OSH Park sells boards in threes and the machine wants four pucks - either order twice
+  or panelise when ordering.
 
 KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
