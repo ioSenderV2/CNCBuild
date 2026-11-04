@@ -247,7 +247,9 @@ Never verified against how the machine is actually wired today.
    directly on a defined differential pair, so there is no floating-opto ambiguity to reason about.
 7. **The limit sensor junction.** See the 1.2 m cable above - needed per axis, not yet designed.
 8. **Target plates.** 4 mm non-shielded sensing means something ferrous has to come within 4 mm at
-   each end of travel. Not yet specified.
+   each end of travel. SETTLED for X, built: the sensor mounts on the cast stepper frame and a
+   length of **angle iron on top of the sole plate** is the target, positioned to trip the sensor
+   **2 mm before the end of travel**. The other axes follow the same pattern as they assemble.
 9. ~~**The TST57 manual is not yet committed.**~~ SETTLED: **Committed 2026-10-12** as
    [`../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf`](../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf).
    FLAG: **It does not close items 3, 5 or 6** - the voltage is a decision rather than a lookup, the

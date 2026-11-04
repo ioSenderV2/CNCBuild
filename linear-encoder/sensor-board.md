@@ -57,6 +57,12 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
   X carriage plate.
 - OPEN: the tube's **retention mechanism** - whatever it is, it must allow setting **1-2 mm of
   separation** between the AS5311 and the magnetic tape on the beam face between the rails.
+- **The 35 mm hole is not symmetric in use** (seen on the drilled X end plate): the **forward
+  third is a keep-out**, because the Z spacer plate covers it at the limit of travel. The cat6
+  patch cable must exit through the **back half** of the opening and run to the backside of the
+  X beam, entering the drag chain without interfering. Orient the puck's jack accordingly.
+- **Y2's patch cable** runs along the underside of the X beam and joins Y1's at the other end,
+  in the drag chain.
 
 ---
 
