@@ -68,6 +68,41 @@ absence is the whole reason this is awkward.
 
 > OPEN: **The header is 2.0 mm pitch, not 2.54 mm.** Easy to order wrong; the wrong part is unusable.
 
+### Riser part numbers - sourced 2026-11-04, datasheets committed
+
+Both Sullins, both in stock at Digi-Key, drawings in
+[`../manufacturer-assets/`](../manufacturer-assets/index.html):
+
+| Part | What | Key figures (from the committed drawings) |
+|---|---|---|
+| **NPPN102AFCN-RC** | 2x10 female socket, 2.0 mm, through-hole | insulator **4.30** tall, tail 2.40, accepts 0.50 sq posts, ~$1.56 |
+| **NRPN102PAEN-RC** | 2x10 male header, 2.0 mm, through-hole | insulator **2.00**, mating post **3.60±0.20**, tail 2.80, 0.50 sq, ~$0.69 |
+
+The two series mate with each other by the female drawing's own note 11. Per assembly: two
+sockets, one male, plus the riser PCB (a ~24 x 8 mm board with 20 plated holes on the 2.0 mm
+grid) and the four standoffs.
+
+**The stack arithmetic, worked from the drawings** (P1's pins stand 5 mm, measured; the female's
+contact point reads as ~1.45 below its top face off the drawing - *interpreted, not measured*,
+and worth one bench mate of two parts before the riser is ordered):
+
+- **Riser bottom = female socket onto P1.** 5 mm of pin into a 4.3 mm body: seats fully only if
+  the pin tips pass into the riser's plated holes (0.5 sq into ø0.8 - they should). Riser PCB
+  bottom face lands at 4.3-5.0.
+- **Top joint, male on the riser / female under the daughter board: does NOT reach at 14 mm.**
+  The daughter's socket hangs 4.3 below the board and eats the gap before the pin starts - post
+  tips land ~0.35 short of the contact point. This is the arrangement the table above implied,
+  and the numbers kill it at 14; it only closes if the standoff drops to ~13.
+- **Top joint flipped, female on the riser top / male under the daughter board: works at 14 mm.**
+  The male hangs only 2.0 of insulator before 3.6 of post, so the tips pass the riser socket's
+  contact point by ~0.35-1.05 nominal. Thin at worst case - half a millimetre of washer tune at
+  assembly absorbs it, and 13.5 mm standoffs give ~1 mm of engagement margin while still
+  clearing the 12 mm brick by 1.5.
+
+> OPEN: which side of the top joint gets the male. The arithmetic favours male-under-the-board
+> (keeps the 14 mm standoff); female-on-the-board matches the original sketch but costs a
+> millimetre of standoff. Decides the J5 footprint, so it gates layout.
+
 ## The ordered part
 
 **FMHXG `RJ45NMCCFC-90D-10`** (ASIN `B0BRQ2R8HW`), ordered 2026-08-25 as a 10-pack:
