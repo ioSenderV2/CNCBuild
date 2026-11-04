@@ -31,8 +31,9 @@ Layout facts worth knowing:
 - **One flat 3.3 V trace crosses the corridor on the tape-facing side** (and the chip's
   own escapes exit through it). Copper under mask is ~0.05 mm proud against the 1-2 mm
   gap; the corridor keep-out is about parts and protrusions, and nothing stands in it.
-- **TP3 (MagINCn) was deleted at layout** - no room in the crescents, and this file
-  already called that pad an optional judgement call.
+- **The MagINCn test pad was deleted at layout** - no room in the crescents, and this
+  file already called that pad an optional judgement call. The TP3 reference now names
+  the **ground test pad** instead, third in the bottom-side row.
 - OSH Park sells boards in threes and the machine wants three pucks - one order covers it
   exactly. The Z sensor's board gets decided with its bracket.
 
@@ -150,10 +151,11 @@ Everything here is on the jack side, so none of it competes for the height budge
 **No pull-ups on this board.** `MagDECn` is open-drain and its ~2.2 kΩ pull-up lives at the
 controller, with the RC, so the long line is held stiffly where it is read.
 
-Test pads: `TP1` `CLK`, `TP2` `DO` - they cost no GPIO and make the board interrogable over SSI on
-the bench, which beats the two hardware flags as a diagnostic. Both sit on the **tape-facing side**,
-next to each other north of the corridor: wave the tape over the chip with the probes on, and the
-pads, the chip and the tape all face you.
+Test pads: `TP1` `CLK`, `TP2` `DO`, `TP3` `GND` - the first two cost no GPIO and make the board
+interrogable over SSI on the bench, which beats the two hardware flags as a diagnostic, and the
+third is the probe's ground clip. All three sit in a row on the **tape-facing side**, north of the
+corridor: wave the tape over the chip with the probes on, and the pads, the chip and the tape all
+face you.
 
 ## Cable pinout - not a free choice
 
@@ -175,7 +177,8 @@ Five signals over four pairs, nothing spare.
   fault. `MagINCn` would add the YELLOW early warning, but the cable is full and §"Pin budget" parks
   that option on a wire-OR across all four axes into `IO1`/`IO2` off the SH1.0 connector. A test pad
   was put on `MagINCn` so the board does not foreclose it; **that was a judgement call, not something
-  the design doc asked for**, and it is free to delete.
+  the design doc asked for**, and it was deleted at layout when the crescents ran out of room (the
+  TP3 reference now names the ground test pad).
 - **Package reference dimensions.** Figure 14's Hall-array dimensions were read off a rendered page. §"carry the
   chip" already says the reference edges deserve a second look before layout, and layout is exactly
   where they get used.

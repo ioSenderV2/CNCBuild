@@ -71,6 +71,7 @@ PLACE = {
     "C2":  (96.2, 90.3, 180, False),
     "TP1": (98.16, 92.0, 0, True),      # CLK - bottom north crescent, straight up its escape
     "TP2": (95.3, 92.0, 0, True),       # DO - beside it, so the bench check is all one face
+    "TP3": (92.8, 92.0, 0, True),       # GND - probe ground clip, next in the row
     "MH1": (100.0, 84.5, 0, False),     # M3 into the rod wall, flanking the corridor
     "MH2": (100.0, 115.5, 0, False),
 }
@@ -390,6 +391,9 @@ def main():
     r.via(96.3, 104.9, "GND")
 
     r.path([(97.51, 97), (97.51, 96.1), (95.3, 96.1), (95.3, 92.0)], "DO", B)
+    # TP3 is the probe ground clip: one via up to the top pour
+    r.path([(92.8, 92.0), (92.8, 93.3)], "GND", B)
+    r.via(92.8, 93.3, "GND")
     # (TP3 / MagINCn deleted - the crescents have no room and the doc calls it optional)
     # CLK runs straight up its own escape to TP1 on the bottom - no via
     r.path([(98.16, 97), (98.16, 92.0)], "CLK", B)
