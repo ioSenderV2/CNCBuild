@@ -219,11 +219,34 @@ Two independent reasons, and either alone would justify it:
 At 30 mm a side the Hall array never approaches an end pole, so the end-pole exclusion stops being a
 number anyone has to respect — it is simply never reached.
 
-#### OPEN: PROPOSAL - a printed carrier to lift the tape clear of the bolt heads
+#### SUPERSEDED: PROPOSAL - a printed carrier to lift the tape clear of the bolt heads
 
-**Nothing here is built.** It is recorded because the reasoning is long, several blind alleys were
-walked and closed on the way, and the alternative is re-walking them. **The tape-mounting text above
-assumes the tape lies directly on the 45 mm front strip, which is what this would change.**
+> **SETTLED 2026-11-04 - no carrier, no riser: the front strip itself changes.** The 45 x 4 front
+> strip is replaced with **42 mm x 1/4" bar**, and the **M8 low-profile flange bolts (o14 head,
+> 3.0 center / 2.3 edge) get counterbored flush** - the T-nuts and bolts stay. Nothing then stands
+> proud of the face, so the puck rides over the whole width and every lane-clearance paragraph
+> below is moot. Details:
+>
+> - **42 not 45**: the bearing blocks pass the 45 edges with under 2 mm; 42 keeps 1.5 mm clear
+>   above and below (measured on the machine).
+> - The ~o15 counterbores at the +/-15 bolt stations reach past the 42 edge and **scallop it by
+>   about 1.5 mm - accepted**; the head still clamps on the inboard annulus, below face level.
+>   (An M8 button head, o13.5 x 5 tall, was considered and rejected: same breakout, deeper bore.)
+>   Drilling them on the mag drill: the magnet holds the drill, not the aluminium - **clamp the
+>   strip to the steel backing at each station**, and use a **piloted counterbore** riding the
+>   existing o9 clearance holes - flat bottom, self-centering, far less grab than a twist drill.
+> - The **10 mm trench, 0.5-1 deep, is routed into the strip before installation** - a trim
+>   router with an edge guide, the strip bedded flush in an MDF jig so depth references the top
+>   face, which is the face the gap arithmetic cares about. Aim mid-window.
+> - The **tape bonds full length in the trench** - §1.4's rule, with one adhesive layer under
+>   the position reference and aluminium commanding the band, no CTE argument left to have.
+> - The **puck rides two UHMW runners on the strip face** either side of the tape, the rod
+>   spring-loaded so the pressure is constant: **gap = runner height - 1.2 (chip) - tape
+>   proudness (1.6 - trench depth)**, tuned by the runner shoe, no feeler gauge in service.
+> - The printed sections below survive only as the **laying jig**, the job plastic is good at.
+
+**Nothing in the original proposal below is built.** It is kept because the reasoning is long,
+several blind alleys were walked and closed on the way, and the alternative is re-walking them.
 
 **The problem it solves.** The sensor puck needs `SENSOR_KEEPOUT_W` = 15 mm of clear lane, and the
 strip's two bolt rows cannot move — they sit at ±15 from the seam because that is where the
@@ -273,7 +296,8 @@ worse rather than better**.
 Bonded continuously to the aluminium, the stiffness order is restored and the carrier is a slave.
 Unbonded, this design is wrong no matter how the sections are joined.
 
-**OPEN:, and both are decisions rather than measurements:**
+**CLOSED by the SETTLED note above - neither decision arises once the strip itself is the carrier.
+Kept as the state of the argument when the carrier was still the plan:**
 
 - **Carrier width.** 40 and 45 have both been said. The block gap is `BLOCK_ROW_GAP` = 45 *measured*,
   so 45 fills it exactly with nothing to spare; 40 leaves 2.5 a side. Four sections at either width
@@ -331,7 +355,8 @@ alarms out of geometry that was chosen deliberately.
 > **Superseded in part, 2026-11-04** - the shape survived, the details moved: the rod is bored
 > through with the 1-1/16" annular cutter (26.99 mm, leaving a 4 mm wall) and the board grew to
 > 35 mm and **bolts to the rod's end face** - two M3 into taps in the wall - instead of sitting
-> inside the bore. The gap is still set by sliding the rod and confirmed by the sensor as below.
+> inside the bore. The gap is set by UHMW runners riding the front strip with the rod
+> spring-loaded (see the SETTLED note in the carrier section), confirmed by the sensor as below.
 > Current mount facts live in [`sensor-board.md`](sensor-board.md) § *The puck*. The jack-height
 > table below describes the abandoned through-hole jack; the SMT jack is 13.0 mm tall.
 
