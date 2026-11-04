@@ -1,8 +1,11 @@
 # Sensor board
 
 One per puck: the **AS5311 on the tape-facing side**, the RJ45 jack and every passive on the other.
-Four of them (three now, Z later - §11.9), panelised. The design rationale for carrying the chip
-rather than a breakout is in
+**Three pucks - X, Y1, Y2.** The Z axis takes a different mount, yet to be designed: the magnetic
+strip goes on the outside edge of the X carriage, and the sensor hangs over it on a bracket off
+the side of the Z plate - 1/4" aluminum so it cannot flex, since it has to span 15.3 + 30 mm
+between the Z plate's bottom face and the X carriage's top face. The design rationale for carrying
+the chip rather than a breakout is in
 [`design-can-position-feedback.md`](design-can-position-feedback.md) § *The sensor board: carry the
 chip, not a breakout*; this file is the board itself.
 
@@ -22,8 +25,8 @@ Layout facts worth knowing:
   gap; the corridor keep-out is about parts and protrusions, and nothing stands in it.
 - **TP3 (MagINCn) was deleted at layout** - no room in the crescents, and this file
   already called that pad an optional judgement call.
-- OSH Park sells boards in threes and the machine wants four pucks - either order twice
-  or panelise when ordering.
+- OSH Park sells boards in threes and the machine wants three pucks - one order covers it
+  exactly. The Z sensor's board gets decided with its bracket.
 
 KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
 
