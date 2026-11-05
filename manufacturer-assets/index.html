@@ -275,6 +275,32 @@
   </tr>
 
   <tr>
+    <td><strong>HY02D223B</strong></td>
+    <td>Huanyang</td>
+    <td>The spindle kit's <strong>2.2&nbsp;kW VFD</strong>, HY series. <strong>Input R/S/T is
+        &quot;220V class, for both single/three phase, single phase connected to any two
+        phases&quot;</strong> &mdash; which is what makes the cabinet's L6-20P right and says the
+        third terminal is simply left off.
+        <span class="warn">There is NO 24&nbsp;V supply output.</span> The rails it brings out are
+        <strong>+10&nbsp;V</strong> for the speed pot and <strong>+12&nbsp;V at 200&nbsp;mA</strong>
+        on <code>EV</code>/<code>IPV</code>/<code>P24</code> &mdash; the terminal is
+        <em>named</em> P24 and the function table says +12&nbsp;V. The
+        <strong>DC24V/100mA</strong> figure is the switching rating of the two opto outputs
+        <code>DRV</code> and <code>UPF</code>, not a rail.
+        Outputs: <code>FA/FB/FC</code> Multi-Output&nbsp;3, <strong>N/O or N/C,
+        3&nbsp;A/250&nbsp;VAC</strong>; <code>KA/KB</code> Multi-Output&nbsp;4, N/O, same rating.
+        <strong>PD052&nbsp;=&nbsp;01</strong> makes FA/FB/FC act &quot;In Run&quot;, which is how the
+        pump contactor follows the spindle &mdash; factory setting is 02, fault indication. See
+        <code>wiring/cabinet-power-and-grounding.md</code>.</td>
+    <td><code>Huanyang-HY02D223B-VFD-Manual.pdf</code></td>
+    <td>Two independent hosts, <strong>byte-identical</strong>, md5
+        <code>748a055c7fa531843db6c318ceaf4027</code>:
+        <a href="https://raw.githubusercontent.com/jasonwebb/tc-maker-4x4-router/master/docs/spindle-and-coolant-system/Huanyang%20HY02D223B%20VFD%20manual.pdf">github.com/jasonwebb/tc-maker-4x4-router</a>
+        and <a href="https://buildbotics.com/upload/vfd/Huanyang-VFD-manual.pdf">buildbotics.com/upload/vfd/</a>.</td>
+    <td>2026-11-05<br>vendor manual, 60&nbsp;pages</td>
+  </tr>
+
+  <tr>
     <td><strong>HGH20CA</strong></td>
     <td>Vevor</td>
     <td>Linear guide <strong>block</strong>, HGH-CA series size table. The row this machine runs on:

@@ -54,6 +54,11 @@ L15.
 NOTE: **The whole cabinet reads single-phase and that is what caught it** - the spindle VFD is a
 **HY02D223B**, the motor supply's nameplate is **220 V at 3.5 A**, and the block is fed by **two**
 switched legs with no neutral anywhere in the chain. There is nothing in here a third hot would feed.
+
+✅ **AND THE VFD MANUAL CONFIRMS IT INDEPENDENTLY.** Its description of the R/S/T input reads *"220V
+class, for both single/three phase, single phase connected to any two phases"* - so the drive takes
+single-phase on **any two** of its three input terminals, and the third is simply left off. That also
+answers the question nobody had asked yet: which two.
 **L14-20** was the other candidate and was declined: it is the single-phase device that also carries a
 neutral, which would have let one pigtail serve both circuits, and nothing in the box wants 120 V off
 the 220 V cord.
@@ -91,34 +96,50 @@ out**.
 
 ### The pump follows the spindle
 
-The 220 V pump is switched by **its own contactor with a 24 V coil**, and that coil is driven from
-**one of the VFD's outputs** - so the pump runs whenever the spindle runs. Nothing to remember and
-nothing to forget, which is the right arrangement for the one pump a water-cooled spindle cannot run
-without.
+The 220 V pump is switched by **its own contactor**, and the contactor is driven from **one of the
+VFD's outputs** - so the pump runs whenever the spindle runs. Nothing to remember and nothing to
+forget, which is the right arrangement for the one pump a water-cooled spindle cannot run without.
 
-SETTLED: **THE 24 V COMES OUT OF THE VFD - his word, 2026-11-05.** So no fifth pair and no extra
-supply: the VFD sources the coil and one of its own outputs switches it.
+**The VFD is a Huanyang HY02D223B** and its manual is now committed at
+[`../manufacturer-assets/Huanyang-HY02D223B-VFD-Manual.pdf`](../manufacturer-assets/Huanyang-HY02D223B-VFD-Manual.pdf).
+Everything below is out of its control terminal table, pages 11-12.
 
-🔴 **THE VFD IS A HUANYANG HY02D223B, AND ITS MANUAL IS NOT IN THIS REPO.** Model his, 2026-11-05.
-The root README's rule is that datasheets are committed, not linked, and there is no VFD document in
-[`../manufacturer-assets/`](../manufacturer-assets/) - the only spindle item is the RATTMMOTOR
-listing image. Two questions need one page of it, and **neither should be answered from recollection
-of the HY series**: the control terminal names and ratings are exactly the kind of detail this repo
-has already had to recover once from a schematic. Two questions:
+🔴 **THERE IS NO 24 V SUPPLY ON THIS VFD, SO THE COIL IS NOT A 24 V COIL.** The only rails it brings
+out are **+10 V** for the speed pot and **+12 V at 200 mA max**. The trap is the terminal's *name*:
 
-1. **What that 24 V terminal can source, against what the coil draws to pull in and to hold.** A VFD's
-   24 V terminal is usually there to bias digital inputs and can be rated in tens of milliamps; a DIN
-   contactor's DC coil is a different order. If it cannot carry the coil, the fix is small - the 24 V
-   comes off the 12 V supply's own rail or a dedicated one - but it is a part to buy, not a wire to
-   move.
-2. **Whether the output is a relay contact or a transistor.** A dry contact is polarity-blind and
-   takes the coil directly. An open-collector output sinks rather than sources, which puts the coil
-   between +24 V and the output pin and makes a flyback diode across the coil the difference between
-   working and killing the output on the first spindle stop.
+| Terminal | What the manual's function table says |
+|---|---|
+| **EV (IPV) / P24** | *"+12V Power Supply, Max. output current 200mA"* - **named P24, supplies 12 V** |
+| **+10** | Power supply for speed setting, +10 V |
+| **DRV** | Multi-Output 1, **optical couple output** |
+| **UPF** | Multi-Output 2, **optical couple output** - rated **DC24V/100mA** |
+| **FA / FB / FC** | Multi-Output 3, **N/O or N/C**, **3 A / 250 VAC** |
+| **KA / KB** | Multi-Output 4, N/O, **3 A / 250 VAC** |
 
-FLAG: **These two are the same question the pump cannot run without, so they gate the pump contactor
-and nothing else in the chain.** Everything upstream - the paddle, the main contactor, the block, the
-four pairs - is settled and buildable without them.
+**The DC24V/100mA is the switching RATING of the two opto outputs, not a rail you can draw from.**
+That is almost certainly where the 24 V came from, and it is exactly the distinction this repo keeps
+datasheets for - a number beside a terminal is not a supply.
+
+✅ **WHAT CLOSES IT IS SIMPLER THAN A 24 V COIL: FA/FB/FC IS A REAL RELAY CONTACT AT 3 A / 250 VAC.**
+So the pump contactor takes a **220 V or 110 V coil** and the relay switches it directly. No 24 V
+anywhere, no extra supply, no flyback diode - a dry contact does not care about polarity and has no
+inductive kick to catch. **One parameter sets it:**
+
+| | |
+|---|---|
+| **PD052** | Multi-Output 3, the FA/FB/FC function. **Factory setting 02**, Fault Indication |
+| **Set it to 01** | *"In Run: the contact will act when the inverter has output or receives the running command"* |
+
+NOTE: **PD053 and the KA/KB pair are a spare of the same rating**, factory-set to 00, invalid - so if
+the fault indication is wanted as well, it does not cost the pump its relay.
+
+OPEN: **WHICH OF FB AND FC IS THE NORMALLY-OPEN LEG.** The manual gives the pair as *"N/O or N/C"*
+and does not say which is which. It is a meter on the real part with the drive unpowered, not
+something to take from a convention.
+
+OPEN: **THE PUMP CONTACTOR'S COIL INRUSH AGAINST 3 A.** Comfortable for a contactor coil, and the
+contactor is not chosen yet - so the number to check when it is picked is the coil's own inrush VA,
+not its sealed rating.
 
 ### The paddle is for emergencies and for service - the machine lives powered
 
