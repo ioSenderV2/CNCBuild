@@ -39,25 +39,27 @@ proper strain relief** - nothing plugs into the machine.
 | Circuit | Pigtail | Plug |
 |---|---|---|
 | 110 V | **10 ft**, feeds the receptacle inside the CNC | ordinary 110 V |
-| 220 V | **10 ft** | **locking, L15-20P** |
+| 220 V | **10 ft**, 12 AWG | **locking, L6-20P** into an **L6-20R** at the wall |
 
 ✅ **A CAPTIVE CORD IS THE BETTER ANSWER, NOT THE COMPROMISE.** A panel inlet was the fix offered
 here for the double-ended cord it replaces; the pigtail beats it on both counts. There is **no
 connector on the machine at all** to be left live or to work loose in a shop full of chips, and
 unplugging at the wall is a **break you can see** - which a tripped breaker in another room is not.
 
-OPEN: **L15-20P IS THE THREE-PHASE CONFIGURATION, AND EVERYTHING ELSE IN THIS CABINET READS
-SINGLE-PHASE.** Observation, from the NEMA locking table: **L15-20** is 250 V **three-phase**, 20 A,
-3 pole 4 wire - three hots and a ground, no neutral. The single-phase 240 V 20 A locking device is
-**L6-20** (two hots and a ground); **L14-20** is the single-phase one that also carries a neutral.
-What says single-phase here: the spindle VFD is a **HY02D223B**, the motor supply's nameplate reads
-**220 V at 3.5 A**, and the block is fed by **two** switched legs with no neutral anywhere in the
-chain. So either the shop is three-phase and the plug is right, or the part is **L6-20P**. It is a
-plug, a cord and a receptacle at the wall, so it is worth settling before any of the three is bought.
+SETTLED: **L6-20P, NOT L15-20P - his decision, 2026-11-05.** This read L15-20P for one commit.
+**L15-20 is the THREE-PHASE configuration** - 250 V three-phase, 20 A, 3 pole 4 wire, three hots and
+a ground. **L6-20 is the single-phase one**: two hots and a ground, 250 V, 20 A. Do not reinstate the
+L15.
 
-OPEN: **THE 220 V PIGTAIL'S CONDUCTOR GAUGE IS NOT STATED.** The 110 V cord was called out at 12 AWG
-when it was a cord; the 220 V one has a plug and a length and no gauge yet. It follows from the plug,
-so it waits on the question above.
+NOTE: **The whole cabinet reads single-phase and that is what caught it** - the spindle VFD is a
+**HY02D223B**, the motor supply's nameplate is **220 V at 3.5 A**, and the block is fed by **two**
+switched legs with no neutral anywhere in the chain. There is nothing in here a third hot would feed.
+**L14-20** was the other candidate and was declined: it is the single-phase device that also carries a
+neutral, which would have let one pigtail serve both circuits, and nothing in the box wants 120 V off
+the 220 V cord.
+
+**12 AWG on both pigtails.** It is what the 110 V cord was called out at, and what a 20 A device
+asks for.
 
 ### The 110 V side is deliberately NOT switched
 
