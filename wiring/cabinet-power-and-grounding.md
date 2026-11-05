@@ -131,23 +131,52 @@ out**.
 
 | | Part | Frame | Coil | Switched by |
 |---|---|---|---|---|
-| **Main** | **Wengart**, modular DIN - *"25A AC Contactor 2 Pole 120V Coil Electricians DIN Rail Mount"*, his 2026-11-05 | **25 A** | **120 V**, behind the 1 A fuse | the paddle switch |
+| **Main** | **Wengart WCT-25 (2-Pole)**, modular DIN, his 2026-11-05 | **25 A (AC-7a)**, 2NO | **AC 110-120 V**, 50/60 Hz, behind the 1 A fuse | the paddle switch |
 | **Pump** | smallest frame on the shelf | - | **220 V**, off pair 3 | the VFD's **FA/FC** relay |
 
-🔴 **CONFIRM THE MAIN CONTACTOR IS 2NO BEFORE IT GOES IN - the title says "2 Pole" and does not say
-2NO.** On a **1NO + 1NC** part the second pole is a normally-closed *auxiliary*, not a second switched
-leg, so **only one of the two hots gets switched** and the other stays live downstream of the paddle
-for ever. It is the failure that passes every functional test anyone would think to run - the machine
-starts, stops and behaves - and it is a meter across both load terminals with the coil
-de-energised. Sibling listings in the same family do state 2NO, so the part exists; this title just
-does not say it.
+**The main contactor's specification**, off the product listing:
 
-NOTE: **25 A rather than 20 A is about the moment it closes, not the hour after.** Steady load is
-~14.9 A, which a 20 A frame carries. Everything downstream is a capacitor bank though - the 36 V
-switch-mode supply, the 12 V supply and the VFD's DC bus all charge at the instant the contacts make,
-and a modular contactor of this class is an **AC-1** part whose contacts are not built for repeated
-high-inrush making. **His usage is what makes either defensible**: the machine lives powered and this
-contactor closes rarely. 25 A was the cheap end of that argument.
+| | |
+|---|---|
+| Model | **WCT-25 (2-Pole)** |
+| Rated current | **25 A (AC-7a) / 9 A (AC-7b)** - the listing also puts it at 5500 W resistive |
+| Coil | **AC 110-120 V, 50/60 Hz** |
+| Contacts | **2NO**, normally open |
+| Electrical life | **100,000 cycles** |
+| Certifications | CE / ETL |
+
+SETTLED: **2NO - so both hots are switched.** This was the open question and the spec table answers
+it. On a 1NO + 1NC part the second pole would have been a normally-closed *auxiliary* rather than a
+second switched leg, leaving one hot live downstream of the paddle for ever while the machine started,
+stopped and behaved perfectly.
+
+PROCEDURE: **METER IT ANYWAY, ONCE, BEFORE IT GOES IN** - both load terminals against their line
+terminals with the coil de-energised. This is a vendor's word on a listing, and in this repo a
+vendor's word on exactly this kind of claim has already been **wrong**: the IG57 seller said the four
+opto minus legs were commoned inside the drive and a one-minute meter check overturned it, which is
+why [`ig57-drives.md`](ig57-drives.md) carries the reading rather than the claim. One minute, and it
+is the one failure here that cannot be seen in operation.
+
+FLAG: **THE TWO RATINGS ARE NOT INTERCHANGEABLE, AND THE 9 A IS THE ONE THAT LOOKS ALARMING.** AC-7a
+is slightly-inductive household load and AC-7b is **motor** load, and the frame is only **9 A** in
+the motor column. **AC-7a is the applicable one here**: this contactor sees two switch-mode supplies,
+the VFD's input rectifier and a contactor coil. The spindle motor is downstream of the VFD's own
+output stage and never touches these contacts, and the pump motor is behind its own contactor. **FLAG:
+this file said "an AC-1 part" until the listing was read** - that was wrong, and the real categories
+are AC-7a/AC-7b.
+
+NOTE: **Neither AC-7 category actually describes the load, and that is the honest limit of the
+datasheet.** A rectifier-and-capacitor front end is not resistive and not slightly inductive - it is a
+**capacitive inrush** at the instant the contacts make, and all three supplies do it at once.
+**100,000 cycles against a machine that lives powered** is what makes this a non-issue rather than any
+number in the table: on his usage the paddle closes for an emergency, a motor fault or a wiring job,
+so the cycle count will never be approached.
+
+✅ **AND THE LOW-HOLDING-POWER COIL IS A REAL MATCH FOR THIS BOX, NOT MARKETING.** The listing sells
+*"less holding power ... reducing the hot-to-touch issue ... safer for enclosed distribution
+boards"*. This coil is **energised continuously** - the machine lives on - inside a **sealed PVC box
+with no ventilation**. A cool-running coil is exactly the right property for that combination, and it
+is worth remembering when the question of what else goes in the box gets answered.
 
 NOTE: **THE PUMP CONTACTOR IS SIZED BY WHAT IS SOLD, NOT BY THE LOAD.** The pump is **80 W** - about
 0.4 A at 220 V - and the bottom of most DIN ranges is a 9 A body, already twenty-odd times what it
@@ -428,6 +457,13 @@ components"*, and 12 x 12 is **144 square inches of back panel**. The DIN gear -
 2 x 8 block, the fuse holders - is small. The **36 V 600 W supply is a brick**, the VFD is another,
 and neither is a DIN part. Whether those two mount in this box, beside it, or in something larger
 that contains it is not stated, and it decides whether "the cabinet" in this file means this box.
+
+FLAG: **AND IT IS A HEAT QUESTION, NOT ONLY A SPACE ONE - a dust-proof box has no ventilation.**
+Whatever goes in dissipates into a sealed plastic volume that is **energised continuously**, because
+the machine lives powered. The DIN gear is near nothing: the main contactor was specifically bought
+for a low-holding-power coil. **A 600 W supply is a different proposition** even at a fraction of
+load, and the VFD has a heatsink for a reason. Space and heat point the same way here, which is the
+useful part - whatever the answer, it is the same answer for both.
 
 ## Grounds meet at one PE bus bar
 
