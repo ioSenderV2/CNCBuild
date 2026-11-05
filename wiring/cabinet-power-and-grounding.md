@@ -44,11 +44,33 @@ outages, blown breakers and other power interruptions."* Coming back takes a del
 green button. That is the property being bought, and it is the reason this is not a toggle: a toggle
 restores power to a machine nobody is standing at, the moment the mains returns.
 
-PROCEDURE: **FOLLOW THE WIRING DIAGRAM IN THE BOX FOR WHERE THE CONTACTOR COIL LANDS.** The switch has
-its own internal line / load / holding-coil arrangement, and which terminals present the switched
-output is the one thing not to guess at - it is the difference between a coil that holds and a switch
-that buzzes. **Photograph that diagram into [`../manufacturer-assets/`](../manufacturer-assets/) when
-it arrives**, the way the Vevor rail pages went in.
+SETTLED: **THE TERMINALS ARE 13/14 AND 23/24, TWO POLES, ON 1/4 INCH SPADE TABS.** From the wiring
+diagram on the listing, 2026-11-05 - so this no longer waits on unboxing the switch:
+
+| Terminal | The diagram's label | Here |
+|---|---|---|
+| **13** | Hot 1 in | **hot in**, from the 110 V control branch behind the 1 A fuse |
+| **14** | Hot 1 out | **to contactor A1** |
+| **23** | 125 V Neutral in | **neutral in** |
+| **24** | 125 V Neutral out | **to contactor A2** |
+
+✅ **BOTH POLES ARE SWITCHED, SO THE COIL IS FULLY ISOLATED WHEN THE PADDLE IS DOWN.** 13-14 and
+23-24 is the IEC numbering for **two normally-open contacts**, which is the behaviour wanted: both
+open together when the paddle drops, and the coil circuit is broken on both sides rather than left
+sitting on a neutral.
+
+NOTE: **IT TAKES FOUR 1/4 INCH FEMALE QUICK-DISCONNECTS** - the diagram calls them out as the
+terminal type. A buy item, and not one that turns up in a DIN rail parts list.
+
+🔴 **"AC120V ONLY; NOT SUITABLE FOR 220V" - the diagram's own warning, in a yellow box.** The design
+already has it on the 110 V branch and nothing needs to change. It is recorded loudly because this
+switch will be mounted on a panel where **everything else is 220 V**, and its coil pair runs to a
+contactor whose power poles are 220 V. Also: **motor power ≤ 1/2 HP**, which a contactor coil is not
+remotely near.
+
+PROCEDURE: **CHECK THE TAB NUMBERING ON THE REAL SWITCH BEFORE CRIMPING.** The diagram is a listing
+image and the tabs are stamped; it is a glance, and the pairing that matters is that **13 and 14 are
+one pole** rather than 13 and 23.
 
 NOTE: **THE CORD QUESTION IS MOOT - he bought the bare switch on purpose.** Two sources disagreed on
 whether a pre-wired cord ships with it; he did not order that option, because a switch used as a
