@@ -154,8 +154,9 @@ both on the power side.
 | Life | **1,000,000** mechanical / **100,000** electrical at full load |
 | Certifications | CE / ETL |
 
-✅ **18 MM EACH MEANS THE RAIL IS A NON-ISSUE.** Two contactors is **36 mm** of a rail in a 12 inch
-box. The 2 x 8 block and the fuse holders have the rest of it.
+NOTE: **18 mm each, so two contactors are 36 mm.** FLAG: **this line read "the rail is a non-issue"
+until the four 2-pole breakers were added** - see the rail budget below, which is no longer
+comfortable on one rail.
 
 NOTE: **THE VENDOR ASKS FOR A GAP BETWEEN THEM, SO LEAVE ONE.** *"If installing multiple contactors
 side-by-side in a closed panel, using heat dissipation spacers between units is recommended."* At
@@ -327,10 +328,31 @@ reads as a row.
 | 3 | Pump contactor | **80 W**, about 0.4 A, plus an 11.5 VA coil |
 | 4 | 12 V supply | **not sized yet** - this breaker waits on the supply |
 
+🔴 **ALL FOUR ARE 2-POLE, AND THIS IS THE SAME TRAP AS THE CONTACTOR'S 2NO.** Every pair off the
+block is **two hots with no neutral**, so a single-pole breaker breaks one leg and leaves the other
+connected - the load is then half-isolated when the breaker is off or tripped, with one leg still live
+to ground at its terminals. For a branch you will switch off to work on a supply, that is the
+difference between dead and looking dead.
+
 FLAG: **TYPE C ON THE VFD'S BREAKER, NOT TYPE B.** The drive charges its DC bus every time the main
 contactor closes, and that inrush will trip a tightly-sized Type B curve - which presents as the
 machine refusing to power up intermittently and gets blamed on the drive. The same argument applies
 in miniature to pair 1, which is a switch-mode supply doing the same thing.
+
+OPEN: **THE RAIL BUDGET NO LONGER FITS ON ONE RAIL, AND THAT IS A LAYOUT DECISION NOT A PROBLEM.** A
+2-pole breaker is **two modules, 36 mm**:
+
+| | Width |
+|---|---|
+| 4 x 2-pole breaker | **144 mm** |
+| 2 x WCT-25 contactor | **36 mm** |
+| 2 x 8 block, the 1 A control fuse holder, the PE bar | not measured |
+
+**180 mm before the block, the fuse holder or the bus bar**, against roughly ten inches of usable rail
+across a 12 inch box. **A 12 x 12 box takes more than one rail** - two or three stacked horizontally -
+so the answer is almost certainly two rails rather than a smaller parts list. Worth laying out on
+paper against the real box before anything is drilled, because the DIN gear is now the thing that
+sets the layout rather than the supplies.
 
 OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
 [`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding
