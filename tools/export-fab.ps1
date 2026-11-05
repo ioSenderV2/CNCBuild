@@ -23,13 +23,17 @@ $gerb = Join-Path $fab 'gerbers'
 if (-not (Test-Path $KicadCli)) { throw "kicad-cli not found: $KicadCli" }
 if (-not (Test-Path $pcb))      { throw "board not found: $pcb" }
 
-# README.md is hand-written and lives in fab/; keep it across a rebuild.
-$readme = Join-Path $fab 'README.md'
-$keep = if (Test-Path $readme) { [System.IO.File]::ReadAllBytes($readme) } else { $null }
+# README.md and ASSEMBLY.md are hand-written and live in fab/; keep them across a rebuild.
+$handWritten = @('README.md', 'ASSEMBLY.md')
+$keep = @{}
+foreach ($n in $handWritten) {
+    $p = Join-Path $fab $n
+    if (Test-Path $p) { $keep[$n] = [System.IO.File]::ReadAllBytes($p) }
+}
 
 if (Test-Path $fab) { Remove-Item -Recurse -Force $fab }
 New-Item -ItemType Directory -Force $gerb | Out-Null
-if ($keep) { [System.IO.File]::WriteAllBytes($readme, $keep) }
+foreach ($n in $keep.Keys) { [System.IO.File]::WriteAllBytes((Join-Path $fab $n), $keep[$n]) }
 
 Write-Output '== gerbers =='
 & $KicadCli pcb export gerbers `
@@ -69,8 +73,18 @@ Write-Output '== BOM =='
     --sort-field 'Reference' `
     $sch
 
-Write-Output '== zip for upload =='
+Write-Output '== zip: bare board =='
 Compress-Archive -Path "$gerb\*" -DestinationPath (Join-Path $fab 'controller-board-gerbers.zip') -Force
+
+# The gerber zip alone cannot be quoted for assembly: it carries no BOM, no
+# centroid and no statement of which parts to leave off. That is a second zip.
+Write-Output '== zip: assembly =='
+$asmParts = @(
+    (Join-Path $fab 'ASSEMBLY.md')
+    (Join-Path $fab 'controller-board-bom.csv')
+    (Join-Path $fab 'controller-board-bottom-pos.csv')
+) | Where-Object { Test-Path $_ }
+Compress-Archive -Path $asmParts -DestinationPath (Join-Path $fab 'controller-board-assembly.zip') -Force
 
 Write-Output '== done =='
 Get-ChildItem $fab -Recurse -File |

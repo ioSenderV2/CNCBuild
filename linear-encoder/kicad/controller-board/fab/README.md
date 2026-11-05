@@ -66,10 +66,20 @@ parts are fine unless the quote asks for specifics.
 
 | File | |
 |---|---|
-| `controller-board-gerbers.zip` | Upload this for the bare-board quote — gerbers, drill and drill map |
-| `gerbers/` | The same files unzipped |
+| `controller-board-gerbers.zip` | Send this for the **bare-board** quote — gerbers, drill and drill map |
+| `controller-board-assembly.zip` | Send this for the **assembly** quote — `ASSEMBLY.md`, BOM and centroid |
+| `ASSEMBLY.md` | What to populate and what to leave off. The vendor-facing sheet |
+| `gerbers/` | The bare-board files unzipped |
 | `controller-board-bottom-pos.csv` | Pick-and-place centroid, bottom side, the 19 passives only |
-| `controller-board-bom.csv` | Full BOM including the parts left unpopulated — see the tables above |
+| `controller-board-bom.csv` | Full BOM including the parts left unpopulated — see `ASSEMBLY.md` |
+
+**Two zips, two quotes.** The gerber zip carries no BOM, no centroid and no
+statement of which parts to leave off, so it cannot be quoted for assembly on its
+own. Send both.
+
+Re-running the export restamps the KiCad creation date in every gerber, so all
+thirteen files show as modified even when no copper moved. Diff before assuming a
+layout change: a real change shows more than the two `CreationDate` lines.
 
 Gerbers, drill and centroid all share one origin: the **lower-left corner of the board**,
 so centroid coordinates run 0–66.5 in X and 0–22 in Y.
