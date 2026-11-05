@@ -10,12 +10,23 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 | | |
 |---|---|
 | **36 V, 600 W** power supply | Motor power. **16.5 A across all axes.** Nameplate, 2026-10-12 - mains 220 V at 3.5 A. SETTLED at 36 V, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md) |
-| **12 V, 3 A** buck | Limit sensors, and the relays in the controller box |
-| **5 V, 3 A** buck | The controller box's logic supply |
-| **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors |
+| ~~**12 V, 3 A** buck~~ | SUPERSEDED - see below |
+| ~~**5 V, 3 A** buck~~ | SUPERSEDED - see below |
+| **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board/) |
 
-**The boxes share a common ground.** The 5 V and 12 V returns and the DB37 per-axis GNDs are one
-node, which is what makes a single GND per axis in the DB37 sufficient.
+FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is its own mains-fed supply.** Settled
+2026-11-05: the cabinet's E-stop contactor feeds a 2 x 8 block whose fourth pair goes to a **12 V
+supply off the mains**, and that is what runs the limit sensors, the probes and the RP23. See
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md). The point is not the voltage - it
+is that a buck off the 36 V rail would have tied logic ground to the motor return and thrown away the
+drives' measured per-signal isolation.
+
+OPEN: **THE 5 V RAIL HAS NO CONSUMER LEFT.** It fed the controller box through the DB37, and the
+interface board takes **12 V IN and passes 12 V OUT to the RP23** instead. So this row looks retired
+rather than relocated - but nothing has confirmed that the RP23 wants no 5 V of its own.
+
+**The boxes share a common ground.** The 12 V return and the per-axis GNDs are one node, which is
+what makes a single GND per axis sufficient.
 
 ## Star the motor returns - the reason changed, the rule did not
 

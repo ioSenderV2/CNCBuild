@@ -1,11 +1,107 @@
 # Cabinet power and grounding
 
-Where the power comes in, how many supplies there are, and the one grounding arrangement that the
-signal integrity of everything else depends on.
+Where the power comes in, what the E-stop switches, how many supplies there are, and the one
+grounding arrangement that the signal integrity of everything else depends on.
 
 This is the cabinet. [`breakout-box.md`](breakout-box.md) is the box out at the machine and carries
 the star rule for the **motor supply returns** specifically; this file is the layer above it - mains, the
 separate logic supply, and the single point every ground meets at.
+
+## What switches what - the chain from the wall
+
+Two circuits come into the box:
+
+| Circuit | Carries |
+|---|---|
+| **110 V, 20 A** | The control circuit - the paddle switch and the main contactor's coil |
+| **220 V, 20 A** | Everything that does work |
+
+Everything downstream of that is behind **one magnetic paddle switch** - big red stop paddle, small
+green start button, 110 V. Its output drives the **coil** of a **25 A 220 V contactor with a 110 V
+coil**, and that contactor is what actually carries the 220 V. His scheme, 2026-11-05.
+
+NOTE: **A MAGNETIC PADDLE SWITCH DROPS OUT ON A POWER LOSS AND STAYS OUT.** Coming back takes a
+deliberate press of the green button. That is the property being bought, and it is the reason this is
+not a toggle: a toggle restores power to a machine nobody is standing at, the moment the mains
+returns.
+
+### The 2 x 8 terminal block - four pairs out
+
+The contactor's output lands on a **2 x 8 terminal block**: the two switched legs in, **four pairs
+out**.
+
+| Pair | Feeds |
+|---|---|
+| 1 | The **36 V motor supply** |
+| 2 | The **VFD**, 220 V in |
+| 3 | The **pump contactor** |
+| 4 | The **12 V supply** |
+
+**Every contactor in here is DIN rail mounted.**
+
+### The pump follows the spindle
+
+The 220 V pump is switched by **its own contactor with a 24 V coil**, and that coil is driven from
+**one of the VFD's outputs** - so the pump runs whenever the spindle runs. Nothing to remember and
+nothing to forget, which is the right arrangement for the one pump a water-cooled spindle cannot run
+without.
+
+SETTLED: **THE 24 V COMES OUT OF THE VFD - his word, 2026-11-05.** So no fifth pair and no extra
+supply: the VFD sources the coil and one of its own outputs switches it.
+
+🔴 **THE VFD IS A HUANYANG HY02D223B, AND ITS MANUAL IS NOT IN THIS REPO.** Model his, 2026-11-05.
+The root README's rule is that datasheets are committed, not linked, and there is no VFD document in
+[`../manufacturer-assets/`](../manufacturer-assets/) - the only spindle item is the RATTMMOTOR
+listing image. Two questions need one page of it, and **neither should be answered from recollection
+of the HY series**: the control terminal names and ratings are exactly the kind of detail this repo
+has already had to recover once from a schematic. Two questions:
+
+1. **What that 24 V terminal can source, against what the coil draws to pull in and to hold.** A VFD's
+   24 V terminal is usually there to bias digital inputs and can be rated in tens of milliamps; a DIN
+   contactor's DC coil is a different order. If it cannot carry the coil, the fix is small - the 24 V
+   comes off the 12 V supply's own rail or a dedicated one - but it is a part to buy, not a wire to
+   move.
+2. **Whether the output is a relay contact or a transistor.** A dry contact is polarity-blind and
+   takes the coil directly. An open-collector output sinks rather than sources, which puts the coil
+   between +24 V and the output pin and makes a flyback diode across the coil the difference between
+   working and killing the output on the first spindle stop.
+
+FLAG: **These two are the same question the pump cannot run without, so they gate the pump contactor
+and nothing else in the chain.** Everything upstream - the paddle, the main contactor, the block, the
+four pairs - is settled and buildable without them.
+
+### What the E-stop takes down, and what it does not
+
+FLAG: **IT TAKES THE CONTROLLER WITH IT.** The 12 V supply is on pair 4, on the switched side, and
+the RP23 is fed 12 V through the interface board - see
+[`kicad/interface-board/README.md`](kicad/interface-board/README.md). So the paddle drops the
+controller, not only the drives: position is lost, the telnet session goes, and coming back is a
+reboot and a re-home. That follows from *everything is behind the E-stop* and is not an oversight -
+it is written down because it is the one property of this topology that gets noticed every single
+time it happens.
+
+FLAG: **THE PADDLE IS ALSO THE EVERYDAY ON/OFF, SO THE VFD'S MAINS IS CYCLED ON EVERY SHUTDOWN.**
+Observation: pair 2 is the VFD's mains and it sits on the switched side, so the green button and the
+red paddle are the VFD's power switch. Claim, not established here: VFD manuals commonly tell you
+**not** to use an upstream contactor as the routine start/stop, because the spindle then stops by
+coasting instead of under the drive's control, and every cycle re-charges the DC bus through its
+pre-charge path. **Whether this VFD says so is a question for its manual**, which is not in this
+repo. It changes no part if it is fine, and adds a run/stop input off the paddle's auxiliary if it is
+not.
+
+OPEN: **THE 110 V CIRCUIT IS CARRYING A PADDLE SWITCH AND ONE CONTACTOR COIL AGAINST A 20 A
+BREAKER.** Nothing else is assigned to it. Whatever else wants 110 V - the PC, cabinet lights, a
+dust collector trigger - goes here, and it is worth deciding before the box is populated rather than
+after.
+
+OPEN: **NO PROTECTION IS SPECIFIED BETWEEN THE BLOCK AND THE FOUR LOADS.** The two 20 A breakers are
+at the wall and the four **5 A fast-blow per drive** are downstream of the 36 V supply - see
+[`ig57-drives.md`](ig57-drives.md). Each of the four pairs off the block is unfused as drawn.
+
+OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
+[`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding
+the 36 V supply and the bucks, and the interface board's README puts the 12 V source in the same
+enclosure as the board. One word settles it; nothing above depends on the answer.
 
 ## The motor supply is not settled
 
@@ -90,14 +186,27 @@ measured and which were inherited.
 On the **Mega V** the Teensy runs off its **48 V stepper rail** through a 5 V regulator. The **VUSB pad is cut**,
 so there is no back-feed - that part is already right and should not be undone.
 
-For the new build: a **24 V supply of order 50 W for logic**, then **point-of-load regulation per
-consumer** rather than one rail fanned out.
+SETTLED: **THE LOGIC RAIL IS ITS OWN MAINS-FED 12 V SUPPLY, on pair 4 of the block above - his
+scheme, 2026-11-05.** Then **point-of-load regulation per consumer** rather than one rail fanned out.
 
 | Consumer | Fed | Regulated |
 |---|---|---|
-| Teensy | 24 V | to 5 V at the controller |
-| Probe | 24 V | **its own regulator and its own return** |
-| ESP32 sensor board | 24 V up the chain | at the board |
+| RP23 controller | **12 V**, in through the interface board | on the controller |
+| Limit sensors | **12 V** | none - the SN04 takes 6-36 V direct |
+| Probe | **12 V** | **its own regulator and its own return** |
+| ESP32 sensor board | **12 V** up the chain | at the board |
+
+FLAG: **THIS REPLACES A 24 V 50 W SUPPLY AND A 36 V BUCK, AND BOTH WERE WRITTEN DOWN.** This section
+said 24 V until 2026-11-05, from the 2026-09-26 session; the interface board's README says the 12 V
+*"arrives regulated from the existing 36 V -> 12 V buck"*. Neither is the design. **It is a separate
+supply off the mains, and 12 V, not 24 V.** Do not reinstate either figure.
+
+✅ **A SEPARATE SUPPLY IS ALSO WHAT KEEPS THE DRIVES' ISOLATION, AND THE BUCK WOULD HAVE THROWN IT
+AWAY.** A shared rail between logic and motor supply is the first of the three ways listed below to
+lose it. A plain buck off the 36 V rail is exactly that: it would have tied the controller's logic
+ground to the motor return, and the per-signal optos **measured** at the drives on 2026-10-12 would
+then have been isolating two things already connected. The separate supply keeps the break real, and
+it costs one supply and one pair off the block.
 
 The probe having its own regulator and return is the point of the arrangement, not a refinement of
 it: a probe is the one input where a false trigger costs a crash, and sharing a return with anything
@@ -132,7 +241,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | Cabinet chassis | |
 | Machine frame | |
 | Motor supply 0 V | the 36 V rail's return |
-| 24 V 0 V | |
+| 12 V 0 V | the logic supply's return |
 | VFD PE | **its own short heavy conductor** |
 | Cable shields | **one end only** |
 
@@ -159,14 +268,22 @@ to the static IP, not an addition to it.
 
 ## The mains circuit
 
-**20 A at 240 V, with nothing else on it.** His figures from the 2026-09-26 session, against the
-spindle that was subsequently settled at Ø80 2.2 kW:
+**Two circuits, 20 A each: 110 V and 220 V** - and nothing of the house on either. The four pairs off
+the block are all on the 220 V one. His figures from the 2026-09-26 session, against the spindle that
+was subsequently settled at Ø80 2.2 kW:
 
 | Load | Draw |
 |---|---|
 | 2.2 kW spindle | ~11 A |
 | Motor PSU | **3.5 A** — **nameplate**, 220 V in, 2026-10-12. Replaces a ~4 A estimate |
-| **Total** | **~14.5 A** against a **16 A** continuous limit |
+| Pump | **not recorded** - it came with the RATTMMOTOR kit |
+| 12 V supply | **not recorded** - size not chosen |
+| **Total** | **~14.5 A** of the two known, against a **16 A** continuous limit |
+
+OPEN: **TWO OF THE FOUR PAIRS HAVE NO NUMBER AGAINST THEM.** The ~14.5 A was computed when the
+spindle and the motor PSU were the whole of it, and the pump and the 12 V supply are now on the same
+circuit with about 1.5 A of headroom between them. Both are nameplate readings rather than
+measurements - the pump's off its own label, the 12 V supply's off whatever gets bought.
 
 NOTE: **That margin is why the spindle decision and the circuit decision were the same decision.** A
 4.5 kW spindle would have drawn roughly 23-25 A and needed its own 30 A circuit on 10 AWG. The
@@ -185,3 +302,8 @@ Decided in the 2026-09-26 design session, which ran in the **ioSender** repo rat
 Carried in a memory note until 2026-10-12 and now here. The 600-versus-800 W question it was folded
 in with was closed the same day, by choosing a 36 V rail - which made the supply already in the
 machine the right one.
+
+**The distribution chain at the top of this file is his, 2026-11-05** - the two circuits, the paddle
+switch, the 25 A contactor, the 2 x 8 block and its four pairs, and the pump following the spindle off
+a VFD output. It also settled the logic rail, which three files had been describing three different
+ways.

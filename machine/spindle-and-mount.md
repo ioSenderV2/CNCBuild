@@ -10,6 +10,7 @@
 |---|---|
 | Spindle | **Ø80 mm, 2.2 kW, water-cooled**, with matching VFD |
 | Vendor | **RATTMMOTOR**, kit with VFD, 80 mm clamp, ER20 collet and pump |
+| VFD | **Huanyang HY02D223B** - his, 2026-11-05. OPEN: **its manual is not committed**, and two things wait on it: what its 24 V terminal can source against the pump contactor's coil, and whether its spindle-running output is a relay contact or a transistor. See [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md) |
 | Nameplate | FLAG: **Φ80×213, 2.2 kW, 220 V, 8 A, 400 Hz** (24,000 rpm at 400 Hz) - **corrected 2026-10-02 from Φ80×200 and 8.5 A** |
 | **Mass** | **5.2 kg** |
 | Body | **stainless steel**, 4 bearings, **P4 class**, grease lubricated |

@@ -246,14 +246,16 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 ## [linear-encoder/controller-board.md](linear-encoder/controller-board.md)
 
-- [The jacks must NOT have integrated magnetics](linear-encoder/controller-board.md#the-jacks-must-not-have-integrated-magnetics)
+- [The jacks must NOT have integrated magnetics - the CRJ068 has none](linear-encoder/controller-board.md#the-jacks-must-not-have-integrated-magnetics---the-crj068-has-none)
 - [Mechanical envelope](linear-encoder/controller-board.md#mechanical-envelope)
-  - [The interconnect problem: 5 mm pins, 14 mm standoff](linear-encoder/controller-board.md#the-interconnect-problem-5-mm-pins-14-mm-standoff)
-- [The ordered part](linear-encoder/controller-board.md#the-ordered-part)
-- [Orientation](linear-encoder/controller-board.md#orientation)
+  - [The interconnect problem: 5 mm pins, a ~13 mm standoff](linear-encoder/controller-board.md#the-interconnect-problem-5-mm-pins-a-13-mm-standoff)
+  - [Riser part numbers - sourced 2026-11-04, datasheets committed](linear-encoder/controller-board.md#riser-part-numbers---sourced-2026-11-04-datasheets-committed)
+  - [The plan: a three-socket totem, no riser PCB - his, 2026-11-04](linear-encoder/controller-board.md#the-plan-a-three-socket-totem-no-riser-pcb---his-2026-11-04)
+- [The jack: SameSky CRJ068-1-SMT, vertical - settled 2026-11-04](linear-encoder/controller-board.md#the-jack-samesky-crj068-1-smt-vertical---settled-2026-11-04)
+- [The superseded part - FMHXG right-angles, on hand as spares](linear-encoder/controller-board.md#the-superseded-part---fmhxg-right-angles-on-hand-as-spares)
+- [Orientation - vertical, settled 2026-11-04 with the jack](linear-encoder/controller-board.md#orientation---vertical-settled-2026-11-04-with-the-jack)
 - [Board outline](linear-encoder/controller-board.md#board-outline)
-- [The header-versus-jack collision](linear-encoder/controller-board.md#the-header-versus-jack-collision)
-  - [Resolved by measurement, 2026-08-25 - there is no collision](linear-encoder/controller-board.md#resolved-by-measurement-2026-08-25---there-is-no-collision)
+- [The old header-versus-jack collision - dissolved 2026-11-04](linear-encoder/controller-board.md#the-old-header-versus-jack-collision---dissolved-2026-11-04)
 - [Pin map](linear-encoder/controller-board.md#pin-map)
   - [RJ45 pinout - identical on all four jacks](linear-encoder/controller-board.md#rj45-pinout---identical-on-all-four-jacks)
 - [What else is on the board](linear-encoder/controller-board.md#what-else-is-on-the-board)
@@ -271,7 +273,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [1.4 Physical layout](linear-encoder/design-can-position-feedback.md#14-physical-layout)
     - [The scales](linear-encoder/design-can-position-feedback.md#the-scales)
     - [The overrun is not slop](linear-encoder/design-can-position-feedback.md#the-overrun-is-not-slop)
-    - [PROPOSAL - a printed carrier to lift the tape clear of the bolt heads](linear-encoder/design-can-position-feedback.md#proposal---a-printed-carrier-to-lift-the-tape-clear-of-the-bolt-heads)
+    - [SUPERSEDED: PROPOSAL - a printed carrier to lift the tape clear of the bolt heads](linear-encoder/design-can-position-feedback.md#superseded-proposal---a-printed-carrier-to-lift-the-tape-clear-of-the-bolt-heads)
     - [Mark it on the machine; do not compute it](linear-encoder/design-can-position-feedback.md#mark-it-on-the-machine-do-not-compute-it)
     - [Z's Abbe offset, and why its threshold is looser](linear-encoder/design-can-position-feedback.md#zs-abbe-offset-and-why-its-threshold-is-looser)
     - [The sensor mount: a clamped puck in a 35 mm bore](linear-encoder/design-can-position-feedback.md#the-sensor-mount-a-clamped-puck-in-a-35-mm-bore)
@@ -315,6 +317,19 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Consequences for the encoder design](linear-encoder/hardware-esp32-s3-rs485-can.md#consequences-for-the-encoder-design)
 - [Board power](linear-encoder/hardware-esp32-s3-rs485-can.md#board-power)
 
+## [linear-encoder/kicad/controller-board/fab/ASSEMBLY.md](linear-encoder/kicad/controller-board/fab/ASSEMBLY.md)
+
+- [Populate the bottom side only](linear-encoder/kicad/controller-board/fab/ASSEMBLY.md#populate-the-bottom-side-only)
+- [Do not populate](linear-encoder/kicad/controller-board/fab/ASSEMBLY.md#do-not-populate)
+- [Files](linear-encoder/kicad/controller-board/fab/ASSEMBLY.md#files)
+
+## [linear-encoder/kicad/controller-board/fab/README.md](linear-encoder/kicad/controller-board/fab/README.md)
+
+- [Board](linear-encoder/kicad/controller-board/fab/README.md#board)
+- [It fits the Advanced Circuits $33 prototype spec](linear-encoder/kicad/controller-board/fab/README.md#it-fits-the-advanced-circuits-33-prototype-spec)
+- [Assembly — bottom side only](linear-encoder/kicad/controller-board/fab/README.md#assembly-bottom-side-only)
+- [Files](linear-encoder/kicad/controller-board/fab/README.md#files)
+
 ## [linear-encoder/kicad/controller-board/README.md](linear-encoder/kicad/controller-board/README.md)
 
 - [Status: verified against KiCad 10.0.5](linear-encoder/kicad/controller-board/README.md#status-verified-against-kicad-1005)
@@ -335,7 +350,10 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 ## [linear-encoder/sensor-board.md](linear-encoder/sensor-board.md)
 
-- [The through-hole jack does not obviously fit](linear-encoder/sensor-board.md#the-through-hole-jack-does-not-obviously-fit)
+- [Assembly sequence](linear-encoder/sensor-board.md#assembly-sequence)
+- [The puck](linear-encoder/sensor-board.md#the-puck)
+- [The jack: Same Sky CRJ068-1-SMT](linear-encoder/sensor-board.md#the-jack-same-sky-crj068-1-smt)
+- [SUPERSEDED: The through-hole jack does not obviously fit](linear-encoder/sensor-board.md#superseded-the-through-hole-jack-does-not-obviously-fit)
   - [The ways out, cheapest first](linear-encoder/sensor-board.md#the-ways-out-cheapest-first)
 - [The passives](linear-encoder/sensor-board.md#the-passives)
 - [Cable pinout - not a free choice](linear-encoder/sensor-board.md#cable-pinout---not-a-free-choice)
@@ -374,6 +392,12 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The three readings, in this order](commissioning/bench-session.md#the-three-readings-in-this-order)
   - [What each outcome means](commissioning/bench-session.md#what-each-outcome-means)
   - [The other one worth doing while a motor is loose](commissioning/bench-session.md#the-other-one-worth-doing-while-a-motor-is-loose)
+
+## [commissioning/first-power-up.md](commissioning/first-power-up.md)
+
+- [The one trap: $3 and $8 on a ganged pair](commissioning/first-power-up.md#the-one-trap-3-and-8-on-a-ganged-pair)
+- [Useful settings](commissioning/first-power-up.md#useful-settings)
+- [Order of work](commissioning/first-power-up.md#order-of-work)
 
 ## [commissioning/masses.md](commissioning/masses.md)
 
@@ -451,6 +475,10 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 
 ## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)
 
+- [What switches what - the chain from the wall](wiring/cabinet-power-and-grounding.md#what-switches-what---the-chain-from-the-wall)
+  - [The 2 x 8 terminal block - four pairs out](wiring/cabinet-power-and-grounding.md#the-2-x-8-terminal-block---four-pairs-out)
+  - [The pump follows the spindle](wiring/cabinet-power-and-grounding.md#the-pump-follows-the-spindle)
+  - [What the E-stop takes down, and what it does not](wiring/cabinet-power-and-grounding.md#what-the-e-stop-takes-down-and-what-it-does-not)
 - [The motor supply is not settled](wiring/cabinet-power-and-grounding.md#the-motor-supply-is-not-settled)
   - [It is a VARIABLE supply with an LCD display - which cuts both ways](wiring/cabinet-power-and-grounding.md#it-is-a-variable-supply-with-an-lcd-display---which-cuts-both-ways)
 - [Separate the logic supply from the motor rail](wiring/cabinet-power-and-grounding.md#separate-the-logic-supply-from-the-motor-rail)
@@ -496,6 +524,12 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [What the closed loop does and does not cover](wiring/ig57-drives.md#what-the-closed-loop-does-and-does-not-cover)
 - [grblHAL can take a motor fault input, and does not use it per axis](wiring/ig57-drives.md#grblhal-can-take-a-motor-fault-input-and-does-not-use-it-per-axis)
 - [Provenance](wiring/ig57-drives.md#provenance)
+
+## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)
+
+- [What is on it](wiring/kicad/interface-board/README.md#what-is-on-it)
+- [Status: verified against KiCad 10.0.5](wiring/kicad/interface-board/README.md#status-verified-against-kicad-1005)
+- [Open items](wiring/kicad/interface-board/README.md#open-items)
 
 ## [wiring/README.md](wiring/README.md)
 

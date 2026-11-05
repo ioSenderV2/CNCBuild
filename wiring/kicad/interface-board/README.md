@@ -2,7 +2,15 @@
 
 The termination board that replaces the DB37 breakout: machine cables in through the
 enclosure lid, RP23U5XBB controller fed out the other side. All connectors, no actives -
-the 12 V arrives regulated from the existing 36 V -> 12 V buck in the same enclosure.
+the 12 V arrives regulated from **its own mains-fed 12 V supply**, on the fourth pair off
+the E-stop contactor's block. See
+[`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md).
+
+> FLAG: **NOT a 36 V -> 12 V buck.** This line said so until 2026-11-05 and it was wrong
+> in a way nothing on the board shows: a buck off the motor rail ties logic ground to the
+> motor return and throws away the drives' measured per-signal isolation. The board's
+> 5.08 mm terminal block does not care where the 12 V comes from, so **nothing ordered is
+> affected** - only what gets wired into it.
 
 | File | |
 |---|---|
