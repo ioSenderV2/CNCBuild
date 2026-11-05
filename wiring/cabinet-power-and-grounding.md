@@ -316,10 +316,21 @@ only the 220.
 SETTLED: **WHAT ELSE GOES ON THE 110 V CIRCUIT - the laptop and the USB cameras, unswitched.** His,
 2026-11-05, and written up above.
 
-OPEN: **THE FOUR PAIRS OFF THE BLOCK ARE STILL UNFUSED AS DRAWN.** What exists now: the two 20 A
-breakers at the wall, the **1 A** on the control circuit, and the four **5 A fast-blow per drive**
-downstream of the 36 V supply - see [`ig57-drives.md`](ig57-drives.md). Nothing between the block and
-the 36 V supply, the VFD, the pump contactor or the 12 V supply.
+SETTLED: **A DIN BREAKER PER PAIR - his, 2026-11-05.** Four of them on the same rail as the
+contactors. Resettable, one per branch so a fault takes down one load instead of the cabinet, and it
+reads as a row.
+
+| Pair | Branch | What the repo holds for sizing |
+|---|---|---|
+| 1 | 36 V motor supply | **3.5 A** in at 220 V - nameplate |
+| 2 | VFD | spindle nameplate **220 V, 8 A** |
+| 3 | Pump contactor | **80 W**, about 0.4 A, plus an 11.5 VA coil |
+| 4 | 12 V supply | **not sized yet** - this breaker waits on the supply |
+
+FLAG: **TYPE C ON THE VFD'S BREAKER, NOT TYPE B.** The drive charges its DC bus every time the main
+contactor closes, and that inrush will trip a tightly-sized Type B curve - which presents as the
+machine refusing to power up intermittently and gets blamed on the drive. The same argument applies
+in miniature to pair 1, which is a switch-mode supply doing the same thing.
 
 OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
 [`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding
