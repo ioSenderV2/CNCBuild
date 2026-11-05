@@ -537,17 +537,9 @@ SETTLED: **MEAN WELL MDR SERIES, 12 V 40 W - his, 2026-11-05.** FLAG: **this rea
 | Input draw | about **0.2 A** at 220 V, from 40 W out at a typical efficiency - not a nameplate figure |
 | Rail width | **not established.** The MDR-40 body is narrower than the MDR-60's 40 mm; the figure in the rail budget is the 60's and is therefore pessimistic |
 
-🔴 **3.3 A IS A BUDGET, NOT HEADROOM - and this file said "headroom" for one commit.** It is
-essentially the **3 A** [`breakout-box.md`](breakout-box.md) had planned all along, and that 3 A was
-chosen when the 12 V rail fed **limit sensors and relays**. The rail now carries the **RP23** as well,
-which used to be on its own 5 V buck, plus **five SN04s**, the probes and the ESP32 boards.
-
-OPEN: **THE 12 V TOTAL HAS NEVER BEEN ESTABLISHED, AND IT IS NOW THE QUESTION 3.3 A IS BEING ANSWERED
-AGAINST.** [`breakout-box.md`](breakout-box.md)'s own open items already carry *"the controller draw
-... not established"* for exactly this reason - it was written about the 5 V rail and has moved to
-this one. **Add it up from the datasheets before the supply is trusted**: the SN04 sheet is committed
-in [`../manufacturer-assets/`](../manufacturer-assets/), and the RP23's manual is too. If the sum
-lands near 3.3 the MDR-60 is the same money and the same rail.
+NOTE: **3.3 A is sufficient - his call, 2026-11-05: he doubts the whole 12 V side pulls even 2 A.**
+The supply reports nothing, so the figure to compare it against comes off the rail when the box is
+first powered. Not a gate on anything.
 
 ✅ **BEING DIN RAIL NARROWS THE WHAT-IS-IN-THE-BOX QUESTION EITHER WAY.** This supply goes on the
 bottom rail with the contactors, so the only parts still unplaced are the **36 V 600 W supply and the

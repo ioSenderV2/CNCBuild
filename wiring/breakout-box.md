@@ -21,11 +21,9 @@ FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is a MEAN WELL MDR off
 is that a buck off the 36 V rail would have tied logic ground to the motor return and thrown away the
 drives' measured per-signal isolation.
 
-OPEN: **3.3 A IS THE SAME BUDGET AS THE 3 A THIS ROW CARRIED, AGAINST A LONGER LIST OF CONSUMERS.**
-That 3 A was chosen when the 12 V rail fed limit sensors and relays. It now also feeds the **RP23**,
-which had its own 5 V buck, plus the probes and the ESP32 boards. **The controller-draw item below is
-no longer a 5 V question - it is this one**, and it is the sum that decides whether 40 W is the right
-size or whether the 60 W is wanted for the same money and the same rail space.
+NOTE: **The controller-draw item below has moved from the 5 V rail to this one**, since the RP23 now
+runs off the 12 V. His call, 2026-11-05: 3.3 A is sufficient and the whole side probably does not pull
+2 A.
 
 OPEN: **THE 5 V RAIL HAS NO CONSUMER LEFT.** It fed the controller box through the DB37, and the
 interface board takes **12 V IN and passes 12 V OUT to the RP23** instead. So this row looks retired
