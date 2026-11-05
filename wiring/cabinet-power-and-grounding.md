@@ -339,20 +339,35 @@ contactor closes, and that inrush will trip a tightly-sized Type B curve - which
 machine refusing to power up intermittently and gets blamed on the drive. The same argument applies
 in miniature to pair 1, which is a switch-mode supply doing the same thing.
 
-OPEN: **THE RAIL BUDGET NO LONGER FITS ON ONE RAIL, AND THAT IS A LAYOUT DECISION NOT A PROBLEM.** A
-2-pole breaker is **two modules, 36 mm**:
+SETTLED: **TWO RAILS, TOP AND BOTTOM - his, 2026-11-05.** A 2-pole breaker is **two modules, 36 mm**,
+so one rail does not carry it all:
 
-| | Width |
+| Rail | On it | Width |
+|---|---|---|
+| **Top** | 4 x 2-pole breaker | **144 mm** |
+| **Bottom** | 2 x WCT-25 contactor, the 2 x 8 block, the 1 A control fuse holder | 36 mm + the block |
+
+Both sit well inside roughly ten inches of usable width, and the split is mechanical rather than
+electrical - every device on both rails is on the 220 V side except the control fuse holder.
+
+**What a DIN rail needs vertically.** FLAG: **these are standard-practice figures, not measured off
+his parts** - the WCT-25 listing gives 18 mm of width and says nothing about height, so check them
+against the real breakers before the back panel is drilled:
+
+| | |
 |---|---|
-| 4 x 2-pole breaker | **144 mm** |
-| 2 x WCT-25 contactor | **36 mm** |
-| 2 x 8 block, the 1 A control fuse holder, the PE bar | not measured |
+| The rail itself | **35 mm** across, **7.5 mm** deep. A 15 mm deep version exists and is not needed here |
+| A modular device, across the rail | **about 85 mm** - call it 80 to 90 depending on make |
+| Rail centre to rail centre | **150 mm** is the comfortable convention. 125 mm works. Below about 110 mm the wiring between rows gets mean |
 
-**180 mm before the block, the fuse holder or the bus bar**, against roughly ten inches of usable rail
-across a 12 inch box. **A 12 x 12 box takes more than one rail** - two or three stacked horizontally -
-so the answer is almost certainly two rails rather than a smaller parts list. Worth laying out on
-paper against the real box before anything is drilled, because the DIN gear is now the thing that
-sets the layout rather than the supplies.
+✅ **SO TWO RAILS FIT A 12 INCH BOX WITH ROOM, AND THREE DO NOT.** At 150 mm centres, two rails plus
+roughly 45 mm of clearance above the top device and below the bottom one comes to about **240 mm of
+the 305**. Three rails at the same pitch needs 300 mm before any clearance at all, so three means
+crowding the pitch rather than using the space.
+
+NOTE: **DEPTH IS NOT THE CONSTRAINT.** A modular device stands roughly 70 mm off the panel plus the
+rail, against **6 inches** of box. The 600 W supply and the VFD are the parts that would test it -
+which is the open question above, not this one.
 
 OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
 [`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding
