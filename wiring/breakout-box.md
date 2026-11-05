@@ -14,12 +14,18 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 | ~~**5 V, 3 A** buck~~ | SUPERSEDED - see below |
 | **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board/) |
 
-FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is a MEAN WELL MDR-60-12 off the mains.**
-Settled 2026-11-05: the cabinet's E-stop contactor feeds a 2 x 8 block whose fourth pair goes to a
-**DIN-rail 12 V 5 A 60 W supply**, and that is what runs the limit sensors, the probes and the RP23.
-See [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md). **5 A against the 3 A this
-row used to carry.** The point is not the voltage though - it is that a buck off the 36 V rail would
-have tied logic ground to the motor return and thrown away the drives' measured per-signal isolation.
+FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is a MEAN WELL MDR off the mains.** Settled
+2026-11-05: the cabinet's E-stop contactor feeds a 2 x 8 block whose fourth pair goes to a **DIN-rail
+12 V 40 W supply, 3.3 A**, and that is what runs the limit sensors, the probes and the RP23. See
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md). The point is not the voltage - it
+is that a buck off the 36 V rail would have tied logic ground to the motor return and thrown away the
+drives' measured per-signal isolation.
+
+OPEN: **3.3 A IS THE SAME BUDGET AS THE 3 A THIS ROW CARRIED, AGAINST A LONGER LIST OF CONSUMERS.**
+That 3 A was chosen when the 12 V rail fed limit sensors and relays. It now also feeds the **RP23**,
+which had its own 5 V buck, plus the probes and the ESP32 boards. **The controller-draw item below is
+no longer a 5 V question - it is this one**, and it is the sum that decides whether 40 W is the right
+size or whether the 60 W is wanted for the same money and the same rail space.
 
 OPEN: **THE 5 V RAIL HAS NO CONSUMER LEFT.** It fed the controller box through the DB37, and the
 interface board takes **12 V IN and passes 12 V OUT to the RP23** instead. So this row looks retired

@@ -338,7 +338,7 @@ is the better number, because it is closer to the loads and so catches a fault s
 | 1 | 36 V motor supply | **6 A, Type C** | **3.5 A** in at 220 V - nameplate |
 | 2 | VFD | **16 A, Type C** | see below |
 | 3 | Pump contactor | **6 A** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
-| 4 | 12 V supply | **6 A** | **Mean Well MDR-60-12** - 12 V, 5 A, 60 W. About **0.3 A** in at 220 V |
+| 4 | 12 V supply | **6 A** | **Mean Well MDR, 12 V 40 W** - 3.3 A out. About **0.2 A** in at 220 V |
 
 🔴 **PAIR 1 NEEDS TYPE C NOW, WHICH IT DID NOT AT 10 A.** 6 A against a **3.5 A** nameplate is a ratio
 of 1.7, and a 600 W switch-mode supply charges its input capacitors at the instant the main contactor
@@ -405,7 +405,7 @@ so one rail does not carry it all:
 | Rail | On it | Width |
 |---|---|---|
 | **Top** | 4 x 2-pole breaker | **144 mm** |
-| **Bottom** | 2 x WCT-25 contactor (36), the MDR-60-12 (40), the 1 A fuse holder (18), the 2 x 8 block | **94 mm** + the block |
+| **Bottom** | 2 x WCT-25 contactor (36), the MDR supply (**40, the MDR-60's figure - the 40 W body is narrower**), the 1 A fuse holder (18), the 2 x 8 block | **under 94 mm** + the block |
 
 Both sit well inside roughly ten inches of usable width, and the split is mechanical rather than
 electrical - every device on both rails is on the 220 V side except the control fuse holder.
@@ -526,20 +526,30 @@ so there is no back-feed - that part is already right and should not be undone.
 SETTLED: **THE LOGIC RAIL IS ITS OWN MAINS-FED 12 V SUPPLY, on pair 4 of the block above - his
 scheme, 2026-11-05.** Then **point-of-load regulation per consumer** rather than one rail fanned out.
 
-SETTLED: **THE PART IS A MEAN WELL MDR-60-12 - his, 2026-11-05.**
+SETTLED: **MEAN WELL MDR SERIES, 12 V 40 W - his, 2026-11-05.** FLAG: **this read MDR-60-12, 60 W,
+5 A for one commit** - the 60 W listing was pasted twice and the choice is the **40 W**.
 
 | | |
 |---|---|
-| Output | **12 V, 5 A, 60 W** |
+| Output | **12 V, 3.3 A, 40 W** |
 | Form | **DIN rail**, screw terminals |
-| Size | **1.57 x 3.94 x 3.54 in** - about **40 mm wide** on the rail, 100 x 90 deep and tall |
-| Input draw | about **0.3 A** at 220 V, from 60 W out at a typical efficiency - not a nameplate figure |
+| Part | **MDR-40-12** by the series' naming - confirm against the order rather than from the pattern |
+| Input draw | about **0.2 A** at 220 V, from 40 W out at a typical efficiency - not a nameplate figure |
+| Rail width | **not established.** The MDR-40 body is narrower than the MDR-60's 40 mm; the figure in the rail budget is the 60's and is therefore pessimistic |
 
-NOTE: **5 A against the 3 A this repo had been planning.** [`breakout-box.md`](breakout-box.md)
-carried a 12 V 3 A buck for the limit sensors and relays; the consumers are now the RP23, five SN04s,
-the probes and the ESP32 boards, and 5 A is headroom over all of it rather than a figure to check.
+🔴 **3.3 A IS A BUDGET, NOT HEADROOM - and this file said "headroom" for one commit.** It is
+essentially the **3 A** [`breakout-box.md`](breakout-box.md) had planned all along, and that 3 A was
+chosen when the 12 V rail fed **limit sensors and relays**. The rail now carries the **RP23** as well,
+which used to be on its own 5 V buck, plus **five SN04s**, the probes and the ESP32 boards.
 
-✅ **AND BEING DIN RAIL NARROWS THE WHAT-IS-IN-THE-BOX QUESTION.** This supply clearly goes on the
+OPEN: **THE 12 V TOTAL HAS NEVER BEEN ESTABLISHED, AND IT IS NOW THE QUESTION 3.3 A IS BEING ANSWERED
+AGAINST.** [`breakout-box.md`](breakout-box.md)'s own open items already carry *"the controller draw
+... not established"* for exactly this reason - it was written about the 5 V rail and has moved to
+this one. **Add it up from the datasheets before the supply is trusted**: the SN04 sheet is committed
+in [`../manufacturer-assets/`](../manufacturer-assets/), and the RP23's manual is too. If the sum
+lands near 3.3 the MDR-60 is the same money and the same rail.
+
+✅ **BEING DIN RAIL NARROWS THE WHAT-IS-IN-THE-BOX QUESTION EITHER WAY.** This supply goes on the
 bottom rail with the contactors, so the only parts still unplaced are the **36 V 600 W supply and the
 VFD** - the two that are neither DIN nor small.
 
@@ -680,13 +690,13 @@ was subsequently settled at Ø80 2.2 kW:
 | 2.2 kW spindle | ~11 A |
 | Motor PSU | **3.5 A** — **nameplate**, 220 V in, 2026-10-12. Replaces a ~4 A estimate |
 | Pump | **80 W** - his, 2026-11-05. About **0.4 A** at 220 V, and he budgets it at 1 A |
-| 12 V supply | **MDR-60-12, 60 W** - about **0.3 A** in |
-| **Total** | **~15.2 A** against a **16 A** continuous limit |
+| 12 V supply | **MDR 12 V 40 W** - about **0.2 A** in |
+| **Total** | **~15.1 A** against a **16 A** continuous limit |
 
 NOTE: **ALL FOUR PAIRS NOW HAVE A NUMBER, AND ONLY ONE OF THEM IS IN DOUBT.** The pump and the 12 V
-supply together added 0.7 A. **The spindle's 11 A is the term that decides this table** and it is the
+supply together added 0.6 A. **The spindle's 11 A is the term that decides this table** and it is the
 one flagged above as possibly the drive's *output* current rather than its mains draw - so the right
-reading of ~15.2 against 16 is "comfortable if the 11 is right, and the 11 is what to go and measure."
+reading of ~15.1 against 16 is "comfortable if the 11 is right, and the 11 is what to go and measure."
 
 NOTE: **That margin is why the spindle decision and the circuit decision were the same decision.** A
 4.5 kW spindle would have drawn roughly 23-25 A and needed its own 30 A circuit on 10 AWG. The
