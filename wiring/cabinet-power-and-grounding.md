@@ -369,6 +369,12 @@ NOTE: **DEPTH IS NOT THE CONSTRAINT.** A modular device stands roughly 70 mm off
 rail, against **6 inches** of box. The 600 W supply and the VFD are the parts that would test it -
 which is the open question above, not this one.
 
+PROCEDURE: **LAY THE WHOLE THING OUT IN THE BOX BEFORE ANYTHING IS DRILLED, AND SEND THE BOX BACK IF
+IT DOES NOT FIT.** His, 2026-11-05. That is why none of the figures above need to be right to the
+millimetre - the parts in the real box settle it, and the box is the cheapest thing in the cabinet to
+change. It also means the what-goes-inside question gets answered by the same mock-up rather than on
+paper.
+
 OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
 [`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding
 the 36 V supply and the bucks, and the interface board's README puts the 12 V source in the same
