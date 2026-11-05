@@ -62,15 +62,14 @@ sitting on a neutral.
 NOTE: **IT TAKES FOUR 1/4 INCH FEMALE QUICK-DISCONNECTS** - the diagram calls them out as the
 terminal type. A buy item, and not one that turns up in a DIN rail parts list.
 
-🔴 **"AC120V ONLY; NOT SUITABLE FOR 220V" - the diagram's own warning, in a yellow box.** The design
-already has it on the 110 V branch and nothing needs to change. It is recorded loudly because this
-switch will be mounted on a panel where **everything else is 220 V**, and its coil pair runs to a
-contactor whose power poles are 220 V. Also: **motor power ≤ 1/2 HP**, which a contactor coil is not
-remotely near.
+NOTE: **The diagram's warnings are AC 120 V only and motor power ≤ 1/2 HP.** Both are already
+satisfied - it is on the 110 V branch driving a contactor coil.
 
-PROCEDURE: **CHECK THE TAB NUMBERING ON THE REAL SWITCH BEFORE CRIMPING.** The diagram is a listing
-image and the tabs are stamped; it is a glance, and the pairing that matters is that **13 and 14 are
-one pole** rather than 13 and 23.
+SETTLED: **THE SWITCH IS NOT IN THE PANEL. It lives in its own deep gang box bolted to the side of
+the machine** - his, 2026-11-05 - well away from the PVC box and everything in it. So the control
+circuit runs **out to the switch and back**: hot and neutral out to 13 and 23, switched hot and
+neutral back from 14 and 24 to the contactor's A1 and A2. **Four conductors in one cable between the
+panel and the switch box**, which is a run the drawing has to show and a parts item on its own.
 
 NOTE: **THE CORD QUESTION IS MOOT - he bought the bare switch on purpose.** Two sources disagreed on
 whether a pre-wired cord ships with it; he did not order that option, because a switch used as a
