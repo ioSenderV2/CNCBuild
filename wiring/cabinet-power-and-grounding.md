@@ -92,7 +92,17 @@ out**.
 | 3 | The **pump contactor** |
 | 4 | The **12 V supply** |
 
-**Every contactor in here is DIN rail mounted.**
+**Every contactor in here is DIN rail mounted.** There are **two**, and they are not the same size:
+
+| | Frame | Coil | Switched by |
+|---|---|---|---|
+| **Main** | **25 A, 220 V** | **110 V**, behind the 1 A fuse | the paddle switch |
+| **Pump** | smallest frame on the shelf | **220 V**, off pair 3 | the VFD's **FA/FC** relay |
+
+NOTE: **THE PUMP CONTACTOR IS SIZED BY WHAT IS SOLD, NOT BY THE LOAD.** The pump is **80 W** - about
+0.4 A at 220 V - and the bottom of most DIN ranges is a 9 A body, already twenty-odd times what it
+draws. The contactor is there to keep a motor off the VFD's internal relay, which is not a
+replaceable part; see the pump section below.
 
 ### The pump follows the spindle
 
@@ -121,9 +131,23 @@ That is almost certainly where the 24 V came from, and it is exactly the distinc
 datasheets for - a number beside a terminal is not a supply.
 
 ✅ **WHAT CLOSES IT IS SIMPLER THAN A 24 V COIL: FA/FB/FC IS A REAL RELAY CONTACT AT 3 A / 250 VAC.**
-So the pump contactor takes a **220 V or 110 V coil** and the relay switches it directly. No 24 V
-anywhere, no extra supply, no flyback diode - a dry contact does not care about polarity and has no
-inductive kick to catch. **One parameter sets it:**
+SETTLED: **the pump contactor takes a 220 V coil, off pair 3 - his decision, 2026-11-05**, and the
+relay switches it directly. No 24 V anywhere, no extra supply, no flyback diode - a dry contact does
+not care about polarity and has no inductive kick to catch. **220 V rather than 110 V keeps the whole
+pump branch on the switched 220 V**, with no conductor crossing between the two circuits.
+
+NOTE: **A 12 V DIN relay off the UPF opto output was the alternative and was declined.** It would
+have kept mains off the VFD's control strip at the cost of a relay and a parameter. His call, and the
+caution below is what it would have bought.
+
+🔴 **SO THERE IS MAINS ON THE VFD'S CONTROL TERMINAL STRIP, BESIDE THE ANALOG.** The same strip
+carries the **0-10 V speed reference** and **FOR / DCM** from the interface board, and RS485 if it is
+ever used. **Bring the coil pair in sleeved and separate, and out the opposite end of the strip from
+the analog pair** - not bundled with them, and not down the same sleeve. A 0-10 V reference running
+alongside a switched 220 V coil is the kind of coupling that shows up as spindle speed jitter and
+gets blamed on the drive.
+
+**One parameter sets the output:**
 
 | | |
 |---|---|
