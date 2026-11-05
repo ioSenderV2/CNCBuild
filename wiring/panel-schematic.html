@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CNCBuild &mdash; Power Distribution Panel</title>
+<style>
+  @page { size: letter portrait; margin: 14mm 14mm 16mm;
+    @bottom-left  { content: "CNCBuild — Power Distribution Panel"; font: 8.5pt "Segoe UI", sans-serif; color: #666; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages);
+                    font: 8.5pt "Segoe UI", sans-serif; color: #333; }
+  }
+  body { font: 11pt/1.45 "Segoe UI", system-ui, sans-serif; color: #111; max-width: 190mm; margin: 0 auto; }
+  h1 { font-size: 20pt; margin: 0 0 2mm; }
+  h2 { font-size: 15pt; margin: 0 0 1mm; border-bottom: 2px solid #111; padding-bottom: 1mm; }
+  h3 { font-size: 11.5pt; margin: 5mm 0 1.5mm; }
+  .sub { color: #555; margin: 0 0 4mm; font-size: 10pt; }
+  .fig { page-break-before: always; }
+  .fig:first-of-type { page-break-before: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 2mm 0 4mm; }
+  th, td { border: 1px solid #999; padding: 1.2mm 2mm; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  .unk { background: #fff4d6; }
+  .unk td { color: #7a5200; }
+  figure { margin: 3mm 0; text-align: center; }
+  figcaption { font-size: 9pt; color: #555; margin-top: 1.5mm; }
+  .note { border-left: 3px solid #c00; background: #fdf0f0; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  .info { border-left: 3px solid #0a6; background: #eefaf5; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  .warn { border-left: 3px solid #d98b00; background: #fff8e8; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  svg { max-width: 100%; height: auto; }
+
+  /* wire colours — the legend on page 1 is the authority for what each means */
+  .w-hot  { stroke: #111;    stroke-width: 2.8; fill: none; }
+  .w-ctl  { stroke: #c81e1e; stroke-width: 2.4; fill: none; }
+  .w-org  { stroke: #e8820c; stroke-width: 3.0; fill: none; }
+  .w-pe   { stroke: #1a9641; stroke-width: 2.6; fill: none; }
+  .w-nhal { stroke: #333;    stroke-width: 5.2; fill: none; }   /* neutral halo */
+  .w-neu  { stroke: #fff;    stroke-width: 3.0; fill: none; }   /* neutral core */
+
+  .bx   { fill: #eef3fa; stroke: #111; stroke-width: 1.8; }
+  .bx2  { fill: #f6f1e7; stroke: #111; stroke-width: 1.8; }
+  .bxr  { fill: #fdf0f0; stroke: #c81e1e; stroke-width: 1.6; }
+  .rem  { fill: #fafafa; stroke: #555; stroke-width: 1.6; stroke-dasharray: 7 5; }
+  .bar  { fill: #d9ead9; stroke: #1a9641; stroke-width: 2; }
+
+  .ttl { font: bold 13px "Segoe UI", sans-serif; fill: #111; }
+  .lbl { font: 11px "Segoe UI", sans-serif; fill: #111; }
+  .sm  { font: 10px "Segoe UI", sans-serif; fill: #333; }
+  .wg  { font: 9.5px "Segoe UI", sans-serif; fill: #06c; }
+  .tm  { font: bold 10px "Segoe UI", sans-serif; fill: #b06000; }
+  .q   { font: bold 10px "Segoe UI", sans-serif; fill: #b06000; }
+  .c   { text-anchor: middle; }
+  .e   { text-anchor: end; }
+  .dot { fill: #111; }
+</style>
+</head>
+<body>
+
+<h1>Power distribution panel</h1>
+<p class="sub">How the pieces connect. <b>Not a DIN rail layout</b> &mdash; that gets done with the real
+components against the real box. Every decision here is recorded with its provenance in
+<code>wiring/cabinet-power-and-grounding.md</code>; this page is the picture of it and is
+<b>derived, never authoritative</b>.</p>
+
+<h2>Wire colour and gauge</h2>
+
+<p class="sub">The colour scheme is <b>convention, not his decision</b> &mdash; it follows NFPA 79, which
+is worth saying because one of its colours carries a meaning this panel actually needs.</p>
+
+<table>
+<tr><th>Colour</th><th>Means</th><th>Where</th><th>Gauge</th></tr>
+<tr><td><b>Black</b></td><td>Ungrounded power conductor</td><td>Both 220&nbsp;V legs (labelled L1 and L2 throughout, since both are black) and the 110&nbsp;V hot</td><td><b>12 AWG</b> pigtails, <b>14 AWG</b> everywhere inside</td></tr>
+<tr><td><b>Red</b></td><td>AC control conductor</td><td>The paddle circuit and both contactor coils</td><td><b>14 AWG</b></td></tr>
+<tr><td><b>White</b></td><td>Grounded conductor &mdash; neutral</td><td>110&nbsp;V side only. There is no neutral anywhere in the 220&nbsp;V chain</td><td><b>14 AWG</b></td></tr>
+<tr><td><b>Green</b></td><td>Equipment ground</td><td>Every PE conductor to the bar</td><td><b>12 AWG</b> from the pigtails, <b>14 AWG</b> to device cases</td></tr>
+<tr><td><b>Orange</b></td><td><b>Live when the disconnect is off</b></td><td>The unswitched 110&nbsp;V receptacle branch and the strip in it</td><td><b>12 AWG</b></td></tr>
+</table>
+
+<div class="info">
+<b>Orange is doing real work here and is not decoration.</b> Its NFPA&nbsp;79 meaning is
+&ldquo;stays energised when the main disconnect is open&rdquo;, which is exactly the one trap this panel
+has: with the paddle down, the four pairs off the block are dead and <b>the receptacle and the power
+strip beside them are not</b>. Anything orange is a conductor the paddle does not kill.
+</div>
+
+<div class="warn">
+<b>14 AWG everywhere inside is a choice, and it is generous.</b> The conductor has to be rated for its
+<i>breaker</i> rather than for its load, and at 6&nbsp;A a lighter gauge would be legitimate on three of
+the four branches. One wire size across the panel is worth more than the copper saved. <b>16 AWG is
+also legitimate for the run out to the remote paddle box</b> if a neater cable is wanted there &mdash;
+it is behind the 1&nbsp;A fuse and it is in range for both the spade tabs and the coil terminals,
+which take 1.5&ndash;2.5&nbsp;mm&sup2;.
+</div>
+
+<h2>The parts</h2>
+
+<table>
+<tr><th>Position</th><th>Part</th><th>Key figures</th></tr>
+<tr><td>220 V in</td><td>10 ft captive pigtail, <b>L6-20P</b> into an L6-20R</td><td>12 AWG. Two hots, no neutral</td></tr>
+<tr><td>110 V in</td><td>10 ft captive pigtail</td><td>12 AWG</td></tr>
+<tr><td>E-stop</td><td><b>POWERTEC 71054</b> magnetic paddle, in a 71834 deep gang box</td><td>120 V, 1/2 HP, 9 A continuous. 13-14 and 23-24, both NO, 1/4 in spade tabs</td></tr>
+<tr><td>Control fuse</td><td><b>1 A</b></td><td>Protects the control conductors, not the coil</td></tr>
+<tr><td>Main contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>25 A AC-7a / 9 A AC-7b. Coil AC 110&ndash;120 V. 18 mm</td></tr>
+<tr><td>Distribution</td><td><b>2 &times; 8 block</b></td><td>Two switched legs in, four pairs out</td></tr>
+<tr><td>Breakers</td><td>4 &times; 2-pole</td><td>6 A <b>Type C</b> &middot; 16 A <b>Type C</b> &middot; 6 A &middot; 6 A</td></tr>
+<tr><td>Motor supply</td><td>36 V, 600 W</td><td>220 V at 3.5 A in, 36 V at 16.5 A out</td></tr>
+<tr><td>Spindle drive</td><td><b>Huanyang HY02D223B</b></td><td>2.2 kW, 4.4 kVA, 11 A output. R/S/T takes single phase on any two</td></tr>
+<tr><td>Pump contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>Coil AC 230 V &mdash; inrush 11.5 VA, holding 2.8 VA</td></tr>
+<tr><td>Logic supply</td><td><b>Mean Well MDR</b>, 12 V 40 W</td><td>3.3 A out, about 0.2 A in</td></tr>
+<tr><td>Enclosure</td><td>12 &times; 12 &times; 6 PVC, dust-proof cover</td><td>Two DIN rails. <b>Bonds nothing</b> &mdash; see Fig. 5</td></tr>
+</table>
+
+<div class="note">
+<b>Only one connection on these five sheets is unknown, and it is marked where it falls.</b> The
+Huanyang manual gives FA/FB/FC as &ldquo;N/O or N/C&rdquo; without saying which leg is which, so
+<b>which of FB and FC is the normally-open one is a meter check on the real drive</b>, with the drive
+unpowered. Everything else carries a terminal designation off a datasheet or a listing.
+</div>
+
+<!-- ============================================================ FIG 1 -->
+<div class="fig">
+<h2>Fig. 1 &mdash; The 220 V power chain</h2>
+<p class="sub">Coils are not drawn here. Both contactors are shown as power poles only; their control
+circuits are Fig. 2 and Fig. 3.</p>
+
+<figure>
+<svg viewBox="0 0 900 760" width="190mm" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- wall -->
+  <rect class="bx2" x="350" y="8" width="220" height="36" rx="3"/>
+  <text class="ttl c" x="460" y="25">WALL</text>
+  <text class="sm c" x="460" y="39">220 V &middot; 20 A circuit &middot; L6-20R</text>
+
+  <!-- pigtail down to the contactor -->
+  <path class="w-hot" d="M420 44 V 128"/>
+  <path class="w-hot" d="M500 44 V 128"/>
+  <text class="wg" x="600" y="62">10 ft captive pigtail &middot; 12 AWG &middot; L6-20P</text>
+  <text class="sm e" x="408" y="82">L1</text>
+  <text class="sm" x="512" y="82">L2</text>
+
+  <!-- PE off to fig 5 -->
+  <path class="w-pe" d="M560 44 V 92 H 640"/>
+  <text class="sm" x="648" y="96">PE &rarr; Fig. 5</text>
+
+  <!-- MAIN CONTACTOR -->
+  <rect class="bx" x="330" y="128" width="260" height="88" rx="3"/>
+  <text class="ttl c" x="460" y="152">MAIN CONTACTOR</text>
+  <text class="sm c" x="460" y="169">Wengart WCT-25 &middot; 2NO &middot; 25 A AC-7a</text>
+  <text class="sm c" x="460" y="185" fill="#c81e1e">coil A1 / A2, 120 V &mdash; Fig. 2</text>
+  <text class="tm" x="402" y="122">1</text>
+  <text class="tm" x="482" y="122">3</text>
+  <text class="tm" x="402" y="234">2</text>
+  <text class="tm" x="482" y="234">4</text>
+  <circle class="dot" cx="420" cy="128" r="3.2"/>
+  <circle class="dot" cx="500" cy="128" r="3.2"/>
+  <circle class="dot" cx="420" cy="216" r="3.2"/>
+  <circle class="dot" cx="500" cy="216" r="3.2"/>
+
+  <!-- contactor out to the block -->
+  <path class="w-hot" d="M420 216 V 292"/>
+  <path class="w-hot" d="M500 216 V 318"/>
+  <text class="wg" x="600" y="246">switched 220 V &middot; 12 AWG</text>
+
+  <!-- 2x8 BLOCK -->
+  <rect class="bx" x="60" y="268" width="790" height="74" rx="3"/>
+  <text class="ttl" x="66" y="248">2 &times; 8 DISTRIBUTION BLOCK</text>
+  <text class="sm"  x="66" y="263">two switched legs in, four pairs out</text>
+  <!-- row A, L1. gap where the L2 feed crosses -->
+  <path class="w-hot" d="M75 292 H 494"/>
+  <path class="w-hot" d="M506 292 H 835"/>
+  <!-- row B, L2. gaps where the four L1 drops cross -->
+  <path class="w-hot" d="M75 318 H 97"/>
+  <path class="w-hot" d="M109 318 H 312"/>
+  <path class="w-hot" d="M324 318 H 527"/>
+  <path class="w-hot" d="M539 318 H 742"/>
+  <path class="w-hot" d="M754 318 H 835"/>
+  <text class="sm" x="840" y="296">L1</text>
+  <text class="sm" x="840" y="322">L2</text>
+
+  <!-- four branch drops, block -> breaker -->
+  <path class="w-hot" d="M103 292 V 384"/><path class="w-hot" d="M127 318 V 384"/>
+  <path class="w-hot" d="M318 292 V 384"/><path class="w-hot" d="M342 318 V 384"/>
+  <path class="w-hot" d="M533 292 V 384"/><path class="w-hot" d="M557 318 V 384"/>
+  <path class="w-hot" d="M748 292 V 384"/><path class="w-hot" d="M772 318 V 384"/>
+
+  <!-- BREAKERS -->
+  <rect class="bx" x="30"  y="384" width="170" height="60" rx="3"/>
+  <rect class="bx" x="245" y="384" width="170" height="60" rx="3"/>
+  <rect class="bx" x="460" y="384" width="170" height="60" rx="3"/>
+  <rect class="bx" x="675" y="384" width="170" height="60" rx="3"/>
+  <text class="ttl c" x="115" y="407">PAIR 1 BREAKER</text>
+  <text class="ttl c" x="330" y="407">PAIR 2 BREAKER</text>
+  <text class="ttl c" x="545" y="407">PAIR 3 BREAKER</text>
+  <text class="ttl c" x="760" y="407">PAIR 4 BREAKER</text>
+  <text class="sm c" x="115" y="425">6 A &middot; 2-pole</text>
+  <text class="sm c" x="330" y="425">16 A &middot; 2-pole</text>
+  <text class="sm c" x="545" y="425">6 A &middot; 2-pole</text>
+  <text class="sm c" x="760" y="425">6 A &middot; 2-pole</text>
+  <text class="q c" x="115" y="439">TYPE C</text>
+  <text class="q c" x="330" y="439">TYPE C</text>
+
+  <!-- breaker -> load -->
+  <path class="w-hot" d="M103 444 V 508"/><path class="w-hot" d="M127 444 V 508"/>
+  <path class="w-hot" d="M318 444 V 508"/><path class="w-hot" d="M342 444 V 508"/>
+  <path class="w-hot" d="M533 444 V 508"/><path class="w-hot" d="M557 444 V 508"/>
+  <path class="w-hot" d="M748 444 V 508"/><path class="w-hot" d="M772 444 V 508"/>
+  <text class="wg" x="137" y="478">14 AWG</text>
+  <text class="wg" x="352" y="478">14 AWG</text>
+  <text class="wg" x="567" y="478">14 AWG</text>
+  <text class="wg" x="782" y="478">14 AWG</text>
+
+  <!-- LOADS -->
+  <rect class="bx2" x="30"  y="508" width="170" height="84" rx="3"/>
+  <rect class="bx2" x="245" y="508" width="170" height="84" rx="3"/>
+  <rect class="bx2" x="460" y="508" width="170" height="84" rx="3"/>
+  <rect class="bx2" x="675" y="508" width="170" height="84" rx="3"/>
+
+  <text class="ttl c" x="115" y="531">36 V SUPPLY</text>
+  <text class="sm c"  x="115" y="549">600 W &middot; variable</text>
+  <text class="sm c"  x="115" y="565">3.5 A in &middot; 16.5 A out</text>
+  <text class="q c"   x="115" y="583">SET AND METER THE RAIL</text>
+
+  <text class="ttl c" x="330" y="531">VFD</text>
+  <text class="sm c"  x="330" y="549">Huanyang HY02D223B</text>
+  <text class="sm c"  x="330" y="565">R / S / T &mdash; single phase</text>
+  <text class="q c"   x="330" y="583">ANY TWO, THIRD LEFT OFF</text>
+
+  <text class="ttl c" x="545" y="531">PUMP CONTACTOR</text>
+  <text class="sm c"  x="545" y="549">Wengart WCT-25 &middot; 2NO</text>
+  <text class="sm c"  x="545" y="565">poles 1-2 and 3-4</text>
+  <text class="sm c"  x="545" y="583" fill="#c81e1e">coil 230 V &mdash; Fig. 3</text>
+
+  <text class="ttl c" x="760" y="531">12 V SUPPLY</text>
+  <text class="sm c"  x="760" y="549">Mean Well MDR &middot; 40 W</text>
+  <text class="sm c"  x="760" y="565">3.3 A out</text>
+  <text class="sm c"  x="760" y="583">about 0.2 A in</text>
+
+  <!-- off-sheet -->
+  <path class="w-hot" d="M115 592 V 626"/>
+  <path class="w-hot" d="M330 592 V 626"/>
+  <path class="w-hot" d="M760 592 V 626"/>
+  <text class="sm c" x="115" y="642">36 V out to the four</text>
+  <text class="sm c" x="115" y="656">IG57 drives</text>
+  <text class="sm c" x="330" y="642">U / V / W out to the</text>
+  <text class="sm c" x="330" y="656">2.2 kW spindle</text>
+  <text class="sm c" x="760" y="642">12 V out to the RP23,</text>
+  <text class="sm c" x="760" y="656">limits and probes</text>
+
+  <!-- the pump itself -->
+  <path class="w-hot" d="M533 592 V 650"/><path class="w-hot" d="M557 592 V 650"/>
+  <text class="tm" x="494" y="608">2</text>
+  <text class="tm" x="566" y="608">4</text>
+  <rect class="bx2" x="460" y="650" width="170" height="60" rx="3"/>
+  <text class="ttl c" x="545" y="674">PUMP</text>
+  <text class="sm c"  x="545" y="692">80 W &middot; Hmax 3.5 m &middot; 3500 L/h</text>
+
+  <!-- footnote -->
+  <text class="sm" x="30" y="738">Both 220 V legs are black conductors. They are labelled L1 and L2 throughout because colour cannot tell them apart.</text>
+</svg>
+<figcaption>Fig. 1 &mdash; the 220 V chain from the wall to the four loads.</figcaption>
+</figure>
+</div>
+
+<!-- ============================================================ FIG 2 -->
+<div class="fig">
+<h2>Fig. 2 &mdash; Control: the paddle and the main coil</h2>
+<p class="sub">The whole 110 V control circuit. The paddle switches <b>both</b> legs, so the coil is
+isolated on both sides when it drops.</p>
+
+<figure>
+<svg viewBox="0 0 900 410" width="190mm" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- remote box FIRST: its fill is opaque and would otherwise paint over the wires -->
+  <rect class="rem" x="520" y="40" width="340" height="300" rx="4"/>
+  <text class="sm" x="520" y="32">REMOTE &mdash; deep gang box, bolted to the side of the machine</text>
+
+  <!-- 1 A fuse -->
+  <path class="w-hot" d="M14 78 H 140"/>
+  <text class="sm" x="14" y="66">110 V HOT &mdash; black</text>
+  <rect class="bx" x="140" y="60" width="110" height="36" rx="3"/>
+  <text class="ttl c" x="195" y="83">1 A FUSE</text>
+  <path class="w-hot" d="M250 78 H 552 V 120 H 580"/>
+
+  <!-- neutral, halo then core -->
+  <path class="w-nhal" d="M14 135 H 566 V 170 H 580"/>
+  <path class="w-neu"  d="M14 135 H 566 V 170 H 580"/>
+  <text class="sm" x="14" y="123">NEUTRAL &mdash; white</text>
+
+  <text class="wg" x="330" y="70">14 AWG</text>
+  <text class="wg" x="330" y="128">14 AWG</text>
+
+  <!-- paddle -->
+  <rect class="bx" x="580" y="90" width="240" height="180" rx="3"/>
+  <text class="ttl c" x="700" y="128">POWERTEC 71054</text>
+  <text class="sm c"  x="700" y="148">magnetic paddle &middot; 120 V &middot; 9 A</text>
+  <text class="sm c"  x="700" y="166">13-14 one pole, 23-24 the other</text>
+  <text class="sm c"  x="700" y="184">both normally open</text>
+  <text class="sm c"  x="700" y="202">1/4 in female spade tabs</text>
+  <text class="q c"   x="700" y="226">DROPS OUT ON POWER LOSS</text>
+  <text class="q c"   x="700" y="242">AND STAYS OUT</text>
+
+  <circle class="dot" cx="580" cy="120" r="3.2"/>
+  <circle class="dot" cx="580" cy="170" r="3.2"/>
+  <circle class="dot" cx="650" cy="270" r="3.2"/>
+  <circle class="dot" cx="740" cy="270" r="3.2"/>
+  <text class="tm" x="588" y="114">13</text>
+  <text class="tm" x="588" y="188">23</text>
+  <text class="tm" x="624" y="286">14</text>
+  <text class="tm" x="714" y="286">24</text>
+
+  <!-- returns: 14 -> coil (inner), 24 -> coil (outer). routed so they never cross -->
+  <path class="w-ctl" d="M650 270 V 318 H 258 V 252 H 200"/>
+  <path class="w-ctl" d="M740 270 V 346 H 228 V 225 H 200"/>
+  <text class="wg" x="300" y="312">switched hot back &middot; red &middot; 14 AWG</text>
+  <text class="wg" x="300" y="340">switched neutral back &middot; red &middot; 14 AWG</text>
+
+  <!-- coil -->
+  <rect class="bxr" x="60" y="205" width="140" height="62" rx="3"/>
+  <text class="ttl c" x="130" y="230">MAIN CONTACTOR</text>
+  <text class="sm c"  x="130" y="250">coil &middot; 120 V</text>
+  <circle class="dot" cx="200" cy="225" r="3.2"/>
+  <circle class="dot" cx="200" cy="252" r="3.2"/>
+  <text class="tm" x="206" y="218">A2</text>
+  <text class="tm" x="206" y="268">A1</text>
+
+  <text class="sm" x="14" y="380">Four conductors in one cable between the panel and the switch box &mdash; hot and neutral out, the switched pair back.</text>
+  <text class="sm" x="14" y="398">The coil is AC, so A1 and A2 are not polarised. Which return lands on which is free.</text>
+</svg>
+<figcaption>Fig. 2 &mdash; the control circuit. Red is switched AC control.</figcaption>
+</figure>
+
+<div class="warn">
+<b>Check the tab numbering on the real switch before crimping.</b> The pairing that matters is that
+<b>13 and 14 are one pole</b>, not 13 and 23. The tabs are stamped; it is a glance.
+</div>
+</div>
+
+<!-- ============================================================ FIG 3 -->
+<div class="fig">
+<h2>Fig. 3 &mdash; Control: the pump follows the spindle</h2>
+<p class="sub">The VFD's own relay is in series with the pump contactor's coil, and both sit on pair 3
+so the whole pump branch is behind one breaker.</p>
+
+<figure>
+<svg viewBox="0 0 900 330" width="190mm" xmlns="http://www.w3.org/2000/svg">
+
+  <path class="w-ctl" d="M14 60 H 150"/>
+  <text class="sm" x="14" y="50">PAIR 3 &middot; L1, after the breaker</text>
+  <text class="wg" x="40" y="80">red &middot; 14 AWG</text>
+
+  <rect class="bx" x="150" y="30" width="220" height="120" rx="3"/>
+  <text class="ttl c" x="260" y="58">VFD</text>
+  <text class="sm c"  x="260" y="78">Huanyang HY02D223B</text>
+  <text class="sm c"  x="260" y="96">FA / FB / FC relay</text>
+  <text class="sm c"  x="260" y="114">3 A / 250 VAC dry contact</text>
+  <text class="q c"   x="260" y="138">PD052 = 01 &mdash; &ldquo;In Run&rdquo;</text>
+  <circle class="dot" cx="150" cy="60" r="3.2"/>
+  <circle class="dot" cx="370" cy="110" r="3.2"/>
+  <text class="tm" x="158" y="54">FA</text>
+  <text class="tm e" x="362" y="104">FC</text>
+
+  <path class="w-ctl" d="M370 110 H 430"/>
+
+  <rect class="bxr" x="430" y="80" width="180" height="62" rx="3"/>
+  <text class="ttl c" x="520" y="105">PUMP CONTACTOR</text>
+  <text class="sm c"  x="520" y="125">coil &middot; 230 V</text>
+  <circle class="dot" cx="430" cy="110" r="3.2"/>
+  <circle class="dot" cx="610" cy="110" r="3.2"/>
+  <text class="tm e" x="424" y="128">A1</text>
+  <text class="tm" x="616" y="128">A2</text>
+
+  <path class="w-ctl" d="M610 110 H 770"/>
+  <text class="sm" x="778" y="106">PAIR 3 &middot; L2</text>
+
+  <text class="sm" x="14" y="180">Coil inrush 11.5 VA, holding 2.8 VA &mdash; 50 mA to pull in and 12 mA to hold, against a 3 A contact.</text>
+  <text class="sm" x="14" y="198">A dry contact, so there is nothing to catch: no flyback diode, and polarity does not apply.</text>
+
+  <rect class="rem" x="14" y="218" width="860" height="88" rx="4" fill="#fff8e8" stroke="#d98b00"/>
+  <text class="q" x="28" y="242">THE ONE UNKNOWN ON THESE SHEETS &mdash; which of FB and FC is the normally-open leg.</text>
+  <text class="sm" x="28" y="262">The manual gives the pair as &ldquo;N/O or N/C&rdquo; and does not say which is which. FC is drawn as the</text>
+  <text class="sm" x="28" y="280">normally-open one above because something had to be drawn. Meter it on the real drive, unpowered,</text>
+  <text class="sm" x="28" y="298">before this wire is made up. If it is FB, the only change is which terminal that red conductor lands on.</text>
+</svg>
+<figcaption>Fig. 3 &mdash; the pump control circuit, in series through the VFD's relay.</figcaption>
+</figure>
+
+<div class="note">
+<b>This puts mains on the VFD's control terminal strip, beside the analog.</b> That same strip carries
+the 0&ndash;10 V speed reference and FOR/DCM from the interface board. Bring the coil pair in
+<b>sleeved and separate, and out the opposite end of the strip from the analog pair</b> &mdash; not
+bundled with it. A 0&ndash;10 V reference running alongside a switched 230 V coil is the coupling that
+shows up as spindle speed jitter and gets blamed on the drive.
+</div>
+</div>
+
+<!-- ============================================================ FIG 4 -->
+<div class="fig">
+<h2>Fig. 4 &mdash; The 110 V side, and what the paddle does not kill</h2>
+
+<figure>
+<svg viewBox="0 0 900 300" width="190mm" xmlns="http://www.w3.org/2000/svg">
+
+  <rect class="bx2" x="20" y="34" width="180" height="70" rx="3"/>
+  <text class="ttl c" x="110" y="60">110 V PIGTAIL</text>
+  <text class="sm c"  x="110" y="78">10 ft captive &middot; 12 AWG</text>
+  <text class="sm c"  x="110" y="94">20 A at the wall</text>
+
+  <circle class="dot" cx="200" cy="56" r="3.5"/>
+  <circle class="dot" cx="200" cy="84" r="3.5"/>
+
+  <!-- control branch, up and away -->
+  <path class="w-hot" d="M200 56 H 250 V 30 H 340"/>
+  <path class="w-nhal" d="M200 84 H 272 V 46 H 340"/>
+  <path class="w-neu"  d="M200 84 H 272 V 46 H 340"/>
+  <text class="sm" x="348" y="26">to the 1 A fuse and the paddle &mdash; Fig. 2</text>
+  <text class="sm" x="348" y="50">behind the fuse, and killed by the paddle</text>
+
+  <!-- receptacle branch, orange -->
+  <path class="w-org" d="M200 56 V 150 H 420"/>
+  <path class="w-org" d="M200 84 V 176 H 420"/>
+  <text class="wg" x="250" y="144">ORANGE &middot; 12 AWG</text>
+
+  <rect class="bx2" x="420" y="118" width="170" height="90" rx="3"/>
+  <text class="ttl c" x="505" y="146">RECEPTACLE</text>
+  <text class="sm c"  x="505" y="166">inside the box</text>
+  <text class="q c"   x="505" y="188">UNSWITCHED</text>
+
+  <path class="w-org" d="M590 150 H 660"/>
+  <path class="w-org" d="M590 176 H 660"/>
+
+  <rect class="bx2" x="660" y="118" width="200" height="90" rx="3"/>
+  <text class="ttl c" x="760" y="146">POWER STRIP</text>
+  <text class="sm c"  x="760" y="166">laptop charger</text>
+  <text class="sm c"  x="760" y="184">powered USB &middot; cameras</text>
+
+  <text class="q" x="20" y="248">ORANGE IS LIVE WITH THE PADDLE DOWN. There is a live power strip inside this enclosure, on purpose.</text>
+  <text class="sm" x="20" y="270">It is deliberately not behind the 1 A fuse &mdash; that would not carry a laptop charger. The wall's 20 A is its protection,</text>
+  <text class="sm" x="20" y="288">and the useful consequence is that the sender stays up when the paddle drops the controller.</text>
+</svg>
+<figcaption>Fig. 4 &mdash; the 110 V branches. One is switched and fused; the other is neither, by design.</figcaption>
+</figure>
+
+<div class="note">
+<b>For wiring work, pull both pigtails.</b> The paddle is an emergency stop that happens to be
+convenient for service. It is not a disconnect: with it down, the 110 V control branch upstream of it
+is live, the receptacle and strip are live, and the 220 V reaches the main contactor's line terminals.
+Two plugs on the floor is a break you can see from inside the box.
+</div>
+</div>
+
+<!-- ============================================================ FIG 5 -->
+<div class="fig">
+<h2>Fig. 5 &mdash; Grounds meet at one PE bar</h2>
+<p class="sub">Everything lands on one bar and nothing daisy-chains.</p>
+
+<figure>
+<svg viewBox="0 0 900 400" width="190mm" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- above -->
+  <path class="w-pe" d="M290 170 V 104"/>
+  <path class="w-pe" d="M395 170 V 78"/>
+  <path class="w-pe" d="M500 170 V 104"/>
+  <path class="w-pe" d="M605 170 V 78"/>
+  <text class="sm c" x="290" y="96">PE in &mdash; 220 V pigtail</text>
+  <text class="sm c" x="395" y="70">PE in &mdash; 110 V pigtail</text>
+  <text class="sm c" x="500" y="96">Machine frame</text>
+  <text class="sm c" x="605" y="70">Cable shields</text>
+  <text class="q c"  x="605" y="56">ONE END ONLY</text>
+  <text class="wg" x="300" y="134">12 AWG</text>
+  <text class="wg" x="405" y="134">12 AWG</text>
+
+  <!-- the bar -->
+  <rect class="bar" x="240" y="170" width="420" height="28" rx="3"/>
+  <text class="ttl c" x="450" y="189">PE BUS BAR</text>
+
+  <!-- below -->
+  <path class="w-pe" d="M290 198 V 262"/>
+  <path class="w-pe" d="M395 198 V 290"/>
+  <path class="w-pe" d="M500 198 V 262"/>
+  <path class="w-pe" d="M605 198 V 290"/>
+  <text class="sm c" x="290" y="278">Motor supply 0 V</text>
+  <text class="sm c" x="395" y="306">12 V supply 0 V</text>
+  <text class="sm c" x="500" y="278">VFD PE</text>
+  <text class="sm c" x="500" y="292">own short heavy conductor</text>
+  <text class="sm c" x="605" y="306">Every metal case</text>
+  <text class="sm c" x="605" y="320">36 V &middot; 12 V &middot; VFD</text>
+
+  <rect class="rem" x="20" y="334" width="860" height="56" rx="4" fill="#fdf0f0" stroke="#c00"/>
+  <text class="q" x="34" y="356">THE BOX IS PVC. IT BONDS NOTHING, AND THERE IS NO CABINET CHASSIS ROW.</text>
+  <text class="sm" x="34" y="376">In a metal box a supply's case earths through its own mounting screws for free. Here every metal case needs its own conductor.</text>
+</svg>
+<figcaption>Fig. 5 &mdash; the single-point ground star.</figcaption>
+</figure>
+
+<div class="info">
+<b>A plastic box is what makes this star genuinely single-point.</b> In a metal enclosure every mounting
+screw, every DIN rail foot and every supply case touching the panel is another ground path in parallel
+with the bar &mdash; which is the loop this arrangement exists to prevent, arriving by accident. PVC
+cannot make one. The cost is that nothing is bonded for free.
+</div>
+
+<div class="note">
+<b>Not at the 240 V input, and never through a signal wire.</b> The supplies are isolated, so the mains
+input is not a ground reference for the DC side. A ground that arrives through a signal conductor is a
+ground that carries signal current.
+</div>
+</div>
+
+<h2>What still has to be checked at the bench</h2>
+<table>
+<tr><th>Check</th><th>Why</th></tr>
+<tr class="unk"><td><b>Which of FB and FC is the VFD's normally-open leg</b></td><td>The manual says &ldquo;N/O or N/C&rdquo; and does not say which. Meter it with the drive unpowered. Fig. 3</td></tr>
+<tr class="unk"><td><b>That the main contactor is really 2NO</b></td><td>A vendor claim on a listing. Both load terminals against their line terminals, coil de-energised. On a 1NO+1NC part only one hot would be switched, and the machine would still start, stop and behave</td></tr>
+<tr class="unk"><td><b>That 13 and 14 are one pole on the real paddle</b></td><td>Not 13 and 23. The tabs are stamped</td></tr>
+<tr class="unk"><td><b>The 36 V rail, with a meter at the drive end</b></td><td>It is a variable supply with an LCD, so 36 V is a setting and not a property. Record the reading in <code>commissioning/</code> and mark the adjustment</td></tr>
+<tr class="unk"><td><b>Polarity at each IG57 before first power-on</b></td><td>There is no reverse-polarity protection and the four 2P connectors are assembled by hand</td></tr>
+<tr class="unk"><td><b>A clamp on the VFD's input while cutting</b></td><td>The manual gives 11 A as the drive's <i>output</i> current, and the mains budget has been carrying 11 A as the spindle's draw. They are not the same number on single phase</td></tr>
+</table>
+
+</body>
+</html>
