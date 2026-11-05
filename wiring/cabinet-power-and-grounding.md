@@ -20,10 +20,40 @@ Everything downstream of that is behind **one magnetic paddle switch** - big red
 green start button, 110 V. Its output drives the **coil** of a **25 A 220 V contactor with a 110 V
 coil**, and that contactor is what actually carries the 220 V. His scheme, 2026-11-05.
 
-NOTE: **A MAGNETIC PADDLE SWITCH DROPS OUT ON A POWER LOSS AND STAYS OUT.** Coming back takes a
-deliberate press of the green button. That is the property being bought, and it is the reason this is
-not a toggle: a toggle restores power to a machine nobody is standing at, the moment the mains
-returns.
+### The paddle switch is a POWERTEC 71054
+
+His part, 2026-11-05. From the manufacturer's own page, [powertecproducts.com/71054-magnetic-paddle-switch-120v](https://powertecproducts.com/71054-magnetic-paddle-switch-120v/):
+
+| | |
+|---|---|
+| Rated voltage | **120 V** |
+| Rated HP | **1/2 HP** |
+| Continuous load | *"Motor class continuous load limited to 9 amps or 1/2 HP at 120 Volts"* - the listing calls it 16 A rated |
+| Approvals | **UL, TUV, CSA, CE, ETL** |
+| In the box | **the switch and a wiring diagram.** *"Electrical box not included"* |
+| Mounting | Fits **POWERTEC 71834** deep gang boxes and standard gang boxes, or surface mount on two screws - **screws not included** |
+
+✅ **9 A CONTINUOUS AGAINST A CONTACTOR COIL IS ENORMOUS HEADROOM**, and 120 V is the circuit it is
+already on. This switch is built to carry a 1/2 HP tool directly; here it carries nothing but the
+coil, which is the easiest duty it will ever see.
+
+NOTE: **A MAGNETIC PADDLE SWITCH DROPS OUT ON A POWER LOSS AND STAYS OUT** - and that is the vendor's
+own claim for this part, not an inference: *"preventing tools from powering up after unexpected
+outages, blown breakers and other power interruptions."* Coming back takes a deliberate press of the
+green button. That is the property being bought, and it is the reason this is not a toggle: a toggle
+restores power to a machine nobody is standing at, the moment the mains returns.
+
+PROCEDURE: **FOLLOW THE WIRING DIAGRAM IN THE BOX FOR WHERE THE CONTACTOR COIL LANDS.** The switch has
+its own internal line / load / holding-coil arrangement, and which terminals present the switched
+output is the one thing not to guess at - it is the difference between a coil that holds and a switch
+that buzzes. **Photograph that diagram into [`../manufacturer-assets/`](../manufacturer-assets/) when
+it arrives**, the way the Vevor rail pages went in.
+
+OPEN: **TWO SOURCES DISAGREE ON WHAT SHIPS WITH IT.** The Amazon listing describes *"a removable
+safety lock key and pre-wired cords"*; the manufacturer's page says the box holds the switch and a
+diagram, with **no cords, no lock key and no electrical box**. The gang box matters either way - it
+is not included and the switch needs one. If the lock key is real it is worth having: it does not
+make the box safe, but it stops a restart while hands are inside.
 
 SETTLED: **A 1 A FUSE ON THE CONTROL CIRCUIT - his, 2026-11-05.** The paddle switch and the
 contactor coil are the whole of the load on the 110 V side, and a coil draws almost nothing, so the
