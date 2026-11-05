@@ -13,8 +13,8 @@ Two circuits come into the box:
 
 | Circuit | Carries |
 |---|---|
-| **110 V, 20 A** | The control circuit - the paddle switch and the main contactor's coil |
-| **220 V, 20 A** | Everything that does work |
+| **110 V, 20 A** | Two branches: the **control circuit** - paddle switch and contactor coil, behind a 1 A fuse - and an **unswitched receptacle** for the laptop and the USB cameras |
+| **220 V, 20 A** | Everything that does work. All four pairs off the block are on this one |
 
 Everything downstream of that is behind **one magnetic paddle switch** - big red stop paddle, small
 green start button, 110 V. Its output drives the **coil** of a **25 A 220 V contactor with a 110 V
@@ -30,6 +30,33 @@ contactor coil are the whole of the load on the 110 V side, and a coil draws alm
 20 A breaker at the wall is protecting the house rather than this wiring. **1 A puts a fuse in front
 of the control conductors that is sized for what they actually carry** - and it is the branch where a
 fault is most likely to be a pinched wire in a door hinge rather than a load fault.
+
+### The 110 V side is deliberately NOT switched
+
+His arrangement, 2026-11-05. The 110 V is there for the **laptop and the USB-powered cameras**, and
+he does not want it shut off:
+
+| | |
+|---|---|
+| In | a **double-ended 12 AWG cord** to a **110 V receptacle on the back of the CNC** |
+| Then | that feeds a **receptacle inside the CNC** |
+| Into which | a **power strip** - the laptop charger and the powered USB ports |
+
+**So the 110 V has two branches and only one of them is fused at 1 A.** The control branch - paddle
+and coil - is behind the fuse. The receptacle branch is not, and must not be: a 1 A fuse would not
+carry a laptop charger, and the strip has the wall's 20 A behind it as any receptacle does.
+
+✅ **AND THE LAPTOP STAYS UP WHEN THE PADDLE COMES DOWN**, which is the point of putting it here
+rather than on a switched pair. The controller drops and the sender does not, so whatever it was
+showing when the machine stopped is still on the screen.
+
+🔴 **THE DOUBLE-ENDED CORD IS THE ONE PART OF THIS TO CHANGE, AND IT IS A CHEAP CHANGE.** A cord with
+a **male plug at both ends** has live exposed pins on whichever end is not yet plugged in - plug the
+wall end first and the machine end is live in your hand; unplug the machine end first and it is live
+on the floor. The part that does this job without that is a **panel-mount male inlet** on the back of
+the CNC - a flanged inlet, the same part a generator transfer inlet uses - because then an **ordinary
+cord, female to male**, reaches it and nothing is ever exposed. Same convenience, same 12 AWG, one
+part swapped on the back panel while the panel is still undrilled.
 
 ### The 2 x 8 terminal block - four pairs out
 
@@ -100,17 +127,18 @@ dead - and **two things are still live**:
 | With the paddle down | |
 |---|---|
 | The four pairs off the block | **dead** |
-| The **110 V circuit** - paddle switch, contactor coil | **LIVE**, it is upstream of the paddle |
+| The **110 V control branch** - paddle switch, contactor coil | **LIVE**, it is upstream of the paddle |
+| The **110 V receptacle inside the box, and the power strip in it** | **LIVE** - it is not switched by design |
 | The **220 V on the contactor's line side** | **LIVE**, up to the contactor's own terminals |
 
+🔴 **THE SECOND AND THIRD ROWS ARE THE ONES THAT SURPRISE.** There is a live power strip inside this
+enclosure with the paddle down, on purpose, and the 220 V reaches the contactor's line terminals.
 **For wiring work, that is what the two breakers at the wall are for.** The paddle is an emergency
 stop that happens to be convenient for service; it is not a lockable disconnect, and nothing about
 its position tells you which of the two circuits it dropped.
 
-OPEN: **WHAT ELSE GOES ON THE 110 V CIRCUIT.** The paddle and the coil are behind the 1 A fuse and
-are the only things assigned to it. Whatever else wants 110 V - the PC, cabinet lights, a dust
-collector trigger - goes on this circuit but **not** behind that fuse, and it is worth deciding
-before the box is populated rather than after.
+SETTLED: **WHAT ELSE GOES ON THE 110 V CIRCUIT - the laptop and the USB cameras, unswitched.** His,
+2026-11-05, and written up above.
 
 OPEN: **THE FOUR PAIRS OFF THE BLOCK ARE STILL UNFUSED AS DRAWN.** What exists now: the two 20 A
 breakers at the wall, the **1 A** on the control circuit, and the four **5 A fast-blow per drive**

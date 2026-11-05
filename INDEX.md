@@ -476,6 +476,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 ## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)
 
 - [What switches what - the chain from the wall](wiring/cabinet-power-and-grounding.md#what-switches-what---the-chain-from-the-wall)
+  - [The 110 V side is deliberately NOT switched](wiring/cabinet-power-and-grounding.md#the-110-v-side-is-deliberately-not-switched)
   - [The 2 x 8 terminal block - four pairs out](wiring/cabinet-power-and-grounding.md#the-2-x-8-terminal-block---four-pairs-out)
   - [The pump follows the spindle](wiring/cabinet-power-and-grounding.md#the-pump-follows-the-spindle)
   - [The paddle is for emergencies and for service - the machine lives powered](wiring/cabinet-power-and-grounding.md#the-paddle-is-for-emergencies-and-for-service---the-machine-lives-powered)
