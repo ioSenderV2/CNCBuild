@@ -129,21 +129,43 @@ out**.
 
 **Every contactor in here is DIN rail mounted.** There are **two**, and they are not the same size:
 
-| | Part | Frame | Coil | Switched by |
-|---|---|---|---|---|
-| **Main** | **Wengart WCT-25 (2-Pole)**, modular DIN, his 2026-11-05 | **25 A (AC-7a)**, 2NO | **AC 110-120 V**, 50/60 Hz, behind the 1 A fuse | the paddle switch |
-| **Pump** | smallest frame on the shelf | - | **220 V**, off pair 3 | the VFD's **FA/FC** relay |
+✅ **BOTH ARE THE SAME PART IN TWO COIL VARIANTS - Wengart WCT-25 2P 2NO, about $10 each.** His,
+2026-11-05. One model to know, one set of terminals to remember, and a spare of either is a spare of
+both on the power side.
 
-**The main contactor's specification**, off the product listing:
+| | Coil | Fed from | Switched by |
+|---|---|---|---|
+| **Main** | **AC 110-120 V** | the 110 V control branch, behind the 1 A fuse | the paddle switch |
+| **Pump** | **AC 230 V** | **pair 3** | the VFD's **FA/FC** relay |
+
+**The WCT-25's specification**, off the product listings - the same for both except the coil:
 
 | | |
 |---|---|
-| Model | **WCT-25 (2-Pole)** |
-| Rated current | **25 A (AC-7a) / 9 A (AC-7b)** - the listing also puts it at 5500 W resistive |
-| Coil | **AC 110-120 V, 50/60 Hz** |
+| Model | **WCT-25, 2P 2NO** |
+| Rated current | **25 A (AC-7a) / 9 A (AC-7b)**. 250 V AC Ue; the listing also puts AC-7a at 5500 W resistive |
 | Contacts | **2NO**, normally open |
-| Electrical life | **100,000 cycles** |
+| Coil, main | **AC 110-120 V**, 50/60 Hz |
+| Coil, pump | **AC 230 V**, 50/60 Hz - **inrush 11.5 VA, holding 2.8 VA / 1.2 W max** |
+| Coil terminals | **A1 / A2** |
+| Power terminals | **1-2 and 3-4** |
+| Width | **18 mm - one DIN module**, 35 mm rail |
+| Wiring | power **1.5-6 mm²**, stripped **9 mm**, **0.8 N·m**. Coil **1.5-2.5 mm²** |
+| Life | **1,000,000** mechanical / **100,000** electrical at full load |
 | Certifications | CE / ETL |
+
+✅ **18 MM EACH MEANS THE RAIL IS A NON-ISSUE.** Two contactors is **36 mm** of a rail in a 12 inch
+box. The 2 x 8 block and the fuse holders have the rest of it.
+
+NOTE: **THE VENDOR ASKS FOR A GAP BETWEEN THEM, SO LEAVE ONE.** *"If installing multiple contactors
+side-by-side in a closed panel, using heat dissipation spacers between units is recommended."* At
+1.2 W each that is 2.4 W into a sealed box and nothing to worry about - but the rail has room to
+spare, so do not butt them together for no reason.
+
+NOTE: **A 230 V COIL ON US 240 V NOMINAL SITS ABOVE ITS RATING, AND IT DOES NOT MATTER HERE.** Coil
+tolerance on these parts is normally wide enough to cover it and the Ue is 250 V AC; the heat it costs
+is 1.2 W scaled by the voltage ratio squared, which is a fraction of a watt. Recorded because "230 V
+coil on a 240 V circuit" is the kind of thing that looks like an oversight later.
 
 SETTLED: **2NO - so both hots are switched.** This was the open question and the spec table answers
 it. On a 1NO + 1NC part the second pole would have been a normally-closed *auxiliary* rather than a
@@ -157,13 +179,20 @@ opto minus legs were commoned inside the drive and a one-minute meter check over
 why [`ig57-drives.md`](ig57-drives.md) carries the reading rather than the claim. One minute, and it
 is the one failure here that cannot be seen in operation.
 
-FLAG: **THE TWO RATINGS ARE NOT INTERCHANGEABLE, AND THE 9 A IS THE ONE THAT LOOKS ALARMING.** AC-7a
-is slightly-inductive household load and AC-7b is **motor** load, and the frame is only **9 A** in
-the motor column. **AC-7a is the applicable one here**: this contactor sees two switch-mode supplies,
-the VFD's input rectifier and a contactor coil. The spindle motor is downstream of the VFD's own
-output stage and never touches these contacts, and the pump motor is behind its own contactor. **FLAG:
-this file said "an AC-1 part" until the listing was read** - that was wrong, and the real categories
-are AC-7a/AC-7b.
+FLAG: **THE TWO RATINGS ARE NOT INTERCHANGEABLE, AND THE SAME PART READS OFF A DIFFERENT COLUMN IN
+EACH POSITION.** The vendor's own words: AC-7a is *"resistive household loads"* at 25 A, AC-7b is
+*"inductive motor loads ... which have high inrush currents"* at 9 A.
+
+| Position | Column that binds | Load | Margin |
+|---|---|---|---|
+| **Main** | **AC-7a, 25 A** | two switch-mode supplies, the VFD's input rectifier, one coil - no motor | ~14.9 A |
+| **Pump** | **AC-7b, 9 A** | the 80 W pump, a real motor | ~0.4 A |
+
+**The 9 A is the figure that looks alarming and it only applies to the pump**, where it has twenty-odd
+times the margin it needs. The main contactor never sees a motor: the spindle sits downstream of the
+VFD's own output stage and never touches these contacts, and the pump is behind the second contactor.
+**FLAG: this file said "an AC-1 part" until the listings were read** - that was wrong, and the real
+categories are AC-7a/AC-7b.
 
 NOTE: **Neither AC-7 category actually describes the load, and that is the honest limit of the
 datasheet.** A rectifier-and-capacitor front end is not resistive and not slightly inductive - it is a
@@ -240,9 +269,11 @@ OPEN: **WHICH OF FB AND FC IS THE NORMALLY-OPEN LEG.** The manual gives the pair
 and does not say which is which. It is a meter on the real part with the drive unpowered, not
 something to take from a convention.
 
-OPEN: **THE PUMP CONTACTOR'S COIL INRUSH AGAINST 3 A.** Comfortable for a contactor coil, and the
-contactor is not chosen yet - so the number to check when it is picked is the coil's own inrush VA,
-not its sealed rating.
+SETTLED: **THE COIL INRUSH AGAINST THE RELAY'S 3 A - CLOSED, WITH ROOM TO SPARE.** The WCT-25's
+230 V coil is **inrush 11.5 VA, holding 2.8 VA**. At 230 V that is **50 mA to pull in and 12 mA to
+hold**, against a contact rated **3 A** - about sixty times the margin. This was the open question
+that gated the pump contactor and it is answered by the part's own datasheet rather than by a
+measurement.
 
 ### The paddle is for emergencies and for service - the machine lives powered
 
@@ -460,10 +491,16 @@ that contains it is not stated, and it decides whether "the cabinet" in this fil
 
 FLAG: **AND IT IS A HEAT QUESTION, NOT ONLY A SPACE ONE - a dust-proof box has no ventilation.**
 Whatever goes in dissipates into a sealed plastic volume that is **energised continuously**, because
-the machine lives powered. The DIN gear is near nothing: the main contactor was specifically bought
-for a low-holding-power coil. **A 600 W supply is a different proposition** even at a fraction of
-load, and the VFD has a heatsink for a reason. Space and heat point the same way here, which is the
-useful part - whatever the answer, it is the same answer for both.
+the machine lives powered. **The DIN gear is nothing: 1.2 W per contactor, 2.4 W for both.** A 600 W
+supply is a different proposition even at a fraction of load, and the VFD has a heatsink for a
+reason.
+
+NOTE: **HIS FALLBACK IS TO LEAVE THE COVER OFF - and that is a real option, with one cost.** It
+solves the heat outright. What it gives back is the dust-proofing, which is the reason this box was
+chosen over a vented metal one: a shop making MDF and aluminium dust, and conductive swarf settling
+on a terminal block. **So it is the answer for a hot box and not a free one** - if the heat turns out
+to need it, the better trade is probably to put the 600 W supply and the VFD outside the box and keep
+the cover on the part holding the terminals.
 
 ## Grounds meet at one PE bus bar
 
