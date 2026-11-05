@@ -31,7 +31,8 @@ His part, 2026-11-05. From the manufacturer's own page, [powertecproducts.com/71
 | Continuous load | *"Motor class continuous load limited to 9 amps or 1/2 HP at 120 Volts"* - the listing calls it 16 A rated |
 | Approvals | **UL, TUV, CSA, CE, ETL** |
 | In the box | **the switch and a wiring diagram.** *"Electrical box not included"* |
-| Mounting | Fits **POWERTEC 71834** deep gang boxes and standard gang boxes, or surface mount on two screws - **screws not included** |
+| Mounting | **POWERTEC 71834 deep gang box, ordered 2026-11-05** on the vendor's advice |
+| Variant | **The no-cord option** - his choice, 2026-11-05, because it gets wired differently anyway |
 
 ✅ **9 A CONTINUOUS AGAINST A CONTACTOR COIL IS ENORMOUS HEADROOM**, and 120 V is the circuit it is
 already on. This switch is built to carry a 1/2 HP tool directly; here it carries nothing but the
@@ -49,11 +50,14 @@ output is the one thing not to guess at - it is the difference between a coil th
 that buzzes. **Photograph that diagram into [`../manufacturer-assets/`](../manufacturer-assets/) when
 it arrives**, the way the Vevor rail pages went in.
 
-OPEN: **TWO SOURCES DISAGREE ON WHAT SHIPS WITH IT.** The Amazon listing describes *"a removable
-safety lock key and pre-wired cords"*; the manufacturer's page says the box holds the switch and a
-diagram, with **no cords, no lock key and no electrical box**. The gang box matters either way - it
-is not included and the switch needs one. If the lock key is real it is worth having: it does not
-make the box safe, but it stops a restart while hands are inside.
+NOTE: **THE CORD QUESTION IS MOOT - he bought the bare switch on purpose.** Two sources disagreed on
+whether a pre-wired cord ships with it; he did not order that option, because a switch used as a
+pilot device for a contactor coil gets wired differently from one feeding a tool outlet. **Which is
+what this chain does with it**, so nothing in the design changes.
+
+OPEN: **WHETHER THE REMOVABLE SAFETY LOCK KEY IS REAL.** The Amazon copy claims one and the
+manufacturer's page does not mention it. Apparent on arrival, and worth having if it is there: it
+does not make the box safe, but it stops a restart while hands are inside.
 
 SETTLED: **A 1 A FUSE ON THE CONTROL CIRCUIT - his, 2026-11-05.** The paddle switch and the
 contactor coil are the whole of the load on the 110 V side, and a coil draws almost nothing, so the
