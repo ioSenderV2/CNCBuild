@@ -25,6 +25,12 @@ deliberate press of the green button. That is the property being bought, and it 
 not a toggle: a toggle restores power to a machine nobody is standing at, the moment the mains
 returns.
 
+SETTLED: **A 1 A FUSE ON THE CONTROL CIRCUIT - his, 2026-11-05.** The paddle switch and the
+contactor coil are the whole of the load on the 110 V side, and a coil draws almost nothing, so the
+20 A breaker at the wall is protecting the house rather than this wiring. **1 A puts a fuse in front
+of the control conductors that is sized for what they actually carry** - and it is the branch where a
+fault is most likely to be a pinched wire in a door hinge rather than a load fault.
+
 ### The 2 x 8 terminal block - four pairs out
 
 The contactor's output lands on a **2 x 8 terminal block**: the two switched legs in, **four pairs
@@ -70,33 +76,46 @@ FLAG: **These two are the same question the pump cannot run without, so they gat
 and nothing else in the chain.** Everything upstream - the paddle, the main contactor, the block, the
 four pairs - is settled and buildable without them.
 
-### What the E-stop takes down, and what it does not
+### The paddle is for emergencies and for service - the machine lives powered
 
-FLAG: **IT TAKES THE CONTROLLER WITH IT.** The 12 V supply is on pair 4, on the switched side, and
-the RP23 is fed 12 V through the interface board - see
-[`kicad/interface-board/README.md`](kicad/interface-board/README.md). So the paddle drops the
-controller, not only the drives: position is lost, the telnet session goes, and coming back is a
-reboot and a re-home. That follows from *everything is behind the E-stop* and is not an oversight -
-it is written down because it is the one property of this topology that gets noticed every single
-time it happens.
+**His usage, 2026-11-05: the CNC stays on all the time.** The paddle comes down for three reasons and
+no others - an emergency, **clearing a motor fault**, and working on the wiring.
 
-FLAG: **THE PADDLE IS ALSO THE EVERYDAY ON/OFF, SO THE VFD'S MAINS IS CYCLED ON EVERY SHUTDOWN.**
-Observation: pair 2 is the VFD's mains and it sits on the switched side, so the green button and the
-red paddle are the VFD's power switch. Claim, not established here: VFD manuals commonly tell you
-**not** to use an upstream contactor as the routine start/stop, because the spindle then stops by
-coasting instead of under the drive's control, and every cycle re-charges the DC bus through its
-pre-charge path. **Whether this VFD says so is a question for its manual**, which is not in this
-repo. It changes no part if it is fine, and adds a run/stop input off the paddle's auxiliary if it is
-not.
+NOTE: **THAT MAKES DROPPING POWER A DIAGNOSTIC STEP, NOT ONLY A SAFETY ONE.** A latched drive alarm
+is cleared by taking the rail away from it, which is why the paddle is the tool he reaches for. Worth
+knowing beside the IG57's alarm output and the fact that its manual contains no fault code table -
+see [`ig57-drives.md`](ig57-drives.md).
 
-OPEN: **THE 110 V CIRCUIT IS CARRYING A PADDLE SWITCH AND ONE CONTACTOR COIL AGAINST A 20 A
-BREAKER.** Nothing else is assigned to it. Whatever else wants 110 V - the PC, cabinet lights, a
-dust collector trigger - goes here, and it is worth deciding before the box is populated rather than
-after.
+NOTE: **SO THE CONTROLLER COMING DOWN WITH EVERYTHING ELSE COSTS LITTLE.** The 12 V supply is on pair
+4, on the switched side, and the RP23 is fed 12 V through the interface board - see
+[`kicad/interface-board/README.md`](kicad/interface-board/README.md) - so the paddle drops the
+controller too, and coming back is a reboot and a re-home. On a machine that is switched off daily
+that would be a nuisance; on one that is only ever dropped for a fault, a wiring job or an emergency,
+a re-home is already part of all three.
 
-OPEN: **NO PROTECTION IS SPECIFIED BETWEEN THE BLOCK AND THE FOUR LOADS.** The two 20 A breakers are
-at the wall and the four **5 A fast-blow per drive** are downstream of the 36 V supply - see
-[`ig57-drives.md`](ig57-drives.md). Each of the four pairs off the block is unfused as drawn.
+🔴 **BUT IT IS ALSO THE SERVICE DISCONNECT, AND IT DOES NOT MAKE THE BOX SAFE.** This is the one
+thing to have straight before hands go in. With the paddle down, all four pairs off the block are
+dead - and **two things are still live**:
+
+| With the paddle down | |
+|---|---|
+| The four pairs off the block | **dead** |
+| The **110 V circuit** - paddle switch, contactor coil | **LIVE**, it is upstream of the paddle |
+| The **220 V on the contactor's line side** | **LIVE**, up to the contactor's own terminals |
+
+**For wiring work, that is what the two breakers at the wall are for.** The paddle is an emergency
+stop that happens to be convenient for service; it is not a lockable disconnect, and nothing about
+its position tells you which of the two circuits it dropped.
+
+OPEN: **WHAT ELSE GOES ON THE 110 V CIRCUIT.** The paddle and the coil are behind the 1 A fuse and
+are the only things assigned to it. Whatever else wants 110 V - the PC, cabinet lights, a dust
+collector trigger - goes on this circuit but **not** behind that fuse, and it is worth deciding
+before the box is populated rather than after.
+
+OPEN: **THE FOUR PAIRS OFF THE BLOCK ARE STILL UNFUSED AS DRAWN.** What exists now: the two 20 A
+breakers at the wall, the **1 A** on the control circuit, and the four **5 A fast-blow per drive**
+downstream of the 36 V supply - see [`ig57-drives.md`](ig57-drives.md). Nothing between the block and
+the 36 V supply, the VFD, the pump contactor or the 12 V supply.
 
 OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
 [`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding

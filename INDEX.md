@@ -478,7 +478,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [What switches what - the chain from the wall](wiring/cabinet-power-and-grounding.md#what-switches-what---the-chain-from-the-wall)
   - [The 2 x 8 terminal block - four pairs out](wiring/cabinet-power-and-grounding.md#the-2-x-8-terminal-block---four-pairs-out)
   - [The pump follows the spindle](wiring/cabinet-power-and-grounding.md#the-pump-follows-the-spindle)
-  - [What the E-stop takes down, and what it does not](wiring/cabinet-power-and-grounding.md#what-the-e-stop-takes-down-and-what-it-does-not)
+  - [The paddle is for emergencies and for service - the machine lives powered](wiring/cabinet-power-and-grounding.md#the-paddle-is-for-emergencies-and-for-service---the-machine-lives-powered)
 - [The motor supply is not settled](wiring/cabinet-power-and-grounding.md#the-motor-supply-is-not-settled)
   - [It is a VARIABLE supply with an LCD display - which cuts both ways](wiring/cabinet-power-and-grounding.md#it-is-a-variable-supply-with-an-lcd-display---which-cuts-both-ways)
 - [Separate the logic supply from the motor rail](wiring/cabinet-power-and-grounding.md#separate-the-logic-supply-from-the-motor-rail)
