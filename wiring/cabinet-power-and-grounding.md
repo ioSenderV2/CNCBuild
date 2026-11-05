@@ -55,13 +55,14 @@ NOTE: **The whole cabinet reads single-phase and that is what caught it** - the 
 **HY02D223B**, the motor supply's nameplate is **220 V at 3.5 A**, and the block is fed by **two**
 switched legs with no neutral anywhere in the chain. There is nothing in here a third hot would feed.
 
+NOTE: **L14-20 was the other candidate and was declined.** It is the single-phase device that also
+carries a neutral, which would have let one pigtail serve both circuits - and nothing in the box
+wants 120 V off the 220 V cord.
+
 ✅ **AND THE VFD MANUAL CONFIRMS IT INDEPENDENTLY.** Its description of the R/S/T input reads *"220V
 class, for both single/three phase, single phase connected to any two phases"* - so the drive takes
 single-phase on **any two** of its three input terminals, and the third is simply left off. That also
 answers the question nobody had asked yet: which two.
-**L14-20** was the other candidate and was declined: it is the single-phase device that also carries a
-neutral, which would have let one pigtail serve both circuits, and nothing in the box wants 120 V off
-the 220 V cord.
 
 **12 AWG on both pigtails.** It is what the 110 V cord was called out at, and what a 20 A device
 asks for.
