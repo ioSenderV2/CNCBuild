@@ -129,10 +129,25 @@ out**.
 
 **Every contactor in here is DIN rail mounted.** There are **two**, and they are not the same size:
 
-| | Frame | Coil | Switched by |
-|---|---|---|---|
-| **Main** | **25 A, 220 V** | **110 V**, behind the 1 A fuse | the paddle switch |
-| **Pump** | smallest frame on the shelf | **220 V**, off pair 3 | the VFD's **FA/FC** relay |
+| | Part | Frame | Coil | Switched by |
+|---|---|---|---|---|
+| **Main** | **Wengart**, modular DIN - *"25A AC Contactor 2 Pole 120V Coil Electricians DIN Rail Mount"*, his 2026-11-05 | **25 A** | **120 V**, behind the 1 A fuse | the paddle switch |
+| **Pump** | smallest frame on the shelf | - | **220 V**, off pair 3 | the VFD's **FA/FC** relay |
+
+🔴 **CONFIRM THE MAIN CONTACTOR IS 2NO BEFORE IT GOES IN - the title says "2 Pole" and does not say
+2NO.** On a **1NO + 1NC** part the second pole is a normally-closed *auxiliary*, not a second switched
+leg, so **only one of the two hots gets switched** and the other stays live downstream of the paddle
+for ever. It is the failure that passes every functional test anyone would think to run - the machine
+starts, stops and behaves - and it is a meter across both load terminals with the coil
+de-energised. Sibling listings in the same family do state 2NO, so the part exists; this title just
+does not say it.
+
+NOTE: **25 A rather than 20 A is about the moment it closes, not the hour after.** Steady load is
+~14.9 A, which a 20 A frame carries. Everything downstream is a capacitor bank though - the 36 V
+switch-mode supply, the 12 V supply and the VFD's DC bus all charge at the instant the contacts make,
+and a modular contactor of this class is an **AC-1** part whose contacts are not built for repeated
+high-inrush making. **His usage is what makes either defensible**: the machine lives powered and this
+contactor closes rarely. 25 A was the cheap end of that argument.
 
 NOTE: **THE PUMP CONTACTOR IS SIZED BY WHAT IS SOLD, NOT BY THE LOAD.** The pump is **80 W** - about
 0.4 A at 220 V - and the bottom of most DIN ranges is a 9 A body, already twenty-odd times what it
