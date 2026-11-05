@@ -329,25 +329,31 @@ SETTLED: **A DIN BREAKER PER PAIR - his, 2026-11-05.** Four of them on the same 
 contactors. Resettable, one per branch so a fault takes down one load instead of the cabinet, and it
 reads as a row.
 
-SETTLED: **THREE 10 A AND ONE 16 A, ALL 2-POLE - his, 2026-11-05.**
+SETTLED: **THREE 6 A AND ONE 16 A, ALL 2-POLE - his, ordered 2026-11-05.** Same manufacturer as the
+16 A. FLAG: **this read 10 A for one commit** - 6 A turned out to be available in the same family and
+is the better number, because it is closer to the loads and so catches a fault sooner.
 
 | Pair | Branch | Breaker | Load |
 |---|---|---|---|
-| 1 | 36 V motor supply | **10 A** | **3.5 A** in at 220 V - nameplate |
+| 1 | 36 V motor supply | **6 A, Type C** | **3.5 A** in at 220 V - nameplate |
 | 2 | VFD | **16 A, Type C** | see below |
-| 3 | Pump contactor | **10 A** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
-| 4 | 12 V supply | **10 A** | not sized, and the breaker no longer waits on it - 10 A covers anything that would sensibly go there |
+| 3 | Pump contactor | **6 A** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
+| 4 | 12 V supply | **6 A** | not sized, and the breaker does not wait on it - 6 A covers anything that would sensibly go there |
 
-NOTE: **10 A IS THE SMALLEST HE CAN BUY, AND IT IS NOT OVERSIZED, BECAUSE IT IS NOT PROTECTING THE
-LOAD.** A branch breaker here protects the **conductor** and gives **isolation**. The loads look after
-themselves: both supplies carry their own internal fusing, and neither a 10 A breaker nor a tightly
-sized fuse would catch an 80 W pump stalling - that wants an overload relay, which is absurd at 80
-watts.
+🔴 **PAIR 1 NEEDS TYPE C NOW, WHICH IT DID NOT AT 10 A.** 6 A against a **3.5 A** nameplate is a ratio
+of 1.7, and a 600 W switch-mode supply charges its input capacitors at the instant the main contactor
+closes. A Type B at 6 A is where that becomes a nuisance trip - the same failure as the VFD branch,
+arriving on the branch that looks least likely to have it. **Type C on pairs 1 and 2.** Pairs 3 and 4
+are a contactor coil and a small supply and do not care.
 
-🔴 **SO THE CONDUCTOR MUST BE RATED FOR THE BREAKER, NOT FOR THE LOAD. 14 AWG on all four branches.**
-This is the obligation that comes with choosing a 10 A breaker over a small fuse: an 18 AWG drop to
-the pump contactor behind a 10 A breaker is a wire its breaker will never protect. Inside a cabinet
-the heavier wire costs nothing.
+NOTE: **THESE ARE NOT PROTECTING THE LOADS AND DO NOT NEED TO.** A branch breaker here protects the
+**conductor** and gives **isolation**. The loads look after themselves: both supplies carry their own
+internal fusing, and nothing short of an overload relay would catch an 80 W pump stalling, which is
+absurd at 80 watts. What 6 A over 10 A buys is a tighter envelope on the wiring, not load protection.
+
+**14 AWG on all four branches, which is now generous rather than exact.** The conductor has to be
+rated for its breaker rather than for its load, and at 6 A a lighter gauge would be legitimate - but
+14 AWG was already the plan, costs nothing in a cabinet, and keeps one wire size across the panel.
 
 NOTE: **SIX FUSES WAS THE ALTERNATIVE AND IT BUYS NOTHING.** Both legs of a 240 V two-hot branch are
 ungrounded, so fusing would need **two per branch - six**, and the arithmetic comes out level: six
