@@ -17,6 +17,7 @@
 | Runout | **< 0.01 mm**; precision tapered bore **0.003-0.005 mm** |
 | Collet | **ER20**, supplied with Ø6 mm, range Ø1-12 mm |
 | Cooling | two **Ø8 mm** water fittings, exiting **radially at the rear** |
+| Pump | **80 W, Hmax 3.5 m, Qmax 3500 L/h** - his, 2026-11-05. Supplied with the kit. NOTE: **those two are the ends of the curve, not an operating point** - Qmax is at zero head and Hmax at zero flow, and the loop sits somewhere between them. OPEN: **what it actually delivers through Ø8 mm fittings and the run up the gantry** is a jug and a stopwatch at the return line once the loop is made up. The **head** is the half that is comfortable: 3.5 m against a spindle a little over a metre above a floor reservoir |
 | Clamps | **two 80 mm aluminium clamps**, one at each end of the spindle |
 | Clamp size | 120 mm × 55 mm × 100 mm |
 | Fixing | **4 × M8 × 80 mm socket head** per clamp, into the Z plate |
