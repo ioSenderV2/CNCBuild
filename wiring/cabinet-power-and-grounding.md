@@ -692,10 +692,24 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 7 | Motor supply 0 V |
 | 8 | 12 V supply 0 V |
 
-OPEN: **HOW MANY SHIELD DRAINS LAND HERE, WHICH IS WHAT DECIDES TEN AGAINST TWELVE.** Each drive runs
-on **18/2 shielded** - see [`ig57-drives.md`](ig57-drives.md) - so there are **four** drains, and the
-rule is one end only. If they are grounded at the supply end and the 36 V supply is in this box, that
-is four more terminals and ten is not enough.
+SETTLED: **TEN IS THE BUY - the signal cables contribute nothing.** His, 2026-11-05: **all the drive
+cables terminate at the interface board, in its own 3D printed enclosure**, not in this box. And they
+are **Cat 6 UTP** - see [`kicad/interface-board/README.md`](kicad/interface-board/README.md), which
+notes the jack is shielded but *"the patch cables are UTP so it carries nothing"*. **No drain wire,
+no terminal.**
+
+OPEN: **THE ONLY SHIELDS IN THE SYSTEM ARE THE FOUR 18/2 MOTOR SUPPLY RUNS, and they follow the 36 V
+supply rather than this bar.** Each drive's supply is **18/2 shielded** - see
+[`ig57-drives.md`](ig57-drives.md) - so there are four drains, grounded at one end only. Whether they
+reach this bar is the same question as where the 36 V supply ends up. **Ten leaves two spare if they
+land elsewhere and comes up short if all four land here**, which is the argument for buying more than
+ten rather than exactly ten.
+
+NOTE: **EVERY ENCLOSURE IN THIS BUILD IS PLASTIC - the distribution box, the paddle's gang box and
+now the interface board's.** Nothing anywhere is bonded by being mounted in something, so every earth
+in the system is a conductor somebody ran on purpose. That is the arrangement working as intended
+rather than a problem, and it is worth knowing before anyone goes looking for a chassis to test
+against.
 
 NOTE: **ERR UP, BECAUSE A SECOND BAR IS THE AWKWARD FIX.** Running out means either a second bar
 bonded to the first, which puts a joint in the one path this whole arrangement exists to keep
