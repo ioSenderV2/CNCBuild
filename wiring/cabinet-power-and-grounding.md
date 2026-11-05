@@ -379,15 +379,51 @@ It is free, already paid for in the drives, and lost by any of three ordinary-lo
 **shared rail** between logic and motor supply, a **merged ground bus**, or a **USB
 cable to an earthed PC**.
 
+## The enclosure is a 12 x 12 x 6 PVC box
+
+SETTLED: **his, ordered 2026-11-05** - and it closes the question of which box the DIN rail lives in.
+
+| | |
+|---|---|
+| Size | **12 x 12 x 6 inches** |
+| Material | **PVC**, grey, non-metallic |
+| Entries | pre-moulded **3/4 inch and 1 inch** punch-in holes, **all four sides** |
+| Cover | **dust-proof**, screw-on. Rated indoor/outdoor |
+
+✅ **DUST-PROOF AND NON-CORRODING IS THE RIGHT CALL FOR WHERE THIS LIVES.** A shop making MDF and
+aluminium dust is the environment that kills a vented metal box, and conductive swarf settling on a
+terminal block is the failure that looks like a random fault.
+
+✅ **AND A PLASTIC BOX MAKES THE SINGLE-POINT STAR BELOW ACTUALLY SINGLE-POINT.** In a metal
+enclosure every mounting screw, every DIN rail foot and every supply case touching the panel is
+another ground path in parallel with the bar - which is the loop the next section exists to prevent,
+arriving by accident. PVC cannot make one.
+
+🔴 **BUT NOTHING IN A PVC BOX IS BONDED BY BEING MOUNTED IN IT.** In a metal box a supply's case
+earths through its own screws for free. Here it does not. **Every metal-cased device gets its own PE
+conductor to the bar** - the 36 V supply, the 12 V supply, the VFD - and that is a wire per device,
+not an afterthought.
+
+FLAG: **A PVC BOX IS NOT A SHIELD EITHER.** The VFD is the aggressor this file already flags, and a
+non-metallic enclosure does nothing to contain it. That is an argument about what goes **inside** the
+box rather than against the box - see the open item below.
+
+OPEN: **WHAT IS IN THIS BOX AND WHAT IS OUTSIDE IT.** His words are *"all the DIN rail
+components"*, and 12 x 12 is **144 square inches of back panel**. The DIN gear - two contactors, the
+2 x 8 block, the fuse holders - is small. The **36 V 600 W supply is a brick**, the VFD is another,
+and neither is a DIN part. Whether those two mount in this box, beside it, or in something larger
+that contains it is not stated, and it decides whether "the cabinet" in this file means this box.
+
 ## Grounds meet at one PE bus bar
 
 Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing daisy-chains.
 
 | Conductor | Note |
 |---|---|
-| PE in | from the supply cord |
-| Cabinet chassis | |
+| PE in | from the pigtail |
+| ~~Cabinet chassis~~ | **n/a - the box is PVC.** There is no chassis to bond; see above |
 | Machine frame | |
+| Each metal device case | **its own conductor** - the box bonds nothing |
 | Motor supply 0 V | the 36 V rail's return |
 | 12 V 0 V | the logic supply's return |
 | VFD PE | **its own short heavy conductor** |
