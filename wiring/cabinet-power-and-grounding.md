@@ -31,16 +31,39 @@ contactor coil are the whole of the load on the 110 V side, and a coil draws alm
 of the control conductors that is sized for what they actually carry** - and it is the branch where a
 fault is most likely to be a pinched wire in a door hinge rather than a load fault.
 
+### How power gets in - two 10 ft pigtails
+
+His, 2026-11-05. Both circuits arrive on a **captive 10 ft cord out of the back of the CNC, with
+proper strain relief** - nothing plugs into the machine.
+
+| Circuit | Pigtail | Plug |
+|---|---|---|
+| 110 V | **10 ft**, feeds the receptacle inside the CNC | ordinary 110 V |
+| 220 V | **10 ft** | **locking, L15-20P** |
+
+✅ **A CAPTIVE CORD IS THE BETTER ANSWER, NOT THE COMPROMISE.** A panel inlet was the fix offered
+here for the double-ended cord it replaces; the pigtail beats it on both counts. There is **no
+connector on the machine at all** to be left live or to work loose in a shop full of chips, and
+unplugging at the wall is a **break you can see** - which a tripped breaker in another room is not.
+
+OPEN: **L15-20P IS THE THREE-PHASE CONFIGURATION, AND EVERYTHING ELSE IN THIS CABINET READS
+SINGLE-PHASE.** Observation, from the NEMA locking table: **L15-20** is 250 V **three-phase**, 20 A,
+3 pole 4 wire - three hots and a ground, no neutral. The single-phase 240 V 20 A locking device is
+**L6-20** (two hots and a ground); **L14-20** is the single-phase one that also carries a neutral.
+What says single-phase here: the spindle VFD is a **HY02D223B**, the motor supply's nameplate reads
+**220 V at 3.5 A**, and the block is fed by **two** switched legs with no neutral anywhere in the
+chain. So either the shop is three-phase and the plug is right, or the part is **L6-20P**. It is a
+plug, a cord and a receptacle at the wall, so it is worth settling before any of the three is bought.
+
+OPEN: **THE 220 V PIGTAIL'S CONDUCTOR GAUGE IS NOT STATED.** The 110 V cord was called out at 12 AWG
+when it was a cord; the 220 V one has a plug and a length and no gauge yet. It follows from the plug,
+so it waits on the question above.
+
 ### The 110 V side is deliberately NOT switched
 
 His arrangement, 2026-11-05. The 110 V is there for the **laptop and the USB-powered cameras**, and
-he does not want it shut off:
-
-| | |
-|---|---|
-| In | a **double-ended 12 AWG cord** to a **110 V receptacle on the back of the CNC** |
-| Then | that feeds a **receptacle inside the CNC** |
-| Into which | a **power strip** - the laptop charger and the powered USB ports |
+he does not want it shut off. The pigtail feeds a **receptacle inside the CNC**, and into that goes a
+**power strip** - the laptop charger and the powered USB ports.
 
 **So the 110 V has two branches and only one of them is fused at 1 A.** The control branch - paddle
 and coil - is behind the fuse. The receptacle branch is not, and must not be: a 1 A fuse would not
@@ -49,14 +72,6 @@ carry a laptop charger, and the strip has the wall's 20 A behind it as any recep
 ✅ **AND THE LAPTOP STAYS UP WHEN THE PADDLE COMES DOWN**, which is the point of putting it here
 rather than on a switched pair. The controller drops and the sender does not, so whatever it was
 showing when the machine stopped is still on the screen.
-
-🔴 **THE DOUBLE-ENDED CORD IS THE ONE PART OF THIS TO CHANGE, AND IT IS A CHEAP CHANGE.** A cord with
-a **male plug at both ends** has live exposed pins on whichever end is not yet plugged in - plug the
-wall end first and the machine end is live in your hand; unplug the machine end first and it is live
-on the floor. The part that does this job without that is a **panel-mount male inlet** on the back of
-the CNC - a flanged inlet, the same part a generator transfer inlet uses - because then an **ordinary
-cord, female to male**, reaches it and nothing is ever exposed. Same convenience, same 12 AWG, one
-part swapped on the back panel while the panel is still undrilled.
 
 ### The 2 x 8 terminal block - four pairs out
 
@@ -132,10 +147,14 @@ dead - and **two things are still live**:
 | The **220 V on the contactor's line side** | **LIVE**, up to the contactor's own terminals |
 
 🔴 **THE SECOND AND THIRD ROWS ARE THE ONES THAT SURPRISE.** There is a live power strip inside this
-enclosure with the paddle down, on purpose, and the 220 V reaches the contactor's line terminals.
-**For wiring work, that is what the two breakers at the wall are for.** The paddle is an emergency
-stop that happens to be convenient for service; it is not a lockable disconnect, and nothing about
-its position tells you which of the two circuits it dropped.
+enclosure with the paddle down, on purpose, and the 220 V reaches the contactor's line terminals. The
+paddle is an emergency stop that happens to be convenient for service; it is not a disconnect, and
+nothing about its position tells you which of the two circuits it dropped.
+
+PROCEDURE: **FOR WIRING WORK, PULL BOTH PIGTAILS.** His, 2026-11-05, and it is the reason the inputs
+are captive cords. Two plugs on the floor is a disconnect you can **see** from inside the box - which
+is the whole advantage over a breaker in another room, and the reason to pull **both** rather than
+only the 220.
 
 SETTLED: **WHAT ELSE GOES ON THE 110 V CIRCUIT - the laptop and the USB cameras, unswitched.** His,
 2026-11-05, and written up above.
