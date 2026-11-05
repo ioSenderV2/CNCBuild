@@ -329,12 +329,32 @@ SETTLED: **A DIN BREAKER PER PAIR - his, 2026-11-05.** Four of them on the same 
 contactors. Resettable, one per branch so a fault takes down one load instead of the cabinet, and it
 reads as a row.
 
-| Pair | Branch | What the repo holds for sizing |
-|---|---|---|
-| 1 | 36 V motor supply | **3.5 A** in at 220 V - nameplate |
-| 2 | VFD | **16 A**, settled below |
-| 3 | Pump contactor | **80 W**, about 0.4 A, plus an 11.5 VA coil |
-| 4 | 12 V supply | **not sized yet** - this breaker waits on the supply |
+SETTLED: **THREE 10 A AND ONE 16 A, ALL 2-POLE - his, 2026-11-05.**
+
+| Pair | Branch | Breaker | Load |
+|---|---|---|---|
+| 1 | 36 V motor supply | **10 A** | **3.5 A** in at 220 V - nameplate |
+| 2 | VFD | **16 A, Type C** | see below |
+| 3 | Pump contactor | **10 A** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
+| 4 | 12 V supply | **10 A** | not sized, and the breaker no longer waits on it - 10 A covers anything that would sensibly go there |
+
+NOTE: **10 A IS THE SMALLEST HE CAN BUY, AND IT IS NOT OVERSIZED, BECAUSE IT IS NOT PROTECTING THE
+LOAD.** A branch breaker here protects the **conductor** and gives **isolation**. The loads look after
+themselves: both supplies carry their own internal fusing, and neither a 10 A breaker nor a tightly
+sized fuse would catch an 80 W pump stalling - that wants an overload relay, which is absurd at 80
+watts.
+
+🔴 **SO THE CONDUCTOR MUST BE RATED FOR THE BREAKER, NOT FOR THE LOAD. 14 AWG on all four branches.**
+This is the obligation that comes with choosing a 10 A breaker over a small fuse: an 18 AWG drop to
+the pump contactor behind a 10 A breaker is a wire its breaker will never protect. Inside a cabinet
+the heavier wire costs nothing.
+
+NOTE: **SIX FUSES WAS THE ALTERNATIVE AND IT BUYS NOTHING.** Both legs of a 240 V two-hot branch are
+ungrounded, so fusing would need **two per branch - six**, and the arithmetic comes out level: six
+18 mm holders plus the VFD's 2-pole breaker is **144 mm**, which is exactly four 2-pole breakers.
+Same width, seven devices instead of four, and **two independent fuses do not open together** - one
+blows and the load sits half-energised with 120 V to ground on the surviving leg, which is a branch
+that looks dead and is not.
 
 SETTLED: **16 A ON THE VFD BRANCH, TYPE C.** Two reasons, and the second is the stronger one:
 
