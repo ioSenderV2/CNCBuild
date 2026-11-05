@@ -668,14 +668,38 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 
 | Conductor | Note |
 |---|---|
-| PE in | from the pigtail |
+| PE in - 220 V pigtail | the conductor that actually connects this bar to earth |
+| PE in - 110 V pigtail | the second one |
 | ~~Cabinet chassis~~ | **n/a - the box is PVC.** There is no chassis to bond; see above |
 | Machine frame | |
-| Each metal device case | **its own conductor** - the box bonds nothing |
+| 36 V supply case | **its own conductor** - the box bonds nothing |
+| 12 V supply case | the MDR is DIN mounted and still needs its own |
 | Motor supply 0 V | the 36 V rail's return |
 | 12 V 0 V | the logic supply's return |
-| VFD PE | **its own short heavy conductor** |
+| VFD **E** terminal | **its own short heavy conductor.** FLAG: **the VFD's case is plastic - his, 2026-11-05 - and that changes nothing here.** There is no case to bond, but the drive has an earth terminal: the manual's main-circuit table lists **E, "ground terminal ... of Electrical Engineering Regulations"**. A plastic case means no case bond, not no earth |
 | Cable shields | **one end only** |
+
+**So the bar needs ten terminals, not six.** Eight are named and firm:
+
+| | Conductor |
+|---|---|
+| 1 | PE in - 220 V pigtail |
+| 2 | PE in - 110 V pigtail |
+| 3 | Machine frame |
+| 4 | VFD **E** terminal |
+| 5 | 36 V supply case |
+| 6 | 12 V supply case |
+| 7 | Motor supply 0 V |
+| 8 | 12 V supply 0 V |
+
+OPEN: **HOW MANY SHIELD DRAINS LAND HERE, WHICH IS WHAT DECIDES TEN AGAINST TWELVE.** Each drive runs
+on **18/2 shielded** - see [`ig57-drives.md`](ig57-drives.md) - so there are **four** drains, and the
+rule is one end only. If they are grounded at the supply end and the 36 V supply is in this box, that
+is four more terminals and ten is not enough.
+
+NOTE: **ERR UP, BECAUSE A SECOND BAR IS THE AWKWARD FIX.** Running out means either a second bar
+bonded to the first, which puts a joint in the one path this whole arrangement exists to keep
+single, or re-landing conductors two to a screw. Terminals are the cheapest thing on the rail.
 
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal
