@@ -286,6 +286,14 @@ is cleared by taking the rail away from it, which is why the paddle is the tool 
 knowing beside the IG57's alarm output and the fact that its manual contains no fault code table -
 see [`ig57-drives.md`](ig57-drives.md).
 
+✅ **AND THE VFD MANUAL ASKS FOR EXACTLY THIS USAGE, IN SO MANY WORDS.** Its installation notes say:
+*"Do not use the electromagnetic contactor as the on/off button of power supply for the inverter."*
+**His usage already satisfies that** - the paddle is for an emergency, a motor fault or a wiring job,
+not for turning the machine off at night. Recorded with the manual's own wording because the day
+someone starts using the paddle as a daily switch, this is the sentence that explains why the drive
+started failing. The run/stop command belongs on FOR/DCM from the controller, which is where the
+interface board already puts it.
+
 NOTE: **SO THE CONTROLLER COMING DOWN WITH EVERYTHING ELSE COSTS LITTLE.** The 12 V supply is on pair
 4, on the switched side, and the RP23 is fed 12 V through the interface board - see
 [`kicad/interface-board/README.md`](kicad/interface-board/README.md) - so the paddle drops the
@@ -324,9 +332,35 @@ reads as a row.
 | Pair | Branch | What the repo holds for sizing |
 |---|---|---|
 | 1 | 36 V motor supply | **3.5 A** in at 220 V - nameplate |
-| 2 | VFD | spindle nameplate **220 V, 8 A** |
+| 2 | VFD | **16 A**, settled below |
 | 3 | Pump contactor | **80 W**, about 0.4 A, plus an 11.5 VA coil |
 | 4 | 12 V supply | **not sized yet** - this breaker waits on the supply |
+
+SETTLED: **16 A ON THE VFD BRANCH, TYPE C.** Two reasons, and the second is the stronger one:
+
+1. **It coordinates.** The wall breaker is **20 A**. A 20 A branch breaker beside a 20 A main gives no
+   discrimination at all - a VFD fault would be as likely to drop the whole circuit as its own branch.
+   16 A is the step below, which is the point of having a branch breaker.
+2. **The duty is nowhere near it.** [`../machine/spindle-and-mount.md`](../machine/spindle-and-mount.md)
+   establishes that a respectable cut on this frame draws about **0.3 kW at the cutter**, and that the
+   spindle is five to seven times more powerful than the cut this machine can take. The VFD will spend
+   its life at a few amps in.
+
+FLAG: **AT THE DRIVE'S OWN FULL RATING 16 A WOULD BE CLOSE, AND THIS FRAME CANNOT GET THERE.** My
+estimate, not a manual figure: 2.2 kW out plus losses is about 2.3 kW in, and a diode-bridge-and-
+capacitor front end draws that at a poor distortion power factor, which puts the input RMS current
+somewhere in the **14 to 16 A** region at full rated output. **The manual gives no input current
+figure at all.** It does not bite here because the cut cannot reach full output - but it is the reason
+not to read the margin as larger than it is.
+
+🔴 **AND IT CORRECTS A NUMBER IN THIS FILE'S OWN MAINS TABLE.** Observation, from the manual's
+specification table: the **HY02D223B is 2.2 kW, 4.4 kVA capacity, 11 A OUTPUT current**, single or
+three phase 220 V in. The mains table below carries *"2.2 kW spindle | ~11 A"* as a **draw** - and
+11 A is exactly the manual's **output** figure. **Output and single-phase input current are not the
+same number for this drive**, and the input one is larger. Interpretation, not established: that
+~11 A looks like an output rating being read as a mains draw. **What would settle it is a clamp meter
+on the VFD's input while cutting** - which also belongs in
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md) rather than being computed.
 
 🔴 **ALL FOUR ARE 2-POLE, AND THIS IS THE SAME TRAP AS THE CONTACTOR'S 2NO.** Every pair off the
 block is **two hots with no neutral**, so a single-pole breaker breaks one leg and leaves the other
