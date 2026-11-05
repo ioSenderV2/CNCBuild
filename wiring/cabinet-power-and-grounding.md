@@ -365,14 +365,13 @@ was subsequently settled at Ø80 2.2 kW:
 |---|---|
 | 2.2 kW spindle | ~11 A |
 | Motor PSU | **3.5 A** — **nameplate**, 220 V in, 2026-10-12. Replaces a ~4 A estimate |
-| Pump | **not recorded** - it came with the RATTMMOTOR kit |
+| Pump | **80 W** - his, 2026-11-05. About **0.4 A** at 220 V, and he budgets it at 1 A |
 | 12 V supply | **not recorded** - size not chosen |
-| **Total** | **~14.5 A** of the two known, against a **16 A** continuous limit |
+| **Total** | **~14.9 A** against a **16 A** continuous limit |
 
-OPEN: **TWO OF THE FOUR PAIRS HAVE NO NUMBER AGAINST THEM.** The ~14.5 A was computed when the
-spindle and the motor PSU were the whole of it, and the pump and the 12 V supply are now on the same
-circuit with about 1.5 A of headroom between them. Both are nameplate readings rather than
-measurements - the pump's off its own label, the 12 V supply's off whatever gets bought.
+OPEN: **ONE OF THE FOUR PAIRS STILL HAS NO NUMBER.** The 12 V supply is not sized, and it is the
+last term in that total. The pump at 80 W barely moved it - the headroom was always going to be
+decided by the spindle.
 
 NOTE: **That margin is why the spindle decision and the circuit decision were the same decision.** A
 4.5 kW spindle would have drawn roughly 23-25 A and needed its own 30 A circuit on 10 AWG. The
