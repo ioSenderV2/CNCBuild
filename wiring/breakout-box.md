@@ -14,12 +14,12 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 | ~~**5 V, 3 A** buck~~ | SUPERSEDED - see below |
 | **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board/) |
 
-FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is its own mains-fed supply.** Settled
-2026-11-05: the cabinet's E-stop contactor feeds a 2 x 8 block whose fourth pair goes to a **12 V
-supply off the mains**, and that is what runs the limit sensors, the probes and the RP23. See
-[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md). The point is not the voltage - it
-is that a buck off the 36 V rail would have tied logic ground to the motor return and thrown away the
-drives' measured per-signal isolation.
+FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is a MEAN WELL MDR-60-12 off the mains.**
+Settled 2026-11-05: the cabinet's E-stop contactor feeds a 2 x 8 block whose fourth pair goes to a
+**DIN-rail 12 V 5 A 60 W supply**, and that is what runs the limit sensors, the probes and the RP23.
+See [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md). **5 A against the 3 A this
+row used to carry.** The point is not the voltage though - it is that a buck off the 36 V rail would
+have tied logic ground to the motor return and thrown away the drives' measured per-signal isolation.
 
 OPEN: **THE 5 V RAIL HAS NO CONSUMER LEFT.** It fed the controller box through the DB37, and the
 interface board takes **12 V IN and passes 12 V OUT to the RP23** instead. So this row looks retired
