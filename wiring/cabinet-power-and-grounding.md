@@ -99,8 +99,16 @@ proper strain relief** - nothing plugs into the machine.
 
 | Circuit | Pigtail | Plug |
 |---|---|---|
-| 110 V | **10 ft**, feeds the receptacle inside the CNC | ordinary 110 V |
+| 110 V | **10 ft**, 12 AWG, feeds the receptacle inside the CNC | **locking, L5-20P** into an **L5-20R** at the wall |
 | 220 V | **10 ft**, 12 AWG | **locking, L6-20P** into an **L6-20R** at the wall |
+
+SETTLED: **BOTH PIGTAILS LOCK, AND THE REASON IS THE KEYING RATHER THAN THE LOCK - his, 2026-11-05.**
+L5-20 and L6-20 have different blade orientations and are **physically non-interchangeable**. Two
+captive cords of the same size and colour hang off this machine; with these two devices they
+**cannot be cross-plugged**, by anyone, in bad light. The twist-lock is the lesser benefit.
+
+NOTE: **The cost is that the 110 V wall outlet becomes an L5-20R and stops taking anything else.**
+That circuit is already dedicated to the machine, so it reads as a feature.
 
 ✅ **A CAPTIVE CORD IS THE BETTER ANSWER, NOT THE COMPROMISE.** A panel inlet was the fix offered
 here for the double-ended cord it replaces; the pigtail beats it on both counts. There is **no
