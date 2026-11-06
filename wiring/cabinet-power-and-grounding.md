@@ -368,18 +368,25 @@ SETTLED: **THREE 6 A AND ONE 16 A, ALL 2-POLE - his, ordered 2026-11-05.** Same 
 16 A. FLAG: **this read 10 A for one commit** - 6 A turned out to be available in the same family and
 is the better number, because it is closer to the loads and so catches a fault sooner.
 
+SETTLED: **ALL FOUR ARE CURVE C - ordered, his 2026-11-05.**
+
 | Pair | Branch | Breaker | Load |
 |---|---|---|---|
 | 1 | 36 V motor supply | **6 A, Type C** | **3.5 A** in at 220 V - nameplate |
 | 2 | VFD | **16 A, Type C** | see below |
-| 3 | Pump contactor | **6 A** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
-| 4 | 12 V supply | **6 A** | **Mean Well MDR, 12 V 40 W** - 3.3 A out. About **0.2 A** in at 220 V |
+| 3 | Pump contactor | **6 A, Type C** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
+| 4 | 12 V supply | **6 A, Type C** | **Mean Well MDR, 12 V 40 W** - 3.3 A out. About **0.2 A** in at 220 V |
 
-🔴 **PAIR 1 NEEDS TYPE C NOW, WHICH IT DID NOT AT 10 A.** 6 A against a **3.5 A** nameplate is a ratio
-of 1.7, and a 600 W switch-mode supply charges its input capacitors at the instant the main contactor
-closes. A Type B at 6 A is where that becomes a nuisance trip - the same failure as the VFD branch,
-arriving on the branch that looks least likely to have it. **Type C on pairs 1 and 2.** Pairs 3 and 4
-are a contactor coil and a small supply and do not care.
+✅ **CURVE C IS WHAT PAIRS 1 AND 2 ACTUALLY NEEDED, AND THE OTHER TWO COME ALONG FOR FREE.** Pair 1 is
+6 A against a **3.5 A** nameplate - a ratio of 1.7 - and a 600 W switch-mode supply charges its input
+capacitors at the instant the main contactor closes. A Type B there would have nuisance-tripped on
+every power-up, which presents as the machine intermittently refusing to start and gets blamed on
+the drive. Pair 2 is the same argument with the VFD's DC bus behind it.
+
+NOTE: **Curve C on pairs 3 and 4 costs nothing.** A C curve trips magnetically higher than a B, which
+matters only for how fast a dead short clears - and on 14 AWG behind a 20 A wall breaker there is
+nothing in that gap to worry about. One curve across the panel is one less thing to get wrong at the
+rail.
 
 NOTE: **THESE ARE NOT PROTECTING THE LOADS AND DO NOT NEED TO.** A branch breaker here protects the
 **conductor** and gives **isolation**. The loads look after themselves: both supplies carry their own
