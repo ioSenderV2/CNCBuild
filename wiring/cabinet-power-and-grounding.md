@@ -60,7 +60,8 @@ own claim for this part, not an inference: *"preventing tools from powering up a
 outages, blown breakers and other power interruptions."* Coming back takes a deliberate press of the
 green button. That is the property being bought, and it is the reason this is not a toggle: a toggle
 restores power to a machine nobody is standing at, the moment the mains returns. **A locking mushroom
-E-stop is a toggle in exactly this one respect** - see the swap below.
+E-stop behaves like the paddle when it is pressed and like a toggle when the mains fails on its own**
+- see the swap below, which is where that distinction is set out.
 
 SETTLED: **THE TERMINALS ARE 13/14 AND 23/24, TWO POLES, ON 1/4 INCH SPADE TABS.** From the wiring
 diagram on the listing, 2026-11-05 - so this no longer waits on unboxing the switch:
@@ -120,11 +121,18 @@ NOTE: **The four 1/4 inch female quick-disconnects are the paddle's requirement,
 mushroom station's contact blocks are screw terminals. **Buy the spades with the paddle, not ahead of
 the choice.**
 
-FLAG: **ONE PROPERTY DOES CHANGE, AND IT IS THE ONE THIS FILE ARGUED THE PADDLE FOR.** The paddle's
-contacts are **normally open and held in by its own magnetic latch**, so a mains loss drops them and
-they stay dropped - see the NOTE above. A mushroom's contacts are **normally closed and held closed
-mechanically**, and a mains loss does not move them. **So with a mushroom fitted, the 220 V side
-restores itself the moment the mains comes back**, with nobody standing at the machine.
+🔴 **THERE ARE TWO WAYS THE 220 V SIDE GOES DEAD, AND THE MUSHROOM ONLY LATCHES ON ONE OF THEM.**
+This is the whole of the difference between the two parts, and it is easy to read past:
+
+| How it went dead | The mushroom | The paddle |
+|---|---|---|
+| **Somebody hit the button** | Contacts open and the **mechanical latch holds them open**. It takes a **twist to release**, and the mains coming back changes nothing while it is latched | Same - the paddle stays down until the green button is pressed |
+| **The mains went away on its own** - outage, tripped breaker, a pigtail pulled | **Nobody touched the button, so its contacts were never opened and are still closed.** The coil drops for want of 110 V and **picks up again the instant the 110 V returns** | Stays dropped. Coming back takes a deliberate press |
+
+FLAG: **SO THE SECOND ROW IS THE ONLY PLACE THEY DIFFER - and it is the one this file argued the
+paddle for.** It is also the case the paddle's own copy sells against, in the vendor's words rather
+than by inference: *"preventing tools from powering up after unexpected outages, blown breakers and
+other power interruptions."* **Pressing the button behaves identically on both parts.**
 
 **What is live after an unattended restore: 36 V at the four drives and mains at the VFD.** Nothing
 turns - motion needs step pulses from the controller and the spindle needs a run command on FOR/DCM,
