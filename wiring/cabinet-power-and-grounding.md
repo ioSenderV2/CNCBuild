@@ -569,6 +569,35 @@ SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026
 choosing 36 V dissolved it: the supply that was already here is the right one, and the Mega V keeps
 its 48 V 800 W.
 
+### OPEN: a DIN-rail motor supply, so the VFD is the only thing outside the box
+
+**His thought, 2026-11-06, and the motive is layout rather than electrical:** the 600 W brick is the
+one piece of high-voltage gear that is neither DIN nor small. Put the motor supply on the rail and
+**everything high-voltage lives in the DIN enclosure or the VFD's**, which closes the
+what-is-in-the-box question outright.
+
+| Candidate | |
+|---|---|
+| **Mean Well XDR-480E-36** | **36 V, 13.3 A, 480 W**, DIN rail. The one to look at |
+| Mean Well DRS-480-36 | Same output, but carries a **battery charge circuit** that is not wanted here |
+| The 36 V 600 W brick | Already owned. **16.5 A**, not DIN |
+
+✅ **IT DOES NOT TOUCH THE 36 V DECISION, WHICH IS THE POINT.** The thought started as a **48 V 10 A
+480 W** DIN unit and that was declined: **48 V is the top of the manual's own §7.3 range, DC24V~48V**,
+with about 2 V to the over-voltage alarm - the exact argument that settled 36 V on 2026-10-12. **And
+13.3 A at 36 V is more comfortable than 10 A at 48 V** - his call, and it is the same 480 W either
+way, so the voltage came free.
+
+🔴 **THE REAL COST IS HEAT, NOT WATTS, AND IT CUTS AGAINST THE TIDINESS.** A brick outside the box
+dissipates outside it. **On the rail it dissipates into a dust-proof PVC enclosure with no
+ventilation** - tens of watts at half load, against the **2.4 W** the two contactors contribute. That
+is the enclosure section's heat question arriving for real.
+
+**The other cost is 480 W against the brick's 594 W**, and that is unestablished either way - see the
+comparison below, which [`../commissioning/bench-session.md`](../commissioning/bench-session.md)
+settles. **Not decided.** The mock-up in the real box is what should decide it, because the heat is
+the half that cannot be reasoned out on paper.
+
 NOTE: **THE CURRENT BUDGET WENT UP, NOT DOWN - 16.5 A against the 12.5 A this repo worked to.** Watts
 over volts is the whole of it, and the same 600 W at a lower rail buys more current. The budget that
 [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) worried four motors might exceed has

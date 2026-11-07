@@ -484,6 +484,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The paddle is for emergencies and for service - the machine lives powered](wiring/cabinet-power-and-grounding.md#the-paddle-is-for-emergencies-and-for-service---the-machine-lives-powered)
   - [The controller survives the E-stop - and that is why the sense relay is not optional](wiring/cabinet-power-and-grounding.md#the-controller-survives-the-e-stop---and-that-is-why-the-sense-relay-is-not-optional)
 - [The motor supply is not settled](wiring/cabinet-power-and-grounding.md#the-motor-supply-is-not-settled)
+  - [a DIN-rail motor supply, so the VFD is the only thing outside the box](wiring/cabinet-power-and-grounding.md#a-din-rail-motor-supply-so-the-vfd-is-the-only-thing-outside-the-box)
   - [It is a VARIABLE supply with an LCD display - which cuts both ways](wiring/cabinet-power-and-grounding.md#it-is-a-variable-supply-with-an-lcd-display---which-cuts-both-ways)
 - [Separate the logic supply from the motor rail](wiring/cabinet-power-and-grounding.md#separate-the-logic-supply-from-the-motor-rail)
 - [The enclosure is a 12 x 12 x 6 PVC box](wiring/cabinet-power-and-grounding.md#the-enclosure-is-a-12-x-12-x-6-pvc-box)
