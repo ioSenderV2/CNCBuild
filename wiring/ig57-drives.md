@@ -239,6 +239,43 @@ WRITTEN DOWN.** All four even pins are **GND** on the board - see
 error anywhere, passes continuity, and works. It costs signal integrity and nothing else, which is
 the kind of fault that gets found by chasing a step loss months later.
 
+### The same map by conductor colour
+
+🔴 **THE DRIVE END HAS NO RJ45 - IT IS A SCREW BLOCK, SO COLOUR IS THE ONLY IDENTIFIER THERE.** One
+end of each cable keeps its plug and goes into the interface board; the other end is **cut, stripped
+and landed on the drive's terminals**, where there are no pin numbers to read. **The table above is
+the board end. This one is the end where the mistake happens.**
+
+| Twist | Signal | Plus leg - pin, colour | Minus leg - pin, colour |
+|---|---|---|---|
+| **orange** | **PU**, pulse | pin 1, **white/orange** | pin 2, **orange** |
+| **green** | **EN**, enable | pin 3, **white/green** | pin 6, **green** |
+| **blue** | **DR**, direction | pin 5, **white/blue** | pin 4, **blue** |
+| **brown** | **AL**, alarm | pin 7, **white/brown** | pin 8, **brown** |
+
+**That is T568B.** The striped conductor of each twist is the plus leg, which is the rule already
+stated above.
+
+🔴 **T568A SWAPS ORANGE AND GREEN, AND NOTHING ELSE.** If the patch cables turn out to be A rather
+than B, **PU becomes the green pair and EN becomes the orange one**; blue and brown are **identical in
+both standards**. So:
+
+| | |
+|---|---|
+| **DR is the blue pair** | always, either standard |
+| **AL is the brown pair** | always, either standard |
+| **PU and EN** | **depend on which standard the cable is.** PU is whichever of orange/green lands on pins 1 and 2 |
+
+PROCEDURE: **CONFIRM THE STANDARD ONCE, OFF THE PLUG THAT IS STILL ON THE CABLE, AND DO NOT GUESS
+FROM THE COUNTRY.** Look into the intact plug with the **contacts toward you and the latch behind**:
+read the eight colours across and find which end has **white/orange** first. **White/orange at pin 1
+is B; white/green at pin 1 is A.** Orienting it that way needs no left-or-right convention to be
+remembered correctly - the colour sequence tells you which end you are looking at.
+
+NOTE: **A patch cable is straight through, so A or B changes nothing electrically** - pin 1 reaches
+pin 1 either way. It only changes **which colour** you pick up at the cut end, which is the whole of
+why this matters here.
+
 FLAG: **THIS TABLE READ PU / DR / EN / AL IN PAIR ORDER UNTIL 2026-11-07**, which put **DR and EN the
 wrong way round** against the board, and it gave pair numbers rather than pin numbers so it could not
 have caught a split pair either. Do not reinstate that order.
