@@ -530,6 +530,28 @@ modules, 36 mm**:
 the 12 V supply moving: everything the paddle kills is on one rail and everything that stays live is
 on the other. Anyone opening this box can tell at a glance which row is dead.
 
+### Which end is in, device by device
+
+**Four devices on these rails and three different answers.** His, 2026-11-06, confirmed part by
+part - worth one table because the panel labelling has to carry it and nothing about the hardware
+makes it obvious:
+
+| Device | Power in | Power out |
+|---|---|---|
+| **Breakers** | **top** | bottom |
+| **Both WCT-25 contactors** | **top** - terminals 1 and 3 | bottom - 2 and 4. Coil on **A1 / A2** |
+| **2 x 8 block**, mounted inverted | **bottom** | top |
+| **MDR 12 V supply** | **bottom** - AC | top - 12 V DC |
+
+✅ **AND THAT IS WHY THE INVERTED BLOCK WORKS.** Contactor out at the bottom, one short U-turn up
+into the block's bottom, out the block's top, one short U-turn across into the breakers' tops, out the
+breakers' bottoms to the loads. **Two short U-turns and no long runs** - which was the whole point of
+flipping it.
+
+PROCEDURE: **LABEL THE PANEL WHILE THE PARTS ARE STILL LOOSE.** Three orientations across four
+devices, plus a block whose own printing reads upside down. It costs minutes on the bench and an
+afternoon once everything is wired in.
+
 🔴 **EVERY GROUND TERMINAL GOES ON ONE RAIL, AND IT MUST BE THE SAME ONE.** The green-and-yellow
 terminals use **the rail itself as the bus**, so **two rails are two separate ground buses** unless
 they are bonded - and a bond between rails puts a joint in the one path this arrangement exists to
