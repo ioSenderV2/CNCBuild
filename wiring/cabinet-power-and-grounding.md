@@ -624,10 +624,15 @@ millimetre - the parts in the real box settle it, and the box is the cheapest th
 change. It also means the what-goes-inside question gets answered by the same mock-up rather than on
 paper.
 
-OPEN: **WHICH BOX THIS DIN RAIL IS IN.** This chain is written as the cabinet.
-[`breakout-box.md`](breakout-box.md) still describes a separate remote box out at the machine holding
-the 36 V supply and the bucks, and the interface board's README puts the 12 V source in the same
-enclosure as the board. One word settles it; nothing above depends on the answer.
+SETTLED: **THIS DIN RAIL IS IN THE 12 x 12 x 6 PVC BOX he ordered 2026-11-05** - see the enclosure
+section below. "The cabinet" in this file means that box.
+
+NOTE: **Two older descriptions disagree and neither is the design.**
+[`breakout-box.md`](breakout-box.md) describes a separate remote box out at the machine holding the
+36 V supply and the bucks - **the bucks are gone**, so the only thing that box still claims is the
+36 V supply - and the interface board's README puts the 12 V source in the same enclosure as the
+board, which the mains-fed MDR replaced. **What survives of the disagreement is one question: where
+the 36 V supply goes**, which is the open item immediately below.
 
 ## The motor supply is not settled
 
@@ -793,8 +798,10 @@ The supply reports nothing, so the figure to compare it against comes off the ra
 first powered. Not a gate on anything.
 
 ✅ **BEING DIN RAIL NARROWS THE WHAT-IS-IN-THE-BOX QUESTION.** This supply goes on the **bottom rail,
-beside the 110 V breaker that feeds it** - so the only part still unplaced is the **VFD**, which is
-neither DIN nor small. The 36 V brick is on that rail too.
+beside the 110 V breaker that feeds it**. What that leaves unplaced is the **VFD** and the **36 V
+supply** - both bricks, neither DIN. FLAG: **this paragraph said the 36 V brick was "on that rail
+too", which it cannot be** while it is a brick; whether it becomes a DIN part is the open item under
+the motor supply section.
 
 | Consumer | Fed | Regulated |
 |---|---|---|
