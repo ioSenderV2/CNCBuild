@@ -1030,27 +1030,21 @@ NOTE: **ONE END ONLY, AND IT IS THE PANEL END.** The rule is already in the bar'
 change for these: a shield grounded at both ends is a loop carrying whatever the two grounds differ
 by.
 
-### Inside the box - solid holds its shape, and that is not the whole story
+### Inside the box - solid copper
 
-OPEN: **HIS QUESTION, 2026-11-07: solid copper inside the enclosure so it stays where it is put.** The
-motive is right and it is why comb jumpers are solid. **Where it needs care is the free run.**
+SETTLED: **SOLID, THROUGHOUT - his, 2026-11-07.** It stays dressed where it is put, which is the whole
+reason, and nothing here argues against it.
 
-| Where | |
-|---|---|
-| **Short links between adjacent terminals** on the same rail | **Solid is fine and is ordinary practice.** There is almost no free length to flex |
-| **Anything crossing the box**, or landing on a device that will come off for service | **Stranded with ferrules.** Ferrules are what make stranded stay put in a screw clamp, and most DIN blocks ask for solid or ferruled stranded rather than bare stranded anyway |
+✅ **VIBRATION IS NOT A CONSIDERATION IN THIS BOX, AND THE THREE-POINT MOUNT IS WHY - his,
+2026-11-07.** The moving mass is all on the torsion box; **the box lands on three posts and touches
+the base nowhere else**, so the lower cabinet is isolated from the gantry and the spindle by the
+mount. The usual panel-wiring caution about solid conductor fatiguing at a terminal is about a
+cabinet that shakes. **This one does not**, so it does not apply - and that is a property the mount
+was built for rather than a lucky side effect. See
+[`../machine/three-point-mount.md`](../machine/three-point-mount.md).
 
-🔴 **THE REASON IS WHERE THIS ENCLOSURE LIVES, NOT GENERAL PANEL PRACTICE.** A shop wall panel is
-still. **This one is bolted inside the base of a machine that accelerates a gantry and runs a
-spindle**, and solid conductor fatigues at the clamp, where the terminal's grip makes a stress
-concentration and the free length vibrates against it. The failure is an open circuit that reads as a
-loose terminal.
-
-NOTE: **AND 14 AWG SOLID IN A 12 x 12 BOX FIGHTS THE BENDS.** The gauge was chosen generous - see the
-colours section - and solid at that size does hold a shape, but getting it to the shape in 144 square
-inches means bends tight enough to leave a permanent stress at the terminal. **The thing that actually
-makes panel wiring stay where it is put is a few adhesive tie bases or a strip of duct**, not
-conductor stiffness.
+NOTE: **If any stranded does go in, it gets ferrules.** Most DIN blocks ask for solid or ferruled
+stranded rather than bare stranded, so that is the part of the question with no judgement in it.
 
 ### The pigtails enter at the box and leave through the back shear wall
 
