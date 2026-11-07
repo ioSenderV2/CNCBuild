@@ -942,7 +942,7 @@ through bearing balls is how a bearing is destroyed.**
 | **Fixed frame** - Y beams, extrusion, the steel back plate | **Its own conductor to the bar** | Steel takes a ring terminal properly, it ties both beams and the box fixing, and it is near the enclosure |
 | **Spindle** | **Its own earth, back with the motor cable to the VFD's E terminal** | Not to the bar. That conductor is also the return path for the switching noise the drive puts on the motor cable, and the loop wants to be tight |
 | **Gantry** - X beam, end plates | **22 AWG stranded in the Y drag chain**, to the fixed frame | Noise only |
-| **X carriage, Z plate** | **nothing of their own** | They sit between two bonded things, and the spindle's earth lands on a body clamped to the Z plate |
+| **X carriage, Z plate** | **nothing of their own** - but see the probe return below | They sit between two bonded things, and the spindle's earth lands on a body clamped to the Z plate |
 
 ✅ **NEITHER NEW BOND ADDS A TERMINAL TO THE BAR.** The spindle's goes to the VFD and the gantry's
 goes to the fixed frame. The count above stays at eight.
@@ -966,6 +966,30 @@ rather than a copper-area one.
 🔴 **THE TERMINATION IS WHAT FAILS, NOT THE WIRE.** Ring terminal under a bolt into **bare metal** -
 **scrape or file the anodising** where it lands on the X beam. A perfect conductor into an anodised
 surface is an open circuit, and it is an open circuit that looks exactly like a finished job.
+
+### The touch plate wants the Z plate too, and it is not an earth
+
+**On the Mega V there is a ground connector on the Z plate, and it works** - his, 2026-11-07. It
+means the touch plate's return runs through the structure instead of needing an alligator clip on
+the tool: plate, tool, collet, spindle shaft, **the spindle's own bearings**, body, clamps, Z plate,
+connector. Flaky on many machines, which is exactly why the clip exists - and **not flaky on his**,
+which is the evidence that matters.
+
+🔴 **BUT THE NEW MACHINE ADDS THE ONE VARIABLE THAT BREAKS THIS ARRANGEMENT.** The Mega V has no
+VFD. Here a 2.2 kW drive injects common-mode current into the spindle and therefore into the
+structure, and **structure-return probing is flaky precisely when there is VFD current in the
+structure**. "It works on the Mega V" may not carry across, and the failure mode is a false trigger -
+which this file already calls the one input where that costs a crash.
+
+OPEN: **DOES THE PROBE RETURN COME BACK ON ITS OWN CONDUCTOR, OR THROUGH THE STRUCTURE AS IT DOES
+TODAY?** The design already says the probe gets *"its own regulator and its own return"*. Taking the
+return through the frame contradicts that, and lands the probe's common on PE at the Z plate -
+where the spindle's earth also arrives. **That is the merged ground this file lists as one of three
+ways to lose the drives' isolation**, arriving by a route nobody would look for.
+
+NOTE: **Either answer is buildable and the difference is one conductor in the drag chain.** It is
+worth deciding before the Z plate is drilled rather than after, because the dedicated-return version
+wants a tapped hole on the Z plate that the structure version does not.
 
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal
