@@ -602,9 +602,18 @@ FLAG: **this file argued for venting the face rather than the top, and for filte
 Both were built on the box being somewhere swarf lands, and it is not.** Vent it wherever is
 convenient.
 
-NOTE: **The one thing worth a look is whether that bay has air to move.** Convecting warm air out of
-the enclosure and into a sealed pocket under the torsion box only warms the pocket. A glance at the
-real thing settles it, and it decides nothing else.
+✅ **AND THAT BAY IS NOT A SEALED POCKET - his, 2026-11-06.** There is a gap **all the way around**
+between the underside of the torsion box and the top of the base walls, and **the whole front is
+open**. Warm air leaving the enclosure has somewhere to go.
+
+NOTE: **That clearance is not there for cooling - it is the three-point mount.** The box lands on
+three posts and **nothing else may touch it**, or there is a fourth contact point and the mount stops
+being three-point, silently - see [`../machine/assembly.md`](../machine/assembly.md). The ventilation
+is a free consequence of a decision taken for geometry.
+
+FLAG: **He gave the gap as both 4 mm and 10 mm in one sentence and I have not recorded either.** It
+does not matter here - what matters is that the bay breathes - but do not take a figure for it from
+this page.
 
 **The other cost is 480 W against the brick's 594 W**, and that is unestablished either way - see the
 comparison below, which [`../commissioning/bench-session.md`](../commissioning/bench-session.md)
