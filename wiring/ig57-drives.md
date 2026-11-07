@@ -239,7 +239,17 @@ WRITTEN DOWN.** All four even pins are **GND** on the board - see
 error anywhere, passes continuity, and works. It costs signal integrity and nothing else, which is
 the kind of fault that gets found by chasing a step loss months later.
 
-### The same map by conductor colour
+### The same map by conductor colour - which comes from the CABLE, not the board
+
+🔴 **THE BOARD HAS NO COLOUR CONVENTION, AND IS NEITHER T568A NOR T568B.** Its netlist assigns nets
+to **RJ45 contact numbers** and nothing else - a PCB jack has eight contacts and no wires in it.
+**T568A and T568B are conventions for which conductor colour sits on which pin inside a cable**, so
+they live entirely in the patch cable. The colours below are a property of the cable you plug in.
+
+✅ **AND THE BOARD CANNOT BE WRONG ABOUT IT, WHICHEVER CABLE TURNS UP.** The pin-to-twist assignment
+is **1-2, 3-6, 4-5, 7-8 in both standards** - A and B swap colours and leave the pairings alone - so
+signals on odd pins with grounds on even pins is correct on the twists either way, because every odd
+pin's twist partner is an even pin. **The standard is a cable question, not a board question.**
 
 🔴 **THE DRIVE END HAS NO RJ45 - IT IS A SCREW BLOCK, SO COLOUR IS THE ONLY IDENTIFIER THERE.** One
 end of each cable keeps its plug and goes into the interface board; the other end is **cut, stripped
@@ -253,8 +263,9 @@ the board end. This one is the end where the mistake happens.**
 | **blue** | **DR**, direction | pin 5, **white/blue** | pin 4, **blue** |
 | **brown** | **AL**, alarm | pin 7, **white/brown** | pin 8, **brown** |
 
-**That is T568B.** The striped conductor of each twist is the plus leg, which is the rule already
-stated above.
+**That is a T568B cable.** The striped conductor of each twist is the plus leg, which is the rule
+already stated above - and that part holds under both standards, because every odd pin is a striped
+conductor in A as well as B.
 
 🔴 **T568A SWAPS ORANGE AND GREEN, AND NOTHING ELSE.** If the patch cables turn out to be A rather
 than B, **PU becomes the green pair and EN becomes the orange one**; blue and brown are **identical in
