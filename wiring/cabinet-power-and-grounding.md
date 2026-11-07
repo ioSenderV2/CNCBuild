@@ -191,7 +191,24 @@ out**.
 | 1 | The **36 V motor supply** |
 | 2 | The **VFD**, 220 V in |
 | 3 | The **pump contactor** |
-| 4 | The **12 V supply** |
+| 4 | The **sense relay coil** - the 12 V supply left this pair on 2026-11-06 |
+
+SETTLED: **THE BLOCK GOES ON THE RAIL UPSIDE DOWN - his, 2026-11-06, and it is not a violation of
+anything that matters.** The contactor's load terminals are at the **bottom**; the breakers' line
+terminals are at the **top**. Inverting the block puts its input at the bottom and its outputs at the
+top, so the contactor makes one short U-turn into it and each pair makes one short U-turn out to a
+breaker. **No long runs and nothing crossing.**
+
+✅ **A PASSIVE BLOCK HAS NO LINE AND LOAD SIDE, WHICH IS WHY THIS IS FREE.** The top-in bottom-out
+convention exists for devices that care - breakers, where busbar combs feed the top and some makes
+mark a direction. A feed-through terminal block is symmetric: there is nothing inside it to install
+backwards.
+
+🔴 **BUT THE BLOCK'S OWN PRINTING WILL READ UPSIDE DOWN, SO LABEL THE ROWS ON THE PANEL.** Whatever
+is moulded or printed on it - numbers, a label field - is now inverted, and the row that looks like
+the first one is the second. **Write L1 and L2 on the panel beside it.** This is the repo's recurring
+failure in miniature: a thing that looks right and is not, costing nothing to prevent and an
+afternoon to find.
 
 **Every contactor in here is DIN rail mounted.** There are **two**, and they are not the same size:
 
