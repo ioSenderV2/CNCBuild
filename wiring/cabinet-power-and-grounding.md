@@ -1000,6 +1000,28 @@ has it working with the same drive injecting the same noise into the same spindl
 NOTE: **It adds a conductor to both drag chains**, Z plate back to the cabinet, alongside the gantry
 bond and the spindle's own earth. Worth counting now rather than when the chain is full.
 
+🔴 **BUT ON THE MEGA V THAT PROBE RETURN IS THE ONLY GROUND WIRE ON THE MACHINE - his, 2026-11-07.
+There is no frame bond at all.** That is recorded because it is the one thing in this design where
+"it works on the Mega V" does not settle the question, and the reason is specific rather than
+cautious:
+
+**A frame bond does nothing whatsoever until there is a fault.** It carries no current, changes no
+reading and makes no difference to how a machine cuts. So a machine running fine for years is exactly
+what an unbonded frame looks like. The global rule about this is already written down: **absence in
+an instrument that was not looking is not evidence of absence** - and nothing on either machine is
+recording "the frame would have been safe."
+
+🔴 **AND THE SPECIFIC RISK IS WORSE THAN AN UNBONDED FRAME.** The spindle is a mains motor clamped in
+aluminium bolted to the Z plate. **If a winding goes to the body, the body goes to 220 V** - and on
+the Mega V the only conductive path off that structure is **the probe return, a signal wire, into the
+controller board's ground.** That is a signal conductor being asked to carry fault current, and what
+it does before it burns is put mains on the controller.
+
+OPEN: **IS THERE AN EARTH CONDUCTOR IN THE SPINDLE'S MOTOR CABLE?** A four-core VFD motor cable
+carries one and bonds the spindle body properly; a three-core does not. **If there is one, the
+paragraph above is largely moot** and the spindle is earthed the way it should be. If there is not,
+it is the thing to fix on both machines, and it costs a conductor. This has not been looked at.
+
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal
 conductor is a ground that carries signal current - which is the same mistake as the daisy-chained
