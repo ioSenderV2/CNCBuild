@@ -997,30 +997,35 @@ which is exactly the *"its own return"* the probe design asks for.
 same supplier. So this is not an arrangement being tried; it is one being copied off a machine that
 has it working with the same drive injecting the same noise into the same spindle.
 
-NOTE: **It adds a conductor to both drag chains**, Z plate back to the cabinet, alongside the gantry
-bond and the spindle's own earth. Worth counting now rather than when the chain is full.
+NOTE: **It adds one conductor to the drag chains**, Z plate back to the cabinet. FLAG: **this said
+"alongside the spindle's own earth" for one commit** - the spindle cable does not go in the chain at
+all; see the routing below.
 
-🔴 **BUT ON THE MEGA V THAT PROBE RETURN IS THE ONLY GROUND WIRE ON THE MACHINE - his, 2026-11-07.
-There is no frame bond at all.** That is recorded because it is the one thing in this design where
-"it works on the Mega V" does not settle the question, and the reason is specific rather than
-cautious:
+### The spindle cable goes overhead, not in the chain
 
-**A frame bond does nothing whatsoever until there is a fault.** It carries no current, changes no
-reading and makes no difference to how a machine cuts. So a machine running fine for years is exactly
-what an unbonded frame looks like. The global rule about this is already written down: **absence in
-an instrument that was not looking is not evidence of absence** - and nothing on either machine is
-recording "the frame would have been safe."
+SETTLED: **his, 2026-11-07, and the Mega V already runs it this way.** The spindle's **four-conductor
+shielded 16 AWG** cable goes **through a mesh sleeve with the two water lines and an air line,
+carried in an overhead sling.** None of it is in the drag chain.
 
-🔴 **AND THE SPECIFIC RISK IS WORSE THAN AN UNBONDED FRAME.** The spindle is a mains motor clamped in
-aluminium bolted to the Z plate. **If a winding goes to the body, the body goes to 220 V** - and on
-the Mega V the only conductive path off that structure is **the probe return, a signal wire, into the
-controller board's ground.** That is a signal conductor being asked to carry fault current, and what
-it does before it burns is put mains on the controller.
+✅ **FOUR CONDUCTORS MEANS THE SPINDLE BODY IS EARTHED PROPERLY** - U, V, W and an earth back to the
+VFD, which is what the design asked for. FLAG: **this file opened a question about whether that earth
+existed and warned that without it a spindle winding fault would return through the probe's signal
+wire into the controller.** It exists. That concern is closed, and with it most of the worry about
+the Mega V having no separate frame bond: **the structure is bonded through the clamps to a spindle
+body that is itself earthed.**
 
-OPEN: **IS THERE AN EARTH CONDUCTOR IN THE SPINDLE'S MOTOR CABLE?** A four-core VFD motor cable
-carries one and bonds the spindle body properly; a three-core does not. **If there is one, the
-paragraph above is largely moot** and the spindle is earthed the way it should be. If there is not,
-it is the thing to fix on both machines, and it costs a conductor. This has not been looked at.
+PROCEDURE: **Confirm the fourth conductor is landed at both ends** - spindle earth terminal and the
+VFD's E. It is the obvious assumption and it is a two-minute look, and it is the whole of what the
+paragraph above rests on.
+
+✅ **AND THE ROUTING SEPARATES THE NOISIEST CABLE IN THE BUILD FROM EVERY SIGNAL CABLE, FOR FREE.**
+The VFD's output goes overhead; the Cat 6 to the steppers, the limit sensors and the probe return go
+in the chain. That is the separation an EMC guide would ask for, arrived at because the water and air
+lines wanted to go overhead anyway.
+
+NOTE: **IT ALSO WEAKENS THE CASE FOR THE GANTRY BOND, WHICH WAS ARGUED ON THE MOTOR CABLE RUNNING
+ALONG THE GANTRY.** It does not. The bond is cheap and still worth having so the extrusion is not
+left floating, but it is further down the list than this file first put it.
 
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal

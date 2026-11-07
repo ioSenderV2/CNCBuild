@@ -493,6 +493,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Grounds meet at one PE bus bar](wiring/cabinet-power-and-grounding.md#grounds-meet-at-one-pe-bus-bar)
   - ["Machine frame" is two halves and a spindle](wiring/cabinet-power-and-grounding.md#machine-frame-is-two-halves-and-a-spindle)
   - [The touch plate wants the Z plate too, and it is not an earth](wiring/cabinet-power-and-grounding.md#the-touch-plate-wants-the-z-plate-too-and-it-is-not-an-earth)
+  - [The spindle cable goes overhead, not in the chain](wiring/cabinet-power-and-grounding.md#the-spindle-cable-goes-overhead-not-in-the-chain)
 - [USB is a ground path, and the cable stays plugged in](wiring/cabinet-power-and-grounding.md#usb-is-a-ground-path-and-the-cable-stays-plugged-in)
 - [The mains circuit](wiring/cabinet-power-and-grounding.md#the-mains-circuit)
 - [Provenance](wiring/cabinet-power-and-grounding.md#provenance)
