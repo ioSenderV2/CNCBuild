@@ -19,8 +19,19 @@ Two circuits come into the box:
 
 | Circuit | Carries |
 |---|---|
-| **110 V, 20 A** | Two branches: the **control circuit** - paddle switch and contactor coil, behind a 1 A fuse - and an **unswitched receptacle** for the laptop and the USB cameras |
-| **220 V, 20 A** | Everything that does work. All four pairs off the block are on this one |
+| **110 V, 20 A** | Everything that must **survive an E-stop**: the 12 V logic supply, the paddle's own control circuit, and the receptacle for the laptop and cameras |
+| **220 V, 20 A** | Everything that **does work** and must stop: the 36 V motor supply, the VFD, the pump |
+
+🔴 **THE E-STOP DOES NOT KILL THE CONTROLLER - his decision, 2026-11-06, and it is the one that
+shapes the whole 110 V side.** The 12 V supply moved off pair 4 and onto the 110 V circuit, so the
+paddle drops the **spindle and the steppers** while the **RP23 stays up** with its position, its
+alarm state and the ioSender session intact. Safety is unchanged - motion dies the instant the drives
+lose 36 V and the VFD loses mains. What changes is the recovery: no reboot, no re-home, and a
+controller that can say **why** it stopped.
+
+FLAG: **THIS FILE SAID THE OPPOSITE UNTIL 2026-11-06**, when the 12 V supply was on pair 4 and the
+paddle took the controller with it. Do not reinstate that; the sense relay below exists because of
+this change and is not optional with it.
 
 Everything downstream of that is behind **one magnetic paddle switch** - big red stop paddle, small
 green start button, 110 V. Its output drives the **coil** of a **25 A 220 V contactor with a 110 V
@@ -136,19 +147,39 @@ answers the question nobody had asked yet: which two.
 **12 AWG on both pigtails.** It is what the 110 V cord was called out at, and what a 20 A device
 asks for.
 
-### The 110 V side is deliberately NOT switched
+### The 110 V side - a breaker, a 2 x 6 splitter, three pairs out
 
-His arrangement, 2026-11-05. The 110 V is there for the **laptop and the USB-powered cameras**, and
-he does not want it shut off. The pigtail feeds a **receptacle inside the CNC**, and into that goes a
-**power strip** - the laptop charger and the powered USB ports.
+His, 2026-11-06. **Nothing on this circuit is switched by the paddle.** It is the half of the cabinet
+that stays alive.
 
-**So the 110 V has two branches and only one of them is fused at 1 A.** The control branch - paddle
-and coil - is behind the fuse. The receptacle branch is not, and must not be: a 1 A fuse would not
-carry a laptop charger, and the strip has the wall's 20 A behind it as any receptacle does.
+| | |
+|---|---|
+| In | the **L5-20P pigtail**, hot and neutral, into the **top** of the breaker |
+| Breaker | the **third 6 A 2-pole**, repurposed - across **hot and neutral**, so the branch gets double-pole isolation |
+| Then | a **2 x 6 splitter block** |
 
-✅ **AND THE LAPTOP STAYS UP WHEN THE PADDLE COMES DOWN**, which is the point of putting it here
-rather than on a switched pair. The controller drops and the sender does not, so whatever it was
-showing when the machine stopped is still on the screen.
+| Pair | Feeds |
+|---|---|
+| 1 | The **12 V supply** |
+| 2 | The **paddle switch**, behind its **1 A fuse** |
+| 3 | The **receptacle** the power strip plugs into |
+
+**Three spare pairs on the splitter**, which is the right side of the panel to have them on.
+
+✅ **THE SPARE BREAKER LANDS EXACTLY RIGHT AND NOTHING EXTRA GETS BOUGHT.** Four 2-pole breakers were
+ordered for four pairs off the 2 x 8 block. Moving the 12 V supply here frees one, and a 2-pole 240 V
+MCB works perfectly well on 120 V across hot and neutral. The 220 V side keeps **6 A, 16 A, 6 A** and
+the fourth comes here.
+
+NOTE: **THE RECEPTACLE IS NOW BEHIND A BREAKER, WHICH IT WAS NOT BEFORE.** Until 2026-11-06 the strip
+had only the wall's 20 A. **6 A is ample**: the laptop charger is a couple of amps at 120 V, the
+powered USB and cameras well under one, and the 12 V supply about 0.4 A at this voltage. A **curve C**
+is what carries the chargers' switch-on inrush without nuisance tripping, which is the reason it had
+to be C rather than B here too.
+
+NOTE: **The 1 A fuse stays where it is - on the paddle's pair only.** It protects the four conductors
+running out to the remote switch box, which is a different job from protecting the branch, and a
+laptop charger would never run behind it.
 
 ### The 2 x 8 terminal block - four pairs out
 
@@ -329,12 +360,33 @@ someone starts using the paddle as a daily switch, this is the sentence that exp
 started failing. The run/stop command belongs on FOR/DCM from the controller, which is where the
 interface board already puts it.
 
-NOTE: **SO THE CONTROLLER COMING DOWN WITH EVERYTHING ELSE COSTS LITTLE.** The 12 V supply is on pair
-4, on the switched side, and the RP23 is fed 12 V through the interface board - see
-[`kicad/interface-board/README.md`](kicad/interface-board/README.md) - so the paddle drops the
-controller too, and coming back is a reboot and a re-home. On a machine that is switched off daily
-that would be a nuisance; on one that is only ever dropped for a fault, a wiring job or an emergency,
-a re-home is already part of all three.
+### The controller survives the E-stop - and that is why the sense relay is not optional
+
+SETTLED: **his, 2026-11-06.** The 12 V supply sits on the 110 V side, so the paddle takes the
+**36 V rail and the VFD's mains** and leaves the **RP23 running**. Motion stops the same instant it
+always did; what survives is the controller's position, its alarm state and the ioSender session.
+
+🔴 **A CONTROLLER THAT OUTLIVES THE DRIVES AND DOES NOT KNOW IT IS WORSE THAN ONE THAT DIES WITH
+THEM.** If the paddle only removes power and the RP23 is never told, it keeps issuing step pulses
+into drives that cannot move. **The motors stay still and the position counter does not** - so when
+power comes back the machine's idea of where it is, is wrong by however far it "moved" while dead.
+Nothing about that is visible until the next rapid puts the spindle somewhere it should not be.
+
+SETTLED: **A SENSE RELAY, AND IT SENSES THE SWITCHED 220 V RATHER THAN THE PADDLE.**
+
+| | |
+|---|---|
+| Coil | **230 V**, on **pair 4** of the block - the pair the 12 V supply vacated |
+| Contact | into the interface board's **e-stop input** - the Mini-Fit Jr 4P already carries one, see [`kicad/interface-board/README.md`](kicad/interface-board/README.md) |
+| Size | one more **18 mm** DIN module |
+
+✅ **SENSING THE LOAD SIDE RATHER THAN THE SWITCH IS THE WHOLE POINT.** It reports **power actually
+present at the drives**, not what the operator pressed. A welded contactor reads as powered, which is
+true and is what you want to know; a paddle-side sense would have read "stopped" while the machine
+was still live.
+
+NOTE: **This is the same pattern as the pump contactor** - a coil on the switched side, a contact
+doing the telling. One part, one idea, used twice.
 
 🔴 **BUT IT IS ALSO THE SERVICE DISCONNECT, AND IT DOES NOT MAKE THE BOX SAFE.** This is the one
 thing to have straight before hands go in. With the paddle down, all four pairs off the block are
@@ -342,15 +394,17 @@ dead - and **two things are still live**:
 
 | With the paddle down | |
 |---|---|
-| The four pairs off the block | **dead** |
-| The **110 V control branch** - paddle switch, contactor coil | **LIVE**, it is upstream of the paddle |
-| The **110 V receptacle inside the box, and the power strip in it** | **LIVE** - it is not switched by design |
+| The pairs off the 2 x 8 block | **dead** |
+| **The entire 110 V side** - the 6 A breaker, the 2 x 6 splitter and all three of its pairs | **LIVE** |
+| The **12 V supply, and everything it feeds** | **LIVE** - the controller is still running |
+| The **receptacle and the power strip in it** | **LIVE** |
+| The **paddle's own control circuit**, upstream of the switch | **LIVE** |
 | The **220 V on the contactor's line side** | **LIVE**, up to the contactor's own terminals |
 
-🔴 **THE SECOND AND THIRD ROWS ARE THE ONES THAT SURPRISE.** There is a live power strip inside this
-enclosure with the paddle down, on purpose, and the 220 V reaches the contactor's line terminals. The
-paddle is an emergency stop that happens to be convenient for service; it is not a disconnect, and
-nothing about its position tells you which of the two circuits it dropped.
+🔴 **ONE ROW IS DEAD AND FIVE ARE LIVE.** That is the design working as intended and it is also the
+thing to have straight before hands go in: **more of this box is live with the paddle down than is
+dead.** The paddle is an emergency stop that happens to be convenient for service; it is not a
+disconnect, and nothing about its position tells you which circuit it dropped.
 
 PROCEDURE: **FOR WIRING WORK, PULL BOTH PIGTAILS.** His, 2026-11-05, and it is the reason the inputs
 are captive cords. Two plugs on the floor is a disconnect you can **see** from inside the box - which
@@ -360,9 +414,9 @@ only the 220.
 SETTLED: **WHAT ELSE GOES ON THE 110 V CIRCUIT - the laptop and the USB cameras, unswitched.** His,
 2026-11-05, and written up above.
 
-SETTLED: **A DIN BREAKER PER PAIR - his, 2026-11-05.** Four of them on the same rail as the
-contactors. Resettable, one per branch so a fault takes down one load instead of the cabinet, and it
-reads as a row.
+SETTLED: **A DIN BREAKER PER BRANCH - his, 2026-11-05.** Resettable, one per branch so a fault takes
+down one load instead of the cabinet, and it reads as a row. **Three on the 220 V rail and one on the
+110 V rail** since 2026-11-06.
 
 SETTLED: **THREE 6 A AND ONE 16 A, ALL 2-POLE - his, ordered 2026-11-05.** Same manufacturer as the
 16 A. FLAG: **this read 10 A for one commit** - 6 A turned out to be available in the same family and
@@ -375,7 +429,13 @@ SETTLED: **ALL FOUR ARE CURVE C - ordered, his 2026-11-05.**
 | 1 | 36 V motor supply | **6 A, Type C** | **3.5 A** in at 220 V - nameplate |
 | 2 | VFD | **16 A, Type C** | see below |
 | 3 | Pump contactor | **6 A, Type C** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
-| 4 | 12 V supply | **6 A, Type C** | **Mean Well MDR, 12 V 40 W** - 3.3 A out. About **0.2 A** in at 220 V |
+| 4 | **Sense relay coil** | **none** | The 12 V supply left this pair on 2026-11-06; the sense relay took it |
+
+NOTE: **PAIR 4 CARRIES NO BREAKER, AND THAT IS DELIBERATE.** All four breakers are spoken for - three
+here and the fourth on the 110 V side - and what is left on this pair is a **sealed relay coil of a
+couple of watts** on 14 AWG, behind the main contactor, with the wall's 20 A as the backstop. A
+breaker sized for 2 W does not exist and would protect nothing the conductor does not already
+survive.
 
 ✅ **CURVE C IS WHAT PAIRS 1 AND 2 ACTUALLY NEEDED, AND THE OTHER TWO COME ALONG FOR FREE.** Pair 1 is
 6 A against a **3.5 A** nameplate - a ratio of 1.7 - and a 600 W switch-mode supply charges its input
@@ -441,16 +501,25 @@ contactor closes, and that inrush will trip a tightly-sized Type B curve - which
 machine refusing to power up intermittently and gets blamed on the drive. The same argument applies
 in miniature to pair 1, which is a switch-mode supply doing the same thing.
 
-SETTLED: **TWO RAILS, TOP AND BOTTOM - his, 2026-11-05.** A 2-pole breaker is **two modules, 36 mm**,
-so one rail does not carry it all:
+SETTLED: **TWO RAILS, AND THE SPLIT IS BY VOLTAGE - his, 2026-11-06.** A 2-pole breaker is **two
+modules, 36 mm**:
 
-| Rail | On it | Width |
-|---|---|---|
-| **Top** | 4 x 2-pole breaker | **144 mm** |
-| **Bottom** | 2 x WCT-25 contactor (36), the MDR supply (**40, the MDR-60's figure - the 40 W body is narrower**), the 1 A fuse holder (18), the 2 x 8 block | **under 94 mm** + the block |
+| Rail | On it |
+|---|---|
+| **Top - the 220 V side** | Main contactor, pump contactor, the **2 x 8 block**, the **three** 220 V breakers, the sense relay, and **every ground terminal** |
+| **Bottom - the 110 V side and the supplies** | The **6 A 110 V breaker**, the **2 x 6 splitter**, the 1 A fuse holder, the **MDR 12 V supply**, and the **36 V brick** |
 
-Both sit well inside roughly ten inches of usable width, and the split is mechanical rather than
-electrical - every device on both rails is on the 220 V side except the control fuse holder.
+✅ **SPLITTING BY VOLTAGE RATHER THAN BY DEVICE TYPE IS THE BETTER ARRANGEMENT**, and it falls out of
+the 12 V supply moving: everything the paddle kills is on one rail and everything that stays live is
+on the other. Anyone opening this box can tell at a glance which row is dead.
+
+🔴 **EVERY GROUND TERMINAL GOES ON ONE RAIL, AND IT MUST BE THE SAME ONE.** The green-and-yellow
+terminals use **the rail itself as the bus**, so **two rails are two separate ground buses** unless
+they are bonded - and a bond between rails puts a joint in the one path this arrangement exists to
+keep single. The top rail is the PE bar.
+
+NOTE: **Nine terminal bodies at two positions each is eighteen**, against the eight conductors named
+below. His, 2026-11-06. Generous, which is the right direction.
 
 **What a DIN rail needs vertically.** FLAG: **these are standard-practice figures, not measured off
 his parts** - the WCT-25 listing gives 18 mm of width and says nothing about height, so check them
@@ -565,8 +634,9 @@ measured and which were inherited.
 On the **Mega V** the Teensy runs off its **48 V stepper rail** through a 5 V regulator. The **VUSB pad is cut**,
 so there is no back-feed - that part is already right and should not be undone.
 
-SETTLED: **THE LOGIC RAIL IS ITS OWN MAINS-FED 12 V SUPPLY, on pair 4 of the block above - his
-scheme, 2026-11-05.** Then **point-of-load regulation per consumer** rather than one rail fanned out.
+SETTLED: **THE LOGIC RAIL IS ITS OWN MAINS-FED 12 V SUPPLY - and since 2026-11-06 it is fed from the
+110 V side, not from pair 4.** That is what keeps the controller alive through an E-stop. Then
+**point-of-load regulation per consumer** rather than one rail fanned out.
 
 SETTLED: **MEAN WELL MDR SERIES, 12 V 40 W - his, 2026-11-05.** FLAG: **this read MDR-60-12, 60 W,
 5 A for one commit** - the 60 W listing was pasted twice and the choice is the **40 W**.
@@ -583,9 +653,9 @@ NOTE: **3.3 A is sufficient - his call, 2026-11-05: he doubts the whole 12 V sid
 The supply reports nothing, so the figure to compare it against comes off the rail when the box is
 first powered. Not a gate on anything.
 
-✅ **BEING DIN RAIL NARROWS THE WHAT-IS-IN-THE-BOX QUESTION EITHER WAY.** This supply goes on the
-bottom rail with the contactors, so the only parts still unplaced are the **36 V 600 W supply and the
-VFD** - the two that are neither DIN nor small.
+✅ **BEING DIN RAIL NARROWS THE WHAT-IS-IN-THE-BOX QUESTION.** This supply goes on the **bottom rail,
+beside the 110 V breaker that feeds it** - so the only part still unplaced is the **VFD**, which is
+neither DIN nor small. The 36 V brick is on that rail too.
 
 | Consumer | Fed | Regulated |
 |---|---|---|
@@ -762,13 +832,17 @@ was subsequently settled at Ø80 2.2 kW:
 | 2.2 kW spindle | ~11 A |
 | Motor PSU | **3.5 A** — **nameplate**, 220 V in, 2026-10-12. Replaces a ~4 A estimate |
 | Pump | **80 W** - his, 2026-11-05. About **0.4 A** at 220 V, and he budgets it at 1 A |
-| 12 V supply | **MDR 12 V 40 W** - about **0.2 A** in |
-| **Total** | **~15.1 A** against a **16 A** continuous limit |
+| ~~12 V supply~~ | **moved to the 110 V circuit, 2026-11-06** |
+| **Total** | **~14.9 A** against a **16 A** continuous limit |
 
-NOTE: **ALL FOUR PAIRS NOW HAVE A NUMBER, AND ONLY ONE OF THEM IS IN DOUBT.** The pump and the 12 V
-supply together added 0.6 A. **The spindle's 11 A is the term that decides this table** and it is the
-one flagged above as possibly the drive's *output* current rather than its mains draw - so the right
-reading of ~15.1 against 16 is "comfortable if the 11 is right, and the 11 is what to go and measure."
+NOTE: **EVERY LOAD LEFT ON THIS CIRCUIT HAS A NUMBER, AND ONLY ONE OF THEM IS IN DOUBT.** **The
+spindle's 11 A is the term that decides this table** and it is the one flagged above as possibly the
+drive's *output* current rather than its mains draw - so the right reading of ~14.9 against 16 is
+"comfortable if the 11 is right, and the 11 is what to go and measure."
+
+**On the 110 V circuit, against its own 20 A:** the 12 V supply at about **0.4 A** at this voltage,
+the laptop charger at a couple of amps, the cameras and powered USB well under one. A few amps of
+twenty, and all of it behind the 6 A breaker.
 
 NOTE: **That margin is why the spindle decision and the circuit decision were the same decision.** A
 4.5 kW spindle would have drawn roughly 23-25 A and needed its own 30 A circuit on 10 AWG. The

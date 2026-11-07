@@ -101,11 +101,13 @@ which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 <tr><td>Control fuse</td><td><b>1 A</b></td><td>Protects the control conductors, not the coil</td></tr>
 <tr><td>Main contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>25 A AC-7a / 9 A AC-7b. Coil AC 110&ndash;120 V. 18 mm</td></tr>
 <tr><td>Distribution</td><td><b>2 &times; 8 block</b></td><td>Two switched legs in, four pairs out</td></tr>
-<tr><td>Breakers</td><td>4 &times; 2-pole, <b>all curve C</b></td><td>3 &times; 6 A and 1 &times; 16 A. Curve C is what pairs 1 and 2 needed; the other two come along for free</td></tr>
+<tr><td>Breakers</td><td>4 &times; 2-pole, <b>all curve C</b></td><td><b>Three on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and the <b>fourth on the 110 V rail</b> across hot and neutral</td></tr>
+<tr><td>Splitter</td><td><b>2 &times; 6 block</b>, 110 V side</td><td>Three pairs used, three spare</td></tr>
+<tr><td>Sense relay</td><td>DIN, <b>230 V coil</b> on pair 4</td><td>Contact to the interface board's e-stop input. <b>Not optional</b> &mdash; the controller survives the E-stop and has to be told</td></tr>
 <tr><td>Motor supply</td><td>36 V, 600 W</td><td>220 V at 3.5 A in, 36 V at 16.5 A out</td></tr>
 <tr><td>Spindle drive</td><td><b>Huanyang HY02D223B</b></td><td>2.2 kW, 4.4 kVA, 11 A output. R/S/T takes single phase on any two</td></tr>
 <tr><td>Pump contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>Coil AC 230 V &mdash; inrush 11.5 VA, holding 2.8 VA</td></tr>
-<tr><td>Logic supply</td><td><b>Mean Well MDR</b>, 12 V 40 W</td><td>3.3 A out, about 0.2 A in</td></tr>
+<tr><td>Logic supply</td><td><b>Mean Well MDR</b>, 12 V 40 W</td><td>3.3 A out. <b>Fed from the 110 V side</b>, so the controller survives an E-stop</td></tr>
 <tr><td>Enclosure</td><td>12 &times; 12 &times; 6 PVC, dust-proof cover</td><td>Two DIN rails. <b>Bonds nothing</b> &mdash; see Fig. 5</td></tr>
 </table>
 
@@ -180,41 +182,44 @@ circuits are Fig. 2 and Fig. 3.</p>
   <path class="w-hot" d="M103 292 V 384"/><path class="w-hot" d="M127 318 V 384"/>
   <path class="w-hot" d="M318 292 V 384"/><path class="w-hot" d="M342 318 V 384"/>
   <path class="w-hot" d="M533 292 V 384"/><path class="w-hot" d="M557 318 V 384"/>
-  <path class="w-hot" d="M748 292 V 384"/><path class="w-hot" d="M772 318 V 384"/>
+  <!-- pair 4 carries no breaker: straight down to the sense relay coil -->
+  <path class="w-hot" d="M748 292 V 508"/><path class="w-hot" d="M772 318 V 508"/>
 
   <!-- BREAKERS -->
   <rect class="bx" x="30"  y="384" width="170" height="60" rx="3"/>
   <rect class="bx" x="245" y="384" width="170" height="60" rx="3"/>
   <rect class="bx" x="460" y="384" width="170" height="60" rx="3"/>
-  <rect class="bx" x="675" y="384" width="170" height="60" rx="3"/>
   <text class="ttl c" x="115" y="407">PAIR 1 BREAKER</text>
   <text class="ttl c" x="330" y="407">PAIR 2 BREAKER</text>
   <text class="ttl c" x="545" y="407">PAIR 3 BREAKER</text>
-  <text class="ttl c" x="760" y="407">PAIR 4 BREAKER</text>
   <text class="sm c" x="115" y="425">6 A &middot; 2-pole</text>
   <text class="sm c" x="330" y="425">16 A &middot; 2-pole</text>
   <text class="sm c" x="545" y="425">6 A &middot; 2-pole</text>
-  <text class="sm c" x="760" y="425">6 A &middot; 2-pole</text>
   <text class="q c" x="115" y="439">TYPE C</text>
   <text class="q c" x="330" y="439">TYPE C</text>
   <text class="q c" x="545" y="439">TYPE C</text>
-  <text class="q c" x="760" y="439">TYPE C</text>
+  <text class="q c" x="820" y="408">PAIR 4</text>
+  <text class="sm c" x="820" y="424">no breaker &mdash;</text>
+  <text class="sm c" x="820" y="438">a 2 W coil</text>
 
   <!-- breaker -> load -->
   <path class="w-hot" d="M103 444 V 508"/><path class="w-hot" d="M127 444 V 508"/>
   <path class="w-hot" d="M318 444 V 508"/><path class="w-hot" d="M342 444 V 508"/>
   <path class="w-hot" d="M533 444 V 508"/><path class="w-hot" d="M557 444 V 508"/>
-  <path class="w-hot" d="M748 444 V 508"/><path class="w-hot" d="M772 444 V 508"/>
   <text class="wg" x="137" y="478">14 AWG</text>
   <text class="wg" x="352" y="478">14 AWG</text>
   <text class="wg" x="567" y="478">14 AWG</text>
-  <text class="wg" x="782" y="478">14 AWG</text>
+
 
   <!-- LOADS -->
   <rect class="bx2" x="30"  y="508" width="170" height="84" rx="3"/>
   <rect class="bx2" x="245" y="508" width="170" height="84" rx="3"/>
   <rect class="bx2" x="460" y="508" width="170" height="84" rx="3"/>
-  <rect class="bx2" x="675" y="508" width="170" height="84" rx="3"/>
+  <rect class="bxr" x="675" y="508" width="170" height="84" rx="3"/>
+  <text class="ttl c" x="760" y="531">SENSE RELAY</text>
+  <text class="sm c"  x="760" y="549">coil 230 V</text>
+  <text class="sm c"  x="760" y="565">contact to the controller</text>
+  <text class="q c"   x="760" y="583">TELLS IT THE DRIVES DIED</text>
 
   <text class="ttl c" x="115" y="531">36 V SUPPLY</text>
   <text class="sm c"  x="115" y="549">600 W &middot; variable</text>
@@ -231,21 +236,16 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="sm c"  x="545" y="565">poles 1-2 and 3-4</text>
   <text class="sm c"  x="545" y="583" fill="#c81e1e">coil 230 V &mdash; Fig. 3</text>
 
-  <text class="ttl c" x="760" y="531">12 V SUPPLY</text>
-  <text class="sm c"  x="760" y="549">Mean Well MDR &middot; 40 W</text>
-  <text class="sm c"  x="760" y="565">3.3 A out</text>
-  <text class="sm c"  x="760" y="583">about 0.2 A in</text>
-
   <!-- off-sheet -->
   <path class="w-hot" d="M115 592 V 626"/>
   <path class="w-hot" d="M330 592 V 626"/>
-  <path class="w-hot" d="M760 592 V 626"/>
+  <path class="w-ctl" d="M760 592 V 626"/>
   <text class="sm c" x="115" y="642">36 V out to the four</text>
   <text class="sm c" x="115" y="656">IG57 drives</text>
   <text class="sm c" x="330" y="642">U / V / W out to the</text>
   <text class="sm c" x="330" y="656">2.2 kW spindle</text>
-  <text class="sm c" x="760" y="642">12 V out to the RP23,</text>
-  <text class="sm c" x="760" y="656">limits and probes</text>
+  <text class="sm c" x="760" y="642">dry contact to the interface</text>
+  <text class="sm c" x="760" y="656">board&apos;s e-stop input</text>
 
   <!-- the pump itself -->
   <path class="w-hot" d="M533 592 V 650"/><path class="w-hot" d="M557 592 V 650"/>
@@ -265,8 +265,8 @@ circuits are Fig. 2 and Fig. 3.</p>
 <!-- ============================================================ FIG 2 -->
 <div class="fig">
 <h2>Fig. 2 &mdash; Control: the paddle and the main coil</h2>
-<p class="sub">The whole 110 V control circuit. The paddle switches <b>both</b> legs, so the coil is
-isolated on both sides when it drops.</p>
+<p class="sub">The paddle's own circuit, which is <b>pair 2 off the 110 V splitter</b> in Fig. 4. It
+switches <b>both</b> legs, so the coil is isolated on both sides when it drops.</p>
 
 <figure>
 <svg viewBox="0 0 900 410" width="190mm" xmlns="http://www.w3.org/2000/svg">
@@ -277,7 +277,7 @@ isolated on both sides when it drops.</p>
 
   <!-- 1 A fuse -->
   <path class="w-hot" d="M14 78 H 140"/>
-  <text class="sm" x="14" y="66">110 V HOT &mdash; black</text>
+  <text class="sm" x="14" y="66">110 V HOT &mdash; splitter pair 2</text>
   <rect class="bx" x="140" y="60" width="110" height="36" rx="3"/>
   <text class="ttl c" x="195" y="83">1 A FUSE</text>
   <path class="w-hot" d="M250 78 H 552 V 120 H 580"/>
@@ -396,57 +396,78 @@ shows up as spindle speed jitter and gets blamed on the drive.
 
 <!-- ============================================================ FIG 4 -->
 <div class="fig">
-<h2>Fig. 4 &mdash; The 110 V side, and what the paddle does not kill</h2>
+<h2>Fig. 4 &mdash; The 110 V side: everything that survives the E-stop</h2>
+<p class="sub">Nothing on this sheet is switched by the paddle. <b>All of it is orange</b> &mdash; live
+with the paddle down, by design.</p>
 
 <figure>
-<svg viewBox="0 0 900 300" width="190mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 900 430" width="190mm" xmlns="http://www.w3.org/2000/svg">
 
-  <rect class="bx2" x="20" y="34" width="180" height="82" rx="3"/>
-  <text class="ttl c" x="110" y="58">110 V PIGTAIL</text>
-  <text class="sm c"  x="110" y="74">10 ft captive &middot; 12 AWG</text>
-  <text class="sm c"  x="110" y="88">20 A at the wall</text>
-  <text class="q c"   x="110" y="102">L5-20P &mdash; CANNOT TAKE L6-20</text>
+  <rect class="bx2" x="20" y="30" width="180" height="82" rx="3"/>
+  <text class="ttl c" x="110" y="54">110 V PIGTAIL</text>
+  <text class="sm c"  x="110" y="70">10 ft captive &middot; 12 AWG</text>
+  <text class="sm c"  x="110" y="84">20 A at the wall</text>
+  <text class="q c"   x="110" y="100">L5-20P &mdash; CANNOT TAKE L6-20</text>
 
-  <circle class="dot" cx="200" cy="56" r="3.5"/>
-  <circle class="dot" cx="200" cy="84" r="3.5"/>
+  <path class="w-org" d="M200 56 H 260"/>
+  <path class="w-org" d="M200 86 H 260"/>
+  <text class="sm" x="206" y="48">hot</text>
+  <text class="sm" x="206" y="108">neutral</text>
 
-  <!-- control branch, up and away -->
-  <path class="w-hot" d="M200 56 H 250 V 30 H 340"/>
-  <path class="w-nhal" d="M200 84 H 272 V 46 H 340"/>
-  <path class="w-neu"  d="M200 84 H 272 V 46 H 340"/>
-  <text class="sm" x="348" y="26">to the 1 A fuse and the paddle &mdash; Fig. 2</text>
-  <text class="sm" x="348" y="50">behind the fuse, and killed by the paddle</text>
+  <!-- the repurposed breaker -->
+  <rect class="bx" x="260" y="30" width="170" height="82" rx="3"/>
+  <text class="ttl c" x="345" y="54">6 A BREAKER</text>
+  <text class="sm c"  x="345" y="72">2-pole &middot; Type C</text>
+  <text class="sm c"  x="345" y="88">hot AND neutral</text>
+  <text class="q c"   x="345" y="104">PAIR 4&apos;S, REPURPOSED</text>
 
-  <!-- receptacle branch, orange -->
-  <path class="w-org" d="M200 56 V 150 H 420"/>
-  <path class="w-org" d="M200 84 V 176 H 420"/>
-  <text class="wg" x="250" y="144">ORANGE &middot; 12 AWG</text>
+  <path class="w-org" d="M430 56 H 490"/>
+  <path class="w-org" d="M430 86 H 490"/>
 
-  <rect class="bx2" x="420" y="118" width="170" height="90" rx="3"/>
-  <text class="ttl c" x="505" y="146">RECEPTACLE</text>
-  <text class="sm c"  x="505" y="166">inside the box</text>
-  <text class="q c"   x="505" y="188">UNSWITCHED</text>
+  <!-- the 2x6 splitter -->
+  <rect class="bx" x="490" y="24" width="120" height="94" rx="3"/>
+  <text class="ttl c" x="550" y="54">2 &times; 6</text>
+  <text class="ttl c" x="550" y="72">SPLITTER</text>
+  <text class="sm c"  x="550" y="94">3 pairs used</text>
+  <text class="sm c"  x="550" y="110">3 spare</text>
 
-  <path class="w-org" d="M590 150 H 660"/>
-  <path class="w-org" d="M590 176 H 660"/>
+  <!-- pair 1, out the right edge to the 12 V supply -->
+  <path class="w-org" d="M610 40 H 670 V 100 H 700"/>
+  <path class="w-org" d="M610 54 H 655 V 116 H 700"/>
 
-  <rect class="bx2" x="660" y="118" width="200" height="90" rx="3"/>
-  <text class="ttl c" x="760" y="146">POWER STRIP</text>
-  <text class="sm c"  x="760" y="166">laptop charger</text>
-  <text class="sm c"  x="760" y="184">powered USB &middot; cameras</text>
+  <!-- pair 2, out the right edge to the paddle -->
+  <path class="w-org" d="M610 68 H 640 V 166 H 700"/>
+  <path class="w-org" d="M610 82 H 625 V 182 H 700"/>
 
-  <text class="q" x="20" y="248">ORANGE IS LIVE WITH THE PADDLE DOWN. There is a live power strip inside this enclosure, on purpose.</text>
-  <text class="sm" x="20" y="270">It is deliberately not behind the 1 A fuse &mdash; that would not carry a laptop charger. The wall's 20 A is its protection,</text>
-  <text class="sm" x="20" y="288">and the useful consequence is that the sender stays up when the paddle drops the controller.</text>
+  <!-- pair 3, out the BOTTOM edge to the receptacle, clear of the other two -->
+  <path class="w-org" d="M530 118 V 286 H 700"/>
+  <path class="w-org" d="M560 118 V 302 H 700"/>
+
+  <rect class="bx2" x="700" y="84" width="180" height="46" rx="3"/>
+  <text class="ttl c" x="790" y="104">PAIR 1 &mdash; 12 V SUPPLY</text>
+  <text class="sm c"  x="790" y="121">Mean Well MDR &middot; 40 W</text>
+
+  <rect class="bx2" x="700" y="146" width="180" height="56" rx="3"/>
+  <text class="ttl c" x="790" y="168">PAIR 2 &mdash; PADDLE</text>
+  <text class="sm c"  x="790" y="186">behind its 1 A fuse &mdash; Fig. 2</text>
+
+  <rect class="bx2" x="700" y="266" width="180" height="56" rx="3"/>
+  <text class="ttl c" x="790" y="288">PAIR 3 &mdash; RECEPTACLE</text>
+  <text class="sm c"  x="790" y="306">power strip plugs in here</text>
+
+  <text class="q" x="20" y="358">THE CONTROLLER IS ON THIS SHEET. The paddle kills the spindle and the steppers; the RP23 keeps running,</text>
+  <text class="sm" x="20" y="378">with its position, its alarm state and the ioSender session intact. That is why the sense relay in Fig. 1 exists &mdash;</text>
+  <text class="sm" x="20" y="396">a controller that outlives the drives and does not know it will come back with a wrong position.</text>
+  <text class="sm" x="20" y="418">The 1 A fuse protects only the four conductors out to the remote switch box. A laptop charger would never run behind it.</text>
 </svg>
-<figcaption>Fig. 4 &mdash; the 110 V branches. One is switched and fused; the other is neither, by design.</figcaption>
+<figcaption>Fig. 4 &mdash; the 110 V side. One breaker, one splitter, three pairs, nothing switched.</figcaption>
 </figure>
 
 <div class="note">
-<b>For wiring work, pull both pigtails.</b> The paddle is an emergency stop that happens to be
-convenient for service. It is not a disconnect: with it down, the 110 V control branch upstream of it
-is live, the receptacle and strip are live, and the 220 V reaches the main contactor's line terminals.
-Two plugs on the floor is a break you can see from inside the box.
+<b>For wiring work, pull both pigtails.</b> With the paddle down, <b>more of this box is live than is
+dead</b> &mdash; the whole of this sheet, the paddle's own feed, and the 220 V up to the main
+contactor's line terminals. Only the pairs off the 2 &times; 8 block are dead. Two plugs on the floor
+is a break you can see from inside the box.
 </div>
 </div>
 
