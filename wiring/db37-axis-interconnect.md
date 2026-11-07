@@ -18,7 +18,7 @@ or metered yet.
 | **EN** | controller → driver | Per axis, not commoned across drivers |
 | **GND** | shared | The commoned cathode rail - see below |
 | **AL** | driver → controller | Closed-loop driver alarm |
-| **Limit** | switch → controller | **NC.** See [fail-closed](#the-connector-fails-in-the-right-direction) |
+| **Limit** | switch → controller | **NC.** See [fail-closed](#the-connector-fails-safe-again-once-the-nc-sensors-go-in) |
 
 The driver's Step/Dir/EN inputs are **opto pairs wired common-cathode (sinking)**: the `-` side of
 each opto is tied to the shared GND and the controller sources current into the `+` side. That is

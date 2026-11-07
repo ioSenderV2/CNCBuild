@@ -20,22 +20,29 @@
 *-erc.rpt
 *-drc.rpt
 
-# The two printable documents - DERIVED from machine/*.md by tools/make-pdf.ps1, plus
-# the print-sized photo copies it scales on the way. Regenerate, do not track: a tracked
-# copy would be a second source of truth that silently goes stale, which is the exact
-# failure STATUS.md and INDEX.md are generated to avoid.
+# The printable documents - DERIVED from the prose by tools/md2html.py and
+# tools/make-pdf.ps1, plus the print-sized photo copies they scale on the way. Regenerate,
+# do not track: a tracked copy would be a second source of truth that silently goes stale,
+# which is the exact failure STATUS.md and INDEX.md are generated to avoid.
 #
 #   build-document  <- machine/assembly.md    how to build it. ~18 pages, no photographs
 #   design-record   <- the twelve chapters    why it is that shape. ~102 pages, all
 #                                             sixteen photographs embedded
+#   wiring-document <- the five wiring/*.md   power in, the E-stops, the drives, the ground
+#                                             bar. Added 2026-11-07 because a .md file is
+#                                             unreadable outside an editor
 #   shop-pack       <- machine/drawings/     what to make. The fourteen plate sheets for
 #                      shop-pack.html        the machining visit - and the one that gets
 #                                            emailed out. Its HTML IS tracked and is
 #                                            hand-authored, so only the PDF is derived.
+#
+# wiring/panel-schematic.html is NOT here: it is hand-authored and tracked, like shop-pack.
 build-document.html
 build-document.pdf
 design-record.html
 design-record.pdf
+wiring-document.html
+wiring-document.pdf
 machine/drawings/shop-pack.pdf
 build-photos/
 

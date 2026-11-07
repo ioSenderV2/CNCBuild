@@ -1,13 +1,23 @@
 #!/usr/bin/env python3
-"""Render the machine prose into printable HTML files - the input to tools/make-pdf.ps1.
+"""Render the prose into printable HTML files - the input to tools/make-pdf.ps1.
 
-    md2html.py                 write all three at the repo root
+    md2html.py                 write all four
     md2html.py --doc build     just build-document.html
     md2html.py --doc steel     just steel-prep.html
+    md2html.py --doc wiring    just wiring-document.html
     md2html.py --check         render and report, write nothing
 
-WHY THERE ARE THREE
--------------------
+Each document names its source directory with "dir" in DOCS, defaulting to machine. The
+wiring document was the first from a second directory, 2026-11-07, and adding it is what
+took the hardcoded machine/ out of rebase() and the photograph scan.
+
+THE FOURTH IS THE WIRING PROSE, and it exists for a plainer reason than the register split
+below: a .md file is unreadable anywhere but an editor. His words, 2026-11-07 - "md files
+are useless on their own outside of VS Code". It also carries the two {{SYMBOL}} values that
+a browser markdown extension would show as their own names.
+
+WHY THERE ARE THREE MACHINE DOCUMENTS
+-------------------------------------
 The first two are split by REGISTER, not by subject, and that split is the whole point:
 
   build-document.html   <- machine/assembly.md      WHAT GETS BUILT. Parts, hardware, what
@@ -197,6 +207,42 @@ DOCS = {
         # from a browser on a home printer, which honours @page - and the shared rule is A4.
         "css": "@page { size:letter portrait; margin:14mm 0 14mm; }",
     },
+    # THE WIRING PROSE, because a .md file is unreadable anywhere but an editor. His, 2026-11-07.
+    # It reads wiring/ rather than machine/, which is what "dir" is for - this was the first
+    # document from a second source directory and the reason the hardcoded machine/ came out
+    # of rebase() and the photo scan.
+    "wiring": {
+        "out": "wiring-document.html",
+        "dir": "wiring",
+        "order": [
+            "README.md",
+            "cabinet-power-and-grounding.md",
+            "ig57-drives.md",
+            "breakout-box.md",
+            "db37-axis-interconnect.md",
+        ],
+        "tab": "CNCBuild - wiring",
+        "h1": "CNCBuild &mdash; wiring",
+        "sub": "Power in, what the E-stops kill, the drives, and the one bar every ground meets at",
+        "sheets": False,
+        "note": (
+            "<p><strong>The five <code>wiring/*.md</code> files, verbatim and in reading"
+            " order.</strong> Nothing is specified here for the first time and nothing is"
+            " summarised. <strong>If this document and a <code>.md</code> file disagree, the"
+            " <code>.md</code> file wins</strong> and this copy is stale - regenerate it with"
+            " <code>tools/md2html.py --doc wiring</code>.</p>"
+            "<p><strong>The drawing is <a href=\"wiring/panel-schematic.html\">"
+            "panel-schematic.html</a>, which is not part of this document.</strong> Five sheets"
+            " with wire colour and gauge on every run, maintained by hand - it is derived from"
+            " the prose here, never the other way round.</p>"
+            "<p><strong>An item marked OPEN is not settled anywhere in this repo.</strong> Do"
+            " not fill one in from a catalogue or from inference. FLAG marks a statement this"
+            " file used to make and no longer does, kept so it cannot be reinstated by"
+            " accident.</p>"
+            "<p><strong>Measured values live in <a href=\"commissioning/\">commissioning/</a>"
+            " and outrank every computed figure here.</strong></p>"
+        ),
+    },
 }
 
 # The shop pack's own sheets, by the id anchors added to machine/drawings/shop-pack.html.
@@ -319,21 +365,33 @@ def slugger(prefix: str):
     return slugify
 
 
-def rebase(href: str, chapters: dict[str, str]) -> str:
+def rebase(href: str, chapters: dict[str, str], src: str = "machine",
+           slug: str = "") -> str:
     """Rewrite one href for an HTML file living at the repo root.
 
-    Links between the thirteen chapters become internal anchors; everything else is rebased
-    from machine/ to the root so the relative path still points at a real file.
+    Links between the chapters become internal anchors; everything else is rebased from the
+    source directory to the root so the relative path still points at a real file. `src` is
+    the document's source directory - machine for the three machine documents, wiring for the
+    wiring one.
+
+    `slug` is the chapter being rendered, and it exists for ONE case: a bare `#anchor`
+    written in the markdown. On a multi-chapter document every heading id is namespaced with
+    its chapter slug - see slugger() - so a bare anchor that works in VS Code and on GitHub
+    points at nothing here. An in-file anchor means "this file", so it gets this chapter's
+    prefix. Without this, every hand-written in-page link in the source is dead in the
+    printed document, silently: the link renders, it just goes nowhere.
     """
-    if href.startswith(("#", "http://", "https://", "mailto:")):
+    if href.startswith("#"):
+        return f"#{slug}-{href[1:]}" if slug and href != "#" else href
+    if href.startswith(("http://", "https://", "mailto:")):
         return href
     if href in chapters:                 # chapter to chapter -> a page jump
         return "#" + chapters[href]
-    if href == "README.md":              # machine/README.md, the directory index
-        return "machine/README.md"
+    if href == "README.md":              # the source directory's own index
+        return f"{src}/README.md"
     if href.startswith("../"):           # already relative to the root
         return href[3:]
-    return "machine/" + href             # photos/, drawings/, anything else in machine/
+    return f"{src}/{href}"               # anything else inside the source directory
 
 
 HREF_RE = re.compile(r'href="([^"]*)"')
@@ -403,16 +461,29 @@ def render(key: str, md_dir: Path, captions: dict[str, str], on_disk: list[str],
     order = spec["order"] or ORDER
     chapters: dict[str, str] = {name: Path(name).stem for name in order}
 
+    # A document's source directory. The three machine documents share machine/; the wiring
+    # one reads wiring/. md_dir arrives as the repo root's machine/ for backwards
+    # compatibility, so the spec's own "dir" wins when it has one.
+    src_name = spec.get("dir", "machine")
+    md_dir = md_dir.parent / src_name
+
     # Which chapter cites which photograph. First citer wins, so a photo referenced twice is
     # printed once, with the chapter that leans on it hardest - the earlier one in reading
     # order. Anything no chapter cites goes to the appendix rather than being dropped.
+    #
+    # The photographs live in machine/photos/ and are cited by the machine prose. A document
+    # from another directory places none, and that is not a finding - so it skips the scan
+    # rather than reporting every photograph as an orphan.
     placed: dict[str, list[str]] = {name: [] for name in order}
-    for photo in on_disk:
-        for name in order:
-            if photo in (md_dir / name).read_text(encoding="utf-8"):
-                placed[name].append(photo)
-                break
-    orphans = [p for p in on_disk if not any(p in v for v in placed.values())]
+    if src_name == "machine":
+        for photo in on_disk:
+            for name in order:
+                if photo in (md_dir / name).read_text(encoding="utf-8"):
+                    placed[name].append(photo)
+                    break
+        orphans = [p for p in on_disk if not any(p in v for v in placed.values())]
+    else:
+        orphans = []
 
     bodies: list[str] = []
     toc: list[str] = []
@@ -437,7 +508,12 @@ def render(key: str, md_dir: Path, captions: dict[str, str], on_disk: list[str],
             },
         )
         body = md.convert(text)
-        body = HREF_RE.sub(lambda m: f'href="{rebase(m.group(1), chapters)}"', body)
+        # slug is passed only when the document namespaces its heading ids, which is what
+        # len(order) > 1 decides in the slugger above. On a single-chapter document the ids
+        # are bare and a bare anchor already matches.
+        anchor_prefix = slug if len(order) > 1 else ""
+        body = HREF_RE.sub(
+            lambda m: f'href="{rebase(m.group(1), chapters, src_name, anchor_prefix)}"', body)
         bodies.append(f'<section class="chapter" id="{slug}">\n{body}\n</section>')
 
         # Contents: the chapter, then its H2s. Deeper levels would run to three pages.
@@ -538,9 +614,14 @@ def main() -> int:
     md_dir = ROOT / "machine"
     photo_dir = md_dir / "photos"
 
+    keys = args.doc or sorted(DOCS)
+    wants_photos = any(DOCS[k].get("dir", "machine") == "machine" for k in keys)
+
     captions = load_captions(photo_dir)
     on_disk = sorted(p.name for p in photo_dir.glob("*.jpg"))
-    if not args.check:
+    # Scaling sixteen photographs takes a few seconds and writes 2.3 MB. Only the machine
+    # documents embed any, so rendering the wiring one alone should not pay for it.
+    if not args.check and wants_photos:
         src_b, out_b = prepare_photos(photo_dir, PHOTO_CACHE, args.rebuild_photos)
         print(f"photographs scaled to {PHOTO_MAX_PX}px: "
               f"{src_b/1048576:.1f} MB -> {out_b/1048576:.1f} MB in {PHOTO_CACHE.name}/")
@@ -552,7 +633,7 @@ def main() -> int:
     if unused_caps:
         print(f"  WARNING caption with no file: {', '.join(unused_caps)}")
 
-    for key in (args.doc or sorted(DOCS)):
+    for key in keys:
         doc, out, stats, orphans = render(key, md_dir, captions, on_disk, args.check)
         print(f"\n== {key}: {out.name} ==")
         for name, n, dropped in stats:
@@ -560,7 +641,9 @@ def main() -> int:
             print(f"  {name:34} {n:5} lines{flag}")
         total = sum(n for _, n, _ in stats)
         print(f"  {len(stats)} source file(s), {total} lines -> {len(doc.splitlines())} HTML lines")
-        if len(stats) > 1:
+        # Only the machine documents place photographs. Reporting a count on a document that
+        # never scanned for them reads as 16 placed when the answer is none.
+        if len(stats) > 1 and DOCS[key].get("dir", "machine") == "machine":
             print(f"  photographs: {len(on_disk)} on disk, "
                   f"{len(on_disk) - len(orphans)} placed, {len(orphans)} in the appendix")
         if args.check:
