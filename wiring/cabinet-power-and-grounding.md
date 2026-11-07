@@ -1001,6 +1001,23 @@ NOTE: **It adds one conductor to the drag chains**, Z plate back to the cabinet.
 "alongside the spindle's own earth" for one commit** - the spindle cable does not go in the chain at
 all; see the routing below.
 
+### Two drag chains, and Y1 is where everything accumulates
+
+SETTLED: **his, 2026-11-07. There is an X chain and a Y1 chain, and nothing on Y2.**
+
+| Chain | Carries |
+|---|---|
+| **X** | The **X and Z steppers** - **18/2** for the supply and a **Cat 5 patch** for the signals, each |
+| **Y1** | All of that, plus the probe return, coming back along the Y1 beam to the cabinet |
+| **Y2** | **none** - its stepper and limit are static runs, so there is nothing to flex |
+
+**The Y1 chain is the one to size**, because everything that moves ends up in it. His read is that
+there is room; it is worth counting against the chain's inside section before one is bought rather
+than after.
+
+NOTE: **Cat 5 patch cable is stranded, which is why it belongs in a chain.** It is already what runs
+in the Mega V's chains.
+
 ### The spindle cable goes overhead, not in the chain
 
 SETTLED: **his, 2026-11-07, and the Mega V already runs it this way.** The spindle's **four-conductor
