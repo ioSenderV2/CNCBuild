@@ -593,6 +593,18 @@ dissipates outside it. **On the rail it dissipates into a dust-proof PVC enclosu
 ventilation** - tens of watts at half load, against the **2.4 W** the two contactors contribute. That
 is the enclosure section's heat question arriving for real.
 
+**His answer to the heat, 2026-11-06: drill the box and let air through.** That works, and it costs
+the dust-proofing that was the reason for this box over a vented metal one.
+
+🔴 **VENT THE FACE, NOT THE TOP.** The top is a horizontal surface on a box bolted to the side of a
+machine that makes chips - it is precisely where swarf settles, and a hole in it is a funnel.
+**A vertical face collects nothing**, because gravity does not drop chips sideways. Low holes in and
+high holes out on the same face still convect; the stack height inside a 12 inch box is enough.
+
+PROCEDURE: **FILTER THEM.** The hazard this box was bought against is **conductive dust on a terminal
+block**, not dust in general. Coarse filter media behind the holes keeps the convection and stops the
+aluminium - and it is a thing to blow out occasionally rather than a thing to discover.
+
 **The other cost is 480 W against the brick's 594 W**, and that is unestablished either way - see the
 comparison below, which [`../commissioning/bench-session.md`](../commissioning/bench-session.md)
 settles. **Not decided.** The mock-up in the real box is what should decide it, because the heat is
