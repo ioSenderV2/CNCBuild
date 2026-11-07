@@ -491,6 +491,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
 - [Separate the logic supply from the motor rail](wiring/cabinet-power-and-grounding.md#separate-the-logic-supply-from-the-motor-rail)
 - [The enclosure is a 12 x 12 x 6 PVC box](wiring/cabinet-power-and-grounding.md#the-enclosure-is-a-12-x-12-x-6-pvc-box)
 - [Grounds meet at one PE bus bar](wiring/cabinet-power-and-grounding.md#grounds-meet-at-one-pe-bus-bar)
+  - ["Machine frame" is two halves and a spindle](wiring/cabinet-power-and-grounding.md#machine-frame-is-two-halves-and-a-spindle)
 - [USB is a ground path, and the cable stays plugged in](wiring/cabinet-power-and-grounding.md#usb-is-a-ground-path-and-the-cable-stays-plugged-in)
 - [The mains circuit](wiring/cabinet-power-and-grounding.md#the-mains-circuit)
 - [Provenance](wiring/cabinet-power-and-grounding.md#provenance)

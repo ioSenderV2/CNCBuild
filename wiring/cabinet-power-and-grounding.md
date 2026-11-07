@@ -885,7 +885,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | PE in - 220 V pigtail | the conductor that actually connects this bar to earth |
 | PE in - 110 V pigtail | the second one |
 | ~~Cabinet chassis~~ | **n/a - the box is PVC.** There is no chassis to bond; see above |
-| Machine frame | |
+| **Fixed frame** - the steel Y back plate | **Not "the machine frame"** - see below, the machine is in two halves |
 | 36 V supply case | **its own conductor** - the box bonds nothing |
 | 12 V supply case | the MDR is DIN mounted and still needs its own |
 | Motor supply 0 V | the 36 V rail's return |
@@ -899,7 +899,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 |---|---|
 | 1 | PE in - 220 V pigtail |
 | 2 | PE in - 110 V pigtail |
-| 3 | Machine frame |
+| 3 | **Fixed frame** - the steel Y back plate |
 | 4 | VFD **E** terminal |
 | 5 | 36 V supply case |
 | 6 | 12 V supply case |
@@ -928,6 +928,44 @@ against.
 NOTE: **ERR UP, BECAUSE A SECOND BAR IS THE AWKWARD FIX.** Running out means either a second bar
 bonded to the first, which puts a joint in the one path this whole arrangement exists to keep
 single, or re-landing conductors two to a screw. Terminals are the cheapest thing on the rail.
+
+### "Machine frame" is two halves and a spindle
+
+🔴 **THE MACHINE IS NOT ONE PIECE OF METAL, AND THE ONLY PATH BETWEEN ITS HALVES IS THROUGH THE
+BEARINGS.** His question, 2026-11-07, and he is right twice over: a bond at the back plate does not
+reach the spindle, **and it does not reach the X beam either** - the gantry rides the Y blocks, so
+everything above them is on the far side of a rolling-element joint. **Fault current or VFD return
+through bearing balls is how a bearing is destroyed.**
+
+| What | Bonded by | Why |
+|---|---|---|
+| **Fixed frame** - Y beams, extrusion, the steel back plate | **Its own conductor to the bar** | Steel takes a ring terminal properly, it ties both beams and the box fixing, and it is near the enclosure |
+| **Spindle** | **Its own earth, back with the motor cable to the VFD's E terminal** | Not to the bar. That conductor is also the return path for the switching noise the drive puts on the motor cable, and the loop wants to be tight |
+| **Gantry** - X beam, end plates | **22 AWG stranded in the Y drag chain**, to the fixed frame | Noise only |
+| **X carriage, Z plate** | **nothing of their own** | They sit between two bonded things, and the spindle's earth lands on a body clamped to the Z plate |
+
+✅ **NEITHER NEW BOND ADDS A TERMINAL TO THE BAR.** The spindle's goes to the VFD and the gantry's
+goes to the fixed frame. The count above stays at eight.
+
+NOTE: **THE GANTRY BOND IS FOR NOISE, NOT FOR SAFETY - and saying so changes how much to care.**
+Nothing on the moving structure can go to mains: both steppers and every sensor are 36 V or less, and
+the one mains item up there is the spindle, which has its own earth. What the bond buys is that a
+metre of aluminium extrusion running alongside the spindle's motor cable is not left floating.
+
+✅ **AND THE SHIELDED MOTOR CABLE DOES MORE FOR THAT THAN THE BOND DOES.** Containing the noise at
+the source beats giving the gantry somewhere to put what it picked up. **Get the spindle cable's
+shield landed at the VFD first**; the gantry bond is then genuinely a belt-and-braces measure rather
+than something being relied on.
+
+NOTE: **22 AWG stranded is proportionate and heavier wire would buy almost nothing.** His call, and
+the physics agrees: inductance per unit length goes with the **log** of the conductor diameter, so
+22 AWG and 14 AWG are within a hair of each other at the frequencies that matter. The only thing that
+meaningfully lowers it is **width** - which is what flat braid is for, and it is a geometry effect
+rather than a copper-area one.
+
+🔴 **THE TERMINATION IS WHAT FAILS, NOT THE WIRE.** Ring terminal under a bolt into **bare metal** -
+**scrape or file the anodising** where it lands on the X beam. A perfect conductor into an anodised
+surface is an open circuit, and it is an open circuit that looks exactly like a finished job.
 
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal
