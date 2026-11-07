@@ -593,17 +593,18 @@ dissipates outside it. **On the rail it dissipates into a dust-proof PVC enclosu
 ventilation** - tens of watts at half load, against the **2.4 W** the two contactors contribute. That
 is the enclosure section's heat question arriving for real.
 
-**His answer to the heat, 2026-11-06: drill the box and let air through.** That works, and it costs
-the dust-proofing that was the reason for this box over a vented metal one.
+SETTLED: **WHERE THE BOX MOUNTS - underneath the torsion box, middle and back. His, 2026-11-06.** The
+box's **back wall and its centre wall seal that bay off**, so the enclosure sees **general shop dust
+and no chips at all**.
 
-🔴 **VENT THE FACE, NOT THE TOP.** The top is a horizontal surface on a box bolted to the side of a
-machine that makes chips - it is precisely where swarf settles, and a hole in it is a funnel.
-**A vertical face collects nothing**, because gravity does not drop chips sideways. Low holes in and
-high holes out on the same face still convect; the stack height inside a 12 inch box is enough.
+**His answer to the heat: drill it and let air through** - and that location is what makes it cheap.
+FLAG: **this file argued for venting the face rather than the top, and for filtering the holes.
+Both were built on the box being somewhere swarf lands, and it is not.** Vent it wherever is
+convenient.
 
-PROCEDURE: **FILTER THEM.** The hazard this box was bought against is **conductive dust on a terminal
-block**, not dust in general. Coarse filter media behind the holes keeps the convection and stops the
-aluminium - and it is a thing to blow out occasionally rather than a thing to discover.
+NOTE: **The one thing worth a look is whether that bay has air to move.** Convecting warm air out of
+the enclosure and into a sealed pocket under the torsion box only warms the pocket. A glance at the
+real thing settles it, and it decides nothing else.
 
 **The other cost is 480 W against the brick's 594 W**, and that is unestablished either way - see the
 comparison below, which [`../commissioning/bench-session.md`](../commissioning/bench-session.md)
@@ -751,9 +752,11 @@ SETTLED: **his, ordered 2026-11-05** - and it closes the question of which box t
 | Entries | pre-moulded **3/4 inch and 1 inch** punch-in holes, **all four sides** |
 | Cover | **dust-proof**, screw-on. Rated indoor/outdoor |
 
-✅ **DUST-PROOF AND NON-CORRODING IS THE RIGHT CALL FOR WHERE THIS LIVES.** A shop making MDF and
-aluminium dust is the environment that kills a vented metal box, and conductive swarf settling on a
-terminal block is the failure that looks like a random fault.
+✅ **NON-CORRODING AND COVERED IS THE RIGHT CALL FOR WHERE THIS LIVES**, which since 2026-11-06 is
+**underneath the torsion box, middle and back** - sealed off by the box's back wall and its centre
+wall. **General shop dust, no chips.** FLAG: **this paragraph argued the dust-proof cover against
+conductive swarf until 2026-11-06**; the location rules that out, and it is why venting the enclosure
+is cheap rather than a trade.
 
 ✅ **AND A PLASTIC BOX MAKES THE SINGLE-POINT STAR BELOW ACTUALLY SINGLE-POINT.** In a metal
 enclosure every mounting screw, every DIN rail foot and every supply case touching the panel is
@@ -781,12 +784,10 @@ the machine lives powered. **The DIN gear is nothing: 1.2 W per contactor, 2.4 W
 supply is a different proposition even at a fraction of load, and the VFD has a heatsink for a
 reason.
 
-NOTE: **HIS FALLBACK IS TO LEAVE THE COVER OFF - and that is a real option, with one cost.** It
-solves the heat outright. What it gives back is the dust-proofing, which is the reason this box was
-chosen over a vented metal one: a shop making MDF and aluminium dust, and conductive swarf settling
-on a terminal block. **So it is the answer for a hot box and not a free one** - if the heat turns out
-to need it, the better trade is probably to put the 600 W supply and the VFD outside the box and keep
-the cover on the part holding the terminals.
+NOTE: **SO VENTING IT IS CHEAP, AND SO IS LEAVING THE COVER OFF.** Both looked like a trade against
+dust-proofing until the mounting position was recorded on 2026-11-06. Under the torsion box behind
+two walls there are **no chips to keep out**, only general dust - which is a thing to blow out of a
+terminal block occasionally, not a thing that kills one.
 
 ## Grounds meet at one PE bus bar
 
