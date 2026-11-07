@@ -1002,6 +1002,84 @@ dust-proofing until the mounting position was recorded on 2026-11-06. Under the 
 two walls there are **no chips to keep out**, only general dust - which is a thing to blow out of a
 terminal block occasionally, not a thing that kills one.
 
+## What the conductors are, and how they get out of the box
+
+SETTLED: **EVERY RUN LEAVING THE ENCLOSURE IS SHIELDED, 4 OR 2 CONDUCTOR - his, 2026-11-07.** The VFD,
+the interface box and the controller, and the two switch boxes. **Inside** the enclosure is a separate
+question, below.
+
+| Run | |
+|---|---|
+| Out to the **VFD** | mains to the drive, and the pump contactor's coil pair |
+| Out to the **interface box and controller** | 12 V, and the sense relay's contact back |
+| Out to the **two switch boxes** | the coil circuit, in series through the mushroom and then the paddle |
+
+NOTE: **ON THE SWITCH RUN THE SHIELD IS CONTAINING AN AGGRESSOR, NOT PROTECTING A VICTIM.** That run
+carries switched mains and nothing quiet, so the shield is there to keep it from radiating into
+anything that shares its route - which is the same argument this file makes against the VFD. **It is
+the one of the three where a shield is optional**; on the interface box run it is protecting the
+12 V and the sense contact, which is the usual way round.
+
+🔴 **EVERY SHIELD IS ANOTHER DRAIN ON THE PE BAR, AND THAT IS THE TERMINAL COUNT BELOW.** The bar was
+sized for eight firm conductors with ten bought, and the only shields in the design were the four
+motor supply runs - whose drains follow the 36 V supply and may not land here at all. **Three or four
+more shielded runs land their drains in this box for certain.** See the open item under the bar:
+buying more than ten stops being a precaution and becomes the requirement.
+
+NOTE: **ONE END ONLY, AND IT IS THE PANEL END.** The rule is already in the bar's table and does not
+change for these: a shield grounded at both ends is a loop carrying whatever the two grounds differ
+by.
+
+### Inside the box - solid holds its shape, and that is not the whole story
+
+OPEN: **HIS QUESTION, 2026-11-07: solid copper inside the enclosure so it stays where it is put.** The
+motive is right and it is why comb jumpers are solid. **Where it needs care is the free run.**
+
+| Where | |
+|---|---|
+| **Short links between adjacent terminals** on the same rail | **Solid is fine and is ordinary practice.** There is almost no free length to flex |
+| **Anything crossing the box**, or landing on a device that will come off for service | **Stranded with ferrules.** Ferrules are what make stranded stay put in a screw clamp, and most DIN blocks ask for solid or ferruled stranded rather than bare stranded anyway |
+
+🔴 **THE REASON IS WHERE THIS ENCLOSURE LIVES, NOT GENERAL PANEL PRACTICE.** A shop wall panel is
+still. **This one is bolted inside the base of a machine that accelerates a gantry and runs a
+spindle**, and solid conductor fatigues at the clamp, where the terminal's grip makes a stress
+concentration and the free length vibrates against it. The failure is an open circuit that reads as a
+loose terminal.
+
+NOTE: **AND 14 AWG SOLID IN A 12 x 12 BOX FIGHTS THE BENDS.** The gauge was chosen generous - see the
+colours section - and solid at that size does hold a shape, but getting it to the shape in 144 square
+inches means bends tight enough to leave a permanent stress at the terminal. **The thing that actually
+makes panel wiring stay where it is put is a few adhesive tie bases or a strip of duct**, not
+conductor stiffness.
+
+### The pigtails enter at the box and leave through the back shear wall
+
+SETTLED: **his, 2026-11-07. Strain relief at the knockout where each pigtail enters the enclosure**,
+and from there **out through a small hole centred high in the base's back shear wall.** Both pigtails,
+same route.
+
+✅ **THAT IS THE SHORTEST WAY OUT AND IT IS WHY THE ENCLOSURE SITS WHERE IT DOES.** The box is in the
+base's rear middle bay with the back shear wall directly behind it.
+
+🔴 **TAKE THE STRAIN AT THE WALL AS WELL, NOT ONLY AT THE ENCLOSURE.** With the only cord grip at the
+knockout, a pull on the pigtail - a foot caught in it, the machine shifted - is resisted by the
+**cable bearing on the edge of an 18 mm plywood hole** before it ever reaches the grip. **A bushing in
+the hole and a clamp on the wall's inside face** means the enclosure's grip never sees a pull, and
+nothing is chafing a 220 V cable against plywood.
+
+🔴 **AND NOTHING IN THAT HOLE MAY FINISH PROUD OF THE WALL'S TOP EDGE.** The back shear wall stops
+**{{BASE_BOX_GAP}} mm shy of the torsion box** - see [`../dimensions/VALUES.md`](../dimensions/VALUES.md) -
+and that gap **is** the three-point mount. A bushing flange, a clamp, or a cable turning upward out of
+the hole is a **fourth contact point**, and [`../machine/assembly.md`](../machine/assembly.md) names
+what that looks like: **nothing, except the Y beams drifting out of coplanar.** High is fine; proud is
+not.
+
+NOTE: **Centred is the right place for the hole and the panel does not care much.** This file's own
+rule is that a shear panel is governed by **what holds its edges** - glue and screws at about 150 mm
+all the way round - so a cable hole in the field costs little. **Leave clear plywood between the hole
+and the top edge** rather than putting it in the screw line, and that is the whole of the
+consideration.
+
 ## Grounds meet at one PE bus bar
 
 Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing daisy-chains.
@@ -1045,9 +1123,16 @@ reach this bar is the same question as where the 36 V supply ends up, which is *
 session**. **Ten leaves two spare if they land elsewhere and comes up short if all four land here**,
 which is the argument for buying more than ten rather than exactly ten.
 
-NOTE: **His ten stands and this does not reopen it.** The count only comes up again if all four
-drains land on this bar, which is the gated question - and terminals are the cheapest item in the
-box, so the slack is bought rather than calculated.
+🔴 **AND SINCE 2026-11-07 IT IS NO LONGER ONLY AN ARGUMENT - every run leaving the box is shielded.**
+The VFD run, the interface box run and the switch run each land a drain here, and those are not
+gated on anything. **Ten does not cover eight firm conductors plus three or four certain drains**,
+let alone the four motor supply drains if they come here too. His ten was right for the design as it
+stood; **the shielded-cable decision is what moved it**, and terminals are the cheapest item in the
+box.
+
+OPEN: **WHAT THE COUNT SHOULD ACTUALLY BE IS HIS, AND IT IS A BUY, NOT A CALCULATION.** The firm
+eight, plus one drain per shielded run out, plus up to four motor supply drains depending on where
+the 36 V supply ends up. **Pick a bar with slack and the question never comes back.**
 
 NOTE: **EVERY ENCLOSURE IN THIS BUILD IS PLASTIC - the distribution box, the paddle's gang box and
 now the interface board's.** Nothing anywhere is bonded by being mounted in something, so every earth
