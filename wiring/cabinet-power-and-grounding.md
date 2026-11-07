@@ -59,7 +59,8 @@ NOTE: **A MAGNETIC PADDLE SWITCH DROPS OUT ON A POWER LOSS AND STAYS OUT** - and
 own claim for this part, not an inference: *"preventing tools from powering up after unexpected
 outages, blown breakers and other power interruptions."* Coming back takes a deliberate press of the
 green button. That is the property being bought, and it is the reason this is not a toggle: a toggle
-restores power to a machine nobody is standing at, the moment the mains returns.
+restores power to a machine nobody is standing at, the moment the mains returns. **A locking mushroom
+E-stop is a toggle in exactly this one respect** - see the swap below.
 
 SETTLED: **THE TERMINALS ARE 13/14 AND 23/24, TWO POLES, ON 1/4 INCH SPADE TABS.** From the wiring
 diagram on the listing, 2026-11-05 - so this no longer waits on unboxing the switch:
@@ -102,6 +103,38 @@ contactor coil are the whole of the load on the 110 V side, and a coil draws alm
 20 A breaker at the wall is protecting the house rather than this wiring. **1 A puts a fuse in front
 of the control conductors that is sized for what they actually carry** - and it is the branch where a
 fault is most likely to be a pinched wire in a door hinge rather than a load fault.
+
+### The paddle can be swapped for a locking mushroom E-stop
+
+SETTLED: **his, 2026-11-07 - a locking mushroom E-stop drops into the paddle's place with no other
+change to this design.** Push it down and it latches; twist it and it pops back up. **Nothing else in
+the chain moves:** same 110 V branch, same 1 A fuse, same contactor coil, same four conductors out to
+the switch box and back, same box bolted to the side of the machine. The 220 V side never sees the
+switch either way.
+
+✅ **THAT IS BECAUSE THE SWITCH IS A PILOT DEVICE AND NOTHING ELSE.** All this chain asks of it is to
+break the coil circuit; everything that carries real current is downstream of the contactor. Any
+device that can open two conductors at 110 V satisfies it.
+
+NOTE: **The four 1/4 inch female quick-disconnects are the paddle's requirement, not the chain's.** A
+mushroom station's contact blocks are screw terminals. **Buy the spades with the paddle, not ahead of
+the choice.**
+
+FLAG: **ONE PROPERTY DOES CHANGE, AND IT IS THE ONE THIS FILE ARGUED THE PADDLE FOR.** The paddle's
+contacts are **normally open and held in by its own magnetic latch**, so a mains loss drops them and
+they stay dropped - see the NOTE above. A mushroom's contacts are **normally closed and held closed
+mechanically**, and a mains loss does not move them. **So with a mushroom fitted, the 220 V side
+restores itself the moment the mains comes back**, with nobody standing at the machine.
+
+**What is live after an unattended restore: 36 V at the four drives and mains at the VFD.** Nothing
+turns - motion needs step pulses from the controller and the spindle needs a run command on FOR/DCM,
+and neither arrives on its own. So it is **gear energised unattended rather than a tool starting
+up**, which is a different proposition from the table-saw case the vendor's copy describes.
+
+NOTE: **AND THE DROP-OUT CAN BE BOUGHT BACK IF IT IS WANTED - a green start button and one normally-open
+auxiliary contact on the contactor, wired across the button.** That is the ordinary three-wire
+start/stop: the auxiliary holds the coil in, and losing the mains makes it let go. A contact block and
+a button, not a redesign - recorded so the choice is a choice, not a thing discovered later.
 
 ### How power gets in - two 10 ft pigtails
 
@@ -652,7 +685,7 @@ SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026
 choosing 36 V dissolved it: the supply that was already here is the right one, and the Mega V keeps
 its 48 V 800 W.
 
-### OPEN: a DIN-rail motor supply, so the VFD is the only thing outside the box
+### OPEN: a DIN-rail motor supply - gated on the bench session, nothing bought before it
 
 **His thought, 2026-11-06, and the motive is layout rather than electrical:** the 600 W brick is the
 one piece of high-voltage gear that is neither DIN nor small. Put the motor supply on the rail and
@@ -698,10 +731,27 @@ FLAG: **He gave the gap as both 4 mm and 10 mm in one sentence and I have not re
 does not matter here - what matters is that the bay breathes - but do not take a figure for it from
 this page.
 
-**The other cost is 480 W against the brick's 594 W**, and that is unestablished either way - see the
-comparison below, which [`../commissioning/bench-session.md`](../commissioning/bench-session.md)
-settles. **Not decided.** The mock-up in the real box is what should decide it, because the heat is
-the half that cannot be reasoned out on paper.
+**The other cost is 480 W against the brick's 594 W**, and that is unestablished either way.
+
+🔴 **HIS DECISION, 2026-11-07: NOTHING IS BOUGHT UNTIL THE BENCH SESSION HAS RUN.** The choice is
+gated, not undecided, and the gate is
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md) - four motors loose on the
+bench, read off the supply's own LCD.
+
+**What the reading has to clear, for the XDR to be buyable at all: 13.3 A.** The brick has 16.5 A
+and the XDR has 13.3, so the DIN unit is only an option if four drives fit under the lower number
+with margin - and that figure exists nowhere, because **the TST57 manual declines to give a
+per-drive input current** and says *"users need to carry out specific analysis and estimation"*. The
+one instrument that can answer it is already owned and the measurement costs nothing.
+
+NOTE: **IT IS A SEQUENCE, NOT A COIN TOSS - and only one order works.** The bench session **has** to
+be run on the brick, because the brick is what exists; so the current figure arrives first either
+way, and buying the XDR before it would be committing to the tighter rail with no number in hand. If
+the draw turns out close to 13.3 A, the question is closed by the measurement and the brick stays -
+no heat argument needed.
+
+**And if the draw is comfortable, the heat is still the half that cannot be reasoned out on paper** -
+that one goes to the mock-up in the real box, which is the step that was always going to decide it.
 
 NOTE: **THE CURRENT BUDGET WENT UP, NOT DOWN - 16.5 A against the 12.5 A this repo worked to.** Watts
 over volts is the whole of it, and the same 600 W at a lower rail buys more current. The budget that
@@ -876,11 +926,15 @@ FLAG: **A PVC BOX IS NOT A SHIELD EITHER.** The VFD is the aggressor this file a
 non-metallic enclosure does nothing to contain it. That is an argument about what goes **inside** the
 box rather than against the box - see the open item below.
 
-OPEN: **WHAT IS IN THIS BOX AND WHAT IS OUTSIDE IT.** His words are *"all the DIN rail
-components"*, and 12 x 12 is **144 square inches of back panel**. The DIN gear - two contactors, the
-2 x 8 block, the fuse holders - is small. The **36 V 600 W supply is a brick**, the VFD is another,
-and neither is a DIN part. Whether those two mount in this box, beside it, or in something larger
-that contains it is not stated, and it decides whether "the cabinet" in this file means this box.
+OPEN: **WHAT IS IN THIS BOX AND WHAT IS OUTSIDE IT - and it is the same question as the 36 V
+supply's, gated on the bench session.** His words are *"all the DIN rail components"*, and 12 x 12 is
+**144 square inches of back panel**. The DIN gear - two contactors, the 2 x 8 block, the fuse holders
+- is small and all of it is in. The **36 V 600 W supply is a brick** and the VFD is another, so
+neither is settled by that phrase. **The VFD mounts outside regardless** - it is a brick with a
+heatsink in every version of this design. **So what the bench session actually decides is whether the
+36 V supply joins the DIN gear inside or sits beside the box with the VFD**, and that is the one word
+that makes "the cabinet" in this file mean this box or mean this box plus two parts bolted next to
+it.
 
 FLAG: **AND IT IS A HEAT QUESTION, NOT ONLY A SPACE ONE - a dust-proof box has no ventilation.**
 Whatever goes in dissipates into a sealed plastic volume that is **energised continuously**, because
@@ -932,9 +986,13 @@ no terminal.**
 OPEN: **THE ONLY SHIELDS IN THE SYSTEM ARE THE FOUR 18/2 MOTOR SUPPLY RUNS, and they follow the 36 V
 supply rather than this bar.** Each drive's supply is **18/2 shielded** - see
 [`ig57-drives.md`](ig57-drives.md) - so there are four drains, grounded at one end only. Whether they
-reach this bar is the same question as where the 36 V supply ends up. **Ten leaves two spare if they
-land elsewhere and comes up short if all four land here**, which is the argument for buying more than
-ten rather than exactly ten.
+reach this bar is the same question as where the 36 V supply ends up, which is **gated on the bench
+session**. **Ten leaves two spare if they land elsewhere and comes up short if all four land here**,
+which is the argument for buying more than ten rather than exactly ten.
+
+NOTE: **His ten stands and this does not reopen it.** The count only comes up again if all four
+drains land on this bar, which is the gated question - and terminals are the cheapest item in the
+box, so the slack is bought rather than calculated.
 
 NOTE: **EVERY ENCLOSURE IN THIS BUILD IS PLASTIC - the distribution box, the paddle's gang box and
 now the interface board's.** Nothing anywhere is bonded by being mounted in something, so every earth
