@@ -224,11 +224,24 @@ conductor and every **even** pin is a solid one - the two standards swap the col
 property alone. So the cable standard does not matter here, and neither does the colour: **strip the
 jacket and the striped conductor of each twist is the plus leg.**
 
-🔴 **THE TWIST IS 3-6 AND 4-5, NOT 3-4 AND 5-6 - and getting this wrong is the one way to build this
-cable so it looks right and is not.** In T568 pins 3 and 6 are one twist and pins 4 and 5 are the
-other; pin 3 is **not** twisted with pin 4. Wire EN to 3 and 4, and DR to 5 and 6, and **both signals
-leave their own twist and land in each other's** - which is exactly the mechanism the next section
-says this whole scheme rests on.
+🔴 **THE RULE IS: KEEP EACH PAIR TOGETHER AND NEVER BREAK ONE. One colour pair carries one signal and
+its own ground, and a standard cable does that by itself.** Because the board puts signals on odd
+pins and grounds on even pins, and every odd pin's twist partner is an even pin, **each pair of a
+stock T568 cable already arrives as a signal and its own return**:
+
+| Pair, T568B | Board pins | Which are |
+|---|---|---|
+| **orange** | 1, 2 | Step and its GND |
+| **green** | 3, 6 | Enable and its GND |
+| **blue** | 5, 4 | Dir and its GND |
+| **brown** | 7, 8 | Alarm and its GND |
+
+✅ **SO THE PIN NUMBERS ARE AN EXPLANATION, NOT AN INSTRUCTION.** Work in pairs and colours and the
+split-pair fault cannot happen. It only arises from **assigning minus legs by pin arithmetic** -
+putting EN on 3 and 4 and DR on 5 and 6, because the numbers look adjacent. In T568 pins 3 and 6 are
+one twist and 4 and 5 are the other; **pin 3 is not twisted with pin 4.** Do that and both signals
+leave their own twist and land in each other's, which is the mechanism the next section says this
+whole scheme rests on.
 
 NOTE: **DIR IS THE ONE THAT GETS BUILT BACKWARDS.** It is the only pair whose **solid** conductor is
 the **lower** pin number - DR+ on pin 5, DR- on pin 4. Every other pair runs low-to-high.
@@ -286,6 +299,29 @@ remembered correctly - the colour sequence tells you which end you are looking a
 NOTE: **A patch cable is straight through, so A or B changes nothing electrically** - pin 1 reaches
 pin 1 either way. It only changes **which colour** you pick up at the cut end, which is the whole of
 why this matters here.
+
+### If the cables get crimped rather than bought
+
+**His question, 2026-11-07: lay the colours out 1 through 8 in order, so each pair lands on adjacent
+pins.** It would work - pairs on 1-2, 3-4, 5-6, 7-8 against signals on odds and grounds on evens puts
+every signal in its own twist, same as T568 does.
+
+🔴 **BUT CRIMP THEM T568B, NOT SEQUENTIAL - and the reason is not electrical.** A sequential cable is
+**not a T568 cable and therefore not an Ethernet patch cable**, while being indistinguishable from
+one. Two hazards, both of them later rather than now:
+
+| | |
+|---|---|
+| **It is a lookalike** | Anyone who grabs it for a network run gets a cable that splits Ethernet's own pairs. In a shop with network cable about, that is a trap left lying around |
+| **Mixing is worse than either** | Buy cables for some axes and crimp sequential for others and there are **two incompatible types that look identical.** Nothing on the board or the drive would flag a swap |
+
+✅ **AND T568B KEEPS THE REPLACEMENT A SHELF ITEM.** A standard cable can be bought at any time and
+works with no thought; a sequential one has to be remade and understood first.
+
+NOTE: **WHERE CRIMPING DOES EARN ITS PLACE IS LENGTH.** A made-to-length cable in a drag chain beats a
+coiled-up 2 m patch lead - see the drag chain section in
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md). That is a reason to crimp; it is
+not a reason to abandon the colour standard while doing it.
 
 FLAG: **THIS TABLE READ PU / DR / EN / AL IN PAIR ORDER UNTIL 2026-11-07**, which put **DR and EN the
 wrong way round** against the board, and it gave pair numbers rather than pin numbers so it could not
