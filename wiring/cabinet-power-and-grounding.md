@@ -716,6 +716,16 @@ SETTLED: **MEAN WELL MDR SERIES, 12 V 40 W - his, 2026-11-05.** FLAG: **this rea
 | Part | **MDR-40-12** by the series' naming - confirm against the order rather than from the pattern |
 | Input draw | about **0.2 A** at 220 V, from 40 W out at a typical efficiency - not a nameplate figure |
 | Rail width | **not established.** The MDR-40 body is narrower than the MDR-60's 40 mm; the figure in the rail budget is the 60's and is therefore pessimistic |
+| Terminals | **AC in at the BOTTOM, 12 V out at the TOP** - his, 2026-11-06 |
+
+✅ **THAT IS THE OPPOSITE OF A BREAKER AND IT IS DELIBERATE, NOT A QUIRK.** Mains and low voltage sit
+at **opposite ends of the body**, which is the length of the unit keeping them apart. The cost is that
+the 110 V feed and the 12 V output leave in opposite directions; the benefit is that **no mains
+conductor ever has to run alongside the logic wiring** inside this box.
+
+NOTE: **It is the same principle the VFD gets wrong**, where the pump contactor's 230 V coil pair has
+to share a terminal strip with the 0-10 V speed reference - see Fig. 3's caution. Here the part does
+the separating for you.
 
 NOTE: **3.3 A is sufficient - his call, 2026-11-05: he doubts the whole 12 V side pulls even 2 A.**
 The supply reports nothing, so the figure to compare it against comes off the rail when the box is
