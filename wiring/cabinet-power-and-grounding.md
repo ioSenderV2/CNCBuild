@@ -204,11 +204,14 @@ convention exists for devices that care - breakers, where busbar combs feed the 
 mark a direction. A feed-through terminal block is symmetric: there is nothing inside it to install
 backwards.
 
-🔴 **BUT THE BLOCK'S OWN PRINTING WILL READ UPSIDE DOWN, SO LABEL THE ROWS ON THE PANEL.** Whatever
-is moulded or printed on it - numbers, a label field - is now inverted, and the row that looks like
-the first one is the second. **Write L1 and L2 on the panel beside it.** This is the repo's recurring
-failure in miniature: a thing that looks right and is not, costing nothing to prevent and an
-afternoon to find.
+✅ **AND THERE IS NO PRINTING ON IT TO READ UPSIDE DOWN - his, 2026-11-06.** The two poles are told
+apart by **colour, red and blue**, and colour survives being inverted. FLAG: **this file warned about
+inverted printing until 2026-11-06**; there is none, so flipping the block costs nothing at all.
+
+PROCEDURE: **DECIDE WHICH COLOUR IS L1 AND WRITE IT DOWN ONCE.** The block distinguishes its two
+rows; it cannot tell you **which** is which, and **both conductors in this panel are black** - they
+are labelled L1 and L2 precisely because colour cannot separate them. So the red-to-L1 assignment
+exists only in whoever's head made it, until it is on the panel.
 
 **Every contactor in here is DIN rail mounted.** There are **two**, and they are not the same size:
 
@@ -540,7 +543,7 @@ makes it obvious:
 |---|---|---|
 | **Breakers** | **top** | bottom |
 | **Both WCT-25 contactors** | **top** - terminals 1 and 3 | bottom - 2 and 4. Coil on **A1 / A2** |
-| **2 x 8 block**, mounted inverted | **bottom** | top |
+| **2 x 8 block**, mounted inverted | **bottom** | top. Poles told apart by **colour, red and blue** - no printing |
 | **MDR 12 V supply** | **bottom** - AC | top - 12 V DC |
 
 ✅ **AND THAT IS WHY THE INVERTED BLOCK WORKS.** Contactor out at the bottom, one short U-turn up
@@ -549,8 +552,8 @@ breakers' bottoms to the loads. **Two short U-turns and no long runs** - which w
 flipping it.
 
 PROCEDURE: **LABEL THE PANEL WHILE THE PARTS ARE STILL LOOSE.** Three orientations across four
-devices, plus a block whose own printing reads upside down. It costs minutes on the bench and an
-afternoon once everything is wired in.
+devices, and the block's red-to-L1 assignment, which exists nowhere on the hardware. Minutes on the
+bench against an afternoon once everything is wired in.
 
 🔴 **EVERY GROUND TERMINAL GOES ON ONE RAIL, AND IT MUST BE THE SAME ONE.** The green-and-yellow
 terminals use **the rail itself as the bus**, so **two rails are two separate ground buses** unless
