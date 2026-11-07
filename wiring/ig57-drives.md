@@ -207,6 +207,10 @@ and a small-gauge block for signals:
 2026-10-12. Each signal travels as a plus/minus pair in its own twist, **plus on the striped
 conductor, minus on the solid**.
 
+**The cable is plug-to-plug and never cut**: an RJ45 at the interface board, and an **RJ45 breakout
+board at the drive** - his, 2026-11-07. **The wiring list that gets built from is the breakout table
+below**, not the colour table; colour only matters if a cable ever gets cut.
+
 🔴 **THE ORDER COMES FROM THE INTERFACE BOARD, WHICH IS ORDERED AND THEREFORE DEFINES IT - his,
 2026-11-07.** Read the RJ45 pin numbers off the board's netlist, not off this signal's position in
 the drive's terminal block:
@@ -252,22 +256,64 @@ WRITTEN DOWN.** All four even pins are **GND** on the board - see
 error anywhere, passes continuity, and works. It costs signal integrity and nothing else, which is
 the kind of fault that gets found by chasing a step loss months later.
 
-### The same map by conductor colour - which comes from the CABLE, not the board
+### The drive end is an RJ45 breakout board, so the cable is never cut
+
+SETTLED: **his, 2026-11-07. At each drive there is a small RJ45-to-screw-terminal breakout board** -
+a jack and an 8-position screw block on one little PCB. So **the cable is plug-to-plug stock patch,
+terminated by whoever made it**, and eight short wires go from the breakout's terminals to the
+drive's own block.
+
+🔴 **SO COLOUR NEVER APPEARS ANYWHERE, AND THE PIN NUMBERS ARE THE ONLY IDENTIFIER AT BOTH ENDS.**
+Nothing is stripped, so no conductor is ever picked out by its stripe. The colour table below is
+reference for a cut-end job and **is not the build instruction**; this is:
+
+| Breakout terminal | Drive terminal | Signal |
+|---|---|---|
+| **1** | **3** | **PU+** |
+| **2** | **4** | **PU-** |
+| **3** | **7** | **EN+** |
+| **4** | **6** | **DR-** |
+| **5** | **5** | **DR+** |
+| **6** | **8** | **EN-** |
+| **7** | **9** | **AL+** |
+| **8** | **10** | **AL-** |
+
+**In breakout order, which is the order the work gets done in.** All four pairs stay inside their own
+twist, which is the only thing that had to come out right.
+
+🔴 **IT IS NOT A STRAIGHT 1-THROUGH-8 MARCH AND NO CABLE CONVENTION CAN MAKE IT ONE.** That is the
+geometry of the jack, not a mistake in anything: **the drive's block runs its pairs on ADJACENT
+terminals** - 3-4 PU, 5-6 DR, 7-8 EN, 9-10 AL - while **the RJ45's twists are 1-2, 3-6, 4-5, 7-8.**
+Those two patterns cannot both be sequential at the same time.
+
+NOTE: **A SEQUENTIAL HAND-CRIMPED CABLE DOES NOT HELP HERE - it was worked out both ways, 2026-11-07.**
+Eight wires either way, all four pairs intact either way; the two schemes differ by **two wire
+numbers** (6-to-8 and 4-to-6 with a standard cable, against 4-to-8 and 6-to-6 with a sequential
+one). The labour is identical, so a non-standard cable buys nothing - see the crimping section below.
+
+✅ **AND THE BREAKOUT BOARD IS WHAT MAKES THAT A GOOD TRADE.** The eight wires are a **one-time bench
+job per drive**, done with the drive loose and then **labelled**. After that **every cable in the
+system is an interchangeable stock patch lead** that can be replaced from any shelf. The oddity is
+confined to a thing built once; the cables stay fungible.
+
+PROCEDURE: **LABEL EACH BREAKOUT BOARD.** Nothing about that table is self-evident from either end,
+and the next person to look - including him, later - will see eight wires in no obvious order.
+
+### The same map by conductor colour - reference only, for a cut end
 
 🔴 **THE BOARD HAS NO COLOUR CONVENTION, AND IS NEITHER T568A NOR T568B.** Its netlist assigns nets
 to **RJ45 contact numbers** and nothing else - a PCB jack has eight contacts and no wires in it.
 **T568A and T568B are conventions for which conductor colour sits on which pin inside a cable**, so
-they live entirely in the patch cable. The colours below are a property of the cable you plug in.
+they live entirely in the patch cable. The colours below are a property of the cable plugged in.
 
 ✅ **AND THE BOARD CANNOT BE WRONG ABOUT IT, WHICHEVER CABLE TURNS UP.** The pin-to-twist assignment
 is **1-2, 3-6, 4-5, 7-8 in both standards** - A and B swap colours and leave the pairings alone - so
 signals on odd pins with grounds on even pins is correct on the twists either way, because every odd
 pin's twist partner is an even pin. **The standard is a cable question, not a board question.**
 
-🔴 **THE DRIVE END HAS NO RJ45 - IT IS A SCREW BLOCK, SO COLOUR IS THE ONLY IDENTIFIER THERE.** One
-end of each cable keeps its plug and goes into the interface board; the other end is **cut, stripped
-and landed on the drive's terminals**, where there are no pin numbers to read. **The table above is
-the board end. This one is the end where the mistake happens.**
+NOTE: **With the breakout board in the design, this table is for a cable that gets cut** - a
+replacement made up in a hurry, or a drive wired without its breakout. **The wiring list above is the
+one to work from.**
 
 | Twist | Signal | Plus leg - pin, colour | Minus leg - pin, colour |
 |---|---|---|---|
@@ -306,7 +352,12 @@ why this matters here.
 pins.** It would work - pairs on 1-2, 3-4, 5-6, 7-8 against signals on odds and grounds on evens puts
 every signal in its own twist, same as T568 does.
 
-🔴 **BUT CRIMP THEM T568B, NOT SEQUENTIAL - and the reason is not electrical.** A sequential cable is
+🔴 **BUT IT SAVES NO WORK, WHICH IS THE ANSWER BEFORE ANY OF THE REST.** With the breakout board at
+the drive it comes to **eight wires either way and all four pairs intact either way** - the two
+schemes differ by two wire numbers. The simplicity a sequential cable looks like it buys is spent
+again at the breakout, because the drive's block and the RJ45's twists cannot both be sequential.
+
+🔴 **AND CRIMP THEM T568B, NOT SEQUENTIAL - this reason is not electrical either.** A sequential cable is
 **not a T568 cable and therefore not an Ethernet patch cable**, while being indistinguishable from
 one. Two hazards, both of them later rather than now:
 
