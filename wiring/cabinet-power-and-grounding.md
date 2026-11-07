@@ -354,6 +354,16 @@ OPEN: **WHICH OF FB AND FC IS THE NORMALLY-OPEN LEG.** The manual gives the pair
 and does not say which is which. It is a meter on the real part with the drive unpowered, not
 something to take from a convention.
 
+✅ **AND IT CAN BE ANSWERED TODAY, BECAUSE THE MEGA V RUNS THE SAME DRIVE.** His, 2026-11-07: the
+Mega V has the **identical spindle and VFD from the same supplier**. So this check does not wait on
+the new machine - it is a meter on a drive that is already in the shop.
+
+🔴 **THAT MAKES THE MEGA V A WORKING REFERENCE FOR THE WHOLE SPINDLE AND VFD HALF OF THIS BUILD, AND
+IT HAS NOT BEEN USED AS ONE.** Anything uncertain about the HY02D223B - the relay legs, what PD052
+does, what the control strip looks like, what the drive actually draws on its input - is a
+measurement on a running machine rather than a question for a manual that declines to answer. The
+clamp-meter reading this file wants on the VFD's input is in the same position.
+
 SETTLED: **THE COIL INRUSH AGAINST THE RELAY'S 3 A - CLOSED, WITH ROOM TO SPARE.** The WCT-25's
 230 V coil is **inrush 11.5 VA, holding 2.8 VA**. At 230 V that is **50 mA to pull in and 12 mA to
 hold**, against a contact rated **3 A** - about sixty times the margin. This was the open question
@@ -969,27 +979,26 @@ surface is an open circuit, and it is an open circuit that looks exactly like a 
 
 ### The touch plate wants the Z plate too, and it is not an earth
 
-**On the Mega V there is a ground connector on the Z plate, and it works** - his, 2026-11-07. It
-means the touch plate's return runs through the structure instead of needing an alligator clip on
-the tool: plate, tool, collet, spindle shaft, **the spindle's own bearings**, body, clamps, Z plate,
-connector. Flaky on many machines, which is exactly why the clip exists - and **not flaky on his**,
-which is the evidence that matters.
+SETTLED: **COPY THE MEGA V - his, 2026-11-07.** A **ring terminal on a bolt in the Z plate**, and a
+**dedicated wire from there all the way back to the ground on the controller board.** It saves
+clipping an alligator lead to the tool every time the touch plate comes out.
 
-🔴 **BUT THE NEW MACHINE ADDS THE ONE VARIABLE THAT BREAKS THIS ARRANGEMENT.** The Mega V has no
-VFD. Here a 2.2 kW drive injects common-mode current into the spindle and therefore into the
-structure, and **structure-return probing is flaky precisely when there is VFD current in the
-structure**. "It works on the Mega V" may not carry across, and the failure mode is a false trigger -
-which this file already calls the one input where that costs a crash.
+| The path | |
+|---|---|
+| Plate &rarr; tool &rarr; collet &rarr; spindle shaft &rarr; **bearings** &rarr; body &rarr; clamps &rarr; Z plate | through metal - short, and unavoidable on any machine |
+| Z plate &rarr; controller board ground | **a dedicated conductor**, the whole way |
 
-OPEN: **DOES THE PROBE RETURN COME BACK ON ITS OWN CONDUCTOR, OR THROUGH THE STRUCTURE AS IT DOES
-TODAY?** The design already says the probe gets *"its own regulator and its own return"*. Taking the
-return through the frame contradicts that, and lands the probe's common on PE at the Z plate -
-where the spindle's earth also arrives. **That is the merged ground this file lists as one of three
-ways to lose the drives' isolation**, arriving by a route nobody would look for.
+✅ **THE LONG RUN IS A WIRE, NOT THE FRAME - which is why it works.** Only the unavoidable bit, tool
+to Z plate, goes through structure. FLAG: **this file described it as a structure return and argued
+the VFD would break it. Both were wrong.** It lands on the controller's ground rather than on PE,
+which is exactly the *"its own return"* the probe design asks for.
 
-NOTE: **Either answer is buildable and the difference is one conductor in the drag chain.** It is
-worth deciding before the Z plate is drilled rather than after, because the dedicated-return version
-wants a tapped hole on the Z plate that the structure version does not.
+✅ **AND THE MEGA V RUNS THE SAME SPINDLE AND THE SAME VFD** - the identical combination from the
+same supplier. So this is not an arrangement being tried; it is one being copied off a machine that
+has it working with the same drive injecting the same noise into the same spindle.
+
+NOTE: **It adds a conductor to both drag chains**, Z plate back to the cabinet, alongside the gantry
+bond and the spindle's own earth. Worth counting now rather than when the chain is full.
 
 FLAG: **NOT AT THE 240 V INPUT, AND NEVER THROUGH A SIGNAL WIRE.** The supplies are isolated, so the
 mains input is not a ground reference for the DC side. And a ground that arrives through a signal
