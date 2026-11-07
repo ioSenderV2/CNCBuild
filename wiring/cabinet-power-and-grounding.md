@@ -1003,17 +1003,35 @@ all; see the routing below.
 
 ### Two drag chains, and Y1 is where everything accumulates
 
-SETTLED: **his, 2026-11-07. There is an X chain and a Y1 chain, and nothing on Y2.**
+SETTLED: **his, 2026-11-07. There is an X chain and a Y1 chain, and nothing on Y2.** FLAG: **this
+listed the X stepper in the X chain for one commit** - it is not. The X stepper is fixed to the
+gantry, so it joins at Y1.
 
-| Chain | Carries |
+**The X chain** - what moves with the X carriage:
+
+| | |
 |---|---|
-| **X** | The **X and Z steppers** - **18/2** for the supply and a **Cat 5 patch** for the signals, each |
-| **Y1** | All of that, plus the probe return, coming back along the Y1 beam to the cabinet |
-| **Y2** | **none** - its stepper and limit are static runs, so there is nothing to flex |
+| Z stepper supply | **18/2** |
+| Z stepper signals | **Cat 5 patch** |
+| Probe | the Z plate return to the controller's ground |
+| Z limit sensor | **3-conductor** |
 
-**The Y1 chain is the one to size**, because everything that moves ends up in it. His read is that
-there is room; it is worth counting against the chain's inside section before one is bought rather
-than after.
+**Four or five cables, his count.**
+
+**The Y1 chain** - all of the above comes down the gantry and is joined by:
+
+| | |
+|---|---|
+| X stepper supply | **18/2** |
+| X stepper signals | **Cat 5 patch** |
+| X limit sensor | **3-conductor** |
+| Gantry bond | X beam to the steel back plate |
+
+**Y2 carries nothing** - its stepper and limit are static runs, so there is nothing to flex.
+
+✅ **HIS READ: NOT THAT CROWDED.** Eight or nine cables at the worst point, none of them heavy, and
+the one genuinely fat run in the build - the spindle's four-core with the water and air - is overhead
+in the sleeve and never enters a chain at all.
 
 NOTE: **Cat 5 patch cable is stranded, which is why it belongs in a chain.** It is already what runs
 in the Mega V's chains.
