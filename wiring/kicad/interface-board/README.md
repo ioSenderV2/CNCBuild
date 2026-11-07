@@ -47,7 +47,16 @@ UART1 pass straight through, connector to terminal block, position for position.
 
 **RJ45 pin map** (striped conductor = signal, solid = return):
 1 Step, 3 Enable, 5 Dir, 7 Alarm; evens GND. Step and Alarm sit on opposite edges of
-the jack - Step is the aggressor and Alarm feeds EStop.
+the jack - Step is the aggressor and Alarm feeds EStop. Signals on odds is correct on
+the twists by construction: in T568 every odd pin's twist partner is an even pin.
+
+**"Evens GND" does not say WHICH even pin, and that is where a split pair comes from.**
+The twists are **1-2, 3-6, 4-5, 7-8**. So each signal's return leg must land on its
+own twist partner: Step 1-2, Enable **3-6**, Dir **5-4**, Alarm 7-8. Wiring it as the
+numbers read - 3 with 4, 5 with 6 - puts Enable and Dir in each other's twists. The
+board cannot catch it, because all four evens are the same GND net: it passes
+continuity and works, and costs only signal integrity. Drive-end terminals and the
+reasoning are in [`../../ig57-drives.md`](../../ig57-drives.md).
 
 **3P pin order**: 1 = 12 V, 2 = signal, 3 = GND - matches the SN04's brown/black/blue.
 

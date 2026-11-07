@@ -205,14 +205,43 @@ and a small-gauge block for signals:
 
 **One Cat 6 patch cable per stepper**, plus **18/2 shielded** carrying the supply. His scheme,
 2026-10-12. Each signal travels as a plus/minus pair in its own twist, **plus on the striped
-conductor, minus on the solid**:
+conductor, minus on the solid**.
 
-| Cat 6 pair | Striped | Solid |
-|---|---|---|
-| 1 | **PU+** | **PU-** |
-| 2 | **DR+** | **DR-** |
-| 3 | **EN+** | **EN-** |
-| 4 | **AL+** | **AL-** |
+🔴 **THE ORDER COMES FROM THE INTERFACE BOARD, WHICH IS ORDERED AND THEREFORE DEFINES IT - his,
+2026-11-07.** Read the RJ45 pin numbers off the board's netlist, not off this signal's position in
+the drive's terminal block:
+
+| T568 pair | Striped - **odd** pin | Solid - **even** pin | At the drive |
+|---|---|---|---|
+| **1-2** | pin 1, **PU+** | pin 2, **PU-** | terminals 3, 4 |
+| **3-6** | pin 3, **EN+** | pin **6**, **EN-** | terminals 7, 8 |
+| **4-5** | pin 5, **DR+** | pin **4**, **DR-** | terminals 5, 6 |
+| **7-8** | pin 7, **AL+** | pin 8, **AL-** | terminals 9, 10 |
+
+✅ **PLUS-ON-STRIPED AND THE BOARD'S ODD-PIN SIGNALS ARE THE SAME RULE, which is why the two ends
+agree without anybody arranging it.** In **both** T568A and T568B every **odd** pin is a striped
+conductor and every **even** pin is a solid one - the two standards swap the colours and leave that
+property alone. So the cable standard does not matter here, and neither does the colour: **strip the
+jacket and the striped conductor of each twist is the plus leg.**
+
+🔴 **THE TWIST IS 3-6 AND 4-5, NOT 3-4 AND 5-6 - and getting this wrong is the one way to build this
+cable so it looks right and is not.** In T568 pins 3 and 6 are one twist and pins 4 and 5 are the
+other; pin 3 is **not** twisted with pin 4. Wire EN to 3 and 4, and DR to 5 and 6, and **both signals
+leave their own twist and land in each other's** - which is exactly the mechanism the next section
+says this whole scheme rests on.
+
+NOTE: **DIR IS THE ONE THAT GETS BUILT BACKWARDS.** It is the only pair whose **solid** conductor is
+the **lower** pin number - DR+ on pin 5, DR- on pin 4. Every other pair runs low-to-high.
+
+NOTE: **THE BOARD DOES NOT CARE WHICH EVEN PIN A MINUS LEG USES, AND THAT IS WHY THIS MUST BE
+WRITTEN DOWN.** All four even pins are **GND** on the board - see
+[`kicad/interface-board/README.md`](kicad/interface-board/README.md) - so a split pair raises no
+error anywhere, passes continuity, and works. It costs signal integrity and nothing else, which is
+the kind of fault that gets found by chasing a step loss months later.
+
+FLAG: **THIS TABLE READ PU / DR / EN / AL IN PAIR ORDER UNTIL 2026-11-07**, which put **DR and EN the
+wrong way round** against the board, and it gave pair numbers rather than pin numbers so it could not
+have caught a split pair either. Do not reinstate that order.
 
 NOTE: **THE SOLID CONDUCTOR IS THE SIGNAL'S MINUS LEG, NOT A GROUND.** The manual calls these inputs
 differential, which is what that means: each pair is the two ends of an opto LED. Calling the minus

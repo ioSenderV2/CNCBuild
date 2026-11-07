@@ -170,17 +170,31 @@ MACHINE'S** - corrected by him on 2026-10-12. Four **IG57** all-in-one closed-lo
 The drive is at the motor, so what leaves this box per axis is logic plus motor supply and never motor
 phases. **His cabling, 2026-10-12: one Cat 6 patch cable per stepper, each of PU, DR, EN and AL as a
 plus/minus pair in its own twist - plus on the striped conductor, minus on the solid - and 18/2
-shielded for the 48 V, sized for the drive's 5 A.** The drive presents these on two separate terminal
-blocks, a 2P for the 48 V and a small-gauge block of five signal pairs of which four are used.
+shielded for the motor supply, sized for the drive's 5 A.** The drive presents these on two separate
+terminal blocks, a 2P for the supply and a small-gauge block of five signal pairs of which four are
+used.
 
-FLAG: **THAT REPLACES THE 6-PIN SHELL ON THIS PAGE, BUT THIS PAGE'S OPTO ASSUMPTION WAS RIGHT.** The
-four minus legs are commoned inside the drive - the seller's word, 2026-10-12 - which is the
-common-cathode arrangement the open items below had assumed. So **one isolated common per drive**,
-with the isolation sitting between each drive and the controller. What changes is the connector, the
-conductor count and that the 48 V no longer shares a shell with the signals.
+🔴 **THE PIN MAP IS NOT HERE AND MUST NOT BE COPIED HERE.** Which RJ45 pin each leg lands on is set
+by the interface board, which is ordered - see [`ig57-drives.md`](ig57-drives.md). **The twists are
+3-6 and 4-5, not 3-4 and 5-6**, and that is the one detail a second copy of this table would get
+wrong.
 
-**The star rule above still applies and is now easier to honour**: the 48 V runs on its own shielded
-cable, so no signal reference shares a conductor with chopped motor current by construction. See
+FLAG: **THE RAIL IS 36 V, NOT 48 - this paragraph said 48 V twice.** Settled 36 V on 2026-10-12, the
+same day, which is the voltage the TST57 manual recommends; the Mega V keeps its 48 V supply. See
+[`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
+
+FLAG: **AND THE FOUR MINUS LEGS ARE NOT COMMONED INSIDE THE DRIVE - his meter, 2026-10-12, over the
+seller's word.** This paragraph carried the seller's claim as fact. **No continuity between any of
+the minus signals**, so the isolation is **per signal, not per drive** - each of PU, DR and EN is its
+own opto with its own anode and cathode, and AL is a separate isolated output tied to none of them.
+Do not reinstate the common-cathode reading; the twisted-pair argument in
+[`ig57-drives.md`](ig57-drives.md) depends on it being wrong.
+
+**What the Cat 6 scheme replaces is the 6-pin shell on this page** - the connector, the conductor
+count, and the fact that the motor supply no longer shares a shell with the signals.
+
+**The star rule above still applies and is now easier to honour**: the motor supply runs on its own
+shielded cable, so no signal reference shares a conductor with chopped motor current by construction. See
 [`ig57-drives.md`](ig57-drives.md).
 
 ### OPEN: Keep AL per axis in the cabling, whatever the firmware does today
@@ -237,13 +251,17 @@ Never verified against how the machine is actually wired today.
 1. **Controller draw on the 5 V rail.** The buck is rated 3 A; the actual draw, and the gauge of the
    5 V pair, are not established. Both are needed before the drop across that run means anything.
 2. **Which rail the limit pull-up goes to.** Follows from the controller board's input stage - 3.3 V
-   direct, or 5 V if its inputs are buffered. The breakout box has 5 V but not 3.3 V, so this also
-   decides whether the resistor sits in the breakout box or at the controller.
+   direct, or 5 V if its inputs are buffered. FLAG: **the second half of this item rested on there
+   being a 5 V rail here, and there is not** - see the open item at the top of this file. The limit
+   sensors run off the mains-fed 12 V, and the SN04 takes 6-36 V direct.
 3. SETTLED: ~~**The rail voltage.**~~ **36 V, his decision 2026-10-12** - the TST57 manual's
    recommended voltage, and it leaves the Mega V's 48 V supply where it is. At 48 V the rail would
    have sat at the manual's lowest stated maximum with about 2 V for regeneration on decel against a
-   drive that alarms and stops mid-job. See [`ig57-drives.md`](ig57-drives.md). OPEN: **the supply's
-   wattage is not recorded**, so the current across all four axes is not either.
+   drive that alarms and stops mid-job. See [`ig57-drives.md`](ig57-drives.md). SETTLED: ~~**the
+   supply's wattage is not recorded**~~ - **600 W, 36 V at 16.5 A, nameplate 2026-10-12.** The budget
+   went **up** 4 A as a side effect of dropping the rail, because the same watts at a lower voltage
+   buy more current. What four drives actually **draw** is still open and is the bench session's job -
+   see [`../commissioning/bench-session.md`](../commissioning/bench-session.md).
 4. **Peak current per axis.** The IG57 is rated **5 A** phase current; the drag-chain run length is
    unrecorded, so the drop is uncomputed. The supply now runs on **18/2 shielded** rather than in a
    six-way shell. NOTE: the manual says supply input current is **smaller** than phase current and
