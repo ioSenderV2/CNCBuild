@@ -483,6 +483,7 @@ for those. Drawings are not here either; `machine/drawings/` is derived by its o
   - [The pump follows the spindle](wiring/cabinet-power-and-grounding.md#the-pump-follows-the-spindle)
   - [The paddle is for emergencies and for service - the machine lives powered](wiring/cabinet-power-and-grounding.md#the-paddle-is-for-emergencies-and-for-service---the-machine-lives-powered)
   - [The controller survives the E-stop - and that is why the sense relay is not optional](wiring/cabinet-power-and-grounding.md#the-controller-survives-the-e-stop---and-that-is-why-the-sense-relay-is-not-optional)
+  - [The wire colours](wiring/cabinet-power-and-grounding.md#the-wire-colours)
   - [Which end is in, device by device](wiring/cabinet-power-and-grounding.md#which-end-is-in-device-by-device)
 - [The motor supply is not settled](wiring/cabinet-power-and-grounding.md#the-motor-supply-is-not-settled)
   - [a DIN-rail motor supply, so the VFD is the only thing outside the box](wiring/cabinet-power-and-grounding.md#a-din-rail-motor-supply-so-the-vfd-is-the-only-thing-outside-the-box)

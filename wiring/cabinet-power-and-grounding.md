@@ -208,10 +208,8 @@ backwards.
 apart by **colour, red and blue**, and colour survives being inverted. FLAG: **this file warned about
 inverted printing until 2026-11-06**; there is none, so flipping the block costs nothing at all.
 
-PROCEDURE: **DECIDE WHICH COLOUR IS L1 AND WRITE IT DOWN ONCE.** The block distinguishes its two
-rows; it cannot tell you **which** is which, and **both conductors in this panel are black** - they
-are labelled L1 and L2 precisely because colour cannot separate them. So the red-to-L1 assignment
-exists only in whoever's head made it, until it is on the panel.
+✅ **AND THE WIRE COLOURS NOW AGREE WITH THE BLOCK'S OWN - so nothing has to be written on the panel
+to say which row is which.** See the scheme below. That was an open item for exactly one day.
 
 **Every contactor in here is DIN rail mounted.** There are **two**, and they are not the same size:
 
@@ -532,6 +530,34 @@ modules, 36 mm**:
 ✅ **SPLITTING BY VOLTAGE RATHER THAN BY DEVICE TYPE IS THE BETTER ARRANGEMENT**, and it falls out of
 the 12 V supply moving: everything the paddle kills is on one rail and everything that stays live is
 on the other. Anyone opening this box can tell at a glance which row is dead.
+
+### The wire colours
+
+SETTLED: **his scheme, 2026-11-07.**
+
+| Colour | Is | Where |
+|---|---|---|
+| **Blue** | **L1** | 220 V side, everywhere |
+| **Red** | **L2** | 220 V side, everywhere |
+| **Black** | **Hot** | 110 V side only |
+| **White** | **Neutral** | 110 V side only - there is no neutral anywhere in the 220 V chain |
+| **Green** | **PE** | every ground conductor to the bar |
+
+✅ **IT CLOSES THE BLOCK'S LABELLING QUESTION BY ITSELF.** The 2 x 8 block tells its two poles apart
+with **red and blue**, which is the same pair - so the wire colour and the block agree and there is
+nothing to write on the panel about which row is which.
+
+✅ **AND COLOUR NOW SAYS WHAT THE PADDLE KILLS.** Since the 12 V supply moved to the 110 V side, the
+voltage split **is** the switched split: **blue or red dies, black or white lives.** One glance at a
+conductor answers the question the live/dead table above takes a paragraph to answer.
+
+NOTE: **The DC outputs are not in the scheme and do not need to be** - the 36 V out to the drives,
+the spindle's U/V/W, the sense relay's dry contact. The drawing shows them grey and dashed to say so.
+
+PROCEDURE: **[`panel-schematic.html`](panel-schematic.html) HOLDS THE SCHEME IN ONE PLACE.** Its
+five colours are defined once as named values at the top of the file and every conductor on every
+sheet refers to **what it is** rather than to a colour. Changing the scheme is five edits there and
+nothing anywhere else - which is the only way the drawing and the panel stay agreeing.
 
 ### Which end is in, device by device
 

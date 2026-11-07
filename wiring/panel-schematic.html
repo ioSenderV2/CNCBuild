@@ -28,13 +28,24 @@
   .warn { border-left: 3px solid #d98b00; background: #fff8e8; padding: 2mm 3mm; margin: 3mm 0; font-size: 10pt; }
   svg { max-width: 100%; height: auto; }
 
-  /* wire colours — the legend on page 1 is the authority for what each means */
-  .w-hot  { stroke: #111;    stroke-width: 2.8; fill: none; }
-  .w-ctl  { stroke: #c81e1e; stroke-width: 2.4; fill: none; }
-  .w-org  { stroke: #e8820c; stroke-width: 3.0; fill: none; }
-  .w-pe   { stroke: #1a9641; stroke-width: 2.6; fill: none; }
-  .w-nhal { stroke: #333;    stroke-width: 5.2; fill: none; }   /* neutral halo */
-  .w-neu  { stroke: #fff;    stroke-width: 3.0; fill: none; }   /* neutral core */
+  /* THE SCHEME. The only place in this file where a colour is written down.
+     Everything below refers to a conductor by what it IS, never by what colour it is,
+     so changing the scheme is five edits here and nothing anywhere else. */
+  :root {
+    --c-l1:      #1452c8;   /* L1      — blue  */
+    --c-l2:      #c81e1e;   /* L2      — red   */
+    --c-hot:     #111111;   /* hot     — black */
+    --c-neutral: #ffffff;   /* neutral — white */
+    --c-pe:      #1a9641;   /* PE      — green */
+    --c-outside: #8a8a8a;   /* outside the scheme: DC out, spindle U/V/W, dry contacts */
+  }
+  .w-l1   { stroke: var(--c-l1);      stroke-width: 2.8; fill: none; }
+  .w-l2   { stroke: var(--c-l2);      stroke-width: 2.8; fill: none; }
+  .w-hot  { stroke: var(--c-hot);     stroke-width: 2.8; fill: none; }
+  .w-pe   { stroke: var(--c-pe);      stroke-width: 2.6; fill: none; }
+  .w-out  { stroke: var(--c-outside); stroke-width: 2.6; fill: none; stroke-dasharray: 6 3; }
+  .w-nhal { stroke: #333;             stroke-width: 5.2; fill: none; }  /* neutral outline, so white reads on white */
+  .w-neu  { stroke: var(--c-neutral); stroke-width: 3.0; fill: none; }
 
   .bx   { fill: #eef3fa; stroke: #111; stroke-width: 1.8; }
   .bx2  { fill: #f6f1e7; stroke: #111; stroke-width: 1.8; }
@@ -63,23 +74,34 @@ components against the real box. Every decision here is recorded with its proven
 
 <h2>Wire colour and gauge</h2>
 
-<p class="sub">The colour scheme is <b>convention, not his decision</b> &mdash; it follows NFPA 79, which
-is worth saying because one of its colours carries a meaning this panel actually needs.</p>
+<p class="sub"><b>His scheme, 2026-11-07.</b> These are the colours of the wire in the box, not a
+drawing convention &mdash; the drawing uses them so that it reads the same way the panel does.</p>
 
 <table>
-<tr><th>Colour</th><th>Means</th><th>Where</th><th>Gauge</th></tr>
-<tr><td><b>Black</b></td><td>Ungrounded power conductor</td><td>Both 220&nbsp;V legs (labelled L1 and L2 throughout, since both are black) and the 110&nbsp;V hot</td><td><b>12 AWG</b> pigtails, <b>14 AWG</b> everywhere inside</td></tr>
-<tr><td><b>Red</b></td><td>AC control conductor</td><td>The paddle circuit and both contactor coils</td><td><b>14 AWG</b></td></tr>
-<tr><td><b>White</b></td><td>Grounded conductor &mdash; neutral</td><td>110&nbsp;V side only. There is no neutral anywhere in the 220&nbsp;V chain</td><td><b>14 AWG</b></td></tr>
-<tr><td><b>Green</b></td><td>Equipment ground</td><td>Every PE conductor to the bar</td><td><b>12 AWG</b> from the pigtails, <b>14 AWG</b> to device cases</td></tr>
-<tr><td><b>Orange</b></td><td><b>Live when the disconnect is off</b></td><td>The unswitched 110&nbsp;V receptacle branch and the strip in it</td><td><b>12 AWG</b></td></tr>
+<tr><th>Colour</th><th>Is</th><th>Where</th><th>Gauge</th></tr>
+<tr><td><b>Blue</b></td><td><b>L1</b></td><td>220&nbsp;V side, everywhere</td><td><b>12 AWG</b> pigtail, <b>14 AWG</b> inside</td></tr>
+<tr><td><b>Red</b></td><td><b>L2</b></td><td>220&nbsp;V side, everywhere</td><td><b>12 AWG</b> pigtail, <b>14 AWG</b> inside</td></tr>
+<tr><td><b>Black</b></td><td><b>Hot</b></td><td>110&nbsp;V side only</td><td><b>12 AWG</b> pigtail, <b>14 AWG</b> inside</td></tr>
+<tr><td><b>White</b></td><td><b>Neutral</b></td><td>110&nbsp;V side only. There is no neutral anywhere in the 220&nbsp;V chain</td><td><b>14 AWG</b></td></tr>
+<tr><td><b>Green</b></td><td><b>PE</b></td><td>Every ground conductor to the bar</td><td><b>12 AWG</b> from the pigtails, <b>14 AWG</b> to device cases</td></tr>
+<tr><td><i>Grey, dashed</i></td><td><i>Outside the scheme</i></td><td>Drawing only, not a wire colour &mdash; the 36&nbsp;V DC out, the spindle's U/V/W, the sense relay's dry contact</td><td>&mdash;</td></tr>
 </table>
 
+<div class="warn">
+<b>The drawing holds these in one place.</b> The scheme is defined once at the top of this file as
+named values &mdash; L1, L2, hot, neutral, PE &mdash; and every conductor on every sheet refers to
+<i>what it is</i>, never to a colour. Changing the scheme is five edits in that block and nothing
+anywhere else, which is the only way a drawing and a panel stay agreeing with each other.
+</div>
+
 <div class="info">
-<b>Orange is doing real work here and is not decoration.</b> Its NFPA&nbsp;79 meaning is
-&ldquo;stays energised when the main disconnect is open&rdquo;, which is exactly the one trap this panel
-has: with the paddle down, the four pairs off the block are dead and <b>the receptacle and the power
-strip beside them are not</b>. Anything orange is a conductor the paddle does not kill.
+<b>Two things fall out of this that are worth having on the page.</b><br><br>
+<b>The 2 &times; 8 block's own poles are red and blue</b>, so the wire colour and the block agree and
+nothing has to be written on the panel to say which row is which. That was an open item until this
+scheme was chosen.<br><br>
+<b>And colour now tells you what the paddle kills.</b> Since the 12&nbsp;V supply moved to the
+110&nbsp;V side, the voltage split <i>is</i> the switched split: <b>blue or red dies, black or white
+lives.</b> One glance at a conductor says whether an E-stop takes it away.
 </div>
 
 <div class="warn">
@@ -133,8 +155,8 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="sm c" x="460" y="39">220 V &middot; 20 A circuit &middot; L6-20R</text>
 
   <!-- pigtail down to the contactor -->
-  <path class="w-hot" d="M420 44 V 128"/>
-  <path class="w-hot" d="M500 44 V 128"/>
+  <path class="w-l1" d="M420 44 V 128"/>
+  <path class="w-l2" d="M500 44 V 128"/>
   <text class="wg" x="600" y="62">10 ft captive pigtail &middot; 12 AWG &middot; L6-20P</text>
   <text class="sm e" x="408" y="82">L1</text>
   <text class="sm" x="512" y="82">L2</text>
@@ -158,8 +180,8 @@ circuits are Fig. 2 and Fig. 3.</p>
   <circle class="dot" cx="500" cy="216" r="3.2"/>
 
   <!-- contactor out to the block -->
-  <path class="w-hot" d="M420 216 V 292"/>
-  <path class="w-hot" d="M500 216 V 318"/>
+  <path class="w-l1" d="M420 216 V 292"/>
+  <path class="w-l2" d="M500 216 V 318"/>
   <text class="wg" x="600" y="246">switched 220 V &middot; 12 AWG</text>
 
   <!-- 2x8 BLOCK -->
@@ -167,23 +189,23 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="ttl" x="66" y="248">2 &times; 8 DISTRIBUTION BLOCK</text>
   <text class="sm"  x="66" y="263">two switched legs in, four pairs out</text>
   <!-- row A, L1. gap where the L2 feed crosses -->
-  <path class="w-hot" d="M75 292 H 494"/>
-  <path class="w-hot" d="M506 292 H 835"/>
+  <path class="w-l1" d="M75 292 H 494"/>
+  <path class="w-l1" d="M506 292 H 835"/>
   <!-- row B, L2. gaps where the four L1 drops cross -->
-  <path class="w-hot" d="M75 318 H 97"/>
-  <path class="w-hot" d="M109 318 H 312"/>
-  <path class="w-hot" d="M324 318 H 527"/>
-  <path class="w-hot" d="M539 318 H 742"/>
-  <path class="w-hot" d="M754 318 H 835"/>
+  <path class="w-l2" d="M75 318 H 97"/>
+  <path class="w-l2" d="M109 318 H 312"/>
+  <path class="w-l2" d="M324 318 H 527"/>
+  <path class="w-l2" d="M539 318 H 742"/>
+  <path class="w-l2" d="M754 318 H 835"/>
   <text class="sm" x="840" y="296">L1</text>
   <text class="sm" x="840" y="322">L2</text>
 
   <!-- four branch drops, block -> breaker -->
-  <path class="w-hot" d="M103 292 V 384"/><path class="w-hot" d="M127 318 V 384"/>
-  <path class="w-hot" d="M318 292 V 384"/><path class="w-hot" d="M342 318 V 384"/>
-  <path class="w-hot" d="M533 292 V 384"/><path class="w-hot" d="M557 318 V 384"/>
+  <path class="w-l1" d="M103 292 V 384"/><path class="w-l2" d="M127 318 V 384"/>
+  <path class="w-l1" d="M318 292 V 384"/><path class="w-l2" d="M342 318 V 384"/>
+  <path class="w-l1" d="M533 292 V 384"/><path class="w-l2" d="M557 318 V 384"/>
   <!-- pair 4 carries no breaker: straight down to the sense relay coil -->
-  <path class="w-hot" d="M748 292 V 508"/><path class="w-hot" d="M772 318 V 508"/>
+  <path class="w-l1" d="M748 292 V 508"/><path class="w-l2" d="M772 318 V 508"/>
 
   <!-- BREAKERS -->
   <rect class="bx" x="30"  y="384" width="170" height="60" rx="3"/>
@@ -203,9 +225,9 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="sm c" x="820" y="438">a 2 W coil</text>
 
   <!-- breaker -> load -->
-  <path class="w-hot" d="M103 444 V 508"/><path class="w-hot" d="M127 444 V 508"/>
-  <path class="w-hot" d="M318 444 V 508"/><path class="w-hot" d="M342 444 V 508"/>
-  <path class="w-hot" d="M533 444 V 508"/><path class="w-hot" d="M557 444 V 508"/>
+  <path class="w-l1" d="M103 444 V 508"/><path class="w-l2" d="M127 444 V 508"/>
+  <path class="w-l1" d="M318 444 V 508"/><path class="w-l2" d="M342 444 V 508"/>
+  <path class="w-l1" d="M533 444 V 508"/><path class="w-l2" d="M557 444 V 508"/>
   <text class="wg" x="137" y="478">14 AWG</text>
   <text class="wg" x="352" y="478">14 AWG</text>
   <text class="wg" x="567" y="478">14 AWG</text>
@@ -237,9 +259,9 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="sm c"  x="545" y="583" fill="#c81e1e">coil 230 V &mdash; Fig. 3</text>
 
   <!-- off-sheet -->
-  <path class="w-hot" d="M115 592 V 626"/>
-  <path class="w-hot" d="M330 592 V 626"/>
-  <path class="w-ctl" d="M760 592 V 626"/>
+  <path class="w-out" d="M115 592 V 626"/>
+  <path class="w-out" d="M330 592 V 626"/>
+  <path class="w-out" d="M760 592 V 626"/>
   <text class="sm c" x="115" y="642">36 V out to the four</text>
   <text class="sm c" x="115" y="656">IG57 drives</text>
   <text class="sm c" x="330" y="642">U / V / W out to the</text>
@@ -248,7 +270,7 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="sm c" x="760" y="656">board&apos;s e-stop input</text>
 
   <!-- the pump itself -->
-  <path class="w-hot" d="M533 592 V 650"/><path class="w-hot" d="M557 592 V 650"/>
+  <path class="w-l1" d="M533 592 V 650"/><path class="w-l2" d="M557 592 V 650"/>
   <text class="tm" x="494" y="608">2</text>
   <text class="tm" x="566" y="608">4</text>
   <rect class="bx2" x="460" y="650" width="170" height="60" rx="3"/>
@@ -256,7 +278,7 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="sm c"  x="545" y="692">80 W &middot; Hmax 3.5 m &middot; 3500 L/h</text>
 
   <!-- footnote -->
-  <text class="sm" x="30" y="738">Both 220 V legs are black conductors. They are labelled L1 and L2 throughout because colour cannot tell them apart.</text>
+  <text class="sm" x="30" y="738">L1 is blue and L2 is red, the same two colours the 2 &times; 8 block uses for its own poles. Grey dashed is outside the scheme.</text>
 </svg>
 <figcaption>Fig. 1 &mdash; the 220 V chain from the wall to the four loads.</figcaption>
 </figure>
@@ -310,10 +332,11 @@ switches <b>both</b> legs, so the coil is isolated on both sides when it drops.<
   <text class="tm" x="714" y="286">24</text>
 
   <!-- returns: 14 -> coil (inner), 24 -> coil (outer). routed so they never cross -->
-  <path class="w-ctl" d="M650 270 V 318 H 258 V 252 H 200"/>
-  <path class="w-ctl" d="M740 270 V 346 H 228 V 225 H 200"/>
-  <text class="wg" x="300" y="312">switched hot back &middot; red &middot; 14 AWG</text>
-  <text class="wg" x="300" y="340">switched neutral back &middot; red &middot; 14 AWG</text>
+  <path class="w-hot" d="M650 270 V 318 H 258 V 252 H 200"/>
+  <path class="w-nhal" d="M740 270 V 346 H 228 V 225 H 200"/>
+  <path class="w-neu"  d="M740 270 V 346 H 228 V 225 H 200"/>
+  <text class="wg" x="300" y="312">switched hot back &middot; black &middot; 14 AWG</text>
+  <text class="wg" x="300" y="340">switched neutral back &middot; white &middot; 14 AWG</text>
 
   <!-- coil -->
   <rect class="bxr" x="60" y="205" width="140" height="62" rx="3"/>
@@ -345,9 +368,9 @@ so the whole pump branch is behind one breaker.</p>
 <figure>
 <svg viewBox="0 0 900 330" width="190mm" xmlns="http://www.w3.org/2000/svg">
 
-  <path class="w-ctl" d="M14 60 H 150"/>
+  <path class="w-l1" d="M14 60 H 150"/>
   <text class="sm" x="14" y="50">PAIR 3 &middot; L1, after the breaker</text>
-  <text class="wg" x="40" y="80">red &middot; 14 AWG</text>
+  <text class="wg" x="40" y="80">blue, L1 &middot; 14 AWG</text>
 
   <rect class="bx" x="150" y="30" width="220" height="120" rx="3"/>
   <text class="ttl c" x="260" y="58">VFD</text>
@@ -360,7 +383,7 @@ so the whole pump branch is behind one breaker.</p>
   <text class="tm" x="158" y="54">FA</text>
   <text class="tm e" x="362" y="104">FC</text>
 
-  <path class="w-ctl" d="M370 110 H 430"/>
+  <path class="w-l1" d="M370 110 H 430"/>
 
   <rect class="bxr" x="430" y="80" width="180" height="62" rx="3"/>
   <text class="ttl c" x="520" y="105">PUMP CONTACTOR</text>
@@ -370,7 +393,7 @@ so the whole pump branch is behind one breaker.</p>
   <text class="tm e" x="424" y="128">A1</text>
   <text class="tm" x="616" y="128">A2</text>
 
-  <path class="w-ctl" d="M610 110 H 770"/>
+  <path class="w-l2" d="M610 110 H 770"/>
   <text class="sm" x="778" y="106">PAIR 3 &middot; L2</text>
 
   <text class="sm" x="14" y="180">Coil inrush 11.5 VA, holding 2.8 VA &mdash; 50 mA to pull in and 12 mA to hold, against a 3 A contact.</text>
@@ -380,7 +403,7 @@ so the whole pump branch is behind one breaker.</p>
   <text class="q" x="28" y="242">THE ONE UNKNOWN ON THESE SHEETS &mdash; which of FB and FC is the normally-open leg.</text>
   <text class="sm" x="28" y="262">The manual gives the pair as &ldquo;N/O or N/C&rdquo; and does not say which is which. FC is drawn as the</text>
   <text class="sm" x="28" y="280">normally-open one above because something had to be drawn. Meter it on the real drive, unpowered,</text>
-  <text class="sm" x="28" y="298">before this wire is made up. If it is FB, the only change is which terminal that red conductor lands on.</text>
+  <text class="sm" x="28" y="298">before this wire is made up. If it is FB, the only change is which terminal that blue conductor lands on.</text>
 </svg>
 <figcaption>Fig. 3 &mdash; the pump control circuit, in series through the VFD's relay.</figcaption>
 </figure>
@@ -397,8 +420,8 @@ shows up as spindle speed jitter and gets blamed on the drive.
 <!-- ============================================================ FIG 4 -->
 <div class="fig">
 <h2>Fig. 4 &mdash; The 110 V side: everything that survives the E-stop</h2>
-<p class="sub">Nothing on this sheet is switched by the paddle. <b>All of it is orange</b> &mdash; live
-with the paddle down, by design.</p>
+<p class="sub">Nothing on this sheet is switched by the paddle. <b>Everything here is black and
+white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-stop, 220 V does not.</p>
 
 <figure>
 <svg viewBox="0 0 900 430" width="190mm" xmlns="http://www.w3.org/2000/svg">
@@ -409,8 +432,9 @@ with the paddle down, by design.</p>
   <text class="sm c"  x="110" y="84">20 A at the wall</text>
   <text class="q c"   x="110" y="100">L5-20P &mdash; CANNOT TAKE L6-20</text>
 
-  <path class="w-org" d="M200 56 H 260"/>
-  <path class="w-org" d="M200 86 H 260"/>
+  <path class="w-hot" d="M200 56 H 260"/>
+  <path class="w-nhal" d="M200 86 H 260"/>
+  <path class="w-neu"  d="M200 86 H 260"/>
   <text class="sm" x="206" y="48">hot</text>
   <text class="sm" x="206" y="108">neutral</text>
 
@@ -421,8 +445,9 @@ with the paddle down, by design.</p>
   <text class="sm c"  x="345" y="88">hot AND neutral</text>
   <text class="q c"   x="345" y="104">PAIR 4&apos;S, REPURPOSED</text>
 
-  <path class="w-org" d="M430 56 H 490"/>
-  <path class="w-org" d="M430 86 H 490"/>
+  <path class="w-hot" d="M430 56 H 490"/>
+  <path class="w-nhal" d="M430 86 H 490"/>
+  <path class="w-neu"  d="M430 86 H 490"/>
 
   <!-- the 2x6 splitter -->
   <rect class="bx" x="490" y="24" width="120" height="94" rx="3"/>
@@ -432,16 +457,19 @@ with the paddle down, by design.</p>
   <text class="sm c"  x="550" y="110">3 spare</text>
 
   <!-- pair 1, out the right edge to the 12 V supply -->
-  <path class="w-org" d="M610 40 H 670 V 100 H 700"/>
-  <path class="w-org" d="M610 54 H 655 V 116 H 700"/>
+  <path class="w-hot" d="M610 40 H 670 V 100 H 700"/>
+  <path class="w-nhal" d="M610 54 H 655 V 116 H 700"/>
+  <path class="w-neu"  d="M610 54 H 655 V 116 H 700"/>
 
   <!-- pair 2, out the right edge to the paddle -->
-  <path class="w-org" d="M610 68 H 640 V 166 H 700"/>
-  <path class="w-org" d="M610 82 H 625 V 182 H 700"/>
+  <path class="w-hot" d="M610 68 H 640 V 166 H 700"/>
+  <path class="w-nhal" d="M610 82 H 625 V 182 H 700"/>
+  <path class="w-neu"  d="M610 82 H 625 V 182 H 700"/>
 
   <!-- pair 3, out the BOTTOM edge to the receptacle, clear of the other two -->
-  <path class="w-org" d="M530 118 V 286 H 700"/>
-  <path class="w-org" d="M560 118 V 302 H 700"/>
+  <path class="w-hot" d="M530 118 V 286 H 700"/>
+  <path class="w-nhal" d="M560 118 V 302 H 700"/>
+  <path class="w-neu"  d="M560 118 V 302 H 700"/>
 
   <rect class="bx2" x="700" y="84" width="180" height="46" rx="3"/>
   <text class="ttl c" x="790" y="104">PAIR 1 &mdash; 12 V SUPPLY</text>
