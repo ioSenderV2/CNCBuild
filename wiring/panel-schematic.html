@@ -99,7 +99,7 @@ anywhere else, which is the only way a drawing and a panel stay agreeing with ea
 <b>The 2 &times; 8 block's own poles are red and blue</b>, so the wire colour and the block agree and
 nothing has to be written on the panel to say which row is which. That was an open item until this
 scheme was chosen.<br><br>
-<b>And colour now tells you what the paddle kills.</b> Since the 12&nbsp;V supply moved to the
+<b>And colour now tells you what the E-stops kill.</b> Since the 12&nbsp;V supply moved to the
 110&nbsp;V side, the voltage split <i>is</i> the switched split: <b>blue or red dies, black or white
 lives.</b> One glance at a conductor says whether an E-stop takes it away.
 </div>
@@ -108,9 +108,9 @@ lives.</b> One glance at a conductor says whether an E-stop takes it away.
 <b>14 AWG everywhere inside is a choice, and it is generous.</b> The conductor has to be rated for its
 <i>breaker</i> rather than for its load, and at 6&nbsp;A a lighter gauge would be legitimate on three of
 the four branches. One wire size across the panel is worth more than the copper saved. <b>16 AWG is
-also legitimate for the run out to the remote paddle box</b> if a neater cable is wanted there &mdash;
-it is behind the 1&nbsp;A fuse and it is in range for both the spade tabs and the coil terminals,
-which take 1.5&ndash;2.5&nbsp;mm&sup2;.
+also legitimate for the runs out to the two switch boxes</b> if a neater cable is wanted there &mdash;
+it is behind the 1&nbsp;A fuse and it is in range for the spade tabs, the mushroom's contact block and
+the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 </div>
 
 <h2>The parts</h2>
@@ -119,7 +119,8 @@ which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 <tr><th>Position</th><th>Part</th><th>Key figures</th></tr>
 <tr><td>220 V in</td><td>10 ft captive pigtail, <b>L6-20P</b> into an L6-20R</td><td>12 AWG. Two hots, no neutral</td></tr>
 <tr><td>110 V in</td><td>10 ft captive pigtail, <b>L5-20P</b> into an L5-20R</td><td>12 AWG. <b>L5-20 and L6-20 are physically non-interchangeable</b> &mdash; the two cords cannot be cross-plugged</td></tr>
-<tr><td>E-stop</td><td><b>POWERTEC 71054</b> magnetic paddle, in a 71834 deep gang box</td><td>120 V, 1/2 HP, 9 A continuous. 13-14 and 23-24, both NO, 1/4 in spade tabs</td></tr>
+<tr><td>E-stop &mdash; lower</td><td><b>POWERTEC 71054</b> magnetic paddle, in a 71834 deep gang box</td><td>120 V, 1/2 HP, 9 A continuous. 13-14 and 23-24, both NO, 1/4 in spade tabs. About a foot below the table surface</td></tr>
+<tr><td>E-stop &mdash; upper</td><td><b>Locking mushroom</b>, push to latch and twist to release</td><td><b>In series, upstream of the paddle</b>, 1 NC in the hot leg. On the apron, centred between the fins, about 2 in forward of the tee track bed</td></tr>
 <tr><td>Control fuse</td><td><b>1 A</b></td><td>Protects the control conductors, not the coil</td></tr>
 <tr><td>Main contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>25 A AC-7a / 9 A AC-7b. Coil AC 110&ndash;120 V. 18 mm</td></tr>
 <tr><td>Distribution</td><td><b>2 &times; 8 block</b></td><td>Two switched legs in, four pairs out</td></tr>
@@ -286,38 +287,53 @@ circuits are Fig. 2 and Fig. 3.</p>
 
 <!-- ============================================================ FIG 2 -->
 <div class="fig">
-<h2>Fig. 2 &mdash; Control: the paddle and the main coil</h2>
-<p class="sub">The paddle's own circuit, which is <b>pair 2 off the 110 V splitter</b> in Fig. 4. It
-switches <b>both</b> legs, so the coil is isolated on both sides when it drops.</p>
-<p class="sub"><b>A locking mushroom E-stop drops into this position unchanged</b> &mdash; push to
-latch, twist to release. Nothing on this sheet or any other moves; the switch is a pilot device and
-the only thing the chain asks of it is to break the coil circuit. <b>Pressed, it behaves exactly like
-the paddle</b> &mdash; latched off until it is twisted to release, and the mains coming back cannot
-close it. <b>The two differ only when the mains fails on its own:</b> an untouched mushroom's contacts
-were never opened, so the coil picks up again when the 110 V returns, where the paddle stays dropped
-until the green button is pressed.</p>
+<h2>Fig. 2 &mdash; Control: two E-stops in series and the main coil</h2>
+<p class="sub">The control circuit, which is <b>pair 2 off the 110 V splitter</b> in Fig. 4. The
+paddle switches <b>both</b> legs, so the coil is isolated on both sides when it drops.</p>
+<p class="sub"><b>Two switches, in series: a locking mushroom up on the apron and the paddle below.</b>
+Either one stops the machine and neither one can start it. The mushroom is where the hand lands; the
+paddle has to live about a foot under the table because of the torsion box.</p>
+<p class="sub"><b>The order is not optional &mdash; the mushroom goes UPSTREAM, between the fuse and the
+paddle's 13.</b> That feeds the paddle's own holding coil through the mushroom, so pressing the
+mushroom drops the paddle out and the green button is what brings it back. Wired downstream of 14/24
+instead, the paddle stays latched in and <b>twisting the mushroom restarts the machine with no press
+at all</b> &mdash; which looks identical from outside the box.</p>
+<p class="sub"><b>One NC contact is enough, in the hot leg only.</b> The paddle drops out whenever the
+mushroom opens, and the paddle opens both legs, so the both-poles-isolated property survives without
+the mushroom breaking the neutral.</p>
 
 <figure>
 <svg viewBox="0 0 900 410" width="190mm" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- remote box FIRST: its fill is opaque and would otherwise paint over the wires -->
+  <!-- remote boxes FIRST: their fill is opaque and would otherwise paint over the wires -->
   <rect class="rem" x="520" y="40" width="340" height="300" rx="4"/>
   <text class="sm" x="520" y="32">REMOTE &mdash; deep gang box, bolted to the side of the machine</text>
+  <rect class="rem" x="268" y="36" width="228" height="100" rx="4"/>
+  <text class="sm" x="268" y="28">REMOTE &mdash; on the apron, between the fins</text>
 
   <!-- 1 A fuse -->
   <path class="w-hot" d="M14 78 H 140"/>
   <text class="sm" x="14" y="66">110 V HOT &mdash; splitter pair 2</text>
   <rect class="bx" x="140" y="60" width="110" height="36" rx="3"/>
   <text class="ttl c" x="195" y="83">1 A FUSE</text>
-  <path class="w-hot" d="M250 78 H 552 V 120 H 580"/>
 
-  <!-- neutral, halo then core -->
-  <path class="w-nhal" d="M14 135 H 566 V 170 H 580"/>
-  <path class="w-neu"  d="M14 135 H 566 V 170 H 580"/>
-  <text class="sm" x="14" y="123">NEUTRAL &mdash; white</text>
+  <!-- mushroom: UPSTREAM of the paddle, in the hot leg only -->
+  <path class="w-hot" d="M250 78 H 282"/>
+  <rect class="bx" x="282" y="52" width="200" height="68" rx="3"/>
+  <text class="ttl c" x="382" y="74">LOCKING MUSHROOM</text>
+  <text class="sm c"  x="382" y="94">1 NC &middot; push to latch</text>
+  <text class="sm c"  x="382" y="112">twist to release</text>
+  <circle class="dot" cx="282" cy="78" r="3.2"/>
+  <circle class="dot" cx="482" cy="78" r="3.2"/>
+  <path class="w-hot" d="M482 78 H 552 V 120 H 580"/>
 
-  <text class="wg" x="330" y="70">14 AWG</text>
-  <text class="wg" x="330" y="128">14 AWG</text>
+  <!-- neutral runs straight past it: 1 NC breaks hot only, and the paddle opens both legs -->
+  <path class="w-nhal" d="M14 150 H 566 V 170 H 580"/>
+  <path class="w-neu"  d="M14 150 H 566 V 170 H 580"/>
+  <text class="sm" x="14" y="138">NEUTRAL &mdash; white</text>
+
+  <text class="wg" x="498" y="108">14 AWG</text>
+  <text class="wg" x="330" y="143">14 AWG</text>
 
   <!-- paddle -->
   <rect class="bx" x="580" y="90" width="240" height="180" rx="3"/>
@@ -354,8 +370,8 @@ until the green button is pressed.</p>
   <text class="tm" x="206" y="218">A2</text>
   <text class="tm" x="206" y="268">A1</text>
 
-  <text class="sm" x="14" y="380">Four conductors in one cable between the panel and the switch box &mdash; hot and neutral out, the switched pair back.</text>
-  <text class="sm" x="14" y="398">The coil is AC, so A1 and A2 are not polarised. Which return lands on which is free.</text>
+  <text class="q" x="14" y="378">THE MUSHROOM IS UPSTREAM. It feeds the paddle's own holding coil, so pressing it drops the paddle out and the green button is what comes back.</text>
+  <text class="sm" x="14" y="396">The control circuit is a series loop through two boxes. The coil is AC, so A1 and A2 are not polarised &mdash; which return lands on which is free.</text>
 </svg>
 <figcaption>Fig. 2 &mdash; the control circuit. Red is switched AC control.</figcaption>
 </figure>
@@ -578,6 +594,8 @@ ground that carries signal current.
 <tr class="unk"><td><b>Which of FB and FC is the VFD's normally-open leg</b></td><td>The manual says &ldquo;N/O or N/C&rdquo; and does not say which. Meter it with the drive unpowered. Fig. 3</td></tr>
 <tr class="unk"><td><b>That the main contactor is really 2NO</b></td><td>A vendor claim on a listing. Both load terminals against their line terminals, coil de-energised. On a 1NO+1NC part only one hot would be switched, and the machine would still start, stop and behave</td></tr>
 <tr class="unk"><td><b>That 13 and 14 are one pole on the real paddle</b></td><td>Not 13 and 23. The tabs are stamped</td></tr>
+<tr class="unk"><td><b>That the paddle's holding coil is fed from 13/23, the in side</b></td><td>It has to be &mdash; a magnetic switch must pull in with a dead load side. But the whole series arrangement rests on it, so meter it: latched in with nothing connected to 14/24</td></tr>
+<tr class="unk"><td><b>What hangs off the front of the Z plate at max Y, against the mushroom on the apron</b></td><td>The travel envelope is stated for the plate's own face; the spindle projects further. Push the gantry to max Y by hand and look, before the hole is cut</td></tr>
 <tr class="unk"><td><b>The 36 V rail, with a meter at the drive end</b></td><td>It is a variable supply with an LCD, so 36 V is a setting and not a property. Record the reading in <code>commissioning/</code> and mark the adjustment</td></tr>
 <tr class="unk"><td><b>Polarity at each IG57 before first power-on</b></td><td>There is no reverse-polarity protection and the four 2P connectors are assembled by hand</td></tr>
 <tr class="unk"><td><b>A clamp on the VFD's input while cutting</b></td><td>The manual gives 11 A as the drive's <i>output</i> current, and the mains budget has been carrying 11 A as the spindle's draw. They are not the same number on single phase</td></tr>

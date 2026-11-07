@@ -33,9 +33,11 @@ FLAG: **THIS FILE SAID THE OPPOSITE UNTIL 2026-11-06**, when the 12 V supply was
 paddle took the controller with it. Do not reinstate that; the sense relay below exists because of
 this change and is not optional with it.
 
-Everything downstream of that is behind **one magnetic paddle switch** - big red stop paddle, small
-green start button, 110 V. Its output drives the **coil** of a **25 A 220 V contactor with a 110 V
-coil**, and that contactor is what actually carries the 220 V. His scheme, 2026-11-05.
+Everything downstream of that is behind **two E-stop switches in series** - a **locking mushroom** on
+the apron and the **magnetic paddle** below it, with its big red stop paddle and small green start
+button, at 110 V. The paddle's output drives the **coil** of a **25 A 220 V contactor with a 110 V
+coil**, and that contactor is what actually carries the 220 V. His scheme, 2026-11-05; the second
+switch is his, 2026-11-07, and the series arrangement is set out below.
 
 ### The paddle switch is a POWERTEC 71054
 
@@ -59,9 +61,10 @@ NOTE: **A MAGNETIC PADDLE SWITCH DROPS OUT ON A POWER LOSS AND STAYS OUT** - and
 own claim for this part, not an inference: *"preventing tools from powering up after unexpected
 outages, blown breakers and other power interruptions."* Coming back takes a deliberate press of the
 green button. That is the property being bought, and it is the reason this is not a toggle: a toggle
-restores power to a machine nobody is standing at, the moment the mains returns. **A locking mushroom
-E-stop behaves like the paddle when it is pressed and like a toggle when the mains fails on its own**
-- see the swap below, which is where that distinction is set out.
+restores power to a machine nobody is standing at, the moment the mains returns. **It is also why the
+paddle stays in the circuit now that there are two switches** - the mushroom in series with it cannot
+do this, and does not have to, because the paddle is still there doing it. See the two-switch section
+below.
 
 SETTLED: **THE TERMINALS ARE 13/14 AND 23/24, TWO POLES, ON 1/4 INCH SPADE TABS.** From the wiring
 diagram on the listing, 2026-11-05 - so this no longer waits on unboxing the switch:
@@ -99,45 +102,89 @@ OPEN: **WHETHER THE REMOVABLE SAFETY LOCK KEY IS REAL.** The Amazon copy claims 
 manufacturer's page does not mention it. Apparent on arrival, and worth having if it is there: it
 does not make the box safe, but it stops a restart while hands are inside.
 
-SETTLED: **A 1 A FUSE ON THE CONTROL CIRCUIT - his, 2026-11-05.** The paddle switch and the
+SETTLED: **A 1 A FUSE ON THE CONTROL CIRCUIT - his, 2026-11-05.** The two switches and the
 contactor coil are the whole of the load on the 110 V side, and a coil draws almost nothing, so the
 20 A breaker at the wall is protecting the house rather than this wiring. **1 A puts a fuse in front
 of the control conductors that is sized for what they actually carry** - and it is the branch where a
 fault is most likely to be a pinched wire in a door hinge rather than a load fault.
 
-### The paddle can be swapped for a locking mushroom E-stop
+### Two switches in series - a mushroom at the bed, the paddle below
 
-SETTLED: **his, 2026-11-07 - a locking mushroom E-stop drops into the paddle's place with no other
-change to this design.** Push it down and it latches; twist it and it pops back up. **Nothing else in
-the chain moves:** same 110 V branch, same 1 A fuse, same contactor coil, same four conductors out to
-the switch box and back, same box bolted to the side of the machine. The 220 V side never sees the
-switch either way.
+SETTLED: **his, 2026-11-07. There are TWO E-stop switches, in series on the contactor coil
+circuit** - a **locking mushroom** up on the apron where a hand lands, and the **magnetic paddle**
+below. Either one stops the machine; **neither one can start it.**
 
-✅ **THAT IS BECAUSE THE SWITCH IS A PILOT DEVICE AND NOTHING ELSE.** All this chain asks of it is to
-break the coil circuit; everything that carries real current is downstream of the contactor. Any
-device that can open two conductors at 110 V satisfies it.
+🔴 **THE MOTIVE IS WHERE THE HAND GOES, AND IT IS THE PADDLE'S ONE WEAKNESS.** The paddle has to
+live about **a foot below the table surface**, because the torsion box is in the way. **The mushroom
+sits on top, right in front of the bed, centred between the two fins** - the place you are already
+standing when something goes wrong.
 
-NOTE: **The four 1/4 inch female quick-disconnects are the paddle's requirement, not the chain's.** A
-mushroom station's contact blocks are screw terminals. **Buy the spades with the paddle, not ahead of
-the choice.**
+✅ **AND SERIES IS NOT A COMPROMISE BETWEEN THE TWO - IT IS BETTER THAN EITHER ALONE.** The paddle
+stays in the coil circuit, so it keeps doing the thing it was bought for: **a mains failure drops it
+and it stays dropped.** The mushroom adds a stop where the hand is, and gives up nothing.
 
-🔴 **THERE ARE TWO WAYS THE 220 V SIDE GOES DEAD, AND THE MUSHROOM ONLY LATCHES ON ONE OF THEM.**
-This is the whole of the difference between the two parts, and it is easy to read past:
+| How it went dead | What has to happen to come back |
+|---|---|
+| **The mushroom was pressed** | **Twist it to release, then press the paddle's green button.** Releasing the mushroom on its own restores nothing |
+| **The paddle was pressed** | **Press the green button** |
+| **The mains went away on its own** - outage, tripped breaker, a pigtail pulled | **Press the green button.** The paddle dropped out for want of 110 V and does not pick up again by itself |
 
-| How it went dead | The mushroom | The paddle |
-|---|---|---|
-| **Somebody hit the button** | Contacts open and the **mechanical latch holds them open**. It takes a **twist to release**, and the mains coming back changes nothing while it is latched | Same - the paddle stays down until the green button is pressed |
-| **The mains went away on its own** - outage, tripped breaker, a pigtail pulled | **Nobody touched the button, so its contacts were never opened and are still closed.** The coil drops for want of 110 V and **picks up again the instant the 110 V returns** | Stays dropped. Coming back takes a deliberate press |
+🔴 **THE ORDER IS NOT OPTIONAL: THE MUSHROOM GOES UPSTREAM OF THE PADDLE.** Between the **1 A fuse
+and the paddle's 13 and 23** - so the paddle's own holding coil is fed *through* the mushroom.
+Pressing the mushroom then takes line power away from the paddle, the paddle drops out, and the
+green button is what brings it back. **That is the whole reason the arrangement works.**
 
-FLAG: **SO THE SECOND ROW IS THE ONLY PLACE THEY DIFFER - and it is the one this file argued the
-paddle for.** It is also the case the paddle's own copy sells against, in the vendor's words rather
-than by inference: *"preventing tools from powering up after unexpected outages, blown breakers and
-other power interruptions."* **Pressing the button behaves identically on both parts.**
+FLAG: **DOWNSTREAM INVERTS IT, AND SILENTLY.** Wired between the paddle's **14/24** and the
+contactor's A1/A2 instead, the paddle keeps its line power and **stays latched in**. The mushroom then
+only interrupts the coil feed, so **twisting it back pulls the contactor straight in with no green
+button** - a restart on a twist, at the one spot on the machine that is easiest to knock. It is the
+worst of the arrangements and it looks identical from outside the box.
 
-**What is live after an unattended restore: 36 V at the four drives and mains at the VFD.** Nothing
-turns - motion needs step pulses from the controller and the spindle needs a run command on FOR/DCM,
-and neither arrives on its own. So it is **gear energised unattended rather than a tool starting
-up**, which is a different proposition from the table-saw case the vendor's copy describes.
+NOTE: **This follows from the switch having to hold itself in with a dead load side**, so its coil
+must be fed from the in side. PROCEDURE: **Meter it on the real paddle before wiring** - with the
+switch latched in and no load connected, the coil is being fed from 13/23 or it could never have
+pulled in. Not a convention to take from this page.
+
+SETTLED: **ONE NC CONTACT IS ENOUGH ON THE MUSHROOM.** The both-poles-isolated property that
+13-14 and 23-24 bought survives for free: **the paddle drops out whenever the mushroom opens, and
+the paddle opens both legs.** A 2NC block costs little and buys no isolation that is not already
+there.
+
+NOTE: **THE CONTROL CIRCUIT IS NOW A SERIES LOOP THROUGH TWO BOXES**, not one run out and back. Panel
+to the mushroom, mushroom to the paddle box, paddle box back to the panel - or each device its own run
+back to the panel, which is more cable and fewer joints. **A routing choice, not an electrical one.**
+
+NOTE: **The four 1/4 inch female quick-disconnects are the paddle's requirement**; the mushroom
+station's contact blocks are screw terminals. Both parts are in the design now, so both are a buy.
+
+**The cost of the arrangement is the restart, not the stop.** Stopping moves up to the bed where it
+is wanted. **The green button stays a foot down behind the torsion box**, and it is now needed after a
+mushroom press as well as after a paddle press.
+
+#### Where the mushroom mounts
+
+SETTLED: **his, 2026-11-07 - on the apron, centred between the two fins, about 2 inches forward of
+the tee track bed's front edge.**
+
+✅ **THAT IS CLEAR DECK AND THE REPO ALREADY SAYS SO.** The bed's front edge and the fin's back face
+are both at the same place, and the box's top skin runs **{{BOX_FRONT_OVERHANG}} mm past the fins** -
+see [`../dimensions/VALUES.md`](../dimensions/VALUES.md). **2 inches sits well inside that apron**,
+and the apron is **already where the toolsetter and the shop clutter live on the Mega V**, so a device
+standing proud there is not a new idea.
+
+✅ **CENTRED BETWEEN THE FINS IS ALSO CLEAR OF THE FIN ANGLES.** Each fin carries one length of
+40 x 40 angle in **front** of it - see [`../machine/assembly.md`](../machine/assembly.md) - and those
+sit at the fins, out at the two ends. The middle of the apron has nothing on it.
+
+✅ **AND IT IS OUTSIDE THE TRAVEL ENVELOPE.** Max Y travel is reached with the **Z plate's front face
+level with the beam end**, where the riser starts - closed 2026-10-02, see
+[`../machine/open-items.md`](../machine/open-items.md). The apron is forward of that.
+
+PROCEDURE: **Check it against what hangs off the FRONT of the Z plate, not against the plate.** The
+envelope note is about the plate's own face; the spindle and anything on it project further forward
+than that, and 2 inches is not a lot of margin. **Push the gantry to max Y by hand and look**, before
+the hole is cut - the apron is the one place on this machine where a surface-mounted device and the
+gantry are both trying to be.
 
 NOTE: **AND THE DROP-OUT CAN BE BOUGHT BACK IF IT IS WANTED - a green start button and one normally-open
 auxiliary contact on the contactor, wired across the button.** That is the ordinary three-wire
