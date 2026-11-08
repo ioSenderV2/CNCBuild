@@ -1180,19 +1180,34 @@ below. **His list, 2026-11-08:**
 
 **That is four times what the one inch was sized for.**
 
-OPEN: **AND THE LINEAR ENCODER PATCH CABLES ARE NOT IN THAT LIST.**
+NOTE: **AND THE LINEAR ENCODER PATCH CABLES ARE NOT IN THAT LIST.**
 [`../linear-encoder/sensor-board.md`](../linear-encoder/sensor-board.md) says **Y2's patch cable runs
 along the underside of the X beam and joins Y1's IN THE DRAG CHAIN** - so the pucks' Cat 6 runs come
-down this same path. **How many pucks feed it is not established here**, and each one is another
-cable through this hole.
+down this same path, and each is another cable through this hole.
+
+✅ **THAT DOES NOT HAVE TO BE COUNTED, BECAUSE THE BUNDLE IS MEASURED RATHER THAN ADDED UP.** The
+procedure below sizes the hole off the real cables held as they will lie, so the pucks are in the
+bundle whether or not anybody has written down how many there are. **It is the reason to measure
+rather than to tally.**
 
 PROCEDURE: **TAKE THE SIZE OFF THE REAL BUNDLE, NOT OFF A PAGE.** Gather the actual cables, **hold
 them as they will lie**, measure across the bundle and add room to work. A diameter calculated from
 catalogue cable ODs would be exactly the sort of figure this repo keeps out of its own files.
 
-🔴 **AND THREAD THE LARGEST CONNECTOR FIRST, WHILE THE HOLE IS EMPTY.** The Mini-Fit Jr going through
-a hole that already has eleven cables in it is the hard one, and discovering that at the end means
-pulling the lot back out. **Order is part of the procedure, not a knack.**
+PROCEDURE: **THREAD THEM BIGGEST CONNECTOR FIRST - his order, 2026-11-08:**
+
+1. **The 3 circuit Mini-Fit Jrs** - the **limit sensors and the probe.** They take the most room.
+2. **The network connectors** - the Cat 6 patch leads.
+3. **The bare wires last** - the 18/2 motor supplies and the Z plate ground, which have no connector
+   at all and will go through whatever is left.
+
+🔴 **ORDER IS PART OF THE PROCEDURE, NOT A KNACK.** A Mini-Fit Jr going through a hole that already
+has eleven cables in it is the hard one, and finding that out at the end means pulling the lot back
+out.
+
+✅ **AND THE ORDER IS WHAT MAKES THE HOLE SIZE RELAXED RATHER THAN CRITICAL - his point.** Sized for
+the bundle and loaded biggest-first, the last things through are bare wires that will find a gap.
+**The pessimistic diameter is cheap insurance, not a dimension to agonise over.**
 
 ✅ **STRENGTH IS NOT THE QUESTION HERE - THREADING IS.** Even a 2 inch hole in the **field** of a
 {{WALL_H}} x {{BACK_WALL_L}} panel is structurally nothing; this file's rule is that a shear panel is
