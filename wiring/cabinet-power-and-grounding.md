@@ -1180,15 +1180,15 @@ below. **His list, 2026-11-08:**
 
 **That is four times what the one inch was sized for.**
 
-NOTE: **AND THE LINEAR ENCODER PATCH CABLES ARE NOT IN THAT LIST.**
-[`../linear-encoder/sensor-board.md`](../linear-encoder/sensor-board.md) says **Y2's patch cable runs
-along the underside of the X beam and joins Y1's IN THE DRAG CHAIN** - so the pucks' Cat 6 runs come
-down this same path, and each is another cable through this hole.
+✅ **AND THE LIST IS COMPLETE - THE ENCODER PUCKS ADD NOTHING TO IT.** FLAG: **this file asked how
+many puck leads came down here, and the answer is none.** The **CAN controller board is on the Z
+axis**, so the puck cables travel **up** the X chain to reach it; **the USB-C already in the list
+above IS the CAN bus coming back**, and it is the only thing the whole encoder system puts through
+this hole. **One link back, not a lead per puck** - see the drag chain section below.
 
-✅ **THAT DOES NOT HAVE TO BE COUNTED, BECAUSE THE BUNDLE IS MEASURED RATHER THAN ADDED UP.** The
-procedure below sizes the hole off the real cables held as they will lie, so the pucks are in the
-bundle whether or not anybody has written down how many there are. **It is the reason to measure
-rather than to tally.**
+NOTE: **Measuring the bundle rather than tallying it is still the right method**, and it is now a
+belt rather than the braces: the hole is sized off cables held as they will lie, so a miscount
+cannot reach the drill.
 
 PROCEDURE: **TAKE THE SIZE OFF THE REAL BUNDLE, NOT OFF A PAGE.** Gather the actual cables, **hold
 them as they will lie**, measure across the bundle and add room to work. A diameter calculated from
@@ -1366,8 +1366,10 @@ gantry, so it joins at Y1.
 | Z stepper signals | **Cat 5 patch** |
 | Probe | the Z plate return to the controller's ground |
 | Z limit sensor | **3-conductor** |
+| **Y1 puck** | **Cat 6** - up to the CAN node on the Z axis. His, 2026-11-08 |
+| **Y2 puck** | **Cat 6** - along the underside of the X beam, joining Y1's. His, 2026-11-08 |
 
-**Four or five cables, his count.**
+**Four or five cables, his count** - plus the two encoder leads.
 
 **The Y1 chain** - all of the above comes down the gantry and is joined by:
 
@@ -1377,6 +1379,16 @@ gantry, so it joins at Y1.
 | X stepper signals | **Cat 5 patch** |
 | X limit sensor | **3-conductor** |
 | Gantry bond | X beam to the steel back plate |
+| **CAN bus back to the controller** | **one cable, and it is the ONLY thing the encoders put in this chain.** His, 2026-11-08 |
+
+🔴 **THE TWO PUCK LEADS GO UP TO THE Z AXIS, NOT DOWN TO THE CABINET - and that is the whole point of
+putting a CAN node on the machine.** The **controller board sits on the Z axis**, so **Y1's and Y2's
+puck cables travel the X chain to reach it**, everything else encoder-side is already on the gantry
+or the X carriage, and **one CAN bus run goes back to the grblHAL controller.**
+
+✅ **SO THE ENCODER SYSTEM COSTS THE X CHAIN TWO CABLES AND THE Y1 CHAIN ONE**, rather than a lead
+per puck all the way to the cabinet. That is the difference between a node on the machine and a fan
+of cables off it.
 
 **Y2 carries nothing** - its stepper and limit are static runs, so there is nothing to flex.
 
