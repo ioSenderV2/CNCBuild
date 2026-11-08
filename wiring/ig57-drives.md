@@ -299,6 +299,48 @@ confined to a thing built once; the cables stay fungible.
 PROCEDURE: **LABEL EACH BREAKOUT BOARD.** Nothing about that table is self-evident from either end,
 and the next person to look - including him, later - will see eight wires in no obvious order.
 
+#### Which terminal is pin 1 - his question, 2026-11-07, and the boards do not say
+
+🔴 **THE BREAKOUT BOARDS CARRY NO PIN NUMBERS**, so the table above cannot be used until the terminal
+order is established on the real part.
+
+**The convention, anchored to what can be seen rather than to "left":** look into the jack opening
+face on. **With the CONTACTS at the TOP of the opening and the LATCH SLOT at the BOTTOM, pin 1 is on
+the left** and 8 is on the right. That is the normal mounting, and it is the answer he had.
+
+FLAG: **"LEFT" ON ITS OWN IS NOT SAFE, BECAUSE IT MIRRORS.** Mounted the other way up - contacts at
+the bottom of the opening - the same jack reads **1 on the right**. A board can be laid out either
+way and nothing about a bare PCB says which. **The contacts-up landmark is the part that carries the
+answer; left and right do not survive on their own.**
+
+🔴 **AND A MIRRORED READING IS THE WORST SINGLE MISTAKE AVAILABLE HERE, BECAUSE IT SWAPS 1 WITH 8.**
+Pin 1 is **Step** and pin 8 is **AL-**. Read backwards, the controller's step output lands on the
+drive's **alarm output** and the drive's alarm lands on **PU+**. That is two outputs driving each
+other, which is the one wiring fault on this cable that can do damage rather than just fail. **Do not
+find this out by powering it up.**
+
+PROCEDURE: **METER IT, ONCE, PER BOARD TYPE - and it is about two minutes.**
+
+1. **Cut one end off a sacrificial patch cable.** Any spare lead. The intact plug goes into the
+   breakout's jack; the cut end gives eight conductors that can be told apart by colour.
+2. **Read pin 1 off the intact plug by eye** - contacts toward you, latch away from you, cable
+   hanging down, **pin 1 on the left**. On that plug the conductor at pin 1 is **white/orange** for
+   a T568B cable and **white/green** for a T568A one, which also settles which standard it is.
+3. **Buzz that conductor against each screw terminal in turn.** The terminal that beeps is **pin 1**.
+4. **Do the remaining seven**, so the whole map is read rather than inferred from pin 1 and an
+   assumed direction.
+5. **Write the pin numbers on the board** - paint pen, label, scratch. Then the table above is
+   usable and this never has to be done again.
+
+✅ **STEP 4 IS NOT BUSYWORK - it is what catches the mirror.** Finding pin 1 and counting along
+assumes the direction, which is exactly the thing in doubt. Eight readings cost another minute and
+leave nothing assumed.
+
+NOTE: **THE METER OUTRANKS THE CONVENTION ABOVE, AND THIS FILE HAS BEEN HERE BEFORE.** The seller's
+word that the drives' minus legs were commoned was written in as fact and his meter overturned it in
+under a minute - see the section below. The same applies to a left-and-right convention read off a
+board nobody has in front of them.
+
 ### The same map by conductor colour - reference only, for a cut end
 
 🔴 **THE BOARD HAS NO COLOUR CONVENTION, AND IS NEITHER T568A NOR T568B.** Its netlist assigns nets
