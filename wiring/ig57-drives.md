@@ -327,29 +327,31 @@ answer.
 
 | On the board | |
 |---|---|
-| **Top row, eight pads at 2.54 mm** | the **screw terminal strip**. Its **square** pad - terminal 1 - is at the **RIGHT** end with the board right side up |
-| **Double row below, 4 and 4 staggered** | the **RJ45 jack** footprint. Its **square** pad is at the **LEFT** end of the lower rank |
+| **Top row, eight pads at 2.54 mm** | the **screw terminal strip**, with a **square** pad at one end |
+| **Double row below, 4 and 4 staggered** | the **RJ45 jack** footprint, with a **square** pad at the opposite end of the board |
 | Board | 24.49 x 33.00 mm, mounting holes on 20.00 mm |
 
-🔴 **SO COUNTING LEFT TO RIGHT ALONG THE STRIP GIVES 8 DOWN TO 1, NOT 1 TO 8.** That is the single
-most useful thing the picture settles, and it is independent of what the traces do. **Anyone who
-lands eight wires left to right on that strip has built it backwards** - which is the 1-and-8 swap
-above, Step onto AL-.
+FLAG: **DO NOT TAKE A LEFT OR A RIGHT FROM THIS TABLE.** It describes the **render**, and whether the
+render matches the board in hand was itself in question - his row-offset check says the picture is
+mirrored against the real part. **What survives is that the two square pads are at opposite ends of
+the board**, which is true in any view. The sides do not survive, and the meter below is what
+replaced them.
 
-OPEN: **WHETHER TERMINAL 1 GOES TO JACK PIN 1 OR TO JACK PIN 8.** His reading of the render is **pin
-8**. It is **not confirmed and not contradicted here**, for reasons that are about the picture rather
-than about his reading:
+SETTLED: **THE METER HAS BEEN ON IT - his, 2026-11-07.** With a cable in the jack, **the terminal
+that tones out to the white/orange conductor is jack pin 1.** That is the measurement, and it
+outranks the render and the left-right convention both.
 
-- **The traces cannot be followed through their crossings** at that resolution.
-- **The long sweeping runs are what a 1:1 map would need**, if the two pin 1s really are at opposite
-  ends - which argues the other way.
-- **It is a 3D render**, so component side and through-the-board cannot be told apart, and that
-  mirrors left and right.
+FLAG: **THE RENDER WAS READ TWO DIFFERENT WAYS BEFORE THE METER SETTLED IT**, and neither reading
+should be taken from this page. His first was terminal 1 at the right of the board; his second, after
+checking the jack's row offset against the real part, was that the picture is mirrored relative to
+the board in hand. **The traces could not be followed through their crossings at that resolution
+either.** The point is not which reading was right - it is that a picture was never going to answer
+it and a two-minute continuity check did.
 
-✅ **AND ONE READING ANSWERS IT.** With a cable in the jack, **buzz the SQUARE terminal pad** and see
-which conductor it reaches at the far end: **white/orange** on a T568B cable means **1:1**, **brown**
-means **reversed**. Then do the other seven anyway - a board that reverses the order need not reverse
-it uniformly, and that is not a thing to assume about a part nobody has characterised.
+OPEN: **WHICH PHYSICAL TERMINAL THAT IS, STATED AGAINST THE SQUARE PAD.** The reading identifies jack
+pin 1; what has not been written down is whether that terminal is **the one at the square pad** or
+**the one at the far end from it**. **Record it against the square pad and not against a side** - see
+the marking rule below, which is what this whole episode is the argument for.
 
 PROCEDURE: **METER IT, ONCE, PER BOARD TYPE - and it is about two minutes.**
 
@@ -363,8 +365,24 @@ PROCEDURE: **METER IT, ONCE, PER BOARD TYPE - and it is about two minutes.**
    whether it answers to pin 1 or to pin 8 is the open question above.
 4. **Do the remaining seven**, so the whole map is read rather than inferred from pin 1 and an
    assumed direction.
-5. **Write the pin numbers on the board** - paint pen, label, scratch. Then the table above is
+5. **Write the RJ45 PIN numbers on the board** - paint pen, label, scratch. Then the table above is
    usable and this never has to be done again.
+
+🔴 **MARK IT IN JACK PIN NUMBERS, NOT IN THE STRIP'S OWN TERMINAL NUMBERS - and that is the whole
+lesson of this part.** The strip's numbering is a **vendor label**; the wiring list speaks **jack
+pins**; and carrying both means translating between them every time. **Every mirror that came up
+while establishing this board came from the strip's numbering**, not from the jack's.
+
+✅ **THE SQUARE PAD IS THE ONLY LANDMARK THAT SURVIVES.** Left and right flipped twice here - once
+between the listing render and the real part, once between viewing the board from the top and from
+the bottom. **A feature etched on the board cannot flip; a direction can.** So state the finding
+against the square pad - *"jack pin 1 is the terminal at the square pad"*, or *"at the far end from
+it"* - and never against a side.
+
+NOTE: **His row-offset check is the right way to tell which side a render is showing**, 2026-11-07:
+the RJ45's two ranks are staggered, so the direction of the offset says whether you are looking at
+the component side or through the board. **It stopped mattering the moment the part was in hand with
+a meter on it** - which is this file's standing order anyway.
 
 ✅ **STEP 4 IS NOT BUSYWORK - it is what catches the mirror.** Finding pin 1 and counting along
 assumes the direction, which is exactly the thing in doubt. Eight readings cost another minute and
