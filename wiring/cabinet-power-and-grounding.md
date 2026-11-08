@@ -1135,7 +1135,8 @@ below.
 | Where | Size | What goes through |
 |---|---|---|
 | **Back wall, top edge** - two notches | **2.5 x 4 in** | the two **gang boxes**, one each side of the back centre leg |
-| **Back wall, field** - one under **each Y stepper**, inboard of the corner leg | **1 in** | that stepper's **Cat 6, 18/2 and limit sensor**, down into the base |
+| **Back wall, field** - under **Y2**, inboard of the corner leg | **1 in** | Y2's **Cat 6, 18/2 and limit sensor** |
+| **Back wall, field** - under **Y1**, inboard of the corner leg | **OPEN - off the real bundle** | the **whole Y1 drag chain**, twelve cables and up - see below |
 | **Central wall** | **3/8 in** | the **110 V** run, loose conductors |
 | **Central wall** - beside it | **1 in** | the **Y2 stepper's three cables**, crossing to the enclosure side |
 
@@ -1156,13 +1157,47 @@ its path.** There is no option to pull a bare cable and terminate it afterwards.
 | **Cat 6 patch lead** | **the super-mini plugs** - small, and not the constraint |
 | **18/2 motor supply** | **bare wire, no connector at all** |
 
-SETTLED: **ONE INCH - his, 2026-11-08.** A connector almost 3/4 across will not thread through a 3/4
-hole with a cable behind it and a chamfer eating the edge, so the hole is sized off the part with
-room rather than to it.
+SETTLED: **ONE INCH FOR THE Y2 HOLE - his, 2026-11-08.** A connector almost 3/4 across will not
+thread through a 3/4 hole with a cable behind it and a chamfer eating the edge, so the hole is sized
+off the part with room rather than to it.
 
-NOTE: **THE SIZE IS THE LARGEST SINGLE CONNECTOR, NOT THE SUM.** The three are threaded through one
-at a time; they only have to **sit** in the hole together afterwards, and three small cables in an
-inch is nothing.
+NOTE: **THERE THE SIZE IS THE LARGEST SINGLE CONNECTOR, NOT THE SUM.** The three are threaded through
+one at a time; they only have to **sit** in the hole together afterwards, and three small cables in
+an inch is nothing.
+
+🔴 **BUT THE Y1 HOLE IS NOT A STEPPER'S HOLE - IT IS WHERE THE WHOLE Y1 DRAG CHAIN LANDS, AND ONE
+INCH DOES NOT SURVIVE IT.** Y1 is the chain everything accumulates in - see the drag chain section
+below. **His list, 2026-11-08:**
+
+| Through the Y1 hole | Count |
+|---|---|
+| **Stepper sets - Y1, Z and X**, each a **Cat 6 plus an 18/2** | **6 cables** |
+| **Limit sensors**, Mini-Fit Jr 3 circuit each | **3** |
+| **Probe**, 3 conductor | **1** |
+| **Z plate ground**, 2 conductor - the probe's return | **1** |
+| **USB-C** from the **CAN controller on the Z axis** | **1** |
+| | **twelve** |
+
+**That is four times what the one inch was sized for.**
+
+OPEN: **AND THE LINEAR ENCODER PATCH CABLES ARE NOT IN THAT LIST.**
+[`../linear-encoder/sensor-board.md`](../linear-encoder/sensor-board.md) says **Y2's patch cable runs
+along the underside of the X beam and joins Y1's IN THE DRAG CHAIN** - so the pucks' Cat 6 runs come
+down this same path. **How many pucks feed it is not established here**, and each one is another
+cable through this hole.
+
+PROCEDURE: **TAKE THE SIZE OFF THE REAL BUNDLE, NOT OFF A PAGE.** Gather the actual cables, **hold
+them as they will lie**, measure across the bundle and add room to work. A diameter calculated from
+catalogue cable ODs would be exactly the sort of figure this repo keeps out of its own files.
+
+🔴 **AND THREAD THE LARGEST CONNECTOR FIRST, WHILE THE HOLE IS EMPTY.** The Mini-Fit Jr going through
+a hole that already has eleven cables in it is the hard one, and discovering that at the end means
+pulling the lot back out. **Order is part of the procedure, not a knack.**
+
+✅ **STRENGTH IS NOT THE QUESTION HERE - THREADING IS.** Even a 2 inch hole in the **field** of a
+{{WALL_H}} x {{BACK_WALL_L}} panel is structurally nothing; this file's rule is that a shear panel is
+governed by what holds its **edges**. **Size it for the bundle and the connectors, and do not trade
+that against the plywood.**
 
 FLAG: **I HAD THE RJ45 AS THE GOVERNING PART AND IT IS NOT.** That was the 8P8C standard's figures -
 about 11.7 x 8 mm, 14 across the diagonal - applied to parts nobody had looked at. **His Cat 6 plugs
