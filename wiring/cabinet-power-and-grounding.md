@@ -1132,33 +1132,42 @@ plywood edge is the same argument, even at the low tension of a run inside a cab
 SETTLED: **his, 2026-11-08.** Six in all, and they are not all the same size - see the plug rule
 below.
 
-| Where | What goes through |
-|---|---|
-| **Back wall, top edge** - two notches, 2.5 x 4 in | the two **gang boxes**, one each side of the back centre leg |
-| **Back wall, field** - one under **each Y stepper** | that stepper's **wires**, down into the base |
-| **Central wall** - 3/8 in | the **110 V** run, loose conductors |
-| **Central wall** - beside it | the **Y2 stepper cables and its limit sensor cable**, crossing to the enclosure side |
+| Where | Size | What goes through |
+|---|---|---|
+| **Back wall, top edge** - two notches | **2.5 x 4 in** | the two **gang boxes**, one each side of the back centre leg |
+| **Back wall, field** - one under **each Y stepper**, inboard of the corner leg | **1 in** | that stepper's **Cat 6, 18/2 and limit sensor**, down into the base |
+| **Central wall** | **3/8 in** | the **110 V** run, loose conductors |
+| **Central wall** - beside it | **1 in** | the **Y2 stepper's three cables**, crossing to the enclosure side |
 
 NOTE: **Four of the six are field holes and cost nothing.** This file's rule is that a shear panel is
 governed by **what holds its edges**. **The two notches in the back wall's top edge were the ones
 that needed rules**; drilled holes in the middle of a panel do not.
 
-🔴 **BUT THE STEPPER HOLES MUST PASS AN RJ45 PLUG, NOT A CABLE - and that is where 3/8 stops
-generalising.** Those Cat 6 runs are **bought patch leads that are never cut** - see
-[`ig57-drives.md`](ig57-drives.md) - so **a plug has to be threaded through every penetration on its
-path.** There is no option to pull a bare cable and terminate it afterwards.
+🔴 **THE STEPPER HOLES MUST PASS A CONNECTOR, NOT A CABLE - and that is where 3/8 stops
+generalising.** Those runs are **terminated leads that are never cut** - see
+[`ig57-drives.md`](ig57-drives.md) - so **a connector has to be threaded through every penetration on
+its path.** There is no option to pull a bare cable and terminate it afterwards.
 
-| | |
+**Three things share each stepper hole, and the biggest one sets its size - his parts, 2026-11-08:**
+
+| What crosses | How big |
 |---|---|
-| **8P8C plug body** | about **11.7 x 8 mm**, so roughly **14 mm across the diagonal** |
-| **With a strain-relief boot** | more, and the boot is the part that actually jams |
-| **3/4 in (19 mm)** | room |
-| **5/8 in (15.9 mm)** | marginal bare, tight booted |
-| **3/8 in (9.5 mm)** | **will not pass a plug.** It is right for the 110 V conductors and wrong for its neighbour |
+| **Limit sensor** - 3 circuit **Mini-Fit Jr** | **almost 3/4 in. THE GOVERNING PART** |
+| **Cat 6 patch lead** | **the super-mini plugs** - small, and not the constraint |
+| **18/2 motor supply** | **bare wire, no connector at all** |
 
-FLAG: **THOSE ARE THE CONNECTOR STANDARD'S FIGURES, NOT HIS PARTS.** PROCEDURE: **Bore a test hole in
-an offcut and push a real plug with its real boot through it**, before the bit touches either wall.
-It costs a scrap of ply.
+SETTLED: **ONE INCH - his, 2026-11-08.** A connector almost 3/4 across will not thread through a 3/4
+hole with a cable behind it and a chamfer eating the edge, so the hole is sized off the part with
+room rather than to it.
+
+NOTE: **THE SIZE IS THE LARGEST SINGLE CONNECTOR, NOT THE SUM.** The three are threaded through one
+at a time; they only have to **sit** in the hole together afterwards, and three small cables in an
+inch is nothing.
+
+FLAG: **I HAD THE RJ45 AS THE GOVERNING PART AND IT IS NOT.** That was the 8P8C standard's figures -
+about 11.7 x 8 mm, 14 across the diagonal - applied to parts nobody had looked at. **His Cat 6 plugs
+are super-mini and his 18/2 has no connector**, so the one that decides the hole is the limit
+sensor's Mini-Fit Jr, which is larger than either. **Parts, not standards.**
 
 🔴 **AND THE TWO BACK-WALL STEPPER HOLES WANT MOVING INBOARD OF THE CORNER LEGS.** The Y steppers sit
 at the **min-Y end of both Y tapes** - see [`../machine/assembly.md`](../machine/assembly.md) - which
