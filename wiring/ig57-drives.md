@@ -319,6 +319,38 @@ drive's **alarm output** and the drive's alarm lands on **PU+**. That is two out
 other, which is the one wiring fault on this cable that can do damage rather than just fail. **Do not
 find this out by powering it up.**
 
+#### The square pads are the pin 1 markers, and they are at OPPOSITE ends
+
+**His, 2026-11-07, off the product listing's render.** FLAG: **A LISTING RENDER IS A CLAIM, NOT A
+MEASUREMENT** - this is written down as the expectation the meter is checking against, not as the
+answer.
+
+| On the board | |
+|---|---|
+| **Top row, eight pads at 2.54 mm** | the **screw terminal strip**. Its **square** pad - terminal 1 - is at the **RIGHT** end with the board right side up |
+| **Double row below, 4 and 4 staggered** | the **RJ45 jack** footprint. Its **square** pad is at the **LEFT** end of the lower rank |
+| Board | 24.49 x 33.00 mm, mounting holes on 20.00 mm |
+
+🔴 **SO COUNTING LEFT TO RIGHT ALONG THE STRIP GIVES 8 DOWN TO 1, NOT 1 TO 8.** That is the single
+most useful thing the picture settles, and it is independent of what the traces do. **Anyone who
+lands eight wires left to right on that strip has built it backwards** - which is the 1-and-8 swap
+above, Step onto AL-.
+
+OPEN: **WHETHER TERMINAL 1 GOES TO JACK PIN 1 OR TO JACK PIN 8.** His reading of the render is **pin
+8**. It is **not confirmed and not contradicted here**, for reasons that are about the picture rather
+than about his reading:
+
+- **The traces cannot be followed through their crossings** at that resolution.
+- **The long sweeping runs are what a 1:1 map would need**, if the two pin 1s really are at opposite
+  ends - which argues the other way.
+- **It is a 3D render**, so component side and through-the-board cannot be told apart, and that
+  mirrors left and right.
+
+✅ **AND ONE READING ANSWERS IT.** With a cable in the jack, **buzz the SQUARE terminal pad** and see
+which conductor it reaches at the far end: **white/orange** on a T568B cable means **1:1**, **brown**
+means **reversed**. Then do the other seven anyway - a board that reverses the order need not reverse
+it uniformly, and that is not a thing to assume about a part nobody has characterised.
+
 PROCEDURE: **METER IT, ONCE, PER BOARD TYPE - and it is about two minutes.**
 
 1. **Cut one end off a sacrificial patch cable.** Any spare lead. The intact plug goes into the
@@ -327,6 +359,8 @@ PROCEDURE: **METER IT, ONCE, PER BOARD TYPE - and it is about two minutes.**
    hanging down, **pin 1 on the left**. On that plug the conductor at pin 1 is **white/orange** for
    a T568B cable and **white/green** for a T568A one, which also settles which standard it is.
 3. **Buzz that conductor against each screw terminal in turn.** The terminal that beeps is **pin 1**.
+   **Start at the square pad**, because it is the one position on the board that is marked, and
+   whether it answers to pin 1 or to pin 8 is the open question above.
 4. **Do the remaining seven**, so the whole map is read rather than inferred from pin 1 and an
    assumed direction.
 5. **Write the pin numbers on the board** - paint pen, label, scratch. Then the table above is
