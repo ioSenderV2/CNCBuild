@@ -267,7 +267,7 @@ drive's own block.
 Nothing is stripped, so no conductor is ever picked out by its stripe. The colour table below is
 reference for a cut-end job and **is not the build instruction**; this is:
 
-| Breakout terminal | Drive terminal | Signal |
+| **RJ45 pin** | Drive terminal | Signal |
 |---|---|---|
 | **1** | **3** | **PU+** |
 | **2** | **4** | **PU-** |
@@ -278,8 +278,12 @@ reference for a cut-end job and **is not the build instruction**; this is:
 | **7** | **9** | **AL+** |
 | **8** | **10** | **AL-** |
 
-**In breakout order, which is the order the work gets done in.** All four pairs stay inside their own
-twist, which is the only thing that had to come out right.
+🔴 **THE LEFT COLUMN IS THE RJ45 PIN, NOT THE BREAKOUT STRIP'S OWN TERMINAL NUMBER - and on this
+board those run OPPOSITE ways.** The strip's terminal 1 is **jack pin 8**; see the section below.
+**Mark each board with the jack pin numbers and work from those**, and the strip's own numbering
+never enters the job.
+
+**All four pairs stay inside their own twist**, which is the only thing that had to come out right.
 
 🔴 **IT IS NOT A STRAIGHT 1-THROUGH-8 MARCH AND NO CABLE CONVENTION CAN MAKE IT ONE.** That is the
 geometry of the jack, not a mistake in anything: **the drive's block runs its pairs on ADJACENT
@@ -341,17 +345,31 @@ SETTLED: **THE METER HAS BEEN ON IT - his, 2026-11-07.** With a cable in the jac
 that tones out to the white/orange conductor is jack pin 1.** That is the measurement, and it
 outranks the render and the left-right convention both.
 
-FLAG: **THE RENDER WAS READ TWO DIFFERENT WAYS BEFORE THE METER SETTLED IT**, and neither reading
-should be taken from this page. His first was terminal 1 at the right of the board; his second, after
-checking the jack's row offset against the real part, was that the picture is mirrored relative to
-the board in hand. **The traces could not be followed through their crossings at that resolution
-either.** The point is not which reading was right - it is that a picture was never going to answer
-it and a two-minute continuity check did.
+NOTE: **The render was read three different ways before the meter and the mechanical reason agreed.**
+Not worth re-tracing: **the picture could not settle it and two minutes with a probe could.**
 
-OPEN: **WHICH PHYSICAL TERMINAL THAT IS, STATED AGAINST THE SQUARE PAD.** The reading identifies jack
-pin 1; what has not been written down is whether that terminal is **the one at the square pad** or
-**the one at the far end from it**. **Record it against the square pad and not against a side** - see
-the marking rule below, which is what this whole episode is the argument for.
+SETTLED: **JACK PIN 1 IS THE TERMINAL AT THE FAR END FROM THE STRIP'S SQUARE PAD - his, 2026-11-07.**
+So **the strip's terminal 1 is jack pin 8**, and the strip runs 1-to-8 against the jack's 8-to-1.
+
+🔴 **AND THE REASON IS MECHANICAL, WHICH IS WHAT MAKES IT WORTH KNOWING - his.** The two connectors
+**face opposite directions** on the board: wires enter the strip from one edge, the plug enters the
+jack from the other. **Each connector numbers its own pins from its own face**, so looked at from
+above, one counts left to right and the other counts right to left. **The board is a straight
+parallel fan-out with no crossing traces at all** - the reversal is the two connectors being turned
+around, not the routing.
+
+FLAG: **I ARGUED THE OPPOSITE FROM THE RENDER AND IT WAS WRONG.** The long sweeping traces were read
+as a 1:1 map having to cross the board. They are not crossings - they are eight parallel runs routed
+around the jack footprint and the mounting holes. **His first reading of the picture, terminal 1 to
+jack pin 8, was right**, and the two rounds of doubt after it came from me, not from him.
+
+✅ **SO THIS IS THE RULE FOR THE WHOLE CLASS OF PART, not a quirk of one board.** On any breakout
+whose two connectors **face opposite ways**, the honest expectation is that **the numbering reverses
+end to end** - the simplest possible layout produces it. A board that did NOT reverse would be the
+one needing crossing traces.
+
+NOTE: **ONE PROBE CONFIRMS IT BEYOND ARGUMENT, if it is ever doubted again: brown should land on the
+square pad.** Brown is jack pin 8 on a T568B cable, and the square pad is the strip's terminal 1.
 
 PROCEDURE: **METER IT, ONCE, PER BOARD TYPE - and it is about two minutes.**
 
