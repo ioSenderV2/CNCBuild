@@ -1074,9 +1074,10 @@ fussiness.**
 
 PROCEDURE: **CUTTING THE TWO NOTCHES.**
 
-1. **Put them in the spans BETWEEN the three rear legs**, clear of the full-height rebates. **The
-   wall is screwed through its face in those rebates** - that is where its fastening actually is, and
-   a notch reaching one spends the fixing rather than the plywood.
+1. **One notch each side of the BACK CENTRE LEG - his, 2026-11-08.** That puts both in the spans
+   between the rear legs and **clear of the full-height rebates**, which is where the wall is
+   actually screwed through its face - a notch reaching one spends the fixing rather than the
+   plywood.
 2. 🔴 **ROUND THE TWO BOTTOM CORNERS OF EACH NOTCH.** A square inside corner is where a crack starts,
    and this repo already says so in its own voice about the steel rear plate's probe notch: *"the
    metal wraps around the end of the notch, which is the stress raiser ... and that is where a crack
@@ -1095,6 +1096,29 @@ is easier to get wrong here than it was with a drilled hole.**
 NOTE: **The gang box is also what takes the strain now.** A cord grip in a proper box beats a bushing
 in plywood: the pull lands on the box and its clamp, the enclosure's own knockout grip never sees it,
 and no 220 V cable is bearing on a sawn plywood edge.
+
+#### Which pigtail goes which side of the centre leg
+
+SETTLED: **his, 2026-11-08.**
+
+| | |
+|---|---|
+| **220 V** | the side **the enclosure is on**, so the cord **drops straight down into the box** |
+| **110 V** | the **other side of the back centre leg**, and it **crosses over** to the enclosure |
+
+🔴 **THE TWO SIDES OF THAT LEG ARE TWO DIFFERENT VOLUMES, AND THE CENTRAL WALL IS WHAT SEPARATES
+THEM.** The back centre leg carries **the central wall's back end** as well as the back shear wall -
+see [`../machine/assembly.md`](../machine/assembly.md) - so the fore-aft wall runs unbroken from that
+leg to the front centre leg. **The 110 V run has a second wall in its way, not just a leg.**
+
+OPEN: **WHERE THE 110 V CROSSES THE CENTRAL WALL.** The options are a **hole through it** - 36 mm,
+two laminations, and the file calls it *"the centreline fore-aft member as well as a shear panel"* -
+or **round its front end** past the front centre leg, which is the whole depth of the base. **Over
+the top is not an option**: that is the {{BASE_BOX_GAP}} mm mount gap.
+
+NOTE: **BOTH NOTCHES ON THE ENCLOSURE'S SIDE WOULD COST NO PENETRATION AT ALL.** A span between rear
+legs takes two 2.5 inch notches easily. Recorded as the alternative, not as an argument - the entries
+being apart may be what he wants, and it is his call which wall gets the hole.
 
 ## Grounds meet at one PE bus bar
 
