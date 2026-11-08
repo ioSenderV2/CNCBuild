@@ -1111,14 +1111,21 @@ THEM.** The back centre leg carries **the central wall's back end** as well as t
 see [`../machine/assembly.md`](../machine/assembly.md) - so the fore-aft wall runs unbroken from that
 leg to the front centre leg. **The 110 V run has a second wall in its way, not just a leg.**
 
-OPEN: **WHERE THE 110 V CROSSES THE CENTRAL WALL.** The options are a **hole through it** - 36 mm,
-two laminations, and the file calls it *"the centreline fore-aft member as well as a shear panel"* -
-or **round its front end** past the front centre leg, which is the whole depth of the base. **Over
-the top is not an option**: that is the {{BASE_BOX_GAP}} mm mount gap.
+SETTLED: **IT CROSSES THROUGH THE CENTRAL WALL, A DRILLED 3/8 INCH HOLE - his, 2026-11-08.** Going
+round the front end past the front centre leg was the alternative; over the top was never one, being
+the {{BASE_BOX_GAP}} mm mount gap.
 
-NOTE: **BOTH NOTCHES ON THE ENCLOSURE'S SIDE WOULD COST NO PENETRATION AT ALL.** A span between rear
-legs takes two 2.5 inch notches easily. Recorded as the alternative, not as an argument - the entries
-being apart may be what he wants, and it is his call which wall gets the hole.
+✅ **AND 3/8 IN A 36 mm TWO-LAMINATION PANEL DOES NOT REGISTER.** The wall is {{WALL_H}} mm tall and
+over a metre long, and a hole this size in the field of it costs nothing worth writing down. **It is
+the notches in the back wall's top EDGE that needed rules, not this.**
+
+PROCEDURE: **CHECK WHAT IS ACTUALLY GOING THROUGH IT BEFORE DRILLING, BECAUSE 3/8 IS THE FORK.**
+**Three loose 12 AWG conductors go through with room** - bundled in a triangle they are about 7 mm
+across in a 9.5 mm hole. **A jacketed 12/3 cable does not**: that is 11 to 13 mm over the sheath and
+it will not pass. Drilling it bigger costs nothing now and is a nuisance later.
+
+NOTE: **Chamfer or grommet it, same as the wall entries.** A 110 V conductor bearing on a sawn
+plywood edge is the same argument, even at the low tension of a run inside a cabinet.
 
 ## Grounds meet at one PE bus bar
 
