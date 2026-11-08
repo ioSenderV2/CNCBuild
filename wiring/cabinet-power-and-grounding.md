@@ -1046,33 +1046,55 @@ was built for rather than a lucky side effect. See
 NOTE: **If any stranded does go in, it gets ferrules.** Most DIN blocks ask for solid or ferruled
 stranded rather than bare stranded, so that is the part of the question with no judgement in it.
 
-### The pigtails enter at the box and leave through the back shear wall
+### The pigtails come in through two gang boxes let into the back shear wall
 
-SETTLED: **his, 2026-11-07. Strain relief at the knockout where each pigtail enters the enclosure**,
-and from there **out through a small hole centred high in the base's back shear wall.** Both pigtails,
-same route.
+SETTLED: **his, 2026-11-08. Each pigtail arrives at its own SINGLE GANG BOX, let into a notch cut
+down from the TOP EDGE of the base's back shear wall** - **two notches, 2.5 x 4 inches.** From each
+box the cable goes down the inside of the wall and **into the bottom of the DIN enclosure**, with
+strain relief at the enclosure's knockout.
+
+FLAG: **THIS REPLACED "a small hole centred high in the wall" the next day.** A gang box per pigtail
+is the better job - it gives each cord a proper box to be clamped in rather than a bushing in a
+plywood hole - and it is why the entry moved from the field of the panel to its top edge.
 
 ✅ **THAT IS THE SHORTEST WAY OUT AND IT IS WHY THE ENCLOSURE SITS WHERE IT DOES.** The box is in the
 base's rear middle bay with the back shear wall directly behind it.
 
-🔴 **TAKE THE STRAIN AT THE WALL AS WELL, NOT ONLY AT THE ENCLOSURE.** With the only cord grip at the
-knockout, a pull on the pigtail - a foot caught in it, the machine shifted - is resisted by the
-**cable bearing on the edge of an 18 mm plywood hole** before it ever reaches the grip. **A bushing in
-the hole and a clamp on the wall's inside face** means the enclosure's grip never sees a pull, and
-nothing is chafing a 220 V cable against plywood.
+✅ **THE WALL TAKES THE TWO NOTCHES WITH ROOM - from the registry's own figures, 2026-11-08.** The
+wall is **{{WALL_H}} mm tall**, so a 4 inch notch is about **13% of the height and leaves some 660 mm
+of continuous panel below it**. Two at 2.5 inches are about **10% of the {{BACK_WALL_L}} mm length**.
+And **nothing from either grid lands on the wall's face between the legs** - the fore-aft rails
+terminate inside the three rear legs' slots - so the spans between them are clear to cut.
 
-🔴 **AND NOTHING IN THAT HOLE MAY FINISH PROUD OF THE WALL'S TOP EDGE.** The back shear wall stops
-**{{BASE_BOX_GAP}} mm shy of the torsion box** - see [`../dimensions/VALUES.md`](../dimensions/VALUES.md) -
-and that gap **is** the three-point mount. A bushing flange, a clamp, or a cable turning upward out of
-the hole is a **fourth contact point**, and [`../machine/assembly.md`](../machine/assembly.md) names
-what that looks like: **nothing, except the Y beams drifting out of coplanar.** High is fine; proud is
-not.
+🔴 **BUT THE WALL IS NOT A SPARE PANEL - IT REPLACES THE BACK CROSS RAILS AT BOTH GRIDS**, so the
+back of each grid is the wall rather than a rail - see
+[`../machine/assembly.md`](../machine/assembly.md). It carries that through its full height, which is
+why notching the top edge does not sever anything. **It is also why the three rules below are not
+fussiness.**
 
-NOTE: **Centred is the right place for the hole and the panel does not care much.** This file's own
-rule is that a shear panel is governed by **what holds its edges** - glue and screws at about 150 mm
-all the way round - so a cable hole in the field costs little. **Leave clear plywood between the hole
-and the top edge** rather than putting it in the screw line, and that is the whole of the
-consideration.
+PROCEDURE: **CUTTING THE TWO NOTCHES.**
+
+1. **Put them in the spans BETWEEN the three rear legs**, clear of the full-height rebates. **The
+   wall is screwed through its face in those rebates** - that is where its fastening actually is, and
+   a notch reaching one spends the fixing rather than the plywood.
+2. 🔴 **ROUND THE TWO BOTTOM CORNERS OF EACH NOTCH.** A square inside corner is where a crack starts,
+   and this repo already says so in its own voice about the steel rear plate's probe notch: *"the
+   metal wraps around the end of the notch, which is the stress raiser ... and that is where a crack
+   would start."* **Drill a hole at each corner first and cut to it.**
+3. **Add screws either side of each notch**, closer than the 150 mm rule, so the shear that cannot
+   cross the notch goes round it and into the frame.
+
+🔴 **AND NOTHING ON THOSE GANG BOXES MAY FINISH PROUD OF THE WALL'S TOP EDGE.** The back shear wall
+stops **{{BASE_BOX_GAP}} mm shy of the torsion box** - see
+[`../dimensions/VALUES.md`](../dimensions/VALUES.md) - and that gap **is** the three-point mount. A
+box flange, a cover screw, a cable clamp or a cord turning upward out of an open notch is a **fourth
+contact point**, and [`../machine/assembly.md`](../machine/assembly.md) names what that looks like:
+**nothing, except the Y beams drifting out of coplanar.** **The notch is open at the top, so this one
+is easier to get wrong here than it was with a drilled hole.**
+
+NOTE: **The gang box is also what takes the strain now.** A cord grip in a proper box beats a bushing
+in plywood: the pull lands on the box and its clamp, the enclosure's own knockout grip never sees it,
+and no 220 V cable is bearing on a sawn plywood edge.
 
 ## Grounds meet at one PE bus bar
 
