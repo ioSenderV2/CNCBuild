@@ -1127,6 +1127,46 @@ it will not pass. Drilling it bigger costs nothing now and is a nuisance later.
 NOTE: **Chamfer or grommet it, same as the wall entries.** A 110 V conductor bearing on a sawn
 plywood edge is the same argument, even at the low tension of a run inside a cabinet.
 
+#### Every penetration in the two walls
+
+SETTLED: **his, 2026-11-08.** Six in all, and they are not all the same size - see the plug rule
+below.
+
+| Where | What goes through |
+|---|---|
+| **Back wall, top edge** - two notches, 2.5 x 4 in | the two **gang boxes**, one each side of the back centre leg |
+| **Back wall, field** - one under **each Y stepper** | that stepper's **wires**, down into the base |
+| **Central wall** - 3/8 in | the **110 V** run, loose conductors |
+| **Central wall** - beside it | the **Y2 stepper cables and its limit sensor cable**, crossing to the enclosure side |
+
+NOTE: **Four of the six are field holes and cost nothing.** This file's rule is that a shear panel is
+governed by **what holds its edges**. **The two notches in the back wall's top edge were the ones
+that needed rules**; drilled holes in the middle of a panel do not.
+
+🔴 **BUT THE STEPPER HOLES MUST PASS AN RJ45 PLUG, NOT A CABLE - and that is where 3/8 stops
+generalising.** Those Cat 6 runs are **bought patch leads that are never cut** - see
+[`ig57-drives.md`](ig57-drives.md) - so **a plug has to be threaded through every penetration on its
+path.** There is no option to pull a bare cable and terminate it afterwards.
+
+| | |
+|---|---|
+| **8P8C plug body** | about **11.7 x 8 mm**, so roughly **14 mm across the diagonal** |
+| **With a strain-relief boot** | more, and the boot is the part that actually jams |
+| **3/4 in (19 mm)** | room |
+| **5/8 in (15.9 mm)** | marginal bare, tight booted |
+| **3/8 in (9.5 mm)** | **will not pass a plug.** It is right for the 110 V conductors and wrong for its neighbour |
+
+FLAG: **THOSE ARE THE CONNECTOR STANDARD'S FIGURES, NOT HIS PARTS.** PROCEDURE: **Bore a test hole in
+an offcut and push a real plug with its real boot through it**, before the bit touches either wall.
+It costs a scrap of ply.
+
+🔴 **AND THE TWO BACK-WALL STEPPER HOLES WANT MOVING INBOARD OF THE CORNER LEGS.** The Y steppers sit
+at the **min-Y end of both Y tapes** - see [`../machine/assembly.md`](../machine/assembly.md) - which
+is the **back**, at the left and right extremes. **That is directly over the two rear CORNER legs**,
+and a rear corner leg is where the back wall sits in its **full-height rebate and is screwed through
+its face.** Drilling there spends the fixing rather than the plywood. **Bring each hole inboard of
+its leg and run the cable across to it.**
+
 ## Grounds meet at one PE bus bar
 
 Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing daisy-chains.
