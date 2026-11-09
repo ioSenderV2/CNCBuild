@@ -1496,11 +1496,39 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 7 | Motor supply 0 V |
 | 8 | 12 V supply 0 V |
 
-SETTLED: **TEN IS THE BUY - the signal cables contribute nothing.** His, 2026-11-05: **all the drive
-cables terminate at the interface board, in its own 3D printed enclosure**, not in this box. And they
-are **Cat 6 UTP** - see [`kicad/interface-board/README.md`](kicad/interface-board/README.md), which
-notes the jack is shielded but *"the patch cables are UTP so it carries nothing"*. **No drain wire,
-no terminal.**
+FLAG: ~~**TEN IS THE BUY - the signal cables contribute nothing.**~~ **THAT WAS TRUE WHEN THE ONLY
+CABLE AT THE BOARD WAS CAT 6 UTP. IT IS NOT TRUE NOW - his count, 2026-11-09: TWELVE SHIELDED CABLES
+LAND ON THE INTERFACE BOARD.** Five stepper power, five limit sensor, the 3D probe and the spindle
+control. Each arrives with **foil over braid, stripped back to about 1 inch of twisted drain**.
+
+### The twelve drains at the interface board
+
+🔴 **THERE IS NOWHERE ON THE BOARD TO PUT THEM, AND THAT IS BY DESIGN.** The board has **no PE net,
+no shield net and no plated mounting hole** - checked, 2026-11-09 - and its enclosure is 3D printed,
+so there is no chassis either. **Landing a drain on the board's GND is the one thing that must not
+happen**: shield current would then return through the logic ground plane and up the 12 V run.
+
+PROPOSED, **needs his nod**: **a small isolated bus bar inside the board's enclosure, and ONE
+conductor from it home to this PE bar.**
+
+| | |
+|---|---|
+| At the board | all twelve drains on a common bus bar, **isolated from board GND** - it must touch nothing on the PCB |
+| Home | **one** conductor from that bus to the PE bar. **One more terminal here, not twelve** |
+| At the far ends | **open and insulated** - drives, sensors, Z plate, VFD. The one-end rule, and the board end is the end |
+
+✅ **ISOLATED IS WHAT KEEPS IT FROM BEING A LOOP.** The shields reach PE by their own conductor and
+logic GND reaches it through the 12 V supply's 0 V. **Two paths to one bar is fine; two paths joined
+at both ends is a loop.** So the bus bar must not be bonded to the board.
+
+✅ **AND NO BOARD RESPIN IS NEEDED FOR THIS** - the answer is a part in the enclosure, not a pad on
+the PCB. Worth stating because the board is still pre-fab and the instinct would be to add a
+terminal.
+
+**Preparing each end**: twist the foil and braid together into the drain it already forms, **tin it
+lightly so it stops shedding strands**, and crimp a **ferrule or a small ring lug** onto it. A 1 inch
+pigtail is electrically a small inductor and a 360 degree gland would be better - but **a gland wants
+a metal panel and this enclosure is plastic**, so the pigtail is the honest answer here.
 
 OPEN: **THE ONLY SHIELDS IN THE SYSTEM ARE THE FOUR 18/2 MOTOR SUPPLY RUNS, and they follow the 36 V
 supply rather than this bar.** Each drive's supply is **18/2 shielded** - see
