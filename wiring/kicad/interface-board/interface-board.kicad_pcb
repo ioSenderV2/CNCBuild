@@ -400,7 +400,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-04A2, example for new mpn: 39-28-904x, 2 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J32"
-			(at 2.1 -3.45 0)
+			(at 2.1 3.25 0)
 			(layer "F.SilkS")
 			(uuid "16130ee4-8af0-4ad2-837b-a0842c624097")
 			(effects
@@ -1066,7 +1066,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 20223, 5 pins, pitch 3.5mm, size 18.2x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/20223.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 20223 pitch 3.5mm size 18.2x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J21"
-			(at 7 -4.52 0)
+			(at 7.0 0.1 0)
 			(layer "F.SilkS")
 			(uuid "087c2598-7e96-412b-8697-df0fcc8232b0")
 			(effects
@@ -1498,7 +1498,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-04A2, example for new mpn: 39-28-904x, 2 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J33"
-			(at 2.1 -3.45 0)
+			(at 2.1 3.25 0)
 			(layer "F.SilkS")
 			(uuid "ea1bef0d-e1f4-48d8-bc47-f2481ea93a70")
 			(effects
@@ -2164,7 +2164,7 @@
 		(descr "Molex Mini-Fit Jr 5566-03A3 (39-30-1039) single row 3 ckt vertical header with snap-fit pegs. Pattern from 55660330-SD rev B3: holes 1.40 at 4.20 pitch, pegs 3.00 - one 3.85 off the pin-3 end hole, one 5.55 the other side 2.10 inboard. Body 13.8 x 9.4.")
 		(tags "Mini-Fit Jr 5566 3P vertical peg")
 		(property "Reference" "J12"
-			(at 0 -7.6 0)
+			(at 0.0 -0.9 0)
 			(layer "F.SilkS")
 			(uuid "0b8670e4-fe6d-455a-bb58-3052383b911d")
 			(effects
@@ -2606,7 +2606,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 20001, 4 pins, pitch 3.5mm, size 14.7x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/20001.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 20001 pitch 3.5mm size 14.7x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J36"
-			(at 5.25 -4.52 0)
+			(at 5.25 0.1 0)
 			(layer "F.SilkS")
 			(uuid "fe756614-f43e-4fe3-9e15-38cd976c69c8")
 			(effects
@@ -2998,7 +2998,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 19963, 2 pins, pitch 3.5mm, size 7.7x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/19963.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 19963 pitch 3.5mm size 7.7x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J23"
-			(at 1.75 -4.52 0)
+			(at 1.75 0.1 0)
 			(layer "F.SilkS")
 			(uuid "3de6fa60-7cd9-43b6-8adf-471caa141cc3")
 			(effects
@@ -4623,7 +4623,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-02A2, example for new mpn: 39-28-902x, 1 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J13"
-			(at 0 -3.45 0)
+			(at 0.0 3.25 0)
 			(layer "F.SilkS")
 			(uuid "6981c2c7-04ee-470f-ad31-a6a2692799f0")
 			(effects
@@ -5910,7 +5910,7 @@
 		(descr "Terminal Block CUI TB007-508-02, 2 pins, pitch 5.08mm, size 10.8x10.2mm, drill diameter 1.6mm, pad diameter 2.4mm, https://www.cuidevices.com/product/resource/tb007-508.pdf")
 		(tags "THT Terminal Block CUI TB007-508-02 pitch 5.08mm size 10.8x10.2mm drill 1.6mm pad 2.4mm")
 		(property "Reference" "J19"
-			(at 2.84 -6.02 0)
+			(at 2.85 0.25 0)
 			(layer "F.SilkS")
 			(uuid "7f0306ba-e6db-4094-bd45-442a58b3ff37")
 			(effects
@@ -6439,7 +6439,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 19963, 2 pins, pitch 3.5mm, size 7.7x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/19963.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 19963 pitch 3.5mm size 7.7x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J34"
-			(at 1.75 -4.52 0)
+			(at 1.75 0.1 0)
 			(layer "F.SilkS")
 			(uuid "a1eb747a-4762-483e-88f9-37d4537e5287")
 			(effects
@@ -7165,7 +7165,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-04A2, example for new mpn: 39-28-904x, 2 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J15"
-			(at 2.1 -3.45 0)
+			(at 2.1 3.25 0)
 			(layer "F.SilkS")
 			(uuid "b690c984-172c-4b88-bdb6-f160bb6504d7")
 			(effects
@@ -8076,7 +8076,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-02A2, example for new mpn: 39-28-902x, 1 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J30"
-			(at 0 -3.45 0)
+			(at 0.0 3.25 0)
 			(layer "F.SilkS")
 			(uuid "ce6acb01-51f1-4990-aacd-ebfdbce0fdd0")
 			(effects
@@ -8709,7 +8709,7 @@
 		(descr "Terminal Block CUI TB007-508-02, 2 pins, pitch 5.08mm, size 10.8x10.2mm, drill diameter 1.6mm, pad diameter 2.4mm, https://www.cuidevices.com/product/resource/tb007-508.pdf")
 		(tags "THT Terminal Block CUI TB007-508-02 pitch 5.08mm size 10.8x10.2mm drill 1.6mm pad 2.4mm")
 		(property "Reference" "J18"
-			(at 2.84 -6.02 0)
+			(at 2.85 0.25 0)
 			(layer "F.SilkS")
 			(uuid "ee9114c2-15da-47e6-b03b-3b93fe81f5d2")
 			(effects
@@ -9301,7 +9301,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 19963, 2 pins, pitch 3.5mm, size 7.7x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/19963.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 19963 pitch 3.5mm size 7.7x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J35"
-			(at 1.75 -4.52 0)
+			(at 1.75 0.1 0)
 			(layer "F.SilkS")
 			(uuid "1924cfa2-1455-4b89-8dd1-e0f9fc9c6f94")
 			(effects
@@ -9613,7 +9613,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 20001, 4 pins, pitch 3.5mm, size 14.7x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/20001.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 20001 pitch 3.5mm size 14.7x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J22"
-			(at 5.25 -4.52 0)
+			(at 5.25 0.1 0)
 			(layer "F.SilkS")
 			(uuid "cfb6a1bb-614e-4322-8ae5-ff5bad95fcd4")
 			(effects
@@ -10707,7 +10707,7 @@
 		(descr "Molex Mini-Fit Jr 5566-03A3 (39-30-1039) single row 3 ckt vertical header with snap-fit pegs. Pattern from 55660330-SD rev B3: holes 1.40 at 4.20 pitch, pegs 3.00 - one 3.85 off the pin-3 end hole, one 5.55 the other side 2.10 inboard. Body 13.8 x 9.4.")
 		(tags "Mini-Fit Jr 5566 3P vertical peg")
 		(property "Reference" "J11"
-			(at 0 -7.6 0)
+			(at 0.0 -0.9 0)
 			(layer "F.SilkS")
 			(uuid "e06b3b7a-da14-458b-944f-a7e758972af8")
 			(effects
@@ -10904,7 +10904,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-02A2, example for new mpn: 39-28-902x, 1 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J14"
-			(at 0 -3.45 0)
+			(at 0.0 3.25 0)
 			(layer "F.SilkS")
 			(uuid "12de7066-a5e0-485c-8e20-84af3de3548d")
 			(effects
@@ -11726,7 +11726,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-02A2, example for new mpn: 39-28-902x, 1 Pins per row, Mounting: Snap-in Plastic Peg PCB Lock (http://www.molex.com/pdm_docs/sd/039289068_sd.pdf)")
 		(tags "connector Molex Mini-Fit_Jr verticalplastic_peg")
 		(property "Reference" "J31"
-			(at 0 -3.45 0)
+			(at 0.0 3.25 0)
 			(layer "F.SilkS")
 			(uuid "6d7427b2-3a40-443f-93a3-131d848e7a10")
 			(effects
@@ -12303,7 +12303,7 @@
 		(descr "Terminal Block 4Ucon ItemNo. 20001, 4 pins, pitch 3.5mm, size 14.7x7mm, drill diameter 1.2mm, pad diameter 2.4mm, http://www.4uconnector.com/online/object/4udrawing/20001.pdf")
 		(tags "THT Terminal Block 4Ucon ItemNo. 20001 pitch 3.5mm size 14.7x7mm drill 1.2mm pad 2.4mm")
 		(property "Reference" "J37"
-			(at 5.25 -4.52 0)
+			(at 5.25 0.1 0)
 			(layer "F.SilkS")
 			(uuid "91248d29-5a15-4ff1-80ec-320599317767")
 			(effects
@@ -12729,251 +12729,262 @@
 		(uuid "4f77ad1c-61f1-4ea4-875e-06c689913548")
 	)
 	(gr_text "X"
-		(at 57.6 90.9 90)
+		(at 9 97.6 90)
 		(layer "F.SilkS")
-		(uuid "25e41ce2-8fa2-414e-94b1-4590c5aef8e5")
+		(uuid "17f73f02-64ad-45b5-b4c3-e1cb7bfba404")
 		(effects
 			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "Y1"
-		(at 61.1 90.9 90)
+		(at 12.5 97.6 90)
 		(layer "F.SilkS")
-		(uuid "3c61a3d1-fb84-4236-9100-e9882aa983be")
+		(uuid "38407a37-5f44-4e93-9b82-539e86ed1cee")
 		(effects
 			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "Y2"
-		(at 64.599999 90.9 90)
+		(at 16 97.6 90)
 		(layer "F.SilkS")
-		(uuid "54a9f074-6290-49d3-a767-9a45057b3ef8")
+		(uuid "6e45ba3d-9a13-4f9b-bd6f-700e4df1e7ea")
 		(effects
 			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "Z"
-		(at 68.1 90.9 90)
+		(at 19.5 97.6 90)
 		(layer "F.SilkS")
-		(uuid "1e59a91f-4f7e-44b2-b5d3-865f91e6054c")
+		(uuid "00f37724-e730-4ea8-a124-5fb9d5f9942c")
 		(effects
 			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "B"
-		(at 71.6 90.9 90)
+		(at 23 97.6 90)
 		(layer "F.SilkS")
-		(uuid "c2692bcd-0a6c-4732-b0fc-8a8192278c09")
+		(uuid "7800bc29-eaec-4646-8428-8855405cb679")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "EN"
-		(at 77.7 90.9 90)
-		(layer "F.SilkS")
-		(uuid "63ab451d-6416-4be1-837a-c700f3ff3362")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "G"
-		(at 81.2 90.9 90)
-		(layer "F.SilkS")
-		(uuid "3373e105-388f-4f59-a85b-a0afb8c37dcf")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "G"
-		(at 84.7 90.9 90)
-		(layer "F.SilkS")
-		(uuid "83415cdb-5303-4efa-96ad-1142f319565a")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "PWM"
-		(at 88.2 90.9 90)
-		(layer "F.SilkS")
-		(uuid "b463d23f-619d-4df5-acd9-bb5350ddab35")
-		(effects
-			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "PRB"
-		(at 93.6 90.9 90)
+		(at 29.5 97.6 90)
 		(layer "F.SilkS")
-		(uuid "0c36a627-7e8c-4a5f-a337-6fd2734bfeeb")
+		(uuid "d6bd6e1f-f73c-4d83-a401-9d7a69bbc3e7")
 		(effects
 			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "DR"
-		(at 97.1 90.9 90)
+		(at 33 97.6 90)
 		(layer "F.SilkS")
-		(uuid "4ca879aa-cd65-412c-8e68-7ace3b88d38a")
+		(uuid "17d0f338-a73e-4792-93a0-5b5d1a9df363")
 		(effects
 			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
-	(gr_text "A"
-		(at 104.3 90.9 90)
+	(gr_text "EN"
+		(at 39.5 97.6 90)
 		(layer "F.SilkS")
-		(uuid "8fe3dc01-1846-40bd-a36d-9ed72aa43b98")
+		(uuid "59c7f927-fb1d-4b03-909e-260f18f2918e")
 		(effects
 			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "B"
-		(at 107.8 90.9 90)
-		(layer "F.SilkS")
-		(uuid "bdd76f7a-2a28-477d-8cd3-2878988b3a87")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "A"
-		(at 114.1 90.9 90)
-		(layer "F.SilkS")
-		(uuid "9b794284-20cc-43d7-87fc-71b21da4efd7")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "B"
-		(at 117.6 90.9 90)
-		(layer "F.SilkS")
-		(uuid "4cf10426-46e6-4aa5-8733-1eb133d0c6a0")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "CS"
-		(at 122.9 90.9 90)
-		(layer "F.SilkS")
-		(uuid "47c2c4fc-2497-4c75-9330-723a3f1bbab1")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "FH"
-		(at 126.4 90.9 90)
-		(layer "F.SilkS")
-		(uuid "eddc1226-c6a5-4d47-b13a-f5ddc5c69d39")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "ES"
-		(at 129.9 90.9 90)
-		(layer "F.SilkS")
-		(uuid "f5cb26ed-0c36-4f3b-8a11-438fad1a88ae")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "SP"
-		(at 133.4 90.9 90)
-		(layer "F.SilkS")
-		(uuid "6bd734dd-1ef4-4be5-9303-e81a40c5e5ec")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "TX"
-		(at 138.8 90.9 90)
-		(layer "F.SilkS")
-		(uuid "8919c0fd-3e80-4b50-885e-9a4014d7890c")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "RX"
-		(at 142.3 90.9 90)
-		(layer "F.SilkS")
-		(uuid "ec0c731c-e8e4-4eef-9085-219e6022d312")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.13)
-			)
-		)
-	)
-	(gr_text "3V3"
-		(at 145.8 90.9 90)
-		(layer "F.SilkS")
-		(uuid "10153aac-4c36-4dff-bb83-3a304903a9dc")
-		(effects
-			(font
-				(size 0.8 0.8)
+				(size 0.7 0.7)
 				(thickness 0.13)
 			)
 		)
 	)
 	(gr_text "G"
-		(at 149.3 90.9 90)
+		(at 43 97.6 90)
 		(layer "F.SilkS")
-		(uuid "78142f7e-c4eb-4468-b756-20dcd7ed7e19")
+		(uuid "bd269363-845d-4b3f-a08d-b91563519e9a")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "G"
+		(at 46.5 97.6 90)
+		(layer "F.SilkS")
+		(uuid "68ba2280-08b4-4609-b94a-a3c4ed2d71ed")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "PWM"
+		(at 50 97.6 90)
+		(layer "F.SilkS")
+		(uuid "885f4ac1-94d9-4bd5-a1a9-94c17a72189e")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "A"
+		(at 56 97.6 90)
+		(layer "F.SilkS")
+		(uuid "64d2d222-ee76-480f-8e19-7ad33cf6f950")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "B"
+		(at 59.5 97.6 90)
+		(layer "F.SilkS")
+		(uuid "5a8fec5f-1f5a-4dc0-88e2-4aa2cc2c1cb2")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "A"
+		(at 65.2 97.6 90)
+		(layer "F.SilkS")
+		(uuid "63183622-e587-45da-83f6-109cf96e89d8")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "B"
+		(at 68.7 97.6 90)
+		(layer "F.SilkS")
+		(uuid "fe2a544a-5f1c-483a-bb29-7a68576889e5")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "CS"
+		(at 74 97.6 90)
+		(layer "F.SilkS")
+		(uuid "902ad76f-4d63-41cf-a70b-94f43c7cead7")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "FH"
+		(at 77.5 97.6 90)
+		(layer "F.SilkS")
+		(uuid "bb25bec1-a360-4781-be31-4afb8af845dc")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "ES"
+		(at 81 97.6 90)
+		(layer "F.SilkS")
+		(uuid "6fe54ddf-1738-4fb6-963f-0054a53624a1")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "SP"
+		(at 84.5 97.6 90)
+		(layer "F.SilkS")
+		(uuid "9bf7a30a-e515-4154-91d9-7d2fd6b756ee")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "TX"
+		(at 91 97.6 90)
+		(layer "F.SilkS")
+		(uuid "1901b013-ae5e-4629-bd0f-9a443ff50222")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "RX"
+		(at 94.5 97.6 90)
+		(layer "F.SilkS")
+		(uuid "f0a66a00-4553-4d19-956c-70bbe6dd1b64")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "3V3"
+		(at 98 97.6 90)
+		(layer "F.SilkS")
+		(uuid "4e6d30e5-96b4-4b41-8235-07883b8268ca")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "G"
+		(at 101.5 97.6 90)
+		(layer "F.SilkS")
+		(uuid "ce5d8716-9669-413a-9d9a-bf9ae9cd44d5")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.13)
+			)
+		)
+	)
+	(gr_text "PRB DR"
+		(at 31.25 100 0)
+		(layer "F.SilkS")
+		(uuid "1b04e55d-f2e9-4ab3-b619-13bf849f0e39")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -12981,76 +12992,230 @@
 			)
 		)
 	)
-	(gr_text "RP23 J24 ALARMS"
-		(at 13.5 90.6 0)
+	(gr_text "LIMITS"
+		(at 16 100 0)
 		(layer "F.SilkS")
-		(uuid "ac09218a-a75a-45a0-bb69-5e0df163ebcd")
+		(uuid "e08a3f27-b27b-44dc-8a58-5fc10f40172e")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.9 0.9)
+				(thickness 0.135)
 			)
 		)
 	)
-	(gr_text "PROBE DOOR"
-		(at 95.3 77.7 0)
+	(gr_text "TOUCH 1"
+		(at 19 93.6 0)
 		(layer "F.SilkS")
-		(uuid "ecb316f0-36ab-422e-9c7d-f6840fdb41b9")
+		(uuid "75d0f35d-a243-42b1-bb98-b9b487dd227e")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "RP23 J24 ALARMS"
+		(at 20.25 58.5 0)
+		(layer "F.SilkS")
+		(uuid "9aa57b29-b0a5-4c9a-8e48-1a5e781b4b3b")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
 			)
 		)
 	)
 	(gr_text "X"
-		(at 154 81.6 0)
+		(at 27.9 59.9 0)
 		(layer "F.SilkS")
-		(uuid "5367e578-094c-48cc-9a28-25a7b27b514d")
+		(uuid "b55dd40b-51bf-4e9e-b41c-bee7d95a3953")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.9 0.9)
+				(thickness 0.135)
 			)
 		)
 	)
 	(gr_text "Y1"
-		(at 158.6 81.6 0)
+		(at 32.4 59.9 0)
 		(layer "F.SilkS")
-		(uuid "b04f5f5b-d7ba-4362-9512-6eb15e82e560")
+		(uuid "9b267568-9f10-485f-96ef-c4b6066db764")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "TOUCH 2"
+		(at 33.5 93.6 0)
+		(layer "F.SilkS")
+		(uuid "a7a56931-01a2-45be-a30a-34c08af20ebd")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
 			)
 		)
 	)
 	(gr_text "TEENSY  G S D E"
-		(at 163.2 66 0)
+		(at 36 61.6 0)
 		(layer "F.SilkS")
-		(uuid "24096f64-3b9c-4cf9-a391-4122fd401dc6")
+		(uuid "c71763f4-0a18-47c4-90a6-42ee06ae852b")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "SPINDLE"
+		(at 44.75 100 0)
+		(layer "F.SilkS")
+		(uuid "7a1221ef-10c8-4351-bc25-8fbdb461ad86")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "MIST"
+		(at 48 93.6 0)
+		(layer "F.SilkS")
+		(uuid "25d06c8b-2f83-4942-9faf-3d31abc042a8")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "RP23 J20 STEPPERS"
+		(at 55 58.3 0)
+		(layer "F.SilkS")
+		(uuid "139c397c-8319-48e2-8511-9b26fdf53346")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "MIST"
+		(at 57.75 100 0)
+		(layer "F.SilkS")
+		(uuid "9d7294b2-ce7b-44b4-b285-43434766723c")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "FLOOD"
+		(at 62.5 93.6 0)
+		(layer "F.SilkS")
+		(uuid "afd210e4-149a-49a4-9f1a-6b4b037a4d97")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "FLOOD"
+		(at 66.95 100 0)
+		(layer "F.SilkS")
+		(uuid "941c0e49-318e-49ff-909a-6cb64f36e44f")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
 			)
 		)
 	)
 	(gr_text "Y2"
-		(at 163.2 81.6 0)
+		(at 74.4 59.9 0)
 		(layer "F.SilkS")
-		(uuid "1591e37e-6b33-4a88-810a-5bb6e37bec0e")
+		(uuid "bd99506a-6b87-4201-a175-3acb1a541c83")
 		(effects
 			(font
-				(size 1 1)
-				(thickness 0.15)
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "CONTROL"
+		(at 79.25 100 0)
+		(layer "F.SilkS")
+		(uuid "c16b8803-4fac-41ca-b539-a1e2ea9515a1")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "TEENSY  G S D E"
+		(at 80.4 61.6 0)
+		(layer "F.SilkS")
+		(uuid "60a15df2-c999-44dc-89b0-c1d2850b4748")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
 			)
 		)
 	)
 	(gr_text "Z"
-		(at 167.8 81.6 0)
+		(at 80.7 59.9 0)
 		(layer "F.SilkS")
-		(uuid "bfbd7b29-b5a4-4f46-8907-793bd0f97332")
+		(uuid "59e9ea6f-a2dc-4dc3-ae6c-92d8ef6e23c2")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "UART1"
+		(at 82.1 93.6 0)
+		(layer "F.SilkS")
+		(uuid "a1bf1301-23d5-4fe4-bd80-b8348ae1a9da")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "B"
+		(at 86.2 59.9 0)
+		(layer "F.SilkS")
+		(uuid "a2f087f0-7a93-46c4-9929-73d1edc108e4")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "UART1"
+		(at 96.25 100 0)
+		(layer "F.SilkS")
+		(uuid "08679024-d1bc-4471-9335-68233a453eb6")
+		(effects
+			(font
+				(size 0.9 0.9)
+				(thickness 0.135)
+			)
+		)
+	)
+	(gr_text "3D PROBE"
+		(at 15 66.599999 0)
+		(layer "F.SilkS")
+		(uuid "82227e96-a2b0-4199-8c8d-725285d46e00")
 		(effects
 			(font
 				(size 1 1)
@@ -13058,10 +13223,32 @@
 			)
 		)
 	)
-	(gr_text "B"
-		(at 172.4 81.6 0)
+	(gr_text "TOOLSETTER"
+		(at 30 66.599999 0)
 		(layer "F.SilkS")
-		(uuid "96a36622-9aa7-4e43-87fb-67dbb9d5fc53")
+		(uuid "b513b66e-00d9-4192-a337-52632435e65b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "SPINDLE"
+		(at 47.1 66.599999 0)
+		(layer "F.SilkS")
+		(uuid "a086df42-407b-4bb5-919c-921afcadb3dd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "CONTROL"
+		(at 65.599999 66.599999 0)
+		(layer "F.SilkS")
+		(uuid "ebe090d6-608a-4922-85f0-bcae7db2a996")
 		(effects
 			(font
 				(size 1 1)
@@ -13070,266 +13257,90 @@
 		)
 	)
 	(gr_text "12V IN"
-		(at 27.5 77.7 0)
+		(at 93.6 60.4 0)
 		(layer "F.SilkS")
-		(uuid "6d957cb3-42eb-4975-92b7-190c0793306b")
+		(uuid "121bb966-3019-4c1f-a6ee-277350eb3d5e")
 		(effects
 			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
 	(gr_text "12V OUT"
-		(at 43.5 77.7 0)
+		(at 105.5 60.4 0)
 		(layer "F.SilkS")
-		(uuid "3f0e19e6-9f4c-4508-acab-8905e2e7e623")
+		(uuid "0f452536-85e7-41aa-bfb1-71618713e7e6")
 		(effects
 			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "LIMITS"
-		(at 64.599999 77.7 0)
-		(layer "F.SilkS")
-		(uuid "80e7212e-57cd-4211-bffa-d5364bd125b6")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "SPINDLE"
-		(at 83 77.7 0)
-		(layer "F.SilkS")
-		(uuid "7dfa8224-6483-4907-ba2f-222f6be60558")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "MIST"
-		(at 106 77.7 0)
-		(layer "F.SilkS")
-		(uuid "265dda70-81f5-41cd-8487-77d28175a568")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "FLOOD"
-		(at 115.9 77.7 0)
-		(layer "F.SilkS")
-		(uuid "ec1b7170-47f3-4842-b71b-3162a7349f98")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "3D PROBE"
-		(at 117.5 35 0)
-		(layer "F.SilkS")
-		(uuid "4dc22622-3a03-4576-aa66-cb843cfe74b4")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "MIST"
-		(at 123 18.8 0)
-		(layer "F.SilkS")
-		(uuid "bab3bd1b-81e8-4420-959b-2ccec00f3b26")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "CONTROL"
-		(at 128.4 77.7 0)
-		(layer "F.SilkS")
-		(uuid "220353f6-1de3-42b8-8737-ce818a87c6c6")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "TOOLSETTER"
-		(at 133 37.2 0)
-		(layer "F.SilkS")
-		(uuid "82b5dcf4-e06a-4df8-b138-8a79c357a1f6")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "TOUCH 1"
-		(at 137 18.8 0)
-		(layer "F.SilkS")
-		(uuid "8c5a002a-151e-4ffd-a801-589274dc6b05")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "UART1"
-		(at 144 77.7 0)
-		(layer "F.SilkS")
-		(uuid "89d212e7-81e9-4171-8f54-ea8ec1b8a337")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "SPINDLE"
-		(at 149.6 36.4 0)
-		(layer "F.SilkS")
-		(uuid "ea827f93-266a-4721-b3bb-1feab91a24cc")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "FLOOD"
-		(at 156 18.8 0)
-		(layer "F.SilkS")
-		(uuid "2b639c04-73d5-4dd6-aabf-22a41d365d6e")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "CONTROL"
-		(at 168.1 36.4 0)
-		(layer "F.SilkS")
-		(uuid "6c1a7d58-fd9e-41c8-8028-f3f581330924")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "TOUCH 2"
-		(at 175 18.8 0)
-		(layer "F.SilkS")
-		(uuid "6d884a8d-e00f-43ac-9d09-276a9d347ed4")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "UART1"
-		(at 186.6 36.4 0)
-		(layer "F.SilkS")
-		(uuid "097a5c8e-f8f4-4645-83de-c48ca3951d91")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "RP23 J20 STEPPERS"
-		(at 196 90.6 0)
-		(layer "F.SilkS")
-		(uuid "ce96f579-0f1f-4ae2-9ad1-0f2707ceae05")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.18)
-			)
-		)
-	)
-	(gr_text "CNCBuild INTERFACE REV A"
-		(at 107.5 44.6 0)
-		(layer "F.SilkS")
-		(uuid "43f4b40d-2a84-48b6-9400-254de8981775")
-		(effects
-			(font
-				(size 1.5 1.5)
-				(thickness 0.224999)
+				(size 1 1)
+				(thickness 0.15)
 			)
 		)
 	)
 	(gr_text "X"
-		(at 21 37.6 0)
+		(at 21 38.4 0)
 		(layer "F.SilkS")
-		(uuid "ba79f092-cec9-41cd-a00e-e57e262dbe90")
+		(uuid "54ab5994-d72f-47cc-b144-26c6b34dcac4")
 		(effects
 			(font
-				(size 2 2)
-				(thickness 0.3)
+				(size 1.4 1.4)
+				(thickness 0.21)
 			)
 		)
 	)
 	(gr_text "Y1"
-		(at 41 37.6 0)
+		(at 39 38.4 0)
 		(layer "F.SilkS")
-		(uuid "a007336a-b860-4897-a4f6-38fc64e10c8b")
+		(uuid "ea8353e7-bf00-428e-95eb-a3c93ca905e7")
 		(effects
 			(font
-				(size 2 2)
-				(thickness 0.3)
+				(size 1.4 1.4)
+				(thickness 0.21)
+			)
+		)
+	)
+	(gr_text "CNCBuild INTERFACE REV B"
+		(at 46 63.4 0)
+		(layer "F.SilkS")
+		(uuid "a4f274b1-f1a2-4809-a3e4-1792df5c8349")
+		(effects
+			(font
+				(size 1.4 1.4)
+				(thickness 0.21)
 			)
 		)
 	)
 	(gr_text "Y2"
-		(at 61 37.6 0)
+		(at 57 38.4 0)
 		(layer "F.SilkS")
-		(uuid "1bdb2801-a846-4c81-9f98-94cf754f5ee1")
+		(uuid "76a1ae95-6c18-4e59-bc64-47a3186b3532")
 		(effects
 			(font
-				(size 2 2)
-				(thickness 0.3)
+				(size 1.4 1.4)
+				(thickness 0.21)
 			)
 		)
 	)
 	(gr_text "Z"
-		(at 81 37.6 0)
+		(at 75 38.4 0)
 		(layer "F.SilkS")
-		(uuid "ba3ef676-8d3c-45d0-90dd-c9ac20f73650")
+		(uuid "3051c1ee-a3f6-462f-aba6-ed344e0ec6f2")
 		(effects
 			(font
-				(size 2 2)
-				(thickness 0.3)
+				(size 1.4 1.4)
+				(thickness 0.21)
 			)
 		)
 	)
 	(gr_text "B"
-		(at 101 37.6 0)
+		(at 93 38.4 0)
 		(layer "F.SilkS")
-		(uuid "9cc477a1-7305-4ee9-a1b0-700740d55196")
+		(uuid "fe0b64b4-4498-4e54-9849-eefd3d94673a")
 		(effects
 			(font
-				(size 2 2)
-				(thickness 0.3)
+				(size 1.4 1.4)
+				(thickness 0.21)
 			)
 		)
 	)
