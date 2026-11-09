@@ -1212,9 +1212,22 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 |---|---|
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
-| **12 V** | to the interface board and the controller - **and the rail sense contact rides back in the same shielded run** |
+| **12 V** | to the interface board and the controller - **and the DVRD's e-stop contact rides in the same shielded run**, which is why that run is the 4 conductor one |
 | **36 V** | to the interface board |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
+
+⚠️ **THE E-STOP CONTACT SHARES A CABLE WITH THE 12 V BUT NOT A CONNECTOR AT THE FAR END.** One
+shielded run leaves here, and at the board it **splits across the two halves**: the 12 V pair lands
+on the 5.08 block in the output row, and the e-stop leg lands on the **CONTROL Mini-Fit 4P up in the
+input half** - position 3 of cycle start / feed hold / e-stop / spare. **One cable, two connectors,
+opposite ends of the board.** Worth knowing before the run is cut to length.
+
+OPEN: 🔴 **WHERE THE CONTACT'S OTHER LEG LANDS IS NOT DECIDED.** The DVRD gives a **dry changeover**,
+so it needs two legs, and **neither the control connector nor its terminal block carries a GND pin** -
+the netlist has ESTOP as J32.3 straight through to J36.3 and nothing else. Either the contact
+switches e-stop against the **12 V supply's GND in the cabinet**, so only one conductor comes down
+and the run is 3 used of 4; or both legs come down and the second one needs a GND somewhere on the
+board that the control connector does not have. **His call, and it decides the conductor count.**
 
 🔴 **THE 36 V RUN CHANGED TODAY AND THIS FILE HAS NOT CAUGHT UP ELSEWHERE - 2026-11-09.** It used to
 be described as going **to the drives**, as several motor supply runs leaving this box. It is now
