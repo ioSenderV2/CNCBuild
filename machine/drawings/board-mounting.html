@@ -1,0 +1,101 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CNCBuild - interface board and RP23 mounting</title>
+<style>
+  @page { size: letter landscape; margin: 7mm; }
+  body { font: 9pt/1.25 "Segoe UI", system-ui, sans-serif; color:#111; margin:0 auto; max-width:277mm; }
+  h1 { font-size:13pt; margin:0 0 0.5mm; }
+  .sub { color:#555; margin:0 0 2mm; font-size:8.2pt; }
+  table { border-collapse:collapse; width:100%; font-size:6.2pt; }
+  th,td { border:1px solid #aaa; padding:0.25mm 0.9mm; text-align:left; }
+  th { background:#eee; } td.n { font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .cols { column-count:4; column-gap:3mm; margin-top:1.2mm; }
+  .note { border-left:3px solid #c00; background:#fdf0f0; padding:1.4mm 2mm; margin:1.4mm 0; font-size:7.8pt; }
+  svg { width:100%; height:auto; }
+  .bd { fill:#eef3fa; stroke:#111; stroke-width:0.7; }
+  .jk { fill:#fff; stroke:#b06000; stroke-width:0.35; }
+  .jr { font:2.7px "Segoe UI",sans-serif; fill:#b06000; text-anchor:middle; }
+  .mh { fill:#fff; stroke:#c00; stroke-width:0.7; }
+  .cl { stroke:#c00; stroke-width:0.3; }
+  .hl { font:2.5px "Segoe UI",sans-serif; fill:#c00; text-anchor:middle; }
+  .dim { stroke:#06c; stroke-width:0.3; }
+  .dt { font:3.2px "Segoe UI",sans-serif; fill:#06c; text-anchor:middle; }
+  .ttl { font:4.2px "Segoe UI",sans-serif; fill:#111; font-weight:bold; }
+</style>
+
+<h1>Interface board and RP23 &mdash; mounting</h1>
+<p class="sub"><b>Outline, mounting holes and every connector read from interface-board.kicad_pcb;
+the connector rectangles are the parts' real courtyards.</b> RP23 figures his, 2026-11-08.
+Drawn to scale. <b>All coordinates are millimetres from each board's own top-left corner.</b>
+Regenerate with tools/make-board-sheet.py after any board change.</p>
+
+<svg viewBox="-13 -15 304 126" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="210.00" height="94.00" class="bd"/>
+  <text x="1" y="-3.5" class="ttl">INTERFACE BOARD &#8212; 210 &#215; 94</text>
+  <rect x="7.45" y="0.10" width="17.10" height="17.80" class="jk"/><text x="16.00" y="10.10" class="jr">J1</text><rect x="27.45" y="0.10" width="17.10" height="17.80" class="jk"/><text x="36.00" y="10.10" class="jr">J2</text><rect x="47.45" y="0.10" width="17.10" height="17.80" class="jk"/><text x="56.00" y="10.10" class="jr">J3</text><rect x="67.45" y="0.10" width="17.10" height="17.80" class="jk"/><text x="76.00" y="10.10" class="jr">J4</text><rect x="87.45" y="0.10" width="17.10" height="17.80" class="jk"/><text x="96.00" y="10.10" class="jr">J5</text><rect x="8.85" y="18.70" width="14.30" height="12.90" class="jk"/><text x="16.00" y="26.25" class="jr">J6</text><rect x="28.85" y="18.70" width="14.30" height="12.90" class="jk"/><text x="36.00" y="26.25" class="jr">J7</text><rect x="48.85" y="18.70" width="14.30" height="12.90" class="jk"/><text x="56.00" y="26.25" class="jr">J8</text><rect x="68.85" y="18.70" width="14.30" height="12.90" class="jk"/><text x="76.00" y="26.25" class="jr">J9</text><rect x="88.85" y="18.70" width="14.30" height="12.90" class="jk"/><text x="96.00" y="26.25" class="jr">J10</text><rect x="105.35" y="14.70" width="14.30" height="12.90" class="jk"/><text x="112.50" y="22.25" class="jr">J11</text><rect x="120.85" y="14.70" width="14.30" height="12.90" class="jk"/><text x="128.00" y="22.25" class="jr">J12</text><rect x="125.30" y="0.25" width="13.40" height="12.00" class="jk"/><text x="132.00" y="7.35" class="jr">J13</text><rect x="163.30" y="0.25" width="13.40" height="12.00" class="jk"/><text x="170.00" y="7.35" class="jr">J14</text><rect x="135.80" y="17.25" width="17.60" height="12.00" class="jk"/><text x="142.50" y="24.35" class="jr">J15</text><rect x="174.74" y="71.32" width="34.06" height="9.90" class="jk"/><text x="203.20" y="77.37" class="jr">J16</text><rect x="0.31" y="71.32" width="16.29" height="9.90" class="jk"/><text x="11.00" y="77.37" class="jr">J17</text><rect x="16.96" y="73.60" width="11.76" height="11.25" class="jk"/><text x="20.00" y="80.32" class="jr">J18</text><rect x="32.96" y="73.60" width="11.76" height="11.25" class="jk"/><text x="36.00" y="80.32" class="jr">J19</text><rect x="50.00" y="75.10" width="19.20" height="8.00" class="jk"/><text x="52.60" y="80.20" class="jr">J21</text><rect x="70.10" y="75.10" width="15.70" height="8.00" class="jk"/><text x="72.70" y="80.20" class="jr">J22</text><rect x="86.00" y="75.10" width="8.70" height="8.00" class="jk"/><text x="88.60" y="80.20" class="jr">J23</text><rect x="111.30" y="0.25" width="13.40" height="12.00" class="jk"/><text x="118.00" y="7.35" class="jr">J30</text><rect x="144.30" y="0.25" width="13.40" height="12.00" class="jk"/><text x="151.00" y="7.35" class="jr">J31</text><rect x="154.30" y="17.25" width="17.60" height="12.00" class="jk"/><text x="161.00" y="24.35" class="jr">J32</text><rect x="172.80" y="17.25" width="17.60" height="12.00" class="jk"/><text x="179.50" y="24.35" class="jr">J33</text><rect x="96.70" y="75.10" width="8.70" height="8.00" class="jk"/><text x="99.30" y="80.20" class="jr">J34</text><rect x="106.50" y="75.10" width="8.70" height="8.00" class="jk"/><text x="109.10" y="80.20" class="jr">J35</text><rect x="115.30" y="75.10" width="15.70" height="8.00" class="jk"/><text x="117.90" y="80.20" class="jr">J36</text><rect x="131.20" y="75.10" width="15.70" height="8.00" class="jk"/><text x="133.80" y="80.20" class="jr">J37</text><rect x="147.23" y="64.23" width="3.54" height="11.16" class="jk"/><text x="149.00" y="70.91" class="jr">J40</text><rect x="151.83" y="64.23" width="3.54" height="11.16" class="jk"/><text x="153.60" y="70.91" class="jr">J41</text><rect x="156.43" y="64.23" width="3.54" height="11.16" class="jk"/><text x="158.20" y="70.91" class="jr">J42</text><rect x="161.03" y="64.23" width="3.54" height="11.16" class="jk"/><text x="162.80" y="70.91" class="jr">J43</text><rect x="165.63" y="64.23" width="3.54" height="11.16" class="jk"/><text x="167.40" y="70.91" class="jr">J44</text>
+  <circle cx="4.00" cy="4.00" r="1.6" class="mh"/><line x1="0.40" y1="4.00" x2="7.60" y2="4.00" class="cl"/><line x1="4.00" y1="0.40" x2="4.00" y2="7.60" class="cl"/><text x="4.00" y="-0.80" class="hl">4.0, 4.0</text><circle cx="204.00" cy="4.00" r="1.6" class="mh"/><line x1="200.40" y1="4.00" x2="207.60" y2="4.00" class="cl"/><line x1="204.00" y1="0.40" x2="204.00" y2="7.60" class="cl"/><text x="204.00" y="-0.80" class="hl">204.0, 4.0</text><circle cx="3.20" cy="45.00" r="1.6" class="mh"/><line x1="-0.40" y1="45.00" x2="6.80" y2="45.00" class="cl"/><line x1="3.20" y1="41.40" x2="3.20" y2="48.60" class="cl"/><text x="3.20" y="40.20" class="hl">3.2, 45.0</text><circle cx="206.00" cy="66.00" r="1.6" class="mh"/><line x1="202.40" y1="66.00" x2="209.60" y2="66.00" class="cl"/><line x1="206.00" y1="62.40" x2="206.00" y2="69.60" class="cl"/><text x="206.00" y="61.20" class="hl">206.0, 66.0</text>
+  <line x1="0" y1="100.00" x2="210.00" y2="100.00" class="dim"/>
+  <text x="105.00" y="104.00" class="dt">210</text>
+  <line x1="-6" y1="0" x2="-6" y2="94.00" class="dim"/>
+  <text x="-9.5" y="47.00" class="dt" transform="rotate(-90 -9.5 47.00)">94</text>
+
+  <rect x="240.00" y="0" width="38.0" height="38.0" class="bd"/>
+  <text x="241.00" y="-3.5" class="ttl">RP23 &#8212; 38 &#215; 38</text>
+  <circle cx="242.00" cy="2.00" r="1.6" class="mh"/><line x1="238.40" y1="2.00" x2="245.60" y2="2.00" class="cl"/><line x1="242.00" y1="-1.60" x2="242.00" y2="5.60" class="cl"/><circle cx="242.00" cy="36.00" r="1.6" class="mh"/><line x1="238.40" y1="36.00" x2="245.60" y2="36.00" class="cl"/><line x1="242.00" y1="32.40" x2="242.00" y2="39.60" class="cl"/><circle cx="276.00" cy="2.00" r="1.6" class="mh"/><line x1="272.40" y1="2.00" x2="279.60" y2="2.00" class="cl"/><line x1="276.00" y1="-1.60" x2="276.00" y2="5.60" class="cl"/><circle cx="276.00" cy="36.00" r="1.6" class="mh"/><line x1="272.40" y1="36.00" x2="279.60" y2="36.00" class="cl"/><line x1="276.00" y1="32.40" x2="276.00" y2="39.60" class="cl"/>
+  <line x1="240.00" y1="44.00" x2="278.00" y2="44.00" class="dim"/>
+  <text x="259.00" y="48.00" class="dt">38</text>
+  <line x1="242.00" y1="52.00" x2="276.00" y2="52.00" class="dim"/>
+  <text x="259.00" y="56.00" class="dt">34 square, M3</text>
+  <text x="259.00" y="61.00" class="dt">2 in from each edge</text>
+</svg>
+
+<div class="note">
+<b>The interface board's four &oslash;3.2 holes are NOT a rectangle &mdash; drill from these four
+numbers, never by symmetry:</b> <b>MH1</b> 4.0, 4.0, <b>MH2</b> 204.0, 4.0, <b>MH3</b> 3.2, 45.0, <b>MH4</b> 206.0, 66.0.
+<b>The RP23's four M3 ARE a true 34 square</b>, 2 mm in from each edge of its 38.
+<br><br>
+<b>Every interface board hole is about 4 mm from an edge and the closest is 3.2.</b> A standoff
+whose flange is wider than roughly 6 mm will overhang there. <b>Check the standoff against
+this before drilling the plate</b>, not after.
+</div>
+
+<div class="cols">
+<table>
+<tr><th>Ref</th><th>What</th><th>Cond</th><th>Carries</th><th>x, y</th></tr>
+<tr><td><b>J1</b></td><td>X stepper</td><td class='n'>8</td><td>step/dir/en/alarm, Cat 6</td><td class='n'>16.0, 11.0</td></tr>
+<tr><td><b>J2</b></td><td>Y1 stepper</td><td class='n'>8</td><td>step/dir/en/alarm, Cat 6</td><td class='n'>36.0, 11.0</td></tr>
+<tr><td><b>J3</b></td><td>Y2 stepper</td><td class='n'>8</td><td>step/dir/en/alarm, Cat 6</td><td class='n'>56.0, 11.0</td></tr>
+<tr><td><b>J4</b></td><td>Z stepper</td><td class='n'>8</td><td>step/dir/en/alarm, Cat 6</td><td class='n'>76.0, 11.0</td></tr>
+<tr><td><b>J5</b></td><td>B stepper</td><td class='n'>8</td><td>step/dir/en/alarm, Cat 6</td><td class='n'>96.0, 11.0</td></tr>
+<tr><td><b>J6</b></td><td>X limit</td><td class='n'>3</td><td>12 V / signal / GND</td><td class='n'>16.0, 26.0</td></tr>
+<tr><td><b>J7</b></td><td>Y1 limit</td><td class='n'>3</td><td>12 V / signal / GND</td><td class='n'>36.0, 26.0</td></tr>
+<tr><td><b>J8</b></td><td>Y2 limit</td><td class='n'>3</td><td>12 V / signal / GND</td><td class='n'>56.0, 26.0</td></tr>
+<tr><td><b>J9</b></td><td>Z limit</td><td class='n'>3</td><td>12 V / signal / GND</td><td class='n'>76.0, 26.0</td></tr>
+<tr><td><b>J10</b></td><td>B limit</td><td class='n'>3</td><td>12 V / signal / GND</td><td class='n'>96.0, 26.0</td></tr>
+<tr><td><b>J11</b></td><td>Probe</td><td class='n'>3</td><td>12 V / PROBE / GND</td><td class='n'>112.5, 22.0</td></tr>
+<tr><td><b>J12</b></td><td>Door / toolsetter</td><td class='n'>3</td><td>12 V / DOOR / GND</td><td class='n'>128.0, 22.0</td></tr>
+<tr><td><b>J13</b></td><td>Probe 2</td><td class='n'>2</td><td>PROBE / GND</td><td class='n'>132.0, 3.0</td></tr>
+<tr><td><b>J14</b></td><td>Probe 3</td><td class='n'>2</td><td>PROBE / GND</td><td class='n'>170.0, 3.0</td></tr>
+<tr><td><b>J15</b></td><td>Spindle</td><td class='n'>4</td><td>enable / GND / GND / 0-10 V</td><td class='n'>142.5, 20.0</td></tr>
+<tr><td><b>J16</b></td><td>to RP23 J20</td><td class='n'>2x10</td><td>step, dir, enable - five axes</td><td class='n'>203.2, 75.0</td></tr>
+<tr><td><b>J17</b></td><td>to RP23 J24</td><td class='n'>2x3</td><td>alarms - five axes</td><td class='n'>11.0, 75.0</td></tr>
+<tr><td><b>J18</b></td><td>12 V in</td><td class='n'>2</td><td>+12 V / GND</td><td class='n'>20.0, 79.0</td></tr>
+<tr><td><b>J19</b></td><td>12 V out</td><td class='n'>2</td><td>+12 V / GND</td><td class='n'>36.0, 79.0</td></tr>
+<tr><td><b>J21</b></td><td>Limits out</td><td class='n'>5</td><td>LIM X Y1 Y2 Z B</td><td class='n'>52.6, 79.0</td></tr>
+<tr><td><b>J22</b></td><td>Spindle out</td><td class='n'>4</td><td>enable / GND / 0-10 V</td><td class='n'>72.7, 79.0</td></tr>
+<tr><td><b>J23</b></td><td>Probe + door</td><td class='n'>2</td><td>PROBE / DOOR</td><td class='n'>88.6, 79.0</td></tr>
+<tr><td><b>J30</b></td><td>Mist</td><td class='n'>2</td><td>dry contact</td><td class='n'>118.0, 3.0</td></tr>
+<tr><td><b>J31</b></td><td>Flood</td><td class='n'>2</td><td>dry contact</td><td class='n'>151.0, 3.0</td></tr>
+<tr><td><b>J32</b></td><td>Control</td><td class='n'>4</td><td>cycle start / hold / estop / spare</td><td class='n'>161.0, 20.0</td></tr>
+<tr><td><b>J33</b></td><td>UART1</td><td class='n'>4</td><td>TX / RX / 3V3 / GND</td><td class='n'>179.5, 20.0</td></tr>
+<tr><td><b>J34</b></td><td>Mist out</td><td class='n'>2</td><td>dry contact</td><td class='n'>99.3, 79.0</td></tr>
+<tr><td><b>J35</b></td><td>Flood out</td><td class='n'>2</td><td>dry contact</td><td class='n'>109.1, 79.0</td></tr>
+<tr><td><b>J36</b></td><td>Control out</td><td class='n'>4</td><td>cycle start / hold / estop / spare</td><td class='n'>117.9, 79.0</td></tr>
+<tr><td><b>J37</b></td><td>UART1 out</td><td class='n'>4</td><td>TX / RX / 3V3 / GND</td><td class='n'>133.8, 79.0</td></tr>
+<tr><td><b>J40</b></td><td>X Teensy jumper</td><td class='n'>4</td><td>GND / step / dir / enable</td><td class='n'>149.0, 66.0</td></tr>
+<tr><td><b>J41</b></td><td>Y1 Teensy jumper</td><td class='n'>4</td><td>GND / step / dir / enable</td><td class='n'>153.6, 66.0</td></tr>
+<tr><td><b>J42</b></td><td>Y2 Teensy jumper</td><td class='n'>4</td><td>GND / step / dir / enable</td><td class='n'>158.2, 66.0</td></tr>
+<tr><td><b>J43</b></td><td>Z Teensy jumper</td><td class='n'>4</td><td>GND / step / dir / enable</td><td class='n'>162.8, 66.0</td></tr>
+<tr><td><b>J44</b></td><td>B Teensy jumper</td><td class='n'>4</td><td>GND / step / dir / enable</td><td class='n'>167.4, 66.0</td></tr>
+</table>
+</div>
