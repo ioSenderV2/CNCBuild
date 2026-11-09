@@ -100,10 +100,11 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
 1. **J17 alarm pin -> RP23 LED mapping.** All five alarm pins join one net on the RP23,
    so the wiring works regardless; which pin lights which axis LED is unlabelled in the
    RP23 schematic. Read the board silkscreen when making the ribbon.
-2. **Footprints.** All 35 assigned and the board is placed and routed. The IDC headers
+2. **Footprints.** All 41 assigned and the board is placed and routed. The IDC headers
    are the standard shrouded 2.54 mm pattern (any vendor fits); the signal terminal
-   blocks are 3.5 mm on the 4Ucon pattern (KF350 class fits), the 12 V pair 5.08 mm on
-   the CUI TB007-508 pattern (KF301 class fits). Board-side parts:
+   blocks are 3.5 mm on the 4Ucon pattern (KF350 class fits), and the **three power
+   blocks** - 12 V in, 12 V out and 36 V in - are 5.08 mm on the CUI TB007-508 pattern
+   (KF301 class fits). Board-side parts:
 
    | Position | Part | Qty |
    |---|---|---|
@@ -111,6 +112,7 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
    | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. 20 ordered 2026-11-03, Mouser order 40971773 | 7 |
    | 4P dual row 2x2 (J15, J32, J33) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389 | 3 |
    | 2P dual row (J13, J14, J30, J31, **J50-J54 stepper power**) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt without peg - they also fit these footprints). The four probe/mist/flood positions carry signal; **the five power positions carry 5 A each** - Mini-Fit Jr is rated 9 A on 18 AWG, so the part is the same and the crimp terminal is what must suit the wire | 9 |
+   | 5.08 mm TB 2P (J18 12 V in, J19 12 V out, **J55 36 V in**) | CUI **TB007-508-02** pattern, KF301 class fits - **to order**. SETTLED: **the 5.08 family is what he wants here, his call 2026-11-09**, the 36 V block included | 3 |
    | 3.5 mm TB 2P (J23, J34, J35) | KF350-class screw block, 4Ucon pattern - **to order** | 3 |
    | 3.5 mm TB 4P (J22, J36) | same family - **to order** | 2 |
    | 3.5 mm TB 5P (J21) | same family - **to order** | 1 |
@@ -184,13 +186,16 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
 2. **Lid cutout and mounting.** 133 x 132 against Rev A's 210 x 94, M3 at the four
    corners - 22,4 / 125,4 / 5,127.3 / 127,127.3 - the regenerated
    [`board-mounting.html`](../../../machine/drawings/board-mounting.html) has the drawing.
-3. **4-layer gerber export.** When fab is called: the two kicad-cli export commands now need
-   In1.Cu and In2.Cu in the layer list, and a fresh zip - do not overwrite `fab/oshpark/`,
-   that is Rev A's order record.
-4. 🔴 **THE 36 V INPUT BLOCK'S RATING IS NOT CHECKED, AND IT IS THE ONE PART THE BOARD
-   COPPER CANNOT RESCUE.** J55 is the same CUI TB007-508 5.08 mm family as the 12 V pair,
-   chosen for consistency, not for current. **A 5.08 mm screw block is typically rated
-   10-15 A and takes 14 AWG at best, against a 16.5 A supply.** The pours are sized for the
-   full 16.5 A; the block may not be, and neither may the wire from the supply. Settle one
-   of: a bigger block, a fuse ahead of it that the copper is then sized against, or a
-   measured figure for what the five drives actually draw together.
+3. **4-layer gerber export.** Done for the quote - `fab/oshpark-revb/` holds the package and
+   the zip. Regenerate it after any board change, and **do not overwrite `fab/oshpark/`**,
+   which is Rev A's order record.
+4. SETTLED: ~~**the 36 V input block.**~~ **The 5.08 mm family is what he wants, his call
+   2026-11-09** - J55 is the CUI TB007-508 pattern like the 12 V pair, and the board does
+   not change. **What bounds the current is therefore upstream of the block, not the block.**
+   The 36 V DC side carries no recorded protection:
+   [`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md) records a
+   **1 A fuse** on the 110 V control circuit and a **6 A 2-pole breaker** on the 110 V
+   branch, and nothing between the 36 V supply and this board. Whether the supply's own
+   limiting is the protection, or a DC fuse belongs in the cabinet, is **a cabinet question,
+   not a board question** - it belongs in that file, not this one. The board copper is sized
+   for the supply's full 16.5 A either way.
