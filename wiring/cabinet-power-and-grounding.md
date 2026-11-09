@@ -516,9 +516,18 @@ capacitance hold it up after the contactor opens, so the sense drops late by how
 **A part with an adjustable threshold, set high - around 30 V - drops promptly instead of waiting for
 the rail to sag to a quarter.** This is the argument for a monitoring relay over a plain coil.
 
-🔴 **THE NUMBER THAT PICKS THE PART IS THE UNDERVOLTAGE ADJUSTMENT RANGE, AND IT MUST REACH ABOUT
-30 V.** Not the rated working voltage, which is what listings lead with and which says nothing about
-what the device can actually watch for.
+🔴 **WHAT PICKS THE PART IS THE THRESHOLD ADJUSTMENT RANGE - BOTH EDGES OF IT.** Not the rated
+working voltage, which is what listings lead with and which says nothing about what the device can
+actually watch. **The healthy 36 V rail has to sit INSIDE the window**, so:
+
+| Edge | Must be settable to | Why |
+|---|---|---|
+| **Undervoltage** | about **30 V** | high enough to drop promptly instead of waiting out the rail's decay, low enough that a heavy rapid's sag does not trip it |
+| **Overvoltage** | **well above 36 V** - think low 40s | 🔴 **THE DRIVES REGENERATE INTO THIS RAIL WHEN THEY BRAKE AND IT RISES.** A trip set close to 36 V turns every hard decel into an e-stop. Regeneration headroom is the same argument that settled 36 V over 48 in the first place - see [`ig57-drives.md`](ig57-drives.md) |
+
+FLAG: **AN EARLIER VERSION OF THIS NOTE GAVE ONLY THE UNDERVOLTAGE EDGE.** A part can pass that and
+still be wrong: if its overvoltage adjustment tops out at, say, 38 V, the window is too tight for a
+rail that lifts on braking, and it would nuisance-trip for the life of the machine.
 
 REJECTED: **the DIN DC monitoring relay he found, 2026-11-09, Amazon ASIN B07QJ8B21R - as shown it
 is the 12 V variant.** Its listing gives the adjustment as **overvoltage 13-17 V, undervoltage
