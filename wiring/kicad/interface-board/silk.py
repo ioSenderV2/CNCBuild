@@ -17,7 +17,8 @@ BOARD = r"C:\github\CNCBuild\wiring\kicad\interface-board\interface-board.kicad_
 
 mm = pcbnew.FromMM
 
-DIVIDER_Y = 105.8
+DIVIDER_Y = 104.2         # above the output row's reference fields, which
+                          # sit around y 105.6 and the line used to cross
 DIVIDER_W = 0.5
 
 # (text, x, y, size, rotation_degrees)
@@ -47,16 +48,20 @@ LABELS = [
     ("FLOOD",   86.9, 96.3, 0.9, 0),
     ("UART1",  111.5, 96.3, 0.9, 0),
     # the halves, named
-    ("MACHINE SIDE - IN", 65.5, 104.7, 1.2, 0),
+    ("MACHINE SIDE - IN", 65.5, 103.0, 1.2, 0),
     ("RP23 SIDE - OUT",   60.0, 119.1, 1.2, 0),
     # row A: ribbons, headers, 12 V
     ("RP23 J24 ALARMS",   20.3, 116.8, 0.9, 0),
     ("RP23 J20 STEPPERS", 56.0, 116.8, 0.9, 0),
-    ("X",  31.5, 118.5, 0.9, 0),
-    ("Y1", 36.1, 118.5, 0.9, 0),
-    ("Y2", 78.6, 118.5, 0.9, 0),
-    ("Z",  83.2, 118.5, 0.9, 0),
-    ("B",  87.8, 118.5, 0.9, 0),
+    # machine name = controller name. The headers run in column order, which
+    # in controller letters is X Y A Z B - not the controller's own X Y Z A B
+    # - because Y1 drives Y and Y2 drives A. Jumper by the label, not by
+    # position, and the label now says both.
+    ("X",    31.5, 118.5, 0.8, 0),
+    ("Y1=Y", 36.1, 118.5, 0.8, 0),
+    ("Y2=A", 78.6, 118.5, 0.8, 0),
+    ("Z",    83.2, 118.5, 0.8, 0),
+    ("B",    87.8, 118.5, 0.8, 0),
     ("TEENSY  G S D E", 33.8, 120.2, 0.9, 0),
     ("TEENSY  G S D E", 83.2, 120.2, 0.9, 0),
     ("12V IN",  105.0, 118.5, 0.9, 0),
@@ -77,7 +82,8 @@ LABELS = [
 # anchor x of pad 1 -> (pitch, names)
 TB_PINS = {
     24.0:  (3.5, ["CS", "FH", "ES", "SP"]),     # J36 control
-    40.5:  (3.5, ["X", "Y1", "Y2", "Z", "B"]),  # J21 limits
+    # J21 limits land on the controller too, so they carry the same mapping
+    40.5:  (3.5, ["X", "Y1=Y", "Y2=A", "Z", "B"]),
     60.5:  (3.5, ["PRB", "DR"]),                # J23
     70.0:  (3.5, ["EN", "G", "G", "PWM"]),      # J22 spindle
     86.0:  (3.5, ["A", "B"]),                   # J34 mist
@@ -87,7 +93,7 @@ TB_PINS = {
 TB_PIN_Y = 125.4          # just above the row B terminals
 
 # the 36 V input block sits beside the 12 V pair, screws side by side
-TB36 = (128.0, 115.4, 5.08, ["+", "-"])
+TB36 = (128.0, 120.2, 5.08, ["+", "-"])   # below the block, clear of its body
 
 # every 36 V connector stacks + over -, so the polarity marks stack too -
 # a side-by-side pair would read as the wrong pin. x of each power jack.
@@ -108,7 +114,7 @@ REF_ON_BODY = {
     "J53": (0.0, 3.25), "J54": (0.0, 3.25), "J55": (2.85, 0.25),
     # J37 is the UART header, rotated 90: local (dx,dy) lands at board
     # (dy,-dx), so this puts the ref just south of the pin row
-    "J37": (-2.3, 3.8),
+    "J37": (-3.6, 3.8),
     "J18": (2.85, 0.25), "J19": (2.85, 0.25),
 }
 
@@ -168,15 +174,15 @@ def main():
         count += 1
     for (x0, (pitch, names)) in TB_PINS.items():
         for i, nm in enumerate(names):
-            add(nm, x0 + pitch * i, TB_PIN_Y, 0.7, 90)
+            add(nm, x0 + pitch * i, TB_PIN_Y, 0.8, 90)
             count += 1
     tx, ty, tpitch, tnames = TB36
     for i, nm in enumerate(tnames):
         add(nm, tx + tpitch * i, ty, 0.9, 0)
         count += 1
     for jx in PWR_JACKS:
-        add("+", jx - 3.3, PWR_PLUS_Y, 0.9, 0)
-        add("-", jx - 3.3, PWR_MINUS_Y, 0.9, 0)
+        add("+", jx - 7.6, PWR_PLUS_Y, 0.8, 0)
+        add("-", jx - 7.6, PWR_MINUS_Y, 0.8, 0)
         count += 2
 
     pcbnew.SaveBoard(BOARD, board)
