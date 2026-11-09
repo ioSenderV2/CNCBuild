@@ -1191,6 +1191,39 @@ terminal block occasionally, not a thing that kills one.
 
 ## What the conductors are, and how they get out of the box
 
+### Everything crossing the enclosure wall, in one list
+
+🔴 **COUNT CABLES, NOT DIRECTIONS - TWO OF THESE CARRY BOTH WAYS.** The switch run and the VFD run
+each go out and come back, so a list of "inputs" and a list of "outputs" names four things that are
+really two cables. **The box gets drilled for the cable count, not the circuit count.**
+
+**ARRIVING**
+
+| In | What it is |
+|---|---|
+| **220 V pigtail** | 10 ft captive, 12 AWG, **L6-20P**. Two hots and a ground, **no neutral anywhere in the chain** |
+| **110 V pigtail** | 10 ft captive, 12 AWG, **L5-20P**. Hot, neutral, ground - into the **top** of the 6 A 2-pole breaker |
+| **A1 / A2**, back from the switch boxes | the contactor coil feed, having run out through the **mushroom and then the paddle in series**. Same cable as the switch run below |
+| **FA / FC**, from the VFD | the drive's **Multi-Output 3** dry contact, **3 A / 250 VAC**, closing the pump contactor's 220 V coil. Same cable as the VFD run below |
+
+**LEAVING**
+
+| Out | What it is |
+|---|---|
+| **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
+| **Pump 220 V** | off the pump contactor, on the switched 220 V |
+| **12 V** | to the interface board and the controller - **and the rail sense contact rides back in the same shielded run** |
+| **36 V** | to the interface board |
+| **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
+
+🔴 **THE 36 V RUN CHANGED TODAY AND THIS FILE HAS NOT CAUGHT UP ELSEWHERE - 2026-11-09.** It used to
+be described as going **to the drives**, as several motor supply runs leaving this box. It is now
+**ONE pair to the interface board**, which fans it to the five axes through the Mini-Fit jacks added
+in [`kicad/interface-board/README.md`](kicad/interface-board/README.md) - the whole point of
+consolidating terminations there. **Any sentence in this file still describing motor supply runs
+leaving the cabinet per drive is stale**, including the shield-drain count below, which was written
+when those runs were separate.
+
 SETTLED: **EVERY RUN LEAVING THE ENCLOSURE IS SHIELDED, 4 OR 2 CONDUCTOR - his, 2026-11-07.** The VFD,
 the interface box and the controller, and the two switch boxes. **Inside** the enclosure is a separate
 question, below.
