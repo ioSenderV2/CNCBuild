@@ -1,0 +1,145 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CNCBuild - waterjet quote: front joining strip</title>
+<style>
+  @page { size: letter portrait; margin: 14mm 14mm 16mm; }
+  body { font: 11pt/1.45 "Segoe UI", system-ui, sans-serif; color: #111; max-width: 190mm; margin: 0 auto; }
+  h1 { font-size: 19pt; margin: 0 0 1mm; }
+  h2 { font-size: 13.5pt; margin: 6mm 0 1.5mm; border-bottom: 2px solid #111; padding-bottom: 1mm; }
+  .sub { color: #555; margin: 0 0 5mm; font-size: 10.5pt; }
+  table { border-collapse: collapse; width: 100%; font-size: 10pt; margin: 2mm 0 4mm; }
+  th, td { border: 1px solid #999; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  td.n { font-variant-numeric: tabular-nums; }
+  figure { margin: 4mm 0; text-align: center; }
+  figcaption { font-size: 9pt; color: #555; margin-top: 1.5mm; }
+  .note { border-left: 3px solid #c00; background: #fdf0f0; padding: 2.5mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  .info { border-left: 3px solid #0a6; background: #eefaf5; padding: 2.5mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  .warn { border-left: 3px solid #d98b00; background: #fff8e8; padding: 2.5mm 3mm; margin: 3mm 0; font-size: 10pt; }
+  svg { max-width: 100%; height: auto; }
+  .dim { font: 8px "Segoe UI", sans-serif; fill: #06c; text-anchor: middle; }
+  .lbl { font: 8px "Segoe UI", sans-serif; fill: #111; }
+  .q   { font: bold 8px "Segoe UI", sans-serif; fill: #b06000; }
+</style>
+
+<h1>Front joining strip &mdash; waterjet quote</h1>
+<p class="sub">Three identical parts. Aluminium supplied by the shop. Flat profile and 14 through
+holes only &mdash; there is no milling, no counterbore and no pocket on this part.</p>
+
+<h2>What is wanted</h2>
+
+<table>
+<tr><th style="width:34%">Item</th><th>Spec</th></tr>
+<tr><td><b>Quantity</b></td><td><b>3</b>, identical</td></tr>
+<tr><td><b>Material</b></td><td><b>6061 aluminium</b> &mdash; <b>supplied by the shop</b></td></tr>
+<tr><td><b>Thickness</b></td><td><b>1/4 inch</b> (6.35 mm)</td></tr>
+<tr><td><b>Size</b></td><td><b>1000 mm long &times; 45 mm wide</b></td></tr>
+<tr><td><b>Holes</b></td><td><b>14 per part</b>, &oslash;<b>9 mm</b>, through. <b>42 holes in all</b></td></tr>
+<tr><td><b>Finish</b></td><td>As cut. No deburring specified, no anodising, no marking</td></tr>
+<tr><td><b>Edges</b></td><td>Square cut. Both long edges are free &mdash; nothing registers against them</td></tr>
+</table>
+
+<div class="note">
+<b>No dado, slot or pocket on this order.</b> The part has a 10 mm channel down its length in the
+finished design and that is <b>cut by the customer on a router table</b>, after delivery. Please
+quote the flat profile and the 14 holes only.
+</div>
+
+<h2>Hole pattern</h2>
+
+<figure>
+<svg viewBox="-55 -42 610 250" width="185mm" xmlns="http://www.w3.org/2000/svg">
+  <!-- full length at 0.42: 1000 -> 420, 45 wide -> 18.9 -->
+  <rect x="0" y="0" width="420" height="18.9" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <line x1="0" y1="9.45" x2="420" y2="9.45" stroke="#c00" stroke-width="0.7" stroke-dasharray="4 2"/>
+  <line x1="0" y1="28" x2="420" y2="28" stroke="#06c" stroke-width="0.7"/>
+  <text class="dim" x="210" y="37">1000</text>
+  <text class="lbl" x="426" y="5" fill="#b06000">row 1</text>
+  <text class="lbl" x="426" y="18" fill="#b06000">row 2</text>
+
+  <!-- row 2 (y = 37.5 from the lower edge in part terms) -->
+  <circle cx="21.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="84.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="147.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="210.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="273.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="336.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="399.00" cy="3.15" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <!-- row 1 -->
+  <circle cx="21.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="84.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="147.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="210.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="273.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="336.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <circle cx="399.00" cy="15.75" r="1.9" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+
+  <!-- first station and pitch -->
+  <line x1="0" y1="-14" x2="21" y2="-14" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="10" y="-17">50</text>
+  <line x1="21" y1="-26" x2="84" y2="-26" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="52" y="-29">150 pitch, 7 stations</text>
+
+  <!-- CROSS SECTION 4x -->
+  <text class="lbl" x="0" y="76">CROSS SECTION, 4&#215; &#8212; looking along the length</text>
+  <rect x="40" y="110" width="180" height="25.4" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <line x1="130" y1="100" x2="130" y2="152" stroke="#c00" stroke-width="1" stroke-dasharray="4 2"/>
+  <text class="lbl" x="70" y="96" fill="#c00">CENTRELINE</text>
+  <circle cx="70" cy="122" r="5.5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <circle cx="190" cy="122" r="5.5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
+  <line x1="70" y1="164" x2="130" y2="164" stroke="#06c" stroke-width="0.6"/>
+  <line x1="130" y1="164" x2="190" y2="164" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="100" y="173">15</text>
+  <text class="dim" x="160" y="173">15</text>
+  <line x1="40" y1="186" x2="220" y2="186" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="130" y="195">45 wide &#183; 6.35 thick</text>
+
+  <text class="q" x="240" y="96" fill="#c00">DIMENSION THE ROWS FROM THE CENTRELINE,</text>
+  <text class="q" x="240" y="108" fill="#c00">15 EITHER SIDE &#8212; NOT FROM AN EDGE.</text>
+  <text class="q" x="240" y="128">The rows are 30 apart whatever the strip&#8217;s</text>
+  <text class="q" x="240" y="140">width. On 45 that reads 7.5 and 37.5 from an</text>
+  <text class="q" x="240" y="152">edge, but the centreline is what they follow.</text>
+  <text class="q" x="240" y="172">&oslash;9 through &#183; no counterbore &#183; both faces flat.</text>
+</svg>
+<figcaption>Full length at 0.42&times;, with the section at 4&times;. Not to scale for measuring &mdash; work from the table below.</figcaption>
+</figure>
+
+<h2>Hole schedule</h2>
+
+<table>
+<tr><th>Row</th><th>Qty</th><th>X along the 1000</th><th>Y across the 45</th><th>&oslash;</th></tr>
+<tr><td><b>Row 1</b></td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>7.5</b> from one edge</td><td><b>9</b> through</td></tr>
+<tr><td><b>Row 2</b></td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>37.5</b> from the same edge</td><td><b>9</b> through</td></tr>
+<tr><td colspan="5"><b>14 holes per part, 42 across the three.</b> Both rows share the same seven X stations &mdash; first at 50, then 150 pitch.</td></tr>
+</table>
+
+<div class="info">
+<b>The two rows are 30 mm apart, and that separation is the dimension that matters.</b> They are set
+out 15 either side of the strip's centreline, because they land in two T-slots that sit 15 either
+side of a beam seam. <b>Hold the 30 between rows and keep each row straight along the length;</b> the
+distance to a long edge is a consequence, not a requirement.
+</div>
+
+<div class="warn">
+<b>Hole position tolerance is loose, and row consistency is what is wanted.</b> Every hole is a
+&oslash;9 clearance for an M8 into a T-slot, and the nut slides along the slot to meet the bolt, so an
+individual hole being a few tenths out does not matter. <b>What is wanted is that the seven stations
+agree with each other</b> &mdash; and across all three parts, since they bolt to the same kind of beam.
+A wandering row still assembles and merely fights for an afternoon.
+</div>
+
+<h2>Notes for the quote</h2>
+
+<table>
+<tr><td style="width:34%"><b>Material supply</b></td><td>The shop supplies the 6061. Please say what thickness tolerance the stock holds &mdash; the part is bolted through, so thickness is not critical, but the customer needs the figure</td></tr>
+<tr><td><b>Nesting</b></td><td>Three strips 1000 &times; 45 from one sheet. If a different strip width nests better and saves money, <b>ask before changing it</b> &mdash; the width is constrained by a bearing block clearance and is not free</td></tr>
+<tr><td><b>Flatness</b></td><td>These bolt down to an extruded aluminium beam along their whole length, so mild bow is pulled out by the fasteners. No flatness callout</td></tr>
+<tr><td><b>Marking</b></td><td>None needed. The three parts are identical and interchangeable</td></tr>
+</table>
+
+<div class="note">
+<b>One thing is genuinely fixed: the 45 mm width.</b> It is set by the gap between two bearing blocks
+the strip has to sit in. <b>Wider will not fit the assembly</b> at this thickness, and narrower loses
+bolt-head bearing. If the stock cannot be cut to 45, the customer needs to hear that rather than
+receive a substitute.
+</div>

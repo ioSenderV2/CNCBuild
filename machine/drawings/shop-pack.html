@@ -117,7 +117,7 @@ listed once, in the appendix, and are not repeated on the sheets.</p>
 <tr><td><a href="#sheet-5">Sheet 5 - the nut sole plate (quantity 3)</a></td><td></td><td class="d">8</td></tr>
 <tr><td><a href="#sheet-6">Sheet 6 - cast stepper frame interposer (quantity 3)</a></td><td>150 long * 60 wide * 10 mm 6061</td><td class="d">10</td></tr>
 <tr><td><a href="#sheet-7">Sheet 7 - the 1210.47 mm rear plate (quantity 1)</a></td><td>1210.47 long * 11 7/8" (301.625) wide * 1/4" hot-rolled A36 steel</td><td class="d">24</td></tr>
-<tr><td><a href="#sheet-8">Sheet 8 - the 50 * 3 front joining strip (quantity 3)</a></td><td>1000 long * 50 wide * 3 thick, 6061 flat bar</td><td class="d">14</td></tr>
+<tr><td><a href="#sheet-8">Sheet 8 - the 45 * 1/4" front joining strip (quantity 3)</a></td><td>1000 long * 45 wide * 1/4" (6.35), 6061 - <b>waterjet, off the trip</b></td><td class="d">14</td></tr>
 <tr><td><a href="#sheet-9">Sheet 9 - the full-height outboard plate (quantity 2)</a></td><td>39 5/16" (998.54) long * 11 7/8" (301.625) wide * 10 gauge (3.429) cold-rolled steel</td><td class="d">11</td></tr>
 <tr><td><a href="#sheet-10">Sheet 10 - the 120 mm X back joining plate (quantity 1)</a></td><td>39 5/16" (998.54) long * 4 11/16" (119.06) wide * a true 1/4" (6.35) 6061-T651</td><td class="d">4</td></tr>
 </table>
@@ -1862,29 +1862,41 @@ the probe is.</figcaption>
 
 <!-- ============================================================ -->
 <div class="plate pg-s8">
-<h2 id="sheet-8">Sheet 8 &mdash; the 50 &times; 3 front joining strip (quantity 3)</h2>
+<h2 id="sheet-8">Sheet 8 &mdash; the 45 &times; 1/4" front joining strip (quantity 3)</h2>
 
 <div class="stock">
-<b>1000 long &times; 50 wide &times; 3 thick, 6061 flat bar</b> &mdash; <b>measured on the strips in
-hand</b>, and they came metric. <b>No cutting: 1000 is the beam length exactly.</b><br>
-<span class="wcs">ON THE TRIP.</span>
+<b>1000 long &times; 45 wide &times; 1/4" (6.35) thick, 6061</b> &mdash; <b>ordered, not measured</b>:
+waterjet, three off, quoted 2026-11-08, material supplied by them.
+<b>No cutting: 1000 is the beam length exactly.</b><br>
+<span class="wcs">OFF THE TRIP &mdash; the jet cuts it. See
+<a href="waterjet-quote.html">waterjet-quote.html</a>, which is the sheet that gets sent.</span>
+</div>
+
+<div class="note">
+<b>This replaces the 1000 &times; 50 &times; 3 strips that are installed.</b> They came off because a
+10 mm tape channel needs stock to cut into and 3 mm has none. <b>The width is not a free choice
+beside the thickness:</b> at 50 the strip runs under the bearing blocks, so its stack has to clear
+6 mm, and at 6.35 thick that stack is 7.35 and fouls. At 45 it fills the block gap and passes under
+nothing. <b>The channel itself is routed at home and is not a jet feature.</b><br><br>
+<b>And the bolt moved with it:</b> M8 &times; 10 reaches only 3.65 past a 6.35 strip. <b>M8 &times; 14</b>
+&mdash; 42 of them, still A4 / 316 because the magnetic tape runs between the rows.
 </div>
 
 <figure>
 <svg viewBox="-60 -40 620 270" width="185mm" xmlns="http://www.w3.org/2000/svg">
-  <!-- FULL LENGTH at 0.42: 1000 -> 420, the measured 50 -> 21. Then a 4x cross-section below. -->
-  <rect x="0" y="0" width="420" height="21" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
-  <line x1="0" y1="4.2" x2="420" y2="4.2" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <line x1="0" y1="16.8" x2="420" y2="16.8" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
-  <line x1="0" y1="10.5" x2="420" y2="10.5" stroke="#c00" stroke-width="0.7" stroke-dasharray="4 2"/>
+  <!-- FULL LENGTH at 0.42: 1000 -> 420, the 45 -> 18.9. Then a 4x cross-section below. -->
+  <rect x="0" y="0" width="420" height="18.9" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <line x1="0" y1="3.15" x2="420" y2="3.15" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
+  <line x1="0" y1="15.75" x2="420" y2="15.75" stroke="#b06000" stroke-width="0.9" stroke-dasharray="5 3"/>
+  <line x1="0" y1="9.45" x2="420" y2="9.45" stroke="#c00" stroke-width="0.7" stroke-dasharray="4 2"/>
   <line x1="0" y1="30" x2="420" y2="30" stroke="#06c" stroke-width="0.7"/>
   <text class="dim" x="196" y="39">1000</text>
   <text class="lbl" x="426" y="6" fill="#b06000">row 1</text>
   <text class="lbl" x="426" y="19" fill="#b06000">row 2</text>
 
-  <!-- CROSS SECTION, 4x. The MEASURED 50 wide by 3 thick. origin SVG (40, 120) -->
+  <!-- CROSS SECTION, 4x. 45 wide by 6.35 thick. origin SVG (50, 120) -->
   <text class="lbl" x="0" y="86">CROSS SECTION, 4&#215; &#8212; looking along the beam</text>
-  <rect x="40" y="120" width="200" height="12" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
+  <rect x="50" y="120" width="180" height="25.4" fill="#e8f0fa" stroke="#111" stroke-width="1.4"/>
   <line x1="140" y1="112" x2="140" y2="154" stroke="#c00" stroke-width="1" stroke-dasharray="4 2"/>
   <text class="lbl" x="92" y="108" fill="#c00">the SEAM = the strip&#8217;s CENTRELINE</text>
   <circle cx="80" cy="126" r="5" fill="#fff" stroke="#b06000" stroke-width="1.4"/>
@@ -1893,47 +1905,47 @@ hand</b>, and they came metric. <b>No cutting: 1000 is the beam length exactly.<
   <line x1="140" y1="166" x2="200" y2="166" stroke="#06c" stroke-width="0.6"/>
   <text class="dim" x="90" y="175">15</text>
   <text class="dim" x="164" y="175">15</text>
-  <line x1="40" y1="194" x2="240" y2="194" stroke="#06c" stroke-width="0.6"/>
-  <text class="dim" x="130" y="203">50 measured &#183; 3 thick</text>
+  <line x1="50" y1="194" x2="230" y2="194" stroke="#06c" stroke-width="0.6"/>
+  <text class="dim" x="130" y="203">45 &#183; 6.35 thick</text>
 
   <text class="q" x="250" y="96" fill="#c00">&#128308; DIMENSION THE ROWS FROM THE CENTRELINE,</text>
   <text class="q" x="250" y="108" fill="#c00">15 EITHER SIDE &#8212; NOT FROM AN EDGE.</text>
   <text class="q" x="250" y="126" fill="#b06000">The two slots flanking the seam sit 15 either</text>
   <text class="q" x="250" y="138" fill="#b06000">side of it, so the rows are 30 apart whatever</text>
-  <text class="q" x="250" y="150" fill="#b06000">the strip&#8217;s width. On the measured 50 that</text>
-  <text class="q" x="250" y="162" fill="#b06000">reads 10 and 40 from an edge. Ordered as 2&#8221;,</text>
-  <text class="q" x="250" y="174" fill="#b06000">it came 50 &#8212; so lay it out from the centre.</text>
+  <text class="q" x="250" y="150" fill="#b06000">the strip&#8217;s width. On 45 that</text>
+  <text class="q" x="250" y="162" fill="#b06000">reads 7.5 and 37.5 from an edge &#8212; but the</text>
+  <text class="q" x="250" y="174" fill="#b06000">centreline is what they follow.</text>
   <text class="q" x="250" y="192">&oslash;9 clearance on M8 &#183; M8 FLANGE bolts, no counterbore.</text>
   <text class="q" x="250" y="204">X stations: first at 50, then 150 pitch &#8212; seven per row.</text>
   <!-- holes and schedule ref tags -->
-  <circle cx="21.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="24.89" y="19.8" fill="#b06000">S1</text>
-  <circle cx="84.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="87.89" y="19.8" fill="#b06000">S2</text>
-  <circle cx="147.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="150.89" y="19.8" fill="#b06000">S3</text>
-  <circle cx="210.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="213.89" y="19.8" fill="#b06000">S4</text>
-  <circle cx="273.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="276.89" y="19.8" fill="#b06000">S5</text>
-  <circle cx="336.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="339.89" y="19.8" fill="#b06000">S6</text>
-  <circle cx="399.00" cy="16.8" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="402.89" y="19.8" fill="#b06000">S7</text>
-  <circle cx="21.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="24.89" y="7.2" fill="#b06000">S8</text>
-  <circle cx="84.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="87.89" y="7.2" fill="#b06000">S9</text>
-  <circle cx="147.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="150.89" y="7.2" fill="#b06000">S10</text>
-  <circle cx="210.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="213.89" y="7.2" fill="#b06000">S11</text>
-  <circle cx="273.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="276.89" y="7.2" fill="#b06000">S12</text>
-  <circle cx="336.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="339.89" y="7.2" fill="#b06000">S13</text>
-  <circle cx="399.00" cy="4.2" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
-  <text class="ref" x="402.89" y="7.2" fill="#b06000">S14</text>
+  <circle cx="21.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="24.89" y="18.75" fill="#b06000">S1</text>
+  <circle cx="84.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="87.89" y="18.75" fill="#b06000">S2</text>
+  <circle cx="147.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="150.89" y="18.75" fill="#b06000">S3</text>
+  <circle cx="210.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="213.89" y="18.75" fill="#b06000">S4</text>
+  <circle cx="273.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="276.89" y="18.75" fill="#b06000">S5</text>
+  <circle cx="336.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="339.89" y="18.75" fill="#b06000">S6</text>
+  <circle cx="399.00" cy="15.75" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="402.89" y="18.75" fill="#b06000">S7</text>
+  <circle cx="21.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="24.89" y="6.15" fill="#b06000">S8</text>
+  <circle cx="84.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="87.89" y="6.15" fill="#b06000">S9</text>
+  <circle cx="147.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="150.89" y="6.15" fill="#b06000">S10</text>
+  <circle cx="210.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="213.89" y="6.15" fill="#b06000">S11</text>
+  <circle cx="273.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="276.89" y="6.15" fill="#b06000">S12</text>
+  <circle cx="336.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="339.89" y="6.15" fill="#b06000">S13</text>
+  <circle cx="399.00" cy="3.15" r="1.89" fill="#fff" stroke="#b06000" stroke-width="0.9"/>
+  <text class="ref" x="402.89" y="6.15" fill="#b06000">S14</text>
 </svg>
 <figcaption>Full length at 0.42&times;, with the section at 4&times;.</figcaption>
 </figure>
@@ -1941,9 +1953,9 @@ hand</b>, and they came metric. <b>No cutting: 1000 is the beam length exactly.<
 <h3>Hole schedule &mdash; machining coordinates</h3>
 
 <table class="sched">
-<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">across the 50</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
-<tr><td>S1&ndash;S7</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>10</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange</td></tr>
-<tr><td>S8&ndash;S14</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>40</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange</td></tr>
+<tr><th>Ref</th><th>Qty</th><th>X <span style="font-weight:400">along the 1000</span></th><th>Y <span style="font-weight:400">across the 45</span></th><th class="d">&oslash;</th><th>Depth / Op</th></tr>
+<tr><td>S1&ndash;S7</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>7.5</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange</td></tr>
+<tr><td>S8&ndash;S14</td><td>7</td><td class="n"><b>50, 200, 350, 500, 650, 800, 950</b></td><td class="n"><b>37.5</b></td><td class="d">9</td><td class="op">Through &middot; <b>no counterbore</b>, M8 flange</td></tr>
 <!-- SHEETTOTAL:BEGIN - generated, do not hand-edit -->
 <tr class="tot"><td><b>TOTAL</b></td><td>14 &times; &oslash;9</td><td><b>14</b></td><td colspan="3" class="tn">3 of this part get made &mdash; <b>42 holes</b> in all</td></tr>
 <!-- SHEETTOTAL:END -->
