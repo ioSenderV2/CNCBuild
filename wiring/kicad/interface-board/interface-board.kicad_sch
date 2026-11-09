@@ -6471,6 +6471,552 @@
 		)
 		(uuid "c4b0b7c2-4e3b-4367-a451-2300b6dcedc8")
 	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 55.88 420.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36000101-0000-4000-8000-000000000001")
+		(property "Reference" "J50"
+			(at 52.07 403.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mini-Fit 2P - X stepper power"
+			(at 52.07 406.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
+			(at 55.88 420.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36000201-0000-4000-8000-000000000001")
+		)
+		(pin "2"
+			(uuid "36000301-0000-4000-8000-000000000001")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J50")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 418.73) (xy 45.72 418.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000401-0000-4000-8000-000000000001")
+	)
+	(label "+36V"
+		(at 45.72 418.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000601-0000-4000-8000-000000000001")
+	)
+	(wire
+		(pts
+			(xy 49.53 421.27) (xy 45.72 421.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000501-0000-4000-8000-000000000001")
+	)
+	(label "36V_RET"
+		(at 45.72 421.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000701-0000-4000-8000-000000000001")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 120.65 420.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36000102-0000-4000-8000-000000000002")
+		(property "Reference" "J51"
+			(at 116.84 403.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mini-Fit 2P - Y1 stepper power"
+			(at 116.84 406.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
+			(at 120.65 420.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36000202-0000-4000-8000-000000000002")
+		)
+		(pin "2"
+			(uuid "36000302-0000-4000-8000-000000000002")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J51")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 114.3 418.73) (xy 110.49 418.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000402-0000-4000-8000-000000000002")
+	)
+	(label "+36V"
+		(at 110.49 418.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000602-0000-4000-8000-000000000002")
+	)
+	(wire
+		(pts
+			(xy 114.3 421.27) (xy 110.49 421.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000502-0000-4000-8000-000000000002")
+	)
+	(label "36V_RET"
+		(at 110.49 421.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000702-0000-4000-8000-000000000002")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 181.61 420.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36000103-0000-4000-8000-000000000003")
+		(property "Reference" "J52"
+			(at 177.8 403.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mini-Fit 2P - Y2 stepper power"
+			(at 177.8 406.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
+			(at 181.61 420.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36000203-0000-4000-8000-000000000003")
+		)
+		(pin "2"
+			(uuid "36000303-0000-4000-8000-000000000003")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J52")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 175.26 418.73) (xy 171.45 418.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000403-0000-4000-8000-000000000003")
+	)
+	(label "+36V"
+		(at 171.45 418.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000603-0000-4000-8000-000000000003")
+	)
+	(wire
+		(pts
+			(xy 175.26 421.27) (xy 171.45 421.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000503-0000-4000-8000-000000000003")
+	)
+	(label "36V_RET"
+		(at 171.45 421.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000703-0000-4000-8000-000000000003")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 246.38 420.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36000104-0000-4000-8000-000000000004")
+		(property "Reference" "J53"
+			(at 242.57 403.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mini-Fit 2P - Z stepper power"
+			(at 242.57 406.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
+			(at 246.38 420.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36000204-0000-4000-8000-000000000004")
+		)
+		(pin "2"
+			(uuid "36000304-0000-4000-8000-000000000004")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J53")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 240.03 418.73) (xy 236.22 418.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000404-0000-4000-8000-000000000004")
+	)
+	(label "+36V"
+		(at 236.22 418.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000604-0000-4000-8000-000000000004")
+	)
+	(wire
+		(pts
+			(xy 240.03 421.27) (xy 236.22 421.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000504-0000-4000-8000-000000000004")
+	)
+	(label "36V_RET"
+		(at 236.22 421.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000704-0000-4000-8000-000000000004")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 295.91 420.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36000105-0000-4000-8000-000000000005")
+		(property "Reference" "J54"
+			(at 292.1 403.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Mini-Fit 2P - B stepper power"
+			(at 292.1 406.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
+			(at 295.91 420.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36000205-0000-4000-8000-000000000005")
+		)
+		(pin "2"
+			(uuid "36000305-0000-4000-8000-000000000005")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J54")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 289.56 418.73) (xy 285.75 418.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000405-0000-4000-8000-000000000005")
+	)
+	(label "+36V"
+		(at 285.75 418.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000605-0000-4000-8000-000000000005")
+	)
+	(wire
+		(pts
+			(xy 289.56 421.27) (xy 285.75 421.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000505-0000-4000-8000-000000000005")
+	)
+	(label "36V_RET"
+		(at 285.75 421.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000705-0000-4000-8000-000000000005")
+	)
+	(symbol
+		(lib_id "cnc:TB_1x02")
+		(at 55.88 450.0 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "36000106-0000-4000-8000-000000000006")
+		(property "Reference" "J55"
+			(at 52.07 433.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TB 2P - 36V IN from supply"
+			(at 52.07 436.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal"
+			(at 55.88 450.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "36000206-0000-4000-8000-000000000006")
+		)
+		(pin "2"
+			(uuid "36000306-0000-4000-8000-000000000006")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J55")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 49.53 448.73) (xy 45.72 448.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000406-0000-4000-8000-000000000006")
+	)
+	(label "+36V"
+		(at 45.72 448.73 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000606-0000-4000-8000-000000000006")
+	)
+	(wire
+		(pts
+			(xy 49.53 451.27) (xy 45.72 451.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36000506-0000-4000-8000-000000000006")
+	)
+	(label "36V_RET"
+		(at 45.72 451.27 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36000706-0000-4000-8000-000000000006")
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

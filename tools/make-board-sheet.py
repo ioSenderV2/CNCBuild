@@ -91,6 +91,12 @@ WHAT = {
     "J42": ("Y2 Teensy jumper", "4", "GND / step / dir / enable"),
     "J43": ("Z Teensy jumper", "4", "GND / step / dir / enable"),
     "J44": ("B Teensy jumper", "4", "GND / step / dir / enable"),
+    "J50": ("X stepper power", "2", "+36 V / return, 18/2"),
+    "J51": ("Y1 stepper power", "2", "+36 V / return, 18/2"),
+    "J52": ("Y2 stepper power", "2", "+36 V / return, 18/2"),
+    "J53": ("Z stepper power", "2", "+36 V / return, 18/2"),
+    "J54": ("B stepper power", "2", "+36 V / return, 18/2"),
+    "J55": ("36 V in", "2", "+36 V / return, from the supply"),
 }
 
 

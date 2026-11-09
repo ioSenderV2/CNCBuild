@@ -13,7 +13,7 @@ via and zone from the file, then regenerates:
     5.08 blocks' pin 1s tap it directly);
   - B.Cu: horizontal lanes, interval-packed, in two corridors.
 
-Topology (board 121 x 104.5 at origin 5,5), top half IN / bottom half OUT:
+Topology (board 133 x 132 at origin 5,5), top half IN / bottom half OUT:
   - Five axis columns at 24 mm pitch (x 15/39/63/87/111): RJ45 (y=16) over
     its limit 3P (y=31).
   - THE BUNDLE: all five of a column's nets drop in ONE street east of the
@@ -22,14 +22,26 @@ Topology (board 121 x 104.5 at origin 5,5), top half IN / bottom half OUT:
     corridor levels under the jack (deepest horizontal = westmost pad, so
     nothing crosses); LIM slides out at y 32.6, under its own 3P's pads and
     over its peg, west of the channel verticals.
-  - Misc input rows 3 and 4 (y ~40..68): one part per inter-bundle zone, so
+  - STEPPER POWER (y 45..57.5): one Mini-Fit 2P per axis under its limit
+    connector, plus the 36 V input block at the east end. These route
+    themselves off two stacked B.Cu pours and take no lane:
+      +36V     y 38.0..50.2   (pad 1 of every jack sits at y 48)
+      36V_RET  y 51.8..65.8   (pad 2 at 53.5; the lock pegs notch its top)
+    BOTH POURS ARE ON B.CU BECAUSE F.CU IN THIS BAND BELONGS TO THE FIVE
+    BUNDLE STREETS, which must cross it to reach corridor R. The supply is
+    600 W at 36 V - 16.5 A across all axes, nameplate, breakout-box.md - and
+    16.5 A wants about 10 mm of 1 oz copper, so each pour is 12 mm or more
+    and the band is 27.8 mm tall. Neither pour touches GND or +12V: the
+    motor return stays isolated from logic ground, which is the whole point
+    of the separate 12 V supply.
+  - Misc input rows 3 and 4 (y ~67..95): one part per inter-bundle zone, so
     the bundles never pierce a connector - the v4 lesson, inverted: give
     every fixed vertical a street at placement time.
-  - Corridor R (y 68.3..78.1): STEP / DIR / AL lanes.
-  - Row A (y ~79..90): alarm + stepper ribbons, Teensy headers, 12 V blocks.
-  - Corridor S (y 90.6..100.1): EN (header pin 4 and the ribbon back row are
+  - Corridor R (y 95.8..105.6): STEP / DIR / AL lanes.
+  - Row A (y ~106..118): alarm + stepper ribbons, Teensy headers, 12 V blocks.
+  - Corridor S (y 118.1..127.6): EN (header pin 4 and the ribbon back row are
     served from below), LIM, and every terminal-block net.
-  - Row B (y ~100.5..108.6): signal TBs on the bottom edge, wires south.
+  - Row B (y ~128..136): signal TBs on the bottom edge, wires south.
 
 A vertical crosses a connector row at a column found by search: full-row
 clear of pads and pegs, 0.70 mm from every other claimed column (0.70 covers
@@ -56,11 +68,31 @@ VIA_SIZE = 0.6
 VIA_DRILL = 0.3
 COL_SEP = 0.70            # column-to-column: track past a via on an adjacent lane
 
-R_LANES = (68.3, 78.1, 0.675)      # STEP / DIR / AL
-S_LANES = (90.6, 100.1, 0.675)     # EN + LIM + every TB net
+R_LANES = (95.8, 105.6, 0.675)     # STEP / DIR / AL
+S_LANES = (118.1, 127.6, 0.675)    # EN + LIM + every TB net
 PACK_MARGIN = 3.0
 
-X_MIN, X_MAX = 5.65, 125.35
+# signal verticals stop short of the east power channel (x 127.3+)
+X_MIN, X_MAX = 5.65, 126.0
+EDGE = (5.0, 5.0, 138.0, 137.0)
+
+# THE 36 V BUS - pours, not traces: 16.5 A across all axes (600 W at 36 V,
+# nameplate, breakout-box.md) wants about 10 mm of 1 oz copper per leg.
+#   the band under the limit row feeds the five jacks. BOTH LEGS ARE ON B.CU
+#   THERE because F.Cu in that band belongs to the five bundle streets.
+#   the east channel carries the bus down to the input block beside the 12 V
+#   pair. +36V takes F.Cu and 36V_RET takes B.Cu, one above the other, so
+#   the climb costs 10 mm of width instead of 22.
+# (net, layer, x0, y0, x1, y1)
+POWER_ZONES = (
+    ("+36V",    "B", 12.0, 38.0, 136.5, 50.2),
+    ("36V_RET", "B", 12.0, 51.8, 136.5, 65.8),
+    ("+36V",    "F", 127.3, 38.0, 137.5, 117.0),
+    ("36V_RET", "B", 127.3, 60.0, 137.5, 117.0),
+)
+# +36V changes layer where its F.Cu channel crosses its B.Cu band, so that
+# overlap is stitched solid: (x0, y0, x1, y1, pitch)
+POWER_STITCH = (128.4, 39.4, 136.0, 49.0, 2.2)
 
 # jack ref -> (prox 3P ref, column center x)
 AXIS = {"J1": ("J6", 15.0), "J2": ("J7", 39.0), "J3": ("J8", 63.0),
@@ -79,22 +111,23 @@ LIM_EXIT_Y = 32.6         # under the 3P's pads (y 31 r1.1), over its peg2
 HDR = {"J40": 31.5, "J41": 36.1, "J42": 78.6, "J43": 83.2, "J44": 87.8}
 HDR_STEP_DX = 1.22        # drop column east of the header, jog west into pad 2
 HDR_DIR_DX = -2.28        # drop column west, jog east into pad 3
-HDR_Y = {"1": 80.45, "2": 82.99, "3": 85.53, "4": 88.07}
+HDR_Y = {"1": 107.95, "2": 110.49, "3": 113.03, "4": 115.57}
 
-RIBBON_N_Y = 82.35        # ribbon front row (served from corridor R above)
-RIBBON_S_Y = 84.89        # ribbon back row (EN rises from corridor S below;
+RIBBON_N_Y = 109.85       # ribbon front row (served from corridor R above)
+RIBBON_S_Y = 112.39       # ribbon back row (EN rises from corridor S below;
                           # J17's AL_Z / AL_B thread from R between front pads)
-RIBBON_SPLIT_Y = 83.6
-THREAD_JOG_Y = 83.62      # between the two ribbon pad rows
-TB_Y = 104.47             # row B terminal block pads
+RIBBON_SPLIT_Y = 111.1
+THREAD_JOG_Y = 111.12     # between the two ribbon pad rows
+TB_Y = 131.97             # row B terminal block pads
 
 # obstacle rows a vertical must cross on one clear column
 # (name, y0, y1, jog band above it on F.Cu, or None = must pass as-is)
 BAND_DEFS = [
     ("ROW2", 24.0, 36.8, None),
-    ("ROW3", 39.5, 52.7, (37.40, 39.30)),
-    ("ROW4", 55.4, 67.8, (53.05, 55.25)),
-    ("ROWA", 78.75, 90.05, (68.40, 77.60)),
+    ("POWER", 45.0, 57.5, (37.6, 44.4)),
+    ("ROW3", 67.0, 80.2, (64.90, 66.80)),
+    ("ROW4", 82.9, 95.3, (80.55, 82.75)),
+    ("ROWA", 106.25, 117.55, (95.90, 105.10)),
 ]
 
 mm = pcbnew.FromMM
@@ -503,13 +536,19 @@ def strip_copper(path):
         f.write("".join(out))
 
 
-def add_zone(board, netname, layer):
+def add_zone(board, netname, layer, rect=None, solid=False, priority=0):
+    """A filled zone. Default outline is the whole board (the two inner
+    planes); `rect` gives the 36 V pours their band. `solid` drops thermal
+    relief, which a 16.5 A pad cannot afford to lose copper to."""
     net = board.FindNet(netname)
+    if net is None:
+        raise RuntimeError(f"net {netname} not on board")
     z = pcbnew.ZONE(board)
     z.SetLayer(layer)
     z.SetNetCode(net.GetNetCode())
+    x0, y0, x1, y1 = rect if rect else EDGE
     chain = pcbnew.SHAPE_LINE_CHAIN()
-    for (px, py) in ((5, 5), (126, 5), (126, 109.5), (5, 109.5)):
+    for (px, py) in ((x0, y0), (x1, y0), (x1, y1), (x0, y1)):
         chain.Append(mm(px), mm(py))
     chain.SetClosed(True)
     z.Outline().AddOutline(chain)
@@ -518,9 +557,18 @@ def add_zone(board, netname, layer):
     except TypeError:
         pass
     z.SetMinThickness(mm(0.25))
-    z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
-    z.SetThermalReliefGap(mm(0.4))
-    z.SetThermalReliefSpokeWidth(mm(0.5))
+    # the bus band and its east channel overlap on B.Cu; same-net or not,
+    # KiCad refuses two zones of equal priority in the same place
+    try:
+        z.SetAssignedPriority(priority)
+    except AttributeError:
+        z.SetPriority(priority)
+    if solid:
+        z.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
+    else:
+        z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
+        z.SetThermalReliefGap(mm(0.4))
+        z.SetThermalReliefSpokeWidth(mm(0.5))
     board.Add(z)
 
 
@@ -532,7 +580,7 @@ def main():
     bands = {name: Band(name, y0, y1, jog) for (name, y0, y1, jog) in BAND_DEFS}
     for b in bands.values():
         b.build(r.pads)
-    band_list = [bands[n] for n in ("ROW2", "ROW3", "ROW4", "ROWA")]
+    band_list = [bands[n] for n in ("ROW2", "POWER", "ROW3", "ROW4", "ROWA")]
 
     fp_pads = {}
     for fp in board.GetFootprints():
@@ -577,7 +625,9 @@ def main():
             if not pad.GetNumber():
                 continue
             name = pad.GetNetname()
-            if not name or name in ("GND", "+12V"):
+            # GND and +12V are planes; +36V and 36V_RET are the B.Cu pours -
+            # every pad on all four is through-hole, so none of them route
+            if not name or name in ("GND", "+12V", "+36V", "36V_RET"):
                 continue
             p = pad.GetPosition()
             nets.setdefault(name, []).append(
@@ -724,6 +774,16 @@ def main():
     # planes: GND on In1, +12V on In2 - every pad of both nets is through-hole
     add_zone(board, "GND", pcbnew.In1_Cu)
     add_zone(board, "+12V", pcbnew.In2_Cu)
+    for i, (netname, layer, x0, y0, x1, y1) in enumerate(POWER_ZONES):
+        add_zone(board, netname,
+                 pcbnew.F_Cu if layer == "F" else pcbnew.B_Cu,
+                 rect=(x0, y0, x1, y1), solid=True, priority=i + 1)
+    sx0, sy0, sx1, sy1, pitch = POWER_STITCH
+    stitched = 0
+    for vx in frange(sx0, sx1, pitch):
+        for vy in frange(sy0, sy1, pitch):
+            r.via(vx, vy, "+36V")
+            stitched += 1
 
     problems = r.check()
     if problems:
@@ -734,10 +794,11 @@ def main():
 
     r.emit()
     pcbnew.SaveBoard(BOARD, board)
-    print(f"routed {len(nets)} nets: {len(r.segs)} segments, {len(r.vias)} vias, "
+    print(f"routed {len(nets)} nets: {len(r.segs)} segments, {len(r.vias)} vias "
+          f"({stitched} of them stitching the 36 V bus), "
           f"{len(r_lanes.lanes)} R lanes, {len(s_lanes.lanes)} S lanes, "
-          f"GND plane In1, +12V plane In2 (unfilled - kicad-cli drc "
-          f"--refill-zones --save-board). Saved.")
+          f"GND plane In1, +12V plane In2, {len(POWER_ZONES)} 36 V pours "
+          f"(unfilled - kicad-cli drc --refill-zones --save-board). Saved.")
 
 
 if __name__ == "__main__":
