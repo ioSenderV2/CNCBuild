@@ -554,15 +554,33 @@ VARIANT SHIPS, BEFORE PAYING.** Searching the model string directly finds it on 
 FLAG: **this file said "order it from B09287HV2C" on 2026-11-09 and that was wrong** - it was taken
 from the description block before the item attributes were read.
 
+SOURCE: **the maker's own manual, ATO, 5 pages** - found by searching the model string rather than
+the marketplace, and **held in `manufacturer-assets/ATO-DVRD-DC-Voltage-Monitoring-Relay-Manual.pdf`**
+with its provenance in that folder's index. Every number below is off that document, not off a
+listing.
+
 | | DVRD-36 | Wanted |
 |---|---|---|
-| Rated voltage | **DC 36 V** | the rail |
+| Ordering code | **DVRD + rated voltage**, one of DC12V/24V/36V/48V | **DVRD-36** and nothing else |
 | **Undervoltage adjustment** | **30-42 V** | reach **30** - it does, at the very bottom of its range |
 | **Overvoltage adjustment** | **39-51 V** | **low 40s** - comfortably inside |
-| Contacts | **2 sets NO + NC**, 6 A 250 VAC | one closed-when-well contact, and a spare |
-| Delay | **0.1-15 s** adjustable | 0.1 is the floor |
-| Supply | **none - it runs off the circuit it watches** | ✅ see below |
-| Size | 79 x 23 x 79 mm, 35 mm rail | one module |
+| Hysteresis | **3-5% fixed**, not adjustable | so a 30 V trip resets near 31 V |
+| Contacts | **2 C/O** on terminals **11 12 14** and **21 22 24** | one closed-when-well pair, and a spare |
+| Contact capacity | **6 A, 250 VAC / 30 VDC** resistive | ample for a logic signal |
+| Delay | trip **0.1-15 s** adjustable, **reset 100 ms** | 0.1 is the floor |
+| Supply | **powered by the measuring circuit** | ✅ see below |
+| Size, protection | 79 x 23 x 79 mm, 35 mm rail, **IP 20**, -25 to 65 C | one module |
+
+✅ **THE TERMINAL NUMBERS ANSWER WHICH CONTACT TO USE: 11 AND 14.** They are the IEC changeover
+convention - **11 common, 12 the contact closed with the relay de-energised, 14 the one closed with
+it energised** - and the manual draws the contacts in the *power off* condition. The relay is
+energised when the rail is present and inside the window, so **11-14 is the closed-when-well pair
+and that is the one the e-stop loop uses.** 12 is its mirror and is free for anything that wants a
+*fault* contact instead.
+
+PROCEDURE: **STILL METER IT.** The numbering makes 11-14 all but certain, but the whole fail-safe
+property rests on it and the manual does not say in words which way the relay sits when healthy.
+Two minutes with a meter settles what a convention only implies.
 
 🔴 **THE 48 V VARIANT WOULD NOT WORK, AND THAT IS THE COUNTER-INTUITIVE PART.** 36 is less than 48,
 so it reads as safe - but **DVRD-48's undervoltage only adjusts down to 40 V**, which is *above* our
@@ -578,9 +596,9 @@ SETTINGS: **undervoltage at the bottom of its range, around 30-32 V. Overvoltage
 Low 40s leaves regeneration room above a 36 V rail while still tripping before the drives' own
 DC24V~48V ceiling. **Delay at or near 0.1 s**, lengthened only if a rapid proves it nuisance-trips.
 
-🔴 **DO NOT RUN THE RAIL THROUGH ITS CONTACTS.** 6 A against a 16.5 A supply, and the capacity is
-quoted **250 VAC** with no DC figure - DC switching on a contact this size is far lower, because the
-arc does not self-extinguish at a zero crossing. **It senses. It does not switch.**
+🔴 **DO NOT RUN THE RAIL THROUGH ITS CONTACTS - THE MANUAL SETTLES IT HARDER THAN THE LISTING DID.**
+Capacity is **6 A, 250 VAC / 30 VDC**. The DC figure is **30 V, below our 36 V rail**, so the
+contacts are not rated to switch this rail at any current at all. **It senses. It does not switch.**
 
 NOTE: **the first listing, ASIN B07QJ8B21R, was this same family showing its 12 V variant** -
 overvoltage 13-17 V, undervoltage 10-14 V, over a headline claiming 48 V. Rejected on 2026-11-09 and
@@ -592,10 +610,11 @@ B09287HV2C lists all four models and carries 24 V item attributes. **On this fam
 list is boilerplate - the only trustworthy voltage on the page is in the structured attributes, and
 the only trustworthy one anywhere is on the label of the box that arrives.** Meter the real part.
 
-FLAG: **NO DATASHEET, AND AMAZON WILL NOT GIVE ONE UP.** Three fetches across both ASINs returned
-**503**, the same refusal the other two vendor URLs in this repo give. **Every number in the table
-is off his paste of the listing, not off a datasheet** - so when the part arrives, the sheet in the
-box gets captured here, and the real thresholds get metered rather than believed.
+NOTE: **AMAZON WILL NOT BE READ, AND IT DID NOT NEED TO BE.** Four fetches across both ASINs
+returned **503**, the same refusal the other two vendor URLs here give. **Searching the model string
+found the maker's manual in one go** - which is the better source anyway, since it is the document
+the listings were garbling. The lesson for next time: **when a marketplace page blocks, go after the
+model number, not the page.**
 
 ⚠️ **THRESHOLD AND DELAY PULL AGAINST EACH OTHER, AND THE BENCH SETS THEM.** A threshold set high
 reports the stop promptly instead of waiting for the rail to sag - but **set it too high and a heavy

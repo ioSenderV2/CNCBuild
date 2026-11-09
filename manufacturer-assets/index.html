@@ -490,6 +490,28 @@
     <td><a href="https://lagun.com/wp-content/uploads/2019/06/FTV-2F-smaller-size.pdf">lagun.com/wp-content/uploads/2019/06/FTV-2F-smaller-size.pdf</a></td>
     <td>2026-10-25</td>
   </tr>
+
+  <tr>
+    <td><strong>DVRD</strong><br>DVRD-36</td>
+    <td>ATO</td>
+    <td>5-page manual for the DC voltage monitoring relay chosen as the
+        <strong>36&nbsp;V rail sense that tells the controller the drives have lost power</strong>
+        &mdash; see <code>wiring/cabinet-power-and-grounding.md</code>.
+        Ordering code is <strong>DVRD + rated voltage</strong>, one of DC12V/24V/36V/48V, and
+        <span class="warn">the variant is the entire decision</span>: only the DC36V part brackets a
+        36&nbsp;V rail (undervoltage 30&ndash;42&nbsp;V, overvoltage 39&ndash;51&nbsp;V).
+        Powered by the measuring circuit; 2&nbsp;C/O contacts on terminals
+        <strong>11&nbsp;12&nbsp;14</strong> and <strong>21&nbsp;22&nbsp;24</strong>;
+        <strong>6&nbsp;A 250&nbsp;VAC / 30&nbsp;VDC</strong> resistive; hysteresis 3&ndash;5&nbsp;%
+        fixed; trip delay 0.1&ndash;15&nbsp;s; reset 100&nbsp;ms; 79&nbsp;&times;&nbsp;23&nbsp;&times;&nbsp;79&nbsp;mm.
+        <span class="warn">The 30&nbsp;VDC contact rating is below our 36&nbsp;V rail</span> &mdash;
+        it senses, it must never switch the rail.
+        <strong>This is the document the marketplace listings are not:</strong> both Amazon ASINs
+        tried paste all four variants' numbers into one description.</td>
+    <td><code>ATO-DVRD-DC-Voltage-Monitoring-Relay-Manual.pdf</code></td>
+    <td><a href="https://www.ato.com/Content/doc/DVRD-DC-voltage-monitoring-relay-manual.pdf">ato.com/Content/doc/DVRD-DC-voltage-monitoring-relay-manual.pdf</a></td>
+    <td>2026-11-09</td>
+  </tr>
 </table>
 
 <h2>Fetching notes</h2>
