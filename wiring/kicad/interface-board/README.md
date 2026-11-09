@@ -15,7 +15,7 @@ the E-stop contactor's block. See
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
-| `interface-board.kicad_pcb` | **REV B, this branch: 121 x 104.5 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal. 64% of Rev A's area (19.6 sq in against 30.6). **Top half MACHINE IN, bottom half RP23 OUT** - his call after the first Rev B cut interleaved them. The lid gets cut to match the board. NOTE: **the holes are NOT in the corners** - 22,4 / 94,4 / 81,41 / 92,99.8 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists (regenerated for Rev B). **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
+| `interface-board.kicad_pcb` | **REV B, this branch: 133 x 132 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal, plus the 36 V pours. 27.2 sq in. **Top half MACHINE IN, bottom half RP23 OUT.** The lid gets cut to match the board. The four M3 holes are **at the corners** - 22,4 / 125,4 / 5,127.3 / 127,127.3 from the top-left; [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) is the drilling drawing and regenerates from this file. **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper from the placed footprints - the Rev B rewrite of the channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. GND and +12V are inner-plane zones and route themselves (every pad on both nets is through-hole); signals run as F.Cu verticals into three packed B.Cu lane corridors. Verticals cross a connector row on searched columns, 0.70 mm apart - track-past-via, not just track-track - with jogs in the gap above the row. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; invoice alongside. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
@@ -35,7 +35,8 @@ the E-stop contactor's block. See
 |---|---|
 | 5x RJ45 vertical, one cat6 per stepper - column order **X, Y1, Y2, Z, B**, each with its limit 3P stacked below it | 2x10 IDC ribbon to RP23 **J20** (pin-for-pin), right end of the board |
 | Mini-Fit Jr 3P - 3D probe (12 V), 3P - toolsetter (12 V) | 2x3 IDC ribbon to RP23 **J24** servo alarms, left end |
-| 2x Mini-Fit Jr 2P - touch probes | TB 2P 5.08 - 12 V IN from buck, TB 2P 5.08 - 12 V OUT to the RP23 |
+| 2x Mini-Fit Jr 2P - touch probes | TB 2P 5.08 - 12 V IN, TB 2P 5.08 - 12 V OUT to the RP23, TB 2P 5.08 - **36 V IN from the supply** - the three cabinet feeds side by side |
+| **5x Mini-Fit Jr 2P - stepper power**, one per axis under its limit connector: where the **18/2** motor supply cable terminates. Pin 1 **+36 V**, pin 2 **return** | |
 | 2x Mini-Fit Jr 2P - mist, flood | 3.5 mm TBs, one position per signal with silk names: limits 5P, spindle 4P, probe + door 2P |
 | Mini-Fit Jr 4P - spindle (Enable, GND, GND, 0-10 V) | 3.5 mm TBs passing the new inputs through: mist 2P, flood 2P, control 4P; UART1 leaves on a **1x4 2.54 mm header** - dupont jumpers straight to the RP23's 4-pin UART header |
 | Mini-Fit Jr 4P - cycle start / feed hold / e-stop / spare | 5x 2.54 mm header, **GND / Step / Dir / Enable** per axis - jumper to a Teensy T41U5XBB instead of the ribbon |
@@ -61,6 +62,19 @@ reasoning are in [`../../ig57-drives.md`](../../ig57-drives.md).
 
 **3P pin order**: 1 = 12 V, 2 = signal, 3 = GND - matches the SN04's brown/black/blue.
 
+🔴 **THE 36 V PAIR IS ISOLATED AND MUST STAY THAT WAY.** `+36V` and `36V_RET`
+touch nothing else on the board - not GND, not +12V. That is the same rule the
+12 V supply exists to protect: tying the motor return to logic ground throws away
+the drives' measured per-signal isolation. **The 36 V return is not a ground.**
+
+**The 36 V bus is copper pours, not traces, and that is what set the board size.**
+The supply is 600 W at 36 V - **16.5 A across all axes**, nameplate, see
+[`../../breakout-box.md`](../../breakout-box.md) - and 16.5 A wants about 10 mm of
+1 oz copper per leg. Under the limit row **both legs are on B.Cu**, stacked, because
+F.Cu in that band belongs to the five signal bundle streets that have to cross it;
+down the east edge **+36V takes F.Cu and 36V_RET takes B.Cu** in one 10.2 mm channel,
+stitched with 20 vias where +36V changes layer. [`route.py`](route.py) owns all of it.
+
 **J20 is a skipped reference.** On this bench "J20" means the RP23's stepper header;
 two J20s in one enclosure invites miswiring.
 
@@ -69,7 +83,7 @@ two J20s in one enclosure invites miswiring.
 | Check | Result |
 |---|---|
 | ERC, error severity | **0 violations** |
-| Netlist matches `netlist.txt` | **Exactly** - all 31 nets, node for node, from the kicad-cli export |
+| `netlist.txt` | **All 44 nets**, planes included, written straight from the kicad-cli export. FLAG: **this is no longer an independent check.** It was one while `generate.py` produced both; now that KiCad owns the schematic the file can only be derived from it, so it is documentation, not corroboration. |
 | PCB DRC with schematic parity, error severity | **0 violations, 0 unconnected, 0 parity issues** |
 
 Reproduce with:
@@ -95,7 +109,7 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
    | RJ45 vertical (J1-J5) | Molex **85508-5001** - top entry, THT, Cat5e, shielded (tab to GND; the patch cables are UTP so it carries nothing), no magnetics, 16.85 mm tall. 10 ordered 2026-11-03, Mouser order 40971773. NOT the sensor board's jack - that stays the unshielded 69255-004LF, whose end must float | 5 |
    | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. 20 ordered 2026-11-03, Mouser order 40971773 | 7 |
    | 4P dual row 2x2 (J15, J32, J33) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389 | 3 |
-   | 2P dual row (J13, J14, J30, J31) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt without peg - they also fit these footprints) | 4 |
+   | 2P dual row (J13, J14, J30, J31, **J50-J54 stepper power**) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt without peg - they also fit these footprints). The four probe/mist/flood positions carry signal; **the five power positions carry 5 A each** - Mini-Fit Jr is rated 9 A on 18 AWG, so the part is the same and the crimp terminal is what must suit the wire | 9 |
    | 3.5 mm TB 2P (J23, J34, J35) | KF350-class screw block, 4Ucon pattern - **to order** | 3 |
    | 3.5 mm TB 4P (J22, J36) | same family - **to order** | 2 |
    | 3.5 mm TB 5P (J21) | same family - **to order** | 1 |
@@ -124,8 +138,9 @@ out on the back of this branch alone.
 
 | | |
 |---|---|
-| **Board** | **121 x 104.5 mm, 4 layers** - 19.6 sq in, 64% of Rev A's 30.6. At his $10/sq in 4-layer rate: ~$196 against Rev A's $153. Inside his 160 mm square. |
-| **The halves** | **Top half MACHINE IN** (jacks + limit 3Ps, then the misc inputs), **bottom half RP23 OUT** (ribbons + Teensy headers + 12 V blocks, then the signal TBs on the bottom edge, field wiring off the south side). A heavy silk divider with MACHINE SIDE - IN / RP23 SIDE - OUT names them - one silk color is all OSH Park prints, so the zoning does what color coding would have. |
+| **Board** | **133 x 132 mm, 4 layers** - 27.2 sq in, ~$272 at his $10/sq in 4-layer rate, against Rev A's $153. Inside his 160 mm square. It was 121 x 104.5 / ~$196 before the stepper power row; **the extra 27.5 mm of height is the 36 V bus band and the extra 12 mm of width is its east channel** - see the 36 V note above for why that copper has to be that wide. |
+| **The halves** | **Top half MACHINE IN** (jacks + limit 3Ps, the stepper power row, then the misc inputs), **bottom half RP23 OUT** (ribbons + Teensy headers + the three power-input blocks, then the signal TBs on the bottom edge, field wiring off the south side). A heavy silk divider with MACHINE SIDE - IN / RP23 SIDE - OUT names them - one silk color is all OSH Park prints, so the zoning does what color coding would have. |
+| **Stepper power** | Five Mini-Fit Jr 2P under the limit connectors, one per axis, for the 18/2 motor supply cables; the 36 V input block sits with the 12 V pair. Isolated `+36V` / `36V_RET`, bussed on pours - see the 36 V note above. |
 | **Stackup** | F.Cu signal / In1.Cu **solid GND plane** / In2.Cu **solid +12V plane** / B.Cu signal. Every GND and +12V pad is through-hole, so **both nets routed themselves** - zero GND or 12 V copper on the signal layers. That plane pair is what deleted Rev A's 24 mm corridor. |
 | **What bought the clean halves** | Jack pitch opens 18 -> 24 mm, and each column's five nets (LIM, STEP, EN, DIR, AL) drop in **one bundle street** east of the column. The misc inputs tile one per inter-bundle zone, so no fixed vertical ever pierces a connector. The first Rev B cut proved the packed version of this order unroutable - 25 verticals cannot pierce two Mini-Fit rows at 18 mm pitch - which is why that cut interleaved the rows; the wider pitch is what undoes it. |
 | **Zone balance** | Control 2x2 sits in the X column's zone and the 3D probe 3P in the B column's zone - a 2x2 beside the UART 2x2 outruns the crossing columns one zone can hold. Row B follows its sources: CONTROL, LIMITS, PRB/DR, SPINDLE, MIST, FLOOD, UART, west to east. |
@@ -147,10 +162,14 @@ different class of service to fall into.
 NOTE: **And the 2 layer rate checks against his own order** - 30.6 sq in at $5 is **$152.99**,
 the order came to **$164.95** with FedEx 2 Day, leaving **$11.96** of shipping.
 
-**Rev B lands at 19.6 sq in: ~$196 against Rev A's $153** - above the break-even his
-analysis predicted, and he chose it with eyes open: the first Rev B cut came in at 17.3
-sq in / ~$173 with the rows interleaved, and the clean in/out halves were worth the ~$23.
-The extra area is the opened jack pitch that gives every fixed vertical its own street.
+**Rev B lands at 27.2 sq in: ~$272 against Rev A's $153.** Three choices, each his and
+each made with the price in front of him:
+
+| Cut | sq in | ~cost | What bought it |
+|---|---|---|---|
+| Packed, rows interleaved | 17.3 | $173 | the first attempt |
+| Clean IN / OUT halves | 19.6 | $196 | 24 mm jack pitch, so every vertical gets a street |
+| **Plus stepper power** | **27.2** | **$272** | the 36 V band and its east channel |
 
 FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS RATE EVIDENCE.**
 `fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable
@@ -161,9 +180,16 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
 
 1. **Rev A's lessons.** He is wiring Rev A now; whatever that run teaches goes in before
    gerbers are cut. Nothing in `fab/` describes Rev B - the zip there is Rev A's order.
-2. **Lid cutout and mounting.** 121 x 104.5 against Rev A's 210 x 94, holes at 22,4 /
-   94,4 / 81,41 / 92,99.8 - the regenerated
+2. **Lid cutout and mounting.** 133 x 132 against Rev A's 210 x 94, M3 at the four
+   corners - 22,4 / 125,4 / 5,127.3 / 127,127.3 - the regenerated
    [`board-mounting.html`](../../../machine/drawings/board-mounting.html) has the drawing.
 3. **4-layer gerber export.** When fab is called: the two kicad-cli export commands now need
    In1.Cu and In2.Cu in the layer list, and a fresh zip - do not overwrite `fab/oshpark/`,
    that is Rev A's order record.
+4. 🔴 **THE 36 V INPUT BLOCK'S RATING IS NOT CHECKED, AND IT IS THE ONE PART THE BOARD
+   COPPER CANNOT RESCUE.** J55 is the same CUI TB007-508 5.08 mm family as the 12 V pair,
+   chosen for consistency, not for current. **A 5.08 mm screw block is typically rated
+   10-15 A and takes 14 AWG at best, against a 16.5 A supply.** The pours are sized for the
+   full 16.5 A; the block may not be, and neither may the wire from the supply. Settle one
+   of: a bigger block, a fuse ahead of it that the copper is then sized against, or a
+   measured figure for what the five drives actually draw together.
