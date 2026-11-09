@@ -733,8 +733,19 @@ SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026
 
 | | |
 |---|---|
+| Make | **Mean Well** - his, 2026-11-09 |
 | Input | **220 V at 3.5 A** |
 | Output | **36 V DC at 16.5 A**, 600 W |
+
+SETTLED: **NOTHING GOES BETWEEN THE SUPPLY AND THE BOARD - his, 2026-11-09. The supply's own
+protection is the protection.** No DC fuse, no breaker on the 36 V side. It is a Mean Well and
+it looks after itself.
+
+FLAG: **THE MODEL IS NOT RECORDED, SO THE DATASHEET IS NOT COMMITTED** - and this repo's rule is
+that datasheets are committed, not linked. What the over-current protection actually *does* when
+it acts - fold back, hiccup, latch off until it is power-cycled - is therefore not written down
+anywhere, and it is the thing that decides how the machine behaves on a downstream short. **Read
+the label once the box is open and put the model here.**
 
 **So the 600-against-800 W question is answered by nothing moving.** It was a 48 V question, and
 choosing 36 V dissolved it: the supply that was already here is the right one, and the Mega V keeps

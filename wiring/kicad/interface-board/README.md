@@ -191,11 +191,9 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
    which is Rev A's order record.
 4. SETTLED: ~~**the 36 V input block.**~~ **The 5.08 mm family is what he wants, his call
    2026-11-09** - J55 is the CUI TB007-508 pattern like the 12 V pair, and the board does
-   not change. **What bounds the current is therefore upstream of the block, not the block.**
-   The 36 V DC side carries no recorded protection:
-   [`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md) records a
-   **1 A fuse** on the 110 V control circuit and a **6 A 2-pole breaker** on the 110 V
-   branch, and nothing between the 36 V supply and this board. Whether the supply's own
-   limiting is the protection, or a DC fuse belongs in the cabinet, is **a cabinet question,
-   not a board question** - it belongs in that file, not this one. The board copper is sized
-   for the supply's full 16.5 A either way.
+   not change. And what bounds the current is settled too: **nothing goes between the supply
+   and this board - his, 2026-11-09. The Mean Well's own protection is the protection**, no
+   DC fuse and no breaker on the 36 V side. Recorded where cabinet decisions live, in
+   [`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md), which also
+   carries the one thing still missing: **the supply's model, and so its datasheet.** The
+   board copper is sized for the supply's full 16.5 A regardless.
