@@ -1,4 +1,4 @@
-"""Channel router for the interface board - Rev B, 4 layers.
+"""Channel router for the interface board - Rev B, 4 layers, in/out halves.
 
 Run with KiCad's bundled Python:
   & 'C:\\Program Files\\KiCad\\10.0\\bin\\python.exe' route.py
@@ -11,28 +11,25 @@ via and zone from the file, then regenerates:
     routing at all - thermal relief on the plane);
   - In2.Cu: solid +12V plane (same trick: the seven Mini-Fit pin 1s and both
     5.08 blocks' pin 1s tap it directly);
-  - B.Cu: horizontal lanes, interval-packed, in three corridors.
+  - B.Cu: horizontal lanes, interval-packed, in two corridors.
 
-Topology (board 105 x 104 at origin 5,5), top to bottom:
-  - Five axis columns: RJ45 (y=16, 18 mm pitch) over its limit 3P (y=31).
-    The jack's four signals thread past the 3P in the fixed JACK_CHANNELS,
-    exactly as Rev A.
-  - Corridor R (y 37.4..47.0): STEP / DIR / AL lanes. The jack verticals drop
-    STRAIGHT into it - they cross no other connector row, which is the whole
-    point of this row order (Rev A's misc-under-the-jacks arrangement was
-    proven unroutable: 25 fixed verticals cannot pierce two Mini-Fit rows).
-  - Row A (y 47.8..59.0): alarm + stepper ribbons, Teensy headers, 12 V blocks.
-  - Corridor S (y 59.6..66.4): EN lanes (header pin 4 and the ribbon back row
-    are served from below) and the LIM westward shift.
-  - Misc rows 3 and 4 (y 67..92.5): probe, door, spindle, control, touch
-    probes, mist, flood, UART - "down and left, underneath the stepper jacks".
-  - Corridor S2 (y 92.9..99.8): every terminal-block net; misc pads drop in
-    from above, TB pads rise from below.
-  - Row B (y 100.3..108.3): the signal TBs on the bottom edge, wires south.
-
-Only the five LIM nets cross connector rows at all: row A on searched columns,
-then misc rows 3+4 through the far-left street (x ~6..9) after a westward
-lane in corridor S, then corridor S2 east to the LIMITS block.
+Topology (board 121 x 104.5 at origin 5,5), top half IN / bottom half OUT:
+  - Five axis columns at 24 mm pitch (x 15/39/63/87/111): RJ45 (y=16) over
+    its limit 3P (y=31).
+  - THE BUNDLE: all five of a column's nets drop in ONE street east of the
+    column, 0.70 apart - LIM at col+10.5, STEP +11.2, EN +11.9, DIR +12.6,
+    AL +13.3. The jack pins reach their slots through four nested mini-
+    corridor levels under the jack (deepest horizontal = westmost pad, so
+    nothing crosses); LIM slides out at y 32.6, under its own 3P's pads and
+    over its peg, west of the channel verticals.
+  - Misc input rows 3 and 4 (y ~40..68): one part per inter-bundle zone, so
+    the bundles never pierce a connector - the v4 lesson, inverted: give
+    every fixed vertical a street at placement time.
+  - Corridor R (y 68.3..78.1): STEP / DIR / AL lanes.
+  - Row A (y ~79..90): alarm + stepper ribbons, Teensy headers, 12 V blocks.
+  - Corridor S (y 90.6..100.1): EN (header pin 4 and the ribbon back row are
+    served from below), LIM, and every terminal-block net.
+  - Row B (y ~100.5..108.6): signal TBs on the bottom edge, wires south.
 
 A vertical crosses a connector row at a column found by search: full-row
 clear of pads and pegs, 0.70 mm from every other claimed column (0.70 covers
@@ -59,44 +56,45 @@ VIA_SIZE = 0.6
 VIA_DRILL = 0.3
 COL_SEP = 0.70            # column-to-column: track past a via on an adjacent lane
 
-R_LANES = (37.45, 46.95, 0.675)    # STEP / DIR / AL
-S_LANES = (59.60, 66.35, 0.675)    # EN + LIM westward shift
-S2_LANES = (92.95, 99.75, 0.675)   # every TB net + LIM eastward return
+R_LANES = (68.3, 78.1, 0.675)      # STEP / DIR / AL
+S_LANES = (90.6, 100.1, 0.675)     # EN + LIM + every TB net
 PACK_MARGIN = 3.0
 
-X_MIN, X_MAX = 5.65, 111.35
+X_MIN, X_MAX = 5.65, 125.35
 
-# jack ref -> (prox 3P ref, column center x); channels as Rev A
-AXIS = {"J1": ("J6", 21.0), "J2": ("J7", 39.0), "J3": ("J8", 57.0),
-        "J4": ("J9", 75.0), "J5": ("J10", 93.0)}
-JACK_CHANNELS = {"1": (-6.5, 22.5), "3": (1.9, 23.54), "5": (6.15, 23.02), "7": (9.9, 22.5)}
-PIN1_SIDESTEP = 0.945
+# jack ref -> (prox 3P ref, column center x)
+AXIS = {"J1": ("J6", 15.0), "J2": ("J7", 39.0), "J3": ("J8", 63.0),
+        "J4": ("J9", 87.0), "J5": ("J10", 111.0)}
+# jack pad -> (bundle slot dx from column, mini-corridor level y). Deepest
+# level belongs to the westmost pad so no horizontal crosses another pin's
+# vertical; every slot is 0.70 from its neighbor.
+JACK_CHANNELS = {"1": (11.2, 22.8), "3": (11.9, 22.1), "5": (12.6, 21.4), "7": (13.3, 20.7)}
+PIN1_SIDESTEP = 0.945     # past the jack's own left peg before descending
+LIM_DX = 10.5             # LIM's bundle slot, west of the four channels
+LIM_EXIT_Y = 32.6         # under the 3P's pads (y 31 r1.1), over its peg2
+                          # (y 34.85 r1.5): the one strip that crosses neither
 
-# Teensy headers: ref -> x; pad y from placement. Split 2+3 around the EN/LIM
-# crossing windows - a contiguous header train walls those nets out of row A -
-# and placed so hx+1.22 / hx-2.28 clear every jack-channel column by >= 0.67.
-HDR = {"J40": 27.9, "J41": 32.4, "J42": 74.4, "J43": 80.7, "J44": 86.2}
+# Teensy headers: ref -> x; pad y from placement. Split 2+3, clear of the
+# bundle columns and the EN/LIM continuations.
+HDR = {"J40": 31.5, "J41": 36.1, "J42": 78.6, "J43": 83.2, "J44": 87.8}
 HDR_STEP_DX = 1.22        # drop column east of the header, jog west into pad 2
 HDR_DIR_DX = -2.28        # drop column west, jog east into pad 3
-HDR_Y = {"1": 49.55, "2": 52.09, "3": 54.63, "4": 57.17}
+HDR_Y = {"1": 80.45, "2": 82.99, "3": 85.53, "4": 88.07}
 
-RIBBON_N_Y = 51.45        # ribbon front row (served from corridor R above)
-RIBBON_S_Y = 53.99        # ribbon back row (EN rises from corridor S below;
+RIBBON_N_Y = 82.35        # ribbon front row (served from corridor R above)
+RIBBON_S_Y = 84.89        # ribbon back row (EN rises from corridor S below;
                           # J17's AL_Z / AL_B thread from R between front pads)
-THREAD_JOG_Y = 52.72      # between the two ribbon pad rows
-TB_Y = 104.22             # row B terminal block pads
-
-LIM_STREET = [6.2, 6.9, 7.6, 8.3, 9.0]   # far-left columns through both misc rows
+RIBBON_SPLIT_Y = 83.6
+THREAD_JOG_Y = 83.62      # between the two ribbon pad rows
+TB_Y = 104.47             # row B terminal block pads
 
 # obstacle rows a vertical must cross on one clear column
 # (name, y0, y1, jog band above it on F.Cu, or None = must pass as-is)
 BAND_DEFS = [
     ("ROW2", 24.0, 36.8, None),
-    ("ROWA", 47.75, 59.05, (37.55, 46.80)),
-    ("MISC34", 67.0, 92.5, (59.70, 66.25)),
-    ("MISC4", 80.4, 92.5, (79.90, 81.00)),   # jog strip: below the row-3 pegs
-                                             # (y<=79.7), above the row-4 pads
-
+    ("ROW3", 39.5, 52.7, (37.40, 39.30)),
+    ("ROW4", 55.4, 67.8, (53.05, 55.25)),
+    ("ROWA", 78.75, 90.05, (68.40, 77.60)),
 ]
 
 mm = pcbnew.FromMM
@@ -378,8 +376,6 @@ class Band:
 def route_down(r, bands, x, y, stop_y, net, width=SIG_W, prefer=None):
     """Vertical from (x, y) down to (xf, stop_y) on F.Cu, jogging above any
     band that blocks the current column. Claims every band column it uses.
-    `prefer` biases the candidate order (e.g. LIM pulls west, toward its
-    street, so it does not steal the one window its column's EN net needs).
     Returns the point list, or None."""
     crossing = [b for b in bands if b.crossed_by(y, stop_y)]
 
@@ -415,18 +411,10 @@ def route_down(r, bands, x, y, stop_y, net, width=SIG_W, prefer=None):
     if res is None:
         print(f"-- route_down failed: net {net} from ({x:.2f},{y:.2f}) to {stop_y}")
         for b in crossing:
-            print(f"   {b.name} candidates: {b.candidates(x)}")
-            for xc in b.candidates(x)[:4]:
-                if abs(xc - x) < 1e-6:
-                    blk = r.path_blocker([(x, y), (x, stop_y)], net, width, pcbnew.F_Cu)
-                    print(f"     straight {xc}: {blk}")
-                elif b.jog:
-                    for jy in frange(*b.jog, 0.45):
-                        blk = r.path_blocker([(x, y), (x, jy), (xc, jy)], net,
-                                             width, pcbnew.F_Cu)
-                        tblk = r.path_blocker([(xc, jy), (xc, stop_y)], net,
-                                              width, pcbnew.F_Cu)
-                        print(f"     xc {xc} jy {jy}: hop {blk} / tail {tblk}")
+            near_b = [iv for iv in b.blocked if abs((iv[0] + iv[1]) / 2 - x) < 8]
+            near_c = sorted(c for c in b.cols if abs(c - x) < 8)
+            print(f"   {b.name} blocked {near_b} cols {near_c} "
+                  f"candidates {b.candidates(x)}")
     return res
 
 
@@ -521,7 +509,7 @@ def add_zone(board, netname, layer):
     z.SetLayer(layer)
     z.SetNetCode(net.GetNetCode())
     chain = pcbnew.SHAPE_LINE_CHAIN()
-    for (px, py) in ((5, 5), (112, 5), (112, 109), (5, 109)):
+    for (px, py) in ((5, 5), (126, 5), (126, 109.5), (5, 109.5)):
         chain.Append(mm(px), mm(py))
     chain.SetClosed(True)
     z.Outline().AddOutline(chain)
@@ -544,7 +532,7 @@ def main():
     bands = {name: Band(name, y0, y1, jog) for (name, y0, y1, jog) in BAND_DEFS}
     for b in bands.values():
         b.build(r.pads)
-    band_list = [bands[n] for n in ("ROW2", "ROWA", "MISC34", "MISC4")]
+    band_list = [bands[n] for n in ("ROW2", "ROW3", "ROW4", "ROWA")]
 
     fp_pads = {}
     for fp in board.GetFootprints():
@@ -566,24 +554,21 @@ def main():
         bands["ROWA"].blocked.append((hx - abs(HDR_DIR_DX) - 0.155,
                                       hx + HDR_STEP_DX + 0.155))
     for num, (px, py, pname) in fp_pads["J17"].items():
-        if pname != "GND" and py > 53.0:
+        if pname != "GND" and py > RIBBON_SPLIT_Y:
             bands["ROWA"].claim(px + 1.27)          # AL_Z / AL_B threads
             bands["ROWA"].blocked.append((px - 0.16, px + 1.43))
-    tb_xs = []
-    for ref in ("J21", "J22", "J23", "J34", "J35", "J36", "J37"):
+    tb_refs = {"J21", "J22", "J23", "J34", "J35", "J36", "J37"}
+    for ref in tb_refs:
         for num, (px, py, pname) in fp_pads[ref].items():
             if pname != "GND":
-                tb_xs.append(px)
-    for c in tb_xs:
-        bands["MISC34"].claim(c)
-        bands["MISC4"].claim(c)
-    for c in LIM_STREET:
-        bands["MISC4"].claim(c)   # keep misc-row-3 escapes off the LIM street
-                                  # (only LIM crosses MISC34, so no claim there)
+                bands["ROWA"].claim(px)             # future S-corridor vias
+
+    # (v4 reserved each sidestep-escape column here; in this layout every
+    # jack-side vertical lives in a fixed bundle street far from the parts,
+    # so escapes claim their columns at routing time instead)
 
     r_lanes = PackedLanes(*R_LANES)
     s_lanes = PackedLanes(*S_LANES)
-    s2_lanes = PackedLanes(*S2_LANES)
 
     nets = {}
     for fp in board.GetFootprints():
@@ -600,60 +585,31 @@ def main():
 
     def corridor_of(net):
         fam = net.split("_")[0]
-        if fam in ("STEP", "DIR", "AL"):
-            return "R"
-        if fam in ("EN", "LIM"):
-            return "S"
-        return "S2"
-
-    # deepest source pad first: a bottom-row Mini-Fit pin is hemmed in by its
-    # neighbors' escapes, so it picks its exit before they wall it off
-    tb_refs = {"J21", "J22", "J23", "J34", "J35", "J36", "J37"}
+        return "R" if fam in ("STEP", "DIR", "AL") else "S"
 
     def src_depth(n):
         ys = [p[3] for p in nets[n] if p[0] not in tb_refs]
         return max(ys) if ys else 0.0
 
+    # Within corridor S: LIM and EN first - their descent columns are the
+    # fixed bundle slots, and a wandering escape claimed next door walls them
+    # out. Then deepest source pad first: a bottom-row Mini-Fit pin is hemmed
+    # in by its neighbors' escapes, so it picks its exit before they wall it
+    # off. Corridor R keeps plain west-to-east order.
+    def s_rank(n):
+        return 0 if n.split("_")[0] in ("LIM", "EN") else 1
+
     order = sorted(nets, key=lambda n: (
         corridor_of(n),
-        -src_depth(n) if corridor_of(n) == "S2" else 0.0,
+        s_rank(n) if corridor_of(n) == "S" else 0,
+        -src_depth(n) if corridor_of(n) == "S" else 0.0,
         min(p[2] for p in nets[n])))
-    lanes_for = {"R": r_lanes, "S": s_lanes, "S2": s2_lanes}
-    stop_at = {"R": R_LANES[0], "S": S_LANES[0], "S2": S2_LANES[0]}
-    lim_street = list(LIM_STREET)
+
+    lanes_for = {"R": r_lanes, "S": s_lanes}
+    stop_at = {"R": R_LANES[0], "S": S_LANES[0]}
 
     for name in order:
         cor = corridor_of(name)
-
-        # --- LIM: row 2 pad -> row A crossing -> corridor S, lane west to the
-        # far-left street, down through both misc rows, corridor S2 east, up
-        # into the LIMITS block ---------------------------------------------
-        if name.startswith("LIM"):
-            (ref3p, num, x, y) = [p for p in nets[name] if p[0].startswith("J") and p[1] == "2"
-                                  and p[0] in ("J6", "J7", "J8", "J9", "J10")][0]
-            (reftb, numtb, tx, ty) = [p for p in nets[name] if p[0] == "J21"][0]
-            pts = route_down(r, [bands["ROWA"]], x, y, S_LANES[0], name,
-                             prefer=x - 4.0)
-            if pts is None:
-                raise RuntimeError(f"LIM descent failed for {name}")
-            street = lim_street.pop(0)
-            s_lane = s_lanes.take(street, pts[-1][0])
-            r.emit_pts(pts + [(pts[-1][0], s_lane)], name, pcbnew.F_Cu)
-            r.via(pts[-1][0], s_lane, name)
-            r.seg(street, s_lane, pts[-1][0], s_lane, name, pcbnew.B_Cu)
-            r.via(street, s_lane, name)
-            pts2 = route_down(r, [bands["MISC34"]], street, s_lane, S2_LANES[0], name)
-            if pts2 is None:
-                raise RuntimeError(f"LIM street descent failed for {name}")
-            s2_lane = s2_lanes.take(min(street, tx), max(street, tx))
-            r.emit_pts(pts2 + [(pts2[-1][0], s2_lane)], name, pcbnew.F_Cu)
-            r.via(pts2[-1][0], s2_lane, name)
-            r.seg(min(pts2[-1][0], tx), s2_lane, max(pts2[-1][0], tx), s2_lane,
-                  name, pcbnew.B_Cu)
-            r.via(tx, s2_lane, name)
-            r.seg(tx, s2_lane, tx, ty, name, pcbnew.F_Cu)
-            continue
-
         lanes = lanes_for[cor]
         stop_y = stop_at[cor]
         sources = []
@@ -662,7 +618,7 @@ def main():
         for (ref, num, x, y) in sorted(nets[name], key=lambda p: (p[2], p[3])):
             if ref in AXIS:
                 col = AXIS[ref][1]
-                dx, jog_y = JACK_CHANNELS[num]
+                dx, level = JACK_CHANNELS[num]
                 cx = col + dx
                 pre = []
                 sx = x
@@ -670,20 +626,29 @@ def main():
                     sx = x + PIN1_SIDESTEP
                     pre.append((x, y))
                     y = y + PIN1_SIDESTEP
-                pre += [(sx, y), (sx, jog_y), (cx, jog_y)]
-                crossed = [bands["ROW2"]] if cor == "R" else \
-                          [bands["ROW2"], bands["ROWA"]]
-                pts = route_down(r, crossed, cx, jog_y, stop_y, name)
+                pre += [(sx, y), (sx, level), (cx, level)]
+                crossed = [bands["ROW2"], bands["ROW3"], bands["ROW4"]]
+                if cor == "S":
+                    crossed.append(bands["ROWA"])
+                pts = route_down(r, crossed, cx, level, stop_y, name)
                 if pts is None:
                     raise RuntimeError(f"jack descent failed: {name} from {ref}")
+                sources.append((pre[:-1] + pts, pts[-1][0]))
+            elif ref in ("J6", "J7", "J8", "J9", "J10"):
+                # LIM: out under its own 3P's pads at y 32.6, into the
+                # bundle's west slot, then straight down the street
+                cx = x + LIM_DX
+                pre = [(x, y), (x, LIM_EXIT_Y), (cx, LIM_EXIT_Y)]
+                pts = route_down(r, band_list, cx, LIM_EXIT_Y, stop_y, name)
+                if pts is None:
+                    raise RuntimeError(f"LIM descent failed: {name}")
                 sources.append((pre[:-1] + pts, pts[-1][0]))
             elif ref in ("J11", "J12", "J13", "J14", "J30", "J31",
                          "J15", "J32", "J33"):
                 own = fp_pads[ref]
                 below = any(abs(ox - x) < 1.0 and oy > y + 1.0
                             for (ox, oy, on) in own.values())
-                pts = descend_from_pad(r, [bands["MISC4"]], x, y, stop_y,
-                                       name, below)
+                pts = descend_from_pad(r, band_list, x, y, stop_y, name, below)
                 sources.append((pts, pts[-1][0]))
             elif ref in HDR:
                 hx = HDR[ref]
@@ -694,10 +659,12 @@ def main():
                 elif num == "4":
                     dests.append(("hdr_en", hx))
             elif ref == "J16":
-                dests.append(("rib_north" if y < 53.0 else "rib_south_rise", x))
+                dests.append(("rib_north" if y < RIBBON_SPLIT_Y
+                              else "rib_south_rise", x))
             elif ref == "J17":
-                dests.append(("rib_north" if y < 53.0 else "rib_thread", x))
-            elif ref in ("J21", "J22", "J23", "J34", "J35", "J36", "J37"):
+                dests.append(("rib_north" if y < RIBBON_SPLIT_Y
+                              else "rib_thread", x))
+            elif ref in tb_refs:
                 dests.append(("tb_rise", x))
             else:
                 raise RuntimeError(f"no routing rule for {ref} net {name}")
@@ -769,8 +736,8 @@ def main():
     pcbnew.SaveBoard(BOARD, board)
     print(f"routed {len(nets)} nets: {len(r.segs)} segments, {len(r.vias)} vias, "
           f"{len(r_lanes.lanes)} R lanes, {len(s_lanes.lanes)} S lanes, "
-          f"{len(s2_lanes.lanes)} S2 lanes, GND plane In1, +12V plane In2 "
-          f"(unfilled - kicad-cli drc --refill-zones --save-board). Saved.")
+          f"GND plane In1, +12V plane In2 (unfilled - kicad-cli drc "
+          f"--refill-zones --save-board). Saved.")
 
 
 if __name__ == "__main__":
