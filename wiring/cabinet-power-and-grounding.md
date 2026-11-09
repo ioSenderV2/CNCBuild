@@ -520,14 +520,23 @@ the rail to sag to a quarter.** This is the argument for a monitoring relay over
 30 V.** Not the rated working voltage, which is what listings lead with and which says nothing about
 what the device can actually watch for.
 
-REJECTED: **the DIN DC monitoring relay he found, 2026-11-09 - it is the 12 V variant.** Its
-own listing gives the adjustment as **overvoltage 13-17 V, undervoltage 10-14 V**. A 36 V rail sits
-**twice** its overvoltage ceiling, so it would read permanent fault and never do the job. The same
-listing also claims *"designed for DC 48V rated voltage applications"*, which **contradicts its own
-threshold numbers** - the trap this repo already learned once from a catalog preset. **Buy the
-variant of that family whose undervoltage window brackets 30 V, and confirm it from the threshold
-range, not from the headline voltage.** Form factor, 2 changeover contacts, 6 A and the adjustable
-delay are all right; only the window is wrong.
+REJECTED: **the DIN DC monitoring relay he found, 2026-11-09, Amazon ASIN B07QJ8B21R - as shown it
+is the 12 V variant.** Its listing gives the adjustment as **overvoltage 13-17 V, undervoltage
+10-14 V**. A 36 V rail sits **twice** its overvoltage ceiling, so it would read permanent fault and
+never do the job. The same listing also claims *"designed for DC 48V rated voltage applications"*,
+which **contradicts its own threshold numbers** - the trap this repo already learned once from a
+catalog preset. Form factor, 2 changeover contacts, 6 A and the adjustable delay are all right; only
+the window is wrong.
+
+NOTE: **IT MAY BE THE VARIANT THAT IS WRONG RATHER THAN THE LISTING.** One Amazon ASIN often covers
+a family behind a voltage selector, and a headline "48 V" sitting over 13-17 V thresholds is what
+that looks like from outside. **Check that listing for a higher-voltage option before going
+elsewhere** - and pick it on the undervoltage range reaching 30 V, not on the dropdown's label.
+
+FLAG: **NO DATASHEET, AND AMAZON WILL NOT GIVE ONE UP.** Two fetches of that ASIN returned **503**,
+the same refusal the other two vendor URLs in this repo give. **Every number above is off his paste,
+not off the page**, and this repo commits datasheets rather than linking them - so whatever is
+bought, the sheet gets captured here by hand.
 
 ⚠️ **THRESHOLD AND DELAY PULL AGAINST EACH OTHER, AND THE BENCH SETS THEM.** A threshold set high
 reports the stop promptly instead of waiting for the rail to sag - but **set it too high and a heavy
