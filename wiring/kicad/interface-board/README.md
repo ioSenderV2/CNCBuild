@@ -15,7 +15,7 @@ the E-stop contactor's block. See
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
-| `interface-board.kicad_pcb` | The board: 220 x 95 mm, two layers, GND pour both sides, M3 mounting holes in the corners. The lid gets cut to match the board. |
+| `interface-board.kicad_pcb` | The board: **210 x 94 mm**, two layers, GND pour both sides, four M3 mounting holes. The lid gets cut to match the board. FLAG: **this line read 220 x 95 and the fab line below read 210 x 94** - Edge.Cuts measures 210 x 94, so the fab line was right. NOTE: **the holes are NOT in the corners** - they are at 4,4 / 204,4 / 3.2,45 / 206,66 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper (tracks, vias, GND pours) from the placed footprints - a channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; invoice alongside. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
@@ -109,3 +109,79 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
    On Shore class, 2.54 mm vertical THT). The alarm ribbon's RP23 end therefore lands on
    an unkeyed header - mark pin 1 against the silkscreen; this board's J17 can still be
    shrouded so the interface end is foolproof.
+
+---
+
+## Rev B target - the shape any future board takes
+
+**His, 2026-11-09, and it is a TARGET, not work in progress.** Rev A is fabbed and in hand;
+he runs it, collects whatever else wants changing, and a Rev B goes out smaller. **Nothing
+here is scheduled. Do not start the rewrite below until a Rev B is actually called.**
+
+### The layout he wants
+
+| | |
+|---|---|
+| **The misc 3P and 4P connectors** - probe, toolsetter, UART, spindle control, everything that is **not** a stepper | come **down and left, underneath the stepper jacks**, out of the top-right |
+| **The controller outputs along the bottom** | become **two rows**, stacked under the rest - taller is fine if it buys shorter |
+| **Board width** | **180 mm or less**, against today's 210 |
+| **Layer count** | **4 is acceptable.** "Smaller is better" |
+
+### Why the empty middle is not waste
+
+🔴 **THAT BAND IS THE ROUTER'S CORRIDOR, AND IT EXISTS BECAUSE THE BOARD IS 2 LAYER.**
+[`route.py`](route.py) owns every piece of copper here and names it in its own docstring:
+*"Corridor B (y 40..64): horizontal lanes, interval-packed so short nets share a lane."*
+Every signal from the top connectors reaches the bottom connectors through horizontal lanes
+on B.Cu, and those lanes need that height. **Fill the middle with connectors on 2 layers and
+the copper has nowhere to go.**
+
+✅ **SO 4 LAYERS IS THE ENABLER, NOT A SIDE EFFECT - his instinct was right and the two asks
+are one ask.** A dedicated ground plane and a power plane free both outer layers for signal,
+the corridor collapses, and the height comes out. **Packing it tighter and shrinking it are
+the same change, and neither works on 2 layers.**
+
+### 🔴 180 WIDE DOES NOT SAVE MONEY. AREA DOES.
+
+**OSH Park prices by the square inch**, so width alone is the wrong target:
+
+| | sq in |
+|---|---|
+| Today, 210 x 94 | **30.6** |
+| 180 x 94 | **26.2** - only **14% less** |
+
+**At roughly double the rate for 4 layers, a 180 x 94 four-layer board costs MORE than the
+2-layer board he already has.** To come back cheaper on 4 layers the board has to lose about
+**half** its area, not a seventh - call it **under 15 sq in**, which is something like
+180 x 54 or 150 x 65.
+
+✅ **AND THAT IS REACHABLE, BECAUSE THE SAVING IS IN THE HEIGHT.** The corridor is what 4
+layers deletes, so the target to design against is **a square-inch number, with the height as
+the variable** - not the 180 width.
+
+FLAG: **THE RATES ARE NOT READ FROM A QUOTE.** The **2 layer $5 per sq in** is corroborated
+by arithmetic against his own order: 30.6 sq in at $5 is **$152.99**, and the order came to
+**$164.95** with FedEx 2 Day, leaving **$11.96** of shipping. That fit is close enough to
+trust. **The 4 layer rate is recalled, not verified** - price the real outline on their site
+before committing, and check whether a smaller 4 layer board still takes the standard service
+rather than a different tier.
+
+FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE.**
+`fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable
+text in it, so no rate or line item can be read back out. It records that the order happened,
+not what it cost per unit area. **A text PDF or a saved quote page would.**
+
+### What the work actually is
+
+**Moving the footprints is the easy half.** `route.py` regenerates all copper from their
+positions, so there is no hand routing to redo.
+
+🔴 **THE ROUTER IS THE JOB.** Its topology is hard-coded to the current arrangement - five
+axis columns across the top, the rest in two brick-staggered rows to the right, corridor B at
+y 40..64, the Teensy headers standing at x 150..166, one bottom row. **Every one of those
+stops being true**, and a 4 layer version needs new layer assignments on top of it. Budget a
+router rewrite, not a parameter change.
+
+NOTE: **And [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html)
+regenerates itself** - it reads this board's outline, courtyards and mounting holes straight
+from the PCB, so it follows a Rev B without being touched. Run `tools/make-board-sheet.py`.

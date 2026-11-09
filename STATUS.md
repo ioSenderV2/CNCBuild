@@ -375,6 +375,11 @@ the interface, not this file.
 - FLAG: [L678](wiring/ig57-drives.md#grblhal-can-take-a-motor-fault-input-and-does-not-use-it-per-axis) — *The IG57 drives / grblHAL can take a motor fault input, and…*<br>WIRE-ORING AN ASSERT-WHEN-HEALTHY OUTPUT IS A SERIES CHAIN, NOT A PARALLEL ONE. The Mega V's alarms asserted on fault, so paralleling them gave "any drive faulted". These assert when healthy, so the equivalent is all four in series - any drive dropping out breaks the chain. Easy to get backwards, and getting it backwards produces a guard that reads healthy when every drive is dead.
 - OPEN: [L694](wiring/ig57-drives.md#provenance) — *The IG57 drives / Provenance*<br>The LISTING carries facts the manual does not, and the listing is not captured. SW6's function, the weight of 1.1 kg, the "recommend 36VDC" on the specification image, and the MicroUSB caption that contradicts the manual all come from Amazon images rather than from the PDF. A listing is exactly the kind of source that disappears - which is why this folder exists. Worth saving those images alongside the manual.
 
+## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)  (2)
+
+- FLAG: [L162](wiring/kicad/interface-board/README.md#-180-wide-does-not-save-money-area-does) — *Rev B target - the shape any future board takes / 🔴 180 WID…*<br>THE RATES ARE NOT READ FROM A QUOTE. The 2 layer $5 per sq in is corroborated by arithmetic against his own order: 30.6 sq in at $5 is $152.99, and the order came to $164.95 with FedEx 2 Day, leaving $11.96 of shipping. That fit is close enough to trust. The 4 layer rate is recalled, not verified - price the real outline on their site before committing, and check whether a smaller 4 layer board still takes the standard service rather than a different tier.
+- FLAG: [L169](wiring/kicad/interface-board/README.md#-180-wide-does-not-save-money-area-does) — *Rev B target - the shape any future board takes / 🔴 180 WID…*<br>THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
+
 ---
 
-**286 open** across 39 files.
+**288 open** across 39 files.
