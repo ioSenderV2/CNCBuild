@@ -516,8 +516,36 @@ capacitance hold it up after the contactor opens, so the sense drops late by how
 **A part with an adjustable threshold, set high - around 30 V - drops promptly instead of waiting for
 the rail to sag to a quarter.** This is the argument for a monitoring relay over a plain coil.
 
-OPEN: **the exact part is not chosen.** Two numbers decide it: the input must include **36 V DC** by
-specification, and the output must suit the e-stop loop. Datasheet gets committed here when it is.
+🔴 **THE NUMBER THAT PICKS THE PART IS THE UNDERVOLTAGE ADJUSTMENT RANGE, AND IT MUST REACH ABOUT
+30 V.** Not the rated working voltage, which is what listings lead with and which says nothing about
+what the device can actually watch for.
+
+REJECTED: **the DIN DC monitoring relay he found, 2026-11-09 - it is the 12 V variant.** Its
+own listing gives the adjustment as **overvoltage 13-17 V, undervoltage 10-14 V**. A 36 V rail sits
+**twice** its overvoltage ceiling, so it would read permanent fault and never do the job. The same
+listing also claims *"designed for DC 48V rated voltage applications"*, which **contradicts its own
+threshold numbers** - the trap this repo already learned once from a catalog preset. **Buy the
+variant of that family whose undervoltage window brackets 30 V, and confirm it from the threshold
+range, not from the headline voltage.** Form factor, 2 changeover contacts, 6 A and the adjustable
+delay are all right; only the window is wrong.
+
+⚠️ **THRESHOLD AND DELAY PULL AGAINST EACH OTHER, AND THE BENCH SETS THEM.** A threshold set high
+reports the stop promptly instead of waiting for the rail to sag - but **set it too high and a heavy
+rapid's normal sag trips the e-stop for nothing.** The adjustable delay is the tool for that: enough
+to ride through acceleration transients, no more. **Both get tuned against a real rapid**, see
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md).
+
+PROCEDURE: **METER WHICH CONTACT IS CLOSED WITH THE RAIL HEALTHY, AND USE THAT ONE.** These monitors
+normally energise inside the window, which makes the NO contact the closed-when-well one - but that
+is a convention, not a guarantee, and the whole fail-safe property hangs on getting it right. Not to
+be taken from this page.
+
+⚠️ **A 6 A CONTACT SWITCHING A LOGIC SIGNAL IS A DRY CIRCUIT.** The e-stop input draws almost
+nothing, and a big copper contact with no wetting current can grow oxide and go intermittent. Watch
+for it; a contact rated for low-level switching, or a little load across the loop, is the answer if
+it shows up.
+
+OPEN: **the exact part is still not chosen.** Datasheet gets committed here when it is.
 
 NOTE: **Pair 4 of the 2 x 8 block is free again** - the 12 V supply vacated it, the sense relay took
 it, and now nothing does.
