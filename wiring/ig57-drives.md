@@ -458,6 +458,42 @@ NOTE: **A patch cable is straight through, so A or B changes nothing electricall
 pin 1 either way. It only changes **which colour** you pick up at the cut end, which is the whole of
 why this matters here.
 
+### The cable itself - flat 30 AWG stranded
+
+**His, 2026-11-08: Monoprice Cat 6 FLEXboot, flat, 30 AWG stranded bare copper, 550 MHz, UTP.**
+
+| | |
+|---|---|
+| **30 AWG stranded** | fine here, and the gauge is not the question. These drive inputs are **optos at a few milliamps** - a chain-length run is a few ohms and a drop measured in tens of millivolts |
+| **Stranded** | the property that matters for a chain, and this file already says so |
+| **Flat** | **helps, if it bends across its width.** Bending strain goes as conductor radius over bend radius, so 30 AWG sees **less** strain than a thicker lead |
+| **Thin snagless boot** | small through a 1 inch hole, and it is **where slim cable actually fails** |
+
+🔴 **ANCHOR THE CABLE TO THE CHAIN NEAR EACH END, AND NEVER LET THE CHAIN TWIST IT.** A flat cable
+forced to twist fails where a round one shrugs, and a thin boot has very little strain relief in it -
+so the chain's motion must be taken by the chain, not by the plug.
+
+NOTE: **MONOPRICE SAY THE PAIRS ARE TWISTED, AND THAT IS A CLAIM, NOT A DATUM.** Asked directly
+whether the conductors are twisted or parallel, their answer was *"The pairs are twisted, as expected
+in a Cat6 Unshielded Twisted Pair (UTP) cable."* **That reasons from the product's name rather than
+reporting the part** - and 550 MHz does need controlled pair geometry, so it is probably right.
+
+🔴 **BUT THIS FILE HAS BEEN HERE BEFORE AND THE RULE CAME OUT OF IT: A VENDOR'S WORD GOES IN AS A
+CLAIM.** The seller said the drives' minus legs were commoned inside; it was written down as a claim
+**specifically so it would get checked**, and his meter overturned it in under a minute - see the
+section below. PROCEDURE: **Strip 50 mm of jacket off one end when it arrives and look.** Twisted, or
+laid parallel. Then this note becomes an observation and says whose.
+
+✅ **AND IT IS NOT A PEDANTIC CHECK - IT IS THE SCHEME'S OWN FOUNDATION.** Everything this file argues
+about the Cat 6 run rests on the return being **forced into the other half of its own twist**. If
+these are parallel conductors in a flat jacket, that mechanism is not there, and the board's own
+reason for putting **Step and Alarm on opposite edges of the jack** - Step the aggressor, Alarm
+feeding EStop - stops being enough.
+
+OPEN: **THE LISTING HE READ IS THE 5 FOOT.** The X chain run reaches the Z carriage and the Y1 run
+reaches the cabinet, both with chain travel on top. **Work out the length per run before ordering** -
+and remember these are stock patch leads precisely so a replacement is a shelf item.
+
 ### If the cables get crimped rather than bought
 
 **His question, 2026-11-07: lay the colours out 1 through 8 in order, so each pair lands on adjacent
