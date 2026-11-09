@@ -1030,6 +1030,13 @@ NOTE: **ONE END ONLY, AND IT IS THE PANEL END.** The rule is already in the bar'
 change for these: a shield grounded at both ends is a loop carrying whatever the two grounds differ
 by.
 
+OPEN: **THAT RULE IS WRITTEN FOR RUNS LEAVING THE CABINET, AND THE PROBE CABLE IS NOT ONE.** The
+probe's 3 conductor run is **shielded** - his, 2026-11-08 - but it goes from the Z plate down the
+chains to the **interface board**, not to this panel, so "the panel end" names nothing for it. **One
+end only still holds; which end is not decided here.** The probe is also the one input this file says
+a false trigger on costs a crash, and it already has **its own regulator and its own return** - so
+whichever end takes the drain should be the end that keeps that return alone.
+
 ### Inside the box - solid copper
 
 SETTLED: **SOLID, THROUGHOUT - his, 2026-11-07.** It stays dressed where it is put, which is the whole
@@ -1173,7 +1180,7 @@ below. **His list, 2026-11-08:**
 |---|---|
 | **Stepper sets - Y1, Z and X**, each a **Cat 6 plus an 18/2** | **6 cables** |
 | **Limit sensors**, Mini-Fit Jr 3 circuit each | **3** |
-| **Probe**, 3 conductor | **1** |
+| **Probe**, 3 conductor, **shielded** - his, 2026-11-08 | **1** |
 | **Z plate ground**, 2 conductor - the probe's return | **1** |
 | **USB-C** from the **CAN controller on the Z axis** | **1** |
 | | **twelve** |
