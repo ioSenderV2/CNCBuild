@@ -15,7 +15,7 @@ the E-stop contactor's block. See
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
-| `interface-board.kicad_pcb` | **REV B, this branch: 107 x 104 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal. 56% of Rev A's area (17.3 sq in against 30.6). The lid gets cut to match the board. NOTE: **the holes are NOT in the corners** - 4,4 / 103,4 / 3,37 / 104,37 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists (regenerated for Rev B). **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
+| `interface-board.kicad_pcb` | **REV B, this branch: 121 x 104.5 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal. 64% of Rev A's area (19.6 sq in against 30.6). **Top half MACHINE IN, bottom half RP23 OUT** - his call after the first Rev B cut interleaved them. The lid gets cut to match the board. NOTE: **the holes are NOT in the corners** - 22,4 / 94,4 / 81,41 / 92,99.8 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists (regenerated for Rev B). **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper from the placed footprints - the Rev B rewrite of the channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. GND and +12V are inner-plane zones and route themselves (every pad on both nets is through-hole); signals run as F.Cu verticals into three packed B.Cu lane corridors. Verticals cross a connector row on searched columns, 0.70 mm apart - track-past-via, not just track-track - with jogs in the gap above the row. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; invoice alongside. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
@@ -123,21 +123,11 @@ out on the back of this branch alone.
 
 | | |
 |---|---|
-| **Board** | **107 x 104 mm, 4 layers** - 17.3 sq in, 56% of Rev A's 30.6. At his $10/sq in 4-layer rate: ~$173, about today's price for just over half the size. Inside his 160 mm square with room to spare. |
+| **Board** | **121 x 104.5 mm, 4 layers** - 19.6 sq in, 64% of Rev A's 30.6. At his $10/sq in 4-layer rate: ~$196 against Rev A's $153. Inside his 160 mm square. |
+| **The halves** | **Top half MACHINE IN** (jacks + limit 3Ps, then the misc inputs), **bottom half RP23 OUT** (ribbons + Teensy headers + 12 V blocks, then the signal TBs on the bottom edge, field wiring off the south side). A heavy silk divider with MACHINE SIDE - IN / RP23 SIDE - OUT names them - one silk color is all OSH Park prints, so the zoning does what color coding would have. |
 | **Stackup** | F.Cu signal / In1.Cu **solid GND plane** / In2.Cu **solid +12V plane** / B.Cu signal. Every GND and +12V pad is through-hole, so **both nets routed themselves** - zero GND or 12 V copper on the signal layers. That plane pair is what deleted Rev A's 24 mm corridor. |
-| **Row order, top to bottom** | RJ45 columns over their limit 3Ps (18 mm pitch, was 20) -> corridor -> **ribbons + Teensy headers + 12 V blocks** -> corridor -> **misc rows** (probe, toolsetter, spindle, control / touch probes, mist, flood, UART) -> corridor -> **signal TBs on the bottom edge**, field wiring off the south side. |
-| **Teensy headers** | split 2+3 (X Y1 left of the misc columns' crossing windows, Y2 Z B right) - a contiguous five-header train walls the EN/LIM row-crossings out of the ribbon row. |
-
-### Where it deviates from the sketch, and why
-
-His table had the misc connectors directly under the limit 3Ps with the controller rows
-below them. **That exact order is unroutable, counted rather than guessed:** the 20 stepper
-signals plus 5 limit nets would have to pierce two Mini-Fit rows, a 3P needs 11.7 mm of
-contiguous dead width, and an 18 mm column period minus the escape streets leaves 8.7 mm.
-Putting the ribbon row directly under the jacks instead deletes every crossing but ten -
-five LIM and five EN, each through one row on a searched column. The misc rows still sit
-underneath the stepper jacks and out of the top-right, the controller outputs are still two
-rows, and the TB wiring still leaves over the bottom edge.
+| **What bought the clean halves** | Jack pitch opens 18 -> 24 mm, and each column's five nets (LIM, STEP, EN, DIR, AL) drop in **one bundle street** east of the column. The misc inputs tile one per inter-bundle zone, so no fixed vertical ever pierces a connector. The first Rev B cut proved the packed version of this order unroutable - 25 verticals cannot pierce two Mini-Fit rows at 18 mm pitch - which is why that cut interleaved the rows; the wider pitch is what undoes it. |
+| **Zone balance** | Control 2x2 sits in the X column's zone and the 3D probe 3P in the B column's zone - a 2x2 beside the UART 2x2 outruns the crossing columns one zone can hold. Row B follows its sources: CONTROL, LIMITS, PRB/DR, SPINDLE, MIST, FLOOD, UART, west to east. |
 
 ### Cost, against his settled rates
 
@@ -156,10 +146,10 @@ different class of service to fall into.
 NOTE: **And the 2 layer rate checks against his own order** - 30.6 sq in at $5 is **$152.99**,
 the order came to **$164.95** with FedEx 2 Day, leaving **$11.96** of shipping.
 
-**Rev B lands at 17.3 sq in: ~$173 against Rev A's $153** - a few percent over the
-break-even his analysis predicted ("expect to pay about today's price for something half the
-size"). The last 2 mm of width bought routability: via-safe spacing for the right header
-group and both 12 V blocks.
+**Rev B lands at 19.6 sq in: ~$196 against Rev A's $153** - above the break-even his
+analysis predicted, and he chose it with eyes open: the first Rev B cut came in at 17.3
+sq in / ~$173 with the rows interleaved, and the clean in/out halves were worth the ~$23.
+The extra area is the opened jack pitch that gives every fixed vertical its own street.
 
 FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS RATE EVIDENCE.**
 `fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable
@@ -170,8 +160,8 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
 
 1. **Rev A's lessons.** He is wiring Rev A now; whatever that run teaches goes in before
    gerbers are cut. Nothing in `fab/` describes Rev B - the zip there is Rev A's order.
-2. **Lid cutout and mounting.** 107 x 104 against Rev A's 210 x 94, holes at 4,4 / 103,4 /
-   3,37 / 104,37 - the regenerated
+2. **Lid cutout and mounting.** 121 x 104.5 against Rev A's 210 x 94, holes at 22,4 /
+   94,4 / 81,41 / 92,99.8 - the regenerated
    [`board-mounting.html`](../../../machine/drawings/board-mounting.html) has the drawing.
 3. **4-layer gerber export.** When fab is called: the two kicad-cli export commands now need
    In1.Cu and In2.Cu in the layer list, and a fresh zip - do not overwrite `fab/oshpark/`,
