@@ -561,14 +561,39 @@ identifying the variant** - it has now been wrong on three listings out of three
 
 | Route | |
 |---|---|
-| **ATO direct** - the maker of the manual | Sells all four from one dropdown, **ATO-DVRD-36** named explicitly. **Certain variant, no guessing.** Page showed **$105.98** 2026-11-09, one price across variants |
-| **A generic marketplace listing** | Far cheaper, but the variant is only as good as the title, and **the body text has lied three times** |
+| ✅ **CHOSEN - the CEMELI listing he found, 2026-11-09** | **A real variant selector**, DC 12/24/36/48 as four buyable options, **DC 36V picked**. **$67.80.** And its photograph shows the device's own label, which is the first identification in this whole search that is not seller prose |
+| ATO direct - the maker of the manual | Also certain, **ATO-DVRD-36** from one dropdown, **$105.98** 2026-11-09. The fallback if the first turns up wrong |
 
-✅ **BUYING THE CHEAP ONE IS STILL FINE, BECAUSE THE ACCEPTANCE TEST IS FREE AND TAKES TEN SECONDS.**
-**The two knobs are printed with their own ranges.** On a DVRD-36 the **U< knob reads 30-42 V and
-the U> knob reads 39-51 V**. If they read 10-14 and 13-17, a 12 V unit arrived; 20-28 and 26-34 is
-the 24. **Check the knob markings before anything is wired or powered** - no meter, no risk, and it
-is the one identification that cannot be boilerplate.
+🔴 **WHAT SETTLED IT WAS THE PHOTOGRAPH OF THE LABEL, NOT THE DESCRIPTION.** The product image
+carries the moulded-on plate, and it reads: **DVRD-36. Rated Voltage 36VDC. Over Voltage 39-51VDC.
+Under Voltage 30-42VDC. Contact Current 6A/250VAC.** Those are the manual's DC36V numbers exactly.
+**On this family, look at the label in the photo** - three descriptions lied and the label did not.
+
+| | On the real part |
+|---|---|
+| Measuring input | the **+ and -** pair on the top face |
+| **Contact 1** | **15 (11) common, 16 (12) NC, 18 (14) NO** |
+| **Contact 2** | **25 (21) common, 26 (22) NC, 28 (24) NO** |
+| Knobs | **U> 39..51 V**, **U< 30..42 V**, **Tt 0.1..15 s** |
+| LEDs | **NORM** and **TRIP** |
+
+🔴 **SO THE E-STOP LOOP LANDS ON 15 AND 18** - the physical numbering on the case is the 15/16/18
+set, with the 11/12/14 equivalents in brackets beside it. 18 is the contact closed with the relay
+energised, which is the closed-when-well pair. **Terminals 25 and 28 are the spare.**
+
+⚠️ **IT IS ABOUT TWICE THE CHEAP LISTINGS, AND THE PRICE IS NOT WHAT SEPARATES THEM.** The cheap
+ones were rejected for having **no variant selector at all** - one ASIN, one unknown unit, four
+possible parts. **If a per-variant ASIN of a cheaper family turns up** - the earlier family does
+sell them that way, B09287QNG6 is its DC48V - **that is the better buy and the same certainty.**
+What must not be bought at any price is a listing that cannot say which of the four ships.
+
+NOTE: **the label quotes contact current as 6A/250VAC only; the manual adds the DC figure, 30 VDC.**
+Keep the manual's number - it is the stricter one, and it is the one that says this part must never
+switch the 36 V rail.
+
+PROCEDURE: **STILL READ THE KNOBS WHEN IT ARRIVES.** The listing photo is a stock image. **U< must
+read 30-42 and U> must read 39-51.** If they read 10-14 and 13-17 a 12 V unit came; 20-28 and 26-34
+is the 24. Ten seconds, no meter, nothing powered - and it is returnable until **2027-01-31**.
 
 SOURCE: **the maker's own manual, ATO, 5 pages** - found by searching the model string rather than
 the marketplace, and **held in `manufacturer-assets/ATO-DVRD-DC-Voltage-Monitoring-Relay-Manual.pdf`**
