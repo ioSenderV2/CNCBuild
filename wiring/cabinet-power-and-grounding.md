@@ -529,9 +529,30 @@ FLAG: **AN EARLIER VERSION OF THIS NOTE GAVE ONLY THE UNDERVOLTAGE EDGE.** A par
 still be wrong: if its overvoltage adjustment tops out at, say, 38 V, the window is too tight for a
 rail that lifts on braking, and it would nuisance-trip for the life of the machine.
 
-SETTLED: **THE PART IS A DVRD-36 - his find, 2026-11-09, Amazon ASIN B09287HV2C.** The DVRD body
-comes as 12 / 24 / 36 / 48 and **the variant is the whole decision**, so order it by model number
-and not by the listing.
+SETTLED: **THE PART IS A DVRD-36.** The DVRD body comes as 12 / 24 / 36 / 48 and **the variant is
+the whole decision**, so order it by model number and not by the listing.
+
+🔴 **BUT NOT FROM ASIN B09287HV2C - THAT LISTING CONTRADICTS ITSELF AND HE CAUGHT IT.** Two places
+on one page disagree:
+
+| Where on the page | What it says |
+|---|---|
+| The seller's description block | *"Model DVRD - 12/24/36/48(Optional)"* with all four threshold sets |
+| **Amazon's own item attributes** | **Coil Voltage 24 volts. Maximum Switching Voltage 24 volts.** Brand Oumefar, part number Oumefarziwqg7su9x314-02 |
+
+**And there is no variant selector on the listing.** The reading that fits both is that **the
+description block is generic family boilerplate and the item shipped is the 24 V one** - but that is
+an inference, not a datasheet, and Amazon's auto-filled attributes are not reliable either. **Two
+unreliable sources disagreeing is not a part number.**
+
+🔴 **A DVRD-24 CANNOT DO THIS JOB - ITS OVERVOLTAGE TOPS OUT AT 34 V, BELOW OUR 36 V RAIL.** It
+would sit in permanent overvoltage fault from the moment it was powered. So the downside of guessing
+wrong here is not a compromise, it is a part that never works at all.
+
+PROCEDURE: **BUY FROM A LISTING WHOSE TITLE OR VARIANT SAYS DVRD-36, OR ASK THE SELLER WHICH
+VARIANT SHIPS, BEFORE PAYING.** Searching the model string directly finds it on the usual sources.
+FLAG: **this file said "order it from B09287HV2C" on 2026-11-09 and that was wrong** - it was taken
+from the description block before the item attributes were read.
 
 | | DVRD-36 | Wanted |
 |---|---|---|
@@ -564,6 +585,12 @@ arc does not self-extinguish at a zero crossing. **It senses. It does not switch
 NOTE: **the first listing, ASIN B07QJ8B21R, was this same family showing its 12 V variant** -
 overvoltage 13-17 V, undervoltage 10-14 V, over a headline claiming 48 V. Rejected on 2026-11-09 and
 then explained: the listing was not wrong so much as the variant on display was.
+
+🔴 **TWICE NOW, THE SAME FAMILY, THE SAME FAILURE: THE DESCRIPTION LISTS ALL FOUR VARIANTS AND THE
+ITEM IS ONE OF THEM.** B07QJ8B21R read 48 V in its headline and 13-17 V in its thresholds;
+B09287HV2C lists all four models and carries 24 V item attributes. **On this family, the bullet
+list is boilerplate - the only trustworthy voltage on the page is in the structured attributes, and
+the only trustworthy one anywhere is on the label of the box that arrives.** Meter the real part.
 
 FLAG: **NO DATASHEET, AND AMAZON WILL NOT GIVE ONE UP.** Three fetches across both ASINs returned
 **503**, the same refusal the other two vendor URLs in this repo give. **Every number in the table
