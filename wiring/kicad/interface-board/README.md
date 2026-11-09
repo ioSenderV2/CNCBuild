@@ -159,12 +159,31 @@ the same change, and neither works on 2 layers.**
 layers deletes, so the target to design against is **a square-inch number, with the height as
 the variable** - not the 180 width.
 
-FLAG: **THE RATES ARE NOT READ FROM A QUOTE.** The **2 layer $5 per sq in** is corroborated
-by arithmetic against his own order: 30.6 sq in at $5 is **$152.99**, and the order came to
-**$164.95** with FedEx 2 Day, leaving **$11.96** of shipping. That fit is close enough to
-trust. **The 4 layer rate is recalled, not verified** - price the real outline on their site
-before committing, and check whether a smaller 4 layer board still takes the standard service
-rather than a different tier.
+SETTLED: **THE RATES ARE HIS, OFF OSH PARK, 2026-11-09.**
+
+| Prototype service | Rate | Ships |
+|---|---|---|
+| **2 layer** | **$5 / sq in** | **9-12 days** |
+| **4 layer** | **$10 / sq in** | **9-14 days** |
+
+✅ **NO BARGAIN TIER IS LOST BY GOING TO 4 LAYERS - that was the open worry and it is closed.**
+Both are the **same prototype service**. The whole cost of the fourth and fifth copper layers
+is **double the rate and up to two more days**; there is no minimum area to clear and no
+different class of service to fall into.
+
+NOTE: **And the 2 layer rate checks against his own order** - 30.6 sq in at $5 is **$152.99**,
+the order came to **$164.95** with FedEx 2 Day, leaving **$11.96** of shipping.
+
+🔴 **SO 4 LAYERS NEVER SAVES MONEY AT THIS SIZE. IT BUYS DENSITY, AND THE BREAK-EVEN IS HALF
+THE BOARD.** At $10 the area has to come down to **15.3 sq in** to match today's $153 - that
+is **180 x 54** or **150 x 65**, both of which land within a few cents of break-even. Below
+it, 4 layers is cheaper than today; above it, dearer.
+
+| If the goal is | Then |
+|---|---|
+| **A tidier, denser board** | **4 layers**, and expect to pay about today's price for something half the size |
+| **Purely a cheaper board** | **stay on 2 layers and shrink modestly** - 180 x 94 on 2 layers is 26.2 sq in, **$131**, which beats both |
+| **Both** | get under **15 sq in on 4 layers**, which needs the corridor gone and the height with it |
 
 FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE.**
 `fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable
