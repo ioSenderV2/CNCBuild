@@ -15,9 +15,9 @@ the E-stop contactor's block. See
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
-| `interface-board.kicad_pcb` | The board: **210 x 94 mm**, two layers, GND pour both sides, four M3 mounting holes. The lid gets cut to match the board. FLAG: **this line read 220 x 95 and the fab line below read 210 x 94** - Edge.Cuts measures 210 x 94, so the fab line was right. NOTE: **the holes are NOT in the corners** - they are at 4,4 / 204,4 / 3.2,45 / 206,66 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists. |
+| `interface-board.kicad_pcb` | **REV B, this branch: 107 x 104 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal. 56% of Rev A's area (17.3 sq in against 30.6). The lid gets cut to match the board. NOTE: **the holes are NOT in the corners** - 4,4 / 103,4 / 3,37 / 104,37 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists (regenerated for Rev B). **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
-| `route.py` | Regenerates ALL copper (tracks, vias, GND pours) from the placed footprints - a channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. |
+| `route.py` | Regenerates ALL copper from the placed footprints - the Rev B rewrite of the channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. GND and +12V are inner-plane zones and route themselves (every pad on both nets is through-hole); signals run as F.Cu verticals into three packed B.Cu lane corridors. Verticals cross a connector row on searched columns, 0.70 mm apart - track-past-via, not just track-track - with jogs in the gap above the row. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; invoice alongside. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
 | `silk.py` | Regenerates every free silkscreen label (function names, per-terminal signal names). Owns all board text - edit its tables, not the board. |
 | `interface-board.kicad_pro` | Project wrapper. |
@@ -112,62 +112,34 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
 
 ---
 
-## Rev B target - the shape any future board takes
+## Rev B - designed on this branch, 2026-11-09
 
-**His, 2026-11-09.** Rev A is fabbed and in hand; he runs it, collects whatever else wants
-changing, and a Rev B goes out smaller.
+**His call, 2026-11-09: "proceed with this alternate design and see how it shakes out."**
+This branch is that design, done: placed, routed, ERC/DRC clean, silkscreened, mounting
+sheet regenerated. 🔴 **THE FAB STILL WAITS** until Rev A's lessons are in - no order goes
+out on the back of this branch alone.
 
-🔴 **THE DESIGN WORK IS CALLED - his, 2026-11-09, same day: "proceed with this alternate
-design and see how it shakes out", in its own session.** What is authorized is the DESIGN -
-placement, router rewrite, 4 layer stackup. **The FAB still waits** until Rev A's lessons are
-in, so no order goes out on the back of this section alone.
-
-🔴 **DO THE REV B DESIGN ON A BRANCH.** The boards in hand are Rev A, and main's files must
-keep describing them while he is wiring: `board-mounting.html` regenerates from the live
-`interface-board.kicad_pcb`, so a Rev B layout on main would turn the mounting sheet into a
-drawing of a board that does not exist yet. Rev A's gerbers are safe in `fab/oshpark/`
-regardless; the branch is for everything that reads the live PCB.
-
-### The layout he wants
+### What it came out as
 
 | | |
 |---|---|
-| **The misc 3P and 4P connectors** - probe, toolsetter, UART, spindle control, everything that is **not** a stepper | come **down and left, underneath the stepper jacks**, out of the top-right |
-| **The controller outputs along the bottom** | become **two rows**, stacked under the rest - taller is fine if it buys shorter |
-| **Board width** | **180 mm or less**, against today's 210 |
-| **Layer count** | **4 is acceptable.** "Smaller is better" |
+| **Board** | **107 x 104 mm, 4 layers** - 17.3 sq in, 56% of Rev A's 30.6. At his $10/sq in 4-layer rate: ~$173, about today's price for just over half the size. Inside his 160 mm square with room to spare. |
+| **Stackup** | F.Cu signal / In1.Cu **solid GND plane** / In2.Cu **solid +12V plane** / B.Cu signal. Every GND and +12V pad is through-hole, so **both nets routed themselves** - zero GND or 12 V copper on the signal layers. That plane pair is what deleted Rev A's 24 mm corridor. |
+| **Row order, top to bottom** | RJ45 columns over their limit 3Ps (18 mm pitch, was 20) -> corridor -> **ribbons + Teensy headers + 12 V blocks** -> corridor -> **misc rows** (probe, toolsetter, spindle, control / touch probes, mist, flood, UART) -> corridor -> **signal TBs on the bottom edge**, field wiring off the south side. |
+| **Teensy headers** | split 2+3 (X Y1 left of the misc columns' crossing windows, Y2 Z B right) - a contiguous five-header train walls the EN/LIM row-crossings out of the ribbon row. |
 
-### Why the empty middle is not waste
+### Where it deviates from the sketch, and why
 
-🔴 **THAT BAND IS THE ROUTER'S CORRIDOR, AND IT EXISTS BECAUSE THE BOARD IS 2 LAYER.**
-[`route.py`](route.py) owns every piece of copper here and names it in its own docstring:
-*"Corridor B (y 40..64): horizontal lanes, interval-packed so short nets share a lane."*
-Every signal from the top connectors reaches the bottom connectors through horizontal lanes
-on B.Cu, and those lanes need that height. **Fill the middle with connectors on 2 layers and
-the copper has nowhere to go.**
+His table had the misc connectors directly under the limit 3Ps with the controller rows
+below them. **That exact order is unroutable, counted rather than guessed:** the 20 stepper
+signals plus 5 limit nets would have to pierce two Mini-Fit rows, a 3P needs 11.7 mm of
+contiguous dead width, and an 18 mm column period minus the escape streets leaves 8.7 mm.
+Putting the ribbon row directly under the jacks instead deletes every crossing but ten -
+five LIM and five EN, each through one row on a searched column. The misc rows still sit
+underneath the stepper jacks and out of the top-right, the controller outputs are still two
+rows, and the TB wiring still leaves over the bottom edge.
 
-✅ **SO 4 LAYERS IS THE ENABLER, NOT A SIDE EFFECT - his instinct was right and the two asks
-are one ask.** A dedicated ground plane and a power plane free both outer layers for signal,
-the corridor collapses, and the height comes out. **Packing it tighter and shrinking it are
-the same change, and neither works on 2 layers.**
-
-### 🔴 180 WIDE DOES NOT SAVE MONEY. AREA DOES.
-
-**OSH Park prices by the square inch**, so width alone is the wrong target:
-
-| | sq in |
-|---|---|
-| Today, 210 x 94 | **30.6** |
-| 180 x 94 | **26.2** - only **14% less** |
-
-**At roughly double the rate for 4 layers, a 180 x 94 four-layer board costs MORE than the
-2-layer board he already has.** To come back cheaper on 4 layers the board has to lose about
-**half** its area, not a seventh - call it **under 15 sq in**, which is something like
-180 x 54 or 150 x 65.
-
-✅ **AND THAT IS REACHABLE, BECAUSE THE SAVING IS IN THE HEIGHT.** The corridor is what 4
-layers deletes, so the target to design against is **a square-inch number, with the height as
-the variable** - not the 180 width.
+### Cost, against his settled rates
 
 SETTLED: **THE RATES ARE HIS, OFF OSH PARK, 2026-11-09.**
 
@@ -184,33 +156,23 @@ different class of service to fall into.
 NOTE: **And the 2 layer rate checks against his own order** - 30.6 sq in at $5 is **$152.99**,
 the order came to **$164.95** with FedEx 2 Day, leaving **$11.96** of shipping.
 
-🔴 **SO 4 LAYERS NEVER SAVES MONEY AT THIS SIZE. IT BUYS DENSITY, AND THE BREAK-EVEN IS HALF
-THE BOARD.** At $10 the area has to come down to **15.3 sq in** to match today's $153 - that
-is **180 x 54** or **150 x 65**, both of which land within a few cents of break-even. Below
-it, 4 layers is cheaper than today; above it, dearer.
+**Rev B lands at 17.3 sq in: ~$173 against Rev A's $153** - a few percent over the
+break-even his analysis predicted ("expect to pay about today's price for something half the
+size"). The last 2 mm of width bought routability: via-safe spacing for the right header
+group and both 12 V blocks.
 
-| If the goal is | Then |
-|---|---|
-| **A tidier, denser board** | **4 layers**, and expect to pay about today's price for something half the size |
-| **Purely a cheaper board** | **stay on 2 layers and shrink modestly** - 180 x 94 on 2 layers is 26.2 sq in, **$131**, which beats both |
-| **Both** | get under **15 sq in on 4 layers**, which needs the corridor gone and the height with it |
-
-FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE.**
+FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS RATE EVIDENCE.**
 `fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable
 text in it, so no rate or line item can be read back out. It records that the order happened,
 not what it cost per unit area. **A text PDF or a saved quote page would.**
 
-### What the work actually is
+### Still open before any Rev B order
 
-**Moving the footprints is the easy half.** `route.py` regenerates all copper from their
-positions, so there is no hand routing to redo.
-
-🔴 **THE ROUTER IS THE JOB.** Its topology is hard-coded to the current arrangement - five
-axis columns across the top, the rest in two brick-staggered rows to the right, corridor B at
-y 40..64, the Teensy headers standing at x 150..166, one bottom row. **Every one of those
-stops being true**, and a 4 layer version needs new layer assignments on top of it. Budget a
-router rewrite, not a parameter change.
-
-NOTE: **And [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html)
-regenerates itself** - it reads this board's outline, courtyards and mounting holes straight
-from the PCB, so it follows a Rev B without being touched. Run `tools/make-board-sheet.py`.
+1. **Rev A's lessons.** He is wiring Rev A now; whatever that run teaches goes in before
+   gerbers are cut. Nothing in `fab/` describes Rev B - the zip there is Rev A's order.
+2. **Lid cutout and mounting.** 107 x 104 against Rev A's 210 x 94, holes at 4,4 / 103,4 /
+   3,37 / 104,37 - the regenerated
+   [`board-mounting.html`](../../../machine/drawings/board-mounting.html) has the drawing.
+3. **4-layer gerber export.** When fab is called: the two kicad-cli export commands now need
+   In1.Cu and In2.Cu in the layer list, and a fresh zip - do not overwrite `fab/oshpark/`,
+   that is Rev A's order record.
