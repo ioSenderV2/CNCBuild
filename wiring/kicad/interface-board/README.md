@@ -114,9 +114,19 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
 
 ## Rev B target - the shape any future board takes
 
-**His, 2026-11-09, and it is a TARGET, not work in progress.** Rev A is fabbed and in hand;
-he runs it, collects whatever else wants changing, and a Rev B goes out smaller. **Nothing
-here is scheduled. Do not start the rewrite below until a Rev B is actually called.**
+**His, 2026-11-09.** Rev A is fabbed and in hand; he runs it, collects whatever else wants
+changing, and a Rev B goes out smaller.
+
+🔴 **THE DESIGN WORK IS CALLED - his, 2026-11-09, same day: "proceed with this alternate
+design and see how it shakes out", in its own session.** What is authorized is the DESIGN -
+placement, router rewrite, 4 layer stackup. **The FAB still waits** until Rev A's lessons are
+in, so no order goes out on the back of this section alone.
+
+🔴 **DO THE REV B DESIGN ON A BRANCH.** The boards in hand are Rev A, and main's files must
+keep describing them while he is wiring: `board-mounting.html` regenerates from the live
+`interface-board.kicad_pcb`, so a Rev B layout on main would turn the mounting sheet into a
+drawing of a board that does not exist yet. Rev A's gerbers are safe in `fab/oshpark/`
+regardless; the branch is for everything that reads the live PCB.
 
 ### The layout he wants
 

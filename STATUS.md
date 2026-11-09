@@ -377,7 +377,7 @@ the interface, not this file.
 
 ## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)  (1)
 
-- FLAG: [L188](wiring/kicad/interface-board/README.md#-180-wide-does-not-save-money-area-does) — *Rev B target - the shape any future board takes / 🔴 180 WID…*<br>THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
+- FLAG: [L198](wiring/kicad/interface-board/README.md#-180-wide-does-not-save-money-area-does) — *Rev B target - the shape any future board takes / 🔴 180 WID…*<br>THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
 
 ---
 
