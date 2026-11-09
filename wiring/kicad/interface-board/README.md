@@ -68,6 +68,21 @@ touch nothing else on the board - not GND, not +12V. That is the same rule the
 12 V supply exists to protect: tying the motor return to logic ground throws away
 the drives' measured per-signal isolation. **The 36 V return is not a ground.**
 
+**THIS BOARD HAS NO PE CONNECTION AT ALL, AND THAT IS DELIBERATE.** There is no earth
+or chassis net on it - 44 nets, none of them PE - **all four mounting holes are
+unplated NPTH with no net**, and its enclosure is 3D printed, so there is no chassis
+to bond. **Its GND arrives on one pad, J18.2 of the 12 V IN block**, and leaves on
+J19.2 to the RP23. The In1 plane distributes it from there.
+
+✅ **THE TWO RULES ARE THE SAME RULE: SEPARATE EVERYWHERE, JOINED AT ONE POINT.** Logic
+GND and the 36 V return do meet - **back at the cabinet's PE bar**, which carries
+*12 V supply 0 V* and *motor supply 0 V* as two of its eight named conductors, see
+[`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md).
+**That bar is the single point, and the board staying isolated is what keeps it
+single.** A second meeting anywhere - a jumper here, a shared terminal out at a
+drive - turns one bond into a loop and puts chopped motor return current through
+the logic ground plane. 🔴 **So do not "helpfully" tie `36V_RET` to GND anywhere.**
+
 **The 36 V bus is copper pours, not traces, and that is what set the board size.**
 The supply is 600 W at 36 V - **16.5 A across all axes**, nameplate, see
 [`../../breakout-box.md`](../../breakout-box.md) - and 16.5 A wants about 10 mm of
