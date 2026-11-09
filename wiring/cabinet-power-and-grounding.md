@@ -529,23 +529,46 @@ FLAG: **AN EARLIER VERSION OF THIS NOTE GAVE ONLY THE UNDERVOLTAGE EDGE.** A par
 still be wrong: if its overvoltage adjustment tops out at, say, 38 V, the window is too tight for a
 rail that lifts on braking, and it would nuisance-trip for the life of the machine.
 
-REJECTED: **the DIN DC monitoring relay he found, 2026-11-09, Amazon ASIN B07QJ8B21R - as shown it
-is the 12 V variant.** Its listing gives the adjustment as **overvoltage 13-17 V, undervoltage
-10-14 V**. A 36 V rail sits **twice** its overvoltage ceiling, so it would read permanent fault and
-never do the job. The same listing also claims *"designed for DC 48V rated voltage applications"*,
-which **contradicts its own threshold numbers** - the trap this repo already learned once from a
-catalog preset. Form factor, 2 changeover contacts, 6 A and the adjustable delay are all right; only
-the window is wrong.
+SETTLED: **THE PART IS A DVRD-36 - his find, 2026-11-09, Amazon ASIN B09287HV2C.** The DVRD body
+comes as 12 / 24 / 36 / 48 and **the variant is the whole decision**, so order it by model number
+and not by the listing.
 
-NOTE: **IT MAY BE THE VARIANT THAT IS WRONG RATHER THAN THE LISTING.** One Amazon ASIN often covers
-a family behind a voltage selector, and a headline "48 V" sitting over 13-17 V thresholds is what
-that looks like from outside. **Check that listing for a higher-voltage option before going
-elsewhere** - and pick it on the undervoltage range reaching 30 V, not on the dropdown's label.
+| | DVRD-36 | Wanted |
+|---|---|---|
+| Rated voltage | **DC 36 V** | the rail |
+| **Undervoltage adjustment** | **30-42 V** | reach **30** - it does, at the very bottom of its range |
+| **Overvoltage adjustment** | **39-51 V** | **low 40s** - comfortably inside |
+| Contacts | **2 sets NO + NC**, 6 A 250 VAC | one closed-when-well contact, and a spare |
+| Delay | **0.1-15 s** adjustable | 0.1 is the floor |
+| Supply | **none - it runs off the circuit it watches** | ✅ see below |
+| Size | 79 x 23 x 79 mm, 35 mm rail | one module |
 
-FLAG: **NO DATASHEET, AND AMAZON WILL NOT GIVE ONE UP.** Two fetches of that ASIN returned **503**,
-the same refusal the other two vendor URLs in this repo give. **Every number above is off his paste,
-not off the page**, and this repo commits datasheets rather than linking them - so whatever is
-bought, the sheet gets captured here by hand.
+🔴 **THE 48 V VARIANT WOULD NOT WORK, AND THAT IS THE COUNTER-INTUITIVE PART.** 36 is less than 48,
+so it reads as safe - but **DVRD-48's undervoltage only adjusts down to 40 V**, which is *above* our
+nominal rail. It would sit in permanent undervoltage fault. **36 V rail, DVRD-36, and nothing else
+in the family fits.**
+
+✅ **SELF-POWERED FROM THE MONITORED CIRCUIT IS A FAIL-SAFE BONUS, NOT JUST ONE LESS WIRE.** When the
+rail collapses the device loses its own supply, the relay de-energises and the contact opens - so the
+e-stop is asserted by **physics** even if the trip logic never ran. The threshold catches the decay
+on the way down; loss of power catches everything else.
+
+SETTINGS: **undervoltage at the bottom of its range, around 30-32 V. Overvoltage around 44-46 V.**
+Low 40s leaves regeneration room above a 36 V rail while still tripping before the drives' own
+DC24V~48V ceiling. **Delay at or near 0.1 s**, lengthened only if a rapid proves it nuisance-trips.
+
+🔴 **DO NOT RUN THE RAIL THROUGH ITS CONTACTS.** 6 A against a 16.5 A supply, and the capacity is
+quoted **250 VAC** with no DC figure - DC switching on a contact this size is far lower, because the
+arc does not self-extinguish at a zero crossing. **It senses. It does not switch.**
+
+NOTE: **the first listing, ASIN B07QJ8B21R, was this same family showing its 12 V variant** -
+overvoltage 13-17 V, undervoltage 10-14 V, over a headline claiming 48 V. Rejected on 2026-11-09 and
+then explained: the listing was not wrong so much as the variant on display was.
+
+FLAG: **NO DATASHEET, AND AMAZON WILL NOT GIVE ONE UP.** Three fetches across both ASINs returned
+**503**, the same refusal the other two vendor URLs in this repo give. **Every number in the table
+is off his paste of the listing, not off a datasheet** - so when the part arrives, the sheet in the
+box gets captured here, and the real thresholds get metered rather than believed.
 
 ⚠️ **THRESHOLD AND DELAY PULL AGAINST EACH OTHER, AND THE BENCH SETS THEM.** A threshold set high
 reports the stop promptly instead of waiting for the rail to sag - but **set it too high and a heavy
@@ -563,7 +586,9 @@ nothing, and a big copper contact with no wetting current can grow oxide and go 
 for it; a contact rated for low-level switching, or a little load across the loop, is the answer if
 it shows up.
 
-OPEN: **the exact part is still not chosen.** Datasheet gets committed here when it is.
+OPEN: ~~**the exact part**~~ - **chosen, the DVRD-36 above.** What is still open is the bench work
+on it: the two thresholds metered rather than trusted, the delay set against a real rapid, and
+**which of its contacts is actually closed with the rail healthy.**
 
 NOTE: **Pair 4 of the 2 x 8 block is free again** - the 12 V supply vacated it, the sense relay took
 it, and now nothing does.
