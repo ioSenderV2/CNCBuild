@@ -61,20 +61,20 @@ LABELS = [
     ("SPINDLE", 61.25, 100.15, 0.85, 0),
     ("MIST",    73.75, 100.15, 0.85, 0),
     ("FLOOD",   82.75, 100.15, 0.85, 0),
-    ("UART1",  117.25, 100.15, 0.85, 0),
+    ("UART1",  115.81, 100.15, 0.85, 0),
     ("CNCBuild INTERFACE REV B", 86.5, 51.5, 1.2, 0),
 ]
 
-# per-position signal names, rotated, above the terminal blocks
-# anchor x of pad 1 -> names; pitch 3.5
+# per-position signal names, rotated, above the output-row terminals
+# anchor x of pad 1 -> (pitch, names)
 TB_PINS = {
-    10.0:  ["CS", "FH", "ES", "SP"],            # J36 control
-    26.5:  ["X", "Y1", "Y2", "Z", "B"],         # J21 limits
-    46.5:  ["PRB", "DR"],                       # J23
-    56.0:  ["EN", "G", "G", "PWM"],             # J22 spindle
-    72.0:  ["A", "B"],                          # J34 mist
-    81.0:  ["A", "B"],                          # J35 flood
-    112.0: ["TX", "RX", "3V3", "G"],            # J37 uart
+    10.0:  (3.5, ["CS", "FH", "ES", "SP"]),     # J36 control
+    26.5:  (3.5, ["X", "Y1", "Y2", "Z", "B"]),  # J21 limits
+    46.5:  (3.5, ["PRB", "DR"]),                # J23
+    56.0:  (3.5, ["EN", "G", "G", "PWM"]),      # J22 spindle
+    72.0:  (3.5, ["A", "B"]),                   # J34 mist
+    81.0:  (3.5, ["A", "B"]),                   # J35 flood
+    112.0: (2.54, ["TX", "RX", "3V3", "G"]),    # J37 uart - a 1x4 header now
 }
 
 # parts whose reference text collides with the function labels: the ref moves
@@ -85,7 +85,10 @@ REF_ON_BODY = {
     "J13": (0.0, 3.25), "J14": (0.0, 3.25), "J30": (0.0, 3.25), "J31": (0.0, 3.25),
     "J15": (2.1, 3.25), "J32": (2.1, 3.25), "J33": (2.1, 3.25),
     "J21": (7.0, 0.1), "J22": (5.25, 0.1), "J23": (1.75, 0.1),
-    "J34": (1.75, 0.1), "J35": (1.75, 0.1), "J36": (5.25, 0.1), "J37": (5.25, 0.1),
+    "J34": (1.75, 0.1), "J35": (1.75, 0.1), "J36": (5.25, 0.1),
+    # J37 is the UART header, rotated 90: local (dx,dy) lands at board
+    # (dy,-dx), so this puts the ref just south of the pin row
+    "J37": (-2.3, 3.8),
     "J18": (2.85, 0.25), "J19": (2.85, 0.25),
 }
 
@@ -143,9 +146,9 @@ def main():
     for (text, x, y, size, rot) in LABELS:
         add(text, x, y, size, rot)
         count += 1
-    for (x0, names) in TB_PINS.items():
+    for (x0, (pitch, names)) in TB_PINS.items():
         for i, nm in enumerate(names):
-            add(nm, x0 + 3.5 * i, 97.9, 0.7, 90)
+            add(nm, x0 + pitch * i, 97.9, 0.7, 90)
             count += 1
 
     pcbnew.SaveBoard(BOARD, board)

@@ -37,13 +37,14 @@ the E-stop contactor's block. See
 | Mini-Fit Jr 3P - 3D probe (12 V), 3P - toolsetter (12 V) | 2x3 IDC ribbon to RP23 **J24** servo alarms, left end |
 | 2x Mini-Fit Jr 2P - touch probes | TB 2P 5.08 - 12 V IN from buck, TB 2P 5.08 - 12 V OUT to the RP23 |
 | 2x Mini-Fit Jr 2P - mist, flood | 3.5 mm TBs, one position per signal with silk names: limits 5P, spindle 4P, probe + door 2P |
-| Mini-Fit Jr 4P - spindle (Enable, GND, GND, 0-10 V) | 3.5 mm TBs passing the new inputs through: mist 2P, flood 2P, control 4P, UART1 4P |
+| Mini-Fit Jr 4P - spindle (Enable, GND, GND, 0-10 V) | 3.5 mm TBs passing the new inputs through: mist 2P, flood 2P, control 4P; UART1 leaves on a **1x4 2.54 mm header** - dupont jumpers straight to the RP23's 4-pin UART header |
 | Mini-Fit Jr 4P - cycle start / feed hold / e-stop / spare | 5x 2.54 mm header, **GND / Step / Dir / Enable** per axis - jumper to a Teensy T41U5XBB instead of the ribbon |
 | Mini-Fit Jr 4P - UART1 for CAN, **TX / RX / 3.3V / GND** | |
 
 **Y1 drives the controller's Y, Y2 drives A.** The three touch/3D probe signals are
 wired-OR onto one PROBE net; the toolsetter goes to DOOR. Mist, flood, control and
-UART1 pass straight through, connector to terminal block, position for position.
+UART1 pass straight through, connector to output terminal, position for position -
+UART1's output being the 1x4 header rather than a screw block.
 
 **RJ45 pin map** (striped conductor = signal, solid = return):
 1 Step, 3 Enable, 5 Dir, 7 Alarm; evens GND. Step and Alarm sit on opposite edges of
@@ -96,9 +97,9 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
    | 4P dual row 2x2 (J15, J32, J33) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389 | 3 |
    | 2P dual row (J13, J14, J30, J31) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt without peg - they also fit these footprints) | 4 |
    | 3.5 mm TB 2P (J23, J34, J35) | KF350-class screw block, 4Ucon pattern - **to order** | 3 |
-   | 3.5 mm TB 4P (J22, J36, J37) | same family - **to order** | 3 |
+   | 3.5 mm TB 4P (J22, J36) | same family - **to order** | 2 |
    | 3.5 mm TB 5P (J21) | same family - **to order** | 1 |
-   | Pin header 1x04 2.54 mm (J40-J44) | any breakaway header - **to order or from stock** | 5 |
+   | Pin header 1x04 2.54 mm (J40-J44, J37 UART1 out) | any breakaway header - **to order or from stock** | 6 |
 
    Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
    **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
