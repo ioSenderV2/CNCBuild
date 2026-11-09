@@ -549,10 +549,26 @@ unreliable sources disagreeing is not a part number.**
 would sit in permanent overvoltage fault from the moment it was powered. So the downside of guessing
 wrong here is not a compromise, it is a part that never works at all.
 
-PROCEDURE: **BUY FROM A LISTING WHOSE TITLE OR VARIANT SAYS DVRD-36, OR ASK THE SELLER WHICH
-VARIANT SHIPS, BEFORE PAYING.** Searching the model string directly finds it on the usual sources.
 FLAG: **this file said "order it from B09287HV2C" on 2026-11-09 and that was wrong** - it was taken
 from the description block before the item attributes were read.
+
+### Where to buy it, and how to know what turned up
+
+🔴 **A THIRD LISTING, TITLED DVRD-36, STILL PRINTS THE 12 V NUMBERS IN ITS BODY - 2026-11-09.** Its
+spec block reads *"Overvoltage adjustment range: 13-17V, Undervoltage adjustment range: 10-14V"*,
+which is the **DC12V** column of the manual. **On this family the description text is worthless for
+identifying the variant** - it has now been wrong on three listings out of three.
+
+| Route | |
+|---|---|
+| **ATO direct** - the maker of the manual | Sells all four from one dropdown, **ATO-DVRD-36** named explicitly. **Certain variant, no guessing.** Page showed **$105.98** 2026-11-09, one price across variants |
+| **A generic marketplace listing** | Far cheaper, but the variant is only as good as the title, and **the body text has lied three times** |
+
+✅ **BUYING THE CHEAP ONE IS STILL FINE, BECAUSE THE ACCEPTANCE TEST IS FREE AND TAKES TEN SECONDS.**
+**The two knobs are printed with their own ranges.** On a DVRD-36 the **U< knob reads 30-42 V and
+the U> knob reads 39-51 V**. If they read 10-14 and 13-17, a 12 V unit arrived; 20-28 and 26-34 is
+the 24. **Check the knob markings before anything is wired or powered** - no meter, no risk, and it
+is the one identification that cannot be boilerplate.
 
 SOURCE: **the maker's own manual, ATO, 5 pages** - found by searching the model string rather than
 the marketplace, and **held in `manufacturer-assets/ATO-DVRD-DC-Voltage-Monitoring-Relay-Manual.pdf`**
