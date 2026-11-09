@@ -279,7 +279,7 @@ out**.
 | 1 | The **36 V motor supply** |
 | 2 | The **VFD**, 220 V in |
 | 3 | The **pump contactor** |
-| 4 | The **sense relay coil** - the 12 V supply left this pair on 2026-11-06 |
+| 4 | **Spare** - the 12 V supply left this pair on 2026-11-06, the sense relay took it, and on 2026-11-09 the sense moved to the 36 V rail and gave it back |
 
 SETTLED: **THE BLOCK GOES ON THE RAIL UPSIDE DOWN - his, 2026-11-06, and it is not a violation of
 anything that matters.** The contactor's load terminals are at the **bottom**; the breakers' line
@@ -488,21 +488,39 @@ into drives that cannot move. **The motors stay still and the position counter d
 power comes back the machine's idea of where it is, is wrong by however far it "moved" while dead.
 Nothing about that is visible until the next rapid puts the spindle somewhere it should not be.
 
-SETTLED: **A SENSE RELAY, AND IT SENSES THE SWITCHED 220 V RATHER THAN THE PADDLE.**
+SETTLED: **IT SENSES THE 36 V RAIL ITSELF - his, 2026-11-09**, moved there from a 230 V coil on
+pair 4.
 
 | | |
 |---|---|
-| Coil | **230 V**, on **pair 4** of the block - the pair the 12 V supply vacated |
-| Contact | into the interface board's **e-stop input** - the Mini-Fit Jr 4P already carries one, see [`kicad/interface-board/README.md`](kicad/interface-board/README.md) |
-| Size | one more **18 mm** DIN module |
+| Input | across the **36 V rail**, at the board end of it |
+| Contact | **closed while the rail is up**, into the interface board's **e-stop input** - the Mini-Fit Jr 4P already carries one, see [`kicad/interface-board/README.md`](kicad/interface-board/README.md) |
+| Direction | 🔴 **FAIL-SAFE, AND THAT IS WHY THE CONTACT IS CLOSED WHEN ALL IS WELL.** Rail gone, wire broken, part dead - all three open the loop and all three read as e-stop. A contact that had to *close* to call the stop would fail silently |
 
-✅ **SENSING THE LOAD SIDE RATHER THAN THE SWITCH IS THE WHOLE POINT.** It reports **power actually
-present at the drives**, not what the operator pressed. A welded contactor reads as powered, which is
-true and is what you want to know; a paddle-side sense would have read "stopped" while the machine
-was still live.
+✅ **SENSING THE LOAD SIDE RATHER THAN THE SWITCH IS THE WHOLE POINT, AND THE RAIL IS AS LOAD-SIDE
+AS IT GETS.** It reports **power actually present at the drives**, not what the operator pressed. A
+welded contactor reads as powered, which is true and is what you want to know; a switch-side sense
+would have read "stopped" while the machine was still live.
 
-NOTE: **This is the same pattern as the pump contactor** - a coil on the switched side, a contact
-doing the telling. One part, one idea, used twice.
+✅ **AND IT COVERS A CASE THE 230 V SENSE COULD NOT: THE SUPPLY ITSELF FAILING.** Every way the
+machine goes dead now reaches the controller - mushroom, paddle, a mains outage, *and* a supply that
+quits or shuts down on its own over-current protection.
+
+🔴 **36 V IS NOT A STANDARD COIL VOLTAGE, AND THAT IS THE WHOLE DIFFICULTY OF THE PART.** Standard
+DC coils are 12, 24 and 48. **A 24 V coil cooks on 36 V; a 48 V coil may not pull in at 36 V**,
+since pull-in is typically three quarters of nominal and that is 36 V exactly - the worst place to
+sit. So the part has to be one that takes 36 V by specification, not by luck.
+
+⚠️ **THE RAIL DECAYS, IT DOES NOT VANISH.** The supply's output capacitance and five drives' input
+capacitance hold it up after the contactor opens, so the sense drops late by however long that takes.
+**A part with an adjustable threshold, set high - around 30 V - drops promptly instead of waiting for
+the rail to sag to a quarter.** This is the argument for a monitoring relay over a plain coil.
+
+OPEN: **the exact part is not chosen.** Two numbers decide it: the input must include **36 V DC** by
+specification, and the output must suit the e-stop loop. Datasheet gets committed here when it is.
+
+NOTE: **Pair 4 of the 2 x 8 block is free again** - the 12 V supply vacated it, the sense relay took
+it, and now nothing does.
 
 🔴 **BUT IT IS ALSO THE SERVICE DISCONNECT, AND IT DOES NOT MAKE THE BOX SAFE.** This is the one
 thing to have straight before hands go in. With the paddle down, all four pairs off the block are
@@ -545,10 +563,10 @@ SETTLED: **ALL FOUR ARE CURVE C - ordered, his 2026-11-05.**
 | 1 | 36 V motor supply | **6 A, Type C** | **3.5 A** in at 220 V - nameplate |
 | 2 | VFD | **16 A, Type C** | see below |
 | 3 | Pump contactor | **6 A, Type C** | **80 W**, about 0.4 A, plus an 11.5 VA coil |
-| 4 | **Sense relay coil** | **none** | The 12 V supply left this pair on 2026-11-06; the sense relay took it |
+| 4 | **Spare** | **none** | Vacated twice: the 12 V supply on 2026-11-06, then the sense relay on 2026-11-09 when the sense moved to the 36 V rail |
 
 NOTE: **PAIR 4 CARRIES NO BREAKER, AND THAT IS DELIBERATE.** All four breakers are spoken for - three
-here and the fourth on the 110 V side - and what is left on this pair is a **sealed relay coil of a
+here and the fourth on the 110 V side - and what was left on this pair was a **sealed relay coil of a
 couple of watts** on 14 AWG, behind the main contactor, with the wall's 20 A as the backstop. A
 breaker sized for 2 W does not exist and would protect nothing the conductor does not already
 survive.
@@ -622,8 +640,8 @@ modules, 36 mm**:
 
 | Rail | On it |
 |---|---|
-| **Top - the 220 V side** | Main contactor, pump contactor, the **2 x 8 block**, the **three** 220 V breakers, the sense relay, and **every ground terminal** |
-| **Bottom - the 110 V side and the supplies** | The **6 A 110 V breaker**, the **2 x 6 splitter**, the 1 A fuse holder, the **MDR 12 V supply**, and the **36 V brick** |
+| **Top - the 220 V side** | Main contactor, pump contactor, the **2 x 8 block**, the **three** 220 V breakers, and **every ground terminal** |
+| **Bottom - the 110 V side and the supplies** | The **6 A 110 V breaker**, the **2 x 6 splitter**, the 1 A fuse holder, the **MDR 12 V supply**, the **36 V brick**, and the **rail sense** - it belongs beside the supply it watches now, not up with the 220 V |
 
 ✅ **SPLITTING BY VOLTAGE RATHER THAN BY DEVICE TYPE IS THE BETTER ARRANGEMENT**, and it falls out of
 the 12 V supply moving: everything the paddle kills is on one rail and everything that stays live is
