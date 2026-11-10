@@ -112,22 +112,20 @@ table above only as the fallback part if the totem fails its bench checks.
 The socket is rated to accept **0.50 ± 0.05 sq**, so the bottom joint - the socket that grips
 P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are unaffected.
 
-> OPEN: **the bench test decides the bottom joint.** Four sockets ordered 2026-11-04, $16.50
-> delivered price, not yet shipped (his call - "easy enough to order a couple just to see how
-> they work").
-> What the test has to show, on the module with the header supported so insertion force does not
-> work the header's own solder joints: the entry funnel admits the 0.64 pin at all, the socket
-> seats, continuity on all 20, and it still grips on a second mating. A socket that takes a set
-> on P1's fat pins is acceptable - that socket lives on P1 forever - but it must not need enough
-> force to damage the module. If it fails: either a 2 mm female from the same ecosystem as the
-> module's header (the no-name 2x10s sold alongside these modules will be sized for these pins -
-> measured on arrival, like the FMHXG), or a small riser PCB with ø1.0 holes soldered permanently
-> onto P1's pins (the 0.64 pin's diagonal is ~0.9, so the earlier ø0.8 figure does not clear),
-> with the separable Sullins joint moved to its top.
-
-> OPEN: **one more bench check before the board is committed.** Tail engagement: the 2.40
-> tail against a contact point that reads as ~1.45 below the mating face on the drawing -
-> interpreted, not measured - so mate two sockets, continuity plus a tug.
+> SETTLED: **THE TOTEM PASSED ON THE BENCH - his, 2026-11-10.** The sockets arrived and the
+> whole standing was tried at once: the first socket seats on P1's ~0.64 pins on the module
+> just fine, two more stack on top of it - three total, receptacle-down, each on the tails of
+> the one below - the top tails stand **clear of everything on the module**, and **every
+> position tones from the top of the stack through to the bottom socket's tails**. That one
+> trial shows the entry funnel admitting the fat pin, the seating, both socket-on-socket tail
+> joints, and 20-pin continuity end to end - which closes the bottom-joint question AND the
+> tail-engagement question below it in the old notes. The fallbacks (a 2 mm female from the
+> module's own ecosystem, the riser PCB on ø1.0 holes) stand down to history.
+>
+> OPEN: two residuals from the original test list, neither urgent: **does the P1 socket still
+> grip on a second mating** - check it the next time the totem comes apart, no special trip -
+> and the drawing's tug test on a tail joint. And the one number still to take: **the standing
+> height off the real totem** before the standoffs are cut, per the note below.
 
 **The fillets under jack 1: clipped flush - his call, 2026-11-04.** The third socket's tails
 solder on the board's top face, and P1's position puts those 20 joints under jack 1's body,
