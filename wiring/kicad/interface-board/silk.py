@@ -64,9 +64,18 @@ LABELS = [
     ("B",    87.8, 118.5, 0.8, 0),
     ("TEENSY  G S D E", 33.8, 120.2, 0.9, 0),
     ("TEENSY  G S D E", 83.2, 120.2, 0.9, 0),
-    ("12V IN",  105.0, 118.5, 0.9, 0),
-    ("12V OUT", 117.5, 118.5, 0.9, 0),
-    ("36V IN",  130.5, 118.5, 0.9, 0),
+    # the three cabinet power feeds - Mini-Fit now, so the pins STACK where the
+    # screw blocks sat side by side. x is each connector's body centre: the 2P
+    # parts are a single pad column, the 4P is the midpoint of its two.
+    ("12V IN",  98.5, 118.5, 0.9, 0),
+    ("12V OUT", 112.5, 118.5, 0.9, 0),
+    ("36V IN",  128.6, 118.5, 0.9, 0),
+    # polarity cannot go beside these pads - row A has no room west of any of
+    # them for a mark aligned with its pad row, the way the stepper jacks do.
+    # So the convention is printed once, and the 36 V doubling with it: miss
+    # that and the feed still works, at half its copper.
+    ("+ TOP  - BOTTOM", 105.5, 120.2, 0.8, 0),
+    ("36V 2 PINS/LEG", 128.6, 120.2, 0.8, 0),
     # terminal block row - block names above
     ("CONTROL", 29.25, 127.65, 0.85, 0),
     ("LIMITS",  47.5, 127.65, 0.85, 0),
@@ -92,9 +101,6 @@ TB_PINS = {
 }
 TB_PIN_Y = 125.4          # just above the row B terminals
 
-# the 36 V input block sits beside the 12 V pair, screws side by side
-TB36 = (128.0, 120.2, 5.08, ["+", "-"])   # below the block, clear of its body
-
 # every 36 V connector stacks + over -, so the polarity marks stack too -
 # a side-by-side pair would read as the wrong pin. x of each power jack.
 PWR_JACKS = (15.0, 39.0, 63.0, 87.0, 111.0)
@@ -111,11 +117,11 @@ REF_ON_BODY = {
     "J34": (1.75, 0.1), "J35": (1.75, 0.1), "J36": (5.25, 0.1),
     # the stepper power row and its input block
     "J50": (0.0, 3.25), "J51": (0.0, 3.25), "J52": (0.0, 3.25),
-    "J53": (0.0, 3.25), "J54": (0.0, 3.25), "J55": (2.85, 0.25),
+    "J53": (0.0, 3.25), "J54": (0.0, 3.25), "J55": (2.1, 3.25),
     # J37 is the UART header, rotated 90: local (dx,dy) lands at board
     # (dy,-dx), so this puts the ref just south of the pin row
     "J37": (-3.6, 3.8),
-    "J18": (2.85, 0.25), "J19": (2.85, 0.25),
+    "J18": (0.0, 3.25), "J19": (0.0, 3.25),
 }
 
 
@@ -176,10 +182,6 @@ def main():
         for i, nm in enumerate(names):
             add(nm, x0 + pitch * i, TB_PIN_Y, 0.8, 90)
             count += 1
-    tx, ty, tpitch, tnames = TB36
-    for i, nm in enumerate(tnames):
-        add(nm, tx + tpitch * i, ty, 0.9, 0)
-        count += 1
     for jx in PWR_JACKS:
         add("+", jx - 7.6, PWR_PLUS_Y, 0.8, 0)
         add("-", jx - 7.6, PWR_MINUS_Y, 0.8, 0)

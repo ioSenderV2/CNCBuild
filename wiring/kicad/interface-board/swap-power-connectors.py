@@ -24,6 +24,11 @@ import pcbnew
 
 BOARD = r"C:\github\CNCBuild\wiring\kicad\interface-board\interface-board.kicad_pcb"
 LIB = r"C:\Program Files\KiCad\10.0\share\kicad\footprints\Connector_Molex.pretty"
+LIB_NICK = "Connector_Molex"      # FootprintLoad() returns a bare name; without
+                                  # the nickname put back, parity reports
+                                  # footprint_symbol_mismatch on all three and
+                                  # "update footprint from library" has nothing
+                                  # to look up
 
 MF2 = "Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
 MF4 = "Molex_Mini-Fit_Jr_5566-04A2_2x02_P4.20mm_Vertical"
@@ -69,6 +74,7 @@ def main():
         new = pcbnew.FootprintLoad(LIB, fpname)
         if new is None:
             raise SystemExit("library has no %s" % fpname)
+        new.SetFPID(pcbnew.LIB_ID(LIB_NICK, fpname))
         new.SetReference(ref)
         new.SetValue(value)
         new.SetPath(path)
