@@ -2507,7 +2507,7 @@
 		)
 	)
 	(symbol
-		(lib_id "cnc:TB_1x02")
+		(lib_id "cnc:CONN_1x02")
 		(at 240.03 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2524,7 +2524,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TB 2P - 12V IN from buck"
+		(property "Value" "Mini-Fit 2P - 12V IN from buck"
 			(at 236.22 30.45 0)
 			(effects
 				(font
@@ -2533,7 +2533,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
 			(at 240.03 44.45 0)
 			(effects
 				(font
@@ -2558,7 +2558,7 @@
 		)
 	)
 	(symbol
-		(lib_id "cnc:TB_1x02")
+		(lib_id "cnc:CONN_1x02")
 		(at 240.03 80.01 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2575,7 +2575,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TB 2P - 12V OUT to RP23"
+		(property "Value" "Mini-Fit 2P - 12V OUT to RP23"
 			(at 236.22 66.01 0)
 			(effects
 				(font
@@ -2584,7 +2584,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
 			(at 240.03 80.01 0)
 			(effects
 				(font
@@ -6927,7 +6927,7 @@
 		(uuid "36000705-0000-4000-8000-000000000005")
 	)
 	(symbol
-		(lib_id "cnc:TB_1x02")
+		(lib_id "cnc:CONN_1x04")
 		(at 55.88 450.0 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6944,7 +6944,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TB 2P - 36V IN from supply"
+		(property "Value" "Mini-Fit 4P - 36V IN from supply, legs doubled"
 			(at 52.07 436.0 0)
 			(effects
 				(font
@@ -6953,7 +6953,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_CUI:TerminalBlock_CUI_TB007-508-02_1x02_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-04A2_2x02_P4.20mm_Vertical"
 			(at 55.88 450.0 0)
 			(effects
 				(font
@@ -6967,6 +6967,12 @@
 		)
 		(pin "2"
 			(uuid "36000306-0000-4000-8000-000000000006")
+		)
+		(pin "3"
+			(uuid "36000806-0000-4000-8000-000000000006")
+		)
+		(pin "4"
+			(uuid "36000906-0000-4000-8000-000000000006")
 		)
 		(instances
 			(project "interface-board"
@@ -7016,6 +7022,46 @@
 			(justify right bottom)
 		)
 		(uuid "36000706-0000-4000-8000-000000000006")
+	)
+	(wire
+		(pts
+			(xy 49.53 446.19) (xy 45.72 446.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36001006-0000-4000-8000-000000000006")
+	)
+	(label "+36V"
+		(at 45.72 446.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36001106-0000-4000-8000-000000000006")
+	)
+	(wire
+		(pts
+			(xy 49.53 453.81) (xy 45.72 453.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36001206-0000-4000-8000-000000000006")
+	)
+	(label "36V_RET"
+		(at 45.72 453.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "36001306-0000-4000-8000-000000000006")
 	)
 	(sheet_instances
 		(path "/"

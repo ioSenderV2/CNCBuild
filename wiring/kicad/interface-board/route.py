@@ -9,8 +9,8 @@ via and zone from the file, then regenerates:
   - F.Cu: vertical escapes and short jogs only;
   - In1.Cu: solid GND plane (every GND pad is through-hole, so GND needs no
     routing at all - thermal relief on the plane);
-  - In2.Cu: solid +12V plane (same trick: the seven Mini-Fit pin 1s and both
-    5.08 blocks' pin 1s tap it directly);
+  - In2.Cu: solid +12V plane (same trick: all nine Mini-Fit pin 1s tap it
+    directly, the 12 V in and out blocks included);
   - B.Cu: horizontal lanes, interval-packed, in two corridors.
 
 Topology (board 133 x 132 at origin 5,5), top half IN / bottom half OUT:
@@ -38,7 +38,10 @@ Topology (board 133 x 132 at origin 5,5), top half IN / bottom half OUT:
     the bundles never pierce a connector - the v4 lesson, inverted: give
     every fixed vertical a street at placement time.
   - Corridor R (y 95.8..105.6): STEP / DIR / AL lanes.
-  - Row A (y ~106..118): alarm + stepper ribbons, Teensy headers, 12 V blocks.
+  - Row A (y ~106..118): alarm + stepper ribbons, Teensy headers, and the
+    three cabinet power feeds - 12 V in, 12 V out, 36 V in - all Mini-Fit Jr.
+    Their lock pegs are 3 mm NPTH and block three x columns per 2P part, so
+    row A is the tightest row for crossings even though it looks open.
   - Corridor S (y 118.1..127.6): EN (header pin 4 and the ribbon back row are
     served from below), LIM, and every terminal-block net.
   - Row B (y ~128..136): signal TBs on the bottom edge, wires south.
@@ -83,12 +86,21 @@ EDGE = (5.0, 5.0, 138.0, 137.0)
 #   the east channel carries the bus down to the input block beside the 12 V
 #   pair. +36V takes F.Cu and 36V_RET takes B.Cu, one above the other, so
 #   the climb costs 10 mm of width instead of 22.
+#   the last two reach WEST out of that channel into row A, because the 36 V
+#   input is a Mini-Fit 2x02 whose 17.69 mm body only fits with pad 1 at
+#   x 126 - west of the channel's own edge. The patch stops at x 124.4, clear
+#   of the B column's row-A verticals (LIM_B 121.66, EN_B 122.9), and is held
+#   between the corridors: below R's last lane at y 105.6 and above S's first
+#   at 118.1. Same net as the channel it touches, so the pair merge; the
+#   priorities below are what let two same-net zones overlap at all.
 # (net, layer, x0, y0, x1, y1)
 POWER_ZONES = (
     ("+36V",    "B", 12.0, 38.0, 136.5, 50.2),
     ("36V_RET", "B", 12.0, 51.8, 136.5, 65.8),
     ("+36V",    "F", 127.3, 38.0, 137.5, 117.0),
     ("36V_RET", "B", 127.3, 60.0, 137.5, 117.0),
+    ("+36V",    "F", 124.4, 106.2, 137.5, 117.6),
+    ("36V_RET", "B", 124.4, 106.2, 137.5, 117.6),
 )
 # +36V changes layer where its F.Cu channel crosses its B.Cu band, so that
 # overlap is stitched solid: (x0, y0, x1, y1, pitch)
