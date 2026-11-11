@@ -936,9 +936,20 @@ what-is-in-the-box question outright.
 
 | Candidate | |
 |---|---|
-| **Mean Well XDR-480E-36** | **36 V, 13.3 A, 480 W**, DIN rail. The one to look at |
+| **Mean Well XDR-960-36** | **36 V, 26.6 A, 960 W**, DIN rail - **his find, 2026-11-11**, at Newark (12AN1207), ships 4-6 days from the UK after Mouser came up empty (one 36 V 10 A DIN part, non-stock, minimum quantity 100). **More current than the brick**, so the capacity gate below does not apply to it. Spec sheet captured: [`../manufacturer-assets/`](../manufacturer-assets/index.html), MeanWell-XDR-960-Spec.pdf |
+| Mean Well XDR-480E-36 | 36 V, 13.3 A, 480 W, DIN rail. The 2026-11-06 candidate - **less current than the brick**, which is what the gate below was written against |
 | Mean Well DRS-480-36 | Same output, but carries a **battery charge circuit** that is not wanted here |
 | The 36 V 600 W brick | Already owned. **16.5 A**, not DIN |
+
+**What the XDR-960 spec settles that the brick never could** - from the sheet, not a listing:
+input is **85-305 Vac at full load**, so it runs on either branch; cold-start inrush is **10 A at
+230 V**, which is the Type C curve argument again in miniature; and **overload goes to
+constant-current limiting without shutdown** (hiccup only below 30% output voltage, 600% rated for
+15 ms transient) - so a downstream fault sags the rail rather than latching it off, which is the
+exact trip-behaviour question this file flags as unanswerable for the no-model brick. It also
+carries a built-in **DC-OK relay contact (30 Vdc / 1 A max)** - a free load-side rail sense. The
+DVRD-36 in hand stays the sense regardless (adjustable thresholds, and already wired into the
+e-stop plan), but the contact is there.
 
 ✅ **IT DOES NOT TOUCH THE 36 V DECISION, WHICH IS THE POINT.** The thought started as a **48 V 10 A
 480 W** DIN unit and that was declined: **48 V is the top of the manual's own §7.3 range, DC24V~48V**,
@@ -991,6 +1002,19 @@ be run on the brick, because the brick is what exists; so the current figure arr
 way, and buying the XDR before it would be committing to the tighter rail with no number in hand. If
 the draw turns out close to 13.3 A, the question is closed by the measurement and the brick stays -
 no heat argument needed.
+
+NOTE: **THE XDR-960-36 CHANGES WHAT THE GATE IS FOR, 2026-11-11.** The sequencing above was about
+committing to a TIGHTER rail blind - and at 26.6 A against the brick's 16.5 the 960 is not tighter,
+it is looser than what already works, so the capacity half of the gate has nothing left to say
+about it. What the bench measurement still buys is honesty about the OTHER half: the heat into the
+drilled enclosure scales with the real draw, not the rating, and that number is still unmeasured.
+**Whether the 2026-11-07 nothing-bought-before-the-bench decision still binds a purchase the
+capacity argument no longer touches is his call, not this file's** - it is recorded here so the
+question is asked once, with the datasheet already captured either way. The detour this killed on
+the way: two 24 V 240 W DIN units splitting the axes two-and-two - declined 2026-11-11 because 24 V
+is the floor of the drives' own input range with the manual's unstable-supply warning sitting right
+below it, corner speed scales with supply voltage, and the DVRD-36 in hand would have become the
+wrong variant.
 
 **And if the draw is comfortable, the heat is still the half that cannot be reasoned out on paper** -
 that one goes to the mock-up in the real box, which is the step that was always going to decide it.

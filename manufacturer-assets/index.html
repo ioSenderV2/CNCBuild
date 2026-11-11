@@ -512,6 +512,25 @@
     <td><a href="https://www.ato.com/Content/doc/DVRD-DC-voltage-monitoring-relay-manual.pdf">ato.com/Content/doc/DVRD-DC-voltage-monitoring-relay-manual.pdf</a></td>
     <td>2026-11-09</td>
   </tr>
+
+  <tr>
+    <td><strong>XDR-960-36</strong></td>
+    <td>Mean Well</td>
+    <td>Series spec sheet (2026-06-05) for the 960&nbsp;W DIN-rail supply he found at Newark
+        (12AN1207, ships 4&ndash;6 days from the UK) &mdash; the candidate that would replace the
+        36&nbsp;V 600&nbsp;W brick, see <code>wiring/cabinet-power-and-grounding.md</code>.
+        The -36 model: <strong>36&nbsp;V, 0&ndash;26.6&nbsp;A, 960&nbsp;W</strong>, adjust
+        36&ndash;42&nbsp;V; input <strong>85&ndash;305&nbsp;Vac at full load</strong> (AC draw 10&nbsp;A
+        at 115, 5&nbsp;A at 230; cold-start inrush 23&nbsp;A/115, 10&nbsp;A/230);
+        <strong>overload 105&ndash;200&nbsp;% goes to constant-current limiting without shutdown</strong>
+        (hiccup only below 30&nbsp;% Vo), transient peak 600&nbsp;% rated for 15&nbsp;ms;
+        over-voltage protection shuts the output down until re-powered; built-in
+        <strong>DC-OK relay contact, 30&nbsp;Vdc/1&nbsp;A max</strong>;
+        <strong>96 &times; 125.2 &times; 132&nbsp;mm</strong> (W&times;H&times;D) on the rail.</td>
+    <td><code>MeanWell-XDR-960-Spec.pdf</code></td>
+    <td><a href="https://www.meanwell.com/Upload/PDF/XDR-960/XDR-960-SPEC.PDF">meanwell.com/Upload/PDF/XDR-960/XDR-960-SPEC.PDF</a></td>
+    <td>2026-11-11</td>
+  </tr>
 </table>
 
 <h2>Fetching notes</h2>
