@@ -116,7 +116,9 @@ P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are 
 > whole standing was tried at once: the first socket seats on P1's ~0.64 pins on the module
 > just fine, two more stack on top of it - three total, receptacle-down, each on the tails of
 > the one below - the top tails stand **clear of everything on the module**, and **every
-> position tones from the top of the stack through to the bottom socket's tails**. That one
+> position tones from the top of the stack through to the bottom socket's tails** - photographed:
+> [`../machine/photos/can-controller-socket-totem.jpg`](../machine/photos/can-controller-socket-totem.jpg),
+> the stack butted tight on the module, edge-on. That one
 > trial shows the entry funnel admitting the fat pin, the seating, both socket-on-socket tail
 > joints, and 20-pin continuity end to end - which closes the bottom-joint question AND the
 > tail-engagement question below it in the old notes. The fallbacks (a 2 mm female from the
