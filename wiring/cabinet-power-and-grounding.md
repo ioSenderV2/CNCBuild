@@ -1236,27 +1236,33 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 |---|---|
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
-| **12 V** | to the interface board and the controller - **and the DVRD's e-stop contact rides in the same shielded run**, which is why that run is the 4 conductor one |
-| **36 V** | to the interface board |
+| **12 V + 36 V, one 18/6** | both supplies to the interface board in a single cable - his, 2026-11-12. **Four conductors are the 36 V's two circuits into the 4P input** (J55's legs are doubled, so each leg arrives as two conductors and takes two crimps in the housing), **two are the 12 V pair into its 2P** (J18, the 12 V IN). Six of six used - **nothing else rides this cable** |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
 
-⚠️ **THE E-STOP CONTACT SHARES A CABLE WITH THE 12 V BUT NOT A CONNECTOR AT THE FAR END.** One
-shielded run leaves here, and at the board it **splits across the two halves**: the 12 V pair lands
-on the 5.08 block in the output row, and the e-stop leg lands on the **CONTROL Mini-Fit 4P up in the
-input half** - position 3 of cycle start / feed hold / e-stop / spare. **One cable, two connectors,
-opposite ends of the board.** Worth knowing before the run is cut to length.
+FLAG: **THE E-STOP CONTACT NO LONGER RIDES THE 12 V RUN - the 18/6 has no conductor spare for
+it.** This file used to say the DVRD's e-stop contact shared the 12 V's 4 conductor shielded run,
+which is why that run was 4 conductor. The 18/6 supersedes that run with every conductor spoken
+for, so the contact needs its own way across the wall. OPEN: 🔴 **HOW THE DVRD'S E-STOP PAIR
+CROSSES NOW IS NOT RECORDED.** Its far end is unchanged - position 3 of the CONTROL Mini-Fit 4P,
+up in the board's input half.
 
 OPEN: 🔴 **WHERE THE CONTACT'S OTHER LEG LANDS IS NOT DECIDED.** The DVRD gives a **dry changeover**,
 so it needs two legs, and **neither the control connector nor its terminal block carries a GND pin** -
 the netlist has ESTOP as J32.3 straight through to J36.3 and nothing else. Either the contact
-switches e-stop against the **12 V supply's GND in the cabinet**, so only one conductor comes down
-and the run is 3 used of 4; or both legs come down and the second one needs a GND somewhere on the
-board that the control connector does not have. **His call, and it decides the conductor count.**
+switches e-stop against the **12 V supply's GND in the cabinet**, so only one conductor comes down;
+or both legs come down and the second one needs a GND somewhere on the board that the control
+connector does not have. **His call, and it decides the conductor count of whatever run carries it.**
 
-🔴 **THE 36 V RUN CHANGED TODAY AND THIS FILE HAS NOT CAUGHT UP ELSEWHERE - 2026-11-09.** It used to
-be described as going **to the drives**, as several motor supply runs leaving this box. It is now
-**ONE pair to the interface board**, which fans it to the five axes through the Mini-Fit jacks added
-in [`kicad/interface-board/README.md`](kicad/interface-board/README.md) - the whole point of
+OPEN: **IS THE 18/6 SHIELDED?** The standing rule is his own, from the shielded-cable decision:
+every run leaving the enclosure is shielded. If this one is, its drain is one more on the
+board-side bus bar, grounded at that end only like the rest; if it is an exception, write the
+exception here so the rule stays honest.
+
+🔴 **THE 36 V RUN HAS CHANGED TWICE AND OLDER SENTENCES MAY NOT HAVE CAUGHT UP.** It used to be
+described as going **to the drives**, as several motor supply runs leaving this box; then as one
+pair to the interface board; it is now **four conductors of the shared 18/6 above** - two circuits
+because J55's legs are doubled - and the board fans it to the five axes through the Mini-Fit jacks
+added in [`kicad/interface-board/README.md`](kicad/interface-board/README.md), the whole point of
 consolidating terminations there. **Any sentence in this file still describing motor supply runs
 leaving the cabinet per drive is stale**, including the shield-drain count below, which was written
 when those runs were separate.
