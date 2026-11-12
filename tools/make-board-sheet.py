@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One-page mounting drawing: the interface board beside the RP23.
 
-    make-board-sheet.py            write machine/drawings/board-mounting.html
+    make-board-sheet.py            write docs/drawings/board-mounting.html
     make-board-sheet.py --check    build and report, write nothing
 
 WHAT IT IS FOR
@@ -44,7 +44,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PCB = ROOT / "wiring" / "kicad" / "interface-board" / "interface-board.kicad_pcb"
-OUT = ROOT / "machine" / "drawings" / "board-mounting.html"
+OUT = ROOT / "docs" / "drawings" / "board-mounting.html"
 
 # His, 2026-11-08. Not in this repo, so stated rather than read.
 RP, RPSQ = 38.0, 34.0

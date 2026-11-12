@@ -1,7 +1,7 @@
 # The machine
 
 The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons.
-Measured values belong in [`../commissioning/`](../commissioning/).
+Measured values belong in [`../commissioning/`](../commissioning).
 
 ## FLAG: Two documents, split by register - read this first
 
@@ -11,8 +11,8 @@ unusable document came about in the first place.
 
 | | Source | Printout | What belongs in it |
 |---|---|---|---|
-| **The build document** | [`assembly.md`](assembly.md) | `build-document.pdf`, ~18 pages | Parts, hardware, what bolts to what, in the order it is done. Imperative. No reasoning, no options weighed, no figure's history |
-| **The design record** | the thirteen chapters below | `design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every OPEN: and NOTE:. Reference, never worked from |
+| **The build document** | [`assembly.md`](assembly.md) | `docs/build-document.pdf`, ~18 pages | Parts, hardware, what bolts to what, in the order it is done. Imperative. No reasoning, no options weighed, no figure's history |
+| **The design record** | the thirteen chapters below | `docs/design-record.pdf`, ~102 pages | Why the machine is that shape. The schemes that were tried and killed, the figures that moved and when, every OPEN: and NOTE:. Reference, never worked from |
 
 PROCEDURE: **`tools\make-pdf.ps1`** from the repo root builds both. `-Doc build` or `-Doc record` for one.
 Both are derived and untracked: **if either disagrees with a `.md` file, the `.md` file wins.**
@@ -34,12 +34,12 @@ Writing the reasoning into `assembly.md` is the failure this split exists to pre
 | [`assembly.md`](assembly.md) | The build sequence and its **ordering constraints** - the things that must happen before the top skin is glued, which no registry symbol can hold |
 | [`tramming.md`](tramming.md) | Roll by **shimming the shelf**, nod still open, and why the carriage plate joint is deliberately not adjustable |
 | [`machining.md`](machining.md) | **One trip, so design ahead of the build.** One WCS origin per plate, one reference rail, and what mating hardware to take |
-| [`steel-prep.md`](steel-prep.md) | **Scale off, paint on** - cleaning the three steel parts and coating them. Its own printable sheet, [`steel-prep.html`](steel-prep.html), because it is read standing over the parts |
+| [`steel-prep.md`](steel-prep.md) | **Scale off, paint on** - cleaning the three steel parts and coating them. Its own printable sheet, [`steel-prep.html`](../docs/steel-prep.html), because it is read standing over the parts |
 | [`open-items.md`](open-items.md) | Everything still unmeasured, grouped by where it came from |
 
 ## FLAG: The dimensional prose is archived
 
-Six files moved to [`archive/`](archive/) on 2026-10-11: **torsion-box**,
+Six files moved to [`archive/`](archive) on 2026-10-11: **torsion-box**,
 **lateral-stiffness**, **x-gantry-end-plates**, **z-carriage**, **y-beam-support** and
 **outboard-plate**. They were walkthroughs of dimension chains that
 [`../dimensions/registry.toml`](../dimensions/registry.toml) now owns, and they kept drifting

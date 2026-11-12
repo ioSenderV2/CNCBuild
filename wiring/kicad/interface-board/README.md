@@ -15,7 +15,7 @@ the E-stop contactor's block. See
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
-| `interface-board.kicad_pcb` | **REV B, this branch: 133 x 132 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal, plus the 36 V pours. 27.2 sq in. **Top half MACHINE IN, bottom half RP23 OUT.** The lid gets cut to match the board. The four M3 holes are **at the corners** - 22,4 / 125,4 / 5,127.3 / 127,127.3 from the top-left; [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) is the drilling drawing and regenerates from this file. **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
+| `interface-board.kicad_pcb` | **REV B, this branch: 133 x 132 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal, plus the 36 V pours. 27.2 sq in. **Top half MACHINE IN, bottom half RP23 OUT.** The lid gets cut to match the board. The four M3 holes are **at the corners** - 22,4 / 125,4 / 5,127.3 / 127,127.3 from the top-left; [`../../../docs/drawings/board-mounting.html`](../../../docs/drawings/board-mounting.html) is the drilling drawing and regenerates from this file. **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper from the placed footprints - the Rev B rewrite of the channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. GND and +12V are inner-plane zones and route themselves (every pad on both nets is through-hole); signals run as F.Cu verticals into three packed B.Cu lane corridors. Verticals cross a connector row on searched columns, 0.70 mm apart - track-past-via, not just track-track - with jogs in the gap above the row. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; invoice alongside. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
@@ -213,7 +213,7 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
    gerbers are cut. Nothing in `fab/` describes Rev B - the zip there is Rev A's order.
 2. **Lid cutout and mounting.** 133 x 132 against Rev A's 210 x 94, M3 at the four
    corners - 22,4 / 125,4 / 5,127.3 / 127,127.3 - the regenerated
-   [`board-mounting.html`](../../../machine/drawings/board-mounting.html) has the drawing.
+   [`board-mounting.html`](../../../docs/drawings/board-mounting.html) has the drawing.
 3. **4-layer gerber export.** Done for the quote - `fab/oshpark-revb/` holds the package and
    the zip. Regenerate it after any board change, and **do not overwrite `fab/oshpark/`**,
    which is Rev A's order record.

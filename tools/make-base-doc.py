@@ -7,7 +7,7 @@ before the box and the legs before it.
 
     python tools/make-base-doc.py [--kerf 1.6] [--trim 1.6]
 
-Writes machine/drawings/base-construction.html and prints the sheet summary.
+Writes docs/drawings/base-construction.html and prints the sheet summary.
 
 WHY IT SHARES make-box-doc's PACKER rather than carrying its own: the two
 documents answer the same question about the same sheets, and a second copy of a
@@ -40,7 +40,7 @@ _cspec = importlib.util.spec_from_file_location(
 cutdoc = importlib.util.module_from_spec(_cspec)
 _cspec.loader.exec_module(cutdoc)
 
-OUT = HERE.parent / "machine" / "drawings" / "base-construction.html"
+OUT = HERE.parent / "docs" / "drawings" / "base-construction.html"
 SHEETS = boxdoc.SHEETS
 
 ON_5x5 = "5 x 5"                  # the two central wall laminations, and only those

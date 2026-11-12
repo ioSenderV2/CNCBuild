@@ -25,7 +25,7 @@
 
   WHY THE ZIP IS AT THE END AND NOT A STEP OF ITS OWN: three of its four members
   are written by steps 3 to 5 and the fourth is the pack from step 9. Zipping
-  earlier would ship whatever was lying in machine/drawings from last time,
+  earlier would ship whatever was lying in docs/drawings from last time,
   which is exactly the stale-copy failure this repo generates STATUS.md to avoid.
 
   THE CHECKS RUN BEFORE THE PDFs ON PURPOSE. A failed check means the model or
@@ -81,7 +81,7 @@ try {
 
     # 2-7. the generators, in the order their outputs feed each other
     Step 'VALUES.md' @('tools/dims.py', 'md', '-o', 'dimensions/VALUES.md')
-    Step 'registry.html' @('tools/dims.py', 'html', '-o', 'dimensions/registry.html')
+    Step 'registry.html' @('tools/dims.py', 'html', '-o', 'docs/registry.html')
     Step 'fusion-parameters.csv' `
         @('tools/dims.py', 'fusion', '-o', 'dimensions/fusion-parameters.csv')
     Step 'fasteners.html' @('tools/make-fasteners.py')

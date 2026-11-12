@@ -271,7 +271,7 @@ OPEN: Two cross-checks belong with that test and are not yet done:
   condition is not what this chapter assumed** — and the measurement to revisit is the 930 mm and
   the BK12 preload, not the motor.
 
-The reading goes in [`../commissioning/`](../commissioning/), which outranks every computed figure
+The reading goes in [`../commissioning/`](../commissioning), which outranks every computed figure
 in this chapter.
 
 ## What would change the answer

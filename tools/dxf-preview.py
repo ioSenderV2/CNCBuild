@@ -3,7 +3,7 @@
 
     python tools/dxf-preview.py
 
-Writes one HTML per group in GROUPS below, into machine/drawings/dxf/;
+Writes one HTML per group in GROUPS below, into docs/drawings/dxf/;
 make-pdf.ps1 prints them.
 
 IT PARSES THE WRITTEN BYTES, not make-dxf.py's own data. That is the whole
@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "machine" / "drawings" / "dxf"
+SRC = ROOT / "docs" / "drawings" / "dxf"
 
 # THE SPLIT IS HIS, BY WHAT GETS QUOTED TOGETHER - and it now falls on material
 # because the reason it did not has gone: the fins were sent on their own to

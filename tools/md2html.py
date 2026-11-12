@@ -38,7 +38,7 @@ it is genuinely useful - but not on the page the work is read from.
 So BOTH are VIEWS, never sources. Nothing is specified in either for the first time and
 nothing in the record is summarised - every heading and every line of body text comes
 through verbatim. If one of these files and a `machine/*.md` file disagree, the `.md` file
-wins, exactly as machine/drawings/README.md says of the drawings.
+wins, exactly as docs/drawings/README.md says of the drawings.
 
 A new decision goes into a chapter, and then into assembly.md if it changes what gets built.
 Writing the reasoning into assembly.md is the failure this split exists to prevent.
@@ -59,8 +59,8 @@ is precisely where a hand-rolled parser drops a table row silently.
 
     python -m pip install markdown
 
-LINKS, AND WHY THE OUTPUT GOES AT THE REPO ROOT
------------------------------------------------
+LINKS, AND WHY EVERY HREF IS WRITTEN FOR docs/
+----------------------------------------------
 Measured 2026-10-02 by printing a test page and reading the PDF's annotation dictionary:
 headless Edge preserves `<a href>` as real PDF link annotations, resolving RELATIVE hrefs
 against the HTML's own location at print time and writing the result in as an absolute
@@ -68,8 +68,11 @@ against the HTML's own location at print time and writing the result in as an ab
 
 Two consequences:
 
-  * the HTML must sit at the REPO ROOT, so that `machine/photos/x.jpg` resolves to the real
-    file - every link in the source markdown is rebased accordingly;
+  * the HTML lives in docs/ (his call, 2026-11-11 - every reader document in one folder),
+    so every link in the source markdown is rebased for that home: repo files gain one
+    `../`, and targets already inside docs/ become sibling references. rebase() is where
+    that rule lives, and the photo cache sits at docs/build-photos so the embedded
+    photographs stay sibling-relative too;
   * a `file:///` link only resolves on a machine holding this checkout. The internal jumps
     and the table of contents work anywhere; the links out to photos, datasheets and the
     shop pack do not work on paper. That is accepted, not overlooked.
@@ -81,6 +84,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import posixpath
 import re
 import sys
 from pathlib import Path
@@ -94,7 +98,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import subst                                                  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-PHOTO_CACHE = ROOT / "build-photos"   # print-sized copies; gitignored, rebuilt on demand
+PHOTO_CACHE = ROOT / "docs" / "build-photos"   # print-sized copies beside the documents
+                                               # that embed them; gitignored, rebuilt on demand
 
 # Long edge in pixels, and JPEG quality. See prepare_photos() for why these are enough.
 PHOTO_MAX_PX = 1100
@@ -136,11 +141,11 @@ ORDER = [
 # weighed and what a figure used to be. Mixing them is what made one document that could not be
 # worked from: a page carrying both is arguing with itself while somebody holds a drill.
 #
-# Neither is authoritative. The .md files are, exactly as machine/drawings/README.md says of
+# Neither is authoritative. The .md files are, exactly as docs/drawings/README.md says of
 # the drawings.
 DOCS = {
     "build": {
-        "out": "build-document.html",
+        "out": "docs/build-document.html",
         "order": ["assembly.md"],
         "tab": "CNCBuild - build document",
         "h1": "CNCBuild",
@@ -158,12 +163,12 @@ DOCS = {
             "<p><strong>An item marked &#9888; Open is not specified anywhere in this"
             " repo.</strong> It is not an omission from this document &mdash; do not fill one"
             " in from a catalogue or from inference.</p>"
-            "<p><strong>Measured values live in <a href=\"commissioning/\">commissioning/</a>"
+            "<p><strong>Measured values live in <a href=\"../commissioning/\">commissioning/</a>"
             " and outrank every computed figure here.</strong></p>"
         ),
     },
     "record": {
-        "out": "design-record.html",
+        "out": "docs/design-record.html",
         "order": None,            # filled from ORDER below
         "tab": "CNCBuild - design record",
         "h1": "CNCBuild &mdash; design record",
@@ -182,7 +187,7 @@ DOCS = {
             " <code>end-plates-risers-and-spindle.md</code>, until 2026-10-02. The split was"
             " verbatim; the per-file note recording it is omitted here rather than repeated"
             " ten times.</p>"
-            "<p><strong>Measured values live in <a href=\"commissioning/\">commissioning/</a>"
+            "<p><strong>Measured values live in <a href=\"../commissioning/\">commissioning/</a>"
             " and outrank every computed figure in this document.</strong></p>"
         ),
     },
@@ -195,7 +200,7 @@ DOCS = {
     # registry - it names no dimension. So it can be a file in the repo rather than something
     # regenerated before every print. Add a link to this sheet and it has to move to the root.
     "steel": {
-        "out": "machine/steel-prep.html",
+        "out": "docs/steel-prep.html",
         "order": ["steel-prep.md"],
         "tab": "CNCBuild - steel prep",
         "h1": None,              # the chapter's own h1 is the page's heading
@@ -212,7 +217,7 @@ DOCS = {
     # document from a second source directory and the reason the hardcoded machine/ came out
     # of rebase() and the photo scan.
     "wiring": {
-        "out": "wiring-document.html",
+        "out": "docs/wiring-document.html",
         "dir": "wiring",
         "order": [
             "README.md",
@@ -231,7 +236,7 @@ DOCS = {
             " summarised. <strong>If this document and a <code>.md</code> file disagree, the"
             " <code>.md</code> file wins</strong> and this copy is stale - regenerate it with"
             " <code>tools/md2html.py --doc wiring</code>.</p>"
-            "<p><strong>The drawing is <a href=\"wiring/panel-schematic.html\">"
+            "<p><strong>The drawing is <a href=\"panel-schematic.html\">"
             "panel-schematic.html</a>, which is not part of this document.</strong> Five sheets"
             " with wire colour and gauge on every run, maintained by hand - it is derived from"
             " the prose here, never the other way round.</p>"
@@ -239,13 +244,13 @@ DOCS = {
             " not fill one in from a catalogue or from inference. FLAG marks a statement this"
             " file used to make and no longer does, kept so it cannot be reinstated by"
             " accident.</p>"
-            "<p><strong>Measured values live in <a href=\"commissioning/\">commissioning/</a>"
+            "<p><strong>Measured values live in <a href=\"../commissioning/\">commissioning/</a>"
             " and outrank every computed figure here.</strong></p>"
         ),
     },
 }
 
-# The shop pack's own sheets, by the id anchors added to machine/drawings/shop-pack.html.
+# The shop pack's own sheets, by the id anchors added to docs/drawings/shop-pack.html.
 SHEETS = [
     ("sheet-1", "Sheet 1 - Front Y end plate / Z riser"),
     ("sheet-2", "Sheet 2 - X gantry end plate"),
@@ -367,7 +372,7 @@ def slugger(prefix: str):
 
 def rebase(href: str, chapters: dict[str, str], src: str = "machine",
            slug: str = "") -> str:
-    """Rewrite one href for an HTML file living at the repo root.
+    """Rewrite one href for an HTML file living in docs/.
 
     Links between the chapters become internal anchors; everything else is rebased from the
     source directory to the root so the relative path still points at a real file. `src` is
@@ -388,10 +393,16 @@ def rebase(href: str, chapters: dict[str, str], src: str = "machine",
     if href in chapters:                 # chapter to chapter -> a page jump
         return "#" + chapters[href]
     if href == "README.md":              # the source directory's own index
-        return f"{src}/README.md"
-    if href.startswith("../"):           # already relative to the root
-        return href[3:]
-    return f"{src}/{href}"               # anything else inside the source directory
+        root_rel = f"{src}/README.md"
+    elif href.startswith("../"):         # already relative to the root
+        root_rel = href[3:]
+    else:                                # anything else inside the source directory
+        root_rel = f"{src}/{href}"
+    # The documents live in docs/ since 2026-11-11, so a root-relative path gains
+    # one ../ - except a path into docs/ itself, which becomes a sibling reference.
+    if root_rel.startswith("docs/"):
+        return root_rel[len("docs/"):]
+    return "../" + root_rel
 
 
 HREF_RE = re.compile(r'href="([^"]*)"')
@@ -428,15 +439,35 @@ def prepare_photos(photo_dir: Path, out_dir: Path, rebuild: bool = False) -> tup
 
 
 def load_captions(photos: Path) -> dict[str, str]:
-    """Read the caption table out of machine/photos/README.md, rendered to inline HTML."""
+    """Read the caption table out of machine/photos/README.md, rendered to inline HTML.
+
+    A caption may carry a link, and the caption's own base is the photos folder - not the
+    chapter directory rebase() serves. Found the hard way on 2026-11-11: a caption linking
+    ../../linear-encoder/controller-board.md rendered verbatim into a document where that
+    path pointed outside the repo, and a dead link renders exactly like a live one. So
+    caption hrefs get resolved from the photos folder here, then shifted for docs/ the same
+    way rebase() shifts everything else.
+    """
     readme = photos / "README.md"
     if not readme.exists():
         sys.exit(f"ERROR: {readme} not found - the captions have no source")
+    photos_rel = photos.resolve().relative_to(ROOT).as_posix()
+
+    def fix_href(m: re.Match) -> str:
+        href = m.group(1)
+        if href.startswith("#") or href.startswith(("http://", "https://", "mailto:")):
+            return m.group(0)
+        root_rel = posixpath.normpath(posixpath.join(photos_rel, href))
+        if root_rel.startswith("docs/"):
+            return f'href="{root_rel[len("docs/"):]}"'
+        return f'href="../{root_rel}"'
+
     inline = markdown.Markdown(extensions=["extra"])
     out: dict[str, str] = {}
     for name, caption in CAPTION_RE.findall(readme.read_text(encoding="utf-8")):
         inline.reset()
-        out[name] = inline.convert(caption).removeprefix("<p>").removesuffix("</p>")
+        rendered = inline.convert(caption).removeprefix("<p>").removesuffix("</p>")
+        out[name] = HREF_RE.sub(fix_href, rendered)
     return out
 
 
@@ -555,7 +586,7 @@ def render(key: str, md_dir: Path, captions: dict[str, str], on_disk: list[str],
     sheet_block = ""
     if spec["sheets"]:
         sheets = "".join(
-            f'<li><a href="machine/drawings/shop-pack.html#{i}">{html.escape(t)}</a></li>'
+            f'<li><a href="drawings/shop-pack.html#{i}">{html.escape(t)}</a></li>'
             for i, t in SHEETS
         )
         sheet_block = f"""
@@ -565,7 +596,7 @@ different cycle. These links open the pack at the named sheet. <strong>They reso
 machine holding this checkout</strong> &mdash; on paper they are inert, and the table of
 contents jumps are the ones that always work.</p>
 <ol>{sheets}</ol>
-<p><a href="machine/drawings/README.md">The rules that folder follows</a> &mdash; derived never
+<p><a href="drawings/README.md">The rules that folder follows</a> &mdash; derived never
 authoritative, unknowns marked never invented, one datum per plate.</p>"""
 
     # A document with "front": False carries neither - see DOCS["steel"] for why.

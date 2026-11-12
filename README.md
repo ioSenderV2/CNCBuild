@@ -9,10 +9,10 @@ folder was the wrong home for them.
 
 | Folder | What is in it |
 |---|---|
-| [`machine/`](machine/) | The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons |
-| [`linear-encoder/`](linear-encoder/) | Magnetic linear scales + AS5311 + ESP32-S3 → CAN → grblHAL. The most developed subsystem; design complete, nothing built |
-| [`commissioning/`](commissioning/) | Measurements taken **from the machine** - travels, squaring, tape extents. The authority when the config disagrees |
-| [`wiring/`](wiring/) | How the boxes connect - the DB37 between the controller box and the remote axis breakout box |
+| [`machine/`](machine) | The build itself: extrusions, rails, screws, plates, and the mechanical decisions with their reasons |
+| [`linear-encoder/`](linear-encoder) | Magnetic linear scales + AS5311 + ESP32-S3 → CAN → grblHAL. The most developed subsystem; design complete, nothing built |
+| [`commissioning/`](commissioning) | Measurements taken **from the machine** - travels, squaring, tape extents. The authority when the config disagrees |
+| [`wiring/`](wiring) | How the boxes connect - the DB37 between the controller box and the remote axis breakout box |
 
 ## Generated views - regenerate, never edit
 
@@ -24,7 +24,7 @@ hand-maintained summary drifts from what it summarises. That is not hypothetical
 |---|---|
 | **`tools\regen.ps1`** | **everything derived, in dependency order, ending with `CNC Build.zip`.** The registry check first, then VALUES/registry.html/fusion CSV, fasteners, the cut list, the 3D model, the shop pack tallies, STATUS and INDEX, the four checkers, then the PDFs - and `make-pdf` bundles the zip on a clean print. `-NoPdf` stops after the checkers and says plainly that the PDFs and the zip are then stale. **This is the one to run**; the rows below are what it calls |
 | `python tools/status.py all` | [`STATUS.md`](STATUS.md) - every open item, harvested from the SETTLED: OPEN: FLAG: REJECTED: markers in the prose. [`INDEX.md`](INDEX.md) - every heading in the repo |
-| `tools\make-pdf.ps1` | **`build-document.pdf`** - the whole mechanical design as one printable file: the thirteen `machine/*.md` files in reading order, a clickable contents, all fifteen photographs embedded with their captions, and links into the shop pack. ~4.4 MB, 97 pages. **Untracked** - rebuild it, do not commit it |
+| `tools\make-pdf.ps1` | **`docs/build-document.pdf`** - the whole mechanical design as one printable file: the thirteen `machine/*.md` files in reading order, a clickable contents, all fifteen photographs embedded with their captions, and links into the shop pack. ~4.4 MB, 97 pages. **Untracked** - rebuild it, do not commit it |
 
 **If a generated file and a `.md` file disagree, the `.md` file wins** and the generated copy
 is stale. The PDF needs two packages - `python -m pip install markdown pillow` - the first to

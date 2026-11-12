@@ -10,7 +10,7 @@ the chip rather than a breakout is in
 chip, not a breakout*; this file is the board itself.
 
 Status: **ordered from OSH Park 2026-11-04** - 6 boards (2 sets of 3), $27.50 delivered, order
-nonwzU9u, invoice in [`kicad/sensor-board/fab/oshpark/`](kicad/sensor-board/fab/oshpark/). Three
+nonwzU9u, invoice in [`kicad/sensor-board/fab/oshpark/`](kicad/sensor-board/fab/oshpark). Three
 go on the machine, three are spares. Laid out and routed at 35 mm for the bored-rod mount below,
 DRC clean with schematic parity. The jack is the SMT CRJ068-1-SMT, which removed the through-hole
 height problem entirely. `kicad/sensor-board/layout.py` regenerates all placement and copper.
@@ -53,7 +53,7 @@ Layout facts worth knowing:
    brass shell wants a big tip. Its plastic is the one part that minds a long hot soak,
    which is why it stays off the plate.
 
-KiCad project: [`kicad/sensor-board/`](kicad/sensor-board/).
+KiCad project: [`kicad/sensor-board/`](kicad/sensor-board).
 
 ---
 

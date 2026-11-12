@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate machine/drawings/Interactive_Model.html from the dimension registry.
+"""Generate docs/drawings/Interactive_Model.html from the dimension registry.
 
 Every box in the model is placed from registry values, not from numbers typed
 here. That is the whole point: if a dimension moves and a part stops fitting,
@@ -22,8 +22,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dims import Registry  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "machine" / "drawings" / "Interactive_Model.html"
-VENDOR = ROOT / "machine" / "drawings" / "vendor" / "three.min.js"
+OUT = ROOT / "docs" / "drawings" / "Interactive_Model.html"
+VENDOR = ROOT / "docs" / "drawings" / "vendor" / "three.min.js"
 
 # ---------------------------------------------------------------- the frame
 #
@@ -130,7 +130,7 @@ SHEETS = {
     "Side plate": "9",
     "X sole plate": "5",
 }
-SHOP_PACK = ROOT / "machine" / "drawings" / "shop-pack.html"
+SHOP_PACK = ROOT / "docs" / "drawings" / "shop-pack.html"
 
 
 def sheet_note(label):

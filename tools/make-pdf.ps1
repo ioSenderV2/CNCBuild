@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
   Build the printable documents - build-document.pdf, design-record.pdf and
-  machine/drawings/shop-pack.pdf.
+  docs/drawings/shop-pack.pdf.
 
 .DESCRIPTION
   Two steps: tools/md2html.py renders both HTML files at the repo root, then
@@ -62,26 +62,26 @@ if (-not (Test-Path $edge)) { Write-Host "ERROR: Edge not found at $edge" -Foreg
 
 # The names here must match DOCS in tools/md2html.py.
 $docs = @(
-    [pscustomobject]@{ Key = 'build';  Html = 'build-document.html'; Pdf = 'build-document.pdf' }
-    [pscustomobject]@{ Key = 'record'; Html = 'design-record.html';  Pdf = 'design-record.pdf'  }
-    [pscustomobject]@{ Key = 'pack';   Html = 'machine/drawings/shop-pack.html'
-                                       Pdf  = 'machine/drawings/shop-pack.pdf' }
-    [pscustomobject]@{ Key = 'cutlist'; Html = 'machine/drawings/base-cutlist.html'
-                                        Pdf  = 'machine/drawings/base-cutlist.pdf' }
+    [pscustomobject]@{ Key = 'build';  Html = 'docs/build-document.html'; Pdf = 'docs/build-document.pdf' }
+    [pscustomobject]@{ Key = 'record'; Html = 'docs/design-record.html';  Pdf = 'docs/design-record.pdf'  }
+    [pscustomobject]@{ Key = 'pack';   Html = 'docs/drawings/shop-pack.html'
+                                       Pdf  = 'docs/drawings/shop-pack.pdf' }
+    [pscustomobject]@{ Key = 'cutlist'; Html = 'docs/drawings/base-cutlist.html'
+                                        Pdf  = 'docs/drawings/base-cutlist.pdf' }
     # The quote DXFs drawn back from their own bytes - what the shop receives.
     # TWO REQUESTS, QUOTED SEPARATELY, so two PDFs - one steel, one 6061. They
     # share the key so -Doc dxf still means both and the generator runs once.
     # THE LIST MUST MATCH dxf-preview.py's GROUPS: it is the one place the page
     # names are written twice, so a group renamed there and not here prints a
     # stale PDF from an HTML that no longer exists.
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-1-steel.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-1-steel.pdf' }
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-2-aluminium.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-2-aluminium.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'docs/drawings/dxf/quote-1-steel.html'
+                                       Pdf  = 'docs/drawings/dxf/quote-1-steel.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'docs/drawings/dxf/quote-2-aluminium.html'
+                                       Pdf  = 'docs/drawings/dxf/quote-2-aluminium.pdf' }
     # The third request is the two plates the SHOP supplies the metal for, so
     # their outlines are cuts rather than registration lines - see dxf-preview.
-    [pscustomobject]@{ Key = 'dxf';    Html = 'machine/drawings/dxf/quote-3-carriage-and-z.html'
-                                       Pdf  = 'machine/drawings/dxf/quote-3-carriage-and-z.pdf' }
+    [pscustomobject]@{ Key = 'dxf';    Html = 'docs/drawings/dxf/quote-3-carriage-and-z.html'
+                                       Pdf  = 'docs/drawings/dxf/quote-3-carriage-and-z.pdf' }
 )
 # 'both' still means the two root documents, so an older command line keeps working
 if ($Doc -eq 'both') { $docs = $docs | Where-Object Key -in 'build', 'record' }

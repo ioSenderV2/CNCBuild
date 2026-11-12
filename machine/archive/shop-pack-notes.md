@@ -1,6 +1,6 @@
 # Shop pack notes — archived
 
-The reasoning that used to sit in [the shop pack](../drawings/shop-pack.html), moved out when the pack became a drilling document. **Nothing here is a dimension to work from** - every number that gets drilled is on its own sheet.
+The reasoning that used to sit in [the shop pack](../../docs/drawings/shop-pack.html), moved out when the pack became a drilling document. **Nothing here is a dimension to work from** - every number that gets drilled is on its own sheet.
 
 
 ## Sheet 1

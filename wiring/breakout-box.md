@@ -12,7 +12,7 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 | **36 V, 600 W** power supply | Motor power. **16.5 A across all axes.** Nameplate, 2026-10-12 - mains 220 V at 3.5 A. SETTLED at 36 V, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md) |
 | ~~**12 V, 3 A** buck~~ | SUPERSEDED - see below |
 | ~~**5 V, 3 A** buck~~ | SUPERSEDED - see below |
-| **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board/) |
+| **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board) |
 
 FLAG: **NEITHER BUCK IS IN THE DESIGN ANY MORE - the 12 V is a MEAN WELL MDR off the mains.** Settled
 2026-11-05: the cabinet's E-stop contactor feeds a 2 x 8 block whose fourth pair goes to a **DIN-rail
@@ -82,7 +82,7 @@ is logic plus motor supply, not motor phases.
 The part fitted is an **SN04-N** (Haldzemo, 4-pack). **SN04-N2, the NC variant, was ordered
 2026-10-12 and arrives Wednesday 2026-10-14** to replace it - see the fail-direction section below.
 Every row of this table except the output sense is common to both parts. Datasheet in
-[`../manufacturer-assets/`](../manufacturer-assets/) - read off the drawing, not the listing:
+[`../manufacturer-assets/`](../manufacturer-assets) - read off the drawing, not the listing:
 
 | | |
 |---|---|
@@ -145,7 +145,7 @@ Four sensors have to come off, go back on and be re-tested. `$5` inverts the sen
 either part *works* and homing will look correct either way - which is exactly why the swap cannot
 be confirmed by homing alone. **Pull one limit conductor and confirm the machine faults.** That is
 the only check that tells the two parts apart, and it is a commissioning measurement, not a
-decision: it belongs in [`../commissioning/`](../commissioning/) once taken.
+decision: it belongs in [`../commissioning/`](../commissioning) once taken.
 
 **It also restores a property the DB37 was getting for free and then lost.** With NC limits, pulling
 the interconnect faults the machine; with NO it does not. See

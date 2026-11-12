@@ -9,7 +9,7 @@ in [`README.md`](README.md), and it is a separate printout. **Where this documen
 disagree, the chapter wins.**
 
 **Drilled hole coordinates are not here.** They are on the sheets in
-[`drawings/shop-pack.html`](drawings/shop-pack.html), one sheet per part. This document says which
+[`drawings/shop-pack.html`](../docs/drawings/shop-pack.html), one sheet per part. This document says which
 parts meet, with what hardware, and when.
 
 OPEN: **Items marked Open are not yet specified anywhere in this repo.** They are not omissions from
@@ -760,7 +760,7 @@ The machine jigs itself for that measurement, so nothing has to be computed:
 | Their coplanarity and parallelism | the **flat surface** they are assembled on, plus the 9 mm reamed holes absorbing the error |
 | The box's top skin width | **measured off that assembly**, once it is standing and square |
 
-**Record the measured width in [`../commissioning/`](../commissioning/) before cutting skins.** Do
+**Record the measured width in [`../commissioning/`](../commissioning) before cutting skins.** Do
 not let a nominal or catalogue figure substitute for it.
 
 OPEN: **Bias the top skin wide, never narrow.** The skin's width sets the distance between the two
@@ -1017,7 +1017,7 @@ into the tenons.** Gravity and 99 mm of engagement hold the box, and the strap h
 ### Glue up — the order, and why the top stays loose
 
 The six glue joints and what each one carries are in
-[`drawings/torsion-box-construction.html`](drawings/torsion-box-construction.html), chapter 5, with
+[`drawings/torsion-box-construction.html`](../docs/drawings/torsion-box-construction.html), chapter 5, with
 the Domino stations. **Two per web corner, eight in all**, and **a few per side on the outer
 laminations** — those are the two joints with nothing else locating them. FLAG: **No Dominos in the
 rib ends.** Each rib is already located by its notches and by the bottom skin, so pinning its ends
@@ -1750,7 +1750,7 @@ that, not the plywood itself, is the thing the shellac coat is guarding against.
 - **Set the removable packers on the upper grid** before the move; take them out on arrival.
 
 **Weigh the assembly on a weighing pallet jack** when it is built, and put the figure in
-[`../commissioning/`](../commissioning/).
+[`../commissioning/`](../commissioning).
 
 ---
 

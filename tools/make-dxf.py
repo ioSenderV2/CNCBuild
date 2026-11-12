@@ -3,7 +3,7 @@
 
     python tools/make-dxf.py
 
-Writes machine/drawings/dxf/*.dxf. HIS STOCK SIZES, not the registry's part
+Writes docs/drawings/dxf/*.dxf. HIS STOCK SIZES, not the registry's part
 sizes: he is supplying the material, so the outline is the piece he hands over
 and any excess falls past the holes rather than being trimmed off a drawing.
 
@@ -32,8 +32,8 @@ import sys
 from pathlib import Path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PACK = os.path.join(HERE, '..', 'machine', 'drawings', 'shop-pack.html')
-OUT = os.path.join(HERE, '..', 'machine', 'drawings', 'dxf')
+PACK = os.path.join(HERE, '..', 'docs', 'drawings', 'shop-pack.html')
+OUT = os.path.join(HERE, '..', 'docs', 'drawings', 'dxf')
 
 sys.path.insert(0, HERE)
 import subst                                                     # noqa: E402

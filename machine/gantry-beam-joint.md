@@ -4,8 +4,8 @@
 stacked**, 60 mm wide by 120 mm tall, 1000 mm long. This file records how they are tied together, why the obvious methods do
 not work on this profile, and which numbers are measured versus estimated.
 
-Photographs of the parts are in [`photos/`](photos/); the 8020 cross-section drawing is in
-[`../manufacturer-assets/`](../manufacturer-assets/), untracked.
+Photographs of the parts are in [`photos/`](photos); the 8020 cross-section drawing is in
+[`../manufacturer-assets/`](../manufacturer-assets), untracked.
 
 The repo's standing rule applies throughout: anything below marked **measured** came off the parts on
 the bench. Anything marked **estimate** is arithmetic and is labelled as such, because it will

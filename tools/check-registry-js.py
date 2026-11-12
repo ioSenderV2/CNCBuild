@@ -39,7 +39,7 @@ for _stream in (sys.stdout, sys.stderr):
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-PAGE = ROOT / "dimensions" / "registry.html"
+PAGE = ROOT / "docs" / "registry.html"
 
 HARNESS = r"""
 const html = DATA.html, script = DATA.script;

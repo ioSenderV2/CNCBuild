@@ -90,13 +90,6 @@ the interface, not this file.
 - FLAG: [L1698](machine/assembly.md#tram-here-with-the-machine-bolted-down) — *10. Fit the spindle and tram / Tram here, with the machine…*<br>Slot the roll shim open from one edge at Y 15 and Y 45, so it slides in with the two vertical M8 loosened rather than removed. A plain rectangle means pulling the beam off.
 - OPEN: [L1703](machine/assembly.md#tram-here-with-the-machine-bolted-down) — *10. Fit the spindle and tram / Tram here, with the machine…*<br>Range is capped at about 0.5 mm by the 9 mm bolt clearance, so the beam is deliberately not centred in those holes once shimmed.
 
-## [machine/drawings/README.md](machine/drawings/README.md)  (4)
-
-- FLAG: [L68](machine/drawings/README.md#what-has-been-sent-out-and-at-which-commit) — *Drawings / What has been sent out, and at which commit*<br>Changing either of those two plates now changes an order in flight. The drawings will regenerate happily and say nothing about it.
-- OPEN: [L88](machine/drawings/README.md#not-drawn-yet---two-trip-parts-have-no-sheet) — *Drawings / Status*<br>Not drawn yet - two trip parts have no sheet
-- FLAG: [L103](machine/drawings/README.md#in-progress-a-12-baltic-birch-mockup) — *Status / In progress: a 1/2" baltic birch mockup*<br>Plywood is for fit, never for transfer. Its thickness runs under 12 mm and varies, and an M5 threaded insert needs a far larger bore than a 4.2 mm tap drill - so anywhere the design has fought for edge distance or web, an insert will not sit where the real hole does. A plywood plate must never go to the mill as a template: this folder is derived-never-authoritative, and a physical part is far more persuasive than a sheet.
-- OPEN: [L111](machine/drawings/README.md#what-still-gates-drilling) — *Status / What still gates drilling*<br>No plate in this pack has a complete hole schedule yet, and that is the pack's main finding. What it does have is every dimension the repo actually holds, with the gaps named - which turns "design ahead of the build" from an instruction into a list. Two questions gate cuts that cannot be undone, and each needs a part or the mill in front of you - see ../open-items.md:
-
 ## [machine/egg-crate.md](machine/egg-crate.md)  (1)
 
 - FLAG: [L79](machine/egg-crate.md#five-things-to-get-right) — *The ribs are egg crate - half-lapped both ways, not blockin…*<br>Keep the drainage notches off the bay centres, which is where these screws now land.
@@ -385,4 +378,4 @@ the interface, not this file.
 
 ---
 
-**291 open** across 39 files.
+**287 open** across 38 files.

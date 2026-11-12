@@ -40,10 +40,10 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Every document md2html.py writes. A new DOCS entry needs its output added here.
 DOCS = [
-    "build-document.html",
-    "design-record.html",
-    "machine/steel-prep.html",
-    "wiring-document.html",
+    "docs/build-document.html",
+    "docs/design-record.html",
+    "docs/steel-prep.html",
+    "docs/wiring-document.html",
 ]
 
 HREF_RE = re.compile(r'href="([^"]+)"')
@@ -61,8 +61,8 @@ def audit(rel: str) -> tuple[int, int, int]:
     anchors = set(ID_RE.findall(html))
     hrefs = sorted(set(HREF_RE.findall(html)))
 
-    # A relative path in steel-prep.html resolves from machine/, not from the repo root,
-    # because that one document deliberately does not sit at the root.
+    # Every document lives in docs/ now, and each one's links resolve from its own
+    # directory - which this already did generically when steel-prep was the outlier.
     base = path.parent
 
     dangling: list[str] = []

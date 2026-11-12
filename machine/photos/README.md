@@ -22,7 +22,7 @@ Two things follow, and they are the rule for adding anything here:
    rule in the [root README](../../README.md).
 
 These are photographs of **this build**, taken by the owner. Third-party material - vendor drawings
-and datasheets - goes to [`../../manufacturer-assets/`](../../manufacturer-assets/) instead, where it
+and datasheets - goes to [`../../manufacturer-assets/`](../../manufacturer-assets) instead, where it
 is deliberately untracked because this repository is public.
 
 ## What each one shows

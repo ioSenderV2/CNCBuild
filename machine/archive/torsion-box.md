@@ -415,7 +415,7 @@ gravity holds. That is the argument for them, rather than "transport" in general
   **tipping is the hazard, not weight.** Long axis fore-aft, strapped.
 - **Mass is a design budget only** - somewhere under half a ton, enough to size a jack and a gate.
   The assembly gets **weighed on a weighing pallet jack** when it is built; that is the only figure
-  worth quoting, and it belongs in [`../commissioning/`](../commissioning/).
+  worth quoting, and it belongs in [`../commissioning/`](../commissioning).
 
 ### Drain ports - and why they cannot go in the bottom skin
 

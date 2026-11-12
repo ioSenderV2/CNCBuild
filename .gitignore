@@ -31,26 +31,28 @@
 #   wiring-document <- the five wiring/*.md   power in, the E-stops, the drives, the ground
 #                                             bar. Added 2026-11-07 because a .md file is
 #                                             unreadable outside an editor
-#   shop-pack       <- machine/drawings/     what to make. The fourteen plate sheets for
+#   shop-pack       <- docs/drawings/        what to make. The fourteen plate sheets for
 #                      shop-pack.html        the machining visit - and the one that gets
 #                                            emailed out. Its HTML IS tracked and is
 #                                            hand-authored, so only the PDF is derived.
 #
-# wiring/panel-schematic.html is NOT here: it is hand-authored and tracked, like shop-pack.
-build-document.html
-build-document.pdf
-design-record.html
-design-record.pdf
-wiring-document.html
-wiring-document.pdf
-machine/drawings/board-mounting.pdf
-machine/drawings/shop-pack.pdf
+# Every reader document lives in docs/ since 2026-11-11 - his call, one folder for all of
+# them. docs/panel-schematic.html is NOT here: it is hand-authored and tracked, like
+# shop-pack.
+docs/build-document.html
+docs/build-document.pdf
+docs/design-record.html
+docs/design-record.pdf
+docs/wiring-document.html
+docs/wiring-document.pdf
+docs/drawings/board-mounting.pdf
+docs/drawings/shop-pack.pdf
 build-photos/
 
 # The send-out bundle - four derived or already-tracked files in one attachment, built by
 # tools/make-bundle.ps1 at the end of a pack print. Every member is in the repo or
 # generated from it, so the zip is a convenience and never a source.
-machine/drawings/CNC Build.zip
+docs/drawings/CNC Build.zip
 
 # tools/ gets imported as modules by the pack checks
 __pycache__/

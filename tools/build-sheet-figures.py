@@ -30,8 +30,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-PACK = HERE.parent / "machine" / "drawings" / "shop-pack.html"
-DXF = HERE.parent / "machine" / "drawings" / "dxf"
+PACK = HERE.parent / "docs" / "drawings" / "shop-pack.html"
+DXF = HERE.parent / "docs" / "drawings" / "dxf"
 
 def _load(stem, name):
     """Import a tools/ module whose filename has a hyphen in it."""

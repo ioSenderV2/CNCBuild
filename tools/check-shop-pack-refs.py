@@ -23,7 +23,7 @@ except NameError:   # py3
     unichr = chr
 
 PACK = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                    '..', 'machine', 'drawings', 'shop-pack.html')
+                    '..', 'docs', 'drawings', 'shop-pack.html')
 
 
 def text_of(html):

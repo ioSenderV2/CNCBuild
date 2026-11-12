@@ -13,7 +13,7 @@ Both were caught by working the grip stack by hand. This does that arithmetic.
     python tools/make-fasteners.py          # report + write the page
     python tools/make-fasteners.py --gaps   # just the joints missing a length
 
-Writes machine/drawings/fasteners.html. No third-party imports.
+Writes docs/drawings/fasteners.html. No third-party imports.
 """
 import argparse
 import re
@@ -26,7 +26,7 @@ from dims import Registry                                    # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 SRC = HERE.parent / "dimensions" / "fasteners.toml"
-OUT = HERE.parent / "machine" / "drawings" / "fasteners.html"
+OUT = HERE.parent / "docs" / "drawings" / "fasteners.html"
 
 # What each destination gives you, and how far a bolt may safely run past it.
 # FLAG: THESE ARE NOT ENGAGEMENT FIGURES AND MUST NOT BE READ AS ONE. They say

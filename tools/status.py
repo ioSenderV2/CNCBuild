@@ -56,7 +56,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Directories whose prose carries decisions.
 #
-# machine/drawings/README.md IS harvested, deliberately: that folder is derived by its
+# docs/drawings/README.md IS harvested, deliberately: that folder is derived by its
 # own rule, but its STALE banner is a real open item about the pack itself and belongs
 # in the list. Only .md is read, so the hand-drawn sheets never leak in.
 SOURCE_DIRS = ["machine", "linear-encoder", "commissioning", "wiring"]
@@ -318,7 +318,7 @@ it lives in. That was the real gap: on 2026-10-02 the torsion box's mounting was
 for in the end-plate file and declared missing.
 
 Numbers are not here — [`dimensions/VALUES.md`](dimensions/VALUES.md) is authoritative
-for those. Drawings are not here either; `machine/drawings/` is derived by its own rule."""
+for those. Drawings are not here either; `docs/drawings/` is derived by its own rule."""
 
 
 def cmd_status(_a) -> int:

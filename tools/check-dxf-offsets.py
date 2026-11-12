@@ -24,7 +24,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "machine" / "drawings" / "dxf"
+SRC = ROOT / "docs" / "drawings" / "dxf"
 
 # dxf-preview has a hyphen in its name, so it cannot be imported by name
 _spec = importlib.util.spec_from_file_location(

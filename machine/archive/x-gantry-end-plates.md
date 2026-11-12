@@ -520,7 +520,7 @@ before the move, already too tight for a tapped M8.
 
 **Nothing in the file connected the two.** The hole was a literal computed from a face that moved, with
 no link back - the same failure as the "1.8 mm proud" figure, and the reason
-[`../dimensions/`](../dimensions/) now exists. **Dimension from the plate's own WCS origin; the beam is not something to measure from, it is a
+[`../dimensions/`](../dimensions) now exists. **Dimension from the plate's own WCS origin; the beam is not something to measure from, it is a
 part that moves.**
 
 ### Why both horizontals sit at Y 30, stacked in Z

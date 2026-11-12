@@ -243,7 +243,7 @@ FLAG: **The surplus is what the casting is rotated into.** It does not drop stra
 window is not simply 9.525 + 27 = 36.5, and it retires the earlier note that 50 was a guess expected
 to shrink. OPEN: **Mark the bar's underside on the plate** - 9.525 below the window top - because the
 lower opening is the only part the casting can use. **A plywood mockup is being cut to find the real number** - see the plate list in
-[`drawings/README.md`](../drawings/README.md). Nothing downstream depends on it: the window's tight
+[`drawings/README.md`](../../docs/drawings/README.md). Nothing downstream depends on it: the window's tight
 dimension is the 19 mm outboard strip, which is set by the width, and the bottom edge at 170 is far
 from the 60 mm tongue at the plate's base.
 

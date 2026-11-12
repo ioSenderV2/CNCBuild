@@ -44,7 +44,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-PAGE = ROOT / "machine" / "drawings" / "Interactive_Model.html"
+PAGE = ROOT / "docs" / "drawings" / "Interactive_Model.html"
 
 # Faces are coincident by construction, so the tolerance is for float noise in
 # the generator's arithmetic and nothing else.

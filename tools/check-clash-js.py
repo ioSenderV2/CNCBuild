@@ -29,7 +29,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-PAGE = ROOT / "machine" / "drawings" / "Interactive_Model.html"
+PAGE = ROOT / "docs" / "drawings" / "Interactive_Model.html"
 
 
 def load_generator():

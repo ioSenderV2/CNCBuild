@@ -104,7 +104,7 @@ the rest of this file - it says the term is not negligible, not what the number 
 
 FLAG: **AND THE ENCODERS CANNOT SEE IT.** The linear scales measure along each axis; a plate swaying
 across its weak axis moves the tool without moving the count. So this is not a term the position
-feedback in [`../linear-encoder/`](../linear-encoder/) will ever report, which is exactly why it has
+feedback in [`../linear-encoder/`](../linear-encoder) will ever report, which is exactly why it has
 to be got right in metal.
 
 **If it is braced rather than widened, the rule is spacing and not count.** Moment capacity comes from

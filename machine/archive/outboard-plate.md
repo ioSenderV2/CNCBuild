@@ -271,7 +271,7 @@ It also means the machine **jigs itself** for that measurement, and nothing has 
 
 So there is no box-width number to derive and no X-span figure to look up first. The sequence is
 **assemble, measure, then cut skins**, and the measured value belongs in
-[`../commissioning/`](../commissioning/) when it is taken.
+[`../commissioning/`](../commissioning) when it is taken.
 
 Two consequences worth holding on to:
 

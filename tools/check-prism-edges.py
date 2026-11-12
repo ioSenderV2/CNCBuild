@@ -38,8 +38,8 @@ for _stream in (sys.stdout, sys.stderr):
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-PAGE = ROOT / "machine" / "drawings" / "Interactive_Model.html"
-THREE = ROOT / "machine" / "drawings" / "vendor" / "three.min.js"
+PAGE = ROOT / "docs" / "drawings" / "Interactive_Model.html"
+THREE = ROOT / "docs" / "drawings" / "vendor" / "three.min.js"
 
 HARNESS = r"""
 const vm = require('vm');

@@ -61,10 +61,10 @@ GENERATED = {"STATUS.md", "INDEX.md", "VALUES.md", "README.md"}
 # Both are still scannable with --all, because a literal hiding in a generator
 # is worth finding on purpose.
 GENERATED_HTML = {
-    "machine/drawings/Interactive_Model.html": "tools/make-3d.py",
-    "machine/drawings/torsion-box-construction.html": "tools/make-box-doc.py",
-    "machine/drawings/base-construction.html": "tools/make-base-doc.py",
-    "machine/drawings/fasteners.html": "tools/make-fasteners.py",
+    "docs/drawings/Interactive_Model.html": "tools/make-3d.py",
+    "docs/drawings/torsion-box-construction.html": "tools/make-box-doc.py",
+    "docs/drawings/base-construction.html": "tools/make-base-doc.py",
+    "docs/drawings/fasteners.html": "tools/make-fasteners.py",
 }
 
 NUM = re.compile(r"(?<![\w.\-])(\d{1,5}(?:\.\d{1,3})?)(?![\w.]|-\w)")
@@ -147,7 +147,7 @@ def uncaptured(values: set[float], tol: float, pitches: set[float] | None = None
     when an upstream dimension moves it will not move with it. That is exactly
     how the rear plate's X values went stale.
     """
-    f = ROOT / "machine" / "drawings" / "shop-pack.html"
+    f = ROOT / "docs" / "drawings" / "shop-pack.html"
     text = f.read_text(encoding="utf-8")
     sheet, hits = "?", 0
     seen = set()

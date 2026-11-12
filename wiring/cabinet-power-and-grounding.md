@@ -7,7 +7,7 @@ This is the cabinet. [`breakout-box.md`](breakout-box.md) is the box out at the 
 the star rule for the **motor supply returns** specifically; this file is the layer above it - mains, the
 separate logic supply, and the single point every ground meets at.
 
-> **The picture of all of this is [`panel-schematic.html`](panel-schematic.html)** - five sheets with
+> **The picture of all of this is [`panel-schematic.html`](../docs/panel-schematic.html)** - five sheets with
 > wire colour and gauge on every run. It is **derived, never authoritative**: this file is where the
 > decisions and their provenance live, and the drawing is regenerated from them by hand. It is a
 > connection diagram and **not** a DIN rail layout, which gets done with the real components against
@@ -828,7 +828,7 @@ conductor answers the question the live/dead table above takes a paragraph to an
 NOTE: **The DC outputs are not in the scheme and do not need to be** - the 36 V out to the drives,
 the spindle's U/V/W, the sense relay's dry contact. The drawing shows them grey and dashed to say so.
 
-PROCEDURE: **[`panel-schematic.html`](panel-schematic.html) HOLDS THE SCHEME IN ONE PLACE.** Its
+PROCEDURE: **[`panel-schematic.html`](../docs/panel-schematic.html) HOLDS THE SCHEME IN ONE PLACE.** Its
 five colours are defined once as named values at the top of the file and every conductor on every
 sheet refers to **what it is** rather than to a colour. Changing the scheme is five edits there and
 nothing anywhere else - which is the only way the drawing and the panel stay agreeing.
@@ -1034,7 +1034,7 @@ His, 2026-10-12. The output is adjustable and there is a power display on the to
 standing rule at the top of the root README exists because $130 read 889 mm against a real 860 mm
 and quietly cost soft-limit protection. **A rail that can be turned is a rail that can be turned by
 accident**, and the drives alarm and stop above 50 V. PROCEDURE: **Set it, verify it with a meter at
-the drive end, record the reading in [`../commissioning/`](../commissioning/), and mark the
+the drive end, record the reading in [`../commissioning/`](../commissioning), and mark the
 adjustment** - a dab of paint or a note on the case. Do not take 36 V from this page; take it from
 the meter.
 

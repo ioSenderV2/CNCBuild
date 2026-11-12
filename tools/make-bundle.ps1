@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Build machine/drawings/"CNC Build.zip" - the four files that get sent out.
+  Build docs/drawings/"CNC Build.zip" - the four files that get sent out.
 
 .DESCRIPTION
   One attachment instead of four, for the machining visit and for anyone who
@@ -32,7 +32,7 @@
   is checked first and the whole thing stops if one is absent.
 
 .PARAMETER Out
-  Where to write it. Defaults to machine/drawings/CNC Build.zip.
+  Where to write it. Defaults to docs/drawings/CNC Build.zip.
 #>
 [CmdletBinding()]
 param(
@@ -41,10 +41,10 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path -Parent $PSScriptRoot
-$drawings = Join-Path $repo 'machine\drawings'
+$drawings = Join-Path $repo 'docs\drawings'
 if (-not $Out) { $Out = Join-Path $drawings 'CNC Build.zip' }
 
-# Relative to machine/drawings, in the order they are listed above.
+# Relative to docs/drawings, in the order they are listed above.
 $members = @(
     'Interactive_Model.html'
     'shop-pack.pdf'
@@ -60,7 +60,7 @@ foreach ($m in $members) {
     if (Test-Path -LiteralPath $p) { $paths += $p } else { $absent += $m }
 }
 if ($absent.Count) {
-    Write-Host "ERROR: not in machine\drawings, so the zip would be short: $($absent -join ', ')" -ForegroundColor Red
+    Write-Host "ERROR: not in docs\drawings, so the zip would be short: $($absent -join ', ')" -ForegroundColor Red
     Write-Host "  shop-pack.pdf comes from tools\make-pdf.ps1 -Doc pack" -ForegroundColor DarkGray
     Write-Host "  fasteners.html comes from tools\make-fasteners.py" -ForegroundColor DarkGray
     exit 1

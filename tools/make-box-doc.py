@@ -24,7 +24,7 @@ skins are BOX_W x BOX_FORE_AFT and BOX_W is within 8 mm of a 4-foot sheet.
 
     python tools/make-box-doc.py [--kerf 1.6] [--trim 1.6] [--sheet "4 x 8"]
 
-Writes machine/drawings/torsion-box-construction.html and prints the summary.
+Writes docs/drawings/torsion-box-construction.html and prints the summary.
 No third-party imports, same as every other tool here.
 """
 import argparse
@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dims import Registry                                    # noqa: E402
 
 HERE = Path(__file__).resolve().parent
-OUT = HERE.parent / "machine" / "drawings" / "torsion-box-construction.html"
+OUT = HERE.parent / "docs" / "drawings" / "torsion-box-construction.html"
 
 # Sheet sizes to test, in mm. The two Baltic birch formats he asked about.
 #

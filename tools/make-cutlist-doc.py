@@ -3,7 +3,7 @@
 
     python tools/make-cutlist-doc.py
 
-Writes machine/drawings/base-cutlist.html.
+Writes docs/drawings/base-cutlist.html.
 
 WHY IT IS SEPARATE from base-construction.html: that document is about how the
 base GOES TOGETHER, and a cutlist is read at a different moment, by somebody
@@ -35,7 +35,7 @@ _spec = importlib.util.spec_from_file_location("boxdoc", HERE / "make-box-doc.py
 boxdoc = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(boxdoc)
 
-OUT = HERE.parent / "machine" / "drawings" / "base-cutlist.html"
+OUT = HERE.parent / "docs" / "drawings" / "base-cutlist.html"
 
 STRIP_W = 90.0          # a leg strip is RIPPED at 90 and trimmed to 86 dry
 

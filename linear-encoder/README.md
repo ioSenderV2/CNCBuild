@@ -10,8 +10,8 @@ built.**
 | [`controller-board.md`](controller-board.md) | The 4-jack daughter board that sits over the ESP32 module: the no-magnetics rule, the mechanical envelope, and the 5 mm-pin / 14 mm-standoff problem. |
 | [`sensor-board.md`](sensor-board.md) | The AS5311 board in the puck: what goes on each face, the passives, and the connector question the layout is waiting on. |
 | [`hardware-esp32-s3-rs485-can.md`](hardware-esp32-s3-rs485-can.md) | The ESP32 module's 20-pin header map - **not documented on the Waveshare wiki**, only in the schematic. |
-| [`kicad/controller-board/`](kicad/controller-board/) | KiCad project. Schematic drawn and verified against KiCad 10.0.5; **no layout yet**, and the symbols are placeholders to be swapped for real parts. |
-| [`kicad/sensor-board/`](kicad/sensor-board/) | KiCad project. Schematic drawn and verified the same way; **no layout yet**, and the connector footprint is deliberately unresolved (see `sensor-board.md`). |
+| [`kicad/controller-board/`](kicad/controller-board) | KiCad project. Schematic drawn and verified against KiCad 10.0.5; **no layout yet**, and the symbols are placeholders to be swapped for real parts. |
+| [`kicad/sensor-board/`](kicad/sensor-board) | KiCad project. Schematic drawn and verified the same way; **no layout yet**, and the connector footprint is deliberately unresolved (see `sensor-board.md`). |
 | [`../manufacturer-assets/`](../manufacturer-assets/index.html) | The AS5311 datasheet (rev 1.12) and the module schematic. **Untracked** - third-party documents in a public repo. The tracked `index.html` there records where each came from, including the browser-User-Agent trick both waveshare.com URLs need. |
 
 The datasheets are **kept on disk on purpose**: the header map was extracted once, lost, and had to be

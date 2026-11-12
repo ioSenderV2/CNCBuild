@@ -60,7 +60,7 @@ on, so no correction is owed there.
 
 OPEN: **The 94 mm body and 21 mm shaft want checking against the cast stepper frames** before
 anything is bolted up - see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) for the
-frames. Nothing in [`../dimensions/`](../dimensions/) currently carries a motor length.
+frames. Nothing in [`../dimensions/`](../dimensions) currently carries a motor length.
 
 ## The supply voltage - SETTLED at 36 V
 

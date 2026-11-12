@@ -470,7 +470,7 @@ def cmd_html(args) -> int:
     # -o wrote the file and then died on relative_to, which reads as a failed
     # run on a file that is actually there.
     out = (Path(args.output).resolve() if args.output
-           else ROOT / "dimensions" / "registry.html")
+           else ROOT / "docs" / "registry.html")
     sect = _sections(reg.path)
     known = set(reg.dims)
 

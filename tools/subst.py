@@ -93,7 +93,7 @@ def read(path: Path) -> str:
 def render_file(src: Path, dst: Path) -> int:
     """Substitute one file into another, for a document printed directly.
 
-    machine/drawings/shop-pack.html is hand-authored and goes straight to the
+    docs/drawings/shop-pack.html is hand-authored and goes straight to the
     printer, so it cannot be rendered through md2html the way the prose is.
     make-pdf.ps1 prints a substituted copy of it instead, which is what lets
     the pack cite symbols without the braces reaching paper.
@@ -128,7 +128,7 @@ def main() -> int:
                    + list((ROOT / "wiring").rglob("*.md"))
                    + list((ROOT / "commissioning").rglob("*.md"))
                    + list((ROOT / "linear-encoder").rglob("*.md"))
-                   + [ROOT / "machine" / "drawings" / "shop-pack.html"])
+                   + [ROOT / "docs" / "drawings" / "shop-pack.html"])
     used: dict[str, int] = {}
     bad: list[str] = []
     for f in files:
