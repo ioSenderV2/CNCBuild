@@ -65,6 +65,12 @@ answering it from the working tree gives the wrong answer the moment anything is
 | ø6 | cut at 6 and **not** opened out |
 | ø6.8, ø35 | finished sizes, the two they hold well |
 
+NOTE: **the ø6 row is what was ASKED, and the Z plate's delivery overrode it.** That batch
+arrived at a true 6.0, the counterbore's 6.2 pilot would not enter, and every counterbored hole
+was opened to 1/4 in (6.35) here before counterboring — Z_CUT_D and Z_HOLE_D in the registry
+carry the story, and Sheet 4 now says OPEN TO 6.35 rather than NO open-out. The row above stays
+as the record of the request.
+
 FLAG: **Changing either of those two plates now changes an order in flight.** The drawings will
 regenerate happily and say nothing about it.
 
