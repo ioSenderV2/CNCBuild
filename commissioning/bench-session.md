@@ -120,6 +120,15 @@ All four jogging at the rapid you intend to use. Then one axis at a time if the 
 | All four at rapid | | | |
 | All four at half rapid | | | |
 | One axis at rapid | | | |
+| All four, shuttle cycle - peak on the LCD | | | |
+
+**The shuttle cycle is [`shuttle-cycle.nc`](shuttle-cycle.nc)** - all four axes out and back 50
+times as G0 rapids, so the run is spent accelerating and decelerating, which is where the draw
+peaks. It reads higher than constant-speed jogging and is the closest an unloaded bench gets to
+all four at max. Two conditions, both in the file's header: the rapids and accelerations must be
+set to the machine's intended values first, since G0 takes both from the controller settings -
+and if the LCD settles to a steady value mid-move the axes are cruising, so shorten the stroke.
+Still a floor: the real peak is the loaded gantry, measured once the machine stands.
 
 ---
 

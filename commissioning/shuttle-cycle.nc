@@ -1,0 +1,114 @@
+(Shuttle cycle - bench-session.md section 4, the all-four-at-max reading)
+(All four axes shuttle 20 mm out and back, 50 cycles, as G0 rapids.)
+(Y1 is the controller's Y. Y2 is the controller's A.)
+(G0 takes its speed and acceleration from the controller settings - $110-$113)
+(and $120-$123. Set those to the machine's intended values before running, or)
+(the current reading measures the wrong configuration.)
+(Motors restrained first - the plywood sandwich. Nothing on the shafts.)
+(The point is to spend the whole run accelerating and decelerating, which is)
+(where a stepper's draw peaks. If the supply's LCD settles to a steady value)
+(mid-move, the axes are cruising - shrink the 20 until it stops doing that.)
+G21
+G91
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G0 X20 Y20 Z20 A20
+G0 X-20 Y-20 Z-20 A-20
+G90
+M30
