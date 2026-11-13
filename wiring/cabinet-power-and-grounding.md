@@ -1250,12 +1250,15 @@ DVRD contact is closed-when-healthy, so open must read as alarm) and leave cycle
 hold uninverted, or an empty feed hold reads permanently pressed and presents as a machine that
 will not run. Commissioning checks it.
 
-OPEN: 🔴 **WHERE THE CONTACT'S OTHER LEG LANDS IS NOT DECIDED.** The DVRD gives a **dry changeover**,
-so it needs two legs, and **neither the control connector nor its terminal block carries a GND pin** -
-the netlist has ESTOP as J32.3 straight through to J36.3 and nothing else. Either the contact
-switches e-stop against the **12 V supply's GND in the cabinet**, so only one conductor comes down;
-or both legs come down and the second one needs a GND somewhere on the board that the control
-connector does not have. **His call, and it decides the conductor count of whatever run carries it.**
+SETTLED: **ONE CONDUCTOR, SWITCHING AGAINST THE 12 V SUPPLY'S 0 V - his, 2026-11-12.** The 22/2's
+second conductor is spare and unconnected at both ends; the working one goes contact to pin 3.
+🔴 **SO THE CONTACT'S OTHER TERMINAL MUST JUMPER TO THE 12 V SUPPLY'S 0 V INSIDE THE PANEL** -
+that jumper IS the circuit: pull-up, ESTOP, pin 3, up the 22/2, through the contact, into 12 V
+0 V, home to board GND through the 18/6's 12 V return. Without it the contact closes into nothing
+and the machine sits in permanent e-stop - loud, not silent, but down. The commissioning reading
+that proves the loop: rail up, relay happy, pin 3 low. (Neither the control connector nor its
+terminal block carries a GND pin, which is why the return rides the supply's own 0 V - the
+netlist has ESTOP as J32.3 straight through to J36.3 and nothing else.)
 
 OPEN: **IS THE 18/6 SHIELDED?** The standing rule is his own, from the shielded-cable decision:
 every run leaving the enclosure is shielded. If this one is, its drain is one more on the
