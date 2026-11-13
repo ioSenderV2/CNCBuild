@@ -126,7 +126,7 @@ the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 <tr><td>Distribution</td><td><b>2 &times; 8 block</b></td><td>Two switched legs in, four pairs out</td></tr>
 <tr><td>Breakers</td><td>4 &times; 2-pole, <b>all curve C</b></td><td><b>Three on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and the <b>fourth on the 110 V rail</b> across hot and neutral</td></tr>
 <tr><td>Splitter</td><td><b>2 &times; 6 block</b>, 110 V side</td><td>Three pairs used, three spare</td></tr>
-<tr><td>Sense relay</td><td>DIN, <b>230 V coil</b> on pair 4</td><td>Contact to the interface board's e-stop input. <b>Not optional</b> &mdash; the controller survives the E-stop and has to be told</td></tr>
+<tr><td>Sense relay</td><td><b>ATO DVRD-36</b> voltage monitor, <b>across the 36 V rail</b> &mdash; powered by the circuit it watches, no coil feed, pair 4 freed</td><td>Dry contact, terminals <b>15&ndash;18</b>: one conductor of a 22/2 to the interface board's e-stop input, the other contact terminal <b>jumpered to the 12 V supply's V&minus;</b> so the loop closes through the 12 V return. <b>Not optional</b> &mdash; the controller survives the E-stop and has to be told</td></tr>
 <tr><td>Motor supply</td><td>36 V, 600 W</td><td>220 V at 3.5 A in, 36 V at 16.5 A out</td></tr>
 <tr><td>Spindle drive</td><td><b>Huanyang HY02D223B</b></td><td>2.2 kW, 4.4 kVA, 11 A output. R/S/T takes single phase on any two</td></tr>
 <tr><td>Pump contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>Coil AC 230 V &mdash; inrush 11.5 VA, holding 2.8 VA</td></tr>
@@ -205,8 +205,8 @@ circuits are Fig. 2 and Fig. 3.</p>
   <path class="w-l1" d="M103 292 V 384"/><path class="w-l2" d="M127 318 V 384"/>
   <path class="w-l1" d="M318 292 V 384"/><path class="w-l2" d="M342 318 V 384"/>
   <path class="w-l1" d="M533 292 V 384"/><path class="w-l2" d="M557 318 V 384"/>
-  <!-- pair 4 carries no breaker: straight down to the sense relay coil -->
-  <path class="w-l1" d="M748 292 V 508"/><path class="w-l2" d="M772 318 V 508"/>
+  <!-- pair 4 is spare: the DVRD rail sense is powered by the 36 V it watches,
+       so nothing leaves the block here and no conductor is drawn -->
 
   <!-- BREAKERS -->
   <rect class="bx" x="30"  y="384" width="170" height="60" rx="3"/>
@@ -222,8 +222,8 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="q c" x="330" y="439">TYPE C</text>
   <text class="q c" x="545" y="439">TYPE C</text>
   <text class="q c" x="820" y="408">PAIR 4</text>
-  <text class="sm c" x="820" y="424">no breaker &mdash;</text>
-  <text class="sm c" x="820" y="438">a 2 W coil</text>
+  <text class="sm c" x="820" y="424">spare &mdash; the rail</text>
+  <text class="sm c" x="820" y="438">sense needs no coil</text>
 
   <!-- breaker -> load -->
   <path class="w-l1" d="M103 444 V 508"/><path class="w-l2" d="M127 444 V 508"/>
@@ -239,9 +239,9 @@ circuits are Fig. 2 and Fig. 3.</p>
   <rect class="bx2" x="245" y="508" width="170" height="84" rx="3"/>
   <rect class="bx2" x="460" y="508" width="170" height="84" rx="3"/>
   <rect class="bxr" x="675" y="508" width="170" height="84" rx="3"/>
-  <text class="ttl c" x="760" y="531">SENSE RELAY</text>
-  <text class="sm c"  x="760" y="549">coil 230 V</text>
-  <text class="sm c"  x="760" y="565">contact to the controller</text>
+  <text class="ttl c" x="760" y="531">DVRD-36 RAIL SENSE</text>
+  <text class="sm c"  x="760" y="549">across the 36 V rail &mdash;</text>
+  <text class="sm c"  x="760" y="565">powered by what it watches</text>
   <text class="q c"   x="760" y="583">TELLS IT THE DRIVES DIED</text>
 
   <text class="ttl c" x="115" y="531">36 V SUPPLY</text>
@@ -262,13 +262,13 @@ circuits are Fig. 2 and Fig. 3.</p>
   <!-- off-sheet -->
   <path class="w-out" d="M115 592 V 626"/>
   <path class="w-out" d="M330 592 V 626"/>
-  <path class="w-out" d="M760 592 V 626"/>
-  <text class="sm c" x="115" y="642">36 V out to the four</text>
-  <text class="sm c" x="115" y="656">IG57 drives</text>
+  <path class="w-out" d="M790 592 V 626"/>
+  <text class="sm c" x="115" y="642">36 V out to the interface board,</text>
+  <text class="sm c" x="115" y="656">4 conductors of the shared 18/6</text>
+  <text class="sm c" x="790" y="642">contact 15&ndash;18 &middot; one conductor of a 22/2</text>
+  <text class="sm c" x="790" y="656">to the board&apos;s e-stop &middot; return: 12 V V&minus;, Fig. 4</text>
   <text class="sm c" x="330" y="642">U / V / W out to the</text>
   <text class="sm c" x="330" y="656">2.2 kW spindle</text>
-  <text class="sm c" x="760" y="642">dry contact to the interface</text>
-  <text class="sm c" x="760" y="656">board&apos;s e-stop input</text>
 
   <!-- the pump itself -->
   <path class="w-l1" d="M533 592 V 650"/><path class="w-l2" d="M557 592 V 650"/>
@@ -447,7 +447,7 @@ shows up as spindle speed jitter and gets blamed on the drive.
 white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-stop, 220 V does not.</p>
 
 <figure>
-<svg viewBox="0 0 900 430" width="190mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 900 470" width="190mm" xmlns="http://www.w3.org/2000/svg">
 
   <rect class="bx2" x="20" y="30" width="180" height="82" rx="3"/>
   <text class="ttl c" x="110" y="54">110 V PIGTAIL</text>
@@ -499,9 +499,10 @@ white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-sto
   <path class="w-nhal" d="M560 118 V 302 H 700"/>
   <path class="w-neu"  d="M560 118 V 302 H 700"/>
 
-  <rect class="bx2" x="700" y="84" width="180" height="46" rx="3"/>
+  <rect class="bx2" x="700" y="84" width="180" height="58" rx="3"/>
   <text class="ttl c" x="790" y="104">PAIR 1 &mdash; 12 V SUPPLY</text>
   <text class="sm c"  x="790" y="121">Mean Well MDR &middot; 40 W</text>
+  <text class="sm c"  x="790" y="136">V&minus; takes the e-stop return &mdash; Fig. 1</text>
 
   <rect class="bx2" x="700" y="146" width="180" height="56" rx="3"/>
   <text class="ttl c" x="790" y="168">PAIR 2 &mdash; PADDLE</text>
@@ -515,6 +516,8 @@ white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-sto
   <text class="sm" x="20" y="378">with its position, its alarm state and the ioSender session intact. That is why the sense relay in Fig. 1 exists &mdash;</text>
   <text class="sm" x="20" y="396">a controller that outlives the drives and does not know it will come back with a wrong position.</text>
   <text class="sm" x="20" y="418">The 1 A fuse protects only the four conductors out to the remote switch box. A laptop charger would never run behind it.</text>
+  <text class="q" x="20" y="444">THE E-STOP LOOP CLOSES THROUGH THIS SUPPLY. The sense relay&apos;s contact return jumpers onto V&minus; here, and the</text>
+  <text class="sm" x="20" y="462">circuit runs out on one 22/2 conductor and home through the 12 V pair &mdash; which shares the one 18/6 to the board with the 36 V.</text>
 </svg>
 <figcaption>Fig. 4 &mdash; the 110 V side. One breaker, one splitter, three pairs, nothing switched.</figcaption>
 </figure>
@@ -598,6 +601,8 @@ ground that carries signal current.
 <tr class="unk"><td><b>What hangs off the front of the Z plate at max Y, against the mushroom on the apron</b></td><td>The travel envelope is stated for the plate's own face; the spindle projects further. Push the gantry to max Y by hand and look, before the hole is cut</td></tr>
 <tr class="unk"><td><b>The 36 V rail, with a meter at the drive end</b></td><td>It is a variable supply with an LCD, so 36 V is a setting and not a property. Record the reading in <code>commissioning/</code> and mark the adjustment</td></tr>
 <tr class="unk"><td><b>Polarity at each IG57 before first power-on</b></td><td>There is no reverse-polarity protection and the four 2P connectors are assembled by hand</td></tr>
+<tr class="unk"><td><b>The DVRD's two thresholds, with a meter</b></td><td>Undervoltage at the bottom of its 30&ndash;42 range, overvoltage 44&ndash;46, delay at the 0.1 s floor &mdash; knob markings on this family are not calibration. Lengthen the delay only if a real rapid nuisance-trips it</td></tr>
+<tr class="unk"><td><b>The e-stop loop end to end: rail up, relay happy, CONTROL pin 3 reads low</b></td><td>The loop closes through a jumper from the contact to the 12 V supply's V&minus; that no connector forces into existence &mdash; this reading is the proof it got made. Then invert only the e-stop bit in grblHAL: the contact is closed when healthy, so open must read as alarm</td></tr>
 <tr class="unk"><td><b>A clamp on the VFD's input while cutting</b></td><td>The manual gives 11 A as the drive's <i>output</i> current, and the mains budget has been carrying 11 A as the spindle's draw. They are not the same number on single phase</td></tr>
 </table>
 
