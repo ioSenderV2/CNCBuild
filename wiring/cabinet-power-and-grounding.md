@@ -1513,10 +1513,10 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | PE in - 110 V pigtail | the second one |
 | ~~Cabinet chassis~~ | **n/a - the box is PVC.** There is no chassis to bond; see above |
 | **Fixed frame** - the steel Y back plate | **Not "the machine frame"** - see below, the machine is in two halves |
-| 36 V supply case | **its own conductor - and the earth-symbol terminal on the input strip IS the case** (datasheets call it FG, frame ground - same screw), bonded to the chassis inside the can. One wire from that screw; **nothing gets drilled**. Check it is really bonded: meter the earth screw to bare case metal. If a supply ever lacks the terminal, a ring lug under an existing mounting screw into chassis metal, star washer - still no drilling |
-| 12 V supply ground terminal | SETTLED off the part in his hand: **the MDR's input strip carries a ground terminal alongside its two power terminals**, so one wire from it to this bar. The body is plastic, so as with the VFD below this is an **earth terminal, not a case bond** - same conductor either way |
-| Motor supply 0 V | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded, ferruled - his, 2026-11-13**: the supply screws are ferruled, and a twin ferrule takes the 18/6's 18 AWG plus a 22, not plus a 14 |
-| 12 V 0 V | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded** for the same twin-ferrule reason. This is also what makes the e-stop loop's V- jumper work - and the jumper and the DVRD's measuring pair are 22 AWG stranded too, all of it signal, none of it load |
+| 36 V supply earth terminal | **its own conductor - and the earth-symbol terminal on the input strip IS the case** (datasheets call it FG, frame ground - same screw), bonded to the chassis inside the can. One wire from that screw; **nothing gets drilled**. Check it is really bonded: meter the earth screw to bare case metal. If a supply ever lacks the terminal, a ring lug under an existing mounting screw into chassis metal, star washer - still no drilling |
+| 12 V supply earth terminal | SETTLED off the part in his hand: **the MDR's input strip carries a ground terminal alongside its two power terminals**, so one wire from it to this bar. The body is plastic, so as with the VFD below this is an **earth terminal, not a case bond** - same conductor either way |
+| 36 V supply V- terminal | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded, ferruled - his, 2026-11-13**: the supply screws are ferruled, and a twin ferrule takes the 18/6's 18 AWG plus a 22, not plus a 14 |
+| 12 V supply V- terminal | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded** for the same twin-ferrule reason. This is also what makes the e-stop loop's V- jumper work - and the jumper and the DVRD's measuring pair are 22 AWG stranded too, all of it signal, none of it load |
 | VFD **E** terminal | **its own short heavy conductor.** FLAG: **the VFD's case is plastic - his, 2026-11-05 - and that changes nothing here.** There is no case to bond, but the drive has an earth terminal: the manual's main-circuit table lists **E, "ground terminal ... of Electrical Engineering Regulations"**. A plastic case means no case bond, not no earth |
 | Cable shields | **one end only** |
 
@@ -1528,10 +1528,10 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 2 | PE in - 110 V pigtail |
 | 3 | **Fixed frame** - the steel Y back plate |
 | 4 | VFD **E** terminal |
-| 5 | 36 V supply case |
-| 6 | 12 V supply ground terminal |
-| 7 | Motor supply 0 V |
-| 8 | 12 V supply 0 V |
+| 5 | 36 V supply earth terminal |
+| 6 | 12 V supply earth terminal |
+| 7 | 36 V supply V- terminal |
+| 8 | 12 V supply V- terminal |
 
 FLAG: ~~**TEN IS THE BUY - the signal cables contribute nothing.**~~ **THAT WAS TRUE WHEN THE ONLY
 CABLE AT THE BOARD WAS CAT 6 UTP. IT IS NOT TRUE NOW - his count, 2026-11-09: TWELVE SHIELDED CABLES

@@ -101,7 +101,7 @@ that is not written here. Fig.&nbsp;6 is the picture.</p>
 <tr><td>18/6 &middot; 4</td><td><b>White</b></td><td>36 V return</td><td>36 V V&minus; screw &rarr; J55.4</td><td><b>18 AWG</b></td></tr>
 <tr><td>18/6 &middot; 5</td><td><b>Blue</b></td><td>+12 V</td><td>12 V V+ screw &rarr; J18.1</td><td><b>18 AWG</b></td></tr>
 <tr><td>18/6 &middot; 6</td><td><b>Green</b></td><td>12 V GND</td><td>12 V V&minus; screw &rarr; J18.2</td><td><b>18 AWG</b></td></tr>
-<tr><td>0 V references, both</td><td>&mdash;</td><td>each rail's one tie to earth</td><td>36 V V&minus; and 12 V V&minus; screws &rarr; PE bar 7 and 8</td><td><b>22 AWG stranded</b></td></tr>
+<tr><td>V&minus; to the PE bar, one per supply</td><td>&mdash;</td><td>each rail's one tie to earth</td><td>36 V V&minus; and 12 V V&minus; screws &rarr; PE bar 7 and 8</td><td><b>22 AWG stranded</b></td></tr>
 <tr><td>DVRD measuring pair</td><td>&mdash;</td><td>the rail the sense watches</td><td>36 V V+ and V&minus; screws &rarr; DVRD + / &minus;</td><td><b>22 AWG stranded</b></td></tr>
 <tr><td>V&minus; jumper</td><td>&mdash;</td><td>closes the e-stop loop</td><td>12 V V&minus; screw &rarr; DVRD contact 18</td><td><b>22 AWG stranded</b></td></tr>
 <tr><td>22/2 to the board</td><td>&mdash;</td><td>e-stop, one conductor (one spare)</td><td>DVRD contact 15 &rarr; CONTROL pin 3</td><td><b>22 AWG</b>, the cable's</td></tr>
@@ -592,17 +592,22 @@ is a break you can see from inside the box.
   <rect class="bar" x="240" y="170" width="420" height="28" rx="3"/>
   <text class="ttl c" x="450" y="189">PE BUS BAR</text>
 
-  <!-- below -->
-  <path class="w-pe" d="M290 198 V 262"/>
-  <path class="w-pe" d="M395 198 V 290"/>
-  <path class="w-pe" d="M500 198 V 262"/>
-  <path class="w-pe" d="M605 198 V 290"/>
-  <text class="sm c" x="290" y="278">Motor supply 0 V</text>
-  <text class="sm c" x="395" y="306">12 V supply 0 V</text>
-  <text class="sm c" x="500" y="278">VFD terminal E</text>
-  <text class="sm c" x="500" y="292">own short heavy conductor</text>
-  <text class="sm c" x="605" y="306">Supply cases</text>
-  <text class="sm c" x="605" y="320">36 V &middot; 12 V</text>
+  <!-- below: five wires, each named by the SCREW it leaves -->
+  <path class="w-pe" d="M270 198 V 262"/>
+  <path class="w-pe" d="M365 198 V 290"/>
+  <path class="w-pe" d="M460 198 V 262"/>
+  <path class="w-pe" d="M555 198 V 290"/>
+  <path class="w-pe" d="M650 198 V 262"/>
+  <text class="sm c" x="270" y="278">36 V supply</text>
+  <text class="sm c" x="270" y="292">V&minus; terminal</text>
+  <text class="sm c" x="365" y="306">12 V supply</text>
+  <text class="sm c" x="365" y="320">V&minus; terminal</text>
+  <text class="sm c" x="460" y="278">VFD terminal E</text>
+  <text class="sm c" x="460" y="292">own short heavy conductor</text>
+  <text class="sm c" x="555" y="306">36 V supply</text>
+  <text class="sm c" x="555" y="320">earth terminal</text>
+  <text class="sm c" x="650" y="278">12 V supply</text>
+  <text class="sm c" x="650" y="292">earth terminal</text>
 
   <text class="q" x="20" y="344">TEN TERMINALS, NOT SIX. Eight are named here. The Cat 6 to the drives is UTP and terminates in its own plastic box, so it adds none.</text>
 
@@ -729,8 +734,8 @@ the V&minus; jumper are all 22 AWG, none of which carries load current.</p>
   <text class="wg" x="612" y="572">22 AWG, both</text>
   <rect class="bar" x="500" y="594" width="380" height="26" rx="3"/>
   <text class="ttl c" x="690" y="612">PE BUS BAR &mdash; Fig. 5</text>
-  <text class="sm c" x="560" y="638">8 &middot; 12 V 0 V</text>
-  <text class="sm c" x="652" y="638">7 &middot; motor 0 V</text>
+  <text class="sm c" x="548" y="638">8 &middot; 12 V supply V&minus;</text>
+  <text class="sm c" x="668" y="652">7 &middot; 36 V supply V&minus;</text>
 
   <!-- cautions -->
   <text class="q"  x="30" y="600">15 AND 18 ARE FROM THE UNIT&apos;S OWN LABEL.</text>
