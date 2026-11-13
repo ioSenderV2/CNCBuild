@@ -653,6 +653,13 @@ SW5 and SW6, which the manual covers only partly.
 NOTE: **All four ON is 400 steps/rev, and the table is not in a sensible order** - it runs 400 up to
 51200 and then restarts at 1000. Read the row, do not infer the pattern.
 
+SETTLED: **2000 pulses/rev on all four drives - his call, 2026-11-13.** The manual's table says the
+2000 row is **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** (manual §7.1, read from the committed PDF). With
+the 1605's 5 mm lead and direct coupling that is **400 steps/mm - $100 through $103 all read 400.**
+A clean decimal with no rounding in the chain; finer microstepping buys smoothness, not accuracy,
+and the drive closes its own loop on a 1000-line encoder regardless. Cheap check at the bench:
+a tape flag on the shaft, command a 5 mm jog, the shaft turns exactly one revolution.
+
 ## What the closed loop does and does not cover
 
 The drive has its own **1000-line encoder** and corrects its own position, so **lost steps at the

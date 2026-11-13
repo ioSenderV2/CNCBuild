@@ -49,6 +49,7 @@ the supply is fine or marginal, not enough to say what the peak is.
 | **Supply** | The 36 V 600 W unit, **output variable** - so it gets set and verified, not assumed |
 | **Reading current** | The supply's own **LCD**. No clamp meter needed |
 | **Commanding motion** | grblHAL, jogging each axis. The motors need no mechanics to turn |
+| **DIP switches** | SW1-4 to **2000 pulses/rev** on all four drives: **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** - his call 2026-11-13, see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). $100-$103 = **400** steps/mm |
 | **Meter** | For the rail and for the alarm output |
 
 **Restrain each motor.** A free NEMA 23 with 2.2 N·m available will walk off a bench and whip its own
