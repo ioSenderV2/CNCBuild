@@ -1236,7 +1236,7 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 |---|---|
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
-| **12 V + 36 V, one 18/6** | both supplies to the interface board in a single cable - his, 2026-11-12. **Four conductors are the 36 V's two circuits into the 4P input** (J55's legs are doubled, so each leg arrives as two conductors and takes two crimps in the housing), **two are the 12 V pair into its 2P** (J18, the 12 V IN). Six of six used - **nothing else rides this cable** |
+| **12 V + 36 V, one 18/6** | both supplies to the interface board in a single cable - his, 2026-11-12. **Four conductors are the 36 V's two circuits into the 4P input** (J55's legs are doubled, so each leg arrives as two conductors and takes two crimps in the housing), **two are the 12 V pair into its 2P** (J18, the 12 V IN). Six of six used - **nothing else rides this cable**. Colours, his read of the jacket 2026-11-13: **red** +36 V to J55.1, **yellow** +36 V to J55.2, **black** 36 V return to J55.3, **white** 36 V return to J55.4, **blue** +12 V to J18.1, **green** 12 V GND to J18.2. ⚠️ **THE CABLE'S GREEN IS THE 12 V RETURN, NOT PE** - the panel's green-means-earth rule stops at this jacket |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
 
 FLAG: **THE E-STOP CONTACT NO LONGER RIDES THE 12 V RUN - the 18/6 has no conductor spare for

@@ -598,8 +598,9 @@ ground that carries signal current.
 <h2>Fig. 6 &mdash; The DC side: every conductor off the supply outputs</h2>
 <p class="sub">Each supply has <b>four output screws &mdash; V+ twice, V&minus; twice</b>, read off
 the parts. This sheet draws every wire that leaves them. <b>A dot is two wires under one screw.</b>
-Conductor numbers are positions in the 18/6, not colours &mdash; the cable's own colours get recorded
-when it is cut.</p>
+The 18/6's conductor colours are the cable's own, read off the jacket: red, yellow, black, white,
+blue, green for positions 1&ndash;6. <b>Its green is the 12 V return, not PE</b> &mdash; the
+panel's green-means-earth rule stops at this jacket.</p>
 
 <figure>
 <svg viewBox="0 0 900 700" width="190mm" xmlns="http://www.w3.org/2000/svg">
@@ -633,14 +634,13 @@ when it is cut.</p>
   <!-- the 18/6, six conductors -->
   <rect class="bx" x="640" y="60" width="240" height="410" rx="3"/>
   <text class="ttl c" x="760" y="46">ONE 18/6 &rarr; INTERFACE BOARD</text>
-  <text class="sm" x="652" y="94">1 &middot; +36 V &rarr; J55.1</text>
-  <text class="sm" x="652" y="134">2 &middot; +36 V &rarr; J55.2</text>
-  <text class="sm" x="652" y="174">3 &middot; 36 V return &rarr; J55.3</text>
-  <text class="sm" x="652" y="214">4 &middot; 36 V return &rarr; J55.4</text>
-  <text class="sm" x="652" y="364">5 &middot; +12 V &rarr; J18.1</text>
-  <text class="sm" x="652" y="434">6 &middot; 12 V GND &rarr; J18.2</text>
-  <path class="w-out" d="M760 470 V 500"/>
-  <text class="sm c" x="760" y="516">both legs doubled at J55 &mdash; two crimps per leg</text>
+  <text class="sm" x="652" y="94">1 &middot; <tspan font-weight="bold">red</tspan> &middot; +36 V &rarr; J55.1</text>
+  <text class="sm" x="652" y="134">2 &middot; <tspan font-weight="bold">yellow</tspan> &middot; +36 V &rarr; J55.2</text>
+  <text class="sm" x="652" y="174">3 &middot; <tspan font-weight="bold">black</tspan> &middot; 36 V return &rarr; J55.3</text>
+  <text class="sm" x="652" y="214">4 &middot; <tspan font-weight="bold">white</tspan> &middot; 36 V return &rarr; J55.4</text>
+  <text class="sm" x="652" y="364">5 &middot; <tspan font-weight="bold">blue</tspan> &middot; +12 V &rarr; J18.1</text>
+  <text class="sm" x="652" y="434">6 &middot; <tspan font-weight="bold">green</tspan> &middot; 12 V GND &rarr; J18.2</text>
+  <text class="sm" x="652" y="454" style="fill:#c81e1e">&#9888; green here is 12 V return, NOT PE</text>
 
   <!-- 36 V runs into the cable. Gaps are crossings that do NOT connect -->
   <path class="w-out" d="M214 90 H 640"/>
