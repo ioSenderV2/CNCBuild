@@ -1016,9 +1016,14 @@ committing to a TIGHTER rail blind - and at 26.6 A against the brick's 16.5 the 
 it is looser than what already works, so the capacity half of the gate has nothing left to say
 about it. What the bench measurement still buys is honesty about the OTHER half: the heat into the
 drilled enclosure scales with the real draw, not the rating, and that number is still unmeasured.
-**Whether the 2026-11-07 nothing-bought-before-the-bench decision still binds a purchase the
-capacity argument no longer touches is his call, not this file's** - it is recorded here so the
-question is asked once, with the datasheet already captured either way. The detour this killed on
+~~**Whether the 2026-11-07 nothing-bought-before-the-bench decision still binds a purchase the
+capacity argument no longer touches is his call, not this file's.**~~ SETTLED: **HE BOUGHT IT -
+Newark 12AN1207, delivery 2026-11-13.** The motor supply is the XDR-960-36 and the 600 W brick
+stands down to spare once the XDR is commissioned. On arrival: **the label confirms the model**
+(the rule every marketplace purchase here has earned), the output gets **set and metered to
+36.0 V** before anything connects, and the input lands on the 220 V side's pair 1 like the brick
+it replaces - the sheet allows 85-305 Vac, so the branch choice is layout, not necessity. The
+heat half of the old gate is unchanged and still goes to the mock-up in the real box. The detour this killed on
 the way: two 24 V 240 W DIN units splitting the axes two-and-two - declined 2026-11-11 because 24 V
 is the floor of the drives' own input range with the manual's unstable-supply warning sitting right
 below it, corner speed scales with supply voltage, and the DVRD-36 in hand would have become the
