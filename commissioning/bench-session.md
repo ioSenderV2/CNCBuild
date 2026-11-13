@@ -161,8 +161,14 @@ driver-power-present input that was dropped has to come back.
 
 ## 6. How a fault clears
 
-**Provoke a tracking fault:** hold a shaft by hand against slow commanded motion until the drive
-faults. It is the fault this family actually produces and the only one that can be provoked safely.
+**Provoke a tracking fault:** stall a shaft against slow commanded motion until the drive faults.
+It is the fault this family actually produces and the only one that can be provoked safely.
+
+His rig, 2026-11-13: a small T-clamp on the shaft, so when the shaft tries to turn the clamp arm
+fights against the table. Keeps hands off the shaft. Keep the commanded motion slow - the arm hits
+the table at whatever speed is commanded. If the drive never faults, check whether the clamp is
+slipping on the shaft instead of stalling it: slip caps the torque below what provokes the fault,
+and it looks exactly like a drive that tolerates stall.
 
 Then try each in turn, watching the LED and the alarm output:
 
