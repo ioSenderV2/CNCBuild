@@ -1514,7 +1514,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | ~~Cabinet chassis~~ | **n/a - the box is PVC.** There is no chassis to bond; see above |
 | **Fixed frame** - the steel Y back plate | **Not "the machine frame"** - see below, the machine is in two halves |
 | 36 V supply case | **its own conductor - and the FG/ground terminal on the input strip IS the case**, bonded to the chassis inside the can. One wire from that screw; **nothing gets drilled**. Check it is really bonded: meter FG screw to bare case metal. If a supply ever lacks the terminal, a ring lug under an existing mounting screw into chassis metal, star washer - still no drilling |
-| 12 V supply case | OPEN: **read the MDR's input strip.** L and N only on a plastic body means double-insulated - nothing to bond and this row retires, exactly like the VFD's plastic case below. A ground terminal present means one wire from it |
+| 12 V supply ground terminal | SETTLED off the part in his hand: **the MDR's input strip carries a ground terminal alongside its two power terminals**, so one wire from it to this bar. The body is plastic, so as with the VFD below this is an **earth terminal, not a case bond** - same conductor either way |
 | Motor supply 0 V | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair |
 | 12 V 0 V | the logic supply's return - **its V- terminal**, same single-point reasoning. This is also what makes the e-stop loop's V- jumper work |
 | VFD **E** terminal | **its own short heavy conductor.** FLAG: **the VFD's case is plastic - his, 2026-11-05 - and that changes nothing here.** There is no case to bond, but the drive has an earth terminal: the manual's main-circuit table lists **E, "ground terminal ... of Electrical Engineering Regulations"**. A plastic case means no case bond, not no earth |
@@ -1529,7 +1529,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 3 | **Fixed frame** - the steel Y back plate |
 | 4 | VFD **E** terminal |
 | 5 | 36 V supply case |
-| 6 | 12 V supply case |
+| 6 | 12 V supply ground terminal |
 | 7 | Motor supply 0 V |
 | 8 | 12 V supply 0 V |
 
