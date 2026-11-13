@@ -261,6 +261,11 @@ the interface, not this file.
 
 - OPEN: [L232](commissioning/base-as-built.md#it-rolls-on-five-wheels-with-every-leg-clear) — *The base, as built / It rolls on five wheels with every leg…*<br>Which of the two explanations it is has not been settled, and one move settles it — roll the base a few feet and read the same two legs again. Numbers that travel with the base are the parts, and then 10.6 is wrong everywhere it is quoted: the stack is 110.6 against the lower grid's 100, and one of those three figures is not what the parts give. Numbers that change are the slab, and 4 over the fore-aft span is an ordinary garage fall toward the door.
 
+## [commissioning/bench-session.md](commissioning/bench-session.md)  (2)
+
+- OPEN: [L33](commissioning/bench-session.md#before-the-session---two-prerequisites-found-2026-11-13) — *The bench session: four motors, no machine / Before the ses…*<br>grblHAL for the RP23 is not built or flashed yet. Top of the todo list. It gates sections 3 onward - everything that jogs. Sections 1 and 2 are power-only and do not wait on it: supply, drives, a meter, no controller. The firmware build is its own session in the firmware repo, not here.
+- OPEN: [L37](commissioning/bench-session.md#before-the-session---two-prerequisites-found-2026-11-13) — *The bench session: four motors, no machine / Before the ses…*<br>Short test power cables. One per drive, from the stepper's power terminal block to a 2x6 terminal block carrying the 36 V. One leg per drive off the block - the no-daisy-chain rule in ../wiring/breakout-box.md applies on the bench too. Run at least one leg through the real 18/2 so section 1's drop reading means something.
+
 ## [commissioning/masses.md](commissioning/masses.md)  (2)
 
 - OPEN: [L57](commissioning/masses.md#measured-masses) — *Measured masses*<br>The whole-machine and whole-installation figures are ESTIMATES, not weighings, and should not be quoted as measurements. From the 2026-09-26 session: the machine with spindle, risers and cabling at roughly 80 kg, and the whole installation - machine, torsion box, sand and timber base
@@ -379,4 +384,4 @@ the interface, not this file.
 
 ---
 
-**288 open** across 38 files.
+**290 open** across 38 files.
