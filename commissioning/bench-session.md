@@ -28,6 +28,19 @@ the supply is fine or marginal, not enough to say what the peak is.
 
 ---
 
+## Before the session - two prerequisites, found 2026-11-13
+
+- OPEN: **grblHAL for the RP23 is not built or flashed yet.** Top of the todo list. It gates
+  sections 3 onward - everything that jogs. Sections 1 and 2 are power-only and do not wait on it:
+  supply, drives, a meter, no controller. The firmware build is its own session in the firmware
+  repo, not here.
+- OPEN: **Short test power cables.** One per drive, from the stepper's power terminal block to a
+  2x6 terminal block carrying the 36 V. One leg per drive off the block - the no-daisy-chain rule
+  in [`../wiring/breakout-box.md`](../wiring/breakout-box.md) applies on the bench too. Run at
+  least one leg through the real 18/2 so section 1's drop reading means something.
+
+---
+
 ## Setup
 
 | | |
