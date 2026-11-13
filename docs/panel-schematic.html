@@ -87,6 +87,40 @@ drawing convention &mdash; the drawing uses them so that it reads the same way t
 <tr><td><i>Grey, dashed</i></td><td><i>Outside the scheme</i></td><td>Drawing only, not a wire colour &mdash; the 36&nbsp;V DC out, the spindle's U/V/W, the sense relay's dry contact</td><td>&mdash;</td></tr>
 </table>
 
+<h2>Wire colour and gauge &mdash; the DC side</h2>
+
+<p class="sub"><b>His read of the parts, 2026-11-13.</b> The six colours are the 18/6 jacket's own;
+the taps are cut wire. Same purpose as the table above: someone wiring this should need nothing
+that is not written here. Fig.&nbsp;6 is the picture.</p>
+
+<table>
+<tr><th>Conductor</th><th>Colour</th><th>Is</th><th>Lands on</th><th>Gauge</th></tr>
+<tr><td>18/6 &middot; 1</td><td><b>Red</b></td><td>+36 V</td><td>36 V V+ screw &rarr; J55.1</td><td><b>18 AWG</b>, the cable's</td></tr>
+<tr><td>18/6 &middot; 2</td><td><b>Yellow</b></td><td>+36 V</td><td>36 V V+ screw &rarr; J55.2</td><td><b>18 AWG</b></td></tr>
+<tr><td>18/6 &middot; 3</td><td><b>Black</b></td><td>36 V return</td><td>36 V V&minus; screw &rarr; J55.3</td><td><b>18 AWG</b></td></tr>
+<tr><td>18/6 &middot; 4</td><td><b>White</b></td><td>36 V return</td><td>36 V V&minus; screw &rarr; J55.4</td><td><b>18 AWG</b></td></tr>
+<tr><td>18/6 &middot; 5</td><td><b>Blue</b></td><td>+12 V</td><td>12 V V+ screw &rarr; J18.1</td><td><b>18 AWG</b></td></tr>
+<tr><td>18/6 &middot; 6</td><td><b>Green</b></td><td>12 V GND</td><td>12 V V&minus; screw &rarr; J18.2</td><td><b>18 AWG</b></td></tr>
+<tr><td>0 V references, both</td><td>&mdash;</td><td>each rail's one tie to earth</td><td>36 V V&minus; and 12 V V&minus; screws &rarr; PE bar 7 and 8</td><td><b>22 AWG stranded</b></td></tr>
+<tr><td>DVRD measuring pair</td><td>&mdash;</td><td>the rail the sense watches</td><td>36 V V+ and V&minus; screws &rarr; DVRD + / &minus;</td><td><b>22 AWG stranded</b></td></tr>
+<tr><td>V&minus; jumper</td><td>&mdash;</td><td>closes the e-stop loop</td><td>12 V V&minus; screw &rarr; DVRD contact 18</td><td><b>22 AWG stranded</b></td></tr>
+<tr><td>22/2 to the board</td><td>&mdash;</td><td>e-stop, one conductor (one spare)</td><td>DVRD contact 15 &rarr; CONTROL pin 3</td><td><b>22 AWG</b>, the cable's</td></tr>
+</table>
+
+<div class="warn">
+<b>Inside the 18/6 jacket, the panel's colour rules DO NOT apply.</b> Its black is a 36&nbsp;V
+return, not a hot; its white is a return, not a neutral; its green is 12&nbsp;V GND, not PE; its
+red and blue are DC positives, not the 220&nbsp;V legs. The panel scheme governs cut wire in the
+box &mdash; a jacketed cable brings its own colours, and this is the one that crosses both worlds.
+</div>
+
+<div class="info">
+<b>Why the taps are 22 AWG, and not 14 like everything else in the box:</b> every supply output
+screw gets a ferrule, and where two wires share a screw the pair goes in a <b>twin ferrule</b> -
+which takes the 18/6's 18 AWG plus a 22, and will not take an 18 plus a 14. None of the 22 AWG
+runs carries load current: the references, the measuring pair and the jumper are all signal.
+</div>
+
 <div class="warn">
 <b>The drawing holds these in one place.</b> The scheme is defined once at the top of this file as
 named values &mdash; L1, L2, hot, neutral, PE &mdash; and every conductor on every sheet refers to
@@ -600,7 +634,10 @@ ground that carries signal current.
 the parts. This sheet draws every wire that leaves them. <b>A dot is two wires under one screw.</b>
 The 18/6's conductor colours are the cable's own, read off the jacket: red, yellow, black, white,
 blue, green for positions 1&ndash;6. <b>Its green is the 12 V return, not PE</b> &mdash; the
-panel's green-means-earth rule stops at this jacket.</p>
+panel's green-means-earth rule stops at this jacket. Every supply screw gets a ferrule, and where
+two wires share a screw the second one is <b>22 AWG stranded</b> &mdash; a twin ferrule takes the
+18/6's 18 AWG plus a 22, not plus a 14 &mdash; so the 0 V references, the DVRD measuring pair and
+the V&minus; jumper are all 22 AWG, none of which carries load current.</p>
 
 <figure>
 <svg viewBox="0 0 900 700" width="190mm" xmlns="http://www.w3.org/2000/svg">
@@ -643,12 +680,14 @@ panel's green-means-earth rule stops at this jacket.</p>
   <text class="sm" x="652" y="454" style="fill:#c81e1e">&#9888; green here is 12 V return, NOT PE</text>
 
   <!-- 36 V runs into the cable. Gaps are crossings that do NOT connect -->
+  <text class="wg" x="520" y="82">18 AWG &middot; the 18/6</text>
   <path class="w-out" d="M214 90 H 640"/>
   <path class="w-out" d="M214 130 H 640"/>
   <path class="w-out" d="M214 170 H 354"/><path class="w-out" d="M366 170 H 640"/>
   <path class="w-out" d="M214 210 H 354"/><path class="w-out" d="M366 210 H 594"/><path class="w-out" d="M606 210 H 640"/>
 
   <!-- 12 V runs into the cable -->
+  <text class="wg" x="520" y="352">18 AWG &middot; the 18/6</text>
   <path class="w-out" d="M214 360 H 364"/><path class="w-out" d="M376 360 H 424"/><path class="w-out" d="M436 360 H 594"/><path class="w-out" d="M606 360 H 640"/>
   <path class="w-out" d="M214 390 H 260"/>
   <text class="sm" x="268" y="394">spare</text>
@@ -661,6 +700,7 @@ panel's green-means-earth rule stops at this jacket.</p>
   <path class="w-out" d="M360 130 V 240"/>
   <circle class="dot" cx="400" cy="210" r="3.2"/>
   <path class="w-out" d="M400 210 V 240"/>
+  <text class="wg" x="408" y="230">22 AWG</text>
   <circle cx="360" cy="240" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
   <circle cx="400" cy="240" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
   <text class="sm" x="352" y="258">+</text>
@@ -674,17 +714,19 @@ panel's green-means-earth rule stops at this jacket.</p>
 
   <!-- the contact's two legs: the 22/2 out, and the V- jumper -->
   <path class="w-out" d="M370 340 V 530"/>
-  <text class="sm c" x="370" y="548">one conductor of the 22/2</text>
+  <text class="sm c" x="370" y="548">one conductor of the 22/2 &middot; 22 AWG</text>
   <text class="sm c" x="370" y="562">&rarr; CONTROL pin 3, the board&apos;s e-stop</text>
   <circle class="dot" cx="210" cy="460" r="3.2"/>
   <path class="w-out" d="M214 460 H 364"/><path class="w-out" d="M376 460 H 430 V 340"/>
   <text class="sm" x="246" y="452">V&minus; jumper</text>
+  <text class="wg" x="300" y="474">22 AWG</text>
 
   <!-- the two 0 V conductors to the PE bar -->
   <circle class="dot" cx="600" cy="170" r="3.2"/>
   <path class="w-pe" d="M600 170 V 594"/>
   <circle class="dot" cx="560" cy="430" r="3.2"/>
   <path class="w-pe" d="M560 430 V 594"/>
+  <text class="wg" x="612" y="572">22 AWG, both</text>
   <rect class="bar" x="500" y="594" width="380" height="26" rx="3"/>
   <text class="ttl c" x="690" y="612">PE BUS BAR &mdash; Fig. 5</text>
   <text class="sm c" x="560" y="638">8 &middot; 12 V 0 V</text>
