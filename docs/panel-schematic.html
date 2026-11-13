@@ -135,7 +135,7 @@ the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 </table>
 
 <div class="note">
-<b>Only one connection on these five sheets is unknown, and it is marked where it falls.</b> The
+<b>Only one connection on these six sheets is unknown, and it is marked where it falls.</b> The
 Huanyang manual gives FA/FB/FC as &ldquo;N/O or N/C&rdquo; without saying which leg is which, so
 <b>which of FB and FC is the normally-open one is a meter check on the real drive</b>, with the drive
 unpowered. Everything else carries a terminal designation off a datasheet or a listing.
@@ -591,6 +591,116 @@ cannot make one. The cost is that nothing is bonded for free.
 input is not a ground reference for the DC side. A ground that arrives through a signal conductor is a
 ground that carries signal current.
 </div>
+</div>
+
+<!-- ============================================================ FIG 6 -->
+<div class="fig">
+<h2>Fig. 6 &mdash; The DC side: every conductor off the supply outputs</h2>
+<p class="sub">Each supply has <b>four output screws &mdash; V+ twice, V&minus; twice</b>, read off
+the parts. This sheet draws every wire that leaves them. <b>A dot is two wires under one screw.</b>
+Conductor numbers are positions in the 18/6, not colours &mdash; the cable's own colours get recorded
+when it is cut.</p>
+
+<figure>
+<svg viewBox="0 0 900 700" width="190mm" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- 36 V SUPPLY -->
+  <rect class="bx2" x="30" y="60" width="180" height="180" rx="3"/>
+  <text class="ttl c" x="120" y="88">36 V SUPPLY</text>
+  <text class="sm c" x="120" y="104">600 W brick</text>
+  <text class="sm e" x="196" y="94">V+</text>
+  <text class="sm e" x="196" y="134">V+</text>
+  <text class="sm e" x="196" y="174">V&minus;</text>
+  <text class="sm e" x="196" y="214">V&minus;</text>
+  <circle cx="210" cy="90"  r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <circle cx="210" cy="130" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <circle cx="210" cy="170" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <circle cx="210" cy="210" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+
+  <!-- 12 V SUPPLY -->
+  <rect class="bx2" x="30" y="330" width="180" height="160" rx="3"/>
+  <text class="ttl c" x="120" y="358">12 V SUPPLY</text>
+  <text class="sm c" x="120" y="374">Mean Well MDR</text>
+  <text class="sm e" x="196" y="364">V+</text>
+  <text class="sm e" x="196" y="394">V+</text>
+  <text class="sm e" x="196" y="434">V&minus;</text>
+  <text class="sm e" x="196" y="464">V&minus;</text>
+  <circle cx="210" cy="360" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <circle cx="210" cy="390" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <circle cx="210" cy="430" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+  <circle cx="210" cy="460" r="4" fill="#fff" stroke="#111" stroke-width="1.6"/>
+
+  <!-- the 18/6, six conductors -->
+  <rect class="bx" x="640" y="60" width="240" height="410" rx="3"/>
+  <text class="ttl c" x="760" y="46">ONE 18/6 &rarr; INTERFACE BOARD</text>
+  <text class="sm" x="652" y="94">1 &middot; +36 V &rarr; J55.1</text>
+  <text class="sm" x="652" y="134">2 &middot; +36 V &rarr; J55.2</text>
+  <text class="sm" x="652" y="174">3 &middot; 36 V return &rarr; J55.3</text>
+  <text class="sm" x="652" y="214">4 &middot; 36 V return &rarr; J55.4</text>
+  <text class="sm" x="652" y="364">5 &middot; +12 V &rarr; J18.1</text>
+  <text class="sm" x="652" y="434">6 &middot; 12 V GND &rarr; J18.2</text>
+  <path class="w-out" d="M760 470 V 500"/>
+  <text class="sm c" x="760" y="516">both legs doubled at J55 &mdash; two crimps per leg</text>
+
+  <!-- 36 V runs into the cable. Gaps are crossings that do NOT connect -->
+  <path class="w-out" d="M214 90 H 640"/>
+  <path class="w-out" d="M214 130 H 640"/>
+  <path class="w-out" d="M214 170 H 354"/><path class="w-out" d="M366 170 H 640"/>
+  <path class="w-out" d="M214 210 H 354"/><path class="w-out" d="M366 210 H 594"/><path class="w-out" d="M606 210 H 640"/>
+
+  <!-- 12 V runs into the cable -->
+  <path class="w-out" d="M214 360 H 364"/><path class="w-out" d="M376 360 H 424"/><path class="w-out" d="M436 360 H 594"/><path class="w-out" d="M606 360 H 640"/>
+  <path class="w-out" d="M214 390 H 260"/>
+  <text class="sm" x="268" y="394">spare</text>
+  <path class="w-out" d="M214 430 H 364"/><path class="w-out" d="M376 430 H 424"/><path class="w-out" d="M436 430 H 594"/><path class="w-out" d="M606 430 H 640"/>
+
+  <!-- DVRD, fed by taps off the rail it watches. It sits BETWEEN the two row
+       groups; crossings that do not connect get a gap, junctions get a dot -->
+  <rect class="bxr" x="330" y="240" width="200" height="100" rx="3"/>
+  <circle class="dot" cx="360" cy="130" r="3.2"/>
+  <path class="w-out" d="M360 130 V 240"/>
+  <circle class="dot" cx="400" cy="210" r="3.2"/>
+  <path class="w-out" d="M400 210 V 240"/>
+  <circle cx="360" cy="240" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
+  <circle cx="400" cy="240" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
+  <text class="sm" x="352" y="258">+</text>
+  <text class="sm" x="396" y="258">&minus;</text>
+  <text class="ttl c" x="430" y="288">DVRD-36 &middot; RAIL SENSE</text>
+  <text class="q c"  x="430" y="306">POWERED BY WHAT IT WATCHES</text>
+  <text class="sm" x="356" y="330">15</text>
+  <text class="sm" x="436" y="330">18</text>
+  <circle cx="370" cy="340" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
+  <circle cx="430" cy="340" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
+
+  <!-- the contact's two legs: the 22/2 out, and the V- jumper -->
+  <path class="w-out" d="M370 340 V 530"/>
+  <text class="sm c" x="370" y="548">one conductor of the 22/2</text>
+  <text class="sm c" x="370" y="562">&rarr; CONTROL pin 3, the board&apos;s e-stop</text>
+  <circle class="dot" cx="210" cy="460" r="3.2"/>
+  <path class="w-out" d="M214 460 H 364"/><path class="w-out" d="M376 460 H 430 V 340"/>
+  <text class="sm" x="246" y="452">V&minus; jumper</text>
+
+  <!-- the two 0 V conductors to the PE bar -->
+  <circle class="dot" cx="600" cy="170" r="3.2"/>
+  <path class="w-pe" d="M600 170 V 594"/>
+  <circle class="dot" cx="560" cy="430" r="3.2"/>
+  <path class="w-pe" d="M560 430 V 594"/>
+  <rect class="bar" x="500" y="594" width="380" height="26" rx="3"/>
+  <text class="ttl c" x="690" y="612">PE BUS BAR &mdash; Fig. 5</text>
+  <text class="sm c" x="560" y="638">8 &middot; 12 V 0 V</text>
+  <text class="sm c" x="652" y="638">7 &middot; motor 0 V</text>
+
+  <!-- cautions -->
+  <text class="q"  x="30" y="600">15 AND 18 ARE FROM THE UNIT&apos;S OWN LABEL.</text>
+  <text class="sm" x="30" y="616">Which of them is CLOSED with the rail up is the whole</text>
+  <text class="sm" x="30" y="630">fail-safe direction &mdash; meter it, bench table below.</text>
+  <text class="sm" x="30" y="652">The FG screw on the 36 V input strip and the MDR&apos;s own</text>
+  <text class="sm" x="30" y="666">ground terminal also land on the bar &mdash; Fig. 5. The V&minus;</text>
+  <text class="sm" x="30" y="680">jumper off the 12 V supply is what closes the e-stop loop.</text>
+  <text class="sm" x="480" y="666">Grey dashed is DC &middot; green: each 0 V ties to earth HERE, nowhere else.</text>
+</svg>
+<figcaption>Fig. 6 &mdash; the DC side: four screws per supply, and where every wire goes.</figcaption>
+</figure>
 </div>
 
 <h2>What still has to be checked at the bench</h2>

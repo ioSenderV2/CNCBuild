@@ -7,7 +7,7 @@ This is the cabinet. [`breakout-box.md`](breakout-box.md) is the box out at the 
 the star rule for the **motor supply returns** specifically; this file is the layer above it - mains, the
 separate logic supply, and the single point every ground meets at.
 
-> **The picture of all of this is [`panel-schematic.html`](../docs/panel-schematic.html)** - five sheets with
+> **The picture of all of this is [`panel-schematic.html`](../docs/panel-schematic.html)** - six sheets with
 > wire colour and gauge on every run. It is **derived, never authoritative**: this file is where the
 > decisions and their provenance live, and the drawing is regenerated from them by hand. It is a
 > connection diagram and **not** a DIN rail layout, which gets done with the real components against

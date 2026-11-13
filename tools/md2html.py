@@ -237,7 +237,7 @@ DOCS = {
             " <code>.md</code> file wins</strong> and this copy is stale - regenerate it with"
             " <code>tools/md2html.py --doc wiring</code>.</p>"
             "<p><strong>The drawing is <a href=\"panel-schematic.html\">"
-            "panel-schematic.html</a>, which is not part of this document.</strong> Five sheets"
+            "panel-schematic.html</a>, which is not part of this document.</strong> Six sheets"
             " with wire colour and gauge on every run, maintained by hand - it is derived from"
             " the prose here, never the other way round.</p>"
             "<p><strong>An item marked OPEN is not settled anywhere in this repo.</strong> Do"
