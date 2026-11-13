@@ -473,7 +473,7 @@ why this matters here.
 forced to twist fails where a round one shrugs, and a thin boot has very little strain relief in it -
 so the chain's motion must be taken by the chain, not by the plug.
 
-NOTE: **MONOPRICE SAY THE PAIRS ARE TWISTED, AND THAT IS A CLAIM, NOT A DATUM.** Asked directly
+NOTE: **MONOPRICE SAY THE PAIRS ARE TWISTED, AND THAT IS A CLAIM, NOT A MEASUREMENT.** Asked directly
 whether the conductors are twisted or parallel, their answer was *"The pairs are twisted, as expected
 in a Cat6 Unshielded Twisted Pair (UTP) cable."* **That reasons from the product's name rather than
 reporting the part** - and 550 MHz does need controlled pair geometry, so it is probably right.
@@ -535,7 +535,7 @@ leg a ground invites someone to tie the four together as a convenience.
 **No continuity between any of the minus signals.** His meter, on the part, 2026-10-12.
 
 🔴 **THE SELLER SAID THEY WERE COMMONED INSIDE THE DRIVE, AND THEY ARE NOT.** That answer was written
-into this file as *a claim rather than a datum*, specifically so it would get checked. Checking it
+into this file as *a claim rather than a checked fact*, specifically so it would get checked. Checking it
 took under a minute and overturned it. The manual never stated it either way. **This is the reason a
 vendor's word does not go in as a fact** - the same vendor class answered the Mega V's enable-reset
 question both ways in a single message.

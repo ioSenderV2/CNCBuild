@@ -9,7 +9,7 @@ file is what the remaining parts get cut to — the registry's figures are what 
 |---|---|---|
 | Back outer lamination | **1211**, one piece, glued **flush at both ends** | {{BACK_LAM_L}}, two pieces butted |
 | Side outer laminations, as cut | **1211** each | {{SIDE_LAM_L}} |
-| Back corners | **a 24 × 24 × {{TONGUE_FULL_H}} hardwood filler in each**, two off | the back lamination lapping both sides' end grain |
+| Back corners | **a 24 × 24 × {{TONGUE_FULL_H}} hardwood filler in each**, QTY 2 | the back lamination lapping both sides' end grain |
 
 A 1211 back lamination spans the top skin exactly and, flush at both ends, sits **between** the two
 side laminations' inner faces rather than over their ends. So the back corner is a butt, and the

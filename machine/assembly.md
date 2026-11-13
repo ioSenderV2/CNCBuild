@@ -341,7 +341,7 @@ does not name the orientation means nothing.
 
 ### The front plate — the fin
 
-**Two off, both out of one 301.625 square** - head to tail, the second a 180° rotation of the
+**QTY 2, both out of one 301.625 square** - head to tail, the second a 180° rotation of the
 first: **tapered 100 mm at the top to 200 mm at the base, 301.625 mm tall, 10 mm** 6061, **solid**.
 They were on a piece each between 2026-10-08 and 2026-10-23, which is the only reason the top width
 reads a round 100.
@@ -835,8 +835,8 @@ rib's notch puts it. That is why three of the four ways to be a millimetre out c
 
 | Error | What happens |
 |---|---|
-| **A position off by 1, on all eight** — the stack shifted against the stop | **Nothing jams.** All eight are identical, so the grid is still self-consistent and that rib line simply lands 1 off the drawing. The bays either side go 220 and 218. Everything that measures off the last rib line has 36 of room, the sand ports are 25.4 in a 219 bay with 97 clear either side, and the centre tenon blocks come out of the scrap bin and get cut to fit |
-| **One rib of the eight off** — it moved in the clamp | **That rib will not drop in.** Its notches fight the grid the other seven define, so it gets pared or recut. This is the error the stop block and the do-not-unclamp rule exist for |
+| **A position off by 1, on all eight** — the stack shifted against the stop | **Nothing jams.** All eight are identical, so the grid is still self-consistent and that rib line simply lands 1 mm away from the drawing. The bays either side go 220 and 218. Everything that measures off the last rib line has 36 of room, the sand ports are 25.4 in a 219 bay with 97 clear either side, and the centre tenon blocks come out of the scrap bin and get cut to fit |
+| **One rib of the eight out of position** — it moved in the clamp | **That rib will not drop in.** Its notches fight the grid the other seven define, so it gets pared or recut. This is the error the stop block and the do-not-unclamp rule exist for |
 | **A notch too wide by 1** | Slop at every crossing, so the grid stops holding itself square. Not structural, and the glue fills it — square the grid on the reference before the skins go on. **Too narrow by 1 is worse**: it splits a rib, or the grid will not go together |
 | **A notch too deep by 1** | **Harmless, and it is the side to err on.** The rib stands on the bottom skin, so it cannot sink: both its edges still reach both skins, and all that is lost is contact notch floor to notch floor, which carries nothing |
 | 🔴 **A notch too shallow by 1** | **The only one that touches the structure.** It holds its mating rib 1 up off the bottom skin, so the top skin bears on that set while sitting clear of the other four and of the perimeter webs |

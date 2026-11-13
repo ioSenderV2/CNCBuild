@@ -56,8 +56,8 @@ the netlist; not real parts. Before layout:
   and the options. **Do not lay this board out until that is settled**, because it decides the part.
 - **The AS5311 footprint is the one dimension that matters.** The datasheet's recommended land
   pattern is A 7.00, B 5.00, C 0.38, D 0.65, E 6.23 mm (rev 1.12 §9.1, Fig 18). What actually decides
-  accuracy is the **Hall array position relative to the mounting datum**, from Figure 14 - and that
-  figure was read off a rendered page, so confirm the reference edges first.
+  accuracy is the **Hall array position relative to the package's reference edges**, from Figure 14 -
+  and that figure was read off a rendered page, so confirm those edges first.
 - Expect a "no power source" ERC complaint once real power symbols are used: `+3V3` arrives through
   a passive connector pin, which is honest for a board at the end of a cable. A `PWR_FLAG` settles it.
 

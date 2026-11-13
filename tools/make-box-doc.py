@@ -955,9 +955,9 @@ millimetre out, only one touches the structure:</p>
 <table>
 <tr><th>Error</th><th>What happens</th></tr>
 <tr><td><b>A position off by 1, on all eight</b></td><td>Nothing jams. The eight
-are identical, so the grid stays self-consistent and that rib line lands 1 off
+are identical, so the grid stays self-consistent and that rib line lands 1 mm away from
 the drawing. Bays go {bay + 1:g} and {bay - 1:g}</td></tr>
-<tr><td><b>One rib of the eight off</b></td><td>That rib will not drop in &mdash;
+<tr><td><b>One rib of the eight out of position</b></td><td>That rib will not drop in &mdash;
 pare or recut it. This is what the stop block and the do-not-unclamp rule are
 for</td></tr>
 <tr><td><b>A notch too wide by 1</b></td><td>Slop at every crossing, so the grid

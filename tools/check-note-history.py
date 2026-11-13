@@ -64,11 +64,20 @@ def main() -> int:
     for sym, note in after.items():
         if before.get(sym) == note:
             continue                       # untouched; not this tool's business
+        # A RATCHET COMPARES, IT DOES NOT AUDIT. The old corpus is full of
+        # history on purpose - Historic:/SUPERSEDED: sections are accepted
+        # record - and a one-word touch to such a note must not demand that
+        # the whole note be laundered. So the rule is the docstring's own
+        # words, made literal: the next edit DOES NOT ADD MORE. Fail only
+        # when a changed note carries more marker hits than it did at the
+        # comparison rev; a brand-new note compares against zero.
+        old = before.get(sym, "")
         for rx in RX:
-            m = rx.search(note)
-            if m:
+            grew = len(rx.findall(note)) - len(rx.findall(old))
+            if grew > 0:
+                m = rx.search(note)
                 i = max(0, m.start() - 40)
-                hits.append((sym, m.group(0), note[i:m.end() + 40]))
+                hits.append((sym, f"{m.group(0)} (+{grew})", note[i:m.end() + 40]))
                 break
 
     changed = sum(1 for s, n in after.items() if before.get(s) != n)

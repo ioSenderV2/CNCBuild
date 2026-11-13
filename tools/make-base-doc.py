@@ -672,9 +672,9 @@ def legs_html(v):
     sections = "".join(
         # THE <br> IS LOAD-BEARING: an svg is inline, so without it the caption
         # and the drawing share a line box and the "72 x 86" lands on top of
-        # the "2 off" text.
+        # the "QTY 2" text.
         f'<td style="text-align:center"><b>{label}</b><br>'
-        f'<span class=s>{n} off, {total:g} long</span><br>'
+        f'<span class=s>QTY {n}, {total:g} long</span><br>'
         f'{leg_section_svg(v, kind)}</td>'
         for kind, label, n, total, _c, _t, _l, _f in kinds)
     faces = "".join(

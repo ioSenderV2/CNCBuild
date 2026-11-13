@@ -51,7 +51,7 @@ the smaller motor is the better one.
 | Screw efficiency | **0.9 assumed** | OPEN: not from a sheet — a conventional ball-screw figure |
 | Screw root diameter | **13.5 mm assumed** | OPEN: the sheet gives only the 16 mm major — see below |
 
-OPEN: **The kgf reading is an inference, not a datum.** 780 / 1790 are the standard pair for a 1605 and
+OPEN: **The kgf reading is an inference, not an established fact.** 780 / 1790 are the standard pair for a 1605 and
 the units column was not captured. **If they turn out to be newtons rather than kgf the life
 calculation below collapses by a factor of 9.6** and the screw becomes a term in the decision
 instead of a non-term. Worth one glance at the sheet's column header.

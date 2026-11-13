@@ -112,10 +112,14 @@ try {
     # that overlap and must not, this one finds surfaces that must meet and do
     # not. It is here because the front centre leg's shoulder was carrying
     # nothing in the drawn geometry and no check was asking.
+    # check-jargon is his documentation standard as a gate: the documents are
+    # for building without hidden knowledge, so trade words he has banned as
+    # they appeared - datum, "N off" for a quantity, FG - fail the run. On a
+    # repeat offence the answer is a guard, not an apology; this is the guard.
     foreach ($c in 'check-prism-edges', 'check-clash-js', 'check-bearing',
                    'check-registry-js', 'check-shop-pack-refs',
                    'check-cutlist-nest', 'subst',
-                   'restale', 'check-note-history') {
+                   'restale', 'check-note-history', 'check-jargon') {
         Write-Host "-- $c" -ForegroundColor Cyan
         & $py "tools/$c.py" @(
             if ($c -eq 'subst') { '--check' }
