@@ -52,7 +52,10 @@ the supply is fine or marginal, not enough to say what the peak is.
 | **Meter** | For the rail and for the alarm output |
 
 **Restrain each motor.** A free NEMA 23 with 2.2 N·m available will walk off a bench and whip its own
-cable. Clamp them, or lay them in a box.
+cable. His scheme, 2026-11-13: all four laid on a piece of plywood, a second piece the same size on
+top, C-clamped. Keep the drive end of each motor proud of the plywood - the terminal blocks and the
+LEDs have to stay reachable and visible, and section 7 is nothing but watching those LEDs. The
+shafts stick out the other side, which is what section 6's held-shaft test needs anyway.
 
 ---
 
