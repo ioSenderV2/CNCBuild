@@ -1241,10 +1241,14 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 
 FLAG: **THE E-STOP CONTACT NO LONGER RIDES THE 12 V RUN - the 18/6 has no conductor spare for
 it.** This file used to say the DVRD's e-stop contact shared the 12 V's 4 conductor shielded run,
-which is why that run was 4 conductor. The 18/6 supersedes that run with every conductor spoken
-for, so the contact needs its own way across the wall. OPEN: 🔴 **HOW THE DVRD'S E-STOP PAIR
-CROSSES NOW IS NOT RECORDED.** Its far end is unchanged - position 3 of the CONTROL Mini-Fit 4P,
-up in the board's input half.
+which is why that run was 4 conductor. SETTLED how it crosses instead - **his, 2026-11-12: a
+separate 22/2 from the DVRD's contact to position 3 of the CONTROL Mini-Fit 4P (J32), up in the
+board's input half.** The housing's other three positions - cycle start, feed hold, spare - stay
+empty, which is fine: those inputs sit behind controller pull-ups and an unwired input reads as
+released. ⚠️ THAT HOLDS ONLY AT DEFAULT INPUT SENSE: invert the E-STOP BIT ALONE in grblHAL (the
+DVRD contact is closed-when-healthy, so open must read as alarm) and leave cycle start and feed
+hold uninverted, or an empty feed hold reads permanently pressed and presents as a machine that
+will not run. Commissioning checks it.
 
 OPEN: 🔴 **WHERE THE CONTACT'S OTHER LEG LANDS IS NOT DECIDED.** The DVRD gives a **dry changeover**,
 so it needs two legs, and **neither the control connector nor its terminal block carries a GND pin** -
