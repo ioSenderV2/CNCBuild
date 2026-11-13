@@ -243,7 +243,7 @@ that stays alive.
 | | |
 |---|---|
 | In | the **L5-20P pigtail**, hot and neutral, into the **top** of the breaker |
-| Breaker | the **third 6 A 2-pole**, repurposed - across **hot and neutral**, so the branch gets double-pole isolation |
+| Breaker | a **1-pole 6 A, curve C, in the hot only** - his, 2026-11-13. The **neutral runs straight to the splitter**, unbroken, like every house circuit |
 | Then | a **2 x 6 splitter block** |
 
 | Pair | Feeds |
@@ -254,10 +254,12 @@ that stays alive.
 
 **Three spare pairs on the splitter**, which is the right side of the panel to have them on.
 
-✅ **THE SPARE BREAKER LANDS EXACTLY RIGHT AND NOTHING EXTRA GETS BOUGHT.** Four 2-pole breakers were
-ordered for four pairs off the 2 x 8 block. Moving the 12 V supply here frees one, and a 2-pole 240 V
-MCB works perfectly well on 120 V across hot and neutral. The 220 V side keeps **6 A, 16 A, 6 A** and
-the fourth comes here.
+✅ ~~**THE SPARE BREAKER LANDS EXACTLY RIGHT AND NOTHING EXTRA GETS BOUGHT.**~~ SUPERSEDED - **his,
+2026-11-13: this branch gets a 1-POLE 6 A instead, and the freed 2-pole goes back to being the
+spare.** Breaking the hot alone is how every hot-plus-neutral circuit in a house is broken - the
+neutral sits at ground potential, so a tripped breaker leaves nothing live downstream - and it gives
+back one DIN module on the bottom rail. The 220 V side keeps **6 A, 16 A, 6 A**, all 2-pole. The
+1-pole 6 A is the one part this adds to the buy list - curve C like the rest.
 
 NOTE: **THE RECEPTACLE IS NOW BEHIND A BREAKER, WHICH IT WAS NOT BEFORE.** Until 2026-11-06 the strip
 had only the wall's 20 A. **6 A is ample**: the laptop charger is a couple of amps at 120 V, the
@@ -782,11 +784,17 @@ same number for this drive**, and the input one is larger. Interpretation, not e
 on the VFD's input while cutting** - which also belongs in
 [`../commissioning/bench-session.md`](../commissioning/bench-session.md) rather than being computed.
 
-🔴 **ALL FOUR ARE 2-POLE, AND THIS IS THE SAME TRAP AS THE CONTACTOR'S 2NO.** Every pair off the
-block is **two hots with no neutral**, so a single-pole breaker breaks one leg and leaves the other
-connected - the load is then half-isolated when the breaker is off or tripped, with one leg still live
-to ground at its terminals. For a branch you will switch off to work on a supply, that is the
-difference between dead and looking dead.
+🔴 **THE THREE 220 V BREAKERS ARE 2-POLE, AND THIS IS THE SAME TRAP AS THE CONTACTOR'S 2NO.** Every
+pair off the block is **two hots with no neutral**, so a single-pole breaker there breaks one leg and
+leaves the other connected - the load is then half-isolated when the breaker is off or tripped, with
+one leg still live to ground at its terminals. For a branch you will switch off to work on a supply,
+that is the difference between dead and looking dead.
+
+NOTE: **THE 110 V BREAKER IS THE DELIBERATE EXCEPTION - 1-pole, hot only, his call.** That branch has
+a real neutral, sitting at ground potential, so breaking the hot alone kills it the way every house
+circuit is killed, and the neutral runs past the breaker to the splitter unbroken. The two-hots
+argument above simply does not apply where one conductor is a neutral. The for-work rule is
+unchanged either way: pull both pigtails.
 
 FLAG: **TYPE C ON THE VFD'S BREAKER, NOT TYPE B.** The drive charges its DC bus every time the main
 contactor closes, and that inrush will trip a tightly-sized Type B curve - which presents as the
@@ -1226,7 +1234,7 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 | In | What it is |
 |---|---|
 | **220 V pigtail** | 10 ft captive, 12 AWG, **L6-20P**. Two hots and a ground, **no neutral anywhere in the chain** |
-| **110 V pigtail** | 10 ft captive, 12 AWG, **L5-20P**. Hot, neutral, ground - into the **top** of the 6 A 2-pole breaker |
+| **110 V pigtail** | 10 ft captive, 12 AWG, **L5-20P**. Hot, neutral, ground - the hot into the **top** of the 1-pole 6 A breaker, the neutral straight to the splitter |
 | **A1 / A2**, back from the switch boxes | the contactor coil feed, having run out through the **mushroom and then the paddle in series**. Same cable as the switch run below |
 | **FA / FC**, from the VFD | the drive's **Multi-Output 3** dry contact, **3 A / 250 VAC**, closing the pump contactor's 220 V coil. Same cable as the VFD run below |
 

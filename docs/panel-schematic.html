@@ -158,7 +158,7 @@ the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 <tr><td>Control fuse</td><td><b>1 A</b></td><td>Protects the control conductors, not the coil</td></tr>
 <tr><td>Main contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>25 A AC-7a / 9 A AC-7b. Coil AC 110&ndash;120 V. 18 mm</td></tr>
 <tr><td>Distribution</td><td><b>2 &times; 8 block</b></td><td>Two switched legs in, four pairs out</td></tr>
-<tr><td>Breakers</td><td>4 &times; 2-pole, <b>all curve C</b></td><td><b>Three on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and the <b>fourth on the 110 V rail</b> across hot and neutral</td></tr>
+<tr><td>Breakers</td><td>3 &times; 2-pole + 1 &times; 1-pole, <b>all curve C</b></td><td><b>Three 2-pole on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and a <b>1-pole 6 A on the 110 V rail, hot only</b>; the neutral runs past it to the splitter, unbroken</td></tr>
 <tr><td>Splitter</td><td><b>2 &times; 6 block</b>, 110 V side</td><td>Three pairs used, three spare</td></tr>
 <tr><td>Sense relay</td><td><b>ATO DVRD-36</b> voltage monitor, <b>across the 36 V rail</b> &mdash; powered by the circuit it watches, no coil feed, pair 4 freed</td><td>Dry contact, terminals <b>15&ndash;18</b>: one conductor of a 22/2 to the interface board's e-stop input, the other contact terminal <b>jumpered to the 12 V supply's V&minus;</b> so the loop closes through the 12 V return. <b>Not optional</b> &mdash; the controller survives the E-stop and has to be told</td></tr>
 <tr><td>Motor supply</td><td>36 V, 600 W</td><td>220 V at 3.5 A in, 36 V at 16.5 A out</td></tr>
@@ -491,10 +491,12 @@ white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-sto
   <text class="q c"   x="110" y="100">L5-20P &mdash; CANNOT TAKE L6-20</text>
 
   <path class="w-hot" d="M200 56 H 260"/>
-  <path class="w-nhal" d="M200 86 H 260"/>
-  <path class="w-neu"  d="M200 86 H 260"/>
+  <!-- the neutral does NOT enter the breaker: it dips under the box and runs
+       straight to the splitter, unbroken -->
+  <path class="w-nhal" d="M200 86 H 226 V 126 H 466 V 86 H 490"/>
+  <path class="w-neu"  d="M200 86 H 226 V 126 H 466 V 86 H 490"/>
   <text class="sm" x="206" y="48">hot</text>
-  <text class="sm" x="206" y="108">neutral</text>
+  <text class="sm" x="240" y="140">neutral &mdash; runs past the breaker, unbroken</text>
 
   <!-- PE out to the bar, the same treatment the 220 V pigtail gets in Fig. 1 -->
   <path class="w-pe" d="M110 112 V 152 H 232"/>
@@ -504,13 +506,11 @@ white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-sto
   <!-- the repurposed breaker -->
   <rect class="bx" x="260" y="30" width="170" height="82" rx="3"/>
   <text class="ttl c" x="345" y="54">6 A BREAKER</text>
-  <text class="sm c"  x="345" y="72">2-pole &middot; Type C</text>
-  <text class="sm c"  x="345" y="88">hot AND neutral</text>
-  <text class="q c"   x="345" y="104">PAIR 4&apos;S, REPURPOSED</text>
+  <text class="sm c"  x="345" y="72">1-pole &middot; Type C</text>
+  <text class="sm c"  x="345" y="88">hot only</text>
+  <text class="q c"   x="345" y="104">THE NEUTRAL IS NOT IN IT</text>
 
   <path class="w-hot" d="M430 56 H 490"/>
-  <path class="w-nhal" d="M430 86 H 490"/>
-  <path class="w-neu"  d="M430 86 H 490"/>
 
   <!-- the 2x6 splitter -->
   <rect class="bx" x="490" y="24" width="120" height="94" rx="3"/>
