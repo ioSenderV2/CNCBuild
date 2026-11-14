@@ -679,6 +679,19 @@ OPEN: ~~**the exact part**~~ - **chosen, the DVRD-36 above.** What is still open
 on it: the two thresholds metered rather than trusted, the delay set against a real rapid, and
 **which of its contacts is actually closed with the rail healthy.**
 
+SETTLED: **SENSING THE RAIL ON THE INTERFACE BOARD INSTEAD WAS CONSIDERED AND REJECTED, 2026-11-13 -
+do not re-argue it from scratch when the board is next open.** His question, with Rev B carrying the
+36 V: could the board watch the rail and assert e-stop itself, no DVRD. It is feasible, and
+isolation is NOT the blocker - a window comparator powered from the rail, referenced only to
+36V_RET, driving an optocoupler into the e-stop loop keeps the single-point rule intact and even
+keeps the de-energise-to-trip physics. Rejected anyway, on three grounds: **the thresholds and
+delay are knobs** - this page says they get tuned against a real rapid, and on a PCB under the
+enclosure lid every iteration is a soldering iron; **the board is deliberately all connectors, no
+actives**, and Rev B is routed and clean - the first comparator changes what the board is and
+reopens it; and **the DVRD's fail-safe is a bought property** where a homebrew window circuit's
+failure modes are ours to prove, in the one event nobody is watching. The DVRD stays; Rev B does
+not change.
+
 NOTE: **Pair 4 of the 2 x 8 block is free again** - the 12 V supply vacated it, the sense relay took
 it, and now nothing does.
 
