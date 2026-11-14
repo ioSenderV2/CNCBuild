@@ -6,18 +6,24 @@
 # by accident if this is ever done by hand again:
 #
 #   1. DRC runs first with --refill-zones --save-board, so the plot cannot ship a
-#      stale fill. On this board that matters more than usual - the inner planes
-#      and the two 36 V pours are most of the copper on it.
+#      stale fill. On this board that matters more than usual - the two inner
+#      planes are most of the copper on it.
 #   2. The drill MAP is written alongside but kept OUT of the zip. It is a .gbr
 #      and OSH Park's uploader can mistake it for a copper layer.
 #
 # fab/oshpark/ is Rev A's order record and is never touched by this.
 
 $ErrorActionPreference = 'Stop'
-$cli = 'C:\Program Files\KiCad\10.0\bin\kicad-cli.exe'
+# Windows and macOS installs, whichever exists - this ran only on Windows until
+# 2026-11-14, with backslashes in the paths below that pwsh on macOS takes as
+# part of a file name.
+$cli = @('C:\Program Files\KiCad\10.0\bin\kicad-cli.exe',
+         '/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli') |
+    Where-Object { Test-Path $_ } | Select-Object -First 1
+if (-not $cli) { throw 'kicad-cli not found' }
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $pcb = Join-Path $here 'interface-board.kicad_pcb'
-$out = Join-Path $here 'fab\oshpark-revb'
+$out = Join-Path (Join-Path $here 'fab') 'oshpark-revb'
 $zip = Join-Path $out 'interface-board-revb-oshpark.zip'
 
 $layers = 'F.Cu,In1.Cu,In2.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,F.Paste,B.Paste,Edge.Cuts'
@@ -29,7 +35,7 @@ New-Item -ItemType Directory -Force $out | Out-Null
 # Protel extensions are kicad-cli's default - --no-protel-ext would turn them OFF.
 # --check-zones refills at plot time as well, belt and braces over the DRC above.
 # ABSOLUTE origin on both, which is what the quote package already shipped: the
-# outline plots at x 5..138, y 5..137. Gerbers and drill must share a frame, so
+# outline plots at x 5..126, y 5..109.5. Gerbers and drill must share a frame, so
 # these two lines change together or not at all.
 & $cli pcb export gerbers --output $out --layers $layers --check-zones $pcb
 & $cli pcb export drill --output $out --format excellon --drill-origin absolute --excellon-units mm --generate-map --map-format gerberx2 $pcb

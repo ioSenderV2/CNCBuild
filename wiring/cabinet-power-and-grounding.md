@@ -13,6 +13,24 @@ separate logic supply, and the single point every ground meets at.
 > connection diagram and **not** a DIN rail layout, which gets done with the real components against
 > the real box.
 
+OPEN: **THE 36 V NO LONGER LANDS ON THE INTERFACE BOARD - his, 2026-11-14 - AND THIS FILE STILL
+ROUTES IT THERE.** Rev B's board lost its five stepper power jacks and its 36 V input
+([`kicad/interface-board/README.md`](kicad/interface-board/README.md)); distribution is on DIN
+rail, on Phoenix PT 4-QUATTRO blocks bought 2026-11-14 - 12 per machine, 6 per leg, one bridge
+per leg. **What that undoes here is not yet rewritten, because where the blocks sit is his to
+say** - in the supply box beside the XDR, or out at the board's enclosure:
+
+- **The 18/6 across the wall** (the conductors section) carries four 36 V conductors into J55.
+  There is no J55. If the blocks sit beside the XDR, what crosses the wall is the five 18/2
+  motor runs and a 12 V pair instead.
+- **The twelve drains at the interface board** counts five stepper power shields. Those cables
+  no longer reach the board, so their drains land wherever the blocks do.
+- **The DVRD-36 rail sense** is described "at the board end" of the 36 V rail.
+- [`panel-schematic.html`](../docs/panel-schematic.html) draws all three as they were.
+
+The bridge on those blocks is rated **25 A** against the XDR's 26.6 A limit, so the supply lands
+on a middle block, not an end one - then no part of the bridge carries more than three axes.
+
 ## What switches what - the chain from the wall
 
 Two circuits come into the box:

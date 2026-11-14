@@ -4,8 +4,6 @@ checked against the schematic by kicad-cli pcb drc --schematic-parity
 ============================================================
 
 +12V       J10.1  J11.1  J12.1  J18.1  J19.1  J6.1  J7.1  J8.1  J9.1
-+36V       J50.1  J51.1  J52.1  J53.1  J54.1  J55.1  J55.2
-36V_RET    J50.2  J51.2  J52.2  J53.2  J54.2  J55.3  J55.4
 AL_A       J17.5  J3.7
 AL_B       J17.6  J5.7
 AL_X       J1.7  J17.1

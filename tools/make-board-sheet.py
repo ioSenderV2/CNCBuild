@@ -91,12 +91,6 @@ WHAT = {
     "J42": ("Y2 Teensy jumper", "4", "GND / step / dir / enable"),
     "J43": ("Z Teensy jumper", "4", "GND / step / dir / enable"),
     "J44": ("B Teensy jumper", "4", "GND / step / dir / enable"),
-    "J50": ("X stepper power", "2", "+36 V / return, 18/2"),
-    "J51": ("Y1 stepper power", "2", "+36 V / return, 18/2"),
-    "J52": ("Y2 stepper power", "2", "+36 V / return, 18/2"),
-    "J53": ("Z stepper power", "2", "+36 V / return, 18/2"),
-    "J54": ("B stepper power", "2", "+36 V / return, 18/2"),
-    "J55": ("36 V in", "2", "+36 V / return, from the supply"),
 }
 
 
@@ -232,13 +226,13 @@ Regenerate with tools/make-board-sheet.py after any board change.</p>
 
 <svg viewBox="-13 -15 {total + 26:.0f} {bh + 32:.0f}" xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="{bw:.2f}" height="{bh:.2f}" class="bd"/>
-  <text x="1" y="-3.5" class="ttl">INTERFACE BOARD &#8212; {bw:.0f} &#215; {bh:.0f}</text>
+  <text x="1" y="-3.5" class="ttl">INTERFACE BOARD &#8212; {bw:g} &#215; {bh:g}</text>
   {''.join(parts)}
   {holes}
   <line x1="0" y1="{bh+6:.2f}" x2="{bw:.2f}" y2="{bh+6:.2f}" class="dim"/>
-  <text x="{bw/2:.2f}" y="{bh+10:.2f}" class="dt">{bw:.0f}</text>
+  <text x="{bw/2:.2f}" y="{bh+10:.2f}" class="dt">{bw:g}</text>
   <line x1="-6" y1="0" x2="-6" y2="{bh:.2f}" class="dim"/>
-  <text x="-9.5" y="{bh/2:.2f}" class="dt" transform="rotate(-90 -9.5 {bh/2:.2f})">{bh:.0f}</text>
+  <text x="-9.5" y="{bh/2:.2f}" class="dt" transform="rotate(-90 -9.5 {bh/2:.2f})">{bh:g}</text>
 
   <rect x="{rpx:.2f}" y="0" width="{RP}" height="{RP}" class="bd"/>
   <text x="{rpx+1:.2f}" y="-3.5" class="ttl">RP23 &#8212; {RP:.0f} &#215; {RP:.0f}</text>
@@ -276,7 +270,7 @@ def main() -> int:
     args = ap.parse_args()
 
     html, fp, mh, bw, bh = build()
-    print(f"interface board {bw:.0f} x {bh:.0f}, "
+    print(f"interface board {bw:g} x {bh:g}, "
           f"{len(WHAT)} connectors, {len(mh)} mounting holes")
     for r, (x, y) in sorted(mh.items()):
         print(f"  {r}  {x:6.1f}, {y:5.1f}   nearest edge "

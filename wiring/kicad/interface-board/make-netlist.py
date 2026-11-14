@@ -1,6 +1,7 @@
 """Regenerate netlist.txt from the LIVE board.
 
-Run with KiCad's bundled Python:
+Run with KiCad's bundled Python, from anywhere - board and output sit beside
+this file:
   & 'C:\\Program Files\\KiCad\\10.0\\bin\\python.exe' make-netlist.py
 
 Why this exists: netlist.txt used to fall out of generate.py, and generate.py is a
@@ -17,10 +18,13 @@ schematic" the same statement.
 Lock pegs and mounting holes carry no pad number and no net, and are skipped.
 """
 
+from pathlib import Path
+
 import pcbnew
 
-BOARD = r"C:\github\CNCBuild\wiring\kicad\interface-board\interface-board.kicad_pcb"
-OUT = r"C:\github\CNCBuild\wiring\kicad\interface-board\netlist.txt"
+HERE = Path(__file__).resolve().parent
+BOARD = str(HERE / "interface-board.kicad_pcb")
+OUT = str(HERE / "netlist.txt")
 
 
 def main():

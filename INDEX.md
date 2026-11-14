@@ -365,6 +365,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 ## [commissioning/bench-session.md](commissioning/bench-session.md)
 
 - [Why on the bench, and not later](commissioning/bench-session.md#why-on-the-bench-and-not-later)
+- [Before the session - two prerequisites, found 2026-11-13](commissioning/bench-session.md#before-the-session---two-prerequisites-found-2026-11-13)
 - [Setup](commissioning/bench-session.md#setup)
 - [1. Set the rail and verify it](commissioning/bench-session.md#1-set-the-rail-and-verify-it)
 - [2. Power-on inrush - all four at once](commissioning/bench-session.md#2-power-on-inrush---all-four-at-once)
@@ -544,9 +545,9 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 ## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)
 
 - [What is on it](wiring/kicad/interface-board/README.md#what-is-on-it)
-- [Status: verified against KiCad 10.0.5](wiring/kicad/interface-board/README.md#status-verified-against-kicad-1005)
+- [Status: verified against KiCad 10.0.8, 2026-11-14](wiring/kicad/interface-board/README.md#status-verified-against-kicad-1008-2026-11-14)
 - [Open items](wiring/kicad/interface-board/README.md#open-items)
-- [Rev B - designed on this branch, 2026-11-09](wiring/kicad/interface-board/README.md#rev-b---designed-on-this-branch-2026-11-09)
+- [Rev B - designed on this branch, 2026-11-09; 36 V stripped 2026-11-14](wiring/kicad/interface-board/README.md#rev-b---designed-on-this-branch-2026-11-09-36-v-stripped-2026-11-14)
   - [What it came out as](wiring/kicad/interface-board/README.md#what-it-came-out-as)
   - [Cost, against his settled rates](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates)
   - [Still open before any Rev B order](wiring/kicad/interface-board/README.md#still-open-before-any-rev-b-order)
