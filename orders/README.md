@@ -31,9 +31,10 @@ the Phoenix order each cover two machines: 24 PT 4-QUATTRO is 12 per machine, an
 | Molex 39-31-0027 | 40971389 (10) | 10 |
 | Molex 85508-5001 | 40971773 (10) | 10 |
 
-FLAG: **Mouser describes 46999-0621 as "Dual Row, 2 Pos." on both orders.** The interface
-board README lists it as the 2x2 four-position header for J15, J32 and J33. One of the two
-is wrong, and the parts in hand settle it - count the pins.
+NOTE: **Mouser's "Dual Row, 2 Pos." does not give the circuit count.** It prints that same
+text for 46999-0621 and for 39-29-9027. Mouser's product photo of 46999-0621 shows a 2x2
+body, four cavities - his, 2026-11-14 - which agrees with the interface board README's
+use of it at J15, J32 and J33. Go by the photo and the part, not the description line.
 
 The two OSH Park invoices were committed beside their gerbers until 2026-11-14 and were
 moved here that day. They are still in the git history before that date.
