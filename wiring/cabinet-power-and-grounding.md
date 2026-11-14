@@ -35,7 +35,7 @@ on a middle one still halves what the bridge carries and costs nothing.
 FLAG: **THE PIECE FROM THE SUPPLY TO THE FUSE IS NOT UNDER THE FUSE.** Only the XDR's own 26.6 A
 limit bounds it, which is why it is 12 AWG and short.
 
-FLAG: **RED AND BLACK ALREADY MEAN SOMETHING ELSE IN THIS BOX.** The panel scheme below has **red
+SETTLED: **RED AND BLACK CARRY TWO MEANINGS IN THIS BOX, AND HE ACCEPTS IT - his, 2026-11-14.** The panel scheme below has **red
 as L2 on the 220 V side and black as the 110 V hot**. On the DC side red is +36 V and black is its
 return. Consistent along the DC run is what he chose it for, and the two are hard to confuse in
 practice - the DC pair is 12 AWG solid between the supply, the fuse and the blocks, and the mains
@@ -1303,7 +1303,7 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
 | **The five 18/2 motor supply runs** | X, Y1, Y2, Z, B - **straight from the distribution blocks to the drives**, his, 2026-11-14, **all five through one 1 inch knockout in the side of the box**. Red is +36 V, black is the return. Shielded; the drain stays in this box, see the PE bar. Bare ferruled wire at this end, so nothing but the cable has to pass the wall |
-| **12 V, on an 18/2** | the logic supply to the interface board's 12 V IN (J18) - **his, 2026-11-14: the 18/6 goes away**, since the 36 V that filled four of its six conductors no longer makes this trip. +12 V to J18.1, 12 V GND to J18.2. OPEN: **which conductor is which** - the motor 18/2 is red (+) and black (-); if this is the same cable, say so here and it is red +12 V, black 12 V GND |
+| **12 V, on an 18/2** | the logic supply to the interface board's 12 V IN (J18) - **his, 2026-11-14: the 18/6 goes away**, since the 36 V that filled four of its six conductors no longer makes this trip. **Red is +12 V to J18.1, black is 12 V GND to J18.2 - his, 2026-11-14**, the same pair of colours as the motor cables |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
 
 FLAG: **THE E-STOP CONTACT DOES NOT RIDE THE 12 V RUN.** It left when that run became an 18/6

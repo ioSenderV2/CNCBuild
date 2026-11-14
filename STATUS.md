@@ -317,10 +317,9 @@ the interface, not this file.
 - OPEN: [L226](wiring/breakout-box.md#the-alarm-fails-the-right-way-on-this-drive-and-no-power-present-partner-is-needed) — *The drives are IG57, and the stepper run is Cat 6 plus 18/2…*<br>Confirm the sense with a meter before relying on it - power one drive with nothing wrong and see whether the output is asserted. The manual is machine-translated and "normally closed by default, and output when normal" is one sentence carrying the whole guard.
 - FLAG: [L290](wiring/breakout-box.md#open-items) — *The remote breakout box / Open items*<br>It does not close items 3, 5 or 6 - the voltage is a decision rather than a lookup, the opto commoning is not stated in the manual at all, and how a fault is cleared is described nowhere in it.
 
-## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)  (30)
+## [wiring/cabinet-power-and-grounding.md](wiring/cabinet-power-and-grounding.md)  (29)
 
 - FLAG: [L35](wiring/cabinet-power-and-grounding.md#cabinet-power-and-grounding) — *Cabinet power and grounding*<br>THE PIECE FROM THE SUPPLY TO THE FUSE IS NOT UNDER THE FUSE. Only the XDR's own 26.6 A limit bounds it, which is why it is 12 AWG and short.
-- FLAG: [L38](wiring/cabinet-power-and-grounding.md#cabinet-power-and-grounding) — *Cabinet power and grounding*<br>RED AND BLACK ALREADY MEAN SOMETHING ELSE IN THIS BOX. The panel scheme below has red as L2 on the 220 V side and black as the 110 V hot. On the DC side red is +36 V and black is its return. Consistent along the DC run is what he chose it for, and the two are hard to confuse in practice - the DC pair is 12 AWG solid between the supply, the fuse and the blocks, and the mains wires are stranded - but a red or a black wire in here is not identified by its colour alone.
 - FLAG: [L44](wiring/cabinet-power-and-grounding.md#cabinet-power-and-grounding) — *Cabinet power and grounding*<br>THE FIVE 18/2 RUNS ARE 18 AWG BEHIND A 20 A FUSE. The fuse protects the 12 AWG and the bridge; it does not protect an 18 AWG conductor against a sustained overload on one axis. What bounds a single run is its drive. Recorded, not argued - the same was true of every earlier arrangement.
 - FLAG: [L69](wiring/cabinet-power-and-grounding.md#what-switches-what---the-chain-from-the-wall) — *Cabinet power and grounding / What switches what - the chai…*<br>THIS FILE SAID THE OPPOSITE UNTIL 2026-11-06, when the 12 V supply was on pair 4 and the paddle took the controller with it. Do not reinstate that; the sense relay below exists because of this change and is not optional with it.
 - OPEN: [L138](wiring/cabinet-power-and-grounding.md#the-paddle-switch-is-a-powertec-71054) — *What switches what - the chain from the wall / The paddle s…*<br>WHETHER THE REMOVABLE SAFETY LOCK KEY IS REAL. The Amazon copy claims one and the manufacturer's page does not mention it. Apparent on arrival, and worth having if it is there: it does not make the box safe, but it stops a restart while hands are inside.
@@ -385,4 +384,4 @@ the interface, not this file.
 
 ---
 
-**291 open** across 38 files.
+**290 open** across 38 files.
