@@ -10,6 +10,7 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 | 2026-11-03 | Mouser | web 40971773, sales 282784945 | 20x Molex 39-30-1039 3P header, 10x 85508-5001 RJ45 jack | $75.23 | [interface board](../wiring/kicad/interface-board/README.md) | `282784945.pdf` |
 | 2026-11-03 | OSH Park | xPBWS3rt | Interface board Rev A, 3 boards, $152.95 + $12.00 FedEx 2 Day | $164.95 | [interface board](../wiring/kicad/interface-board/README.md) | `oshpark-order-invoice-xPBWS3rt.pdf` |
 | 2026-11-04 | OSH Park | nonwzU9u | Sensor board, 6 boards (2 sets of 3), $18.90 + $8.60 USPS Priority | $27.50 | [sensor board](../linear-encoder/sensor-board.md) | `oshpark-order-invoice-nonwzU9u.pdf` |
+| 2026-11-04 | Digi-Key | 102688952 (from the export's filename) | 4x Sullins NPPN102AFCN-RC 2x10 socket, 2.0 mm (S5750-10-ND), $6.24 subtotal | $16.50 delivered, per the controller board notes | [CAN controller board](../linear-encoder/controller-board.md) socket bench test | `DK_PRODUCTS_102688952.csv` |
 | 2026-11-13 | Mouser | web 41109063, sales 282984374 | Extras of the same headers: 20x 46999-0621, 25x 39-29-9027, 25x 39-30-1039 | $59.13 | [interface board](../wiring/kicad/interface-board/README.md) | `282984374.pdf` |
 | 2026-11-14 | Mouser | web 41110345 | Phoenix Contact: 24x PT 4-QUATTRO (3211797), 4x FBS 10-6 bridge (3030271), 5x D-PT 4-QUATTRO end cover (3208979), 3x ATP-ST QUATTRO partition plate (3030815), 2x CLIPFIX 35 end bracket (3022218) | $163.30 | 36 V distribution on the DIN rail beside the XDR | `Order_41110345.pdf` |
 
