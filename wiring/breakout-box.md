@@ -9,7 +9,7 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 
 | | |
 |---|---|
-| **36 V, 600 W** power supply | Motor power. **16.5 A across all axes.** Nameplate, 2026-10-12 - mains 220 V at 3.5 A. SETTLED at 36 V, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md) |
+| **XDR-960-36** power supply | Motor power. **36 V, 26.6 A, 960 W**, DIN rail - bought 2026-11-13, replacing the 600 W 16.5 A brick, which stands down to spare. Still 36 V, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md) and [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) |
 | ~~**12 V, 3 A** buck~~ | SUPERSEDED - see below |
 | ~~**5 V, 3 A** buck~~ | SUPERSEDED - see below |
 | **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board) |
@@ -260,8 +260,10 @@ Never verified against how the machine is actually wired today.
    drive that alarms and stops mid-job. See [`ig57-drives.md`](ig57-drives.md). SETTLED: ~~**the
    supply's wattage is not recorded**~~ - **600 W, 36 V at 16.5 A, nameplate 2026-10-12.** The budget
    went **up** 4 A as a side effect of dropping the rail, because the same watts at a lower voltage
-   buy more current. What four drives actually **draw** is still open and is the bench session's job -
-   see [`../commissioning/bench-session.md`](../commissioning/bench-session.md).
+   buy more current. **And up again 2026-11-13: the XDR-960-36 replaced the brick - 26.6 A**, so the
+   sizing question is closed by nameplate alone. What four drives actually **draw** is still the
+   bench session's job - it sets the enclosure heat - see
+   [`../commissioning/bench-session.md`](../commissioning/bench-session.md).
 4. **Peak current per axis.** The IG57 is rated **5 A** phase current; the drag-chain run length is
    unrecorded, so the drop is uncomputed. The supply now runs on **18/2 shielded** rather than in a
    six-way shell. NOTE: the manual says supply input current is **smaller** than phase current and

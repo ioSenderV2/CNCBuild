@@ -234,3 +234,9 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
    [`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md), which also
    carries the one thing still missing: **the supply's model, and so its datasheet.** The
    board copper is sized for the supply's full 16.5 A regardless.
+5. OPEN: **The supply grew under the copper, 2026-11-13 - the XDR-960-36 is 26.6 A against
+   pours sized to 16.5 and J55's doubled legs at 2 x 9 A = 18 A.** The load side has not
+   moved - four drives are still a never-reached 20 A ceiling - but with no fuse between
+   supply and board, the bounding fault current is now the XDR's constant-current limit at
+   ~26.6 A, not 16.5. Before gerbers: widen the pours and rethink J55, add a DC fuse at the
+   supply, or accept on the load argument. His call, not made.

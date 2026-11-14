@@ -6,7 +6,7 @@
 (the current reading measures the wrong configuration.)
 (Motors restrained first - the plywood sandwich. Nothing on the shafts.)
 (The point is to spend the whole run accelerating and decelerating, which is)
-(where a stepper's draw peaks. If the supply's LCD settles to a steady value)
+(where a stepper's draw peaks. If the clamp meter settles to a steady value)
 (mid-move, the axes are cruising - shrink the 20 until it stops doing that.)
 G21
 G91

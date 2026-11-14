@@ -161,7 +161,7 @@ the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 <tr><td>Breakers</td><td>3 &times; 2-pole + 1 &times; 1-pole, <b>all curve C</b></td><td><b>Three 2-pole on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and a <b>1-pole 6 A on the 110 V rail, hot only</b>; the neutral runs past it to the splitter, unbroken</td></tr>
 <tr><td>Splitter</td><td><b>2 &times; 6 block</b>, 110 V side</td><td>Three pairs used, three spare</td></tr>
 <tr><td>Sense relay</td><td><b>ATO DVRD-36</b> voltage monitor, <b>across the 36 V rail</b> &mdash; powered by the circuit it watches, no coil feed, pair 4 freed</td><td>Dry contact, terminals <b>15&ndash;18</b>: one conductor of a 22/2 to the interface board's e-stop input, the other contact terminal <b>jumpered to the 12 V supply's V&minus;</b> so the loop closes through the 12 V return. <b>Not optional</b> &mdash; the controller survives the E-stop and has to be told</td></tr>
-<tr><td>Motor supply</td><td>36 V, 600 W</td><td>220 V at 3.5 A in, 36 V at 16.5 A out</td></tr>
+<tr><td>Motor supply</td><td><b>Mean Well XDR-960-36</b>, 36 V, 960 W, DIN rail</td><td>220 V at 5 A in (typ), 36 V at 26.6 A out. Output adjusts 36&ndash;42 V &mdash; 36 is the pot's floor</td></tr>
 <tr><td>Spindle drive</td><td><b>Huanyang HY02D223B</b></td><td>2.2 kW, 4.4 kVA, 11 A output. R/S/T takes single phase on any two</td></tr>
 <tr><td>Pump contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>Coil AC 230 V &mdash; inrush 11.5 VA, holding 2.8 VA</td></tr>
 <tr><td>Logic supply</td><td><b>Mean Well MDR</b>, 12 V 40 W</td><td>3.3 A out. <b>Fed from the 110 V side</b>, so the controller survives an E-stop</td></tr>
@@ -279,8 +279,8 @@ circuits are Fig. 2 and Fig. 3.</p>
   <text class="q c"   x="760" y="583">TELLS IT THE DRIVES DIED</text>
 
   <text class="ttl c" x="115" y="531">36 V SUPPLY</text>
-  <text class="sm c"  x="115" y="549">600 W &middot; variable</text>
-  <text class="sm c"  x="115" y="565">3.5 A in &middot; 16.5 A out</text>
+  <text class="sm c"  x="115" y="549">XDR-960-36 &middot; 960 W</text>
+  <text class="sm c"  x="115" y="565">5 A in &middot; 26.6 A out</text>
   <text class="q c"   x="115" y="583">SET AND METER THE RAIL</text>
 
   <text class="ttl c" x="330" y="531">VFD</text>

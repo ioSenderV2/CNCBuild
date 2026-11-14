@@ -6,8 +6,11 @@ axis is assembled. Results go in the tables and then outrank anything stated in
 
 **What it settles:**
 
-- Whether the **36 V 600 W supply covers four drives** - the sizing question the TST57 manual
-  declines to answer.
+- ~~Whether the **36 V 600 W supply covers four drives**~~ - **the supply changed under this
+  question, 2026-11-13: it is the XDR-960-36, 26.6 A**, and four drives rated 5 A phase are a
+  ceiling of 20 A that the manual says will not be reached. **No reading here can change the
+  supply.** The current readings stay because they buy the **heat number** for the drilled DIN
+  enclosure - the open half of the old supply gate - and the per-drive sanity checks below.
 - Whether **all four can be switched on at once** without tripping the supply.
 - Whether the **alarm output really asserts when healthy**, which is the whole fail-safe story and
   currently rests on one machine-translated sentence.
@@ -46,8 +49,8 @@ the supply is fine or marginal, not enough to say what the peak is.
 | | |
 |---|---|
 | **Motors** | All four, **uncoupled**, lying on the bench. Nothing on the shafts |
-| **Supply** | The 36 V 600 W unit, **output variable** - so it gets set and verified, not assumed |
-| **Reading current** | The supply's own **LCD**. No clamp meter needed |
+| **Supply** | **The XDR-960-36** - 36 V, 26.6 A, 960 W, DIN rail, arriving 2026-11-14. Adjust range is **36-42 V, so 36 is the pot's floor**. Label checked against the model on arrival, output **set and metered to 36.0 V** before anything connects |
+| **Reading current** | **A DC clamp meter on the supply's output leg.** The XDR has **no display** - a DC-OK LED, a DC-OK relay contact and Modbus, nothing that reads amps (committed spec PDF). The LCD went with the brick |
 | **Commanding motion** | grblHAL, jogging each axis. The motors need no mechanics to turn |
 | **DIP switches** | SW1-4 to **2000 pulses/rev** on all four drives: **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** - his call 2026-11-13, see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). $100-$103 = **400** steps/mm |
 | **Meter** | For the rail and for the alarm output |
@@ -121,27 +124,30 @@ All four jogging at the rapid you intend to use. Then one axis at a time if the 
 | All four at rapid | | | |
 | All four at half rapid | | | |
 | One axis at rapid | | | |
-| All four, shuttle cycle - peak on the LCD | | | |
+| All four, shuttle cycle - peak on the meter | | | |
 
 **The shuttle cycle is [`shuttle-cycle.nc`](shuttle-cycle.nc)** - all four axes out and back 50
 times as G0 rapids, so the run is spent accelerating and decelerating, which is where the draw
 peaks. It reads higher than constant-speed jogging and is the closest an unloaded bench gets to
 all four at max. Two conditions, both in the file's header: the rapids and accelerations must be
 set to the machine's intended values first, since G0 takes both from the controller settings -
-and if the LCD settles to a steady value mid-move the axes are cruising, so shorten the stroke.
+and if the meter settles to a steady value mid-move the axes are cruising, so shorten the stroke.
 Still a floor: the real peak is the loaded gantry, measured once the machine stands.
 
 ---
 
 ## What the numbers mean
 
-**Against 16.5 A available:**
+**Against 26.6 A available - the XDR-960-36's nameplate - the sizing question is closed before the
+meter comes out.** Four drives rated 5 A phase are a ceiling of 20 A the manual says will not be
+reached, and 20 is under 26.6. No reading off this bench changes the supply. What the readings
+still buy:
 
-| Four free-running reads | Then |
-|---|---|
-| A few amps | **The supply is settled.** Cutting load cannot plausibly close a gap that size, and the sizing question closes here |
-| Approaching double figures | **Marginal.** The loaded peak is above this and unmeasured, so decide before the plates are machined rather than after |
-| At or above 16.5 A | **Undersized**, found before anything was built around it |
+- The **real draw**, which sets the **heat into the drilled DIN enclosure** - heat scales with
+  draw, not rating, and that number is the surviving half of the old supply gate.
+- The **four-close-to-four-times-one check**, which catches a sick drive at the cheapest moment
+  there will ever be.
+- A baseline for the **DVRD-36's thresholds and delay** against what the rail really does.
 
 **Why free-running is informative at all, given no load:** the TST57 manual says supply input current
 runs *below* motor phase current, and declines to say by how much. Four drives rated 5 A phase each

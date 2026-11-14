@@ -122,10 +122,11 @@ against a drive whose response to exceeding it is to stop mid-cut, on a manual t
 own range consistently. **Do not reopen this for a 48 V supply that happens to be available**, which
 is the form the temptation will take.
 
-SETTLED: **The supply is the 36 V 600 W already in the machine - 16.5 A out, 220 V at 3.5 A in,
-nameplate 2026-10-12.** So the 600-against-800 W question closed by nothing moving, and the current
-budget went **up** from the 12.5 A the repo had worked to. FLAG: **its output is VARIABLE**, which
-makes 36 V a setting to verify with a meter rather than a property to trust - see
+SETTLED: ~~**The supply is the 36 V 600 W already in the machine - 16.5 A out**~~ - **superseded
+2026-11-13: the supply is the Mean Well XDR-960-36 - 36 V at 26.6 A, 960 W, DIN rail**, Newark
+12AN1207, and the 600 W brick stands down to spare once it is commissioned. The current budget went
+up again, 16.5 to 26.6. Its output adjusts **36-42 V, so 36 is the pot's floor** - still a setting
+to meter, not a property to trust - see
 [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
 
 ## Inputs and outputs - what the manual settles

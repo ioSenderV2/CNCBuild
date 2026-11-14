@@ -47,7 +47,7 @@ the smaller motor is the better one.
 | Bearing-to-bearing span | **930 mm** | **measured** on the built Y beams |
 | Motor frame | **NEMA 23**, all four axes | given |
 | Drive | **IG57**, **24–50 V DC**, **5 A** | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) — OPEN: off a retail listing, no manual committed |
-| Supply | **36 V, 600 W — 16.5 A across all axes** | nameplate, 2026-10-12. FLAG: **variable output**, so the 36 is a setting to verify with a meter — see [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md) |
+| Supply | **XDR-960-36: 36 V, 960 W — 26.6 A across all axes** | spec, bought 2026-11-13; the 600 W 16.5 A brick stands down to spare. Output adjusts 36-42 V, so the 36 is still a setting to meter — see [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md) |
 | Screw efficiency | **0.9 assumed** | OPEN: not from a sheet — a conventional ball-screw figure |
 | Screw root diameter | **13.5 mm assumed** | OPEN: the sheet gives only the 16 mm major — see below |
 
@@ -232,8 +232,11 @@ is a choice, not a constraint.
    supply's nameplate, 2026-10-12. **The budget grew by 4 A as a side effect of dropping the rail to
    36 V for over-voltage headroom**, which is the rare case of a safety decision paying for itself.
    The phase current is known too - the IG57 is **5 A** - but the manual says *supply* current runs
-   below phase current and will not say by how much, so four motors is not 20 A either. OPEN: what
-   they actually draw is a reading off the supply's own LCD during a cut, not a calculation.
+   below phase current and will not say by how much, so four motors is not 20 A either. SETTLED
+   again 2026-11-13: **the budget is 26.6 A - the XDR-960-36 replaced the brick**, and the sizing
+   comparison is over before it starts, since even the unreachable 20 fits. OPEN: what they
+   actually draw is still worth a reading - it sets the heat into the DIN enclosure - and it is now
+   a **DC clamp meter** reading, because the XDR has no display.
 
 ## OPEN: The torque curve at 36 V
 
