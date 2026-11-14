@@ -22,12 +22,26 @@ goes near the board:
 |---|---|
 | **The blocks** | Phoenix Contact **PT 4-QUATTRO** (3211797), push-in, four points on one potential. **Six per leg** - one for the supply, one per axis - joined by an **FBS 10-6 bridge cut to six**. Twelve blocks and two bridges per machine; bought 2026-11-14, Mouser 41110345 |
 | **+36 V group and return group** | side by side on the rail with a partition plate between them, **never bridged to each other** |
-| **What lands on them** | the XDR's V+ and V- on one block of each group, and **the five 18/2 motor supply cables** - X, Y1, Y2, Z, B - one conductor into each group |
+| **The fuse** | **20 A, in the +36 V leg, between the supply and the blocks - his, 2026-11-14.** It supersedes "nothing between the supply and the board" of 2026-11-09, which was decided against a 16.5 A brick |
+| **Supply to fuse to blocks** | **12 AWG solid copper, short lengths - his, 2026-11-14. BLACK is +36 V, WHITE is the return.** Black runs supply V+ to the fuse and fuse to the +36 V group; white runs supply V- straight to the return group. Solid wire goes into the push-in point bare - **no ferrule on solid** |
+| **What lands on them** | the black and the white above, on one block of each group, and **the five 18/2 motor supply cables** - X, Y1, Y2, Z, B - one conductor into each group |
 | **How** | **18 AWG, ferruled, pushed straight in.** The block takes a ferruled wire from 0.5 mm2 with no tool; 18 AWG is 0.82. The ferrule wants a **10 or 12 mm barrel**, because the block's strip length is 10 to 12 - the common 8 mm barrel does not seat |
 
-🔴 **THE SUPPLY LANDS ON A MIDDLE BLOCK, NOT AN END ONE.** The block is rated 32 A but its bridge
-is **25 A**, under the XDR's 26.6 A limit. Fed from block 3 or 4 the current splits both ways and
-no part of the bridge carries more than three axes; fed from block 1 it carries all five.
+✅ **THE 20 A FUSE COVERS THE BRIDGE AND THE 12 AWG.** The bridge is rated 25 A and 12 AWG is good
+for 20 A, so both sit under the fuse and the feed can land on any block of the group. Landing it
+on a middle one still halves what the bridge carries and costs nothing.
+
+FLAG: **THE PIECE FROM THE SUPPLY TO THE FUSE IS NOT UNDER THE FUSE.** Only the XDR's own 26.6 A
+limit bounds it, which is why it is 12 AWG and short.
+
+FLAG: **BLACK AND WHITE MEAN 110 V HOT AND NEUTRAL EVERYWHERE ELSE IN THIS BOX.** These two are
+36 V DC. They are short and run supply to fuse to blocks and nowhere else, which is what keeps
+them from being mistaken - but it is a second meaning for both colours inside one enclosure.
+
+FLAG: **THE FIVE 18/2 RUNS ARE 18 AWG BEHIND A 20 A FUSE.** The fuse protects the 12 AWG and the
+bridge; it does not protect an 18 AWG conductor against a sustained overload on one axis. What
+bounds a single run is its drive. Recorded, not argued - the same was true of every earlier
+arrangement.
 
 NOTE: **THESE ARE CLAMPS, NOT PLUGS.** A pulled motor cable leaves a ferruled conductor, which is
 the thing the board's power feeds went to Mini-Fit to avoid. Here it is accepted: these five are
@@ -954,9 +968,12 @@ SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026
 | Input | **220 V at 3.5 A** |
 | Output | **36 V DC at 16.5 A**, 600 W |
 
-SETTLED: **NOTHING GOES BETWEEN THE SUPPLY AND THE BOARD - his, 2026-11-09. The supply's own
+SETTLED: ~~**NOTHING GOES BETWEEN THE SUPPLY AND THE BOARD - his, 2026-11-09. The supply's own
 protection is the protection.** No DC fuse, no breaker on the 36 V side. It is a Mean Well and
-it looks after itself.
+it looks after itself.~~ **SUPERSEDED 2026-11-14: a 20 A fuse sits in the +36 V leg**, between
+the XDR and the distribution blocks - see the head of this file. The decision above was made
+for a 16.5 A brick feeding the interface board; the supply is 26.6 A now and the board no
+longer carries the rail.
 
 FLAG: **THE MODEL IS NOT RECORDED, SO THE DATASHEET IS NOT COMMITTED** - and this repo's rule is
 that datasheets are committed, not linked. What the over-current protection actually *does* when
@@ -1283,13 +1300,11 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
 | **The five 18/2 motor supply runs** | X, Y1, Y2, Z, B - **straight from the distribution blocks to the drives**, his, 2026-11-14. Shielded; the drain stays in this box, see the PE bar. Bare ferruled wire at this end, so nothing but the cable has to pass the wall |
-| **12 V, on the 18/6** | the logic supply to the interface board's 12 V IN (J18): **blue** +12 V to J18.1, **green** 12 V GND to J18.2 - his read of the jacket, 2026-11-13. ⚠️ **THE CABLE'S GREEN IS THE 12 V RETURN, NOT PE** - the panel's green-means-earth rule stops at this jacket. **Red, yellow, black and white were the 36 V's two doubled legs into J55 and are spare since 2026-11-14** - insulate them at both ends |
+| **12 V, on an 18/2** | the logic supply to the interface board's 12 V IN (J18) - **his, 2026-11-14: the 18/6 goes away**, since the 36 V that filled four of its six conductors no longer makes this trip. +12 V to J18.1, 12 V GND to J18.2. OPEN: **which conductor is which** - read it off the 18/2's jacket and put the two colours here, the way the 18/6's were |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
 
-FLAG: **THE E-STOP CONTACT NO LONGER RIDES THE 12 V RUN - the 18/6 had no conductor spare for
-it when this was decided.** NOTE: **it has four spare since 2026-11-14**, when the 36 V left that
-cable. The 22/2 below stands until he says otherwise - it is his call whether the contact moves
-back onto the 18/6 or the 18/6 gives way to a 2 conductor run. This file used to say the DVRD's e-stop contact shared the 12 V's 4 conductor shielded run,
+FLAG: **THE E-STOP CONTACT DOES NOT RIDE THE 12 V RUN.** It left when that run became an 18/6
+with no conductor spare, and the 18/2 that replaced the 18/6 on 2026-11-14 has none either. This file used to say the DVRD's e-stop contact shared the 12 V's 4 conductor shielded run,
 which is why that run was 4 conductor. SETTLED how it crosses instead - **his, 2026-11-12: a
 separate 22/2 from the DVRD's contact to position 3 of the CONTROL Mini-Fit 4P (J32), up in the
 board's input half.** The housing's other three positions - cycle start, feed hold, spare - stay
@@ -1303,20 +1318,21 @@ SETTLED: **ONE CONDUCTOR, SWITCHING AGAINST THE 12 V SUPPLY'S 0 V - his, 2026-11
 second conductor is spare and unconnected at both ends; the working one goes contact to pin 3.
 🔴 **SO THE CONTACT'S OTHER TERMINAL MUST JUMPER TO THE 12 V SUPPLY'S 0 V INSIDE THE PANEL** -
 that jumper IS the circuit: pull-up, ESTOP, pin 3, up the 22/2, through the contact, into 12 V
-0 V, home to board GND through the 18/6's 12 V return. Without it the contact closes into nothing
+0 V, home to board GND through the 18/2's 12 V return. Without it the contact closes into nothing
 and the machine sits in permanent e-stop - loud, not silent, but down. The commissioning reading
 that proves the loop: rail up, relay happy, pin 3 low. (Neither the control connector nor its
 terminal block carries a GND pin, which is why the return rides the supply's own 0 V - the
 netlist has ESTOP as J32.3 straight through to J36.3 and nothing else.)
 
-OPEN: **IS THE 18/6 SHIELDED?** The standing rule is his own, from the shielded-cable decision:
+OPEN: **IS THE 12 V 18/2 SHIELDED?** The standing rule is his own, from the shielded-cable decision:
 every run leaving the enclosure is shielded. If this one is, its drain is one more on the
 board-side bus bar, grounded at that end only like the rest; if it is an exception, write the
 exception here so the rule stays honest.
 
 🔴 **THE 36 V RUN HAS CHANGED THREE TIMES AND OLDER SENTENCES MAY NOT HAVE CAUGHT UP.** It was
 first described as going **to the drives**, as several motor supply runs leaving this box; then as
-one pair to the interface board; then as four conductors of the shared 18/6 into the board's J55,
+one pair to the interface board; then as four conductors of an 18/6 shared with the 12 V, into
+the board's J55,
 with the board fanning it to the axes. **Since 2026-11-14 it is back where it started: five 18/2
 runs leaving this box, one per drive, off the distribution blocks.** Any sentence in this file that
 still has the motor rail reaching the interface board is stale.
@@ -1563,8 +1579,8 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | **Fixed frame** - the steel Y back plate | **Not "the machine frame"** - see below, the machine is in two halves |
 | 36 V supply earth terminal | **its own conductor - and the earth-symbol terminal on the input strip IS the case** (datasheets call it FG, frame ground - same screw), bonded to the chassis inside the can. One wire from that screw; **nothing gets drilled**. Check it is really bonded: meter the earth screw to bare case metal. If a supply ever lacks the terminal, a ring lug under an existing mounting screw into chassis metal, star washer - still no drilling |
 | 12 V supply earth terminal | SETTLED off the part in his hand: **the MDR's input strip carries a ground terminal alongside its two power terminals**, so one wire from it to this bar. The body is plastic, so as with the VFD below this is an **earth terminal, not a case bond** - same conductor either way |
-| 36 V supply V- terminal | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded, ferruled - his, 2026-11-13**: the supply screws are ferruled, and a twin ferrule takes the 18/6's 18 AWG plus a 22, not plus a 14. FLAG: **the load wire sharing that screw is no longer the 18/6's 18 AWG - since 2026-11-14 it is the jumper from the supply to the distribution blocks, which carries all five axes.** OPEN: its gauge is his; 18 AWG is not enough for a rail that can deliver 26.6 A, the block takes up to 12 AWG ferruled, and whether a 22 still shares the ferrule depends on the answer |
-| 12 V supply V- terminal | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded** for the same twin-ferrule reason. This is also what makes the e-stop loop's V- jumper work - and the jumper and the DVRD's measuring pair are 22 AWG stranded too, all of it signal, none of it load |
+| 36 V supply V- terminal | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded - his, 2026-11-13.** FLAG: **it used to share the supply's V- screw in a twin ferrule with the 18/6's 18 AWG. That screw now holds a 12 AWG solid, and a twin ferrule does not take a 12 solid plus a 22.** PROPOSED, needs his nod: **land the 22 in a spare push-in point on the return group of the distribution blocks** - every block has three spare, and it is the same node as the V- screw. Ferruled, it pushes in like the rest |
+| 12 V supply V- terminal | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded**, in a **twin ferrule with the 12 V 18/2's 18 AWG - his, 2026-11-14**. This is also what makes the e-stop loop's V- jumper work - and the jumper and the DVRD's measuring pair are 22 AWG stranded too, all of it signal, none of it load |
 | VFD **E** terminal | **its own short heavy conductor.** FLAG: **the VFD's case is plastic - his, 2026-11-05 - and that changes nothing here.** There is no case to bond, but the drive has an earth terminal: the manual's main-circuit table lists **E, "ground terminal ... of Electrical Engineering Regulations"**. A plastic case means no case bond, not no earth |
 | Cable shields | **one end only** |
 
