@@ -380,7 +380,7 @@ the interface, not this file.
 
 ## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)  (1)
 
-- FLAG: [L209](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates) — *Rev B - designed on this branch, 2026-11-09; 36 V stripped…*<br>THE COMMITTED INVOICE CANNOT SERVE AS RATE EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
+- FLAG: [L209](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates) — *Rev B - designed on this branch, 2026-11-09; 36 V stripped…*<br>THE INVOICE CANNOT SERVE AS RATE EVIDENCE TO A SCRIPT. It moved to orders/ on 2026-11-14 and is no longer tracked - it carries a home address and this repo is public. Read by eye it says $152.95 per set of 3 plus $12.00 FedEx 2 Day. oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
 
 ---
 
