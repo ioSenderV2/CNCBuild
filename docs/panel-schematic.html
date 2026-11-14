@@ -72,6 +72,19 @@ components against the real box. Every decision here is recorded with its proven
 <code>wiring/cabinet-power-and-grounding.md</code>; this page is the picture of it and is
 <b>derived, never authoritative</b>.</p>
 
+<div class="note">
+<b>The 36&nbsp;V side of this drawing is out of date since 2026-11-14.</b> It shows the motor
+rail leaving on four conductors of the 18/6 into the interface board's J55. That connector no
+longer exists. The 36&nbsp;V is now distributed <b>in this box</b>: the supply's V+ and V&minus;
+land on two groups of six Phoenix PT&nbsp;4-QUATTRO blocks on the DIN rail, and <b>five 18/2
+motor cables</b> &mdash; X, Y1, Y2, Z, B &mdash; push into those blocks and leave for the drives.
+The 18/6 carries the 12&nbsp;V pair only (blue, green); its red, yellow, black and white are
+spare. Affected: the DC-side colour table, Fig.&nbsp;1's 36&nbsp;V output, Fig.&nbsp;4's note,
+Fig.&nbsp;5's drain count and Fig.&nbsp;6. <b>Not yet redrawn</b> &mdash; the gauge of the jumper
+from the supply to the blocks is still to be chosen. The decisions are in
+<code>wiring/cabinet-power-and-grounding.md</code>, which is current.
+</div>
+
 <h2>Wire colour and gauge</h2>
 
 <p class="sub"><b>His scheme, 2026-11-07.</b> These are the colours of the wire in the box, not a
