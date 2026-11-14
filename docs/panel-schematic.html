@@ -102,8 +102,8 @@ picture.</p>
 <tr><td>Five motor cables</td><td><b>Red</b> and <b>black</b>, the cable's own</td><td>red +36 V, black return, one pair per axis</td><td>red into the +36 V group, black into the return group &rarr; the drive. X, Y1, Y2, Z, B. In through one 1 inch knockout in the side of the box</td><td><b>18 AWG</b>, the 18/2's, ferruled. Shielded</td></tr>
 <tr><td>12 V to the board</td><td><b>Red</b> and <b>black</b>, the cable's own</td><td>red +12 V, black 12 V GND</td><td>12 V V+ and V&minus; screws &rarr; J18.1 and J18.2</td><td><b>18 AWG</b>, an 18/2. Shielded</td></tr>
 <tr><td>12 V V&minus; to the PE bar</td><td>&mdash;</td><td>the logic rail's one tie to earth</td><td>12 V V&minus; screw, <b>twin ferrule with the 18/2</b> &rarr; PE bar 8</td><td><b>22 AWG stranded</b></td></tr>
-<tr><td>36 V V&minus; to the PE bar</td><td>&mdash;</td><td>the motor rail's one tie to earth</td><td><i>proposed:</i> a spare point on the return block group &rarr; PE bar 7</td><td><b>22 AWG stranded</b></td></tr>
-<tr><td>DVRD measuring pair</td><td>&mdash;</td><td>the rail the sense watches</td><td>a spare point on each block group &rarr; DVRD + / &minus;</td><td><b>22 AWG stranded</b></td></tr>
+<tr><td>36 V V&minus; to the PE bar</td><td>&mdash;</td><td>the motor rail's one tie to earth</td><td>the supply's <b>second V&minus; screw</b>, alone on its own ferrule &rarr; PE bar 7</td><td><b>22 AWG stranded</b></td></tr>
+<tr><td>DVRD measuring pair</td><td>the cable's own</td><td>the rail the sense watches, <b>after the fuse</b></td><td>a spare point on each block group &rarr; DVRD + / &minus;</td><td><b>22 AWG</b>, a 22/2</td></tr>
 <tr><td>V&minus; jumper</td><td>&mdash;</td><td>closes the e-stop loop</td><td>12 V V&minus; screw &rarr; DVRD contact 18</td><td><b>22 AWG stranded</b></td></tr>
 <tr><td>22/2 to the board</td><td>&mdash;</td><td>e-stop, one conductor (one spare)</td><td>DVRD contact 15 &rarr; CONTROL pin 3</td><td><b>22 AWG</b>, the cable's</td></tr>
 </table>
@@ -120,8 +120,9 @@ A red or a black wire in here is not identified by its colour alone.
 <b>Why the taps are 22 AWG, and not 14 like everything else in the box:</b> none of them carries
 load current &mdash; the references, the measuring pair and the jumper are all signal. On the 12&nbsp;V
 supply the reference shares the V&minus; screw with the 18/2 in a <b>twin ferrule</b>, which takes an
-18 plus a 22. On the 36&nbsp;V supply the V&minus; screw holds a 12 AWG solid, which no twin ferrule
-shares &mdash; so its taps land in spare push-in points on the blocks, the same node one hop along.
+18 plus a 22. On the 36&nbsp;V supply the first V&minus; screw holds a 12 AWG solid, which no twin ferrule
+shares &mdash; so the reference takes the <b>second V&minus; screw</b> to itself. The DVRD's pair taps the
+blocks instead, <b>after the fuse</b>, so a blown fuse reads as a dead rail.
 </div>
 
 <div class="warn">
@@ -645,8 +646,8 @@ draws every wire that leaves them. <b>A dot is two wires at one point.</b> The 3
 <b>supply &rarr; 20&nbsp;A fuse &rarr; distribution blocks</b> on short 12 AWG solid, <b>red +36&nbsp;V
 and black return</b> &mdash; the motor cables' own colours &mdash; and leaves the box as five 18/2 motor
 cables through one 1 inch knockout. The 12&nbsp;V leaves on its own
-18/2. The 0&nbsp;V references, the DVRD measuring pair and the V&minus; jumper are all <b>22 AWG
-stranded</b>, none of which carries load current.</p>
+18/2. The 0&nbsp;V references, the DVRD measuring pair (a 22/2, tapped <b>after the fuse</b>) and the
+V&minus; jumper are all <b>22 AWG</b>, none of which carries load current.</p>
 
 <figure>
 <svg viewBox="0 0 900 700" width="190mm" xmlns="http://www.w3.org/2000/svg">
@@ -691,7 +692,7 @@ stranded</b>, none of which carries load current.</p>
   <text class="sm" x="652" y="164"><tspan font-weight="bold">return group</tspan> &middot; 6 &times; PT 4-QUATTRO</text>
   <text class="sm" x="652" y="184">bridged &middot; never bridged to +36 V</text>
   <text class="q"  x="652" y="222">FIVE 18/2 OUT &rarr; THE DRIVES</text>
-  <text class="sm" x="652" y="240">X &middot; Y1 &middot; Y2 &middot; Z &middot; B &mdash; one conductor</text>
+  <text class="sm" x="652" y="240">X &middot; Y1 &middot; Y2 &middot; Z &middot; B &mdash; one pair each:</text>
   <text class="sm" x="652" y="256">red to +36 V, black to return, ferruled.</text>
   <text class="sm" x="652" y="272">Drains &rarr; PE bar, this end only.</text>
 
@@ -703,8 +704,7 @@ stranded</b>, none of which carries load current.</p>
   <text class="sm" x="258" y="134">spare</text>
   <text class="wg" x="470" y="162">BLACK &middot; 12 AWG solid</text>
   <path class="w-out" d="M214 170 H 354"/><path class="w-out" d="M366 170 H 640"/>
-  <path class="w-out" d="M214 210 H 250"/>
-  <text class="sm" x="258" y="214">spare</text>
+  <path class="w-pe" d="M214 210 H 354"/><path class="w-pe" d="M366 210 H 394"/><path class="w-pe" d="M406 210 H 600"/>
 
   <!-- the 12 V 18/2 -->
   <rect class="bx" x="640" y="330" width="240" height="140" rx="3"/>
@@ -727,9 +727,9 @@ stranded</b>, none of which carries load current.</p>
   <path class="w-out" d="M360 90 V 240"/>
   <circle class="dot" cx="400" cy="170" r="3.2"/>
   <path class="w-out" d="M400 170 V 240"/>
-  <text class="wg" x="408" y="230">22 AWG</text>
-  <text class="sm" x="408" y="204">both taps: a spare</text>
-  <text class="sm" x="408" y="218">point on the blocks</text>
+  <text class="wg" x="408" y="232">a 22/2 &middot; after the fuse</text>
+  <text class="sm" x="408" y="190">both taps: a spare</text>
+  <text class="sm" x="408" y="202">point on the blocks</text>
   <circle cx="360" cy="240" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
   <circle cx="400" cy="240" r="4" fill="#fff" stroke="#c81e1e" stroke-width="1.6"/>
   <text class="sm" x="352" y="258">+</text>
@@ -751,13 +751,12 @@ stranded</b>, none of which carries load current.</p>
   <text class="wg" x="300" y="474">22 AWG</text>
 
   <!-- the two 0 V conductors to the PE bar -->
-  <circle class="dot" cx="600" cy="170" r="3.2"/>
-  <path class="w-pe" d="M600 170 V 594"/>
+  <path class="w-pe" d="M600 210 V 594"/>
   <circle class="dot" cx="560" cy="430" r="3.2"/>
   <path class="w-pe" d="M560 430 V 594"/>
   <text class="wg" x="612" y="572">22 AWG, both</text>
-  <text class="sm" x="612" y="500">36 V: from a spare point on</text>
-  <text class="sm" x="612" y="514">the return group (proposed)</text>
+  <text class="sm" x="612" y="500">36 V: the supply&apos;s second</text>
+  <text class="sm" x="612" y="514">V&minus; screw, on its own</text>
   <text class="sm e" x="552" y="500">12 V: twin ferrule</text>
   <text class="sm e" x="552" y="514">with the 18/2</text>
   <rect class="bar" x="500" y="594" width="380" height="26" rx="3"/>
