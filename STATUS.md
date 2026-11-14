@@ -17,6 +17,13 @@ not also marked SETTLED:. When that reads wrong, **fix the markers in the prose*
 the interface, not this file.
 
 
+## [machine/README.md](machine/README.md)  (4)
+
+- FLAG: [L6](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine*<br>Two documents, split by register - read this first assembly.md says what gets built. The thirteen chapters say why. Keep them apart. A page that carries both is arguing with itself while somebody is holding a drill, which is how one unusable document came about in the first place.
+- FLAG: [L20](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine / Two documents, split by register - read this…*<br>A new decision goes in a chapter, and then into assembly.md if it changes what gets built. Writing the reasoning into assembly.md is the failure this split exists to prevent.
+- FLAG: [L40](machine/README.md#the-dimensional-prose-is-archived) — *The machine*<br>The dimensional prose is archived Six files moved to archive/ on 2026-10-11: torsion-box, lateral-stiffness, x-gantry-end-plates, z-carriage, y-beam-support and outboard-plate. They were walkthroughs of dimension chains that ../dimensions/registry.toml now owns, and they kept drifting against it.
+- FLAG: [L83](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers went to the back, and the two rear risers became one steel plate, 1210.47 long, that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
+
 ## [machine/assembly.md](machine/assembly.md)  (70)
 
 - OPEN: [L15](machine/assembly.md#building-the-machine) — *Building the machine*<br>Items marked Open are not yet specified anywhere in this repo. They are not omissions from this document — do not fill one in from a catalogue or from inference. open-items.md is the full list.
@@ -163,13 +170,6 @@ the interface, not this file.
 - FLAG: [L233](machine/open-items.md#from-the-2026-10-11-tooltip-pass) — *Open items / From the 2026-10-11 tooltip pass*<br>28 bolts are drawn on the machine that the fastener schedule has no entry for, so they are on no buy list: 16 Y sole bolts (the sole bracket's root rows into the end plate's end face and the doubler's edge), 6 Z casting bolts into the carriage plate, 4 X sole bolts, and 2 BF12 bolts on the carriage plate. Found by making the model's tooltips read their length out of dimensions/fasteners.toml: the ones that came back empty are this list. tools/make-3d.py now prints it on every run, so it cannot go quiet again.
 - FLAG: [L268](machine/open-items.md#carried-forward) — *Open items / Carried forward*<br>The claim that the scheme was "only in the project notes, not in this repo" was simply wrong - archive/torsion-box.md carries the mount, the tenons, the ledge depth, the back post's single-sided shoulder and what the tenons ask of the rib grid. It was repeated twice in conversation on 2026-10-02 on the strength of this list rather than the file. An open-items entry is a pointer, not evidence; read the file it points at before believing it.
 - FLAG: [L281](machine/open-items.md#carried-forward) — *Open items / Carried forward*<br>How far past the front riser plane the spindle reaches, and whether it fouls the widened fin at low Z. Confirmed to pass the plane; the amount is unmeasured. Needed before the front plates are cut. Four numbers listed under "The lateral fix". Worse as of 2026-10-02: the cast stepper frame and a NEMA 23 now occupy that end too, so the question is no longer only "does the spindle clear the fin" but "does it clear the fin, the casting and the motor". Add the casting's envelope to the four numbers.
-
-## [machine/README.md](machine/README.md)  (4)
-
-- FLAG: [L6](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine*<br>Two documents, split by register - read this first assembly.md says what gets built. The thirteen chapters say why. Keep them apart. A page that carries both is arguing with itself while somebody is holding a drill, which is how one unusable document came about in the first place.
-- FLAG: [L20](machine/README.md#two-documents-split-by-register---read-this-first) — *The machine / Two documents, split by register - read this…*<br>A new decision goes in a chapter, and then into assembly.md if it changes what gets built. Writing the reasoning into assembly.md is the failure this split exists to prevent.
-- FLAG: [L40](machine/README.md#the-dimensional-prose-is-archived) — *The machine*<br>The dimensional prose is archived Six files moved to archive/ on 2026-10-11: torsion-box, lateral-stiffness, x-gantry-end-plates, z-carriage, y-beam-support and outboard-plate. They were walkthroughs of dimension chains that ../dimensions/registry.toml now owns, and they kept drifting against it.
-- FLAG: [L83](machine/README.md#end-plates) — *Frame and motion / End plates*<br>Reworked 2026-10-02 and all four as-built Y risers are scrapped. Cast stepper frames replaced BK12 and the M5 standoffs, the Y steppers went to the back, and the two rear risers became one steel plate, 1210.47 long, that is also the rear shear panel. Four measurements gate cuts that cannot be undone — see open-items.md before ordering or cutting anything for the Y ends.
 
 ## [machine/spindle-and-mount.md](machine/spindle-and-mount.md)  (7)
 
@@ -377,7 +377,7 @@ the interface, not this file.
 
 ## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)  (1)
 
-- FLAG: [L198](wiring/kicad/interface-board/README.md#-180-wide-does-not-save-money-area-does) — *Rev B target - the shape any future board takes / 🔴 180 WID…*<br>THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
+- FLAG: [L198](wiring/kicad/interface-board/README.md#-180-wide-does-not-save-money-area-does) — *Rev B target - the shape any future board takes / 🔴 180 WID…*<br>THE INVOICE CANNOT SERVE AS THAT EVIDENCE TO A SCRIPT. oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out by a tool. Read by eye it says $152.95 per set of 3 plus $12.00 FedEx 2 Day, which is the $5 / sq in above. It moved to orders/ on 2026-11-14 and is no longer tracked - it carries a home address and this repo is public.
 
 ---
 

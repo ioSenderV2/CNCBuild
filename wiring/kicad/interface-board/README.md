@@ -18,7 +18,7 @@ the E-stop contactor's block. See
 | `interface-board.kicad_pcb` | The board: **210 x 94 mm**, two layers, GND pour both sides, four M3 mounting holes. The lid gets cut to match the board. FLAG: **this line read 220 x 95 and the fab line below read 210 x 94** - Edge.Cuts measures 210 x 94, so the fab line was right. NOTE: **the holes are NOT in the corners** - they are at 4,4 / 204,4 / 3.2,45 / 206,66 from the top-left, which is why [`../../../machine/drawings/board-mounting.html`](../../../machine/drawings/board-mounting.html) exists. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper (tracks, vias, GND pours) from the placed footprints - a channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. |
-| `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; invoice alongside. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
+| `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; the order is recorded in [`orders/`](../../../orders/README.md), where the invoice PDF is kept out of git. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
 | `silk.py` | Regenerates every free silkscreen label (function names, per-terminal signal names). Owns all board text - edit its tables, not the board. |
 | `interface-board.kicad_pro` | Project wrapper. |
 | `netlist.txt` | The connection list, generated from the same source as the schematic. |
@@ -195,10 +195,12 @@ it, 4 layers is cheaper than today; above it, dearer.
 | **Purely a cheaper board** | **stay on 2 layers and shrink modestly** - 180 x 94 on 2 layers is 26.2 sq in, **$131**, which beats both |
 | **Both** | get under **15 sq in on 4 layers**, which needs the corridor gone and the height with it |
 
-FLAG: **THE COMMITTED INVOICE CANNOT SERVE AS THAT EVIDENCE.**
-`fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable
-text in it, so no rate or line item can be read back out. It records that the order happened,
-not what it cost per unit area. **A text PDF or a saved quote page would.**
+FLAG: **THE INVOICE CANNOT SERVE AS THAT EVIDENCE TO A SCRIPT.**
+`oshpark-order-invoice-xPBWS3rt.pdf` is **image-only** - there is no extractable text in
+it, so no rate or line item can be read back out by a tool. Read by eye it says **$152.95
+per set of 3 plus $12.00 FedEx 2 Day**, which is the $5 / sq in above. It moved to
+[`orders/`](../../../orders/README.md) on 2026-11-14 and is no longer tracked - it carries
+a home address and this repo is public.
 
 ### What the work actually is
 

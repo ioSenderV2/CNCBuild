@@ -1,0 +1,6 @@
+# Order confirmations and invoices live here but are NOT tracked: they carry a name,
+# a home address, an email and sometimes an order-access link, and this repo is public.
+# README.md is the tracked record - date, vendor, order number, what, what for.
+*
+!.gitignore
+!README.md
