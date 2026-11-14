@@ -1048,15 +1048,15 @@
 			(uuid "f7eef31b-255c-4c7e-b9d3-da250bf4e32c")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-04A2_2x02_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299047/39299047.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -2146,15 +2146,15 @@
 			(uuid "7432286f-a047-454b-8756-de45f1c7512b")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-04A2_2x02_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299047/39299047.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -2354,6 +2354,17 @@
 			(uuid "78b1e5ff-ac7e-4af7-aa81-1e9dfa4c568e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -4160,6 +4171,17 @@
 			(uuid "25803cae-0fd0-47b5-a5cb-62ba774c8f97")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/855085001/0855085001.stp"
+			(offset
+				(xyz 0 0 8.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
 	)
 	(footprint "interface-board:Molex_Mini-Fit_Jr_5566-03A3_1x03_P4.20mm_Vertical"
 		(layer "F.Cu")
@@ -4357,6 +4379,17 @@
 			(uuid "c744c49c-8096-4458-8ed1-4b8b8bda6e8e")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "interface-board:RJ45_Molex_85508-5001_Vertical"
 		(layer "F.Cu")
@@ -4617,6 +4650,17 @@
 			(uuid "99604d8c-2a94-49ea-a496-00d72cc976d7")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/855085001/0855085001.stp"
+			(offset
+				(xyz 0 0 8.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
 	)
 	(footprint "Connector:FanPinHeader_1x04_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -5516,15 +5560,15 @@
 			(uuid "020fa7a7-a8c6-4843-af59-bfebdf88de94")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299027/39299027.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -5787,6 +5831,17 @@
 			(uuid "c3361ed2-d176-473d-8819-df16902f2e55")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/855085001/0855085001.stp"
+			(offset
+				(xyz 0 0 8.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
 	)
 	(footprint "MountingHole:MountingHole_3.2mm"
 		(layer "F.Cu")
@@ -6041,6 +6096,17 @@
 			(uuid "c5111e60-5511-4aca-86f4-d20b311c7255")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "interface-board:Molex_Mini-Fit_Jr_5566-03A3_1x03_P4.20mm_Vertical"
 		(layer "F.Cu")
@@ -6238,6 +6304,17 @@
 			(uuid "00ca66cf-3fe3-4c29-8dae-bfd8bb71c8fd")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "interface-board:Molex_Mini-Fit_Jr_5566-03A3_1x03_P4.20mm_Vertical"
 		(layer "F.Cu")
@@ -6435,6 +6512,17 @@
 			(uuid "95d42eeb-c627-4c49-a19a-e45f49e7af1f")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal"
 		(layer "F.Cu")
@@ -7816,15 +7904,15 @@
 			(uuid "6f562763-3180-4ec3-8e6b-67061914e892")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-04A2_2x02_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299047/39299047.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -8638,15 +8726,15 @@
 			(uuid "ef493878-e430-4640-8e94-de6c6423da53")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299027/39299027.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -9272,15 +9360,15 @@
 			(uuid "8c890a43-303a-4f20-a23a-abfc657b4b51")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299027/39299027.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -9543,6 +9631,17 @@
 			(uuid "5bfe547b-6c35-4436-9aca-5a9961632302")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/855085001/0855085001.stp"
+			(offset
+				(xyz 0 0 8.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
 	)
 	(footprint "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
 		(layer "F.Cu")
@@ -10109,15 +10208,15 @@
 			(uuid "e7e0b499-ef1b-4e37-874d-e92a801ea9b6")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299027/39299027.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -11266,6 +11365,17 @@
 			(uuid "21f5d448-5d77-4003-8005-2042846fb982")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 		(layer "F.Cu")
@@ -11771,6 +11881,17 @@
 			(uuid "12431446-8a6d-4eed-b982-60491ece2eac")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/855085001/0855085001.stp"
+			(offset
+				(xyz 0 0 8.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 0)
+			)
+		)
 	)
 	(footprint "interface-board:Molex_Mini-Fit_Jr_5566-03A3_1x03_P4.20mm_Vertical"
 		(layer "F.Cu")
@@ -11968,6 +12089,17 @@
 			(uuid "f12cc6a2-a448-4ec0-9267-dad4128a674c")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39301039/0039301039.stp"
+			(offset
+				(xyz 0 0.85 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 0 180)
+			)
+		)
 	)
 	(footprint "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
 		(layer "F.Cu")
@@ -12534,15 +12666,15 @@
 			(uuid "6123f791-99a6-4b8d-844f-ed4ece113a8f")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299027/39299027.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)
@@ -13356,15 +13488,15 @@
 			(uuid "8fcd558a-cc29-47a7-8fc3-40545a8a79a7")
 		)
 		(embedded_fonts no)
-		(model "${KICAD10_3DMODEL_DIR}/Connector_Molex.3dshapes/Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical.step"
+		(model "${KIPRJMOD}/../../../manufacturer-assets/3d/39299027/39299027.stp"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 -0.65 12.8)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -90 0 0)
 			)
 		)
 	)

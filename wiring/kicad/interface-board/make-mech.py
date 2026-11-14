@@ -35,10 +35,10 @@ takes the bump in is the one an opening has to clear. It is the HEADER on the
 board. THE MATING PLUG IS BIGGER and is not on this board - size an opening
 from the plug, and use this for where its centre goes.
 
-The STEP's origin is the same corner. IT IS MOSTLY A BARE BOARD: KiCad ships
-no model for the Mini-Fit Jr headers or the 4Ucon terminal blocks, and this
-board's own RJ45 and 3-way Mini-Fit footprints name none, so only the pin
-headers, the two IDC headers and the two fan headers stand on it. The script
+The STEP's origin is the same corner, and the board's top face is at z 1.6.
+The Molex connectors stand on it from Molex's own models, which attach-models.py
+aligns and which live UNTRACKED in manufacturer-assets/3d/ - without them those
+parts are simply absent. The terminal blocks have no model at all. The script
 lists what is absent each run. The STEP is not tracked - regenerate it.
 """
 

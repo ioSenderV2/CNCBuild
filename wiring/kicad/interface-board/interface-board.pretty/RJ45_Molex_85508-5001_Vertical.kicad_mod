@@ -38,4 +38,6 @@
   (pad "" np_thru_hole circle (at 5.715 0) (size 3.25 3.25) (drill 3.25) (layers "*.Cu" "*.Mask"))
   (pad "2" thru_hole circle (at -7.8 3.05) (size 2.4 2.4) (drill 1.6) (layers "*.Cu" "*.Mask"))
   (pad "2" thru_hole circle (at 7.8 3.05) (size 2.4 2.4) (drill 1.6) (layers "*.Cu" "*.Mask"))
+  (model "${KIPRJMOD}/../../../manufacturer-assets/3d/855085001/0855085001.stp"
+    (offset (xyz 0 0 8.6)) (scale (xyz 1 1 1)) (rotate (xyz -90 0 0)))
 )

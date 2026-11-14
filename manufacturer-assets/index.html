@@ -195,6 +195,22 @@
   </tr>
 
   <tr>
+    <td><strong>Molex 3D models</strong><br>four STEP files</td>
+    <td>Molex, served by TraceParts</td>
+    <td>STEP AP214 models of the four Molex connectors on the interface board that KiCad ships no
+        model for: <strong>85508-5001</strong> RJ45 jack, <strong>39-30-1039</strong> 3-circuit
+        single row, <strong>39-29-9027</strong> 2-circuit dual row, <strong>39-29-9047</strong>
+        4-circuit dual row. Each stands along its own +Y. The board's footprints point at them, and
+        <code>wiring/kicad/interface-board/attach-models.py</code> records how each was aligned.
+        Without them the board still opens; its 3D view and STEP export just lack those parts.</td>
+    <td><code>3d/855085001/0855085001.stp</code><br><code>3d/39301039/0039301039.stp</code><br>
+        <code>3d/39299027/39299027.stp</code><br><code>3d/39299047/39299047.stp</code><br>
+        each unzipped from the download beside it</td>
+    <td>His download from each Molex part page, 3D Models, 2026-11-14</td>
+    <td>2026-11-14</td>
+  </tr>
+
+  <tr>
     <td><strong>PS-5556-001</strong><br>Mini-Fit Jr system</td>
     <td>Molex</td>
     <td>Product specification, rev H2, 23&nbsp;pages &mdash; <strong>the current ratings for every
