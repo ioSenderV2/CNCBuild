@@ -489,7 +489,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
     - [Which pigtail goes which side of the centre leg](wiring/cabinet-power-and-grounding.md#which-pigtail-goes-which-side-of-the-centre-leg)
     - [Every penetration in the two walls](wiring/cabinet-power-and-grounding.md#every-penetration-in-the-two-walls)
 - [Grounds meet at one PE bus bar](wiring/cabinet-power-and-grounding.md#grounds-meet-at-one-pe-bus-bar)
-  - [The seven drains at the interface board](wiring/cabinet-power-and-grounding.md#the-seven-drains-at-the-interface-board)
+  - [The eight drains at the interface board](wiring/cabinet-power-and-grounding.md#the-eight-drains-at-the-interface-board)
   - ["Machine frame" is two halves and a spindle](wiring/cabinet-power-and-grounding.md#machine-frame-is-two-halves-and-a-spindle)
   - [The touch plate wants the Z plate too, and it is not an earth](wiring/cabinet-power-and-grounding.md#the-touch-plate-wants-the-z-plate-too-and-it-is-not-an-earth)
   - [Two drag chains, and Y1 is where everything accumulates](wiring/cabinet-power-and-grounding.md#two-drag-chains-and-y1-is-where-everything-accumulates)

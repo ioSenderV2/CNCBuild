@@ -96,11 +96,11 @@ picture.</p>
 
 <table>
 <tr><th>Conductor</th><th>Colour</th><th>Is</th><th>Lands on</th><th>Gauge</th></tr>
-<tr><td>Supply to fuse</td><td><b>Black</b></td><td>+36 V, <b>not under the fuse</b></td><td>36 V V+ screw &rarr; fuse holder, line side</td><td><b>12 AWG solid</b></td></tr>
-<tr><td>Fuse to blocks</td><td><b>Black</b></td><td>+36 V, fused 20 A</td><td>fuse holder, load side &rarr; +36 V block group</td><td><b>12 AWG solid</b></td></tr>
-<tr><td>Supply to blocks</td><td><b>White</b></td><td>36 V return</td><td>36 V V&minus; screw &rarr; return block group</td><td><b>12 AWG solid</b></td></tr>
-<tr><td>Five motor cables</td><td>the cable's own</td><td>+36 V and return, one pair per axis</td><td>one conductor into each block group &rarr; the drive. X, Y1, Y2, Z, B</td><td><b>18 AWG</b>, the 18/2's, ferruled</td></tr>
-<tr><td>12 V to the board</td><td>the cable's own &mdash; <i>to be read off the jacket</i></td><td>+12 V and 12 V GND</td><td>12 V V+ and V&minus; screws &rarr; J18.1 and J18.2</td><td><b>18 AWG</b>, an 18/2</td></tr>
+<tr><td>Supply to fuse</td><td><b>Red</b></td><td>+36 V, <b>not under the fuse</b></td><td>36 V V+ screw &rarr; fuse holder, line side</td><td><b>12 AWG solid</b></td></tr>
+<tr><td>Fuse to blocks</td><td><b>Red</b></td><td>+36 V, fused 20 A</td><td>fuse holder, load side &rarr; +36 V block group</td><td><b>12 AWG solid</b></td></tr>
+<tr><td>Supply to blocks</td><td><b>Black</b></td><td>36 V return</td><td>36 V V&minus; screw &rarr; return block group</td><td><b>12 AWG solid</b></td></tr>
+<tr><td>Five motor cables</td><td><b>Red</b> and <b>black</b>, the cable's own</td><td>red +36 V, black return, one pair per axis</td><td>red into the +36 V group, black into the return group &rarr; the drive. X, Y1, Y2, Z, B. In through one 1 inch knockout in the side of the box</td><td><b>18 AWG</b>, the 18/2's, ferruled. Shielded</td></tr>
+<tr><td>12 V to the board</td><td>the cable's own &mdash; <i>to be read off the jacket</i></td><td>+12 V and 12 V GND</td><td>12 V V+ and V&minus; screws &rarr; J18.1 and J18.2</td><td><b>18 AWG</b>, an 18/2. Shielded</td></tr>
 <tr><td>12 V V&minus; to the PE bar</td><td>&mdash;</td><td>the logic rail's one tie to earth</td><td>12 V V&minus; screw, <b>twin ferrule with the 18/2</b> &rarr; PE bar 8</td><td><b>22 AWG stranded</b></td></tr>
 <tr><td>36 V V&minus; to the PE bar</td><td>&mdash;</td><td>the motor rail's one tie to earth</td><td><i>proposed:</i> a spare point on the return block group &rarr; PE bar 7</td><td><b>22 AWG stranded</b></td></tr>
 <tr><td>DVRD measuring pair</td><td>&mdash;</td><td>the rail the sense watches</td><td>a spare point on each block group &rarr; DVRD + / &minus;</td><td><b>22 AWG stranded</b></td></tr>
@@ -109,10 +109,11 @@ picture.</p>
 </table>
 
 <div class="warn">
-<b>Black and white mean two things in this box.</b> On the 110&nbsp;V side black is hot and white is
-neutral. On the 36&nbsp;V side the two short 12 AWG solid wires are <b>black +36&nbsp;V and white
-return</b>. They run supply to fuse to blocks and nowhere else, which is what keeps them apart
-&mdash; but a black wire in here is not always mains, and a white one is not always a neutral.
+<b>Red and black mean two things in this box.</b> In the panel scheme above red is L2 on the
+220&nbsp;V side and black is the 110&nbsp;V hot. On the DC side <b>red is +36&nbsp;V and black is its
+return</b>, matching the 18/2 motor cables so the DC run reads one way from the supply to the
+drive. The DC pair is 12 AWG solid between supply, fuse and blocks; the mains wires are stranded.
+A red or a black wire in here is not identified by its colour alone.
 </div>
 
 <div class="info">
@@ -641,8 +642,9 @@ ground that carries signal current.
 <h2>Fig. 6 &mdash; The DC side: every conductor off the supply outputs</h2>
 <p class="sub">Each supply has <b>four output screws &mdash; V+ twice, V&minus; twice</b>. This sheet
 draws every wire that leaves them. <b>A dot is two wires at one point.</b> The 36&nbsp;V goes
-<b>supply &rarr; 20&nbsp;A fuse &rarr; distribution blocks</b> on short 12 AWG solid, <b>black +36&nbsp;V
-and white return</b>, and leaves the box as five 18/2 motor cables. The 12&nbsp;V leaves on its own
+<b>supply &rarr; 20&nbsp;A fuse &rarr; distribution blocks</b> on short 12 AWG solid, <b>red +36&nbsp;V
+and black return</b> &mdash; the motor cables' own colours &mdash; and leaves the box as five 18/2 motor
+cables through one 1 inch knockout. The 12&nbsp;V leaves on its own
 18/2. The 0&nbsp;V references, the DVRD measuring pair and the V&minus; jumper are all <b>22 AWG
 stranded</b>, none of which carries load current.</p>
 
@@ -690,16 +692,16 @@ stranded</b>, none of which carries load current.</p>
   <text class="sm" x="652" y="184">bridged &middot; never bridged to +36 V</text>
   <text class="q"  x="652" y="222">FIVE 18/2 OUT &rarr; THE DRIVES</text>
   <text class="sm" x="652" y="240">X &middot; Y1 &middot; Y2 &middot; Z &middot; B &mdash; one conductor</text>
-  <text class="sm" x="652" y="256">into each group, 18 AWG ferruled.</text>
+  <text class="sm" x="652" y="256">red to +36 V, black to return, ferruled.</text>
   <text class="sm" x="652" y="272">Drains &rarr; PE bar, this end only.</text>
 
   <!-- 36 V: supply to fuse to blocks. Gaps are crossings that do NOT connect -->
-  <text class="wg" x="470" y="82">BLACK &middot; 12 AWG solid</text>
+  <text class="wg" x="470" y="82">RED &middot; 12 AWG solid</text>
   <path class="w-out" d="M214 90 H 240"/>
   <path class="w-out" d="M320 90 H 640"/>
   <path class="w-out" d="M214 130 H 250"/>
   <text class="sm" x="258" y="134">spare</text>
-  <text class="wg" x="470" y="162">WHITE &middot; 12 AWG solid</text>
+  <text class="wg" x="470" y="162">BLACK &middot; 12 AWG solid</text>
   <path class="w-out" d="M214 170 H 354"/><path class="w-out" d="M366 170 H 640"/>
   <path class="w-out" d="M214 210 H 250"/>
   <text class="sm" x="258" y="214">spare</text>
@@ -709,7 +711,7 @@ stranded</b>, none of which carries load current.</p>
   <text class="ttl c" x="760" y="316">12 V 18/2 &rarr; INTERFACE BOARD</text>
   <text class="sm" x="652" y="364">+12 V &rarr; J18.1</text>
   <text class="sm" x="652" y="434">12 V GND &rarr; J18.2</text>
-  <text class="sm" x="652" y="454">colours: read off the jacket</text>
+  <text class="sm" x="652" y="454">shielded &middot; colours: off the jacket</text>
 
   <!-- 12 V runs into the cable -->
   <text class="wg" x="520" y="352">18 AWG &middot; the 18/2</text>
