@@ -119,13 +119,14 @@ REF_ON_BODY = {
     # the radiator fan header stands on end, rotated -90: local (dx,dy) lands
     # at board (-dy,dx), so this puts the ref east of the body, mid-height
     "J60": (3.8, -5.5),
+    # the case fan header stands on end, rotated +90: local (dx,dy) lands at
+    # board (dy,-dx). His, 2026-11-14: its ref goes ABOVE the header, in the
+    # strip under the divider where J40-J44 carry theirs - same height (board
+    # y 78.07), centred on the body, and turned horizontal (the third value
+    # is the text angle). It was hidden for a day on the wrong belief that no
+    # side had room; the strip above was never tried.
+    "J61": (10.13, 0.4, 0),
 }
-
-
-# the case fan header has the 12 V OUT connector on one side and the board
-# edge on the other, and no room for a reference on any side. Its function
-# label says what it is, so the ref is hidden rather than dropped on a pad.
-REF_HIDDEN = ("J61",)
 
 
 def fix_refs():
@@ -135,23 +136,21 @@ def fix_refs():
     import re
     with open(BOARD, encoding="utf-8") as f:
         text = f.read()
-    for ref, (dx, dy) in REF_ON_BODY.items():
+    for ref, spec in REF_ON_BODY.items():
+        dx, dy = spec[0], spec[1]
+        angle = f" {spec[2]}" if len(spec) > 2 else None
+        # the optional (hide yes) line is dropped: every ref listed here shows
         pat = re.compile(
-            r'(\(property "Reference" "' + ref + r'"\s*\n\s*\(at )[-0-9.]+ [-0-9.]+')
-        text, n = pat.subn(lambda m: f"{m.group(1)}{dx} {dy}", text, count=1)
-        if n != 1:
-            raise RuntimeError(f"reference property for {ref} not found")
-    for ref in REF_HIDDEN:
-        pat = re.compile(
-            r'(\(property "Reference" "' + ref + r'"\s*\n\s*\(at [^)]*\)\s*\n\s*\(layer "[^"]*"\)\n)'
-            r'(\s*)(?!\(hide yes\))')
-        text, n = pat.subn(lambda m: f"{m.group(1)}{m.group(2)}(hide yes)\n{m.group(2)}", text, count=1)
+            r'(\(property "Reference" "' + ref + r'"\s*\n\s*\(at )[-0-9.]+ [-0-9.]+( [-0-9.]+)?'
+            r'(\)\s*\n\s*\(layer "[^"]*"\)\n)(?:\s*\(hide yes\)\n)?')
+        text, n = pat.subn(
+            lambda m: f"{m.group(1)}{dx} {dy}{angle if angle is not None else (m.group(2) or '')}{m.group(3)}",
+            text, count=1)
         if n != 1:
             raise RuntimeError(f"reference property for {ref} not found")
     with open(BOARD, "w", encoding="utf-8", newline="") as f:
         f.write(text)
-    print(f"moved {len(REF_ON_BODY)} reference fields onto their bodies, "
-          f"hid {len(REF_HIDDEN)}.")
+    print(f"placed {len(REF_ON_BODY)} reference fields.")
 
 
 def main():
