@@ -238,5 +238,10 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
    pours sized to 16.5 and J55's doubled legs at 2 x 9 A = 18 A.** The load side has not
    moved - four drives are still a never-reached 20 A ceiling - but with no fuse between
    supply and board, the bounding fault current is now the XDR's constant-current limit at
-   ~26.6 A, not 16.5. Before gerbers: widen the pours and rethink J55, add a DC fuse at the
-   supply, or accept on the load argument. His call, not made.
+   ~26.6 A, not 16.5. Before gerbers: widen the pours and rethink J55, add a DC fuse, or
+   accept on the load argument. His call, not made. The fuse option puts **nothing on the
+   board** - it is a DIN fuse holder on the rail beside the XDR, in the output leg before
+   the feed; and a hard short is already covered without it, since below 30% output voltage
+   the XDR goes to hiccup. What a fuse adds is the sustained partial fault that holds the
+   voltage up while pulling past the pours' sizing. If chosen, the amp value comes off the
+   bench session's measured draw, not a guess.
