@@ -32,10 +32,14 @@ the Phoenix order each cover two machines: 24 PT 4-QUATTRO is 12 per machine, an
 | Molex 39-31-0027 | 40971389 (10) | 10 |
 | Molex 85508-5001 | 40971773 (10) | 10 |
 
-NOTE: **Mouser's "Dual Row, 2 Pos." does not give the circuit count.** It prints that same
-text for 46999-0621 and for 39-29-9027. Mouser's product photo of 46999-0621 shows a 2x2
-body, four cavities - his, 2026-11-14 - which agrees with the interface board README's
-use of it at J15, J32 and J33. Go by the photo and the part, not the description line.
+FLAG: **46999-0621 IS A 2-CIRCUIT HEADER BY MOLEX'S OWN DRAWING - and this file said the
+opposite for an hour on 2026-11-14.** Sales drawing 55660021-SD sheet 3, matte tin, 94V-0
+natural: **46999-0621 = 5566-02A2MS-210, 2 circuits**; the 4-circuit in that column is
+**46999-0502**. That matches Mouser's "Dual Row, 2 Pos., 94V-0, Matte Tin" word for word.
+The 2x2 reading came from Mouser's product photo, which is marked "for reference only" -
+a signal, not the part. 30 are bought; if the drawing is right, **no 4-circuit header has
+been ordered** and the interface board needs three per board (J15, J32, J33). The bag
+settles it: two pins or four.
 
 The two OSH Park invoices were committed beside their gerbers until 2026-11-14 and were
 moved here that day. They are still in the git history before that date.

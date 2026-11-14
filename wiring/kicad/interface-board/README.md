@@ -93,7 +93,7 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
    |---|---|---|
    | RJ45 vertical (J1-J5) | Molex **85508-5001** - top entry, THT, Cat5e, shielded (tab to GND; the patch cables are UTP so it carries nothing), no magnetics, 16.85 mm tall. 10 ordered 2026-11-03, Mouser order 40971773. NOT the sensor board's jack - that stays the unshielded 69255-004LF, whose end must float | 5 |
    | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. 20 ordered 2026-11-03, Mouser order 40971773 | 7 |
-   | 4P dual row 2x2 (J15, J32, J33) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389 | 3 |
+   | 4P dual row 2x2 (J15, J32, J33) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389. FLAG: **Molex's drawing 55660021-SD lists 46999-0621 as 5566-02A2MS-210 - 2 circuits, not 2x2.** The 4-circuit in the same plating and housing is **46999-0502**. Count the pins on the parts in hand before soldering; see [`orders/`](../../../orders/README.md) | 3 |
    | 2P dual row (J13, J14, J30, J31) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt without peg - they also fit these footprints) | 4 |
    | 3.5 mm TB 2P (J23, J34, J35) | KF350-class screw block, 4Ucon pattern - **to order** | 3 |
    | 3.5 mm TB 4P (J22, J36, J37) | same family - **to order** | 3 |
