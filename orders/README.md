@@ -16,6 +16,11 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 Mouser files its PDFs under the **sales** order number; the project's notes quote the
 **web** order number. Both are in the Order column.
 
+SETTLED: **THE QUANTITIES ARE DOUBLED ON PURPOSE - his, 2026-11-14.** The Mega V gets
+converted to the same wiring setup before he sells it, so the 2026-11-13 header order and
+the Phoenix order each cover two machines: 24 PT 4-QUATTRO is 12 per machine, and 4 FBS
+10-6 is one per 36 V leg per machine.
+
 ## Mouser parts across all four orders
 
 | Part | Orders | Total bought |
