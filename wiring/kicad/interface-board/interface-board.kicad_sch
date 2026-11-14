@@ -7520,6 +7520,236 @@
 			)
 		)
 	)
+	(symbol
+		(lib_id "cnc:TB_1x04")
+		(at 299.72 300.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9164fff3-97cb-4cdd-9d72-742f031620a6")
+		(property "Reference" "J60"
+			(at 299.72 294.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FAN 4P - radiator fan, 12 V"
+			(at 299.72 307.34 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector:FanPinHeader_1x04_P2.54mm_Vertical"
+			(at 299.72 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8a79cf0c-1caf-4dfa-b3b9-e0c94ea3992f")
+		)
+		(pin "2"
+			(uuid "5b1dbcef-b3f3-4370-a4d1-4dd8c3321ae9")
+		)
+		(pin "3"
+			(uuid "1fbe9e03-c892-42a9-a98c-fcc24cf8f5be")
+		)
+		(pin "4"
+			(uuid "f2f23d77-1b50-4be3-ab4b-2fe214e07ac3")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J60")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 293.37 297.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "116c9441-fd94-4809-81d6-950889caeec8")
+	)
+	(global_label "+12V"
+		(shape passive)
+		(at 293.37 299.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3b139fbc-99df-4933-8912-d4c98c596e53")
+	)
+	(no_connect
+		(at 293.37 302.26)
+		(uuid "60e29e90-3466-47d1-8e61-e5001a3e114d")
+	)
+	(no_connect
+		(at 293.37 304.8)
+		(uuid "d206a336-af32-463c-9928-4c2e992c7881")
+	)
+	(symbol
+		(lib_id "cnc:TB_1x04")
+		(at 299.72 340.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "83180d1b-4c75-48d3-89d8-47f0c313b2ca")
+		(property "Reference" "J61"
+			(at 299.72 334.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FAN 4P - case fan, 12 V"
+			(at 299.72 346.71 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector:FanPinHeader_1x04_P2.54mm_Vertical"
+			(at 299.72 340.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 340.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 340.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6c768dc0-cf04-43e5-83d0-bc6807e56cac")
+		)
+		(pin "2"
+			(uuid "1f8a89f6-229a-40ea-83ec-ea8417835d1c")
+		)
+		(pin "3"
+			(uuid "07892691-882e-47ee-a4a9-f6926cfd0a05")
+		)
+		(pin "4"
+			(uuid "06759085-e6e0-49bd-912d-4b66daf537d3")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "J61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape passive)
+		(at 293.37 336.55 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "20ae819a-8589-4a20-8b27-3195cf6263d0")
+	)
+	(global_label "+12V"
+		(shape passive)
+		(at 293.37 339.09 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3a185a3b-0e07-4687-ac3c-5a81dfe4be27")
+	)
+	(no_connect
+		(at 293.37 341.63)
+		(uuid "aecb7632-071f-4eca-99ef-9c60548855c6")
+	)
+	(no_connect
+		(at 293.37 344.17)
+		(uuid "585aa534-ad12-4044-9573-f44c27743a4e")
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

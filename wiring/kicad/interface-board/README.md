@@ -26,6 +26,7 @@ the E-stop contactor's block. See
 | `make-netlist.py` | Writes `netlist.txt` from the board. Run after any net change. |
 | `make-fab-revb.ps1` | Builds the whole Rev B quote package - DRC with refill, both exports, the zip. Refuses to build if DRC is not clean. Run this rather than the export commands by hand. |
 | `swap-power-connectors.py` | Placed the three cabinet power feeds as Mini-Fit Jr. Kept because it carries the courtyard arithmetic for row A, which is the tightest row on the board. The 36 V one of the three has since gone. |
+| `add-fan-headers.py` | **The two fan headers, 2026-11-14**: adds J60 and J61 to the schematic and the board and slides 12 V OUT 0.4 mm west. One-shot - it refuses a board that already has J60. Kept as the record, with the two placements that were tried first and why they failed. |
 | `remove-36v.py` | **The strip-down, 2026-11-14**: took J50-J55 and both 36 V nets off the schematic and the board, moved everything under the limit row up 27.5 mm, brought the east mounting holes in and redrew the outline. One-shot - it refuses a board with no J50. Kept as the record. |
 | `generate.py` | **The seed that produced the first version - not the live source once KiCad has touched the file.** See the warning below. |
 
@@ -51,6 +52,7 @@ the E-stop contactor's block. See
 | Mini-Fit Jr 4P - spindle (Enable, GND, GND, 0-10 V) | 3.5 mm TBs passing the new inputs through: mist 2P, flood 2P, control 4P; UART1 leaves on a **1x4 2.54 mm header** - dupont jumpers straight to the RP23's 4-pin UART header |
 | Mini-Fit Jr 4P - cycle start / feed hold / e-stop / spare | 5x 2.54 mm header, **GND / Step / Dir / Enable** per axis - jumper to a Teensy T41U5XBB instead of the ribbon |
 | Mini-Fit Jr 4P - UART1 for CAN, **TX / RX / 3.3V / GND** | |
+| **4-pin fan header - RAD FAN (J60)**, always-on 12 V: the external fan on the coolant radiator. In the top half, under the Z column, because its lead comes in through the lid like a machine cable | **4-pin fan header - CASE FAN (J61)**, always-on 12 V: the 40 mm Noctua inside the case. East end of row A, beside the 12 V pair - its lead never leaves the enclosure |
 
 **Y1 drives the controller's Y, Y2 drives A.** The three touch/3D probe signals are
 wired-OR onto one PROBE net; the toolsetter goes to DOOR. Mist, flood, control and
@@ -72,6 +74,17 @@ reasoning are in [`../../ig57-drives.md`](../../ig57-drives.md).
 
 **3P pin order**: 1 = 12 V, 2 = signal, 3 = GND - matches the SN04's brown/black/blue.
 
+**The two fan headers - his, 2026-11-14.** Standard 4-pin PC fan headers, keyed, taking a
+3-pin or a 4-pin plug: **pin 1 GND, pin 2 +12 V, pin 3 tach and pin 4 PWM not connected.**
+**Both are always on** - the board has no actives, so nothing here switches or reads a fan,
+and a PWM fan with pin 4 open runs at full speed. They run whenever the 12 V supply is up,
+which includes through an e-stop. Both pins are the inner planes, so the headers took no
+routing. **The case fan's pin 1 is at the BOTTOM of its header and the radiator fan's is at
+the TOP** - the key on the housing is what matters, not the position. The fans come off the
+12 V supply's budget: the MDR is 40 W, 3.3 A, and a 40 mm Noctua is about 0.05 A - the
+radiator fan's draw is whatever that fan's label says, and it has not been read.
+[`add-fan-headers.py`](add-fan-headers.py) is the record of how they went on.
+
 🔴 **THERE IS NO 36 V ON THIS BOARD - his, 2026-11-14.** Stepper power is distributed on
 the DIN rail beside the supply, on Phoenix PT 4-QUATTRO blocks, and the 18/2 motor supply
 cables land there. This board carries logic and 12 V only. Three things decided it, in the
@@ -91,7 +104,7 @@ The rule the pours were built around still stands, and is now kept by absence: *
 return is not a ground and never meets logic GND on this board.**
 
 **THIS BOARD HAS NO PE CONNECTION AT ALL, AND THAT IS DELIBERATE.** There is no earth
-or chassis net on it - 42 nets, none of them PE - **all four mounting holes are
+or chassis net on it - 42 nets and four named no-connects, none of them PE - **all four mounting holes are
 unplated NPTH with no net**, and its enclosure is 3D printed, so there is no chassis
 to bond. **Its GND arrives on one pad, J18.2 of the 12 V IN connector**, and leaves on
 J19.2 to the RP23. The In1 plane distributes it from there.
@@ -113,9 +126,9 @@ two J20s in one enclosure invites miswiring.
 
 | Check | Result |
 |---|---|
-| ERC | **0 errors.** 58 warnings, every one a library-not-configured notice - the symbols and footprints are embedded, so they carry nothing |
-| `netlist.txt` | **All 42 nets**, planes included, written straight from the kicad-cli export. FLAG: **this is no longer an independent check.** It was one while `generate.py` produced both; now that KiCad owns the schematic the file can only be derived from it, so it is documentation, not corroboration. |
-| PCB DRC with schematic parity, **all severities** | **0 errors, 0 unconnected, 0 parity issues.** 73 warnings: 41 silk over copper, 5 jack pin-1 dots near the top edge, 27 library notices. FLAG: **this row said "0 parity issues" while 178 were being hidden.** It was run at error severity, and every pad on the board was a net-name *warning*: the schematic's labels were local, so its nets were `/STEP_X` against the board's `STEP_X`. Connectivity matched; the names did not, and a real mismatch would have been one more warning in the pile. **The labels are global now and the mounting holes are marked board-only, so the count is a true zero** - run it at all severities to keep it that way |
+| ERC | **0 errors.** 37 warnings, every one a library-not-configured notice - the symbols and footprints are embedded, so they carry nothing |
+| `netlist.txt` | **All 42 nets, plus the four no-connect pads of the fan headers**, planes included, written straight from the kicad-cli export. FLAG: **this is no longer an independent check.** It was one while `generate.py` produced both; now that KiCad owns the schematic the file can only be derived from it, so it is documentation, not corroboration. |
+| PCB DRC with schematic parity, **all severities** | **0 errors, 0 unconnected, 0 parity issues.** 50 warnings: 41 silk over copper, 5 jack pin-1 dots near the top edge, 4 library notices. FLAG: **this row said "0 parity issues" while 178 were being hidden.** It was run at error severity, and every pad on the board was a net-name *warning*: the schematic's labels were local, so its nets were `/STEP_X` against the board's `STEP_X`. Connectivity matched; the names did not, and a real mismatch would have been one more warning in the pile. **The labels are global now and the mounting holes are marked board-only, so the count is a true zero** - run it at all severities to keep it that way |
 
 Reproduce with:
 
@@ -130,7 +143,7 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
 1. **J17 alarm pin -> RP23 LED mapping.** All five alarm pins join one net on the RP23,
    so the wiring works regardless; which pin lights which axis LED is unlabelled in the
    RP23 schematic. Read the board silkscreen when making the ribbon.
-2. **Footprints.** All 35 assigned and the board is placed and routed. The IDC headers
+2. **Footprints.** All 37 assigned and the board is placed and routed. The IDC headers
    are the standard shrouded 2.54 mm pattern (any vendor fits); the signal terminal
    blocks are 3.5 mm on the 4Ucon pattern (KF350 class fits), and the **two 12 V feeds** -
    in and out - are **Mini-Fit Jr** like the signal connectors. Board-side parts:
@@ -145,6 +158,7 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
    | 3.5 mm TB 4P (J22, J36) | same family - **to order** | 2 |
    | 3.5 mm TB 5P (J21) | same family - **to order** | 1 |
    | Pin header 1x04 2.54 mm (J40-J44, J37 UART1 out) | any breakaway header - **to order or from stock** | 6 |
+   | 4-pin fan header (J60 radiator fan, J61 case fan) | Molex **47053-1000** class - the keyed 2.54 mm PC fan header, KiCad's `FanPinHeader_1x04`. The footprint drills a 1.1 mm locating hole beside pin 3; a part with no peg simply leaves it empty - **to order** | 2 |
 
    Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
    **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
@@ -179,6 +193,7 @@ the back of this branch alone.
 | **What bought the clean halves** | Jack pitch opens 18 -> 24 mm, and each column's five nets (LIM, STEP, EN, DIR, AL) drop in **one bundle street** east of the column. The misc inputs tile one per inter-bundle zone, so no fixed vertical ever pierces a connector. The first Rev B cut proved the packed version of this order unroutable - 25 verticals cannot pierce two Mini-Fit rows at 18 mm pitch - which is why that cut interleaved the rows; the wider pitch is what undoes it. |
 | **Zone balance** | Control 2x2 sits in the X column's zone and the 3D probe 3P in the B column's zone - a 2x2 beside the UART 2x2 outruns the crossing columns one zone can hold. Row B follows its sources: CONTROL, LIMITS, PRB/DR, SPINDLE, MIST, FLOOD, UART, west to east. |
 | **Mounting holes** | All four at the corners. The UART output header slid 7 mm west along row B to free the south-east one. |
+| **Fan headers** | Two, added 2026-11-14, one per half. The radiator fan took the one empty zone in input row 3, so the board's title moved to the south-west corner; the case fan fits at the east end of row A because 12 V OUT slid 0.4 mm west. No change to the outline or the area. |
 
 ### Cost, against his settled rates
 

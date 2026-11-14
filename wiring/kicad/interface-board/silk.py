@@ -38,6 +38,9 @@ LABELS = [
     ("TOOLSETTER", 38.9, 54.15, 0.9, 0),
     ("SPINDLE",    62.9, 54.15, 0.9, 0),
     ("3D PROBE",  109.5, 54.15, 0.9, 0),
+    # the radiator fan header stands in the Z column's zone of row 3 - the
+    # top half, because its lead comes in through the lid like a machine cable
+    ("RAD FAN",    86.7, 54.15, 0.9, 0),
     # misc input row 4, labels below
     ("TOUCH 1", 15.4, 68.8, 0.9, 0),
     ("TOUCH 2", 38.9, 68.8, 0.9, 0),
@@ -64,10 +67,13 @@ LABELS = [
     # the two 12 V feeds - Mini-Fit, so the pins STACK where the screw blocks
     # sat side by side. x is each connector's single pad column.
     ("12V IN",  98.5, 91, 0.9, 0),
-    ("12V OUT", 112.5, 91, 0.9, 0),
+    ("12V OUT", 112.1, 91, 0.9, 0),
     # polarity cannot go beside these pads - row A has no room west of either
     # for a mark aligned with its pad row. So the convention is printed once.
     ("+ TOP  - BOTTOM", 105.5, 92.7, 0.8, 0),
+    # the case fan header, east end of row A - bottom half, it never leaves
+    # the enclosure
+    ("CASE FAN", 121.6, 91, 0.8, 0),
     # terminal block row - block names above
     ("CONTROL", 29.25, 100.15, 0.85, 0),
     ("LIMITS",  47.5, 100.15, 0.85, 0),
@@ -76,7 +82,11 @@ LABELS = [
     ("MIST",    87.75, 100.15, 0.85, 0),
     ("FLOOD",   96.75, 100.15, 0.85, 0),
     ("UART1",  108.81, 100.15, 0.85, 0),
-    ("CNCBuild INTERFACE REV B", 86.5, 51.5, 1.2, 0),
+    # the title gave its place in row 3 to the radiator fan header and stacks
+    # in the south-west corner, over the S corridor (vias are tented)
+    ("CNCBuild",  13.0, 93.2, 0.9, 0),
+    ("INTERFACE", 13.0, 95.1, 0.9, 0),
+    ("REV B",     13.0, 97.0, 0.9, 0),
 ]
 
 # per-position signal names, rotated, above the output-row terminals
@@ -106,7 +116,16 @@ REF_ON_BODY = {
     # (dy,-dx), so this puts the ref just south of the pin row
     "J37": (-3.6, 3.8),
     "J18": (0.0, 3.25), "J19": (0.0, 3.25),
+    # the radiator fan header stands on end, rotated -90: local (dx,dy) lands
+    # at board (-dy,dx), so this puts the ref east of the body, mid-height
+    "J60": (3.8, -5.5),
 }
+
+
+# the case fan header has the 12 V OUT connector on one side and the board
+# edge on the other, and no room for a reference on any side. Its function
+# label says what it is, so the ref is hidden rather than dropped on a pad.
+REF_HIDDEN = ("J61",)
 
 
 def fix_refs():
@@ -122,9 +141,17 @@ def fix_refs():
         text, n = pat.subn(lambda m: f"{m.group(1)}{dx} {dy}", text, count=1)
         if n != 1:
             raise RuntimeError(f"reference property for {ref} not found")
+    for ref in REF_HIDDEN:
+        pat = re.compile(
+            r'(\(property "Reference" "' + ref + r'"\s*\n\s*\(at [^)]*\)\s*\n\s*\(layer "[^"]*"\)\n)'
+            r'(\s*)(?!\(hide yes\))')
+        text, n = pat.subn(lambda m: f"{m.group(1)}{m.group(2)}(hide yes)\n{m.group(2)}", text, count=1)
+        if n != 1:
+            raise RuntimeError(f"reference property for {ref} not found")
     with open(BOARD, "w", encoding="utf-8", newline="") as f:
         f.write(text)
-    print(f"moved {len(REF_ON_BODY)} reference fields onto their bodies.")
+    print(f"moved {len(REF_ON_BODY)} reference fields onto their bodies, "
+          f"hid {len(REF_HIDDEN)}.")
 
 
 def main():

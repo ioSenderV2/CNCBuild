@@ -603,8 +603,10 @@ def main():
                 continue
             name = pad.GetNetname()
             # GND and +12V are planes - every pad on both is through-hole,
-            # so neither routes
-            if not name or name in ("GND", "+12V"):
+            # so neither routes. An "unconnected-(...)" net is a pad the
+            # schematic marks no-connect (the fan headers' tach and PWM pins):
+            # it carries the name for the parity check and gets no copper
+            if not name or name in ("GND", "+12V") or name.startswith("unconnected-"):
                 continue
             p = pad.GetPosition()
             nets.setdefault(name, []).append(

@@ -91,6 +91,8 @@ WHAT = {
     "J42": ("Y2 Teensy jumper", "4", "GND / step / dir / enable"),
     "J43": ("Z Teensy jumper", "4", "GND / step / dir / enable"),
     "J44": ("B Teensy jumper", "4", "GND / step / dir / enable"),
+    "J60": ("Radiator fan", "4", "12 V fan header, always on - external"),
+    "J61": ("Case fan", "4", "12 V fan header, always on - inside the case"),
 }
 
 
