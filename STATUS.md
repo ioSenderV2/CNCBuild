@@ -384,7 +384,7 @@ the interface, not this file.
 
 ## [wiring/kicad/interface-board/rev-a-validation.md](wiring/kicad/interface-board/rev-a-validation.md)  (1)
 
-- OPEN: [L3](wiring/kicad/interface-board/rev-a-validation.md#rev-a-checkout---the-board-itself-before-anything-connects) — *Rev A checkout - the board itself, before anything connects*<br>Not yet run. Three boards in hand - OSH Park order xPBWS3rt, ordered 2026-11-03. This is the meter session that says the populated board can be trusted: the fab's copper and the hand soldering, checked against the netlist the board was cut from. Nothing here needs the RP23, a machine cable, or the cabinet - a DMM on continuity does all of it except the last section, which wants a bench 12 V.
+- OPEN: [L3](wiring/kicad/interface-board/rev-a-validation.md#rev-a-checkout---the-board-itself-before-anything-connects) — *Rev A checkout - the board itself, before anything connects*<br>Partially run - the X jack is soldered and its column toned through the face 2026-11-15 (sections 2 and 3, X rows); everything else waits on population. Three boards in hand - OSH Park order xPBWS3rt, ordered 2026-11-03. This is the meter session that says the populated board can be trusted: the fab's copper and the hand soldering, checked against the netlist the board was cut from. Nothing here needs the RP23, a machine cable, or the cabinet - a DMM on continuity does all of it except the last section, which wants a bench 12 V.
 
 ---
 

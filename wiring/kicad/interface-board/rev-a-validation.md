@@ -1,6 +1,8 @@
 # Rev A checkout - the board itself, before anything connects
 
-OPEN: **Not yet run.** Three boards in hand - OSH Park order xPBWS3rt, ordered 2026-11-03.
+OPEN: **Partially run - the X jack is soldered and its column toned through the face
+2026-11-15 (sections 2 and 3, X rows); everything else waits on population.** Three
+boards in hand - OSH Park order xPBWS3rt, ordered 2026-11-03.
 This is the meter session that says the populated board can be trusted: the fab's copper
 and the hand soldering, checked against the netlist the board was cut from. **Nothing here
 needs the RP23, a machine cable, or the cabinet** - a DMM on continuity does all of it
@@ -50,12 +52,18 @@ Meter on continuity, nothing connected to the board. Two readings per net, one r
 Each column is one jack (pins 1/3/5/7), its stops on the 2x10 ribbon J16, the Teensy
 header, the alarm ribbon J17, and the limit 3P with its terminal-block position.
 
+🔴 **The ribbon headers' silk names the RP23 END, not the part**: the big labels read
+RP23 J20 STEPPERS and RP23 J24 ALARMS, but those pads are this board's **J16** and
+**J17**. Probe by the pad numbers in this table - reading the silk label as the
+reference is exactly how a wrong pad gets probed, and it already cost one false alarm
+on AL_X.
+
 | Net | Points | Closed | Open to GND |
 |---|---|---|---|
-| STEP_X | J1.1, J16.3, J40.2 | | |
-| EN_X | J1.3, J16.2, J40.4 | | |
-| DIR_X | J1.5, J16.1, J40.3 | | |
-| AL_X | J1.7, J17.1 | | |
+| STEP_X | J1.1, J16.3, J40.2 | tone, 2026-11-15 | |
+| EN_X | J1.3, J16.2, J40.4 | tone, 2026-11-15 | |
+| DIR_X | J1.5, J16.1, J40.3 | tone, 2026-11-15 | |
+| AL_X | J1.7, J17.1 | tone, 2026-11-15 | |
 | LIM_X | J6.2, J21.1 | | |
 | STEP_Y | J2.1, J16.7, J41.2 | | |
 | EN_Y | J2.3, J16.6, J41.4 | | |
@@ -142,14 +150,17 @@ fanned into **J1** and read the fan against the board:
 
 | Jack pin | Lands on | Reads |
 |---|---|---|
-| 1 | STEP_X - J16.3 | |
-| 3 | EN_X - J16.2 | |
-| 5 | DIR_X - J16.1 | |
-| 7 | AL_X - J17.1 | |
-| any even | GND - J18.2 | |
+| 1 | STEP_X - J16.3 | tone ✓ 2026-11-15 |
+| 3 | EN_X - J16.2 | tone ✓ 2026-11-15 |
+| 5 | DIR_X - J16.1 | tone ✓ 2026-11-15 |
+| 7 | AL_X - J17.1 | tone ✓ 2026-11-15 |
+| any even | GND - J18.2 | tone ✓ 2026-11-15, to J16.4 and J40.1 - J18 not yet soldered |
 
-All five jacks share the one footprint, so one jack passing clears the class. T568 colors
-for the fan are on the cable's own pairs - pin 1 is white/orange in T568B.
+**Run 2026-11-15 on J1 through the RJ45 breakout board** ([bench-session.md](../../../commissioning/bench-session.md)
+carries its terminal map) rather than a fanned stub - same check, better tool. All five
+rows toned to the right pads, so **the footprint-mirror class is cleared for all five
+jack positions.** T568 colors for a fanned stub are on the cable's own pairs - pin 1 is
+white/orange in T568B.
 
 **The shield tab reads open to everything, and that is correct.** Its two holes are
 unplated with no net - read off the board file, both revisions - so the shield floats.
