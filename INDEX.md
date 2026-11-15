@@ -367,6 +367,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 - [Why on the bench, and not later](commissioning/bench-session.md#why-on-the-bench-and-not-later)
 - [Before the session - two prerequisites, found 2026-11-13](commissioning/bench-session.md#before-the-session---two-prerequisites-found-2026-11-13)
 - [Setup](commissioning/bench-session.md#setup)
+  - [The RJ45 breakout at the drive end - mapping toned out 2026-11-15](commissioning/bench-session.md#the-rj45-breakout-at-the-drive-end---mapping-toned-out-2026-11-15)
 - [1. Set the rail and verify it](commissioning/bench-session.md#1-set-the-rail-and-verify-it)
 - [2. Power-on inrush - all four at once](commissioning/bench-session.md#2-power-on-inrush---all-four-at-once)
 - [3. Idle draw, enabled, all four](commissioning/bench-session.md#3-idle-draw-enabled-all-four)

@@ -55,6 +55,31 @@ the supply is fine or marginal, not enough to say what the peak is.
 | **DIP switches** | SW1-4 to **2000 pulses/rev** on all four drives: **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** - his call 2026-11-13, see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). $100-$103 = **400** steps/mm |
 | **Meter** | For the rail and for the alarm output |
 
+### The RJ45 breakout at the drive end - mapping toned out 2026-11-15
+
+Signals reach each drive through an RJ45-to-8P-terminal breakout board, jumpered to the
+drive's signal terminal block with ferruled patch-cable pairs. The jack and the block
+number in **opposite directions**, so **block terminal k carries jack pin 9−k** - every
+terminal confirmed by tone, with a T568B patch cable:
+
+| Terminal | Jack pin | T568B conductor | Signal |
+|---|---|---|---|
+| 1 (square pad) | 8 | brown | GND - Alarm's return |
+| 2 | 7 | white/brown | **Alarm** |
+| 3 | 6 | green | GND - Enable's return |
+| 4 | 5 | white/blue | **Dir** |
+| 5 | 4 | blue | GND - Dir's return |
+| 6 | 3 | white/green | **Enable** |
+| 7 | 2 | orange | GND - Step's return |
+| 8 | 1 | white/orange | **Step** |
+
+Three pairs land on adjacent terminals - orange on 8-7, blue on 5-4, brown on 2-1 - and
+**the green pair lands split across terminals 6 and 3**, with the blue pair between its
+legs. That is the T568 3-6 split arriving intact at the block, not a board quirk: any
+scheme that assumes a pair is two neighbouring terminals comes out wrong in the middle
+four positions. Partner discipline is unchanged from the
+[interface board README](../wiring/kicad/interface-board/README.md#what-is-on-it).
+
 **Restrain each motor.** A free NEMA 23 with 2.2 N·m available will walk off a bench and whip its own
 cable. His scheme, 2026-11-13: all four laid on a piece of plywood, a second piece the same size on
 top, C-clamped. Keep the drive end of each motor proud of the plywood - the terminal blocks and the
