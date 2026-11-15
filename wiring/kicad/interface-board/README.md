@@ -24,6 +24,7 @@ the E-stop contactor's block. See
 | `interface-board.kicad_pro` | Project wrapper. |
 | `netlist.txt` | The connection list. **Generated from the routed board by `make-netlist.py`** - not hand-kept, and not from the seed. |
 | `make-netlist.py` | Writes `netlist.txt` from the board. Run after any net change. |
+| `rev-a-validation.md` | The meter checkout for the three **Rev A** boards in hand - footprint fit, bridge sweep, net-by-net continuity against the Rev A netlist, jack-face map, first 12 V. Run it before the board meets the RP23. Its tables are from **main's** routed board, not this branch's. |
 | `make-fab-revb.ps1` | Builds the whole Rev B quote package - DRC with refill, both exports, the zip. Refuses to build if DRC is not clean. Run this rather than the export commands by hand. |
 | `swap-power-connectors.py` | Placed the three cabinet power feeds as Mini-Fit Jr. Kept because it carries the courtyard arithmetic for row A, which is the tightest row on the board. |
 | `generate.py` | **The seed that produced the first version - not the live source once KiCad has touched the file.** See the warning below. |
@@ -132,7 +133,7 @@ kicad-cli pcb drc --schematic-parity --severity-error --exit-code-violations --r
 
    | Position | Part | Qty |
    |---|---|---|
-   | RJ45 vertical (J1-J5) | Molex **85508-5001** - top entry, THT, Cat5e, shielded (tab to GND; the patch cables are UTP so it carries nothing), no magnetics, 16.85 mm tall. 10 ordered 2026-11-03, Mouser order 40971773. NOT the sensor board's jack - that stays the unshielded 69255-004LF, whose end must float | 5 |
+   | RJ45 vertical (J1-J5) | Molex **85508-5001** - top entry, THT, Cat5e, shielded (the tab holes are **unplated with no net** - read off the board file, both revs - so the shield floats; the patch cables are UTP, so it carries nothing), no magnetics, 16.85 mm tall. 10 ordered 2026-11-03, Mouser order 40971773. NOT the sensor board's jack - that stays the unshielded 69255-004LF, whose end must float | 5 |
    | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. 20 ordered 2026-11-03, Mouser order 40971773 | 7 |
    | 4P dual row 2x2 (J15, J32, J33, **J55 36 V in**) | Molex **46999-0621** - 2x2 vertical, tin, 10 ordered 2026-11-02, Mouser order 40971389. **J55 is the 36 V input and uses all four circuits for two conductors**: pins 1+2 are both `+36V`, pins 3+4 are both `36V_RET`. Two crimps per leg in the cable, not one | 4 |
    | 2P dual row (J13, J14, J30, J31, **J18 12 V in, J19 12 V out**, **J50-J54 stepper power**) | Molex **39-29-9027** - 2 ckt vertical with peg, tin, 10 ordered 2026-11-02, Mouser order 40971389 (the same order's 39-31-0027 is 10 spare 2-ckt without peg - they also fit these footprints). The four probe/mist/flood positions carry signal; **the five power positions carry 5 A each** - Mini-Fit Jr is rated 9 A on 18 AWG, so the part is the same and the crimp terminal is what must suit the wire. **11 positions against 10 pegged parts in hand** - covered by the 10 pegless 39-31-0027 from the same order, which fit this footprint; the peg is worth keeping on the feeds that get unplugged | 11 |
