@@ -13,6 +13,7 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 | 2026-11-04 | Digi-Key | 102688952 (from the export's filename) | 4x Sullins NPPN102AFCN-RC 2x10 socket, 2.0 mm (S5750-10-ND), $6.24 subtotal | $16.50 delivered, per the controller board notes | [CAN controller board](../linear-encoder/controller-board.md) socket bench test | `DK_PRODUCTS_102688952.csv` |
 | 2026-11-13 | Mouser | web 41109063, sales 282984374 | Extras of the same headers: 20x 46999-0621, 25x 39-29-9027, 25x 39-30-1039 | $59.13 | [interface board](../wiring/kicad/interface-board/README.md) | `282984374.pdf` |
 | 2026-11-14 | Mouser | web 41110345 | Phoenix Contact: 24x PT 4-QUATTRO (3211797), 4x FBS 10-6 bridge (3030271), 5x D-PT 4-QUATTRO end cover (3208979), 3x ATP-ST QUATTRO partition plate (3030815), 2x CLIPFIX 35 end bracket (3022218) | $163.30 | 36 V distribution on the DIN rail beside the XDR | `Order_41110345.pdf` |
+| 2026-11-15 | OSH Park | G6Jj6s46 | Interface board Rev B, 3 boards, **Four Layer Super Swift**, $391.80 + $38.00 UPS Next Day Air | $429.80 | [interface board](../wiring/kicad/interface-board/README.md) | `oshpark-order-invoice-G6Jj6s46.pdf` |
 
 Mouser files its PDFs under the **sales** order number; the project's notes quote the
 **web** order number. Both are in the Order column.

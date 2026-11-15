@@ -19,7 +19,7 @@ the E-stop contactor's block. See
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper from the placed footprints - the Rev B rewrite of the channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. GND and +12V are inner-plane zones and route themselves (every pad on both nets is through-hole); signals run as F.Cu verticals into packed B.Cu lane corridors. **Finds the board beside itself** - it carried a hard-coded Windows path until 2026-11-14 and now runs from either machine. Verticals cross a connector row on searched columns, 0.70 mm apart - track-past-via, not just track-track - with jogs in the gap above the row. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; the order is recorded in [`orders/`](../../../orders/README.md), where the invoice PDF is kept out of git. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
-| `fab/oshpark-revb/` | **Rev B manufacturing outputs - FOR A QUOTE, NOT AN ORDER.** `interface-board-revb-oshpark.zip` is the single file their upload takes: 13 files, all four copper layers (`.gtl` `.g1` `.g2` `.gbl`), masks, silks, `.gm1` outline and the Excellon drill. The drill **map** is written alongside but deliberately kept **out of the zip** - it is a `.gbr` and their uploader can mistake it for a copper layer. Outline read from the plotted gerber: **x 5..126 by y 5..109.5 - 121.00 x 104.50 mm, 19.6 sq in.** Regenerate after any board change **with `make-fab-revb.ps1`**, which keeps the refill and the map-exclusion from being forgotten. **Rev A's order record in `fab/oshpark/` is not touched by this.** |
+| `fab/oshpark-revb/` | **Rev B manufacturing outputs - ORDERED 2026-11-15**, OSH Park order G6Jj6s46, 3 boards on Four Layer Super Swift, $429.80 with UPS Next Day Air - this zip is what was uploaded; the order is recorded in [`orders/`](../../../orders/README.md), invoice kept out of git. `interface-board-revb-oshpark.zip` is the single file their upload takes: 13 files, all four copper layers (`.gtl` `.g1` `.g2` `.gbl`), masks, silks, `.gm1` outline and the Excellon drill. The drill **map** is written alongside but deliberately kept **out of the zip** - it is a `.gbr` and their uploader can mistake it for a copper layer. Outline read from the plotted gerber: **x 5..126 by y 5..109.5 - 121.00 x 104.50 mm, 19.6 sq in.** Regenerate after any board change **with `make-fab-revb.ps1`**, which keeps the refill and the map-exclusion from being forgotten. **Rev A's order record in `fab/oshpark/` is not touched by this.** |
 | `silk.py` | Regenerates every free silkscreen label (function names, per-terminal signal names). Owns all board text - edit its tables, not the board. |
 | `interface-board.kicad_pro` | Project wrapper. |
 | `netlist.txt` | The connection list. **Generated from the routed board by `make-netlist.py`** - not hand-kept, and not from the seed. |
@@ -182,8 +182,12 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
 
 **His call, 2026-11-09: "proceed with this alternate design and see how it shakes out."**
 This branch is that design: placed, routed, ERC/DRC clean, silkscreened, mounting sheet
-regenerated. 🔴 **THE FAB STILL WAITS** until Rev A's lessons are in - no order goes out on
-the back of this branch alone.
+regenerated. ~~🔴 **THE FAB STILL WAITS** until Rev A's lessons are in - no order goes out on
+the back of this branch alone.~~ SETTLED: **ORDERED 2026-11-15** - OSH Park **G6Jj6s46**, 3
+boards, Four Layer Super Swift, $391.80 + $38.00 UPS Next Day Air = **$429.80**, recorded in
+[`orders/`](../../../orders/README.md). The gate did its job: the one Rev A lesson so far,
+the J16/J17-first silk relabel, went in before the gerbers. Anything Rev A teaches from here
+lands in a Rev C.
 
 ### What it came out as
 
@@ -215,7 +219,12 @@ different class of service to fall into.
 NOTE: **And the 2 layer rate checks against his own order** - 30.6 sq in at $5 is **$152.99**,
 the order came to **$164.95** with FedEx 2 Day, leaving **$11.96** of shipping.
 
-**Rev B lands at 19.6 sq in: ~$196 against Rev A's $153.** How it got there:
+**Rev B lands at 19.6 sq in: ~$196 at the prototype rate against Rev A's $153.** How it
+got there is the table below. NOTE: **the order itself went out on a different service** -
+the G6Jj6s46 invoice reads **Four Layer Super Swift at $391.80** for the set of 3, which
+is $19.99/sq in against the prototype table's $10, plus $38.00 UPS Next Day Air: the
+expedited tier, bought for speed. The $10 prototype table above stays the reference for
+any board that can wait.
 
 | Cut | sq in | ~cost | What bought it |
 |---|---|---|---|
@@ -231,10 +240,11 @@ address and this repo is public. Read by eye it says $152.95 per set of 3 plus $
 text in it, so no rate or line item can be read back out. It records that the order happened,
 not what it cost per unit area. **A text PDF or a saved quote page would.**
 
-### Still open before any Rev B order
+### The order gate, as it closed - and what stays open
 
-1. **Rev A's lessons.** He is wiring Rev A now; whatever that run teaches goes in before
-   gerbers are cut. Nothing in `fab/` describes Rev B - the zip there is Rev A's order.
+1. **Rev A's lessons.** He is wiring Rev A now; the Rev B order went out 2026-11-15 with
+   the one lesson collected so far folded in. Anything Rev A teaches from here is a Rev C
+   note - keep collecting them in this list.
 
    The first one, from the bench 2026-11-15: **the bold destination labels under the
    ribbon headers - RP23 J20 STEPPERS, RP23 J24 ALARMS - get read as the part's own
@@ -246,7 +256,7 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
 2. **Lid cutout and mounting.** 121 x 104.5 against Rev A's 210 x 94, M3 at the four
    corners - 22,4 / 117.3,4 / 5,99.8 / 117.3,99.8 - the regenerated
    [`board-mounting.html`](../../../docs/drawings/board-mounting.html) has the drawing.
-3. **4-layer gerber export.** Done for the quote - `fab/oshpark-revb/` holds the package and
-   the zip. Regenerate it after any board change, and **do not overwrite `fab/oshpark/`**,
-   which is Rev A's order record.
+3. **4-layer gerber export.** Done, and ordered as G6Jj6s46 - `fab/oshpark-revb/` holds the
+   package and the zip, now an order record like `fab/oshpark/`. **Neither gets overwritten**
+   by later board work; a Rev C gets its own folder.
 4. SETTLED: **the 36 V input and the supply that outgrew it - both closed by taking the 36 V off the board, his, 2026-11-14.** The history, shortest form: a 5.08 screw block, then Mini-Fit Jr with doubled legs so a pulled feed had no bare conductor, then an XDR-960-36 at 26.6 A against pours sized for 16.5 and a connector good for 16. Distribution is on the DIN rail now, and what bounds the fault current there is a cabinet question, in [`../../cabinet-power-and-grounding.md`](../../cabinet-power-and-grounding.md).

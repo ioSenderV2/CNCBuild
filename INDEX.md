@@ -551,7 +551,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 - [Rev B - designed on this branch, 2026-11-09; 36 V stripped 2026-11-14](wiring/kicad/interface-board/README.md#rev-b---designed-on-this-branch-2026-11-09-36-v-stripped-2026-11-14)
   - [What it came out as](wiring/kicad/interface-board/README.md#what-it-came-out-as)
   - [Cost, against his settled rates](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates)
-  - [Still open before any Rev B order](wiring/kicad/interface-board/README.md#still-open-before-any-rev-b-order)
+  - [The order gate, as it closed - and what stays open](wiring/kicad/interface-board/README.md#the-order-gate-as-it-closed---and-what-stays-open)
 
 ## [wiring/kicad/interface-board/rev-a-validation.md](wiring/kicad/interface-board/rev-a-validation.md)
 
