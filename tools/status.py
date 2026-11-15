@@ -228,7 +228,11 @@ def load() -> list[Doc]:
         base = ROOT / d
         if not base.is_dir():
             continue
-        for p in sorted(base.rglob("*.md")):
+        # sorted the way Windows sorts paths - part by part, case-blind - so the
+        # two machines write the same file. A bare sorted() is case-sensitive on
+        # macOS and reshuffled every README section on each run from there.
+        for p in sorted(base.rglob("*.md"),
+                        key=lambda q: tuple(part.lower() for part in q.parts)):
             if p.name in GENERATED:
                 continue
             # FLAG: THE ARCHIVE IS NOT CURRENT AND MUST NOT BE INDEXED AS IF IT

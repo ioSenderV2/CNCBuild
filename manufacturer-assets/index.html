@@ -158,10 +158,18 @@
         Footprint dimensions, PCB layout pattern per circuit count, plating and housing
         variants ("BLANK"/-210/-400). Mates 5557 housings with 5556 terminals.
         <strong>Ordered 2026-11-02, Mouser web order 40971389, all tin, 10 each:</strong>
-        39-29-9027 (2 ckt with peg - the touch probes), 46999-0621 (2&times;2 - the spindle),
+        39-29-9027 (2 ckt with peg - the touch probes), 46999-0621 (bought as the 2&times;2 for the spindle - <span class="warn">but sheet 3 of this drawing lists it as 5566-02A2MS-210, 2 circuits; the 4-circuit is 46999-0502</span>),
         and 39-31-0027 (2 ckt no peg - <span class="warn">ordered in error, meant to be the
         3P</span>). The seven 3P single-rows (39-30-1039) still need ordering.</td>
-    <td><code>Molex-5566-DualRow-Vertical-Header-SD-5566-002.pdf</code></td>
+    <td><code>Molex-5566-DualRow-Vertical-Header-SD-5566-002.pdf</code><br>
+        the with-pegs drawing saved 2026-11-14 as <code>469990621_sd.pdf</code> (55660021-SD
+        rev A6, 4 sheets). <strong>Note 10: parts are not designed for current sharing.</strong>
+        Hole pattern: 1.40 pins on 4.20 pitch, rows 5.50 apart, 3.00 peg holes at
+        dimension C - 9.40 for 2 circuits, 13.60 for 4.<br>
+        Molex's part page for 39-29-9027, printed 2026-11-14 as
+        <code>PCB Headers and Receptacles Part 39299027 _ Molex.pdf</code>: "Dual Row, 2 Circuits",
+        engineering number <strong>5566-02A2-210</strong> - the same 02A2 body the drawing gives
+        46999-0621 (5566-02A2MS-210).</td>
     <td>His download from the Mouser product pages, 2026-11-02 (Mouser blocks scripted
         fetches &mdash; see the fetching notes)</td>
     <td>2026-11-02</td>
@@ -175,10 +183,49 @@
         3P headers</strong>: five prox, 3D probe, toolsetter. Footprint pattern, peg positions,
         plating/housing variants. <span class="warn">The single-row range starts at 3
         circuits</span> &mdash; there is no 2P single row, which is why the touch probes went
-        dual-row.</td>
-    <td><code>Molex-5566-SingleRow-Vertical-Header-03A3.pdf</code></td>
+        dual-row. <strong>Note 7 on the drawing: "PART IS NOT DESIGNED FOR CURRENT
+        SHARING"</strong>, and note 8: not to be mated or unmated live. Its table also shows the
+        <strong>46999-07xx/05xx numbers are the matte-tin-over-nickel ("MS") variants</strong> of
+        the same 5566 part.</td>
+    <td><code>Molex-5566-SingleRow-Vertical-Header-03A3.pdf</code><br>
+        saved again 2026-11-14 under Molex's own name, <code>039301039_sd.pdf</code>
+        (55660330-SD rev B3)</td>
     <td>His download from the Mouser product page, 2026-11-02</td>
     <td>2026-11-02</td>
+  </tr>
+
+  <tr>
+    <td><strong>Molex 3D models</strong><br>four STEP files</td>
+    <td>Molex, served by TraceParts</td>
+    <td>STEP AP214 models of the four Molex connectors on the interface board that KiCad ships no
+        model for: <strong>85508-5001</strong> RJ45 jack, <strong>39-30-1039</strong> 3-circuit
+        single row, <strong>39-29-9027</strong> 2-circuit dual row, <strong>39-29-9047</strong>
+        4-circuit dual row. Each stands along its own +Y. The board's footprints point at them, and
+        <code>wiring/kicad/interface-board/attach-models.py</code> records how each was aligned.
+        Without them the board still opens; its 3D view and STEP export just lack those parts.</td>
+    <td><code>3d/855085001/0855085001.stp</code><br><code>3d/39301039/0039301039.stp</code><br>
+        <code>3d/39299027/39299027.stp</code><br><code>3d/39299047/39299047.stp</code><br>
+        each unzipped from the download beside it</td>
+    <td>His download from each Molex part page, 3D Models, 2026-11-14</td>
+    <td>2026-11-14</td>
+  </tr>
+
+  <tr>
+    <td><strong>PS-5556-001</strong><br>Mini-Fit Jr system</td>
+    <td>Molex</td>
+    <td>Product specification, rev H2, 23&nbsp;pages &mdash; <strong>the current ratings for every
+        Mini-Fit Jr on the interface board</strong>. Table&nbsp;3, amps per circuit at a 30&nbsp;&deg;C
+        rise, all circuits loaded: <strong>brass terminals on 16 or 18&nbsp;AWG are 9&nbsp;A in a 2-
+        or 3-circuit housing and 8&nbsp;A in a 4- to 6-circuit one</strong>; phosphor bronze is
+        8&nbsp;A and 7&nbsp;A; 20&nbsp;AWG drops to 7 and 6 (brass). <span class="warn">The table's own
+        note: PCB trace design may greatly affect temperature rise</span>. Largest wire is
+        16&nbsp;AWG. Formed-brass terminals are rated to 80&nbsp;&deg;C including their own rise.
+        30 mating cycles, tin or gold. Wave solder 240&nbsp;&deg;C with pegs. Free wire length before
+        the first cable tie: 12.7&nbsp;mm for these sizes. Circuit numbering diagrams on the last
+        page.</td>
+    <td><code>PS-5556-001-001.pdf</code></td>
+    <td>His download from Molex, 2026-11-14</td>
+    <td>2026-11-14</td>
   </tr>
 
   <tr>
@@ -530,6 +577,22 @@
     <td><code>MeanWell-XDR-960-Spec.pdf</code></td>
     <td><a href="https://www.meanwell.com/Upload/PDF/XDR-960/XDR-960-SPEC.PDF">meanwell.com/Upload/PDF/XDR-960/XDR-960-SPEC.PDF</a></td>
     <td>2026-11-11</td>
+  </tr>
+
+  <tr>
+    <td><strong>PT 4-QUATTRO</strong><br>3211797</td>
+    <td>Phoenix Contact</td>
+    <td>Catalog data sheet, 12&nbsp;pages &mdash; the push-in DIN-rail terminal block for the
+        <strong>36&nbsp;V distribution beside the XDR</strong>. Four connections on
+        <strong>one potential</strong>, 6.2&nbsp;mm wide, <strong>32&nbsp;A</strong> nominal,
+        24&ndash;10&nbsp;AWG, strip 10&ndash;12&nbsp;mm. The plug-in bridge is the limit at
+        <strong>25&nbsp;A</strong>, and the bridges listed are FBS&nbsp;2-6, 3-6, 4-6, 5-6, 10-6 and
+        20-6 &mdash; <span class="warn">there is no FBS&nbsp;6-6 on this list</span>. End cover
+        D-PT&nbsp;4-QUATTRO (3208979), partition plate ATP-ST&nbsp;QUATTRO (3030815), end clamp
+        CLIPFIX&nbsp;35 (3022218). Packing unit and minimum order are 50.</td>
+    <td><code>PT 4-QUATTRO.pdf</code></td>
+    <td><a href="https://www.phoenixcontact.com/us/products/3211797">phoenixcontact.com/us/products/3211797</a></td>
+    <td>2026-11-14</td>
   </tr>
 </table>
 

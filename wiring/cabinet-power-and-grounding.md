@@ -13,6 +13,43 @@ separate logic supply, and the single point every ground meets at.
 > connection diagram and **not** a DIN rail layout, which gets done with the real components against
 > the real box.
 
+SETTLED: **THE 36 V IS DISTRIBUTED IN THIS BOX, ON THE DIN RAIL BESIDE THE SUPPLY - his,
+2026-11-14.** Rev B's interface board lost its five stepper power jacks and its 36 V input
+([`kicad/interface-board/README.md`](kicad/interface-board/README.md)), so the motor rail never
+goes near the board:
+
+| | |
+|---|---|
+| **The blocks** | Phoenix Contact **PT 4-QUATTRO** (3211797), push-in, four points on one potential. **Six per leg** - one for the supply, one per axis - joined by an **FBS 10-6 bridge cut to six**. Twelve blocks and two bridges per machine; bought 2026-11-14, Mouser 41110345 |
+| **+36 V group and return group** | side by side on the rail with a partition plate between them, **never bridged to each other** |
+| **The fuse** | **20 A, in the +36 V leg, between the supply and the blocks - his, 2026-11-14.** It supersedes "nothing between the supply and the board" of 2026-11-09, which was decided against a 16.5 A brick |
+| **Supply to fuse to blocks** | **12 AWG solid copper, short lengths - his, 2026-11-14. RED is +36 V, BLACK is the return** - the same as the 18/2 motor cables, whose conductors are red (+) and black (-), so the DC side reads one way from the supply screw to the drive. (He first said black and white the same day, and changed it for exactly that reason.) Red runs supply V+ to the fuse and fuse to the +36 V group; black runs supply V- straight to the return group. Solid wire goes into the push-in point bare - **no ferrule on solid** |
+| **What lands on them** | the red and the black above, on one block of each group, and **the five 18/2 motor supply cables** - X, Y1, Y2, Z, B - **red into the +36 V group, black into the return group** |
+| **Where the five come in** | **one 1 inch knockout in the side of the box - his, 2026-11-14.** All five 18/2 through the one hole; they are bare ferruled wire at this end, so only cable has to pass |
+| **How** | **18 AWG, ferruled, pushed straight in.** The block takes a ferruled wire from 0.5 mm2 with no tool; 18 AWG is 0.82. The ferrule wants a **10 or 12 mm barrel**, because the block's strip length is 10 to 12 - the common 8 mm barrel does not seat |
+
+✅ **THE 20 A FUSE COVERS THE BRIDGE AND THE 12 AWG.** The bridge is rated 25 A and 12 AWG is good
+for 20 A, so both sit under the fuse and the feed can land on any block of the group. Landing it
+on a middle one still halves what the bridge carries and costs nothing.
+
+FLAG: **THE PIECE FROM THE SUPPLY TO THE FUSE IS NOT UNDER THE FUSE.** Only the XDR's own 26.6 A
+limit bounds it, which is why it is 12 AWG and short.
+
+SETTLED: **RED AND BLACK CARRY TWO MEANINGS IN THIS BOX, AND HE ACCEPTS IT - his, 2026-11-14.** The panel scheme below has **red
+as L2 on the 220 V side and black as the 110 V hot**. On the DC side red is +36 V and black is its
+return. Consistent along the DC run is what he chose it for, and the two are hard to confuse in
+practice - the DC pair is 12 AWG solid between the supply, the fuse and the blocks, and the mains
+wires are stranded - but a red or a black wire in here is not identified by its colour alone.
+
+FLAG: **THE FIVE 18/2 RUNS ARE 18 AWG BEHIND A 20 A FUSE.** The fuse protects the 12 AWG and the
+bridge; it does not protect an 18 AWG conductor against a sustained overload on one axis. What
+bounds a single run is its drive. Recorded, not argued - the same was true of every earlier
+arrangement.
+
+NOTE: **THESE ARE CLAMPS, NOT PLUGS.** A pulled motor cable leaves a ferruled conductor, which is
+the thing the board's power feeds went to Mini-Fit to avoid. Here it is accepted: these five are
+landed once, inside a covered box, and the 36 V is dead with the e-stop.
+
 ## What switches what - the chain from the wall
 
 Two circuits come into the box:
@@ -495,7 +532,7 @@ pair 4.
 
 | | |
 |---|---|
-| Input | across the **36 V rail**, at the board end of it |
+| Input | across the **36 V rail, AFTER THE FUSE - his, 2026-11-14**: a **22/2** from a spare push-in point on each distribution block group to the relay's + and -. After the fuse is the point - **a blown fuse then reads as a dead rail and trips the e-stop input**, where a tap on the supply's own screw would go on reading healthy with the drives dark. **No 12 AWG goes near the relay**: it measures the rail and is not part of the power path. It read "at the board end" while the rail still ran to the interface board |
 | Contact | **closed while the rail is up**, into the interface board's **e-stop input** - the Mini-Fit Jr 4P already carries one, see [`kicad/interface-board/README.md`](kicad/interface-board/README.md) |
 | Direction | 🔴 **FAIL-SAFE, AND THAT IS WHY THE CONTACT IS CLOSED WHEN ALL IS WELL.** Rail gone, wire broken, part dead - all three open the loop and all three read as e-stop. A contact that had to *close* to call the stop would fail silently |
 
@@ -934,9 +971,12 @@ SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026
 | Input | **220 V at 3.5 A** |
 | Output | **36 V DC at 16.5 A**, 600 W |
 
-SETTLED: **NOTHING GOES BETWEEN THE SUPPLY AND THE BOARD - his, 2026-11-09. The supply's own
+SETTLED: ~~**NOTHING GOES BETWEEN THE SUPPLY AND THE BOARD - his, 2026-11-09. The supply's own
 protection is the protection.** No DC fuse, no breaker on the 36 V side. It is a Mean Well and
-it looks after itself.
+it looks after itself.~~ **SUPERSEDED 2026-11-14: a 20 A fuse sits in the +36 V leg**, between
+the XDR and the distribution blocks - see the head of this file. The decision above was made
+for a 16.5 A brick feeding the interface board; the supply is 26.6 A now and the board no
+longer carries the rail.
 
 FLAG: **THE MODEL IS NOT RECORDED, SO THE DATASHEET IS NOT COMMITTED** - and this repo's rule is
 that datasheets are committed, not linked. What the over-current protection actually *does* when
@@ -1262,11 +1302,12 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 |---|---|
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
-| **12 V + 36 V, one 18/6** | both supplies to the interface board in a single cable - his, 2026-11-12. **Four conductors are the 36 V's two circuits into the 4P input** (J55's legs are doubled, so each leg arrives as two conductors and takes two crimps in the housing), **two are the 12 V pair into its 2P** (J18, the 12 V IN). Six of six used - **nothing else rides this cable**. Colours, his read of the jacket 2026-11-13: **red** +36 V to J55.1, **yellow** +36 V to J55.2, **black** 36 V return to J55.3, **white** 36 V return to J55.4, **blue** +12 V to J18.1, **green** 12 V GND to J18.2. ⚠️ **THE CABLE'S GREEN IS THE 12 V RETURN, NOT PE** - the panel's green-means-earth rule stops at this jacket |
+| **The five 18/2 motor supply runs** | X, Y1, Y2, Z, B - **straight from the distribution blocks to the drives**, his, 2026-11-14, **all five through one 1 inch knockout in the side of the box**. Red is +36 V, black is the return. Shielded; the drain stays in this box, see the PE bar. Bare ferruled wire at this end, so nothing but the cable has to pass the wall |
+| **12 V, on an 18/2** | the logic supply to the interface board's 12 V IN (J18) - **his, 2026-11-14: the 18/6 goes away**, since the 36 V that filled four of its six conductors no longer makes this trip. **Red is +12 V to J18.1, black is 12 V GND to J18.2 - his, 2026-11-14**, the same pair of colours as the motor cables |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
 
-FLAG: **THE E-STOP CONTACT NO LONGER RIDES THE 12 V RUN - the 18/6 has no conductor spare for
-it.** This file used to say the DVRD's e-stop contact shared the 12 V's 4 conductor shielded run,
+FLAG: **THE E-STOP CONTACT DOES NOT RIDE THE 12 V RUN.** It left when that run became an 18/6
+with no conductor spare, and the 18/2 that replaced the 18/6 on 2026-11-14 has none either. This file used to say the DVRD's e-stop contact shared the 12 V's 4 conductor shielded run,
 which is why that run was 4 conductor. SETTLED how it crosses instead - **his, 2026-11-12: a
 separate 22/2 from the DVRD's contact to position 3 of the CONTROL Mini-Fit 4P (J32), up in the
 board's input half.** The housing's other three positions - cycle start, feed hold, spare - stay
@@ -1280,25 +1321,23 @@ SETTLED: **ONE CONDUCTOR, SWITCHING AGAINST THE 12 V SUPPLY'S 0 V - his, 2026-11
 second conductor is spare and unconnected at both ends; the working one goes contact to pin 3.
 🔴 **SO THE CONTACT'S OTHER TERMINAL MUST JUMPER TO THE 12 V SUPPLY'S 0 V INSIDE THE PANEL** -
 that jumper IS the circuit: pull-up, ESTOP, pin 3, up the 22/2, through the contact, into 12 V
-0 V, home to board GND through the 18/6's 12 V return. Without it the contact closes into nothing
+0 V, home to board GND through the 18/2's 12 V return. Without it the contact closes into nothing
 and the machine sits in permanent e-stop - loud, not silent, but down. The commissioning reading
 that proves the loop: rail up, relay happy, pin 3 low. (Neither the control connector nor its
 terminal block carries a GND pin, which is why the return rides the supply's own 0 V - the
 netlist has ESTOP as J32.3 straight through to J36.3 and nothing else.)
 
-OPEN: **IS THE 18/6 SHIELDED?** The standing rule is his own, from the shielded-cable decision:
-every run leaving the enclosure is shielded. If this one is, its drain is one more on the
-board-side bus bar, grounded at that end only like the rest; if it is an exception, write the
-exception here so the rule stays honest.
+SETTLED: **THE 12 V 18/2 IS SHIELDED - his, 2026-11-14.** That keeps his own rule whole: every run
+leaving the enclosure is shielded. Its drain is one more on the board-side bus bar, grounded at
+that end only like the rest - **eight drains at the board, not seven**.
 
-🔴 **THE 36 V RUN HAS CHANGED TWICE AND OLDER SENTENCES MAY NOT HAVE CAUGHT UP.** It used to be
-described as going **to the drives**, as several motor supply runs leaving this box; then as one
-pair to the interface board; it is now **four conductors of the shared 18/6 above** - two circuits
-because J55's legs are doubled - and the board fans it to the five axes through the Mini-Fit jacks
-added in [`kicad/interface-board/README.md`](kicad/interface-board/README.md), the whole point of
-consolidating terminations there. **Any sentence in this file still describing motor supply runs
-leaving the cabinet per drive is stale**, including the shield-drain count below, which was written
-when those runs were separate.
+🔴 **THE 36 V RUN HAS CHANGED THREE TIMES AND OLDER SENTENCES MAY NOT HAVE CAUGHT UP.** It was
+first described as going **to the drives**, as several motor supply runs leaving this box; then as
+one pair to the interface board; then as four conductors of an 18/6 shared with the 12 V, into
+the board's J55,
+with the board fanning it to the axes. **Since 2026-11-14 it is back where it started: five 18/2
+runs leaving this box, one per drive, off the distribution blocks.** Any sentence in this file that
+still has the motor rail reaching the interface board is stale.
 
 SETTLED: **EVERY RUN LEAVING THE ENCLOSURE IS SHIELDED, 4 OR 2 CONDUCTOR - his, 2026-11-07.** The VFD,
 the interface box and the controller, and the two switch boxes. **Inside** the enclosure is a separate
@@ -1308,6 +1347,7 @@ question, below.
 |---|---|
 | Out to the **VFD** | mains to the drive, and the pump contactor's coil pair |
 | Out to the **interface box and controller** | 12 V, and the sense relay's contact back |
+| Out to the **five drives** | the 18/2 motor supply, one per axis - since 2026-11-14 |
 | Out to the **two switch boxes** | the coil circuit, in series through the mushroom and then the paddle |
 
 NOTE: **ON THE SWITCH RUN THE SHIELD IS CONTAINING AN AGGRESSOR, NOT PROTECTING A VICTIM.** That run
@@ -1318,8 +1358,8 @@ the one of the three where a shield is optional**; on the interface box run it i
 
 🔴 **EVERY SHIELD IS ANOTHER DRAIN ON THE PE BAR, AND THAT IS THE TERMINAL COUNT BELOW.** The bar was
 sized for eight firm conductors with ten bought, and the only shields in the design were the four
-motor supply runs - whose drains follow the 36 V supply and may not land here at all. **Three or four
-more shielded runs land their drains in this box for certain.** See the open item under the bar:
+motor supply runs - whose drains follow the 36 V supply, and since 2026-11-14 that is this box: **five
+of them**. **Three or four more shielded runs land their drains here as well.** See the open item under the bar:
 buying more than ten stops being a precaution and becomes the requirement.
 
 NOTE: **ONE END ONLY, AND IT IS THE PANEL END.** The rule is already in the bar's table and does not
@@ -1441,7 +1481,7 @@ below.
 | **Back wall, field** - under **Y2**, inboard of the corner leg | **1 in** | Y2's **Cat 6, 18/2 and limit sensor** |
 | **Back wall, field** - under **Y1**, inboard of the corner leg | **OPEN - off the real bundle** | the **whole Y1 drag chain**, twelve cables and up - see below |
 | **Central wall** | **3/8 in** | the **110 V** run, loose conductors |
-| **Central wall** - beside it | **1 in** | the **Y2 stepper's three cables**, crossing to the enclosure side |
+| **Central wall** - beside it | **1 in** | the **Y2 stepper's three cables**, crossing to the enclosure side. OPEN: **since 2026-11-14 the three do not end in the same place** - the 18/2 goes into the DIN box and the Cat 6 and limit lead go on to the interface board. Whether that changes any hole here or the Y1 hole is his, off the real routing |
 
 NOTE: **Four of the six are field holes and cost nothing.** This file's rule is that a shear panel is
 governed by **what holds its edges**. **The two notches in the back wall's top edge were the ones
@@ -1541,8 +1581,8 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | **Fixed frame** - the steel Y back plate | **Not "the machine frame"** - see below, the machine is in two halves |
 | 36 V supply earth terminal | **its own conductor - and the earth-symbol terminal on the input strip IS the case** (datasheets call it FG, frame ground - same screw), bonded to the chassis inside the can. One wire from that screw; **nothing gets drilled**. Check it is really bonded: meter the earth screw to bare case metal. If a supply ever lacks the terminal, a ring lug under an existing mounting screw into chassis metal, star washer - still no drilling |
 | 12 V supply earth terminal | SETTLED off the part in his hand: **the MDR's input strip carries a ground terminal alongside its two power terminals**, so one wire from it to this bar. The body is plastic, so as with the VFD below this is an **earth terminal, not a case bond** - same conductor either way |
-| 36 V supply V- terminal | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded, ferruled - his, 2026-11-13**: the supply screws are ferruled, and a twin ferrule takes the 18/6's 18 AWG plus a 22, not plus a 14 |
-| 12 V supply V- terminal | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded** for the same twin-ferrule reason. This is also what makes the e-stop loop's V- jumper work - and the jumper and the DVRD's measuring pair are 22 AWG stranded too, all of it signal, none of it load |
+| 36 V supply V- terminal | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded - his, 2026-11-13.** SETTLED: **it lands on the supply's SECOND V- screw, on its own ferrule - his, 2026-11-14.** It used to share the first V- screw in a twin ferrule with an 18 AWG; that screw now holds the 12 AWG solid, which no twin ferrule shares. The second screw is the same node and nothing shares it. ⚠️ **Fig. 6 draws two V- screws on the XDR and that was drawn for the brick - confirm the second one on the part** |
+| 12 V supply V- terminal | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded**, in a **twin ferrule with the 12 V 18/2's 18 AWG - his, 2026-11-14**. This is also what makes the e-stop loop's V- jumper work - and the jumper and the DVRD's measuring pair are 22 AWG stranded too, all of it signal, none of it load |
 | VFD **E** terminal | **its own short heavy conductor.** FLAG: **the VFD's case is plastic - his, 2026-11-05 - and that changes nothing here.** There is no case to bond, but the drive has an earth terminal: the manual's main-circuit table lists **E, "ground terminal ... of Electrical Engineering Regulations"**. A plastic case means no case bond, not no earth |
 | Cable shields | **one end only** |
 
@@ -1560,11 +1600,14 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 8 | 12 V supply V- terminal |
 
 FLAG: ~~**TEN IS THE BUY - the signal cables contribute nothing.**~~ **THAT WAS TRUE WHEN THE ONLY
-CABLE AT THE BOARD WAS CAT 6 UTP. IT IS NOT TRUE NOW - his count, 2026-11-09: TWELVE SHIELDED CABLES
-LAND ON THE INTERFACE BOARD.** Five stepper power, five limit sensor, the 3D probe and the spindle
-control. Each arrives with **foil over braid, stripped back to about 1 inch of twisted drain**.
+CABLE AT THE BOARD WAS CAT 6 UTP.** His count, 2026-11-09, was twelve shielded cables at the
+interface board: five stepper power, five limit sensor, the 3D probe and the spindle control.
+**Since 2026-11-14 it is EIGHT at the board and FIVE here** - the seven signal cables plus the
+shielded 12 V 18/2 at the board, and the stepper power cables end in this
+box now, and their drains with them. Each arrives with **foil over braid, stripped back to about
+1 inch of twisted drain**.
 
-### The twelve drains at the interface board
+### The eight drains at the interface board
 
 🔴 **THERE IS NOWHERE ON THE BOARD TO PUT THEM, AND THAT IS BY DESIGN.** The board has **no PE net,
 no shield net and no plated mounting hole** - checked, 2026-11-09 - and its enclosure is 3D printed,
@@ -1576,8 +1619,8 @@ conductor from it home to this PE bar.**
 
 | | |
 |---|---|
-| At the board | all twelve drains on a common bus bar, **isolated from board GND** - it must touch nothing on the PCB |
-| Home | **one** conductor from that bus to the PE bar. **One more terminal here, not twelve** |
+| At the board | all eight drains on a common bus bar, **isolated from board GND** - it must touch nothing on the PCB |
+| Home | **one** conductor from that bus to the PE bar. **One more terminal here, not eight** |
 | At the far ends | **open and insulated** - drives, sensors, Z plate, VFD. The one-end rule, and the board end is the end |
 
 ✅ **ISOLATED IS WHAT KEEPS IT FROM BEING A LOOP.** The shields reach PE by their own conductor and
@@ -1593,23 +1636,23 @@ lightly so it stops shedding strands**, and crimp a **ferrule or a small ring lu
 pigtail is electrically a small inductor and a 360 degree gland would be better - but **a gland wants
 a metal panel and this enclosure is plastic**, so the pigtail is the honest answer here.
 
-OPEN: **THE ONLY SHIELDS IN THE SYSTEM ARE THE FOUR 18/2 MOTOR SUPPLY RUNS, and they follow the 36 V
-supply rather than this bar.** Each drive's supply is **18/2 shielded** - see
-[`ig57-drives.md`](ig57-drives.md) - so there are four drains, grounded at one end only. Whether they
-reach this bar is the same question as where the 36 V supply ends up, which is **gated on the bench
-session**. **Ten leaves two spare if they land elsewhere and comes up short if all four land here**,
-which is the argument for buying more than ten rather than exactly ten.
+SETTLED: **THE FIVE 18/2 MOTOR SUPPLY DRAINS LAND ON THIS BAR - it follows from his, 2026-11-14.**
+This paragraph was OPEN while the 36 V supply had no home; the XDR is on this rail and the motor
+cables now end beside it, so the panel end of each shield is here. **Open and insulated at the
+drive**, the one-end rule as everywhere else. That is **five terminals**, or one if the five are
+gathered on a small common bar first, the way the board's eight are.
 
 🔴 **AND SINCE 2026-11-07 IT IS NO LONGER ONLY AN ARGUMENT - every run leaving the box is shielded.**
 The VFD run, the interface box run and the switch run each land a drain here, and those are not
 gated on anything. **Ten does not cover eight firm conductors plus three or four certain drains**,
-let alone the four motor supply drains if they come here too. His ten was right for the design as it
+let alone the five motor supply drains, which since 2026-11-14 do come here. His ten was right for the design as it
 stood; **the shielded-cable decision is what moved it**, and terminals are the cheapest item in the
 box.
 
 OPEN: **WHAT THE COUNT SHOULD ACTUALLY BE IS HIS, AND IT IS A BUY, NOT A CALCULATION.** The firm
-eight, plus one drain per shielded run out, plus up to four motor supply drains depending on where
-the 36 V supply ends up. **Pick a bar with slack and the question never comes back.**
+eight, plus one drain per shielded run out, plus the five motor supply drains and the one
+conductor home from the board's drain bar - **seventeen or eighteen if every drain gets its own
+screw**. **Pick a bar with slack and the question never comes back.**
 
 NOTE: **EVERY ENCLOSURE IN THIS BUILD IS PLASTIC - the distribution box, the paddle's gang box and
 now the interface board's.** Nothing anywhere is bonded by being mounted in something, so every earth
