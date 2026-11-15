@@ -52,11 +52,13 @@ Meter on continuity, nothing connected to the board. Two readings per net, one r
 Each column is one jack (pins 1/3/5/7), its stops on the 2x10 ribbon J16, the Teensy
 header, the alarm ribbon J17, and the limit 3P with its terminal-block position.
 
-🔴 **The ribbon headers' silk names the RP23 END, not the part**: the big labels read
-RP23 J20 STEPPERS and RP23 J24 ALARMS, but those pads are this board's **J16** and
-**J17**. Probe by the pad numbers in this table - reading the silk label as the
-reference is exactly how a wrong pad gets probed, and it already cost one false alarm
-on AL_X.
+🔴 **The ribbon headers' silk names the RP23 END, not the part**: the bold labels right
+under the headers read RP23 J20 STEPPERS and RP23 J24 ALARMS, but those pads are this
+board's **J16** and **J17** - whose own references are on the silk too, just small and
+out at the right-hand edge of the outline where nothing draws the eye. The bold label is
+the one you see, RP23 prefix or not. Probe by the pad numbers in this table - reading
+the silk label as the reference is exactly how a wrong pad gets probed, and it already
+cost one false alarm on AL_X.
 
 | Net | Points | Closed | Open to GND |
 |---|---|---|---|
