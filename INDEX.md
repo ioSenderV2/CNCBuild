@@ -365,6 +365,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 ## [commissioning/bench-session.md](commissioning/bench-session.md)
 
 - [Why on the bench, and not later](commissioning/bench-session.md#why-on-the-bench-and-not-later)
+- [Before the session - two prerequisites, found 2026-11-13](commissioning/bench-session.md#before-the-session---two-prerequisites-found-2026-11-13)
 - [Setup](commissioning/bench-session.md#setup)
 - [1. Set the rail and verify it](commissioning/bench-session.md#1-set-the-rail-and-verify-it)
 - [2. Power-on inrush - all four at once](commissioning/bench-session.md#2-power-on-inrush---all-four-at-once)
@@ -550,6 +551,18 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
   - [What it came out as](wiring/kicad/interface-board/README.md#what-it-came-out-as)
   - [Cost, against his settled rates](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates)
   - [Still open before any Rev B order](wiring/kicad/interface-board/README.md#still-open-before-any-rev-b-order)
+
+## [wiring/kicad/interface-board/rev-a-validation.md](wiring/kicad/interface-board/rev-a-validation.md)
+
+- [1. Before the iron - the two project-drawn footprints](wiring/kicad/interface-board/rev-a-validation.md#1-before-the-iron---the-two-project-drawn-footprints)
+- [2. Dead board, populated - the bridge sweep and the net list](wiring/kicad/interface-board/rev-a-validation.md#2-dead-board-populated---the-bridge-sweep-and-the-net-list)
+  - [The five axis columns](wiring/kicad/interface-board/rev-a-validation.md#the-five-axis-columns)
+  - [Probes, spindle, pass-throughs](wiring/kicad/interface-board/rev-a-validation.md#probes-spindle-pass-throughs)
+  - [The rails](wiring/kicad/interface-board/rev-a-validation.md#the-rails)
+  - [Adjacent pins - the other bridge class](wiring/kicad/interface-board/rev-a-validation.md#adjacent-pins---the-other-bridge-class)
+- [3. The jack face - one jack, through the port](wiring/kicad/interface-board/rev-a-validation.md#3-the-jack-face---one-jack-through-the-port)
+- [4. First 12 V](wiring/kicad/interface-board/rev-a-validation.md#4-first-12-v)
+- [What a result means](wiring/kicad/interface-board/rev-a-validation.md#what-a-result-means)
 
 ## [wiring/README.md](wiring/README.md)
 

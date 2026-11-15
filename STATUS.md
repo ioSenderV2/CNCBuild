@@ -380,8 +380,12 @@ the interface, not this file.
 
 ## [wiring/kicad/interface-board/README.md](wiring/kicad/interface-board/README.md)  (1)
 
-- FLAG: [L205](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates) — *Rev B - designed on this branch, 2026-11-09 / Cost, against…*<br>THE COMMITTED INVOICE CANNOT SERVE AS RATE EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
+- FLAG: [L206](wiring/kicad/interface-board/README.md#cost-against-his-settled-rates) — *Rev B - designed on this branch, 2026-11-09 / Cost, against…*<br>THE COMMITTED INVOICE CANNOT SERVE AS RATE EVIDENCE. fab/oshpark/oshpark-order-invoice-xPBWS3rt.pdf is image-only - there is no extractable text in it, so no rate or line item can be read back out. It records that the order happened, not what it cost per unit area. A text PDF or a saved quote page would.
+
+## [wiring/kicad/interface-board/rev-a-validation.md](wiring/kicad/interface-board/rev-a-validation.md)  (1)
+
+- OPEN: [L3](wiring/kicad/interface-board/rev-a-validation.md#rev-a-checkout---the-board-itself-before-anything-connects) — *Rev A checkout - the board itself, before anything connects*<br>Not yet run. Three boards in hand - OSH Park order xPBWS3rt, ordered 2026-11-03. This is the meter session that says the populated board can be trusted: the fab's copper and the hand soldering, checked against the netlist the board was cut from. Nothing here needs the RP23, a machine cable, or the cabinet - a DMM on continuity does all of it except the last section, which wants a bench 12 V.
 
 ---
 
-**290 open** across 38 files.
+**291 open** across 39 files.
