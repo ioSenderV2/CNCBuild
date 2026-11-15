@@ -50,9 +50,12 @@ LABELS = [
     # the halves, named
     ("MACHINE SIDE - IN", 65.5, 103.0, 1.2, 0),
     ("RP23 SIDE - OUT",   60.0, 119.1, 1.2, 0),
-    # row A: ribbons, headers, 12 V
-    ("RP23 J24 ALARMS",   20.3, 116.8, 0.9, 0),
-    ("RP23 J20 STEPPERS", 56.0, 116.8, 0.9, 0),
+    # row A: ribbons, headers, 12 V. The label LEADS with this board's own
+    # reference: on Rev A the bold destination labels got read as the part's
+    # reference - J16/J17 sat small at the board edge - and it cost a false
+    # alarm probing the wrong pad. The part name comes first now.
+    ("J17 - RP23 J24 ALARMS",   20.3, 116.8, 0.9, 0),
+    ("J16 - RP23 J20 STEPPERS", 56.0, 116.8, 0.9, 0),
     # machine name = controller name. The headers run in column order, which
     # in controller letters is X Y A Z B - not the controller's own X Y Z A B
     # - because Y1 drives Y and Y2 drives A. Jumper by the label, not by

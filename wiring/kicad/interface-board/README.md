@@ -217,8 +217,9 @@ not what it cost per unit area. **A text PDF or a saved quote page would.**
    ribbon headers - RP23 J20 STEPPERS, RP23 J24 ALARMS - get read as the part's own
    reference**, RP23 prefix or not, because J16/J17 sit small out at the board edge where
    nothing draws the eye. It cost a false alarm chasing a dead AL_X that was a wrong pad.
-   Rev B's silk (`silk.py` carries the same labels) should make the part reference
-   unmissable at the header or reword the destination label - wording is his call.
+   SETTLED: **folded into Rev B 2026-11-15** - the labels now lead with the part:
+   **J17 - RP23 J24 ALARMS** and **J16 - RP23 J20 STEPPERS**, in `silk.py` and on the
+   board, DRC clean, and the quote package in `fab/oshpark-revb/` carries it.
 2. **Lid cutout and mounting.** 133 x 132 against Rev A's 210 x 94, M3 at the four
    corners - 22,4 / 125,4 / 5,127.3 / 127,127.3 - the regenerated
    [`board-mounting.html`](../../../docs/drawings/board-mounting.html) has the drawing.
