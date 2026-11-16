@@ -24,6 +24,7 @@ the E-stop contactor's block. See
 | `interface-board.kicad_pro` | Project wrapper. |
 | `netlist.txt` | The connection list. **Generated from the routed board by `make-netlist.py`** - not hand-kept, and not from the seed. |
 | `make-netlist.py` | Writes `netlist.txt` from the board. Run after any net change. |
+| `interface-board-bom.csv` | **Generated** - kicad-cli sch export bom, one row per part with its board function as the value. Regenerate after any schematic change; the sensor and controller boards carry the same file beside their schematics. |
 | `rev-a-validation.md` | The meter checkout for the three **Rev A** boards in hand - footprint fit, bridge sweep, net-by-net continuity against the Rev A netlist, jack-face map, first 12 V. Run it before the board meets the RP23. Its tables are from **main's** routed board, not this branch's. |
 | `make-fab-revb.ps1` | Builds the whole Rev B quote package - DRC with refill, both exports, the zip. Refuses to build if DRC is not clean. Run this rather than the export commands by hand. |
 | `swap-power-connectors.py` | Placed the three cabinet power feeds as Mini-Fit Jr. Kept because it carries the courtyard arithmetic for row A, which is the tightest row on the board. The 36 V one of the three has since gone. |
