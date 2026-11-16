@@ -1711,6 +1711,11 @@ Phase order among 1-2-3 is arbitrary until the first spin: it only sets directio
 rotation at first power - clockwise seen from above - and if it runs backwards, swap any two
 of U/V/W at the VFD end** and correct this table to match.
 
+✅ **The measured body-shaft-collet continuity is also what the touch plate counts on** - at
+standstill the bearings conduct, so the tool reaches the Z plate through metal with no clip
+on the bit. The probe's return is the Z plate's dedicated wire to the controller's ground,
+NOT this pin-4 earth - see *The touch plate wants the Z plate too* below.
+
 NOTE: **THE GANTRY BOND IS FOR NOISE, NOT FOR SAFETY - and saying so changes how much to care.**
 Nothing on the moving structure can go to mains: both steppers and every sensor are 36 V or less, and
 the one mains item up there is the spindle, which has its own earth. What the bond buys is that a
