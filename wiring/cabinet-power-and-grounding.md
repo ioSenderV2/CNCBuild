@@ -1249,7 +1249,18 @@ cable to an earthed PC**.
 
 ## The enclosure is a 12 x 12 x 6 PVC box
 
-SETTLED: **his, ordered 2026-11-05** - and it closes the question of which box the DIN rail lives in.
+OPEN: 🔴 **SUPERSEDED IN DIRECTION, 2026-11-16 - his: the PVC box goes away entirely.** Everything
+in this section moves to a **500 mm square of 3/4 inch plywood**, wired complete on the bench and
+hung inside the base's back wall as one unit, under a **1/4 ply cover built to size with
+ventilation for the supplies**. What ports from the box design: the dead-row / live-row zoning,
+the PE bar and every conductor on it (nothing in the grounding changes - plywood is no more a
+chassis than PVC was), the sand-port clearance, and the two-things-still-live warning, which goes
+on the cover's inside face. Still open in the move: metal backing behind the 220 V rows
+(recommended, not yet his call), the vent layout, and the full panel arrangement - **this section
+and the panel drawing get reworked in their own sitting**; until then the 12 x 12 text below
+stands as the record of the layout logic, not the build.
+
+SETTLED: ~~**his, ordered 2026-11-05** - and it closes the question of which box the DIN rail lives in.~~
 
 | | |
 |---|---|
