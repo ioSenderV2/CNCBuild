@@ -1695,6 +1695,22 @@ through bearing balls is how a bearing is destroyed.**
 ✅ **NEITHER NEW BOND ADDS A TERMINAL TO THE BAR.** The spindle's goes to the VFD and the gantry's
 goes to the fixed frame. The count above stays at eight.
 
+SETTLED: **THE SPINDLE CONNECTOR PINOUT AND CABLE COLORS - measured and assigned, his,
+2026-11-15.** His meter: **pin 4 of the spindle's 4-pin connector is bonded to the spindle
+body, shaft and collet nut** - so pin 4 is the earth, the conductor that runs back to the
+VFD's E terminal. The three phases are his assignment:
+
+| Connector pin | Conductor | VFD terminal |
+|---|---|---|
+| 1 | **red** | U |
+| 2 | **black** | V |
+| 3 | **white** | W |
+| 4 | earth - **bonded to body/shaft/collet, measured** | E |
+
+Phase order among 1-2-3 is arbitrary until the first spin: it only sets direction. **Check
+rotation at first power - clockwise seen from above - and if it runs backwards, swap any two
+of U/V/W at the VFD end** and correct this table to match.
+
 NOTE: **THE GANTRY BOND IS FOR NOISE, NOT FOR SAFETY - and saying so changes how much to care.**
 Nothing on the moving structure can go to mains: both steppers and every sensor are 36 V or less, and
 the one mains item up there is the spindle, which has its own earth. What the bond buys is that a
