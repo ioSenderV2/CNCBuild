@@ -1255,10 +1255,14 @@ hung inside the base's back wall as one unit, under a **1/4 ply cover built to s
 ventilation for the supplies**. What ports from the box design: the dead-row / live-row zoning,
 the PE bar and every conductor on it (nothing in the grounding changes - plywood is no more a
 chassis than PVC was), the sand-port clearance, and the two-things-still-live warning, which goes
-on the cover's inside face. Still open in the move: metal backing behind the 220 V rows
-(recommended, not yet his call), the vent layout, and the full panel arrangement - **this section
-and the panel drawing get reworked in their own sitting**; until then the 12 x 12 text below
-stands as the record of the layout logic, not the build.
+on the cover's inside face. SETTLED: **no metal backing - torque discipline instead, his,
+2026-11-16.** The hazard it answered is the slow resistive joint a breaker cannot see, which
+lives in the screw-terminal mains gear; the discipline that replaces the plate: **snug every
+mains screw at build, re-torque after the first few weeks of warm-up cycles** - that is when
+joints settle - **and a sniff-and-glance at the terminals yearly**. The 36 V side is push-in
+spring gear and needs neither. Still open in the move: the vent layout and the full panel
+arrangement - **this section and the panel drawing get reworked in their own sitting**; until
+then the 12 x 12 text below stands as the record of the layout logic, not the build.
 
 SETTLED: ~~**his, ordered 2026-11-05** - and it closes the question of which box the DIN rail lives in.~~
 
