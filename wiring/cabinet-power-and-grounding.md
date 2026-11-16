@@ -1266,7 +1266,12 @@ listings: the PE bar was always a bar (ten positions, so buy 10 or 12 lugs, not 
 mains splitting goes one covered bar per conductor role - L1 and L2 their own on the 220 side,
 hot and neutral their own if the 110 splitter follows. **The neutral never lands on the PE
 bar.** The Phoenix PT 4-QUATTRO groups stay on the 36 V distribution - spring clamps hold the
-motor-current joints maintenance-free. Still open in the move: the vent layout and the full
+motor-current joints maintenance-free - and SETTLED: **each group gets its own 3-inch rail stub,
+his, 2026-11-16**: 6 x 6.2 mm of blocks per group fits a 76 mm stub with room, and the
+never-bridged separation becomes a visible air gap between two rails instead of a partition
+plate (the 3 partitions bought go spare). Per machine that is 2 end covers (5 in hand across
+both machines) and 4 CLIPFIX clamps (2 in hand) - **2 more clamps for this machine**, or none
+if the stubs are cut dead to group length so the blocks cannot slide. Still open in the move: the vent layout and the full
 panel arrangement - **this section and the panel drawing get reworked in their own sitting**;
 until then the 12 x 12 text below stands as the record of the layout logic, not the build.
 
