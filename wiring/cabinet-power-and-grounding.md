@@ -1252,10 +1252,11 @@ cable to an earthed PC**.
 OPEN: 🔴 **SUPERSEDED IN DIRECTION, 2026-11-16 - his: the PVC box goes away entirely.** Everything
 in this section moves to a **500 mm square of 3/4 inch plywood**, wired complete on the bench and
 hung inside the base's back wall as one unit, under a **1/4 ply cover built to size with
-ventilation for the supplies**. What ports from the box design: the dead-row / live-row zoning,
-the PE bar and every conductor on it (nothing in the grounding changes - plywood is no more a
-chassis than PVC was), the sand-port clearance, and the two-things-still-live warning, which goes
-on the cover's inside face. SETTLED: **no metal backing - torque discipline instead, his,
+ventilation for the supplies**. What ports from the box design: the PE bar and every conductor on it
+(nothing in the grounding changes - plywood is no more a chassis than PVC was), the sand-port
+clearance, and the two-things-still-live warning, which goes on the cover's inside face. The
+dead-row / live-row zoning does NOT port - his, 2026-11-16, the mock-up mixes them and he is
+fine with it; the warning label carries that load instead. SETTLED: **no metal backing - torque discipline instead, his,
 2026-11-16.** The hazard it answered is the slow resistive joint a breaker cannot see, which
 lives in the screw-terminal mains gear; the discipline that replaces the plate: **snug every
 mains screw at build, re-torque after the first few weeks of warm-up cycles** - that is when
