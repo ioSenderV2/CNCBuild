@@ -173,6 +173,9 @@ still buy:
 - The **four-close-to-four-times-one check**, which catches a sick drive at the cheapest moment
   there will ever be.
 - A baseline for the **DVRD-36's thresholds and delay** against what the rail really does.
+- **The 36 V fuse link value - 15 or 20 A.** The draw readings above decide it; the
+  arithmetic is with the fuse in
+  [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md).
 
 **Why free-running is informative at all, given no load:** the TST57 manual says supply input current
 runs *below* motor phase current, and declines to say by how much. Four drives rated 5 A phase each

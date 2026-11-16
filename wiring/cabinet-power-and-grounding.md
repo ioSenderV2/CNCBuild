@@ -22,7 +22,8 @@ goes near the board:
 |---|---|
 | **The blocks** | Phoenix Contact **PT 4-QUATTRO** (3211797), push-in, four points on one potential. **Six per leg** - one for the supply, one per axis - joined by an **FBS 10-6 bridge cut to six**. Twelve blocks and two bridges per machine; bought 2026-11-14, Mouser 41110345 |
 | **+36 V group and return group** | side by side on the rail with a partition plate between them, **never bridged to each other** |
-| **The fuse** | **20 A, in the +36 V leg, between the supply and the blocks - his, 2026-11-14.** It supersedes "nothing between the supply and the board" of 2026-11-09, which was decided against a 16.5 A brick |
+| **The fuse** | **In the +36 V leg, between the supply and the blocks - his, 2026-11-14.** Supersedes "nothing between the supply and the board" of 2026-11-09, which was decided against a 16.5 A brick. **20 A was the first call; the link value is now 15 or 20, picked off the bench session's measured draw** - see the holder note below |
+| **The holder** | WENGART **WGPV-30D**, 1-pole DIN, 10x38 **gPV** links, rated 1000 VDC / 32 A, terminals take 18-8 AWG so the 12 AWG solid lands in it. A PV holder on purpose: DC is what is hard to interrupt and most cheap 10x38 holders are AC-rated. The holder is generic; **the link in it should be a name brand** - Bussmann / Littelfuse / Mersen 10x38 gPV |
 | **Supply to fuse to blocks** | **12 AWG solid copper, short lengths - his, 2026-11-14. RED is +36 V, BLACK is the return** - the same as the 18/2 motor cables, whose conductors are red (+) and black (-), so the DC side reads one way from the supply screw to the drive. (He first said black and white the same day, and changed it for exactly that reason.) Red runs supply V+ to the fuse and fuse to the +36 V group; black runs supply V- straight to the return group. Solid wire goes into the push-in point bare - **no ferrule on solid** |
 | **What lands on them** | the red and the black above, on one block of each group, and **the five 18/2 motor supply cables** - X, Y1, Y2, Z, B - **red into the +36 V group, black into the return group** |
 | **Where the five come in** | **one 1 inch knockout in the side of the box - his, 2026-11-14.** All five 18/2 through the one hole; they are bare ferruled wire at this end, so only cable has to pass |
@@ -34,6 +35,18 @@ on a middle one still halves what the bridge carries and costs nothing.
 
 FLAG: **THE PIECE FROM THE SUPPLY TO THE FUSE IS NOT UNDER THE FUSE.** Only the XDR's own 26.6 A
 limit bounds it, which is why it is 12 AWG and short.
+
+OPEN: **15 A OR 20 A LINK - the bench session's current readings decide.** The arithmetic that
+opened the question, 2026-11-15: the only sustained fault current this circuit can carry is the
+XDR's constant-current limit, **26.6 A** (below 30% output voltage it hiccups instead). A gPV/gG
+link is guaranteed NOT to open below 1.13x its rating and guaranteed to open within the hour at
+1.45x. For a **20 A** link 26.6 A is **1.33x - inside the dead zone**: the sustained partial fault
+the fuse exists for could heat the link indefinitely and never clear. For a **15 A** link it is
+1.77x and clears in minutes. 15 A holds the continuous side provided the real draw stays under
+~13 A (1.13 x 15 = 17 A non-fusing), which four drives whose manual says supply current runs below
+the 5 A phase rating should clear easily - but that is the number the bench measures, not a number
+to assume. **Buy both links; the meter picks.** The 20 A wire-protection logic above is untouched
+either way - 15 sits further inside it.
 
 SETTLED: **RED AND BLACK CARRY TWO MEANINGS IN THIS BOX, AND HE ACCEPTS IT - his, 2026-11-14.** The panel scheme below has **red
 as L2 on the 220 V side and black as the 110 V hot**. On the DC side red is +36 V and black is its
