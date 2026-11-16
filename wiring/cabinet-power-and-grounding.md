@@ -1260,9 +1260,15 @@ on the cover's inside face. SETTLED: **no metal backing - torque discipline inst
 lives in the screw-terminal mains gear; the discipline that replaces the plate: **snug every
 mains screw at build, re-torque after the first few weeks of warm-up cycles** - that is when
 joints settle - **and a sniff-and-glance at the terminals yearly**. The 36 V side is push-in
-spring gear and needs neither. Still open in the move: the vent layout and the full panel
-arrangement - **this section and the panel drawing get reworked in their own sitting**; until
-then the 12 x 12 text below stands as the record of the layout logic, not the build.
+spring gear and needs neither. SETTLED: **screw-lug bus bars take the PE bar and the mains
+distribution - his, 2026-11-16**, the insulated-feet-and-cover kind off the DIN enclosure
+listings: the PE bar was always a bar (ten positions, so buy 10 or 12 lugs, not 8), and the
+mains splitting goes one covered bar per conductor role - L1 and L2 their own on the 220 side,
+hot and neutral their own if the 110 splitter follows. **The neutral never lands on the PE
+bar.** The Phoenix PT 4-QUATTRO groups stay on the 36 V distribution - spring clamps hold the
+motor-current joints maintenance-free. Still open in the move: the vent layout and the full
+panel arrangement - **this section and the panel drawing get reworked in their own sitting**;
+until then the 12 x 12 text below stands as the record of the layout logic, not the build.
 
 SETTLED: ~~**his, ordered 2026-11-05** - and it closes the question of which box the DIN rail lives in.~~
 
