@@ -1271,8 +1271,9 @@ his, 2026-11-16**: 6 x 6.2 mm of blocks per group fits a 76 mm stub with room, a
 never-bridged separation becomes a visible air gap between two rails instead of a partition
 plate (the 3 partitions bought go spare). Per machine that is 2 end covers (5 in hand across
 both machines - one cover per group, the neighbor closes every other side) and 4 CLIPFIX
-clamps (2 in hand) - **2 more clamps for this machine**, or none if the stubs are cut dead to
-group length so the blocks cannot slide. **The 20 A fuse holder rides the + stub - his,
+clamps (2 in hand) - SETTLED: **no clamps at all, his, 2026-11-16: a screw with a 10 mm nylon
+spacer under it stands at each rail end as the slide stop.** Nothing more to order; the 2
+CLIPFIX in hand go spare. **The 20 A fuse holder rides the + stub - his,
 2026-11-16** - supply into its line side, load side to the + group beside it; at the holder's
 ~18 mm (verify on the part) a clamped stub overruns 76 mm, so the + stub is cut-to-length
 clampless or gets longer rail. The holder's two screws are the only screw joints on the 36 V
