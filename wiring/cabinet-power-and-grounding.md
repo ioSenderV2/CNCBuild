@@ -357,6 +357,13 @@ to say which row is which.** See the scheme below. That was an open item for exa
 2026-11-05. One model to know, one set of terminals to remember, and a spare of either is a spare of
 both on the power side.
 
+NOTE: **The MAIN position takes the near-silent variant - his, 2026-11-16.** Same company, same
+110 V coil rating, about $6 more; the quiet versions hold the armature electronically instead of
+on raw AC, so no 60 Hz hum from the cabinet. Ordered for the Mega V's conversion and redirected
+here the same day - **the standard 110 V WCT-25 already in hand goes to the Mega V instead**. The
+power side is unchanged, so everything below still reads the same for both. Model number and coil
+figures: read them off the part when it arrives and put them here.
+
 | | Coil | Fed from | Switched by |
 |---|---|---|---|
 | **Main** | **AC 110-120 V** | the 110 V control branch, behind the 1 A fuse | the paddle switch |
