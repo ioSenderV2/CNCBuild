@@ -17,6 +17,22 @@ height problem entirely. `kicad/sensor-board/layout.py` regenerates all placemen
 Before first fit: dress the edge where OSH Park's panel tabs leave their small nubs - the rim
 seats against the rod and passes through the 35 mm hole.
 
+**The SMD parts, as bought - Mouser order 41130738, 2026-11-16**, recorded in
+[`orders/`](../orders/README.md):
+
+| BOM line | Populated as | Note |
+|---|---|---|
+| U1 AS5311 | **AS5311-ATST** (Mouser 985-AS5311-ATST-500, sold under Infineon now) | the datasheet's ATSU tube variant is obsolete; ATST is the same TSSOP-20 off tape. 10 bought - both machines plus spares |
+| D1 SRV05-4 | **MCC SRV05-4C-TP** | pinout verified identical to the ProTek sheet the footprint was drawn from (I/O 1/3/4/6, GND 2, Vcc 5), and better where it matters: 0.6 pF per line against 3.5. Sheet committed as [`MCC-SRV05-4C-TVS-Array.pdf`](../manufacturer-assets/MCC-SRV05-4C-TVS-Array.pdf) |
+| J1 jack | CRJ068-1-SMT, 10 bought | covers the controller board's four too |
+| C1 100n, R1-R4 | from the 0603 assortment kits | R1-R3 are deliberately 100R-220R TBD - the kit is the tuning instrument |
+
+OPEN: **C2's 10u slot has no 10 uF bought - the KEMET line on that order is 1 uF** (C0805T105K4RACTU,
+16 V X7R 0805 10%; its code 105 is 1.0 uF, the receipt's own description agrees). Either bless 1 uF
+as the value - then the schematic's C2 changes and the BOM regenerates - or add a **10 uF X5R 0805
+16 V 10%** line to the next order. 10 uF X7R at 16 V effectively does not exist in 0805, which is
+how the 1 uF got picked. His call; the 1 uF reel is useful stock either way.
+
 Layout facts worth knowing:
 
 - Every component sits inside the 27 mm bore circle; the jack body covers nearly all of

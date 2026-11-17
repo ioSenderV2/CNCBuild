@@ -14,6 +14,7 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 | 2026-11-13 | Mouser | web 41109063, sales 282984374 | Extras of the same headers: 20x 46999-0621, 25x 39-29-9027, 25x 39-30-1039 | $59.13 | [interface board](../wiring/kicad/interface-board/README.md) | `282984374.pdf` |
 | 2026-11-14 | Mouser | web 41110345 | Phoenix Contact: 24x PT 4-QUATTRO (3211797), 4x FBS 10-6 bridge (3030271), 5x D-PT 4-QUATTRO end cover (3208979), 3x ATP-ST QUATTRO partition plate (3030815), 2x CLIPFIX 35 end bracket (3022218) | $163.30 | 36 V distribution on the DIN rail beside the XDR | `Order_41110345.pdf` |
 | 2026-11-15 | OSH Park | G6Jj6s46 | Interface board Rev B, 3 boards, **Four Layer Super Swift**, $391.80 + $38.00 UPS Next Day Air | $429.80 | [interface board](../wiring/kicad/interface-board/README.md) | `oshpark-order-invoice-G6Jj6s46.pdf` |
+| 2026-11-16 | Mouser | web 41130738 | 10x Infineon **AS5311-ATST** (985-AS5311-ATST-500; ATSU is obsolete), 10x Same Sky **CRJ068-1-SMT** jack, 10x MCC **SRV05-4C-TP** TVS, 10x KEMET **C0805T105K4RACTU** - ⚠ **this is 1 uF** 16 V X7R 0805, bought against the BOM's 10u slot, see [sensor-board.md](../linear-encoder/sensor-board.md) - and 2x CLIPFIX 35 end clamps for the combi stubs | $151.65 w/ UPS 2nd Day, tax and tariff | [sensor board](../linear-encoder/sensor-board.md) + [controller board](../linear-encoder/controller-board.md) | `Order_41130738.pdf` |
 
 Mouser files its PDFs under the **sales** order number; the project's notes quote the
 **web** order number. Both are in the Order column.
