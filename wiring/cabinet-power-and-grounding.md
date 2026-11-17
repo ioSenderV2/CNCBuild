@@ -1266,7 +1266,14 @@ distribution - his, 2026-11-16**, the insulated-feet-and-cover kind off the DIN 
 listings: the PE bar was always a bar (ten positions, so buy 10 or 12 lugs, not 8), and the
 mains splitting goes one covered bar per conductor role - L1 and L2 their own on the 220 side,
 hot and neutral their own if the 110 splitter follows. **The neutral never lands on the PE
-bar.** The Phoenix PT 4-QUATTRO groups stay on the 36 V distribution - spring clamps hold the
+bar.** SETTLED: **the mains splitting is JNSO 80 A 1-in-6-out DIN distribution blocks - his,
+2026-11-16** - one block per conductor role (L1, L2, 110 hot, neutral; two 2-packs), screw
+terminals under snap covers, ports 2.5-6 mm² which suits the panel's 14 AWG mains wiring. The
+same block was rejected for the 36 V side because its ports bottom out far above 18 and 22 AWG
+- each distribution technology matched to its wire gauge. Mains screws were already on the
+re-torque list; these join it. The PE bar is the green/yellow rail-bonding terminal block group
+of the mock-up - confirm with a beep that the blocks really bond the rail. The Phoenix PT
+4-QUATTRO groups stay on the 36 V distribution - spring clamps hold the
 motor-current joints maintenance-free - and SETTLED: **each group gets its own 3-inch rail stub,
 his, 2026-11-16**: 6 x 6.2 mm of blocks per group fits a 76 mm stub with room, and the
 never-bridged separation becomes a visible air gap between two rails instead of a partition
