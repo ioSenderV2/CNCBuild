@@ -1256,7 +1256,10 @@ ventilation for the supplies**. What ports from the box design: the PE bar and e
 (nothing in the grounding changes - plywood is no more a chassis than PVC was), the sand-port
 clearance, and the two-things-still-live warning, which goes on the cover's inside face. The
 dead-row / live-row zoning does NOT port - his, 2026-11-16, the mock-up mixes them and he is
-fine with it; the warning label carries that load instead. SETTLED: **no metal backing - torque discipline instead, his,
+fine with it; the warning label carries that load instead. **Both boards - the interface board
+and the RP23 - mount on 10 mm nylon standoffs with M3 wood screws, his, 2026-11-16**; the
+interface board's holes are NPTH with no net, so insulating standoffs are the designed fit,
+and the drilling template is the board-mounting drawing. SETTLED: **no metal backing - torque discipline instead, his,
 2026-11-16.** The hazard it answered is the slow resistive joint a breaker cannot see, which
 lives in the screw-terminal mains gear; the discipline that replaces the plate: **snug every
 mains screw at build, re-torque after the first few weeks of warm-up cycles** - that is when
