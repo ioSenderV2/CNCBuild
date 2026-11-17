@@ -59,6 +59,17 @@ Layout facts worth knowing:
 
 ## Assembly sequence
 
+**The pasting jig - his, 2026-11-16.** A block of 24 mm birch ply, two 3 x 25 mm steel
+dowels as registration pins through the board's o3.2 mounting holes and the stencils'
+matching holes. Built so nothing is measured: **a spare bare board clamps to the ply as the
+drill template** - through its own holes with a 3 mm bit on the drill press - and the pins
+press-fit through, **height set against the real stack**: spare board on the pins, stencil
+on it, each pin pressed down until a fingertip across the stencil feels it flush or a
+whisker below. Friction holds the height - pasting loads the pins only sideways. The 3 mm
+pin in the 3.2 hole leaves 0.2 mm of play: **nudge board and stencil toward the same corner
+before every pass** and the four boards print identically. Pilot one board, photograph its
+placement and its reflowed joints, then run the rest as one batch against the photos.
+
 1. Paste and hot-plate the **AS5311 side** first, board flat on the plate. The chip reflows
    once; surface tension centers it on the pads, and the pads carry the Hall-array offset.
 2. Flip, paste and reflow the **top passives** with the board sitting on a short metal pipe
