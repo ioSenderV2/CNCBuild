@@ -83,7 +83,7 @@ drawing convention &mdash; the drawing uses them so that it reads the same way t
 <tr><td><b>Red</b></td><td><b>L2</b></td><td>220&nbsp;V side, everywhere</td><td><b>12 AWG</b> pigtail, <b>14 AWG</b> inside</td></tr>
 <tr><td><b>Black</b></td><td><b>Hot</b></td><td>110&nbsp;V side only</td><td><b>12 AWG</b> pigtail, <b>14 AWG</b> inside</td></tr>
 <tr><td><b>White</b></td><td><b>Neutral</b></td><td>110&nbsp;V side only. There is no neutral anywhere in the 220&nbsp;V chain</td><td><b>14 AWG</b></td></tr>
-<tr><td><b>Green</b></td><td><b>PE</b></td><td>Every ground conductor to the bar</td><td><b>12 AWG</b> from the pigtails, <b>14 AWG</b> to device cases</td></tr>
+<tr><td><b>Green</b></td><td><b>PE</b></td><td>Every ground conductor to the bar</td><td><b>12 AWG</b> from the pigtails, <b>14 AWG</b> to device cases and the receptacle's ground lug</td></tr>
 <tr><td><i>Grey, dashed</i></td><td><i>Outside the scheme</i></td><td>Drawing only, not a wire colour &mdash; the 36&nbsp;V DC out, the spindle's U/V/W, the sense relay's dry contact</td><td>&mdash;</td></tr>
 </table>
 
@@ -541,6 +541,11 @@ white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-sto
   <path class="w-nhal" d="M560 118 V 302 H 700"/>
   <path class="w-neu"  d="M560 118 V 302 H 700"/>
 
+  <!-- the receptacle's ground lug, from the PE bar - not from the splitter -->
+  <path class="w-pe" d="M640 314 H 700"/>
+  <text class="sm e" x="632" y="318">ground lug &larr; PE bar, Fig. 5</text>
+  <text class="wg" x="648" y="330">14 AWG</text>
+
   <rect class="bx2" x="700" y="84" width="180" height="58" rx="3"/>
   <text class="ttl c" x="790" y="104">PAIR 1 &mdash; 12 V SUPPLY</text>
   <text class="sm c"  x="790" y="121">Mean Well MDR &middot; 40 W</text>
@@ -596,15 +601,16 @@ is a break you can see from inside the box.
   <text class="wg" x="405" y="134">12 AWG</text>
 
   <!-- the bar -->
-  <rect class="bar" x="240" y="170" width="420" height="28" rx="3"/>
-  <text class="ttl c" x="450" y="189">PE BUS BAR</text>
+  <rect class="bar" x="240" y="170" width="515" height="28" rx="3"/>
+  <text class="ttl c" x="497" y="189">PE BUS BAR</text>
 
-  <!-- below: five wires, each named by the SCREW it leaves -->
+  <!-- below: six wires, each named by the SCREW it leaves -->
   <path class="w-pe" d="M270 198 V 262"/>
   <path class="w-pe" d="M365 198 V 290"/>
   <path class="w-pe" d="M460 198 V 262"/>
   <path class="w-pe" d="M555 198 V 290"/>
   <path class="w-pe" d="M650 198 V 262"/>
+  <path class="w-pe" d="M745 198 V 290"/>
   <text class="sm c" x="270" y="278">36 V supply</text>
   <text class="sm c" x="270" y="292">V&minus; terminal</text>
   <text class="sm c" x="365" y="306">12 V supply</text>
@@ -615,8 +621,10 @@ is a break you can see from inside the box.
   <text class="sm c" x="555" y="320">earth terminal</text>
   <text class="sm c" x="650" y="278">12 V supply</text>
   <text class="sm c" x="650" y="292">earth terminal</text>
+  <text class="sm c" x="745" y="306">receptacle</text>
+  <text class="sm c" x="745" y="320">ground lug &mdash; Fig. 4</text>
 
-  <text class="q" x="20" y="344">TEN TERMINALS, NOT SIX. Eight are named here. The Cat 6 to the drives is UTP and terminates in its own plastic box, so it adds none.</text>
+  <text class="q" x="20" y="344">TEN TERMINALS, NOT SIX. Nine are named here. The Cat 6 to the drives is UTP and terminates in its own plastic box, so it adds none.</text>
 
   <rect class="rem" x="20" y="354" width="860" height="40" rx="4" fill="#fdf0f0" stroke="#c00"/>
   <text class="sm" x="34" y="371">The box is PVC and bonds nothing &mdash; there is no cabinet chassis row. The VFD's case is plastic too, but terminal E still lands here.</text>

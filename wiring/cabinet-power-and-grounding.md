@@ -321,6 +321,11 @@ NOTE: **The 1 A fuse stays where it is - on the paddle's pair only.** It protect
 running out to the remote switch box, which is a different job from protecting the branch, and a
 laptop charger would never run behind it.
 
+🔴 **THE RECEPTACLE'S GROUND LUG GETS ITS OWN CONDUCTOR TO THE PE BAR - his, 2026-11-18.** Green,
+**14 AWG** like the hot and neutral it runs beside. Nothing in this panel is bonded by being
+mounted, so without this wire everything plugged into the strip - the laptop charger, the cameras -
+floats. It is a named terminal on the bar; see the PE bus bar section.
+
 ### The 2 x 8 terminal block - four pairs out
 
 The contactor's output lands on a **2 x 8 terminal block**: the two switched legs in, **four pairs
@@ -938,7 +943,7 @@ terminals use **the rail itself as the bus**, so **two rails are two separate gr
 they are bonded - and a bond between rails puts a joint in the one path this arrangement exists to
 keep single. The top rail is the PE bar.
 
-NOTE: **Nine terminal bodies at two positions each is eighteen**, against the eight conductors named
+NOTE: **Nine terminal bodies at two positions each is eighteen**, against the nine conductors named
 below. His, 2026-11-06. Generous, which is the right direction.
 
 **What a DIN rail needs vertically.** FLAG: **these are standard-practice figures, not measured off
@@ -1649,9 +1654,10 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 36 V supply V- terminal | the 36 V rail's return - **the V- output terminal**, tied to earth at this one point because an isolated secondary floats until something references it. Its own wire from the supply's terminal, and it carries no load current - the load return is the cable pair. **22 AWG stranded - his, 2026-11-13.** SETTLED: **it lands on the supply's SECOND V- screw, on its own ferrule - his, 2026-11-14.** It used to share the first V- screw in a twin ferrule with an 18 AWG; that screw now holds the 12 AWG solid, which no twin ferrule shares. The second screw is the same node and nothing shares it. ⚠️ **Fig. 6 draws two V- screws on the XDR and that was drawn for the brick - confirm the second one on the part** |
 | 12 V supply V- terminal | the logic supply's return - **its V- terminal**, same single-point reasoning and the **same 22 AWG stranded**. **The MDR in hand has TWO V- screws** (and two V+, and a DC-OK dry contact pair, unused) - his reading off the part, 2026-11-16 - so the conductors split cleanly: **one screw takes the 12 V 18/2's return twin-ferruled with the e-stop loop's V- jumper** (18 + 22, both working-circuit conductors), **the other takes this bar bond alone** - the same dedicated-screw arrangement as the XDR's second V-. Supersedes the 2026-11-14 twin of bond-with-return. 🔴 **The e-stop jumper lands on the supply's V-, never on this bar** - via the bar it still beeps, but the loop's working current would ride the bond and make the bar a circuit node. The jumper and the DVRD's measuring pair are 22 AWG stranded, all of it signal, none of it load |
 | VFD **E** terminal | **its own short heavy conductor.** FLAG: **the VFD's case is plastic - his, 2026-11-05 - and that changes nothing here.** There is no case to bond, but the drive has an earth terminal: the manual's main-circuit table lists **E, "ground terminal ... of Electrical Engineering Regulations"**. A plastic case means no case bond, not no earth |
+| **Receptacle ground lug** | its own green **14 AWG**, run with pair 3's hot and neutral - his, 2026-11-18. The strip and everything plugged into it earths through this one wire |
 | Cable shields | **one end only** |
 
-**So the bar needs ten terminals, not six.** Eight are named and firm:
+**So the bar needs ten terminals, not six.** Nine are named and firm:
 
 | | Conductor |
 |---|---|
@@ -1663,6 +1669,7 @@ Every ground conductor in the cabinet lands on **one PE bus bar**, and nothing d
 | 6 | 12 V supply earth terminal |
 | 7 | 36 V supply V- terminal |
 | 8 | 12 V supply V- terminal |
+| 9 | **Receptacle ground lug** |
 
 FLAG: ~~**TEN IS THE BUY - the signal cables contribute nothing.**~~ **THAT WAS TRUE WHEN THE ONLY
 CABLE AT THE BOARD WAS CAT 6 UTP.** His count, 2026-11-09, was twelve shielded cables at the
