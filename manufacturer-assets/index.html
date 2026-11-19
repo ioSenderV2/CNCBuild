@@ -80,6 +80,22 @@
   </tr>
 
   <tr>
+    <td><strong>JSS57P2N</strong></td>
+    <td>JSS57 series</td>
+    <td>Integrated closed-loop stepper, NEMA&nbsp;23 &mdash; <strong>under evaluation, not a chosen
+        part</strong>; the axis motors are the TST57-76P above. 24&ndash;48&nbsp;V with 36&nbsp;V
+        recommended, peak 6&nbsp;A, 1000-line encoder, pulse+direction, RS232 Modbus RTU with a
+        documented 34-parameter table, and real flash codes (1 overcurrent, 2 overvoltage,
+        7 position tolerance) &mdash; the two things the TST57 manual lacks.
+        <span class="warn">Inputs stated 5&ndash;24&nbsp;V, not 3.3</span>, the alarm default reads
+        as assert-on-fault (invertible by parameter 15), and no torque figure appears anywhere in
+        the document.</td>
+    <td><code>Integrated Digital Hybrid Stepper.pdf</code></td>
+    <td>Supplied by him 2026-11-19; source listing not recorded</td>
+    <td>2026-11-19</td>
+  </tr>
+
+  <tr>
     <td><strong>ESP32-S3-RS485-CAN</strong></td>
     <td>Waveshare</td>
     <td>Board schematic &mdash; <span class="warn">the only place the 20-pin header's GPIO map is
