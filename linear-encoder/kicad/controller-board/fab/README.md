@@ -8,23 +8,33 @@ Regenerate everything here with `tools/export-fab.ps1`; do not hand-edit these f
 
 | | |
 |---|---|
-| Size | **66.5 × 28.0 mm** rectangle, 2.89 sq in |
+| Size | **70.0 × 28.0 mm** rectangle, 3.04 sq in |
 | Layers | **2** |
 | Thickness | **1.6 mm** (0.062 in) — not a free choice; the stack above the module depends on it |
 | Copper | 1 oz is ample for ~90 mA |
-| **Plated slots** | **3**, each 1.6 × 2.6 mm, between the RJ45 jacks — each takes two adjacent shield tabs. **The fab must do plated slots.** |
+| Quantity | **3 minimum** on the Advanced Circuits prototype deal |
 
-## The Advanced Circuits $33 prototype deal no longer fits
+## It fits the Advanced Circuits $33 prototype spec
 
-`tools/check-4pcb-33.ps1` (run it after any layout change) passes everything
-except **No slots: FAIL — 3 oval drills.** The 2026-11-19 re-layout to
-through-hole 85508 jacks at butted pitch forces adjacent shield tabs to share a
-plated slot, and the $33 spec excludes slots outright. For the record, the rest
-of the spec still clears: 0.2 mm line/space, 0.3 mm min hole, 89 holes = 30.8
-per sq in against 35, plain rectangular outline, through vias only.
+Run `tools/check-4pcb-33.ps1` after any layout change. It measures the board and
+the generated drill file, so it checks what will actually be sent.
 
-**The board needs a fab that does plated slots** (OSH Park does, and the board
-already meets their 0.38 mm copper-to-edge). Vendor not yet chosen — his call.
+| Their limit | This board |
+|---|---|
+| 2 layers, FR-4, 0.062 in, 1 oz | 2 layers, 1.6 mm |
+| Min 0.006 in line/space | **0.0079 in** (0.2 mm) both |
+| Min 0.010 in hole | **0.0118 in** (0.3 mm) |
+| **Max 35 drilled holes per sq in** | **29.3** — 89 holes in 3.04 sq in |
+| Max 60 sq in | 3.04 sq in |
+| No blind/buried vias | all vias go F.Cu to B.Cu |
+| No slots or overlapping drill hits | **no oval drills** — the 90° jack rotation gives every shield tab its own 1.6 mm hole |
+| No internal routing, no scoring | outline is four lines, a plain rectangle |
+
+Two ordering constraints that are not board properties: **one part number per order**,
+so do not panelise, and **three boards minimum**.
+
+Finish is their choice — lead-free HAL, or ENIG or silver at no extra charge.
+Any of the three solders fine by hand.
 
 ## Assembly — bottom side only
 
@@ -67,7 +77,7 @@ thirteen files show as modified even when no copper moved. Diff before assuming 
 layout change: a real change shows more than the two `CreationDate` lines.
 
 Gerbers, drill and centroid all share one origin: the **lower-left corner of the board**,
-so centroid coordinates run 0–66.5 in X and 0–28 in Y.
+so centroid coordinates run 0–70 in X and 0–28 in Y.
 
 The BOM lists J1–J5 because it is generated from the schematic. The assembly house
 needs the two tables above, not the raw BOM.

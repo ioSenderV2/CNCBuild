@@ -1,6 +1,6 @@
 # Controller board — assembly instructions
 
-Board: **controller-board**, 66.5 × 28.0 mm, 2 layers, 1.6 mm.
+Board: **controller-board**, 70.0 × 28.0 mm, 2 layers, 1.6 mm.
 
 ## Populate the bottom side only
 
@@ -34,5 +34,5 @@ paste needed on the top side.
 | `controller-board-bottom-pos.csv` | Pick-and-place centroid. Contains only the eighteen parts to be placed. |
 
 Centroid coordinates are in millimetres from the **lower-left corner of the board**,
-X running 0–66.5 and Y running 0–28. The gerbers and drill file sent for the board
+X running 0–70 and Y running 0–28. The gerbers and drill file sent for the board
 quote share that same origin, and include the paste layers.
