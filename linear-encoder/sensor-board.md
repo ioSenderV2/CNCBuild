@@ -86,9 +86,14 @@ up on the stencil.
    so the chip hangs clear of the plate. The pipe is mechanical clearance only - the copper
    pours still carry the heat everywhere, and the chip's joints re-melting while it hangs
    is normal double-sided reflow. Face the pipe end flat so the board sits level.
-3. The **jack goes on last with the iron** - eight 1.27 mm pads and two shell tabs; the
-   brass shell wants a big tip. Its plastic is the one part that minds a long hot soak,
-   which is why it stays off the plate.
+3. The **jack goes on last with the iron** - eight 1.27 mm pads, and **one wide shell tab
+   that catches ~1 mm of each shield pad** (the real part, photographed dry-set:
+   [tab](../machine/photos/sensor-jack-shield-tab.jpg),
+   [feet](../machine/photos/sensor-jack-signal-feet.jpg) - the footprint's two pads meet a
+   single tab, and the joint is a fillet along each overlap). The brass shell wants a big
+   tip. Its plastic is the one part that minds a long hot soak, which is why it stays off
+   the plate. The tack-and-check sequence is on the
+   [paste and reflow sheet](paste-and-reflow.md).
 
 KiCad project: [`kicad/sensor-board/`](kicad/sensor-board).
 

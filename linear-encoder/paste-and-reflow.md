@@ -97,20 +97,24 @@ Dial setting that flows in a few minutes: ______________
 
 **Sensor board - the jack is surface-mount, soldered by iron.** Its feet sit on
 pads; the joint is on the surface instead of in a hole, and the iron work is
-otherwise the same. Wire solder brings its own flux.
+otherwise the same. Wire solder brings its own flux. The shell has **one wide
+shield tab** that lands between the two gold pads and catches about a millimeter
+of each - the shield joint is a **fillet along each overlap line**, never a
+buried tab, and the stamped holes in the tab sit over bare board and do nothing.
 
-1. **Tin one shield pad** - bare board, melt a small blob onto one of the two big
-   shield pads.
-2. **Set the jack down, hold it flat, and tack it** - reheat that blob against the
-   shell tab until it flows, hold still a second while it freezes.
+1. **Tin one corner foot's pad** lightly - foot 1 or foot 8, a small amount.
+2. **Set the jack down, hold it flat, and tack that foot** - reheat the tinned
+   pad against its foot, hold still a second while it freezes.
 3. **Check all eight feet sit centered on their pads.** Off? Reheat the one tack
-   and nudge - that is what tacking one joint first is for.
-4. **Solder the other shell tab** - the brass shell drinks heat: big tip, hold
-   longer than feels natural, feed solder until it flows around the tab. Then
-   re-do the first tack properly the same way.
-5. **The eight feet, one at a time** - tip touching foot and pad together, feed a
-   little solder, one second each. A small shiny fillet climbing from pad onto
-   foot is right. A bridge between neighbours comes off with wick.
+   and nudge - that is what tacking one joint first is for. Then tack the
+   opposite corner foot; the jack is now fixed and square.
+4. **The shield tab, one side at a time** - iron on the exposed gold outboard of
+   the tab, solder fed right at the tab's edge, until a fillet climbs from pad
+   onto the tab face. The tab is continuous with the whole shell and drinks
+   heat: big tip, hold longer than feels natural, flux helps.
+5. **The remaining feet, one at a time** - tip touching foot and pad together,
+   feed a little solder, one second each. A small shiny fillet climbing from pad
+   onto foot is right. A bridge between neighbours comes off with wick.
 
 **Controller board - the jacks and the socket stack are through-hole.** Pins
 through the board, soldered from the far side; the filter parts sit well back
