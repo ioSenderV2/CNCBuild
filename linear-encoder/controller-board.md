@@ -5,12 +5,30 @@ Four shielded RJ45 jacks fanned out to the ESP32-S3's GPIOs, on a board that sit
 described in [`design-can-position-feedback.md`](design-can-position-feedback.md) §14; the sensor end is
 §14's *sensor board*.
 
-Status: **routed, 2026-11-04.** Schematic verified with bulk decoupling in; jack settled
-(CRJ068-1-SMT vertical, same as the puck); interconnect settled (three-socket totem, pending its
-bench test); outline 66.5 x 22 placed. **All 15 nets routed, with ground poured on both layers and
-45 stitching vias - 0 DRC violations, 0 unconnected, 0 schematic parity issues.** Hold-down
-settled: the 3D-printed enclosure captures the assembly. Open: the totem bench checks, then a
-review of the layout before it is sent out.
+Status: **routed, 2026-11-04 - now being re-laid out, 2026-11-19, see the next section.** The
+2026-11-04 board (CRJ068 SMT jacks, 66.5 x 22, 0 DRC) was held for a layout review before fab;
+the review reopened the jack choice. The description below the re-layout section still describes
+the 2026-11-04 board except where the re-layout section overrides it.
+
+---
+
+## RE-LAYOUT 2026-11-19: through-hole jacks on a back band, off the header - his
+
+**His, 2026-11-19, at the layout review.** The SMT CRJ068 jacks sat over P1 and forced the
+clip-flush-under-jack-1 procedure and a DRC override; the re-layout moves the jacks off the
+header entirely and goes back to through-hole. What changes:
+
+| | |
+|---|---|
+| **The jack** | **Molex 85508-5001, vertical through-hole, shielded** - the same part the interface board uses, **ten in hand**, datasheet and footprint already committed. Replaces the CRJ068-1-SMT. Non-magnetic confirmed (the interface board relies on it) |
+| **Where they go** | a **band off the BACK edge** - the board grows rearward, the jacks sit clear of P1, and **three signals per jack drop straight across open board to the 2x10 header**. Length stays ~66.5 (four 16.6 mm bodies span 66.4); only depth grows |
+| **The freed strip** | the space the jacks used to cover - over the header - takes the passives that were driven onto the bottom face. Through-hole jacks put pins through the board, but not over P1 any more, so the collision the totem notes fought is gone by position |
+| **Shields** | **straight to GND - his, 2026-11-19.** The 85508's two shield tabs bond to the ground pour directly, as on the interface board. **The SHLD net and R5 (the 0R shield link) are dropped** - this board no longer carries the single-point shield scheme, so the shield-link bullet below and the SHLD routing are void |
+| **Assembly** | **all through-hole** - the reason he wanted it. No reflow, no SMT jack. The clip-flush-under-jack-1 step and the pth_inside_courtyard DRC override both go away with P1 clear of the jacks |
+
+NOTE: **Cable entry stays vertical (up), so nothing in the enclosure, hold-down or totem story
+changes** - the module standoff, the three-socket totem and the enclosure-captures-the-board
+decision all carry over untouched. Only the board's own geometry and the jack part change.
 
 ---
 
@@ -289,8 +307,9 @@ it is the reason for this specific assignment rather than a tidier-looking one.
   sensor. At ~10 kHz there is enormous timing margin, so filter hard.
 - **Bulk decoupling at P1 pin 1: `C13` 10 µF + `C14` 100 nF**, +3V3 to GND, before the fan-out.
   Decided 2026-11-04 — see the settled item 0 below.
-- **Shield link.** Tie all four jack shells together and to GND at **one** point. Fit it as a 0 Ω pad
-  with an alternative 1 nF ‖ 1 MΩ position, so the strategy can change without cutting traces.
+- ~~**Shield link.** Tie all four jack shells together and to GND at **one** point. Fit it as a 0 Ω pad
+  with an alternative 1 nF ‖ 1 MΩ position, so the strategy can change without cutting traces.~~
+  **DROPPED 2026-11-19 - shields go straight to GND** (re-layout section). R5 and the SHLD net are gone.
 - **Ground pour** under the signal fan-out. The return path matters more than trace width here.
 
 ## Power - the board makes none of it
