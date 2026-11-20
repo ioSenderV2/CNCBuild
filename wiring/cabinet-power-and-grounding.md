@@ -507,7 +507,8 @@ which runs the same drive off its Teensy with exactly this mapping:**
 
 Pins 2 and 3 are one GND net on the board, so brown and blue could swap without consequence -
 the row above is the assignment as built. Pin numbers and nets are from the interface board's
-netlist; the numbers are molded into the Mini-Fit plug housing.
+netlist; the numbers are molded into the Mini-Fit plug housing. **The cable is made up to this
+table - his, 2026-11-20 - waiting only on the Rev B board to plug into.**
 
 Run/stop is the enable closing FOR to DCM; speed is the 0-10 V on VI against ACM. **The run is a
 shielded 22/4 - his, 2026-11-20** - in through the 3/4 inch grommet above. (The Mega V also
