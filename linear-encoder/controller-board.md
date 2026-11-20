@@ -30,6 +30,44 @@ NOTE: **Cable entry stays vertical (up), so nothing in the enclosure, hold-down 
 changes** - the module standoff, the three-socket totem and the enclosure-captures-the-board
 decision all carry over untouched. Only the board's own geometry and the jack part change.
 
+### STAGED FOR THE NEXT SESSION - the KiCad re-layout is not yet done
+
+The 2026-11-04 board (CRJ068 SMT, 66.5 x 22, 0 DRC) is **untouched and still fab-ready.** Only
+two things are prepared, both committed 2026-11-19:
+
+- The agreed design, this section.
+- The footprint: [`controller-board.pretty/RJ45_Molex_85508-5001_Vertical.kicad_mod`](kicad/controller-board/controller-board.pretty/RJ45_Molex_85508-5001_Vertical.kicad_mod)
+  - a copy of the interface board's, with the two shield tabs numbered **SH** (not 2), so they
+  map to the RJ45_8 symbol's SH pin and reach GND once that pin is on GND. Body 16.6 x 17.3,
+  signal rows at y -6.35 / -8.89, pegs at y 0, shield holes at y +3.05 (native rotation 0).
+
+**The execution, in order - each step verified before the next:**
+
+1. **Schematic.** Change the Footprint field on J1-J4 (lines ~2919, 3408, 3507, 4284) from
+   `RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied` to
+   `controller-board:RJ45_Molex_85508-5001_Vertical`. Relabel the four jack **SHLD** labels (all
+   at x 170.18: y 127, 60.96, 256.54, 191.77) to **GND**. Delete **R5** (0R shield link, at
+   59.69 250.19) with its own SHLD label (59.69 242.57), its GND label and its two wire stubs.
+   ERC clean.
+2. **PCB, footprint + R5.** Push the schematic change so the jacks adopt the 85508 and R5 leaves
+   the board.
+3. **Outline.** Keep length 66.5 (four 16.6 bodies = 66.4). Grow the **back** edge rearward (the
+   y 100 edge moves to smaller y) to open a jack band plus the header row plus a passive strip.
+   Final depth is set by the band geometry below, not guessed.
+4. **Place the jacks.** Four at 16.6 pitch across the length, **rotated 180** so the signal rows
+   face the header (+y). Jack center y chosen so the signal pads clear P1 and the body sits in
+   the new back band. Shields/pegs point to the back.
+5. **Place the passives.** The 12 filter caps + 4 pull-ups + C13/C14 bulk go into the strip the
+   jacks vacated, **over the header** - top face now that nothing covers it.
+6. **Route.** Three signals per jack straight to the 2x10; 3V3 and GND as before. No SHLD net.
+7. **Pour** both layers, **stitch**, **DRC** to 0 with schematic parity. The pth_inside_courtyard
+   override is **removed** - P1 no longer sits under a jack.
+8. **Regenerate** gerbers, drill, BOM, pos. Update the Status line and this section.
+
+NOTE: **The 3D model path in the footprint points at `manufacturer-assets/3d/855085001/`, which
+is not in the tree** - the same reference the interface board uses. It affects 3D preview only,
+not DRC or fab. Not a blocker; worth committing the .stp if 3D preview is wanted.
+
 ---
 
 ## SETTLED: The jacks must NOT have integrated magnetics - the CRJ068 has none
