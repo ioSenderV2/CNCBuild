@@ -76,7 +76,9 @@ off the edge and will not lie flat. The fix: **1 inch MDF with a 35 mm Forstner 
 enough that the board sits in it **just slightly proud of the surface**. The stencil then lies
 flat across the board and the MDF together instead of bending down over the edge - slightly
 proud is the right side of flush, because the stencil tensions onto the copper rather than
-bridging a gap it can smear paste into.
+bridging a gap it can smear paste into. **The same two index pins go into the MDF and the jig
+works exactly as described above** - the recess changes nothing but how far the board pushes
+up on the stencil.
 
 1. Paste and hot-plate the **AS5311 side** first, board flat on the plate. The chip reflows
    once; surface tension centers it on the pads, and the pads carry the Hall-array offset.
