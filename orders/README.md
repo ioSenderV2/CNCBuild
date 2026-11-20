@@ -51,10 +51,10 @@ opposite for an hour on 2026-11-14.** Sales drawing 55660021-SD sheet 3, matte t
 natural: **46999-0621 = 5566-02A2MS-210, 2 circuits**; the 4-circuit in that column is
 **46999-0502**. That matches Mouser's "Dual Row, 2 Pos., 94V-0, Matte Tin" word for word.
 The 2x2 reading came from Mouser's product photo, which is marked "for reference only" -
-a signal, not the part. 30 are bought; if the drawing is right, **no 4-circuit header has
-been ordered** and the interface board needs three per board (J15, J32, J33). The bag
-settles it: two pins or four. **His, 2026-11-14: no 2x2 headers seen among the parts already
-sorted for the two machines; he verifies when order 41109063 arrives.**
+a signal, not the part. SETTLED: **the bag settled it 2026-11-20 - the parts are 1x2.** The
+drawing was right, all 30 bought are 2-circuit, and **no 4-circuit header has been ordered**:
+the interface board needs three per board (J15, J32, J33). The part to buy is **39-29-9047**
+(5566-04A2 tin, with pegs) - Digi-Key stocks it; see the interface board README.
 
 The two OSH Park invoices were committed beside their gerbers until 2026-11-14 and were
 moved here that day. They are still in the git history before that date.
