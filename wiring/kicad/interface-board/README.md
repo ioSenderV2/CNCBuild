@@ -190,6 +190,10 @@ boards, Four Layer Super Swift, $391.80 + $38.00 UPS Next Day Air = **$429.80**,
 the J16/J17-first silk relabel, went in before the gerbers. Anything Rev A teaches from here
 lands in a Rev C.
 
+**In production since 2026-11-17 04:57** (OSH Park's status, read 2026-11-20). If fab
+finishes 2026-11-21 it ships for Saturday delivery on the Next Day Air; otherwise the
+boards land Monday or Tuesday.
+
 ### What it came out as
 
 | | |
