@@ -112,10 +112,10 @@ room to seat.
 
 | Stack | |
 |---|---|
-| Daughter board underside | **~12.9 mm** (the three-socket totem below; 14 was the old working figure) |
+| Daughter board underside | **15 mm - measured off the standing totem, 2026-11-20** (socket stack only, tails excluded; they solder into the board. 12.9 was the predicted butted figure) |
 | PCB | 1.6 mm |
-| RJ45 jack (CRJ068, vertical) | 13.0 mm |
-| **Total above the module** | **~27.5 mm** |
+| RJ45 jack (vertical) | 13.0 mm |
+| **Total above the module** | **~29.6 mm** |
 
 The jacks stand well proud of the 15 mm terminal blocks, so cable access is clear.
 
@@ -156,10 +156,11 @@ The two series mate with each other by the female drawing's own note 11.
 Three NPPN102AFCN-RC stacked, all receptacle-down. The first plugs onto P1; each next one plugs
 onto the 2.40 mm tails of the one below (tails are 0.50 sq - exactly the post the socket is rated
 for, so the socket-on-socket joints are within the part's own spec); the third one's tails solder
-into this board. No riser PCB, no male header, one part number. Three butted 4.30 bodies put the
-board's underside at **12.9**, clear of the tallest component on the module - **10.5, the
-relay-looking isolation brick, his measurement** - by 2.4. The NRPN male header stays in the
-table above only as the fallback part if the totem fails its bench checks.
+into this board. No riser PCB, no male header, one part number. Three butted 4.30 bodies predicted
+the board's underside at 12.9; **the standing stack measures 15 - his calipers, 2026-11-20, tails
+excluded** - so the board rides higher than the butted arithmetic and clears the tallest component
+on the module - **10.5, the relay-looking isolation brick, his measurement** - by 4.5. The NRPN
+male header stays in the table above only as the fallback part if the totem fails its bench checks.
 
 **P1 as measured, 2026-11-04 - and the one joint that is out of spec:**
 
@@ -189,10 +190,19 @@ P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are 
 >
 > OPEN: two residuals from the original test list, neither urgent: **does the P1 socket still
 > grip on a second mating** - check it the next time the totem comes apart, no special trip -
-> and the drawing's tug test on a tail joint. And the one number still to take: **the standing
-> height off the real totem** before the standoffs are cut, per the note below.
+> and the drawing's tug test on a tail joint.
 >
-> **2026-11-20, photographed standing on the module:** the three-socket stack seated on P1 with
+> **The standing height is TAKEN - his calipers, 2026-11-20: 15 mm** from the module board to
+> the top of the third socket, tails excluded (they solder into the daughter board). That is
+> above both predicted figures (12.9 butted, 13.6 if P1's pins held the first socket proud).
+> **And there will be no standoffs - his call, 2026-11-20: the 3D-printed enclosure gets tabs
+> that lock the PCB in position**, so 15 is the height the enclosure's tabs are designed to,
+> and nothing else consumes the number.
+>
+> **2026-11-20, photographed standing on the module**
+> ([top](../machine/photos/CanCtrlrTopView1.jpg),
+> [side 1](../machine/photos/CanCtrlrSideView1.jpg),
+> [side 2](../machine/photos/CanCtrlrSideView2.jpg)): the three-socket stack seated on P1 with
 > the top socket's tails up, ready for the board. **The module's CAN activity LED and power LED
 > are bent down flat, and the three RS485 activity LEDs are clipped off** - his mods, so the
 > daughter board seats clear; the RS485 side of the module is unused, so those three are gone
@@ -210,10 +220,11 @@ order as the puck. Joint strength lives in the plated barrel, so the clipped dom
 nothing. A look at a real jack's underside is still worth taking when one is in hand - a
 recess there is free margin - but it no longer gates anything.
 
-The stack height is measured off the standing totem before the standoffs are cut: if P1's 5 mm
+The stack height was to be measured off the standing totem before cutting standoffs: if P1's 5 mm
 pins cannot pass out the tail side of the first socket, the whole totem rides 0.7 proud (board
-at ~13.6 instead of 12.9). Either way clears the brick; the standoffs just get cut to what is
-measured.
+at ~13.6 instead of 12.9). **Measured 2026-11-20: 15** - above both figures, and it clears the
+brick by 4.5. **Standoffs are retired entirely** - the 3D-printed enclosure's tabs lock the PCB
+in position at that height instead (his call, same day).
 
 ## The jack: SameSky CRJ068-1-SMT, vertical - settled 2026-11-04
 
@@ -416,8 +427,8 @@ the module *plus* ~90 mA, not for the module alone.
    board can take the full 67-68 mm without giving any length back.
 3. ~~Tallest component / standoff height~~ **Settled 2026-08-25, numbers superseded 2026-11-04.**
    The 2026-08-25 figures were 12 mm tallest and a 14 mm standoff; the tallest component now
-   measures **10.5** and the board rides the three-socket totem at **~12.9** - see *The
-   interconnect problem*. Still ~2.4 of clearance, same conclusion.
+   measures **10.5** and the board rides the three-socket totem at **15, measured standing
+   2026-11-20** - see *The interconnect problem*. 4.5 of clearance, same conclusion.
 4. ~~Confirm no integrated magnetics~~ **Confirmed 2026-08-25: none.** The listing's photographs show
    **eight signal pins plus two shield tabs and nothing else**. Magnetics cannot hide - transformers
    need centre-tap pins - so a bare 8+2 pin field settles it.
