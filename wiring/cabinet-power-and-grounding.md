@@ -498,12 +498,12 @@ of coupling that shows up as spindle speed jitter and gets blamed on the drive.
 SETTLED: **THE FOUR CONTROL WIRES, TERMINAL BY TERMINAL - his, 2026-11-20, lifted from the Mega V,
 which runs the same drive off its Teensy with exactly this mapping:**
 
-| Interface board, spindle Mini-Fit 4P | VFD terminal |
-|---|---|
-| Enable | **FOR** |
-| GND | **DCM** |
-| 0-10 V speed reference | **VI** |
-| GND | **ACM** |
+| Interface board, spindle Mini-Fit 4P | 22/4 conductor | VFD terminal |
+|---|---|---|
+| Enable | **yellow** | **FOR** |
+| GND | **brown** | **DCM** |
+| 0-10 V speed reference | **green** | **VI** |
+| GND | **blue** | **ACM** |
 
 Run/stop is the enable closing FOR to DCM; speed is the 0-10 V on VI against ACM. **The run is a
 shielded 22/4 - his, 2026-11-20** - in through the 3/4 inch grommet above. (The Mega V also
