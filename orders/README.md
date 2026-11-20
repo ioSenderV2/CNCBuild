@@ -18,6 +18,7 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 | 2026-11-16 | Mouser | web 41130738 | 10x Infineon **AS5311-ATST** (985-AS5311-ATST-500; ATSU is obsolete), 10x Same Sky **CRJ068-1-SMT** jack, 10x MCC **SRV05-4C-TP** TVS, 10x KEMET **C0805T105K4RACTU** - ⚠ **this is 1 uF** 16 V X7R 0805, bought against the BOM's 10u slot, see [sensor-board.md](../linear-encoder/sensor-board.md) - and 2x CLIPFIX 35 end clamps for the combi stubs | $151.65 w/ UPS 2nd Day, tax and tariff | [sensor board](../linear-encoder/sensor-board.md) + [controller board](../linear-encoder/controller-board.md) | `Order_41130738.pdf` |
 | 2026-11-20 | OSH Park | KNbGRTAf | CAN controller board, 3 boards, standard service (~2 weeks), $15.15 + $8.60 USPS Priority | $23.75 | [CAN controller board](../linear-encoder/controller-board.md) | `oshpark-order-invoice-KNbGRTAf.pdf` |
 | 2026-11-20 | OSH Stencils | OS9576A04-15422 | Controller board **bottom stencil, 4 mil stainless** (Project: Controller_board), **1/16" acrylic jig set**, rush processing / same-day ship, free spreader | $63.00 w/ USPS First Class | [CAN controller board](../linear-encoder/controller-board.md) | `OS9576A04-15422.pdf` |
+| 2026-11-20 | Digi-Key | *invoice to drop* | 10x Molex **39-29-9047** 4-circuit Mini-Fit Jr header (5566-04A2, tin, pegs) - the true 2x2 for J15/J32/J33, after the 46999-0621s proved 1x2 | *from the invoice* | [interface board](../wiring/kicad/interface-board/README.md) | - |
 
 Mouser files its PDFs under the **sales** order number; the project's notes quote the
 **web** order number. Both are in the Order column.
@@ -52,9 +53,9 @@ natural: **46999-0621 = 5566-02A2MS-210, 2 circuits**; the 4-circuit in that col
 **46999-0502**. That matches Mouser's "Dual Row, 2 Pos., 94V-0, Matte Tin" word for word.
 The 2x2 reading came from Mouser's product photo, which is marked "for reference only" -
 a signal, not the part. SETTLED: **the bag settled it 2026-11-20 - the parts are 1x2.** The
-drawing was right, all 30 bought are 2-circuit, and **no 4-circuit header has been ordered**:
-the interface board needs three per board (J15, J32, J33). The part to buy is **39-29-9047**
-(5566-04A2 tin, with pegs) - Digi-Key stocks it; see the interface board README.
+drawing was right, all 30 bought are 2-circuit, and the interface board needs three true
+4-circuit parts per board (J15, J32, J33). **10x 39-29-9047 (5566-04A2 tin, with pegs) ordered
+from Digi-Key the same day** - the row above; see the interface board README.
 
 The two OSH Park invoices were committed beside their gerbers until 2026-11-14 and were
 moved here that day. They are still in the git history before that date.
