@@ -95,26 +95,30 @@ Dial setting that flows in a few minutes: ______________
 
 ## The jacks go on last, with the iron - they never ride the plate
 
-**Sensor board - the jack is surface-mount, soldered by iron.** Its feet sit on
-pads; the joint is on the surface instead of in a hole, and the iron work is
-otherwise the same. Wire solder brings its own flux. The shell has **one wide
-shield tab** that lands between the two gold pads and catches about a millimeter
-of each - the shield joint is a **fillet along each overlap line**, never a
-buried tab, and the stamped holes in the tab sit over bare board and do nothing.
+**Sensor board - the jack is surface-mount, soldered by iron.** The metal on this
+jack is the **eight signal fingers** - each finger's tip lands flat on its gold
+pad - and the **one wide shield tab** on the other side, which lands between the
+two gold shield pads and catches about a millimeter of each. That geometry is
+the manufacturer's own recommended layout: the shield joint is a **fillet at
+each end of the tab where it crosses a pad**, never a buried tab, and the
+stamped holes in the tab sit over bare board and do nothing. Wire solder brings
+its own flux.
 
-1. **Tin one corner foot's pad** lightly - foot 1 or foot 8, a small amount.
-2. **Set the jack down, hold it flat, and tack that foot** - reheat the tinned
-   pad against its foot, hold still a second while it freezes.
-3. **Check all eight feet sit centered on their pads.** Off? Reheat the one tack
-   and nudge - that is what tacking one joint first is for. Then tack the
-   opposite corner foot; the jack is now fixed and square.
-4. **The shield tab, one side at a time** - iron on the exposed gold outboard of
+1. **Tin one corner finger's pad** lightly - finger 1 or finger 8, a small
+   amount.
+2. **Set the jack down, hold it flat, and tack that finger** - reheat the tinned
+   pad against the finger's tip, hold still a second while it freezes.
+3. **Check all eight fingers sit centered on their pads.** Off? Reheat the one
+   tack and nudge - that is what tacking one joint first is for. Then tack the
+   opposite corner finger; the jack is now fixed and square.
+4. **The shield tab, one end at a time** - iron on the exposed gold outboard of
    the tab, solder fed right at the tab's edge, until a fillet climbs from pad
-   onto the tab face. The tab is continuous with the whole shell and drinks
-   heat: big tip, hold longer than feels natural, flux helps.
-5. **The remaining feet, one at a time** - tip touching foot and pad together,
-   feed a little solder, one second each. A small shiny fillet climbing from pad
-   onto foot is right. A bridge between neighbours comes off with wick.
+   onto the tab. The tab is continuous with the whole shell and drinks heat:
+   big tip, hold longer than feels natural, flux helps.
+5. **The remaining fingers, one at a time** - tip touching finger and pad
+   together, feed a little solder, one second each. A small shiny fillet
+   climbing from pad onto finger is right. A bridge between neighbours comes
+   off with wick.
 
 **Controller board - the jacks and the socket stack are through-hole.** Pins
 through the board, soldered from the far side; the filter parts sit well back

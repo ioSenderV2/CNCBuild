@@ -90,7 +90,10 @@ up on the stencil.
    that catches ~1 mm of each shield pad** (the real part, photographed dry-set:
    [tab](../machine/photos/sensor-jack-shield-tab.jpg),
    [feet](../machine/photos/sensor-jack-signal-feet.jpg) - the footprint's two pads meet a
-   single tab, and the joint is a fillet along each overlap). The brass shell wants a big
+   single tab, and the joint is a fillet along each overlap. **Checked against the committed
+   drawing 2026-11-20: the pattern is Same Sky's own recommended layout exactly** - shield
+   pads 2.70 x 1.50 spaced 9.00, signals 3.10 at 1.27 - and the tab is the part's mounting
+   flange, drawn to land across both pads). The brass shell wants a big
    tip. Its plastic is the one part that minds a long hot soak, which is why it stays off
    the plate. The tack-and-check sequence is on the
    [paste and reflow sheet](paste-and-reflow.md).
