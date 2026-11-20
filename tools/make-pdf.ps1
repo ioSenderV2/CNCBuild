@@ -49,7 +49,7 @@
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('build', 'record', 'pack', 'cutlist', 'dxf', 'all', 'both')]
+    [ValidateSet('build', 'record', 'pack', 'cutlist', 'dxf', 'paste', 'all', 'both')]
     [string] $Doc = 'all',
     [switch] $KeepHtml = $true
 )
@@ -68,6 +68,9 @@ $docs = @(
                                        Pdf  = 'docs/drawings/shop-pack.pdf' }
     [pscustomobject]@{ Key = 'cutlist'; Html = 'docs/drawings/base-cutlist.html'
                                         Pdf  = 'docs/drawings/base-cutlist.pdf' }
+    # The paste/reflow bench sheet - rendered by md2html.py --doc paste.
+    [pscustomobject]@{ Key = 'paste';  Html = 'docs/paste-and-reflow.html'
+                                       Pdf  = 'docs/paste-and-reflow.pdf' }
     # The quote DXFs drawn back from their own bytes - what the shop receives.
     # TWO REQUESTS, QUOTED SEPARATELY, so two PDFs - one steel, one 6061. They
     # share the key so -Doc dxf still means both and the generator runs once.
@@ -144,6 +147,12 @@ if ($docs | Where-Object Key -in 'build', 'record') {
     Write-Host "Rendering from machine/*.md ..." -ForegroundColor Cyan
     & python (Join-Path $PSScriptRoot 'md2html.py')
     if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: md2html.py failed" -ForegroundColor Red; exit 1 }
+}
+
+if ($docs | Where-Object Key -eq 'paste') {
+    Write-Host "Rendering the paste/reflow sheet ..." -ForegroundColor Cyan
+    & python (Join-Path $PSScriptRoot 'md2html.py') --doc paste
+    if ($LASTEXITCODE -ne 0) { Write-Host "ERROR: md2html.py --doc paste failed" -ForegroundColor Red; exit 1 }
 }
 
 # The pack's own two checks, so a stale tally or an untagged hole cannot reach the shop.

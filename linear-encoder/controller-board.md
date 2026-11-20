@@ -203,9 +203,9 @@ P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are 
 > and nothing else consumes the number.
 >
 > **2026-11-20, photographed standing on the module**
-> ([top](../machine/photos/CanCtrlrTopView1.jpg),
-> [side 1](../machine/photos/CanCtrlrSideView1.jpg),
-> [side 2](../machine/photos/CanCtrlrSideView2.jpg)): the three-socket stack seated on P1 with
+> ([top](../machine/photos/can-controller-top-view.jpg),
+> [side 1](../machine/photos/can-controller-side-view-1.jpg),
+> [side 2](../machine/photos/can-controller-side-view-2.jpg)): the three-socket stack seated on P1 with
 > the top socket's tails up, ready for the board. **The module's CAN activity LED and power LED
 > are bent down flat, and the three RS485 activity LEDs are clipped off** - his mods, so the
 > daughter board seats clear; the RS485 side of the module is unused, so those three are gone

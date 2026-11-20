@@ -212,6 +212,21 @@ DOCS = {
         # from a browser on a home printer, which honours @page - and the shared rule is A4.
         "css": "@page { size:letter portrait; margin:14mm 0 14mm; }",
     },
+    # THE PASTE/REFLOW BENCH SHEET - same species as "steel": no cover, no contents,
+    # read standing at the bench with the paste warming. Source lives beside the two
+    # board docs it serves.
+    "paste": {
+        "out": "docs/paste-and-reflow.html",
+        "dir": "linear-encoder",
+        "order": ["paste-and-reflow.md"],
+        "tab": "CNCBuild - paste and reflow",
+        "h1": None,
+        "sub": None,
+        "front": False,
+        "sheets": False,
+        "note": None,
+        "css": "@page { size:letter portrait; margin:14mm 0 14mm; }",
+    },
     # THE WIRING PROSE, because a .md file is unreadable anywhere but an editor. His, 2026-11-07.
     # It reads wiring/ rather than machine/, which is what "dir" is for - this was the first
     # document from a second source directory and the reason the hardcoded machine/ came out
