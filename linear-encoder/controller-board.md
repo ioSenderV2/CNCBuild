@@ -194,9 +194,11 @@ P1 - is asking a 0.5-rated contact to take a ~0.64 pin. The joints above it are 
 >
 > **2026-11-20, photographed standing on the module:** the three-socket stack seated on P1 with
 > the top socket's tails up, ready for the board. **The module's CAN activity LED and power LED
-> are bent down flat** - his mod, so the daughter board seats clear of them. A replacement
-> module needs the same bend; with it done, the only thing standing tall on the module top is
-> the 10.5 mm isolation brick the clearance story is already built around.
+> are bent down flat, and the three RS485 activity LEDs are clipped off** - his mods, so the
+> daughter board seats clear; the RS485 side of the module is unused, so those three are gone
+> for good. A replacement module needs the same treatment (bend two, clip three); with that
+> done, the only thing standing tall on the module top is the 10.5 mm isolation brick the
+> clearance story is already built around.
 
 **The fillets under jack 1: clipped flush - his call, 2026-11-04.** The third socket's tails
 solder on the board's top face, and P1's position puts those 20 joints under jack 1's body,
