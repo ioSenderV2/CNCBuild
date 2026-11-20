@@ -91,6 +91,28 @@ Dial setting that flows in a few minutes: ______________
 - Every joint shiny with a small fillet, every part sitting flat. A bridge between
   pads comes off with the iron and wick.
 - The paste is a no-clean type: residue can stay. Isopropyl if it should look nice.
-- **Through-hole parts go on last, with the iron** - the sensor board's jack, the
-  controller board's four jacks and socket stack. They never ride the plate.
 - Syringe capped and back in the fridge. Jig and spreader wiped.
+
+## The jacks go on last, with the iron - they never ride the plate
+
+**Sensor board - the jack is surface-mount, soldered by iron.** Its feet sit on
+pads; the joint is on the surface instead of in a hole, and the iron work is
+otherwise the same. Wire solder brings its own flux.
+
+1. **Tin one shield pad** - bare board, melt a small blob onto one of the two big
+   shield pads.
+2. **Set the jack down, hold it flat, and tack it** - reheat that blob against the
+   shell tab until it flows, hold still a second while it freezes.
+3. **Check all eight feet sit centered on their pads.** Off? Reheat the one tack
+   and nudge - that is what tacking one joint first is for.
+4. **Solder the other shell tab** - the brass shell drinks heat: big tip, hold
+   longer than feels natural, feed solder until it flows around the tab. Then
+   re-do the first tack properly the same way.
+5. **The eight feet, one at a time** - tip touching foot and pad together, feed a
+   little solder, one second each. A small shiny fillet climbing from pad onto
+   foot is right. A bridge between neighbours comes off with wick.
+
+**Controller board - the jacks and the socket stack are through-hole.** Pins
+through the board, soldered from the far side; the filter parts sit well back
+from the pin rows so the iron has room. Same tack-one-pin-and-check habit: one
+pin, check the part is seated flat and square, then the rest.
