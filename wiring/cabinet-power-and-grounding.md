@@ -25,8 +25,9 @@ goes near the board:
 | **The fuse** | **In the +36 V leg, between the supply and the blocks - his, 2026-11-14.** Supersedes "nothing between the supply and the board" of 2026-11-09, which was decided against a 16.5 A brick. **20 A was the first call; the link value is now 15 or 20, picked off the bench session's measured draw** - see the holder note below |
 | **The holder** | WENGART **WGPV-30D**, 1-pole DIN, 10x38 **gPV** links, rated 1000 VDC / 32 A, terminals take 18-8 AWG so the 12 AWG solid lands in it. A PV holder on purpose: DC is what is hard to interrupt and most cheap 10x38 holders are AC-rated. The holder is generic; **the link in it should be a name brand** - Bussmann / Littelfuse / Mersen 10x38 gPV |
 | **Supply to fuse to blocks** | **12 AWG solid copper, short lengths - his, 2026-11-14. RED is +36 V, BLACK is the return** - the same as the 18/2 motor cables, whose conductors are red (+) and black (-), so the DC side reads one way from the supply screw to the drive. (He first said black and white the same day, and changed it for exactly that reason.) Red runs supply V+ to the fuse and fuse to the +36 V group; black runs supply V- straight to the return group. Solid wire goes into the push-in point bare - **no ferrule on solid** |
-| **What lands on them** | the red and the black above, on one block of each group, and **the five 18/2 motor supply cables** - X, Y1, Y2, Z, B - **red into the +36 V group, black into the return group** |
-| **Where the five come in** | **one 1 inch knockout in the side of the box - his, 2026-11-14.** All five 18/2 through the one hole; they are bare ferruled wire at this end, so only cable has to pass |
+| **What lands on them** | the red and the black above, on one block of each group, and **the five motor supply cables** - X, Y1, Y2, Z, B - **red into the +36 V group, black into the return group** |
+| **The cables** | **Y1, Y2 and B are 18/2. X and Z are shielded 18/4 - his, 2026-11-19**: red, black, yellow, white, with red and black landed as above and **yellow and white insulated spares at both ends**, reserved for the open-loop driver fallback in [`ig57-drives.md`](ig57-drives.md), where all four become motor phases |
+| **Where the five come in** | **one 1 inch knockout in the side of the box - his, 2026-11-14.** All five through the one hole; they are bare ferruled wire at this end, so only cable has to pass |
 | **How** | **18 AWG, ferruled, pushed straight in.** The block takes a ferruled wire from 0.5 mm2 with no tool; 18 AWG is 0.82. The ferrule wants a **10 or 12 mm barrel**, because the block's strip length is 10 to 12 - the common 8 mm barrel does not seat |
 
 ✅ **THE 20 A FUSE COVERS THE BRIDGE AND THE 12 AWG.** The bridge is rated 25 A and 12 AWG is good
@@ -54,7 +55,7 @@ return. Consistent along the DC run is what he chose it for, and the two are har
 practice - the DC pair is 12 AWG solid between the supply, the fuse and the blocks, and the mains
 wires are stranded - but a red or a black wire in here is not identified by its colour alone.
 
-FLAG: **THE FIVE 18/2 RUNS ARE 18 AWG BEHIND A 20 A FUSE.** The fuse protects the 12 AWG and the
+FLAG: **THE FIVE MOTOR RUNS ARE 18 AWG BEHIND A 20 A FUSE.** The fuse protects the 12 AWG and the
 bridge; it does not protect an 18 AWG conductor against a sustained overload on one axis. What
 bounds a single run is its drive. Recorded, not argued - the same was true of every earlier
 arrangement.
@@ -1372,7 +1373,7 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 |---|---|
 | **Spindle power** - the VFD's mains feed | 220 V to the drive. ⚠️ **the spindle's own U/V/W leaves the VFD, not this box** - the VFD is its own enclosure |
 | **Pump 220 V** | off the pump contactor, on the switched 220 V |
-| **The five 18/2 motor supply runs** | X, Y1, Y2, Z, B - **straight from the distribution blocks to the drives**, his, 2026-11-14, **all five through one 1 inch knockout in the side of the box**. Red is +36 V, black is the return. Shielded; the drain stays in this box, see the PE bar. Bare ferruled wire at this end, so nothing but the cable has to pass the wall |
+| **The five motor supply runs** | X, Y1, Y2, Z, B - **straight from the distribution blocks to the drives**, his, 2026-11-14, **all five through one 1 inch knockout in the side of the box**. Red is +36 V, black is the return. Y1/Y2/B are 18/2; **X and Z are 18/4, yellow and white spare** - his, 2026-11-19, see the head of this file. Shielded; the drain stays in this box, see the PE bar. Bare ferruled wire at this end, so nothing but the cable has to pass the wall |
 | **12 V, on an 18/2** | the logic supply to the interface board's 12 V IN (J18) - **his, 2026-11-14: the 18/6 goes away**, since the 36 V that filled four of its six conductors no longer makes this trip. **Red is +12 V to J18.1, black is 12 V GND to J18.2 - his, 2026-11-14**, the same pair of colours as the motor cables |
 | **The paddle circuit** | out to the two switch boxes, mushroom then paddle in series |
 
@@ -1568,7 +1569,7 @@ its path.** There is no option to pull a bare cable and terminate it afterwards.
 |---|---|
 | **Limit sensor** - 3 circuit **Mini-Fit Jr** | **almost 3/4 in. THE GOVERNING PART** |
 | **Cat 6 patch lead** | **the super-mini plugs** - small, and not the constraint |
-| **18/2 motor supply** | **bare wire, no connector at all** |
+| **Motor supply, 18/2 or 18/4** | **bare wire, no connector at all** |
 
 SETTLED: **ONE INCH FOR THE Y2 HOLE - his, 2026-11-08.** A connector almost 3/4 across will not
 thread through a 3/4 hole with a cable behind it and a chamfer eating the edge, so the hole is sized
@@ -1584,7 +1585,7 @@ below. **His list, 2026-11-08:**
 
 | Through the Y1 hole | Count |
 |---|---|
-| **Stepper sets - Y1, Z and X**, each a **Cat 6 plus an 18/2** | **6 cables** |
+| **Stepper sets - Y1, Z and X**, each a **Cat 6 plus a supply cable** (Y1 an 18/2; Z and X 18/4) | **6 cables** |
 | **Limit sensors**, Mini-Fit Jr 3 circuit each | **3** |
 | **Probe**, 3 conductor, **shielded** - his, 2026-11-08 | **1** |
 | **Z plate ground**, 2 conductor - the probe's return | **1** |
@@ -1611,7 +1612,7 @@ PROCEDURE: **THREAD THEM BIGGEST CONNECTOR FIRST - his order, 2026-11-08:**
 
 1. **The 3 circuit Mini-Fit Jrs** - the **limit sensors and the probe.** They take the most room.
 2. **The network connectors** - the Cat 6 patch leads.
-3. **The bare wires last** - the 18/2 motor supplies and the Z plate ground, which have no connector
+3. **The bare wires last** - the motor supplies and the Z plate ground, which have no connector
    at all and will go through whatever is left.
 
 🔴 **ORDER IS PART OF THE PROCEDURE, NOT A KNACK.** A Mini-Fit Jr going through a hole that already
@@ -1708,7 +1709,7 @@ lightly so it stops shedding strands**, and crimp a **ferrule or a small ring lu
 pigtail is electrically a small inductor and a 360 degree gland would be better - but **a gland wants
 a metal panel and this enclosure is plastic**, so the pigtail is the honest answer here.
 
-SETTLED: **THE FIVE 18/2 MOTOR SUPPLY DRAINS LAND ON THIS BAR - it follows from his, 2026-11-14.**
+SETTLED: **THE FIVE MOTOR SUPPLY DRAINS LAND ON THIS BAR - it follows from his, 2026-11-14.**
 This paragraph was OPEN while the 36 V supply had no home; the XDR is on this rail and the motor
 cables now end beside it, so the panel end of each shield is here. **Open and insulated at the
 drive**, the one-end rule as everywhere else. That is **five terminals**, or one if the five are
@@ -1829,7 +1830,7 @@ gantry, so it joins at Y1.
 
 | | |
 |---|---|
-| Z stepper supply | **18/2** |
+| Z stepper supply | **18/4** - red/black live, yellow/white spare |
 | Z stepper signals | **Cat 5 patch** |
 | Probe | the Z plate return to the controller's ground |
 | Z limit sensor | **3-conductor** |
@@ -1842,7 +1843,7 @@ gantry, so it joins at Y1.
 
 | | |
 |---|---|
-| X stepper supply | **18/2** |
+| X stepper supply | **18/4** - red/black live, yellow/white spare |
 | X stepper signals | **Cat 5 patch** |
 | X limit sensor | **3-conductor** |
 | Gantry bond | X beam to the steel back plate |

@@ -204,8 +204,9 @@ and a small-gauge block for signals:
 
 ## The cabling
 
-**One Cat 6 patch cable per stepper**, plus **18/2 shielded** carrying the supply. His scheme,
-2026-10-12. Each signal travels as a plus/minus pair in its own twist, **plus on the striped
+**One Cat 6 patch cable per stepper**, plus a **shielded supply cable** - **18/2 on Y1, Y2 and B;
+18/4 on X and Z** (red and black used, yellow and white spare - his, 2026-11-19, see the fallback
+section below). His scheme, 2026-10-12. Each signal travels as a plus/minus pair in its own twist, **plus on the striped
 conductor, minus on the solid**.
 
 **The cable is plug-to-plug and never cut**: an RJ45 at the interface board, and an **RJ45 breakout
@@ -699,13 +700,18 @@ chosen by where a driver brick physically fits - his drivers run about **4 x 3 x
 | Axes | Arrangement |
 |---|---|
 | **Y1, Y2** | **Driver at the motor** - hung off the back plate beside each stepper, out of sight. **Both cables unchanged**: the 18/2 feeds the driver's 36 V input instead of an integrated unit, the Cat 6 lands PUL/DIR/EN on its signal terminals, and the RJ45 breakout board keeps its job. Eight short phase leads driver-to-motor |
-| **X, Z** | **Driver in the cabinet** - no room for a brick on these motors. The machine-end Cat 6 is replaced by a **second 18/2**, and the two 18/2 runs carry the four phase wires; the Cat 6 only hops from the interface board to the driver inside the cabinet. The driver's 36 V comes off the same Phoenix blocks, inside the box instead of out the knockout |
+| **X, Z** | **Driver in the cabinet** - no room for a brick on these motors. **Their supply runs are shielded 18/4 for exactly this - his, 2026-11-19**: red, black, yellow, white. Today red and black carry the 36 V like every other axis and **yellow and white ride spare, insulated at both ends**. Converting is a re-termination at each end, not a cable pull: the four conductors become the motor phases - **red/black one coil, yellow/white the other** - and the Cat 6 only hops from the interface board to the driver inside the cabinet, fed off the same Phoenix blocks |
 
-🔴 **ONE COIL PER CABLE on the X/Z arrangement: A+ and A- in one 18/2, B+ and B- in the other.**
-Each cable then carries a closed loop whose field largely cancels inside its own jacket. A coil
-split across the two cables is a loop antenna the length of the drag chain carrying chopper
-current. Drains stay one-end-only at the panel, and matter more here, because a phase-extension
-cable is an aggressor rather than a quiet one.
+✅ **BOTH COILS CLOSE INSIDE THE ONE JACKET, so the field cancellation happens by construction.**
+The first version of this plan pulled a second 18/2 and needed a one-coil-per-cable rule to keep
+anyone from building a loop antenna the length of the drag chain; the 18/4 retires the second
+pull and the rule together. 🔴 **If it is ever done with two 18/2s anyway: one coil per cable,
+never a coil split across jackets.** Drains stay one-end-only at the panel, and matter more here,
+because a phase-extension cable is an aggressor rather than a quiet one.
+
+NOTE: **In the converted case red and black stop meaning 36 V and become a coil.** The panel's
+red-is-+36 convention does not survive this fallback on the converted axis - one more reason the
+conversion is a labelled, deliberate job, not a swap.
 
 🔴 **ALL FOUR AXES LOSE THE AL OUTPUT IN THIS FALLBACK - his, 2026-11-19.** A plain open-loop
 driver has no alarm output wherever it sits, so the brown pair goes dark on Y1/Y2 too, with their
