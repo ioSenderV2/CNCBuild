@@ -689,6 +689,36 @@ V's alarms asserted on fault, so paralleling them gave "any drive faulted". Thes
 to get backwards, and getting it backwards produces a guard that reads healthy when every drive is
 dead.
 
+## Fallback: plain open-loop drivers run on the same cable plant - his, 2026-11-19
+
+The two cables per axis do not care whether the far end is an integrated unit or a separate
+driver feeding a bare stepper - they only deliver 36 V and pulse/direction logic. So if an IG57
+dies, or someone later wants ordinary open-loop drivers, the wiring survives. Two arrangements,
+chosen by where a driver brick physically fits - his drivers run about **4 x 3 x 1.25 inches**:
+
+| Axes | Arrangement |
+|---|---|
+| **Y1, Y2** | **Driver at the motor** - hung off the back plate beside each stepper, out of sight. **Both cables unchanged**: the 18/2 feeds the driver's 36 V input instead of an integrated unit, the Cat 6 lands PUL/DIR/EN on its signal terminals, and the RJ45 breakout board keeps its job. Eight short phase leads driver-to-motor |
+| **X, Z** | **Driver in the cabinet** - no room for a brick on these motors. The machine-end Cat 6 is replaced by a **second 18/2**, and the two 18/2 runs carry the four phase wires; the Cat 6 only hops from the interface board to the driver inside the cabinet. The driver's 36 V comes off the same Phoenix blocks, inside the box instead of out the knockout |
+
+🔴 **ONE COIL PER CABLE on the X/Z arrangement: A+ and A- in one 18/2, B+ and B- in the other.**
+Each cable then carries a closed loop whose field largely cancels inside its own jacket. A coil
+split across the two cables is a loop antenna the length of the drag chain carrying chopper
+current. Drains stay one-end-only at the panel, and matter more here, because a phase-extension
+cable is an aggressor rather than a quiet one.
+
+🔴 **ALL FOUR AXES LOSE THE AL OUTPUT IN THIS FALLBACK - his, 2026-11-19.** A plain open-loop
+driver has no alarm output wherever it sits, so the brown pair goes dark on Y1/Y2 too, with their
+Cat 6 otherwise untouched. The motor-fault input must not be left expecting an
+assert-when-healthy chain that no longer exists - with any axis converted, $744/$745 stay off.
+And with no encoder there is no closed loop: lost steps come back, and nothing reports them.
+
+🔴 **WHAT THE CAT 6 CANNOT DO IS CARRY THE PHASES ITSELF.** Worked through 2026-11-19: four
+30 AWG conductors paralleled per leg is roughly a 24 AWG equivalent against amps of phase
+current, through RJ45 contacts rated around one amp - undersized, lossy, out of connector
+rating, and chopper current injected into the jacket the signal scheme keeps quiet. The 18/2 can
+be a phase extension; the Cat 6 cannot.
+
 ## Provenance
 
 The part, the cabling and the correction that the HBT57C is the Mega V's drive are all his,
