@@ -1,8 +1,10 @@
 # Controller board — fabrication and assembly package
 
-What to send a board house for a quote, and what to tell them to populate.
+What to send for quotes, split by vendor. Two packages are built from one plot
+pass, so they cannot drift apart.
 
-Regenerate everything here with `tools/export-fab.ps1`; do not hand-edit these files.
+Regenerate everything here with `tools/export-fab.ps1`; do not hand-edit anything
+under `fab/` except this file and `ASSEMBLY.md`.
 
 ## Board
 
@@ -12,33 +14,34 @@ Regenerate everything here with `tools/export-fab.ps1`; do not hand-edit these f
 | Layers | **2** |
 | Thickness | **1.6 mm** (0.062 in) — not a free choice; the stack above the module depends on it |
 | Copper | 1 oz is ample for ~90 mA |
-| Quantity | **3 minimum** on the Advanced Circuits prototype deal |
+| Drill | 89 holes, min 0.3 mm, all round — no slots, no blind/buried vias |
+| Line/space | 0.2 mm both |
 
-## It fits the Advanced Circuits $33 prototype spec
+## OSH Park — bare boards
 
-Run `tools/check-4pcb-33.ps1` after any layout change. It measures the board and
-the generated drill file, so it checks what will actually be sent.
+Upload **`oshpark/controller-board-gerbers.zip`**. OSH Park does no assembly, so
+that zip is the whole package; they also accept the KiCad board file
+(`../controller-board.kicad_pcb`) directly, which is even less to go wrong.
+Boards come in multiples of three.
 
-| Their limit | This board |
+## PCBWay — boards plus assembly
+
+The `pcbway/` folder holds the four pieces their quote flow asks for:
+
+| File | |
 |---|---|
-| 2 layers, FR-4, 0.062 in, 1 oz | 2 layers, 1.6 mm |
-| Min 0.006 in line/space | **0.0079 in** (0.2 mm) both |
-| Min 0.010 in hole | **0.0118 in** (0.3 mm) |
-| **Max 35 drilled holes per sq in** | **29.3** — 89 holes in 3.04 sq in |
-| Max 60 sq in | 3.04 sq in |
-| No blind/buried vias | all vias go F.Cu to B.Cu |
-| No slots or overlapping drill hits | **no oval drills** — the 90° jack rotation gives every shield tab its own 1.6 mm hole |
-| No internal routing, no scoring | outline is four lines, a plain rectangle |
+| `controller-board-gerbers.zip` | The board quote — gerbers, drill and drill map |
+| `controller-board-bom-smd.csv` | **SMD parts only** — the 18 passives they populate. The through-hole connectors (J1–J5) are deliberately absent: customer-fitted |
+| `controller-board-centroid.csv` | Pick-and-place, bottom side, their column names, same 18 parts |
+| `ASSEMBLY.md` | The populate / do-not-populate sheet in prose |
 
-Two ordering constraints that are not board properties: **one part number per order**,
-so do not panelise, and **three boards minimum**.
-
-Finish is their choice — lead-free HAL, or ENIG or silver at no extra charge.
-Any of the three solders fine by hand.
+No manufacturer part numbers are given: tolerance and voltage rating are not
+critical anywhere on this board, so their house-standard 0603/0805 stock is fine
+— the BOM says so in its Description column.
 
 ## Assembly — bottom side only
 
-**Populate the 18 passives on the bottom side. Nothing on the top side.**
+**All 18 placed parts are on the bottom side. Nothing is placed on the top side.**
 
 | Populate | |
 |---|---|
@@ -47,37 +50,26 @@ Any of the three solders fine by hand.
 | C14 | 100 nF, 0603 |
 | R1–R4 | 2.2 kΩ, 0603 |
 
-**Do NOT populate — these are fitted by hand afterwards:**
+**Do NOT populate — fitted by hand afterwards:** J1–J4 (RJ45 jacks, top side)
+and J5 (2×10 2.00 mm header, bottom side).
 
-| Leave empty | |
-|---|---|
-| J1–J4 | RJ45 jacks, top side |
-| J5 | 2×10 2.00 mm header, bottom side |
-
-Tolerance and voltage rating are not critical anywhere on this board; house-standard
-parts are fine unless the quote asks for specifics.
-
-## Files
+## Files at the root of fab/
 
 | File | |
 |---|---|
-| `controller-board-gerbers.zip` | Send this for the **bare-board** quote — gerbers, drill and drill map |
-| `controller-board-assembly.zip` | Send this for the **assembly** quote — `ASSEMBLY.md`, BOM and centroid |
-| `ASSEMBLY.md` | What to populate and what to leave off. The vendor-facing sheet |
+| `controller-board-gerbers.zip` | The vendor-neutral bare-board zip (same bytes as both vendor copies) |
+| `controller-board-assembly.zip` | `ASSEMBLY.md` + full BOM + centroid, for any other assembly quote |
+| `controller-board-bom.csv` | Full BOM including J1–J5, straight from the schematic |
+| `controller-board-bottom-pos.csv` | Centroid in KiCad's own column names |
 | `gerbers/` | The bare-board files unzipped |
-| `controller-board-bottom-pos.csv` | Pick-and-place centroid, bottom side, the 18 passives only |
-| `controller-board-bom.csv` | Full BOM including the parts left unpopulated — see `ASSEMBLY.md` |
 
-**Two zips, two quotes.** The gerber zip carries no BOM, no centroid and no
-statement of which parts to leave off, so it cannot be quoted for assembly on its
-own. Send both.
+For the record: the board also still clears the Advanced Circuits $33 prototype
+spec — `tools/check-4pcb-33.ps1` measures the board and drill file and passes
+everything — should that route ever be wanted again.
 
 Re-running the export restamps the KiCad creation date in every gerber, so all
-thirteen files show as modified even when no copper moved. Diff before assuming a
+the files show as modified even when no copper moved. Diff before assuming a
 layout change: a real change shows more than the two `CreationDate` lines.
 
-Gerbers, drill and centroid all share one origin: the **lower-left corner of the board**,
-so centroid coordinates run 0–70 in X and 0–28 in Y.
-
-The BOM lists J1–J5 because it is generated from the schematic. The assembly house
-needs the two tables above, not the raw BOM.
+Gerbers, drill and centroid all share one origin: the **lower-left corner of the
+board**, so centroid coordinates run 0–70 in X and 0–28 in Y.

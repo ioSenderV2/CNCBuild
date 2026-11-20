@@ -6,6 +6,12 @@
     pick-and-place centroid and BOM. Everything is plotted against the board's
     lower-left corner, so gerbers, drill and centroid share one origin.
 
+    Two vendor packages are built from the same plot pass, so they cannot drift:
+      fab/pcbway/  - board + assembly: gerber zip, SMD-only BOM in PCBWay's
+                     column layout, centroid with their headers, ASSEMBLY.md
+      fab/oshpark/ - bare board: the gerber zip alone (OSH Park does no assembly;
+                     they also accept the .kicad_pcb file directly)
+
     Run it after any layout change; do not hand-edit anything under fab/.
 #>
 param(
@@ -85,6 +91,49 @@ $asmParts = @(
     (Join-Path $fab 'controller-board-bottom-pos.csv')
 ) | Where-Object { Test-Path $_ }
 Compress-Archive -Path $asmParts -DestinationPath (Join-Path $fab 'controller-board-assembly.zip') -Force
+
+Write-Output '== vendor package: pcbway =='
+$pcbway = Join-Path $fab 'pcbway'
+New-Item -ItemType Directory -Force $pcbway | Out-Null
+Copy-Item (Join-Path $fab 'controller-board-gerbers.zip') (Join-Path $pcbway 'controller-board-gerbers.zip')
+if (Test-Path (Join-Path $fab 'ASSEMBLY.md')) {
+    Copy-Item (Join-Path $fab 'ASSEMBLY.md') (Join-Path $pcbway 'ASSEMBLY.md')
+}
+
+# SMD-only BOM in PCBWay's preferred columns. The through-hole connectors are
+# customer-fitted and deliberately absent here; ASSEMBLY.md says so in prose.
+$bomAll = Import-Csv (Join-Path $fab 'controller-board-bom.csv')
+$bomSmd = $bomAll | Where-Object { $_.Footprint -match '^(Capacitor|Resistor)_SMD:' } |
+    ForEach-Object {
+        [pscustomobject]@{
+            'Designator'  = $_.Refs
+            'Qty'         = $_.Qty
+            'Value'       = $_.Value
+            'Package'     = ($_.Footprint -split ':')[-1]
+            'Type'        = 'SMD'
+            'Description' = 'tolerance/voltage not critical - quote house-standard stock'
+        }
+    }
+if (-not $bomSmd -or @($bomSmd).Count -lt 3) { throw 'SMD BOM filter produced fewer than 3 rows - check the BOM export' }
+$bomSmd | Export-Csv -Path (Join-Path $pcbway 'controller-board-bom-smd.csv') -NoTypeInformation
+
+# Centroid with PCBWay's headers, from the same kicad pos export.
+$pos = Import-Csv (Join-Path $fab 'controller-board-bottom-pos.csv')
+if (-not $pos -or @($pos).Count -lt 3) { throw 'centroid import produced fewer than 3 rows - check the pos export' }
+$pos | ForEach-Object {
+        [pscustomobject]@{
+            'Designator' = $_.Ref
+            'Mid X'      = $_.PosX
+            'Mid Y'      = $_.PosY
+            'Layer'      = if ($_.Side -eq 'bottom') { 'Bottom' } else { 'Top' }
+            'Rotation'   = $_.Rot
+        }
+    } | Export-Csv -Path (Join-Path $pcbway 'controller-board-centroid.csv') -NoTypeInformation
+
+Write-Output '== vendor package: oshpark =='
+$oshpark = Join-Path $fab 'oshpark'
+New-Item -ItemType Directory -Force $oshpark | Out-Null
+Copy-Item (Join-Path $fab 'controller-board-gerbers.zip') (Join-Path $oshpark 'controller-board-gerbers.zip')
 
 Write-Output '== done =='
 Get-ChildItem $fab -Recurse -File |

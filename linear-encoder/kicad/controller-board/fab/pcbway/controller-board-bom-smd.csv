@@ -1,0 +1,5 @@
+"Designator","Qty","Value","Package","Type","Description"
+"C1-C12","12","1n","C_0603_1608Metric","SMD","tolerance/voltage not critical - quote house-standard stock"
+"C13","1","10u","C_0805_2012Metric","SMD","tolerance/voltage not critical - quote house-standard stock"
+"C14","1","100n","C_0603_1608Metric","SMD","tolerance/voltage not critical - quote house-standard stock"
+"R1-R4","4","2k2","R_0603_1608Metric","SMD","tolerance/voltage not critical - quote house-standard stock"
