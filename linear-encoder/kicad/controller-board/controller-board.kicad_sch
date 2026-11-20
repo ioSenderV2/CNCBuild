@@ -1581,16 +1581,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 246.38) (xy 59.69 242.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ba871d1f-cbc0-4ff4-ad83-bb948f51bdd4")
-	)
-	(wire
-		(pts
 			(xy 162.56 168.91) (xy 158.75 168.91)
 		)
 		(stroke
@@ -1688,16 +1678,6 @@
 			(type default)
 		)
 		(uuid "e382c858-6d02-4d7d-9fe6-ea08ded6b646")
-	)
-	(wire
-		(pts
-			(xy 59.69 254) (xy 59.69 257.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e76d0a88-1618-410b-b7cc-97b8a2510c9a")
 	)
 	(wire
 		(pts
@@ -1989,7 +1969,7 @@
 		)
 		(uuid "32dd2733-b48c-44b4-9072-b04b6ada3036")
 	)
-	(label "SHLD"
+	(label "GND"
 		(at 170.18 127 0)
 		(effects
 			(font
@@ -2049,7 +2029,7 @@
 		)
 		(uuid "479f6f09-fdc4-4047-8581-24ba76fb5da6")
 	)
-	(label "SHLD"
+	(label "GND"
 		(at 170.18 60.96 0)
 		(effects
 			(font
@@ -2138,16 +2118,6 @@
 			(justify right bottom)
 		)
 		(uuid "6ef13f7e-b4f3-42cf-b215-2544a58f6c03")
-	)
-	(label "GND"
-		(at 59.69 257.81 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6fada4d2-4a45-48eb-be38-8aae81107b3a")
 	)
 	(label "GND"
 		(at 158.75 179.07 180)
@@ -2289,16 +2259,6 @@
 		)
 		(uuid "9d682553-f3c3-4499-a638-b50a52be6fa5")
 	)
-	(label "SHLD"
-		(at 59.69 242.57 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9e9009c9-b740-4695-aff7-a2ad95ca793f")
-	)
 	(label "GND"
 		(at 158.75 53.34 180)
 		(effects
@@ -2429,7 +2389,7 @@
 		)
 		(uuid "caed084d-07c3-4ae7-be0d-b634df476c7e")
 	)
-	(label "SHLD"
+	(label "GND"
 		(at 170.18 256.54 0)
 		(effects
 			(font
@@ -2439,7 +2399,7 @@
 		)
 		(uuid "cd3ce40f-9d2e-46e9-b395-a4aaeda1ab42")
 	)
-	(label "SHLD"
+	(label "GND"
 		(at 170.18 191.77 0)
 		(effects
 			(font
@@ -2806,84 +2766,6 @@
 		)
 	)
 	(symbol
-		(lib_id "cnc:R")
-		(at 59.69 250.19 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "10a2954b-4a61-43f4-9dbd-708a6064a936")
-		(property "Reference" "R5"
-			(at 66.69 234.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0R shield link"
-			(at 66.69 236.69 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 59.69 250.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 250.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 59.69 250.19 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "99a104f8-a092-4d5e-959a-def29f37a828")
-		)
-		(pin "2"
-			(uuid "d893c815-7d5c-4611-b5fc-719affae44a5")
-		)
-		(instances
-			(project "controller-board"
-				(path "/8112f0b4-6db6-4c5b-a8aa-69a53aeed102"
-					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "cnc:RJ45_8")
 		(at 170.18 110.49 0)
 		(unit 1)
@@ -2916,7 +2798,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
+		(property "Footprint" "controller-board:RJ45_Molex_85508-5001_Vertical"
 			(at 170.18 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3405,7 +3287,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
+		(property "Footprint" "controller-board:RJ45_Molex_85508-5001_Vertical"
 			(at 170.18 175.26 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3504,7 +3386,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
+		(property "Footprint" "controller-board:RJ45_Molex_85508-5001_Vertical"
 			(at 170.18 240.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4281,7 +4163,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "controller-board:RJ45_SameSky_CRJ068-1-SMT_Vertical_ShieldTied"
+		(property "Footprint" "controller-board:RJ45_Molex_85508-5001_Vertical"
 			(at 170.18 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
