@@ -52,9 +52,12 @@ measured lower down). As built:
   clipped end tabs and J4's overlay pad are all gone, nothing is modified at assembly, and
   **the Advanced Circuits $33 spec passes clean**: `tools/check-4pcb-33.ps1` all green, 89
   holes = 29.3/sq in, no slots, 23 through vias.
-- **Passives on the bottom face beside each jack's pins**: the three filter caps directly left
-  of the signal columns at their own pins' heights, the pull-up on the 3V3 tap line below the
-  pin field. **The 3V3 rail runs along the pin-4 row itself (y 102.965)** - every pin 4 sits on
+- **Passives on the bottom face beside each jack's pins**: the three filter caps left of the
+  signal columns at their own pins' heights, held **1.3 mm pad-to-pad clear of the pin pads
+  (1.6 mm to the hole)** so the through-hole pins can be soldered without disturbing them -
+  his requirement after seeing the first OSH Park upload; the peg-hole clearance on the top
+  row is what caps the gap. The pull-up sits on the 3V3 tap line below the pin field, 2.9 mm
+  from the nearest pin. **The 3V3 rail runs along the pin-4 row itself (y 102.965)** - every pin 4 sits on
   it, and the row threads the whole staggered pin lattice with 1.27 mm to every other pad. Taps
   drop between the pin columns to the pull-ups; C13/C14 feed the rail at the back-left corner
   (near where it turns down the left margin to reach J5 pin 1 from below, through the gap
