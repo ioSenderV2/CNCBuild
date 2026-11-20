@@ -493,6 +493,20 @@ the analog pair** - not bundled with them, and not down the same sleeve. A 0-10 
 alongside a switched 220 V coil is the kind of coupling that shows up as spindle speed jitter and
 gets blamed on the drive.
 
+SETTLED: **THE FOUR CONTROL WIRES, TERMINAL BY TERMINAL - his, 2026-11-20, lifted from the Mega V,
+which runs the same drive off its Teensy with exactly this mapping:**
+
+| Interface board, spindle Mini-Fit 4P | VFD terminal |
+|---|---|
+| Enable | **FOR** |
+| GND | **DCM** |
+| 0-10 V speed reference | **VI** |
+| GND | **ACM** |
+
+Run/stop is the enable closing FOR to DCM; speed is the 0-10 V on VI against ACM. (The Mega V also
+hangs its IOTLogger contacts off DCM and VO - that is the Mega V's instrumentation, not part of
+this build's run.)
+
 **One parameter sets the output:**
 
 | | |
