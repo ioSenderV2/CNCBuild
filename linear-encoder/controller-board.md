@@ -5,8 +5,8 @@ Four shielded RJ45 jacks fanned out to the ESP32-S3's GPIOs, on a board that sit
 described in [`design-can-position-feedback.md`](design-can-position-feedback.md) §14; the sensor end is
 §14's *sensor board*.
 
-Status: **ORDERED from OSH Park 2026-11-20 - 3 boards, $24 delivered, standard service, so
-~2 weeks out; every component is in hand, so assembly starts when they arrive.** A **bottom
+Status: **ORDERED from OSH Park 2026-11-20 - KNbGRTAf, 3 boards, $23.75 delivered, standard
+service, so ~2 weeks out; every component is in hand, so assembly starts when they arrive.** A **bottom
 stencil (4 mil stainless) and acrylic jig set** are ordered too (OSH Stencils OS9576A04-15422,
 rush), so the 18 bottom passives go on by paste and stencil, sensor-board style. The board as sent: 70 x 28, through-hole 85508
 jacks rotated 90, DRC 0 with schematic parity, fab package regenerated.
