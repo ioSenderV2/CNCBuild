@@ -146,7 +146,12 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
 
 1. **J17 alarm pin -> RP23 LED mapping.** All five alarm pins join one net on the RP23,
    so the wiring works regardless; which pin lights which axis LED is unlabelled in the
-   RP23 schematic. Read the board silkscreen when making the ribbon.
+   RP23 schematic. SETTLED off the two boards' silk - his, 2026-11-20: **the orders differ.**
+   RP23 J24 reads **X Z B** top row, **Y A GND** bottom; this board's J17 reads **A Y X** top,
+   **B Z GND** bottom. FLAG: **a straight ribbon therefore lands each axis on a pin the other
+   board names differently - harmless electrically (one net), but an axis LED on the RP23 can
+   name a different axis than the wire feeding it.** Not a fault to chase at commissioning;
+   the silk, not the LED label, is the truth at each end.
 2. **Footprints.** All 37 assigned and the board is placed and routed. The IDC headers
    are the standard shrouded 2.54 mm pattern (any vendor fits); the signal terminal
    blocks are 3.5 mm on the 4Ucon pattern (KF350 class fits), and the **two 12 V feeds** -
@@ -171,11 +176,12 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
 
    NOTE: **THE TWO 12 V FEEDS NEED CABLE-END HOUSINGS, WHICH SCREW BLOCKS DID NOT** - two
    more 2P dual-row. That is the whole ordering consequence of the connector change.
-3. **RP23 header state, from his board in hand:** J24 already carries a bare 2x3 header;
-   J20 is open with plenty of room, so it gets a **shrouded** 2x10 (Digi-Key: CNC Tech /
-   On Shore class, 2.54 mm vertical THT). The alarm ribbon's RP23 end therefore lands on
-   an unkeyed header - mark pin 1 against the silkscreen; this board's J17 can still be
-   shrouded so the interface end is foolproof.
+3. **RP23 header state, from his board in hand:** J24 already carries a bare 2x3 header,
+   and **it stays bare - his, 2026-11-20: the RP23 PCB has no room for a keyed socket in
+   its place.** J20 is open with plenty of room, so it gets a **shrouded** 2x10 (Digi-Key:
+   CNC Tech / On Shore class, 2.54 mm vertical THT). The alarm ribbon's RP23 end therefore
+   lands on an unkeyed header - mark pin 1 against the silkscreen; this board's J17 can
+   still be shrouded so the interface end is foolproof.
 
 ---
 
