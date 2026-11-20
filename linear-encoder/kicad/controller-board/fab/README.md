@@ -8,41 +8,27 @@ Regenerate everything here with `tools/export-fab.ps1`; do not hand-edit these f
 
 | | |
 |---|---|
-| Size | **66.5 × 22.0 mm** rectangle, 2.27 sq in |
+| Size | **66.5 × 28.0 mm** rectangle, 2.89 sq in |
 | Layers | **2** |
 | Thickness | **1.6 mm** (0.062 in) — not a free choice; the stack above the module depends on it |
 | Copper | 1 oz is ample for ~90 mA |
-| Quantity | **3 minimum** on the Advanced Circuits prototype deal |
+| **Plated slots** | **3**, each 1.6 × 2.6 mm, between the RJ45 jacks — each takes two adjacent shield tabs. **The fab must do plated slots.** |
 
-## It fits the Advanced Circuits $33 prototype spec
+## The Advanced Circuits $33 prototype deal no longer fits
 
-Run `tools/check-4pcb-33.ps1` after any layout change. It measures the board and
-the generated drill file, so it checks what will actually be sent.
+`tools/check-4pcb-33.ps1` (run it after any layout change) passes everything
+except **No slots: FAIL — 3 oval drills.** The 2026-11-19 re-layout to
+through-hole 85508 jacks at butted pitch forces adjacent shield tabs to share a
+plated slot, and the $33 spec excludes slots outright. For the record, the rest
+of the spec still clears: 0.2 mm line/space, 0.3 mm min hole, 89 holes = 30.8
+per sq in against 35, plain rectangular outline, through vias only.
 
-| Their limit | This board |
-|---|---|
-| 2 layers, FR-4, 0.062 in, 1 oz | 2 layers, 1.6 mm |
-| Min 0.006 in line/space | **0.0079 in** (0.2 mm) both |
-| Min 0.010 in hole | **0.0118 in** (0.3 mm) |
-| **Max 35 drilled holes per sq in** | **29.1** — 66 holes in 2.27 sq in |
-| Max 60 sq in | 2.27 sq in |
-| No blind/buried vias | all vias go F.Cu to B.Cu |
-| No slots or overlapping drill hits | no oval drills; 0.25 mm minimum hole to hole |
-| No internal routing, no scoring | outline is four lines, a plain rectangle |
-
-Hole density is the only one with real margin to lose. It is 66 holes against a
-budget of 79, and the stitching vias are the only discretionary holes on the board
-— **adding stitching back is what will break it.**
-
-Two ordering constraints that are not board properties: **one part number per order**,
-so do not panelise, and **three boards minimum**.
-
-Finish is their choice — lead-free HAL, or ENIG or silver at no extra charge.
-Any of the three solders fine by hand.
+**The board needs a fab that does plated slots** (OSH Park does, and the board
+already meets their 0.38 mm copper-to-edge). Vendor not yet chosen — his call.
 
 ## Assembly — bottom side only
 
-**Populate the 19 passives on the bottom side. Nothing on the top side.**
+**Populate the 18 passives on the bottom side. Nothing on the top side.**
 
 | Populate | |
 |---|---|
@@ -50,7 +36,6 @@ Any of the three solders fine by hand.
 | C13 | 10 µF, 0805 |
 | C14 | 100 nF, 0603 |
 | R1–R4 | 2.2 kΩ, 0603 |
-| R5 | 0 Ω, 0603 |
 
 **Do NOT populate — these are fitted by hand afterwards:**
 
@@ -70,7 +55,7 @@ parts are fine unless the quote asks for specifics.
 | `controller-board-assembly.zip` | Send this for the **assembly** quote — `ASSEMBLY.md`, BOM and centroid |
 | `ASSEMBLY.md` | What to populate and what to leave off. The vendor-facing sheet |
 | `gerbers/` | The bare-board files unzipped |
-| `controller-board-bottom-pos.csv` | Pick-and-place centroid, bottom side, the 19 passives only |
+| `controller-board-bottom-pos.csv` | Pick-and-place centroid, bottom side, the 18 passives only |
 | `controller-board-bom.csv` | Full BOM including the parts left unpopulated — see `ASSEMBLY.md` |
 
 **Two zips, two quotes.** The gerber zip carries no BOM, no centroid and no
@@ -82,7 +67,7 @@ thirteen files show as modified even when no copper moved. Diff before assuming 
 layout change: a real change shows more than the two `CreationDate` lines.
 
 Gerbers, drill and centroid all share one origin: the **lower-left corner of the board**,
-so centroid coordinates run 0–66.5 in X and 0–22 in Y.
+so centroid coordinates run 0–66.5 in X and 0–28 in Y.
 
 The BOM lists J1–J5 because it is generated from the schematic. The assembly house
 needs the two tables above, not the raw BOM.
