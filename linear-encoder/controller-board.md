@@ -6,7 +6,9 @@ described in [`design-can-position-feedback.md`](design-can-position-feedback.md
 §14's *sensor board*.
 
 Status: **ORDERED from OSH Park 2026-11-20 - 3 boards, $24 delivered, standard service, so
-~2 weeks out; every component is in hand, so assembly starts when they arrive.** The board as sent: 70 x 28, through-hole 85508
+~2 weeks out; every component is in hand, so assembly starts when they arrive.** A **bottom
+stencil (4 mil stainless) and acrylic jig set** are ordered too (OSH Stencils OS9576A04-15422,
+rush), so the 18 bottom passives go on by paste and stencil, sensor-board style. The board as sent: 70 x 28, through-hole 85508
 jacks rotated 90, DRC 0 with schematic parity, fab package regenerated.
 The jacks turned 90 counterclockwise at his direction (his original intent for the re-layout),
 on the strength of his caliper measurement the same evening: **71 mm between the tops of the
