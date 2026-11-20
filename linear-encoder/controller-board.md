@@ -5,8 +5,9 @@ Four shielded RJ45 jacks fanned out to the ESP32-S3's GPIOs, on a board that sit
 described in [`design-can-position-feedback.md`](design-can-position-feedback.md) §14; the sensor end is
 §14's *sensor board*.
 
-Status: **re-laid out and routed, 2026-11-19 - 70 x 28, through-hole 85508 jacks rotated 90,
-DRC 0 with schematic parity, fab package regenerated, Advanced Circuits $33 spec passes clean.**
+Status: **ORDERED from OSH Park 2026-11-20 - 3 boards, $24 delivered; every component is in
+hand, so assembly starts when they arrive.** The board as sent: 70 x 28, through-hole 85508
+jacks rotated 90, DRC 0 with schematic parity, fab package regenerated.
 The jacks turned 90 counterclockwise at his direction (his original intent for the re-layout),
 on the strength of his caliper measurement the same evening: **71 mm between the tops of the
 terminal blocks at the height the board actually rides** - the blocks taper, and the old 67 was
