@@ -70,6 +70,14 @@ pin in the 3.2 hole leaves 0.2 mm of play: **nudge board and stencil toward the 
 before every pass** and the four boards print identically. Pilot one board, photograph its
 placement and its reflowed joints, then run the rest as one batch against the photos.
 
+**The board sits in a recess, not on the surface - his, 2026-11-19, found with the stencils
+in hand.** A board on top of the jig stands its full thickness proud, and the stencil drapes
+off the edge and will not lie flat. The fix: **1 inch MDF with a 35 mm Forstner recess**, deep
+enough that the board sits in it **just slightly proud of the surface**. The stencil then lies
+flat across the board and the MDF together instead of bending down over the edge - slightly
+proud is the right side of flush, because the stencil tensions onto the copper rather than
+bridging a gap it can smear paste into.
+
 1. Paste and hot-plate the **AS5311 side** first, board flat on the plate. The chip reflows
    once; surface tension centers it on the pads, and the pads carry the Hall-array offset.
 2. Flip, paste and reflow the **top passives** with the board sitting on a short metal pipe
