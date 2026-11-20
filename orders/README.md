@@ -21,6 +21,15 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 Mouser files its PDFs under the **sales** order number; the project's notes quote the
 **web** order number. Both are in the Order column.
 
+## What OSH Park's expedite actually buys - observed, 2026-11-20
+
+His read of the order statuses, with Rev B still mid-fab, so provisional on the last point:
+**Super Swift (Rev B) took 10 hours to panel assignment; standard service took 15 (sensor
+board, Rev A similar) - about 5 hours saved on entry.** Fab itself is tracking the same
+~6 days as standard so far. **Fast shipping is priced separately** (the $38 Next Day Air on
+G6Jj6s46 was its own line). If that holds when Rev B finishes, the expedite premium buys
+queue entry, not fab speed - the shipping line is where delivery time actually gets bought.
+
 SETTLED: **THE QUANTITIES ARE DOUBLED ON PURPOSE - his, 2026-11-14.** The Mega V gets
 converted to the same wiring setup before he sells it, so the 2026-11-13 header order and
 the Phoenix order each cover two machines: 24 PT 4-QUATTRO is 12 per machine, and 4 FBS
