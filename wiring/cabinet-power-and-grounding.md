@@ -503,19 +503,16 @@ gets blamed on the drive.
 NOTE: **PD053 and the KA/KB pair are a spare of the same rating**, factory-set to 00, invalid - so if
 the fault indication is wanted as well, it does not cost the pump its relay.
 
-OPEN: **WHICH OF FB AND FC IS THE NORMALLY-OPEN LEG.** The manual gives the pair as *"N/O or N/C"*
-and does not say which is which. It is a meter on the real part with the drive unpowered, not
-something to take from a convention.
+SETTLED: **FA/FC IS THE NORMALLY-OPEN PAIR, FB/FC THE NORMALLY-CLOSED - his meter on the
+terminals, 2026-11-20.** FC is the common leg. The pump coil goes on **FA/FC**, exactly as the
+tables above and the cable run below already draw it.
 
-✅ **AND IT CAN BE ANSWERED TODAY, BECAUSE THE MEGA V RUNS THE SAME DRIVE.** His, 2026-11-07: the
-Mega V has the **identical spindle and VFD from the same supplier**. So this check does not wait on
-the new machine - it is a meter on a drive that is already in the shop.
-
-🔴 **THAT MAKES THE MEGA V A WORKING REFERENCE FOR THE WHOLE SPINDLE AND VFD HALF OF THIS BUILD, AND
-IT HAS NOT BEEN USED AS ONE.** Anything uncertain about the HY02D223B - the relay legs, what PD052
-does, what the control strip looks like, what the drive actually draws on its input - is a
-measurement on a running machine rather than a question for a manual that declines to answer. The
-clamp-meter reading this file wants on the VFD's input is in the same position.
+🔴 **THE MEGA V RUNS THE IDENTICAL SPINDLE AND VFD FROM THE SAME SUPPLIER (his, 2026-11-07), WHICH
+MAKES IT A WORKING REFERENCE FOR THE WHOLE SPINDLE AND VFD HALF OF THIS BUILD.** Anything uncertain
+about the HY02D223B - what PD052 does, what the control strip looks like, what the drive actually
+draws on its input - is a measurement on a running machine rather than a question for a manual that
+declines to answer. The relay-leg question above was answered exactly that way, and the clamp-meter
+reading this file wants on the VFD's input is in the same position.
 
 SETTLED: **THE COIL INRUSH AGAINST THE RELAY'S 3 A - CLOSED, WITH ROOM TO SPARE.** The WCT-25's
 230 V coil is **inrush 11.5 VA, holding 2.8 VA**. At 230 V that is **50 mA to pull in and 12 mA to
