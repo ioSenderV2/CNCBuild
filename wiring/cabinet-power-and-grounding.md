@@ -488,10 +488,12 @@ caution below is what it would have bought.
 
 🔴 **SO THERE IS MAINS ON THE VFD'S CONTROL TERMINAL STRIP, BESIDE THE ANALOG.** The same strip
 carries the **0-10 V speed reference** and **FOR / DCM** from the interface board, and RS485 if it is
-ever used. **Bring the coil pair in sleeved and separate, and out the opposite end of the strip from
-the analog pair** - not bundled with them, and not down the same sleeve. A 0-10 V reference running
-alongside a switched 220 V coil is the kind of coupling that shows up as spindle speed jitter and
-gets blamed on the drive.
+ever used. SETTLED how both get in - **his, 2026-11-20: the coil pair is its own shielded 18/2, and
+it enters the VFD through the same 3/4 inch rubber grommet as the shielded 22/4 control run from the
+interface board.** Each cable's shield is what keeps the shared entry honest - the 18/2's contains
+the switched 220 V, the 22/4's protects the analog. **Land the two at opposite ends of the strip**,
+coil pair away from VI/ACM: a 0-10 V reference terminated beside a switched 220 V coil is the kind
+of coupling that shows up as spindle speed jitter and gets blamed on the drive.
 
 SETTLED: **THE FOUR CONTROL WIRES, TERMINAL BY TERMINAL - his, 2026-11-20, lifted from the Mega V,
 which runs the same drive off its Teensy with exactly this mapping:**
@@ -503,7 +505,8 @@ which runs the same drive off its Teensy with exactly this mapping:**
 | 0-10 V speed reference | **VI** |
 | GND | **ACM** |
 
-Run/stop is the enable closing FOR to DCM; speed is the 0-10 V on VI against ACM. (The Mega V also
+Run/stop is the enable closing FOR to DCM; speed is the 0-10 V on VI against ACM. **The run is a
+shielded 22/4 - his, 2026-11-20** - in through the 3/4 inch grommet above. (The Mega V also
 hangs its IOTLogger contacts off DCM and VO - that is the Mega V's instrumentation, not part of
 this build's run.)
 
@@ -1376,7 +1379,7 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 | **220 V pigtail** | 10 ft captive, 12 AWG, **L6-20P**. Two hots and a ground, **no neutral anywhere in the chain** |
 | **110 V pigtail** | 10 ft captive, 12 AWG, **L5-20P**. Hot, neutral, ground - the hot into the **top** of the 1-pole 6 A breaker, the neutral straight to the splitter |
 | **A1 / A2**, back from the switch boxes | the contactor coil feed, having run out through the **mushroom and then the paddle in series**. Same cable as the switch run below |
-| **FA / FC**, from the VFD | the drive's **Multi-Output 3** dry contact, **3 A / 250 VAC**, closing the pump contactor's 220 V coil. Same cable as the VFD run below |
+| **FA / FC**, from the VFD | the drive's **Multi-Output 3** dry contact, **3 A / 250 VAC**, closing the pump contactor's 220 V coil. **Its own shielded 18/2 - his, 2026-11-20** - so the VFD leg is two cables, this pair out and back plus the mains feed below |
 
 **LEAVING**
 
@@ -1427,7 +1430,7 @@ question, below.
 
 | Run | |
 |---|---|
-| Out to the **VFD** | mains to the drive, and the pump contactor's coil pair |
+| Out to the **VFD** | mains to the drive, and the pump contactor's coil pair **on its own shielded 18/2 - his, 2026-11-20, two cables** |
 | Out to the **interface box and controller** | 12 V, and the sense relay's contact back |
 | Out to the **five drives** | the 18/2 motor supply, one per axis - since 2026-11-14 |
 | Out to the **two switch boxes** | the coil circuit, in series through the mushroom and then the paddle |
@@ -1441,7 +1444,7 @@ the one of the three where a shield is optional**; on the interface box run it i
 🔴 **EVERY SHIELD IS ANOTHER DRAIN ON THE PE BAR, AND THAT IS THE TERMINAL COUNT BELOW.** The bar was
 sized for eight firm conductors with ten bought, and the only shields in the design were the four
 motor supply runs - whose drains follow the 36 V supply, and since 2026-11-14 that is this box: **five
-of them**. **Three or four more shielded runs land their drains here as well.** See the open item under the bar:
+of them**. **Four or five more shielded runs land their drains here as well - the VFD leg became two shielded cables on 2026-11-20.** See the open item under the bar:
 buying more than ten stops being a precaution and becomes the requirement.
 
 NOTE: **ONE END ONLY, AND IT IS THE PANEL END.** The rule is already in the bar's table and does not
