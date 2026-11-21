@@ -64,6 +64,12 @@ move on.
 
 - Sensor board: the **chip side goes first** - set the chip's pin-1 corner against
   the board marking before pressing it in.
+- The TVS (D1, the 6-lead SOT-23): **its pads are numbered to the schematic symbol,
+  not the package**, so the fab numbers look shuffled - one row reads **1 5 2**, the
+  other **3 4** plus one blank pad. Set the chip so its **pin-1 flank (pins 1-2-3)
+  lies along the 1-5-2 row with pin 1 on the pad marked 1** - pin 1 is the dot
+  corner, or the lower-left lead with the printed code upright. The blank pad takes
+  the chip's unused pin 6.
 - Controller board: all 18 passives in one pass - 12 small caps, the 0805, the
   100 nF, the four resistors.
 
