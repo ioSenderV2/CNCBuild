@@ -69,7 +69,8 @@ move on.
   other **3 4** plus one blank pad. Set the chip so its **pin-1 flank (pins 1-2-3)
   lies along the 1-5-2 row with pin 1 on the pad marked 1** - pin 1 is the dot
   corner, or the lower-left lead with the printed code upright. The blank pad takes
-  the chip's unused pin 6.
+  the chip's unused pin 6. The quick check once both are down: **the two pin 1s are
+  the closest pair of pins between the two packages.**
 - Controller board: all 18 passives in one pass - 12 small caps, the 0805, the
   100 nF, the four resistors.
 
