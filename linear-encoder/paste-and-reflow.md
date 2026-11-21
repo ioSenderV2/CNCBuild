@@ -33,7 +33,10 @@ The stencil has to lie dead flat on the board, and neither can move.
 - **Sensor board:** drop it into the MDF recess over the two pins, stencil onto the
   same pins. **Push board and stencil toward the same corner before every pass** -
   the pins have a few tenths of play, and one corner makes all four boards print
-  the same.
+  the same. **For the second-side print the chip side is already built and faces
+  down: the recess is bored out 27 mm in the middle so the chips hang free.** Go a
+  touch lighter with the spreader over the bored-out middle - the board has no
+  backing there.
 - **Controller board:** board into the acrylic jig pocket, jig taped to the bench.
   Lay the stencil on, slide it under good light until every opening sits centered
   on its pad, then **tape one full edge of the stencil down as a hinge** - from then
