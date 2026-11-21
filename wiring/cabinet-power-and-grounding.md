@@ -201,9 +201,14 @@ SETTLED: **ONE NC CONTACT IS ENOUGH ON THE MUSHROOM.** The both-poles-isolated p
 the paddle opens both legs.** A 2NC block costs little and buys no isolation that is not already
 there.
 
-NOTE: **THE CONTROL CIRCUIT IS NOW A SERIES LOOP THROUGH TWO BOXES**, not one run out and back. Panel
-to the mushroom, mushroom to the paddle box, paddle box back to the panel - or each device its own run
-back to the panel, which is more cable and fewer joints. **A routing choice, not an electrical one.**
+NOTE: **THE CONTROL CIRCUIT IS NOW A SERIES LOOP THROUGH TWO BOXES**, not one run out and back.
+SETTLED how it runs - **his, 2026-11-21: one shielded 22/4, panel to the mushroom box to the paddle
+box and back.** Four conductors is exactly the loop: one pair out to the paddle's 13/23 - the feed
+leg cut and landed on the mushroom's NC contact on the way through, keeping the mushroom upstream
+of the paddle - and one pair back from 14/24 to the contactor's A1/A2. The cable is rated 300 V /
+105 C per its product listing (the jacket itself is unprinted); the 1 A fuse properly protects
+22 AWG, and the coil load is about a tenth of an amp at pull-in. Shield drain at the panel end
+only, containing the switched mains as the aggressor note below says.
 
 NOTE: **The four 1/4 inch female quick-disconnects are the paddle's requirement**; the mushroom
 station's contact blocks are screw terminals. Both parts are in the design now, so both are a buy.
@@ -1439,7 +1444,7 @@ question, below.
 | Out to the **VFD** | mains to the drive, and the pump contactor's coil pair **on its own shielded 22/2 - his, 2026-11-20, two cables** |
 | Out to the **interface box and controller** | 12 V, and the sense relay's contact back |
 | Out to the **five drives** | the 18/2 motor supply, one per axis - since 2026-11-14 |
-| Out to the **two switch boxes** | the coil circuit, in series through the mushroom and then the paddle |
+| Out to the **two switch boxes** | the coil circuit, in series through the mushroom and then the paddle - **one shielded 22/4, his, 2026-11-21**, see the control-loop section |
 
 NOTE: **ON THE SWITCH RUN THE SHIELD IS CONTAINING AN AGGRESSOR, NOT PROTECTING A VICTIM.** That run
 carries switched mains and nothing quiet, so the shield is there to keep it from radiating into
