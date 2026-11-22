@@ -1789,12 +1789,18 @@ SETTLED: **THE SPINDLE CONNECTOR PINOUT AND CABLE COLORS - measured and assigned
 body, shaft and collet nut** - so pin 4 is the earth, the conductor that runs back to the
 VFD's E terminal. The three phases are his assignment:
 
-| Connector pin | Conductor | VFD terminal |
-|---|---|---|
-| 1 | **red** | U |
-| 2 | **black** | V |
-| 3 | **white** | W |
-| 4 | earth - **bonded to body/shaft/collet, measured** | E |
+**Finding the pins with no printed numbers - his, 2026-11-22.** The connector has a raised key
+tab on the shell and no legible digits. **Pin 1 sits directly under the key tab; pin 4 is
+opposite it, at the bottom; pins 2 and 3 are the pair across the middle.** Pin 4 at the bottom
+is the one that meters to the spindle body - the earth - so the key orientation and the
+continuity check agree, and the ground wire solders to the bottom pin.
+
+| Connector pin | Position | Conductor | VFD terminal |
+|---|---|---|---|
+| 1 | under the key tab | **red** | U |
+| 2 | across (one side) | **black** | V |
+| 3 | across (other side) | **white** | W |
+| 4 | bottom, opposite the key | earth - **bonded to body/shaft/collet, measured** | E |
 
 Phase order among 1-2-3 is arbitrary until the first spin: it only sets direction. **Check
 rotation at first power - clockwise seen from above - and if it runs backwards, swap any two
