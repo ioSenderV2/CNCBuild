@@ -39,6 +39,14 @@
     --c-pe:      #1a9641;   /* PE      — green */
     --c-outside: #8a8a8a;   /* outside the scheme: DC out, spindle U/V/W, dry contacts */
   }
+  /* The switch-run 22/4's own conductors. These are the colours of the cable that was
+     bought, not the panel scheme - they do not move if the scheme above changes. */
+  .w-4r    { stroke: #c81e1e; stroke-width: 2.2; fill: none; }
+  .w-4b    { stroke: #111111; stroke-width: 2.2; fill: none; }
+  .w-4y    { stroke: #d9a400; stroke-width: 2.2; fill: none; }
+  .w-4whal { stroke: #333;    stroke-width: 4.4; fill: none; }  /* white's outline */
+  .w-4w    { stroke: #ffffff; stroke-width: 2.4; fill: none; }
+
   .w-l1   { stroke: var(--c-l1);      stroke-width: 2.8; fill: none; }
   .w-l2   { stroke: var(--c-l2);      stroke-width: 2.8; fill: none; }
   .w-hot  { stroke: var(--c-hot);     stroke-width: 2.8; fill: none; }
@@ -146,10 +154,10 @@ lives.</b> One glance at a conductor says whether an E-stop takes it away.
 <div class="warn">
 <b>14 AWG everywhere inside is a choice, and it is generous.</b> The conductor has to be rated for its
 <i>breaker</i> rather than for its load, and at 6&nbsp;A a lighter gauge would be legitimate on three of
-the four branches. One wire size across the panel is worth more than the copper saved. <b>16 AWG is
-also legitimate for the runs out to the two switch boxes</b> if a neater cable is wanted there &mdash;
-it is behind the 1&nbsp;A fuse and it is in range for the spade tabs, the mushroom's contact block and
-the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
+the four branches. One wire size across the panel is worth more than the copper saved. <b>The runs out
+to the two switch boxes are settled lighter still: one shielded 22/4 &mdash; his, 2026-11-21</b> &mdash;
+behind the 1&nbsp;A fuse, which properly protects 22 AWG, with the coil load around a tenth of an amp.
+Fig.&nbsp;2 carries the conductor colours.
 </div>
 
 <h2>The parts</h2>
@@ -175,18 +183,19 @@ the coil terminals, which take 1.5&ndash;2.5&nbsp;mm&sup2;.
 <tr><td>Enclosure</td><td>12 &times; 12 &times; 6 PVC, dust-proof cover</td><td>Two DIN rails. <b>Bonds nothing</b> &mdash; see Fig. 5</td></tr>
 </table>
 
-<div class="note">
-<b>Only one connection on these six sheets is unknown, and it is marked where it falls.</b> The
-Huanyang manual gives FA/FB/FC as &ldquo;N/O or N/C&rdquo; without saying which leg is which, so
-<b>which of FB and FC is the normally-open one is a meter check on the real drive</b>, with the drive
-unpowered. Everything else carries a terminal designation off a datasheet or a listing.
+<div class="info">
+<b>Every connection on these six sheets now carries a terminal designation.</b> The last unknown
+&mdash; which of the Huanyang's FA/FB/FC legs is the normally-open one &mdash; was <b>metered on the
+real drive, 2026-11-20: FA/FC is the normally-open pair, FB/FC the normally-closed, FC the
+common.</b> Fig.&nbsp;3 is drawn to the measurement.
 </div>
 
 <!-- ============================================================ FIG 1 -->
 <div class="fig">
 <h2>Fig. 1 &mdash; The 220 V power chain</h2>
-<p class="sub">Coils are not drawn here. Both contactors are shown as power poles only; their control
-circuits are Fig. 2 and Fig. 3.</p>
+<p class="sub">The pump contactor is shown as power poles only &mdash; its control circuit is Fig. 3.
+The main contactor's coil terminals are drawn here to land the <b>switch-run 22/4</b>; that loop
+itself is Fig. 2.</p>
 
 <figure>
 <svg viewBox="0 0 900 760" width="190mm" xmlns="http://www.w3.org/2000/svg">
@@ -220,6 +229,26 @@ circuits are Fig. 2 and Fig. 3.</p>
   <circle class="dot" cx="500" cy="128" r="3.2"/>
   <circle class="dot" cx="420" cy="216" r="3.2"/>
   <circle class="dot" cx="500" cy="216" r="3.2"/>
+
+  <!-- THE SWITCH-RUN 22/4. One shielded cable, panel -> mushroom box -> paddle box -> panel.
+       Yellow and white are the switched pair back from the paddle, landing on the coil;
+       red and black are the feed pair, off splitter pair 2 and the 1 A fuse (Fig. 4).
+       Conductor colours are the cable's own, not the panel scheme - see Fig. 2. -->
+  <rect class="rem" x="40" y="120" width="150" height="96" rx="4"/>
+  <text class="sm c" x="115" y="150">SHIELDED 22/4</text>
+  <text class="sm c" x="115" y="166">the switch-box loop</text>
+  <text class="sm c" x="115" y="182">out and back &mdash; Fig. 2</text>
+  <path class="w-4r" d="M70 120 V 92"/>
+  <path class="w-4b" d="M95 120 V 92"/>
+  <text class="sm" x="40" y="70">red + black: fused hot + neutral</text>
+  <text class="sm" x="40" y="84">off splitter pair 2 &mdash; Fig. 4</text>
+  <path class="w-4whal" d="M190 160 H 330"/>
+  <path class="w-4w" d="M190 160 H 330"/>
+  <path class="w-4y" d="M190 196 H 330"/>
+  <circle class="dot" cx="330" cy="160" r="3.2"/>
+  <circle class="dot" cx="330" cy="196" r="3.2"/>
+  <text class="tm" x="260" y="154">A2 &mdash; white</text>
+  <text class="tm" x="260" y="212">A1 &mdash; yellow</text>
 
   <!-- contactor out to the block -->
   <path class="w-l1" d="M420 216 V 292"/>
@@ -325,6 +354,9 @@ circuits are Fig. 2 and Fig. 3.</p>
 <h2>Fig. 2 &mdash; Control: two E-stops in series and the main coil</h2>
 <p class="sub">The control circuit, which is <b>pair 2 off the 110 V splitter</b> in Fig. 4. The
 paddle switches <b>both</b> legs, so the coil is isolated on both sides when it drops.</p>
+<p class="sub"><b>The run is one shielded 22/4 &mdash; his, 2026-11-21.</b> Red and black out (the
+fused hot and the neutral), yellow and white back (the switched pair to A1/A2). 22 AWG, 300 V
+rated, behind the 1 A fuse that protects it; the shield drains at the panel end only.</p>
 <p class="sub"><b>Two switches, in series: a locking mushroom up on the apron and the paddle below.</b>
 Either one stops the machine and neither one can start it. The mushroom is where the hand lands; the
 paddle has to live about a foot under the table because of the torsion box.</p>
@@ -338,7 +370,7 @@ mushroom opens, and the paddle opens both legs, so the both-poles-isolated prope
 the mushroom breaking the neutral.</p>
 
 <figure>
-<svg viewBox="0 0 900 410" width="190mm" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 900 424" width="190mm" xmlns="http://www.w3.org/2000/svg">
 
   <!-- remote boxes FIRST: their fill is opaque and would otherwise paint over the wires -->
   <rect class="rem" x="520" y="40" width="340" height="300" rx="4"/>
@@ -352,23 +384,27 @@ the mushroom breaking the neutral.</p>
   <rect class="bx" x="140" y="60" width="110" height="36" rx="3"/>
   <text class="ttl c" x="195" y="83">1 A FUSE</text>
 
-  <!-- mushroom: UPSTREAM of the paddle, in the hot leg only -->
-  <path class="w-hot" d="M250 78 H 282"/>
+  <!-- mushroom: UPSTREAM of the paddle, in the hot leg only.
+       From the fuse's load side onward the conductor is the 22/4's RED. -->
+  <path class="w-4r" d="M250 78 H 282"/>
   <rect class="bx" x="282" y="52" width="200" height="68" rx="3"/>
   <text class="ttl c" x="382" y="74">LOCKING MUSHROOM</text>
   <text class="sm c"  x="382" y="94">1 NC &middot; push to latch</text>
   <text class="sm c"  x="382" y="112">twist to release</text>
   <circle class="dot" cx="282" cy="78" r="3.2"/>
   <circle class="dot" cx="482" cy="78" r="3.2"/>
-  <path class="w-hot" d="M482 78 H 552 V 120 H 580"/>
+  <path class="w-4r" d="M482 78 H 552 V 120 H 580"/>
 
-  <!-- neutral runs straight past it: 1 NC breaks hot only, and the paddle opens both legs -->
-  <path class="w-nhal" d="M14 150 H 566 V 170 H 580"/>
-  <path class="w-neu"  d="M14 150 H 566 V 170 H 580"/>
+  <!-- neutral runs straight past it: 1 NC breaks hot only, and the paddle opens both legs.
+       Panel wire (white) to the cable start, then the 22/4's BLACK all the way to 23. -->
+  <path class="w-nhal" d="M14 150 H 258"/>
+  <path class="w-neu"  d="M14 150 H 258"/>
+  <circle class="dot" cx="258" cy="150" r="3.2"/>
+  <path class="w-4b" d="M258 150 H 566 V 170 H 580"/>
   <text class="sm" x="14" y="138">NEUTRAL &mdash; white</text>
 
-  <text class="wg" x="498" y="108">14 AWG</text>
-  <text class="wg" x="330" y="143">14 AWG</text>
+  <text class="wg" x="500" y="140">RED &middot; 22 AWG</text>
+  <text class="wg" x="310" y="167">the 22/4's BLACK &middot; 22 AWG</text>
 
   <!-- paddle -->
   <rect class="bx" x="580" y="90" width="240" height="180" rx="3"/>
@@ -390,11 +426,11 @@ the mushroom breaking the neutral.</p>
   <text class="tm" x="714" y="286">24</text>
 
   <!-- returns: 14 -> coil (inner), 24 -> coil (outer). routed so they never cross -->
-  <path class="w-hot" d="M650 270 V 318 H 258 V 252 H 200"/>
-  <path class="w-nhal" d="M740 270 V 346 H 228 V 225 H 200"/>
-  <path class="w-neu"  d="M740 270 V 346 H 228 V 225 H 200"/>
-  <text class="wg" x="300" y="312">switched hot back &middot; black &middot; 14 AWG</text>
-  <text class="wg" x="300" y="340">switched neutral back &middot; white &middot; 14 AWG</text>
+  <path class="w-4y" d="M650 270 V 318 H 258 V 252 H 200"/>
+  <path class="w-4whal" d="M740 270 V 346 H 228 V 225 H 200"/>
+  <path class="w-4w"   d="M740 270 V 346 H 228 V 225 H 200"/>
+  <text class="wg" x="300" y="312">switched hot back from 14 &middot; the 22/4's YELLOW &middot; 22 AWG</text>
+  <text class="wg" x="300" y="340">switched neutral back from 24 &middot; the 22/4's WHITE &middot; 22 AWG</text>
 
   <!-- coil -->
   <rect class="bxr" x="60" y="205" width="140" height="62" rx="3"/>
@@ -406,9 +442,10 @@ the mushroom breaking the neutral.</p>
   <text class="tm" x="206" y="268">A1</text>
 
   <text class="q" x="14" y="378">THE MUSHROOM IS UPSTREAM. It feeds the paddle's own holding coil, so pressing it drops the paddle out and the green button is what comes back.</text>
-  <text class="sm" x="14" y="396">The control circuit is a series loop through two boxes. The coil is AC, so A1 and A2 are not polarised &mdash; which return lands on which is free.</text>
+  <text class="sm" x="14" y="396">ONE SHIELDED 22/4 (300 V rated) carries the whole loop &mdash; panel to mushroom box to paddle box and back, shield drained at the panel end only, Fig. 5.</text>
+  <text class="sm" x="14" y="410">Its conductor colours are the cable's own, not the panel scheme: red fused hot, black neutral, yellow and white the switched pair. The coil is AC &mdash; which return lands on which terminal is free.</text>
 </svg>
-<figcaption>Fig. 2 &mdash; the control circuit. Red is switched AC control.</figcaption>
+<figcaption>Fig. 2 &mdash; the control circuit, carried on one shielded 22/4 through both switch boxes.</figcaption>
 </figure>
 
 <div class="warn">
@@ -457,11 +494,10 @@ so the whole pump branch is behind one breaker.</p>
   <text class="sm" x="14" y="180">Coil inrush 11.5 VA, holding 2.8 VA &mdash; 50 mA to pull in and 12 mA to hold, against a 3 A contact.</text>
   <text class="sm" x="14" y="198">A dry contact, so there is nothing to catch: no flyback diode, and polarity does not apply.</text>
 
-  <rect class="rem" x="14" y="218" width="860" height="88" rx="4" fill="#fff8e8" stroke="#d98b00"/>
-  <text class="q" x="28" y="242">THE ONE UNKNOWN ON THESE SHEETS &mdash; which of FB and FC is the normally-open leg.</text>
-  <text class="sm" x="28" y="262">The manual gives the pair as &ldquo;N/O or N/C&rdquo; and does not say which is which. FC is drawn as the</text>
-  <text class="sm" x="28" y="280">normally-open one above because something had to be drawn. Meter it on the real drive, unpowered,</text>
-  <text class="sm" x="28" y="298">before this wire is made up. If it is FB, the only change is which terminal that blue conductor lands on.</text>
+  <rect x="14" y="218" width="860" height="70" rx="4" style="fill:#eefaf5;stroke:#0a6;stroke-width:1.6"/>
+  <text class="q" x="28" y="242" style="fill:#0a6">METERED ON THE REAL DRIVE, 2026-11-20 &mdash; FA/FC IS THE NORMALLY-OPEN PAIR, exactly as drawn.</text>
+  <text class="sm" x="28" y="262">FB/FC is the normally-closed pair and FC is the common. The manual's &ldquo;N/O or N/C&rdquo; is resolved;</text>
+  <text class="sm" x="28" y="280">nothing on this sheet is provisional any more.</text>
 </svg>
 <figcaption>Fig. 3 &mdash; the pump control circuit, in series through the VFD's relay.</figcaption>
 </figure>

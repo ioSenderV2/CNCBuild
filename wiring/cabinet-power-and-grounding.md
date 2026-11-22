@@ -205,7 +205,11 @@ NOTE: **THE CONTROL CIRCUIT IS NOW A SERIES LOOP THROUGH TWO BOXES**, not one ru
 SETTLED how it runs - **his, 2026-11-21: one shielded 22/4, panel to the mushroom box to the paddle
 box and back.** Four conductors is exactly the loop: one pair out to the paddle's 13/23 - the feed
 leg cut and landed on the mushroom's NC contact on the way through, keeping the mushroom upstream
-of the paddle - and one pair back from 14/24 to the contactor's A1/A2. The cable is rated 300 V /
+of the paddle - and one pair back from 14/24 to the contactor's A1/A2. **The conductors - his,
+2026-11-22: RED and BLACK are the feed pair, YELLOW and WHITE the switched pair back.** Within the
+feed pair, red is the fused hot (through the mushroom to 13) and black the neutral (straight
+to 23) - the assignment as drawn in the panel schematic; within the return pair yellow comes off 14
+and white off 24, and the coil being AC, which of those lands A1 and which A2 is free. The cable is rated 300 V /
 105 C per its product listing (the jacket itself is unprinted); the 1 A fuse properly protects
 22 AWG, and the coil load is about a tenth of an amp at pull-in. Shield drain at the panel end
 only, containing the switched mains as the aggressor note below says.
