@@ -224,6 +224,27 @@ the drive's terminal block:
 | **4-5** | pin 5, **DR+** | pin **4**, **DR-** | terminals 5, 6 |
 | **7-8** | pin 7, **AL+** | pin 8, **AL-** | terminals 9, 10 |
 
+**The drive's own flying-lead colours - his, 2026-11-23, off the part.** These are the colours of
+the eight wires leaving the drive, landed into the RJ45 at the drive end - NOT the Cat6's T568
+colours, which carry the pair down the cable:
+
+| RJ45 pin | Signal | Drive wire |
+|---|---|---|
+| 1 | PU+ | green |
+| 2 | PU- | yellow |
+| 3 | EN+ | white |
+| 4 | DR- | **orange** |
+| 5 | DR+ | purple |
+| 6 | EN- | **blue** |
+| 7 | AL+ | brown |
+| 8 | AL- | grey |
+
+🔴 **PINS 4 AND 6 CROSS: orange (DR-) on 4, blue (EN-) on 6, not in numeric order.** Landing the
+minus legs in sequence - blue on 4, orange on 6 - splits Enable and Direction across each other's
+twists. It passes continuity because all four minus legs share one GND net, and costs only signal
+integrity. Plus legs land odd in order (green/white/purple/brown on 1/3/5/7); each minus leg lands
+on its pair's twist partner.
+
 ✅ **PLUS-ON-STRIPED AND THE BOARD'S ODD-PIN SIGNALS ARE THE SAME RULE, which is why the two ends
 agree without anybody arranging it.** In **both** T568A and T568B every **odd** pin is a striped
 conductor and every **even** pin is a solid one - the two standards swap the colours and leave that
