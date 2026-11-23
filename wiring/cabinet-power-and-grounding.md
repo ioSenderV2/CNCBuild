@@ -199,7 +199,7 @@ pulled in. Not a convention to take from this page.
 SETTLED: **ONE NC CONTACT IS ENOUGH ON THE MUSHROOM.** The both-poles-isolated property that
 13-14 and 23-24 bought survives for free: **the paddle drops out whenever the mushroom opens, and
 the paddle opens both legs.** A 2NC block costs little and buys no isolation that is not already
-there.
+there. **The NC contact used is terminals 11 and 12 - his, 2026-11-22, read off the block.**
 
 NOTE: **THE CONTROL CIRCUIT IS NOW A SERIES LOOP THROUGH TWO BOXES**, not one run out and back.
 SETTLED how it runs - **his, 2026-11-21: one shielded 22/4, panel to the mushroom box to the paddle
