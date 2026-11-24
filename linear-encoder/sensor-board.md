@@ -25,7 +25,7 @@ seats against the rod and passes through the 35 mm hole.
 | U1 AS5311 | **AS5311-ATST** (Mouser 985-AS5311-ATST-500, sold under Infineon now) | the datasheet's ATSU tube variant is obsolete; ATST is the same TSSOP-20 off tape. 10 bought - both machines plus spares |
 | D1 SRV05-4 | **MCC SRV05-4C-TP** | pinout verified identical to the ProTek sheet the footprint was drawn from (I/O 1/3/4/6, GND 2, Vcc 5), and better where it matters: 0.6 pF per line against 3.5. Sheet committed as [`MCC-SRV05-4C-TVS-Array.pdf`](../manufacturer-assets/MCC-SRV05-4C-TVS-Array.pdf) |
 | J1 jack | CRJ068-1-SMT, 10 bought | covers the controller board's four too |
-| C1 100n, R1-R4 | from the 0603 assortment kits | R1-R3 are deliberately 100R-220R TBD - the kit is the tuning instrument |
+| C1 100n, R1-R4 | from the 0603 assortment kits | R1-R3 built at **150R** (his, 2026-11-23), the mid-range starting point; the kit is the tuning instrument for stepping off it |
 
 OPEN: **C2's 10u slot has no 10 uF bought - the KEMET line on that order is 1 uF** (C0805T105K4RACTU,
 16 V X7R 0805 10%; its code 105 is 1.0 uF, the receipt's own description agrees). Either bless 1 uF
@@ -205,7 +205,7 @@ Everything here is on the jack side, so none of it competes for the height budge
 
 | Ref | Value | Why |
 |---|---|---|
-| `R1` `R2` `R3` | **100R-220R** (range, not yet fixed) | Series at the source on `A`, `B`, `MagDECn`. One half of an RC whose other half is 330 pF-1 nF at the **controller** end - so the value gets picked with that cap, not before it. |
+| `R1` `R2` `R3` | **150R as built** (his, 2026-11-23 - mid of the 100R-220R range, the starting point) | Series at the source on `A`, `B`, `MagDECn`. One half of an RC whose other half is 330 pF-1 nF at the **controller** end - so the value is tuned with that cap on the bench, stepping up toward 220R for ringing or down for rounded edges. 150R is the no-regrets start. |
 | `R4` | **0R link** | Ties `CSn` low. It **must** be low or the incremental outputs never turn on and the board measures dead - it has an internal ~50 kΩ pull-up. A link rather than a trace so it can be lifted for SSI readout later. |
 | `C1` | 100 nF | Decoupling. |
 | `C2` | 10 µF | Decoupling. Both belong at this end: 2.4 m of 24 AWG has enough R and L that a supply dip here is real. |
@@ -235,7 +235,7 @@ Five signals over four pairs, nothing spare.
 ## Open
 
 - **The connector.** Above. Blocks layout.
-- **`R1`-`R3` value**, pending the controller-end cap.
+- **`R1`-`R3` final value** - built at 150R, bench-tuned against the controller-end cap from there.
 - **`TP3` / MagINCn.** `MagDECn` alone is what the design carries - asserted ⟺ RED, a clean per-axis
   fault. `MagINCn` would add the YELLOW early warning, but the cable is full and §"Pin budget" parks
   that option on a wire-OR across all four axes into `IO1`/`IO2` off the SH1.0 connector. A test pad
