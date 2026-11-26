@@ -192,6 +192,17 @@ He holds **three HBT57C spares: two at 2.0 N·m and one at 1.5 N·m** - his, 202
   opposite way does not degrade that axis, it **disables the guard for the whole machine**. See
   [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md).
 
+  MEASURED, his bench, 2026-11-25 - **the HBT57C half of that sentence now has numbers.** Two
+  HBT57112C drives, 12 V through a 10K onto AL+, AL- commoned to the supply's 0 V, EN
+  disconnected: powered with a solid green LED the output reads the full pull-up - **12.185 V
+  and 12.184 V: released when healthy** - and unpowered reads 0.37 V and 0.054 V, conduction
+  through the dead electronics rather than a designed assertion. Consistent with the Mega V's
+  service history of paralleled alarms giving "any drive faulted". Worth knowing at a bench:
+  a plain continuity check across a healthy HBT57C's AL+ / AL- correctly reads **open**. The
+  IG57 half of the sentence is still the manual's word alone -
+  [`../commissioning/bench-session.md`](../commissioning/bench-session.md) §5 is its test, and
+  this same 12 V / 10K rig is the rig.
+
 **So they are a limp-home with a known cost**: fit one, accept that motor-fault detection is off
 until it comes out, and know that rather than discover it. They do **not** remove the case for an
 IG57 spare, which is what the paragraph above is actually about.
