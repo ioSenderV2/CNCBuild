@@ -536,7 +536,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 
 ## [wiring/hbt57112c-drives.md](wiring/hbt57112c-drives.md)
 
-- [The part - what is known, and what waits on the manual](wiring/hbt57112c-drives.md#the-part---what-is-known-and-what-waits-on-the-manual)
+- [The part - from the committed manual](wiring/hbt57112c-drives.md#the-part---from-the-committed-manual)
 - [The alarm output - measured 2026-11-25: released when healthy, asserts on fault](wiring/hbt57112c-drives.md#the-alarm-output---measured-2026-11-25-released-when-healthy-asserts-on-fault)
 - [IG57 record - three names for one part](wiring/hbt57112c-drives.md#ig57-record---three-names-for-one-part)
 - [IG57 record - the part](wiring/hbt57112c-drives.md#ig57-record---the-part)
