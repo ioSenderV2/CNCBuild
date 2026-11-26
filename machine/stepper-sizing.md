@@ -16,21 +16,26 @@ was settled.
 
 The candidates were 1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 57 frame the cast
 stepper frames take — see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames
-themselves. The drives are **IG57** all-in-one closed-loop units on a **36 V** rail - see
-[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) - and that part of the machine is not reopened
-here.
+themselves.
 
-FLAG: **BOTH MOTORS MUST BE IG57.** The 1.5 on Z is an IG57, not one of the HBT57C spares. Those are
-the Mega V's family and their alarm asserts on **fault** where the IG57's asserts when **healthy** -
-and grblHAL's Teensy driver has a single combined motor-fault input, so one drive wired the opposite
-way disables the guard for the **whole machine**, not just its own axis.
+🔴 **SUPERSEDED BY PURCHASE, 2026-11-25: the machine runs four new HBT57112C** - the Mega V's
+family, one type on all four axes, see
+[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md). OPEN: **their torque rating is
+not recorded** - off the part or its manual, not from memory. The selection this file argues -
+2.2 N·m on X, Y1, Y2 and 1.5 on Z, from torque in the 1000-1500 rpm band - **stays as the record
+of the reasoning**; its conclusion no longer names the part on the machine, and where it leans on
+a *drive* characteristic it describes the IG57.
 
-NOTE: **The part bought agrees with this file, which is worth saying plainly.** This document chose
-2.2 N·m before the drives were bought; the IG57 is 2.2 N·m. So the conclusion below needed no
-revision when the drive was settled on 2026-10-12. FLAG: **This file previously named the HBT57C,
-which is the Mega V's drive and 3.2 N·m on X, Y1 and Y2** - corrected by him the same day. Where the
-reasoning below leans on a *drive* characteristic rather than a motor one, it is now carrying an
-assumption about a part this machine does not have.
+~~FLAG: **BOTH MOTORS MUST BE IG57.** The 1.5 on Z is an IG57, not one of the HBT57C spares -
+their alarm asserts on fault where the IG57's asserts when healthy, and one drive wired the
+opposite way disables the guard for the whole machine.~~ RETIRED 2026-11-25: all four drives are
+HBT and the mixed-chain hazard now points at the IG57 instead - the HBT-spares section below
+carries the live version.
+
+NOTE (history): this document chose 2.2 N·m before any drive was bought; the IG57 bought
+2026-10-12 was 2.2 N·m, so the conclusion held then. The file had named the HBT57C even earlier,
+was corrected the same day because that was the Mega V's drive - and the 2026-11-25 purchase
+makes the HBT the machine's family after all.
 
 FLAG: **The size is not set by force, and the usual intuition is wrong on this machine.** A 5 mm lead
 gives so much mechanical advantage that all three candidates deliver several times the thrust the
@@ -46,7 +51,7 @@ the smaller motor is the better one.
 | Coa, static | **1790** | spec sheet — OPEN: units read as **kgf**, so 17 560 N |
 | Bearing-to-bearing span | **930 mm** | **measured** on the built Y beams |
 | Motor frame | **NEMA 23**, all four axes | given |
-| Drive | **IG57**, **24–50 V DC**, **5 A** | [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) — OPEN: off a retail listing, no manual committed |
+| Drive | **HBT57112C** - his, 2026-11-25; family recorded 24-55 V, current rating OPEN | [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md) — OPEN: its manual is not committed either |
 | Supply | **XDR-960-36: 36 V, 960 W — 26.6 A across all axes** | spec, bought 2026-11-13; the 600 W 16.5 A brick stands down to spare. Output adjusts 36-42 V, so the 36 is still a setting to meter — see [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md) |
 | Screw efficiency | **0.9 assumed** | OPEN: not from a sheet — a conventional ball-screw figure |
 | Screw root diameter | **13.5 mm assumed** | OPEN: the sheet gives only the 16 mm major — see below |
@@ -135,7 +140,7 @@ at or below the whip ceiling. **The axis is motor-limited, not screw-limited** �
 the regime where the candidates differ.
 
 🔴 **THE RAIL IS 36 V NOW, NOT 48, AND THIS PARAGRAPH IS THE ONE MOST AFFECTED.** Settled 2026-10-12 -
-see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). Corner speed scales with supply voltage,
+see [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md). Corner speed scales with supply voltage,
 so torque rolls off **earlier** at 36 V and the motor-limited regime starts **lower** than this
 chapter assumes. The conclusion that the axis is motor-limited rather than screw-limited is therefore
 **more** true, not less - but every rpm figure below was written against 48 V and none of them has
@@ -144,8 +149,10 @@ test below returns the one number that matters and it does not care what the rai
 
 ## Why not 1.5 N·m — except on Z, where it is the motor
 
-SETTLED: **Z RUNS THE 1.5 - his decision, 2026-10-12.** X, Y1 and Y2 keep the 2.2. This section is
-kept because its reasoning is what the decision was taken against.
+~~SETTLED: **Z RUNS THE 1.5 - his decision, 2026-10-12.** X, Y1 and Y2 keep the 2.2.~~ SUPERSEDED
+2026-11-25: **all four axes run the same new HBT57112C, Z included.** This section is kept because
+its reasoning - gravity, spares, what a closed loop makes acceptable - is the record the decision
+was taken against, and the IG57 1.5 it names is no longer on the machine.
 
 Nothing in the analysis above ever ruled the 1.5 out: it clears the thrust envelope and the inertia
 by wide margins on every axis. It lost on two practical counts rather than an engineering one, and
@@ -179,47 +186,36 @@ NOTE: **A CLOSED LOOP IS WHAT MAKES THAT ACCEPTABLE.** Under-torquing on these d
 cost of being under-motored here is a stopped job, not a scrapped one, which is a different class of
 risk from the open-loop case this kind of decision is usually made in.
 
-### The HBT spares are a limp-home, not a spare - and the difference is the alarm
+### The HBT spares - the same family as the machine since 2026-11-25
 
-He holds **three HBT57C spares: two at 2.0 N·m and one at 1.5 N·m** - his, 2026-10-12. They are the
-**Mega V's** family. Worth being exact about what they are and are not for this machine:
+He holds **three HBT57C spares: two at 2.0 N·m and one at 1.5 N·m** - his, 2026-10-12 - and the
+machine's own drives are now four new **HBT57112C** (his, 2026-11-25), so the spares and the
+machine are **one family**. What this section used to guard against - an HBT assert-on-fault
+alarm wired into an IG57 assert-when-healthy chain, disabling the guard for the whole machine -
+dissolved with the IG57: every drive in the building asserts on fault, and a spare bolted on in
+a pinch keeps the alarm chain consistent **by construction**.
 
-- **As a motor they would turn a screw.** Same NEMA 23 frame, and 36 V suits both families, so
-  nothing stops one being bolted on to finish a job if an IG57 fails.
-- 🔴 **As a drive they break the alarm guard, and not only for their own axis.** The HBT57C's alarm
-  asserts **on fault**; the IG57's asserts when **healthy**. grblHAL's Teensy driver implements a
-  **single combined** motor-fault input, so the four alarms are one chain - and one drive wired the
-  opposite way does not degrade that axis, it **disables the guard for the whole machine**. See
-  [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md).
+MEASURED, his bench, 2026-11-25 - **the family's alarm sense has numbers.** Two HBT57112C units,
+12 V through a 10K onto AL+, AL- commoned to the supply's 0 V, EN disconnected: powered with a
+solid green LED the output reads the full pull-up - **12.185 V and 12.184 V: released when
+healthy** - and unpowered reads 0.37 V and 0.054 V, conduction through the dead electronics
+rather than a designed assertion. Consistent with the Mega V's service history of paralleled
+alarms giving "any drive faulted". Worth knowing at a bench: a plain continuity check across a
+healthy unit's AL+ / AL- correctly reads **open**. Details and open items in
+[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md).
 
-  MEASURED, his bench, 2026-11-25 - **the HBT57C half of that sentence now has numbers.** Two
-  HBT57112C drives, 12 V through a 10K onto AL+, AL- commoned to the supply's 0 V, EN
-  disconnected: powered with a solid green LED the output reads the full pull-up - **12.185 V
-  and 12.184 V: released when healthy** - and unpowered reads 0.37 V and 0.054 V, conduction
-  through the dead electronics rather than a designed assertion. Consistent with the Mega V's
-  service history of paralleled alarms giving "any drive faulted". Worth knowing at a bench:
-  a plain continuity check across a healthy HBT57C's AL+ / AL- correctly reads **open**. The
-  IG57 half of the sentence is still the manual's word alone -
-  [`../commissioning/bench-session.md`](../commissioning/bench-session.md) §5 is its test, and
-  this same 12 V / 10K rig is the rig.
+What stays open about the spares: OPEN - whether a 2.0 or 1.5 N·m spare moves a given axis
+acceptably depends on the new units' own torque rating, which is not recorded. And the hazard
+now runs the other way: 🔴 **an IG57 pressed into service is the odd one out** - its alarm sense
+was never measured, and one assert-when-healthy output in the parallel chain is a stuck alarm
+that hides every real one behind it. Bench it first; the drives file carries the warning.
 
-**So they are a limp-home with a known cost**: fit one, accept that motor-fault detection is off
-until it comes out, and know that rather than discover it. They do **not** remove the case for an
-IG57 spare, which is what the paragraph above is actually about.
-
-🔴 **The same argument kills a Mega V motor swap, and that is worth stating because the motors are
-attractive.** The Mega V runs **HBT57C at 3.2 N·m on X, Y1 and Y2 and 1.5 on Z**, they have been
-trouble-free in service, and they are drop-in on power and control. **The alarm is where it falls
-down.** Bringing three across puts three inverted alarms into a chain the driver reads as one input,
-which switches the guard off for the **whole machine** rather than for those axes. Bringing all four
-across makes the chain consistent again but inverted against what the firmware expects - workable
-with a firmware invert, and a deliberate change rather than a cabling swap.
-
-**So a working fault guard is the thing being traded**, against a torque advantage this machine's
-envelope does not need and which the section below expects to be a *disadvantage* where the rapids
-live. OPEN: **The 3.2 vs 2.2 stall comparison is still worth taking if both sets are on the bench
-together** - it is the one reading that could overturn the claim the sizing decision leans on
-hardest. It is curiosity now, not a decision input.
+~~🔴 **The same argument kills a Mega V motor swap.**~~ RETIRED 2026-11-25 - the machine runs the
+Mega V's family by purchase, so there is nothing left for the argument to kill; the chain is
+consistent and the firmware's alarm polarity is set once, for one sense, in
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md)'s commissioning of
+$744/$745. OPEN: **the 3.2 vs 2.2 stall comparison** this section once offered is moot as a
+decision input and stays moot - the parts on the machine are bought.
 
 ## Why not 3.2 N·m
 
@@ -242,17 +238,19 @@ is a choice, not a constraint.
 4. SETTLED: ~~**The current budget is 12.5 A for all four axes.**~~ **It is 16.5 A** - the 36 V 600 W
    supply's nameplate, 2026-10-12. **The budget grew by 4 A as a side effect of dropping the rail to
    36 V for over-voltage headroom**, which is the rare case of a safety decision paying for itself.
-   The phase current is known too - the IG57 is **5 A** - but the manual says *supply* current runs
-   below phase current and will not say by how much, so four motors is not 20 A either. SETTLED
+   The phase current was known too - the IG57 was **5 A**; OPEN: the HBT57112C's rating waits on
+   its manual (2026-11-25), and supply current runs below phase current by an unstated margin
+   either way. SETTLED
    again 2026-11-13: **the budget is 26.6 A - the XDR-960-36 replaced the brick**, and the sizing
-   comparison is over before it starts, since even the unreachable 20 fits. OPEN: what they
+   comparison is over before it starts. OPEN: what they
    actually draw is still worth a reading - it sets the heat into the DIN enclosure - and it is now
    a **DC clamp meter** reading, because the XDR has no display.
 
 ## OPEN: The torque curve at 36 V
 
 Everything above is settled except the figure that sets the **rapid feed rate in the firmware**: how
-much torque a 2.2 N·m IG57 actually has at 1200 and 1500 rpm on a **36 V** rail. FLAG: **This heading
+much torque the drive actually delivers at 1200 and 1500 rpm on a **36 V** rail - asked of a 2.2 N·m
+IG57 when written, now of the HBT57112C. FLAG: **This heading
 read "Openthe torque curve at 48 V" until 2026-10-12** - a marker mangled when the emoji markers
 became words, which meant it was not being harvested into STATUS.md at all, and a voltage that has
 since changed.
@@ -263,10 +261,10 @@ that already appears twice above. **Measure the feed rate directly instead** —
 the firmware wants, and the stall point is a sharper reading than any torque figure derived from it.
 
 **The test, once the axis runs:** command increasing rapid moves with the axis under its real load
-and find the feed rate at which the drive throws its tracking-error alarm. OPEN: **How the IG57
-signals that is not established** - the HBT57C showed it as seven LED flashes, and whether this drive
-uses the same scheme wants the manual, not an assumption. See
-[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). Closed-loop drives make this
+and find the feed rate at which the drive throws its tracking-error alarm. **The HBT family
+signals that as seven LED flashes** - its own manual's code, recorded in
+[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md), and bench-session §6 is where
+the real part confirms it. Closed-loop drives make this
 easy, because the drive detects the loss of sync itself rather than leaving it to be inferred from a
 part cut wrong. **Back off 30% from the first alarm** and that is the rapid.
 
