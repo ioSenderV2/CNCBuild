@@ -24,7 +24,7 @@ Vallder's HBT57C V1.0 user manual, 14 pages. Everything in this table is read ou
 
 | | |
 |---|---|
-| This machine | **3x HBT57112C on X, Y1, Y2; HBT5776C on Z** - his, corrected and confirmed 2026-11-26. The Mega V runs the same family, trouble-free at 48 V - and the same shape of split: its big three plus a smaller Z |
+| This machine | **3x HBT57112C on X, Y1, Y2; HBT5776C on Z - all four newly purchased**, his, confirmed 2026-11-26. The three shelf spares (two 2.0, one 1.5) stay spares. The Mega V runs the same family, trouble-free at 48 V - and the same shape of split: its big three plus a smaller Z |
 | HBT57112C | body **132 mm**, shaft 21 mm Ø8, phase **4.5 A / 0.78 Ω**, holding torque **3.2 N·m**, inertia 760 g·cm², weight **1780 g** |
 | HBT5776C (Z) | body **96 mm**, shaft 21 mm Ø8, phase **3.5 A / 0.40 Ω**, holding torque **2.0 N·m**, inertia 450 g·cm², weight **1100 g** |
 | Supply | **24-55 VDC, recommended 36.** Undervoltage trip below 18 V; overvoltage protection 55 / 60 / 65 V min/typ/max, fault logged at V ≥ 60 |
