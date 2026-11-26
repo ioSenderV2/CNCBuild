@@ -199,6 +199,10 @@ a Rev C package gets its own folder when the time comes.
 2. **Both SPINDLE silk labels read VFD.** J15 (the Mini-Fit Jr 4P the VFD control run
    lands on) and the bottom-edge TB J22 - both function labels change in `silk.py`'s
    table.
+3. **J22's fourth terminal label reads 0-10V, not PWM.** The signal is the 0-10 V
+   analog speed command; PWM is a separate controller pin this board does not use.
+   Open at design time: the net behind it is named `SPIN_PWM` (schematic, board,
+   netlist) - his call whether it gets renamed to match.
 
 ---
 
