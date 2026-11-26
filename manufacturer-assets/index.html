@@ -60,6 +60,26 @@
   </tr>
 
   <tr>
+    <td><strong>HBT57112C</strong><br>HBT57C family &middot; Vallder</td>
+    <td>HBT57C V1.0</td>
+    <td>Integrated closed-loop stepper, NEMA&nbsp;23 &mdash; <strong>the four axis motors, his,
+        2026-11-25</strong>; the Mega&nbsp;V runs the same family. The 112C row: 132&nbsp;mm body,
+        21&nbsp;mm shaft, 3.2&nbsp;N&middot;m, 4.5&nbsp;A phase, 1780&nbsp;g. 24&ndash;55&nbsp;V in,
+        36 recommended; undervoltage trip below 18&nbsp;V, overvoltage protection 55&ndash;65&nbsp;V.
+        Flash codes: 1 overcurrent (&ge;6&nbsp;A), 2 overvoltage (&ge;60&nbsp;V), 7 tracking error;
+        <strong>faults clear by power cycle only</strong>. RS232 configuration via dedicated cable.
+        Alarm: OC output, 100&nbsp;mA, pull-up max stated both 24 and 28&nbsp;V &mdash;
+        <strong>polarity not stated; the bench measured released-when-healthy</strong>.
+        <span class="warn">Logic inputs 4.5&ndash;24&nbsp;V at 10&ndash;16&nbsp;mA &mdash; NOT
+        3.3&nbsp;V; the RP23 interface question is the top open item in
+        <code>wiring/hbt57112c-drives.md</code></span>. No reverse-polarity protection &mdash;
+        reversal blows the internal fuse.</td>
+    <td><code>HBT57C_V1.0_Integrated_Closed_Loop_Motor_User_Manual_EN.pdf</code></td>
+    <td>Supplied by him 2026-11-26; vendor site www.vallder.com</td>
+    <td>2026-11-26</td>
+  </tr>
+
+  <tr>
     <td><strong>TST57-76P</strong><br>IG57S &middot; CNCTOPBAOS</td>
     <td>TST57 series<br>(sold as CNCTOPBAOS)</td>
     <td>Integrated closed-loop stepper, NEMA&nbsp;23 &mdash; <strong>superseded as the axis

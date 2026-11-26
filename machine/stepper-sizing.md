@@ -20,11 +20,13 @@ themselves.
 
 🔴 **SUPERSEDED BY PURCHASE, 2026-11-25: the machine runs four new HBT57112C** - the Mega V's
 family, one type on all four axes, see
-[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md). OPEN: **their torque rating is
-not recorded** - off the part or its manual, not from memory. The selection this file argues -
+[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md). Its manual (committed
+2026-11-26): **3.2 N·m, 132 mm body, 1780 g, 4.5 A phase.** The selection this file argues -
 2.2 N·m on X, Y1, Y2 and 1.5 on Z, from torque in the 1000-1500 rpm band - **stays as the record
 of the reasoning**; its conclusion no longer names the part on the machine, and where it leans on
-a *drive* characteristic it describes the IG57.
+a *drive* characteristic it describes the IG57. OPEN: 🔴 **the cantilever and fit figures below
+were budgeted around smaller motors** - the Why-not-3.2 section's *"roughly 2.5 kg at that
+reach"* note and the cast-frame fit both want re-checking against a 132 mm, 1.78 kg motor.
 
 ~~FLAG: **BOTH MOTORS MUST BE IG57.** The 1.5 on Z is an IG57, not one of the HBT57C spares -
 their alarm asserts on fault where the IG57's asserts when healthy, and one drive wired the

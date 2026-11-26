@@ -1267,8 +1267,9 @@ that switches is how it gets one.
 
 FLAG: **CHECK THE 5 V REGULATOR'S ABSOLUTE MAXIMUM INPUT BEFORE TRUSTING ANY OF THIS, AND SIZE IT ON
 WHAT THE RAIL CAN REACH RATHER THAN ON ITS NOMINAL 36 V.** The ceiling is whatever the drives
-tolerate before they trip - the HBT57C family is recorded at 24-55 V and its exact trip threshold
-waits on the manual being committed, see [`hbt57112c-drives.md`](hbt57112c-drives.md). A regulator
+tolerate before they trip - the HBT manual (committed 2026-11-26) rates the supply 24-55 V and
+puts overvoltage protection at 55-65 V with the fault logged at 60, see
+[`hbt57112c-drives.md`](hbt57112c-drives.md). A regulator
 chosen with no margin dies **taking the controller with it, mid-job**, which is the failure that
 looks like a random crash and gets diagnosed as firmware. FLAG: **This paragraph said 55 V until
 2026-10-12**, from the Mega V's drives - the figure may yet come back now both machines run that

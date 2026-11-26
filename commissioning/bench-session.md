@@ -10,8 +10,9 @@ Section 5 was answered on 2026-11-25, ahead of the rest.
 
 - ~~Whether the **36 V 600 W supply covers four drives**~~ - **the supply changed under this
   question, 2026-11-13: it is the XDR-960-36, 26.6 A.** The old 20 A ceiling was four drives at
-  the TST57's 5 A phase rating; OPEN: 🔴 **the HBT57112C's current rating is not recorded**, so
-  the ceiling arithmetic waits on its manual. **No reading here can change the supply.** The
+  the TST57's 5 A phase rating; the HBT manual (2026-11-26) rates the drive at **4 A continuous,
+  5 A peak**, so the paper ceiling sits where it did and the 26.6 A supply clears it either way.
+  **No reading here can change the supply.** The
   current readings stay because they buy the **heat number** for the drilled DIN enclosure - the
   open half of the old supply gate - and the per-drive sanity checks below.
 - Whether **all four can be switched on at once** without tripping the supply.
@@ -55,7 +56,7 @@ the supply is fine or marginal, not enough to say what the peak is.
 | **Supply** | **The XDR-960-36** - 36 V, 26.6 A, 960 W, DIN rail, arriving 2026-11-14. Adjust range is **36-42 V, so 36 is the pot's floor**. Label checked against the model on arrival, output **set and metered to 36.0 V** before anything connects |
 | **Reading current** | **A DC clamp meter on the supply's output leg.** The XDR has **no display** - a DC-OK LED, a DC-OK relay contact and Modbus, nothing that reads amps (committed spec PDF). The LCD went with the brick |
 | **Commanding motion** | grblHAL, jogging each axis. The motors need no mechanics to turn |
-| **DIP switches** | **2000 pulses/rev** on all four drives - his call 2026-11-13, $100-$103 = **400** steps/mm. OPEN: 🔴 **the switch positions recorded earlier (OFF-ON-ON-OFF) are the TST57 manual's row** - read the HBT57112C's own table off its manual or body before setting, see [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md) |
+| **DIP switches** | **2000 pulses/rev** on all four drives - his call 2026-11-13, $100-$103 = **400** steps/mm. SETTLED 2026-11-26: the HBT manual's own 2000 row is **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** - the same positions the TST table gave, now on the right authority. Mind **SW6: OFF = FOC, ON = point-to-point mode** on this family, see [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md) |
 | **Meter** | For the rail and for the alarm output |
 
 ### The RJ45 breakout at the drive end - mapping toned out 2026-11-15
@@ -226,6 +227,11 @@ fights against the table. Keeps hands off the shaft. Keep the commanded motion s
 the table at whatever speed is commanded. If the drive never faults, check whether the clamp is
 slipping on the shaft instead of stalling it: slip caps the torque below what provokes the fault,
 and it looks exactly like a drive that tolerates stall.
+
+NOTE: **The HBT manual's answer, on record before the bench's (committed 2026-11-26): power off
+and restart, for every protection - no enable-clear exists in it.** The attempts below still get
+run; a manual that buries features is already on file, and the cabinet consequence is expensive
+enough to deserve the observation.
 
 Then try each in turn, watching the LED and the alarm output:
 
