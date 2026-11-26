@@ -237,7 +237,7 @@ DOCS = {
         "order": [
             "README.md",
             "cabinet-power-and-grounding.md",
-            "ig57-drives.md",
+            "hbt57112c-drives.md",
             "breakout-box.md",
             "db37-axis-interconnect.md",
         ],

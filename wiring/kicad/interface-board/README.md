@@ -74,7 +74,7 @@ own twist partner: Step 1-2, Enable **3-6**, Dir **5-4**, Alarm 7-8. Wiring it a
 numbers read - 3 with 4, 5 with 6 - puts Enable and Dir in each other's twists. The
 board cannot catch it, because all four evens are the same GND net: it passes
 continuity and works, and costs only signal integrity. Drive-end terminals and the
-reasoning are in [`../../ig57-drives.md`](../../ig57-drives.md).
+reasoning are in [`../../hbt57112c-drives.md`](../../hbt57112c-drives.md).
 
 **3P pin order**: 1 = 12 V, 2 = signal, 3 = GND - matches the SN04's brown/black/blue.
 
@@ -214,10 +214,12 @@ a Rev C package gets its own folder when the time comes.
    his bench, 2026-11-25.** The machine's drives are the four new **HBT57112C** (his,
    2026-11-25 - the IG57 is no longer this machine's drive), and two of them measured
    **released when healthy** on a 12 V / 10K pull-up rig: 12.185 and 12.184 V powered
-   with a green LED, 0.37 and 0.054 V unpowered. They assert on fault, so the parallel
-   wire-OR is natively the correct combination - any drive faulting pulls the one pin.
-   No config flip needed. A broken alarm wire reads healthy on these drives (fails
-   silent) - a cabling fact to know, not a reason against the jumper field.
+   with a green LED, 0.37 and 0.054 V unpowered - see
+   [`../../hbt57112c-drives.md`](../../hbt57112c-drives.md). They assert on fault, so
+   the parallel wire-OR is natively the correct combination - any drive faulting pulls
+   the one pin. No config flip needed. A broken alarm wire reads healthy on these
+   drives (fails silent) - a cabling fact to know, not a reason against the jumper
+   field.
 
 ---
 
