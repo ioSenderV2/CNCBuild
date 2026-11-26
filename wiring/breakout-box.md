@@ -9,7 +9,7 @@ Settled 2026-09-10. Decisions, not measurements; nothing has been built or meter
 
 | | |
 |---|---|
-| **XDR-960-36** power supply | Motor power. **36 V, 26.6 A, 960 W**, DIN rail - bought 2026-11-13, replacing the 600 W 16.5 A brick, which stands down to spare. Still 36 V, the TST57 manual's recommended voltage - see [`ig57-drives.md`](ig57-drives.md) and [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) |
+| **XDR-960-36** power supply | Motor power. **36 V, 26.6 A, 960 W**, DIN rail - bought 2026-11-13, replacing the 600 W 16.5 A brick, which stands down to spare. Still 36 V, the TST57 manual's recommended voltage - see [`hbt57112c-drives.md`](hbt57112c-drives.md) and [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md) |
 | ~~**12 V, 3 A** buck~~ | SUPERSEDED - see below |
 | ~~**5 V, 3 A** buck~~ | SUPERSEDED - see below |
 | **DB37 breakout board** | Fans the [DB37 interconnect](db37-axis-interconnect.md) out to the back-panel connectors. Itself superseded by [`kicad/interface-board/`](kicad/interface-board) |
@@ -39,7 +39,7 @@ written when each axis's GND sat in the same 6-pin shell as its motor supply, so
 carried chopped motor current **and** served as the drive's opto reference. **Two measurements since
 have removed that:** the motor supply now runs on its own 18/2 shielded cable, and the drives' opto
 minus legs are **independent and isolated** - measured 2026-10-12, see
-[`ig57-drives.md`](ig57-drives.md). There is no longer a conductor doing both jobs.
+[`hbt57112c-drives.md`](hbt57112c-drives.md). There is no longer a conductor doing both jobs.
 
 **So what is left is the ordinary rule, and it still holds:**
 
@@ -63,7 +63,7 @@ Two connectors per axis.
 
 FLAG: **THIS CONNECTOR IS NOT WHAT THE STEPPER RUN USES.** Kept for the open-loop note below, which is
 still worth having. The stepper run is now **Cat 6 for the four signal pairs plus 18/2 shielded for
-the motor supply** - see [`ig57-drives.md`](ig57-drives.md).
+the motor supply** - see [`hbt57112c-drives.md`](hbt57112c-drives.md).
 
 **AL, EN, Step, Dir, motor supply, GND** - on **18 AWG**, 6 conductor.
 
@@ -160,22 +160,24 @@ the encoder design doc uses for its own latency argument - 267 mm/s - the axis t
 Recorded because this repo cares about where travel numbers come from. It is not an objection: the
 sensor is the backstop, and 0.5 mm of it is the cost.
 
-## The drives are IG57, and the stepper run is Cat 6 plus 18/2
+## The drives are HBT57112C, and the stepper run is Cat 6 plus 18/2
 
-FLAG: **THIS SECTION WAS WRITTEN ABOUT THE HBT57C AND THOSE ARE THE MEGA V'S DRIVES, NOT THIS
-MACHINE'S** - corrected by him on 2026-10-12. Four **IG57** all-in-one closed-loop steppers, 2.2 N·m,
-**DC 24-50 V**. The part and everything known about it is
-[`ig57-drives.md`](ig57-drives.md); this section is only what the *cabinet* has to do about them.
+FLAG: **THIS SECTION HAS NOW BEEN ABOUT THE HBT FAMILY TWICE.** It was written about the HBT57C,
+corrected on 2026-10-12 because those were the Mega V's drives and this machine's were the IG57 -
+and on 2026-11-25 he bought **four new HBT57112C for this machine**, so both machines run the HBT
+family after all. The part and everything known about it is
+[`hbt57112c-drives.md`](hbt57112c-drives.md); this section is only what the *cabinet* has to do
+about them.
 
 The drive is at the motor, so what leaves this box per axis is logic plus motor supply and never motor
 phases. **His cabling, 2026-10-12: one Cat 6 patch cable per stepper, each of PU, DR, EN and AL as a
 plus/minus pair in its own twist - plus on the striped conductor, minus on the solid - and 18/2
-shielded for the motor supply, sized for the drive's 5 A.** The drive presents these on two separate
-terminal blocks, a 2P for the supply and a small-gauge block of five signal pairs of which four are
-used.
+shielded for the motor supply** (sized against the TST57's 5 A; the HBT57112C's rating is an OPEN
+with its manual). The HBT57112C presents its signals as eight flying leads onto the RJ45 breakout -
+the lead colours are in the drives file.
 
 🔴 **THE PIN MAP IS NOT HERE AND MUST NOT BE COPIED HERE.** Which RJ45 pin each leg lands on is set
-by the interface board, which is ordered - see [`ig57-drives.md`](ig57-drives.md). **The twists are
+by the interface board, which is ordered - see [`hbt57112c-drives.md`](hbt57112c-drives.md). **The twists are
 3-6 and 4-5, not 3-4 and 5-6**, and that is the one detail a second copy of this table would get
 wrong.
 
@@ -188,14 +190,14 @@ seller's word.** This paragraph carried the seller's claim as fact. **No continu
 the minus signals**, so the isolation is **per signal, not per drive** - each of PU, DR and EN is its
 own opto with its own anode and cathode, and AL is a separate isolated output tied to none of them.
 Do not reinstate the common-cathode reading; the twisted-pair argument in
-[`ig57-drives.md`](ig57-drives.md) depends on it being wrong.
+[`hbt57112c-drives.md`](hbt57112c-drives.md) depends on it being wrong.
 
 **What the Cat 6 scheme replaces is the 6-pin shell on this page** - the connector, the conductor
 count, and the fact that the motor supply no longer shares a shell with the signals.
 
 **The star rule above still applies and is now easier to honour**: the motor supply runs on its own
 shielded cable, so no signal reference shares a conductor with chopped motor current by construction. See
-[`ig57-drives.md`](ig57-drives.md).
+[`hbt57112c-drives.md`](hbt57112c-drives.md).
 
 ### OPEN: Keep AL per axis in the cabling, whatever the firmware does today
 
@@ -206,22 +208,23 @@ one input today. Keeping them separate is still right: the wiring is nearly free
 expensive to retrofit, and per-axis needs only a board-map edit later. With AL on its own pair per
 stepper that wiring is already done.
 
-### SETTLED: The alarm fails the right way on this drive, and no power-present partner is needed
+### The alarm asserts on fault - measured - and the power-present question is back open
 
-**The IG57's alarm output is normally closed by default and asserts when the drive is HEALTHY** - the
-TST57 manual's §7.3, see [`ig57-drives.md`](ig57-drives.md). An unpowered drive, a broken alarm wire
-or a pulled connector all stop the assertion, so all three read as a fault.
+~~SETTLED: the alarm fails the right way on this drive, and no power-present partner is needed.~~
+That stood on the TST57 manual's assert-when-healthy sentence, and it left with the IG57. **The
+HBT57112C's alarm measured released-when-healthy on two units, 2026-11-25** - it asserts on fault,
+like the Mega V's always did - see [`hbt57112c-drives.md`](hbt57112c-drives.md) for the readings.
 
-FLAG: **THIS PAGE PREVIOUSLY SAID THE OPPOSITE AND IT WAS RIGHT ABOUT A DIFFERENT DRIVE.** The Mega
-V's alarm asserted on fault, so it needed a **driver-power-present** partner to become a real guard -
-*power present AND no alarm* = healthy. **That partner is not needed here**: asserting when healthy
-already carries the power-present information, because a drive with no power cannot assert anything.
-The spare pin that was being reserved for it in
-[`db37-axis-interconnect.md`](db37-axis-interconnect.md) is freed.
+FLAG: 🔴 **SO THIS FAMILY FAILS SILENT, WHICH IS THE FAILURE THIS PAGE NAMED IN THE FIRST PLACE.**
+An unpowered drive, a broken alarm wire or a pulled connector all read exactly like healthy. The
+**driver-power-present** partner this page once reserved a pin for - *power present AND no alarm*
+= healthy - is **back open as a question**; the spare pin in
+[`db37-axis-interconnect.md`](db37-axis-interconnect.md) was freed on the strength of the IG57
+sentence and that reasoning no longer holds.
 
-FLAG: **SO THE WIRE-OR BECOMES A SERIES CHAIN.** Four alarms that assert on fault parallel together;
-four that assert when healthy go in **series**, and any one dropping out breaks it. Wiring it as a
-parallel OR out of habit produces a guard that reads healthy when every drive is dead.
+**And the combination is a parallel wire-OR, not a series chain.** Four alarms that assert on
+fault parallel together - any one faulting pulls the common line. The series-chain note that
+stood here applied to the IG57's claimed sense and retires with it.
 
 OPEN: **Confirm the sense with a meter before relying on it** - power one drive with nothing wrong
 and see whether the output is asserted. The manual is machine-translated and "normally closed by
@@ -257,7 +260,7 @@ Never verified against how the machine is actually wired today.
 3. SETTLED: ~~**The rail voltage.**~~ **36 V, his decision 2026-10-12** - the TST57 manual's
    recommended voltage, and it leaves the Mega V's 48 V supply where it is. At 48 V the rail would
    have sat at the manual's lowest stated maximum with about 2 V for regeneration on decel against a
-   drive that alarms and stops mid-job. See [`ig57-drives.md`](ig57-drives.md). SETTLED: ~~**the
+   drive that alarms and stops mid-job. See [`hbt57112c-drives.md`](hbt57112c-drives.md). SETTLED: ~~**the
    supply's wattage is not recorded**~~ - **600 W, 36 V at 16.5 A, nameplate 2026-10-12.** The budget
    went **up** 4 A as a side effect of dropping the rail, because the same watts at a lower voltage
    buy more current. **And up again 2026-11-13: the XDR-960-36 replaced the brick - 26.6 A**, so the
@@ -271,7 +274,7 @@ Never verified against how the machine is actually wired today.
 5. SETTLED: ~~**Confirm the opto commoning.**~~ **MEASURED 2026-10-12: no continuity between any of
    the minus signals, so they are INDEPENDENT** - and the seller, who said they were commoned, was
    wrong. Per-signal isolation is real and the Cat 6 pairing gives each signal a forced return in its
-   own twist. See [`ig57-drives.md`](ig57-drives.md).
+   own twist. See [`hbt57112c-drives.md`](hbt57112c-drives.md).
 6. **How a fault is cleared.** PROCEDURE:
    [`../commissioning/bench-session.md`](../commissioning/bench-session.md), while the motors are
    still loose. The manual does not say. It describes the alarm output and the LED and
