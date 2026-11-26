@@ -214,7 +214,11 @@ a Rev C package gets its own folder when the time comes.
    [`../../ig57-drives.md`](../../ig57-drives.md)), so this only goes on the board if
    the ALM can really be inverted to assert-on-fault - which hangs on that file's open
    contradiction over whether the MicroUSB config port is usable at all. No flip, no
-   jumper field.
+   jumper field. **First test, then config**: bench-session §5's two meter readings on
+   an IG57 come before the MicroUSB question - the HBT57C measured opposite its
+   assumed sense on 2026-11-25 (12 V / 10K rig, see
+   [`../../../machine/stepper-sizing.md`](../../../machine/stepper-sizing.md)), and if
+   the IG57 also measures released-when-healthy the gate opens with no flip needed.
 
 ---
 
