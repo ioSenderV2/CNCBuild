@@ -1,4 +1,4 @@
-"""Silkscreen labels for the interface board - Rev B option 1 geometry.
+"""Silkscreen labels for the interface board - Rev C geometry.
 
 Run with KiCad's bundled Python after route.py, from anywhere - the board is
 found beside this file:
@@ -106,7 +106,7 @@ LABELS = [
     # in the south-west corner, over the S corridor (vias are tented)
     ("CNCBuild",  13.0, 93.2, 0.9, 0),
     ("INTERFACE", 13.0, 95.1, 0.9, 0),
-    ("REV B",     13.0, 97.0, 0.9, 0),
+    ("REV C",     13.0, 97.0, 0.9, 0),
 ]
 
 # per-position signal names, rotated, above the output-row terminals

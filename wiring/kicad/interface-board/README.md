@@ -15,10 +15,13 @@ the E-stop contactor's block. See
 | File | |
 |---|---|
 | `interface-board.kicad_sch` | The schematic. Symbols are **embedded** (`lib_symbols`), so it needs no external libraries. |
-| `interface-board.kicad_pcb` | **REV B, this branch: 121 x 104.5 mm, FOUR layers** - F.Cu signal, In1.Cu solid GND plane, In2.Cu solid +12V plane, B.Cu signal. 19.6 sq in. **Top half MACHINE IN, bottom half RP23 OUT.** **No 36 V on it** - stripped 2026-11-14, see below. The lid gets cut to match the board. The four M3 holes are **at the corners** - 22,4 / 117.3,4 / 5,99.8 / 117.3,99.8 from the top-left; [`../../../docs/drawings/board-mounting.html`](../../../docs/drawings/board-mounting.html) is the drilling drawing and regenerates from this file. **main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
+| `interface-board.kicad_pcb` | **REV C, this branch: 121 x 104.5 mm, FOUR layers** - same outline, stackup and corner M3 holes as Rev B (22,4 / 117.3,4 / 5,99.8 / 117.3,99.8 from the top-left; [`../../../docs/drawings/board-mounting.html`](../../../docs/drawings/board-mounting.html) is the drilling drawing). **Top half MACHINE IN, bottom half RP23 OUT; no 36 V on it.** Rev C adds the five alarm-OR jumpers, swaps 12 V OUT and the UART1 header, and renames SPIN_PWM - the Rev C section below is the record. **The rev-b branch holds Rev B as ordered; main still holds Rev A** (210 x 94, 2 layers) - the boards in hand. |
 | `interface-board.pretty/` | Project footprints for the two parts KiCad's libraries lack: the 85508 jack and the 3P single-row header, both taken from the committed Molex drawings. |
 | `route.py` | Regenerates ALL copper from the placed footprints - the Rev B rewrite of the channel router. Owns every track on the board; re-run it after moving a part, then refill zones via the DRC command below. GND and +12V are inner-plane zones and route themselves (every pad on both nets is through-hole); signals run as F.Cu verticals into packed B.Cu lane corridors. **Finds the board beside itself** - it carried a hard-coded Windows path until 2026-11-14 and now runs from either machine. Verticals cross a connector row on searched columns, 0.70 mm apart - track-past-via, not just track-track - with jogs in the gap above the row. |
 | `fab/oshpark/` | Manufacturing outputs for **OSH Park**: gerbers (Protel extensions), Excellon drill, and `interface-board-oshpark.zip` - the one file their upload takes. Board is 210 x 94, 2 layers; their standard 1.6 mm matches the 85508 jack's 1.57 tooling. **Rev A ordered 2026-11-03**, OSH Park order xPBWS3rt, $164.95 for 3 with FedEx 2 Day - this zip is what was uploaded; the order is recorded in [`orders/`](../../../orders/README.md), where the invoice PDF is kept out of git. Regenerate after any board change with the two kicad-cli export commands, then re-zip. |
+| `fab/oshpark-revc/` | **Rev C quote package - built 2026-11-26, NOT ordered.** `interface-board-revc-oshpark.zip`, 13 files, same layer set and framing as Rev B's package; regenerate with `make-fab-revc.ps1`. |
+| `make-fab-revc.ps1` | Builds the Rev C quote package - DRC with refill and parity first, refuses to build if it is not clean, keeps the drill map out of the zip. |
+| `rev-c-changes.py` | **The Rev C one-shot, 2026-11-26**: J19 to a row-B terminal block, J37 stood up in row A, the SPIN_0_10V rename, and JP1-JP5 placed. Refuses a board that already carries JP1. Kept as the record, including the three jumper placements that failed routing and why. |
 | `fab/oshpark-revb/` | **Rev B manufacturing outputs - ORDERED 2026-11-15**, OSH Park order G6Jj6s46, 3 boards on Four Layer Super Swift, $429.80 with UPS Next Day Air - this zip is what was uploaded; the order is recorded in [`orders/`](../../../orders/README.md), invoice kept out of git. `interface-board-revb-oshpark.zip` is the single file their upload takes: 13 files, all four copper layers (`.gtl` `.g1` `.g2` `.gbl`), masks, silks, `.gm1` outline and the Excellon drill. The drill **map** is written alongside but deliberately kept **out of the zip** - it is a `.gbr` and their uploader can mistake it for a copper layer. Outline read from the plotted gerber: **x 5..126 by y 5..109.5 - 121.00 x 104.50 mm, 19.6 sq in.** Regenerate after any board change **with `make-fab-revb.ps1`**, which keeps the refill and the map-exclusion from being forgotten. **Rev A's order record in `fab/oshpark/` is not touched by this.** |
 | `silk.py` | Regenerates every free silkscreen label (function names, per-terminal signal names). Owns all board text - edit its tables, not the board. |
 | `interface-board.kicad_pro` | Project wrapper. |
@@ -28,7 +31,7 @@ the E-stop contactor's block. See
 | `rev-a-validation.md` | The meter checkout for the three **Rev A** boards in hand - footprint fit, bridge sweep, net-by-net continuity against the Rev A netlist, jack-face map, first 12 V. Run it before the board meets the RP23. Its tables are from **main's** routed board, not this branch's. |
 | `make-fab-revb.ps1` | Builds the whole Rev B quote package - DRC with refill, both exports, the zip. Refuses to build if DRC is not clean. Run this rather than the export commands by hand. |
 | `swap-power-connectors.py` | Placed the three cabinet power feeds as Mini-Fit Jr. Kept because it carries the courtyard arithmetic for row A, which is the tightest row on the board. The 36 V one of the three has since gone. |
-| `make-mech.py` | **The board as mechanical drawings, 2026-11-14**, for laying out the enclosure in Fusion. Writes `mech/interface-board-revb.dxf` - perimeter, the four mounting holes at drilled diameter, and one rectangle per connector, on separate layers (`BOARD`, `HOLES`, `BODY_TOP` for the 20 connectors above the divider that the lid opens onto, `BODY_BOTTOM` for the 17 below, plus `FAB_DETAIL`, `COURTYARD` and `REFS` for reference). Millimetres, origin at the board's bottom-left corner, y up, seen from the component side. **The rectangles are the headers on the board - the mating plugs are bigger.** Also writes `mech/interface-board-revb.step`, untracked: the board, top face at z 1.6, with 31 of its 37 connectors standing on it - the six terminal blocks have no model. |
+| `make-mech.py` | **The board as mechanical drawings, 2026-11-14**, for laying out the enclosure in Fusion. Writes `mech/interface-board-revc.dxf` (Rev C names since 2026-11-26) - perimeter, the four mounting holes at drilled diameter, and one rectangle per connector, on separate layers (`BOARD`, `HOLES`, `BODY_TOP`, `BODY_BOTTOM`, plus `FAB_DETAIL`, `COURTYARD` and `REFS` for reference). Millimetres, origin at the board's bottom-left corner, y up, seen from the component side. **The rectangles are the headers on the board - the mating plugs are bigger.** Also writes `mech/interface-board-revc.step`, untracked: the board with its connectors standing on it. The Molex bodies appear only on a machine that has the untracked `manufacturer-assets/3d/` downloads; the terminal blocks have no model anywhere. |
 | `attach-models.py` | **Molex's own 3D models on the Molex connectors, 2026-11-14** - the RJ45 jacks and all three Mini-Fit Jr headers, which KiCad ships nothing for. The four STEP files are his download and sit **untracked** in `manufacturer-assets/3d/`; a clone without them still opens and passes DRC, and just lacks those parts in 3D. Each model was aligned by slicing it under the housing and matching its pins and pegs to the footprint's holes, then checked by exporting one connector alone and measuring where it landed. Re-runnable. |
 | `add-fan-headers.py` | **The two fan headers, 2026-11-14**: adds J60 and J61 to the schematic and the board and slides 12 V OUT 0.4 mm west. One-shot - it refuses a board that already has J60. Kept as the record, with the two placements that were tried first and why they failed. |
 | `remove-36v.py` | **The strip-down, 2026-11-14**: took J50-J55 and both 36 V nets off the schematic and the board, moved everything under the limit row up 27.5 mm, brought the east mounting holes in and redrew the outline. One-shot - it refuses a board with no J50. Kept as the record. |
@@ -51,9 +54,10 @@ the E-stop contactor's block. See
 |---|---|
 | 5x RJ45 vertical, one cat6 per stepper - column order **X, Y1, Y2, Z, B**, each with its limit 3P stacked below it | 2x10 IDC ribbon to RP23 **J20** (pin-for-pin), middle of row A |
 | Mini-Fit Jr 3P - 3D probe (12 V), 3P - toolsetter (12 V) | 2x3 IDC ribbon to RP23 **J24** servo alarms, west end of row A |
-| 2x Mini-Fit Jr 2P - touch probes | Mini-Fit Jr 2P - 12 V IN, Mini-Fit Jr 2P - 12 V OUT to the RP23 - both latched, so a pulled feed has no bare conductor |
-| 2x Mini-Fit Jr 2P - mist, flood | 3.5 mm TBs, one position per signal with silk names: limits 5P, spindle 4P, probe + door 2P |
-| Mini-Fit Jr 4P - spindle (Enable, GND, GND, 0-10 V) | 3.5 mm TBs passing the new inputs through: mist 2P, flood 2P, control 4P; UART1 leaves on a **1x4 2.54 mm header** - dupont jumpers straight to the RP23's 4-pin UART header |
+| 2x Mini-Fit Jr 2P - touch probes | Mini-Fit Jr 2P - 12 V IN (latched, so a pulled feed has no bare conductor); **12 V OUT is a 3.5 mm 2P TB on the bottom edge since Rev C**, +12V / G on its silk |
+| 2x Mini-Fit Jr 2P - mist, flood | 3.5 mm TBs, one position per signal with silk names: limits 5P, VFD 4P (EN / G / G / 0-10V), probe + door 2P |
+| Mini-Fit Jr 4P - VFD (Enable, GND, GND, 0-10 V) | 3.5 mm TBs passing the new inputs through: mist 2P, flood 2P, control 4P; UART1 leaves on a **1x4 2.54 mm header standing at the east end of row A since Rev C** - dupont jumpers straight to the RP23's 4-pin UART header |
+| **JP1-JP5 - the alarm wire-OR jumpers**, one per axis zone in X / Y / A / Z / B order: all five shunts fitted ties the five AL lines together and **J17 pin 1 is the one alarm out for a Teensy's single motor-fault input**; shunts off = five separate alarms on the ribbon, as the RP23 expects | |
 | Mini-Fit Jr 4P - cycle start / feed hold / e-stop / spare | 5x 2.54 mm header, **GND / Step / Dir / Enable** per axis - jumper to a Teensy T41U5XBB instead of the ribbon |
 | Mini-Fit Jr 4P - UART1 for CAN, **TX / RX / 3.3V / GND** | |
 | **4-pin fan header - RAD FAN (J60)**, always-on 12 V: the external fan on the coolant radiator. In the top half, under the Z column, because its lead comes in through the lid like a machine cable | **4-pin fan header - CASE FAN (J61)**, always-on 12 V: the 40 mm Noctua inside the case. East end of row A, beside the 12 V pair - its lead never leaves the enclosure |
@@ -126,13 +130,13 @@ at the DIN blocks.
 **J20 is a skipped reference.** On this bench "J20" means the RP23's stepper header;
 two J20s in one enclosure invites miswiring.
 
-## Status: verified against KiCad 10.0.8, 2026-11-14
+## Status: verified against KiCad 10.0.8, Rev C, 2026-11-26
 
 | Check | Result |
 |---|---|
-| ERC | **0 errors.** 37 warnings, every one a library-not-configured notice - the symbols and footprints are embedded, so they carry nothing |
-| `netlist.txt` | **All 42 nets, plus the four no-connect pads of the fan headers**, planes included, written straight from the kicad-cli export. FLAG: **this is no longer an independent check.** It was one while `generate.py` produced both; now that KiCad owns the schematic the file can only be derived from it, so it is documentation, not corroboration. |
-| PCB DRC with schematic parity, **all severities** | **0 errors, 0 unconnected, 0 parity issues.** 50 warnings: 41 silk over copper, 5 jack pin-1 dots near the top edge, 4 library notices. FLAG: **this row said "0 parity issues" while 178 were being hidden.** It was run at error severity, and every pad on the board was a net-name *warning*: the schematic's labels were local, so its nets were `/STEP_X` against the board's `STEP_X`. Connectivity matched; the names did not, and a real mismatch would have been one more warning in the pile. **The labels are global now and the mounting holes are marked board-only, so the count is a true zero** - run it at all severities to keep it that way |
+| ERC | **0 errors.** Warnings are library-not-configured notices - the symbols and footprints are embedded, so they carry nothing |
+| `netlist.txt` | **All 42 nets, plus the four no-connect pads of the fan headers** - 46 entries, 172 pads, planes included, written straight from the routed board. SPIN_0_10V carries its new name; the five AL nets each gained their jumper pad and AL_X carries the rail. FLAG: **this is no longer an independent check.** It was one while `generate.py` produced both; now that KiCad owns the schematic the file can only be derived from it, so it is documentation, not corroboration. |
+| PCB DRC with schematic parity, **all severities** | **0 errors, 0 unconnected, 0 parity issues.** 74 warnings: silk over copper (the jumper and UART labels joined Rev B's 41), the 5 jack pin-1 dots near the top edge, 4 library notices, and text-height notes on the small 0.7 mm labels. FLAG (kept from Rev B): **a "0 parity issues" at error severity once hid 178 net-name warnings** - the labels are global now, so run it at all severities to keep the zero honest |
 
 Reproduce with:
 
@@ -162,12 +166,13 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
    | RJ45 vertical (J1-J5) | Molex **85508-5001** - top entry, THT, Cat5e, shielded (the tab holes are **unplated with no net** - read off the board file, both revs - so the shield floats; the patch cables are UTP, so it carries nothing), no magnetics, 16.85 mm tall. 10 ordered 2026-11-03, Mouser order 40971773. NOT the sensor board's jack - that stays the unshielded 69255-004LF, whose end must float | 5 |
    | 3P single row (J6-J12) | Molex **39-30-1039** - 5566, vertical, peg lock. 20 ordered 2026-11-03, Mouser order 40971773 | 7 |
    | 4P dual row 2x2 (J15, J32, J33) | Molex **39-29-9047** (5566-04A2, tin, with pegs) - **10 ordered from Digi-Key 2026-11-20**, after the bag proved the 46999-0621s are 1x2: Molex drawing 55660021-SD was right, 46999-0621 is 5566-02A2MS-210, 2 circuits, and all 30 bought (10 on 2026-11-02, 20 on 2026-11-13) miss the 04A2 footprint - peg holes 13.60 apart against the 2-circuit part's 9.40. Matte tin 46999-0502 stayed a non-option at Mouser minimum 4800 | 3 |
-   | 2P dual row (J13, J14, J30, J31, **J18 12 V in, J19 12 V out**) | Molex **39-29-9027** - 2 ckt vertical with peg, tin. 10 ordered 2026-11-02 (Mouser 40971389), 25 more 2026-11-13; the first order's 39-31-0027 is 10 spare 2-ckt without peg, which also fit these footprints. The peg is worth keeping on the two feeds that get unplugged | 6 |
-   | 3.5 mm TB 2P (J23, J34, J35) | KF350-class screw block, 4Ucon pattern - **to order** | 3 |
+   | 2P dual row (J13, J14, J30, J31, **J18 12 V in**) | Molex **39-29-9027** - 2 ckt vertical with peg, tin. 10 ordered 2026-11-02 (Mouser 40971389), 25 more 2026-11-13; the first order's 39-31-0027 is 10 spare 2-ckt without peg, which also fit these footprints. **J19 left this row in Rev C** - 12 V OUT is a TB now, so one fewer housing-and-terminals set gets made up | 5 |
+   | 3.5 mm TB 2P (J23, J34, J35, **J19 12 V out** - Rev C) | KF350-class screw block, 4Ucon pattern - **to order** | 4 |
    | 3.5 mm TB 4P (J22, J36) | same family - **to order** | 2 |
    | 3.5 mm TB 5P (J21) | same family - **to order** | 1 |
    | Pin header 1x04 2.54 mm (J40-J44, J37 UART1 out) | any breakaway header - **to order or from stock** | 6 |
    | 4-pin fan header (J60 radiator fan, J61 case fan) | Molex **47053-1000** class - the keyed 2.54 mm PC fan header, KiCad's `FanPinHeader_1x04`. The footprint drills a 1.1 mm locating hole beside pin 3; a part with no peg simply leaves it empty - **to order** | 2 |
+   | Pin header 1x02 2.54 mm (JP1-JP5, alarm-OR jumpers - Rev C) | any breakaway header, plus **5 standard 2.54 mm shunts** - from stock | 5 |
 
    Cable-end housings (5557, take the 5556 terminals already in stock): 3P single row
    **39-01-4031**, 4P single row **39-01-4041**, 2P dual row **39-01-2025** family.
@@ -185,41 +190,45 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
 
 ---
 
-## Rev C - change list, opened 2026-11-25
+## Rev C - change list, opened 2026-11-25; IN COPPER 2026-11-26
 
 **His call, 2026-11-25: Rev C starts as a design pass on this branch (rev-c).** Nothing is
-ordered. Changes get recorded here as they come; the board work follows once the list
-settles. Rev B's fab package in `fab/oshpark-revb/` is an order record and is not touched -
-a Rev C package gets its own folder when the time comes.
+ordered. SETTLED 2026-11-26: **all four changes are designed in** - placed, routed,
+silkscreened, ERC and DRC clean, and the quote package is built in
+[`fab/oshpark-revc/`](fab/oshpark-revc). [`rev-c-changes.py`](rev-c-changes.py) is the
+one-shot record of how they went on. **No order has gone out.** Rev B's fab package in
+`fab/oshpark-revb/` is an order record and is not touched. Still owed before the alarm-OR
+jumpers are *trusted* (not before ordering): watching a provoked fault actually close an
+HBT alarm output - bench-session §6's stall.
 
-1. **12 V OUT and the UART1 output header swap places.** J19 (12 V OUT, Mini-Fit Jr 2P)
-   becomes a 3.5 mm 2P terminal block on the bottom edge with the other TBs. J37
-   (UART1 out, 1x4 2.54 mm) moves up into J19's old spot at the east end of row A,
-   rotated 90 degrees.
-2. **Both SPINDLE silk labels read VFD.** J15 (the Mini-Fit Jr 4P the VFD control run
-   lands on) and the bottom-edge TB J22 - both function labels change in `silk.py`'s
-   table.
-3. **J22's fourth terminal label reads 0-10V, not PWM.** The signal is the 0-10 V
+1. SETTLED: **12 V OUT and the UART1 output header swap places.** J19 (12 V OUT) is now a
+   3.5 mm 2P terminal block in J37's old bottom-edge slot, terminals silked +12V / G. J37
+   (UART1 out, 1x4 2.54 mm) stands vertical at J19's old spot at the east end of row A -
+   pin names TX / RX / 3V3 / G run down its east side, served by the same side-jog trick
+   as the Teensy headers.
+2. SETTLED: **Both SPINDLE silk labels read VFD.** J15 (the Mini-Fit Jr 4P the VFD control
+   run lands on) and the bottom-edge TB J22, in `silk.py`'s tables and on the board.
+3. SETTLED: **J22's fourth terminal label reads 0-10V, not PWM.** The signal is the 0-10 V
    analog speed command; PWM is a separate controller pin this board does not use.
-   The net behind it renames to match - **`SPIN_PWM` becomes `SPIN_0_10V`**, his,
-   2026-11-25 - in the schematic's global labels, the board, and `netlist.txt` via
-   `make-netlist.py`; `rev-a-validation.md`'s table stays as Rev A's record.
-4. **GATED: an alarm-OR jumper field feeding one J17 pin, for the Teensy path.** The
-   T41U5XBB runs grblHAL's single combined motor-fault input, and the Teensy jumper
-   headers J40-J44 carry no alarm at all - so in Teensy mode this pin would be the
-   only alarm route: shunts strap the five AL lines onto a common rail landing on one
-   J17 pin, one dupont from there to the Teensy; shunts off and the straight ribbon
-   to the RP23 behaves as today. ~~🔴 The gate: a parallel tie of assert-when-healthy
-   outputs reads healthy until every drive is dead.~~ SETTLED: **the gate is open -
-   his bench, 2026-11-25.** The machine's drives are the four new **HBT57112C** (his,
-   2026-11-25 - the IG57 is no longer this machine's drive), and two of them measured
-   **released when healthy** on a 12 V / 10K pull-up rig: 12.185 and 12.184 V powered
-   with a green LED, 0.37 and 0.054 V unpowered - see
-   [`../../hbt57112c-drives.md`](../../hbt57112c-drives.md). They assert on fault, so
-   the parallel wire-OR is natively the correct combination - any drive faulting pulls
-   the one pin. No config flip needed. A broken alarm wire reads healthy on these
-   drives (fails silent) - a cabling fact to know, not a reason against the jumper
-   field.
+   The net renamed to match - **`SPIN_PWM` is `SPIN_0_10V`** in the schematic's global
+   labels, the board, and `netlist.txt`; `rev-a-validation.md`'s table stays as Rev A's
+   record.
+4. SETTLED: **the alarm wire-OR jumpers, JP1-JP5 - five shunts, one per axis, and J17
+   pin 1 is the single output for the Teensy path.** The T41U5XBB runs grblHAL's single
+   combined motor-fault input, and the Teensy jumper headers J40-J44 carry no alarm at
+   all - so in Teensy mode this is the only alarm route: **fit all five shunts** and the
+   five AL lines tie onto the AL_X rail; one dupont from J17 pin 1 to the Teensy.
+   **Shunts off and the straight ribbon to the RP23 behaves exactly as today.** Each
+   jumper stands in its own axis's zone between input rows 3 and 4, in J40-J44's
+   X / Y / A / Z / B naming, with X OR .. B OR silked beside them and the rule printed
+   once across the board. The electrical gate opened on the bench 2026-11-25: the
+   machine's HBT drives measured **released when healthy** - they assert on fault, so
+   the parallel OR is natively the right combination, no config flip needed - see
+   [`../../hbt57112c-drives.md`](../../hbt57112c-drives.md). A broken alarm wire reads
+   healthy on these drives (fails silent) - a cabling fact to know, not a reason
+   against the jumpers. Routing-wise the jumpers cost zero crossings: pin 1 taps its
+   AL bundle street through a B.Cu stub and a via on the street line, and the AL_X
+   rail threads the top half on B.Cu, which nothing else uses up there.
 
 ---
 
