@@ -36,11 +36,23 @@ LABELS = [
     # misc input row 3, labels between the rows
     ("CONTROL",    14.4, 54.15, 0.9, 0),
     ("TOOLSETTER", 38.9, 54.15, 0.9, 0),
-    ("SPINDLE",    62.9, 54.15, 0.9, 0),
+    # SPINDLE until Rev C: the connector feeds the VFD's control terminals and
+    # the label now says so - his, 2026-11-25
+    ("VFD",        62.9, 54.15, 0.9, 0),
     ("3D PROBE",  109.5, 54.15, 0.9, 0),
     # the radiator fan header stands in the Z column's zone of row 3 - the
     # top half, because its lead comes in through the lid like a machine cable
     ("RAD FAN",    86.7, 54.15, 0.9, 0),
+    # the Rev C alarm-OR jumpers, one on each axis's AL street in the strip
+    # between rows 3 and 4 - a letter under each, the story told once. All
+    # five shunts tie the drives' assert-on-fault alarms together and J17
+    # pin 1 is the single output for the Teensy's motor-fault input.
+    ("X OR", 47.9, 42.4, 0.7, 0),
+    ("Y OR", 50.8, 54.2, 0.7, 0),
+    ("A OR", 78.9, 42.4, 0.7, 0),
+    ("Z OR", 92.5, 42.4, 0.7, 0),
+    ("B OR", 118.9, 42.4, 0.7, 0),
+    ("ALARM WIRE-OR - 5 SHUNTS = ONE ALARM OUT ON J17 PIN 1", 65.5, 67.4, 0.7, 0),
     # misc input row 4, labels below
     ("TOUCH 1", 15.4, 68.8, 0.9, 0),
     ("TOUCH 2", 38.9, 68.8, 0.9, 0),
@@ -67,24 +79,29 @@ LABELS = [
     ("B",    87.8, 91, 0.8, 0),
     ("TEENSY  G S D E", 33.8, 92.7, 0.9, 0),
     ("TEENSY  G S D E", 83.2, 92.7, 0.9, 0),
-    # the two 12 V feeds - Mini-Fit, so the pins STACK where the screw blocks
-    # sat side by side. x is each connector's single pad column.
+    # 12 V IN stays a Mini-Fit; 12 V OUT became a row-B terminal block in
+    # Rev C and the UART1 header stands in its old spot
     ("12V IN",  98.5, 91, 0.9, 0),
-    ("12V OUT", 112.1, 91, 0.9, 0),
-    # polarity cannot go beside these pads - row A has no room west of either
-    # for a mark aligned with its pad row. So the convention is printed once.
-    ("+ TOP  - BOTTOM", 105.5, 92.7, 0.8, 0),
+    ("+ TOP  - BOTTOM", 98.5, 92.7, 0.8, 0),
+    ("UART1", 112.1, 91, 0.9, 0),
+    # J37's pin names, east of the pads (the jog columns run there - silk
+    # over copper, a warning the board already carries 41 of)
+    ("TX",  114.6, 81.10, 0.7, 0),
+    ("RX",  114.6, 83.64, 0.7, 0),
+    ("3V3", 114.9, 86.18, 0.7, 0),
+    ("G",   114.6, 88.72, 0.7, 0),
     # the case fan header, east end of row A - bottom half, it never leaves
     # the enclosure
     ("CASE FAN", 121.6, 91, 0.8, 0),
-    # terminal block row - block names above
+    # terminal block row - block names above. SPINDLE reads VFD since Rev C,
+    # and the east slot is the 12 V OUT block that took the UART header's place
     ("CONTROL", 29.25, 100.15, 0.85, 0),
     ("LIMITS",  47.5, 100.15, 0.85, 0),
     ("PRB DR",  62.25, 100.15, 0.85, 0),
-    ("SPINDLE", 75.25, 100.15, 0.85, 0),
+    ("VFD",     75.25, 100.15, 0.85, 0),
     ("MIST",    87.75, 100.15, 0.85, 0),
     ("FLOOD",   96.75, 100.15, 0.85, 0),
-    ("UART1",  108.81, 100.15, 0.85, 0),
+    ("12V OUT", 106.75, 100.15, 0.85, 0),
     # the title gave its place in row 3 to the radiator fan header and stacks
     # in the south-west corner, over the S corridor (vias are tented)
     ("CNCBuild",  13.0, 93.2, 0.9, 0),
@@ -99,10 +116,12 @@ TB_PINS = {
     # J21 limits land on the controller too, so they carry the same mapping
     40.5:  (3.5, ["X", "Y1=Y", "Y2=A", "Z", "B"]),
     60.5:  (3.5, ["PRB", "DR"]),                # J23
-    70.0:  (3.5, ["EN", "G", "G", "PWM"]),      # J22 spindle
+    # the fourth terminal is the 0-10 V speed command and says so since
+    # Rev C - PWM was never the signal there
+    70.0:  (3.5, ["EN", "G", "G", "0-10V"]),    # J22 VFD
     86.0:  (3.5, ["A", "B"]),                   # J34 mist
     95.0:  (3.5, ["A", "B"]),                   # J35 flood
-    105.0: (2.54, ["TX", "RX", "3V3", "G"]),    # J37 uart - a 1x4 header
+    105.0: (3.5, ["+12V", "G"]),                # J19 12 V OUT, the Rev C TB
 }
 TB_PIN_Y = 97.9           # just above the row B terminals
 
@@ -115,10 +134,16 @@ REF_ON_BODY = {
     "J15": (2.1, 3.25), "J32": (2.1, 3.25), "J33": (2.1, 3.25),
     "J21": (7.0, 0.1), "J22": (5.25, 0.1), "J23": (1.75, 0.1),
     "J34": (1.75, 0.1), "J35": (1.75, 0.1), "J36": (5.25, 0.1),
-    # J37 is the UART header, rotated 90: local (dx,dy) lands at board
-    # (dy,-dx), so this puts the ref just south of the pin row
-    "J37": (-3.6, 3.8),
-    "J18": (0.0, 3.25), "J19": (0.0, 3.25),
+    # J37 stands vertical in row A since Rev C - ref in the strip under the
+    # divider, where J40-J44 carry theirs
+    "J37": (0.0, -2.38),
+    "J18": (0.0, 3.25),
+    # J19 is the Rev C 12 V OUT terminal block - same offset as its row-B kin
+    "J19": (1.75, 0.1),
+    # the alarm-OR jumpers: ref between the two pads, under the shunt. The
+    # third value forces the text horizontal whatever the part's rotation.
+    "JP1": (1.27, 0.0, 0), "JP2": (1.27, 0.0, 0), "JP3": (1.27, 0.0, 0),
+    "JP4": (-1.45, 0.0, 0), "JP5": (1.27, 0.0, 0),
     # the radiator fan header stands on end, rotated -90: local (dx,dy) lands
     # at board (-dy,dx), so this puts the ref east of the body, mid-height
     "J60": (3.8, -5.5),

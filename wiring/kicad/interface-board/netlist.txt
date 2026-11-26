@@ -4,11 +4,11 @@ checked against the schematic by kicad-cli pcb drc --schematic-parity
 ============================================================
 
 +12V       J10.1  J11.1  J12.1  J18.1  J19.1  J6.1  J60.2  J61.2  J7.1  J8.1  J9.1
-AL_A       J17.5  J3.7
-AL_B       J17.6  J5.7
-AL_X       J1.7  J17.1
-AL_Y       J17.3  J2.7
-AL_Z       J17.4  J4.7
+AL_A       J17.5  J3.7  JP3.1
+AL_B       J17.6  J5.7  JP5.1
+AL_X       J1.7  J17.1  JP1.1  JP1.2  JP2.2  JP3.2  JP4.2  JP5.2
+AL_Y       J17.3  J2.7  JP2.1
+AL_Z       J17.4  J4.7  JP4.1
 CYCLE_START J32.1  J36.1
 DIR_A      J16.13  J3.5  J42.3
 DIR_B      J16.17  J44.3  J5.5
@@ -35,8 +35,8 @@ MIST_A     J30.1  J34.1
 MIST_B     J30.2  J34.2
 PROBE      J11.2  J13.1  J14.1  J23.1
 SPARE      J32.4  J36.4
+SPIN_0_10V J15.4  J22.4
 SPIN_EN    J15.1  J22.1
-SPIN_PWM   J15.4  J22.4
 STEP_A     J16.15  J3.1  J42.2
 STEP_B     J16.19  J44.2  J5.1
 STEP_X     J1.1  J16.3  J40.2

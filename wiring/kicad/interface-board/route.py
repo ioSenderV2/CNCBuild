@@ -92,6 +92,63 @@ HDR_STEP_DX = 1.22        # drop column east of the header, jog west into pad 2
 HDR_DIR_DX = -2.28        # drop column west, jog east into pad 3
 HDR_Y = {"1": 80.45, "2": 82.99, "3": 85.53, "4": 88.07}
 
+# J37, the UART1 output header, stands in row A since Rev C - served from
+# corridor S below with the Teensy headers' side-jog trick: each pad gets its
+# own clear column beside the stack, a vertical, and a short horizontal into
+# the pad. Pad 4 is GND and takes the plane.
+# Nesting rule, learned the hard way: the dest verticals rise FROM BELOW, so
+# the SHALLOWEST pad (3V3, nearest corridor S) takes the NEAREST column and
+# the deepest (TX) the farthest - the other way round, a deeper pad's
+# horizontal crosses a shallower pad's vertical inside its span.
+UART_X = 112.1
+UART_DX = {"1": 3.34, "2": 2.28, "3": 1.22}
+UART_Y = {"1": 81.10, "2": 83.64, "3": 86.18}
+
+# the Rev C alarm-OR jumpers: five 1x2s, ONE PER AXIS COLUMN, in the strip
+# between input rows 3 and 4, each 2.5 mm west of its column's bundle. Pin 1
+# (that axis's AL) reaches the AL street through a short B.Cu stub ending in
+# a via ON the street line - a via fits the 0.70 bundle pitch where a 1.7 mm
+# pad does not. Pin 2 is AL_X: the rail, one B.Cu run across the top half
+# (nothing else uses B.Cu above corridor R), jogging over each foreign stub.
+# Streets are F.Cu verticals, stubs and rail are B.Cu horizontals - they
+# cross freely. Three earlier designs failed; rev-c-changes.py has the list.
+# (tap via x = the AL street, pin1 x, pad y, net). JP1 does NOT live in the
+# X zone: the CONTROL quartet's ROW4 jogs weave through y 53-55 at x 17-25,
+# and pads there starve FEED_HOLD - Rev B's own route went straight through
+# JP1's first spot. It stacks ABOVE JP2 in the Y zone instead, its stub
+# running west on B.Cu all the way to the AL_X street's via.
+# Pad row y 50.9, NOT 54.05: a pad at 54.05 sits dead-center in ROW4's jog
+# band (53.05..55.25) and needs 1.2 mm of clearance either side - the first
+# cut at 54.05 made every ROW4 jog near a jumper impossible and SPIN_0_10V
+# could no longer reach its eastern crossing. At 50.9 the pads live inside
+# ROW3's band, whose own jog corridor (37.4..39.3) is nowhere near.
+# The jumpers stand VERTICAL (pin 1 over pin 2) in pockets verified against
+# the dumped pads, 3 mm pegs and courtyards: x 47.4 between J12's courtyard
+# and the Y bundle (JP1 at y 44.5, JP2 stacked below at 52.9), 78.9 east of
+# the A bundle, 92.5 east of the J60 fan wall, 118.9 east of J11. Pin 1
+# carries the axis's AL via a B.Cu stub to a via ON the AL street; pin 2 is
+# the AL_X rail. Each tap: polyline, via at its last point.
+JP_TAPS = [
+    ("AL_X", [(47.9, 44.5), (28.3, 44.5)]),
+    ("AL_Y", [(47.9, 52.9), (52.3, 52.9)]),
+    ("AL_A", [(78.9, 44.5), (76.3, 44.5)]),
+    ("AL_Z", [(92.5, 44.5), (100.3, 44.5)]),
+    ("AL_B", [(118.9, 44.5), (124.3, 44.5)]),
+]
+# The rail, all B.Cu, all AL_X: a west branch down to JP2's rail pad, and
+# the main run east through every other rail pad, threading between J15's
+# pad rows at y 45.3 (its pegs at 47.43 want 1.9), dropping to 53.6 to pass
+# the J60 fan's pad column at x 87, and to 53.1 to pass under J11's pads
+# and peg. Every ordinate here was checked against the dump before it was
+# written down.
+JP_RAIL_PATHS = [
+    [(47.9, 55.44), (46.65, 55.44), (46.65, 47.04), (47.9, 47.04)],
+    [(47.9, 44.5), (47.9, 47.04), (54.0, 47.04), (54.0, 45.3), (77.35, 45.3),
+     (77.35, 47.04), (78.9, 47.04), (81.9, 47.04), (81.9, 53.6),
+     (91.0, 53.6), (91.0, 47.04), (92.5, 47.04), (101.5, 47.04),
+     (101.5, 53.1), (117.6, 53.1), (117.6, 47.04), (118.9, 47.04)],
+]
+
 RIBBON_N_Y = 82.35        # ribbon front row (served from corridor R above)
 RIBBON_S_Y = 84.89        # ribbon back row (EN rises from corridor S below;
                           # J17's AL_Z / AL_B thread from R between front pads)
@@ -419,6 +476,9 @@ def route_down(r, bands, x, y, stop_y, net, width=SIG_W, prefer=None):
         return None
 
     res = attempt([(x, y)], x, 0)
+    if res is not None and __import__("os").environ.get("ROUTE_DEBUG"):
+        cols = [p[0] for p in res]
+        print(f"   [down] {net} from ({x:.2f},{y:.2f}) -> cols {sorted(set(cols))}")
     if res is None:
         print(f"-- route_down failed: net {net} from ({x:.2f},{y:.2f}) to {stop_y}")
         for b in crossing:
@@ -426,7 +486,35 @@ def route_down(r, bands, x, y, stop_y, net, width=SIG_W, prefer=None):
             near_c = sorted(c for c in b.cols if abs(c - x) < 8)
             print(f"   {b.name} blocked {near_b} cols {near_c} "
                   f"candidates {b.candidates(x)}")
+        last = crossing[-1]
+        for c in last.candidates(x)[:6]:
+            why = r.path_blocker([(c, last.y0 - 1.0), (c, stop_y)],
+                                 net, SIG_W, pcbnew.F_Cu)
+            jog_why = None
+            if last.jog is not None:
+                jys = list(reversed(frange(*last.jog, 0.52)))
+                hops = [r.path_blocker([(x, jy), (c, jy)], net, SIG_W,
+                                       pcbnew.F_Cu) for jy in jys]
+                clear_jys = [jy for jy, h in zip(jys, hops) if h is None]
+                jog_why = (f"jog clear at {len(clear_jys)}/{len(jys)} ys"
+                           if clear_jys else f"all jogs blocked, e.g. {hops[0]}")
+            print(f"   {last.name} cand {c}: tail "
+                  f"{'clear' if why is None else why}; {jog_why}")
     return res
+
+
+# The middle of ROWA - J16's column forest from x 45.1 to 68 - offers exactly
+# four crossings and Rev B used all four. Which net grabs which is decided by
+# candidate ordering, and a tie that breaks differently strands the last net:
+# in Rev C's first routing runs SPIN_0_10V took SPIN_EN's western gap and
+# SPIN_EN had nowhere left. These preferences pin each net to its proven
+# Rev B crossing so the fit never depends on tie-breaks again.
+SRC_PREFER = {
+    "MIST_A": 59.15,
+    "MIST_B": 61.69,
+    "SPIN_EN": 56.61,
+    "SPIN_0_10V": 69.3,
+}
 
 
 def descend_from_pad(r, bands, x, y, stop_y, net, below_block):
@@ -450,7 +538,8 @@ def descend_from_pad(r, bands, x, y, stop_y, net, below_block):
                 continue
         if any(not b.col_ok(nx) for b in inside):
             continue
-        pts = route_down(r, bands, nx, ny, stop_y, net)
+        pts = route_down(r, bands, nx, ny, stop_y, net,
+                         prefer=SRC_PREFER.get(net))
         if pts:
             for b in inside:
                 b.claim(pts[-1][0])
@@ -582,7 +671,14 @@ def main():
         if pname != "GND" and py > RIBBON_SPLIT_Y:
             bands["ROWA"].claim(px + 1.27)          # AL_Z / AL_B threads
             bands["ROWA"].blocked.append((px - 0.16, px + 1.43))
-    tb_refs = {"J21", "J22", "J23", "J34", "J35", "J36", "J37"}
+    # J37's three side-jog columns - all EAST of the header, nested so the
+    # longest horizontal (pad 1, the top) takes the farthest column. The
+    # west side stays open: J33's own descents and J11's PROBE need it.
+    for dx in UART_DX.values():
+        bands["ROWA"].claim(UART_X + dx)
+    bands["ROWA"].blocked.append((UART_X - 0.155,
+                                  UART_X + max(UART_DX.values()) + 0.155))
+    tb_refs = {"J21", "J22", "J23", "J34", "J35", "J36"}
     for ref in tb_refs:
         for num, (px, py, pname) in fp_pads[ref].items():
             if pname != "GND":
@@ -617,7 +713,14 @@ def main():
         return "R" if fam in ("STEP", "DIR", "AL") else "S"
 
     def src_depth(n):
-        ys = [p[3] for p in nets[n] if p[0] not in tb_refs]
+        # dest-side pads do not count as sources: the TBs never did, and
+        # J37's row-A pads and the alarm jumpers joined them in Rev C -
+        # counting J37 made the UART nets look 28 mm deeper than their real
+        # source (J33) and reshuffled the S order, which the middle of ROWA
+        # cannot absorb: its crossings fit Rev B's order exactly, slack zero
+        ys = [p[3] for p in nets[n]
+              if p[0] not in tb_refs and p[0] != "J37"
+              and not p[0].startswith("JP")]
         return max(ys) if ys else 0.0
 
     # Within corridor S: LIM and EN first - their descent columns are the
@@ -693,6 +796,12 @@ def main():
             elif ref == "J17":
                 dests.append(("rib_north" if y < RIBBON_SPLIT_Y
                               else "rib_thread", x))
+            elif ref == "J37":
+                dests.append((f"uart{num}", UART_X))
+            elif ref.startswith("JP"):
+                # pin 1 sits on its axis's street, which passes through the
+                # pad; the rail pads get the post-loop B.Cu rail. No dests.
+                pass
             elif ref in tb_refs:
                 dests.append(("tb_rise", x))
             else:
@@ -706,6 +815,8 @@ def main():
                 xs.append(data + HDR_DIR_DX)
             elif kind == "rib_thread":
                 xs.append(data + 1.27)
+            elif kind.startswith("uart"):
+                xs.append(data + UART_DX[kind[-1]])
             else:
                 xs.append(data)
         lane_y = lanes.take(min(xs), max(xs))
@@ -743,12 +854,35 @@ def main():
             elif kind == "tb_rise":
                 r.via(data, lane_y, name)
                 r.emit_pts([(data, lane_y), (data, TB_Y)], name, pcbnew.F_Cu)
+            elif kind.startswith("uart"):
+                num = kind[-1]
+                cx = data + UART_DX[num]
+                r.via(cx, lane_y, name)
+                r.emit_pts([(cx, lane_y), (cx, UART_Y[num]), (data, UART_Y[num])],
+                           name, pcbnew.F_Cu)
 
         lane_xs = [vx for (vx, vy, vn) in r.vias
                    if vn == name and abs(vy - lane_y) < 1e-6]
         if len(lane_xs) >= 2:
             r.seg(min(lane_xs), lane_y, max(lane_xs), lane_y, name,
                   pcbnew.B_Cu, SIG_W)
+
+    # the alarm-OR taps and rail, all B.Cu. Per jumper: stub from pin 1 to a
+    # via sitting on that axis's AL street (same net, so the street's F.Cu
+    # vertical and the via join). The rail: one horizontal at JP_RAIL_Y -
+    # clear of every stub, every pin-1 pad and every tap via by over a
+    # millimetre - with a short drop into each rail pad; the drop at 44.46
+    # runs pad-to-pad through both JP1's and JP2's.
+    if "AL_X" in nets:
+        for (al, pts) in JP_TAPS:
+            for i in range(len(pts) - 1):
+                (x1, y1), (x2, y2) = pts[i], pts[i + 1]
+                r.seg(x1, y1, x2, y2, al, pcbnew.B_Cu, SIG_W)
+            r.via(*pts[-1], al)
+        for pts in JP_RAIL_PATHS:
+            for i in range(len(pts) - 1):
+                (x1, y1), (x2, y2) = pts[i], pts[i + 1]
+                r.seg(x1, y1, x2, y2, "AL_X", pcbnew.B_Cu, SIG_W)
 
     # planes: GND on In1, +12V on In2 - every pad of both nets is through-hole
     add_zone(board, "GND", pcbnew.In1_Cu)

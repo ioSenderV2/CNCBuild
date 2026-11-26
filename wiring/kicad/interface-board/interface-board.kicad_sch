@@ -2820,7 +2820,7 @@
 		)
 		(uuid "00314fa1-39e0-4a80-91f9-465509d3aafd")
 	)
-	(global_label "SPIN_PWM"
+	(global_label "SPIN_0_10V"
 		(shape passive)
 		(at 229.87 168.91 180)
 		(effects
@@ -4448,7 +4448,7 @@
 		)
 		(uuid "f43923d0-2dcb-4aa8-a401-bab66026c1b6")
 	)
-	(global_label "SPIN_PWM"
+	(global_label "SPIN_0_10V"
 		(shape passive)
 		(at 289.56 275.59 180)
 		(effects
@@ -4609,7 +4609,7 @@
 				)
 			)
 		)
-		(property "Value" "TB 4P - UART1 out"
+		(property "Value" "header 1x4 - UART1 out to RP23"
 			(at 246.38 346.71 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7442,7 +7442,7 @@
 		)
 	)
 	(symbol
-		(lib_id "cnc:CONN_1x02")
+		(lib_id "cnc:TB_1x02")
 		(at 240.03 80.01 0)
 		(unit 1)
 		(body_style 1)
@@ -7463,7 +7463,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Mini-Fit 2P - 12V OUT to RP23"
+		(property "Value" "TB 2P - 12V OUT to RP23"
 			(at 236.22 66.01 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7474,7 +7474,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A2_2x01_P4.20mm_Vertical"
+		(property "Footprint" "TerminalBlock_4Ucon:TerminalBlock_4Ucon_1x02_P3.50mm_Horizontal"
 			(at 240.03 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -7749,6 +7749,511 @@
 	(no_connect
 		(at 293.37 344.17)
 		(uuid "585aa534-ad12-4044-9573-f44c27743a4e")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 299.72 380.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "d5ed6e01-961a-423c-88c5-79f12d20838f")
+		(property "Reference" "JP1"
+			(at 295.91 364.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "jumper - AL_X onto the alarm-OR rail"
+			(at 295.91 366.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 299.72 380.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 380.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 380.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5f2b9d6f-c51d-471b-a1a9-3725d5d9c50d")
+		)
+		(pin "2"
+			(uuid "3d6557ee-b39f-4b9e-9d08-2044747dd22b")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "JP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "AL_X"
+		(shape passive)
+		(at 293.37 379.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e15e394a-d056-4bde-9709-e9b271b3a04f")
+	)
+	(global_label "AL_X"
+		(shape passive)
+		(at 293.37 382.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2c42302b-83a9-4fba-8f92-847c7416a5db")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 299.72 400.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "79714c03-194e-4ce8-8067-1e9cdb9a0bd4")
+		(property "Reference" "JP2"
+			(at 295.91 384.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "jumper - AL_Y onto the alarm-OR rail"
+			(at 295.91 386.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 299.72 400.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 400.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 400.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8fc718c7-124a-4fae-9abc-c380da29ae0c")
+		)
+		(pin "2"
+			(uuid "37da48b1-2c98-40d9-9591-d8c494bcd236")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "JP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "AL_Y"
+		(shape passive)
+		(at 293.37 399.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4eaef692-0afc-4992-904f-08e6aba1d880")
+	)
+	(global_label "AL_X"
+		(shape passive)
+		(at 293.37 402.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c532d4e7-98d2-4acf-add8-4368a9335d65")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 299.72 420.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "89a32e3c-2def-46fc-8033-aec9c4fc4243")
+		(property "Reference" "JP3"
+			(at 295.91 404.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "jumper - AL_A onto the alarm-OR rail"
+			(at 295.91 406.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 299.72 420.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 420.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 420.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "06506836-9a3b-42da-ab0b-d04d9d6c0ecd")
+		)
+		(pin "2"
+			(uuid "c632c1f9-699a-4fe3-a005-2c027efa764c")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "JP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "AL_A"
+		(shape passive)
+		(at 293.37 419.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "128c9877-1e7f-4689-bd4a-3a25e8b9bdc1")
+	)
+	(global_label "AL_X"
+		(shape passive)
+		(at 293.37 422.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e4b9523a-2355-4cf6-b29f-18554d00c294")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 299.72 440.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "9cebda4e-4a8f-4f0a-8f06-8941037881b0")
+		(property "Reference" "JP4"
+			(at 295.91 424.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "jumper - AL_Z onto the alarm-OR rail"
+			(at 295.91 426.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 299.72 440.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 440.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 440.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "336c1c26-8e92-4950-a14e-ba37cec9b484")
+		)
+		(pin "2"
+			(uuid "4ce5aee1-f03a-4a4f-9047-62ffc1634aca")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "JP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "AL_Z"
+		(shape passive)
+		(at 293.37 439.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f4dcf589-249c-41e8-903e-30417b0c57b4")
+	)
+	(global_label "AL_X"
+		(shape passive)
+		(at 293.37 442.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "eed1e014-4cbe-4b2a-bc21-62117c787f77")
+	)
+	(symbol
+		(lib_id "cnc:CONN_1x02")
+		(at 299.72 460.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ce8b9be7-3241-4832-b3fd-0df481ab02d7")
+		(property "Reference" "JP5"
+			(at 295.91 444.49 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "jumper - AL_B onto the alarm-OR rail"
+			(at 295.91 446.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+			(at 299.72 460.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 299.72 460.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 299.72 460.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f5926b94-75f8-453a-8f9e-39f939248c2c")
+		)
+		(pin "2"
+			(uuid "9665a140-18d0-45f7-8175-80546746f0e7")
+		)
+		(instances
+			(project "interface-board"
+				(path "/0904370f-0d99-4a17-8b43-75be33a1bcf7"
+					(reference "JP5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "AL_B"
+		(shape passive)
+		(at 293.37 459.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e8f28ad0-ff1b-48fd-b515-370ed65092f6")
+	)
+	(global_label "AL_X"
+		(shape passive)
+		(at 293.37 462.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "cfdd74dc-b296-4308-ac16-b231b0ea3dea")
 	)
 	(sheet_instances
 		(path "/"
