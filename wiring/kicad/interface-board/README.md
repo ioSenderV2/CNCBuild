@@ -201,8 +201,9 @@ a Rev C package gets its own folder when the time comes.
    table.
 3. **J22's fourth terminal label reads 0-10V, not PWM.** The signal is the 0-10 V
    analog speed command; PWM is a separate controller pin this board does not use.
-   Open at design time: the net behind it is named `SPIN_PWM` (schematic, board,
-   netlist) - his call whether it gets renamed to match.
+   The net behind it renames to match - **`SPIN_PWM` becomes `SPIN_0_10V`**, his,
+   2026-11-25 - in the schematic's global labels, the board, and `netlist.txt` via
+   `make-netlist.py`; `rev-a-validation.md`'s table stays as Rev A's record.
 
 ---
 
