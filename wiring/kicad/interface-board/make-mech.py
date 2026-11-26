@@ -9,8 +9,8 @@ of the enclosure. And a STEP of the whole board, for the heights a DXF has not.
 
 Writes, beside this script in mech/:
 
-  interface-board-revb.dxf    flat, millimetres, seen from the component side
-  interface-board-revb.step   the board with its connectors standing on it
+  interface-board-revc.dxf    flat, millimetres, seen from the component side
+  interface-board-revc.step   the board with its connectors standing on it
 
 THE DXF'S ORIGIN IS THE BOARD'S BOTTOM-LEFT CORNER, X RIGHT, Y UP - every
 coordinate is positive, which is what a Fusion sketch wants. The mounting
@@ -52,8 +52,8 @@ import pcbnew
 HERE = Path(__file__).resolve().parent
 BOARD = HERE / "interface-board.kicad_pcb"
 OUT = HERE / "mech"
-DXF = OUT / "interface-board-revb.dxf"
-STEP = OUT / "interface-board-revb.step"
+DXF = OUT / "interface-board-revc.dxf"
+STEP = OUT / "interface-board-revc.step"
 
 # silk.py's divider line: connectors above it are the machine-side group
 DIVIDER_Y = 76.7
