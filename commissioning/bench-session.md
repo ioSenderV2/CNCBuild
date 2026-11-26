@@ -194,12 +194,26 @@ Meter on AL+ / AL-, drive powered and healthy, nothing wrong.
 
 | | Result |
 |---|---|
-| Healthy drive - output asserted? | |
-| Supply off - output released? | |
+| Healthy drive - output asserted? | **NO - released.** 12.185 V and 12.184 V against a 12 V / 10K pull-up, two drives |
+| Supply off - output released? | **Reads conducting** - 0.37 V and 0.054 V. A parasitic path through the dead electronics, not a designed assertion - nothing gets built on it |
+
+ANSWERED 2026-11-25, two drives, **and it reads the other way round: ALM is released when
+healthy.** The manual's "normally closed, output when normal" is backwards. Rig: 12 V through a
+10K onto AL+, AL- jumpered to the supply's 0 V, meter on AL+ against that 0 V, EN disconnected,
+drive standalone with a solid green LED. A plain continuity check across AL+ / AL- reads open on
+a healthy drive - which is a *correct* reading of a released output, not a meter limitation.
+The first drive briefly saw 12 V with no series resistor before its pair was taken; its readings
+match the second drive's, so no damage indicated.
+
+**What is still not observed: the assertion itself.** Released-when-healthy is measured;
+asserts-on-fault is the inference. Section 6's provoked stall is where a real fault gets watched
+closing the output - take the asserted-state voltage reading there while it sits faulted.
 
 **If it reads the other way round**, the series alarm chain in
 [`../wiring/breakout-box.md`](../wiring/breakout-box.md) is wrong and becomes a parallel one, and the
-driver-power-present input that was dropped has to come back.
+driver-power-present input that was dropped has to come back. **It did read the other way round** -
+the chain is parallel (see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md)), and the
+driver-power-present question is back open: a broken alarm wire now fails silent.
 
 ---
 

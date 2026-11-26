@@ -209,12 +209,13 @@ a Rev C package gets its own folder when the time comes.
    headers J40-J44 carry no alarm at all - so in Teensy mode this pin would be the
    only alarm route: shunts strap the five AL lines onto a common rail landing on one
    J17 pin, one dupont from there to the Teensy; shunts off and the straight ribbon
-   to the RP23 behaves as today. 🔴 **The gate: a parallel tie of assert-when-healthy
-   outputs reads healthy until every drive is dead** (the IG57's ALM is NC by default,
-   [`../../ig57-drives.md`](../../ig57-drives.md)), so this only goes on the board if
-   the ALM can really be inverted to assert-on-fault - which hangs on that file's open
-   contradiction over whether the MicroUSB config port is usable at all. No flip, no
-   jumper field.
+   to the RP23 behaves as today. ~~🔴 The gate: a parallel tie of assert-when-healthy
+   outputs reads healthy until every drive is dead.~~ SETTLED: **the gate swung open on
+   the bench, 2026-11-25 - the ALM measured released-when-healthy on two drives** (the
+   manual's NC sentence is backwards, [`../../ig57-drives.md`](../../ig57-drives.md)),
+   so the drives assert on fault and the parallel wire-OR is natively the correct
+   combination - no config flip needed. Still owed before the chain is trusted: watch
+   a provoked fault actually close the output (bench-session §6's stall test).
 
 ---
 

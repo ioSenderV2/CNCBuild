@@ -150,26 +150,34 @@ pull-up, nothing to get the ratio wrong on.
 NOTE: **EN is a far slower input than the other two and that is by design.** 100 µs minimum against
 2 µs. It is not a signal to pulse quickly at.
 
-### The alarm output fails the RIGHT way
+### The alarm output fails SILENT - measured, and the manual is backwards
 
-SETTLED: **ALM is normally closed by default and outputs when normal** - the manual's §7.3, which
-also says it can be inverted in software or assigned another function. It is an **open collector**,
-**30 V maximum**, **50 mA maximum** sink or source.
+~~SETTLED: **ALM is normally closed by default and outputs when normal** - the manual's §7.3.~~
+❌ **MEASURED THE OTHER WAY ROUND, 2026-11-25, on two drives.** Rig: 12 V through a 10K onto AL+,
+AL- jumpered to the supply's 0 V, meter on AL+, EN disconnected, drive standalone. Powered with a
+solid green LED the output reads the full pull-up - **12.185 V and 12.184 V: released when
+healthy**. Unpowered it reads 0.37 V and 0.054 V - conducting, but through the dead electronics,
+an undesigned parasitic path that nothing gets built on. §7.3 stays right about the electrical
+limits - **open collector, 30 V maximum, 50 mA maximum** - and wrong about the sense; it also
+claims the output can be inverted in software, see the configuration contradiction below.
 
-🔴 **THIS REVERSES WHAT THIS FOLDER HAS BEEN SAYING, AND IT IS GOOD NEWS.** The Mega V's alarm
-asserted on fault, which meant an unpowered drive or a broken wire read as healthy - the failure
-[`breakout-box.md`](breakout-box.md) calls failing silent. **Asserting when healthy inverts that: no
-power, broken wire, or pulled connector all look like an alarm.** That is fail-safe in the direction
-a guard needs, by default, with no extra input required.
+🔴 **SO THE FAIL-SAFE STORY REVERSES BACK TO THE MEGA V'S.** A broken alarm wire or a pulled
+connector reads exactly like healthy - the failure [`breakout-box.md`](breakout-box.md) calls
+failing silent. The paragraph that stood here celebrating assert-when-healthy was built on the
+manual's sentence, and the bench outvoted it. The driver-power-present input that was dropped on
+the strength of that paragraph is back open as a question -
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md) §5 has the readings.
 
-OPEN: **Confirm the sense on the bench before relying on it** - the procedure is
-[`../commissioning/bench-session.md`](../commissioning/bench-session.md) - because this is a machine-translated
-manual and "normally closed, output when normal" is doing a lot of work in one sentence. The check is
-one meter reading: power a drive with nothing wrong and see whether the output is asserted.
+OPEN: **The assertion itself has not been watched.** Released-when-healthy is measured;
+asserts-on-fault is the inference from it. Bench-session §6's provoked stall is where a real
+fault gets observed closing the output - and where the asserted-state voltage gets read, which
+the pull-up choice below wants.
 
-FLAG: **IT IS AN OPEN COLLECTOR, SO IT STILL NEEDS A PULL-UP - and now the pull-up can be 3.3 V.**
+FLAG: **IT IS AN OPEN COLLECTOR, SO IT STILL NEEDS A PULL-UP - and the pull-up can be 3.3 V.**
 With a 30 V withstand and 50 mA capability, pulling up to the controller's own 3.3 V rail is well
-within it and keeps everything on one logic level. **Do not pull it to 24 V.**
+within it and keeps everything on one logic level. **Do not pull it to 24 V.** The healthy state
+reads the rail cleanly (measured released); what a 3.3 V pull-up reads *during* an alarm is
+unmeasured until §6 provokes one.
 
 ### The fifth pair is EX, in-place
 
@@ -705,11 +713,11 @@ Keeping them separate in the cabling is still right: nearly free during a build,
 retrofit, and per-axis needs only a board-map edit later. With AL on its own pair per stepper that
 wiring is already done.
 
-FLAG: **WIRE-ORING AN ASSERT-WHEN-HEALTHY OUTPUT IS A SERIES CHAIN, NOT A PARALLEL ONE.** The Mega
-V's alarms asserted on fault, so paralleling them gave "any drive faulted". These assert when
-*healthy*, so the equivalent is all four in **series** - any drive dropping out breaks the chain. Easy
-to get backwards, and getting it backwards produces a guard that reads healthy when every drive is
-dead.
+~~FLAG: **WIRE-ORING AN ASSERT-WHEN-HEALTHY OUTPUT IS A SERIES CHAIN, NOT A PARALLEL ONE.**~~
+SETTLED the other way by the bench, 2026-11-25: **these drives' ALM measured released when
+healthy** (see the alarm section above), so they assert on fault like the Mega V's did, and **the
+parallel wire-OR is the correct combination** - paralleling gives "any drive faulted". The
+series-chain warning retires with the polarity that prompted it.
 
 ## Fallback: plain open-loop drivers run on the same cable plant - his, 2026-11-19
 
