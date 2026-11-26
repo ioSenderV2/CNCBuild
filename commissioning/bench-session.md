@@ -1,19 +1,22 @@
 # The bench session: four motors, no machine
 
-**Not yet run.** Everything here is done with the **four IG57 motors loose on the bench**, before any
-axis is assembled. Results go in the tables and then outrank anything stated in
-[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md) or on the supply's label.
+**Not yet run in full.** Everything here is done with the **four HBT57112C motors loose on the
+bench** - the machine's drives since 2026-11-25, see
+[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md) - before any axis is assembled.
+Results go in the tables and then outrank anything stated in that file or on the supply's label.
+Section 5 was answered on 2026-11-25, ahead of the rest.
 
 **What it settles:**
 
 - ~~Whether the **36 V 600 W supply covers four drives**~~ - **the supply changed under this
-  question, 2026-11-13: it is the XDR-960-36, 26.6 A**, and four drives rated 5 A phase are a
-  ceiling of 20 A that the manual says will not be reached. **No reading here can change the
-  supply.** The current readings stay because they buy the **heat number** for the drilled DIN
-  enclosure - the open half of the old supply gate - and the per-drive sanity checks below.
+  question, 2026-11-13: it is the XDR-960-36, 26.6 A.** The old 20 A ceiling was four drives at
+  the TST57's 5 A phase rating; OPEN: 🔴 **the HBT57112C's current rating is not recorded**, so
+  the ceiling arithmetic waits on its manual. **No reading here can change the supply.** The
+  current readings stay because they buy the **heat number** for the drilled DIN enclosure - the
+  open half of the old supply gate - and the per-drive sanity checks below.
 - Whether **all four can be switched on at once** without tripping the supply.
-- Whether the **alarm output really asserts when healthy**, which is the whole fail-safe story and
-  currently rests on one machine-translated sentence.
+- ~~Whether the **alarm output really asserts when healthy**~~ - ANSWERED 2026-11-25, section 5:
+  it does not. Released when healthy, asserts on fault, measured on two units.
 - **How a fault clears** - which decides whether the cabinet needs the drives' 36 V switchable
   separately from the controller.
 
@@ -52,7 +55,7 @@ the supply is fine or marginal, not enough to say what the peak is.
 | **Supply** | **The XDR-960-36** - 36 V, 26.6 A, 960 W, DIN rail, arriving 2026-11-14. Adjust range is **36-42 V, so 36 is the pot's floor**. Label checked against the model on arrival, output **set and metered to 36.0 V** before anything connects |
 | **Reading current** | **A DC clamp meter on the supply's output leg.** The XDR has **no display** - a DC-OK LED, a DC-OK relay contact and Modbus, nothing that reads amps (committed spec PDF). The LCD went with the brick |
 | **Commanding motion** | grblHAL, jogging each axis. The motors need no mechanics to turn |
-| **DIP switches** | SW1-4 to **2000 pulses/rev** on all four drives: **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** - his call 2026-11-13, see [`../wiring/ig57-drives.md`](../wiring/ig57-drives.md). $100-$103 = **400** steps/mm |
+| **DIP switches** | **2000 pulses/rev** on all four drives - his call 2026-11-13, $100-$103 = **400** steps/mm. OPEN: 🔴 **the switch positions recorded earlier (OFF-ON-ON-OFF) are the TST57 manual's row** - read the HBT57112C's own table off its manual or body before setting, see [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md) |
 | **Meter** | For the rail and for the alarm output |
 
 ### The RJ45 breakout at the drive end - mapping toned out 2026-11-15
@@ -177,10 +180,10 @@ still buy:
   arithmetic is with the fuse in
   [`../wiring/cabinet-power-and-grounding.md`](../wiring/cabinet-power-and-grounding.md).
 
-**Why free-running is informative at all, given no load:** the TST57 manual says supply input current
-runs *below* motor phase current, and declines to say by how much. Four drives rated 5 A phase each
-is therefore a ceiling of 20 A that will not be reached - these readings are what replace that
-useless bound with a real one.
+**Why free-running is informative at all, given no load:** supply input current on an integrated
+closed-loop drive runs below motor phase current (the TST57 manual said so and declined to say by
+how much - IG57 record; the HBT57112C's figures wait on its manual). Whatever the paper ceiling
+turns out to be, these readings are what replace it with a real number.
 
 ---
 
@@ -194,12 +197,22 @@ Meter on AL+ / AL-, drive powered and healthy, nothing wrong.
 
 | | Result |
 |---|---|
-| Healthy drive - output asserted? | |
-| Supply off - output released? | |
+| Healthy drive - output asserted? | **NO - released.** 12.185 V and 12.184 V against a 12 V / 10K pull-up, two HBT57112C units |
+| Supply off - output released? | **Reads conducting** - 0.37 V and 0.054 V. A parasitic path through the dead electronics, not a designed assertion - nothing gets built on it |
+
+ANSWERED 2026-11-25, two units, **and it reads the other way round: ALM is released when healthy
+and asserts on fault.** Rig: 12 V through a 10K onto AL+, AL- jumpered to the supply's 0 V, meter
+on AL+ against that 0 V, EN disconnected, drive standalone with a solid green LED. A plain
+continuity check across a healthy unit's AL+ / AL- reads open - a *correct* reading of a released
+output, not a meter limitation. Still unobserved: the assertion itself - section 6's provoked
+stall is where a real fault gets watched closing the output, and the asserted-state voltage gets
+read there while it sits faulted.
 
 **If it reads the other way round**, the series alarm chain in
 [`../wiring/breakout-box.md`](../wiring/breakout-box.md) is wrong and becomes a parallel one, and the
-driver-power-present input that was dropped has to come back.
+driver-power-present input that was dropped has to come back. **It did read the other way round** -
+the chain is parallel (see [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md)), and
+the driver-power-present question is back open: a broken alarm wire on this family fails silent.
 
 ---
 
@@ -248,10 +261,10 @@ usually a burst, a pause, then a repeat.
 
 🔴 **DO NOT FILL THIS FROM AN AI ANSWER OR A SIMILAR DRIVE'S MANUAL.** One generic table has already
 been offered for this and is recorded as rejected in
-[`../wiring/ig57-drives.md`](../wiring/ig57-drives.md): it contradicts the one real flash-code table
-this repo holds on every row, transposing over-current and over-voltage and moving tracking error
-from 7 flashes to 4. **An observed blink is worth more than a plausible table**, and this is the
-session where observing it costs nothing.
+[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md): it contradicts the HBT57C's own
+flash-code table - now the machine's table - on every row, transposing over-current and
+over-voltage and moving tracking error from 7 flashes to 4. **An observed blink is worth more than
+a plausible table**, and this is the session that checks the real table against the real part.
 
 ---
 
