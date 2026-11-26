@@ -1,9 +1,70 @@
-# The IG57 drives
+# The HBT57112C drives
 
-**Four all-in-one closed-loop steppers, one per axis.** His, 2026-10-12. The drive is built onto the
-motor, so there are no drives in the cabinet and no motor phases on any cable.
+**Four all-in-one closed-loop steppers, one per axis - four NEW HBT57112C, bought for this
+machine. His, 2026-11-25.** The drive is built onto the motor, so there are no drives in the
+cabinet and no motor phases on any cable. **The Mega V runs the same family**, so both machines
+share one drive type, one spares shelf, and one flash-code table.
 
-## Three names for one part
+> 🔴 **THIS FILE WAS THE IG57'S UNTIL 2026-11-25.** The TST57-76P (sold as IG57) was the chosen
+> part from 2026-10-12; its manual is committed and much of this file was extracted from it.
+> Sections marked **IG57 record** describe that part - kept because the IG57 units exist and the
+> manual stays committed - and are NOT statements about the HBT57112C. The file has now changed
+> name twice: it was `hbt57c-drives.md` until 2026-10-12, when the HBT57C was identified as the
+> Mega V's drive and the IG57 as this machine's; buying four new HBT57112C for this machine
+> reverses that split - both machines are HBT - without changing which facts belonged to which
+> part.
+
+## The part - what is known, and what waits on the manual
+
+OPEN: 🔴 **THE HBT57112C MANUAL IS NOT COMMITTED, and the datasheets-committed rule wants it**
+beside the TST57's in [`../manufacturer-assets/`](../manufacturer-assets/index.html). The HBT57C
+flash codes below were once read off "that drive's own manual", so a manual exists in the
+household. Until it is committed, the spec table is deliberately thin - **no figure below gets
+filled in from a listing memory or from the TST57's table**:
+
+| | |
+|---|---|
+| Family | **HBT57C** - the Mega V's drives: 3.2 N·m on its X, Y1, Y2 and 1.5 on its Z, long trouble-free in service at 48 V |
+| This machine | **4x HBT57112C, new** - his, 2026-11-25. Not the spares; the three spares (two 2.0, one 1.5) stay spares, see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) |
+| Supply rating | **24-55 V** as recorded in this file's own cross-check note of 2026-10-12 - re-verify off the committed manual |
+| Alarm output | **Measured 2026-11-25** - the section below |
+| Flash codes | **1 over-current, 2 over-voltage, 7 tracking error** - read off the HBT57C manual, recorded in the diagnosis section |
+| Torque, current, encoder, weight, body length, input levels | OPEN - from the manual when committed, or off the part |
+
+OPEN: **The fate of the IG57 units in hand is not recorded** - two were weighed on 2026-10-12
+and at least one sat on the bench since. Returned, shelved as spares, or repurposed: say which,
+because stepper-sizing's spares arithmetic reads differently in each case.
+
+## The alarm output - measured 2026-11-25: released when healthy, asserts on fault
+
+Rig: 12 V through a 10K onto AL+, AL- jumpered to the supply's 0 V, meter on AL+ against that
+0 V, EN disconnected, drive standalone, solid green LED. Two units, same result:
+
+| State | Unit 1 | Unit 2 |
+|---|---|---|
+| Powered, LED solid green | **12.185 V - released** | **12.184 V - released** |
+| Unpowered | 0.37 V | 0.054 V |
+
+- **Asserts on fault** is the working conclusion, and it matches the Mega V's service history -
+  paralleled alarms there gave "any drive faulted". OPEN: **the assertion itself has not been
+  watched**: [`../commissioning/bench-session.md`](../commissioning/bench-session.md) §6's
+  provoked stall is that observation, and the asserted-state voltage gets read there too - the
+  pull-up level question needs it.
+- The sub-volt unpowered readings are conduction through the dead electronics, not a designed
+  assertion. Nothing gets built on them.
+- 🔴 **A BROKEN ALARM WIRE READS EXACTLY LIKE HEALTHY - THIS FAMILY FAILS SILENT**, the failure
+  [`breakout-box.md`](breakout-box.md) names. The driver-power-present input that was dropped
+  when the IG57's manual-claimed assert-when-healthy looked fail-safe is **back open as a
+  question**.
+- A plain continuity check across a healthy unit's AL+ / AL- correctly reads **open** - three
+  such readings were taken on 2026-11-25 before the pull-up rig existed, and they were right,
+  not insensitive.
+- ✅ **THE PARALLEL WIRE-OR IS THE CORRECT COMBINATION** - any drive faulting pulls the common
+  line. The interface board's Rev C alarm-OR jumper field (change 4 in
+  [`kicad/interface-board/README.md`](kicad/interface-board/README.md)) is built on this
+  measurement.
+
+## IG57 record - three names for one part
 
 | Where it appears | Name |
 |---|---|
@@ -16,10 +77,10 @@ motor, so there are no drives in the cabinet and no motor phases on any cable.
 at 1.0 / 1.5 / 2.2 / 2.8 / 3.2 N·m - **all five share the same 5 A drive**, so a torque figure alone
 does not identify the part.
 
-NOTE: **Call it the TST57-76P when reading the manual and the IG57 when looking at the machine.**
+NOTE: **Call it the TST57-76P when reading the manual and the IG57 when looking at the unit.**
 Three names for one part is how a future session ends up believing there are two.
 
-## The part
+## IG57 record - the part
 
 From the manual's own tables, with the listing agreeing except where noted:
 
@@ -54,19 +115,29 @@ OPEN: **A spare HBT5776C at 2.0 N·m was given as "1.7" with the unit dropped**,
 1.1 kg for a larger torque in the same frame does not sit easily with the other three readings.
 Recorded as given rather than converted. It is a Mega V spare and nothing here depends on it.
 
-**Four motors at 1.1 kg is 4.4 kg of the machine**, and the figure feeds the Z carriage weighed at
-9 kg in [`../commissioning/masses.md`](../commissioning/masses.md) - which was weighed with its motor
-on, so no correction is owed there.
+**Four motors at 1.1 kg is 4.4 kg of the machine** was this record's arithmetic, feeding the Z
+carriage weighed at 9 kg in [`../commissioning/masses.md`](../commissioning/masses.md) - weighed
+with its motor on. OPEN: 🔴 **which motor was on the carriage for that weighing, and what an
+HBT57112C weighs, are both unrecorded** - if the carriage was weighed with an IG57 and runs an
+HBT57112C, the 9 kg moves by the difference between two numbers nobody has yet. A scale and one
+new drive settles half of it.
 
-OPEN: **The 94 mm body and 21 mm shaft want checking against the cast stepper frames** before
-anything is bolted up - see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) for the
-frames. Nothing in [`../dimensions/`](../dimensions) currently carries a motor length.
+OPEN: 🔴 **The HBT57112C's body and shaft lengths want checking against the cast stepper frames**
+before anything is bolted up - see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md)
+for the frames. The 94 mm body / 21 mm shaft above are the TST57-76P's; the HBT57112C's are not
+recorded anywhere, and nothing in [`../dimensions/`](../dimensions) carries a motor length.
 
 ## The supply voltage - SETTLED at 36 V
 
-SETTLED: **THE RAIL IS 36 V - his decision, 2026-10-12.** That is the voltage the manual actually
-recommends, and it also means the Mega V's 48 V supply stays where it is rather than being dug out.
-Two reasons pointing the same way, one technical and one practical.
+SETTLED: **THE RAIL IS 36 V - his decision, 2026-10-12.** That is the voltage the TST57 manual
+actually recommends, and it also means the Mega V's 48 V supply stays where it is rather than being
+dug out. Two reasons pointing the same way, one technical and one practical.
+
+NOTE: **36 V SURVIVES THE 2026-11-25 DRIVE CHANGE.** The HBT57C family is recorded at 24-55 V, the
+Mega V runs it at 48, and the XDR-960-36 is bought with 36 as its pot's floor - so 36 sits inside
+the new part's range with room on both sides. Everything below in this section that argues from a
+50 V alarm or a five-ways supply range is the **TST57 manual's** - the IG57 record - and the HBT's
+own range gets re-verified off its manual when committed.
 
 **What that buys.** 36 V sits in the middle of every range the manual states rather than at the top
 of the lowest one, and it is comfortably clear of the over-voltage alarm above 50 V. Regeneration on
@@ -85,7 +156,7 @@ figure is 1510 rpm, which is a *screw* limit the motor may still clear at 36 V.
 The record of why this was a problem at 48 V is kept below, because the next person to find a cheap
 48 V supply will want to know why it was not taken.
 
-### The manual's own numbers, which is what settled it
+### IG57 record - the manual's own numbers, which is what settled it
 
 🔴 **AT 48 V THE RAIL WOULD HAVE SAT AT THE MANUAL'S LOWEST STATED MAXIMUM.**
 
@@ -131,15 +202,24 @@ to meter, not a property to trust - see
 
 ## Inputs and outputs - what the manual settles
 
-### The inputs take 3.3 V directly
+### IG57 record - the inputs take 3.3 V directly
 
 SETTLED: **PUL, DIR and EN are optically isolated, DIFFERENTIAL, and a high level can be
-3.3 - 24 VDC applied directly.** The manual says so in §1.1, §7.2 and the §7.3 pin table.
+3.3 - 24 VDC applied directly.** The TST57 manual says so in §1.1, §7.2 and the §7.3 pin table.
 
 FLAG: **THAT REMOVES THE LEVEL-SHIFTING PROBLEM THE PREVIOUS DRIVES CREATED.** The Mega V's drives
 wanted a 24 V pull-up that would destroy a Teensy pin, and this folder carries several warnings about
 it. **A 3.3 V controller output drives these inputs with nothing in between** - no divider, no
 pull-up, nothing to get the ratio wrong on.
+
+🔴 OPEN: **WHETHER THE HBT57112C'S INPUTS TAKE 3.3 V DIRECTLY IS NOT ESTABLISHED, AND IT IS
+LOAD-BEARING.** The 3.3 - 24 V sentence above is the TST57 manual's, about the part that is no
+longer on the machine. The committed manual of a comparable integrated drive - the JSS57P2N in
+[`../manufacturer-assets/`](../manufacturer-assets/index.html) - states its inputs as **5-24 V,
+not 3.3**, so this is not a property to assume across vendors. The RP23 drives these inputs at
+3.3 V with nothing in between; if the HBT57112C wants 5 V minimum, that is a real interface
+problem, and it gets caught at the manual or the bench, not at commissioning. What the Mega V
+feeds its own drives with is its wiring, not evidence about 3.3 V.
 
 | Input | Minimum pulse width | Maximum frequency |
 |---|---|---|
@@ -150,28 +230,27 @@ pull-up, nothing to get the ratio wrong on.
 NOTE: **EN is a far slower input than the other two and that is by design.** 100 µs minimum against
 2 µs. It is not a signal to pulse quickly at.
 
-### The alarm output fails the RIGHT way
+### IG57 record - the TST57 manual's alarm claims
 
-SETTLED: **ALM is normally closed by default and outputs when normal** - the manual's §7.3, which
-also says it can be inverted in software or assigned another function. It is an **open collector**,
-**30 V maximum**, **50 mA maximum** sink or source.
+The TST57 manual's §7.3: **ALM normally closed by default, outputs when normal** - with a claim it
+can be inverted in software or assigned another function - **open collector, 30 V maximum, 50 mA
+maximum** sink or source. The fail-safe argument this file once built on that sentence, and the
+bench confirmation it was waiting on, ended with the part: the machine's drives are the
+HBT57112C, whose alarm is **measured** the other way - the alarm section at the top of this file.
 
-🔴 **THIS REVERSES WHAT THIS FOLDER HAS BEEN SAYING, AND IT IS GOOD NEWS.** The Mega V's alarm
-asserted on fault, which meant an unpowered drive or a broken wire read as healthy - the failure
-[`breakout-box.md`](breakout-box.md) calls failing silent. **Asserting when healthy inverts that: no
-power, broken wire, or pulled connector all look like an alarm.** That is fail-safe in the direction
-a guard needs, by default, with no extra input required.
+FLAG: **IF AN IG57 IS EVER PRESSED INTO SERVICE, ITS ALARM SENSE GOES TO THE BENCH FIRST.** The
+manual's sentence was never confirmed on a TST unit, and one assert-when-healthy output mixed
+into the parallel OR conducts the whole time that unit is healthy - the common line sits in its
+"fault" state permanently, which is a stuck alarm that also hides every real one behind it. The
+guard stops meaning "any drive faulted" the moment one opposite-sense output joins the chain.
 
-OPEN: **Confirm the sense on the bench before relying on it** - the procedure is
-[`../commissioning/bench-session.md`](../commissioning/bench-session.md) - because this is a machine-translated
-manual and "normally closed, output when normal" is doing a lot of work in one sentence. The check is
-one meter reading: power a drive with nothing wrong and see whether the output is asserted.
+FLAG: **THE PULL-UP QUESTION MOVES TO THE HBT57112C'S NUMBERS, WHICH ARE NOT RECORDED.** The
+30 V / 50 mA ratings here are the TST57's. What rail the HBT's output tolerates, and what level
+it pulls to when asserted, are manual-plus-bench items - the asserted-state voltage reading is
+already queued with bench-session §6's stall. Until then, nothing gets permanently wired to the
+alarm line but the 12 V / 10K test rig that produced the measurement.
 
-FLAG: **IT IS AN OPEN COLLECTOR, SO IT STILL NEEDS A PULL-UP - and now the pull-up can be 3.3 V.**
-With a 30 V withstand and 50 mA capability, pulling up to the controller's own 3.3 V rail is well
-within it and keeps everything on one logic level. **Do not pull it to 24 V.**
-
-### The fifth pair is EX, in-place
+### IG57 record - the fifth pair is EX, in-place
 
 The connector diagram labels pins 11 and 12 **EX+ / EX-**, *"positive signal in place"* and
 *"negative signal in place"* - an in-position output.
@@ -182,10 +261,14 @@ signal that the text does not explain, and whether EX is a second independent ou
 of the same one is **not established**. Not used today, and worth knowing before anything is designed
 around it.
 
-## Connector pinout
+## IG57 record - connector pinout
 
-From the manual's §7.3 and the connector diagram. **Two separate terminal blocks** - a 2P for power
-and a small-gauge block for signals:
+From the TST57 manual's §7.3 and the connector diagram. **Two separate terminal blocks** - a 2P for
+power and a small-gauge block for signals. 🔴 **THE HBT57112C DOES NOT PRESENT THIS BLOCK - its
+signal interface is eight flying leads**, read off the part 2026-11-23 (the colour table in the
+cabling section), and its power entry is not recorded here. The "at the drive, terminals 3-10"
+columns in the cabling tables below are THIS block's numbering - the IG57's - and do not apply to
+a flying-lead drive:
 
 | Pin | Name | |
 |---|---|---|
@@ -224,9 +307,9 @@ the drive's terminal block:
 | **4-5** | pin 5, **DR+** | pin **4**, **DR-** | terminals 5, 6 |
 | **7-8** | pin 7, **AL+** | pin 8, **AL-** | terminals 9, 10 |
 
-**The drive's own flying-lead colours - his, 2026-11-23, off the part.** These are the colours of
-the eight wires leaving the drive, landed into the RJ45 at the drive end - NOT the Cat6's T568
-colours, which carry the pair down the cable:
+**The drive's own flying-lead colours - his, 2026-11-23, off the part, an HBT57112C (confirmed
+2026-11-25).** These are the colours of the eight wires leaving the drive, landed into the RJ45
+at the drive end - NOT the Cat6's T568 colours, which carry the pair down the cable:
 
 | RJ45 pin | Signal | Drive wire |
 |---|---|---|
@@ -284,7 +367,11 @@ the kind of fault that gets found by chasing a step loss months later.
 SETTLED: **his, 2026-11-07. At each drive there is a small RJ45-to-screw-terminal breakout board** -
 a jack and an 8-position screw block on one little PCB. So **the cable is plug-to-plug stock patch,
 terminated by whoever made it**, and eight short wires go from the breakout's terminals to the
-drive's own block.
+drive - the IG57's block, or the HBT57112C's eight flying leads.
+
+NOTE: **The breakout mapping below is validated on BOTH families' connector assemblies - his,
+2026-11-25**: toned out on the IG57 assembly and on the HBT57 assembly alike. It is a property of
+the breakout board, not of the drive behind it.
 
 🔴 **SO COLOUR NEVER APPEARS ANYWHERE, AND THE PIN NUMBERS ARE THE ONLY IDENTIFIER AT BOTH ENDS.**
 Nothing is stripped, so no conductor is ever picked out by its stripe. The colour table below is
@@ -557,6 +644,10 @@ leg a ground invites someone to tie the four together as a convenience.
 
 **No continuity between any of the minus signals.** His meter, on the part, 2026-10-12.
 
+NOTE: **The unit under the meter was an HBT-family drive - his, 2026-11-25** - so this section
+carries to the machine's HBT57112C as measured fact. A one-minute re-check on one of the four
+new units, next time one is loose, retires any doubt about unit-to-unit variation.
+
 🔴 **THE SELLER SAID THEY WERE COMMONED INSIDE THE DRIVE, AND THEY ARE NOT.** That answer was written
 into this file as *a claim rather than a checked fact*, specifically so it would get checked. Checking it
 took under a minute and overturned it. The manual never stated it either way. **This is the reason a
@@ -579,23 +670,45 @@ that matters is at the drive end where there is no alternative path. That makes 
 cabinet's convenience rather than of signal integrity - see
 [`cabinet-power-and-grounding.md`](cabinet-power-and-grounding.md).
 
-**18/2 is heavier than the manual asks for.** §7.1 recommends **AWG 20-24** for the supply
-connection; 18 AWG exceeds that, which is the right direction to err.
+**18/2 is heavier than the manual asks for.** The TST57's §7.1 recommends **AWG 20-24** for the
+supply connection (IG57 record; the HBT's own recommendation waits on its manual); 18 AWG exceeds
+either way, which is the right direction to err.
 
 FLAG: **IT IS STILL NOT THE SIX-WIRE SHELL [`breakout-box.md`](breakout-box.md) DESCRIBES**, and the
 supply no longer shares a shell with the signals.
 
-## Fit an external 5 A fast-blow fuse per drive
+## Fuse per drive - the plan stands, the rating is reopened
 
-PROCEDURE: **§7.1 says the drive has an internal fuse in series with V+ that the user cannot
-replace, and recommends an external 5 A fast-blow fuse in series with the positive supply so there
-is a fuse that *can* be replaced.** Four drives, four fuses, fitted in the cabinet.
+PROCEDURE: **One external fast-blow fuse in series with each drive's positive supply, four fuses,
+fitted in the cabinet.** The plan survives the drive change.
 
-FLAG: **THERE IS NO REVERSE-POLARITY PROTECTION.** The listing is blunt: reversing the supply damages
-the internal circuit. Four identical 2P connectors assembled by hand - **check polarity per drive
-before the first power-on**, not after.
+OPEN: 🔴 **THE 5 A RATING WAS THE TST57 §7.1'S RECOMMENDATION** (IG57 record: internal fuse in
+series with V+ the user cannot replace, external 5 A fast-blow recommended so a fuse exists that
+*can* be replaced). The HBT57112C's internal-fuse arrangement and recommended external rating come
+from its own manual - and what the Mega V's cabinet fuses these drives at, if anything, is worth
+reading off that machine.
 
-## Diagnosis - there is no fault code table
+FLAG: **ASSUME NO REVERSE-POLARITY PROTECTION UNTIL THE HBT MANUAL SAYS OTHERWISE.** The IG57's
+listing was blunt that reversing the supply damages the internal circuit. Four identical 2P
+connectors assembled by hand - **check polarity per drive before the first power-on**, not after.
+
+## Diagnosis - the machine's family HAS a flash-code table
+
+**The 2026-11-25 drive change turns this section around: the HBT57C's codes, read off that
+drive's own manual, are the machine's codes** - the one real table this repo holds:
+
+| Flashes | Meaning - HBT57C, from its manual |
+|---|---|
+| 1 | **Over-current** |
+| 2 | **Over-voltage** |
+| 7 | **Tracking error** |
+
+OPEN: **Commit the HBT manual and read the complete table out of it** - the three rows above are
+the ones this file happened to record while refuting a fake table (kept below). The 7-flash
+tracking row gets its confirmation on this machine's own unit the first time bench-session §6
+provokes a stall.
+
+### IG57 record - the TST57 manual promises a table and does not contain it
 
 🔴 **THE MANUAL PROMISES ONE AND DOES NOT CONTAIN IT.** Its table of contents lists **"11. Error
 Codes"**. The document ends at section 10, which says only:
@@ -603,12 +716,9 @@ Codes"**. The document ends at section 10, which says only:
 > *"TST57 uses a dual-colour patch LED (red/green) to display the status. The normal status is that
 > the green LED flashes. If the red LED flashes, it indicates an alarm or an error has occurred."*
 
-So **red flashing means something is wrong, and nothing distinguishes what.** The Mega V's drives
-could be diagnosed by counting flashes; this one cannot, on the documentation available.
-
-OPEN: **Ask the vendor for the missing section 11.** It is a named, numbered section of their own
-manual, which is a far easier thing to ask for than an explanation - and the alternative is diagnosing
-a stopped machine from one red LED. **Asked 2026-10-12; a real response is still outstanding.**
+So **red flashing means something is wrong, and nothing distinguishes what.** The vendor was asked
+for the missing section 11 on 2026-10-12; a real response is still outstanding, and with the IG57
+off the machine the question stops gating anything here.
 
 ### REJECTED: The flash codes an AI assistant produced for this question
 
@@ -642,16 +752,19 @@ of the right form, arriving in answer to the right question, at the moment the r
 be absent. That is the shape of thing this repo's rules are about: a signal is not the event, and an
 answer is not a source.
 
-**The only real flash-code information this build will have until the vendor replies is what the LED
-is observed to do** - which is why
-[`../commissioning/bench-session.md`](../commissioning/bench-session.md) records it while provoking a
-tracking fault on an uncoupled motor.
+**The build's real flash-code source is now the HBT table above, pending its manual** - and
+[`../commissioning/bench-session.md`](../commissioning/bench-session.md) still records what the
+LED actually does while provoking a tracking fault on an uncoupled motor, which is what checks
+the table against the part.
 
-## Configuration - and a contradiction about whether it is even allowed
+## IG57 record - configuration, and a contradiction about whether it is even allowed
 
-The manual's §5.1 says to prepare **a PC running Windows and a matching MicroUSB cable**, and §9 gives
-the TTL parameters: **9600 baud, 8 data bits, 1 stop bit, no parity**. That reads as a user-facing
-configuration path.
+OPEN: **How the HBT57112C is configured - if at all - is its own question for its own manual.**
+Nothing for the machine hangs on the TST contradiction below anymore.
+
+The TST57 manual's §5.1 says to prepare **a PC running Windows and a matching MicroUSB cable**, and
+§9 gives the TTL parameters: **9600 baud, 8 data bits, 1 stop bit, no parity**. That reads as a
+user-facing configuration path.
 
 🔴 **THE LISTING SAYS THE OPPOSITE.** Its own photograph of the MicroUSB port is captioned
 *"For internal factory use only (firmware programming during the manufacturing process) and not for
@@ -662,10 +775,10 @@ whatever threshold governs how readily the closed loop faults, and whether the a
 actually be inverted or reassigned as §7.3 claims. The manual describes a host-computer workflow;
 the seller says the port is not for users. **Settle it before assuming either.**
 
-### DIP switches
+### IG57 record - DIP switches
 
-Everything else is set on the body. SW1-4 select microstep from the manual's table; the listing adds
-SW5 and SW6, which the manual covers only partly.
+Everything else is set on the body. SW1-4 select microstep from the TST57 manual's table; the
+listing adds SW5 and SW6, which the manual covers only partly.
 
 | Switch | Function |
 |---|---|
@@ -676,17 +789,22 @@ SW5 and SW6, which the manual covers only partly.
 NOTE: **All four ON is 400 steps/rev, and the table is not in a sensible order** - it runs 400 up to
 51200 and then restarts at 1000. Read the row, do not infer the pattern.
 
-SETTLED: **2000 pulses/rev on all four drives - his call, 2026-11-13.** The manual's table says the
-2000 row is **SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** (manual §7.1, read from the committed PDF). With
-the 1605's 5 mm lead and direct coupling that is **400 steps/mm - $100 through $103 all read 400.**
-A clean decimal with no rounding in the chain; finer microstepping buys smoothness, not accuracy,
-and the drive closes its own loop on a 1000-line encoder regardless. Cheap check at the bench:
-a tape flag on the shaft, command a 5 mm jog, the shaft turns exactly one revolution.
+SETTLED: **2000 pulses/rev on all four drives - his call, 2026-11-13.** With the 1605's 5 mm lead
+and direct coupling that is **400 steps/mm - $100 through $103 all read 400.** A clean decimal
+with no rounding in the chain; finer microstepping buys smoothness, not accuracy, and the drive
+closes its own loop on its encoder regardless.
+
+OPEN: 🔴 **2000 p/r stands as the machine decision; the SWITCH POSITIONS to get it on an
+HBT57112C come from its own table** - its manual, or the legend printed on the body. The row
+recorded here (SW1 OFF, SW2 ON, SW3 ON, SW4 OFF) is the **TST57 manual's §7.1** and does not
+transfer. The tape-flag check is the two-minute confirmation either way: command a 5 mm jog and
+the shaft turns exactly one revolution.
 
 ## What the closed loop does and does not cover
 
-The drive has its own **1000-line encoder** and corrects its own position, so **lost steps at the
-motor are the drive's problem and are already handled** - one of the reasons the linear-encoder
+The drive has its own encoder and corrects its own position (the TST57's was 1000-line; the
+HBT57112C's count is an OPEN for its manual), so **lost steps at the motor are the drive's
+problem and are already handled** - one of the reasons the linear-encoder
 project narrowed its justification away from motor-side step loss. See
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
 
@@ -705,16 +823,18 @@ Keeping them separate in the cabling is still right: nearly free during a build,
 retrofit, and per-axis needs only a board-map edit later. With AL on its own pair per stepper that
 wiring is already done.
 
-FLAG: **WIRE-ORING AN ASSERT-WHEN-HEALTHY OUTPUT IS A SERIES CHAIN, NOT A PARALLEL ONE.** The Mega
-V's alarms asserted on fault, so paralleling them gave "any drive faulted". These assert when
-*healthy*, so the equivalent is all four in **series** - any drive dropping out breaks the chain. Easy
-to get backwards, and getting it backwards produces a guard that reads healthy when every drive is
-dead.
+~~FLAG: **WIRE-ORING AN ASSERT-WHEN-HEALTHY OUTPUT IS A SERIES CHAIN, NOT A PARALLEL ONE.**~~
+SETTLED by the bench, 2026-11-25: **the machine's HBT57112C alarms measured released-when-healthy**
+(the alarm section at the top), so they assert on fault like the rest of their family, and **the
+parallel wire-OR is the correct combination** - paralleling gives "any drive faulted", exactly as
+it did on the Mega V. The series-chain warning applied to the IG57's manual-claimed sense and
+retires with the part; the lesson it carried - know the output's sense before combining them -
+is what the bench rig is for.
 
 ## Fallback: plain open-loop drivers run on the same cable plant - his, 2026-11-19
 
 The two cables per axis do not care whether the far end is an integrated unit or a separate
-driver feeding a bare stepper - they only deliver 36 V and pulse/direction logic. So if an IG57
+driver feeding a bare stepper - they only deliver 36 V and pulse/direction logic. So if a drive
 dies, or someone later wants ordinary open-loop drivers, the wiring survives. Two arrangements,
 chosen by where a driver brick physically fits - his drivers run about **4 x 3 x 1.25 inches**:
 
@@ -736,9 +856,13 @@ conversion is a labelled, deliberate job, not a swap.
 
 🔴 **ALL FOUR AXES LOSE THE AL OUTPUT IN THIS FALLBACK - his, 2026-11-19.** A plain open-loop
 driver has no alarm output wherever it sits, so the brown pair goes dark on Y1/Y2 too, with their
-Cat 6 otherwise untouched. The motor-fault input must not be left expecting an
-assert-when-healthy chain that no longer exists - with any axis converted, $744/$745 stay off.
-And with no encoder there is no closed loop: lost steps come back, and nothing reports them.
+Cat 6 otherwise untouched. ~~With any axis converted, $744/$745 stay off.~~ REVISIT: that
+instruction was written against the IG57's claimed assert-when-healthy sense, where a missing
+output broke the whole chain. With the HBT57112C's measured assert-on-fault in a parallel OR, a
+converted axis never asserts and cannot break the others' chain - $744/$745 could stay on for
+the remaining axes, with the converted one silently unguarded. His call if the fallback is ever
+exercised; either way, know which axis is dark rather than discover it. And with no encoder
+there is no closed loop: lost steps come back, and nothing reports them.
 
 🔴 **WHAT THE CAT 6 CANNOT DO IS CARRY THE PHASES ITSELF.** Worked through 2026-11-19: four
 30 AWG conductors paralleled per leg is roughly a 24 AWG equivalent against amps of phase
@@ -748,8 +872,12 @@ be a phase extension; the Cat 6 cannot.
 
 ## Provenance
 
-The part, the cabling and the correction that the HBT57C is the Mega V's drive are all his,
-2026-10-12. The manual is the TST57 series user manual he supplied the same day.
+**The HBT57112C purchase - four new units, both machines on one family - and the alarm
+measurements are his, 2026-11-25.** The file was renamed from `ig57-drives.md` the same day.
+
+The IG57 part, the cabling scheme and the 2026-10-12 correction that the HBT57C is the Mega V's
+drive are all his, 2026-10-12. The manual below is the TST57 series user manual he supplied the
+same day; the IG57 record sections were extracted from it.
 
 SETTLED: **The manual is committed** as
 [`../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf`](../manufacturer-assets/TST57-Integrated-Stepper-Manual.pdf),
