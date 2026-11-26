@@ -196,6 +196,9 @@ a Rev C package gets its own folder when the time comes.
    becomes a 3.5 mm 2P terminal block on the bottom edge with the other TBs. J37
    (UART1 out, 1x4 2.54 mm) moves up into J19's old spot at the east end of row A,
    rotated 90 degrees.
+2. **J15's silk reads VFD, not SPINDLE.** The Mini-Fit Jr 4P that the VFD control run
+   lands on gets its function label changed in `silk.py`'s table. The bottom-edge TB
+   J22 also carries a SPINDLE label; that one was not named and stays as it is.
 
 ---
 
