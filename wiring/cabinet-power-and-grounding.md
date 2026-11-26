@@ -26,7 +26,7 @@ goes near the board:
 | **The holder** | WENGART **WGPV-30D**, 1-pole DIN, 10x38 **gPV** links, rated 1000 VDC / 32 A, terminals take 18-8 AWG so the 12 AWG solid lands in it. A PV holder on purpose: DC is what is hard to interrupt and most cheap 10x38 holders are AC-rated. The holder is generic; **the link in it should be a name brand** - Bussmann / Littelfuse / Mersen 10x38 gPV |
 | **Supply to fuse to blocks** | **12 AWG solid copper, short lengths - his, 2026-11-14. RED is +36 V, BLACK is the return** - the same as the 18/2 motor cables, whose conductors are red (+) and black (-), so the DC side reads one way from the supply screw to the drive. (He first said black and white the same day, and changed it for exactly that reason.) Red runs supply V+ to the fuse and fuse to the +36 V group; black runs supply V- straight to the return group. Solid wire goes into the push-in point bare - **no ferrule on solid** |
 | **What lands on them** | the red and the black above, on one block of each group, and **the five motor supply cables** - X, Y1, Y2, Z, B - **red into the +36 V group, black into the return group** |
-| **The cables** | **Y1, Y2 and B are 18/2. X and Z are shielded 18/4 - his, 2026-11-19**: red, black, yellow, white, with red and black landed as above and **yellow and white insulated spares at both ends**, reserved for the open-loop driver fallback in [`ig57-drives.md`](ig57-drives.md), where all four become motor phases |
+| **The cables** | **Y1, Y2 and B are 18/2. X and Z are shielded 18/4 - his, 2026-11-19**: red, black, yellow, white, with red and black landed as above and **yellow and white insulated spares at both ends**, reserved for the open-loop driver fallback in [`hbt57112c-drives.md`](hbt57112c-drives.md), where all four become motor phases |
 | **Where the five come in** | **one 1 inch knockout in the side of the box - his, 2026-11-14.** All five through the one hole; they are bare ferruled wire at this end, so only cable has to pass |
 | **How** | **18 AWG, ferruled, pushed straight in.** The block takes a ferruled wire from 0.5 mm2 with no tool; 18 AWG is 0.82. The ferrule wants a **10 or 12 mm barrel**, because the block's strip length is 10 to 12 - the common 8 mm barrel does not seat |
 
@@ -421,9 +421,9 @@ stopped and behaved perfectly.
 
 PROCEDURE: **METER IT ANYWAY, ONCE, BEFORE IT GOES IN** - both load terminals against their line
 terminals with the coil de-energised. This is a vendor's word on a listing, and in this repo a
-vendor's word on exactly this kind of claim has already been **wrong**: the IG57 seller said the four
+vendor's word on exactly this kind of claim has already been **wrong**: the drive seller said the four
 opto minus legs were commoned inside the drive and a one-minute meter check overturned it, which is
-why [`ig57-drives.md`](ig57-drives.md) carries the reading rather than the claim. One minute, and it
+why [`hbt57112c-drives.md`](hbt57112c-drives.md) carries the reading rather than the claim. One minute, and it
 is the one failure here that cannot be seen in operation.
 
 FLAG: **THE TWO RATINGS ARE NOT INTERCHANGEABLE, AND THE SAME PART READS OFF A DIFFERENT COLUMN IN
@@ -559,8 +559,8 @@ no others - an emergency, **clearing a motor fault**, and working on the wiring.
 
 NOTE: **THAT MAKES DROPPING POWER A DIAGNOSTIC STEP, NOT ONLY A SAFETY ONE.** A latched drive alarm
 is cleared by taking the rail away from it, which is why the paddle is the tool he reaches for. Worth
-knowing beside the IG57's alarm output and the fact that its manual contains no fault code table -
-see [`ig57-drives.md`](ig57-drives.md).
+knowing beside the HBT57112C's measured alarm sense - asserts on fault, released when healthy - and
+its family's flash-code table, see [`hbt57112c-drives.md`](hbt57112c-drives.md).
 
 ✅ **AND THE VFD MANUAL ASKS FOR EXACTLY THIS USAGE, IN SO MANY WORDS.** Its installation notes say:
 *"Do not use the electromagnetic contactor as the on/off button of power supply for the inverter."*
@@ -617,7 +617,7 @@ actually watch. **The healthy 36 V rail has to sit INSIDE the window**, so:
 | Edge | Must be settable to | Why |
 |---|---|---|
 | **Undervoltage** | about **30 V** | high enough to drop promptly instead of waiting out the rail's decay, low enough that a heavy rapid's sag does not trip it |
-| **Overvoltage** | **well above 36 V** - think low 40s | 🔴 **THE DRIVES REGENERATE INTO THIS RAIL WHEN THEY BRAKE AND IT RISES.** A trip set close to 36 V turns every hard decel into an e-stop. Regeneration headroom is the same argument that settled 36 V over 48 in the first place - see [`ig57-drives.md`](ig57-drives.md) |
+| **Overvoltage** | **well above 36 V** - think low 40s | 🔴 **THE DRIVES REGENERATE INTO THIS RAIL WHEN THEY BRAKE AND IT RISES.** A trip set close to 36 V turns every hard decel into an e-stop. Regeneration headroom is the same argument that settled 36 V over 48 in the first place - see [`hbt57112c-drives.md`](hbt57112c-drives.md) |
 
 FLAG: **AN EARLIER VERSION OF THIS NOTE GAVE ONLY THE UNDERVOLTAGE EDGE.** A part can pass that and
 still be wrong: if its overvoltage adjustment tops out at, say, 38 V, the window is too tight for a
@@ -1013,10 +1013,11 @@ the 36 V supply goes**, which is the open item immediately below.
 
 ## The motor supply is not settled
 
-SETTLED: **THE RAIL IS 36 V - his decision, 2026-10-12.** It is the voltage the TST57 manual
-recommends, and it leaves the Mega V's 48 V supply in the Mega V instead of being dug out. The
-reasoning is in [`ig57-drives.md`](ig57-drives.md); the short version is that 48 V would have sat at
-the manual's lowest stated maximum with about 2 V of regeneration headroom.
+SETTLED: **THE RAIL IS 36 V - his decision, 2026-10-12, and it survives the 2026-11-25 drive
+change.** It was the TST57 manual's recommended voltage, and it leaves the Mega V's 48 V supply in
+the Mega V instead of being dug out. The reasoning is in
+[`hbt57112c-drives.md`](hbt57112c-drives.md); the HBT57C family is recorded at 24-55 V, so 36 sits
+inside the new part's range with room on both sides.
 
 SETTLED: **THE SUPPLY IS THE 36 V 600 W ALREADY IN THE MACHINE - nameplate, 2026-10-12.**
 
@@ -1110,7 +1111,8 @@ bench, read off the supply's own LCD.
 **What the reading has to clear, for the XDR to be buyable at all: 13.3 A.** The brick has 16.5 A
 and the XDR has 13.3, so the DIN unit is only an option if four drives fit under the lower number
 with margin - and that figure exists nowhere, because **the TST57 manual declines to give a
-per-drive input current** and says *"users need to carry out specific analysis and estimation"*. The
+per-drive input current** and says *"users need to carry out specific analysis and estimation"* -
+and the HBT57112C's manual, not yet committed, has not supplied one either. The
 one instrument that can answer it is already owned and the measurement costs nothing.
 
 NOTE: **IT IS A SEQUENCE, NOT A COIN TOSS - and only one order works.** The bench session **has** to
@@ -1264,19 +1266,20 @@ it: a probe is the one input where a false trigger costs a crash, and sharing a 
 that switches is how it gets one.
 
 FLAG: **CHECK THE 5 V REGULATOR'S ABSOLUTE MAXIMUM INPUT BEFORE TRUSTING ANY OF THIS, AND SIZE IT ON
-WHAT THE RAIL CAN REACH RATHER THAN ON ITS NOMINAL 36 V.** The ceiling is whatever the drives tolerate before
-they trip, and the TST57 manual puts the drives' **over-voltage alarm above 50 V** - see
-[`ig57-drives.md`](ig57-drives.md), where the rail voltage is now the largest open decision. A regulator
+WHAT THE RAIL CAN REACH RATHER THAN ON ITS NOMINAL 36 V.** The ceiling is whatever the drives
+tolerate before they trip - the HBT57C family is recorded at 24-55 V and its exact trip threshold
+waits on the manual being committed, see [`hbt57112c-drives.md`](hbt57112c-drives.md). A regulator
 chosen with no margin dies **taking the controller with it, mid-job**, which is the failure that
 looks like a random crash and gets diagnosed as firmware. FLAG: **This paragraph said 55 V until
-2026-10-12**, from the Mega V's drives; do not reinstate that figure.
+2026-10-12**, from the Mega V's drives - the figure may yet come back now both machines run that
+family, but it comes back from the committed manual, not from memory.
 
-FLAG: **THE ISOLATION IS THERE, AND IT IS EASY TO SHORT OUT BY ACCIDENT.** The IG57 brings its control
-signals out as plus/minus pairs - PU+/PU-, DR+/DR-, EN+/EN-, AL+/AL- - which is an opto input
-presented at its two ends, so the galvanic isolation is real. The four minus legs are commoned inside
-the drive on the seller's word, so it is **one isolated common per drive** rather than four isolated
-signals; the boundary that matters, between each drive and the controller, is the one that exists.
-See [`ig57-drives.md`](ig57-drives.md), where the meter check that confirms it is written down.
+FLAG: **THE ISOLATION IS THERE, AND IT IS EASY TO SHORT OUT BY ACCIDENT.** The drive brings its
+control signals out as plus/minus pairs - PU+/PU-, DR+/DR-, EN+/EN-, AL+/AL- - which is an opto
+input presented at its two ends, so the galvanic isolation is real. **The minus legs measured
+independent of each other** - the seller's claim that they were commoned was overturned by the
+meter - so the isolation is **per signal**, not merely per drive.
+See [`hbt57112c-drives.md`](hbt57112c-drives.md), where the measurement is written down.
 
 It is free, already paid for in the drives, and lost by any of three ordinary-looking decisions: a
 **shared rail** between logic and motor supply, a **merged ground bus**, or a **USB
@@ -1589,7 +1592,7 @@ that needed rules**; drilled holes in the middle of a panel do not.
 
 🔴 **THE STEPPER HOLES MUST PASS A CONNECTOR, NOT A CABLE - and that is where 3/8 stops
 generalising.** Those runs are **terminated leads that are never cut** - see
-[`ig57-drives.md`](ig57-drives.md) - so **a connector has to be threaded through every penetration on
+[`hbt57112c-drives.md`](hbt57112c-drives.md) - so **a connector has to be threaded through every penetration on
 its path.** There is no option to pull a bare cable and terminate it afterwards.
 
 **Three things share each stepper hole, and the biggest one sets its size - his parts, 2026-11-08:**
