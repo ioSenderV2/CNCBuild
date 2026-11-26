@@ -209,16 +209,15 @@ a Rev C package gets its own folder when the time comes.
    headers J40-J44 carry no alarm at all - so in Teensy mode this pin would be the
    only alarm route: shunts strap the five AL lines onto a common rail landing on one
    J17 pin, one dupont from there to the Teensy; shunts off and the straight ribbon
-   to the RP23 behaves as today. 🔴 **The gate: a parallel tie of assert-when-healthy
-   outputs reads healthy until every drive is dead** (the IG57's ALM is NC by default,
-   [`../../ig57-drives.md`](../../ig57-drives.md)), so this only goes on the board if
-   the ALM can really be inverted to assert-on-fault - which hangs on that file's open
-   contradiction over whether the MicroUSB config port is usable at all. No flip, no
-   jumper field. **First test, then config**: bench-session §5's two meter readings on
-   an IG57 come before the MicroUSB question - the HBT57C measured opposite its
-   assumed sense on 2026-11-25 (12 V / 10K rig, see
-   [`../../../machine/stepper-sizing.md`](../../../machine/stepper-sizing.md)), and if
-   the IG57 also measures released-when-healthy the gate opens with no flip needed.
+   to the RP23 behaves as today. ~~🔴 The gate: a parallel tie of assert-when-healthy
+   outputs reads healthy until every drive is dead.~~ SETTLED: **the gate is open -
+   his bench, 2026-11-25.** The machine's drives are the four new **HBT57112C** (his,
+   2026-11-25 - the IG57 is no longer this machine's drive), and two of them measured
+   **released when healthy** on a 12 V / 10K pull-up rig: 12.185 and 12.184 V powered
+   with a green LED, 0.37 and 0.054 V unpowered. They assert on fault, so the parallel
+   wire-OR is natively the correct combination - any drive faulting pulls the one pin.
+   No config flip needed. A broken alarm wire reads healthy on these drives (fails
+   silent) - a cabling fact to know, not a reason against the jumper field.
 
 ---
 
