@@ -14,22 +14,58 @@ share one drive type, one spares shelf, and one flash-code table.
 > reverses that split - both machines are HBT - without changing which facts belonged to which
 > part.
 
-## The part - what is known, and what waits on the manual
+## The part - from the committed manual
 
-OPEN: 🔴 **THE HBT57112C MANUAL IS NOT COMMITTED, and the datasheets-committed rule wants it**
-beside the TST57's in [`../manufacturer-assets/`](../manufacturer-assets/index.html). The HBT57C
-flash codes below were once read off "that drive's own manual", so a manual exists in the
-household. Until it is committed, the spec table is deliberately thin - **no figure below gets
-filled in from a listing memory or from the TST57's table**:
+SETTLED: **The manual is committed - his, 2026-11-26**:
+[`../manufacturer-assets/HBT57C_V1.0_Integrated_Closed_Loop_Motor_User_Manual_EN.pdf`](../manufacturer-assets/HBT57C_V1.0_Integrated_Closed_Loop_Motor_User_Manual_EN.pdf),
+Vallder's HBT57C V1.0 user manual, 14 pages. Everything in this table is read out of it:
 
 | | |
 |---|---|
-| Family | **HBT57C** - the Mega V's drives: 3.2 N·m on its X, Y1, Y2 and 1.5 on its Z, long trouble-free in service at 48 V |
-| This machine | **4x HBT57112C, new** - his, 2026-11-25. Not the spares; the three spares (two 2.0, one 1.5) stay spares, see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md) |
-| Supply rating | **24-55 V** as recorded in this file's own cross-check note of 2026-10-12 - re-verify off the committed manual |
-| Alarm output | **Measured 2026-11-25** - the section below |
-| Flash codes | **1 over-current, 2 over-voltage, 7 tracking error** - read off the HBT57C manual, recorded in the diagnosis section |
-| Torque, current, encoder, weight, body length, input levels | OPEN - from the manual when committed, or off the part |
+| This machine | **4x HBT57112C, new** - his, 2026-11-25. Not the spares; the three spares (two 2.0, one 1.5) stay spares, see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md). The Mega V runs the same family, trouble-free at 48 V |
+| HBT57112C | body **132 mm**, shaft 21 mm Ø8, phase **4.5 A / 0.78 Ω**, holding torque **3.2 N·m**, inertia 760 g·cm², weight **1780 g** |
+| Supply | **24-55 VDC, recommended 36.** Undervoltage trip below 18 V; overvoltage protection 55 / 60 / 65 V min/typ/max, fault logged at V ≥ 60 |
+| Drive output | maximum continuous **4 A**, peak **5 A** (features page; the mechanical table's 4.5 A is the 112C's motor phase rating) |
+| Pulse path | differential or single-ended, optocoupled; **max 500 kHz, default 200 kHz**; pulse high AND low each ≥ **1.5 µs**; DIR ≥ 1 µs before PUL's falling edge; ENA ≥ 5 µs before DIR - and the manual recommends **leaving ENA floating** |
+| 🔴 Logic inputs | **4.5 - 24 V at 10-16 mA. NOT 3.3 V.** See the flag below - this is now the top open item |
+| Alarm output | **OC open collector, max output 100 mA.** Max pull-up voltage stated **24 V on the pinout page and 28 V on the interface page** - stay at or under 24 and the contradiction never matters. The manual's own reference pull-ups: 2K at 24 V, 1K at 12 V. 🔴 **The polarity is stated NOWHERE in the manual** - the bench measurement below is the only sense authority there is |
+| LEDs | **green steady = power on** (matches the solid green observed 2026-11-25); red flashes the fault code in a 5 s cycle at 2 Hz - **1 = overcurrent (I ≥ 6 A), 2 = overvoltage (V ≥ 60 V), 7 = tracking error** |
+| Fault clearing | 🔴 **power off and restart - every protection section says so.** No enable-clear exists in the manual. Bench-session §6 still observes it on the part, and already carries the cabinet consequence: the drives' 36 V must be switchable separately from the controller |
+| Configuration | real, via **RS232**: a dedicated serial cable (4-pin: +5V / TXD / RXD / GND) plus PC software - microstep, current, resonance suppression, pulse edge, single/dual pulse, initial direction. **Do not hot-plug the serial port** |
+| DIP | 6-position. **2000 p/r = SW1 OFF, SW2 ON, SW3 ON, SW4 OFF** - the HBT table's own row, so the 2026-11-13 setting survives (the same positions the TST table gave, by coincidence). All four ON = internal default, 400 p/r. SW5 ON = CW. **SW6: OFF = FOC mode, ON = point-to-point mode - NOT a current switch as on the TST** |
+| Reverse polarity | **none - reversing the supply blows the internal fuse**, the manual's own warning with its own exclamation marks |
+| Encoder | line count **not stated anywhere in the manual** - still OPEN |
+| Wiring rules | the manual's own: shielded signal cable grounded **at the controller end only**, signals ≥ 10 cm from power wires, **no daisy-chaining supply between drives**, no tinned wire ends in the terminals, never plug or unplug terminals powered. All four match what this repo already does |
+
+**The 12-pin terminal, with the manual's own wire colours:**
+
+| Pins | Signal | Colour |
+|---|---|---|
+| 1-2 | +VDC | red |
+| 3-4 | GND | black |
+| 5 | PU+ | green |
+| 6 | PU- | yellow |
+| 7 | DR+ | purple |
+| 8 | DR- | orange |
+| 9 | EN+ | white |
+| 10 | EN- | blue |
+| 11 | AL+ | brown |
+| 12 | AL- | gray |
+
+✅ **THE MANUAL'S COLOURS MATCH THE 2026-11-23 BENCH READING EXACTLY** - green PU+, yellow PU-,
+white EN+, orange DR-, purple DR+, blue EN-, brown AL+, grey AL-. The flying-lead table in the
+cabling section and this page corroborate each other, read independently.
+
+🔴 **THE INPUT-LEVEL PROBLEM IS REAL, AND IT IS NOW THE TOP OPEN ITEM.** The electrical table
+puts logic input voltage at **minimum 4.5 V** (typical 5, max 24) at 10-16 mA, and the
+troubleshooting page's first fix for a motor that will not run is *"increase signal current to
+7-16 mA"*. **The RP23 drives step, direction and enable at 3.3 V** - under the stated minimum,
+with the TST57's 3.3-24 V sentence now being the dead part's spec. Against that stands one large
+fact: **the Mega V runs this exact family and works** - so whatever its signal path actually
+provides (level, current, buffering, or just margin the manual does not promise) is the thing to
+go read off that machine before designing anything. OPEN: 🔴 **settle the RP23-to-drive signal
+level before commissioning** - the manual's floor and a working machine disagree until someone
+looks at the working machine.
 
 OPEN: **The fate of the IG57 units in hand is not recorded** - two were weighed on 2026-10-12
 and at least one sat on the bench since. Returned, shelved as spares, or repurposed: say which,
@@ -244,11 +280,10 @@ into the parallel OR conducts the whole time that unit is healthy - the common l
 "fault" state permanently, which is a stuck alarm that also hides every real one behind it. The
 guard stops meaning "any drive faulted" the moment one opposite-sense output joins the chain.
 
-FLAG: **THE PULL-UP QUESTION MOVES TO THE HBT57112C'S NUMBERS, WHICH ARE NOT RECORDED.** The
-30 V / 50 mA ratings here are the TST57's. What rail the HBT's output tolerates, and what level
-it pulls to when asserted, are manual-plus-bench items - the asserted-state voltage reading is
-already queued with bench-session §6's stall. Until then, nothing gets permanently wired to the
-alarm line but the 12 V / 10K test rig that produced the measurement.
+FLAG: **THE HBT'S OWN ALARM RATINGS ARE NOW IN THE PART TABLE ABOVE** - OC, 100 mA, pull-up at
+or under 24 V (its manual states 24 V on one page and 28 V on another; stay under 24). What
+level the output pulls to when asserted is still a bench reading, queued with §6's stall. The
+30 V / 50 mA figures in this paragraph's old form were the TST57's.
 
 ### IG57 record - the fifth pair is EX, in-place
 
@@ -264,11 +299,10 @@ around it.
 ## IG57 record - connector pinout
 
 From the TST57 manual's §7.3 and the connector diagram. **Two separate terminal blocks** - a 2P for
-power and a small-gauge block for signals. 🔴 **THE HBT57112C DOES NOT PRESENT THIS BLOCK - its
-signal interface is eight flying leads**, read off the part 2026-11-23 (the colour table in the
-cabling section), and its power entry is not recorded here. The "at the drive, terminals 3-10"
-columns in the cabling tables below are THIS block's numbering - the IG57's - and do not apply to
-a flying-lead drive:
+power and a small-gauge block for signals. 🔴 **THE HBT57112C'S OWN BLOCK IS DIFFERENT - one
+12-pin white terminal, power on pins 1-4 and signals on 5-12**, its coloured leads read off the
+part 2026-11-23 and matched by its manual (part table at the top). The drive-terminal columns in
+the cabling tables below carry the **HBT numbering**; the table below is the IG57's:
 
 | Pin | Name | |
 |---|---|---|
@@ -300,12 +334,17 @@ below**, not the colour table; colour only matters if a cable ever gets cut.
 2026-11-07.** Read the RJ45 pin numbers off the board's netlist, not off this signal's position in
 the drive's terminal block:
 
-| T568 pair | Striped - **odd** pin | Solid - **even** pin | At the drive |
+| T568 pair | Striped - **odd** pin | Solid - **even** pin | At the drive (HBT 12-pin) |
 |---|---|---|---|
-| **1-2** | pin 1, **PU+** | pin 2, **PU-** | terminals 3, 4 |
-| **3-6** | pin 3, **EN+** | pin **6**, **EN-** | terminals 7, 8 |
-| **4-5** | pin 5, **DR+** | pin **4**, **DR-** | terminals 5, 6 |
-| **7-8** | pin 7, **AL+** | pin 8, **AL-** | terminals 9, 10 |
+| **1-2** | pin 1, **PU+** | pin 2, **PU-** | terminals 5, 6 |
+| **3-6** | pin 3, **EN+** | pin **6**, **EN-** | terminals 9, 10 |
+| **4-5** | pin 5, **DR+** | pin **4**, **DR-** | terminals 7, 8 |
+| **7-8** | pin 7, **AL+** | pin 8, **AL-** | terminals 11, 12 |
+
+NOTE: **the drive-terminal column read 3,4 / 7,8 / 5,6 / 9,10 until 2026-11-26** - the IG57
+block's numbering, kept in the IG57 record above. The HBT57112C's manual numbers its one block
+1-12 with power on 1-4, so every signal terminal moves up by two; the lead colours are the
+steadier identifier and both are in the part table.
 
 **The drive's own flying-lead colours - his, 2026-11-23, off the part, an HBT57112C (confirmed
 2026-11-25).** These are the colours of the eight wires leaving the drive, landed into the RJ45
@@ -377,16 +416,19 @@ the breakout board, not of the drive behind it.
 Nothing is stripped, so no conductor is ever picked out by its stripe. The colour table below is
 reference for a cut-end job and **is not the build instruction**; this is:
 
-| **RJ45 pin** | Drive terminal | Signal |
-|---|---|---|
-| **1** | **3** | **PU+** |
-| **2** | **4** | **PU-** |
-| **3** | **7** | **EN+** |
-| **4** | **6** | **DR-** |
-| **5** | **5** | **DR+** |
-| **6** | **8** | **EN-** |
-| **7** | **9** | **AL+** |
-| **8** | **10** | **AL-** |
+| **RJ45 pin** | HBT terminal | Signal | Lead colour |
+|---|---|---|---|
+| **1** | **5** | **PU+** | green |
+| **2** | **6** | **PU-** | yellow |
+| **3** | **9** | **EN+** | white |
+| **4** | **8** | **DR-** | orange |
+| **5** | **7** | **DR+** | purple |
+| **6** | **10** | **EN-** | blue |
+| **7** | **11** | **AL+** | brown |
+| **8** | **12** | **AL-** | gray |
+
+NOTE: **the terminal column carried the IG57 block's 3-10 numbering until 2026-11-26**; these
+are the HBT57112C's 12-pin positions and its own lead colours, manual and bench agreeing.
 
 🔴 **THE LEFT COLUMN IS THE RJ45 PIN, NOT THE BREAKOUT STRIP'S OWN TERMINAL NUMBER - and on this
 board those run OPPOSITE ways.** The strip's terminal 1 is **jack pin 8**; see the section below.
@@ -682,31 +724,32 @@ supply no longer shares a shell with the signals.
 PROCEDURE: **One external fast-blow fuse in series with each drive's positive supply, four fuses,
 fitted in the cabinet.** The plan survives the drive change.
 
-OPEN: 🔴 **THE 5 A RATING WAS THE TST57 §7.1'S RECOMMENDATION** (IG57 record: internal fuse in
-series with V+ the user cannot replace, external 5 A fast-blow recommended so a fuse exists that
-*can* be replaced). The HBT57112C's internal-fuse arrangement and recommended external rating come
-from its own manual - and what the Mega V's cabinet fuses these drives at, if anything, is worth
-reading off that machine.
+OPEN: **THE RATING IS STILL OPEN - the HBT manual recommends no external fuse value.** What it
+does say (committed, 2026-11-26): there IS an internal fuse, and **reversed supply polarity blows
+it** - the manual's own warning. The 5 A figure that stood here was the TST57 §7.1's
+recommendation. Sizing anchors that exist now: the 112C's phase rating is 4.5 A, drive output
+4 A continuous / 5 A peak, overcurrent fault at 6 A - and what the Mega V's cabinet fuses these
+drives at, if anything, is still worth reading off that machine.
 
-FLAG: **ASSUME NO REVERSE-POLARITY PROTECTION UNTIL THE HBT MANUAL SAYS OTHERWISE.** The IG57's
-listing was blunt that reversing the supply damages the internal circuit. Four identical 2P
-connectors assembled by hand - **check polarity per drive before the first power-on**, not after.
+FLAG: 🔴 **NO REVERSE-POLARITY PROTECTION - the manual says so outright**: reversing the supply
+blows the internal fuse. Four identical 2P connectors assembled by hand - **check polarity per
+drive before the first power-on**, not after.
 
 ## Diagnosis - the machine's family HAS a flash-code table
 
-**The 2026-11-25 drive change turns this section around: the HBT57C's codes, read off that
-drive's own manual, are the machine's codes** - the one real table this repo holds:
+**The 2026-11-25 drive change turns this section around: the HBT57C's codes are the machine's
+codes**, and with the manual committed (2026-11-26) the table is complete - three codes is all
+there are:
 
-| Flashes | Meaning - HBT57C, from its manual |
+| Flashes | Meaning - HBT57C manual, committed |
 |---|---|
-| 1 | **Over-current** |
-| 2 | **Over-voltage** |
-| 7 | **Tracking error** |
+| 1 | **Over-current, I ≥ 6 A** |
+| 2 | **Over-voltage, V ≥ 60 V** |
+| 7 | **Excessive tracking error** |
 
-OPEN: **Commit the HBT manual and read the complete table out of it** - the three rows above are
-the ones this file happened to record while refuting a fake table (kept below). The 7-flash
-tracking row gets its confirmation on this machine's own unit the first time bench-session §6
-provokes a stall.
+The red LED flashes the code cyclically with a 5-second period, 2 Hz, 200 ms on / 300 ms off;
+green steady is just power. The 7-flash tracking row gets its confirmation on this machine's own
+unit the first time bench-session §6 provokes a stall.
 
 ### IG57 record - the TST57 manual promises a table and does not contain it
 
@@ -759,8 +802,10 @@ the table against the part.
 
 ## IG57 record - configuration, and a contradiction about whether it is even allowed
 
-OPEN: **How the HBT57112C is configured - if at all - is its own question for its own manual.**
-Nothing for the machine hangs on the TST contradiction below anymore.
+SETTLED: **The HBT57112C is configurable, and openly so - RS232 with a dedicated cable and PC
+software**, per its committed manual: microstep, current, resonance suppression, pulse edge,
+single/dual pulse, initial direction. The details are in the part table at the top. Nothing for
+the machine hangs on the TST contradiction below anymore.
 
 The TST57 manual's §5.1 says to prepare **a PC running Windows and a matching MicroUSB cable**, and
 §9 gives the TTL parameters: **9600 baud, 8 data bits, 1 stop bit, no parity**. That reads as a
@@ -794,16 +839,17 @@ and direct coupling that is **400 steps/mm - $100 through $103 all read 400.** A
 with no rounding in the chain; finer microstepping buys smoothness, not accuracy, and the drive
 closes its own loop on its encoder regardless.
 
-OPEN: 🔴 **2000 p/r stands as the machine decision; the SWITCH POSITIONS to get it on an
-HBT57112C come from its own table** - its manual, or the legend printed on the body. The row
-recorded here (SW1 OFF, SW2 ON, SW3 ON, SW4 OFF) is the **TST57 manual's §7.1** and does not
-transfer. The tape-flag check is the two-minute confirmation either way: command a 5 mm jog and
-the shaft turns exactly one revolution.
+SETTLED 2026-11-26: **the HBT manual's own 2000 p/r row is SW1 OFF, SW2 ON, SW3 ON, SW4 OFF -
+the same positions the TST table gave, by coincidence**, so the 2026-11-13 setting carries over
+after all, now on the right manual's authority (part table at the top). The tape-flag check is
+still the two-minute confirmation: command a 5 mm jog and the shaft turns exactly one
+revolution. Mind SW6: on the HBT it selects FOC against point-to-point mode, not current.
 
 ## What the closed loop does and does not cover
 
 The drive has its own encoder and corrects its own position (the TST57's was 1000-line; the
-HBT57112C's count is an OPEN for its manual), so **lost steps at the motor are the drive's
+HBT57112C's manual states position accuracy ±1 pulse and never gives a line count - OPEN, off
+the part if it ever matters), so **lost steps at the motor are the drive's
 problem and are already handled** - one of the reasons the linear-encoder
 project narrowed its justification away from motor-side step loss. See
 [`../linear-encoder/design-can-position-feedback.md`](../linear-encoder/design-can-position-feedback.md).
@@ -874,6 +920,8 @@ be a phase extension; the Cat 6 cannot.
 
 **The HBT57112C purchase - four new units, both machines on one family - and the alarm
 measurements are his, 2026-11-25.** The file was renamed from `ig57-drives.md` the same day.
+**The HBT57C V1.0 manual (Vallder) is committed, his, 2026-11-26** - the part table, pinout,
+DIP table, protections and flash codes above were read out of it.
 
 The IG57 part, the cabling scheme and the 2026-10-12 correction that the HBT57C is the Mega V's
 drive are all his, 2026-10-12. The manual below is the TST57 series user manual he supplied the
