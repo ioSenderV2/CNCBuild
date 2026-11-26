@@ -204,6 +204,17 @@ a Rev C package gets its own folder when the time comes.
    The net behind it renames to match - **`SPIN_PWM` becomes `SPIN_0_10V`**, his,
    2026-11-25 - in the schematic's global labels, the board, and `netlist.txt` via
    `make-netlist.py`; `rev-a-validation.md`'s table stays as Rev A's record.
+4. **GATED: an alarm-OR jumper field feeding one J17 pin, for the Teensy path.** The
+   T41U5XBB runs grblHAL's single combined motor-fault input, and the Teensy jumper
+   headers J40-J44 carry no alarm at all - so in Teensy mode this pin would be the
+   only alarm route: shunts strap the five AL lines onto a common rail landing on one
+   J17 pin, one dupont from there to the Teensy; shunts off and the straight ribbon
+   to the RP23 behaves as today. 🔴 **The gate: a parallel tie of assert-when-healthy
+   outputs reads healthy until every drive is dead** (the IG57's ALM is NC by default,
+   [`../../ig57-drives.md`](../../ig57-drives.md)), so this only goes on the board if
+   the ALM can really be inverted to assert-on-fault - which hangs on that file's open
+   contradiction over whether the MicroUSB config port is usable at all. No flip, no
+   jumper field.
 
 ---
 
