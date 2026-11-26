@@ -185,6 +185,20 @@ kicad-cli pcb drc --schematic-parity --severity-all --refill-zones --save-board 
 
 ---
 
+## Rev C - change list, opened 2026-11-25
+
+**His call, 2026-11-25: Rev C starts as a design pass on this branch (rev-c).** Nothing is
+ordered. Changes get recorded here as they come; the board work follows once the list
+settles. Rev B's fab package in `fab/oshpark-revb/` is an order record and is not touched -
+a Rev C package gets its own folder when the time comes.
+
+1. **12 V OUT and the UART1 output header swap places.** J19 (12 V OUT, Mini-Fit Jr 2P)
+   becomes a 3.5 mm 2P terminal block on the bottom edge with the other TBs. J37
+   (UART1 out, 1x4 2.54 mm) moves up into J19's old spot at the east end of row A,
+   rotated 90 degrees.
+
+---
+
 ## Rev B - designed on this branch, 2026-11-09; 36 V stripped 2026-11-14
 
 **His call, 2026-11-09: "proceed with this alternate design and see how it shakes out."**
