@@ -18,10 +18,11 @@ The candidates were 1.5, 2.2 and 3.2 N·m, all NEMA 23 and all available in the 
 stepper frames take — see [`archive/y-beam-support.md`](archive/y-beam-support.md) for the frames
 themselves.
 
-🔴 **SUPERSEDED BY PURCHASE, 2026-11-25: the machine runs four new HBT57112C** - the Mega V's
-family, one type on all four axes, see
-[`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md). Its manual (committed
-2026-11-26): **3.2 N·m, 132 mm body, 1780 g, 4.5 A phase.** The selection this file argues -
+🔴 **SUPERSEDED BY PURCHASE, 2026-11-25: the machine runs the Mega V's HBT family - three
+HBT57112C on X, Y1, Y2 and an HBT5776C on Z** (his, corrected and confirmed 2026-11-26),
+see [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md). The manual
+(committed 2026-11-26): 112C **3.2 N·m, 132 mm, 1780 g, 4.5 A phase**; 5776C **2.0 N·m, 96 mm,
+1100 g**. The selection this file argues -
 2.2 N·m on X, Y1, Y2 and 1.5 on Z, from torque in the 1000-1500 rpm band - **stays as the record
 of the reasoning**; its conclusion no longer names the part on the machine, and where it leans on
 a *drive* characteristic it describes the IG57. OPEN: 🔴 **the cantilever and fit figures below

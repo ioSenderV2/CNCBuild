@@ -1,7 +1,7 @@
 # The bench session: four motors, no machine
 
-**Not yet run in full.** Everything here is done with the **four HBT57112C motors loose on the
-bench** - the machine's drives since 2026-11-25, see
+**Not yet run in full.** Everything here is done with the **four HBT motors loose on the
+bench** - three HBT57112C and the Z axis's HBT5776C, the machine's drives since 2026-11-25, see
 [`../wiring/hbt57112c-drives.md`](../wiring/hbt57112c-drives.md) - before any axis is assembled.
 Results go in the tables and then outrank anything stated in that file or on the supply's label.
 Section 5 was answered on 2026-11-25, ahead of the rest.

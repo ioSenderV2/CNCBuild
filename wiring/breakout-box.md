@@ -164,8 +164,8 @@ sensor is the backstop, and 0.5 mm of it is the cost.
 
 FLAG: **THIS SECTION HAS NOW BEEN ABOUT THE HBT FAMILY TWICE.** It was written about the HBT57C,
 corrected on 2026-10-12 because those were the Mega V's drives and this machine's were the IG57 -
-and on 2026-11-25 he bought **four new HBT57112C for this machine**, so both machines run the HBT
-family after all. The part and everything known about it is
+and on 2026-11-25 he bought **new HBT drives for this machine - three HBT57112C and an HBT5776C
+for Z**, so both machines run the HBT family after all. The part and everything known about it is
 [`hbt57112c-drives.md`](hbt57112c-drives.md); this section is only what the *cabinet* has to do
 about them.
 

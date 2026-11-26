@@ -1,18 +1,20 @@
-# The HBT57112C drives
+# The HBT57C drives
 
-**Four all-in-one closed-loop steppers, one per axis - four NEW HBT57112C, bought for this
-machine. His, 2026-11-25.** The drive is built onto the motor, so there are no drives in the
-cabinet and no motor phases on any cable. **The Mega V runs the same family**, so both machines
-share one drive type, one spares shelf, and one flash-code table.
+**Four all-in-one closed-loop steppers, one per axis, all HBT57C family, new for this machine -
+his, 2026-11-25: three HBT57112C (3.2 N·m) on X, Y1 and Y2, and an HBT5776C (2.0 N·m) on Z -
+the split corrected from four 112C and confirmed, 2026-11-26.** The drive is built
+onto the motor, so there are no drives in the cabinet and no motor phases on any cable. **The
+Mega V runs the same family** - and the same shape, three big and a smaller Z - so both machines
+share one spares shelf and one flash-code table.
 
 > 🔴 **THIS FILE WAS THE IG57'S UNTIL 2026-11-25.** The TST57-76P (sold as IG57) was the chosen
 > part from 2026-10-12; its manual is committed and much of this file was extracted from it.
 > Sections marked **IG57 record** describe that part - kept because the IG57 units exist and the
 > manual stays committed - and are NOT statements about the HBT57112C. The file has now changed
 > name twice: it was `hbt57c-drives.md` until 2026-10-12, when the HBT57C was identified as the
-> Mega V's drive and the IG57 as this machine's; buying four new HBT57112C for this machine
-> reverses that split - both machines are HBT - without changing which facts belonged to which
-> part.
+> Mega V's drive and the IG57 as this machine's; buying new HBT57C-family drives for this
+> machine reverses that split - both machines are HBT - without changing which facts belonged
+> to which part.
 
 ## The part - from the committed manual
 
@@ -22,8 +24,9 @@ Vallder's HBT57C V1.0 user manual, 14 pages. Everything in this table is read ou
 
 | | |
 |---|---|
-| This machine | **4x HBT57112C, new** - his, 2026-11-25. Not the spares; the three spares (two 2.0, one 1.5) stay spares, see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md). The Mega V runs the same family, trouble-free at 48 V |
+| This machine | **3x HBT57112C on X, Y1, Y2; HBT5776C on Z** - his, corrected and confirmed 2026-11-26. The Mega V runs the same family, trouble-free at 48 V - and the same shape of split: its big three plus a smaller Z |
 | HBT57112C | body **132 mm**, shaft 21 mm Ø8, phase **4.5 A / 0.78 Ω**, holding torque **3.2 N·m**, inertia 760 g·cm², weight **1780 g** |
+| HBT5776C (Z) | body **96 mm**, shaft 21 mm Ø8, phase **3.5 A / 0.40 Ω**, holding torque **2.0 N·m**, inertia 450 g·cm², weight **1100 g** |
 | Supply | **24-55 VDC, recommended 36.** Undervoltage trip below 18 V; overvoltage protection 55 / 60 / 65 V min/typ/max, fault logged at V ≥ 60 |
 | Drive output | maximum continuous **4 A**, peak **5 A** (features page; the mechanical table's 4.5 A is the 112C's motor phase rating) |
 | Pulse path | differential or single-ended, optocoupled; **max 500 kHz, default 200 kHz**; pulse high AND low each ≥ **1.5 µs**; DIR ≥ 1 µs before PUL's falling edge; ENA ≥ 5 µs before DIR - and the manual recommends **leaving ENA floating** |
@@ -920,8 +923,9 @@ be a phase extension; the Cat 6 cannot.
 
 ## Provenance
 
-**The HBT57112C purchase - four new units, both machines on one family - and the alarm
-measurements are his, 2026-11-25.** The file was renamed from `ig57-drives.md` the same day.
+**The HBT57C purchase - new units, both machines on one family - and the alarm measurements are
+his, 2026-11-25; the axis split (three 112C, a 5776C on Z) is his, confirmed 2026-11-26.** The
+file was renamed from `ig57-drives.md` on 2026-11-25.
 **The HBT57C V1.0 manual (Vallder) is committed, his, 2026-11-26** - the part table, pinout,
 DIP table, protections and flash codes above were read out of it.
 
