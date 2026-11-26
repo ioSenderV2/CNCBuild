@@ -30,7 +30,7 @@ Vallder's HBT57C V1.0 user manual, 14 pages. Everything in this table is read ou
 | Supply | **24-55 VDC, recommended 36.** Undervoltage trip below 18 V; overvoltage protection 55 / 60 / 65 V min/typ/max, fault logged at V ≥ 60 |
 | Drive output | maximum continuous **4 A**, peak **5 A** (features page; the mechanical table's 4.5 A is the 112C's motor phase rating) |
 | Pulse path | differential or single-ended, optocoupled; **max 500 kHz, default 200 kHz**; pulse high AND low each ≥ **1.5 µs**; DIR ≥ 1 µs before PUL's falling edge; ENA ≥ 5 µs before DIR - and the manual recommends **leaving ENA floating** |
-| 🔴 Logic inputs | **4.5 - 24 V at 10-16 mA. NOT 3.3 V.** See the flag below - this is now the top open item |
+| Logic inputs | **4.5 - 24 V at 10-16 mA** - met: both controller boards buffer their stepper outputs to **5 V**, per their own manuals. See the note below |
 | Alarm output | **OC open collector, max output 100 mA.** Max pull-up voltage stated **24 V on the pinout page and 28 V on the interface page** - stay at or under 24 and the contradiction never matters. The manual's own reference pull-ups: 2K at 24 V, 1K at 12 V. 🔴 **The polarity is stated NOWHERE in the manual** - the bench measurement below is the only sense authority there is |
 | LEDs | **green steady = power on** (matches the solid green observed 2026-11-25); red flashes the fault code in a 5 s cycle at 2 Hz - **1 = overcurrent (I ≥ 6 A), 2 = overvoltage (V ≥ 60 V), 7 = tracking error** |
 | Fault clearing | 🔴 **power off and restart - every protection section says so.** No enable-clear exists in the manual. Bench-session §6 still observes it on the part, and already carries the cabinet consequence: the drives' 36 V must be switchable separately from the controller |
@@ -59,16 +59,22 @@ Vallder's HBT57C V1.0 user manual, 14 pages. Everything in this table is read ou
 white EN+, orange DR-, purple DR+, blue EN-, brown AL+, grey AL-. The flying-lead table in the
 cabling section and this page corroborate each other, read independently.
 
-🔴 **THE INPUT-LEVEL PROBLEM IS REAL, AND IT IS NOW THE TOP OPEN ITEM.** The electrical table
-puts logic input voltage at **minimum 4.5 V** (typical 5, max 24) at 10-16 mA, and the
-troubleshooting page's first fix for a motor that will not run is *"increase signal current to
-7-16 mA"*. **The RP23 drives step, direction and enable at 3.3 V** - under the stated minimum,
-with the TST57's 3.3-24 V sentence now being the dead part's spec. Against that stands one large
-fact: **the Mega V runs this exact family and works** - so whatever its signal path actually
-provides (level, current, buffering, or just margin the manual does not promise) is the thing to
-go read off that machine before designing anything. OPEN: 🔴 **settle the RP23-to-drive signal
-level before commissioning** - the manual's floor and a working machine disagree until someone
-looks at the working machine.
+✅ **THE INPUT-LEVEL QUESTION OPENED AND CLOSED THE SAME DAY - THE CONTROLLERS SPEAK 5 V, NOT
+3.3.** The scare: the electrical table puts logic input voltage at **minimum 4.5 V** at
+10-16 mA, and "the RP23 drives these at 3.3 V" had been written here off the TST-era note. The
+boards' own manuals say otherwise, both checked 2026-11-26:
+
+- **RP23U5XBB** (manual committed): *"Stepper Driver outputs ... Each is 5V compatible and
+  capable of driving opto-isolated stepper driver inputs"* - its pin table calls them **"5V
+  Logic Signals."** The RP2350 is a 3.3 V chip; **the board buffers the stepper path to 5 V.**
+  Its 3.3 V-only interfaces are I2C and SPI, and UART 0 has 3.3/5 V translation.
+- **T41U5XBB v2.07** (the Teensy fallback - manual committed 2026-11-26): the same sentence,
+  **"5V signals"**, built to drive opto-isolated stepper inputs - which is what has been talking
+  to the Mega V's HBT57C drives all along. The working machine and its manual agree.
+
+Both are **manual claims, not meter readings**: one voltmeter on a Step pin at first power-up
+turns this into an observation. But the design question is closed - the 4.5 V floor is met on
+both the ribbon path and the Teensy jumper path, with no new hardware.
 
 OPEN: **The fate of the IG57 units in hand is not recorded** - two were weighed on 2026-10-12
 and at least one sat on the bench since. Returned, shelved as spares, or repurposed: say which,
