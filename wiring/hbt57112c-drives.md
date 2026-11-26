@@ -147,16 +147,18 @@ NOTE: **A useful cross-check from the parts he already owns.** A spare **HBT5756
 integrated units landing in the same place, which is what makes the manual's 460 g the outlier rather
 than his scale.
 
-OPEN: **A spare HBT5776C at 2.0 N·m was given as "1.7" with the unit dropped**, and 1.7 kg against
-1.1 kg for a larger torque in the same frame does not sit easily with the other three readings.
-Recorded as given rather than converted. It is a Mega V spare and nothing here depends on it.
+~~OPEN: **A spare HBT5776C at 2.0 N·m was given as "1.7" with the unit dropped.**~~ SETTLED
+2026-11-26: the HBT manual's table says **1100 g** for the 5776C - the "1.7" matches nothing in
+it and stays unexplained, but the manual's figure is the one to use. (Its 5756C row says 750 g
+against his scale's 736 g on that very unit - within 2%, so the HBT weight column earns the
+trust the TST's lost.)
 
 **Four motors at 1.1 kg is 4.4 kg of the machine** was this record's arithmetic, feeding the Z
 carriage weighed at 9 kg in [`../commissioning/masses.md`](../commissioning/masses.md) - weighed
-with its motor on. OPEN: 🔴 **which motor was on the carriage for that weighing, and what an
-HBT57112C weighs, are both unrecorded** - if the carriage was weighed with an IG57 and runs an
-HBT57112C, the 9 kg moves by the difference between two numbers nobody has yet. A scale and one
-new drive settles half of it.
+with its motor on. OPEN: 🔴 **which motor was on the carriage for that weighing is unrecorded** -
+the HBT57112C weighs **1780 g** (manual, 2026-11-26) against the IG57 76P's 1.1 kg, so if the
+carriage was weighed with an IG57 the 9 kg grows by roughly 0.7 kg with the new drive on it.
+Which motor it was is the half still owed.
 
 OPEN: 🔴 **The HBT57112C's body and shaft lengths want checking against the cast stepper frames**
 before anything is bolted up - see [`../machine/stepper-sizing.md`](../machine/stepper-sizing.md)
