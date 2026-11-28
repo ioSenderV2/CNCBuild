@@ -44,9 +44,12 @@ taken on the real panel; the wiring design it validates is
   lift) has to outlast ~10 s to trip, while a real E-stop still drops the contact instantly
   because the DVRD loses its own power with the rail.
 
+- **The 15-18 contact follows the trip, proven by tone**: continuity in NORM, continuity
+  held through the whole blinking delay, open only at solid red. The loop stays closed for
+  the entire delay window - downstream never sees a transient.
+
 ## Still to run, in order
 
-1. **DVRD contact proof**: continuity across 15-18 - closed with NORM lit, open on a paddle
-   press as the rail dies.
-2. **Rest of the 220 branches**: the VFD powering, the pump contactor.
-3. **Steppers** - the drive bench session, [`bench-session.md`](bench-session.md).
+1. **Rest of the 220 branches**: the VFD powering, the pump contactor. (The paddle press
+   doubles as the DVRD's instant-drop case - the device loses its own power with the rail.)
+2. **Steppers** - the drive bench session, [`bench-session.md`](bench-session.md).
