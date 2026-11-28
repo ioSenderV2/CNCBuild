@@ -126,8 +126,8 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board).
 - Measured on the beam: the M8 **low-profile flange bolt heads are o14, 3.0 mm tall at the
   center and 2.3 at the edge, 16 mm between heads** - a 35 mm disc at tape height cannot stay
   inside that window. **SETTLED 2026-11-28, superseding the 42 mm x 1/4" counterbore plan
-  (never bought)**: a **14 mm riser bar bonds full-length onto the existing strip between the
-  head rows**, standing above the head crowns, with the tape in a 10 x 0.45 trench routed in
+  (never bought)**: a **9/16" (14.29) riser bar bonds full-length onto the existing strip between
+  the head rows**, standing above the head crowns, with the tape in a 10 x 0.45 trench routed in
   the bar - the full plan lives in
   [`design-can-position-feedback.md`](design-can-position-feedback.md) § *SUPERSEDED: PROPOSAL -
   a printed carrier*.

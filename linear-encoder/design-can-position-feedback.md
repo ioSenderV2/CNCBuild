@@ -223,13 +223,14 @@ number anyone has to respect — it is simply never reached.
 
 SETTLED: **THE CARRIER IS A RISER BAR BONDED ON THE EXISTING FRONT STRIPS - his, 2026-11-28.
 The 42 x 1/4" replacement strip is cancelled; no counterbores anywhere; the strips never come
-off their beams.** Material: **14 wide 6061, sheared at Specialty Metals from 1/4" (6.35) stock,
-880 or longer, QTY 3 - one single piece per beam, this machine only (the Mega V does not get the
-feature, his call). 1/4" because their shear already cut the 1/4" cold-rolled rear plate**, the
-thickness is the stocked SAE dimension while the 14 is just a shear stop, and the extra height
-over the 3.0 head crowns (3.35 before the runners) costs nothing - the spring-loaded rod absorbs
-ride height. 14 not 15: the 10 trench still keeps 2.0 of runner land each side, and
-the bar edge sits a true **1.0 from each head row - squeeze-out relief** instead of a 0.5 trap.
+off their beams.** Material: **9/16" (14.29) wide 6061, sheared at Specialty Metals from 1/4"
+(6.35) stock, 880 or longer, QTY 3 - one single piece per beam, this machine only (the Mega V
+does not get the feature, his call). 1/4" because their shear already cut the 1/4" cold-rolled
+rear plate**, the thickness is the stocked SAE dimension while the width is just a shear stop -
+9/16 is the SAE stop nearest the design's 14 - and the extra height over the 3.0 head crowns
+(3.35 before the runners) costs nothing: the spring-loaded rod absorbs ride height. ~14 not 15:
+the 10 trench keeps **2.15 of runner land** each side, and the bar edge sits
+**~0.85 from each head row - squeeze-out relief** instead of a 0.5 trap.
 ⚠ **The bar face must stand above the measured 3.0 head crowns - verify thickness before
 anything is glued.** The pieced Amazon bars (6x 12" + 6x 16", $40, in the ledger) stay as spare
 stock. The plan:
@@ -240,11 +241,11 @@ stock. The plan:
   bonded in one session: both faces fresh-abraded, acetone wiped, **slow-cure structural
   epoxy, thin and continuous end to end** - §1.4's full-length-bond rule, aluminium commanding
   the band, no CTE argument. Not CA, not VHB or any foam tape: a compliant layer lets the
-  position reference creep. The bar drops between the bolt-head rows - at 14 wide the heads
-  bound it only to ~1.0 a side, so **center it with shim strips against the head edges while
-  the clamps go on** and both runner lands stay 2.0; dry-fit the full run first. Caul and
+  position reference creep. The bar drops between the bolt-head rows - at 9/16 wide the heads
+  bound it only to ~0.85 a side, so **center it with shim strips against the head edges while
+  the clamps go on** and both runner lands stay 2.15; dry-fit the full run first. Caul and
   clamps down the length; **keep squeeze-out off the heads** so the bolts stay serviceable -
-  the 1.0 relief each side is where it goes.
+  the relief each side is where it goes.
 - If pieced stock ever substitutes for a full bar: bond all pieces in one session, **dress the
   butt joints dead flush after cure, before the trench** - a step there is air gap, the one
   direction the sensor feels - and keep joints away from the middle of travel.
