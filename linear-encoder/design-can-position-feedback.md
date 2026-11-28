@@ -242,7 +242,8 @@ number anyone has to respect — it is simply never reached.
 >   the position reference and aluminium commanding the band, no CTE argument left to have.
 > - The **puck rides two UHMW runners on the strip face** either side of the tape, the rod
 >   spring-loaded so the pressure is constant: **gap = runner height - 1.2 (chip) - tape
->   proudness (1.6 - trench depth)**, tuned by the runner shoe, no feeler gauge in service.
+>   proudness (1.45 - trench depth, the tape a measured 1.45 backing off, his 2026-11-28)**,
+>   tuned by the runner shoe, no feeler gauge in service.
 > - The printed sections below survive only as the **laying jig**, the job plastic is good at.
 
 **Nothing in the original proposal below is built.** It is kept because the reasoning is long,

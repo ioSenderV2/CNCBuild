@@ -117,10 +117,11 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board).
   it but the two mounting holes. The rod goes through the 35 mm plate hole.
 - **Two o3.2 holes at +/-15.5 mm from center**, on the axis across the tape run, match **M3
   taps centered in the rod's wall**. The bolts come in from the tape side; a button head
-  stands ~1.65 mm off that face, inside the 3.8 mm minimum between board face and beam face
-  (1.2 chip + 1 minimum gap + 1.6 tape).
+  stands ~1.65 mm off that face, inside the 3.65 mm minimum between board face and beam face
+  (1.2 chip + 1 minimum gap + 1.45 tape).
 - Working distance at Y1: **39.3 mm from the X end plate face to the Y1 beam face** that
-  carries the tape; the **tape is 1.6 mm thick** with its adhesive. The rod's length and
+  carries the tape; the **tape is a measured 1.45 mm thick** with its adhesive, paper backing
+  peeled (his calipers, 2026-11-28 - the 1.6 it replaced was nominal). The rod's length and
   retention set the sensor somewhere inside that.
 - Measured on the beam: the M8 **low-profile flange bolt heads are o14, 3.0 mm tall at the
   center and 2.3 at the edge, 16 mm between heads** - a 35 mm disc at tape height cannot stay
@@ -132,7 +133,7 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board).
 - Gap-setting, settled with it: **two UHMW runners on this board's tape-facing side** (printed
   shoe faced with UHMW film tape, or solid UHMW bonded with CA + polyolefin primer), riding the
   strip face either side of the tape, the rod **spring-loaded** so the pressure is constant.
-  **Gap = runner height - 1.2 (chip) - tape proudness (1.6 - trench depth)**; the runner shoe
+  **Gap = runner height - 1.2 (chip) - tape proudness (1.45 - trench depth)**; the runner shoe
   is the tuning knob. Runners sit between the tape edge (5 mm off the corridor center - note
   the silk lines at 4 mm are inside the tape's width) and the board rim; the south one dodges
   D1. Positions get picked at assembly.
