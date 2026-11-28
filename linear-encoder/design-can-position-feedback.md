@@ -223,21 +223,28 @@ number anyone has to respect — it is simply never reached.
 
 SETTLED: **THE CARRIER IS A RISER BAR BONDED ON THE EXISTING FRONT STRIPS - his, 2026-11-28.
 The 42 x 1/4" replacement strip is cancelled; no counterbores anywhere; the strips never come
-off their beams.** Material ordered: 15 mm wide aluminum flat bar, 6x 12" + 6x 16", $40 - the
-listing's thickness self-contradicts (1/8" vs 4 mm), so ⚠ **caliper on arrival, and the bar
-face must stand above the measured 3.0 head crowns before anything is glued.** The plan:
+off their beams.** Material: **14 wide 6061 bar, sheared at Specialty Metals, 4-6 thick, 880 or
+longer, QTY 3 - one single piece per beam, this machine only (the Mega V does not get the
+feature, his call).** 14 not 15: the 10 trench still keeps 2.0 of runner land each side, and
+the bar edge sits a true **1.0 from each head row - squeeze-out relief** instead of a 0.5 trap.
+⚠ **The bar face must stand above the measured 3.0 head crowns - verify thickness before
+anything is glued.** The pieced Amazon bars (6x 12" + 6x 16", $40, in the ledger) stay as spare
+stock. The plan:
 
 - **The beam comes off the machine to the bench, strip still bolted.** Snug the strip bolts to
   settle it before any prep.
-- Bar pieces **butt to span the 880 tape run** (820 measured travel + 30 a side off the end
-  poles), all bonded in one session: both faces fresh-abraded, acetone wiped, **slow-cure
-  structural epoxy, thin and continuous end to end** - §1.4's full-length-bond rule, aluminium
-  commanding the band, no CTE argument. Not CA, not VHB or any foam tape: a compliant layer
-  lets the position reference creep. The bar drops **between the bolt-head rows and the heads
-  register it laterally** (~0.5 play in the 16 mm lane - dry-fit the full run first). Caul and
-  clamps down the length; **keep squeeze-out off the heads** so the bolts stay serviceable.
-- **Dress the butt joints dead flush after cure, before the trench** - a step there is air gap,
-  the one direction the sensor feels - and keep joints away from the middle of travel.
+- **One bar spans the 880 tape run** (820 measured travel + 30 a side off the end poles),
+  bonded in one session: both faces fresh-abraded, acetone wiped, **slow-cure structural
+  epoxy, thin and continuous end to end** - §1.4's full-length-bond rule, aluminium commanding
+  the band, no CTE argument. Not CA, not VHB or any foam tape: a compliant layer lets the
+  position reference creep. The bar drops between the bolt-head rows - at 14 wide the heads
+  bound it only to ~1.0 a side, so **center it with shim strips against the head edges while
+  the clamps go on** and both runner lands stay 2.0; dry-fit the full run first. Caul and
+  clamps down the length; **keep squeeze-out off the heads** so the bolts stay serviceable -
+  the 1.0 relief each side is where it goes.
+- If pieced stock ever substitutes for a full bar: bond all pieces in one session, **dress the
+  butt joints dead flush after cure, before the trench** - a step there is air gap, the one
+  direction the sensor feels - and keep joints away from the middle of travel.
 - The **10 wide x 0.45 deep trench is routed after the bond cures**: depth referenced off the
   **bar's top face** (the face in the gap formula), line guided off the **beam's own edge** -
   the trench's straightness comes from the router fence, not the bar, so the bar's lateral play
