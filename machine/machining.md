@@ -9,8 +9,9 @@
 SETTLED: **There is no mill trip - his, 2026-11-28.** Every remaining accurate hole is drilled at
 home on the **mag drill**. The **Z plate** and the **X carriage plate** are back from the waterjet
 with rough holes to drill out, counterbore and tap; the **Z stop block** and the **two X gantry
-shelf supports** are still to be machined. The Lagun material below stands as the record of the
-plan the waterjet and the mag drill overtook.
+shelf supports** are still to be machined. The two **front fins**, the two **X end plates** and
+the three **interposer bars** are made and **bolted on the machine**. The Lagun material below
+stands as the record of the plan the waterjet and the mag drill overtook.
 
 ~~Accurate holes are drilled on **a single visit to a friend's shop**~~ (no longer - see above) -
 a **Lagun** mill, 4' × 1' bed, **manual X and Y**, DRO to be confirmed. **Not Laguna**, which is a woodworking brand and is what
