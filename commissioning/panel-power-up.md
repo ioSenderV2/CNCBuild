@@ -21,10 +21,18 @@ taken on the real panel; the wiring design it validates is
     paddle's feed - the wiring direction the design file flagged as silently invertible is
     confirmed right on the real panel.
 
+## 2026-11-28 - the 220 V side, first branches
+
+- **XDR-960-36 checks out at 36 V** - which also proves the whole 220 path by operation:
+  pigtail, breaker, and both poles of the main contactor under the paddle.
+- **The FBS bridges on the Phoenix 36 V groups must be driven fully flush** - sitting loose
+  in the shafts they conduct NOTHING, and the first meter pass showed voltage only on the
+  fed block. Seated flush (they take real force), **36 V reads across all six blocks** of
+  the bridged group. A loose bridge looks installed and is open - check flushness by eye
+  on any future group.
+
 ## Still to run, in order
 
-1. **Line-pole continuity on the main contactor** - coil held in, 220 pigtail unplugged:
-   continuity across each line pole proves the 220 path will conduct before 220 exists.
-2. **220 V pigtail in** - branch by branch behind the breakers: the 2 x 8 block's pairs,
-   the XDR-960-36 rail (and the DVRD-36 picking up), the VFD powering, the pump contactor.
-3. **Steppers** - the drive bench session, [`bench-session.md`](bench-session.md).
+1. **Rest of the 220 branches**: the DVRD-36 picking up and the e-stop sense loop, the VFD
+   powering, the pump contactor.
+2. **Steppers** - the drive bench session, [`bench-session.md`](bench-session.md).
