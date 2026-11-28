@@ -212,8 +212,8 @@ def sheet_total_row(t, nl):
         tail.append('%d of this part get made &mdash; <b>%d holes</b> in all'
                     % (t['made'], n * t['made']))
     if not t.get('on_trip', True):
-        tail.append('<b>made at home</b> &mdash; deliberately absent from the '
-                    'drill appendix, which is the mill trip')
+        tail.append('<b>already made</b> &mdash; deliberately absent from the '
+                    'drill appendix, which is the drilling still to do')
     note = ' &mdash; '.join(tail) if tail else 'holes in this one part'
     span = max(1, t['cols'] - 3)
     return nl.join([
@@ -252,7 +252,7 @@ def render(per_part, trip, sized):
            '<h2 id="drills">Appendix &mdash; what gets drilled, by drill size</h2>',
            '<p style="margin:0 0 .4rem;font-size:9.5pt"><b>Generated from the hole '
            'schedules</b> by tools/build-hole-tally.py, so it cannot drift from them. '
-           '<b>Qty is for the trip</b>: the sheet\'s own count times the number of that '
+           '<b>Qty is the full drilling job</b>: the sheet\'s own count times the number of that '
            'part made, and where that is more than one the sum is shown.</p>',
            '<table class="sched">',
            '<tr><th>&oslash;</th><th>Sheet</th><th class="d">Qty</th>'
@@ -339,7 +339,7 @@ def main():
         src = src.replace(anchor, table + nl + nl + anchor, 1)
     io.open(PACK, 'w', encoding='utf-8', newline='').write(src)
 
-    print('%d sizes, %d holes across the schedules, %d on the trip'
+    print('%d sizes, %d holes across the schedules, %d in the drill appendix'
           % (len(per_part), sum(per_part.values()), sum(trip.values())))
     print('%d sheet schedules carry a TOTAL footer' % nfoot)
     for t in tables:

@@ -17,7 +17,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
   - [Rails come from two suppliers](machine/assembly.md#rails-come-from-two-suppliers)
   - [Thread locker](machine/assembly.md#thread-locker)
 - [Order of work](machine/assembly.md#order-of-work)
-- [1. The mill trip](machine/assembly.md#1-the-mill-trip)
+- [1. Finish the plates](machine/assembly.md#1-finish-the-plates)
 - [2. The beams](machine/assembly.md#2-the-beams)
   - [Load every T-nut first](machine/assembly.md#load-every-t-nut-first)
   - [Mount the rails](machine/assembly.md#mount-the-rails)
@@ -132,7 +132,7 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 
 ## [machine/machining.md](machine/machining.md)
 
-- [The two Z rails need nothing special at the mill](machine/machining.md#the-two-z-rails-need-nothing-special-at-the-mill)
+- [The two Z rails need nothing special](machine/machining.md#the-two-z-rails-need-nothing-special)
 - [Scribe the extrusion bolt patterns; do not punch them](machine/machining.md#scribe-the-extrusion-bolt-patterns-do-not-punch-them)
 - [Each plate only has one WCS origin for the holes to be drilled](machine/machining.md#each-plate-only-has-one-wcs-origin-for-the-holes-to-be-drilled)
 

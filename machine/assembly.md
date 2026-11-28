@@ -98,7 +98,7 @@ rules carry the whole sequence, and neither can be worked around:
 
 | | Stage |
 |---|---|
-| 1 | [Make the plates](#1-the-mill-trip) — one trip to the mill |
+| 1 | [Finish the plates](#1-finish-the-plates) — waterjet-cut, finished at home on the mag drill |
 | 2 | [Build the three beams](#2-the-beams) — T-nuts, rails, joining plates |
 | 3 | [The Y beam ends](#3-the-y-beam-ends) — interposers, castings, screws, fins, rear plate, outboard plates |
 | 4 | [The X gantry](#4-the-x-gantry) — end plates, shelves, beam, carriage plate |
@@ -112,28 +112,21 @@ rules carry the whole sequence, and neither can be worked around:
 
 ---
 
-## 1. The mill trip
+## 1. Finish the plates
 
-Accurate holes are drilled on **one visit** — a **Lagun** mill, 4' × 1' bed, **manual X and Y**.
-Every plate must be fully dimensioned before the trip, including assemblies that will not be built
-for months.
+There is no mill trip — every remaining accurate hole is drilled at home on the **mag drill**. The
+plates come cut from the waterjet with rough holes; finishing them — **drill out, counterbore,
+tap** — is this stage.
 
-| On the mill | |
+| Still to finish | |
 |---|---|
-| Two **Y front plates / fins**, 10 mm | the 8-bolt corner-bore pattern. **Solid — no window** |
-| The **rear plate**, 1/4" steel, **{{REAR_PLATE_L_ORDERED}}** long | two 8-bolt patterns a metre apart |
-| Two **X gantry end plates**, 1/2" | one drawing, right-hand variant carries the BF12 tongue |
-| **X carriage plate**, 1/2" | 30 holes |
-| **Z plate**, 1/2" | |
-| **Interposer bars**, 60 × 150 × 3/8", quantity 3 | six tapped M5 under a bearing face, six flange clearance holes |
-| **Both Z spacers** | **face 1 mm off both in the same setup** — see [the Z axis](#6-the-z-axis) |
-| Rail mounting patterns, bearing block and nut housing patterns, counterbores | |
+| **Z plate**, 1/2" | rough holes from the waterjet — drill out, counterbore and tap to [Sheet 4](../docs/drawings/shop-pack.html) |
+| **X carriage plate**, 1/2" | rough holes from the waterjet — drill out, counterbore and tap to Sheet 3a |
+| **Z stop block** | still to machine |
+| Two **shelf supports** for the X gantry | still to machine |
 
-| Home drill press | |
-|---|---|
-| Beam joining plates | 9 mm clearance into T-slots at 150 mm — the T-nut moves to meet the bolt |
-| Two **outboard plates**, 11 7/8" × 39 5/16" × 10 gauge steel | ~25 holes each, and steel runs several times longer than aluminium would |
-| Three **front strips**, 45 mm × 1 m × 4 mm | |
+SETTLED: ~~**Both Z spacers** — face 1 mm off both in the same setup~~ — the spacers are not
+surfaced; they mic 16.08 and 15.96 and the shim at the nut carries the step - his, 2026-10-26.
 
 FLAG: **Five plates stand on the box and all five are 301.625 high: the two side plates, the back
 plate and the two front fins.** Measure all five against each other as they arrive, before any of
@@ -158,10 +151,8 @@ own, **ø6 through under a ø9.5 counterbore** on an M5. **Lock rail one down co
 carriage, tighten that bolt, move to the next. OPEN: **Never tighten rail two as a set** — it snakes,
 and a bolt already home fights the next one you set.
 
-OPEN: **Open: whether the mill can hold one height reference across the rear plate's {{REAR_PLATE_L_ORDERED}}.** Bed size is not
-travel. The two 8-bolt patterns' relative height must land well inside 1 mm across the metre.
-If the part is repositioned mid-job, **indicate the first pattern back in before drilling the second**,
-and work from a scribed and indicated line rather than from a sawn edge.
+SETTLED: ~~**Whether the mill can hold one height reference across the rear plate's {{REAR_PLATE_L_ORDERED}}.**~~
+The waterjet cut both 8-bolt patterns and the near end fits — dead with the trip, 2026-11-28.
 
 ---
 

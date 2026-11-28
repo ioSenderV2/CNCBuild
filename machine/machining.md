@@ -1,4 +1,4 @@
-# Machining: one trip, so design ahead of the build
+# Machining: finished at home, on the mag drill
 
 > Split out of `end-plates-risers-and-spindle.md` on 2026-10-02 - the section below is
 > **verbatim**, nothing was re-decided in the move. Its nine siblings are listed in
@@ -6,8 +6,14 @@
 
 ---
 
-Accurate holes are drilled on **a single visit to a friend's shop** - a **Lagun** mill, 4' × 1' bed,
-**manual X and Y**, DRO to be confirmed. **Not Laguna**, which is a woodworking brand and is what
+SETTLED: **There is no mill trip - his, 2026-11-28.** Every remaining accurate hole is drilled at
+home on the **mag drill**. The **Z plate** and the **X carriage plate** are back from the waterjet
+with rough holes to drill out, counterbore and tap; the **Z stop block** and the **two X gantry
+shelf supports** are still to be machined. The Lagun material below stands as the record of the
+plan the waterjet and the mag drill overtook.
+
+~~Accurate holes are drilled on **a single visit to a friend's shop**~~ (no longer - see above) -
+a **Lagun** mill, 4' × 1' bed, **manual X and Y**, DRO to be confirmed. **Not Laguna**, which is a woodworking brand and is what
 this file said until the maker's plate was photographed: **Republic Lagun Machine Tool Co, 1000 E.
 Carson, Carson CA 90749, and the casting says MADE IN SPAIN** - a Spanish knee mill badged by the US
 arm. Recorded because the name is what a future session would search on.
@@ -18,20 +24,17 @@ Maher group; Republic Lagun was founded in California in 1968 as the US arm and 
 Engineering. The castings are Spanish, the badge is American.
 
 **The FTV-2 manual and the FTV-2F brochure are committed**, not linked - see
-[`../manufacturer-assets/index.html`](../manufacturer-assets/index.html). OPEN: **Garen's exact model
+[`../manufacturer-assets/index.html`](../manufacturer-assets/index.html). SETTLED: ~~**Garen's exact model
 is not confirmed and the two differ in travel** - the FTV-2F is 977 x 406 of X by Y manual, the plain
-FTV-2 is listed at 838 of X. Nothing on the trip needs either figure while the list stays aluminium
-and under a metre, which is why this is recorded rather than chased. **As of 2026-09-29 none of the 30 holes in the X carriage
-plate are drilled.**
+FTV-2 is listed at 838 of X.~~ Dead with the trip, 2026-11-28 - nothing is going to that mill.
 
-FLAG: **Every plate needing accurate holes must be fully dimensioned before that trip**, including
+SETTLED: ~~**Every plate needing accurate holes must be fully dimensioned before that trip**, including
 assemblies that will not be built for months: **X carriage plate, Z plate, two X end plates**. One
-more plate on the visit costs an hour; a second trip costs a weekend.
+more plate on the visit costs an hour; a second trip costs a weekend.~~ The one-trip discipline died
+with the trip, 2026-11-28.
 
-🔴 **The trip is ALUMINIUM ONLY now. Only steel went to the waterjet service.** Everything still on
-the list is 6061: the X carriage plate, the Z plate, the two X end plates, the two Y front plates
-and the interposer bars. Nothing on it is a metre long, so bed size and X traverse have stopped
-being questions - see the two closed items in [`open-items.md`](open-items.md).
+SETTLED: ~~**The trip is ALUMINIUM ONLY now. Only steel went to the waterjet service.**~~ Then the
+waterjet took the aluminium too - the Z plate and X carriage plate came back rough-holed, 2026-11-28.
 
 FLAG: **The 2026-10-02 rework put three more parts on this trip.** The list had been shrinking; it is
 not any more:
@@ -74,7 +77,7 @@ on the idle end.
 | | Bearing block and nut housing patterns, with counterbores |
 | | The 8-bolt end plate patterns that must match the extrusion corner bores |
 
-## The two Z rails need nothing special at the mill
+## The two Z rails need nothing special
 
 Two rails parallel and coplanar over 407 mm is what decides whether the Z runs sweetly or binds, and
 it is tempting to try to buy that at the mill. **There is nothing to buy.** Both rails tap **M5
