@@ -38,6 +38,11 @@ taken on the real panel; the wiring design it validates is
   a threshold at 36 would e-stop on ordinary sag. ⚠ Watch during the stepper session: the
   rail lifts on braking, and if hard decels blink TRIP past 39, the overvolt knob has room
   above.
+- **With the window at 33/39, NORM lights green.** Edge proven by moving the threshold across
+  the fixed rail: undervolt knob wound to 42 with the rail at 36 gives **blinking red TRIP
+  for ~10 s, then solid red** - a trip delay, which means a powered transient (a braking
+  lift) has to outlast ~10 s to trip, while a real E-stop still drops the contact instantly
+  because the DVRD loses its own power with the rail.
 
 ## Still to run, in order
 
