@@ -124,5 +124,7 @@ steppers. Once that passes, the one board mounts on the machine and six hookups 
 a 4-pin DT to the spindle motor, a 3-pin DT to the outlet, a 2-pin DT to the pump, a 4-position
 DTM to the paddle, and the two wall pigtails — the 220 V straight to the contactor, the 110 V
 to the breaker. Interface Rev C is designed and quoted (the Rev B boards and the controller
-boards in fab/transit); the mill trip — aluminum only since the waterjet took the steel — is
-still ahead. STATUS.md carries the live open items.
+boards in fab/transit). Mechanically, what remains is finishing work: the Z plate and the X
+carriage plate are back from the waterjet with rough holes to drill out, counterbore and tap,
+and the Z stop block and the two shelf supports for the X gantry are still to be machined — no
+more waterjet trips. STATUS.md carries the live open items.
