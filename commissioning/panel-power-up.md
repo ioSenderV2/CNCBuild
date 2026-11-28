@@ -31,8 +31,17 @@ taken on the real panel; the wiring design it validates is
   the bridged group. A loose bridge looks installed and is open - check flushness by eye
   on any future group.
 
+- **DVRD-36 window set on the live rail**: overvolt **39 V** (that knob's floor), undervolt
+  **33 V** (knob reaches 30). Out of the box it sat in TRIP with a healthy 36 on the rail -
+  the factory knob positions put 36 outside the window; TRIP red with rail voltage present
+  means the window is wrong, not the rail. The undervolt stays well below nominal on purpose:
+  a threshold at 36 would e-stop on ordinary sag. ⚠ Watch during the stepper session: the
+  rail lifts on braking, and if hard decels blink TRIP past 39, the overvolt knob has room
+  above.
+
 ## Still to run, in order
 
-1. **Rest of the 220 branches**: the DVRD-36 picking up and the e-stop sense loop, the VFD
-   powering, the pump contactor.
-2. **Steppers** - the drive bench session, [`bench-session.md`](bench-session.md).
+1. **DVRD contact proof**: continuity across 15-18 - closed with NORM lit, open on a paddle
+   press as the rail dies.
+2. **Rest of the 220 branches**: the VFD powering, the pump contactor.
+3. **Steppers** - the drive bench session, [`bench-session.md`](bench-session.md).
