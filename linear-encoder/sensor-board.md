@@ -22,7 +22,7 @@ seats against the rod and passes through the 35 mm hole.
 
 | BOM line | Populated as | Note |
 |---|---|---|
-| U1 AS5311 | **AS5311-ATST** (Mouser 985-AS5311-ATST-500, sold under Infineon now) | the datasheet's ATSU tube variant is obsolete; ATST is the same TSSOP-20 off tape. 10 bought - both machines plus spares |
+| U1 AS5311 | **AS5311-ATST** (Mouser 985-AS5311-ATST-500, sold under Infineon now) | the datasheet's ATSU tube variant is obsolete; ATST is the same TSSOP-20, supplied on tape. 10 bought - both machines plus spares |
 | D1 SRV05-4 | **MCC SRV05-4C-TP** | pinout verified identical to the ProTek sheet the footprint was drawn from (I/O 1/3/4/6, GND 2, Vcc 5), and better where it matters: 0.6 pF per line against 3.5. Sheet committed as [`MCC-SRV05-4C-TVS-Array.pdf`](../manufacturer-assets/MCC-SRV05-4C-TVS-Array.pdf) |
 | J1 jack | CRJ068-1-SMT, 10 bought | covers the controller board's four too |
 | C1 100n, R1-R4 | from the 0603 assortment kits | R1-R3 built at **150R** (his, 2026-11-23), the mid-range starting point; the kit is the tuning instrument for stepping off it |

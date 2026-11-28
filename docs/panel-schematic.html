@@ -171,7 +171,7 @@ Fig.&nbsp;2 carries the conductor colours.
 <tr><td>Control fuse</td><td><b>1 A</b></td><td>Protects the control conductors, not the coil</td></tr>
 <tr><td>Main contactor</td><td><b>Wengart WCT-25</b>, 2NO</td><td>25 A AC-7a / 9 A AC-7b. Coil AC 110&ndash;120 V. 18 mm</td></tr>
 <tr><td>Distribution</td><td><b>2 &times; 8 block</b></td><td>Two switched legs in, four pairs out</td></tr>
-<tr><td>Breakers</td><td>3 &times; 2-pole + 1 &times; 1-pole, <b>all curve C</b></td><td><b>Three 2-pole on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and a <b>1-pole 6 A on the 110 V rail, hot only</b>; the neutral runs past it to the splitter, unbroken</td></tr>
+<tr><td>Breakers</td><td>3 &times; 2-pole + 1 &times; 1-pole, <b>all curve C</b></td><td><b>Three 2-pole on the 220 V rail</b> &mdash; 6 A, 16 A, 6 A &mdash; and a <b>1-pole 10 A on the 110 V rail, hot only</b> (no 1-pole 6 A was available; the branch is 14 AWG throughout, rated at 10 A); the neutral runs past it to the splitter, unbroken</td></tr>
 <tr><td>Splitter</td><td><b>2 &times; 6 block</b>, 110 V side</td><td>Three pairs used, three spare</td></tr>
 <tr><td>Sense relay</td><td><b>ATO DVRD-36</b> voltage monitor, <b>across the 36 V rail</b> &mdash; powered by the circuit it watches, no coil feed, pair 4 freed</td><td>Dry contact, terminals <b>15&ndash;18</b>: one conductor of a 22/2 to the interface board's e-stop input, the other contact terminal <b>jumpered to the 12 V supply's V&minus;</b> so the loop closes through the 12 V return. <b>Not optional</b> &mdash; the controller survives the E-stop and has to be told</td></tr>
 <tr><td>Motor supply</td><td><b>Mean Well XDR-960-36</b>, 36 V, 960 W, DIN rail</td><td>220 V at 5 A in (typ), 36 V at 26.6 A out. Output adjusts 36&ndash;42 V &mdash; 36 is the pot's floor</td></tr>
@@ -543,7 +543,7 @@ white</b> &mdash; and under his scheme that is the tell: 110 V survives an E-sto
 
   <!-- the repurposed breaker -->
   <rect class="bx" x="260" y="30" width="170" height="82" rx="3"/>
-  <text class="ttl c" x="345" y="54">6 A BREAKER</text>
+  <text class="ttl c" x="345" y="54">10 A BREAKER</text>
   <text class="sm c"  x="345" y="72">1-pole &middot; Type C</text>
   <text class="sm c"  x="345" y="88">hot only</text>
   <text class="q c"   x="345" y="104">THE NEUTRAL IS NOT IN IT</text>

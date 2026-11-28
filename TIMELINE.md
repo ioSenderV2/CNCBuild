@@ -35,7 +35,7 @@ Three months of accumulated intent becomes dimensioned design in one week.
 - **2026-10-02 to 10-05** — the end-plate marathon: steel on Y accepted as a recorded reversal,
   the **dimension registry** created (authoritative values, Fusion export), STATUS and INDEX
   generated from markers in the prose, the shop pack redrawn in machining coordinates, and the
-  interposer scheme settled. Trade jargon starts getting purged ("datum" gone repo-wide).
+  interposer scheme settled. The purge of trade jargon from the shop pack begins, repo-wide.
 
 ## Numbers firm up, the model arrives — 2026-10-07 to 2026-10-12
 

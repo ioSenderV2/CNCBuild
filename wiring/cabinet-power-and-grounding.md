@@ -303,7 +303,7 @@ that stays alive.
 | | |
 |---|---|
 | In | the **L5-20P pigtail**, hot and neutral, into the **top** of the breaker |
-| Breaker | a **1-pole 6 A, curve C, in the hot only** - his, 2026-11-13. The **neutral runs straight to the splitter**, unbroken, like every house circuit |
+| Breaker | a **1-pole 10 A, curve C, in the hot only** (DZ47-63 C10) - the 2026-11-13 call said 6 A, but no 1-pole 6 A was obtainable in time and the branch is **14 AWG throughout**, so the wiring is rated at 10 A - his, 2026-11-28. The **neutral runs straight to the splitter**, unbroken, like every house circuit |
 | Then | a **2 x 6 splitter block** |
 
 | Pair | Feeds |
@@ -319,10 +319,12 @@ that stays alive.
 spare.** Breaking the hot alone is how every hot-plus-neutral circuit in a house is broken - the
 neutral sits at ground potential, so a tripped breaker leaves nothing live downstream - and it gives
 back one DIN module on the bottom rail. The 220 V side keeps **6 A, 16 A, 6 A**, all 2-pole. The
-1-pole 6 A is the one part this adds to the buy list - curve C like the rest.
+1-pole 6 A was the one part this added to the buy list - and **as built it is a 10 A**, because no
+1-pole 6 A was available in time; curve C like the rest, and the 14 AWG branch is rated for it -
+his, 2026-11-28.
 
 NOTE: **THE RECEPTACLE IS NOW BEHIND A BREAKER, WHICH IT WAS NOT BEFORE.** Until 2026-11-06 the strip
-had only the wall's 20 A. **6 A is ample**: the laptop charger is a couple of amps at 120 V, the
+had only the wall's 20 A. **10 A is ample**: the laptop charger is a couple of amps at 120 V, the
 powered USB and cameras well under one, and the 12 V supply about 0.4 A at this voltage. A **curve C**
 is what carries the chargers' switch-on inrush without nuisance tripping, which is the reason it had
 to be C rather than B here too.
@@ -794,7 +796,7 @@ dead - and **two things are still live**:
 | With the paddle down | |
 |---|---|
 | The pairs off the 2 x 8 block | **dead** |
-| **The entire 110 V side** - the 6 A breaker, the 2 x 6 splitter and all three of its pairs | **LIVE** |
+| **The entire 110 V side** - the 10 A breaker, the 2 x 6 splitter and all three of its pairs | **LIVE** |
 | The **12 V supply, and everything it feeds** | **LIVE** - the controller is still running |
 | The **receptacle and the power strip in it** | **LIVE** |
 | The **paddle's own control circuit**, upstream of the switch | **LIVE** |
@@ -912,7 +914,7 @@ modules, 36 mm**:
 | Rail | On it |
 |---|---|
 | **Top - the 220 V side** | Main contactor, pump contactor, the **2 x 8 block**, the **three** 220 V breakers, and **every ground terminal** |
-| **Bottom - the 110 V side and the supplies** | The **6 A 110 V breaker**, the **2 x 6 splitter**, the 1 A fuse holder, the **MDR 12 V supply**, the **36 V brick**, and the **rail sense** - it belongs beside the supply it watches now, not up with the 220 V |
+| **Bottom - the 110 V side and the supplies** | The **10 A 110 V breaker**, the **2 x 6 splitter**, the 1 A fuse holder, the **MDR 12 V supply**, the **36 V brick**, and the **rail sense** - it belongs beside the supply it watches now, not up with the 220 V |
 
 ✅ **SPLITTING BY VOLTAGE RATHER THAN BY DEVICE TYPE IS THE BETTER ARRANGEMENT**, and it falls out of
 the 12 V supply moving: everything the paddle kills is on one rail and everything that stays live is
@@ -1396,7 +1398,7 @@ really two cables. **The box gets drilled for the cable count, not the circuit c
 | In | What it is |
 |---|---|
 | **220 V pigtail** | 10 ft captive, 12 AWG, **L6-20P**. Two hots and a ground, **no neutral anywhere in the chain** |
-| **110 V pigtail** | 10 ft captive, 12 AWG, **L5-20P**. Hot, neutral, ground - the hot into the **top** of the 1-pole 6 A breaker, the neutral straight to the splitter |
+| **110 V pigtail** | 10 ft captive, 12 AWG, **L5-20P**. Hot, neutral, ground - the hot into the **top** of the 1-pole 10 A breaker, the neutral straight to the splitter |
 | **A1 / A2**, back from the switch boxes | the contactor coil feed, having run out through the **mushroom and then the paddle in series**. Same cable as the switch run below |
 | **FA / FC**, from the VFD | the drive's **Multi-Output 3** dry contact, **3 A / 250 VAC**, closing the pump contactor's 220 V coil. **Its own shielded 22/2 - his, 2026-11-20, as built** - so the VFD leg is two cables, this pair out and back plus the mains feed below |
 
