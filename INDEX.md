@@ -413,6 +413,11 @@ for those. Drawings are not here either; `docs/drawings/` is derived by its own 
 - [Why these were weighed](commissioning/masses.md#why-these-were-weighed)
 - [Provenance](commissioning/masses.md#provenance)
 
+## [commissioning/panel-power-up.md](commissioning/panel-power-up.md)
+
+- [2026-11-28 - the 110 V side and the 12 V path](commissioning/panel-power-up.md#2026-11-28---the-110-v-side-and-the-12-v-path)
+- [Still to run, in order](commissioning/panel-power-up.md#still-to-run-in-order)
+
 ## [commissioning/README.md](commissioning/README.md)
 
 - [Travels, per axis](commissioning/README.md#travels-per-axis)
