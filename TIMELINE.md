@@ -117,8 +117,12 @@ Three months of accumulated intent becomes dimensioned design in one week.
 
 ## Where that leaves the build — 2026-11-28
 
-The frame, base, torsion box and gantry are assembled and proven square; steel finish scheme
-settled. All three boards are designed: interface at Rev C (Rev B physical boards and the
-controller boards in fab/transit), sensor pucks and stencils ordered. The mill trip — aluminum
-only since the waterjet took the steel — is still ahead, as is the cabinet build on the plywood
-panel, board assembly and the drive bench session. STATUS.md carries the live open items.
+The frame, base, torsion box and gantry are assembled and proven square. The electronics panel —
+the 3/4 ply board with everything on it — is fully wired, standing alone off the machine. Next
+is the bench power-up: apply power, validate the voltages through the system, then run the
+steppers. Once that passes, the one board mounts on the machine and six hookups finish the job:
+a 4-pin DT to the spindle motor, a 3-pin DT to the outlet, a 2-pin DT to the pump, a 4-position
+DTM to the paddle, and the two wall pigtails — the 220 V straight to the contactor, the 110 V
+to the breaker. Interface Rev C is designed and quoted (the Rev B boards and the controller
+boards in fab/transit); the mill trip — aluminum only since the waterjet took the steel — is
+still ahead. STATUS.md carries the live open items.
