@@ -5,7 +5,8 @@ The machine, and everything about building, wiring, configuring and instrumentin
 
 Written down because these facts kept getting re-derived in conversation - travels, plate dimensions,
 what shares a drag chain, which stored setting disagreed with the machine. A firmware fork's scratch
-folder was the wrong home for them.
+folder was the wrong home for them. The project's history at milestone level is
+[TIMELINE.md](TIMELINE.md).
 
 | Folder | What is in it |
 |---|---|
