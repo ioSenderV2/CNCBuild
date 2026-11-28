@@ -221,7 +221,32 @@ number anyone has to respect — it is simply never reached.
 
 #### SUPERSEDED: PROPOSAL - a printed carrier to lift the tape clear of the bolt heads
 
-> **SETTLED 2026-11-04 - no carrier, no riser: the front strip itself changes.** The 45 x 4 front
+SETTLED: **THE CARRIER IS A RISER BAR BONDED ON THE EXISTING FRONT STRIPS - his, 2026-11-28.
+The 42 x 1/4" replacement strip is cancelled; no counterbores anywhere; the strips never come
+off their beams.** Material ordered: 15 mm wide aluminum flat bar, 6x 12" + 6x 16", $40 - the
+listing's thickness self-contradicts (1/8" vs 4 mm), so ⚠ **caliper on arrival, and the bar
+face must stand above the measured 3.0 head crowns before anything is glued.** The plan:
+
+- **The beam comes off the machine to the bench, strip still bolted.** Snug the strip bolts to
+  settle it before any prep.
+- Bar pieces **butt to span the 880 tape run** (820 measured travel + 30 a side off the end
+  poles), all bonded in one session: both faces fresh-abraded, acetone wiped, **slow-cure
+  structural epoxy, thin and continuous end to end** - §1.4's full-length-bond rule, aluminium
+  commanding the band, no CTE argument. Not CA, not VHB or any foam tape: a compliant layer
+  lets the position reference creep. The bar drops **between the bolt-head rows and the heads
+  register it laterally** (~0.5 play in the 16 mm lane - dry-fit the full run first). Caul and
+  clamps down the length; **keep squeeze-out off the heads** so the bolts stay serviceable.
+- **Dress the butt joints dead flush after cure, before the trench** - a step there is air gap,
+  the one direction the sensor feels - and keep joints away from the middle of travel.
+- The **10 wide x 0.45 deep trench is routed after the bond cures**: depth referenced off the
+  **bar's top face** (the face in the gap formula), line guided off the **beam's own edge** -
+  the trench's straightness comes from the router fence, not the bar, so the bar's lateral play
+  is harmless as long as the trench lands fully on it.
+- The tape (**measured 1.45, backing off**) bonds full length in the trench and stands
+  **1.0 proud** of the bar face; the **runners ride the bar face** either side of it.
+
+> SUPERSEDED 2026-11-28 by the riser bar above - the 1/4" strip was never bought. Kept as the
+> record: **SETTLED 2026-11-04 - no carrier, no riser: the front strip itself changes.** The 45 x 4 front
 > strip is replaced with **42 mm x 1/4" bar**, and the **M8 low-profile flange bolts (o14 head,
 > 3.0 center / 2.3 edge) get counterbored flush** - the T-nuts and bolts stay. Nothing then stands
 > proud of the face, so the puck rides over the whole width and every lane-clearance paragraph

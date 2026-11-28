@@ -125,14 +125,15 @@ KiCad project: [`kicad/sensor-board/`](kicad/sensor-board).
   retention set the sensor somewhere inside that.
 - Measured on the beam: the M8 **low-profile flange bolt heads are o14, 3.0 mm tall at the
   center and 2.3 at the edge, 16 mm between heads** - a 35 mm disc at tape height cannot stay
-  inside that window. **SETTLED 2026-11-04 by changing the beam, not the puck**: the front strip
-  becomes 42 mm x 1/4" bar with the bolts counterbored flush and the tape bonded in a routed
-  trench - the full plan lives in
+  inside that window. **SETTLED 2026-11-28, superseding the 42 mm x 1/4" counterbore plan
+  (never bought)**: a **15 mm riser bar bonds full-length onto the existing strip between the
+  head rows**, standing above the head crowns, with the tape in a 10 x 0.45 trench routed in
+  the bar - the full plan lives in
   [`design-can-position-feedback.md`](design-can-position-feedback.md) § *SUPERSEDED: PROPOSAL -
   a printed carrier*.
 - Gap-setting, settled with it: **two UHMW runners on this board's tape-facing side** (printed
   shoe faced with UHMW film tape, or solid UHMW bonded with CA + polyolefin primer), riding the
-  strip face either side of the tape, the rod **spring-loaded** so the pressure is constant.
+  riser bar's face either side of the tape, the rod **spring-loaded** so the pressure is constant.
   **Gap = runner height - 1.2 (chip) - tape proudness (1.45 - trench depth)**; the runner shoe
   is the tuning knob. Runners sit between the tape edge (5 mm off the corridor center - note
   the silk lines at 4 mm are inside the tape's width) and the board rim; the south one dodges

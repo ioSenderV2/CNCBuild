@@ -19,6 +19,7 @@ this repo is public. Drop the PDF here, add the row; `.gitignore` keeps the file
 | 2026-11-20 | OSH Park | KNbGRTAf | CAN controller board, 3 boards, standard service (~2 weeks), $15.15 + $8.60 USPS Priority | $23.75 | [CAN controller board](../linear-encoder/controller-board.md) | `oshpark-order-invoice-KNbGRTAf.pdf` |
 | 2026-11-20 | OSH Stencils | OS9576A04-15422 | Controller board **bottom stencil, 4 mil stainless** (Project: Controller_board), **1/16" acrylic jig set**, rush processing / same-day ship, free spreader | $63.00 w/ USPS First Class | [CAN controller board](../linear-encoder/controller-board.md) | `OS9576A04-15422.pdf` |
 | 2026-11-20 | Digi-Key | *invoice to drop* | 10x Molex **39-29-9047** 4-circuit Mini-Fit Jr header (5566-04A2, tin, pegs) - the true 2x2 for J15/J32/J33, after the 46999-0621s proved 1x2 | *from the invoice* | [interface board](../wiring/kicad/interface-board/README.md) | - |
+| 2026-11-28 | Amazon | MECCANIXITY flat bar, two listings | 6x 12" + 6x 16" aluminum flat bar, **15 mm wide**, thickness listed as both 1/8" and 4 mm - ⚠ **caliper on arrival**, the bar face must stand above the measured 3.0 head crowns | $40 | [tape riser bars](../linear-encoder/design-can-position-feedback.md) on the three front strips | - |
 
 Mouser files its PDFs under the **sales** order number; the project's notes quote the
 **web** order number. Both are in the Order column.
