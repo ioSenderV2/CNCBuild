@@ -223,9 +223,12 @@ number anyone has to respect — it is simply never reached.
 
 SETTLED: **THE CARRIER IS A RISER BAR BONDED ON THE EXISTING FRONT STRIPS - his, 2026-11-28.
 The 42 x 1/4" replacement strip is cancelled; no counterbores anywhere; the strips never come
-off their beams.** Material: **14 wide 6061 bar, sheared at Specialty Metals, 4-6 thick, 880 or
-longer, QTY 3 - one single piece per beam, this machine only (the Mega V does not get the
-feature, his call).** 14 not 15: the 10 trench still keeps 2.0 of runner land each side, and
+off their beams.** Material: **14 wide 6061, sheared at Specialty Metals from 1/4" (6.35) stock,
+880 or longer, QTY 3 - one single piece per beam, this machine only (the Mega V does not get the
+feature, his call). 1/4" because their shear already cut the 1/4" cold-rolled rear plate**, the
+thickness is the stocked SAE dimension while the 14 is just a shear stop, and the extra height
+over the 3.0 head crowns (3.35 before the runners) costs nothing - the spring-loaded rod absorbs
+ride height. 14 not 15: the 10 trench still keeps 2.0 of runner land each side, and
 the bar edge sits a true **1.0 from each head row - squeeze-out relief** instead of a 0.5 trap.
 ⚠ **The bar face must stand above the measured 3.0 head crowns - verify thickness before
 anything is glued.** The pieced Amazon bars (6x 12" + 6x 16", $40, in the ledger) stay as spare
